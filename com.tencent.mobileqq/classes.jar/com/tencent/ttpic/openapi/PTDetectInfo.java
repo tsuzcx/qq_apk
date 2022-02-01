@@ -20,6 +20,7 @@ public class PTDetectInfo
   public float[] catFaceAngles;
   public List<PointF> catFacePoints;
   public Frame displacementMaskFrame;
+  public float[] face3DNormalRotationArray;
   public float[] face3DRotationArray;
   public float[] face3DVerticesArray;
   public Map<Integer, FaceActionCounter> faceActionCounter;
@@ -36,6 +37,8 @@ public class PTDetectInfo
   public List<PointF> handPoints;
   public boolean isFreezeInfo = false;
   public boolean needRender;
+  public List<PointF> noCropFaceoffPoints;
+  public List<PointF> normalFaceoffPoints;
   public Frame noseOcclusionFrame;
   public float phoneAngle;
   public float[] pointsVis;
@@ -73,16 +76,19 @@ public class PTDetectInfo
     this.faceKitFaceRotation = PTDetectInfo.Builder.access$1900(paramBuilder);
     this.face3DVerticesArray = PTDetectInfo.Builder.access$2000(paramBuilder);
     this.face3DRotationArray = PTDetectInfo.Builder.access$2100(paramBuilder);
-    this.featureIndices = PTDetectInfo.Builder.access$2200(paramBuilder);
-    this.aiAttr = PTDetectInfo.Builder.access$2300(paramBuilder);
-    this.noseOcclusionFrame = PTDetectInfo.Builder.access$2400(paramBuilder);
-    this.displacementMaskFrame = PTDetectInfo.Builder.access$2500(paramBuilder);
-    this.randomGroupValue = PTDetectInfo.Builder.access$2600(paramBuilder);
-    this.frameIndex = PTDetectInfo.Builder.access$2700(paramBuilder);
-    this.audioScaleFactor = PTDetectInfo.Builder.access$2800(paramBuilder);
-    this.redPacketPositions = PTDetectInfo.Builder.access$2900(paramBuilder);
-    this.needRender = PTDetectInfo.Builder.access$3000(paramBuilder);
+    this.face3DNormalRotationArray = PTDetectInfo.Builder.access$2200(paramBuilder);
+    this.featureIndices = PTDetectInfo.Builder.access$2300(paramBuilder);
+    this.aiAttr = PTDetectInfo.Builder.access$2400(paramBuilder);
+    this.noseOcclusionFrame = PTDetectInfo.Builder.access$2500(paramBuilder);
+    this.displacementMaskFrame = PTDetectInfo.Builder.access$2600(paramBuilder);
+    this.randomGroupValue = PTDetectInfo.Builder.access$2700(paramBuilder);
+    this.frameIndex = PTDetectInfo.Builder.access$2800(paramBuilder);
+    this.audioScaleFactor = PTDetectInfo.Builder.access$2900(paramBuilder);
+    this.redPacketPositions = PTDetectInfo.Builder.access$3000(paramBuilder);
+    this.needRender = PTDetectInfo.Builder.access$3100(paramBuilder);
     this.transformPoints = paramBuilder.transformPoints;
+    this.noCropFaceoffPoints = paramBuilder.noCropFaceoffPoints;
+    this.normalFaceoffPoints = paramBuilder.normalFaceoffPoints;
   }
 }
 

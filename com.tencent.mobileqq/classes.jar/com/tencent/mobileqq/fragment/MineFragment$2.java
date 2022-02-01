@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import atrh;
+import auwh;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public final class MineFragment$2
@@ -10,7 +10,7 @@ public final class MineFragment$2
   
   public void run()
   {
-    atrh.b(this.a);
+    auwh.b(this.a);
   }
 }
 

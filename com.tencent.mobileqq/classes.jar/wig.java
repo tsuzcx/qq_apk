@@ -1,18 +1,23 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import org.json.JSONObject;
 
-class wig
-  extends whj
+public class wig
 {
-  wig(wif paramwif, StoryVideoItem paramStoryVideoItem, wjl paramwjl)
-  {
-    super(paramStoryVideoItem);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Wjl.a = ((String)a("result"));
-    return true;
-  }
+  public int a;
+  public String a;
+  public JSONObject a;
+  public boolean a;
+  public int b;
+  public String b;
+  public JSONObject b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

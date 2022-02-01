@@ -3,10 +3,10 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apbh;
-import apbi;
-import apbj;
-import aqqf;
+import aqel;
+import aqem;
+import aqen;
+import artq;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class DynamicAvatar
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<DynamicAvatar> CREATOR = new aqqf();
+  public static final Parcelable.Creator<DynamicAvatar> CREATOR = new artq();
   public String basicBigUrl = "";
   public String basicMiddleUrl = "";
   public int basicOverdueTimeStamp;
@@ -54,68 +54,68 @@ public class DynamicAvatar
     this.playTimeStamp = paramParcel.readLong();
   }
   
-  public static DynamicAvatar convertFrom(apbh paramapbh)
+  public static DynamicAvatar convertFrom(aqel paramaqel)
   {
-    if (paramapbh == null) {
+    if (paramaqel == null) {
       return null;
     }
     DynamicAvatar localDynamicAvatar = new DynamicAvatar();
-    localDynamicAvatar.tinyId = paramapbh.b;
-    localDynamicAvatar.uin = paramapbh.jdField_a_of_type_Long;
-    localDynamicAvatar.getTimeStamp = paramapbh.jdField_a_of_type_Int;
-    if ((paramapbh.jdField_a_of_type_JavaUtilArrayList == null) || (paramapbh.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    localDynamicAvatar.tinyId = paramaqel.b;
+    localDynamicAvatar.uin = paramaqel.jdField_a_of_type_Long;
+    localDynamicAvatar.getTimeStamp = paramaqel.jdField_a_of_type_Int;
+    if ((paramaqel.jdField_a_of_type_JavaUtilArrayList == null) || (paramaqel.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
       QLog.i("Q.dynamicAvatar", 1, "convertFrom oneUinHeadInfo's headInfos is null.");
       return localDynamicAvatar;
     }
-    paramapbh = paramapbh.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (paramapbh.hasNext())
+    paramaqel = paramaqel.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramaqel.hasNext())
     {
-      Object localObject1 = (apbi)paramapbh.next();
+      Object localObject1 = (aqem)paramaqel.next();
       if (localObject1 != null)
       {
-        Object localObject2 = ((apbi)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        if (((apbi)localObject1).d == 17)
+        Object localObject2 = ((aqem)localObject1).jdField_a_of_type_JavaUtilArrayList;
+        if (((aqem)localObject1).d == 17)
         {
-          localDynamicAvatar.basicSetTimeStamp = ((apbi)localObject1).c;
-          localDynamicAvatar.basicOverdueTimeStamp = ((apbi)localObject1).b;
-          localDynamicAvatar.basicStaticUrl = ((apbi)localObject1).jdField_a_of_type_JavaLangString;
+          localDynamicAvatar.basicSetTimeStamp = ((aqem)localObject1).c;
+          localDynamicAvatar.basicOverdueTimeStamp = ((aqem)localObject1).b;
+          localDynamicAvatar.basicStaticUrl = ((aqem)localObject1).jdField_a_of_type_JavaLangString;
           if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
           {
             localObject1 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (apbj)((Iterator)localObject1).next();
+              localObject2 = (aqen)((Iterator)localObject1).next();
               if (localObject2 != null) {
-                if ((((apbj)localObject2).jdField_a_of_type_Int == 80) || (((apbj)localObject2).jdField_a_of_type_Int == 100)) {
-                  localDynamicAvatar.basicSmallUrl = ((apbj)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((apbj)localObject2).jdField_a_of_type_Int == 200) {
-                  localDynamicAvatar.basicMiddleUrl = ((apbj)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((apbj)localObject2).jdField_a_of_type_Int == 640) {
-                  localDynamicAvatar.basicBigUrl = ((apbj)localObject2).jdField_a_of_type_JavaLangString;
+                if ((((aqen)localObject2).jdField_a_of_type_Int == 80) || (((aqen)localObject2).jdField_a_of_type_Int == 100)) {
+                  localDynamicAvatar.basicSmallUrl = ((aqen)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((aqen)localObject2).jdField_a_of_type_Int == 200) {
+                  localDynamicAvatar.basicMiddleUrl = ((aqen)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((aqen)localObject2).jdField_a_of_type_Int == 640) {
+                  localDynamicAvatar.basicBigUrl = ((aqen)localObject2).jdField_a_of_type_JavaLangString;
                 }
               }
             }
           }
         }
-        else if (((apbi)localObject1).d == 18)
+        else if (((aqem)localObject1).d == 18)
         {
-          localDynamicAvatar.nearbySetTimeStamp = ((apbi)localObject1).c;
-          localDynamicAvatar.nearbyOverdueTimeStamp = ((apbi)localObject1).b;
-          localDynamicAvatar.nearbyStaticUrl = ((apbi)localObject1).jdField_a_of_type_JavaLangString;
+          localDynamicAvatar.nearbySetTimeStamp = ((aqem)localObject1).c;
+          localDynamicAvatar.nearbyOverdueTimeStamp = ((aqem)localObject1).b;
+          localDynamicAvatar.nearbyStaticUrl = ((aqem)localObject1).jdField_a_of_type_JavaLangString;
           if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
           {
             localObject1 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (apbj)((Iterator)localObject1).next();
+              localObject2 = (aqen)((Iterator)localObject1).next();
               if (localObject2 != null) {
-                if ((((apbj)localObject2).jdField_a_of_type_Int == 80) || (((apbj)localObject2).jdField_a_of_type_Int == 100)) {
-                  localDynamicAvatar.nearbySmallUrl = ((apbj)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((apbj)localObject2).jdField_a_of_type_Int == 200) {
-                  localDynamicAvatar.nearbyMiddleUrl = ((apbj)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((apbj)localObject2).jdField_a_of_type_Int == 640) {
-                  localDynamicAvatar.nearbyBigUrl = ((apbj)localObject2).jdField_a_of_type_JavaLangString;
+                if ((((aqen)localObject2).jdField_a_of_type_Int == 80) || (((aqen)localObject2).jdField_a_of_type_Int == 100)) {
+                  localDynamicAvatar.nearbySmallUrl = ((aqen)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((aqen)localObject2).jdField_a_of_type_Int == 200) {
+                  localDynamicAvatar.nearbyMiddleUrl = ((aqen)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((aqen)localObject2).jdField_a_of_type_Int == 640) {
+                  localDynamicAvatar.nearbyBigUrl = ((aqen)localObject2).jdField_a_of_type_JavaLangString;
                 }
               }
             }
@@ -174,7 +174,7 @@ public class DynamicAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.DynamicAvatar
  * JD-Core Version:    0.7.0.1
  */

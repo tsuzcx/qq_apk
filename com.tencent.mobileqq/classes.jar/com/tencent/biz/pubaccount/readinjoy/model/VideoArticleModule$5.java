@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import pwz;
+import qif;
 
 public class VideoArticleModule$5
   implements Runnable
 {
-  public VideoArticleModule$5(pwz parampwz, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
+  public VideoArticleModule$5(qif paramqif, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
   
   public void run()
   {

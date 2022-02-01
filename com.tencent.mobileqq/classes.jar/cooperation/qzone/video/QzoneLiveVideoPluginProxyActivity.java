@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import apoh;
-import bhlx;
-import bkkq;
-import bkkz;
+import aqrl;
+import biwn;
+import blvy;
+import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
@@ -93,21 +93,21 @@ public class QzoneLiveVideoPluginProxyActivity
           if (!"qzone_live_video_plugin.apk".equals(localObject)) {
             break label355;
           }
-          localObject = new bkkz(0);
-          ((bkkz)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((bkkz)localObject).e = paramString2;
-          ((bkkz)localObject).jdField_a_of_type_JavaLangClass = localClass;
-          ((bkkz)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-          ((bkkz)localObject).jdField_b_of_type_Int = paramInt;
-          ((bkkz)localObject).c = 15000;
-          ((bkkz)localObject).f = null;
-          ((bkkz)localObject).jdField_b_of_type_Boolean = false;
-          ((bkkz)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
-          ((bkkz)localObject).d = "QZoneLiveVideo";
+          localObject = new blwh(0);
+          ((blwh)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((blwh)localObject).e = paramString2;
+          ((blwh)localObject).jdField_a_of_type_JavaLangClass = localClass;
+          ((blwh)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+          ((blwh)localObject).jdField_b_of_type_Int = paramInt;
+          ((blwh)localObject).c = 15000;
+          ((blwh)localObject).f = null;
+          ((blwh)localObject).jdField_b_of_type_Boolean = false;
+          ((blwh)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
+          ((blwh)localObject).d = "QZoneLiveVideo";
           if (QLog.isColorLevel()) {
             QLog.d("PluginDebug", 2, "加载原始插件");
           }
-          bkkq.a(paramActivity, (bkkz)localObject);
+          blvy.a(paramActivity, (blwh)localObject);
         }
       }
     }
@@ -139,8 +139,8 @@ public class QzoneLiveVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bhlx.a(BaseApplicationImpl.getContext(), false, 5);
-    apoh.a(BaseApplicationImpl.getContext(), 2, false);
+    biwn.a(BaseApplicationImpl.getContext(), false, 5);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()

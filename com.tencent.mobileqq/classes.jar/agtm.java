@@ -1,27 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agtm
-  implements ValueAnimator.AnimatorUpdateListener
+class agtm
+  implements View.OnClickListener
 {
-  public agtm(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  agtm(agtf paramagtf, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
-    {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
-      return;
-      paramValueAnimator.leftMargin = i;
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("uinType", this.jdField_a_of_type_Agtf.a.curType);
+    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    aeow.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

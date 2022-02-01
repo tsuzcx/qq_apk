@@ -1,27 +1,63 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
+import android.util.Log;
+import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.AccountBaseInfo;
+import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LoginRsp;
+import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.TicketInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public class ayqa
-  extends RecyclerView.ViewHolder
+class ayqa
+  implements aypy
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public RoundRelativeLayout a;
-  public ImageView b;
+  ayqa(aypz paramaypz, ayqc paramayqc) {}
   
-  public ayqa(ayps paramayps, View paramView)
+  public void a(int paramInt, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379724));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368464));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)paramView.findViewById(2131363428));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369937));
-    this.b = ((ImageView)paramView.findViewById(2131368589));
+    Log.d("now_live_login_mgr", "login faile, errCode=" + paramInt + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_Ayqc != null) {
+      this.jdField_a_of_type_Ayqc.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (aypz.a(this.jdField_a_of_type_Aypz)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        Log.d("now_live_login_mgr", "login success");
+        LoginMergedProto.LoginRsp localLoginRsp = new LoginMergedProto.LoginRsp();
+        localLoginRsp.mergeFrom(paramArrayOfByte);
+        ayqe.a().a(localLoginRsp.account_base_info.uid.get());
+        ayqe.a().b(localLoginRsp.account_base_info.tinyid.get());
+        ayqe.a().a(localLoginRsp.tickets.auth_key.get());
+        paramArrayOfByte = this.jdField_a_of_type_Aypz;
+        if (localLoginRsp.result.get() != 0) {
+          break label185;
+        }
+        bool = true;
+        aypz.a(paramArrayOfByte, bool);
+        if (this.jdField_a_of_type_Ayqc == null) {
+          break;
+        }
+        this.jdField_a_of_type_Ayqc.a(localLoginRsp.result.get(), localLoginRsp.errMsg.get());
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        Log.d("now_live_login_mgr", "login parse exception, errMsg=" + paramArrayOfByte.getMessage());
+      }
+      if (this.jdField_a_of_type_Ayqc == null) {
+        break;
+      }
+      this.jdField_a_of_type_Ayqc.a(1000001, "login parse exception");
+      return;
+      label185:
+      boolean bool = false;
+    }
   }
 }
 

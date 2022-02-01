@@ -1,19 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class rlv
-  implements rhe
-{
-  public rlv(EditVideoFragment paramEditVideoFragment) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      rno.a(EditVideoFragment.a(this.a)).a(EditVideoFragment.a(this.a), true);
-    }
-    QLog.i("RIJUGC.EditVideoFragment", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$OnWatchWordCheck;", "", "checkWatchWord", "", "text", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rlv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

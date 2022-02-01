@@ -1,30 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class rhm
-  implements tdc
+  extends pvq
 {
-  public rhm(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public rhm(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  public void a(int paramInt)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    ComponentContentRecommendFollowList.6.1 local1 = new ComponentContentRecommendFollowList.6.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
-      odq.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", pay.h(), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
-      }
+      ThreadManager.getUIHandler().post(local1);
+      return;
     }
+    local1.run();
   }
 }
 

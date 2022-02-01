@@ -1,18 +1,47 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
 public class aktn
-  implements bbup
+  implements IRedPacket.OnGetAvailableListListener
 {
-  public aktn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aktn(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
     }
-    aktv.a(paramBoolean1);
-    NewFlowCameraActivity.b(this.a);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(anvx.a(2131715161));
+      }
+    }
+    do
+    {
+      return;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 

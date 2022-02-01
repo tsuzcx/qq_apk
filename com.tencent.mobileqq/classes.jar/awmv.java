@@ -1,15 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
 
-final class awmv
-  implements DialogInterface.OnClickListener
+public class awmv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  awmv(Activity paramActivity) {}
+  public awmv(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    awmq.a(this.a, 10);
+    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
+      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
+    }
   }
 }
 

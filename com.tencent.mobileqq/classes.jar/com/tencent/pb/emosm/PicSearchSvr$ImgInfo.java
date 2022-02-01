@@ -22,6 +22,7 @@ public final class PicSearchSvr$ImgInfo
   public final PBBytesField bytes_thumb_down_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_thumb_img_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_web_url = PBField.initBytes(ByteStringMicro.EMPTY);
+  public PicSearchSvr.EmotionInfo msg_emotion_info = new PicSearchSvr.EmotionInfo();
   public final PBUInt32Field uint32_img_height = PBField.initUInt32(0);
   public final PBUInt32Field uint32_img_width = PBField.initUInt32(0);
   public final PBUInt32Field uint32_pack_id = PBField.initUInt32(0);
@@ -43,7 +44,7 @@ public final class PicSearchSvr$ImgInfo
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58, 64, 72, 82, 88, 98, 104, 114, 122, 130, 138, 144 }, new String[] { "bytes_resource_id", "bytes_img_md5", "uint32_img_width", "uint32_img_height", "bytes_img_down_url", "uint64_img_size", "bytes_thumb_img_md5", "uint32_thumb_img_width", "uint32_thumb_img_height", "bytes_thumb_down_url", "uint64_thumb_size", "bytes_img_other", "uint32_src_type", "bytes_src_desc", "bytes_web_url", "bytes_icon_url", "bytes_pack_name", "uint32_pack_id" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, Integer.valueOf(0) }, ImgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58, 64, 72, 82, 88, 98, 104, 114, 122, 130, 138, 144, 154 }, new String[] { "bytes_resource_id", "bytes_img_md5", "uint32_img_width", "uint32_img_height", "bytes_img_down_url", "uint64_img_size", "bytes_thumb_img_md5", "uint32_thumb_img_width", "uint32_thumb_img_height", "bytes_thumb_down_url", "uint64_thumb_size", "bytes_img_other", "uint32_src_type", "bytes_src_desc", "bytes_web_url", "bytes_icon_url", "bytes_pack_name", "uint32_pack_id", "msg_emotion_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, Integer.valueOf(0), null }, ImgInfo.class);
   }
 }
 

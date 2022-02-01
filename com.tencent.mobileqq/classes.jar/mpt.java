@@ -1,25 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraUtils;
 
-class mpt
-  extends mcc
+public class mpt
+  extends mri
 {
-  mpt(mpp parammpp) {}
+  public lfk a;
+  public ljr a;
+  public mcx a;
   
-  protected void b(mcg parammcg)
+  mpt(mqb parammqb)
   {
-    if (parammcg.jdField_b_of_type_Boolean) {
-      return;
-    }
-    parammcg.jdField_b_of_type_Boolean = this.a.a(false, 2);
-    if (parammcg.jdField_b_of_type_Boolean) {
-      parammcg.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammcg.jdField_b_of_type_Boolean + "]");
+    super(parammqb);
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Ljr = new mpu(this);
+    this.jdField_a_of_type_Lfk = new mpv(this);
+    this.jdField_a_of_type_Mcx = new mpw(this);
+    CameraUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication()).a(this.jdField_a_of_type_Ljr);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lfk);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mcx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpt
  * JD-Core Version:    0.7.0.1
  */

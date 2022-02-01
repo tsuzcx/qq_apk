@@ -1,93 +1,106 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ICmdListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IRewardVideoAdListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bknk
+class bknk
+  implements AdProxy.ICmdListener
 {
-  private bknm jdField_a_of_type_Bknm;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  bknk(bknj parambknj) {}
   
-  public bknk(QQAppInterface paramQQAppInterface)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-    this.jdField_a_of_type_Bknm = new bknm(paramQQAppInterface);
-  }
-  
-  private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
-  {
-    paramHandler = new SendMsg(paramString);
-    paramString = paramBundle;
-    if (paramBundle == null) {
-      paramString = new Bundle();
+    int j = 1;
+    QLog.i("AdProxyImpl", 1, "onCmdListener");
+    if ((!paramBoolean) || (paramJSONObject == null)) {
+      if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null) {
+        this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+      }
     }
-    if ((paramString != null) && (paramString.size() > 0)) {
-      paramHandler.a.putAll(paramString);
-    }
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    paramHandler.a(i);
-    if (paramLong > 0L) {
-      paramHandler.a(paramLong);
-    }
-    try
+    for (;;)
     {
-      this.jdField_a_of_type_Bknm.a(paramHandler);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      throw new RuntimeException("sendMsg is fail", paramString);
-    }
-  }
-  
-  public int a(String paramString, Bundle paramBundle)
-  {
-    try
-    {
-      int i = a(paramString, paramBundle, null, 0L);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -1;
-  }
-  
-  public void a()
-  {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if (localPluginCommunicationHandler == null)
-    {
-      QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
       return;
+      int i;
+      String str;
+      try
+      {
+        i = paramJSONObject.getInt("retCode");
+        str = paramJSONObject.getString("errMsg");
+        paramJSONObject = paramJSONObject.getString("response");
+        if ((i != 0) || (TextUtils.isEmpty(paramJSONObject))) {
+          break label357;
+        }
+        if (new JSONObject(paramJSONObject).optInt("ret", -1) != 102006) {
+          break label167;
+        }
+        QLog.e("AdProxyImpl", 1, "mockAdJson failed ret == 102006");
+        if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener == null) {
+          continue;
+        }
+        this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
+        return;
+      }
+      catch (JSONException paramJSONObject) {}
+      if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null)
+      {
+        this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        return;
+        label167:
+        str = AdProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject);
+        paramJSONObject = null;
+        if (!TextUtils.isEmpty(str)) {
+          paramJSONObject = AdProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, str);
+        }
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = new GdtAd(paramJSONObject);
+          if (paramJSONObject.isValid())
+          {
+            acam.a().a(paramJSONObject);
+            bknj localbknj = this.a;
+            i = j;
+            if (this.a.c == 90) {
+              i = 0;
+            }
+            localbknj.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = bkqx.a(paramJSONObject, str, i);
+            if (this.a.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData != null)
+            {
+              if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null) {
+                this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onADLoad();
+              }
+              AdProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, str, this.a.b);
+              bkpa.a(this.a.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.adId + "");
+            }
+          }
+        }
+        else
+        {
+          QLog.e("AdProxyImpl", 1, "adInfo is null");
+          return;
+          label357:
+          j = PluginConst.AdConst.getRetCodeByServerResult(i);
+          if (j != -1) {
+            i = j;
+          }
+          while (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null)
+          {
+            this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(i, str);
+            return;
+          }
+        }
+      }
     }
-    localPluginCommunicationHandler.register(new bknl(this, "qlink.notify"));
   }
-  
-  public void a(long paramLong) {}
-  
-  public boolean a(long paramLong1, int paramInt, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    return true;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte)
-  {
-    return true;
-  }
-  
-  public void b(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknk
  * JD-Core Version:    0.7.0.1
  */

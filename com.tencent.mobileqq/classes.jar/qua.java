@@ -1,18 +1,91 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class qua
-  implements View.OnClickListener
+  extends ViewBase
 {
-  public qua(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo) {}
+  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new qub(this);
+  private NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
+  private pta jdField_a_of_type_Pta;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public qua(VafContext paramVafContext)
   {
-    ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver() != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Pta != null) {
+      this.jdField_a_of_type_Pta.resumeAnimation();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Pta != null) {
+      this.jdField_a_of_type_Pta.pauseAnimation();
+    }
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setBackgroundColor(this.mBackground);
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    }
+    try
+    {
+      this.jdField_a_of_type_Pta = pta.a(paramString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_Pta);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("ReadInJoyLottieView", 1, paramString.getMessage());
+    }
+    return true;
   }
 }
 

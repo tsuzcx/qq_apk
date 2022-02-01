@@ -1,22 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class amxh
-  extends BroadcastReceiver
+class amxh
+  extends anvi
 {
-  public amxh(PeakAppInterface paramPeakAppInterface) {}
+  amxh(amxg paramamxg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+    }
+    if ((amxg.a(this.a) != null) && (amxg.a(this.a).get(paramString + "nick") != null))
     {
-      int i = paramIntent.getIntExtra("rsptype", 0);
-      paramContext = paramIntent.getByteArrayExtra("rspbody");
-      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
-      ((baig)this.a.a(0)).a(i, paramContext);
+      int i = ((Integer)amxg.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
     }
   }
 }

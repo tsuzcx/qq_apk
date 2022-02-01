@@ -1,12 +1,12 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
-import bhzm;
-import bhzq;
-import bibw;
-import biby;
-import bicl;
-import bicn;
+import bjko;
+import bjks;
+import bjmy;
+import bjna;
+import bjnn;
+import bjnp;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
@@ -15,46 +15,46 @@ import oicq.wlogin_sdk.tools.util;
 public class MyAppApi$11$1
   implements Runnable
 {
-  public MyAppApi$11$1(bicn parambicn, byte[] paramArrayOfByte, String paramString) {}
+  public MyAppApi$11$1(bjnp parambjnp, byte[] paramArrayOfByte, String paramString) {}
   
   public void run()
   {
     boolean bool2 = false;
-    this.jdField_a_of_type_Bicn.jdField_a_of_type_Bhzq.a();
+    this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjks.a();
     for (;;)
     {
       boolean bool3;
       try
       {
-        Object localObject = this.jdField_a_of_type_Bicn.jdField_a_of_type_Bicl.a(this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Bicn.jdField_a_of_type_AndroidOsBundle);
-        biby.a().e((DownloadInfo)localObject);
+        Object localObject = this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjnn.a(this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Bjnp.jdField_a_of_type_AndroidOsBundle);
+        bjna.a().e((DownloadInfo)localObject);
         if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
         {
           localObject = new StringBuilder();
-          this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
-          this.jdField_a_of_type_Bicn.jdField_a_of_type_Bicl.d = this.jdField_a_of_type_Bicn.jdField_a_of_type_Long;
+          this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
+          this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjnn.d = this.jdField_a_of_type_Bjnp.jdField_a_of_type_Long;
         }
-        bhzm.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        bhzm.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
-        if (this.jdField_a_of_type_Bicn.jdField_a_of_type_Bicl.a() <= 2)
+        bjko.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
+        bjko.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
+        if (this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjnn.a() <= 2)
         {
-          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Bicn.jdField_a_of_type_Bicl.a()).startToDownloadTaskList(this.jdField_a_of_type_Bicn.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Bicn.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bicn.b);
+          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjnn.a()).startToDownloadTaskList(this.jdField_a_of_type_Bjnp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Bjnp.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bjnp.b);
           return;
         }
-        int i = this.jdField_a_of_type_Bicn.jdField_a_of_type_AndroidOsBundle.getInt(bibw.k);
-        int j = this.jdField_a_of_type_Bicn.jdField_a_of_type_Bicl.a(this.jdField_a_of_type_Bicn.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.jdField_a_of_type_Bicn.jdField_a_of_type_Boolean;
-        bool3 = this.jdField_a_of_type_Bicn.b;
+        int i = this.jdField_a_of_type_Bjnp.jdField_a_of_type_AndroidOsBundle.getInt(bjmy.k);
+        int j = this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjnn.a(this.jdField_a_of_type_Bjnp.jdField_a_of_type_AndroidOsBundle);
+        boolean bool1 = this.jdField_a_of_type_Bjnp.jdField_a_of_type_Boolean;
+        bool3 = this.jdField_a_of_type_Bjnp.b;
         if (i == 3)
         {
           bool1 = false;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Bicn.jdField_a_of_type_Bicl.a()).startToDownloadTaskList(this.jdField_a_of_type_Bicn.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bicn.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
+          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Bjnp.jdField_a_of_type_Bjnn.a()).startToDownloadTaskList(this.jdField_a_of_type_Bjnp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjnp.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
           return;
         }
       }
       catch (Exception localException)
       {
-        bhzm.b("MyAppApi", "startToAppDetail err", localException);
+        bjko.b("MyAppApi", "startToAppDetail err", localException);
         return;
       }
       bool2 = bool3;

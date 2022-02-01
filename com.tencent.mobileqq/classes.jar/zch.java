@@ -1,15 +1,25 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerView;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Set;
 
 public class zch
-  implements zbv
 {
-  public zch(RecommendBannerView paramRecommendBannerView) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public static void a(@NonNull String paramString, Bundle paramBundle)
   {
-    if (paramBoolean) {
-      RecommendBannerView.a(this.a, paramInt);
+    if (paramBundle == null)
+    {
+      ykq.b(paramString, ", logBundleDetails : null");
+      return;
     }
+    ykq.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ykq.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    }
+    ykq.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
 }
 

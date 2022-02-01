@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import bfzd;
-import bfzf;
+import bhhv;
+import bhhx;
 
 class QQCustomDialogWtihEmoticonInput$1
-  implements bfzf
+  implements bhhx
 {
   QQCustomDialogWtihEmoticonInput$1(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
   public void onShowed(int paramInt, boolean paramBoolean)
   {
-    QQCustomDialogWtihEmoticonInput.access$002(this.this$0, bfzd.a(paramInt));
+    QQCustomDialogWtihEmoticonInput.access$002(this.this$0, bhhv.a(paramInt));
     this.this$0.mWindowParams.height = QQCustomDialogWtihEmoticonInput.access$000(this.this$0);
   }
 }

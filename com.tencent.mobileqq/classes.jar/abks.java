@@ -1,10 +1,14 @@
-import com.tencent.open.base.MD5Utils;
-
 public class abks
 {
-  public static String a(long paramLong1, long paramLong2, int paramInt)
+  public int a;
+  public long a;
+  public String a;
+  
+  public abks(abkq paramabkq, String paramString, int paramInt, long paramLong)
   {
-    return MD5Utils.toMD5(String.format("%s_%d_%d_%d", new Object[] { "!@#$%qboi!@#^&*m13=4aa22", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) })).toLowerCase();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

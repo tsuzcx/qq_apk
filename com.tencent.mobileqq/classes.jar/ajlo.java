@@ -1,25 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
-public class ajlo
-  implements DialogInterface.OnClickListener
+class ajlo
+  extends amgz
 {
-  public ajlo(BindNumberActivity paramBindNumberActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      this.a.a("CliOper", "0X8005DE9", 1);
-    }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      this.a.a("CliOper", "0X8005DE9", 2);
-    }
-  }
+  public Button a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

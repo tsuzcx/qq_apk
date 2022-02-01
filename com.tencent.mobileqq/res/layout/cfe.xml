@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/n21" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center" android:id="@id/kqo" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-</LinearLayout>
+<RelativeLayout android:background="@drawable/f8j" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbh"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mmn" android:layout_width="@dimen/bbi" android:layout_height="@dimen/bbi" android:layout_centerInParent="true" app:qqArMapGuideRadius="6">
+        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+        <ImageView android:id="@id/npd" android:background="@drawable/f8i" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f29" android:scaleType="center" />
+        <ImageView android:layout_gravity="right" android:id="@id/o22" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f37" />
+        <ImageView android:layout_gravity="right" android:id="@id/o23" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f38" />
+        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+</RelativeLayout>

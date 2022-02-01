@@ -101,7 +101,7 @@ public class TNNStyleChildInitializer
     return this.tnnGenderSwitch.averageFaceColorUsingFacePoints(paramBitmap, arrayOfFloat1, arrayOfFloat2);
   }
   
-  public float[] computeFaceCropTransform(List<PointF> paramList, int paramInt1, float paramFloat, float[] paramArrayOfFloat, int paramInt2, int paramInt3)
+  public float[] computeFaceCropTransform(List<PointF> paramList, int paramInt1, float paramFloat, float[] paramArrayOfFloat1, int paramInt2, int paramInt3, float[] paramArrayOfFloat2)
   {
     float[] arrayOfFloat1 = new float[paramList.size()];
     float[] arrayOfFloat2 = new float[paramList.size()];
@@ -112,7 +112,7 @@ public class TNNStyleChildInitializer
       arrayOfFloat2[i] = ((PointF)paramList.get(i)).y;
       i += 1;
     }
-    return this.tnnGenderSwitch.computeFaceCropTransform(arrayOfFloat1, arrayOfFloat2, paramInt1, paramFloat, paramArrayOfFloat, paramInt2, paramInt3);
+    return this.tnnGenderSwitch.computeFaceCropTransform(arrayOfFloat1, arrayOfFloat2, paramInt1, paramFloat, paramArrayOfFloat1, paramInt2, paramInt3, paramArrayOfFloat2);
   }
   
   public int convertBitmapToFloat(int paramInt, Bitmap paramBitmap, float[] paramArrayOfFloat)

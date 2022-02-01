@@ -1,69 +1,7 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import kotlin.Metadata;
 
-public class boeb
-{
-  private static float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-  public int a;
-  public boec a;
-  private boed jdField_a_of_type_Boed;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private AtomicInteger b;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(0);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boed != null)
-    {
-      this.jdField_a_of_type_Boed.a();
-      return;
-    }
-    b();
-  }
-  
-  public void a(int paramInt, Object paramObject, boolean paramBoolean)
-  {
-    boolean bool = true;
-    boec localboec = this.jdField_a_of_type_Boec;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      localboec.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Boec.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Boec.b = paramBoolean;
-      return;
-      bool = false;
-    }
-  }
-  
-  public int b()
-  {
-    return this.b.getAndSet(1);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
-  }
-  
-  public int c()
-  {
-    return this.b.getAndAdd(0);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(2);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter$Companion;", "", "()V", "TYPE_ITEM", "", "TYPE_SPACING", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class boeb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

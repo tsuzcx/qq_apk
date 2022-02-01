@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afcf;
-import afcg;
+import aftl;
+import aftm;
+import ahvd;
+import ahvf;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
@@ -10,8 +12,6 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-import ayfo;
-import ayfp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -30,7 +30,7 @@ public class PanelAdapter
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PanelRecycleBin jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin = new PanelRecycleBin();
-  private ArrayList<ayfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ahvd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private int b = 2;
   
@@ -42,8 +42,8 @@ public class PanelAdapter
   
   private int a(RecyclerView paramRecyclerView)
   {
-    if ((paramRecyclerView.getTag() instanceof afcg)) {
-      return afcg.b((afcg)paramRecyclerView.getTag());
+    if ((paramRecyclerView.getTag() instanceof aftm)) {
+      return aftm.b((aftm)paramRecyclerView.getTag());
     }
     return 0;
   }
@@ -55,42 +55,42 @@ public class PanelAdapter
     a(paramRecyclerView, paramInt);
     List localList = a(paramInt);
     Object localObject = paramRecyclerView.getAdapter();
-    if ((localObject instanceof ayfp))
+    if ((localObject instanceof ahvf))
     {
-      paramRecyclerView = (ayfp)localObject;
+      paramRecyclerView = (ahvf)localObject;
       paramRecyclerView.a(localList);
       paramRecyclerView.notifyDataSetChanged();
       return;
     }
-    localObject = new ayfp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-    ((ayfp)localObject).a(localList);
+    localObject = new ahvf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+    ((ahvf)localObject).a(localList);
     paramRecyclerView.setAdapter((RecyclerView.Adapter)localObject);
   }
   
   private void a(RecyclerView paramRecyclerView)
   {
-    if ((paramRecyclerView.getTag() instanceof afcg))
+    if ((paramRecyclerView.getTag() instanceof aftm))
     {
-      paramRecyclerView.setTag(new afcg(afcg.b((afcg)paramRecyclerView.getTag()), XPanelContainer.d, null));
+      paramRecyclerView.setTag(new aftm(aftm.b((aftm)paramRecyclerView.getTag()), XPanelContainer.d, null));
       return;
     }
-    paramRecyclerView.setTag(new afcg(0, XPanelContainer.d, null));
+    paramRecyclerView.setTag(new aftm(0, XPanelContainer.d, null));
   }
   
   private void a(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramRecyclerView.getTag() instanceof afcg))
+    if ((paramRecyclerView.getTag() instanceof aftm))
     {
-      paramRecyclerView.setTag(new afcg(paramInt, afcg.a((afcg)paramRecyclerView.getTag()), null));
+      paramRecyclerView.setTag(new aftm(paramInt, aftm.a((aftm)paramRecyclerView.getTag()), null));
       return;
     }
-    paramRecyclerView.setTag(new afcg(paramInt, 0, null));
+    paramRecyclerView.setTag(new aftm(paramInt, 0, null));
   }
   
   private int b(RecyclerView paramRecyclerView)
   {
-    if ((paramRecyclerView.getTag() instanceof afcg)) {
-      return afcg.a((afcg)paramRecyclerView.getTag());
+    if ((paramRecyclerView.getTag() instanceof aftm)) {
+      return aftm.a((aftm)paramRecyclerView.getTag());
     }
     return 0;
   }
@@ -100,7 +100,7 @@ public class PanelAdapter
     return this.jdField_a_of_type_Int;
   }
   
-  public List<ayfo> a(int paramInt)
+  public List<ahvd> a(int paramInt)
   {
     int i = this.jdField_a_of_type_Int * this.b;
     paramInt = i * paramInt;
@@ -145,7 +145,7 @@ public class PanelAdapter
     this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
   }
   
-  void a(ArrayList<ayfo> paramArrayList)
+  void a(ArrayList<ahvd> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -196,7 +196,7 @@ public class PanelAdapter
         localRecyclerView2 = new RecyclerView(this.jdField_a_of_type_AndroidContentContext, null);
         a(localRecyclerView2);
         localRecyclerView2.setOverScrollMode(2);
-        localRecyclerView2.setLayoutManager(new afcf(this, this.jdField_a_of_type_AndroidContentContext, a()));
+        localRecyclerView2.setLayoutManager(new aftl(this, this.jdField_a_of_type_AndroidContentContext, a()));
       }
       a(paramInt, localRecyclerView2);
       if ((localRecyclerView2.getParent() != paramView) && (paramInt < getCount())) {
@@ -213,7 +213,7 @@ public class PanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PanelAdapter
  * JD-Core Version:    0.7.0.1
  */

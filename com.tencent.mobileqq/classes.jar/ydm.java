@@ -1,18 +1,13 @@
-class ydm
-  implements vwt
+public abstract interface ydm
+  extends yci<ycz>
 {
-  ydm(ydh paramydh, ydu paramydu) {}
+  public abstract void a(String paramString);
   
-  public void a(boolean paramBoolean, vwp paramvwp)
-  {
-    xvv.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramvwp != null))
-    {
-      this.jdField_a_of_type_Ydh.a(paramvwp.b, paramvwp.a, this.jdField_a_of_type_Ydu);
-      return;
-    }
-    xvv.e("DoodleEmojiManager", "onLbsUpdate failed.");
-  }
+  public abstract void a(yeb paramyeb);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void f();
 }
 
 

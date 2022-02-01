@@ -1,23 +1,34 @@
 package com.tencent.mobileqq.app.message;
 
 import OnlinePushPack.MsgInfo;
-import android.util.Pair;
-import anld;
+import aonw;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class DiscMessageProcessor$2
   implements Runnable
 {
-  public DiscMessageProcessor$2(anld paramanld, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
+  public DiscMessageProcessor$2(aonw paramaonw, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Long != this.jdField_b_of_type_Long)
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
     {
-      anld.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_b_of_type_Long, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
-      return;
+      this.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(this.jdField_a_of_type_Long));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "陌生人uin包括自己,移出");
+      }
     }
-    anld.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Long, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e, false);
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaUtilArrayList.size() * 8);
+      aonw.a(this.this$0, localStringBuilder, this.jdField_a_of_type_JavaUtilArrayList, this.b);
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
+      }
+      aonw.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
+    }
   }
 }
 

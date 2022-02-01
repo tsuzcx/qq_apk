@@ -1,32 +1,46 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aqtt
+  implements aqul
 {
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
+  public aqtt(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public aqtt(DataReportViewer paramDataReportViewer, View paramView)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378148));
-    this.b = ((TextView)paramView.findViewById(2131370532));
-    this.c = ((TextView)paramView.findViewById(2131377919));
-    this.d = ((TextView)paramView.findViewById(2131361958));
-    this.e = ((TextView)paramView.findViewById(2131372039));
-    this.f = ((TextView)paramView.findViewById(2131376355));
-    this.g = ((TextView)paramView.findViewById(2131375825));
-    this.h = ((TextView)paramView.findViewById(2131375826));
-    this.i = ((TextView)paramView.findViewById(2131375827));
-    this.j = ((TextView)paramView.findViewById(2131375828));
+    return this.a.jdField_a_of_type_Int;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
+      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
+      {
+        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
+          return "----";
+        }
+        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
+        return str;
+      }
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      }
+    }
+    return "";
   }
 }
 

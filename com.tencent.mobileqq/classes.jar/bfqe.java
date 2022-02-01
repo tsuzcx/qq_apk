@@ -1,13 +1,23 @@
-import android.view.Choreographer.FrameCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bfqe
-  implements Choreographer.FrameCallback
+  implements View.OnClickListener
 {
-  bfqe(bfqd parambfqd) {}
+  bfqe(bfqc parambfqc, CheckBox paramCheckBox) {}
   
-  public void doFrame(long paramLong)
+  public void onClick(View paramView)
   {
-    bfqd.a(this.a, paramLong);
+    CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

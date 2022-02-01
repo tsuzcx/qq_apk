@@ -1,9 +1,9 @@
 package com.tencent.msfmqpsdkbridge;
 
 import android.text.TextUtils;
-import bhol;
-import bhom;
-import bhon;
+import bize;
+import bizf;
+import bizg;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,10 +16,10 @@ import java.util.Set;
 
 public class MSFNetTransportProvider
   extends BusinessHandler
-  implements bhol
+  implements bize
 {
-  private Map<String, bhom> mCodecMap;
-  private Map<String, bhon> mEventListenerMap;
+  private Map<String, bizf> mCodecMap;
+  private Map<String, bizg> mEventListenerMap;
   private Map<String, String> mServiceNameMap = new LinkedHashMap();
   
   public MSFNetTransportProvider(QQAppInterface paramQQAppInterface)
@@ -30,7 +30,7 @@ public class MSFNetTransportProvider
     this.mServiceNameMap.put("SecCheckSigSvc.UploadReq", "sig_check");
   }
   
-  public bhom getCodec(String paramString)
+  public bizf getCodec(String paramString)
   {
     if (this.mCodecMap == null) {
       this.mCodecMap = new LinkedHashMap();
@@ -38,7 +38,7 @@ public class MSFNetTransportProvider
     Object localObject2;
     if (this.mCodecMap.containsKey(paramString))
     {
-      localObject2 = (bhom)this.mCodecMap.get(paramString);
+      localObject2 = (bizf)this.mCodecMap.get(paramString);
       return localObject2;
     }
     Object localObject1;
@@ -97,7 +97,7 @@ public class MSFNetTransportProvider
         } while (!this.mServiceNameMap.containsKey(paramObject));
         paramObject = (String)this.mServiceNameMap.get(paramObject);
       } while (!this.mEventListenerMap.containsKey(paramObject));
-      paramObject = (bhon)this.mEventListenerMap.get(paramObject);
+      paramObject = (bizg)this.mEventListenerMap.get(paramObject);
     } while (paramObject == null);
     paramObject.a(paramToServiceMsg, paramFromServiceMsg);
   }
@@ -110,16 +110,16 @@ public class MSFNetTransportProvider
     return 0;
   }
   
-  public void setNetTransportEventListener(String paramString, bhon parambhon)
+  public void setNetTransportEventListener(String paramString, bizg parambizg)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (parambhon == null) {
+    while (parambizg == null) {
       return;
     }
     if (this.mEventListenerMap == null) {
       this.mEventListenerMap = new LinkedHashMap();
     }
-    this.mEventListenerMap.put(paramString, parambhon);
+    this.mEventListenerMap.put(paramString, parambizg);
   }
 }
 

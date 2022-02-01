@@ -1,19 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnAttachStateChangeListener;
 
 class qre
-  implements View.OnClickListener
+  implements View.OnAttachStateChangeListener
 {
-  qre(qqy paramqqy) {}
+  qre(qrd paramqrd) {}
   
-  public void onClick(View paramView)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    if (qrd.a(this.a) != null)
+    {
+      qrd.a(this.a).b();
+      qrd.a(this.a, null);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (qrd.a(this.a) != null)
+    {
+      qrd.a(this.a).a();
+      qrd.a(this.a, null);
+    }
+    if (qrd.a(this.a) != null)
+    {
+      qrd.a(this.a).a();
+      qrd.a(this.a, null);
+    }
   }
 }
 

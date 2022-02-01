@@ -4,18 +4,18 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
-import qli;
+import qxn;
 
 public class ReadInJoyMSFService$1
   implements Runnable
 {
-  public ReadInJoyMSFService$1(qli paramqli, ToServiceMsg paramToServiceMsg, WeakReference paramWeakReference) {}
+  public ReadInJoyMSFService$1(qxn paramqxn, ToServiceMsg paramToServiceMsg, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    int i = qli.a(this.this$0);
+    int i = qxn.a(this.this$0);
     this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("seq", Integer.valueOf(i));
-    qli.a(this.this$0).put(Integer.valueOf(i), this.jdField_a_of_type_JavaLangRefWeakReference);
+    qxn.a(this.this$0).put(Integer.valueOf(i), this.jdField_a_of_type_JavaLangRefWeakReference);
   }
 }
 

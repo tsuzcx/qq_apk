@@ -1,16 +1,19 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 
-public abstract interface rso
+public final class rso
+  implements Parcelable.Creator<VideoColumnInfo>
 {
-  public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
+  public VideoColumnInfo a(Parcel paramParcel)
+  {
+    return new VideoColumnInfo(paramParcel);
+  }
   
-  public abstract void a(VideoInfo paramVideoInfo);
-  
-  public abstract void a(DragFrameLayout paramDragFrameLayout);
+  public VideoColumnInfo[] a(int paramInt)
+  {
+    return new VideoColumnInfo[paramInt];
+  }
 }
 
 

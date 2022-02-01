@@ -1,5 +1,7 @@
 package com.tencent.qapmsdk.socket;
 
+import android.support.annotation.NonNull;
+import com.tencent.qapmsdk.base.listener.IBaseListener;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.monitorplugin.QAPMMonitorPlugin;
 import com.tencent.qapmsdk.common.logger.Logger;
@@ -14,6 +16,8 @@ public class TrafficMonitor
   {
     return TrafficMonitor.a.e();
   }
+  
+  public void setListener(@NonNull IBaseListener paramIBaseListener) {}
   
   public void start()
   {

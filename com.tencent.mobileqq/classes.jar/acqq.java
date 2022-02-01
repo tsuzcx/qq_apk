@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acqq
-  implements DialogInterface.OnClickListener
+  implements acpi
 {
-  public acqq(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    boolean bool = true;
-    paramDialogInterface = this.a;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      AddRequestActivity.b(paramDialogInterface, bool);
-      bcef.b(this.a.app, "dc00898", "", "", "0X800B084", "0X800B084", 0, 0, "", "", "", "");
-      return;
-      bool = false;
-    }
+    ((PublicAccountHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).a(paramMsgType0x210.uSubMsgType, paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

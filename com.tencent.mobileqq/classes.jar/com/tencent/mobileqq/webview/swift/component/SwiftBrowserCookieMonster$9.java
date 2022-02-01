@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bgwf;
+import bigx;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -21,7 +21,7 @@ final class SwiftBrowserCookieMonster$9
             localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
             if (localObject1 != null)
             {
-              SwiftBrowserCookieMonster.a = new bgwf();
+              SwiftBrowserCookieMonster.a = new bigx();
               ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
             }
           }

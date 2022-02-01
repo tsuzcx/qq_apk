@@ -1,31 +1,22 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afjd
-  extends aubs
+public class afjd
+  implements TextWatcher
 {
-  afjd(afiw paramafiw) {}
+  private afjd(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
-      this.a.mTipsMgr.a(this.a.a, new Object[0]);
-    }
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
   
-  protected void b()
-  {
-    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
-      this.a.a.a();
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void c()
-  {
-    if ((((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
-      this.a.mTipsMgr.a();
-    }
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

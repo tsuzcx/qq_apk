@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acob;
+import adej;
 
 public class AccountManageActivity$3$1
   implements Runnable
 {
-  public AccountManageActivity$3$1(acob paramacob) {}
+  public AccountManageActivity$3$1(adej paramadej) {}
   
   public void run()
   {

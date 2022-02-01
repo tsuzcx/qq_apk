@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bbrm;
-import bbrn;
+import bcyg;
+import bcyh;
 import com.tencent.video.decode.ShortVideoSoLoad;
 import java.io.File;
 
@@ -19,7 +19,7 @@ final class VideoEnvironment$1
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }
-    String str2 = bbrm.a();
+    String str2 = bcyg.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int i = VideoEnvironment.access$200().length;
     int j;
@@ -42,8 +42,8 @@ final class VideoEnvironment$1
           localObject2 = arrayOfFile[k].getName();
           if ((!str2.equalsIgnoreCase((String)localObject2)) && (!VideoEnvironment.access$300((String)localObject2)))
           {
-            localObject3 = bbrm.a((String)localObject2);
-            m = ((bbrn)localObject3).a();
+            localObject3 = bcyg.a((String)localObject2);
+            m = ((bcyh)localObject3).a();
             if (m == 0) {
               break label306;
             }
@@ -55,7 +55,7 @@ final class VideoEnvironment$1
           }
         }
         label306:
-        localObject3 = ((bbrn)localObject3).b();
+        localObject3 = ((bcyh)localObject3).b();
       }
     }
     label506:

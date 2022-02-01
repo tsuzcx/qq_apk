@@ -1,14 +1,17 @@
-import android.view.View;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import cooperation.wadl.ipc.WadlResult;
 
-public abstract interface aprr
+public class aprr
+  implements apry
 {
-  public abstract void a();
+  aprr(aprm paramaprm) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void b();
+  public void a(WadlResult paramWadlResult)
+  {
+    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+  }
 }
 
 

@@ -1,8 +1,18 @@
-class yiw
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
+
+public class yiw
 {
-  int jdField_a_of_type_Int;
-  yiu jdField_a_of_type_Yiu;
-  yiv jdField_a_of_type_Yiv;
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final vxg a;
+  
+  public yiw(List<LocalMediaInfo> paramList, int paramInt, vxg paramvxg)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Vxg = paramvxg;
+  }
 }
 
 

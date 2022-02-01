@@ -2,37 +2,62 @@ package com.tencent.weseevideo.editor.sticker;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Paint.Join;
 import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View.OnTouchListener;
-import com.tencent.tavcut.R.drawable;
+import com.tencent.autotemplate.filter.GaosiBlurFilter;
+import com.tencent.autotemplate.filter.ScaleTextureFilter;
+import com.tencent.tav.coremedia.CGRect;
+import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tavcut.session.config.StickerEditViewIconConfig;
+import com.tencent.tavkit.ciimage.CIContext;
+import com.tencent.tavkit.ciimage.CIImage;
+import com.tencent.tavkit.ciimage.TAVGLUtils;
+import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
+import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.utils.TAVStickerUtil;
+import com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager;
+import com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager.SourceImageObserver;
 import com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt;
 import com.tencent.weseevideo.editor.sticker.view.WsStickerEditView;
+import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.locks.ReentrantLock;
 import org.jetbrains.annotations.NotNull;
 import org.libpag.PAGView;
 
 class BlurStickerEditView
   extends WsStickerEditView
+  implements WSOverLayBlurManager.SourceImageObserver
 {
   private static final String TAG = "BlurStickerEditView";
+  private volatile Bitmap bgBitmap;
   private Paint blurBgPaint = new Paint();
   private Paint blurTextPaint = new Paint();
+  private GaosiBlurFilter hBlurFilter = new GaosiBlurFilter(true, 10);
+  CountDownLatch latch = new CountDownLatch(0);
+  ReentrantLock lock = new ReentrantLock();
+  private Handler playerThreadHandler;
+  private ScaleTextureFilter scaleBigTextureFilter = new ScaleTextureFilter();
+  private ScaleTextureFilter scaleSmallTextureFilter = new ScaleTextureFilter();
   private String textPngPath;
+  private HashMap<String, TextureInfo> textureMap = new HashMap();
   private String texturePngPath;
+  private GaosiBlurFilter vBlurFilter = new GaosiBlurFilter(false, 10);
   private float xScale = -1.0F;
   private float xScaleMax = 0.0F;
   private float xScaleMin = 0.0F;
@@ -51,53 +76,53 @@ class BlurStickerEditView
   {
     try
     {
-      Object localObject2 = BitmapFactory.decodeFile(this.texturePngPath);
-      Object localObject3 = BitmapFactory.decodeFile(this.textPngPath);
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = BitmapFactory.decodeResource(getResources(), R.drawable.blur_texture);
-      }
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = BitmapFactory.decodeResource(getResources(), R.drawable.blur_text);
-      }
-      localObject3 = getStickerRectF();
-      Log.d("btn_pos", "drawBlurBgTexture: rectF = " + ((RectF)localObject3).toShortString());
-      if (localObject1 != null)
+      Object localObject = getStickerRectF();
+      if (this.bgBitmap != null)
       {
-        localObject1 = new BitmapShader((Bitmap)localObject1, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        this.blurBgPaint.setShader((Shader)localObject1);
-        paramCanvas.drawRoundRect((RectF)localObject3, this.STICKER_CORNER_RADIUS, this.STICKER_CORNER_RADIUS, this.blurBgPaint);
-      }
-      if (localObject2 != null)
-      {
-        localObject1 = new RectF();
-        float f = ((Bitmap)localObject2).getHeight() * 1.0F / ((Bitmap)localObject2).getWidth();
-        if (((RectF)localObject3).height() * 1.0F / ((RectF)localObject3).width() > f)
-        {
-          f *= ((RectF)localObject3).width();
-          ((RectF)localObject1).left = ((RectF)localObject3).left;
-          ((RectF)localObject1).right = ((RectF)localObject3).right;
-          ((RectF)localObject1).top = (((RectF)localObject3).centerY() - f / 2.0F);
-          ((RectF)localObject1).bottom = (((RectF)localObject3).centerY() + f / 2.0F);
+        BitmapShader localBitmapShader = new BitmapShader(this.bgBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        this.blurBgPaint.setShader(localBitmapShader);
+        paramCanvas.drawRoundRect((RectF)localObject, this.STICKER_CORNER_RADIUS, this.STICKER_CORNER_RADIUS, this.blurBgPaint);
+        if (this.playerThreadHandler != null) {
+          this.playerThreadHandler.post(new BlurStickerEditView.1(this));
         }
-        for (;;)
+      }
+      else
+      {
+        Log.e("BlurStickerEditView", "drawBlurBgTexture: 模糊纹理为空！");
+        paramCanvas = WSOverLayBlurManager.getInstance().getSourceCIImage();
+        localObject = WSOverLayBlurManager.getInstance().getRenderInfo();
+        if (this.playerThreadHandler != null)
         {
-          paramCanvas.drawBitmap((Bitmap)localObject2, null, (RectF)localObject1, this.blurTextPaint);
+          this.playerThreadHandler.post(new BlurStickerEditView.2(this, paramCanvas, (RenderInfo)localObject));
           return;
-          f = ((RectF)localObject3).height() / f;
-          ((RectF)localObject1).top = ((RectF)localObject3).top;
-          ((RectF)localObject1).bottom = ((RectF)localObject3).bottom;
-          ((RectF)localObject1).left = (((RectF)localObject3).centerX() - f / 2.0F);
-          ((RectF)localObject1).right = (((RectF)localObject3).centerX() + f / 2.0F);
         }
       }
-      return;
     }
     catch (Exception paramCanvas)
     {
       Log.e("BlurStickerEditView", "updateBgPaint: " + paramCanvas.toString());
     }
+  }
+  
+  private TextureInfo extractTextureInfoFromCIImage(CIImage paramCIImage, RenderInfo paramRenderInfo)
+  {
+    return paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage, getCacheTextureInfo((int)paramCIImage.getSize().width, (int)paramCIImage.getSize().height));
+  }
+  
+  private TextureInfo getCacheTextureInfo(int paramInt1, int paramInt2)
+  {
+    String str = paramInt1 + "_" + paramInt2;
+    TextureInfo localTextureInfo1 = null;
+    if (this.textureMap.containsKey(str)) {
+      localTextureInfo1 = (TextureInfo)this.textureMap.get(str);
+    }
+    TextureInfo localTextureInfo2 = localTextureInfo1;
+    if (localTextureInfo1 == null)
+    {
+      localTextureInfo2 = CIContext.newTextureInfo(paramInt1, paramInt2);
+      this.textureMap.put(str, localTextureInfo2);
+    }
+    return localTextureInfo2;
   }
   
   @NotNull
@@ -111,11 +136,52 @@ class BlurStickerEditView
     return localRectF;
   }
   
+  private float handleScaleXLimit(float paramFloat)
+  {
+    float f = paramFloat;
+    if (this.xScaleMin > 0.0F)
+    {
+      f = paramFloat;
+      if (paramFloat < this.xScaleMin) {
+        f = this.xScaleMin;
+      }
+    }
+    paramFloat = f;
+    if (this.xScaleMax > 0.0F)
+    {
+      paramFloat = f;
+      if (f > this.xScaleMax) {
+        paramFloat = this.xScaleMax;
+      }
+    }
+    return paramFloat;
+  }
+  
+  private float handleScaleYLimit(float paramFloat)
+  {
+    float f = paramFloat;
+    if (this.yScaleMin > 0.0F)
+    {
+      f = paramFloat;
+      if (paramFloat < this.yScaleMin) {
+        f = this.yScaleMin;
+      }
+    }
+    paramFloat = f;
+    if (this.yScaleMax > 0.0F)
+    {
+      paramFloat = f;
+      if (f > this.yScaleMax) {
+        paramFloat = this.yScaleMax;
+      }
+    }
+    return paramFloat;
+  }
+  
   private void initBlurBgPaint()
   {
     this.blurBgPaint = new Paint();
     this.blurBgPaint.setAntiAlias(true);
-    this.blurBgPaint.setColor(this.sticker.getStrokeColor());
     this.blurTextPaint = new Paint();
     this.blurTextPaint.setAntiAlias(true);
   }
@@ -123,33 +189,42 @@ class BlurStickerEditView
   public void drawBorder(Canvas paramCanvas)
   {
     PointF[] arrayOfPointF = getOriginalVertexPoints();
-    if (arrayOfPointF == null) {
-      return;
-    }
-    if (arrayOfPointF.length >= 4)
+    if (arrayOfPointF == null) {}
+    do
     {
-      paramCanvas.save();
-      this.stickerMatrix.reset();
-      this.stickerMatrix.postTranslate(this.centerX - this.originalCenterX, this.centerY - this.originalCenterY);
-      this.stickerMatrix.postRotate(getSticker().getRotate(), this.centerX, this.centerY);
-      if (!this.sticker.getExtraBundle().getBoolean("key_sticker_lock_ratio")) {
-        break label217;
+      return;
+      if ((this.texturePngPath != null) && (this.texturePngPath.length() > 0)) {
+        drawBlurBgTexture(paramCanvas);
       }
+    } while (arrayOfPointF.length < 4);
+    paramCanvas.save();
+    this.stickerMatrix.reset();
+    this.stickerMatrix.postTranslate(this.centerX - this.originalCenterX, this.centerY - this.originalCenterY);
+    this.stickerMatrix.postRotate(getSticker().getRotate(), this.centerX, this.centerY);
+    if (this.sticker.getExtraBundle().getBoolean("key_sticker_lock_ratio")) {
       this.stickerMatrix.postScale(this.sticker.getScale(), this.sticker.getScale(), this.centerX, this.centerY);
     }
     for (;;)
     {
       paramCanvas.concat(this.stickerMatrix);
       this.stickerBorderRect.set(arrayOfPointF[0].x, arrayOfPointF[0].y, arrayOfPointF[2].x, arrayOfPointF[3].y);
-      updateBorderPaint();
-      paramCanvas.drawRoundRect(this.stickerBorderRect, this.STICKER_CORNER_RADIUS, this.STICKER_CORNER_RADIUS, this.borderPaint);
+      Path localPath = new Path();
+      this.borderPaint.setStrokeJoin(Paint.Join.ROUND);
+      localPath.moveTo(arrayOfPointF[0].x, arrayOfPointF[0].y);
+      localPath.lineTo(arrayOfPointF[1].x, arrayOfPointF[1].y);
+      localPath.moveTo(arrayOfPointF[2].x, arrayOfPointF[2].y);
+      localPath.lineTo(arrayOfPointF[3].x, arrayOfPointF[3].y);
+      this.borderPaint.setStrokeWidth(this.DEFAULT_BORDER_STROKE_WIDTH / this.yScale);
+      paramCanvas.drawPath(localPath, this.borderPaint);
+      localPath = new Path();
+      localPath.moveTo(arrayOfPointF[1].x, arrayOfPointF[1].y);
+      localPath.lineTo(arrayOfPointF[2].x, arrayOfPointF[2].y);
+      localPath.moveTo(arrayOfPointF[3].x, arrayOfPointF[3].y);
+      localPath.lineTo(arrayOfPointF[0].x, arrayOfPointF[0].y);
+      this.borderPaint.setStrokeWidth(this.DEFAULT_BORDER_STROKE_WIDTH / this.xScale);
+      paramCanvas.drawPath(localPath, this.borderPaint);
       paramCanvas.restore();
-      if ((paramCanvas == null) || (this.texturePngPath == null) || (this.texturePngPath.length() <= 0)) {
-        break;
-      }
-      drawBlurBgTexture(paramCanvas);
       return;
-      label217:
       this.stickerMatrix.postScale(TAVStickerExKt.getStickerScaleX(this.sticker), TAVStickerExKt.getStickerScaleY(this.sticker), this.centerX, this.centerY);
     }
   }
@@ -165,7 +240,6 @@ class BlurStickerEditView
       f2 = getStickerRectF().top;
       paramCanvas.rotate(getSticker().getRotate(), f1, f2);
       paramCanvas.scale(this.OPERATION_BUTTON_SCALE, this.OPERATION_BUTTON_SCALE, f1, f2);
-      Log.d("btn_pos", "drawDeleteBtn: y = " + f2);
       localObject = new Rect(0, 0, this.bmpDelete.getWidth(), this.bmpDelete.getHeight());
       this.deleteBtnRect = new RectF(f1 - this.bmpDelete.getWidth(), f2 - this.bmpDelete.getHeight(), f1 + this.bmpDelete.getWidth(), f2 + this.bmpDelete.getHeight());
       paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
@@ -182,10 +256,12 @@ class BlurStickerEditView
   
   public void initScaleData()
   {
-    float f3 = this.sticker.getExtraBundle().getFloat("key_sticker_scale_max_x", 0.0F);
-    float f2 = this.sticker.getExtraBundle().getFloat("key_sticker_scale_max_y", 0.0F);
-    float f4 = this.sticker.getExtraBundle().getFloat("key_sticker_scale_min_x", 0.0F);
-    float f5 = this.sticker.getExtraBundle().getFloat("key_sticker_scale_min_y", 0.0F);
+    this.xScale = TAVStickerExKt.getStickerScaleX(this.sticker);
+    this.yScale = TAVStickerExKt.getStickerScaleY(this.sticker);
+    float f3 = TAVStickerExKt.getStickerScaleMaxX(this.sticker);
+    float f2 = TAVStickerExKt.getStickerScaleMaxY(this.sticker);
+    float f4 = TAVStickerExKt.getStickerScaleMinX(this.sticker);
+    float f5 = TAVStickerExKt.getSticerScaleMinY(this.sticker);
     float f1 = f3;
     if (f3 <= 0.0F) {
       f1 = this.moveRegionWidth * 1.0F / this.stickerWidth;
@@ -197,6 +273,20 @@ class BlurStickerEditView
       this.yScaleMax = f1;
       this.yScaleMin = Math.max(f4, 0.0F);
       this.xScaleMin = Math.max(f5, 0.0F);
+      if ((this.xScaleMax > 0.0F) && (this.xScale > this.xScaleMax)) {
+        this.xScale = this.xScaleMax;
+      }
+      if ((this.yScaleMax > 0.0F) && (this.yScale > this.yScaleMax)) {
+        this.yScale = this.yScaleMax;
+      }
+      if (this.xScale < this.xScaleMin) {
+        this.xScale = this.xScaleMin;
+      }
+      if (this.yScale < this.yScaleMin) {
+        this.yScale = this.yScaleMin;
+      }
+      TAVStickerExKt.setStickerScaleY(this.sticker, this.yScale);
+      TAVStickerExKt.setStickerScaleX(this.sticker, this.xScale);
       super.initScaleData();
       return;
     }
@@ -211,11 +301,41 @@ class BlurStickerEditView
     super.initStickerData();
   }
   
+  public void onSourceImageUpdated(CIImage paramCIImage, RenderInfo paramRenderInfo)
+  {
+    paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
+    int i = paramCIImage.preferRotation;
+    paramCIImage = new CIImage(WSOverLayBlurManager.getInstance().getBlurredTextureInfo(paramCIImage, getWidth(), getHeight(), i, 10, 0.25F, this.hBlurFilter, this.vBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter).clone());
+    paramCIImage.applyPreferRotation(0);
+    paramCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), new CGSize(getWidth(), getHeight())), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
+    paramCIImage.applyFlip(false, true);
+    paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
+    if (this.playerThreadHandler == null) {
+      this.playerThreadHandler = new Handler();
+    }
+    Log.d("BlurStickerEditView", "Thread Name1: " + Thread.currentThread().getName());
+    if (this.lock.tryLock())
+    {
+      this.bgBitmap = TAVGLUtils.saveBitmap(paramCIImage);
+      postInvalidate();
+    }
+  }
+  
   public void setScale(float paramFloat)
   {
     if (TAVStickerExKt.isLockRatio(this.sticker))
     {
       super.setScale(paramFloat);
+      return;
+    }
+    if ((this.xScale != -1.0F) && (this.yScale != -1.0F))
+    {
+      this.xScale = handleScaleXLimit(this.xScale);
+      this.yScale = handleScaleYLimit(this.yScale);
+      this.pagView.setScaleX(this.xScale);
+      this.pagView.setScaleY(this.yScale);
+      TAVStickerExKt.setStickerScaleX(this.sticker, this.xScale);
+      TAVStickerExKt.setStickerScaleY(this.sticker, this.yScale);
       return;
     }
     this.pagView.setScaleX(TAVStickerExKt.getStickerScaleX(this.sticker));
@@ -271,7 +391,7 @@ class BlurStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.BlurStickerEditView
  * JD-Core Version:    0.7.0.1
  */

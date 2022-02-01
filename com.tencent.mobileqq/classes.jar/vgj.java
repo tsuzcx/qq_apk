@@ -1,28 +1,59 @@
-import com.tencent.biz.qcircleshadow.lib.delegate.IPluginInfoDelegate;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.1;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class vgj
-  implements IPluginInfoDelegate
 {
-  public List<String> getAllPluginInitInfo()
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new vgk(this));
+  private vgl jdField_a_of_type_Vgl;
+  private vha jdField_a_of_type_Vha = vhe.a().a();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public vgj()
   {
-    return vgp.a().a();
+    ThreadManager.executeOnSubThread(new WSVideoPluginInstall.1(this));
   }
   
-  public String getCurrentPluginInfo()
+  private void c()
   {
-    if ((vgw.a().a() == null) || (vgw.a().a().a() == null)) {
-      return "";
+    this.jdField_a_of_type_Vha.a();
+    try
+    {
+      if (!this.b)
+      {
+        this.jdField_a_of_type_Vha.a(BaseApplicationImpl.getContext());
+        vmp.f("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][initVideoSDK] finish!");
+        this.b = true;
+      }
+      return;
     }
-    return vgw.a().a().a().toString();
+    finally {}
   }
   
-  public int getCurrentPluginVersion()
+  public void a()
   {
-    if ((vgw.a().a() == null) || (vgw.a().a().a() == null)) {
-      return -1;
+    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.post(new WSVideoPluginInstall.2(this), 8, null, true);
     }
-    return vgw.a().a().a().a();
+  }
+  
+  public void a(vgl paramvgl)
+  {
+    this.jdField_a_of_type_Vgl = paramvgl;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Vha.a(BaseApplicationImpl.getContext());
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Vgl = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

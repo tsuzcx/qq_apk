@@ -1,28 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public class beqd
-  implements URLDrawable.URLDrawableListener
+class beqd
+  extends beql<UserState>
 {
-  public beqd(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  beqd(bepx parambepx, UserState paramUserState, List paramList)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    super(paramUserState, paramList);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(UserState paramUserState)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    bepx.a(this.a).i();
+    bepx.a(this.a).b();
   }
 }
 

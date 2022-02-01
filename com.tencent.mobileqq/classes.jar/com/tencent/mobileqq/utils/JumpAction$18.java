@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bfuc;
-import bfvp;
+import bhcu;
+import bheh;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -10,18 +10,18 @@ import java.util.HashMap;
 public class JumpAction$18
   implements Runnable
 {
-  public JumpAction$18(bfvp parambfvp, String paramString) {}
+  public JumpAction$18(bheh parambheh, String paramString) {}
   
   public void run()
   {
     String str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, this.a, "opensdk_tmp");
     try
     {
-      str = new String(bfuc.encode(str.getBytes("UTF-8"), 0));
+      str = new String(bhcu.encode(str.getBytes("UTF-8"), 0));
       if (!TextUtils.isEmpty(str)) {
         this.this$0.jdField_a_of_type_JavaUtilHashMap.put("videoPath", str);
       }
-      bfvp.a(this.this$0, false);
+      bheh.a(this.this$0, false);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)

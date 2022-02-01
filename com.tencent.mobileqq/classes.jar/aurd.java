@@ -1,15 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
-public abstract interface aurd
+public class aurd
+  implements View.OnTouchListener
 {
-  public abstract aurg a();
+  public aurd(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
   
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
-  
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, aurf paramaurf);
-  
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, aurf paramaurf);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
+    }
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    return false;
+  }
 }
 
 

@@ -1,26 +1,76 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
-class avhr
-  implements INetInfoHandler
+public class avhr
 {
-  avhr(avhp paramavhp) {}
+  avhs a;
   
-  public void onNetMobile2None()
+  public avhr(int paramInt)
   {
-    avhp.a(this.a);
+    this.a = new avhs(paramInt);
   }
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
+  public static String a(int paramInt)
   {
-    avhp.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "graytip";
+    case 2: 
+      return "nor_text";
+    case 3: 
+      return "url";
+    case 4: 
+      return "qq";
+    case 5: 
+      return "img";
+    case 6: 
+      return "dialog";
+    case 7: 
+      return "title";
+    case 8: 
+      return "alter";
+    case 9: 
+      return "btn";
+    }
+    return "item";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "align";
+    case 2: 
+      return "text";
+    case 3: 
+      return "size";
+    case 4: 
+      return "jump";
+    case 5: 
+      return "color";
+    case 6: 
+      return "uin";
+    case 7: 
+      return "name";
+    case 8: 
+      return "src";
+    case 9: 
+      return "type";
+    }
+    return "alt";
+  }
+  
+  public avhs a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return avhs.a(this.a, 0);
   }
 }
 

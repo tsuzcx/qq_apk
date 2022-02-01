@@ -1,54 +1,50 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.8.1;
-import com.tencent.mobileqq.ar.ArConfigService.8.2;
-import com.tencent.mobileqq.ar.ArConfigService.8.3;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class aocs
-  implements aojg
+  extends BusinessHandler
 {
-  public aocs(ArConfigService paramArConfigService) {}
+  public static String a = "Add_friend_to_desktop|";
+  public static String b = "Click_desktop_friend|";
+  private String c = "FuMeiTiCeSu|";
   
-  public void a()
+  aocs(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
-    }
+    super(paramQQAppInterface);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
-    }
+    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
   }
   
-  public void a(boolean paramBoolean, aojh paramaojh)
+  public void a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    if ((paramBundle != null) && (paramBundle.containsKey("data")))
     {
-      ArConfigService.f(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
-      }
+      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+      localToServiceMsg.extraData.putAll(paramBundle);
+      super.send(localToServiceMsg);
     }
-    while (ArConfigService.e(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
-    ArConfigService.a(this.a, true);
   }
   
-  public void b() {}
+  public void a(String[] paramArrayOfString)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
+    super.send(localToServiceMsg);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

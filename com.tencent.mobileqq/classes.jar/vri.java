@@ -1,42 +1,68 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.ViewStub;
 
 public class vri
-  extends vta
+  extends uyw<vpj>
 {
-  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
-  vtb jdField_a_of_type_Vtb;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private vrj jdField_a_of_type_Vrj;
+  private vrn jdField_a_of_type_Vrn;
   
-  public vri(qqstory_service.RspDelFeedComment paramRspDelFeedComment, vtb paramvtb)
+  public vri(Context paramContext, vrn paramvrn)
   {
-    super(paramRspDelFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
-    this.jdField_a_of_type_Vtb = paramvtb;
+    super(paramContext);
+    this.jdField_a_of_type_Vrn = paramvrn;
   }
   
-  public vri(vtb paramvtb)
+  private stSimpleMetaFeed a()
   {
-    this.jdField_a_of_type_Vtb = paramvtb;
+    vpj localvpj = (vpj)a();
+    if ((localvpj != null) && ((localvpj.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)localvpj.a();
+    }
+    return null;
   }
   
-  public void a()
+  private void b(vpj paramvpj)
   {
-    this.jdField_a_of_type_Vtb.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    {
+      if (this.jdField_a_of_type_Vrj == null)
+      {
+        this.jdField_a_of_type_Vrj = new vrj(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+        this.jdField_a_of_type_Vrj.a(this.jdField_a_of_type_AndroidViewViewStub);
+      }
+      this.jdField_a_of_type_Vrj.a(paramvpj);
+    }
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  protected void a() {}
+  
+  public void a(vpj paramvpj)
   {
-    this.jdField_a_of_type_Vtb.a(paramInt, paramBundle);
+    super.a(paramvpj);
+    b(paramvpj);
   }
   
-  public void a(int paramInt, String paramString)
+  protected int b()
   {
-    this.jdField_a_of_type_Vtb.a(paramInt, paramString);
+    return 2131560085;
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  protected void b() {}
+  
+  protected void c()
   {
-    this.jdField_a_of_type_Vtb.a(paramBoolean, paramBundle);
+    if (this.jdField_a_of_type_Vrj != null) {
+      this.jdField_a_of_type_Vrj.c();
+    }
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380769));
   }
 }
 

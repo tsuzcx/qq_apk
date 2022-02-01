@@ -1,22 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ClickableToastView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bhcb
-  implements View.OnClickListener
 {
-  public bhcb(ClickableToastView paramClickableToastView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (ClickableToastView.a(this.a).a != null)
-    {
-      this.a.b();
-      ClickableToastView.a(this.a).a.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public String a;
+  public int b = -3000;
+  public int c;
 }
 
 

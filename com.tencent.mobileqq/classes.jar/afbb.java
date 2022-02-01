@@ -1,9 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.transfile.FileMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
-public abstract interface afbb
+public class afbb
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2);
+  public afbb(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

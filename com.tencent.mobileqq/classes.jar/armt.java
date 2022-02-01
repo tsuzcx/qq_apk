@@ -1,30 +1,50 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class armt
-  implements View.OnTouchListener
 {
-  public armt(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  private String jdField_a_of_type_JavaLangString = anvx.a(2131714218);
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String b = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static armt a(aqxa[] paramArrayOfaqxa)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    int i = 0;
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+      return null;
     }
-    for (;;)
+    armt localarmt = new armt();
+    try
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      paramArrayOfaqxa = new JSONObject(paramArrayOfaqxa[0].jdField_a_of_type_JavaLangString);
+      JSONArray localJSONArray = paramArrayOfaqxa.getJSONArray("suffix");
+      while (i < localJSONArray.length())
+      {
+        localarmt.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
+        i += 1;
+      }
+      localarmt.jdField_a_of_type_JavaLangString = paramArrayOfaqxa.getString("title");
+      localarmt.b = paramArrayOfaqxa.getString("desc");
+      return localarmt;
     }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      paramArrayOfaqxa.printStackTrace();
+    }
+    return localarmt;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armt
  * JD-Core Version:    0.7.0.1
  */

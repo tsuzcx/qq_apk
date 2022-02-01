@@ -1,52 +1,50 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aleo
+class aleo
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  aleo(aldh paramaldh) {}
   
-  static aleo a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject == null) {
-      return new aleo();
-    }
-    aleo localaleo = new aleo();
-    try
+    if (aldh.a(this.a) != null) {}
+    for (QQAppInterface localQQAppInterface = aldh.a(this.a).app; localQQAppInterface == null; localQQAppInterface = null)
     {
-      localaleo.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localaleo.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localaleo.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localaleo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localaleo.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localaleo.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localaleo.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localaleo.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localaleo.g = paramJSONObject.getString("classifyName");
-      localaleo.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localaleo.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localaleo.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localaleo.h = paramJSONObject.getString("trialstartday");
-      localaleo.i = paramJSONObject.getString("trialendday");
-      return localaleo;
+      if (QLog.isColorLevel()) {
+        QLog.e("MultiVideoBar", 2, "app is null");
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    catch (JSONException paramJSONObject)
+    int j = localQQAppInterface.getAVNotifyCenter().e();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "initMultiVideoBar-->SessionType");
+    }
+    int i;
+    if ((j == 1) || (j == 2))
     {
-      paramJSONObject.printStackTrace();
+      i = 1;
+      label90:
+      if (i == 0) {
+        break label148;
+      }
+      adlp.a(localQQAppInterface, j, aldh.a(this.a));
     }
-    return localaleo;
+    for (;;)
+    {
+      bdla.a(aldh.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 1, 0, "", "", "", "");
+      break;
+      i = 0;
+      break label90;
+      label148:
+      adlp.b(localQQAppInterface, j, aldh.a(this.a));
+    }
   }
 }
 

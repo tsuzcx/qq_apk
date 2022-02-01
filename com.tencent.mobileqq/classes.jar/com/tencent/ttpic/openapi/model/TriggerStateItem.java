@@ -199,6 +199,34 @@ public class TriggerStateItem
     this.mNeedToUpdate = true;
   }
   
+  public void forceUpdateState(String paramString)
+  {
+    if ((this.mStateMap != null) && (this.mStateMap.containsKey(paramString)))
+    {
+      this.mCurrentState = ((Integer)this.mStateMap.get(paramString)).intValue();
+      if (this.mStateItemGraph != null)
+      {
+        paramString = (List)this.mStateItemGraph.get(Integer.valueOf(this.mCurrentState));
+        if (paramString != null)
+        {
+          paramString = paramString.iterator();
+          while (paramString.hasNext())
+          {
+            TriggerStateEdge localTriggerStateEdge = (TriggerStateEdge)paramString.next();
+            if (isMatch(localTriggerStateEdge.value))
+            {
+              this.mNextTriggerType = getTriggerTypeFromAction(localTriggerStateEdge.value);
+              this.mNextState = ((Integer)this.mStateMap.get(localTriggerStateEdge.state)).intValue();
+              updateTriggerExpressionDelay(localTriggerStateEdge.value);
+              this.mNeedToUpdate = true;
+              Log.i(TAG, " begin change delay isInDelayTime() = " + isInDelayTime() + " DelayTime = " + this.mDelayTime + " CurState = " + this.mCurrentState + " -> " + this.mNextState);
+            }
+          }
+        }
+      }
+    }
+  }
+  
   public double getRandomValue()
   {
     return this.mRandomValue / 100.0D;

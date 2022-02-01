@@ -1,29 +1,30 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bfuf
-  extends BroadcastReceiver
+class bfuf
+  implements nux
 {
-  public bfuf(BusinessCommonConfig paramBusinessCommonConfig, QQAppInterface paramQQAppInterface) {}
+  bfuf(bfud parambfud, long paramLong) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void loaded(int paramInt, String paramString)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
+    }
+    paramString = nvf.a(bfud.a(this.jdField_a_of_type_Bfud)) + bfud.a(this.jdField_a_of_type_Bfud) + File.separator + bfud.b(this.jdField_a_of_type_Bfud);
+    if (!new File(paramString).exists())
     {
-      do
-      {
-        return;
-      } while (!"tencent.businessnotify.subprocess.to.qq".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("event", 0);
-      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG, 1, "收到其他进程的通知, event[" + i + "]");
-    } while (i != 1);
-    BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
+      if (QLog.isColorLevel()) {
+        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
+      }
+      return;
+    }
+    FileUtils.copyFile(paramString, bfud.a(this.jdField_a_of_type_Bfud).getFilesDir().getAbsolutePath() + File.separator + bfud.b(this.jdField_a_of_type_Bfud));
   }
 }
 

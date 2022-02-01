@@ -1,81 +1,39 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.BindGroupConfirmActivity.2.1;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bhqu
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/gldrawable/DynamicDrawable$callbackProxy$1", "Landroid/graphics/drawable/Drawable$Callback;", "invalidateDrawable", "", "who", "Landroid/graphics/drawable/Drawable;", "scheduleDrawable", "what", "Ljava/lang/Runnable;", "when", "", "unscheduleDrawable", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhqu
+  implements Drawable.Callback
 {
-  public bhqu(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void invalidateDrawable(@NotNull Drawable paramDrawable)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 3: 
-        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
-      }
-    } while (!paramMessage.iconsURL.has());
-    int i = 0;
-    int j = 0;
-    int m = 0;
-    label58:
-    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
-    if (i < paramMessage.iconsURL.get().size()) {
-      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    paramDrawable = this.a.getCallback();
+    if (paramDrawable != null) {
+      paramDrawable.invalidateDrawable((Drawable)this.a);
     }
-    for (;;)
-    {
-      try
-      {
-        k = Integer.parseInt(localMsgIconsurl.size.get());
-        if (k >= 100)
-        {
-          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-          if (paramMessage == null) {
-            break;
-          }
-          ThreadManager.executeOnNetWorkThread(new BindGroupConfirmActivity.2.1(this, paramMessage));
-          return;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        int k = 0;
-        continue;
-        int n = m;
-        if (k > m)
-        {
-          j = i;
-          n = k;
-        }
-        i += 1;
-        m = n;
-      }
-      break label58;
-      paramMessage = (Bitmap)paramMessage.obj;
-      Bitmap localBitmap = bhwf.a(this.a, paramMessage, 50, 50);
-      paramMessage.recycle();
-      if (localBitmap == null) {
-        break;
-      }
-      this.a.b.setImageBitmap(localBitmap);
-      return;
-      i = j;
+  }
+  
+  public void scheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
+    paramDrawable = this.a.getCallback();
+    if (paramDrawable != null) {
+      paramDrawable.scheduleDrawable((Drawable)this.a, paramRunnable, paramLong);
+    }
+  }
+  
+  public void unscheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable)
+  {
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
+    paramDrawable = this.a.getCallback();
+    if (paramDrawable != null) {
+      paramDrawable.unscheduleDrawable((Drawable)this.a, paramRunnable);
     }
   }
 }

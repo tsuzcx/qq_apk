@@ -1,22 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
 
-public class aeic
+class aeic
   implements DialogInterface.OnClickListener
 {
-  public aeic(SubAccountUgActivity paramSubAccountUgActivity, bcqk parambcqk, Pair paramPair) {}
+  aeic(aeia paramaeia) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bcqk.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!bcqk.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      bcqj.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
+    if (paramInt == 1) {
+      this.a.b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    while (aeia.a(this.a) == null) {
+      return;
+    }
+    aeia.a(this.a).b();
   }
 }
 

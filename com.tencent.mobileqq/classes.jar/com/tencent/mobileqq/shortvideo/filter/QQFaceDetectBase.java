@@ -112,9 +112,9 @@ public class QQFaceDetectBase
     {
       this.mOutputTextureID = localFrame1.getTextureId();
       return;
-      this.mFlipFilter.ClearGLSL();
+      this.mFlipFilter.clearGLSL();
       break;
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
       break label79;
       localFrame1 = this.mCopyFilter.RenderProcess(this.mInputTextureID, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
       break label134;
@@ -152,7 +152,7 @@ public class QQFaceDetectBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFaceDetectBase
  * JD-Core Version:    0.7.0.1
  */

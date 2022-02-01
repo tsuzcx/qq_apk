@@ -1,30 +1,67 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Date;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.SpannableString;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class audn
+public class audn
 {
-  static audn jdField_a_of_type_Audn = new audn(false, new Date(0L), new Date(0L));
-  final Date jdField_a_of_type_JavaUtilDate;
-  final boolean jdField_a_of_type_Boolean;
-  final Date b;
-  
-  audn(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, audq paramaudq)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilDate = paramDate1;
-    this.b = paramDate2;
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      }
+      return;
+    }
+    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramaudq);
   }
   
-  private boolean b()
+  public static void a(Context paramContext, String paramString, int paramInt, audq paramaudq)
   {
-    long l = NetConnInfoCenter.getServerTime() * 1000L;
-    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      }
+      return;
+    }
+    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramaudq);
   }
   
-  boolean a()
+  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, audq paramaudq)
   {
-    return (b()) && (this.jdField_a_of_type_Boolean);
+    audo localaudo = new audo(paramaudq);
+    paramaudq = new audp(paramaudq);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread()) {}
+    do
+    {
+      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localaudo, paramaudq));
+      do
+      {
+        return;
+      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
+      if ((paramCharSequence instanceof String))
+      {
+        bhdj.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692203, 2131692207, localaudo, paramaudq).show();
+        return;
+      }
+    } while (!(paramCharSequence instanceof SpannableString));
+    bhdj.a(paramContext, 230, paramString, paramCharSequence, 2131692203, 2131692207, localaudo, paramaudq).show();
   }
 }
 

@@ -11,10 +11,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.LinearInterpolator;
-import bnmo;
-import bnmx;
-import bnne;
-import bnng;
+import bpcg;
+import bpcp;
+import bpcw;
+import bpcy;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,11 +25,11 @@ public class SecondDemoView
   int jdField_a_of_type_Int = 0;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  bnmo jdField_a_of_type_Bnmo = new bnmo();
-  bnne jdField_a_of_type_Bnne;
+  bpcg jdField_a_of_type_Bpcg = new bpcg();
+  bpcw jdField_a_of_type_Bpcw;
   private String jdField_a_of_type_JavaLangString = "05:36";
   public ArrayList<Integer> a;
-  bnne jdField_b_of_type_Bnne;
+  bpcw jdField_b_of_type_Bpcw;
   private String jdField_b_of_type_JavaLangString = "2017 SEPTEMBER 30";
   private ArrayList<Bitmap> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private ArrayList<Bitmap> c = new ArrayList();
@@ -53,10 +53,10 @@ public class SecondDemoView
     a();
   }
   
-  private bnne a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, bnmo parambnmo)
+  private bpcw a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, bpcg parambpcg)
   {
-    paramTypeface = new bnne(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
-    paramTypeface.a(paramCharSequence, parambnmo);
+    paramTypeface = new bpcw(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
+    paramTypeface.a(paramCharSequence, parambpcg);
     return paramTypeface;
   }
   
@@ -68,9 +68,9 @@ public class SecondDemoView
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_Bnne = a(this.jdField_a_of_type_JavaLangString, AIOUtils.dp2px(48.0F, getResources()), -1, 0, 0, 0, 600, Typeface.DEFAULT_BOLD, this.jdField_a_of_type_Bnmo);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_Bnmo.a("", 500L, 500L, 0, AIOUtils.dp2px(135.0F, getResources()), new AnticipateOvershootInterpolator());
-    this.jdField_b_of_type_Bnne = a(this.jdField_b_of_type_JavaLangString, AIOUtils.dp2px(11.0F, getResources()), -1, 0, AIOUtils.dp2px(60.0F, getResources()), 700, 1000, Typeface.DEFAULT_BOLD, this.jdField_a_of_type_Bnmo);
+    this.jdField_a_of_type_Bpcw = a(this.jdField_a_of_type_JavaLangString, AIOUtils.dp2px(48.0F, getResources()), -1, 0, 0, 0, 600, Typeface.DEFAULT_BOLD, this.jdField_a_of_type_Bpcg);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_Bpcg.a("", 500L, 500L, 0, AIOUtils.dp2px(135.0F, getResources()), new AnticipateOvershootInterpolator());
+    this.jdField_b_of_type_Bpcw = a(this.jdField_b_of_type_JavaLangString, AIOUtils.dp2px(11.0F, getResources()), -1, 0, AIOUtils.dp2px(60.0F, getResources()), 700, 1000, Typeface.DEFAULT_BOLD, this.jdField_a_of_type_Bpcg);
     b();
   }
   
@@ -80,42 +80,42 @@ public class SecondDemoView
     for (;;)
     {
       return;
-      paramArrayList = this.jdField_a_of_type_Bnne.jdField_a_of_type_JavaUtilArrayList.iterator();
-      bnmx localbnmx;
+      paramArrayList = this.jdField_a_of_type_Bpcw.jdField_a_of_type_JavaUtilArrayList.iterator();
+      bpcp localbpcp;
       Bitmap localBitmap;
       TextPaint localTextPaint;
       while (paramArrayList.hasNext())
       {
-        localbnmx = (bnmx)paramArrayList.next();
-        localBitmap = localbnmx.jdField_a_of_type_AndroidGraphicsBitmap;
-        localTextPaint = this.jdField_a_of_type_Bnne.jdField_a_of_type_AndroidTextTextPaint;
-        localTextPaint.setAlpha(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(localbnmx.b)).intValue());
-        i = this.jdField_a_of_type_Bnne.jdField_a_of_type_Int;
-        paramCanvas.drawBitmap(localBitmap, localbnmx.jdField_a_of_type_Int + i, this.jdField_a_of_type_Bnne.b, localTextPaint);
+        localbpcp = (bpcp)paramArrayList.next();
+        localBitmap = localbpcp.jdField_a_of_type_AndroidGraphicsBitmap;
+        localTextPaint = this.jdField_a_of_type_Bpcw.jdField_a_of_type_AndroidTextTextPaint;
+        localTextPaint.setAlpha(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(localbpcp.b)).intValue());
+        i = this.jdField_a_of_type_Bpcw.jdField_a_of_type_Int;
+        paramCanvas.drawBitmap(localBitmap, localbpcp.jdField_a_of_type_Int + i, this.jdField_a_of_type_Bpcw.b, localTextPaint);
       }
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.dp2px(2.0F, getResources()));
       int i = AIOUtils.dp2px(55.0F, getResources());
       paramCanvas.drawLine(0.0F, i, ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).intValue(), i, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramArrayList = this.jdField_b_of_type_Bnne.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramArrayList = this.jdField_b_of_type_Bpcw.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        localbnmx = (bnmx)paramArrayList.next();
-        localBitmap = localbnmx.jdField_a_of_type_AndroidGraphicsBitmap;
-        localTextPaint = this.jdField_b_of_type_Bnne.jdField_a_of_type_AndroidTextTextPaint;
-        localTextPaint.setAlpha(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(localbnmx.b)).intValue());
-        i = this.jdField_b_of_type_Bnne.jdField_a_of_type_Int;
-        paramCanvas.drawBitmap(localBitmap, localbnmx.jdField_a_of_type_Int + i, this.jdField_b_of_type_Bnne.b, localTextPaint);
+        localbpcp = (bpcp)paramArrayList.next();
+        localBitmap = localbpcp.jdField_a_of_type_AndroidGraphicsBitmap;
+        localTextPaint = this.jdField_b_of_type_Bpcw.jdField_a_of_type_AndroidTextTextPaint;
+        localTextPaint.setAlpha(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(localbpcp.b)).intValue());
+        i = this.jdField_b_of_type_Bpcw.jdField_a_of_type_Int;
+        paramCanvas.drawBitmap(localBitmap, localbpcp.jdField_a_of_type_Int + i, this.jdField_b_of_type_Bpcw.b, localTextPaint);
       }
     }
   }
   
   private void b()
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Bnmo, new Object[] { this.jdField_a_of_type_Bnmo.b(), this.jdField_a_of_type_Bnmo.a() });
+    ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Bpcg, new Object[] { this.jdField_a_of_type_Bpcg.b(), this.jdField_a_of_type_Bpcg.a() });
     localValueAnimator.setInterpolator(new LinearInterpolator());
     localValueAnimator.setRepeatCount(100);
-    localValueAnimator.addUpdateListener(new bnng(this));
-    localValueAnimator.setDuration(this.jdField_a_of_type_Bnmo.a());
+    localValueAnimator.addUpdateListener(new bpcy(this));
+    localValueAnimator.setDuration(this.jdField_a_of_type_Bpcg.a());
     localValueAnimator.start();
   }
   

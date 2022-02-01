@@ -1,36 +1,51 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class axbv
-  implements View.OnClickListener
+public class axbv
+  implements bivu
 {
-  axbv(axax paramaxax, int paramInt) {}
+  public axbv(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {}
-    for (;;)
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      bjnw localbjnw = bjnw.a(this.jdField_a_of_type_Axax.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      if (this.jdField_a_of_type_Int != 0) {
-        localbjnw.c(this.jdField_a_of_type_Axax.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694053));
+    case 2: 
+      MsgBackupTransportFragment.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + awzs.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
       }
-      localbjnw.c(amtj.a(2131706383));
-      if (this.jdField_a_of_type_Axax.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-        localbjnw.a(amtj.a(2131706466), 3);
+      if (MsgBackupTransportFragment.a(this.a) == 2)
+      {
+        if (!this.a.jdField_d_of_type_Boolean) {
+          break label129;
+        }
+        axct.a("0X800A243", 2);
       }
-      localbjnw.c(2131690620);
-      localbjnw.a(new axbw(this, paramView, localPicInfo, localbjnw));
-      localbjnw.show();
+      while (this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.k();
+        return;
+        label129:
+        axct.a("0X800A243", 1);
+      }
+      if (MsgBackupTransportFragment.a(this.a) == 1)
+      {
+        this.a.onBackEvent();
+        return;
+      }
+      this.a.a(this.a.getActivity());
+      return;
     }
+    awzs.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + awzs.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
+    }
+    awzs.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
+    axct.a("0X800A249");
   }
 }
 

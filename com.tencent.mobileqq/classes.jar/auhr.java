@@ -1,34 +1,54 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoDownResp;
-import com.tencent.mobileqq.transfile.protohandler.RichProtoProc.RichProtoCallback;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class auhr
-  implements RichProtoProc.RichProtoCallback
+  extends atlv
 {
-  public auhr(HotVideoData paramHotVideoData, auht paramauht, auhs paramauhs) {}
+  atfq jdField_a_of_type_Atfq = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString = "DiscOfflinePreviewController<FileAssistant>";
+  String b;
+  String c;
   
-  public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
+  public auhr(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (paramRichProtoResp != null) {
-      if (paramRichProtoResp.resps.size() > 0)
-      {
-        paramRichProtoReq = (RichProto.RichProtoResp.ShortVideoDownResp)paramRichProtoResp.resps.get(0);
-        this.jdField_a_of_type_Auht.a(paramRichProtoReq);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramString1;
+    this.c = paramString2;
+    b();
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Atfq != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Atfq);
     }
-    for (;;)
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.b))
     {
-      this.jdField_a_of_type_Auhs.a(this.jdField_a_of_type_Auht);
-      return;
-      this.jdField_a_of_type_Auht.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Auht.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_Auht.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Auht.jdField_a_of_type_JavaLangString = "Unknown error！";
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + auea.a());
+      if (this.jdField_a_of_type_Asyq != null) {
+        this.jdField_a_of_type_Asyq.a(false, "", "", -100005L, "", "", null, this.b, null);
+      }
+      return false;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(this.c, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Atfq = new auhs(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Atfq);
   }
 }
 

@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class aagf
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aagf(aagd paramaagd) {}
+  aagf(aagb paramaagb) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = this.a.d.getMeasuredWidth();
+    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bhdz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
+    this.a.c.setMaxWidth(i);
+    this.a.c.setText(new begq(this.a.jdField_a_of_type_Bfid.h, 16).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aagf
  * JD-Core Version:    0.7.0.1
  */

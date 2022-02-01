@@ -1,27 +1,22 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
-class asoz
-  implements ShareActionSheet.OnItemClickListener
+public class asoz
+  implements asut
 {
-  asoz(asox paramasox) {}
+  public asoz(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void a(int paramInt)
   {
-    if (paramActionSheetItem == null) {}
-    do
+    anri localanri = (anri)ExtendFriendFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    if (localanri != null)
     {
-      return;
-      asox.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (asox.a(this.a) == null);
-    asox.a(this.a).a(paramActionSheetItem);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("birthday", paramInt);
+      localanri.a(localBundle);
+    }
   }
 }
 

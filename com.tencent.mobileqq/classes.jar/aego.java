@@ -1,16 +1,21 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
+import android.database.DataSetObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
-class aego
-  extends AccessibilityDelegateCompat
+public class aego
+  extends DataSetObserver
 {
-  aego(aegn paramaegn) {}
+  public aego(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onChanged()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
+    TextView localTextView = LebaListMgrActivity.a(this.a);
+    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
   }
 }
 

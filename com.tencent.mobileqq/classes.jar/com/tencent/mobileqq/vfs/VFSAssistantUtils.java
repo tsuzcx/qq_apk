@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vfs;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import bgng;
+import bhxq;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -31,7 +31,7 @@ public class VFSAssistantUtils
         str1 = paramString;
         if (hasExternalStorage)
         {
-          str3 = bgng.a().a();
+          str3 = bhxq.a().a();
           if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
             break label149;
           }
@@ -42,9 +42,9 @@ public class VFSAssistantUtils
             if (!paramString.startsWith(str3))
             {
               str1 = paramString;
-              if (paramString.startsWith(bgng.a().b()))
+              if (paramString.startsWith(bhxq.a().b()))
               {
-                String[] arrayOfString = paramString.split(bgng.a().b());
+                String[] arrayOfString = paramString.split(bhxq.a().b());
                 str1 = paramString;
                 if (arrayOfString.length >= 2) {
                   str1 = str3 + arrayOfString[1];

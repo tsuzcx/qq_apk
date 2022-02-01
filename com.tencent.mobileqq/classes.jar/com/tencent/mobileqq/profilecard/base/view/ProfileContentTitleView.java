@@ -49,15 +49,15 @@ public class ProfileContentTitleView
   
   protected void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559592, this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376689));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378747));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378752));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378800));
-    this.c = ((ViewGroup)findViewById(2131378801));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378724));
-    this.d = ((RelativeLayout)findViewById(2131378751));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131365083));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559627, this, true);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376957));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131379040));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379046));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379093));
+    this.c = ((ViewGroup)findViewById(2131379094));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379018));
+    this.d = ((RelativeLayout)findViewById(2131379045));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131365167));
     setIconEnable(false);
   }
   
@@ -133,7 +133,7 @@ public class ProfileContentTitleView
       }
     }
     label50:
-    for (int i = getResources().getDimensionPixelSize(2131297533);; i = 0)
+    for (int i = getResources().getDimensionPixelSize(2131297534);; i = 0)
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       if (localLayoutParams != null)

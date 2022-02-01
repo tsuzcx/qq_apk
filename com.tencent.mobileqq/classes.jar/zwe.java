@@ -1,23 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.View;
 
-class zwe
-  implements Animator.AnimatorListener
+public abstract interface zwe
 {
-  zwe(zwd paramzwd) {}
+  public abstract void a(View paramView, int paramInt1, int paramInt2, Object paramObject);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (zwd.a(this.a) != null) {
-      zwd.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void b(View paramView, int paramInt1, int paramInt2, Object paramObject);
 }
 
 

@@ -1,13 +1,15 @@
 package com.tencent.av.ui;
 
+import muy;
+
 class DoubleVideoCtrlUI$14
   implements Runnable
 {
-  DoubleVideoCtrlUI$14(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  DoubleVideoCtrlUI$14(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
   public void run()
   {
-    this.this$0.d(true);
+    muy.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
   }
 }
 

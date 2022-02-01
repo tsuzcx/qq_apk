@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aeom;
-import anca;
+import affx;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -13,12 +15,12 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class TroopMemberListActivity$40$3
   implements Runnable
 {
-  public TroopMemberListActivity$40$3(aeom paramaeom, List paramList) {}
+  public TroopMemberListActivity$40$3(affx paramaffx, List paramList) {}
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Aeom.a.app.getManager(52);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Aeom.a.b);
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Affx.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Affx.a.b);
     if (localTroopInfo == null) {
       return;
     }
@@ -37,13 +39,13 @@ public class TroopMemberListActivity$40$3
         }
       }
       ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = (anca)this.jdField_a_of_type_Aeom.a.app.getBusinessHandler(20);
+      localObject1 = (aoep)this.jdField_a_of_type_Affx.a.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
       if (localObject1 == null) {
         break;
       }
       try
       {
-        ((anca)localObject1).a(Long.parseLong(this.jdField_a_of_type_Aeom.a.b), 0L, 2, 0, 0);
+        ((aoep)localObject1).a(Long.parseLong(this.jdField_a_of_type_Affx.a.b), 0L, 2, 0, 0);
         return;
       }
       catch (Exception localException) {}
@@ -57,7 +59,7 @@ public class TroopMemberListActivity$40$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.40.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import axvj;
+import azbu;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -82,10 +82,10 @@ public class OnlineStatusListLayout
     this.jdField_c_of_type_Int = AIOUtils.dp2px(9.0F, getResources());
   }
   
-  public static boolean a(axvj paramaxvj1, axvj paramaxvj2)
+  public static boolean a(azbu paramazbu1, azbu paramazbu2)
   {
-    if ((paramaxvj1 == null) || (paramaxvj2 == null) || (paramaxvj1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramaxvj2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramaxvj1.jdField_a_of_type_Long != paramaxvj2.jdField_a_of_type_Long) {
+    if ((paramazbu1 == null) || (paramazbu2 == null) || (paramazbu1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramazbu2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramazbu1.jdField_a_of_type_Long != paramazbu2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
@@ -113,7 +113,7 @@ public class OnlineStatusListLayout
     }
   }
   
-  public void a(List<axvj> paramList, ArrayList<axvj> paramArrayList)
+  public void a(List<azbu> paramList, ArrayList<azbu> paramArrayList)
   {
     int j = 0;
     while (j < getChildCount())
@@ -136,15 +136,15 @@ public class OnlineStatusListLayout
     }
     Object localObject = (OnlineStatusItemView)localObject;
     ((OnlineStatusItemView)localObject).setVisibility(0);
-    axvj localaxvj = (axvj)paramList.get(j);
-    ((OnlineStatusItemView)localObject).a(localaxvj);
-    ((OnlineStatusItemView)localObject).setTag(localaxvj);
+    azbu localazbu = (azbu)paramList.get(j);
+    ((OnlineStatusItemView)localObject).a(localazbu);
+    ((OnlineStatusItemView)localObject).setTag(localazbu);
     int k = 0;
     for (;;)
     {
       if (k < paramArrayList.size())
       {
-        if (a(localaxvj, (axvj)paramArrayList.get(k))) {
+        if (a(localazbu, (azbu)paramArrayList.get(k))) {
           ((OnlineStatusItemView)localObject).a(true);
         }
       }

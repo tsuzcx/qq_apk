@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
-import bjne;
+import bkyq;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class OpenSelectPermissionFragment$1
@@ -13,7 +13,7 @@ public class OpenSelectPermissionFragment$1
   {
     Bitmap localBitmap = OpenSelectPermissionFragment.a(this.this$0).a(OpenSelectPermissionFragment.a(this.this$0));
     if (localBitmap != null) {
-      bjne.a(new OpenSelectPermissionFragment.1.1(this, localBitmap));
+      bkyq.a(new OpenSelectPermissionFragment.1.1(this, localBitmap));
     }
   }
 }

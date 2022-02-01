@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import blvn;
+import bnku;
 
 public class AEResManager$9
   implements Runnable
 {
-  public AEResManager$9(blvn paramblvn) {}
+  public AEResManager$9(bnku parambnku) {}
   
   public void run()
   {
-    blvn.a(this.this$0, false);
+    bnku.a(this.this$0, false);
   }
 }
 

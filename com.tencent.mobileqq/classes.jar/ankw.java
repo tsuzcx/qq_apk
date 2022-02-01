@@ -1,9 +1,6 @@
-public class ankw
+public abstract interface ankw
 {
-  public long a;
-  public short a;
-  public long b;
-  public long c;
+  public abstract void a(int paramInt);
 }
 
 

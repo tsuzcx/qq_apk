@@ -8,6 +8,7 @@ import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
+import com.tencent.aekit.openrender.internal.IPluginFilter;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.aekit.plugin.core.AECatAttr;
@@ -24,12 +25,16 @@ import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.face.Face;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.facedetect.GenderType;
+import com.tencent.ttpic.filament.CameraViewType;
+import com.tencent.ttpic.filament.CmShowAssetsData;
+import com.tencent.ttpic.filament.CmShowMaterialDisplayType;
 import com.tencent.ttpic.filament.FilamentFilter;
 import com.tencent.ttpic.filament.FilamentParticleFilter;
 import com.tencent.ttpic.filter.ActFilters;
 import com.tencent.ttpic.filter.CameraARFilterGesture;
 import com.tencent.ttpic.filter.CrazyFaceFilters;
 import com.tencent.ttpic.filter.CustomVideoFilter;
+import com.tencent.ttpic.filter.DepthMaskRenderItem;
 import com.tencent.ttpic.filter.DoodleFilter;
 import com.tencent.ttpic.filter.DynamicNumFilter;
 import com.tencent.ttpic.filter.EffectTriggerFilter;
@@ -59,8 +64,10 @@ import com.tencent.ttpic.filter.StaticCountFilter;
 import com.tencent.ttpic.filter.StaticNumFilter;
 import com.tencent.ttpic.filter.StickerDisplacementBlurFilter;
 import com.tencent.ttpic.filter.SwitchFaceFilter;
+import com.tencent.ttpic.filter.UVEditFilter;
 import com.tencent.ttpic.filter.VoiceTextFilter;
 import com.tencent.ttpic.filter.blurmaskfilter.BlurMaskFilter;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOGame;
 import com.tencent.ttpic.manager.CharmRandomManager;
 import com.tencent.ttpic.manager.MaterialManager;
 import com.tencent.ttpic.manager.RandomGroupManager;
@@ -80,12 +87,12 @@ import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.PTHairAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.PTSkyAttr;
-import com.tencent.ttpic.openapi.facedetect.FaceDetector.DETECT_TYPE;
+import com.tencent.ttpic.openapi.facedetect.FaceDetector.DetectType;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.DynamicMaskFilter;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.FastMaskFilter;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.MaskMergeFilter;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.StaticMaskFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.DynamicMaskFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.FastMaskFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.MaskMergeFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.StaticMaskFilter;
 import com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomFilterGroup;
 import com.tencent.ttpic.openapi.filter.zoomfilter.ZoomFilter;
 import com.tencent.ttpic.openapi.initializer.TNNGenderSwitchInitializer;
@@ -99,6 +106,7 @@ import com.tencent.ttpic.openapi.manager.TriggerStateManager;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.GLBItemJava;
+import com.tencent.ttpic.openapi.model.KapuModelViewParam;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
@@ -126,6 +134,7 @@ import com.tencent.ttpic.trigger.TriggerManager;
 import com.tencent.ttpic.trigger.ZoomTriggerCtrlItem;
 import com.tencent.ttpic.trigger.triggerctrlitem.DetectorSettingTrigerCtrlItem;
 import com.tencent.ttpic.util.AlgoUtils;
+import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FrameUtil;
 import com.tencent.ttpic.util.PersonParam;
 import com.tencent.ttpic.util.VideoFrameUtil;
@@ -217,6 +226,7 @@ public class VideoFilterList
   private Map<Integer, Float> mCpValueMap = new HashMap();
   private int mCurMVPart = 0;
   private PersonParam mCurPersonParam = new PersonParam();
+  private List<RenderItem> mDepthSmokeRenderItems;
   private VideoFilterBase mEffectFilter;
   private Frame mEffectFrame = new Frame();
   private int mEffectOrder = -1;
@@ -239,10 +249,13 @@ public class VideoFilterList
   private MaskMergeFilter mMaskMergeFilter = new MaskMergeFilter();
   private Frame mMaskStickerFrame = new Frame();
   private List<RenderItem> mMaskStickerRenderItemList;
+  private int[] mMaskTextureIDs = null;
   private List<PointF> mMaskTouchPoints = new ArrayList();
   private Frame mMergeMaskFrame = new Frame();
+  private List<RenderItem> mOvalDistortionRenderItems;
   private PhantomFilter mPhantomFilter;
   private Frame mPhantomFrame = new Frame();
+  private List<RenderItem> mPluginRenderItemList;
   private Map<Integer, Float> mPopularValueMap = new HashMap();
   private List<RenderItem> mRemodelRenderItems;
   private float mScaleFace = 1.0F;
@@ -250,6 +263,8 @@ public class VideoFilterList
   private List<List<PointF>> mTouchPoints = new ArrayList();
   private List<VideoFilterBase> mTransformFilters;
   private List<RenderItem> mTransformRenderItems;
+  private RenderItem mUKYORenderItem = null;
+  private List<RenderItem> mUVEditRenderItems;
   private RenderItem mZoomRenderItem;
   private VideoMaterial material;
   private List<MultiViewerFilter> multiViewerFilters;
@@ -1065,6 +1080,14 @@ public class VideoFilterList
     return localArrayList;
   }
   
+  private FilamentFilter getFilament()
+  {
+    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null) && ((this.filamentRenderItem.filter instanceof FilamentFilter))) {
+      return (FilamentFilter)this.filamentRenderItem.filter;
+    }
+    return null;
+  }
+  
   private boolean getIsPositiveFace(PTFaceAttr paramPTFaceAttr, Frame paramFrame)
   {
     if ((paramPTFaceAttr == null) || (paramFrame == null)) {
@@ -1320,7 +1343,7 @@ public class VideoFilterList
       {
         if ((!this.mAgeValueMap.containsKey(Integer.valueOf(paramInt))) || ((this.mAgeValueMap.containsKey(Integer.valueOf(paramInt))) && (((Float)this.mAgeValueMap.get(Integer.valueOf(paramInt))).floatValue() < 0.0F)))
         {
-          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt, FaceDetector.DETECT_TYPE.DETECT_TYPE_AGE.value);
+          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt, FaceDetector.DetectType.DETECT_TYPE_AGE.value);
           if ((int)(f * 100.0F) == 0) {
             continue;
           }
@@ -1341,10 +1364,10 @@ public class VideoFilterList
             if ((localObject2 != null) && (localObject1 != null))
             {
               ((TriggerCtrlItem)localObject1).setAgeRangeValue(((Float)this.mAgeValueMap.get(Integer.valueOf(paramInt))).floatValue());
-              if (((paramVideoPreviewFaceOutlineDetector instanceof DynamicNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_AGE.value)) {
+              if (((paramVideoPreviewFaceOutlineDetector instanceof DynamicNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_AGE.value)) {
                 ((DynamicNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mAgeValueMap.get(Integer.valueOf(paramInt))).floatValue() * 100.0F));
               }
-              if (((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_AGE.value)) {
+              if (((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_AGE.value)) {
                 ((StaticNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mAgeValueMap.get(Integer.valueOf(paramInt))).floatValue() * 100.0F));
               }
             }
@@ -1389,64 +1412,6 @@ public class VideoFilterList
     }
   }
   
-  private void hitCharmRangeItem(int paramInt)
-  {
-    if (!CharmRandomManager.getInstance().constainsFaceCharm(paramInt)) {}
-    Object localObject1;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          hitRenderItemsCharmRange(this.renderItems, paramInt);
-          hitRenderItemsCharmRange(this.mBeautyTransformListRenderItems, paramInt);
-          hitRenderItemsCharmRange(this.mRemodelRenderItems, paramInt);
-          hitRenderItemsCharmRange(this.mFaceOffRenderItems, paramInt);
-          hitRenderItemsCharmRange(this.mMaskStickerRenderItemList, paramInt);
-          if ((this.mHairCosRenderItem != null) && (this.mHairCosRenderItem.triggerCtrlItem != null)) {
-            this.mHairCosRenderItem.triggerCtrlItem.hitCharmRange(paramInt);
-          }
-          Object localObject2;
-          if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null) && ((this.filamentRenderItem.filter instanceof FilamentFilter)))
-          {
-            localObject1 = (FilamentFilter)this.filamentRenderItem.filter;
-            if (((FilamentFilter)localObject1).getGlbList() != null)
-            {
-              localObject1 = ((FilamentFilter)localObject1).getGlbList().iterator();
-              while (((Iterator)localObject1).hasNext())
-              {
-                localObject2 = (GLBItemJava)((Iterator)localObject1).next();
-                if (((GLBItemJava)localObject2).charmRange != null) {
-                  ((GLBItemJava)localObject2).charmRange.hit(CharmRandomManager.getInstance().getFaceCharmValue(paramInt));
-                }
-              }
-            }
-          }
-          if (this.mFacialFeatureFilterList != null)
-          {
-            localObject1 = this.mFacialFeatureFilterList.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (FacialFeatureFilter)((Iterator)localObject1).next();
-              if (localObject2 != null)
-              {
-                localObject2 = ((FacialFeatureFilter)localObject2).getStickerRenderItems();
-                if (localObject2 != null) {
-                  hitRenderItemsCharmRange((List)localObject2, paramInt);
-                }
-              }
-            }
-          }
-        } while (this.styleChildRenderItems == null);
-        localObject1 = (RenderItem)this.styleChildRenderItems.get(0);
-      } while (!(((RenderItem)localObject1).triggerCtrlItem instanceof StyleChildTriggerCtrlItem));
-      localObject1 = (StyleChildTriggerCtrlItem)((RenderItem)localObject1).triggerCtrlItem;
-    } while (localObject1 == null);
-    ((StyleChildTriggerCtrlItem)localObject1).hitCharmRange(CharmRandomManager.getInstance().getFaceCharmValue(paramInt));
-  }
-  
   private void hitCpRangeItem(VideoPreviewFaceOutlineDetector paramVideoPreviewFaceOutlineDetector, int paramInt1, int paramInt2)
   {
     if ((paramVideoPreviewFaceOutlineDetector == null) || (!paramVideoPreviewFaceOutlineDetector.needDetectFaceValue()) || (paramInt2 < 2)) {}
@@ -1459,7 +1424,7 @@ public class VideoFilterList
       {
         if ((!this.mCpValueMap.containsKey(Integer.valueOf(paramInt1))) || ((this.mCpValueMap.containsKey(Integer.valueOf(paramInt1))) && (((Float)this.mCpValueMap.get(Integer.valueOf(paramInt1))).floatValue() < 0.0F)))
         {
-          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt1, FaceDetector.DETECT_TYPE.DETECT_TYPE_CP.value);
+          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt1, FaceDetector.DetectType.DETECT_TYPE_CP.value);
           if ((int)(f * 100.0F) == 0) {
             continue;
           }
@@ -1479,7 +1444,7 @@ public class VideoFilterList
             if (localObject1 != null) {
               ((TriggerCtrlItem)localObject1).setCpRangeValue(((Float)this.mCpValueMap.get(Integer.valueOf(paramInt1))).floatValue());
             }
-            if ((localObject2 != null) && ((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_CP.value)) {
+            if ((localObject2 != null) && ((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_CP.value)) {
               ((StaticNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mCpValueMap.get(Integer.valueOf(paramInt1))).floatValue() * 100.0F));
             }
           }
@@ -1583,7 +1548,7 @@ public class VideoFilterList
       {
         if ((!this.mGenderValueMap.containsKey(Integer.valueOf(paramInt))) || ((this.mGenderValueMap.containsKey(Integer.valueOf(paramInt))) && (((Float)this.mGenderValueMap.get(Integer.valueOf(paramInt))).floatValue() < 0.0F)))
         {
-          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt, FaceDetector.DETECT_TYPE.DETECT_TYPE_SEX.value);
+          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt, FaceDetector.DetectType.DETECT_TYPE_SEX.value);
           if ((int)(f * 100.0F) == 0) {
             continue;
           }
@@ -1603,10 +1568,10 @@ public class VideoFilterList
             if ((localObject2 != null) && (localObject1 != null))
             {
               ((TriggerCtrlItem)localObject1).setGenderRangeValue(((Float)this.mGenderValueMap.get(Integer.valueOf(paramInt))).floatValue());
-              if (((paramVideoPreviewFaceOutlineDetector instanceof DynamicNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_SEX.value)) {
+              if (((paramVideoPreviewFaceOutlineDetector instanceof DynamicNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_SEX.value)) {
                 ((DynamicNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mGenderValueMap.get(Integer.valueOf(paramInt))).floatValue() * 100.0F));
               }
-              if (((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_SEX.value)) {
+              if (((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_SEX.value)) {
                 ((StaticNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mGenderValueMap.get(Integer.valueOf(paramInt))).floatValue() * 100.0F));
               }
             }
@@ -1698,7 +1663,7 @@ public class VideoFilterList
       {
         if ((!this.mPopularValueMap.containsKey(Integer.valueOf(paramInt))) || ((this.mPopularValueMap.containsKey(Integer.valueOf(paramInt))) && (((Float)this.mPopularValueMap.get(Integer.valueOf(paramInt))).floatValue() < 0.0F)))
         {
-          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt, FaceDetector.DETECT_TYPE.DETECT_TYPE_POPULAR.value);
+          float f = paramVideoPreviewFaceOutlineDetector.getFaceValues(paramInt, FaceDetector.DetectType.DETECT_TYPE_POPULAR.value);
           if ((int)(f * 100.0F) == 0) {
             continue;
           }
@@ -1718,10 +1683,10 @@ public class VideoFilterList
             if ((localObject2 != null) && (localObject1 != null))
             {
               ((TriggerCtrlItem)localObject1).setPopularRangeValue(((Float)this.mPopularValueMap.get(Integer.valueOf(paramInt))).floatValue());
-              if (((paramVideoPreviewFaceOutlineDetector instanceof DynamicNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_POPULAR.value)) {
+              if (((paramVideoPreviewFaceOutlineDetector instanceof DynamicNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_POPULAR.value)) {
                 ((DynamicNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mPopularValueMap.get(Integer.valueOf(paramInt))).floatValue() * 100.0F));
               }
-              if (((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DETECT_TYPE.DETECT_TYPE_POPULAR.value)) {
+              if (((paramVideoPreviewFaceOutlineDetector instanceof StaticNumFilter)) && (((StickerItem)localObject2).markMode == FaceDetector.DetectType.DETECT_TYPE_POPULAR.value)) {
                 ((StaticNumFilter)paramVideoPreviewFaceOutlineDetector).setNum((int)(((Float)this.mPopularValueMap.get(Integer.valueOf(paramInt))).floatValue() * 100.0F));
               }
             }
@@ -2335,6 +2300,8 @@ public class VideoFilterList
           updateRenderItems((PTDetectInfo)localObject4, this.faceParticleDynamicRenderItems);
           paramFrame = RenderProcessForRenderItems(paramFrame, this.faceParticleDynamicRenderItems);
           updateRenderItems((PTDetectInfo)localObject4, this.faceGpuParticleDynamicRenderItems);
+          updateRenderItem((PTDetectInfo)localObject4, this.mUKYORenderItem);
+          updateRenderItems((PTDetectInfo)localObject4, this.mDepthSmokeRenderItems);
           localObject1 = RenderProcessForGpuParticleRenderItems(paramFrame, this.faceGpuParticleDynamicRenderItems);
           if (this.mMaskStickerRenderItemList != null)
           {
@@ -2360,7 +2327,7 @@ public class VideoFilterList
         updateFilters((PTDetectInfo)localObject1, this.qqGestureStaticFilters);
         paramFrame = RenderProcessForFilters(paramFrame, this.multiViewerOutFrame, this.qqGestureStaticFilters);
         int i = 0;
-        label868:
+        label888:
         if ((i < j) && (i < this.mFaceList.size()))
         {
           localObject4 = (Face)this.mFaceList.get(i);
@@ -2375,26 +2342,32 @@ public class VideoFilterList
           localObject1 = ((Face)localObject4).facePoints;
           localObject4 = ((Face)localObject4).faceAngles;
           if ((!needShookHeadCount()) || (this.currentFaceInfo == null) || (this.selectFaceIndex < 0) || (this.selectFaceIndex >= localList1.size())) {
-            break label1702;
+            break label1747;
           }
           setCurPersonId(i);
           localObject1 = (List)localList1.get(this.selectFaceIndex);
           localObject4 = (float[])localList2.get(this.selectFaceIndex);
         }
-        label1684:
-        label1690:
-        label1702:
+        label1435:
+        label1729:
+        label1735:
+        label1747:
         for (;;)
         {
           localObject1 = new PTDetectInfo.Builder().facePoints((List)localObject1).faceAngles((float[])localObject4).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).displacementMaskFrame(this.displacementMaskFrame).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).aiAttr(paramAIAttr).build();
           updateRenderItems((PTDetectInfo)localObject1, this.fgDynamicRenderItems);
+          if (i == 0)
+          {
+            updateRenderItem((PTDetectInfo)localObject1, this.mUKYORenderItem);
+            updateRenderItems((PTDetectInfo)localObject1, this.mDepthSmokeRenderItems);
+          }
           paramFrame = RenderProcessForRenderItems(paramFrame, this.multiViewerOutFrame, this.fgDynamicRenderItems);
           updateRenderItems((PTDetectInfo)localObject1, this.faceParticleDynamicRenderItems);
           paramFrame = RenderProcessForRenderItems(paramFrame, this.multiViewerOutFrame, this.faceParticleDynamicRenderItems);
           updateRenderItems((PTDetectInfo)localObject1, this.faceGpuParticleDynamicRenderItems);
           paramFrame = RenderProcessForGpuParticleRenderItems(paramFrame, this.multiViewerOutFrame, this.faceGpuParticleDynamicRenderItems);
           i += 1;
-          break label868;
+          break label888;
           resetPersonParam(paramPTFaceAttr);
           if (this.mPhantomFilter != null)
           {
@@ -2414,10 +2387,9 @@ public class VideoFilterList
               if (localList2.size() > 0)
               {
                 localObject3 = (float[])localList2.get(0);
-                label1390:
                 localObject3 = ((PTDetectInfo.Builder)localObject4).faceAngles((float[])localObject3).aiAttr(paramAIAttr).build();
                 if (!isHandPointsValid((List)localObject1)) {
-                  break label1690;
+                  break label1735;
                 }
                 updateRenderItems((PTDetectInfo)localObject3, this.gestureRenderItems);
                 paramFrame = RenderProcessForRenderItems(paramFrame, this.gestureRenderItems);
@@ -2441,13 +2413,13 @@ public class VideoFilterList
                 for (paramFrame = null;; paramFrame = (AECatAttr)paramAIAttr.getAvailableData(AEDetectorType.CAT.value))
                 {
                   if (paramFrame == null) {
-                    break label1684;
+                    break label1729;
                   }
                   updateRenderItems(new PTDetectInfo.Builder().triggeredExpression(localSet).catFacePoints(paramFrame.getCatPointList()).catFaceAngles(paramFrame.getAngles()).phoneAngle(paramPTFaceAttr.getRealPhoneRotation()).timestamp(l).aiAttr(paramAIAttr).build(), this.catRenderItems);
                   paramFrame = RenderProcessForRenderItems((Frame)localObject1, this.catRenderItems);
                   break;
                   localObject3 = null;
-                  break label1390;
+                  break label1435;
                 }
                 paramFrame = (Frame)localObject1;
                 break;
@@ -2600,6 +2572,15 @@ public class VideoFilterList
         }
       }
     }
+  }
+  
+  private Bitmap updateDepthBitmap()
+  {
+    PTSkyAttr localPTSkyAttr = (PTSkyAttr)this.aiAttr.getRealtimeData(AEDetectorType.RGB_DEPTH.value);
+    if ((localPTSkyAttr != null) && (localPTSkyAttr.isReady()) && (localPTSkyAttr.getMaskBitmap() != null) && (!localPTSkyAttr.getMaskBitmap().isRecycled())) {
+      return localPTSkyAttr.getMaskBitmap();
+    }
+    return null;
   }
   
   private void updateDetectorSettingListener(IStickerListener paramIStickerListener)
@@ -2899,6 +2880,24 @@ public class VideoFilterList
         }
       }
     }
+    if (this.mUVEditRenderItems != null)
+    {
+      localObject1 = this.mUVEditRenderItems.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RenderItem)((Iterator)localObject1).next();
+        if ((((RenderItem)localObject2).filter instanceof UVEditFilter)) {
+          ((UVEditFilter)((RenderItem)localObject2).filter).ApplyGLSLFilter();
+        }
+      }
+    }
+    if (this.mDepthSmokeRenderItems != null)
+    {
+      localObject1 = this.mDepthSmokeRenderItems.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((RenderItem)((Iterator)localObject1).next()).apply();
+      }
+    }
     if (this.mARParticleFilter != null) {
       this.mARParticleFilter.ApplyGLSLFilter();
     }
@@ -2909,7 +2908,7 @@ public class VideoFilterList
       this.voiceTextFilter.ApplyGLSLFilter();
     }
     if (this.mActFilters != null) {
-      this.mActFilters.ApplyGLSLFilter();
+      this.mActFilters.apply();
     }
     if (this.mBlurMaskFilter != null) {
       this.mBlurMaskFilter.ApplyGLSLFilter();
@@ -2925,6 +2924,17 @@ public class VideoFilterList
         }
       }
     }
+    if (this.mPluginRenderItemList != null)
+    {
+      localObject1 = this.mPluginRenderItemList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RenderItem)((Iterator)localObject1).next();
+        if ((((RenderItem)localObject2).filter instanceof IPluginFilter)) {
+          ((IPluginFilter)((RenderItem)localObject2).filter).apply();
+        }
+      }
+    }
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).initial();
     }
@@ -2932,16 +2942,15 @@ public class VideoFilterList
     {
       this.fabbyExtractFilter = new FabbyExtractFilter();
       if ((this.material == null) || ((this.material.getSegmentBorderType() != VideoMaterialUtil.SEGMENT_BORDER_TYPE.BORDER_FLOW_LINES.type) && (this.material.getSegmentBorderType() != VideoMaterialUtil.SEGMENT_BORDER_TYPE.BORDER_TRIGGER.type))) {
-        break label1879;
+        break label2046;
       }
       if (this.material.getSegmentStrokeItem() == null) {
-        break label1790;
+        break label1957;
       }
       localObject1 = new TriggerCtrlItem(this.material.getSegmentStrokeItem());
       this.triggerManager.addTriggers((AETriggerI)localObject1);
       this.fabbyStrokeRenderItem = new RenderItem(new FabbyStrokeFilter(this.material.getSegmentStrokeItem()), (TriggerCtrlItem)localObject1);
     }
-    label1879:
     for (;;)
     {
       this.fastBlurFilter = new FastBlurFilter();
@@ -2977,7 +2986,7 @@ public class VideoFilterList
           ((EffectTriggerFilter)((RenderItem)localObject2).filter).ApplyGLSLFilter();
         }
       }
-      label1790:
+      label1957:
       if (this.material.getSegmentStrokeTriggerItems() != null)
       {
         localObject1 = new FabbyStrokeFilterExt(this.material.getSegmentStrokeTriggerItems());
@@ -2989,6 +2998,7 @@ public class VideoFilterList
       {
         this.fabbyStrokeRenderItem = new RenderItem(new FabbyStrokeFilter(), null);
         continue;
+        label2046:
         this.fabbyStrokeRenderItem = new RenderItem(new FabbyStrokeFilter(), null);
       }
     }
@@ -3017,6 +3027,9 @@ public class VideoFilterList
       if (localObject1 != null) {
         ((ZoomFilter)localObject1).ApplyGLSLFilter();
       }
+    }
+    if (this.mUKYORenderItem != null) {
+      this.mUKYORenderItem.apply();
     }
     this.mFaceOffNoseOcclusionFilter.ApplyGLSLFilter();
     if (this.mHairCosRenderItem != null)
@@ -3117,6 +3130,19 @@ public class VideoFilterList
     return localFrame1;
   }
   
+  public Frame UKYOGameRender(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mUKYORenderItem != null)
+    {
+      localFrame = this.mUKYORenderItem.RenderProcess(paramFrame);
+      if (localFrame != paramFrame) {
+        paramFrame.unlock();
+      }
+    }
+    return localFrame;
+  }
+  
   public void addARFilterGesture()
   {
     if (this.arFilterGesture == null) {
@@ -3174,6 +3200,13 @@ public class VideoFilterList
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).arTracked();
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).arTracked();
+      }
     }
   }
   
@@ -3440,6 +3473,20 @@ public class VideoFilterList
         ((ZoomFilter)localObject1).clear();
       }
     }
+    if (this.mPluginRenderItemList != null)
+    {
+      localObject1 = this.mPluginRenderItemList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RenderItem)((Iterator)localObject1).next();
+        if ((((RenderItem)localObject2).filter instanceof IPluginFilter)) {
+          ((IPluginFilter)((RenderItem)localObject2).filter).clear();
+        }
+      }
+    }
+    if (this.mUKYORenderItem != null) {
+      this.mUKYORenderItem.clear();
+    }
     if (this.mMaskStickerRenderItemList != null)
     {
       localObject1 = this.mMaskStickerRenderItemList.iterator();
@@ -3509,7 +3556,7 @@ public class VideoFilterList
       BitmapUtils.recycle(this.fabbyFrameBitmap);
       this.fabbyFrameBitmap = null;
     }
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     if (this.snapShotFrameToSticker != null) {
       this.snapShotFrameToSticker.clear();
     }
@@ -3572,14 +3619,38 @@ public class VideoFilterList
       this.mStyleFilterRenderItems.clear();
       this.mStyleFilterRenderItems = null;
     }
+    if (this.mUVEditRenderItems != null)
+    {
+      localObject1 = this.mUVEditRenderItems.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RenderItem)((Iterator)localObject1).next();
+        if ((((RenderItem)localObject2).filter instanceof VideoFilterBase)) {
+          ((VideoFilterBase)((RenderItem)localObject2).filter).clearGLSLSelf();
+        }
+        ((RenderItem)localObject2).clear();
+      }
+      this.mUVEditRenderItems = null;
+    }
+    if (this.mDepthSmokeRenderItems != null)
+    {
+      localObject1 = this.mDepthSmokeRenderItems.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((RenderItem)((Iterator)localObject1).next()).clear();
+      }
+      this.mDepthSmokeRenderItems = null;
+    }
+    if (this.mMaskTextureIDs != null) {
+      GLES20.glDeleteTextures(this.mMaskTextureIDs.length, this.mMaskTextureIDs, 0);
+    }
     if (this.fabbyExtractFilter != null) {
-      this.fabbyExtractFilter.ClearGLSL();
+      this.fabbyExtractFilter.clearGLSL();
     }
     if ((this.fabbyStrokeRenderItem != null) && ((this.fabbyStrokeRenderItem.filter instanceof FabbyStrokeFilter))) {
-      ((FabbyStrokeFilter)this.fabbyStrokeRenderItem.filter).ClearGLSL();
+      ((FabbyStrokeFilter)this.fabbyStrokeRenderItem.filter).clearGLSL();
     }
     if (this.fastBlurFilter != null) {
-      this.fastBlurFilter.ClearGLSL();
+      this.fastBlurFilter.clearGLSL();
     }
     if (this.mFastFaceStickerRenderItems != null)
     {
@@ -3602,9 +3673,9 @@ public class VideoFilterList
       this.voiceTextFilter.clearGLSLSelf();
     }
     this.fastParticleFilter.clearGLSLSelf();
-    this.starOverlayFilter.ClearGLSL();
+    this.starOverlayFilter.clearGLSL();
     this.starOverlayFrame.clear();
-    this.displacementBlurFilter.ClearGLSL();
+    this.displacementBlurFilter.clearGLSL();
     if (this.mFrozenRender != null)
     {
       this.mFrozenRender.clear();
@@ -3984,6 +4055,16 @@ public class VideoFilterList
         ((ZoomFilter)localObject1).reset();
       }
     }
+    if (this.mUKYORenderItem != null) {
+      ((UKYOGame)this.mUKYORenderItem).reset();
+    }
+    if (this.mDepthSmokeRenderItems != null)
+    {
+      localObject1 = this.mDepthSmokeRenderItems.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((DepthMaskRenderItem)((Iterator)localObject1).next()).reset();
+      }
+    }
     if (this.mMaskStickerRenderItemList != null)
     {
       localObject1 = this.mMaskStickerRenderItemList.iterator();
@@ -4000,13 +4081,33 @@ public class VideoFilterList
     if (this.mBlurMaskFilter != null) {
       this.mBlurMaskFilter.reset();
     }
+    if (this.mPluginRenderItemList != null)
+    {
+      localObject1 = this.mPluginRenderItemList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RenderItem)((Iterator)localObject1).next();
+        if ((((RenderItem)localObject2).filter instanceof IPluginFilter)) {
+          ((IPluginFilter)((RenderItem)localObject2).filter).reset();
+        }
+      }
+    }
     this.triggerManager.reset();
   }
   
   public boolean exportFilamentParams()
   {
-    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
-      return ((FilamentFilter)this.filamentRenderItem.filter).exportParams();
+    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null) && (((FilamentFilter)this.filamentRenderItem.filter).exportParams())) {
+      return true;
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        if (((MultiViewerFilter)localIterator.next()).exportFilamentParams()) {
+          return true;
+        }
+      }
     }
     return false;
   }
@@ -4087,6 +4188,17 @@ public class VideoFilterList
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       return ((FilamentFilter)this.filamentRenderItem.filter).getFilamentAssetPosition();
     }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext())
+      {
+        float[] arrayOfFloat = ((MultiViewerFilter)localIterator.next()).getFilamentAssetPosition();
+        if (arrayOfFloat != null) {
+          return arrayOfFloat;
+        }
+      }
+    }
     return null;
   }
   
@@ -4123,6 +4235,11 @@ public class VideoFilterList
   public int getOnlyDetectOneGesture()
   {
     return this.onlyDetectOneGesture;
+  }
+  
+  public Object getParam(String paramString)
+  {
+    return null;
   }
   
   public List<RenderItem> getRenderItems()
@@ -4297,6 +4414,73 @@ public class VideoFilterList
     return (this.mZoomRenderItem != null) && (this.mZoomRenderItem.filter != null);
   }
   
+  public void hitCharmRangeItem(int paramInt)
+  {
+    if (!CharmRandomManager.getInstance().constainsFaceCharm(paramInt)) {}
+    for (;;)
+    {
+      return;
+      hitRenderItemsCharmRange(this.renderItems, paramInt);
+      hitRenderItemsCharmRange(this.mBeautyTransformListRenderItems, paramInt);
+      hitRenderItemsCharmRange(this.mRemodelRenderItems, paramInt);
+      hitRenderItemsCharmRange(this.mFaceOffRenderItems, paramInt);
+      hitRenderItemsCharmRange(this.mMaskStickerRenderItemList, paramInt);
+      if ((this.mHairCosRenderItem != null) && (this.mHairCosRenderItem.triggerCtrlItem != null)) {
+        this.mHairCosRenderItem.triggerCtrlItem.hitCharmRange(paramInt);
+      }
+      Object localObject1;
+      Object localObject2;
+      if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null) && ((this.filamentRenderItem.filter instanceof FilamentFilter)))
+      {
+        localObject1 = (FilamentFilter)this.filamentRenderItem.filter;
+        if (((FilamentFilter)localObject1).getGlbList() != null)
+        {
+          localObject1 = ((FilamentFilter)localObject1).getGlbList().iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (GLBItemJava)((Iterator)localObject1).next();
+            if (((GLBItemJava)localObject2).charmRange != null) {
+              ((GLBItemJava)localObject2).charmRange.hit(CharmRandomManager.getInstance().getFaceCharmValue(paramInt));
+            }
+          }
+        }
+      }
+      if (this.mFacialFeatureFilterList != null)
+      {
+        localObject1 = this.mFacialFeatureFilterList.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (FacialFeatureFilter)((Iterator)localObject1).next();
+          if (localObject2 != null)
+          {
+            localObject2 = ((FacialFeatureFilter)localObject2).getStickerRenderItems();
+            if (localObject2 != null) {
+              hitRenderItemsCharmRange((List)localObject2, paramInt);
+            }
+          }
+        }
+      }
+      if (this.styleChildRenderItems != null)
+      {
+        localObject1 = (RenderItem)this.styleChildRenderItems.get(0);
+        if ((((RenderItem)localObject1).triggerCtrlItem instanceof StyleChildTriggerCtrlItem))
+        {
+          localObject1 = (StyleChildTriggerCtrlItem)((RenderItem)localObject1).triggerCtrlItem;
+          if (localObject1 != null) {
+            ((StyleChildTriggerCtrlItem)localObject1).hitCharmRange(CharmRandomManager.getInstance().getFaceCharmValue(paramInt));
+          }
+        }
+      }
+      if (this.multiViewerFilters != null)
+      {
+        localObject1 = this.multiViewerFilters.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((MultiViewerFilter)((Iterator)localObject1).next()).hitCharmRangeItem(paramInt);
+        }
+      }
+    }
+  }
+  
   public boolean isAllFreezeFrame()
   {
     boolean bool2;
@@ -4360,8 +4544,17 @@ public class VideoFilterList
   
   public boolean isFilamentModelReady()
   {
-    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
-      return ((FilamentFilter)this.filamentRenderItem.filter).isModelReady();
+    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null) && (((FilamentFilter)this.filamentRenderItem.filter).isModelReady())) {
+      return true;
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        if (((MultiViewerFilter)localIterator.next()).isFilamentModelReady()) {
+          return true;
+        }
+      }
     }
     return false;
   }
@@ -4519,9 +4712,21 @@ public class VideoFilterList
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).pauseAnimation();
     }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).pauseAnimaiton();
+      }
+    }
   }
   
   public Frame processTransformRelatedFilters(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
+  {
+    return processTransformRelatedFilters(paramFrame, paramPTFaceAttr, true);
+  }
+  
+  public Frame processTransformRelatedFilters(Frame paramFrame, PTFaceAttr paramPTFaceAttr, boolean paramBoolean)
   {
     this.directDraw = false;
     Set localSet = paramPTFaceAttr.getTriggeredExpression();
@@ -4542,182 +4747,237 @@ public class VideoFilterList
         long l = paramPTFaceAttr.getTimeStamp();
         int j = Math.min(this.mFaceList.size(), getMaterial().getMaxFaceCount());
         GlUtil.setBlendMode(true);
-        if (j <= 0)
-        {
-          localObject1 = new PTDetectInfo.Builder().triggeredExpression(localSet).timestamp(l).aiAttr(this.aiAttr).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
-          updateRenderItems((PTDetectInfo)localObject1, this.mFaceOffRenderItems);
-          updateRenderItems((PTDetectInfo)localObject1, this.mTransformRenderItems);
-          updateRenderItems((PTDetectInfo)localObject1, this.mBeautyTransformListRenderItems);
-          updateRenderItems((PTDetectInfo)localObject1, this.mRemodelRenderItems);
-        }
-        hitStaticFaceRandomGroupItem();
-        int i = 0;
+        localObject1 = paramFrame;
         Object localObject3;
         Object localObject4;
-        PTDetectInfo localPTDetectInfo;
-        if (i < j)
+        int i;
+        if (j <= 0)
         {
-          localObject3 = (Face)this.mFaceList.get(i);
-          setCurPersonId(((Face)localObject3).faceIndex);
-          setCurGender(((Face)localObject3).gender);
-          hitCharmRangeItem(((Face)localObject3).faceIndex);
-          hitDynamicFaceRandomGroupItem(((Face)localObject3).faceIndex);
-          hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject3).faceIndex);
-          hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject3).faceIndex);
-          hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject3).faceIndex);
-          hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject3).faceIndex, j);
-          if (paramPTFaceAttr.getTransformFacePoints() != null)
-          {
-            localObject1 = (List)paramPTFaceAttr.getTransformFacePoints().get(i);
-            localObject4 = new PTDetectInfo.Builder().facePoints(((Face)localObject3).facePoints).faceAngles(((Face)localObject3).faceAngles).triggeredExpression(localSet).aiAttr(this.aiAttr).timestamp(l).pointsVis(((Face)localObject3).facePointVis).handPoints(localList).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).bodyPoints((List)localObject2).transformPoints((List)localObject1).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRotation()).realPhoneAngle(paramPTFaceAttr.getSrcRotation()).faceDetector(paramPTFaceAttr.getFaceDetector());
-            localObject1 = (PointF)((Face)localObject3).facePoints.get(63);
-            if (((paramPTFaceAttr.getFacePiont2DCenter() == null) || (((PointF)localObject1).x != paramPTFaceAttr.getFacePiont2DCenter().x) || (((PointF)localObject1).y != paramPTFaceAttr.getFacePiont2DCenter().y)) || ((paramPTFaceAttr.getFace3DVerticesArray() != null) && (paramPTFaceAttr.getFace3DVerticesArray().size() > 0))) {
-              ((PTDetectInfo.Builder)localObject4).face3DVerticesArray((float[])paramPTFaceAttr.getFace3DVerticesArray().get(0));
-            }
-            if ((paramPTFaceAttr.getFace3DRotationArray() != null) && (paramPTFaceAttr.getFace3DRotationArray().size() > 0)) {
-              ((PTDetectInfo.Builder)localObject4).face3DRotationArray((float[])paramPTFaceAttr.getFace3DRotationArray().get(0));
-            }
-            localPTDetectInfo = null;
-            localObject1 = localPTDetectInfo;
-            if (this.mFaceOffRenderItems != null)
-            {
-              localObject1 = localPTDetectInfo;
-              if (this.mFaceOffRenderItems.size() > 0)
-              {
-                localObject1 = new PTDetectInfo.Builder().facePoints(((Face)localObject3).facePoints).faceAngles(((Face)localObject3).faceAngles).build();
-                this.mFaceOffNoseOcclusionFilter.updatePreview(localObject1);
-                localObject1 = FrameBufferCache.getInstance().get(paramFrame.width, paramFrame.height);
-                FrameUtil.clearFrame((Frame)localObject1, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
-                this.mFaceOffNoseOcclusionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, (Frame)localObject1);
-                ((PTDetectInfo.Builder)localObject4).noseOcclusionFrame((Frame)localObject1);
-              }
-            }
-            localPTDetectInfo = ((PTDetectInfo.Builder)localObject4).build();
-            if (this.mFaceOffRenderItems == null) {
-              break label1364;
-            }
-            FaceOffFilterManager.getInstance().updateIndex();
-            updateRenderItems(localPTDetectInfo, this.mFaceOffRenderItems, j, i);
-            paramFrame = RenderProcessForRenderItems(paramFrame, this.mFaceOffRenderItems);
+          localObject3 = new PTDetectInfo.Builder().triggeredExpression(localSet).timestamp(l).aiAttr(this.aiAttr).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
+          if (paramBoolean) {
+            updateRenderItems((PTDetectInfo)localObject3, this.mFaceOffRenderItems);
           }
-        }
-        label1364:
-        for (;;)
-        {
-          if (localObject1 != null) {
-            ((Frame)localObject1).unlock();
-          }
-          if (this.mFacialFeatureFilterList != null)
-          {
-            GlUtil.setBlendMode(false);
-            localObject1 = this.mFacialFeatureFilterList.iterator();
-            for (;;)
-            {
-              if (((Iterator)localObject1).hasNext())
-              {
-                ((FacialFeatureFilter)((Iterator)localObject1).next()).updateStickerFilterList(((Face)localObject3).facePoints, localList, (List)localObject2, ((Face)localObject3).faceAngles, paramFrame);
-                continue;
-                localObject1 = null;
-                break;
-              }
-            }
-            GlUtil.setBlendMode(true);
-          }
+          updateRenderItems((PTDetectInfo)localObject3, this.mTransformRenderItems);
+          updateRenderItems((PTDetectInfo)localObject3, this.mOvalDistortionRenderItems);
+          updateRenderItems((PTDetectInfo)localObject3, this.mBeautyTransformListRenderItems);
+          updateRenderItems((PTDetectInfo)localObject3, this.mRemodelRenderItems);
           localObject1 = paramFrame;
           if (this.mTransformRenderItems != null)
           {
-            localObject1 = new ArrayList();
-            localObject3 = this.mTransformRenderItems.iterator();
-            while (((Iterator)localObject3).hasNext())
+            localObject1 = paramFrame;
+            if (paramPTFaceAttr.getReusedFaceAttr() != null)
             {
-              localObject4 = (RenderItem)((Iterator)localObject3).next();
-              if ((localObject4 != null) && (((RenderItem)localObject4).filter != null))
-              {
-                Object localObject5 = (TransformFilter)((RenderItem)localObject4).filter;
-                ((TransformFilter)localObject5).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
-                localObject5 = ((TransformFilter)localObject5).getFaceMeshItem();
-                if ((localObject5 == null) || (((FaceMeshItem)localObject5).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceMeshItem)localObject5).genderType))) {
-                  ((List)localObject1).add(localObject4);
-                }
-              }
-            }
-            updateRenderItems(localPTDetectInfo, (List)localObject1);
-            localObject1 = RenderProcessForRenderItems(paramFrame, (List)localObject1);
-          }
-          paramFrame = (Frame)localObject1;
-          if (this.mBeautyTransformListRenderItems != null)
-          {
-            localObject3 = this.mBeautyTransformListRenderItems.iterator();
-            for (;;)
-            {
-              paramFrame = (Frame)localObject1;
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              paramFrame = (RenderItem)((Iterator)localObject3).next();
-              if ((paramFrame != null) && (paramFrame.filter != null))
-              {
-                localObject4 = (BeautyTransformList)paramFrame.filter;
-                ((BeautyTransformList)localObject4).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
-                localObject4 = ((BeautyTransformList)localObject4).getFaceBeautyItem();
-                if ((localObject4 == null) || (((FaceBeautyItem)localObject4).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceBeautyItem)localObject4).genderType)))
-                {
-                  paramFrame.updatePreview(localPTDetectInfo);
-                  paramFrame = paramFrame.RenderProcess((Frame)localObject1);
-                  if (paramFrame != localObject1) {
-                    ((Frame)localObject1).unlock();
-                  }
-                  localObject1 = paramFrame;
-                }
-              }
-            }
-          }
-          GlUtil.setBlendMode(false);
-          localObject1 = paramFrame;
-          if (this.mRemodelRenderItems != null)
-          {
-            localObject3 = this.mRemodelRenderItems.iterator();
-            for (;;)
-            {
+              localObject4 = paramPTFaceAttr.getReusedFaceAttr();
+              i = 0;
               localObject1 = paramFrame;
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              localObject1 = (RenderItem)((Iterator)localObject3).next();
-              if ((localObject1 != null) && (((RenderItem)localObject1).filter != null))
-              {
-                localObject4 = (RemodelFilter)((RenderItem)localObject1).filter;
-                ((RemodelFilter)localObject4).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
-                localObject4 = ((RemodelFilter)localObject4).getFaceBeautyItem();
-                if ((localObject4 == null) || (((FaceBeautyItem)localObject4).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceBeautyItem)localObject4).genderType)))
-                {
-                  ((RenderItem)localObject1).updatePreview(localPTDetectInfo);
-                  paramFrame = ((RenderItem)localObject1).RenderProcess(paramFrame);
+              if (i < ((PTFaceAttr)localObject4).getFaceCount()) {
+                if ((paramPTFaceAttr.getTransformFacePoints() == null) || (i >= paramPTFaceAttr.getTransformFacePoints().size())) {
+                  break label1866;
                 }
               }
             }
           }
-          GlUtil.setBlendMode(true);
-          paramFrame = (Frame)localObject1;
-          if (this.mFacialFeatureFilterList != null)
+        }
+        label1860:
+        label1866:
+        for (localObject1 = (List)paramPTFaceAttr.getTransformFacePoints().get(i);; localObject1 = null)
+        {
+          new PTDetectInfo.Builder().facePoints((List)((PTFaceAttr)localObject4).getAllFacePoints().get(i)).faceAngles((float[])((PTFaceAttr)localObject4).getAllFaceAngles().get(i)).triggeredExpression(localSet).aiAttr(this.aiAttr).timestamp(l).pointsVis((Float[])((PTFaceAttr)localObject4).getPointsVis().get(i)).handPoints(localList).bodyPoints((List)localObject2).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).transformPoints((List)localObject1).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRotation()).realPhoneAngle(paramPTFaceAttr.getSrcRotation()).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
+          localObject1 = new ArrayList();
+          Object localObject5 = this.mTransformRenderItems.iterator();
+          Object localObject6;
+          while (((Iterator)localObject5).hasNext())
           {
-            localObject3 = this.mFacialFeatureFilterList.iterator();
-            for (;;)
+            localObject6 = (RenderItem)((Iterator)localObject5).next();
+            if ((localObject6 != null) && (((RenderItem)localObject6).filter != null))
             {
-              paramFrame = (Frame)localObject1;
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
+              Object localObject7 = (TransformFilter)((RenderItem)localObject6).filter;
+              ((TransformFilter)localObject7).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
+              localObject7 = ((TransformFilter)localObject7).getFaceMeshItem();
+              if ((localObject7 == null) || (((FaceMeshItem)localObject7).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceMeshItem)localObject7).genderType))) {
+                ((List)localObject1).add(localObject6);
               }
-              paramFrame = ((FacialFeatureFilter)((Iterator)localObject3).next()).getStickerRenderItems();
-              updateRenderItems(localPTDetectInfo, paramFrame);
-              localObject1 = RenderProcessForRenderItems((Frame)localObject1, paramFrame);
             }
           }
+          updateRenderItems((PTDetectInfo)localObject3, (List)localObject1);
+          paramFrame = RenderProcessForRenderItems(paramFrame, (List)localObject1);
           i += 1;
           break;
-          resetPersonParam(paramPTFaceAttr);
-          GlUtil.setBlendMode(false);
-          return paramFrame;
+          hitStaticFaceRandomGroupItem();
+          i = 0;
+          paramFrame = (Frame)localObject1;
+          if (i < j)
+          {
+            localObject5 = (Face)this.mFaceList.get(i);
+            setCurPersonId(((Face)localObject5).faceIndex);
+            setCurGender(((Face)localObject5).gender);
+            hitCharmRangeItem(((Face)localObject5).faceIndex);
+            hitDynamicFaceRandomGroupItem(((Face)localObject5).faceIndex);
+            hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject5).faceIndex);
+            hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject5).faceIndex);
+            hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject5).faceIndex);
+            hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject5).faceIndex, j);
+            if (paramPTFaceAttr.getTransformFacePoints() != null)
+            {
+              localObject1 = (List)paramPTFaceAttr.getTransformFacePoints().get(i);
+              localObject1 = new PTDetectInfo.Builder().facePoints(((Face)localObject5).facePoints).faceAngles(((Face)localObject5).faceAngles).triggeredExpression(localSet).aiAttr(this.aiAttr).timestamp(l).pointsVis(((Face)localObject5).facePointVis).handPoints(localList).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).bodyPoints((List)localObject2).transformPoints((List)localObject1).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRotation()).realPhoneAngle(paramPTFaceAttr.getSrcRotation()).faceDetector(paramPTFaceAttr.getFaceDetector());
+              localObject3 = (PointF)((Face)localObject5).facePoints.get(63);
+              if (((paramPTFaceAttr.getFacePiont2DCenter() == null) || (((PointF)localObject3).x != paramPTFaceAttr.getFacePiont2DCenter().x) || (((PointF)localObject3).y != paramPTFaceAttr.getFacePiont2DCenter().y)) || ((paramPTFaceAttr.getFace3DVerticesArray() != null) && (paramPTFaceAttr.getFace3DVerticesArray().size() > 0))) {
+                ((PTDetectInfo.Builder)localObject1).face3DVerticesArray((float[])paramPTFaceAttr.getFace3DVerticesArray().get(0));
+              }
+              if ((paramPTFaceAttr.getFace3DRotationArray() != null) && (paramPTFaceAttr.getFace3DRotationArray().size() > 1))
+              {
+                ((PTDetectInfo.Builder)localObject1).face3DRotationArray((float[])paramPTFaceAttr.getFace3DRotationArray().get(0));
+                ((PTDetectInfo.Builder)localObject1).face3DNormalRotationArray((float[])paramPTFaceAttr.getFace3DRotationArray().get(1));
+              }
+              if ((!paramBoolean) || (this.mFaceOffRenderItems == null) || (this.mFaceOffRenderItems.size() <= 0)) {
+                break label1860;
+              }
+              localObject3 = new PTDetectInfo.Builder().facePoints(((Face)localObject5).facePoints).faceAngles(((Face)localObject5).faceAngles).build();
+              this.mFaceOffNoseOcclusionFilter.updatePreview(localObject3);
+              localObject3 = FrameBufferCache.getInstance().get(paramFrame.width, paramFrame.height);
+              FrameUtil.clearFrame((Frame)localObject3, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
+              this.mFaceOffNoseOcclusionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, (Frame)localObject3);
+              ((PTDetectInfo.Builder)localObject1).noseOcclusionFrame((Frame)localObject3);
+            }
+          }
+          for (;;)
+          {
+            localObject4 = ((PTDetectInfo.Builder)localObject1).build();
+            if ((paramBoolean) && (this.mFaceOffRenderItems != null))
+            {
+              FaceOffFilterManager.getInstance().updateIndex();
+              updateRenderItems(updateFaceoffPosition((PTDetectInfo.Builder)localObject1, this.mFaceOffRenderItems, ((Face)localObject5).facePoints, ((Face)localObject5).faceAngles, paramPTFaceAttr.getSrcRotation(), paramPTFaceAttr.getRotation()), this.mFaceOffRenderItems, j, i);
+            }
+            for (localObject1 = RenderProcessForRenderItems(paramFrame, this.mFaceOffRenderItems);; localObject1 = paramFrame)
+            {
+              if (localObject3 != null) {
+                ((Frame)localObject3).unlock();
+              }
+              if (this.mFacialFeatureFilterList != null)
+              {
+                GlUtil.setBlendMode(false);
+                paramFrame = this.mFacialFeatureFilterList.iterator();
+                for (;;)
+                {
+                  if (paramFrame.hasNext())
+                  {
+                    ((FacialFeatureFilter)paramFrame.next()).updateStickerFilterList(((Face)localObject5).facePoints, localList, (List)localObject2, ((Face)localObject5).faceAngles, (Frame)localObject1);
+                    continue;
+                    localObject1 = null;
+                    break;
+                  }
+                }
+                GlUtil.setBlendMode(true);
+              }
+              paramFrame = (Frame)localObject1;
+              if (this.mOvalDistortionRenderItems != null)
+              {
+                paramFrame = (Frame)localObject1;
+                if (this.mOvalDistortionRenderItems.size() > 0)
+                {
+                  updateRenderItems((PTDetectInfo)localObject4, this.mOvalDistortionRenderItems);
+                  paramFrame = ((RenderItem)this.mOvalDistortionRenderItems.get(0)).RenderProcess((Frame)localObject1);
+                }
+              }
+              localObject1 = paramFrame;
+              if (this.mTransformRenderItems != null)
+              {
+                localObject1 = new ArrayList();
+                localObject3 = this.mTransformRenderItems.iterator();
+                while (((Iterator)localObject3).hasNext())
+                {
+                  localObject5 = (RenderItem)((Iterator)localObject3).next();
+                  if ((localObject5 != null) && (((RenderItem)localObject5).filter != null))
+                  {
+                    localObject6 = (TransformFilter)((RenderItem)localObject5).filter;
+                    ((TransformFilter)localObject6).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
+                    localObject6 = ((TransformFilter)localObject6).getFaceMeshItem();
+                    if ((localObject6 == null) || (((FaceMeshItem)localObject6).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceMeshItem)localObject6).genderType))) {
+                      ((List)localObject1).add(localObject5);
+                    }
+                  }
+                }
+                updateRenderItems((PTDetectInfo)localObject4, (List)localObject1);
+                localObject1 = RenderProcessForRenderItems(paramFrame, (List)localObject1);
+              }
+              paramFrame = (Frame)localObject1;
+              if (this.mBeautyTransformListRenderItems != null)
+              {
+                localObject3 = this.mBeautyTransformListRenderItems.iterator();
+                for (;;)
+                {
+                  paramFrame = (Frame)localObject1;
+                  if (!((Iterator)localObject3).hasNext()) {
+                    break;
+                  }
+                  paramFrame = (RenderItem)((Iterator)localObject3).next();
+                  if ((paramFrame != null) && (paramFrame.filter != null))
+                  {
+                    localObject5 = (BeautyTransformList)paramFrame.filter;
+                    ((BeautyTransformList)localObject5).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
+                    localObject5 = ((BeautyTransformList)localObject5).getFaceBeautyItem();
+                    if ((localObject5 == null) || (((FaceBeautyItem)localObject5).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceBeautyItem)localObject5).genderType)))
+                    {
+                      paramFrame.updatePreview(localObject4);
+                      paramFrame = paramFrame.RenderProcess((Frame)localObject1);
+                      if (paramFrame != localObject1) {
+                        ((Frame)localObject1).unlock();
+                      }
+                      localObject1 = paramFrame;
+                    }
+                  }
+                }
+              }
+              GlUtil.setBlendMode(false);
+              localObject1 = paramFrame;
+              if (this.mRemodelRenderItems != null)
+              {
+                localObject3 = this.mRemodelRenderItems.iterator();
+                for (;;)
+                {
+                  localObject1 = paramFrame;
+                  if (!((Iterator)localObject3).hasNext()) {
+                    break;
+                  }
+                  localObject1 = (RenderItem)((Iterator)localObject3).next();
+                  if ((localObject1 != null) && (((RenderItem)localObject1).filter != null))
+                  {
+                    localObject5 = (RemodelFilter)((RenderItem)localObject1).filter;
+                    ((RemodelFilter)localObject5).setNeedReCaculateFace(this.material.isNeedReCaculateFace());
+                    localObject5 = ((RemodelFilter)localObject5).getFaceBeautyItem();
+                    if ((localObject5 == null) || (((FaceBeautyItem)localObject5).genderType <= 0) || (this.mCurPersonParam.isGenderMatch(((FaceBeautyItem)localObject5).genderType)))
+                    {
+                      ((RenderItem)localObject1).updatePreview(localObject4);
+                      paramFrame = ((RenderItem)localObject1).RenderProcess(paramFrame);
+                    }
+                  }
+                }
+              }
+              GlUtil.setBlendMode(true);
+              paramFrame = (Frame)localObject1;
+              if (this.mFacialFeatureFilterList != null)
+              {
+                localObject3 = this.mFacialFeatureFilterList.iterator();
+                for (;;)
+                {
+                  paramFrame = (Frame)localObject1;
+                  if (!((Iterator)localObject3).hasNext()) {
+                    break;
+                  }
+                  paramFrame = ((FacialFeatureFilter)((Iterator)localObject3).next()).getStickerRenderItems();
+                  updateRenderItems((PTDetectInfo)localObject4, paramFrame);
+                  localObject1 = RenderProcessForRenderItems((Frame)localObject1, paramFrame);
+                }
+              }
+              i += 1;
+              break;
+              resetPersonParam(paramPTFaceAttr);
+              GlUtil.setBlendMode(false);
+              return paramFrame;
+            }
+            localObject3 = null;
+          }
         }
       }
     }
@@ -4868,6 +5128,14 @@ public class VideoFilterList
     return localObject;
   }
   
+  public Frame renderMaskToFrame(Frame paramFrame)
+  {
+    if ((this.material != null) && (this.material.getDepthType() > 0) && (this.aiAttr != null) && (updateDepthTexture() > 0)) {
+      this.mCopyFilter.RenderProcess(this.mMaskTextureIDs[0], paramFrame.width, paramFrame.height, -1, 0.0D, paramFrame);
+    }
+    return paramFrame;
+  }
+  
   public int renderOder()
   {
     int j = 0;
@@ -4956,6 +5224,13 @@ public class VideoFilterList
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).resumeAnimation();
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).resumeAnimation();
+      }
     }
   }
   
@@ -5149,10 +5424,22 @@ public class VideoFilterList
     }
   }
   
+  public void setDepthSmokerItems(List<RenderItem> paramList)
+  {
+    this.mDepthSmokeRenderItems = paramList;
+  }
+  
   public void setDownEventUnProjectionPoint(ArrayList<float[]> paramArrayList)
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).setDownEventUnProjectionPoint(paramArrayList);
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).setDownEventUnProjectionPoint(paramArrayList);
+      }
     }
   }
   
@@ -5196,7 +5483,7 @@ public class VideoFilterList
   public void setFilamentFilterFrames()
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
-      ((FilamentFilter)this.filamentRenderItem.filter).setFrames(this.mvPartsAndMultiViewerFrameMap);
+      ((FilamentFilter)this.filamentRenderItem.filter).setMultiViewerFrames(this.mvPartsAndMultiViewerFrameMap);
     }
   }
   
@@ -5420,6 +5707,13 @@ public class VideoFilterList
     this.triggerManager.setIsRenderForBitmap(paramBoolean);
   }
   
+  public void setKapuMaterialDisplayType(CmShowMaterialDisplayType paramCmShowMaterialDisplayType)
+  {
+    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
+      ((FilamentFilter)this.filamentRenderItem.filter).setKapuMaterialDisplayType(paramCmShowMaterialDisplayType);
+    }
+  }
+  
   public void setLut(RenderItem paramRenderItem)
   {
     this.lutItemsRenderItem = paramRenderItem;
@@ -5475,9 +5769,91 @@ public class VideoFilterList
     this.onlyDetectOneGesture = paramInt;
   }
   
+  public void setParam(String paramString, Object paramObject)
+  {
+    Object localObject = getFilament();
+    int i = -1;
+    switch (paramString.hashCode())
+    {
+    default: 
+      switch (i)
+      {
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (this.multiViewerFilters == null) {
+        return;
+      }
+      localObject = this.multiViewerFilters.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((MultiViewerFilter)((Iterator)localObject).next()).setParam(paramString, paramObject);
+      }
+      if (!paramString.equals("setFilamentKapumodel")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!paramString.equals("setFilamentUserLoader")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramString.equals("playKapuAnimation")) {
+        break;
+      }
+      i = 2;
+      break;
+      if (!paramString.equals("updateKapuModelView")) {
+        break;
+      }
+      i = 3;
+      break;
+      if (!paramString.equals("setKapuMaterialDisplayType")) {
+        break;
+      }
+      i = 4;
+      break;
+      if (!paramString.equals("switchCameraViewType")) {
+        break;
+      }
+      i = 5;
+      break;
+      if ((localObject != null) && (paramObject != null) && ((paramObject instanceof CmShowAssetsData)) && (goto 112) && (localObject != null) && (paramObject != null) && ((paramObject instanceof ArrayList)))
+      {
+        ((FilamentFilter)localObject).setLoaders((ArrayList)paramObject);
+        continue;
+        if (localObject != null)
+        {
+          ((FilamentFilter)localObject).playKapuAnimation();
+          continue;
+          if ((localObject != null) && ((paramObject instanceof KapuModelViewParam)))
+          {
+            ((FilamentFilter)localObject).setKapuModelView((KapuModelViewParam)paramObject);
+            continue;
+            if ((localObject != null) && (paramObject != null) && ((paramObject instanceof CmShowMaterialDisplayType)))
+            {
+              ((FilamentFilter)localObject).setKapuMaterialDisplayType((CmShowMaterialDisplayType)paramObject);
+              continue;
+              if ((localObject != null) && (paramObject != null) && ((paramObject instanceof CameraViewType))) {
+                ((FilamentFilter)localObject).switchCameraViewType((CameraViewType)paramObject);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
   public void setPhantomFilter(PhantomFilter paramPhantomFilter)
   {
     this.mPhantomFilter = paramPhantomFilter;
+  }
+  
+  public void setPluginRenderItems(List<RenderItem> paramList)
+  {
+    this.mPluginRenderItemList = paramList;
   }
   
   public void setQQGestureFilters(List<VideoFilterBase> paramList1, List<VideoFilterBase> paramList2)
@@ -5531,7 +5907,7 @@ public class VideoFilterList
     this.mRemodelRenderItems = paramList;
   }
   
-  public void setRenderItems(List<RenderItem> paramList1, List<RenderItem> paramList2, List<RenderItem> paramList3)
+  public void setRenderItems(List<RenderItem> paramList1, List<RenderItem> paramList2, List<RenderItem> paramList3, List<RenderItem> paramList4)
   {
     VideoFilterUtil.removeEmptyRenderItems(paramList1);
     VideoFilterUtil.removeEmptyRenderItems(paramList2);
@@ -5542,9 +5918,11 @@ public class VideoFilterList
     this.bgDynamicStickerRenderItems = getStickerRenderItems(paramList1, false, false);
     this.renderItems.addAll(paramList1);
     this.renderItems.addAll(paramList3);
+    this.renderItems.addAll(paramList4);
     this.staticCountRenderItems = getStaticStickerRenderItems(this.fgStaticStickerRenderItems);
     this.mFaceOffRenderItems = paramList2;
     this.mTransformRenderItems = paramList3;
+    this.mOvalDistortionRenderItems = paramList4;
   }
   
   public void setRenderMode(int paramInt)
@@ -5626,6 +6004,9 @@ public class VideoFilterList
         ((ZoomFilter)localObject).setRenderMode(paramInt);
       }
     }
+    if (this.mUKYORenderItem != null) {
+      ((UKYOGame)this.mUKYORenderItem).setRenderMode(paramInt);
+    }
     if (this.mMaskStickerRenderItemList != null)
     {
       localObject = this.mMaskStickerRenderItemList.iterator();
@@ -5639,6 +6020,13 @@ public class VideoFilterList
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).setScreenMidPoint(paramArrayOfFloat);
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).setScreenMidPoint(paramArrayOfFloat);
+      }
     }
   }
   
@@ -5661,9 +6049,14 @@ public class VideoFilterList
       do
       {
         return;
-      } while ((this.filamentRenderItem == null) || (this.filamentRenderItem.filter == null) || (!(paramIStickerListener instanceof MaterialLoadFinishListener)));
-      ((FilamentFilter)this.filamentRenderItem.filter).setOnLoadFinishListener((MaterialLoadFinishListener)paramIStickerListener);
-      return;
+        if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null) && ((paramIStickerListener instanceof MaterialLoadFinishListener))) {
+          ((FilamentFilter)this.filamentRenderItem.filter).setOnLoadFinishListener((MaterialLoadFinishListener)paramIStickerListener);
+        }
+      } while (this.multiViewerFilters == null);
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).setStickerListener(paramInt, paramIStickerListener);
+      }
     }
     updateDetectorSettingListener(paramIStickerListener);
   }
@@ -5683,10 +6076,31 @@ public class VideoFilterList
     this.mStyleFilterRenderItems = paramList;
   }
   
+  public void setTouchRotate(float[] paramArrayOfFloat)
+  {
+    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
+      ((FilamentFilter)this.filamentRenderItem.filter).setFilamentAssetRotate(paramArrayOfFloat);
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).setTouchRotate(paramArrayOfFloat);
+      }
+    }
+  }
+  
   public void setTouchScale(float paramFloat)
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).setFilamentAssetScale(paramFloat);
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).setTouchScale(paramFloat);
+      }
     }
   }
   
@@ -5702,10 +6116,27 @@ public class VideoFilterList
     }
   }
   
+  public void setUKYOGameRenderItem(RenderItem paramRenderItem)
+  {
+    this.mUKYORenderItem = paramRenderItem;
+  }
+  
+  public void setUVEditRenderItems(List<RenderItem> paramList)
+  {
+    this.mUVEditRenderItems = paramList;
+  }
+  
   public void setUnProjectionHitPoint(float[] paramArrayOfFloat, boolean paramBoolean)
   {
     if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
       ((FilamentFilter)this.filamentRenderItem.filter).setUnProjectionHitPoint(paramArrayOfFloat, paramBoolean);
+    }
+    if (this.multiViewerFilters != null)
+    {
+      Iterator localIterator = this.multiViewerFilters.iterator();
+      while (localIterator.hasNext()) {
+        ((MultiViewerFilter)localIterator.next()).setUnProjectionHitPoint(paramArrayOfFloat, paramBoolean);
+      }
     }
   }
   
@@ -5732,6 +6163,13 @@ public class VideoFilterList
   public void setmEffectTriggerRenderItems(List<RenderItem> paramList)
   {
     this.mEffectTriggerRenderItems = paramList;
+  }
+  
+  public void switchCameraViewType(CameraViewType paramCameraViewType)
+  {
+    if ((this.filamentRenderItem != null) && (this.filamentRenderItem.filter != null)) {
+      ((FilamentFilter)this.filamentRenderItem.filter).switchCameraViewType(paramCameraViewType);
+    }
   }
   
   public Frame undateAndRenderMaskSticker(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr)
@@ -6193,6 +6631,37 @@ public class VideoFilterList
     return localFrame;
   }
   
+  public Frame updateAndRenderDepthSmokeItems(Frame paramFrame)
+  {
+    if (this.mDepthSmokeRenderItems == null) {}
+    Bitmap localBitmap;
+    do
+    {
+      return paramFrame;
+      localBitmap = updateDepthBitmap();
+    } while (localBitmap == null);
+    Object localObject = (PTSkyAttr)this.aiAttr.getRealtimeData(AEDetectorType.RGB_DEPTH.value);
+    if (localObject != null) {}
+    for (localObject = ((PTSkyAttr)localObject).getPixelRange();; localObject = null)
+    {
+      Iterator localIterator = this.mDepthSmokeRenderItems.iterator();
+      while (localIterator.hasNext())
+      {
+        RenderItem localRenderItem = (RenderItem)localIterator.next();
+        if ((localRenderItem instanceof DepthMaskRenderItem))
+        {
+          ((DepthMaskRenderItem)localRenderItem).setDepthMaskParams(localBitmap, (float[])localObject);
+          ((DepthMaskRenderItem)localRenderItem).updateBitmapTexutre();
+        }
+      }
+    }
+    localObject = RenderProcessForRenderItems(paramFrame, this.mDepthSmokeRenderItems);
+    if (localObject != paramFrame) {
+      paramFrame.unlock();
+    }
+    return localObject;
+  }
+  
   public Frame updateAndRenderDynamicStickers(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr)
   {
     if (paramFrame == null) {
@@ -6309,9 +6778,9 @@ public class VideoFilterList
   {
     this.directDraw = false;
     Set localSet = paramPTFaceAttr.getTriggeredExpression();
-    Object localObject1 = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
-    if (localObject1 != null) {
-      localSet.add(Integer.valueOf(((PTHandAttr)localObject1).getHandType()));
+    Object localObject = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
+    if (localObject != null) {
+      localSet.add(Integer.valueOf(((PTHandAttr)localObject).getHandType()));
     }
     long l = paramPTFaceAttr.getTimeStamp();
     int j = Math.min(this.mFaceList.size(), getMaterial().getMaxFaceCount());
@@ -6321,57 +6790,59 @@ public class VideoFilterList
     }
     hitStaticFaceRandomGroupItem();
     int i = 0;
-    Object localObject2;
+    Face localFace;
+    PTDetectInfo.Builder localBuilder;
     if (i < j)
     {
-      localObject1 = (Face)this.mFaceList.get(i);
-      setCurPersonId(((Face)localObject1).faceIndex);
-      setCurGender(((Face)localObject1).gender);
-      hitCharmRangeItem(((Face)localObject1).faceIndex);
-      hitDynamicFaceRandomGroupItem(((Face)localObject1).faceIndex);
-      hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject1).faceIndex);
-      hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject1).faceIndex);
-      hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject1).faceIndex);
-      hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), ((Face)localObject1).faceIndex, j);
-      localObject2 = new PTDetectInfo.Builder().facePoints(((Face)localObject1).facePoints).faceAngles(((Face)localObject1).faceAngles).triggeredExpression(localSet).aiAttr(paramAIAttr).timestamp(l).pointsVis(((Face)localObject1).facePointVis).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRotation()).realPhoneAngle(paramPTFaceAttr.getSrcRotation()).faceDetector(paramPTFaceAttr.getFaceDetector());
-      PointF localPointF = (PointF)((Face)localObject1).facePoints.get(63);
+      localFace = (Face)this.mFaceList.get(i);
+      setCurPersonId(localFace.faceIndex);
+      setCurGender(localFace.gender);
+      hitCharmRangeItem(localFace.faceIndex);
+      hitDynamicFaceRandomGroupItem(localFace.faceIndex);
+      hitAgeRangeItem(paramPTFaceAttr.getFaceDetector(), localFace.faceIndex);
+      hitGenderRangeItem(paramPTFaceAttr.getFaceDetector(), localFace.faceIndex);
+      hitPopularRangeItem(paramPTFaceAttr.getFaceDetector(), localFace.faceIndex);
+      hitCpRangeItem(paramPTFaceAttr.getFaceDetector(), localFace.faceIndex, j);
+      localBuilder = new PTDetectInfo.Builder().facePoints(localFace.facePoints).faceAngles(localFace.faceAngles).triggeredExpression(localSet).aiAttr(paramAIAttr).timestamp(l).pointsVis(localFace.facePointVis).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).phoneAngle(paramPTFaceAttr.getRotation()).realPhoneAngle(paramPTFaceAttr.getSrcRotation()).faceDetector(paramPTFaceAttr.getFaceDetector());
+      localObject = (PointF)localFace.facePoints.get(63);
       if ((paramPTFaceAttr.getFace3DVerticesArray() != null) && (paramPTFaceAttr.getFace3DVerticesArray().size() > 0)) {
-        ((PTDetectInfo.Builder)localObject2).face3DVerticesArray((float[])paramPTFaceAttr.getFace3DVerticesArray().get(0));
+        localBuilder.face3DVerticesArray((float[])paramPTFaceAttr.getFace3DVerticesArray().get(0));
       }
-      if ((paramPTFaceAttr.getFace3DRotationArray() != null) && (paramPTFaceAttr.getFace3DRotationArray().size() > 0)) {
-        ((PTDetectInfo.Builder)localObject2).face3DRotationArray((float[])paramPTFaceAttr.getFace3DRotationArray().get(0));
+      if ((paramPTFaceAttr.getFace3DRotationArray() != null) && (paramPTFaceAttr.getFace3DRotationArray().size() > 1))
+      {
+        localBuilder.face3DRotationArray((float[])paramPTFaceAttr.getFace3DRotationArray().get(0));
+        localBuilder.face3DNormalRotationArray((float[])paramPTFaceAttr.getFace3DRotationArray().get(1));
       }
       if (this.mFaceOffRenderItems == null) {
-        break label593;
+        break label634;
       }
-      localObject1 = new PTDetectInfo.Builder().facePoints(((Face)localObject1).facePoints).faceAngles(((Face)localObject1).faceAngles).build();
-      this.mFaceOffNoseOcclusionFilter.updatePreview(localObject1);
-      localObject1 = FrameBufferCache.getInstance().get(paramFrame.width, paramFrame.height);
-      FrameUtil.clearFrame((Frame)localObject1, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
-      this.mFaceOffNoseOcclusionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, (Frame)localObject1);
-      ((PTDetectInfo.Builder)localObject2).noseOcclusionFrame((Frame)localObject1);
+      localObject = new PTDetectInfo.Builder().facePoints(localFace.facePoints).faceAngles(localFace.faceAngles).build();
+      this.mFaceOffNoseOcclusionFilter.updatePreview(localObject);
+      localObject = FrameBufferCache.getInstance().get(paramFrame.width, paramFrame.height);
+      FrameUtil.clearFrame((Frame)localObject, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
+      this.mFaceOffNoseOcclusionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, (Frame)localObject);
+      localBuilder.noseOcclusionFrame((Frame)localObject);
     }
     for (;;)
     {
-      localObject2 = ((PTDetectInfo.Builder)localObject2).build();
       if (this.mFaceOffRenderItems != null)
       {
         FaceOffFilterManager.getInstance().updateIndex();
-        updateRenderItems((PTDetectInfo)localObject2, this.mFaceOffRenderItems, j, i);
+        updateRenderItems(updateFaceoffPosition(localBuilder, this.mFaceOffRenderItems, localFace.facePoints, localFace.faceAngles, paramPTFaceAttr.getSrcRotation(), paramPTFaceAttr.getRotation()), this.mFaceOffRenderItems, j, i);
         paramFrame = RenderProcessForRenderItems(paramFrame, this.mFaceOffRenderItems);
       }
       for (;;)
       {
-        if (localObject1 != null) {
-          ((Frame)localObject1).unlock();
+        if (localObject != null) {
+          ((Frame)localObject).unlock();
         }
         i += 1;
         break;
         GlUtil.setBlendMode(false);
         return paramFrame;
       }
-      label593:
-      localObject1 = null;
+      label634:
+      localObject = null;
     }
   }
   
@@ -6708,6 +7179,33 @@ public class VideoFilterList
     return localFrame;
   }
   
+  public Frame updateAndRenderPluginFilter(Frame paramFrame)
+  {
+    Object localObject;
+    if (this.mPluginRenderItemList == null)
+    {
+      localObject = paramFrame;
+      return localObject;
+    }
+    Iterator localIterator = this.mPluginRenderItemList.iterator();
+    for (;;)
+    {
+      localObject = paramFrame;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = (RenderItem)localIterator.next();
+      if ((((RenderItem)localObject).filter instanceof IPluginFilter)) {
+        ((IPluginFilter)((RenderItem)localObject).filter).updateParams("AI_ATTRIBUTE_DATA", this.aiAttr);
+      }
+      localObject = ((RenderItem)localObject).RenderProcess(paramFrame);
+      if (localObject != paramFrame) {
+        paramFrame.unlock();
+      }
+      paramFrame = (Frame)localObject;
+    }
+  }
+  
   public Frame updateAndRenderRapidNet(Frame paramFrame, PTFaceAttr paramPTFaceAttr)
   {
     if ((FeatureManager.Features.RAPID_NET_GENDER_SWITCH.isModelLoaded(0)) && (this.rapidNetRenderItems != null) && (this.rapidNetRenderItems.size() > 0) && (this.mFaceList.size() > 0) && (paramPTFaceAttr.getAllFacePoints().size() > 0))
@@ -6805,18 +7303,20 @@ public class VideoFilterList
       l = paramPTFaceAttr.getTimeStamp();
       GlUtil.setBlendMode(true);
       if (((List)localObject2).size() > 0) {
-        break label865;
+        break label885;
       }
       localObject3 = paramPTFaceAttr.getStarPoints();
       localObject4 = new PTDetectInfo.Builder().faceActionCounter((Map)localObject1).aiAttr(this.aiAttr).triggeredExpression((Set)localObject4).timestamp(l).phoneAngle(i).faceDetector(paramPTFaceAttr.getFaceDetector()).displacementMaskFrame(this.displacementMaskFrame).starPoints((List)localObject3).build();
       this.snapShotFrameToSticker.updateTextureWithSticker(this.fgStaticStickerRenderItems, paramFrame, (PTDetectInfo)localObject4);
       if (this.mZoomRenderItem != null) {
         if (this.mFabbyMvFiltersRenderItem == null) {
-          break label1796;
+          break label1836;
         }
       }
     }
-    label1796:
+    label422:
+    label679:
+    label1836:
     for (localObject1 = (FabbyFilters)this.mFabbyMvFiltersRenderItem.filter;; localObject1 = null)
     {
       localObject5 = this.mZoomRenderItem.filter;
@@ -6840,7 +7340,6 @@ public class VideoFilterList
           break label431;
         }
       }
-      label422:
       label431:
       for (i = this.mCurMVPart;; i = ((FabbyFilters)localObject1).getCurPartIndex())
       {
@@ -6865,6 +7364,8 @@ public class VideoFilterList
         break label253;
       }
       label440:
+      updateRenderItem((PTDetectInfo)localObject4, this.mUKYORenderItem);
+      updateRenderItems((PTDetectInfo)localObject4, this.mDepthSmokeRenderItems);
       updateRenderItems((PTDetectInfo)localObject4, this.fgStaticStickerRenderItems);
       paramFrame = RenderProcessForRenderItems(paramFrame, this.fgStaticStickerRenderItems);
       updateRenderItems((PTDetectInfo)localObject4, this.faceParticleStaticRenderItems);
@@ -6882,20 +7383,19 @@ public class VideoFilterList
       {
         GlUtil.setBlendMode(false);
         if (this.mEffectTriggerRenderItems == null) {
-          break label1787;
+          break label1827;
         }
         j = Math.min(((List)localObject2).size(), getMaterial().getMaxFaceCount());
         if (j > 0) {
           break;
         }
         updateEffectTriggerFilters(2, new PTDetectInfo.Builder().faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).timestamp(paramPTFaceAttr.getTimeStamp()).displacementMaskFrame(this.displacementMaskFrame).faceDetector(paramPTFaceAttr.getFaceDetector()).aiAttr(this.aiAttr).build(), this.mEffectTriggerRenderItems);
-        label659:
         localObject1 = paramFrame;
         if (this.mComicEffectRenderItems != null)
         {
           j = Math.min(((List)localObject2).size(), getMaterial().getMaxFaceCount());
           if (j > 0) {
-            break label1603;
+            break label1643;
           }
           updateComicEffectRenderItems(2, new PTDetectInfo.Builder().aiAttr(this.aiAttr).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).triggeredExpression(paramPTFaceAttr.getTriggeredExpression()).timestamp(paramPTFaceAttr.getTimeStamp()).faceDetector(paramPTFaceAttr.getFaceDetector()).build(), this.mComicEffectRenderItems, paramFrame.width, paramFrame.height);
           localObject1 = RenderProcessForComicEffectRenderItems(2, paramFrame, this.mComicEffectRenderItems);
@@ -6912,21 +7412,15 @@ public class VideoFilterList
           }
         }
       }
-      label865:
+      label885:
       localObject3 = paramPTFaceAttr.getStarPoints();
       localObject4 = new PTDetectInfo.Builder().facePoints((List)((List)localObject2).get(0)).faceAngles((float[])((List)localObject5).get(0)).phoneAngle(i).faceActionCounter((Map)localObject1).aiAttr(this.aiAttr).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).triggeredExpression((Set)localObject4).displacementMaskFrame(this.displacementMaskFrame).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).starPoints((List)localObject3).build();
       this.snapShotFrameToSticker.updateTextureWithSticker(this.fgStaticStickerRenderItems, paramFrame, (PTDetectInfo)localObject4);
       if (this.mZoomRenderItem != null) {
         if (this.mFabbyMvFiltersRenderItem == null) {
-          break label1790;
+          break label1830;
         }
       }
-      label1190:
-      label1199:
-      label1208:
-      label1603:
-      label1787:
-      label1790:
       for (localObject1 = (FabbyFilters)this.mFabbyMvFiltersRenderItem.filter;; localObject1 = null)
       {
         localObject5 = this.mZoomRenderItem.filter;
@@ -6934,7 +7428,7 @@ public class VideoFilterList
         {
           localObject6 = (ZoomTriggerCtrlItem)this.mZoomRenderItem.triggerCtrlItem;
           if (localObject1 != null) {
-            break label1190;
+            break label1210;
           }
           i = this.mCurMVPart;
           ((ZoomTriggerCtrlItem)localObject6).updateTriggerStatus((PTDetectInfo)localObject4, i);
@@ -6943,14 +7437,16 @@ public class VideoFilterList
           j = paramFrame.width;
           k = paramFrame.height;
           if (localObject1 != null) {
-            break label1199;
+            break label1219;
           }
         }
+        label1210:
+        label1219:
         for (i = this.mCurMVPart;; i = ((FabbyFilters)localObject1).getCurPartIndex())
         {
           ((ZoomFilter)localObject5).updateZoomParams(paramPTFaceAttr, (PTDetectInfo)localObject4, j, k, i);
           if (this.mMaskStickerRenderItemList == null) {
-            break label1208;
+            break label1228;
           }
           localObject1 = this.mMaskStickerRenderItemList.iterator();
           while (((Iterator)localObject1).hasNext())
@@ -6966,6 +7462,9 @@ public class VideoFilterList
           i = ((FabbyFilters)localObject1).getCurPartIndex();
           break;
         }
+        label1228:
+        updateRenderItem((PTDetectInfo)localObject4, this.mUKYORenderItem);
+        updateRenderItems((PTDetectInfo)localObject4, this.mDepthSmokeRenderItems);
         updateRenderItems((PTDetectInfo)localObject4, this.fgStaticStickerRenderItems);
         paramFrame = RenderProcessForRenderItems(paramFrame, this.fgStaticStickerRenderItems);
         updateRenderItems((PTDetectInfo)localObject4, this.faceParticleStaticRenderItems);
@@ -7003,6 +7502,7 @@ public class VideoFilterList
           paramFrame = RenderProcessForEffectTriggerRenderItems(2, paramFrame, this.mEffectTriggerRenderItems);
           i += 1;
           continue;
+          label1643:
           i = 0;
           for (;;)
           {
@@ -7024,8 +7524,8 @@ public class VideoFilterList
             i += 1;
           }
         }
-        break label659;
-        break label659;
+        break label679;
+        break label679;
       }
     }
   }
@@ -7345,6 +7845,18 @@ public class VideoFilterList
     return localObject;
   }
   
+  public Frame updateAndRenderUVEditItems(Frame paramFrame)
+  {
+    if (this.mUVEditRenderItems == null) {
+      return paramFrame;
+    }
+    Frame localFrame = RenderProcessForRenderItems(paramFrame, this.mUVEditRenderItems);
+    if (localFrame != paramFrame) {
+      paramFrame.unlock();
+    }
+    return localFrame;
+  }
+  
   public Frame updateCatStickers(Frame paramFrame, PTDetectInfo paramPTDetectInfo)
   {
     GlUtil.setBlendMode(true);
@@ -7402,6 +7914,22 @@ public class VideoFilterList
   @Deprecated
   public void updateCurrentTriggerParam(Map<Integer, FaceActionCounter> paramMap, Set<Integer> paramSet, AIAttr paramAIAttr) {}
   
+  public int updateDepthTexture()
+  {
+    PTSkyAttr localPTSkyAttr = (PTSkyAttr)this.aiAttr.getRealtimeData(AEDetectorType.RGB_DEPTH.value);
+    if ((localPTSkyAttr != null) && (localPTSkyAttr.isReady()) && (localPTSkyAttr.getMaskBitmap() != null))
+    {
+      if (this.mMaskTextureIDs == null)
+      {
+        this.mMaskTextureIDs = new int[1];
+        GLES20.glGenTextures(this.mMaskTextureIDs.length, this.mMaskTextureIDs, 0);
+      }
+      GlUtil.loadTexture(this.mMaskTextureIDs[0], localPTSkyAttr.getMaskBitmap());
+      return this.mMaskTextureIDs[0];
+    }
+    return -1;
+  }
+  
   public void updateEffectTriggerFilters(int paramInt, PTDetectInfo paramPTDetectInfo, List<RenderItem> paramList)
   {
     if (this.filters == null) {}
@@ -7451,6 +7979,77 @@ public class VideoFilterList
       }
     }
     syncRandomGroupValue(bool);
+  }
+  
+  public PTDetectInfo updateFaceoffPosition(PTDetectInfo.Builder paramBuilder, List<RenderItem> paramList, List<PointF> paramList1, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2)
+  {
+    if (paramList == null) {
+      return paramBuilder.build();
+    }
+    paramList = paramList.iterator();
+    int i = 0;
+    int j = 0;
+    if (paramList.hasNext())
+    {
+      AEFilterI localAEFilterI = ((RenderItem)paramList.next()).filter;
+      if (!(localAEFilterI instanceof FaceOffFilter)) {
+        break label293;
+      }
+      if (((FaceOffFilter)localAEFilterI).getFaceOffItem().faceExchangeImageDisableFaceCrop)
+      {
+        i = j;
+        j = 1;
+      }
+    }
+    for (;;)
+    {
+      int k = j;
+      j = i;
+      i = k;
+      break;
+      k = 1;
+      j = i;
+      i = k;
+      continue;
+      int m;
+      if (!CollectionUtils.isEmpty(paramList1))
+      {
+        if ((paramFloat1 != 90.0F) && (paramFloat1 != 270.0F)) {
+          break label242;
+        }
+        m = 0;
+        k = Float.valueOf(paramFloat1 - paramFloat2).intValue();
+        if ((k != 0) && (k != 90)) {
+          break label236;
+        }
+        k = -1;
+      }
+      for (;;)
+      {
+        if (j != 0) {
+          paramBuilder.normalFaceoffPoints(FaceOffUtil.getFullCoords_v2(VideoMaterialUtil.copyList(paramList1), 2.0F, -k * paramArrayOfFloat[m], paramArrayOfFloat[(1 - m)], false));
+        }
+        if (i != 0) {
+          paramBuilder.noCropFaceoffPoints(FaceOffUtil.getFullCoords_v2(VideoMaterialUtil.copyList(paramList1), 2.0F, -k * paramArrayOfFloat[m], paramArrayOfFloat[(1 - m)], true));
+        }
+        return paramBuilder.build();
+        label236:
+        k = 1;
+        continue;
+        label242:
+        m = 1;
+        k = Float.valueOf(paramFloat2 - paramFloat1).intValue();
+        if ((k == 90) || (k == 180) || (k == -180)) {
+          k = -1;
+        } else {
+          k = 1;
+        }
+      }
+      label293:
+      k = i;
+      i = j;
+      j = k;
+    }
   }
   
   public void updateFilters(PTDetectInfo paramPTDetectInfo, List<? extends VideoFilterBase> paramList)
@@ -7555,6 +8154,13 @@ public class VideoFilterList
     hitHandRandomGroupItem();
   }
   
+  public void updateRenderItem(PTDetectInfo paramPTDetectInfo, RenderItem paramRenderItem)
+  {
+    if (paramRenderItem != null) {
+      paramRenderItem.updatePreview(paramPTDetectInfo);
+    }
+  }
+  
   public void updateRenderItems(PTDetectInfo paramPTDetectInfo, List<RenderItem> paramList)
   {
     if (paramList == null) {}
@@ -7630,9 +8236,6 @@ public class VideoFilterList
   
   public void updateTriggerManager(PTDetectInfo paramPTDetectInfo)
   {
-    if (this.triggerManager != null) {
-      this.triggerManager.updateTriggerStatus(paramPTDetectInfo);
-    }
     if (this.multiViewerFilters != null)
     {
       Iterator localIterator = this.multiViewerFilters.iterator();
@@ -7643,6 +8246,9 @@ public class VideoFilterList
           localMultiViewerFilter.updateTriggerManager(paramPTDetectInfo);
         }
       }
+    }
+    if (this.triggerManager != null) {
+      this.triggerManager.updateTriggerStatus(paramPTDetectInfo);
     }
   }
   
@@ -7663,19 +8269,25 @@ public class VideoFilterList
     updateRenderItemsVideoSize(this.faceGpuParticleStaticRenderItems, paramInt1, paramInt2, paramDouble);
     updateRenderItemsVideoSize(this.gestureGpuParticleRenderItems, paramInt1, paramInt2, paramDouble);
     updateRenderItemsVideoSize(this.headCropRenderItems, paramInt1, paramInt2, paramDouble);
-    Object localObject = this.qqGestureStaticFilters.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((VideoFilterBase)((Iterator)localObject).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    if (this.mDepthSmokeRenderItems != null) {
+      updateRenderItemsVideoSize(this.mDepthSmokeRenderItems, paramInt1, paramInt2, paramDouble);
     }
-    localObject = this.qqGestureDynamicFilters.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((VideoFilterBase)((Iterator)localObject).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    if (this.mUKYORenderItem != null) {
+      ((UKYOGame)this.mUKYORenderItem).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    }
+    Object localObject1 = this.qqGestureStaticFilters.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((VideoFilterBase)((Iterator)localObject1).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    }
+    localObject1 = this.qqGestureDynamicFilters.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((VideoFilterBase)((Iterator)localObject1).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
     }
     if (this.mFabbyMvFiltersRenderItem != null)
     {
-      localObject = this.mFabbyMvFiltersRenderItem.filter;
-      if (localObject != null) {
-        ((FabbyFilters)localObject).updateVideoSize(paramInt1, paramInt2, paramDouble);
+      localObject1 = this.mFabbyMvFiltersRenderItem.filter;
+      if (localObject1 != null) {
+        ((FabbyFilters)localObject1).updateVideoSize(paramInt1, paramInt2, paramDouble);
       }
     }
     if ((this.headCropRenderItem != null) && (this.headCropRenderItem.filter != null)) {
@@ -7686,9 +8298,9 @@ public class VideoFilterList
     }
     if (this.mFacialFeatureFilterList != null)
     {
-      localObject = this.mFacialFeatureFilterList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((FacialFeatureFilter)((Iterator)localObject).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
+      localObject1 = this.mFacialFeatureFilterList.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((FacialFeatureFilter)((Iterator)localObject1).next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
       }
     }
     if (this.mARParticleFilter != null) {
@@ -7699,32 +8311,44 @@ public class VideoFilterList
     }
     if (this.mFastFaceStickerRenderItems != null)
     {
-      localObject = this.mFastFaceStickerRenderItems.filter;
-      if (localObject != null) {
-        ((FastStickerFilter)localObject).updateVideoSize(paramInt1, paramInt2, paramDouble);
+      localObject1 = this.mFastFaceStickerRenderItems.filter;
+      if (localObject1 != null) {
+        ((FastStickerFilter)localObject1).updateVideoSize(paramInt1, paramInt2, paramDouble);
       }
     }
     if (this.mFastBodyStickerRenderItems != null)
     {
-      localObject = this.mFastBodyStickerRenderItems.filter;
-      if (localObject != null) {
-        ((FastStickerFilter)localObject).updateVideoSize(paramInt1, paramInt2, paramDouble);
+      localObject1 = this.mFastBodyStickerRenderItems.filter;
+      if (localObject1 != null) {
+        ((FastStickerFilter)localObject1).updateVideoSize(paramInt1, paramInt2, paramDouble);
       }
     }
     if (this.mBlurMaskFilter != null) {
       this.mBlurMaskFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);
     }
+    Object localObject2;
+    if (this.mPluginRenderItemList != null)
+    {
+      localObject1 = this.mPluginRenderItemList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RenderItem)((Iterator)localObject1).next();
+        if ((((RenderItem)localObject2).filter instanceof IPluginFilter)) {
+          ((IPluginFilter)((RenderItem)localObject2).filter).updateVideoSize(paramInt1, paramInt2, paramDouble);
+        }
+      }
+    }
     this.mFaceOffNoseOcclusionFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);
     if (this.mMaskStickerRenderItemList != null)
     {
-      localObject = this.mMaskStickerRenderItemList.iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = this.mMaskStickerRenderItemList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        VideoFilterBase localVideoFilterBase = (VideoFilterBase)((RenderItem)((Iterator)localObject).next()).filter;
-        if ((localVideoFilterBase instanceof FastMaskFilter)) {
-          ((FastMaskFilter)localVideoFilterBase).updateVideoSize(paramInt1, paramInt2, paramDouble);
-        } else if ((localVideoFilterBase instanceof DynamicMaskFilter)) {
-          ((DynamicMaskFilter)localVideoFilterBase).updateVideoSize(paramInt1, paramInt2, paramDouble);
+        localObject2 = (VideoFilterBase)((RenderItem)((Iterator)localObject1).next()).filter;
+        if ((localObject2 instanceof FastMaskFilter)) {
+          ((FastMaskFilter)localObject2).updateVideoSize(paramInt1, paramInt2, paramDouble);
+        } else if ((localObject2 instanceof DynamicMaskFilter)) {
+          ((DynamicMaskFilter)localObject2).updateVideoSize(paramInt1, paramInt2, paramDouble);
         }
       }
     }

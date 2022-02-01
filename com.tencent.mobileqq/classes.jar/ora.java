@@ -1,21 +1,26 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
+import com.tencent.biz.widgets.TabLayout;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
-final class ora
-  implements bjoy
+public class ora
+  implements Animator.AnimatorListener
 {
-  ora(oqz paramoqz) {}
+  public ora(ReadInJoyChannelViewPagerController.10 param10) {}
   
-  public final void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ViewBase localViewBase = this.a.a;
-    Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
-    localViewBase.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+    oqy.b(this.a.this$0, false);
+    oqy.a(this.a.this$0, oqy.a, 0.0F, 0);
+    oqy.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

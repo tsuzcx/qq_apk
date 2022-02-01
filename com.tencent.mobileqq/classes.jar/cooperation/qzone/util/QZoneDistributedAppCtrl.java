@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import bftf;
-import bgmp;
+import bhbx;
+import bhwz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -317,7 +317,7 @@ public class QZoneDistributedAppCtrl
         str = (String)paramControl.data.get("key_wns_config_main");
         paramControl = (String)paramControl.data.get("key_wns_config_second");
         QzoneConfig.getInstance().printWNSConfig(str, paramControl);
-        bgmp.d();
+        bhwz.d();
         return;
         paramControl = (String)paramControl.data.get("key_url");
         QZoneAppCtrlUploadFileLogic.showDirFileList(BaseApplicationImpl.getContext(), paramControl);
@@ -353,7 +353,7 @@ public class QZoneDistributedAppCtrl
   {
     Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePluginProxyService.class);
     BaseApplicationImpl.getContext().stopService(localIntent);
-    bftf.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
+    bhbx.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
   }
   
   private void onHandleComboQzProtect(boolean paramBoolean, int paramInt, String paramString)

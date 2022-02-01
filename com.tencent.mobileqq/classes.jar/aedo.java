@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aedo
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aedo(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public aedo(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(this.a.b);
+    GroupManagerActivity.a(this.a, null);
   }
 }
 

@@ -1,40 +1,114 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class aurz
-  extends Handler
+class aurz
+  implements EmoticonCallback
 {
-  WeakReference<WatchTogetherFloatingView> a;
+  aurz(aurs paramaurs) {}
   
-  public aurz(WatchTogetherFloatingView paramWatchTogetherFloatingView)
+  public void delete()
   {
-    this.a = new WeakReference(paramWatchTogetherFloatingView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (aurs.a(this.a).getSelectionStart() == 0) {}
+    for (;;)
     {
-    }
-    do
-    {
-      return;
-      sendEmptyMessageDelayed(2, 20000L);
-      return;
-      removeMessages(2);
       return;
       try
       {
-        ((WatchTogetherFloatingView)this.a.get()).a();
+        Editable localEditable = aurs.a(this.a).getText();
+        int i = aurs.a(this.a).getSelectionStart();
+        int j = android.text.TextUtils.getOffsetBefore(aurs.a(this.a).getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    int i;
+    int j;
+    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    {
+      i = aurs.a(this.a).getSelectionStart();
+      j = aurs.a(this.a).getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
+    }
+    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
+    int k;
+    int m;
+    do
+    {
+      aurs.a(this.a).getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
+      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      i = aurs.a(this.a).getSelectionStart();
+      j = aurs.a(this.a).getSelectionEnd();
+      k = localSystemAndEmojiEmoticonInfo.emotionType;
+      m = localSystemAndEmojiEmoticonInfo.code;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
+      }
+    } while ((k == 2) && (m == -1));
+    String str = "";
+    if (k == 1) {}
+    try
+    {
+      for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
+      {
+        aurs.a(this.a).getEditableText().replace(i, j, paramEmoticonInfo);
+        aurs.a(this.a).requestFocus();
+        localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+        asjb.a().a(k).a(m, 4);
         return;
       }
-      catch (NullPointerException paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        paramEmoticonInfo = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Forward.NewVersion.Dialog", 2, QLog.getStackTraceString(localException));
+          paramEmoticonInfo = str;
+        }
+      }
+    }
   }
+  
+  public void setting() {}
 }
 
 

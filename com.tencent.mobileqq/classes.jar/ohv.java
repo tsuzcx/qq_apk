@@ -1,28 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class ohv
-  implements bhle
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "", "()V", "getKey", "", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class ohv
 {
-  public ohv(EcshopNewPageFragment paramEcshopNewPageFragment) {}
+  @NotNull
+  public abstract String a();
   
-  public void onItemSelect(View paramView, int paramInt)
-  {
-    if ((paramInt == 5) || (paramInt == 4))
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "3046055438");
-      paramView.putExtra("source", 5);
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
-  }
+  @Nullable
+  public abstract JSONObject a();
+  
+  public abstract void a(@NotNull ufw paramufw);
+  
+  public abstract boolean a();
 }
 
 

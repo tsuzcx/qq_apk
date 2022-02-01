@@ -1,6 +1,16 @@
-public abstract interface bgoy
+import android.view.View;
+import com.tencent.mobileqq.data.TroopFeedItem;
+
+public abstract class bgoy
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public bgoy(bgos parambgos) {}
+  
+  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
+  
+  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  {
+    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
+  }
 }
 
 

@@ -1,68 +1,76 @@
-import OnlinePushPack.SvcRespPushMsg;
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.game.SensorAPIJavaScript.9.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.RegionDrawable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
 
 public class nqr
-  implements nqh
 {
-  public nqr(SensorAPIJavaScript paramSensorAPIJavaScript) {}
-  
-  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      AppInterface localAppInterface = this.a.mRuntime.a();
-      if (localAppInterface != null)
-      {
-        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
-        localToServiceMsg.setNeedCallback(false);
-        UniPacket localUniPacket = new UniPacket(true);
-        localUniPacket.setEncodeName("utf-8");
-        int i = bbjb.a;
-        bbjb.a = i + 1;
-        localUniPacket.setRequestId(i);
-        localUniPacket.setServantName("OnlinePush");
-        localUniPacket.setFuncName("SvcRespPushMsg");
-        localUniPacket.setRequestId(paramInt);
-        localUniPacket.put("resp", paramSvcRespPushMsg);
-        localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), apqa.class);
-        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-        localAppInterface.startServlet(paramSvcRespPushMsg);
-        if (QLog.isColorLevel()) {
-          QLog.d("SensorApi", 2, "reply push");
-        }
-      }
+    if (paramInt == 0) {
+      return paramBitmap;
     }
+    return a(paramBitmap, paramInt, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
   }
   
-  public void a(int paramInt, String paramString)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    String str = SensorAPIJavaScript.jdField_a_of_type_Nqe.a(String.valueOf(paramInt));
-    if (!TextUtils.isEmpty(str))
+    long l1 = System.currentTimeMillis();
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.i("MosaicUtil", 2, "mosaic function call");
+    }
+    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    while (paramInt2 < paramInt4)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
+      int i = paramInt3;
+      while (i < paramInt5)
+      {
+        localPaint.setColor(paramBitmap.getPixel(paramInt2, i));
+        int m = Math.min(j, paramInt2 + paramInt1);
+        int n = Math.min(k, i + paramInt1);
+        localCanvas.drawRect(paramInt2, i, m, n, localPaint);
+        i += paramInt1;
       }
-      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
-        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      paramInt2 += paramInt1;
+    }
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("MosaicUtil", 2, "DrawTime: " + (l2 - l1));
+    }
+    return localBitmap;
+  }
+  
+  public static Bitmap a(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      return null;
+    }
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      localObject = (BitmapDrawable)paramDrawable;
+      if (((BitmapDrawable)localObject).getBitmap() != null) {
+        return ((BitmapDrawable)localObject).getBitmap();
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    if ((paramDrawable instanceof RegionDrawable)) {
+      return ((RegionDrawable)paramDrawable).getBitmap();
     }
-    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
+    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
+    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
+    {
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      return localObject;
+    }
   }
 }
 

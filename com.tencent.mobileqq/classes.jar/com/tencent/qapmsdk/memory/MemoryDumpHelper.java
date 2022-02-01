@@ -19,6 +19,7 @@ import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
 import com.tencent.qapmsdk.common.util.AppInfo;
 import com.tencent.qapmsdk.common.util.AsyncSPEditor;
+import com.tencent.qapmsdk.memory.memorydump.IHeapDumper;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,10 +33,16 @@ public class MemoryDumpHelper
 {
   private static final int MAX_THRESHOLD = 100;
   private static final String TAG = "QAPM_memory_MemoryDumpHelper";
+  private static IHeapDumper dumper = null;
   @NonNull
-  private static HashMap<String, String> extraInfoMap = new HashMap();
+  private static HashMap<String, String> extraInfoMap;
   @Nullable
   private static volatile MemoryDumpHelper sInstance = null;
+  
+  static
+  {
+    extraInfoMap = new HashMap();
+  }
   
   private boolean canDumpMemory()
   {
@@ -58,7 +65,7 @@ public class MemoryDumpHelper
     return false;
   }
   
-  public static DumpResult dump(String paramString, IMemoryDumpListener paramIMemoryDumpListener)
+  static DumpResult dump(String paramString, IMemoryDumpListener paramIMemoryDumpListener)
   {
     Object localObject1 = null;
     if (paramIMemoryDumpListener != null) {
@@ -69,7 +76,7 @@ public class MemoryDumpHelper
     }
     for (;;)
     {
-      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString);
+      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString, dumper);
       if (paramIMemoryDumpListener != null) {
         paramIMemoryDumpListener.onHprofDumped(paramString);
       }
@@ -98,7 +105,6 @@ public class MemoryDumpHelper
     }
   }
   
-  @Nullable
   public static MemoryDumpHelper getInstance()
   {
     if (sInstance == null) {}
@@ -112,7 +118,7 @@ public class MemoryDumpHelper
     finally {}
   }
   
-  public static void reportHprofFile(DumpResult paramDumpResult)
+  static void reportHprofFile(DumpResult paramDumpResult)
   {
     String str = ActivityInfo.getCurrentActivityName();
     if (!paramDumpResult.success)
@@ -175,6 +181,11 @@ public class MemoryDumpHelper
     ReporterMachine.INSTANCE.addResultObj(paramString);
   }
   
+  public void setDumper(IHeapDumper paramIHeapDumper)
+  {
+    dumper = paramIHeapDumper;
+  }
+  
   public void setExtraInfo(@Nullable String paramString1, @Nullable String paramString2)
   {
     if (extraInfoMap == null)
@@ -197,18 +208,13 @@ public class MemoryDumpHelper
       if (!canDumpMemory()) {
         return;
       }
-      if (!PluginController.INSTANCE.canCollect(PluginCombination.ceilingHprofPlugin.plugin))
-      {
-        Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "startDumpingMemory abort canCollect=false" });
-        return;
-      }
+      reportHprofFile(dump(paramString, paramIMemoryDumpListener));
+      return;
     }
     catch (Exception paramString)
     {
       Logger.INSTANCE.exception("QAPM_memory_MemoryDumpHelper", paramString);
-      return;
     }
-    reportHprofFile(dump(paramString, paramIMemoryDumpListener));
   }
 }
 

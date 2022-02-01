@@ -1,16 +1,8 @@
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.HashMap;
 
-public class bnjf
-  implements bnry
+public abstract interface bnjf
 {
-  public bnjf(DoodleLayout paramDoodleLayout) {}
-  
-  public void a(@NonNull bnsf parambnsf)
-  {
-    this.a.a(parambnsf.a, parambnsf.b);
-    xwb.b("0X80075CD");
-  }
+  public abstract void a(boolean paramBoolean, HashMap<String, String> paramHashMap);
 }
 
 

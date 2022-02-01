@@ -1,32 +1,9 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import SummaryCard.CondFitUser;
+import java.util.List;
 
-public class ansf
-  extends anri
+public abstract interface ansf
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
-  {
-    paramQQAppInterface = new anse(paramQQAppInterface, paramContext);
-    paramQQAppInterface.b = "qqreg";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
-    }
-    return paramQQAppInterface;
-  }
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

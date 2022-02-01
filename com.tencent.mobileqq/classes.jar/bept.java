@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class bept
-  implements ancx
+  extends beql<EditorState>
 {
-  bept(bepr parambepr, String paramString1, String paramString2, bepu parambepu) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public bept(EditorState paramEditorState, List<EditorState> paramList)
   {
-    List localList = null;
-    if (paramTroopMemberInfo != null) {
-      localList = this.jdField_a_of_type_Bepr.a(paramTroopMemberInfo.honorList);
-    }
+    super(paramList, localList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    bepg.a(this.b).b(true);
     if (QLog.isColorLevel()) {
-      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
-    }
-    if (this.jdField_a_of_type_Bepu != null) {
-      this.jdField_a_of_type_Bepu.a(localList);
+      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
     }
   }
 }

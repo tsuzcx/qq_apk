@@ -1,33 +1,84 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public final class aqql
-  implements Parcelable.Creator
+public class aqql
 {
-  public IPSiteModel.Game a(Parcel paramParcel)
+  private int a(ColorNote paramColorNote)
   {
-    IPSiteModel.Game localGame = new IPSiteModel.Game();
-    localGame.cover = paramParcel.readString();
-    localGame.desc = paramParcel.readString();
-    localGame.id = paramParcel.readString();
-    localGame.jumpUrl = paramParcel.readString();
-    localGame.name = paramParcel.readString();
-    localGame.recommDesc = paramParcel.readString();
-    if (localGame.gameRiches == null) {
-      localGame.gameRiches = new ArrayList();
+    switch (aqoq.a(paramColorNote.getServiceType()) & 0xFFFF0000)
+    {
+    default: 
+      return 2130844341;
+    case 16973824: 
+      return 2130844283;
+    case 17039360: 
+      return 2130839279;
+    case 16842752: 
+      return 2130839280;
+    case 16908288: 
+      return 2130839281;
     }
-    localGame.gameRiches.clear();
-    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
-    return localGame;
+    return 2130844080;
   }
   
-  public IPSiteModel.Game[] a(int paramInt)
+  private Drawable a(Context paramContext, ColorNote paramColorNote)
   {
-    return new IPSiteModel.Game[paramInt];
+    paramContext = paramContext.getResources();
+    int i = a(paramColorNote);
+    try
+    {
+      Object localObject = new URL(paramColorNote.getPicUrl());
+      boolean bool = "resdrawable".equals(((URL)localObject).getProtocol());
+      if (bool) {
+        try
+        {
+          localObject = paramContext.getDrawable(Integer.parseInt(((URL)localObject).getHost()));
+          return localObject;
+        }
+        catch (Throwable localThrowable)
+        {
+          Drawable localDrawable = paramContext.getDrawable(i);
+          QLog.e("DefaultFormItemBuilder", 1, "service type: " + paramColorNote.getServiceType() + " url error.", localThrowable);
+          return localDrawable;
+        }
+      }
+      return paramContext;
+    }
+    catch (MalformedURLException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+      return paramContext;
+      paramColorNote = URLDrawable.URLDrawableOptions.obtain();
+      paramColorNote.mRequestWidth = AIOUtils.dp2px(40.0F, paramContext);
+      paramColorNote.mRequestHeight = AIOUtils.dp2px(40.0F, paramContext);
+      paramColorNote.mLoadingDrawable = paramContext.getDrawable(i);
+      paramColorNote.mFailedDrawable = paramColorNote.mLoadingDrawable;
+      paramColorNote = URLDrawable.getDrawable(localThrowable, paramColorNote);
+      return paramColorNote;
+    }
+    catch (NullPointerException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+    }
+  }
+  
+  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
+  {
+    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
+    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
+    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298865), paramContext.getResources().getDimensionPixelSize(2131298864));
+    return localHistoryFormItem;
   }
 }
 

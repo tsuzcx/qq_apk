@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import acjf;
+import aczo;
 import android.text.TextUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ public class QCloudFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private acjf jdField_a_of_type_Acjf;
+  private aczo jdField_a_of_type_Aczo;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -30,12 +30,12 @@ public class QCloudFileUploadRunnable
   private String d;
   private String e;
   
-  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, acjf paramacjf, int paramInt, MqqHandler paramMqqHandler)
+  public QCloudFileUploadRunnable(URL paramURL, String paramString, JSONObject paramJSONObject, aczo paramaczo, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Acjf = paramacjf;
+    this.jdField_a_of_type_Aczo = paramaczo;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -362,14 +362,14 @@ public class QCloudFileUploadRunnable
     //   464: aload 6
     //   466: astore 5
     //   468: aload_0
-    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Acjf	Lacjf;
+    //   469: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Aczo	Laczo;
     //   472: ifnull +24 -> 496
     //   475: iload_3
     //   476: ifeq +20 -> 496
     //   479: aload 6
     //   481: astore 5
     //   483: aload_0
-    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Acjf	Lacjf;
+    //   484: getfield 35	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_a_of_type_Aczo	Laczo;
     //   487: aload_0
     //   488: getfield 27	com/tencent/mfsdk/reporter/QCloudFileUploadRunnable:jdField_c_of_type_Int	I
     //   491: invokeinterface 320 2 0

@@ -1,50 +1,34 @@
-import com.tencent.qflutter.utils.FLog.Log;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class atjr
-  implements FLog.Log
+class atjr
+  implements atif
 {
-  public void d(String paramString1, String paramString2)
+  atjr(atjq paramatjq, String paramString) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d(paramString1, 4, paramString2);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+      }
+      atjp.a(this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atjq.jdField_a_of_type_Atju.a(this.jdField_a_of_type_JavaLangString, atjp.a(this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp));
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
+    for (;;)
+    {
+      atiy.a(this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp.jdField_a_of_type_Atiy).getFileManagerRSCenter().a(atjp.a(this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp));
+      return;
+      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
+      this.jdField_a_of_type_Atjq.jdField_a_of_type_Atju.a(atiy.a(this.jdField_a_of_type_Atjq.jdField_a_of_type_Atjp.jdField_a_of_type_Long, false), true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atjr
  * JD-Core Version:    0.7.0.1
  */

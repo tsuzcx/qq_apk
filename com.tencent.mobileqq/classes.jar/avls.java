@@ -1,72 +1,44 @@
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract class avls
 {
-  public int a;
-  avlr a;
-  public avlt a;
-  public avlu a;
-  public volatile boolean a;
-  public int b = 1000 / this.jdField_a_of_type_Int;
+  protected int a;
+  protected Context a;
+  protected Bitmap a;
+  protected avlm a;
   
-  public avls()
+  public avls(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_Int = 8;
-    g();
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
-    this.b = (1000 / paramInt);
   }
   
-  public void a(avlr paramavlr)
+  public avls(Context paramContext, int paramInt, avlm paramavlm)
   {
-    this.jdField_a_of_type_Avlr = paramavlr;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Avlm = paramavlm;
   }
   
-  public void a(avlt paramavlt)
+  public Bitmap a()
   {
-    this.jdField_a_of_type_Avlt = paramavlt;
-  }
-  
-  public void a(avlu paramavlu)
-  {
-    this.jdField_a_of_type_Avlu = paramavlu;
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    f();
-    if (!this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      new Thread(new MagicfaceDecoder.1(this)).start();
-      return;
+    if (this.jdField_a_of_type_Avlm != null) {
+      a(this.jdField_a_of_type_Avlm.a());
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagicfaceDecoder", 2, "startDecoder err:" + localOutOfMemoryError.getMessage());
-    }
+    return null;
   }
   
-  public void e()
+  public void a(avlo paramavlo)
   {
-    this.jdField_a_of_type_Boolean = false;
+    paramavlo.c = 1.0F;
   }
   
-  protected void f() {}
-  
-  protected void g()
+  public Drawable[] a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
+    return null;
   }
 }
 

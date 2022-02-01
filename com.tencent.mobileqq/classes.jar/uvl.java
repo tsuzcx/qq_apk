@@ -1,172 +1,51 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class uvl
+  implements aaea
 {
-  private static WSStatisticsReporter.Builder a(String paramString)
-  {
-    return new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName(paramString).setTestId(uyo.a(10003)).setPushId(uxx.a().a()).setFlush(true).setImmediatelyUpload(uyo.c());
-  }
+  public uvl(ReadInjoyWebShareHelper.4 param4, Bitmap paramBitmap) {}
   
-  public static String a(String paramString)
+  public void callback(Bundle paramBundle)
   {
-    if ("fullscreen_videoplay".equals(paramString)) {
-      return "comment_entry";
+    int j = 0;
+    int i = 0;
+    int k = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("WebShareHelper", 2, "config = " + k);
     }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_entry";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_entry";
-    }
-    return "dynamics_comment_entry";
-  }
-  
-  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
-  {
-    paramBuilder.build(paramString).report();
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    a("dynamics_comment_like" + paramInt1, paramString, paramInt2, null, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    a(paramString2, paramString1, paramInt, null, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str;
-    if (TextUtils.equals(paramString1, "focus"))
+    if (k == 0)
     {
-      str = "dynamics_comment_page_reply" + paramInt;
-      if (!paramBoolean2) {
-        break label100;
-      }
-    }
-    label100:
-    for (paramInt = 1002002;; paramInt = 1002003)
-    {
-      HashMap localHashMap = null;
-      if (!TextUtils.equals(paramString1, "focus"))
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
+      str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
+      str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
+      for (;;)
       {
-        localHashMap = new HashMap();
-        localHashMap.put("play_scene", paramString2);
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
       }
-      a(str, paramString1, paramInt, localHashMap, paramstSimpleMetaFeed);
+    }
+    paramBundle = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
+    String str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
       return;
-      if (paramBoolean1) {}
-      for (str = "comment_page_reply_explicit";; str = "comment_page_reply") {
-        break;
-      }
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramString1 = a(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed));
-    if ((paramMap != null) && (!paramMap.isEmpty())) {
-      paramString1.addExtParams(paramMap);
-    }
-    a(paramString1, "gzh_click");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = new HashMap();
-    if (!TextUtils.equals(paramString1, "focus")) {
-      localHashMap.put("play_scene", paramString2);
-    }
-    localHashMap.put("object", String.valueOf(paramInt2));
-    a(paramString3, paramString1, paramInt1, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = null;
-    if (!TextUtils.equals(paramString1, "focus"))
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("play_scene", paramString2);
-    }
-    a(paramString3, paramString1, paramInt, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = null;
-    if (!TextUtils.equals(paramString1, "focus"))
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("play_scene", paramString2);
-    }
-    a(paramString3, paramString1, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static void a(String paramString1, String paramString2, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramString1 = a(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, 0, paramstSimpleMetaFeed));
-    if ((paramMap != null) && (!paramMap.isEmpty())) {
-      paramString1.addExtParams(paramMap);
-    }
-    a(paramString1, "gzh_exposure");
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "second_fullscreen_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen"));
-  }
-  
-  public static String b(String paramString)
-  {
-    if (a(paramString)) {
-      return "comment_page";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_page";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_page";
-    }
-    return "dynamics_comment_page";
-  }
-  
-  public static void b(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    a("dynamics_comment_entry_text" + paramInt1, paramString, paramInt2, null, paramstSimpleMetaFeed);
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    HashMap localHashMap = null;
-    if (!TextUtils.equals(paramString1, "focus"))
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("play_scene", paramString2);
-    }
-    a(paramString3, paramString1, localHashMap, paramstSimpleMetaFeed);
-  }
-  
-  public static String c(String paramString)
-  {
-    if (a(paramString)) {
-      return "comment_tag";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_tag";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_tag";
-    }
-    return "dynamics_comment_tag";
   }
 }
 

@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
-class ayuh
-  implements View.OnClickListener
+public class ayuh
+  implements TextView.OnEditorActionListener
 {
-  ayuh(ayuf paramayuf, TextView paramTextView, int paramInt) {}
+  public ayuh(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    bgge.a(paramView.getContext(), bgga.b(this.jdField_a_of_type_Int), bgga.c(this.jdField_a_of_type_Int), 3, false, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
+    }
+    return false;
   }
 }
 

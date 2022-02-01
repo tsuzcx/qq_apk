@@ -1,16 +1,14 @@
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+
 class asbo
-  implements ascz
 {
-  asbo(asbj paramasbj) {}
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    asbj.access$500(this.a, paramArrayOfObject);
-  }
+  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  AbsPreDownloadTask jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbo
  * JD-Core Version:    0.7.0.1
  */

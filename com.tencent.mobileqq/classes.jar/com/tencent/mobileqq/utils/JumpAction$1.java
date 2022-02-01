@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.utils;
 
-import anad;
-import bfvp;
+import aocs;
+import bheh;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PushBannerReportLog;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -17,12 +18,12 @@ import java.util.Set;
 public class JumpAction$1
   extends Thread
 {
-  public JumpAction$1(bfvp parambfvp) {}
+  public JumpAction$1(bheh parambheh) {}
   
   public void run()
   {
     Object localObject1 = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("version");
-    Object localObject3 = anad.a(this.this$0.b, this.this$0.c, (String)localObject1, "");
+    Object localObject3 = aocs.a(this.this$0.b, this.this$0.c, (String)localObject1, "");
     localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     Object localObject4 = ((EntityManager)localObject1).query(PushBannerReportLog.class);
     Object localObject2;
@@ -49,7 +50,7 @@ public class JumpAction$1
         localObject5 = (Integer)((Map.Entry)localObject5).getValue();
         ((List)localObject3).add(str + "|" + localObject5);
       }
-      ((anad)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(5)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
+      ((aocs)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REPORT_HANDLER)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
       ((EntityManager)localObject1).drop(PushBannerReportLog.class);
       ((HashMap)localObject2).clear();
     }

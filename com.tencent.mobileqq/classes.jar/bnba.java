@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import com.tencent.ttpic.openapi.listener.MaterialLoadFinishListener;
 
-public final class bnba
-  implements Parcelable.Creator<PoiInfo>
+class bnba
+  implements MaterialLoadFinishListener
 {
-  public PoiInfo a(Parcel paramParcel)
+  bnba(bnaz parambnaz) {}
+  
+  public void onFiltersReady()
   {
-    return new PoiInfo(paramParcel, null);
+    if (bnaz.a(this.a) != null) {
+      bnaz.a(this.a).onFilterReady();
+    }
   }
   
-  public PoiInfo[] a(int paramInt)
+  public void onLoadFinish(long paramLong)
   {
-    return new PoiInfo[paramInt];
+    bnqm.a().a(bnaz.a(this.a), paramLong);
   }
 }
 

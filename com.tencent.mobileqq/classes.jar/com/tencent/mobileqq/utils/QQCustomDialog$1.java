@@ -41,7 +41,7 @@ class QQCustomDialog$1
     {
       paramView = this.this$0.inflater.inflate(this.this$0.getDialogListItemLayout(), null);
       localHolder = new QQCustomDialog.Holder(this.this$0, null);
-      localHolder.text = ((TextView)paramView.findViewById(2131369017));
+      localHolder.text = ((TextView)paramView.findViewById(2131369180));
       paramView.setTag(localHolder);
     }
     for (;;)
@@ -62,7 +62,7 @@ class QQCustomDialog$1
         if (this.this$0.items.length != 1) {
           break label237;
         }
-        localHolder.text.setBackgroundResource(2130839583);
+        localHolder.text.setBackgroundResource(2130839604);
       }
       for (;;)
       {
@@ -71,9 +71,9 @@ class QQCustomDialog$1
         return paramView;
         label237:
         if (paramInt == 0) {
-          localHolder.text.setBackgroundResource(2130839584);
+          localHolder.text.setBackgroundResource(2130839605);
         } else if (paramInt == this.this$0.items.length - 1) {
-          localHolder.text.setBackgroundResource(2130839582);
+          localHolder.text.setBackgroundResource(2130839603);
         }
       }
     }

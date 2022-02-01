@@ -1,67 +1,88 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.ilive.manager.IliveAuthManager;
+import cooperation.ilive.pb.QQALive.GetOpenInfoRsp;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class blvh
+  extends MSFServlet
 {
-  private static final String a = blvh.class.getSimpleName();
-  
-  public static void a(AppInterface paramAppInterface, blvb paramblvb, String paramString, blvj paramblvj)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramblvb == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "startDownloadMaterial is null");
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("IliveAuthServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-    b(paramAppInterface, paramblvb, paramString, paramblvj);
-  }
-  
-  private static void b(AppInterface paramAppInterface, blvb paramblvb, String paramString, blvj paramblvj)
-  {
-    if ((paramblvb == null) || (paramAppInterface == null)) {}
-    for (;;)
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    Object localObject;
+    do
     {
       return;
-      paramblvb.a = System.currentTimeMillis();
-      paramblvb.jdField_f_of_type_Boolean = true;
-      HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new blvi(paramblvb, paramString, paramblvj);
-      localHttpNetReq.mReqUrl = paramblvb.d;
-      localHttpNetReq.mHttpMethod = 0;
-      if (paramblvb.jdField_f_of_type_JavaLangString == null)
-      {
-        QLog.i(a, 1, "startDownloadMaterial fail, info.name is null, url:" + paramblvb.d);
-        return;
+      localObject = paramFromServiceMsg.getServiceCmd();
+    } while (localObject == null);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      boolean bool = paramFromServiceMsg.isSuccess();
+      localStringBuilder = new StringBuilder().append("resp:").append((String)localObject).append(" is ");
+      if (!bool) {
+        break label265;
       }
-      localHttpNetReq.mOutPath = new File(paramString, paramblvb.jdField_f_of_type_JavaLangString).getPath();
-      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
-      localHttpNetReq.mExcuteTimeLimit = 60000L;
+    }
+    label265:
+    for (paramIntent = "";; paramIntent = "not")
+    {
+      QLog.d("IliveAuthServlet", 2, paramIntent + " success");
+      paramIntent = null;
+      if (paramFromServiceMsg.isSuccess())
+      {
+        int i = paramFromServiceMsg.getWupBuffer().length - 4;
+        paramIntent = new byte[i];
+        PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      }
+      if (!((String)localObject).equals("qqvalivelogin.GetOpenInfo")) {
+        break;
+      }
+      localObject = new QQALive.GetOpenInfoRsp();
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label283;
+      }
       try
       {
-        paramAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
-        localHttpNetReq.mCallback.onUpdateProgeress(localHttpNetReq, 1L, 100L);
-        if (!QLog.isColorLevel()) {
-          continue;
+        ((QQALive.GetOpenInfoRsp)localObject).mergeFrom(paramIntent);
+        if ((TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sOpenId.get())) || (TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get()))) {
+          break label271;
         }
-        QLog.i(a, 2, "startDownloadMaterial url: " + paramblvb.d);
+        IliveAuthManager.getInstance().onGetStCallback(true, ((QQALive.GetOpenInfoRsp)localObject).sOpenId.get(), ((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get());
         return;
       }
-      catch (Exception paramAppInterface)
+      catch (Exception paramIntent)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            paramAppInterface.printStackTrace();
-          }
-        }
+        IliveAuthManager.getInstance().onGetStCallback(false, "", "");
+        return;
       }
+    }
+    label271:
+    IliveAuthManager.getInstance().onGetStCallback(false, "", "");
+    return;
+    label283:
+    IliveAuthManager.getInstance().onGetStCallback(false, "", "");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("IliveAuthServlet", 2, "onSend exit cmd=" + str);
     }
   }
 }

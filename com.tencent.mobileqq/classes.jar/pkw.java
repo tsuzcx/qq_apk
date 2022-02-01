@@ -1,35 +1,54 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.aladdin.config.utils.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class pkw
-  implements ThreadFactory
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  
-  public pkw()
+  public static int a(int paramInt)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    SharedPreferences localSharedPreferences = a(pkh.a());
+    if (localSharedPreferences == null)
     {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
-      return;
+      Log.e("AladdinPrefUtils", "getConfigVersionById: return 0 for sp is null");
+      return 0;
     }
+    return localSharedPreferences.getInt("config_version_" + paramInt, 0);
   }
   
-  public Thread newThread(Runnable paramRunnable)
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    if (paramAppRuntime == null)
+    {
+      Log.e("AladdinPrefUtils", "getSharedPreferences: null for runtime is null");
+      return null;
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
+    paramAppRuntime = "readinjoy_sp_aladdin_" + paramAppRuntime.getAccount();
+    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+  }
+  
+  public static void a()
+  {
+    Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs");
+    SharedPreferences localSharedPreferences = a(pkh.a());
+    if (localSharedPreferences == null)
+    {
+      Log.d("AladdinPrefUtils", "clearAladdinCommonConfigs: sp is null");
+      return;
     }
-    return paramRunnable;
+    localSharedPreferences.edit().clear().commit();
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(pkh.a());
+    if (localSharedPreferences == null)
+    {
+      Log.e("AladdinPrefUtils", "setConfigVersionById: sp is null");
+      return;
+    }
+    localSharedPreferences.edit().putInt("config_version_" + paramInt1, paramInt2).apply();
   }
 }
 

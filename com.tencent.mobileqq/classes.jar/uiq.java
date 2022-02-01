@@ -1,67 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class uiq
-  extends GestureDetector.SimpleOnGestureListener
+  implements qqa
 {
-  private float jdField_a_of_type_Float;
-  
-  public uiq(SwipeBackLayout paramSwipeBackLayout, Context paramContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    return null;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout))
-    {
-      bool1 = bool2;
-      if (SwipeBackLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout))
-      {
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_Uht.a())
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) {
-            bool1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a(paramMotionEvent1);
-          }
-        }
-      }
-    }
-    if ((!this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.d) || (paramFloat1 < 200.0F)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((f1 < 0.0F) && (f2 < 0.5F) && (SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout)) && (SwipeBackLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout)) && (!bool1))
-    {
-      if (!(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        break label233;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.c = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a();
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label233:
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a();
-      }
-    }
+    return qlq.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

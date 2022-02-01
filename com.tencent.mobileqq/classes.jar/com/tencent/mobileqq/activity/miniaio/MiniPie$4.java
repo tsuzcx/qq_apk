@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import ajjs;
+import akfg;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniPie$4
   implements Runnable
 {
-  public MiniPie$4(ajjs paramajjs) {}
+  public MiniPie$4(akfg paramakfg) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      ajjs.a(this.this$0);
+      akfg.a(this.this$0);
     }
     while (!QLog.isColorLevel()) {
       return;

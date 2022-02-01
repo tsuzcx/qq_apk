@@ -1,52 +1,24 @@
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uqi
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private stSchema jdField_a_of_type_UserGrowthStSchema;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  uqi(uqg paramuqg, uqf paramuqf) {}
   
-  uqi(stSimpleMetaFeed paramstSimpleMetaFeed, stSchema paramstSchema, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
-    this.jdField_a_of_type_UserGrowthStSchema = paramstSchema;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static WSDownloadParams a(String paramString)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = umu.a().a();
-    localWSDownloadParams.mTestId = uyo.a(localWSDownloadParams.mScene);
-    localWSDownloadParams.mScheme = paramString;
-    return localWSDownloadParams;
-  }
-  
-  private void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
-  {
-    uvm.a("friend", this.jdField_a_of_type_Int, String.valueOf(paramInt), paramstSimpleMetaFeed);
-  }
-  
-  public void onClick(@androidx.annotation.NonNull View paramView)
-  {
-    uya.a("WSFriendLikeUtil", "schema = " + this.jdField_a_of_type_UserGrowthStSchema.toString());
-    if (uyo.b()) {
+    bdla.b(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe.a), "", "", "");
+    if ((this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe.a)))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      uqg.a(this.jdField_a_of_type_Uqg);
     }
-    new upz(BaseApplicationImpl.context).a(this.jdField_a_of_type_UserGrowthStSchema).a(a(this.jdField_a_of_type_UserGrowthStSchema.schema)).a(new uqj(this)).a();
-  }
-  
-  public void updateDrawState(@android.support.annotation.NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

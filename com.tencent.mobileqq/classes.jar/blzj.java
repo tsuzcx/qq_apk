@@ -1,54 +1,45 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import java.io.File;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class blzj
-  extends ViewModel
+  implements DialogInterface.OnClickListener
 {
-  private MutableLiveData<blxe> a = new MutableLiveData();
-  private MutableLiveData<String> b = new MutableLiveData();
-  private MutableLiveData<blzs> c = new MutableLiveData();
+  public blzj(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public MutableLiveData<blxe> a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.postValue(new blxe("#ccffffff", "#000000"));
-    this.b.postValue("");
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.b.postValue(paramString);
-    this.a.postValue(blxd.a.get(paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    blzs localblzs = new blzs();
-    String[] arrayOfString = new File(paramString2).list();
-    String str = paramString2 + File.separator + "snapshot.png";
-    if (arrayOfString.length != 0) {
-      blin.a(paramString2 + File.separator + arrayOfString[0], 320, 320, str);
+    this.a.app.getQQProxyForQlink().a("0X8004750", 1);
+    this.a.app.getQQProxyForQlink().a(new QlAndQQInterface.DailogClickInfo(9));
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder().append("topAct:");
+      if (QlinkStandardDialogActivity.a(this.a) == null) {
+        break label150;
+      }
     }
-    localblzs.a = paramString2;
-    localblzs.b = paramString1;
-    localblzs.c = str;
-    this.c.postValue(localblzs);
-  }
-  
-  public MutableLiveData<String> b()
-  {
-    return this.b;
-  }
-  
-  public MutableLiveData<blzs> c()
-  {
-    return this.c;
+    label150:
+    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
+    {
+      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
+      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
+        break;
+      }
+      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
+      if ((paramDialogInterface.e() != 0) && (7 != paramDialogInterface.e())) {
+        break;
+      }
+      this.a.finish();
+      return;
+    }
+    auea.a(this.a, false);
+    this.a.finish();
   }
 }
 

@@ -1,25 +1,60 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class axcc
-  implements aprh
+public class axcc
+  extends axch<MessageForMixedMsg>
 {
-  axcc(axcb paramaxcb, IphonePickerView paramIphonePickerView, bjnw parambjnw) {}
+  public axcc(MessageForMixedMsg paramMessageForMixedMsg)
+  {
+    super(paramMessageForMixedMsg);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (MessageRecord)localIterator.next();
+      if ((localObject instanceof MessageForPic))
+      {
+        localObject = axab.a((MessageRecord)localObject);
+        ((axch)localObject).a(this.a);
+        localArrayList.addAll(((axch)localObject).a());
+      }
+    }
+    return localArrayList;
+  }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing()))
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
     {
-      axcb.a(this.jdField_a_of_type_Axcb, this.jdField_a_of_type_Axcb.b, false);
-      this.jdField_a_of_type_Bjnw.dismiss();
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord instanceof MessageForPic)) {
+        axab.a(localMessageRecord).a();
+      }
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void b()
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Axcb.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Axcb.b.setText(axcb.a(this.jdField_a_of_type_Axcb).a(0, paramInt1));
+    if (((MessageForMixedMsg)this.a).isSendFromLocal())
+    {
+      ((MessageForMixedMsg)this.a).issend = 2;
+      ((MessageForMixedMsg)this.a).prewrite();
+    }
   }
 }
 

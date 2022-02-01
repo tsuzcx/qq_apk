@@ -21,6 +21,7 @@ public class PTFaceParam
   public static final String SCALE = "scale";
   public static final String STAR_PARAM = "starParam";
   public static final String SYNC_AGE_DETECT = "syncAgeDetect";
+  public static final int YOUTU_FACE_256_POINTS_NUM = 256;
   public static final int YOUTU_FACE_FEATURE_POINT_NUM = 67;
   public static final int YOUTU_FACE_POINT_NUM = 94;
   public static final int YOUTU_FACE_PROFILE_POINT_NUM = 21;

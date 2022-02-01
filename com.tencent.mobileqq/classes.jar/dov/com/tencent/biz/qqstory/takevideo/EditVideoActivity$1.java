@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bncm;
-import bobu;
+import bose;
+import bprm;
 
 class EditVideoActivity$1
   implements Runnable
@@ -10,8 +10,8 @@ class EditVideoActivity$1
   
   public void run()
   {
-    bobu.a();
-    bncm.a();
+    bprm.a();
+    bose.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import android.support.v4.widget.SwipeRefreshLayout;
+import com.tencent.qqmini.miniapp.core.page.widget.MiniSwipeRefreshLayout;
 import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
@@ -20,7 +20,7 @@ class PageWebviewContainer$6
         break label101;
       }
       bool1 = true;
-      ((SwipeRefreshLayout)localObject).setEnabled(bool1);
+      ((MiniSwipeRefreshLayout)localObject).setEnabled(bool1);
       localObject = new StringBuilder().append("setDisablePullDownRefresh !disable ");
       if (this.val$disableRefresh) {
         break label106;

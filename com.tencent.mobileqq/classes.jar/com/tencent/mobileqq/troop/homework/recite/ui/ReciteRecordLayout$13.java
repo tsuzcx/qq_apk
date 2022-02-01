@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
 import android.content.Context;
-import bemf;
+import bfti;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ReciteRecordLayout$13
@@ -11,7 +11,7 @@ class ReciteRecordLayout$13
   
   public void run()
   {
-    QQToast.a(this.this$0.a, this.this$0.a.getString(2131697961), 0).a();
+    QQToast.a(this.this$0.a, this.this$0.a.getString(2131698245), 0).a();
     if (ReciteRecordLayout.a(this.this$0) != null) {
       ReciteRecordLayout.a(this.this$0).d();
     }

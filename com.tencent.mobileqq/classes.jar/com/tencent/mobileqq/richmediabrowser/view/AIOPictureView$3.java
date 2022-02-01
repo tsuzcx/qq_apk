@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.net.Uri;
-import audj;
-import bakw;
+import avjd;
+import bbrl;
 import java.io.File;
 import java.util.ArrayList;
 
 public class AIOPictureView$3
   implements Runnable
 {
-  public AIOPictureView$3(bakw parambakw, File paramFile, ArrayList paramArrayList) {}
+  public AIOPictureView$3(bbrl parambbrl, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (audj.a().b()) {}
+    if (avjd.a().b()) {}
     while ((this.this$0.b == null) || (!this.this$0.b.equals(this.jdField_a_of_type_JavaIoFile.getPath()))) {
       return;
     }
     Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    bakw.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+    bbrl.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

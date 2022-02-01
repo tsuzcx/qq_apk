@@ -1,17 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class qxa
-  implements Animation.AnimationListener
+class qxa
+  implements ViewBase.OnClickListener
 {
-  public qxa(ComponentSocialOperation paramComponentSocialOperation) {}
+  qxa(qwy paramqwy) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(ViewBase paramViewBase)
+  {
+    piv.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((qwx.a(this.a.jdField_a_of_type_Qwx) != null) && (this.a.jdField_a_of_type_Int < qwx.a(this.a.jdField_a_of_type_Qwx).size()))
+    {
+      pqx.a(qwx.a(this.a.jdField_a_of_type_Qwx).getContext(), (BaseArticleInfo)qwx.a(this.a.jdField_a_of_type_Qwx).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
+      return;
+    }
+    pkh.a(qwx.a(this.a.jdField_a_of_type_Qwx).getContext(), paramViewBase.getEventAttachedData());
+  }
 }
 
 

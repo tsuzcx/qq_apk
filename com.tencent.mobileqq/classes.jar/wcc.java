@@ -1,54 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.annotation.TargetApi;
+import java.util.List;
 
+@TargetApi(14)
 public class wcc
-  extends vsz
+  implements wbn
 {
-  private ArrayList<String> a;
+  public int a;
   
-  public wcc(ArrayList<String> paramArrayList)
+  public void a()
   {
-    this.a = paramArrayList;
+    ((wbv)wjs.a(6)).a(this.a);
   }
   
-  public String a()
+  public void a(int paramInt)
   {
-    return vpl.a("StorySvc.batch_get_user_icon_info");
+    this.a = paramInt;
   }
   
-  public vta a(byte[] paramArrayOfByte)
+  public void a(List<wbk> paramList, boolean paramBoolean)
   {
-    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
-    try
-    {
-      localRspIconPostfix.mergeFrom(paramArrayOfByte);
-      return new wcd(localRspIconPostfix);
+    if (paramList == null) {
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("GetUserIconHandler", "" + paramArrayOfByte);
-    }
-    return null;
+    ((wbv)wjs.a(6)).a(paramList, this.a, paramBoolean);
   }
   
-  protected byte[] a()
+  public void a(wbo paramwbo)
   {
-    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-    }
-    return localReqIconPostfix.toByteArray();
+    ((wbv)wjs.a(6)).a(paramwbo);
   }
 }
 

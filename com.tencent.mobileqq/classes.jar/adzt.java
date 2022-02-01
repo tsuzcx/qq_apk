@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMarkerClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adzt
-  implements TencentMap.OnMarkerClickListener
+  implements astf
 {
-  public adzt(QQMapActivity paramQQMapActivity) {}
+  public adzt(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean onMarkerClick(Marker paramMarker)
+  public void enterAio(String paramString1, String paramString2)
   {
-    return true;
+    assy.a(this.a, paramString1, paramString2);
+  }
+  
+  public void showCampusVerifyDialog(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    assy.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
+  }
+  
+  public void showMatchCountDialog()
+  {
+    assy.a(this.a);
+  }
+  
+  public void showToast(int paramInt)
+  {
+    assy.a(this.a, this.a.getString(paramInt));
   }
 }
 

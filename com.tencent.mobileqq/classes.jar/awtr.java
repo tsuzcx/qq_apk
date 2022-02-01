@@ -1,47 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 class awtr
-  implements TVK_SDKMgr.OnLogListener
+  implements DialogInterface.OnCancelListener
 {
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  awtr(awtq paramawtq, BaseChatPie paramBaseChatPie) {}
   
-  public int e(String paramString1, String paramString2)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
+      QLog.d("TempMsgManager", 2, "dialog cancel");
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.finish(1);
   }
 }
 

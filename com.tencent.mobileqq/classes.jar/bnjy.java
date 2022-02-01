@@ -1,54 +1,44 @@
-import android.os.SystemClock;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.ae.data.AEGifMaterialManager.3;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class bnjy
-  implements bngo
+  implements INetEngine.INetEngineListener
 {
-  private bnjy(DoodleLayout paramDoodleLayout) {}
+  public bnjy(AEGifMaterialManager.3 param3, String paramString) {}
   
-  public void a(float paramFloat)
+  public void onResp(NetResp paramNetResp)
   {
-    if (paramFloat >= 0.95F)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onAnimate:" + paramFloat);
-      }
-      if ((this.a.jdField_a_of_type_Bnhv != null) && (this.a.a() != null) && (this.a.a().a() != null)) {
-        this.a.jdField_a_of_type_Bnhv.a(this.a.a().a(), this.a.a().a().b());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("AEGifMaterialManager", 2, "onResp url: " + this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a.packageUrl + " resultcode: " + paramNetResp.mHttpCode);
     }
-  }
-  
-  public void a(DynamicTextItem paramDynamicTextItem)
-  {
-    if (DoodleLayout.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onClickInside mIsRecording");
-      }
-    }
-    long l;
-    do
+    if (bnjw.a(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.this$0, this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a)) {}
+    try
     {
+      nwp.a(new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a.id), bmwk.e + File.separator);
+      bnjw.a(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.this$0, this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a);
+      bnjw.a(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.this$0).remove(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a.id);
       return;
-      l = SystemClock.uptimeMillis();
-    } while (l - this.a.jdField_a_of_type_Long <= 500L);
-    this.a.jdField_a_of_type_Long = l;
-    this.a.a(paramDynamicTextItem, paramDynamicTextItem.b(), 1, true);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
-  {
-    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
-  }
-  
-  public boolean a(bngq parambngq)
-  {
-    if ((DoodleLayout.b(this.a)) && (!DoodleLayout.c(this.a))) {
-      return false;
     }
-    return this.a.a(parambngq, true);
+    catch (IOException paramNetResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      paramNetResp.printStackTrace();
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    bnjw.a(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.this$0, this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a, (int)(paramLong1 / paramLong2 * 100L));
+    if (!bnjw.a(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.this$0).containsKey(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a.id)) {
+      bnjw.a(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.this$0).put(this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a.id, this.jdField_a_of_type_DovComQqImAeDataAEGifMaterialManager$3.a);
+    }
   }
 }
 

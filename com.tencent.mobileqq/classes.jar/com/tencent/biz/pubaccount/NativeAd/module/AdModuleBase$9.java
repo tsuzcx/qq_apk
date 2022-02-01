@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.NativeAd.module;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import oaj;
+import ohj;
 
 public class AdModuleBase$9
   implements Runnable
 {
-  public AdModuleBase$9(oaj paramoaj) {}
+  public AdModuleBase$9(ohj paramohj) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839347);
-      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.this$0.jdField_a_of_type_AndroidContentContext.getText(2131717420));
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130839368);
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.this$0.jdField_a_of_type_AndroidContentContext.getText(2131717786));
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);

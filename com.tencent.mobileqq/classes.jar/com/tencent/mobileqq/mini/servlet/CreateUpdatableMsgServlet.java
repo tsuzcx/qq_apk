@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -38,7 +38,7 @@ public class CreateUpdatableMsgServlet
           continue;
         }
         Object localObject = new PROTOCAL.StQWebRsp();
-        ((PROTOCAL.StQWebRsp)localObject).mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
+        ((PROTOCAL.StQWebRsp)localObject).mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject).Seq.get());
         long l = ((PROTOCAL.StQWebRsp)localObject).retCode.get();
         localObject = ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8();
@@ -79,7 +79,7 @@ public class CreateUpdatableMsgServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_updatablemsg.CreateUpdatableMsg");
-    paramPacket.putSendData(bgau.a(arrayOfByte1));
+    paramPacket.putSendData(bhjl.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

@@ -2,22 +2,22 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.Stream;
-import xnj;
-import xnl;
-import xno;
+import yce;
+import ycg;
+import ycj;
 
 public class FeedListPageLoaderBase$1
   implements Runnable
 {
-  public FeedListPageLoaderBase$1(xnj paramxnj) {}
+  public FeedListPageLoaderBase$1(yce paramyce) {}
   
   public void run()
   {
-    if (xnj.a(this.this$0) != null) {
-      xnj.a(this.this$0).cancel();
+    if (yce.a(this.this$0) != null) {
+      yce.a(this.this$0).cancel();
     }
-    xnj.a(this.this$0, Stream.of(Integer.valueOf(this.this$0.a.a)).map(new ThreadOffFunction("Q.qqstory.home.data.FeedListPageLoaderBase", 2)).map(this.this$0.a(this.this$0.a)).map(this.this$0.a()));
-    xnj.a(this.this$0).subscribe(new xno(this.this$0));
+    yce.a(this.this$0, Stream.of(Integer.valueOf(this.this$0.a.a)).map(new ThreadOffFunction("Q.qqstory.home.data.FeedListPageLoaderBase", 2)).map(this.this$0.a(this.this$0.a)).map(this.this$0.a()));
+    yce.a(this.this$0).subscribe(new ycj(this.this$0));
   }
 }
 

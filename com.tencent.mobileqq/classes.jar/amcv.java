@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amcv
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public amcv(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, amjz paramamjz, int paramInt) {}
+  public amcv(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new amcw(this));
-    paramDialogInterface.dismiss();
+    this.a.leftView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
+    this.a.leftView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
+    this.a.rightViewText.setContentDescription(anvx.a(2131713683));
+    this.a.c = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

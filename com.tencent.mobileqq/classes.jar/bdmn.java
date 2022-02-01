@@ -1,24 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-class bdmn
-  implements BusinessObserver
+public class bdmn
+  extends bdmo
 {
-  bdmn(bdml parambdml, bdmu parambdmu) {}
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public bdmn()
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append(this.i).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.k).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Bdmu.k = 1;
-      this.jdField_a_of_type_Bdml.a.a(1, 1);
+      localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.d).append("|");
+      localStringBuilder.append(this.e).append("|");
+      localStringBuilder.append(this.f).append("|");
+      localStringBuilder.append(this.g).append("|");
+      localStringBuilder.append(this.h).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    return localStringBuffer.toString();
   }
 }
 

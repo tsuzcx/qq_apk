@@ -1,40 +1,39 @@
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.graphics.RectF;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.session.AVGameUserInfo;
+import java.util.List;
 
-public class nju
+public abstract interface nju
 {
-  public static int a()
-  {
-    return (int)(0.64F * ViewUtils.getScreenWidth());
-  }
+  public abstract RectF a();
   
-  public static int a(TextView paramTextView)
-  {
-    if ((paramTextView != null) && (paramTextView.getText() != null))
-    {
-      TextPaint localTextPaint = paramTextView.getPaint();
-      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramTextView.getWidth() - paramTextView.getPaddingLeft() - paramTextView.getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
-    }
-    return -1;
-  }
+  public abstract RectF a(long paramLong);
   
-  public static int b()
-  {
-    return (int)(ViewUtils.getScreenWidth() * 0.045F);
-  }
+  public abstract AVGameUserInfo a(String paramString);
   
-  public static int c()
-  {
-    return (int)(ViewUtils.getScreenWidth() * 0.058F);
-  }
+  public abstract List<nkd> a();
   
-  public static int d()
-  {
-    return (int)(ViewUtils.getScreenWidth() * 0.048F);
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(Player paramPlayer);
+  
+  public abstract void a(nfv paramnfv);
+  
+  public abstract void a(nio paramnio);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract List<niq> b();
+  
+  public abstract void b();
+  
+  public abstract void b(Player paramPlayer);
+  
+  public abstract void c(Player paramPlayer);
 }
 
 

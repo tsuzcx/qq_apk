@@ -1,126 +1,185 @@
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import mqq.app.MobileQQ;
+import android.graphics.Rect;
 
 public class aeed
-  extends AsyncTask<String, Void, HashMap<Integer, Integer>>
 {
-  public aeed(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  protected HashMap<Integer, Integer> a(String... paramVarArgs)
+  public static float a(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
-      }
-      return null;
+    if ((paramInt1 > 641.0F) || (paramInt2 > 641.0F)) {
+      return Math.min(641.0F / paramInt1, 641.0F / paramInt2);
     }
-    paramVarArgs = bfyz.e(this.a.jdField_d_of_type_JavaLangString);
-    this.a.b = paramVarArgs.getString(lcc.h, "");
-    paramVarArgs = mti.a();
-    this.a.b(paramVarArgs);
-    paramVarArgs = lbp.b(270).a;
-    this.a.a(paramVarArgs);
-    if (this.a.e.isEmpty())
-    {
-      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695372);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
-      }
-    }
-    if (this.a.f.isEmpty())
-    {
-      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695370);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
-      }
-    }
-    if (this.a.g.isEmpty())
-    {
-      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695371);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
-      }
-    }
-    if (this.a.jdField_d_of_type_Long == 0L) {
-      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
-    }
-    try
-    {
-      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        i = 0;
-        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label778;
-        }
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      try
-      {
-        do
-        {
-          for (;;)
-          {
-            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
-            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
-            int j = Integer.parseInt(paramVarArgs[0]);
-            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
-            i += 1;
-            continue;
-            paramVarArgs = this.a.f + "/" + this.a.g;
-          }
-          paramVarArgs = paramVarArgs;
-          paramVarArgs.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          paramVarArgs.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
-      }
-      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712691));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712684));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712687));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712690));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712685));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712689));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712686));
-      this.a.jdField_a_of_type_JavaUtilList.add(amtj.a(2131712688));
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
-        i += 1;
-      }
-    }
-    label778:
-    return this.a.jdField_a_of_type_JavaUtilHashMap;
+    return 1.0F;
   }
   
-  protected void a(HashMap<Integer, Integer> paramHashMap)
+  public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.onPostExecute(paramHashMap);
+    Rect localRect = new Rect();
+    localRect.left = 0;
+    localRect.top = 0;
+    float f = paramInt1 * 1.0F / paramInt2;
+    if (paramInt1 < paramInt2)
+    {
+      localRect.right = paramInt3;
+      localRect.bottom = ((int)(paramInt3 * 1.0F / f));
+    }
+    while (paramInt1 < paramInt2) {
+      return localRect;
+    }
+    localRect.bottom = paramInt4;
+    localRect.right = ((int)(f * paramInt4));
+    return localRect;
+  }
+  
+  public static Rect a(Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(Math.min(paramRect1.left, paramRect2.left), Math.min(paramRect1.top, paramRect2.top), Math.max(paramRect1.right, paramRect2.right), Math.max(paramRect1.bottom, paramRect2.bottom));
+  }
+  
+  public static void a(Rect paramRect, float paramFloat)
+  {
+    paramRect.left = ((int)(paramRect.left * paramFloat));
+    paramRect.right = ((int)(paramRect.right * paramFloat));
+    paramRect.top = ((int)(paramRect.top * paramFloat));
+    paramRect.bottom = ((int)(paramRect.bottom * paramFloat));
+  }
+  
+  public static Rect b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = paramInt2 * paramInt3 / paramInt1;
+    if (paramInt1 >= paramInt3) {
+      if (paramInt4 >= i)
+      {
+        i = 17;
+        paramInt3 = 0;
+        paramInt4 = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i == 17) {}
+      for (;;)
+      {
+        return new Rect(0, 0, paramInt1, paramInt2);
+        if ((paramInt4 * 1.5F >= i) && (i > paramInt4))
+        {
+          i = 17;
+          paramInt3 = 0;
+          paramInt4 = 0;
+          break;
+        }
+        if (i <= 1.5D * paramInt4) {
+          break label190;
+        }
+        float f = paramInt3 / paramInt1;
+        paramInt3 = (int)(paramInt4 / f);
+        i = 48;
+        paramInt4 = paramInt1;
+        break;
+        if (paramInt2 < paramInt4)
+        {
+          i = 17;
+          paramInt3 = 0;
+          paramInt4 = 0;
+          break;
+        }
+        if ((paramInt2 > paramInt4) && (paramInt2 < paramInt4 * 1.5F))
+        {
+          i = 17;
+          paramInt3 = 0;
+          paramInt4 = 0;
+          break;
+        }
+        if (paramInt2 <= paramInt4 * 1.5F) {
+          break label190;
+        }
+        int j = 48;
+        i = paramInt1;
+        paramInt3 = paramInt4;
+        paramInt4 = i;
+        i = j;
+        break;
+        paramInt1 = paramInt4;
+        paramInt2 = paramInt3;
+      }
+      label190:
+      i = 17;
+      paramInt3 = 0;
+      paramInt4 = 0;
+    }
+  }
+  
+  public static Rect c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    float f = 1.0F;
+    int i = paramInt2 * paramInt3 / paramInt1;
+    int j;
+    if (paramInt1 >= paramInt3) {
+      if (paramInt4 >= i)
+      {
+        f = paramInt3 / paramInt1;
+        paramInt2 = (int)(paramInt2 * f);
+        j = 17;
+        paramInt1 = paramInt3;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      Rect localRect = new Rect(0, 0, paramInt1, paramInt2);
+      if (j == 17) {
+        localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
+      }
+      while ((j != 48) || (i == 0))
+      {
+        return localRect;
+        if ((paramInt4 * 1.5F >= i) && (i > paramInt4))
+        {
+          f = paramInt4 / paramInt2;
+          paramInt1 = (int)(paramInt1 * f);
+          j = 17;
+          paramInt2 = paramInt4;
+          i = 0;
+          break;
+        }
+        if (i <= 1.5D * paramInt4) {
+          break label272;
+        }
+        f = paramInt3 / paramInt1;
+        j = 48;
+        paramInt2 = paramInt4;
+        paramInt1 = paramInt3;
+        i = 0;
+        break;
+        if (paramInt2 < paramInt4)
+        {
+          i = 0;
+          j = 17;
+          break;
+        }
+        if ((paramInt2 > paramInt4) && (paramInt2 < paramInt4 * 1.5F))
+        {
+          f = paramInt4 / paramInt2;
+          paramInt1 = (int)(paramInt1 * f);
+          j = 17;
+          paramInt2 = paramInt4;
+          i = 0;
+          break;
+        }
+        if (paramInt2 <= paramInt4 * 1.5F) {
+          break label272;
+        }
+        i = 1;
+        j = 48;
+        paramInt2 = paramInt4;
+        break;
+      }
+      localRect.offset((int)(paramInt3 - f * paramInt1) / 2, 0);
+      return localRect;
+      label272:
+      i = 0;
+      j = 17;
+      paramInt2 = 0;
+      paramInt1 = 0;
+    }
   }
 }
 

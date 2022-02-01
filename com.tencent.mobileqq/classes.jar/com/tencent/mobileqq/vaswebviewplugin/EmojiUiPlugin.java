@@ -8,15 +8,15 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import aqyp;
-import aqyu;
-import aqyv;
-import ardu;
-import bfur;
-import bgev;
-import bgtw;
-import bgve;
-import bhht;
+import ascz;
+import asde;
+import asdf;
+import ashz;
+import bhdj;
+import bhnp;
+import bieo;
+import bifw;
+import bisl;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -44,7 +44,7 @@ public abstract class EmojiUiPlugin
   EmojiUiPlugin.HomePageLoadInfo homePageUrlInfo = new EmojiUiPlugin.HomePageLoadInfo(this);
   protected int loadmode;
   protected int mActivityType = 2;
-  aqyp mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
+  ascz mEmojiKeygetOnRemoteResp = new EmojiUiPlugin.1(this);
   protected int mEmomallNewTimeFlag = -1;
   protected String mSelfUin;
   String mSid = "";
@@ -53,7 +53,7 @@ public abstract class EmojiUiPlugin
   long openToOncreateGap = -1L;
   long openTogetKeyTimeGap = -1L;
   int processStep = 1;
-  bhht progressDialog;
+  bisl progressDialog;
   
   private void dismissProgressDialog()
   {
@@ -119,7 +119,7 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = bfur.a(this.activity, 230).setTitle(this.activity.getString(2131691781)).setMessage(this.activity.getString(2131691780)).setLeftButton(this.activity.getString(2131694201), new EmojiUiPlugin.3(this));
+    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = bhdj.a(this.activity, 230).setTitle(this.activity.getString(2131691869)).setMessage(this.activity.getString(2131691868)).setLeftButton(this.activity.getString(2131694399), new EmojiUiPlugin.3(this));
     localQQCustomDialogThreeBtns.setOnDismissListener(this);
     localQQCustomDialogThreeBtns.setCanceledOnTouchOutside(false);
     localQQCustomDialogThreeBtns.show();
@@ -142,13 +142,13 @@ public abstract class EmojiUiPlugin
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "emojiactivity oncreate");
     }
-    ardu.a().a(this.mEmojiKeygetOnRemoteResp);
+    ashz.a().a(this.mEmojiKeygetOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    ardu.a().b(this.mEmojiKeygetOnRemoteResp);
+    ashz.a().b(this.mEmojiKeygetOnRemoteResp);
   }
   
   protected void OnActivityPause()
@@ -249,9 +249,9 @@ public abstract class EmojiUiPlugin
   {
     if (paramInt == 6)
     {
-      this.configUrl.index = bgev.a(this.activity, "magicPlus", "");
+      this.configUrl.index = bhnp.a(this.activity, "magicPlus", "");
       if (this.configUrl.index == null) {
-        this.configUrl.index = bgev.a(this.activity, "emoji", "");
+        this.configUrl.index = bhnp.a(this.activity, "emoji", "");
       }
       this.configUrl.indexSession = VasWebviewConstants.LOCAL_URL_NEED_KEY_SWITCHER.booleanValue();
     }
@@ -267,9 +267,9 @@ public abstract class EmojiUiPlugin
     }
     if ((paramInt1 == 1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      aqyv localaqyv = aqyv.a(paramIntent.getExtras());
-      paramIntent = aqyu.a(paramIntent.getExtras());
-      onPayResultCallback(localaqyv.jdField_a_of_type_JavaLangString, localaqyv.jdField_a_of_type_Int, localaqyv.b, localaqyv.c, localaqyv.d, localaqyv.e, paramIntent.jdField_a_of_type_JavaLangString);
+      asdf localasdf = asdf.a(paramIntent.getExtras());
+      paramIntent = asde.a(paramIntent.getExtras());
+      onPayResultCallback(localasdf.jdField_a_of_type_JavaLangString, localasdf.jdField_a_of_type_Int, localasdf.b, localasdf.c, localasdf.d, localasdf.e, paramIntent.jdField_a_of_type_JavaLangString);
     }
     do
     {
@@ -321,7 +321,7 @@ public abstract class EmojiUiPlugin
       localWebViewFragment.mUIStyleHandler.initTitleBar(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
       if ((localWebViewFragment.mSwiftTitleUI.leftView != null) && (this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6)))
       {
-        localWebViewFragment.mSwiftTitleUI.leftView.setText(2131690768);
+        localWebViewFragment.mSwiftTitleUI.leftView.setText(2131690845);
         localWebViewFragment.mSwiftTitleUI.leftView.setOnClickListener(new EmojiUiPlugin.2(this));
       }
     }

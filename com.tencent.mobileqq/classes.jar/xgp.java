@@ -1,6 +1,12 @@
-public abstract interface xgp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class xgp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(xgq paramxgq);
+  xgp(xgo paramxgo) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

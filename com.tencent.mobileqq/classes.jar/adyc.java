@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class adyc
-  implements bhjm
+  implements DialogInterface.OnClickListener
 {
-  final WeakReference<QQBrowserActivity> a;
+  public adyc(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public adyc(QQBrowserActivity paramQQBrowserActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
-      return;
-    }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
+    ForwardFriendListActivity.a(this.a).dismiss();
+    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
   }
 }
 

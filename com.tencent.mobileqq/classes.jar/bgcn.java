@@ -1,112 +1,21 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
-
 public class bgcn
-  extends URLDrawableHelper.Adapter
+  extends bgba
 {
-  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bgcr jdField_a_of_type_Bgcr = new bgcr(this);
-  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bgco(this);
-  private ArrayDeque<bgcp> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private boolean jdField_a_of_type_Boolean = true;
+  private long a;
   
-  public bgcn(ImageView paramImageView)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if ((paramImageView instanceof URLImageView)) {
-      ((URLImageView)paramImageView).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-    }
+    return 1;
   }
   
-  private Drawable a()
+  public long a()
   {
-    Object localObject = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if (localDrawable != null)
-    {
-      localObject = localDrawable;
-      if ((localDrawable instanceof URLDrawable)) {
-        localObject = ((URLDrawable)localDrawable).getCurrDrawable();
-      }
-      return localObject;
-    }
-    return localObject;
+    return 0L;
   }
   
-  private void b()
+  public void a(long paramLong)
   {
-    Object localObject = (bgcp)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      localObject = ((bgcp)localObject).a(a());
-      if (((URLDrawable)localObject).getStatus() == 1)
-      {
-        b();
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    } while ((this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView));
-    ((URLDrawable)localObject).setURLDrawableListener(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(bgcp parambgcp)
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.add(parambgcp);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    a(new bgcq(paramString, paramInt));
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ApngQueuePlayer", 1, "onLoadFialed: ", paramThrowable);
-    b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-    if (paramURLDrawable.mFrameCount <= 1)
-    {
-      b();
-      return;
-    }
-    if ((paramURLDrawable.apngLoop > 0) && (paramURLDrawable.currentApngLoop >= paramURLDrawable.apngLoop)) {
-      paramURLDrawable.replay();
-    }
-    if (paramURLDrawable.apngLoop != 0)
-    {
-      this.jdField_a_of_type_Bgcr.a(paramURLDrawable);
-      return;
-    }
-    b();
+    this.a = paramLong;
   }
 }
 

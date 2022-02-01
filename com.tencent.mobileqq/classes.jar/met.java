@@ -1,49 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiMembersAudioUI;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 public class met
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public met(MultiMembersAudioUI paramMultiMembersAudioUI) {}
+  public met(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_Msb == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      mey localmey = (mey)paramView.getTag();
-      if (localmey == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MultiMembersAudioUI", 2, "onItemClick-->holder is null");
-        }
-      }
-      else
-      {
-        if (localmey.c) {}
-        for (int i = 7;; i = this.a.a(localmey.jdField_a_of_type_Long))
-        {
-          if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 8) || ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 2))) {
-            break label134;
-          }
-          this.a.jdField_a_of_type_Msb.a(localmey.jdField_a_of_type_Long, localmey.jdField_a_of_type_Int, i, true);
-          break;
-        }
-        label134:
-        this.a.jdField_a_of_type_Msb.a(localmey.jdField_a_of_type_Long, localmey.jdField_a_of_type_Int, i, false);
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
       }
     }
+    int i;
+    long l;
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason3rd", -1);
+      l = paramIntent.getLongExtra("groupId", -1L);
+    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     met
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-
-public class ayku
-  implements bhhv
+class ayku
+  implements aylk
 {
-  public ayku(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  ayku(ayks paramayks, String paramString) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (!this.a.e) {
-      this.a.e = true;
+    if (paramBoolean) {
+      this.jdField_a_of_type_Ayks.b(this.jdField_a_of_type_JavaLangString, paramInt);
     }
   }
 }

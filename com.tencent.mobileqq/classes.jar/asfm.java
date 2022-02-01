@@ -1,47 +1,75 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class asfm
+class asfm
+  extends TransProcessorHandler
 {
-  int jdField_a_of_type_Int;
-  public asfo a;
-  asfq jdField_a_of_type_Asfq;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString;
-  
-  asfm(ases paramases, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
+  asfm(asfl paramasfl, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Asfo = new asfn(this, paramases, paramMessageRecord);
+    super(paramLooper);
   }
   
-  void a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Asfq != null) && (this.jdField_b_of_type_Int == 0))
+    Object localObject = (FileMsg)paramMessage.obj;
+    if ((localObject == null) || (((FileMsg)localObject).commandId != this.a.a())) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
-      }
-      this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Asfq.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Asfo);
-    }
-    while (!QLog.isColorLevel()) {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 1002: 
+          case 1006: 
+          case 1007: 
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + ((FileMsg)localObject).serverPath);
+        }
+      } while (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() < this.a.jdField_b_of_type_Int);
+      this.a.f();
       return;
-    }
-    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
-  }
-  
-  void b()
-  {
-    if ((this.jdField_a_of_type_Asfq != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
+      if (asfl.a(this.a) == null)
+      {
+        QLog.e("FavroamingManager", 1, "app is null");
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "STATUS_SEND_AND_SAVE_FINISHED resId=" + ((FileMsg)localObject).serverPath);
+      }
+      paramMessage = ((asfk)this.a.a()).a(((FileMsg)localObject).serverPath);
+      localObject = (anua)asfl.b(this.a).getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
+    } while ((localObject == null) || (paramMessage == null) || (paramMessage.isMarkFace));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage);
+    ((anua)localObject).a(localArrayList, 1);
+    return;
+    QLog.i("FavroamingManager", 1, "upload fav error:" + ((FileMsg)localObject).serverPath);
+    if (asfl.c(this.a) != null) {}
+    for (int i = NetworkUtil.getNetworkType(asfl.d(this.a).getApplication());; i = -1)
     {
-      this.jdField_a_of_type_Asfq.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Int = 4;
+      bhpl.a("emotionType", "emotionActionFav", "4", "", "", i + "", ((FileMsg)localObject).serverPath, "", "", "");
+      return;
+      QLog.i("FavroamingManager", 1, "upload fav cancel:" + ((FileMsg)localObject).serverPath);
+      return;
     }
   }
 }

@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class anvx
-  implements View.OnClickListener
+public class anvx
 {
-  anvx(anvw paramanvw, ArkViewModel paramArkViewModel) {}
+  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
   
-  public void onClick(View paramView)
+  public static String a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    try
+    {
+      String str = a.getResources().getString(paramInt);
+      return str;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anvx
  * JD-Core Version:    0.7.0.1
  */

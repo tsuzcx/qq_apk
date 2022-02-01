@@ -1,23 +1,8 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-
 public abstract interface awrz
 {
-  public abstract void a();
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, float paramFloat);
   
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
-  
-  public abstract void a(Comments paramComments);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2);
 }
 
 

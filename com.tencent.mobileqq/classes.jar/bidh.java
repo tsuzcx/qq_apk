@@ -1,14 +1,32 @@
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bidh
-  implements ValueCallback<String>
+class bidh
+  extends bidl
 {
-  public bidh(WebViewDownloadListener.1 param1) {}
-  
-  public void a(String paramString)
+  bidh(bidf parambidf)
   {
-    bhzm.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
+    super(parambidf, null);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+    }
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 

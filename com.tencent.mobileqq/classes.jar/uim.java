@@ -1,22 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-final class uim
-  implements WXShareHelper.WXShareListener
+public class uim
+  implements qqa
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718380, 1).a();
-    case -2: 
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718398, 1).a();
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return qmd.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

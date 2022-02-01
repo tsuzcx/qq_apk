@@ -1,24 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener2;
+import com.tencent.image.URLImageView;
+import java.lang.ref.SoftReference;
 
-class bbyz
-  implements akbj
+final class bbyz
+  implements URLDrawable.URLDrawableListener2
 {
-  bbyz(bbyv parambbyv, String paramString, long paramLong, int paramInt) {}
+  bbyz(SoftReference paramSoftReference, URLDrawable paramURLDrawable, bbzb parambbzb) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downRFiles] download resCode=" + paramInt + ",pathRes=" + paramPathResult);
-    }
-    this.jdField_a_of_type_Bbyv.jdField_a_of_type_Int = paramPathResult.subErrCode;
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
+    do
     {
-      bbyv.a(this.jdField_a_of_type_Bbyv, paramPathResult.folderPath, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-      return;
-    }
-    bbyv.a(this.jdField_a_of_type_Bbyv, 11);
+      do
+      {
+        return;
+        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
+      localAbstractGifImage.reset();
+      localAbstractGifImage.setStrongGIFPlayOnceListener(new bbza(this, localAbstractGifImage));
+      paramURLDrawable.setVisibility(0);
+      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    } while (this.jdField_a_of_type_Bbzb == null);
+    this.jdField_a_of_type_Bbzb.a();
   }
 }
 

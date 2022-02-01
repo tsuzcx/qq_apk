@@ -1,31 +1,52 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class txc
-  implements ValueAnimator.AnimatorUpdateListener
+final class txc
+  extends ntf
 {
-  txc(txb paramtxb, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
+  txc(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = paramValueAnimator.floatValue();
-    float f5 = this.c;
-    float f6 = paramValueAnimator.floatValue();
-    float f7 = this.d;
-    float f8 = paramValueAnimator.floatValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setLeftAreaTranslate(f1 * f2, f3 * f4);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.setRightAreaTranslate(f5 * f6, f8 * f7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyCutImageView.postInvalidate();
+    QLog.i("BridgeModuleHelper", 1, "yyy_0xe36 error code: " + paramInt);
+    if (paramInt == 0) {
+      paramBundle = new cmd0xe36.RspBody();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = 0;
+      paramArrayOfByte = "";
+      if (paramBundle.code.has()) {
+        paramInt = paramBundle.code.get();
+      }
+      if (paramBundle.wording.has()) {
+        paramArrayOfByte = paramBundle.wording.get();
+      }
+      QLog.i("BridgeModuleHelper", 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
+      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte)))
+      {
+        paramBundle = new JSONObject();
+        paramBundle.put("wording", paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
+      }
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QLog.i("BridgeModuleHelper", 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txc
  * JD-Core Version:    0.7.0.1
  */

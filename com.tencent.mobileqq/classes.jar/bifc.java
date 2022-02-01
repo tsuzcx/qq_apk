@@ -1,89 +1,64 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebView;
 
-class bifc
-  extends bifk
+public abstract interface bifc
 {
-  bifc(biey parambiey, biej parambiej, bhvf parambhvf, String paramString, JSONObject paramJSONObject) {}
+  public abstract boolean afterWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString);
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    bool2 = false;
-    boolean bool3 = true;
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.uploadAvatarImage.result:", bifi.a(paramString1, this.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) });
-    localObject = null;
-    bool1 = bool2;
-    paramString2 = localObject;
-    i = paramInt;
-    if (paramBoolean) {}
-    try
-    {
-      paramString1 = new JSONObject(paramString1);
-      i = paramString1.optInt("ErrorCode");
-      if (i != 0) {}
-    }
-    catch (JSONException paramString1)
-    {
-      label96:
-      do
-      {
-        for (;;)
-        {
-          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.e:", paramString1);
-          bool1 = bool2;
-          paramString2 = localObject;
-          i = paramInt;
-        }
-        biey.a(this.jdField_a_of_type_Biey);
-        if (biey.b(this.jdField_a_of_type_Biey) < 2) {
-          break;
-        }
-      } while (this.jdField_a_of_type_Bhvf == null);
-      this.jdField_a_of_type_Bhvf.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
-      return;
-      biey.a(this.jdField_a_of_type_Biey, this.jdField_a_of_type_Biej, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Bhvf);
-      return;
-    }
-    try
-    {
-      paramString1 = paramString1.optJSONObject("msg_img_data");
-      if (paramString1 == null) {
-        break label253;
-      }
-      paramString1 = paramString1.optString("str_file_name");
-      paramBoolean = bool3;
-    }
-    catch (JSONException paramString1)
-    {
-      paramInt = i;
-      break label155;
-      paramBoolean = false;
-      paramString1 = null;
-      break label96;
-    }
-    paramInt = i;
-    for (;;)
-    {
-      i = paramInt;
-      paramString2 = paramString1;
-      bool1 = paramBoolean;
-      if (!bool1) {
-        break;
-      }
-      if (this.jdField_a_of_type_Bhvf != null) {
-        this.jdField_a_of_type_Bhvf.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
-      }
-      return;
-      paramInt = paramString1.optInt("uint32_ret_to_http", i);
-      paramString1 = null;
-      paramBoolean = false;
-    }
-  }
+  public abstract boolean beforeWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString);
+  
+  public abstract String getUAMark();
+  
+  public abstract View getVideoLoadingProgressView();
+  
+  public abstract void handlePreloadCallback(int paramInt, String paramString);
+  
+  public abstract Object handlerMiscCallback(String paramString, Bundle paramBundle);
+  
+  public abstract void onDetectedBlankScreen(String paramString, int paramInt);
+  
+  public abstract void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback);
+  
+  public abstract void onHideCustomView();
+  
+  public abstract boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult);
+  
+  public abstract void onPageFinished(WebView paramWebView, String paramString);
+  
+  public abstract void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void onProgressChanged(WebView paramWebView, int paramInt);
+  
+  public abstract void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void onReceivedSslError(WebView paramWebView, SslError paramSslError);
+  
+  public abstract void onReceivedTitle(WebView paramWebView, String paramString);
+  
+  public abstract boolean onShowFileChooser(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams);
+  
+  public abstract void onUrlChange(String paramString1, String paramString2);
+  
+  public abstract void onWebViewClientImplPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2);
+  
+  public abstract boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString);
+  
+  public abstract void showCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 class xds
-  extends SimpleJob<Object>
+  implements xdf
 {
-  xds(xdq paramxdq, String paramString)
+  private int jdField_a_of_type_Int;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  xcy jdField_a_of_type_Xcy;
+  
+  public xds(xdr paramxdr, xcy paramxcy)
   {
-    super(paramString);
+    this.jdField_a_of_type_Xcy = paramxcy;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void a(String paramString, xdg paramxdg)
   {
-    if (this.a.a == null) {
-      this.a.a = new xdt(this.a, this.a.c);
+    wsv localwsv = new wsv();
+    localwsv.jdField_c_of_type_JavaLangString = xdr.a(this.jdField_a_of_type_Xdr).uid;
+    if (xdr.a(this.jdField_a_of_type_Xdr).collectionKey != null) {
+      localwsv.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(xdr.a(this.jdField_a_of_type_Xdr).collectionKey);
     }
-    this.a.d = this.a.a.a;
-    xdq.a(this.a);
-    return null;
+    localwsv.jdField_d_of_type_JavaLangString = paramString;
+    localwsv.jdField_c_of_type_Int = 20;
+    localwsv.jdField_e_of_type_Int = xdr.a(this.jdField_a_of_type_Xdr).shareTimeZone;
+    localwsv.jdField_e_of_type_JavaLangString = xdr.a(this.jdField_a_of_type_Xdr).feedId;
+    localwsv.f = xdr.a(this.jdField_a_of_type_Xdr).identify;
+    localwsv.g = xdr.a(this.jdField_a_of_type_Xdr).videoListOrder;
+    wfi.a().a(localwsv, new xdt(this, paramxdg));
+  }
+  
+  public void a(xdg paramxdg)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a(xdr.a(this.jdField_a_of_type_Xdr), paramxdg);
   }
 }
 

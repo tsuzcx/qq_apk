@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
 import java.util.List;
 
 public class adpm
-  extends axkt
+  implements audq
 {
-  public adpm(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public adpm(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, athn paramathn) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
-    }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      List localList = ajek.a().a();
-      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Athn.b(localFileManagerEntity);
+      }
     }
   }
 }

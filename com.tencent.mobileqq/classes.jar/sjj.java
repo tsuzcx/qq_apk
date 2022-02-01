@@ -1,8 +1,18 @@
-public abstract interface sjj
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+final class sjj
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(float paramFloat);
+  sjj(View paramView) {}
   
-  public abstract void a(int paramInt, String paramString, sjl paramsjl);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.setAlpha(1.0F);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
+  }
 }
 
 

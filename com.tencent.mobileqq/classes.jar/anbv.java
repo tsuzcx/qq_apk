@@ -1,25 +1,13 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class anbv
-  implements bgfg
+  implements ankr
 {
-  anbv(anbt paramanbt, bdbk parambdbk, Context paramContext, Bundle paramBundle) {}
+  anbv(anbu paramanbu, boolean paramBoolean) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Bdbk.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
-      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Bdbk.d());
-      anbt.a(this.jdField_a_of_type_Anbt, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
-    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
-    anbt.a(this.jdField_a_of_type_Anbt, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Anbu.a(this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
   }
 }
 

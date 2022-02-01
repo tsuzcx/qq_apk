@@ -1,37 +1,38 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.report.JumpMode;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.DownloadClickState;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"}, k=3, mv={1, 1, 16})
 final class ufh
-  implements EIPCResultCallback
+  implements DialogInterface.OnClickListener
 {
-  ufh(tiv paramtiv, String paramString) {}
+  ufh(AdvertisementInfo paramAdvertisementInfo, ule paramule, RIJDownloadView paramRIJDownloadView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 0;
-    int i = j;
-    if (paramEIPCResult != null)
+    if (paramInt != 1)
     {
-      i = j;
-      if (paramEIPCResult.data != null) {
-        i = paramEIPCResult.data.getInt("action_get_app_type");
-      }
-    }
-    QLog.e("PublicAccountH5AbilityPlugin", 1, "getAppType is " + i);
-    if (this.jdField_a_of_type_Tiv != null) {}
-    try
-    {
-      this.jdField_a_of_type_Tiv.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
+      ueb.a(JumpMode.UNKNOWN, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 10, "2");
       return;
     }
-    catch (JSONException paramEIPCResult)
+    paramDialogInterface = this.jdField_a_of_type_Ule;
+    if (paramDialogInterface != null)
     {
-      QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.getMessage());
+      paramDialogInterface = ufc.a(paramDialogInterface);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, this.jdField_a_of_type_Ule);
+      }
     }
+    paramDialogInterface = ufd.a;
+    Context localContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getContext();
+    Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context");
+    ufd.a(paramDialogInterface, localContext, DownloadClickState.START_DOWNLOAD, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, null, 8, null);
   }
 }
 

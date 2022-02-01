@@ -1,9 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
-public abstract interface rij
+public class rij
+  implements DialogInterface.OnDismissListener
 {
-  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
+  public rij(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

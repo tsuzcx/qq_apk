@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bdbm;
+import beim;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.theme.SkinEngine;

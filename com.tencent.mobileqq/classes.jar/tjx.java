@@ -1,20 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class tjx
-  extends BroadcastReceiver
+public final class tjx
+  implements pra
 {
-  tjx(tjw paramtjw) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.a.a(paramContext, paramIntent);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
+      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tjx
  * JD-Core Version:    0.7.0.1
  */

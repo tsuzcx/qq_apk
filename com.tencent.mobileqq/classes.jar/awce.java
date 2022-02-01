@@ -1,57 +1,53 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class awce
-  extends awcg
+  implements BusinessObserver
 {
-  public awce(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public awce(UiApiPlugin paramUiApiPlugin) {}
   
-  public int a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return 4;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageForArkApp paramMessageForArkApp, boolean paramBoolean)
-  {
-    if (paramMessageForArkApp.istroop == 1) {
-      nmy.a().a(paramMessageForArkApp);
-    }
-    if (paramBoolean) {
-      paramQQAppInterface.getMessageFacade().addSendMessage(paramMessageForArkApp);
-    }
-    paramMessageForArkApp.mPendantAnimatable = true;
-    byte[] arrayOfByte = paramQQAppInterface.getProxyManager().a().a(paramMessageForArkApp);
-    if (arrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
-      }
-      paramMessageForArkApp.extraflag = 32768;
-      paramQQAppInterface.getMsgCache().a(paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq);
-      String str = paramMessageForArkApp.frienduin;
-      int i = paramMessageForArkApp.istroop;
-      long l = paramMessageForArkApp.uniseq;
-      ((MessageHandler)paramQQAppInterface.getBusinessHandler(0)).notifyUI(MessageHandler.a(paramMessageForArkApp.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
-    }
-    paramBoolean = ((awcg)paramQQAppInterface.getManager(166)).a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new awcf(this, paramMessageForArkApp, paramQQAppInterface));
+    byte[] arrayOfByte;
     if (paramBoolean)
     {
+      arrayOfByte = paramBundle.getByteArray("data");
+      paramBundle.getString("openId");
+      if (arrayOfByte != null) {
+        paramBundle = new oidb_sso.OIDBSSOPkg();
+      }
+    }
+    try
+    {
+      paramBundle = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])arrayOfByte);
+      paramInt = paramBundle.uint32_result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
+        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
+      }
+      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
+      if (paramInt == 0)
+      {
+        arrayOfByte = new byte[4];
+        System.arraycopy(paramBundle, 0, arrayOfByte, 0, 4);
+        paramBundle = TroopInfoActivity.a(String.valueOf(ByteBuffer.wrap(arrayOfByte).getInt() + ""), 32);
+        TroopUtils.openTroopInfoActivity(this.a.a(), paramBundle, -1);
       }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongTextMsg", 2, "sendLongTextMsg failed! isSuccess:" + paramBoolean);
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
     }
-    awcg.a(paramQQAppInterface, paramMessageForArkApp);
   }
 }
 

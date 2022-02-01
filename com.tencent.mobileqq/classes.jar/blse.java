@@ -1,8 +1,14 @@
-import android.view.View;
+import android.content.Context;
+import java.util.Observable;
 
-public abstract interface blse
+public class blse
+  extends Observable
 {
-  public abstract void a(View paramView, int paramInt);
+  public void a(Context paramContext)
+  {
+    setChanged();
+    notifyObservers(paramContext);
+  }
 }
 
 

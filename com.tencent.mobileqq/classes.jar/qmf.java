@@ -1,230 +1,110 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class qmf
 {
-  public static void a(ArticleInfo paramArticleInfo)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramArticleInfo == null) {
-      QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], articleInfo is null or proteusItemsData is null.");
-    }
-    while (!qny.a().a()) {
-      return;
-    }
-    if (qny.a().b()) {
-      d(paramArticleInfo);
-    }
-    qmc.a.a(paramArticleInfo);
-    if (paramArticleInfo.proteusItemsData == null)
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = new JSONObject();
+    ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anvx.a(2131712592));
+    localJSONObject.put("id_gallery_cnt", localObject1);
+    localObject1 = new JSONObject();
+    ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
+    localJSONObject.put("id_gallery_img", localObject1);
+    localJSONObject.put("id_gallery_bg", new JSONObject());
+    Object localObject3;
+    Object localObject2;
+    label169:
+    label184:
+    Object localObject4;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
     {
-      QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData] proteusItemsData is null.");
-      return;
-    }
-    JSONObject localJSONObject;
-    String str;
-    try
-    {
-      localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
-      str = localJSONObject.optString("pts_page_name");
-      if (TextUtils.isEmpty(str))
-      {
-        QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], pageName is empty, pageName = " + str + ", innerUniqueID = " + paramArticleInfo.innerUniqueID + ", json = " + localJSONObject.toString());
-        return;
+      localObject3 = pnl.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
+        return localJSONObject;
       }
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[preHandlePtsLiteData] error, e = " + paramArticleInfo);
-      return;
-    }
-    paramArticleInfo.ptsLitePageName = str;
-    c(paramArticleInfo, localJSONObject);
-  }
-  
-  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2)
-  {
-    if ((paramArticleInfo == null) || (paramArticleInfo.proteusItemsData == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    QLog.i("PTSLiteDataParser", 1, "[updateJsonDataPtsRijArticle], key = " + paramString1 + ", value = " + paramString2 + ", title = " + paramArticleInfo.mTitle);
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
-      if (localJSONObject.optJSONObject("$RIJArticle") != null) {
-        localJSONObject.optJSONObject("$RIJArticle").put(paramString1, paramString2);
-      }
-      c(paramArticleInfo, localJSONObject);
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[updateJsonDataPtsRijArticle] error, e = " + paramArticleInfo);
-    }
-  }
-  
-  private static void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
-  {
-    if ((paramArticleInfo == null) || (paramJSONObject == null)) {
-      return;
-    }
-    JSONObject localJSONObject1;
-    try
-    {
-      localJSONObject1 = new JSONObject();
-      b(paramArticleInfo, localJSONObject1);
-      if (paramArticleInfo.mSubArtilceList != null)
+      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
+      if (localObject1 == null)
       {
-        JSONArray localJSONArray = new JSONArray();
-        paramArticleInfo = paramArticleInfo.mSubArtilceList.iterator();
-        while (paramArticleInfo.hasNext())
-        {
-          ArticleInfo localArticleInfo = (ArticleInfo)paramArticleInfo.next();
-          JSONObject localJSONObject2 = new JSONObject();
-          b(localArticleInfo, localJSONObject2);
-          localJSONArray.put(localJSONObject2);
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
+        if (localObject2 != null) {
+          break label343;
         }
-        localJSONObject1.put("subArticles", localJSONArray);
-      }
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[addRIJArticleJson] error, e = " + paramArticleInfo);
-      return;
-    }
-    paramJSONObject.put("$RIJArticle", localJSONObject1);
-  }
-  
-  public static void b(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo == null) || (paramArticleInfo.proteusItemsData == null)) {
-      return;
-    }
-    try
-    {
-      c(paramArticleInfo, new JSONObject(paramArticleInfo.proteusItemsData));
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[refreshArticleInfo] e = " + paramArticleInfo);
-    }
-  }
-  
-  private static void b(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject.put("rowKey", paramArticleInfo.innerUniqueID);
-      Object localObject = pay.a();
-      if (localObject != null)
-      {
-        localObject = (pks)((QQAppInterface)localObject).getManager(163);
-        if (localObject != null)
-        {
-          if (((pks)localObject).a().a(paramArticleInfo.mArticleID)) {}
-          for (paramArticleInfo = "1";; paramArticleInfo = "0")
-          {
-            paramJSONObject.put("isRead", paramArticleInfo);
-            return;
-          }
+        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
+        if (localObject3 != null) {
+          break label353;
         }
+        localObject3 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject4 = new JSONObject();
+        ((JSONObject)localObject4).put("multi_img_url1", localObject1);
+        localJSONObject.put("id_multi_img_1", localObject4);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url3", localObject3);
+        localJSONObject.put("id_multi_img_3", localObject1);
+        qmm.a(paramBaseArticleInfo, localJSONObject, true);
+        qmm.a(paramBaseArticleInfo, localJSONObject);
+        qmm.d(paramBaseArticleInfo, localJSONObject);
+        qmm.n(paramBaseArticleInfo, localJSONObject);
+        qmm.g(paramBaseArticleInfo, localJSONObject);
+        qmm.h(paramBaseArticleInfo, localJSONObject);
+        qmm.Z(paramBaseArticleInfo, localJSONObject);
+        if (paramBaseArticleInfo.articleStyle != 6) {
+          break label488;
+        }
+        localJSONObject.put("style_ID", "ReadInjoy_triple_img_big_cell");
       }
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[addRIJArticleJsonImp], e = " + paramArticleInfo);
-    }
-  }
-  
-  public static void c(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {
-      return;
-    }
-    Object localObject = pay.a();
-    if (localObject != null)
-    {
-      localObject = (pks)((QQAppInterface)localObject).getManager(163);
-      if (localObject != null) {
-        ((pks)localObject).a().a(paramArticleInfo.mArticleID, System.currentTimeMillis());
-      }
-    }
-    a(paramArticleInfo, "isRead", "1");
-  }
-  
-  private static void c(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
-  {
-    if (paramArticleInfo == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramArticleInfo.innerUniqueID))
-    {
-      paramArticleInfo.innerUniqueID = ("pts_page_" + System.currentTimeMillis());
-      QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], innerUniqueId is null.");
-    }
-    String str1 = paramArticleInfo.ptsLitePageName;
-    String str2 = paramArticleInfo.innerUniqueID;
-    String str3 = qoe.a().a("default_feeds", str1);
-    a(paramArticleInfo, paramJSONObject);
-    QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], json = " + paramJSONObject.toString());
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(paramJSONObject.toString())) && (!TextUtils.isEmpty(str3)))
-    {
-      paramArticleInfo.ptsItemData = new PTSItemData.Builder().withPageName(str1).withItemID(str2).withJsonData(paramJSONObject.toString()).withFrameTreeJson(str3).build();
-      paramArticleInfo.ptsItemDataBytes = qoa.a(paramArticleInfo.ptsItemData);
-      if (paramArticleInfo.ptsComposer != null) {
-        paramArticleInfo.ptsComposer.setData(paramJSONObject.toString());
-      }
-      paramArticleInfo.proteusItemsData = paramJSONObject.toString();
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PTSLiteDataParser", 2, "[updatePtsItemData], pageName = " + str1 + ", itemId = " + str2 + ", json = " + paramJSONObject.toString());
+      qmm.a(localJSONObject, paramBaseArticleInfo);
+      return localJSONObject;
+      localObject1 = ((JSONObject)localObject1).optString("picture");
+      break;
+      label343:
+      localObject2 = ((JSONObject)localObject2).optString("picture");
+      break label169;
+      label353:
+      localObject3 = ((JSONObject)localObject3).optString("picture");
+      break label184;
+      if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+      {
+        localObject1 = paramBaseArticleInfo.mSinglePicture;
+        label386:
+        localObject2 = ((URL)localObject1).getFile();
+        if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+          break label468;
+        }
+        localObject1 = paramBaseArticleInfo.mSinglePicture;
+        label414:
+        localObject3 = ((URL)localObject1).getFile();
+        if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
+          break label478;
+        }
       }
-      if (TextUtils.isEmpty(str3)) {
-        QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], frameTreeJson is empty.");
-      }
-      paramJSONObject = pay.a();
-      if (paramJSONObject == null) {
+      label468:
+      label478:
+      for (localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[2])
+      {
+        localObject4 = ((URL)localObject1).getFile();
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+        localObject3 = localObject4;
         break;
+        localObject1 = paramBaseArticleInfo.mPictures[0];
+        break label386;
+        localObject1 = paramBaseArticleInfo.mPictures[1];
+        break label414;
       }
-      paramJSONObject = (pks)paramJSONObject.getManager(163);
-      if (paramJSONObject == null) {
-        break;
-      }
-      paramJSONObject.a().b(paramArticleInfo);
-      return;
-      QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData] failed, something is null.");
-    }
-  }
-  
-  private static void d(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramArticleInfo.proteusItemsData))) {
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
-      if (TextUtils.equals(localJSONObject.optString("style_ID"), "ReadInjoy_daily_triple_img_cell")) {
-        localJSONObject.put("pts_page_name", "daily_triple_img_card");
-      }
-      paramArticleInfo.proteusItemsData = localJSONObject.toString();
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[convertDailyTripleData] error, e = " + paramArticleInfo);
+      label488:
+      localJSONObject.put("style_ID", "ReadInjoy_triple_img_cell");
     }
   }
 }

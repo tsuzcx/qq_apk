@@ -1,89 +1,86 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONException;
+import java.nio.ByteBuffer;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
 
 public class las
-  extends QIPCModule
+  extends MSFServlet
 {
-  private las()
+  private byte[] a(byte[] paramArrayOfByte)
   {
-    super("AioShareMusicIPCMainClient");
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
+    PkgTools.DWord2Byte(arrayOfByte, 0, paramArrayOfByte.length + 4);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
+    return arrayOfByte;
   }
   
-  public static las a()
+  public String[] getPreferSSOCommands()
   {
-    return lau.a();
+    return new String[] { "QqAd.getAd" };
   }
   
-  private void a(Bundle paramBundle)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    QQAppInterface localQQAppInterface = null;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (localQQAppInterface != null) {}
-    try
-    {
-      ((ListenTogetherManager)localQQAppInterface.getManager(331)).c(new JSONObject(paramBundle.getString("data")));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
     if (QLog.isColorLevel()) {
-      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+      QLog.d("GdtSSOLoadAD", 2, paramFromServiceMsg.isSuccess() + " onReceive with code: " + paramFromServiceMsg.getResultCode());
     }
-    if (bool)
+    if (paramFromServiceMsg.isSuccess())
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
-    }
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (localQQAppInterface != null) {}
-    try
-    {
-      ((ListenTogetherManager)localQQAppInterface.getManager(331)).b(new JSONObject(paramBundle.getString("data")));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ("checkAioShareMusic".equals(paramString)) {
-      b(paramBundle);
-    }
-    for (;;)
-    {
-      return null;
-      if ("startListenAioShareMusic".equals(paramString)) {
-        a(paramBundle);
+      Object localObject = new qq_ad_get.QQAdGetRsp();
+      try
+      {
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get(arrayOfByte);
+        ((qq_ad_get.QQAdGetRsp)localObject).mergeFrom(arrayOfByte);
+        paramFromServiceMsg = achn.a((PBField)localObject);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg != JSONObject.NULL))
+        {
+          paramFromServiceMsg = paramFromServiceMsg.toString();
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("sso_GdtLoadAd_rsp_json", paramFromServiceMsg);
+          notifyObserver(paramIntent, 1, true, (Bundle)localObject, lat.class);
+          return;
+        }
+        notifyObserver(paramIntent, 1, false, null, lat.class);
+        return;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("GdtSSOLoadAD", 2, paramFromServiceMsg.getMessage());
+        }
+        notifyObserver(paramIntent, 1, false, null, lat.class);
+        return;
       }
     }
+    notifyObserver(paramIntent, 1, false, null, lat.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    String str = paramIntent.getStringExtra("GdtLoadAdServletCMD");
+    paramPacket.setSSOCommand(str);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtSSOLoadAD", 2, "onSend with cmd: " + str);
+    }
+    paramIntent = paramIntent.getByteArrayExtra("sso_GdtLoadAd_rquest_bytes");
+    if (paramIntent != null)
+    {
+      paramPacket.putSendData(a(paramIntent));
+      return;
+    }
+    QLog.e("GdtSSOLoadAD", 1, "no bytes to send" + str);
   }
 }
 

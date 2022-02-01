@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import java.util.Comparator;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class arzx
-  implements Comparator<OfflineFileInfo>
+class arzx
 {
-  public arzx(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
-  {
-    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
-  }
+  int jdField_a_of_type_Int;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
 }
 
 

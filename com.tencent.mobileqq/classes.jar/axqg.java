@@ -1,118 +1,109 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.NearbyTribeAppController.1;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.olympic.OlympicTorchSvc.SceneWording;
-import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
+import java.util.Random;
 
 public class axqg
-  implements BusinessObserver
 {
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private aulc jdField_a_of_type_Aulc = new axqi(this);
+  protected QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString = "NearbyTribeAppController";
+  private boolean jdField_a_of_type_Boolean;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = { anvx.a(2131706861), anvx.a(2131706860), "好看的人都在用兴趣部落APP", anvx.a(2131706859), anvx.a(2131706857), "看看好友在兴趣部落APP玩什么？" };
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String[] jdField_b_of_type_ArrayOfJavaLangString = { anvx.a(2131706850), anvx.a(2131706853), "好看的人都在用兴趣部落APP", anvx.a(2131706856), anvx.a(2131706855) };
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString, torch_transfer.TorchbearerInfo paramTorchbearerInfo, OlympicTorchSvc.SceneWording paramSceneWording) {}
-  
-  public void b(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public axqg(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a()
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext)) {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131694256), 0).a();
     }
-    switch (paramInt)
+    do
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 6: 
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return;
-                      if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                        break;
-                      }
-                    } while (!QLog.isColorLevel());
-                    QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, data is null or not Object[]");
-                    return;
-                    paramObject = (Object[])paramObject;
-                    if (paramObject.length >= 4) {
-                      break;
-                    }
-                  } while (!QLog.isColorLevel());
-                  QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, objs.length < 4, is " + paramObject.length);
-                  return;
-                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (torch_transfer.TorchbearerInfo)paramObject[3], (OlympicTorchSvc.SceneWording)paramObject[4]);
-                  return;
-                  if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                    break;
-                  }
-                } while (!QLog.isColorLevel());
-                QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, data is null or not Object[]");
-                return;
-                paramObject = (Object[])paramObject;
-                if (paramObject.length >= 6) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, objs.length < 6, is " + paramObject.length);
-              return;
-              a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), (byte[])paramObject[5]);
-              return;
-              if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                break;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, data is null or not Object[]");
-            return;
-            paramObject = (Object[])paramObject;
-            if (paramObject.length >= 2) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, objs.length < 2, is " + paramObject.length);
-          return;
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+        return;
+        if ("0".equals(bhfn.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.tribe"))) {
+          break;
+        }
+      } while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity));
+      TroopBarPublishUtils.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_call", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
       return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (byte[])paramObject[2], (TorchInfo)paramObject[3]);
+      if (this.jdField_b_of_type_Boolean) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "invokeTribeOpenOrDownload,isActivate=false");
+    return;
+    ThreadManager.post(new NearbyTribeAppController.1(this), 8, null, true);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_download", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    String str = bhfn.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.tribe");
+    Random localRandom = new Random();
+    int i;
+    if (!"0".equals(str))
+    {
+      i = localRandom.nextInt(this.jdField_b_of_type_ArrayOfJavaLangString.length);
+      this.jdField_a_of_type_Int = (i + 1);
+      this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[i];
+      paramTextView.setText(this.jdField_b_of_type_JavaLangString);
+    }
+    for (paramTextView = "exp_app_call";; paramTextView = "exp_app_download")
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", paramTextView, 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
       return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (TorchInfo)paramObject[1], ((Integer)paramObject[2]).intValue());
+      i = localRandom.nextInt(this.jdField_a_of_type_ArrayOfJavaLangString.length);
+      this.jdField_a_of_type_Int = (i + 1);
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString[i];
+      paramTextView.setText(this.jdField_b_of_type_JavaLangString);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      this.jdField_b_of_type_Boolean = true;
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "这里已经下架，如果依然发现该log，异常case");
+      auku.a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", new axqh(this));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, "NOTIFY_PUSH_0Xb4");
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131706858), 0).b(50);
     }
-    a(true, (TorchInfo)((Object[])(Object[])paramObject)[0]);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

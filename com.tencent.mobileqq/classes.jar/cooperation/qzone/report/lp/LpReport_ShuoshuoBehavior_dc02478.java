@@ -65,7 +65,7 @@ public class LpReport_ShuoshuoBehavior_dc02478
       if (!TextUtils.isEmpty(this.version)) {
         break label198;
       }
-      str = "8.4.8";
+      str = "8.4.10";
       label52:
       LpReportUtils.safePut(localHashMap, "version", str);
       LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());

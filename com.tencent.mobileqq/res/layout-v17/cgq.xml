@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="105.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/mfp" android:background="@drawable/bk4" android:layout_width="fill_parent" android:layout_height="93.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" />
+    <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/mg2" android:layout_width="160.0dip" android:layout_height="105.0dip" android:scaleType="fitEnd" android:layout_alignRight="@id/mfp" android:layout_alignBottom="@id/mfp" android:layout_alignEnd="@id/mfp" app:useApngImage="true" />
+    <RelativeLayout android:id="@id/mg3" android:layout_width="fill_parent" android:layout_height="93.0dip" android:layout_alignLeft="@id/mfp" android:layout_alignTop="@id/mfp" android:layout_alignRight="@id/mfp" android:layout_alignBottom="@id/mfp" android:layout_alignStart="@id/mfp" android:layout_alignEnd="@id/mfp">
+        <RelativeLayout android:id="@id/mg5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true">
+            <com.dataline.util.widget.AsyncImageView android:id="@id/mg4" android:layout_width="88.0dip" android:layout_height="29.0dip" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+            <TextView android:textSize="10.0sp" android:textColor="@android:color/white" android:id="@id/mg6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="123456人已经预约" android:layout_below="@id/mg4" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/mg5" android:layout_alignParentLeft="true">
+            <com.dataline.util.widget.AsyncImageView android:id="@id/mg8" android:layout_width="wrap_content" android:layout_height="20.0dip" android:adjustViewBounds="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:id="@id/mg1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:id="@id/meh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+                <com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout android:id="@id/me5" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/met" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAlignment="center" android:paddingStart="4.0dip" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:id="@id/mg9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="时间：10月24日 10:00~18:00" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

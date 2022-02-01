@@ -1,16 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awbr
-  extends RecyclerView.ViewHolder
+public class awbr
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public awbr(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public awbr(awbo paramawbo, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379897));
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

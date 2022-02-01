@@ -1,12 +1,6 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-
-class nuc
-  implements TVK_IMediaPlayer.OnCompletionListener
+public abstract interface nuc
 {
-  nuc(nua paramnua) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

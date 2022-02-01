@@ -1,12 +1,26 @@
-public abstract interface bdhf
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
+
+public final class bdhf
+  implements QQPermissionCallback
 {
-  public abstract void a();
+  public bdhf(bdhi parambdhi, Activity paramActivity) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhdj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bdhi);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Bdhi != null) {
+      this.jdField_a_of_type_Bdhi.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhf
  * JD-Core Version:    0.7.0.1
  */

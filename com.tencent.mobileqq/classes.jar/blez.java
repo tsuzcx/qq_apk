@@ -1,7 +1,4 @@
-public abstract interface blez
-{
-  public abstract void a(int paramInt);
-}
+public class blez {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

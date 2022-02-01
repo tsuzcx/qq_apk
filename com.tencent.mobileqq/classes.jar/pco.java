@@ -1,36 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 public class pco
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
+  
+  public View a(pcf parampcf, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    View localView = paramView;
+    if (paramView == null)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("readinjoyClickChannelView", str1)) {
-        bkwm.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
-        bkwm.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
-        bkwm.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      localView = parampcf.a().inflate(2131560154, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380210));
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       }
+      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131381151);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b = localView.findViewById(2131381136);
+      this.b.setVisibility(0);
     }
-    return true;
+    localView.setTag(this);
+    return localView;
   }
   
-  public void onWipeConfig(int paramInt)
+  public void a(pcf parampcf, int paramInt)
   {
-    bkwm.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
-    bkwm.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
-    bkwm.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
+    if (parampcf == null) {
+      return;
+    }
+    pdp localpdp = (pdp)parampcf.getItem(paramInt);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = anvx.a(2131712170);
+    if (localpdp.a != null) {}
+    for (parampcf = String.valueOf(parampcf.a().a(localpdp.a.commentId));; parampcf = "")
+    {
+      localSpannableStringBuilder.append(str + " ");
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#262626")), 0, str.length(), 34);
+      localSpannableStringBuilder.append(parampcf);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#737373")), str.length(), localSpannableStringBuilder.length(), 34);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      return;
+    }
   }
 }
 

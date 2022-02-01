@@ -1,69 +1,28 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.app.Activity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import mqq.os.MqqHandler;
 
-public class ahcl
-  extends ahcf
+class ahcl
+  implements awzc<EmoticonPackage>
 {
-  ajul a;
+  ahcl(ahcj paramahcj, String paramString) {}
   
-  public ahcl(QQAppInterface paramQQAppInterface, ahcz paramahcz, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afaf paramafaf)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    super(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
-    this.jdField_a_of_type_Ajul = ((ajul)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Ajul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
-    for (this.i = 0;; this.i = paramQQWalletBaseMsgElem.effectsId)
+    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1008) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1000) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 10004) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1001) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1002) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1003) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1004) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1005) && (this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1006))
     {
-      this.j = 2130847150;
+      paramEmoticonPackage = this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (paramEmoticonPackage != null) {
+        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
+      }
       return;
     }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Ahcz.b.setVisibility(0);
-    this.jdField_a_of_type_Ahcz.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Ahcz.b.setText(ahck.i);
-    return true;
-  }
-  
-  public void f()
-  {
-    super.f();
-    try
-    {
-      this.jdField_a_of_type_Ahcz.a.setText(akgd.a(this.jdField_a_of_type_Ahcz.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, 330, this.jdField_a_of_type_Ahcz.a.getPaint()));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  public void i()
-  {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    ajuk localajuk2 = this.jdField_a_of_type_Ajul.a(localQQWalletRedPacketMsg.redPacketId);
-    ajuk localajuk1 = localajuk2;
-    if (localajuk2 == null)
-    {
-      localajuk1 = new ajuk(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, false, false, false, 2);
-      this.jdField_a_of_type_Ajul.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Ajul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 2);
-    }
-    if (!a(localajuk1))
-    {
-      this.jdField_a_of_type_Ahcz.d.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_Ahcz.d.setVisibility(0);
+    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Ahcj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahcj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
   }
 }
 

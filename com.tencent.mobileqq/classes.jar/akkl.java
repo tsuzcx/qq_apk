@@ -1,13 +1,14 @@
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
 
-class akkl
-  implements wco
+public class akkl
 {
-  akkl(akkk paramakkk) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  public akkl(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
   {
-    this.a.a.invalidateViews();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

@@ -1,52 +1,44 @@
-import android.os.Message;
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
 
-public final class atfc
-  implements Debugger.IDebugCallback
+public class atfc
+  extends auex
 {
-  private final WeakReference<TdsDebugView> a;
+  public atfc(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
   
-  private atfc(TdsDebugView paramTdsDebugView)
+  public void a()
   {
-    this.a = new WeakReference(paramTdsDebugView);
+    this.a.a.a().b();
   }
   
-  public void onCleanCache(String paramString, int paramInt)
+  public void b()
   {
-    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
+    this.a.a.a().o();
   }
   
-  public void onCleanPlugin(String paramString, int paramInt)
+  public void c()
   {
-    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
+    this.a.a.a().p();
   }
   
-  public void onUpgradePlugin(String paramString, int paramInt)
+  public void d()
   {
-    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return;
-    }
-    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfc
  * JD-Core Version:    0.7.0.1
  */

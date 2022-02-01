@@ -1,25 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
 public class blza
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  blza(blys paramblys) {}
+  public blza(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bmbc.a().ap();
-    blys.b(this.a);
-    new Handler().postDelayed(new AEGIFTextEditFragment.7.1(this), 200L);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QlinkShareJumpActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blza
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.huayang.Monitor.1;
+import android.content.Context;
+import com.idlefish.flutterboost.interfaces.INativeRouter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class auoj
+  implements INativeRouter
 {
-  public static boolean a = true;
+  private static auoj a;
   
-  public static void a(String paramString)
+  public static auoj a()
   {
-    if (a) {
-      b(paramString);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new auoj();
+      }
+      return a;
     }
+    finally {}
   }
   
-  public static void b(String paramString)
+  public void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2)
   {
-    ThreadManager.executeOnNetWorkThread(new Monitor.1("https://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openContainer: %s", new Object[] { paramString }));
+    }
   }
 }
 

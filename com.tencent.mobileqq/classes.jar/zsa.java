@@ -1,49 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
 
-public abstract class zsa
-  extends nmf
+public abstract class zsa<T>
+  extends zrz<T>
 {
-  public zsa()
+  protected int c = -1;
+  
+  public zsa(Context paramContext, boolean paramBoolean)
   {
-    super(false);
+    super(paramContext, paramBoolean);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected abstract View a();
+  
+  protected View a(int paramInt)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    if (this.a != null) {
+      return this.a.findViewById(paramInt);
+    }
+    return null;
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a()
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
+    this.a = a();
+    g();
+  }
+  
+  public void a(View paramView)
+  {
+    if ((paramView != null) && (a())) {
+      ((ViewGroup)this.a).addView(paramView);
+    }
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    if (paramViewStub == null) {
       return;
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
+    if (this.c != -1)
     {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
+      a(paramViewStub, this.c);
       return;
     }
-    a(false, -1, null, paramBundle);
+    paramViewStub.setLayoutResource(b());
+    this.a = paramViewStub.inflate();
+    if (b() == 2131562499) {
+      a(a());
+    }
+    g();
   }
+  
+  public void a(ViewStub paramViewStub, int paramInt)
+  {
+    if (paramViewStub != null)
+    {
+      paramViewStub.setLayoutResource(paramInt);
+      this.a = paramViewStub.inflate();
+      g();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return (this.a != null) && ((this.a instanceof ViewGroup));
+  }
+  
+  protected abstract int b();
+  
+  protected abstract void g();
 }
 
 

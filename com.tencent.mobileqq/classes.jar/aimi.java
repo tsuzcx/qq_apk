@@ -1,26 +1,16 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-public class aimi
-  extends amop
+class aimi
+  implements aimv
 {
-  public aimi(TroopView paramTroopView) {}
+  aimi(aimf paramaimf, List paramList1, List paramList2) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a(long paramLong)
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.a()) {
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694277);
-    }
-    QQToast.a(this.a.a(), 1, paramString1, 0).a();
+    aimf.a(this.jdField_a_of_type_Aimf, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
+    aimf.a(this.jdField_a_of_type_Aimf).setLeftCheckBoxVisible(false, (ChatMessage)this.b.get(0), false);
   }
 }
 

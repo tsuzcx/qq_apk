@@ -1,13 +1,17 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import org.json.JSONObject;
 
-class bjdq
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnInfoListener
+public class bjdq
+  implements DialogInterface.OnClickListener
 {
-  bjdq(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener paramOnInfoListener) {}
+  public bjdq(OpenAuthorityFragment paramOpenAuthorityFragment, int paramInt, JSONObject paramJSONObject) {}
   
-  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bjdj, paramInt1, paramInt2);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

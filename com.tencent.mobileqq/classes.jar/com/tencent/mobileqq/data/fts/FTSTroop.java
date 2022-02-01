@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
-import bftf;
-import bgbo;
+import bhbx;
+import bhkf;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -63,7 +63,7 @@ public class FTSTroop
   
   public String createInsertSQL()
   {
-    return String.format("FTSTroop type=%d, troopuin|memberuin=%s, troopnick|size=%s, nick|size=%s", new Object[] { Integer.valueOf(this.mType), this.mExt1 + "zzz" + this.mExt6, bftf.a(this.mExt4), bftf.a(this.mExt2) });
+    return String.format("FTSTroop type=%d, troopuin|memberuin=%s, troopnick|size=%s, nick|size=%s", new Object[] { Integer.valueOf(this.mType), this.mExt1 + "zzz" + this.mExt6, bhbx.a(this.mExt4), bhbx.a(this.mExt2) });
   }
   
   public String createUpdateSQL()
@@ -116,12 +116,12 @@ public class FTSTroop
       str = this.mMemberCard.replace("'", "''");
       break label38;
       label130:
-      this.mExt3 = bgbo.a(this.mExt2);
-      this.mSegmentCount += bgbo.a(this.mExt3);
+      this.mExt3 = bhkf.a(this.mExt2);
+      this.mSegmentCount += bhkf.a(this.mExt3);
       break label67;
       label160:
-      this.mExt5 = bgbo.a(this.mExt4);
-      this.mSegmentCount += bgbo.a(this.mExt5);
+      this.mExt5 = bhkf.a(this.mExt4);
+      this.mSegmentCount += bhkf.a(this.mExt5);
     }
   }
   
@@ -142,7 +142,7 @@ public class FTSTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSTroop
  * JD-Core Version:    0.7.0.1
  */

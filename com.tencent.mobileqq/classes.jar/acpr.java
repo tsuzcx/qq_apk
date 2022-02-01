@@ -1,41 +1,23 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class acpr
-  extends binf
+  implements acpi
 {
-  public acpr(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  private static void a(long paramLong, MsgType0x210 paramMsgType0x210)
   {
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
-        if (AddFriendVerifyActivity.a(this.a) != null)
-        {
-          str = AddFriendVerifyActivity.a(this.a).getText().toString();
-          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
-            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x113, ]");
     }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
-      return;
-    }
-    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
+    baol.a(paramMsgType0x210.vProtobuf, paramLong);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramLong, paramMsgType0x210);
+    return null;
   }
 }
 

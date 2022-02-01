@@ -1,6 +1,18 @@
-public abstract interface blug
+import java.io.File;
+import java.util.concurrent.Callable;
+
+class blug
+  implements Callable<Boolean>
 {
-  public abstract void a();
+  blug(blue paramblue, File paramFile) {}
+  
+  public Boolean a()
+  {
+    if ((blue.a(this.jdField_a_of_type_Blue).exists()) && (this.jdField_a_of_type_JavaIoFile == blue.a(this.jdField_a_of_type_Blue))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
+  }
 }
 
 

@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-
-class sih
-  implements DialogInterface.OnDismissListener
+public abstract interface sih
 {
-  sih(sig paramsig) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    }
-    if (sig.a(this.a) != null) {
-      sig.a(this.a).a(sig.a(this.a), sig.b(this.a), false, false);
-    }
-    sig.a(this.a, true);
-    sig.b(this.a, false);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

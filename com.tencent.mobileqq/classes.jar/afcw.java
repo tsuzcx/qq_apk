@@ -1,15 +1,20 @@
-class afcw
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afcw
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c = "";
+  public afcw(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
-  private afcw()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "";
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

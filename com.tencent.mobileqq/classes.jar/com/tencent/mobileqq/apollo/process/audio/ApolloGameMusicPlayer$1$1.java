@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.audio;
 
-import alwc;
+import amws;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 public class ApolloGameMusicPlayer$1$1
   extends IApolloRunnableTask
 {
-  public ApolloGameMusicPlayer$1$1(alwc paramalwc, ApolloSurfaceView paramApolloSurfaceView) {}
+  public ApolloGameMusicPlayer$1$1(amws paramamws, ApolloSurfaceView paramApolloSurfaceView) {}
   
   public String a()
   {
@@ -18,8 +18,8 @@ public class ApolloGameMusicPlayer$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Alwc.a != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a(this.jdField_a_of_type_Alwc.a);
+    if (this.jdField_a_of_type_Amws.a != 0L) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a(this.jdField_a_of_type_Amws.a);
     }
   }
 }

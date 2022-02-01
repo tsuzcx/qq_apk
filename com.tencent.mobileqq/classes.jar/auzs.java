@@ -1,8 +1,29 @@
-public abstract interface auzs
+import com.tencent.mobileqq.fts.entity.FTSEntity;
+import java.util.Arrays;
+
+public class auzs
 {
-  public abstract void a();
+  public int a;
+  public Class<? extends FTSEntity> a;
+  public String a;
+  public boolean a;
+  public auzu[] a;
+  public String b;
   
-  public abstract void b();
+  public auzs(Class<? extends FTSEntity> paramClass, auzu[] paramArrayOfauzu, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ArrayOfAuzu = paramArrayOfauzu;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAuzu) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
+  }
 }
 
 

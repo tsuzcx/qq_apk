@@ -1,13 +1,20 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bjdl
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnCompletionListener
+public class bjdl
+  implements View.OnClickListener
 {
-  bjdl(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public bjdl(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
   
-  public void onCompletion(IMediaPlayer paramIMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bjdj);
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof String))) {
+      this.a.b((String)localObject);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

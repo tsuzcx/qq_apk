@@ -1,45 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.CameraFocusView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.core.AECameraManager;
 
-public class bmxr
+class bmxr
+  implements bbha
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new bmxs(paramInt1, paramView));
-    return localValueAnimator;
-  }
+  bmxr(bmxa parambmxa) {}
   
-  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  public void a(MotionEvent paramMotionEvent)
   {
-    return new bfzt(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bmxt(paramView));
-  }
-  
-  public static void a(List<bmxu> paramList, Animator.AnimatorListener paramAnimatorListener)
-  {
-    if (paramList.size() > 0)
+    bmxa.a(this.a);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) && (!this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.isFrontCamera()))
     {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        bmxu localbmxu = (bmxu)paramList.next();
-        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localbmxu.jdField_a_of_type_AndroidViewView, localbmxu.jdField_a_of_type_JavaLangString, new float[] { localbmxu.jdField_a_of_type_Float, localbmxu.jdField_b_of_type_Float }).setDuration(localbmxu.jdField_a_of_type_Long);
-        localObjectAnimator.setStartDelay(localbmxu.jdField_b_of_type_Long);
-        localArrayList.add(localObjectAnimator);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
+      this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.requestCameraFocus(paramMotionEvent.getX(), paramMotionEvent.getY(), this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getSurfaceWidth(), this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getSurfaceHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, new Object[] { "", "CameraFocusGesture isRecording == false" });
       }
-      paramList = new AnimatorSet();
-      paramList.playTogether(localArrayList);
-      paramList.addListener(paramAnimatorListener);
-      paramList.start();
     }
   }
 }

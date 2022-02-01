@@ -15,6 +15,7 @@ public final class FeedCloudMeta$StNotice
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField busiData = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField busiReport = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field createTime = PBField.initUInt64(0L);
   public FeedCloudMeta.StFeed feed = new FeedCloudMeta.StFeed();
   public final PBStringField feedId = PBField.initString("");
@@ -27,8 +28,9 @@ public final class FeedCloudMeta$StNotice
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 74, 82 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message", "vecUser", "subMessage", "summary" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, "", null, "", "" }, StNotice.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 74, 82, 90 }, new String[] { "feedId", "noticeType", "createTime", "operation", "feed", "busiData", "message", "vecUser", "subMessage", "summary", "busiReport" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro1, "", null, "", "", localByteStringMicro2 }, StNotice.class);
   }
 }
 

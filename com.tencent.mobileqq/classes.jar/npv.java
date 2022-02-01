@@ -1,89 +1,72 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.avgame.ui.AvGameLoadingActivity.5.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.io.File;
 
-final class npv
-  implements BusinessObserver
+public class npv
+  implements ngn
 {
-  npv(Context paramContext, QQAppInterface paramQQAppInterface, bhht parambhht, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
+  public npv(AvGameLoadingActivity paramAvGameLoadingActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadStart");
     }
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramBoolean)
+    this.a.jdField_a_of_type_Int = 0;
+    AvGameLoadingActivity.a(this.a, this.a.jdField_a_of_type_Int);
+    AvGameLoadingActivity.b(this.a, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadProgress and percent is " + paramInt);
+    }
+    this.a.jdField_a_of_type_Int = (paramInt / this.a.b);
+    AvGameLoadingActivity.a(this.a, this.a.jdField_a_of_type_Int);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadReady");
+    }
+    SharedPreferences localSharedPreferences;
+    if (AvGameLoadingActivity.e(this.a))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localFollowResponse = new mobileqq_mp.FollowResponse();
+      AvGameLoadingActivity.a(this.a);
+      AvGameLoadingActivity.b(this.a, false);
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("av_game_sp", 4);
+      if (!paramString.endsWith("/")) {
+        break label129;
       }
     }
     for (;;)
     {
-      try
-      {
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
-          npt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(11);
-          if (paramBundle != null) {
-            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
-          }
-          npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-          argw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
-          npt.a(this.jdField_a_of_type_Bhht);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        npt.a(this.jdField_a_of_type_Bhht);
-        return;
-      }
-      if (paramInt == 58)
-      {
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694772);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
-      }
-      else if (paramInt == 65)
-      {
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694749);
-      }
-      else if (paramInt == 20)
-      {
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694750);
-      }
-      else
-      {
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        continue;
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        continue;
-        npt.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-      }
+      localSharedPreferences.edit().putString("resPath", paramString).commit();
+      ngl.a = paramString;
+      bdla.b(null, "dc00898", "", "", "0X800B043", "0X800B043", 0, 0, "", "", "", "");
+      return;
+      ThreadManager.getUIHandlerV2().postDelayed(new AvGameLoadingActivity.5.1(this), 150L);
+      break;
+      label129:
+      paramString = paramString + File.separator;
     }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 1, "onResDownloadFailed");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    bdla.b(null, "dc00898", "", "", "0X800B044", "0X800B044", 0, 0, "" + paramInt, "", "", "");
   }
 }
 

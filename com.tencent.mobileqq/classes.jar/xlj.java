@@ -1,51 +1,30 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.nio.ByteBuffer;
 
 public class xlj
-  implements IEventReceiver
 {
-  public int a;
-  public QQUserUIItem a;
-  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  protected vlc a;
-  private xll jdField_a_of_type_Xll;
-  private xlm jdField_a_of_type_Xlm;
+  int jdField_a_of_type_Int;
+  public long a;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  public boolean a;
+  public boolean b;
   
-  public xlj(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
+  public xlj()
   {
-    this.jdField_a_of_type_Vlc = new xlk(this);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((vvj)vux.a(2)).b(this.jdField_a_of_type_JavaLangString);
-    wkp.a().addObserver(this.jdField_a_of_type_Vlc);
-    this.jdField_a_of_type_Xll = new xll(this);
-    vli.a().registerSubscriber(this.jdField_a_of_type_Xll);
-    this.jdField_a_of_type_Xlm = new xlm(this);
-    vli.a().registerSubscriber(this.jdField_a_of_type_Xlm);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
-  public void b()
+  public String toString()
   {
-    wkp.a().removeObserver(this.jdField_a_of_type_Vlc);
-    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Xll);
-    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Xlm);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
   }
 }
 

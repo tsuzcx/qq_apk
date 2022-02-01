@@ -163,8 +163,8 @@ public class AccessibilityBridge
     if (localCustomAccessibilityAction2 == null)
     {
       localCustomAccessibilityAction1 = new AccessibilityBridge.CustomAccessibilityAction();
-      AccessibilityBridge.CustomAccessibilityAction.access$3602(localCustomAccessibilityAction1, paramInt);
-      AccessibilityBridge.CustomAccessibilityAction.access$3102(localCustomAccessibilityAction1, FIRST_RESOURCE_ID + paramInt);
+      AccessibilityBridge.CustomAccessibilityAction.access$3702(localCustomAccessibilityAction1, paramInt);
+      AccessibilityBridge.CustomAccessibilityAction.access$3202(localCustomAccessibilityAction1, FIRST_RESOURCE_ID + paramInt);
       this.customAccessibilityActions.put(Integer.valueOf(paramInt), localCustomAccessibilityAction1);
     }
     return localCustomAccessibilityAction1;
@@ -177,7 +177,7 @@ public class AccessibilityBridge
     if (localSemanticsNode2 == null)
     {
       localSemanticsNode1 = new AccessibilityBridge.SemanticsNode(this);
-      AccessibilityBridge.SemanticsNode.access$1602(localSemanticsNode1, paramInt);
+      AccessibilityBridge.SemanticsNode.access$1802(localSemanticsNode1, paramInt);
       this.flutterSemanticsTree.put(Integer.valueOf(paramInt), localSemanticsNode1);
     }
     return localSemanticsNode1;
@@ -195,13 +195,13 @@ public class AccessibilityBridge
     do
     {
       return;
-      localSemanticsNode = AccessibilityBridge.SemanticsNode.access$3700(getRootSemanticsNode(), new float[] { paramFloat1, paramFloat2, 0.0F, 1.0F });
+      localSemanticsNode = AccessibilityBridge.SemanticsNode.access$3800(getRootSemanticsNode(), new float[] { paramFloat1, paramFloat2, 0.0F, 1.0F });
     } while (localSemanticsNode == this.hoveredObject);
     if (localSemanticsNode != null) {
-      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600(localSemanticsNode), 128);
+      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800(localSemanticsNode), 128);
     }
     if (this.hoveredObject != null) {
-      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600(this.hoveredObject), 256);
+      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800(this.hoveredObject), 256);
     }
     this.hoveredObject = localSemanticsNode;
   }
@@ -218,7 +218,7 @@ public class AccessibilityBridge
   {
     if (this.hoveredObject != null)
     {
-      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600(this.hoveredObject), 256);
+      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800(this.hoveredObject), 256);
       this.hoveredObject = null;
     }
   }
@@ -237,20 +237,20 @@ public class AccessibilityBridge
       do
       {
         return false;
-        if ((paramBoolean) && (AccessibilityBridge.SemanticsNode.access$2100(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_WORD)))
+        if ((paramBoolean) && (AccessibilityBridge.SemanticsNode.access$2200(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_WORD)))
         {
           this.accessibilityChannel.dispatchSemanticsAction(paramInt, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_WORD, Boolean.valueOf(bool));
           return true;
         }
-      } while ((paramBoolean) || (!AccessibilityBridge.SemanticsNode.access$2100(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_WORD)));
+      } while ((paramBoolean) || (!AccessibilityBridge.SemanticsNode.access$2200(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_WORD)));
       this.accessibilityChannel.dispatchSemanticsAction(paramInt, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_WORD, Boolean.valueOf(bool));
       return true;
-      if ((paramBoolean) && (AccessibilityBridge.SemanticsNode.access$2100(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_CHARACTER)))
+      if ((paramBoolean) && (AccessibilityBridge.SemanticsNode.access$2200(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_CHARACTER)))
       {
         this.accessibilityChannel.dispatchSemanticsAction(paramInt, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_CHARACTER, Boolean.valueOf(bool));
         return true;
       }
-    } while ((paramBoolean) || (!AccessibilityBridge.SemanticsNode.access$2100(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_CHARACTER)));
+    } while ((paramBoolean) || (!AccessibilityBridge.SemanticsNode.access$2200(paramSemanticsNode, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_CHARACTER)));
     this.accessibilityChannel.dispatchSemanticsAction(paramInt, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_CHARACTER, Boolean.valueOf(bool));
     return true;
   }
@@ -283,8 +283,8 @@ public class AccessibilityBridge
   
   private void sendWindowChangeEvent(@NonNull AccessibilityBridge.SemanticsNode paramSemanticsNode)
   {
-    AccessibilityEvent localAccessibilityEvent = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600(paramSemanticsNode), 32);
-    paramSemanticsNode = AccessibilityBridge.SemanticsNode.access$5900(paramSemanticsNode);
+    AccessibilityEvent localAccessibilityEvent = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800(paramSemanticsNode), 32);
+    paramSemanticsNode = AccessibilityBridge.SemanticsNode.access$6000(paramSemanticsNode);
     localAccessibilityEvent.getText().add(paramSemanticsNode);
     sendAccessibilityEvent(localAccessibilityEvent);
   }
@@ -300,15 +300,15 @@ public class AccessibilityBridge
   
   private boolean shouldSetCollectionInfo(AccessibilityBridge.SemanticsNode paramSemanticsNode)
   {
-    return (AccessibilityBridge.SemanticsNode.access$1200(paramSemanticsNode) > 0) && ((AccessibilityBridge.SemanticsNode.access$1300(this.accessibilityFocusedSemanticsNode, new _..Lambda.AccessibilityBridge.JBDpWWlF54eN0gel8Jn1hY7yOmE(paramSemanticsNode))) || (!AccessibilityBridge.SemanticsNode.access$1300(this.accessibilityFocusedSemanticsNode, _..Lambda.AccessibilityBridge._xgAbWhyKyeHrMGUVUYzbSFEeBY.INSTANCE)));
+    return (AccessibilityBridge.SemanticsNode.access$1200(paramSemanticsNode) > 0) && ((AccessibilityBridge.SemanticsNode.access$1300(this.accessibilityFocusedSemanticsNode, new AccessibilityBridge.PredicateLabmal1(this, paramSemanticsNode))) || (!AccessibilityBridge.SemanticsNode.access$1300(this.accessibilityFocusedSemanticsNode, new AccessibilityBridge.PredicateLabmal2(this, null))));
   }
   
   private void willRemoveSemanticsNode(AccessibilityBridge.SemanticsNode paramSemanticsNode)
   {
-    AccessibilityBridge.SemanticsNode.access$2502(paramSemanticsNode, null);
+    AccessibilityBridge.SemanticsNode.access$2602(paramSemanticsNode, null);
     if (this.accessibilityFocusedSemanticsNode == paramSemanticsNode)
     {
-      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode), 65536);
+      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode), 65536);
       this.accessibilityFocusedSemanticsNode = null;
     }
     if (this.inputFocusedSemanticsNode == paramSemanticsNode) {
@@ -343,11 +343,11 @@ public class AccessibilityBridge
       return null;
     }
     Object localObject3;
-    if (AccessibilityBridge.SemanticsNode.access$1400((AccessibilityBridge.SemanticsNode)localObject1) != -1)
+    if (AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject1) != -1)
     {
-      localObject2 = this.platformViewsAccessibilityDelegate.getPlatformViewById(Integer.valueOf(AccessibilityBridge.SemanticsNode.access$1400((AccessibilityBridge.SemanticsNode)localObject1)));
-      localObject3 = AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1);
-      return this.accessibilityViewEmbedder.getRootNode((View)localObject2, AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject1), (Rect)localObject3);
+      localObject2 = this.platformViewsAccessibilityDelegate.getPlatformViewById(Integer.valueOf(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject1)));
+      localObject3 = AccessibilityBridge.SemanticsNode.access$1700((AccessibilityBridge.SemanticsNode)localObject1);
+      return this.accessibilityViewEmbedder.getRootNode((View)localObject2, AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1), (Rect)localObject3);
     }
     Object localObject2 = AccessibilityNodeInfo.obtain(this.rootAccessibilityView, paramInt);
     if (Build.VERSION.SDK_INT >= 18) {
@@ -356,7 +356,7 @@ public class AccessibilityBridge
     ((AccessibilityNodeInfo)localObject2).setPackageName(this.rootAccessibilityView.getContext().getPackageName());
     ((AccessibilityNodeInfo)localObject2).setClassName("android.view.View");
     ((AccessibilityNodeInfo)localObject2).setSource(this.rootAccessibilityView, paramInt);
-    ((AccessibilityNodeInfo)localObject2).setFocusable(AccessibilityBridge.SemanticsNode.access$1700((AccessibilityBridge.SemanticsNode)localObject1));
+    ((AccessibilityNodeInfo)localObject2).setFocusable(AccessibilityBridge.SemanticsNode.access$1900((AccessibilityBridge.SemanticsNode)localObject1));
     boolean bool1;
     label273:
     int j;
@@ -370,7 +370,7 @@ public class AccessibilityBridge
     boolean bool4;
     if (this.inputFocusedSemanticsNode != null)
     {
-      if (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) == paramInt)
+      if (AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode) == paramInt)
       {
         bool1 = true;
         ((AccessibilityNodeInfo)localObject2).setFocused(bool1);
@@ -380,132 +380,132 @@ public class AccessibilityBridge
     {
       if (this.accessibilityFocusedSemanticsNode != null)
       {
-        if (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) != paramInt) {
+        if (AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode) != paramInt) {
           break label1474;
         }
         bool1 = true;
         ((AccessibilityNodeInfo)localObject2).setAccessibilityFocused(bool1);
       }
-      if (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_TEXT_FIELD))
+      if (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_TEXT_FIELD))
       {
-        ((AccessibilityNodeInfo)localObject2).setPassword(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_OBSCURED));
-        if (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_READ_ONLY)) {
+        ((AccessibilityNodeInfo)localObject2).setPassword(AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_OBSCURED));
+        if (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_READ_ONLY)) {
           ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.EditText");
         }
         if (Build.VERSION.SDK_INT >= 18)
         {
-          ((AccessibilityNodeInfo)localObject2).setEditable(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_READ_ONLY) ^ true);
-          if ((AccessibilityBridge.SemanticsNode.access$1900((AccessibilityBridge.SemanticsNode)localObject1) != -1) && (AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject1) != -1)) {
-            ((AccessibilityNodeInfo)localObject2).setTextSelection(AccessibilityBridge.SemanticsNode.access$1900((AccessibilityBridge.SemanticsNode)localObject1), AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject1));
+          ((AccessibilityNodeInfo)localObject2).setEditable(AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_READ_ONLY) ^ true);
+          if ((AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject1) != -1) && (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1) != -1)) {
+            ((AccessibilityNodeInfo)localObject2).setTextSelection(AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject1), AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1));
           }
-          if ((Build.VERSION.SDK_INT > 18) && (this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) == paramInt)) {
+          if ((Build.VERSION.SDK_INT > 18) && (this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode) == paramInt)) {
             ((AccessibilityNodeInfo)localObject2).setLiveRegion(1);
           }
         }
-        if (!AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_CHARACTER)) {
+        if (!AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_CHARACTER)) {
           break label1480;
         }
         ((AccessibilityNodeInfo)localObject2).addAction(256);
         j = 1;
         i = j;
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_CHARACTER))
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_CHARACTER))
         {
           ((AccessibilityNodeInfo)localObject2).addAction(512);
           i = j | 0x1;
         }
         j = i;
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_WORD))
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_FORWARD_BY_WORD))
         {
           ((AccessibilityNodeInfo)localObject2).addAction(256);
           j = i | 0x2;
         }
         i = j;
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_WORD))
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.MOVE_CURSOR_BACKWARD_BY_WORD))
         {
           ((AccessibilityNodeInfo)localObject2).addAction(512);
           i = j | 0x2;
         }
         ((AccessibilityNodeInfo)localObject2).setMovementGranularities(i);
-        if ((Build.VERSION.SDK_INT >= 21) && (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1) >= 0))
+        if ((Build.VERSION.SDK_INT >= 21) && (AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject1) >= 0))
         {
-          if (AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject1) != null) {
+          if (AccessibilityBridge.SemanticsNode.access$2400((AccessibilityBridge.SemanticsNode)localObject1) != null) {
             break label1485;
           }
           i = 0;
-          AccessibilityBridge.SemanticsNode.access$2400((AccessibilityBridge.SemanticsNode)localObject1);
-          AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1);
-          ((AccessibilityNodeInfo)localObject2).setMaxTextLength(i - AccessibilityBridge.SemanticsNode.access$2400((AccessibilityBridge.SemanticsNode)localObject1) + AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1));
+          AccessibilityBridge.SemanticsNode.access$2500((AccessibilityBridge.SemanticsNode)localObject1);
+          AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject1);
+          ((AccessibilityNodeInfo)localObject2).setMaxTextLength(i - AccessibilityBridge.SemanticsNode.access$2500((AccessibilityBridge.SemanticsNode)localObject1) + AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject1));
         }
       }
       if (Build.VERSION.SDK_INT > 18)
       {
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SET_SELECTION)) {
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SET_SELECTION)) {
           ((AccessibilityNodeInfo)localObject2).addAction(131072);
         }
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.COPY)) {
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.COPY)) {
           ((AccessibilityNodeInfo)localObject2).addAction(16384);
         }
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.CUT)) {
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.CUT)) {
           ((AccessibilityNodeInfo)localObject2).addAction(65536);
         }
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.PASTE)) {
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.PASTE)) {
           ((AccessibilityNodeInfo)localObject2).addAction(32768);
         }
       }
-      if ((AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_BUTTON)) || (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_LINK))) {
+      if ((AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_BUTTON)) || (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_LINK))) {
         ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.Button");
       }
-      if (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_IMAGE)) {
+      if (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_IMAGE)) {
         ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.ImageView");
       }
-      if ((Build.VERSION.SDK_INT > 18) && (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.DISMISS)))
+      if ((Build.VERSION.SDK_INT > 18) && (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.DISMISS)))
       {
         ((AccessibilityNodeInfo)localObject2).setDismissable(true);
         ((AccessibilityNodeInfo)localObject2).addAction(1048576);
       }
-      if (AccessibilityBridge.SemanticsNode.access$2500((AccessibilityBridge.SemanticsNode)localObject1) == null) {
+      if (AccessibilityBridge.SemanticsNode.access$2600((AccessibilityBridge.SemanticsNode)localObject1) == null) {
         break label1497;
       }
-      ((AccessibilityNodeInfo)localObject2).setParent(this.rootAccessibilityView, AccessibilityBridge.SemanticsNode.access$1600(AccessibilityBridge.SemanticsNode.access$2500((AccessibilityBridge.SemanticsNode)localObject1)));
-      localObject3 = AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1);
-      if (AccessibilityBridge.SemanticsNode.access$2500((AccessibilityBridge.SemanticsNode)localObject1) == null) {
+      ((AccessibilityNodeInfo)localObject2).setParent(this.rootAccessibilityView, AccessibilityBridge.SemanticsNode.access$1800(AccessibilityBridge.SemanticsNode.access$2600((AccessibilityBridge.SemanticsNode)localObject1)));
+      localObject3 = AccessibilityBridge.SemanticsNode.access$1700((AccessibilityBridge.SemanticsNode)localObject1);
+      if (AccessibilityBridge.SemanticsNode.access$2600((AccessibilityBridge.SemanticsNode)localObject1) == null) {
         break label1509;
       }
-      localObject4 = AccessibilityBridge.SemanticsNode.access$1500(AccessibilityBridge.SemanticsNode.access$2500((AccessibilityBridge.SemanticsNode)localObject1));
+      localObject4 = AccessibilityBridge.SemanticsNode.access$1700(AccessibilityBridge.SemanticsNode.access$2600((AccessibilityBridge.SemanticsNode)localObject1));
       Rect localRect = new Rect((Rect)localObject3);
       localRect.offset(-((Rect)localObject4).left, -((Rect)localObject4).top);
       ((AccessibilityNodeInfo)localObject2).setBoundsInParent(localRect);
       ((AccessibilityNodeInfo)localObject2).setBoundsInScreen((Rect)localObject3);
       ((AccessibilityNodeInfo)localObject2).setVisibleToUser(true);
-      if ((AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_ENABLED_STATE)) && (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_ENABLED))) {
+      if ((AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_ENABLED_STATE)) && (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_ENABLED))) {
         break label1519;
       }
       bool1 = true;
       ((AccessibilityNodeInfo)localObject2).setEnabled(bool1);
-      if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.TAP))
+      if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.TAP))
       {
-        if ((Build.VERSION.SDK_INT < 21) || (AccessibilityBridge.SemanticsNode.access$2600((AccessibilityBridge.SemanticsNode)localObject1) == null)) {
+        if ((Build.VERSION.SDK_INT < 21) || (AccessibilityBridge.SemanticsNode.access$2700((AccessibilityBridge.SemanticsNode)localObject1) == null)) {
           break label1525;
         }
-        ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(16, AccessibilityBridge.CustomAccessibilityAction.access$2700(AccessibilityBridge.SemanticsNode.access$2600((AccessibilityBridge.SemanticsNode)localObject1))));
+        ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(16, AccessibilityBridge.CustomAccessibilityAction.access$2800(AccessibilityBridge.SemanticsNode.access$2700((AccessibilityBridge.SemanticsNode)localObject1))));
         ((AccessibilityNodeInfo)localObject2).setClickable(true);
       }
       label919:
-      if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.LONG_PRESS))
+      if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.LONG_PRESS))
       {
-        if ((Build.VERSION.SDK_INT < 21) || (AccessibilityBridge.SemanticsNode.access$2800((AccessibilityBridge.SemanticsNode)localObject1) == null)) {
+        if ((Build.VERSION.SDK_INT < 21) || (AccessibilityBridge.SemanticsNode.access$2900((AccessibilityBridge.SemanticsNode)localObject1) == null)) {
           break label1541;
         }
-        ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(32, AccessibilityBridge.CustomAccessibilityAction.access$2700(AccessibilityBridge.SemanticsNode.access$2800((AccessibilityBridge.SemanticsNode)localObject1))));
+        ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(32, AccessibilityBridge.CustomAccessibilityAction.access$2800(AccessibilityBridge.SemanticsNode.access$2900((AccessibilityBridge.SemanticsNode)localObject1))));
         ((AccessibilityNodeInfo)localObject2).setLongClickable(true);
       }
       label974:
-      if ((AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_LEFT)) || (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_UP)) || (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_RIGHT)) || (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_DOWN)))
+      if ((AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_LEFT)) || (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_UP)) || (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_RIGHT)) || (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_DOWN)))
       {
         ((AccessibilityNodeInfo)localObject2).setScrollable(true);
-        if (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_IMPLICIT_SCROLLING))
+        if (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_IMPLICIT_SCROLLING))
         {
-          if ((!AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_LEFT)) && (!AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_RIGHT))) {
+          if ((!AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_LEFT)) && (!AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_RIGHT))) {
             break label1557;
           }
           if ((Build.VERSION.SDK_INT <= 19) || (!shouldSetCollectionInfo((AccessibilityBridge.SemanticsNode)localObject1))) {
@@ -513,29 +513,29 @@ public class AccessibilityBridge
           }
           ((AccessibilityNodeInfo)localObject2).setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(0, AccessibilityBridge.SemanticsNode.access$1200((AccessibilityBridge.SemanticsNode)localObject1), false));
         }
-        if ((AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_LEFT)) || (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_UP))) {
+        if ((AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_LEFT)) || (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_UP))) {
           ((AccessibilityNodeInfo)localObject2).addAction(4096);
         }
-        if ((AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_RIGHT)) || (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_DOWN))) {
+        if ((AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_RIGHT)) || (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.SCROLL_DOWN))) {
           ((AccessibilityNodeInfo)localObject2).addAction(8192);
         }
       }
       label1089:
-      if ((AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.INCREASE)) || (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.DECREASE)))
+      if ((AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.INCREASE)) || (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.DECREASE)))
       {
         ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.SeekBar");
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.INCREASE)) {
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.INCREASE)) {
           ((AccessibilityNodeInfo)localObject2).addAction(4096);
         }
-        if (AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.DECREASE)) {
+        if (AccessibilityBridge.SemanticsNode.access$2200((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Action.DECREASE)) {
           ((AccessibilityNodeInfo)localObject2).addAction(8192);
         }
       }
-      if ((AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_LIVE_REGION)) && (Build.VERSION.SDK_INT > 18)) {
+      if ((AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_LIVE_REGION)) && (Build.VERSION.SDK_INT > 18)) {
         ((AccessibilityNodeInfo)localObject2).setLiveRegion(1);
       }
-      boolean bool3 = AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_CHECKED_STATE);
-      bool4 = AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_TOGGLED_STATE);
+      boolean bool3 = AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_CHECKED_STATE);
+      bool4 = AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.HAS_TOGGLED_STATE);
       if (!bool3)
       {
         bool1 = bool2;
@@ -549,32 +549,32 @@ public class AccessibilityBridge
       if (!bool3) {
         break label1625;
       }
-      ((AccessibilityNodeInfo)localObject2).setChecked(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_CHECKED));
-      ((AccessibilityNodeInfo)localObject2).setContentDescription(AccessibilityBridge.SemanticsNode.access$2900((AccessibilityBridge.SemanticsNode)localObject1));
-      if (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_IN_MUTUALLY_EXCLUSIVE_GROUP)) {
+      ((AccessibilityNodeInfo)localObject2).setChecked(AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_CHECKED));
+      ((AccessibilityNodeInfo)localObject2).setContentDescription(AccessibilityBridge.SemanticsNode.access$3000((AccessibilityBridge.SemanticsNode)localObject1));
+      if (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_IN_MUTUALLY_EXCLUSIVE_GROUP)) {
         break label1614;
       }
       ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.RadioButton");
       label1333:
-      ((AccessibilityNodeInfo)localObject2).setSelected(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_SELECTED));
+      ((AccessibilityNodeInfo)localObject2).setSelected(AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_SELECTED));
       if (Build.VERSION.SDK_INT >= 28) {
-        ((AccessibilityNodeInfo)localObject2).setHeading(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_HEADER));
+        ((AccessibilityNodeInfo)localObject2).setHeading(AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_HEADER));
       }
-      if ((this.accessibilityFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) != paramInt)) {
+      if ((this.accessibilityFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode) != paramInt)) {
         break label1688;
       }
       ((AccessibilityNodeInfo)localObject2).addAction(128);
     }
     for (;;)
     {
-      if ((Build.VERSION.SDK_INT < 21) || (AccessibilityBridge.SemanticsNode.access$3000((AccessibilityBridge.SemanticsNode)localObject1) == null)) {
+      if ((Build.VERSION.SDK_INT < 21) || (AccessibilityBridge.SemanticsNode.access$3100((AccessibilityBridge.SemanticsNode)localObject1) == null)) {
         break label1698;
       }
-      localObject3 = AccessibilityBridge.SemanticsNode.access$3000((AccessibilityBridge.SemanticsNode)localObject1).iterator();
+      localObject3 = AccessibilityBridge.SemanticsNode.access$3100((AccessibilityBridge.SemanticsNode)localObject1).iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (AccessibilityBridge.CustomAccessibilityAction)((Iterator)localObject3).next();
-        ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityBridge.CustomAccessibilityAction.access$3100((AccessibilityBridge.CustomAccessibilityAction)localObject4), AccessibilityBridge.CustomAccessibilityAction.access$3200((AccessibilityBridge.CustomAccessibilityAction)localObject4)));
+        ((AccessibilityNodeInfo)localObject2).addAction(new AccessibilityNodeInfo.AccessibilityAction(AccessibilityBridge.CustomAccessibilityAction.access$3200((AccessibilityBridge.CustomAccessibilityAction)localObject4), AccessibilityBridge.CustomAccessibilityAction.access$3300((AccessibilityBridge.CustomAccessibilityAction)localObject4)));
       }
       bool1 = false;
       break;
@@ -585,7 +585,7 @@ public class AccessibilityBridge
       j = 0;
       break label432;
       label1485:
-      i = AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject1).length();
+      i = AccessibilityBridge.SemanticsNode.access$2400((AccessibilityBridge.SemanticsNode)localObject1).length();
       break label539;
       label1497:
       ((AccessibilityNodeInfo)localObject2).setParent(this.rootAccessibilityView);
@@ -621,26 +621,26 @@ public class AccessibilityBridge
       label1625:
       if (bool4)
       {
-        ((AccessibilityNodeInfo)localObject2).setChecked(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_TOGGLED));
+        ((AccessibilityNodeInfo)localObject2).setChecked(AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.IS_TOGGLED));
         ((AccessibilityNodeInfo)localObject2).setClassName("android.widget.Switch");
-        ((AccessibilityNodeInfo)localObject2).setContentDescription(AccessibilityBridge.SemanticsNode.access$2900((AccessibilityBridge.SemanticsNode)localObject1));
+        ((AccessibilityNodeInfo)localObject2).setContentDescription(AccessibilityBridge.SemanticsNode.access$3000((AccessibilityBridge.SemanticsNode)localObject1));
         break label1333;
       }
-      if (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.SCOPES_ROUTE)) {
+      if (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject1, AccessibilityBridge.Flag.SCOPES_ROUTE)) {
         break label1333;
       }
-      ((AccessibilityNodeInfo)localObject2).setText(AccessibilityBridge.SemanticsNode.access$2900((AccessibilityBridge.SemanticsNode)localObject1));
+      ((AccessibilityNodeInfo)localObject2).setText(AccessibilityBridge.SemanticsNode.access$3000((AccessibilityBridge.SemanticsNode)localObject1));
       break label1333;
       label1688:
       ((AccessibilityNodeInfo)localObject2).addAction(64);
     }
     label1698:
-    localObject1 = AccessibilityBridge.SemanticsNode.access$3300((AccessibilityBridge.SemanticsNode)localObject1).iterator();
+    localObject1 = AccessibilityBridge.SemanticsNode.access$3400((AccessibilityBridge.SemanticsNode)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (AccessibilityBridge.SemanticsNode)((Iterator)localObject1).next();
-      if (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject3, AccessibilityBridge.Flag.IS_HIDDEN)) {
-        ((AccessibilityNodeInfo)localObject2).addChild(this.rootAccessibilityView, AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject3));
+      if (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject3, AccessibilityBridge.Flag.IS_HIDDEN)) {
+        ((AccessibilityNodeInfo)localObject2).addChild(this.rootAccessibilityView, AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject3));
       }
     }
     return localObject2;
@@ -687,13 +687,13 @@ public class AccessibilityBridge
     {
       return null;
       if (this.inputFocusedSemanticsNode != null) {
-        return createAccessibilityNodeInfo(AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode));
+        return createAccessibilityNodeInfo(AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode));
       }
       if (this.embeddedInputFocusedNodeId != null) {
         return createAccessibilityNodeInfo(this.embeddedInputFocusedNodeId.intValue());
       }
       if (this.accessibilityFocusedSemanticsNode != null) {
-        return createAccessibilityNodeInfo(AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode));
+        return createAccessibilityNodeInfo(AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode));
       }
     } while (this.embeddedAccessibilityFocusedNodeId == null);
     return createAccessibilityNodeInfo(this.embeddedAccessibilityFocusedNodeId.intValue());
@@ -715,9 +715,9 @@ public class AccessibilityBridge
     while (this.flutterSemanticsTree.isEmpty()) {
       return false;
     }
-    Object localObject = AccessibilityBridge.SemanticsNode.access$3700(getRootSemanticsNode(), new float[] { paramMotionEvent.getX(), paramMotionEvent.getY(), 0.0F, 1.0F });
-    if (AccessibilityBridge.SemanticsNode.access$1400((AccessibilityBridge.SemanticsNode)localObject) != -1) {
-      return this.accessibilityViewEmbedder.onAccessibilityHoverEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject), paramMotionEvent);
+    Object localObject = AccessibilityBridge.SemanticsNode.access$3800(getRootSemanticsNode(), new float[] { paramMotionEvent.getX(), paramMotionEvent.getY(), 0.0F, 1.0F });
+    if (AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject) != -1) {
+      return this.accessibilityViewEmbedder.onAccessibilityHoverEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject), paramMotionEvent);
     }
     if ((paramMotionEvent.getAction() == 9) || (paramMotionEvent.getAction() == 7)) {
       handleTouchExploration(paramMotionEvent.getX(), paramMotionEvent.getY());
@@ -759,7 +759,7 @@ public class AccessibilityBridge
       paramBundle = (AccessibilityBridge.CustomAccessibilityAction)this.customAccessibilityActions.get(Integer.valueOf(paramInt2 - i));
       if (paramBundle != null)
       {
-        this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.CUSTOM_ACTION, Integer.valueOf(AccessibilityBridge.CustomAccessibilityAction.access$3600(paramBundle)));
+        this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.CUSTOM_ACTION, Integer.valueOf(AccessibilityBridge.CustomAccessibilityAction.access$3700(paramBundle)));
         return true;
       }
       break;
@@ -795,8 +795,8 @@ public class AccessibilityBridge
       {
         this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.SET_SELECTION, localHashMap);
         return true;
-        localHashMap.put("base", Integer.valueOf(AccessibilityBridge.SemanticsNode.access$2000(localSemanticsNode)));
-        localHashMap.put("extent", Integer.valueOf(AccessibilityBridge.SemanticsNode.access$2000(localSemanticsNode)));
+        localHashMap.put("base", Integer.valueOf(AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode)));
+        localHashMap.put("extent", Integer.valueOf(AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode)));
       }
     case 65536: 
       this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.CUT);
@@ -808,44 +808,44 @@ public class AccessibilityBridge
       this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.COPY);
       return true;
     case 8192: 
-      if (AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.SCROLL_DOWN)) {
+      if (AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.SCROLL_DOWN)) {
         this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.SCROLL_DOWN);
       }
       for (;;)
       {
         return true;
-        if (AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.SCROLL_RIGHT))
+        if (AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.SCROLL_RIGHT))
         {
           this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.SCROLL_RIGHT);
         }
         else
         {
-          if (!AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.DECREASE)) {
+          if (!AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.DECREASE)) {
             break;
           }
-          AccessibilityBridge.SemanticsNode.access$2302(localSemanticsNode, AccessibilityBridge.SemanticsNode.access$3500(localSemanticsNode));
+          AccessibilityBridge.SemanticsNode.access$2402(localSemanticsNode, AccessibilityBridge.SemanticsNode.access$3600(localSemanticsNode));
           sendAccessibilityEvent(paramInt1, 4);
           this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.DECREASE);
         }
       }
       return false;
     case 4096: 
-      if (AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.SCROLL_UP)) {
+      if (AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.SCROLL_UP)) {
         this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.SCROLL_UP);
       }
       for (;;)
       {
         return true;
-        if (AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.SCROLL_LEFT))
+        if (AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.SCROLL_LEFT))
         {
           this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.SCROLL_LEFT);
         }
         else
         {
-          if (!AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.INCREASE)) {
+          if (!AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.INCREASE)) {
             break;
           }
-          AccessibilityBridge.SemanticsNode.access$2302(localSemanticsNode, AccessibilityBridge.SemanticsNode.access$3400(localSemanticsNode));
+          AccessibilityBridge.SemanticsNode.access$2402(localSemanticsNode, AccessibilityBridge.SemanticsNode.access$3500(localSemanticsNode));
           sendAccessibilityEvent(paramInt1, 4);
           this.accessibilityChannel.dispatchSemanticsAction(paramInt1, AccessibilityBridge.Action.INCREASE);
         }
@@ -874,7 +874,7 @@ public class AccessibilityBridge
         this.rootAccessibilityView.invalidate();
       }
       this.accessibilityFocusedSemanticsNode = localSemanticsNode;
-      if ((AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.INCREASE)) || (AccessibilityBridge.SemanticsNode.access$2100(localSemanticsNode, AccessibilityBridge.Action.DECREASE))) {
+      if ((AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.INCREASE)) || (AccessibilityBridge.SemanticsNode.access$2200(localSemanticsNode, AccessibilityBridge.Action.DECREASE))) {
         sendAccessibilityEvent(paramInt1, 4);
       }
       return true;
@@ -905,7 +905,7 @@ public class AccessibilityBridge
   {
     this.flutterSemanticsTree.clear();
     if (this.accessibilityFocusedSemanticsNode != null) {
-      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode), 65536);
+      sendAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode), 65536);
     }
     this.accessibilityFocusedSemanticsNode = null;
     this.hoveredObject = null;
@@ -922,13 +922,13 @@ public class AccessibilityBridge
     if (paramByteBuffer.hasRemaining())
     {
       AccessibilityBridge.CustomAccessibilityAction localCustomAccessibilityAction = getOrCreateAccessibilityAction(paramByteBuffer.getInt());
-      AccessibilityBridge.CustomAccessibilityAction.access$3802(localCustomAccessibilityAction, paramByteBuffer.getInt());
+      AccessibilityBridge.CustomAccessibilityAction.access$3902(localCustomAccessibilityAction, paramByteBuffer.getInt());
       int i = paramByteBuffer.getInt();
       if (i == -1)
       {
         str = null;
         label40:
-        AccessibilityBridge.CustomAccessibilityAction.access$3202(localCustomAccessibilityAction, str);
+        AccessibilityBridge.CustomAccessibilityAction.access$3302(localCustomAccessibilityAction, str);
         i = paramByteBuffer.getInt();
         if (i != -1) {
           break label80;
@@ -937,7 +937,7 @@ public class AccessibilityBridge
       label80:
       for (String str = null;; str = paramArrayOfString[i])
       {
-        AccessibilityBridge.CustomAccessibilityAction.access$2702(localCustomAccessibilityAction, str);
+        AccessibilityBridge.CustomAccessibilityAction.access$2802(localCustomAccessibilityAction, str);
         break;
         str = paramArrayOfString[i];
         break label40;
@@ -951,13 +951,13 @@ public class AccessibilityBridge
     while (paramByteBuffer.hasRemaining())
     {
       localObject2 = getOrCreateSemanticsNode(paramByteBuffer.getInt());
-      AccessibilityBridge.SemanticsNode.access$3900((AccessibilityBridge.SemanticsNode)localObject2, paramByteBuffer, paramArrayOfString);
-      if (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_HIDDEN))
+      AccessibilityBridge.SemanticsNode.access$4000((AccessibilityBridge.SemanticsNode)localObject2, paramByteBuffer, paramArrayOfString);
+      if (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_HIDDEN))
       {
-        if (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_FOCUSED)) {
+        if (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_FOCUSED)) {
           this.inputFocusedSemanticsNode = ((AccessibilityBridge.SemanticsNode)localObject2);
         }
-        if (AccessibilityBridge.SemanticsNode.access$4000((AccessibilityBridge.SemanticsNode)localObject2)) {
+        if (AccessibilityBridge.SemanticsNode.access$4100((AccessibilityBridge.SemanticsNode)localObject2)) {
           ((ArrayList)localObject1).add(localObject2);
         }
       }
@@ -976,22 +976,22 @@ public class AccessibilityBridge
         {
           if (!this.lastLeftFrameInset.equals(Integer.valueOf(((WindowInsets)localObject3).getSystemWindowInsetLeft())))
           {
-            AccessibilityBridge.SemanticsNode.access$4102(paramByteBuffer, true);
             AccessibilityBridge.SemanticsNode.access$4202(paramByteBuffer, true);
+            AccessibilityBridge.SemanticsNode.access$4302(paramByteBuffer, true);
           }
           this.lastLeftFrameInset = Integer.valueOf(((WindowInsets)localObject3).getSystemWindowInsetLeft());
           Matrix.translateM(paramArrayOfString, 0, this.lastLeftFrameInset.intValue(), 0.0F, 0.0F);
         }
       }
-      AccessibilityBridge.SemanticsNode.access$4300(paramByteBuffer, paramArrayOfString, (Set)localObject2, false);
-      AccessibilityBridge.SemanticsNode.access$4400(paramByteBuffer, localArrayList);
+      AccessibilityBridge.SemanticsNode.access$4400(paramByteBuffer, paramArrayOfString, (Set)localObject2, false);
+      AccessibilityBridge.SemanticsNode.access$4500(paramByteBuffer, localArrayList);
     }
     Object localObject3 = localArrayList.iterator();
     paramByteBuffer = null;
     while (((Iterator)localObject3).hasNext())
     {
       paramArrayOfString = (AccessibilityBridge.SemanticsNode)((Iterator)localObject3).next();
-      if (!this.flutterNavigationStack.contains(Integer.valueOf(AccessibilityBridge.SemanticsNode.access$1600(paramArrayOfString)))) {
+      if (!this.flutterNavigationStack.contains(Integer.valueOf(AccessibilityBridge.SemanticsNode.access$1800(paramArrayOfString)))) {
         paramByteBuffer = paramArrayOfString;
       }
     }
@@ -1003,9 +1003,9 @@ public class AccessibilityBridge
         paramArrayOfString = (AccessibilityBridge.SemanticsNode)localArrayList.get(localArrayList.size() - 1);
       }
     }
-    if ((paramArrayOfString != null) && (AccessibilityBridge.SemanticsNode.access$1600(paramArrayOfString) != this.previousRouteId))
+    if ((paramArrayOfString != null) && (AccessibilityBridge.SemanticsNode.access$1800(paramArrayOfString) != this.previousRouteId))
     {
-      this.previousRouteId = AccessibilityBridge.SemanticsNode.access$1600(paramArrayOfString);
+      this.previousRouteId = AccessibilityBridge.SemanticsNode.access$1800(paramArrayOfString);
       sendWindowChangeEvent(paramArrayOfString);
     }
     this.flutterNavigationStack.clear();
@@ -1013,7 +1013,7 @@ public class AccessibilityBridge
     while (paramByteBuffer.hasNext())
     {
       paramArrayOfString = (AccessibilityBridge.SemanticsNode)paramByteBuffer.next();
-      this.flutterNavigationStack.add(Integer.valueOf(AccessibilityBridge.SemanticsNode.access$1600(paramArrayOfString)));
+      this.flutterNavigationStack.add(Integer.valueOf(AccessibilityBridge.SemanticsNode.access$1800(paramArrayOfString)));
     }
     paramByteBuffer = this.flutterSemanticsTree.entrySet().iterator();
     while (paramByteBuffer.hasNext())
@@ -1030,13 +1030,13 @@ public class AccessibilityBridge
     if (((Iterator)localObject1).hasNext())
     {
       localObject2 = (AccessibilityBridge.SemanticsNode)((Iterator)localObject1).next();
-      if (AccessibilityBridge.SemanticsNode.access$4500((AccessibilityBridge.SemanticsNode)localObject2))
+      if (AccessibilityBridge.SemanticsNode.access$4600((AccessibilityBridge.SemanticsNode)localObject2))
       {
-        paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 4096);
-        float f2 = AccessibilityBridge.SemanticsNode.access$4600((AccessibilityBridge.SemanticsNode)localObject2);
-        float f3 = AccessibilityBridge.SemanticsNode.access$4700((AccessibilityBridge.SemanticsNode)localObject2);
+        paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2), 4096);
+        float f2 = AccessibilityBridge.SemanticsNode.access$4700((AccessibilityBridge.SemanticsNode)localObject2);
+        float f3 = AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
         float f1 = f2;
-        if (Float.isInfinite(AccessibilityBridge.SemanticsNode.access$4700((AccessibilityBridge.SemanticsNode)localObject2)))
+        if (Float.isInfinite(AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2)))
         {
           f1 = f2;
           if (f2 > 70000.0F) {
@@ -1044,7 +1044,7 @@ public class AccessibilityBridge
           }
           f3 = 100000.0F;
         }
-        if (Float.isInfinite(AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2)))
+        if (Float.isInfinite(AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2)))
         {
           f3 += 100000.0F;
           f2 = f1;
@@ -1053,7 +1053,7 @@ public class AccessibilityBridge
           }
           f1 = f2 + 100000.0F;
           f2 = f3;
-          if ((!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_UP)) && (!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_DOWN))) {
+          if ((!AccessibilityBridge.SemanticsNode.access$5000((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_UP)) && (!AccessibilityBridge.SemanticsNode.access$5000((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_DOWN))) {
             break label732;
           }
           paramByteBuffer.setScrollY((int)f1);
@@ -1066,20 +1066,20 @@ public class AccessibilityBridge
           if (AccessibilityBridge.SemanticsNode.access$1200((AccessibilityBridge.SemanticsNode)localObject2) > 0)
           {
             paramByteBuffer.setItemCount(AccessibilityBridge.SemanticsNode.access$1200((AccessibilityBridge.SemanticsNode)localObject2));
-            paramByteBuffer.setFromIndex(AccessibilityBridge.SemanticsNode.access$5000((AccessibilityBridge.SemanticsNode)localObject2));
-            paramArrayOfString = AccessibilityBridge.SemanticsNode.access$5100((AccessibilityBridge.SemanticsNode)localObject2).iterator();
+            paramByteBuffer.setFromIndex(AccessibilityBridge.SemanticsNode.access$5100((AccessibilityBridge.SemanticsNode)localObject2));
+            paramArrayOfString = AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2).iterator();
             int i = 0;
             for (;;)
             {
               if (paramArrayOfString.hasNext()) {
-                if (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)paramArrayOfString.next(), AccessibilityBridge.Flag.IS_HIDDEN))
+                if (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)paramArrayOfString.next(), AccessibilityBridge.Flag.IS_HIDDEN))
                 {
                   i += 1;
                   continue;
-                  f2 = f3 - AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
-                  f1 -= AccessibilityBridge.SemanticsNode.access$4800((AccessibilityBridge.SemanticsNode)localObject2);
+                  f2 = f3 - AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2);
+                  f1 -= AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2);
                   break;
-                  if ((!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_LEFT)) && (!AccessibilityBridge.SemanticsNode.access$4900((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_RIGHT))) {
+                  if ((!AccessibilityBridge.SemanticsNode.access$5000((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_LEFT)) && (!AccessibilityBridge.SemanticsNode.access$5000((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Action.SCROLL_RIGHT))) {
                     break label635;
                   }
                   paramByteBuffer.setScrollX((int)f1);
@@ -1088,46 +1088,46 @@ public class AccessibilityBridge
                 }
               }
             }
-            paramByteBuffer.setToIndex(AccessibilityBridge.SemanticsNode.access$5000((AccessibilityBridge.SemanticsNode)localObject2) + i - 1);
+            paramByteBuffer.setToIndex(AccessibilityBridge.SemanticsNode.access$5100((AccessibilityBridge.SemanticsNode)localObject2) + i - 1);
           }
         }
         sendAccessibilityEvent(paramByteBuffer);
       }
-      if (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_LIVE_REGION)) {
-        if (AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2) == null)
+      if (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_LIVE_REGION)) {
+        if (AccessibilityBridge.SemanticsNode.access$5300((AccessibilityBridge.SemanticsNode)localObject2) == null)
         {
           paramByteBuffer = "";
           label812:
-          if (AccessibilityBridge.SemanticsNode.access$5300((AccessibilityBridge.SemanticsNode)localObject2) != null) {
+          if (AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2) != null) {
             break label1206;
           }
           paramArrayOfString = "";
           label824:
-          if ((!paramByteBuffer.equals(paramArrayOfString)) || (!AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_LIVE_REGION))) {
-            sendWindowContentChangeEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2));
+          if ((!paramByteBuffer.equals(paramArrayOfString)) || (!AccessibilityBridge.SemanticsNode.access$5500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_LIVE_REGION))) {
+            sendWindowContentChangeEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2));
           }
           label852:
-          if ((this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) == AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2)) && (!AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_SELECTED)) && (AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_SELECTED)))
+          if ((this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode) == AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2)) && (!AccessibilityBridge.SemanticsNode.access$5500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_SELECTED)) && (AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_SELECTED)))
           {
-            paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 4);
-            paramByteBuffer.getText().add(AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2));
+            paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2), 4);
+            paramByteBuffer.getText().add(AccessibilityBridge.SemanticsNode.access$5300((AccessibilityBridge.SemanticsNode)localObject2));
             sendAccessibilityEvent(paramByteBuffer);
           }
-          if ((this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2)) || ((this.lastInputFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.lastInputFocusedSemanticsNode) == AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode)))) {
+          if ((this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2)) || ((this.lastInputFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1800(this.lastInputFocusedSemanticsNode) == AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode)))) {
             break label1268;
           }
           this.lastInputFocusedSemanticsNode = this.inputFocusedSemanticsNode;
-          sendAccessibilityEvent(obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 8));
+          sendAccessibilityEvent(obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2), 8));
           label996:
-          if ((this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2)) || (!AccessibilityBridge.SemanticsNode.access$5400((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || (!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || ((this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1600(this.accessibilityFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode)))) {
+          if ((this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2)) || (!AccessibilityBridge.SemanticsNode.access$5500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || (!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || ((this.accessibilityFocusedSemanticsNode != null) && (AccessibilityBridge.SemanticsNode.access$1800(this.accessibilityFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode)))) {
             break label1281;
           }
-          if (AccessibilityBridge.SemanticsNode.access$5600((AccessibilityBridge.SemanticsNode)localObject2) == null) {
+          if (AccessibilityBridge.SemanticsNode.access$5700((AccessibilityBridge.SemanticsNode)localObject2) == null) {
             break label1283;
           }
-          paramByteBuffer = AccessibilityBridge.SemanticsNode.access$5600((AccessibilityBridge.SemanticsNode)localObject2);
+          paramByteBuffer = AccessibilityBridge.SemanticsNode.access$5700((AccessibilityBridge.SemanticsNode)localObject2);
           label1078:
-          if (AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject2) == null) {
+          if (AccessibilityBridge.SemanticsNode.access$2400((AccessibilityBridge.SemanticsNode)localObject2) == null) {
             break label1290;
           }
         }
@@ -1135,31 +1135,31 @@ public class AccessibilityBridge
       label1281:
       label1283:
       label1290:
-      for (paramArrayOfString = AccessibilityBridge.SemanticsNode.access$2300((AccessibilityBridge.SemanticsNode)localObject2);; paramArrayOfString = "")
+      for (paramArrayOfString = AccessibilityBridge.SemanticsNode.access$2400((AccessibilityBridge.SemanticsNode)localObject2);; paramArrayOfString = "")
       {
-        paramByteBuffer = createTextChangedEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), paramByteBuffer, paramArrayOfString);
+        paramByteBuffer = createTextChangedEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2), paramByteBuffer, paramArrayOfString);
         if (paramByteBuffer != null) {
           sendAccessibilityEvent(paramByteBuffer);
         }
-        if ((AccessibilityBridge.SemanticsNode.access$5700((AccessibilityBridge.SemanticsNode)localObject2) == AccessibilityBridge.SemanticsNode.access$1900((AccessibilityBridge.SemanticsNode)localObject2)) && (AccessibilityBridge.SemanticsNode.access$5800((AccessibilityBridge.SemanticsNode)localObject2) == AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject2))) {
+        if ((AccessibilityBridge.SemanticsNode.access$5800((AccessibilityBridge.SemanticsNode)localObject2) == AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject2)) && (AccessibilityBridge.SemanticsNode.access$5900((AccessibilityBridge.SemanticsNode)localObject2) == AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject2))) {
           break;
         }
-        paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2), 8192);
+        paramByteBuffer = obtainAccessibilityEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2), 8192);
         paramByteBuffer.getText().add(paramArrayOfString);
-        paramByteBuffer.setFromIndex(AccessibilityBridge.SemanticsNode.access$1900((AccessibilityBridge.SemanticsNode)localObject2));
-        paramByteBuffer.setToIndex(AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject2));
+        paramByteBuffer.setFromIndex(AccessibilityBridge.SemanticsNode.access$2000((AccessibilityBridge.SemanticsNode)localObject2));
+        paramByteBuffer.setToIndex(AccessibilityBridge.SemanticsNode.access$2100((AccessibilityBridge.SemanticsNode)localObject2));
         paramByteBuffer.setItemCount(paramArrayOfString.length());
         sendAccessibilityEvent(paramByteBuffer);
         break;
-        paramByteBuffer = AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2);
+        paramByteBuffer = AccessibilityBridge.SemanticsNode.access$5300((AccessibilityBridge.SemanticsNode)localObject2);
         break label812;
         label1206:
-        paramArrayOfString = AccessibilityBridge.SemanticsNode.access$5200((AccessibilityBridge.SemanticsNode)localObject2);
+        paramArrayOfString = AccessibilityBridge.SemanticsNode.access$5300((AccessibilityBridge.SemanticsNode)localObject2);
         break label824;
-        if ((!AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || (!AccessibilityBridge.SemanticsNode.access$5500((AccessibilityBridge.SemanticsNode)localObject2)) || (this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1600(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2))) {
+        if ((!AccessibilityBridge.SemanticsNode.access$1500((AccessibilityBridge.SemanticsNode)localObject2, AccessibilityBridge.Flag.IS_TEXT_FIELD)) || (!AccessibilityBridge.SemanticsNode.access$5600((AccessibilityBridge.SemanticsNode)localObject2)) || (this.inputFocusedSemanticsNode == null) || (AccessibilityBridge.SemanticsNode.access$1800(this.inputFocusedSemanticsNode) != AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2))) {
           break label852;
         }
-        sendWindowContentChangeEvent(AccessibilityBridge.SemanticsNode.access$1600((AccessibilityBridge.SemanticsNode)localObject2));
+        sendWindowContentChangeEvent(AccessibilityBridge.SemanticsNode.access$1800((AccessibilityBridge.SemanticsNode)localObject2));
         break label852;
         label1268:
         if (this.inputFocusedSemanticsNode != null) {

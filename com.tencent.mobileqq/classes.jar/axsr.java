@@ -1,22 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class axsr
-  extends axvs
+  implements bila<oidb_0x8e4.RspBody>
 {
-  public axsr(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public axsr(GameRoomTransActivity paramGameRoomTransActivity, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    super.a(paramBoolean, paramBundle);
-    if (paramBoolean)
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      if (!paramBundle.getBoolean("param_need_switch_online_status")) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
+      String str = paramRspBody.string_invite_id.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = axss.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str, paramRspBody.uint32_max_member_num.get(), this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       return;
     }
-    AccountOnlineStateActivity.a(this.a, true, -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "invitedId empty");
+    }
+    paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
+    paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
+    paramRspBody.putExtra("zoneId", this.b);
+    paramRspBody.putExtra("gc", this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
   }
 }
 

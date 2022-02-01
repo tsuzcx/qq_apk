@@ -1,20 +1,28 @@
-import android.widget.TextView;
-import java.util.List;
+import android.graphics.Rect;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
-class pag
-  implements tbn
+public class pag
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  pag(paf parampaf) {}
+  public pag(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onGlobalLayout()
   {
-    this.a.jdField_a_of_type_Pah.b.setText(paramString2);
-    this.a.jdField_a_of_type_Pvw.d = paramString2;
-    this.a.jdField_a_of_type_Pvw.c = paramString1;
-    if (this.a.jdField_a_of_type_Int < pae.a(this.a.jdField_a_of_type_Pae).size()) {
-      pae.a(this.a.jdField_a_of_type_Pae, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Pvw);
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
+    int j = localRect.bottom;
+    int i = j;
+    if (!this.a.e) {
+      i = j - this.a.g;
     }
-    this.a.jdField_a_of_type_Pae.a.dismiss();
+    if (i != this.a.f)
+    {
+      this.a.f = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+    }
   }
 }
 

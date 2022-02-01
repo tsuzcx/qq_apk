@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.face;
 import AvatarInfo.QQHeadInfo;
 import android.content.Context;
 import android.graphics.Bitmap;
-import anhz;
+import aokp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -35,7 +35,7 @@ public class FaceDecoder
     {
       throw new NullPointerException("can not Instantiation FaceDecoder");
       if ((paramAppInterface instanceof NearbyAppInterface)) {
-        this.mDecoder = new anhz((NearbyAppInterface)paramAppInterface);
+        this.mDecoder = new aokp((NearbyAppInterface)paramAppInterface);
       }
     }
   }

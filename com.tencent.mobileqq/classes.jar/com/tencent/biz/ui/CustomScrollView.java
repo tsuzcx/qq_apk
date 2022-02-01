@@ -1,5 +1,6 @@
 package com.tencent.biz.ui;
 
+import aakm;
 import android.annotation.TargetApi;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
@@ -9,13 +10,12 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import apkn;
-import bjse;
+import aqnr;
+import bldq;
 import com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import zva;
 
 @TargetApi(9)
 public class CustomScrollView
@@ -24,7 +24,7 @@ public class CustomScrollView
 {
   public MutableLiveData<Integer> a;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  private bjse jdField_a_of_type_Bjse;
+  private bldq jdField_a_of_type_Bldq;
   private PublicAccountCompactSwipeBackLayout jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout;
   private boolean jdField_a_of_type_Boolean = true;
   
@@ -47,7 +47,7 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, " springBack y:" + paramInt);
     }
-    if (this.jdField_a_of_type_Bjse.a(getScrollX(), getScrollY(), 0, 0, -paramInt, 0)) {
+    if (this.jdField_a_of_type_Bldq.a(getScrollX(), getScrollY(), 0, 0, -paramInt, 0)) {
       invalidate();
     }
   }
@@ -57,7 +57,7 @@ public class CustomScrollView
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(0);
     }
-    this.jdField_a_of_type_Bjse = new bjse(getContext());
+    this.jdField_a_of_type_Bldq = new bldq(getContext());
     try
     {
       this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
@@ -110,12 +110,12 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, " computeScroll:");
     }
-    if ((this.jdField_a_of_type_Bjse != null) && (this.jdField_a_of_type_Bjse.b()))
+    if ((this.jdField_a_of_type_Bldq != null) && (this.jdField_a_of_type_Bldq.b()))
     {
       int i = getScrollX();
       int j = getScrollY();
-      int k = this.jdField_a_of_type_Bjse.a();
-      int m = this.jdField_a_of_type_Bjse.b();
+      int k = this.jdField_a_of_type_Bldq.a();
+      int m = this.jdField_a_of_type_Bldq.b();
       if (((i != k) || (j != m)) && (Build.VERSION.SDK_INT >= 9)) {
         overScrollBy(k - i, m - j, i, j, 0, 0, 0, 5000, false);
       }
@@ -128,7 +128,7 @@ public class CustomScrollView
     if (QLog.isColorLevel()) {
       QLog.d("CustomScrollView", 2, "onBack:");
     }
-    if (this.jdField_a_of_type_Bjse.a(getScrollX(), getScrollY(), 0, 0, 0, 0)) {
+    if (this.jdField_a_of_type_Bldq.a(getScrollX(), getScrollY(), 0, 0, 0, 0)) {
       invalidate();
     }
   }
@@ -161,11 +161,11 @@ public class CustomScrollView
       QLog.d("CustomScrollView", 2, " onOverScrolled");
     }
     this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.postValue(Integer.valueOf(paramInt2));
-    if (!this.jdField_a_of_type_Bjse.a())
+    if (!this.jdField_a_of_type_Bldq.a())
     {
       super.scrollTo(paramInt1, paramInt2);
       if ((paramBoolean1) || (paramBoolean2)) {
-        this.jdField_a_of_type_Bjse.a(getScrollX(), getScrollY(), 0, 0, 0, 0);
+        this.jdField_a_of_type_Bldq.a(getScrollX(), getScrollY(), 0, 0, 0, 0);
       }
     }
     for (;;)
@@ -176,23 +176,23 @@ public class CustomScrollView
     }
   }
   
-  public void setOnFlingGesture(zva paramzva)
+  public void setOnFlingGesture(aakm paramaakm)
   {
-    if ((paramzva instanceof WebViewFragment))
+    if ((paramaakm instanceof WebViewFragment))
     {
-      Object localObject = ((WebViewFragment)paramzva).getActivity();
+      Object localObject = ((WebViewFragment)paramaakm).getActivity();
       if ((localObject != null) && ((localObject instanceof QQBrowserActivity)))
       {
         localObject = ((QQBrowserActivity)localObject).a();
         if (localObject != null)
         {
-          localObject = ((apkn)localObject).a();
+          localObject = ((aqnr)localObject).a();
           if ((localObject instanceof PublicAccountCompactSwipeBackLayout)) {
             this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout = ((PublicAccountCompactSwipeBackLayout)localObject);
           }
         }
         if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.setWebViewFragment((WebViewFragment)paramzva);
+          this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountCompactSwipeBackLayout.setWebViewFragment((WebViewFragment)paramaakm);
         }
       }
     }

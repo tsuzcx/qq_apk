@@ -71,7 +71,7 @@ class f
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore_1
+    //   1: istore_2
     //   2: new 73	java/io/File
     //   5: dup
     //   6: aload_0
@@ -90,7 +90,7 @@ class f
     //   34: dup
     //   35: invokespecial 99	java/lang/NullPointerException:<init>	()V
     //   38: athrow
-    //   39: iload_1
+    //   39: iload_2
     //   40: ireturn
     //   41: astore 4
     //   43: aload 4
@@ -124,19 +124,19 @@ class f
     //   103: invokevirtual 116	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   106: invokestatic 121	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
     //   109: invokevirtual 124	java/lang/Integer:intValue	()I
-    //   112: istore_2
-    //   113: iload_2
-    //   114: istore_1
+    //   112: istore_1
+    //   113: iload_1
+    //   114: istore_2
     //   115: aload 5
     //   117: ifnull -78 -> 39
     //   120: aload 5
     //   122: invokevirtual 127	java/io/BufferedInputStream:close	()V
-    //   125: iload_2
+    //   125: iload_1
     //   126: ireturn
     //   127: astore 4
     //   129: aload 4
     //   131: invokevirtual 89	java/io/IOException:printStackTrace	()V
-    //   134: iload_2
+    //   134: iload_1
     //   135: ireturn
     //   136: astore 6
     //   138: aconst_null
@@ -176,8 +176,8 @@ class f
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	209	0	this	f
-    //   1	114	1	m	int
-    //   112	23	2	n	int
+    //   112	23	1	m	int
+    //   1	114	2	n	int
     //   22	2	3	bool	boolean
     //   15	3	4	localFile	File
     //   41	18	4	localIOException1	IOException

@@ -1,33 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class pop
-  implements CompoundButton.OnCheckedChangeListener
+class pop
+  extends qdb
 {
-  public pop(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  pop(pob parampob, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131698814), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
-      odq.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", pay.f(), false);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      odq.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", pay.f(), false);
-    }
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

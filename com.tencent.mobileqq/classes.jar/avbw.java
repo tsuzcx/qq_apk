@@ -1,18 +1,18 @@
-import java.io.File;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo.SimpleMessage;
 
-final class avbw
-  implements Comparator<File>
+public final class avbw
+  implements Parcelable.Creator<GameCenterSessionInfo.SimpleMessage>
 {
-  public int a(File paramFile1, File paramFile2)
+  public GameCenterSessionInfo.SimpleMessage a(Parcel paramParcel)
   {
-    if (paramFile1.lastModified() < paramFile2.lastModified()) {
-      return -1;
-    }
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {
-      return 1;
-    }
-    return 0;
+    return new GameCenterSessionInfo.SimpleMessage(paramParcel);
+  }
+  
+  public GameCenterSessionInfo.SimpleMessage[] a(int paramInt)
+  {
+    return new GameCenterSessionInfo.SimpleMessage[paramInt];
   }
 }
 

@@ -1,24 +1,40 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public abstract interface bmax
+public class bmax
+  implements BusinessObserver
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  private Handler a;
   
-  public abstract void a(boolean paramBoolean);
+  public bmax(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
   
-  public abstract void b();
+  public void a()
+  {
+    this.a = null;
+  }
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (this.a == null) {
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+    }
+  }
 }
 
 

@@ -2,8 +2,8 @@ package dov.com.qq.im.ae.play;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import blvr;
-import blvv;
+import bnlb;
+import bnlf;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AETemplateInfoFragment$3
@@ -13,7 +13,7 @@ class AETemplateInfoFragment$3
   
   public void onClick(View paramView)
   {
-    blvv.a(this.this$0.getActivity(), 1024, blvr.H.a(), null);
+    bnlf.a(this.this$0.getActivity(), 1024, bnlb.H.a(), null);
     AETemplateInfoFragment.access$200(this.this$0);
     EventCollector.getInstance().onViewClicked(paramView);
   }

@@ -1,22 +1,36 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0xe5.Submsgtype0xe5.MsgBody;
 
 public class acto
-  implements View.OnClickListener
+  implements acpi
 {
-  public acto(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    AuthDevActivity.h(this.a);
-    Intent localIntent = new Intent(this.a, AuthDevOpenUgActivity.class);
-    localIntent.putExtra("DevlockInfo", AuthDevActivity.a(this.a));
-    this.a.startActivityForResult(localIntent, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("Qidian0xe5Push", 2, "<---receive qidian0xe5 push : forward to qidianHandler");
+    }
+    try
+    {
+      paramMsgType0x210 = (Submsgtype0xe5.MsgBody)new Submsgtype0xe5.MsgBody().mergeFrom(paramMsgType0x210.vProtobuf);
+      ((bjyi)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(paramMsgType0x210);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decode0xe5push parse failed.", paramQQAppInterface);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

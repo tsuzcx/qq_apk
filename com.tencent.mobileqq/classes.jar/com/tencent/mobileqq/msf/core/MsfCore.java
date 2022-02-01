@@ -82,7 +82,7 @@ public class MsfCore
   public com.tencent.mobileqq.msf.core.quicksend.b quicksender;
   public aj sender;
   com.tencent.mobileqq.msf.core.a.c ssoListManager;
-  private al ssoRespHandler;
+  private am ssoRespHandler;
   com.tencent.mobileqq.msf.core.d.a standbyModeManager;
   public k statReporter;
   MsfStore store;
@@ -371,7 +371,7 @@ public class MsfCore
     return this.ssoListManager;
   }
   
-  public al getSsoRespHandler()
+  public am getSsoRespHandler()
   {
     return this.ssoRespHandler;
   }
@@ -669,11 +669,11 @@ public class MsfCore
     this.accountCenter.a(true);
     QLog.d("MSF.C.MsfCore", 2, "init accountCenter cost=" + (SystemClock.elapsedRealtime() - l2));
     l2 = SystemClock.elapsedRealtime();
-    this.ssoRespHandler = new al(this);
+    this.ssoRespHandler = new am(this);
     try
     {
       this.lightSender = new g(this, paramContext);
-      if (com.tencent.mobileqq.msf.core.quicksend.b.g()) {
+      if (com.tencent.mobileqq.msf.core.quicksend.b.f()) {
         this.lightTcpSender = new h(this, paramContext);
       }
       this.accountCenter.a();
@@ -882,14 +882,14 @@ public class MsfCore
     {
       if ("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))
       {
-        ao.b(this, paramToServiceMsg);
+        ap.b(this, paramToServiceMsg);
         com.tencent.mobileqq.a.a.a.a().b(paramToServiceMsg);
       }
       for (;;)
       {
         return paramToServiceMsg.getRequestSsoSeq();
         if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd())) {
-          ao.a(this, paramToServiceMsg);
+          ap.a(this, paramToServiceMsg);
         }
       }
     }

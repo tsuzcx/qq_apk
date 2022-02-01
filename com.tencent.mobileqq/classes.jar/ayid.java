@@ -1,11 +1,18 @@
-import android.view.animation.Animation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ayid
-  extends bjmc
+  implements DialogInterface.OnClickListener
 {
-  ayid(ayhx paramayhx) {}
+  ayid(ayhd paramayhd, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Ayhd.a.h();
+  }
 }
 
 

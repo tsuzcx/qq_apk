@@ -1,54 +1,70 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class armb
-  implements arqg
 {
-  public armb(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  private int jdField_a_of_type_Int = 1;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void a(String paramString, int paramInt)
+  public static armb a()
   {
-    if (!paramString.equals(this.a.b))
-    {
-      this.a.b = paramString;
-      if (!arhi.a.equals(this.a.b)) {
-        break label186;
-      }
-      ExtendFriendSquareFragment.a(this.a, false);
-    }
-    label186:
-    for (boolean bool1 = ExtendFriendSquareFragment.c(this.a);; bool1 = false)
-    {
-      boolean bool2 = ExtendFriendSquareFragment.a(this.a, false, paramString);
-      long l = Math.abs(System.currentTimeMillis() - ExtendFriendSquareFragment.a(this.a));
-      if ((!bool2) || (l > 60000L) || (bool1))
-      {
-        ExtendFriendSquareFragment.b(this.a, false);
-        this.a.jdField_a_of_type_Arme.a();
-        this.a.jdField_a_of_type_Arme.notifyDataSetChanged();
-        this.a.jdField_a_of_type_Arme.a(false);
-        ExtendFriendSquareFragment.c(this.a);
-        ExtendFriendSquareFragment.a(this.a).removeMessages(11);
-        ExtendFriendSquareFragment.a(this.a).sendEmptyMessageDelayed(11, 500L);
-        return;
-      }
-      ExtendFriendSquareFragment.b(this.a, true);
-      return;
-    }
+    return (armb)aqxe.a().a(460);
   }
   
-  public void b()
+  public static armb a(aqxa paramaqxa)
   {
-    PublicFragmentActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ExtendFriendSearchFragment.class, 3);
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 2130772331);
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009417", "0X8009417", 0, 0, "", "", "", "");
+    armb localarmb = new armb();
+    if (paramaqxa != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotConfBean", 2, "parse taskid->" + paramaqxa.jdField_a_of_type_Int + " content->" + paramaqxa.jdField_a_of_type_JavaLangString);
+      }
+    }
+    try
+    {
+      paramaqxa = new JSONObject(paramaqxa.jdField_a_of_type_JavaLangString);
+      int i = paramaqxa.optInt("robotswitch", 0);
+      paramaqxa = paramaqxa.optString("c2cwarning", "");
+      localarmb.a(i);
+      localarmb.a(paramaqxa);
+      return localarmb;
+    }
+    catch (JSONException paramaqxa)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("TroopRobotConfBean", 2, "parse error->" + paramaqxa.toString());
+    }
+    return localarmb;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armb
  * JD-Core Version:    0.7.0.1
  */

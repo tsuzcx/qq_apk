@@ -1,21 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-public class vqy
-  extends SimpleJob<Void>
+class vqy
+  implements vds
 {
-  public vqy(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, vqr paramvqr)
+  vqy(vqx paramvqx, String paramString1, String paramString2) {}
+  
+  public void a()
   {
-    super(paramString);
+    vsj.a(1000003, vqx.a(this.jdField_a_of_type_Vqx), this.jdField_a_of_type_JavaLangString, this.b);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Vqr);
-    return null;
+    vsj.a(1000007, vqx.a(this.jdField_a_of_type_Vqx), this.jdField_a_of_type_JavaLangString, this.b);
+  }
+  
+  public void c()
+  {
+    vsj.a(1000004, vqx.a(this.jdField_a_of_type_Vqx), this.jdField_a_of_type_JavaLangString, this.b);
+  }
+  
+  public void d()
+  {
+    vsj.a(1000002, vqx.a(this.jdField_a_of_type_Vqx), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

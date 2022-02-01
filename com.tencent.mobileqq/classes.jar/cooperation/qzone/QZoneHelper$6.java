@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
 import android.content.DialogInterface;
-import bfvf;
+import bhdx;
 
 final class QZoneHelper$6
-  extends bfvf
+  extends bhdx
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

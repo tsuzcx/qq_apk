@@ -1,41 +1,22 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bern
-  extends beqz
+  implements View.OnClickListener
 {
-  public bern(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public bern(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.a = 7;
+    WriteTogetherEditorFragment.g(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  @Nullable
-  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bern
  * JD-Core Version:    0.7.0.1
  */

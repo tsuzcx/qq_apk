@@ -1,19 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class bgjr
-  implements View.OnClickListener
+  implements FilenameFilter
 {
-  public bgjr(TextHeaderView paramTextHeaderView, Activity paramActivity, int paramInt, QQVipMsgInfo paramQQVipMsgInfo) {}
+  public bgjr(TroopFileTransferManager.1 param1) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile, String paramString)
   {
-    TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewTextHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.startsWith("[Thumb]");
   }
 }
 

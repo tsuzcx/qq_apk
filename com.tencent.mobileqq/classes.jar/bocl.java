@@ -1,18 +1,18 @@
-public abstract interface bocl
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bocl
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bocl(bock parambock) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    bnqm.a().y();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,18 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-class pfg
-  extends pse
+public abstract interface pfg
 {
-  pfg(pey parampey, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
-  {
-    super(paramString);
-  }
+  public abstract void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<pdp> paramList, boolean paramBoolean2, int paramInt2, int paramInt3);
   
-  public void a(prx paramprx)
-  {
-    paramprx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
-  }
+  public abstract void onCommentStateError(int paramInt);
 }
 
 

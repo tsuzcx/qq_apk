@@ -1,31 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mkb
-  implements DialogInterface.OnClickListener
+  extends mcx
 {
-  public mkb(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
+  public mkb(VideoControlUI paramVideoControlUI, long paramLong1, long paramLong2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong, boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
-    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
-      return;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
+      }
     }
-    if (paramInt == 1)
+    do
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mkc(this));
+      do
+      {
+        return;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onNotify_ScreenShot_Finish, flag[" + this.jdField_a_of_type_Long + "], _flag[" + paramLong + "], path[" + paramString + "], ret[" + paramBoolean + "], seq[" + this.b + "]");
+      } while (this.jdField_a_of_type_Long != paramLong);
+      if (paramBoolean) {
+        bbxq.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
+      }
+    } while (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkb
  * JD-Core Version:    0.7.0.1
  */

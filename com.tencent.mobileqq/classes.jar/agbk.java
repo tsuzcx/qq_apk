@@ -1,9 +1,19 @@
-class agbk
-  implements bjog
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+
+public class agbk
+  implements ViewPager.OnPageChangeListener
 {
-  agbk(agbj paramagbj) {}
+  public agbk(TroopChatPie paramTroopChatPie) {}
   
-  public void onDismiss() {}
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.reportGiftPanelRedDot(paramInt);
+  }
 }
 
 

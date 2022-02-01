@@ -3,10 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.pts.ui;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import pwf;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import qhl;
 
 class PTSNodeImage$1
-  implements pwf
+  implements qhl
 {
   PTSNodeImage$1(PTSNodeImage paramPTSNodeImage) {}
   
@@ -17,9 +19,7 @@ class PTSNodeImage$1
     if ((TextUtils.equals(paramString, String.valueOf(PTSNodeImage.access$000(this.this$0)))) && (paramReadInJoyUserInfo != null))
     {
       paramString = ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo);
-      if (this.this$0.getView() != null) {
-        ((PTSImageView)this.this$0.getView()).setImageSrc(paramString);
-      }
+      ThreadManager.getUIHandler().post(new PTSNodeImage.1.1(this, paramString));
     }
   }
 }

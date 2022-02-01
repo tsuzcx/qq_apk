@@ -1,6 +1,16 @@
-public abstract interface bgwq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+
+public class bgwq
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void onCheckOfflineFinish(int paramInt);
+  public bgwq(UpgradeActivity paramUpgradeActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import anca;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
@@ -14,8 +15,8 @@ class TroopAddFriendTipsHelper$1
   
   public void run()
   {
-    anca localanca = (anca)TroopAddFriendTipsHelper.a(this.this$0).getBusinessHandler(20);
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = localanca.a();
+    aoep localaoep = (aoep)TroopAddFriendTipsHelper.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = localaoep.a();
     localTroopBatchAddFriendMgr.a(this.a, 0);
     localTroopBatchAddFriendMgr.a(this.a, null, 1);
     localTroopBatchAddFriendMgr.e(this.a);
@@ -29,7 +30,7 @@ class TroopAddFriendTipsHelper$1
       return;
       l2 = NetConnInfoCenter.getServerTime() - l1;
       if (l2 > 0L) {
-        localanca.c(this.a, 1, 0);
+        localaoep.c(this.a, 1, 0);
       }
     } while (!QLog.isColorLevel());
     QLog.i("TroopAddFriendTipsHelper", 2, "check recommend gray time " + l2 + " " + l1);

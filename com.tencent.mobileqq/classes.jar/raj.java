@@ -1,279 +1,199 @@
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.pts.utils.PTSFileUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class raj
-  extends rai
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static String b;
-  private static String c;
+  private static volatile raj jdField_a_of_type_Raj;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "native_article", "default_feeds" };
+  private HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public static String a()
+  private String a(String paramString)
   {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/skin_res/");
+    String str = "";
+    if (TextUtils.equals(paramString, "native_article")) {
+      str = bmhv.a("native_proteus_offline_bid");
+    }
+    if (TextUtils.equals(paramString, "default_feeds")) {
+      str = bmhv.a("default_feeds_proteus_offline_bid");
+    }
+    return str;
   }
   
-  public static String a(String paramString)
+  public static raj a()
   {
-    return a() + paramString;
-  }
-  
-  public static List<String> a()
-  {
-    Object localObject3 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilList != null)
+    if (jdField_a_of_type_Raj == null) {}
+    try
     {
-      localObject2 = jdField_a_of_type_JavaUtilList;
-      return localObject2;
+      if (jdField_a_of_type_Raj == null) {
+        jdField_a_of_type_Raj = new raj();
+      }
+      return jdField_a_of_type_Raj;
     }
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    Object localObject1;
-    if (jdField_a_of_type_Int == 1) {
-      localObject1 = new File(d() + "refreshAnimatePictures" + "/");
-    }
+    finally {}
+  }
+  
+  private void a(String paramString)
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if ((localBaseApplication == null) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
     {
-      localObject2 = localObject3;
-      if (localObject1 == null) {
+      return;
+      String str1 = "proteus" + File.separator + paramString + File.separator + "pages";
+      QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp], businessName = " + paramString + ", path = " + str1);
+      Object localObject = str1 + File.separator + "manifest";
+      String str2 = PTSFileUtil.getFileContent((String)localObject, localBaseApplication, true);
+      QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp], manifestFilePath = " + (String)localObject + ", manifest content = " + str2);
+      if (TextUtils.isEmpty(str2)) {
         break;
       }
-      localObject2 = localObject3;
-      if (!((File)localObject1).exists()) {
-        break;
-      }
-      localObject2 = localObject3;
-      if (!((File)localObject1).isDirectory()) {
-        break;
-      }
-      localObject1 = ((File)localObject1).listFiles();
-      localObject2 = localObject3;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = new ArrayList();
+      localObject = str2.split("\n");
+      int j = localObject.length;
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        if (i < localObject1.length)
+        str2 = localObject[i];
+        QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp] manifest pageName = " + str2);
+        String str3 = PTSFileUtil.getFilePath(str2, str1, ".frametree");
+        PTSFileUtil.loadFile(str3, localBaseApplication, true);
+        if (PTSFileUtil.isFileInMap(str3))
         {
-          if (localObject1[i].getName().endsWith(".png")) {
-            ((List)localObject2).add(localObject1[i].getName());
+          a(str2, paramString);
+          if ((QLog.isColorLevel()) || (QLog.isDebugVersion())) {
+            QLog.i("PTSStyleManager", 2, "[loadLocalStyleFileImp] load style succeed, pageName = " + str2 + ", frameTreeJsonPath = " + str3);
           }
-          i += 1;
-          continue;
-          if (jdField_a_of_type_Int != 2) {
-            break label199;
-          }
-          localObject1 = new File(d() + "refreshRandomPictures" + "/");
-          break;
         }
+        i += 1;
       }
-      jdField_a_of_type_JavaUtilList = (List)localObject2;
-      return localObject2;
-      label199:
-      localObject1 = null;
     }
+    QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp], manifestContent is empty.");
   }
   
-  public static JSONObject a()
+  private void a(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_OrgJsonJSONObject == null) {}
-    try
-    {
-      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(FileUtils.readFileToString(new File(b() + "/colors.json")));
-      return jdField_a_of_type_OrgJsonJSONObject;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public static void a()
-  {
-    Object localObject = null;
-    try
-    {
-      String str = FileUtils.readFileToString(new File(d() + "refreshConfig.json"));
-      localObject = str;
-      JSONObject localJSONObject = new JSONObject(str);
-      if (localJSONObject != null)
-      {
-        localObject = str;
-        jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
-        localObject = str;
-        b = localJSONObject.optString("voice_path");
-        localObject = str;
-        c = localJSONObject.optString("rain_animate_path");
-      }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
       return;
     }
-    catch (IOException localIOException)
+    List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
+    Object localObject = localList;
+    if (localList == null)
     {
-      localIOException.printStackTrace();
+      localObject = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, localObject);
+    }
+    ((List)localObject).add(paramString1);
+  }
+  
+  private void b(String paramString)
+  {
+    int i = 0;
+    String str1 = a(paramString);
+    if ((TextUtils.isEmpty(str1)) || (str1.equals("0")))
+    {
+      QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], bid is null or empty.");
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("CommonSkinRes", 1, "parseRefreshParaJson error json = " + localIOException);
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return bcro.a(new File(a(paramString)));
-  }
-  
-  public static int b()
-  {
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    return a(jdField_a_of_type_JavaLangString);
-  }
-  
-  public static String b(String paramString)
-  {
-    return c() + paramString;
-  }
-  
-  public static String c()
-  {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/skin_guide/");
-  }
-  
-  public static String d()
-  {
-    return b() + "/" + "refresh" + "/";
-  }
-  
-  public static String e()
-  {
-    if ((TextUtils.isEmpty(b)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(b)) {
-      return d() + b;
-    }
-    return null;
-  }
-  
-  public static String f()
-  {
-    if ((TextUtils.isEmpty(c)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(c)) {
-      return d() + c;
-    }
-    return null;
-  }
-  
-  public int a(String paramString)
-  {
-    JSONObject localJSONObject = a();
-    if (localJSONObject == null) {
-      return 0;
-    }
-    return Color.parseColor(localJSONObject.optString(paramString));
-  }
-  
-  public Drawable a(Resources paramResources, String paramString1, String paramString2)
-  {
-    paramResources = new rak();
-    paramResources.a = a(paramString1);
-    paramResources.b = a(paramString2);
-    paramString1 = paramResources.b;
-    paramResources.addState(new int[] { 16842913 }, paramString1);
-    paramString1 = paramResources.b;
-    paramResources.addState(new int[] { 16842912 }, paramString1);
-    paramString1 = paramResources.a;
-    paramResources.addState(new int[] { -16842919 }, paramString1);
-    return paramResources;
-  }
-  
-  public Drawable a(String paramString)
-  {
-    Object localObject2 = b() + "/" + paramString;
-    Object localObject1 = new File((String)localObject2 + ".gif");
-    paramString = (String)localObject1;
-    if (!((File)localObject1).exists())
-    {
-      localObject1 = new File((String)localObject2 + ".png");
-      paramString = (String)localObject1;
-      if (!((File)localObject1).exists())
-      {
-        paramString = new File((String)localObject2 + ".jpg");
-        if (!paramString.exists()) {
-          break label219;
-        }
-      }
-    }
-    localObject1 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = ayfc.a(paramString.getAbsolutePath());
-    localObject2 = new ColorDrawable(0);
-    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
-    ((URLDrawable.URLDrawableOptions)localObject1).mUseAutoScaleParams = true;
-    ((URLDrawable.URLDrawableOptions)localObject1).mUseMemoryCache = false;
-    label219:
-    label228:
+    str1 = nvf.a(str1) + str1;
+    str1 = str1 + File.separator + "pages";
+    QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], businessName = " + paramString + ", path = " + str1);
     for (;;)
     {
       try
       {
-        paramString = paramString.toURL();
-        if (!((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage) {
-          break label228;
+        Object localObject = new File(str1);
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          localObject = ((File)localObject).listFiles();
+          int j = localObject.length;
+          if (i >= j) {
+            break;
+          }
+          String str2 = localObject[i].getName();
+          QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], pageName = " + str2);
+          String str3 = PTSFileUtil.getFilePath(str2, str1, ".frametree");
+          PTSFileUtil.loadFile(str3, null, false);
+          if (!PTSFileUtil.isFileInMap(str3)) {
+            break label323;
+          }
+          a(str2, paramString);
+          if ((!QLog.isColorLevel()) && (!QLog.isDebugVersion())) {
+            break label323;
+          }
+          QLog.i("PTSStyleManager", 2, "[loadOfflineStyleFileImp] load style succeed, pageName = " + str2 + ", frameTreeJsonPath = " + str3);
+          break label323;
         }
-        paramString = new URL("readinjoy_skin_gif", paramString.getAuthority(), paramString.getFile());
-        paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-        return paramString;
+        QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], pages directory does not exists.");
+        return;
       }
-      catch (MalformedURLException paramString)
+      catch (Exception paramString)
       {
-        paramString.printStackTrace();
+        QLog.e("PTSStyleManager", 1, "[loadOfflineStyleFileImp], e = " + paramString);
+        return;
       }
-      return new ColorDrawable(0);
+      label323:
+      i += 1;
+    }
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    Object localObject1;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      QLog.e("PTSStyleManager", 1, "[getFrameTreeJson], businessName or pageName is null.");
+      localObject1 = "";
+    }
+    Object localObject2;
+    do
+    {
+      return localObject1;
+      localObject1 = "";
+      localObject2 = a(paramString1);
+      localObject2 = PTSFileUtil.getFilePath(paramString2, nvf.a((String)localObject2) + (String)localObject2 + File.separator + "pages", ".frametree");
+      if (PTSFileUtil.isFileInMap((String)localObject2)) {
+        localObject1 = PTSFileUtil.getFileContent((String)localObject2, null, false);
+      }
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        String str = PTSFileUtil.getFilePath(paramString2, "proteus" + File.separator + paramString1 + File.separator + "pages", ".frametree");
+        localObject2 = localObject1;
+        if (PTSFileUtil.isFileInMap(str)) {
+          localObject2 = PTSFileUtil.getFileContent(str, BaseApplicationImpl.getContext(), true);
+        }
+      }
+      localObject1 = localObject2;
+    } while (!TextUtils.isEmpty((CharSequence)localObject2));
+    QLog.e("PTSStyleManager", 1, "[getFrameTreeJson], frameTreeJson is empty, businessName = " + paramString1 + ", pageName = " + paramString2);
+    return localObject2;
+  }
+  
+  public List<String> a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      return null;
+    }
+    return (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      a(str);
+      b(str);
+      i += 1;
     }
   }
 }

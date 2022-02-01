@@ -1,46 +1,26 @@
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothHeadset;
-import android.bluetooth.BluetoothProfile;
-import android.bluetooth.BluetoothProfile.ServiceListener;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class aeyi
-  implements BluetoothProfile.ServiceListener
+  extends ClickableSpan
 {
-  public aeyi(AudioPlayer paramAudioPlayer, String paramString, int paramInt, BluetoothAdapter paramBluetoothAdapter) {}
+  public aeyi(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    if (paramInt == 1)
-    {
-      paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
-      localObject = paramBluetoothProfile.getConnectedDevices();
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label86;
-      }
-      localObject = (BluetoothDevice)((List)localObject).get(0);
-      if (localObject != null) {
-        break label75;
-      }
-      paramInt = 0;
-    }
-    label75:
-    label86:
-    for (com.tencent.mobileqq.activity.aio.AudioPlayerBase.b = paramInt;; com.tencent.mobileqq.activity.aio.AudioPlayerBase.b = 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
-      return;
-      paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
-      break;
-    }
+    SoundAndVibrateActivity.a(this.a);
+    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
   }
   
-  public void onServiceDisconnected(int paramInt) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.a.getResources().getColor(2131167034));
+  }
 }
 
 

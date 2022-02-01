@@ -1,164 +1,51 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.HiBoomMessage;
-import com.tencent.mobileqq.data.MessageForHiBoom;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
 public class agcr
-  extends BaseBubbleBuilder
+  implements agci
 {
-  private aufd a;
-  Context b;
+  public agcr(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public agcr(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_Aufd = new agcs(this);
-    this.b = paramContext;
-  }
-  
-  private void h(ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage instanceof MessageForHiBoom))
+    if (paramDoodleData == null) {
+      return false;
+    }
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = agch.a(paramDoodleData.length);
+    try
     {
-      paramChatMessage = (MessageForHiBoom)paramChatMessage;
-      ((anaj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(13)).a(paramChatMessage.mHiBoomMessage.id, paramChatMessage.mHiBoomMessage.text, 1);
-      paramChatMessage = auen.a(this.b);
-      if (paramChatMessage != null)
-      {
-        paramChatMessage.a(amtj.a(2131704591));
-        paramChatMessage.show();
-      }
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
     }
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public aezf a()
-  {
-    return new agcv();
-  }
-  
-  public View a(ChatMessage paramChatMessage, aezf paramaezf, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afce paramafce)
-  {
-    if ((paramaezf instanceof agcv))
+    catch (Exception paramDoodleData)
     {
-      paramBaseChatItemLayout = (agcv)paramaezf;
-      paramaezf = paramView;
-      paramView = paramBaseChatItemLayout;
-      if (!(paramaezf instanceof HiBoomTextView)) {
-        break label129;
-      }
-      paramafce = (HiBoomTextView)paramaezf;
-      paramBaseChatItemLayout = paramaezf;
-      paramaezf = paramafce;
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.jdField_a_of_type_Aufd = this.jdField_a_of_type_Aufd;
-      if ((paramChatMessage instanceof MessageForHiBoom))
-      {
-        paramChatMessage = (MessageForHiBoom)paramChatMessage;
-        if (paramChatMessage.mHiBoomMessage != null)
-        {
-          paramaezf.setHiBoom(paramChatMessage.mHiBoomMessage.id, 0, paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, auen.jdField_a_of_type_Aueg);
-          paramaezf.setText(paramChatMessage.mHiBoomMessage.text);
-          if (e) {
-            paramaezf.setContentDescription(a(paramChatMessage));
-          }
-        }
-      }
-      return paramBaseChatItemLayout;
-      paramView = (agcv)a();
-      paramaezf = null;
-      break;
-      label129:
-      paramaezf = new HiBoomTextView(this.b);
-      paramaezf.setMaxSize(Math.min(BaseChatItemLayout.f, auen.jdField_a_of_type_Int));
-      paramView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = paramaezf;
-      paramaezf.setOnLongClickListener(paramafce);
-      paramaezf.setOnTouchListener(paramafce);
-      paramaezf.setTag(paramView);
-      paramBaseChatItemLayout = paramaezf;
+      break label33;
     }
   }
   
-  public String a(ChatMessage paramChatMessage)
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
   {
-    if ((paramChatMessage instanceof MessageForHiBoom))
+    if (paramDoodleHeader == null) {
+      return false;
+    }
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = agch.a(paramDoodleHeader.length);
+    try
     {
-      paramChatMessage = (MessageForHiBoom)paramChatMessage;
-      if (paramChatMessage.mHiBoomMessage != null) {
-        return paramChatMessage.mHiBoomMessage.text;
-      }
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
     }
-    return null;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    switch (paramInt)
+    catch (Exception paramDoodleHeader)
     {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
-    case 2131371498: 
-      super.d(paramChatMessage);
-      return;
-    case 2131368055: 
-      h(paramChatMessage);
-      return;
-    case 2131365382: 
-      acvv.b(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-      return;
+      break label33;
     }
-    super.a(paramChatMessage);
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    paramView = AIOUtils.getMessage(paramView);
-    String str1 = this.b.getString(2131689947);
-    String str2 = this.b.getString(2131689948);
-    if (paramView.isSendFromLocal()) {
-      bfur.a(this.b, 230, str1, str2, new agct(this, paramView), new agcu(this)).show();
-    }
-  }
-  
-  public bgbb[] a(View paramView)
-  {
-    bgaz localbgaz = new bgaz();
-    if ((AIOUtils.getHolder(paramView) instanceof agcv))
-    {
-      paramView = (agcv)AIOUtils.getHolder(paramView);
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForHiBoom))
-      {
-        localbgaz.a(2131368055, this.b.getString(2131692448), 2130838971);
-        if (((MessageForHiBoom)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage).istroop == 0) {
-          a(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, localbgaz);
-        }
-      }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
-        a(localbgaz, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      }
-      a(localbgaz, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    }
-    super.c(localbgaz, this.b);
-    super.e(localbgaz, this.b);
-    return localbgaz.a();
   }
 }
 

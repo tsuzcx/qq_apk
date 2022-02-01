@@ -1,21 +1,34 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class ajps
-  implements MessageQueue.IdleHandler
+class ajps
+  implements asfr
 {
-  public ajps(SendPhotoActivity paramSendPhotoActivity) {}
+  ajps(ajpi paramajpi, int paramInt) {}
   
-  public boolean queueIdle()
+  public void a(float paramFloat, List<Integer> paramList)
   {
-    ayde.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
-    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + ajpi.b(this.jdField_a_of_type_Ajpi));
+    }
+    if (!ajpi.b(this.jdField_a_of_type_Ajpi))
+    {
+      ajpi.b(this.jdField_a_of_type_Ajpi, paramList);
+      ajpi.a(this.jdField_a_of_type_Ajpi, this.jdField_a_of_type_Int, paramFloat);
+    }
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + ajpi.b(this.jdField_a_of_type_Ajpi));
+    }
+    if (!ajpi.b(this.jdField_a_of_type_Ajpi))
+    {
+      ajpi.a(this.jdField_a_of_type_Ajpi).removeMessages(11);
+      ajpi.a(this.jdField_a_of_type_Ajpi, this.jdField_a_of_type_Int, paramList);
+    }
   }
 }
 

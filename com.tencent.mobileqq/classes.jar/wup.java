@@ -1,21 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-
 public class wup
-  implements Animation.AnimationListener
+  extends wfh
 {
-  public wup(ExploreAnimalView paramExploreAnimalView) {}
+  public final byte[] a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wup(byte[] paramArrayOfByte)
   {
-    this.a.a.startAnimation(this.a.b);
+    this.a = paramArrayOfByte;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

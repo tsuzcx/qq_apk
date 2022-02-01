@@ -1,40 +1,86 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import android.graphics.Color;
+import android.text.TextUtils;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bdsu
-  extends BroadcastReceiver
+  extends bdnw
 {
-  public bdsu(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  String as;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bdsu()
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
+    this(null);
+  }
+  
+  public bdsu(String paramString)
+  {
+    super(paramString, "remark");
+  }
+  
+  public String a()
+  {
+    return "Remark";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.as = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.as == null) {}
+    for (String str = "";; str = this.as)
     {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!"key_audio_delete_action".equals(paramContext)) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      } while (!this.a.k);
-      bfaj.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
+      paramObjectOutput.writeUTF(str);
       return;
-    } while (!"key_photo_add_action".equals(paramContext));
-    this.a.e();
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    super.a(paramXmlSerializer);
+    if (!TextUtils.isEmpty(this.as)) {
+      paramXmlSerializer.attribute(null, "url", this.as);
+    }
+  }
+  
+  public boolean a(bdpl parambdpl)
+  {
+    if (parambdpl == null) {
+      return true;
+    }
+    this.as = parambdpl.a("bgColor");
+    return super.a(parambdpl);
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public int c()
+  {
+    return 2131380123;
+  }
+  
+  public int e()
+  {
+    return Color.rgb(128, 128, 128);
+  }
+  
+  public int f()
+  {
+    return 24;
+  }
+  
+  public String g()
+  {
+    return this.as;
   }
 }
 

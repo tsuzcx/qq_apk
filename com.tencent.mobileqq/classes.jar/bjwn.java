@@ -1,92 +1,62 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class bjwn
-  implements Animator.AnimatorListener
+  extends QQUIEventReceiver<bjwl, awxs>
 {
-  final float jdField_a_of_type_Float;
-  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  public boolean a;
-  final float jdField_b_of_type_Float;
-  final int jdField_b_of_type_Int;
-  public final RecyclerView.ViewHolder b;
-  public boolean b;
-  final float jdField_c_of_type_Float;
-  final int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
-  final float d;
-  float e;
-  float f;
-  private float g;
-  
-  bjwn(bjwf parambjwf, RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public bjwn(@NonNull bjwl parambjwl)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramFloat4;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bjwo(this, parambjwf));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(paramViewHolder.itemView);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
-    a(0.0F);
+    super(parambjwl);
   }
   
-  public void a()
+  public void a(@NonNull bjwl parambjwl, @NonNull awxs paramawxs)
   {
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(false);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.g = paramFloat;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Float == this.jdField_c_of_type_Float) {}
-    for (this.e = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationX(); this.jdField_b_of_type_Float == this.d; this.e = (this.jdField_a_of_type_Float + this.g * (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float)))
+    if (!TextUtils.equals(paramawxs.jdField_a_of_type_JavaLangString, "QGameApp")) {}
+    String str;
+    do
     {
-      this.f = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationY();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QGameApp", 2, "receive event:" + paramawxs.toString());
+      }
+      str = (String)paramawxs.jdField_a_of_type_ArrayOfJavaLangObject[0];
+      switch (paramawxs.jdField_a_of_type_Int)
+      {
+      default: 
+        return;
+      }
+    } while (!TextUtils.equals(str, "ak:3214"));
+    if (paramawxs.jdField_a_of_type_Boolean)
+    {
+      str = (String)paramawxs.jdField_a_of_type_ArrayOfJavaLangObject[3];
+      if (TextUtils.isEmpty(str))
+      {
+        bjwl.a(parambjwl, 1002);
+        return;
+      }
+      switch (((Integer)paramawxs.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        bjwl.a(parambjwl, true, str);
+        return;
+      case 2: 
+        bjwl.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      bjwl.a(parambjwl, false, str);
       return;
     }
-    this.f = (this.jdField_b_of_type_Float + this.g * (this.d - this.jdField_b_of_type_Float));
+    bjwl.a(parambjwl, 1002);
   }
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Class acceptEventClass()
   {
-    a(1.0F);
+    return awxs.class;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(true);
-    }
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

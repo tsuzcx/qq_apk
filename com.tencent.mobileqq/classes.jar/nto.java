@@ -1,192 +1,60 @@
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
+import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nto
+class nto
+  implements BusinessObserver
 {
-  public String a;
-  public ntp a;
-  public ntq a;
-  public ntr a;
-  public boolean a;
-  public String b;
-  public String c;
+  nto(ntj paramntj) {}
   
-  private void a(JSONObject paramJSONObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("title");
-    }
-    if (paramJSONObject.has("video")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("video");
-    }
-    if (paramJSONObject.has("picture")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("picture");
-    }
-    if (paramJSONObject.has("picture_attr")) {
-      c(paramJSONObject.getJSONObject("picture_attr"));
-    }
-    if (paramJSONObject.has("video_attr")) {
-      d(paramJSONObject.getJSONObject("video_attr"));
-    }
-  }
-  
-  private void b(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Ntp = null;
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Ntp = new ntp();
-      if (paramJSONObject.has("articleid")) {
-        this.jdField_a_of_type_Ntp.jdField_a_of_type_Long = paramJSONObject.getLong("articleid");
-      }
-      if (paramJSONObject.has("id")) {
-        this.jdField_a_of_type_Ntp.jdField_b_of_type_Long = paramJSONObject.getLong("id");
-      }
-      if (paramJSONObject.has("jumpurl")) {
-        this.jdField_a_of_type_Ntp.jdField_a_of_type_JavaLangString = paramJSONObject.getString("jumpurl");
-      }
-      if (paramJSONObject.has("msgtype")) {
-        this.jdField_a_of_type_Ntp.jdField_a_of_type_Int = paramJSONObject.getInt("msgtype");
-      }
-      if (paramJSONObject.has("tasktype")) {
-        this.jdField_a_of_type_Ntp.jdField_b_of_type_Int = paramJSONObject.getInt("tasktype");
-      }
-      if (paramJSONObject.has("time")) {
-        this.jdField_a_of_type_Ntp.c = paramJSONObject.getLong("time");
-      }
-      if (paramJSONObject.has("uniqueid")) {
-        this.jdField_a_of_type_Ntp.d = paramJSONObject.getLong("uniqueid");
-      }
-      if (paramJSONObject.has("rowkey")) {
-        this.jdField_a_of_type_Ntp.jdField_b_of_type_JavaLangString = paramJSONObject.getString("rowkey");
-      }
-    }
-  }
-  
-  private void c(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Ntq = null;
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Ntq = new ntq();
-      if (paramJSONObject.has("cover")) {
-        this.jdField_a_of_type_Ntq.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
-      }
-      if (paramJSONObject.has("cover_orig")) {
-        this.jdField_a_of_type_Ntq.jdField_b_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
-      }
-      if (paramJSONObject.has("large")) {
-        this.jdField_a_of_type_Ntq.jdField_a_of_type_Int = paramJSONObject.getInt("large");
-      }
-    }
-  }
-  
-  private void d(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Ntr = null;
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Ntr = new ntr();
-      if (paramJSONObject.has("busitype")) {
-        this.jdField_a_of_type_Ntr.jdField_a_of_type_Int = paramJSONObject.getInt("busitype");
-      }
-      if (paramJSONObject.has("cover")) {
-        this.jdField_a_of_type_Ntr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
-      }
-      if (paramJSONObject.has("cover_orig")) {
-        this.jdField_a_of_type_Ntr.jdField_d_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
-      }
-      if (paramJSONObject.has("fulltime")) {
-        this.jdField_a_of_type_Ntr.jdField_b_of_type_Int = paramJSONObject.getInt("fulltime");
-      }
-      if (paramJSONObject.has("h5url")) {
-        this.jdField_a_of_type_Ntr.jdField_b_of_type_JavaLangString = paramJSONObject.getString("h5url");
-      }
-      if (paramJSONObject.has("preheight")) {
-        this.jdField_a_of_type_Ntr.jdField_c_of_type_Int = paramJSONObject.getInt("preheight");
-      }
-      if (paramJSONObject.has("prewidth")) {
-        this.jdField_a_of_type_Ntr.jdField_d_of_type_Int = paramJSONObject.getInt("prewidth");
-      }
-      if (paramJSONObject.has("vid")) {
-        this.jdField_a_of_type_Ntr.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vid");
-      }
-      if (paramJSONObject.has("large")) {
-        this.jdField_a_of_type_Ntr.e = paramJSONObject.getInt("large");
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    for (;;)
-    {
+    if (paramBoolean) {
       try
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("msg"))
+        Object localObject = paramBundle.getByteArray("data");
+        paramBundle = new oidb_sso.OIDBSSOPkg();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
         {
-          Object localObject = paramString.getJSONObject("msg");
-          if (((JSONObject)localObject).has("item"))
+          if (paramBundle.bytes_bodybuffer.get() == null) {
+            return;
+          }
+          localObject = new oidb_0x791.RspBody();
+          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
+          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
+          if (localObject != null)
           {
-            localObject = ((JSONObject)localObject).getJSONArray("item");
-            int i;
-            JSONArray localJSONArray;
-            if (localObject == null)
+            paramBundle = "";
+            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
+            while (((Iterator)localObject).hasNext())
             {
-              i = 0;
-              break label189;
-              if (j >= i) {
-                continue;
-              }
-              localJSONArray = ((JSONArray)localObject).getJSONArray(j);
-              if (localJSONArray == null)
-              {
-                k = 0;
-                break label194;
-                if (m >= k) {
-                  break label200;
-                }
-                a(localJSONArray.getJSONObject(m));
-                m += 1;
-                continue;
-              }
+              long l = ((Long)((Iterator)localObject).next()).longValue();
+              paramBundle = paramBundle + String.valueOf(l) + ",";
             }
-            else
+            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
             {
-              i = ((JSONArray)localObject).length();
-              break label189;
+              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
+              return;
             }
-            int k = localJSONArray.length();
-            break label194;
           }
         }
-        if (!paramString.has("msg_attr")) {
-          break;
-        }
-        b(paramString.getJSONObject("msg_attr"));
-        return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle.printStackTrace();
       }
-      QLog.d("DynamicInfo", 2, "DynamicInfo Exception:" + paramString.getMessage());
-      return;
-      label189:
-      int j = 0;
-      continue;
-      label194:
-      int m = 0;
-      continue;
-      label200:
-      j += 1;
     }
   }
 }

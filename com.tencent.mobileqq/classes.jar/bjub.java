@@ -1,84 +1,98 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.qav.QavDef.MultiUserInfo;
+import java.util.List;
 
-public abstract class bjub
-  extends bjty
+public class bjub
+  extends bjuk
 {
-  protected final int a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
-  protected final int[] e;
+  public void a() {}
   
-  public bjub(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2);
-    this.e = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramArrayOfInt2;
-    this.c = paramArrayOfInt3;
-    this.d = paramArrayOfInt4;
-  }
+  public void a(int paramInt) {}
   
-  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    Object localObject2 = null;
-    paramObject = null;
-    Object localObject1 = paramObject;
-    if (parambjua != null)
+    switch (paramInt)
     {
-      localObject1 = paramObject;
-      if (parambjua.jdField_a_of_type_Int >= 0)
-      {
-        if (parambjua.b >= 0) {
-          break label35;
-        }
-        localObject1 = paramObject;
-      }
+    default: 
+      return;
+    case 1: 
+      a();
+      return;
+    case 2: 
+      a(((Integer)paramVarArgs[0]).intValue());
+      return;
+    case 3: 
+      a((QavDef.MultiUserInfo)paramVarArgs[0]);
+      return;
+    case 4: 
+      b((QavDef.MultiUserInfo)paramVarArgs[0]);
+      return;
+    case 5: 
+      a((QavDef.MultiUserInfo)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
+    case 6: 
+      QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramVarArgs[0];
+      boolean bool = ((Boolean)paramVarArgs[1]).booleanValue();
+      a(localMultiUserInfo, bool, ((Integer)paramVarArgs[2]).intValue());
+      b(localMultiUserInfo, bool);
+      return;
+    case 7: 
+      a((List)paramVarArgs[0]);
+      return;
+    case 8: 
+      b(((Integer)paramVarArgs[0]).intValue());
+      return;
+    case 9: 
+      a(true, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
+      return;
+    case 10: 
+      a(false, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
+      return;
+    case 11: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
+      return;
+    case 12: 
+      b(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
+      return;
+    case 13: 
+      a(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue());
+      return;
+    case 14: 
+      a(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue(), ((Long)paramVarArgs[2]).longValue(), ((Integer)paramVarArgs[3]).intValue());
+      return;
+    case 15: 
+      c(((Integer)paramVarArgs[0]).intValue());
+      return;
     }
-    label35:
-    int i;
-    int j;
-    int k;
-    do
-    {
-      return localObject1;
-      paramObject = localObject2;
-      if ((parambjua.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-        paramObject = (SimpleTextView)parambjua.jdField_a_of_type_AndroidViewView;
-      }
-      i = this.c[parambjua.b];
-      j = this.d[parambjua.b];
-      k = this.b[parambjua.b];
-      localObject1 = paramObject;
-    } while (paramObject == null);
-    paramObject.setVisibility(0);
-    paramObject.setText(paramObject.getContext().getResources().getString(i));
-    paramObject.setBackgroundResource(j);
-    paramObject.setId(k);
-    paramObject.setTag("tag_swip_icon_menu_item");
-    paramObject.setTag(-2, Integer.valueOf(i));
-    paramObject.setTag(-1, Integer.valueOf(paramInt));
-    paramObject.setContentDescription(paramObject.getResources().getString(i));
-    paramObject.setOnClickListener(paramOnClickListener);
-    parambjua.c = this.e[parambjua.jdField_a_of_type_Int];
-    parambjua.d = this.jdField_a_of_type_Int;
-    return paramObject;
+    a(((Boolean)paramVarArgs[0]).booleanValue());
   }
   
-  public View a(Context paramContext, int paramInt)
-  {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.e[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
-  }
+  public void a(long paramLong, int paramInt) {}
+  
+  public void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
+  
+  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt) {}
+  
+  public void a(List<QavDef.MultiUserInfo> paramList) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
+  
+  public void b(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

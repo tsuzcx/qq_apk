@@ -1,12 +1,17 @@
-public abstract interface befe
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3;
+import com.tencent.qphone.base.util.QLog;
+
+public class befe
+  implements bide
 {
-  public abstract void c(int paramInt);
+  public befe(GroupTeamWorkListActivity.3 param3) {}
   
-  public abstract int d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract int e();
+  public void onResult(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (QLog.isColorLevel())) {
+      QLog.i("Tag_webView", 1, "Web_qqbrowser_web TeamWorkList preloadWebProcess success! ");
+    }
+  }
 }
 
 

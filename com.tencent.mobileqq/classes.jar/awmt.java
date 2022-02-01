@@ -1,10 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-final class awmt
-  implements DialogInterface.OnClickListener
+public class awmt
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public awmt(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  
+  public void onGlobalLayout()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      return;
+    }
+    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+  }
 }
 
 

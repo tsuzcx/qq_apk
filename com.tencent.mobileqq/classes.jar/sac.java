@@ -1,29 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import java.util.List;
 
 class sac
-  implements DialogInterface.OnDismissListener
+  implements ryv
 {
-  sac(sab paramsab) {}
+  sac(sab paramsab, UgcVideo paramUgcVideo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(List<String> paramList)
   {
-    paramDialogInterface = this.a;
-    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if (!sab.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      sab.a(paramDialogInterface, bool);
-      if ((sab.a(this.a) != null) && (sab.a(this.a).b()) && (sab.b(this.a)) && (sab.a(this.a))) {
-        sab.a(this.a).c();
-      }
-      if (sab.a(this.a) != null) {
-        sab.a(this.a).f();
-      }
-      sab.a(this.a, false);
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.rowkey = ((String)paramList.get(0));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
     }
+    sab.a(this.jdField_a_of_type_Sab, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
   }
 }
 

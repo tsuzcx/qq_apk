@@ -1,11 +1,11 @@
+import com.tencent.widget.SingleLineTextView;
+
 public class ajjb
+  extends amjv
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
+  public SingleLineTextView a;
+  public Object a;
+  public SingleLineTextView b;
 }
 
 

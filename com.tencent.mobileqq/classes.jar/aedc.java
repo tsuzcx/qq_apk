@@ -1,57 +1,33 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
 
 public class aedc
-  extends AccountObserver
+  implements bkzq
 {
-  public aedc(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public aedc(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
+    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
+    if (paramInt == 0)
+    {
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
+      }
+      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
+        break label110;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131692991);
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString1 = new Intent(this.a, LoginActivity.class);
-    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString1.putExtra("tab_index", MainFragment.b);
-    paramString1.addFlags(131072);
-    this.a.startActivity(paramString1);
-    this.a.finish();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
+    label110:
+    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+      return;
     }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterQQNumberActivity.a(this.a);
-    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
-    }
+    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 

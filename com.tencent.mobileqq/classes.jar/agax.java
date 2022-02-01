@@ -1,17 +1,15 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-class agax
-  extends ClickableSpan
+public class agax
+  implements DialogInterface.OnClickListener
 {
-  agax(agap paramagap) {}
+  public agax(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramTextPaint.setColor(-12541697);
+    this.a.finish();
   }
 }
 

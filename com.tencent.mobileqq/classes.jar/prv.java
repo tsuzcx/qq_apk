@@ -1,24 +1,17 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class prv
+final class prv
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  prv(String paramString, sxe paramsxe) {}
   
-  prv(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
+    olh.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    qdc.b(this.jdField_a_of_type_Sxe.g);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

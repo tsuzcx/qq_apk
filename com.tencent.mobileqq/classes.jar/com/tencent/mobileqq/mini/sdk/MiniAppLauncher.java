@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import apyt;
+import arbw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -455,7 +455,7 @@ public class MiniAppLauncher
   
   private static boolean verifyAppid_Scence_Fakeurl_Model(String paramString1, int paramInt, String paramString2)
   {
-    String str1 = apyt.a("mini_app_outsite_black_list", "");
+    String str1 = arbw.a("mini_app_outsite_black_list", "");
     QLog.i("MiniAppLauncher", 1, "verifyAppid_Scence_Fakeurl_Model appid:" + paramString1 + ", scene:" + paramInt + ", fakeUrl:" + paramString2 + ", blackList:" + str1);
     for (;;)
     {
@@ -508,7 +508,7 @@ public class MiniAppLauncher
   {
     if (arkSceneWhiteList == null)
     {
-      String str1 = apyt.a("ark_scene_white_list", "1007,1008,1014,1036,2061,2072,2075,2085,2105,2112,2114,2217,2218,4012,4016,4017");
+      String str1 = arbw.a("ark_scene_white_list", "1007,1008,1014,1036,2061,2072,2075,2085,2105,2112,2114,2217,2218,4012,4016,4017");
       if ((str1 != null) && (!str1.equals(mArkSceneWhiteListConfig)))
       {
         arkSceneWhiteList = new ArrayList();

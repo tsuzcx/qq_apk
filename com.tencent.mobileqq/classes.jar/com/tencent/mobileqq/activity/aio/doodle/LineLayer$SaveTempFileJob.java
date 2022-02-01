@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afmu;
+import agdy;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
@@ -23,14 +23,14 @@ class LineLayer$SaveTempFileJob
   private int jdField_a_of_type_Int = -1;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private WeakReference<afmu> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<agdy> jdField_a_of_type_JavaLangRefWeakReference;
   private int b = -1;
   
-  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, afmu paramafmu)
+  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, agdy paramagdy)
   {
     this.jdField_a_of_type_JavaLangString = (AppConstants.SCRIBBLE_FILE_DIR + "temp" + File.separator);
     QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramafmu);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramagdy);
     if (paramBitmap == null) {
       return;
     }

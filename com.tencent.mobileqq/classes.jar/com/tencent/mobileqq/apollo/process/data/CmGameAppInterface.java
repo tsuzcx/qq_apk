@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alvn;
-import alvx;
-import alxt;
-import alxy;
-import alyh;
-import alzh;
-import amkk;
+import amwd;
+import amwn;
+import amyj;
+import amyo;
+import amyx;
+import amzx;
 import android.content.Intent;
-import bgog;
+import anmb;
+import bhyq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -34,28 +35,37 @@ public class CmGameAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
+  public static final int a;
+  public static final int b;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
   List<BusinessObserver> jdField_a_of_type_JavaUtilList = new Vector();
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
   private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[1];
-  List<BusinessObserver> b = new Vector();
+  List<BusinessObserver> b;
   List<BusinessObserver> c = new Vector();
+  
+  static
+  {
+    jdField_a_of_type_Int = QQManagerFactory.COUNT_MANAGER;
+    jdField_b_of_type_Int = jdField_a_of_type_Int + 1;
+  }
   
   public CmGameAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
+    this.jdField_b_of_type_JavaUtilList = new Vector();
     QLog.i("cmgame_process.CmGameAppInterface", 1, "new CmGameAppInterface obj.");
-    alvn.a();
+    amwd.a();
     TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new alxt(this));
+    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new amyj(this));
   }
   
   private void a()
   {
-    alxy localalxy = alvx.a();
-    if (localalxy != null) {
-      alvx.a(localalxy.a());
+    amyo localamyo = amwn.a();
+    if (localamyo != null) {
+      amwn.a(localamyo.a());
     }
   }
   
@@ -66,7 +76,7 @@ public class CmGameAppInterface
     default: 
       return null;
     }
-    return new alzh(this);
+    return new amzx(this);
   }
   
   public BusinessHandler a(int paramInt)
@@ -104,10 +114,10 @@ public class CmGameAppInterface
       return;
     }
     if (paramBoolean) {
-      synchronized (this.b)
+      synchronized (this.jdField_b_of_type_JavaUtilList)
       {
-        if (!this.b.contains(paramBusinessObserver)) {
-          this.b.add(paramBusinessObserver);
+        if (!this.jdField_b_of_type_JavaUtilList.contains(paramBusinessObserver)) {
+          this.jdField_b_of_type_JavaUtilList.add(paramBusinessObserver);
         }
         return;
       }
@@ -137,7 +147,7 @@ public class CmGameAppInterface
       return this.jdField_a_of_type_JavaUtilList;
     }
     if (paramInt == 2) {
-      return this.b;
+      return this.jdField_b_of_type_JavaUtilList;
     }
     if (paramInt == 0) {
       return this.c;
@@ -165,44 +175,42 @@ public class CmGameAppInterface
       try
       {
         Object localObject1 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-        localObject5 = localObject1;
-        Map localMap;
-        if (localObject1 == null) {
-          localMap = this.jdField_a_of_type_JavaUtilMap;
-        }
-        switch (paramInt)
+        localObject4 = localObject1;
+        if (localObject1 == null) {}
+        synchronized (this.jdField_a_of_type_JavaUtilMap)
         {
-        default: 
-        case 255: 
-          try
+          if (paramInt == jdField_a_of_type_Int)
           {
+            localObject1 = new amyx(this);
             if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == null) {
-              break;
+              break label155;
             }
-            localObject5 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-            localObject1 = localObject5;
-            if (localObject5 == null) {
+            localObject4 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+            localObject1 = localObject4;
+            if (localObject4 == null) {
               localObject1 = super.getManager(paramInt);
             }
             return localObject1;
           }
-          finally {}
-          localObject1 = new alyh(this);
-          break;
-        case 256: 
-          localObject4 = new NetEngineFactory();
+          if (paramInt == jdField_b_of_type_Int)
+          {
+            localObject1 = new NetEngineFactory();
+            this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)localObject1);
+          }
+        }
+        if (paramInt != QQManagerFactory.DOWNLOADER_FACTORY) {
+          continue;
         }
       }
       finally {}
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)localObject4);
+      bhyq localbhyq = new bhyq(this);
       continue;
-      Object localObject4 = new bgog(this);
-      continue;
-      Object localObject5 = localObject4;
-      if (localObject4 != null)
+      label155:
+      Object localObject4 = localbhyq;
+      if (localbhyq != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject4);
-        localObject5 = localObject4;
+        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localbhyq);
+        localObject4 = localbhyq;
       }
     }
   }
@@ -215,7 +223,7 @@ public class CmGameAppInterface
   public INetEngine getNetEngine(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)getManager(256));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)getManager(jdField_b_of_type_Int));
     }
     return this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.getEngineInstance(this, paramInt);
   }
@@ -260,7 +268,7 @@ public class CmGameAppInterface
     }
     label114:
     this.jdField_a_of_type_JavaUtilMap.clear();
-    amkk.a();
+    anmb.a();
   }
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
@@ -273,7 +281,7 @@ public class CmGameAppInterface
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
     QLog.i("cmgame_process.CmGameAppInterface", 1, "[onReceiveLegalExitProcAction]");
-    if (alvx.a() != null)
+    if (amwn.a() != null)
     {
       QLog.i("cmgame_process.CmGameAppInterface", 1, "NOT kill tool process");
       return true;
@@ -286,9 +294,9 @@ public class CmGameAppInterface
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
-      synchronized (this.b)
+      synchronized (this.jdField_b_of_type_JavaUtilList)
       {
-        this.b.remove(paramBusinessObserver);
+        this.jdField_b_of_type_JavaUtilList.remove(paramBusinessObserver);
       }
     }
     synchronized (this.c)

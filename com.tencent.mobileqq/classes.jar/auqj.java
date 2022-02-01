@@ -1,22 +1,13 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
 
-class auqj
-  implements aumh
+public class auqj
+  implements DialogInterface.OnClickListener
 {
-  auqj(auqi paramauqi, aumd paramaumd, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  public auqj(ForwardChooseFriendOption paramForwardChooseFriendOption) {}
   
-  public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
-  {
-    paramString = new Bundle(this.jdField_a_of_type_Aumd.a().a.getExtras());
-    Bundle localBundle = new Bundle();
-    localBundle.putBundle("data", paramString);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

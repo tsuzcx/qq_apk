@@ -1,45 +1,83 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.Iterator;
+import java.util.List;
 
-class awds
-  extends bbrs
+public class awds
 {
-  awds(awdi paramawdi, String paramString, awdd paramawdd) {}
-  
-  public void a(int paramInt)
+  public static int a(int paramInt)
   {
-    if (this.jdField_a_of_type_Awdd.a != null)
-    {
-      String str = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd.a.a);
-      awde localawde = this.jdField_a_of_type_Awdi.a(str);
-      if ((localawde != null) && (!localawde.a))
-      {
-        localawde.c = (paramInt / 100);
-        this.jdField_a_of_type_Awdi.a(str, localawde);
-        awdi.a(this.jdField_a_of_type_Awdi, localawde, paramInt / 100);
-      }
+    if (paramInt == 1) {
+      return 1;
     }
+    return 2;
   }
   
-  public void a(int paramInt, bbrl parambbrl)
+  public static int a(RedTouch paramRedTouch)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (parambbrl != null)
+    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
+    List localList;
+    do
     {
-      str1 = str2;
-      i = j;
-      if (parambbrl.a != null)
-      {
-        i = parambbrl.a.a;
-        str1 = parambbrl.a.b;
+      return 0;
+      localList = paramRedTouch.a();
+    } while ((localList == null) || (localList.isEmpty()));
+    int i = paramRedTouch.a();
+    if (i == 16) {
+      return 9;
+    }
+    if (i == 17) {
+      return 10;
+    }
+    paramRedTouch = localList.iterator();
+    while (paramRedTouch.hasNext())
+    {
+      i = ((BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next()).red_type.get();
+      if (i == 0) {
+        return 1;
+      }
+      if (i == 5) {
+        return 2;
+      }
+      if (i == 11) {
+        return 3;
       }
     }
-    this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd, paramInt, i, str1);
+    return 3;
+  }
+  
+  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
+      return 0;
+    }
+    if (paramRedTypeInfo.red_type.get() == 0) {
+      return 1;
+    }
+    if (paramRedTypeInfo.red_type.get() == 5) {
+      return 2;
+    }
+    return 3;
+  }
+  
+  public static bdmn a(String paramString)
+  {
+    bdmn localbdmn = new bdmn();
+    localbdmn.i = "trends_tab";
+    localbdmn.j = "trends_plugin";
+    localbdmn.k = paramString;
+    return localbdmn;
+  }
+  
+  public static int b(RedTouch paramRedTouch)
+  {
+    if (paramRedTouch == null) {}
+    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
+      return 0;
+    }
+    return 1;
   }
 }
 

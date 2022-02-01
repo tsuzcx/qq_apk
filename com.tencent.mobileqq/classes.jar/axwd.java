@@ -1,16 +1,18 @@
-class axwd
-  implements axwh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+
+public final class axwd
+  implements Parcelable.Creator<Comments.Comment>
 {
-  axwd(axwc paramaxwc) {}
-  
-  public int a()
+  public Comments.Comment a(Parcel paramParcel)
   {
-    return this.a.a();
+    return new Comments.Comment(paramParcel);
   }
   
-  public void a()
+  public Comments.Comment[] a(int paramInt)
   {
-    this.a.b();
+    return new Comments.Comment[paramInt];
   }
 }
 

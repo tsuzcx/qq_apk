@@ -1,16 +1,6 @@
-class wjb
-  extends whn
+public abstract interface wjb
 {
-  wjb(wif paramwif, String paramString1, String paramString2, boolean paramBoolean, wjm paramwjm)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Wjm.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
-  }
+  public abstract void a(int paramInt);
 }
 
 

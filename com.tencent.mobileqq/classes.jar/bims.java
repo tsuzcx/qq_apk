@@ -1,38 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ClickableToastView;
 
 public class bims
-  implements View.OnClickListener
+  extends Handler
 {
-  public bims(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(View paramView)
+  public bims(ClickableToastView paramClickableToastView, Looper paramLooper)
   {
-    boolean bool = true;
-    Object localObject = QidianProfileCardActivity.a(this.a);
-    int i;
-    if (QidianProfileCardActivity.a(this.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      i = 1;
-      ((TextView)localObject).setMaxLines(i);
-      localObject = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a((QidianProfileCardActivity)localObject, bool);
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      i = 3;
-      break;
-      label65:
-      bool = false;
     }
+    this.a.b();
   }
 }
 

@@ -1,27 +1,54 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContactAdd;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class alks
-  extends bjtz
+  extends alky
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContactAdd a;
-  public QIMNotifyAddFriend a;
-  public String a;
-  public structmsg.StructMsg a;
-  public long b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public alks(Context paramContext, String paramString)
+  {
+    a(paramString);
+  }
+  
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = null;
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      paramQQAppInterface = apzo.a((MessageForArkApp)paramMessageRecord);
+    }
+    if ((paramObject instanceof alks))
+    {
+      paramObject = (alks)paramObject;
+      if (paramQQAppInterface != null) {
+        paramObject.a(paramQQAppInterface);
+      }
+      paramObject.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
+    }
+    paramObject = BaseApplication.getContext();
+    if (paramQQAppInterface != null) {}
+    for (;;)
+    {
+      paramObject = new alks(paramObject, paramQQAppInterface);
+      paramObject.jdField_a_of_type_Bffm = new bffm(parambffl.jdField_a_of_type_Bffm);
+      return paramObject;
+      paramQQAppInterface = "";
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = '[' + paramString + ']')
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = this.jdField_a_of_type_JavaLangString;
+      return;
+    }
+  }
 }
 
 

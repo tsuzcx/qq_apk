@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
 
-public class bfhg
-  implements View.OnClickListener
+class bfhg
+  implements Comparable<bfhg>
 {
-  public bfhg(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  bfhg(bfgz parambfgz) {}
+  
+  public int a(@NonNull bfhg parambfhg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.b.compareTo(parambfhg.b);
   }
 }
 

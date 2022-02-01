@@ -1,34 +1,81 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class urx
+  implements nuw
 {
   public int a;
   public String a;
-  public int b;
+  private ArrayList<nwi> a;
+  private int b;
   public String b;
-  public int c;
+  private int c;
   public String c;
-  public int d;
   public String d;
-  public int e;
   public String e;
-  public int f;
   public String f;
-  public int g;
-  public String g;
+  
+  public urx(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public int a()
   {
-    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
-      return 2;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((nwi)localIterator.next()).a();
     }
-    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(nwi paramnwi)
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramnwi)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramnwi);
+    }
   }
   
   public int b()
   {
-    if ((this.a > 0) && (this.b > 0)) {
-      return 0;
+    return this.b;
+  }
+  
+  public void b(nwi paramnwi)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.remove(paramnwi);
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((nwi)localIterator.next()).loaded(paramString, paramInt);
     }
-    return 2;
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.c = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((nwi)localIterator.next()).progress(paramInt);
+    }
   }
 }
 

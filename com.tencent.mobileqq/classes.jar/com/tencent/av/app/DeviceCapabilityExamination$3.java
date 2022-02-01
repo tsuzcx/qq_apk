@@ -3,9 +3,9 @@ package com.tencent.av.app;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lbh;
-import lbj;
-import lbk;
+import lbl;
+import lbn;
+import lbo;
 
 final class DeviceCapabilityExamination$3
   implements Runnable
@@ -14,26 +14,26 @@ final class DeviceCapabilityExamination$3
   
   public void run()
   {
-    Object localObject = lbh.a(this.jdField_a_of_type_Int);
+    Object localObject = lbl.a(this.jdField_a_of_type_Int);
     if (localObject == null)
     {
       QLog.w("DeviceCapabilityExamination", 1, "startDecoderTest, error", new Throwable("打印调用栈"));
       return;
     }
     com.tencent.av.mediacodec.NativeCodec.printLog = true;
-    lbj locallbj = DeviceCapabilityExamination.a((lbk)localObject);
-    if (locallbj == null)
+    lbn locallbn = DeviceCapabilityExamination.a((lbo)localObject);
+    if (locallbn == null)
     {
-      QLog.w("DeviceCapabilityExamination", 1, "startDecoderTest, 无样本, codec[" + ((lbk)localObject).b + "]");
+      QLog.w("DeviceCapabilityExamination", 1, "startDecoderTest, 无样本, codec[" + ((lbo)localObject).b + "]");
       return;
     }
-    localObject = DeviceCapabilityExamination.a(locallbj.a);
+    localObject = DeviceCapabilityExamination.a(locallbn.a);
     if (!new File((String)localObject).exists())
     {
       QLog.w("DeviceCapabilityExamination", 1, "startDecoderTest, error, filePath[" + (String)localObject, new Throwable("打印调用栈"));
       return;
     }
-    DeviceCapabilityExamination.a(AudioHelper.b(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, locallbj, null);
+    DeviceCapabilityExamination.a(AudioHelper.b(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, locallbn, null);
   }
 }
 

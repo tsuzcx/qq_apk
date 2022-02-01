@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordConfig;
 
-class bdix
-  extends bdji<UserState>
+public class bdix
+  implements IRecordConfig
 {
-  bdix(bdiu parambdiu, UserState paramUserState, List paramList)
+  public bdix(RecordTracer paramRecordTracer) {}
+  
+  public int getCachedEventSize()
   {
-    super(paramUserState, paramList);
+    return 0;
   }
   
-  public void a(UserState paramUserState)
+  public String getTitleBarId()
   {
-    super.a(paramUserState);
-    bdiu.a(this.a).a();
-    bdiu.a(this.a).i();
-    bdiu.a(this.a).b();
+    return "com.tencent.mobileqq:id/ivTitleName";
+  }
+  
+  public boolean isEnableRelease()
+  {
+    return true;
+  }
+  
+  public boolean isFilterUGC()
+  {
+    return false;
   }
 }
 

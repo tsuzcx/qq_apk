@@ -1,7 +1,18 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
+
 public class bnfb
-  implements boar
+  implements EIPCResultCallback
 {
-  bnfb(bnfa parambnfa) {}
+  bnfb(bnev parambnev) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
+  }
 }
 
 

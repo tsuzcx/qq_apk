@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import prq;
-import psf;
+import qcn;
+import qdc;
 
 public class VideoHandler$1
   implements Runnable
 {
-  public VideoHandler$1(psf parampsf) {}
+  public VideoHandler$1(qdc paramqdc) {}
   
   public void run()
   {
-    if ((psf.a(this.this$0) != null) && (!((ReadInJoyXListView)psf.a(this.this$0)).a())) {
-      prq.a(psf.a(this.this$0), true);
+    if ((qdc.a(this.this$0) != null) && (!((ReadInJoyXListView)qdc.a(this.this$0)).a())) {
+      qcn.a(qdc.a(this.this$0), true);
     }
   }
 }

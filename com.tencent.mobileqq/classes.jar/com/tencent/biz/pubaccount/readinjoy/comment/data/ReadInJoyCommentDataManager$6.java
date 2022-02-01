@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ouu;
-import owh;
+import pdv;
+import pfi;
 
 public class ReadInJoyCommentDataManager$6
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$6(ouu paramouu) {}
+  public ReadInJoyCommentDataManager$6(pdv parampdv) {}
   
   public void run()
   {
-    ouu.a(this.this$0).a(ouu.a(this.this$0).innerUniqueID, ouu.a(this.this$0), 10, ouu.a(this.this$0), this.this$0.a);
+    pdv.a(this.this$0).a(pdv.a(this.this$0).innerUniqueID, pdv.a(this.this$0), 10, pdv.a(this.this$0), this.this$0.a);
   }
 }
 

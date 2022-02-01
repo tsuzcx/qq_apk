@@ -1,35 +1,73 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ammm
-  implements View.OnClickListener
+class ammm
+  extends TransProcessorHandler
 {
-  public ammm(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  ammm(amme paramamme, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_Ammw != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_Ammw.a(2);
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.fileType != 24)) {}
     for (;;)
     {
-      ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
-      }
-      alnr.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      QLog.e("ApolloPanel", 1, "realshowNewActionFloatView mAppController null");
+      if (localFileMsg.commandId == 79) {
+        switch (paramMessage.what)
+        {
+        case 1002: 
+        default: 
+          return;
+        case 1001: 
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ApolloManager", 0, "start upload cmshow3D face data");
+            return;
+          }
+          break;
+        case 1003: 
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloManager", 2, "finish upload cmshow3D face data" + localFileMsg.serverPath);
+          }
+          paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+          try
+          {
+            paramMessage.mergeFrom(localFileMsg.bdhExtendInfo);
+            paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
+            if ((paramMessage != null) && (amme.a(this.a) != null) && (amme.a(this.a).get() != null)) {
+              ((ammy)amme.a(this.a).get()).onSuccess(paramMessage);
+            }
+            if (this.a.a != null)
+            {
+              this.a.a.removeHandle(this);
+              return;
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramMessage)
+          {
+            paramMessage.printStackTrace();
+            return;
+          }
+        }
+      }
     }
+    QLog.e("ApolloManager", 1, "[mTransProcessorHandler] upload cmshow3D face data error:" + localFileMsg.serverPath);
+    ((ammy)amme.a(this.a).get()).onFailed();
+    return;
+    QLog.i("ApolloManager", 1, "upload cmshow cmshow3D face data cancel:" + localFileMsg.serverPath);
   }
 }
 

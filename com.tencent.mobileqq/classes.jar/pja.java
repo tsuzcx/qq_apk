@@ -1,139 +1,36 @@
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-public class pja
-  extends piu<String, DynamicChannelDataModel>
+final class pja
+  implements ViewFactory.FoundClickableViewListener
 {
-  private piz a;
+  pja(int paramInt, Container paramContainer, qfw paramqfw, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, ProteusItemView paramProteusItemView, FaceDecoder paramFaceDecoder, szd paramszd) {}
   
-  public pja(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    super(paramActivity, paramRecyclerViewWithHeaderFooter, paramInt);
-    this.jdField_a_of_type_Piz = new piz();
-    this.jdField_a_of_type_Piz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, 0);
-  }
-  
-  public long a()
-  {
-    long l2 = -1L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    qqa localqqa = (qqa)piv.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if ((localqqa != null) && (localqqa.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Qfw, paramViewBase))) {}
+    int i;
+    do
     {
-      l1 = l2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      do
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        l1 = -1L;
-        if (localIterator.hasNext())
-        {
-          DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)localIterator.next();
-          if (localDynamicChannelDataModel.recommendSeq <= l1) {
-            break label85;
-          }
-          l1 = localDynamicChannelDataModel.recommendSeq;
-        }
+        return;
+      } while ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null));
+      i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+      if (QLog.isColorLevel()) {
+        QLog.d("ProteusSupportUtil", 2, "configListener viewID : " + paramViewBase.getViewId() + ", cmd : " + i + ",, event : " + paramViewBase.getClickEvnet());
       }
-    }
-    label85:
-    for (;;)
-    {
-      break;
-      return l1;
-    }
-  }
-  
-  public bjwy a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_Piz.a(paramInt))
-    {
-      Object localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramViewGroup = pit.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(), (String)localObject);
-        if ((paramInt == pir.b) && (paramViewGroup != null)) {
-          paramViewGroup.setVisibility(8);
-        }
-        QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, viewType = ", Integer.valueOf(paramInt), ", styleID = ", localObject });
-        localObject = paramViewGroup;
-        if (paramViewGroup == null)
-        {
-          localObject = new ProteusItemView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
-          QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "proteusItemView is null");
-        }
-        return new pjb(this, (View)localObject);
-      }
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "onCreateViewHolder styleID is empty");
-    }
-    for (;;)
-    {
-      paramViewGroup = null;
-      break;
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "onCreateViewHolder not the right type");
-    }
-  }
-  
-  public void a(bjwy parambjwy, int paramInt)
-  {
-    DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)a(paramInt);
-    int i = parambjwy.getItemViewType();
-    ProteusItemView localProteusItemView = (ProteusItemView)parambjwy.itemView;
-    if (localDynamicChannelDataModel != null)
-    {
-      if (!this.jdField_a_of_type_Piz.a(i)) {
-        break label156;
-      }
-      if (i != pir.b) {
-        break label136;
-      }
-      localProteusItemView.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(localDynamicChannelDataModel.uniqueID, localDynamicChannelDataModel);
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, dataModel = ", localDynamicChannelDataModel, ", proteusItemView = ", localProteusItemView, " , position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
-      EventCollector.getInstance().onRecyclerBindViewHolder(parambjwy, paramInt, getItemId(paramInt));
-      return;
-      label136:
-      this.jdField_a_of_type_Piz.a(localProteusItemView, i, localDynamicChannelDataModel, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
-      continue;
-      label156:
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 1, "onBindViewHolder not the right type");
-    }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    Object localObject = (DynamicChannelDataModel)a(paramInt);
-    int i = pir.b;
-    paramInt = i;
-    if (localObject != null)
-    {
-      paramInt = i;
-      if (this.jdField_a_of_type_Piz.a((DynamicChannelDataModel)localObject))
-      {
-        i = this.jdField_a_of_type_Piz.a((DynamicChannelDataModel)localObject);
-        localObject = ((DynamicChannelDataModel)localObject).styleID;
-        paramInt = i;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject);
-          paramInt = i;
-        }
-      }
-    }
-    return paramInt;
+    } while (!piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, i, paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext));
+    paramViewBase.setOnClickListener(new pjb(this, i, paramViewBase));
   }
 }
 

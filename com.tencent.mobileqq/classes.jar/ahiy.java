@@ -1,23 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForText;
 
 class ahiy
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  ahiy(ahiu paramahiu) {}
+  ahiy(ahit paramahit, MessageForText paramMessageForText) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.listView.removeHeaderView(ahiu.a(this.a));
-    ahiu.a(this.a, true);
+    admh.a(this.jdField_a_of_type_Ahit.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahit.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahit.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

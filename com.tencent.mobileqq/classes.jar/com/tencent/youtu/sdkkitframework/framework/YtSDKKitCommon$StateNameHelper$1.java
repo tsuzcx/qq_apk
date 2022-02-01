@@ -18,6 +18,8 @@ final class YtSDKKitCommon$StateNameHelper$1
     put(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE, "com.tencent.youtu.sdkkitframework.liveness.NetFetchState");
     put(YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE, "com.tencent.youtu.sdkkitframework.liveness.NetLivenessReqResultState");
     put(YtSDKKitCommon.StateNameHelper.StateClassName.NET_OCR_REQ_RESULT_STATE, "com.tencent.youtu.sdkkitframework.ocr.NetOcrReqResultState");
+    put(YtSDKKitCommon.StateNameHelper.StateClassName.LIPREAD_STATE, "com.tencent.youtu.sdkkitframework.liveness.LipReadLivenessState");
+    put(YtSDKKitCommon.StateNameHelper.StateClassName.DETECTONLY_STATE, "com.tencent.youtu.sdkkitframework.liveness.DetectOnlyState");
   }
 }
 

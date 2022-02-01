@@ -1,41 +1,11 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
-class xsq
-  extends xqa
+public abstract class xsq
 {
-  xsq(xsp paramxsp) {}
+  public int a;
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
-  {
-    if (UIUtils.isFastDoubleClick()) {}
-    label6:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label6;
-          do
-          {
-            return;
-          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
-          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
-        paramObject = xsp.a(this.a).b(paramObject.mOwnerUid);
-      } while (paramObject == null);
-      switch (paramView.getId())
-      {
-      default: 
-        return;
-      }
-    } while (xsp.a(this.a) == null);
-    xsp.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
-  }
+  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
 }
 
 

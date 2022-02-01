@@ -1,75 +1,70 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.common.GifUtil;
+import com.tencent.filter.BaseFilter;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.view.RendererUtils;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.1;
+import dov.com.qq.im.video.GifEncoder;
+import java.io.File;
 
 public class bnpo
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public int a;
-  protected Context a;
-  public Handler a;
-  public LruCache<String, yri> a;
-  public int b;
+  public bnpo(VideoGIFCreator.1 param1, String paramString) {}
   
-  protected Bitmap a(Bitmap paramBitmap)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
-    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    int i = paramBitmap.getWidth();
-    float f1 = f2;
-    if (i > 0)
+    QLog.d(bnpn.a(), 4, "gif creator onFrameAvailable()");
+    paramSurfaceTexture.updateTexImage();
+    bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(bnpn.c(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), 960, 480, -1, 0.0D, bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0));
+    bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(true);
+    paramSurfaceTexture = bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), 480, 480);
+    if (bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0) != null)
     {
-      f1 = f2;
-      if (i < this.jdField_a_of_type_Int * f2) {
-        f1 = i / this.jdField_a_of_type_Int;
-      }
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+      float f1 = bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).jdField_a_of_type_Float * 2.0F - 1.0F;
+      float f2 = bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).b * 2.0F - 1.0F;
+      float f3 = bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).c * 2.0F + f1;
+      float f4 = bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).d * 2.0F + f2;
+      bnpn.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).setPositions(new float[] { f1, f2, f1, f4, f3, f4, f3, f2 });
+      bnpn.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).jdField_a_of_type_Int, paramSurfaceTexture.width, paramSurfaceTexture.height, -1, 0.0D, paramSurfaceTexture);
+      GLES20.glDisable(3042);
     }
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
-    this.b = ((int)(f1 * this.b));
-    i = this.jdField_a_of_type_Int;
-    xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
-    return bfvo.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    paramSurfaceTexture = bnpn.c(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).RenderProcess(paramSurfaceTexture.getTextureId(), bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0), bnpn.b(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0));
+    Bitmap localBitmap = RendererUtils.saveTexture(paramSurfaceTexture);
+    paramSurfaceTexture.unlock();
+    bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(localBitmap, 55);
+    localBitmap.recycle();
+    QLog.d(bnpn.a(), 4, "gif creator decodeToSurface()");
+    if (!bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a())
     {
-      xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
-      return null;
+      QLog.d(bnpn.a(), 4, "gifEncoder.close() start");
+      bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a();
+      QLog.d(bnpn.a(), 4, "gifEncoder.close() end");
+      QLog.d(bnpn.a(), 4, "gif encode complete");
+      paramSurfaceTexture = bmwq.b + File.separator + System.currentTimeMillis() + "_compressed.gif";
+      FileUtil.deleteFile(paramSurfaceTexture);
+      QLog.d(bnpn.a(), 4, "gif compress start");
+      int i = GifUtil.compressGif(this.jdField_a_of_type_JavaLangString, paramSurfaceTexture, 30);
+      QLog.d(bnpn.a(), 4, "gif compress end, ret = " + i);
+      FileUtil.deleteFile(this.jdField_a_of_type_JavaLangString);
+      if (i <= 0) {
+        break label563;
+      }
+      bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a(paramSurfaceTexture);
     }
-    xvv.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
-    try
+    for (;;)
     {
-      paramString = BitmapFactory.decodeFile(paramString);
-      if (paramString == null)
-      {
-        xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
-        paramString = null;
-      }
-      Bitmap localBitmap = a(paramString);
-      if (localBitmap == null)
-      {
-        xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
-        return null;
-      }
-      if ((paramString != null) && (!paramString.isRecycled())) {
-        paramString.recycle();
-      }
-      xvv.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
-      return localBitmap;
+      this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0.a();
+      return;
+      label563:
+      bnpn.a(this.jdField_a_of_type_DovComQqImAeGifVideoVideoGIFCreator$1.this$0).a();
     }
   }
 }

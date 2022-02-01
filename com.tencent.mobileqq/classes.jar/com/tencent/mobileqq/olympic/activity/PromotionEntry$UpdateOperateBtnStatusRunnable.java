@@ -2,9 +2,9 @@ package com.tencent.mobileqq.olympic.activity;
 
 import android.animation.ObjectAnimator;
 import android.widget.ImageView;
-import anzl;
-import anzr;
-import axrl;
+import apcn;
+import apct;
+import ayxw;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
@@ -17,7 +17,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
   implements Runnable
 {
   public ObjectAnimator a;
-  anzl jdField_a_of_type_Anzl = null;
+  apcn jdField_a_of_type_Apcn = null;
   public LottieDrawable a;
   OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = null;
   private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
@@ -48,13 +48,13 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
     do
     {
       return;
-      if (this.jdField_a_of_type_Anzl == null)
+      if (this.jdField_a_of_type_Apcn == null)
       {
         QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
         return;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null);
-    Object localObject = anzr.a(this.jdField_a_of_type_Anzl);
+    Object localObject = apct.a(this.jdField_a_of_type_Apcn);
     a((String)localObject);
     try
     {
@@ -70,7 +70,7 @@ public class PromotionEntry$UpdateOperateBtnStatusRunnable
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new axrl(this, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new ayxw(this, paramString);
   }
   
   public void run()

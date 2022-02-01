@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.Comparator;
 
-public class atcg
-  extends bfvf
+class atcg
+  implements Comparator<FavFileInfo>
 {
-  public atcg(SendBottomBar paramSendBottomBar, int paramInt) {}
+  atcg(atcf paramatcf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(FavFileInfo paramFavFileInfo1, FavFileInfo paramFavFileInfo2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.a(this.jdField_a_of_type_Int);
+    if (paramFavFileInfo2.c > paramFavFileInfo1.c) {
+      return 1;
+    }
+    if (paramFavFileInfo2.c < paramFavFileInfo1.c) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcg
  * JD-Core Version:    0.7.0.1
  */

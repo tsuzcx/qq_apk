@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import alep;
+import amcl;
 
 class QvipSpecialSoundManager$3
   implements Runnable
 {
-  QvipSpecialSoundManager$3(QvipSpecialSoundManager paramQvipSpecialSoundManager, alep paramalep, boolean paramBoolean) {}
+  QvipSpecialSoundManager$3(QvipSpecialSoundManager paramQvipSpecialSoundManager, amcl paramamcl, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Alep.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Amcl.a(this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import amtj;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class AEVideoShelfEditFragment$11
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131689768), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131689777), 0).a();
   }
 }
 

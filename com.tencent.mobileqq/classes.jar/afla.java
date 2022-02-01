@@ -1,38 +1,35 @@
-import android.view.View;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class afla
-  implements URLDrawableDownListener
+  extends aodb
 {
-  public afla(DoodleMsgLayout paramDoodleMsgLayout) {}
+  public afla(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a()
   {
-    if (paramView == DoodleMsgLayout.a(this.a))
-    {
-      DoodleMsgLayout.a(this.a, true);
-      DoodleMsgLayout.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
     }
-    do
+    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
     {
-      return;
-      if (paramView == DoodleMsgLayout.b(this.a))
+      this.a.a(true);
+      this.a.b(true);
+      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
       {
-        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
-        return;
+        if (VisitorsActivity.a(this.a).get())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
+          }
+          bhdj.a(this.a, 232, null, anvx.a(2131716179), null, anvx.a(2131716176), new aflb(this), null).show();
+        }
+        this.a.removeObserver(VisitorsActivity.a(this.a));
       }
-    } while (paramView != DoodleMsgLayout.c(this.a));
+    }
   }
 }
 

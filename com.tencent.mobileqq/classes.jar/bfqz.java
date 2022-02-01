@@ -1,7 +1,18 @@
-class bfqz
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+
+public class bfqz
+  implements bful
 {
-  bfqv jdField_a_of_type_Bfqv;
-  bfqx jdField_a_of_type_Bfqx;
+  public bfqz(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
+    }
+  }
 }
 
 

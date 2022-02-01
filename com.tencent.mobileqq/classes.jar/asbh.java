@@ -1,111 +1,42 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
 
 public class asbh
-  extends asbe
+  extends ColorDrawable
 {
-  public asbh(QQAppInterface paramQQAppInterface, Context paramContext)
+  private float jdField_a_of_type_Float;
+  private final int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private final int b;
+  
+  public asbh(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramInt1);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt2, paramInt3);
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  protected ImageView a(aezf paramaezf)
+  public void draw(Canvas paramCanvas)
   {
-    if (paramaezf == null) {}
-    while (!(paramaezf instanceof agld)) {
-      return null;
-    }
-    return ((agld)paramaezf).a;
+    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  protected void a(aezf paramaezf, ImageView paramImageView)
+  public int getIntrinsicHeight()
   {
-    if (paramaezf == null) {}
-    while (!(paramaezf instanceof agld)) {
-      return;
-    }
-    ((agld)paramaezf).a = paramImageView;
+    return this.b;
   }
   
-  protected void a(View paramView, aezf paramaezf, ChatMessage paramChatMessage, int paramInt)
+  public int getIntrinsicWidth()
   {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-            } while (paramInt == -1);
-            paramaezf = (MessageForTroopFile)paramChatMessage;
-            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
-          } while (paramView == null);
-          paramaezf = bfby.a(this.a, paramaezf);
-        } while (paramaezf == null);
-        if (paramInt != 0) {
-          break;
-        }
-      } while ((paramaezf.b != 0) && (paramaezf.b != 1));
-      bcef.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
-      paramView.a(paramaezf.a);
-      return;
-    } while ((paramInt != 1) || (paramaezf.b != 2));
-    bcef.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
-    a(new asbi(this, paramChatMessage.frienduin, paramaezf));
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bfby.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
-    return true;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramChatMessage instanceof MessageForTroopFile));
-        paramChatMessage = (MessageForTroopFile)paramChatMessage;
-        paramChatMessage = bfby.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
-      }
-    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
-    return true;
+    return this.jdField_a_of_type_Int;
   }
 }
 

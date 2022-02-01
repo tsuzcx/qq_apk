@@ -1,27 +1,33 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.io.File;
 
 class ahrp
-  implements Handler.Callback
+  implements bkzq
 {
-  ahrp(ahro paramahro) {}
+  ahrp(ahri paramahri, bkzi parambkzi, AIOImageData paramAIOImageData, File paramFile) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramView == null)
     {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
     }
-    for (;;)
+    paramView = this.jdField_a_of_type_Bkzi.a(paramInt);
+    if (paramView == null)
     {
-      return true;
-      if ((paramMessage.obj instanceof ColorNote))
-      {
-        paramMessage = (ColorNote)paramMessage.obj;
-        ahro.a(this.a, paramMessage);
-        ahro.b(this.a, paramMessage);
-      }
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
     }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Ahri.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

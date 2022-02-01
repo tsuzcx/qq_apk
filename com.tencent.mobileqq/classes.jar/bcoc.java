@@ -1,40 +1,84 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.studymode.ModeRadioGroup;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class bcoc
-  implements View.OnClickListener
+public class bcoc
+  implements bcnu
 {
-  public bcoc(ModeRadioGroup paramModeRadioGroup, int paramInt) {}
+  public static final String a;
+  public final int a;
+  public Context a;
+  public View a;
   
-  public final void onClick(View paramView)
+  static
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext())) {
-      if (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup) != this.jdField_a_of_type_Int) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext(), 1, 2131694108, 1).a();
+    jdField_a_of_type_JavaLangString = bcoc.class.getSimpleName();
+  }
+  
+  public bcoc(Context paramContext, int paramInt)
+  {
+    if (paramContext == null) {
+      throw new IllegalArgumentException(jdField_a_of_type_JavaLangString + "type is illegal, type = " + paramInt);
+    }
+    int i;
+    if (paramInt >= 0)
+    {
+      i = paramInt;
+      if (paramInt <= 2) {}
+    }
+    else
+    {
+      i = 0;
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "type is illegal, type = " + 0);
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  public View a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_AndroidViewView;
+    }
+    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      if (bool) {
+        localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166950));
       }
+      break;
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_Int == 2) && (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup) != 2))
-      {
-        ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidViewView = localRelativeLayout;
+      return localRelativeLayout;
+      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
+      View localView = new View(this.jdField_a_of_type_AndroidContentContext);
+      if (bool) {
+        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166961));
       }
-      else
+      for (;;)
       {
-        QLog.d("GeneralModeRadioGroup", 2, "click item, type= " + this.jdField_a_of_type_Int + ", old type= " + ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup) + ", enableCheck = " + ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup));
-        if ((ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) && (this.jdField_a_of_type_Int != ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup))) {
-          ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
-        }
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, 1);
+        localLayoutParams.addRule(15);
+        localLayoutParams.leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 15.0F);
+        localLayoutParams.rightMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 15.0F);
+        localRelativeLayout.addView(localView, localLayoutParams);
+        break;
+        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166960));
       }
+      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 18.0F)));
+      break;
+      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167363));
     }
   }
 }

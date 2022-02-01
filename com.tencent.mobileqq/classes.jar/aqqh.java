@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection;
 
-public abstract interface aqqh
+public class aqqh
+  implements aqqe
 {
-  public abstract boolean getHasPulledSourceMsg();
+  public aqqh(ColorNoteSettingBaseSection paramColorNoteSettingBaseSection) {}
   
-  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
-  
-  public abstract void setPulledSourceMsg();
+  public void a()
+  {
+    this.a.a();
+  }
 }
 
 

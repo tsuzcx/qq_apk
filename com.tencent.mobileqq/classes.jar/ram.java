@@ -1,142 +1,117 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+import tencent.kandian.im.apn.PushComponentExtPB.MsgBody;
 
-class ram
-  extends bgod
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtDataProcessor;", "", "()V", "convertAdditionalField", "Lorg/json/JSONObject;", "pushExtraData", "", "brief", "convertPacket", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtData;", "msgBody", "Ltencent/kandian/im/apn/PushComponentExtPB$MsgBody;", "generateActionData", "process0X135PBBuffer", "base64PbBuffer", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ram
 {
-  ram(ral paramral, BaseResData paramBaseResData, String paramString1, String paramString2) {}
+  public static final ran a = new ran(null);
   
-  public void onCancel(bgoe parambgoe)
+  @NonNull
+  private final ral a(PushComponentExtPB.MsgBody paramMsgBody)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.size())
+    ral localral = new ral(null, null, null, null, null, null, 63, null);
+    String str;
+    if (paramMsgBody.articleIds.has())
     {
-      ((bgod)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.get(i)).onCancel(parambgoe);
-      i += 1;
+      str = paramMsgBody.articleIds.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.articleIds.get()");
+      localral.jdField_a_of_type_JavaLangString = str;
     }
-    String str = parambgoe.a().getString("resId");
-    this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilHashMap.remove(this.b + "_" + str);
-    super.onCancel(parambgoe);
-    this.jdField_a_of_type_Ral.a("onCancel", parambgoe);
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy", 4, "mDownloader onCancel");
+    if (paramMsgBody.foldStatus.has())
+    {
+      str = paramMsgBody.foldStatus.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.foldStatus.get()");
+      localral.b = str;
     }
+    if (paramMsgBody.algoId.has())
+    {
+      str = paramMsgBody.algoId.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.algoId.get()");
+      localral.c = str;
+    }
+    if (paramMsgBody.strategyId.has())
+    {
+      str = paramMsgBody.strategyId.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.strategyId.get()");
+      localral.d = str;
+    }
+    if (paramMsgBody.subscripts.has())
+    {
+      str = paramMsgBody.subscripts.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.subscripts.get()");
+      localral.e = str;
+    }
+    if (paramMsgBody.pushExtData.has())
+    {
+      paramMsgBody = paramMsgBody.pushExtData.get().toByteArray();
+      Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.pushExtData.get().toByteArray()");
+      localral.jdField_a_of_type_ArrayOfByte = paramMsgBody;
+    }
+    return localral;
   }
   
-  public void onDone(bgoe parambgoe)
+  @NotNull
+  public final JSONObject a(@NotNull String paramString)
   {
-    Object localObject = parambgoe.a();
-    String str1 = ((Bundle)localObject).getString("resId");
-    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData instanceof MaterialData)) && (pay.a() != null)) {
-      ttv.a(pay.a()).a(parambgoe, (MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData, new File(this.jdField_a_of_type_JavaLangString));
+    Intrinsics.checkParameterIsNotNull(paramString, "pushExtraData");
+    JSONObject localJSONObject = new JSONObject();
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return localJSONObject;
     }
-    do
+    paramString = new JSONObject(paramString);
+    localJSONObject.put("id", paramString.optString("id", ""));
+    localJSONObject.put("push_ext_data", paramString);
+    localJSONObject.put("push_rowkey", paramString.optString("push_rowkey", ""));
+    localJSONObject.put("subscripts", paramString.optString("subscripts", ""));
+    localJSONObject.put("article_id", paramString.optString("article_id", ""));
+    return localJSONObject;
+  }
+  
+  @NotNull
+  public final JSONObject a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "pushExtraData");
+    Intrinsics.checkParameterIsNotNull(paramString2, "brief");
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("brief", paramString2);
+    if (TextUtils.isEmpty((CharSequence)paramString1)) {
+      return localJSONObject;
+    }
+    localJSONObject.put("orangeWord", new JSONObject(paramString1).optString("orangeWord", ""));
+    return localJSONObject;
+  }
+  
+  @NonNull
+  @NotNull
+  public final ral a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "base64PbBuffer");
+    byte[] arrayOfByte = bhcu.decode(paramString, 0);
+    Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "Base64Util.decode(base64…ffer, Base64Util.DEFAULT)");
+    paramString = new PushComponentExtPB.MsgBody();
+    try
     {
-      return;
-      String str2 = ((Bundle)localObject).getString("prefix");
-      if (parambgoe.jdField_a_of_type_Int == 0)
-      {
-        localObject = new File(this.jdField_a_of_type_JavaLangString);
-        if (!((File)localObject).exists()) {}
-      }
+      paramString.mergeFrom(arrayOfByte);
+      return a(paramString);
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        try
-        {
-          FileUtils.uncompressZip(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Ral.a(str2), false);
-          this.jdField_a_of_type_Ral.a(this.jdField_a_of_type_Ral.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-          ((File)localObject).delete();
-          this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilHashMap.remove(str2 + "_" + str1);
-          this.jdField_a_of_type_Ral.a(str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-          i = 0;
-          if (i >= this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.size()) {
-            break;
-          }
-          ((bgod)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.get(i)).onDone(parambgoe);
-          i += 1;
-          continue;
-          try
-          {
-            FileUtils.createDirectory(this.jdField_a_of_type_Ral.a(str2, str1));
-            if (!FileUtils.fileExists((String)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambgoe.jdField_a_of_type_JavaLangString))) {
-              continue;
-            }
-            FileUtils.copyDirectory((String)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambgoe.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Ral.a(str2, str1), false);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ReadInJoyBaseResManager", 2, "it is the same url copy to another dir path from: " + (String)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambgoe.jdField_a_of_type_JavaLangString) + " to :" + this.jdField_a_of_type_Ral.a(str2, str1));
-          }
-          catch (Exception localException) {}
-        }
-        catch (Exception parambgoe)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(parambgoe));
-          }
-          return;
-        }
-        finally
-        {
-          ((File)localObject).delete();
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoyBaseResManager", 2, "t is the same url copy to another dir path failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide failed: id = " + str1);
-          }
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData instanceof MaterialData)) {
-            FileUtils.deleteDirectory(this.jdField_a_of_type_Ral.a(str2, str1));
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("RIJPushComponentExtDataProcessor", 2, "process0X135PBBuffer: failed. ", (Throwable)localException);
         }
       }
-      this.jdField_a_of_type_Ral.a("onDone", parambgoe);
-      int i = parambgoe.jdField_a_of_type_Int;
-      long l1 = parambgoe.h;
-      long l2 = parambgoe.g;
-      this.jdField_a_of_type_Ral.a(new String[] { String.valueOf(i), str1, String.valueOf(l1 - l2) });
-    } while (!QLog.isColorLevel());
-    QLog.d("readinjoy", 4, "mDownloader downLoadFinish");
-  }
-  
-  public void onProgress(bgoe parambgoe)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((bgod)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.get(i)).onProgress(parambgoe);
-      i += 1;
     }
-    super.onProgress(parambgoe);
-    this.jdField_a_of_type_Ral.a("onProgress", parambgoe);
-  }
-  
-  public boolean onStart(bgoe parambgoe)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((bgod)this.jdField_a_of_type_Ral.jdField_a_of_type_JavaUtilArrayList.get(i)).onStart(parambgoe);
-      i += 1;
-    }
-    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData instanceof MaterialData)) && (pay.a() != null)) {
-      ttv.a(pay.a()).a((MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-    }
-    this.jdField_a_of_type_Ral.a("onStart", parambgoe);
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy", 4, "mDownloader onStart");
-    }
-    return super.onStart(parambgoe);
   }
 }
 

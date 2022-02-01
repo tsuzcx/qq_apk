@@ -1,40 +1,47 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
-import java.util.HashMap;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajrd
-  extends PhotoPreviewBaseData
+  implements bkzq
 {
-  public int a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public ylk a;
-  public boolean a;
-  public int b;
-  public String b;
-  public HashMap<String, PhotoSendParams> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public HashMap<String, PicInfo> c;
-  public boolean c;
-  public int d;
-  public HashMap<String, PicInfo> d;
-  public boolean d;
-  public int e;
-  public HashMap<String, byte[]> e;
-  public boolean e;
-  public int f = 1052;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
+  public ajrd(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, MessageRecord paramMessageRecord, bkzi parambkzi) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPtt))
+      {
+        paramView = MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+        if ((paramView == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord) || (((paramView instanceof MessageForPtt)) && (paramView.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq))) {
+          MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(false);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.e = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new ajre(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
+    }
+  }
 }
 
 

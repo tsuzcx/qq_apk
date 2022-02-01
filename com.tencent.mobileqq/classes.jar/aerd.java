@@ -1,21 +1,36 @@
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aerd
-  implements View.OnTouchListener
+class aerd
+  implements bkzq
 {
-  public aerd(TroopTransferActivity paramTroopTransferActivity) {}
+  aerd(aerc paramaerc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    switch (paramInt)
+    {
     }
-    return false;
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      bdla.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
+      aato.a("share_success");
+      this.a.a.u();
+      continue;
+      if (bmad.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+      {
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131299080);
+        QQToast.a(this.a.a, 2, this.a.a.getString(2131692127), 1).b(paramInt);
+        aato.a("favorite_success");
+      }
+      bman.a(null, 65, 7);
+      bdla.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+    }
   }
 }
 

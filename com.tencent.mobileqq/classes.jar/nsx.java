@@ -1,57 +1,35 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class nsx
-  extends URLDrawableDownListener.Adapter
+public class nsx
+  implements TextWatcher
 {
-  nsx(nst paramnst) {}
+  public nsx(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (!this.a.f) {
-      this.a.l();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
     {
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_Nsw.notifyDataSetChanged();
       return;
-      this.a.k();
-      if ((paramView instanceof ImageView))
-      {
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

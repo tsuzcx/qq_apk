@@ -1,20 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-class vmv
-  extends SimpleJob
+final class vmv
+  implements ShareActionSheet.OnItemClickListener
 {
-  vmv(vmu paramvmu, String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  vmv(Context paramContext, vln paramvln) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_Vmu.b(this.jdField_a_of_type_Boolean);
-    return null;
+    vms.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Vln);
+    paramShareActionSheet.dismiss();
   }
 }
 

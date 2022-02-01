@@ -14,19 +14,19 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import mqq.app.NewIntent;
-import nma;
-import nrm;
-import nrn;
-import nro;
+import nta;
+import nyn;
+import nyo;
+import nyp;
 
 public class SearchProtocol
 {
-  public static void a(AppInterface paramAppInterface, Context paramContext, nro paramnro)
+  public static void a(AppInterface paramAppInterface, Context paramContext, nyp paramnyp)
   {
-    if ((paramAppInterface == null) || (paramnro == null)) {
+    if ((paramAppInterface == null) || (paramnyp == null)) {
       return;
     }
-    paramContext = new nrm(Looper.getMainLooper(), paramnro);
+    paramContext = new nyn(Looper.getMainLooper(), paramnyp);
     if (HttpUtil.getNetWorkType() == 0)
     {
       paramAppInterface = paramContext.obtainMessage();
@@ -34,17 +34,17 @@ public class SearchProtocol
       paramContext.sendMessage(paramAppInterface);
       return;
     }
-    paramnro = new NewIntent(paramAppInterface.getApp(), nma.class);
-    paramnro.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
+    paramnyp = new NewIntent(paramAppInterface.getApp(), nta.class);
+    paramnyp.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
     mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
     localRequestBody.cmd.set(1);
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.8"));
-    paramnro.putExtra("data", localRequestBody.toByteArray());
-    paramnro.setObserver(new nrn(paramContext));
-    paramAppInterface.startServlet(paramnro);
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.4.10"));
+    paramnyp.putExtra("data", localRequestBody.toByteArray());
+    paramnyp.setObserver(new nyo(paramContext));
+    paramAppInterface.startServlet(paramnyp);
   }
   
   private static int b(String paramString)

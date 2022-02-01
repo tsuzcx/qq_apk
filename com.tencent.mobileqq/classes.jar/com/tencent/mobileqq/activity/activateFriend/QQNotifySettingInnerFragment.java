@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import adxr;
-import amtj;
+import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -43,7 +43,7 @@ public class QQNotifySettingInnerFragment
     localIntent.putExtra("key_msgid", paramString1);
     localIntent.putExtra("key_busid", paramString2);
     localIntent.putExtra("key_domain", paramString3);
-    adxr.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQNotifySettingInnerFragment.class, 48128);
+    aeow.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQNotifySettingInnerFragment.class, 48128);
   }
   
   private void b()
@@ -55,12 +55,12 @@ public class QQNotifySettingInnerFragment
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131560906, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131560967, paramViewGroup, false);
   }
   
   public void a()
   {
-    QQToast.a(getActivity(), amtj.a(2131709690), 0).a();
+    QQToast.a(getActivity(), anvx.a(2131710037), 0).a();
   }
   
   public void a(AcsGetMsgRsp paramAcsGetMsgRsp)
@@ -82,8 +82,8 @@ public class QQNotifySettingInnerFragment
         break label124;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131709688));
-      this.c.setText(amtj.a(2131709686));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131710035));
+      this.c.setText(anvx.a(2131710033));
       paramString = URLDrawable.URLDrawableOptions.obtain();
       paramString.mRequestHeight = this.b.getHeight();
       paramString.mRequestWidth = this.b.getWidth();
@@ -126,11 +126,11 @@ public class QQNotifySettingInnerFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362688));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379558));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362703));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379870));
     this.d.setVisibility(8);
-    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369256)).setVisibility(0);
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369257));
+    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369422)).setVisibility(0);
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369423));
     this.b.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
     paramLayoutInflater.mRequestHeight = UIUtils.dip2px(getActivity(), 86.0F);
@@ -143,8 +143,8 @@ public class QQNotifySettingInnerFragment
       }
       this.b.setImageDrawable(paramLayoutInflater);
     }
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369258));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363794));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369424));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363866));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -153,7 +153,7 @@ public class QQNotifySettingInnerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment
  * JD-Core Version:    0.7.0.1
  */

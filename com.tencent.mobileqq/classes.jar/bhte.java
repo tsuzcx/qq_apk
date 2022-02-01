@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import QC.UniCheckRsp;
 
-class bhte
-  implements DialogInterface.OnClickListener
+public abstract interface bhte
 {
-  bhte(bhtd parambhtd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
-  }
+  public abstract void a(boolean paramBoolean, UniCheckRsp paramUniCheckRsp);
 }
 
 

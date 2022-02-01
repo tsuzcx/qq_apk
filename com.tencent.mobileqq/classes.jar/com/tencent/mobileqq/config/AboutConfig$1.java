@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config;
 
-import aptb;
+import aqwe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
@@ -11,12 +11,12 @@ import java.util.List;
 public class AboutConfig$1
   implements Runnable
 {
-  public AboutConfig$1(aptb paramaptb, boolean paramBoolean) {}
+  public AboutConfig$1(aqwe paramaqwe, boolean paramBoolean) {}
   
   public void run()
   {
     int i = 0;
-    ??? = aptb.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    ??? = aqwe.a(this.this$0).getEntityManagerFactory().createEntityManager();
     List localList = ResourcePluginInfo.getAll((EntityManager)???, 32, false);
     ((EntityManager)???).close();
     int j;
@@ -26,16 +26,16 @@ public class AboutConfig$1
       i = j;
       if (j <= 0) {}
     }
-    synchronized (aptb.a(this.this$0))
+    synchronized (aqwe.a(this.this$0))
     {
-      aptb.a(this.this$0);
-      aptb.a(this.this$0, localList);
+      aqwe.a(this.this$0);
+      aqwe.a(this.this$0, localList);
       this.this$0.b();
       i = j;
       if (QLog.isColorLevel()) {
-        QLog.d("AboutConfig", 2, "Load about config from DB = " + aptb.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
+        QLog.d("AboutConfig", 2, "Load about config from DB = " + aqwe.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
       }
-      aptb.a(this.this$0, true);
+      aqwe.a(this.this$0, true);
       return;
     }
   }

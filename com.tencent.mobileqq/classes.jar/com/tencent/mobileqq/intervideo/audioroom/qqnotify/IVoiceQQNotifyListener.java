@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo.audioroom.qqnotify;
 
-import aevk;
+import afmv;
 import android.os.Bundle;
 
 public abstract interface IVoiceQQNotifyListener
-  extends aevk
+  extends afmv
 {
   public abstract void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2);
 }

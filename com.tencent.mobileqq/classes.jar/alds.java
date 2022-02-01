@@ -1,18 +1,37 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alds
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class alds
+  implements View.OnClickListener
 {
-  public alds(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  alds(aldh paramaldh, TipsBar paramTipsBar) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (!FileUtil.isFileExists(atuo.a().b()))
+    {
+      atuo.a().c();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+      localForwardFileInfo.b(10008);
+      Intent localIntent = new Intent(aldh.a(this.jdField_a_of_type_Aldh), FileBrowserActivity.class);
+      localIntent.putExtra("fileinfo", localForwardFileInfo);
+      aldh.a(this.jdField_a_of_type_Aldh).startActivity(localIntent);
+      audy.a("0X8004BFE");
+      bdla.a(aldh.a(this.jdField_a_of_type_Aldh).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 2, 0, "", "", "", "");
+    }
   }
 }
 

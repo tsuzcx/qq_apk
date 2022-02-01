@@ -2,12 +2,12 @@ package com.tencent.device;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import yxq;
+import zms;
 
 final class DeviceScanner$1
   implements DialogInterface.OnClickListener
 {
-  DeviceScanner$1(yxq paramyxq) {}
+  DeviceScanner$1(zms paramzms) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

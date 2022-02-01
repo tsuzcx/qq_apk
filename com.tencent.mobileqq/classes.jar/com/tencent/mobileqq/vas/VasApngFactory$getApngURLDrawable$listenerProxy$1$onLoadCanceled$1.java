@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
-import bgfu;
-import bgfv;
+import bhop;
+import bhoq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ public final class VasApngFactory$getApngURLDrawable$listenerProxy$1$onLoadCance
   extends Lambda
   implements Function0<Unit>
 {
-  public VasApngFactory$getApngURLDrawable$listenerProxy$1$onLoadCanceled$1(bgfv parambgfv, URLDrawable paramURLDrawable)
+  public VasApngFactory$getApngURLDrawable$listenerProxy$1$onLoadCanceled$1(bhoq parambhoq, URLDrawable paramURLDrawable)
   {
     super(0);
   }

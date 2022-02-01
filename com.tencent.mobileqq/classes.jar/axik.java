@@ -1,39 +1,57 @@
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.BaseApplication;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/NativeUiJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "nativeUiIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axik
-  extends axhx
+class axik
+  implements azla
 {
-  @NotNull
-  protected PendingIntent a(@NotNull axib paramaxib)
+  axik(axii paramaxii, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    return e(paramaxib);
+    return null;
   }
   
-  protected boolean a()
+  public void onSend(azlb paramazlb)
   {
-    return true;
+    try
+    {
+      if (paramazlb.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructLongTextMsg", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - axii.a(this.jdField_a_of_type_Axii)) + ",mResid:" + paramazlb.c);
+        }
+        StructMsgForGeneralShare localStructMsgForGeneralShare = admh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+        localStructMsgForGeneralShare.mResid = paramazlb.c;
+        localStructMsgForGeneralShare.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+        localStructMsgForGeneralShare.multiMsgFlag = 1;
+        MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        localMessageForLongTextMsg.structingMsg = localStructMsgForGeneralShare;
+        localMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramazlb.c);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().sendMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramazlb.b + ",result.errStr=" + paramazlb.jdField_a_of_type_JavaLangString);
+      }
+      axii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      return;
+    }
+    catch (Exception paramazlb)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramazlb);
+      }
+      axii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
   }
   
-  @NotNull
-  public final PendingIntent e(@NotNull axib paramaxib)
-  {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, NotifyPushSettingActivity.class);
-    localIntent.addFlags(268435456);
-    paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.d, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-    return paramaxib;
-  }
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

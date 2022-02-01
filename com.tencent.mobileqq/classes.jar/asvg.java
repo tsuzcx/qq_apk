@@ -1,16 +1,30 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class asvg
-  implements AdapterView.OnItemLongClickListener
+public class asvg
+  implements OnCompositionLoadedListener
 {
-  asvg(asvf paramasvf) {}
+  public asvg(MatchingView.1 param1) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.a.a.f();
-    return true;
+    if (paramLottieComposition == null)
+    {
+      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
+      return;
+    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    MatchingView.a(this.a.this$0, localLottieDrawable);
+    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
   }
 }
 

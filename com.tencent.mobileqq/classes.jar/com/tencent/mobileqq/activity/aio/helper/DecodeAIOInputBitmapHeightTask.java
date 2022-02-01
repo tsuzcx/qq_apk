@@ -32,7 +32,7 @@ public class DecodeAIOInputBitmapHeightTask
     Object localObject1 = localBaseChatPie.input;
     Object localObject2 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject2).inScaled = false;
-    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.mActivity.getResources(), 2130849760, (BitmapFactory.Options)localObject2);
+    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.mActivity.getResources(), 2130849853, (BitmapFactory.Options)localObject2);
     float f;
     int j;
     int k;
@@ -44,7 +44,7 @@ public class DecodeAIOInputBitmapHeightTask
       j = AIOUtils.dp2px(36.0F, localBaseChatPie.mActivity.getResources());
       k = ((EditText)localObject1).getPaddingTop();
     }
-    for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.mActivity.getResources().getDimensionPixelSize(2131298125)) / 2;; i = 0)
+    for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.mActivity.getResources().getDimensionPixelSize(2131298128)) / 2;; i = 0)
     {
       i = Math.max(i, 0);
       localObject1 = localBaseChatPie.getUIHandler();

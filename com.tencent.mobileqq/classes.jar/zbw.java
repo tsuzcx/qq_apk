@@ -1,151 +1,90 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.ArrayUtils;
-import java.util.List;
 
 public class zbw
-  extends RecyclerView.Adapter<zbx>
+  extends BaseAdapter
 {
-  protected CertifiedAccountMeta.StEntry a;
-  protected List<zcz> a;
-  private zbv jdField_a_of_type_Zbv;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private zby jdField_a_of_type_Zby;
+  private int b;
+  private int c;
   
-  protected int a()
+  public zbw(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public List<zcz> a()
+  public Bitmap a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public zbx a(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject = paramViewGroup.getContext();
-    paramViewGroup = new RecyclerView.LayoutParams(DisplayUtil.dip2px((Context)localObject, 144.0F), DisplayUtil.dip2px((Context)localObject, 213.0F));
-    if (paramInt == 3)
-    {
-      localObject = new RecommendBannerEntryItemView((Context)localObject);
-      ((RecommendBannerEntryItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerEntryItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerEntryItemView)localObject).setInNightMode(this.b);
-      return new zbx(this, (View)localObject);
-    }
-    if (paramInt == 1)
-    {
-      localObject = new RecommendBannerItemView((Context)localObject);
-      ((RecommendBannerItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerItemView)localObject).setInNightMode(this.b);
-      ((RecommendBannerItemView)localObject).setInNewFolderPage(this.c);
-      return new zbx(this, (View)localObject);
-    }
-    if (paramInt == 2)
-    {
-      localObject = new RecommendBannerFeedItemView((Context)localObject);
-      ((RecommendBannerFeedItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerFeedItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerFeedItemView)localObject).setInNightMode(this.b);
-      return new zbx(this, (View)localObject);
-    }
     return null;
   }
   
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zcz> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Zby = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
   
-  public void a(zbv paramzbv)
+  public void a(LocalMediaInfo paramLocalMediaInfo)
   {
-    this.jdField_a_of_type_Zbv = paramzbv;
-  }
-  
-  public void a(zbx paramzbx)
-  {
-    super.onViewAttachedToWindow(paramzbx);
-    int i = paramzbx.getAdapterPosition() - a();
-    if ((!ArrayUtils.isOutOfArrayIndex(i, a())) && (a().get(i) != null)) {
-      zxp.a(((zcz)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_page", "recom_exp", 0, 0, new String[] { "", "", String.valueOf(i), ((zcz)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get() });
+    if (this.jdField_a_of_type_Zby == null) {
+      return;
     }
+    this.jdField_a_of_type_Zby.a(paramLocalMediaInfo);
   }
   
-  public void a(zbx paramzbx, int paramInt)
+  public void a(zby paramzby)
   {
-    if (paramzbx == null) {}
+    this.jdField_a_of_type_Zby = paramzby;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = (int)(ypx.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
+      paramView = new ViewGroup.LayoutParams(this.b, i);
+      ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      ((ImageView)localObject).setLayoutParams(paramView);
+      paramView = new zbx();
+      paramView.a = ((ImageView)localObject);
+      paramView.a.setImageDrawable(new ColorDrawable(-12303292));
+      ((View)localObject).setTag(paramView);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramzbx, paramInt, getItemId(paramInt));
-      return;
-      if ((paramzbx.itemView instanceof RecommendBannerEntryItemView))
-      {
-        ((RecommendBannerEntryItemView)paramzbx.itemView).setEntry(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry);
-      }
-      else
-      {
-        int i = paramInt - a();
-        if ((paramzbx.itemView instanceof RecommendBannerItemView))
-        {
-          RecommendBannerItemView localRecommendBannerItemView = (RecommendBannerItemView)paramzbx.itemView;
-          localRecommendBannerItemView.setData(((zcz)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, i);
-          localRecommendBannerItemView.setRecommendBannerFolwListener(this.jdField_a_of_type_Zbv);
-        }
-        else if ((paramzbx.itemView instanceof RecommendBannerFeedItemView))
-        {
-          ((RecommendBannerFeedItemView)paramzbx.itemView).setData(((zcz)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, i);
-        }
-      }
+      this.jdField_a_of_type_Zby.a(paramView.a, Integer.valueOf(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      zbx localzbx = (zbx)paramView.getTag();
+      localObject = paramView;
+      paramView = localzbx;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (a() == null) {
-      return a();
-    }
-    return a().size() + a();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null)) {
-      return 3;
-    }
-    return ((zcz)a().get(paramInt - a())).jdField_a_of_type_Int;
   }
 }
 

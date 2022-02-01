@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class anjk
-  extends amsu
 {
-  public anjk(HiddenChatFragment paramHiddenChatFragment) {}
+  public long a;
+  public String a;
+  public long b;
   
-  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
+  public anjk(String paramString, long paramLong1, long paramLong2)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
-      QLog.e("tag_hidden_chat", 1, "data not right");
-    }
-    do
-    {
-      do
-      {
-        return;
-        String[] arrayOfString = (String[])paramArrayOfObject[0];
-        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
-        if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
-        }
-      } while (!paramBoolean);
-      this.a.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    return localStringBuilder.toString();
   }
 }
 

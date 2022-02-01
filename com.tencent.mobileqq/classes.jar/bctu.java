@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
-public final class bctu
-  implements Parcelable.Creator<ReSendCmd>
+public abstract interface bctu
 {
-  public ReSendCmd a(Parcel paramParcel)
-  {
-    return new ReSendCmd(paramParcel);
-  }
-  
-  public ReSendCmd[] a(int paramInt)
-  {
-    return new ReSendCmd[paramInt];
-  }
+  public abstract void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler);
 }
 
 

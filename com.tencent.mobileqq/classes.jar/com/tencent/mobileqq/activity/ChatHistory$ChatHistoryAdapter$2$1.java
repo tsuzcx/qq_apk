@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import acyf;
-import acyg;
-import acyq;
+import ador;
+import ados;
+import adpc;
 import android.view.View;
 import android.widget.Toast;
 
 public class ChatHistory$ChatHistoryAdapter$2$1
   implements Runnable
 {
-  public ChatHistory$ChatHistoryAdapter$2$1(acyg paramacyg, Object paramObject, View paramView) {}
+  public ChatHistory$ChatHistoryAdapter$2$1(ados paramados, Object paramObject, View paramView) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Acyg.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
+    if ((this.jdField_a_of_type_Ados.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      Toast.makeText(this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131717965), 0).show();
+      Toast.makeText(this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131718350), 0).show();
       return;
     }
-    if (this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new acyq(this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
+    if (this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
+      this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new adpc(this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
     }
-    this.jdField_a_of_type_Acyg.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Acyg.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ados.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ados.jdField_a_of_type_JavaLangString);
   }
 }
 

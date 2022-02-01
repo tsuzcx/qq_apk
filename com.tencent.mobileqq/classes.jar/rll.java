@@ -1,51 +1,30 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import org.jetbrains.annotations.NotNull;
 
-public class rll
-  extends SimpleAdapter
+public abstract interface rll
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131368464, 2131378564, 2131378563 };
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
+  public abstract int a();
   
-  public rll(Context paramContext, List<Map<String, CharSequence>> paramList)
-  {
-    super(paramContext, paramList, 2131560302, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
-  }
+  @Nullable
+  public abstract RIJRewardTask a();
   
-  public void setViewImage(ImageView paramImageView, String paramString)
-  {
-    if ("create_topic".equals(paramString))
-    {
-      paramImageView.setImageResource(2130849447);
-      return;
-    }
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
-      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      paramImageView.setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(@Nullable RIJRewardTask paramRIJRewardTask);
+  
+  public abstract void a(@NotNull String paramString);
+  
+  public abstract void a(String paramString, int paramInt, rkd paramrkd);
+  
+  public abstract boolean a(@NotNull String paramString);
+  
+  public abstract int b();
+  
+  @Nullable
+  public abstract RIJRewardTask b();
+  
+  public abstract void b(RIJRewardTask paramRIJRewardTask);
 }
 
 

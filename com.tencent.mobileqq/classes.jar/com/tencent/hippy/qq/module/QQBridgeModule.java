@@ -1,19 +1,20 @@
 package com.tencent.hippy.qq.module;
 
-import amtj;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bfvp;
-import bfwg;
-import bfwv;
+import anvx;
+import bheh;
+import bhey;
+import bhfn;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,12 +23,13 @@ import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.events.QCircleOpenRewardAdEvent;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
-import shq;
-import yqu;
+import pkh;
+import sug;
+import zfn;
 
 public class QQBridgeModule
   extends BridgeModule
@@ -257,7 +259,7 @@ public class QQBridgeModule
     }
     boolean bool;
     if (("weishi://feed".equals(paramString)) || ("weishi".equals(paramString))) {
-      bool = yqu.a(localBaseActivity);
+      bool = zfn.a(localBaseActivity);
     }
     for (;;)
     {
@@ -281,7 +283,7 @@ public class QQBridgeModule
       }
       QLog.e(TAG, 2, "hasApp error" + paramString.getMessage());
       return;
-      bool = bfwv.a(localBaseActivity, paramString);
+      bool = bhfn.a(localBaseActivity, paramString);
       continue;
       label123:
       int i = 0;
@@ -297,7 +299,7 @@ public class QQBridgeModule
     String str2 = paramJSONObject.optString("method");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
     {
-      invokeErrorCallJS(paramPromise, amtj.a(2131700348));
+      invokeErrorCallJS(paramPromise, anvx.a(2131700699));
       QLog.d(TAG, 1, "ns or method not exists");
     }
     Object localObject;
@@ -333,11 +335,11 @@ public class QQBridgeModule
         break label334;
       }
       localObject = ((Fragment)localObject).getActivity();
-      QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+      QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
       if ((localObject != null) && (localQQAppInterface != null)) {
         try
         {
-          paramJSONObject = bfwg.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
+          paramJSONObject = bhey.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
           if (paramJSONObject != null)
           {
             paramJSONObject.b("viola");
@@ -349,7 +351,7 @@ public class QQBridgeModule
         catch (JSONException paramJSONObject)
         {
           paramJSONObject.printStackTrace();
-          invokeErrorCallJS(paramPromise, "ns:" + str1 + amtj.a(2131700344) + str2 + amtj.a(2131700339));
+          invokeErrorCallJS(paramPromise, "ns:" + str1 + anvx.a(2131700695) + str2 + anvx.a(2131700690));
           return;
         }
       }
@@ -455,9 +457,20 @@ public class QQBridgeModule
     openEditTopicView(paramJSONObject, getCallbackId(paramPromise));
   }
   
+  public void openRewardAd(JSONObject paramJSONObject, Promise paramPromise)
+  {
+    paramJSONObject = new QCircleOpenRewardAdEvent(paramJSONObject);
+    SimpleEventBus.getInstance().dispatchEvent(paramJSONObject);
+  }
+  
   public void openTopicVideoComment(JSONObject paramJSONObject, Promise paramPromise)
   {
     getCallbackId(paramPromise);
+  }
+  
+  public void openUserLevelDialog(JSONObject paramJSONObject, Promise paramPromise)
+  {
+    openLevelDialog(paramJSONObject, getCallbackId(paramPromise));
   }
   
   public void pauseUploadingVideo(JSONObject paramJSONObject, Promise paramPromise)
@@ -501,7 +514,7 @@ public class QQBridgeModule
   
   public void vaNetworkChange(Promise paramPromise)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
     if (localQQAppInterface == null) {}
     while (this.netInfoHandler != null) {
       return;
@@ -515,7 +528,7 @@ public class QQBridgeModule
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
     }
-    shq.a(null, paramJSONObject);
+    sug.a(null, paramJSONObject);
     if (getViolaInstance() != null) {
       paramJSONObject = new JSONObject();
     }

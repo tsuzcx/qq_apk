@@ -1,52 +1,58 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import mqq.os.MqqHandler;
 
 public class yhj
-  extends ygz<yhi>
+  implements wdb
 {
-  public final ImageView a;
-  public final TextView a;
-  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378444);
+  public MessageProgressView a;
+  private String a;
   
-  yhj(yhi paramyhi, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public yhj(MessageProgressView paramMessageProgressView)
   {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378367));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368344));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  private void b(String paramString, int paramInt)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561616, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
   }
   
   public void a()
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(UIUtils.dip2px(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
   }
   
-  public void a(yhi paramyhi, int paramInt)
+  public void a(int paramInt)
   {
-    super.a(paramyhi, paramInt);
-    if ((this.jdField_a_of_type_Ygy != null) && (((yhi)this.jdField_a_of_type_Ygy).c != 0) && (((yhi)this.jdField_a_of_type_Ygy).a != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((yhi)this.jdField_a_of_type_Ygy).c);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((yhi)this.jdField_a_of_type_Ygy).a);
-      this.b.setText(((yhi)this.jdField_a_of_type_Ygy).b);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
+  }
+  
+  public void a(bipw parambipw)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambipw);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+    if (paramInt >= 100) {
+      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.b.setText("");
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
   }
 }
 

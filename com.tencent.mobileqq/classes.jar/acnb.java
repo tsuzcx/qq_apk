@@ -1,24 +1,10 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-public class acnb
-  implements View.OnClickListener
+public abstract interface acnb
 {
-  public acnb(AboutActivity paramAboutActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-    localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivity(localIntent.putExtra("url", AboutActivity.a(this.a)));
-    bcef.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(String paramString, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, long paramLong);
 }
 
 

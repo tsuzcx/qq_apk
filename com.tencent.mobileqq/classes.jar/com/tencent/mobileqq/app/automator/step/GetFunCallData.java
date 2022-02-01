@@ -2,8 +2,9 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import bgqr;
-import bgrc;
+import bibh;
+import bibs;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -14,10 +15,10 @@ public class GetFunCallData
 {
   public int a()
   {
-    long l = bgqr.a(this.a.app, 1, null).getLong("update_time", 0L);
+    long l = bibh.a(this.a.app, 1, null).getLong("update_time", 0L);
     if ((System.currentTimeMillis() - l > 14400000L) || (System.currentTimeMillis() < l))
     {
-      ((bgrc)this.a.app.getBusinessHandler(46)).a(1, new Bundle());
+      ((bibs)this.a.app.getBusinessHandler(BusinessHandlerFactory.FUN_CALL_HANDLER)).a(1, new Bundle());
       if (QLog.isColorLevel()) {
         QLog.d("GetFunCallData", 2, "doStep SUB_CMD_GET_MY_FC.");
       }

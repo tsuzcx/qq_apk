@@ -8,13 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import atum;
+import auzm;
 import java.util.List;
 
 public class MiniAppProfileCardGuestView
   extends LinearLayout
 {
-  private atum adapter;
+  private auzm adapter;
   private ColorStateList attrValue;
   private int colorInt;
   private boolean isTheme;
@@ -45,8 +45,8 @@ public class MiniAppProfileCardGuestView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561341, this, true);
-    this.mRecyclerView = ((RecyclerView)findViewById(2131367282));
+    this.mLayoutInflater.inflate(2131561403, this, true);
+    this.mRecyclerView = ((RecyclerView)findViewById(2131367406));
     this.mRecyclerView.setVisibility(0);
   }
   
@@ -62,7 +62,7 @@ public class MiniAppProfileCardGuestView
     if (this.mRecyclerView != null)
     {
       this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-      this.adapter = new atum(paramList, paramString2, paramString1);
+      this.adapter = new auzm(paramList, paramString2, paramString1);
       this.adapter.b(2062);
       this.mRecyclerView.setAdapter(this.adapter);
     }

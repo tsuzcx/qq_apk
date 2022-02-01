@@ -1,21 +1,13 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class amuw
-  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$Companion;", "", "()V", "STEP_INIT_CMSRES", "", "STEP_INIT_ENGINE", "TAG", "", "getTAG", "()Ljava/lang/String;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amuw
 {
-  public List<String> getRedPointPaths(AppInterface paramAppInterface)
+  @NotNull
+  public final String a()
   {
-    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).getLebaHelper().a()))
-    {
-      paramAppInterface = new ArrayList();
-      paramAppInterface.add("100000");
-      return paramAppInterface;
-    }
-    return null;
+    return amup.a();
   }
 }
 

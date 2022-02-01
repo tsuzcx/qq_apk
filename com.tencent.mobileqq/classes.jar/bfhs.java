@@ -1,47 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
-import java.lang.ref.WeakReference;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfhs
-  extends bfev
+  extends bfht
 {
-  private WeakReference<QQAppInterface> a;
-  private String d;
-  
-  public bfhs(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    super(paramString2, paramString3, paramString4);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.d = paramString1;
-  }
-  
-  public UsingTimeReportManager a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return (UsingTimeReportManager)localQQAppInterface.getManager(241);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {}
+    for (;;)
     {
-      return;
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localObject == null);
-    bcek localbcek = new bcek((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
-    if (this.d != null) {}
-    for (Object localObject = this.d;; localObject = "")
-    {
-      localbcek.a(new String[] { localObject, String.valueOf(paramLong) }).a();
-      return;
+      return null;
+      localTroopFeedItem.type = 99;
+      try
+      {
+        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+        if (paramJSONObject.has("app_id"))
+        {
+          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
+          if ((!vzv.i()) && (localTroopFeedItem.isStoryType()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
+            return null;
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
     }
+    paramJSONObject = paramJSONObject.getJSONObject("content");
+    localTroopFeedItem.content = paramJSONObject.getString("body");
+    localTroopFeedItem.title = paramJSONObject.getString("title");
+    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+    return localTroopFeedItem;
   }
 }
 

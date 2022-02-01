@@ -1,13 +1,10 @@
-public class tru
+public abstract interface tru
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tru
  * JD-Core Version:    0.7.0.1
  */

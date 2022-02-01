@@ -1,15 +1,19 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import org.json.JSONObject;
 
 class bjax
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements DialogInterface.OnClickListener
 {
-  bjax(bjau parambjau, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
+  bjax(bjat parambjat, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, JSONObject paramJSONObject) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bjau);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bjat.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

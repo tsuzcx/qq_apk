@@ -1,79 +1,16 @@
-import com.tencent.mm.vfs.VFSFileInputStream;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcir
+class bcir
+  implements View.OnClickListener
 {
-  public static AbsStructMsg a(String paramString)
-  {
-    paramString = new ByteArrayInputStream(paramString.getBytes());
-    bcio localbcio = new bcio();
-    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-    try
-    {
-      localSAXParserFactory.newSAXParser().parse(paramString, localbcio);
-      paramString.close();
-      paramString = localbcio.a();
-      return paramString;
-    }
-    catch (ParserConfigurationException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-      }
-      return null;
-    }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-  }
+  bcir(bciq parambciq) {}
   
-  public static String a(String paramString)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramString = new VFSFileInputStream(paramString);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramString.read(arrayOfByte, 0, 1024);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return "";
-    }
-    return paramString;
+    bciq.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

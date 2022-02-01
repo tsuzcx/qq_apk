@@ -14,11 +14,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.List;
 import java.util.Set;
-import odq;
-import ofe;
+import olh;
+import omx;
 import org.json.JSONObject;
-import pay;
-import slt;
+import pqw;
+import szd;
 import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
 
 public class ReadInJoyVideoInfoViewGroup
@@ -78,7 +78,7 @@ public class ReadInJoyVideoInfoViewGroup
       i += 1;
       j = k;
       break;
-      Object localObject2 = pay.a(localChannelInfo);
+      Object localObject2 = pqw.a(localChannelInfo);
       k = j;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         continue;
@@ -97,10 +97,10 @@ public class ReadInJoyVideoInfoViewGroup
         if (i != 0) {
           ((LinearLayout.LayoutParams)localObject2).setMargins(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, 0);
         }
-        ((ReadInJoyVideoTopicTextView)localObject1).setId(2131375923);
+        ((ReadInJoyVideoTopicTextView)localObject1).setId(2131376170);
         ((ReadInJoyVideoTopicTextView)localObject1).setTag(localChannelInfo);
-        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter instanceof slt)) {
-          ((ReadInJoyVideoTopicTextView)localObject1).setOnClickListener((slt)this.jdField_a_of_type_AndroidWidgetBaseAdapter);
+        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter instanceof szd)) {
+          ((ReadInJoyVideoTopicTextView)localObject1).setOnClickListener((szd)this.jdField_a_of_type_AndroidWidgetBaseAdapter);
         }
         ((ReadInJoyVideoTopicTextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         addView((View)localObject1);
@@ -123,7 +123,7 @@ public class ReadInJoyVideoInfoViewGroup
         label408:
         for (localObject2 = "0X80088BA";; localObject2 = "0X8007BE5")
         {
-          odq.a(null, "", (String)localObject1, (String)localObject2, 0, 0, "2", "", localChannelInfo.uint32_channel_id.get() + "", ofe.a("", "", "", "", localJSONObject), false);
+          olh.a(null, "", (String)localObject1, (String)localObject2, 0, 0, "2", "", localChannelInfo.uint32_channel_id.get() + "", omx.a("", "", "", "", localJSONObject), false);
           k = j - k;
           break;
           localObject1 = "0X8007BE5";

@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.1;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin.2.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
 public class autu
-  implements aujz
+  implements DialogInterface.OnClickListener
 {
-  autu(auts paramauts) {}
+  public autu(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("IdentificationApiPlugin", 1, "getAppConf error, code : " + paramInt + " errorMsg : " + paramString);
-    if (auts.a(this.a) == null)
-    {
-      QLog.e("IdentificationApiPlugin", 1, "getConfFailed, activity is null");
-      return;
+    if (this.a.c) {
+      bjgx.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false, true);
     }
-    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.2.2(this, paramString));
-  }
-  
-  public void a(FaceDetectForThirdPartyManager.AppConf paramAppConf)
-  {
-    if (auts.a(this.a) == null)
-    {
-      QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.2.1(this, paramAppConf));
+    ForwardSdkBaseOption.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
   }
 }
 

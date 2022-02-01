@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import abem;
+import abty;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjmm;
+import bkxz;
 import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.text.QzoneTextBuilder;
@@ -126,22 +126,22 @@ public class QQCustomDialogWtihInputAndChoose
   
   void initChooseList(Context paramContext)
   {
-    this.mChooseLayout = ((MyLinearLayout)View.inflate(paramContext, 2131559033, null));
-    this.mChooseLayout.findViewById(2131370015).setOnClickListener(this);
+    this.mChooseLayout = ((MyLinearLayout)View.inflate(paramContext, 2131559061, null));
+    this.mChooseLayout.findViewById(2131370186).setOnClickListener(this);
     this.mChooseLayout.setDispatchKeyEventListener(new QQCustomDialogWtihInputAndChoose.4(this));
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368761) {
+    if (paramView.getId() == 2131368920) {
       if (this.mChooseLayout != null)
       {
         if (!this.mIsWindowAdded) {
           break label75;
         }
         hideChooseList();
-        this.mViewInputBtn.setImageResource(2130847214);
-        this.mViewInputBtn.setTag(Integer.valueOf(2130847214));
+        this.mViewInputBtn.setImageResource(2130847312);
+        this.mViewInputBtn.setTag(Integer.valueOf(2130847312));
         this.mHandler.postDelayed(new QQCustomDialogWtihInputAndChoose.5(this), 200L);
       }
     }
@@ -151,28 +151,28 @@ public class QQCustomDialogWtihInputAndChoose
       return;
       label75:
       Object localObject = this.mViewInputBtn.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130847817))
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2130847908))
       {
-        bjmm.a(this.inputView);
-        this.mViewInputBtn.setImageResource(2130847214);
-        this.mViewInputBtn.setTag(Integer.valueOf(2130847214));
+        bkxz.a(this.inputView);
+        this.mViewInputBtn.setImageResource(2130847312);
+        this.mViewInputBtn.setTag(Integer.valueOf(2130847312));
         this.mIsWindowAdded = false;
       }
       else
       {
-        bjmm.b(this.inputView);
-        this.mViewInputBtn.setImageResource(2130847817);
-        this.mViewInputBtn.setTag(Integer.valueOf(2130847817));
+        bkxz.b(this.inputView);
+        this.mViewInputBtn.setImageResource(2130847908);
+        this.mViewInputBtn.setTag(Integer.valueOf(2130847908));
         this.mHandler.postDelayed(new QQCustomDialogWtihInputAndChoose.6(this), 200L);
         continue;
-        if (paramView.getId() == 2131370015)
+        if (paramView.getId() == 2131370186)
         {
           hideChooseList();
         }
         else
         {
           hideChooseList();
-          bjmm.b(this.inputView);
+          bkxz.b(this.inputView);
         }
       }
     }
@@ -184,7 +184,7 @@ public class QQCustomDialogWtihInputAndChoose
       return super.onTouchEvent(paramMotionEvent);
     }
     hideChooseList();
-    bjmm.b(this.inputView);
+    bkxz.b(this.inputView);
     super.onTouchEvent(paramMotionEvent);
     return true;
   }
@@ -196,16 +196,16 @@ public class QQCustomDialogWtihInputAndChoose
     }
     this.chooseList = paramArrayList;
     float f = getContext().getResources().getDisplayMetrics().density;
-    LinearLayout localLinearLayout = (LinearLayout)this.mChooseLayout.findViewById(2131370012);
+    LinearLayout localLinearLayout = (LinearLayout)this.mChooseLayout.findViewById(2131370183);
     localLinearLayout.removeAllViews();
     int i = 0;
     while (i < paramArrayList.size())
     {
-      View localView = View.inflate(getContext(), 2131559034, null);
+      View localView = View.inflate(getContext(), 2131559062, null);
       localView.setTag(Integer.valueOf(i));
       localView.setClickable(true);
       localView.setOnClickListener(this.listItemClickListener);
-      ((TextView)localView.findViewById(2131370011)).setText((CharSequence)paramArrayList.get(i));
+      ((TextView)localView.findViewById(2131370182)).setText((CharSequence)paramArrayList.get(i));
       localLinearLayout.addView(localView, new LinearLayout.LayoutParams(-1, (int)(45.5F * f)));
       i += 1;
     }
@@ -221,18 +221,18 @@ public class QQCustomDialogWtihInputAndChoose
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.mRoot = ((RelativeLayout)findViewById(2131365548));
-    this.inputView = ((EditText)findViewById(2131368750));
-    this.mViewInputBtn = ((ImageView)findViewById(2131368761));
+    this.mRoot = ((RelativeLayout)findViewById(2131365640));
+    this.inputView = ((EditText)findViewById(2131368909));
+    this.mViewInputBtn = ((ImageView)findViewById(2131368920));
     this.mViewInputBtn.setOnClickListener(this);
-    findViewById(2131376867).setOnClickListener(this);
+    findViewById(2131377139).setOnClickListener(this);
     this.inputView.setSingleLine(this.mSingleLine);
     this.inputView.setOnTouchListener(new QQCustomDialogWtihInputAndChoose.1(this));
     Context localContext = (Context)this.softRefContext.get();
     if (localContext == null) {
       return;
     }
-    abem.a(localContext, this.inputView);
+    abty.a(localContext, this.inputView);
     initChooseList(localContext);
   }
   
@@ -261,7 +261,7 @@ public class QQCustomDialogWtihInputAndChoose
   
   public QQCustomDialog setMessage(CharSequence paramCharSequence)
   {
-    TextView localTextView = (TextView)findViewById(2131365528);
+    TextView localTextView = (TextView)findViewById(2131365620);
     if (!TextUtils.isEmpty(paramCharSequence))
     {
       localTextView.setText(paramCharSequence);
@@ -281,7 +281,7 @@ public class QQCustomDialogWtihInputAndChoose
       return this;
     }
     this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691002));
+    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialogWtihInputAndChoose.7(this, paramOnClickListener));
     setSeperatorState();

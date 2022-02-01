@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class aktd
   implements DialogInterface.OnClickListener
 {
-  public aktd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aktd(TransactionActivity paramTransactionActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    xwa.a("video_shoot", "down_now", 0, 0, new String[0]);
-    aupc.b(null);
     paramDialogInterface.dismiss();
   }
 }

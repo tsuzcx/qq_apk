@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.4;
+import com.tencent.nowsummarycard.NowSummaryCard.MiniCard;
+import java.util.List;
 
 public class aryf
-  implements bjqk
+  implements aydl
 {
-  public aryf(QfileFavFileTabView paramQfileFavFileTabView) {}
+  public aryf(MsgBoxListActivity.4 param4) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, List<NowSummaryCard.MiniCard> paramList, String paramString)
   {
-    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
-    {
-      if (!this.a.b()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-      }
+    if ((paramInt == 0) && (paramList != null) && (paramList.size() > 0)) {
+      this.a.this$0.a(this.a.b);
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 

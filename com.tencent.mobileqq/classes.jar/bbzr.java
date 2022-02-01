@@ -1,14 +1,11 @@
-class bbzr
-  implements bbzw
+public class bbzr
 {
-  bbzr(bbzq parambbzq, bbzt parambbzt, String paramString) {}
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bbzt != null) {
-      this.jdField_a_of_type_Bbzt.a(paramInt, bbzq.a(this.jdField_a_of_type_Bbzq, this.jdField_a_of_type_JavaLangString));
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
 }
 
 

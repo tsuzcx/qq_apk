@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageSwitcher;
-import bhip;
+import bitf;
 
 public class ImageSwitcherTouch
   extends ImageSwitcher
@@ -63,7 +63,7 @@ public class ImageSwitcherTouch
   {
     ImageViewTouche localImageViewTouche = (ImageViewTouche)getCurrentView();
     localImageViewTouche.setImageBitmap(paramBitmap);
-    localImageViewTouche.setImageRotateBitmapResetBase(new bhip(paramBitmap, 0), true);
+    localImageViewTouche.setImageRotateBitmapResetBase(new bitf(paramBitmap, 0), true);
   }
 }
 

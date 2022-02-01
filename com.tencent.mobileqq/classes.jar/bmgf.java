@@ -1,17 +1,17 @@
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
 public class bmgf
+  implements View.OnClickListener
 {
-  private HashMap<String, bmgl> a = new HashMap();
+  public bmgf(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public bmgl a(String paramString)
+  public void onClick(View paramView)
   {
-    return (bmgl)this.a.get(paramString);
-  }
-  
-  public void a(String paramString, bmgl parambmgl)
-  {
-    this.a.put(paramString, parambmgl);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -2,9 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import QQService.StreamData;
 import QQService.StreamInfo;
-import abwz;
-import amtj;
-import amwl;
+import acnh;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -12,13 +10,15 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import android.text.format.Time;
-import bbko;
-import bbkz;
-import bbli;
-import bblk;
-import bcef;
-import bcgn;
-import bcmt;
+import anvx;
+import anyz;
+import bcrg;
+import bcrr;
+import bcsa;
+import bcsc;
+import bdla;
+import bdnl;
+import bdtt;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -26,6 +26,7 @@ import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -70,8 +71,8 @@ public class BuddyTransfileProcessor
   public boolean isStop;
   boolean isStreamPttSuccess = false;
   private boolean mOldPttData;
-  private bcmt mSttManager = (bcmt)this.app.getManager(17);
-  amwl messageObserver = new BuddyTransfileProcessor.1(this);
+  private bdtt mSttManager = (bdtt)this.app.getManager(QQManagerFactory.STT_MANAGER);
+  anyz messageObserver = new BuddyTransfileProcessor.1(this);
   private int msgseq;
   private String peerUin;
   long pttTimeStamp = -1L;
@@ -128,7 +129,7 @@ public class BuddyTransfileProcessor
         paramString1 = this.app.getMessageFacade().getMsgItemByUniseq(this.peerUin, 0, paramLong);
         if (paramString1 != null)
         {
-          this.random = bblk.a(paramString1.msgUid);
+          this.random = bcsc.a(paramString1.msgUid);
           this.msgseq = ((int)paramString1.shmsgseq);
         }
         if (QLog.isColorLevel()) {
@@ -531,21 +532,21 @@ public class BuddyTransfileProcessor
     }
   }
   
-  private void handleUploadStreamPttFinished(boolean paramBoolean, bbkz parambbkz)
+  private void handleUploadStreamPttFinished(boolean paramBoolean, bcrr parambcrr)
   {
-    int i = parambbkz.jdField_a_of_type_Short;
-    short s1 = (short)parambbkz.jdField_a_of_type_Int;
-    Object localObject = parambbkz.jdField_a_of_type_JavaLangString;
+    int i = parambcrr.jdField_a_of_type_Short;
+    short s1 = (short)parambcrr.jdField_a_of_type_Int;
+    Object localObject = parambcrr.jdField_a_of_type_JavaLangString;
     if (paramBoolean) {
-      if (parambbkz.b != 0)
+      if (parambcrr.b != 0)
       {
-        this.respCode = parambbkz.b;
+        this.respCode = parambcrr.b;
         updateSendMessageErrorDb(this.friendUin, 0, this.file.uniseq, this.respCode);
         setStepError(2, 9312, "friend_block");
         onError();
-        bcgn.b((String)localObject);
-        bcgn.a((String)localObject);
-        if (parambbkz.b == 58) {
+        bdnl.b((String)localObject);
+        bdnl.a((String)localObject);
+        if (parambcrr.b == 58) {
           insertFriendShieldTips();
         }
         if (QLog.isColorLevel()) {
@@ -572,21 +573,21 @@ public class BuddyTransfileProcessor
               {
                 this.isStreamPttSuccess = true;
                 setStepFinishTime(2);
-                this.file.stepTrans.extraInfo.put("param_sliceNum", String.valueOf(bcgn.b((String)localObject)));
+                this.file.stepTrans.extraInfo.put("param_sliceNum", String.valueOf(bdnl.b((String)localObject)));
                 this.file.fileSize = new File(this.file.filePath).length();
-                bcgn.a((String)localObject);
-                this.file.serverPath = parambbkz.jdField_a_of_type_QQServiceStreamInfo.fileKey;
-                if (parambbkz.jdField_a_of_type_QQServiceStreamInfo.pttTransFlag == 1) {}
+                bdnl.a((String)localObject);
+                this.file.serverPath = parambcrr.jdField_a_of_type_QQServiceStreamInfo.fileKey;
+                if (parambcrr.jdField_a_of_type_QQServiceStreamInfo.pttTransFlag == 1) {}
                 for (s2 = 1;; s2 = 0)
                 {
                   this.streamPttFlag = s2;
-                  this.pttTimeStamp = parambbkz.jdField_a_of_type_QQServiceStreamInfo.msgTime;
+                  this.pttTimeStamp = parambcrr.jdField_a_of_type_QQServiceStreamInfo.msgTime;
                   onSuccess();
                   return;
                 }
               }
             } while (this.isStreamPttSuccess);
-            s2 = bcgn.a((String)localObject);
+            s2 = bdnl.a((String)localObject);
             if (s2 > 10)
             {
               if (QLog.isColorLevel()) {
@@ -594,33 +595,33 @@ public class BuddyTransfileProcessor
               }
               setStepError(2, 9310, "retry overflow");
               onError();
-              bcgn.b((String)localObject);
-              bcgn.a((String)localObject);
+              bdnl.b((String)localObject);
+              bdnl.a((String)localObject);
               return;
             }
-            k = bcgn.c((String)localObject);
-            int m = bcgn.b((String)localObject);
+            k = bdnl.c((String)localObject);
+            int m = bdnl.b((String)localObject);
             this.severAckSlice = i;
             if (QLog.isColorLevel()) {
               QLog.d("streamptt.send", 2, "server reset.ResetSeq: " + i + " packnum: " + m + ",slices:" + k + " uniseq:" + this.file.uniseq + ",flowLayer:" + s1 + ",prelayer:" + s2);
             }
           } while (s2 >= s1);
-          bcgn.a((String)localObject, s1);
-          parambbkz = this.app.getMessageFacade().getMsgItemByUniseq(this.friendUin, 0, this.file.uniseq);
+          bdnl.a((String)localObject, s1);
+          parambcrr = this.app.getMessageFacade().getMsgItemByUniseq(this.friendUin, 0, this.file.uniseq);
           l = 0L;
           localObject = new Bundle();
-          if (parambbkz != null)
+          if (parambcrr != null)
           {
-            l = parambbkz.vipSubBubbleId;
-            ((Bundle)localObject).putInt("DiyTextId", parambbkz.vipBubbleDiyTextId);
+            l = parambcrr.vipSubBubbleId;
+            ((Bundle)localObject).putInt("DiyTextId", parambcrr.vipBubbleDiyTextId);
           }
           startSendRangeStreamPack(true, i, (short)k, l, (Bundle)localObject);
           this.file.logEvent(2, 2);
           return;
         } while (this.isStreamPttSuccess);
-        j = bcgn.c((String)localObject);
-        k = bcgn.a((String)localObject);
-        if (parambbkz.jdField_a_of_type_Int >= k) {
+        j = bdnl.c((String)localObject);
+        k = bdnl.a((String)localObject);
+        if (parambcrr.jdField_a_of_type_Int >= k) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -635,20 +636,20 @@ public class BuddyTransfileProcessor
           if (QLog.isColorLevel()) {
             QLog.d("streamptt.send", 2, "client check timeout.retry:severAckSlice:" + this.severAckSlice + " packnum: " + j + " maxSendSeq:" + this.sendSeqMax + " uniseq:" + this.file.uniseq + ",retryCount:" + this.streamPttTimeoutRetryCount + ",flowLayer:" + k);
           }
-          parambbkz = this.app.getMessageFacade().getMsgItemByUniseq(this.friendUin, 0, this.file.uniseq);
+          parambcrr = this.app.getMessageFacade().getMsgItemByUniseq(this.friendUin, 0, this.file.uniseq);
           l = 0L;
           localObject = new Bundle();
-          if (parambbkz != null)
+          if (parambcrr != null)
           {
-            l = parambbkz.vipSubBubbleId;
-            ((Bundle)localObject).putInt("DiyTextId", parambbkz.vipBubbleDiyTextId);
+            l = parambcrr.vipSubBubbleId;
+            ((Bundle)localObject).putInt("DiyTextId", parambcrr.vipBubbleDiyTextId);
           }
           startSendRangeStreamPack(true, (short)this.severAckSlice, (short)j, l, (Bundle)localObject);
           return;
         }
         setStepError(2, 9310, "timeout");
         onError();
-        bcgn.a((String)localObject);
+        bdnl.a((String)localObject);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -658,9 +659,9 @@ public class BuddyTransfileProcessor
   private void insertFriendShieldTips()
   {
     String str1 = this.app.getCurrentAccountUin();
-    String str2 = amtj.a(2131700371);
-    long l = bbko.a();
-    MessageRecord localMessageRecord = bbli.a(-2012);
+    String str2 = anvx.a(2131700722);
+    long l = bcrg.a();
+    MessageRecord localMessageRecord = bcsa.a(-2012);
     localMessageRecord.init(str1, this.friendUin, str1, str2, l, 0, 0, l);
     localMessageRecord.msgtype = -2012;
     localMessageRecord.isread = true;
@@ -681,7 +682,7 @@ public class BuddyTransfileProcessor
   {
     Object localObject1 = new byte[3];
     PkgTools.intToAscString(this.file.serverPath.length(), (byte[])localObject1, 0, 3, "utf-8");
-    localObject1 = (MessageForPtt)bbli.a(-2002);
+    localObject1 = (MessageForPtt)bcsa.a(-2002);
     ((MessageForPtt)localObject1).voiceType = ((int)paramStreamInfo.pttFormat);
     ((MessageForPtt)localObject1).voiceLength = ((int)paramStreamInfo.pttTime);
     if (QLog.isColorLevel()) {
@@ -702,12 +703,12 @@ public class BuddyTransfileProcessor
     if (((File)localObject2).exists())
     {
       ((MessageForPtt)localObject1).fileSize = ((File)localObject2).length();
-      bcef.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "8.4.8");
+      bdla.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "8.4.10");
       ((MessageForPtt)localObject1).itemType = 2;
       ((MessageForPtt)localObject1).isread = false;
       ((MessageForPtt)localObject1).shmsgseq = ((short)paramStreamInfo.msgSeq);
-      ((MessageForPtt)localObject1).msgUid = bblk.a((int)paramStreamInfo.random);
-      if ((paramStreamInfo.pttTransFlag != 1) && (!bcmt.a(this.app))) {
+      ((MessageForPtt)localObject1).msgUid = bcsc.a((int)paramStreamInfo.random);
+      if ((paramStreamInfo.pttTransFlag != 1) && (!bdtt.a(this.app))) {
         break label754;
       }
       i = 1;
@@ -722,7 +723,7 @@ public class BuddyTransfileProcessor
     label760:
     for (paramStreamInfo = this.selfUin;; paramStreamInfo = this.friendUin)
     {
-      ((MessageForPtt)localObject1).longPttVipFlag = bblk.a((QQAppInterface)localObject2, paramStreamInfo);
+      ((MessageForPtt)localObject1).longPttVipFlag = bcsc.a((QQAppInterface)localObject2, paramStreamInfo);
       long l1 = System.currentTimeMillis() / 1000L;
       long l2 = ((MessageForPtt)localObject1).time;
       ((MessageForPtt)localObject1).msgRecTime = l1;
@@ -759,13 +760,13 @@ public class BuddyTransfileProcessor
         if (!paramStreamInfo.hasNext()) {
           break;
         }
-      } while (!abwz.a((MessageRecord)paramStreamInfo.next(), (MessageRecord)localObject1, true));
+      } while (!acnh.a((MessageRecord)paramStreamInfo.next(), (MessageRecord)localObject1, true));
       if (QLog.isColorLevel()) {
         QLog.w("streamptt", 2, "same Ptt :" + ((MessageForPtt)localObject1).getBaseInfoString());
       }
       return null;
       ((MessageForPtt)localObject1).fileSize = 1000L;
-      bcef.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "8.4.8");
+      bdla.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "8.4.10");
       break;
       i = 0;
       break label318;
@@ -946,26 +947,26 @@ public class BuddyTransfileProcessor
               setError(9040, "no enough storage");
             }
           }
-          i = bcgn.a(this.file.serverPath);
+          i = bdnl.a(this.file.serverPath);
           if (QLog.isColorLevel()) {
             QLog.d("streamptt.recv", 2, "curFlowLayer: " + i + " received shFlowLayer:" + paramStreamInfo.shFlowLayer + ",seq" + paramStreamData.shPackSeq + ",packNum:" + paramStreamInfo.shPackNum + " lkey:" + paramLong1);
           }
           this.app.sendAppDataIncerment(this.app.getAccount(), false, NetworkUtil.getNetworkType(this.app.getApp()), 2, 0, paramStreamData.vData.length);
-          bcgn.c(this.file.serverPath, paramLong1);
+          bdnl.c(this.file.serverPath, paramLong1);
           if (i != paramStreamInfo.shFlowLayer)
           {
-            this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, bcgn.c(this.file.serverPath), paramLong1);
+            this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, bdnl.c(this.file.serverPath), paramLong1);
             return;
           }
-          if (bcgn.a(this.file.serverPath, paramStreamData.shPackSeq))
+          if (bdnl.a(this.file.serverPath, paramStreamData.shPackSeq))
           {
             this.file.logEvent(2, 2);
-            short s = (short)(bcgn.a(this.file.serverPath) + 1);
-            bcgn.a(this.file.serverPath, s);
+            short s = (short)(bdnl.a(this.file.serverPath) + 1);
+            bdnl.a(this.file.serverPath, s);
             if (QLog.isColorLevel()) {
               QLog.d("streamptt.recv", 2, "startReceiveOneStreamPack JudgeReceiveError flowLayer: " + s);
             }
-            this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, bcgn.c(this.file.serverPath), paramLong1);
+            this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, bdnl.c(this.file.serverPath), paramLong1);
             return;
           }
           if (paramStreamInfo.oprType == 1) {}
@@ -975,16 +976,16 @@ public class BuddyTransfileProcessor
               QLog.d("streamptt.recv", 2, "cancelled:" + this.file.serverPath);
             }
             this.app.getTransFileController().stopReceiveStreamPtt(this.friendUin, this.file.serverPath, this.file.uniseq);
-            bcgn.a(this.file.serverPath, true);
-            bcgn.a(this.file.serverPath);
+            bdnl.a(this.file.serverPath, true);
+            bdnl.a(this.file.serverPath);
             return;
           }
-          bcgn.a(this.file.serverPath, paramStreamInfo.shFlowLayer);
-          bcgn.a(this.file.serverPath, paramStreamData.vData, paramStreamData.vData.length, paramStreamData.shPackSeq);
+          bdnl.a(this.file.serverPath, paramStreamInfo.shFlowLayer);
+          bdnl.a(this.file.serverPath, paramStreamData.vData, paramStreamData.vData.length, paramStreamData.shPackSeq);
         } while (paramStreamInfo.shPackNum <= 0);
         this.app.getTransFileController().stopReceiveStreamPtt(this.friendUin, this.file.serverPath, this.file.uniseq);
-        bcgn.a(this.file.serverPath, false);
-        bcgn.a(this.file.serverPath);
+        bdnl.a(this.file.serverPath, false);
+        bdnl.a(this.file.serverPath);
         paramStreamData = this.selfUin + "_" + this.peerUin + "_" + paramStreamInfo.iMsgId;
         if (!streamStreamDuplicateList.contains(paramStreamData)) {
           break;
@@ -999,13 +1000,13 @@ public class BuddyTransfileProcessor
       if (QLog.isColorLevel()) {
         QLog.d("streamptt.recv", 2, "stream duplicateKey:" + paramStreamData);
       }
-      if (!bcgn.e(paramStreamData)) {
+      if (!bdnl.e(paramStreamData)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("streamptt.recv", 2, "find stream offline duplicate,stop stream recv");
     return;
-    bcgn.c(paramStreamData);
+    bdnl.c(paramStreamData);
     setStepFinishTime(2);
     if (QLog.isColorLevel()) {
       QLog.d("streamptt.recv", 2, "startReceiveOneStreamPack received success path: " + this.file.serverPath);
@@ -1095,14 +1096,14 @@ public class BuddyTransfileProcessor
           }
           localMessageForPtt.isread = paramBoolean;
           localMessageForPtt.urlAtServer = this.file.serverPath;
-          if (bcmt.a(this.app))
+          if (bdtt.a(this.app))
           {
             localMessageForPtt.sttAbility = 1;
             QQAppInterface localQQAppInterface = this.app;
             if (localMessageForPtt.isSend())
             {
               Object localObject = this.selfUin;
-              localMessageForPtt.longPttVipFlag = bblk.a(localQQAppInterface, (String)localObject);
+              localMessageForPtt.longPttVipFlag = bcsc.a(localQQAppInterface, (String)localObject);
               localMessageForPtt.serial();
               if (QLog.isColorLevel()) {
                 QLog.e("streamptt.send", 2, "Stream ptt:updataMessageDataBaseContent:time" + localMessageForPtt.time + " urlAtServer:" + localMessageForPtt.urlAtServer);

@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ayey
-  extends ayfa
+class ayey
+  implements DialogInterface.OnClickListener
 {
-  ayey(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
+  ayey(ayek paramayek) {}
   
-  protected int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 80;
-  }
-  
-  protected final int[] a()
-  {
-    if (this.a.g == 2) {
-      return null;
-    }
-    int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = 2560;
-    arrayOfInt[1] = (arrayOfInt[0] * 2);
-    ayde.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
-    return arrayOfInt;
+    paramDialogInterface.dismiss();
   }
 }
 

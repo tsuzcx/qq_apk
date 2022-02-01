@@ -1,104 +1,96 @@
-import android.support.annotation.NonNull;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
-import java.util.LinkedList;
+import android.arch.lifecycle.MutableLiveData;
+import android.os.Bundle;
+import com.tencent.ttpic.util.GsonUtils;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectGroupItem;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean.FilterID;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class boag
-  extends GPUBaseFilter
+class boag
+  implements EIPCResultCallback
 {
-  private float jdField_a_of_type_Float;
-  private boad jdField_a_of_type_Boad;
-  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boad b;
+  boag(boaf paramboaf) {}
   
-  private void a(@NonNull Runnable paramRunnable)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
-      return;
-    }
-  }
-  
-  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
-  {
+    bnrh.a(boaf.a(this.a), "ipc result.");
+    paramEIPCResult = paramEIPCResult.data.getString("effect_group_json_path");
+    Object localObject1;
+    ArrayList localArrayList;
+    label239:
+    Object localObject2;
     try
     {
-      while (!paramLinkedList.isEmpty())
+      paramEIPCResult = (AEEditorEffectGroupListBean)bnut.a(paramEIPCResult);
+      if ((paramEIPCResult != null) && (paramEIPCResult.effectGroups != null))
       {
-        Runnable localRunnable = (Runnable)paramLinkedList.poll();
-        if (localRunnable != null) {
-          localRunnable.run();
-        }
+        localObject1 = paramEIPCResult;
+        if (paramEIPCResult.effectGroups.size() >= 1) {}
+      }
+      else
+      {
+        bnrh.b(boaf.c(this.a), "use local effect data.");
+        localObject1 = (AEEditorEffectGroupListBean)GsonUtils.json2Obj(boaf.a(this.a, "camera/ae_camera_editor_display_effects.json"), new boah(this).getType());
+      }
+      if ((localObject1 == null) || (((AEEditorEffectGroupListBean)localObject1).effectGroups == null) || (((AEEditorEffectGroupListBean)localObject1).effectGroups.size() <= 0))
+      {
+        bnrh.d(boaf.d(this.a), "effect list is empty.");
+        return;
       }
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_JavaUtilLinkedList);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
-  {
-    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!boab.a(paramInt1)) {
-      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
-    }
-    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boad != null) || (this.b != null);
-  }
-  
-  public void destroy()
-  {
-    if (this.jdField_a_of_type_Boad != null) {
-      this.jdField_a_of_type_Boad.destroy();
-    }
-    if (this.b != null) {
-      this.b.destroy();
-    }
-  }
-  
-  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (!a())
+    catch (Exception paramEIPCResult)
     {
-      xvv.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
+      for (;;)
+      {
+        bnrh.d(boaf.b(this.a), "parse online config error e: " + paramEIPCResult.toString());
+        paramEIPCResult = null;
+      }
+      localArrayList = new ArrayList();
+      paramEIPCResult = ((AEEditorEffectGroupListBean)localObject1).effectGroups.iterator();
+      while (paramEIPCResult.hasNext())
+      {
+        localObject1 = (AEEditorEffectGroupListBean.AEEditorEffectGroupItem)paramEIPCResult.next();
+        if ((localObject1 != null) && (((AEEditorEffectGroupListBean.AEEditorEffectGroupItem)localObject1).effects != null) && (((AEEditorEffectGroupListBean.AEEditorEffectGroupItem)localObject1).effects.size() > 0))
+        {
+          localObject1 = ((AEEditorEffectGroupListBean.AEEditorEffectGroupItem)localObject1).effects.iterator();
+          AEEditorFilterBean localAEEditorFilterBean;
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (AEEditorEffectGroupListBean.AEEditorEffectItem)((Iterator)localObject1).next();
+            localAEEditorFilterBean = new AEEditorFilterBean();
+            localAEEditorFilterBean.setEffectId(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getEffectID());
+            localAEEditorFilterBean.setName(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getEffectName());
+            localAEEditorFilterBean.setPicUrl(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getThumbURL());
+            localAEEditorFilterBean.setEditorEffectItem((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2);
+            if (!"network".equals(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getEffectType())) {
+              break label348;
+            }
+          }
+          label348:
+          for (localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.NETWORK;; localAEEditorFilterBean.type = AEEditorFilterBean.FilterID.CLIENT)
+          {
+            localAEEditorFilterBean.setUploadMaxSize(((AEEditorEffectGroupListBean.AEEditorEffectItem)localObject2).getUploadMaxSize());
+            localArrayList.add(localAEEditorFilterBean);
+            break label239;
+            break;
+          }
+        }
+      }
+      localObject1 = boaf.e(this.a);
+      localObject2 = new StringBuilder().append("setupDisplayFilterList---filters size = ");
+      if (!localArrayList.isEmpty()) {}
+    }
+    for (paramEIPCResult = "null";; paramEIPCResult = Integer.valueOf(localArrayList.size()))
+    {
+      bnrh.b((String)localObject1, paramEIPCResult);
+      this.a.a().postValue(localArrayList);
       return;
-    }
-    if (this.jdField_a_of_type_Boad != null) {
-      this.jdField_a_of_type_Boad.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
-    }
-    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
-  }
-  
-  public void init()
-  {
-    if ((this.jdField_a_of_type_Boad != null) && (!this.jdField_a_of_type_Boad.isInitialized())) {
-      this.jdField_a_of_type_Boad.init();
-    }
-    if ((this.b != null) && (!this.b.isInitialized())) {
-      this.b.init();
-    }
-  }
-  
-  public void onOutputSizeChanged(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Boad != null) {
-      this.jdField_a_of_type_Boad.onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    if (this.b != null) {
-      this.b.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
 }

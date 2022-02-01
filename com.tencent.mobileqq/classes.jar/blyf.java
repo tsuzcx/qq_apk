@@ -1,27 +1,19 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class blyf
-  extends RecyclerView.ItemDecoration
+  implements DialogInterface.OnClickListener
 {
   blyf(blyb paramblyb) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
-    int j = (int)(DeviceUtils.getScreenWidth(blyb.a(this.a)) * 0.04F);
-    paramRect.left = (j - i * j / 2);
-    paramRect.right = ((i + 1) * j / 2);
-    paramRect.bottom = j;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyf
  * JD-Core Version:    0.7.0.1
  */

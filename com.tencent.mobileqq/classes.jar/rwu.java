@@ -1,26 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.dataline.util.widget.AsyncImageView;
+import java.net.URL;
 
 public class rwu
-  implements ValueAnimator.AnimatorUpdateListener
+  extends rwr
 {
-  private rwu(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  public TextView a;
+  public View b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rwu(rwq paramrwq, ViewGroup paramViewGroup, int paramInt)
   {
-    if (VideoFeedsGuideView.a(this.a) == 1)
+    super(paramrwq, paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379895));
+    this.jdField_b_of_type_AndroidViewView = a(2131380451);
+  }
+  
+  protected URL a(String paramString)
+  {
+    return AsyncImageView.a(paramString, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight(), false);
+  }
+  
+  public void a(int paramInt, rsv paramrsv)
+  {
+    super.a(paramInt, paramrsv);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(pjr.a((int)(paramrsv.d / 1000L)));
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    if (paramBoolean)
     {
-      VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.b(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.c(this.a));
-    }
-    for (;;)
-    {
-      this.a.invalidate();
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       return;
-      VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.d(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.d(this.a));
     }
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

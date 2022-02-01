@@ -1,27 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Map;
-import java.util.UUID;
+import android.os.Handler;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 class begk
-  extends zrz
+  extends befm
 {
-  begk(begj parambegj) {}
+  begk(begb parambegb) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    do
-    {
-      do
+    ??? = this.a;
+    ???.jdField_a_of_type_Int -= 1;
+    if ((paramBoolean1) && (paramInt1 == 0)) {
+      for (;;)
       {
-        return;
-        paramBundle = paramBundle.getString("itemKey");
-      } while (paramBundle == null);
-      paramBundle = UUID.fromString(paramBundle);
-      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
-    } while (paramBundle == null);
-    begj.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.a.jdField_a_of_type_JavaUtilList != null)
+          {
+            this.a.jdField_a_of_type_JavaUtilList.clear();
+            this.a.c = paramInt2;
+            this.a.e = paramBoolean2;
+            if (paramList == null) {
+              break;
+            }
+            this.a.jdField_b_of_type_Int = paramList.size();
+          }
+        }
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+          return;
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          continue;
+          paramList = finally;
+          throw paramList;
+        }
+      }
+    }
+    if (this.a.jdField_b_of_type_Boolean) {}
+    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+      return;
+    }
   }
 }
 

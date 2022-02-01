@@ -1,38 +1,35 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder.ChatVideoView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfoExt;
 import com.tencent.qphone.base.util.QLog;
 
-public class aghp
-  extends aezf
+class aghp
+  extends aofu
 {
-  public ImageView a;
-  public TextView a;
-  public LightVideoItemBuilder.ChatVideoView a;
-  public MessageProgressView a;
-  public TextView b;
+  aghp(agho paramagho) {}
   
-  public aghp(LightVideoItemBuilder paramLightVideoItemBuilder) {}
-  
-  public void a()
+  protected void onGetTroopInfoExtComplete(boolean paramBoolean, String paramString, TroopInfoExt paramTroopInfoExt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LightVideoItemBuilder", 2, String.format("onScrollOutScreen but not recycle, message:%d is playing", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) }));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("FansTroopTipsBarHelper", 2, new Object[] { "onGetTroopInfoExtComplete. ", Boolean.valueOf(paramBoolean), "troopUin=", paramString });
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getStatus() != 1) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable() instanceof QQLiveDrawable))) {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (agho.a(this.a) == null)) {}
+    while ((!TextUtils.equals(paramString, agho.a(this.a).curFriendUin)) || (!bghc.a(agho.a(this.a), paramString, paramTroopInfoExt))) {
       return;
     }
+    this.a.a();
+  }
+  
+  protected void onTroopClassExtChanged(boolean paramBoolean, String paramString, long paramLong)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("LightVideoItemBuilder", 2, "onScrollOutScreen(): recyleAndKeepPostion ");
+      QLog.d("FansTroopTipsBarHelper", 2, new Object[] { "onChangeGroupClassExt.", Boolean.valueOf(paramBoolean), " oldClassExt=", Long.valueOf(paramLong) });
     }
-    ((QQLiveDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable()).recyleAndKeepPostion();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((agho.a(this.a) == null) || (!TextUtils.equals(paramString, agho.a(this.a).curFriendUin))) {
+      return;
+    }
+    this.a.a();
   }
 }
 

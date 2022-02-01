@@ -1,6 +1,33 @@
-public abstract interface bekp
+import com.tencent.TMG.utils.QLog;
+import java.util.Observable;
+
+public class bekp
+  extends Observable
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  private boolean a;
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClockAnimController", 0, "notifyAnimChanged : nEventId = " + paramInt);
+    }
+    if (paramInt == 1) {
+      this.a = true;
+    }
+    if (paramInt == 4) {
+      this.a = false;
+    }
+    setChanged();
+    notifyObservers(Integer.valueOf(paramInt));
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClockAnimController", 0, "isPlayAnim : isPlayAnim = " + this.a);
+    }
+    return this.a;
+  }
 }
 
 

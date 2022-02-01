@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
 
-class arvi
-  implements aszj
+public abstract interface arvi
 {
-  arvi(arvh paramarvh) {}
-  
-  public void onNo()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
-  
-  public void onYes()
-  {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
+  public abstract void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg);
 }
 
 

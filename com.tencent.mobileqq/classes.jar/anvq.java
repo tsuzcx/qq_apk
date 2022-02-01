@@ -1,18 +1,46 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
-class anvq
+public class anvq
+  extends AbsDownloader
 {
-  long jdField_a_of_type_Long;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = paramDownloadParams.getHeader("funnypic_type");
+    if (paramURLDrawableHandler != null)
+    {
+      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
+      float f = paramDownloadParams.mGifRoundCorner;
+      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (Integer.valueOf(paramURLDrawableHandler).intValue() == 2)) {
+        return new bhnu(paramFile, true, f, 3);
+      }
+    }
+    return null;
+  }
   
-  anvq(anvl paramanvl) {}
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
+    {
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = AppConstants.SDCARD_IMG_FAVORITE;
+      paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
+      }
+      if (bhyq.a(new bhyo(paramOutputStream, paramDownloadParams), null) == 0) {
+        return paramDownloadParams;
+      }
+    }
+    return null;
+  }
 }
 
 

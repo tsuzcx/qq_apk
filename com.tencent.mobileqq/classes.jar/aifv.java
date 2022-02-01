@@ -1,10 +1,35 @@
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aifv
-  extends aiec
+class aifv
+  implements View.OnClickListener
 {
-  public long a;
-  public structmsg.StructMsg a;
+  aifv(aift paramaift) {}
+  
+  public void onClick(View paramView)
+  {
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    int i;
+    switch (this.a.sessionInfo.curType)
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      bdla.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
+      aftr.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+    }
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package cooperation.qzone.widget;
 
-import amtj;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import common.config.service.QzoneConfig;
@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 
 public class QzoneEmotionUtils
 {
-  public static final String EMO_GIRL = amtj.a(2131710863);
-  public static final String EMO_MONEY = amtj.a(2131710860);
+  public static final String EMO_GIRL = anvx.a(2131711210);
+  public static final String EMO_MONEY = anvx.a(2131711207);
   public static final String EMO_PREFIX = "[em]";
   public static final String EMO_TAIL = "[/em]";
   public static final String SIGN_ICON_URL_END = ".gif";

@@ -1,21 +1,28 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import java.util.List;
 
 public class ajzm
-  implements AnimationView.MyAnimationListener
+  implements bkzq
 {
-  public ajzm(ThemeHbFragment paramThemeHbFragment) {}
+  public ajzm(MainFragment paramMainFragment, List paramList, bkzi parambkzi) {}
   
-  public void onAnimationEnd(AnimationView paramAnimationView) {}
-  
-  public void onAnimationRepeat(AnimationView paramAnimationView) {}
-  
-  public void onAnimationStart(AnimationView paramAnimationView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment.f();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
+    }
+    try
+    {
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (ajzs)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }

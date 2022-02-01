@@ -1,6 +1,30 @@
-public abstract interface azcg
+import android.util.SparseArray;
+import android.view.View;
+
+public class azcg
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  private SparseArray<View> a = new SparseArray();
+  
+  public View a(int paramInt)
+  {
+    if (this.a.size() > 0)
+    {
+      View localView = (View)this.a.get(paramInt);
+      if (localView != null) {
+        this.a.remove(paramInt);
+      }
+      return localView;
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.put(paramInt, paramView);
+  }
 }
 
 

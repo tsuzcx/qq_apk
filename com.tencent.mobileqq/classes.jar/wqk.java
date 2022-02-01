@@ -1,125 +1,92 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wqk
-  extends ysg
-  implements View.OnClickListener
+  extends whv
 {
-  public static final String KEY = "PlayerDoubleTabSegment";
-  private int jdField_a_of_type_Int = 1;
-  private wpu jdField_a_of_type_Wpu;
-  private xhh jdField_a_of_type_Xhh;
-  private xsh jdField_a_of_type_Xsh;
+  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public wqk(Context paramContext)
+  public wqk(wqi paramwqi, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
   {
-    super(paramContext);
+    super(paramRspGetGroupHotRankVideo.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private void a(TextView paramTextView, boolean paramBoolean)
+  public wqk(wqi paramwqi, boolean paramBoolean)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_Wqi;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
+    wql localwql;
+    for (boolean bool = true;; bool = false)
     {
-      if (QQStoryContext.a()) {
-        paramTextView.setBackgroundResource(2130846384);
+      ((wqi)localObject).jdField_a_of_type_Boolean = bool;
+      wqi.a(this.jdField_a_of_type_Wqi, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
+      wqi.a(this.jdField_a_of_type_Wqi, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
+      localObject = new ArrayList();
+      localwql = new wql();
+      localwql.jdField_a_of_type_Boolean = this.jdField_a_of_type_Wqi.jdField_a_of_type_Boolean;
+      localwql.b = this.jdField_a_of_type_Boolean;
+      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
+        break label203;
       }
-      for (;;)
-      {
-        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166484));
-        return;
-        paramTextView.setBackgroundResource(2130846383);
+      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
+      while (localIterator.hasNext()) {
+        ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
       }
     }
-    paramTextView.setBackgroundResource(0);
-    if (QQStoryContext.a())
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166497));
+      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localwql), 5, null, true);
       return;
+      label203:
+      ykq.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
     }
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166485));
+    localwql.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    wad.a().dispatch(localwql);
   }
   
-  public int a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Xhh != null) && (this.jdField_a_of_type_Xhh.b())) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (TextView)paramxsh.a(2131377806);
-    TextView localTextView = (TextView)paramxsh.a(2131377805);
-    if (QQStoryContext.a())
-    {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166495));
-      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166495));
-      paramxsh.a(2131374344).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166497));
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      a(paramViewGroup, true);
-      a(localTextView, false);
-    }
-    for (;;)
-    {
-      return paramxsh.a();
-      a(paramViewGroup, false);
-      a(localTextView, true);
+    paramBundle = new wql();
+    paramBundle.c = true;
+    wad.a().dispatch(paramBundle);
+    QQToast.a(BaseApplication.getContext(), 1, anvx.a(2131704736), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
     }
   }
   
-  public String a()
+  public void a(int paramInt, String paramString)
   {
-    return "PlayerDoubleTabSegment";
-  }
-  
-  public xsh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Xsh = new xsh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561578, paramViewGroup, false));
-    paramViewGroup = (TextView)this.jdField_a_of_type_Xsh.a(2131377806);
-    TextView localTextView = (TextView)this.jdField_a_of_type_Xsh.a(2131377805);
-    paramViewGroup.setOnClickListener(this);
-    localTextView.setOnClickListener(this);
-    return this.jdField_a_of_type_Xsh;
-  }
-  
-  public void a(wpu paramwpu)
-  {
-    this.jdField_a_of_type_Wpu = paramwpu;
-  }
-  
-  public void a(xhh paramxhh)
-  {
-    this.jdField_a_of_type_Xhh = paramxhh;
-    if (this.jdField_a_of_type_Xhh.a()) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Wpu.a();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Wpu.a(1);
-      xwa.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", xwa.a(4444), this.jdField_a_of_type_Xhh.a.feedId });
-      continue;
-      this.jdField_a_of_type_Wpu.a(2);
-      xwa.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", xwa.a(4444), this.jdField_a_of_type_Xhh.a.feedId });
+    wql localwql = new wql();
+    localwql.c = true;
+    wad.a().dispatch(localwql);
+    QQToast.a(BaseApplication.getContext(), 1, anvx.a(2131704735), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
     }
   }
 }

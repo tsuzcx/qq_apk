@@ -1,28 +1,34 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amja;
-import ammz;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import bgve;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import amlo;
+import amod;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.filament.CmShowAssetsData;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 class ApolloJsPlugin$6
-  implements DialogInterface.OnClickListener
+  implements amod
 {
-  ApolloJsPlugin$6(ApolloJsPlugin paramApolloJsPlugin, int paramInt1, int paramInt2, Activity paramActivity) {}
+  ApolloJsPlugin$6(ApolloJsPlugin paramApolloJsPlugin, Map paramMap, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetApolloDressInfo(HashMap<Integer, String> paramHashMap, String paramString, int paramInt)
   {
-    paramDialogInterface = new ammz();
-    paramDialogInterface.a = this.val$gameId;
-    paramDialogInterface.c = this.val$gameMode;
-    amja.a(paramDialogInterface, this.this$0.mRuntime.a(), 2);
-    if ((this.val$activity instanceof BaseActivity)) {
-      VipUtils.a(((BaseActivity)this.val$activity).getAppInterface(), "cmshow", "Apollo", "game_alert_join", 3, 0, new String[0]);
+    QLog.i("ApolloJsPlugin", 1, "[handleCmShowInit3DAvatar] onGetApolloDressInfo: " + paramHashMap + ", errMsg: " + paramString);
+    paramString = new CmShowAssetsData();
+    if (paramHashMap != null)
+    {
+      Iterator localIterator = this.val$dressMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        paramString.dressResMap.put(localEntry.getValue(), paramHashMap.get(localEntry.getKey()));
+      }
     }
+    amlo.a(this.val$faceDataUrl, new ApolloJsPlugin.6.1(this, paramString));
   }
 }
 

@@ -1,25 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedChannel;
+import com.tencent.qqinterface.CommonCallback;
 
-public class avvp
-  implements bhle
+class avvp
+  implements CustomizedChannel
 {
-  public avvp(MsgBackupQRFragment paramMsgBackupQRFragment) {}
+  avvp(avux paramavux) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void onSendTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
-    }
-    avtq.a().d();
-    this.a.onBackEvent();
-    avwr.a("0X800A242", 4);
+    avvz.a().a(paramBundle, paramCommonCallback);
   }
 }
 

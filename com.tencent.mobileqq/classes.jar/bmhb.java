@@ -1,15 +1,25 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bmhb
+class bmhb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bmhb(bmha parambmha) {}
   
-  public abstract void a(CMTime paramCMTime);
-  
-  public abstract void a(CMTimeRange paramCMTimeRange);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (bmha.a(this.a))
+    {
+      if (bmha.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bmha.a(this.a) != null) {
+        bmha.a(this.a).onClick(paramView);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

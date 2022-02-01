@@ -1,6 +1,23 @@
-public abstract interface tcd
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+
+public class tcd
+  implements Animator.AnimatorListener
 {
-  public abstract void a(boolean paramBoolean);
+  public tcd(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

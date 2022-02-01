@@ -1,10 +1,23 @@
-import com.tencent.image.URLImageView;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class attb
+  extends BroadcastReceiver
 {
-  public URLImageView a;
+  public attb(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public attb(atsz paramatsz) {}
+  @TargetApi(5)
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

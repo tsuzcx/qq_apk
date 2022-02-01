@@ -1,26 +1,16 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class zlu
-  implements WXShareHelper.WXShareListener
+public class zlu
+  implements DialogInterface.OnClickListener
 {
-  zlu(zlp paramzlp) {}
+  public zlu(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((zlp.c(this.a) == null) || (!zlp.c(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(zlp.a(this.a), 1, "分享失败", 0).a();
-      return;
-    }
-    QQToast.a(zlp.a(this.a), 2, "分享成功", 0).a();
+    QRLoginMgrActivity.a(this.a, true, 0L);
+    bdla.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
   }
 }
 

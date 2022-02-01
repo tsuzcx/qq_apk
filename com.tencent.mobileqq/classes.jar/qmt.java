@@ -1,136 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class qmt
+class qmt
+  implements ViewBase.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile qmt jdField_a_of_type_Qmt;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  qmt(qms paramqms, BaseArticleInfo paramBaseArticleInfo, qfw paramqfw, ViewBase paramViewBase) {}
   
-  public static qmt a()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (jdField_a_of_type_Qmt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Qmt == null) {
-        jdField_a_of_type_Qmt = new qmt();
-      }
-      return jdField_a_of_type_Qmt;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString)
-  {
-    ThreadManager.excute(new PTSAppLoader.2(this, paramString), 128, null, true);
-  }
-  
-  private void b(String paramString)
-  {
-    int j = 0;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    String str1 = a(paramString);
-    boolean bool2 = FileUtils.fileExists(str1);
-    boolean bool3 = qmz.a(str1, paramString);
-    String str2 = str1 + "/" + "pts_app_config.json";
-    boolean bool4 = qmz.a(str2);
-    boolean bool1;
-    if ((bool2) && (bool3) && (bool4)) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      jdField_a_of_type_JavaLangString = qmz.b(str2);
-      Object localObject1 = str1 + File.separator + "pages";
-      try
-      {
-        localObject1 = new File((String)localObject1);
-        if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-        {
-          localObject1 = ((File)localObject1).listFiles();
-          int k = localObject1.length;
-          i = 0;
-          while (i < k)
-          {
-            Object localObject2 = localObject1[i];
-            String str3 = localObject2.getName();
-            if ((localObject2.isDirectory()) && (!TextUtils.isEmpty(str3))) {
-              this.jdField_a_of_type_JavaUtilList.add(str3);
-            }
-            i += 1;
-            continue;
-            bool1 = false;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("PTSAppLoader", 1, "[checkPTSApp], e = " + localException);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[checkPTSApp], bid = ").append(paramString).append("\n").append(", appPath = ").append(str1).append("\n").append(", ptsAppVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isAppExists = ").append(bool2).append("\n").append(", isAppValid = ").append(bool3).append("\n").append(", configPath = ").append(str2).append("\n").append(", isAppVersionValid = ").append(bool4).append("\n").append(", isAppOfflineDirValid = ").append(this.jdField_a_of_type_Boolean).append("\n").append(", appNameList = ");
-        int i = j;
-        while (i < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          localStringBuilder.append("[").append(i).append("]: ").append((String)this.jdField_a_of_type_JavaUtilList.get(i)).append("\n");
-          i += 1;
-        }
-        QLog.i("PTSAppLoader", 1, localStringBuilder.toString());
-      }
-    }
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    String str = noe.a(paramString) + paramString;
-    QLog.i("PTSAppLoader", 1, "[getPTSAppDownloadPath], bid = " + paramString + ", path = " + str);
-    return str;
-  }
-  
-  public void a()
-  {
-    b();
-    PTSAppLoader.1 local1 = new PTSAppLoader.1(this);
-    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = this.jdField_a_of_type_JavaUtilList.contains(paramString);
-    QLog.i("PTSAppLoader", 1, "[isPTSAppReady], appName = " + paramString + ", isAppExists = " + bool + ", isAppOfflineDirValid = " + this.jdField_a_of_type_Boolean);
-    return (this.jdField_a_of_type_Boolean) && (bool);
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = false;
-      b("3978");
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    QLog.i("BigImageVideoProteusItem", 1, "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances);
+    paramViewBase = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
+    QLog.i("BigImageVideoProteusItem", 1, "" + paramViewBase);
+    if ((paramViewBase.a != null) && (paramViewBase.a.a != 3)) {
+      six.a(this.jdField_a_of_type_Qfw.a().getContext(), paramViewBase.a);
     }
+    piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    ptj.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
 }
 

@@ -1,56 +1,49 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class sid
+class sid
+  implements pbv
 {
-  private JSONObject a;
+  sid(sib paramsib) {}
   
-  public sid(String paramString)
+  public void a()
   {
-    try
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        this.a = new JSONObject();
-        return;
-      }
-      this.a = new JSONObject(paramString);
+    if (sib.a(this.a) != null) {
+      sib.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 0) {
       return;
     }
-    catch (JSONException paramString)
+    sib.a(this.a).e = paramInt;
+    sib.a(this.a).a(sib.a(this.a));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public sid(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.a = new JSONObject();
-    ofe.a(paramString1, paramString2, paramString3, paramString4, this.a);
-  }
-  
-  public sid(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this(paramString1);
-    ofe.a(paramString2, paramString3, paramString4, paramString5, this.a);
-  }
-  
-  public String a()
-  {
-    return this.a.toString();
-  }
-  
-  protected void a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.a.put(paramString, paramObject);
+      this.a.e();
       return;
     }
-    catch (JSONException paramString)
+    this.a.f();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      paramString.printStackTrace();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      sib.a(this.a).e();
+      this.a.f();
     }
   }
 }

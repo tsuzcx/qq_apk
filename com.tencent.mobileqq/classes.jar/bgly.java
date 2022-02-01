@@ -1,16 +1,33 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bgly
+class bgly
+  extends ntf
 {
-  public ImageView a;
-  public SeekBar a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  bgly(bgls parambgls, bgma parambgma) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bgma.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+    }
+  }
 }
 
 

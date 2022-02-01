@@ -1,16 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class rxg
-  extends AnimatorListenerAdapter
+public abstract interface rxg
 {
-  rxg(View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setLayerType(0, null);
-  }
+  public abstract void a(int paramInt1, int paramInt2, long paramLong);
 }
 
 

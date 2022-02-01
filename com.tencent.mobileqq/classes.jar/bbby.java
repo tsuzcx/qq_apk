@@ -1,110 +1,91 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.login.GatewayVerify.ReqBody;
+import tencent.im.login.GatewayVerify.ReqMaskQQLogin;
 
 public class bbby
-  extends bbck
-  implements bbdn
 {
-  private bbca jdField_a_of_type_Bbca;
-  private WeakReference<baup> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  private static volatile bbby jdField_a_of_type_Bbby;
+  private bbce jdField_a_of_type_Bbce;
   
-  public bbby(FaceDecoder paramFaceDecoder, baup parambaup)
+  public static bbby a()
   {
-    super(paramFaceDecoder);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambaup);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    baup localbaup;
-    do
+    if (jdField_a_of_type_Bbby == null) {}
+    try
     {
-      return;
-      localbaup = (baup)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbaup == null);
-    localbaup.notifyDataSetChanged();
-  }
-  
-  private void a(int paramInt1, int paramInt2, bbdo parambbdo)
-  {
-    if (!(parambbdo instanceof bbdy)) {
-      return;
-    }
-    boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-    ((bbdy)parambbdo).b(bool);
-    if (paramInt1 == 1)
-    {
-      ((bbdy)parambbdo).a(true);
-      return;
-    }
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 0: 
-      ((bbdy)parambbdo).a(true);
-      return;
-    case 1: 
-      ((bbdy)parambbdo).a(true);
-      return;
-    }
-    ((bbdy)parambbdo).a(true);
-  }
-  
-  public void a(bayt parambayt, bbhb parambbhb, Bitmap paramBitmap)
-  {
-    super.a(parambayt, parambbhb, paramBitmap);
-  }
-  
-  public void a(bbdm parambbdm)
-  {
-    a();
-  }
-  
-  public void a(bbdm parambbdm, String paramString1, String paramString2) {}
-  
-  public void b(bayt parambayt, bbhb parambbhb)
-  {
-    super.b(parambayt, parambbhb);
-    if (!(parambayt instanceof bazz)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambbhb instanceof bbdo));
-      parambbhb = ((bbdo)parambbhb).a();
-      parambbhb.a(((bazz)parambayt).c(), ((bazz)parambayt).d(), ((bazz)parambayt).e());
-      parambbhb.a(this);
-    } while (!(parambbhb instanceof bbdk));
-    ((bbdk)parambbhb).a(true);
-  }
-  
-  protected void c(bayt parambayt, bbhb parambbhb)
-  {
-    if (this.jdField_a_of_type_Bbca != null)
-    {
-      if (parambbhb.a() != null) {
-        parambbhb.a().setOnClickListener(new bbbz(this));
+      if (jdField_a_of_type_Bbby == null) {
+        jdField_a_of_type_Bbby = new bbby();
       }
-      return;
+      return jdField_a_of_type_Bbby;
     }
-    super.c(parambayt, parambbhb);
+    finally {}
   }
   
-  public void d(bayt parambayt, bbhb parambbhb)
+  public void a(Context paramContext, String paramString, bbce parambbce)
   {
-    if (!(parambbhb instanceof bbdo)) {}
-    while (!this.jdField_a_of_type_Boolean) {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("RegisterLimitHelperImpl", 1, "jumpWithPhoneProtectUinsUrl error: params invalid");
       return;
     }
-    a(parambayt.a(), parambayt.b(), (bbdo)parambbhb);
+    QLog.d("RegisterLimitHelperImpl", 1, "jumpWithPhoneProtectUinsUrl, phoneProtectUinsUrl: " + paramString);
+    bdla.a(null, "dc00898", "", "", "0X800B336", "0X800B336", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Bbce = parambbce;
+    parambbce = new Intent(paramContext, QQBrowserActivity.class);
+    parambbce.putExtra("url", paramString);
+    paramContext.startActivity(parambbce);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if ((paramIntent == null) || (this.jdField_a_of_type_Bbce == null))
+    {
+      QLog.e("RegisterLimitHelperImpl", 1, "recoverIntentFromPhoneProtectReg error: params invalid");
+      return;
+    }
+    QLog.d("RegisterLimitHelperImpl", 1, "recoverIntentFromPhoneProtectReg");
+    paramIntent.putExtra("phonenum", this.jdField_a_of_type_Bbce.jdField_a_of_type_JavaLangString);
+    paramIntent.putExtra("invite_code", this.jdField_a_of_type_Bbce.jdField_d_of_type_JavaLangString);
+    paramIntent.putExtra("key", this.jdField_a_of_type_Bbce.jdField_b_of_type_JavaLangString);
+    paramIntent.putExtra("key_register_smscode", this.jdField_a_of_type_Bbce.jdField_c_of_type_JavaLangString);
+    paramIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_Bbce.jdField_a_of_type_Boolean);
+    paramIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_Bbce.jdField_b_of_type_Boolean);
+    paramIntent.putExtra("key_register_from", this.jdField_a_of_type_Bbce.jdField_a_of_type_Int);
+    paramIntent.putExtra("key_register_nick", this.jdField_a_of_type_Bbce.jdField_e_of_type_JavaLangString);
+    paramIntent.putExtra("key_register_password", this.jdField_a_of_type_Bbce.f);
+    paramIntent.putExtra("key_register_phonenum_bindnewqq", this.jdField_a_of_type_Bbce.jdField_c_of_type_Boolean);
+    paramIntent.putExtra("key_register_from_send_sms", this.jdField_a_of_type_Bbce.jdField_d_of_type_Boolean);
+    paramIntent.putExtra("key_register_from_friend_verify", this.jdField_a_of_type_Bbce.jdField_e_of_type_Boolean);
+  }
+  
+  public boolean a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      QLog.d("RegisterLimitHelperImpl", 1, "shouldLoginWithMask: false");
+      return false;
+    }
+    QLog.d("RegisterLimitHelperImpl", 1, "shouldLoginWithMask: true， isNeedLoginFlagFromJsApi: true,  uinEditTextValue: " + paramString1);
+    return true;
+  }
+  
+  public byte[] a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("RegisterLimitHelperImpl", 1, "createUinEncryptData error: uinEncrypt invalid");
+      return null;
+    }
+    QLog.d("RegisterLimitHelperImpl", 1, "createUinEncryptData");
+    GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
+    localReqBody.msg_req_mask_qq_login.bytes_encrypt_uin_info.set(bmua.a(paramString));
+    localReqBody.msg_req_mask_qq_login.setHasFlag(true);
+    localReqBody.setHasFlag(true);
+    return localReqBody.toByteArray();
   }
 }
 

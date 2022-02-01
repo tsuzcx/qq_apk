@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aicm
-  extends CardObserver
+  implements DialogInterface.OnClickListener
 {
-  aicm(aicl paramaicl) {}
+  aicm(aici paramaici) {}
   
-  public void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
-    }
-    aicl.a(this.a, aicl.a(this.a, paramInt));
-    if ((aicl.a(this.a)) && (aicl.a(this.a) != null)) {
-      this.a.b(aicl.a(this.a).getCurrentUin());
-    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    aftr.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, null);
+    bdla.b(this.a.app, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
   }
 }
 

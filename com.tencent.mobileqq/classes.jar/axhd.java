@@ -1,21 +1,15 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class axhd
+  implements axfm
 {
-  public int a;
-  public Drawable a;
-  public axhl a;
-  public String a;
+  public axhd(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public axhd(String paramString, axhl paramaxhl)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Axhl = paramaxhl;
-    a();
+    MultiCardPageIndicator.a(this.a);
+    return false;
   }
-  
-  public void a() {}
 }
 
 

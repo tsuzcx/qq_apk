@@ -1,12 +1,12 @@
-import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
-import com.tencent.ttpic.video.AEDecoder;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-final class blje
-  implements AECoderFactory.AEDecoderFactory
+class blje
+  extends RecyclerView.ViewHolder
 {
-  public AEDecoder createDecoder(String paramString)
+  blje(bljb parambljb, View paramView)
   {
-    return new baed(paramString);
+    super(paramView);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alyh;
+import amyx;
 
 public class CmGameManager$2
   implements Runnable
 {
-  public CmGameManager$2(alyh paramalyh) {}
+  public CmGameManager$2(amyx paramamyx) {}
   
   public void run()
   {
-    alyh.a(this.this$0);
-    alyh.b(this.this$0);
+    amyx.a(this.this$0);
+    amyx.b(this.this$0);
   }
 }
 

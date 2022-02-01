@@ -1,6 +1,16 @@
-public abstract interface sde
+import com.tencent.mobileqq.widget.QQToast;
+
+class sde
+  implements sct<String>
 {
-  public abstract void a(sdg paramsdg, sdj paramsdj, int paramInt1, int paramInt2, Object paramObject);
+  sde(scy paramscy) {}
+  
+  public void a() {}
+  
+  public void a(String paramString)
+  {
+    QQToast.a(scy.a(this.a), paramString, 1).a();
+  }
 }
 
 

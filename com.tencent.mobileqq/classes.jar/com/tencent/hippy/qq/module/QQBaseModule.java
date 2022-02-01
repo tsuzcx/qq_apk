@@ -26,7 +26,7 @@ public class QQBaseModule
     this.mapCallbacks.clear();
   }
   
-  protected Activity getActivity()
+  public Activity getActivity()
   {
     Fragment localFragment = getFragment();
     if (localFragment == null) {

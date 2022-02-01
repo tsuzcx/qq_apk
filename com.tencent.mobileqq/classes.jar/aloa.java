@@ -1,93 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class aloa
-  extends bgod
+  implements View.OnClickListener
 {
-  aloa(alnr paramalnr) {}
+  aloa(alny paramalny, int paramInt) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download onDone");
-    }
-    if (parambgoe.a() == 3) {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_download_success", 0, 0, new String[0]);
-    }
-    if (this.a.jdField_a_of_type_Amki != null) {
-      this.a.jdField_a_of_type_Amki.b();
-    }
-  }
-  
-  public void onDoneFile(bgoe parambgoe)
-  {
-    if (parambgoe == null) {}
-    label314:
-    label320:
-    for (;;)
+    this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Alny.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.removeTextChangedListener(this.jdField_a_of_type_Alny.a.b);
+    this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Alny.a.jdField_c_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Alny.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    SimpleAccount localSimpleAccount = (SimpleAccount)this.jdField_a_of_type_Alny.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Alny.a.jdField_a_of_type_Int);
+    ImageView localImageView;
+    if (!LoginView.i(this.jdField_a_of_type_Alny.a))
     {
-      return;
-      String str1 = parambgoe.c;
-      parambgoe = parambgoe.a();
-      if (parambgoe != null)
-      {
-        parambgoe = (ApolloActionData)parambgoe.getSerializable(str1);
-        if (parambgoe == null)
-        {
-          QLog.e("ApolloManager", 1, "action res onDoneFile but action data is null");
-          return;
-        }
-        String str2 = ApolloUtil.a(parambgoe, 4);
-        if (str1.equals(ApolloUtil.a(parambgoe, 5)))
-        {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloManager", 2, "action res zip done acitonid=" + parambgoe.actionId + " action name =" + parambgoe.actionName);
-            }
-            if (!ApolloUtil.a(parambgoe.actionId, parambgoe.personNum))
-            {
-              FileUtils.uncompressZip(str2, ApolloUtil.a(parambgoe, 6), false);
-              FileUtils.deleteFile(str2);
-              this.a.a(parambgoe);
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ApolloManager", 2, "uncompressZip fail zip file: " + str2, localException);
-              }
-            }
-          }
-          if (parambgoe.compoundType <= 0) {
-            break label314;
-          }
-        }
-        for (boolean bool = ApolloUtil.a(parambgoe.actionId, 1, parambgoe.personNum, false);; bool = ApolloUtil.a(parambgoe))
-        {
-          if ((!bool) || (this.a.jdField_a_of_type_Amki == null)) {
-            break label320;
-          }
-          parambgoe.status = 1;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-            ((amir)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(parambgoe);
-          }
-          this.a.jdField_a_of_type_Amki.a(parambgoe);
-          return;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ApolloManager", 2, "onDoneFile panelView actionId = " + parambgoe.actionId + " action name =" + parambgoe.actionName);
-          break;
-        }
+      LoginView.i(this.jdField_a_of_type_Alny.a, true);
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      localImageView = this.jdField_a_of_type_Alny.a.jdField_c_of_type_AndroidWidgetImageView;
+      if ((!LoginView.d(this.jdField_a_of_type_Alny.a)) && (!LoginView.e(this.jdField_a_of_type_Alny.a)) && (!LoginView.f(this.jdField_a_of_type_Alny.a)) && (!LoginView.g(this.jdField_a_of_type_Alny.a))) {
+        break label390;
       }
+    }
+    label390:
+    for (int i = 2130846987;; i = 2130844653)
+    {
+      localImageView.setImageResource(i);
+      this.jdField_a_of_type_Alny.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131705829));
+      LoginView.a(this.jdField_a_of_type_Alny.a, localSimpleAccount);
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.addTextChangedListener(this.jdField_a_of_type_Alny.a.b);
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Alny.a.jdField_c_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.clearFocus();
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
+      this.jdField_a_of_type_Alny.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

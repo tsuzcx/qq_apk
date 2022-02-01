@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqd;
-import agqk;
+import ahit;
+import ahja;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -10,11 +10,11 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class TextItemBuilder$9$1
   implements Runnable
 {
-  public TextItemBuilder$9$1(agqk paramagqk, ChatMessage paramChatMessage) {}
+  public TextItemBuilder$9$1(ahja paramahja, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agqk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(this.jdField_a_of_type_Agqk.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Agqk.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
+    this.jdField_a_of_type_Ahja.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(this.jdField_a_of_type_Ahja.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Ahja.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
   }
 }
 

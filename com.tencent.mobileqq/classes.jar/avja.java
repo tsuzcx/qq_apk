@@ -1,42 +1,72 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 public class avja
-  extends ayce
+  implements agin
 {
-  public avja(LoginWelcomeManager paramLoginWelcomeManager) {}
+  private blgp jdField_a_of_type_Blgp = new avjb(this);
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  public boolean a;
   
-  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp)
+  public avja(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public static avja a(BaseChatPie paramBaseChatPie)
+  {
+    return (avja)paramBaseChatPie.getHelper(6);
+  }
+  
+  private void b(XEditTextEx paramXEditTextEx)
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, String.format("onGetRecommendedList resp=%s", new Object[] { paramRecommendedListResp }));
-      }
-      if (LoginWelcomeManager.a(this.a) != null)
-      {
-        Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
-        if (localBundle != null) {
-          localBundle.putParcelable("result", paramRecommendedListResp);
-        }
-        this.a.b();
-      }
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+      paramXEditTextEx.b(this.jdField_a_of_type_Blgp);
       return;
     }
-    catch (Throwable paramRecommendedListResp)
+    catch (Throwable paramXEditTextEx) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 4) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
+    }
+    do
     {
-      QLog.e("LoginWelcomeManager", 1, "onGetRecommendedList fail.", paramRecommendedListResp);
+      return;
+      if (paramInt == 14)
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
+        return;
+      }
+    } while (paramInt != 6);
+    bkyy.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
+  }
+  
+  public void a(XEditTextEx paramXEditTextEx)
+  {
+    try
+    {
+      paramXEditTextEx.a(this.jdField_a_of_type_Blgp);
+      return;
+    }
+    catch (Throwable paramXEditTextEx)
+    {
+      paramXEditTextEx.printStackTrace();
     }
   }
   
-  protected void c(boolean paramBoolean)
+  public int[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("ShowCommonGuideWebResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    return new int[] { 4, 14, 6 };
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt >= 30) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

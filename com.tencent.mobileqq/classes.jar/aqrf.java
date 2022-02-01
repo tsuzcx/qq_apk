@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aqrf
-  implements DialogInterface.OnClickListener
+  extends OrientationEventListener
 {
-  public aqrf(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqrf(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.a();
   }
 }
 

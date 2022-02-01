@@ -1,27 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vbm
-  extends vbo
+final class vbm
+  implements DialogInterface.OnClickListener
 {
-  public vbm(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
+  vbm(int paramInt1, int paramInt2) {}
   
-  public vbl a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new vcs(a(), this);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    paramDialogInterface.dismiss();
+    vkf.b(112, 2, 0);
+    vjx.a(117, this.a, this.b, null);
   }
 }
 

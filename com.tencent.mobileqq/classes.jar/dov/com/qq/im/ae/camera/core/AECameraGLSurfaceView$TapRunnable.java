@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import blnq;
+import bnaz;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 class AECameraGLSurfaceView$TapRunnable
@@ -19,7 +19,7 @@ class AECameraGLSurfaceView$TapRunnable
   
   public void run()
   {
-    ((blnq)AECameraGLSurfaceView.access$000(this.this$0)).a().setTouchTriggerEvent(this.touchEvent, this.x, this.y);
+    ((bnaz)AECameraGLSurfaceView.access$000(this.this$0)).a().setTouchTriggerEvent(this.touchEvent, this.x, this.y);
   }
 }
 

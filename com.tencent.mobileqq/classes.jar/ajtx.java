@@ -1,41 +1,49 @@
-import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
 public class ajtx
-  extends ajrg
+  implements bkzq
 {
-  ajtx(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    super(paramNewPhotoPreviewActivity);
-  }
+  public ajtx(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, bkzi parambkzi, ArrayList paramArrayList) {}
   
-  protected void d()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
-    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
-    if (localObject != null)
+    if (paramView != null)
     {
-      ajpv.a(((ArrayList)localObject).size(), this.a.totalPicCount);
-      ajpv.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
+      paramView = this.jdField_a_of_type_Bkzi.a(paramInt);
+      if (paramView == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131689930))) {
+          break label92;
+        }
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a.i();
+        }
+      }
     }
-    localObject = (NewPhotoPreviewActivity)this.mActivity;
-    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-    }
-    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)localObject).finish();
-  }
-  
-  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    if (((NewPhotoPreviewActivity)this.mActivity).isFinishing()) {
-      ((NewPhotoPreviewActivity)this.mActivity).titleView.setText(amtj.a(2131707253));
+      label92:
+      if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131693154))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a(this.jdField_a_of_type_JavaUtilArrayList);
+      } else if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131693160))) {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity(), 2131692559, 0).a();
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.b(this.jdField_a_of_type_JavaUtilArrayList);
+        }
+      }
     }
   }
 }

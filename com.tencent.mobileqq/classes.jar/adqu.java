@@ -1,53 +1,87 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.List;
 
 public class adqu
-  extends WtloginObserver
+  extends aodm
 {
-  public adqu(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public adqu(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (QLog.isColorLevel())
+    if (!ChatSettingActivity.d(this.a))
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + bfxb.a(paramString2));
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.d(this.a));
       }
-    }
-    this.a.c();
-    if (this.a.isFinishing()) {
       return;
     }
-    if (paramInt3 == 0)
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    paramList = this.a;
+    ChatSettingActivity localChatSettingActivity = this.a;
+    if (paramBoolean) {}
+    for (int i = 2131718816;; i = 2131718805)
     {
-      this.a.a();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(this.a.getString(2131691842), paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label299;
+      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.d(this.a) + ", mShieldUin=" + ChatSettingActivity.e(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
       }
-      paramString1 = this.a.getString(2131717688);
-    }
-    label299:
-    for (;;)
-    {
-      bcef.a(this.a.app, "dc00898", "", LoginPhoneNumActivity.a(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.a(this.a), 0, "", "", paramString1, "");
+      if (!paramBoolean) {
+        break;
+      }
+      paramList = (awtp)this.a.app.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.e(this.a)))) {
+        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.e(this.a)));
+      }
+      ChatSettingActivity.b(this.a);
+      if (ChatSettingActivity.a(this.a))
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        ChatSettingActivity.a(this.a);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
       return;
-      this.a.a(2131717688, 1);
-      break;
     }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    if (!ChatSettingActivity.d(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    paramList = this.a;
+    ChatSettingActivity localChatSettingActivity = this.a;
+    if (paramBoolean) {}
+    for (int i = 2131718804;; i = 2131718803)
+    {
+      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
+      }
+      if (!paramBoolean) {
+        break;
+      }
+      paramList = (awtp)this.a.app.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.e(this.a)))) {
+        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.e(this.a)));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131718803, 1);
   }
 }
 

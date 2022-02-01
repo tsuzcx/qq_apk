@@ -1,13 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class smy
-  extends rmm
+class smy
+  extends suv
 {
-  public smy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  smy(smg paramsmg) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    ReadInJoyListViewGroup.a(this.a).a(paramInt1, paramInt2, paramInt3);
+    if ((smg.a(this.a) != null) && (smg.a(this.a).c()))
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690875), 5000).a();
+      smg.a(this.a).f();
+      QLog.d("VideoFeedsShareController", 2, "mColorNoteController ： delete colorNote");
+    }
   }
 }
 

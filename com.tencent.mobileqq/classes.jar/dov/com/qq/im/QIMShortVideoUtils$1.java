@@ -15,7 +15,7 @@ public final class QIMShortVideoUtils$1
     //   1: istore_2
     //   2: aload_0
     //   3: getfield 14	dov/com/qq/im/QIMShortVideoUtils$1:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6: invokestatic 32	blig:a	(Landroid/content/Context;)Z
+    //   6: invokestatic 32	bmux:a	(Landroid/content/Context;)Z
     //   9: ifeq +4 -> 13
     //   12: return
     //   13: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
@@ -78,7 +78,7 @@ public final class QIMShortVideoUtils$1
     //   129: istore_2
     //   130: iload_2
     //   131: ifeq -119 -> 12
-    //   134: getstatic 90	bkkh:a	Laufo;
+    //   134: getstatic 90	blvp:a	Lavli;
     //   137: ifnonnull +42 -> 179
     //   140: aload_0
     //   141: getfield 16	dov/com/qq/im/QIMShortVideoUtils$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -89,14 +89,14 @@ public final class QIMShortVideoUtils$1
     //   152: ifnonnull +7 -> 159
     //   155: ldc 92
     //   157: astore 7
-    //   159: new 94	aufo
+    //   159: new 94	avli
     //   162: dup
     //   163: aload 7
     //   165: ldc 96
-    //   167: invokespecial 99	aufo:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   170: putstatic 90	bkkh:a	Laufo;
-    //   173: getstatic 90	bkkh:a	Laufo;
-    //   176: invokevirtual 101	aufo:a	()V
+    //   167: invokespecial 99	avli:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   170: putstatic 90	blvp:a	Lavli;
+    //   173: getstatic 90	blvp:a	Lavli;
+    //   176: invokevirtual 101	avli:a	()V
     //   179: new 103	android/content/Intent
     //   182: dup
     //   183: aload_0

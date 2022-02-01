@@ -1,24 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aiuv
-  extends BroadcastReceiver
+public class aiuv
+  implements View.OnClickListener
 {
-  aiuv(aiuu paramaiuu) {}
+  public aiuv(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent.getBooleanExtra("recording_time_out", false))
-    {
-      QQToast.a(this.a.mRuntime.a(), 2131698270, 0).a();
-      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
-      return;
-    }
-    paramContext = paramIntent.getStringExtra("target_media_url");
-    aiuu.a(this.a, paramContext);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

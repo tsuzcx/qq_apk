@@ -1,27 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aiyn
-  implements View.OnClickListener
+  implements bkzq
 {
-  public aiyn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public aiyn(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.g = true;
-    this.a.d.setVisibility(8);
-    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131369070));
-    this.a.d.setVisibility(0);
-    this.a.d.setText(amtj.a(2131700808));
-    this.a.d.setOnClickListener(new aiyo(this));
-    ChatHistoryTroopMemberFragment.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    switch (paramInt)
+    {
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity())) {
+        aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).uin + "", null, AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).getCurrentAccountUin(), 20010, null);
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), 2131694255, 0).a();
+      }
+    }
   }
 }
 

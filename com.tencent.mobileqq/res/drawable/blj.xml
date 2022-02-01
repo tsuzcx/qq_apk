@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/al3" />
-    <corners android:radius="4.0dip" />
-</shape>
+<animated-rotate android:drawable="@drawable/common_study_mode_general_switch_loading" android:pivotX="50.0%" android:pivotY="50.0%"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

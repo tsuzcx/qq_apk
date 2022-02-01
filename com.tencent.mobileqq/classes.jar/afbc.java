@@ -1,25 +1,26 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
-class afbc
+public class afbc
+  extends Handler
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<afbb> b;
-  
-  public afbc(afaz paramafaz, View paramView, afbb paramafbb)
+  public afbc(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramafbb);
+    super(paramLooper);
   }
   
-  public afbb a()
+  public void handleMessage(Message paramMessage)
   {
-    return (afbb)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_Amkj.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Amkj.notifyDataSetChanged();
+    this.a.b();
   }
 }
 

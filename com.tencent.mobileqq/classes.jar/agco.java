@@ -1,22 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-public class agco
-  extends AnimatorListenerAdapter
+class agco
+  implements DialogInterface.OnClickListener
 {
-  public agco(HeartCombolEffectView paramHeartCombolEffectView) {}
+  agco(agcn paramagcn) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    DoodlePanel.a(this.a.a, false);
   }
 }
 

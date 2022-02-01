@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import areb;
-import avsq;
+import asih;
+import awyr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonKeywords;
@@ -64,20 +65,20 @@ class EmotionKeywordAdapter$3
       {
         localObject1 = localBqAssocInfo.rpt_str_item_keyword.get();
         if (localObject1 != null) {
-          break label927;
+          break label928;
         }
         localObject1 = new ArrayList();
       }
     }
-    label927:
+    label928:
     for (;;)
     {
       if (EmotionKeywordAdapter.access$200(this.this$0).a(localEmoticon.epId) == null) {
-        ((areb)EmotionKeywordAdapter.access$400(this.this$0).getManager(43)).a(localEmoticon.epId, areb.c);
+        ((asih)EmotionKeywordAdapter.access$400(this.this$0).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(localEmoticon.epId, asih.c);
       }
-      label472:
+      label473:
       int i;
-      label504:
+      label505:
       boolean bool;
       if (((List)localObject1).size() > 0)
       {
@@ -86,7 +87,7 @@ class EmotionKeywordAdapter$3
         localEmoticon.keywords = ((String)localObject1);
         i = localBqAssocInfo.i32_tab_ringtype.get();
         if (i != 1) {
-          break label745;
+          break label746;
         }
         localEmoticon.isSound = true;
         localEmoticon.jobType = 0;
@@ -96,17 +97,17 @@ class EmotionKeywordAdapter$3
         if (localBqAssocInfo.uint32_emoji_type.has())
         {
           if (localBqAssocInfo.uint32_emoji_type.get() != 2) {
-            break label753;
+            break label754;
           }
           bool = true;
-          label559:
+          label560:
           localEmoticon.isAPNG = bool;
         }
         if (!localBqAssocInfo.rpt_apng_support_size.has()) {
-          break label758;
+          break label759;
         }
         EmotionKeywordAdapter.access$200(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_apng_support_size.get());
-        label601:
+        label602:
         localObject1 = new EmotionKeyword();
         ((EmotionKeyword)localObject1).keyword = EmotionKeywordAdapter.access$100(this.this$0).toLowerCase();
         ((EmotionKeyword)localObject1).epId = localEmoticon.epId;
@@ -129,21 +130,21 @@ class EmotionKeywordAdapter$3
           ((StringBuilder)localObject2).append(localEmoticon.eId).append(",");
           break;
           localObject1 = this.val$curInputStr;
-          break label472;
-          label745:
+          break label473;
+          label746:
           if (i != 4) {
-            break label504;
+            break label505;
           }
           break;
-          label753:
+          label754:
           bool = false;
-          break label559;
-          label758:
+          break label560;
+          label759:
           if (!localBqAssocInfo.rpt_support_size.has()) {
-            break label601;
+            break label602;
           }
           EmotionKeywordAdapter.access$200(this.this$0).a(localEmoticon.epId, localEmoticon, localBqAssocInfo.rpt_support_size.get());
-          break label601;
+          break label602;
         }
         i += 1;
       }
@@ -169,7 +170,7 @@ class EmotionKeywordAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter.3
  * JD-Core Version:    0.7.0.1
  */

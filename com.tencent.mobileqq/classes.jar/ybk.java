@@ -1,62 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import java.io.File;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ybk
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public String c;
+  public ybk(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
-  }
-  
-  public static ybk a(JSONObject paramJSONObject)
-  {
-    ybk localybk = new ybk();
-    localybk.jdField_b_of_type_Int = paramJSONObject.getInt("version");
-    localybk.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
-    localybk.c = paramJSONObject.getString("url");
-    localybk.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
-    return localybk;
-  }
-  
-  public String a()
-  {
-    Object localObject = new File(c());
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
-        return c();
-      }
-    }
-    return null;
-  }
-  
-  public String b()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
-  }
-  
-  public String c()
-  {
-    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
-  }
-  
-  public Object clone()
-  {
-    return super.clone();
-  }
-  
-  public String d()
-  {
-    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    ykv.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

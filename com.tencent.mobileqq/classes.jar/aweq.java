@@ -1,185 +1,118 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.media_relation.media_relation.MediaRelationInfo;
 
 public class aweq
 {
-  private static List<float[]> a(float[][] paramArrayOfFloat)
+  public static String a = "ListenTogetherAIOStatusHelper";
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    int[] arrayOfInt = new int[8];
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    if (i < paramArrayOfFloat.length)
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "setIsGroupListenTogetherOpen, app = " + paramQQAppInterface + " troopuin:" + paramString + " isOpen:" + paramBoolean);
+    }
+    if (paramQQAppInterface != null)
     {
-      j = 1;
-      for (;;)
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (paramQQAppInterface != null)
       {
-        if (j <= 7)
+        paramString = paramQQAppInterface.b(paramString);
+        if (paramString != null)
         {
-          if (paramArrayOfFloat[i][0] < 360.0F * (j / 7.0F))
-          {
-            arrayOfInt[j] += 1;
-            List localList = (List)localHashMap.get(Integer.valueOf(j));
-            Object localObject = localList;
-            if (localList == null) {
-              localObject = new ArrayList();
-            }
-            ((List)localObject).add(paramArrayOfFloat[i]);
-            localHashMap.put(Integer.valueOf(j), localObject);
+          paramString.setIsListenTogether(paramBoolean);
+          paramQQAppInterface.b(paramString);
+          if (QLog.isColorLevel()) {
+            QLog.i(a, 2, "setIsGroupListenTogetherOpen troopinfo saved");
           }
         }
-        else
+      }
+    }
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte)
+  {
+    media_relation.MediaRelationInfo localMediaRelationInfo;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      localMediaRelationInfo = new media_relation.MediaRelationInfo();
+    }
+    try
+    {
+      localMediaRelationInfo.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localMediaRelationInfo;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i;
+        long l;
+        paramArrayOfByte = null;
+        localException.printStackTrace();
+      }
+    }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.create_time.has()))
+    {
+      i = paramArrayOfByte.create_time.get();
+      l = NetConnInfoCenter.getServerTime();
+    }
+    return i >= l - 604800L;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "setIsC2CListenTogetherOpen, app = " + paramQQAppInterface + " frienduin:" + paramString + " isOpen:" + paramBoolean);
+    }
+    Friends localFriends;
+    Object localObject;
+    if (paramQQAppInterface != null)
+    {
+      anvk localanvk = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localanvk != null)
+      {
+        localFriends = localanvk.e(paramString);
+        if ((localFriends == null) || (!localFriends.isFriend())) {
+          paramBoolean = false;
+        }
+        ExtensionInfo localExtensionInfo = localanvk.a(paramString);
+        localObject = localExtensionInfo;
+        if (localExtensionInfo == null)
         {
-          i += 1;
-          break;
+          localObject = new ExtensionInfo();
+          ((ExtensionInfo)localObject).uin = paramString;
         }
-        j += 1;
-      }
-    }
-    int k = -1;
-    int j = 0;
-    i = 1;
-    while (i <= 7)
-    {
-      int m = j;
-      if (arrayOfInt[i] > j)
-      {
-        m = arrayOfInt[i];
-        k = i;
-      }
-      i += 1;
-      j = m;
-    }
-    if (localHashMap.containsKey(Integer.valueOf(k))) {
-      return (List)localHashMap.get(Integer.valueOf(k));
-    }
-    return new ArrayList();
-  }
-  
-  private static void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (paramArrayOfFloat1[2] <= 0.15D)
-    {
-      paramArrayOfFloat2[0] = paramArrayOfFloat1[0];
-      paramArrayOfFloat2[1] = paramArrayOfFloat1[1];
-      paramArrayOfFloat1[2] += 0.7F;
-    }
-    for (;;)
-    {
-      if (paramArrayOfFloat2[1] > 0.5F) {
-        paramArrayOfFloat2[1] -= 0.1F;
-      }
-      return;
-      paramArrayOfFloat2[0] = paramArrayOfFloat1[0];
-      paramArrayOfFloat2[1] = paramArrayOfFloat1[1];
-      if (paramArrayOfFloat1[2] + 0.5D >= 1.0D) {
-        paramArrayOfFloat1[2] -= 0.5F;
-      } else {
-        paramArrayOfFloat1[2] += 0.5F;
-      }
-    }
-  }
-  
-  private static float[] a(List<float[]> paramList)
-  {
-    float[] arrayOfFloat;
-    int i;
-    if (paramList.size() > 4)
-    {
-      float f = 3.4028235E+38F;
-      arrayOfFloat = null;
-      i = 0;
-      if (i < paramList.size())
-      {
-        if (((float[])paramList.get(i))[2] >= f) {
-          break label135;
+        boolean bool = ((ExtensionInfo)localObject).isListenTogetherOpen;
+        if (bool != paramBoolean)
+        {
+          ((ExtensionInfo)localObject).isListenTogetherOpen = paramBoolean;
+          localanvk.a((ExtensionInfo)localObject);
+          ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(3, true, paramString);
         }
-        f = ((float[])paramList.get(i))[2];
-        arrayOfFloat = (float[])paramList.get(i);
+        if (QLog.isColorLevel())
+        {
+          paramString = a;
+          localObject = new StringBuilder().append("setIsC2CListenTogetherOpen extensionInfo saved, old=").append(bool).append(" new:").append(paramBoolean).append(" friend:");
+          if (localFriends == null) {
+            break label237;
+          }
+        }
       }
     }
-    label135:
-    for (;;)
+    label237:
+    for (paramQQAppInterface = Boolean.valueOf(localFriends.isFriend());; paramQQAppInterface = "null")
     {
-      i += 1;
-      break;
-      if (arrayOfFloat[2] > 0.15D) {
-        arrayOfFloat[2] -= 0.1F;
-      }
-      if (arrayOfFloat[1] > 0.5D) {
-        arrayOfFloat[1] -= 0.1F;
-      }
-      return arrayOfFloat;
-      paramList = (float[])paramList.get(0);
-      paramList[2] = 0.15F;
-      return paramList;
-    }
-  }
-  
-  public static int[] a(int paramInt)
-  {
-    float[] arrayOfFloat1 = new float[3];
-    Color.colorToHSV(paramInt, arrayOfFloat1);
-    float[] arrayOfFloat2 = new float[3];
-    a(arrayOfFloat1, arrayOfFloat2);
-    return new int[] { Color.HSVToColor(arrayOfFloat1), Color.HSVToColor(arrayOfFloat2) };
-  }
-  
-  public static int[] a(Bitmap paramBitmap)
-  {
-    paramBitmap = a(a(a(b(paramBitmap))));
-    float[] arrayOfFloat = new float[3];
-    b(paramBitmap, arrayOfFloat);
-    return new int[] { Color.HSVToColor(paramBitmap), Color.HSVToColor(arrayOfFloat) };
-  }
-  
-  private static float[][] a(int[] paramArrayOfInt)
-  {
-    float[][] arrayOfFloat = new float[16][];
-    int i = 0;
-    while (i < 16)
-    {
-      arrayOfFloat[i] = new float[3];
-      Color.colorToHSV(paramArrayOfInt[i], arrayOfFloat[i]);
-      i += 1;
-    }
-    return arrayOfFloat;
-  }
-  
-  private static void b(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    float f4 = paramArrayOfFloat1[0];
-    float f3 = paramArrayOfFloat1[1];
-    float f1 = paramArrayOfFloat1[2];
-    if (f1 <= 0.15D) {
-      f1 += 0.7F;
-    }
-    for (;;)
-    {
-      float f2 = f3;
-      if (f3 >= 0.5F) {
-        f2 = f3 - 0.1F;
-      }
-      paramArrayOfFloat2[0] = f4;
-      paramArrayOfFloat2[1] = f2;
-      paramArrayOfFloat2[2] = f1;
+      QLog.i(paramString, 2, paramQQAppInterface);
       return;
-      if (f1 <= 0.5D) {
-        f1 += 0.5F;
-      } else {
-        f1 -= 0.5F;
-      }
     }
-  }
-  
-  private static int[] b(Bitmap paramBitmap)
-  {
-    paramBitmap = Bitmap.createScaledBitmap(paramBitmap, 4, 4, false);
-    int[] arrayOfInt = new int[16];
-    paramBitmap.getPixels(arrayOfInt, 0, 4, 0, 0, 4, 4);
-    return arrayOfInt;
   }
 }
 

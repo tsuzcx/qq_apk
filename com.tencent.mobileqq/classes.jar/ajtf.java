@@ -1,13 +1,24 @@
-class ajtf
-  implements bhnm
+import android.support.v4.app.FragmentActivity;
+
+public class ajtf
+  extends ajso
 {
-  ajtf(ajtd paramajtd, Runnable paramRunnable) {}
+  public static final int[] a = { 2131690779 };
+  public static final int[] b = { 2131364510 };
   
-  public void a(int paramInt)
+  public ajtf(FragmentActivity paramFragmentActivity)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

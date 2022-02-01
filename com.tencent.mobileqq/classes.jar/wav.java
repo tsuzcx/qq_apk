@@ -1,25 +1,14 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 public class wav
-  extends wat
 {
-  protected TextView c = (TextView)a(2131380162);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c;
   
-  public wav(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, paramInt);
-  }
-  
-  public void a(vxd paramvxd)
-  {
-    if (paramvxd.b > 99)
-    {
-      this.c.setText("99+");
-      return;
-    }
-    this.c.setText(String.valueOf(paramvxd.b));
-  }
+  public void a() {}
 }
 
 

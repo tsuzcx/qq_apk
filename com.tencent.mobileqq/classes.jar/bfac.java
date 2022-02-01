@@ -1,25 +1,21 @@
-import android.util.SparseArray;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class bfac
-  extends bfae
+public class bfac
+  implements bfaf
 {
-  bfac(bfaa parambfaa) {}
+  public bfac(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramBoolean) {}
-    synchronized (this.a.a)
-    {
-      this.a.a.clear();
-      this.a.b();
-      bfaa.a(this.a);
-      return;
-    }
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Biyn);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfac
  * JD-Core Version:    0.7.0.1
  */

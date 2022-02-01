@@ -1,16 +1,15 @@
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bkso
-  implements FilenameFilter
+  implements DialogInterface.OnClickListener
 {
-  bkso(bksn parambksn) {}
+  bkso(bksl parambksl) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramFile != null) && (paramFile.isDirectory()) && (bksn.a(this.a).matcher(paramString).matches());
+    QLog.e("minisdk_X5UpdateGuard", 2, "cancel");
   }
 }
 

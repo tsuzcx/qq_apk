@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import bakr;
+import bbrg;
 
 public class AIOFileVideoView$5
   implements Runnable
 {
-  public AIOFileVideoView$5(bakr parambakr) {}
+  public AIOFileVideoView$5(bbrg parambbrg) {}
   
   public void run()
   {
-    bakr.a(this.this$0, 8);
+    bbrg.a(this.this$0, 8);
     this.this$0.updateUI();
   }
 }

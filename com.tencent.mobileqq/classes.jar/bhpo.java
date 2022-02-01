@@ -1,115 +1,142 @@
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.open.agent.AuthorityActivity;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.QzoneMainRuntime;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.VasResEngine.VasResController.2;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.SSOAccountObserver;
+import java.io.File;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class bhpo
-  extends SSOAccountObserver
 {
-  public bhpo(AuthorityActivity paramAuthorityActivity) {}
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  bhyn jdField_a_of_type_Bhyn = new bhpp(this);
+  private bhyt jdField_a_of_type_Bhyt;
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public bhpo(int paramInt, Handler paramHandler)
   {
-    this.a.i = true;
-    String str = paramBundle.getString("error");
-    paramInt1 = paramBundle.getInt("code");
-    try
-    {
-      biaz.a().a("agent_login", this.a.d, 0L, 0L, paramInt1, Long.parseLong(paramString), "1000069", "ret: " + paramInt2 + " | error: " + str);
-      bibc.a().a(1, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt1, 1, str);
-      bhvw.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "" + paramInt1, false);
-      bhvw.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "6", "" + paramInt1, false);
-      atqa.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-      atqa.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, true);
-      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bhwf.a(paramString) + " | ret : " + paramInt2 + " - error: " + str + " | code: " + paramInt1);
-      if ((paramInt2 == -1000) || (paramInt2 == 154))
-      {
-        this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-        bhzm.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-        if ((paramInt1 == 1002) && (this.a.b < 2))
-        {
-          paramString = this.a;
-          paramString.b += 1;
-          this.a.f();
-          return;
-        }
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        bhzm.c("Authority_Report", "report login error : ", paramBundle);
-      }
-      this.a.a(3003, this.a.getResources().getString(2131694263));
-      paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      paramString.what = 6;
-      paramString.arg1 = 3003;
-      paramString.obj = this.a.getResources().getString(2131694263);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
-      return;
-    }
-    this.a.c(paramString);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  private Manager a(AppRuntime paramAppRuntime)
   {
-    long l = System.currentTimeMillis();
-    boolean bool = paramBundle.getBoolean("fake_callback");
-    if ((!bool) && (paramInt == 4096)) {
-      bibo.a(paramString, l);
-    }
-    int i;
-    Object localObject;
-    if (!bool)
+    Object localObject2 = null;
+    Object localObject1;
+    if ((paramAppRuntime instanceof ToolAppRuntime))
     {
-      i = paramBundle.getInt("code");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("report_type", "103");
-      ((Bundle)localObject).putString("act_type", "10");
-      ((Bundle)localObject).putString("stringext_1", "GetTicketNoPassword");
-      ((Bundle)localObject).putString("intext_2", "" + i);
-      ((Bundle)localObject).putString("intext_5", "" + (l - AuthorityActivity.a(this.a).jdField_a_of_type_Long));
-      bhvw.a().a((Bundle)localObject, AuthorityActivity.jdField_e_of_type_JavaLangString, paramString, false);
-      QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bhwf.a(paramString) + " | ret : success | code: " + i);
-      bhzm.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
+      paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
+      localObject1 = localObject2;
+      if ((paramAppRuntime instanceof BrowserAppInterface)) {
+        localObject1 = paramAppRuntime.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+      }
     }
+    do
+    {
+      do
+      {
+        return localObject1;
+        if ((paramAppRuntime instanceof QQAppInterface)) {
+          return paramAppRuntime.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+        }
+        localObject1 = localObject2;
+      } while (!(paramAppRuntime instanceof QzoneMainRuntime));
+      paramAppRuntime = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("qzone_plugin.apk");
+      localObject1 = localObject2;
+    } while (paramAppRuntime == null);
+    return paramAppRuntime.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new VasResController.2(this, paramString, paramInt1, paramInt2), 5, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((this.jdField_a_of_type_Bhyt == null) && (localObject != null)) {}
     try
     {
-      biaz.a().a("agent_login", this.a.d, this.a.jdField_a_of_type_JavaLangString.length(), paramArrayOfByte.length, 0, Long.parseLong(paramString), "1000069", null);
-      bibc.a().a(0, "LOGIN_GETTICKT", paramString, AuthorityActivity.jdField_e_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-      bhvw.a().a(paramString, "", AuthorityActivity.jdField_e_of_type_JavaLangString, "1", "1", "0", false);
-      this.a.i = false;
-      this.a.b = 0;
-      localObject = null;
-      if (paramInt == 4096) {
-        localObject = new String(paramArrayOfByte);
+      localObject = a((AppRuntime)localObject);
+      if ((localObject instanceof bhyq)) {
+        this.jdField_a_of_type_Bhyt = ((bhyq)localObject).a(1);
       }
-      this.a.a(paramString, (String)localObject, paramBundle);
-      this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
+      if (TextUtils.isEmpty(paramString1)) {
+        QLog.e("VasResController", 1, "downLoad error url is empty dst =" + paramString2);
+      }
+      if ((this.jdField_a_of_type_Bhyt != null) && (this.jdField_a_of_type_Bhyt.a(paramString1) == null))
+      {
+        paramString1 = new bhyo(paramString1, new File(paramString2));
+        this.jdField_a_of_type_Bhyt.a(paramString1, this.jdField_a_of_type_Bhyn, paramBundle);
+      }
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        bhzm.c("Authority_Report", "report login error : ", localException);
+        QLog.e("VasResController", 1, localException.getMessage());
       }
     }
   }
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public String[] a(String paramString)
   {
-    paramInt = paramBundle.getInt("code");
-    this.a.b = 0;
-    this.a.jdField_e_of_type_Long = SystemClock.elapsedRealtime();
-    bhzm.c("Authority_TimeCost", "<TimeStamp> login cost : " + (this.a.jdField_e_of_type_Long - this.a.d));
-    atqa.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-    atqa.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, false);
-    QLog.d("AuthorityActivity", 1, "rec | cmd: g_t_n_p | uin : *" + bhwf.a(paramString) + " | ret : on_user_cancel | code: " + paramInt);
+    Object localObject = new File(paramString);
+    if ((localObject == null) || (!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VasResController", 2, "SignatureView DynamicItem png file path error.");
+      }
+    }
+    ArrayList localArrayList;
+    do
+    {
+      return null;
+      localArrayList = FileUtils.getChildFiles(paramString);
+    } while (localArrayList.size() <= 0);
+    localObject = new String[localArrayList.size()];
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(paramString).append(File.separator);
+    if (((String)localArrayList.get(0)).contains(".9.png")) {}
+    for (paramString = "%d.9.png";; paramString = "%d.png")
+    {
+      localStringBuilder2.append(paramString);
+      paramString = localStringBuilder1.toString();
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        localObject[i] = String.format(paramString, new Object[] { Integer.valueOf(i + 1) });
+        i += 1;
+      }
+    }
+    return localObject;
   }
 }
 

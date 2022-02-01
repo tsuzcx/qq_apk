@@ -1,19 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie.InputOnGlobalLayoutListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-class agbs
-  implements atah
+public class agbs
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  agbs(agap paramagap) {}
+  private agbs(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    paramView = bfur.a(this.a.a, 230);
-    paramView.setTitle(2131691404);
-    paramView.setMessage(2131691405);
-    paramView.setNegativeButton(2131690620, new agbt(this, paramView));
-    paramView.setPositiveButton(2131694201, new agbu(this));
-    paramView.show();
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.input.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      if (!this.a.j)
+      {
+        this.a.j = true;
+        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
+      }
+      return;
+      this.a.input.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

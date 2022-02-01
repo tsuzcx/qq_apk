@@ -1,38 +1,19 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class auuh
-  implements nnj
+public class auuh
+  implements DialogInterface.OnClickListener
 {
-  auuh(auug paramauug) {}
+  public auuh(ForwardSendHongBaoOption paramForwardSendHongBaoOption, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.a.a))
-    {
-      paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        JSONObject localJSONObject;
-        localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-        }
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
-        return;
-      }
-    }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
   }
 }
 

@@ -1,21 +1,8 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
 
-class umf
-  implements View.OnFocusChangeListener
+public abstract interface umf
 {
-  umf(umb paramumb) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.onClick(umb.a(this.a));
-      return;
-    }
-    umb.a(this.a, 0, 8);
-    this.a.b(paramView);
-  }
+  public abstract void a(GiftServiceBean paramGiftServiceBean);
 }
 
 

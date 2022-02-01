@@ -1,36 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class agos
-  implements Animator.AnimatorListener
+  extends SosoInterface.OnLocationListener
 {
-  public agos(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  agos(agor paramagor, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
-      return;
-    }
-    SixCombolEffectView.a(this.a).start();
-    this.a.a();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (SixCombolEffectView.a(this.a)) {}
-    do
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    for (boolean bool = true;; bool = false)
     {
+      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
       return;
-      SixCombolEffectView.jdField_a_of_type_Int = 1;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < 3) {
+      return;
+    }
+    a(paramInt1, null);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    a(paramInt, paramSosoLbsInfo);
   }
 }
 

@@ -1,71 +1,104 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.HttpURLConnection;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 
 public class ardx
+  extends aqwt<Object>
 {
-  public final int a;
-  public final File a;
-  public final String a;
-  public HttpURLConnection a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f = "";
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  
-  public ardx(String paramString, File paramFile, int paramInt)
+  public Class<Object> clazz()
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(HttpDownloadUtil.PROTOCOL_HTTPS))) {
-      this.jdField_b_of_type_Boolean = true;
+    return Object.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  @NonNull
+  public Object migrateOldOrDefaultContent(int paramInt)
+  {
+    return new Object();
+  }
+  
+  public int migrateOldVersion()
+  {
+    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    if (!PtvTemplateManager.a()) {
+      return 0;
     }
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Int = paramInt;
+    return bhhr.k(BaseApplicationImpl.getContext());
   }
   
-  public String a()
+  @Nullable
+  public Object onParsed(aqxa[] paramArrayOfaqxa)
   {
-    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + ".tmp";
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length == 0)) {
+      return null;
+    }
+    paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onParsed, content:" + paramArrayOfaqxa);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    PtvTemplateManager.a(localQQAppInterface).a(paramArrayOfaqxa, localQQAppInterface);
+    return new Object();
   }
   
-  public void a()
+  public void onReqFailed(int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 0;
-    this.h = null;
-    this.i = null;
-    this.g = null;
-    this.k = null;
-    this.j = null;
-    this.d = null;
-    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onReqFailed");
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onReqNoReceive");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    PtvTemplateManager localPtvTemplateManager = PtvTemplateManager.a(localQQAppInterface);
+    if (localPtvTemplateManager.b()) {
+      localPtvTemplateManager.a(localQQAppInterface, null);
+    }
+  }
+  
+  public int onSend(int paramInt)
+  {
+    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    if (!PtvTemplateManager.a())
+    {
+      QLog.i("QIMDoodleConfigProcessor", 1, "config file not exist");
+      aqxe.a().a(310, 0);
+      return 0;
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public void onUpdate(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onUpdate");
+    }
+  }
+  
+  public int type()
+  {
+    return 310;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardx
  * JD-Core Version:    0.7.0.1
  */

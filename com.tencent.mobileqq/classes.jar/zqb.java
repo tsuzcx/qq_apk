@@ -1,233 +1,79 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandUnit;
-import com.tencent.biz.troop.VideoCombineHelper.CombineTask.3;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class zqb
-  extends zqo
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
-  
-  public zqb(zqp paramzqp, String paramString1, List<String> paramList, String paramString2, String paramString3)
+  public static String a(int paramInt)
   {
-    super(paramzqp, paramString1, paramList);
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    Object localObject;
-    this.b = localObject;
-    this.jdField_a_of_type_JavaUtilList = paramString2;
-    this.jdField_a_of_type_Zqo = new zqm(paramzqp, paramString1, paramList);
-  }
-  
-  public File a(File paramFile, String paramString, zpy paramzpy)
-  {
-    Object localObject = new MediaMetadataRetriever();
-    ((MediaMetadataRetriever)localObject).setDataSource(paramFile.getAbsolutePath());
-    String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(18);
-    String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
-    ((MediaMetadataRetriever)localObject).release();
-    localObject = paramFile.getParent() + File.separator + "wording.png";
-    String str3 = paramFile.getParent() + File.separator + "vmw.mp4";
-    try
+    switch (paramInt)
     {
-      int i = Integer.parseInt(str1);
-      int j = Integer.parseInt(str2);
-      long l = System.currentTimeMillis();
-      a(i, j, paramString, (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.trace_video_combine", 2, "createWatermarkPng time = " + (System.currentTimeMillis() - l));
-      }
-      a().c.add(new File((String)localObject));
-      this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.watermark((String)localObject, paramFile.getAbsolutePath(), str3, i, j, new zqi(this, paramzpy, str3));
+    default: 
+      return String.valueOf(paramInt);
+    case 0: 
+      return "PLAYER_INFO_UNKNOW";
+    case 100: 
+      return "PLAYER_INFO_FIRST_CLIP_OPENED";
+    case 101: 
+      return "PLAYER_INFO_PACKET_READ";
+    case 102: 
+      return "PLAYER_INFO_FIRST_AUDIO_DECODER_START";
+    case 103: 
+      return "PLAYER_INFO_FIRST_VIDEO_DECODER_START";
+    case 104: 
+      return "PLAYER_INFO_FIRST_AUDIO_FRAME_RENDERED";
+    case 105: 
+      return "PLAYER_INFO_FIRST_VIDEO_FRAME_RENDERED";
+    case 106: 
+      return "PLAYER_INFO_FIRST_PACKET_READ";
+    case 107: 
+      return "PLAYER_INFO_CURRENT_LOOP_START";
+    case 108: 
+      return "PLAYER_INFO_CURRENT_LOOP_END";
+    case 109: 
+      return "PLAYER_INFO_CLIP_EOS";
+    case 110: 
+      return "PLAYER_INFO_EOS";
+    case 111: 
+      return "PLAYER_INFO_SWITCH_DEFINITION";
+    case 112: 
+      return "PLAYER_INFO_BUFFERING_START";
+    case 113: 
+      return "PLAYER_INFO_BUFFERING_END";
+    case 114: 
+      return "PLAYER_INFO_AUDIO_DECODER_TYPE";
+    case 115: 
+      return "PLAYER_INFO_VIDEO_DECODER_TYPE";
+    case 116: 
+      return "PLAYER_INFO_AUDIO_SW_DECODING_SLOW";
+    case 117: 
+      return "PLAYER_INFO_AUDIO_HW_DECODING_SLOW";
+    case 118: 
+      return "PLAYER_INFO_VIDEO_SW_DECODING_SLOW";
+    case 119: 
+      return "PLAYER_INFO_VIDEO_HW_DECODING_SLOW";
+    case 121: 
+      return "PLAYER_INFO_NEED_TO_ROTATE_SURFACE";
+    case 122: 
+      return "PLAYER_INFO_MEDIACODEC_VIDEO_CROP";
+    case 123: 
+      return "PLAYER_INFO_PRIVATE_HLS_TAG";
+    case 124: 
+      return "PLAYER_INFO_PLAYER_TYPE";
+    case 200: 
+      return "PLAYER_INFO_RETRY_PLAYER";
+    case 201: 
+      return "PLAYER_INFO_ALL_DOWNLOAD_FINISH";
+    case 203: 
+      return "PLAYER_INFO_OBJECT_PLAY_CDN_URL_CHANGED";
+    case 204: 
+      return "PLAYER_INFO_OBJECT_PLAY_CDN_INFO_UPDATE";
+    case 205: 
+      return "PLAYER_INFO_PROTOCOL_UPDATE";
+    case 206: 
+      return "PLAYER_INFO_DOWNLOAD_STATUS_UPDATE";
+    case 207: 
+      return "TP_PLAYER_INFO_OBJECT_DOWNLOAD_PROGRESS_UPDATE";
+    case 208: 
+      return "PLAYER_INFO_OBJECT_MEDIA_CODEC_INFO";
     }
-    catch (Exception paramFile)
-    {
-      for (;;)
-      {
-        QLog.e(".troop.VideoCombineHelper", 2, "combineWording failed!", paramFile);
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    String str;
-    zqa localzqa;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      str = a() + File.separator + "v.ts";
-      localzqa = a();
-      if (localzqa.b) {
-        this.jdField_a_of_type_Zqp.b(this);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_JavaUtilList, str, new zqc(this, localzqa));
-  }
-  
-  public void a(List<String> paramList, String paramString, zpy paramzpy)
-  {
-    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramzpy.a("", false, "videoFiles empty!");
-      return;
-    }
-    if (paramList.size() == 1)
-    {
-      paramzpy.a((String)this.jdField_a_of_type_JavaUtilList.get(0), true, "combineVideos Success size = 1");
-      return;
-    }
-    try
-    {
-      long l = System.currentTimeMillis();
-      paramList = new File(paramString);
-      a(this.jdField_a_of_type_JavaUtilList, paramList.getAbsolutePath(), new zqg(this, l, paramzpy, paramList));
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QLog.e(".troop.VideoCombineHelper", 2, "combineVideos failed", paramList);
-    }
-  }
-  
-  public void a(List<String> paramList, String paramString, zql paramzql)
-  {
-    Object localObject1 = new File(paramString);
-    if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
-    {
-      paramzql.a(true);
-      return;
-    }
-    localObject1 = new ArrayList();
-    this.jdField_a_of_type_Zpq.jdField_a_of_type_Long = System.currentTimeMillis();
-    StringBuffer localStringBuffer = new StringBuffer("concat:");
-    int i = 0;
-    if (i < paramList.size())
-    {
-      localObject2 = (String)paramList.get(i);
-      Object localObject3 = new File((String)localObject2);
-      Object localObject4 = ((File)localObject3).getName().split("\\.");
-      localObject3 = ((File)localObject3).getAbsoluteFile().getParent() + File.separator + localObject4[0] + ".ts";
-      localStringBuffer.append((String)localObject3);
-      if (i != paramList.size() - 1) {
-        localStringBuffer.append("|");
-      }
-      localObject4 = new File((String)localObject3);
-      if ((((File)localObject4).exists()) && (((File)localObject4).length() > 0L)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!((File)localObject4).getParentFile().exists()) {
-          ((File)localObject4).getParentFile().mkdirs();
-        }
-        localObject4 = new FFmpegCommandUnit();
-        ((FFmpegCommandUnit)localObject4).cmdType = 5;
-        ((FFmpegCommandUnit)localObject4).arguments = new VideoCombineHelper.CombineTask.3(this, (String)localObject2, (String)localObject3);
-        ((FFmpegCommandUnit)localObject4).callback = new zqh(this, paramzql);
-        ((ArrayList)localObject1).add(localObject4);
-      }
-    }
-    paramList = new File(paramString);
-    paramString = paramList.getName().split("\\.");
-    paramList = paramList.getParent() + File.separator + paramString[0] + ".ts";
-    paramString = new FFmpegCommandUnit();
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add("-y");
-    ((ArrayList)localObject2).add("-i");
-    ((ArrayList)localObject2).add(localStringBuffer.toString());
-    ((ArrayList)localObject2).add("-c");
-    ((ArrayList)localObject2).add("copy");
-    ((ArrayList)localObject2).add(paramList);
-    paramString.cmd = ((String[])((ArrayList)localObject2).toArray(new String[0]));
-    paramString.callback = paramzql;
-    ((ArrayList)localObject1).add(paramString);
-    if (this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.isFFmpegCommandRunning()) {
-      try
-      {
-        this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.insertFFmpegQueue((ArrayList)localObject1);
-        return;
-      }
-      catch (FFmpegCommandAlreadyRunningException paramList)
-      {
-        paramList.printStackTrace();
-        return;
-      }
-      catch (IOException paramList)
-      {
-        paramList.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.cmdFFmpegQueue((ArrayList)localObject1);
-      return;
-    }
-    catch (FFmpegCommandAlreadyRunningException paramList)
-    {
-      paramList.printStackTrace();
-      return;
-    }
-    catch (IOException paramList)
-    {
-      paramList.printStackTrace();
-    }
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString1, String paramString2)
-  {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      Paint localPaint1 = new Paint();
-      localPaint1.setColor(-1);
-      localPaint1.setTextSize(30.0F);
-      localPaint1.setTextAlign(Paint.Align.CENTER);
-      Rect localRect = new Rect();
-      localPaint1.getTextBounds(paramString1, 0, paramString1.length(), localRect);
-      Paint localPaint2 = new Paint();
-      localPaint2.setColor(-16777216);
-      RectF localRectF = new RectF();
-      localRectF.top = (paramInt2 - localRect.height() - 15 - 15);
-      localRectF.left = ((paramInt1 - localRect.width()) / 2 - 15);
-      localRectF.bottom = (localRectF.top + localRect.height() + 15);
-      localRectF.right = (localRectF.left + localRect.width() + 30);
-      localCanvas.drawRoundRect(localRectF, 8.0F, 8.0F, localPaint2);
-      localCanvas.drawText(paramString1, paramInt1 / 2, paramInt2 - 15 - localRect.height() / 2, localPaint1);
-      yoy.a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString2);
-      yoy.a(localBitmap);
-      bool = true;
-    }
-    catch (Throwable paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(".troop.VideoCombineHelper", 2, "createWatermarkByWording", paramString1);
-    }
-    return bool;
-    return false;
+    return "PLAYER_INFO_VIDEO_FRAME_CHECK_INFO";
   }
 }
 

@@ -1,6 +1,18 @@
-public abstract interface bnzr
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
+
+public class bnzr
+  implements bnvc
 {
-  public abstract void a();
+  public bnzr(AEEditorMultiVideoEditFragment paramAEEditorMultiVideoEditFragment) {}
+  
+  public void a(int paramInt, bnwd parambnwd)
+  {
+    if ((parambnwd instanceof bnwo)) {
+      AEEditorMultiVideoEditFragment.a(this.a, (bnwo)parambnwd);
+    }
+  }
+  
+  public void aF_() {}
 }
 
 

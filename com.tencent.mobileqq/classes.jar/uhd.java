@@ -1,58 +1,35 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageView;
+import com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView;
+import com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView;
+import com.tencent.hippy.qq.view.tkd.text.HippyTKDTextView;
+import com.tencent.hippy.qq.view.tkd.view.HippyTKDViewGroup;
+import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.uimanager.HippyCustomViewCreator;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$ShareReport;", "", "()V", "action", "", "from", "isSharing", "", "reportClick", "", "reportExp", "reportResult", "success", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class uhd
+public class uhd
+  implements HippyCustomViewCreator
 {
-  private static int jdField_a_of_type_Int;
-  public static final uhd a;
-  private static boolean jdField_a_of_type_Boolean;
-  private static int b;
-  
-  static
+  public View createCustomView(String paramString, Context paramContext, HippyMap paramHippyMap)
   {
-    jdField_a_of_type_Uhd = new uhd();
-  }
-  
-  public final void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-    pbg localpbg = new pbg();
-    pbk.a(localpbg, "from", Integer.valueOf(paramInt));
-    odq.a("0X800AD75", localpbg.a());
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    int i = 0;
-    pbg localpbg;
-    if (jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = false;
-      localpbg = new pbg();
-      pbk.a(localpbg, "from", Integer.valueOf(jdField_a_of_type_Int));
-      pbk.a(localpbg, "share_unit", Integer.valueOf(ugz.a.a(b)));
-      if (!paramBoolean) {
-        break label74;
-      }
+    if (TextUtils.equals("ListView", paramString)) {
+      return new HippyTKDListView(paramContext);
     }
-    for (;;)
-    {
-      pbk.a(localpbg, "result", Integer.valueOf(i));
-      odq.a("0X800AD77", localpbg.a());
-      return;
-      label74:
-      i = 1;
+    if (TextUtils.equals("Text", paramString)) {
+      return new HippyTKDTextView(paramContext);
     }
-  }
-  
-  public final void b(int paramInt)
-  {
-    b = paramInt;
-    jdField_a_of_type_Boolean = true;
-    pbg localpbg = new pbg();
-    pbk.a(localpbg, "from", Integer.valueOf(jdField_a_of_type_Int));
-    pbk.a(localpbg, "share_unit", Integer.valueOf(ugz.a.a(paramInt)));
-    odq.a("0X800AD76", localpbg.a());
+    if (TextUtils.equals("View", paramString)) {
+      return new HippyTKDViewGroup(paramContext);
+    }
+    if (TextUtils.equals("Image", paramString)) {
+      return new HippyTKDImageView(paramContext);
+    }
+    if (TextUtils.equals("TKDGifImageView", paramString)) {
+      return new HippyTKDGifImageView(paramContext);
+    }
+    return null;
   }
 }
 

@@ -1,12 +1,12 @@
-class wkj
-  implements wba
+public class wkj
 {
-  wkj(wkg paramwkg, waz paramwaz) {}
+  public final int a;
+  public final String a;
   
-  public void a(boolean paramBoolean)
+  public wkj(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Waz.a();
-    this.jdField_a_of_type_Wkg.d();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

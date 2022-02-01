@@ -1,15 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.util.Pair;
+import java.util.HashMap;
 
-class bjwo
-  implements ValueAnimator.AnimatorUpdateListener
+public class bjwo
 {
-  bjwo(bjwn parambjwn, bjwf parambjwf) {}
+  public static HashMap<Long, Pair<Long, Long>> a = new HashMap();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_Bjwn.a(paramValueAnimator.getAnimatedFraction());
-  }
+  public static void a(long paramLong, String paramString) {}
 }
 
 

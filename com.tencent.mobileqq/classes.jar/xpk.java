@@ -1,80 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.graphics.Color;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
-public abstract class xpk
-  implements xpl
+class xpk
+  extends xgs
 {
-  protected Activity a;
-  
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public View a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
-    }
-    xvv.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setContentView(paramInt);
-      return;
-    }
-    xvv.e(getClass().getSimpleName(), "setContentView can not access after detach");
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setResult(paramInt, paramIntent);
-      return;
-    }
-    xvv.e(getClass().getSimpleName(), "finish can not access after detach");
-  }
-  
-  public void a(@NonNull Activity paramActivity)
-  {
-    this.a = paramActivity;
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void b() {}
-  
-  public void c() {}
+  xpk(xpj paramxpj) {}
   
   public void d()
   {
-    this.a = null;
+    super.d();
+    if (LiuHaiUtils.b(this.a.b()))
+    {
+      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363726);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
+      localLayoutParams.height = xpj.a(this.a);
+      if (!ScreenUtil.checkDeviceHasNavigationBar(this.a.a.getContext())) {
+        localLinearLayout.setBackgroundColor(Color.parseColor("#181818"));
+      }
+      localLinearLayout.setLayoutParams(localLayoutParams);
+    }
   }
   
-  public void e()
+  public void g()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      return;
-    }
-    xvv.e(getClass().getSimpleName(), "finish can not access after detach");
+    super.g();
+    xpj.a(this.a).a();
   }
 }
 

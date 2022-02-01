@@ -1,44 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public final class bhjp
-  implements ValueAnimator.AnimatorUpdateListener
+public class bhjp
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public boolean a;
-  public boolean b = false;
-  
-  public bhjp(TabDragAnimationView paramTabDragAnimationView)
+  public static SharedPreferences a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f - this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
+    if ((AudioHelper.e()) && (TextUtils.isEmpty(paramString2)))
+    {
+      paramString2 = " getSP, 获取配置需要UIN, uin[" + paramString2 + "], spName[" + paramString3 + "]";
+      QLog.w(paramString1, 1, paramString2, new Throwable("打印调用栈"));
+      throw new IllegalArgumentException(paramString1 + paramString2);
     }
-    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
-      this.b = false;
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(paramString3 + paramString2, 4);
+      if ((localObject == null) && (AudioHelper.e())) {
+        QLog.w(paramString1, 1, "getSP, sp为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
+      }
+      return localObject;
     }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
+    if (AudioHelper.e()) {
+      QLog.w(paramString1, 1, "getSP, BaseApplicationImpl为null, uin[" + paramString2 + "], spName[" + paramString3 + "]", new Throwable("打印调用栈"));
     }
+    return null;
   }
 }
 

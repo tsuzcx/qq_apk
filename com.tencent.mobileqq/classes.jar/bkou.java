@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
-public final class bkou
-  implements Parcelable.Creator<MessageRecordParcel>
+class bkou
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnBufferingUpdateListener
 {
-  public MessageRecordParcel a(Parcel paramParcel)
-  {
-    return MessageRecordParcel.a(paramParcel);
-  }
+  bkou(bkor parambkor, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
   
-  public MessageRecordParcel[] a(int paramInt)
+  public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
   {
-    return new MessageRecordParcel[paramInt];
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_Bkor, paramInt);
   }
 }
 

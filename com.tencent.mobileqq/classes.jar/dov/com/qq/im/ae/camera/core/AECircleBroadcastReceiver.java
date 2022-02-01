@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bmbx;
-import dov.com.qq.im.ae.download.AEResInfo;
+import bnkt;
+import bnrh;
 
 public class AECircleBroadcastReceiver
   extends BroadcastReceiver
@@ -23,8 +23,8 @@ public class AECircleBroadcastReceiver
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix);
-    localIntentFilter.addAction(AEResInfo.AE_RES_ADDITIONAL_PACKAGE.resPrefix);
+    localIntentFilter.addAction(bnkt.jdField_b_of_type_Bnkt.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(bnkt.c.jdField_b_of_type_JavaLangString);
     return localIntentFilter;
   }
   
@@ -32,10 +32,10 @@ public class AECircleBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("ae_camera_res_downloadfinish_path");
-    if ((AEResInfo.AE_RES_BASE_PACKAGE.resPrefix.equals(paramContext)) && (this.mPhotoListLogicAECircle != null))
+    if ((bnkt.jdField_b_of_type_Bnkt.jdField_b_of_type_JavaLangString.equals(paramContext)) && (this.mPhotoListLogicAECircle != null))
     {
       this.mPhotoListLogicAECircle.onDownLoadFinish(paramIntent);
-      bmbx.a("AECircleBroadcastReceiver", "[onReceive]");
+      bnrh.a("AECircleBroadcastReceiver", "[onReceive]");
     }
   }
   

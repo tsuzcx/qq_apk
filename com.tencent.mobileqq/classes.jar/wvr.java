@@ -1,17 +1,31 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wvr
-  implements wxc
+  extends wfh
 {
-  public wvr(TrimTextureVideoView paramTrimTextureVideoView) {}
+  public List<VideoCollectionItem> a = new ArrayList();
   
-  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
+  public wvr(String paramString, qqstory_service.RspCollectionViewCount paramRspCollectionViewCount)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    super(paramRspCollectionViewCount.result);
+    paramRspCollectionViewCount = paramRspCollectionViewCount.collection_list.get();
+    if (paramRspCollectionViewCount != null)
+    {
+      paramRspCollectionViewCount = paramRspCollectionViewCount.iterator();
+      while (paramRspCollectionViewCount.hasNext())
+      {
+        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspCollectionViewCount.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.net:UpdateCollectionViewCountResponse", paramString, localDateVideoCollection);
+        this.a.add(localVideoCollectionItem);
+      }
     }
-    return true;
   }
 }
 

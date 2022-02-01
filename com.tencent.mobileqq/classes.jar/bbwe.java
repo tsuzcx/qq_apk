@@ -1,18 +1,6 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
-
-public class bbwe
-  implements afym
+public abstract interface bbwe
 {
-  bbwe(bbwb parambbwb) {}
-  
-  public void a()
-  {
-    if (bbwb.a(this.a) == null) {
-      bbwb.a(this.a, new Handler());
-    }
-    bbwb.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
-  }
+  public abstract void a(String paramString);
 }
 
 

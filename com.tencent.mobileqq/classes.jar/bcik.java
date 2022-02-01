@@ -1,179 +1,128 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.xmlpull.v1.XmlSerializer;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bcik
-  extends bcgw
+  extends bciz
 {
-  public ArrayList<bcgw> a;
-  private String ac = "";
-  
-  public bcik()
+  public bcik(FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_JavaLangString = "taglist";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramFaceDecoder);
   }
   
-  private LinearLayout a(Context paramContext)
+  protected bcie<bcfj, bcnt> a(FaceDecoder paramFaceDecoder)
   {
-    paramContext = new LinearLayout(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    paramContext.setOrientation(0);
-    paramContext.setLayoutParams(localLayoutParams);
-    paramContext.setId(2131362426);
-    if (AppSetting.c) {
-      paramContext.setContentDescription(this.ac);
-    }
-    return paramContext;
+    return new bcil(paramFaceDecoder);
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  public void a(bcfh parambcfh, bcns parambcns)
   {
-    Object localObject = paramContext.getResources();
+    parambcfh = (bcfi)parambcfh;
+    LinearLayout localLinearLayout = ((bcnx)parambcns).a();
+    List localList;
+    int k;
     int i;
-    if (paramView != null)
+    bcff localbcff;
+    Object localObject2;
+    Object localObject1;
+    if (localLinearLayout != null)
     {
-      paramBundle = paramView;
-      if ((paramView instanceof LinearLayout))
+      localList = parambcfh.a();
+      if (localList != null)
       {
-        localObject = (LinearLayout)paramView;
+        localLinearLayout.removeAllViews();
+        k = Math.min(localList.size(), 3);
         i = 0;
-        for (;;)
+        if (i < k)
         {
-          paramBundle = paramView;
-          if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-            break;
+          parambcfh = (bcfj)localList.get(i);
+          if ((parambcfh instanceof bcff))
+          {
+            localbcff = (bcff)parambcfh;
+            localObject2 = null;
+            if (bcgu.a(localbcff.e()) == 1)
+            {
+              localObject2 = LayoutInflater.from(parambcns.a().getContext()).inflate(2131562826, null);
+              parambcfh = ((View)localObject2).findViewById(2131369049);
+              localObject1 = new bcnn((View)localObject2);
+            }
           }
-          ((bcgw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, ((LinearLayout)localObject).getChildAt(i), null);
-          i += 1;
         }
-      }
-    }
-    else
-    {
-      paramView = a(paramContext);
-      paramView.setPadding(AIOUtils.dp2px(12.0F, (Resources)localObject), 0, AIOUtils.dp2px(12.0F, (Resources)localObject), 0);
-      i = 0;
-      int j = 1;
-      paramBundle = paramView;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        paramBundle = ((bcgw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, null, null);
-        if (j == 0)
-        {
-          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
-          localLayoutParams.setMargins(AIOUtils.dp2px(2.0F, (Resources)localObject), 0, 0, 0);
-          paramView.addView(paramBundle, localLayoutParams);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramView.addView(paramBundle);
-          j = 0;
-        }
-      }
-    }
-    return paramBundle;
-  }
-  
-  public String a()
-  {
-    return "taglist";
-  }
-  
-  public void a(bcgw parambcgw)
-  {
-    if ((parambcgw instanceof bcij)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(parambcgw);
-    }
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    int j = paramObjectInput.readInt();
-    int i = 0;
-    while (i < j)
-    {
-      bcgw localbcgw = bchg.a(paramObjectInput.readUTF());
-      if (localbcgw != null)
-      {
-        localbcgw.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
-        localbcgw.a(paramObjectInput);
-        a(localbcgw);
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bcgw)localIterator.next()).a(paramObjectOutput);
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bcgw)localIterator.next()).a(paramXmlSerializer);
-    }
-    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(bcin parambcin)
-  {
-    if (parambcin == null) {
-      return true;
-    }
-    int j = parambcin.a();
-    int i = 0;
-    label13:
-    bcin localbcin;
-    if (i < j)
-    {
-      localbcin = parambcin.a(i);
-      if (localbcin != null) {
-        break label37;
       }
     }
     for (;;)
     {
-      i += 1;
-      break label13;
-      break;
-      label37:
-      bcgw localbcgw = null;
-      if ("tag".equals(localbcin.b)) {
-        localbcgw = bchg.a(localbcin.b);
+      label137:
+      int j;
+      if ((localObject2 != null) && (parambcfh != null))
+      {
+        ((View)localObject2).setTag(2131381183, localbcff);
+        ((View)localObject2).setTag(2131381188, localObject1);
+        ((View)localObject2).setTag(2131381184, Integer.valueOf(i));
+        ((View)localObject2).setTag(2131381182, Integer.valueOf(localList.size()));
+        ((View)localObject2).setTag(2131381185, this.a);
+        bfcs.a((View)localObject2, localbcff.d(), localbcff.b(), 1);
+        bcnf.a(localbcff, k, i);
+        int m = localbcff.a();
+        int n = localbcff.b();
+        if ((localbcff instanceof bcfk))
+        {
+          j = localbcff.u;
+          label256:
+          bcnf.a(m, n, (View)localObject2, j);
+          localLinearLayout.addView((View)localObject2);
+          this.a.a(localbcff, (bcnu)localObject1);
+        }
       }
-      if (localbcgw == null) {
-        return false;
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (bcgu.a(localbcff.e()) != 2) {
+          break label554;
+        }
+        localObject2 = LayoutInflater.from(parambcns.a().getContext()).inflate(2131562833, null);
+        parambcfh = ((View)localObject2).findViewById(2131369049);
+        localObject1 = new bcnw((View)localObject2);
+        break label137;
+        j = 0;
+        break label256;
+        QLog.e("MostUseResultGroupPresenter", 2, "unresolved id type" + localbcff.e());
+        continue;
+        if ((parambcfh instanceof bceh))
+        {
+          parambcfh = (bceh)parambcfh;
+          localObject1 = new bcpb(localLinearLayout, parambcfh.d());
+          localObject2 = ((bcpb)localObject1).a();
+          ((View)localObject2).setTag(2131381183, parambcfh);
+          ((View)localObject2).setTag(2131381188, localObject1);
+          ((View)localObject2).setTag(2131381184, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131381182, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131381185, this.a);
+          bcnf.a(parambcfh, k, i);
+          localObject2 = new LinearLayout.LayoutParams(-1, -2);
+          localLinearLayout.addView(((bcpb)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          this.a.a(parambcfh, (bcnu)localObject1);
+        }
+        else
+        {
+          QLog.e("MostUseResultGroupPresenter", 2, "unknown type in MOST USED GROUP P");
+        }
       }
-      if (!localbcgw.a(localbcin)) {
-        break label89;
+      if (parambcns.b() != null) {
+        parambcns.b().setVisibility(8);
       }
-      a(localbcgw);
+      return;
+      label554:
+      parambcfh = null;
+      localObject1 = null;
     }
-    label89:
-    return false;
   }
 }
 

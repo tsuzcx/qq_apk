@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bgfm;
-import bgfo;
+import bhoh;
+import bhoj;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -11,9 +11,9 @@ class SignatureManager$3
   public void run()
   {
     this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(this.a);
-    bgfo localbgfo = bgfm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
-    if (localbgfo != null) {
-      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localbgfo);
+    bhoj localbhoj = bhoh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
+    if (localbhoj != null) {
+      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localbhoj);
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
   }

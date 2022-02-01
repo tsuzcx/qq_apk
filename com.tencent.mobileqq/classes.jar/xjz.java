@@ -1,27 +1,94 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class xjz
+  implements Cloneable
 {
-  private qqstory_struct.GatherCardInfo a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
   
-  public xjz(qqstory_struct.GatherCardInfo paramGatherCardInfo)
+  public xjz()
   {
-    this.a = paramGatherCardInfo;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public xjz(byte[] paramArrayOfByte)
+  public xjz(xjz paramxjz)
   {
-    this.a = new qqstory_struct.GatherCardInfo();
-    try
-    {
-      this.a.mergeFrom(paramArrayOfByte);
-      return;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramxjz.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaLangString = paramxjz.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramxjz.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramxjz.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramxjz.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramxjz.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramxjz.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Long = paramxjz.jdField_b_of_type_Long;
+    this.jdField_c_of_type_JavaLangString = paramxjz.jdField_c_of_type_JavaLangString;
+    this.jdField_c_of_type_Long = paramxjz.jdField_c_of_type_Long;
+    this.d = paramxjz.d;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    return -1L;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = null;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
     }
+    return -1L;
+  }
+  
+  public long c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
+      return -1L;
+    }
+    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      i += 1;
+    }
+    return j / k;
+  }
+  
+  public String toString()
+  {
+    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
   }
 }
 

@@ -1,14 +1,13 @@
-import java.util.List;
-
-public abstract interface aogb
+class aogb
 {
-  public abstract String a();
+  public long a;
+  public String a;
   
-  public abstract List<String> a();
-  
-  public abstract String b();
-  
-  public abstract String c();
+  aogb(aofw paramaofw, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

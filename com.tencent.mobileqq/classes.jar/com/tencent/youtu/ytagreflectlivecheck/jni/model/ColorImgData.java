@@ -3,6 +3,7 @@ package com.tencent.youtu.ytagreflectlivecheck.jni.model;
 public class ColorImgData
 {
   public long capture_time;
+  public String checksum;
   public String image;
   public int x;
   public int y;

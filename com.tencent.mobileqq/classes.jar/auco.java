@@ -1,21 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class auco
-  implements DialogInterface.OnClickListener
+public class auco
 {
-  auco(aucm paramaucm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    apdi.a().a(this.a.jdField_a_of_type_Int, -1);
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    for (paramDialogInterface = "";; paramDialogInterface = this.a.jdField_a_of_type_JavaLangString)
-    {
-      bcef.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
-      return;
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public byte[] c;
+  public long d;
 }
 
 

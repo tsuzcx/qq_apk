@@ -1,29 +1,30 @@
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bmdt
-  implements bmee
 {
-  private bmdt(MoreLyricLayout paramMoreLyricLayout) {}
-  
-  public void a(long paramLong)
+  public static long a(Context paramContext, String paramString)
   {
-    bmbx.a("MoreLyricLayout", "onScroll() position => " + paramLong);
-    MoreLyricLayout.a(this.a);
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public static String a(Context paramContext, String paramString)
   {
-    MoreLyricLayout.a(this.a, paramLong1);
-    String str = LyricWithBuoyView.a((int)paramLong1);
-    TextView localTextView = null;
-    if (MoreLyricLayout.a(this.a) != null) {
-      localTextView = MoreLyricLayout.a(this.a).a();
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramString2 == null) {
+      return;
     }
-    if (localTextView != null) {
-      localTextView.setText(str);
-    }
+    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
   }
 }
 

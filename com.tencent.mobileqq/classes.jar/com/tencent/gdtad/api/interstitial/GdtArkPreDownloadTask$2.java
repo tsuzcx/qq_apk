@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmf;
-import abmh;
-import abrl;
+import acbv;
+import acbx;
+import acho;
 import java.lang.ref.WeakReference;
 
 public class GdtArkPreDownloadTask$2
   implements Runnable
 {
-  public GdtArkPreDownloadTask$2(abmf paramabmf) {}
+  public GdtArkPreDownloadTask$2(acbv paramacbv) {}
   
   public void run()
   {
     boolean bool;
-    if ((abmf.a(this.this$0) != null) && (abmf.a(this.this$0).get() != null))
+    if ((acbv.a(this.this$0) != null) && (acbv.a(this.this$0).get() != null))
     {
       bool = true;
-      abrl.b("GdtArkPreDownloadTask", String.format("notifySuccess listener:%b status:%d notified:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(abmf.a(this.this$0)), Boolean.valueOf(abmf.b(this.this$0)) }));
-      if (!abmf.b(this.this$0)) {
+      acho.b("GdtArkPreDownloadTask", String.format("notifySuccess listener:%b status:%d notified:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(acbv.a(this.this$0)), Boolean.valueOf(acbv.b(this.this$0)) }));
+      if (!acbv.b(this.this$0)) {
         break label88;
       }
     }
@@ -27,9 +27,9 @@ public class GdtArkPreDownloadTask$2
       return;
       bool = false;
       break;
-      abmf.a(this.this$0, true);
-    } while ((abmf.a(this.this$0) == null) || (abmf.a(this.this$0).get() == null));
-    ((abmh)abmf.a(this.this$0).get()).a(abmf.a(this.this$0));
+      acbv.a(this.this$0, true);
+    } while ((acbv.a(this.this$0) == null) || (acbv.a(this.this$0).get() == null));
+    ((acbx)acbv.a(this.this$0).get()).a(acbv.a(this.this$0));
   }
 }
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
-import blts;
-import bltt;
+import bnhv;
+import bnhw;
 
 public class WaterMarkOnlineUserManager$1$1
   implements Runnable
 {
-  public WaterMarkOnlineUserManager$1$1(bltt parambltt) {}
+  public WaterMarkOnlineUserManager$1$1(bnhw parambnhw) {}
   
   public void run()
   {
-    blts.a(this.a.a);
+    bnhv.a(this.a.a);
   }
 }
 

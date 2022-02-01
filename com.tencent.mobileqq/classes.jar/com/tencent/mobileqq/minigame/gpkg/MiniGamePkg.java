@@ -87,11 +87,6 @@ public class MiniGamePkg
     return paramMiniAppConfig;
   }
   
-  public void downloadSubPack(String paramString, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
-  {
-    GpkgManager.downloadSubPack(this, paramString, paramOnInitGpkgListener);
-  }
-  
   public String getDeviceOrientation()
   {
     return this.deviceOrientation;

@@ -1,11 +1,4 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-
-public class auqm
-  implements BusinessObserver
-{
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqm

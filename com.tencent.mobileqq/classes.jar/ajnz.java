@@ -1,74 +1,27 @@
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
 
 public class ajnz
-  extends BaseAdapter
+  implements View.OnTouchListener
 {
-  public ajnz(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public ajnz(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
   
-  public String a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
-      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (CameraPreviewActivity.a(this.a) != null) {
-      return CameraPreviewActivity.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ajoa localajoa;
-    Object localObject;
-    if (paramView == null)
+    switch (paramMotionEvent.getAction())
     {
-      paramView = this.a.getLayoutInflater().inflate(2131559571, null);
-      localajoa = new ajoa();
-      localajoa.a = ((URLImageView)paramView.findViewById(2131372929));
-      paramView.setTag(localajoa);
-      localObject = a(paramInt);
-      if (localObject == null) {
-        break label155;
-      }
-      localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {}
     }
     for (;;)
     {
-      try
-      {
-        localajoa.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localajoa = (ajoa)paramView.getTag();
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        localMalformedURLException.printStackTrace();
-        continue;
-      }
-      label155:
-      localMalformedURLException.a.setImageDrawable(null);
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
     }
   }
 }

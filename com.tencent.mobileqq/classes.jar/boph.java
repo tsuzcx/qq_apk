@@ -1,0 +1,10 @@
+public abstract interface boph
+{
+  public abstract void onTabChecked(int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     boph
+ * JD-Core Version:    0.7.0.1
+ */

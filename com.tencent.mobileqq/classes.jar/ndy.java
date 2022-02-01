@@ -1,19 +1,24 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.gamelogic.data.Player;
-import com.tencent.avgame.gameroom.seat.SeatView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-public class ndy
+class ndy
   implements DialogInterface.OnClickListener
 {
-  public ndy(SeatView paramSeatView, Player paramPlayer) {}
+  ndy(ndx paramndx, Activity paramActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.cancel();
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a.a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+    paramDialogInterface = BaseApplicationImpl.getContext();
+    bdla.b(null, "dc00898", "", "", "0X800B038", "0X800B038", 0, 0, "", "", "", "");
+    if (FloatingScreenPermission.requestPermission(paramDialogInterface))
+    {
+      this.jdField_a_of_type_Ndx.c = true;
+      return;
     }
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

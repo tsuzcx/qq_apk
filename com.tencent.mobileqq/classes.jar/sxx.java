@@ -1,40 +1,12 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
-import mqq.util.WeakReference;
-
-class sxx
+public abstract interface sxx
 {
-  private static Map<AbstractGifImage, List<WeakReference<sxz>>> a = new WeakHashMap();
-  private static Map<AbstractGifImage, sxy> b = new WeakHashMap();
+  public abstract void a();
   
-  public void a()
-  {
-    a.clear();
-    b.clear();
-  }
+  public abstract void a(boolean paramBoolean);
   
-  void a(sxz paramsxz, URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
-    {
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-      paramURLDrawable = new sxy(localAbstractGifImage);
-      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
-      b.put(localAbstractGifImage, paramURLDrawable);
-      List localList = (List)a.get(localAbstractGifImage);
-      paramURLDrawable = localList;
-      if (localList == null) {
-        paramURLDrawable = new ArrayList();
-      }
-      paramURLDrawable.add(new WeakReference(paramsxz));
-      a.put(localAbstractGifImage, paramURLDrawable);
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import aabx;
+import aarj;
 import com.tencent.mobileqq.data.OfflineWebRes;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -10,17 +10,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class OfflineWebResManager$2
   implements Runnable
 {
-  public OfflineWebResManager$2(aabx paramaabx, int paramInt) {}
+  public OfflineWebResManager$2(aarj paramaarj, int paramInt) {}
   
   public void run()
   {
     try
     {
       Thread.sleep(this.a * 1000);
-      if (!aabx.jdField_a_of_type_Boolean)
+      if (!aarj.jdField_a_of_type_Boolean)
       {
-        aabx.c();
-        if (!aabx.b)
+        aarj.c();
+        if (!aarj.b)
         {
           this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(OfflineWebRes.class.getSimpleName());
           return;
@@ -33,9 +33,9 @@ public class OfflineWebResManager$2
       {
         localException.printStackTrace();
       }
-      aabx.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist(OfflineWebRes.class.getSimpleName());
+      aarj.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist(OfflineWebRes.class.getSimpleName());
       Object localObject;
-      if (!aabx.jdField_a_of_type_Boolean)
+      if (!aarj.jdField_a_of_type_Boolean)
       {
         localObject = new OfflineWebRes();
         ((OfflineWebRes)localObject).fileName = "test";
@@ -43,9 +43,9 @@ public class OfflineWebResManager$2
         ((OfflineWebRes)localObject).md5 = "test_md5";
         this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist((Entity)localObject);
       }
-      while (!aabx.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+      while (!aarj.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
       {
-        localObject = (String)aabx.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        localObject = (String)aarj.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
         this.this$0.b((String)localObject);
       }
       this.this$0.a();

@@ -1,21 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 
-public class arts
-  extends BroadcastReceiver
+public abstract interface arts
 {
-  public arts(FMActivity paramFMActivity) {}
+  public abstract boolean getHasPulledSourceMsg();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
+  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  
+  public abstract void setPulledSourceMsg();
 }
 
 

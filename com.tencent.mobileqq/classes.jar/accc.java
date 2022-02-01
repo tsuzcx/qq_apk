@@ -1,128 +1,137 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.PowerManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.s2c.msgtype0x210.submsgtype0xa4.submsgtype0xa4.MsgBody;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialManager.1;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
-public class accc
-  implements abzb
+public final class accc
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private static volatile accc jdField_a_of_type_Accc;
+  private volatile acbu jdField_a_of_type_Acbu;
+  private accd jdField_a_of_type_Accd = new accd();
+  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
+  private Map<String, WeakReference<GdtInterstitialFragment>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  private accc(acbu paramacbu)
   {
-    for (int i = 0;; i = 0) {
-      for (;;)
+    AdThreadManager.INSTANCE.post(new GdtInterstitialManager.1(this), 0);
+    this.jdField_a_of_type_Acbu = paramacbu;
+  }
+  
+  public static accc a()
+  {
+    if (jdField_a_of_type_Accc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Accc == null)
       {
-        try
-        {
-          Object localObject1 = ((ActivityManager)paramQQAppInterface.getApp().getSystemService("activity")).getRunningTasks(1);
-          if ((localObject1 == null) || (((List)localObject1).size() < 1)) {
-            break;
-          }
-          localObject1 = ((ActivityManager.RunningTaskInfo)((List)localObject1).get(0)).topActivity.getClassName();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xa4 : curActivity: " + (String)localObject1);
-          }
-          boolean bool = "com.tencent.mobileqq.activity.QQBrowserActivity".equals(localObject1);
-          i = bool;
-          Intent localIntent;
-          Object localObject3 = null;
-        }
-        catch (Exception localException1)
-        {
-          try
-          {
-            bool = ((PowerManager)paramQQAppInterface.getApp().getSystemService("power")).isScreenOn();
-            if ((!bool) || ((paramQQAppInterface.isBackgroundPause) && (i == 0))) {
-              localObject3 = new submsgtype0xa4.MsgBody();
-            }
-            try
-            {
-              ((submsgtype0xa4.MsgBody)localObject3).mergeFrom(paramMsgType0x210.vProtobuf);
-              if (!((submsgtype0xa4.MsgBody)localObject3).bytes_title.has()) {
-                break label509;
-              }
-              paramMsgType0x210 = ((submsgtype0xa4.MsgBody)localObject3).bytes_title.get().toStringUtf8();
-              if (!((submsgtype0xa4.MsgBody)localObject3).bytes_brief.has()) {
-                break label503;
-              }
-              localObject1 = ((submsgtype0xa4.MsgBody)localObject3).bytes_brief.get().toStringUtf8();
-              if (!((submsgtype0xa4.MsgBody)localObject3).bytes_url.has()) {
-                break label497;
-              }
-              localObject3 = ((submsgtype0xa4.MsgBody)localObject3).bytes_url.get().toStringUtf8();
-              if ((!TextUtils.isEmpty(paramMsgType0x210)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xa4 : title: " + paramMsgType0x210 + ", brief: " + (String)localObject1 + ", url:" + (String)localObject3);
-                }
-                localIntent = new Intent(paramQQAppInterface.getApp(), QQBrowserActivity.class);
-                localIntent.putExtra("url", (String)localObject3);
-                localIntent.putExtra("uintype", 3001);
-                localObject3 = new ToServiceMsg("mobileqq.service", paramQQAppInterface.getCurrentAccountUin(), "CMD_SHOW_NOTIFIYCATION");
-                ((ToServiceMsg)localObject3).extraData.putStringArray("cmds", new String[] { localObject1, paramMsgType0x210, localObject1 });
-                ((ToServiceMsg)localObject3).extraData.putParcelable("intent", localIntent);
-                ((ToServiceMsg)localObject3).extraData.putParcelable("bitmap", null);
-                paramQQAppInterface.sendToService((ToServiceMsg)localObject3);
-                bcef.b(null, "dc00898", "", "", "0X8006425", "0X8006425", 0, 0, "", "", "", "");
-              }
-              return;
-            }
-            catch (Exception paramQQAppInterface)
-            {
-              if (!QLog.isColorLevel()) {
-                break label492;
-              }
-              QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xa4 : fail to parse 0x210_0xa4.");
-              paramQQAppInterface.printStackTrace();
-              return;
-            }
-            localException1 = localException1;
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xa4 : fail to get curActivity.");
-            }
-            localException1.printStackTrace();
-            continue;
-          }
-          catch (Exception localException2)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xa4 : fail to get screen on.");
-            }
-            localException2.printStackTrace();
-            bool = true;
-            continue;
-          }
-        }
-        label492:
-        label497:
-        continue;
-        label503:
-        Object localObject2 = null;
-        continue;
-        label509:
-        paramMsgType0x210 = null;
+        acbu localacbu = new acbu();
+        localacbu.a = "com.tencent.tangram.interstitial";
+        localacbu.b = "Index";
+        localacbu.c = "1.0.0.1";
+        jdField_a_of_type_Accc = new accc(localacbu);
+      }
+      return jdField_a_of_type_Accc;
+    }
+    finally {}
+  }
+  
+  public acbu a()
+  {
+    return this.jdField_a_of_type_Acbu;
+  }
+  
+  public accd a()
+  {
+    return this.jdField_a_of_type_Accd;
+  }
+  
+  public GdtAppReceiver a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
+  }
+  
+  public WeakReference<GdtInterstitialFragment> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return null;
+    }
+    return (WeakReference)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    acho.b("GdtInterstitialManager", String.format("init %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    synchronized (jdField_a_of_type_Accc)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    AdIPCManager.INSTANCE.register("ipc_interstitial_close", new accb());
+    AdIPCManager.INSTANCE.register("ipc_interstitial_predownload", new acci());
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool;
+    if (TextUtils.isEmpty(paramString)) {
+      bool = false;
+    }
+    for (;;)
+    {
+      acho.b("GdtInterstitialManager", String.format("unregister %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
+      return bool;
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        bool = false;
+      }
+      else
+      {
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        bool = true;
       }
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public boolean a(String paramString, WeakReference<GdtInterstitialFragment> paramWeakReference)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    boolean bool;
+    if (TextUtils.isEmpty(paramString)) {
+      bool = false;
+    }
+    for (;;)
+    {
+      acho.b("GdtInterstitialManager", String.format("register %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
+      return bool;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        bool = false;
+      } else if (paramWeakReference != null)
+      {
+        if (paramWeakReference.get() == null)
+        {
+          bool = false;
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(paramString, paramWeakReference);
+          bool = true;
+        }
+      }
+      else {
+        bool = false;
+      }
+    }
   }
 }
 

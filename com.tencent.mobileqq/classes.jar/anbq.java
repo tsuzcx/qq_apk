@@ -1,29 +1,16 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class anbq
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "", "addFrame", "", "pixels", "", "width", "", "height", "close", "encode", "", "outputFilePath", "", "frameTime", "init", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface anbq
 {
-  protected void a(boolean paramBoolean, bcqu parambcqu) {}
+  public abstract void a();
   
-  protected void b(boolean paramBoolean, bcqu parambcqu) {}
+  public abstract void a(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  protected void c(boolean paramBoolean, bcqu parambcqu) {}
+  public abstract boolean a(@NotNull String paramString, int paramInt);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      b(paramBoolean, (bcqu)paramObject);
-      return;
-    case 1: 
-      c(paramBoolean, (bcqu)paramObject);
-      return;
-    }
-    a(paramBoolean, (bcqu)paramObject);
-  }
+  public abstract void b();
 }
 
 

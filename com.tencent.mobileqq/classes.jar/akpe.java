@@ -1,35 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import java.util.ArrayList;
 
-public class akpe
-  implements bhcj
+class akpe
+  extends akmu
 {
-  public akpe(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
-  
-  public int a()
+  protected akpe(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    return this.jdField_a_of_type_Int;
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void a(boolean paramBoolean)
+  public void initData(Intent paramIntent)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
-    }
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694661);
   }
   
-  public void b(boolean paramBoolean)
+  public void initUI()
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akpf(this));
+  }
+  
+  public boolean needShowMultiPhoto()
+  {
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
 }
 

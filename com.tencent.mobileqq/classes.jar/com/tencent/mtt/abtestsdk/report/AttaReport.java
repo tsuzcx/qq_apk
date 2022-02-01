@@ -2,7 +2,7 @@ package com.tencent.mtt.abtestsdk.report;
 
 import com.tencent.mtt.abtestsdk.entity.AttaEntity;
 import com.tencent.mtt.abtestsdk.utils.ABTestLog;
-import com.tencent.mtt.abtestsdk.utils.ThreadUtil;
+import com.tencent.mtt.abtestsdk.utils.ThreadPoolUtil;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.OkHttpClient.Builder;
@@ -55,7 +55,7 @@ public class AttaReport
     }
     paramAttaEntity = createReportData(paramAttaEntity);
     ABTestLog.debug("atta report params is:" + paramAttaEntity.toString(), new Object[0]);
-    ThreadUtil.execute(new AttaReport.1(this, paramAttaEntity));
+    ThreadPoolUtil.execute(new AttaReport.1(this, paramAttaEntity));
   }
   
   public void setAttId(String paramString)

@@ -1,19 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
-class axtw
-  implements View.OnClickListener
+public class axtw
+  implements axun
 {
-  axtw(axtr paramaxtr, AutoReplyText paramAutoReplyText, boolean paramBoolean) {}
+  public axtw(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    if (axtr.a(this.jdField_a_of_type_Axtr) != null) {
-      axtr.a(this.jdField_a_of_type_Axtr).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
+    {
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
+      {
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+      }
+      i += 1;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

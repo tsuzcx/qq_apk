@@ -1,30 +1,94 @@
-import android.app.Dialog;
+import android.os.Build.VERSION;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.location.window.CanBackFrameLayout;
+import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class awnm
-  implements View.OnClickListener
 {
-  public awnm(NearbyGuideActivity paramNearbyGuideActivity) {}
+  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131559026, null);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
+  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365633);
+  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365666);
+  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
+  private final TextView b;
+  private final TextView c;
   
-  public void onClick(View paramView)
+  public awnm()
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new awnn(this));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365639));
+    this.b.setOnClickListener(new awno(this));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365648));
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
+  }
+  
+  public void a()
+  {
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(amtj.a(2131706302));
-      if (this.a.jdField_a_of_type_Awkr == null) {
-        this.a.jdField_a_of_type_Awkr = ((awkr)this.a.app.getBusinessHandler(60));
-      }
-      this.a.jdField_a_of_type_Awkr.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
+      localLayoutParams.format = -3;
+      localLayoutParams.height = ViewUtils.getScreenHeight();
+      localLayoutParams.width = ViewUtils.getScreenWidth();
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new awnp(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365644)).setText(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.b.setOnClickListener(new awnq(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new awnr(this, paramOnClickListener));
+  }
+  
+  public void c(String paramString)
+  {
+    this.b.setText(paramString);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

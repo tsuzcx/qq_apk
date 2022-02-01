@@ -1,83 +1,388 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Typeface;
-import android.text.TextPaint;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.tips.TipsViewTimerRunnable;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lit
-  extends lik
+  extends lgp
 {
-  TextPaint a;
+  private TipsViewTimerRunnable jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable;
+  private WeakReference<mdf> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile mbh jdField_a_of_type_Mbh;
+  private WeakReference<mbe> jdField_b_of_type_JavaLangRefWeakReference;
+  private volatile mbh jdField_b_of_type_Mbh;
   
-  public lit(lgc paramlgc, boolean paramBoolean)
+  public lit(VideoAppInterface paramVideoAppInterface)
   {
-    super(paramlgc, paramBoolean);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(4.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable = new TipsViewTimerRunnable(paramVideoAppInterface);
   }
   
-  public int a()
+  public static void a(String paramString)
   {
-    return this.jdField_a_of_type_Int * 16;
+    if (paramString == null) {}
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("NewTipsManager", 2, paramString);
   }
   
-  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  private boolean b(mbh parammbh)
   {
-    int k = this.jdField_a_of_type_Int - 8;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
-    this.jdField_a_of_type_AndroidTextTextPaint.setFlags(1);
-    lba.f("ARZimuTask_SpitZimuItemTask", "onDraw width = " + paramInt1);
-    float f = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    String str2 = this.jdField_a_of_type_Lgc.a.toString();
-    String str1 = str2;
-    if (str2.length() > 10) {
-      str1 = str2.substring(str2.length() - 10);
-    }
-    str2 = liq.a(str1);
-    int j = str1.length();
-    str1 = str1 + str2;
-    lba.f("ARZimuTask_SpitZimuItemTask", "onDraw showText = " + str1);
-    paramInt2 = str1.length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > 13) {
-      paramInt1 = 13;
-    }
-    int i = 2;
-    k -= 6;
-    paramInt2 = 0;
-    while (paramInt2 < paramInt1)
+    Object localObject2 = new StringBuilder().append("showSubTips begin avTipsItem = ");
+    Object localObject1;
+    boolean bool1;
+    if (parammbh != null)
     {
-      if (paramInt2 >= j)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
+      localObject1 = Integer.valueOf(parammbh.b());
+      a(localObject1);
+      localObject1 = a();
+      if ((parammbh != null) && (localObject1 != null) && (((mbe)localObject1).b())) {
+        break label76;
       }
-      str2 = str1.substring(paramInt2, paramInt2 + 1);
-      liq.a(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i += this.jdField_a_of_type_Int;
-      paramInt2 += 1;
+      bool1 = false;
     }
-    lba.f("ARZimuTask_SpitZimuItemTask", "onDraw offsetX = " + i);
+    label76:
+    do
+    {
+      boolean bool2;
+      do
+      {
+        return bool1;
+        localObject1 = "null";
+        break;
+        localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+        bool1 = mbh.a((mbh)localObject2, parammbh);
+        a("showSubTips canShow = " + bool1);
+        if ((!bool1) || (!((mbe)localObject1).b(parammbh))) {
+          break label184;
+        }
+        a("showSubTips ShowSubTipsView success");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b(parammbh);
+        bool2 = true;
+        bool1 = bool2;
+      } while (localObject2 == null);
+      bool1 = bool2;
+    } while (!((mbh)localObject2).a());
+    if (parammbh.a())
+    {
+      this.jdField_b_of_type_Mbh = null;
+      return true;
+    }
+    this.jdField_b_of_type_Mbh = ((mbh)localObject2);
+    return true;
+    label184:
+    return false;
   }
   
-  public void a(Typeface paramTypeface, int paramInt, mob parammob)
+  private void c(mbh parammbh)
   {
-    super.a(paramTypeface, paramInt, parammob);
-    if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    if (parammbh == null) {}
+    do
+    {
+      return;
+      if (parammbh.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a()))
+      {
+        a("hiddenMainTips (avTipsItem.equals(current)) avTipsItem id = " + parammbh.b());
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
+        return;
+      }
+    } while (!parammbh.equals(this.jdField_a_of_type_Mbh));
+    a("hiddenMainTips (avTipsItem.equals(mLastShowResidentMainTipsItem)) avTipsItem id = " + parammbh.b());
+    this.jdField_a_of_type_Mbh = null;
+  }
+  
+  private boolean c(mbh parammbh)
+  {
+    Object localObject2 = new StringBuilder().append("showMainTips begin avTipsItem = ");
+    Object localObject1;
+    boolean bool1;
+    if (parammbh != null)
+    {
+      localObject1 = Integer.valueOf(parammbh.b());
+      a(localObject1);
+      localObject1 = a();
+      if ((parammbh != null) && (localObject1 != null) && (((mbe)localObject1).a())) {
+        break label76;
+      }
+      bool1 = false;
+    }
+    label76:
+    do
+    {
+      boolean bool2;
+      do
+      {
+        return bool1;
+        localObject1 = "null";
+        break;
+        localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
+        bool1 = mbh.a((mbh)localObject2, parammbh);
+        a("showMainTips canShow = " + bool1);
+        if (!bool1) {
+          break label184;
+        }
+        if (!((mbe)localObject1).a(parammbh)) {
+          break label210;
+        }
+        a("showMainTips ShowMainTipsView success");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a(parammbh);
+        bool2 = true;
+        bool1 = bool2;
+      } while (localObject2 == null);
+      bool1 = bool2;
+    } while (!((mbh)localObject2).a());
+    if (parammbh.a())
+    {
+      this.jdField_a_of_type_Mbh = null;
+      return true;
+    }
+    this.jdField_a_of_type_Mbh = ((mbh)localObject2);
+    return true;
+    label184:
+    a("showMainTips canShow is false current = " + ((mbh)localObject2).b());
+    label210:
+    return false;
+  }
+  
+  private void d(mbh parammbh)
+  {
+    if (parammbh == null) {}
+    do
+    {
+      return;
+      if (parammbh.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b()))
+      {
+        a("hiddenSubTips (avTipsItem.equals(current)) avTipsItem id = " + parammbh.b());
+        this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+        return;
+      }
+    } while (!parammbh.equals(this.jdField_b_of_type_Mbh));
+    a("hiddenSubTips (avTipsItem.equals(mLastShowResidentSubTipsItem)) avTipsItem id = " + parammbh.b());
+    this.jdField_b_of_type_Mbh = null;
+  }
+  
+  private void e()
+  {
+    mbe localmbe = a();
+    a("hiddenMainTipsReal");
+    if ((localmbe == null) || (!localmbe.a())) {
+      return;
+    }
+    localmbe.a();
+  }
+  
+  private void f()
+  {
+    mbe localmbe = a();
+    a("hiddenSubTipsReal");
+    if ((localmbe == null) || (!localmbe.b())) {
+      return;
+    }
+    localmbe.b();
+  }
+  
+  public mbe a()
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.jdField_b_of_type_JavaLangRefWeakReference.isEnqueued())) {
+      return null;
+    }
+    return (mbe)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)
+    {
+      a("HiddenTips (mApp == null)");
+      return;
+    }
+    mbh localmbh = mbg.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (localmbh == null)
+    {
+      a("HiddenTips (tipsItem == null)");
+      return;
+    }
+    switch (localmbh.d())
+    {
+    default: 
+      a("HiddenTips tipsItem.getShowType() = " + localmbh.d());
+      return;
+    case 1: 
+      d(localmbh);
+      return;
+    }
+    c(localmbh);
+  }
+  
+  public void a(mbe parammbe)
+  {
+    if (parammbe == null) {
+      return;
+    }
+    a("setAvTipsView avTipsView is " + parammbe.getClass());
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parammbe);
+  }
+  
+  public void a(mbh parammbh)
+  {
+    if (parammbh == null) {
+      return;
+    }
+    a("NotifyHiddenMainTipsByRunner item" + parammbh.b());
+    if ((parammbh.a()) || (this.jdField_a_of_type_Mbh == null))
+    {
+      e();
+      return;
+    }
+    c(this.jdField_a_of_type_Mbh);
+  }
+  
+  public void a(mdf parammdf)
+  {
+    if (parammdf == null) {
+      return;
+    }
+    a("setDeviceTipsController is " + parammdf.getClass());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammdf);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((mdf)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramBoolean);
     }
   }
   
-  public int b()
+  public boolean a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return false;
+    }
+    return a(mbg.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface));
+  }
+  
+  public boolean a(int paramInt, long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      ((mdf)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, paramLong, false);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, long paramLong, boolean paramBoolean)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        ((mdf)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, paramLong, paramBoolean);
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return false;
+    }
+    return a(mbg.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString));
+  }
+  
+  public boolean a(int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return false;
+    }
+    return a(mbg.a(paramInt1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString, 2, paramDrawable, paramInt2, paramOnClickListener));
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    for (mdf localmdf = null; localmdf != null; localmdf = (mdf)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      localmdf.a(paramString, paramLong, paramBoolean);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(mbh parammbh)
+  {
+    if (parammbh == null)
+    {
+      a("showTips (tipsItem == null)");
+      return false;
+    }
+    switch (parammbh.d())
+    {
+    default: 
+      a("showTips tipsItem.getShowType() = " + parammbh.d());
+      return false;
+    case 1: 
+      return b(parammbh);
+    }
+    return c(parammbh);
+  }
+  
+  public void b()
+  {
+    a("RemoveAllTips");
+    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
+    this.jdField_a_of_type_Mbh = null;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+    this.jdField_b_of_type_Mbh = null;
+  }
+  
+  public void b(mbh parammbh)
+  {
+    if (parammbh == null) {
+      return;
+    }
+    a("NotifyHiddenSubTipsByRunner item" + parammbh.b());
+    if ((parammbh.a()) || (this.jdField_b_of_type_Mbh == null))
+    {
+      f();
+      return;
+    }
+    b(this.jdField_b_of_type_Mbh);
+  }
+  
+  public void c()
+  {
+    mbe localmbe = a();
+    a("HiddenViewContainer");
+    if ((localmbe == null) || (!localmbe.b())) {
+      return;
+    }
+    localmbe.c();
+  }
+  
+  public void d()
+  {
+    mbe localmbe = a();
+    a("ShowViewContainer");
+    if ((localmbe == null) || (!localmbe.b())) {
+      return;
+    }
+    localmbe.d();
   }
 }
 

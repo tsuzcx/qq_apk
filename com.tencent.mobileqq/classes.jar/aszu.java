@@ -1,49 +1,33 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-final class aszu
-  implements ataf
+public class aszu
+  implements DialogInterface.OnKeyListener
 {
-  aszu(String paramString1, String paramString2) {}
+  public aszu(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a(Bitmap paramBitmap)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
+    boolean bool = false;
+    if (paramInt == 4)
     {
-      FileUtil.writeBitmapToFile(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = ff.a(this.b);
-      ff.a(this.a, i);
-      return;
+      if (this.a.a != null)
+      {
+        this.a.a.dismiss();
+        this.a.a = null;
+      }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      bool = true;
     }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszu
  * JD-Core Version:    0.7.0.1
  */

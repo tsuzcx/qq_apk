@@ -1,31 +1,38 @@
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import qqcircle.QQCircleSwitch.GetCircleSwitchRsp;
-import qqcircle.QQCircleSwitch.StSwitch;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
 public class bcno
-  implements VSDispatchObserver.onVSRspCallBack<QQCircleSwitch.GetCircleSwitchRsp>
+  implements bcns
 {
-  public bcno(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  protected View a;
   
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.GetCircleSwitchRsp paramGetCircleSwitchRsp)
+  public bcno(ViewGroup paramViewGroup)
   {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      paramVSBaseRequest = paramGetCircleSwitchRsp.sw.value.get();
-      QLog.d("leba_study", 1, "requestEntertainCount GetCircleSwitch success" + paramVSBaseRequest);
-      QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramVSBaseRequest);
-    }
-    for (;;)
-    {
-      KidModeAdvanceSettingFragment.b(this.a);
-      return;
-      QLog.d("leba_study", 1, "requestEntertainCount GetCircleSwitch error retcode= " + paramLong);
-    }
+    this.a = new LinearLayout(paramViewGroup.getContext());
+    this.a.setVisibility(8);
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public List<bcnt> a()
+  {
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return null;
   }
 }
 

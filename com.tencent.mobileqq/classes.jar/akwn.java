@@ -1,6 +1,17 @@
-public abstract interface akwn
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class akwn
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public int a;
+  public MessageRecord a;
+  public String a;
+  
+  public akwn(int paramInt, String paramString, MessageRecord paramMessageRecord)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+  }
 }
 
 

@@ -1,21 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.util.SparseArray;
 
 public class ajcp
-  extends BroadcastReceiver
 {
-  public ajcp(Conversation paramConversation) {}
+  public int a;
+  public SparseArray<byte[]> a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ajcp()
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
-      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
-    }
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.d = null;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
 }
 

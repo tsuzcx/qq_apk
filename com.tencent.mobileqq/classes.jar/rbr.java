@@ -1,11 +1,15 @@
-public class rbr
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+class rbr
+  implements blcr
 {
-  public static rbq a(int paramInt)
+  rbr(rbp paramrbp) {}
+  
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    if (paramInt == rbp.a) {
-      return new rbt();
-    }
-    return null;
+    rbp.a(this.a, (qfw)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

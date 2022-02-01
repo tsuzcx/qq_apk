@@ -1,163 +1,100 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.av.opengl.utils.AVGLUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import android.annotation.SuppressLint;
+import android.opengl.EGL14;
+import android.os.Build.VERSION;
+import javax.microedition.khronos.egl.EGL10;
 
 public class lpv
-  implements lpk
 {
-  protected int a;
-  private ByteBuffer a;
-  protected int b = -1;
+  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
+  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
   
-  public lpv()
+  private void b()
   {
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "SurfacePreRender");
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    Object localObject = new int[2];
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject);
+    localObject = new javax.microedition.khronos.egl.EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglChooseConfig(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0) {
+      lbd.h("OffscreenSurface", "TROUBLE! No config found.");
     }
-    lok.a("YUVMode");
+    localObject = localObject[0];
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject, new int[] { 12375, 64, 12374, 64, 12344 });
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat, byte[] paramArrayOfByte, int paramInt4, int paramInt5, int paramInt6, int paramInt7, ByteBuffer paramByteBuffer, FloatBuffer paramFloatBuffer)
+  private void d()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < paramInt1 * paramInt2 * 3 / 2) || (paramByteBuffer.capacity() < paramInt1 * paramInt2 * 3 / 2)) {
+    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null))
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+    }
+  }
+  
+  @SuppressLint({"NewApi"})
+  private void e()
+  {
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    Object localObject = new int[2];
+    EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1);
+    localObject = new android.opengl.EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGL14.eglChooseConfig(this.jdField_a_of_type_AndroidOpenglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject, 0, 1, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0) {
+      lbd.f("OffscreenSurface", "TROUBLE! No config found.");
+    }
+    localObject = localObject[0];
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
+    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+    EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext);
+  }
+  
+  @SuppressLint({"NewApi"})
+  private void g()
+  {
+    if ((this.jdField_a_of_type_AndroidOpenglEGLDisplay != null) && (this.jdField_a_of_type_AndroidOpenglEGLSurface != null) && (this.jdField_a_of_type_AndroidOpenglEGLContext != null))
+    {
+      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+      EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
+      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
+      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
+    }
+  }
+  
+  void c()
+  {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      e();
       return;
     }
-    paramByteBuffer.position(0);
-    paramByteBuffer.put(paramArrayOfByte, 0, paramInt1 * paramInt2);
-    paramByteBuffer.position(0);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, paramInt4);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glTexImage2D(3553, 0, 6409, paramInt1, paramInt2, 0, 6409, 5121, paramByteBuffer);
-    paramByteBuffer.position(0);
-    paramByteBuffer.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 2);
-    paramByteBuffer.position(0);
-    GLES20.glActiveTexture(33985);
-    GLES20.glBindTexture(3553, paramInt5);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glTexImage2D(3553, 0, 6410, paramInt1 / 2, paramInt2 / 2, 0, 6410, 5121, paramByteBuffer);
-    GLES20.glBindFramebuffer(36160, paramInt6);
-    GLES20.glViewport(0, 0, paramInt2, paramInt1);
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glClear(16640);
-    paramArrayOfByte = lra.a(1);
-    paramByteBuffer = paramArrayOfByte.a();
-    GLES20.glUseProgram(paramArrayOfByte.a());
-    GLES20.glUniform1f(paramByteBuffer[2].jdField_a_of_type_Int, 1.0F);
-    GLES20.glUniform1f(paramByteBuffer[7].jdField_a_of_type_Int, paramInt1);
-    GLES20.glUniform1f(paramByteBuffer[8].jdField_a_of_type_Int, paramInt2);
-    GLES20.glUniformMatrix4fv(paramByteBuffer[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
-    if (paramInt3 == 17)
+    b();
+  }
+  
+  public void f()
+  {
+    if (Build.VERSION.SDK_INT >= 17)
     {
-      GLES20.glUniform1i(paramByteBuffer[10].jdField_a_of_type_Int, 3);
-      GLES20.glUniform1i(paramByteBuffer[11].jdField_a_of_type_Int, 0);
-      GLES20.glDisable(3042);
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, paramInt4);
-      GLES20.glUniform1i(paramByteBuffer[4].jdField_a_of_type_Int, 0);
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, paramInt5);
-      GLES20.glUniform1i(paramByteBuffer[5].jdField_a_of_type_Int, 1);
-      if (paramInt7 % 4 != 1) {
-        break label541;
-      }
-      GLES20.glUniformMatrix4fv(paramByteBuffer[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
-    }
-    for (;;)
-    {
-      GLES20.glUniformMatrix4fv(paramByteBuffer[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-      GLES20.glVertexAttribPointer(paramByteBuffer[0].jdField_a_of_type_Int, 2, 5126, false, 8, paramFloatBuffer);
-      GLES20.glEnableVertexAttribArray(paramByteBuffer[0].jdField_a_of_type_Int);
-      GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glDisableVertexAttribArray(paramByteBuffer[0].jdField_a_of_type_Int);
-      GLES20.glBindFramebuffer(36160, 0);
+      g();
       return;
-      GLES20.glUniform1i(paramByteBuffer[10].jdField_a_of_type_Int, 1);
-      break;
-      label541:
-      GLES20.glUniformMatrix4fv(paramByteBuffer[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate270, 0);
     }
-  }
-  
-  private void a(lok paramlok, int paramInt, FloatBuffer paramFloatBuffer)
-  {
-    a(paramlok.jdField_a_of_type_Int, paramlok.b, liy.c, YUVTexture.a, paramlok.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, paramInt, lpr.a(paramlok.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaNioByteBuffer, paramFloatBuffer);
-    GLES20.glViewport(0, 0, paramlok.jdField_a_of_type_Int, paramlok.b);
-  }
-  
-  public lpf a(loy paramloy, lok paramlok, lpf paramlpf)
-  {
-    if (paramloy.jdField_a_of_type_Msh != null) {
-      paramloy.jdField_a_of_type_Msh.a("preRender");
-    }
-    int i = paramlok.jdField_a_of_type_Int * paramlok.b * 3 / 2;
-    if ((this.jdField_a_of_type_JavaNioByteBuffer != null) && (this.jdField_a_of_type_JavaNioByteBuffer.capacity() != i))
-    {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      this.jdField_a_of_type_JavaNioByteBuffer = null;
-    }
-    if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(i);
-    }
-    a(paramlok, paramlpf.jdField_a_of_type_Int, paramloy.jdField_a_of_type_JavaNioFloatBuffer);
-    if (paramloy.jdField_a_of_type_Msh != null) {
-      paramloy.jdField_a_of_type_Msh.b("preRender");
-    }
-    if (paramloy.jdField_a_of_type_Lpa != null)
-    {
-      paramloy.jdField_a_of_type_Lpa.a(9, paramlpf.jdField_a_of_type_Int, paramlpf.b);
-      paramloy.jdField_a_of_type_Lpa.a(paramloy, 1, paramlok, paramlpf);
-    }
-    return paramlpf;
-  }
-  
-  public void a()
-  {
-    int[] arrayOfInt = new int[2];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = arrayOfInt[0];
-    this.b = arrayOfInt[1];
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public boolean a(lok paramlok)
-  {
-    return (paramlok != null) && (paramlok.jdField_a_of_type_ArrayOfByte != null) && (paramlok.jdField_a_of_type_ArrayOfByte.length > 0);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaNioByteBuffer != null) {
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-    }
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-  }
-  
-  public void c()
-  {
-    int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = this.b;
-    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpv
  * JD-Core Version:    0.7.0.1
  */

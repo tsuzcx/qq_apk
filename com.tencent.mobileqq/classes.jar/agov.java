@@ -1,17 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-
-public class agov
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface agov
 {
-  public agov(SixCombolEffectView paramSixCombolEffectView) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

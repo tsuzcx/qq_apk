@@ -1,83 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class apzz
-  extends aptq<apzy>
+class apzz
+  implements View.OnClickListener
 {
-  @NonNull
-  public apzy a(int paramInt)
-  {
-    return new apzy();
-  }
+  apzz(apzy paramapzy) {}
   
-  @Nullable
-  public apzy a(aptx[] paramArrayOfaptx)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaptx != null)
+    if ((apzy.a(this.a) == 0) && (!TextUtils.isEmpty(apzy.a(this.a))))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaptx.length > 0) {
-        localObject1 = apzy.a(paramArrayOfaptx);
+      apzy.a(this.a).put(apzy.b(this.a), Integer.valueOf(1));
+      WebViewFragment localWebViewFragment = this.a.mRuntime.a();
+      if (localWebViewFragment != null) {
+        localWebViewFragment.webView.loadUrl(apzy.a(this.a));
       }
+      apzy.a(this.a, null);
     }
-    return localObject1;
-  }
-  
-  public void a(apzy paramapzy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onUpdate " + paramapzy.toString());
-    }
-    PhotoListPanel.setShowModeToSp(paramapzy.a);
-  }
-  
-  public Class<apzy> clazz()
-  {
-    return apzy.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 587;
+    apzy.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzz
  * JD-Core Version:    0.7.0.1
  */

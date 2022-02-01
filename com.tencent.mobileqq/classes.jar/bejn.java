@@ -1,32 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
 public class bejn
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public bejn(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2, List<oidb_0xe61.BeancurdCubeInfoResult> paramList) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(4) >= 6) {
-      QQToast.a(this.a.getActivity(), String.format(amtj.a(2131707952), new Object[] { Integer.valueOf(6) }), 0).a();
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidViewViewGroup.getWindowToken(), 0);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
-      SearchReciteArticleFragment.a(this.a.getActivity(), this.a.b);
-      bftc.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { this.a.b });
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
     }
   }
 }

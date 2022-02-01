@@ -1,22 +1,20 @@
-public abstract interface aqex
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+
+class aqex
+  implements DialogInterface.OnClickListener
 {
-  public abstract aqey a();
+  aqex(aqew paramaqew) {}
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqex
  * JD-Core Version:    0.7.0.1
  */

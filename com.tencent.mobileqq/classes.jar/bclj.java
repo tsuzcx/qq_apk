@@ -1,76 +1,17 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
 public class bclj
-  extends bcgw
+  extends bclv
 {
-  String ac = "";
-  
-  public bclj()
+  public bclj(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt)
   {
-    this.a = "more";
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt);
   }
   
-  public bclj(String paramString)
+  public bcfi a(List<bcfj> paramList, String paramString)
   {
-    this();
-    this.ac = paramString;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    paramBundle = paramView;
-    if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131562825, null);
-    }
-    paramContext = (TextView)paramBundle.findViewById(2131377866);
-    if (TextUtils.isEmpty(this.ac)) {
-      this.ac = amtj.a(2131713650);
-    }
-    paramContext.setText(this.ac);
-    return paramBundle;
-  }
-  
-  public String a()
-  {
-    return "More";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.ac = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.ac == null) {}
-    for (String str = "";; str = bblk.a(this.ac, false))
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "title");
-    paramXmlSerializer.text(this.ac);
-    paramXmlSerializer.endTag(null, "title");
-  }
-  
-  public boolean a(bcin parambcin)
-  {
-    this.ac = bblk.a(bchh.a(parambcin), false);
-    return true;
+    return new bcew(paramList, paramString);
   }
 }
 

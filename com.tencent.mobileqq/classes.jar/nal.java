@@ -1,72 +1,69 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import trpc.qq_vgame.game_list.AvGameList.QuestionClassInfo;
-import trpc.qq_vgame.game_list.AvGameList.QuestionClassInfoItem;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.av.wtogether.view.GroupFileSearchDialog.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.widget.CountdownTimeTask;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class nal
+  implements TextWatcher
 {
-  public int a;
-  public ArrayList<nam> a;
+  nal(nah paramnah) {}
   
-  public nal()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public nal a()
-  {
-    nal localnal = new nal();
-    localnal.a(this);
-    return localnal;
-  }
-  
-  public void a(nal paramnal)
-  {
-    if (paramnal == null) {}
+    if (this.a.e) {
+      this.a.e = false;
+    }
     do
     {
       return;
-      this.jdField_a_of_type_Int = paramnal.jdField_a_of_type_Int;
-    } while (paramnal.jdField_a_of_type_JavaUtilArrayList == null);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramnal.jdField_a_of_type_JavaUtilArrayList);
+      if (paramEditable == null) {}
+      for (paramEditable = ""; paramEditable.trim().equals(""); paramEditable = paramEditable.toString())
+      {
+        this.a.c();
+        return;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidAppActivity))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+        }
+        this.a.b();
+        return;
+      }
+      this.a.d = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask == null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = new CountdownTimeTask(new GroupFileSearchDialog.5.1(this), 800);
+        ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask, 5, null, true);
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a() > 0L)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("GroupFileSearchDialog", 2, "!!!!!! 这是个什么情况,逻辑出错了 !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   }
   
-  public final void a(AvGameList.QuestionClassInfo paramQuestionClassInfo)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 0;
-    if (paramQuestionClassInfo == null) {
+    if ((!this.a.e) || ((this.a.e) && (this.a.jdField_b_of_type_Int <= 0)))
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     }
-    if (paramQuestionClassInfo.game_type.has()) {}
-    for (int i = paramQuestionClassInfo.game_type.get();; i = 0)
-    {
-      this.jdField_a_of_type_Int = i;
-      paramQuestionClassInfo = paramQuestionClassInfo.question_class_list.get();
-      if ((paramQuestionClassInfo == null) || (paramQuestionClassInfo.size() == 0)) {
-        break;
-      }
-      i = j;
-      while (i < paramQuestionClassInfo.size())
-      {
-        AvGameList.QuestionClassInfoItem localQuestionClassInfoItem = (AvGameList.QuestionClassInfoItem)paramQuestionClassInfo.get(i);
-        nam localnam = new nam();
-        localnam.a(localQuestionClassInfoItem);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localnam);
-        i += 1;
-      }
-      break;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("typeSvr").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("questionClassListSize").append("=").append(this.jdField_a_of_type_JavaUtilArrayList.size());
-    return localStringBuilder.toString();
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 

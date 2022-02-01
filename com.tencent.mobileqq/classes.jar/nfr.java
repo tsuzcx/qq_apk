@@ -1,16 +1,28 @@
-import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.avgame.gamelogic.controller.RoomController;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
-public abstract interface nfr
+public class nfr
+  extends ndr
 {
-  public abstract void a(TPAudioFrameBuffer paramTPAudioFrameBuffer);
+  public nfr(RoomController paramRoomController) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
+  {
+    if (paramBoolean)
+    {
+      nfv localnfv = (nfv)RoomController.a(this.a).a();
+      localnfv.a(paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.i("avgame_logic.GameRoomController", 2, String.format("updateNicks when onUserNickUpdated %s", new Object[] { Arrays.toString(localnfv.a().players.toArray()) }));
+      }
+      RoomController.a(this.a).a(paramHashMap);
+      RoomController.a(this.a, paramHashMap);
+    }
+  }
 }
 
 

@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class dh
-  implements biet
+  implements bjpv
 {
   dh(dg paramdg) {}
   
@@ -70,7 +70,7 @@ class dh
                 dq.g(this.a.a.app);
                 ((DataLineMsgRecord)localObject).issuc = true;
                 ((DataLineMsgRecord)localObject).progress = 1.0F;
-                ((DataLineMsgRecord)localObject).path = bies.a().a(((DataLineMsgRecord)localObject).strMoloKey);
+                ((DataLineMsgRecord)localObject).path = bjpu.a().a(((DataLineMsgRecord)localObject).strMoloKey);
                 if (QLog.isColorLevel())
                 {
                   if (((DataLineMsgRecord)localObject).path == null) {
@@ -123,16 +123,16 @@ class dh
     QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.WAIT(" + paramString + ")");
   }
   
-  public void a(bieu parambieu, int paramInt1, String paramString, int paramInt2)
+  public void a(bjpw parambjpw, int paramInt1, String paramString, int paramInt2)
   {
     Object localObject;
-    if ((parambieu == null) || (paramInt1 == -25))
+    if ((parambjpw == null) || (paramInt1 == -25))
     {
       if (QLog.isColorLevel()) {
         QLog.d("dataline.MoloHandler", 2, "onDownloadError( tm exit)");
       }
       paramString = this.a.a.a().getProxyManager().a(0).a();
-      parambieu = this.a.a.a().getProxyManager().a(0).a(true);
+      parambjpw = this.a.a.a().getProxyManager().a(0).a(true);
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
@@ -148,15 +148,15 @@ class dh
           }
         }
       }
-      if (parambieu != null) {
-        parambieu = parambieu.iterator();
+      if (parambjpw != null) {
+        parambjpw = parambjpw.iterator();
       }
     }
     else
     {
-      while (parambieu.hasNext())
+      while (parambjpw.hasNext())
       {
-        paramString = ((DataLineMsgSet)parambieu.next()).values().iterator();
+        paramString = ((DataLineMsgSet)parambjpw.next()).values().iterator();
         while (paramString.hasNext())
         {
           localObject = (DataLineMsgRecord)paramString.next();
@@ -169,10 +169,10 @@ class dh
         }
         continue;
         if (QLog.isColorLevel()) {
-          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambieu.toString() + "), key[" + parambieu.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
+          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambjpw.toString() + "), key[" + parambjpw.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
         }
-        parambieu = this.a.a.app.getDataLineMsgProxy(0).a(parambieu.a);
-        if (parambieu != null) {
+        parambjpw = this.a.a.app.getDataLineMsgProxy(0).a(parambjpw.a);
+        if (parambjpw != null) {
           break label460;
         }
       }
@@ -181,10 +181,10 @@ class dh
     {
       return;
       label460:
-      parambieu = parambieu.iterator();
-      while (parambieu.hasNext())
+      parambjpw = parambjpw.iterator();
+      while (parambjpw.hasNext())
       {
-        paramString = (DataLineMsgRecord)parambieu.next();
+        paramString = (DataLineMsgRecord)parambjpw.next();
         dq.l(this.a.a.app);
         paramString.issuc = false;
         this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
@@ -193,23 +193,23 @@ class dh
     }
   }
   
-  public void a(List<bieu> paramList)
+  public void a(List<bjpw> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bieu localbieu = (bieu)paramList.next();
+      bjpw localbjpw = (bjpw)paramList.next();
       if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbieu.a + "], appName[" + localbieu.e + "], progress[" + localbieu.f);
+        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbjpw.a + "], appName[" + localbjpw.e + "], progress[" + localbjpw.f);
       }
-      Object localObject = this.a.a.app.getDataLineMsgProxy(0).a(localbieu.a);
+      Object localObject = this.a.a.app.getDataLineMsgProxy(0).a(localbjpw.a);
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          float f = localbieu.f / 100.0F;
+          float f = localbjpw.f / 100.0F;
           if (localDataLineMsgRecord.progress < f) {
             localDataLineMsgRecord.progress = f;
           }

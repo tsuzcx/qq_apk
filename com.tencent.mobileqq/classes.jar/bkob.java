@@ -1,45 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qqmini.proxyimpl.ColorNotePlugin.3;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 
-public class bkob
-  implements DialogInterface.OnClickListener
+class bkob
+  implements bkod
 {
-  public bkob(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bkob(bkoa parambkoa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.a.app.getQQProxyForQlink().a("0X8004750", 1);
-    this.a.app.getQQProxyForQlink().a(new QlAndQQInterface.DailogClickInfo(9));
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
+    QLog.d("ColorNotePlugin", 1, "onAddColorSign:" + paramBoolean);
+    if (paramBoolean)
     {
-      localStringBuilder = new StringBuilder().append("topAct:");
-      if (QlinkStandardDialogActivity.a(this.a) == null) {
-        break label150;
-      }
-    }
-    label150:
-    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
-    {
-      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
-      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
-        break;
-      }
-      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
-      if ((paramDialogInterface.e() != 0) && (7 != paramDialogInterface.e())) {
-        break;
-      }
-      this.a.finish();
+      this.a.a.a.ok();
       return;
     }
-    aszt.a(this.a, false);
-    this.a.finish();
+    this.a.a.a.fail();
   }
 }
 

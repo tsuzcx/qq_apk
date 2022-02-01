@@ -1,18 +1,38 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
-class aras
-  implements Comparator<String>
+public class aras
 {
-  aras(araq paramaraq) {}
+  public String a = "";
   
-  public int a(String paramString1, String paramString2)
+  public static aras a(String paramString)
   {
-    return paramString2.compareTo(paramString1);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aras localaras = new aras();
+        localaras.a = paramString;
+        QLog.d("ConfBean", 2, "confBean = " + localaras.toString());
+        return localaras;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("configContent:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aras
  * JD-Core Version:    0.7.0.1
  */

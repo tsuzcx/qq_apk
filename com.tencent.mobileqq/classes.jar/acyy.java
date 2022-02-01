@@ -1,16 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acyy
-  implements bjoe
+class acyy
+  implements DialogInterface.OnClickListener
 {
-  public acyy(ChatHistoryFileActivity paramChatHistoryFileActivity, bjnw parambjnw) {}
+  acyy(acyw paramacyw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bjnw.isShowing())) {
-      this.jdField_a_of_type_Bjnw.dismiss();
-    }
+    acyw.b(this.a);
   }
 }
 

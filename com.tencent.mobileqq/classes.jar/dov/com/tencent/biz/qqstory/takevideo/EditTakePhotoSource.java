@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bnde;
+import bosw;
 import java.io.File;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bnde();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bosw();
   public final double a;
   public final int a;
   @NonNull

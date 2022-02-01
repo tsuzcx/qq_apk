@@ -1,42 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
 public class aoky
 {
-  public static aokw a(aokz paramaokz, int paramInt)
-  {
-    if (paramaokz == null) {
-      throw new RuntimeException("params can not be null!");
-    }
-    Object localObject;
-    switch (paramaokz.jdField_a_of_type_Int)
-    {
-    default: 
-      localObject = new aolb(paramInt);
-    }
-    for (;;)
-    {
-      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramaokz.toString());
-      return localObject;
-      localObject = new aokq(paramInt);
-      continue;
-      localObject = new aold(paramInt);
-      continue;
-      localObject = new aoku(paramInt);
-      continue;
-      localObject = new aokv(paramInt);
-      continue;
-      if (TextUtils.isEmpty(paramaokz.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      localObject = new aokr(paramInt, paramaokz.jdField_a_of_type_JavaLangString);
-    }
-    throw new RuntimeException("fragmentShader can not be empty!");
-  }
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
   
-  public static aokz a(int paramInt)
+  public String toString()
   {
-    return new aokz(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("M_size=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",C_size=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",R_size=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",K_len=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",time=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 

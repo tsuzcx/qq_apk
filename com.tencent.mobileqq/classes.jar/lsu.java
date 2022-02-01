@@ -1,67 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
 
 public class lsu
-  extends lst
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public int f;
-  public String f;
-  int g;
-  int h;
+  public lsu(RandomController paramRandomController) {}
   
-  public lsu()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_f_of_type_Int = -1;
-  }
-  
-  void a(String paramString)
-  {
-    super.a(paramString);
-    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
-    {
-      if (this.jdField_b_of_type_Int != 0) {
-        break label205;
-      }
-      this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
-      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
-      this.c = HexUtil.hexString2String(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
-      this.d = HexUtil.hexString2String(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
-      this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
-      if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
-        break label164;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("RandomWebProtocol", 2, "[1v1] parse method is oldproto");
-      }
-      this.jdField_b_of_type_JavaLangString = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null));
-      this.jdField_a_of_type_ArrayOfByte = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
+    if (RandomController.a(this.a) == 1) {
+      bdla.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
     }
-    label164:
-    label205:
-    while (this.jdField_b_of_type_Int != 1)
+    for (;;)
     {
+      this.a.c();
+      RandomController.d(this.a, false);
       return;
-      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), HexUtil.hexStr2Bytes(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
-      this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
-      return;
+      if (RandomController.a(this.a) == 2) {
+        bdla.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+      }
     }
-    this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);
-    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("uniqkey", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lsu
  * JD-Core Version:    0.7.0.1
  */

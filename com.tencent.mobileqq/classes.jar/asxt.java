@@ -1,15 +1,13 @@
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
-class asxt
-  implements bhnm
+public class asxt
+  extends atfq
 {
-  asxt(asxp paramasxp, List paramList) {}
+  public asxt(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void a(int paramInt)
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    if (paramInt == 2) {
-      bfby.a(asxp.a(this.jdField_a_of_type_Asxp), asxp.a(this.jdField_a_of_type_Asxp), this.jdField_a_of_type_JavaUtilList);
-    }
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
   }
 }
 

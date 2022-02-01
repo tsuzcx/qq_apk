@@ -1,12 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 
-class bbih
-  implements View.OnClickListener
+public abstract interface bbih
 {
-  bbih(bbie parambbie) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView) {}
+  public abstract void a(bbil parambbil);
+  
+  public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

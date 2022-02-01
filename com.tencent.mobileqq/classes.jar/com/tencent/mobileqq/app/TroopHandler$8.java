@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bcgv;
-import bchb;
+import bdnt;
+import bdnz;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -11,24 +11,24 @@ public final class TroopHandler$8
 {
   public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    bcgv localbcgv = new bcgv(this, new bchb());
+    bdnt localbdnt = new bdnt(this, new bdnz());
     try
     {
-      localbcgv.setOutput(paramByteArrayOutputStream, paramString);
-      localbcgv.startDocument(paramString, null);
-      localbcgv.startTag(null, "msg");
-      localbcgv.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localbcgv.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      localbdnt.setOutput(paramByteArrayOutputStream, paramString);
+      localbdnt.startDocument(paramString, null);
+      localbdnt.startTag(null, "msg");
+      localbdnt.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localbdnt.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
       if (this.mMsgBrief == null) {}
       for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mMsgBrief)
       {
-        localbcgv.attribute(null, "brief", paramByteArrayOutputStream);
-        toContentXml(localbcgv);
-        localbcgv.startTag(null, "source");
-        localbcgv.endTag(null, "source");
-        localbcgv.endTag(null, "msg");
-        localbcgv.endDocument();
-        localbcgv.flush();
+        localbdnt.attribute(null, "brief", paramByteArrayOutputStream);
+        toContentXml(localbdnt);
+        localbdnt.startTag(null, "source");
+        localbdnt.endTag(null, "source");
+        localbdnt.endTag(null, "msg");
+        localbdnt.endDocument();
+        localbdnt.flush();
         return;
       }
       return;

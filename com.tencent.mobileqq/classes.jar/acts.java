@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acts
-  extends axkv
+  implements acpi
 {
-  public acts(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void checkSecureResponse(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong)
   {
-    AuthDevActivity.a(this.a, paramSecureCheckResponse);
+    ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(paramArrayOfByte, paramLong);
   }
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    a(paramacnk.a(), paramMsgType0x210.vProtobuf, paramMsgInfo.uRealMsgTime);
+    return null;
   }
 }
 

@@ -1,49 +1,14 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 
-public class uvn
+class uvn
+  implements aaea
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
+  uvn(uvm paramuvm, urb paramurb) {}
   
-  public uvn(WSPublicAccReport paramWSPublicAccReport) {}
-  
-  public int a()
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = false;
-    return this.b;
-  }
-  
-  public long a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    return System.currentTimeMillis() - WSPublicAccReport.access$000(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSPublicAccReport);
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 1;
-    this.jdField_a_of_type_Int = 1;
-    if (new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication).a(paramString)) {}
-    for (;;)
-    {
-      this.b = i;
-      return;
-      i = 0;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    return this.jdField_a_of_type_Int;
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    uvh.a(this.jdField_a_of_type_Uvm.a, this.jdField_a_of_type_Urb.a, bool);
   }
 }
 

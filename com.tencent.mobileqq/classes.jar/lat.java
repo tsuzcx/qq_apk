@@ -1,4 +1,37 @@
-class lat {}
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class lat
+  implements BusinessObserver
+{
+  public lau a;
+  
+  public lat(lau paramlau)
+  {
+    this.a = paramlau;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    acho.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+      } while (this.a == null);
+      this.a.a(paramBundle);
+      return;
+    } while (this.a == null);
+    this.a.a();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

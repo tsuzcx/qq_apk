@@ -16,7 +16,7 @@ import com.tencent.qconn.protofile.appType.LoginSig;
 public final class SdkAuthorize$AuthorizeRequest
   extends MessageMicro<AuthorizeRequest>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 58, 66, 72, 82, 90, 98, 106, 114, 122, 128, 138, 144, 152, 160, 170, 178, 522 }, new String[] { "response_type", "client_id", "openapi", "pf", "need_pay", "sign", "sdkv", "sdkp", "time", "qqv", "os", "passData", "skey", "vkey", "sid", "app_type", "appUniqueIdentifier", "referer", "vID", "needUniversalLink", "bundleid_from_app", "universal_link_from_app", "login_sig" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", Long.valueOf(0L), "", "", "", "", "", "", Integer.valueOf(0), "", Integer.valueOf(1), Long.valueOf(0L), Boolean.valueOf(false), "", "", null }, AuthorizeRequest.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 58, 66, 72, 82, 90, 98, 106, 114, 122, 128, 138, 144, 152, 160, 170, 178, 522, 562 }, new String[] { "response_type", "client_id", "openapi", "pf", "need_pay", "sign", "sdkv", "sdkp", "time", "qqv", "os", "passData", "skey", "vkey", "sid", "app_type", "appUniqueIdentifier", "referer", "vID", "needUniversalLink", "bundleid_from_app", "universal_link_from_app", "login_sig", "url_encoded_data" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", Long.valueOf(0L), "", "", "", "", "", "", Integer.valueOf(0), "", Integer.valueOf(1), Long.valueOf(0L), Boolean.valueOf(false), "", "", null, "" }, AuthorizeRequest.class);
   public final PBStringField appUniqueIdentifier = PBField.initString("");
   public final PBEnumField app_type = PBField.initEnum(0);
   public final PBStringField bundleid_from_app = PBField.initString("");
@@ -38,6 +38,7 @@ public final class SdkAuthorize$AuthorizeRequest
   public final PBStringField skey = PBField.initString("");
   public final PBInt64Field time = PBField.initInt64(0L);
   public final PBStringField universal_link_from_app = PBField.initString("");
+  public final PBStringField url_encoded_data = PBField.initString("");
   public final PBUInt64Field vID = PBField.initUInt64(0L);
   public final PBStringField vkey = PBField.initString("");
 }

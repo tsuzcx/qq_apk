@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import yaa;
+import yot;
 
 public class EditVideoSave$4
   implements Runnable
 {
-  public EditVideoSave$4(yaa paramyaa) {}
+  public EditVideoSave$4(yot paramyot) {}
   
   public void run()
   {
-    yaa.a(this.this$0).show();
+    yot.a(this.this$0).show();
   }
 }
 

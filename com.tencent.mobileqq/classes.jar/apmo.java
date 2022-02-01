@@ -1,39 +1,66 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.DecelerateInterpolator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
 class apmo
-  implements Animator.AnimatorListener
+  implements INetEngine.INetEngineListener
 {
-  apmo(apmh paramapmh, boolean paramBoolean) {}
+  apmo(apmn paramapmn, apmr paramapmr, apmq paramapmq) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onResp(NetResp paramNetResp)
   {
-    apmh.b(this.jdField_a_of_type_Apmh).scrollTo(0, 0);
-    apmh.b(this.jdField_a_of_type_Apmh).setAlpha(1.0F);
-    apmh.b(this.jdField_a_of_type_Apmh).setBackgroundColor(apmh.a(this.jdField_a_of_type_Apmh).getResources().getColor(apmh.a()));
-    paramAnimator = this.jdField_a_of_type_Apmh.a;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (float f = -this.jdField_a_of_type_Apmh.a.getMeasuredWidth();; f = this.jdField_a_of_type_Apmh.a.getMeasuredWidth())
+    if (paramNetResp.mResult == 3)
     {
-      paramAnimator.setX(f);
-      this.jdField_a_of_type_Apmh.a.setAlpha(0.0F);
-      this.jdField_a_of_type_Apmh.a.setVisibility(0);
-      this.jdField_a_of_type_Apmh.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
+      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl);
+      return;
+    }
+    synchronized (apmn.a(this.jdField_a_of_type_Apmn))
+    {
+      int i;
+      if (apmn.a(this.jdField_a_of_type_Apmn) != null)
+      {
+        i = 0;
+        if (i < apmn.a(this.jdField_a_of_type_Apmn).size())
+        {
+          if (!((apmr)apmn.a(this.jdField_a_of_type_Apmn).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Apmr.jdField_a_of_type_JavaLangString)) {
+            break label268;
+          }
+          apmn.a(this.jdField_a_of_type_Apmn).remove(i);
+        }
+      }
+      if (paramNetResp.mResult == 0)
+      {
+        ??? = new File(((HttpNetReq)paramNetResp.mReq).mOutPath);
+        String str = aznv.a(((File)???).getAbsolutePath());
+        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Apmr.b))) && (this.jdField_a_of_type_Apmr.jdField_a_of_type_Int != 1))
+        {
+          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
+          this.jdField_a_of_type_Apmq.a(false, this.jdField_a_of_type_Apmr);
+          return;
+          label268:
+          i += 1;
+        }
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Apmq.a(bool, this.jdField_a_of_type_Apmr);
       return;
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
+    this.jdField_a_of_type_Apmq.a(paramLong1, paramLong2);
+  }
 }
 
 

@@ -1,133 +1,43 @@
-import android.content.Intent;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.jubao.JubaoMsgData;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class auww
+  implements bkzq
 {
-  public static List<ChatMessage> a(List<ChatMessage> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ChatMessage localChatMessage = (ChatMessage)paramList.next();
-        if ((!abwz.k(localChatMessage.msgtype)) && (!aezm.a(localChatMessage))) {
-          localArrayList.add(localChatMessage);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("jubaoApiPlugin", 0, "filterMsgSize = " + localArrayList.size());
-    }
-    return localArrayList;
-  }
+  public auww(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    awcm.a().jdField_a_of_type_Int = 7;
-    Object localObject2 = paramIntent.getStringExtra("uin");
-    int j = paramIntent.getIntExtra("uintype", 0);
-    paramIntent = paramIntent.getSerializableExtra("msgs");
-    Object localObject3;
-    if (paramIntent != null)
+    switch (paramInt)
     {
-      localObject3 = (ArrayList)paramIntent;
-      if (((ArrayList)localObject3).size() != 0) {
-        break label50;
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Bkzi != null) {
+        this.a.jdField_a_of_type_Bkzi.dismiss();
+      }
+      this.a.o();
+      return;
+      this.a.p();
+      continue;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
+      }
+      if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
+      {
+        auwh.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+      }
+      else
+      {
+        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131694253), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
       }
     }
-    label50:
-    label206:
-    label237:
-    do
-    {
-      return;
-      Object localObject1 = (JubaoMsgData)((ArrayList)localObject3).get(0);
-      int i = 1;
-      JubaoMsgData localJubaoMsgData;
-      if (i < ((ArrayList)localObject3).size())
-      {
-        localJubaoMsgData = (JubaoMsgData)((ArrayList)localObject3).get(i);
-        if ((j == 3000) || (j == 1))
-        {
-          paramIntent = (Intent)localObject1;
-          if (((JubaoMsgData)localObject1).msgSeq > localJubaoMsgData.msgSeq) {
-            paramIntent = localJubaoMsgData;
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject1 = paramIntent;
-          break;
-          paramIntent = (Intent)localObject1;
-          if (((JubaoMsgData)localObject1).msgTime > localJubaoMsgData.msgTime) {
-            paramIntent = localJubaoMsgData;
-          }
-        }
-      }
-      long l;
-      if ((j == 3000) || (j == 1))
-      {
-        l = ((JubaoMsgData)localObject1).msgSeq;
-        paramIntent = new ArrayList();
-        paramQQAppInterface = paramQQAppInterface.getMessageFacade().getAIOList((String)localObject2, j, l);
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0)) {
-          break label356;
-        }
-        localObject1 = ((ArrayList)localObject3).iterator();
-        break label237;
-      }
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label356;
-        }
-        localJubaoMsgData = (JubaoMsgData)((Iterator)localObject1).next();
-        localObject2 = paramQQAppInterface.iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          i = (int)((ChatMessage)localObject3).time;
-          if ((j == 3000) || (j == 1))
-          {
-            i = (int)((ChatMessage)localObject3).shmsgseq;
-            if (localJubaoMsgData.msgSeq != i) {
-              break label206;
-            }
-            paramIntent.add(localObject3);
-            continue;
-            l = ((JubaoMsgData)localObject1).msgTime;
-            break;
-          }
-          int k = (short)(int)((ChatMessage)localObject3).shmsgseq;
-          if ((localJubaoMsgData.msgSeq != (0xFFFF & k)) || (localJubaoMsgData.msgTime != i)) {
-            break label206;
-          }
-          paramIntent.add(localObject3);
-        }
-      }
-      if (paramIntent.size() > 0)
-      {
-        paramQQAppInterface = paramIntent.iterator();
-        while (paramQQAppInterface.hasNext())
-        {
-          localObject1 = (ChatMessage)paramQQAppInterface.next();
-          awcm.a().jdField_a_of_type_JavaUtilHashMap.put(localObject1, Boolean.valueOf(true));
-        }
-      }
-    } while (!QLog.isColorLevel());
-    label356:
-    QLog.d("jubaoApiPlugin", 0, "handleOpenAIO = " + paramIntent.size());
   }
 }
 

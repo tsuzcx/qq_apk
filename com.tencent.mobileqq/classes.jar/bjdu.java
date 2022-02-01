@@ -1,45 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.open.agent.OpenAuthorityFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
-class bjdu
-  extends BroadcastReceiver
+public class bjdu
+  implements bjel
 {
-  bjdu(bjdt parambjdt, AsyncResult paramAsyncResult) {}
+  public bjdu(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(long paramLong)
   {
-    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
-    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
-    QLog.d("MiniAppProxyImpl", 2, "scanResult: " + str + "----scan_type: " + paramIntent);
-    try
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("result", str);
-      localJSONObject2.put("scanType", paramIntent);
-      localJSONObject2.put("rawData", bhzn.a(str));
-      localJSONObject2.put("charSet", "utf-8");
-      localJSONObject1.put("detail", localJSONObject2);
-      localJSONObject1.put("result", str);
-      localJSONObject1.put("scanType", paramIntent);
-      localJSONObject1.put("rawData", bhzn.a(str));
-      localJSONObject1.put("charSet", "utf-8");
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject1);
-      paramContext.unregisterReceiver(bjdt.a(this.jdField_a_of_type_Bjdt));
-      bjdt.a(this.jdField_a_of_type_Bjdt, null);
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
       return;
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        QLog.e("MiniAppProxyImpl", 1, "scan result error." + paramContext);
-      }
-    }
+    OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bjgg);
   }
 }
 

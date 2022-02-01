@@ -1,21 +1,64 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initDeleteCommentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class orl
-  implements oqp
+class orl
+  implements qeq
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
+  orl(orj paramorj, qep paramqep) {}
+  
+  private long a(List<ArticleInfo> paramList)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new orm(paramouc, paramouo));
+    paramList = paramList.iterator();
+    long l = 0L;
+    if (paramList.hasNext())
+    {
+      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+      if (l >= localArticleInfo.mRecommendSeq) {
+        break label50;
+      }
+      l = localArticleInfo.mRecommendSeq;
+    }
+    label50:
+    for (;;)
+    {
+      break;
+      return l;
+    }
+  }
+  
+  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
+  {
+    if ((!plm.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
+      return null;
+    }
+    long l = a(paramList2);
+    if (l < 1000L)
+    {
+      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
+      return null;
+    }
+    paramList2 = new ArrayList();
+    if (!orj.a())
+    {
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext())
+      {
+        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
+        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
+        {
+          localArticleInfo.mRecommendSeq += l;
+          paramList2.add(localArticleInfo);
+          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
+        }
+      }
+    }
+    bmhv.a(orj.a(), Boolean.valueOf(true));
+    orj.a(true);
+    this.jdField_a_of_type_Qep.a(null);
+    return paramList2;
   }
 }
 

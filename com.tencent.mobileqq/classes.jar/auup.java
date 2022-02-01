@@ -1,66 +1,81 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.ShareMsgImpl.3;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class auup
-  implements pbq
+class auup
+  extends ntf
 {
-  public auup(ShareMsgImpl.3 param3) {}
+  auup(auui paramauui, Bundle paramBundle) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool2 = false;
-    if ((this.a.this$0.b == null) || (!this.a.this$0.b.equals(paramBaseResp.transaction))) {
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      auuv.a("KEY_STAGE_2_NORMAL_B77", bool);
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "notifyServerSendMessage() onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(auui.a(this.jdField_a_of_type_Auui)), ", isFirstShow =", Boolean.valueOf(auui.b(this.jdField_a_of_type_Auui)) });
+      if (auui.b(this.jdField_a_of_type_Auui)) {
+        break;
+      }
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, "notifyServerSendMessage return for isFirstShow =" + auui.b(this.jdField_a_of_type_Auui));
       return;
     }
-    boolean bool1 = bool2;
-    switch (paramBaseResp.errCode)
+    if (auui.a(this.jdField_a_of_type_Auui))
     {
-    case -1: 
-    default: 
-      yyi.a(1, 2131718380);
-      bool1 = bool2;
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, "notifyServerSendMessage return for isTimeOut =" + auui.a(this.jdField_a_of_type_Auui));
+      return;
+    }
+    if (paramBundle != null)
+    {
+      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
+      QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, "notifyServerSendMessage currentRequestTime =" + auui.b(this.jdField_a_of_type_Auui) + ", sendStamp = " + l);
+      if ((l == -1L) || (l != auui.b(this.jdField_a_of_type_Auui)))
+      {
+        QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, "notifyServerSendMessage return for sendStamp");
+        return;
+      }
+    }
+    auui.a(this.jdField_a_of_type_Auui, true);
+    paramBundle = ForwardUtils.parseOIDBb77RspBody(paramArrayOfByte);
+    int i = ((Integer)paramBundle[0]).intValue();
+    String str1 = (String)paramBundle[1];
+    String str2 = (String)paramBundle[2];
+    String str3 = (String)paramBundle[3];
+    auui.a(this.jdField_a_of_type_Auui).removeMessages(94);
+    this.jdField_a_of_type_Auui.c();
+    paramBundle = auui.a(this.jdField_a_of_type_Auui);
+    String str4 = ForwardUtils.reqTypeToReportData(auui.a(this.jdField_a_of_type_Auui).getInt("req_type"));
+    String str5 = ForwardUtils.toType(auui.a(this.jdField_a_of_type_Auui).getInt("uintype"));
+    if ((paramBundle instanceof AbsShareMsg)) {}
+    for (paramBundle = ((AbsShareMsg)paramBundle).mContentTitle;; paramBundle = "")
+    {
+      bdla.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, str4, str5, paramBundle);
+      if ((paramInt == 0) && (paramArrayOfByte != null)) {
+        break;
+      }
+      auui.a(this.jdField_a_of_type_Auui, paramInt, str2, str3);
+      return;
+    }
+    if (i != 0) {
+      auui.b(this.jdField_a_of_type_Auui, str1);
     }
     for (;;)
     {
-      this.a.this$0.jdField_a_of_type_Auus.onSharMsgcallback(this.a.this$0.jdField_a_of_type_JavaLangString, String.valueOf(bool1));
+      auui.c(this.jdField_a_of_type_Auui, this.jdField_a_of_type_AndroidOsBundle.getString("share_comment_message_for_server"));
       return;
-      yyi.a(2, 2131718398);
-      if ((this.a.this$0.jdField_a_of_type_Bgzr != null) && (this.a.this$0.jdField_a_of_type_Bgzu != null))
-      {
-        int i;
-        label162:
-        String str1;
-        String str2;
-        String str3;
-        if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-        {
-          i = 1009;
-          paramBaseResp = this.a.this$0.jdField_a_of_type_Bgzr.getMsgid();
-          str1 = this.a.this$0.jdField_a_of_type_Bgzr.getPublicUin();
-          str2 = this.a.b;
-          str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bgzu.getCurrentUrl());
-          String str4 = this.a.this$0.jdField_a_of_type_Bgzr.getSourcePuin();
-          if ((str4 == null) || ("".equals(str4))) {
-            break label305;
-          }
-          odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bgzu.getCurrentUrl(), str3, false);
-        }
-        for (;;)
-        {
-          bool1 = true;
-          break;
-          i = 1004;
-          break label162;
-          label305:
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-            i = 1003;
-          }
-          odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-        }
-      }
-      bool1 = true;
+      auui.a(this.jdField_a_of_type_Auui);
     }
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (QLog.isColorLevel())) {
+      QLog.e("SDK_SHARE.ForwardShareByServerHelper", 2, "onError msg =" + paramString);
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 

@@ -1,40 +1,19 @@
-import androidx.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ste
-  implements Comparable<ste>
+  extends stj
 {
-  public float a;
-  public int a;
-  public long a;
-  public AdvertisementInfo a;
-  
-  public int a(ste paramste)
+  public ste(ssz paramssz)
   {
-    if (this.jdField_a_of_type_Int < paramste.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramste.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    super(paramssz);
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public void a(int paramInt, Object paramObject)
   {
-    if ((!(paramObject instanceof ste)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (((ste)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_CHANGE_HW_BACKUP_URL");
     }
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == ((ste)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo) && (this.jdField_a_of_type_Int == ((ste)paramObject).jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    int i = 17;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.hashCode() + 527;
-    }
-    return i * 31 + this.jdField_a_of_type_Int;
+    this.a.a.g = true;
   }
 }
 

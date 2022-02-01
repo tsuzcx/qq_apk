@@ -1,217 +1,67 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.Html;
-import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.common.NoticeParam;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
+import android.app.Activity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.util.Pair;
+import mqq.os.MqqHandler;
 
 public class bhzb
-  extends Handler
+  extends bhyw
 {
-  protected Notification a;
-  protected NoticeParam a;
-  
-  public bhzb()
+  String a()
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam = new NoticeParam();
+    return "KC.KCWraper.Other";
   }
   
-  public bhzb(Looper paramLooper)
+  void a(ViewGroup paramViewGroup)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam = new NoticeParam();
+    a("can not call bindActivationView");
   }
   
-  protected String a(int paramInt)
+  void a(bhzi parambhzi, boolean paramBoolean)
   {
-    return bhpc.a().a().getString(paramInt);
-  }
-  
-  protected String a(int paramInt, Object... paramVarArgs)
-  {
-    return bhpc.a().a().getString(paramInt, paramVarArgs);
-  }
-  
-  protected void a(Notification paramNotification, PendingIntent paramPendingIntent, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    a("queryKingCard : from cache");
+    Pair localPair = a();
+    if (parambhzi != null)
     {
-      if (Build.VERSION.SDK_INT > 10)
-      {
-        paramNotification.contentView.setOnClickPendingIntent(2131371926, paramPendingIntent);
-        return;
-      }
-      paramNotification.contentIntent = paramPendingIntent;
-      return;
-    }
-    paramNotification.contentIntent = paramPendingIntent;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    Object localObject1 = paramMessage.getData();
-    Object localObject2 = ((Bundle)localObject1).getString(bibw.jdField_a_of_type_JavaLangString);
-    bhzm.a("NoticeHintHandler", "+++++what:" + paramMessage.what + "+++++" + localObject1);
-    localObject2 = bhyo.a().a((String)localObject2);
-    if (localObject2 != null)
-    {
-      if (((DownloadInfo)localObject2).i == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE) {
-        bhzm.c("NoticeHintHandler", "notification isShowNotification=" + ((DownloadInfo)localObject2).i);
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambhzi, localPair));
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString = ((DownloadInfo)localObject2).c;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_JavaLangString = ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d = ((DownloadInfo)localObject2).e;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString = ((DownloadInfo)localObject2).g;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_AndroidContentIntent = ((DownloadInfo)localObject2).jdField_a_of_type_AndroidContentIntent;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_Long = ((DownloadInfo)localObject2).jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.g = ((DownloadInfo)localObject2).h;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.e = ((DownloadInfo)localObject2).d;
-    for (;;)
+    parambhzi.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("tryLoad : do nothing");
+  }
+  
+  boolean a()
+  {
+    a("isReady : do nothing");
+    return true;
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    if (c())
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidAppNotification == null)
-        {
-          this.jdField_a_of_type_AndroidAppNotification = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam);
-          if (this.jdField_a_of_type_AndroidAppNotification == null) {
-            break;
-          }
-        }
-        switch (paramMessage.what)
-        {
-        default: 
-          int i = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-          long l = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidAppNotification.when = l;
-          bidk.a().a(i, this.jdField_a_of_type_AndroidAppNotification);
-          bhzm.c("NoticeHintHandler", "notify key=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString + " type=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int + "appid=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-          return;
-          localObject1 = new RemoteViews(bhpc.a().a().getPackageName(), 2131559661);
-          bidk.a().a((RemoteViews)localObject1);
-          ((RemoteViews)localObject1).setInt(2131371926, "setBackgroundColor", -1);
-          ((RemoteViews)localObject1).setInt(2131371928, "setTextColor", -16777216);
-          ((RemoteViews)localObject1).setInt(2131371922, "setTextColor", -12303292);
-          ((RemoteViews)localObject1).setInt(2131371916, "setTextColor", -12303292);
-          this.jdField_a_of_type_AndroidAppNotification.contentView = ((RemoteViews)localObject1);
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        bhzm.c("NoticeHintHandler", "init Notification>>>", localException);
-        continue;
-        bhzm.b("NoticeHintHandler", ">>downloading:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-        bhzm.c("NoticeHintHandler", "size = " + ((DownloadInfo)localObject2).jdField_f_of_type_Int + " content = ");
-        this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694151, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString });
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setProgressBar(2131371910, 100, ((DownloadInfo)localObject2).jdField_f_of_type_Int, false);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371922, ((DownloadInfo)localObject2).jdField_f_of_type_Int * 100 / 100 + "%");
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844269);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(a(2131694154, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString }), 18, true));
-        a(this.jdField_a_of_type_AndroidAppNotification, bido.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-        if (!TextUtils.isEmpty(""))
-        {
-          this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
-          this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, Html.fromHtml(""));
-          this.jdField_a_of_type_AndroidAppNotification.flags = 32;
-          paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-          paramMessage.flags |= 0x2;
-          continue;
-        }
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 8);
-        continue;
-        this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694151, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString });
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(a(2131694154, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString }), 18, true));
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131691711));
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844269);
-        a(this.jdField_a_of_type_AndroidAppNotification, bido.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-        this.jdField_a_of_type_AndroidAppNotification.flags = 32;
-        paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-        paramMessage.flags |= 0x2;
-        bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
-        continue;
-        bhzm.b("NoticeHintHandler", ">>complete:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int = 3;
-        this.jdField_a_of_type_AndroidAppNotification = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam);
-      }
-      if (this.jdField_a_of_type_AndroidAppNotification == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694149);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131694134));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
-      a(this.jdField_a_of_type_AndroidAppNotification, bido.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), false);
-      paramMessage = bhzk.a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      if (paramMessage != null) {
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewBitmap(2131371917, paramMessage);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidAppNotification.flags = 16;
-        paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-        paramMessage.flags &= 0xFFFFFFFD;
-        bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
-        break;
-        bhzm.b("NoticeHintHandler", ">>download icon fail,so we use default notification icon");
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844269);
-      }
-      bhzm.b("NoticeHintHandler", ">>pause:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694136);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844272);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131694136));
-      a(this.jdField_a_of_type_AndroidAppNotification, bido.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-      this.jdField_a_of_type_AndroidAppNotification.flags = 16;
-      paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-      paramMessage.flags &= 0xFFFFFFFD;
-      bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
-      continue;
-      bhzm.b("NoticeHintHandler", ">>error:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844270);
-      String str = (String)paramMessage.obj;
-      paramMessage = str;
-      if (TextUtils.isEmpty(str)) {
-        paramMessage = a(2131691703);
-      }
-      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694150, new Object[] { paramMessage });
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131694135, new Object[] { paramMessage }));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
-      a(this.jdField_a_of_type_AndroidAppNotification, bido.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
-      this.jdField_a_of_type_AndroidAppNotification.flags = 16;
-      paramMessage = this.jdField_a_of_type_AndroidAppNotification;
-      paramMessage.flags &= 0xFFFFFFFD;
-      bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
+      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+      return true;
     }
-    bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
+    return false;
+  }
+  
+  boolean b()
+  {
+    boolean bool = c();
+    a("supportActivationView = " + bool);
+    return bool;
   }
 }
 

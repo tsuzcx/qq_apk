@@ -1,21 +1,18 @@
-import com.tencent.qapmsdk.base.meta.DumpResult;
+import android.content.Context;
+import com.tencent.ad.tangram.net.AdNet;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public abstract interface achq
-  extends achm
+public class achq
 {
-  public abstract DumpResult a(String paramString, acht paramacht);
+  public static int a(Context paramContext)
+  {
+    return AdNet.getType(paramContext);
+  }
   
-  public abstract String a();
-  
-  public abstract void a(acho paramacho);
-  
-  public abstract void a(DumpResult paramDumpResult);
-  
-  public abstract String b();
-  
-  public abstract void b(acho paramacho);
-  
-  public abstract boolean c();
+  public static boolean a(Context paramContext)
+  {
+    return NetworkUtil.isNetSupport(paramContext);
+  }
 }
 
 

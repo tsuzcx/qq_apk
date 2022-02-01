@@ -59,7 +59,7 @@ public class l
           localObject4 = new StringBuilder();
           localHashMap.put("A31", "" + ((com.tencent.beacon.core.info.c)localObject3).b());
           localHashMap.put("A33", e.d(((b)localObject1).c()).k(((b)localObject1).c()));
-          boolean bool = com.tencent.beacon.core.info.a.g(((b)localObject1).c());
+          boolean bool = com.tencent.beacon.core.info.a.h(((b)localObject1).c());
           if (bool)
           {
             localHashMap.put("A66", "F");

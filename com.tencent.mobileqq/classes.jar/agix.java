@@ -1,43 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.util.List;
 
-public class agix
+class agix
+  implements bkzq
 {
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    paramMessageRecord.isFolded = false;
-  }
+  agix(agiw paramagiw, List paramList, bkzi parambkzi) {}
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMessageRecord.isSendFromLocal()) {}
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      return false;
-      String str = paramMessageRecord.getExtInfoFromExtStr("key_message_extra_info_flag");
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageFoldable", 2, "strFlag: " + str + ", mr: " + paramMessageRecord);
-      }
-      if (TextUtils.isEmpty(str)) {
-        continue;
-      }
-      try
-      {
-        i = Integer.parseInt(str);
-        if ((i & 0x8) == 0) {
-          continue;
-        }
-        return paramMessageRecord.isFolded;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          localNumberFormatException.printStackTrace();
-          int i = 0;
-        }
-      }
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      agiw.a(this.jdField_a_of_type_Agiw, this.jdField_a_of_type_JavaUtilList);
+      agfb.a(agiw.a(this.jdField_a_of_type_Agiw), this.jdField_a_of_type_JavaUtilList, 3);
+      continue;
+      this.jdField_a_of_type_Agiw.a(this.jdField_a_of_type_JavaUtilList, 0);
+      agfb.a(agiw.a(this.jdField_a_of_type_Agiw), this.jdField_a_of_type_JavaUtilList, 3);
     }
   }
 }

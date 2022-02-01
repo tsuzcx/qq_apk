@@ -20,6 +20,7 @@ import com.tencent.autotemplate.model.TAVVolumeAutomaticEffect;
 import com.tencent.autotemplate.model.bean.MaterialLimits;
 import com.tencent.autotemplate.model.rhythm.TAVRhythmEffects;
 import com.tencent.autotemplate.transition.FaceTransition;
+import com.tencent.autotemplate.transition.TransitionEffectModel;
 import com.tencent.autotemplate.transition.TransitionHelper;
 import com.tencent.autotemplate.utils.RandomUtil;
 import com.tencent.autotemplate.utils.TemplateUtils;
@@ -115,6 +116,7 @@ public class TAVAutomaticTemplate
   protected long transThreshold;
   @SerializedName("transitionApplyType")
   protected int transitionApplyType;
+  protected transient List<TransitionEffectModel> transitionEffectModels = new ArrayList();
   private transient TransitionHelper transitionHelper;
   protected transient List<TAVSticker> transitionStickers = new ArrayList();
   @SerializedName("transitions")
@@ -539,6 +541,7 @@ public class TAVAutomaticTemplate
     TAVComposition localTAVComposition = buildCompostion(paramTAVMovie);
     applyTimeEffectToComposition(localTAVComposition);
     this.transitionHelper = new TransitionHelper(this.transitions, getExtraData(), this.templateDir, this.transitionStickers, getFaceTransitions());
+    this.transitionHelper.setTransitionEffectModels(this.transitionEffectModels);
     if ((!isRhythmTemplate()) && (this.transitionHelper.needTransition(localTAVComposition))) {
       this.transitionHelper.applyTransitionToComposition(localTAVComposition);
     }
@@ -822,6 +825,11 @@ public class TAVAutomaticTemplate
   public List<TAVTimeEffect> getTimeEffects()
   {
     return this.timeEffects;
+  }
+  
+  public List<TransitionEffectModel> getTransitionEffectModels()
+  {
+    return this.transitionEffectModels;
   }
   
   public List<TAVSticker> getTransitionStickers()

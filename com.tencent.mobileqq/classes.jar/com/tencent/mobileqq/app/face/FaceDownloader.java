@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
-import amtk;
-import anbx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -11,11 +9,14 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import anho;
-import ardx;
-import arid;
-import bfpx;
-import bfpy;
+import anvy;
+import aoem;
+import aoke;
+import asid;
+import asmj;
+import axoc;
+import bgyo;
+import bgyp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -104,7 +105,7 @@ public abstract class FaceDownloader
       {
         this.mDownRunnables[i] = new FaceDownloader.FaceDownloadRunnable(this, i);
         this.mDownThreads[i] = ThreadManager.newFreeThread(this.mDownRunnables[i], "FaceDownloadThread", 5);
-        if (anbx.a().c()) {
+        if (aoem.a().c()) {
           this.mDownThreads[i].setPriority(1);
         }
         try
@@ -158,33 +159,33 @@ public abstract class FaceDownloader
       return;
     }
     paramFaceInfo.a(FaceInfo.p);
-    bfpy localbfpy = new bfpy();
+    bgyp localbgyp = new bgyp();
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inPreferredConfig = FaceConstant.FACE_BITMAP_CONFIG;
-    anho localanho = (anho)this.mApp.getManager(216);
+    localOptions.inPreferredConfig = FaceConstant.HeadConfig.FACE_BITMAP_CONFIG;
+    aoke localaoke = (aoke)this.mApp.getManager(axoc.k);
     paramInt = 0;
     for (;;)
     {
-      bfpx.a(localanho.a(paramFaceInfo), localOptions, localbfpy);
-      if (localbfpy.jdField_a_of_type_Int == 1)
+      bgyo.a(localaoke.a(paramFaceInfo), localOptions, localbgyp);
+      if (localbgyp.jdField_a_of_type_Int == 1)
       {
         NearbyAppInterface localNearbyAppInterface = (NearbyAppInterface)this.mApp;
         NearbyAppInterface.b();
       }
       paramInt += 1;
-      if ((paramInt >= 2) || (localbfpy.jdField_a_of_type_Int != 1))
+      if ((paramInt >= 2) || (localbgyp.jdField_a_of_type_Int != 1))
       {
-        if (localbfpy.jdField_a_of_type_AndroidGraphicsBitmap != null)
+        if (localbgyp.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
           paramInt = i;
           if (paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo != null) {
             paramInt = paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.cHeadType;
           }
-          localbfpy.jdField_a_of_type_AndroidGraphicsBitmap = QQAppInterface.genFaceBmpByShape((byte)paramFaceInfo.c, localbfpy.jdField_a_of_type_AndroidGraphicsBitmap, paramFaceInfo.jdField_a_of_type_JavaLangString, paramInt);
-          localanho.a(paramFaceInfo.a(), localbfpy.jdField_a_of_type_AndroidGraphicsBitmap, anho.a(paramFaceInfo.jdField_a_of_type_Int));
+          localbgyp.jdField_a_of_type_AndroidGraphicsBitmap = QQAppInterface.genFaceBmpByShape((byte)paramFaceInfo.c, localbgyp.jdField_a_of_type_AndroidGraphicsBitmap, paramFaceInfo.jdField_a_of_type_JavaLangString, paramInt);
+          localaoke.a(paramFaceInfo.a(), localbgyp.jdField_a_of_type_AndroidGraphicsBitmap, aoke.a(paramFaceInfo.jdField_a_of_type_Int));
         }
         paramFaceInfo.a(FaceInfo.q);
-        localPendingTask.bitmap = localbfpy.jdField_a_of_type_AndroidGraphicsBitmap;
+        localPendingTask.bitmap = localbgyp.jdField_a_of_type_AndroidGraphicsBitmap;
         this.sPendingResultList.add(localPendingTask);
         this.handler.obtainMessage(100, localPendingTask).sendToTarget();
         return;
@@ -297,55 +298,55 @@ public abstract class FaceDownloader
     //   1: ifeq +139 -> 140
     //   4: ldc 26
     //   6: iconst_1
-    //   7: new 345	java/lang/StringBuilder
+    //   7: new 350	java/lang/StringBuilder
     //   10: dup
-    //   11: invokespecial 346	java/lang/StringBuilder:<init>	()V
-    //   14: ldc_w 460
-    //   17: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   14: ldc_w 465
+    //   17: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: iload_3
-    //   21: invokevirtual 421	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   24: ldc_w 462
-    //   27: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   24: ldc_w 467
+    //   27: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: aload_1
-    //   31: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: ldc_w 464
-    //   37: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: ldc_w 469
+    //   37: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: iload 5
-    //   42: invokevirtual 421	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   45: ldc_w 357
-    //   48: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   45: ldc_w 362
+    //   48: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: aload_2
-    //   52: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   55: ldc_w 466
-    //   58: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   55: ldc_w 471
+    //   58: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: iload 6
-    //   63: invokevirtual 426	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   66: ldc_w 468
-    //   69: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 431	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   66: ldc_w 473
+    //   69: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: aload 7
-    //   74: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: ldc_w 470
-    //   80: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: ldc_w 475
+    //   80: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: iload 8
-    //   85: invokevirtual 421	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   88: ldc_w 472
-    //   91: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: getstatic 474	com/tencent/mobileqq/app/face/FaceDownloader:forceDirect	Z
-    //   97: invokevirtual 426	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   100: ldc_w 476
-    //   103: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   88: ldc_w 477
+    //   91: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: getstatic 479	com/tencent/mobileqq/app/face/FaceDownloader:forceDirect	Z
+    //   97: invokevirtual 431	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   100: ldc_w 481
+    //   103: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: iload 9
-    //   108: invokevirtual 421	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   111: ldc_w 478
-    //   114: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   111: ldc_w 483
+    //   114: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   117: aload 10
-    //   119: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: ldc_w 480
-    //   125: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: ldc_w 485
+    //   125: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: getstatic 63	com/tencent/mobileqq/app/face/FaceDownloader:DPC_WAP_DIRECT_CONNECT	I
-    //   131: invokevirtual 421	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 360	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   131: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 365	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokestatic 439	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   140: iload_3
     //   141: ifeq +34 -> 175
     //   144: iload 5
@@ -354,8 +355,8 @@ public abstract class FaceDownloader
     //   150: aload 4
     //   152: monitorenter
     //   153: aload 4
-    //   155: ldc2_w 481
-    //   158: invokevirtual 486	java/lang/Object:wait	(J)V
+    //   155: ldc2_w 486
+    //   158: invokevirtual 491	java/lang/Object:wait	(J)V
     //   161: aload 4
     //   163: monitorexit
     //   164: return
@@ -480,7 +481,7 @@ public abstract class FaceDownloader
     for (int i = paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.cHeadType;; i = 0)
     {
       localBitmap = QQAppInterface.genFaceBmpByShape((byte)paramFaceInfo.c, paramBitmap, paramFaceInfo.jdField_a_of_type_JavaLangString, i);
-      ((anho)this.mApp.getManager(216)).a(paramFaceInfo.a(), localBitmap, anho.a(paramFaceInfo.jdField_a_of_type_Int));
+      ((aoke)this.mApp.getManager(axoc.k)).a(paramFaceInfo.a(), localBitmap, aoke.a(paramFaceInfo.jdField_a_of_type_Int));
       paramFaceInfo.a(FaceInfo.q);
       return localBitmap;
     }
@@ -568,7 +569,7 @@ public abstract class FaceDownloader
   private String getIp(String paramString, boolean paramBoolean)
   {
     int i = 28;
-    boolean bool = amtk.a().a();
+    boolean bool = anvy.a().a();
     int j = NetConnInfoCenter.getActiveNetIpFamily(true);
     Object localObject;
     if (j == 3)
@@ -652,7 +653,7 @@ public abstract class FaceDownloader
     }
   }
   
-  private boolean isVerifyError(FaceInfo paramFaceInfo, int paramInt, ardx paramardx, HttpURLConnection paramHttpURLConnection, String paramString)
+  private boolean isVerifyError(FaceInfo paramFaceInfo, int paramInt, asid paramasid, HttpURLConnection paramHttpURLConnection, String paramString)
   {
     boolean bool1 = false;
     boolean bool2 = false;
@@ -663,8 +664,8 @@ public abstract class FaceDownloader
       return bool2;
     }
     bool2 = bool1;
-    if (paramardx.f == null) {
-      if (paramardx.c != 200) {
+    if (paramasid.f == null) {
+      if (paramasid.c != 200) {
         break label146;
       }
     }
@@ -675,10 +676,10 @@ public abstract class FaceDownloader
       if (!TextUtils.isEmpty(paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.headVerify))
       {
         bool1 = bool2;
-        if (paramardx.f != null)
+        if (paramasid.f != null)
         {
           bool1 = bool2;
-          if (!paramardx.f.equals(paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.headVerify)) {
+          if (!paramasid.f.equals(paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.headVerify)) {
             bool1 = true;
           }
         }
@@ -690,7 +691,7 @@ public abstract class FaceDownloader
       printHeaderInfo(paramHttpURLConnection, paramFaceInfo);
       return bool1;
       label146:
-      paramInt = paramardx.c;
+      paramInt = paramasid.c;
     }
   }
   
@@ -713,7 +714,7 @@ public abstract class FaceDownloader
   }
   
   /* Error */
-  private int realDownloadData(String paramString, File paramFile1, FaceInfo paramFaceInfo, boolean paramBoolean, android.net.NetworkInfo paramNetworkInfo, URL paramURL, int paramInt1, Object paramObject, int paramInt2, OutputStream paramOutputStream, ardx paramardx, File paramFile2, int paramInt3, HttpURLConnection paramHttpURLConnection)
+  private int realDownloadData(String paramString, File paramFile1, FaceInfo paramFaceInfo, boolean paramBoolean, android.net.NetworkInfo paramNetworkInfo, URL paramURL, int paramInt1, Object paramObject, int paramInt2, OutputStream paramOutputStream, asid paramasid, File paramFile2, int paramInt3, HttpURLConnection paramHttpURLConnection)
   {
     // Byte code:
     //   0: lconst_0
@@ -734,7 +735,7 @@ public abstract class FaceDownloader
     //   27: iconst_m1
     //   28: if_icmpeq +56 -> 84
     //   31: aload_3
-    //   32: getfield 299	com/tencent/mobileqq/app/face/FaceInfo:jdField_a_of_type_AvatarInfoQQHeadInfo	LAvatarInfo/QQHeadInfo;
+    //   32: getfield 304	com/tencent/mobileqq/app/face/FaceInfo:jdField_a_of_type_AvatarInfoQQHeadInfo	LAvatarInfo/QQHeadInfo;
     //   35: astore 31
     //   37: aload 31
     //   39: ifnonnull +32 -> 71
@@ -744,13 +745,13 @@ public abstract class FaceDownloader
     //   48: lstore 29
     //   50: aload 11
     //   52: iload 15
-    //   54: putfield 715	ardx:b	I
+    //   54: putfield 720	asid:b	I
     //   57: aload_0
     //   58: aload_3
     //   59: iload 4
     //   61: lload 29
     //   63: iload 15
-    //   65: invokespecial 717	com/tencent/mobileqq/app/face/FaceDownloader:cacheFile	(Lcom/tencent/mobileqq/app/face/FaceInfo;ZJI)V
+    //   65: invokespecial 722	com/tencent/mobileqq/app/face/FaceDownloader:cacheFile	(Lcom/tencent/mobileqq/app/face/FaceInfo;ZJI)V
     //   68: iload 15
     //   70: ireturn
     //   71: aload_0
@@ -758,32 +759,32 @@ public abstract class FaceDownloader
     //   74: aload_3
     //   75: iload 17
     //   77: aload 31
-    //   79: invokespecial 719	com/tencent/mobileqq/app/face/FaceDownloader:getDomain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILAvatarInfo/QQHeadInfo;)Ljava/lang/String;
+    //   79: invokespecial 724	com/tencent/mobileqq/app/face/FaceDownloader:getDomain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILAvatarInfo/QQHeadInfo;)Ljava/lang/String;
     //   82: astore 33
     //   84: iconst_5
     //   85: istore 13
-    //   87: invokestatic 724	android/net/Proxy:getDefaultHost	()Ljava/lang/String;
+    //   87: invokestatic 729	android/net/Proxy:getDefaultHost	()Ljava/lang/String;
     //   90: astore 34
-    //   92: invokestatic 727	android/net/Proxy:getDefaultPort	()I
+    //   92: invokestatic 732	android/net/Proxy:getDefaultPort	()I
     //   95: istore 23
     //   97: aload 5
     //   99: ifnull +442 -> 541
     //   102: aload 5
-    //   104: invokevirtual 732	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   104: invokevirtual 737	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   107: astore 14
     //   109: aload 5
     //   111: ifnull +436 -> 547
     //   114: aload 5
-    //   116: invokevirtual 735	android/net/NetworkInfo:getType	()I
+    //   116: invokevirtual 740	android/net/NetworkInfo:getType	()I
     //   119: istore 18
     //   121: aload 14
-    //   123: invokestatic 740	com/tencent/mobileqq/utils/httputils/PkgTools:getApnType	(Ljava/lang/String;)Ljava/lang/String;
+    //   123: invokestatic 745	com/tencent/mobileqq/utils/httputils/PkgTools:getApnType	(Ljava/lang/String;)Ljava/lang/String;
     //   126: astore 35
     //   128: aload_0
     //   129: aload 34
     //   131: iload 18
     //   133: aload 35
-    //   135: invokespecial 743	com/tencent/mobileqq/app/face/FaceDownloader:setForceDirect	(Ljava/lang/String;ILjava/lang/String;)V
+    //   135: invokespecial 748	com/tencent/mobileqq/app/face/FaceDownloader:setForceDirect	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: aload_0
     //   139: aload 34
     //   141: iload 23
@@ -791,18 +792,18 @@ public abstract class FaceDownloader
     //   145: iconst_0
     //   146: iload 17
     //   148: aload 33
-    //   150: invokevirtual 747	com/tencent/mobileqq/app/face/FaceDownloader:setHttpConnAndUseProxy	(Ljava/lang/String;ILjava/lang/String;ZILjava/lang/String;)[Ljava/lang/Object;
+    //   150: invokevirtual 752	com/tencent/mobileqq/app/face/FaceDownloader:setHttpConnAndUseProxy	(Ljava/lang/String;ILjava/lang/String;ZILjava/lang/String;)[Ljava/lang/Object;
     //   153: astore 14
     //   155: aload 14
     //   157: iconst_0
     //   158: aaload
-    //   159: checkcast 749	java/lang/Boolean
-    //   162: invokevirtual 752	java/lang/Boolean:booleanValue	()Z
+    //   159: checkcast 754	java/lang/Boolean
+    //   162: invokevirtual 757	java/lang/Boolean:booleanValue	()Z
     //   165: istore 24
     //   167: aload 14
     //   169: iconst_1
     //   170: aaload
-    //   171: checkcast 333	java/net/HttpURLConnection
+    //   171: checkcast 338	java/net/HttpURLConnection
     //   174: astore 14
     //   176: iload 13
     //   178: istore 15
@@ -815,7 +816,7 @@ public abstract class FaceDownloader
     //   192: aload_1
     //   193: astore 32
     //   195: aload 14
-    //   197: invokevirtual 755	java/net/HttpURLConnection:connect	()V
+    //   197: invokevirtual 760	java/net/HttpURLConnection:connect	()V
     //   200: iload 13
     //   202: istore 15
     //   204: iload 24
@@ -828,8 +829,8 @@ public abstract class FaceDownloader
     //   217: astore 32
     //   219: aload 11
     //   221: aload 14
-    //   223: invokevirtual 689	java/net/HttpURLConnection:getResponseCode	()I
-    //   226: putfield 677	ardx:c	I
+    //   223: invokevirtual 694	java/net/HttpURLConnection:getResponseCode	()I
+    //   226: putfield 682	asid:c	I
     //   229: iload 13
     //   231: istore 15
     //   233: iload 24
@@ -842,8 +843,8 @@ public abstract class FaceDownloader
     //   246: astore 32
     //   248: aload 11
     //   250: aload 14
-    //   252: invokevirtual 697	java/net/HttpURLConnection:getContentLength	()I
-    //   255: putfield 757	ardx:e	I
+    //   252: invokevirtual 702	java/net/HttpURLConnection:getContentLength	()I
+    //   255: putfield 762	asid:e	I
     //   258: iload 13
     //   260: istore 15
     //   262: iload 24
@@ -856,8 +857,8 @@ public abstract class FaceDownloader
     //   275: astore 32
     //   277: aload 11
     //   279: aload 14
-    //   281: invokevirtual 694	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   284: putfield 760	ardx:h	Ljava/lang/String;
+    //   281: invokevirtual 699	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   284: putfield 765	asid:h	Ljava/lang/String;
     //   287: iload 13
     //   289: istore 15
     //   291: iload 24
@@ -870,8 +871,8 @@ public abstract class FaceDownloader
     //   304: astore 32
     //   306: aload 11
     //   308: aload 14
-    //   310: invokevirtual 763	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
-    //   313: putfield 765	ardx:i	Ljava/lang/String;
+    //   310: invokevirtual 768	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
+    //   313: putfield 770	asid:i	Ljava/lang/String;
     //   316: iload 13
     //   318: istore 15
     //   320: iload 24
@@ -884,9 +885,9 @@ public abstract class FaceDownloader
     //   333: astore 32
     //   335: aload 11
     //   337: aload 14
-    //   339: ldc_w 709
-    //   342: invokevirtual 703	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   345: putfield 676	ardx:f	Ljava/lang/String;
+    //   339: ldc_w 714
+    //   342: invokevirtual 708	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   345: putfield 681	asid:f	Ljava/lang/String;
     //   348: iload 13
     //   350: istore 15
     //   352: iload 24
@@ -898,8 +899,8 @@ public abstract class FaceDownloader
     //   364: aload_1
     //   365: astore 32
     //   367: aload 14
-    //   369: ldc_w 705
-    //   372: invokevirtual 703	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   369: ldc_w 710
+    //   372: invokevirtual 708	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   375: astore 10
     //   377: iload 13
     //   379: istore 15
@@ -915,8 +916,8 @@ public abstract class FaceDownloader
     //   398: istore 16
     //   400: aload_0
     //   401: aload_3
-    //   402: getfield 318	com/tencent/mobileqq/app/face/FaceInfo:jdField_a_of_type_Int	I
-    //   405: invokespecial 767	com/tencent/mobileqq/app/face/FaceDownloader:needVerify	(I)Z
+    //   402: getfield 323	com/tencent/mobileqq/app/face/FaceInfo:jdField_a_of_type_Int	I
+    //   405: invokespecial 772	com/tencent/mobileqq/app/face/FaceDownloader:needVerify	(I)Z
     //   408: ifeq +291 -> 699
     //   411: iload 13
     //   413: istore 15
@@ -936,18 +937,18 @@ public abstract class FaceDownloader
     //   437: aload 11
     //   439: aload 14
     //   441: aload 10
-    //   443: invokespecial 769	com/tencent/mobileqq/app/face/FaceDownloader:isVerifyError	(Lcom/tencent/mobileqq/app/face/FaceInfo;ILardx;Ljava/net/HttpURLConnection;Ljava/lang/String;)Z
+    //   443: invokespecial 774	com/tencent/mobileqq/app/face/FaceDownloader:isVerifyError	(Lcom/tencent/mobileqq/app/face/FaceInfo;ILasid;Ljava/net/HttpURLConnection;Ljava/lang/String;)Z
     //   446: istore 26
     //   448: iload 26
     //   450: ifeq +249 -> 699
     //   453: aload_0
     //   454: aload_1
     //   455: aload 14
-    //   457: invokespecial 771	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
+    //   457: invokespecial 776	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
     //   460: aload_0
     //   461: iconst_5
     //   462: aload 12
-    //   464: invokespecial 773	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
+    //   464: invokespecial 778	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
     //   467: iload 17
     //   469: iconst_1
     //   470: iadd
@@ -963,7 +964,7 @@ public abstract class FaceDownloader
     //   486: iload 23
     //   488: iload 18
     //   490: aload 35
-    //   492: invokespecial 775	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
+    //   492: invokespecial 780	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
     //   495: aload 14
     //   497: astore 10
     //   499: iconst_5
@@ -1009,7 +1010,7 @@ public abstract class FaceDownloader
     //   579: iload 24
     //   581: aload 34
     //   583: iload 23
-    //   585: invokespecial 779	com/tencent/mobileqq/app/face/FaceDownloader:setForceDirectByUseProxy	(ZLjava/lang/String;I)V
+    //   585: invokespecial 784	com/tencent/mobileqq/app/face/FaceDownloader:setForceDirectByUseProxy	(ZLjava/lang/String;I)V
     //   588: iload 13
     //   590: istore 15
     //   592: iload 24
@@ -1038,16 +1039,16 @@ public abstract class FaceDownloader
     //   633: aload 6
     //   635: aload 12
     //   637: aload 10
-    //   639: invokespecial 781	com/tencent/mobileqq/app/face/FaceDownloader:dealDownloadExp	(Lcom/tencent/mobileqq/app/face/FaceInfo;Ljava/net/URL;Ljava/io/File;Ljava/io/IOException;)I
+    //   639: invokespecial 786	com/tencent/mobileqq/app/face/FaceDownloader:dealDownloadExp	(Lcom/tencent/mobileqq/app/face/FaceInfo;Ljava/net/URL;Ljava/io/File;Ljava/io/IOException;)I
     //   642: istore 15
     //   644: aload_0
     //   645: aload_1
     //   646: aload 14
-    //   648: invokespecial 771	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
+    //   648: invokespecial 776	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
     //   651: aload_0
     //   652: iload 15
     //   654: aload 12
-    //   656: invokespecial 773	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
+    //   656: invokespecial 778	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
     //   659: iload 17
     //   661: iconst_1
     //   662: iadd
@@ -1063,7 +1064,7 @@ public abstract class FaceDownloader
     //   679: iload 23
     //   681: iload 18
     //   683: aload 35
-    //   685: invokespecial 775	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
+    //   685: invokespecial 780	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
     //   688: aload 14
     //   690: astore 10
     //   692: iload 15
@@ -1093,7 +1094,7 @@ public abstract class FaceDownloader
     //   735: istore 16
     //   737: sipush 200
     //   740: aload 11
-    //   742: getfield 677	ardx:c	I
+    //   742: getfield 682	asid:c	I
     //   745: if_icmpne +633 -> 1378
     //   748: iload 21
     //   750: istore 15
@@ -1108,7 +1109,7 @@ public abstract class FaceDownloader
     //   767: iload 22
     //   769: istore 16
     //   771: aload 11
-    //   773: getfield 757	ardx:e	I
+    //   773: getfield 762	asid:e	I
     //   776: istore 21
     //   778: iload 21
     //   780: i2l
@@ -1124,7 +1125,7 @@ public abstract class FaceDownloader
     //   798: aload_1
     //   799: astore 32
     //   801: aload 12
-    //   803: invokevirtual 407	java/io/File:exists	()Z
+    //   803: invokevirtual 412	java/io/File:exists	()Z
     //   806: ifeq +24 -> 830
     //   809: iload 24
     //   811: istore 25
@@ -1135,7 +1136,7 @@ public abstract class FaceDownloader
     //   821: aload_1
     //   822: astore 32
     //   824: aload 12
-    //   826: invokevirtual 449	java/io/File:delete	()Z
+    //   826: invokevirtual 454	java/io/File:delete	()Z
     //   829: pop
     //   830: iload 24
     //   832: istore 25
@@ -1146,7 +1147,7 @@ public abstract class FaceDownloader
     //   842: aload_1
     //   843: astore 32
     //   845: aload 12
-    //   847: invokevirtual 784	java/io/File:createNewFile	()Z
+    //   847: invokevirtual 789	java/io/File:createNewFile	()Z
     //   850: pop
     //   851: iload 24
     //   853: istore 25
@@ -1156,18 +1157,18 @@ public abstract class FaceDownloader
     //   861: astore 31
     //   863: aload_1
     //   864: astore 32
-    //   866: new 786	java/io/BufferedOutputStream
+    //   866: new 791	java/io/BufferedOutputStream
     //   869: dup
-    //   870: new 788	java/io/FileOutputStream
+    //   870: new 793	java/io/FileOutputStream
     //   873: dup
     //   874: aload 12
-    //   876: invokespecial 790	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   879: invokespecial 793	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   876: invokespecial 795	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   879: invokespecial 798	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   882: astore 10
     //   884: aload 10
     //   886: astore 31
     //   888: aload 14
-    //   890: invokevirtual 797	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   890: invokevirtual 802	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   893: astore 32
     //   895: iload 4
     //   897: ifeq +336 -> 1233
@@ -1177,7 +1178,7 @@ public abstract class FaceDownloader
     //   906: ifge +327 -> 1233
     //   909: aload 10
     //   911: astore 31
-    //   913: ldc_w 798
+    //   913: ldc_w 803
     //   916: newarray byte
     //   918: astore_1
     //   919: iconst_0
@@ -1190,7 +1191,7 @@ public abstract class FaceDownloader
     //   931: aload_1
     //   932: iload 13
     //   934: sipush 1024
-    //   937: invokevirtual 804	java/io/InputStream:read	([BII)I
+    //   937: invokevirtual 809	java/io/InputStream:read	([BII)I
     //   940: istore 15
     //   942: iload 15
     //   944: iconst_m1
@@ -1226,34 +1227,34 @@ public abstract class FaceDownloader
     //   1002: aload_1
     //   1003: iconst_0
     //   1004: iload 7
-    //   1006: invokestatic 807	bfpx:a	([BII)Landroid/graphics/Bitmap;
-    //   1009: invokespecial 809	com/tencent/mobileqq/app/face/FaceDownloader:getBitmapByShape	(Lcom/tencent/mobileqq/app/face/FaceInfo;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   1006: invokestatic 812	bgyo:a	([BII)Landroid/graphics/Bitmap;
+    //   1009: invokespecial 814	com/tencent/mobileqq/app/face/FaceDownloader:getBitmapByShape	(Lcom/tencent/mobileqq/app/face/FaceInfo;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   1012: astore 32
     //   1014: aload 10
     //   1016: astore 31
-    //   1018: invokestatic 536	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1018: invokestatic 541	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1021: ifeq +55 -> 1076
     //   1024: aload 10
     //   1026: astore 31
     //   1028: ldc 26
     //   1030: iconst_2
-    //   1031: new 345	java/lang/StringBuilder
+    //   1031: new 350	java/lang/StringBuilder
     //   1034: dup
-    //   1035: invokespecial 346	java/lang/StringBuilder:<init>	()V
-    //   1038: ldc_w 811
-    //   1041: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1035: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   1038: ldc_w 816
+    //   1041: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1044: aload 32
-    //   1046: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1049: ldc_w 813
-    //   1052: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1046: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1049: ldc_w 818
+    //   1052: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1055: aload 6
-    //   1057: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1060: ldc_w 357
-    //   1063: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1057: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1060: ldc_w 362
+    //   1063: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1066: aload_3
-    //   1067: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1070: invokevirtual 360	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1073: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1067: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1070: invokevirtual 365	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1073: invokestatic 439	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1076: aload 10
     //   1078: astore 31
     //   1080: new 219	com/tencent/mobileqq/app/face/FaceDownloader$PendingTask
@@ -1292,17 +1293,17 @@ public abstract class FaceDownloader
     //   1149: aload_1
     //   1150: iconst_0
     //   1151: iload 7
-    //   1153: invokevirtual 817	java/io/OutputStream:write	([BII)V
+    //   1153: invokevirtual 822	java/io/OutputStream:write	([BII)V
     //   1156: aload 10
     //   1158: astore 31
     //   1160: aload 10
-    //   1162: invokevirtual 820	java/io/OutputStream:flush	()V
+    //   1162: invokevirtual 825	java/io/OutputStream:flush	()V
     //   1165: aload 10
     //   1167: astore 31
     //   1169: aload_0
     //   1170: aload_2
     //   1171: aload 12
-    //   1173: invokespecial 824	com/tencent/mobileqq/app/face/FaceDownloader:renameFile	(Ljava/io/File;Ljava/io/File;)V
+    //   1173: invokespecial 829	com/tencent/mobileqq/app/face/FaceDownloader:renameFile	(Ljava/io/File;Ljava/io/File;)V
     //   1176: iconst_0
     //   1177: istore 7
     //   1179: aload 10
@@ -1310,11 +1311,11 @@ public abstract class FaceDownloader
     //   1182: aload_0
     //   1183: aload_1
     //   1184: aload 14
-    //   1186: invokespecial 771	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
+    //   1186: invokespecial 776	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
     //   1189: aload_0
     //   1190: iload 7
     //   1192: aload 12
-    //   1194: invokespecial 773	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
+    //   1194: invokespecial 778	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
     //   1197: iload 17
     //   1199: iconst_1
     //   1200: iadd
@@ -1330,7 +1331,7 @@ public abstract class FaceDownloader
     //   1217: iload 23
     //   1219: iload 18
     //   1221: aload 35
-    //   1223: invokespecial 775	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
+    //   1223: invokespecial 780	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
     //   1226: aload 14
     //   1228: astore 10
     //   1230: goto -728 -> 502
@@ -1345,7 +1346,7 @@ public abstract class FaceDownloader
     //   1249: astore 31
     //   1251: aload 32
     //   1253: aload_1
-    //   1254: invokevirtual 827	java/io/InputStream:read	([B)I
+    //   1254: invokevirtual 832	java/io/InputStream:read	([B)I
     //   1257: istore 13
     //   1259: iload 13
     //   1261: iconst_m1
@@ -1360,7 +1361,7 @@ public abstract class FaceDownloader
     //   1278: aload_1
     //   1279: iconst_0
     //   1280: iload 13
-    //   1282: invokevirtual 817	java/io/OutputStream:write	([BII)V
+    //   1282: invokevirtual 822	java/io/OutputStream:write	([BII)V
     //   1285: goto -38 -> 1247
     //   1288: astore_1
     //   1289: aload 10
@@ -1369,22 +1370,22 @@ public abstract class FaceDownloader
     //   1293: astore 31
     //   1295: ldc 26
     //   1297: iconst_1
-    //   1298: new 345	java/lang/StringBuilder
+    //   1298: new 350	java/lang/StringBuilder
     //   1301: dup
-    //   1302: invokespecial 346	java/lang/StringBuilder:<init>	()V
-    //   1305: ldc_w 829
-    //   1308: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1302: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   1305: ldc_w 834
+    //   1308: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1311: aload 12
-    //   1313: invokevirtual 407	java/io/File:exists	()Z
-    //   1316: invokevirtual 426	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1319: ldc_w 831
-    //   1322: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1313: invokevirtual 412	java/io/File:exists	()Z
+    //   1316: invokevirtual 431	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1319: ldc_w 836
+    //   1322: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1325: aload 12
-    //   1327: invokevirtual 416	java/io/File:getParentFile	()Ljava/io/File;
-    //   1330: invokevirtual 407	java/io/File:exists	()Z
-    //   1333: invokevirtual 426	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1336: invokevirtual 360	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1339: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1327: invokevirtual 421	java/io/File:getParentFile	()Ljava/io/File;
+    //   1330: invokevirtual 412	java/io/File:exists	()Z
+    //   1333: invokevirtual 431	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1336: invokevirtual 365	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1339: invokestatic 439	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1342: iconst_4
     //   1343: istore 7
     //   1345: goto -163 -> 1182
@@ -1415,7 +1416,7 @@ public abstract class FaceDownloader
     //   1397: iload 22
     //   1399: istore 16
     //   1401: aload 11
-    //   1403: getfield 677	ardx:c	I
+    //   1403: getfield 682	asid:c	I
     //   1406: istore 13
     //   1408: iload 13
     //   1410: istore 7
@@ -1435,28 +1436,28 @@ public abstract class FaceDownloader
     //   1437: astore 32
     //   1439: ldc 26
     //   1441: iconst_1
-    //   1442: new 345	java/lang/StringBuilder
+    //   1442: new 350	java/lang/StringBuilder
     //   1445: dup
-    //   1446: invokespecial 346	java/lang/StringBuilder:<init>	()V
-    //   1449: ldc_w 833
-    //   1452: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1446: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   1449: ldc_w 838
+    //   1452: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1455: aload 6
-    //   1457: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1460: ldc_w 357
-    //   1463: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1457: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1460: ldc_w 362
+    //   1463: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1466: aload_3
-    //   1467: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1470: invokevirtual 360	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1467: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1470: invokevirtual 365	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1473: aload 10
-    //   1475: invokestatic 363	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1475: invokestatic 368	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1478: aload_0
     //   1479: aload_1
     //   1480: aload 14
-    //   1482: invokespecial 771	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
+    //   1482: invokespecial 776	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
     //   1485: aload_0
     //   1486: iconst_5
     //   1487: aload 12
-    //   1489: invokespecial 773	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
+    //   1489: invokespecial 778	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
     //   1492: iload 17
     //   1494: iconst_1
     //   1495: iadd
@@ -1472,7 +1473,7 @@ public abstract class FaceDownloader
     //   1511: iload 23
     //   1513: iload 18
     //   1515: aload 35
-    //   1517: invokespecial 775	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
+    //   1517: invokespecial 780	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
     //   1520: aload 14
     //   1522: astore 10
     //   1524: iconst_5
@@ -1486,11 +1487,11 @@ public abstract class FaceDownloader
     //   1537: aload_0
     //   1538: aload_1
     //   1539: aload 14
-    //   1541: invokespecial 771	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
+    //   1541: invokespecial 776	com/tencent/mobileqq/app/face/FaceDownloader:closeConn	(Ljava/io/OutputStream;Ljava/net/HttpURLConnection;)V
     //   1544: aload_0
     //   1545: iload 7
     //   1547: aload 12
-    //   1549: invokespecial 773	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
+    //   1549: invokespecial 778	com/tencent/mobileqq/app/face/FaceDownloader:deleteTmpFile	(ILjava/io/File;)V
     //   1552: aload_0
     //   1553: aload 33
     //   1555: aload_3
@@ -1504,7 +1505,7 @@ public abstract class FaceDownloader
     //   1568: iload 23
     //   1570: iload 18
     //   1572: aload 35
-    //   1574: invokespecial 775	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
+    //   1574: invokespecial 780	com/tencent/mobileqq/app/face/FaceDownloader:downloadFailedWaitAndTryAgain	(Ljava/lang/String;Lcom/tencent/mobileqq/app/face/FaceInfo;ILjava/lang/Object;IZLjava/lang/String;IILjava/lang/String;)V
     //   1577: aload_2
     //   1578: athrow
     //   1579: astore_2
@@ -1600,7 +1601,7 @@ public abstract class FaceDownloader
     //   0	1743	8	paramObject	Object
     //   0	1743	9	paramInt2	int
     //   0	1743	10	paramOutputStream	OutputStream
-    //   0	1743	11	paramardx	ardx
+    //   0	1743	11	paramasid	asid
     //   0	1743	12	paramFile2	File
     //   0	1743	13	paramInt3	int
     //   0	1743	14	paramHttpURLConnection	HttpURLConnection
@@ -1898,22 +1899,22 @@ public abstract class FaceDownloader
   public int downloadData(String paramString, File paramFile, FaceInfo paramFaceInfo, boolean paramBoolean)
   {
     // Byte code:
-    //   0: invokestatic 900	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:getRecentNetworkInfo	()Landroid/net/NetworkInfo;
+    //   0: invokestatic 905	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:getRecentNetworkInfo	()Landroid/net/NetworkInfo;
     //   3: astore 6
     //   5: aload 6
     //   7: ifnonnull +14 -> 21
     //   10: ldc 26
     //   12: iconst_1
-    //   13: ldc_w 902
-    //   16: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   13: ldc_w 907
+    //   16: invokestatic 439	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   19: iconst_1
     //   20: ireturn
-    //   21: new 497	java/net/URL
+    //   21: new 502	java/net/URL
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 903	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 908	java/net/URL:<init>	(Ljava/lang/String;)V
     //   29: astore 7
-    //   31: invokestatic 842	java/lang/System:currentTimeMillis	()J
+    //   31: invokestatic 847	java/lang/System:currentTimeMillis	()J
     //   34: pop2
     //   35: new 4	java/lang/Object
     //   38: dup
@@ -1921,37 +1922,37 @@ public abstract class FaceDownloader
     //   42: astore 8
     //   44: aload_0
     //   45: aload_2
-    //   46: invokespecial 446	com/tencent/mobileqq/app/face/FaceDownloader:getParentFile	(Ljava/io/File;)V
-    //   49: new 673	ardx
+    //   46: invokespecial 451	com/tencent/mobileqq/app/face/FaceDownloader:getParentFile	(Ljava/io/File;)V
+    //   49: new 678	asid
     //   52: dup
     //   53: aload_1
     //   54: aconst_null
     //   55: iconst_0
-    //   56: invokespecial 906	ardx:<init>	(Ljava/lang/String;Ljava/io/File;I)V
+    //   56: invokespecial 911	asid:<init>	(Ljava/lang/String;Ljava/io/File;I)V
     //   59: astore 5
-    //   61: new 908	org/apache/http/client/methods/HttpGet
+    //   61: new 913	org/apache/http/client/methods/HttpGet
     //   64: dup
     //   65: aload_1
-    //   66: invokespecial 909	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
+    //   66: invokespecial 914	org/apache/http/client/methods/HttpGet:<init>	(Ljava/lang/String;)V
     //   69: pop
-    //   70: new 404	java/io/File
+    //   70: new 409	java/io/File
     //   73: dup
-    //   74: new 345	java/lang/StringBuilder
+    //   74: new 350	java/lang/StringBuilder
     //   77: dup
-    //   78: invokespecial 346	java/lang/StringBuilder:<init>	()V
+    //   78: invokespecial 351	java/lang/StringBuilder:<init>	()V
     //   81: aload_2
-    //   82: invokevirtual 912	java/io/File:getPath	()Ljava/lang/String;
-    //   85: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: ldc_w 914
-    //   91: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: invokevirtual 360	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   97: invokespecial 915	java/io/File:<init>	(Ljava/lang/String;)V
+    //   82: invokevirtual 917	java/io/File:getPath	()Ljava/lang/String;
+    //   85: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: ldc_w 919
+    //   91: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: invokevirtual 365	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   97: invokespecial 920	java/io/File:<init>	(Ljava/lang/String;)V
     //   100: astore 9
     //   102: aload 9
-    //   104: invokevirtual 407	java/io/File:exists	()Z
+    //   104: invokevirtual 412	java/io/File:exists	()Z
     //   107: ifeq +9 -> 116
     //   110: aload 9
-    //   112: invokevirtual 449	java/io/File:delete	()Z
+    //   112: invokevirtual 454	java/io/File:delete	()Z
     //   115: pop
     //   116: aload_0
     //   117: aload_1
@@ -1968,33 +1969,33 @@ public abstract class FaceDownloader
     //   133: aload 9
     //   135: iconst_m1
     //   136: aconst_null
-    //   137: invokespecial 917	com/tencent/mobileqq/app/face/FaceDownloader:realDownloadData	(Ljava/lang/String;Ljava/io/File;Lcom/tencent/mobileqq/app/face/FaceInfo;ZLandroid/net/NetworkInfo;Ljava/net/URL;ILjava/lang/Object;ILjava/io/OutputStream;Lardx;Ljava/io/File;ILjava/net/HttpURLConnection;)I
+    //   137: invokespecial 922	com/tencent/mobileqq/app/face/FaceDownloader:realDownloadData	(Ljava/lang/String;Ljava/io/File;Lcom/tencent/mobileqq/app/face/FaceInfo;ZLandroid/net/NetworkInfo;Ljava/net/URL;ILjava/lang/Object;ILjava/io/OutputStream;Lasid;Ljava/io/File;ILjava/net/HttpURLConnection;)I
     //   140: ireturn
     //   141: astore_1
     //   142: aload_1
-    //   143: invokevirtual 918	java/net/MalformedURLException:printStackTrace	()V
+    //   143: invokevirtual 923	java/net/MalformedURLException:printStackTrace	()V
     //   146: bipush 13
     //   148: ireturn
     //   149: astore_1
     //   150: ldc 26
     //   152: iconst_1
-    //   153: ldc_w 920
-    //   156: invokestatic 578	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   153: ldc_w 925
+    //   156: invokestatic 583	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   159: iconst_4
     //   160: ireturn
     //   161: astore 9
     //   163: aload_1
-    //   164: invokestatic 925	com/tencent/mobileqq/utils/HttpDownloadUtil:getEscapeSequence	(Ljava/lang/String;)Ljava/lang/String;
+    //   164: invokestatic 930	com/tencent/mobileqq/utils/HttpDownloadUtil:getEscapeSequence	(Ljava/lang/String;)Ljava/lang/String;
     //   167: astore_1
     //   168: goto -98 -> 70
     //   171: astore_1
     //   172: ldc 26
     //   174: iconst_1
-    //   175: ldc_w 927
-    //   178: invokestatic 578	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   175: ldc_w 932
+    //   178: invokestatic 583	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   181: aload 5
     //   183: bipush 13
-    //   185: putfield 715	ardx:b	I
+    //   185: putfield 720	asid:b	I
     //   188: bipush 13
     //   190: ireturn
     // Local variable table:
@@ -2004,7 +2005,7 @@ public abstract class FaceDownloader
     //   0	191	2	paramFile	File
     //   0	191	3	paramFaceInfo	FaceInfo
     //   0	191	4	paramBoolean	boolean
-    //   59	123	5	localardx	ardx
+    //   59	123	5	localasid	asid
     //   3	120	6	localNetworkInfo	android.net.NetworkInfo
     //   29	96	7	localURL	URL
     //   42	86	8	localObject	Object
@@ -2062,7 +2063,7 @@ public abstract class FaceDownloader
   
   public String getQQHeadDownloadUrlApollo(FaceInfo paramFaceInfo)
   {
-    return paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.downLoadUrl + arid.a(paramFaceInfo.d) + "?t=" + paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dwTimestamp;
+    return paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.downLoadUrl + asmj.a(paramFaceInfo.d) + "?t=" + paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dwTimestamp;
   }
   
   public int getQQHeadImageSize(byte paramByte)

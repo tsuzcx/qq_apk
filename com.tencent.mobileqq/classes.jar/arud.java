@@ -1,25 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arud
-  implements atgj
+  implements View.OnClickListener
 {
-  public arud(FilePreviewActivity paramFilePreviewActivity) {}
+  public arud(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
     {
-    default: 
-      return;
-    case 1: 
-      FilePreviewActivity.a(this.a, bcua.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718871), false));
-      return;
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      apyp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
     }
-    bcua.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(ImageView paramImageView) {}
 }
 
 

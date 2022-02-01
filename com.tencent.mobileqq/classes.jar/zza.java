@@ -1,6 +1,32 @@
-public abstract interface zza
+import android.view.View;
+import android.view.Window;
+
+public class zza
 {
-  public abstract void a(zvs paramzvs);
+  public static void a(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.getDecorView().setSystemUiVisibility(2);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new zzb(paramWindow));
+  }
+  
+  public static void b(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.setFlags(8, 8);
+  }
+  
+  public static void c(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.clearFlags(8);
+  }
 }
 
 

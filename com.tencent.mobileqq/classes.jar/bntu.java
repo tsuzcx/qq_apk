@@ -1,32 +1,22 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 
-class bntu
-  extends ExecuteBinResponseCallback
+public abstract interface bntu
 {
-  bntu(bnts parambnts, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  public abstract int a();
   
-  public void onFailure(String paramString)
-  {
-    bnts.a(this.jdField_a_of_type_Bnts, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
+  public abstract int a(int paramInt);
   
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      bnts.a(this.jdField_a_of_type_Bnts, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    bnts.a(this.jdField_a_of_type_Bnts, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
+  public abstract Lyric a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract int b();
+  
+  public abstract int b(int paramInt);
+  
+  public abstract void setEffectEnable(boolean paramBoolean);
+  
+  public abstract void setLyric(Lyric paramLyric1, Lyric paramLyric2);
 }
 
 

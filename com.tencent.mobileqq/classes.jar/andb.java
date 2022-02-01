@@ -1,28 +1,6 @@
-import com.tencent.mobileqq.app.TroopManager;
-
-public class andb
+public abstract interface andb
 {
-  public int a;
-  public String a;
-  
-  public andb(TroopManager paramTroopManager) {}
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof andb))
-    {
-      paramObject = (andb)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,161 +1,89 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
+import org.json.JSONObject;
 
 public class avzy
-  extends awac
+  extends WebViewPlugin
 {
-  private afbj jdField_a_of_type_Afbj;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public avzy(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
+  public avzy()
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
+    this.mPluginNameSpace = "login";
   }
   
-  public void a()
+  private Activity a()
   {
-    super.a();
-    if (this.jdField_a_of_type_Afbj != null)
-    {
-      this.jdField_a_of_type_Afbj.a(null);
-      this.jdField_a_of_type_Afbj = null;
-    }
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
   }
   
-  public void a(int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Afbj == null) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Afbj.c(true);
-      this.jdField_a_of_type_Afbj.b(true);
-      this.jdField_a_of_type_Afbj.d();
-      this.jdField_a_of_type_Afbj.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Afbj.b(false);
-    this.jdField_a_of_type_Afbj.c(false);
-    this.jdField_a_of_type_Afbj.a(4);
-  }
-  
-  public void a(avzw paramavzw)
-  {
-    super.a(paramavzw);
-    if (this.jdField_a_of_type_Afbj != null)
-    {
-      if (a() != 0) {
-        this.jdField_a_of_type_Afbj.b(false);
-      }
-      this.jdField_a_of_type_Afbj.a(a(), a());
-      this.jdField_a_of_type_Afbj.b();
-    }
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Afbj == null)
-    {
-      paramBundle = null;
-      Bundle localBundle = a();
-      if (localBundle != null) {
-        paramBundle = localBundle.getString("uin");
-      }
-      this.jdField_a_of_type_Afbj = new afbj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_Afbj.a(this);
-      b(1);
-      a(this.jdField_a_of_type_Afbj.a());
-    }
-    b(this.jdField_a_of_type_Afbj.a());
-    if (a() != null) {
-      this.jdField_a_of_type_Afbj.a(a(), a());
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Afbj.i();
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoViewDelegete", 2, "doOnResume() called");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Afbj == null) {
-      return;
-    }
-    if (a() == 0)
-    {
-      this.jdField_a_of_type_Afbj.b(true);
-      this.jdField_a_of_type_Afbj.d();
-    }
+    if (("login".equals(paramString2)) && ("openSmsPage".equals(paramString3))) {}
     for (;;)
     {
-      this.jdField_a_of_type_Afbj.n();
-      this.jdField_a_of_type_Afbj.i();
-      return;
-      this.jdField_a_of_type_Afbj.b(false);
+      int j;
+      int i;
+      try
+      {
+        addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("countryCode");
+        paramString2 = paramJsBridgeListener.optString("uin");
+        paramString3 = paramJsBridgeListener.optString("phone");
+        j = paramJsBridgeListener.optInt("mentrance");
+        int k = Integer.parseInt(paramJsBridgeListener.optString("verifySeq"));
+        if (paramJsBridgeListener.optInt("isFromOpenSdk", 0) != 1) {
+          break label260;
+        }
+        i = 1;
+        if (i != 0)
+        {
+          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity2.class);
+          paramJsBridgeListener.putExtra("phone_num", paramString3);
+          paramJsBridgeListener.putExtra("country_code", paramString1);
+          paramJsBridgeListener.putExtra("mobile_type", 0);
+          paramJsBridgeListener.putExtra("from_login", true);
+          paramJsBridgeListener.putExtra("uin", paramString2);
+          paramJsBridgeListener.putExtra("seq", k);
+          startActivityForResult(paramJsBridgeListener, (byte)12);
+          paramJsBridgeListener = "";
+          if (j == 1)
+          {
+            paramJsBridgeListener = "1";
+            bdla.a(null, "dc00898", "", "", "0X800ADE1", "0X800ADE1", 0, 0, paramJsBridgeListener, "", "", "");
+            return true;
+          }
+        }
+        else
+        {
+          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity.class);
+          continue;
+          return false;
+        }
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("LoginPlugin", 1, new Object[] { "deal login jsbridge error : ", paramJsBridgeListener.getMessage() });
+      }
+      if (j == 2)
+      {
+        paramJsBridgeListener = "2";
+        continue;
+        label260:
+        i = 0;
+      }
     }
   }
   
-  public void d()
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateInfoViewDelegete", 2, "doOnPause() called");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Afbj == null) {
-      return;
-    }
-    this.jdField_a_of_type_Afbj.h();
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Afbj == null) {
-      return;
-    }
-    this.jdField_a_of_type_Afbj.a(true);
-    this.jdField_a_of_type_Afbj.b();
-  }
-  
-  public void f() {}
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Afbj == null) {
-      return;
-    }
-    this.jdField_a_of_type_Afbj.j();
-  }
-  
-  public void h() {}
-  
-  public void i()
-  {
-    super.i();
-    if (this.jdField_a_of_type_Afbj != null) {
-      this.jdField_a_of_type_Afbj.p();
-    }
-  }
-  
-  public void j()
-  {
-    super.j();
-    if (this.jdField_a_of_type_Afbj != null) {
-      this.jdField_a_of_type_Afbj.q();
-    }
+    super.onActivityResult(paramIntent, paramByte, paramInt);
   }
 }
 

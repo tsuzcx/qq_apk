@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bfuc;
+import bhcu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -57,7 +57,7 @@ public class HttpCommunicator$PriorityQueue
       int j = 0;
       while (j < ((LinkedList)this.mSendQueues.get(i)).size())
       {
-        localStringBuilder.append(bfuc.encodeToString(((HttpMsg)((LinkedList)this.mSendQueues.get(i)).get(j)).getRealUrl().getBytes(), 0));
+        localStringBuilder.append(bhcu.encodeToString(((HttpMsg)((LinkedList)this.mSendQueues.get(i)).get(j)).getRealUrl().getBytes(), 0));
         localStringBuilder.append("\r\n");
         j += 1;
       }

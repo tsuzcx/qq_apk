@@ -1,30 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.45;
 
 public class alrf
-  extends akkk
+  implements DialogInterface.OnClickListener
 {
-  public alrf(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, akkd paramakkd, int paramInt)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramakkd, paramInt);
-  }
+  public alrf(NewFlowCameraActivity.45 param45) {}
   
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
-  }
-  
-  public void b(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
-      notifyDataSetChanged();
-    }
+    paramDialogInterface = this.a.this$0.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.this$0.setResult(1001, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 

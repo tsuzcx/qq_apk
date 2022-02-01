@@ -25,21 +25,21 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ListAdapter;
-import bjpj;
-import bjpk;
-import bjpl;
-import bjpm;
-import bjpn;
-import bjpo;
-import bjpp;
-import bjpq;
-import bjps;
-import bjpu;
-import bjpv;
-import bjpw;
-import bjpx;
-import bjpy;
-import bjpz;
+import blav;
+import blaw;
+import blax;
+import blay;
+import blaz;
+import blba;
+import blbb;
+import blbc;
+import blbe;
+import blbg;
+import blbh;
+import blbi;
+import blbj;
+import blbk;
+import blbl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -55,16 +55,16 @@ public class DynamicGridView
   private View jdField_a_of_type_AndroidViewView;
   private AbsListView.OnScrollListener jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener;
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
-  private bjpu jdField_a_of_type_Bjpu;
-  private bjpv jdField_a_of_type_Bjpv;
-  private bjpw jdField_a_of_type_Bjpw;
-  private bjpx jdField_a_of_type_Bjpx;
+  private blbg jdField_a_of_type_Blbg;
+  private blbh jdField_a_of_type_Blbh;
+  private blbi jdField_a_of_type_Blbi;
+  private blbj jdField_a_of_type_Blbj;
   private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private AbsListView.OnScrollListener jdField_b_of_type_AndroidWidgetAbsListView$OnScrollListener = new bjpo(this);
-  private AdapterView.OnItemClickListener jdField_b_of_type_AndroidWidgetAdapterView$OnItemClickListener = new bjpj(this);
+  private AbsListView.OnScrollListener jdField_b_of_type_AndroidWidgetAbsListView$OnScrollListener = new blba(this);
+  private AdapterView.OnItemClickListener jdField_b_of_type_AndroidWidgetAdapterView$OnItemClickListener = new blav(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   private boolean jdField_c_of_type_Boolean;
@@ -182,9 +182,9 @@ public class DynamicGridView
     return paramView;
   }
   
-  private bjpp a()
+  private blbb a()
   {
-    return (bjpp)getAdapter();
+    return (blbb)getAdapter();
   }
   
   private void a()
@@ -200,28 +200,28 @@ public class DynamicGridView
     if (localView != null)
     {
       this.jdField_a_of_type_Long = getAdapter().getItemId(paramInt);
-      if (this.jdField_a_of_type_Bjpx != null) {
-        this.jdField_a_of_type_Bjpx.a(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Blbj != null) {
+        this.jdField_a_of_type_Blbj.a(localView, paramInt, this.jdField_a_of_type_Long);
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = a(localView);
-      if (this.jdField_a_of_type_Bjpx != null) {
-        this.jdField_a_of_type_Bjpx.b(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Blbj != null) {
+        this.jdField_a_of_type_Blbj.b(localView, paramInt, this.jdField_a_of_type_Long);
       }
       if (c()) {
         localView.setVisibility(4);
       }
       this.jdField_a_of_type_Boolean = true;
       a(this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Bjpu != null) {
-        this.jdField_a_of_type_Bjpu.a(paramInt);
+      if (this.jdField_a_of_type_Blbg != null) {
+        this.jdField_a_of_type_Blbg.a(paramInt);
       }
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bjpu != null) {
-      this.jdField_a_of_type_Bjpu.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Blbg != null) {
+      this.jdField_a_of_type_Blbg.a(paramInt1, paramInt2);
     }
     a().a(paramInt1, paramInt2);
   }
@@ -243,10 +243,10 @@ public class DynamicGridView
   @TargetApi(11)
   private void a(View paramView)
   {
-    Object localObject = new bjpk(this);
+    Object localObject = new blaw(this);
     localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, "bounds", (TypeEvaluator)localObject, new Object[] { this.jdField_a_of_type_AndroidGraphicsRect });
-    ((ObjectAnimator)localObject).addUpdateListener(new bjpl(this));
-    ((ObjectAnimator)localObject).addListener(new bjpm(this, paramView));
+    ((ObjectAnimator)localObject).addUpdateListener(new blax(this));
+    ((ObjectAnimator)localObject).addListener(new blay(this, paramView));
     ((ObjectAnimator)localObject).start();
   }
   
@@ -339,7 +339,7 @@ public class DynamicGridView
     ((AnimatorSet)localObject).playTogether(localLinkedList);
     ((AnimatorSet)localObject).setDuration(300L);
     ((AnimatorSet)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((AnimatorSet)localObject).addListener(new bjpn(this));
+    ((AnimatorSet)localObject).addListener(new blaz(this));
     ((AnimatorSet)localObject).start();
   }
   
@@ -450,7 +450,7 @@ public class DynamicGridView
         n = getPositionForView(this.jdField_a_of_type_AndroidViewView);
         i1 = getPositionForView((View)localObject);
         localObject = a();
-        if ((i1 == -1) || (!((bjpp)localObject).a(n)) || (!((bjpp)localObject).a(i1))) {
+        if ((i1 == -1) || (!((blbb)localObject).a(n)) || (!((blbb)localObject).a(i1))) {
           a(this.jdField_a_of_type_Long);
         }
       }
@@ -462,17 +462,17 @@ public class DynamicGridView
       this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
       this.jdField_c_of_type_Int = this.jdField_f_of_type_Int;
       if ((c()) && (b())) {
-        localObject = new bjpq(this, m, k);
+        localObject = new blbc(this, m, k);
       }
       for (;;)
       {
         a(this.jdField_a_of_type_Long);
-        ((bjpz)localObject).a(n, i1);
+        ((blbl)localObject).a(n, i1);
         return;
         if (b()) {
-          localObject = new bjpy(this, m, k);
+          localObject = new blbk(this, m, k);
         } else {
-          localObject = new bjps(this, m, k);
+          localObject = new blbe(this, m, k);
         }
       }
       label611:
@@ -618,14 +618,14 @@ public class DynamicGridView
             a();
             return false;
             b();
-            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Bjpv != null))
+            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Blbh != null))
             {
-              this.jdField_a_of_type_Bjpv.a();
+              this.jdField_a_of_type_Blbh.a();
               continue;
               d();
-              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Bjpv != null))
+              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Blbh != null))
               {
-                this.jdField_a_of_type_Bjpv.a();
+                this.jdField_a_of_type_Blbh.a();
                 continue;
                 if (paramMotionEvent.getPointerId((paramMotionEvent.getAction() & 0xFF00) >> 8) == this.jdField_h_of_type_Int) {
                   b();
@@ -653,19 +653,19 @@ public class DynamicGridView
     this.jdField_h_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDragListener(bjpu parambjpu)
+  public void setOnDragListener(blbg paramblbg)
   {
-    this.jdField_a_of_type_Bjpu = parambjpu;
+    this.jdField_a_of_type_Blbg = paramblbg;
   }
   
-  public void setOnDropListener(bjpv parambjpv)
+  public void setOnDropListener(blbh paramblbh)
   {
-    this.jdField_a_of_type_Bjpv = parambjpv;
+    this.jdField_a_of_type_Blbh = paramblbh;
   }
   
-  public void setOnEditModeChangeListener(bjpw parambjpw)
+  public void setOnEditModeChangeListener(blbi paramblbi)
   {
-    this.jdField_a_of_type_Bjpw = parambjpw;
+    this.jdField_a_of_type_Blbi = paramblbi;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
@@ -679,14 +679,14 @@ public class DynamicGridView
     this.jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
-  public void setOnSelectedItemBitmapCreationListener(bjpx parambjpx)
+  public void setOnSelectedItemBitmapCreationListener(blbj paramblbj)
   {
-    this.jdField_a_of_type_Bjpx = parambjpx;
+    this.jdField_a_of_type_Blbj = paramblbj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView
  * JD-Core Version:    0.7.0.1
  */

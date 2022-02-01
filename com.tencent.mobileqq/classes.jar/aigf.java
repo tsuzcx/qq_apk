@@ -1,103 +1,111 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.ArrayList;
 
 public class aigf
-  extends amwl
 {
-  public aigf(SystemRequestInfoView paramSystemRequestInfoView) {}
-  
-  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString) {}
-  
-  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString) {}
-  
-  protected void onSendSystemMsgActionError(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (this.a.a())
+    paramActivity = paramActivity.getIntent();
+    if (paramActivity == null) {}
+    do
     {
-      paramString = this.a.getResources().getString(2131718765);
-      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+      do
+      {
+        do
+        {
+          return;
+        } while ((!paramActivity.getBooleanExtra("showFirstStructMsg", false)) || (!paramBoolean));
+        if (QLog.isColorLevel()) {
+          QLog.d("send3rdAppStructMsg", 2, "send first struct msg");
+        }
+        paramActivity = paramActivity.getByteArrayExtra("stuctmsg_bytes");
+      } while (paramActivity == null);
+      paramActivity = bdof.a(paramActivity);
+    } while (paramActivity == null);
+    bhhn.a(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramActivity, null);
+    bdla.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.curFriendUin, "0X8004B51", "0X8004B51", 0, 0, "", "", "", "");
   }
   
-  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo, AbsShareMsg paramAbsShareMsg, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
+    if (0 != 0) {
+      throw new NullPointerException();
     }
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
-      }
-    }
-    long l1;
-    structmsg.StructMsg localStructMsg;
-    for (;;)
+    aatx localaatx = new aatx(paramFragmentActivity);
+    String str = paramFragmentActivity.getString(2131718624);
+    if (paramString != null) {}
+    for (paramString = str + paramString;; paramString = str)
     {
+      paramAbsShareMsg = new aigg(paramAbsShareMsg, paramFragmentActivity, paramFragmentActivity, paramQQAppInterface, paramSessionInfo);
+      localaatx.a(paramString, paramAbsShareMsg);
+      localaatx.a(paramFragmentActivity.getResources().getString(2131718631));
+      localaatx.a(paramAbsShareMsg);
+      localaatx.a(false);
+      localaatx.show();
+      bdla.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.curFriendUin, "0X8004B54", "0X8004B54", 0, 0, "", "", "", "");
       return;
-      long l2 = bcsy.a().b();
-      l1 = l2;
-      if (!TextUtils.isEmpty(paramString1)) {}
-      try
-      {
-        l1 = Long.parseLong(paramString1);
-        localStructMsg = bcsy.a().a(Long.valueOf(l1));
-        if (!paramBoolean) {
-          if (!TextUtils.isEmpty(paramString3))
-          {
-            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
-            if (!bcta.a(localStructMsg, paramInt3, paramString2, paramString4)) {
-              continue;
-            }
-            SystemRequestInfoView.a(this.a).finish();
-            return;
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          l1 = l2;
-          continue;
-          paramString3 = this.a.getResources().getString(2131718115);
-        }
-        bcta.a(localStructMsg, paramInt1, paramString2, paramInt2);
-        paramString2 = null;
-        if (paramInt1 != 1) {
-          break label234;
-        }
-      }
     }
-    SystemRequestInfoView.a(this.a).finish();
-    paramString1 = this.a.getResources().getString(2131692466);
-    for (;;)
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo)
+  {
+    boolean bool = false;
+    bdla.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.curFriendUin, "0X8004B53", "0X8004B53", 0, 0, "", "", "", "");
+    Object localObject = paramFragmentActivity.getIntent().getByteArrayExtra("stuctmsg_bytes");
+    String str = paramFragmentActivity.getIntent().getStringExtra("thirdAppDisplayName");
+    localObject = bdof.a((byte[])localObject);
+    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {}
+    for (localObject = (AbsShareMsg)localObject;; localObject = null)
     {
-      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
-      return;
-      label234:
-      paramString1 = paramString2;
-      if (paramInt1 == 0)
+      if ("webview".equals(paramFragmentActivity.getIntent().getStringExtra("from")))
       {
-        paramString1 = paramString2;
-        if (localStructMsg != null)
+        bheh.a -= 1;
+        if (!(paramFragmentActivity instanceof SplashActivity))
         {
-          paramString1 = this.a.getResources().getString(2131692460);
-          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
+          paramFragmentActivity.finish();
+          bool = true;
+        }
+        return bool;
+      }
+      a(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, (AbsShareMsg)localObject, str);
+      return true;
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramIntent.getBooleanExtra("from3rdApp", false))
+    {
+      bool1 = bool2;
+      if (paramIntent.getBooleanExtra("showFirstStructMsg", false))
+      {
+        paramIntent = paramIntent.getByteArrayExtra("stuctmsg_bytes");
+        bool1 = bool2;
+        if (paramIntent != null)
+        {
+          paramIntent = bdof.a(paramIntent);
+          long l = bcpt.a;
+          paramSessionInfo = bcsa.a(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.curFriendUin, paramSessionInfo.curFriendUin, paramSessionInfo.curType, l, paramIntent);
+          paramIntent = new ArrayList();
+          paramIntent.add(paramSessionInfo);
+          paramQQAppInterface.getMessageFacade().addMessageCacheOnly(paramIntent, paramQQAppInterface.getCurrentAccountUin());
+          bool1 = true;
         }
       }
     }
+    return bool1;
   }
 }
 

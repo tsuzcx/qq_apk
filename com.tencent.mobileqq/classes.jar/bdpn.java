@@ -1,13 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.os.SystemClock;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import java.util.Random;
 
 public class bdpn
-  implements DialogInterface.OnClickListener
 {
-  public bdpn(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  private long jdField_a_of_type_Long = -1L;
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % 300 != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Long == -1L) {
+      return;
+    }
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cost", l1 - l2 + "");
+    localHashMap.put("layout", paramInt1 + "");
+    localHashMap.put("first", paramInt2 + "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "structmsg_builder_getview", true, 0L, 0L, localHashMap, "", false);
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

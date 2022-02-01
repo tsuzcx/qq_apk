@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.specify;
 
-import akfc;
-import akgd;
-import amtj;
+import alav;
+import albw;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -17,7 +16,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcrz;
+import anvx;
+import bdyy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
@@ -62,7 +62,7 @@ public class SpecifyGiftView
     ((LinearLayout.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
     ((LinearLayout.LayoutParams)localObject).height = this.b;
     ((LinearLayout.LayoutParams)localObject).gravity = 1;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setId(2131374743);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setId(2131374984);
     this.jdField_a_of_type_AndroidViewView = a(paramMessageForQQWalletMsg, localLinearLayout);
     paramMessageForQQWalletMsg = new ImageView(getContext());
     paramContext.addView(paramMessageForQQWalletMsg);
@@ -70,18 +70,18 @@ public class SpecifyGiftView
     paramContext.width = DisplayUtil.dip2px(getContext(), 40.0F);
     paramContext.height = DisplayUtil.dip2px(getContext(), 40.0F);
     paramContext.topMargin = DisplayUtil.dip2px(getContext(), 20.0F);
-    paramContext.addRule(7, 2131374743);
-    paramContext.addRule(6, 2131374743);
+    paramContext.addRule(7, 2131374984);
+    paramContext.addRule(6, 2131374984);
     paramMessageForQQWalletMsg.setScaleType(ImageView.ScaleType.FIT_XY);
     int i = DisplayUtil.dip2px(getContext(), 16.0F);
     paramMessageForQQWalletMsg.setPadding(i, 0, 0, i);
-    paramMessageForQQWalletMsg.setImageResource(2130847089);
+    paramMessageForQQWalletMsg.setImageResource(2130847187);
     this.jdField_a_of_type_AndroidWidgetImageView = paramMessageForQQWalletMsg;
   }
   
   private View a(MessageForQQWalletMsg paramMessageForQQWalletMsg, LinearLayout paramLinearLayout)
   {
-    QQAppInterface localQQAppInterface = akgd.a();
+    QQAppInterface localQQAppInterface = albw.a();
     if (localQQAppInterface == null) {
       return null;
     }
@@ -94,7 +94,7 @@ public class SpecifyGiftView
     paramLinearLayout.gravity = 1;
     paramLinearLayout = new LinearLayout(getContext());
     localRelativeLayout.addView(paramLinearLayout);
-    paramLinearLayout.setBackgroundResource(2130847278);
+    paramLinearLayout.setBackgroundResource(2130847365);
     paramLinearLayout.setOrientation(1);
     Object localObject1 = (RelativeLayout.LayoutParams)paramLinearLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject1).width = -2;
@@ -134,7 +134,7 @@ public class SpecifyGiftView
     ((LinearLayout.LayoutParams)localObject1).height = DisplayUtil.dip2px(getContext(), 40.0F);
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localImageView.setPadding(i, i, i, i);
-    localImageView.setBackgroundResource(2130847277);
+    localImageView.setBackgroundResource(2130847364);
     View localView = new View(getContext());
     paramLinearLayout.addView(localView);
     localObject1 = (LinearLayout.LayoutParams)localView.getLayoutParams();
@@ -156,11 +156,11 @@ public class SpecifyGiftView
       ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
       ((LinearLayout.LayoutParams)localObject3).leftMargin = (-DisplayUtil.dip2px(getContext(), 10.0F));
       ((ImageView)localObject2).setImageDrawable(FaceDrawable.getUserFaceDrawable(localQQAppInterface, String.valueOf(l), (byte)3));
-      ((ImageView)localObject2).setBackgroundResource(2130847277);
+      ((ImageView)localObject2).setBackgroundResource(2130847364);
       ((ImageView)localObject2).setPadding(i, i, i, i);
     }
     paramLinearLayout = ContactUtils.getBuddyName(localQQAppInterface, paramMessageForQQWalletMsg.senderuin, true);
-    Object localObject3 = akgd.a(getContext(), paramLinearLayout, 90.0F, localTextView1.getPaint());
+    Object localObject3 = albw.a(getContext(), paramLinearLayout, 90.0F, localTextView1.getPaint());
     Object localObject2 = paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.iterator();
     paramLinearLayout = "";
     i = 0;
@@ -185,11 +185,11 @@ public class SpecifyGiftView
         if (i >= 2)
         {
           localObject1 = paramLinearLayout;
-          localObject2 = (String)localObject3 + amtj.a(2131713347) + (String)localObject1;
+          localObject2 = (String)localObject3 + anvx.a(2131713694) + (String)localObject1;
           i = paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.specifyUinList.size();
           paramLinearLayout = (LinearLayout)localObject2;
           if (i >= 2) {
-            paramLinearLayout = (String)localObject2 + amtj.a(2131713344) + i + amtj.a(2131713345);
+            paramLinearLayout = (String)localObject2 + anvx.a(2131713691) + i + anvx.a(2131713692);
           }
           paramLinearLayout = new SpannableStringBuilder(paramLinearLayout);
           paramLinearLayout.setSpan(new ForegroundColorSpan(-1694379), 0, ((String)localObject3).length(), 33);
@@ -201,9 +201,9 @@ public class SpecifyGiftView
           paramLinearLayout.setSpan(localObject2, i + 2, ((String)localObject1).length() + (j + 3), 33);
           localTextView1.setText(paramLinearLayout);
           localTextView1.setMaxLines(1);
-          localTextView2.setText(amtj.a(2131713346));
+          localTextView2.setText(anvx.a(2131713693));
           localImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(localQQAppInterface, String.valueOf(paramMessageForQQWalletMsg.senderuin), (byte)3));
-          localView.setBackgroundResource(2130847276);
+          localView.setBackgroundResource(2130847363);
           return localRelativeLayout;
         }
         break;
@@ -219,11 +219,11 @@ public class SpecifyGiftView
     }
   }
   
-  public void a(String paramString, bcrz parambcrz, View.OnClickListener paramOnClickListener)
+  public void a(String paramString, bdyy parambdyy, View.OnClickListener paramOnClickListener)
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(paramString, parambcrz);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(paramString, parambdyy);
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
@@ -232,11 +232,11 @@ public class SpecifyGiftView
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akfc(this, parambcrz, paramOnClickListener));
-      akgd.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.6F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new alav(this, parambdyy, paramOnClickListener));
+      albw.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.6F);
       return;
-      if (parambcrz != null) {
-        parambcrz.a();
+      if (parambdyy != null) {
+        parambdyy.a();
       }
     }
   }

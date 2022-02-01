@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import ConfigPush.FileStoragePushFSSvcList;
 import ConfigPush.FileStorageServerListInfo;
-import azbx;
+import bahl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;

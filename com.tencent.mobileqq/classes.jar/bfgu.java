@@ -1,67 +1,34 @@
+import java.nio.ByteBuffer;
+
 class bfgu
-  extends bffz
 {
-  bfgu(bfgt parambfgt, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
+  
+  public bfgu(long paramLong)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
   }
   
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  public bfgu(ByteBuffer paramByteBuffer)
   {
-    if ((paramObject instanceof Object[]))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length == 2) {
-        break label22;
-      }
-    }
-    label22:
-    do
-    {
-      do
-      {
-        return;
-        paramObject = paramObject[0];
-      } while (!(paramObject instanceof boolean[]));
-      paramObject = (boolean[])paramObject;
-    } while ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0) || (paramObject.length != 3));
-    if ((paramArrayOfbjua.length < 0) && (paramObject[0] != 0))
-    {
-      paramArrayOfbjua[0].b = 0;
-      paramArrayOfbjua[0].a = 0;
-    }
-    for (int i = 1;; i = 0)
-    {
-      paramInt = i;
-      if (i < paramArrayOfbjua.length)
-      {
-        paramInt = i;
-        if (paramObject[1] != 0)
-        {
-          paramArrayOfbjua[i].b = 1;
-          paramArrayOfbjua[i].a = 1;
-          paramInt = i + 1;
-        }
-      }
-      i = paramInt;
-      if (paramInt < paramArrayOfbjua.length)
-      {
-        i = paramInt;
-        if (paramObject[2] != 0)
-        {
-          paramArrayOfbjua[paramInt].b = 2;
-          paramArrayOfbjua[paramInt].a = 0;
-          i = paramInt + 1;
-        }
-      }
-      while (i < paramArrayOfbjua.length)
-      {
-        paramArrayOfbjua[i].b = -1;
-        paramArrayOfbjua[i].a = -1;
-        i += 1;
-      }
-      break;
-    }
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 

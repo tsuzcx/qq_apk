@@ -146,7 +146,7 @@ public class AdAppDownloadManager
   
   private void firstAutoDownloadReport()
   {
-    if ((this.autodownload) && (this.mContext != null) && (this.mCgdtAppBtnData != null) && (AdNet.isWifiConnected((Context)this.mContext.get()))) {
+    if ((this.autodownload) && (this.mContext != null) && (this.mCgdtAppBtnData != null)) {
       dealPkgExist(new AdAppDownloadManager.7(this));
     }
   }

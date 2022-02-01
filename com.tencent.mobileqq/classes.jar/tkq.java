@@ -1,29 +1,46 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class tkq
-  extends tkf
+public abstract class tkq
 {
-  tkq(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
-  {
-    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
-  }
+  protected abstract void a();
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com")))
+    try
     {
-      tkc.a(this.a).mShareHelper.b(paramString2);
+      paramJSONObject.put("folder_status", prp.a);
+      paramJSONObject.put("kandian_mode", pqu.a());
+      paramJSONObject = paramJSONObject.toString();
+      olh.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
       return;
     }
-    tkc.a(this.a).mShareHelper.b(paramString1);
+    catch (JSONException paramString)
+    {
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
+    }
   }
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tkq
  * JD-Core Version:    0.7.0.1
  */

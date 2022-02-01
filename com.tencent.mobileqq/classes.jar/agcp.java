@@ -1,18 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class agcp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public agcp(HeartCombolEffectView paramHeartCombolEffectView, agcq paramagcq) {}
+  public agcp(DoodlePanel paramDoodlePanel) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Agcq.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Agcq.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Agcq.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_Agcq.jdField_b_of_type_Boolean = true;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
     }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 

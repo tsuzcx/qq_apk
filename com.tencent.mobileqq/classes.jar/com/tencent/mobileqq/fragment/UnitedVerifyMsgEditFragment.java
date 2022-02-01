@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import acqk;
+import adgu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,7 +19,7 @@ public class UnitedVerifyMsgEditFragment
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = 100;
-  acqk jdField_a_of_type_Acqk;
+  adgu jdField_a_of_type_Adgu;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
@@ -29,18 +29,18 @@ public class UnitedVerifyMsgEditFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
     setTitle(getString(2131689570));
-    setLeftButton(2131690620, null);
-    setRightButton(2131690709, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131376308));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376309));
-    this.jdField_a_of_type_Acqk = new acqk(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Acqk);
+    setLeftButton(2131690697, null);
+    setRightButton(2131690786, this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131376563));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376564));
+    this.jdField_a_of_type_Adgu = new adgu(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Adgu);
     ThreadManager.post(new UnitedVerifyMsgEditFragment.1(this), 8, null, true);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561544;
+    return 2131561611;
   }
   
   public boolean onBackEvent()
@@ -73,7 +73,7 @@ public class UnitedVerifyMsgEditFragment
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Acqk);
+    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Adgu);
     super.onDestroyView();
   }
 }

@@ -1,14 +1,14 @@
 package com.tencent.biz.richframework.part.block;
 
 import com.tencent.biz.videostory.config.VSConfigManager;
-import yzj;
-import yzp;
-import yzq;
+import zoo;
+import zou;
+import zov;
 
 public class MultiViewBlock$1$1
   implements Runnable
 {
-  public MultiViewBlock$1$1(yzq paramyzq) {}
+  public MultiViewBlock$1$1(zov paramzov) {}
   
   public void run()
   {

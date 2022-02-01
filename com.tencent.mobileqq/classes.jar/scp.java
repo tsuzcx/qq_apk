@@ -1,46 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.HashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-public class scp
-  implements DownloadListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"}, k=3, mv={1, 1, 16})
+final class scp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private HashMap<String, scq> a = new HashMap();
+  scp(View paramView) {}
   
-  public void a(String paramString, scq paramscq)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.remove(paramString);
-    this.a.put(paramString, paramscq);
+    View localView = this.a;
+    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
+    }
+    localView.setTranslationY(((Float)paramValueAnimator).floatValue());
   }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    ThreadManager.getUIHandler().postDelayed(new VideoFeedsUGDownloadListener.2(this, paramString2), 1000L);
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.getUIHandler().post(new VideoFeedsUGDownloadListener.1(this, paramDownloadInfo));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

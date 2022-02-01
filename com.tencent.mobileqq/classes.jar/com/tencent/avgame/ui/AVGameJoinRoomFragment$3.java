@@ -1,7 +1,7 @@
 package com.tencent.avgame.ui;
 
 import java.util.ArrayList;
-import mxc;
+import ncs;
 
 class AVGameJoinRoomFragment$3
   implements Runnable
@@ -11,8 +11,8 @@ class AVGameJoinRoomFragment$3
   public void run()
   {
     this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.this$0.jdField_a_of_type_Mxc.a(this.this$0.jdField_a_of_type_JavaUtilArrayList);
-    this.this$0.jdField_a_of_type_Mxc.notifyDataSetChanged();
+    this.this$0.jdField_a_of_type_Ncs.a(this.this$0.jdField_a_of_type_JavaUtilArrayList);
+    this.this$0.jdField_a_of_type_Ncs.notifyDataSetChanged();
   }
 }
 

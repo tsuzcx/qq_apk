@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bndj;
-import bndl;
+import botb;
+import botd;
 
 public class EditVideoButton$2$1
   implements Runnable
 {
-  public EditVideoButton$2$1(bndl parambndl) {}
+  public EditVideoButton$2$1(botd parambotd) {}
   
   public void run()
   {
-    bndj.a(this.a.a).setVisibility(0);
+    botb.a(this.a.a).setVisibility(0);
   }
 }
 

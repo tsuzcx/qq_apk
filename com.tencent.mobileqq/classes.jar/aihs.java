@@ -1,229 +1,149 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.DenyRunnable;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.util.SparseIntArray;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
 
 public class aihs
 {
-  aihu jdField_a_of_type_Aihu;
-  WeakReference<aiht> jdField_a_of_type_JavaLangRefWeakReference;
+  private static final SparseIntArray a = new SparseIntArray();
   
-  public static int a()
+  static
   {
-    int j = 0;
-    int i = 0;
-    Context localContext;
-    if (VersionUtils.isM()) {
-      localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    }
-    label67:
-    label105:
-    for (;;)
-    {
-      try
-      {
-        if (localContext.checkSelfPermission("android.permission.READ_CONTACTS") == 0) {
-          i = 1;
-        }
-        j = i;
-        int k = localContext.checkSelfPermission("android.permission.WRITE_CONTACTS");
-        if (k != 0) {
-          break label105;
-        }
-        i |= 0x2;
-        QLog.d("contact.PermissionChecker", 1, "CheckPermission exception:" + localThrowable1.getMessage(), localThrowable1);
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          k = localContext.checkSelfPermission("android.permission.GET_ACCOUNTS");
-          j = i;
-          if (k == 0) {
-            j = i | 0x4;
-          }
-          return j;
-        }
-        catch (Throwable localThrowable2)
-        {
-          break label67;
-        }
-        localThrowable1 = localThrowable1;
-        i = j;
-      }
-      return i;
-      return 7;
-    }
+    a.put(2, 10);
+    a.put(3, 20);
+    a.put(4, 30);
   }
   
-  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, Runnable paramRunnable1, Runnable paramRunnable2)
+  public static <T extends aihp> List<T> a(QQAppInterface paramQQAppInterface, List<T> paramList)
   {
-    if ((paramActivity == null) || (paramQQAppInterface == null)) {
+    paramQQAppInterface = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("BindMsgConstant", 2, "checkReadContactPermission error");
+        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecSearches.size:" + paramList.size());
+      }
+      a(paramList, paramQQAppInterface);
+      a(paramList);
+      if (paramList.size() > 0) {
+        paramQQAppInterface.add(paramList.remove(0));
+      }
+      if (paramList.size() > 0) {
+        b(paramList, paramQQAppInterface);
+      }
+      if (paramList.size() > 0)
+      {
+        Collections.sort(paramList, new aiht());
+        b(paramList, paramQQAppInterface);
+      }
+      if (QLog.isColorLevel()) {
+        paramList = paramQQAppInterface.iterator();
       }
     }
+    else
+    {
+      while (paramList.hasNext())
+      {
+        aihp localaihp = (aihp)paramList.next();
+        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions item.ClickNum:" + localaihp.b() + ",item.ExposeNum: " + localaihp.a());
+        continue;
+        return paramQQAppInterface;
+      }
+      QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecEmotionList.size:" + paramQQAppInterface.size());
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static <T extends aihp> void a(List<T> paramList)
+  {
+    Collections.sort(paramList, new aihu());
+  }
+  
+  public static <T extends aihp> void a(List<T> paramList1, List<T> paramList2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList1.iterator();
+    while (localIterator.hasNext())
+    {
+      aihp localaihp = (aihp)localIterator.next();
+      if (localaihp.c() == 5)
+      {
+        paramList2.add(localaihp);
+        localArrayList.add(localaihp);
+      }
+    }
+    paramList1.removeAll(localArrayList);
+  }
+  
+  private static <T extends aihp> boolean a(List<T> paramList, T paramT)
+  {
+    if ((paramList == null) || (paramT == null)) {
+      return false;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject2 = (aihp)paramList.next();
+      if (((aihp)localObject2).c() != paramT.c())
+      {
+        Object localObject3;
+        Object localObject1;
+        String str;
+        if ((((aihp)localObject2).c() == 2) && (paramT.c() == 4))
+        {
+          localObject2 = (aiil)localObject2;
+          localObject3 = (aiij)paramT;
+          localObject1 = ((aiij)localObject3).a.emoPath;
+          localObject3 = ((aiij)localObject3).a.eId;
+          str = ((aiil)localObject2).a.epId;
+          localObject2 = ((aiil)localObject2).a.eId;
+          if ((localObject1 != null) && (((String)localObject1).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject2))) {
+            return true;
+          }
+        }
+        else if ((((aihp)localObject2).c() == 4) && (paramT.c() == 2))
+        {
+          localObject1 = (aiil)paramT;
+          localObject3 = (aiij)localObject2;
+          localObject2 = ((aiij)localObject3).a.emoPath;
+          localObject3 = ((aiij)localObject3).a.eId;
+          str = ((aiil)localObject1).a.epId;
+          localObject1 = ((aiil)localObject1).a.eId;
+          if ((localObject2 != null) && (((String)localObject2).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject1))) {
+            return true;
+          }
+        }
+        else
+        {
+          if ((((aihp)localObject2).c() == 4) && (paramT.c() == 3) && (((aiij)localObject2).c() != null) && (((aiij)localObject2).c().equals(((aiib)paramT).c()))) {
+            return true;
+          }
+          if ((((aihp)localObject2).c() == 3) && (paramT.c() == 4) && (((aiij)paramT).c() != null) && (((aiij)paramT).c().equals(((aiib)localObject2).c()))) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private static <T extends aihp> void b(List<T> paramList1, List<T> paramList2)
+  {
+    if (paramList2 == null) {}
+    aihp localaihp;
     do
     {
       do
       {
         return;
-        paramQQAppInterface = (PhoneContactManagerImp)paramQQAppInterface.getManager(11);
-        boolean bool = paramQQAppInterface.k();
-        if (QLog.isColorLevel()) {
-          QLog.i("BindMsgConstant", 2, String.format("checkReadContactPermission [%s, %s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(VersionUtils.isM()) }));
-        }
-        if (!bool) {
-          break;
-        }
-      } while (paramRunnable1 == null);
-      paramRunnable1.run();
-      return;
-      if (VersionUtils.isM())
-      {
-        if ((paramRunnable2 instanceof DenyRunnable)) {
-          ((DenyRunnable)paramRunnable2).a();
-        }
-        aihu localaihu = new aihu();
-        localaihu.jdField_a_of_type_JavaLangRunnable = paramRunnable1;
-        localaihu.jdField_b_of_type_JavaLangRunnable = paramRunnable2;
-        localaihu.jdField_a_of_type_Int = 1;
-        paramQQAppInterface.a().a(paramActivity, localaihu, null, new String[] { "android.permission.READ_CONTACTS", "android.permission.WRITE_CONTACTS", "android.permission.GET_ACCOUNTS" });
-        return;
-      }
-    } while (paramRunnable2 == null);
-    paramRunnable2.run();
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    aiht localaiht;
-    if (this.jdField_a_of_type_Aihu != null)
-    {
-      this.jdField_a_of_type_Aihu.jdField_b_of_type_Int = a();
-      QLog.d("contact.PermissionChecker", 1, "onPermissionResult = " + this.jdField_a_of_type_Aihu.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        break label78;
-      }
-      localaiht = null;
-      if (localaiht == null) {
-        break label92;
-      }
-      localaiht.a(paramBoolean, this.jdField_a_of_type_Aihu);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aihu = null;
-      return;
-      label78:
-      localaiht = (aiht)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      break;
-      label92:
-      this.jdField_a_of_type_Aihu.a(paramBoolean);
-    }
-  }
-  
-  public static boolean a()
-  {
-    return (!a("android.permission.READ_CONTACTS")) || (!a("android.permission.WRITE_CONTACTS")) || (!a("android.permission.GET_ACCOUNTS"));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    Context localContext;
-    if (VersionUtils.isM()) {
-      localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    }
-    try
-    {
-      int i = localContext.checkSelfPermission(paramString);
-      return i == 0;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("contact.PermissionChecker", 1, "CheckPermission exception:" + paramString.getMessage(), paramString);
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aihu = null;
-  }
-  
-  public void a(Activity paramActivity, aihu paramaihu, aiht paramaiht, String... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return;
-    }
-    if (paramActivity == null) {}
-    for (;;)
-    {
-      try
-      {
-        paramActivity = BaseActivity.sTopActivity;
-        AppActivity localAppActivity = (AppActivity)paramActivity;
-        paramActivity = paramaihu;
-        if (paramaihu == null) {
-          paramActivity = new aihu();
-        }
-        paramaihu = new StringBuilder(512);
-        ArrayList localArrayList = new ArrayList();
-        int j = paramVarArgs.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str = paramVarArgs[i];
-          localArrayList.add(str);
-          paramaihu.append(str).append(",");
-          i += 1;
-        }
-        else
-        {
-          paramActivity.jdField_a_of_type_JavaUtilList = localArrayList;
-          this.jdField_a_of_type_Aihu = paramActivity;
-          this.jdField_a_of_type_JavaLangRefWeakReference = null;
-          if (paramaiht != null) {
-            this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaiht);
-          }
-          QLog.d("contact.PermissionChecker", 1, "requestPermissions = " + paramaihu.toString());
-          localAppActivity.requestPermissions(this, 1, paramVarArgs);
-          return;
-        }
-      }
-      catch (Throwable paramActivity)
-      {
-        QLog.d("contact.PermissionChecker", 1, "requestPermissions exception:" + paramActivity.getMessage(), paramActivity);
-        return;
-      }
-    }
-  }
-  
-  @QQPermissionDenied(1)
-  @TargetApi(23)
-  public void denied()
-  {
-    QLog.d("contact.PermissionChecker", 1, "CheckPermission user denied = ");
-    a(false);
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    QLog.d("contact.PermissionChecker", 1, "CheckPermission user grant = ");
-    a(true);
+      } while ((paramList1 == null) || (paramList1.isEmpty()));
+      for (localaihp = (aihp)paramList1.remove(0); (a(paramList2, localaihp)) && (paramList1.size() > 0); localaihp = (aihp)paramList1.remove(0)) {}
+    } while (a(paramList2, localaihp));
+    paramList2.add(localaihp);
   }
 }
 

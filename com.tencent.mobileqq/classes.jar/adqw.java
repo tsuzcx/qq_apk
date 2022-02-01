@@ -1,43 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class adqw
-  extends WtloginObserver
+  implements bbtd
 {
-  public adqw(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public adqw(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
-      }
+    if ((this.a.h != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.h);
     }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
-    {
-      this.a.a();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.b();
   }
 }
 

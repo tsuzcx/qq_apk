@@ -1,22 +1,15 @@
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
-public abstract interface bmma
+public class bmma
+  extends bjwa
 {
-  public abstract void B();
-  
-  public abstract void C();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(@Nullable bmlo parambmlo, int paramInt);
-  
-  public abstract void b(float paramFloat);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
+  public void i(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+      return;
+    }
+    super.i(paramString1, paramString2);
+  }
 }
 
 

@@ -1,30 +1,30 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import xvv;
-import yaa;
+import ykq;
+import yot;
 
 public class EditVideoSave$5
   implements Runnable
 {
-  public EditVideoSave$5(yaa paramyaa) {}
+  public EditVideoSave$5(yot paramyot) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      xvv.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.this$0.jdField_a_of_type_Boolean);
+      ykq.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.this$0.jdField_a_of_type_Boolean);
       return;
     }
-    yaa localyaa;
+    yot localyot;
     if (this.this$0.jdField_a_of_type_Int < 50) {
-      localyaa = this.this$0;
+      localyot = this.this$0;
     }
-    for (localyaa.jdField_a_of_type_Int += this.this$0.b; this.this$0.jdField_a_of_type_Int > 99; localyaa.jdField_a_of_type_Int += 1)
+    for (localyot.jdField_a_of_type_Int += this.this$0.b; this.this$0.jdField_a_of_type_Int > 99; localyot.jdField_a_of_type_Int += 1)
     {
       this.this$0.jdField_a_of_type_Int = 99;
       this.this$0.a(this.this$0.jdField_a_of_type_Int);
       return;
-      localyaa = this.this$0;
+      localyot = this.this$0;
     }
     this.this$0.a(this.this$0.jdField_a_of_type_Int);
     this.this$0.g();

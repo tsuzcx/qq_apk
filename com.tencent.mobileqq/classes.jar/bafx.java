@@ -1,67 +1,31 @@
-import android.opengl.EGLContext;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-public class bafx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileOtherSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileOtherSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileOtherSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bafx
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public EGLContext a;
-  public bagd a;
-  public bagq a;
-  public bahh a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e = 8;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j = -1;
-  public int k = -1;
+  @NotNull
+  private FormSwitchItem a;
   
-  public bafx(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean1, int paramInt7, String paramString2, String paramString3, String paramString4, boolean paramBoolean2)
+  public bafx(@NotNull View paramView)
   {
-    this.jdField_d_of_type_Int = 30;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.e = paramInt4;
-    this.f = paramInt6;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_Int = paramInt5;
-    this.g = paramInt7;
-    this.jdField_d_of_type_JavaLangString = paramString4;
+    super(paramView);
+    paramView = paramView.findViewById(2131373207);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
+    }
+    this.a = ((FormSwitchItem)paramView);
   }
   
-  public bafx(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
+  @NotNull
+  public final FormSwitchItem a()
   {
-    this(paramString, paramInt1, paramInt2, paramInt3, paramInt4, 30, 0, paramBoolean, paramInt5, null, null, null, false);
-  }
-  
-  public EGLContext a()
-  {
-    return this.jdField_a_of_type_AndroidOpenglEGLContext;
-  }
-  
-  public void a(EGLContext paramEGLContext)
-  {
-    this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-  }
-  
-  public String toString()
-  {
-    return "EncodeConfig{sharedContext=" + this.jdField_a_of_type_AndroidOpenglEGLContext + ", outputFilePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width='" + this.jdField_a_of_type_Int + '\'' + ", height='" + this.jdField_b_of_type_Int + '\'' + ", bitRate='" + this.jdField_c_of_type_Int + '\'' + ", frameRate='" + this.jdField_d_of_type_Int + '\'' + ", iFrameInterval='" + this.e + '\'' + ", filterType=" + this.f + ", needGenerateThumb=" + this.jdField_a_of_type_Boolean + ", watermarkPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mosaicPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", orientation=" + this.g + ", adjustRotation=" + this.h + '}';
+    return this.a;
   }
 }
 

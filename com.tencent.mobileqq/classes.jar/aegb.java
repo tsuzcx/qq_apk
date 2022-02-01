@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class aegb
-  implements acxa
+  extends anvi
 {
-  public aegb(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public aegb(Leba paramLeba) {}
   
-  public void onAfterStartActivity()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.finish();
-  }
-  
-  public void onBeforeStartActivity() {}
-  
-  public void onCancel()
-  {
-    this.a.finish();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((bcvr)this.a.a.getManager(QQManagerFactory.QZONE_MANAGER) == null) {
+      return;
+    }
+    Leba.c(this.a);
   }
 }
 

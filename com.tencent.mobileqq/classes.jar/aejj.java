@@ -1,31 +1,20 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejj
-  implements TextView.OnEditorActionListener
+  implements DialogInterface.OnClickListener
 {
-  public aejj(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aejj(NotificationActivity paramNotificationActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
-    {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
-      TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-      return true;
-    }
-    return false;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejj
  * JD-Core Version:    0.7.0.1
  */

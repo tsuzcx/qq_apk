@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import amcm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import andu;
 
 public class IPCSpriteContext
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new amcm();
+  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new andu();
   public float a;
   public int a;
   public String a;

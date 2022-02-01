@@ -9,9 +9,9 @@ import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import pai;
-import syl;
-import syo;
+import pjr;
+import tlt;
+import tlw;
 
 public class PTSImageView
   extends KandianUrlImageView
@@ -40,8 +40,8 @@ public class PTSImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    syo localsyo = this.mController.a();
-    if ((localsyo == null) || (localsyo.a)) {
+    tlw localtlw = this.mController.a();
+    if ((localtlw == null) || (localtlw.a)) {
       setImageSrc(this.mPath);
     }
   }
@@ -54,8 +54,8 @@ public class PTSImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    syo localsyo = this.mController.a();
-    if ((localsyo == null) || (localsyo.a)) {
+    tlw localtlw = this.mController.a();
+    if ((localtlw == null) || (localtlw.a)) {
       setImageSrc(this.mPath);
     }
   }
@@ -73,7 +73,7 @@ public class PTSImageView
       for (;;)
       {
         QLog.d("PTSImageView", 2, "[setImageSrc], mPathUrl = " + this.mPathUrl);
-        pai.a(this, this.mPathUrl, getContext());
+        pjr.a(this, this.mPathUrl, getContext());
         return;
         QLog.d("PTSImageView", 2, "[setImageSrc], current path unchanged ");
       }

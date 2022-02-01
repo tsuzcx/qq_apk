@@ -11,18 +11,18 @@ import com.tencent.mobileqq.widget.NumberCheckBox;
 public class AbstractPhotoListActivity$Holder
   extends RecyclerView.ViewHolder
 {
-  AbstractPhotoListActivity.CheckBoxClickedListener checkBoxListener;
+  public AbstractPhotoListActivity.CheckBoxClickedListener checkBoxListener;
   public NumberCheckBox mCheckBox;
-  URLDrawable mDrawable;
-  TextView mImageType;
-  ImageView mImageView;
+  public URLDrawable mDrawable;
+  public TextView mImageType;
+  public ImageView mImageView;
   public ImageView mImageViewPanoramaIcon;
-  ImageView mMaskView;
-  AbstractPhotoListActivity.OnItemClickListener mOnItemClickListener;
+  public ImageView mMaskView;
+  public AbstractPhotoListActivity.OnItemClickListener mOnItemClickListener;
   public ImageView mPhotoFlagView;
-  View mSelectedBtn;
-  ImageView mSelectedIconView;
-  TextView mTextView;
+  public View mSelectedBtn;
+  public ImageView mSelectedIconView;
+  public TextView mTextView;
   
   public AbstractPhotoListActivity$Holder(@NonNull View paramView)
   {

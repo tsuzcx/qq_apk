@@ -1,17 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class uyk
-  implements ShareActionSheet.OnItemClickListener
+public class uyk
+  implements View.OnClickListener
 {
-  uyk(Context paramContext, uwy paramuwy) {}
+  public uyk(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(View paramView)
   {
-    uyd.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Uwy);
-    paramShareActionSheet.dismiss();
+    WSRecommendFragment.a(this.a).b();
+    ((vjl)this.a.b()).a(true, true, "");
+    ((vjl)this.a.b()).a("");
+    WSRecommendFragment.a(this.a).setVisibility(8);
+    this.a.c();
+    vjx.a(136, 1, null);
+    vkf.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,15 +1,34 @@
-import com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.2;
-import java.io.File;
-import java.util.Comparator;
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
 
-public class yyn
-  implements Comparator<File>
+public abstract class yyn<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  public yyn(AnimationDrawableFactory.2 param2) {}
+  protected long a;
+  private final String a;
+  private long b;
   
-  public int a(File paramFile1, File paramFile2)
+  public yyn()
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+  }
+  
+  public void call(IN paramIN)
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
+  }
+  
+  public void notifyError(Error paramError)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
+  }
+  
+  public void notifyResult(OUT paramOUT)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
 }
 

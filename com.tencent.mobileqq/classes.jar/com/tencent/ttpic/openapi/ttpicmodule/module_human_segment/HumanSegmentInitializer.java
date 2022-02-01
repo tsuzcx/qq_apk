@@ -2,7 +2,7 @@ package com.tencent.ttpic.openapi.ttpicmodule.module_human_segment;
 
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.util.Log;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.initializer.Feature;
 import com.tencent.ttpic.openapi.initializer.ModelInfo;
@@ -19,27 +19,46 @@ import java.util.List;
 public class HumanSegmentInitializer
   extends Feature
 {
-  private static final String NAME_RAPIDMODEL_BIG = "portrait_Xception_EX_spconv_256x256_0317_400_big.onnx.opt.onnx";
-  private static final String NAME_RAPIDMODEL_MIDDLE = "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.middle";
-  private static final String NAME_RAPIDMODEL_SMALL = "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx";
+  private static final String NAME_RAPIDMODEL_BBIG = "net2_v14_0618jizhi_155.onnx.opt.onnx";
+  private static final String NAME_RAPIDMODEL_BIG = "big_Xception_EX_spconv_256x256_0508_300.onnx.opt.onnx";
+  private static final String NAME_RAPIDMODEL_MIDDLE = "small_Xception_EX_spconv_192x160_0511_300.onnx.opt.onnx";
+  private static final String NAME_RAPIDMODEL_SMALL = "smallest_Xception_EX_spconv_v3_160x160_0519_300.onnx.opt.onnx";
   public static final SizeI NET_SIZE_BIG = new SizeI(320, 320);
   public static final SizeI NET_SIZE_SMALL = new SizeI(256, 256);
   private static final String TAG = HumanSegmentInitializer.class.getSimpleName();
-  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "humansegment", "portrait_Xception_EX_spconv_256x256_0317_400_big.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "portrait_Xception_EX_spconv_256x256_0317_400_big.onnx.opt.onnx.rapidproto.wmc") };
-  private static final ModelInfo[] rapidMiddleModels = { new ModelInfo(true, "humansegment", "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.middle.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.middle.rapidproto.wmc") };
-  private static final ModelInfo[] rapidSmallModels = { new ModelInfo(true, "humansegment", "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidBBigModels = { new ModelInfo(true, "humansegment", "net2_v14_0618jizhi_155.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "net2_v14_0618jizhi_155.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "humansegment", "big_Xception_EX_spconv_256x256_0508_300.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "big_Xception_EX_spconv_256x256_0508_300.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidMiddleModels = { new ModelInfo(true, "humansegment", "small_Xception_EX_spconv_192x160_0511_300.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "small_Xception_EX_spconv_192x160_0511_300.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidSmallModels = { new ModelInfo(true, "humansegment", "smallest_Xception_EX_spconv_v3_160x160_0519_300.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "humansegment", "smallest_Xception_EX_spconv_v3_160x160_0519_300.onnx.opt.onnx.rapidproto.wmc") };
   private int cameraId;
   private HumanSegmentImpl mHumanSegmentImpl;
   private HumanSegmentInitializer.MODLE_LEVEL modle_level;
   private int postMode;
   private volatile boolean useCPULib = false;
+  private volatile boolean useCPULibImage = false;
   private boolean useSmallModel = false;
+  
+  private boolean initBBigCpu()
+  {
+    this.useCPULibImage = true;
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU_IMAGE.loadRapidModelFrom(getFinalResourcesDir(), "net2_v14_0618jizhi_155.onnx.opt.onnx", false, true, 0, 0, 4);
+    FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU_IMAGE.setMode(-1);
+    return bool;
+  }
+  
+  private boolean initBBigGpu()
+  {
+    this.useCPULibImage = false;
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU_IMAGE.loadRapidModelFrom(getFinalResourcesDir(), "net2_v14_0618jizhi_155.onnx.opt.onnx", false, true, 0, 0, 4);
+    FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU_IMAGE.setMode(-1);
+    return bool;
+  }
   
   private boolean initBigGpu()
   {
     this.useCPULib = false;
     this.modle_level = HumanSegmentInitializer.MODLE_LEVEL.BIG_MODEL;
-    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "portrait_Xception_EX_spconv_256x256_0317_400_big.onnx.opt.onnx", false, true, 0, 1, 4);
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "big_Xception_EX_spconv_256x256_0508_300.onnx.opt.onnx", false, true, 0, 1, 4);
     FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.setMode(2);
     this.postMode = 2;
     this.cameraId = 0;
@@ -50,7 +69,7 @@ public class HumanSegmentInitializer
   {
     this.useCPULib = true;
     this.modle_level = HumanSegmentInitializer.MODLE_LEVEL.MIDDLE_MODEL;
-    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.middle", false, true, 0, 0, 4);
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "small_Xception_EX_spconv_192x160_0511_300.onnx.opt.onnx", false, true, 0, 0, 4);
     this.postMode = 1;
     this.cameraId = 0;
     return bool;
@@ -60,7 +79,7 @@ public class HumanSegmentInitializer
   {
     this.useCPULib = false;
     this.modle_level = HumanSegmentInitializer.MODLE_LEVEL.MIDDLE_MODEL;
-    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx.middle", false, true, 0, 1, 4);
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "small_Xception_EX_spconv_192x160_0511_300.onnx.opt.onnx", false, true, 0, 1, 4);
     FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.setMode(2);
     this.postMode = 2;
     this.cameraId = 0;
@@ -71,7 +90,7 @@ public class HumanSegmentInitializer
   {
     this.useCPULib = true;
     this.modle_level = HumanSegmentInitializer.MODLE_LEVEL.SMALL_MODEL;
-    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx", false, true, 0, 0, 4);
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "smallest_Xception_EX_spconv_v3_160x160_0519_300.onnx.opt.onnx", false, true, 0, 0, 4);
     FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.setMode(0);
     this.postMode = 0;
     this.cameraId = 0;
@@ -82,7 +101,7 @@ public class HumanSegmentInitializer
   {
     this.useCPULib = false;
     this.modle_level = HumanSegmentInitializer.MODLE_LEVEL.SMALL_MODEL;
-    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "portrait_Xception_192x160_0302_8910_small.onnx.opt.onnx", false, true, 0, 1, 4);
+    boolean bool = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "smallest_Xception_EX_spconv_v3_160x160_0519_300.onnx.opt.onnx", false, true, 0, 1, 4);
     FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.setMode(2);
     this.postMode = 2;
     this.cameraId = 0;
@@ -101,6 +120,17 @@ public class HumanSegmentInitializer
     }
     if (this.useCPULib) {}
     for (paramBitmap = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU.forward(paramBitmap, 4, false, false, paramInt);; paramBitmap = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.forward(paramBitmap, 4, false, false, paramInt)) {
+      return paramBitmap;
+    }
+  }
+  
+  public Bitmap forwardImage(Bitmap paramBitmap, int paramInt)
+  {
+    if (!isFunctionReadyImage()) {
+      return paramBitmap;
+    }
+    if (this.useCPULibImage) {}
+    for (paramBitmap = FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU_IMAGE.forward(paramBitmap, 4, false, false, paramInt);; paramBitmap = FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU_IMAGE.forward(paramBitmap, 4, false, false, paramInt)) {
       return paramBitmap;
     }
   }
@@ -124,6 +154,13 @@ public class HumanSegmentInitializer
     Collections.addAll(localArrayList, rapidBigModels);
     Collections.addAll(localArrayList, rapidMiddleModels);
     Collections.addAll(localArrayList, rapidSmallModels);
+    return localArrayList;
+  }
+  
+  public List<ModelInfo> getModelInfosImage()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Collections.addAll(localArrayList, rapidBBigModels);
     return localArrayList;
   }
   
@@ -197,13 +234,13 @@ public class HumanSegmentInitializer
       if (this.useCPULib) {}
       for (str1 = "CPU";; str1 = "GPU")
       {
-        Log.i(str2, str1 + "+" + this.modle_level.toString());
+        LogUtils.i(str2, str1 + "+" + this.modle_level.toString());
         return bool1;
       }
     }
     if ((Build.BRAND.toLowerCase().startsWith("huawei")) || (Build.BRAND.toLowerCase().startsWith("honor")))
     {
-      Log.i(TAG, "huawei device init human seg model: CPU + " + HumanSegmentInitializer.MODLE_LEVEL.SMALL_MODEL.toString());
+      LogUtils.i(TAG, "huawei device init human seg model: CPU + " + HumanSegmentInitializer.MODLE_LEVEL.SMALL_MODEL.toString());
       return initSmallCpu();
     }
     if (OfflineConfig.getPhonePerfLevel() <= 3)
@@ -218,7 +255,7 @@ public class HumanSegmentInitializer
       if (this.useCPULib) {}
       for (str1 = "CPU";; str1 = "GPU")
       {
-        Log.i(str2, str1 + "+" + this.modle_level.toString());
+        LogUtils.i(str2, str1 + "+" + this.modle_level.toString());
         return bool1;
       }
     }
@@ -232,7 +269,29 @@ public class HumanSegmentInitializer
     if (this.useCPULib) {}
     for (String str1 = "CPU";; str1 = "GPU")
     {
-      Log.i(str2, str1 + "+" + this.modle_level.toString());
+      LogUtils.i(str2, str1 + "+" + this.modle_level.toString());
+      return bool1;
+    }
+  }
+  
+  public boolean initModelSyncImage()
+  {
+    if (!copyAssetsModelsToLocalPath(getModelInfosImage()))
+    {
+      LogUtils.i(TAG, "load human seg bbig model faild ");
+      return false;
+    }
+    boolean bool2 = initBBigGpu();
+    boolean bool1 = bool2;
+    if (!bool2) {
+      bool1 = initBBigCpu();
+    }
+    String str2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder().append("force init human seg model: ");
+    if (this.useCPULib) {}
+    for (String str1 = "CPU";; str1 = "GPU")
+    {
+      LogUtils.i(str2, str1 + "+ bbig model");
       return bool1;
     }
   }
@@ -240,6 +299,11 @@ public class HumanSegmentInitializer
   public boolean isFunctionReady()
   {
     return (this.isInited) && (((FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU.isModelLoaded(4)) && (this.useCPULib)) || ((FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU.isModelLoaded(4)) && (!this.useCPULib)));
+  }
+  
+  public boolean isFunctionReadyImage()
+  {
+    return (this.isInited) && (((FeatureManager.Features.RAPID_NET_HUMAN_SEG_CPU_IMAGE.isModelLoaded(4)) && (this.useCPULibImage)) || ((FeatureManager.Features.RAPID_NET_HUMAN_SEG_GPU_IMAGE.isModelLoaded(4)) && (!this.useCPULibImage)));
   }
   
   public boolean isUseCPULib()

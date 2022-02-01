@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.theme.diy;
 
 import android.text.TextUtils;
-import bcef;
-import bhjm;
+import bdla;
+import biuc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ThemeDIYActivity$2
-  implements bhjm
+  implements biuc
 {
   ThemeDIYActivity$2(ThemeDIYActivity paramThemeDIYActivity) {}
   
@@ -24,7 +24,7 @@ class ThemeDIYActivity$2
       if (3 == paramInt2)
       {
         localObject1 = "diy_clickstyle";
-        bcef.b((QQAppInterface)localObject2, "CliOper", "", str, "theme_mall", (String)localObject1, 0, 1, "", "", "", "");
+        bdla.b((QQAppInterface)localObject2, "CliOper", "", str, "theme_mall", (String)localObject1, 0, 1, "", "", "", "");
       }
     }
     else

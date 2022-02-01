@@ -1,17 +1,42 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aotp
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class aotp
+  extends aoui
 {
-  aotp(aoto paramaoto, aotq paramaotq) {}
-  
-  public void callback(String paramString, Bitmap paramBitmap)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_Aotq.a.setImageBitmap(paramBitmap);
+    paramQQAppInterface = new aoto(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "groupvideo";
+    if (paramString.contains("openroom")) {
+      paramQQAppInterface.c = "openroom";
     }
+    for (;;)
+    {
+      paramContext = paramString.split("\\?");
+      if (paramContext.length == 2) {
+        break;
+      }
+      return paramQQAppInterface;
+      if (paramString.contains("preload")) {
+        paramQQAppInterface.c = "preload";
+      }
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

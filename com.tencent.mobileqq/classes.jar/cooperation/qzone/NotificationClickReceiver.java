@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import bboh;
+import bcvb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -17,7 +17,7 @@ import cooperation.qzone.report.lp.LpReportInfo_dc00420;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import java.util.HashMap;
 import java.util.List;
-import vgn;
+import vvh;
 
 public class NotificationClickReceiver
   extends BroadcastReceiver
@@ -95,7 +95,7 @@ public class NotificationClickReceiver
       {
         paramContext = new HashMap();
         paramContext.put("url", str1);
-        vgn.a(BaseApplicationImpl.getContext(), "openwebview", paramContext);
+        vvh.a(BaseApplicationImpl.getContext(), "openwebview", paramContext);
       }
     }
     try
@@ -114,7 +114,7 @@ public class NotificationClickReceiver
           paramContext.subactionType = String.valueOf(3);
           paramContext.reserves = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          bboh.a.clear();
+          bcvb.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {

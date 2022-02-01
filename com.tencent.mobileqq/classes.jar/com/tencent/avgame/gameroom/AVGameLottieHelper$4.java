@@ -1,11 +1,11 @@
 package com.tencent.avgame.gameroom;
 
-import ncc;
+import nhz;
 
 public final class AVGameLottieHelper$4
   implements Runnable
 {
-  public AVGameLottieHelper$4(ncc paramncc) {}
+  public AVGameLottieHelper$4(nhz paramnhz) {}
   
   public void run()
   {

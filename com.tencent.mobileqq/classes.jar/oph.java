@@ -1,183 +1,408 @@
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.AndroidRuntimeException;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import java.util.ArrayList;
-import java.util.Arrays;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public class oph
 {
-  private static Bundle a(Bundle paramBundle)
+  private static String a(String paramString1, String paramString2)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    if (StringUtil.isEmpty(paramString2)) {
+      return paramString1;
     }
-    localBundle.putInt("edit_video_type", 10013);
-    localBundle.putInt("entrance_type", 106);
-    localBundle.putInt("extra.busi_type", 12);
-    localBundle.putInt("edit_video_way", 10);
-    localBundle.putBoolean("PeakConstants.ARG_ALBUM", false);
-    localBundle.putInt("key_camera_photo_edit_type", 1);
-    localBundle.putInt("key_camera_video_edit_type", 5);
-    localBundle.putInt("ability_flag", 3);
-    localBundle.putInt("key_max_duration", bkwm.f(BaseApplicationImpl.getApplication().getRuntime()));
-    return localBundle;
+    paramString1 = opg.a(paramString1, opg.a(paramString2), false);
+    QLog.i("Ecshop_JumpUtil", 2, paramString1);
+    return paramString1;
   }
   
-  private static QQAppInterface a()
+  public static void a(Context paramContext, int paramInt, String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("tab_id", paramInt);
+    localIntent.putExtra("jump_url", paramString);
+    try
+    {
+      bool = opg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      localIntent.putExtra("req_qgg_title", bool);
+      localIntent.putExtra("req_qgg_hide_tab", false);
+      localIntent.putExtra("big_brother_source_key", uuc.b("3046055438"));
+      localIntent.setFlags(603979776);
+      PublicFragmentActivityForTool.b(paramContext, localIntent, EcshopNewPageFragment.class);
+      if (((paramContext instanceof Activity)) && (!(paramContext instanceof SplashActivity)) && (!(paramContext instanceof PublicFragmentActivityForTool)) && (!(paramContext instanceof UniteSearchActivity)))
+      {
+        ((Activity)paramContext).finish();
+        ((Activity)paramContext).overridePendingTransition(0, 0);
+      }
+      return;
     }
-    throw new AndroidRuntimeException("mobile qq main process only");
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        boolean bool = true;
+      }
+    }
   }
   
-  public static void a(Activity paramActivity, Bundle paramBundle, byte paramByte)
+  public static void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (paramActivity == null) {
-      return;
-    }
-    if (a().isVideoChatting())
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {}
+    do
     {
-      QQToast.a(paramActivity, 0, 2131718468, 0).a();
       return;
+      Intent localIntent = new Intent(paramContext, ChatActivity.class);
+      localIntent.putExtra("uin", paramString1);
+      localIntent.putExtra("uintype", 1008);
+      localIntent.putExtra("uinname", paramString2);
+      localIntent.putExtra("req_qgg_hide_tab", paramBoolean);
+      localIntent.putExtra("leftViewText", paramContext.getString(2131690676));
+      localIntent.setFlags(4194304);
+      paramContext.startActivity(localIntent);
+    } while (!(paramContext instanceof Activity));
+    paramString1 = (Activity)paramContext;
+    if ((!(paramContext instanceof SplashActivity)) && (!(paramContext instanceof PublicFragmentActivityForTool))) {
+      paramString1.finish();
     }
-    boolean bool = body.b(a());
-    if (!babd.a())
-    {
-      b(paramActivity);
-      return;
-    }
-    if ((!bool) && (!NetworkUtil.isNetworkAvailable(paramActivity)))
-    {
-      QQToast.a(paramActivity, 2131717741, 0).a();
-      return;
-    }
-    a();
-    if (bool)
-    {
-      QIMCameraCaptureActivity.a(paramActivity, a(paramBundle), paramByte);
-      return;
-    }
-    Intent localIntent = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
-    localIntent.putExtras(a(paramBundle));
-    localIntent.putExtra("pendingIntentClass", bljy.class.getName());
-    localIntent.putExtra("pendingIntentRequest", paramByte);
-    localIntent.putExtra("pendingIntentAllWait", true);
-    CaptureQmcfSoDownloadActivity.a(paramActivity, blii.class.getName(), localIntent.getExtras(), paramByte);
+    paramString1.overridePendingTransition(0, 0);
   }
   
-  public static void a(Context paramContext)
+  private static void a(QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("edit_video_type", 10017);
-    localBundle.putInt("entrance_type", 106);
-    localBundle.putInt("extra.busi_type", 8);
-    localBundle.putInt("edit_video_way", 10);
-    localBundle.putInt("ability_flag", 2);
-    localBundle.putBoolean("PeakConstants.ARG_ALBUM", false);
-    localBundle.putInt("key_camera_photo_edit_type", 1);
-    localBundle.putInt("key_camera_video_edit_type", 5);
-    localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
-    localBundle.putInt("capture_intent_mode", 0);
-    if (a().isVideoChatting())
+    QLog.i("Ecshop_JumpUtil", 2, "---jumpByTabIdInner---" + paramInt);
+    if (paramInt == 0) {
+      a(paramContext, "3046055438", paramString1, true);
+    }
+    Object localObject;
+    String str;
+    do
     {
-      QQToast.a(paramContext, 0, 2131718468, 0).a();
+      return;
+      localObject = opd.a();
+      if (localObject == null) {
+        break label172;
+      }
+      localObject = ((opa)localObject).a(paramInt);
+      if (localObject == null)
+      {
+        a(paramContext, "3046055438", paramString1, true);
+        return;
+      }
+      str = opk.a(((opc)localObject).b, paramString3);
+      if ((!StringUtil.isEmpty(str)) && ((str.startsWith("http")) || (str.startsWith("https")) || (MiniAppLauncher.isMiniAppUrl(str)))) {
+        break;
+      }
+    } while (((opc)localObject).a != 1);
+    a(paramContext, "3046055438", paramString1, paramBoolean);
+    return;
+    if (MiniAppLauncher.isMiniAppUrl(str))
+    {
+      MiniAppLauncher.startMiniApp(paramContext, str, 1035, null);
       return;
     }
-    boolean bool = body.b(a());
-    if (!babd.a())
-    {
-      b(paramContext);
-      return;
-    }
-    if ((!bool) && (!NetworkUtil.isNetworkAvailable(paramContext)))
-    {
-      QQToast.a(paramContext, 2131717741, 0).a();
-      return;
-    }
-    a();
-    if (bool)
-    {
-      QIMCameraCaptureActivity.a(paramContext, localBundle);
-      return;
-    }
-    CaptureQmcfSoDownloadActivity.a(paramContext, bljy.class.getName(), localBundle, true);
+    a(paramQQAppInterface, paramContext, paramInt, str, paramBoolean, paramString2, paramString3);
+    return;
+    label172:
+    a(paramContext, "3046055438", paramString1, true);
   }
   
-  public static void a(Context paramContext, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (a().isVideoChatting())
+    String str4 = "";
+    String str1 = str4;
+    String str2 = str4;
+    int i;
+    label70:
+    label242:
+    label249:
+    String str3;
+    try
     {
-      QQToast.a(paramContext, 0, 2131718468, 0).a();
-      return;
+      if (bhfc.a(paramQQAppInterface.getMessageFacade().getAIOList("3046055438", 1008)))
+      {
+        str1 = str4;
+        str2 = str4;
+        a(paramQQAppInterface, paramContext, null, "jumpTab", "", 2);
+        paramContext = "";
+        i = paramQQAppInterface.getConversationFacade().a("3046055438", 1008);
+        if (i <= 0) {
+          break label242;
+        }
+        str1 = "1";
+        opk.a(paramQQAppInterface, "gouwu.aio.click", str1, NetConnInfoCenter.getServerTimeMillis() + "", paramContext);
+        if (i <= 0) {
+          break label249;
+        }
+      }
+      for (str1 = "1";; str1 = "0")
+      {
+        opk.b(paramQQAppInterface, "gouwu_aio_click", str1, NetConnInfoCenter.getServerTimeMillis() + "", paramContext);
+        return;
+        str1 = str4;
+        str2 = str4;
+        MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab("3046055438", 1008);
+        if (localMessageRecord == null)
+        {
+          str1 = str4;
+          str2 = str4;
+          a(paramContext, "3046055438", paramContext.getResources().getString(2131691810), true);
+          paramContext = "";
+          break;
+        }
+        str1 = str4;
+        str2 = str4;
+        str4 = opg.a(localMessageRecord);
+        str1 = str4;
+        str2 = str4;
+        b(paramQQAppInterface, paramContext, localMessageRecord, opf.b(paramQQAppInterface, opg.b(localMessageRecord)), "", opg.c(localMessageRecord));
+        paramContext = str4;
+        break;
+        str1 = "0";
+        break label70;
+      }
+      label371:
+      paramContext = "1";
     }
-    boolean bool = body.b(a());
-    if (!babd.a())
+    catch (Throwable localThrowable)
     {
-      b(paramContext);
-      return;
+      str3 = str1;
+      a(paramContext, "3046055438", paramContext.getResources().getString(2131691810), true);
+      i = paramQQAppInterface.getConversationFacade().a("3046055438", 1008);
+      if (i > 0)
+      {
+        paramContext = "1";
+        opk.a(paramQQAppInterface, "gouwu.aio.click", paramContext, NetConnInfoCenter.getServerTimeMillis() + "", str1);
+        if (i <= 0) {
+          break label371;
+        }
+      }
+      for (paramContext = "1";; paramContext = "0")
+      {
+        opk.b(paramQQAppInterface, "gouwu_aio_click", paramContext, NetConnInfoCenter.getServerTimeMillis() + "", str1);
+        return;
+        paramContext = "0";
+        break;
+      }
     }
-    if ((!bool) && (!NetworkUtil.isNetworkAvailable(paramContext)))
+    finally
     {
-      QQToast.a(paramContext, 2131717741, 0).a();
-      return;
+      i = paramQQAppInterface.getConversationFacade().a("3046055438", 1008);
+      if (i <= 0) {
+        break label468;
+      }
     }
-    a();
-    if (bool)
+    opk.a(paramQQAppInterface, "gouwu.aio.click", paramContext, NetConnInfoCenter.getServerTimeMillis() + "", str3);
+    if (i > 0) {}
+    for (paramContext = "1";; paramContext = "0")
     {
-      QIMCameraCaptureActivity.a(paramContext, a(paramBundle));
-      return;
+      opk.b(paramQQAppInterface, "gouwu_aio_click", paramContext, NetConnInfoCenter.getServerTimeMillis() + "", str3);
+      throw localObject;
+      label468:
+      paramContext = "0";
+      break;
     }
-    CaptureQmcfSoDownloadActivity.a(paramContext, bljy.class.getName(), a(paramBundle), true);
   }
   
-  public static void a(ufd paramufd, Context paramContext, Bundle paramBundle, byte paramByte)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    boolean bool = body.b(paramufd.mRuntime.a());
-    if (!babd.a())
+    if ("fypbtn".equals(paramString3))
     {
-      b(paramContext);
+      a(paramContext, paramInt, paramString1);
       return;
     }
-    if ((!bool) && (!NetworkUtil.isNetworkAvailable(paramContext)))
-    {
-      QQToast.a(paramContext, 2131717741, 0).a();
-      return;
+    paramString3 = new Intent();
+    paramString3.putExtra("tab_id", paramInt);
+    String str = opg.b();
+    paramInt = paramQQAppInterface.getConversationFacade().a("3046055438", 1008);
+    if (QLog.isColorLevel()) {
+      QLog.i("Ecshop_JumpUtil", 2, "<<<<<<unReadPointCnt<<<<<<" + paramInt);
     }
-    paramufd.m();
-    if (bool)
-    {
-      paramufd.startActivityForResult(QIMCameraCaptureActivity.a(paramContext, a(paramBundle)), paramByte);
-      return;
+    if (paramInt == 0) {
+      if ((!StringUtil.isEmpty(str)) && (!StringUtil.isEmpty(opg.a())))
+      {
+        paramQQAppInterface = new HashMap();
+        paramQQAppInterface.put("prompt_id", str);
+        paramQQAppInterface = opg.a(paramString1, paramQQAppInterface, false);
+      }
     }
-    paramContext = new Intent(paramContext, CaptureQmcfSoDownloadActivity.class);
-    paramContext.putExtras(a(paramBundle));
-    paramContext.putExtra("pendingIntentClass", bljy.class.getName());
-    paramContext.putExtra("pendingIntentRequest", paramByte);
-    paramContext.putExtra("pendingIntentAllWait", true);
-    paramufd.startActivityForResult(paramContext, paramByte);
+    for (;;)
+    {
+      paramString3.putExtra("jump_url", paramQQAppInterface);
+      QLog.i("Ecshop_JumpUtil", 2, paramQQAppInterface);
+      try
+      {
+        bool = opg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+        paramString3.putExtra("req_qgg_title", bool);
+        paramString3.putExtra("req_qgg_hide_tab", paramBoolean);
+        paramString3.putExtra("big_brother_source_key", uuc.b("3046055438"));
+        paramString3.setFlags(603979776);
+        PublicFragmentActivityForTool.b(paramContext, paramString3, EcshopNewPageFragment.class);
+        return;
+        paramQQAppInterface = a(paramString1, paramString2);
+        continue;
+        paramQQAppInterface = a(paramString1, paramString2);
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        for (;;)
+        {
+          paramQQAppInterface.printStackTrace();
+          boolean bool = true;
+        }
+      }
+    }
   }
   
-  private static boolean a()
+  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, int paramInt)
   {
-    return bbxj.a(a(), BaseApplicationImpl.getContext());
+    opg.a(paramMessageRecord.uniseq, paramInt + 1);
+    paramMessageRecord = new Intent(paramContext, ChatActivity.class);
+    paramMessageRecord.putExtra("uin", "3046055438");
+    paramMessageRecord.putExtra("uintype", 1008);
+    paramMessageRecord.putExtra("uinname", paramContext.getResources().getString(2131691810));
+    paramMessageRecord.putExtra("leftViewText", paramContext.getString(2131690676));
+    paramMessageRecord.putExtra("jump_minusonescreen_view", true);
+    paramContext.startActivity(paramMessageRecord);
+    opk.a(paramQQAppInterface, "gouwu.fyp.show", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+    opk.b(paramQQAppInterface, "gouwu_fyp_show", "", NetConnInfoCenter.getServerTimeMillis() + "", "");
   }
   
-  private static void b(Context paramContext)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, String paramString1, String paramString2)
   {
-    bfur.a(paramContext, 230).setMessage(amtj.a(2131711863)).setPositiveButton(2131694201, new opi()).show();
+    int i = opg.a(paramMessageRecord.uniseq);
+    if (i >= opg.a(paramQQAppInterface, paramString1))
+    {
+      a(paramQQAppInterface, paramContext, paramString1, paramMessageRecord, paramString2);
+      return;
+    }
+    a(paramQQAppInterface, paramContext, paramMessageRecord, i);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool = true;
+    paramString1 = "";
+    for (;;)
+    {
+      try
+      {
+        int i = opg.b(paramMessageRecord);
+        QLog.e("Ecshop_JumpUtil", 1, paramMessageRecord, new Object[0]);
+      }
+      catch (Exception paramMessageRecord)
+      {
+        try
+        {
+          paramMessageRecord = opg.c(paramMessageRecord);
+          paramString1 = paramMessageRecord;
+          if (QLog.isColorLevel())
+          {
+            paramString1 = paramMessageRecord;
+            QLog.i("Ecshop_JumpUtil", 2, "hideTabId: " + i + " params: " + paramMessageRecord);
+          }
+          if (i != 1) {
+            break label113;
+          }
+          a(paramQQAppInterface, paramInt, paramContext, paramContext.getResources().getString(2131691810), bool, paramMessageRecord, paramString2);
+          return;
+        }
+        catch (Exception paramMessageRecord)
+        {
+          break label97;
+        }
+        paramMessageRecord = paramMessageRecord;
+        i = 0;
+      }
+      label97:
+      paramMessageRecord = paramString1;
+      continue;
+      label113:
+      bool = false;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, MessageRecord paramMessageRecord, String paramString2)
+  {
+    paramString1 = opf.a(paramQQAppInterface, paramString1, "redirectScheme");
+    if (StringUtil.isEmpty(paramString1))
+    {
+      a(paramContext, "3046055438", paramContext.getResources().getString(2131691810), true);
+      return;
+    }
+    String str;
+    try
+    {
+      paramString1 = opk.a(URLDecoder.decode(paramString1, "UTF-8"), paramString2);
+      str = opf.a(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.i("Ecshop_JumpUtil", 2, "<<<<jumpByRedirectScheme<<<<decodedScheme: " + paramString1 + " <<<<<redirectHost: " + str);
+      }
+      if ((paramString1.startsWith("http")) || (paramString1.startsWith("https")))
+      {
+        paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+        paramQQAppInterface.putExtra("url", paramString1);
+        paramQQAppInterface.putExtra("big_brother_source_key", uuc.b("3046055438"));
+        if (!(paramContext instanceof Activity)) {
+          paramQQAppInterface.addFlags(268435456);
+        }
+        paramContext.startActivity(paramQQAppInterface);
+        return;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      a(paramContext, "3046055438", paramContext.getResources().getString(2131691810), true);
+      return;
+    }
+    try
+    {
+      i = Integer.parseInt(opf.a(paramString1, "tabId"));
+      b(paramQQAppInterface, paramContext, paramMessageRecord, str, paramString2, i);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        QLog.e("Ecshop_JumpUtil", 2, new Object[] { Integer.valueOf(1) });
+        int i = 1;
+      }
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Ecshop_JumpUtil", 2, "jumpByHost>>>>>>" + paramString1);
+    }
+    if ("jumpTab".equals(paramString1))
+    {
+      a(paramQQAppInterface, paramContext, paramMessageRecord, paramString1, paramString2, paramInt);
+      return;
+    }
+    if ("jumpPreview".equals(paramString1))
+    {
+      a(paramQQAppInterface, paramContext, paramMessageRecord, paramString1, "fypgo");
+      return;
+    }
+    a(paramContext, "3046055438", paramContext.getResources().getString(2131691810), true);
   }
 }
 

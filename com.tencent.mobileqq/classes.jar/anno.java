@@ -1,10 +1,24 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.apollo.view.CmShowAESurfaceView;
 
-public abstract interface anno
+public class anno
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  int jdField_a_of_type_Int = 0;
   
-  public abstract void a(List<anni> paramList);
+  public anno(CmShowAESurfaceView paramCmShowAESurfaceView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_Int > i)
+    {
+      CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView, CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView) + CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView));
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.requestRender();
+    }
+    this.jdField_a_of_type_Int = i;
+  }
 }
 
 

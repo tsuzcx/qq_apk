@@ -1,59 +1,101 @@
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.mediacodec.AndroidCodec;
+import com.tencent.av.mediacodec.NativeCodec;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class ldx
 {
-  public static String a;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  ldy jdField_a_of_type_Ldy;
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
   
-  static
+  public ldx()
   {
-    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
+    this.jdField_a_of_type_JavaLangString = Build.HARDWARE;
+    this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
+    this.jdField_c_of_type_JavaLangString = Build.MODEL;
+    this.jdField_d_of_type_JavaLangString = Build.PRODUCT;
+    this.jdField_e_of_type_JavaLangString = Build.FINGERPRINT;
+    this.jdField_f_of_type_JavaLangString = llq.a();
+    this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
+    this.jdField_i_of_type_JavaLangString = "";
   }
   
-  public ldx(VideoAppInterface paramVideoAppInterface)
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Ldy = new ldy(paramVideoAppInterface);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Ldy);
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
-    }
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
-    localIntentFilter.addAction("tencent.video.q2v.SwitchToMultiAudo");
-    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
-    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
-    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
-    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
-    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
-    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Ldy, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_d_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_e_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_f_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_g_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_h_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_i_of_type_Int).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString).append("|");
+    this.k = llq.e();
+    this.jdField_b_of_type_Long = (llq.d() / 1024L);
+    this.jdField_c_of_type_Long = (llq.a() / 1024L);
+    this.l = AndroidCodec.getHwDetectOutputFormatForReport();
+    this.m = NativeCodec.mH264EncBaseLineLevel;
+    this.n = NativeCodec.mH264DecBaseLineLevel;
+    this.o = NativeCodec.mH264EncHighProfileLevel;
+    this.p = NativeCodec.mH264DecHighProfileLevel;
+    this.q = NativeCodec.mH265EncLevel;
+    this.r = NativeCodec.mH265DecLevel;
+    localStringBuilder.append(this.k).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Long).append("|");
+    localStringBuilder.append(this.l).append("|");
+    localStringBuilder.append(this.m).append("|");
+    localStringBuilder.append(this.n).append("|");
+    localStringBuilder.append(this.o).append("|");
+    localStringBuilder.append(this.p).append("|");
+    localStringBuilder.append(this.q).append("|");
+    localStringBuilder.append(this.r).append("|");
+    QLog.i("DeviceCapabilityExamination", 1, "ReportData:" + localStringBuilder.toString());
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,14 +1,29 @@
-public final class ayam
+class ayam
+  implements xly
 {
-  public int a;
-  public long a;
-  public String a;
+  ayam(ayaj paramayaj, ayaa paramayaa) {}
   
-  public ayam(int paramInt, long paramLong, String paramString)
+  public boolean a_(xlu paramxlu, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Ayaa.a(this.jdField_a_of_type_Ayaj, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
+      }
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
+    }
   }
 }
 

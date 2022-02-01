@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agmx;
+import ahfn;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SignatureHandler;
@@ -12,13 +13,13 @@ import com.tencent.qphone.base.util.QLog;
 public class RichStatItemBuilder$1
   implements Runnable
 {
-  public RichStatItemBuilder$1(agmx paramagmx) {}
+  public RichStatItemBuilder$1(ahfn paramahfn) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(agmx.a().feedsId))
+    if (TextUtils.isEmpty(ahfn.a().feedsId))
     {
-      ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getRichStatus(new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
+      ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getRichStatus(new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "sign feedid is is null reget friend sign");
       }
@@ -27,7 +28,7 @@ public class RichStatItemBuilder$1
     do
     {
       return;
-      localSignatureHandler = (SignatureHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(41);
+      localSignatureHandler = (SignatureHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
     } while (localSignatureHandler == null);
     localSignatureHandler.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.feedId);
   }

@@ -1,6 +1,16 @@
-public abstract interface augo
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+
+public class augo
+  implements audq
 {
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public augo(SendBottomBar paramSendBottomBar) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    SendBottomBar.i(this.a);
+  }
 }
 
 

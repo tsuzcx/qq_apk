@@ -1,27 +1,52 @@
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class mkx
-  implements lcb
+  implements mik
 {
-  public mkx(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
+  public mkx(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdy != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdy.length > this.jdField_a_of_type_Int))
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
     {
-      mqt.a("switch_camera", "onSwitchCameraFirstFrame", 3, new Object[0]);
-      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdy[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131373624, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363128, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363140, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363139, false);
     }
-    while (!QLog.isColorLevel()) {
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, true);
+      long l = mry.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 1);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772177);
       return;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 248);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(248);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
-    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onSwitchCameraFirstFrame Error : Index = " + this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkx
  * JD-Core Version:    0.7.0.1
  */

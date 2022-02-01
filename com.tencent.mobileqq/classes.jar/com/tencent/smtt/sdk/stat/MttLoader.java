@@ -852,16 +852,16 @@ public class MttLoader
     //   223: ireturn
     //   224: astore_0
     //   225: aconst_null
-    //   226: astore_0
+    //   226: astore_3
     //   227: aload 5
-    //   229: astore_3
-    //   230: aload_0
+    //   229: astore_0
+    //   230: aload_3
     //   231: ifnull +7 -> 238
-    //   234: aload_0
+    //   234: aload_3
     //   235: invokevirtual 569	java/io/InputStream:close	()V
-    //   238: aload_3
+    //   238: aload_0
     //   239: ifnull -185 -> 54
-    //   242: aload_3
+    //   242: aload_0
     //   243: invokevirtual 558	java/util/jar/JarFile:close	()V
     //   246: iconst_0
     //   247: ireturn
@@ -894,7 +894,7 @@ public class MttLoader
     //   290: goto -91 -> 199
     //   293: astore_3
     //   294: goto -83 -> 211
-    //   297: astore_0
+    //   297: astore_3
     //   298: goto -60 -> 238
     //   301: astore_3
     //   302: goto -39 -> 263
@@ -904,21 +904,15 @@ public class MttLoader
     //   311: goto -56 -> 255
     //   314: astore_3
     //   315: aconst_null
-    //   316: astore 4
-    //   318: aload_0
-    //   319: astore_3
-    //   320: aload 4
-    //   322: astore_0
-    //   323: goto -93 -> 230
-    //   326: astore_3
-    //   327: aload_0
-    //   328: astore_3
-    //   329: aload 4
-    //   331: astore_0
-    //   332: goto -102 -> 230
+    //   316: astore_3
+    //   317: goto -87 -> 230
+    //   320: astore_3
+    //   321: aload 4
+    //   323: astore_3
+    //   324: goto -94 -> 230
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	335	0	paramFile	File
+    //   0	327	0	paramFile	File
     //   119	4	1	i	int
     //   176	2	2	bool	boolean
     //   1	259	3	localObject1	Object
@@ -926,16 +920,16 @@ public class MttLoader
     //   281	1	3	localIOException2	java.io.IOException
     //   285	1	3	localIOException3	java.io.IOException
     //   293	1	3	localIOException4	java.io.IOException
-    //   301	1	3	localIOException5	java.io.IOException
+    //   297	1	3	localIOException5	java.io.IOException
+    //   301	1	3	localIOException6	java.io.IOException
     //   314	1	3	localThrowable1	Throwable
-    //   319	1	3	localFile1	File
-    //   326	1	3	localThrowable2	Throwable
-    //   328	1	3	localFile2	File
+    //   316	1	3	localObject2	Object
+    //   320	1	3	localThrowable2	Throwable
+    //   323	1	3	localObject3	Object
     //   3	204	4	localInputStream	java.io.InputStream
-    //   251	21	4	localObject2	Object
-    //   309	1	4	localObject3	Object
-    //   316	14	4	localObject4	Object
-    //   6	222	5	localObject5	Object
+    //   251	21	4	localObject4	Object
+    //   309	13	4	localObject5	Object
+    //   6	222	5	localObject6	Object
     //   64	22	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
@@ -965,12 +959,12 @@ public class MttLoader
     //   20	29	314	java/lang/Throwable
     //   59	66	314	java/lang/Throwable
     //   69	77	314	java/lang/Throwable
-    //   80	95	326	java/lang/Throwable
-    //   98	103	326	java/lang/Throwable
-    //   106	113	326	java/lang/Throwable
-    //   116	120	326	java/lang/Throwable
-    //   151	160	326	java/lang/Throwable
-    //   168	177	326	java/lang/Throwable
+    //   80	95	320	java/lang/Throwable
+    //   98	103	320	java/lang/Throwable
+    //   106	113	320	java/lang/Throwable
+    //   116	120	320	java/lang/Throwable
+    //   151	160	320	java/lang/Throwable
+    //   168	177	320	java/lang/Throwable
   }
 }
 

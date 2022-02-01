@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.soso;
 
-import achp;
+import acxx;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anwj;
-import aqxc;
+import aozl;
+import asbm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -19,6 +19,7 @@ import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import com.tencent.mobileqq.javahook.BGLocateMonitor;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -137,7 +138,7 @@ public class SosoInterface
         {
           paramTencentLocation = new HashMap();
           paramTencentLocation.put("level_3_no_citycode", String.valueOf(sLevel3NoCityCodeCount));
-          str = aqxc.a();
+          str = asbm.a();
           StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "actSoSoNoCityCodeTimeout", true, 0L, 0L, paramTencentLocation, "");
         }
         if (QLog.isColorLevel()) {
@@ -149,7 +150,7 @@ public class SosoInterface
       {
         paramTencentLocation = new HashMap();
         paramTencentLocation.put("level_3_no_citycode", String.valueOf(sLevel3NoCityCodeCount));
-        str = aqxc.a();
+        str = asbm.a();
         StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "actSoSoNoCityCode", true, 0L, 0L, paramTencentLocation, "");
         if (QLog.isColorLevel()) {
           QLog.i("SOSO.LBS", 2, "onLocationChanged level is 3, adcode is null, count : " + sLevel3NoCityCodeCount);
@@ -963,7 +964,7 @@ public class SosoInterface
     //   272: invokestatic 990	java/lang/Boolean:toString	(Z)Ljava/lang/String;
     //   275: invokevirtual 313	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   278: pop
-    //   279: invokestatic 318	aqxc:a	()Ljava/lang/String;
+    //   279: invokestatic 318	asbm:a	()Ljava/lang/String;
     //   282: astore_2
     //   283: invokestatic 141	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   286: invokestatic 324	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
@@ -1159,7 +1160,7 @@ public class SosoInterface
         }
         bool = NetworkUtil.isNetSupport(BaseApplicationImpl.getContext());
         if ((!isInLaunchTime()) || ("official_location".equals(paramOnLocationListener.tag))) {
-          break label151;
+          break label155;
         }
         i = 1;
       }
@@ -1167,6 +1168,7 @@ public class SosoInterface
       if (TextUtils.isEmpty(mOaid)) {
         mOaid = getOaid();
       }
+      BGLocateMonitor.checkTencentLocateReport(i);
       SosoInterface.SosoLbsInfo localSosoLbsInfo;
       if (i != 0)
       {
@@ -1178,7 +1180,7 @@ public class SosoInterface
         {
           runOnUI(paramOnLocationListener, i, localSosoLbsInfo);
           break;
-          label151:
+          label155:
           i = 0;
         }
       }
@@ -1386,7 +1388,7 @@ public class SosoInterface
     for (paramInt = -1;; paramInt = paramTencentLocation.code)
     {
       QLog.i("SOSO.LBS", 2, paramInt);
-      anwj.a(logSoso.mLocation, paramString);
+      aozl.a(logSoso.mLocation, paramString);
       return;
       logSoso.mLocation.poi = paramTencentLocation.getPoiList();
       timeUpdate[4] = SystemClock.elapsedRealtime();
@@ -1629,7 +1631,7 @@ public class SosoInterface
     localHashMap.put("param_askGps", Boolean.toString(paramBoolean3));
     localHashMap.put("param_costTime", Long.toString(paramLong));
     localHashMap.put("param_level", String.valueOf(paramInt2));
-    String str = aqxc.a();
+    String str = asbm.a();
     if (paramBoolean4) {
       if (paramBoolean2)
       {

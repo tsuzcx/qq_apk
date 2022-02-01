@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahtj;
+import aioi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Map;
 
 public class ZhituManager$2
   implements Runnable
 {
-  public ZhituManager$2(ahtj paramahtj, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  public ZhituManager$2(aioi paramaioi, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
   public void run()
   {
-    ahtj.a(this.this$0, this.jdField_a_of_type_Int);
-    ahtj.a(this.this$0, ahtj.a(this.this$0));
-    ahtj.a(this.this$0).clear();
-    ahtj.a(this.this$0);
+    aioi.a(this.this$0, this.jdField_a_of_type_Int);
+    aioi.a(this.this$0, aioi.a(this.this$0));
+    aioi.a(this.this$0).clear();
+    aioi.a(this.this$0);
     this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b.trim(), null, 0);
   }
 }

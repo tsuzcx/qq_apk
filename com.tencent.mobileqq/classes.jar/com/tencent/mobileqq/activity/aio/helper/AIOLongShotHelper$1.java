@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import amtj;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
+import anvx;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -26,7 +26,7 @@ class AIOLongShotHelper$1
       label41:
       if (!this.b)
       {
-        QQToast.a(AIOLongShotHelper.a(this.this$0).mContext, 1, amtj.a(2131699257), 0).a();
+        QQToast.a(AIOLongShotHelper.a(this.this$0).mContext, 1, anvx.a(2131699608), 0).a();
         AIOLongShotHelper.a("0X800A50D");
       }
     }

@@ -1,56 +1,7 @@
-import android.support.annotation.NonNull;
+import kotlin.Metadata;
 
-class plf
-  implements Comparable<plf>
-{
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  
-  private plf(ple parample)
-  {
-    this.jdField_b_of_type_JavaLangString = "nil";
-  }
-  
-  public int a(plf paramplf)
-  {
-    if (paramplf.jdField_a_of_type_Long > this.jdField_a_of_type_Long) {
-      return 1;
-    }
-    if (paramplf.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    int j = 1;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_b_of_type_Long).append("_").append(this.jdField_a_of_type_Int).append("_").append(this.c).append("_").append(String.format("%.2f", new Object[] { Float.valueOf(this.jdField_a_of_type_Float) })).append("_");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      localStringBuilder = localStringBuilder.append(i).append("_");
-      if (!this.jdField_b_of_type_Boolean) {
-        break label128;
-      }
-    }
-    label128:
-    for (int i = j;; i = 0)
-    {
-      return i + "_" + this.jdField_b_of_type_JavaLangString;
-      i = 0;
-      break;
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/BarrageConfigHandler$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class plf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

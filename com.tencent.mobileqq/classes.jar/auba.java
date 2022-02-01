@@ -1,16 +1,22 @@
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+
 public class auba
+  implements bkzq
 {
-  private aubb jdField_a_of_type_Aubb;
-  private String jdField_a_of_type_JavaLangString;
+  public auba(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bkzi parambkzi) {}
   
-  public auba(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aubb = null;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    beaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

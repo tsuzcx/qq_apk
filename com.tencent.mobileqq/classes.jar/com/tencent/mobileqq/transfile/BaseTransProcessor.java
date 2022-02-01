@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
-import amwm;
 import android.os.Environment;
 import android.os.Message;
-import ayde;
+import anza;
+import azjq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.AppConstants.RichMediaErrorCode;
@@ -101,6 +101,8 @@ public class BaseTransProcessor
   public static final String KEY_PTT_WRITTEN_SIZE = "param_writtenSize";
   public static final String KEY_QUIC_CONN_COST = "param_quic_conn_cost";
   public static final String KEY_QUIC_CONTENT_LENGTH = "param_quic_content_length";
+  public static final String KEY_QUIC_DOWNLOAD = "parameter_quic";
+  public static final String KEY_QUIC_DOWNLOAD_STATUS = "parameter_quic_status";
   public static final String KEY_QUIC_ERR_CODE = "param_quic_err_code";
   public static final String KEY_QUIC_ERR_MESSAGE = "param_quic_err_message";
   public static final String KEY_QUIC_ESTIMATED_BANDWIDTH = "param_quic_estimated_bandwidth";
@@ -119,6 +121,7 @@ public class BaseTransProcessor
   public static final String KEY_QUIC_TIME_OUT = "param_quic_time_out";
   public static final String KEY_QUIC_TOTAL_SIZE = "param_quic_total_size";
   public static final String KEY_QUIC_TOTAL_TIME = "param_quic_total_time";
+  public static final String KEY_QUIC_TYPE_VIDEO = "param_quic_type_video";
   public static final String KEY_REASON = "param_reason";
   public static final String KEY_RECV_DATA_LEN = "param_recvDataLen";
   public static final String KEY_REQ_HEADER = "param_reqHeader";
@@ -245,7 +248,7 @@ public class BaseTransProcessor
   {
     this.app = paramBaseTransFileController.app;
     this.mStartTime = System.nanoTime();
-    ayde.a("BaseTransProcessor", "TimeCompare", "Processor Start Time = " + this.mStartTime + "ns,Processor = " + this);
+    azjq.a("BaseTransProcessor", "TimeCompare", "Processor Start Time = " + this.mStartTime + "ns,Processor = " + this);
     this.file = new FileMsg();
     this.mController = paramBaseTransFileController;
     this.mUiRequest = paramTransferRequest;
@@ -622,46 +625,46 @@ public class BaseTransProcessor
     setError(paramRespCommon.errCode, paramRespCommon.errStr, paramRespCommon.reason, paramStepInfo);
   }
   
-  public void copyStatisInfo(BaseTransProcessor.StepInfo paramStepInfo, boolean paramBoolean1, boolean paramBoolean2, amwm paramamwm)
+  public void copyStatisInfo(BaseTransProcessor.StepInfo paramStepInfo, boolean paramBoolean1, boolean paramBoolean2, anza paramanza)
   {
-    if (paramamwm == null) {
+    if (paramanza == null) {
       return;
     }
     paramStepInfo.logFinishTime();
     if (paramBoolean2)
     {
-      paramStepInfo.failTryCount = (paramamwm.c - 1);
+      paramStepInfo.failTryCount = (paramanza.c - 1);
       paramStepInfo.successTryCount = 1;
       paramStepInfo.result = 1;
       return;
     }
     String str;
-    if (paramamwm.b == 2900)
+    if (paramanza.b == 2900)
     {
       i = -9527;
       if (!paramBoolean1) {}
-      for (str = getMsgReason(paramamwm.jdField_a_of_type_Long);; str = getUrlReason(paramamwm.jdField_a_of_type_Long))
+      for (str = getMsgReason(paramanza.jdField_a_of_type_Long);; str = getUrlReason(paramanza.jdField_a_of_type_Long))
       {
         setError(i, "", str, paramStepInfo);
-        paramStepInfo.failTryCount = paramamwm.c;
+        paramStepInfo.failTryCount = paramanza.c;
         paramStepInfo.successTryCount = 0;
         paramStepInfo.result = 0;
         return;
       }
     }
-    if ((paramamwm.b == 1002) || (paramamwm.b == 1013))
+    if ((paramanza.b == 1002) || (paramanza.b == 1013))
     {
       if (!paramBoolean1) {}
       for (i = 9350;; i = 9311)
       {
-        str = paramamwm.jdField_a_of_type_JavaLangString;
+        str = paramanza.jdField_a_of_type_JavaLangString;
         break;
       }
     }
     if (!paramBoolean1) {}
     for (int i = 9351;; i = 9044)
     {
-      str = paramamwm.jdField_a_of_type_JavaLangString;
+      str = paramanza.jdField_a_of_type_JavaLangString;
       break;
     }
   }
@@ -891,7 +894,7 @@ public class BaseTransProcessor
     //   1: monitorenter
     //   2: aload_0
     //   3: iload_1
-    //   4: invokevirtual 1229	com/tencent/mobileqq/transfile/BaseTransProcessor:getStepInfo	(I)Lcom/tencent/mobileqq/transfile/FileMsg$StepBaseInfo;
+    //   4: invokevirtual 1238	com/tencent/mobileqq/transfile/BaseTransProcessor:getStepInfo	(I)Lcom/tencent/mobileqq/transfile/FileMsg$StepBaseInfo;
     //   7: astore 4
     //   9: aload 4
     //   11: ifnull +19 -> 30
@@ -899,19 +902,19 @@ public class BaseTransProcessor
     //   15: ifeq +18 -> 33
     //   18: aload 4
     //   20: aload 4
-    //   22: getfield 1232	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
+    //   22: getfield 1241	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
     //   25: iload_3
     //   26: iadd
-    //   27: putfield 1232	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
+    //   27: putfield 1241	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:successTryCount	I
     //   30: aload_0
     //   31: monitorexit
     //   32: return
     //   33: aload 4
     //   35: aload 4
-    //   37: getfield 1233	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
+    //   37: getfield 1242	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
     //   40: iload_3
     //   41: iadd
-    //   42: putfield 1233	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
+    //   42: putfield 1242	com/tencent/mobileqq/transfile/FileMsg$StepBaseInfo:failTryCount	I
     //   45: goto -15 -> 30
     //   48: astore 4
     //   50: aload_0
@@ -963,7 +966,7 @@ public class BaseTransProcessor
   {
     boolean bool = false;
     if (this.file == null) {
-      ayde.b("BaseTransProcessor", "logRichMediaEvent", "file is null !");
+      azjq.b("BaseTransProcessor", "logRichMediaEvent", "file is null !");
     }
     do
     {
@@ -1371,22 +1374,22 @@ public class BaseTransProcessor
   }
   
   @Deprecated
-  public void setMsgError(int paramInt, amwm paramamwm, String paramString)
+  public void setMsgError(int paramInt, anza paramanza, String paramString)
   {
     try
     {
-      setMsgResult(paramInt, false, paramamwm, paramString);
+      setMsgResult(paramInt, false, paramanza, paramString);
       return;
     }
     finally
     {
-      paramamwm = finally;
-      throw paramamwm;
+      paramanza = finally;
+      throw paramanza;
     }
   }
   
   @Deprecated
-  public void setMsgResult(int paramInt, boolean paramBoolean, amwm paramamwm, String paramString)
+  public void setMsgResult(int paramInt, boolean paramBoolean, anza paramanza, String paramString)
   {
     int i = 9351;
     FileMsg.StepBaseInfo localStepBaseInfo;
@@ -1412,56 +1415,56 @@ public class BaseTransProcessor
         if (!paramBoolean) {
           break label115;
         }
-        if (paramamwm == null)
+        if (paramanza == null)
         {
           localStepBaseInfo.failTryCount = 0;
           localStepBaseInfo.successTryCount = 1;
           continue;
         }
-        localStepBaseInfo.failTryCount = (paramamwm.c - 1);
+        localStepBaseInfo.failTryCount = (paramanza.c - 1);
       }
       finally {}
       localStepBaseInfo.successTryCount = 1;
       continue;
       label115:
-      if (paramamwm != null) {
+      if (paramanza != null) {
         break;
       }
       localStepBaseInfo.failTryCount = 1;
       localStepBaseInfo.successTryCount = 0;
     }
-    if (paramamwm.b == 2900)
+    if (paramanza.b == 2900)
     {
-      paramamwm.b = -9527;
+      paramanza.b = -9527;
       if (paramInt == 3) {
-        paramString = getMsgReason(paramamwm.jdField_a_of_type_Long);
+        paramString = getMsgReason(paramanza.jdField_a_of_type_Long);
       }
     }
     for (;;)
     {
-      setStepError(paramInt, paramamwm.b, paramString);
-      localStepBaseInfo.detailErrCode = paramamwm.jdField_a_of_type_Long;
-      localStepBaseInfo.retryCount = paramamwm.c;
-      localStepBaseInfo.failTryCount = paramamwm.c;
+      setStepError(paramInt, paramanza.b, paramString);
+      localStepBaseInfo.detailErrCode = paramanza.jdField_a_of_type_Long;
+      localStepBaseInfo.retryCount = paramanza.c;
+      localStepBaseInfo.failTryCount = paramanza.c;
       localStepBaseInfo.successTryCount = 0;
       break;
-      paramString = getUrlReason(paramamwm.jdField_a_of_type_Long);
+      paramString = getUrlReason(paramanza.jdField_a_of_type_Long);
       continue;
-      if (paramamwm.b == 1002) {
+      if (paramanza.b == 1002) {
         break label285;
       }
-      if (paramamwm.b != 1013) {
+      if (paramanza.b != 1013) {
         break label306;
       }
       break label285;
-      paramamwm.b = i;
-      paramString = paramamwm.jdField_a_of_type_JavaLangString;
+      paramanza.b = i;
+      paramString = paramanza.jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
       label262:
-      paramamwm.b = i;
-      paramString = paramamwm.jdField_a_of_type_JavaLangString;
+      paramanza.b = i;
+      paramString = paramanza.jdField_a_of_type_JavaLangString;
       break;
       label285:
       label306:
@@ -1588,7 +1591,7 @@ public class BaseTransProcessor
   }
   
   @Deprecated
-  public void setTryCountInfoFromMsgHandler(int paramInt, boolean paramBoolean, amwm paramamwm)
+  public void setTryCountInfoFromMsgHandler(int paramInt, boolean paramBoolean, anza paramanza)
   {
     int j = 0;
     int k = 0;
@@ -1609,14 +1612,14 @@ public class BaseTransProcessor
         if (paramInt != 1) {
           break label148;
         }
-        if (paramamwm == null)
+        if (paramanza == null)
         {
           paramInt = i;
           localStepBaseInfo.failTryCount = paramInt;
           localStepBaseInfo.successTryCount = 1;
           continue;
         }
-        paramInt = paramamwm.c - 1;
+        paramInt = paramanza.c - 1;
       }
       finally {}
       continue;
@@ -1625,14 +1628,14 @@ public class BaseTransProcessor
         localStepBaseInfo.failTryCount = paramInt;
         break;
         label84:
-        paramInt = paramamwm.c;
+        paramInt = paramanza.c;
       }
     }
     localStepBaseInfo.successTryCount = 0;
     if (paramInt == 1)
     {
-      if (paramamwm == null) {}
-      for (paramInt = k;; paramInt = paramamwm.c)
+      if (paramanza == null) {}
+      for (paramInt = k;; paramInt = paramanza.c)
       {
         localStepBaseInfo.failTryCount = paramInt;
         break;
@@ -1646,15 +1649,15 @@ public class BaseTransProcessor
       label148:
       do
       {
-        paramInt = paramamwm.c;
+        paramInt = paramanza.c;
         paramInt += 1;
         break label127;
-        if (paramamwm != null) {
+        if (paramanza != null) {
           break label84;
         }
         paramInt = j;
         break;
-      } while (paramamwm != null);
+      } while (paramanza != null);
       paramInt = m;
     }
   }

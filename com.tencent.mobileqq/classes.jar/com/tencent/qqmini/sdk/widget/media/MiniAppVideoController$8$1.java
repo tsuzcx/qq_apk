@@ -9,8 +9,8 @@ class MiniAppVideoController$8$1
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$1.this$0).updateCenterBtn(MiniAppVideoController.access$800(this.this$1.this$0));
-    MiniAppVideoController.access$100(this.this$1.this$0).hideControllerPopContainer();
+    MiniAppVideoController.access$300(this.this$1.this$0).updateCenterBtn(MiniAppVideoController.access$000(this.this$1.this$0));
+    MiniAppVideoController.access$300(this.this$1.this$0).hideControllerPopContainer();
     MiniAppVideoController.access$2600(this.this$1.this$0).removeMessages(2002);
   }
 }

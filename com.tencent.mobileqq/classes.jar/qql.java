@@ -1,82 +1,126 @@
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
+import org.json.JSONObject;
 
 public class qql
-  extends qpk
+  implements qqa
 {
-  public qql(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  protected View a(int paramInt, Context paramContext)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 22: 
+    case 80: 
+      return new ComponentContentUgcImage(paramContext);
+    case 36: 
+      return new ComponentContentGridImage(paramContext);
+    case 23: 
+    case 120: 
+      return new ComponentContentUgcVideo(paramContext);
+    }
+    return new ComponentContentUGCVoice(paramContext);
   }
   
-  public qpk a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
-  }
-  
-  public qpk d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentGallery))) {
-      localLinearLayout.addView((ComponentContentGallery)this.jdField_a_of_type_Qpj);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public qpk e()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
     return null;
   }
   
-  public qpk g()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Qpj = new ComponentContentGallery(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    long l2 = 0L;
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    {
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      }
+    }
+    return new qlk().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).p(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).y(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).D(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).H(paramBaseArticleInfo).L(paramBaseArticleInfo).l(paramBaseArticleInfo).I(paramBaseArticleInfo).t(paramBaseArticleInfo).u(paramBaseArticleInfo).O(paramBaseArticleInfo).P(paramBaseArticleInfo).a();
   }
   
-  public qpk o()
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
   {
-    super.o();
-    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentGallery)))
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    qud localqud = (qud)localViewBase.findViewBaseByName("id_middle_body_content");
+    if (localqud != null)
     {
-      ((ComponentContentGallery)this.jdField_a_of_type_Qpj).setAdapter(this.jdField_a_of_type_Slt);
-      ((ComponentContentGallery)this.jdField_a_of_type_Qpj).setPosition(this.jdField_a_of_type_Int);
+      NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localqud.getNativeView();
+      if (localNativeMiddleBodyView.a() == null)
+      {
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localqud.a(localLayoutParams);
+        paramContainer = a(paramInt1, paramContainer.getContext());
+        if (paramContainer != null) {
+          localNativeMiddleBodyView.a(paramContainer, localLayoutParams);
+        }
+      }
+      a(paramInt1, paramqfw, localNativeMiddleBodyView);
     }
-    return this;
+    qvn.f(localViewBase, paramqfw);
+    paramContainer = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
+    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
+      ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
+    }
+    paramContainer = (qsu)localViewBase.findViewBaseByName("id_article_comment");
+    if (paramContainer != null) {
+      paramContainer.a(paramqfw);
+    }
+    qvn.a(localViewBase, paramqfw.a());
+    qmm.a(localViewBase, paramqfw);
+    qvn.b(localViewBase, paramqfw);
+    qvn.c(localViewBase, paramqfw);
+  }
+  
+  protected void a(int paramInt, qfw paramqfw, NativeMiddleBodyView paramNativeMiddleBodyView)
+  {
+    if ((paramNativeMiddleBodyView.a() == null) || (paramqfw.a() == null)) {
+      return;
+    }
+    szd localszd = paramqfw.a();
+    switch (paramInt)
+    {
+    default: 
+      throw new IllegalArgumentException("" + paramInt);
+    case 22: 
+    case 80: 
+      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(paramqfw);
+      return;
+    case 36: 
+      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+      ((ComponentContentGridImage)paramNativeMiddleBodyView).setMIReadInJoyModel(paramqfw);
+      paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramqfw.a()));
+      ((ComponentContentGridImage)paramNativeMiddleBodyView).setOnNoItemClickListener(new qqm(this, paramqfw, localszd));
+      return;
+    case 23: 
+    case 120: 
+      paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
+      paramNativeMiddleBodyView.a(paramqfw);
+      ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new qqn(this, paramInt, localszd, paramqfw));
+      return;
+    }
+    ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(paramqfw);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

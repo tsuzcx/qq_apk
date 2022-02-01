@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class sgd
-  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
+class sgd
+  implements DialogInterface.OnDismissListener
 {
-  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
-  {
-    return new DiscoveryInfo.TopicVideoCard(paramParcel);
-  }
+  sgd(sga paramsga) {}
   
-  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new DiscoveryInfo.TopicVideoCard[paramInt];
+    if (sga.a(this.a) != null) {
+      sga.a(this.a).a(sga.a(this.a), sga.b(this.a), false, false);
+    }
+    sga.a(this.a, true);
+    sga.b(this.a, false);
   }
 }
 

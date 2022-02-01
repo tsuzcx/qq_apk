@@ -1,30 +1,25 @@
+import android.app.Dialog;
 import android.view.View;
-import androidx.annotation.NonNull;
-import com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment;
 
 public class mza
-  extends mzg<myv>
+  implements Animation.AnimationListener
 {
-  private AutoResizeAsyncImageView a;
+  public mza(AVGroupFileSelectFragment paramAVGroupFileSelectFragment) {}
   
-  public mza(@NonNull View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    this.a = ((AutoResizeAsyncImageView)paramView.findViewById(2131363190));
+    AVGroupFileSelectFragment.a(this.a).show();
+    AVGroupFileSelectFragment.a(this.a).setAnimation(null);
+    AVGroupFileSelectFragment.a(this.a).setVisibility(8);
   }
   
-  public void a(mzj parammzj, myv parammyv, int paramInt)
-  {
-    super.a(parammzj, parammyv, paramInt);
-    if (parammyv == null) {}
-    do
-    {
-      return;
-      parammzj = parammyv.a();
-    } while ((parammzj == null) || (parammzj.size() <= 0));
-    this.a.a(((nil)parammzj.get(0)).a);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

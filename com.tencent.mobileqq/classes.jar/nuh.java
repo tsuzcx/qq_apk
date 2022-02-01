@@ -1,55 +1,52 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class nuh
-  implements ViewPager.OnPageChangeListener
+class nuh
+  implements axkk
 {
-  public nuh(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
+  nuh(nug paramnug) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public String getToken()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
-    }
-    AccountDetailBannerViewPager.a(this.a, paramInt);
-    if (AccountDetailBannerViewPager.a(this.a) != null)
-    {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
+    return QQPlayerService.a(5, "" + this.a.a);
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.c);
     }
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onPlayStateChanged(int paramInt)
   {
-    if (AccountDetailBannerViewPager.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
+    }
+    Object localObject = QQPlayerService.b();
+    localObject = nug.a(this.a, (SongInfo)localObject);
+    if (localObject != null) {}
+    try
     {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
+      ((JSONObject)localObject).put("state", paramInt);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("*.qq.com");
+      avzm.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
+      return;
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
-    }
-    if (AccountDetailBannerViewPager.a(this.a) != null)
+    catch (JSONException localJSONException)
     {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
+        }
+        localJSONException.printStackTrace();
       }
-    }
-    if (AccountDetailBannerViewPager.a(this.a) != null) {
-      AccountDetailBannerViewPager.a(this.a).a(paramInt);
     }
   }
 }

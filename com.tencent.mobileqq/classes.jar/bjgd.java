@@ -1,87 +1,85 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ForegroundColorSpan;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
 public class bjgd
-  extends QQCustomDialog
+  extends ntf
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bjgd(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
   
-  public bjgd(Activity paramActivity, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramActivity, paramInt);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    a();
-  }
-  
-  public static bjgd a(Activity paramActivity, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    paramActivity = new bjgd(paramActivity, 2131755826);
-    paramActivity.setTitle(paramString1);
-    paramActivity.setNegativeButton(paramString2, paramOnClickListener2);
-    paramActivity.setPositiveButton(paramString3, paramOnClickListener1);
-    paramActivity.setCanceledOnTouchOutside(false);
-    return paramActivity;
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = StorageUtil.getPreference().getBoolean("mini_shortcut_dialog_hide", false);
-    QLog.i("Shortcut", 1, "load dialog hide config:" + bool);
-    return !bool;
-  }
-  
-  public CharSequence a()
-  {
-    String str1 = amtj.a(2131713109);
-    String str2 = amtj.a(2131713113);
-    SpannableString localSpannableString = new SpannableString(str1 + str2);
-    localSpannableString.setSpan(new bjgf(this), str1.length(), str1.length() + str2.length(), 33);
-    localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
-    return localSpannableString;
-  }
-  
-  public void a()
-  {
-    setContentView(2131559007);
-    this.text.setMovementMethod(LinkMovementMethod.getInstance());
-    this.text.setText(a());
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369651));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131379003));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379967));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bjge(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localViewGroup.setVisibility(i);
-      return;
+    QLog.i("TroopAbility.PreVerification", 1, "onResult type=" + this.a.a + ", appid=" + this.a.c + ", code=" + paramInt);
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label441;
+      }
     }
-  }
-  
-  public void dismiss()
-  {
-    boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-    QLog.i("Shortcut", 1, "save dialog hide config:" + bool);
-    StorageUtil.getPreference().edit().putBoolean("mini_shortcut_dialog_hide", bool).commit();
-    super.dismiss();
+    for (;;)
+    {
+      try
+      {
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        localObject = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("TroopAbility.PreVerification", 1, paramArrayOfByte);
+          this.a.c(anvx.a(2131714498));
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb60.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((!paramBundle.get_privilege_rsp.api_groups.has()) || (!paramBundle.get_privilege_rsp.next_req_duration.has()))
+        {
+          QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
+          this.a.c(anvx.a(2131714490));
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("TroopAbility.PreVerification", 1, "parse rsp error", paramArrayOfByte);
+        this.a.c(anvx.a(2131714495));
+        return;
+      }
+      TroopAbilityPreVerificationFragment.a(paramBundle);
+      QLog.d("TroopAbility.PreVerification", 1, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+      paramArrayOfByte = new HashSet();
+      Object localObject = paramBundle.get_privilege_rsp.api_groups.get().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramArrayOfByte.add((Integer)((Iterator)localObject).next());
+      }
+      boolean bool = this.a.a(paramArrayOfByte);
+      QLog.i("TroopAbility.PreVerification", 1, "check permission result:" + bool);
+      this.a.a(bool);
+      TroopAbilityPreVerificationFragment.a(paramBundle.get_privilege_rsp.next_req_duration.get());
+      TroopAbilityPreVerificationFragment.b(NetConnInfoCenter.getServerTime());
+      return;
+      label441:
+      paramBundle = "";
+    }
   }
 }
 

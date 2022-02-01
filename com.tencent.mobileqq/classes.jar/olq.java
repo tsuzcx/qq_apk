@@ -1,35 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.os.Bundle;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class olq
-  extends pkt
+class olq<T extends MessageMicro<?>>
+  implements BusinessObserver
 {
-  public olq(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
+  private Class<T> jdField_a_of_type_JavaLangClass;
+  private olr<T> jdField_a_of_type_Olr;
   
-  public void a(int paramInt1, int paramInt2)
+  public olq(olr<T> paramolr, Class<T> paramClass)
   {
-    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    this.jdField_a_of_type_Olr = paramolr;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  private T a(byte[] paramArrayOfByte, Class<T> paramClass)
+  {
+    try
     {
-      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
+      paramClass = (MessageMicro)paramClass.newInstance();
+      if (paramArrayOfByte == null) {
+        return null;
+      }
+      paramClass.mergeFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      Toast.makeText(BaseApplicationImpl.getContext(), 2131694983, 0).show();
+      QLog.w("PublicAccountStQWebServlet", 4, "decode pb err:" + paramArrayOfByte.getMessage(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Olr == null) {
       return;
     }
-    ReadInJoyFeedsActivity.b(this.a, paramInt1);
-    ((ois)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    ReadInJoyFeedsActivity.a(this.a, paramInt);
-    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
-      ((ois)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Olr.a(paramInt, paramBoolean, null, paramBundle);
     }
+    byte[] arrayOfByte = paramBundle.getByteArray("data");
+    if (a(arrayOfByte, this.jdField_a_of_type_JavaLangClass) == null)
+    {
+      this.jdField_a_of_type_Olr.a(paramInt, false, null, paramBundle);
+      return;
+    }
+    this.jdField_a_of_type_Olr.a(paramInt, paramBoolean, a(arrayOfByte, this.jdField_a_of_type_JavaLangClass), paramBundle);
   }
 }
 

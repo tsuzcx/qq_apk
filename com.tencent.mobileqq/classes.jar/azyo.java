@@ -1,14 +1,58 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
 import com.tencent.qphone.base.util.QLog;
-import rx.functions.Action1;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class azyo
-  implements Action1<Throwable>
+public class azyo
+  implements Handler.Callback
 {
-  azyo(azym paramazym) {}
+  public azyo(AbsProfileHeaderView paramAbsProfileHeaderView) {}
   
-  public void a(Throwable paramThrowable)
+  public boolean handleMessage(Message paramMessage)
   {
-    QLog.d("ResourceGrabModel", 1, paramThrowable, new Object[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d(AbsProfileHeaderView.jdField_a_of_type_JavaLangString, 2, String.format("handleMessage msg.what=%s", new Object[] { Integer.valueOf(paramMessage.what) }));
+    }
+    if (1000 == paramMessage.what) {
+      if (AbsProfileHeaderView.a(this.a).get()) {
+        this.a.i(this.a.jdField_a_of_type_Azrb);
+      }
+    }
+    do
+    {
+      do
+      {
+        return true;
+      } while (1003 != paramMessage.what);
+      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
+    } while (!(localObject instanceof ImageView));
+    Object localObject = (ImageView)localObject;
+    paramMessage = (ExtensionInfo)paramMessage.obj;
+    if ((paramMessage != null) && (paramMessage.isPendantValid()))
+    {
+      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
+      ((ImageView)localObject).setVisibility(0);
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      if (bhcs.a(this.a.jdField_a_of_type_Long))
+      {
+        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+        return true;
+      }
+      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+      return true;
+    }
+    ((ImageView)localObject).setVisibility(4);
+    this.a.jdField_a_of_type_Long = 0L;
+    return true;
   }
 }
 

@@ -1,125 +1,39 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
 public class xxn
-  extends BaseAdapter
+  extends vzx
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List<ybo> jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
+  public String a;
+  private xxo a;
   
-  public xxn(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public xxn(String paramString, @NonNull xxo paramxxo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Xxo = paramxxo;
   }
   
-  public ybo a(int paramInt)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ybo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<ybo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    ybo localybo = new ybo();
-    this.jdField_a_of_type_JavaUtilList.add(localybo);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    xxo localxxo;
-    View localView1;
-    if (paramView == null)
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPushMsg.d))
     {
-      localxxo = new xxo(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559318, null);
-      localxxo.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131378588));
-      localxxo.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131377051);
-      localView1.setTag(localxxo);
+      ykq.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    ybo localybo;
-    for (;;)
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
     {
-      localybo = a(paramInt);
-      if (localybo != null) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView1, paramViewGroup, getItemId(paramInt));
-      return localView1;
-      localxxo = (xxo)paramView.getTag();
-      localView1 = paramView;
+      ykq.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
+      this.jdField_a_of_type_Xxo.a(1);
+      return;
     }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localybo.jdField_a_of_type_Int + localybo.b);
-    View localView2 = paramView;
-    if (paramView == null)
+    if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
     {
-      if (paramInt != 0) {
-        break label272;
-      }
-      paramView = bfpx.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841523, this.b, this.jdField_a_of_type_Int);
-      label180:
-      localView2 = paramView;
-      if (paramView != null)
-      {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localybo.jdField_a_of_type_Int + localybo.b, paramView);
-        localView2 = paramView;
-      }
+      ykq.a("DetailFeedPushObserver", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
+      this.jdField_a_of_type_Xxo.a(2);
+      return;
     }
-    localxxo.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0)
-    {
-      localxxo.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702918));
-      label252:
-      if (paramInt != this.c) {
-        break label329;
-      }
-      localxxo.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      break;
-      label272:
-      paramView = bfpx.a(localybo.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break label180;
-      localxxo.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131703062) + localybo.c);
-      break label252;
-      label329:
-      localxxo.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    }
+    this.jdField_a_of_type_Xxo.a(0);
   }
 }
 

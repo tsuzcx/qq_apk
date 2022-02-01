@@ -1,19 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 
-class aufh
-  implements ValueAnimator.AnimatorUpdateListener
+final class aufh
+  implements audq
 {
-  aufh(aufg paramaufg) {}
+  aufh(Activity paramActivity, Intent paramIntent) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.a.a.getParent() != null) {
-      this.a.a.getParent().requestLayout();
-    }
+    aupt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, ForwardRecentTranslucentActivity.class, 103);
   }
 }
 

@@ -1,20 +1,26 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
-
-public class belt
-  implements bhbx
+final class belt
+  implements bemf
 {
-  public belt(ReciteRecordLayout paramReciteRecordLayout) {}
+  belt(beml parambeml1, beli parambeli, StringBuilder paramStringBuilder, beml parambeml2) {}
   
-  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void a(bemg parambemg1, bemg parambemg2, bemg parambemg3)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    int i = parambemg1.jdField_a_of_type_Char;
+    int j = parambemg2.jdField_a_of_type_Char;
+    if ((i == 43) && (j == 45)) {
+      this.jdField_a_of_type_Beml.a(Math.min(parambemg1.jdField_a_of_type_Int, parambemg2.jdField_a_of_type_Int));
+    }
+    belm.a(parambemg1, parambemg2, parambemg3, this.jdField_a_of_type_Beli);
+    if (parambemg3.jdField_a_of_type_Char == '+')
+    {
+      if (j == 43) {
+        this.jdField_a_of_type_JavaLangStringBuilder.append(this.b.a(parambemg3.jdField_a_of_type_Int));
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_Beml.a(parambemg3.jdField_a_of_type_Int));
   }
 }
 

@@ -1,9 +1,12 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.List;
-
-public abstract interface sda
+class sda
+  implements scs<rsv>
 {
-  public abstract List<rsd> a(List<VideoInfo> paramList);
+  sda(scy paramscy) {}
+  
+  public boolean a(rsv paramrsv)
+  {
+    return paramrsv.d >= 5000L;
+  }
 }
 
 

@@ -1,22 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class akve
-  implements vtx<vts>
+  implements akqu
 {
-  public akve(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public akve(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void a(boolean paramBoolean, vts paramvts)
+  public void a()
   {
-    xvv.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
-    if ((paramBoolean) && (paramvts != null))
-    {
-      xvv.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramvts);
-      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramvts));
-      return;
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
     }
-    xvv.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    }
   }
 }
 

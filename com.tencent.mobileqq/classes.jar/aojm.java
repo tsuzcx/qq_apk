@@ -1,65 +1,136 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aojm
-  implements INetEngine.INetEngineListener
+public class aojm
+  extends aojk
 {
-  aojm(aojl paramaojl, aojp paramaojp, aojo paramaojo) {}
+  private String b;
+  private String c;
+  private String d;
+  private String e;
   
-  public void onResp(NetResp paramNetResp)
+  public aojm(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    if (paramNetResp.mResult == 3)
-    {
-      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl);
-      return;
+    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
+    this.b = paramString4;
+    this.c = paramString5;
+    this.d = paramString6;
+    this.e = paramString7;
+    if (TextUtils.isEmpty(this.d)) {
+      this.d = paramActivity.getResources().getString(2131690329);
     }
-    synchronized (aojl.a(this.jdField_a_of_type_Aojl))
-    {
-      int i;
-      if (aojl.a(this.jdField_a_of_type_Aojl) != null)
-      {
-        i = 0;
-        if (i < aojl.a(this.jdField_a_of_type_Aojl).size())
-        {
-          if (!((aojp)aojl.a(this.jdField_a_of_type_Aojl).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Aojp.jdField_a_of_type_JavaLangString)) {
-            break label268;
-          }
-          aojl.a(this.jdField_a_of_type_Aojl).remove(i);
-        }
-      }
-      if (paramNetResp.mResult == 0)
-      {
-        ??? = new File(((HttpNetReq)paramNetResp.mReq).mOutPath);
-        String str = ayja.a(((File)???).getAbsolutePath());
-        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Aojp.b))) && (this.jdField_a_of_type_Aojp.jdField_a_of_type_Int != 1))
-        {
-          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((HttpNetReq)paramNetResp.mReq).mReqUrl + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-          this.jdField_a_of_type_Aojo.a(false, this.jdField_a_of_type_Aojp);
-          return;
-          label268:
-          i += 1;
-        }
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Aojo.a(bool, this.jdField_a_of_type_Aojp);
-      return;
+    if (TextUtils.isEmpty(this.e)) {
+      this.e = "https://qqvgame.qq.com/116da9321d03f927e434a165c14c7c1b.png";
     }
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  protected Intent a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    QLog.d("AVGameShareResultLink", 1, "getShareArkIntent");
+    if (a() == null)
+    {
+      QLog.e("AVGameShareResultLink", 1, "getShareArkIntent error: activity is null");
+      return null;
     }
-    this.jdField_a_of_type_Aojo.a(paramLong1, paramLong2);
+    Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
+    try
+    {
+      localIntent.putExtra("forward_type", 27);
+      localIntent.putExtra("is_ark_display_share", true);
+      localIntent.putExtra("forward_ark_app_name", "com.tencent.avgame");
+      localIntent.putExtra("forward_ark_app_view", "invite");
+      localIntent.putExtra("forward_ark_app_ver", "1.0.0.1");
+      localIntent.putExtra("forward_ark_app_prompt", "邀请你领礼包");
+      localIntent.putExtra("selection_mode", 2);
+      localIntent.putExtra("avgame_share_callback_key", false);
+      String str = h();
+      QLog.d("AVGameShareResultLink", 1, "getShareArkIntent metaDataString: " + str);
+      localIntent.putExtra("forward_ark_app_meta", str);
+      localIntent.putExtras(QQCustomArkDialog.AppInfo.zipArgs("com.tencent.avgame", "invite", "1.0.0.1", str, ArkAppCenterUtil.getDensity(), null, null));
+      return localIntent;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("AVGameShareResultLink", 1, "getShareArkIntent exception message: " + localJSONException.getMessage());
+      }
+    }
+  }
+  
+  protected String a(int paramInt)
+  {
+    return this.b;
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected int b()
+  {
+    return -1;
+  }
+  
+  protected String b(int paramInt)
+  {
+    return this.c;
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected String d()
+  {
+    return this.b;
+  }
+  
+  protected String e()
+  {
+    return this.c;
+  }
+  
+  protected String f()
+  {
+    return this.e;
+  }
+  
+  protected String g()
+  {
+    return this.e;
+  }
+  
+  protected String h()
+  {
+    b();
+    long l = this.a;
+    String str = a();
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("type", "award");
+    JSONObject localJSONObject3 = new JSONObject();
+    StringBuilder localStringBuilder = new StringBuilder("mqqapi://avgame/create_room");
+    localStringBuilder.append("?").append("gameType").append("=").append("4");
+    localJSONObject3.put("jump_url", localStringBuilder.toString());
+    localJSONObject3.put("h5_url", str);
+    localJSONObject3.put("icon_url", this.e);
+    localJSONObject3.put("title", this.b);
+    localJSONObject3.put("summary", this.c);
+    localJSONObject3.put("button", this.d);
+    localJSONObject2.put("extra", localJSONObject3);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
   }
 }
 

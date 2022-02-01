@@ -1,14 +1,16 @@
-public abstract interface argn
+import java.util.Comparator;
+
+final class argn
+  implements Comparator<bekd>
 {
-  public abstract void b();
-  
-  public abstract void b(float paramFloat);
-  
-  public abstract void c(float paramFloat);
+  public int a(bekd parambekd1, bekd parambekd2)
+  {
+    return parambekd1.c - parambekd2.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argn
  * JD-Core Version:    0.7.0.1
  */

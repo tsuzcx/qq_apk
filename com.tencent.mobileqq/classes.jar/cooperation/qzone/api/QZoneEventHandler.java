@@ -1,7 +1,7 @@
 package cooperation.qzone.api;
 
-import afiw;
-import afnn;
+import agab;
+import ager;
 import android.content.Intent;
 import cooperation.qzone.util.QZLog;
 
@@ -17,8 +17,8 @@ public class QZoneEventHandler
     default: 
       return false;
     }
-    if (((paramObject instanceof afiw)) && (((afiw)paramObject).mChatDrawer != null)) {
-      ((afiw)paramObject).mChatDrawer.a(paramInt1, paramInt2, paramIntent);
+    if (((paramObject instanceof agab)) && (((agab)paramObject).mChatDrawer != null)) {
+      ((agab)paramObject).mChatDrawer.a(paramInt1, paramInt2, paramIntent);
     }
     return true;
   }

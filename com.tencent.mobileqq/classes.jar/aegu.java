@@ -1,35 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class aegu
-  implements CompoundButton.OnCheckedChangeListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aegu(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aegu(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      this.a.app.setTroopGeneralSettingVibrate(1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
-      }
-    }
-    for (;;)
-    {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      this.a.app.setTroopGeneralSettingVibrate(0);
-      break;
-      label78:
-      i = 0;
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
+      this.a.b(this.a.a);
     }
   }
 }

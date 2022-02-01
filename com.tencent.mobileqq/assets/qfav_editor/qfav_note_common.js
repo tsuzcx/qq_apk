@@ -1,7 +1,7 @@
 onAudioPlayStop = function (fileName, md5) {
     var elmts = document.getElementsByName(fileName);
-    if(isUnvalid(elmts)) {
-       elmts = document.getElementsByClassName("audio-wrapper");
+    if (isUnvalid(elmts)) {
+        elmts = document.getElementsByClassName("audio-wrapper");
     }
     for (i = 0; i < elmts.length; ++i) {
         var item = elmts[i];
@@ -37,6 +37,13 @@ onAudioPlayStop = function (fileName, md5) {
 }
 
 updateAudioProgress = function (audioElem, curTime, duration) {
+  updateAudioProgress(audioElem, curTime, duration, false);
+}
+
+updateAudioProgress = function (audioElem, curTime, duration, force) {
+    if (!force && document.dragflag == true) {
+      return;
+    }
     if (audioElem == undefined || audioElem == null) {
         return;
     }
@@ -310,7 +317,7 @@ function initAudioEvents() {
                 return;
             }
             var currentTime = duration * rate;
-            updateAudioProgress(audioTag, currentTime, duration);
+            updateAudioProgress(audioTag, currentTime, duration, true);
         }
     }
 
@@ -333,11 +340,13 @@ function initAudioEvents() {
             progress = progress * duration;
             // notifyPlayAudio(fid, fileName, md5, true, progress);
             var playbtns = audioTag.getElementsByClassName('play-btn');
-            if(isUnvalid(playbtns)) {
-              return;
+            if (isUnvalid(playbtns)) {
+                return;
             }
-            if(!isPlaying(playbtns[0])) {
+            if (!isPlaying(playbtns[0])) {
                 playAudio(fid, fileName);
+            } else {
+                notifyPlayAudio(fid, fileName, md5, true, progress);
             }
         }
 
@@ -422,8 +431,8 @@ function getRootPath() {
 
 onProgressChanged = function (fileName, md5, curTime, duration) {
     var elmts = document.getElementsByName(fileName);
-    if(isUnvalid(elmts)) {
-      elmts = document.getElementsByClassName("audio-wrapper");
+    if (isUnvalid(elmts)) {
+        elmts = document.getElementsByClassName("audio-wrapper");
     }
     for (i = 0; i < elmts.length; ++i) {
         var item = elmts[i];
@@ -473,12 +482,15 @@ ignoreChange = function (ignore) {
 }
 
 function updateTheme(night) {
-  var editor = document.getElementById("QMEditor");
-  if(editor != undefined && editor != null) {
-    if(night) {
-      editor.className = "night";
-      document.body.style.setProperty("background","#282828");
+    var editor = document.getElementById("QMEditor");
+    if (editor != undefined && editor != null) {
+        if (night) {
+            editor.className = "night";
+            document.body.style.setProperty("background", "#282828");
+        } else {
+          editor.className = "";
+          document.body.style.setProperty("background", "#ffffff");
+        }
     }
-  }
 
 }

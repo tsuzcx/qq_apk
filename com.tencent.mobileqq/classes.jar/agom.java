@@ -1,18 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class agom
-  implements ValueAnimator.AnimatorUpdateListener
+class agom
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public agom(SixCombolEffectView paramSixCombolEffectView, agpb paramagpb) {}
+  agom(agol paramagol1, agol paramagol2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Agpb.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Agpb.b) && (this.jdField_a_of_type_Agpb.a < 0.52F)) {
-      this.jdField_a_of_type_Agpb.b = true;
+    if (paramBitmap != null)
+    {
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 

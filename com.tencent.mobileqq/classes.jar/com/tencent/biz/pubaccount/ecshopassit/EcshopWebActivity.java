@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import anxs;
-import bgux;
-import bjts;
+import apau;
+import bifp;
+import blfe;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
@@ -25,7 +25,7 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements bjts
+  implements blfe
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -64,7 +64,7 @@ public class EcshopWebActivity
     if (this.jdField_a_of_type_Boolean) {
       return super.a(paramWebViewTabBarData);
     }
-    return bgux.a(this, paramWebViewTabBarData, super.getIntent());
+    return bifp.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -133,9 +133,9 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381053));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381412));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365087));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365171));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {}
     }
@@ -144,7 +144,7 @@ public class EcshopWebActivity
     {
       EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
       return bool;
-      localView = findViewById(2131376501);
+      localView = findViewById(2131376760);
       if (localView != null) {
         break;
       }
@@ -190,7 +190,7 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
-    anxs.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
+    apau.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
   }
   
   public void doOnRestoreInstanceState(Bundle paramBundle)

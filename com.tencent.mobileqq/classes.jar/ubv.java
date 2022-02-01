@@ -1,16 +1,18 @@
-import android.view.ViewGroup;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 class ubv
+  implements pbg
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ubv(ubq paramubq) {}
   
-  private ubv(ubs paramubs) {}
+  public void onViewCreated(boolean paramBoolean)
+  {
+    ubq.a(this.a).d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubv
  * JD-Core Version:    0.7.0.1
  */

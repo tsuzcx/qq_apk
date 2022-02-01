@@ -1,22 +1,28 @@
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ouy
-  extends owd
+public class ouy
+  extends ntf
 {
-  ouy(ouu paramouu, int paramInt)
+  private boolean b;
+  
+  ouy(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
   {
-    super(paramouu, null);
+    this.b = paramBoolean;
   }
   
-  void a(owg paramowg)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      paramowg.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
+    if (paramInt == 0) {
+      bmhv.a(bmhv.a(), this.b);
     }
-    while (this.jdField_a_of_type_Int != 2) {
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a);
       return;
+      QLog.d("ReadInJoySettingActivity", 1, "troopProtocolObserver fail!");
     }
-    paramowg.onCommentLoadMore(2, false, new ArrayList(), false, 4);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import amtj;
 import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
+import anvx;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
-import xvv;
-import xwa;
+import ykq;
+import ykv;
 
 class NewFlowCameraActivity$WaitStartEditActivityRunnable
   implements Runnable
@@ -26,7 +26,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
     {
       this.b = a();
       this.jdField_a_of_type_Int = paramInt;
-      paramNewFlowCameraActivity.c(amtj.a(2131706590));
+      paramNewFlowCameraActivity.c(anvx.a(2131706942));
       return;
     }
   }
@@ -57,10 +57,10 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
   public void run()
   {
     long l = a();
-    xvv.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
+    ykq.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
     if (l == this.b)
     {
-      xwa.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
+      ykv.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
       this.this$0.M();
       NewFlowCameraActivity.a(this.this$0, this.jdField_a_of_type_Int);
       return;

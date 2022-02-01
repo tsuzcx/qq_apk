@@ -1,15 +1,17 @@
-import android.os.MessageQueue.IdleHandler;
-
-class ahtn
-  implements MessageQueue.IdleHandler
+public class ahtn
 {
-  ahtn(ahtj paramahtj) {}
-  
-  public boolean queueIdle()
-  {
-    this.a.b();
-    return false;
-  }
+  public int a;
+  boolean a = false;
+  boolean b = false;
+  boolean c = false;
+  public boolean d = false;
+  boolean e = false;
+  boolean f = false;
+  boolean g = false;
+  boolean h = false;
+  boolean i = false;
+  boolean j = false;
+  boolean k = false;
 }
 
 

@@ -1,33 +1,96 @@
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.avcore.jni.data.NetAddr;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class lgi
+  extends lgh
 {
-  int jdField_a_of_type_Int = 0;
-  public String a;
-  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  final lgl jdField_a_of_type_Lgl;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  
-  lgi(lgl paramlgl, ArrayList<String> paramArrayList, boolean paramBoolean)
+  public lgi(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Lgl = paramlgl;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    super(paramAppInterface);
+  }
+  
+  protected int a()
+  {
+    Object localObject = (VideoAppInterface)this.mApp;
+    if (((VideoAppInterface)localObject).a(0))
+    {
+      localObject = (ljd)((VideoAppInterface)localObject).a(0);
+      if (localObject != null) {
+        return ((ljd)localObject).b();
+      }
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return 4;
   }
   
-  boolean a()
+  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
   {
-    return this.jdField_a_of_type_Int >= 3;
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    lfe locallfe = localVideoController.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
+    if (paramList == null)
+    {
+      localObject = "null";
+      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
+      if (locallfe != null) {
+        break label159;
+      }
+    }
+    label159:
+    for (Object localObject = "null";; localObject = locallfe.d)
+    {
+      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
+      if ((localVideoController != null) && (locallfe != null)) {
+        localVideoController.a(lcx.a(locallfe.d), paramBoolean, paramList, paramLong2);
+      }
+      return;
+      localObject = Integer.valueOf(paramList.size());
+      break;
+    }
   }
   
-  public String toString()
+  protected void a(Integer paramInteger, Object paramObject)
   {
-    return "ItemRecord{" + this.jdField_a_of_type_Lgl + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
+    lbd.f("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
+    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
+  }
+  
+  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    a(Integer.valueOf(6008), new lgo(paramString1, paramString2, paramString3, paramInt));
+  }
+  
+  protected boolean a()
+  {
+    boolean bool2 = false;
+    Object localObject = (VideoAppInterface)this.mApp;
+    boolean bool1 = bool2;
+    if (((VideoAppInterface)localObject).a(0))
+    {
+      localObject = (ljd)((VideoAppInterface)localObject).a(0);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        localObject = (ZimuItem)((ljd)localObject).a();
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          localObject = ((ZimuItem)localObject).getId();
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
+            break label74;
+          }
+        }
+      }
+    }
+    label74:
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
+    }
   }
 }
 

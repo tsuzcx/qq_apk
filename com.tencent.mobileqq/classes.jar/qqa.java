@@ -1,20 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class qqa
-  implements View.OnTouchListener
+public abstract interface qqa
 {
-  qqa(qpw paramqpw, LinearLayout paramLinearLayout) {}
+  public abstract TemplateBean a(int paramInt, JSONObject paramJSONObject);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
-  }
+  public abstract JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo);
+  
+  public abstract void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2);
+  
+  public abstract boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase);
 }
 
 

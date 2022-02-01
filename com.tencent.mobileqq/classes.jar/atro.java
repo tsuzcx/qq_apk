@@ -1,24 +1,53 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class atro
-  implements TouchWebView.OnScrollChangedListener
+  implements bcif<bcfj, bcnt>
 {
-  public atro(NearbyHybridFragment paramNearbyHybridFragment) {}
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void a(bcfj parambcfj, bcnt parambcnt)
   {
-    if (paramInt4 > paramInt2) {
-      if (paramInt2 == 0) {
-        this.a.a.b();
+    if ((parambcnt.a() != null) && (!TextUtils.isEmpty(parambcfj.a())))
+    {
+      parambcnt.a().setVisibility(0);
+      parambcnt.a().setText(parambcfj.a());
+    }
+    if ((parambcnt.b() != null) && (!TextUtils.isEmpty(parambcfj.b())))
+    {
+      parambcnt.b().setVisibility(0);
+      parambcnt.b().setText(parambcfj.b());
+    }
+    if ((parambcnt.c() != null) && (!TextUtils.isEmpty(parambcfj.c())))
+    {
+      parambcnt.c().setVisibility(0);
+      parambcnt.c().setText(parambcfj.c());
+    }
+    if ((parambcfj.d() == null) && (parambcnt.d() != null)) {
+      parambcnt.d().setVisibility(8);
+    }
+    if ((parambcnt.d() != null) && (parambcfj.d() != null))
+    {
+      parambcnt.d().setVisibility(0);
+      parambcnt.d().setText(parambcfj.d());
+    }
+    AsyncImageView localAsyncImageView = (AsyncImageView)parambcnt.b();
+    Object localObject = (atrn)parambcfj;
+    String str = ((atrn)localObject).c();
+    localObject = ((atrn)localObject).d();
+    if (FileUtils.fileExistsAndNotEmpty(str)) {
+      auea.a(localAsyncImageView, str, auea.a((String)localObject));
+    }
+    for (;;)
+    {
+      parambcnt = parambcnt.a();
+      if (parambcnt != null) {
+        parambcnt.setOnClickListener(new atrp(this, parambcfj));
       }
-    }
-    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
       return;
+      localAsyncImageView.setDefaultImage(auea.b((String)localObject));
     }
-    this.a.a.a();
   }
 }
 

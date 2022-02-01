@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import baoy;
+import bbvn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.richstatus.RichStatus;
 
@@ -17,7 +17,7 @@ class QQSettingMe$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.29
  * JD-Core Version:    0.7.0.1
  */

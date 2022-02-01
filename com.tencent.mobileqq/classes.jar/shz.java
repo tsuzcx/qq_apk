@@ -1,29 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable.DownloadListener;
-import kotlin.Metadata;
+import android.content.BroadcastReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$saveBitmapAndUpload$1", "Lcom/tencent/image/URLDrawable$DownloadListener;", "onFileDownloadFailed", "", "p0", "", "onFileDownloadStarted", "onFileDownloadSucceed", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shz
-  implements URLDrawable.DownloadListener
+public class shz
 {
-  shz(String paramString, rqx paramrqx, Bitmap paramBitmap) {}
+  private static int jdField_a_of_type_Int = 5;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new sia();
+  private static final String jdField_a_of_type_JavaLangString = shz.class.getSimpleName();
+  private static Thread jdField_a_of_type_JavaLangThread;
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static AtomicInteger b;
   
-  public void onFileDownloadFailed(int paramInt)
+  static
   {
-    rqx localrqx = this.jdField_a_of_type_Rqx;
-    if (localrqx != null) {
-      localrqx.a(2, "");
-    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    b = new AtomicInteger(0);
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  private static long b()
   {
-    shu.a(this.jdField_a_of_type_Shu, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rqx);
-    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
+    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
+    return l;
   }
 }
 

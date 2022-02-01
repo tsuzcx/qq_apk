@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
 public class axeg
-  implements axet
+  implements View.OnLayoutChangeListener
 {
-  public axeg(NearbyMomentFragment paramNearbyMomentFragment, axem paramaxem) {}
+  public axeg(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
   
-  public void a(boolean paramBoolean1, List<axfs> paramList, boolean paramBoolean2, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Axem);
+    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
+    {
+      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
+      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
+    }
   }
 }
 

@@ -1,18 +1,33 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ymq
-  implements AdapterView.OnItemClickListener
+class ymq
+  implements yuq
 {
-  public ymq(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  ymq(yml paramyml) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    ykq.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    yml.a(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    ykq.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    ynw localynw = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localynw.a("download_face", 0, 0, new String[] { str, paramString });
+      ykw.b("0X80075DD");
+      if (!((ysa)wjs.a(8)).a(paramString, true)) {
+        ykq.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    ykq.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

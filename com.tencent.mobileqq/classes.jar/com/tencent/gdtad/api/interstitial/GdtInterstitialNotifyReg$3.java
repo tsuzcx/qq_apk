@@ -1,13 +1,13 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmn;
+import accd;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
 public class GdtInterstitialNotifyReg$3
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$3(abmn paramabmn, WeakReference paramWeakReference, JSONObject paramJSONObject) {}
+  public GdtInterstitialNotifyReg$3(accd paramaccd, WeakReference paramWeakReference, JSONObject paramJSONObject) {}
   
   public void run()
   {

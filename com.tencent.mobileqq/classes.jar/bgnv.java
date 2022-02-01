@@ -1,29 +1,16 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class bgnv
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bgnv(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public bgnv(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel())
-    {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
-    }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.b(this.a);
-    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
-    return false;
+    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
+    this.a.invalidate();
   }
 }
 

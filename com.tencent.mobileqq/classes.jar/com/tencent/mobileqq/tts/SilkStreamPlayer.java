@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tts;
 
 import android.content.Context;
-import bflu;
+import bgul;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -71,7 +71,7 @@ public class SilkStreamPlayer
         long l = jdField_a_of_type_Long;
         jdField_a_of_type_Long = 1L + l;
         ((JSONObject)localObject1).put("seq", l);
-        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.4.8");
+        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.4.10");
         ((JSONObject)localObject1).put("net", HttpUtil.getNetWorkType());
         ((JSONObject)localObject1).put("businessID", paramInt);
         try
@@ -172,10 +172,10 @@ public class SilkStreamPlayer
     }
   }
   
-  public void a(bflu parambflu, int paramInt1, int paramInt2)
+  public void a(bgul parambgul, int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = new SilkStreamPlayer.SilkStreamPlayerThread(this, BaseApplicationImpl.sApplication, parambflu, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = new SilkStreamPlayer.SilkStreamPlayerThread(this, BaseApplicationImpl.sApplication, parambgul, paramInt1, paramInt2);
     }
     ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, 128, null, true);
   }

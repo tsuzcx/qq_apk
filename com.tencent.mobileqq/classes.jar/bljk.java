@@ -1,8 +1,12 @@
-import java.io.File;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-public class bljk
+public abstract interface bljk
 {
-  public static final String a = bljm.f + File.separator + "camera_story_default_template.json";
+  public abstract void a();
+  
+  public abstract void a(XRecyclerView paramXRecyclerView, int paramInt);
+  
+  public abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
 }
 
 

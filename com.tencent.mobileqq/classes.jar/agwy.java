@@ -1,36 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agwy
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+class agwy
+  extends ahaa
 {
-  public agwy(PEPanel paramPEPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  agwy(agvm paramagvm)
   {
-    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
-    }
-    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
-      PEPanel.a(this.a).setVisibility(0);
-    }
+    super(paramagvm, null);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.a.setListViewVisibile(8);
+    return new ahdc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agvm.a(this.a));
   }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

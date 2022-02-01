@@ -3,8 +3,8 @@ package com.tencent.mobileqq.emoticon;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.SparseIntArray;
-import areu;
-import arev;
+import asja;
+import asjb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.emoticonview.EmojiEmoticonInfo;
 import com.tencent.mobileqq.text.EmotcationConstants;
@@ -18,7 +18,7 @@ public class QQEmojiUtil
   
   public static int getEmojiCount()
   {
-    int j = arev.a().a(2).b();
+    int j = asjb.a().a(2).b();
     int i = j;
     if (j < EmotcationConstants.EMOJI_CODES.length) {
       i = EmotcationConstants.EMOJI_CODES.length;
@@ -28,7 +28,7 @@ public class QQEmojiUtil
   
   public static String getEmojiDescription(int paramInt)
   {
-    String str2 = arev.a().a(2).a(paramInt);
+    String str2 = asjb.a().a(2).a(paramInt);
     String str1 = str2;
     if (android.text.TextUtils.isEmpty(str2))
     {
@@ -63,7 +63,7 @@ public class QQEmojiUtil
         }
         return ((Resources)localObject).getDrawable(paramInt);
       }
-      localDrawable = arev.a().a(2).a(paramInt);
+      localDrawable = asjb.a().a(2).a(paramInt);
       localObject = localDrawable;
     } while (!QLog.isColorLevel());
     QLog.d("EmojiUtil", 2, "getEmojiDrawable in new way");
@@ -72,7 +72,7 @@ public class QQEmojiUtil
   
   public static int getEmojiLocalId(int paramInt)
   {
-    int j = arev.a().a(2).b(paramInt);
+    int j = asjb.a().a(2).b(paramInt);
     int i = j;
     if (j == -1) {
       i = EmotcationConstants.EMOJI_MAP.get(paramInt, -1);
@@ -82,7 +82,7 @@ public class QQEmojiUtil
   
   public static int getEmojiUnicode(int paramInt)
   {
-    int j = arev.a().a(2).a(paramInt);
+    int j = asjb.a().a(2).a(paramInt);
     int i = j;
     if (j == -1)
     {
@@ -99,16 +99,16 @@ public class QQEmojiUtil
   
   public static int getLocalIdFromEMCode(String paramString)
   {
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(2);
-    if ((localQQSysAndEmojiResInfo instanceof areu)) {
-      return ((areu)localQQSysAndEmojiResInfo).a(paramString);
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(2);
+    if ((localQQSysAndEmojiResInfo instanceof asja)) {
+      return ((asja)localQQSysAndEmojiResInfo).a(paramString);
     }
     return -1;
   }
   
   public static ArrayList<Integer> getOrderList()
   {
-    ArrayList localArrayList = arev.a().a(2).a();
+    ArrayList localArrayList = asjb.a().a(2).a();
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
       return localArrayList;
     }
@@ -124,12 +124,12 @@ public class QQEmojiUtil
   
   public static boolean isEmoReady(int paramInt)
   {
-    return arev.a().a(2).a(paramInt);
+    return asjb.a().a(2).a(paramInt);
   }
   
   public static boolean isValidEmojiId(int paramInt)
   {
-    int j = arev.a().a(2).a();
+    int j = asjb.a().a(2).a();
     int i = j;
     if (j <= 0) {
       i = EmotcationConstants.EMOJI_CODES.length - 1;
@@ -139,7 +139,7 @@ public class QQEmojiUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQEmojiUtil
  * JD-Core Version:    0.7.0.1
  */

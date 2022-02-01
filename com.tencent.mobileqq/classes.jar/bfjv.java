@@ -1,30 +1,78 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
 
 public class bfjv
-  implements bcrz
 {
-  public bfjv(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public void a()
+  public bfjv() {}
+  
+  public bfjv(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.jdField_a_of_type_Int + this.b)
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public bfjv(oidb_0x6c2.Player paramPlayer)
+  {
+    this.jdField_a_of_type_Long = paramPlayer.uint64_uin.get();
+    this.jdField_b_of_type_Long = paramPlayer.uint64_time.get();
+    this.jdField_a_of_type_Int = paramPlayer.int32_amount.get();
+    this.jdField_b_of_type_Int = paramPlayer.int32_index.get();
+    this.jdField_a_of_type_JavaLangString = paramPlayer.bytes_tips.get().toStringUtf8();
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new bfjw(this));
+      localJSONObject.put("uin", this.jdField_a_of_type_Long);
+      localJSONObject.put("time", this.jdField_b_of_type_Long);
+      localJSONObject.put("amount", this.jdField_a_of_type_Int);
+      localJSONObject.put("index", this.jdField_b_of_type_Int);
+      localJSONObject.put("tips", this.jdField_a_of_type_JavaLangString);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " toJson error. e=" + localJSONException);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = new String(paramString);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Long = paramString.optLong("uin");
+      this.jdField_b_of_type_Long = paramString.optLong("time");
+      this.jdField_a_of_type_Int = paramString.optInt("amount");
+      this.jdField_b_of_type_Int = paramString.optInt("index");
+      this.jdField_a_of_type_JavaLangString = paramString.optString("tips");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bcrz != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bcrz.a();
+    catch (JSONException paramString)
+    {
+      QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " fromJson error. e=" + paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_Int, true);
   }
 }
 

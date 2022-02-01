@@ -70,6 +70,7 @@ public class FaceOffByImageFilter
     addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
     addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
     addParam(new UniformParam.FloatParam("enableAlphaFromGray", this.item.grayScale));
+    addParam(new UniformParam.FloatParam("filterSkin", 0.0F));
     if (this.item.grayScale > 0)
     {
       addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 1.0F));

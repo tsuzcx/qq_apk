@@ -1,18 +1,8 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.os.Bundle;
 
-public abstract class atxd
-  extends RecyclerView.ViewHolder
+public abstract interface atxd
 {
-  public atxd(Context paramContext, View paramView, ViewGroup paramViewGroup)
-  {
-    super(paramView);
-  }
-  
-  public abstract void a(FeedsItemData paramFeedsItemData);
+  public abstract void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle);
 }
 
 

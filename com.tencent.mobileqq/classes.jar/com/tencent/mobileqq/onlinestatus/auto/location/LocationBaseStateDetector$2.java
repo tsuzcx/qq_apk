@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus.auto.location;
 
 import android.widget.TextView;
-import axwu;
+import azdg;
 
 public class LocationBaseStateDetector$2
   implements Runnable
 {
-  public LocationBaseStateDetector$2(axwu paramaxwu, String paramString) {}
+  public LocationBaseStateDetector$2(azdg paramazdg, String paramString) {}
   
   public void run()
   {
-    axwu.a(this.this$0).setText(this.a);
+    azdg.a(this.this$0).setText(this.a);
   }
 }
 

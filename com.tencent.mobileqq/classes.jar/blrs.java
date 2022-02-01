@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-public class blrs
-  implements EIPCResultCallback
+public abstract interface blrs
 {
-  blrs(blrm paramblrm) {}
+  public abstract HashMap<String, String> a();
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
-  }
+  public abstract void a();
+  
+  public abstract boolean a(String paramString, JSONObject paramJSONObject);
+  
+  public abstract void b();
 }
 
 

@@ -1,72 +1,93 @@
-import android.content.Context;
+import android.app.Activity;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
+@Deprecated
 public class uus
-  extends uuq<WSRedDotPushMsg, WSPushStrategyInfo>
+  implements Handler.Callback, AdapterView.OnItemClickListener
 {
-  private int a;
+  public Activity a;
+  private bkys jdField_a_of_type_Bkys;
+  public ShareActionSheetBuilder a;
+  private uut jdField_a_of_type_Uut;
+  protected uuu a;
   
-  public uus(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
+  public void a(String paramString)
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
+    if (TextUtils.isEmpty(paramString))
+    {
+      znl.a(1, 2131695009);
+      return;
+    }
+    paramString = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString, true, true, true, true, true, 4);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = 2;
-    boolean bool1 = true;
-    if (paramWSPushStrategyInfo == null) {
-      return false;
-    }
-    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
-    if (!bool2)
+    switch (paramMessage.what)
     {
-      ukw.a(paramContext, paramWSPushStrategyInfo.mScheme);
-      paramContext = uyo.a();
-      if (paramContext != null) {
-        paramContext.a(null);
-      }
-      uyo.a();
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool2)
+    for (;;)
+    {
+      return true;
+      if (paramMessage.obj != null) {
+        a((String)paramMessage.obj);
+      }
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Object localObject = paramView.getTag();
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onItemClick, tag = ");
+      if (localObject != null)
       {
-        i = 2;
-        if (this.jdField_a_of_type_Uuh != null) {
-          break label93;
-        }
-        paramContext = "";
-        label74:
-        uvr.a(i, 1, paramContext);
-        label80:
-        if (bool2) {
-          break label133;
-        }
+        bool = true;
+        QLog.d("ReadInJoyShareHelper", 2, bool);
+      }
+    }
+    else
+    {
+      if (localObject != null) {
+        break label73;
       }
     }
     for (;;)
     {
-      return bool1;
-      i = 1;
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      bool = false;
       break;
-      label93:
-      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Uuh).mFeedIds;
-      break label74;
-      if (this.jdField_a_of_type_Int != 6) {
-        break label80;
+      label73:
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+      localObject = (uuv)((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).sheetItem;
+      int i = ((uuv)localObject).action;
+      if (this.jdField_a_of_type_Uut != null) {
+        if (((uuv)localObject).a)
+        {
+          this.jdField_a_of_type_Uut.a(Integer.valueOf(i));
+        }
+        else
+        {
+          localObject = this.jdField_a_of_type_Uuu.a(i);
+          if (localObject != null) {
+            this.jdField_a_of_type_Uut.a((Integer)localObject);
+          }
+        }
       }
-      if (bool2) {}
-      for (;;)
-      {
-        uvr.d(i);
-        break;
-        i = 1;
-      }
-      label133:
-      bool1 = false;
     }
   }
 }

@@ -1,64 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.CountDownLatch;
 
-public class avro
+class avro
+  implements avuh
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public Set<String> a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f = "";
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  avro(avrm paramavrm, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
   
-  public avro(String paramString, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.h = a(paramString, paramInt);
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
+    if (!avrm.a(this.jdField_a_of_type_Avrm).renameTo(this.jdField_a_of_type_JavaIoFile)) {
+      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(anvx.a(2131700966) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    }
+    if (avrm.b(this.jdField_a_of_type_Avrm)) {}
+    for (String str = "33669797";; str = "33669802")
+    {
+      avue.b(str);
+      avrm.a(this.jdField_a_of_type_Avrm).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
   }
   
-  public static String a(String paramString, int paramInt)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    return paramInt + "_" + paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed retCode =  " + paramInt1);
+    }
+    if (avrm.b(this.jdField_a_of_type_Avrm)) {}
+    for (paramString = "33669798";; paramString = "33669803")
+    {
+      avue.b(paramString);
+      avrm.a(this.jdField_a_of_type_Avrm).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
   }
   
-  public static String[] a(String paramString)
-  {
-    return paramString.split("_");
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public String toString()
-  {
-    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
-  }
+  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 

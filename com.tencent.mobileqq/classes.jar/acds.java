@@ -1,27 +1,235 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.annotation.SuppressLint;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.ArkAppElem;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.LightAppElem;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class acds
-  extends acew
+  implements View.OnTouchListener
 {
-  public int a()
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private acdu jdField_a_of_type_Acdu;
+  private List<WeakReference<View>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c;
+  private int d;
+  
+  private String a(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    return 1000;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("da", String.valueOf(paramInt2));
+      localJSONObject.put("db", String.valueOf(paramInt3));
+      localJSONObject.put("px", String.valueOf(paramInt4));
+      localJSONObject.put("py", String.valueOf(paramInt5));
+      return a(paramInt1, paramString, localJSONObject.toString());
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.i("GdtMotiveVideoClickCoordinateReportHelper", 1, "addAntiSpamToExposureUrl error", localException);
+      }
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public String a(int paramInt, String paramString1, String paramString2)
   {
-    new bblb().c(paramList, paramList1, paramStringBuilder, paramMsg, parambdyi);
-    return true;
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QLog.i("GdtMotiveVideoClickCoordinateReportHelper", 1, "addAntiSpamToUrl TextUtils.isEmpty(url)");
+      return paramString1;
+    }
+    Map localMap = bkyp.a(paramString1);
+    if ((localMap != null) && (localMap.containsKey("s")))
+    {
+      QLog.i("GdtMotiveVideoClickCoordinateReportHelper", 1, "addAntiSpamToUrl hasKey  type = " + paramInt + ", url=" + paramString1);
+      return paramString1;
+    }
+    paramString1 = bkyp.a(paramString1, "s", paramString2);
+    QLog.i("GdtMotiveVideoClickCoordinateReportHelper", 1, "addAntiSpamToUrl type = " + paramInt + ",result url=" + paramString1);
+    return paramString1;
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  public String a(String paramString)
   {
-    return (paramElem.ark_app.has()) || (paramElem.light_app.has());
+    return a(4, paramString, ScreenUtil.getInstantScreenWidth(BaseApplicationImpl.getContext()), ScreenUtil.getInstantScreenHeight(BaseApplicationImpl.getContext()), 0, 0);
+  }
+  
+  String a(String paramString1, long paramLong, boolean paramBoolean1, boolean paramBoolean2, String paramString2)
+  {
+    long l1 = this.jdField_b_of_type_Long;
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = System.currentTimeMillis();
+    long l4 = this.jdField_b_of_type_Long;
+    long l5 = System.currentTimeMillis();
+    long l6 = this.jdField_a_of_type_Long;
+    int i;
+    int j;
+    int k;
+    String str;
+    if (paramBoolean1)
+    {
+      i = 1;
+      j = ScreenUtil.getInstantScreenWidth(BaseApplicationImpl.getContext());
+      k = ScreenUtil.getInstantScreenHeight(BaseApplicationImpl.getContext());
+      str = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        paramString2 = new JSONObject();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2.put("g", String.valueOf(l1 - l2));
+        paramString2.put("sc", String.valueOf(l3 - l4));
+        paramString2.put("ec", String.valueOf(l5 - l6));
+        paramString2.put("aa", String.valueOf(this.jdField_a_of_type_Int));
+        paramString2.put("ab", String.valueOf(this.jdField_b_of_type_Int));
+        paramString2.put("ba", String.valueOf(this.c));
+        paramString2.put("bb", String.valueOf(this.d));
+        paramString2.put("d", String.valueOf(0));
+        paramString2.put("p", String.valueOf(paramLong));
+        paramString2.put("f", String.valueOf(0));
+        paramString2.put("x", String.valueOf(i));
+        paramString2.put("sz", String.valueOf(-999));
+        paramString2.put("db", String.valueOf(k));
+        paramString2.put("da", String.valueOf(j));
+        if (!paramBoolean2) {
+          continue;
+        }
+        i = 2;
+        paramString2.put("vca", String.valueOf(i));
+        paramString2.put("px", String.valueOf(0));
+        paramString2.put("py", String.valueOf(0));
+      }
+      catch (Exception localException)
+      {
+        acho.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString error", localException);
+        continue;
+      }
+      str = paramString2.toString();
+      return a(3, paramString1, str);
+      i = 0;
+      break;
+      i = 1;
+    }
+  }
+  
+  public String a(String paramString, acdt paramacdt)
+  {
+    if (paramacdt == null)
+    {
+      QLog.i("GdtMotiveVideoClickCoordinateReportHelper", 1, "addAdBoxAntiSpamToClickUrl params == null");
+      return paramString;
+    }
+    long l1 = this.jdField_b_of_type_Long;
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = System.currentTimeMillis();
+    long l4 = this.jdField_b_of_type_Long;
+    long l5 = System.currentTimeMillis();
+    long l6 = this.jdField_a_of_type_Long;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("g", String.valueOf(l1 - l2));
+      localJSONObject.put("sc", String.valueOf(l3 - l4));
+      localJSONObject.put("ec", String.valueOf(l5 - l6));
+      localJSONObject.put("aa", String.valueOf(this.jdField_a_of_type_Int - paramacdt.c));
+      localJSONObject.put("ab", String.valueOf(this.jdField_b_of_type_Int - paramacdt.d));
+      localJSONObject.put("ba", String.valueOf(this.c - paramacdt.c));
+      localJSONObject.put("bb", String.valueOf(this.d - paramacdt.d));
+      localJSONObject.put("d", "0");
+      localJSONObject.put("p", "0");
+      localJSONObject.put("f", "0");
+      localJSONObject.put("x", "1");
+      localJSONObject.put("db", String.valueOf(paramacdt.jdField_b_of_type_Int));
+      localJSONObject.put("da", String.valueOf(paramacdt.jdField_a_of_type_Int));
+      localJSONObject.put("px", String.valueOf(paramacdt.c));
+      localJSONObject.put("py", String.valueOf(paramacdt.d));
+      return a(1, paramString, localJSONObject.toString());
+    }
+    catch (Exception paramacdt)
+    {
+      for (;;)
+      {
+        acho.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString error", paramacdt);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Acdu = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      View localView = (View)((WeakReference)localIterator.next()).get();
+      if (localView != null) {
+        localView.setOnTouchListener(null);
+      }
+    }
+  }
+  
+  public void a(acdu paramacdu)
+  {
+    this.jdField_a_of_type_Acdu = paramacdu;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramView));
+    paramView.setOnTouchListener(this);
+  }
+  
+  public long[] a()
+  {
+    return new long[] { this.jdField_b_of_type_Long, this.jdField_a_of_type_Long };
+  }
+  
+  public String b(String paramString, acdt paramacdt)
+  {
+    if (paramacdt == null)
+    {
+      QLog.i("GdtMotiveVideoClickCoordinateReportHelper", 1, "addAdBoxAntiSpamToExposureUr params == null");
+      return paramString;
+    }
+    return a(2, paramString, paramacdt.jdField_a_of_type_Int, paramacdt.jdField_b_of_type_Int, paramacdt.c, paramacdt.d);
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
+      continue;
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.c = ((int)paramMotionEvent.getRawX());
+      this.d = ((int)paramMotionEvent.getRawY());
+      if (this.jdField_a_of_type_Acdu != null) {
+        this.jdField_a_of_type_Acdu.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
+      }
+    }
   }
 }
 

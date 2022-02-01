@@ -1,14 +1,37 @@
-public abstract interface bkyn
+public class bkyn<T>
 {
-  public abstract void a(int paramInt, String paramString);
+  private long jdField_a_of_type_Long;
+  private bkyo<T> jdField_a_of_type_Bkyo;
+  private long b;
   
-  public abstract void a(String paramString, double paramDouble);
+  private bkyn(bkyo<T> parambkyo)
+  {
+    this.jdField_a_of_type_Bkyo = parambkyo;
+  }
   
-  public abstract void b();
+  public static <T> bkyn<T> a(bkyo<T> parambkyo)
+  {
+    return new bkyn(parambkyo);
+  }
   
-  public abstract void b(int paramInt, String paramString);
+  public bkyn<T> a(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
+  }
   
-  public abstract void c();
+  public bkyn<T> a(T paramT)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > this.b)
+    {
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_Bkyo != null) {
+        this.jdField_a_of_type_Bkyo.execute(paramT);
+      }
+    }
+    return this;
+  }
 }
 
 

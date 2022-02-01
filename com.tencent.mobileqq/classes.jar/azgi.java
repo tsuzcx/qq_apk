@@ -1,21 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 class azgi
-  implements MediaPlayer.OnCompletionListener
 {
-  azgi(azgh paramazgh, String paramString) {}
+  azgi(azgg paramazgg) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    paramMediaPlayer.release();
-    azgh.a(this.jdField_a_of_type_Azgh, null);
-    if (azgh.a(this.jdField_a_of_type_Azgh) != null) {
-      azgh.a(this.jdField_a_of_type_Azgh).b(this.jdField_a_of_type_JavaLangString);
-    }
-    bftt.a(BaseApplicationImpl.getContext(), false);
+    bhdj.a(azgg.a(this.a), 2131698140, 2131698141);
   }
+  
+  @QQPermissionGrant(1)
+  public void grant() {}
 }
 
 

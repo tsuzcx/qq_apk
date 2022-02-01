@@ -2,7 +2,7 @@ package com.tencent.mobileqq.pluginsdk;
 
 public final class R$drawable
 {
-  public static final int ic_launcher = 2130840375;
+  public static final int ic_launcher = 2130840412;
 }
 
 

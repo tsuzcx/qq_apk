@@ -1,35 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
-final class acvk
-  implements DialogInterface.OnClickListener
+public class acvk
+  extends acve
 {
-  acvk(acxb paramacxb, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acxa paramacxa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    int i = mum.b(this.jdField_a_of_type_Acxb.jdField_a_of_type_Int);
-    String str;
-    if ((this.jdField_a_of_type_Acxb.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
-    {
-      str = (String)this.jdField_a_of_type_Acxb.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
-      if (str == null) {}
-    }
-    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
-      this.jdField_a_of_type_Acxb.d = false;
-      this.jdField_a_of_type_Acxb.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_Acxb);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.dismiss();
-      }
-      return;
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().d(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (15 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public final class bdzn
-  implements Parcelable.Creator<TroopBarPOI>
+public class bdzn
+  implements MediaPlayer.OnErrorListener
 {
-  public TroopBarPOI a(Parcel paramParcel)
+  private WeakReference<VideoSprite> a;
+  
+  private bdzn(VideoSprite paramVideoSprite)
   {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+    this.a = new WeakReference(paramVideoSprite);
   }
   
-  public TroopBarPOI[] a(int paramInt)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    return null;
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+      }
+    } while (paramInt1 != 1);
+    if (paramMediaPlayer.a != null) {
+      paramMediaPlayer.a.a();
+    }
+    paramMediaPlayer.j();
+    return true;
   }
 }
 

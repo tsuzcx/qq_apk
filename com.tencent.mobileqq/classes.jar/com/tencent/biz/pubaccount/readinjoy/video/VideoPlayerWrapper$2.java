@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rse;
-import rsi;
-import sdj;
+import set;
+import sex;
+import spn;
 
 public class VideoPlayerWrapper$2
   implements Runnable
 {
-  public VideoPlayerWrapper$2(sdj paramsdj) {}
+  public VideoPlayerWrapper$2(spn paramspn) {}
   
   public void run()
   {
-    if (sdj.a(this.this$0) != null) {
-      sdj.a(this.this$0).a(sdj.a(this.this$0).a());
+    if (spn.a(this.this$0) != null) {
+      spn.a(this.this$0).a(spn.a(this.this$0).a());
     }
   }
 }

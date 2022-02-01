@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aqoa;
-import aqqa;
+import arrl;
+import artl;
 import java.io.Serializable;
 import java.util.Comparator;
 
 public final class DanmakuManager$DanmakuComparator
-  implements Serializable, Comparator<aqoa>
+  implements Serializable, Comparator<arrl>
 {
-  public int compare(aqoa paramaqoa1, aqoa paramaqoa2)
+  public int compare(arrl paramarrl1, arrl paramarrl2)
   {
-    return aqqa.a(paramaqoa1, paramaqoa2);
+    return artl.a(paramarrl1, paramarrl2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuManager.DanmakuComparator
  * JD-Core Version:    0.7.0.1
  */

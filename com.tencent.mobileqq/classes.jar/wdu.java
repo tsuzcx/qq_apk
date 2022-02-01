@@ -1,73 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class wdu
-  extends vqr
+  extends SimpleObserver<ErrorMessage>
 {
-  public static final String a;
-  public List<xnh> a;
-  public List<String> b = new ArrayList();
+  private wdu(BasePublishTask paramBasePublishTask) {}
   
-  static
+  public void a(ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.homepage_batch_feeds_detail_720");
-  }
-  
-  public wdu()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
-    try
+    if (paramErrorMessage.isSuccess())
     {
-      localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new wdv(localRspStoryFeed);
+      this.a.a(new ErrorMessage());
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    this.a.a(paramErrorMessage);
   }
   
-  protected byte[] a()
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
   {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((paramError instanceof ErrorMessage))
     {
-      xnh localxnh = (xnh)localIterator.next();
-      if (localxnh != null) {
-        if (TextUtils.isEmpty(localxnh.jdField_a_of_type_JavaLangString)) {
-          xvv.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
-        } else {
-          localArrayList.add(localxnh.a());
-        }
-      }
+      this.a.a((ErrorMessage)paramError);
+      return;
     }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
-    }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

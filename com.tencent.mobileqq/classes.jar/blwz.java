@@ -1,12 +1,16 @@
-class blwz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class blwz
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
+  blwz(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  blwz(blwy paramblwy) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

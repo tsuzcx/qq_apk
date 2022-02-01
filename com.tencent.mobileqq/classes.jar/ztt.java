@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ztt
-  implements DialogInterface.OnClickListener
+class ztt
+  implements View.OnTouchListener
 {
-  public ztt(TroopGiftPanel paramTroopGiftPanel) {}
+  ztt(ztn paramztn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      ztn.a(this.a, 0);
+    }
+    if (ztn.a(this.a) != null) {
+      ztn.a(this.a).a(paramMotionEvent);
+    }
+    return true;
+  }
 }
 
 

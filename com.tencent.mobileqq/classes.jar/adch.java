@@ -1,32 +1,98 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class adch
-  implements View.OnClickListener
 {
-  public adch(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
+  WeakReference<CustomWebView> a;
+  WeakReference<AppInterface> b;
+  WeakReference<Activity> c;
+  WeakReference<bifb> d = null;
+  WeakReference<WebViewFragment> e = null;
   
-  public void onClick(View paramView)
+  public adch(Activity paramActivity)
   {
-    switch (paramView.getId())
+    this.c = new WeakReference(paramActivity);
+  }
+  
+  public Activity a()
+  {
+    return (Activity)this.c.get();
+  }
+  
+  public bifb a()
+  {
+    Activity localActivity;
+    if (this.d == null)
     {
-    case 2131378510: 
-    default: 
-      this.a.a = 0;
+      localActivity = a();
+      if (!(localActivity instanceof bifb)) {
+        break label45;
+      }
+    }
+    label45:
+    for (this.d = new WeakReference((bifb)localActivity);; this.d = new WeakReference(a())) {
+      return (bifb)this.d.get();
+    }
+  }
+  
+  public CustomWebView a()
+  {
+    WebViewFragment localWebViewFragment;
+    if (this.a == null)
+    {
+      localWebViewFragment = a();
+      if (localWebViewFragment == null) {
+        break label42;
+      }
+    }
+    label42:
+    for (this.a = new WeakReference(localWebViewFragment.getWebView());; this.a = new WeakReference(null)) {
+      return (CustomWebView)this.a.get();
+    }
+  }
+  
+  public AppInterface a()
+  {
+    AppRuntime localAppRuntime;
+    if (this.b == null)
+    {
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localAppRuntime instanceof ToolAppRuntime)) {
+        break label52;
+      }
+      this.b = new WeakReference((AppInterface)localAppRuntime.getAppRuntime("modular_web"));
     }
     for (;;)
     {
-      this.a.a(this.a.a);
-      bcef.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a = 1;
-      continue;
-      this.a.a = 2;
-      continue;
-      this.a.a = 3;
+      return (AppInterface)this.b.get();
+      label52:
+      if ((localAppRuntime instanceof AppInterface)) {
+        this.b = new WeakReference((AppInterface)localAppRuntime);
+      } else {
+        this.b = new WeakReference(null);
+      }
+    }
+  }
+  
+  public WebViewFragment a()
+  {
+    Activity localActivity;
+    if (this.e == null)
+    {
+      localActivity = a();
+      if (!(localActivity instanceof biex)) {
+        break label50;
+      }
+    }
+    label50:
+    for (this.e = new WeakReference(((biex)localActivity).a());; this.e = new WeakReference(null)) {
+      return (WebViewFragment)this.e.get();
     }
   }
 }

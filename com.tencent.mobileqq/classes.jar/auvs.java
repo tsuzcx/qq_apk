@@ -1,18 +1,27 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvs
   implements View.OnClickListener
 {
-  public auvs(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
+  public auvs(CommonTabFragment paramCommonTabFragment) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      WebViewPluginEngine localWebViewPluginEngine = this.a.a.mWebview.getPluginEngine();
+      if (localWebViewPluginEngine != null) {
+        localWebViewPluginEngine.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
+      }
+    }
   }
 }
 

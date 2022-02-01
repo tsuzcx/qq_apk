@@ -1,83 +1,36 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
 import com.tencent.qphone.base.util.QLog;
 
 public class asvk
-  extends asvn
+  implements Animator.AnimatorListener
 {
-  public asvk(asst paramasst, Activity paramActivity)
-  {
-    super(paramasst, paramActivity);
-  }
+  public asvk(SignalBombAnimationView paramSignalBombAnimationView) {}
   
-  private boolean c()
-  {
-    return (d()) && (!this.jdField_a_of_type_Asst.f());
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  private boolean d()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (aszt.a(this.jdField_a_of_type_AndroidAppActivity.getBaseContext(), this.jdField_a_of_type_Asst.c(), this.jdField_a_of_type_Asst.c())) || (bcvs.c(this.jdField_a_of_type_Asst.d(), this.jdField_a_of_type_Asst.c(), this.jdField_a_of_type_Asst.c()));
-  }
-  
-  public void a()
-  {
-    boolean bool = true;
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = preview simple");
-    }
-    label81:
-    SimpleFileViewer localSimpleFileViewer;
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Asst.h())) || (16 == this.jdField_a_of_type_Asst.b()))
+    if ((this.a.a != null) && (SignalBombAnimationView.a(this.a) != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(false);
-      if (this.jdField_a_of_type_Asst.b() != 16) {
-        break label123;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692199));
-      ap_();
-      localSimpleFileViewer = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer;
-      if (this.jdField_a_of_type_Asst.i()) {
-        break label152;
-      }
+      SignalBombAnimationView.a(this.a).setVisibility(0);
+      SignalBombAnimationView.a(this.a).setImageDrawable(this.a.a);
+      this.a.a.start();
+      QLog.d("SignalBombAnimationView", 2, "mFireDrawable start");
     }
-    for (;;)
-    {
-      localSimpleFileViewer.c(bool);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.g(this.jdField_a_of_type_Asst.h());
-      break;
-      label123:
-      if (!this.jdField_a_of_type_Asst.d()) {
-        break label81;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692372));
-      break label81;
-      label152:
-      bool = false;
-    }
+    paramAnimator = ObjectAnimator.ofFloat(SignalBombAnimationView.b(this.a), "alpha", new float[] { 1.0F, 1.0F });
+    paramAnimator.setDuration(480L);
+    paramAnimator.addListener(new asvl(this));
+    paramAnimator.start();
   }
   
-  protected void ap_()
-  {
-    if ((this.jdField_a_of_type_Asst.b() == 16) || (this.jdField_a_of_type_Asst.d())) {}
-    do
-    {
-      return;
-      if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_Asst.d()))
-      {
-        super.ap_();
-        return;
-      }
-    } while ((!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) || (!c()));
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692521);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(str, new asvl(this));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

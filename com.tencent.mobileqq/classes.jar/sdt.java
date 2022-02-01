@@ -1,44 +1,87 @@
+import android.os.Message;
+import com.tencent.mobileqq.mp.bigFileUpload.BigFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-public class sdt
+class sdt
+  extends TransProcessorHandler
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 4;
-  public static int f = 1;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  sdt(sds paramsds) {}
   
-  public sdt(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    this.m = paramInt1;
-    this.n = paramInt2;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_hitCount", String.valueOf(this.g));
-    localHashMap.put("param_notHitCount", String.valueOf(this.h));
-    localHashMap.put("param_triggerCount", String.valueOf(this.i));
-    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
-    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
-    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
-    localHashMap.put("param_sceneType", String.valueOf(this.m));
-    localHashMap.put("param_strategy", String.valueOf(this.n));
-    if (QLog.isColorLevel()) {
-      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != 54)) {}
+    while ((sds.a(this.a) == null) || (localFileMsg.uniseq != sds.a(this.a))) {
+      return;
     }
-    return localHashMap;
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+      return;
+    case 1001: 
+      paramMessage = new JSONObject();
+      try
+      {
+        paramMessage.put("uniseq", sds.a(this.a));
+        paramMessage.put("localPath", sds.a(this.a));
+        sds.a(this.a).a(paramMessage.toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "uploadListener.onStart, e=" + QLog.getStackTraceString(localException));
+        }
+      }
+    case 1002: 
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJUGC.RIJUgcVideoUploader", 2, "mVideoTransProcessorHandler transfer=" + localException.transferedSize + ", total=" + localException.fileSize);
+      }
+      sds.a(this.a).a((float)localException.transferedSize * 100.0F / (float)localException.fileSize);
+      return;
+    case 1003: 
+      QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send finished!");
+      paramMessage = new bigFileUpload.BigFileExtRsp();
+      for (;;)
+      {
+        try
+        {
+          paramMessage.mergeFrom(localException.bdhExtendInfo);
+          int i = paramMessage.int32_retcode.get();
+          QLog.d("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler rsp.errorCode:" + i);
+          if (i != 0) {
+            continue;
+          }
+          if (!paramMessage.bytes_download_url.has()) {
+            continue;
+          }
+          paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
+          sds.a(this.a).a(paramMessage);
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "upload success but parse exception, e=" + QLog.getStackTraceString(paramMessage));
+          continue;
+          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler rsp.error info:" + paramMessage.bytes_msg.get().toStringUtf8());
+          sds.a(this.a).a(localException.errorCode, paramMessage.bytes_msg.get().toStringUtf8());
+          continue;
+        }
+        sds.a(this.a);
+        return;
+        sds.a(this.a).a(-1, "not has download url");
+      }
+    }
+    QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send error:" + localException.errorCode);
+    sds.a(this.a).a(localException.errorCode, "");
+    sds.a(this.a);
   }
 }
 

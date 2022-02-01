@@ -1,29 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-class ycf
-  implements Animator.AnimatorListener
+public class ycf
+  extends wpt
 {
-  ycf(ycd paramycd) {}
+  public List<String> a = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public ycf(ErrorMessage paramErrorMessage)
   {
-    this.a.a = false;
+    super(paramErrorMessage);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String toString()
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    return "FeedData{" + super.toString() + '}';
   }
 }
 

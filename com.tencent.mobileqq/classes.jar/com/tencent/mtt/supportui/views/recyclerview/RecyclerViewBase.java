@@ -744,8 +744,8 @@ public abstract class RecyclerViewBase
       this.mState.mFooterCount = this.mAdapter.getFooterViewCount();
       int j;
       int i;
-      Object localObject1;
       Object localObject2;
+      Object localObject1;
       if (bool)
       {
         this.mState.mPreLayoutHolderMap.clear();
@@ -754,9 +754,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject1 = getChildViewHolderInt(getChildAtInItem(i));
-          localObject2 = ((RecyclerViewBase.ViewHolder)localObject1).itemView;
-          this.mState.mPreLayoutHolderMap.put(localObject1, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject1, ((View)localObject2).getLeft(), ((View)localObject2).getTop(), ((View)localObject2).getRight(), ((View)localObject2).getBottom(), ((RecyclerViewBase.ViewHolder)localObject1).mPosition));
+          localObject2 = getChildViewHolderInt(getChildAtInItem(i));
+          localObject1 = ((RecyclerViewBase.ViewHolder)localObject2).itemView;
+          this.mState.mPreLayoutHolderMap.put(localObject2, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject2, ((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom(), ((RecyclerViewBase.ViewHolder)localObject2).mPosition));
           i += 1;
         }
       }
@@ -776,9 +776,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject2 = getChildViewHolderInt(getChildAtInItem(i));
-          localObject1 = ((RecyclerViewBase.ViewHolder)localObject2).itemView;
-          this.mState.mPostLayoutHolderMap.put(localObject2, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject2, ((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom(), ((RecyclerViewBase.ViewHolder)localObject2).mPosition));
+          localObject1 = getChildViewHolderInt(getChildAtInItem(i));
+          localObject2 = ((RecyclerViewBase.ViewHolder)localObject1).itemView;
+          this.mState.mPostLayoutHolderMap.put(localObject1, new RecyclerViewBase.ItemHolderInfo((RecyclerViewBase.ViewHolder)localObject1, ((View)localObject2).getLeft(), ((View)localObject2).getTop(), ((View)localObject2).getRight(), ((View)localObject2).getBottom(), ((RecyclerViewBase.ViewHolder)localObject1).mPosition));
           i += 1;
         }
         i = this.mState.mPreLayoutHolderMap.size() - 1;
@@ -824,9 +824,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject2 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
-          localObject1 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
-          handleLayoutHolder((RecyclerViewBase.ViewHolder)localObject2, (RecyclerViewBase.ItemHolderInfo)this.mState.mPreLayoutHolderMap.get(localObject2), (RecyclerViewBase.ItemHolderInfo)localObject1);
+          localObject1 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
+          localObject2 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
+          handleLayoutHolder((RecyclerViewBase.ViewHolder)localObject1, (RecyclerViewBase.ItemHolderInfo)this.mState.mPreLayoutHolderMap.get(localObject1), (RecyclerViewBase.ItemHolderInfo)localObject2);
           i += 1;
         }
       }

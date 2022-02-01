@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import bcef;
+import bdla;
 
 class ConfessMsgListFragment$1
   implements Runnable
@@ -9,7 +9,7 @@ class ConfessMsgListFragment$1
   
   public void run()
   {
-    bcef.b(this.this$0.a, "dc00898", "", "", "0X8008F4A", "0X8008F4A", 2, 0, "", "", "", "");
+    bdla.b(this.this$0.a, "dc00898", "", "", "0X8008F4A", "0X8008F4A", 2, 0, "", "", "", "");
   }
 }
 

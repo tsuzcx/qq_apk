@@ -1,34 +1,12 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
+import com.tencent.common.app.AppInterface;
 
-public class mhu
-  implements mlx
+public abstract interface mhu
 {
-  public mhu(QavOperationMenuView paramQavOperationMenuView) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    case 1: 
-    default: 
-    case 2: 
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(paramString, paramInt2, false);
-      return;
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramInt2, true);
-    }
-    mrd.c(2131373427);
-  }
+  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, min parammin, mim parammim);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mhu
  * JD-Core Version:    0.7.0.1
  */

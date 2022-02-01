@@ -159,10 +159,10 @@ public class FrozenFrameTrigerCtrlItem
   
   public PTFaceAttr updateFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
-    if (paramPTFaceAttr != null)
+    if ((paramPTFaceAttr != null) && (paramPTFaceAttr.getData() != null))
     {
       if (this.mFaceAttr != null) {
-        break label184;
+        break label191;
       }
       byte[] arrayOfByte = new byte[paramPTFaceAttr.getData().length];
       System.arraycopy(paramPTFaceAttr.getData(), 0, arrayOfByte, 0, arrayOfByte.length);
@@ -171,7 +171,7 @@ public class FrozenFrameTrigerCtrlItem
     for (;;)
     {
       return this.mFaceAttr;
-      label184:
+      label191:
       this.mFaceAttr.setTimeStamp(paramPTFaceAttr.getTimeStamp());
     }
   }

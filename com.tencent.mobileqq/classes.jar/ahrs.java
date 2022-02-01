@@ -1,50 +1,16 @@
-public class ahrs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
+
+class ahrs
+  implements DialogInterface.OnDismissListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private ahrt jdField_a_of_type_Ahrt;
+  ahrs(ahri paramahri) {}
   
-  public ahrs() {}
-  
-  public ahrs(ahrt paramahrt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Ahrt = paramahrt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.jdField_a_of_type_Ahrt != null)
-      {
-        this.jdField_a_of_type_Ahrt.a(1);
-        this.jdField_a_of_type_Int = 2;
-      }
-    }
-    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Ahrt == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Ahrt.a(2);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Ahrt != null))
-    {
-      this.jdField_a_of_type_Ahrt.a();
-      this.jdField_a_of_type_Int = 3;
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_Ahrt != null))
-    {
-      this.jdField_a_of_type_Ahrt.b();
-      this.jdField_a_of_type_Int = 1;
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (ahri.a(this.a) != null)) {
+      this.a.r();
     }
   }
 }

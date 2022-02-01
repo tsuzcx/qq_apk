@@ -1,16 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Intent;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class bfrz
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bfrz
 {
-  bfrz(axpc paramaxpc) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.a.a(paramValueAnimator.intValue());
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(JSONArray paramJSONArray);
+  
+  public abstract void a(JSONObject paramJSONObject);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

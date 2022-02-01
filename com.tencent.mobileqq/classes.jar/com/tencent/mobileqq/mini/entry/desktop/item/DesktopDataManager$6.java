@@ -63,36 +63,42 @@ final class DesktopDataManager$6
                   localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopAppModuleInfo)localDesktopItemInfo).moduleTitle, i, 3));
                 }
               }
-              else if (localDesktopItemInfo.getModuleType() == 0)
-              {
-                if ((localDesktopItemInfo instanceof DesktopSearchInfo)) {
-                  localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopSearchInfo)localDesktopItemInfo).mAppInfo.appId, i, 0));
-                }
-              }
               else
               {
-                Object localObject2;
-                if ((localDesktopItemInfo.getModuleType() == 4) && ((localDesktopItemInfo instanceof DesktopRecommendModuleInfo)))
+                if (localDesktopItemInfo.getModuleType() == 8) {
+                  break;
+                }
+                if (localDesktopItemInfo.getModuleType() == 0)
                 {
-                  localObject2 = (DesktopRecommendModuleInfo)localDesktopItemInfo;
-                  if ((((DesktopRecommendModuleInfo)localObject2).moduleInfo != null) && (((DesktopRecommendModuleInfo)localObject2).moduleInfo.title.get() != null)) {
-                    localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopRecommendModuleInfo)localObject2).moduleInfo.title.get(), i, localDesktopItemInfo.getModuleType()));
+                  if ((localDesktopItemInfo instanceof DesktopSearchInfo)) {
+                    localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopSearchInfo)localDesktopItemInfo).mAppInfo.appId, i, 0));
                   }
                 }
-                else if ((localDesktopItemInfo.getModuleType() == 5) && ((localDesktopItemInfo instanceof DesktopFriendsPkModuleInfo)))
+                else
                 {
-                  localObject2 = (DesktopFriendsPkModuleInfo)localDesktopItemInfo;
-                  if ((((DesktopFriendsPkModuleInfo)localObject2).moduleInfo != null) && (((DesktopFriendsPkModuleInfo)localObject2).moduleInfo.title.get() != null)) {
-                    localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopFriendsPkModuleInfo)localObject2).moduleInfo.title.get(), i, localDesktopItemInfo.getModuleType()));
+                  Object localObject2;
+                  if ((localDesktopItemInfo.getModuleType() == 4) && ((localDesktopItemInfo instanceof DesktopRecommendModuleInfo)))
+                  {
+                    localObject2 = (DesktopRecommendModuleInfo)localDesktopItemInfo;
+                    if ((((DesktopRecommendModuleInfo)localObject2).moduleInfo != null) && (((DesktopRecommendModuleInfo)localObject2).moduleInfo.title.get() != null)) {
+                      localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopRecommendModuleInfo)localObject2).moduleInfo.title.get(), i, localDesktopItemInfo.getModuleType()));
+                    }
                   }
-                }
-                else if ((localDesktopItemInfo.getModuleType() == 6) && ((localDesktopItemInfo instanceof DesktopPopularModuleInfo)))
-                {
-                  localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopPopularModuleInfo)localDesktopItemInfo).title, i, localDesktopItemInfo.getModuleType()));
-                }
-                else if ((localDesktopItemInfo.getModuleType() == 7) && ((localDesktopItemInfo instanceof DesktopDittoInfo)))
-                {
-                  localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopDittoInfo)localDesktopItemInfo).title, i, localDesktopItemInfo.getModuleType()));
+                  else if ((localDesktopItemInfo.getModuleType() == 5) && ((localDesktopItemInfo instanceof DesktopFriendsPkModuleInfo)))
+                  {
+                    localObject2 = (DesktopFriendsPkModuleInfo)localDesktopItemInfo;
+                    if ((((DesktopFriendsPkModuleInfo)localObject2).moduleInfo != null) && (((DesktopFriendsPkModuleInfo)localObject2).moduleInfo.title.get() != null)) {
+                      localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopFriendsPkModuleInfo)localObject2).moduleInfo.title.get(), i, localDesktopItemInfo.getModuleType()));
+                    }
+                  }
+                  else if ((localDesktopItemInfo.getModuleType() == 6) && ((localDesktopItemInfo instanceof DesktopPopularModuleInfo)))
+                  {
+                    localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopPopularModuleInfo)localDesktopItemInfo).title, i, localDesktopItemInfo.getModuleType()));
+                  }
+                  else if ((localDesktopItemInfo.getModuleType() == 7) && ((localDesktopItemInfo instanceof DesktopDittoInfo)))
+                  {
+                    localLinkedHashSet.add(DesktopDataManager.access$1300(((DesktopDittoInfo)localDesktopItemInfo).title, i, localDesktopItemInfo.getModuleType()));
+                  }
                 }
               }
             }

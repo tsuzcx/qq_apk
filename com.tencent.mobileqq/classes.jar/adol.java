@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adol
-  extends ResourcePluginListener
+  implements View.OnClickListener
 {
-  public adol(Leba paramLeba) {}
+  public adol(ChatHistory paramChatHistory) {}
   
-  public void a(byte paramByte)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

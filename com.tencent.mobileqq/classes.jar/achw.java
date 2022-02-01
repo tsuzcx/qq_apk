@@ -1,22 +1,8 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-class achw
-  extends AsyncTask<Void, Void, Void>
+public abstract interface achw
 {
-  achw(achv paramachv) {}
-  
-  protected Void a(Void... paramVarArgs)
-  {
-    paramVarArgs = achv.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
-    }
-    achv.a(this.a).clear();
-    return null;
-  }
+  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
 }
 
 

@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageForStarLeague;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahht
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ahht(ahhp paramahhp) {}
+  ahht(ahhs paramahhs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, null);
-    bcef.b(this.a.app, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((ahhu)AIOUtils.getHolder(paramView)).a;
+    if (!awyd.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
+      paramView.getContext().startActivity(localIntent);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

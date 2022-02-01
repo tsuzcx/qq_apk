@@ -1,58 +1,32 @@
-public class aqea
+class aqea
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  static final float[] a;
   
-  public int a()
+  static
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8192) {
+        break;
+      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqea
  * JD-Core Version:    0.7.0.1
  */

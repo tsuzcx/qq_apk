@@ -1,57 +1,56 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 
-final class ahlm
-  implements DialogInterface.OnClickListener
+class ahlm
+  implements ahlo
 {
-  ahlm(AbsShareMsg paramAbsShareMsg, FragmentActivity paramFragmentActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  ahlm(ahll paramahll) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    switch (paramInt)
+    paramView = (ahlp)AIOUtils.getHolder(paramView);
+    ahll.jdField_a_of_type_JavaLangString = paramView.a.senderuin;
+    Object localObject = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    aofm localaofm = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a();
+    if ((localObject != null) && (((ChatFragment)localObject).a() != null))
     {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("appid");
-        if (paramDialogInterface != null) {
-          ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
-        }
-      }
-      npn.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
+      localObject = (TroopChatPie)((ChatFragment)localObject).a();
+      ((agkh)((TroopChatPie)localObject).getHelper(41)).b(1);
+      localaofm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ((TroopChatPie)localObject).input, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 0, paramView.a);
     }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
-    if (!(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof SplashActivity))
+    new bdlf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_welcome").a(new String[] { paramView.a.frienduin, "", "" + TroopUtils.convSfToReportParam(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.a.frienduin) }).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPobingItemBuilder", 2, "点击欢迎");
+    }
+    ahll.c = 1;
+  }
+  
+  public void b(View paramView)
+  {
+    paramView = (ahlp)AIOUtils.getHolder(paramView);
+    ahll.jdField_a_of_type_JavaLangString = paramView.a.senderuin;
+    aofm localaofm = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a();
+    Object localObject = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    if ((localObject != null) && (((ChatFragment)localObject).a() != null))
     {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramDialogInterface.putExtra("tab_index", MainFragment.b);
-      paramDialogInterface.addFlags(67108864);
-      paramDialogInterface.addFlags(268435456);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
+      localObject = (TroopChatPie)((ChatFragment)localObject).a();
+      localaofm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ((TroopChatPie)localObject).input, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 1, paramView.a);
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a().returnMainFragment();
+    new bdlf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_play").a(new String[] { paramView.a.frienduin }).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPobingItemBuilder", 2, "点击撩一下");
+    }
+    ahll.c = 2;
   }
 }
 

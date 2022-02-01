@@ -8,11 +8,11 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import aqyp;
-import aqyt;
-import aqyy;
-import bfur;
-import bgve;
+import ascz;
+import asdd;
+import asdi;
+import bhdj;
+import bifw;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.AppConstants;
@@ -143,7 +143,7 @@ public class ThemeAndBubbleCommonJsPlugin
     {
       paramString2 = new Bundle();
       paramString2.putString("jumpTo", paramJsBridgeListener.optString("jumpto"));
-      super.sendRemoteReq(aqyt.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
+      super.sendRemoteReq(asdd.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
       return true;
     }
     if ("isWhiteName".equals(paramString3))
@@ -243,11 +243,11 @@ public class ThemeAndBubbleCommonJsPlugin
       paramString = new StringBuilder();
       paramString.append(paramJSONObject);
       paramString.append("?client=androidQQ");
-      paramString.append("&version=8.4.8.4810");
+      paramString.append("&version=8.4.10.4875");
       paramString.append("&system=" + Build.VERSION.RELEASE);
       paramString.append("&device=" + Build.DEVICE);
       paramString.append("&uin=" + ((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());
-      paramJSONObject = aqyy.a("VIP_xingying", paramString.toString());
+      paramJSONObject = asdi.a("VIP_xingying", paramString.toString());
       if (QLog.isColorLevel()) {
         QLog.i("CommonJsHandler", 2, "CommonJsHandler saveImage imageUrl=" + paramJSONObject);
       }
@@ -274,7 +274,7 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if (paramJSONObject.length >= 1)
       {
-        localObject = bfur.a(this.mRuntime.a(), 230);
+        localObject = bhdj.a(this.mRuntime.a(), 230);
         ((QQCustomDialogThreeBtns)localObject).setTitle(str2);
         ((QQCustomDialogThreeBtns)localObject).setMessage(str1);
         ((QQCustomDialogThreeBtns)localObject).setLeftButton(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));

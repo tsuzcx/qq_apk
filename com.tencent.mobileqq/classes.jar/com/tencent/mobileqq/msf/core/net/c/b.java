@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.w;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -25,18 +24,18 @@ public class b
     return b.a.a();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, g.a parama, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, f.b paramb, String paramString1, String paramString2)
   {
     try
     {
-      if (m.d.getStatReporter() != null)
+      if (k.d.getStatReporter() != null)
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("result", String.valueOf(paramInt1));
         localHashMap.put("clientIpFamily", String.valueOf(paramInt2));
         localHashMap.put("clientNetType", String.valueOf(paramInt3));
         localHashMap.put("serverIpFamily", String.valueOf(paramInt4));
-        localHashMap.put("testType", String.valueOf(parama));
+        localHashMap.put("testType", String.valueOf(paramb));
         localHashMap.put("domain", paramString1);
         localHashMap.put("nat64Prefix", paramString2);
         localHashMap.put("apn", NetConnInfoCenter.getCurrentAPN());
@@ -45,15 +44,15 @@ public class b
         localHashMap.put("deviceBrand", Build.BRAND);
         localHashMap.put("deviceModel", Build.MODEL);
         if (QLog.isDebugVersion()) {
-          QLog.d("QualityIpv6TestReport", 4, "reportQualityTest result=" + paramInt1 + ", clientIpFamily=" + paramInt2 + ", clientNetType=" + paramInt3 + ", serverIpFamily=" + paramInt4 + ", testType=" + parama + ", domain=" + paramString1 + ", nat64Prefix=" + paramString2 + ", apn=" + NetConnInfoCenter.getCurrentAPN() + ", imsi=" + w.e() + ", os=" + Build.VERSION.SDK_INT + ", brand=" + Build.BRAND + ", model=" + Build.MODEL);
+          QLog.d("QualityIpv6TestReport", 4, "reportQualityTest result=" + paramInt1 + ", clientIpFamily=" + paramInt2 + ", clientNetType=" + paramInt3 + ", serverIpFamily=" + paramInt4 + ", testType=" + paramb + ", domain=" + paramString1 + ", nat64Prefix=" + paramString2 + ", apn=" + NetConnInfoCenter.getCurrentAPN() + ", imsi=" + w.e() + ", os=" + Build.VERSION.SDK_INT + ", brand=" + Build.BRAND + ", model=" + Build.MODEL);
         }
-        m.d.getStatReporter().a("EvtIpv6QualityReport", true, 0L, 0L, localHashMap, false, false);
+        k.d.getStatReporter().a("EvtIpv6QualityReport", true, 0L, 0L, localHashMap, false, false);
       }
       return;
     }
-    catch (Throwable parama)
+    catch (Throwable paramb)
     {
-      QLog.d("QualityIpv6TestReport", 1, "reportQualityTest exception=" + parama);
+      QLog.d("QualityIpv6TestReport", 1, "reportQualityTest exception=" + paramb);
     }
   }
 }

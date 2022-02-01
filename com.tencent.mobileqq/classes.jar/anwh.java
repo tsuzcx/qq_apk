@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anwh
-  implements BusinessObserver
+final class anwh
+  implements DialogInterface.OnClickListener
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  anwh(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      if (!paramBoolean) {
-        break;
-      }
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
-    return;
-    a(false, false, -1);
+    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
   }
 }
 

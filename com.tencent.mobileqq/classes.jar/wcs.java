@@ -1,23 +1,33 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class wcs
-  extends vko
+class wcs
+  extends Job<Object, Object, Object>
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  
-  public wcs(wcr paramwcr, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
+  wcs(wcn paramwcn, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramString1);
   }
   
-  public String toString()
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
+    paramJobContext = new wix(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+    {
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+    }
+    wad.a().dispatch(paramJobContext);
+    return null;
   }
 }
 

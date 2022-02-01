@@ -1,11 +1,14 @@
-class xun
-  implements yqo<xqq>
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+
+public class xun
+  implements ypw
 {
-  xun(xuh paramxuh) {}
+  public xun(QQStoryMainController paramQQStoryMainController) {}
   
-  public xqq a()
+  public void a()
   {
-    return new xqq();
+    ykv.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
+    this.a.a(false, true, 1, null);
   }
 }
 

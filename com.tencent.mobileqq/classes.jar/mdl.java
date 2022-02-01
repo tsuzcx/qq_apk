@@ -1,53 +1,65 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.MobileQQ;
+import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
-class mdl
-  implements View.OnClickListener
+public class mdl
+  implements mik
 {
-  mdl(mdk parammdk) {}
+  public mdl(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = 0;
-    mdn localmdn = (mdn)paramView.getTag();
-    if (mdk.a(this.a) == null)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.M();
+    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
+    if (localEffectOperateManager != null) {
+      localEffectOperateManager.b(false);
     }
-    bcef.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(localmdn.jdField_a_of_type_Long));
-    }
-    mdk.a(this.a).getCurrentAccountUin();
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
-    localIntent.putExtra("memberUin", String.valueOf(localmdn.jdField_a_of_type_Long));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      i = 1000;
-    }
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.O();
+  }
+  
+  public void b()
+  {
+    lfe locallfe = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a();
+    muy.a().b(this.jdField_a_of_type_Long);
+    locallfe.f = false;
+    if (locallfe.z != -1) {}
     for (;;)
     {
-      localIntent.putExtra("uinType", i);
-      localIntent.setPackage(mdk.a(this.a).getApplication().getPackageName());
-      mdk.a(this.a).getApp().sendBroadcast(localIntent);
-      break;
-      if (this.a.jdField_a_of_type_Int == 2) {
-        i = 1004;
+      locallfe.t = true;
+      msa.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
+      if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c) {
+        msa.r(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
       }
+      if ((locallfe.l()) && (locallfe.d == 2) && (!locallfe.j)) {
+        msa.e();
+      }
+      lbd.f(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, "DataReport onClose: ");
+      lie.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      lje.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      lhc.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      mcp.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+      mmo.a(locallfe);
+      String str = locallfe.b() + "";
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 237);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(237);
+      lhg.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str);
+      lhg.a(2, str);
+      lhg.a(2);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_JavaLangString, locallfe.z);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
+      locallfe.a("onClick_HangeUP", false);
+      locallfe.b("onClick_HangeUP", 0);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = false;
+      return;
+      locallfe.z = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdl
  * JD-Core Version:    0.7.0.1
  */

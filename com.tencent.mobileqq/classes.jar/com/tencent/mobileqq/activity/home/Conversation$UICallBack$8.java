@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
-import azii;
+import ajza;
+import baoq;
 
 public class Conversation$UICallBack$8
   implements Runnable
 {
-  public Conversation$UICallBack$8(ajdm paramajdm, String paramString) {}
+  public Conversation$UICallBack$8(ajza paramajza, String paramString) {}
   
   public void run()
   {
-    azii.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ajdm.a.a);
+    baoq.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ajza.a.a);
   }
 }
 

@@ -1,11 +1,19 @@
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
+
 class amxo
-  extends amwl
+  implements QQPermissionCallback
 {
-  amxo(amxn paramamxn) {}
+  amxo(amxj paramamxj, AppActivity paramAppActivity) {}
   
-  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a();
+    bhdj.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Amxj.grant();
   }
 }
 

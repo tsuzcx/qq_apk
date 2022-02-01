@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class qum
-  implements View.OnClickListener
+class qum
+  implements qie
 {
-  public qum(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  qum(quh paramquh, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ComponentContentNoteCard.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      quh.a(this.jdField_a_of_type_Quh, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      quh.a(this.jdField_a_of_type_Quh).notifyDataSetChanged();
+      return;
+    }
+    QQToast.a(quh.c(this.jdField_a_of_type_Quh).getContext(), 1, 2131717802, 0).a();
   }
 }
 

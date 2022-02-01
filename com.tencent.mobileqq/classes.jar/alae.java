@@ -1,14 +1,21 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class alae
-  extends aliz
+  implements View.OnLongClickListener
 {
-  public CheckBox a;
-  public TextView a;
+  public alae(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  private alae(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public boolean onLongClick(View paramView)
+  {
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).show();
+    }
+    return true;
+  }
 }
 
 

@@ -1,177 +1,249 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.FriendInfo;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class avbp
-  implements AudioManager.OnAudioFocusChangeListener
+  extends BaseAdapter
 {
-  public avbp(QQMusicPlayService paramQQMusicPlayService) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<FeedsItemData.LabelInfo> a;
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap;
   
-  /* Error */
-  public void onAudioFocusChange(int paramInt)
+  public avbp(List<FeedsItemData.LabelInfo> paramList, Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 22
-    //   2: iconst_1
-    //   3: new 24	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 27
-    //   12: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: iload_1
-    //   16: invokevirtual 34	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   25: aload_0
-    //   26: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   29: astore_2
-    //   30: aload_2
-    //   31: monitorenter
-    //   32: iload_1
-    //   33: tableswitch	default:+35 -> 68, -3:+210->243, -2:+158->191, -1:+38->71, 0:+35->68, 1:+256->289
-    //   69: monitorexit
-    //   70: return
-    //   71: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   74: ifnull +38 -> 112
-    //   77: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   80: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
-    //   83: ifeq +29 -> 112
-    //   86: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   89: invokevirtual 58	android/media/MediaPlayer:stop	()V
-    //   92: aload_0
-    //   93: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   96: invokestatic 61	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Ljava/lang/String;
-    //   99: iconst_4
-    //   100: invokestatic 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Ljava/lang/String;I)V
-    //   103: invokestatic 66	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Z
-    //   106: invokestatic 70	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:e	()I
-    //   109: invokestatic 75	avbo:b	(ZI)V
-    //   112: ldc 22
-    //   114: iconst_1
-    //   115: ldc 77
-    //   117: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   120: aload_0
-    //   121: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   124: iconst_0
-    //   125: iconst_0
-    //   126: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
-    //   129: aload_0
-    //   130: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   133: invokestatic 83	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Lavbq;
-    //   136: ifnull -68 -> 68
-    //   139: aload_0
-    //   140: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   143: invokestatic 83	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Lavbq;
-    //   146: bipush 11
-    //   148: invokevirtual 89	avbq:sendEmptyMessage	(I)Z
-    //   151: pop
-    //   152: goto -84 -> 68
-    //   155: astore_3
-    //   156: aload_2
-    //   157: monitorexit
-    //   158: aload_3
-    //   159: athrow
-    //   160: astore_2
-    //   161: ldc 22
-    //   163: iconst_1
-    //   164: new 24	java/lang/StringBuilder
-    //   167: dup
-    //   168: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   171: ldc 91
-    //   173: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: aload_2
-    //   177: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   180: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: aload_2
-    //   187: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   190: return
-    //   191: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   194: ifnull +29 -> 223
-    //   197: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   200: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
-    //   203: ifeq +20 -> 223
-    //   206: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   209: invokevirtual 100	android/media/MediaPlayer:pause	()V
-    //   212: aload_0
-    //   213: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   216: invokestatic 61	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Ljava/lang/String;
-    //   219: iconst_3
-    //   220: invokestatic 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Ljava/lang/String;I)V
-    //   223: ldc 22
-    //   225: iconst_1
-    //   226: ldc 102
-    //   228: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   231: aload_0
-    //   232: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   235: iconst_0
-    //   236: iconst_1
-    //   237: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
-    //   240: goto -172 -> 68
-    //   243: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   246: ifnull +32 -> 278
-    //   249: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   252: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
-    //   255: ifeq +23 -> 278
-    //   258: aload_0
-    //   259: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   262: invokestatic 105	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Z
-    //   265: ifne +13 -> 278
-    //   268: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   271: ldc 106
-    //   273: ldc 106
-    //   275: invokevirtual 110	android/media/MediaPlayer:setVolume	(FF)V
-    //   278: ldc 22
-    //   280: iconst_1
-    //   281: ldc 112
-    //   283: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   286: goto -218 -> 68
-    //   289: invokestatic 115	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:f	()I
-    //   292: iconst_3
-    //   293: if_icmpne +36 -> 329
-    //   296: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   299: ifnull +30 -> 329
-    //   302: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   305: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
-    //   308: ifne +21 -> 329
-    //   311: aload_0
-    //   312: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   315: invokestatic 105	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Z
-    //   318: ifne +11 -> 329
-    //   321: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
-    //   324: fconst_1
-    //   325: fconst_1
-    //   326: invokevirtual 110	android/media/MediaPlayer:setVolume	(FF)V
-    //   329: ldc 22
-    //   331: iconst_1
-    //   332: ldc 117
-    //   334: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   337: aload_0
-    //   338: getfield 12	avbp:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
-    //   341: iconst_1
-    //   342: iconst_0
-    //   343: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
-    //   346: goto -278 -> 68
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	349	0	this	avbp
-    //   0	349	1	paramInt	int
-    //   29	128	2	localQQMusicPlayService	QQMusicPlayService
-    //   160	27	2	localException	java.lang.Exception
-    //   155	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   68	70	155	finally
-    //   71	112	155	finally
-    //   112	152	155	finally
-    //   156	158	155	finally
-    //   191	223	155	finally
-    //   223	240	155	finally
-    //   243	278	155	finally
-    //   278	286	155	finally
-    //   289	329	155	finally
-    //   329	346	155	finally
-    //   25	32	160	java/lang/Exception
-    //   158	160	160	java/lang/Exception
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePubFeedsAdapter", 0, "[LabelsAdapter] set next image");
+    }
+    if (paramList == null) {}
+    for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
+    {
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      return;
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePubFeedsAdapter", 0, "[getView] set next image");
+    }
+    FeedsItemData.LabelInfo localLabelInfo = (FeedsItemData.LabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    avbo localavbo;
+    Object localObject1;
+    if (paramView == null)
+    {
+      localavbo = new avbo();
+      paramView = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      ((RelativeLayout)localObject1).setId(2131368759);
+      Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = AIOUtils.dp2px(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((RelativeLayout)localObject1).setPadding(AIOUtils.dp2px(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      Object localObject3 = new ImageSwitcher(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageSwitcher)localObject3).setId(2131368634);
+      ((ImageSwitcher)localObject3).setFactory(new avbq(this));
+      Object localObject4 = new RelativeLayout.LayoutParams(AIOUtils.dp2px(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((RelativeLayout.LayoutParams)localObject4).addRule(9);
+      ((RelativeLayout)localObject1).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+      localObject4 = new ImageSwitcher(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageSwitcher)localObject4).setFactory(new avbr(this));
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.addRule(5, ((ImageSwitcher)localObject3).getId());
+      localLayoutParams.leftMargin = AIOUtils.dp2px(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((RelativeLayout)localObject1).addView((View)localObject4, localLayoutParams);
+      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)localObject3);
+      localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)localObject4);
+      localavbo.jdField_a_of_type_Avfq = new avfq(localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher, localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher);
+      localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject2).setId(2131368633);
+      localObject3 = new RelativeLayout.LayoutParams(AIOUtils.dp2px(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(32.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((RelativeLayout.LayoutParams)localObject3).addRule(14);
+      ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+      localavbo.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
+      localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      ((TextView)localObject3).setSingleLine(true);
+      ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
+      localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, ((RelativeLayout)localObject1).getId());
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = AIOUtils.dp2px(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((TextView)localObject3).setTextSize(12.0F);
+      ((TextView)localObject3).setTextColor(-14540254);
+      ((TextView)localObject3).setId(2131371803);
+      paramView.addView((View)localObject3, (ViewGroup.LayoutParams)localObject2);
+      localavbo.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject3);
+      localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      ((TextView)localObject2).setMaxLines(1);
+      ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
+      localObject4 = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject4).addRule(14);
+      ((RelativeLayout.LayoutParams)localObject4).addRule(3, ((TextView)localObject3).getId());
+      ((RelativeLayout.LayoutParams)localObject4).topMargin = AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((TextView)localObject2).setTextColor(-2145246686);
+      ((TextView)localObject2).setTextSize(10.0F);
+      paramView.addView((View)localObject2, (ViewGroup.LayoutParams)localObject4);
+      localObject3 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject3).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850427));
+      localObject4 = new RelativeLayout.LayoutParams(AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((RelativeLayout.LayoutParams)localObject4).addRule(7, ((RelativeLayout)localObject1).getId());
+      ((RelativeLayout.LayoutParams)localObject4).addRule(6, ((RelativeLayout)localObject1).getId());
+      paramView.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
+      localavbo.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject3);
+      localavbo.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+      paramView.setPadding(AIOUtils.dp2px(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setTag(localavbo);
+    }
+    for (;;)
+    {
+      localavbo.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (aver.a(localLabelInfo.redInfo))
+      {
+        localavbo.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localLabelInfo.name))
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(localLabelInfo.name, Boolean.valueOf(true));
+          localObject1 = new HashMap();
+          abuf.a((Map)localObject1, localLabelInfo.msgId);
+          ((Map)localObject1).put(Integer.valueOf(2), localLabelInfo.msgId);
+          ((Map)localObject1).put(Integer.valueOf(3), localLabelInfo.reportId);
+          abuf.a(amwn.a(), "769", "205648", localLabelInfo.appId, "76903", "1", "160", (Map)localObject1);
+        }
+      }
+      if (!localLabelInfo.isFriend) {
+        break label1386;
+      }
+      localavbo.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+      localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+      if ((localLabelInfo.friendList != null) && (localLabelInfo.friendList.size() > 0)) {}
+      try
+      {
+        if (localLabelInfo.friendList.size() < 2) {
+          break label1300;
+        }
+        localObject1 = URLDrawable.getDrawable(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(0)).icon);
+        localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject1);
+        localObject1 = URLDrawable.getDrawable(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(1)).icon);
+        localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject1);
+        if (localLabelInfo.friendList.size() >= 4)
+        {
+          localObject1 = new ArrayList();
+          int i = 0;
+          for (;;)
+          {
+            if (i < localLabelInfo.friendList.size())
+            {
+              ((List)localObject1).add(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(i)).icon);
+              i += 1;
+              continue;
+              localavbo = (avbo)paramView.getTag();
+              break;
+            }
+          }
+          localavbo.jdField_a_of_type_Avfq.a((List)localObject1);
+        }
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          QLog.e("QQGamePubFeedsAdapter", 1, "[TopCardVH] initView error." + localException1);
+        }
+      }
+    }
+    localavbo.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131709775));
+    localavbo.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131709770) + localLabelInfo.friendNum + anvx.a(2131709762));
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      label1300:
+      localObject1 = URLDrawable.getDrawable(((FeedsItemData.FriendInfo)localLabelInfo.friendList.get(0)).icon);
+      localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+      localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject1);
+      localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
+      break;
+      try
+      {
+        label1386:
+        URLDrawable localURLDrawable;
+        if ((localLabelInfo.icons != null) && (localLabelInfo.icons.size() > 0))
+        {
+          if (localLabelInfo.icons.size() < 2) {
+            break label1562;
+          }
+          localavbo.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+          localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+          localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+          localURLDrawable = URLDrawable.getDrawable((String)localLabelInfo.icons.get(0));
+          localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(localURLDrawable);
+          localURLDrawable = URLDrawable.getDrawable((String)localLabelInfo.icons.get(1));
+          localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable(localURLDrawable);
+          if (localLabelInfo.icons.size() >= 4) {
+            localavbo.jdField_a_of_type_Avfq.a(localLabelInfo.icons);
+          }
+        }
+        for (;;)
+        {
+          localavbo.jdField_a_of_type_AndroidWidgetTextView.setText(localLabelInfo.name);
+          localavbo.jdField_b_of_type_AndroidWidgetTextView.setText(localLabelInfo.desc);
+          break;
+          label1562:
+          localavbo.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+          localavbo.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
+          localavbo.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
+          localURLDrawable = URLDrawable.getDrawable((String)localLabelInfo.icons.get(0));
+          localavbo.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          QLog.e("QQGamePubFeedsAdapter", 1, "[TopCardVH] initView error." + localException2);
+        }
+      }
+    }
   }
 }
 

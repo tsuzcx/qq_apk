@@ -1,71 +1,30 @@
-import android.graphics.PointF;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public class yel
-  implements yco
+class yel
+  extends LruCache<yen, Drawable>
 {
-  public yel(DoodleEditView paramDoodleEditView) {}
-  
-  public void a(ygw paramygw)
+  yel(yek paramyek, int paramInt)
   {
-    if ((paramygw instanceof ycr))
-    {
-      paramygw = (ycp)DoodleEditView.a(this.a).a("TextLayer");
-      if (paramygw != null) {
-        paramygw.a();
-      }
-    }
-    this.a.a.b();
+    super(paramInt);
   }
   
-  public void a(ygw paramygw, int paramInt1, int paramInt2)
+  protected int a(yen paramyen, Drawable paramDrawable)
   {
-    if ((paramygw instanceof ycr))
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      xvv.b("DoodleEditView", "click the TextItem:" + paramygw);
-      paramygw = (ycp)DoodleEditView.a(this.a).a("TextLayer");
-      this.a.a.b();
-      if ((paramygw != null) && (paramygw.a != null))
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
       {
-        paramygw.d();
-        paramygw.a.a();
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        yew.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramyen, " size=", Integer.valueOf(i) });
+        return i;
       }
     }
-    ycc localycc;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramygw instanceof ycg));
-        xvv.b("DoodleEditView", "click the FaceAndTextItem:" + paramygw);
-        paramygw.d = false;
-        localycc = (ycc)DoodleEditView.a(this.a).a("FaceLayer");
-        ycg localycg = (ycg)paramygw;
-        if (localycc != null) {
-          localycc.jdField_a_of_type_JavaUtilList.add(localycg);
-        }
-        this.a.a.b();
-        this.a.setVisibility(8);
-      } while (DoodleEditView.a(this.a) == null);
-      if (!(paramygw instanceof ycd)) {
-        break;
-      }
-    } while ((localycc == null) || (localycc.jdField_a_of_type_Ycj == null));
-    localycc.jdField_a_of_type_Ycj.a((ycd)paramygw);
-    return;
-    DoodleEditView.a(this.a).a(paramygw);
-  }
-  
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
-  {
-    if (DoodleEditView.a(this.a) != null) {
-      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
-    }
+    return 524288;
   }
 }
 

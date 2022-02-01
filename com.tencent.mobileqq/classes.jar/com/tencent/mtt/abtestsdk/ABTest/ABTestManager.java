@@ -1,7 +1,5 @@
 package com.tencent.mtt.abtestsdk.ABTest;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -21,7 +19,7 @@ import com.tencent.mtt.abtestsdk.utils.ABTestLog;
 import com.tencent.mtt.abtestsdk.utils.ABTestUtil;
 import com.tencent.mtt.abtestsdk.utils.HandlerThreadUtil;
 import com.tencent.mtt.abtestsdk.utils.SystemUtil;
-import com.tencent.mtt.abtestsdk.utils.ThreadUtil;
+import com.tencent.mtt.abtestsdk.utils.ThreadPoolUtil;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -30,23 +28,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import okhttp3.OkHttpClient.Builder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ABTestManager
 {
   private static final boolean DEBUG = false;
-  public static final int DEFAULT_REFRESH_TIME = 10;
-  public static final int DEFAULT_TIMEOUT = 2;
+  public static final int DEFAULT_REFRESH_TIME = 60;
   private static final int GET_EXPERIMENTS_FAILED = 1;
   private static final int GET_EXPERIMENTS_SUCCESS = 0;
   public static volatile boolean IS_SDK_HAS_INIT = false;
   private static final String PLATFORM = "Android";
-  private static final String TAG = "ABTestManager";
   private static LruCache<String, JSONObject> mCache = new LruCache(ABTestUtil.maxMemCacheSize());
-  final OkHttpClient.Builder builder = new OkHttpClient.Builder();
   private ABTestConfig mConfig;
   private Context mContext;
   private SharedPreferences mSharedPreferencesForConfig;
@@ -58,7 +51,7 @@ public class ABTestManager
   {
     if (!this.romaStrategy.isEnableReport())
     {
-      ABTestLog.debug("ABTestManager", new Object[] { "report not enabled!" });
+      ABTestLog.debug("report not enabled!", new Object[0]);
       return;
     }
     String str1 = "";
@@ -68,15 +61,10 @@ public class ABTestManager
     if (this.mSharedPreferencesForReport.getInt(paramString2, -1) >= 2) {}
     for (String str2 = "0";; str2 = "1")
     {
-      String str4 = getConfigInfoFromSP("bundle_app_info");
-      String str5 = getConfigInfoFromSP("bundle_version");
+      String str3 = getConfigInfoFromSP("bundle_app_info");
+      String str4 = getConfigInfoFromSP("bundle_version");
       long l = System.currentTimeMillis();
-      String str3 = "";
-      Object localObject = ActivityManager.getInstance().getCurrentActivity();
-      if (localObject != null) {
-        str3 = ((Activity)localObject).getLocalClassName();
-      }
-      localObject = getConfigInfoFromSP("os_version");
+      String str5 = getConfigInfoFromSP("os_version");
       String str6 = getConfigInfoFromSP("device_brand");
       String str7 = getConfigInfoFromSP("device_version");
       String str8 = getConfigInfoFromSP("device_width") + "_" + getConfigInfoFromSP("device_height");
@@ -88,18 +76,18 @@ public class ABTestManager
       localAttaEntity.guid = str1;
       localAttaEntity.eventcode = paramString1;
       localAttaEntity.appid = str10;
-      localAttaEntity.bundleid = str4;
-      localAttaEntity.bundlerversion = str5;
+      localAttaEntity.bundleid = str3;
+      localAttaEntity.bundlerversion = str4;
       localAttaEntity.channel = "";
       localAttaEntity.devicebrand = str6;
       localAttaEntity.devicemodel = str7;
-      localAttaEntity.eventpage = str3;
+      localAttaEntity.eventpage = "";
       localAttaEntity.eventtime = String.valueOf(l);
-      localAttaEntity.sdkversion = "1.1.0.9";
+      localAttaEntity.sdkversion = "1.1.1.0";
       localAttaEntity.resolution = str8;
       localAttaEntity.language = str9;
       localAttaEntity.osmodel = "android";
-      localAttaEntity.osversion = ((String)localObject);
+      localAttaEntity.osversion = str5;
       localAttaEntity.isfirsthint = str2;
       AttaReport.getInstance().report(localAttaEntity);
       return;
@@ -142,69 +130,69 @@ public class ABTestManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 176	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
+    //   1: getfield 149	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
     //   4: ifnull +9 -> 13
-    //   7: invokestatic 314	com/tencent/mtt/abtestsdk/utils/ABTestUtil:isSDCardMounted	()Z
+    //   7: invokestatic 288	com/tencent/mtt/abtestsdk/utils/ABTestUtil:isSDCardMounted	()Z
     //   10: ifne +35 -> 45
-    //   13: new 158	java/lang/StringBuilder
+    //   13: new 131	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   20: ldc_w 316
-    //   23: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   20: ldc_w 290
+    //   23: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_0
-    //   27: getfield 176	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
-    //   30: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   27: getfield 149	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
+    //   30: invokevirtual 293	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   36: iconst_0
     //   37: anewarray 4	java/lang/Object
-    //   40: invokestatic 275	com/tencent/mtt/abtestsdk/utils/ABTestLog:warn	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   40: invokestatic 249	com/tencent/mtt/abtestsdk/utils/ABTestLog:warn	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   43: aconst_null
     //   44: areturn
-    //   45: new 321	java/io/File
+    //   45: new 295	java/io/File
     //   48: dup
     //   49: aload_0
-    //   50: getfield 176	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
-    //   53: ldc_w 323
-    //   56: invokevirtual 329	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
-    //   59: ldc_w 331
-    //   62: invokespecial 334	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   50: getfield 149	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
+    //   53: ldc_w 297
+    //   56: invokevirtual 303	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
+    //   59: ldc_w 305
+    //   62: invokespecial 308	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   65: astore_1
     //   66: aload_1
-    //   67: invokevirtual 337	java/io/File:exists	()Z
+    //   67: invokevirtual 311	java/io/File:exists	()Z
     //   70: ifne +35 -> 105
-    //   73: new 158	java/lang/StringBuilder
+    //   73: new 131	java/lang/StringBuilder
     //   76: dup
-    //   77: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   77: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   80: aload_1
-    //   81: invokevirtual 340	java/io/File:getName	()Ljava/lang/String;
-    //   84: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: ldc_w 342
-    //   90: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 314	java/io/File:getName	()Ljava/lang/String;
+    //   84: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: ldc_w 316
+    //   90: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   96: iconst_0
     //   97: anewarray 4	java/lang/Object
-    //   100: invokestatic 275	com/tencent/mtt/abtestsdk/utils/ABTestLog:warn	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   100: invokestatic 249	com/tencent/mtt/abtestsdk/utils/ABTestLog:warn	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: aconst_null
     //   104: areturn
-    //   105: new 158	java/lang/StringBuilder
+    //   105: new 131	java/lang/StringBuilder
     //   108: dup
-    //   109: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   109: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   112: astore 7
-    //   114: new 344	java/io/FileInputStream
+    //   114: new 318	java/io/FileInputStream
     //   117: dup
     //   118: aload_1
-    //   119: invokespecial 347	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   119: invokespecial 321	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   122: astore_1
-    //   123: new 349	java/io/InputStreamReader
+    //   123: new 323	java/io/InputStreamReader
     //   126: dup
     //   127: aload_1
-    //   128: ldc_w 351
-    //   131: invokespecial 354	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   128: ldc_w 325
+    //   131: invokespecial 328	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   134: astore_2
-    //   135: new 356	java/io/BufferedReader
+    //   135: new 330	java/io/BufferedReader
     //   138: dup
     //   139: aload_2
-    //   140: invokespecial 359	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   140: invokespecial 333	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   143: astore 6
     //   145: aload 6
     //   147: astore 5
@@ -213,7 +201,7 @@ public class ABTestManager
     //   152: aload_1
     //   153: astore_3
     //   154: aload 6
-    //   156: invokevirtual 362	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   156: invokevirtual 336	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   159: astore 8
     //   161: aload 8
     //   163: ifnull +88 -> 251
@@ -225,7 +213,7 @@ public class ABTestManager
     //   174: astore_3
     //   175: aload 7
     //   177: aload 8
-    //   179: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: pop
     //   183: goto -38 -> 145
     //   186: astore 7
@@ -236,30 +224,30 @@ public class ABTestManager
     //   195: aload_1
     //   196: astore_3
     //   197: aload 7
-    //   199: invokevirtual 365	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   199: invokevirtual 339	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   202: iconst_0
     //   203: anewarray 4	java/lang/Object
-    //   206: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   209: aload 6
     //   211: ifnull +8 -> 219
     //   214: aload 6
-    //   216: invokevirtual 371	java/io/BufferedReader:close	()V
+    //   216: invokevirtual 345	java/io/BufferedReader:close	()V
     //   219: aload_2
     //   220: ifnull +7 -> 227
     //   223: aload_2
-    //   224: invokevirtual 372	java/io/InputStreamReader:close	()V
+    //   224: invokevirtual 346	java/io/InputStreamReader:close	()V
     //   227: aload_1
     //   228: ifnull -185 -> 43
     //   231: aload_1
-    //   232: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   232: invokevirtual 347	java/io/FileInputStream:close	()V
     //   235: aconst_null
     //   236: areturn
     //   237: astore_1
     //   238: aload_1
-    //   239: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   239: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   242: iconst_0
     //   243: anewarray 4	java/lang/Object
-    //   246: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   246: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   249: aconst_null
     //   250: areturn
     //   251: aload 6
@@ -269,8 +257,8 @@ public class ABTestManager
     //   258: aload_1
     //   259: astore_3
     //   260: aload 7
-    //   262: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   265: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   262: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   265: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   268: ifeq +64 -> 332
     //   271: aload 6
     //   273: astore 5
@@ -278,30 +266,30 @@ public class ABTestManager
     //   276: astore 4
     //   278: aload_1
     //   279: astore_3
-    //   280: ldc_w 382
+    //   280: ldc_w 356
     //   283: iconst_0
     //   284: anewarray 4	java/lang/Object
-    //   287: invokestatic 101	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   287: invokestatic 89	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   290: aload 6
     //   292: ifnull +8 -> 300
     //   295: aload 6
-    //   297: invokevirtual 371	java/io/BufferedReader:close	()V
+    //   297: invokevirtual 345	java/io/BufferedReader:close	()V
     //   300: aload_2
     //   301: ifnull +7 -> 308
     //   304: aload_2
-    //   305: invokevirtual 372	java/io/InputStreamReader:close	()V
+    //   305: invokevirtual 346	java/io/InputStreamReader:close	()V
     //   308: aload_1
     //   309: ifnull -266 -> 43
     //   312: aload_1
-    //   313: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   313: invokevirtual 347	java/io/FileInputStream:close	()V
     //   316: aconst_null
     //   317: areturn
     //   318: astore_1
     //   319: aload_1
-    //   320: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   320: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   323: iconst_0
     //   324: anewarray 4	java/lang/Object
-    //   327: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   327: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   330: aconst_null
     //   331: areturn
     //   332: aload 6
@@ -310,32 +298,32 @@ public class ABTestManager
     //   337: astore 4
     //   339: aload_1
     //   340: astore_3
-    //   341: new 267	org/json/JSONObject
+    //   341: new 241	org/json/JSONObject
     //   344: dup
     //   345: aload 7
-    //   347: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   350: invokespecial 384	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   347: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: invokespecial 358	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   353: astore 7
     //   355: aload 6
     //   357: ifnull +8 -> 365
     //   360: aload 6
-    //   362: invokevirtual 371	java/io/BufferedReader:close	()V
+    //   362: invokevirtual 345	java/io/BufferedReader:close	()V
     //   365: aload_2
     //   366: ifnull +7 -> 373
     //   369: aload_2
-    //   370: invokevirtual 372	java/io/InputStreamReader:close	()V
+    //   370: invokevirtual 346	java/io/InputStreamReader:close	()V
     //   373: aload_1
     //   374: ifnull +7 -> 381
     //   377: aload_1
-    //   378: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   378: invokevirtual 347	java/io/FileInputStream:close	()V
     //   381: aload 7
     //   383: areturn
     //   384: astore_1
     //   385: aload_1
-    //   386: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   386: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   389: iconst_0
     //   390: anewarray 4	java/lang/Object
-    //   393: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   393: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   396: goto -15 -> 381
     //   399: astore 7
     //   401: aconst_null
@@ -351,30 +339,30 @@ public class ABTestManager
     //   415: aload_1
     //   416: astore_3
     //   417: aload 7
-    //   419: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   419: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   422: iconst_0
     //   423: anewarray 4	java/lang/Object
-    //   426: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   426: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   429: aload 6
     //   431: ifnull +8 -> 439
     //   434: aload 6
-    //   436: invokevirtual 371	java/io/BufferedReader:close	()V
+    //   436: invokevirtual 345	java/io/BufferedReader:close	()V
     //   439: aload_2
     //   440: ifnull +7 -> 447
     //   443: aload_2
-    //   444: invokevirtual 372	java/io/InputStreamReader:close	()V
+    //   444: invokevirtual 346	java/io/InputStreamReader:close	()V
     //   447: aload_1
     //   448: ifnull -405 -> 43
     //   451: aload_1
-    //   452: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   452: invokevirtual 347	java/io/FileInputStream:close	()V
     //   455: aconst_null
     //   456: areturn
     //   457: astore_1
     //   458: aload_1
-    //   459: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   459: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   462: iconst_0
     //   463: anewarray 4	java/lang/Object
-    //   466: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   466: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   469: aconst_null
     //   470: areturn
     //   471: astore 7
@@ -391,30 +379,30 @@ public class ABTestManager
     //   487: aload_1
     //   488: astore_3
     //   489: aload 7
-    //   491: invokevirtual 385	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   491: invokevirtual 359	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   494: iconst_0
     //   495: anewarray 4	java/lang/Object
-    //   498: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   498: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   501: aload 6
     //   503: ifnull +8 -> 511
     //   506: aload 6
-    //   508: invokevirtual 371	java/io/BufferedReader:close	()V
+    //   508: invokevirtual 345	java/io/BufferedReader:close	()V
     //   511: aload_2
     //   512: ifnull +7 -> 519
     //   515: aload_2
-    //   516: invokevirtual 372	java/io/InputStreamReader:close	()V
+    //   516: invokevirtual 346	java/io/InputStreamReader:close	()V
     //   519: aload_1
     //   520: ifnull -477 -> 43
     //   523: aload_1
-    //   524: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   524: invokevirtual 347	java/io/FileInputStream:close	()V
     //   527: aconst_null
     //   528: areturn
     //   529: astore_1
     //   530: aload_1
-    //   531: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   531: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   534: iconst_0
     //   535: anewarray 4	java/lang/Object
-    //   538: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   538: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   541: aconst_null
     //   542: areturn
     //   543: astore 6
@@ -427,23 +415,23 @@ public class ABTestManager
     //   552: aload 5
     //   554: ifnull +8 -> 562
     //   557: aload 5
-    //   559: invokevirtual 371	java/io/BufferedReader:close	()V
+    //   559: invokevirtual 345	java/io/BufferedReader:close	()V
     //   562: aload_2
     //   563: ifnull +7 -> 570
     //   566: aload_2
-    //   567: invokevirtual 372	java/io/InputStreamReader:close	()V
+    //   567: invokevirtual 346	java/io/InputStreamReader:close	()V
     //   570: aload_1
     //   571: ifnull +7 -> 578
     //   574: aload_1
-    //   575: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   575: invokevirtual 347	java/io/FileInputStream:close	()V
     //   578: aload 6
     //   580: athrow
     //   581: astore_1
     //   582: aload_1
-    //   583: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   583: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
     //   586: iconst_0
     //   587: anewarray 4	java/lang/Object
-    //   590: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   590: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   593: goto -15 -> 578
     //   596: astore 6
     //   598: aconst_null
@@ -599,64 +587,49 @@ public class ABTestManager
     //   135	145	692	java/io/FileNotFoundException
   }
   
-  @Deprecated
-  private void getExperimentsByGuid(OnUpdateExperimentsListener paramOnUpdateExperimentsListener, int paramInt)
-  {
-    String str = this.mConfig.getRequestUrl();
-    ABTestLog.debug("request url:" + str, new Object[0]);
-    ThreadUtil.execute(new ABTestManager.1(this, new ABTestManager.UIHandler(paramOnUpdateExperimentsListener), str, paramInt));
-  }
-  
   private void getExperimentsByTag(String paramString, OnUpdateExperimentsListener paramOnUpdateExperimentsListener, int paramInt)
   {
     paramOnUpdateExperimentsListener = new ABTestManager.UIHandler(paramOnUpdateExperimentsListener);
     if (this.mConfig == null) {
       this.mConfig = new ABTestConfig();
     }
+    String str1 = ABTestUtil.getABTestSDKAppKey(this.mContext, this.mConfig);
+    String str2 = ABTestUtil.getABTestSDKAppId(this.mContext, this.mConfig);
     Object localObject = this.mConfig.getCustomTag();
     ABTestLog.stepUpload("customTag: " + localObject.toString(), new Object[0]);
-    String str1 = new JSONObject((Map)localObject).toString();
+    String str3 = new JSONObject((Map)localObject).toString();
     localObject = this.mConfig.getRequestUrl();
     List localList = this.mConfig.getLayerCodes();
-    String str2 = this.mConfig.getSceneId();
-    ABTestLog.stepUpload("requestUrl:" + (String)localObject + "  expName:" + paramString + " customConfig:" + str1 + "  timeout:" + paramInt + " layerCodes:" + localList + " sceneId:" + str2, new Object[0]);
-    if (paramInt > 0) {
-      this.builder.connectTimeout(paramInt, TimeUnit.SECONDS);
-    }
-    for (;;)
+    String str4 = this.mConfig.getSceneId();
+    ABTestLog.stepUpload("requestUrl:" + (String)localObject + "  expName:" + paramString + " customConfig:" + str3 + "  timeout:" + paramInt + " layerCodes:" + localList + " sceneId:" + str4, new Object[0]);
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      try
-      {
-        String str3 = ABTestUtil.getABTestSDKAppKey(this.mContext, this.mConfig);
-        localJSONObject2.put("appid", ABTestUtil.getABTestSDKAppId(this.mContext, this.mConfig));
-        localJSONObject2.put("appkey", str3);
-        localJSONObject2.put("guid", this.mConfig.getGuid());
-        if (!TextUtils.isEmpty(paramString)) {
-          localJSONObject2.put("expName", paramString);
-        }
-        if ((localList != null) && (!localList.isEmpty())) {
-          localJSONObject2.put("layerCodes", localList.toString());
-        }
-        if (!TextUtils.isEmpty(str2)) {
-          localJSONObject2.put("sceneId", str2);
-        }
-        localJSONObject2.put("profiles", new JSONObject(str1));
-        localJSONObject1.put("data", ABTestUtil.encryptPostBodyByRSA(localJSONObject2.toString()));
-        ABTestLog.stepUpload("\npostBody= " + localJSONObject2.toString() + "\npostBodyEncrypt= " + localJSONObject1.toString() + "\nrequestUrl= " + (String)localObject, new Object[0]);
+      localJSONObject2.put("appid", str2);
+      localJSONObject2.put("appkey", str1);
+      localJSONObject2.put("guid", this.mConfig.getGuid());
+      if (!TextUtils.isEmpty(paramString)) {
+        localJSONObject2.put("expName", paramString);
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          ABTestLog.error(localJSONException.getMessage(), new Object[0]);
-        }
+      if ((localList != null) && (!localList.isEmpty())) {
+        localJSONObject2.put("layerCodes", localList.toString());
       }
-      ThreadUtil.execute(new ABTestManager.2(this, paramOnUpdateExperimentsListener, (String)localObject, localJSONObject1, paramInt, paramString));
-      return;
-      this.builder.connectTimeout(2L, TimeUnit.SECONDS);
+      if (!TextUtils.isEmpty(str4)) {
+        localJSONObject2.put("sceneId", str4);
+      }
+      localJSONObject2.put("profiles", new JSONObject(str3));
+      localJSONObject1.put("data", ABTestUtil.encryptPostBodyByRSA(localJSONObject2.toString()));
+      ABTestLog.stepUpload("\npostBody= " + localJSONObject2.toString() + "\npostBodyEncrypt= " + localJSONObject1.toString() + "\nrequestUrl= " + (String)localObject, new Object[0]);
     }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        ABTestLog.error(localJSONException.getMessage(), new Object[0]);
+      }
+    }
+    ThreadPoolUtil.execute(new ABTestManager.1(this, paramOnUpdateExperimentsListener, (String)localObject, localJSONObject1, paramInt, paramString));
   }
   
   public static ABTestManager getInstance()
@@ -675,7 +648,7 @@ public class ABTestManager
     paramABTestConfig.put("ROMA_BUNDLE_NAME", "");
     paramABTestConfig.put("ROMA_BUNDLE_VER", "");
     paramABTestConfig.put("ROMA_BUNDLE_ID", "");
-    paramABTestConfig.put("ROMA_SDK_VERSION", "1.1.0.9");
+    paramABTestConfig.put("ROMA_SDK_VERSION", "1.1.1.0");
     paramABTestConfig.put("ROMA_OS_MODEL", SystemUtil.getSystemModel());
     paramABTestConfig.put("ROMA_OS_VER", SystemUtil.getSystemVersion());
     paramABTestConfig.put("ROMA_PLATFORM", "Android");
@@ -685,7 +658,7 @@ public class ABTestManager
   
   private void initSPBuglySDK()
   {
-    this.mContext.getSharedPreferences("BuglySdkInfos", 0).edit().putString("4aeafa6143", "1.1.0.9").apply();
+    this.mContext.getSharedPreferences("BuglySdkInfos", 0).edit().putString("4aeafa6143", "1.1.1.0").apply();
     ABTestLog.debug("[SDKInit] the Bugly SDK init finished", new Object[0]);
   }
   
@@ -764,53 +737,30 @@ public class ABTestManager
     }
   }
   
-  private void registerLifeCycleCallBacks()
-  {
-    Application localApplication = null;
-    if (this.mContext == null)
-    {
-      ABTestLog.error("[SDKInit] mContext is null and check the mContext", new Object[0]);
-      return;
-    }
-    if ((this.mContext.getApplicationContext() instanceof Application)) {
-      localApplication = (Application)this.mContext.getApplicationContext();
-    }
-    while (localApplication == null)
-    {
-      ABTestLog.warn("[SDKInit] registerLifeCycleCallBacks: app is null", new Object[0]);
-      return;
-      if ((this.mContext instanceof Application)) {
-        localApplication = (Application)this.mContext;
-      }
-    }
-    localApplication.registerActivityLifecycleCallbacks(ActivityManager.getInstance());
-  }
-  
   private void saveExpGrayIdInfo(String paramString1, String paramString2)
   {
-    ArrayList localArrayList;
+    String str1;
     for (;;)
     {
       try
       {
-        paramString2 = new JSONObject(paramString1).optJSONObject("data");
-        localArrayList = new ArrayList();
-        Iterator localIterator = paramString2.keys();
-        paramString1 = "";
+        paramString1 = new JSONObject(paramString1).optJSONObject("data");
+        paramString2 = new ArrayList();
+        Iterator localIterator = paramString1.keys();
+        str1 = this.mSharedPreferencesForReport.getString("gray_police_ids", "");
         if (!localIterator.hasNext()) {
           break;
         }
-        String str = paramString2.optJSONObject((String)localIterator.next()).optString("sGrayPolicyId", "_");
-        paramString1 = this.mSharedPreferencesForReport.getString("gray_police_ids", "");
-        int i = this.mSharedPreferencesForReport.getInt(str, -1);
-        if ((TextUtils.isEmpty(paramString1)) || (!paramString1.contains(str)))
+        String str2 = paramString1.optJSONObject((String)localIterator.next()).optString("sGrayPolicyId", "_");
+        int i = this.mSharedPreferencesForReport.getInt(str2, -1);
+        if ((TextUtils.isEmpty(str1)) || (!str1.contains(str2)))
         {
-          localArrayList.add(str);
-          this.mSharedPreferencesForReport.edit().putInt(str, 1).apply();
+          paramString2.add(str2);
+          this.mSharedPreferencesForReport.edit().putInt(str2, 1).apply();
         }
         else
         {
-          this.mSharedPreferencesForReport.edit().putInt(str, i + 1).apply();
+          this.mSharedPreferencesForReport.edit().putInt(str2, i + 1).apply();
         }
       }
       catch (JSONException paramString1)
@@ -819,9 +769,18 @@ public class ABTestManager
         return;
       }
     }
-    paramString1 = paramString1 + TextUtils.join("#", localArrayList);
-    ABTestLog.debug("hit grayIds: " + paramString1, new Object[0]);
-    this.mSharedPreferencesForReport.edit().putString("gray_police_ids", paramString1).apply();
+    if (paramString2.isEmpty())
+    {
+      ABTestLog.debug("grayIds has been repeated and not be saved", new Object[0]);
+      return;
+    }
+    if ((!TextUtils.isEmpty(str1)) && (str1.endsWith("#"))) {}
+    for (paramString1 = str1 + TextUtils.join("#", paramString2) + "#";; paramString1 = "#" + str1 + TextUtils.join("#", paramString2) + "#")
+    {
+      ABTestLog.debug("save grayIds: " + paramString1, new Object[0]);
+      this.mSharedPreferencesForReport.edit().putString("gray_police_ids", paramString1).apply();
+      return;
+    }
   }
   
   /* Error */
@@ -829,307 +788,303 @@ public class ABTestManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 270	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:getAllExpResInfoFromFile	()Lorg/json/JSONObject;
+    //   1: invokespecial 244	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:getAllExpResInfoFromFile	()Lorg/json/JSONObject;
     //   4: astore 6
     //   6: aload 6
-    //   8: ifnull +66 -> 74
+    //   8: ifnull +61 -> 69
     //   11: aload 6
-    //   13: invokevirtual 427	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   13: invokevirtual 384	org/json/JSONObject:toString	()Ljava/lang/String;
     //   16: astore 4
     //   18: aload 4
-    //   20: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   23: ifne +58 -> 81
+    //   20: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   23: ifne +53 -> 76
     //   26: aload 4
     //   28: aload_1
-    //   29: invokestatic 755	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   32: ifeq +49 -> 81
+    //   29: invokestatic 696	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   32: ifeq +44 -> 76
     //   35: aload_0
-    //   36: getfield 623	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mSharedPreferencesForKey	Landroid/content/SharedPreferences;
-    //   39: invokeinterface 548 1 0
-    //   44: ldc_w 757
+    //   36: getfield 574	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mSharedPreferencesForKey	Landroid/content/SharedPreferences;
+    //   39: invokeinterface 499 1 0
+    //   44: ldc_w 698
     //   47: iconst_1
-    //   48: invokeinterface 761 3 0
-    //   53: invokeinterface 559 1 0
-    //   58: ldc 23
-    //   60: iconst_1
-    //   61: anewarray 4	java/lang/Object
-    //   64: dup
-    //   65: iconst_0
-    //   66: ldc_w 763
-    //   69: aastore
-    //   70: invokestatic 101	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   73: return
-    //   74: ldc 103
-    //   76: astore 4
-    //   78: goto -60 -> 18
-    //   81: aload_0
-    //   82: getfield 176	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
-    //   85: ifnull -12 -> 73
-    //   88: aload_1
-    //   89: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   92: ifne -19 -> 73
-    //   95: invokestatic 314	com/tencent/mtt/abtestsdk/utils/ABTestUtil:isSDCardMounted	()Z
-    //   98: ifeq -25 -> 73
-    //   101: new 267	org/json/JSONObject
-    //   104: dup
-    //   105: aload_1
-    //   106: invokespecial 384	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   109: astore 5
-    //   111: aload 5
-    //   113: ldc_w 281
-    //   116: invokevirtual 289	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   119: ifne -46 -> 73
-    //   122: aload_2
-    //   123: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   126: istore_3
-    //   127: aload_1
-    //   128: astore 4
-    //   130: iload_3
-    //   131: ifne +116 -> 247
-    //   134: aload 6
-    //   136: ldc_w 296
-    //   139: invokevirtual 766	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   142: astore 10
-    //   144: aload 5
-    //   146: ldc_w 296
-    //   149: invokevirtual 766	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   152: astore 9
-    //   154: aload 10
-    //   156: invokevirtual 716	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   159: astore 8
-    //   161: aload 8
-    //   163: invokeinterface 721 1 0
-    //   168: ifeq +219 -> 387
-    //   171: aload 8
-    //   173: invokeinterface 725 1 0
-    //   178: checkcast 220	java/lang/String
-    //   181: astore 6
-    //   183: aload 10
-    //   185: aload 6
-    //   187: invokevirtual 766	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   190: astore 7
-    //   192: aload 7
-    //   194: ldc_w 469
-    //   197: invokevirtual 768	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   200: astore 4
-    //   202: aload 4
-    //   204: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   207: ifne +12 -> 219
-    //   210: aload 4
-    //   212: aload_2
-    //   213: invokevirtual 633	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   216: ifne -55 -> 161
-    //   219: aload 9
-    //   221: aload 6
-    //   223: aload 7
-    //   225: invokevirtual 464	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   228: pop
-    //   229: goto -68 -> 161
-    //   232: astore_2
-    //   233: aload_2
-    //   234: invokevirtual 769	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   237: iconst_0
-    //   238: anewarray 4	java/lang/Object
-    //   241: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   244: aload_1
-    //   245: astore 4
-    //   247: aload_0
-    //   248: getfield 176	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
-    //   251: ldc_w 323
-    //   254: invokevirtual 329	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
-    //   257: astore_1
-    //   258: aload_1
-    //   259: ifnull +40 -> 299
-    //   262: aload_1
-    //   263: invokevirtual 337	java/io/File:exists	()Z
-    //   266: ifeq +33 -> 299
-    //   269: new 158	java/lang/StringBuilder
-    //   272: dup
-    //   273: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   276: ldc_w 771
-    //   279: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: aload_1
-    //   283: invokevirtual 774	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   286: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: iconst_0
-    //   293: anewarray 4	java/lang/Object
-    //   296: invokestatic 101	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   299: new 321	java/io/File
-    //   302: dup
-    //   303: aload_1
-    //   304: ldc_w 331
-    //   307: invokespecial 334	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   310: astore_1
-    //   311: aload_1
-    //   312: invokevirtual 337	java/io/File:exists	()Z
-    //   315: ifeq +10 -> 325
-    //   318: aload_1
-    //   319: invokevirtual 777	java/io/File:delete	()Z
-    //   322: ifeq -249 -> 73
-    //   325: new 158	java/lang/StringBuilder
-    //   328: dup
-    //   329: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   332: ldc_w 779
-    //   335: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   338: aload 4
-    //   340: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   343: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   346: iconst_0
-    //   347: anewarray 4	java/lang/Object
-    //   350: invokestatic 101	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   353: aload_1
-    //   354: invokevirtual 782	java/io/File:createNewFile	()Z
-    //   357: istore_3
-    //   358: iload_3
-    //   359: ifne +56 -> 415
-    //   362: iconst_0
-    //   363: ifeq -290 -> 73
-    //   366: new 784	java/lang/NullPointerException
-    //   369: dup
-    //   370: invokespecial 785	java/lang/NullPointerException:<init>	()V
-    //   373: athrow
-    //   374: astore_1
-    //   375: aload_1
-    //   376: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   379: iconst_0
-    //   380: anewarray 4	java/lang/Object
-    //   383: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   386: return
-    //   387: aload 5
-    //   389: invokevirtual 427	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   392: astore 4
-    //   394: goto -147 -> 247
-    //   397: astore_2
-    //   398: aload_2
-    //   399: invokevirtual 385	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   402: iconst_0
-    //   403: anewarray 4	java/lang/Object
-    //   406: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   409: aload_1
-    //   410: astore 4
-    //   412: goto -165 -> 247
-    //   415: new 787	java/io/FileOutputStream
-    //   418: dup
-    //   419: aload_1
-    //   420: invokespecial 788	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   423: astore_2
-    //   424: aload_2
-    //   425: astore_1
-    //   426: aload_2
-    //   427: aload 4
-    //   429: ldc_w 351
-    //   432: invokevirtual 792	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   435: invokevirtual 796	java/io/FileOutputStream:write	([B)V
+    //   48: invokeinterface 702 3 0
+    //   53: invokeinterface 510 1 0
+    //   58: ldc_w 704
+    //   61: iconst_0
+    //   62: anewarray 4	java/lang/Object
+    //   65: invokestatic 89	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: return
+    //   69: ldc 91
+    //   71: astore 4
+    //   73: goto -55 -> 18
+    //   76: aload_0
+    //   77: getfield 149	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
+    //   80: ifnull -12 -> 68
+    //   83: aload_1
+    //   84: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   87: ifne -19 -> 68
+    //   90: invokestatic 288	com/tencent/mtt/abtestsdk/utils/ABTestUtil:isSDCardMounted	()Z
+    //   93: ifeq -25 -> 68
+    //   96: new 241	org/json/JSONObject
+    //   99: dup
+    //   100: aload_1
+    //   101: invokespecial 358	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   104: astore 5
+    //   106: aload 5
+    //   108: ldc 255
+    //   110: invokevirtual 263	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   113: ifne -45 -> 68
+    //   116: aload_2
+    //   117: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   120: istore_3
+    //   121: aload_1
+    //   122: astore 4
+    //   124: iload_3
+    //   125: ifne +116 -> 241
+    //   128: aload 6
+    //   130: ldc_w 270
+    //   133: invokevirtual 707	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   136: astore 7
+    //   138: aload 5
+    //   140: ldc_w 270
+    //   143: invokevirtual 707	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   146: astore 4
+    //   148: aload 7
+    //   150: invokevirtual 652	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   153: astore 6
+    //   155: aload 6
+    //   157: invokeinterface 659 1 0
+    //   162: ifeq +219 -> 381
+    //   165: aload 6
+    //   167: invokeinterface 663 1 0
+    //   172: checkcast 193	java/lang/String
+    //   175: astore 9
+    //   177: aload 7
+    //   179: aload 9
+    //   181: invokevirtual 707	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   184: astore 8
+    //   186: aload 8
+    //   188: ldc_w 416
+    //   191: invokevirtual 709	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   194: astore 10
+    //   196: aload 10
+    //   198: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   201: ifne +12 -> 213
+    //   204: aload 10
+    //   206: aload_2
+    //   207: invokevirtual 584	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   210: ifne -55 -> 155
+    //   213: aload 4
+    //   215: aload 9
+    //   217: aload 8
+    //   219: invokevirtual 411	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   222: pop
+    //   223: goto -68 -> 155
+    //   226: astore_2
+    //   227: aload_2
+    //   228: invokevirtual 710	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   231: iconst_0
+    //   232: anewarray 4	java/lang/Object
+    //   235: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   238: aload_1
+    //   239: astore 4
+    //   241: aload_0
+    //   242: getfield 149	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mContext	Landroid/content/Context;
+    //   245: ldc_w 297
+    //   248: invokevirtual 303	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
+    //   251: astore_1
+    //   252: aload_1
+    //   253: ifnull +40 -> 293
+    //   256: aload_1
+    //   257: invokevirtual 311	java/io/File:exists	()Z
+    //   260: ifeq +33 -> 293
+    //   263: new 131	java/lang/StringBuilder
+    //   266: dup
+    //   267: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   270: ldc_w 712
+    //   273: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: aload_1
+    //   277: invokevirtual 715	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   280: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   286: iconst_0
+    //   287: anewarray 4	java/lang/Object
+    //   290: invokestatic 89	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   293: new 295	java/io/File
+    //   296: dup
+    //   297: aload_1
+    //   298: ldc_w 305
+    //   301: invokespecial 308	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   304: astore_1
+    //   305: aload_1
+    //   306: invokevirtual 311	java/io/File:exists	()Z
+    //   309: ifeq +10 -> 319
+    //   312: aload_1
+    //   313: invokevirtual 718	java/io/File:delete	()Z
+    //   316: ifeq -248 -> 68
+    //   319: new 131	java/lang/StringBuilder
+    //   322: dup
+    //   323: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   326: ldc_w 720
+    //   329: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: aload 4
+    //   334: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: iconst_0
+    //   341: anewarray 4	java/lang/Object
+    //   344: invokestatic 89	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   347: aload_1
+    //   348: invokevirtual 723	java/io/File:createNewFile	()Z
+    //   351: istore_3
+    //   352: iload_3
+    //   353: ifne +56 -> 409
+    //   356: iconst_0
+    //   357: ifeq -289 -> 68
+    //   360: new 725	java/lang/NullPointerException
+    //   363: dup
+    //   364: invokespecial 726	java/lang/NullPointerException:<init>	()V
+    //   367: athrow
+    //   368: astore_1
+    //   369: aload_1
+    //   370: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   373: iconst_0
+    //   374: anewarray 4	java/lang/Object
+    //   377: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   380: return
+    //   381: aload 5
+    //   383: invokevirtual 384	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   386: astore 4
+    //   388: goto -147 -> 241
+    //   391: astore_2
+    //   392: aload_2
+    //   393: invokevirtual 359	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   396: iconst_0
+    //   397: anewarray 4	java/lang/Object
+    //   400: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   403: aload_1
+    //   404: astore 4
+    //   406: goto -165 -> 241
+    //   409: new 728	java/io/FileOutputStream
+    //   412: dup
+    //   413: aload_1
+    //   414: invokespecial 729	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   417: astore_2
+    //   418: aload_2
+    //   419: astore_1
+    //   420: aload_2
+    //   421: aload 4
+    //   423: ldc_w 325
+    //   426: invokevirtual 733	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   429: invokevirtual 737	java/io/FileOutputStream:write	([B)V
+    //   432: aload_2
+    //   433: astore_1
+    //   434: aload_2
+    //   435: invokevirtual 740	java/io/FileOutputStream:flush	()V
     //   438: aload_2
     //   439: astore_1
-    //   440: aload_2
-    //   441: invokevirtual 799	java/io/FileOutputStream:flush	()V
-    //   444: aload_2
-    //   445: astore_1
-    //   446: aload_0
-    //   447: getfield 623	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mSharedPreferencesForKey	Landroid/content/SharedPreferences;
-    //   450: invokeinterface 548 1 0
-    //   455: ldc_w 757
-    //   458: iconst_1
-    //   459: invokeinterface 761 3 0
-    //   464: invokeinterface 559 1 0
-    //   469: aload_2
-    //   470: ifnull -397 -> 73
-    //   473: aload_2
-    //   474: invokevirtual 800	java/io/FileOutputStream:close	()V
-    //   477: return
-    //   478: astore_1
-    //   479: aload_1
-    //   480: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   483: iconst_0
-    //   484: anewarray 4	java/lang/Object
-    //   487: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   490: return
-    //   491: astore 4
-    //   493: aconst_null
-    //   494: astore_2
-    //   495: aload_2
-    //   496: astore_1
-    //   497: aload 4
-    //   499: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   502: iconst_0
-    //   503: anewarray 4	java/lang/Object
-    //   506: invokestatic 101	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   509: aload_2
-    //   510: ifnull -437 -> 73
-    //   513: aload_2
-    //   514: invokevirtual 800	java/io/FileOutputStream:close	()V
-    //   517: return
-    //   518: astore_1
-    //   519: aload_1
-    //   520: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   523: iconst_0
-    //   524: anewarray 4	java/lang/Object
-    //   527: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   530: return
-    //   531: astore_2
-    //   532: aconst_null
-    //   533: astore_1
-    //   534: aload_1
-    //   535: ifnull +7 -> 542
-    //   538: aload_1
-    //   539: invokevirtual 800	java/io/FileOutputStream:close	()V
-    //   542: aload_2
-    //   543: athrow
-    //   544: astore_1
-    //   545: aload_1
-    //   546: invokevirtual 374	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   549: iconst_0
-    //   550: anewarray 4	java/lang/Object
-    //   553: invokestatic 368	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   556: goto -14 -> 542
-    //   559: astore_2
-    //   560: goto -26 -> 534
-    //   563: astore 4
-    //   565: goto -70 -> 495
+    //   440: aload_0
+    //   441: getfield 574	com/tencent/mtt/abtestsdk/ABTest/ABTestManager:mSharedPreferencesForKey	Landroid/content/SharedPreferences;
+    //   444: invokeinterface 499 1 0
+    //   449: ldc_w 698
+    //   452: iconst_1
+    //   453: invokeinterface 702 3 0
+    //   458: invokeinterface 510 1 0
+    //   463: aload_2
+    //   464: ifnull -396 -> 68
+    //   467: aload_2
+    //   468: invokevirtual 741	java/io/FileOutputStream:close	()V
+    //   471: return
+    //   472: astore_1
+    //   473: aload_1
+    //   474: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   477: iconst_0
+    //   478: anewarray 4	java/lang/Object
+    //   481: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   484: return
+    //   485: astore 4
+    //   487: aconst_null
+    //   488: astore_2
+    //   489: aload_2
+    //   490: astore_1
+    //   491: aload 4
+    //   493: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   496: iconst_0
+    //   497: anewarray 4	java/lang/Object
+    //   500: invokestatic 89	com/tencent/mtt/abtestsdk/utils/ABTestLog:debug	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   503: aload_2
+    //   504: ifnull -436 -> 68
+    //   507: aload_2
+    //   508: invokevirtual 741	java/io/FileOutputStream:close	()V
+    //   511: return
+    //   512: astore_1
+    //   513: aload_1
+    //   514: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   517: iconst_0
+    //   518: anewarray 4	java/lang/Object
+    //   521: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   524: return
+    //   525: astore_2
+    //   526: aconst_null
+    //   527: astore_1
+    //   528: aload_1
+    //   529: ifnull +7 -> 536
+    //   532: aload_1
+    //   533: invokevirtual 741	java/io/FileOutputStream:close	()V
+    //   536: aload_2
+    //   537: athrow
+    //   538: astore_1
+    //   539: aload_1
+    //   540: invokevirtual 348	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   543: iconst_0
+    //   544: anewarray 4	java/lang/Object
+    //   547: invokestatic 342	com/tencent/mtt/abtestsdk/utils/ABTestLog:error	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   550: goto -14 -> 536
+    //   553: astore_2
+    //   554: goto -26 -> 528
+    //   557: astore 4
+    //   559: goto -70 -> 489
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	568	0	this	ABTestManager
-    //   0	568	1	paramString1	String
-    //   0	568	2	paramString2	String
-    //   126	233	3	bool	boolean
-    //   16	412	4	str	String
-    //   491	7	4	localIOException1	java.io.IOException
-    //   563	1	4	localIOException2	java.io.IOException
-    //   109	279	5	localJSONObject1	JSONObject
-    //   4	218	6	localObject	Object
-    //   190	34	7	localJSONObject2	JSONObject
-    //   159	13	8	localIterator	Iterator
-    //   152	68	9	localJSONObject3	JSONObject
-    //   142	42	10	localJSONObject4	JSONObject
+    //   0	562	0	this	ABTestManager
+    //   0	562	1	paramString1	String
+    //   0	562	2	paramString2	String
+    //   120	233	3	bool	boolean
+    //   16	406	4	localObject1	Object
+    //   485	7	4	localIOException1	java.io.IOException
+    //   557	1	4	localIOException2	java.io.IOException
+    //   104	278	5	localJSONObject1	JSONObject
+    //   4	162	6	localObject2	Object
+    //   136	42	7	localJSONObject2	JSONObject
+    //   184	34	8	localJSONObject3	JSONObject
+    //   175	41	9	str1	String
+    //   194	11	10	str2	String
     // Exception table:
     //   from	to	target	type
-    //   134	161	232	java/lang/Exception
-    //   161	219	232	java/lang/Exception
-    //   219	229	232	java/lang/Exception
-    //   387	394	232	java/lang/Exception
-    //   366	374	374	java/io/IOException
-    //   101	127	397	org/json/JSONException
-    //   134	161	397	org/json/JSONException
-    //   161	219	397	org/json/JSONException
-    //   219	229	397	org/json/JSONException
-    //   233	244	397	org/json/JSONException
-    //   387	394	397	org/json/JSONException
-    //   473	477	478	java/io/IOException
-    //   353	358	491	java/io/IOException
-    //   415	424	491	java/io/IOException
-    //   513	517	518	java/io/IOException
-    //   353	358	531	finally
-    //   415	424	531	finally
-    //   538	542	544	java/io/IOException
-    //   426	438	559	finally
-    //   440	444	559	finally
-    //   446	469	559	finally
-    //   497	509	559	finally
-    //   426	438	563	java/io/IOException
-    //   440	444	563	java/io/IOException
-    //   446	469	563	java/io/IOException
+    //   128	155	226	java/lang/Exception
+    //   155	213	226	java/lang/Exception
+    //   213	223	226	java/lang/Exception
+    //   381	388	226	java/lang/Exception
+    //   360	368	368	java/io/IOException
+    //   96	121	391	org/json/JSONException
+    //   128	155	391	org/json/JSONException
+    //   155	213	391	org/json/JSONException
+    //   213	223	391	org/json/JSONException
+    //   227	238	391	org/json/JSONException
+    //   381	388	391	org/json/JSONException
+    //   467	471	472	java/io/IOException
+    //   347	352	485	java/io/IOException
+    //   409	418	485	java/io/IOException
+    //   507	511	512	java/io/IOException
+    //   347	352	525	finally
+    //   409	418	525	finally
+    //   532	536	538	java/io/IOException
+    //   420	432	553	finally
+    //   434	438	553	finally
+    //   440	463	553	finally
+    //   491	503	553	finally
+    //   420	432	557	java/io/IOException
+    //   434	438	557	java/io/IOException
+    //   440	463	557	java/io/IOException
   }
   
   private void saveReportStrategy(String paramString)
@@ -1359,12 +1314,10 @@ public class ABTestManager
   {
     this.mContext = ((Context)paramWeakReference.get());
     this.mConfig = paramABTestConfig;
-    registerLifeCycleCallBacks();
     initSharedPerfAndSetClearStatus();
     initSPBuglySDK();
     loadReportStrategy();
     saveConfigInfo();
-    doGetSourceExperiments(null, 0);
     startUpdateTimer();
   }
   
@@ -1395,6 +1348,27 @@ public class ABTestManager
     return this.mSharedPreferencesForKey.getBoolean("obtained_experiments", false);
   }
   
+  public boolean reportBeaconApiEvent(String paramString, boolean paramBoolean, long paramLong)
+  {
+    try
+    {
+      String str2 = getABTestConfig().getGuid();
+      String str3 = ABTestUtil.getABTestSDKAppId(this.mContext, this.mConfig);
+      if (paramBoolean) {}
+      for (String str1 = "1";; str1 = "0")
+      {
+        paramBoolean = BeaconReport.reportApiEvent("TabApiEvent", str2, str3, paramString, str1, String.valueOf(paramLong));
+        ABTestLog.stepReport(paramString + " report status " + paramBoolean, new Object[0]);
+        return paramBoolean;
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      ABTestLog.stepReport("beacon report " + paramString + " failed!  " + localException.getMessage(), new Object[0]);
+    }
+  }
+  
   public boolean reportBeaconExpExpose(String paramString1, String paramString2)
   {
     try
@@ -1415,7 +1389,7 @@ public class ABTestManager
     doAttaReport("trigger", paramString);
   }
   
-  void saveConfigInfo()
+  public void saveConfigInfo()
   {
     if ((this.mContext == null) || (this.mConfig == null))
     {
@@ -1428,9 +1402,10 @@ public class ABTestManager
   
   public void startUpdateTimer()
   {
+    doGetSourceExperiments(null, 0);
     int i = this.romaStrategy.getRefreshDuration();
     ABTestLog.debug("[SDKInit] refreshDuration:" + i, new Object[0]);
-    HandlerThreadUtil.getHandler().sendEmptyMessage(0);
+    HandlerThreadUtil.getHandler().sendEmptyMessageDelayed(0, 60000L);
   }
   
   public void stopUpdateTimer()

@@ -1,207 +1,79 @@
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.View;
-import com.tencent.common.galleryactivity.AnimationView;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.util.VersionUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aagm
-  extends aafw
+  extends aahj
 {
-  int jdField_a_of_type_Int;
-  aagc jdField_a_of_type_Aagc;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  protected View a;
-  protected AnimationView a;
-  View b;
-  View c;
+  public aagm(MoveFileActivity paramMoveFileActivity, bfif parambfif) {}
   
-  public aagm(Activity paramActivity, aagc paramaagc)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Aagc = paramaagc;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().densityDpi;
-  }
-  
-  private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, aago paramaago, boolean paramBoolean)
-  {
-    if (paramaago == null) {}
-    Drawable localDrawable;
-    do
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+    localIntent.putExtra("folderId", this.jdField_a_of_type_Bfif.b);
+    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131299080);
+    if (paramBoolean)
     {
-      return null;
-      localDrawable = paramaago.getAnimationDrawable();
-      paramRect1 = paramaago.getThumbRect();
-    } while ((paramRect1 == null) || (localDrawable == null) || (!paramaago.needAnimation(paramBoolean)));
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int k = localDrawable.getIntrinsicWidth();
-    int m = localDrawable.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(paramRect1);
-    if ((paramaago instanceof aham)) {}
-    for (paramRect2 = ((aham)paramaago).a;; paramRect2 = null)
-    {
-      if ((!VersionUtils.isHoneycomb()) && ((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable))) {}
-      for (paramRect1 = aagn.a(k, m, i, j, false, paramRect2);; paramRect1 = null)
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
+      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
+      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
       {
-        if (paramRect1 == null) {
-          paramRect1 = aagn.a(k, m, i, j, paramRect2);
-        }
-        for (;;)
-        {
-          paramRect4.set(paramRect1);
-          return localDrawable;
-        }
+        paramString = "0";
+        bdla.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, anvx.a(2131706375), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
       }
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367366);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362699));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131376679);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363274);
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      b();
-    }
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    aago localaago = this.jdField_a_of_type_Aagc.a();
-    if (localaago == null) {
-      return false;
-    }
-    Rect localRect3 = localaago.getStartSrcRect();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localaago, true);
-    this.jdField_a_of_type_Boolean = true;
-    if (localDrawable != null)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label126;
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
     }
     for (;;)
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2130772001);
+      return;
+      paramString = "1";
       break;
-      label126:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localaago.isImgCenterCropMode;
-      if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect1, localRect2, localaago.getCutValue(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
+      switch (paramInt)
+      {
+      default: 
+        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131695815);
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -302: 
+      case -301: 
+      case -103: 
+        bdla.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anvx.a(2131706368), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -136: 
+        bdla.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anvx.a(2131706372), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -107: 
+      case -102: 
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anvx.a(2131706371), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -406: 
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anvx.a(2131706367), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -407: 
+        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, anvx.a(2131706369), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
       }
     }
-  }
-  
-  public boolean c()
-  {
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      b();
-    }
-    Rect localRect2 = new Rect();
-    Rect localRect3 = new Rect();
-    aago localaago = this.jdField_a_of_type_Aagc.a();
-    Rect localRect1 = null;
-    if (localaago != null) {
-      localRect1 = localaago.getStartSrcRect();
-    }
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(localRect1, localRect4, localRect2, localRect3, localaago, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    if (localDrawable != null)
-    {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label127;
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label127:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localaago.isImgCenterCropMode;
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localaago.getCutValue(), localaago.getStartX(), localaago.getStartY(), this.jdField_a_of_type_Long);
-      if (localRect1 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localaago.getCutValue(), localaago.getStartX(), localaago.getStartY(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
-      }
-    }
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aagl)localIterator.next()).f();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void g()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aagl)localIterator.next()).g();
-    }
-  }
-  
-  public void h()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aagl)localIterator.next()).h();
-    }
-  }
-  
-  public void i()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aagl)localIterator.next()).i();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aagm
  * JD-Core Version:    0.7.0.1
  */

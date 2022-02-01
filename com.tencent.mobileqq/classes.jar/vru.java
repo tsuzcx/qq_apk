@@ -1,43 +1,224 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vru
-  implements vtb
+public class vru
+  extends vqe
 {
-  vru(vrr paramvrr, int paramInt, CommentEntry paramCommentEntry) {}
+  private int jdField_a_of_type_Int;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private uyw<vpj> jdField_a_of_type_Uyw;
+  private vpj jdField_a_of_type_Vpj;
+  private uyw<vpj> b;
+  private uyw<vpj> c;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public vru(Context paramContext, vrn paramvrn)
   {
-    a(-1, amtj.a(2131703522));
+    super(paramContext, paramvrn);
   }
   
-  public void a(int paramInt, String paramString)
+  private void a(MotionEvent paramMotionEvent)
   {
-    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131703545) + paramInt, 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    this.jdField_a_of_type_Vrr.e();
-    if (QLog.isColorLevel()) {
-      QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
+    if ((this.jdField_a_of_type_Vpj != null) && ((this.jdField_a_of_type_Vpj.a() instanceof stSimpleMetaFeed)) && ((this.jdField_a_of_type_Uyw instanceof vqv))) {
+      ((vqv)this.jdField_a_of_type_Uyw).a(paramMotionEvent);
     }
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  private void f()
   {
-    this.jdField_a_of_type_Vrr.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Vrr.e();
-    this.jdField_a_of_type_Vrr.jdField_a_of_type_Vtu.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    vsn.a().a();
-    this.jdField_a_of_type_Vrr.a(false, null);
-    QQToast.a(BaseApplication.getContext(), 2, amtj.a(2131703546), 0).a();
-    vrr.a(this.jdField_a_of_type_Vrr.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381073);
+    vqt localvqt = new vqt(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    localvqt.a(localViewStub);
+    a(localvqt);
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  private void g()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381075);
+    vqq localvqq = new vqq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    localvqq.a(localViewStub);
+    a(localvqq);
+  }
+  
+  private void h()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381086);
+    vri localvri = new vri(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    localvri.a(localViewStub);
+    a(localvri);
+  }
+  
+  private void i()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381083);
+    vra localvra = new vra(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    localvra.a(localViewStub);
+    a(localvra);
+  }
+  
+  private void j()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381081);
+    this.jdField_a_of_type_Uyw = new vqz(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    this.jdField_a_of_type_Uyw.a(localViewStub);
+    a(this.jdField_a_of_type_Uyw);
+  }
+  
+  private void k()
+  {
+    if (!a()) {
+      return;
+    }
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381071);
+    this.b = new vqj(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    this.b.a(localViewStub);
+    a(this.b);
+  }
+  
+  private void l()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (!TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), "vertical_layer_collection")))
+    {
+      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381072);
+      this.c = new vqn(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+      this.c.a(localViewStub);
+      a(this.c);
+    }
+  }
+  
+  private void m()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewView.getContext(), new vrv(this));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new vrw(this));
+  }
+  
+  private void n()
+  {
+    if ((a() != null) && (a().poster != null) && (!vmg.a(a().poster.followStatus))) {
+      ((vqj)this.b).b();
+    }
+  }
+  
+  private void o()
+  {
+    if ((a() instanceof vrd)) {
+      ((vrd)a()).f();
+    }
+  }
+  
+  public stSimpleMetaFeed a()
+  {
+    if ((this.jdField_a_of_type_Vpj != null) && ((this.jdField_a_of_type_Vpj.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)this.jdField_a_of_type_Vpj.a();
+    }
+    return null;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(vpj paramvpj)
+  {
+    super.a(paramvpj);
+    this.jdField_a_of_type_Vpj = paramvpj;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Vpj != null) && ((this.jdField_a_of_type_Vpj.a() instanceof stSimpleMetaFeed)))
+    {
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.jdField_a_of_type_Vpj.a();
+      vem.a().a(localstSimpleMetaFeed.id);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.d(paramInt + 1);
+    }
+  }
+  
+  public void b(vpj paramvpj)
+  {
+    this.jdField_a_of_type_Vpj = paramvpj;
+    c(paramvpj);
+  }
+  
+  public uyw<vpj> c()
+  {
+    return this.c;
+  }
+  
+  public void c()
+  {
+    vln localvln = new vln();
+    localvln.jdField_a_of_type_UserGrowthStSimpleMetaFeed = a();
+    localvln.jdField_a_of_type_Int = 2;
+    localvln.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    localvln.jdField_a_of_type_JavaLangString = vsj.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
+    localvln.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
+    localvln.c = "more_operations";
+    localvln.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
+    vms.a(this.jdField_a_of_type_AndroidContentContext, localvln);
+    vsj.d(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), a());
+  }
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt == 0) && ((this.jdField_a_of_type_Uyw instanceof vqv))) {
+      ((vqv)this.jdField_a_of_type_Uyw).f();
+    }
+    do
+    {
+      return;
+      if ((paramInt == 1) && ((this.b instanceof vqj)))
+      {
+        n();
+        return;
+      }
+    } while ((paramInt != 2) || (!(this.jdField_a_of_type_Uyw instanceof vqv)));
+    ((vqv)this.jdField_a_of_type_Uyw).g();
+  }
+  
+  public void d()
+  {
+    super.d();
+    f();
+    g();
+    j();
+    h();
+    i();
+    k();
+    e();
+    l();
+    m();
+  }
+  
+  public void e()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381074);
+    vqu localvqu = new vqu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrn);
+    localvqu.a(localViewStub);
+    a(localvqu);
+  }
 }
 
 

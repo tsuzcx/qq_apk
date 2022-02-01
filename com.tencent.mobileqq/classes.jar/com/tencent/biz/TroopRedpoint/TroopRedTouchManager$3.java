@@ -6,14 +6,14 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
-import nmq;
+import ntq;
 import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class TroopRedTouchManager$3
   implements Runnable
 {
-  public TroopRedTouchManager$3(nmq paramnmq, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
+  public TroopRedTouchManager$3(ntq paramntq, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class TroopRedTouchManager$3
         localObject1 = new StringBuilder("saveLocalFile==>");
         while (i < this.a.rpt_msg_reddot_info.size())
         {
-          ((StringBuilder)localObject1).append(nmq.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
+          ((StringBuilder)localObject1).append(ntq.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
           i += 1;
         }
       }

@@ -1,20 +1,18 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nxl
-  implements nyp
+  implements aaea
 {
-  public nxl(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public nxl(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public boolean a(int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
   }
 }
 

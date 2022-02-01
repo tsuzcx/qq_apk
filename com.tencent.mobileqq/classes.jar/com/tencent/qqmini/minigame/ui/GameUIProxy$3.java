@@ -8,19 +8,19 @@ import com.tencent.qqmini.sdk.manager.MiniLoadingAdManager;
 class GameUIProxy$3
   implements Runnable
 {
-  GameUIProxy$3(GameUIProxy paramGameUIProxy, MiniAppInfo paramMiniAppInfo, Activity paramActivity, String paramString, long paramLong) {}
+  GameUIProxy$3(GameUIProxy paramGameUIProxy, MiniAppInfo paramMiniAppInfo, Activity paramActivity, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
     if (GameUIProxy.access$200(this.this$0) != null) {
       GameUIProxy.access$200(this.this$0).setLoadingAdStatus(2);
     }
-    MiniLoadingAdManager.getInstance().updateLoadingAdLayoutAndShow(this.val$miniAppInfo, this.val$activity, true, this.val$adJson, this.val$aid, new GameUIProxy.3.1(this));
+    MiniLoadingAdManager.getInstance().updateLoadingAdLayoutAndShow(this.val$miniAppInfo, this.val$activity, true, this.val$adJson, this.val$aid, this.val$showTimeStamp, new GameUIProxy.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameUIProxy.3
  * JD-Core Version:    0.7.0.1
  */

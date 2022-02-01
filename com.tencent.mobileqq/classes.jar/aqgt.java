@@ -1,62 +1,21 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aqgt
-  extends aqgc<aqgs>
+class aqgt
+  implements DialogInterface.OnClickListener
 {
-  public static aqgs c()
-  {
-    return (aqgs)apub.a().a(412);
-  }
+  aqgt(aqgs paramaqgs, aqgv paramaqgv) {}
   
-  @NonNull
-  public aqgs a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new aqgs();
-  }
-  
-  @NonNull
-  public aqgs a(aptx[] paramArrayOfaptx)
-  {
-    boolean bool = true;
-    localaqgs = new aqgs();
-    try
-    {
-      if (new JSONObject(paramArrayOfaptx[0].a).optInt("allow_edit_color_nick", 1) == 1) {}
-      for (;;)
-      {
-        localaqgs.a = bool;
-        return localaqgs;
-        bool = false;
-      }
-      return localaqgs;
-    }
-    catch (JSONException paramArrayOfaptx)
-    {
-      xvv.e("QVipColorNickProcessor", "QVipColorNickProcessor onParsed exception :" + paramArrayOfaptx.getMessage());
-    }
-  }
-  
-  @NonNull
-  public aqgs b()
-  {
-    return new aqgs();
-  }
-  
-  public Class<aqgs> clazz()
-  {
-    return aqgs.class;
-  }
-  
-  public int type()
-  {
-    return 412;
+    aqgw.a(BaseApplication.context, this.jdField_a_of_type_Aqgv.d(), aqgs.a(this.jdField_a_of_type_Aqgs));
+    azcl.a("0X800ADEF");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,22 @@
-import java.util.List;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.Comparator;
 
-public abstract interface bbao<T>
+public class bbao
+  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public abstract List<T> a(Object... paramVarArgs);
+  public bbao(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  
+  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  {
+    if (paramMemberInfo1.a == paramMemberInfo2.a) {
+      return 0;
+    }
+    if (paramMemberInfo1.a < paramMemberInfo2.a) {
+      return -1;
+    }
+    return 1;
+  }
 }
 
 

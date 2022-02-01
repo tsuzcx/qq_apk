@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class befg
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   befg(beff parambeff) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.a = null;
   }
 }
 

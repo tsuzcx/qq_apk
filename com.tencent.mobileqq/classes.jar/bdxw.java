@@ -1,6 +1,7 @@
-public abstract interface bdxw
+public class bdxw
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public int a;
+  public bdxx[] a;
 }
 
 

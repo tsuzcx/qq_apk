@@ -4,6 +4,7 @@ public class FloatingScreenParams$FloatingBuilder
 {
   private static final int INVALID_FLOATING_XY = -2147483648;
   private boolean canMove = true;
+  private boolean canZoom = true;
   private int floatingCenterX = -2147483648;
   private int floatingCenterY = -2147483648;
   private float ratio = 0.5625F;
@@ -15,6 +16,7 @@ public class FloatingScreenParams$FloatingBuilder
     localFloatingScreenParams.setScreenRatio(this.ratio);
     localFloatingScreenParams.setShapeType(this.shapeType);
     FloatingScreenParams.access$100(localFloatingScreenParams, this.canMove);
+    FloatingScreenParams.access$200(localFloatingScreenParams, this.canZoom);
     if (this.floatingCenterX != -2147483648) {
       localFloatingScreenParams.setFloatingCenterX(this.floatingCenterX);
     }
@@ -27,6 +29,12 @@ public class FloatingScreenParams$FloatingBuilder
   public FloatingBuilder setCanMove(boolean paramBoolean)
   {
     this.canMove = paramBoolean;
+    return this;
+  }
+  
+  public FloatingBuilder setCanZoom(boolean paramBoolean)
+  {
+    this.canZoom = paramBoolean;
     return this;
   }
   

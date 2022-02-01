@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class asos
-  implements apom
+  implements DialogInterface.OnClickListener
 {
-  public asos(FileBrowserActivity paramFileBrowserActivity) {}
+  public asos(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onColorNoteAnimFinish()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileBrowserActivity.a(this.a);
-    this.a.overridePendingTransition(0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 

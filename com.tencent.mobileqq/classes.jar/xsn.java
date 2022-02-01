@@ -1,16 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class xsn
-  extends AnimatorListenerAdapter
+class xsn
+  extends SimpleJob<Object>
 {
-  public void onAnimationEnd(Animator paramAnimator)
+  xsn(xsl paramxsl, String paramString)
   {
-    if (this.a) {
-      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.a == null) {
+      this.a.a = new xso(this.a, this.a.c);
     }
+    this.a.d = this.a.a.a;
+    xsl.a(this.a);
+    return null;
   }
 }
 

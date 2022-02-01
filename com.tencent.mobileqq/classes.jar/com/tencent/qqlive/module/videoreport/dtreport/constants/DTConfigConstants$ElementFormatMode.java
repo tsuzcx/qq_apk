@@ -5,7 +5,7 @@ import java.lang.annotation.Annotation;
 public @interface DTConfigConstants$ElementFormatMode
 {
   public static final int FLATTEN = 1;
-  public static final int NON_FLATTEN = 0;
+  public static final int NEWS_FLATTEN = 2;
 }
 
 

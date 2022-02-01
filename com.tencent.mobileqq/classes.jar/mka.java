@@ -1,52 +1,43 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoControlUI;
 
 public class mka
-  implements mho
+  implements GestureDetector.OnGestureListener
 {
-  public mka(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
+  public mka(VideoControlUI paramVideoControlUI) {}
   
-  public void a()
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131373411, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363109, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363121, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363120, false);
-    }
+    return false;
   }
   
-  public void b()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, true);
-      long l = mrb.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 1);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((this.a.g != null) && (this.a.g.isShown())) {
+      this.a.r(false);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772177);
-      return;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 248);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(248);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1);
-      }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mka
  * JD-Core Version:    0.7.0.1
  */

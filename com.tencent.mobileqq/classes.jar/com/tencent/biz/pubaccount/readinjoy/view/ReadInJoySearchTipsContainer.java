@@ -15,14 +15,14 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bfvh;
+import bhdz;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
-import sny;
-import snz;
+import tbj;
+import tbk;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
@@ -30,7 +30,7 @@ public class ReadInJoySearchTipsContainer
 {
   private int jdField_a_of_type_Int = ViewUtils.dip2px(260.0F);
   private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
-  public snz a;
+  public tbk a;
   private int jdField_b_of_type_Int = 5;
   private List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList;
   
@@ -57,7 +57,7 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130849392);
+    localButton.setBackgroundResource(2130849484);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
@@ -91,12 +91,12 @@ public class ReadInJoySearchTipsContainer
   
   protected int a(int paramInt)
   {
-    int i6 = (int)bfvh.a(getContext(), 7.0F);
-    int i1 = (int)bfvh.a(getContext(), 10.0F);
-    int i7 = (int)bfvh.a(getContext(), 10.0F);
-    int i8 = (int)bfvh.a(getContext(), 4.0F);
-    int m = (int)bfvh.a(getContext(), 12.0F);
-    int i9 = (int)bfvh.a(getContext(), 12.0F);
+    int i6 = (int)bhdz.a(getContext(), 7.0F);
+    int i1 = (int)bhdz.a(getContext(), 10.0F);
+    int i7 = (int)bhdz.a(getContext(), 10.0F);
+    int i8 = (int)bhdz.a(getContext(), 4.0F);
+    int m = (int)bhdz.a(getContext(), 12.0F);
+    int i9 = (int)bhdz.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -168,20 +168,20 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    sny localsny = new sny(this, Looper.getMainLooper());
-    Message localMessage = localsny.obtainMessage();
+    tbj localtbj = new tbj(this, Looper.getMainLooper());
+    Message localMessage = localtbj.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localsny.sendMessage(localMessage);
+    localtbj.sendMessage(localMessage);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bfvh.a(getContext(), 7.0F);
-    int k = (int)bfvh.a(getContext(), 10.0F);
-    int i3 = (int)bfvh.a(getContext(), 4.0F);
-    paramInt4 = (int)bfvh.a(getContext(), 12.0F);
-    int i4 = (int)bfvh.a(getContext(), 12.0F);
+    int i2 = (int)bhdz.a(getContext(), 7.0F);
+    int k = (int)bhdz.a(getContext(), 10.0F);
+    int i3 = (int)bhdz.a(getContext(), 4.0F);
+    paramInt4 = (int)bhdz.a(getContext(), 12.0F);
+    int i4 = (int)bhdz.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -254,9 +254,9 @@ public class ReadInJoySearchTipsContainer
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setOnTipsClickListener(snz paramsnz)
+  public void setOnTipsClickListener(tbk paramtbk)
   {
-    this.jdField_a_of_type_Snz = paramsnz;
+    this.jdField_a_of_type_Tbk = paramtbk;
   }
 }
 

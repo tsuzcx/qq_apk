@@ -1,24 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-public class msn
+class msn
   implements DialogInterface.OnClickListener
 {
-  public msn(PopupDialog paramPopupDialog) {}
+  msn(msm parammsm) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PopupDialog.a.a != null) {
-      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
-    }
     paramDialogInterface.dismiss();
-    PopupDialog.a();
+    ((avsv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     msn
  * JD-Core Version:    0.7.0.1
  */

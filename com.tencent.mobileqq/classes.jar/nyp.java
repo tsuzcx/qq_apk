@@ -1,8 +1,9 @@
-public abstract interface nyp
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import java.util.List;
+
+public class nyp
 {
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean b(int paramInt);
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList) {}
 }
 
 

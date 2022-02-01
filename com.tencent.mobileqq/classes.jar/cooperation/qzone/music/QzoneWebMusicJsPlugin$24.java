@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import bgve;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;

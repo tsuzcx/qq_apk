@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import apec;
+import aqhg;
 
 class TextPreviewSettingActivity$2
   implements Runnable
 {
-  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, apec paramapec, String paramString) {}
+  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, aqhg paramaqhg, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apec.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Aqhg.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

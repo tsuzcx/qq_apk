@@ -1,45 +1,56 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import org.json.JSONObject;
 
-public class awaz
-  implements View.OnClickListener
+class awaz
+  implements aaea
 {
-  public awaz(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  awaz(away paramaway, long paramLong1, long paramLong2, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
-    }
-    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof awbc)) {}
-    for (localObject = (awbc)localObject;; localObject = null)
+    boolean bool = true;
+    paramBundle = paramBundle.getString("videoPath");
+    Object localObject;
+    if (!TextUtils.isEmpty(paramBundle))
     {
-      if (localObject == null) {}
-      for (;;)
+      localObject = new File(paramBundle);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
+      }
+      try
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        int i = MultiCardPageIndicator.a(this.a).a();
-        int j = ((awbc)localObject).jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        bcef.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-        ((awbc)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-          MultiCardPageIndicator.a(this.a).a(j);
+        localObject = new JSONObject();
+        if (bool)
+        {
+          MediaApiPlugin.a(this.jdField_a_of_type_Away.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
+          ((JSONObject)localObject).put("ret", 0);
+          ((JSONObject)localObject).put("errMsg", "");
         }
-        if (MultiCardPageIndicator.a(this.a) != null) {
-          MultiCardPageIndicator.a(this.a).a(j);
+        for (;;)
+        {
+          this.jdField_a_of_type_Away.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+          ((JSONObject)localObject).put("ret", -2);
+          ((JSONObject)localObject).put("errMsg", anvx.a(2131714548));
+        }
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      catch (Exception paramBundle)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
         }
       }
+      return;
+      bool = false;
     }
   }
 }

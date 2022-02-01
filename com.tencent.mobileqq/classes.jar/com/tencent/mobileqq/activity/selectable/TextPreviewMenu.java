@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import afnx;
-import akxv;
-import akyf;
-import akyp;
-import akyq;
-import akyr;
-import amtj;
+import agfb;
+import alvr;
+import alwb;
+import alwl;
+import alwm;
+import alwn;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -16,14 +15,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
-import bcef;
-import bdaf;
-import bdag;
-import bdah;
-import bgaz;
+import anvx;
+import bdla;
+import behe;
+import behf;
+import behg;
+import bhjq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.TextPreviewActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -39,11 +40,11 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class TextPreviewMenu
-  extends akyf<TextPreviewActivity>
+  extends alwb<TextPreviewActivity>
 {
   private int jdField_a_of_type_Int = -1;
   protected Dialog a;
-  private bdah jdField_a_of_type_Bdah = new akyq(this);
+  private behg jdField_a_of_type_Behg = new alwm(this);
   protected TextPreviewMenu.ProgressView a;
   private List<String> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
@@ -68,16 +69,16 @@ public class TextPreviewMenu
   
   private void a(Activity paramActivity, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    afnx.a(paramQQAppInterface, paramMessageRecord, 2);
+    agfb.a(paramQQAppInterface, paramMessageRecord, 2);
     try
     {
-      bdaf.a(a(), "TextPreview");
+      behe.a(a(), "TextPreview");
       if (paramBoolean)
       {
-        bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A356", "0X800A356", 0, 0, "", "", "", "");
+        bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A356", "0X800A356", 0, 0, "", "", "", "");
         return;
       }
-      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X8009F00", "0X8009F00", 0, 0, "", "", "", "");
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8009F00", "0X8009F00", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception paramActivity)
@@ -99,7 +100,7 @@ public class TextPreviewMenu
   private void a(TextPreviewActivity paramTextPreviewActivity)
   {
     paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView.a(paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleView);
-    paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView.setOnMenuClickListener(new akyp(this, paramTextPreviewActivity));
+    paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleBottomMenuView.setOnMenuClickListener(new alwl(this, paramTextPreviewActivity));
     paramTextPreviewActivity.j.setOnClickListener(this);
     paramTextPreviewActivity.k.setOnClickListener(this);
     paramTextPreviewActivity.l.setOnClickListener(this);
@@ -133,7 +134,7 @@ public class TextPreviewMenu
       }
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131713908), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131714255), 0).a();
   }
   
   private void c()
@@ -151,11 +152,11 @@ public class TextPreviewMenu
       } while (localTextPreviewActivity == null);
       if (!NetworkUtil.isNetSupport(localTextPreviewActivity))
       {
-        QQToast.a(localTextPreviewActivity, amtj.a(2131713898), 0).b(localTextPreviewActivity.getResources().getDimensionPixelSize(2131299076));
+        QQToast.a(localTextPreviewActivity, anvx.a(2131714245), 0).b(localTextPreviewActivity.getResources().getDimensionPixelSize(2131299080));
         return;
       }
     } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    ((bdag)localTextPreviewActivity.app.getBusinessHandler(161)).a(localTextPreviewActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    ((behf)localTextPreviewActivity.app.getBusinessHandler(BusinessHandlerFactory.PARTICIPLE_HANDLER)).a(localTextPreviewActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
     d();
   }
   
@@ -175,11 +176,11 @@ public class TextPreviewMenu
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
       this.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView);
-      this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new akyr(localActivity));
+      this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new alwn(localActivity));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView.setProgressText(amtj.a(2131713909));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView.setProgressText(anvx.a(2131714256));
       this.jdField_a_of_type_AndroidAppDialog.show();
       return;
       label138:
@@ -209,24 +210,24 @@ public class TextPreviewMenu
     }
   }
   
-  public void a(bgaz parambgaz)
+  public void a(bhjq parambhjq)
   {
-    parambgaz.a(2131365216, amtj.a(2131713903), 2130838962);
-    parambgaz.a(2131367094, amtj.a(2131713901), 2130838971);
+    parambhjq.a(2131365307, anvx.a(2131714250), 2130838982);
+    parambhjq.a(2131367213, anvx.a(2131714248), 2130838991);
     switch (this.jdField_a_of_type_Int)
     {
     }
     for (;;)
     {
-      parambgaz.a(2131366347, amtj.a(2131713904), 2130838970);
+      parambhjq.a(2131366456, anvx.a(2131714251), 2130838990);
       return;
       if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -2))
       {
-        parambgaz.a(2131376279, amtj.a(2131713910), 2130838977);
+        parambhjq.a(2131376534, anvx.a(2131714257), 2130838997);
         continue;
         TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
         if ((localTextPreviewActivity != null) && (localTextPreviewActivity.app != null) && (!this.jdField_b_of_type_JavaLangString.equals(localTextPreviewActivity.app.getCurrentAccountUin()))) {
-          parambgaz.a(2131376279, amtj.a(2131713902), 2130838977);
+          parambhjq.a(2131376534, anvx.a(2131714249), 2130838997);
         }
       }
     }
@@ -240,14 +241,14 @@ public class TextPreviewMenu
     this.jdField_a_of_type_Boolean = paramTextPreviewActivity.jdField_a_of_type_Boolean;
     this.jdField_b_of_type_Int = paramTextPreviewActivity.jdField_b_of_type_Int;
     a(paramTextPreviewActivity);
-    paramTextPreviewActivity.app.addObserver(this.jdField_a_of_type_Bdah);
+    paramTextPreviewActivity.app.addObserver(this.jdField_a_of_type_Behg);
   }
   
   public void a(ContainerView paramContainerView, View paramView)
   {
     super.a(paramContainerView, paramView);
     int i = a(this.jdField_b_of_type_Int);
-    bcef.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "dc00898", "", "", "0X8009EFF", "0X8009EFF", i, 0, "", "", "", "");
+    bdla.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "dc00898", "", "", "0X8009EFF", "0X8009EFF", i, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -272,7 +273,7 @@ public class TextPreviewMenu
     super.b(paramContainerView);
     paramContainerView = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
     if ((paramContainerView != null) && (paramContainerView.app != null)) {
-      paramContainerView.app.removeObserver(this.jdField_a_of_type_Bdah);
+      paramContainerView.app.removeObserver(this.jdField_a_of_type_Behg);
     }
     e();
   }
@@ -293,8 +294,8 @@ public class TextPreviewMenu
     }
     for (;;)
     {
-      if ((paramView.getId() != 2131377014) && (akxv.a().c())) {
-        akxv.a().d();
+      if ((paramView.getId() != 2131377287) && (alvr.a().c())) {
+        alvr.a().d();
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -303,33 +304,44 @@ public class TextPreviewMenu
       bool = true;
       a(localTextPreviewActivity, localQQAppInterface, localMessageRecord, bool);
       continue;
-      afnx.a(localQQAppInterface, localMessageRecord, 3);
-      bdaf.a((Activity)paramView.getContext(), a());
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009F01", "0X8009F01", 0, 0, "", "", "", "");
+      agfb.a(localQQAppInterface, localMessageRecord, 3);
+      behe.a((Activity)paramView.getContext(), a());
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009F01", "0X8009F01", 0, 0, "", "", "", "");
       continue;
-      afnx.a(localQQAppInterface, localMessageRecord, 4);
+      agfb.a(localQQAppInterface, localMessageRecord, 4);
       if (localQQAppInterface != null) {
-        bdaf.a((Activity)paramView.getContext(), localQQAppInterface, a());
+        behe.a((Activity)paramView.getContext(), localQQAppInterface, a());
       }
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009F02", "0X8009F02", 0, 0, "", "", "", "");
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009F02", "0X8009F02", 0, 0, "", "", "", "");
       continue;
-      akxv.a().a(null);
+      alvr.a().a(null);
       continue;
       if (localTextPreviewActivity != null)
       {
         localTextPreviewActivity.setResult(14001, localTextPreviewActivity.getIntent());
         localTextPreviewActivity.finish();
-        bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 4, 0, "", "", "", "");
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 4, 0, "", "", "", "");
         continue;
         if (localTextPreviewActivity != null)
         {
           localTextPreviewActivity.b(a());
-          bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 5, 0, "", "", "", "");
+          bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 5, 0, "", "", "", "");
           continue;
           c();
-          bcef.b(localTextPreviewActivity.app, "dc00898", "", "", "0X800A357", "0X800A357", 1, 0, "", "", "", "");
-          continue;
-          localTextPreviewActivity.b();
+          if (localTextPreviewActivity != null)
+          {
+            bdla.b(localTextPreviewActivity.app, "dc00898", "", "", "0X800A357", "0X800A357", 1, 0, "", "", "", "");
+          }
+          else
+          {
+            QLog.e("TextPreviewMenu", 1, "activity is null, so ReportController.reportClickEvent not invoke");
+            continue;
+            if (localTextPreviewActivity != null) {
+              localTextPreviewActivity.b();
+            } else {
+              QLog.e("TextPreviewMenu", 1, "activity is null, so activity.onClickFontSettingBtn not invoke");
+            }
+          }
         }
       }
     }

@@ -1,58 +1,80 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arjx
-  extends arht
+  extends arjj<QVipBigClubSVIP9Config>
 {
-  public arjx(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
-  
-  protected void a(boolean paramBoolean, arjk paramarjk, int paramInt)
+  public static QVipBigClubSVIP9Config c()
   {
-    if (paramInt != ExtendFriendBaseFragment.a(this.a)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (paramarjk == null));
-      localObject = ((amsw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    } while (localObject == null);
-    ExtendFriendBaseFragment localExtendFriendBaseFragment = this.a;
-    if (!TextUtils.isEmpty(paramarjk.mDeclaration)) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localExtendFriendBaseFragment.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.b = ((Card)localObject).isShowCard;
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBaseFragment", 2, String.format("addMyFeed mProfileComplete=%s mShowCard=%s", new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Boolean.valueOf(this.a.b) }));
-      }
-      if (this.a.jdField_a_of_type_Arme == null) {
-        break;
-      }
-      localObject = this.a.jdField_a_of_type_Arme.a(0);
-      paramarjk.mIsMyFeed = true;
-      if ((localObject != null) && (TextUtils.equals(((arjk)localObject).mUin, paramarjk.mUin))) {
-        this.a.jdField_a_of_type_Arme.b(0);
-      }
-      this.a.jdField_a_of_type_Arme.a(0, paramarjk);
-      if (!TextUtils.isEmpty(paramarjk.mDeclaration)) {
-        paramarjk.mDeclaration = paramarjk.mDeclaration.replace('\n', ' ').trim();
-      }
-      if ((!this.a.b) || (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Arme.b(0);
-      }
-      this.a.jdField_a_of_type_Arme.notifyDataSetChanged();
-      return;
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)aqxe.a().a(427);
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
+    if (localQVipBigClubSVIP9Config2 == null) {
+      localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
     }
+    return localQVipBigClubSVIP9Config1;
+  }
+  
+  @NonNull
+  public QVipBigClubSVIP9Config a()
+  {
+    return new QVipBigClubSVIP9Config();
+  }
+  
+  @NonNull
+  public QVipBigClubSVIP9Config a(aqxa[] paramArrayOfaqxa)
+  {
+    boolean bool = true;
+    localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
+    paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+    try
+    {
+      if (!TextUtils.isEmpty(paramArrayOfaqxa))
+      {
+        paramArrayOfaqxa = new JSONObject(paramArrayOfaqxa);
+        if (paramArrayOfaqxa.optInt("enable", 1) != 1) {
+          break label93;
+        }
+      }
+      for (;;)
+      {
+        localQVipBigClubSVIP9Config.mIsEnable = bool;
+        localQVipBigClubSVIP9Config.mAPngIconUrl = paramArrayOfaqxa.optString("apng_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrl);
+        localQVipBigClubSVIP9Config.mAPngIconUrlNewGray = paramArrayOfaqxa.optString("apng_gray_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrlNewGray);
+        localQVipBigClubSVIP9Config.mVipIconSettingsUrl = paramArrayOfaqxa.optString("vipicon_setting_url_pattern", localQVipBigClubSVIP9Config.mVipIconSettingsUrl);
+        return localQVipBigClubSVIP9Config;
+        label93:
+        bool = false;
+      }
+      return localQVipBigClubSVIP9Config;
+    }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      ykq.e("QVipBigTroopExpiredProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaqxa.getMessage());
+    }
+  }
+  
+  @NonNull
+  public QVipBigClubSVIP9Config b()
+  {
+    return new QVipBigClubSVIP9Config();
+  }
+  
+  public Class<QVipBigClubSVIP9Config> clazz()
+  {
+    return QVipBigClubSVIP9Config.class;
+  }
+  
+  public int type()
+  {
+    return 427;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arjx
  * JD-Core Version:    0.7.0.1
  */

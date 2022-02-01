@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.text.Editable;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class adwx
-  extends amyh
+  implements bewb
 {
-  public adwx(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adwx(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void a(View paramView, int paramInt, bewc parambewc)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
+    if ((paramInt >= 0) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > paramInt))
+    {
+      int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+      this.a.jdField_a_of_type_AndroidWidgetEditText.getText().insert(i, this.a.jdField_a_of_type_Bewa.a(paramInt));
+      this.a.app.reportClickEvent("dc00899", "Grp_set", "", "nickname edit", "nickname edit_def_click", 0, 0, String.valueOf(this.a.e), "", "", "");
     }
   }
 }

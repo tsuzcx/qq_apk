@@ -1,23 +1,40 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
 
-class bczf
-  implements View.OnTouchListener
+public class bczf
+  extends SCameraCaptureProcessor.CaptureCallback
 {
-  bczf(bczc parambczc) {}
+  public bczf(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onError(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    bczm.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+  }
+  
+  public void onPictureAvailable(ByteBuffer paramByteBuffer)
+  {
+    bczm.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
+    bczl.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
     {
+      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.get(arrayOfByte);
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
     }
-    for (;;)
-    {
-      return false;
-      bjmm.b(paramView);
-      this.a.d();
-    }
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
+  }
+  
+  public void onShutter()
+  {
+    bczm.a(1, "[Camera2]samsungCapture onShutter!");
   }
 }
 

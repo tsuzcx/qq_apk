@@ -1,60 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import java.util.ArrayList;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
 
-public final class afyn
-  extends Drawable.ConstantState
+public class afyn
+  extends AccessibilityDelegateCompat
 {
-  public int a;
-  public final Paint a;
-  public ArrayList<afyq> a;
-  public boolean a;
-  public int b;
-  public ArrayList<Bitmap> b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  public afyn(ListenPanel paramListenPanel) {}
   
-  public afyn()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 160;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  @NonNull
-  public Drawable newDrawable()
-  {
-    return new CustomFrameAnimationDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new CustomFrameAnimationDrawable(this, paramResources, null);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (ListenPanel.a(this.a) < 1000.0D) {}
+    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691086));
+      return;
+    }
   }
 }
 

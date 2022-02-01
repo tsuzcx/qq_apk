@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.transfile.predownload;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +21,7 @@ public class PreDownloadController
   {
     this.mApp = paramQQAppInterface;
     BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-    this.mScheduler = ((PreDownloadScheduler)this.mApp.getManager(233));
+    this.mScheduler = ((PreDownloadScheduler)this.mApp.getManager(QQManagerFactory.PRE_DOWNLOAD_SCHEDULER_MANAGER));
     this.mScheduler.setEnable(this.enable);
   }
   

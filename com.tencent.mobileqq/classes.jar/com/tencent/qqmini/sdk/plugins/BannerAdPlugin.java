@@ -501,7 +501,7 @@ public class BannerAdPlugin
     if (this.mBannerAdPosInfo == null) {
       return null;
     }
-    return new MiniAdPosInfo(gameDpTopx(this.mBannerAdPosInfo.mAdLeft), gameDpTopx(this.mBannerAdPosInfo.mAdTop), gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
+    return new MiniAdPosInfo(this.mBannerAdPosInfo.mAdLeft, this.mBannerAdPosInfo.mAdTop, this.mBannerAdPosInfo.mAdRealWidth, this.mBannerAdPosInfo.mAdRealHeight);
   }
   
   /* Error */
@@ -696,7 +696,7 @@ public class BannerAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin
  * JD-Core Version:    0.7.0.1
  */

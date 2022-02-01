@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.matchchat;
 
-import abwp;
-import abwz;
+import acmw;
+import acnh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import arhi;
-import arno;
+import aslo;
+import asru;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.ExtendFriendUserInfo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -57,8 +58,8 @@ public class RecentMatchChatListItem
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if ((localObject2 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((abwp)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (abwz.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((acmw)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (acnh.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
           a(paramQQAppInterface, paramContext, (QQMessageFacade.Message)localObject1);
@@ -96,11 +97,11 @@ public class RecentMatchChatListItem
         break label95;
         label274:
         if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698328));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698624));
         } else if (this.mUnreadNum == 2) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698329));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698625));
         } else if (this.mUnreadNum > 0) {
-          paramQQAppInterface.append(paramContext.getResources().getString(2131698327, new Object[] { Integer.valueOf(this.mUnreadNum) }));
+          paramQQAppInterface.append(paramContext.getResources().getString(2131698623, new Object[] { Integer.valueOf(this.mUnreadNum) }));
         }
       }
     }
@@ -108,11 +109,11 @@ public class RecentMatchChatListItem
   
   protected void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage)
   {
-    paramQQAppInterface = ((arhi)paramQQAppInterface.getManager(264)).a(paramMessage.frienduin, false);
+    paramQQAppInterface = ((aslo)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a(paramMessage.frienduin, false);
     if ((paramQQAppInterface != null) && (paramQQAppInterface.isSignalBomb()) && (paramQQAppInterface.distance >= 0) && (paramQQAppInterface.showDistanceHLight))
     {
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
-      this.mMsgExtroInfo = String.format(paramContext.getResources().getString(2131698244), new Object[] { arno.a(paramQQAppInterface.distance) });
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
+      this.mMsgExtroInfo = String.format(paramContext.getResources().getString(2131698530), new Object[] { asru.a(paramQQAppInterface.distance) });
     }
   }
   

@@ -1,18 +1,19 @@
 package com.tencent.common.app;
 
-import bcef;
-import bkij;
-import bknf;
-import bkog;
-import bkox;
-import bkxa;
-import bkxm;
-import blew;
+import bdla;
+import bltv;
+import blyn;
+import blzo;
+import bmaf;
+import bmij;
+import bmiv;
+import bmrn;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import cooperation.buscard.BuscardHelper;
 import cooperation.pluginbridge.BridgeHelper;
@@ -23,6 +24,8 @@ import mqq.app.AppRuntime;
 
 public class AppInterfaceFactory
 {
+  private static final String TAG = "AppInterfaceFactory";
+  
   public static AppRuntime getAppRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     Object localObject2 = null;
@@ -66,7 +69,7 @@ public class AppInterfaceFactory
       if (paramString.equals(str + ":photoedit"))
       {
         paramBaseApplicationImpl = new PluginRuntime();
-        bcef.a(paramBaseApplicationImpl);
+        bdla.a(paramBaseApplicationImpl);
         return paramBaseApplicationImpl;
       }
       if (paramString.equals(str + ":zebra")) {
@@ -75,7 +78,7 @@ public class AppInterfaceFactory
       if (paramString.equals(str + ":demoji"))
       {
         paramBaseApplicationImpl = new PluginRuntime();
-        bcef.a(paramBaseApplicationImpl);
+        bdla.a(paramBaseApplicationImpl);
         return paramBaseApplicationImpl;
       }
       if (paramString.equals(str + ":map")) {
@@ -83,8 +86,13 @@ public class AppInterfaceFactory
       }
       if (paramString.equals(str + ":weiyun"))
       {
-        paramBaseApplicationImpl = blew.a(paramBaseApplicationImpl);
-        bcef.a(paramBaseApplicationImpl);
+        paramBaseApplicationImpl = bmrn.a(paramBaseApplicationImpl);
+        if (paramBaseApplicationImpl != null)
+        {
+          bdla.a(paramBaseApplicationImpl);
+          return paramBaseApplicationImpl;
+        }
+        QLog.e("AppInterfaceFactory", 1, "WeiyunHelper.createRuntime return null!");
         return paramBaseApplicationImpl;
       }
       if (paramString.equals(str + ":qwallet"))
@@ -94,14 +102,14 @@ public class AppInterfaceFactory
         if (paramBaseApplicationImpl == null) {
           continue;
         }
-        bcef.a((PluginRuntime)paramBaseApplicationImpl);
+        bdla.a((PluginRuntime)paramBaseApplicationImpl);
         return paramBaseApplicationImpl;
       }
       if (paramString.equals(str + ":qqfav")) {
-        return bkox.a(paramBaseApplicationImpl);
+        return bmaf.a(paramBaseApplicationImpl);
       }
       if (paramString.equals(str + ":qlink")) {
-        return bknf.a(paramBaseApplicationImpl, "qlink");
+        return blyn.a(paramBaseApplicationImpl, "qlink");
       }
       if (paramString.equals(str + ":miniapp")) {
         return new com.tencent.mobileqq.microapp.MiniAppInterface(paramBaseApplicationImpl, "miniapp");
@@ -122,15 +130,20 @@ public class AppInterfaceFactory
           continue;
         }
         if (paramString.equals(str + ":dataline")) {
-          return bkog.a(paramBaseApplicationImpl, "dataline");
+          return blzo.a(paramBaseApplicationImpl, "dataline");
         }
         if (paramString.equals(str + ":smartdevice")) {
-          return bkxa.a(paramBaseApplicationImpl, "smartdevice");
+          return bmij.a(paramBaseApplicationImpl, "smartdevice");
         }
         if (paramString.equals(str + ":buscard"))
         {
           paramBaseApplicationImpl = BuscardHelper.a(paramBaseApplicationImpl, "buscard");
-          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          if (paramBaseApplicationImpl != null)
+          {
+            bdla.a((PluginRuntime)paramBaseApplicationImpl);
+            return paramBaseApplicationImpl;
+          }
+          QLog.e("AppInterfaceFactory", 1, "BuscardHelper.createBuscardAppInterface return null!");
           return paramBaseApplicationImpl;
         }
         if (paramString.equals(str + ":hce")) {
@@ -142,14 +155,14 @@ public class AppInterfaceFactory
         }
         if (paramString.equals(str + ":troopmemcard"))
         {
-          paramBaseApplicationImpl = bkxm.a(paramBaseApplicationImpl, "troop_member_card_plugin.apk");
-          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          paramBaseApplicationImpl = bmiv.a(paramBaseApplicationImpl, "troop_member_card_plugin.apk");
+          bdla.a((PluginRuntime)paramBaseApplicationImpl);
           return paramBaseApplicationImpl;
         }
         if (paramString.equals(str + ":troopmanage"))
         {
-          paramBaseApplicationImpl = bkxm.a(paramBaseApplicationImpl, "troop_manage_plugin.apk");
-          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          paramBaseApplicationImpl = bmiv.a(paramBaseApplicationImpl, "troop_manage_plugin.apk");
+          bdla.a((PluginRuntime)paramBaseApplicationImpl);
           return paramBaseApplicationImpl;
         }
         if (paramString.equals(str + ":pluginbridge"))
@@ -159,11 +172,11 @@ public class AppInterfaceFactory
           if (paramBaseApplicationImpl == null) {
             continue;
           }
-          bcef.a((PluginRuntime)paramBaseApplicationImpl);
+          bdla.a((PluginRuntime)paramBaseApplicationImpl);
           return paramBaseApplicationImpl;
         }
         if (paramString.equals(str + ":groupvideo")) {
-          return bkij.a(paramBaseApplicationImpl, "groupvideo");
+          return bltv.a(paramBaseApplicationImpl, "groupvideo");
         }
         if (paramString.equals(str + ":tool"))
         {
@@ -184,7 +197,7 @@ public class AppInterfaceFactory
           return new AVGameAppInterface(paramBaseApplicationImpl, "avgame");
         }
         paramBaseApplicationImpl = new PluginRuntime();
-        bcef.a(paramBaseApplicationImpl);
+        bdla.a(paramBaseApplicationImpl);
         return paramBaseApplicationImpl;
       }
       catch (Exception paramString)

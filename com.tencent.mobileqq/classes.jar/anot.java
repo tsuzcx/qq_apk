@@ -1,178 +1,314 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.31.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class anot
+  implements anpr
 {
-  private static String jdField_a_of_type_JavaLangString = "en.lang";
-  private static String b = "en-release.zip";
-  private anos jdField_a_of_type_Anos;
-  private anow jdField_a_of_type_Anow;
+  public anot(ApolloPanel paramApolloPanel) {}
   
-  public static anot a()
+  public anqh a(int paramInt)
   {
-    return anou.a();
-  }
-  
-  private static String a()
-  {
-    File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "/multi_language");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile.getAbsolutePath() + File.separator;
-  }
-  
-  private void a(Context paramContext, String paramString)
-  {
-    long l;
-    String str;
-    if (!new File(paramString).exists())
+    switch (paramInt)
     {
-      QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLanguage need unzip:", b });
-      l = System.currentTimeMillis();
-      paramString = "language" + File.separator + b;
-      str = a() + b;
-      FileUtils.copyAssetToFile(paramContext, paramString, str);
-    }
-    try
-    {
-      npo.a(new File(str), a());
-      if (QLog.isColorLevel()) {
-        QLog.e("MultiLanguageEngine", 2, new Object[] { "copy and unzip success! cost:", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
-      }
-      return;
-    }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  private boolean a(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString);
-    try
-    {
-      long l = System.currentTimeMillis();
-      AssetManager localAssetManager = (AssetManager)AssetManager.class.getConstructor(new Class[0]).newInstance(new Object[0]);
-      Object localObject = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
-      ((Method)localObject).setAccessible(true);
-      ((Method)localObject).invoke(localAssetManager, new Object[] { paramString });
-      Resources localResources = new Resources(localAssetManager, this.jdField_a_of_type_Anow.b().getDisplayMetrics(), this.jdField_a_of_type_Anow.b().getConfiguration());
-      localObject = paramContext.getPackageName();
-      paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
-      if (paramContext != null) {}
-      for (paramContext = paramContext.packageName;; paramContext = (Context)localObject)
+    default: 
+      return new anqe(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    case 0: 
+      return new anqe(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    case 2: 
+      return new anpt(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    case 100: 
+      if (amme.c("gamePanelSwitch") != 1)
       {
-        this.jdField_a_of_type_Anow.a(localResources, paramContext);
-        QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLangPkg:", localAssetManager.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        return true;
-        QLog.d("MultiLanguageEngine", 1, "pkgInfo is null");
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, "loadPanel gameSwitch is 0 return null");
+        }
+        return null;
       }
-      return false;
+      return new anpu(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
     }
-    catch (Exception paramContext)
+    return new anqg(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
+  
+  public void a()
+  {
+    ApolloPanel.a(this.a).post(new ApolloPanel.31.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentUin(), 0).edit();
+    if (paramInt < 0) {
+      localEditor.remove("sp_key_apollo_current_page_index");
+    }
+    for (;;)
     {
-      QLog.d("MultiLanguageEngine", 1, paramContext, new Object[0]);
+      localEditor.apply();
+      return;
+      localEditor.putString("sp_key_apollo_current_page_index", String.valueOf(paramInt));
     }
   }
   
-  private void e(Context paramContext)
+  public void a(List<anqh> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] mShouldShowActionFloatView=", Boolean.valueOf(ApolloPanel.c(this.a)), ", refreshByGetUserAction=", Boolean.valueOf(paramBoolean) });
+    }
+    Object localObject1 = ApolloPanel.a(this.a);
+    int i;
+    Object localObject2;
+    int m;
+    int k;
+    if ((localObject1 != null) && (((amrk)localObject1).jdField_a_of_type_Int > 0) && (!paramList.isEmpty()))
     {
-      long l = System.currentTimeMillis();
-      Object localObject1 = Class.forName("android.app.ContextImpl");
-      Object localObject2 = ((Class)localObject1).getDeclaredField("mResources");
-      ((Field)localObject2).setAccessible(true);
-      Object localObject3 = ((Field)localObject2).get(paramContext);
-      ((Field)localObject2).set(paramContext, this.jdField_a_of_type_Anos);
-      QLog.d("MultiLanguageEngine", 1, new Object[] { "success in delegate ContextImpl resources:", this.jdField_a_of_type_Anos.toString(), " ,old:", localObject3.toString() });
-      localObject1 = ((Class)localObject1).getDeclaredField("mPackageInfo");
-      ((Field)localObject1).setAccessible(true);
-      paramContext = ((Field)localObject1).get(paramContext);
-      localObject1 = Class.forName("android.app.LoadedApk").getDeclaredField("mResources");
-      ((Field)localObject1).setAccessible(true);
-      localObject2 = ((Field)localObject1).get(paramContext);
-      ((Field)localObject1).set(paramContext, this.jdField_a_of_type_Anos);
-      QLog.d("MultiLanguageEngine", 1, new Object[] { "success in delegate LoadedApk resources:", this.jdField_a_of_type_Anos.toString(), " ,old:", localObject2.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-      return;
+      i = 0;
+      if (i < paramList.size())
+      {
+        localObject2 = (anqh)paramList.get(i);
+        if ((localObject2 instanceof anpu))
+        {
+          ApolloPanel.jdField_a_of_type_Int = i;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[initPanelData] checkGameTab jumpGameId:", Integer.valueOf(((amrk)localObject1).jdField_a_of_type_Int), ",gameTabIndex:" + ApolloPanel.jdField_a_of_type_Int });
+          }
+          ((anpu)localObject2).a((amrk)localObject1);
+          m = ApolloPanel.a(this.a, paramList, ApolloPanel.jdField_a_of_type_Int);
+          a(ApolloPanel.jdField_a_of_type_Int);
+          k = 1;
+        }
+      }
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      paramContext.printStackTrace();
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentUin(), 0);
+      int j = k;
+      i = m;
+      int n;
+      if (k == 0)
+      {
+        j = k;
+        i = m;
+        if (!paramBoolean)
+        {
+          paramBoolean = false;
+          i = 0;
+          ApolloPanel.a(this.a, -1);
+          if (((amme)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.APOLLO_MANAGER)).o)
+          {
+            j = ((SharedPreferences)localObject1).getInt("key_panel_bubble_tab", -1);
+            i = 0;
+            n = paramList1.size();
+            label343:
+            if (i >= n) {
+              break label1129;
+            }
+            localObject2 = (ApolloActionPackage)paramList1.get(i);
+            if ((localObject2 == null) || (((ApolloActionPackage)localObject2).packageId != j)) {
+              break label681;
+            }
+          }
+        }
+      }
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] bubble pakcageId:", Integer.valueOf(j) });
+        }
+        if ((!paramBoolean) && (ApolloPanel.c(this.a)))
+        {
+          j = 0;
+          n = paramList1.size();
+          label434:
+          if (j < n)
+          {
+            localObject2 = (ApolloActionPackage)paramList1.get(j);
+            if ((localObject2 != null) && (((ApolloActionPackage)localObject2).isUpdate) && (NetConnInfoCenter.getServerTimeMillis() >= ((ApolloActionPackage)localObject2).redStartTime)) {
+              paramBoolean = true;
+            }
+          }
+        }
+        for (n = j;; n = i)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] hasNewAction=", Boolean.valueOf(paramBoolean), ", tabIndex=", Integer.valueOf(n) });
+          }
+          j = k;
+          i = m;
+          if (paramBoolean)
+          {
+            j = k;
+            i = m;
+            if (n < paramList.size())
+            {
+              k = ApolloPanel.a(this.a, paramList, n);
+              m = 1;
+              ApolloPanel.a(this.a, n);
+              j = m;
+              i = k;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] hasNewAction, pagerIndex=", Integer.valueOf(k) });
+                i = k;
+                j = m;
+              }
+            }
+          }
+          n = 0;
+          k = 0;
+          for (;;)
+          {
+            if (k < paramList.size())
+            {
+              n += ((anqh)paramList.get(k)).a();
+              k += 1;
+              continue;
+              i += 1;
+              break;
+              label681:
+              i += 1;
+              break label343;
+              j += 1;
+              break label434;
+            }
+          }
+          m = j;
+          k = i;
+          if (j == 0)
+          {
+            if ((ApolloPanel.a(this.a) < 0) || (ApolloPanel.a(this.a) >= paramList.size())) {
+              break label1119;
+            }
+            i = ApolloPanel.a(this.a, paramList, ApolloPanel.a(this.a));
+            j = 1;
+          }
+          label1063:
+          label1080:
+          label1095:
+          label1101:
+          label1119:
+          for (;;)
+          {
+            if ((j == 0) && (((SharedPreferences)localObject1).contains("sp_key_apollo_current_page_index")))
+            {
+              localObject1 = ((SharedPreferences)localObject1).getString("sp_key_apollo_current_page_index", null);
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+            }
+            for (;;)
+            {
+              try
+              {
+                k = Integer.parseInt((String)localObject1);
+                if (k >= n) {
+                  break label1101;
+                }
+                m = 1;
+                j = m;
+                i = k;
+              }
+              catch (Exception localException1)
+              {
+                k = i;
+                i = j;
+              }
+              try
+              {
+                if (QLog.isColorLevel())
+                {
+                  QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] from previous saved, pagerIndex=", Integer.valueOf(k) });
+                  i = k;
+                  j = m;
+                }
+                k = j;
+                j = i;
+                i = k;
+                if (i != 0) {
+                  break label1080;
+                }
+                k = 0;
+                m = paramList1.size();
+                if (k >= m) {
+                  break label1095;
+                }
+                localObject1 = (ApolloActionPackage)paramList1.get(k);
+                if ((localObject1 == null) || (((ApolloActionPackage)localObject1).packageId != 0)) {
+                  break label1063;
+                }
+              }
+              catch (Exception localException2)
+              {
+                for (;;)
+                {
+                  i = 1;
+                }
+                k = i;
+                i = j;
+                j = k;
+                continue;
+                k = 0;
+                continue;
+              }
+              if (k < paramList.size())
+              {
+                i = ApolloPanel.a(this.a, paramList, k);
+                if (QLog.isColorLevel()) {
+                  QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] default single action, pagerIndex=", Integer.valueOf(i) });
+                }
+                j = 1;
+                if (j == 0) {
+                  i = 1;
+                }
+                if (i < n)
+                {
+                  ApolloPanel.jdField_a_of_type_Int = i;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
+                  }
+                }
+                return;
+                QLog.e("ApolloPanel", 1, "parse previousSavedPagerIndexStr error", localException1);
+                m = i;
+                i = m;
+                j = k;
+                continue;
+                k += 1;
+              }
+              else
+              {
+                continue;
+                k = i;
+                i = j;
+                j = k;
+              }
+            }
+          }
+        }
+        label1129:
+        i = 0;
+      }
+      k = 0;
+      m = 1;
     }
   }
   
-  public void a(Activity paramActivity)
+  public boolean a(int paramInt)
   {
-    if (amvi.a()) {}
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      LayoutInflater.from(paramActivity).setFactory2(new anov(paramActivity));
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiLanguageEngine", 2, new Object[] { "register cost:", Long.valueOf(System.currentTimeMillis() - l) });
-  }
-  
-  public void a(Context paramContext)
-  {
-    boolean bool = false;
-    if (!amvi.a()) {
-      bool = true;
-    }
-    QLog.d("MultiLanguageEngine", 1, new Object[] { "initAndDelegate:", Boolean.valueOf(bool), ", context:", paramContext });
-    if (paramContext == null) {}
-    while (amvi.a()) {
-      return;
-    }
-    this.jdField_a_of_type_Anow = new anow(paramContext);
-    this.jdField_a_of_type_Anos = new anos(this.jdField_a_of_type_Anow);
-    e(paramContext);
-  }
-  
-  public void b(Context paramContext)
-  {
-    if (amvi.b()) {
-      a(paramContext, a() + jdField_a_of_type_JavaLangString);
-    }
-    while (this.jdField_a_of_type_Anow == null) {
-      return;
-    }
-    this.jdField_a_of_type_Anow.a(null, null);
-  }
-  
-  public void c(Context paramContext)
-  {
-    long l = System.currentTimeMillis();
-    FileUtils.deleteDirectory(a());
-    b(paramContext);
-    QLog.d("MultiLanguageEngine", 1, new Object[] { "update lang pkg! cost:", Long.valueOf(System.currentTimeMillis() - l) });
-  }
-  
-  public void d(Context paramContext)
-  {
-    a(paramContext, a() + jdField_a_of_type_JavaLangString);
+    return !ApolloActionPackage.is3DPackage(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anot
  * JD-Core Version:    0.7.0.1
  */

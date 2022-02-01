@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-public class ssg
-  implements apos
+public final class ssg
+  implements Parcelable.Creator<DiscoveryBannerInfo>
 {
-  public ssg(FastWebActivity paramFastWebActivity) {}
-  
-  public void a()
+  public DiscoveryBannerInfo a(Parcel paramParcel)
   {
-    FastWebActivity.b(this.a, true);
-    QLog.d("FastWebActivity", 1, "onPageSwipeClose");
+    return new DiscoveryBannerInfo(paramParcel);
   }
   
-  public void b()
+  public DiscoveryBannerInfo[] a(int paramInt)
   {
-    if (FastWebActivity.a(this.a) == 0L)
-    {
-      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
-      QLog.d("FastWebActivity", 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
-    }
+    return new DiscoveryBannerInfo[paramInt];
   }
 }
 

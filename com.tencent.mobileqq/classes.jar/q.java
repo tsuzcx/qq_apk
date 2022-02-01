@@ -319,7 +319,7 @@ public class q
             paramInt2 += 1;
             paramInt1 = i1;
             break;
-            if (((localCharacterStyle instanceof QQText.EmoticonSpan)) || ((localCharacterStyle instanceof bank)))
+            if (((localCharacterStyle instanceof QQText.EmoticonSpan)) || ((localCharacterStyle instanceof bbtz)))
             {
               if (!a(localCharacterStyle, i3, i1, 2, bool)) {
                 continue;
@@ -491,12 +491,12 @@ public class q
       while (!paramBoolean)
       {
         return bool;
-        if (!(paramCharacterStyle instanceof bank)) {
+        if (!(paramCharacterStyle instanceof bbtz)) {
           break label423;
         }
-        localObject = (bank)paramCharacterStyle;
-        paramInt2 = ((bank)localObject).a();
-        paramInt1 = ((bank)localObject).b();
+        localObject = (bbtz)paramCharacterStyle;
+        paramInt2 = ((bbtz)localObject).a();
+        paramInt1 = ((bbtz)localObject).b();
         break;
         this.p += ((w)localObject).jdField_b_of_type_Int;
         ((w)localObject).jdField_d_of_type_Int = this.w;
@@ -1037,12 +1037,12 @@ public class q
     }
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      a(amtj.a(2131703982));
+      a(anvx.a(2131704333));
       return false;
     }
     if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
     {
-      a(amtj.a(2131703981));
+      a(anvx.a(2131704332));
       return false;
     }
     c();
@@ -1258,11 +1258,11 @@ public class q
       {
         ((QQText.EmoticonSpan)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank))
+      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtz))
       {
-        localObject = (bank)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((bank)localObject).jdField_a_of_type_Boolean = false;
-        ((bank)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (bbtz)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((bbtz)localObject).jdField_a_of_type_Boolean = false;
+        ((bbtz)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }

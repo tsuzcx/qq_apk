@@ -1,90 +1,63 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-
-public class ajmn
-  extends bhgj
+public final class ajmn
 {
-  private ajmn(CountryActivity paramCountryActivity) {}
-  
-  public int a()
+  private static boolean m(int paramInt)
   {
-    return 2131559558;
+    return paramInt == -3;
   }
   
-  public void a(View paramView, int paramInt)
+  private static boolean n(int paramInt)
   {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
+    return paramInt == -2;
   }
   
-  public boolean a(int paramInt)
+  private static boolean o(int paramInt)
   {
-    return ((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+    return paramInt == -1;
   }
   
-  public int getCount()
+  private static boolean p(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    return paramInt < 0;
   }
   
-  public Object getItem(int paramInt)
+  private static boolean q(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return paramInt == 0;
   }
   
-  public long getItemId(int paramInt)
+  private static boolean r(int paramInt)
   {
-    return 0L;
+    return paramInt == 1;
   }
   
-  public int getItemViewType(int paramInt)
+  private static boolean s(int paramInt)
   {
-    if (((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
+    return paramInt == 2;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  private static boolean t(int paramInt)
   {
-    bfxc localbfxc = (bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
-    {
-      if (paramView != null) {
-        break label121;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
-    }
-    label121:
-    for (;;)
-    {
-      ((TextView)paramView).setText(localbfxc.jdField_a_of_type_JavaLangString);
-      for (;;)
-      {
-        paramView.setVisibility(0);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = CountryActivity.a(paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        CountryActivity.a(localView, localbfxc);
-        paramView = localView;
-      }
-    }
+    return paramInt == 3;
   }
   
-  public int getViewTypeCount()
+  private static boolean u(int paramInt)
   {
-    return 2;
+    return paramInt == 4;
+  }
+  
+  private static boolean v(int paramInt)
+  {
+    return paramInt == 5;
+  }
+  
+  private static boolean w(int paramInt)
+  {
+    return paramInt > 2;
+  }
+  
+  private static boolean x(int paramInt)
+  {
+    return paramInt >= 1;
   }
 }
 

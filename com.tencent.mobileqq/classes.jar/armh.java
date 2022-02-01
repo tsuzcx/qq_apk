@@ -1,413 +1,166 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.extendfriend.limitchat.AioLimitColdPalaceHelper.addBanishColdPalaceGrayTip.1;
-import com.tencent.mobileqq.extendfriend.limitchat.AioLimitColdPalaceHelper.doOnShowFirst.1;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.support.v4.util.ArrayMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.StringCompanionObject;
-import kotlin.text.StringsKt;
-import mqq.manager.Manager;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/limitchat/AioLimitColdPalaceHelper;", "Lcom/tencent/mobileqq/activity/aio/helper/ILifeCycleHelper;", "Lcom/tencent/mobileqq/extendfriend/limitchat/IColdPalaceBanish;", "Lcom/tencent/mobileqq/extendfriend/ExtendFriendObserver;", "chatPie", "Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;", "(Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;)V", "mActivity", "Lcom/tencent/mobileqq/app/BaseActivity;", "getMActivity", "()Lcom/tencent/mobileqq/app/BaseActivity;", "setMActivity", "(Lcom/tencent/mobileqq/app/BaseActivity;)V", "mApp", "Lcom/tencent/mobileqq/app/QQAppInterface;", "getMApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "mChatPie", "getMChatPie", "()Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;", "mColdPalaceGrayTipPosition", "", "getMColdPalaceGrayTipPosition", "()I", "setMColdPalaceGrayTipPosition", "(I)V", "mHasInitInsertColdPalaceGrayTip", "", "getMHasInitInsertColdPalaceGrayTip", "()Z", "setMHasInitInsertColdPalaceGrayTip", "(Z)V", "mHasInitLimitMatchFriendMsgCount", "getMHasInitLimitMatchFriendMsgCount", "setMHasInitLimitMatchFriendMsgCount", "mHasInsertColdPalaceGrayTip", "getMHasInsertColdPalaceGrayTip", "setMHasInsertColdPalaceGrayTip", "mLimitMatchFriendMsgCount", "getMLimitMatchFriendMsgCount", "setMLimitMatchFriendMsgCount", "mMsgObserver", "Lcom/tencent/mobileqq/app/MessageObserver;", "getMMsgObserver", "()Lcom/tencent/mobileqq/app/MessageObserver;", "mTipsDialog", "Landroid/app/Dialog;", "getMTipsDialog", "()Landroid/app/Dialog;", "setMTipsDialog", "(Landroid/app/Dialog;)V", "addBanishColdPalaceGrayTip", "", "doOnCreate", "doOnDestroy", "doOnShowFirst", "from", "getMsgTypeShouldNotInclude", "", "getTag", "getTipsDialog", "initHasInsertColdPalaceGrayTip", "initLimitMatchFriendMsgCount", "peerUin", "type", "interestedIn", "", "onBanishColdPalaceClick", "app", "context", "Landroid/content/Context;", "uinType", "uin", "onColdPalaceLimitCancel", "onColdPalaceLimitConfirm", "onMoveToState", "state", "onReqThrowToColdPalace", "suc", "isUsedUp", "preloadColdPalacePic", "setTipsDialog", "dialog", "shouldShowGrayTipEntry", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class armh
-  extends arht
-  implements afrc, arng
 {
-  public static final armj a;
-  private volatile int jdField_a_of_type_Int;
-  @NotNull
-  private final amwl jdField_a_of_type_Amwl;
-  @Nullable
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  @NotNull
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  @NotNull
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  @NotNull
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile int jdField_b_of_type_Int;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private volatile boolean c;
+  private int jdField_a_of_type_Int;
+  private ArrayMap<String, ArrayList<armi>> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(5);
+  private int b = 1;
+  private int c = 1;
+  private int d = 1;
+  private int e = 1;
+  private int f = 1;
   
-  static
+  public static armh a()
   {
-    jdField_a_of_type_Armj = new armj(null);
+    return (armh)aqxe.a().a(432);
   }
   
-  public armh(@NotNull BaseChatPie paramBaseChatPie)
+  public static armh a(aqxa paramaqxa)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    Intrinsics.checkExpressionValueIsNotNull(localQQAppInterface, "chatPie.app");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = localQQAppInterface;
-    paramBaseChatPie = paramBaseChatPie.getActivity();
-    Intrinsics.checkExpressionValueIsNotNull(paramBaseChatPie, "chatPie.activity");
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie;
-    this.c = true;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Amwl = ((amwl)new armi(this));
-  }
-  
-  @JvmStatic
-  public static final void a(@NotNull Context paramContext)
-  {
-    jdField_a_of_type_Armj.a(paramContext);
-  }
-  
-  @JvmStatic
-  public static final void a(@NotNull arng paramarng)
-  {
-    jdField_a_of_type_Armj.a(paramarng);
-  }
-  
-  @JvmStatic
-  public static final void a(@NotNull QQAppInterface paramQQAppInterface, @NotNull Activity paramActivity, int paramInt, @NotNull String paramString, @NotNull arng paramarng)
-  {
-    jdField_a_of_type_Armj.a(paramQQAppInterface, paramActivity, paramInt, paramString, paramarng);
-  }
-  
-  @JvmStatic
-  public static final void a(@Nullable QQAppInterface paramQQAppInterface, @Nullable Context paramContext, int paramInt, @NotNull String paramString, @NotNull arng paramarng)
-  {
-    jdField_a_of_type_Armj.b(paramQQAppInterface, paramContext, paramInt, paramString, paramarng);
-  }
-  
-  @JvmStatic
-  public static final void a(@Nullable QQAppInterface paramQQAppInterface, @Nullable Context paramContext, boolean paramBoolean1, int paramInt, @NotNull String paramString, boolean paramBoolean2, @NotNull arng paramarng)
-  {
-    jdField_a_of_type_Armj.a(paramQQAppInterface, paramContext, paramBoolean1, paramInt, paramString, paramBoolean2, paramarng);
-  }
-  
-  private final void a(String paramString, int paramInt)
-  {
-    Object localObject1 = (armh)this;
-    String str = ((armh)localObject1).a();
-    localObject1 = ((armh)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = StringCompanionObject.INSTANCE;
-    localObject2 = new Object[2];
-    localObject2[0] = Long.valueOf(9223372036854775807L);
-    localObject2[1] = str;
-    str = String.format("time < %d and issend = 0 and msgtype %s", Arrays.copyOf((Object[])localObject2, localObject2.length));
-    Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.String.format(format, *args)");
-    paramString = ((EntityManager)localObject1).query(MessageRecord.class, MessageRecord.getTableName(paramString, paramInt), false, str, null, null, null, null, "20");
-    if (paramString != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramString.size();
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("AioLimitColdPalaceHelper", 2, "initLimitMatchFriendMsgCount: mHasInsertColdPalaceGrayTip = " + this.c + " mLimitMatchFriendMsgCount = " + this.jdField_a_of_type_Int + " mHasInitInsertGrayTip = " + this.jdField_b_of_type_Boolean + " mColdPalaceGrayTipPosition = " + this.jdField_b_of_type_Int);
-      }
-      if ((this.jdField_b_of_type_Boolean) && (!this.c) && (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int)) {
-        f();
-      }
-      return;
-      paramString = (List)new ArrayList();
-    }
-  }
-  
-  private final boolean c()
-  {
-    return (this.jdField_b_of_type_Int > 0) && (arom.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a());
-  }
-  
-  private final void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "initHasInsertColdPalaceGrayTip");
-    }
-    Object localObject1;
-    Object localObject2;
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null))
-    {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-      if (localObject1 != null)
-      {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
-        if (localObject2 == null) {
-          Intrinsics.throwNpe();
-        }
-        localObject2 = ((SessionInfo)localObject2).curFriendUin;
-        SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
-        if (localSessionInfo == null) {
-          Intrinsics.throwNpe();
-        }
-        localObject1 = ((QQMessageFacade)localObject1).getAllMessages((String)localObject2, localSessionInfo.curType, new int[] { -5020 });
-        this.c = false;
-        if (localObject1 == null) {
-          break label225;
-        }
-        i = ((List)localObject1).size();
-        label121:
-        if (i > 0) {
-          break label230;
-        }
-        this.c = false;
-        label129:
-        break label244;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("AioLimitColdPalaceHelper", 2, "initHasInsertColdPalaceGrayTip: mHasInsertColdPalaceGrayTip = " + this.c + " mLimitMatchFriendMsgCount = " + this.jdField_a_of_type_Int + " mColdPalaceGrayTipPosition = " + this.jdField_b_of_type_Int);
-      }
-      if ((!this.c) && (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int)) {
-        f();
-      }
-      return;
-      localObject1 = null;
-      break;
-      label225:
-      i = 0;
-      break label121;
-      label230:
-      if (localObject1 == null) {
-        Intrinsics.throwNpe();
-      }
-      localObject1 = ((List)localObject1).iterator();
-      label244:
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if ((!(localObject2 instanceof MessageForUniteGrayTip)) || (((MessageForUniteGrayTip)localObject2).tipParam.jdField_b_of_type_Int != 459802)) {
-          break label129;
-        }
-        this.c = true;
-        continue;
-        this.c = true;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  @Nullable
-  public Dialog a()
-  {
-    return this.jdField_a_of_type_AndroidAppDialog;
-  }
-  
-  @NotNull
-  public final BaseChatPie a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  }
-  
-  @NotNull
-  public final BaseActivity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  }
-  
-  @NotNull
-  public final QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(abwz.h.length * 8);
-    localStringBuilder.append("not in (");
     int i = 0;
-    int[] arrayOfInt = abwz.h;
-    Intrinsics.checkExpressionValueIsNotNull(arrayOfInt, "MsgProxyUtils.MSGTYPE_HISTORY_INVISIBLE");
-    int j = arrayOfInt.length;
-    while (i < j)
+    armh localarmh = new armh();
+    if (paramaqxa != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchRichConfBean", 2, "parse taskid->" + paramaqxa.jdField_a_of_type_Int + " content->" + paramaqxa.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
     {
-      localStringBuilder.append(abwz.h[i]);
-      localStringBuilder.append(",");
+      ArrayList localArrayList1;
+      ArrayList localArrayList2;
+      try
+      {
+        paramaqxa = new JSONObject(paramaqxa.jdField_a_of_type_JavaLangString);
+        int j = paramaqxa.optInt("switch", 0);
+        int k = paramaqxa.optInt("ftsEnableMsgSwitch", 1);
+        int m = paramaqxa.optInt("showMessageResult", 1);
+        int n = paramaqxa.optInt("ftsEnableSwitch", 1);
+        int i1 = paramaqxa.optInt("ftsEnableTroopSwitch", 1);
+        int i2 = paramaqxa.optInt("ftsEnableFtsFilter", 1);
+        localarmh.a(j);
+        localarmh.b(k);
+        localarmh.c(m);
+        localarmh.c = n;
+        localarmh.e = i1;
+        localarmh.f = i2;
+        paramaqxa = paramaqxa.optJSONArray("templateinfo");
+        if (paramaqxa != null)
+        {
+          localArrayList1 = new ArrayList(10);
+          localArrayList2 = new ArrayList(10);
+          j = paramaqxa.length();
+          if (i >= j) {
+            break label375;
+          }
+          JSONObject localJSONObject = paramaqxa.optJSONObject(i);
+          if (localJSONObject == null) {
+            break label396;
+          }
+          armi localarmi = new armi();
+          localarmi.jdField_a_of_type_Int = localJSONObject.optInt("templateid");
+          localarmi.jdField_a_of_type_JavaLangString = localJSONObject.optString("templatetype");
+          localarmi.c = localJSONObject.optString("templatever");
+          localarmi.b = localJSONObject.optString("templatename");
+          localarmi.d = localJSONObject.optString("templateview");
+          if ("ark".equals(localarmi.jdField_a_of_type_JavaLangString)) {
+            localArrayList1.add(localarmi);
+          } else if ("native".equals(localarmi.jdField_a_of_type_JavaLangString)) {
+            localArrayList2.add(localarmi);
+          }
+        }
+      }
+      catch (Exception paramaqxa)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SearchRichConfBean", 2, "parse error->" + paramaqxa.toString());
+        }
+      }
+      return localarmh;
+      label375:
+      localarmh.a("ark", localArrayList1);
+      localarmh.a("native", localArrayList2);
+      return localarmh;
+      label396:
       i += 1;
     }
-    localStringBuilder.append(-5020);
-    localStringBuilder.append(")");
-    return localStringBuilder.toString();
   }
   
-  public final void a()
+  public ArrayList<armi> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "doOnCreate");
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) {
+      return (ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
     }
-    Manager localManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(264);
-    if (localManager == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.extendfriend.ExtendFriendManager");
-    }
-    this.jdField_b_of_type_Int = ((arhi)localManager).f();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)this.jdField_a_of_type_Amwl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)this);
+    return null;
   }
   
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 3: 
-      a();
-      return;
-    case 7: 
-      b();
-      return;
-    }
-    e();
-  }
-  
-  public void a(@Nullable Dialog paramDialog)
-  {
-    this.jdField_a_of_type_AndroidAppDialog = paramDialog;
-  }
-  
-  public void a(@NotNull QQAppInterface paramQQAppInterface, @NotNull Context paramContext, int paramInt, @Nullable String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    armj localarmj = jdField_a_of_type_Armj;
-    if (paramString == null) {
-      Intrinsics.throwNpe();
-    }
-    localarmj.b(paramQQAppInterface, paramContext, paramInt, paramString, (arng)this);
-  }
-  
-  protected void a(boolean paramBoolean1, @NotNull String paramString, int paramInt, boolean paramBoolean2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    if (StringsKt.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, true)) {
-      jdField_a_of_type_Armj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBoolean1, paramInt, paramString, paramBoolean2, (arng)this);
-    }
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  @NotNull
-  public int[] a()
-  {
-    return new int[] { 3, 7, 13 };
-  }
-  
-  public final int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "doOnShowFirst mColdPalaceGrayTipPosition = " + this.jdField_b_of_type_Int);
-    }
-    if (!c()) {
-      return;
-    }
-    ThreadManager.executeOnSubThread((Runnable)new AioLimitColdPalaceHelper.doOnShowFirst.1(this));
-  }
-  
-  public final void b(int paramInt)
+  void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public final boolean b()
+  void a(String paramString, ArrayList<armi> paramArrayList)
   {
-    return this.c;
-  }
-  
-  public final int c()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void c()
-  {
-    armj localarmj = jdField_a_of_type_Armj;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface == null) {
-      Intrinsics.throwNpe();
-    }
-    Activity localActivity = (Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
-    Intrinsics.checkExpressionValueIsNotNull(str, "mChatPie.sessionInfo.curFriendUin");
-    localarmj.a(localQQAppInterface, localActivity, i, str, (arng)this);
-  }
-  
-  public void d()
-  {
-    jdField_a_of_type_Armj.a((arng)this);
-  }
-  
-  public final void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "doOnDestroy");
-    }
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
-    if ((localDialog != null) && (localDialog.isShowing())) {
-      localDialog.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this.jdField_a_of_type_Amwl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this);
-  }
-  
-  public final void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioLimitColdPalaceHelper", 2, "addBanishColdPalaceGrayTip: " + this.c);
-    }
-    if (!this.c)
-    {
-      this.c = true;
-      ThreadManager.executeOnSubThread((Runnable)new AioLimitColdPalaceHelper.addBanishColdPalaceGrayTip.1(this));
+    if ((this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) && (paramString != null)) {
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramArrayList);
     }
   }
   
-  public final void g()
+  public boolean a()
   {
-    URLDrawable localURLDrawable = URLDrawable.getDrawable("https://downv6.qq.com/qq_relation/cold_palace/aio_limit_chat_cold_palace.png", null);
-    Intrinsics.checkExpressionValueIsNotNull(localURLDrawable, "URLDrawable.getDrawable(…D_PALACE_IMAGE_URL, null)");
-    if (1 != localURLDrawable.getStatus())
-    {
-      localURLDrawable.setAutoDownload(true);
-      localURLDrawable.startDownload(true);
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.c == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.e == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.f == 1;
+  }
+  
+  public boolean e()
+  {
+    return this.d == 1;
+  }
+  
+  public boolean f()
+  {
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) {}
+    for (String str = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.toString();; str = "null") {
+      return String.format("mRichSwitch:%d  templateData:%s", new Object[] { Integer.valueOf(i), str });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armh
  * JD-Core Version:    0.7.0.1
  */

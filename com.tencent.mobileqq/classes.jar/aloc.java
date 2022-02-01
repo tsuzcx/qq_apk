@@ -1,33 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
 
-class aloc
-  extends BroadcastReceiver
+public class aloc
+  implements DialogInterface.OnClickListener
 {
-  aloc(alnr paramalnr) {}
+  public aloc(CameraPreviewNew.1 param1) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      QLog.e("ApolloManager", 1, "[onReceive] intent null");
-    }
-    do
-    {
-      return;
-      paramContext = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
-      }
-    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
-    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
-    ((VasExtensionHandler)this.a.a.getBusinessHandler(71)).a(null, paramContext, -1003, 0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

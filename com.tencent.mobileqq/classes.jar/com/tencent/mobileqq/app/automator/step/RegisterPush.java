@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import angl;
+import aojb;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -24,7 +24,7 @@ public class RegisterPush
     if (this.b == 13) {}
     for (this.c = 0;; this.c = 10)
     {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new angl(this, null);
+      this.jdField_a_of_type_MqqObserverAccountObserver = new aojb(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
       return;
     }

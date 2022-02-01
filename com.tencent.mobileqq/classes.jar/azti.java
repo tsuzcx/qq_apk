@@ -1,61 +1,106 @@
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azti
 {
-  public static String a(String paramString)
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public Bitmap c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public azti(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static azti a(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
       return null;
+      try
+      {
+        paramString = a(paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PraiseInfo", 2, "content:" + paramString);
+        }
+        paramString = new JSONObject(paramString);
+        azti localazti = new azti(paramInt);
+        localazti.jdField_a_of_type_JavaLangString = paramString.optString("name");
+        localazti.jdField_b_of_type_JavaLangString = paramString.optString("text");
+        if (paramString.has("color"))
+        {
+          String str = paramString.optString("color").trim();
+          paramString = str;
+          if (str.startsWith("0x")) {
+            paramString = str.substring(2);
+          }
+        }
+        try
+        {
+          localazti.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
+          return localazti;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PraiseInfo", 2, "color invalid");
+            }
+          }
+        }
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
+        return null;
+      }
+      catch (IOException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+      }
     }
-    return QzoneZipCacheHelper.getBasePath("qzone_aio_gift", String.valueOf(paramString.hashCode()));
   }
   
-  public static String a(String paramString1, String paramString2)
+  private static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return "";
+    File localFile = new File(paramString);
+    if (!localFile.exists()) {
+      QLog.e("PraiseInfo", 1, paramString + " not exist!");
     }
-    return BaseApplicationImpl.getApplication().getCacheDir() + File.separator + paramString2 + File.separator + Utils.Crc64String(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
-  }
-  
-  public static void a(aztl paramaztl, String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+    do
     {
-      QLog.e("QzoneGiftUtil", 1, "downloadGiftZip fail with url = null  boxZipUrl = " + paramString1 + " giftZipUrl = " + paramString2 + " giftUrl = " + paramString3);
-      return;
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (int i = 2;; i = 3)
-    {
-      ThreadManagerV2.executeOnFileThread(new QzoneGiftUtil.1(paramaztl, i, paramString1, paramString2, paramString3));
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
-  {
-    QLog.i("QzoneGiftUtil", 1, "downloadGiftPhoto");
-    Downloader localDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
-    if (localDownloader != null) {
-      localDownloader.download(paramString1, a(paramString1, paramString2), false, new aztk(paramQzoneZipCacheHelperCallBack));
-    }
-  }
-  
-  private static boolean b(String paramString1, String paramString2)
-  {
-    return FileUtil.isFileExists(a(paramString1, paramString2));
+      return null;
+      try
+      {
+        paramString = FileUtils.readFileToString(localFile);
+        return paramString;
+      }
+      catch (OutOfMemoryError paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PraiseInfo", 2, paramString.getMessage());
+    return null;
   }
 }
 

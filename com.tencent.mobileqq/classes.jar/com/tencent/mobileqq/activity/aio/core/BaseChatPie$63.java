@@ -1,35 +1,17 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.text.Editable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import agcb;
+import agct;
+import android.graphics.Bitmap;
 
 class BaseChatPie$63
-  implements Runnable
+  implements agct
 {
   BaseChatPie$63(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onSend(Bitmap paramBitmap, agcb paramagcb, int paramInt)
   {
-    int i = this.this$0.input.getText().length();
-    if ((BaseChatPie.access$1800(this.this$0) == i) && (BaseChatPie.access$1900(this.this$0) != 1)) {
-      BaseChatPie.access$2008(this.this$0);
-    }
-    while (BaseChatPie.access$2000(this.this$0) <= BaseChatPie.access$2100(this.this$0))
-    {
-      this.this$0.app.sendMsgSignal();
-      BaseChatPie.access$1908(this.this$0);
-      ThreadManager.getSubThreadHandler().postDelayed(BaseChatPie.access$2200(this.this$0), 2000L);
-      return;
-      BaseChatPie.access$1802(this.this$0, i);
-      BaseChatPie.access$2002(this.this$0, 0);
-    }
-    BaseChatPie.access$2302(this.this$0, false);
-    BaseChatPie.access$1902(this.this$0, 50);
-    BaseChatPie.access$2002(this.this$0, 0);
-    BaseChatPie.access$2402(this.this$0, 0);
+    this.this$0.hidePanel();
   }
 }
 

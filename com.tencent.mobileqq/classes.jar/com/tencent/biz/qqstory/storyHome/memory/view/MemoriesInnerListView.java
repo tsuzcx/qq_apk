@@ -9,18 +9,18 @@ import android.widget.BaseAdapter;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import xlu;
-import xlv;
-import xlw;
-import xlx;
+import yap;
+import yaq;
+import yar;
+import yas;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public xlw a;
-  private xlx a;
+  public yar a;
+  private yas a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
@@ -39,21 +39,21 @@ public class MemoriesInnerListView
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.b = DisplayUtil.dip2px(paramContext, 82.0F);
-    this.jdField_a_of_type_Xlx = new xlx(getContext());
-    super.setAdapter(this.jdField_a_of_type_Xlx);
-    super.setOnItemClickListener(this.jdField_a_of_type_Xlx);
-    super.setOnScrollStateChangedListener(new xlv(this));
+    this.jdField_a_of_type_Yas = new yas(getContext());
+    super.setAdapter(this.jdField_a_of_type_Yas);
+    super.setOnItemClickListener(this.jdField_a_of_type_Yas);
+    super.setOnScrollStateChangedListener(new yaq(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Xlx;
+    return this.jdField_a_of_type_Yas;
   }
   
-  public void setDate(List<xlu> paramList, String paramString)
+  public void setDate(List<yap> paramList, String paramString)
   {
-    this.jdField_a_of_type_Xlx.a(paramList, paramString);
+    this.jdField_a_of_type_Yas.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {

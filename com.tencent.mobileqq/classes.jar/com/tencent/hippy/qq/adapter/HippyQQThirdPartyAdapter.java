@@ -13,7 +13,7 @@ public class HippyQQThirdPartyAdapter
   
   public String getAppVersion()
   {
-    return "8.4.8";
+    return "8.4.10";
   }
   
   public JSONObject getExtraData()

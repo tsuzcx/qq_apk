@@ -1,24 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-class axtl
-  implements DialogInterface.OnClickListener
+public class axtl
+  extends SosoInterface.OnLocationListener
 {
-  axtl(axsv paramaxsv, AppRuntime.Status paramStatus, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axtl(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (!NetworkUtil.isNetworkAvailable(axsv.a(this.jdField_a_of_type_Axsv)))
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      this.jdField_a_of_type_Axsv.c();
-      QQToast.a(axsv.a(this.jdField_a_of_type_Axsv), 1, 2131718582, 1).a();
-      return;
+      axti.jdField_a_of_type_ArrayOfLong[0] = ((paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+      axti.jdField_a_of_type_ArrayOfLong[1] = ((paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
+      axti.jdField_a_of_type_Long = System.currentTimeMillis();
     }
-    axsv.a(this.jdField_a_of_type_Axsv, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, true);
-    bcef.b(axsv.a(this.jdField_a_of_type_Axsv), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 

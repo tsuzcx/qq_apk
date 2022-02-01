@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multimsg;
 
-import awcm;
+import axio;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -14,7 +14,7 @@ import java.util.List;
 public class MultiMsgManager$5
   implements Runnable
 {
-  public MultiMsgManager$5(awcm paramawcm, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  public MultiMsgManager$5(axio paramaxio, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -24,11 +24,11 @@ public class MultiMsgManager$5
     StringBuilder localStringBuilder;
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject = awcm.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      localObject = axio.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
       if (localObject != null)
       {
         j = ((List)localObject).size();
-        k = awcm.a().a((Collection)localObject);
+        k = axio.a().a((Collection)localObject);
         localObject = new HashMap();
         localStringBuilder = new StringBuilder();
         if (!this.jdField_a_of_type_Boolean) {

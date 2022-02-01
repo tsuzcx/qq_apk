@@ -2,8 +2,8 @@ package com.tencent.mobileqq.service.qzone;
 
 import NS_MOBILE_COMM_CONF.MobileCommConf;
 import NS_UNDEAL_COUNT.mobile_count_rsp_new;
-import bbnx;
-import blde;
+import bcur;
+import bmpv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
@@ -16,8 +16,8 @@ public final class QZoneUnreadServletLogic$2
   {
     try
     {
-      MobileCommConf localMobileCommConf = (MobileCommConf)bbnx.a(MobileCommConf.class, (byte[])this.a.mapTransData.get("ZengzhiCommConf"));
-      blde.a().a(localMobileCommConf);
+      MobileCommConf localMobileCommConf = (MobileCommConf)bcur.a(MobileCommConf.class, (byte[])this.a.mapTransData.get("ZengzhiCommConf"));
+      bmpv.a().a(localMobileCommConf);
       return;
     }
     catch (Exception localException)

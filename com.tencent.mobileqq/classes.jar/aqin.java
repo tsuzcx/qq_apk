@@ -1,102 +1,105 @@
-import android.support.annotation.NonNull;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import org.json.JSONException;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class aqin
-  extends aqgc<SSOErrorInfoMapConfig>
 {
-  public static SSOErrorInfoMapConfig c()
+  static int b;
+  public int a;
+  public String a;
+  public int[] a;
+  public String b;
+  
+  static
   {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)apub.a().a(477);
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
-    if (localSSOErrorInfoMapConfig2 == null) {
-      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
-    }
-    return localSSOErrorInfoMapConfig1;
+    jdField_b_of_type_Int = -1;
   }
   
-  @NonNull
-  public SSOErrorInfoMapConfig a()
+  public aqin()
   {
-    return new SSOErrorInfoMapConfig();
+    this.jdField_b_of_type_JavaLangString = "diy_chartlet";
   }
   
-  @NonNull
-  public SSOErrorInfoMapConfig a(aptx[] paramArrayOfaptx)
+  public static HashMap<String, aqin> a(int paramInt, JSONObject paramJSONObject)
   {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    for (;;)
+    Object localObject1 = null;
+    Iterator localIterator = null;
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2;
+    if (paramJSONObject.has("chartlet_animation"))
     {
-      String str1;
-      aqil localaqil;
-      String str2;
-      aqim localaqim;
-      try
+      localObject2 = paramJSONObject.optJSONObject("chartlet_animation");
+      if (((JSONObject)localObject2).has("animation_set"))
       {
-        if (!TextUtils.isEmpty(paramArrayOfaptx))
+        localObject2 = ((JSONObject)localObject2).optJSONArray("animation_set");
+        int i = 0;
+        while (i < ((JSONArray)localObject2).length())
         {
-          paramArrayOfaptx = new JSONObject(paramArrayOfaptx);
-          Iterator localIterator1 = paramArrayOfaptx.keys();
-          if (localIterator1.hasNext())
+          localArrayList.add(((JSONArray)localObject2).optString(i));
+          i += 1;
+        }
+      }
+    }
+    if (paramJSONObject.has("diy_animation")) {
+      localArrayList.add(paramJSONObject.optJSONObject("diy_animation").optString("diy"));
+    }
+    if (paramJSONObject.has("animation_sets"))
+    {
+      localObject2 = paramJSONObject.optJSONObject("animation_sets");
+      paramJSONObject = localIterator;
+      if (0 == 0) {
+        paramJSONObject = new HashMap(4);
+      }
+      localIterator = localArrayList.iterator();
+      label226:
+      for (;;)
+      {
+        localObject1 = paramJSONObject;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = ((JSONObject)localObject2).optJSONObject((String)localIterator.next());
+        if (localObject1 != null)
+        {
+          if (((JSONObject)localObject1).has("text_size")) {}
+          for (localObject1 = aqip.a((JSONObject)localObject1);; localObject1 = aqio.a((JSONObject)localObject1))
           {
-            str1 = (String)localIterator1.next();
-            JSONObject localJSONObject1 = paramArrayOfaptx.optJSONObject(str1);
-            Iterator localIterator2 = localJSONObject1.keys();
-            localaqil = new aqil();
-            if (!localIterator2.hasNext()) {
-              break label220;
+            if (localObject1 == null) {
+              break label226;
             }
-            str2 = (String)localIterator2.next();
-            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
-            Iterator localIterator3 = localJSONObject2.keys();
-            localaqim = new aqim();
-            if (!localIterator3.hasNext()) {
-              break label204;
-            }
-            String str3 = (String)localIterator3.next();
-            String str4 = localJSONObject2.optString(str3);
-            localaqim.a.put(str3, str4);
-            continue;
+            ((aqin)localObject1).jdField_a_of_type_Int = paramInt;
+            paramJSONObject.put(((aqin)localObject1).jdField_a_of_type_JavaLangString, localObject1);
+            break;
           }
         }
-        return localSSOErrorInfoMapConfig;
       }
-      catch (JSONException paramArrayOfaptx)
-      {
-        xvv.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfaptx.getMessage());
-      }
-      label204:
-      localaqil.a.put(str2, localaqim);
-      continue;
-      label220:
-      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localaqil);
     }
+    if ((localObject1 != null) && (((HashMap)localObject1).size() > 0)) {
+      aqhg.a().a.put(Integer.valueOf(paramInt), localObject1);
+    }
+    return localObject1;
   }
   
-  @NonNull
-  public SSOErrorInfoMapConfig b()
+  private static float b(Paint paramPaint, String paramString)
   {
-    return new SSOErrorInfoMapConfig();
+    if ((TextUtils.isEmpty(paramString)) || (paramPaint == null)) {
+      return 0.0F;
+    }
+    return paramPaint.measureText(paramString);
   }
   
-  public Class<SSOErrorInfoMapConfig> clazz()
-  {
-    return SSOErrorInfoMapConfig.class;
-  }
-  
-  public int type()
-  {
-    return 477;
-  }
+  public void a(aqjb paramaqjb, Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqin
  * JD-Core Version:    0.7.0.1
  */

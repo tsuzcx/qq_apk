@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.floatscr;
 
-import atie;
-import atif;
-import bggg;
+import auml;
+import aumm;
+import bhpa;
 import com.tencent.qphone.base.util.QLog;
 
 public class ColorScreenManager$1
   implements Runnable
 {
-  public ColorScreenManager$1(atif paramatif, int paramInt, bggg parambggg) {}
+  public ColorScreenManager$1(aumm paramaumm, int paramInt, bhpa parambhpa) {}
   
   public void run()
   {
     String str = "colorScreen.android." + this.jdField_a_of_type_Int;
-    this.this$0.a(str, this.jdField_a_of_type_Bggg, null);
-    atie localatie = this.this$0.a(this.jdField_a_of_type_Int);
-    if (localatie == null)
+    this.this$0.a(str, this.jdField_a_of_type_Bhpa, null);
+    auml localauml = this.this$0.a(this.jdField_a_of_type_Int);
+    if (localauml == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ColorScreenManager", 1, "getLocalConfig return null, go to download");
@@ -23,7 +23,7 @@ public class ColorScreenManager$1
       this.this$0.a(this.jdField_a_of_type_Int);
       return;
     }
-    this.this$0.a(str, localatie);
+    this.this$0.a(str, localauml);
   }
 }
 

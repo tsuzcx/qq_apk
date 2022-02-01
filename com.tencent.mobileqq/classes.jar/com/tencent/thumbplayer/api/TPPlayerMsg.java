@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.api;
 
 public class TPPlayerMsg
 {
+  public static final int TP_PLAYER_INFO_ASYNC_CALL_SELECT_PROGRAM = 6;
   public static final int TP_PLAYER_INFO_ASYNC_CALL_SELECT_TRACK = 4;
   public static final int TP_PLAYER_INFO_ASYNC_CALL_SWITCH_DEFINITION = 3;
   public static final int TP_PLAYER_INFO_AUDIO_TRACK_PROXY = 1012;

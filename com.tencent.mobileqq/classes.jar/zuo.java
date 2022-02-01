@@ -1,12 +1,17 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class zuo
+class zuo
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
 {
-  public String a;
-  public String b;
-  public String c;
+  zuo(zug paramzug) {}
   
-  public zuo(PluginJumpManager paramPluginJumpManager) {}
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  {
+    wad.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
+  }
 }
 
 

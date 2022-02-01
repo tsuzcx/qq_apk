@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
-import axma;
-import bcef;
+import aysj;
+import bdla;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -14,39 +14,39 @@ import com.tencent.qphone.base.util.QLog;
 public class OCRResultActivity$9$1
   implements Runnable
 {
-  public OCRResultActivity$9$1(axma paramaxma, boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
+  public OCRResultActivity$9$1(aysj paramaysj, boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("OCRResultActivity", 2, String.format("onGetTranslateResult isSuccess:%s, type:%s, result:%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult }));
     }
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a(OCRResultActivity.a(this.jdField_a_of_type_Axma.a)))) {
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a(OCRResultActivity.a(this.jdField_a_of_type_Aysj.a)))) {
       return;
     }
-    OCRResultActivity.e(this.jdField_a_of_type_Axma.a);
-    OCRResultActivity.f(this.jdField_a_of_type_Axma.a);
-    OCRResultActivity.b(this.jdField_a_of_type_Axma.a, false);
-    OCRResultActivity.b(this.jdField_a_of_type_Axma.a);
+    OCRResultActivity.e(this.jdField_a_of_type_Aysj.a);
+    OCRResultActivity.f(this.jdField_a_of_type_Aysj.a);
+    OCRResultActivity.b(this.jdField_a_of_type_Aysj.a, false);
+    OCRResultActivity.b(this.jdField_a_of_type_Aysj.a);
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.b()) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()))
     {
-      OCRResultActivity.a(this.jdField_a_of_type_Axma.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
-      if (OCRResultActivity.b(this.jdField_a_of_type_Axma.a))
+      OCRResultActivity.a(this.jdField_a_of_type_Aysj.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+      if (OCRResultActivity.b(this.jdField_a_of_type_Aysj.a))
       {
-        localObject = AnimationUtils.loadAnimation(this.jdField_a_of_type_Axma.a, 2130771997);
-        this.jdField_a_of_type_Axma.a.a.startAnimation((Animation)localObject);
+        localObject = AnimationUtils.loadAnimation(this.jdField_a_of_type_Aysj.a, 2130771997);
+        this.jdField_a_of_type_Aysj.a.a.startAnimation((Animation)localObject);
       }
-      if (OCRResultActivity.b(this.jdField_a_of_type_Axma.a) == 1) {
-        bcef.b(null, "dc00898", "", "", "0X8009C81", "0X8009C81", 0, 0, "", "0", "0", "");
+      if (OCRResultActivity.b(this.jdField_a_of_type_Aysj.a) == 1) {
+        bdla.b(null, "dc00898", "", "", "0X8009C81", "0X8009C81", 0, 0, "", "0", "0", "");
       }
       for (;;)
       {
-        OCRResultActivity.c(this.jdField_a_of_type_Axma.a, false);
+        OCRResultActivity.c(this.jdField_a_of_type_Aysj.a, false);
         return;
-        bcef.b(null, "dc00898", "", "", "0X8009C8A", "0X8009C8A", 0, 0, "", "0", "0", "");
+        bdla.b(null, "dc00898", "", "", "0X8009C8A", "0X8009C8A", 0, 0, "", "0", "0", "");
       }
     }
-    String str = this.jdField_a_of_type_Axma.a.getResources().getString(2131698411);
+    String str = this.jdField_a_of_type_Aysj.a.getResources().getString(2131698707);
     Object localObject = str;
     if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null)
     {
@@ -57,16 +57,16 @@ public class OCRResultActivity$9$1
     }
     for (;;)
     {
-      QQToast.a(this.jdField_a_of_type_Axma.a, 1, (CharSequence)localObject, 0).a();
-      if (!OCRResultActivity.b(this.jdField_a_of_type_Axma.a)) {
+      QQToast.a(this.jdField_a_of_type_Aysj.a, 1, (CharSequence)localObject, 0).a();
+      if (!OCRResultActivity.b(this.jdField_a_of_type_Aysj.a)) {
         break;
       }
-      this.jdField_a_of_type_Axma.a.finish();
+      this.jdField_a_of_type_Aysj.a.finish();
       break;
       label381:
       localObject = str;
       if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()) {
-        localObject = this.jdField_a_of_type_Axma.a.getResources().getString(2131698398);
+        localObject = this.jdField_a_of_type_Aysj.a.getResources().getString(2131698694);
       }
     }
   }

@@ -1,10 +1,32 @@
-public class amot
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
+
+class amot
+  implements anmd
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  amot(amos paramamos) {}
+  
+  public void a(int paramInt)
+  {
+    QLog.d("sava_ChatPieApolloViewController", 1, "sava_native_log preLoadApolloEngine onSoLoadComplete ret:" + paramInt);
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine onSoLoadComplete");
+      }
+      if (amos.a(this.a))
+      {
+        QLog.i("sava_ChatPieApolloViewController", 1, "onSoLoadComplete but AIO destroy!");
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
+        amos.a(this.a);
+      }
+    }
+    anmb.b(this.a.jdField_a_of_type_Anmd);
+  }
 }
 
 

@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agkg;
-import agwt;
-import ahdt;
+import ahcw;
+import ahpt;
+import ahvi;
+import ahyl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import ayfu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +27,7 @@ public class PokeAppInfo
   private boolean a(QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
   {
     boolean bool3 = false;
-    int i = agkg.b(paramQQAppInterface, 0);
+    int i = ahcw.b(paramQQAppInterface, 0);
     if (paramSharedPreferences != null) {}
     for (boolean bool1 = paramSharedPreferences.getBoolean("chat_tool_poke_clicked", false);; bool1 = false)
     {
@@ -39,7 +40,7 @@ public class PokeAppInfo
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d(agkg.a, 2, "plus getPokeNeedRed isPokeNeedRed=" + bool2 + " getPokeMsgFoldSwitch=" + i + " hasClicked=" + bool1);
+        QLog.d(ahcw.a, 2, "plus getPokeNeedRed isPokeNeedRed=" + bool2 + " getPokeMsgFoldSwitch=" + i + " hasClicked=" + bool1);
       }
       return bool2;
     }
@@ -47,7 +48,7 @@ public class PokeAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839196;
+    return 2130839216;
   }
   
   public int getAppID()
@@ -76,23 +77,23 @@ public class PokeAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697922);
+    return BaseApplicationImpl.getContext().getString(2131698205);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
     SharedPreferences localSharedPreferences = localQQAppInterface.getApp().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0);
     if (a(localQQAppInterface, localSharedPreferences))
     {
-      paramayfu.a("chat_tool_poke", localQQAppInterface.getCurrentAccountUin());
+      paramahvi.a("chat_tool_poke", localQQAppInterface.getCurrentAccountUin());
       localSharedPreferences.edit().putBoolean("chat_tool_poke_clicked", true).apply();
-      paramayfu.b(paramBaseChatPie);
+      paramahvi.b(paramBaseChatPie);
     }
     paramBaseChatPie.showPokePanel();
     localQQAppInterface.reportClickEvent("CliOper", "0X8007F21");
-    if ((paramBaseChatPie instanceof ahdt)) {
-      agwt.a(localQQAppInterface, "0X8008AAA", "C_Master_PTT", paramSessionInfo);
+    if ((paramBaseChatPie instanceof ahyl)) {
+      ahpt.a(localQQAppInterface, "0X8008AAA", "C_Master_PTT", paramSessionInfo);
     }
   }
 }

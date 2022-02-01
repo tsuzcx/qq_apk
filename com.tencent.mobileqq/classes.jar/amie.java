@@ -1,31 +1,40 @@
-public class amie
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+
+class amie
+  extends Animation
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  amie(amia paramamia, View paramView, int paramInt) {}
   
-  public String toString()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
-    if (this.c > 0) {
-      localStringBuilder.append(",mem:").append(this.c);
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
     }
-    if (this.d > 0) {
-      localStringBuilder.append(",cpu:").append(this.d);
-    }
-    if (this.f != 0) {
-      localStringBuilder.append(",javaHeap:").append(this.f);
-    }
-    if (this.g != 0) {
-      localStringBuilder.append(",nativeHeap:").append(this.g);
-    }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    do
+    {
+      do
+      {
+        return;
+        if (paramFloat > 0.99F) {
+          break;
+        }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

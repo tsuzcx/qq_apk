@@ -1,14 +1,20 @@
-import java.util.Comparator;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-class aljo
-  implements Comparator<JSONObject>
+public class aljo
+  implements aljm
 {
-  aljo(aljn paramaljn) {}
-  
-  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public aljl a()
   {
-    return Long.valueOf(paramJSONObject2.optLong("time")).compareTo(Long.valueOf(paramJSONObject1.optLong("time")));
+    if (QLog.isColorLevel()) {
+      QLog.d("BannerConflictExperiment", 2, "[getShouldShowBanner] get strategy 10");
+    }
+    aljl localaljl = new aljl();
+    localaljl.a = true;
+    localaljl.b = true;
+    localaljl.c = true;
+    localaljl.d = true;
+    localaljl.g = true;
+    return localaljl;
   }
 }
 

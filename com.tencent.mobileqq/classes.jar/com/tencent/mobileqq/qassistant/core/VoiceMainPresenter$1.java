@@ -1,47 +1,47 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.text.TextUtils;
-import azfg;
-import azfi;
-import azfk;
-import azfo;
-import azfu;
-import azgj;
-import azgm;
-import azgs;
+import bakx;
+import bakz;
+import balb;
+import balf;
+import ball;
+import bamr;
+import bamu;
+import bana;
 
 public class VoiceMainPresenter$1
   implements Runnable
 {
-  public VoiceMainPresenter$1(azfi paramazfi, String paramString) {}
+  public VoiceMainPresenter$1(bakz parambakz, String paramString) {}
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.a)) && (azfi.a(this.this$0) != null) && (azfi.a(this.this$0) != null)) {
-      switch (azfi.a(this.this$0).a())
+    if ((!TextUtils.isEmpty(this.a)) && (bakz.a(this.this$0) != null) && (bakz.a(this.this$0) != null)) {
+      switch (bakz.a(this.this$0).a())
       {
       }
     }
     do
     {
       return;
-      if (azgm.a(this.a))
+      if (bamu.a(this.a))
       {
-        azfi.a(this.this$0).a(true, false);
+        bakz.a(this.this$0).a(true, false);
         return;
       }
-      if ((azfi.a(this.this$0).a() != null) && (azfi.a(this.this$0).a().a != null) && (azfi.a(this.this$0).a().a.a == 115))
+      if ((bakz.a(this.this$0).a() != null) && (bakz.a(this.this$0).a().a != null) && (bakz.a(this.this$0).a().a.a == 115))
       {
-        azfi.a(this.this$0).e();
+        bakz.a(this.this$0).e();
         return;
       }
-      if (azgm.b(this.a))
+      if (bamu.b(this.a))
       {
-        this.this$0.n(azgj.a(azfu.a(1), false));
+        this.this$0.p(bamr.a(ball.a(1), false));
         return;
       }
-    } while (!azgm.c(this.a));
-    azfi.a(this.this$0).d();
+    } while (!bamu.c(this.a));
+    bakz.a(this.this$0).d();
   }
 }
 

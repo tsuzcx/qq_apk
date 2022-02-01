@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.graphics.BitmapFactory.Options;
-import bctl;
-import bfvo;
+import beak;
+import bheg;
 import com.tencent.mobileqq.transfile.HttpDownloader;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,13 +11,13 @@ import java.io.File;
 public class TeamWorkForceShare$ImageRequestTask
   implements Runnable
 {
-  private bctl jdField_a_of_type_Bctl;
+  private beak jdField_a_of_type_Beak;
   private String jdField_a_of_type_JavaLangString;
   
-  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, bctl parambctl)
+  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, beak parambeak)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bctl = parambctl;
+    this.jdField_a_of_type_Beak = parambeak;
   }
   
   /* Error */
@@ -28,10 +28,10 @@ public class TeamWorkForceShare$ImageRequestTask
     //   3: dup
     //   4: invokespecial 29	com/tencent/mobileqq/transfile/HttpDownloader:<init>	()V
     //   7: astore_3
-    //   8: new 31	bcvb
+    //   8: new 31	beca
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 34	bcvb:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
+    //   13: invokespecial 34	beca:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
     //   16: astore 4
     //   18: new 36	com/tencent/image/DownloadParams
     //   21: dup
@@ -144,7 +144,7 @@ public class TeamWorkForceShare$ImageRequestTask
     //   7	63	3	localHttpDownloader	HttpDownloader
     //   94	28	3	localException4	java.lang.Exception
     //   194	1	3	localException5	java.lang.Exception
-    //   16	58	4	localbcvb	bcvb
+    //   16	58	4	localbeca	beca
     //   25	47	5	localDownloadParams	com.tencent.image.DownloadParams
     // Exception table:
     //   from	to	target	type
@@ -174,14 +174,14 @@ public class TeamWorkForceShare$ImageRequestTask
       localOptions.inJustDecodeBounds = true;
       try
       {
-        bfvo.a(((File)localObject2).getAbsolutePath(), localOptions);
+        bheg.a(((File)localObject2).getAbsolutePath(), localOptions);
         if (localOptions.outWidth > DeviceInfoUtil.getPortraitWidth()) {
           localOptions.inSampleSize = ((int)(DeviceInfoUtil.getPortraitWidth() / localOptions.outWidth));
         }
         localOptions.inJustDecodeBounds = false;
         try
         {
-          localObject2 = bfvo.a(((File)localObject2).getAbsolutePath(), localOptions);
+          localObject2 = bheg.a(((File)localObject2).getAbsolutePath(), localOptions);
           localObject1 = localObject2;
         }
         catch (OutOfMemoryError localOutOfMemoryError1)
@@ -192,8 +192,8 @@ public class TeamWorkForceShare$ImageRequestTask
             QLog.d(TeamWorkForceShare.a(), 1, "oom, url = " + this.jdField_a_of_type_JavaLangString);
           }
         }
-        if (this.jdField_a_of_type_Bctl != null) {
-          this.jdField_a_of_type_Bctl.a(localObject1);
+        if (this.jdField_a_of_type_Beak != null) {
+          this.jdField_a_of_type_Beak.a(localObject1);
         }
         return true;
       }
@@ -208,8 +208,8 @@ public class TeamWorkForceShare$ImageRequestTask
     if (paramBoolean)
     {
       QLog.d(TeamWorkForceShare.a(), 1, "file not exist, url = " + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Bctl != null) {
-        this.jdField_a_of_type_Bctl.a(null);
+      if (this.jdField_a_of_type_Beak != null) {
+        this.jdField_a_of_type_Beak.a(null);
       }
     }
     return false;
@@ -224,7 +224,7 @@ public class TeamWorkForceShare$ImageRequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask
  * JD-Core Version:    0.7.0.1
  */

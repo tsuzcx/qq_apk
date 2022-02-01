@@ -2,7 +2,7 @@ package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
 import android.text.TextUtils;
-import bfti;
+import bhca;
 import com.tencent.mobileqq.text.QQText;
 
 public class MessageForDeviceText
@@ -27,7 +27,7 @@ public class MessageForDeviceText
     Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bfti.a((String)localObject2);
+      localObject1 = bhca.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
@@ -51,7 +51,7 @@ public class MessageForDeviceText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeviceText
  * JD-Core Version:    0.7.0.1
  */

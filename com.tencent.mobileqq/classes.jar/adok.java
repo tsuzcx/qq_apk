@@ -1,22 +1,43 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class adok
-  implements View.OnClickListener
+class adok
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  public adok(LbsBaseActivity paramLbsBaseActivity) {}
+  adok(adoj paramadoj) {}
   
-  public void onClick(View paramView)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    awka.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
+    if (this.a.a.d) {
+      if (this.a.a.jdField_a_of_type_Azil != null) {
+        this.a.a.jdField_a_of_type_Azil.a(paramVarArgs[0], true);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        ancb.a(this.a.a.app, "chat_history_start_del_msg");
+      }
+      return null;
+      this.a.a.app.getMessageFacade().removeMsgByMessageRecord(paramVarArgs[0], true);
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bisl != null) && (this.a.a.jdField_a_of_type_Bisl.isShowing())) {
+      this.a.a.jdField_a_of_type_Bisl.dismiss();
+    }
+    if (this.a.a.d) {
+      this.a.a.a(11, false);
+    }
   }
 }
 

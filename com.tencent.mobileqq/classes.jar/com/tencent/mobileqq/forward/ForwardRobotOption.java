@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.forward;
 
-import amtj;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 
 public class ForwardRobotOption
@@ -24,9 +24,9 @@ public class ForwardRobotOption
   
   private View a(String paramString, Drawable paramDrawable)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559015, null);
-    TextView localTextView = (TextView)localView.findViewById(2131380034);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368605);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559042, null);
+    TextView localTextView = (TextView)localView.findViewById(2131380369);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368764);
     localTextView.setText(paramString);
     localImageView.setImageDrawable(paramDrawable);
     return localView;
@@ -34,7 +34,7 @@ public class ForwardRobotOption
   
   public View a()
   {
-    return a(String.format("[%s]%s", new Object[] { amtj.a(2131703906), this.i }), FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
+    return a(String.format("[%s]%s", new Object[] { anvx.a(2131704257), this.i }), FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
   }
   
   public boolean l()

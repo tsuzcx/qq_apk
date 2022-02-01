@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acot;
+import adfd;
 import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class AddAccountActivity$4$1
   implements Runnable
 {
-  public AddAccountActivity$4$1(acot paramacot) {}
+  public AddAccountActivity$4$1(adfd paramadfd) {}
   
   public void run()
   {

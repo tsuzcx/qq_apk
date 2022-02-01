@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
-public final class bctn
-  implements Parcelable.Creator<DocsGrayTipsInfo>
+public class bctn
+  implements bctu
 {
-  public DocsGrayTipsInfo a(Parcel paramParcel)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    return new DocsGrayTipsInfo(paramParcel);
-  }
-  
-  public DocsGrayTipsInfo[] a(int paramInt)
-  {
-    return new DocsGrayTipsInfo[paramInt];
+    ((PublicAccountHandler)paramMessageHandler.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).a(paramMsgType0x210.sub_msg_type.get(), paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 

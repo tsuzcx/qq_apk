@@ -1,36 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class ajhr
-  implements AbsListView.OnScrollListener
+public class ajhr
+  extends auzh
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public ajhr(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  ajhr(ajhm paramajhm) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajfl> paramArrayList)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Ajhm.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Ajhm.jdField_a_of_type_Ajhw) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(ajhm.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
+      TroopWithCommonFriendsFragment.a(this.a).dismiss();
     }
-    ajhm.a(this.jdField_a_of_type_Ajhm);
+    if (!paramBoolean)
+    {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
+      return;
+    }
+    ajhu.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
+    ajhu.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
+    this.a.b = paramInt;
+    this.a.jdField_a_of_type_JavaUtilList = ajhu.a(paramArrayList, TroopWithCommonFriendsFragment.a(this.a));
+    TroopWithCommonFriendsFragment.a(this.a).a();
+    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
   }
 }
 

@@ -1,22 +1,48 @@
-public class anrj
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import java.util.ArrayList;
+
+class anrj
+  implements IUploadTaskCallback
 {
-  private Class jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
+  anrj(anri paramanri) {}
   
-  public anrj(String paramString, Class paramClass)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
+    }
+    this.a.notifyUI(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
   }
   
-  public Class a()
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
   {
-    return this.jdField_a_of_type_JavaLangClass;
+    if (paramLong1 == paramLong2)
+    {
+      this.a.b = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
+      }
+    }
   }
   
-  public String a()
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
+  
+  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
+    }
+    synchronized (anri.a(this.a))
+    {
+      if (anri.a(this.a).size() != 0)
+      {
+        anri.a(this.a);
+        return;
+      }
+      this.a.notifyUI(71, true, new Object[0]);
+    }
   }
 }
 

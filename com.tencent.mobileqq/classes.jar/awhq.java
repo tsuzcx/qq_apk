@@ -1,126 +1,82 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.listentogether.data.ISong;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
-public class awhq
-  extends WebViewPlugin
+class awhq
+  extends Handler
 {
-  private awor a()
+  private final WeakReference<awho> a;
+  
+  awhq(awho paramawho, Looper paramLooper)
   {
-    Object localObject = this.mRuntime.a();
-    if (!(localObject instanceof NearbyAppInterface)) {
-      localObject = null;
+    super(paramLooper);
+    this.a = new WeakReference(paramawho);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    awho localawho = (awho)this.a.get();
+    if (localawho == null) {
+      super.handleMessage(paramMessage);
     }
-    awor localawor;
     do
     {
-      return localObject;
-      localawor = ((NearbyAppInterface)localObject).a();
-      localObject = localawor;
-    } while (localawor.a());
-    return null;
-  }
-  
-  private axgd a()
-  {
-    awor localawor = a();
-    if (localawor == null) {
-      return null;
-    }
-    return localawor.b();
-  }
-  
-  private String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("code", 0);
-      axgd localaxgd = a();
-      if ((localaxgd == null) || (TextUtils.isEmpty(localaxgd.a)))
+      do
       {
-        localJSONObject.put("data", new JSONObject());
-        return localJSONObject.toString();
-      }
-      localJSONObject.put("data", new JSONObject(localaxgd.a));
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("XiangQinPlugin", 2, "NearbyRedNum json parse err " + localJSONException.getMessage());
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          super.handleMessage(paramMessage);
+          return;
         }
-      }
-    }
-    return localJSONObject.toString();
-  }
-  
-  private void a(String paramString)
-  {
-    String str = a();
-    if (QLog.isColorLevel()) {
-      QLog.i("XiangQinPlugin", 2, "callback, json=" + str);
-    }
-    callJs(paramString, new String[] { str });
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if ("refresh".equals(paramString1)) {
-      a(paramString2);
-    }
-    return true;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("XiangQinPlugin", 2, "handleJsRequest url " + paramString1 + " pkgName=" + paramString2 + " method=" + paramString3);
-    }
-    if (!"nearbyXiangqin".equals(paramString2)) {
-      return false;
-    }
-    paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
-    if (paramString2 == null) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("XiangQinPlugin", 2, "handleJsRequest JSON = " + paramString2.toString());
-    }
-    try
-    {
-      if (paramString2.has("callback"))
-      {
-        paramJsBridgeListener = paramString2.getString("callback");
-      }
-      else
-      {
-        int i = paramString1.indexOf("#");
-        if ((i == -1) || (i + 1 > paramString1.length() - 1)) {
-          break label218;
-        }
-        paramJsBridgeListener = paramString1.substring(i + 1);
-      }
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
+      } while (!QLog.isColorLevel());
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, "--->handleMessage[MSG_FROM_SERVICE]");
+      return;
+      paramMessage = paramMessage.getData();
+      paramMessage.setClassLoader(ISong.class.getClassLoader());
+      paramMessage = (ISong)paramMessage.getParcelable("key_song");
       if (QLog.isColorLevel()) {
-        QLog.i("XiangQinPlugin", 2, "Failed to parse callbackid,json=" + paramString2);
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_SONG_CHANGE] %s", new Object[] { paramMessage.a() }));
       }
-      paramJsBridgeListener = null;
+      awho.a(localawho, paramMessage);
+      return;
+      paramMessage = paramMessage.getData();
+      String str = paramMessage.getString("key_id");
+      i = paramMessage.getInt("key_play_state", -1);
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_STATE_CHANGE] %s %s", new Object[] { str, awhi.a(i) }));
+      }
+      awho.a(localawho, str, i);
+    } while ((i != 4) || (!awho.a(localawho)));
+    awho.a(localawho);
+    return;
+    boolean bool1 = paramMessage.getData().getBoolean("key_net_state", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_NET_STATE_CHANGE] %b", new Object[] { Boolean.valueOf(bool1) }));
     }
-    while (paramJsBridgeListener != null) {
-      return a(paramString3, paramJsBridgeListener);
+    awho.a(localawho, bool1);
+    return;
+    paramMessage = paramMessage.getData();
+    bool1 = paramMessage.getBoolean("key_focus_state", false);
+    boolean bool2 = paramMessage.getBoolean("key_focus_transient", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_FOCUS_STATE_CHANGE] %b_%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
     }
-    return false;
-    label218:
-    return false;
+    awho.a(localawho, bool1, bool2);
+    return;
+    paramMessage = paramMessage.getData();
+    int i = paramMessage.getInt("key_position", -1);
+    int j = paramMessage.getInt("key_duration", -1);
+    paramMessage = paramMessage.getString("key_id");
+    if (((i <= 0) || (j <= 0)) && (QLog.isColorLevel())) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PROGRESS_CHANGE] [%d/%d] %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramMessage }));
+    }
+    awho.a(localawho, paramMessage, i, j);
   }
 }
 

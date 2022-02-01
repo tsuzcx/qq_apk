@@ -1,10 +1,15 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 class OpenDataCommonJsPlugin$7
@@ -14,47 +19,58 @@ class OpenDataCommonJsPlugin$7
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "getUserInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
-      this.val$req.fail("request request is null.");
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
+      this.val$req.fail();
       return;
     }
     if (paramBoolean)
     {
       int i;
-      JSONObject localJSONObject;
+      Object localObject1;
       try
       {
-        Object localObject = (CloudStorage.StGetUserInteractiveStorageRsp)paramJSONObject.get("response");
+        Object localObject2 = (CloudStorage.StGetPotentialFriendListRsp)paramJSONObject.get("response");
         i = paramJSONObject.getInt("retCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        String str = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject).encryptedData.get();
-        localObject = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject).iv.get();
-        localJSONObject = new JSONObject();
-        if (i == 0)
-        {
-          localJSONObject.put("encryptedData", str);
-          localJSONObject.put("iv", localObject);
-          this.val$req.ok(localJSONObject);
-          return;
+        localObject1 = paramJSONObject.getString("errMsg");
+        localObject2 = ((CloudStorage.StGetPotentialFriendListRsp)localObject2).data.get();
+        QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive retCode= " + i + " errMsg=" + (String)localObject1);
+        paramJSONObject = new JSONObject();
+        if ((i != 0) || (localObject2 == null) || (((List)localObject2).size() <= 0)) {
+          break label306;
         }
+        localObject1 = new JSONArray();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          CloudStorage.StUserGameData localStUserGameData = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("avatarUrl", localStUserGameData.avatarUrl.get());
+          localJSONObject.put("nickname", localStUserGameData.nickname.get());
+          localJSONObject.put("openid", localStUserGameData.openid.get());
+          ((JSONArray)localObject1).put(localJSONObject);
+        }
+        paramJSONObject.put("list", localObject1);
       }
       catch (Exception paramJSONObject)
       {
-        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ", paramJSONObject);
+        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error ", paramJSONObject);
         this.val$req.fail(paramJSONObject.getMessage());
         return;
       }
-      localJSONObject.put("retErrMsg", paramJSONObject);
-      localJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE " + localJSONObject.toString());
-      this.val$req.fail(localJSONObject, "");
+      this.val$req.ok(paramJSONObject);
+      return;
+      label306:
+      paramJSONObject.put("retErrMsg", localObject1);
+      paramJSONObject.put("errCode", i);
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0 or userGameDataList is empty");
+      this.val$req.fail(paramJSONObject, "retCode!=0 or userGameDataList is empty");
       return;
     }
-    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
-    this.val$req.fail("request failed.");
+    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
+    this.val$req.fail("getPotentialFriendList failed.");
   }
 }
 

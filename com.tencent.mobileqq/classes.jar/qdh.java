@@ -1,16 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.View;
 
-class qdh
-  implements prh
+public abstract interface qdh
 {
-  qdh(qdf paramqdf, ViewBase paramViewBase) {}
+  public abstract int a();
   
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
-    }
-  }
+  public abstract spk a();
+  
+  public abstract boolean a(View paramView);
 }
 
 

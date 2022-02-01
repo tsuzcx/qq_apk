@@ -1,34 +1,18 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import java.util.List;
 
 public class acof
-  implements FaceDecoder.DecodeTaskCompletionListener
+  implements acoe
 {
-  public acof(AccountManageActivity paramAccountManageActivity) {}
+  private acnw<acod> a = new acnx();
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public List<acod> a()
   {
-    String str;
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      Object localObject = this.a.app;
-      paramBitmap = QQAppInterface.getRoundFaceBitmap(paramBitmap);
-      localObject = (String)AccountManageActivity.a(this.a).getTag();
-      str = (String)AccountManageActivity.b(this.a).getTag();
-      if (!paramString.equals(localObject)) {
-        break label80;
-      }
-      AccountManageActivity.a(this.a).setImageBitmap(paramBitmap);
-    }
-    label80:
-    while (!paramString.equals(str)) {
-      return;
-    }
-    AccountManageActivity.b(this.a).setImageBitmap(paramBitmap);
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends acod> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

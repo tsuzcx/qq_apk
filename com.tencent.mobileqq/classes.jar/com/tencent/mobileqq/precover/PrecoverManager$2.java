@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.precover;
 
 import android.text.TextUtils;
-import ayji;
-import ayjj;
-import ayjk;
-import ayjo;
+import azod;
+import azoe;
+import azof;
+import azoj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class PrecoverManager$2
   implements Runnable
 {
-  public PrecoverManager$2(ayji paramayji, String paramString) {}
+  public PrecoverManager$2(azod paramazod, String paramString) {}
   
   public void run()
   {
@@ -28,11 +28,11 @@ public class PrecoverManager$2
     Object localObject3;
     for (;;)
     {
-      synchronized (ayji.a(this.this$0))
+      synchronized (azod.a(this.this$0))
       {
         if (TextUtils.isEmpty(this.a))
         {
-          Object localObject1 = ayji.a(this.this$0).keySet();
+          Object localObject1 = azod.a(this.this$0).keySet();
           localObject4 = new ArrayList();
           localObject1 = ((Set)localObject1).iterator();
           if (!((Iterator)localObject1).hasNext()) {
@@ -42,7 +42,7 @@ public class PrecoverManager$2
           if (QLog.isColorLevel()) {
             QLog.d("PrecoverManager", 2, new Object[] { "startDownload, download business=", localObject5 });
           }
-          localObject5 = (List)ayji.a(this.this$0).get(localObject5);
+          localObject5 = (List)azod.a(this.this$0).get(localObject5);
           if ((localObject5 == null) || (((List)localObject5).size() <= 0)) {
             continue;
           }
@@ -52,15 +52,15 @@ public class PrecoverManager$2
       localObject3 = new HashSet();
       ((Set)localObject3).add(this.a);
     }
-    if ((this.a == null) && (ayjo.a(ayji.a(this.this$0).getApp(), "res_cover"))) {}
+    if ((this.a == null) && (azoj.a(azod.a(this.this$0).getApp(), "res_cover"))) {}
     for (;;)
     {
       if (bool1)
       {
-        ayjo.a(ayji.a(this.this$0).getApp(), "res_cover");
-        ayji.a(this.this$0, true);
-        ayji.a(this.this$0, new HashSet());
-        ayji.a(this.this$0).a(this.this$0);
+        azoj.a(azod.a(this.this$0).getApp(), "res_cover");
+        azod.a(this.this$0, true);
+        azod.a(this.this$0, new HashSet());
+        azod.a(this.this$0).a(this.this$0);
       }
       if (QLog.isColorLevel()) {
         QLog.d("PrecoverManager", 2, new Object[] { "startDownload, needReport=", Boolean.valueOf(bool1), ", resToDownload.size=", Integer.valueOf(((List)localObject4).size()) });
@@ -71,26 +71,26 @@ public class PrecoverManager$2
         localObject4 = (PrecoverResource)((Iterator)localObject3).next();
         if ((localObject4 != null) && (((PrecoverResource)localObject4).isValid()))
         {
-          if ((bool1) && (ayji.a(this.this$0) != null)) {
-            ayji.a(this.this$0).add(localObject4);
+          if ((bool1) && (azod.a(this.this$0) != null)) {
+            azod.a(this.this$0).add(localObject4);
           }
-          boolean bool2 = ayji.a(this.this$0).a((PrecoverResource)localObject4, null, true, false);
-          if ((bool1) && (ayji.a(this.this$0) != null) && (!bool2)) {
-            ayji.a(this.this$0).remove(localObject4);
+          boolean bool2 = azod.a(this.this$0).a((PrecoverResource)localObject4, null, true, false);
+          if ((bool1) && (azod.a(this.this$0) != null) && (!bool2)) {
+            azod.a(this.this$0).remove(localObject4);
           }
           if (QLog.isColorLevel()) {
             QLog.d("PrecoverManager", 2, "startDownload, res=" + localObject4 + ", started=" + bool2);
           }
         }
       }
-      if ((bool1) && (ayji.a(this.this$0) != null) && (ayji.a(this.this$0).size() == 0))
+      if ((bool1) && (azod.a(this.this$0) != null) && (azod.a(this.this$0).size() == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PrecoverManager", 2, "startDownload, nothing need download, doing report");
         }
-        ayji.a(this.this$0, false);
-        ayji.a(this.this$0).b(this.this$0);
-        ayji.a(this.this$0).a();
+        azod.a(this.this$0, false);
+        azod.a(this.this$0).b(this.this$0);
+        azod.a(this.this$0).a();
       }
       return;
       bool1 = false;

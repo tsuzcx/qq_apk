@@ -1,307 +1,160 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.RemoteException;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_dc03950;
+import java.util.HashMap;
 
-class ahau
-  implements ahas
+public class ahau
+  extends avhu
 {
-  private IBinder a;
+  public HashMap<Long, Integer> a;
   
-  ahau(IBinder paramIBinder)
+  public ahau(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.a = paramIBinder;
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  /* Error */
-  public void a()
+  protected afos a()
   {
-    // Byte code:
-    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: ldc 26
-    //   7: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_0
-    //   11: getfield 15	ahau:a	Landroid/os/IBinder;
-    //   14: iconst_4
-    //   15: aload_1
-    //   16: aconst_null
-    //   17: iconst_1
-    //   18: invokeinterface 36 5 0
-    //   23: pop
-    //   24: aload_1
-    //   25: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   28: return
-    //   29: astore_2
-    //   30: aload_1
-    //   31: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   34: return
-    //   35: astore_2
-    //   36: aload_1
-    //   37: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   40: aload_2
-    //   41: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	42	0	this	ahau
-    //   3	34	1	localParcel	Parcel
-    //   29	1	2	localRemoteException	RemoteException
-    //   35	6	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	24	29	android/os/RemoteException
-    //   4	24	35	finally
+    return new ahav(this);
   }
   
-  /* Error */
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  protected View a(MessageRecord paramMessageRecord, afos paramafos, View paramView, LinearLayout paramLinearLayout, aftk paramaftk)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore 9
-    //   3: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   6: astore 10
-    //   8: aload 10
-    //   10: ldc 26
-    //   12: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload 10
-    //   17: lload_1
-    //   18: invokevirtual 44	android/os/Parcel:writeLong	(J)V
-    //   21: aload 10
-    //   23: iload_3
-    //   24: invokevirtual 48	android/os/Parcel:writeInt	(I)V
-    //   27: aload 10
-    //   29: iload 4
-    //   31: invokevirtual 48	android/os/Parcel:writeInt	(I)V
-    //   34: aload 10
-    //   36: iload 5
-    //   38: invokevirtual 48	android/os/Parcel:writeInt	(I)V
-    //   41: aload 10
-    //   43: lload 6
-    //   45: invokevirtual 44	android/os/Parcel:writeLong	(J)V
-    //   48: iload 8
-    //   50: ifeq +34 -> 84
-    //   53: iload 9
-    //   55: istore_3
-    //   56: aload 10
-    //   58: iload_3
-    //   59: i2b
-    //   60: invokevirtual 52	android/os/Parcel:writeByte	(B)V
-    //   63: aload_0
-    //   64: getfield 15	ahau:a	Landroid/os/IBinder;
-    //   67: iconst_3
-    //   68: aload 10
-    //   70: aconst_null
-    //   71: iconst_1
-    //   72: invokeinterface 36 5 0
-    //   77: pop
-    //   78: aload 10
-    //   80: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   83: return
-    //   84: iconst_0
-    //   85: istore_3
-    //   86: goto -30 -> 56
-    //   89: astore 11
-    //   91: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   94: ifeq +16 -> 110
-    //   97: ldc 60
-    //   99: iconst_2
-    //   100: aload 11
-    //   102: invokevirtual 64	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   105: aload 11
-    //   107: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   110: aload 10
-    //   112: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   115: return
-    //   116: astore 11
-    //   118: aload 10
-    //   120: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   123: aload 11
-    //   125: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	ahau
-    //   0	126	1	paramLong1	long
-    //   0	126	3	paramInt1	int
-    //   0	126	4	paramInt2	int
-    //   0	126	5	paramInt3	int
-    //   0	126	6	paramLong2	long
-    //   0	126	8	paramBoolean	boolean
-    //   1	53	9	i	int
-    //   6	113	10	localParcel	Parcel
-    //   89	17	11	localRemoteException	RemoteException
-    //   116	8	11	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   8	48	89	android/os/RemoteException
-    //   56	78	89	android/os/RemoteException
-    //   8	48	116	finally
-    //   56	78	116	finally
-    //   91	110	116	finally
-  }
-  
-  /* Error */
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore 8
-    //   3: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   6: astore 9
-    //   8: aload 9
-    //   10: ldc 26
-    //   12: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload 9
-    //   17: lload_1
-    //   18: invokevirtual 44	android/os/Parcel:writeLong	(J)V
-    //   21: aload 9
-    //   23: iload_3
-    //   24: invokevirtual 48	android/os/Parcel:writeInt	(I)V
-    //   27: aload 9
-    //   29: iload 4
-    //   31: invokevirtual 48	android/os/Parcel:writeInt	(I)V
-    //   34: aload 9
-    //   36: iload 5
-    //   38: invokevirtual 48	android/os/Parcel:writeInt	(I)V
-    //   41: aload 9
-    //   43: aload 6
-    //   45: invokevirtual 72	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   48: iload 7
-    //   50: ifeq +34 -> 84
-    //   53: iload 8
-    //   55: istore_3
-    //   56: aload 9
-    //   58: iload_3
-    //   59: i2b
-    //   60: invokevirtual 52	android/os/Parcel:writeByte	(B)V
-    //   63: aload_0
-    //   64: getfield 15	ahau:a	Landroid/os/IBinder;
-    //   67: iconst_1
-    //   68: aload 9
-    //   70: aconst_null
-    //   71: iconst_1
-    //   72: invokeinterface 36 5 0
-    //   77: pop
-    //   78: aload 9
-    //   80: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   83: return
-    //   84: iconst_0
-    //   85: istore_3
-    //   86: goto -30 -> 56
-    //   89: astore 6
-    //   91: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   94: ifeq +16 -> 110
-    //   97: ldc 60
-    //   99: iconst_2
-    //   100: aload 6
-    //   102: invokevirtual 64	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   105: aload 6
-    //   107: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   110: aload 9
-    //   112: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   115: return
-    //   116: astore 6
-    //   118: aload 9
-    //   120: invokevirtual 39	android/os/Parcel:recycle	()V
-    //   123: aload 6
-    //   125: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	ahau
-    //   0	126	1	paramLong	long
-    //   0	126	3	paramInt1	int
-    //   0	126	4	paramInt2	int
-    //   0	126	5	paramInt3	int
-    //   0	126	6	paramString	String
-    //   0	126	7	paramBoolean	boolean
-    //   1	53	8	i	int
-    //   6	113	9	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	48	89	android/os/RemoteException
-    //   56	78	89	android/os/RemoteException
-    //   8	48	116	finally
-    //   56	78	116	finally
-    //   91	110	116	finally
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("IAIOImageProviderCallBack", 2, "carverW notifyVideoUrl");
-    }
-    Parcel localParcel = Parcel.obtain();
+    Object localObject1 = paramView;
     try
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      localParcel.writeLong(paramLong);
-      localParcel.writeInt(paramInt1);
-      localParcel.writeInt(paramInt2);
-      localParcel.writeString(paramString1);
-      if (paramArrayOfString != null)
+      if (!(paramafos instanceof ahav))
       {
-        paramInt2 = paramArrayOfString.length;
-        localParcel.writeInt(paramInt2);
-        paramInt1 = i;
-        while (paramInt1 < paramInt2)
+        localObject1 = paramView;
+        QLog.e("LoverChattingGrayTipItemBuilder", 1, "diffclashh =" + paramafos.getClass());
+      }
+      localObject1 = paramView;
+      localahav = (ahav)paramafos;
+      paramafos = paramView;
+      if (paramView == null)
+      {
+        localObject1 = paramView;
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558635, null);
+        localObject1 = paramView;
+        localahav.b = ((TextView)paramView.findViewById(2131367838));
+        localObject1 = paramView;
+        localahav.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370569));
+        localObject1 = paramView;
+        localObject2 = localahav.b.getLayoutParams();
+        paramafos = paramView;
+        localObject1 = paramView;
+        if ((localObject2 instanceof ViewGroup.MarginLayoutParams))
         {
-          localParcel.writeString(paramArrayOfString[paramInt1]);
-          paramInt1 += 1;
+          localObject1 = paramView;
+          localObject2 = (ViewGroup.MarginLayoutParams)localObject2;
+          paramafos = paramView;
+          localObject1 = paramView;
+          if (((ViewGroup.MarginLayoutParams)localObject2).rightMargin != BaseChatItemLayout.y)
+          {
+            localObject1 = paramView;
+            ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = BaseChatItemLayout.y;
+            paramafos = paramView;
+          }
         }
       }
-      localParcel.writeInt(-1);
-      localParcel.writeString(paramString2);
-      localParcel.writeParcelable(paramMessageForShortVideo, 0);
-      localParcel.writeInt(paramInt3);
-      localParcel.writeBundle(paramBundle);
-      this.a.transact(5, localParcel, null, 1);
-      return;
     }
-    catch (RemoteException paramString1)
+    catch (Exception paramMessageRecord)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("IAIOImageProviderCallBack", 2, paramString1.getMessage(), paramString1);
+      for (;;)
+      {
+        ahav localahav;
+        Object localObject2;
+        paramafos = (afos)localObject1;
       }
-      return;
     }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
     try
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      localParcel.writeTypedArray(paramArrayOfAIORichMediaData, 0);
-      localParcel.writeInt(paramInt);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramArrayOfAIORichMediaData)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("IAIOImageProviderCallBack", 2, paramArrayOfAIORichMediaData.getMessage(), paramArrayOfAIORichMediaData);
+      localahav.b.setLineSpacing(0.0F, 1.0F);
+      localahav.b.setIncludeFontPadding(true);
+      localahav.b.setMovementMethod(null);
+      localahav.b.setTextColor(paramafos.getResources().getColorStateList(2131167325));
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
       }
-      return;
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramMessageRecord.uniseq)))
+      {
+        paramView = ObjectAnimator.ofFloat(localahav.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.8F, 1.0F, 0.8F, 1.0F });
+        localObject1 = ObjectAnimator.ofFloat(localahav.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.8F, 1.0F, 0.8F, 1.0F });
+        localObject2 = new AnimatorSet();
+        ((AnimatorSet)localObject2).play(paramView).with((Animator)localObject1);
+        ((AnimatorSet)localObject2).setDuration(3000L);
+        ((AnimatorSet)localObject2).start();
+        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageRecord.uniseq), Integer.valueOf(1));
+        localObject1 = paramMessageRecord.getExtInfoFromExtStr("love_c2c_aio_businessSubtype");
+        paramView = (View)localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramView = "1";
+        }
+        LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", paramView, "", "1"));
+        if (QLog.isColorLevel()) {
+          QLog.d("LoverChattingGrayTipItemBuilder", 2, "revoke msg grayTipItemBuilder msg uinseq=  message" + paramMessageRecord.msg.hashCode());
+        }
+      }
+      paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
+      if ((paramMessageRecord.tipParam != null) && (paramMessageRecord.tipParam.a != null))
+      {
+        long l1 = paramMessageRecord.uniseq;
+        long l2 = localahav.jdField_a_of_type_Int;
+        if (QLog.isColorLevel()) {
+          QLog.d("LoverChattingGrayTipItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder msg uinseq=", Long.valueOf(l1), ",holder.mPosition=", Long.valueOf(l2) });
+        }
+        paramView = paramMessageRecord.getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext(), false, localahav.b);
+        paramMessageRecord = paramMessageRecord.tipParam.a;
+        localahav.b.setText(paramView);
+        localahav.b.setClickable(true);
+        localahav.b.setFocusable(true);
+        localahav.b.setMovementMethod(LinkMovementMethod.getInstance());
+        return paramafos;
+      }
+      localahav.b.setText(paramMessageRecord.msg);
+      localahav.b.setOnTouchListener(paramaftk);
+      localahav.b.setOnLongClickListener(paramaftk);
+      if (AppSetting.c)
+      {
+        localahav.b.setAccessibilityDelegate(null);
+        return paramafos;
+      }
     }
-    finally
+    catch (Exception paramMessageRecord)
     {
-      localParcel.recycle();
+      QLog.e("LoverChattingGrayTipItemBuilder", 2, "LoverChattingGrayTipItemBuilder  exception " + paramMessageRecord.toString());
+      return paramafos;
     }
+    return paramafos;
   }
   
-  public IBinder asBinder()
+  public void a(View paramView, ChatMessage paramChatMessage, int paramInt) {}
+  
+  public bhjs[] a(View paramView)
   {
-    return this.a;
+    return new bhjq().a();
   }
 }
 

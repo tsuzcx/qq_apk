@@ -1,29 +1,19 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class bdrd
-  implements VideoCompositeHelper.VideoCompositeCallBack
+class bdrd
 {
-  public bdrd(TroopBarPublishActivity.14 param14) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  String c;
   
-  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
-  {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
-      }
-      this.a.this$0.a(null, this.a.a);
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_Bdlg.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.this$0.jdField_a_of_type_Bdlg.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.this$0.jdField_a_of_type_Bdlg.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.this$0.a(paramString2, this.a.a);
-  }
+  bdrd(bdrb parambdrb) {}
 }
 
 

@@ -1,28 +1,10 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aqsh
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface aqsh
 {
-  public aqsh(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(anoe.a, 0).edit().putBoolean(anoe.b, paramBoolean).commit();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), amtj.a(2131702003), 1).a();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).exit(false);
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public abstract void a(aqsb paramaqsb, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList);
 }
 
 

@@ -1,18 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public abstract interface beol
+class beol
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  beol(beok parambeok) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
-  
-  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
+      this.a.b();
+    }
+    do
+    {
+      return;
+      if ("android.intent.action.TIME_SET".equals(paramContext))
+      {
+        this.a.b();
+        return;
+      }
+    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
+    this.a.b();
+  }
 }
 
 

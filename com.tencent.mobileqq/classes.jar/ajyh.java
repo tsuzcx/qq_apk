@@ -1,39 +1,14 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ajyh
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  ajyh(ajyg paramajyg, long paramLong, ajyj paramajyj, WeakReference paramWeakReference) {}
+  ajyh(ajyf paramajyf) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt != 10) || (!paramBoolean)) {}
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
-      }
-      ajyg.a(this.jdField_a_of_type_Ajyg, -1L);
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      for (;;)
-      {
-        paramBundle.printStackTrace();
-      }
-    }
-    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
-    }
-    ajyg.a(this.jdField_a_of_type_Ajyg).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Ajyj, (ajyg)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    ajyg.a(this.jdField_a_of_type_Ajyg, -1L);
+    paramDialogInterface.dismiss();
   }
 }
 

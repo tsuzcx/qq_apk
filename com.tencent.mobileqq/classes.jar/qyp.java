@@ -1,40 +1,7 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import kotlin.Metadata;
 
-class qyp
-  implements qyn
-{
-  private IBinder a;
-  
-  qyp(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
-  
-  public qyq a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      qyq localqyq = qyr.a(localParcel2.readStrongBinder());
-      return localqyq;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLitePlayableCardView$Companion;", "", "()V", "ACTION_DESTROY", "", "ACTION_PAUSE", "ACTION_START", "ACTION_STOP", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qyp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import amtj;
 import android.graphics.Color;
+import anvx;
 import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -40,7 +40,7 @@ class MapActivity$2
       }
       return;
     }
-    this.this$0.dialog.setTitle(amtj.a(2131705571)).setMessage(amtj.a(2131705567)).setPositiveButton(amtj.a(2131705569), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(amtj.a(2131705568), Color.parseColor("#000000"), new MapActivity.2.1(this));
+    this.this$0.dialog.setTitle(anvx.a(2131705922)).setMessage(anvx.a(2131705918)).setPositiveButton(anvx.a(2131705920), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(anvx.a(2131705919), Color.parseColor("#000000"), new MapActivity.2.1(this));
     this.this$0.dialog.show();
   }
 }

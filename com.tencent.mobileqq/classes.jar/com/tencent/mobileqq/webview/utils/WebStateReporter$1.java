@@ -4,15 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bcef;
-import bgyk;
+import bdla;
+import bijc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class WebStateReporter$1
   implements Runnable
 {
-  public WebStateReporter$1(bgyk parambgyk, boolean paramBoolean, String paramString1, Context paramContext, long paramLong, String paramString2) {}
+  public WebStateReporter$1(bijc parambijc, boolean paramBoolean, String paramString1, Context paramContext, long paramLong, String paramString2) {}
   
   public void run()
   {
@@ -52,7 +52,7 @@ public class WebStateReporter$1
           QLog.e("WebStateReporter_report", 2, "parse url got some problem!", localException1);
         }
         continue;
-        Object localObject = (Integer)bgyk.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
+        Object localObject = (Integer)bijc.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
         continue;
         int j = 0;
         continue;
@@ -69,7 +69,7 @@ public class WebStateReporter$1
             if (bool1)
             {
               i = 1;
-              bcef.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.this$0.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
+              bdla.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.this$0.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
             }
           }
           else
@@ -101,18 +101,18 @@ public class WebStateReporter$1
         continue;
       }
     }
-    if (bgyk.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    if (bijc.jdField_a_of_type_JavaUtilHashMap.isEmpty())
     {
       this.this$0.a(this.jdField_a_of_type_AndroidContentContext);
-      if (bgyk.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
-        bgyk.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+      if (bijc.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+        bijc.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
       }
     }
-    if (bgyk.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
+    if (bijc.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
     {
-      localObject = (Integer)bgyk.jdField_a_of_type_JavaUtilHashMap.get(str1);
+      localObject = (Integer)bijc.jdField_a_of_type_JavaUtilHashMap.get(str1);
       j = ((Integer)localObject).intValue();
-      if ((1 != j) && (this.jdField_a_of_type_Long % j != bgyk.jdField_c_of_type_Int)) {
+      if ((1 != j) && (this.jdField_a_of_type_Long % j != bijc.jdField_c_of_type_Int)) {
         break label315;
       }
       j = 1;

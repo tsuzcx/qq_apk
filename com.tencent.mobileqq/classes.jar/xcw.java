@@ -1,45 +1,24 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import java.util.Arrays;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-class xcw
-  implements Handler.Callback
+public class xcw
 {
-  private xcw(xcu paramxcu) {}
+  public ErrorMessage a;
+  public List<xcz> a;
+  public boolean a;
+  public ErrorMessage b;
+  public boolean b;
+  public boolean c;
   
-  public boolean handleMessage(Message paramMessage)
+  public xcw()
   {
-    int k = 0;
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      xcu.a(this.a, new Error((Throwable)paramMessage.obj));
-      return true;
-    }
-    paramMessage = (Bitmap[])paramMessage.obj;
-    int m = paramMessage.length;
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < m)
-      {
-        if (paramMessage[i] == null) {
-          j = 1;
-        }
-      }
-      else
-      {
-        if (j == 0) {
-          xcu.a(this.a, Arrays.asList(paramMessage));
-        }
-        return true;
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

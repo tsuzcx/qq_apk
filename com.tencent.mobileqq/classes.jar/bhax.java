@@ -1,59 +1,20 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bhax
-  implements bhkf
+class bhax
+  implements Animation.AnimationListener
 {
-  public bhax(ADView paramADView, LinearLayout paramLinearLayout) {}
+  bhax(bhav parambhav, Dialog paramDialog) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    View localView;
-    while (i < j)
-    {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView != null) {
-        localView.setEnabled(false);
-      }
-      i += 1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
-    }
-    for (;;)
-    {
-      if ((i > -1) && (i < j))
-      {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
-      }
-      return;
-      i = paramInt;
-      if (paramInt == j)
-      {
-        i = 0;
-        continue;
-        if (paramInt == -1)
-        {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

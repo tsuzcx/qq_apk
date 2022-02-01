@@ -8,17 +8,17 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import vkp;
-import vwa;
-import vwb;
-import xnp;
-import xpe;
-import xvv;
-import yos;
+import vzk;
+import wkv;
+import wkw;
+import yck;
+import ydz;
+import ykq;
+import zdl;
 
-public abstract class FeedItem<T extends xpe, E extends vwb>
+public abstract class FeedItem<T extends ydz, E extends wkw>
   extends BaseUIItem
-  implements vkp
+  implements vzk
 {
   public static final int BANNER_FEED_ITEM = 5;
   public static final String FAKE_START = "fake-";
@@ -42,7 +42,7 @@ public abstract class FeedItem<T extends xpe, E extends vwb>
     {
     case 4: 
     default: 
-      xvv.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
+      ykq.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
       return null;
     case 1: 
       return new GeneralFeedItem();
@@ -65,7 +65,7 @@ public abstract class FeedItem<T extends xpe, E extends vwb>
   
   public abstract int assignType();
   
-  public abstract void convertFromFeedFeature(vwa paramvwa);
+  public abstract void convertFromFeedFeature(wkv paramwkv);
   
   public void copy(Object paramObject)
   {
@@ -86,7 +86,7 @@ public abstract class FeedItem<T extends xpe, E extends vwb>
     }
     for (;;)
     {
-      yos.a(bool, "type类型不对应");
+      zdl.a(bool, "type类型不对应");
       this.feedId = paramFeedEntry.feedId;
       setDate(paramFeedEntry.date);
       this.ownerId = paramFeedEntry.ownerId;
@@ -103,7 +103,7 @@ public abstract class FeedItem<T extends xpe, E extends vwb>
       {
         for (;;)
         {
-          xvv.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
+          ykq.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
         }
       }
     }
@@ -143,9 +143,9 @@ public abstract class FeedItem<T extends xpe, E extends vwb>
   
   public T generateAndPackageHomeFeedFromDB()
   {
-    xpe localxpe = generateHomeFeed();
-    localxpe.b();
-    return localxpe;
+    ydz localydz = generateHomeFeed();
+    localydz.b();
+    return localydz;
   }
   
   @NonNull
@@ -178,17 +178,17 @@ public abstract class FeedItem<T extends xpe, E extends vwb>
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = xnp.a().format(new Date());
+      str = yck.a().format(new Date());
     }
     this.date = str;
     try
     {
-      this.dateTimeMillis = xnp.a().parse(str).getTime();
+      this.dateTimeMillis = yck.a().parse(str).getTime();
       return;
     }
     catch (ParseException paramString)
     {
-      xvv.c("Q.qqstory.home", "parse date", paramString);
+      ykq.c("Q.qqstory.home", "parse date", paramString);
     }
   }
   

@@ -1,127 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class aopl
+class aopl
+  implements acmg
 {
-  public static int a(String paramString1, String paramString2, String paramString3)
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, 0);
-  }
+  aopl(aopk paramaopk, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
   
-  public static ArrayList<String> a(String paramString)
+  public ToServiceMsg a()
   {
-    int i = 0;
-    ArrayList localArrayList = new ArrayList();
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).getString("key_ark_authority_app_list_" + paramString, "");
-    if (!TextUtils.isEmpty(paramString))
+    long l = System.currentTimeMillis();
+    ToServiceMsg localToServiceMsg = aopk.a(this.jdField_a_of_type_Aopk).createToServiceMsg("MessageSvc.PbMultiMsgSend");
+    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
+    localToServiceMsg.extraData.putBoolean(bcrn.h, this.jdField_a_of_type_Boolean);
+    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
+    localToServiceMsg.setTimeout(15000L);
+    localToServiceMsg.setEnableFastResend(true);
+    if (QLog.isColorLevel())
     {
-      paramString = paramString.split(";");
-      if ((paramString != null) && (paramString.length > 0))
-      {
-        int j = paramString.length;
-        while (i < j)
-        {
-          CharSequence localCharSequence = paramString[i];
-          if (!TextUtils.isEmpty(localCharSequence)) {
-            localArrayList.add(localCharSequence);
-          }
-          i += 1;
-        }
-      }
+      int i = bcsc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
+      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
     }
-    return localArrayList;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    ArrayList localArrayList = a(paramString2);
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int j = 0;
-    int n = 0;
-    int m;
-    for (int i = 0; j < localArrayList.size(); i = m)
-    {
-      String str = (String)localArrayList.get(j);
-      int k = n;
-      m = i;
-      if (!TextUtils.isEmpty(str))
-      {
-        if (n > 0) {
-          localStringBuilder.append(";");
-        }
-        localStringBuilder.append(str);
-        n += 1;
-        k = n;
-        m = i;
-        if (str.equals(paramString1))
-        {
-          m = 1;
-          k = n;
-        }
-      }
-      j += 1;
-      n = k;
-    }
-    if (i == 0)
-    {
-      if (n > 0) {
-        localStringBuilder.append(";");
-      }
-      localStringBuilder.append(paramString1);
-    }
-    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putString("key_ark_authority_app_list_" + paramString2, localStringBuilder.toString()).commit();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0).edit().putInt("key_ark_authority_info" + "_" + paramString1 + "_" + paramString2 + "_" + paramString3, paramInt).commit();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, aopp paramaopp)
-  {
-    Object localObject2 = ArkAppCacheMgr.getApplicationDesc(paramString2);
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = paramString2;
-    }
-    localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
-    String str = "key_ark_authority_show_dialog" + "_" + (String)localObject1 + "_" + paramString3 + "_" + paramString1;
-    boolean bool = ((SharedPreferences)localObject2).getBoolean(str, false);
-    if (TextUtils.isEmpty(paramString1)) {
-      if (paramaopp != null) {
-        paramaopp.a();
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((!bool) && (aopk.a))
-        {
-          ArkAppCenter.a().postToMainThread(new ArkAppModuleBase.APIAuthority.1((String)localObject1, paramString4, paramString2, paramaopp, paramString3, paramString1));
-          ((SharedPreferences)localObject2).edit().putBoolean(str, true).apply();
-          a((String)localObject1, paramString1);
-          return;
-        }
-        if (1 != a((String)localObject1, paramString3, paramString1)) {
-          break;
-        }
-      } while (paramaopp == null);
-      paramaopp.a();
-      return;
-    } while (paramaopp == null);
-    paramaopp.b();
+    return localToServiceMsg;
   }
 }
 

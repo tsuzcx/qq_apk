@@ -1,37 +1,16 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation.46.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class ajya
-  extends RecyclerView.ItemDecoration
+  extends aesy
 {
-  private int a;
-  private int b;
+  public ajya(Conversation paramConversation) {}
   
-  private ajya(int paramInt1, int paramInt2)
+  protected void a()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int i = paramRecyclerView.getChildPosition(paramView);
-    if (i == 0)
-    {
-      paramRect.left = this.a;
-      return;
-    }
-    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
-    {
-      paramRect.left = this.b;
-      paramRect.right = this.a;
-      return;
-    }
-    paramRect.left = this.b;
+    ThreadManagerV2.getUIHandlerV2().post(new Conversation.46.1(this));
   }
 }
 

@@ -1,15 +1,35 @@
-class ovr
-  extends owd
+import android.view.View;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+@Deprecated
+public class ovr
 {
-  ovr(ouu paramouu, int paramInt1, ouo paramouo, int paramInt2)
+  public static AtomicBoolean a;
+  
+  public static ArkAppMessage a(ron paramron)
   {
-    super(paramouu, null);
+    return null;
   }
   
-  void a(owg paramowg)
+  public static void a() {}
+  
+  public static void a(int paramInt) {}
+  
+  public static void a(View paramView) {}
+  
+  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
+  
+  public static void a(ovp paramovp, int paramInt) {}
+  
+  public static boolean a(ArkAppMessage paramArkAppMessage)
   {
-    paramowg.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Ouo, this.b);
+    return false;
   }
+  
+  public static void b(int paramInt) {}
+  
+  public static void b(View paramView) {}
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anca;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,7 +12,7 @@ public class GetTroopConfig
   public int a()
   {
     if (this.a.app != null) {
-      ((anca)this.a.app.getBusinessHandler(20)).c();
+      ((aoep)this.a.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).c();
     }
     return 7;
   }

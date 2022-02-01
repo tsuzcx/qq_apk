@@ -86,19 +86,6 @@ public class MiniProgramLpReportDC05115
     MINI_APP_ID_REPORT_MODEL_HASH_MAP.put(paramMiniAppConfig.config.appId, new MiniProgramLpReportDC05115.ReportModel(paramMiniAppConfig));
   }
   
-  public static void reportCPUMemoryFPS(MiniAppConfig paramMiniAppConfig, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
-  {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
-    {
-      paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (paramMiniAppConfig != null)
-      {
-        MiniProgramLpReportDC05115.ReportModel.access$100(paramMiniAppConfig, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5);
-        doReport(paramMiniAppConfig);
-      }
-    }
-  }
-  
   public static void reportCrash(MiniAppConfig paramMiniAppConfig, Throwable paramThrowable)
   {
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
@@ -106,7 +93,7 @@ public class MiniProgramLpReportDC05115
       paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
       if (paramMiniAppConfig != null)
       {
-        MiniProgramLpReportDC05115.ReportModel.access$202(paramMiniAppConfig, 1L);
+        MiniProgramLpReportDC05115.ReportModel.access$102(paramMiniAppConfig, 1L);
         if (!(paramThrowable instanceof OutOfMemoryError)) {
           break label72;
         }
@@ -115,7 +102,7 @@ public class MiniProgramLpReportDC05115
     label72:
     for (int i = 1;; i = 0)
     {
-      MiniProgramLpReportDC05115.ReportModel.access$302(paramMiniAppConfig, i);
+      MiniProgramLpReportDC05115.ReportModel.access$202(paramMiniAppConfig, i);
       doReport(paramMiniAppConfig);
       return;
     }
@@ -138,28 +125,6 @@ public class MiniProgramLpReportDC05115
           }
         }
         paramMiniAppConfig.reportDownloadRequestResult(paramLong, l1, paramBoolean);
-      }
-    }
-  }
-  
-  public static void reportDownloadResultForSDK(MiniAppConfig paramMiniAppConfig, long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
-    {
-      paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (paramMiniAppConfig != null) {
-        paramMiniAppConfig.reportDownloadRequestResult(paramLong2, paramLong1, paramBoolean);
-      }
-    }
-  }
-  
-  public static void reportHttpRequestResult(MiniAppConfig paramMiniAppConfig, int paramInt, long paramLong1, long paramLong2)
-  {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
-    {
-      paramMiniAppConfig = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppConfig.config.appId);
-      if (paramMiniAppConfig != null) {
-        paramMiniAppConfig.reportHttpRequestResult(paramLong2, paramLong1, paramInt);
       }
     }
   }

@@ -1,8 +1,42 @@
-import android.net.Uri;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-public abstract interface uie
+public class uie
+  implements INetInfoHandler
 {
-  public abstract void a(Uri paramUri, String paramString, int paramInt);
+  protected WeakReference<ujb> a;
+  
+  public uie(ujb paramujb)
+  {
+    this.a = new WeakReference(paramujb);
+  }
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ujb)this.a.get()).d();
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ujb)this.a.get()).b();
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ujb)this.a.get()).c();
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

@@ -1,114 +1,87 @@
-import com.tencent.mobileqq.data.MessageForLimitChatConfirm;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24.LimitChatEnter;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24.LimitChatExit;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMvAnimation185H.1;
 
 public class acej
-  extends acew
+  extends acex
 {
-  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder)
+  private Runnable a;
+  
+  protected acej(Context paramContext)
   {
-    MessageForLimitChatConfirm localMessageForLimitChatConfirm = null;
-    Iterator localIterator = paramList.iterator();
-    do
+    super(paramContext);
+    this.jdField_a_of_type_JavaLangRunnable = new GdtMvAnimation185H.1(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    acho.b("GdtMotiveVideoAd", "185H doAnimation " + this.jdField_a_of_type_Acei + " targetMode " + paramInt);
+    acef localacef;
+    if (this.jdField_a_of_type_Acei != null)
     {
-      paramList = localMessageForLimitChatConfirm;
-      if (!localIterator.hasNext()) {
-        break;
+      localacef = (acef)this.jdField_a_of_type_Acei;
+      a();
+      if (paramInt == 1)
+      {
+        if (localacef.jdField_a_of_type_AndroidViewView != null) {
+          localacef.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        }
+        a(localacef.jdField_f_of_type_AndroidViewView, localacef.j, localacef.k, localacef.i);
+        a(localacef.jdField_e_of_type_AndroidViewView, localacef.jdField_g_of_type_Int, localacef.jdField_h_of_type_Int);
+        a(localacef.jdField_b_of_type_AndroidViewView, localacef.jdField_a_of_type_Int, localacef.jdField_b_of_type_Int);
+        a(localacef.jdField_d_of_type_AndroidViewView, localacef.jdField_e_of_type_Int, localacef.jdField_f_of_type_Int);
+        a(localacef.jdField_c_of_type_AndroidViewView, localacef.jdField_c_of_type_Int, localacef.jdField_d_of_type_Int);
       }
-      paramList = (im_msg_body.Elem)localIterator.next();
-    } while (!paramList.common_elem.has());
-    paramList = (im_msg_body.CommonElem)paramList.common_elem.get();
-    if (paramList == null) {
+    }
+    else
+    {
       return;
     }
-    if (QLog.isColorLevel()) {
-      paramStringBuilder.append("decodePBMsgElems_LimitChatConfirmMsg;\n");
-    }
-    paramStringBuilder = new hummer_commelem.MsgElemInfo_servtype24();
-    for (;;)
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
+    a(localacef.jdField_f_of_type_AndroidViewView, -localacef.j, -localacef.k, -localacef.i);
+    a(localacef.jdField_e_of_type_AndroidViewView, -localacef.jdField_g_of_type_Int, -localacef.jdField_h_of_type_Int);
+    a(localacef.jdField_b_of_type_AndroidViewView, -localacef.jdField_a_of_type_Int, -localacef.jdField_b_of_type_Int);
+    a(localacef.jdField_d_of_type_AndroidViewView, -localacef.jdField_e_of_type_Int, -localacef.jdField_f_of_type_Int);
+    a(localacef.jdField_c_of_type_AndroidViewView, -localacef.jdField_c_of_type_Int, -localacef.jdField_d_of_type_Int);
+  }
+  
+  public void a(View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
+  {
+    acef localacef = new acef();
+    localacef.jdField_a_of_type_AndroidViewView = paramView1;
+    localacef.jdField_f_of_type_AndroidViewView = paramView3;
+    localacef.jdField_g_of_type_AndroidViewView = paramView2;
+    localacef.jdField_h_of_type_AndroidViewView = paramView8;
+    localacef.j = aciv.a(-85, 750, aciv.f(this.jdField_a_of_type_AndroidContentContext));
+    localacef.k = aciv.a(-588, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext));
+    localacef.i = aciv.a(416, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext));
+    paramView1 = (RelativeLayout.LayoutParams)paramView2.getLayoutParams();
+    float f = aciv.a(400, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext));
+    if (f > 0.0F)
     {
-      try
-      {
-        paramStringBuilder.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
-        localMessageForLimitChatConfirm = (MessageForLimitChatConfirm)bbli.a(-7005);
-        localMessageForLimitChatConfirm.msgtype = -7005;
-        if (paramList.uint32_business_type.has())
-        {
-          i = paramList.uint32_business_type.get();
-          if (i != 1) {
-            break label375;
-          }
-          if (!paramStringBuilder.limit_chat_enter.has()) {
-            break label364;
-          }
-          localMessageForLimitChatConfirm.SenderNickName = paramStringBuilder.limit_chat_enter.bytes_match_nick.get().toStringUtf8();
-          localMessageForLimitChatConfirm.tipsWording = paramStringBuilder.limit_chat_enter.bytes_tips_wording.get().toStringUtf8();
-          localMessageForLimitChatConfirm.leftChatTime = paramStringBuilder.limit_chat_enter.uint32_left_chat_time.get();
-          localMessageForLimitChatConfirm.c2cExpiredTime = paramStringBuilder.limit_chat_enter.uint32_c2c_expired_time.get();
-          localMessageForLimitChatConfirm.matchExpiredTime = paramStringBuilder.limit_chat_enter.uint32_match_expired_time.get();
-          localMessageForLimitChatConfirm.timeStamp = paramStringBuilder.limit_chat_enter.uint64_match_ts.get();
-          localMessageForLimitChatConfirm.readyTs = paramStringBuilder.limit_chat_enter.uint64_ready_ts.get();
-          localMessageForLimitChatConfirm.bEnterMsg = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("LimitChatConfirmElemDecoderLimitChatConfirm msg", 1, " decodePBMsgElems_LimitChatConfirmMsg type" + i + " " + localMessageForLimitChatConfirm.matchExpiredTime + " " + localMessageForLimitChatConfirm.frienduin);
-          }
-          localMessageForLimitChatConfirm.prewrite();
-          paramList1.add(localMessageForLimitChatConfirm);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramList)
-      {
-        paramList.printStackTrace();
-        QLog.e("LimitChatConfirmElemDecoderscribble msg", 1, paramList, new Object[0]);
-        return;
-      }
-      int i = 1;
-      continue;
-      label364:
-      QLog.e("LimitChatConfirmElemDecoderExtendFriendLimitChatLimitChatConfirm msg", 1, " !!!limitChatElem  limit_chat_enter is null ");
-      continue;
-      label375:
-      if (paramStringBuilder.limit_chat_exit.has())
-      {
-        localMessageForLimitChatConfirm.bEnterMsg = false;
-        localMessageForLimitChatConfirm.leaveChatType = paramStringBuilder.limit_chat_exit.uint32_exit_method.get();
-        localMessageForLimitChatConfirm.timeStamp = paramStringBuilder.limit_chat_exit.uint64_match_ts.get();
-      }
-      else
-      {
-        QLog.e("LimitChatConfirmElemDecoderLimitChatConfirm msg", 1, " limitChatElem  limit_chat_exit is null ");
-      }
+      localacef.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / aciv.e(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
+      localacef.jdField_b_of_type_Float = localacef.jdField_a_of_type_Float;
     }
-  }
-  
-  public int a()
-  {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
-  {
-    a(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (24 == paramElem.common_elem.uint32_service_type.get());
+    localacef.l = aciv.a(50, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext));
+    localacef.m = aciv.a(50, 750, aciv.f(this.jdField_a_of_type_AndroidContentContext));
+    localacef.jdField_b_of_type_AndroidViewView = paramView4;
+    localacef.jdField_c_of_type_AndroidViewView = paramView5;
+    localacef.jdField_d_of_type_AndroidViewView = paramView6;
+    localacef.jdField_e_of_type_AndroidViewView = paramView7;
+    localacef.jdField_a_of_type_Int = aciv.a(-436, 750, aciv.f(this.jdField_a_of_type_AndroidContentContext));
+    localacef.jdField_b_of_type_Int = aciv.a(567, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext));
+    localacef.jdField_c_of_type_Int = aciv.a(-275, 750, aciv.f(this.jdField_a_of_type_AndroidContentContext));
+    localacef.jdField_d_of_type_Int = ((aciv.e(this.jdField_a_of_type_AndroidContentContext) - paramView5.getWidth()) / 2 - aciv.a(196, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext)));
+    localacef.jdField_e_of_type_Int = aciv.a(-269, 750, aciv.f(this.jdField_a_of_type_AndroidContentContext));
+    localacef.jdField_f_of_type_Int = ((aciv.e(this.jdField_a_of_type_AndroidContentContext) - paramView6.getWidth()) / 2 - aciv.a(196, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext)));
+    localacef.jdField_g_of_type_Int = aciv.a(-257, 750, aciv.f(this.jdField_a_of_type_AndroidContentContext));
+    localacef.jdField_h_of_type_Int = ((aciv.e(this.jdField_a_of_type_AndroidContentContext) - paramView7.getWidth()) / 2 - aciv.a(196, 1334, aciv.e(this.jdField_a_of_type_AndroidContentContext)));
+    a(localacef, paramView8);
+    this.jdField_a_of_type_Acei = localacef;
   }
 }
 

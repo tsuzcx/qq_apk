@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
 
 class agey
-  extends aghj
+  extends TroopAppShortcutContainer
 {
-  agey(agcw paramagcw)
+  agey(agex paramagex, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    super(paramagcw, null);
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(boolean paramBoolean)
   {
-    return new afzj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.a(true);
   }
 }
 

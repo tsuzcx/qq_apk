@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agxy;
-import agyc;
+import ahqz;
+import ahrd;
 import android.text.TextUtils;
 
 public class AIOGalleryAdapter$4$1
   implements Runnable
 {
-  public AIOGalleryAdapter$4$1(agxy paramagxy, String paramString) {}
+  public AIOGalleryAdapter$4$1(ahqz paramahqz, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Agxy.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Agxy.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Agxy.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
-      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Agxy.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
-        AIOGalleryAdapter.a(this.jdField_a_of_type_Agxy.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Agxy.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Agxy.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
+      this.jdField_a_of_type_Ahqz.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Ahqz.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Ahqz.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
+      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Ahqz.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
+        AIOGalleryAdapter.a(this.jdField_a_of_type_Ahqz.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Ahqz.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Ahqz.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
       }
     }
   }

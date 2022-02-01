@@ -1,27 +1,30 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akje
-  implements View.OnClickListener
+public class akje
+  extends azip
 {
-  akje(akho paramakho, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public akje(SettingActivity2.3 param3) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
+    if (this.a.this$0.c != null)
+    {
+      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+      this.a.this$0.c = null;
     }
-    bhnb.a(akho.a(this.jdField_a_of_type_Akho), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
-    akho.a(this.jdField_a_of_type_Akho).removeMessages(202);
-    akho.a(this.jdField_a_of_type_Akho).obtainMessage(202).sendToTarget();
-    bcef.a(akho.a(this.jdField_a_of_type_Akho).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      if (this.a.this$0.c != null)
+      {
+        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+        this.a.this$0.c = null;
+      }
+      this.a.this$0.a();
+      this.a.this$0.setResult(-1);
+    }
   }
 }
 

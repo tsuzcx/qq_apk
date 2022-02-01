@@ -1,319 +1,127 @@
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingQueue;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
+import mqq.util.WeakReference;
 
-public class amih
-  implements amij, amik
+final class amih
+  extends anvi
 {
-  private int jdField_a_of_type_Int = 0;
-  private amhl jdField_a_of_type_Amhl;
-  private amii jdField_a_of_type_Amii;
-  private TraceData jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData = new TraceData();
-  private ConcurrentHashMap<Integer, amif> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  WeakReference<amia> a;
   
-  public amih(int paramInt)
+  amih(amia paramamia)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.version = "8.4.8";
-    this.jdField_a_of_type_Amii = new amii(this);
-    this.jdField_a_of_type_Amhl = amho.a().a();
-    this.jdField_a_of_type_Amii.a(this.jdField_a_of_type_Amhl.b(), this);
+    this.a = new WeakReference(paramamia);
   }
   
-  private long a()
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    return (System.currentTimeMillis() & 0xFFFFFFFF) << 10 | (int)(Math.random() * 1000.0D) & 0x3FF;
-  }
-  
-  private int b(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.traceId = a();
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.timestamp = paramBundle.getLong("timestamp");
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.startTime = paramBundle.getLong("startTime");
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.serverTime = paramBundle.getLong("serverTime");
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureKey = paramBundle.getString("featureKey");
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.isSampleFocus = paramBundle.getBoolean("isSampleFocus");
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initJavaHeap = paramBundle.getInt("initJavaHeap");
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initNativeHeap = paramBundle.getInt("initNativeHeap");
-    return -1;
-  }
-  
-  private int c(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("spanId");
-    int j = paramBundle.getInt("errCode", -100);
-    Object localObject = paramBundle.getString("msg");
-    long l1 = paramBundle.getLong("timestamp");
-    long l2 = paramBundle.getLong("serverTime");
-    long l3 = paramBundle.getLong("startTime");
-    int k = paramBundle.getInt("extKey");
-    long l4 = paramBundle.getLong("extValue");
-    paramBundle = (amif)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-    if (paramBundle == null)
+    amia localamia;
+    if (paramBoolean)
     {
-      paramBundle = new amif(i);
-      paramBundle.c = l3;
-      paramBundle.jdField_a_of_type_Long = l1;
-      paramBundle.b = l2;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), paramBundle);
+      localamia = (amia)this.a.get();
+      if (localamia == null) {
+        break label71;
+      }
+      paramString = amia.a(localamia, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
+      }
+      if (paramString != null) {
+        amia.a(localamia, paramString);
+      }
     }
-    for (;;)
+    else
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      return;
+    }
+    amia.a(localamia);
+    return;
+    label71:
+    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      paramBundle = (amia)this.a.get();
+      if (paramBundle != null)
       {
-        if (paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null) {
-          paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
         }
-        localObject = a((String)localObject, l1, l2);
-        paramBundle.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject);
+        amia.a(paramBundle);
       }
-      if (k > 0)
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
+    }
+    if (paramBoolean)
+    {
+      paramList = (amia)this.a.get();
+      if (paramList != null) {
+        amia.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
+    }
+    if (paramBoolean)
+    {
+      paramList = (amia)this.a.get();
+      if (paramList != null) {
+        amia.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      amia localamia = (amia)this.a.get();
+      if (localamia == null) {
+        break label60;
+      }
+      if (amia.a(localamia) != null)
       {
-        if (paramBundle.jdField_a_of_type_JavaUtilMap == null) {
-          paramBundle.jdField_a_of_type_JavaUtilMap = new HashMap();
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
         }
-        paramBundle.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l4));
-      }
-      if (j != -100)
-      {
-        this.jdField_a_of_type_Int = 2;
-        return 0;
-      }
-      return -1;
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Amii.b();
-    this.jdField_a_of_type_Amii.a();
-    this.jdField_a_of_type_Amii = null;
-  }
-  
-  private int d(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("spanId");
-    int j = paramBundle.getInt("errCode");
-    long l = paramBundle.getLong("endTime");
-    paramBundle = paramBundle.getString("featureKey");
-    amho.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId, paramBundle);
-    paramBundle = (amif)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-    if (paramBundle == null) {
-      throw new IllegalArgumentException("illegal span");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue = new LinkedBlockingQueue();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.contains(paramBundle)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.remove(paramBundle);
-    }
-    paramBundle.jdField_a_of_type_Amie = a(j, paramBundle.c, l);
-    paramBundle.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.offer(paramBundle);
-    if (j != 0)
-    {
-      this.jdField_a_of_type_Int = 3;
-      return 0;
-    }
-    return -1;
-  }
-  
-  private void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      amif localamif = (amif)localIterator.next();
-      if (!localamif.jdField_a_of_type_Boolean)
-      {
-        if (localamif.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null) {
-          localamif.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-        }
-        amic localamic = a("timeout fail", 0L, 0L);
-        localamif.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localamic);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue == null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue = new LinkedBlockingQueue();
-        }
-        localamif.jdField_a_of_type_Amie = a(-101, localamif.c, localamif.c);
-        localamif.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.mSpanQueue.offer(localamif);
+        localamia.notifyDataSetChanged();
+        amia.a(localamia).postDelayed(localamia.a, 1600L);
       }
     }
-  }
-  
-  private int e(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    int j = paramBundle.getInt("featureId");
-    String str2 = paramBundle.getString("featureKey");
-    int i = j;
-    if (j == 0) {
-      i = this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId;
-    }
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureKey;
-    }
-    j = amho.a().a(i, str1);
-    if (((i < 0) || (!TextUtils.isEmpty(str1))) && (QLog.isColorLevel())) {
-      QLog.d("TraceReport" + this.jdField_a_of_type_Amhl.a(j), 1, new Object[] { "featureId:", Integer.valueOf(j), ",traceId:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.traceId), ",mappingFeatureId:", Integer.valueOf(i), ",featureKey:", str1 });
-    }
-    i = paramBundle.getInt("errCode", 0);
-    long l = paramBundle.getLong("endTime");
-    if (i == -101) {
-      d();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId = j;
-    this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.result = a(i, this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.startTime, l);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.isSampleFocus)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap = paramBundle.getInt("endJavaHeap");
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap = paramBundle.getInt("endNativeHeap");
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap == 0))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap = amhu.c();
-        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap = amhu.d();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.result.f = (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endJavaHeap - this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initJavaHeap);
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.result.g = (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.endNativeHeap - this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.initNativeHeap);
-    }
-    if (i != 0) {
-      QLog.e("TraceReport" + this.jdField_a_of_type_Amhl.a(j), 1, new Object[] { "traceEnd:", this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.toString() });
-    }
-    for (;;)
-    {
-      amho.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData);
-      this.jdField_a_of_type_Int = 4;
-      return 0;
-      QLog.i("TraceReport" + this.jdField_a_of_type_Amhl.a(j), 1, "traceEnd:" + this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.toString());
-    }
-  }
-  
-  public int a(Bundle paramBundle)
-  {
-    int i = this.jdField_a_of_type_Int;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      c();
-      return -1;
-    case 0: 
-      return b(paramBundle);
-    case 3: 
-      return e(paramBundle);
-    case 1: 
-      return c(paramBundle);
-    }
-    return d(paramBundle);
-  }
-  
-  public amic a(String paramString, long paramLong1, long paramLong2)
-  {
-    return new amic(paramString, paramLong1, paramLong2);
-  }
-  
-  public amie a(int paramInt, long paramLong1, long paramLong2)
-  {
-    long l = 0L;
-    amie localamie = new amie();
-    localamie.jdField_a_of_type_Int = paramInt;
-    localamie.e = NetworkUtil.getSystemNetwork(null);
-    if (paramLong2 > 0L)
-    {
-      paramLong1 = paramLong2 - paramLong1;
-      if (paramLong1 >= 0L) {
-        break label83;
-      }
-      paramLong1 = l;
-    }
-    label83:
-    for (;;)
-    {
-      if (paramLong1 > 2147483647L) {}
-      for (paramInt = 2147483647;; paramInt = (int)paramLong1)
-      {
-        localamie.b = paramInt;
-        return localamie;
-        paramLong2 = SystemClock.uptimeMillis();
-        break;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (this.jdField_a_of_type_Int == 4) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_Amii.a(new Bundle());
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Amii.a(paramBundle);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 3;
-    Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0) {
-      localBundle.putInt("errCode", -101);
-    }
-    this.jdField_a_of_type_Amii.a(localBundle);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Amii.a(paramBundle);
-  }
-  
-  public void c(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Amii.a(paramBundle);
-  }
-  
-  public void d(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData == null) {}
-    do
-    {
-      return;
-      String str = paramBundle.getString("tuid");
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.extra1 = paramBundle.getInt("extra1");
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.extra2 = paramBundle.getInt("extra2");
-      this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.extra3 = paramBundle.getInt("extra3");
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.tUid = str;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TraceReport" + this.jdField_a_of_type_Amhl.a(this.jdField_a_of_type_ComTencentMobileqqApolloTraceSdkDataTraceData.featureId), 2, new Object[] { "updateTraceData:", paramBundle.toString() });
+    return;
+    label60:
+    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
   }
 }
 

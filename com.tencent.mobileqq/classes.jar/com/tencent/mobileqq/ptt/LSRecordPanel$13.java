@@ -10,7 +10,7 @@ class LSRecordPanel$13
   public void run()
   {
     int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.this$0.b(i);
+    this.this$0.a(i);
     LSRecordPanel.a(this.this$0).setText(AudioPanel.a(this.jdField_a_of_type_Double));
   }
 }

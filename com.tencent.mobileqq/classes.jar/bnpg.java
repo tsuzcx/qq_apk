@@ -1,94 +1,83 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.async.JobContext;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.graphics.PointF;
+import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.video.PngsCreator.1;
+import dov.com.qq.im.ae.gif.video.PngsCreator.2;
+import dov.com.qq.im.ae.gif.video.PngsCreator.3;
+import dov.com.qq.im.ae.gif.video.PngsCreator.4;
+import dov.com.qq.im.ae.gif.video.PngsCreator.5;
+import java.io.File;
+import java.util.List;
 
 public class bnpg
-  extends bnph<bnot, bnot>
 {
-  protected void a(JobContext paramJobContext, bnot parambnot)
+  private static String jdField_a_of_type_JavaLangString = bnpg.class.getSimpleName();
+  private double jdField_a_of_type_Double = 1.0D;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bnmi jdField_a_of_type_Bnmi = new bnmi();
+  private bnph jdField_a_of_type_Bnph;
+  private bnpl jdField_a_of_type_Bnpl;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private List<List<List<PointF>>> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private List<List<float[]>> jdField_b_of_type_JavaUtilList;
+  
+  public bnpg(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble)
   {
-    int i = UIUtils.getScreenWidth(BaseApplication.getContext());
-    int j = UIUtils.getScreenHeight(BaseApplication.getContext()) * 720 / i;
-    i = j;
-    if (j % 2 != 0) {
-      i = j + 1;
-    }
-    Object localObject = parambnot.jdField_a_of_type_Bnoy.a;
-    paramJobContext = (JobContext)localObject;
-    if (!parambnot.jdField_a_of_type_Bnoy.c)
-    {
-      paramJobContext = (JobContext)localObject;
-      if (parambnot.jdField_a_of_type_Bnoy.jdField_b_of_type_Boolean) {
-        paramJobContext = parambnot.jdField_a_of_type_Bnoy.jdField_b_of_type_JavaLangString;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_b_of_type_JavaUtilList = paramList1;
+    this.jdField_a_of_type_Double = paramDouble;
+    paramList = new HandlerThread("PngCreatorHT");
+    paramList.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramList.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.1(this, paramString));
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.5(this));
+  }
+  
+  public void a(bnph parambnph)
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_JavaLangString = (bmwp.jdField_b_of_type_JavaLangString + File.separator + System.currentTimeMillis());
     try
     {
-      localObject = bfvo.a(paramJobContext, new BitmapFactory.Options());
-      if (localObject == null)
-      {
-        xvv.d("Q.qqstory.publish.edit.MakeStoryPicSegment", "aioBitmap is null please check!");
-        super.notifyError(new BitmapError("Q.qqstory.publish.edit.MakeStoryPicSegment", 0));
-        return;
-      }
-    }
-    catch (OutOfMemoryError paramJobContext)
-    {
-      xvv.b("Q.qqstory.publish.edit.MakeStoryPicSegment", "decodeFileWithBufferedStream failed", paramJobContext);
-      super.notifyError(new BitmapError("Q.qqstory.publish.edit.MakeStoryPicSegment", 6));
+      new File(this.jdField_b_of_type_JavaLangString).mkdirs();
+      QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "pngDir = ", this.jdField_b_of_type_JavaLangString });
+      this.jdField_a_of_type_Bnph = parambnph;
+      this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.2(this));
       return;
     }
-    if ((parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e != ((Bitmap)localObject).getHeight()) || (parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d != ((Bitmap)localObject).getWidth())) {}
-    for (j = 1;; j = 0)
+    catch (Exception localException)
     {
-      if (((Bitmap)localObject).getWidth() <= 720)
+      for (;;)
       {
-        paramJobContext = (JobContext)localObject;
-        if (((Bitmap)localObject).getHeight() <= i) {
-          break;
-        }
+        localException.printStackTrace();
       }
-      float f = Math.min(720 / ((Bitmap)localObject).getWidth(), i / ((Bitmap)localObject).getHeight());
-      localObject = yoy.a((Bitmap)localObject, f, true);
-      xvv.a("Q.qqstory.publish.edit.MakeStoryPicSegment", "scale by %s, aioBitmap=%s", Float.valueOf(f), localObject);
-      paramJobContext = (JobContext)localObject;
-      if (localObject != null) {
-        break;
-      }
-      notifyError(new BitmapError("resizeBitmapByScale failed", -1));
-      return;
     }
-    xvv.b("Q.qqstory.publish.edit.MakeStoryPicSegment", "current bitmap size " + paramJobContext.getWidth() + ", " + paramJobContext.getHeight());
-    if (j != 0) {
-      paramJobContext = yoy.c(paramJobContext, 720, i, false, true);
-    }
-    for (;;)
-    {
-      if (paramJobContext == null)
-      {
-        notifyError(new BitmapError("fillBitmapEdge failed", -1));
-        return;
-      }
-      if (paramJobContext.getHeight() % 2 == 0)
-      {
-        localObject = paramJobContext;
-        if (paramJobContext.getWidth() % 2 == 0) {}
-      }
-      else
-      {
-        localObject = Bitmap.createScaledBitmap(paramJobContext, paramJobContext.getWidth() >> 1 << 1, paramJobContext.getHeight() >> 1 << 1, false);
-      }
-      paramJobContext = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.jdField_b_of_type_JavaLangString, ".jpg");
-      yoy.a((Bitmap)localObject, paramJobContext);
-      ((Bitmap)localObject).recycle();
-      parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = paramJobContext;
-      super.notifyResult(parambnot);
-      return;
-    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.3(this, paramString));
+  }
+  
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
   }
 }
 

@@ -1,24 +1,23 @@
-import android.graphics.Bitmap;
+import com.tencent.av.ui.AVActivity;
+import java.util.Comparator;
 
-class mbo
-  implements lmv
+public class mbo
+  implements Comparator<lob>
 {
-  mbo(mbn parammbn) {}
+  public mbo(AVActivity paramAVActivity) {}
   
-  public boolean a(Bitmap paramBitmap, String paramString)
+  public int a(lob paramlob1, lob paramlob2)
   {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.a(paramBitmap);
-      bool = true;
+    if (paramlob1.a) {}
+    while (paramlob2.a) {
+      return 1;
     }
-    return bool;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbo
  * JD-Core Version:    0.7.0.1
  */

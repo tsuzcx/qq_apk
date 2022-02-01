@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class adyb
-  implements apos
+  implements DialogInterface.OnClickListener
 {
-  public adyb(QQBrowserActivity paramQQBrowserActivity) {}
+  public adyb(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
-  }
-  
-  public void b()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
+    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
+    if (!TextUtils.isEmpty(paramDialogInterface))
+    {
+      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
   }
 }
 

@@ -33,7 +33,7 @@ public class SoConfig$RelatedFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig.RelatedFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afio
-  implements View.OnClickListener
+public class afio
+  implements View.OnTouchListener
 {
-  afio(afim paramafim, String paramString) {}
+  public afio(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((afim.a(this.jdField_a_of_type_Afim) != null) && (afim.a(this.jdField_a_of_type_Afim).isShowing())) {
-      afim.a(this.jdField_a_of_type_Afim).dismiss();
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    if ((this.jdField_a_of_type_Afim.a != null) && (this.jdField_a_of_type_Afim.a.isShowing()))
-    {
-      this.jdField_a_of_type_Afim.a.dismiss();
-      this.jdField_a_of_type_Afim.a = null;
-    }
-    afim.a(this.jdField_a_of_type_Afim, this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

@@ -1,14 +1,25 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
 public class appm
+  implements View.OnTouchListener
 {
-  public String a = "";
-  public String b = "";
+  public appm(ARScanEntryView paramARScanEntryView) {}
   
-  public appm() {}
-  
-  public appm(String paramString1, String paramString2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

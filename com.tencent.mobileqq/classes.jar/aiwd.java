@@ -1,24 +1,69 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import java.lang.ref.WeakReference;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aiwd
-  implements DialogInterface.OnCancelListener
+  extends aofu
 {
-  private final WeakReference<ChatHistoryC2CDateFragment> a;
+  public aiwd(TroopView paramTroopView) {}
   
-  aiwd(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
+  protected void onGetAddContactFindTroopClassify(boolean paramBoolean, ArrayList<aivj> paramArrayList)
   {
-    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
+    }
+    Object localObject;
+    int i;
+    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
+    {
+      localObject = TroopView.a(this.a);
+      if (paramBoolean)
+      {
+        i = 1;
+        localObject = ((aiwm)localObject).obtainMessage(14, 0, i);
+        TroopView.a(this.a).sendMessage((Message)localObject);
+      }
+    }
+    else
+    {
+      if (!paramBoolean) {
+        break label223;
+      }
+      TroopView.a(this.a).sendEmptyMessage(4);
+    }
+    label223:
+    for (;;)
+    {
+      label118:
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        this.a.a.clear();
+        this.a.a.addAll(paramArrayList);
+        TroopView.a(this.a).notifyDataSetChanged();
+        localObject = new ArrayList();
+        i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size())
+          {
+            aivj localaivj = (aivj)paramArrayList.get(i);
+            localaivj.c = (i + 100);
+            ((ArrayList)localObject).add(localaivj);
+            i += 1;
+            continue;
+            i = 0;
+            break;
+            TroopView.a(this.a).sendEmptyMessage(5);
+            break label118;
+          }
+        }
+        TroopView.a(this.a).a((ArrayList)localObject);
+        TroopView.a(this.a, 0);
+      }
     }
   }
 }

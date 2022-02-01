@@ -1,32 +1,21 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
-class mkg
-  implements mho
+public class mkg
+  implements DialogInterface.OnClickListener
 {
-  mkg(mke parammke) {}
+  public mkg(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131373411, false);
-      this.a.a.a.setViewEnable(2131363109, false);
-      this.a.a.a.setViewEnable(2131363121, false);
-      this.a.a.a.setViewEnable(2131363120, false);
-    }
-  }
-  
-  public void b()
-  {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772177);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkg
  * JD-Core Version:    0.7.0.1
  */

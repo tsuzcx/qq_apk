@@ -1,48 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
-class azth
-  extends Handler
+public class azth
 {
-  public azth(aztc paramaztc, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    try
-    {
-      switch (paramMessage.what)
-      {
-      case 1: 
-        aztc.a(this.a);
-        return;
-      }
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleMessage exception = " + paramMessage.getMessage());
-      return;
-    }
-    aztc.b(this.a);
-    return;
-    aztc.c(this.a);
-    return;
-    aztc.d(this.a);
-    return;
-    aztc.e(this.a);
-    return;
-    aztc.f(this.a);
-    return;
-    aztc.g(this.a);
-    return;
-    aztc.h(this.a);
-    return;
-  }
+  public String a;
+  public Vector<String> a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import amtj;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bfpm;
+import anvx;
+import bgyd;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.common.config.AppSetting;
-import rvi;
-import rvs;
-import rvv;
-import rwv;
-import snl;
+import six;
+import swi;
+import swr;
+import swu;
+import taw;
 
 public class VideoFeedsAccessibilityHelper
 {
@@ -26,7 +26,7 @@ public class VideoFeedsAccessibilityHelper
     do
     {
       return paramView;
-      localView = paramView.findViewById(2131361855);
+      localView = paramView.findViewById(2131361857);
       paramView = localView;
     } while (localView == null);
     localView.setVisibility(0);
@@ -39,13 +39,13 @@ public class VideoFeedsAccessibilityHelper
     do
     {
       return;
-      if ((paramViewHolder instanceof rvi))
+      if ((paramViewHolder instanceof swi))
       {
-        bfpm.a(((rvi)paramViewHolder).c);
+        bgyd.a(((swi)paramViewHolder).c);
         return;
       }
-    } while (!(paramViewHolder instanceof rvv));
-    bfpm.a(((rvv)paramViewHolder).z);
+    } while (!(paramViewHolder instanceof swu));
+    bgyd.a(((swu)paramViewHolder).v);
   }
   
   public static void a(RecyclerView paramRecyclerView)
@@ -61,7 +61,7 @@ public class VideoFeedsAccessibilityHelper
     if (!AppSetting.c) {
       return;
     }
-    a(paramView, rwv.a(paramInt, amtj.a(2131715189)));
+    a(paramView, six.b(paramInt, anvx.a(2131715537)));
   }
   
   public static void a(View paramView, long paramLong)
@@ -73,11 +73,11 @@ public class VideoFeedsAccessibilityHelper
       do
       {
         return;
-        localObject = rwv.a(paramLong);
+        localObject = six.a(paramLong);
       } while (localObject == null);
       localObject = ((StringBuilder)localObject).toString();
     } while (TextUtils.isEmpty((CharSequence)localObject));
-    a(paramView, amtj.a(2131715187) + (String)localObject);
+    a(paramView, anvx.a(2131715535) + (String)localObject);
   }
   
   public static void a(View paramView, String paramString)
@@ -94,28 +94,28 @@ public class VideoFeedsAccessibilityHelper
       return;
     }
     if (paramBoolean) {}
-    for (String str = amtj.a(2131715224);; str = amtj.a(2131715226))
+    for (String str = anvx.a(2131715572);; str = anvx.a(2131715574))
     {
       a(paramView, str);
       return;
     }
   }
   
-  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, snl paramsnl)
+  public static void a(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, taw paramtaw)
   {
     if ((!AppSetting.c) || (paramReadInJoyNickNameTextView == null)) {
       return;
     }
-    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramsnl);
+    paramReadInJoyNickNameTextView.setOnSetNickNameListener(paramtaw);
   }
   
-  public static void a(rvs paramrvs, View.OnClickListener paramOnClickListener)
+  public static void a(swr paramswr, View.OnClickListener paramOnClickListener)
   {
-    if ((!AppSetting.c) || (paramrvs == null) || (paramrvs.b == null)) {
+    if ((!AppSetting.c) || (paramswr == null) || (paramswr.a == null)) {
       return;
     }
-    paramrvs.b.setOnClickListener(paramOnClickListener);
-    paramrvs.b.setTag(paramrvs);
+    paramswr.a.setOnClickListener(paramOnClickListener);
+    paramswr.a.setTag(paramswr);
   }
   
   public static void b(View paramView, String paramString)
@@ -123,7 +123,7 @@ public class VideoFeedsAccessibilityHelper
     if ((TextUtils.isEmpty(paramString)) || (!AppSetting.c)) {
       return;
     }
-    a(paramView, amtj.a(2131715206) + paramString);
+    a(paramView, anvx.a(2131715554) + paramString);
   }
   
   public static void c(View paramView, String paramString)
@@ -131,7 +131,7 @@ public class VideoFeedsAccessibilityHelper
     if ((!AppSetting.c) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    a(paramView, paramString + amtj.a(2131715202));
+    a(paramView, paramString + anvx.a(2131715550));
   }
 }
 

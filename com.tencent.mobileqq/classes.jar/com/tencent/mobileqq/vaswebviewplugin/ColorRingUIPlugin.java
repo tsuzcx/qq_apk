@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class ColorRingUIPlugin

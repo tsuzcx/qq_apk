@@ -1,32 +1,31 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AbsAECaptureButton;
 
-public abstract interface bnca
-  extends bned
+class bnca
+  implements Observer<bnhq>
 {
-  public abstract int a();
+  bnca(bnbp parambnbp) {}
   
-  public abstract Bitmap a();
-  
-  public abstract Bitmap a(int paramInt, boolean paramBoolean);
-  
-  @NonNull
-  public abstract DoodleLayout a();
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void a(@Nullable bnhq parambnhq)
+  {
+    if (parambnhq == null) {
+      return;
+    }
+    boolean bool = parambnhq.a();
+    if (bool) {
+      bnbp.c(this.a);
+    }
+    for (;;)
+    {
+      bnbp.a(this.a).a(bool, new bncb(this, parambnhq));
+      return;
+      if (bnbp.a(this.a) != null) {
+        bnbp.a(this.a).a();
+      }
+    }
+  }
 }
 
 

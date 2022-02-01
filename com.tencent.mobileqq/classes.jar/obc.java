@@ -1,29 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-final class obc
-  implements BusinessObserver
+public class obc
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  obc(obb paramobb) {}
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "doAdReport success!");
-        }
-      }
-      return;
-    }
-    catch (Exception paramBundle) {}
+    this.a.a.start();
+    new Thread(new AccountDetailVideoManager.1.1(this)).start();
   }
 }
 

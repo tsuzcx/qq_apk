@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.startup.step.SetSplash;
 
-class bdjc
-  extends bdji<UserState>
+public final class bdjc
+  extends AnimatorListenerAdapter
 {
-  bdjc(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  public bdjc(bdjm parambdjm) {}
   
-  public void a(UserState paramUserState)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    bdiu.a(this.a).a();
-    if (!bdiu.a(this.a).a()) {
-      bdiu.a(this.a).c();
-    }
+    super.onAnimationEnd(paramAnimator);
+    SetSplash.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjc
  * JD-Core Version:    0.7.0.1
  */

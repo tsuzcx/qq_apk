@@ -1,104 +1,359 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStorySubmitPollData;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStorySubmitPollData;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class wcz
-  implements vqp<wdw<qqstory_service.ReqStorySubmitPollData>, wfu>
 {
-  public static final String a;
-  public int a;
-  public String b;
-  public String c;
+  private static wcz jdField_a_of_type_Wcz = new wcz();
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private Map<String, wda> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, List<wdc>> b = new HashMap();
   
-  static
+  public static wcz a()
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.submit_poll_data");
+    return jdField_a_of_type_Wcz;
   }
   
-  wcz(String paramString1, String paramString2, int paramInt)
+  private void a(String paramString, int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a()
-  {
-    xvv.a("Q.qqstory.pollData.SendVidPollDataHandler", "sendRequest() feed=%s, poll=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int));
-    Object localObject = new qqstory_service.ReqStorySubmitPollData();
-    ((qqstory_service.ReqStorySubmitPollData)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.c));
-    ((qqstory_service.ReqStorySubmitPollData)localObject).poll_data.set(this.jdField_a_of_type_Int);
-    localObject = new wdw(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
-    vqn.a().a((vqr)localObject, this);
-  }
-  
-  public static void a(@Nullable String paramString1, String paramString2, int paramInt)
-  {
-    new wcz(paramString1, paramString2, paramInt).a();
-  }
-  
-  public void a(@NonNull wdw<qqstory_service.ReqStorySubmitPollData> paramwdw, @Nullable wfu paramwfu, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isFail()) || (paramwfu == null))
-    {
-      xvv.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request Error:%s", paramErrorMessage);
-      return;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new StoryVideoUploadProgressManager.1(this, paramString, paramInt));
     }
-    paramwdw = new qqstory_service.RspStorySubmitPollData();
-    StoryVideoItem localStoryVideoItem;
+    for (;;)
+    {
+      return;
+      ykq.a("StoryVideoUploadProgressManager", "notifyListeners, id:%s, progress:%s", paramString, Integer.valueOf(paramInt));
+      Object localObject = (List)this.b.get(paramString);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          wdb localwdb = ((wdc)((Iterator)localObject).next()).a();
+          if (localwdb != null) {
+            localwdb.a(paramString, paramInt);
+          }
+        }
+      }
+    }
+  }
+  
+  public int a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    int j = 0;
+    int i = 0;
+    int k;
+    if (localIterator.hasNext())
+    {
+      wda localwda = (wda)localIterator.next();
+      if (!localwda.jdField_a_of_type_Boolean) {
+        break label83;
+      }
+      k = localwda.jdField_b_of_type_Int + j;
+      j = i + 1;
+      i = k;
+    }
+    for (;;)
+    {
+      k = j;
+      j = i;
+      i = k;
+      break;
+      if (i > 0) {
+        return j / i;
+      }
+      return -1;
+      label83:
+      k = i;
+      i = j;
+      j = k;
+    }
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = (wda)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.jdField_b_of_type_Int;
+    }
+    return -1;
+  }
+  
+  public String a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      wda localwda = (wda)localIterator.next();
+      if ((localwda.jdField_b_of_type_JavaLangString != null) && (localwda.jdField_b_of_type_JavaLangString.equals(paramString))) {
+        return localwda.jdField_a_of_type_JavaLangString;
+      }
+    }
+    return "";
+  }
+  
+  public void a()
+  {
     try
     {
-      paramwdw.mergeFrom(paramwfu.a);
-      paramwfu = new wda();
-      paramwfu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramwdw.result.error_code.get(), paramwdw.result.error_desc.get().toStringUtf8());
-      paramwfu.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      paramwfu.jdField_b_of_type_JavaLangString = this.c;
-      paramwfu.jdField_a_of_type_Int = paramwdw.comment_id.get();
-      paramwfu.jdField_a_of_type_Long = paramwdw.fake_id.get();
-      paramwfu.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      paramwfu.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramwdw.video_poll_result.get());
-      int j = paramwfu.jdField_a_of_type_JavaUtilArrayList.size();
-      paramErrorMessage = (vuu)vux.a(5);
-      localStoryVideoItem = paramErrorMessage.a(this.c);
-      xvv.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(paramwfu.jdField_b_of_type_Int));
-      if ((localStoryVideoItem == null) || (j <= 0)) {
-        break label302;
+      ykq.b("StoryVideoUploadProgressManager", "startANewUploadSeq");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((wda)((Map.Entry)localIterator.next()).getValue()).b();
       }
-      if ((localStoryVideoItem.mPollNumbers == null) || (localStoryVideoItem.mPollNumbers.length != j)) {
-        localStoryVideoItem.mPollNumbers = new int[j];
-      }
-      int i = 0;
-      while (i < j)
-      {
-        localStoryVideoItem.mPollNumbers[i] = ((Integer)paramwdw.video_poll_result.get(i)).intValue();
-        i += 1;
-      }
-      localStoryVideoItem.mPollResult = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    catch (InvalidProtocolBufferMicroException paramwdw)
+    finally {}
+    this.b.clear();
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      paramwdw.printStackTrace();
-      xvv.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request parse Error:%s", paramwdw);
+      ykq.a("StoryVideoUploadProgressManager", "preparedSuccess:%s", paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wda localwda = (wda)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwda.jdField_a_of_type_Int = 1;
+        localwda.jdField_b_of_type_Int = 0;
+        a(paramString, localwda.jdField_b_of_type_Int);
+      }
       return;
     }
-    paramErrorMessage.a(localStoryVideoItem);
-    label302:
-    vli.a().dispatch(paramwfu);
-    yqh.a(QQStoryContext.a());
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    try
+    {
+      ykq.a("StoryVideoUploadProgressManager", "sendProtoSuccess:%s", paramString1);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString1))
+      {
+        wda localwda = (wda)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+        localwda.jdField_a_of_type_Int = 4;
+        localwda.jdField_b_of_type_Int = 100;
+        localwda.jdField_b_of_type_JavaLangString = paramString2;
+        a(paramString1, localwda.jdField_b_of_type_Int);
+        localwda.b();
+      }
+      return;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
+  public void a(String paramString, wdb paramwdb)
+  {
+    ykq.a("StoryVideoUploadProgressManager", "registerListener, id:%s, listener:%s", paramString, paramwdb.getClass().getSimpleName());
+    Object localObject1 = null;
+    Object localObject3 = this.b.entrySet().iterator();
+    Object localObject2;
+    if (((Iterator)localObject3).hasNext())
+    {
+      localObject2 = (Map.Entry)((Iterator)localObject3).next();
+      Object localObject4 = (String)((Map.Entry)localObject2).getKey();
+      localObject4 = ((List)((Map.Entry)localObject2).getValue()).iterator();
+      label84:
+      if (((Iterator)localObject4).hasNext())
+      {
+        localObject2 = (wdc)((Iterator)localObject4).next();
+        if (((wdc)localObject2).a() != paramwdb) {
+          break label205;
+        }
+        ((Iterator)localObject4).remove();
+        localObject1 = localObject2;
+      }
+    }
+    label205:
+    for (;;)
+    {
+      break label84;
+      break;
+      localObject3 = (List)this.b.get(paramString);
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = new ArrayList();
+      }
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = new wdc(paramwdb);
+      }
+      ((List)localObject2).add(localObject3);
+      this.b.put(paramString, localObject2);
+      return;
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 65
+    //   4: ldc 211
+    //   6: aload_1
+    //   7: invokestatic 169	ykq:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   10: aload_0
+    //   11: getfield 25	wcz:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   14: aload_1
+    //   15: invokeinterface 172 2 0
+    //   20: ifeq +62 -> 82
+    //   23: aload_0
+    //   24: getfield 25	wcz:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   27: aload_1
+    //   28: invokeinterface 84 2 0
+    //   33: checkcast 120	wda
+    //   36: astore_3
+    //   37: aload_3
+    //   38: aload_1
+    //   39: putfield 139	wda:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   42: aload_3
+    //   43: ldc 141
+    //   45: putfield 131	wda:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   48: aload_3
+    //   49: iload_2
+    //   50: putfield 123	wda:jdField_a_of_type_Boolean	Z
+    //   53: aload_3
+    //   54: iconst_0
+    //   55: putfield 174	wda:jdField_a_of_type_Int	I
+    //   58: aload_3
+    //   59: iconst_0
+    //   60: putfield 126	wda:jdField_b_of_type_Int	I
+    //   63: aload_3
+    //   64: invokevirtual 213	wda:a	()V
+    //   67: aload_0
+    //   68: getfield 25	wcz:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   71: aload_1
+    //   72: aload_3
+    //   73: invokeinterface 208 3 0
+    //   78: pop
+    //   79: aload_0
+    //   80: monitorexit
+    //   81: return
+    //   82: new 120	wda
+    //   85: dup
+    //   86: aload_0
+    //   87: aconst_null
+    //   88: invokespecial 216	wda:<init>	(Lwcz;Lcom/tencent/biz/qqstory/base/videoupload/StoryVideoUploadProgressManager$1;)V
+    //   91: astore_3
+    //   92: goto -55 -> 37
+    //   95: astore_1
+    //   96: aload_0
+    //   97: monitorexit
+    //   98: aload_1
+    //   99: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	this	wcz
+    //   0	100	1	paramString	String
+    //   0	100	2	paramBoolean	boolean
+    //   36	56	3	localwda	wda
+    // Exception table:
+    //   from	to	target	type
+    //   2	37	95	finally
+    //   37	79	95	finally
+    //   82	92	95	finally
+  }
+  
+  public void a(wdb paramwdb)
+  {
+    ykq.a("StoryVideoUploadProgressManager", "unregisterListener, listener:%s", paramwdb.getClass().getSimpleName());
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((wdc)((Iterator)localObject).next()).a() == paramwdb) {
+          ((Iterator)localObject).remove();
+        }
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    try
+    {
+      ykq.a("StoryVideoUploadProgressManager", "mergeVideoSuccess:%s", paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wda localwda = (wda)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwda.jdField_a_of_type_Int = 2;
+        localwda.jdField_b_of_type_Int = 60;
+        a(paramString, localwda.jdField_b_of_type_Int);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      ykq.a("StoryVideoUploadProgressManager", "uploadVideoSuccess:%s", paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wda localwda = (wda)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwda.jdField_a_of_type_Int = 3;
+        localwda.jdField_b_of_type_Int = 95;
+        a(paramString, localwda.jdField_b_of_type_Int);
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        wda localwda = (wda)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localwda.jdField_a_of_type_Int = 5;
+        localwda.jdField_b_of_type_Int = 100;
+        a(paramString, localwda.jdField_b_of_type_Int);
+        localwda.b();
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 

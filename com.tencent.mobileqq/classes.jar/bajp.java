@@ -1,25 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
-
-class bajp
-  extends MqqHandler
+public class bajp
+  implements bajr
 {
-  bajp(bajo parambajo) {}
+  private bakr a;
   
-  public void handleMessage(Message paramMessage)
+  public bajp(bakr parambakr)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a.mContext, 2131718446, 0).a();
-      return;
+    this.a = parambakr;
+  }
+  
+  public void a(balb parambalb)
+  {
+    if (this.a != null) {
+      this.a.l(parambalb);
     }
-    paramMessage = (String)paramMessage.obj;
-    bfvo.a(this.a.a.mContext, paramMessage);
-    QQToast.a(this.a.a.mContext, 2, amtj.a(2131699178), 0).a();
   }
 }
 

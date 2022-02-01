@@ -1,21 +1,16 @@
-import android.database.DataSetObserver;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import java.util.List;
 
 public class adpl
-  extends DataSetObserver
+  implements audq
 {
-  public adpl(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public adpl(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
   
-  public void onChanged()
+  public void onNo() {}
+  
+  public void onYes()
   {
-    TextView localTextView = LebaListMgrActivity.a(this.a);
-    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
-    for (int i = 0;; i = 8)
-    {
-      localTextView.setVisibility(i);
-      return;
-    }
+    auea.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adrv
-  extends awos
+  implements View.OnClickListener
 {
-  public adrv(NearbyActivity paramNearbyActivity) {}
+  public adrv(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    this.a.a.sendEmptyMessageDelayed(2, 0L);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    NearbyActivity.a(this.a);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

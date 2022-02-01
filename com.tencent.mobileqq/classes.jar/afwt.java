@@ -1,6 +1,12 @@
-public abstract interface afwt
+class afwt
+  implements bdzc
 {
-  public abstract boolean a(int paramInt);
+  afwt(afws paramafws) {}
+  
+  public void a(bdzh parambdzh)
+  {
+    this.a.b();
+  }
 }
 
 

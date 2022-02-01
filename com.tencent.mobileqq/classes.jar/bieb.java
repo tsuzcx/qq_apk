@@ -1,32 +1,53 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.qphone.base.util.QLog;
 
-final class bieb
-  implements URLDrawable.URLDrawableListener
+public class bieb
 {
-  bieb(ImageView paramImageView) {}
+  public long a;
+  private biec a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public bieb(biec parambiec)
   {
-    QLog.d("CommonUtils_", 1, "onLoadCanceled");
+    this.jdField_a_of_type_Biec = parambiec;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(Bundle paramBundle, AppInterface paramAppInterface, Intent paramIntent)
   {
-    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.d("CommonUtils_", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_init_webview_plugin", true))) {
+      this.jdField_a_of_type_Biec.preInitWebviewPlugin();
+    }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_get_key", true))) {
+      WebAccelerateHelper.getInstance().preGetKey(paramIntent, paramAppInterface);
+    }
+    long l2 = System.currentTimeMillis();
+    this.jdField_a_of_type_Biec.buildLayout();
+    long l1 = System.currentTimeMillis();
+    this.b = (l1 - l2);
+    this.jdField_a_of_type_Biec.buildContentView(paramBundle);
+    l2 = System.currentTimeMillis();
+    this.e = (l2 - l1);
+    this.jdField_a_of_type_Biec.buildTitleBar();
+    l1 = System.currentTimeMillis();
+    this.c = (l1 - l2);
+    this.jdField_a_of_type_Biec.buildBottomBar();
+    l2 = System.currentTimeMillis();
+    this.d = (l2 - l1);
+    this.jdField_a_of_type_Biec.buildWebView(paramAppInterface);
+    l1 = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = (l1 - l2);
+    this.jdField_a_of_type_Biec.buildData();
+    this.f = (System.currentTimeMillis() - l1);
+    if (QLog.isColorLevel()) {
+      QLog.i("WebViewDirector", 2, "buildLayoutTime : " + this.b + ", buildContentTime " + this.e + ", buildTitleTime " + this.c + ", buildWebViewTime " + this.jdField_a_of_type_Long + ", buildBottomTime " + this.d + ", buildDataTime " + this.f);
+    }
   }
 }
 

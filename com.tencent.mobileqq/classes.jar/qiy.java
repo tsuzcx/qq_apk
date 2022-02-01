@@ -1,32 +1,77 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.handler.RIJInviteFriendHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ExecutorService;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import tencent.im.oidb.cmd0xbd4.oidb_cmd0xbd4.InviteReq;
+import tencent.im.oidb.cmd0xbd4.oidb_cmd0xbd4.Invitee;
+import tencent.im.oidb.cmd0xbd4.oidb_cmd0xbd4.ReqBody;
+import tencent.im.oidb.cmd0xbd4.oidb_cmd0xbd4.RspBody;
 
-class qiy
-  extends NativeTextImp
+public class qiy
+  extends qii
 {
-  qiy(qix paramqix, Context paramContext)
+  public qiy(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    super(paramContext);
+    super(paramqep, paramHandler, paramAppInterface, paramEntityManager, paramqxn, paramExecutorService);
   }
   
-  public void draw(Canvas paramCanvas)
+  private boolean a(String paramString)
   {
-    if (!TextUtils.isEmpty(getText()))
+    return Pattern.compile("[0-9]*").matcher(paramString).matches();
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = qxp.a(paramFromServiceMsg, paramObject, new oidb_cmd0xbd4.RspBody());
+    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+    this.jdField_a_of_type_AndroidOsHandler.post(new RIJInviteFriendHandler.1(this, paramToServiceMsg, i));
+  }
+  
+  public void a(ArrayList<ResultRecord> paramArrayList, int paramInt, long paramLong, String paramString)
+  {
+    if ((paramInt == 1) && (paramArrayList != null) && (paramString != null))
     {
-      this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.a.b.set(0.0F, 0.0F, getWidth() * qix.a(this.a) / 100.0F, getHeight());
-      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qix.a(this.a)));
-      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, AIOUtils.dp2px(2.0F, getResources()), AIOUtils.dp2px(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
-      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qix.b(this.a)));
-      paramCanvas.drawRoundRect(this.a.b, AIOUtils.dp2px(2.0F, getResources()), AIOUtils.dp2px(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      oidb_cmd0xbd4.ReqBody localReqBody = new oidb_cmd0xbd4.ReqBody();
+      oidb_cmd0xbd4.InviteReq localInviteReq = new oidb_cmd0xbd4.InviteReq();
+      localInviteReq.str_rowkey.set(paramString);
+      try
+      {
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          paramString = (ResultRecord)paramArrayList.next();
+          if (a(paramString.a()))
+          {
+            oidb_cmd0xbd4.Invitee localInvitee = new oidb_cmd0xbd4.Invitee();
+            localInvitee.uint64_uin.set(Long.parseLong(paramString.a()));
+            localInvitee.uint32_from.set(paramString.a());
+            localInviteReq.rpt_msg_invitee.add(localInvitee);
+          }
+        }
+        return;
+      }
+      catch (NumberFormatException paramArrayList)
+      {
+        QLog.e("RIJInviteFriendHandler", 1, " e = " + paramArrayList);
+        paramArrayList.printStackTrace();
+        localReqBody.msg_invite_req.set(localInviteReq);
+        paramArrayList = qxp.a("OidbSvc.0xbd4_1", 3028, 1, localReqBody.toByteArray());
+        this.jdField_a_of_type_Qep.a(paramArrayList);
+      }
     }
-    super.draw(paramCanvas);
   }
 }
 

@@ -1,55 +1,53 @@
-import android.graphics.Bitmap;
-import com.qflutter.qflutter_network_image.LoadBitmapCallback;
-import com.qflutter.qflutter_network_image.QFlutterNetworkImageInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqcircle.picload.Option;
-import cooperation.qqcircle.picload.QCircleFeedPicLoader;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class atjs
-  implements QFlutterNetworkImageInterface
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  int jdField_a_of_type_Int;
+  public atju a;
+  atjw jdField_a_of_type_Atjw;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString;
   
-  public static void a(String paramString)
+  atjs(atiy paramatiy, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Atju = new atjt(this, paramatiy, paramMessageRecord);
   }
   
-  public String getLibPath()
+  void a()
   {
-    QLog.d("QFlutterNetworkImageImpl", 2, "[getLibPath] libPath=" + jdField_a_of_type_JavaLangString);
-    return jdField_a_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_Atjw != null) && (this.jdField_b_of_type_Int == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
+      }
+      this.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_Atjw.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Atju);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
   }
   
-  public void loadBitmap(String paramString, int paramInt1, int paramInt2, LoadBitmapCallback paramLoadBitmapCallback)
+  void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterNetworkImageImpl", 2, "[loadBitmap] url=" + paramString + ", decodeWidth=" + paramInt1 + ", decodeHeight=" + paramInt2);
-    }
-    paramString = new Option().setUrl(paramString).setPredecode(true);
-    if ((paramInt1 > 0) && (paramInt2 > 0)) {
-      paramString.setRequestWidth(paramInt1).setRequestHeight(paramInt2);
-    }
-    QCircleFeedPicLoader.g().loadImage(paramString, new atjt(this, paramLoadBitmapCallback));
-  }
-  
-  public void releaseBitmap(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterNetworkImageImpl", 2, "[releaseBitmap] url=" + paramString);
-    }
-    paramString = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    if ((paramString == null) || (paramString.isRecycled())) {
-      QLog.w("QFlutterNetworkImageImpl", 1, "[releaseBitmap] bitmap is not supposed to be recycled or null, some problems occurred");
+    if ((this.jdField_a_of_type_Atjw != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
+    {
+      this.jdField_a_of_type_Atjw.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_Int = 4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atjs
  * JD-Core Version:    0.7.0.1
  */

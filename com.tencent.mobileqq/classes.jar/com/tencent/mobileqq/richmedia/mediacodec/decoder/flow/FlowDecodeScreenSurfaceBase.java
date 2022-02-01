@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import baew;
-import bafa;
-import bafb;
+import bbll;
+import bblp;
+import bblq;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
-import xvv;
+import ykq;
 
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private bafa jdField_a_of_type_Bafa;
-  private bafb jdField_a_of_type_Bafb = new baew(this);
+  private bblp jdField_a_of_type_Bblp;
+  private bblq jdField_a_of_type_Bblq = new bbll(this);
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;
   private int c = 2;
@@ -31,17 +31,17 @@ public class FlowDecodeScreenSurfaceBase
   
   public void a()
   {
-    xvv.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
-    this.jdField_a_of_type_Bafa.b();
-    this.jdField_a_of_type_Bafa.c();
+    ykq.b("FlowEdit_FlowDecodeScreenSurfaceBase", "release: ");
+    this.jdField_a_of_type_Bblp.b();
+    this.jdField_a_of_type_Bblp.c();
   }
   
   public void c()
   {
-    xvv.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
-    this.jdField_a_of_type_Bafa = new bafa(new WeakReference(this.jdField_a_of_type_Bafb));
-    this.jdField_a_of_type_Bafa.a();
-    this.jdField_a_of_type_Bafa.a(this.jdField_a_of_type_Int, this.b);
+    ykq.b("FlowEdit_FlowDecodeScreenSurfaceBase", "start: ");
+    this.jdField_a_of_type_Bblp = new bblp(new WeakReference(this.jdField_a_of_type_Bblq));
+    this.jdField_a_of_type_Bblp.a();
+    this.jdField_a_of_type_Bblp.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -1,52 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.app.InviteMemberObserverWithoutCache.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
-public class leo
-  implements Observer
+class leo
+  extends BroadcastReceiver
 {
-  Handler a = null;
-  
-  private void a(Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
-    }
-    if (paramObject.length < 4)
+    if (paramIntent == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
+      return;
+      paramContext = paramIntent.getAction();
+      if (paramContext.equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_ON");
+        return;
       }
-      return;
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
-  }
-  
-  protected void a(long paramLong1, long paramLong2, ArrayList<lnl> paramArrayList) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
+      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_OFF");
+        lii.a(19, 1L);
+        return;
       }
-      this.a.post(new InviteMemberObserverWithoutCache.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
+      if (paramContext.equals("android.intent.action.USER_PRESENT"))
+      {
+        QLog.d("GScreenActionMonitor", 1, "avideACTION_USER_PRESENT");
+        lii.a(19, 2L);
+        return;
+      }
+    } while (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+    paramContext = paramIntent.getStringExtra("reason");
+    QLog.d("GScreenActionMonitor", 1, "avideo ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
   }
 }
 

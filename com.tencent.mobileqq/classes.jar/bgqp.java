@@ -1,18 +1,8 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bgqp
-  implements View.OnClickListener
+public abstract interface bgqp
 {
-  bgqp(bgqo parambgqo) {}
+  public abstract int a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    bgqo.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 

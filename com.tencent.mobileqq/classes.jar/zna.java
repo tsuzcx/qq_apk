@@ -1,28 +1,45 @@
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public class zna
-  implements View.OnClickListener
+class zna
+  implements View.OnTouchListener
 {
-  public zna(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
+  zna(zmz paramzmz, Drawable paramDrawable, znf paramznf) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
-      zbh.a(ServiceFolderFollowPBHeadView.a(this.a));
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
-      bcef.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
+      return true;
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
+        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
+        {
+          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-15263977);
+        }
+        else
+        {
+          ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-920840);
+          continue;
+          if (zmz.a(this.jdField_a_of_type_Zmz) != null) {
+            zmz.a(this.jdField_a_of_type_Zmz).a(this.jdField_a_of_type_Znf);
+          }
+          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable)) {
+            if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-16777216);
+            } else {
+              ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setColor(-1);
+            }
+          }
+        }
+      }
     }
   }
 }

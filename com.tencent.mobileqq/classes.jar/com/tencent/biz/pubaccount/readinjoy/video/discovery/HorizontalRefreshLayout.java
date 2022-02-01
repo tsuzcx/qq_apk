@@ -10,9 +10,9 @@ import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.util.DisplayUtil;
-import sge;
-import sgf;
-import sgg;
+import ssj;
+import ssk;
+import ssl;
 
 public class HorizontalRefreshLayout
   extends FrameLayout
@@ -20,8 +20,8 @@ public class HorizontalRefreshLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private sgf jdField_a_of_type_Sgf;
-  private sgg jdField_a_of_type_Sgg;
+  private ssk jdField_a_of_type_Ssk;
+  private ssl jdField_a_of_type_Ssl;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -82,7 +82,7 @@ public class HorizontalRefreshLayout
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new sge(this)).start();
+      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new ssj(this)).start();
       this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
     }
   }
@@ -197,22 +197,22 @@ public class HorizontalRefreshLayout
       return false;
       this.c = 0;
       this.e = 0;
-      if (this.jdField_a_of_type_Sgf != null) {
-        this.jdField_a_of_type_Sgf.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+      if (this.jdField_a_of_type_Ssk != null) {
+        this.jdField_a_of_type_Ssk.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
       }
       b();
     }
   }
   
-  public void setOnDraggingListener(sgf paramsgf)
+  public void setOnDraggingListener(ssk paramssk)
   {
-    this.jdField_a_of_type_Sgf = paramsgf;
+    this.jdField_a_of_type_Ssk = paramssk;
   }
   
-  public void setRefreshHeader(sgg paramsgg)
+  public void setRefreshHeader(ssl paramssl)
   {
-    this.jdField_a_of_type_Sgg = paramsgg;
-    a(this.jdField_a_of_type_Sgg.a(this));
+    this.jdField_a_of_type_Ssl = paramssl;
+    a(this.jdField_a_of_type_Ssl.a(this));
   }
 }
 

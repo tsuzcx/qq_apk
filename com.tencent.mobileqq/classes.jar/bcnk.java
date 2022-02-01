@@ -1,17 +1,52 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bcnk
-  implements CompoundButton.OnCheckedChangeListener
+  implements bcns
 {
-  public bcnk(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  protected View a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bcnt jdField_a_of_type_Bcnt;
+  private List<bcnt> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bcnk() {}
+  
+  public bcnk(ViewGroup paramViewGroup, int paramInt)
   {
-    KidModeAdvanceSettingFragment.b(this.a, 16, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371538));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new bcnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131369008)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131369014)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131369020)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131369026)));
+    this.jdField_a_of_type_JavaUtilList.add(new bcnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131369027)));
+    this.jdField_a_of_type_Bcnt = new bcnn(this.jdField_a_of_type_AndroidViewView.findViewById(2131369028));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bcnt> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

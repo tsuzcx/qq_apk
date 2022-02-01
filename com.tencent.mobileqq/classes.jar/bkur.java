@@ -1,37 +1,39 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.Future;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bkur
-  implements PluginManagerUpdater
+  extends Handler
 {
-  private aulr jdField_a_of_type_Aulr;
-  private File jdField_a_of_type_JavaIoFile;
-  
-  public bkur(aulr paramaulr, File paramFile)
+  public bkur(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    this.jdField_a_of_type_Aulr = paramaulr;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    super(paramLooper);
   }
   
-  public File getLatest()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
-  
-  public Future isAvailable(File paramFile)
-  {
-    return this.jdField_a_of_type_Aulr.isAvailable(paramFile);
-  }
-  
-  public Future update()
-  {
-    return this.jdField_a_of_type_Aulr.update();
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    try
+    {
+      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
+      {
+        long l = Long.parseLong((String)paramMessage.obj);
+        if (l != 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
+          }
+          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+        }
+      }
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 

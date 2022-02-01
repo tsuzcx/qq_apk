@@ -1,31 +1,29 @@
-import android.graphics.PorterDuff.Mode;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
-import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.HttpNetReq;
 
 public class apmr
-  implements OnCompositionLoadedListener
 {
-  public apmr(DefaultItemBuilder.1 param1) {}
+  public int a;
+  public long a;
+  public HttpNetReq a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public apmr()
   {
-    if (paramLottieComposition == null)
-    {
-      QLog.e("DefaultItemBuilder", 1, "getLottieDrawable onCompositionLoaded failed");
-      return;
-    }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImagesAssetsFolder(this.a.b);
-    localLottieDrawable.setColorFilter(-16777216, PorterDuff.Mode.MULTIPLY);
-    this.a.a.a = localLottieDrawable;
-    ThreadManagerV2.getUIHandlerV2().post(new DefaultItemBuilder.1.1.1(this));
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

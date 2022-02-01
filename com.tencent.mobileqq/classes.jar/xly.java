@@ -1,8 +1,6 @@
-import android.view.View;
-
 public abstract interface xly
 {
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  public abstract boolean a_(xlu paramxlu, int paramInt1, int paramInt2);
 }
 
 

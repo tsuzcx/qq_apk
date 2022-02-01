@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import android.os.Bundle;
 
-public final class pvz
-  implements Parcelable.Creator<ReadInJoyDraftboxItem>
+public abstract interface pvz
 {
-  public ReadInJoyDraftboxItem a(Parcel paramParcel)
-  {
-    return new ReadInJoyDraftboxItem(paramParcel);
-  }
-  
-  public ReadInJoyDraftboxItem[] a(int paramInt)
-  {
-    return new ReadInJoyDraftboxItem[paramInt];
-  }
+  public abstract int a(Bundle paramBundle);
 }
 
 

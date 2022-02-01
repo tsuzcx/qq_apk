@@ -1,26 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.SplashActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import mqq.os.MqqHandler;
 
 public class aehp
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public aehp(SplashActivity.1 param1) {}
+  public aehp(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, FrameLayout paramFrameLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      paramView = LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label57;
+      }
     }
-    this.a.this$0.b();
+    label57:
+    for (int i = 20200313;; i = 20200720)
+    {
+      paramView.removeMessages(i);
+      return false;
+      LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.reward.aidl;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
-import qyq;
-import qyy;
+import rkw;
+import rle;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJAidlClientRedPacketModule$missionCompletedTimeInMs$1
@@ -20,9 +20,9 @@ public final class RIJAidlClientRedPacketModule$missionCompletedTimeInMs$1
   
   public final int invoke()
   {
-    qyq localqyq = qyy.a(qyy.a);
-    if (localqyq != null) {
-      return localqyq.c();
+    rkw localrkw = rle.a(rle.a);
+    if (localrkw != null) {
+      return localrkw.c();
     }
     return 0;
   }

@@ -1,43 +1,15 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
 
-public abstract class bkmh
-  extends Binder
-  implements bkmg
+class bkmh
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public static bkmg a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bkmg))) {
-      return (bkmg)localIInterface;
-    }
-    return new bkmi(paramIBinder);
-  }
+  bkmh(bkmb parambkmb, AbsVideoPlayer.OnInfoListener paramOnInfoListener) {}
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      return true;
-    }
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bkmb, paramInt, 0);
   }
 }
 

@@ -5,8 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqyp;
-import aqyt;
+import ascz;
+import asdd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.module.QQBaseWebIpcModule;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -72,7 +72,7 @@ public class QQGameCenterModule
     for (paramHippyMap = paramHippyMap.getString("sessionId");; paramHippyMap = "")
     {
       paramPromise.putString("sessionId", paramHippyMap);
-      super.sendRemoteReq(aqyt.a("ipc_cmd_gamecenter_open_aio", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(asdd.a("ipc_cmd_gamecenter_open_aio", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return;
     }
   }
@@ -90,7 +90,7 @@ public class QQGameCenterModule
   {
     int i = saveCallback(paramPromise);
     this.mReqBundle.clear();
-    super.sendRemoteReq(aqyt.a("ipc_cmd_gamecenter_get_unread_total", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(asdd.a("ipc_cmd_gamecenter_get_unread_total", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   @HippyMethod(name="getRequestData")
@@ -103,7 +103,7 @@ public class QQGameCenterModule
     for (paramHippyMap = paramHippyMap.getString("gameId");; paramHippyMap = "")
     {
       paramPromise.putString("gameId", paramHippyMap);
-      super.sendRemoteReq(aqyt.a("ipc_cmd_gamecenter_get_request_info", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(asdd.a("ipc_cmd_gamecenter_get_request_info", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return;
     }
   }
@@ -114,7 +114,7 @@ public class QQGameCenterModule
     int i = saveCallback(paramPromise);
     this.mReqBundle.clear();
     this.mReqBundle.putInt("dataType", paramHippyMap.getInt("dataType"));
-    super.sendRemoteReq(aqyt.a("ipc_cmd_gamecenter_get_session_info", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(asdd.a("ipc_cmd_gamecenter_get_session_info", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void onResponse(Bundle paramBundle)
@@ -226,7 +226,7 @@ public class QQGameCenterModule
         i = paramHippyMap.getInt("value");
       }
       paramPromise.putInt("value", i);
-      super.sendRemoteReq(aqyt.a("ipc_cmd_gamecenter_toggle_changed", String.valueOf(k), this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(asdd.a("ipc_cmd_gamecenter_toggle_changed", String.valueOf(k), this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return;
       paramPromise = "";
       break;

@@ -1,114 +1,21 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class adws
-  extends BaseAdapter
+class adws
+  implements DialogInterface.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adwt(this);
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
+  adws(adwq paramadwq) {}
   
-  public adws(List<ProfileLabelInfo> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  private void a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    Object localObject = null;
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Ayqs.a().keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
-      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
-        break label114;
-      }
-      localObject = localProfileLabelInfo;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNick", 2, "onSetColorNick failed. save colorNick");
     }
-    label114:
-    for (;;)
-    {
-      break;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Ayqs.a(localObject)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Ayqs.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Ayqs.a(localObject));
-        return;
-      }
-      a(paramProfileLabelInfo.labelId);
-      return;
-    }
-  }
-  
-  private void a(Long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
-    }
-    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
-    if (paramLong != null) {
-      paramLong.toggleStatus();
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562861, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
-      paramView = new adwr();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378154));
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_Int = paramInt;
-      int i = paramInt % ProfileActivity.a.length;
-      localView.setBackgroundResource(ProfileActivity.a[i][0]);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      i = ProfileActivity.a[i][1];
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      adwr localadwr = (adwr)paramView.getTag();
-      localView = paramView;
-      paramView = localadwr;
-    }
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 

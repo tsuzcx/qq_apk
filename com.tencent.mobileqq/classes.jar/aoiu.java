@@ -1,31 +1,40 @@
-public class aoiu
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public final class aoiu
+  implements INetEngine.IBreakDownFix
 {
-  public double a;
-  public int a;
-  public String a;
-  public aoiv[] a;
-  public int b;
-  
-  public String toString()
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfAoiv != null) && (this.jdField_a_of_type_ArrayOfAoiv.length > 0)) {
-      i = 0;
-    }
-    while (i < this.jdField_a_of_type_ArrayOfAoiv.length)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAoiv[i].toString()).append('\n');
-      i += 1;
-      continue;
-      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
-    }
-    return localStringBuilder.toString();
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoiu
  * JD-Core Version:    0.7.0.1
  */

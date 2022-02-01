@@ -1,10 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface tcn
 {
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
-  
-  public abstract void b(boolean paramBoolean, String paramString);
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

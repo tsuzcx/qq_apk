@@ -60,7 +60,8 @@ public abstract class AccountObserver
       localObject1 = paramBundle.getByteArray("lhsig");
       i = paramBundle.getInt("errorver");
       localObject2 = paramBundle.getByteArray("tlverror");
-      onLoginFailed(str2, paramBundle.getString("error"), str1, paramInt, (byte[])localObject1, i, (byte[])localObject2);
+      String str3 = paramBundle.getString("title");
+      onLoginFailed(str2, paramBundle.getString("error"), str1, paramInt, (byte[])localObject1, i, (byte[])localObject2, str3);
       return;
     case 2205: 
       str1 = paramBundle.getString("uin");
@@ -168,7 +169,7 @@ public abstract class AccountObserver
   
   public void onGetQuickRegisterAccount(boolean paramBoolean, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2) {}
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4) {}
   
   public void onLoginSuccess(String paramString1, String paramString2) {}
   

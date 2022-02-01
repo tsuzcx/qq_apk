@@ -9,14 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bjqx;
+import blcj;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import rin;
-import rio;
+import ruz;
+import rva;
 
 public class ReadInJoyPrivacyListView
   extends XListView
@@ -25,7 +25,7 @@ public class ReadInJoyPrivacyListView
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private rio jdField_a_of_type_Rio;
+  private rva jdField_a_of_type_Rva;
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
@@ -49,7 +49,7 @@ public class ReadInJoyPrivacyListView
   
   private void b()
   {
-    setDivider(getResources().getDrawable(2130849341));
+    setDivider(getResources().getDrawable(2130849433));
     setDividerHeight(AIOUtils.dp2px(0.5F, getResources()));
     setOnScrollListener(this);
     c();
@@ -57,9 +57,9 @@ public class ReadInJoyPrivacyListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559987, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373177));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373178));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560031, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373388));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373389));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A6A6A6"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -71,8 +71,8 @@ public class ReadInJoyPrivacyListView
   {
     this.jdField_a_of_type_Boolean = true;
     e();
-    if ((this.b) && (this.jdField_a_of_type_Rio != null)) {
-      this.jdField_a_of_type_Rio.b();
+    if ((this.b) && (this.jdField_a_of_type_Rva != null)) {
+      this.jdField_a_of_type_Rva.b();
     }
   }
   
@@ -83,7 +83,7 @@ public class ReadInJoyPrivacyListView
     }
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717453);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717819);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
@@ -95,9 +95,9 @@ public class ReadInJoyPrivacyListView
       this.jdField_a_of_type_Boolean = false;
       QLog.d("ReadInJoyPrivacyListView", 2, "loadMoreFail");
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717452);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717818);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new rin(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ruz(this));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     }
   }
@@ -116,7 +116,7 @@ public class ReadInJoyPrivacyListView
     }
     for (;;)
     {
-      ((BaseAdapter)((bjqx)getAdapter()).getWrappedAdapter()).notifyDataSetChanged();
+      ((BaseAdapter)((blcj)getAdapter()).getWrappedAdapter()).notifyDataSetChanged();
       return;
       removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       this.b = false;
@@ -132,9 +132,9 @@ public class ReadInJoyPrivacyListView
     }
   }
   
-  public void setLoadMoreCallback(rio paramrio)
+  public void setLoadMoreCallback(rva paramrva)
   {
-    this.jdField_a_of_type_Rio = paramrio;
+    this.jdField_a_of_type_Rva = paramrva;
   }
 }
 

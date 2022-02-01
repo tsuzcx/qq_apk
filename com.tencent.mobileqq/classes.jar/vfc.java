@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class vfc
-  implements View.OnClickListener
+class vfc
 {
-  public vfc(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private static final vfa a = new vfa(null);
 }
 
 

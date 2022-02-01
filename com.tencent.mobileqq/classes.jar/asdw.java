@@ -1,56 +1,29 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.ArrayList;
+import java.util.List;
 
-public class asdw
-  extends MSFServlet
+class asdw
+  implements asdb
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    localQQAppInterface.getFileTransferHandler().a(paramIntent, paramFromServiceMsg);
-  }
+  asdw(asdv paramasdv) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(List<EmoticonInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    if (paramIntent == null) {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
+    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
+    if (((List)localObject).size() >= asfi.a) {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
     }
-    do
-    {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+    if (((List)localObject).size() >= asfi.b) {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
+    }
+    if (this.a.jdField_a_of_type_Asdl != null) {
+      this.a.jdField_a_of_type_Asdl.b((List)localObject);
+    }
   }
 }
 

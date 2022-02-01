@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.hotpic;
 
-import auhb;
+import avmv;
 
 public class HotPicPageView$MyVideoViewHolder$2
   implements Runnable
 {
-  public HotPicPageView$MyVideoViewHolder$2(auhb paramauhb, int paramInt) {}
+  public HotPicPageView$MyVideoViewHolder$2(avmv paramavmv, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Auhb.b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Avmv.b(this.jdField_a_of_type_Int);
   }
 }
 

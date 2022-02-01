@@ -1,18 +1,12 @@
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-public class ziq
-  implements sjs
+public abstract interface ziq
 {
-  public ziq(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  public abstract void a(ziq paramziq);
   
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
-    if (this.a.a != null) {
-      this.a.a.a(paramString2);
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

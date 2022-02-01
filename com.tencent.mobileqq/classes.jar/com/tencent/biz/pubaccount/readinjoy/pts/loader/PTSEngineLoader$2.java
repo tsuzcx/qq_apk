@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import qmv;
-import qof;
+import qza;
+import rak;
 
 public class PTSEngineLoader$2
   implements Runnable
 {
-  public PTSEngineLoader$2(qmv paramqmv) {}
+  public PTSEngineLoader$2(qza paramqza) {}
   
   public void run()
   {
-    if (!qof.a.c()) {
+    if (!rak.a.c()) {
       return;
     }
-    qmv.a(this.this$0);
-    qmv.b(this.this$0);
+    qza.a(this.this$0);
+    qza.b(this.this$0);
   }
 }
 

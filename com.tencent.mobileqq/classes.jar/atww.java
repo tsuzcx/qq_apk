@@ -1,20 +1,17 @@
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.data.GameNoticeCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
 
-public class atww
+class atww
   implements View.OnClickListener
 {
-  public atww(GameNoticeCenter paramGameNoticeCenter, String paramString) {}
+  atww(atwq paramatwq, FileManagerEntity paramFileManagerEntity) {}
   
   public void onClick(View paramView)
   {
-    Message localMessage = GameNoticeCenter.access$200(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).obtainMessage(2);
-    localMessage.obj = this.jdField_a_of_type_JavaLangString;
-    localMessage.sendToTarget();
+    bdla.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    aufd.a(this.jdField_a_of_type_Atwq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Atwq.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
-class uzi
-  implements View.OnClickListener
+final class uzi
+  extends Editable.Factory
 {
-  uzi(uzg paramuzg) {}
-  
-  public void onClick(View paramView)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (zvo.a("vertical_video_top_homepage_click")) {
-      uya.a("AbsWsUIGroup", "fast click, ignored: vertical video top homepage");
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      vdq.e(uzg.a(this.a).a(), uzg.a(this.a).b(), uzg.a(this.a));
-      ukw.a(uzg.a(this.a).getActivity(), "from_qq_chat", 0, false);
-    }
+    return new QQTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

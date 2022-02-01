@@ -1,27 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
 class ahqk
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  ahqk(ahqj paramahqj) {}
+  ahqk(ahqg paramahqg, XPanelContainer paramXPanelContainer) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Intent localIntent1 = new Intent();
-    localIntent1.putExtra("is_from_conversation", true);
-    localIntent1.putExtra("bookid", ahqj.a(this.a));
-    localIntent1.putExtra("book_new_id", ahqj.b(this.a));
-    Intent localIntent2 = new Intent();
-    localIntent2.putExtras(localIntent1);
-    localIntent2.putExtra("readtype", "15");
-    localIntent2.setClassName(ahqj.a(this.a), "cooperation.qqreader.QRBridgeActivity");
-    localIntent2.addFlags(268435456);
-    ahqj.a(this.a).startActivity(localIntent2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhdj.a(ahqg.a(this.jdField_a_of_type_Ahqg).getActivity());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    ahqg.a(this.jdField_a_of_type_Ahqg, this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
   }
 }
 

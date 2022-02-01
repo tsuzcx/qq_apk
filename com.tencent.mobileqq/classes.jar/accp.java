@@ -1,21 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+import kotlin.Metadata;
 
-public class accp
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "visibility", "", "onSystemUiVisibilityChange"}, k=3, mv={1, 1, 16})
+final class accp
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public static void a(abxc paramabxc, byte[] paramArrayOfByte, long paramLong)
-  {
-    ((KandianMergeManager)paramabxc.a().getManager(162)).a(paramArrayOfByte, paramLong, paramabxc);
-  }
+  accp(ViewGroup paramViewGroup) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void onSystemUiVisibilityChange(int paramInt)
   {
-    a(paramabxc, paramMsgType0x210.vProtobuf, paramMsgInfo.uRealMsgTime);
-    return null;
+    if ((paramInt & 0x4) == 0) {
+      this.a.setSystemUiVisibility(7942);
+    }
   }
 }
 

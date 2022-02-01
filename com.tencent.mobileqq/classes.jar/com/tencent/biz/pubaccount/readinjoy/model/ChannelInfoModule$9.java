@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pkp;
-import puh;
+import pvm;
+import qfb;
 
 public class ChannelInfoModule$9
   implements Runnable
 {
-  public ChannelInfoModule$9(puh parampuh, int paramInt) {}
+  public ChannelInfoModule$9(qfb paramqfb, int paramInt) {}
   
   public void run()
   {
-    pkp.a().f(this.a);
+    pvm.a().f(this.a);
   }
 }
 

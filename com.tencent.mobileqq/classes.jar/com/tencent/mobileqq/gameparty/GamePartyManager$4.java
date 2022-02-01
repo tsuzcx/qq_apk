@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gameparty;
 
-import aubl;
-import aubp;
+import avhf;
+import avhj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
@@ -16,11 +16,11 @@ import mqq.manager.TicketManager;
 public class GamePartyManager$4
   implements Runnable
 {
-  public GamePartyManager$4(aubl paramaubl, String paramString, aubp paramaubp) {}
+  public GamePartyManager$4(avhf paramavhf, String paramString, avhj paramavhj) {}
   
   public void run()
   {
-    Object localObject3 = (QQAppInterface)aubl.a(this.this$0).get();
+    Object localObject3 = (QQAppInterface)avhf.a(this.this$0).get();
     if (localObject3 == null) {}
     label308:
     do
@@ -65,9 +65,9 @@ public class GamePartyManager$4
               if (QLog.isColorLevel()) {
                 QLog.d("GamePartyManager", 2, "http request succeeded, url = " + this.jdField_a_of_type_JavaLangString);
               }
-              if (this.jdField_a_of_type_Aubp != null)
+              if (this.jdField_a_of_type_Avhj != null)
               {
-                this.jdField_a_of_type_Aubp.a(((StringBuffer)localObject2).toString());
+                this.jdField_a_of_type_Avhj.a(((StringBuffer)localObject2).toString());
                 return;
               }
             }

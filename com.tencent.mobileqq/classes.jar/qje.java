@@ -1,147 +1,56 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qje
-  extends TextBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/handler/RIJTransparentlyContentHandler;", "", "()V", "TAG", "", "addLowerActiveUserExperimentFlag", "", "jsonObject", "Lorg/json/JSONObject;", "get68BRecommendTransparentlyJson", "app", "Lcom/tencent/common/app/AppInterface;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qje
 {
-  private NativeSummaryView a;
+  public static final qje a = new qje();
   
-  public qje(VafContext paramVafContext)
+  private final void a(JSONObject paramJSONObject)
   {
-    super(paramVafContext);
-    this.mTextSize = Utils.dp2px(16.0D);
-    this.mLineSpaceExtra = Utils.rp2px(5.0D);
-    this.a = new NativeSummaryView(paramVafContext.getContext());
-    this.a.setTextColor(-11644322);
-  }
-  
-  public void a(pvc parampvc)
-  {
-    if (this.a.getLayoutParams() == null)
-    {
-      Object localObject = getComLayoutParams();
-      localObject = new ViewGroup.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
-      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(220);
+    if (localAladdinConfig.getIntegerFromString("is_experiment_user", -1) != -1) {
+      paramJSONObject.put("is_experiment_user", localAladdinConfig.getIntegerFromString("is_experiment_user", 0));
     }
-    this.a.setModel(parampvc);
   }
   
-  public int getComMeasuredHeight()
+  @NotNull
+  public final String a(@Nullable AppInterface paramAppInterface)
   {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setBackgroundColor(this.mBackground);
-    this.a.setTextSize(0, this.mTextSize);
-    this.a.setLineSpacing(this.mLineSpaceExtra, 1.0F);
-    this.a.setIncludeFontPadding(false);
-    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    if ((paramObject instanceof pvc)) {
-      a((pvc)paramObject);
-    }
-    return true;
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1188: 
-      try
-      {
-        paramInt = Color.parseColor(String.valueOf(paramString));
-        this.a.setTextColor(paramInt);
-        QLog.d("SummaryView", 1, "setEmotionFontColor: " + paramInt);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("SummaryView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1187: 
-      try
-      {
-        this.mTextSize = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
-        QLog.d("SummaryView", 1, "setEmotionFontSize: " + this.mTextSize);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("SummaryView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1189: 
-      try
-      {
-        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
-        QLog.d("SummaryView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("SummaryView", 1, paramString, new Object[0]);
-        return false;
-      }
-    }
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramInt = Color.parseColor(paramString);
-      this.a.setLinkedTextColor(paramInt);
-      QLog.d("SummaryView", 1, "SummaryView | setLinkTextColor: " + paramInt);
-      return true;
+      prh.a(localJSONObject);
+      if (paramAppInterface != null)
+      {
+        paramAppInterface = (anvk)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (paramAppInterface == null) {
+          break label104;
+        }
+        localJSONObject.put("fnum", paramAppInterface.a());
+      }
     }
-    catch (Exception paramString)
+    catch (JSONException paramAppInterface)
     {
-      QLog.e("SummaryView", 1, paramString, new Object[0]);
+      for (;;)
+      {
+        QLog.e("RIJTransparentlyContentHandler", 1, "json error", (Exception)paramAppInterface);
+      }
     }
-    return false;
-  }
-  
-  public void setTextColor(int paramInt)
-  {
-    this.a.setTextColor(paramInt);
+    a(localJSONObject);
+    QLog.d("RIJTransparentlyContentHandler", 1, "68b transparently json : " + localJSONObject);
+    paramAppInterface = localJSONObject.toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramAppInterface, "jsonObject.toString()");
+    return paramAppInterface;
   }
 }
 

@@ -1,13 +1,9 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class syw
-  extends BitmapDrawable
+public abstract interface syw
 {
-  public syw(Bitmap paramBitmap)
-  {
-    super(paramBitmap);
-  }
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

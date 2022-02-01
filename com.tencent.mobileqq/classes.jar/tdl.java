@@ -1,8 +1,18 @@
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
+
 public class tdl
+  implements qgt
 {
-  public int a;
-  public String a;
-  public String b;
+  public tdl(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {
+      ReadinjoyTabFrame.e(this.a);
+    }
+    QLog.d("ReadInJoyTabFrame", 2, "ugcAccountCreateResult result = " + paramInt);
+  }
 }
 
 

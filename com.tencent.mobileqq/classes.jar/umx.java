@@ -1,33 +1,13 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class umx
-  extends umt
+  implements ViewBase.IBuilder
 {
-  public boolean a;
-  
-  public umx(JSONObject paramJSONObject)
+  public ViewBase build(VafContext paramVafContext)
   {
-    super(paramJSONObject);
-  }
-  
-  public static umx a(JSONObject paramJSONObject)
-  {
-    return new umx(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.a = paramJSONObject.optBoolean("isImmediatelyUpload");
-      return;
-    }
-    this.a = false;
-  }
-  
-  public String toString()
-  {
-    return "WeSeeBeaconReportConfigInfo{mIsImmediatelyUpload=" + this.a + "}";
+    return new umv(paramVafContext);
   }
 }
 

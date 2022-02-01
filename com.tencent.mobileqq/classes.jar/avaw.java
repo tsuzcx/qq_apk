@@ -1,48 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class avaw
-  implements auzr
+public class avaw
 {
-  avaw(avau paramavau) {}
+  public int a;
+  public String a;
+  public ArrayList<avav> a;
+  public HashMap<String, String> a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public avaw()
   {
-    int i = this.a.jdField_a_of_type_Avas.e;
-    String str3 = this.a.jdField_a_of_type_Avas.b;
-    this.a.b(i, str3);
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
-    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
-      bcef.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
-    }
-    while ((i != 1) || (TextUtils.isEmpty(str3))) {
-      return;
-    }
-    String str2 = "2";
-    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
-    String str1 = str2;
-    if (localTroopInfo != null)
-    {
-      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) {
-        break label180;
-      }
-      str1 = "0";
-    }
-    for (;;)
-    {
-      bcef.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
-      return;
-      label180:
-      str1 = str2;
-      if (localTroopInfo.isAdmin()) {
-        str1 = "1";
-      }
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n").append("url= ").append(this.jdField_c_of_type_JavaLangString).append("\n").append("languageList= ").append(this.jdField_b_of_type_JavaUtilArrayList.toString()).append("\n").append("mSrcLangMap= ").append(this.jdField_a_of_type_JavaUtilHashMap.toString()).append("\n").append("fileSize= ").append(this.jdField_c_of_type_Int).append("\n").append("reqHeight= ").append(this.e).append("\n").append("reqWidth= ").append(this.jdField_d_of_type_Int).append("\n").append("afMd5= ").append(this.jdField_d_of_type_JavaLangString).append("\n").append("rotateDe= ").append(this.f).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

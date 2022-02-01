@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adcw;
+import adty;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,16 +12,16 @@ class ConversationQbossBannerTitleEntranceCtrl$2$1
   public void run()
   {
     if (this.jdField_a_of_type_Int > 0) {
-      if (adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null)
+      if (adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null)
       {
         if (this.jdField_a_of_type_Int > 99)
         {
-          adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setText("99+");
-          adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(0);
+          adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setText("99+");
+          adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(0);
         }
       }
-      else if (adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null) {
-        adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
+      else if (adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null) {
+        adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
       }
     }
     label188:
@@ -30,27 +30,27 @@ class ConversationQbossBannerTitleEntranceCtrl$2$1
       do
       {
         return;
-        adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setText("" + this.jdField_a_of_type_Int);
+        adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setText("" + this.jdField_a_of_type_Int);
         break;
         if (!this.jdField_a_of_type_Boolean) {
           break label188;
         }
-        if (adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null) {
-          adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(0);
+        if (adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null) {
+          adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(0);
         }
-      } while (adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) == null);
-      adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
+      } while (adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) == null);
+      adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
       return;
-      if (adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null) {
-        adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
+      if (adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) != null) {
+        adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
       }
-    } while (adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) == null);
-    adcw.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
+    } while (adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0) == null);
+    adty.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationQbossBannerTitleEntranceCtrl$2.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.2.1
  * JD-Core Version:    0.7.0.1
  */

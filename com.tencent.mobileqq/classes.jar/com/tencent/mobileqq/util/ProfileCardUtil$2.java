@@ -6,8 +6,6 @@ import java.io.File;
 public final class ProfileCardUtil$2
   implements Runnable
 {
-  public ProfileCardUtil$2(String paramString) {}
-  
   public void run()
   {
     File localFile = new File(this.a);

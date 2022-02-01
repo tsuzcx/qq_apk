@@ -1,23 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajoo
-  implements View.OnClickListener
+  extends aodb
 {
-  public ajoo(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  public ajoo(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Intent localIntent = this.a.getIntent();
-    String str = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = localIntent.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.startPhotoListEdit(localIntent, this.a, str, i, i, 1080, 1080, bfrj.a());
-    bcef.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
+    }
+    asfl localasfl = (asfl)EmoticonGroupStoreFragment.a(this.a).getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
+    if (localasfl != null) {
+      localasfl.b();
+    }
   }
 }
 

@@ -1,22 +1,16 @@
-import java.util.Hashtable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bgwv
-  extends bgvv
+  implements DialogInterface.OnClickListener
 {
-  Hashtable<String, Boolean> a = new Hashtable();
+  public bgwv(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.put(paramString, Boolean.valueOf(paramBoolean));
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    paramString = (Boolean)this.a.get(paramString);
-    if (paramString == null) {
-      return paramBoolean;
-    }
-    return paramString.booleanValue();
+    UpgradeActivity.a(this.a, false);
+    bdla.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bgvw.b(), String.valueOf(0), bgvx.a(), "");
   }
 }
 

@@ -1,24 +1,22 @@
-public class bfmx
+public abstract interface bfmx
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  public abstract void a(bfmy parambfmy);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract String e();
 }
 
 

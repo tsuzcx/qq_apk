@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MotionEvent;
+import anvx;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -52,7 +52,7 @@ public class ArtFilterBridgeActivity
         localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
         boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
         if (bool2) {
-          localBundle.putString("extra_publish_text", amtj.a(2131699902));
+          localBundle.putString("extra_publish_text", anvx.a(2131700253));
         }
         if (localIntent.hasExtra("troop_uin")) {
           localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));

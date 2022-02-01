@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import aztw;
+import bbae;
 
 public class ReceiptMessageDetailFragment$DetailHandler$1
   implements Runnable
 {
-  public ReceiptMessageDetailFragment$DetailHandler$1(aztw paramaztw, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ReceiptMessageDetailFragment$DetailHandler$1(bbae parambbae, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {

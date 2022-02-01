@@ -1,43 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class anpx
-  extends anri
+class anpx
+  implements DialogInterface.OnClickListener
 {
-  private anrh a(anrh paramanrh, String paramString)
-  {
-    paramanrh.a = paramString;
-    paramanrh.b = "avgame";
-    paramanrh.c = "create_room";
-    paramString = paramString.split("\\?");
-    if (paramString.length != 2) {}
-    for (;;)
-    {
-      return paramanrh;
-      paramString = paramString[1].split("&");
-      int i = 0;
-      while (i < paramString.length)
-      {
-        Object localObject = paramString[i];
-        if (localObject.split("=").length == 2)
-        {
-          int j = localObject.indexOf("=");
-          paramanrh.a(localObject.substring(0, j), localObject.substring(j + 1));
-        }
-        i += 1;
-      }
-    }
-  }
+  anpx(anpu paramanpu, ApolloGameData paramApolloGameData) {}
   
-  public anrh a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a(new anpw(paramQQAppInterface, paramActivity), paramString);
-  }
-  
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
-  {
-    return a(new anpw(paramQQAppInterface, paramContext), paramString);
+    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
+    Intent localIntent = new Intent(this.jdField_a_of_type_Anpu.a, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Anpu.a, paramDialogInterface, -1L, localIntent, false, -1);
   }
 }
 

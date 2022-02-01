@@ -1,93 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.viola.adapter.IBridgeAdapter;
+import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.ArrayList;
 
 public class tup
+  implements IBridgeAdapter
 {
-  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
+  public tup()
   {
-    int k = 1;
+    registerModuleFunction();
+  }
+  
+  public ArrayList<String> getAdapterUnRegisterFunction()
+  {
+    return null;
+  }
+  
+  public void registerModuleFunction() {}
+  
+  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
+  {
+    if (paramViolaInstance == null) {
+      break label5;
+    }
     for (;;)
     {
-      try
+      label5:
+      return;
+      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
       {
-        if (paramAdData.a == null) {
-          return paramJSONObject;
+        paramString = paramViolaInstance.getFragment();
+        if (paramString == null) {
+          break;
         }
-        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
-        if (!TextUtils.isEmpty(paramAdData.a.k)) {
-          paramJSONObject.put("id_inner_small_img", new JSONObject());
-        }
-        JSONObject localJSONObject;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        if ((paramString instanceof ViolaFragment)) {}
+        for (paramString = ((ViolaFragment)paramString).getTtileChangelistener(); paramString != null; paramString = null)
         {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
-          paramJSONObject.put("id_inner_title", localJSONObject);
-        }
-        if ((!twh.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.h);
-          paramJSONObject.put("id_inner_category", localJSONObject);
-        }
-        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.d)) {
-          break label424;
-        }
-        paramJSONObject.put("id_inner_game_img1", new JSONObject());
-        paramJSONObject.put("id_game_img1_container1", new JSONObject());
-        i = 1;
-        j = 1;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.e))
-        {
-          paramJSONObject.put("id_inner_game_img2", new JSONObject());
-          paramJSONObject.put("id_game_img2_container2", new JSONObject());
-          i = 1;
-          j = 1;
-        }
-        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.f)) {
-          break label421;
-        }
-        paramJSONObject.put("id_inner_game_img3", new JSONObject());
-        paramJSONObject.put("id_game_img3_container3", new JSONObject());
-        i = 0;
-        j = 1;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tri.g))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Tri.g);
-          paramJSONObject.put("id_inner_ad_name", localJSONObject);
-          j = k;
-          if (j != 0) {
-            paramJSONObject.put("id_bottom_operation", new JSONObject());
-          }
-          if (i != 0) {
-            paramJSONObject.put("id_game_img_right_space", new JSONObject());
-          }
-          localJSONObject = new JSONObject();
-          localJSONObject.put("innerGameModel", paramAdData);
-          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
-          return paramJSONObject;
+          paramString.a(((Boolean)paramObject).booleanValue());
+          return;
         }
       }
-      catch (JSONException paramAdData)
-      {
-        paramAdData.printStackTrace();
-        return paramJSONObject;
-      }
-      continue;
-      label421:
-      continue;
-      label424:
-      int i = 0;
-      int j = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,25 @@
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface xsr
+public class xsr
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
+  public xsr(MyMemoriesListView paramMyMemoriesListView) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
+      if (this.a.jdField_a_of_type_Xss != null) {
+        this.a.jdField_a_of_type_Xss.c();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,19 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class agoo
-  implements Animator.AnimatorListener
+class agoo
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public agoo(SixCombolEffectView paramSixCombolEffectView) {}
+  agoo(agon paramagon) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    }
+  }
 }
 
 

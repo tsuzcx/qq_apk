@@ -1,31 +1,94 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-final class unl
-  implements DialogInterface.OnClickListener
+class unl
+  extends acko
 {
-  unl(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt1, int paramInt2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  unl(ung paramung, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (yqu.a(this.jdField_a_of_type_AndroidAppActivity))
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    if (QLog.isColorLevel())
     {
-      uyc.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-      uvi.a(114, this.jdField_a_of_type_Int, this.b, null);
+      QLog.d(ung.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - ung.b(this.a)));
+      QLog.d(ung.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - ung.c(this.a)));
     }
-    for (;;)
+    if (ung.a(this.a) != null) {
+      ung.a(this.a).a((byte)2);
+    }
+    if (ung.a(this.a) != null) {
+      ung.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ung.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ung.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
+      return true;
+    }
+    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
     {
-      paramDialogInterface.dismiss();
-      uvr.b(112, 1, 0);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem = uvi.a();
+      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.downloadscene = unq.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.comment_loctaion = this.b;
-      unq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+    }
+    paramString = Uri.parse(paramString);
+    localObject = paramString.getScheme();
+    if (nro.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+    {
+      paramWebView = new Intent("android.intent.action.VIEW", paramString);
+      paramWebView.addFlags(268435456);
+    }
+    try
+    {
+      this.mContext.startActivity(paramWebView);
+      return false;
+    }
+    catch (ActivityNotFoundException paramWebView)
+    {
+      for (;;)
+      {
+        Log.e("AbsWebView", paramWebView.toString());
+      }
     }
   }
 }

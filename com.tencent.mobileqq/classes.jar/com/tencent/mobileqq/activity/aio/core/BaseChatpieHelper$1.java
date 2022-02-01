@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amsw;
-import bcev;
+import anvk;
+import bdlq;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.utils.ContactUtils;
 
@@ -26,19 +27,19 @@ class BaseChatpieHelper$1
         str1 = str2;
         localObject = str3;
         if (this.b != 2) {
-          break label155;
+          break label156;
         }
-        localObject = (amsw)BaseChatpieHelper.a(this.this$0).getManager(51);
+        localObject = (anvk)BaseChatpieHelper.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (BaseChatpieHelper.a(this.this$0).curType != 1008) {
-          break label74;
+          break label75;
         }
       }
     }
     for (;;)
     {
       return;
-      label74:
-      Friends localFriends = ((amsw)localObject).e(BaseChatpieHelper.a(this.this$0).curFriendUin);
+      label75:
+      Friends localFriends = ((anvk)localObject).e(BaseChatpieHelper.a(this.this$0).curFriendUin);
       str1 = str2;
       localObject = str3;
       if (localFriends != null)
@@ -46,8 +47,8 @@ class BaseChatpieHelper$1
         str1 = "" + ContactUtils.getFriendStatus(localFriends);
         localObject = "" + ContactUtils.getFriendTermType(localFriends, BaseChatpieHelper.a(this.this$0));
       }
-      label155:
-      bcev.a(BaseChatpieHelper.a(this.this$0), "clt", BaseChatpieHelper.a(this.this$0).getAccount(), BaseChatpieHelper.a(this.this$0).curFriendUin, "msg", this.b + "", "", "", str1, (String)localObject, BaseChatpieHelper.a(this.this$0) + "");
+      label156:
+      bdlq.a(BaseChatpieHelper.a(this.this$0), "clt", BaseChatpieHelper.a(this.this$0).getAccount(), BaseChatpieHelper.a(this.this$0).curFriendUin, "msg", this.b + "", "", "", str1, (String)localObject, BaseChatpieHelper.a(this.this$0) + "");
       BaseChatpieHelper.a(this.this$0, 0);
       return;
       localObject = null;
@@ -56,7 +57,7 @@ class BaseChatpieHelper$1
       }
       while (localObject != null)
       {
-        bcev.a(BaseChatpieHelper.a(this.this$0), (String)localObject, BaseChatpieHelper.a(this.this$0).getAccount(), BaseChatpieHelper.a(this.this$0).curFriendUin, "pic", "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", "", "");
+        bdlq.a(BaseChatpieHelper.a(this.this$0), (String)localObject, BaseChatpieHelper.a(this.this$0).getAccount(), BaseChatpieHelper.a(this.this$0).curFriendUin, "pic", "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", "", "");
         return;
         localObject = "clt";
         continue;

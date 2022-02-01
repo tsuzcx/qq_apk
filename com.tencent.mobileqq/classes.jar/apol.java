@@ -1,6 +1,19 @@
-public abstract interface apol
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArModelResource;
+
+public final class apol
+  implements Parcelable.Creator<ArModelResource>
 {
-  public abstract void e();
+  public ArModelResource a(Parcel paramParcel)
+  {
+    return new ArModelResource(paramParcel);
+  }
+  
+  public ArModelResource[] a(int paramInt)
+  {
+    return new ArModelResource[paramInt];
+  }
 }
 
 

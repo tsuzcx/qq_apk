@@ -1,218 +1,123 @@
-import android.annotation.SuppressLint;
-import android.graphics.Point;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
+import Wallet.DownloadReportReq;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.Map;
 
-public class akyf<T extends BaseActivity>
-  implements View.OnClickListener
+class akyf
+  extends bhyn
 {
-  private static int jdField_b_of_type_Int = -1;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private akxy jdField_a_of_type_Akxy;
-  protected akyc a;
-  protected akyt a;
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  public String a;
-  protected WeakReference<QQAppInterface> a;
   private boolean jdField_a_of_type_Boolean;
-  protected WeakReference<T> b;
-  private boolean jdField_b_of_type_Boolean;
-  private int c = -1;
-  private int d = -1;
   
-  protected String a()
+  akyf(akyd paramakyd, int paramInt, WeakReference paramWeakReference, bhyn parambhyn, long paramLong) {}
+  
+  public void onDoneFile(bhyo parambhyo)
   {
-    if (akxv.a().c()) {
-      return akxv.a().b();
+    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (PreloadManager.a((PreloadManager)localObject)) {
+      ((PreloadManager)localObject).c();
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    boolean bool = true;
-    akxv localakxv = akxv.a();
-    if ((!localakxv.c()) || (!this.jdField_a_of_type_Boolean)) {}
+    if (this.jdField_a_of_type_Bhyn != null) {
+      this.jdField_a_of_type_Bhyn.onDoneFile(parambhyo);
+    }
+    localObject = new DownloadReportReq();
     int i;
-    label102:
-    do
+    File localFile;
+    long l;
+    if (parambhyo.jdField_a_of_type_Int == 0)
     {
-      do
+      ((DownloadReportReq)localObject).iType = 1;
+      int j = -1;
+      i = j;
+      if (parambhyo.jdField_a_of_type_JavaUtilMap != null)
       {
-        int j;
-        int k;
-        do
+        i = j;
+        if (!TextUtils.isEmpty(parambhyo.jdField_a_of_type_JavaLangString))
         {
-          return;
-          i = paramMotionEvent.getAction();
-          j = (int)paramMotionEvent.getRawX();
-          k = (int)paramMotionEvent.getRawY();
-          if (i == 0)
-          {
-            if (!localakxv.a(j, k))
-            {
-              this.jdField_b_of_type_Boolean = bool;
-              this.jdField_a_of_type_Long = localakxv.jdField_a_of_type_Long;
-              if (!this.jdField_b_of_type_Boolean) {
-                break label102;
-              }
-              this.c = j;
-            }
-            for (this.d = k;; this.d = -1)
-            {
-              this.jdField_a_of_type_Int = 0;
-              return;
-              bool = false;
-              break;
-              this.c = -1;
-            }
+          localFile = (File)parambhyo.jdField_a_of_type_JavaUtilMap.get(parambhyo.jdField_a_of_type_JavaLangString);
+          if (localFile != null) {
+            break label242;
           }
-          if (i != 2) {
-            break;
-          }
-        } while ((!this.jdField_b_of_type_Boolean) || (Math.pow(this.c - j, 2.0D) + Math.pow(this.d - k, 2.0D) <= jdField_b_of_type_Int));
-        this.jdField_a_of_type_Int = 2;
-      } while (!com.tencent.TMG.utils.QLog.isColorLevel());
-      com.tencent.TMG.utils.QLog.d("CommonSelectableMenu", 0, "detect scrolling.");
-      return;
-    } while (((i != 1) && (i != 3)) || (!this.jdField_b_of_type_Boolean));
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.d("CommonSelectableMenu", 0, "detect taping.");
-      }
-      long l = localakxv.jdField_a_of_type_Long;
-      if ((this.jdField_a_of_type_Long == -1L) || (l == -1L)) {
-        break label281;
-      }
-      if (this.jdField_a_of_type_Long == l) {
-        localakxv.d();
+          l = -2L;
+          label113:
+          i = (int)l;
+        }
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = -1L;
-      return;
-      label281:
-      localakxv.d();
-    }
-  }
-  
-  protected void a(bgaz parambgaz)
-  {
-    parambgaz.a(2131365216, amtj.a(2131701394), 2130838962);
-    parambgaz.a(2131367094, amtj.a(2131701392), 2130838971);
-    parambgaz.a(2131366347, amtj.a(2131701393), 2130838970);
-  }
-  
-  public void a(T paramT, ContainerView paramContainerView)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContainerView.a();
-    this.jdField_a_of_type_Akyt = new akyt();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT.app);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
-    a(paramContainerView);
-    if (jdField_b_of_type_Int == -1)
-    {
-      int i = ViewConfiguration.get(paramT).getScaledTouchSlop();
-      jdField_b_of_type_Int = i * i;
-    }
-  }
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  protected void a(ContainerView paramContainerView)
-  {
-    paramContainerView.a.setOnTouchListener(new akyg(this));
-    paramContainerView.a.setOnLongClickListener(new akyh(this, paramContainerView));
-  }
-  
-  protected void a(ContainerView paramContainerView, View paramView)
-  {
-    if ((paramView instanceof akyk))
-    {
-      akyk localakyk = (akyk)paramView;
-      if (paramView.getContext() != null)
+      for (;;)
       {
-        bgaz localbgaz = new bgaz();
-        a(localbgaz);
-        if (this.jdField_a_of_type_Akyc == null)
+        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_Akyd.a(i);
+        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
+        ((DownloadReportReq)localObject).sPhoneType = DeviceInfoUtil.getModel();
+        ((DownloadReportReq)localObject).sOsVersion = DeviceInfoUtil.getDeviceOSVersion();
+        ((DownloadReportReq)localObject).sQQVersion = DeviceInfoUtil.getQQVersion();
+        ((DownloadReportReq)localObject).iScene = parambhyo.a().getInt("scene");
+        akra.a((JceStruct)localObject, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("RealTimeFlowControlObj", 2, akyd.a(this.jdField_a_of_type_Akyd) + " flow down result:" + parambhyo.jdField_a_of_type_Int + localObject);
+        }
+        return;
+        ((DownloadReportReq)localObject).iType = 2;
+        break;
+        try
         {
-          this.jdField_a_of_type_Akyc = new akys();
-          this.jdField_a_of_type_Akyc.a(this);
+          label242:
+          if (localFile.exists())
+          {
+            l = localFile.length();
+            break label113;
+          }
+          l = -3L;
         }
-        int i = this.jdField_a_of_type_AndroidGraphicsPoint.y - AIOUtils.dp2px(10.0F, paramView.getResources());
-        int j = this.jdField_a_of_type_AndroidGraphicsPoint.x - ViewUtils.dpToPx(14.0F);
-        this.jdField_a_of_type_Akyc.a(localbgaz, false);
-        this.jdField_a_of_type_Akyc.a(j);
-        this.jdField_a_of_type_Akyc.b(i);
-        this.jdField_a_of_type_Akyc.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Akyc.jdField_b_of_type_Int = j;
-        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-          com.tencent.qphone.base.util.QLog.d("CommonSelectableMenu", 2, "showMenuView: pointY -> " + i + ", lastShowX -> " + this.jdField_a_of_type_AndroidGraphicsPoint.x);
+        catch (Throwable localThrowable)
+        {
+          i = -4;
+          localThrowable.printStackTrace();
         }
-        if (this.jdField_a_of_type_Akxy == null) {
-          this.jdField_a_of_type_Akxy = new akxy();
-        }
-        this.jdField_a_of_type_Akxy.a(localakyk);
-        this.jdField_a_of_type_Akxy.a(paramContainerView, paramContainerView);
-        this.jdField_a_of_type_Akxy.a(this.jdField_a_of_type_Akyc);
-        this.jdField_a_of_type_Akyt.a(paramView, this.jdField_a_of_type_Akyc);
       }
     }
   }
   
-  public boolean a()
+  public void onProgress(bhyo parambhyo)
   {
-    return false;
+    double d;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      long l1 = System.currentTimeMillis();
+      long l2 = parambhyo.g;
+      d = parambhyo.f / (l1 - l2);
+      if (d >= 1.0D) {
+        break label43;
+      }
+    }
+    label43:
+    do
+    {
+      return;
+      parambhyo = new DownloadReportReq();
+      parambhyo.sSpeed = (d + "");
+      parambhyo.vecResInfo = this.jdField_a_of_type_Akyd.a(0);
+      parambhyo.iType = 0;
+      parambhyo.iUin = this.jdField_a_of_type_Long;
+      akra.a(parambhyo, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("RealTimeFlowControlObj", 2, akyd.a(this.jdField_a_of_type_Akyd) + " flow down speed:" + d);
   }
   
-  public void b()
+  public boolean onStart(bhyo parambhyo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    akxv localakxv = akxv.a();
-    if ((localakxv.c()) && (localakxv.a())) {
-      localakxv.d();
-    }
+    parambhyo.f = 1048576L;
+    parambhyo.b = Math.max(this.jdField_a_of_type_Int, 3);
+    return super.onStart(parambhyo);
   }
-  
-  public void b(ContainerView paramContainerView)
-  {
-    if ((paramContainerView != null) && (paramContainerView.a != null))
-    {
-      paramContainerView.a.setOnLongClickListener(null);
-      paramContainerView.a.setOnClickListener(null);
-    }
-    if (this.jdField_a_of_type_Akxy != null)
-    {
-      this.jdField_a_of_type_Akxy.d();
-      this.jdField_a_of_type_Akxy = null;
-    }
-    if (this.jdField_a_of_type_Akyc != null)
-    {
-      this.jdField_a_of_type_Akyc.a(null);
-      this.jdField_a_of_type_Akyc = null;
-    }
-    this.jdField_a_of_type_Akyt = null;
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

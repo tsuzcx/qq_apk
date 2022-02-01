@@ -348,6 +348,7 @@ public abstract interface PeakConstants
   public static final int SOURCE_FROM_SHORTVIDEO_CAMERA = 103;
   public static final int SOURCE_FROM_SYSTEM_CAMERA = 102;
   public static final int SOURCE_FROM_UNKNOW = 6;
+  public static final String SP_KEY_CMSHOW_FIRST_GUIDE_HAS_SHOWN = "sp_key_cmshow_first_guide_has_shown_";
   public static final String SP_KEY_VIDEO_ROLLBACK_COUNTS = "key_video_rollback_counts";
   public static final String SP_KEY_VIDEO_ROLLBACK_TIME = "key_video_rollback_time";
   public static final String TAG = "_photo";

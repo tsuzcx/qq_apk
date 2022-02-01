@@ -1,6 +1,16 @@
-public abstract interface yks
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+final class yks
+  implements wfk<ykt, wfh>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(@NonNull ykt paramykt, @Nullable wfh paramwfh, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isFail()) {
+      ykq.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    }
+  }
 }
 
 

@@ -1,24 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class xdz
-  implements ysv
+  extends Subscriber.SingleEventSubscriberNoRefect<wcx>
 {
-  public xdz(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  xdu a;
   
-  public void a()
+  public xdz(@NonNull xdu paramxdu)
   {
-    if ((this.a.jdField_a_of_type_Xea != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Xea.a(this.a.jdField_a_of_type_JavaLangString);
+    this.a = paramxdu;
+  }
+  
+  protected void a(@NonNull wcx paramwcx)
+  {
+    if ((paramwcx.b != null) && (paramwcx.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      xdu.a(this.a, paramwcx.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramwcx.b.mVid, paramwcx.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
     }
   }
   
-  public boolean a(boolean paramBoolean)
+  public Class acceptEventClass()
   {
-    if (this.a.jdField_a_of_type_Xea != null) {
-      return this.a.jdField_a_of_type_Xea.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return wcx.class;
   }
 }
 

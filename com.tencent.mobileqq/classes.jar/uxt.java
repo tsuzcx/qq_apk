@@ -1,14 +1,49 @@
-final class uxt
-  implements bjog
+import android.graphics.Rect;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+
+public class uxt
+  extends RecyclerView.ItemDecoration
 {
-  uxt(bjog parambjog) {}
+  public static final int a = vmg.a(5.0F);
   
-  public void onDismiss()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    uya.b("WSFeedUtils", "onDismiss entered");
-    if (this.a != null) {
-      this.a.onDismiss();
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    {
+      paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
+      i = paramView.getSpanIndex();
+      if (paramView.isFullSpan())
+      {
+        paramRect.left = a;
+        paramRect.right = a;
+        paramRect.top = a;
+      }
     }
+    while ((!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) || (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).getOrientation() != 0)) {
+      for (;;)
+      {
+        int i;
+        return;
+        if (i % 2 == 0)
+        {
+          paramRect.left = a;
+          paramRect.right = (a / 2);
+        }
+        else
+        {
+          paramRect.left = (a / 2);
+          paramRect.right = a;
+        }
+      }
+    }
+    paramRect.right = a;
   }
 }
 

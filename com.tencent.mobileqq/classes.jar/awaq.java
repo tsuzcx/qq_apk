@@ -1,27 +1,86 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class awaq
-  implements avzq
+class awaq
+  implements BusinessObserver
 {
-  public awaq(MultiCardFragment paramMultiCardFragment) {}
+  awaq(awam paramawam, Intent paramIntent) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
-    }
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(true);
-    }
-    if (MultiCardFragment.a(this.a) != null)
+    this.jdField_a_of_type_Awam.jdField_a_of_type_Bisl.dismiss();
+    if (paramBoolean) {}
+    for (;;)
     {
-      MultiCardFragment.a(this.a).c(paramInt);
-      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      try
+      {
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
+        {
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = aasr.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
+        }
       }
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ShareMsgImpl", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        this.jdField_a_of_type_Awam.jdField_a_of_type_Awar.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = bdof.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareMsgImpl", 2, "build struct msg fail");
+      }
+      return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
   }
 }

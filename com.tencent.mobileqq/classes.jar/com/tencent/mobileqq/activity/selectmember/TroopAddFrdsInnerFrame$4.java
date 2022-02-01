@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.selectmember;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bftf;
+import bhbx;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -39,7 +39,7 @@ class TroopAddFrdsInnerFrame$4
           label127:
           return;
         }
-        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mShowMyself) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!bftf.d(localTroopMemberInfo.memberuin))) {
+        if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mShowMyself) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!bhbx.d(localTroopMemberInfo.memberuin))) {
           continue;
         }
       }

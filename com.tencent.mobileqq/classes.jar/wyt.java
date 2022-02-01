@@ -1,50 +1,66 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class wyt
-  extends wrx
 {
-  public wyt(wys paramwys) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public static void a(Context paramContext, String paramString, wyv paramwyv, bisl parambisl)
   {
-    String str1;
-    String str2;
-    if ((paramInt1 == 20000) && (paramInt2 == -1))
+    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambisl, paramContext, paramwyv));
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      paramIntent = BaseActivity.sActivityRoute;
-      str1 = SplashActivity.class.getSimpleName();
-      str2 = QQStoryMainActivity.class.getSimpleName();
-      paramInt1 = paramIntent.size() - 1;
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length == 2) {
+        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
+      }
+      i += 1;
     }
-    for (;;)
+  }
+  
+  public static void a(HashMap<String, String> paramHashMap)
+  {
+    HashMap<String, String> localHashMap = null;
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    paramHashMap = localHashMap;
+    while (localIterator.hasNext())
     {
-      String str3;
-      if (paramInt1 >= 0)
+      String str = (String)localIterator.next();
+      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
       {
-        str3 = (String)paramIntent.get(paramInt1);
-        if (TextUtils.isEmpty(str3)) {
-          break label95;
+        localHashMap = paramHashMap;
+        if (QLog.isColorLevel())
+        {
+          if (paramHashMap != null) {
+            break label144;
+          }
+          paramHashMap = new StringBuilder();
         }
-        if (str3.startsWith(str1)) {
-          this.a.b();
+        for (;;)
+        {
+          paramHashMap.append(str);
+          localHashMap = paramHashMap;
+          localIterator.remove();
+          paramHashMap = localHashMap;
+          break;
+          label144:
+          paramHashMap.append('|');
         }
       }
-      else
-      {
-        return;
-      }
-      if (TextUtils.equals(str3, str2))
-      {
-        this.a.c();
-        return;
-      }
-      label95:
-      paramInt1 -= 1;
+    }
+    if ((paramHashMap != null) && (QLog.isColorLevel())) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
     }
   }
 }

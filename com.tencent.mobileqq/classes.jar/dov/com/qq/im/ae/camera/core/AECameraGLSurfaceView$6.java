@@ -1,13 +1,17 @@
 package dov.com.qq.im.ae.camera.core;
 
+import bnbd;
+
 class AECameraGLSurfaceView$6
-  implements Runnable
+  implements bnbd
 {
   AECameraGLSurfaceView$6(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void run()
+  public void onFilterReady()
   {
-    AECameraGLSurfaceView.access$500(this.this$0);
+    if (this.this$0.effectListener != null) {
+      this.this$0.effectListener.onFilterReady();
+    }
   }
 }
 

@@ -1,42 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-class bkjr
-  extends Handler
+public abstract interface bkjr
 {
-  private WeakReference<QQAppInterface> a;
+  public abstract void a(int paramInt, String paramString);
   
-  public bkjr(QQAppInterface paramQQAppInterface)
-  {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
-  
-  private void a(Message paramMessage)
-  {
-    if (this.a == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      QLog.i("IliveGroupTipsBarHelper", 1, "getGroupTipsData");
-      localQQAppInterface = (QQAppInterface)this.a.get();
-    } while ((localQQAppInterface == null) || ((paramMessage.obj == null) && (!(paramMessage.obj instanceof bkjt))));
-    paramMessage = (bkjt)paramMessage.obj;
-    ((bkjs)localQQAppInterface.getManager(386)).a(String.valueOf(paramMessage.c), paramMessage.e, bkjs.c);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    a(paramMessage);
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

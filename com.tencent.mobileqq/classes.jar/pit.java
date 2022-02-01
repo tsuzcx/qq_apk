@@ -1,144 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class pit
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/common/ProteusPreloadManager$PreloadContainerWrapper;", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "(Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;)V", "getContainer", "()Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "setContainer", "screenWidth", "", "getScreenWidth", "()Ljava/lang/Number;", "setScreenWidth", "(Ljava/lang/Number;)V", "isSuitableSize", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pit
 {
-  public static ProteusItemView a(VafContext paramVafContext, String paramString1, String paramString2)
+  @NotNull
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  @NotNull
+  private Number jdField_a_of_type_JavaLangNumber;
+  
+  public pit(@NotNull Container paramContainer)
   {
-    Object localObject = null;
-    paramString1 = a(paramVafContext, paramString2, paramString1);
-    paramString2 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
-    paramString1 = localObject;
-    if (paramString2 != null)
-    {
-      paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841733));
-      paramString1 = new ProteusItemView(paramVafContext.getContext());
-      paramString1.a(paramString2);
-    }
-    return paramString1;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramContainer;
+    this.jdField_a_of_type_JavaLangNumber = ((Number)Integer.valueOf(UIUtils.getScreenWidth(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())));
   }
   
-  public static ProteusItemView a(VafContext paramVafContext, String paramString, JSONObject paramJSONObject)
+  @NotNull
+  public final Container a()
   {
-    Object localObject = null;
-    paramString = a(paramVafContext, paramJSONObject, paramString);
-    paramJSONObject = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
-    paramString = localObject;
-    if (paramJSONObject != null)
-    {
-      paramJSONObject.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841733));
-      paramString = new ProteusItemView(paramVafContext.getContext());
-      paramString.a(paramJSONObject);
-    }
-    return paramString;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
   }
   
-  public static TemplateBean a(VafContext paramVafContext, String paramString1, String paramString2)
+  @NotNull
+  public final Number a()
   {
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, styleID = ", paramString1, ", serviceID = ", paramString2 });
-    syz localsyz = (syz)paramVafContext.getTemplateFactory();
-    paramVafContext = localsyz;
-    if (localsyz == null) {
-      paramVafContext = syz.a(paramString2, true);
-    }
-    if (paramVafContext != null) {}
-    try
-    {
-      paramVafContext = paramVafContext.getTemplateBean(new pzf().a(paramString1).a());
-      return paramVafContext;
-    }
-    catch (JSONException paramVafContext)
-    {
-      QLog.e("ProteusSupportUtilBase", 1, new Object[] { "getTemplateBean failed, styleID = ", paramString1, ", serviceID = ", paramString2, ", e = ", paramVafContext });
-    }
-    return null;
-    return null;
+    return this.jdField_a_of_type_JavaLangNumber;
   }
   
-  public static TemplateBean a(VafContext paramVafContext, JSONObject paramJSONObject, String paramString)
+  public final boolean a()
   {
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, data = ", paramJSONObject, ", serviceID = ", paramString });
-    syz localsyz = (syz)paramVafContext.getTemplateFactory();
-    paramVafContext = localsyz;
-    if (localsyz == null) {
-      paramVafContext = syz.a(paramString, true);
+    int i = UIUtils.getScreenWidth(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+    Number localNumber = this.jdField_a_of_type_JavaLangNumber;
+    if (!(localNumber instanceof Integer)) {}
+    while (i != ((Integer)localNumber).intValue()) {
+      return false;
     }
-    if (paramVafContext != null) {}
-    try
-    {
-      paramVafContext = paramVafContext.getTemplateBean(paramJSONObject);
-      return paramVafContext;
-    }
-    catch (JSONException paramVafContext)
-    {
-      QLog.e("ProteusSupportUtilBase", 1, new Object[] { "getTemplateBean failed, data = ", paramJSONObject, ", serviceID = ", paramString, ", e = ", paramVafContext });
-    }
-    return null;
-    return null;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty(paramString)) {
-      return localJSONObject;
-    }
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getProteusDynamicData data = ", paramString });
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = paramString.opt(str);
-        if (localObject != null) {
-          localJSONObject.put(str, localObject);
-        }
-      }
-      return localJSONObject;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.d("ProteusSupportUtilBase", 2, "getProteusDynamicData e = ", paramString);
-    }
-  }
-  
-  public static void a(ProteusItemView paramProteusItemView, VafContext paramVafContext, String paramString1, String paramString2)
-  {
-    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
-    {
-      QLog.d("ProteusSupportUtilBase", 1, new Object[] { "bindData proteusItemVIew is null, data = ", paramString2 });
-      return;
-    }
-    TemplateBean localTemplateBean = paramProteusItemView.a();
-    paramString1 = a(paramVafContext, a(paramString2), paramString1);
-    if ((localTemplateBean != null) && (paramString1 != null) && (!paramString1.equals(localTemplateBean)))
-    {
-      paramString2 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
-      if (paramString2 != null)
-      {
-        paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841733));
-        paramProteusItemView.d();
-        paramProteusItemView.a(paramString2);
-      }
-    }
-    paramProteusItemView = paramProteusItemView.a();
-    paramProteusItemView.setTag(2131375968, paramString1);
-    if (paramString1 != null) {
-      ozp.a(paramProteusItemView, localTemplateBean, paramString1);
-    }
-    ozp.a(paramProteusItemView, paramVafContext, paramString1);
+    return true;
   }
 }
 

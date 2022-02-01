@@ -1,36 +1,15 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class awzq
-  extends FragmentPagerAdapter
+  implements Handler.Callback
 {
-  private List<Fragment> jdField_a_of_type_JavaUtilList;
+  awzq(awzp paramawzp) {}
   
-  awzq(FragmentManager paramFragmentManager, List<Fragment> paramList)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramList);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  Fragment a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    awzp.a(this.a, paramMessage);
+    return true;
   }
 }
 

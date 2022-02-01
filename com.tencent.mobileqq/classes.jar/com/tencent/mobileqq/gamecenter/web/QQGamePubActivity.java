@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.gamecenter.web;
 
 import Override;
-import alvx;
+import amwn;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import aoye;
+import aqbi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -14,8 +14,8 @@ public class QQGamePubActivity
 {
   static
   {
-    aoye.a(true);
-    aoye.a();
+    aqbi.a(true);
+    aqbi.a();
   }
   
   @Override
@@ -29,7 +29,7 @@ public class QQGamePubActivity
   
   public AppInterface getAppInterface()
   {
-    return alvx.a();
+    return amwn.a();
   }
   
   @Override

@@ -1,28 +1,15 @@
-import android.graphics.Bitmap;
-import android.graphics.RectF;
-import android.view.View;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import java.util.List;
 
-public abstract interface ndn
+public class ndn
 {
-  public abstract int a();
+  public int a;
+  public String a;
+  public List<RoomInfo> a;
+  public int b;
+  public int c;
   
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(RectF paramRectF);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, Bitmap paramBitmap1, String paramString2, long paramLong1, long paramLong2, long paramLong3, Bitmap paramBitmap2, long paramLong4, boolean paramBoolean);
-  
-  public abstract void a(String paramString, RectF paramRectF, int paramInt);
-  
-  public abstract void b(RectF paramRectF);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(String paramString, RectF paramRectF, int paramInt);
+  public ndn(ndm paramndm) {}
 }
 
 

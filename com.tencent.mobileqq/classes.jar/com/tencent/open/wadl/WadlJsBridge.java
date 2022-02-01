@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import abet;
+import abuf;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -9,20 +9,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bftf;
-import biao;
-import biap;
-import bide;
-import bidf;
-import bifn;
-import bifp;
-import bifq;
-import bifr;
-import bifs;
-import bift;
-import bldt;
-import bldu;
-import blec;
+import bhbx;
+import bjlq;
+import bjlr;
+import bjog;
+import bjoh;
+import bjqp;
+import bjqr;
+import bjqs;
+import bjqt;
+import bjqu;
+import bjqv;
+import bmqk;
+import bmql;
+import bmqt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
 import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
@@ -39,14 +39,14 @@ import org.json.JSONObject;
 
 public class WadlJsBridge
   extends BaseInterface
-  implements biao
+  implements bjlq
 {
   private static WadlJsBridge jdField_a_of_type_ComTencentOpenWadlWadlJsBridge;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bidf jdField_a_of_type_Bidf;
-  private bifs jdField_a_of_type_Bifs;
-  private bift jdField_a_of_type_Bift;
+  private bjoh jdField_a_of_type_Bjoh;
+  private bjqu jdField_a_of_type_Bjqu;
+  private bjqv jdField_a_of_type_Bjqv;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
@@ -56,53 +56,53 @@ public class WadlJsBridge
     this(paramActivity, paramWebView, null);
   }
   
-  public WadlJsBridge(Activity paramActivity, WebView paramWebView, bift parambift)
+  public WadlJsBridge(Activity paramActivity, WebView paramWebView, bjqv parambjqv)
   {
-    bifn.c("WadlJsBridge", "wadlJsBridge init");
+    bjqp.c("WadlJsBridge", "wadlJsBridge init");
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Bifs = new bifs(this.jdField_a_of_type_AndroidAppActivity, paramWebView);
-    bldt.a();
+    this.jdField_a_of_type_Bjqu = new bjqu(this.jdField_a_of_type_AndroidAppActivity, paramWebView);
+    bmqk.a();
     if ((paramActivity != null) && (paramWebView != null))
     {
-      biap.a().a(this);
+      bjlr.a().a(this);
       this.jdField_a_of_type_Boolean = true;
     }
-    bifn.c("WadlJsBridge", "wadlJsBridge init needJSCallBack=" + this.jdField_a_of_type_Boolean);
-    paramActivity = parambift;
-    if (parambift == null) {
-      paramActivity = new bift(this.jdField_a_of_type_Boolean, this);
+    bjqp.c("WadlJsBridge", "wadlJsBridge init needJSCallBack=" + this.jdField_a_of_type_Boolean);
+    paramActivity = parambjqv;
+    if (parambjqv == null) {
+      paramActivity = new bjqv(this.jdField_a_of_type_Boolean, this);
     }
-    this.jdField_a_of_type_Bift = paramActivity;
-    bldt.a(this.jdField_a_of_type_Bift);
-    blec.a().a(this.jdField_a_of_type_Bift);
+    this.jdField_a_of_type_Bjqv = paramActivity;
+    bmqk.a(this.jdField_a_of_type_Bjqv);
+    bmqt.a().a(this.jdField_a_of_type_Bjqv);
   }
   
   public static void startDownload(String paramString, boolean paramBoolean, int paramInt)
   {
-    bifn.c("WadlJsBridge", "##@startDownload(Delay Task):" + paramString + " ," + paramBoolean + "," + paramInt + ",isWiFi=" + AppNetConnInfo.isWifiConn());
+    bjqp.c("WadlJsBridge", "##@startDownload(Delay Task):" + paramString + " ," + paramBoolean + "," + paramInt + ",isWiFi=" + AppNetConnInfo.isWifiConn());
     if (jdField_a_of_type_ComTencentOpenWadlWadlJsBridge == null) {
       jdField_a_of_type_ComTencentOpenWadlWadlJsBridge = new WadlJsBridge(null, null);
     }
-    jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jdField_a_of_type_Bifs.a(paramString, paramBoolean, paramInt);
+    jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jdField_a_of_type_Bjqu.a(paramString, paramBoolean, paramInt);
   }
   
-  public bifs a()
+  public bjqu a()
   {
-    return this.jdField_a_of_type_Bifs;
+    return this.jdField_a_of_type_Bjqu;
   }
   
   public void checkUpdate(String paramString)
   {
-    bifn.c("WadlJsBridge", "checkUpdate params=" + paramString);
+    bjqp.c("WadlJsBridge", "checkUpdate params=" + paramString);
     checkUpdate(paramString, "");
   }
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    bifn.c("WadlJsBridge", "checkUpdate params=" + paramString1 + ",guid=" + paramString2);
+    bjqp.c("WadlJsBridge", "checkUpdate params=" + paramString1 + ",guid=" + paramString2);
     if (!hasRight()) {
       return;
     }
@@ -124,17 +124,17 @@ public class WadlJsBridge
           i += 1;
         }
       }
-      if (this.jdField_a_of_type_Bidf == null)
+      if (this.jdField_a_of_type_Bjoh == null)
       {
-        this.jdField_a_of_type_Bidf = new bifr(this, paramString1);
-        bide.a().a(this.jdField_a_of_type_Bidf);
+        this.jdField_a_of_type_Bjoh = new bjqt(this, paramString1);
+        bjog.a().a(this.jdField_a_of_type_Bjoh);
       }
-      bide.a().a(paramString2);
+      bjog.a().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
     {
-      bifn.a("WadlJsBridge", "##@httpRequest JSONException", paramString1);
+      bjqp.a("WadlJsBridge", "##@httpRequest JSONException", paramString1);
     }
   }
   
@@ -147,14 +147,14 @@ public class WadlJsBridge
   
   public void delDelayDownloadTasks(String paramString)
   {
-    bifn.c("WadlJsBridge", "enter delDelayDownloadTasks()");
+    bjqp.c("WadlJsBridge", "enter delDelayDownloadTasks()");
     try
     {
       paramString = new JSONObject(paramString).getJSONArray("tasks");
       int i = 0;
       while (i < paramString.length())
       {
-        abet.b(paramString.get(i).toString(), "DELAY_LIST");
+        abuf.b(paramString.get(i).toString(), "DELAY_LIST");
         i += 1;
       }
       jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.delDelayDownloadTasks',{\"result\" : 0 });}void(0);");
@@ -162,55 +162,55 @@ public class WadlJsBridge
     }
     catch (Exception paramString)
     {
-      bifn.a("WadlJsBridge", "delDelayDownloadTasks>>>", paramString);
+      bjqp.a("WadlJsBridge", "delDelayDownloadTasks>>>", paramString);
     }
   }
   
   public void deleteDownload(String paramString1, String paramString2)
   {
-    bifn.c("WadlJsBridge", "deleteDownload appid=" + paramString1 + ", sendTime=" + paramString2);
-    bldt.a().c(0, paramString1);
+    bjqp.c("WadlJsBridge", "deleteDownload appid=" + paramString1 + ", sendTime=" + paramString2);
+    bmqk.a().c(0, paramString1);
   }
   
   public void destroy()
   {
-    bifn.c("WadlJsBridge", "##@doOnDestroy()");
+    bjqp.c("WadlJsBridge", "##@doOnDestroy()");
     super.doOnDestroy();
     this.jdField_a_of_type_Boolean = false;
     if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      biap.a().b(this);
+      bjlr.a().b(this);
     }
-    bldt.b(this.jdField_a_of_type_Bift);
-    if (this.jdField_a_of_type_Bidf != null)
+    bmqk.b(this.jdField_a_of_type_Bjqv);
+    if (this.jdField_a_of_type_Bjoh != null)
     {
-      bide.a().b(this.jdField_a_of_type_Bidf);
-      this.jdField_a_of_type_Bidf = null;
+      bjog.a().b(this.jdField_a_of_type_Bjoh);
+      this.jdField_a_of_type_Bjoh = null;
     }
-    blec.a().b(this.jdField_a_of_type_Bift);
+    bmqt.a().b(this.jdField_a_of_type_Bjqv);
   }
   
   public int doDownloadAction(String paramString)
   {
-    bifn.a("WadlJsBridge", 1, "receive webview js call=" + paramString);
+    bjqp.a("WadlJsBridge", 1, "receive webview js call=" + paramString);
     String str = "";
     if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
       str = this.jdField_a_of_type_ComTencentSmttSdkWebView.getUrl();
     }
-    int i = this.jdField_a_of_type_Bifs.a(paramString, true, 0, str);
-    bifn.c("WadlJsBridge", "doDownloadAction result=" + i);
+    int i = this.jdField_a_of_type_Bjqu.a(paramString, true, 0, str);
+    bjqp.c("WadlJsBridge", "doDownloadAction result=" + i);
     return i;
   }
   
   public void doGCDownloadAction(String paramString)
   {
-    bifn.c("WadlJsBridge", "enter doGCDownloadAction(String pParamsJson)");
+    bjqp.c("WadlJsBridge", "enter doGCDownloadAction(String pParamsJson)");
     doDownloadAction(paramString);
   }
   
   public String getAppVersionCode(String paramString)
   {
-    bifn.c("WadlJsBridge", "##@getAppVersionCode packageName=" + paramString);
-    int i = abet.a(paramString);
+    bjqp.c("WadlJsBridge", "##@getAppVersionCode packageName=" + paramString);
+    int i = abuf.a(paramString);
     if (i == -1) {
       return "";
     }
@@ -219,8 +219,8 @@ public class WadlJsBridge
   
   public String getAppVersionName(String paramString)
   {
-    bifn.c("WadlJsBridge", "##@getAppVersionName:" + paramString);
-    paramString = abet.a(paramString);
+    bjqp.c("WadlJsBridge", "##@getAppVersionName:" + paramString);
+    paramString = abuf.a(paramString);
     if (paramString != null) {
       return paramString.versionName + "";
     }
@@ -231,7 +231,7 @@ public class WadlJsBridge
   {
     try
     {
-      long l = bftf.b();
+      long l = bhbx.b();
       return l;
     }
     catch (Exception localException) {}
@@ -240,8 +240,8 @@ public class WadlJsBridge
   
   public void getDelayDownloadTasks()
   {
-    bifn.c("WadlJsBridge", "##@getDelayDownloadTasks() BEGIN");
-    Object localObject = abet.a("DELAY_LIST");
+    bjqp.c("WadlJsBridge", "##@getDelayDownloadTasks() BEGIN");
+    Object localObject = abuf.a("DELAY_LIST");
     JSONArray localJSONArray = new JSONArray();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -263,19 +263,19 @@ public class WadlJsBridge
           {
             for (;;)
             {
-              bifn.a("WadlJsBridge", "getDelayDownloadTasks>>>", localJSONException);
+              bjqp.a("WadlJsBridge", "getDelayDownloadTasks>>>", localJSONException);
             }
           }
         }
       }
     }
     jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getDelayDownloadTasks',{\"result\" : 0, \"task\":" + localJSONArray.toString() + "});}void(0);");
-    bifn.c("WadlJsBridge", "##@getDelayDownloadTasks() END");
+    bjqp.c("WadlJsBridge", "##@getDelayDownloadTasks() END");
   }
   
   public String getDownloadVersion()
   {
-    bifn.c("WadlJsBridge", "enter getDownloadVersion");
+    bjqp.c("WadlJsBridge", "enter getDownloadVersion");
     String str = String.valueOf(4);
     jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getDownloadVersion',{\"version\":\"" + str + "\",\"r\":\"-1\"});}void(0);");
     return str;
@@ -283,7 +283,7 @@ public class WadlJsBridge
   
   public void getInstalledAppVersionCode(String paramString1, String paramString2)
   {
-    bifn.c("WadlJsBridge", "getInstalledAppVersionCode packageNameJsonStr=" + paramString1 + ",guid=" + paramString2);
+    bjqp.c("WadlJsBridge", "getInstalledAppVersionCode packageNameJsonStr=" + paramString1 + ",guid=" + paramString2);
     if (!hasRight()) {
       return;
     }
@@ -314,7 +314,7 @@ public class WadlJsBridge
           str1 = paramString1;
           String str3 = localJSONArray1.getString(i);
           str1 = paramString1;
-          Object localObject2 = abet.a(str3);
+          Object localObject2 = abuf.a(str3);
           String str2 = "";
           localObject1 = "";
           paramString2 = "";
@@ -325,7 +325,7 @@ public class WadlJsBridge
             str1 = paramString1;
             localObject1 = ((PackageInfo)localObject2).versionName;
             str1 = paramString1;
-            paramString2 = abet.d(abet.c(str3));
+            paramString2 = abuf.d(abuf.c(str3));
           }
           str1 = paramString1;
           localObject2 = new JSONObject();
@@ -388,12 +388,12 @@ public class WadlJsBridge
       }
       catch (Exception paramString)
       {
-        bifn.a("WadlJsBridge", "query getQueryDownloadAction>>>", paramString);
+        bjqp.a("WadlJsBridge", "query getQueryDownloadAction>>>", paramString);
         return;
       }
       if (localArrayList.size() > 0)
       {
-        bldt.a().a(localArrayList);
+        bmqk.a().a(localArrayList);
         return;
         label99:
         i += 1;
@@ -403,31 +403,31 @@ public class WadlJsBridge
   
   public void getQueryDownloadAction(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bifs.a(paramString1, paramString2);
+    this.jdField_a_of_type_Bjqu.a(paramString1, paramString2);
   }
   
   public void getQueryDownloadActionByVia(String paramString)
   {
     if ("ALL_TASK_QUERY_IDENTITY".equals(paramString))
     {
-      bldt.a().a("ALL_TASK_QUERY_IDENTITY");
+      bmqk.a().a("ALL_TASK_QUERY_IDENTITY");
       return;
     }
     try
     {
       paramString = new JSONObject(paramString).getString("via");
-      bldt.a().a(paramString);
+      bmqk.a().a(paramString);
       return;
     }
     catch (Exception paramString)
     {
-      bifn.a("WadlJsBridge", "query getQueryDownloadActionByVia>>>", paramString);
+      bjqp.a("WadlJsBridge", "query getQueryDownloadActionByVia>>>", paramString);
     }
   }
   
   public String getValidWebSsoCmds(String paramString)
   {
-    paramString = (bifp)bifq.a().a("comminfo");
+    paramString = (bjqr)bjqs.a().a("comminfo");
     JSONArray localJSONArray;
     if (paramString != null)
     {
@@ -446,14 +446,14 @@ public class WadlJsBridge
         }
         catch (Throwable paramString)
         {
-          bifn.a("WadlJsBridge", "getValidWebSsoCmds>>>", paramString);
+          bjqp.a("WadlJsBridge", "getValidWebSsoCmds>>>", paramString);
         }
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        bifn.c("WadlJsBridge", "getValidWebSsoCmds...cmdsJsonStr=" + paramString);
+        bjqp.c("WadlJsBridge", "getValidWebSsoCmds...cmdsJsonStr=" + paramString);
       }
       return paramString;
       paramString = null;
@@ -470,7 +470,7 @@ public class WadlJsBridge
   public boolean isFirstTimeEntry()
   {
     boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("wadl_jstask_file", 0).getBoolean("firstTime", true);
-    bifn.c("WadlJsBridge", "##@firstTime entry:" + bool);
+    bjqp.c("WadlJsBridge", "##@firstTime entry:" + bool);
     return bool;
   }
   
@@ -488,40 +488,40 @@ public class WadlJsBridge
   
   public void queryAllDownloadTask()
   {
-    bldt.a().b();
+    bmqk.a().b();
   }
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    bifn.c("WadlJsBridge", "enter registerDownloadCallBackListener");
+    bjqp.c("WadlJsBridge", "enter registerDownloadCallBackListener");
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void requestWebSso(String paramString)
   {
     if (QLog.isColorLevel()) {
-      bifn.c("WadlJsBridge", "requestWebSso...jsonParams=" + paramString);
+      bjqp.c("WadlJsBridge", "requestWebSso...jsonParams=" + paramString);
     }
     try
     {
       paramString = new JSONObject(paramString);
       String str = paramString.getString("webssoCmdId");
       JSONObject localJSONObject = paramString.getJSONObject("webssoReq");
-      paramString = (bifp)bifq.a().a("comminfo");
+      paramString = (bjqr)bjqs.a().a("comminfo");
       if (paramString != null) {}
-      for (paramString = paramString.a(); (TextUtils.isEmpty(str)) || (paramString == null) || (!paramString.contains(str)); paramString = blec.a)
+      for (paramString = paramString.a(); (TextUtils.isEmpty(str)) || (paramString == null) || (!paramString.contains(str)); paramString = bmqt.a)
       {
         jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.requestWebSso',{\"cmd\": " + str + ", \"webssoReq\":" + localJSONObject.toString() + ", \"ret\":-2});}void(0);");
         return;
       }
       paramString = new Bundle();
       paramString.putString("webssoReqJson", localJSONObject.toString());
-      blec.a().a(str, localJSONObject, paramString);
+      bmqt.a().a(str, localJSONObject, paramString);
       return;
     }
     catch (Exception paramString)
     {
-      bifn.a("WadlJsBridge", "requestWebSso>>>", paramString);
+      bjqp.a("WadlJsBridge", "requestWebSso>>>", paramString);
     }
   }
   

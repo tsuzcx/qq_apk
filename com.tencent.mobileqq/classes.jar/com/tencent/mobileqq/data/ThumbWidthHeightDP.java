@@ -44,14 +44,14 @@ public class ThumbWidthHeightDP
     return new ThumbWidthHeightDP(i, i, j, j);
   }
   
-  public static ThumbWidthHeightDP getThumbWidthHeightDPForPicMsg(boolean paramBoolean1, boolean paramBoolean2)
+  public static ThumbWidthHeightDP getThumbWidthHeightDPForPicMsg(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (!paramBoolean2) {
       return getThumbWidthHeightDP(paramBoolean1);
     }
-    int i = AIOImgThumbHelper.getAioThumbMinDp(paramBoolean1, paramBoolean2);
-    int j = AIOImgThumbHelper.getAioThumbMaxDp(paramBoolean1, paramBoolean2);
-    return new ThumbWidthHeightDP(i, i, j, j);
+    int i = AIOImgThumbHelper.getAioThumbMinDp(paramBoolean1, paramBoolean2, paramInt);
+    paramInt = AIOImgThumbHelper.getAioThumbMaxDp(paramBoolean1, paramBoolean2, paramInt);
+    return new ThumbWidthHeightDP(i, i, paramInt, paramInt);
   }
   
   public static RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, DownloadParams paramDownloadParams, ThumbWidthHeightDP paramThumbWidthHeightDP, boolean paramBoolean)
@@ -202,7 +202,7 @@ public class ThumbWidthHeightDP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ThumbWidthHeightDP
  * JD-Core Version:    0.7.0.1
  */

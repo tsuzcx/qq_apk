@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.gallery.picocr;
 
 import android.text.TextUtils;
-import atvq;
-import atvt;
-import atvu;
-import atvx;
-import atvy;
+import avaq;
+import avat;
+import avau;
+import avaw;
+import avax;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class PicOcrManager$3
   implements Runnable
 {
-  public PicOcrManager$3(atvq paramatvq, atvt paramatvt, atvu paramatvu) {}
+  public PicOcrManager$3(avaq paramavaq, avat paramavat, avau paramavau) {}
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Atvt.d)) || (this.jdField_a_of_type_Atvt.a))
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Avat.d)) || (this.jdField_a_of_type_Avat.a))
     {
-      this.jdField_a_of_type_Atvt.d = atvy.a(this.jdField_a_of_type_Atvt.b);
-      this.jdField_a_of_type_Atvt.a = false;
+      this.jdField_a_of_type_Avat.d = avax.a(this.jdField_a_of_type_Avat.b);
+      this.jdField_a_of_type_Avat.a = false;
     }
-    if (!atvq.a(this.this$0).isEmpty())
+    if (!avaq.a(this.this$0).isEmpty())
     {
-      atvx localatvx = this.this$0.a(this.jdField_a_of_type_Atvt.d);
-      if (localatvx != null)
+      avaw localavaw = this.this$0.a(this.jdField_a_of_type_Avat.d);
+      if (localavaw != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localatvx.toString());
+          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localavaw.toString());
         }
-        this.jdField_a_of_type_Atvu.a(localatvx);
+        this.jdField_a_of_type_Avau.a(localavaw);
         return;
       }
     }
-    atvq.a(this.this$0, this.jdField_a_of_type_Atvu, this.jdField_a_of_type_Atvt);
-    if (this.jdField_a_of_type_Atvt.a())
+    avaq.a(this.this$0, this.jdField_a_of_type_Avau, this.jdField_a_of_type_Avat);
+    if (this.jdField_a_of_type_Avat.a())
     {
-      this.this$0.a(this.jdField_a_of_type_Atvu, this.jdField_a_of_type_Atvt);
-      this.jdField_a_of_type_Atvu.a();
+      this.this$0.a(this.jdField_a_of_type_Avau, this.jdField_a_of_type_Avat);
+      this.jdField_a_of_type_Avau.a();
       return;
     }
-    this.jdField_a_of_type_Atvu.onUpdate(100, false, new atvx());
+    this.jdField_a_of_type_Avau.onUpdate(100, false, new avaw());
   }
 }
 

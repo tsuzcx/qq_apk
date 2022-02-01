@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
-import adxr;
-import adxs;
+import aeow;
+import aeox;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -40,15 +40,15 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhhi;
-import bjne;
-import bljh;
-import bljs;
-import bljt;
-import bmbc;
-import bmbv;
-import bmbx;
-import bodl;
+import bisa;
+import bkyq;
+import bmwf;
+import bmws;
+import bmwt;
+import bnqm;
+import bnrf;
+import bnrh;
+import bptd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -84,11 +84,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Timer;
-import ypi;
+import zeb;
 
 public class AEVideoShelfEditFragment
   extends PublicBaseFragment
-  implements adxs, View.OnClickListener, EditTextViewer.OnDownloadDialogListener, EditTextViewer.OnSaveTextInfoListener, FaceImageViewer.OnSaveScrollInfoListener, ScaleMoveImageViewer.OnSaveScrollInfoListener
+  implements aeox, View.OnClickListener, EditTextViewer.OnDownloadDialogListener, EditTextViewer.OnSaveTextInfoListener, FaceImageViewer.OnSaveScrollInfoListener, ScaleMoveImageViewer.OnSaveScrollInfoListener
 {
   private static int AUDIO_UPDATE_PROGRESS_TIME = 200;
   private static final long INTERVAL_UPDATE_PROGRESS = 200L;
@@ -140,7 +140,7 @@ public class AEVideoShelfEditFragment
   private VideoListAdapter mVideoListAdapter;
   private String outputDir;
   private String playShowTabName;
-  bhhi ppd;
+  bisa ppd;
   
   private void checkJumpToPreview(Intent paramIntent)
   {
@@ -176,21 +176,21 @@ public class AEVideoShelfEditFragment
     }
   }
   
-  private bhhi createProgressPie()
+  private bisa createProgressPie()
   {
-    bhhi localbhhi = new bhhi(getActivity());
-    localbhhi.a(AIOUtils.dp2px(50.0F, getActivity().getResources()));
-    localbhhi.a(true);
-    localbhhi.c(false);
-    localbhhi.g(-1);
-    localbhhi.f(0);
-    localbhhi.d(-15550475);
-    localbhhi.i(3);
-    localbhhi.jdField_f_of_type_Boolean = true;
-    localbhhi.jdField_f_of_type_Int = 2;
-    localbhhi.e(true);
-    localbhhi.a(new AEVideoShelfEditFragment.3(this));
-    return localbhhi;
+    bisa localbisa = new bisa(getActivity());
+    localbisa.a(AIOUtils.dp2px(50.0F, getActivity().getResources()));
+    localbisa.a(true);
+    localbisa.c(false);
+    localbisa.g(-1);
+    localbisa.f(0);
+    localbisa.d(-15550475);
+    localbisa.i(3);
+    localbisa.jdField_f_of_type_Boolean = true;
+    localbisa.jdField_f_of_type_Int = 2;
+    localbisa.e(true);
+    localbisa.a(new AEVideoShelfEditFragment.3(this));
+    return localbisa;
   }
   
   private void detectFaceInternal(FaceImageViewer paramFaceImageViewer, Bitmap paramBitmap)
@@ -211,7 +211,7 @@ public class AEVideoShelfEditFragment
       ((FaceParam)localObject3).angles = ((FaceInfo)localObject2).angles;
       ((List)localObject1).add(localObject3);
     }
-    bmbx.a("AEVideoShelfEditFrag", "[PlayShow] onFaceImageChanged faceCount = " + i);
+    bnrh.a("AEVideoShelfEditFrag", "[PlayShow] onFaceImageChanged faceCount = " + i);
     if (i >= 1)
     {
       paramBitmap = (FaceParam)((List)localObject1).get(0);
@@ -229,9 +229,9 @@ public class AEVideoShelfEditFragment
     for (;;)
     {
       break;
-      bjne.a(new AEVideoShelfEditFragment.10(this, paramFaceImageViewer, paramBitmap));
+      bkyq.a(new AEVideoShelfEditFragment.10(this, paramFaceImageViewer, paramBitmap));
       return;
-      bjne.a(new AEVideoShelfEditFragment.11(this));
+      bkyq.a(new AEVideoShelfEditFragment.11(this));
       return;
     }
   }
@@ -279,7 +279,7 @@ public class AEVideoShelfEditFragment
         if (!bool) {
           break label290;
         }
-        localObject1 = bljh.a(bljh.a());
+        localObject1 = bmwf.a(bmwf.a());
         localStringBuilder = new StringBuilder().append("outputDir: ").append((String)localObject1);
         if (!new File((String)localObject1).exists()) {
           break label319;
@@ -289,15 +289,15 @@ public class AEVideoShelfEditFragment
       label319:
       for (Object localObject2 = " exist";; localObject2 = " not exist")
       {
-        bmbx.b("AEVideoShelfEditFrag", (String)localObject2);
+        bnrh.b("AEVideoShelfEditFrag", (String)localObject2);
         this.mTimer = new Timer();
         this.mTimer.schedule(new AEVideoShelfEditFragment.16(this), 0L, AUDIO_UPDATE_PROGRESS_TIME);
-        if (bodl.a(this.mEngine.getOutputVideoPath(), this.mAudioPath, (String)localObject1, 0) == 0)
+        if (bptd.a(this.mEngine.getOutputVideoPath(), this.mAudioPath, (String)localObject1, 0) == 0)
         {
           localObject2 = new File(this.mEngine.getOutputVideoPath());
           if (((File)localObject2).exists())
           {
-            bmbx.b("AEVideoShelfEditFrag", "finishAudioVideoMerge done!");
+            bnrh.b("AEVideoShelfEditFrag", "finishAudioVideoMerge done!");
             ((File)localObject2).delete();
           }
           this.mFinalVideoPath = ((String)localObject1);
@@ -307,9 +307,9 @@ public class AEVideoShelfEditFragment
         if ((!bool) || (this.mFinalVideoPath == null)) {
           break;
         }
-        ypi.a(BaseApplication.getContext(), new File(this.mFinalVideoPath));
+        zeb.a(BaseApplication.getContext(), new File(this.mFinalVideoPath));
         return;
-        localObject1 = bljh.a(bljt.e + File.separator);
+        localObject1 = bmwf.a(bmwt.e + File.separator);
         break label108;
       }
     }
@@ -546,7 +546,7 @@ public class AEVideoShelfEditFragment
       }
     } while (!(paramImageView instanceof EditTextViewer));
     ((EditTextViewer)paramImageView).updateMatrix(Math.abs(paramInt1 - i), Math.abs(paramInt2 - j));
-    paramInt1 = getResources().getDimensionPixelSize(2131296719);
+    paramInt1 = getResources().getDimensionPixelSize(2131296720);
     ((EditTextViewer)paramImageView).setActionBarHeight(paramInt1);
   }
   
@@ -723,7 +723,7 @@ public class AEVideoShelfEditFragment
     this.mTemplate = TemplateParser.parse(getActivity(), this.mTemplatePath);
     if (this.mTemplate == null)
     {
-      bmbx.c("AEVideoShelfEditFrag", "parse template Error!");
+      bnrh.c("AEVideoShelfEditFrag", "parse template Error!");
       return;
     }
     try
@@ -731,7 +731,7 @@ public class AEVideoShelfEditFragment
       this.mEngine = new VideoShelfEngine(this.mTemplate.getVersion());
       if (this.mEngine == null)
       {
-        bmbx.c("AEVideoShelfEditFrag", "init Engine Error!");
+        bnrh.c("AEVideoShelfEditFrag", "init Engine Error!");
         return;
       }
     }
@@ -740,8 +740,8 @@ public class AEVideoShelfEditFragment
       for (;;)
       {
         this.mEngine = null;
-        bmbx.d("AEVideoShelfEditFrag", localPagNotSupportSystemException.getMessage());
-        bjne.a(new AEVideoShelfEditFragment.4(this), 2000L);
+        bnrh.d("AEVideoShelfEditFrag", localPagNotSupportSystemException.getMessage());
+        bkyq.a(new AEVideoShelfEditFragment.4(this), 2000L);
       }
       new AEVideoShelfEditFragment.5(this).execute(new Void[0]);
     }
@@ -842,11 +842,11 @@ public class AEVideoShelfEditFragment
       }
     }
     this.mDialog.requestWindowFeature(1);
-    this.mDialog.setContentView(2131561794);
-    localObject = (ImageView)this.mDialog.findViewById(2131373009);
+    this.mDialog.setContentView(2131561862);
+    localObject = (ImageView)this.mDialog.findViewById(2131373219);
     this.ppd = createProgressPie();
     ((ImageView)localObject).setImageDrawable(this.ppd);
-    ((TextView)this.mDialog.findViewById(2131371413)).setText(2131689776);
+    ((TextView)this.mDialog.findViewById(2131371598)).setText(2131689785);
     this.mDialog.setCancelable(true);
     this.mDialog.setCanceledOnTouchOutside(false);
     this.mDialog.setOnCancelListener(new AEVideoShelfEditFragment.2(this));
@@ -880,15 +880,15 @@ public class AEVideoShelfEditFragment
   
   private void initView()
   {
-    this.mButtonCancel = getActivity().findViewById(2131363260);
-    this.mButtonOk = ((TextView)getActivity().findViewById(2131363946));
-    this.mButtonOk.setText(2131689762);
+    this.mButtonCancel = getActivity().findViewById(2131363323);
+    this.mButtonOk = ((TextView)getActivity().findViewById(2131364020));
+    this.mButtonOk.setText(2131689771);
     this.mButtonOk.setOnClickListener(this);
     this.mButtonCancel.setOnClickListener(this);
-    this.mButtonChangeImage = getActivity().findViewById(2131365864);
+    this.mButtonChangeImage = getActivity().findViewById(2131365963);
     this.mButtonChangeImage.setOnClickListener(this);
-    this.mCenterView = ((RelativeLayout)getActivity().findViewById(2131364338));
-    this.mBoxRecycleView = ((RecyclerView)getActivity().findViewById(2131363660));
+    this.mCenterView = ((RelativeLayout)getActivity().findViewById(2131364419));
+    this.mBoxRecycleView = ((RecyclerView)getActivity().findViewById(2131363729));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getActivity());
     localLinearLayoutManager.setOrientation(0);
     this.mBoxRecycleView.addItemDecoration(new AEVideoShelfEditFragment.SpacesItemDecoration(this, dp2px(getActivity(), 12.0F)));
@@ -922,7 +922,7 @@ public class AEVideoShelfEditFragment
     localIntent.putStringArrayListExtra("PhotoList", paramArrayList);
     localIntent.putExtra("jump_in_from", paramInt);
     localIntent.putExtra("loc_play_show_take_same_name", paramString5);
-    adxr.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class);
+    aeow.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class);
   }
   
   public static void jumpToMeForResult(Activity paramActivity, int paramInt1, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, int paramInt2)
@@ -933,13 +933,13 @@ public class AEVideoShelfEditFragment
     localIntent.putExtra("MaterialName", paramString3);
     localIntent.putStringArrayListExtra("PhotoList", paramArrayList);
     localIntent.putExtra("jump_in_from", paramInt2);
-    adxr.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class, paramInt1);
+    aeow.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class, paramInt1);
   }
   
   private void jumpToPagRealtimePreview()
   {
     Log.i("AEVideoShelfEditFrag", "未合成视频，将直接实时预览。");
-    bmbx.b("AEVideoShelfEditFrag", "未合成视频，将直接实时预览。");
+    bnrh.b("AEVideoShelfEditFrag", "未合成视频，将直接实时预览。");
     if (this.mTemplate == null) {
       return;
     }
@@ -952,7 +952,7 @@ public class AEVideoShelfEditFragment
     {
       wakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(536870918, AEVideoShelfEditFragment.class.getSimpleName());
       wakeLock.acquire();
-      bmbx.b("AEVideoShelfEditFrag", "keepScreenOn!");
+      bnrh.b("AEVideoShelfEditFrag", "keepScreenOn!");
       return;
     }
     if (wakeLock != null)
@@ -960,7 +960,7 @@ public class AEVideoShelfEditFragment
       wakeLock.release();
       wakeLock = null;
     }
-    bmbx.b("AEVideoShelfEditFrag", "keepScreenOff!");
+    bnrh.b("AEVideoShelfEditFrag", "keepScreenOff!");
   }
   
   private static void layoutView(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1145,7 +1145,7 @@ public class AEVideoShelfEditFragment
     //   118: invokevirtual 1520	java/io/IOException:toString	()Ljava/lang/String;
     //   121: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 1026	bmbx:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   127: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   130: goto -62 -> 68
     //   133: astore_3
     //   134: aload_3
@@ -1160,7 +1160,7 @@ public class AEVideoShelfEditFragment
     //   154: invokevirtual 1526	java/io/FileNotFoundException:toString	()Ljava/lang/String;
     //   157: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 1026	bmbx:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   163: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   166: aconst_null
     //   167: astore_3
     //   168: goto -91 -> 77
@@ -1177,7 +1177,7 @@ public class AEVideoShelfEditFragment
     //   192: invokevirtual 1530	java/lang/Exception:toString	()Ljava/lang/String;
     //   195: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokestatic 1026	bmbx:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   201: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   204: aconst_null
     //   205: areturn
     //   206: astore_2
@@ -1193,7 +1193,7 @@ public class AEVideoShelfEditFragment
     //   227: invokevirtual 1520	java/io/IOException:toString	()Ljava/lang/String;
     //   230: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokestatic 1026	bmbx:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   236: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   239: goto -147 -> 92
     //   242: astore_2
     //   243: aload_2
@@ -1208,7 +1208,7 @@ public class AEVideoShelfEditFragment
     //   263: invokevirtual 1520	java/io/IOException:toString	()Ljava/lang/String;
     //   266: invokevirtual 530	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   269: invokevirtual 537	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   272: invokestatic 1026	bmbx:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   272: invokestatic 1026	bnrh:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   275: aload 4
     //   277: areturn
     // Local variable table:
@@ -1400,12 +1400,12 @@ public class AEVideoShelfEditFragment
     {
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new ReportDialog((Context)localObject, 2131755826);
+        this.mLoadingDialog = new ReportDialog((Context)localObject, 2131755829);
         this.mLoadingDialog.setCancelable(false);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
-        this.mLoadingDialog.setContentView(2131559574);
+        this.mLoadingDialog.setContentView(2131559607);
       }
-      localObject = (TextView)this.mLoadingDialog.findViewById(2131372546);
+      localObject = (TextView)this.mLoadingDialog.findViewById(2131372740);
       if (TextUtils.isEmpty(paramString)) {
         break label98;
       }
@@ -1416,7 +1416,7 @@ public class AEVideoShelfEditFragment
       this.mLoadingDialog.show();
       return;
       label98:
-      ((TextView)localObject).setText(2131694452);
+      ((TextView)localObject).setText(2131694653);
     }
   }
   
@@ -1432,7 +1432,7 @@ public class AEVideoShelfEditFragment
     if (!paramBoolean)
     {
       Log.i("AEVideoShelfEditFrag", "已经合成完视频，不进行实时预览。");
-      bmbx.b("AEVideoShelfEditFrag", "已经合成完视频，不进行实时预览。");
+      bnrh.b("AEVideoShelfEditFrag", "已经合成完视频，不进行实时预览。");
       if ((this.mTemplate == null) || (this.mFinalVideoPath == null)) {
         return;
       }
@@ -1501,29 +1501,29 @@ public class AEVideoShelfEditFragment
   
   public void onCancelCompleted()
   {
-    bmbx.b("AEVideoShelfEditFrag", "Merge Video step onCancelCompleted");
+    bnrh.b("AEVideoShelfEditFrag", "Merge Video step onCancelCompleted");
     this.mGenerateBegin = 0L;
-    bjne.a(new AEVideoShelfEditFragment.18(this));
+    bkyq.a(new AEVideoShelfEditFragment.18(this));
   }
   
   public void onClick(View paramView)
   {
-    if (bmbv.a(paramView)) {}
+    if (bnrf.a(paramView)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       int i = paramView.getId();
-      if (i == 2131363260)
+      if (i == 2131363323)
       {
         onBackPressed();
       }
-      else if (i == 2131363946)
+      else if (i == 2131364020)
       {
         goNext();
-        bmbc.a().g();
+        bnqm.a().g();
       }
-      else if (i == 2131365864)
+      else if (i == 2131365963)
       {
         onFirstImageViewClick(paramView);
       }
@@ -1537,13 +1537,13 @@ public class AEVideoShelfEditFragment
   
   public void onCompleted()
   {
-    bmbx.b("AEVideoShelfEditFrag", "Merge Video step onCompleted");
+    bnrh.b("AEVideoShelfEditFrag", "Merge Video step onCompleted");
     if (this.mGenerateBegin > 0L) {}
     for (long l = System.currentTimeMillis() - this.mGenerateBegin;; l = 0L)
     {
       this.mGenerateBegin = 0L;
       finishAudioVideoMerge();
-      bjne.a(new AEVideoShelfEditFragment.15(this, l));
+      bkyq.a(new AEVideoShelfEditFragment.15(this, l));
       startVideoTemplateSaveActivity(false);
       return;
     }
@@ -1551,7 +1551,7 @@ public class AEVideoShelfEditFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558493, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558504, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -1614,8 +1614,8 @@ public class AEVideoShelfEditFragment
   public void onError(int paramInt1, int paramInt2, String paramString)
   {
     this.mGenerateBegin = 0L;
-    bjne.a(new AEVideoShelfEditFragment.17(this));
-    bmbx.c("AEVideoShelfEditFrag", "Merge Video step onError");
+    bkyq.a(new AEVideoShelfEditFragment.17(this));
+    bnrh.c("AEVideoShelfEditFrag", "Merge Video step onError");
   }
   
   public void onNewIntent(Intent paramIntent)
@@ -1673,7 +1673,7 @@ public class AEVideoShelfEditFragment
     long l = System.currentTimeMillis();
     if (l - this.mLastUpdateProgressTimeMs > 200L)
     {
-      bjne.a(new AEVideoShelfEditFragment.14(this, paramInt));
+      bkyq.a(new AEVideoShelfEditFragment.14(this, paramInt));
       this.mLastUpdateProgressTimeMs = l;
     }
   }
@@ -1758,9 +1758,9 @@ public class AEVideoShelfEditFragment
   
   public void onStartGenerate()
   {
-    bmbx.b("AEVideoShelfEditFrag", "Merge Video step onStartGenerate");
+    bnrh.b("AEVideoShelfEditFrag", "Merge Video step onStartGenerate");
     this.mGenerateBegin = System.currentTimeMillis();
-    bjne.a(new AEVideoShelfEditFragment.13(this));
+    bkyq.a(new AEVideoShelfEditFragment.13(this));
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -1768,7 +1768,7 @@ public class AEVideoShelfEditFragment
     initData();
     initView();
     initSoftInputMode();
-    this.outputDir = bljs.c;
+    this.outputDir = bmws.c;
     paramView = new File(this.outputDir);
     if (!paramView.exists()) {
       paramView.mkdirs();
@@ -1777,7 +1777,7 @@ public class AEVideoShelfEditFragment
   
   public void showDownloadDialog()
   {
-    showLoading(getResources().getString(2131689771));
+    showLoading(getResources().getString(2131689780));
   }
 }
 

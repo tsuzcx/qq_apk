@@ -1,8 +1,18 @@
-public abstract interface auhj
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class auhj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void f();
+  public auhj(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public abstract void g();
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    atlb.a().d(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

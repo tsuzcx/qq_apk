@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import apse;
+import aqvh;
 import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$16
@@ -12,8 +12,8 @@ class MessageHandler$16
   {
     try
     {
-      apse.b(this.this$0.app, false);
-      apse.a(this.this$0.app, false);
+      aqvh.b(this.this$0.app, false);
+      aqvh.a(this.this$0.app, false);
       this.this$0.e(this.a);
       return;
     }

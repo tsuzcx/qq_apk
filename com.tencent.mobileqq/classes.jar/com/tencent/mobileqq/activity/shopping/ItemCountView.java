@@ -31,10 +31,10 @@ public class ItemCountView
   
   private void a(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, 2131559324, this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363417));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376185));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371615));
+    paramContext = View.inflate(paramContext, 2131559374, this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363486));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376434));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371803));
   }
   
   public void setBg(Drawable paramDrawable)

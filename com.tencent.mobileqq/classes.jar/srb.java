@@ -1,35 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-
-public class srb
+public abstract interface srb
 {
-  private static srb a;
-  
-  public static srb a()
-  {
-    try
-    {
-      if (a == null) {
-        a = new srb();
-      }
-      srb localsrb = a;
-      return localsrb;
-    }
-    finally {}
-  }
-  
-  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
 }
 
 

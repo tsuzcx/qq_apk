@@ -1,15 +1,17 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class roz
-  extends aliz
 {
-  public View a;
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<DislikeInfo> a;
+  public List<Long> a;
+  public long b;
+  public long c;
+  public long d;
 }
 
 

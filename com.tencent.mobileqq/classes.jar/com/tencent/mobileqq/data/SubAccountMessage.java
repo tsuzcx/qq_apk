@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bftf;
+import bhbx;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -149,13 +149,13 @@ public class SubAccountMessage
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountMessage");
-    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bftf.a(this.msg));
+    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bhbx.a(this.msg));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.SubAccountMessage
  * JD-Core Version:    0.7.0.1
  */

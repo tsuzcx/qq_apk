@@ -1,13 +1,10 @@
-import android.support.annotation.NonNull;
-import cooperation.qqreader.net.BaseCgiTask;
-
 public abstract interface bkuh
 {
-  public abstract void a(@NonNull bkuj parambkuj);
+  public abstract void a(String paramString, Object paramObject);
   
-  public abstract void a(BaseCgiTask paramBaseCgiTask, String paramString);
+  public abstract void b(String paramString, Object paramObject);
   
-  public abstract void b(@NonNull bkuj parambkuj);
+  public abstract void c(String paramString, Object paramObject);
 }
 
 

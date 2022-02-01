@@ -1,73 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class bepl
-  extends beon
+class bepl
+  extends bepv
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public bepi a;
-  bepm jdField_a_of_type_Bepm;
-  public bepo a;
-  
-  public bepl(View paramView)
+  bepl(bepg parambepg, EditorState paramEditorState, List paramList)
   {
-    super(paramView);
-    View localView1 = paramView.findViewById(2131369738);
-    View localView2 = paramView.findViewById(2131369684);
-    View localView3 = paramView.findViewById(2131369737);
-    this.jdField_a_of_type_Bepo = new bepo(localView1);
-    this.jdField_a_of_type_Bepi = new bepi(localView2);
-    this.jdField_a_of_type_Bepm = new bepm(localView3);
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    super(parambepg, paramEditorState, paramList);
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem)
+  public void a(EditorState paramEditorState)
   {
-    switch (((benq)this.jdField_a_of_type_Beno).jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 2: 
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_Bepi.a(paramView, paramHWReciteItem, this);
-        return;
-      }
-      this.jdField_a_of_type_Bepo.a(paramView, paramHWReciteItem, this);
-      return;
-    }
-    this.jdField_a_of_type_Bepm.a(paramView, paramHWReciteItem, this);
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, benq parambenq, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (parambenq.jdField_a_of_type_Int)
-    {
-    default: 
-      this.jdField_a_of_type_Bepo.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bepi.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bepm.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    case 2: 
-      if (paramInt == 2)
-      {
-        parambenq.g = 0;
-        this.jdField_a_of_type_Bepo.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_Bepi.a(paramHWReciteItem, this, parambenq, paramInt);
-        this.jdField_a_of_type_Bepm.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        return;
-      }
-      parambenq.g = 3;
-      this.jdField_a_of_type_Bepo.a(paramHWReciteItem, this, parambenq, paramInt);
-      this.jdField_a_of_type_Bepi.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bepm.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_Bepo.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Bepi.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Bepm.a(paramHWReciteItem, this, parambenq, paramInt);
+    super.a(paramEditorState);
+    bepg.a(this.a).a(false, false);
   }
 }
 

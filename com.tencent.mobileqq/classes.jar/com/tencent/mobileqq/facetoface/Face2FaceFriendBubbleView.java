@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.facetoface;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -16,13 +15,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import artb;
-import artc;
-import artd;
-import artf;
-import arti;
-import artj;
-import artk;
+import anvx;
+import asxh;
+import asxi;
+import asxj;
+import asxl;
+import asxo;
+import asxp;
+import asxq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
@@ -33,10 +33,10 @@ import java.util.HashMap;
 public class Face2FaceFriendBubbleView
   extends FrameLayout
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131367295, 2131367277 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131367419, 2131367401 };
   private int jdField_a_of_type_Int = 1;
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new artb(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new asxh(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -45,7 +45,7 @@ public class Face2FaceFriendBubbleView
   private String jdField_a_of_type_JavaLangString;
   private HashMap<View, Integer> jdField_a_of_type_JavaUtilHashMap;
   private int jdField_b_of_type_Int;
-  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new artc(this);
+  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new asxi(this);
   private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private String jdField_b_of_type_JavaLangString = "";
@@ -61,14 +61,14 @@ public class Face2FaceFriendBubbleView
   public Face2FaceFriendBubbleView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, 0);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559171, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367293));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367253));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379177));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367295);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367294));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131377744));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367279));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559200, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367417));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367377));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379479));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367419);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367418));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131378025));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367403));
     this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
     this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramContext, 2130772038);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramContext, 2130772037);
@@ -81,10 +81,10 @@ public class Face2FaceFriendBubbleView
     return this.jdField_a_of_type_Int;
   }
   
-  public arti a()
+  public asxo a()
   {
     if (getTag() != null) {
-      return (arti)getTag();
+      return (asxo)getTag();
     }
     return null;
   }
@@ -116,7 +116,7 @@ public class Face2FaceFriendBubbleView
         if (k == 0)
         {
           Animation localAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772035);
-          localAnimation.setAnimationListener(new artd(this, 1, localView));
+          localAnimation.setAnimationListener(new asxj(this, 1, localView));
           localView.startAnimation(localAnimation);
         }
         i += 1;
@@ -127,32 +127,32 @@ public class Face2FaceFriendBubbleView
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, arti paramarti)
+  public void a(QQAppInterface paramQQAppInterface, asxo paramasxo)
   {
-    if (paramarti == null)
+    if (paramasxo == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "bindFriendInfo Face2FaceUserData is Null~~~~~");
       }
       return;
     }
-    setTag(paramarti);
-    this.jdField_a_of_type_JavaLangString = paramarti.e;
-    this.jdField_a_of_type_Int = paramarti.jdField_a_of_type_Int;
-    this.jdField_b_of_type_JavaLangString = paramarti.e;
-    if ((paramarti instanceof artf)) {
-      this.jdField_b_of_type_JavaLangString = (paramarti.e + "_" + ((artf)paramarti).jdField_b_of_type_JavaLangString);
+    setTag(paramasxo);
+    this.jdField_a_of_type_JavaLangString = paramasxo.e;
+    this.jdField_a_of_type_Int = paramasxo.jdField_a_of_type_Int;
+    this.jdField_b_of_type_JavaLangString = paramasxo.e;
+    if ((paramasxo instanceof asxl)) {
+      this.jdField_b_of_type_JavaLangString = (paramasxo.e + "_" + ((asxl)paramasxo).jdField_b_of_type_JavaLangString);
     }
-    String str = paramarti.e;
+    String str = paramasxo.e;
     int j = this.jdField_a_of_type_Int;
     Object localObject;
     int i;
     if (this.jdField_a_of_type_Int == 1)
     {
-      paramarti = (artk)paramarti;
-      if (TextUtils.isEmpty(paramarti.jdField_a_of_type_JavaLangString))
+      paramasxo = (asxq)paramasxo;
+      if (TextUtils.isEmpty(paramasxo.jdField_a_of_type_JavaLangString))
       {
-        localObject = paramarti.jdField_b_of_type_JavaLangString;
+        localObject = paramasxo.jdField_b_of_type_JavaLangString;
         this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         i = j;
@@ -160,24 +160,24 @@ public class Face2FaceFriendBubbleView
         if (localObject != null) {
           break label423;
         }
-        paramarti = this.jdField_a_of_type_JavaLangString;
+        paramasxo = this.jdField_a_of_type_JavaLangString;
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramarti);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramasxo);
       a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, i);
       return;
-      localObject = paramarti.jdField_a_of_type_JavaLangString;
+      localObject = paramasxo.jdField_a_of_type_JavaLangString;
       break;
       localObject = str;
       i = j;
       if (this.jdField_a_of_type_Int != 2) {
         break label153;
       }
-      if ((paramarti instanceof artj))
+      if ((paramasxo instanceof asxp))
       {
-        localObject = ((artj)paramarti).jdField_a_of_type_JavaLangString;
+        localObject = ((asxp)paramasxo).jdField_a_of_type_JavaLangString;
         this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         i = 1;
@@ -185,31 +185,31 @@ public class Face2FaceFriendBubbleView
       }
       localObject = str;
       i = j;
-      if (!(paramarti instanceof artf)) {
+      if (!(paramasxo instanceof asxl)) {
         break label153;
       }
-      paramarti = ((artf)paramarti).jdField_a_of_type_JavaLangString;
+      paramasxo = ((asxl)paramasxo).jdField_a_of_type_JavaLangString;
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       if (this.jdField_b_of_type_Int < 1)
       {
-        this.jdField_c_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131296967);
-        this.jdField_b_of_type_Int = BaseApplicationImpl.getContext().getResources().getDrawable(2130840146).getIntrinsicWidth();
+        this.jdField_c_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131296968);
+        this.jdField_b_of_type_Int = BaseApplicationImpl.getContext().getResources().getDrawable(2130840167).getIntrinsicWidth();
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setLines(2);
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_c_of_type_Int - this.jdField_b_of_type_Int);
-      localObject = paramarti;
+      localObject = paramasxo;
       i = j;
       if (!QLog.isColorLevel()) {
         break label153;
       }
       QLog.e("zivonchen", 2, "nickMaxWidth = " + this.jdField_c_of_type_Int + ", flagWidth = " + this.jdField_b_of_type_Int + ", realWidth = " + (this.jdField_c_of_type_Int - this.jdField_b_of_type_Int));
-      localObject = paramarti;
+      localObject = paramasxo;
       i = j;
       break label153;
       label423:
-      paramarti = (arti)localObject;
+      paramasxo = (asxo)localObject;
       if (TextUtils.isEmpty(((String)localObject).trim())) {
-        paramarti = this.jdField_a_of_type_JavaLangString;
+        paramasxo = this.jdField_a_of_type_JavaLangString;
       }
     }
   }
@@ -263,7 +263,7 @@ public class Face2FaceFriendBubbleView
       if ((((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localView)).intValue() == 0) && (localView.getVisibility() == 4))
       {
         Animation localAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772036);
-        localAnimation.setAnimationListener(new artd(this, 0, localView));
+        localAnimation.setAnimationListener(new asxj(this, 0, localView));
         localView.startAnimation(localAnimation);
       }
       i += 1;
@@ -285,7 +285,7 @@ public class Face2FaceFriendBubbleView
     default: 
       str2 = a();
       if (paramInt == 2) {
-        str1 = str2 + amtj.a(2131703408);
+        str1 = str2 + anvx.a(2131703759);
       }
       break;
     }
@@ -313,13 +313,13 @@ public class Face2FaceFriendBubbleView
       break;
       if (paramInt == 3)
       {
-        str1 = str2 + amtj.a(2131703406);
+        str1 = str2 + anvx.a(2131703757);
       }
       else
       {
         str1 = str2;
         if (paramInt == 4) {
-          str1 = str2 + amtj.a(2131703410);
+          str1 = str2 + anvx.a(2131703761);
         }
       }
     }
@@ -338,28 +338,28 @@ public class Face2FaceFriendBubbleView
     case 2: 
       this.d = paramInt;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840127);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840148);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
     case 3: 
       this.d = paramInt;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840128);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840149);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
     }
     this.d = paramInt;
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840129);
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840150);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView
  * JD-Core Version:    0.7.0.1
  */

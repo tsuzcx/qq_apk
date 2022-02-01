@@ -1,18 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uac
-  implements ViewBase.IBuilder
+  implements VComponentAdapter.OnVideoViewMethodListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  public uac(VVideo paramVVideo) {}
+  
+  public void OnMethodError(String paramString, JSONObject paramJSONObject)
   {
-    return new tzy(paramVafContext);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramString);
+      localJSONObject.put("extra", paramJSONObject);
+      this.a.videoFireEvent("error", localJSONObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void OnMethodSuccess(String paramString, Object paramObject)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      VVideo.access$000(this.a, paramString, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uac
  * JD-Core Version:    0.7.0.1
  */

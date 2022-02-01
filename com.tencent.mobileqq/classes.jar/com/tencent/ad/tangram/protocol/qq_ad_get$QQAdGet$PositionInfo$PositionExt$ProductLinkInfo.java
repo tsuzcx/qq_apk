@@ -4,8 +4,8 @@ public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt$ProductLinkInfo
 {
   public String h5_page;
   public long product_id = 0L;
-  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.MiniProgramLink qq_miniprogram_link = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.MiniProgramLink();
-  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.MiniProgramLink wx_miniprogram_link = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.MiniProgramLink();
+  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.MiniProgramLink qq_miniprogram_link;
+  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.MiniProgramLink wx_miniprogram_link;
 }
 
 

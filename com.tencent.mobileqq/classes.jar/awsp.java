@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class awsp
-  implements awqk
+class awsp
+  implements SoundPool.OnLoadCompleteListener
 {
-  public awsp(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  awsp(awso paramawso, int paramInt, String paramString) {}
+  
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Awso.a.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_Int, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

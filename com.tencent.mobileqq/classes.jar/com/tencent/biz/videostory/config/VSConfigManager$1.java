@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory.config;
 
-import apub;
-import bgmv;
+import aamb;
+import aamh;
+import aamj;
+import aamv;
+import aqxe;
+import bhxf;
 import com.tencent.qphone.base.util.QLog;
-import zwp;
-import zwv;
-import zwx;
-import zxj;
 
 class VSConfigManager$1
   implements Runnable
@@ -15,23 +15,23 @@ class VSConfigManager$1
   
   public void run()
   {
-    Object localObject = (zwp)apub.a().a(411);
+    Object localObject = (aamb)aqxe.a().a(411);
     if (localObject != null) {
-      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((zwp)localObject).toString());
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((aamb)localObject).toString());
     }
-    localObject = (zwx)apub.a().a(463);
+    localObject = (aamj)aqxe.a().a(463);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSSubscribeConfBean : " + localObject);
     }
-    localObject = (zwv)apub.a().a(595);
+    localObject = (aamh)aqxe.a().a(595);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSStickyNoteConfBean : " + localObject);
     }
-    localObject = (bgmv)apub.a().a(671);
+    localObject = (bhxf)aqxe.a().a(671);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSHealthConfigBean : " + localObject);
     }
-    zxj.a().a();
+    aamv.a().a();
   }
 }
 

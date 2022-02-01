@@ -1,108 +1,36 @@
-import android.content.Context;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
 
-class acla
-  implements AdapterView.OnItemClickListener
+public class acla
+  implements ViewPager.PageTransformer
 {
-  acla(ackz paramackz, int paramInt, acjr paramacjr) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  @TargetApi(11)
+  public void transformPage(View paramView, float paramFloat)
   {
-    Object localObject1 = paramView.getTag();
-    long l;
-    if (localObject1 == null)
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      l = paramLong;
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, l);
+      if (paramFloat < -1.0F) {
+        paramView.setAlpha(0.0F);
+      }
+    }
+    else {
       return;
     }
-    this.jdField_a_of_type_Ackz.a.dismiss();
-    label104:
-    int j;
-    int i;
-    switch (((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject1).sheetItem.action)
+    if (paramFloat <= 1.0F)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      j = (int)paramLong;
-      if ((paramLong == 2L) || (paramLong == 3L)) {
-        if (!WXShareHelper.getInstance().isWXinstalled()) {
-          i = 2131719722;
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      for (;;)
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      if (paramFloat > 0.0F) {}
+      for (int i = 1;; i = -1)
       {
-        if (i != -1)
-        {
-          localObject1 = BaseApplicationImpl.getContext();
-          QQToast.a((Context)localObject1, ((Context)localObject1).getString(i), 0).b(this.jdField_a_of_type_Int);
-          l = paramLong;
-          break;
-          paramLong = 0L;
-          break label104;
-          paramLong = 1L;
-          break label104;
-          paramLong = 3L;
-          break label104;
-          paramLong = 2L;
-          break label104;
-          paramLong = 4L;
-          break label104;
-          if (WXShareHelper.getInstance().isWXsupportApi()) {
-            break label358;
-          }
-          i = 2131719723;
-          continue;
-        }
-        localObject1 = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject1).put("selectChanel", j);
-          acmy.a(this.jdField_a_of_type_Acjr, (JSONObject)localObject1);
-          l = paramLong;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("DoraemonApi.ShareModule", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-          l = paramLong;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            String str = localException.getMessage();
-            QLog.e("DoraemonApi.ShareModule", 1, "put channel failed!");
-            acjr localacjr = this.jdField_a_of_type_Acjr;
-            Object localObject2 = str;
-            if (str == null) {
-              localObject2 = "";
-            }
-            acmy.a(localacjr, -1, (String)localObject2);
-          }
-        }
+        paramFloat = (float)(Math.cos((Math.abs(paramFloat) + 1.0F) * 3.141592653589793D) / 2.0D);
+        paramView.setTranslationY(i * (paramFloat + 0.5F) * paramView.getHeight());
+        return;
       }
-      label358:
-      i = -1;
     }
+    paramView.setAlpha(0.0F);
   }
 }
 

@@ -1,19 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class oan
-  implements View.OnClickListener
+public class oan
 {
-  oan(oaj paramoaj) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
+  TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.dismiss();
-    oaj.c(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  oan(nzu paramnzu) {}
 }
 
 

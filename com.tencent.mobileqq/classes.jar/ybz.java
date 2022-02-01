@@ -1,42 +1,20 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.io.File;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ybz
-  extends ybw
+class ybz
+  extends JobSegment<ycb, xvl>
 {
-  private xzd a;
+  private int jdField_a_of_type_Int;
+  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xvi jdField_a_of_type_Xvi;
   
-  public void a()
+  protected void a(JobContext paramJobContext, ycb paramycb)
   {
-    super.a();
-    if (jdField_b_of_type_Int != 2)
-    {
-      String str = new File(this.jdField_b_of_type_JavaLangString).getParent();
-      if (str != null) {
-        FileUtils.deleteDirectory(str);
-      }
-    }
-  }
-  
-  public void a(Activity paramActivity, String paramString1, String paramString2, AppInterface paramAppInterface, xzd paramxzd)
-  {
-    super.a(paramActivity, paramString1, paramString2, paramAppInterface);
-    this.a = paramxzd;
-  }
-  
-  protected boolean a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    if (paramActionSheetItem.action == 2)
-    {
-      if (this.a != null) {
-        this.a.a();
-      }
-      return true;
-    }
-    return super.a(paramActionSheetItem);
+    this.jdField_a_of_type_Xvi = new xvi(paramycb, new yca(this, paramJobContext, paramycb));
+    this.jdField_a_of_type_Xvi.c();
   }
 }
 

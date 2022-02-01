@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afbf;
+import afsr;
 import android.graphics.Bitmap;
 
 public class IntimateInfoShareHelper$6
   implements Runnable
 {
-  public IntimateInfoShareHelper$6(afbf paramafbf, Bitmap paramBitmap) {}
+  public IntimateInfoShareHelper$6(afsr paramafsr, Bitmap paramBitmap) {}
   
   /* Error */
   public void run()
@@ -90,8 +90,8 @@ public class IntimateInfoShareHelper$6
     //   156: aload 5
     //   158: astore_3
     //   159: aload_0
-    //   160: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$6:this$0	Lafbf;
-    //   163: invokestatic 114	afbf:a	(Lafbf;)Landroid/support/v4/app/FragmentActivity;
+    //   160: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$6:this$0	Lafsr;
+    //   163: invokestatic 114	afsr:a	(Lafsr;)Landroid/support/v4/app/FragmentActivity;
     //   166: new 116	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$6$1
     //   169: dup
     //   170: aload_0
@@ -207,7 +207,7 @@ public class IntimateInfoShareHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

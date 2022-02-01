@@ -1,37 +1,23 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaae
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aaae(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
+  public aaae(VideoPlayerView paramVideoPlayerView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
+    if (VideoPlayerView.a(this.a) != null)
     {
-    default: 
-      bool1 = false;
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.g(this.a);
+      VideoPlayerView.a(this.a, false);
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != AbsBaseWebViewActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "vg onTouch");
-    }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

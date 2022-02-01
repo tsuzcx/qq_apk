@@ -1,24 +1,14 @@
-import android.view.View;
-
 public class rpf
-  implements bayt
 {
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private Long jdField_a_of_type_JavaLangLong;
   private String jdField_a_of_type_JavaLangString;
-  private rcz jdField_a_of_type_Rcz;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public rpf(rcz paramrcz)
+  public Long a()
   {
-    this.jdField_a_of_type_Rcz = paramrcz;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public CharSequence a()
-  {
-    return bbgk.b(this.jdField_a_of_type_Rcz.a(), this.jdField_a_of_type_JavaLangString, 6, true);
+    return this.jdField_a_of_type_JavaLangLong;
   }
   
   public String a()
@@ -26,54 +16,44 @@ public class rpf
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public rcz a()
+  public void a(Integer paramInteger)
   {
-    return this.jdField_a_of_type_Rcz;
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
   }
   
-  public void a(int paramInt1, int paramInt2) {}
+  public void a(Long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+  }
   
-  public void a(View paramView) {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
   public boolean a()
   {
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this.jdField_a_of_type_Rcz.a().contains(paramString);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public CharSequence b()
-  {
-    return "";
+    return this.jdField_a_of_type_Boolean;
   }
   
   public String b()
   {
-    return this.jdField_a_of_type_Rcz.a().toString();
+    return this.b;
   }
   
-  public int c()
+  public void b(String paramString)
   {
-    return 0;
+    this.b = paramString;
   }
   
-  public CharSequence c()
+  public String toString()
   {
-    return amtj.a(2131703796);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
   }
 }
 

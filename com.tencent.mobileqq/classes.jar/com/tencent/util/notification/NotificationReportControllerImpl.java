@@ -8,9 +8,9 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bcef;
-import bjni;
-import bjnl;
+import bdla;
+import bkyu;
+import bkyx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.NotificationReportController;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,7 +29,7 @@ public class NotificationReportControllerImpl
   private static final String KEY_TODAY_REPORTED_NOTIFY_IDS = "kay_reported_notify_ids";
   private boolean hasInitTodayReportedNotifyIds;
   private boolean isAfterActionB;
-  private List<bjnl> mCache = new ArrayList();
+  private List<bkyx> mCache = new ArrayList();
   Handler mHandler = null;
   private Set<Integer> mTodayReportedNotifyIds;
   
@@ -65,21 +65,21 @@ public class NotificationReportControllerImpl
         Iterator localIterator = this.mCache.iterator();
         if (localIterator.hasNext())
         {
-          bjnl localbjnl = (bjnl)localIterator.next();
-          boolean bool = shouldReportNetInfo(localQQAppInterface, localbjnl.b);
+          bkyx localbkyx = (bkyx)localIterator.next();
+          boolean bool = shouldReportNetInfo(localQQAppInterface, localbkyx.b);
           localObject = "";
-          switch (localbjnl.jdField_a_of_type_Int)
+          switch (localbkyx.jdField_a_of_type_Int)
           {
           default: 
             label132:
-            if ((localbjnl.c == 7200) || (localbjnl.c == 1008) || (localbjnl.c == 7220)) {
-              bcef.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localbjnl.jdField_a_of_type_JavaLangString, localbjnl.b + "", "" + localbjnl.c, "", "", "", "");
+            if ((localbkyx.c == 7200) || (localbkyx.c == 1008) || (localbkyx.c == 7220)) {
+              bdla.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localbkyx.jdField_a_of_type_JavaLangString, localbkyx.b + "", "" + localbkyx.c, "", "", "", "");
             }
             break;
           }
           while (QLog.isDevelopLevel())
           {
-            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localbjnl.jdField_a_of_type_Int + "    frienduin:" + localbjnl.jdField_a_of_type_JavaLangString + "   uinType:" + localbjnl.c + "    nId:" + localbjnl.b);
+            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localbkyx.jdField_a_of_type_Int + "    frienduin:" + localbkyx.jdField_a_of_type_JavaLangString + "   uinType:" + localbkyx.c + "    nId:" + localbkyx.b);
             break;
             localObject = "info_arr";
             break label132;
@@ -89,7 +89,7 @@ public class NotificationReportControllerImpl
             break label132;
             localObject = "lock_clk";
             break label132;
-            bcef.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localbjnl.b + "", "", "", "", "", "");
+            bdla.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localbkyx.b + "", "", "", "", "", "");
           }
         }
         this.mCache.clear();
@@ -105,7 +105,7 @@ public class NotificationReportControllerImpl
       Object localObject = paramQQAppInterface.getAccount();
       SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
       long l1 = localSharedPreferences.getLong("key_begintime_" + (String)localObject, 0L);
-      long l2 = bjni.a().longValue();
+      long l2 = bkyu.a().longValue();
       this.mTodayReportedNotifyIds = new HashSet();
       if (l1 == l2)
       {
@@ -148,7 +148,7 @@ public class NotificationReportControllerImpl
     case 2: 
     case 3: 
     case 4: 
-      paramMessage = (bjnl)paramMessage.obj;
+      paramMessage = (bkyx)paramMessage.obj;
       if (this.isAfterActionB)
       {
         this.mCache.add(paramMessage);
@@ -170,7 +170,7 @@ public class NotificationReportControllerImpl
     }
     Message localMessage = Message.obtain();
     localMessage.what = paramInt1;
-    localMessage.obj = new bjnl(paramInt1, paramInt2, paramString, paramInt3);
+    localMessage.obj = new bkyx(paramInt1, paramInt2, paramString, paramInt3);
     this.mHandler.sendMessage(localMessage);
   }
   

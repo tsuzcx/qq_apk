@@ -1,55 +1,153 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.richmediabrowser.model.BrowserBaseModel;
 import java.io.File;
-import java.io.IOException;
 
 public class bbpu
-  implements INetEngine.INetEngineListener
+  extends BrowserBaseModel
 {
-  public bbpu(PtvTemplateManager.15 param15) {}
-  
-  public void onResp(NetResp paramNetResp)
+  private void b(AIOFileVideoData paramAIOFileVideoData, Context paramContext, bbrg parambbrg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + paramNetResp.mHttpCode);
-    }
-    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
-    if (this.a.a.doodleUsable) {}
-    try
+    paramAIOFileVideoData = new bbpv(this, paramContext, paramAIOFileVideoData, parambbrg);
+    audn.a(paramContext, paramContext.getString(2131692476), paramContext.getString(2131692478), paramAIOFileVideoData);
+  }
+  
+  private boolean c(AIOFileVideoData paramAIOFileVideoData)
+  {
+    if (a(paramAIOFileVideoData)) {}
+    do
     {
-      npo.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
-      if (paramNetResp.mResult == 0)
+      do
       {
-        Object localObject = this.a.this$0.a();
-        if (localObject != null)
-        {
-          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(193);
-          if (((PreDownloadController)localObject).isEnable()) {
-            ((PreDownloadController)localObject).preDownloadSuccess(this.a.a.doodleUrl, paramNetResp.mTotalFileLen);
-          }
-        }
+        return false;
+      } while ((paramAIOFileVideoData == null) || (paramAIOFileVideoData.g) || (!auea.a()));
+      if ((!TextUtils.isEmpty(paramAIOFileVideoData.jdField_a_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_c_of_type_Long > 0L) && (paramAIOFileVideoData.jdField_c_of_type_Long > paramAIOFileVideoData.e)) {
+        return true;
       }
-      return;
+    } while (paramAIOFileVideoData.jdField_c_of_type_Long <= 1048576L);
+    return true;
+  }
+  
+  public aklw a(AIOFileVideoData paramAIOFileVideoData, boolean paramBoolean)
+  {
+    boolean bool = false;
+    aklw localaklw = new aklw();
+    localaklw.jdField_a_of_type_ArrayOfJavaLangString = new String[] { paramAIOFileVideoData.jdField_d_of_type_JavaLangString };
+    localaklw.jdField_a_of_type_JavaUtilArrayList = paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList;
+    if (!a(paramAIOFileVideoData)) {
+      bool = true;
     }
-    catch (IOException localIOException)
+    localaklw.jdField_a_of_type_Boolean = bool;
+    if (localaklw.jdField_a_of_type_Boolean) {}
+    for (String str = "";; str = paramAIOFileVideoData.jdField_c_of_type_JavaLangString)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
-      }
+      localaklw.jdField_a_of_type_JavaLangString = str;
+      localaklw.jdField_c_of_type_Long = paramAIOFileVideoData.progress;
+      localaklw.jdField_b_of_type_Boolean = true;
+      localaklw.jdField_b_of_type_Long = paramAIOFileVideoData.jdField_c_of_type_Long;
+      localaklw.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
+      localaklw.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
+      localaklw.e = paramBoolean;
+      localaklw.jdField_a_of_type_AndroidOsBundle = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle;
+      return localaklw;
     }
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public Drawable a(AIOFileVideoData paramAIOFileVideoData)
+  {
+    URLDrawable localURLDrawable = null;
+    File localFile = a(paramAIOFileVideoData);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    if ((localFile != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOFileVideoData)) != null)) {
+      localURLDrawable = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
+    }
+    while (localFile == null) {
+      return localURLDrawable;
+    }
+    paramAIOFileVideoData = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
+    paramAIOFileVideoData.downloadImediatly();
+    return paramAIOFileVideoData;
+  }
+  
+  public File a(AIOFileVideoData paramAIOFileVideoData)
+  {
+    if ((paramAIOFileVideoData == null) || (!FileUtil.fileExistsAndNotEmpty(paramAIOFileVideoData.b))) {
+      return null;
+    }
+    return new File(paramAIOFileVideoData.b);
+  }
+  
+  public String a(AIOFileVideoData paramAIOFileVideoData)
+  {
+    if ((paramAIOFileVideoData == null) || (TextUtils.isEmpty(paramAIOFileVideoData.b))) {
+      return "";
+    }
+    if (!paramAIOFileVideoData.b.startsWith("/")) {
+      return "file:/" + paramAIOFileVideoData.b;
+    }
+    if (paramAIOFileVideoData.b.startsWith("//")) {
+      return "file:" + paramAIOFileVideoData.b;
+    }
+    return "file:" + paramAIOFileVideoData.b;
+  }
+  
+  public void a(AIOFileVideoData paramAIOFileVideoData, Context paramContext, bbrg parambbrg)
+  {
+    if (c(paramAIOFileVideoData))
+    {
+      if (aufd.a(paramContext, false, new bbpw(this, parambbrg))) {
+        b(paramAIOFileVideoData, paramContext, parambbrg);
+      }
+      return;
+    }
+    parambbrg.i();
+  }
+  
+  public boolean a(AIOFileVideoData paramAIOFileVideoData)
+  {
+    if (paramAIOFileVideoData != null)
+    {
+      if ((TextUtils.isEmpty(paramAIOFileVideoData.jdField_c_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle != null)) {
+        paramAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle.getString("savepath");
+      }
+      if (FileUtils.fileExistsAndNotEmpty(paramAIOFileVideoData.jdField_c_of_type_JavaLangString))
+      {
+        paramAIOFileVideoData.jdField_d_of_type_Boolean = true;
+        return true;
+      }
+    }
+    if ((paramAIOFileVideoData != null) && (paramAIOFileVideoData.jdField_d_of_type_JavaLangString == null)) {
+      paramAIOFileVideoData.jdField_d_of_type_Boolean = false;
+    }
+    return false;
+  }
+  
+  public boolean a(AIOFileVideoData paramAIOFileVideoData, bbpk parambbpk)
+  {
+    if ((paramAIOFileVideoData == null) || (a(paramAIOFileVideoData)) || (parambbpk == null)) {}
+    while ((!TextUtils.isEmpty(paramAIOFileVideoData.jdField_d_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList != null)) {
+      return false;
+    }
+    parambbpk.downloadMedia(paramAIOFileVideoData.jdField_a_of_type_Long, paramAIOFileVideoData.jdField_a_of_type_Int, 16842753);
+    return true;
+  }
+  
+  public boolean b(AIOFileVideoData paramAIOFileVideoData)
+  {
+    return !TextUtils.isEmpty(paramAIOFileVideoData.f);
+  }
 }
 
 

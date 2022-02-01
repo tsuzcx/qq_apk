@@ -1,10 +1,9 @@
-import java.util.ArrayList;
+import com.tencent.avgame.gamelogic.data.Player;
 
-public abstract interface nkd
+public class nkd
 {
-  public abstract ArrayList<njw> a();
-  
-  public abstract boolean a();
+  public int a = -1;
+  public Player a;
 }
 
 

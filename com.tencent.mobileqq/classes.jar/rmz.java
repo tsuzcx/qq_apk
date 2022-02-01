@@ -1,102 +1,22 @@
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xe33.oidb_0xe33.ReqBody;
-import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetReq;
-import tencent.kandian.ugc.topic_info.TopicInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class rmz
-  implements rmv
+  implements BusinessObserver
 {
-  private QQAppInterface a;
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt) {}
   
-  public rmz(QQAppInterface paramQQAppInterface)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private void a(@NotNull ColumnInfo paramColumnInfo, rmt paramrmt, int paramInt)
-  {
-    oidb_0xe33.TopicInfoSetReq localTopicInfoSetReq;
-    if (QLog.isColorLevel())
+    switch (paramInt)
     {
-      if (paramInt == 1) {
-        QLog.e("RIJUGC.ManagerColumnModel", 2, "ManageColumnModel createColumn: columnInfo : " + paramColumnInfo.toString());
-      }
-    }
-    else
-    {
-      localTopicInfoSetReq = new oidb_0xe33.TopicInfoSetReq();
-      if (paramInt != 1) {
-        break label155;
-      }
-      localTopicInfoSetReq.operate_type.set(1);
-    }
-    for (;;)
-    {
-      localTopicInfoSetReq.info.set(paramColumnInfo.parseToTopicInfo());
-      paramColumnInfo = new oidb_0xe33.ReqBody();
-      paramColumnInfo.topic_info_set_req.set(localTopicInfoSetReq);
-      nmb.a(this.a, new rna(this, paramrmt, paramInt), paramColumnInfo.toByteArray(), "OidbSvc.0xe33", 3635, 1);
+    default: 
       return;
-      if (paramInt != 2) {
-        break;
-      }
-      QLog.e("RIJUGC.ManagerColumnModel", 2, "ManageColumnModel editColumn: columnInfo : " + paramColumnInfo.toString());
-      break;
-      label155:
-      if (paramInt == 2) {
-        localTopicInfoSetReq.operate_type.set(2);
-      }
     }
-  }
-  
-  @Nullable
-  public ColumnInfo a()
-  {
-    Object localObject1 = (String)bkwm.a("key_sp_readinjoy_column_info_sketch", "");
-    if (((String)localObject1).isEmpty()) {
-      return null;
-    }
-    topic_info.TopicInfo localTopicInfo = new topic_info.TopicInfo();
-    try
-    {
-      localTopicInfo.mergeFrom(Base64.decode((String)localObject1, 0));
-      localObject1 = new ColumnInfo(localTopicInfo);
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("RIJUGC.ManagerColumnModel", 1, "getColumnSketch exception, e=" + localException.getMessage());
-        Object localObject2 = null;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    bkwm.a("key_sp_readinjoy_column_info_sketch", "");
-  }
-  
-  public void a(@NotNull ColumnInfo paramColumnInfo)
-  {
-    bkwm.a("key_sp_readinjoy_column_info_sketch", Base64.encodeToString(paramColumnInfo.parseToTopicInfo().toByteArray(), 0));
-  }
-  
-  public void a(@NotNull ColumnInfo paramColumnInfo, rmt paramrmt)
-  {
-    a(paramColumnInfo, paramrmt, 1);
-  }
-  
-  public void b(@NotNull ColumnInfo paramColumnInfo, rmt paramrmt)
-  {
-    a(paramColumnInfo, paramrmt, 2);
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, (oidb_0x5bd.SkinInfo)paramObject[0], (oidb_0x5bd.GuideInfo)paramObject[1], (oidb_0x5bd.GuideInfo)paramObject[2], (oidb_0x5bd.RefreshInfo)paramObject[3], ((Integer)paramObject[4]).intValue());
   }
 }
 

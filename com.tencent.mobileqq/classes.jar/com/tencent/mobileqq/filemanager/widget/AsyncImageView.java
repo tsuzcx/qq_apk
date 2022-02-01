@@ -16,7 +16,7 @@ import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import bjuk;
+import blfw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.R.styleable;
@@ -56,7 +56,7 @@ public class AsyncImageView
     if (Build.VERSION.SDK_INT <= 26) {}
     for (this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);; this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT))
     {
-      this.jdField_a_of_type_Bjuk.a(bjuk.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Blfw.a(blfw.jdField_b_of_type_Int);
       this.jdField_b_of_type_AndroidGraphicsPath = new Path();
       this.jdField_a_of_type_ArrayOfFloat = new float[8];
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -370,7 +370,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

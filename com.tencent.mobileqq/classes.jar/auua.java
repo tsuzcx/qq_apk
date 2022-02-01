@@ -1,131 +1,47 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class auua
-  extends WebViewPlugin
+  extends nwk
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
+  public auua(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public auua()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    this.mPluginNameSpace = "medalwall";
-  }
-  
-  private Context a()
-  {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
-  }
-  
-  private void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MedalWallMng", 4, "clearRedPoint from web!");
-    }
-    apjv.a().a();
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
     do
     {
       return;
-      try
+      this.a.z();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
       {
-        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-        c(this.jdField_a_of_type_JavaLangString);
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.h))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
+          }
+          this.a.N();
+        }
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      try
+      else if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-        startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, PermisionPrivacyActivity.class), (byte)100);
-        return;
+        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
-  }
-  
-  private void c(String paramString)
-  {
-    String str = this.mRuntime.a().getCurrentAccountUin();
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + str, 4).getBoolean("medal_switch_disable", false);
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!bool) {
-        break label74;
-      }
-    }
-    label74:
-    for (str = "{\"isOn\":0}";; str = "{\"isOn\":1}")
-    {
-      callJs(paramString, new String[] { str });
-      return;
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = false;
-    if ("medalwall".equals(paramString2))
-    {
-      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {}
-      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
-      if (!"getMedalSwitch".equals(paramString3)) {
-        break label54;
-      }
-      a(paramVarArgs[0]);
-    }
-    for (;;)
-    {
-      bool = true;
-      return bool;
-      label54:
-      if ("jumpToMedalSettings".equals(paramString3)) {
-        b(paramVarArgs[0]);
-      } else if ("clearRedPoint".equals(paramString3)) {
-        a();
-      }
-    }
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (paramByte == 100) {
-      c(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = a();
+    } while (!ForwardSdkShareOption.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aupp.e.intValue());
+    this.a.m();
   }
 }
 

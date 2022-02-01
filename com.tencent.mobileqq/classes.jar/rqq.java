@@ -1,24 +1,11 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
 
-class rqq
-  implements URLDrawable.URLDrawableListener
+public final class rqq
+  implements qdt<feeds_info.LocationInfo, rrd>
 {
-  rqq(rqj paramrqj) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public rrd a(feeds_info.LocationInfo paramLocationInfo)
   {
-    rqj.b(this.a);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bfvo.b(paramURLDrawable.getCurrDrawable());
-    rqj.a(this.a, paramURLDrawable, rqj.a(this.a).e);
+    return rrd.a(paramLocationInfo);
   }
 }
 

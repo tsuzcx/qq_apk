@@ -1,22 +1,66 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.content.Context;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import com.tencent.qphone.base.util.QLog;
 
-final class ory
-  implements ViewFactory.FoundClickableViewListener
+public class ory
 {
-  ory(Container paramContainer, ouc paramouc, ouo paramouo) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private RainView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView;
+  private osa jdField_a_of_type_Osa;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onFound(ViewBase paramViewBase)
+  public ory(ViewGroup paramViewGroup, Context paramContext)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
-      return;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Osa = new osa(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyRainAnimationController", 2, "rain animation show");
     }
-    SparseArray localSparseArray = new SparseArray();
-    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    oqo.a.a(i, localSparseArray).a(i, localSparseArray).a(i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Ouc, this.jdField_a_of_type_Ouo, paramViewBase);
+    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("ReadInJoyRainAnimationController") == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView = new RainView(this.jdField_a_of_type_AndroidContentContext);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+      localLayoutParams.gravity = 48;
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setTag("ReadInJoyRainAnimationController");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setAnimationEndListener(new orz(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.a(this.jdField_a_of_type_AndroidViewViewGroup.getWidth(), this.jdField_a_of_type_AndroidViewViewGroup.getTop(), this.jdField_a_of_type_AndroidViewViewGroup.getBottom(), paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("ReadInJoyRainAnimationController") != null;
+  }
+  
+  public void b()
+  {
+    if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyRainAnimationController", 2, "rain animation hide");
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.n();
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView);
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

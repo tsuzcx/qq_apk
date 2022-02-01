@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 
 public class PublicAccountChatPie$4
   implements Runnable
 {
-  public PublicAccountChatPie$4(ahiu paramahiu) {}
+  public PublicAccountChatPie$4(aido paramaido) {}
   
   public void run()
   {
-    ahiu.g(this.this$0);
+    aido.g(this.this$0);
   }
 }
 

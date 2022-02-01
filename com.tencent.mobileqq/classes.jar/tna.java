@@ -1,29 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+import java.util.HashMap;
 
 public class tna
-  implements rwm
 {
-  public tna(ViolaVideoView paramViolaVideoView) {}
+  public int a;
+  public final HashMap<String, String> a;
+  public ptm a;
+  public boolean a;
   
-  public long a()
+  public tna()
   {
-    return ViolaVideoView.a(this.a).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    ViolaVideoView.a(this.a).d(paramInt);
-  }
-  
-  public long b()
-  {
-    return ViolaVideoView.a(this.a).b();
+    this.jdField_a_of_type_Int = 1002;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Ptm = new ptm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tna
  * JD-Core Version:    0.7.0.1
  */

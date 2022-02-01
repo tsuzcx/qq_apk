@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 
-public abstract interface akwz
+public abstract class akwz
 {
-  public abstract void a(Bitmap paramBitmap);
+  public abstract void a(PreloadManager paramPreloadManager);
 }
 
 

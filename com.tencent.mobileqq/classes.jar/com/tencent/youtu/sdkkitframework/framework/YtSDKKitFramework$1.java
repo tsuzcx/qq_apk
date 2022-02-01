@@ -1,5 +1,7 @@
 package com.tencent.youtu.sdkkitframework.framework;
 
+import com.tencent.youtu.sdkkitframework.common.YtSDKStats;
+
 class YtSDKKitFramework$1
   implements Runnable
 {
@@ -7,6 +9,7 @@ class YtSDKKitFramework$1
   
   public void run()
   {
+    YtSDKStats.getInstance().reset();
     YtFSM.getInstance().reset();
   }
 }

@@ -1,9 +1,9 @@
 package cooperation.qzone.font;
 
-import avki;
+import awqn;
 
 final class FontManager$1
-  extends avki<FontManager, Void>
+  extends awqn<FontManager, Void>
 {
   protected FontManager create(Void paramVoid)
   {

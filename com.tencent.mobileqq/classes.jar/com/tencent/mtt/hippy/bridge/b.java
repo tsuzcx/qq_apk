@@ -41,18 +41,20 @@ public class b
   HippyEngine.ModuleListener i;
   private StringBuilder j;
   private boolean k = false;
-  private int l;
-  private HippyThirdPartyAdapter m;
+  private String l;
+  private int m;
+  private HippyThirdPartyAdapter n;
   
-  public b(HippyEngineContext paramHippyEngineContext, HippyBundleLoader paramHippyBundleLoader, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, HippyThirdPartyAdapter paramHippyThirdPartyAdapter)
+  public b(HippyEngineContext paramHippyEngineContext, HippyBundleLoader paramHippyBundleLoader, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt2, HippyThirdPartyAdapter paramHippyThirdPartyAdapter)
   {
     this.a = paramHippyEngineContext;
     this.b = paramHippyBundleLoader;
     this.f = paramInt1;
     this.g = paramBoolean1;
     this.k = paramBoolean2;
-    this.l = paramInt2;
-    this.m = paramHippyThirdPartyAdapter;
+    this.l = paramString;
+    this.m = paramInt2;
+    this.n = paramHippyThirdPartyAdapter;
     this.j = new StringBuilder(1024);
   }
   
@@ -187,12 +189,12 @@ public class b
       this.a.getGlobalConfigs().getDeviceAdapter().reviseDimensionIfNeed(this.a.getGlobalConfigs().getContext(), localHippyMap3, false, false);
     }
     localHippyMap1.pushMap("Dimensions", localHippyMap3);
-    if (this.m != null)
+    if (this.n != null)
     {
-      localObject = this.m.getPackageName();
-      str1 = this.m.getPageUrl();
-      str2 = this.m.getAppVersion();
-      localHippyMap2.pushJSONObject(this.m.getExtraData());
+      localObject = this.n.getPackageName();
+      str1 = this.n.getPageUrl();
+      str2 = this.n.getAppVersion();
+      localHippyMap2.pushJSONObject(this.n.getExtraData());
     }
     localHippyMap3 = new HippyMap();
     localHippyMap3.pushString("OS", "android");
@@ -253,8 +255,8 @@ public class b
               continue;
             }
             bool2 = true;
-            this.c = new HippyBridgeImpl(localContext, this, bool1, bool2, this.k);
-            this.c.initJSBridge(b(), new b.1(this, this.e, paramMessage), this.l);
+            this.c = new HippyBridgeImpl(localContext, this, bool1, bool2, this.k, this.l);
+            this.c.initJSBridge(b(), new b.1(this, this.e, paramMessage), this.m);
           }
           catch (Throwable localThrowable)
           {
@@ -304,10 +306,10 @@ public class b
           }
           this.h.add(str);
           paramMessage.load(this.c, new b.2(this, this.e, (HippyRootView)localObject));
-          break label664;
+          break label668;
         }
         a(-500, "can not load module. loader.getBundleUniKey=null", null);
-        break label664;
+        break label668;
         if (!this.d) {
           return true;
         }
@@ -323,34 +325,34 @@ public class b
       if (TextUtils.equals((CharSequence)localObject, "loadInstance"))
       {
         this.c.callFunction((String)localObject, str, new b.3(this, this.e, Message.obtain(paramMessage), (String)localObject));
-        break label669;
+        break label673;
         if (!(paramMessage.obj instanceof HippyMap)) {
-          break label671;
+          break label675;
         }
-        int n = ((HippyMap)paramMessage.obj).getInt("id");
-        localObject = this.a.getInstance(n);
+        int i1 = ((HippyMap)paramMessage.obj).getInt("id");
+        localObject = this.a.getInstance(i1);
         if ((localObject == null) || (((HippyRootView)localObject).getTimeMonitor() == null)) {
-          break label671;
+          break label675;
         }
         ((HippyRootView)localObject).getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_RUN_BUNDLE);
-        break label671;
+        break label675;
       }
       else
       {
         this.c.callFunction((String)localObject, str, null);
-        break label669;
+        break label673;
         this.c.destroy(null);
         return true;
         localObject = null;
         break;
         return false;
-        label664:
+        label668:
         return true;
         continue;
       }
-      label669:
+      label673:
       return true;
-      label671:
+      label675:
       localObject = "loadInstance";
       continue;
       localObject = "resumeInstance";

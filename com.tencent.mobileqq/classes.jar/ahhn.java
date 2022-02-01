@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhn
-  implements nnv
+public class ahhn
+  extends AnimatorListenerAdapter
 {
-  ahhn(ahgz paramahgz) {}
+  public ahhn(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
-    }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ahgz.b(paramString, bool);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
       return;
     }
+    this.a.b();
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

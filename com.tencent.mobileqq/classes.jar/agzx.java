@@ -1,51 +1,17 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agzx
-  extends ayem
+class agzx
+  extends ahaa
 {
-  public agzx(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
-  
-  public void a(int paramInt, aydt paramaydt)
+  agzx(agvm paramagvm)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahas;
-    if (localObject != null)
-    {
-      if (paramaydt.jdField_a_of_type_Int != 0) {
-        break label139;
-      }
-      ((ahas)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramaydt.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahab;
-      if (localObject != null)
-      {
-        if (paramaydt.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        ((ahab)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramaydt.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      label139:
-      ((ahas)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramaydt.jdField_a_of_type_Aydp.jdField_a_of_type_JavaLangString + ", desc:" + paramaydt.jdField_a_of_type_Aydp.b, paramaydt.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
-    }
-    ((ahab)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramaydt.jdField_a_of_type_Aydp.jdField_a_of_type_JavaLangString + ", desc:" + paramaydt.jdField_a_of_type_Aydp.b, paramaydt.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+    super(paramagvm, null);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahas;
-    if (localObject != null) {
-      ((ahas)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahab;
-    if (localObject != null) {
-      ((ahab)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
+    return new agvh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

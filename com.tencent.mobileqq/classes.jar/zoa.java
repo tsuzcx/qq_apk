@@ -1,80 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.ArrayList;
 
-public class zoa
-  extends Handler
+class zoa
+  extends zoi
 {
-  private WeakReference<TribeVideoPlugin> a;
-  
-  public zoa(TribeVideoPlugin paramTribeVideoPlugin)
+  zoa(znz paramznz, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
   {
-    this.a = new WeakReference(paramTribeVideoPlugin);
+    super(null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(View paramView)
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    Object localObject = paramMessage.obj;
-    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                return;
-              case 1: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
-                return;
-              case 2: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
-                return;
-              case 3: 
-                paramMessage = (zod)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-              }
-            } while ((paramMessage == null) || (zod.c(paramMessage)));
-            if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
-            }
-            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
-            zod.b(paramMessage, true);
-            return;
-            paramMessage = (zod)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-          } while (paramMessage == null);
-          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
-          {
-            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + zod.a(paramMessage));
-            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
-            TribeVideoPlugin.a(localTribeVideoPlugin, true);
-          }
-          TribeVideoPlugin.a(localTribeVideoPlugin, zod.a(paramMessage), 1);
-          return;
-          paramMessage = (zod)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-        } while (paramMessage == null);
-        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
-        return;
-        paramMessage = (zod)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-      } while (paramMessage == null);
-      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
-      return;
-      paramMessage = (zod)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-    } while (paramMessage == null);
-    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
-    return;
-    TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
+    ViewCompat.setAlpha(paramView, 1.0F);
+    this.jdField_a_of_type_Znz.dispatchRemoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    znz.d(this.jdField_a_of_type_Znz).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    znz.a(this.jdField_a_of_type_Znz);
+  }
+  
+  public void onAnimationStart(View paramView)
+  {
+    this.jdField_a_of_type_Znz.dispatchRemoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
   }
 }
 

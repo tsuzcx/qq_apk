@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import bjet;
+import bkqb;
 import com.tencent.qphone.base.util.QLog;
 
 public class NavigationJsPlugin$1
   implements Runnable
 {
-  public NavigationJsPlugin$1(bjet parambjet, Activity paramActivity) {}
+  public NavigationJsPlugin$1(bkqb parambkqb, Activity paramActivity) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class NavigationJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

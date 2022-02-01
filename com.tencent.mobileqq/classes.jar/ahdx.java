@@ -1,23 +1,21 @@
-import java.util.List;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class ahdx
-  extends amrj
+public class ahdx
+  extends ahdt
 {
-  ahdx(ahdt paramahdt) {}
+  public RelativeLayout a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public ahdx(ahdw paramahdw)
   {
-    if (paramBoolean)
-    {
-      this.a.a = argw.a(this.a.app).a(this.a.app, this.a.getCurFriendUin());
-      this.a.a(this.a.a);
-      if ((this.a.a != null) && (!this.a.a.isEmpty())) {
-        this.a.a(false);
-      }
-    }
+    super(paramahdw);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

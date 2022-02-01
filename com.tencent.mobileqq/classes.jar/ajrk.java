@@ -1,32 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
-class ajrk
-  implements View.OnClickListener
+public class ajrk
+  extends Handler
 {
-  ajrk(ajrg paramajrg) {}
+  public ajrk(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false)) {
-      if (aszt.a()) {
-        aszg.a(this.a.mActivity, 2131692374, 2131692379, new ajrl(this));
-      }
-    }
-    for (;;)
+    if (paramMessage.what == 1)
     {
-      LpReportInfo_pf00064.allReport(603, 1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.d();
-      continue;
-      this.a.d();
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bisl(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691467);
+      this.a.a.show();
     }
   }
 }

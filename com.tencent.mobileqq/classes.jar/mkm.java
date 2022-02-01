@@ -1,52 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
+import java.lang.ref.WeakReference;
 
-class mkm
-  extends BroadcastReceiver
+public class mkm
+  implements View.OnTouchListener
 {
-  mkm(mkl parammkl) {}
+  WeakReference<VideoControlUI> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public mkm(VideoControlUI paramVideoControlUI)
   {
-    long l;
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      l = mtt.a(paramIntent);
-      if (!paramContext.equals("tencent.video.invite.accept")) {
-        break label32;
+    this.a = new WeakReference(paramVideoControlUI);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = (VideoControlUI)this.a.get();
+    if (paramView != null) {
+      switch (paramMotionEvent.getAction())
+      {
       }
-      this.a.a(l);
     }
-    label32:
-    do
+    for (;;)
     {
-      return;
-      if (paramContext.equals("tencent.video.invite.refuse"))
-      {
-        this.a.b(l);
-        return;
-      }
-      if (paramContext.equals("tencent.video.invite.gaaccept"))
-      {
-        this.a.d(l);
-        return;
-      }
-      if (paramContext.equals("tencent.video.invite.gaignore"))
-      {
-        this.a.c(l);
-        return;
-      }
-    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
-    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
-    this.a.b();
+      return false;
+      paramView.D(0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkm
  * JD-Core Version:    0.7.0.1
  */

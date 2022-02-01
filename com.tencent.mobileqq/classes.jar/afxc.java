@@ -1,32 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkFlashChatMessage;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class afxc
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  afxc(afwy paramafwy, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  afxc(afwy paramafwy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    paramDialogInterface = (MessageForArkFlashChat)bbli.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-      }
-    }
-    while (this.jdField_a_of_type_Afwy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
-    {
-      return;
-      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
-    }
-    this.jdField_a_of_type_Afwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_Afwy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Afwy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
-    this.jdField_a_of_type_Afwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(paramDialogInterface, null, true);
+    afwy.a(this.a, paramLottieComposition);
   }
 }
 

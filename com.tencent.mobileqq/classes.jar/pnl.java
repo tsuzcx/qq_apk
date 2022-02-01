@@ -1,18 +1,66 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class pnl
-  implements AdapterView.OnItemClickListener
 {
-  public pnl(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a(String paramString, Map<String, Object> paramMap)
   {
-    this.a.a(paramView, paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    JSONObject localJSONObject;
+    if ((paramMap != null) && (paramMap.size() > 0)) {
+      try
+      {
+        localJSONObject = new JSONObject(paramString);
+        paramMap = paramMap.entrySet().iterator();
+        while (paramMap.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
+          return paramString;
+        }
+      }
+      catch (Exception paramMap)
+      {
+        QLog.e("RIJR5JsonManager", 1, paramMap.getMessage());
+      }
+    }
+    paramMap = localJSONObject.toString();
+    return paramMap;
+  }
+  
+  public static JSONArray a(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1);
+    if ((paramString1 == null) || (paramString1.length() <= 0)) {
+      paramString1 = null;
+    }
+    do
+    {
+      return paramString1;
+      paramString2 = paramString1.optJSONArray(paramString2);
+      if (paramString2 == null) {
+        break;
+      }
+      paramString1 = paramString2;
+    } while (paramString2.length() > 0);
+    return null;
+  }
+  
+  public static JSONObject a(String paramString)
+  {
+    try
+    {
+      paramString = (JSONObject)new JSONTokener(paramString).nextValue();
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
   }
 }
 

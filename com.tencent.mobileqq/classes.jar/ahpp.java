@@ -1,24 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
 
 class ahpp
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  ahpp(ahpo paramahpo) {}
+  ahpp(ahpl paramahpl) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Intent localIntent = new Intent(ahpo.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { ahpo.a(this.a).getAccount(), ahpo.a(this.a), Integer.valueOf(aubl.a(ahpo.a(this.a).curType)), ahpo.a(this.a).curFriendUin }));
-    ahpo.a(this.a).startActivity(localIntent);
-    bhvw.a().a(ahpo.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 

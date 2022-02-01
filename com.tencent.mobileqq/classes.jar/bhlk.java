@@ -1,19 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-
 public class bhlk
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhlk(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

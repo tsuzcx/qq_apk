@@ -1,24 +1,9 @@
-public abstract interface aogm
+import com.tencent.mobileqq.app.BusinessObserver;
+
+public class aogm
+  implements BusinessObserver
 {
-  public abstract long a();
-  
-  public abstract void a(int paramInt, aohg paramaohg);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(aoin paramaoin);
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,46 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pluspanel.appinfo.PlusPanelAppInfo;
-import com.tencent.mobileqq.pluspanel.loader.c2c.C2CPlusPanelAppConfigHelper;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class ayfj
+class ayfj
+  extends Handler
 {
-  private void a(String paramString)
+  ayfj(ayek paramayek) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOPlusPanelAppInfoConfigProcessor", 2, "Config parse configText -> " + paramString);
-      }
-    }
-    try
+    switch (paramMessage.what)
     {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("appid");
-      PlusPanelAppInfo localPlusPanelAppInfo = C2CPlusPanelAppConfigHelper.INSTANCE.getAppInfoByAppID(i);
-      if (localPlusPanelAppInfo != null)
+    }
+    do
+    {
+      do
       {
-        localPlusPanelAppInfo.appid = i;
-        localPlusPanelAppInfo.name = paramString.optString("title");
-        localPlusPanelAppInfo.enName = paramString.optString("eng_title");
-        localPlusPanelAppInfo.iconUrl = paramString.optString("iconNormal");
-        localPlusPanelAppInfo.iconPress = paramString.optString("iconPress");
-        localPlusPanelAppInfo.simpleDayUrl = paramString.optString("iconConciseNormal");
-        localPlusPanelAppInfo.simpleDayPressUrl = paramString.optString("iconConcisePress");
-        localPlusPanelAppInfo.simpleNightUrl = paramString.optString("iconConciseNightNormal");
-        localPlusPanelAppInfo.simpleNightPressUrl = paramString.optString("iconConciseNightPress");
-        localPlusPanelAppInfo.actionType = paramString.optString("actionType");
-        localPlusPanelAppInfo.action = paramString.optString("action");
-        localPlusPanelAppInfo.enableC2C = paramString.optInt("enableC2C");
-        localPlusPanelAppInfo.enableGroup = paramString.optInt("enableGroup");
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698768);
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
+        return;
+      } while ((this.a.jdField_a_of_type_Ayjm == null) || (ayek.a(this.a) == null));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698406);
       }
+      this.a.jdField_a_of_type_Ayjm.a(ayek.a(this.a).uRoomid);
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, String.valueOf(ayek.a(this.a).tinyId), "", "yes", "android");
       return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("AIOPlusPanelAppInfoConfigProcessor", 1, paramString, new Object[0]);
-    }
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131698765, 0).a();
+      return;
+    } while (this.a.jdField_a_of_type_Ayjm == null);
+    this.a.jdField_a_of_type_Ayjm.a();
   }
 }
 

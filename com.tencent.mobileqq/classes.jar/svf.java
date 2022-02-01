@@ -1,10 +1,45 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-abstract interface svf
+class svf
+  extends suv
 {
-  public abstract void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData);
+  svf(suw paramsuw) {}
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    suw.a(this.a, false);
+    paramActionSheetItem = paramString + "&sourcefrom=6";
+    paramString = paramActionSheetItem;
+    if (paramBaseArticleInfo.qzoneShareUrl != null)
+    {
+      paramString = paramActionSheetItem;
+      if (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")) {
+        paramString = paramBaseArticleInfo.qzoneShareUrl;
+      }
+    }
+    paramBaseArticleInfo = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
+    paramBaseArticleInfo.putExtra("big_brother_source_key", pqx.a(0));
+    paramBaseArticleInfo.putExtra("normal", true);
+    try
+    {
+      suw.a(this.a).startActivity(paramBaseArticleInfo);
+      return;
+    }
+    catch (ActivityNotFoundException paramBaseArticleInfo)
+    {
+      znl.a(1, 2131694987);
+    }
+  }
+  
+  public int c()
+  {
+    return 7;
+  }
 }
 
 

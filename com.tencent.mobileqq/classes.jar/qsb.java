@@ -1,68 +1,42 @@
 import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.lang.reflect.Constructor;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qsb<T extends View>
-  extends qpk
+public class qsb
+  implements ViewBase.OnClickListener
 {
-  private Class<T> a;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  szd jdField_a_of_type_Szd;
   
-  public qsb(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt, Class<T> paramClass)
+  public qsb(ArticleInfo paramArticleInfo, Context paramContext, szd paramszd)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Szd = paramszd;
   }
   
-  public qpk a()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
-  }
-  
-  public qpk d()
-  {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Qpj != null) && (this.jdField_a_of_type_Qpj.getClass().equals(this.jdField_a_of_type_JavaLangClass))) {
-      localLinearLayout.addView((View)this.jdField_a_of_type_Qpj);
+    if (ppe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      pqx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 1);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public qpk e()
-  {
-    return this;
-  }
-  
-  public qpk g()
-  {
-    try
+    for (;;)
     {
-      this.jdField_a_of_type_Qpj = ((qpj)this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidContentContext }));
-      return this;
+      pih.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Szd);
+      qrr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009442", "0X8009445");
+      return;
+      if (pqa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+      {
+        pqx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        pih.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A77", null);
+      }
+      else
+      {
+        pqx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 1);
+      }
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return this;
-  }
-  
-  public qpk o()
-  {
-    super.o();
-    return this;
   }
 }
 

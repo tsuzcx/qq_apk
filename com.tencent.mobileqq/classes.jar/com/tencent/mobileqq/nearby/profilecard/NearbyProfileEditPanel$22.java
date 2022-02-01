@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import axax;
-import ayeu;
+import ayhd;
+import azlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -14,17 +14,17 @@ import java.util.LinkedList;
 public class NearbyProfileEditPanel$22
   implements Runnable
 {
-  public NearbyProfileEditPanel$22(axax paramaxax) {}
+  public NearbyProfileEditPanel$22(ayhd paramayhd) {}
   
   public void run()
   {
-    axax.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (axax.a(this.this$0) == null) {
+    ayhd.a(this.this$0, (PicInfo)this.this$0.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (ayhd.a(this.this$0) == null) {
       return;
     }
-    CompressInfo localCompressInfo = new CompressInfo(axax.a(this.this$0).c, 0);
+    CompressInfo localCompressInfo = new CompressInfo(ayhd.a(this.this$0).c, 0);
     localCompressInfo.f = 0;
-    ayeu.a(localCompressInfo);
+    azlg.a(localCompressInfo);
     if (QLog.isColorLevel()) {
       QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
     }

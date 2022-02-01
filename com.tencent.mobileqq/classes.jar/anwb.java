@@ -1,12 +1,23 @@
-import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.data.HotChatItemData;
+import java.util.Comparator;
 
-public abstract interface anwb
+class anwb
+  implements Comparator<HotChatItemData>
 {
-  public abstract void a();
+  anwb(anwa paramanwa) {}
   
-  public abstract void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel);
-  
-  public abstract void b();
+  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  {
+    long l1 = paramHotChatItemData1.mMakeTopTime;
+    long l2 = paramHotChatItemData2.mMakeTopTime;
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
+  }
 }
 
 

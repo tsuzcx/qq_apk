@@ -217,6 +217,8 @@ public class LbsManagerService
     S_BUSINESS.put(localBusinessInfo.businessId, localBusinessInfo);
     localBusinessInfo = new LbsManagerService.BusinessInfo("extend_friend", true, 1, 0, false, true, false);
     S_BUSINESS.put(localBusinessInfo.businessId, localBusinessInfo);
+    localBusinessInfo = new LbsManagerService.BusinessInfo("miniapp", true, 1, 0, false, true, false);
+    S_BUSINESS.put(localBusinessInfo.businessId, localBusinessInfo);
   }
   
   public static void removeListener(LbsManagerService.OnLocationChangeListener paramOnLocationChangeListener)

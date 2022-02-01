@@ -5,7 +5,7 @@ import com.tencent.cmsdk.hippy.TKDAdModule;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.common.Provider;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
-import tst;
+import uhe;
 
 class HippyQQAPIProvider$6
   implements Provider<HippyNativeModuleBase>
@@ -14,7 +14,7 @@ class HippyQQAPIProvider$6
   
   public HippyNativeModuleBase get()
   {
-    TKDAdHippy.getInstance().setITkdAdModule(new tst());
+    TKDAdHippy.getInstance().setITkdAdModule(new uhe());
     return new TKDAdModule(this.val$context);
   }
 }

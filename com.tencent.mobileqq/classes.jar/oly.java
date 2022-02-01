@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo;
 
-public class oly
-  implements nnv
+public final class oly
+  implements Parcelable.Creator<VideoAdInfo>
 {
-  public oly(ReadInJoyNewFeedsActivity.2 param2) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public VideoAdInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
-    }
+    return new VideoAdInfo(paramParcel);
   }
   
-  public void progress(int paramInt) {}
+  public VideoAdInfo[] a(int paramInt)
+  {
+    return new VideoAdInfo[paramInt];
+  }
 }
 
 

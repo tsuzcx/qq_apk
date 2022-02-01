@@ -1,89 +1,65 @@
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.PointF;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import java.util.List;
 
 public class baej
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
+  public baej(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
   
-  public baej()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this(null, 0, true, false);
-  }
-  
-  public baej(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this(paramString, paramInt, paramBoolean1, paramBoolean2, 0L, 0L);
-  }
-  
-  public baej(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
-  
-  public boolean a(baej parambaej)
-  {
-    if (parambaej == null) {
-      throw new NullPointerException();
-    }
-    boolean bool = false;
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, parambaej.jdField_a_of_type_JavaLangString))
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
+    paramAnimator = (RatioLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (paramAnimator != null)
     {
-      this.jdField_a_of_type_JavaLangString = parambaej.jdField_a_of_type_JavaLangString;
-      bool = true;
+      if (this.jdField_a_of_type_AndroidViewView.getAnimation() != null) {
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      if ((paramAnimator.a != this.jdField_a_of_type_AndroidGraphicsPointF.x) || (paramAnimator.b != this.jdField_a_of_type_AndroidGraphicsPointF.y))
+      {
+        paramAnimator.a = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+        paramAnimator.b = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+        this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+        this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+        if ((this.jdField_a_of_type_AndroidViewView instanceof VipTagView)) {
+          ((VipTagView)this.jdField_a_of_type_AndroidViewView).setShakingState(true);
+        }
+      }
+      VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+      if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b())
+        {
+          paramAnimator = VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.getLabelList();
+          if (paramAnimator != null)
+          {
+            if ((VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView)[(VasProfileTagView.a().length - 1)] == null) || (paramAnimator.size() != 0)) {
+              break label255;
+            }
+            VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).setVisibility(0);
+          }
+        }
+      }
     }
-    if (this.jdField_a_of_type_Int != parambaej.jdField_a_of_type_Int)
+    for (;;)
     {
-      this.jdField_a_of_type_Int = parambaej.jdField_a_of_type_Int;
-      bool = true;
+      if (VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b(VasProfileTagView.d(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
+        VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+      }
+      return;
+      label255:
+      VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).setVisibility(4);
     }
-    if (this.jdField_a_of_type_Boolean != parambaej.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = parambaej.jdField_a_of_type_Boolean;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Boolean != parambaej.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = parambaej.jdField_b_of_type_Boolean;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Long != parambaej.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = parambaej.jdField_a_of_type_Long;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Long != parambaej.jdField_b_of_type_Long)
-    {
-      this.jdField_b_of_type_Long = parambaej.jdField_b_of_type_Long;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Int != parambaej.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_Int = parambaej.jdField_b_of_type_Int;
-      bool = true;
-    }
-    if (this.c != parambaej.c)
-    {
-      this.c = parambaej.c;
-      return true;
-    }
-    return bool;
-  }
-  
-  public String toString()
-  {
-    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
   }
 }
 

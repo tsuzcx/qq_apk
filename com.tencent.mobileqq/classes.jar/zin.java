@@ -1,34 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
 
 public class zin
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public zin(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  public zin(XRecyclerView paramXRecyclerView) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    boolean bool2 = true;
-    zda localzda;
-    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    paramInt = paramRecyclerView.getChildCount();
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
     {
-      localzda = SubscribeVideoDetailFragment.a(this.a).a(1);
-      bool1 = bool2;
-      if (SubscribeVideoDetailFragment.a(this.a).g()) {
-        if (SubscribeVideoDetailFragment.a(this.a).i()) {
-          break label88;
-        }
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      int i = paramRecyclerView.getItemCount();
+      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
+      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
+        break label76;
       }
     }
-    label88:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label76:
+    for (paramInt = 1;; paramInt = 0)
     {
-      localzda.c = bool1;
-      this.a.a(localzda);
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (paramInt != 0) {
+        XRecyclerView.a(this.a).b(false);
+      }
       return;
     }
   }

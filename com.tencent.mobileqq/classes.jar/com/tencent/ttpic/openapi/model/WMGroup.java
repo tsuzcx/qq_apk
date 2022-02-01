@@ -69,7 +69,7 @@ public class WMGroup
     }
     localIterator = this.mAnimationFilerMap.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((WMAnimationFilterBase)((Map.Entry)localIterator.next()).getValue()).ClearGLSL();
+      ((WMAnimationFilterBase)((Map.Entry)localIterator.next()).getValue()).clearGLSL();
     }
   }
   

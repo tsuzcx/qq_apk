@@ -1,13 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
+
 class aabb
-  implements beyw
+  implements DialogInterface.OnDismissListener
 {
-  aabb(aaba paramaaba, String paramString) {}
+  aabb(aaba paramaaba) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (beyh.jdField_a_of_type_JavaLangString.equals(paramString2)) {
-      this.jdField_a_of_type_Aaba.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
-    }
+    SimpleEventBus.getInstance().dispatchEvent(new SharePanelShowStateEvent(false));
   }
 }
 

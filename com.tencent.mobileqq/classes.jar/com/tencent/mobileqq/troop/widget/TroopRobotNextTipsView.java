@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import amtj;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
@@ -11,13 +10,15 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfdm;
+import anvx;
+import bgls;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RobotSubscribeCategory;
@@ -49,8 +50,8 @@ public class TroopRobotNextTipsView
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364465);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841605);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364546);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841615);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
@@ -63,8 +64,8 @@ public class TroopRobotNextTipsView
     if (this.b == null)
     {
       this.b = new TextView(getContext());
-      this.b.setId(2131364466);
-      this.b.setBackgroundResource(2130842514);
+      this.b.setId(2131364547);
+      this.b.setBackgroundResource(2130842544);
       this.b.setTextSize(2, 14.0F);
       this.b.setTextColor(jdField_a_of_type_Int);
       this.b.setGravity(17);
@@ -74,17 +75,17 @@ public class TroopRobotNextTipsView
       this.b.setPadding(i, 0, i, 0);
       addView(this.b, paramContext);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131714772));
-    this.b.setText(amtj.a(2131714759));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131715120));
+    this.b.setText(anvx.a(2131715107));
     this.b.setOnClickListener(this);
   }
   
   public void a(ChatMessage paramChatMessage)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    Object localObject = (bfdm)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(203);
-    boolean bool = ((bfdm)localObject).c(paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory = ((bfdm)localObject).a(((bfdm)localObject).a(paramChatMessage));
+    Object localObject = (bgls)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
+    boolean bool = ((bgls)localObject).c(paramChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory = ((bgls)localObject).a(((bgls)localObject).a(paramChatMessage));
     if (this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory != null)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory.name.get();
@@ -129,15 +130,15 @@ public class TroopRobotNextTipsView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bfdm localbfdm = (bfdm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
+      bgls localbgls = (bgls)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
       Object localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
       if ((localObject != null) && (((ChatFragment)localObject).a() != null))
       {
         localObject = ((ChatFragment)localObject).a();
         if (this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory != null) {
-          localbfdm.a(getContext(), (BaseChatPie)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((BaseChatPie)localObject).input, ((BaseChatPie)localObject).sessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory.next_content.get());
+          localbgls.a(getContext(), (BaseChatPie)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((BaseChatPie)localObject).input, ((BaseChatPie)localObject).sessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory.next_content.get());
         } else {
-          localbfdm.a(getContext(), (BaseChatPie)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((BaseChatPie)localObject).input, ((BaseChatPie)localObject).sessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.b.getText().toString());
+          localbgls.a(getContext(), (BaseChatPie)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((BaseChatPie)localObject).input, ((BaseChatPie)localObject).sessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.b.getText().toString());
         }
       }
     }

@@ -1,54 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Bundle;
+import mqq.app.IThirdPushSupport;
 
 public class baix
+  implements IThirdPushSupport
 {
-  public static List<bajc> a(String paramString)
+  public int getThirdPushType(Context paramContext, Bundle paramBundle)
   {
-    localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("LiuHaiArray"))
-        {
-          paramString = paramString.getJSONArray("LiuHaiArray");
-          int i = 0;
-          while (i < paramString.length())
-          {
-            bajc localbajc = new bajc();
-            JSONObject localJSONObject = paramString.getJSONObject(i);
-            if (localJSONObject.has("manufacturer")) {
-              localbajc.a = localJSONObject.optString("manufacturer", "");
-            }
-            if (localJSONObject.has("brand")) {
-              localbajc.b = localJSONObject.optString("brand", "");
-            }
-            if (localJSONObject.has("model")) {
-              localbajc.c = localJSONObject.optString("model", "");
-            }
-            localArrayList.add(localbajc);
-            i += 1;
-          }
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        BrowserLogHelper.getInstance().getGalleryLog().d("ListConfigParseUtils", 4, "parseWhiteListConfig exception = " + paramString.getMessage());
-      }
-    }
+    return baiw.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     baix
  * JD-Core Version:    0.7.0.1
  */

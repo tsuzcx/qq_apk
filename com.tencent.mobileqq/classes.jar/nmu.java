@@ -1,8 +1,14 @@
+import android.widget.ImageView;
+
 public abstract interface nmu
 {
-  public abstract void a();
+  public abstract ImageView a();
   
-  public abstract void b();
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

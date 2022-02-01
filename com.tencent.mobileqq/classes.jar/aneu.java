@@ -1,27 +1,44 @@
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
 
-class aneu
-  implements Comparator<Map.Entry<String, Entity>>
+public class aneu
+  implements ampy
 {
-  aneu(anet paramanet) {}
+  private SoftReference<ApolloGuestsStateActivity> a;
   
-  public int a(Map.Entry<String, Entity> paramEntry1, Map.Entry<String, Entity> paramEntry2)
+  public aneu(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
   {
-    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
+    this.a = new SoftReference(paramApolloGuestsStateActivity);
+  }
+  
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
     }
-    if (i == k) {
-      return j - m;
+    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
+    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
+      return;
     }
-    return -1;
+    float f3 = FontSettingManager.getFontLevel() / 16.0F;
+    float f2 = localApolloGuestsStateActivity.c;
+    float f1 = f2;
+    if (0.0F != f3) {
+      f1 = f2 / f3;
+    }
+    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
+    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
+      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
+    }
+    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
+    localApolloGuestsStateActivity.b = paramInt1;
   }
 }
 

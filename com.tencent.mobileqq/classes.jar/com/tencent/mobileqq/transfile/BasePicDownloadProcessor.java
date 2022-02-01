@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.transfile;
 
-import amrp;
-import amtr;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import aqcn;
-import aqco;
-import avsq;
-import aycx;
-import aycy;
-import ayeu;
-import bcel;
-import bcjc;
-import bfuq;
+import anud;
+import anwf;
+import arfs;
+import arft;
+import awyr;
+import azjj;
+import azjk;
+import azlg;
+import bdlg;
+import bdqa;
+import bhdi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
@@ -976,7 +976,7 @@ public class BasePicDownloadProcessor
     if (this.mUiRequest.mDownMode == 0)
     {
       str = "&rf=aio";
-      str = "cldver=8.4.8.4810" + str;
+      str = "cldver=8.4.10.4875" + str;
       paramInt = paramString.indexOf("?");
       if (paramInt <= 0) {
         break label219;
@@ -1054,7 +1054,7 @@ public class BasePicDownloadProcessor
       this.mIpFromInnerDns = true;
       this.mDirectMsgUrlDown = true;
       this.mStepDirectDown.logStartTime();
-      paramString = aqcn.a();
+      paramString = arfs.a();
       if (paramString != null)
       {
         bool = paramString.a();
@@ -1071,7 +1071,7 @@ public class BasePicDownloadProcessor
       return;
       if (this.mUrlPath.contains("com.tencent.mobileqq"))
       {
-        bcel.a("Download_Pic_URL_Invalid", this.mUrlPath);
+        bdlg.a("Download_Pic_URL_Invalid", this.mUrlPath);
         QLog.d("BaseTransProcessor", 1, "directMsgUrlDown Download_Pic_URL_Invalid:" + this.mUrlPath);
       }
     }
@@ -1239,10 +1239,10 @@ public class BasePicDownloadProcessor
           if (localObject1 == null) {
             break label250;
           }
-          if (((amtr.a((MessageRecord)localObject1)) || (amrp.a((MessageRecord)localObject1))) && (!TextUtils.isEmpty(((MessageForPic)localObject1).md5)))
+          if (((anwf.a((MessageRecord)localObject1)) || (anud.a((MessageRecord)localObject1))) && (!TextUtils.isEmpty(((MessageForPic)localObject1).md5)))
           {
             localObject2 = this.mUiRequest.mOutFilePath + "_fp";
-            bfuq.a(this.mUiRequest.mOutFilePath, (String)localObject2, ((MessageForPic)localObject1).md5);
+            bhdi.a(this.mUiRequest.mOutFilePath, (String)localObject2, ((MessageForPic)localObject1).md5);
             return;
             localObject1 = localObject2;
             if (!(localObject2 instanceof MessageForStructing)) {
@@ -1259,10 +1259,10 @@ public class BasePicDownloadProcessor
               break;
             }
             localObject1 = localObject2;
-            if (((bcjc)localObject3).a == null) {
+            if (((bdqa)localObject3).a == null) {
               break;
             }
-            localObject1 = ((bcjc)localObject3).a;
+            localObject1 = ((bdqa)localObject3).a;
             break;
           }
           updateThumb((MessageForPic)localObject1);
@@ -1480,12 +1480,12 @@ public class BasePicDownloadProcessor
       localObject1 = this.mDownCallBacks.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject4 = (aycx)((Iterator)localObject1).next();
-        aycy localaycy = new aycy();
-        localaycy.jdField_a_of_type_Int = -1;
-        localaycy.jdField_b_of_type_Int = this.errCode;
-        localaycy.jdField_a_of_type_JavaLangString = this.errDesc;
-        ((aycx)localObject4).a(localaycy);
+        localObject4 = (azjj)((Iterator)localObject1).next();
+        azjk localazjk = new azjk();
+        localazjk.jdField_a_of_type_Int = -1;
+        localazjk.jdField_b_of_type_Int = this.errCode;
+        localazjk.jdField_a_of_type_JavaLangString = this.errDesc;
+        ((azjj)localObject4).a(localazjk);
         if (QLog.isColorLevel()) {
           QLog.d("PIC_TAG", 2, "onError ");
         }
@@ -1527,11 +1527,11 @@ public class BasePicDownloadProcessor
       }
     }
     sendMessageToUpdate(2005);
-    if (avsq.b(this.mUiRequest.mRec)) {
-      avsq.a(String.valueOf(this.errCode), 3);
+    if (awyr.b(this.mUiRequest.mRec)) {
+      awyr.a(String.valueOf(this.errCode), 3);
     }
     label374:
-    while (!avsq.a(this.mUiRequest.mRec))
+    while (!awyr.a(this.mUiRequest.mRec))
     {
       return;
       ((ProbeChain)localObject4).addProbeItem(new PingProbe());
@@ -1541,7 +1541,7 @@ public class BasePicDownloadProcessor
       break label308;
     }
     label401:
-    avsq.a(String.valueOf(this.errCode), 2);
+    awyr.a(String.valueOf(this.errCode), 2);
   }
   
   public void onFailed(NetResp paramNetResp)
@@ -1627,7 +1627,7 @@ public class BasePicDownloadProcessor
     for (;;)
     {
       Object localObject3;
-      aycy localaycy;
+      azjk localazjk;
       boolean bool;
       try
       {
@@ -1647,13 +1647,13 @@ public class BasePicDownloadProcessor
         if (!((Iterator)localObject1).hasNext()) {
           break label401;
         }
-        localObject3 = (aycx)((Iterator)localObject1).next();
-        localaycy = new aycy();
-        localaycy.jdField_a_of_type_Int = 0;
-        localaycy.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
-        localaycy.jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
-        localaycy.jdField_c_of_type_Int = this.mUiRequest.mFileType;
-        localaycy.d = this.mUiRequest.mDownMode;
+        localObject3 = (azjj)((Iterator)localObject1).next();
+        localazjk = new azjk();
+        localazjk.jdField_a_of_type_Int = 0;
+        localazjk.jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
+        localazjk.jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
+        localazjk.jdField_c_of_type_Int = this.mUiRequest.mFileType;
+        localazjk.d = this.mUiRequest.mDownMode;
         if (i == 2) {
           break label490;
         }
@@ -1662,10 +1662,10 @@ public class BasePicDownloadProcessor
         }
       }
       finally {}
-      localaycy.jdField_a_of_type_Boolean = bool;
-      ((aycx)localObject3).a(localaycy);
+      localazjk.jdField_a_of_type_Boolean = bool;
+      ((azjj)localObject3).a(localazjk);
       if ((this.mUiRequest.mFileType == 131075) && (QLog.isDevelopLevel())) {
-        QLog.d("peak_pgjpeg", 4, "BasePicDownloadProcessor.onSuccess():" + this.mUiRequest.mOutFilePath + ", isPart " + localaycy.jdField_a_of_type_Boolean);
+        QLog.d("peak_pgjpeg", 4, "BasePicDownloadProcessor.onSuccess():" + this.mUiRequest.mOutFilePath + ", isPart " + localazjk.jdField_a_of_type_Boolean);
       }
       if (QLog.isColorLevel())
       {
@@ -1683,13 +1683,13 @@ public class BasePicDownloadProcessor
           logRichMediaEvent("notify", "end");
         }
         sendMessageToUpdate(2003);
-        if (avsq.b(this.mUiRequest.mRec)) {
-          avsq.a("0", 3);
+        if (awyr.b(this.mUiRequest.mRec)) {
+          awyr.a("0", 3);
         }
-        while (!avsq.a(this.mUiRequest.mRec)) {
+        while (!awyr.a(this.mUiRequest.mRec)) {
           return;
         }
-        avsq.a("0", 2);
+        awyr.a("0", 2);
         return;
         label490:
         bool = true;
@@ -1875,7 +1875,7 @@ public class BasePicDownloadProcessor
     //   363: ifeq +255 -> 618
     //   366: aload_1
     //   367: invokeinterface 871 1 0
-    //   372: checkcast 980	aycx
+    //   372: checkcast 980	azjj
     //   375: iload 6
     //   377: iload 8
     //   379: invokeinterface 1158 3 0
@@ -2092,7 +2092,7 @@ public class BasePicDownloadProcessor
           label99:
           localCompressInfo.e = ((String)localObject);
           localCompressInfo.a = paramMessageForPic.thumbWidthHeightDP;
-          ayeu.b(localCompressInfo);
+          azlg.b(localCompressInfo);
           if (localCompressInfo.e != null)
           {
             localObject = new File((String)localObject);

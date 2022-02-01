@@ -1,16 +1,19 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
-public abstract interface xtm
+public class xtm
+  implements zho
 {
-  public abstract void a(String paramString, CommentEntry paramCommentEntry);
+  public xtm(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public abstract void b();
+  public void a() {}
   
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Xzr != null) {
+      this.a.jdField_a_of_type_Xzr.a(this.a.jdField_a_of_type_Xua.a());
+    }
+    return true;
+  }
 }
 
 

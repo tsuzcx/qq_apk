@@ -1,52 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.CoinPresentReq;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.MetaData;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
 
 public class qgf
-  implements LogUtil.ProteusLog
+  implements qgk
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public int a()
   {
-    QLog.d(paramString1, paramInt, paramString2);
+    return 2;
   }
   
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
-  }
+  public void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xed4.RspBody paramRspBody, int paramInt1, int paramInt2, String paramString) {}
   
-  public void e(String paramString1, int paramInt, String paramString2)
+  public void a(qxw paramqxw, oidb_cmd0xed4.ReqBody paramReqBody)
   {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
+    if ((paramqxw == null) || (paramReqBody == null)) {
+      return;
+    }
+    paramReqBody.meta.type.set(2);
+    paramReqBody.present_req.setHasFlag(true);
+    paramReqBody.present_req.uin.set(pkh.a());
   }
 }
 

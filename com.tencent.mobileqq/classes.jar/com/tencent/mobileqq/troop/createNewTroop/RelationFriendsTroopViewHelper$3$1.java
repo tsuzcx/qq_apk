@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bdxn;
-import bdxp;
+import bfeq;
+import bfes;
 import java.util.ArrayList;
 
 class RelationFriendsTroopViewHelper$3$1
@@ -11,17 +11,17 @@ class RelationFriendsTroopViewHelper$3$1
   
   public void run()
   {
-    bdxn.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsTroopViewHelper$3.this$0).clear();
+    bfeq.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsTroopViewHelper$3.this$0).clear();
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
       int i = 0;
       while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 5))
       {
-        bdxn.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsTroopViewHelper$3.this$0).add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        bfeq.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsTroopViewHelper$3.this$0).add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
         i += 1;
       }
     }
-    bdxn.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsTroopViewHelper$3.this$0).a();
+    bfeq.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopRelationFriendsTroopViewHelper$3.this$0).a();
   }
 }
 

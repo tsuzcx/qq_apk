@@ -1,37 +1,17 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alyv
-  implements alsd
+  implements View.OnClickListener
 {
   alyv(alyu paramalyu) {}
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void onClick(View paramView)
   {
-    alyu localalyu = this.a;
-    if (alyu.a(this.a).jdField_b_of_type_Boolean)
-    {
-      paramStartCheckParam = alyu.a(this.a).e;
-      alyu.a(localalyu, paramStartCheckParam);
-      if (!"message".equals(alyu.a(this.a).f)) {
-        break label101;
-      }
-    }
-    label101:
-    for (int i = 1;; i = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(alyu.a(this.a).jdField_b_of_type_Int) });
-      return;
-      paramStartCheckParam = alyu.a(this.a).d;
-      break;
-    }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (alyu.a(this.a) != null) {
-      alyu.a(this.a).c(-10001, alyu.a(this.a).jdField_b_of_type_JavaLangString);
-    }
+    Object localObject = paramView.getTag();
+    alyu.a(this.a, (ajkw)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

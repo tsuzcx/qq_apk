@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class adjb
-  implements DialogInterface.OnClickListener
+public class adjb
+  extends aqlq
 {
-  adjb(adja paramadja) {}
+  public adjb(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.f();
-    bcef.b(this.a.a.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k), "", "");
-    if (this.a.a.a.b) {
-      new bcek(this.a.a.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.a.a.a.jdField_a_of_type_JavaLangString }).a();
+    if (paramBoolean1)
+    {
+      if ((this.a.f != null) && (paramBoolean2 != this.a.f.a()))
+      {
+        this.a.f.setOnCheckedChangeListener(null);
+        this.a.f.setChecked(paramBoolean2);
+        this.a.f.setOnCheckedChangeListener(this.a);
+      }
+      return;
     }
+    AssistantSettingActivity.a(this.a, 2131690682, 1);
   }
 }
 

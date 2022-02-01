@@ -1,25 +1,13 @@
-import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class yna
+public abstract interface yna
 {
-  public static final int[] a;
-  public static final int[] b;
-  public int a;
-  public Drawable a;
-  public int b;
+  public abstract void a(MotionEvent paramMotionEvent);
   
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130846693, 2130846691, 2130846694, 2130846692, 2130846697, 2130846696, 2130846700, 2130846695, 2130846698 };
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
   
-  public yna(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
+  public abstract void onClick(View paramView);
 }
 
 

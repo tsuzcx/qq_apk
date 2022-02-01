@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgz;
-import aqlw;
+import aibs;
+import arph;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class HotChatPie$11
   implements Runnable
 {
-  public HotChatPie$11(ahgz paramahgz) {}
+  public HotChatPie$11(aibs paramaibs) {}
   
   public void run()
   {
-    aqlw.a(this.this$0.app, this.this$0.app.getAccount(), -1);
+    arph.a(this.this$0.app, this.this$0.app.getAccount(), -1);
   }
 }
 

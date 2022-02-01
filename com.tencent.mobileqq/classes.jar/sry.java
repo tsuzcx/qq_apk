@@ -1,45 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.fetchGuideBgImg.1;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class sry
-  implements INetInfoHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$fetchGuideBgImg$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/IBitmapCallback;", "onFail", "", "request", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "exception", "", "onProgress", "progress", "", "onSuccess", "bitmap", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/CloseableBitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sry
+  implements tlu
 {
-  public sry(FastWebActivity paramFastWebActivity) {}
+  public void a(@Nullable tlw paramtlw, int paramInt) {}
   
-  public void onNetMobile2None()
+  public void a(@Nullable tlw paramtlw, @Nullable Throwable paramThrowable)
   {
-    FastWebActivity.m(this.a);
-    txq.a.onNetMobile2None();
+    StringBuilder localStringBuilder = new StringBuilder().append("fetch guide bg img fail: ");
+    if (paramThrowable != null) {}
+    for (paramtlw = paramThrowable.getMessage();; paramtlw = null)
+    {
+      QLog.e("VideoColumnGuideManager", 1, paramtlw);
+      return;
+    }
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(@Nullable tlw paramtlw, @Nullable tls paramtls)
   {
-    FastWebActivity.m(this.a);
-    txq.a.onNetMobile2Wifi(paramString);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FastWebActivity.m(this.a);
-    txq.a.onNetNone2Mobile(paramString);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FastWebActivity.m(this.a);
-    txq.a.onNetNone2Wifi(paramString);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FastWebActivity.m(this.a);
-    txq.a.onNetWifi2Mobile(paramString);
-  }
-  
-  public void onNetWifi2None()
-  {
-    FastWebActivity.m(this.a);
-    txq.a.onNetWifi2None();
+    srv localsrv = this.a.this$0;
+    if (paramtls != null) {}
+    for (paramtlw = paramtls.a();; paramtlw = null)
+    {
+      srv.a(localsrv, paramtlw);
+      srv.a(this.a.this$0, true);
+      paramtlw = srv.a(this.a.this$0);
+      if (paramtlw != null) {
+        paramtlw.setImageBitmap(srv.a(this.a.this$0));
+      }
+      srv.b(this.a.this$0);
+      return;
+    }
   }
 }
 

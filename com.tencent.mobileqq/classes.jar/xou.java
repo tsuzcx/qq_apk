@@ -1,44 +1,22 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class xou
-  extends vll<xoi, xpc>
+class xou
+  extends Job<Object, Object, Object>
 {
-  public xou(xoi paramxoi)
+  xou(xot paramxot, String paramString, wix paramwix)
   {
-    super(paramxoi);
+    super(paramString);
   }
   
-  public void a(@NonNull xoi paramxoi, @NonNull xpc paramxpc)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    Object localObject = paramxpc.a;
-    paramxpc = paramxoi.a(((xpe)localObject).a.feedId);
-    if (paramxpc == null)
-    {
-      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((xpe)localObject).a.feedId });
-      return;
-    }
-    if ((!(localObject instanceof xpg)) || (!(paramxpc instanceof xpg)))
-    {
-      xvv.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
-      return;
-    }
-    localObject = (xpg)localObject;
-    paramxpc = (xpg)paramxpc;
-    paramxpc.a = ((xpg)localObject).a;
-    paramxpc.a(((xpg)localObject).b(), false);
-    paramxpc.b(((xpg)localObject).c(), false);
-    paramxpc.c(((xpg)localObject).a(), false);
-    xoi.a(paramxoi).b(paramxpc.a.feedId);
-    xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramxpc);
+    wad.a().dispatch(this.jdField_a_of_type_Wix);
+    return null;
   }
-  
-  public Class acceptEventClass()
-  {
-    return xpc.class;
-  }
-  
-  public void b(@NonNull xoi paramxoi, @NonNull xpc paramxpc) {}
 }
 
 

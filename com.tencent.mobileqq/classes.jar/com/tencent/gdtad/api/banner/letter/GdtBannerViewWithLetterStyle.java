@@ -1,42 +1,50 @@
 package com.tencent.gdtad.api.banner.letter;
 
-import abkv;
-import ablv;
-import abma;
-import abmb;
-import abrl;
+import acal;
+import acbl;
+import acbq;
+import acbr;
+import acho;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 import com.tencent.gdtad.aditem.GdtAd;
 
 public final class GdtBannerViewWithLetterStyle
   extends FrameLayout
-  implements ablv
+  implements acbl
 {
-  ablv a;
+  private acbl jdField_a_of_type_Acbl;
+  private AdAntiSpamForClick jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick = new AdAntiSpamForClick();
   
   public GdtBannerViewWithLetterStyle(Context paramContext, GdtAd paramGdtAd)
   {
     super(paramContext);
     if ((paramContext == null) || (paramGdtAd == null) || (!paramGdtAd.isValid()))
     {
-      abrl.d("GdtBannerViewWithLetterStyle", "constructor");
+      acho.d("GdtBannerViewWithLetterStyle", "constructor");
       return;
     }
-    setBackgroundResource(2130840243);
+    setBackgroundResource(2130840278);
+    label102:
+    int i;
     if ((paramGdtAd.getImageData() == null) || (!paramGdtAd.getImageData().a()))
     {
       paramContext = new ImageView(getContext());
-      paramContext.setImageResource(2130840244);
-      addView(paramContext, -1, -1);
-      return;
+      if ((paramGdtAd.getProductType() == 12) || (paramGdtAd.getProductType() == 38))
+      {
+        paramContext.setImageResource(2130840279);
+        addView(paramContext, -1, -1);
+      }
     }
-    int i;
-    if (paramGdtAd.getImageData() != null)
+    else
     {
+      if (paramGdtAd.getImageData() == null) {
+        break label293;
+      }
       i = paramGdtAd.getImageData().jdField_a_of_type_Int;
       j = paramGdtAd.getImageData().b;
     }
@@ -44,21 +52,24 @@ public final class GdtBannerViewWithLetterStyle
     {
       if ((i <= 0) || (j <= 0))
       {
-        abrl.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
+        acho.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
         break;
       }
       if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184)) {}
-      for (this.a = new abma(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());; this.a = new abmb(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription()))
+      for (this.jdField_a_of_type_Acbl = new acbq(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());; this.jdField_a_of_type_Acbl = new acbr(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription()))
       {
-        addView(this.a.a());
+        addView(this.jdField_a_of_type_Acbl.a());
         break;
         if (paramGdtAd.getCreativeSize() != 194) {
-          break label228;
+          break label257;
         }
       }
-      label228:
-      abrl.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
+      label257:
+      acho.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
       break;
+      paramContext.setImageResource(2130840280);
+      break label102;
+      label293:
       i = -2147483648;
     }
   }
@@ -68,12 +79,21 @@ public final class GdtBannerViewWithLetterStyle
     return this;
   }
   
+  public AdAntiSpamForClick a()
+  {
+    return this.jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick;
+  }
+  
   public void a(Context paramContext)
   {
-    if (this.a == null) {
+    acho.b("GdtBannerViewWithLetterStyle", "pause");
+    if (this.jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick != null) {
+      this.jdField_a_of_type_ComTencentAdTangramStatisticsAdAntiSpamForClick.setHasBeenPaused();
+    }
+    if (this.jdField_a_of_type_Acbl == null) {
       return;
     }
-    this.a.a(paramContext);
+    this.jdField_a_of_type_Acbl.a(paramContext);
   }
   
   public View b()
@@ -83,25 +103,27 @@ public final class GdtBannerViewWithLetterStyle
   
   public void b(Context paramContext)
   {
-    if (this.a == null) {
+    acho.b("GdtBannerViewWithLetterStyle", "resume");
+    if (this.jdField_a_of_type_Acbl == null) {
       return;
     }
-    this.a.b(paramContext);
+    this.jdField_a_of_type_Acbl.b(paramContext);
   }
   
   public void c(Context paramContext)
   {
-    if (this.a == null) {
+    acho.b("GdtBannerViewWithLetterStyle", "destroy");
+    if (this.jdField_a_of_type_Acbl == null) {
       return;
     }
-    this.a.c(paramContext);
+    this.jdField_a_of_type_Acbl.c(paramContext);
   }
   
   public void setSize(int paramInt1, int paramInt2)
   {
-    if ((this.a == null) || (this.a.a() == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    if ((this.jdField_a_of_type_Acbl == null) || (this.jdField_a_of_type_Acbl.a() == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      abrl.d("GdtBannerViewWithLetterStyle", "setSize error");
+      acho.d("GdtBannerViewWithLetterStyle", "setSize error");
       return;
     }
     int i = Double.valueOf(0.7076023391812866D * paramInt1).intValue();
@@ -113,8 +135,8 @@ public final class GdtBannerViewWithLetterStyle
     localLayoutParams.bottomMargin = paramInt2;
     localLayoutParams.leftMargin = paramInt1;
     localLayoutParams.rightMargin = paramInt1;
-    this.a.a().setLayoutParams(localLayoutParams);
-    this.a.setSize(i, j);
+    this.jdField_a_of_type_Acbl.a().setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Acbl.setSize(i, j);
   }
 }
 

@@ -1,38 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
 
-public class bbfl
-  extends amsu
+public final class bbfl
+  implements Parcelable.Creator<RevokeMsgInfo>
 {
-  public bbfl(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
-  
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong, int paramInt3, List<bays> paramList)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
-    }
-    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
-    do
+    boolean bool = true;
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.c = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt1 != 88) || (paramBoolean2));
-        if (!paramBoolean1) {
-          break;
-        }
-      } while (!(paramObject instanceof ArrayList));
-      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
-      return;
-    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
-    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
+      localRevokeMsgInfo.jdField_a_of_type_Boolean = bool;
+      localRevokeMsgInfo.g = paramParcel.readInt();
+      localRevokeMsgInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      return localRevokeMsgInfo;
+      bool = false;
+    }
+  }
+  
+  public RevokeMsgInfo[] a(int paramInt)
+  {
+    return new RevokeMsgInfo[paramInt];
   }
 }
 

@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.qphone.base.util.QLog;
 
 class auvd
-  extends LbsManagerService.OnLocationChangeListener
+  extends RecyclerView.OnScrollListener
 {
-  auvd(auvc paramauvc, String paramString)
-  {
-    super(paramString);
-  }
+  auvd(auva paramauva) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.jdField_a_of_type_Auuz.TAG, 2, "onLocationFinish errCode = " + paramInt);
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      auva.a(this.a).pause();
     }
-    auuz.a(this.a.jdField_a_of_type_Auuz, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    while (!auva.a(this.a).isPausing()) {
+      return;
+    }
+    auva.a(this.a).resume();
+    auva.a(this.a).notifyDataSetChanged();
   }
 }
 

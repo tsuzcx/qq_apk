@@ -1,6 +1,17 @@
-public abstract interface bbzw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bbzw
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  bbzw(bbzv parambbzv, bird parambird) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bird.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

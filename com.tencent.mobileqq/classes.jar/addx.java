@@ -1,22 +1,73 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class addx
-  extends amop
+  implements View.OnClickListener
 {
-  public addx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public addx(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void onClick(View paramView)
   {
-    this.a.e();
-    if (paramBoolean)
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    for (;;)
     {
-      if (paramBoolean1.booleanValue()) {
-        DiscussionInfoCardActivity.e(this.a);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      View localView1 = AccountManageActivity.a(this.a, paramView);
+      View localView2 = AccountManageActivity.b(this.a, paramView);
+      ViewGroup.LayoutParams localLayoutParams;
+      if (AccountManageActivity.a(this.a) == null)
+      {
+        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        ((RotateSwitchImageView)paramView).b();
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).showIgnoreVisible();
+        }
+        if (AppSetting.c) {
+          paramView.setContentDescription(this.a.getString(2131691088));
+        }
+      }
+      else if (AccountManageActivity.a(this.a) == paramView)
+      {
+        AccountManageActivity.a(this.a).a();
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
+        }
+        AccountManageActivity.a(this.a, null);
+        if (AppSetting.c) {
+          paramView.setContentDescription(this.a.getString(2131691100));
+        }
+      }
+      else
+      {
+        AccountManageActivity.a(this.a).a();
+        ((RotateSwitchImageView)paramView).b();
+        AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).showIgnoreVisible();
+        }
+        localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
+        }
+        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+      }
     }
-    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,68 +1,100 @@
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wrg
-  extends AbsVideoInfoWidget
+  implements wfk<wud, wvo>
 {
-  private wri a = new wri(this);
-  private boolean e;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Queue<wly> jdField_a_of_type_JavaUtilQueue;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicBoolean b = new AtomicBoolean(false);
   
-  public wrg(ViewGroup paramViewGroup)
+  public wrg(QQAppInterface paramQQAppInterface)
   {
-    super(paramViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public String a()
+  private void a(wud paramwud, wvo paramwvo)
   {
-    return "LoadingMoreWidget";
+    wae localwae = (wae)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STORY_HALO_MANAGER);
+    List localList = paramwvo.a();
+    localwae.a(paramwvo.a());
+    if (paramwud.a() == 3)
+    {
+      paramwud = localList.iterator();
+      while (paramwud.hasNext())
+      {
+        paramwvo = (wly)paramwud.next();
+        localwae.b(paramwvo);
+        localwae.c(paramwvo);
+        localwae.d(paramwvo);
+      }
+    }
+    localwae.a(localList);
+    localwae.a(localList, true);
   }
   
-  public wri a()
+  private void b()
   {
-    return this.a;
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   }
   
-  public void a(View paramView) {}
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  private void c()
   {
-    paramMap.put(new wrh(this), "");
+    Object localObject = (wae)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STORY_HALO_MANAGER);
+    if (!this.b.get()) {}
+    for (;;)
+    {
+      wly localwly = (wly)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localwly == null)
+      {
+        localObject = new wrh(true);
+        wad.a().dispatch((Dispatcher.Dispatchable)localObject);
+        return;
+      }
+      ((wae)localObject).a(localwly);
+    }
   }
   
-  public void a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem)
+  public void a()
   {
-    return this.e;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public int b()
+  public void a(@NonNull wud paramwud, @Nullable wvo paramwvo, @NonNull ErrorMessage paramErrorMessage)
   {
-    return 2131561772;
+    if (a()) {}
+    do
+    {
+      return;
+      this.b.set(true);
+      if ((paramwvo != null) && (!paramErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
+    return;
+    a(paramwud, paramwvo);
+    this.b.set(false);
+    c();
   }
   
-  public void d()
+  public boolean a()
   {
-    this.e = true;
-    i();
-    xvv.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
-  
-  public void e()
-  {
-    this.e = false;
-    k();
-    xvv.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
-  }
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyVideoAdHighLightBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdVideo185UIStateUtil$onProgressUpdate$1$1"}, k=3, mv={1, 1, 16})
-final class tvz
-  implements View.OnClickListener
+public class tvz
+  implements qha
 {
-  tvz(ReadInJoyVideoAdHighLightBar paramReadInJoyVideoAdHighLightBar, AdvertisementInfo paramAdvertisementInfo, rti paramrti, sdg paramsdg) {}
+  public tvz(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public final void onClick(View paramView)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    rti localrti = this.jdField_a_of_type_Rti;
-    if (localrti != null) {
-      localrti.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyVideoAdHighLightBar.getContext(), obb.aE, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Sdg.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    twu.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvz
  * JD-Core Version:    0.7.0.1
  */

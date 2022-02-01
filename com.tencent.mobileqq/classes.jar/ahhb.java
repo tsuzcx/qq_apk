@@ -1,27 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhb
-  implements amug
+public class ahhb
+  implements View.OnTouchListener
 {
-  ahhb(ahgz paramahgz) {}
+  public ahhb(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public boolean a(amul paramamul)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isDevelopLevel()) {
-      awkj.a(this.a.tag, "onShowHotchatNote", new Object[] { paramamul });
-    }
-    if (paramamul == null)
-    {
-      if ((this.a.a.b) && (ahgz.a(this.a) != null)) {
-        ahgz.b(this.a).a(this.a.app, this.a.mContext, null, null);
-      }
-      return false;
-    }
-    if (ahgz.c(this.a) == null) {
-      ahgz.a(this.a, new bequ(this.a.app, this.a.mActivity, this.a.sessionInfo, ahgz.a(this.a), ahgz.a(this.a), this.a.mTroopTips, ahgz.a(this.a), null));
-    }
-    ahgz.d(this.a).a(this.a.app, this.a.mContext, paramamul.a, paramamul.b);
-    this.a.a.b = true;
     return true;
   }
 }

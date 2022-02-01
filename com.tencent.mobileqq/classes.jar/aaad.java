@@ -1,27 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaad
-  implements DownloadListener
+  implements View.OnClickListener
 {
-  public aaad(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
+  public aaad(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
-    }
-    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    atdg.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
+    VideoPlayerView.f(this.a);
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

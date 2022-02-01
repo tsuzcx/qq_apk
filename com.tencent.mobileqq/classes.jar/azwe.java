@@ -1,14 +1,26 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
-class azwe
-  implements Comparator<Map.Entry<String, Long>>
+public class azwe
+  implements Animation.AnimationListener
 {
-  azwe(azwd paramazwd) {}
+  public azwe(VipTagView paramVipTagView) {}
   
-  public int a(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return ((Long)paramEntry2.getValue()).compareTo((Long)paramEntry1.getValue());
+    if (VipTagView.a(this.a)) {
+      VipTagView.a(this.a).a();
+    }
+    VipTagView.a(this.a, false);
+    this.a.invalidate();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    VipTagView.a(this.a, 0.0F);
   }
 }
 

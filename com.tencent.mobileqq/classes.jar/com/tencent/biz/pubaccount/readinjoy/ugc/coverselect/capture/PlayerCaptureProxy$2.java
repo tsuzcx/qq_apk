@@ -1,32 +1,32 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture;
 
-import akur;
+import alsn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 import java.util.Iterator;
 import java.util.Set;
-import rkt;
-import rkz;
+import rxg;
+import rxm;
 
 public class PlayerCaptureProxy$2
   implements Runnable
 {
-  public PlayerCaptureProxy$2(rkz paramrkz) {}
+  public PlayerCaptureProxy$2(rxm paramrxm) {}
   
   public void run()
   {
-    if (rkz.a(this.this$0) == null)
+    if (rxm.a(this.this$0) == null)
     {
       QLog.e("PlayerCaptureProxy", 1, "onPreviewVideoPrepared error for player is null");
       return;
     }
-    rkz.a(this.this$0, true);
-    int k = rkz.a(this.this$0).getVideoWidth();
-    int j = rkz.a(this.this$0).getVideoHeight();
-    long l = rkz.a(this.this$0).getDurationMs();
-    int m = rkz.a(this.this$0).getVideoRotation();
+    rxm.a(this.this$0, true);
+    int k = rxm.a(this.this$0).getVideoWidth();
+    int j = rxm.a(this.this$0).getVideoHeight();
+    long l = rxm.a(this.this$0).getDurationMs();
+    int m = rxm.a(this.this$0).getVideoRotation();
     int i = DisplayUtil.getScreenSize(BaseApplicationImpl.getContext()).a();
     if (k > i)
     {
@@ -42,12 +42,12 @@ public class PlayerCaptureProxy$2
       }
       for (;;)
       {
-        Iterator localIterator = rkz.a(this.this$0).iterator();
+        Iterator localIterator = rxm.a(this.this$0).iterator();
         while (localIterator.hasNext())
         {
-          rkt localrkt = (rkt)localIterator.next();
-          if (localrkt != null) {
-            localrkt.a(k, j, l);
+          rxg localrxg = (rxg)localIterator.next();
+          if (localrxg != null) {
+            localrxg.a(k, j, l);
           }
         }
         break;

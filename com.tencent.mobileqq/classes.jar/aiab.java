@@ -1,20 +1,17 @@
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aiab
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  aiab(aiaa paramaiaa, boolean paramBoolean, String paramString1, String paramString2) {}
+  aiab(ahzx paramahzx) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aiaa.a(this.jdField_a_of_type_Aiaa).i();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      aiaa.a(this.jdField_a_of_type_Aiaa, this.jdField_a_of_type_JavaLangString, this.b);
-    }
+    paramDialogInterface.dismiss();
+    abht.a(this.a.app, this.a.mActivity, this.a.sessionInfo.curFriendUin, this.a.b);
+    this.a.b = "";
   }
 }
 

@@ -1,17 +1,21 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1;
 
-public abstract interface bnok
+public class bnok
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bnok(bnoc parambnoc) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    bnqm.a().ap();
+    bnoc.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.7.1(this), 200L);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

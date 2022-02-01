@@ -1,57 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bfbw
+  implements InputFilter
 {
-  public static bfbw a;
-  public amop a;
-  public QQAppInterface a;
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  public bfbw()
-  {
-    this.jdField_a_of_type_Amop = new bfbx(this);
-  }
+  public bfbw(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
-  public static bfbw a(QQAppInterface paramQQAppInterface)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (jdField_a_of_type_Bfbw == null) {
-      b(paramQQAppInterface);
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
     }
-    for (;;)
-    {
-      return jdField_a_of_type_Bfbw;
-      if (jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
-      {
-        if (jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-        {
-          jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bfbw.jdField_a_of_type_Amop);
-          jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        }
-        jdField_a_of_type_Bfbw = null;
-        b(paramQQAppInterface);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Bfbw != null)
-    {
-      paramQQAppInterface.removeObserver(jdField_a_of_type_Bfbw.jdField_a_of_type_Amop);
-      jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_Bfbw = null;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_Bfbw = new bfbw();
-    jdField_a_of_type_Bfbw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(jdField_a_of_type_Bfbw.jdField_a_of_type_Amop);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbw
  * JD-Core Version:    0.7.0.1
  */

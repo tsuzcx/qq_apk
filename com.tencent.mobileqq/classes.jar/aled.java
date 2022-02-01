@@ -1,54 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.Pair;
 
-public class aled
-  implements DialogInterface.OnDismissListener
+class aled
+  implements View.OnClickListener
 {
-  public aled(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity, boolean paramBoolean, anon paramanon) {}
+  aled(aldh paramaldh) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    boolean bool;
-    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
-    {
-      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      bool = this.jdField_a_of_type_Boolean;
-      paramDialogInterface.setSpecialCareSwitch(1, new String[] { localObject }, new boolean[] { bool });
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label208;
-      }
+    Intent localIntent = new Intent(aldh.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("uin", ((QQAppInterface)aldh.a(this.a).getAppRuntime()).getCurrentAccountUin());
+    Pair localPair = (Pair)paramView.getTag();
+    if (localPair != null) {
+      aldh.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)localPair.first).longValue() + "&deviceRemark=" + (String)localPair.second));
     }
-    label208:
-    for (paramDialogInterface = "SwitchOn";; paramDialogInterface = "SwitchOff")
-    {
-      VasWebviewUtil.reportCommercialDrainage((String)localObject, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
-      this.jdField_a_of_type_Anon.a();
-      return;
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692035;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
-      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
-      if (!QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a()) {}
-      for (bool = true;; bool = false)
-      {
-        paramDialogInterface.a((FormSwitchItem)localObject, bool);
-        break;
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

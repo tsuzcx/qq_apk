@@ -1,82 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class apuw
-  extends aptq<apux>
+final class apuw
+  extends apwa
 {
-  @NonNull
-  public apux a(int paramInt)
+  apuw(long paramLong1, long paramLong2, apvq paramapvq, long paramLong3)
   {
-    return new apux();
+    super(paramLong1, paramLong2);
   }
   
-  @Nullable
-  public apux a(aptx[] paramArrayOfaptx)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    String str2 = null;
+    String str3;
+    String str1;
+    if (paramBoolean)
     {
-      apux localapux = apux.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaptx[0].a);
-      }
-      return localapux;
+      str3 = paramBundle.getString("userAccount", null);
+      str1 = paramBundle.getString("userAccount", null);
+      str2 = paramBundle.getString("openToken", null);
     }
-    return null;
-  }
-  
-  public void a(apux paramapux)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramapux.a());
+    for (paramBundle = str3;; paramBundle = null)
+    {
+      this.jdField_a_of_type_Apvq.a(paramBundle, this.jdField_a_of_type_Long, str1, str2);
+      return;
+      str1 = null;
     }
-    ShortVideoUtils.setAEPituCameraTaKeSameSwitch(paramapux.a());
-  }
-  
-  public Class<apux> clazz()
-  {
-    return apux.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int onSend(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.isAEPituTakeSameOpen());
-    }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 574;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apuw
  * JD-Core Version:    0.7.0.1
  */

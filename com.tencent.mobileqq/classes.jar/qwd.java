@@ -1,22 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 
 public class qwd
-  implements vgd
+  implements vuw
 {
-  public qwd(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
-  
   public void a(URL paramURL, int paramInt) {}
   
   public void a(URL paramURL, Throwable paramThrowable) {}
   
-  public void a(URL paramURL, syk paramsyk)
+  public void a(URL paramURL, tls paramtls)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
-    }
-    ComponentHeaderTopicRecommend.a(this.a, paramsyk.a());
+    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
+    paramtls.a();
   }
 }
 

@@ -1,63 +1,27 @@
-import com.tencent.av.gameplay.GPNativeSoLoader.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
-
-public class lma
+class lma
 {
-  public static boolean a;
-  private static boolean b;
+  static final float[] a;
   
-  public static byte a(String paramString)
+  static
   {
-    byte b1 = 0;
-    if (paramString == null) {
-      return -1;
-    }
-    lmb locallmb = lmb.a();
-    String str = lmj.a() + "lib" + paramString + ".so";
-    if (QLog.isColorLevel()) {
-      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
-    }
-    Object localObject = new File(str);
-    if ((!a) && (((File)localObject).exists())) {}
+    int k = 0;
+    a = new float[16384];
+    int i = 0;
+    int j;
     for (;;)
     {
-      try
-      {
-        System.load(str);
-        b = true;
-        localObject = "null";
-        if (locallmb != null) {
-          localObject = locallmb.b;
-        }
-        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
-        return b1;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        b1 = -3;
-        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
-        continue;
-      }
-      b1 = -2;
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (b) {}
-    do
-    {
-      return true;
-      if (!lmc.a().b()) {
+      j = k;
+      if (i >= 16384) {
         break;
       }
-    } while (a("qavgameplayengine") == 0);
-    return false;
-    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
-    return false;
+      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 

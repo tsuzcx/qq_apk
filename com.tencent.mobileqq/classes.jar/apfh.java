@@ -1,6 +1,21 @@
-public abstract interface apfh
+class apfh
+  extends aqdo
 {
-  public abstract void onMeasure();
+  apfh(apfg paramapfg) {}
+  
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  {
+    if (apfg.a(this.a) != null) {
+      apfg.a(this.a).a(paramArrayOfFloat);
+    }
+  }
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    if (apfg.a(this.a) != null) {
+      apfg.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    }
+  }
 }
 
 

@@ -1,20 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.RotateableView;
-
-public class bhis
-  extends Handler
+abstract interface bhis<T>
 {
-  public bhis(RotateableView paramRotateableView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
-    if (RotateableView.a(this.a) >= 360.0F) {
-      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
-    }
-    this.a.invalidate();
-  }
+  public abstract T a(float paramFloat, T paramT1, T paramT2);
 }
 
 

@@ -1,38 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.io.IOException;
-
 public class acmm
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public acmm(TestAppFragment paramTestAppFragment) {}
+  public long a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    File localFile;
-    if (paramBoolean)
-    {
-      new File(this.a.a).mkdirs();
-      localFile = new File(this.a.a, this.a.b);
-    }
-    for (;;)
-    {
-      try
-      {
-        localFile.createNewFile();
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-        continue;
-      }
-      new File(this.a.a, this.a.b).delete();
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = paramBoolean;
   }
 }
 

@@ -1,22 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.C2C;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-final class acvs
-  implements DialogInterface.OnClickListener
+public class acvs
+  implements acos
 {
-  acvs(acxb paramacxb, acxa paramacxa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (this.jdField_a_of_type_Acxb.a) {
-      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Acxa != null) {
-      this.jdField_a_of_type_Acxa.onCancel();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.C2C();
+    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.c2c.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3001;
   }
 }
 

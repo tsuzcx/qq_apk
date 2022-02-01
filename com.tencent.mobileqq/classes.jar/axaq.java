@@ -1,42 +1,18 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-class axaq
-  implements Animation.AnimationListener
+public final class axaq
+  implements Parcelable.Creator<MsgBackupUserData>
 {
-  axaq(awzr paramawzr) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public MsgBackupUserData a(Parcel paramParcel)
   {
-    if (paramAnimation == awzr.b(this.a))
-    {
-      awzr.a(this.a).setVisibility(8);
-      awzr.a(this.a).setVisibility(4);
-      awzr.a(this.a).clearAnimation();
-      awzr.a(this.a).clearAnimation();
-      awzr.a(this.a).setBackgroundResource(2130849066);
-      awzr.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166709));
-      awzr.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166709));
-    }
+    return new MsgBackupUserData(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public MsgBackupUserData[] a(int paramInt)
   {
-    if (paramAnimation == awzr.a(this.a))
-    {
-      awzr.a(this.a).setVisibility(0);
-      awzr.a(this.a).setVisibility(0);
-      awzr.a(this.a).setBackgroundResource(2130850593);
-      awzr.a(this.a).setTextColor(this.a.a.getResources().getColor(2131167006));
-      awzr.b(this.a).setTextColor(this.a.a.getResources().getColor(2131167006));
-    }
+    return new MsgBackupUserData[paramInt];
   }
 }
 

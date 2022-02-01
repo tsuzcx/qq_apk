@@ -1,20 +1,15 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class awiy
-  implements INetEventHandler
+public abstract interface awiy
 {
-  private int jdField_a_of_type_Int = -1;
+  public abstract void a(awit paramawit, int paramInt);
   
-  public awiy(NearbyJsInterface paramNearbyJsInterface) {}
+  public abstract void a(awit paramawit, int paramInt1, int paramInt2);
   
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    int i = HttpUtil.getNetWorkType();
-    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Int = i;
-  }
+  public abstract void a(awit paramawit, LocationRoom.Venue paramVenue, List<awir> paramList);
+  
+  public abstract void b(awit paramawit, int paramInt);
 }
 
 

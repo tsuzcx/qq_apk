@@ -1,34 +1,37 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
 public class afap
-  implements akbj
+  extends Handler
 {
-  public afap(CustomizeStrategyFactory.ThemeCustomizeStrategy.1 param1) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public afap(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131367131);
+    switch (paramMessage.what)
     {
-      this.a.a.background = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
     }
-    catch (Throwable paramPathResult)
+    do
     {
-      for (;;)
+      do
       {
-        paramPathResult.printStackTrace();
-      }
-    }
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      return;
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

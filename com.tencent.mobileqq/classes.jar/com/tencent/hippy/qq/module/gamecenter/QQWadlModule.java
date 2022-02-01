@@ -1,15 +1,15 @@
 package com.tencent.hippy.qq.module.gamecenter;
 
-import abet;
+import abuf;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
-import bftf;
-import bide;
-import bifs;
-import bifx;
-import bldr;
-import bldt;
-import bldu;
+import bhbx;
+import bjog;
+import bjqu;
+import bjqz;
+import bmqi;
+import bmqk;
+import bmql;
 import com.tencent.hippy.qq.module.QQBaseModule;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
@@ -31,8 +31,8 @@ public class QQWadlModule
   extends QQBaseModule
 {
   static final String TAG = "QQWadlModule";
-  private volatile bldr mWadlCallback;
-  private final bifs mWadlJsBridgeCall = new bifs(null, null);
+  private volatile bmqi mWadlCallback;
+  private final bjqu mWadlJsBridgeCall = new bjqu(null, null);
   
   public QQWadlModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -51,7 +51,7 @@ public class QQWadlModule
     {
       WadlParams localWadlParams = paramWadlResult.a;
       localHippyMap.pushString("appid", localWadlParams.jdField_a_of_type_JavaLangString);
-      localHippyMap.pushInt("state", bifx.a(paramWadlResult.b));
+      localHippyMap.pushInt("state", bjqz.a(paramWadlResult.b));
       localHippyMap.pushInt("pro", paramWadlResult.d);
       localHippyMap.pushString("packagename", localWadlParams.f);
       localHippyMap.pushInt("ismyapp", 0);
@@ -62,9 +62,9 @@ public class QQWadlModule
       localHippyMap.pushString("extraInfo", localWadlParams.o);
       localHippyMap.pushBoolean("isAutoInstallBySDK", localWadlParams.a(1));
       localHippyMap.pushBoolean("isRes", localWadlParams.jdField_a_of_type_Boolean);
-      int i = bifx.b(paramWadlResult.c);
+      int i = bjqz.b(paramWadlResult.c);
       localHippyMap.pushInt("errorCode", i);
-      localHippyMap.pushString("errorMsg", bifx.a(i));
+      localHippyMap.pushString("errorMsg", bjqz.a(i));
     }
     return localHippyMap;
   }
@@ -96,8 +96,8 @@ public class QQWadlModule
           i += 1;
         }
       }
-      bide.a().a(new QQWadlModule.CheckUpdateCallback(paramString1, paramPromise));
-      bide.a().a(paramString2);
+      bjog.a().a(new QQWadlModule.CheckUpdateCallback(paramString1, paramPromise));
+      bjog.a().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
@@ -110,7 +110,7 @@ public class QQWadlModule
   public void deleteDownload(String paramString)
   {
     QLog.i("QQWadlModule", 1, "deleteDownload appid=" + paramString);
-    bldt.a().c(0, paramString);
+    bmqk.a().c(0, paramString);
   }
   
   public void destroy()
@@ -135,7 +135,7 @@ public class QQWadlModule
     if (paramPromise != null) {}
     try
     {
-      paramPromise.resolve(Long.valueOf(bftf.b()));
+      paramPromise.resolve(Long.valueOf(bhbx.b()));
       return;
     }
     catch (Exception localException)
@@ -180,7 +180,7 @@ public class QQWadlModule
           str1 = paramString1;
           String str3 = localJSONArray2.getString(i);
           str1 = paramString1;
-          Object localObject2 = abet.a(str3);
+          Object localObject2 = abuf.a(str3);
           String str2 = "";
           localObject1 = "";
           paramString2 = "";
@@ -191,7 +191,7 @@ public class QQWadlModule
             str1 = paramString1;
             localObject1 = ((PackageInfo)localObject2).versionName;
             str1 = paramString1;
-            paramString2 = abet.d(abet.c(str3));
+            paramString2 = abuf.d(abuf.c(str3));
           }
           str1 = paramString1;
           localObject2 = new JSONObject();
@@ -259,7 +259,7 @@ public class QQWadlModule
       }
       if (paramPromise.size() > 0)
       {
-        bldt.a().a(paramPromise);
+        bmqk.a().a(paramPromise);
         return;
         label123:
         i += 1;
@@ -273,7 +273,7 @@ public class QQWadlModule
     if (QLog.isColorLevel()) {
       QLog.d("QQWadlModule", 2, "queryAllDownloadTask");
     }
-    bldt.a().b();
+    bmqk.a().b();
   }
   
   @HippyMethod(name="registerListener")
@@ -282,7 +282,7 @@ public class QQWadlModule
     if (this.mWadlCallback == null)
     {
       this.mWadlCallback = new QQWadlModule.1(this);
-      bldt.a().a(this.mWadlCallback);
+      bmqk.a().a(this.mWadlCallback);
     }
   }
   
@@ -291,7 +291,7 @@ public class QQWadlModule
   {
     if (this.mWadlCallback != null)
     {
-      bldt.a().b(this.mWadlCallback);
+      bmqk.a().b(this.mWadlCallback);
       this.mWadlCallback = null;
     }
   }

@@ -1,48 +1,20 @@
-import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class xcg
-  implements xcf
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference<xcf> jdField_a_of_type_JavaLangRefWeakReference;
+  xcg(xcf paramxcf, xce paramxce) {}
   
-  public xcg(@NonNull xcf paramxcf)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramxcf);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxcf);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull xcd paramxcd)
-  {
-    xcf localxcf = (xcf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localxcf != null) {
-      localxcf.a(paramxcd);
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Xcf.jdField_a_of_type_Xce.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Xcf.jdField_a_of_type_Xce.a).a(xcf.a(this.jdField_a_of_type_Xcf));
     }
-  }
-  
-  public void b(@NonNull xcd paramxcd)
-  {
-    xcf localxcf = (xcf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localxcf != null) {
-      localxcf.b(paramxcd);
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof xcg)) && (((xcg)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    ykv.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", xcf.a(this.jdField_a_of_type_Xcf) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

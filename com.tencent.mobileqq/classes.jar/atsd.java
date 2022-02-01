@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
 
-public class atsd
-  extends SosoInterface.OnLocationListener
+public abstract interface atsd
 {
-  public atsd(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public abstract void a();
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, amtj.a(2131706777), 1).a();
-      this.a.f();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    this.a.a(paramSosoLbsInfo);
-  }
+  public abstract void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
+  
+  public abstract void a(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void a(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
 }
 
 

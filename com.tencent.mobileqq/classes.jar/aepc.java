@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aepc
-  implements Comparator<aeox>
+class aepc
+  implements View.OnClickListener
 {
-  public aepc(TroopMemberListActivity paramTroopMemberListActivity) {}
+  aepc(aeoz paramaeoz, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public int a(aeox paramaeox1, aeox paramaeox2)
+  public void onClick(View paramView)
   {
-    return paramaeox1.f.compareToIgnoreCase(paramaeox2.f);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Aeoz.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

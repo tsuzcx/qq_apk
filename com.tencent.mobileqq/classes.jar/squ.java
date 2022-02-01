@@ -1,18 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-
-public class squ
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface squ
 {
-  public squ(SlideActiveAnimController paramSlideActiveAnimController) {}
+  public abstract void onHeadsetStateChanged(boolean paramBoolean);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
-  }
+  public abstract void onPhoneCome();
+  
+  public abstract void onSystemVolumeChanged(int paramInt);
 }
 
 

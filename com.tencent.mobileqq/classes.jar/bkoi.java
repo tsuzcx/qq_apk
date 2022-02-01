@@ -1,29 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import com.tencent.plato.mqq.network.ProgressListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
 
-public class bkoi
+final class bkoi
+  implements ProgressListener
 {
-  public static void a(Context paramContext, Bundle paramBundle, String paramString)
+  bkoi(UploaderProxy.UploadListener paramUploadListener) {}
+  
+  public void onProgress(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (paramContext == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
-      }
-      Toast.makeText(BaseApplication.getContext(), amtj.a(2131709807), 0).show();
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
-    localIntent.putExtra("componetname", paramString);
-    if (paramBundle != null) {
-      localIntent.putExtra("_param_", paramBundle);
-    }
-    paramContext.startActivity(localIntent);
+    this.a.onUploadProgress((int)(100.0D * paramLong1 / paramLong2), (int)paramLong1, (int)paramLong2);
   }
 }
 

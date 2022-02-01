@@ -1,30 +1,27 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeyk
-  extends Handler
+  implements View.OnClickListener
 {
-  public aeyk(AudioPlayerBase paramAudioPlayerBase) {}
+  public aeyk(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what == 1000) && (this.a.d == 0) && (this.a.a()))
+    this.a.b(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
     {
-      int i = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.a.jdField_a_of_type_Bfts.b);
-      int j = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.a.jdField_a_of_type_Bfts.b);
-      if (i / j <= 0.18F) {
-        break label125;
-      }
-      this.a.d = 1;
-      if (this.a.jdField_a_of_type_Aeyl != null) {
-        this.a.jdField_a_of_type_Aeyl.c(this.a, this.a.d);
-      }
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
     }
-    return;
-    label125:
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

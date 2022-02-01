@@ -1,5 +1,6 @@
 package cooperation.qzone;
 
+import aici;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -8,10 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Window;
-import arhi;
-import aroq;
-import aros;
-import bfur;
+import aslo;
+import assw;
+import assy;
+import bhdj;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -44,6 +45,7 @@ public class QZoneNavigateToQQTransparentFragment
     localIntent.putExtra("uinname", paramString2);
     localIntent.putExtra("entrance", 23);
     localIntent.putExtra("uintype", 1045);
+    localIntent.putExtra("key_limitchat_enter_type", aici.b);
     localIntent.putExtras(new Bundle());
     paramFragmentActivity.startActivity(localIntent);
     paramFragmentActivity.finish();
@@ -56,9 +58,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
       return;
     }
-    QQCustomDialog localQQCustomDialog = bfur.a(paramFragmentActivity, 230);
+    QQCustomDialog localQQCustomDialog = bhdj.a(paramFragmentActivity, 230);
     localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.2(paramFragmentActivity));
-    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698238)).setNegativeButton(paramFragmentActivity.getString(2131698236), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramFragmentActivity.getString(2131698237), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
+    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698524)).setNegativeButton(paramFragmentActivity.getString(2131698522), new QZoneNavigateToQQTransparentFragment.4()).setPositiveButton(paramFragmentActivity.getString(2131698523), new QZoneNavigateToQQTransparentFragment.3(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
   }
   
   private static void showMatchCountDialog(FragmentActivity paramFragmentActivity)
@@ -68,9 +70,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
       return;
     }
-    QQCustomDialog localQQCustomDialog = bfur.a(paramFragmentActivity, 230);
+    QQCustomDialog localQQCustomDialog = bhdj.a(paramFragmentActivity, 230);
     localQQCustomDialog.setOnDismissListener(new QZoneNavigateToQQTransparentFragment.5(paramFragmentActivity));
-    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698240)).setPositiveButton(paramFragmentActivity.getString(2131698239), new QZoneNavigateToQQTransparentFragment.6()).show();
+    localQQCustomDialog.setMessage(paramFragmentActivity.getString(2131698526)).setPositiveButton(paramFragmentActivity.getString(2131698525), new QZoneNavigateToQQTransparentFragment.6()).show();
   }
   
   private static void showToast(FragmentActivity paramFragmentActivity, String paramString)
@@ -162,10 +164,10 @@ public class QZoneNavigateToQQTransparentFragment
       try
       {
         localObject = Base64.decode(str4, 0);
-        aros.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, 1, new QZoneNavigateToQQTransparentFragment.1(this, localFragmentActivity));
+        assy.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, 1, new QZoneNavigateToQQTransparentFragment.1(this, localFragmentActivity));
         localObject = localBundle.getString("extend_friend_campus_algorithm_id");
-        str2 = localBundle.getString("extend_friend_campus_current_tab", arhi.a);
-        aroq.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
+        str2 = localBundle.getString("extend_friend_campus_current_tab", aslo.a);
+        assw.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
         return;
       }
       catch (Throwable localThrowable)

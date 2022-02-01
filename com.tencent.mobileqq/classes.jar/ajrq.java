@@ -1,38 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import java.lang.ref.WeakReference;
 
 public class ajrq
-  extends ajqk
+  implements DialogInterface.OnCancelListener
 {
-  protected ajrq(AlbumListFragment paramAlbumListFragment)
+  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  
+  public ajrq(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
   {
-    super(paramAlbumListFragment);
+    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
   }
   
-  public void initData(Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super.initData(paramIntent);
-    this.mPhotoCommonData.filter.setSupportWebp(true);
-  }
-  
-  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    int i;
-    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
-      i = 1;
-    }
-    for (;;)
-    {
-      bcef.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
-      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
-      if (paramQQAlbumInfo._id.equals("qzone_album")) {
-        i = 2;
-      } else {
-        i = 3;
-      }
+    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
+    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
   }
 }

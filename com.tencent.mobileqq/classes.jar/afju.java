@@ -1,26 +1,38 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afju
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afju(TroopChatPie paramTroopChatPie) {}
+  public afju(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.mContext, TroopLowCreditLevelNotifyActivity.class);
-    paramDialogInterface.putExtra("troopUin", this.a.sessionInfo.curFriendUin);
-    this.a.mContext.startActivity(paramDialogInterface);
+    String str = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+    if ((str == null) || (str.length() == 0)) {
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691911), 0).show();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (str != null)
+      {
+        this.a.a(str);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        VerifyCodeActivity.b(this.a, false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afju
  * JD-Core Version:    0.7.0.1
  */

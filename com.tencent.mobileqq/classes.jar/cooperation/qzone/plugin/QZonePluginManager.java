@@ -6,7 +6,9 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import bbxj;
+import bdee;
+import bnkt;
+import bnky;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,8 +20,6 @@ import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.ProcessUtils;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -958,10 +958,10 @@ public class QZonePluginManager
       do
       {
         return;
-      } while (!bbxj.a());
+      } while (!bdee.a());
       QLog.w("QZonePluginManger", 1, "triggerQQDownloadPtuFilter");
-    } while (AEResUtil.isAEResExist(AEResInfo.AE_RES_BASE_PACKAGE));
-    bbxj.a(localQQAppInterface, BaseApplicationImpl.getContext());
+    } while (bnky.b(bnkt.b));
+    bdee.a(localQQAppInterface, BaseApplicationImpl.getContext());
   }
   
   public boolean uninstallPlugin(String paramString)

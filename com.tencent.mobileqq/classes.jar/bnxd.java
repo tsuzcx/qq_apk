@@ -1,38 +1,37 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class bnxd
-  implements SurfaceHolder.Callback
+class bnxd
+  implements View.OnClickListener
 {
-  public bnxd(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  float jdField_a_of_type_Float;
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public bnxd(bnxc parambnxc, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.h + ",mSavedPlayState : " + this.a.a(this.a.i));
-    }
-    if ((this.a.i == 1) && (this.a.h > 0))
-    {
-      this.a.a(this.a.h);
-      this.a.h = 0;
-      this.a.i = 0;
-    }
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    Iterator localIterator = this.jdField_a_of_type_Bnxc.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ((TextView)localEntry.getValue()).setSelected(false);
+      ((TextView)localEntry.getValue()).setTextColor(bnxc.a(this.jdField_a_of_type_Bnxc));
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    paramView.setSelected(true);
+    ((TextView)paramView).setTextColor(bnxc.b(this.jdField_a_of_type_Bnxc));
+    if (this.jdField_a_of_type_Bnxc.jdField_a_of_type_Bnxe != null) {
+      this.jdField_a_of_type_Bnxc.jdField_a_of_type_Bnxe.a(this.jdField_a_of_type_Float);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

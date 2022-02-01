@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import amtj;
 import android.text.TextUtils;
-import bchh;
+import anvx;
+import bdof;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -716,7 +716,7 @@ public class StructLongMessageDownloadProcessor
       return;
     }
     localMessageForStructing.saveExtInfoToExtStr("longMsg_State", String.valueOf(2));
-    localMessageForStructing.structingMsg.mMsgBrief = amtj.a(2131713625);
+    localMessageForStructing.structingMsg.mMsgBrief = anvx.a(2131713972);
     localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
     this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
     this.app.getMessageFacade().updateMsgFieldByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
@@ -881,7 +881,7 @@ public class StructLongMessageDownloadProcessor
     if ((paramMessageRecord instanceof MessageForStructing))
     {
       MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
-      localMessageForStructing.structingMsg.mMsgBrief = amtj.a(2131713624);
+      localMessageForStructing.structingMsg.mMsgBrief = anvx.a(2131713971);
       localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
       this.app.getMessageFacade().updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
       this.app.getMessageFacade().updateMsgFieldByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
@@ -1013,7 +1013,7 @@ public class StructLongMessageDownloadProcessor
             QLog.d("StructLongMessageDownloadProcessor", 2, "onResp->oldLongMsg");
             QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", onResp->getStructMsgFromXmlBuff");
           }
-          this.mStructingMsg = bchh.a(parseOldLongMsgContent(paramNetResp), -1);
+          this.mStructingMsg = bdof.a(parseOldLongMsgContent(paramNetResp), -1);
         }
         catch (Exception paramNetResp)
         {
@@ -1034,7 +1034,7 @@ public class StructLongMessageDownloadProcessor
         }
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actOldLongMessageTimeDownload", true, (System.nanoTime() - this.mDownloadStartTime) / 1000000L, 0L, null, "", true);
         return;
-        this.mStructingMsg = bchh.a(paramNetResp, -1);
+        this.mStructingMsg = bdof.a(paramNetResp, -1);
       }
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actLongMessageTimeDownload", true, (System.nanoTime() - this.mDownloadStartTime) / 1000000L, 0L, null, "", true);
       return;

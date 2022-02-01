@@ -1,31 +1,60 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-final class aojn
-  implements INetEngine.IBreakDownFix
+public class aojn
+  extends aojk
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  private String b;
+  
+  public aojn(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
-      return;
+    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
+    this.b = paramString4;
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (TextUtils.isEmpty(paramString)) || (a() == 1);
+  }
+  
+  protected String f()
+  {
+    String str2 = aojq.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.f();
     }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-    paramNetResp.mWrittenBlockLen = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
-    localHttpNetReq.mReqProperties.put("Range", paramNetResp);
-    paramNetResp = localHttpNetReq.mReqUrl;
-    if (paramNetResp.contains("range="))
-    {
-      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-      localHttpNetReq.mReqUrl = (paramNetResp + "range=" + localHttpNetReq.mStartDownOffset);
+    return str1;
+  }
+  
+  protected String g()
+  {
+    String str2 = aojq.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = super.g();
     }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", offset=" + localHttpNetReq.mStartDownOffset);
+    return str1;
+  }
+  
+  protected String h()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("type", "result");
+    localJSONObject2.put("gameType", a());
+    JSONObject localJSONObject3 = new JSONObject();
+    localJSONObject3.put("jump_url", a());
+    String str2 = aojq.a().a(this.b);
+    String str1 = str2;
+    if (a(str2)) {
+      str1 = "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png";
+    }
+    localJSONObject3.put("icon_url", str1);
+    localJSONObject2.put("extra", localJSONObject3);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
   }
 }
 

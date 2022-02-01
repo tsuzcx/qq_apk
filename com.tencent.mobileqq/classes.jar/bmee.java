@@ -1,8 +1,12 @@
-public abstract interface bmee
+class bmee
+  implements blwe
 {
-  public abstract void a(long paramLong);
+  bmee(bmec parambmec) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public void a(boolean paramBoolean)
+  {
+    bmgm.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
+  }
 }
 
 

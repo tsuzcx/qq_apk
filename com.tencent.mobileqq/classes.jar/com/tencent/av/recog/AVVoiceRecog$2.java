@@ -1,15 +1,15 @@
 package com.tencent.av.recog;
 
-import lsz;
+import ltm;
 
 public class AVVoiceRecog$2
   implements Runnable
 {
-  public AVVoiceRecog$2(lsz paramlsz) {}
+  public AVVoiceRecog$2(ltm paramltm) {}
   
   public void run()
   {
-    lsz.b(this.this$0, this.this$0.c, this.this$0.d);
+    ltm.b(this.this$0, this.this$0.c, this.this$0.d);
   }
 }
 

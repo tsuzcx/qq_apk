@@ -88,7 +88,7 @@ public final class VipComicReportUtils$2
     //   153: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: bipush 95
     //   158: invokevirtual 73	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   161: invokestatic 132	bkfq:a	()Ljava/util/Random;
+    //   161: invokestatic 132	blrb:a	()Ljava/util/Random;
     //   164: sipush 10000
     //   167: invokevirtual 138	java/util/Random:nextInt	(I)I
     //   170: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -424,7 +424,7 @@ public final class VipComicReportUtils$2
     //   880: invokespecial 359	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   883: astore 8
     //   885: aload 8
-    //   887: invokestatic 364	npi:a	(Ljava/io/BufferedInputStream;)Ljava/lang/String;
+    //   887: invokestatic 364	nwj:a	(Ljava/io/BufferedInputStream;)Ljava/lang/String;
     //   890: astore 10
     //   892: invokestatic 273	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   895: ifeq +31 -> 926

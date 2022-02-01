@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.util.GdtSmartBlur;
 
-class acip
-  implements DialogInterface.OnClickListener
+public class acip
 {
-  acip(acin paramacin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    acin.b(this.a);
-  }
+  public static GdtSmartBlur a = new GdtSmartBlur(null);
 }
 
 

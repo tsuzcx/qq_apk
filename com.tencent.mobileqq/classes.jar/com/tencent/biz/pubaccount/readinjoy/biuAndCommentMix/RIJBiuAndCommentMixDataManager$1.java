@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.biuAndCommentMix;
 
 import com.tencent.qphone.base.util.QLog;
-import ooh;
-import ooj;
-import ooz;
-import opa;
-import opd;
+import owf;
+import owh;
+import owx;
+import owy;
+import oxb;
 
 public class RIJBiuAndCommentMixDataManager$1
   implements Runnable
 {
-  public RIJBiuAndCommentMixDataManager$1(ooz paramooz, opd paramopd, int paramInt) {}
+  public RIJBiuAndCommentMixDataManager$1(owx paramowx, oxb paramoxb, int paramInt) {}
   
   public void run()
   {
-    if (ooz.a(this.this$0) != null)
+    if (owx.a(this.this$0) != null)
     {
       QLog.d("RIJBiuAndCommentMixDataManager", 1, "onBiuAndCommentMixSend callBack to mBiuAndCommentListener");
-      ooz.a(this.this$0).a(this.jdField_a_of_type_Opd);
+      owx.a(this.this$0).a(this.jdField_a_of_type_Oxb);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Opd.c() == 1))
+      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Oxb.c() == 1))
       {
-        ooj localooj = ooh.a(this.jdField_a_of_type_Opd, false);
-        ooh.a().a(localooj);
+        owh localowh = owf.a(this.jdField_a_of_type_Oxb, false);
+        owf.a().a(localowh);
       }
       return;
       QLog.d("RIJBiuAndCommentMixDataManager", 1, "onBiuAndCommentMixSend dataManager is destory");

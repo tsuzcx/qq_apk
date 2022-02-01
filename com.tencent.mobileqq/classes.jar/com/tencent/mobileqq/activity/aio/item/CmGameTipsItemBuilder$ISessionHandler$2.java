@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxz;
-import afye;
+import agqp;
+import agqu;
 import com.tencent.mobileqq.data.ApolloGameData;
 
 public class CmGameTipsItemBuilder$ISessionHandler$2
   implements Runnable
 {
-  public CmGameTipsItemBuilder$ISessionHandler$2(afye paramafye, afxz paramafxz, ApolloGameData paramApolloGameData) {}
+  public CmGameTipsItemBuilder$ISessionHandler$2(agqu paramagqu, agqp paramagqp, ApolloGameData paramApolloGameData) {}
   
   public void run()
   {
-    afxz.b(this.jdField_a_of_type_Afxz, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData);
+    agqp.b(this.jdField_a_of_type_Agqp, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData);
   }
 }
 

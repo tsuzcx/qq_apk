@@ -1,20 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.home.Conversation;
-import mqq.app.QQPermissionCallback;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class adcy
-  implements QQPermissionCallback
+public class adcy
+  extends addb
 {
-  adcy(adcx paramadcx, View paramView) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public adcy(TestAppFragment paramTestAppFragment, EditText paramEditText, JSONObject paramJSONObject)
   {
-    bfur.a(adcx.a(this.jdField_a_of_type_Adcx).a());
+    super(paramEditText);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Adcx.b(this.jdField_a_of_type_AndroidViewView);
+    super.a(paramJSONObject);
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("rankingID", 11002);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("topCount", 11);
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Adad.a("getRankingList", this.jdField_a_of_type_OrgJsonJSONObject, new addb(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_AndroidWidgetEditText));
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 

@@ -1,107 +1,46 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
 
-public class aumr
-  implements View.OnClickListener
+class aumr
+  extends aums
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
+  aumr(aumq paramaumq) {}
   
-  public static String a(long paramLong)
+  protected void a(String paramString, MethodChannel.Result paramResult)
   {
-    if (paramLong > 107374182.40000001D) {
-      return String.format("%.1f G", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) });
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordPageView: %s", new Object[] { paramString }));
     }
-    if (paramLong > 104857.60000000001D) {
-      return String.format("%.1f M", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) });
+    aupl.b(paramString);
+    paramResult.success(null);
+  }
+  
+  protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("reportPageLoadTime: pathPath: %s, loadTime: %s", new Object[] { paramString, paramInteger }));
     }
-    return String.format("%.1f K", new Object[] { Float.valueOf((float)paramLong / 1024.0F) });
+    aupl.a(paramString, paramInteger.intValue());
+    paramResult.success(null);
   }
   
-  public void a()
+  protected void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    if (paramLong == 0L) {
-      this.e.setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordFPS: pathPath: %s, fps: %s, dropRate: %s", new Object[] { paramString, paramInteger, paramDouble }));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-      return;
-      this.e.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
-    }
+    aupl.a(paramString, paramInteger.intValue(), paramDouble.doubleValue());
+    paramResult.success(null);
   }
   
-  public void a(Activity paramActivity, View paramView)
+  protected void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367845));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367852));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367853));
-    this.c = ((TextView)paramView.findViewById(2131367846));
-    this.d = ((TextView)paramView.findViewById(2131367851));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367847));
-    this.e = ((TextView)paramView.findViewById(2131367848));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367849));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367850));
-    this.f = ((TextView)paramView.findViewById(2131367844));
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-  }
-  
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.c.setText(paramString1);
-    this.d.setText(paramString2);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) || (paramView == this.jdField_a_of_type_AndroidWidgetTextView)) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.e("flutter.APMChannel", 1, String.format("reportException, msg: %s, stack: %s", new Object[] { paramString3, paramString4 }));
+    CrashReport.postException(paramInteger.intValue(), paramString2, paramString3, paramString4, paramHashMap);
+    aupl.a(paramString1);
+    paramResult.success(null);
   }
 }
 

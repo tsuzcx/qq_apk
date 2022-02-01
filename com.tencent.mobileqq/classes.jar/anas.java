@@ -1,6 +1,46 @@
-public abstract interface anas
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+
+public class anas
+  implements TVK_SDKMgr.OnLogListener
 {
-  public abstract void onHistoryChanged();
+  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  
+  public int d(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(a, 1, paramString1 + ":" + paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w(a, 1, paramString1 + ":" + paramString2);
+    return 0;
+  }
 }
 
 

@@ -1,38 +1,71 @@
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class bcic
-  extends Animation
+  extends bcjc
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  public bcic(ViewGroup paramViewGroup)
+  public bcic(FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    super(paramFaceDecoder);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void b(bcfj parambcfj, bcnt parambcnt)
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    super.b(parambcfj, parambcnt);
+    TextView localTextView;
+    CharSequence localCharSequence;
+    if ((parambcfj instanceof bccy))
+    {
+      bccy localbccy = (bccy)parambcfj;
+      localTextView = ((bcnp)parambcnt).e();
+      parambcfj = ((bcnp)parambcnt).f();
+      parambcnt = ((bcnp)parambcnt).g();
+      if (localTextView != null)
+      {
+        localCharSequence = localbccy.e();
+        if (localCharSequence != null) {
+          break label96;
+        }
+        localTextView.setText("");
+        if (parambcnt != null) {
+          parambcnt.setVisibility(8);
+        }
+      }
+      if (parambcfj != null)
+      {
+        parambcnt = localbccy.f();
+        if (parambcnt != null) {
+          break label115;
+        }
+        parambcfj.setText("");
+      }
+    }
+    label96:
+    label115:
+    do
+    {
+      do
+      {
+        return;
+        localTextView.setText(localCharSequence);
+        if (parambcnt == null) {
+          break;
+        }
+        parambcnt.setVisibility(0);
+        break;
+        parambcfj.setText(parambcnt);
+        return;
+      } while (!(parambcfj instanceof bccx));
+      parambcfj = (bccx)parambcfj;
+      parambcnt = ((bcnp)parambcnt).h();
+    } while (parambcnt == null);
+    parambcfj = parambcfj.e();
+    if (parambcfj == null)
+    {
+      parambcnt.setText("");
+      return;
+    }
+    parambcnt.setText(parambcfj);
   }
 }
 

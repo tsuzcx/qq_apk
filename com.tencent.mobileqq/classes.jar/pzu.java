@@ -1,48 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class pzu
+  implements qbc
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public pzu(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
-    localJSONObject1.put("id_small_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
-    localJSONObject1.put("id_small_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", localObject);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("small_video_duration", pai.a(paramBaseArticleInfo.mVideoDuration));
-      localJSONObject1.put("id_small_video_duration", localObject);
-      qai.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label186;
-      }
-      qai.a(paramBaseArticleInfo, localJSONObject1);
-      qai.d(paramBaseArticleInfo, localJSONObject1);
-    }
-    for (;;)
-    {
-      qai.n(paramBaseArticleInfo, localJSONObject1);
-      qai.g(paramBaseArticleInfo, localJSONObject1);
-      qai.i(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
-      qai.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label186:
-      qai.f(paramBaseArticleInfo, localJSONObject1);
-    }
+    ReadInJoySelfFragment.a(this.a, 12);
   }
 }
 

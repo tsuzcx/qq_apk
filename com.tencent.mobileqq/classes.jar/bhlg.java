@@ -1,16 +1,9 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
 
-public class bhlg
-  extends StateListDrawable
+public abstract interface bhlg
 {
-  public bhlg(int paramInt1, int paramInt2)
-  {
-    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
-    addState(new int[] { 16842919 }, localColorDrawable);
-    localColorDrawable = new ColorDrawable(paramInt2);
-    addState(new int[] { 16842921 }, localColorDrawable);
-  }
+  public abstract URLDrawable a(Drawable paramDrawable);
 }
 
 

@@ -1,32 +1,6 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-
-class ansh
-  implements wka
+public class ansh
 {
-  ansh(ansg paramansg) {}
-  
-  public void a(wfm paramwfm, bhht parambhht)
-  {
-    if ((parambhht != null) && (parambhht.isShowing())) {
-      parambhht.dismiss();
-    }
-    wjy.a(this.a.a);
-    if ((paramwfm != null) && (paramwfm.jdField_a_of_type_Int == 0))
-    {
-      wjy.a(paramwfm.jdField_a_of_type_JavaLangString, this.a.a);
-      ansg.a(this.a);
-      return;
-    }
-    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694065, 1).a();
-      return;
-    }
-    this.a.c = "open";
-    ansg.a(this.a);
-  }
+  public ansh(ansg paramansg) {}
 }
 
 

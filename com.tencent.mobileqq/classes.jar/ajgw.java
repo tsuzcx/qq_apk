@@ -1,18 +1,27 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
-class ajgw
-  implements View.OnTouchListener
+public class ajgw
+  extends MqqHandler
 {
-  ajgw(ajgq paramajgq) {}
+  public ajgw(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopSuspiciousFragment.a(this.a) == null);
+      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    this.a.a();
   }
 }
 

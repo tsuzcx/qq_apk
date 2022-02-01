@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adrk
-  extends Handler
+  implements View.OnClickListener
 {
-  public adrk(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public adrk(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MoveToGroupActivity", 2, "mWaitingDialogControlHandler operationFinished = " + MoveToGroupActivity.b(this.a));
-    }
-    MoveToGroupActivity.c(this.a, true);
-    if (MoveToGroupActivity.b(this.a))
-    {
-      this.a.a(true);
-      return;
-    }
-    paramMessage = MoveToGroupActivity.a(this.a).obtainMessage(0);
-    MoveToGroupActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    MoveToGroupActivity.a(this.a, true);
+    TroopUtils.doReportTroop(this.a, this.a.a, this.a.app);
+    bhbu.a("Grp_set_new", "grpData_admin", "tipoff_click", 0, 0, new String[] { this.a.a.troopUin });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

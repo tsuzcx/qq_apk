@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import blpm;
-import blpo;
-import blpq;
-import blvb;
+import bncv;
+import bncx;
+import bncz;
+import bnke;
 import java.util.Map;
 
 public class AEBottomListAdapter$4$2
   implements Runnable
 {
-  public AEBottomListAdapter$4$2(blpo paramblpo, blvb paramblvb) {}
+  public AEBottomListAdapter$4$2(bncx parambncx, bnke parambnke) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Blpo.a.notifyDataSetChanged();
-    if (blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a) != null) {
-      ((blpq)blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a)).a(2);
+    this.jdField_a_of_type_Bncx.a.notifyDataSetChanged();
+    if (bncv.a(this.jdField_a_of_type_Bncx.a).get(this.jdField_a_of_type_Bnke.a) != null) {
+      ((bncz)bncv.a(this.jdField_a_of_type_Bncx.a).get(this.jdField_a_of_type_Bnke.a)).a(2);
     }
   }
 }

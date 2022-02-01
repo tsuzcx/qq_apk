@@ -1,64 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
 public class lzm
+  extends OrientationEventListener
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public int a;
-  @Deprecated
-  lke a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  private int jdField_a_of_type_Int = -1;
   
-  static
+  public lzm(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
-    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
-    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
-    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
-    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
-    }
+    super(paramContext, paramInt);
   }
   
-  public lzm()
+  public void onOrientationChanged(int paramInt)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Lke = null;
-  }
-  
-  public boolean a(lke paramlke)
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = paramlke.a(jdField_a_of_type_JavaLangString, 0);
-      this.jdField_b_of_type_Int = paramlke.a(jdField_b_of_type_JavaLangString, 0);
-      this.jdField_c_of_type_Int = paramlke.a(jdField_c_of_type_JavaLangString, -1);
-      this.jdField_d_of_type_Int = paramlke.a(jdField_d_of_type_JavaLangString, 0);
-      this.jdField_e_of_type_Int = paramlke.a(jdField_e_of_type_JavaLangString, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
-      }
-      return true;
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = paramInt + 360;
     }
-    catch (Exception paramlke)
+    if ((i > 314) || (i < 45)) {
+      paramInt = 0;
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
+      if (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
+      }
+      return;
+      if (i < 135) {
+        paramInt = 90;
+      } else if (i < 225) {
+        paramInt = 180;
+      } else {
+        paramInt = 270;
       }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lzm
  * JD-Core Version:    0.7.0.1
  */

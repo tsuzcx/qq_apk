@@ -1,28 +1,54 @@
-import android.view.View;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import java.lang.reflect.Method;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class bham
-  implements bjoe
 {
-  public bham(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static URLDrawable a(ImageView paramImageView, String paramString)
   {
-    paramView = bgzz.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
-    try
+    return a(paramImageView, paramString, bhbg.a);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
+  {
+    return a(paramImageView, paramString, bhbg.a, paramDrawable, paramDrawable);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
+  {
+    return a(paramImageView, paramString, paramDecodeHandler, null);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
+  {
+    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
+  }
+  
+  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if (paramImageView.getLayoutParams() != null)
     {
-      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
+      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
     }
-    catch (Exception paramView)
+    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
     {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
+      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
+      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
     }
+    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
+    if (paramDecodeHandler != null) {
+      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
+    }
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    paramString.setDecodeHandler(paramDecodeHandler);
+    paramImageView.setImageDrawable(paramString);
+    return paramString;
   }
 }
 

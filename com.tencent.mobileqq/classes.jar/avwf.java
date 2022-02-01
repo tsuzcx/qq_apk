@@ -1,85 +1,41 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+import mqq.util.WeakReference;
 
-public abstract class avwf<T extends MessageRecord>
-  extends avvy
+final class avwf
+  implements Callable<Bundle>
 {
-  protected T a;
-  protected MessageRecord b;
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<avvz> jdField_a_of_type_MqqUtilWeakReference;
+  private final String b;
   
-  public avwf(T paramT)
+  avwf(avvz paramavvz, String paramString1, String paramString2)
   {
-    this.a = paramT;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramavvz);
   }
   
-  protected abstract int a();
-  
-  protected MsgBackupResEntity a()
+  public Bundle a()
   {
-    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
-    localMsgBackupResEntity.msgType = a();
-    if (this.b != null)
+    Object localObject = (avvz)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Bundle[] arrayOfBundle = new Bundle[1];
+    if (localObject != null)
     {
-      avwu.a(this.b, localMsgBackupResEntity);
-      return localMsgBackupResEntity;
+      avry localavry = new avry();
+      CountDownLatch localCountDownLatch = new CountDownLatch(1);
+      localavry.a(((avvz)localObject).a, this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new avwg(this, localavry, arrayOfBundle, localCountDownLatch));
+      localCountDownLatch.await();
+      return arrayOfBundle[0];
     }
-    avwu.a(this.a, localMsgBackupResEntity);
-    return localMsgBackupResEntity;
+    localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isSuccess", false);
+    ((Bundle)localObject).putInt("code", -1000);
+    arrayOfBundle[0] = localObject;
+    return arrayOfBundle[0];
   }
-  
-  protected String a(Map paramMap)
-  {
-    try
-    {
-      paramMap = new JSONObject(paramMap).toString();
-      return paramMap;
-    }
-    catch (Exception paramMap) {}
-    return null;
-  }
-  
-  protected HashMap<String, String> a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("msgType", String.valueOf(a()));
-    localHashMap.put("msgSubType", String.valueOf(paramInt));
-    return localHashMap;
-  }
-  
-  public abstract List<MsgBackupResEntity> a();
-  
-  public abstract void a();
-  
-  protected void a(MessageRecord paramMessageRecord)
-  {
-    this.b = paramMessageRecord;
-  }
-  
-  protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    try
-    {
-      new File(paramString);
-      paramMsgBackupResEntity.fileSize = new File(paramString).length();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b() {}
 }
 
 

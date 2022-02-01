@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import org.xmlpull.v1.XmlSerializer;
 
-public final class aoet
-  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
+final class aoet
+  extends bdpx
 {
-  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
+  aoet(String paramString)
   {
-    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+    super(paramString);
   }
   
-  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.ac == null) {}
+    for (String str = "";; str = this.ac)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
+    }
   }
 }
 

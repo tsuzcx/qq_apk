@@ -1,19 +1,9 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-final class bhnd
-  implements anem
+public abstract interface bhnd
 {
-  bhnd(QQAppInterface paramQQAppInterface, anel paramanel) {}
-  
-  public void a(int paramInt)
-  {
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anel);
-    }
-  }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public abstract void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte);
 }
 
 

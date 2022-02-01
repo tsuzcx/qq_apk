@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import abrl;
+import acho;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -20,7 +20,7 @@ final class TransitionContext$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    abrl.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    acho.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     TransitionContext localTransitionContext = (TransitionContext)this.a.get();
     if (localTransitionContext != null)
     {

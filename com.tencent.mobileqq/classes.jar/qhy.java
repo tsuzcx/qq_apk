@@ -1,13 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
-
-public class qhy
-  implements ViewBase.IBuilder
+class qhy
+  extends aoav
 {
-  public ViewBase build(VafContext paramVafContext)
+  qhy(qhx paramqhx) {}
+  
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    return new qhw(paramVafContext);
+    this.a.f();
   }
 }
 

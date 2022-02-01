@@ -1,8 +1,16 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bfiz
+class bfiz
+  implements DialogInterface.OnClickListener
 {
-  public abstract Bitmap a(String paramString1, String paramString2);
+  bfiz(bfis parambfis, bfif parambfif) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bgjh.a(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfis.jdField_a_of_type_Long).c(this.jdField_a_of_type_Bfif);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

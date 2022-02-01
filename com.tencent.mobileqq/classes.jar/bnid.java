@@ -1,36 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.openapi.model.WMEditItem;
 
 class bnid
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  bnid(bnhy parambnhy, bnih parambnih, WMEditItem paramWMEditItem) {}
   
-  bnid(bnhv parambnhv) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    return this.jdField_a_of_type_Boolean;
+    bnhy.a(this.jdField_a_of_type_Bnhy, this.jdField_a_of_type_Bnih.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

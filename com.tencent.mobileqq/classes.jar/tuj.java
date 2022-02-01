@@ -1,32 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class tuj
-  implements qdy
+  implements aqoa
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public tuj(ViolaFragment paramViolaFragment, Bundle paramBundle) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public ColorNote getColorNote()
   {
-    return pzl.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    return false;
+    if (ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment) != null) {
+      return ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment).a();
+    }
+    ViolaFragment.access$302(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, new tty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getUrl()).a(this.jdField_a_of_type_AndroidOsBundle.getString("param")).a(this.jdField_a_of_type_AndroidOsBundle.getBoolean("useTransParentFragment")).a(ViolaFragment.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment)));
+    return ViolaFragment.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tuj
  * JD-Core Version:    0.7.0.1
  */

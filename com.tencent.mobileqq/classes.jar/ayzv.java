@@ -1,12 +1,19 @@
+import android.text.style.ClickableSpan;
 import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View.AccessibilityDelegate;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "", "onPrivacySelectActionSheetClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface ayzv
+class ayzv
+  extends View.AccessibilityDelegate
 {
-  public abstract void a(@NotNull View paramView, @Nullable ayzt paramayzt);
+  ayzv(ayzg paramayzg, ClickableSpan paramClickableSpan) {}
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
+      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
+    }
+  }
 }
 
 

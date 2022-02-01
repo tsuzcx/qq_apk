@@ -1,20 +1,46 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
-public abstract interface bmth
+public class bmth
 {
-  public abstract void a();
+  private static INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new bmti();
+  private static INetEngine jdField_b_of_type_ComTencentMobileqqTransfileINetEngine;
+  private static IHttpCommunicatorFlowCount jdField_b_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new bmtj();
   
-  public abstract void a(int paramInt, MusicItemInfo paramMusicItemInfo);
+  public static INetEngine a()
+  {
+    if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {}
+    try
+    {
+      if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
+        localHttpCommunicator.start();
+        jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine(localHttpCommunicator, true);
+      }
+      return jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+    }
+    finally {}
+  }
   
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void c(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void d(int paramInt, MusicItemInfo paramMusicItemInfo);
+  public static INetEngine b()
+  {
+    if (jdField_b_of_type_ComTencentMobileqqTransfileINetEngine == null) {}
+    try
+    {
+      if (jdField_b_of_type_ComTencentMobileqqTransfileINetEngine == null)
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_b_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
+        localHttpCommunicator.start();
+        jdField_b_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine(localHttpCommunicator, true);
+      }
+      return jdField_b_of_type_ComTencentMobileqqTransfileINetEngine;
+    }
+    finally {}
+  }
 }
 
 

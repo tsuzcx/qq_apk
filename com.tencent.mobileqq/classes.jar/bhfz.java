@@ -1,44 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
-public class bhfz
-  implements ValueAnimator.AnimatorUpdateListener
+final class bhfz
+  extends aofu
 {
-  public bhfz(ParticipleView paramParticipleView) {}
+  bhfz(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void onOIDB0X88D_0_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    long l = System.currentTimeMillis();
-    paramValueAnimator = ParticipleView.a(this.a).iterator();
-    int i = 1;
-    if (paramValueAnimator.hasNext())
+    if (this.jdField_a_of_type_Long != paramLong) {
+      return;
+    }
+    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
+    if ((paramInt1 & 0x1) != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      bhgd localbhgd = (bhgd)paramValueAnimator.next();
-      float f = Math.min((float)(l - bhgd.a(localbhgd)) / ParticipleView.a(this.a), 1.0F);
-      bhgd.a(localbhgd, f);
-      if (f < 1.0F) {
-        i = 0;
-      }
-      for (;;)
-      {
+      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
+      if (paramInt1 != 480) {
         break;
-        paramValueAnimator.remove();
       }
-    }
-    if (i != 0)
-    {
-      ParticipleView.a(this.a).cancel();
-      ParticipleView.a(this.a, null);
-      ParticipleView.a(this.a).clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
+      if (paramBoolean) {
+        bhgc.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
       }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      return;
     }
-    this.a.invalidate();
   }
 }
 

@@ -71,7 +71,7 @@ public class MaskURLImageView
     float f2 = ((Paint.FontMetrics)localObject).top;
     f1 = (getHeight() - (f1 - f2)) / 2.0F;
     f2 = ((Paint.FontMetrics)localObject).top;
-    localObject = getResources().getDrawable(2130847620);
+    localObject = getResources().getDrawable(2130847711);
     assert (localObject != null);
     ((Drawable)localObject).setBounds(j, k, m, n);
     ((Drawable)localObject).draw(paramCanvas);
@@ -82,7 +82,7 @@ public class MaskURLImageView
   {
     int i = (int)((getWidth() - this.playIconSize) / 2.0F);
     int j = (int)((getHeight() - this.playIconSize) / 2.0F);
-    Drawable localDrawable = getResources().getDrawable(2130848235);
+    Drawable localDrawable = getResources().getDrawable(2130848326);
     if (localDrawable != null)
     {
       localDrawable.setBounds(i, j, (int)(i + this.playIconSize), (int)(j + this.playIconSize));

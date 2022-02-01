@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory;
 
+import aakz;
 import java.util.TimerTask;
-import zvn;
 
 public final class EventControlUtils$1
   extends TimerTask
 {
-  public EventControlUtils$1(zvn paramzvn) {}
+  public EventControlUtils$1(aakz paramaakz) {}
   
   public void run()
   {

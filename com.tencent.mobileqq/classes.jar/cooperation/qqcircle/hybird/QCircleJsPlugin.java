@@ -7,8 +7,8 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awfl;
-import bgve;
+import axln;
+import bifw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
@@ -128,7 +128,7 @@ public class QCircleJsPlugin
       {
         i += 1;
         break;
-        localObject2 = awfl.a(localObject2.split(",")[1]);
+        localObject2 = axln.a(localObject2.split(",")[1]);
         localObject2 = BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length);
         JSONObject localJSONObject = new JSONObject();
         if (localObject2 != null)

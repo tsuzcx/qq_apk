@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import java.util.List;
 
 public class EmoticonManager$21
   implements Runnable
 {
-  public EmoticonManager$21(avsq paramavsq, List paramList) {}
+  public EmoticonManager$21(awyr paramawyr, List paramList) {}
   
   /* Error */
   public void run()
@@ -15,8 +15,8 @@ public class EmoticonManager$21
     //   0: invokestatic 29	java/lang/System:currentTimeMillis	()J
     //   3: lstore_1
     //   4: aload_0
-    //   5: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Lavsq;
-    //   8: getfield 34	avsq:a	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   5: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Lawyr;
+    //   8: getfield 34	awyr:a	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   11: invokevirtual 40	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   14: astore_3
     //   15: aload_3
@@ -33,9 +33,9 @@ public class EmoticonManager$21
     //   47: checkcast 63	com/tencent/mobileqq/data/EmotionKeyword
     //   50: astore 5
     //   52: aload_0
-    //   53: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Lavsq;
+    //   53: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Lawyr;
     //   56: aload 5
-    //   58: invokestatic 66	avsq:a	(Lavsq;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   58: invokestatic 66	awyr:a	(Lawyr;Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   61: pop
     //   62: goto -32 -> 30
     //   65: astore 4

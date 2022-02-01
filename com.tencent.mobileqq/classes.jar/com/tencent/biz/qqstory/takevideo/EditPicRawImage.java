@@ -19,21 +19,21 @@ import android.view.View.OnLayoutChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bfvo;
-import bjng;
+import bheg;
+import bkys;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import xvv;
-import xwb;
-import xwj;
-import xzb;
-import xzd;
-import yan;
-import yjh;
+import ykq;
+import ykw;
+import ylc;
+import ynu;
+import ynw;
+import ypg;
+import yya;
 
 public class EditPicRawImage
-  extends xzb
+  extends ynu
   implements Handler.Callback, View.OnLayoutChangeListener, View.OnTouchListener, Runnable
 {
   public static final String[] a;
@@ -42,7 +42,7 @@ public class EditPicRawImage
   int jdField_a_of_type_Int = 0;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bjng jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
+  bkys jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
   boolean jdField_a_of_type_Boolean = false;
   float b;
   
@@ -67,9 +67,9 @@ public class EditPicRawImage
     }
   }
   
-  public EditPicRawImage(@NonNull xzd paramxzd)
+  public EditPicRawImage(@NonNull ynw paramynw)
   {
-    super(paramxzd);
+    super(paramynw);
   }
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
@@ -106,8 +106,8 @@ public class EditPicRawImage
   {
     super.a();
     ThreadManager.post(this, 8, null, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131375855));
-    if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 1) {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131376102));
+    if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 1) {
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
@@ -124,9 +124,9 @@ public class EditPicRawImage
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(int paramInt, @NonNull yjh paramyjh)
+  public void a(int paramInt, @NonNull yya paramyya)
   {
-    paramyjh.a.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramyya.a.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
   public void a(Bitmap paramBitmap, boolean paramBoolean)
@@ -153,7 +153,7 @@ public class EditPicRawImage
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_Bjng.removeMessages(999);
+    this.jdField_a_of_type_Bkys.removeMessages(999);
     this.jdField_a_of_type_AndroidWidgetImageView.removeOnLayoutChangeListener(this);
   }
   
@@ -164,7 +164,7 @@ public class EditPicRawImage
     float[] arrayOfFloat = new float[9];
     ((Matrix)localObject2).getValues(arrayOfFloat);
     float f4 = arrayOfFloat[0];
-    localObject2 = this.jdField_a_of_type_Yan.getActivity().getResources().getDisplayMetrics();
+    localObject2 = this.jdField_a_of_type_Ypg.getActivity().getResources().getDisplayMetrics();
     int k = ((DisplayMetrics)localObject2).widthPixels;
     int j = ((DisplayMetrics)localObject2).heightPixels;
     int i = j;
@@ -189,12 +189,12 @@ public class EditPicRawImage
     for (;;)
     {
       localObject1 = new RectF(0.0F, 0.0F, f3, f2);
-      xvv.c("EditPicActivity.EditVideoRawImage", "getDisplayBounds " + localObject1 + " scale " + f1 + " old scale " + f4);
-      localObject2 = (xwj)a(xwj.class);
+      ykq.c("EditPicActivity.EditVideoRawImage", "getDisplayBounds " + localObject1 + " scale " + f1 + " old scale " + f4);
+      localObject2 = (ylc)a(ylc.class);
       if (localObject2 != null) {}
       try
       {
-        ((xwj)localObject2).a((int)((RectF)localObject1).width(), (int)((RectF)localObject1).height());
+        ((ylc)localObject2).a((int)((RectF)localObject1).width(), (int)((RectF)localObject1).height());
         if (QLog.isColorLevel()) {
           QLog.d("EditPicActivity.EditVideoRawImage", 2, "resizeDoodleView width:" + ((RectF)localObject1).width() + " height:" + ((RectF)localObject1).height());
         }
@@ -209,7 +209,7 @@ public class EditPicRawImage
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Yan.getActivity().isFinishing()) {
+    if (this.jdField_a_of_type_Ypg.getActivity().isFinishing()) {
       QLog.e("EditPicActivity.EditVideoRawImage", 1, "handleMessage isFinishing" + paramMessage.what);
     }
     do
@@ -219,27 +219,27 @@ public class EditPicRawImage
         return false;
         if (paramMessage.what == 998)
         {
-          QQToast.a(this.jdField_a_of_type_Yan.getActivity().getApplicationContext(), this.jdField_a_of_type_Yan.getActivity().getResources().getString(2131719021), 0).a();
-          this.jdField_a_of_type_Yan.a(0, null, 2130772030, 0);
+          QQToast.a(this.jdField_a_of_type_Ypg.getActivity().getApplicationContext(), this.jdField_a_of_type_Ypg.getActivity().getResources().getString(2131719426), 0).a();
+          this.jdField_a_of_type_Ypg.a(0, null, 2130772030, 0);
           return false;
         }
       } while (paramMessage.what != 999);
       paramMessage = (Bitmap)paramMessage.obj;
-      if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 1) {
+      if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 1) {
         a(paramMessage, true);
       }
       for (;;)
       {
-        this.jdField_a_of_type_Xzd.u();
-        if ((!(this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalPhotoSource)) || (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 1) || (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 103) || (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 11)) {
+        this.jdField_a_of_type_Ynw.u();
+        if ((!(this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalPhotoSource)) || (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 1) || (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 103) || (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 11)) {
           break;
         }
-        this.jdField_a_of_type_Xzd.a(Message.obtain(null, 2, 1, 0));
+        this.jdField_a_of_type_Ynw.a(Message.obtain(null, 2, 1, 0));
         return false;
         a(paramMessage, false);
       }
     } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Xzd.a(Message.obtain(null, 2, 2, 0));
+    this.jdField_a_of_type_Ynw.a(Message.obtain(null, 2, 2, 0));
     return false;
   }
   
@@ -279,19 +279,19 @@ public class EditPicRawImage
       continue;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      if ((Math.abs(f1 - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.jdField_b_of_type_Float) < 10.0F) && (this.jdField_a_of_type_Xzd.b != 12)) {
-        if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 2)
+      if ((Math.abs(f1 - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.jdField_b_of_type_Float) < 10.0F) && (this.jdField_a_of_type_Ynw.b != 12)) {
+        if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 2)
         {
-          this.jdField_a_of_type_Xzd.a(5);
-          xwb.b("0X80075D7");
+          this.jdField_a_of_type_Ynw.a(5);
+          ykw.b("0X80075D7");
         }
-        else if (this.jdField_a_of_type_Xzd.b == 0)
+        else if (this.jdField_a_of_type_Ynw.b == 0)
         {
-          this.jdField_a_of_type_Xzd.a(27);
+          this.jdField_a_of_type_Ynw.a(27);
         }
-        else if (this.jdField_a_of_type_Xzd.b == 27)
+        else if (this.jdField_a_of_type_Ynw.b == 27)
         {
-          this.jdField_a_of_type_Xzd.a(0);
+          this.jdField_a_of_type_Ynw.a(0);
         }
       }
     }
@@ -299,27 +299,27 @@ public class EditPicRawImage
   
   public void run()
   {
-    Object localObject2 = this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource.getSourcePath();
+    Object localObject2 = this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource.getSourcePath();
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
     BitmapFactory.decodeFile((String)localObject2, (BitmapFactory.Options)localObject1);
     if ((((BitmapFactory.Options)localObject1).outWidth < 64) || (((BitmapFactory.Options)localObject1).outHeight < 64))
     {
       QLog.e("EditPicActivity.EditVideoRawImage", 1, "too small");
-      this.jdField_a_of_type_Bjng.sendEmptyMessage(998);
+      this.jdField_a_of_type_Bkys.sendEmptyMessage(998);
       return;
     }
-    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_Yan.getActivity().getResources().getDisplayMetrics();
+    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_Ypg.getActivity().getResources().getDisplayMetrics();
     int i = a((BitmapFactory.Options)localObject1, localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
     ((BitmapFactory.Options)localObject1).inSampleSize = i;
     try
     {
-      localObject1 = bfvo.a((String)localObject2, (BitmapFactory.Options)localObject1);
+      localObject1 = bheg.a((String)localObject2, (BitmapFactory.Options)localObject1);
       if (localObject1 == null)
       {
         QLog.e("EditPicActivity.EditVideoRawImage", 1, "decode" + null);
-        this.jdField_a_of_type_Yan.a(0, null, 2130772030, 0);
+        this.jdField_a_of_type_Ypg.a(0, null, 2130772030, 0);
         return;
       }
     }
@@ -334,15 +334,15 @@ public class EditPicRawImage
       if (QLog.isColorLevel()) {
         QLog.d("EditPicActivity.EditVideoRawImage", 2, "sampleSize" + i + " w " + localBitmap.getWidth() + " h " + localBitmap.getHeight());
       }
-      i = bfvo.b((String)localObject2);
+      i = bheg.b((String)localObject2);
       localObject2 = localBitmap;
       if (i != 0)
       {
         localObject2 = localBitmap;
         if (i % 90 == 0)
         {
-          if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-            this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.b = i;
+          if (this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+            this.jdField_a_of_type_Ynw.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.b = i;
           }
           if (QLog.isColorLevel()) {
             QLog.d("EditPicActivity.EditVideoRawImage", 2, "has exif rotate" + i);
@@ -354,7 +354,7 @@ public class EditPicRawImage
           localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, j, k, (Matrix)localObject2, true);
         }
       }
-      this.jdField_a_of_type_Bjng.obtainMessage(999, localObject2).sendToTarget();
+      this.jdField_a_of_type_Bkys.obtainMessage(999, localObject2).sendToTarget();
     }
   }
 }

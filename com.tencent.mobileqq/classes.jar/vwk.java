@@ -1,42 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qcircleshadow.remoteCheck.QCircleGetRainBowRequest;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import qqcircle.QQCircleConfig.GetRainbowTableConfigRsp;
 
-public class vwk
+class vwk
+  implements VSDispatchObserver.onVSRspCallBack<QQCircleConfig.GetRainbowTableConfigRsp>
 {
-  @ypm(a="gametype")
-  public int a;
-  @ypm(a="gameid")
-  public String a;
-  @ypm(a="name")
-  public String b;
-  @ypm(a="result")
-  public String c;
+  vwk(vwj paramvwj, QCircleGetRainBowRequest paramQCircleGetRainBowRequest) {}
   
-  public static vwk a(String paramString)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleConfig.GetRainbowTableConfigRsp paramGetRainbowTableConfigRsp)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    QLog.i("QCirclePluginManager", 1, "traceId:" + this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCircleGetRainBowRequest.getTraceId() + " retcode:" + paramLong);
+    if (paramBoolean)
     {
-      paramString = (vwk)JsonORM.a(new JSONObject(paramString), vwk.class);
-      return paramString;
+      vwj.a(this.jdField_a_of_type_Vwj, paramGetRainbowTableConfigRsp);
+      return;
     }
-    catch (JsonORM.JsonParseException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_cmd_rsp").setRetCode(paramLong));
+    QLog.e("QCirclePluginManager", 1, " retcode= " + paramLong + " errMsg=" + paramString);
   }
 }
 

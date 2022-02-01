@@ -1,31 +1,20 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.persistence.Entity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class almf
+  implements View.OnClickListener
 {
-  public int a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public int b;
+  public almf(TempMsgBoxFragment paramTempMsgBoxFragment) {}
   
-  public almf(int paramInt, DiscussionInfo paramDiscussionInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-  }
-  
-  public almf(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.b = paramInt2;
-  }
-  
-  public almf(int paramInt, Entity paramEntity)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = ((TroopInfo)paramEntity);
+    PublicFragmentActivity.a(TempMsgBoxFragment.a(this.a), TempMsgSettingFragment.class);
+    bdla.b(this.a.a, "dc00898", "", "", "0X800B1C1", "0X800B1C1", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

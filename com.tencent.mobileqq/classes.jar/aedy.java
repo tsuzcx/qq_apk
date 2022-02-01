@@ -1,19 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-public final class aedy
-  implements Parcelable.Creator<RiskInfoItem>
+public class aedy
+  implements Animation.AnimationListener
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
+  public aedy(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public RiskInfoItem[] a(int paramInt)
-  {
-    return new RiskInfoItem[paramInt];
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

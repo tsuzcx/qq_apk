@@ -1,20 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 
-public class nyk
-  implements ValueAnimator.AnimatorUpdateListener
+class nyk
+  extends Handler
 {
-  public nyk(AdControlView paramAdControlView) {}
+  nyk(nyj paramnyj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    QLog.d("Ron", 2, "alpha:" + f);
-    AdControlView.a(this.a).setAlpha(f);
-    this.a.invalidate();
+    super.handleMessage(paramMessage);
+    if (this.a.jdField_a_of_type_Int == this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.getScrollY())
+    {
+      if ((this.a.jdField_a_of_type_Int > 0) && (!this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.a()))
+      {
+        int i = this.a.jdField_a_of_type_Int;
+        i = (int)(this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_Int * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + this.a.jdField_a_of_type_Int);
+        int j = (int)(this.a.jdField_a_of_type_Int - (this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight() + this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_Float * 56.0F - this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_Int * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double)));
+        if ((i > this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight() + this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_Float * 56.0F) || (i > this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight())) {
+          this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.scrollBy(0, -j);
+        }
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.getScrollY();
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
   }
 }
 

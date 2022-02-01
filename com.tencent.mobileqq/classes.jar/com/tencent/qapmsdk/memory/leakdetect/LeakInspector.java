@@ -22,6 +22,7 @@ import com.tencent.qapmsdk.common.util.AppInfo;
 import com.tencent.qapmsdk.common.util.InspectUUID;
 import com.tencent.qapmsdk.common.util.RecyclablePool;
 import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
+import com.tencent.qapmsdk.memory.memorydump.IHeapDumper;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -36,13 +37,20 @@ public class LeakInspector
   private static final String TAG = "QAPM_memory_LeakInspector";
   private static final int TIME_UNIT = 1000;
   private static boolean autoDump = false;
-  private static long lastTimeGC = 0L;
+  private static IHeapDumper dumper = null;
+  private static boolean keepUuidWhenLeaked;
+  private static long lastTimeGC;
   private static LeakInspector leakInspector;
   private static int loopMaxCount = 100;
-  private static boolean sKeepUuidWhenLeaked = false;
   private static RecyclablePool sPool;
   private IInspectorListener inspectorListener;
   private Handler leakHandler;
+  
+  static
+  {
+    lastTimeGC = 0L;
+    keepUuidWhenLeaked = false;
+  }
   
   private LeakInspector(Handler paramHandler, IInspectorListener paramIInspectorListener)
   {
@@ -87,12 +95,11 @@ public class LeakInspector
     String str = paramString + "_leak";
     if (paramBoolean)
     {
-      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString);
+      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString, dumper);
       paramIMemoryDumpListener.onHprofDumped(paramString);
-      paramBoolean = ((Boolean)localObject2[0]).booleanValue();
-      localDumpResult.success = paramBoolean;
-      if (!paramBoolean) {
-        break label326;
+      localDumpResult.success = ((Boolean)localObject2[0]).booleanValue();
+      if (!localDumpResult.success) {
+        break label327;
       }
       localObject2 = (String)localObject2[1];
       localDumpResult.hprofFileSize = new File((String)localObject2).length();
@@ -111,12 +118,12 @@ public class LeakInspector
     while (i < localArrayList.size())
     {
       paramString = new File((String)localArrayList.get(i));
-      if ((paramString != null) && (paramString.isFile()) && (paramString.exists())) {
+      if ((paramString.isFile()) && (paramString.exists())) {
         paramString.delete();
       }
       i += 1;
     }
-    label326:
+    label327:
     paramIMemoryDumpListener.onFinishDump(false, paramString, "");
     Logger.INSTANCE.e(new String[] { "QAPM_memory_LeakInspector", "generateHprof error ", paramString });
     return localDumpResult;
@@ -168,20 +175,26 @@ public class LeakInspector
     this.leakHandler.post(paramObject);
   }
   
-  public static void report(long paramLong, String paramString)
+  public static void report(String paramString1, String paramString2)
   {
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("processname", AppInfo.obtainProcessName(BaseInfo.app));
-    localJSONObject.put("event_time", paramLong);
-    localJSONObject.put("fileObj", paramString);
+    localJSONObject.put("event_time", System.currentTimeMillis());
+    localJSONObject.put("stage", paramString1);
+    localJSONObject.put("fileObj", paramString2);
     localJSONObject.put("plugin", PluginCombination.leakPlugin.plugin);
-    paramString = new ResultObject(0, "MemoryLeak single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
-    ReporterMachine.INSTANCE.addResultObj(paramString);
+    paramString1 = new ResultObject(0, "MemoryLeak single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
+    ReporterMachine.INSTANCE.addResultObj(paramString1, null, false);
+  }
+  
+  public static void setDumper(IHeapDumper paramIHeapDumper)
+  {
+    dumper = paramIHeapDumper;
   }
   
   public static void setKeepUuidWhenLeak(boolean paramBoolean)
   {
-    sKeepUuidWhenLeaked = paramBoolean;
+    keepUuidWhenLeaked = paramBoolean;
   }
   
   public static void setLooperMaxCount(int paramInt)

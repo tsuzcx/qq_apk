@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import amsw;
 import android.text.TextUtils;
+import anvk;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -66,7 +67,7 @@ public class ConversationInfo
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         if (localObject != null)
         {
-          paramString = ((amsw)((AppRuntime)localObject).getManager(51)).c(paramString);
+          paramString = ((anvk)((AppRuntime)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
           if ((paramString != null) && (paramString.isFriend()))
           {
             publicaccountTypeErrorReported = true;
@@ -120,7 +121,7 @@ public class ConversationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ConversationInfo
  * JD-Core Version:    0.7.0.1
  */

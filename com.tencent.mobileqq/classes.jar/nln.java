@@ -1,29 +1,41 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
 
 public class nln
-  implements AdapterView.OnItemClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public nln(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public nln(GuessPictureStageView paramGuessPictureStageView, ngg paramngg) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
+      QLog.i("GuessPictureStageView", 2, "urlDrawable load failed and throwable" + paramThrowable);
     }
-    paramAdapterView = (nlp)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
-    if (paramAdapterView != null)
+    bdla.b(null, "dc00898", "", "", "0X800B0FA", "0X800B0FA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.b();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GuessPictureStageView", 2, "urlDrawable load success");
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B0F5", "0X800B0F5", 0, 0, "", "", "", "");
+    paramURLDrawable = nqr.a(paramURLDrawable.getCurrDrawable());
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a = paramURLDrawable;
+    GuessPictureStageView localGuessPictureStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView;
+    if (this.jdField_a_of_type_Ngg.c == 0) {}
+    for (int i = 10;; i = this.jdField_a_of_type_Ngg.c)
     {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+      GuessPictureStageView.a(localGuessPictureStageView, paramURLDrawable, i);
+      return;
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

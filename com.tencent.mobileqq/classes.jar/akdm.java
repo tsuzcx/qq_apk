@@ -1,16 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class akdm
-  extends RecyclerView.ViewHolder
+class akdm
 {
-  LinearLayout a;
-  
-  public akdm(LinearLayout paramLinearLayout)
-  {
-    super(paramLinearLayout);
-    this.a = paramLinearLayout;
-  }
+  public TextView a;
 }
 
 

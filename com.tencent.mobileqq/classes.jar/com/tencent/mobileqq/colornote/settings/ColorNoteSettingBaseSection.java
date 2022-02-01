@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import apmx;
-import apnd;
+import aqqb;
+import aqqh;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private apmx jdField_a_of_type_Apmx;
+  private aqqb jdField_a_of_type_Aqqb;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
   public ColorNoteSettingBaseSection(Context paramContext)
@@ -37,15 +37,15 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558926, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131376992));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363363));
+    inflate(getContext(), 2131558953, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377264));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363432));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Apmx.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Aqqb.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +53,10 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(apmx paramapmx)
+  public void setAdapter(aqqb paramaqqb)
   {
-    this.jdField_a_of_type_Apmx = paramapmx;
-    this.jdField_a_of_type_Apmx.a(new apnd(this));
+    this.jdField_a_of_type_Aqqb = paramaqqb;
+    this.jdField_a_of_type_Aqqb.a(new aqqh(this));
   }
   
   public void setContentDescription(CharSequence paramCharSequence)

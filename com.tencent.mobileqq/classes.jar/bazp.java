@@ -1,49 +1,47 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bazp
-  extends bazc
+class bazp
+  extends Handler
 {
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
-  public boolean b;
-  
-  public bazp(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public bazp(bazk parambazk, Looper paramLooper)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super(paramLooper);
   }
   
-  public bazp(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    for (boolean bool = true;; bool = false) {
-      try
+    try
+    {
+      switch (paramMessage.what)
       {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_JavaLangCharSequence = bbgk.a(paramString.optJSONArray("leftText"));
-        this.jdField_b_of_type_JavaLangCharSequence = bbgk.a(paramString.optJSONArray("rightText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
-        if (paramString.optInt("needCenter") == 1)
-        {
-          this.jdField_b_of_type_Boolean = bool;
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(c, 0, paramString.toString());
+      case 1: 
+        bazk.a(this.a);
+        return;
       }
     }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleMessage exception = " + paramMessage.getMessage());
+      return;
+    }
+    bazk.b(this.a);
+    return;
+    bazk.c(this.a);
+    return;
+    bazk.d(this.a);
+    return;
+    bazk.e(this.a);
+    return;
+    bazk.f(this.a);
+    return;
+    bazk.g(this.a);
+    return;
+    bazk.h(this.a);
+    return;
   }
 }
 

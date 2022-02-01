@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afzw;
-import agad;
+import agsm;
+import agst;
 
 public class GivingHeartItemBuilder$4$1
   implements Runnable
 {
-  public GivingHeartItemBuilder$4$1(agad paramagad) {}
+  public GivingHeartItemBuilder$4$1(agst paramagst) {}
   
   public void run()
   {
-    afzw.a(this.a.a);
+    agsm.a(this.a.a);
   }
 }
 

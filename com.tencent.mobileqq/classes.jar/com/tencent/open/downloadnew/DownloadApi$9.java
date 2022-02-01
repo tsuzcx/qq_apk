@@ -1,13 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import biby;
+import bjna;
 
 public final class DownloadApi$9
   implements Runnable
 {
   public void run()
   {
-    biby.a().c();
+    bjna.a().c();
   }
 }
 

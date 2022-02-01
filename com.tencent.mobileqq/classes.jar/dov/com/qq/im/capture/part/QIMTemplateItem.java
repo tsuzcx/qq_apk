@@ -3,15 +3,15 @@ package dov.com.qq.im.capture.part;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmsa;
-import bmtn;
+import bohs;
+import bojf;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
 public class QIMTemplateItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMTemplateItem> CREATOR = new bmtn();
+  public static final Parcelable.Creator<QIMTemplateItem> CREATOR = new bojf();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -63,7 +63,7 @@ public class QIMTemplateItem
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = bool1;
-      this.j = (bmsa.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + ".mp4");
+      this.j = (bohs.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + ".mp4");
       return;
       bool1 = false;
       break;

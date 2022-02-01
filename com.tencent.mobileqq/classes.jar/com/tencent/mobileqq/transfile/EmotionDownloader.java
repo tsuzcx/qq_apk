@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
 import android.graphics.BitmapFactory;
-import aqxc;
-import aqyd;
+import asbm;
+import ascn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.NativeGifFactory;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -80,7 +81,7 @@ public class EmotionDownloader
   }
   
   /* Error */
-  protected File downloadEmoticonImage(DownloadParams paramDownloadParams, aqyd paramaqyd)
+  protected File downloadEmoticonImage(DownloadParams paramDownloadParams, ascn paramascn)
   {
     // Byte code:
     //   0: aconst_null
@@ -270,20 +271,20 @@ public class EmotionDownloader
     //   391: aload_2
     //   392: aload_1
     //   393: invokeinterface 71 1 0
-    //   398: invokevirtual 248	aqyd:b	(Ljava/lang/String;)V
+    //   398: invokevirtual 248	ascn:b	(Ljava/lang/String;)V
     //   401: aload_2
     //   402: iconst_0
-    //   403: invokevirtual 252	aqyd:c	(Z)V
+    //   403: invokevirtual 252	ascn:c	(Z)V
     //   406: aload_2
     //   407: iconst_0
-    //   408: invokevirtual 255	aqyd:d	(Z)V
+    //   408: invokevirtual 255	ascn:d	(Z)V
     //   411: aload 7
     //   413: areturn
     //   414: aload_2
     //   415: ifnull -42 -> 373
     //   418: aload_2
     //   419: iconst_1
-    //   420: invokevirtual 255	aqyd:d	(Z)V
+    //   420: invokevirtual 255	ascn:d	(Z)V
     //   423: aload 7
     //   425: areturn
     //   426: astore_2
@@ -315,12 +316,12 @@ public class EmotionDownloader
     //   start	length	slot	name	signature
     //   0	470	0	this	EmotionDownloader
     //   0	470	1	paramDownloadParams	DownloadParams
-    //   0	470	2	paramaqyd	aqyd
+    //   0	470	2	paramascn	ascn
     //   136	331	3	i	int
     //   133	8	4	j	int
     //   1	1	5	localObject1	Object
     //   291	3	5	localException1	Exception
-    //   299	141	5	localaqyd	aqyd
+    //   299	141	5	localascn	ascn
     //   447	1	5	localException2	Exception
     //   457	1	5	localException3	Exception
     //   4	1	6	localObject2	Object
@@ -359,16 +360,16 @@ public class EmotionDownloader
         }
         try
         {
-          paramOutputStream = aqxc.a();
+          paramOutputStream = asbm.a();
           paramOutputStream = (QQAppInterface)this.application.getAppRuntime(paramOutputStream);
           if (paramOutputStream == null) {
-            break label286;
+            break label287;
           }
-          paramOutputStream = (aqxc)paramOutputStream.getManager(77);
+          paramOutputStream = (asbm)paramOutputStream.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
           if (paramOutputStream == null) {
-            break label286;
+            break label287;
           }
-          paramOutputStream = (aqyd)paramOutputStream.a("qq.android.system.face.gifv14");
+          paramOutputStream = (ascn)paramOutputStream.a("qq.android.system.face.gifv14");
           paramOutputStream = downloadEmoticonImage(paramDownloadParams, paramOutputStream);
           if (!paramOutputStream.exists()) {
             continue;
@@ -378,7 +379,7 @@ public class EmotionDownloader
         catch (Exception paramOutputStream)
         {
           if (!QLog.isColorLevel()) {
-            break label291;
+            break label292;
           }
         }
         QLog.d("EmotionDownloader", 2, "getting QQApp throws a Exception:" + paramOutputStream.getMessage());
@@ -400,10 +401,10 @@ public class EmotionDownloader
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "system_face_decode_copyfile", false, 0L, 0L, paramOutputStream, "");
       paramOutputStream = rootFile;
       return paramOutputStream;
-      label286:
+      label287:
       paramOutputStream = null;
       continue;
-      label291:
+      label292:
       paramOutputStream = null;
     }
   }

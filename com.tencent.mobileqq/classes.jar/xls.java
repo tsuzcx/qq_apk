@@ -1,6 +1,42 @@
-public abstract interface xls
+public class xls
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  private double jdField_a_of_type_Double = 1.0D;
+  private long jdField_a_of_type_Long;
+  
+  public xls()
+  {
+    a();
+  }
+  
+  private long b()
+  {
+    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public long a()
+  {
+    return b() - this.jdField_a_of_type_Long;
+  }
+  
+  public long a(long paramLong)
+  {
+    return paramLong - a();
+  }
+  
+  public void a()
+  {
+    a(0L);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = (b() - paramLong);
+  }
 }
 
 

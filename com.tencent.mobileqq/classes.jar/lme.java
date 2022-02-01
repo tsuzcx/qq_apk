@@ -1,72 +1,724 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.PathMeasure;
+import android.graphics.drawable.BitmapDrawable;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class lme
 {
-  int jdField_a_of_type_Int = 0;
-  ArrayList<lmd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  lmb jdField_a_of_type_Lmb = null;
+  public float a;
+  private int jdField_a_of_type_Int;
+  private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
+  private String jdField_a_of_type_JavaLangString;
+  private lmf jdField_a_of_type_Lmf = new lmf();
+  private lmi jdField_a_of_type_Lmi = new lmi();
+  private lmj jdField_a_of_type_Lmj = new lmj();
+  private lmm jdField_a_of_type_Lmm = new lmm();
+  private boolean jdField_a_of_type_Boolean;
+  float[] jdField_a_of_type_ArrayOfFloat = new float[2];
+  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+  private lmg[] jdField_a_of_type_ArrayOfLmg;
+  private boolean[] jdField_a_of_type_ArrayOfBoolean;
+  public float b;
+  private int jdField_b_of_type_Int = 4;
+  private lmi jdField_b_of_type_Lmi = new lmi();
+  private lmj jdField_b_of_type_Lmj = new lmj();
+  private boolean jdField_b_of_type_Boolean;
+  float[] jdField_b_of_type_ArrayOfFloat = new float[2];
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private lmi jdField_c_of_type_Lmi = new lmj();
+  private lmj jdField_c_of_type_Lmj = new lmj();
+  private boolean jdField_c_of_type_Boolean;
+  private float jdField_d_of_type_Float;
+  private int jdField_d_of_type_Int;
+  private lmi jdField_d_of_type_Lmi = new lmj();
+  private lmj jdField_d_of_type_Lmj = new lmj();
+  private boolean jdField_d_of_type_Boolean;
+  private float jdField_e_of_type_Float;
+  private int jdField_e_of_type_Int;
+  private lmj jdField_e_of_type_Lmj = new lmj();
+  private boolean jdField_e_of_type_Boolean;
+  private float jdField_f_of_type_Float;
+  private int jdField_f_of_type_Int;
+  private lmj jdField_f_of_type_Lmj = new lmj();
+  private boolean jdField_f_of_type_Boolean;
+  private float jdField_g_of_type_Float;
+  private int jdField_g_of_type_Int;
+  private lmj jdField_g_of_type_Lmj = new lmj();
+  private boolean jdField_g_of_type_Boolean = true;
+  private float jdField_h_of_type_Float;
+  private int jdField_h_of_type_Int;
+  private lmj jdField_h_of_type_Lmj = new lmj();
+  private float jdField_i_of_type_Float;
+  private int jdField_i_of_type_Int;
+  private lmj jdField_i_of_type_Lmj = new lmj();
+  private int jdField_j_of_type_Int;
+  private lmj jdField_j_of_type_Lmj = new lmj();
+  private int jdField_k_of_type_Int;
+  private lmj jdField_k_of_type_Lmj = new lmj();
+  private lmj l = new lmj();
   
-  lme()
+  public lme()
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_Lmb = lmb.a();
-    this.jdField_a_of_type_Int = lmj.a(this.jdField_a_of_type_Lmb);
-    QLog.d("QavGPDownloadManager", 1, String.format("QavGPDownloadObserver, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_a_of_type_Float = 1.0F;
+    b();
   }
   
-  boolean a()
+  public lme(BufferedReader paramBufferedReader)
   {
-    this.jdField_a_of_type_Lmb = lmb.a();
-    this.jdField_a_of_type_Int = lmj.a(this.jdField_a_of_type_Lmb);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, String.format("checkResReady, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_a_of_type_Float = 1.0F;
+    b();
+    a(paramBufferedReader);
+  }
+  
+  static float a(BufferedReader paramBufferedReader, String paramString)
+  {
+    return Float.parseFloat(a(paramBufferedReader, paramString));
+  }
+  
+  static int a(BufferedReader paramBufferedReader, String paramString)
+  {
+    return Integer.parseInt(a(paramBufferedReader, paramString));
+  }
+  
+  static String a(BufferedReader paramBufferedReader, String paramString)
+  {
+    paramBufferedReader = paramBufferedReader.readLine();
+    if (paramBufferedReader == null) {
+      throw new IOException("Missing value: " + paramString);
     }
-    return 11 != this.jdField_a_of_type_Int;
+    return paramBufferedReader.substring(paramBufferedReader.indexOf(":") + 1).trim();
   }
   
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  static boolean a(BufferedReader paramBufferedReader, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGPDownloadManager", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    return Boolean.parseBoolean(a(paramBufferedReader, paramString));
+  }
+  
+  private boolean a(lmg paramlmg, float paramFloat, int paramInt)
+  {
+    paramInt = paramlmg.jdField_b_of_type_Int - paramInt;
+    if (paramInt <= 0) {
+      return false;
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new lmf(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    this.jdField_a_of_type_Lmb = lmb.a();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = lmj.a(this.jdField_a_of_type_Lmb);
-    if (this.jdField_a_of_type_Int == 11)
+    paramlmg.jdField_b_of_type_Int = paramInt;
+    float f4 = 1.0F - paramlmg.jdField_b_of_type_Int / paramlmg.jdField_a_of_type_Int;
+    paramInt = this.jdField_d_of_type_Int;
+    if ((paramInt & 0x1) != 0) {
+      paramlmg.b(paramlmg.jdField_a_of_type_Float + paramlmg.jdField_b_of_type_Float * this.jdField_d_of_type_Lmj.a(f4));
+    }
+    float f3;
+    float f5;
+    float f6;
+    float f2;
+    float f1;
+    if ((paramInt & 0x8) != 0)
     {
-      this.jdField_a_of_type_Int = 12;
-      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      Intent localIntent = new Intent();
-      localIntent.setAction("from_qavgpsomgr_download");
-      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
-      localIntent.addFlags(268435456);
-      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGPDownloadManager", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGameplay[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      f3 = (paramlmg.jdField_e_of_type_Float + paramlmg.jdField_f_of_type_Float * this.jdField_f_of_type_Lmj.a(f4)) * paramFloat;
+      if ((paramInt & 0x2) != 0)
+      {
+        float f7 = paramlmg.jdField_g_of_type_Float + paramlmg.jdField_h_of_type_Float * this.jdField_g_of_type_Lmj.a(f4);
+        f5 = llz.b(f7);
+        f6 = llz.a(f7);
+        if ((paramInt & 0x4) != 0)
+        {
+          f2 = paramlmg.jdField_c_of_type_Float + paramlmg.jdField_d_of_type_Float * this.jdField_e_of_type_Lmj.a(f4);
+          f1 = f2;
+          if (this.jdField_e_of_type_Boolean) {
+            f1 = f2 + f7;
+          }
+          paramlmg.a(f1);
+        }
+        f1 = f6 * f3;
+        f2 = f3 * f5;
+        f3 = f2;
+        if ((paramInt & 0x10) != 0) {
+          f3 = f2 + (paramlmg.m + paramlmg.n * this.jdField_h_of_type_Lmj.a(f4)) * paramFloat;
+        }
+        f2 = f1;
+        if ((paramInt & 0x20) != 0) {
+          f2 = f1 + (paramlmg.o + paramlmg.p * this.jdField_i_of_type_Lmj.a(f4)) * paramFloat;
+        }
+        paramlmg.a(f3, f2);
+        label285:
+        if ((paramInt & 0x40) == 0) {
+          break label479;
+        }
       }
-      return bool;
     }
+    label479:
+    for (float[] arrayOfFloat = this.jdField_a_of_type_Lmf.a(f4);; arrayOfFloat = paramlmg.jdField_a_of_type_ArrayOfFloat)
+    {
+      paramFloat = arrayOfFloat[0];
+      f1 = arrayOfFloat[1];
+      f2 = arrayOfFloat[2];
+      f3 = paramlmg.k;
+      f5 = paramlmg.l;
+      paramlmg.b(paramFloat, f1, f2, f3 + this.jdField_j_of_type_Lmj.a(f4) * f5);
+      return true;
+      f5 = paramlmg.jdField_i_of_type_Float;
+      f6 = paramlmg.j;
+      if ((this.jdField_e_of_type_Boolean) || ((paramInt & 0x4) != 0))
+      {
+        f2 = paramlmg.jdField_c_of_type_Float + paramlmg.jdField_d_of_type_Float * this.jdField_e_of_type_Lmj.a(f4);
+        f1 = f2;
+        if (this.jdField_e_of_type_Boolean) {
+          f1 = f2 + paramlmg.jdField_g_of_type_Float;
+        }
+        paramlmg.a(f1);
+      }
+      f1 = f6 * f3;
+      f2 = f3 * f5;
+      break;
+      if ((paramInt & 0x4) == 0) {
+        break label285;
+      }
+      paramlmg.a(paramlmg.jdField_c_of_type_Float + paramlmg.jdField_d_of_type_Float * this.jdField_e_of_type_Lmj.a(f4));
+      break label285;
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_b_of_type_Lmi.a(true);
+    this.jdField_c_of_type_Lmj.a(true);
+    this.jdField_b_of_type_Lmj.a(true);
+    this.jdField_d_of_type_Lmj.a(true);
+    this.jdField_j_of_type_Lmj.a(true);
+    this.jdField_a_of_type_Lmm.a(true);
+    this.jdField_k_of_type_Lmj.a(true);
+    this.l.a(true);
+  }
+  
+  private void c()
+  {
+    float f1;
+    if (this.jdField_a_of_type_Lmi.jdField_a_of_type_Boolean)
+    {
+      f1 = this.jdField_a_of_type_Lmi.a();
+      this.jdField_h_of_type_Float = f1;
+      this.jdField_i_of_type_Float = 0.0F;
+      this.jdField_b_of_type_Float -= this.jdField_a_of_type_Float;
+      this.jdField_a_of_type_Float = this.jdField_b_of_type_Lmi.a();
+      this.jdField_e_of_type_Int = ((int)this.jdField_c_of_type_Lmj.a());
+      this.jdField_f_of_type_Int = ((int)this.jdField_c_of_type_Lmj.b());
+      if (!this.jdField_c_of_type_Lmj.a()) {
+        this.jdField_f_of_type_Int -= this.jdField_e_of_type_Int;
+      }
+      this.jdField_j_of_type_Int = ((int)this.jdField_b_of_type_Lmj.a());
+      this.jdField_k_of_type_Int = ((int)this.jdField_b_of_type_Lmj.b());
+      if (!this.jdField_b_of_type_Lmj.a()) {
+        this.jdField_k_of_type_Int -= this.jdField_j_of_type_Int;
+      }
+      if (!this.jdField_a_of_type_Lmj.jdField_a_of_type_Boolean) {
+        break label478;
+      }
+    }
+    label478:
+    for (int m = (int)this.jdField_a_of_type_Lmj.a();; m = 0)
+    {
+      this.jdField_h_of_type_Int = m;
+      this.jdField_i_of_type_Int = ((int)this.jdField_a_of_type_Lmj.b());
+      if (!this.jdField_a_of_type_Lmj.a()) {
+        this.jdField_i_of_type_Int -= this.jdField_h_of_type_Int;
+      }
+      this.jdField_d_of_type_Float = this.jdField_k_of_type_Lmj.a();
+      this.jdField_e_of_type_Float = this.jdField_k_of_type_Lmj.b();
+      if (!this.jdField_k_of_type_Lmj.a()) {
+        this.jdField_e_of_type_Float -= this.jdField_d_of_type_Float;
+      }
+      this.jdField_f_of_type_Float = this.l.a();
+      this.jdField_g_of_type_Float = this.l.b();
+      if (!this.l.a()) {
+        this.jdField_g_of_type_Float -= this.jdField_f_of_type_Float;
+      }
+      this.jdField_d_of_type_Int = 0;
+      if ((this.jdField_g_of_type_Lmj.jdField_a_of_type_Boolean) && (this.jdField_g_of_type_Lmj.jdField_a_of_type_ArrayOfFloat.length > 1)) {
+        this.jdField_d_of_type_Int |= 0x2;
+      }
+      if (this.jdField_f_of_type_Lmj.jdField_a_of_type_Boolean) {
+        this.jdField_d_of_type_Int |= 0x8;
+      }
+      if (this.jdField_d_of_type_Lmj.jdField_a_of_type_ArrayOfFloat.length > 1) {
+        this.jdField_d_of_type_Int |= 0x1;
+      }
+      if ((this.jdField_e_of_type_Lmj.jdField_a_of_type_Boolean) && (this.jdField_e_of_type_Lmj.jdField_a_of_type_ArrayOfFloat.length > 1)) {
+        this.jdField_d_of_type_Int |= 0x4;
+      }
+      if (this.jdField_h_of_type_Lmj.jdField_a_of_type_Boolean) {
+        this.jdField_d_of_type_Int |= 0x10;
+      }
+      if (this.jdField_i_of_type_Lmj.jdField_a_of_type_Boolean) {
+        this.jdField_d_of_type_Int |= 0x20;
+      }
+      if (this.jdField_a_of_type_Lmf.jdField_a_of_type_ArrayOfFloat.length > 1) {
+        this.jdField_d_of_type_Int |= 0x40;
+      }
+      return;
+      f1 = 0.0F;
+      break;
+    }
+  }
+  
+  private void d(int paramInt)
+  {
+    Object localObject2 = this.jdField_a_of_type_ArrayOfLmg[paramInt];
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject2 = this.jdField_a_of_type_ArrayOfLmg;
+      localObject1 = a(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[llz.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length - 1)]);
+      localObject2[paramInt] = localObject1;
+    }
+    float f6 = this.jdField_b_of_type_Float / this.jdField_a_of_type_Float;
+    paramInt = this.jdField_d_of_type_Int;
+    int m = this.jdField_j_of_type_Int + (int)(this.jdField_k_of_type_Int * this.jdField_b_of_type_Lmj.a(f6));
+    ((lmg)localObject1).jdField_a_of_type_Int = m;
+    ((lmg)localObject1).jdField_b_of_type_Int = m;
+    if (this.jdField_f_of_type_Lmj.jdField_a_of_type_Boolean)
+    {
+      ((lmg)localObject1).jdField_e_of_type_Float = this.jdField_f_of_type_Lmj.a();
+      ((lmg)localObject1).jdField_f_of_type_Float = this.jdField_f_of_type_Lmj.b();
+      if (!this.jdField_f_of_type_Lmj.a()) {
+        ((lmg)localObject1).jdField_f_of_type_Float -= ((lmg)localObject1).jdField_e_of_type_Float;
+      }
+    }
+    ((lmg)localObject1).jdField_g_of_type_Float = this.jdField_g_of_type_Lmj.a();
+    ((lmg)localObject1).jdField_h_of_type_Float = this.jdField_g_of_type_Lmj.b();
+    if (!this.jdField_g_of_type_Lmj.a()) {
+      ((lmg)localObject1).jdField_h_of_type_Float -= ((lmg)localObject1).jdField_g_of_type_Float;
+    }
+    float f1;
+    if ((paramInt & 0x2) == 0)
+    {
+      f1 = ((lmg)localObject1).jdField_g_of_type_Float + ((lmg)localObject1).jdField_h_of_type_Float * this.jdField_g_of_type_Lmj.a(0.0F);
+      ((lmg)localObject1).jdField_g_of_type_Float = f1;
+      ((lmg)localObject1).jdField_i_of_type_Float = llz.b(f1);
+      ((lmg)localObject1).j = llz.a(f1);
+    }
+    for (;;)
+    {
+      float f7 = ((lmg)localObject1).getBitmap().getWidth();
+      ((lmg)localObject1).jdField_a_of_type_Float = (this.jdField_d_of_type_Lmj.a() / f7);
+      ((lmg)localObject1).jdField_b_of_type_Float = (this.jdField_d_of_type_Lmj.b() / f7);
+      if (!this.jdField_d_of_type_Lmj.a()) {
+        ((lmg)localObject1).jdField_b_of_type_Float -= ((lmg)localObject1).jdField_a_of_type_Float;
+      }
+      ((lmg)localObject1).b(((lmg)localObject1).jdField_a_of_type_Float + ((lmg)localObject1).jdField_b_of_type_Float * this.jdField_d_of_type_Lmj.a(0.0F));
+      float f2;
+      if (this.jdField_e_of_type_Lmj.jdField_a_of_type_Boolean)
+      {
+        ((lmg)localObject1).jdField_c_of_type_Float = this.jdField_e_of_type_Lmj.a();
+        ((lmg)localObject1).jdField_d_of_type_Float = this.jdField_e_of_type_Lmj.b();
+        if (!this.jdField_e_of_type_Lmj.a()) {
+          ((lmg)localObject1).jdField_d_of_type_Float -= ((lmg)localObject1).jdField_c_of_type_Float;
+        }
+        f2 = ((lmg)localObject1).jdField_c_of_type_Float + ((lmg)localObject1).jdField_d_of_type_Float * this.jdField_e_of_type_Lmj.a(0.0F);
+        if (!this.jdField_e_of_type_Boolean) {
+          break label1380;
+        }
+      }
+      label1380:
+      for (f1 += f2;; f1 = f2)
+      {
+        ((lmg)localObject1).a(f1);
+        if (this.jdField_h_of_type_Lmj.jdField_a_of_type_Boolean)
+        {
+          ((lmg)localObject1).m = this.jdField_h_of_type_Lmj.a();
+          ((lmg)localObject1).n = this.jdField_h_of_type_Lmj.b();
+          if (!this.jdField_h_of_type_Lmj.a()) {
+            ((lmg)localObject1).n -= ((lmg)localObject1).m;
+          }
+        }
+        if (this.jdField_i_of_type_Lmj.jdField_a_of_type_Boolean)
+        {
+          ((lmg)localObject1).o = this.jdField_i_of_type_Lmj.a();
+          ((lmg)localObject1).p = this.jdField_i_of_type_Lmj.b();
+          if (!this.jdField_i_of_type_Lmj.a()) {
+            ((lmg)localObject1).p -= ((lmg)localObject1).o;
+          }
+        }
+        float[] arrayOfFloat = ((lmg)localObject1).jdField_a_of_type_ArrayOfFloat;
+        localObject2 = arrayOfFloat;
+        if (arrayOfFloat == null)
+        {
+          localObject2 = new float[3];
+          ((lmg)localObject1).jdField_a_of_type_ArrayOfFloat = ((float[])localObject2);
+        }
+        arrayOfFloat = this.jdField_a_of_type_Lmf.a(0.0F);
+        localObject2[0] = arrayOfFloat[0];
+        localObject2[1] = arrayOfFloat[1];
+        localObject2[2] = arrayOfFloat[2];
+        ((lmg)localObject1).k = this.jdField_j_of_type_Lmj.a();
+        ((lmg)localObject1).l = (this.jdField_j_of_type_Lmj.b() - ((lmg)localObject1).k);
+        float f3 = 3.4028235E+38F;
+        float f4 = 3.4028235E+38F;
+        f1 = f4;
+        f2 = f3;
+        float f5;
+        if (this.jdField_a_of_type_AndroidGraphicsPathMeasure != null)
+        {
+          f5 = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
+          f1 = f4;
+          f2 = f3;
+          if (f5 > 0.0F)
+          {
+            f1 = llz.c(f5);
+            this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f1, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+            f2 = this.jdField_a_of_type_ArrayOfFloat[0];
+            f1 = this.jdField_a_of_type_ArrayOfFloat[1];
+          }
+        }
+        f4 = f2;
+        if (this.jdField_c_of_type_Lmi.jdField_a_of_type_Boolean) {
+          f4 = f2 + this.jdField_c_of_type_Lmi.a();
+        }
+        f3 = f1;
+        if (this.jdField_d_of_type_Lmi.jdField_a_of_type_Boolean) {
+          f3 = f1 + this.jdField_d_of_type_Lmi.a();
+        }
+        switch (this.jdField_a_of_type_Lmm.jdField_a_of_type_Int)
+        {
+        default: 
+          f2 = f4;
+          f1 = f3;
+        }
+        for (;;)
+        {
+          f3 = ((lmg)localObject1).getBitmap().getHeight();
+          ((lmg)localObject1).a(f2 - f7 / 2.0F, f1 - f3 / 2.0F, f7, f3);
+          m = (int)(this.jdField_h_of_type_Int + this.jdField_i_of_type_Int * this.jdField_a_of_type_Lmj.a(f6));
+          if (m > 0)
+          {
+            paramInt = m;
+            if (m >= ((lmg)localObject1).jdField_b_of_type_Int) {
+              paramInt = ((lmg)localObject1).jdField_b_of_type_Int - 1;
+            }
+            a((lmg)localObject1, paramInt / 1000.0F, paramInt);
+          }
+          return;
+          f2 = this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * this.jdField_k_of_type_Lmj.a(f6);
+          f1 = this.jdField_f_of_type_Float + this.jdField_g_of_type_Float * this.l.a(f6);
+          f2 = f4 + (llz.c(f2) - f2 / 2.0F);
+          f1 = f3 + (llz.c(f1) - f1 / 2.0F);
+          continue;
+          f5 = this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * this.jdField_k_of_type_Lmj.a(f6);
+          f1 = this.jdField_f_of_type_Float;
+          f2 = this.jdField_g_of_type_Float;
+          float f9 = this.l.a(f6);
+          float f8 = f5 / 2.0F;
+          f9 = (f1 + f2 * f9) / 2.0F;
+          f1 = f3;
+          f2 = f4;
+          if (f8 != 0.0F)
+          {
+            f1 = f3;
+            f2 = f4;
+            if (f9 != 0.0F)
+            {
+              f1 = f8 / f9;
+              if (this.jdField_a_of_type_Lmm.jdField_c_of_type_Boolean)
+              {
+                switch (this.jdField_a_of_type_Lmm.jdField_b_of_type_Int)
+                {
+                default: 
+                  f5 = llz.c(360.0F);
+                }
+                for (;;)
+                {
+                  f9 = llz.b(f5);
+                  float f10 = llz.a(f5);
+                  f4 += f9 * f8;
+                  f3 += f8 * f10 / f1;
+                  f1 = f3;
+                  f2 = f4;
+                  if ((paramInt & 0x2) != 0) {
+                    break;
+                  }
+                  ((lmg)localObject1).jdField_g_of_type_Float = f5;
+                  ((lmg)localObject1).jdField_i_of_type_Float = f9;
+                  ((lmg)localObject1).j = f10;
+                  f1 = f3;
+                  f2 = f4;
+                  break;
+                  f5 = -llz.c(179.0F);
+                  continue;
+                  f5 = llz.c(179.0F);
+                }
+              }
+              do
+              {
+                f2 = llz.c(f5) - f8;
+                f9 = llz.c(f5) - f8;
+              } while (f2 * f2 + f9 * f9 > f8 * f8);
+              f2 = f4 + f2;
+              f1 = f3 + f9 / f1;
+              continue;
+              f1 = this.jdField_d_of_type_Float + this.jdField_e_of_type_Float * this.jdField_k_of_type_Lmj.a(f6);
+              f5 = this.jdField_f_of_type_Float + this.jdField_g_of_type_Float * this.l.a(f6);
+              if (f1 != 0.0F)
+              {
+                f8 = llz.a() * f1;
+                f2 = f4 + f8;
+                f1 = f3 + f8 * (f5 / f1);
+              }
+              else
+              {
+                f1 = f3 + llz.a() * f5;
+                f2 = f4;
+              }
+            }
+          }
+        }
+      }
+      f1 = 0.0F;
+    }
+  }
+  
+  protected lmg a(BitmapDrawable paramBitmapDrawable)
+  {
+    return new lmg(paramBitmapDrawable);
+  }
+  
+  public void a()
+  {
+    int n = this.jdField_c_of_type_Int;
+    if (n == this.jdField_b_of_type_Int) {}
+    for (;;)
+    {
+      return;
+      boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
+      int m = 0;
+      int i1 = arrayOfBoolean.length;
+      while (m < i1)
+      {
+        if (arrayOfBoolean[m] == 0)
+        {
+          d(m);
+          arrayOfBoolean[m] = true;
+          this.jdField_c_of_type_Int = (n + 1);
+          return;
+        }
+        m += 1;
+      }
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if ((this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable == null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length <= 0)) {}
+    do
+    {
+      return;
+      this.jdField_c_of_type_Float += paramFloat * 1000.0F;
+    } while (this.jdField_c_of_type_Float < 1.0F);
+    int i2 = (int)this.jdField_c_of_type_Float;
+    this.jdField_c_of_type_Float -= i2;
+    if (this.jdField_i_of_type_Float < this.jdField_h_of_type_Float) {
+      this.jdField_i_of_type_Float += i2;
+    }
+    int n;
+    label378:
+    for (;;)
+    {
+      boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
+      n = this.jdField_c_of_type_Int;
+      lmg[] arrayOflmg = this.jdField_a_of_type_ArrayOfLmg;
+      int i3 = arrayOfBoolean.length;
+      int m = 0;
+      while (m < i3)
+      {
+        int i1 = n;
+        if (arrayOfBoolean[m] != 0)
+        {
+          i1 = n;
+          if (!a(arrayOflmg[m], paramFloat, i2))
+          {
+            arrayOfBoolean[m] = false;
+            i1 = n - 1;
+          }
+        }
+        m += 1;
+        n = i1;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        a();
+      }
+      if (this.jdField_b_of_type_Float < this.jdField_a_of_type_Float)
+      {
+        this.jdField_b_of_type_Float += i2;
+        m = 0;
+      }
+      for (;;)
+      {
+        if (m != 0) {
+          break label378;
+        }
+        this.jdField_g_of_type_Int += i2;
+        float f1 = this.jdField_e_of_type_Int + this.jdField_f_of_type_Int * this.jdField_c_of_type_Lmj.a(this.jdField_b_of_type_Float / this.jdField_a_of_type_Float);
+        if (f1 > 0.0F)
+        {
+          f1 = 1000.0F / f1;
+          if (this.jdField_g_of_type_Int >= f1)
+          {
+            m = Math.min((int)(this.jdField_g_of_type_Int / f1), this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
+            this.jdField_g_of_type_Int = ((int)(this.jdField_g_of_type_Int - m * f1));
+            this.jdField_g_of_type_Int = ((int)(this.jdField_g_of_type_Int % f1));
+            b(m);
+          }
+        }
+        if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_Int) {
+          break;
+        }
+        b(this.jdField_a_of_type_Int - this.jdField_c_of_type_Int);
+        break;
+        if ((!this.jdField_d_of_type_Boolean) || (this.jdField_b_of_type_Boolean))
+        {
+          m = 1;
+        }
+        else
+        {
+          c();
+          m = 0;
+        }
+      }
+    }
+    this.jdField_c_of_type_Int = n;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfBoolean = new boolean[paramInt];
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfLmg = new lmg[paramInt];
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    lmg[] arrayOflmg = this.jdField_a_of_type_ArrayOfLmg;
+    boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
+    int m = 0;
+    int n = arrayOfBoolean.length;
+    while (m < n)
+    {
+      if (arrayOfBoolean[m] != 0) {
+        arrayOflmg[m].draw(paramCanvas);
+      }
+      m += 1;
+    }
+  }
+  
+  public void a(PathMeasure paramPathMeasure)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = paramPathMeasure;
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = a(paramBufferedReader, "name");
+      paramBufferedReader.readLine();
+      this.jdField_a_of_type_Lmi.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_b_of_type_Lmi.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      c(a(paramBufferedReader, "minParticleCount"));
+      a(a(paramBufferedReader, "maxParticleCount"));
+      paramBufferedReader.readLine();
+      this.jdField_c_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_b_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_a_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_c_of_type_Lmi.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_d_of_type_Lmi.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_a_of_type_Lmm.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_k_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.l.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_d_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_f_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_g_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_e_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_h_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_i_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_a_of_type_Lmf.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_j_of_type_Lmj.a(paramBufferedReader);
+      paramBufferedReader.readLine();
+      this.jdField_c_of_type_Boolean = a(paramBufferedReader, "attached");
+      this.jdField_d_of_type_Boolean = a(paramBufferedReader, "continuous");
+      this.jdField_e_of_type_Boolean = a(paramBufferedReader, "aligned");
+      this.jdField_g_of_type_Boolean = a(paramBufferedReader, "additive");
+      this.jdField_f_of_type_Boolean = a(paramBufferedReader, "behind");
+      return;
+    }
+    catch (RuntimeException paramBufferedReader)
+    {
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        throw paramBufferedReader;
+      }
+      throw new RuntimeException("Error parsing emitter: " + this.jdField_a_of_type_JavaLangString, paramBufferedReader);
+    }
+  }
+  
+  public void a(BitmapDrawable[] paramArrayOfBitmapDrawable)
+  {
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
+  }
+  
+  public void b(int paramInt)
+  {
+    int n = 0;
+    int i1 = Math.min(paramInt, this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
+    if (i1 == 0) {
+      return;
+    }
+    boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfBoolean;
+    int i2 = arrayOfBoolean.length;
+    int m = 0;
+    paramInt = n;
+    if (m < i1) {
+      for (;;)
+      {
+        if (paramInt >= i2) {
+          break label85;
+        }
+        if (arrayOfBoolean[paramInt] == 0)
+        {
+          d(paramInt);
+          arrayOfBoolean[paramInt] = true;
+          m += 1;
+          paramInt += 1;
+          break;
+        }
+        paramInt += 1;
+      }
+    }
+    label85:
+    this.jdField_c_of_type_Int += i1;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

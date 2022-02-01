@@ -1,13 +1,23 @@
-public class bbkq
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class bbkq
+  extends Handler
 {
-  public long a;
-  public String a;
-  public boolean a = true;
-  public boolean b = true;
+  bbkq(bbkp parambbkp, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkq
  * JD-Core Version:    0.7.0.1
  */

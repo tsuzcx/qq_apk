@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.VideoCaptureFragment;
+import android.widget.PopupWindow.OnDismissListener;
+import kotlin.Metadata;
 
-public class rkn
-  implements skq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
+final class rkn
+  implements PopupWindow.OnDismissListener
 {
-  public rkn(VideoCaptureFragment paramVideoCaptureFragment) {}
+  rkn(rkk paramrkk) {}
   
-  public void a()
+  public final void onDismiss()
   {
-    VideoCaptureFragment.a(this.a).b();
-  }
-  
-  public void a(int paramInt)
-  {
-    VideoCaptureFragment.a(this.a).a(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoCaptureFragment.a(this.a).a(paramInt1, paramInt2);
+    rkl localrkl = rkk.a(this.a);
+    if (localrkl != null) {
+      localrkl.a(false);
+    }
   }
 }
 

@@ -1,22 +1,29 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class tet
-  implements Function1<Canvas, Unit>
+  implements pav
 {
-  public tet(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public tet(FastWebActivity paramFastWebActivity) {}
   
-  public Unit a(Canvas paramCanvas)
+  public void a(long paramLong)
   {
-    ColorBandVideoEntranceButton.a(this.a, paramCanvas);
-    return null;
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).b = paramLong;
+      if (FastWebActivity.a(this.a).b <= 0L)
+      {
+        FastWebActivity.a(this.a).b = 0L;
+        this.a.e();
+      }
+      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), this.a.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tet
  * JD-Core Version:    0.7.0.1
  */

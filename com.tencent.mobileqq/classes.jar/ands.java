@@ -1,10 +1,57 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import pb.unite.search.RequestSearchWord.Rcmd;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ands
+final class ands
+  implements anda
 {
-  public abstract void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField);
+  ands(CmShowRenderView paramCmShowRenderView) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
+    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
+    andq.a(this.a);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
+  {
+    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
+    if (paramInt2 == 100)
+    {
+      andq.b(this.a);
+      return;
+    }
+    if (paramInt2 == 101)
+    {
+      if (andq.a() < 3)
+      {
+        andq.b();
+        andq.b(this.a);
+        return;
+      }
+      andq.c(this.a);
+      return;
+    }
+    andq.a(0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

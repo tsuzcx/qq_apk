@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import amsw;
-import anca;
-import andd;
 import android.text.TextUtils;
-import bfdc;
-import bfdd;
+import anvk;
+import aoep;
+import aofu;
+import bgli;
+import bglj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
@@ -18,9 +20,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TroopNameHelper
 {
-  amsw jdField_a_of_type_Amsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-  anca jdField_a_of_type_Anca = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
-  andd jdField_a_of_type_Andd = new bfdc(this);
+  anvk jdField_a_of_type_Anvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+  aoep jdField_a_of_type_Aoep = (aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+  aofu jdField_a_of_type_Aofu = new bgli(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   public TroopManager a;
   TroopNameHelper.Task jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task;
@@ -31,8 +33,8 @@ public class TroopNameHelper
   public TroopNameHelper()
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aofu);
   }
   
   public static String a(ArrayList<String> paramArrayList)
@@ -82,7 +84,7 @@ public class TroopNameHelper
       {
         return;
       } while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface));
-      localObject = (TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(52);
+      localObject = (TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER);
       localTroopNameHelper = ((TroopManager)localObject).a();
       localObject = ((TroopManager)localObject).c(paramString);
     } while ((localObject == null) || (((TroopInfo)localObject).hasSetTroopName()));
@@ -93,15 +95,15 @@ public class TroopNameHelper
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
-      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(52)).a();
+      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER)).a();
       TroopNameHelper.GenTroopNameTask localGenTroopNameTask = (TroopNameHelper.GenTroopNameTask)localTroopNameHelper.b.get(paramString);
       if (localGenTroopNameTask == null) {
-        break label64;
+        break label65;
       }
       localTroopNameHelper.a(localGenTroopNameTask);
       localTroopNameHelper.b.remove(paramString);
     }
-    label64:
+    label65:
     while (!paramBoolean) {
       return;
     }
@@ -134,7 +136,7 @@ public class TroopNameHelper
       if (QLog.isColorLevel()) {
         QLog.d("TroopNameHelper", 2, "onFriendNameChaned uin = " + paramString);
       }
-      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(52)).a();
+      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER)).a();
       localTroopNameHelper.getClass();
       localTroopNameHelper.a(new TroopNameHelper.FriendNameChanedTask(localTroopNameHelper, paramString));
     }
@@ -142,14 +144,14 @@ public class TroopNameHelper
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aofu);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
     this.b.clear();
   }
   
-  public void a(String paramString, bfdd parambfdd)
+  public void a(String paramString, bglj parambglj)
   {
-    a(new TroopNameHelper.GenTroopNameTask(this, paramString, parambfdd));
+    a(new TroopNameHelper.GenTroopNameTask(this, paramString, parambglj));
   }
   
   public boolean a(String paramString)

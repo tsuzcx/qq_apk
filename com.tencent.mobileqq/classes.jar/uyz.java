@@ -1,133 +1,179 @@
-import UserGrowth.stCollection;
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.cache.WSRedDotPreloadManager.1;
+import com.tencent.biz.pubaccount.weishi_new.cache.WSRedDotPreloadManager.3;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class uyz
 {
-  private static stSchema a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  private long jdField_a_of_type_Long = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_dot_msg_uin", 0L);
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  private long a(WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    String str3 = paramstSimpleMetaFeed.new_icon.h5_url;
-    String str2 = paramstSimpleMetaFeed.new_icon.schema_url;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str3))
+    paramWSRedDotPushMsg = a(paramWSRedDotPushMsg);
+    if (paramWSRedDotPushMsg != null) {
+      return paramWSRedDotPushMsg.jdField_a_of_type_Long;
+    }
+    return 7200000L;
+  }
+  
+  private WSPushPreloadModel a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    if (paramWSRedDotPushMsg == null) {}
+    while (!(paramWSRedDotPushMsg.mStrategyInfo instanceof WSPushStrategyInfo)) {
+      return null;
+    }
+    return ((WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo).mWSPushPreloadModel;
+  }
+  
+  public static uyz a()
+  {
+    return uzb.a();
+  }
+  
+  private void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = false;
+    LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_dot_msg_uin", this.jdField_a_of_type_Long);
+  }
+  
+  private void a(WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong)
+  {
+    if (paramWSRedDotPushMsg == null)
     {
-      str1 = str2;
-      if (!uyc.a(str2)) {
-        str1 = uyc.a(paramstSimpleMetaFeed);
+      vmp.d("WSRedDotPreloadManager", "sendRequest wsPushMsgData: null");
+      return;
+    }
+    vmp.d("WSRedDotPreloadManager", "=====realPreloadRedData redDotUinSeq=" + paramLong + ", wsPushMsgData.mMsgData=" + paramWSRedDotPushMsg.mMsgData);
+    vli localvli = new vli(null, (byte)0, (byte)1, null, 8, null, null, null, paramWSRedDotPushMsg.mMsgData);
+    localvli.b = String.valueOf(paramLong);
+    paramWSRedDotPushMsg = new vfr(localvli, null, new uza(this, paramWSRedDotPushMsg), 1001);
+    this.jdField_a_of_type_Boolean = true;
+    vfk.a().a(paramWSRedDotPushMsg);
+  }
+  
+  private void a(WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong, int paramInt)
+  {
+    vmp.b("WSRedDotPreloadManager", "checkSendRequest checkCount: " + paramInt);
+    if (paramInt == 0) {
+      return;
+    }
+    boolean bool = vnd.a();
+    vmp.b("WSRedDotPreloadManager", "checkSendRequest inRealActionLoginB: " + bool);
+    if (!bool)
+    {
+      a(paramWSRedDotPushMsg, paramLong);
+      vmp.b("WSRedDotPreloadManager", "checkSendRequest sendRequest!");
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRunnable = new WSRedDotPreloadManager.1(this, paramWSRedDotPushMsg, paramLong, paramInt);
+    vfk.a().a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    vmp.b("WSRedDotPreloadManager", "checkSendRequest postDelayed start!");
+  }
+  
+  private void a(MessageForStructing paramMessageForStructing, WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    WSPushPreloadModel localWSPushPreloadModel = a(paramWSRedDotPushMsg);
+    if ((localWSPushPreloadModel == null) || (!localWSPushPreloadModel.jdField_a_of_type_Boolean))
+    {
+      vmp.d("WSRedDotPreloadManager", "preloadData wsPushPreloadModel:" + localWSPushPreloadModel + ", mHadCleanPreCache:" + this.b);
+      if (!this.b) {
+        uzf.a().a();
       }
+      this.b = true;
     }
-    paramstSimpleMetaFeed = new stSchema();
-    paramstSimpleMetaFeed.schema = str1;
-    paramstSimpleMetaFeed.H5Url = str3;
-    return paramstSimpleMetaFeed;
-  }
-  
-  private static WSDownloadParams a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt, String paramString)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = uzy.a(paramWSVerticalPageFragment.a());
-    localWSDownloadParams.mLinkStrategyType = umu.a().a();
-    localWSDownloadParams.mEventId = paramInt;
-    localWSDownloadParams.mTestId = uyo.a(localWSDownloadParams.mScene);
-    localWSDownloadParams.mScheme = paramString;
-    return localWSDownloadParams;
-  }
-  
-  public static void a(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.collection == null)) {
-      return;
-    }
-    String str1 = paramWSVerticalPageFragment.a();
-    String str2 = paramWSVerticalPageFragment.b();
-    if ((paramstSimpleMetaFeed.collection.click_action == 2) && (a(paramstSimpleMetaFeed.collection.schema)))
+    do
     {
-      new upz(paramWSVerticalPageFragment.getActivity()).a(paramstSimpleMetaFeed.collection.schema).a(a(paramWSVerticalPageFragment, 16, paramstSimpleMetaFeed.collection.schema.schema)).a(new uza(str1, str2, paramstSimpleMetaFeed)).a();
       return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramstSimpleMetaFeed);
-    WSVerticalPageFragment.a(paramWSVerticalPageFragment.getActivity(), "vertical_layer_collection", str2, localArrayList, 0);
-    c(str1, str2, paramstSimpleMetaFeed, 1000001);
-  }
-  
-  public static void a(String paramString, WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    
-    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.poster == null) || (paramstSimpleMetaFeed.poster.avatarSchema == null)) {
-      return;
-    }
-    String str1 = paramWSVerticalPageFragment.a();
-    String str2 = paramWSVerticalPageFragment.b();
-    stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaFeed.poster;
-    new upz(paramWSVerticalPageFragment.getActivity()).a(localstSimpleMetaPerson.avatarSchema).a(a(paramWSVerticalPageFragment, 1, localstSimpleMetaPerson.avatarSchema.schema)).a(new uzc(str1, str2, paramString, paramstSimpleMetaFeed)).a();
-  }
-  
-  private static boolean a(stSchema paramstSchema)
-  {
-    if (paramstSchema == null) {}
-    while ((TextUtils.isEmpty(paramstSchema.miniAppSchema)) && (TextUtils.isEmpty(paramstSchema.schema)) && (TextUtils.isEmpty(paramstSchema.H5Url))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static void b(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null)) {}
-    while (uyo.b()) {
-      return;
-    }
-    if (uyc.a(paramstSimpleMetaFeed.feed_material_jump_url)) {}
-    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.feed_material_jump_url; yqu.a(BaseApplicationImpl.getContext()); paramstSimpleMetaFeed = uyc.a(paramstSimpleMetaFeed))
+      vmp.b("WSRedDotPreloadManager", "preloadData mCurrentUniSeq=structMsg.uniSeq: " + paramMessageForStructing.uniseq);
+      if (this.jdField_a_of_type_Long != paramMessageForStructing.uniseq) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    if (uzf.a().a())
     {
-      uyc.a(paramWSVerticalPageFragment.getActivity(), "biz_src_jc_gzh_weishi", paramstSimpleMetaFeed);
+      vmp.d("WSRedDotPreloadManager", "preloadData isRedCacheInValidDuration: true");
       return;
     }
-    unq.a(paramWSVerticalPageFragment.getActivity(), a(paramWSVerticalPageFragment, 3, paramstSimpleMetaFeed), true);
-  }
-  
-  private static void b(String paramString, int paramInt1, int paramInt2)
-  {
-    uwc.a(paramString, paramInt1, paramInt2);
-  }
-  
-  private static void b(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
-  {
-    vdq.a(paramString1, paramString2, paramString3, paramInt, paramstSimpleMetaFeed);
-  }
-  
-  public static void c(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.new_icon == null)) {}
-    while (uyo.b()) {
+    vmp.d("WSRedDotPreloadManager", "preloadData mIsPreloadOutValidDuration: " + localWSPushPreloadModel.b);
+    if (!localWSPushPreloadModel.b)
+    {
+      vmp.d("WSRedDotPreloadManager", "preloadData mIsPreloadOutValidDuration: false");
       return;
+      a(paramMessageForStructing.uniseq);
     }
-    String str1 = paramWSVerticalPageFragment.a();
-    String str2 = paramWSVerticalPageFragment.b();
-    Object localObject = paramstSimpleMetaFeed.new_icon;
-    int i = ((stNewIconStyle)localObject).tag_type;
-    int j = ((stNewIconStyle)localObject).id;
-    localObject = a(paramstSimpleMetaFeed);
-    new upz(paramWSVerticalPageFragment.getActivity()).a((stSchema)localObject).a(true).a(a(paramWSVerticalPageFragment, 4, ((stSchema)localObject).schema)).a(new uzb(str1, str2, paramstSimpleMetaFeed, i, j)).a();
+    vmp.d("WSRedDotPreloadManager", "preloadData mCurrentUniSeq: " + this.jdField_a_of_type_Long + ", mIsSendingRequest: " + this.jdField_a_of_type_Boolean);
+    b();
+    a(paramWSRedDotPushMsg, this.jdField_a_of_type_Long, 3);
   }
   
-  private static void c(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  private void b(MessageForStructing paramMessageForStructing, WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    vdq.a(paramString1, paramString2, paramstSimpleMetaFeed, paramInt);
+    if (paramMessageForStructing.uniseq == this.jdField_a_of_type_Long) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Long = paramMessageForStructing.uniseq;
+      LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_dot_msg_uin", this.jdField_a_of_type_Long);
+      paramMessageForStructing = paramWSRedDotPushMsg.mStrategyInfo;
+    } while ((TextUtils.isEmpty(paramWSRedDotPushMsg.mFeedIds)) || (paramMessageForStructing == null) || (paramMessageForStructing.getType() == 2) || (((WSPushStrategyInfo)paramMessageForStructing).mWSPushVideoModel == null));
+    ThreadManager.executeOnSubThread(new WSRedDotPreloadManager.3(this, ((WSPushStrategyInfo)paramMessageForStructing).mWSPushVideoModel));
   }
   
-  private static void d(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  public void a()
   {
-    vdq.d(paramString1, paramString2, paramInt, paramstSimpleMetaFeed);
+    for (;;)
+    {
+      WSRedDotPushMsg localWSRedDotPushMsg;
+      try
+      {
+        vmp.b("WSRedDotPreloadManager", "===startPreloadRedData===");
+        Object localObject = vnd.a();
+        if (localObject == null)
+        {
+          vmp.d("WSRedDotPreloadManager", "preloadData weishiMgr: null");
+          return;
+        }
+        localObject = ((pws)localObject).a();
+        if (localObject == null) {
+          continue;
+        }
+        localWSRedDotPushMsg = vnd.a((MessageForStructing)localObject);
+        if (localWSRedDotPushMsg == null)
+        {
+          vmp.d("WSRedDotPreloadManager", "preloadData wsPushMsgData: null");
+          continue;
+        }
+        if (!vau.a().e()) {
+          break label79;
+        }
+      }
+      finally {}
+      b(localMessageForStructing, localWSRedDotPushMsg);
+      continue;
+      label79:
+      a(localMessageForStructing, localWSRedDotPushMsg);
+      uya.a().a();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    {
+      vfk.a().b(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
+      vmp.b("WSRedDotPreloadManager", "===== cancelPostDelayRunnable ! =====");
+    }
   }
 }
 

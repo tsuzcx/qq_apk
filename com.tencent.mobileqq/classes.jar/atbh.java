@@ -1,35 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class atbh
-  implements View.OnClickListener
+public class atbh
+  extends auex
 {
-  private long a;
+  public atbh(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public abstract void a(View paramView);
-  
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
-    {
-      a(paramView);
-      this.a = l;
+    this.a.a.a().a();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().h();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + auea.a());
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      b(paramView);
-    }
+  }
+  
+  public void d()
+  {
+    this.a.a.a().i();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().C();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,12 @@
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class bbsg
-  implements ImageReader.OnImageAvailableListener
+class bbsg
+  implements DialogInterface.OnCancelListener
 {
-  public bbsg(Camera2Control paramCamera2Control) {}
+  bbsg(bbrz parambbrz) {}
   
-  public void onImageAvailable(ImageReader paramImageReader)
-  {
-    try
-    {
-      bbsr.a(1, "[Camera2]Image Capture cost:" + (float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
-      bbsq.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-        byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-        localByteBuffer.get(arrayOfByte);
-        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
-        {
-          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
-          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
-        }
-        paramImageReader.close();
-      }
-      return;
-    }
-    catch (Exception paramImageReader)
-    {
-      bbsr.a(1, "[Camera2] onImageAvailable mImageReader exception:" + paramImageReader);
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

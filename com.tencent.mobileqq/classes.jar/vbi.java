@@ -1,65 +1,44 @@
-public class vbi
+import UserGrowth.stFollowRsp;
+
+class vbi
+  implements vfg
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public int d;
+  vbi(vbg paramvbg, int paramInt, String paramString) {}
   
-  public vbh a()
+  public void a(vfr paramvfr)
   {
-    return new vbh(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
-  }
-  
-  public vbi a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public vbi a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public vbi a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public vbi b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public vbi b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public vbi b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public vbi c(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public vbi d(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
+    if (!(paramvfr.a instanceof stFollowRsp))
+    {
+      if (this.jdField_a_of_type_Int == 2) {
+        vbg.a(this.jdField_a_of_type_Vbg, this.jdField_a_of_type_JavaLangString, 1);
+      }
+      for (;;)
+      {
+        vmp.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramvfr.a);
+        return;
+        vbg.a(this.jdField_a_of_type_Vbg, this.jdField_a_of_type_JavaLangString, 2);
+      }
+    }
+    int i = ((stFollowRsp)paramvfr.a).isFollow;
+    vmp.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (i == 1)
+      {
+        bjkv.a().a(2131720132);
+        return;
+      }
+      bjkv.a().a(2131720130);
+      vbg.a(this.jdField_a_of_type_Vbg, this.jdField_a_of_type_JavaLangString, 2);
+      return;
+    }
+    if (i == 0)
+    {
+      bjkv.a().a(2131720134);
+      return;
+    }
+    bjkv.a().a(2131720135);
+    vbg.a(this.jdField_a_of_type_Vbg, this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 

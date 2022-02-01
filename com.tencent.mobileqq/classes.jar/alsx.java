@@ -1,70 +1,121 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 public class alsx
-  extends RecyclerView.Adapter<alsy>
+  extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private List<alsw> jdField_a_of_type_JavaUtilList;
+  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ArrayList<FilterDesc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final Map<Class<? extends View>, Queue<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public alsx(Context paramContext, List<alsw> paramList)
+  public alsx(VideoFilterViewPager paramVideoFilterViewPager) {}
+  
+  public int a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public alsy a(ViewGroup paramViewGroup, int paramInt)
+  public int a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 1)) {
-      return new alsy(this, this.jdField_a_of_type_AndroidViewView);
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (i > 0) {
+      return paramInt % i;
     }
-    return new alsy(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558910, paramViewGroup, false));
+    return -1;
   }
   
-  public void a(alsy paramalsy, int paramInt)
+  @Nullable
+  public View a(int paramInt)
   {
-    if (getItemViewType(paramInt) == 0)
+    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+  }
+  
+  public FilterDesc a(int paramInt)
+  {
+    paramInt = a(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (FilterDesc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(List<FilterDesc> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
+    }
+    View localView = (View)paramObject;
+    localView.removeCallbacks((Runnable)localView.getTag());
+    localView.clearAnimation();
+    paramViewGroup.removeView(localView);
+    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
+    paramViewGroup = paramObject;
+    if (paramObject == null)
     {
-      alsw localalsw = (alsw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramalsy.a.setText(localalsw.jdField_a_of_type_JavaLangString);
-      paramalsy.a.setTextColor(Color.parseColor(alsn.c[localalsw.jdField_a_of_type_Int]));
+      paramViewGroup = new LinkedList();
+      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramalsy, paramInt, getItemId(paramInt));
+    paramViewGroup.offer(localView);
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
   }
   
-  public void a(View paramView)
+  public int getCount()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    notifyItemInserted(getItemCount() - 1);
+    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
   }
   
-  public void a(List<alsw> paramList)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    Object localObject1 = a(paramInt);
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+      }
+      return null;
+    }
+    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
+    if (localObject1 != null) {}
+    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
+    {
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131561160, null);
+      }
+      paramViewGroup.addView((View)localObject2);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+      return localObject2;
+    }
   }
   
-  public int getItemViewType(int paramInt)
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == getItemCount() - 1)) {
-      return 1;
-    }
-    return 0;
+    return ((paramObject instanceof View)) && (paramObject == paramView);
   }
 }
 

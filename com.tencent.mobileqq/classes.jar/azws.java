@@ -1,27 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class azws
-  implements ValueAnimator.AnimatorUpdateListener
+class azws
+  extends aodb
 {
-  public azws(AIOIceBreakShow paramAIOIceBreakShow) {}
+  azws(azwp paramazwp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    if (AIOIceBreakShow.a(this.a) == null) {
-      return;
+    if ((azwp.a(this.a) != null) && (VipUtils.b(azwp.b(this.a))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AbsProfileHeaderComponent", 2, String.format("onVipStatusChanged mOpenSVipPay=%s", new Object[] { azwp.a(this.a) }));
+      }
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      if ((azwp.b(this.a).compareAndSet(true, false)) && (azwp.a(this.a).get())) {
+        bhdj.a(azwp.a(this.a), 232, null, anvx.a(2131704366), null, anvx.a(2131704374), new azwt(this), null).show();
+      }
+      azwp.c(this.a).removeObserver(azwp.a(this.a));
     }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
-    int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
-    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
-    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
-    ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
-    paramValueAnimator.requestLayout();
-    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
   }
 }
 

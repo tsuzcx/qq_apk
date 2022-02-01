@@ -1,56 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
-class myr
-  extends BroadcastReceiver
+public class myr
 {
-  myr(myl parammyl) {}
+  public final int a;
+  public final long a;
+  public final String a;
+  public final long b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public myr(int paramInt, long paramLong1, long paramLong2, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
-    }
-    int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
-    {
-      i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label120;
-      }
-      if ((paramIntent != null) && (paramIntent.equals("com.tencent.mobileqq")))
-      {
-        this.a.a(false);
-        this.a.a = false;
-        myl.a(this.a, false);
-      }
-    }
-    label120:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-    {
-      return;
-      i = 0;
-      break;
-    }
-    if (i == 0)
-    {
-      this.a.a = true;
-      this.a.a(true);
-      myl.a(this.a, false);
-      return;
-    }
-    if (myl.b(this.a))
-    {
-      myl.a(this.a, true);
-      return;
-    }
-    this.a.a = true;
-    myl.a(this.a).a = true;
-    myl.a(this.a, false);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

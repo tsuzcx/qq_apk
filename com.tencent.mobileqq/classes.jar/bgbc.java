@@ -1,114 +1,216 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FontSettingManager;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItemPriorityHelper.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgbc
 {
-  public static final int a;
-  private static Map<String, Integer> a;
-  private static int b = 2147483647;
+  public static boolean a;
+  public static boolean b;
+  public static int c = 1;
+  public int a;
+  public ArrayList<Integer> a;
+  public int b;
+  public ArrayList<Integer> b;
   
-  static
+  public bgbc()
   {
-    if ((ViewUtils.getDensity() > 1.5F) && (FontSettingManager.getFontLevel() <= 16.0F)) {}
-    for (int i = 5;; i = 4)
-    {
-      jdField_a_of_type_Int = i;
-      jdField_a_of_type_JavaUtilMap = new QQCustomMenuItemPriorityHelper.1();
-      return;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Boolean = false;
   }
   
-  public static int a(String paramString)
+  public static bgbc a(aqxa[] paramArrayOfaqxa)
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localInteger != null) {
-      return localInteger.intValue();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("QQCustomMenuItemPriorityHelper", 2, "[menu] menu '" + paramString + "' priority not init ");
-    }
-    int i = b;
-    b = i - 1;
-    return i;
-  }
-  
-  public static void a(bgaz parambgaz)
-  {
-    Object localObject2 = null;
-    ArrayList localArrayList = new ArrayList(parambgaz.a);
-    Collections.sort(localArrayList, new bgbd());
-    Iterator localIterator = localArrayList.iterator();
-    Object localObject6 = null;
-    Object localObject5 = null;
-    Object localObject4 = null;
-    Object localObject3 = null;
-    Object localObject1;
-    while (localIterator.hasNext())
+    boolean bool2 = true;
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    int i4 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    int i1 = 0;
+    int n = 0;
+    if (i4 < paramArrayOfaqxa.length)
     {
-      localObject1 = (bgbb)localIterator.next();
-      if (localObject1 != null) {
-        if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131693996))) {
-          localObject3 = localObject1;
-        } else if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131689950))) {
-          localObject4 = localObject1;
-        } else if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131693009))) {
-          localObject5 = localObject1;
-        } else if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131693964))) {
-          localObject6 = localObject1;
-        } else {
-          if (!((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131690679))) {
-            break label341;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      break;
-      if ((localObject5 != null) && (localObject5.jdField_a_of_type_Boolean))
-      {
-        localArrayList.remove(localObject5);
-        localArrayList.add(localObject5);
-      }
-      if ((localObject6 != null) && (localObject6.jdField_a_of_type_Boolean) && (localObject2 != null))
-      {
-        localArrayList.remove(localObject6);
-        localArrayList.add(localArrayList.indexOf(localObject2), localObject6);
-      }
-      if (localObject4 != null)
-      {
-        localArrayList.remove(localObject4);
-        localArrayList.add(localObject4);
-      }
-      if (localObject3 != null)
-      {
-        localArrayList.remove(localObject3);
-        if (localArrayList.size() < jdField_a_of_type_Int) {
-          break label331;
-        }
-        localArrayList.add(jdField_a_of_type_Int - 1, localObject3);
-      }
+      Object localObject = paramArrayOfaqxa[i4].a;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
       for (;;)
       {
-        parambgaz.a.clear();
-        parambgaz.a.addAll(localArrayList);
-        return;
-        label331:
-        localArrayList.add(localObject3);
+        i4 += 1;
+        break;
+        localArrayList1.clear();
+        localArrayList2.clear();
+        int i = i2;
+        int j = i3;
+        int k = i1;
+        int m = n;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = i2;
+          j = i3;
+          k = i1;
+          m = n;
+          int i5 = ((JSONObject)localObject).optInt("globalOpen", 0);
+          i = i2;
+          j = i3;
+          k = i1;
+          m = i5;
+          int i6 = ((JSONObject)localObject).optInt("globalOpenStudyMode", 0);
+          i = i2;
+          j = i3;
+          k = i6;
+          m = i5;
+          int i7 = ((JSONObject)localObject).optInt("groupShortcutBarSwitchWithoutAdmin", 0);
+          i = i2;
+          j = i7;
+          k = i6;
+          m = i5;
+          int i8 = ((JSONObject)localObject).optInt("groupAppHotRecommendSwitch", 0);
+          i = i8;
+          j = i7;
+          k = i6;
+          m = i5;
+          JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
+          if (localJSONArray != null)
+          {
+            i = i8;
+            j = i7;
+            k = i6;
+            m = i5;
+            if (localJSONArray.length() > 0)
+            {
+              n = 0;
+              for (;;)
+              {
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                if (n >= localJSONArray.length()) {
+                  break;
+                }
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                localArrayList1.add(Integer.valueOf(localJSONArray.getInt(n)));
+                n += 1;
+              }
+            }
+          }
+          i = i8;
+          j = i7;
+          k = i6;
+          m = i5;
+          localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypesStudyMode");
+          i2 = i8;
+          i3 = i7;
+          i1 = i6;
+          n = i5;
+          if (localObject != null)
+          {
+            i2 = i8;
+            i3 = i7;
+            i1 = i6;
+            n = i5;
+            i = i8;
+            j = i7;
+            k = i6;
+            m = i5;
+            if (((JSONArray)localObject).length() > 0)
+            {
+              int i9 = 0;
+              for (;;)
+              {
+                i2 = i8;
+                i3 = i7;
+                i1 = i6;
+                n = i5;
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                if (i9 >= ((JSONArray)localObject).length()) {
+                  break;
+                }
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                localArrayList2.add(Integer.valueOf(((JSONArray)localObject).getInt(i9)));
+                i9 += 1;
+              }
+            }
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          i2 = i;
+          i3 = j;
+          i1 = k;
+          n = m;
+        }
       }
-      label341:
-      localObject1 = localObject2;
     }
+    paramArrayOfaqxa = new bgbc();
+    if (paramArrayOfaqxa != null)
+    {
+      if (n != 1) {
+        break label591;
+      }
+      bool1 = true;
+      jdField_a_of_type_Boolean = bool1;
+      if (i1 != 1) {
+        break label597;
+      }
+    }
+    label591:
+    label597:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      jdField_b_of_type_Boolean = bool1;
+      paramArrayOfaqxa.jdField_a_of_type_JavaUtilArrayList = localArrayList1;
+      paramArrayOfaqxa.jdField_a_of_type_Int = i3;
+      paramArrayOfaqxa.jdField_b_of_type_Int = i2;
+      paramArrayOfaqxa.jdField_b_of_type_JavaUtilArrayList = localArrayList2;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShortcutBarConfig", 2, "parse:" + paramArrayOfaqxa.toString());
+      }
+      return paramArrayOfaqxa;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Int > 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (true == jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (true == jdField_b_of_type_Boolean) || (this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isGlobalOpen:").append(jdField_a_of_type_Boolean).append("\r\n");
+    localStringBuilder.append("isGlobalStudyModeOpen:").append(jdField_b_of_type_Boolean).append("\r\n");
+    localStringBuilder.append("mTroopShortCutBarSwitchList:").append(this.jdField_a_of_type_JavaUtilArrayList).append("\r\n");
+    localStringBuilder.append("mStudyModeTroopSwitchList:").append(this.jdField_b_of_type_JavaUtilArrayList).append("\r\n");
+    localStringBuilder.append("groupShortcutBarSwitchWithoutAdmin:").append(this.jdField_a_of_type_Int).append("\r\n");
+    localStringBuilder.append("groupAppHotRecommendSwitch:").append(this.jdField_b_of_type_Int).append("\r\n");
+    return localStringBuilder.toString();
   }
 }
 

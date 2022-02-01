@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class ajfp
-  implements DialogInterface.OnClickListener
+public class ajfp
+  implements BusinessObserver
 {
-  ajfp(ajey paramajey) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
   }
 }
 

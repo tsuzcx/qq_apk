@@ -1,6 +1,11 @@
-public abstract interface aylu
+public class aylu
+  extends aylx
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

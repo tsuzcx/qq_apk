@@ -1,29 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
 
 public class asye
-  extends asxz
+  implements aufq
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public asye(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public asye(becp parambecp)
-  {
-    this.jdField_a_of_type_JavaLangString = parambecp.e;
-    this.jdField_a_of_type_Int = 1;
-    this.b = String.valueOf(parambecp.b);
-  }
+  public void a() {}
   
-  public String a()
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
-    {
-      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
-      return "";
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.g)) {
+      return;
     }
-    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_Atpv != null)
+    {
+      this.a.jdField_a_of_type_Atpv.k = "3";
+      this.a.jdField_a_of_type_Atpv.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

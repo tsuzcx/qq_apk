@@ -1,14 +1,8 @@
-class oja
-  implements pep
+public abstract interface oja
 {
-  oja(oiz paramoiz) {}
+  public abstract void a();
   
-  public void a(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Sqh != null) {
-      this.a.jdField_a_of_type_Sqh.a(paramInt, this.a.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void b();
 }
 
 

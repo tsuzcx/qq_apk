@@ -1,10 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-final class awmr
-  implements DialogInterface.OnClickListener
+class awmr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  awmr(awmq paramawmq) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
+    if (localCameraPosition != null) {
+      MapWidget.a(this.a.a).a(localCameraPosition.target);
+    }
+  }
 }
 
 

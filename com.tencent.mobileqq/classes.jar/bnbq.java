@@ -1,40 +1,24 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewStub;
+import android.view.ViewStub.OnInflateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLImageView;
 
-public abstract interface bnbq
+class bnbq
+  implements ViewStub.OnInflateListener
 {
-  public abstract View a();
+  bnbq(bnbp parambnbp) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void n();
-  
-  public abstract void o();
-  
-  public abstract void p();
+  public void onInflate(ViewStub paramViewStub, View paramView)
+  {
+    if (bnbp.a(this.a) == null) {
+      return;
+    }
+    paramViewStub = (RelativeLayout.LayoutParams)bnbp.a(this.a).getLayoutParams();
+    paramViewStub.addRule(3, paramView.getId());
+    bnbp.a(this.a).setLayoutParams(paramViewStub);
+    this.a.a();
+  }
 }
 
 

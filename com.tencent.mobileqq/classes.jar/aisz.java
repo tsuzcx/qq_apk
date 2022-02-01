@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aisz
-  extends anam
+  extends nyp
 {
-  public aisz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public aisz(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a()
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
-    }
-    arbb localarbb = (arbb)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localarbb != null) {
-      localarbb.b();
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
+      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
     }
   }
 }

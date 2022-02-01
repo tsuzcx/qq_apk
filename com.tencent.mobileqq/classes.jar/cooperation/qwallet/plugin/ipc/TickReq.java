@@ -2,11 +2,12 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import azvi;
-import bcdf;
-import bcef;
+import bbbq;
+import bdka;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +15,7 @@ import cooperation.qwallet.plugin.PatternLockUtils;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import ugf;
+import uuc;
 
 public class TickReq
   extends BaseReq
@@ -39,7 +40,7 @@ public class TickReq
   {
     QQAppInterface localQQAppInterface = QWalletHelper.getAppInterface();
     if ((localQQAppInterface != null) && (!TextUtils.isEmpty(this.pubAccUin))) {
-      ugf.a(localQQAppInterface, localQQAppInterface.getApp(), this.pubAccUin, null, false);
+      uuc.a(localQQAppInterface, localQQAppInterface.getApp(), this.pubAccUin, null, false);
     }
   }
   
@@ -48,15 +49,15 @@ public class TickReq
     Object localObject = QWalletHelper.getAppInterface();
     if (localObject != null)
     {
-      localObject = (azvi)((QQAppInterface)localObject).getManager(36);
-      ((azvi)localObject).b(this.redpointPath);
-      if ((this.redpointPath != null) && (this.redpointPath.equals("100007.102000")) && (((azvi)localObject).a(100007) != null)) {}
+      localObject = (bbbq)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_RED_TOUCH);
+      ((bbbq)localObject).b(this.redpointPath);
+      if ((this.redpointPath != null) && (this.redpointPath.equals("100007.102000")) && (((bbbq)localObject).a(100007) != null)) {}
     }
     else
     {
       return;
     }
-    ((azvi)localObject).a(100007, this.redpointPath);
+    ((bbbq)localObject).a(100007, this.redpointPath);
   }
   
   private void onReport()
@@ -84,7 +85,7 @@ public class TickReq
               if (localObject.length < 12) {
                 return;
               }
-              bcef.b(null, "P_CliOper", localObject[0], localObject[2], localObject[3], localObject[4], Integer.valueOf(localObject[5]).intValue(), Integer.valueOf(localObject[7]).intValue(), localObject[8], localObject[9], localObject[10], localObject[11]);
+              bdla.b(null, "P_CliOper", localObject[0], localObject[2], localObject[3], localObject[4], Integer.valueOf(localObject[5]).intValue(), Integer.valueOf(localObject[7]).intValue(), localObject[8], localObject[9], localObject[10], localObject[11]);
             }
             catch (Exception localException) {}
             if (QLog.isDevelopLevel()) {
@@ -155,7 +156,7 @@ public class TickReq
     do
     {
       return;
-      bcdf.a(null, this.dcId, this.dcDetail, this.dcIsMerge);
+      bdka.a(null, this.dcId, this.dcDetail, this.dcIsMerge);
     } while (!QLog.isColorLevel());
     QLog.i("Q.qwallet.pay.dc", 2, this.dcId + '|' + this.dcDetail + '|' + this.dcIsMerge);
   }

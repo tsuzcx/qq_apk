@@ -1,27 +1,108 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-final class bfox
-  implements DownloadParams.DecodeHandler
+public class bfox
+  implements Manager
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private long a;
+  public bfow a;
+  
+  public bfox(QQAppInterface paramQQAppInterface) {}
+  
+  public long a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      return bfvo.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bfvo.c(paramBitmap, 50, 50);
+    return this.jdField_a_of_type_Long;
   }
+  
+  public bfow a(long paramLong, boolean paramBoolean, TroopChatPie paramTroopChatPie, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopClassControllerMan", 2, "updateTroopAioClassUI troopClassType" + paramLong + ", currentTroopClassType" + this.jdField_a_of_type_Long);
+    }
+    if ((paramLong != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Bfow != null)) {
+      this.jdField_a_of_type_Bfow.a(false, paramTroopChatPie, paramBoolean);
+    }
+    this.jdField_a_of_type_Bfow = a(paramTroopChatPie, paramString);
+    if (this.jdField_a_of_type_Bfow != null) {
+      this.jdField_a_of_type_Bfow.a(true, paramTroopChatPie, paramBoolean);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = paramLong;
+      return this.jdField_a_of_type_Bfow;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
+      }
+    }
+  }
+  
+  public bfow a(TroopChatPie paramTroopChatPie, String paramString)
+  {
+    if (TroopInfo.isHomeworkTroop(paramTroopChatPie.app, paramString))
+    {
+      if (!(this.jdField_a_of_type_Bfow instanceof bfxr)) {
+        this.jdField_a_of_type_Bfow = new bfxr(paramTroopChatPie.app, paramTroopChatPie.getActivity(), paramTroopChatPie);
+      }
+      this.jdField_a_of_type_Long = 32L;
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Bfow;
+      if (TroopInfo.isFansTroop(paramTroopChatPie.app, paramString))
+      {
+        this.jdField_a_of_type_Long = 27L;
+      }
+      else
+      {
+        this.jdField_a_of_type_Bfow = null;
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopClassControllerMan", 2, "getControllerByTroopUin null " + paramString);
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bfow != null) {
+      this.jdField_a_of_type_Bfow.c();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Bfow instanceof bfxr)) {
+      this.jdField_a_of_type_Bfow.a(bghd.b(paramInt));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bfow != null) {
+      this.jdField_a_of_type_Bfow.b(paramBoolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bfow != null) {
+      this.jdField_a_of_type_Bfow.b();
+    }
+    this.jdField_a_of_type_Bfow = null;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bfow != null) {
+      this.jdField_a_of_type_Bfow.a();
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

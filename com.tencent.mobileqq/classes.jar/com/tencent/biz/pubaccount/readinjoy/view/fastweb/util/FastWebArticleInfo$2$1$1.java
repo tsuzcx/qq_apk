@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import pkp;
-import svp;
+import pvm;
+import tja;
 
 public class FastWebArticleInfo$2$1$1
   implements Runnable
 {
-  public FastWebArticleInfo$2$1$1(svp paramsvp) {}
+  public FastWebArticleInfo$2$1$1(tja paramtja) {}
   
   public void run()
   {
-    pkp.a().c();
+    pvm.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2.1.1
  * JD-Core Version:    0.7.0.1
  */

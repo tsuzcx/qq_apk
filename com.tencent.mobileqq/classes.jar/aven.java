@@ -1,35 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.gamecenter.protocol.GetArkTailRsp;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.util.WeakReference;
 
-class aven
-  implements avfm
+final class aven
+  implements BusinessObserver
 {
-  aven(avem paramavem, String paramString) {}
+  aven(WeakReference paramWeakReference1, WeakReference paramWeakReference2, WeakReference paramWeakReference3, long paramLong1, long paramLong2, AIOImageData paramAIOImageData) {}
   
-  public void a(List<LocationRoom.Venue> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((avem.a(this.jdField_a_of_type_Avem) != null) && (avem.a(this.jdField_a_of_type_Avem).size() > 0)) {}
-    for (int i = 1;; i = 0)
+    paramBundle = (GetArkTailRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("GameShare.Util", 2, "GetArkTailRspFromGallery:" + paramBoolean + "|" + paramBundle);
+    }
+    if ((paramBoolean) && (paramBundle != null))
     {
-      avem.a(this.jdField_a_of_type_Avem, paramList);
-      this.jdField_a_of_type_Avem.notifyDataSetChanged();
-      avem.a(this.jdField_a_of_type_Avem, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-      if ((avem.a(this.jdField_a_of_type_Avem).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        if (i == 0) {
-          this.jdField_a_of_type_Avem.a(0);
-        }
-      }
-      while (avem.a(this.jdField_a_of_type_Avem) == null) {
-        return;
-      }
-      paramList = avem.a(this.jdField_a_of_type_Avem);
-      if (avem.a(this.jdField_a_of_type_Avem).size() > 0) {}
-      for (i = 3;; i = 2)
+      Object localObject = (Context)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      TextView localTextView = (TextView)this.jdField_b_of_type_MqqUtilWeakReference.get();
+      ahsj localahsj = (ahsj)this.c.get();
+      if (((localObject instanceof Activity)) && (!((Activity)localObject).isFinishing()) && (localTextView != null) && (localahsj != null) && (localahsj.a() != null) && (localahsj.a().a != null) && (localahsj.a().a.jdField_f_of_type_Long == this.jdField_a_of_type_Long) && (localahsj.a().a.jdField_f_of_type_Int == this.jdField_b_of_type_Long))
       {
-        paramList.a(i);
-        return;
+        localTextView.setText(paramBundle.desc);
+        localTextView.setTag(-1, paramBundle.jump_url);
+        localTextView.setTag(-2, Integer.valueOf(paramBundle.type));
+        localTextView.setTag(-3, Integer.valueOf(paramBundle.sub_type));
       }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("game_source_pic_txt", paramBundle.desc);
+      ((Bundle)localObject).putString("game_source_pic_url", paramBundle.jump_url);
+      ((Bundle)localObject).putInt("game_source_type_pic", paramBundle.type);
+      ((Bundle)localObject).putInt("game_source_subtype_pic", paramBundle.sub_type);
+      ((Bundle)localObject).putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.jdField_f_of_type_Long);
+      ((Bundle)localObject).putInt("is_troop", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g);
+      ((Bundle)localObject).putString("friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.l);
+      QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "saveGalleryDataToMsg", (Bundle)localObject, null);
+      localObject = (StructMsgForImageShare)bdof.a((byte[])this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.a);
+      avek.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, (StructMsgForImageShare)localObject, paramBundle.desc, paramBundle.jump_url, paramBundle.type, paramBundle.sub_type, true);
+      avek.a(((StructMsgForImageShare)localObject).mSourceAppid + "", paramBundle.sub_type, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData);
     }
   }
 }

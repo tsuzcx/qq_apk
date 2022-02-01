@@ -1,21 +1,51 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bejf
-  implements QQPermissionCallback
 {
-  public bejf(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public static final int[] a = { 1, 2, 3, 4, 5 };
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static final int a(int paramInt)
   {
-    bfur.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+    if ((paramInt >= 0) && (paramInt < a.length)) {
+      return a[paramInt];
+    }
+    return -1;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static final String a(int paramInt)
   {
-    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
-    bjmm.a(this.a.getActivity());
+    switch (paramInt)
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "BUSID_INTIMATE_ANNIVERSARY";
+    case 1: 
+      return "BUSID_BASE_PROFILE";
+    case 2: 
+      return "BUSID_NICE_PICS";
+    case 3: 
+      return "BUSID_NEWFRD_MINI_CARD";
+    }
+    return "BUSID_ASK_ANONYMOUSLY";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    bdla.b(paramQQAppInterface, "dc00898", "", paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt, 0, "0", "0", "", "");
+  }
+  
+  public static final int b(int paramInt)
+  {
+    int i = 0;
+    while (i < a.length)
+    {
+      if (a[i] == paramInt) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
 }
 

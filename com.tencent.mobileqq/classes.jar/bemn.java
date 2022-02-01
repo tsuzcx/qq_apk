@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bemn
-  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public beli a;
+  public String a;
   
-  protected bemn(beml parambeml) {}
-  
-  public void onClick(View paramView)
+  bemn(String paramString, beli parambeli)
   {
-    if (this.jdField_a_of_type_Beml.a != null) {
-      this.jdField_a_of_type_Beml.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Beli = parambeli;
   }
 }
 

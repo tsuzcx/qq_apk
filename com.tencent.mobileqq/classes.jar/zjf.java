@@ -1,32 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class zjf
-  implements Animator.AnimatorListener
+public class zjf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  zjf(zjc paramzjc) {}
+  public zjf(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    zjc.a(this.a, null);
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (zjc.a(this.a) != null) {
-      zjc.a(this.a).a(3);
-    }
-    if (zjc.a(this.a) != null)
-    {
-      zjc.a(this.a).setAlpha(0.0F);
-      zjc.a(this.a, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

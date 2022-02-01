@@ -2,10 +2,10 @@ package com.tencent.mobileqq.profile;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aymf;
-import bfrj;
-import bgoe;
-import bgog;
+import azra;
+import bhaa;
+import bhyo;
+import bhyq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -13,7 +13,7 @@ import java.io.File;
 public class ProfileCardCheckUpdate$2
   implements Runnable
 {
-  public ProfileCardCheckUpdate$2(aymf paramaymf, String paramString1, String paramString2) {}
+  public ProfileCardCheckUpdate$2(azra paramazra, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -23,14 +23,14 @@ public class ProfileCardCheckUpdate$2
     }
     try
     {
-      Object localObject = bfrj.a(this.this$0.a.getApplication());
+      Object localObject = bhaa.a(this.this$0.a.getApplication());
       localObject = new File((String)localObject + ".tmp");
-      bgoe localbgoe = new bgoe(this.a, (File)localObject);
-      localbgoe.f = "profileCardDownload";
-      localbgoe.e = "VIP_profilecard";
-      localbgoe.a = 1;
-      localbgoe.n = true;
-      int j = bgog.a(localbgoe, this.this$0.a);
+      bhyo localbhyo = new bhyo(this.a, (File)localObject);
+      localbhyo.f = "profileCardDownload";
+      localbhyo.e = "VIP_profilecard";
+      localbhyo.a = 1;
+      localbhyo.n = true;
+      int j = bhyq.a(localbhyo, this.this$0.a);
       if (j == 0) {}
       for (;;)
       {
@@ -43,7 +43,7 @@ public class ProfileCardCheckUpdate$2
             QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate downloadLabelConfigJson update label config  success version=" + this.b);
           }
           this.this$0.a.getPreferences().edit().putString("profileLabelVersion", this.b).commit();
-          aymf.a(this.this$0, (File)localObject);
+          azra.a(this.this$0, (File)localObject);
         }
         return;
         i = 0;

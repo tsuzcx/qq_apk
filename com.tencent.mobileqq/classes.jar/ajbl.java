@@ -1,8 +1,10 @@
-import android.view.MotionEvent;
-
-public abstract interface ajbl
+public class ajbl
+  extends ajbn
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

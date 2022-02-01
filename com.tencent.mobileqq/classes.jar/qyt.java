@@ -1,12 +1,7 @@
-import android.os.IInterface;
+import kotlin.Metadata;
 
-public abstract interface qyt
-  extends IInterface
-{
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher$Companion;", "", "()V", "REPORT_ACTION_SWIPER_DRAG", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qyt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

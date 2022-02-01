@@ -1,11 +1,32 @@
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class agsv
-  extends agst
+class agsv
+  implements agrc
 {
-  public EllipsizingTextView a;
-  public BubbleImageView a;
+  agsv(agsm paramagsm, agsz paramagsz, MessageForPoke paramMessageForPoke) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Agsz.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Agsz.b == agsm.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agsm.a instanceof ChatHistoryActivity)) && (!agsm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Agsz.c.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Agsz.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      return;
+      this.jdField_a_of_type_Agsz.c.setVisibility(8);
+    }
+  }
 }
 
 

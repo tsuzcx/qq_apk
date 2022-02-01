@@ -1,24 +1,10 @@
-import android.view.View;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-public class agjd
-  extends aezf
+public abstract interface agjd
 {
-  private long jdField_a_of_type_Long;
-  public akxy a;
-  public TextView a;
-  public ETTextView a;
-  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
-  public boolean a;
-  public TextView b;
-  public ETTextView b;
-  private String b = "0";
-  public View c;
-  public int e = -1;
-  
-  public agjd(agiy paramagiy) {}
+  public abstract void a(int paramInt, TroopChatPie paramTroopChatPie, List<ChatMessage> paramList);
 }
 
 

@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amir;
+import ankc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.data.ApolloGameScoreData;
 import com.tencent.mobileqq.vas.VasExtensionHandler;
@@ -32,12 +34,12 @@ final class ApolloGameUtil$7
       if (QLog.isColorLevel()) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] real update " + this.jdField_a_of_type_JavaLangString);
       }
-      localVasExtensionHandler = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(71);
-      Object localObject1 = (amir)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localVasExtensionHandler = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+      Object localObject1 = (ankc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER);
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Object localObject5 = ((amir)localObject1).j();
-      Object localObject3 = ((amir)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
-      Object localObject4 = ((amir)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject5 = ((ankc)localObject1).j();
+      Object localObject3 = ((ankc)localObject1).a(str, ApolloGameUtil.a(), (List)localObject5);
+      Object localObject4 = ((ankc)localObject1).a(str, this.jdField_a_of_type_JavaLangString, ApolloGameUtil.a(), (List)localObject5);
       if ((localObject3 != null) && (QLog.isColorLevel())) {
         QLog.d("ApolloGameUtil", 2, "[updateRankInfo] self init " + ((List)localObject3).size());
       }
@@ -49,13 +51,13 @@ final class ApolloGameUtil$7
         localObject1 = localObject4;
         localObject2 = localObject3;
         if (((List)localObject3).size() != 0) {
-          break label410;
+          break label411;
         }
       }
       localObject1 = localObject4;
       localObject2 = localObject3;
       if (localObject5 == null) {
-        break label410;
+        break label411;
       }
       localObject2 = new ArrayList();
       localObject1 = new ArrayList();
@@ -76,7 +78,7 @@ final class ApolloGameUtil$7
         }
       }
       if (!QLog.isColorLevel()) {
-        break label424;
+        break label425;
       }
     }
     catch (Throwable localThrowable)
@@ -85,8 +87,8 @@ final class ApolloGameUtil$7
       return;
     }
     QLog.d("ApolloGameUtil", 2, "[updateRankInfo] friend expend " + localThrowable.size());
-    label410:
-    label424:
+    label411:
+    label425:
     for (;;)
     {
       localVasExtensionHandler.a(str, (List)localObject2, this.jdField_a_of_type_JavaLangString, localThrowable);

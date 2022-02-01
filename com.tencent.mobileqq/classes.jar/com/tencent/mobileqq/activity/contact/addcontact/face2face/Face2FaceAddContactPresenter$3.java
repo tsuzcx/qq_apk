@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import aiaa;
-import aiac;
+import aiuz;
+import aivb;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class Face2FaceAddContactPresenter$3
   implements Runnable
 {
-  public Face2FaceAddContactPresenter$3(aiaa paramaiaa, String paramString1, String paramString2) {}
+  public Face2FaceAddContactPresenter$3(aiuz paramaiuz, String paramString1, String paramString2) {}
   
   public void run()
   {
-    SosoInterface.startLocation(new aiac(this, 0, true, false, 60000L, false, false, "Face2FaceAddContactPresenter"));
+    SosoInterface.startLocation(new aivb(this, 0, true, false, 60000L, false, false, "Face2FaceAddContactPresenter"));
   }
 }
 

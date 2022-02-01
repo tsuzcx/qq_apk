@@ -1,29 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.wtogether.data.ReqVideoAction;
 
-class myp
-  implements Animator.AnimatorListener
+public final class myp
+  implements Parcelable.Creator<ReqVideoAction>
 {
-  myp(myl parammyl, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public ReqVideoAction a(Parcel paramParcel)
   {
-    myl.a(this.jdField_a_of_type_Myl).a(this.jdField_a_of_type_Int, this.b);
-    myl.a(this.jdField_a_of_type_Myl).d();
-    myl.a(this.jdField_a_of_type_Myl, null);
+    return new ReqVideoAction(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ReqVideoAction[] a(int paramInt)
   {
-    myl.a(this.jdField_a_of_type_Myl).a(this.jdField_a_of_type_Int, this.b);
-    myl.a(this.jdField_a_of_type_Myl).d();
-    myl.a(this.jdField_a_of_type_Myl, null);
+    return new ReqVideoAction[paramInt];
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

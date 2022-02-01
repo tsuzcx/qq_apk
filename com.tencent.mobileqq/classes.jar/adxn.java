@@ -1,22 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.Iterator;
+import java.util.List;
 
 public class adxn
-  implements TextWatcher
+  implements awzc<List<EmoticonPackage>>
 {
-  public adxn(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adxn(EmosmActivity paramEmosmActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(List<EmoticonPackage> paramList)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      this.a.g.setVisibility(8);
+    }
+    do
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
+        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+          this.a.c = true;
+        }
+      }
+    } while (this.a.c);
+    this.a.g.setVisibility(8);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

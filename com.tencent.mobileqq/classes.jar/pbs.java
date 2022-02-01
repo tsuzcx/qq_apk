@@ -1,19 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
-import java.util.ArrayList;
-
-public class pbs
+public abstract interface pbs
 {
-  public static ArrayList<AladdinListener> a = new ArrayList();
-  
-  public static void a(AladdinListener paramAladdinListener)
-  {
-    a.add(paramAladdinListener);
-  }
-  
-  public static void b(AladdinListener paramAladdinListener)
-  {
-    a.remove(paramAladdinListener);
-  }
+  public abstract void a();
 }
 
 

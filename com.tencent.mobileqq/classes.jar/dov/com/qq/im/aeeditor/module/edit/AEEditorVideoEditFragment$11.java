@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import amtj;
-import bmip;
+import anvx;
+import bnyh;
 
 public class AEEditorVideoEditFragment$11
   implements Runnable
@@ -10,7 +10,7 @@ public class AEEditorVideoEditFragment$11
   
   public void run()
   {
-    this.this$0.a(amtj.a(2131689728), true, 0L, new bmip(this));
+    this.this$0.a(anvx.a(2131689736), true, 0L, new bnyh(this));
   }
 }
 

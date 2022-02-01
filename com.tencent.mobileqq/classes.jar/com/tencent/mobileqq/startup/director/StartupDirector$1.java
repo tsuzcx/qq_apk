@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.director;
 
-import bcad;
+import bdgy;
 import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.dtreport.lazy.LazyInitObserver;
+import com.tencent.qqlive.module.videoreport.lazy.LazyInitObserver;
 
 public class StartupDirector$1
   implements Runnable
 {
-  public StartupDirector$1(bcad parambcad) {}
+  public StartupDirector$1(bdgy parambdgy) {}
   
   public void run()
   {

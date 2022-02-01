@@ -11,8 +11,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import arpy;
-import arpz;
+import asue;
+import asuf;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class ExtendFriendHorizontalTagsView
   implements View.OnClickListener
 {
   public int a;
-  public arpy a;
+  public asue a;
   
   public ExtendFriendHorizontalTagsView(Context paramContext)
   {
@@ -44,20 +44,20 @@ public class ExtendFriendHorizontalTagsView
   
   public void onClick(View paramView)
   {
-    arpz localarpz;
-    if ((paramView.getTag() instanceof arpz))
+    asuf localasuf;
+    if ((paramView.getTag() instanceof asuf))
     {
-      localarpz = (arpz)paramView.getTag();
-      if (localarpz.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
+      localasuf = (asuf)paramView.getTag();
+      if (localasuf.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
     }
     else
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.jdField_a_of_type_Int = localarpz.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Arpy != null) {
-      this.jdField_a_of_type_Arpy.a(localarpz.jdField_a_of_type_JavaLangString, localarpz.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = localasuf.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Asue != null) {
+      this.jdField_a_of_type_Asue.a(localasuf.jdField_a_of_type_JavaLangString, localasuf.jdField_a_of_type_Int);
     }
     int i = 0;
     label71:
@@ -78,9 +78,9 @@ public class ExtendFriendHorizontalTagsView
     }
   }
   
-  public void setOnItemClickListener(arpy paramarpy)
+  public void setOnItemClickListener(asue paramasue)
   {
-    this.jdField_a_of_type_Arpy = paramarpy;
+    this.jdField_a_of_type_Asue = paramasue;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList, int paramInt)
@@ -107,7 +107,7 @@ public class ExtendFriendHorizontalTagsView
       {
         localTextView = new TextView(getContext());
         localTextView.setText((CharSequence)localObject);
-        localTextView.setTag(new arpz(this, i, (String)localObject));
+        localTextView.setTag(new asuf(this, i, (String)localObject));
         localTextView.setContentDescription((CharSequence)localObject);
         if (i != paramInt) {
           break label261;
@@ -124,8 +124,8 @@ public class ExtendFriendHorizontalTagsView
       localTextView.setClickable(true);
       localTextView.setFocusable(true);
       localTextView.setPadding(m, 0, m, 0);
-      localTextView.setBackgroundResource(2130845069);
-      localTextView.setTextColor(getResources().getColorStateList(2131166362));
+      localTextView.setBackgroundResource(2130845143);
+      localTextView.setTextColor(getResources().getColorStateList(2131166371));
       localObject = new LinearLayout.LayoutParams(-2, n);
       if (j > 0) {
         ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(8.0F, getResources());
@@ -143,7 +143,7 @@ public class ExtendFriendHorizontalTagsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView
  * JD-Core Version:    0.7.0.1
  */

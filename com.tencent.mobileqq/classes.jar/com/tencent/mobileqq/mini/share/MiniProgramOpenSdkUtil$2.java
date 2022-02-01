@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.share;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
-import bhht;
+import anvx;
+import bisl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +20,7 @@ final class MiniProgramOpenSdkUtil$2
       if ((this.val$outInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
         this.val$outInfo.progressDialog.dismiss();
       }
-      QQToast.a(this.val$context, amtj.a(2131691963), 0).b(this.val$context.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(this.val$context, anvx.a(2131692053), 0).b(this.val$context.getResources().getDimensionPixelSize(2131299080));
       MiniProgramOpenSdkUtil.access$100(this.val$context);
       return;
     }

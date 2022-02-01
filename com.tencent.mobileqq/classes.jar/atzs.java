@@ -1,18 +1,17 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atzs
+class atzs
   implements View.OnClickListener
 {
-  public atzs(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo, int paramInt) {}
+  atzs(atzr paramatzr) {}
   
   public void onClick(View paramView)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo);
+    int i = aufd.b(this.a.a.e());
+    bdla.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
+    this.a.a.g();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

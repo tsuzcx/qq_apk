@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import java.util.ArrayList;
 
 public class bn
-  implements aszj
+  implements audq
 {
   public bn(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   

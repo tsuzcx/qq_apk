@@ -1,43 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.IInterface;
 
-class apir
-  implements View.OnTouchListener
+public abstract interface apir
+  extends IInterface
 {
-  apir(apiq paramapiq) {}
+  public abstract void a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
-    {
-      apiq.a(this.a, paramMotionEvent.getY());
-      mum.a(paramView, 0.5F);
-    }
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-        if (paramMotionEvent.getAction() != 1) {
-          break label101;
-        }
-        mum.a(paramView, 1.0F);
-        apiq.b(this.a, paramMotionEvent.getY());
-        if (apiq.a(this.a) - apiq.b(this.a) <= 50.0F) {
-          break;
-        }
-      } while (apiq.a(this.a) == null);
-      apiq.a(this.a).c();
-      return true;
-      label101:
-      if (paramMotionEvent.getAction() == 3) {
-        mum.a(paramView, 1.0F);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

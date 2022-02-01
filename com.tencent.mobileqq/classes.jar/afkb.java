@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class afkb
-  extends bduz
+  implements DialogInterface.OnClickListener
 {
-  public afkb(TroopChatPie paramTroopChatPie) {}
+  public afkb(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  protected void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!String.valueOf(paramLong).equals(this.a.getCurTroopUin())) {}
-    PlusPanel localPlusPanel;
-    do
+    this.a.n();
+    if (this.a.jdField_a_of_type_Boolean)
     {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.e();
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
+      this.a.f();
+    }
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "1");
       return;
-      localPlusPanel = (PlusPanel)this.a.panelManager.a(8);
-    } while (localPlusPanel == null);
-    localPlusPanel.c();
+    }
   }
 }
 

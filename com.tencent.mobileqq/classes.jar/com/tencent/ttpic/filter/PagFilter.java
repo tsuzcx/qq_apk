@@ -162,7 +162,7 @@ public class PagFilter
       this.pagSurface.freeCache();
     }
     this.pagRender.setSurface(null);
-    this.oesTextureConvertFilter.ClearGLSL();
+    this.oesTextureConvertFilter.clearGLSL();
     this.cropFilter.clearGLSLSelf();
     this.surfaceTextureHandler.postJobSync(new PagFilter.4(this));
     this.surfaceTextureHandler.destroy();

@@ -1,42 +1,15 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x119.SubMsgType0x119.MsgBody;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import java.lang.ref.WeakReference;
 
-public class abzp
-  implements abzb
+class abzp
+  implements acjy
 {
-  private static void a(abxc paramabxc, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x119, [S2C push for input status]");
-    }
-    try
-    {
-      SubMsgType0x119.MsgBody localMsgBody = new SubMsgType0x119.MsgBody();
-      if (paramabxc.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        QLog.d("Q.msg.BaseMessageProcessor", 1, "troopFormLog receive c2c" + localMsgBody.toString());
-        if (!bcvs.a(paramMsgInfo.shMsgSeq))
-        {
-          bcvs.a(paramabxc.a(), localMsgBody);
-          QLog.d("Q.msg.BaseMessageProcessor", 1, "troopFormLog isPushMessageDuplicated");
-        }
-      }
-      return;
-    }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x115], errInfo->" + paramabxc.getMessage());
-    }
-  }
+  abzp(abzn paramabzn, AdImageViewAdapter.Params paramParams) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(boolean paramBoolean)
   {
-    a(paramabxc, paramMsgInfo, paramMsgType0x210);
-    return null;
+    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
   }
 }
 

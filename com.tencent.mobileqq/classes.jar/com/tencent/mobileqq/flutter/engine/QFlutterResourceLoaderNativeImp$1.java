@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.flutter.engine;
 
 import android.content.res.Resources;
-import atjv;
+import auoo;
 import com.tencent.TMG.utils.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,17 +11,17 @@ import java.util.Set;
 public class QFlutterResourceLoaderNativeImp$1
   implements Runnable
 {
-  public QFlutterResourceLoaderNativeImp$1(atjv paramatjv, ArrayList paramArrayList, Resources paramResources) {}
+  public QFlutterResourceLoaderNativeImp$1(auoo paramauoo, ArrayList paramArrayList, Resources paramResources) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Iterator localIterator = atjv.c.keySet().iterator();
+    Iterator localIterator = auoo.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidContentResResources.getColorStateList(((Integer)atjv.c.get(str)).intValue()));
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidContentResResources.getColorStateList(((Integer)auoo.c.get(str)).intValue()));
     }
     if (QLog.isColorLevel()) {
       QLog.i("QFlutterResourceLoaderNativeImp", 0, "init and preCache colors cost:" + (System.currentTimeMillis() - l));

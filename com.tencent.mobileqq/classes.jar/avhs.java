@@ -1,41 +1,92 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
-class avhs
-  implements avgv
+public class avhs
 {
-  avhs(avhp paramavhp) {}
+  int jdField_a_of_type_Int;
+  avhs jdField_a_of_type_Avhs;
+  ArrayList<avhs> jdField_a_of_type_JavaUtilArrayList;
+  HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap;
   
-  public void a(LocationRoom.Venue paramVenue) {}
-  
-  public void a(LatLng paramLatLng) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  public avhs(int paramInt)
   {
-    if (paramList != null)
-    {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
-      {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.a.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bfvo.c(localBitmap, 16, 16);
-          avhp.a(this.a).a(paramList, localBitmap);
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(boolean paramBoolean, Point paramPoint) {}
+  private String a(int paramInt)
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    int i = 0;
+    while (i < paramInt)
+    {
+      localStringBuilder2.append("\t");
+      i += 1;
+    }
+    localStringBuilder1.append(localStringBuilder2).append(avhr.a(this.jdField_a_of_type_Int)).append(":[\n");
+    localStringBuilder1.append(localStringBuilder2).append("\tfields").append(":[\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Integer)localIterator.next();
+      String str = avhr.b(((Integer)localObject).intValue());
+      localObject = this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localStringBuilder1.append(localStringBuilder2).append("\t\t").append(str).append(":").append(localObject).append("\n");
+    }
+    localStringBuilder1.append(localStringBuilder2).append("\t]").append("\n");
+    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localStringBuilder1.append(((avhs)localIterator.next()).a(paramInt + 1));
+    }
+    localStringBuilder1.append(localStringBuilder2).append("]").append("\n");
+    return localStringBuilder1.toString();
+  }
   
-  public void a(boolean paramBoolean, avgw paramavgw) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public avhs a()
+  {
+    return this.jdField_a_of_type_Avhs;
+  }
+  
+  public avhs a(avhs paramavhs)
+  {
+    this.jdField_a_of_type_Avhs = paramavhs;
+    this.jdField_a_of_type_Avhs.a(this);
+    return this;
+  }
+  
+  public ArrayList<avhs> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public HashMap<Integer, Object> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramObject);
+  }
+  
+  public void a(avhs paramavhs)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramavhs);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
 }
 
 

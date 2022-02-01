@@ -1,14 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.widget.XListView;
 
-public class algd
-  implements bhhv
+class algd
+  implements wrj
 {
-  public algd(SessionClearFragment paramSessionClearFragment) {}
+  algd(algc paramalgc) {}
   
   public void a()
   {
-    SessionClearFragment.a(this.a).onBackPressed();
+    this.a.a.invalidateViews();
   }
 }
 

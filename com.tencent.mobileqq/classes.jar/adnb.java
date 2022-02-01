@@ -1,12 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class adnb
+public final class adnb
+  implements DialogInterface.OnCancelListener
 {
-  public ImageView a;
-  public TextView a;
-  public InterestLabelTextView a;
+  public adnb(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, 0);
+    }
+  }
 }
 
 

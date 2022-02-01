@@ -1,6 +1,14 @@
-public abstract interface aios
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+
+public class aios
+  extends RecyclerView.ViewHolder
 {
-  public abstract int a(int paramInt, boolean paramBoolean);
+  public aios(ZhituPanelView paramZhituPanelView, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

@@ -1,26 +1,15 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import com.tencent.qqlive.module.videoreport.IEventDynamicParams;
-import com.tencent.qqlive.module.videoreport.Log;
-import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
-import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
+import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 
 class AppEventReporter$3
-  implements Runnable
+  implements ListenerMgr.INotifyCallback<AppEventReporter.IAppEventListener>
 {
-  AppEventReporter$3(AppEventReporter paramAppEventReporter, String paramString) {}
+  AppEventReporter$3(AppEventReporter paramAppEventReporter) {}
   
-  public void run()
+  public void onNotify(AppEventReporter.IAppEventListener paramIAppEventListener)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("AppEventReporter", "appStartDataSender: 启动上报");
-    }
-    FinalData localFinalData = AppEventReporter.access$500(this.this$0, this.val$eventKey);
-    IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
-    if (localIEventDynamicParams != null) {
-      localIEventDynamicParams.setEventDynamicParams(this.val$eventKey, localFinalData.getEventParams());
-    }
-    FinalDataTarget.handle(null, localFinalData);
+    paramIAppEventListener.onAppIn();
   }
 }
 

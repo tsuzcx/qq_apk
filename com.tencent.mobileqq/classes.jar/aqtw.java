@@ -1,24 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
-class aqtw
-  extends BroadcastReceiver
+public class aqtw
+  extends anxj
 {
-  aqtw(aqtu paramaqtu) {}
+  public aqtw(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (aqtx)aqtu.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
+    if (paramLBSInfo != null) {}
+    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
     {
-      this.a.a();
-      aqtu.a(this.a).a(paramContext);
+      this.a.a(paramBoolean, paramLBSInfo);
+      return;
     }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
   }
 }
 

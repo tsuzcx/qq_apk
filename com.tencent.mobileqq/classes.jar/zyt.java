@@ -1,17 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.subscribe.network.DoTipOffRequest;
 
-public class zyt
-  extends AnimatorListenerAdapter
+final class zyt
+  implements bkzq
 {
-  public zyt(SingleLyricView paramSingleLyricView) {}
+  zyt(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, zyw paramzyw, zyv paramzyv, bkzi parambkzi) {}
   
-  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(1.0F);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
+      VSNetworkHelper.getInstance().sendRequest(paramView, new zyu(this));
+      if (this.jdField_a_of_type_Zyv != null) {
+        this.jdField_a_of_type_Zyv.a(false);
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import anai;
-import bfyq;
+import aocx;
+import bhhi;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.mobileqq.data.RoamSetting;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -11,7 +11,7 @@ import java.util.concurrent.locks.Lock;
 public class RoamSettingManager$1
   implements Runnable
 {
-  public RoamSettingManager$1(anai paramanai) {}
+  public RoamSettingManager$1(aocx paramaocx) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class RoamSettingManager$1
         if (i < localArrayList.size())
         {
           RoamSetting localRoamSetting = (RoamSetting)localArrayList.get(i);
-          if (bfyq.a(localRoamSetting.path) == 1) {
+          if (bhhi.a(localRoamSetting.path) == 1) {
             this.this$0.b.put(localRoamSetting.path, localRoamSetting);
           } else {
             this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);

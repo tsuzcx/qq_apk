@@ -1,25 +1,25 @@
 package com.tencent.qg.qq;
 
-import bilj;
+import bjwl;
 
 public class QGameApp$3
   implements Runnable
 {
-  public QGameApp$3(bilj parambilj, boolean paramBoolean, String paramString) {}
+  public QGameApp$3(bjwl parambjwl, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (!bilj.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
+    if (!bjwl.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
     {
-      bilj.a(this.this$0, 1001);
+      bjwl.a(this.this$0, 1001);
       return;
     }
-    if (bilj.a(this.this$0))
+    if (bjwl.a(this.this$0))
     {
-      bilj.a(this.this$0);
+      bjwl.a(this.this$0);
       return;
     }
-    bilj.a(this.this$0, 1003);
+    bjwl.a(this.this$0, 1003);
   }
 }
 

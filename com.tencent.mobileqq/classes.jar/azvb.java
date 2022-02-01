@@ -1,136 +1,58 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.upload.uinterface.data.UpsImageUploadTask;
 
 public class azvb
-  extends azva
+  extends azuz
 {
-  public int a;
-  public String a;
-  public String b = "";
+  public long b;
+  public byte[] c;
+  public int g;
+  public int h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  protected String k;
+  public int l = 1;
   
-  public azvb()
+  public azvb(long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1001;
+    super(paramLong, paramString1, paramArrayOfByte);
+    this.jdField_g_of_type_Int = 13;
+    this.jdField_k_of_type_Int = 3;
+    this.jdField_k_of_type_JavaLangString = paramString2;
   }
   
-  private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
+  public azuz a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, "path = " + paramString);
-    }
-    if ("7720.772004".equals(paramString)) {}
-    for (paramString = avod.a(paramQQAppInterface, paramString);; paramString = ((azvi)paramQQAppInterface.getManager(36)).a(paramString)) {
-      return azvm.a(paramString);
-    }
+    UpsImageUploadTask localUpsImageUploadTask = new UpsImageUploadTask(this.jdField_g_of_type_JavaLangString);
+    localUpsImageUploadTask.dataType = this.jdField_g_of_type_Int;
+    localUpsImageUploadTask.fileId = this.jdField_i_of_type_JavaLangString;
+    localUpsImageUploadTask.flowId = this.jdField_e_of_type_Int;
+    localUpsImageUploadTask.iBatchID = this.b;
+    localUpsImageUploadTask.iBatchUploadCount = this.jdField_h_of_type_Int;
+    localUpsImageUploadTask.iBusiNessType = this.jdField_i_of_type_Int;
+    localUpsImageUploadTask.iCurrentUploadOrder = this.jdField_j_of_type_Int;
+    localUpsImageUploadTask.iSync = this.jdField_c_of_type_Int;
+    localUpsImageUploadTask.iUin = this.jdField_a_of_type_Long;
+    localUpsImageUploadTask.iUploadType = this.jdField_k_of_type_Int;
+    localUpsImageUploadTask.keepRaw = this.l;
+    localUpsImageUploadTask.md5 = this.jdField_h_of_type_JavaLangString;
+    localUpsImageUploadTask.preupload = this.jdField_d_of_type_Int;
+    localUpsImageUploadTask.reportRefer = this.jdField_d_of_type_JavaLangString;
+    localUpsImageUploadTask.sBusinessId = this.jdField_k_of_type_JavaLangString;
+    localUpsImageUploadTask.sCommand = this.jdField_j_of_type_JavaLangString;
+    localUpsImageUploadTask.sRefer = this.jdField_e_of_type_JavaLangString;
+    localUpsImageUploadTask.transferData = this.jdField_a_of_type_JavaUtilMap;
+    localUpsImageUploadTask.uiRefer = this.f;
+    localUpsImageUploadTask.uploadTaskCallback = this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
+    localUpsImageUploadTask.vBusiNessData = this.jdField_c_of_type_ArrayOfByte;
+    localUpsImageUploadTask.vLoginData = this.jdField_a_of_type_ArrayOfByte;
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask = localUpsImageUploadTask;
+    return this;
   }
   
-  private void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq clearRed", 2, "path = " + paramString);
-    }
-    ((azvi)paramQQAppInterface.getManager(36)).b(paramString);
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq reportRedInfo", 2, "path = " + paramString + "actId == " + paramInt);
-    }
-    if (paramString == null) {
-      return;
-    }
-    try
-    {
-      if (paramString.contains("\\.")) {}
-      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
-      {
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          paramString = ((azvi)paramQQAppInterface.getManager(36)).a(paramString);
-          localJSONObject.put("service_type", 0);
-          localJSONObject.put("actId", paramInt);
-          localJSONObject.put("obj_id", "");
-          localJSONObject.put("pay_amt", 0);
-          localJSONObject.put("service_id", i);
-          ((azvi)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
-          return;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          return;
-        }
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-        int i = 0;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    paramBundle.putString("path", this.jdField_a_of_type_JavaLangString);
-    paramBundle.putInt("act_id", this.jdField_a_of_type_Int);
-    paramBundle.putString("reportPath", this.b);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    Object localObject = paramBundle.getString("cmd");
-    if ("getRedInfo".equals(localObject))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-      }
-      paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-      localObject = new Bundle();
-      ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
-      paramBundle.putBundle("keyResponse", (Bundle)localObject);
-      super.a(paramBundle);
-    }
-    do
-    {
-      return;
-      if ("reportRedInfo".equals(localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-        }
-        a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        return;
-      }
-    } while (!"clearRedInfo".equals(localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-    }
-    a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    super.b(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("path");
-    this.jdField_a_of_type_Int = paramBundle.getInt("act_id");
-    this.b = paramBundle.getString("reportPath");
-  }
+  protected void a(int paramInt, Object... paramVarArgs) {}
 }
 
 

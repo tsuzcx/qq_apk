@@ -1,21 +1,45 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class obs
-  implements AdapterView.OnItemClickListener
+  implements bkzq
 {
-  public obs(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
+  obs(obm paramobm, oji paramoji, bkzi parambkzi) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramAdapterView = (obr)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Obv == null) {
+    int i = 1;
+    if (this.jdField_a_of_type_Obm.f) {
       return;
     }
-    this.a.jdField_a_of_type_Obv.a(paramAdapterView);
+    this.jdField_a_of_type_Obm.f = true;
+    if (paramInt + 1 == 1)
+    {
+      if (!AppConstants.KANDIAN_DAILY_UIN.equals(this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangString)) {
+        break label209;
+      }
+      olh.a(null, "", "0X8009947", "0X8009947", 0, 0, "", "", "", "", false);
+      i = 1;
+    }
+    label209:
+    for (;;)
+    {
+      this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Obm.jdField_a_of_type_Apar);
+      this.jdField_a_of_type_Obm.jdField_a_of_type_Apar = new apar(new obt(this, i));
+      this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Obm.jdField_a_of_type_Apar);
+      apaw.a(this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, paramInt);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      int j = 3;
+      i = j;
+      if (AppConstants.KANDIAN_DAILY_UIN.equals(this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangString))
+      {
+        olh.a(null, "", "0X8009943", "0X8009943", 0, 0, "", "", "", "", false);
+        i = j;
+      }
+    }
   }
 }
 

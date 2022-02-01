@@ -42,6 +42,7 @@ public abstract interface StyleContants$Name
   public static final String DISABLED = "disabled";
   public static final String ELLIPSIS = "ellipsis";
   public static final String ELLIPSIS_COLOR = "ellipsisColor";
+  public static final String EMOJI_SIZE = "emojiSize";
   public static final String FLEX = "flex";
   public static final String FLEX_DIRECTION = "flexDirection";
   public static final String FLEX_WRAP = "flexWrap";

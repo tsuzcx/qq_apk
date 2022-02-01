@@ -1,158 +1,86 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchStoryPollData;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchStoryPollData;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class wcj
-  implements vqp<wdw<qqstory_service.ReqBatchStoryPollData>, wfu>
+  extends wcd
 {
-  public static final String a;
-  public ArrayList<String> a;
+  protected int a;
+  protected int b;
   
-  static
+  public wcj(@NonNull String[] paramArrayOfString)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.batch_poll_data");
+    super(paramArrayOfString);
+    paramArrayOfString = (wjl)wjs.a(10);
+    this.jdField_a_of_type_Int = ((Integer)paramArrayOfString.b("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
+    this.b = ((Integer)paramArrayOfString.b("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
   }
   
-  public wcj(List<String> paramList)
+  protected void a(String[] paramArrayOfString, wce paramwce)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-  }
-  
-  public static void a(@NonNull List<String> paramList)
-  {
-    int j = paramList.size();
+    int m = paramArrayOfString.length;
     int i = 0;
-    while (i < j)
+    String str;
+    if (i < m)
     {
-      new wcj(paramList.subList(i, Math.min(i + 5, j))).a();
-      i += 5;
+      str = paramArrayOfString[i];
+      if (!a(str, this.jdField_a_of_type_Int)) {}
     }
-  }
-  
-  public void a()
-  {
-    Object localObject = new qqstory_service.ReqBatchStoryPollData();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      ((qqstory_service.ReqBatchStoryPollData)localObject).vid_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    localObject = new wdw(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
-    vqn.a().a((vqr)localObject, this);
-  }
-  
-  public void a(@NonNull wdw<qqstory_service.ReqBatchStoryPollData> paramwdw, @Nullable wfu paramwfu, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isFail()) || (paramwfu == null))
-    {
-      xvv.c("Q.qqstory.pollData.GetVidPollInfoHandler", "Error onCmdRespond:%s", paramErrorMessage);
-      return;
-    }
-    paramwdw = new qqstory_service.RspBatchStoryPollData();
-    Object localObject;
-    StoryVideoItem localStoryVideoItem;
-    int j;
-    qqstory_struct.UserInfo localUserInfo;
-    QQUserUIItem localQQUserUIItem;
     for (;;)
     {
-      try
+      i += 1;
+      break;
+      File localFile = new File(str);
+      double d = a(localFile);
+      File[] arrayOfFile = localFile.listFiles();
+      ArrayList localArrayList = new ArrayList();
+      int k = arrayOfFile.length;
+      int j = 0;
+      while (j < k)
       {
-        paramwdw.mergeFrom(paramwfu.a);
-        paramwfu = (vuu)vux.a(5);
-        paramErrorMessage = new wck();
-        i = 0;
-        if (i >= paramwdw.poll_info_list.size()) {
-          break;
-        }
-        localObject = (qqstory_struct.VidPollInfo)paramwdw.poll_info_list.get(i);
-        localStoryVideoItem = paramwfu.a(((qqstory_struct.VidPollInfo)localObject).vid.get().toStringUtf8());
-        if (localStoryVideoItem == null) {
-          break label271;
-        }
-        localStoryVideoItem.mPollUsers.clear();
-        localStoryVideoItem.mPollResult = ((qqstory_struct.VidPollInfo)localObject).self_poll_result.get();
-        int k = ((qqstory_struct.VidPollInfo)localObject).video_poll_result.size();
-        localStoryVideoItem.mPollNumbers = new int[k];
-        j = 0;
-        if (j < k)
-        {
-          localStoryVideoItem.mPollNumbers[j] = ((Integer)((qqstory_struct.VidPollInfo)localObject).video_poll_result.get(j)).intValue();
-          j += 1;
-          continue;
-        }
-        j = 0;
-      }
-      catch (InvalidProtocolBufferMicroException paramwdw)
-      {
-        xvv.c("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond Request parse Error!", paramwdw);
-        return;
-      }
-      while (j < ((qqstory_struct.VidPollInfo)localObject).video_poll_users.size())
-      {
-        localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidPollInfo)localObject).video_poll_users.get(j);
-        localQQUserUIItem = new QQUserUIItem();
-        localQQUserUIItem.convertFrom(localUserInfo);
-        localStoryVideoItem.mPollUsers.add(localQQUserUIItem);
+        localArrayList.add(new wck(this, arrayOfFile[j]));
         j += 1;
       }
-      paramwfu.a(localStoryVideoItem);
-      label271:
-      paramErrorMessage.a.add(localObject);
-      i += 1;
-    }
-    int i = 0;
-    while (i < paramwdw.rate_info_list.size())
-    {
-      localObject = (qqstory_struct.VidRateInfo)paramwdw.rate_info_list.get(i);
-      xvv.b("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond, VidRateInfo:[vid=%s, selfRateResult=%s, totalRateCount=%s, totalRateScore=%s]", ((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8(), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).self_rate_result.get()), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_count.get()), Long.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_score.get()));
-      localStoryVideoItem = paramwfu.a(((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8());
-      if (localStoryVideoItem != null)
+      Collections.sort(localArrayList);
+      int n = localArrayList.size();
+      k = 0;
+      j = 0;
+      while (j < n)
       {
-        localStoryVideoItem.mRateResult = ((qqstory_struct.VidRateInfo)localObject).self_rate_result.get();
-        localStoryVideoItem.mTotalRateCount = ((qqstory_struct.VidRateInfo)localObject).total_rate_count.get();
-        localStoryVideoItem.mTotalScore = ((qqstory_struct.VidRateInfo)localObject).total_rate_score.get();
-        localStoryVideoItem.mRateUsers.clear();
-        j = 0;
-        while (j < ((qqstory_struct.VidRateInfo)localObject).video_rate_users.size())
+        if (j % 150 == 0) {}
+        try
         {
-          localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidRateInfo)localObject).video_rate_users.get(j);
-          localQQUserUIItem = new QQUserUIItem();
-          localQQUserUIItem.convertFrom(localUserInfo);
-          localStoryVideoItem.mRateUsers.add(localQQUserUIItem);
+          Thread.sleep(100L);
+          if ((j % 20 == 0) && (a(str, this.b))) {
+            return;
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+          a(((wck)localArrayList.get(j)).a);
+          k += 1;
           j += 1;
         }
-        paramwfu.a(localStoryVideoItem);
       }
-      paramErrorMessage.b.add(localObject);
-      i += 1;
+      paramwce.jdField_a_of_type_Double = (d - a(localFile) + paramwce.jdField_a_of_type_Double);
+      paramwce.jdField_a_of_type_Int += k;
     }
-    vli.a().dispatch(paramErrorMessage);
-    yqh.a(QQStoryContext.a());
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    paramString = new File(paramString).listFiles();
+    if (paramString == null) {}
+    while (paramString.length <= paramInt) {
+      return true;
+    }
+    return false;
   }
 }
 

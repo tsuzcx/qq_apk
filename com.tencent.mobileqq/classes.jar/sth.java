@@ -1,14 +1,29 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface sth
+public class sth
+  extends stj
 {
-  public abstract int a(BaseData paramBaseData);
+  public sth(ssz paramssz)
+  {
+    super(paramssz);
+  }
   
-  public abstract stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
-  
-  public abstract boolean a(BaseData paramBaseData);
+  public void a(int paramInt, Object paramObject)
+  {
+    if (paramObject != null)
+    {
+      paramObject = ((String)paramObject).split(":", 2);
+      if ((paramObject != null) && (paramObject.length == 2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadinjoyPlayerReporter", 2, "PERFORMANCE_REPORT method:" + paramObject[0] + "\ntimeJson:" + paramObject[1]);
+        }
+        if ("prepare".equals(paramObject[0])) {
+          this.a.a.l = paramObject[1];
+        }
+      }
+    }
+  }
 }
 
 

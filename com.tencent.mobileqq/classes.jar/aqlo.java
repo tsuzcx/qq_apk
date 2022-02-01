@@ -1,46 +1,26 @@
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public class aqlo
+class aqlo
+  implements MiniAppCmdInterface
 {
-  private int a;
+  aqlo(aqlm paramaqlm, BaseChatPie paramBaseChatPie) {}
   
-  public static aqlo a(aptx paramaptx)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    localaqlo = new aqlo();
-    if (paramaptx != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramaptx.jdField_a_of_type_Int + " content->" + paramaptx.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        if (paramaptx.jdField_a_of_type_JavaLangString == null) {}
-        for (paramaptx = "";; paramaptx = paramaptx.jdField_a_of_type_JavaLangString)
-        {
-          localaqlo.jdField_a_of_type_Int = new JSONObject(paramaptx).optInt("suspiciousSwitch", 0);
-          return localaqlo;
-        }
-        return localaqlo;
-      }
-      catch (JSONException paramaptx)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramaptx.toString());
-        }
-      }
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retCode") == -12998002)) {
+      this.jdField_a_of_type_Aqlm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarJumpController", 2, "onCmdListener() isSuc = " + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlo
  * JD-Core Version:    0.7.0.1
  */

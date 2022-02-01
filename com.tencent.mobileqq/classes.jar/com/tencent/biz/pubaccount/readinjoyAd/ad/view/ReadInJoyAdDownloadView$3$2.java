@@ -2,13 +2,13 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView;
-import tyx;
-import tza;
+import una;
+import und;
 
 public class ReadInJoyAdDownloadView$3$2
   implements Runnable
 {
-  public ReadInJoyAdDownloadView$3$2(tza paramtza) {}
+  public ReadInJoyAdDownloadView$3$2(und paramund) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ReadInJoyAdDownloadView$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.2
  * JD-Core Version:    0.7.0.1
  */

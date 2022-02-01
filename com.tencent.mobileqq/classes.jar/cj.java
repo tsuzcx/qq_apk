@@ -1,6 +1,7 @@
 import android.os.AsyncTask;
 import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import java.util.Iterator;
@@ -18,7 +19,7 @@ public class cj
     for (;;)
     {
       return null;
-      paramVarArgs = (amqd)this.a.app.getBusinessHandler(8);
+      paramVarArgs = (ansr)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {

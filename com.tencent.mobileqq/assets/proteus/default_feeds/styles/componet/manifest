@@ -4,6 +4,7 @@ QA_partner_header_for_none_img_cell.geojson
 RIJ_biu_big_video.geojson
 RIJ_biu_more_image.geojson
 RIJ_biu_small_image_article.geojson
+RIJ_biu_small_video.geojson
 RIJ_bottom_mark.geojson
 RIJ_column_capsule.geojson
 RIJ_dislike_button.geojson
@@ -44,6 +45,7 @@ pgc_small_content.geojson
 pgc_video_content.geojson
 read_article.geojson
 separator.geojson
+separator_atmosphere_bottom.geojson
 separator_normal_bottom.geojson
 separator_special_bottom.geojson
 social_bottom.geojson

@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public final class wum
-  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
+public class wum
+  extends wup
 {
-  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public qqstory_service.RspGetPromoteTaskList a;
+  
+  public wum(byte[] paramArrayOfByte)
   {
-    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+    super(paramArrayOfByte);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList = new qqstory_service.RspGetPromoteTaskList();
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList.mergeFrom(paramArrayOfByte);
+      this.b = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList.result.error_desc.get().toStringUtf8();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList.result.error_code.get();
+      ykq.a("GetPromoteTaskResponse", "GetPromoteTaskResponse(): %s", zel.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList));
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.c("GetPromoteTaskResponse", "Error GetPromoteTaskResponse()", paramArrayOfByte);
+    }
   }
   
-  public XViewPager.SavedState[] a(int paramInt)
+  public String toString()
   {
-    return new XViewPager.SavedState[paramInt];
+    return zel.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList);
   }
 }
 

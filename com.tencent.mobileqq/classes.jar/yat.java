@@ -1,11 +1,8 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
+import android.view.View;
 
-public class yat
-  implements bagc
+public abstract interface yat
 {
-  public yat(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
-  
-  public void a() {}
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
 }
 
 

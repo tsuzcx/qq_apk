@@ -2,18 +2,18 @@ package com.tencent.avgame.gamelogic;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import mzl;
-import mzm;
+import nfc;
+import nfd;
 
 public class GameEngine$2$1
   implements Runnable
 {
-  public GameEngine$2$1(mzm parammzm) {}
+  public GameEngine$2$1(nfd paramnfd) {}
   
   public void run()
   {
     if (NetworkUtil.isNetworkAvailable()) {}
-    for (int i = 2131690295;; i = 2131690350)
+    for (int i = 2131690333;; i = 2131690390)
     {
       String str = BaseApplicationImpl.getApplication().getString(i);
       this.a.a.a(10, str, this.a.a.a());

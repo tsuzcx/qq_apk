@@ -1,40 +1,28 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
-class asvi
-  implements AdapterView.OnItemClickListener
+public class asvi
+  implements aqiy
 {
-  asvi(asvf paramasvf) {}
+  public asvi(SignalBombAnimationView paramSignalBombAnimationView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    paramAdapterView = this.a;
-    boolean bool;
-    if (!asvf.a(this.a))
-    {
-      bool = true;
-      asvf.a(paramAdapterView, bool);
-      if (this.a.jdField_a_of_type_Asqq != null) {
-        this.a.jdField_a_of_type_Asqq.a(asvf.a(this.a));
-      }
-      if (!asvf.a(this.a)) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_Aswr.a(false);
-      this.a.jdField_a_of_type_Aswr.b(false);
+    SignalBombAnimationView.a(this.a).setVisibility(4);
+    if (SignalBombAnimationView.a(this.a) != null) {
+      SignalBombAnimationView.a(this.a).b();
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Aswr.e(asvf.a(this.a));
-      return;
-      bool = false;
-      break;
-      label110:
-      this.a.jdField_a_of_type_Aswr.a(true);
-      this.a.h();
+    QLog.d("SignalBombAnimationViewExtendFriendLimitChat", 2, "onAnimationEnd");
+    if (SignalBombAnimationView.a(this.a) != null) {
+      SignalBombAnimationView.a(this.a).sendEmptyMessage(1);
     }
   }
+  
+  public void a(int paramInt) {}
+  
+  public void b() {}
 }
 
 

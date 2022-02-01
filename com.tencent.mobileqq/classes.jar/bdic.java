@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
-import java.util.List;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.HotChatInfoStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.HotChatManagerProxy.Proxy;
 
-class bdic
-  extends bdji<CreatingState>
+public final class bdic
+  implements RecentRoute.HotChatManagerProxy.Proxy
 {
-  bdic(bdhz parambdhz, CreatingState paramCreatingState, List paramList)
+  public HotChatInfoStub getHotCatInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
   {
-    super(paramCreatingState, paramList);
-  }
-  
-  public void a(CreatingState paramCreatingState)
-  {
-    super.a(paramCreatingState);
-    bdhz.a(this.a).d();
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
+    {
+      paramIMCoreAppRuntime = (HotChatManager)paramIMCoreAppRuntime.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(paramString);
+      }
+    }
+    return null;
   }
 }
 

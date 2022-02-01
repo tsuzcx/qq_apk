@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class alsr
-  implements Animation.AnimationListener
+class alsr
+  implements INetEngine.INetEngineListener
 {
-  public alsr(CmGameDebugView paramCmGameDebugView) {}
+  alsr(also paramalso) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onResp(NetResp paramNetResp)
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.mReq.getUserData();
+    if (paramNetResp.mResult != 0)
+    {
+      lbd.f("VideoFilterTools", "download IconFile failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + localFilterDesc.iconurl);
+      return;
+    }
+    if ((also.a(this.a).decrementAndGet() == 0) && (also.a(this.a) != null)) {
+      also.a(this.a).a(true);
+    }
+    lbd.f("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

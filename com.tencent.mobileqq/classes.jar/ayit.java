@@ -1,35 +1,37 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public final class ayit
-  implements INetEngine.IBreakDownFix
+class ayit
+  implements View.OnLongClickListener
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  ayit(ayih paramayih) {}
+  
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
+    }
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new ayja(this.a, paramView), paramView, 0);
+    localObject = ayih.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    ayih.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
     {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PortalManager", 2, "IBreakDownFix, " + paramNetResp);
+      this.a.a.removeView(paramView);
+      this.a.a.addView(ayih.a(this.a), i);
+      return true;
+    }
+    paramView.setVisibility(4);
+    return true;
   }
 }
 

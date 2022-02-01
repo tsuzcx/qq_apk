@@ -1,35 +1,6 @@
-import org.json.JSONObject;
-
-public class acgx
+abstract interface acgx
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  
-  public acgx(acgu paramacgu) {}
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
-      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
-      return true;
-    }
-    catch (Exception paramJSONObject)
-    {
-      acgp.a("KingKongNativePatch", "Parse parameter error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
-  }
+  public abstract boolean a(acfw paramacfw, String paramString, String... paramVarArgs);
 }
 
 

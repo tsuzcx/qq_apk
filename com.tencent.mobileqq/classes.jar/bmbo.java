@@ -1,6 +1,15 @@
-class bmbo
+import android.os.Bundle;
+
+public class bmbo
 {
-  private static final bmbk a = new bmbk(null);
+  public int a;
+  public Bundle a;
+  
+  bmbo(bmbm parambmbm, int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
 }
 
 

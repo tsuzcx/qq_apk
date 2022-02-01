@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.struct;
 
-import aqmi;
-import aqmj;
+import arpt;
+import arpu;
 
 public class PicAndAdConf$1
   implements Runnable
 {
-  public PicAndAdConf$1(aqmi paramaqmi, aqmj paramaqmj) {}
+  public PicAndAdConf$1(arpt paramarpt, arpu paramarpu) {}
   
   public void run()
   {

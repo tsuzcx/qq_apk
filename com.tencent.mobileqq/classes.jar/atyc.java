@@ -1,85 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.gamecenter.message.GameBasicInfo;
-import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-public class atyc
+class atyc
+  extends aahi
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  atyc(atxr paramatxr) {}
   
-  static
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    jdField_a_of_type_JavaLangString = atyn.jdField_a_of_type_JavaLangString + "GameDetailInfo";
-  }
-  
-  public static atyc a(GameBasicInfo paramGameBasicInfo, GameUserInfo paramGameUserInfo)
-  {
-    atyc localatyc = new atyc();
-    if ((paramGameBasicInfo == null) || (paramGameUserInfo == null)) {
-      return localatyc;
-    }
-    if ((TextUtils.isEmpty(paramGameBasicInfo.mAppId)) || (TextUtils.isEmpty(paramGameUserInfo.mAppId)))
+    if (paramFileInfo != null)
     {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "appId is empty.");
-      return localatyc;
-    }
-    if (!paramGameBasicInfo.mAppId.equals(paramGameUserInfo.mAppId))
-    {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "warning! appId should be the same!");
-      return localatyc;
-    }
-    localatyc.jdField_b_of_type_JavaLangString = paramGameUserInfo.mRoleId;
-    localatyc.jdField_c_of_type_JavaLangString = paramGameUserInfo.mAppId;
-    localatyc.jdField_d_of_type_JavaLangString = paramGameUserInfo.mFaceUrl;
-    localatyc.jdField_a_of_type_Int = paramGameUserInfo.mSex;
-    localatyc.g = paramGameUserInfo.mLevelPic;
-    localatyc.h = paramGameUserInfo.mLevelText;
-    localatyc.e = paramGameUserInfo.mNickInGame;
-    localatyc.f = paramGameUserInfo.mPartitioName;
-    localatyc.jdField_b_of_type_Int = paramGameUserInfo.mOnlineType;
-    localatyc.jdField_c_of_type_Int = paramGameUserInfo.mSwitchInGame;
-    localatyc.k = paramGameUserInfo.mOnLineDesc;
-    localatyc.i = paramGameBasicInfo.mName;
-    localatyc.j = paramGameBasicInfo.mIconUrl;
-    localatyc.l = paramGameBasicInfo.mStartGameUrl;
-    localatyc.jdField_d_of_type_Int = paramGameBasicInfo.mMsgMaxLen;
-    return localatyc;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder(600);
-      localStringBuilder.append(" roleId:").append(this.jdField_b_of_type_JavaLangString).append(",appid:").append(this.jdField_c_of_type_JavaLangString).append(",mSwitchInGame:").append(this.jdField_c_of_type_Int).append(",onlineType:").append(this.jdField_b_of_type_Int).append(",mOnLineDesc:").append(this.k).append(",partName:").append(this.f).append(",mMsgMaxLen:").append(this.jdField_d_of_type_Int).append(",levelText:").append(this.h).append(",gameName:").append(this.i).append(",sex:").append(this.jdField_a_of_type_Int).append(",nick:").append(this.e).append(",levelPic:").append(this.g).append(",iconUrl:").append(this.j).append(",faceUrl:").append(this.jdField_d_of_type_JavaLangString).append(",startGameUrl:").append(this.l);
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.d(jdField_a_of_type_JavaLangString, 0, localStringBuilder.toString());
+      String str = ContactUtils.getTroopMemberName(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_Atuz.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
+      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
+      if (this.a.jdField_a_of_type_Atxh != null) {
+        this.a.jdField_a_of_type_Atxh.b(str, paramFileInfo);
       }
-      return;
     }
-    catch (Throwable localThrowable)
-    {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, localThrowable.getMessage());
-    }
-  }
-  
-  public String toString()
-  {
-    return "GameDetailInfo{mRoleId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mAppId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mFaceUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mNickInGame='" + this.e + '\'' + ", mPartitioName='" + this.f + '\'' + ", mLevelPic='" + this.g + '\'' + ", mLevelText='" + this.h + '\'' + ", mSex=" + this.jdField_a_of_type_Int + ", mOnlineType=" + this.jdField_b_of_type_Int + ", mName='" + this.i + '\'' + ", mIconUrl='" + this.j + '\'' + ", mSwitchInGame=" + this.jdField_c_of_type_Int + ", mOnLineDesc='" + this.k + '\'' + ", mStartGameUrl='" + this.l + '\'' + ", mMsgMaxLen=" + this.jdField_d_of_type_Int + '}';
   }
 }
 

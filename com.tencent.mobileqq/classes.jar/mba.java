@@ -1,40 +1,81 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class mba
-  extends ldz
+class mba
+  extends maz
 {
-  public mba(AVActivity paramAVActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected void a(long paramLong1, long paramLong2)
+  mba(LinearLayout paramLinearLayout)
   {
-    if (this.a.isDestroyed()) {
-      return;
-    }
-    this.a.a.a(paramLong1, this.a, 4, 0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131373754));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373751));
+    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131373755);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131373757));
   }
   
-  protected void b(long paramLong, int paramInt1, int paramInt2)
+  Resources a()
   {
-    if (this.a.isDestroyed()) {
-      return;
-    }
-    paramLong = AudioHelper.b();
-    this.a.a.a(paramLong, this.a, 3, 2);
+    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
   }
   
-  protected void b(long paramLong1, long paramLong2)
+  void a()
   {
-    if (this.a.isDestroyed()) {
+    if (!a()) {}
+    do
+    {
       return;
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      }
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+  }
+  
+  boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null);
+  }
+  
+  boolean a(mbc parammbc)
+  {
+    a();
+    if ((parammbc.b) && (parammbc.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(parammbc.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    this.a.a.a(paramLong1, this.a, 4, 0);
+    if ((parammbc.c) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null)) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
+    if ((parammbc.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if ((parammbc.jdField_a_of_type_AndroidTextSpannableString != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
+      max.a(this.jdField_a_of_type_AndroidWidgetTextView, parammbc);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mba
  * JD-Core Version:    0.7.0.1
  */

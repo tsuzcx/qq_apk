@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aejr;
-import aejs;
-import aejt;
-import amtj;
+import afaz;
+import afba;
+import afbb;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import bfur;
+import anvx;
+import bhdj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
@@ -33,10 +33,10 @@ public class TranslucentTRansferFragment
     do
     {
       return;
-      localQQCustomDialog = bfur.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
-      localQQCustomDialog.setPositiveButton(amtj.a(2131714087), new aejr(this, localQQCustomDialog));
-      localQQCustomDialog.setNegativeButton(amtj.a(2131714085), new aejs(this, localQQCustomDialog));
-      localQQCustomDialog.setOnDismissListener(new aejt(this));
+      localQQCustomDialog = bhdj.a(getActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
+      localQQCustomDialog.setPositiveButton(anvx.a(2131714434), new afaz(this, localQQCustomDialog));
+      localQQCustomDialog.setNegativeButton(anvx.a(2131714432), new afba(this, localQQCustomDialog));
+      localQQCustomDialog.setOnDismissListener(new afbb(this));
     } while (getActivity().isFinishing());
     localQQCustomDialog.show();
   }
@@ -80,7 +80,7 @@ public class TranslucentTRansferFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TranslucentTRansferFragment
  * JD-Core Version:    0.7.0.1
  */

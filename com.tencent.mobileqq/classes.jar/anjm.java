@@ -1,21 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
-
-class anjm
-  implements DialogInterface.OnClickListener
+public class anjm
 {
-  anjm(anjl paramanjl, Activity paramActivity) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("back_for_hidden_chat", true);
-    paramDialogInterface.setFlags(603979776);
-    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
-    bcef.b(this.jdField_a_of_type_Anjl.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
+    if (this.c > 0) {
+      localStringBuilder.append(",mem:").append(this.c);
+    }
+    if (this.d > 0) {
+      localStringBuilder.append(",cpu:").append(this.d);
+    }
+    if (this.f != 0) {
+      localStringBuilder.append(",javaHeap:").append(this.f);
+    }
+    if (this.g != 0) {
+      localStringBuilder.append(",nativeHeap:").append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,17 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.danmaku.data.ViewDanmaku.1;
 
 public class arrt
-  implements DialogInterface.OnClickListener
+  extends arrs
 {
-  public arrt(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private arsw a;
+  private boolean e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public arrt(arru paramarru)
   {
-    this.a.a = false;
-    this.a.doOnBackPressed();
-    bcef.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
+    super(paramarru);
+  }
+  
+  public int a()
+  {
+    return -2147483647;
+  }
+  
+  public arsw a()
+  {
+    return this.a;
+  }
+  
+  public arsy a(arti paramarti)
+  {
+    if (this.a != null)
+    {
+      View localView = this.a.a(paramarti);
+      if (localView != null) {
+        arqu.a().a().a().post(new ViewDanmaku.1(this, localView));
+      }
+    }
+    return super.a(paramarti);
+  }
+  
+  public void a(arsw paramarsw)
+  {
+    this.a = paramarsw;
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.e = false;
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+  }
+  
+  public boolean i()
+  {
+    return this.e;
   }
 }
 

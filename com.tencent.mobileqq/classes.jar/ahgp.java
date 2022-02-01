@@ -1,35 +1,44 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-class ahgp
-  implements bhai<oidb_0x8ed.RspBody>
+public class ahgp
+  extends Handler
 {
-  ahgp(ahgo paramahgo) {}
-  
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public ahgp(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.tag, 2, "exitRoom: errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) || (paramInt == 1285))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
-        this.a.a.a.dismiss();
-      }
-      new Intent().putExtra("isNeedFinish", true);
-      bfyz.f(this.a.a.getActivity(), this.a.a.app.getCurrentAccountUin(), false);
-      awkz.a().d();
-      this.a.a.j = true;
-      this.a.a.finish(1);
+    }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
       return;
-    }
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
-      this.a.a.a.dismiss();
-    }
-    QQToast.a(this.a.a.getActivity(), 1, amtj.a(2131704196), 0).b(this.a.a.getTitleBarHeight());
+      i = paramMessage.arg1;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        return;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
   }
 }
 

@@ -164,6 +164,7 @@ public class NativeText
   
   protected void setRealText(CharSequence paramCharSequence)
   {
+    this.mText = paramCharSequence;
     if (this.mNative.getLayoutParams() == null)
     {
       Object localObject = getComLayoutParams();
@@ -175,10 +176,8 @@ public class NativeText
   
   public void setText(CharSequence paramCharSequence)
   {
-    if (!TextUtils.equals(paramCharSequence, this.mText))
-    {
-      this.mText = paramCharSequence;
-      setRealText(this.mText);
+    if (!TextUtils.equals(paramCharSequence, this.mText)) {
+      setRealText(paramCharSequence);
     }
   }
   
@@ -193,7 +192,7 @@ public class NativeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText
  * JD-Core Version:    0.7.0.1
  */

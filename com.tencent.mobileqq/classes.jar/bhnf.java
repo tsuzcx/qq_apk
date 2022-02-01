@@ -1,47 +1,135 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-final class bhnf
-  implements DialogInterface.OnClickListener
+class bhnf
+  extends VasQuickUpdateManager.CallBacker
 {
-  bhnf(int paramInt, Activity paramActivity, bhnm parambhnm) {}
+  bhnf(bhne parambhne) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramInt = 2;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
-      bhnb.a("0X80094F5");
-      paramInt = 1;
+    if ((16L != paramLong) || (TextUtils.isEmpty(paramString1))) {
+      return;
     }
+    Object localObject;
+    label94:
+    boolean bool;
+    label118:
+    int i;
+    if ((QLog.isColorLevel()) || (paramInt1 != 0))
+    {
+      localObject = new StringBuilder().append("callBacker, from:").append(paramString3).append(",httpCode=").append(paramInt2).append(",errorCode:").append(paramInt1).append(", scid:").append(paramString1).append(", cfgScid:").append(paramString2);
+      if (paramInt1 != 0)
+      {
+        paramVasQuickUpdateManager = ", Error ";
+        QLog.d("IndividualRedPacketResDownloader", 2, paramVasQuickUpdateManager);
+      }
+    }
+    else
+    {
+      if (paramInt1 != 0) {
+        break label328;
+      }
+      bool = true;
+      if (!bool) {
+        break label334;
+      }
+      i = 2;
+    }
+    label328:
+    label334:
+    label340:
+    String str;
     for (;;)
     {
-      bhnb.c(this.jdField_a_of_type_AndroidAppActivity, paramInt);
-      this.jdField_a_of_type_Bhnm.a(1);
-      paramDialogInterface.dismiss();
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 5))
+      try
       {
-        bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
-        bhnb.a("0X80094F4");
-        paramInt = 1;
-      }
-      else if (this.jdField_a_of_type_Int == 3)
-      {
-        bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398671);
-        bhnb.a("0X80094F6");
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Int == 4)
-        {
-          bhnb.b(this.jdField_a_of_type_AndroidAppActivity, 398690);
-          bhnb.a("0X80094F4");
+        if (!"iRedPacket_v3.json".equals(paramString1)) {
+          break label340;
         }
-        paramInt = 1;
+        this.a.a(true, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("IndividualRedPacketResDownloader", 2, "callBacker, from:" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2 + ", downloadOK=" + bool);
+        }
+        if ((TextUtils.isEmpty(paramString3)) || (!paramString3.startsWith("silent_download.redbag"))) {
+          break;
+        }
+        this.a.a();
+        return;
       }
+      catch (Exception paramVasQuickUpdateManager)
+      {
+        QLog.d("IndividualRedPacketResDownloader", 2, "callBacker, from:" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2, paramVasQuickUpdateManager);
+        return;
+      }
+      paramVasQuickUpdateManager = ", ok ";
+      break label94;
+      bool = false;
+      break label118;
+      i = -1;
+      continue;
+      if (!"iRedPacket_v3.char300.json".equals(paramString1)) {
+        break label481;
+      }
+      if (bool)
+      {
+        paramVasQuickUpdateManager = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata/vas/redpacket/" + "iRedPacket_v3.char300.json";
+        paramVasQuickUpdateManager = VasQuickUpdateManager.getFileFromLocal(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.char300.json", paramVasQuickUpdateManager, false, this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+        this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
+      }
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str = anxc.c;
+      if (!bool) {
+        break label669;
+      }
+      paramVasQuickUpdateManager = "1";
+      label453:
+      bdla.b((QQAppInterface)localObject, "CliOper", "", "", "0X800612D", "0X800612D", 0, 0, str, paramVasQuickUpdateManager, "1", "");
+    }
+    label481:
+    if ("iRedPacket_v3.font.zip".equals(paramString1))
+    {
+      this.a.jdField_a_of_type_Bhnj.e = i;
+      if (bool)
+      {
+        paramVasQuickUpdateManager = new File(anxc.a(null, null, 21, 0, 0));
+        this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
+      }
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str = anxc.c;
+      if (!bool) {
+        break label676;
+      }
+    }
+    label669:
+    label676:
+    for (paramVasQuickUpdateManager = "1";; paramVasQuickUpdateManager = "0")
+    {
+      bdla.b((QQAppInterface)localObject, "CliOper", "", "", "0X800612C", "0X800612C", 0, 0, str, paramVasQuickUpdateManager, "1", "");
+      break;
+      if ("iRedPacket_v3.specialChar.zip".equals(paramString1))
+      {
+        this.a.b.e = i;
+        if (!bool) {
+          break;
+        }
+        paramVasQuickUpdateManager = new File(anxc.a(null, null, 25, 0, 0));
+        this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
+        break;
+      }
+      if (!paramString1.startsWith("luckyMoney.item.")) {
+        break;
+      }
+      bhne.a(this.a, paramString1, bool);
+      break;
+      paramVasQuickUpdateManager = "0";
+      break label453;
     }
   }
 }

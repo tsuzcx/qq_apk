@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.message;
 
-import anmr;
+import aopk;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 
 public class UncommonMessageProcessor$3
   extends SendMessageHandler.SendMessageRunnable
 {
-  public UncommonMessageProcessor$3(anmr paramanmr, MessageRecord paramMessageRecord, long paramLong) {}
+  public UncommonMessageProcessor$3(aopk paramaopk, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
-    anmr.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Long, this.c, this.b);
+    aopk.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Long, this.c, this.b);
   }
 }
 

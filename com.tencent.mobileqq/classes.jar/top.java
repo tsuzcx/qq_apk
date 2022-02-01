@@ -1,29 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.18.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class top
-  implements tox
+  implements View.OnClickListener
 {
-  public top(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  public top(ChannelTopPositionView paramChannelTopPositionView) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
     if (QLog.isColorLevel()) {
-      ThreadManager.post(new ViolaBaseView.18.1(this, paramString), 8, null, true);
+      QLog.i("ChannelTopPositionView", 2, "onclick");
     }
+    if (ChannelTopPositionView.a(this.a) != null) {
+      PublicFragmentActivity.a(ChannelTopPositionView.a(this.a), ReadInJoySelectPositionFragment.class);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     top
  * JD-Core Version:    0.7.0.1
  */

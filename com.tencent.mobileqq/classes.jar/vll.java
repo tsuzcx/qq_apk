@@ -1,29 +1,18 @@
+import UserGrowth.eConfigBit;
+import UserGrowth.stUserConfigReq;
+import UserGrowth.stUserConfigRsp;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract class vll<T extends IEventReceiver, EVENT extends vko>
-  extends QQUIEventReceiver<T, EVENT>
+public class vll
+  extends vfo<stUserConfigRsp>
 {
-  public vll(T paramT)
+  public vll(@NonNull eConfigBit parameConfigBit)
   {
-    super(paramT);
+    super("UserConfig", 10005);
+    stUserConfigReq localstUserConfigReq = new stUserConfigReq();
+    localstUserConfigReq.config_set = parameConfigBit.value();
+    this.a = localstUserConfigReq;
   }
-  
-  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
-  {
-    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
-    {
-      c(paramT, paramEVENT);
-      return;
-    }
-    b(paramT, paramEVENT);
-  }
-  
-  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
-  
-  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

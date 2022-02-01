@@ -1,21 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
+import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public class bkns
-  implements DialogInterface.OnClickListener
+class bkns
+  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StReportExecuteRsp>
 {
-  public bkns(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  bkns(bknl parambknl, AsyncResult paramAsyncResult) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, INTERFACE.StReportExecuteRsp paramStReportExecuteRsp)
   {
-    QlinkShareJumpActivity.a(this.a, false);
-    this.a.finish();
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("response", paramStReportExecuteRsp);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
+      return;
+    }
+    catch (Throwable paramStReportExecuteRsp)
+    {
+      for (;;)
+      {
+        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStReportExecuteRsp);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkns
  * JD-Core Version:    0.7.0.1
  */

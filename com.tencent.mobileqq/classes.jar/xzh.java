@@ -1,20 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import friendlist.GetOnlineInfoResp;
 
 class xzh
-  extends SimpleJob<Object>
+  extends anvi
 {
-  xzh(xzd paramxzd, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
-  {
-    super(paramString1);
-  }
+  xzh(xzg paramxzg) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    xwa.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
+    while (xzg.a(this.a) == null) {
+      return;
+    }
+    paramString = xzg.a(this.a);
+    if (paramGetOnlineInfoResp.eIconType == 11) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString.b(paramBoolean);
+      return;
+    }
   }
 }
 

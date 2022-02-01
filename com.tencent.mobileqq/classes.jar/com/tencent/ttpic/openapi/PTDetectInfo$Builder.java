@@ -20,6 +20,7 @@ public class PTDetectInfo$Builder
   private float[] catFaceAngles;
   private List<PointF> catFacePoints;
   private Frame displacementMaskFrame;
+  private float[] face3DNormalRotationArray;
   private float[] face3DRotationArray;
   private float[] face3DVerticesArray;
   private Map<Integer, FaceActionCounter> faceActionCounter;
@@ -36,6 +37,8 @@ public class PTDetectInfo$Builder
   private List<PointF> handPoints;
   private boolean isFreezeInfo = false;
   private boolean needRender;
+  public List<PointF> noCropFaceoffPoints;
+  public List<PointF> normalFaceoffPoints;
   private Frame noseOcclusionFrame;
   private float phoneAngle;
   private float[] pointsVis;
@@ -85,6 +88,12 @@ public class PTDetectInfo$Builder
   public Builder displacementMaskFrame(Frame paramFrame)
   {
     this.displacementMaskFrame = paramFrame;
+    return this;
+  }
+  
+  public Builder face3DNormalRotationArray(float[] paramArrayOfFloat)
+  {
+    this.face3DNormalRotationArray = paramArrayOfFloat;
     return this;
   }
   
@@ -181,6 +190,18 @@ public class PTDetectInfo$Builder
   public Builder needRender(boolean paramBoolean)
   {
     this.needRender = paramBoolean;
+    return this;
+  }
+  
+  public Builder noCropFaceoffPoints(List<PointF> paramList)
+  {
+    this.noCropFaceoffPoints = paramList;
+    return this;
+  }
+  
+  public Builder normalFaceoffPoints(List<PointF> paramList)
+  {
+    this.normalFaceoffPoints = paramList;
     return this;
   }
   

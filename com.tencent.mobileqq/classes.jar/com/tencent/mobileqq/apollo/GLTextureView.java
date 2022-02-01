@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.apollo;
 
-import alqh;
-import alqj;
-import alqk;
-import alql;
-import alqm;
-import alqn;
-import alqo;
-import alqq;
-import alqr;
-import alqt;
+import amph;
+import ampj;
+import ampk;
+import ampl;
+import ampm;
+import ampn;
+import ampo;
+import ampp;
+import ampr;
+import amps;
+import ampu;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -46,20 +47,23 @@ public class GLTextureView
   public static final int RENDERMODE_WHEN_DIRTY = 0;
   private static final String TAG = "GLTextureView";
   private static int sGLESVersion;
-  private static final alqq sGLThreadManager = new alqq(null);
+  private static final ampr sGLThreadManager = new ampr(null);
   private static int sThreadName;
   private boolean mCreateContextFailed;
   private int mDebugFlags;
   private boolean mDestroyOnAsync;
   private boolean mDetached;
   protected boolean mDisableCreateRenderThread;
-  private alqm mEGLConfigChooser;
+  private ampn mEGLConfigChooser;
   private int mEGLContextClientVersion;
-  private alqn mEGLContextFactory;
-  private alqo mEGLWindowSurfaceFactory;
+  private ampo mEGLContextFactory;
+  private ampp mEGLWindowSurfaceFactory;
   private Runnable mForceSetAlphaTask = new GLTextureView.4(this);
   protected GLTextureView.GLThread mGLThread;
-  private alqr mGLWrapper;
+  private amps mGLWrapper;
+  private boolean mIsOffscreen;
+  private int mOffscreenHeight;
+  private int mOffscreenWidth;
   private boolean mPreserveEGLContextOnPause;
   private GLSurfaceView.Renderer mRenderer;
   private boolean mSurfaceHadDraw;
@@ -126,7 +130,7 @@ public class GLTextureView
       sGLESVersion = getInt(getContext(), "ro.opengles.version", 0).intValue();
     }
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new alqh(this));
+    addOnLayoutChangeListener(new amph(this));
     setViewAlpha(0.0F);
   }
   
@@ -323,18 +327,18 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new alqj(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new ampj(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
-  public void setEGLConfigChooser(alqm paramalqm)
+  public void setEGLConfigChooser(ampn paramampn)
   {
     checkRenderThreadState();
-    this.mEGLConfigChooser = paramalqm;
+    this.mEGLConfigChooser = paramampn;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new alqt(this, paramBoolean));
+    setEGLConfigChooser(new ampu(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -343,21 +347,32 @@ public class GLTextureView
     this.mEGLContextClientVersion = paramInt;
   }
   
-  public void setEGLContextFactory(alqn paramalqn)
+  public void setEGLContextFactory(ampo paramampo)
   {
     checkRenderThreadState();
-    this.mEGLContextFactory = paramalqn;
+    this.mEGLContextFactory = paramampo;
   }
   
-  public void setEGLWindowSurfaceFactory(alqo paramalqo)
+  public void setEGLWindowSurfaceFactory(ampp paramampp)
   {
     checkRenderThreadState();
-    this.mEGLWindowSurfaceFactory = paramalqo;
+    this.mEGLWindowSurfaceFactory = paramampp;
   }
   
-  public void setGLWrapper(alqr paramalqr)
+  public void setGLWrapper(amps paramamps)
   {
-    this.mGLWrapper = paramalqr;
+    this.mGLWrapper = paramamps;
+  }
+  
+  public void setOffscreenMode(boolean paramBoolean)
+  {
+    this.mIsOffscreen = paramBoolean;
+  }
+  
+  public void setOffscreenSize(int paramInt1, int paramInt2)
+  {
+    this.mOffscreenWidth = paramInt1;
+    this.mOffscreenHeight = paramInt2;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -374,18 +389,25 @@ public class GLTextureView
   {
     checkRenderThreadState();
     if (this.mEGLConfigChooser == null) {
-      this.mEGLConfigChooser = new alqt(this, true);
+      this.mEGLConfigChooser = new ampu(this, true);
     }
     if (this.mEGLContextFactory == null) {
-      this.mEGLContextFactory = new alqk(this, null);
+      this.mEGLContextFactory = new ampk(this, null);
     }
     if (this.mEGLWindowSurfaceFactory == null) {
-      this.mEGLWindowSurfaceFactory = new alql(null);
+      if (!this.mIsOffscreen) {
+        break label152;
+      }
     }
-    this.mRenderer = paramRenderer;
-    this.mGLThread = new GLTextureView.GLThread(this.mThisWeakRef, getRenderThreadName());
-    this.mGLThread.setName(this.mGLThread.getName() + "_" + this.mGLThread.getId());
-    this.mGLThread.start();
+    label152:
+    for (this.mEGLWindowSurfaceFactory = new ampl(this.mOffscreenWidth, this.mOffscreenHeight);; this.mEGLWindowSurfaceFactory = new ampm(null))
+    {
+      this.mRenderer = paramRenderer;
+      this.mGLThread = new GLTextureView.GLThread(this.mThisWeakRef, getRenderThreadName());
+      this.mGLThread.setName(this.mGLThread.getName() + "_" + this.mGLThread.getId());
+      this.mGLThread.start();
+      return;
+    }
   }
   
   public void surfaceChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)

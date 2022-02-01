@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.studymode;
 
-import amtj;
-import amux;
-import amvb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,23 +16,26 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import bcnh;
-import bcni;
-import bcnj;
-import bcnk;
-import bcnl;
-import bcnm;
-import bcnn;
-import bcno;
-import bcnp;
-import bcnq;
-import bcnr;
-import bcns;
-import bcnt;
-import bcnu;
-import bcnv;
-import bcoo;
-import bfur;
+import anvx;
+import anxl;
+import anxo;
+import bdug;
+import bduh;
+import bdui;
+import bduj;
+import bduk;
+import bdul;
+import bdum;
+import bdun;
+import bduo;
+import bdup;
+import bduq;
+import bdur;
+import bdus;
+import bdut;
+import bduu;
+import bdvn;
+import bhdj;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleGetCircleSwitchRequest;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -55,28 +55,28 @@ public class KidModeAdvanceSettingFragment
   extends IphoneTitleBarFragment
 {
   private View jdField_a_of_type_AndroidViewView;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bcnn(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bdum(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcnu jdField_a_of_type_Bcnu = new bcnh(this);
+  private bdut jdField_a_of_type_Bdut = new bdug(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new bcnp(this);
+  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new bduo(this);
   private FormMultiLineSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private boolean jdField_a_of_type_Boolean;
-  private CompoundButton.OnCheckedChangeListener jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bcnk(this);
+  private CompoundButton.OnCheckedChangeListener jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bduj(this);
   private FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private boolean jdField_b_of_type_Boolean;
-  private CompoundButton.OnCheckedChangeListener jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bcnl(this);
+  private CompoundButton.OnCheckedChangeListener jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new bduk(this);
   private FormSwitchItem jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private CompoundButton.OnCheckedChangeListener d = new bcnm(this);
+  private CompoundButton.OnCheckedChangeListener d = new bdul(this);
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369561));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369562));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369563));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem = ((FormMultiLineSwitchItem)this.mContentView.findViewById(2131369559));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369560);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369730));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369731));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369732));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem = ((FormMultiLineSwitchItem)this.mContentView.findViewById(2131369728));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131369729);
     b();
     f();
     g();
@@ -87,16 +87,16 @@ public class KidModeAdvanceSettingFragment
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = false;
-      bcnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+      bduu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
       return;
     }
-    int i = bcoo.b();
+    int i = bdvn.b();
     if (i == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarFragment", 1, new Object[] { "isBindPhoneStatus: ", Integer.valueOf(i), ", setUrl: ", bcoo.b() });
+        QLog.d("IphoneTitleBarFragment", 1, new Object[] { "isBindPhoneStatus: ", Integer.valueOf(i), ", setUrl: ", bdvn.b() });
       }
       if (!this.jdField_a_of_type_Boolean) {
         break label109;
@@ -168,27 +168,27 @@ public class KidModeAdvanceSettingFragment
   
   private void b()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374314)).setText(amtj.a(2131693261));
-    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131374315);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374552)).setText(anvx.a(2131693441));
+    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131374553);
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131374316)).inflate();
+      localView1 = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131374554)).inflate();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131377583));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131377857));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimensionPixelSize(2131296772));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimensionPixelSize(2131296773));
     this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT);
     c();
   }
   
   private void b(int paramInt)
   {
-    bcoo.a(-1);
+    bdvn.a(-1);
     QQAppInterface localQQAppInterface = getActivity().app;
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.a()) {}
     for (int i = 1;; i = 0)
     {
-      bcnv.a(localQQAppInterface, paramInt, i);
+      bduu.a(localQQAppInterface, paramInt, i);
       return;
     }
   }
@@ -218,7 +218,7 @@ public class KidModeAdvanceSettingFragment
     for (paramBoolean = true;; paramBoolean = false)
     {
       a(localFormSwitchItem, paramBoolean, (CompoundButton.OnCheckedChangeListener)localObject);
-      QQToast.a(getActivity(), 1, 2131693961, 0).a();
+      QQToast.a(getActivity(), 1, 2131694152, 0).a();
       return;
       localFormSwitchItem = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       localObject = this.d;
@@ -235,7 +235,7 @@ public class KidModeAdvanceSettingFragment
     if (paramBoolean) {}
     for (;;)
     {
-      bcnv.a((QQAppInterface)localObject, paramInt, i);
+      bduu.a((QQAppInterface)localObject, paramInt, i);
       return;
       i = 0;
     }
@@ -243,16 +243,16 @@ public class KidModeAdvanceSettingFragment
   
   private void c()
   {
-    int i = amvb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = anxo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(amtj.a(2131693260), new Object[] { String.valueOf(i) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(anvx.a(2131693440), new Object[] { String.valueOf(i) }));
     }
   }
   
   private void c(int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(getActivity(), 230).setTitle(amtj.a(2131693252)).setMessage(getString(2131693251, new Object[] { bcoo.a() })).setNegativeButton(amtj.a(2131693274), new bcni(this)).setPositiveButton(amtj.a(2131693265), new bcnt(this, paramInt));
-    localQQCustomDialog.setOnCancelListener(new bcnj(this));
+    QQCustomDialog localQQCustomDialog = bhdj.a(getActivity(), 230).setTitle(anvx.a(2131693432)).setMessage(getString(2131693431, new Object[] { bdvn.a() })).setNegativeButton(anvx.a(2131693454), new bduh(this)).setPositiveButton(anvx.a(2131693445), new bdus(this, paramInt));
+    localQQCustomDialog.setOnCancelListener(new bdui(this));
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing())) {
       localQQCustomDialog.show();
@@ -267,7 +267,7 @@ public class KidModeAdvanceSettingFragment
     if ((QzoneConfig.isQQCircleShowLebaEntrance()) && (QzoneConfig.isQQCircleShowSwitchButton()))
     {
       QCircleGetCircleSwitchRequest localQCircleGetCircleSwitchRequest = new QCircleGetCircleSwitchRequest("qqcircle", "qqcircle_entrance_enable");
-      VSNetworkHelper.getInstance().sendRequest(localQCircleGetCircleSwitchRequest, new bcno(this));
+      VSNetworkHelper.getInstance().sendRequest(localQCircleGetCircleSwitchRequest, new bdun(this));
     }
   }
   
@@ -290,7 +290,7 @@ public class KidModeAdvanceSettingFragment
   private void g()
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormMultiLineSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bcnq(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bdup(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.d);
@@ -299,7 +299,7 @@ public class KidModeAdvanceSettingFragment
   private void h()
   {
     this.jdField_b_of_type_Boolean = true;
-    QQCustomDialog localQQCustomDialog = bfur.a(getActivity(), 230).setTitle(amtj.a(2131694336)).setMessage(amtj.a(2131693255)).setNegativeButton(amtj.a(2131690600), new bcns(this)).setPositiveButton(amtj.a(2131693254), new bcnr(this));
+    QQCustomDialog localQQCustomDialog = bhdj.a(getActivity(), 230).setTitle(anvx.a(2131694537)).setMessage(anvx.a(2131693435)).setNegativeButton(anvx.a(2131690677), new bdur(this)).setPositiveButton(anvx.a(2131693434), new bduq(this));
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing())) {
       localQQCustomDialog.show();
@@ -309,13 +309,13 @@ public class KidModeAdvanceSettingFragment
   private void i()
   {
     boolean bool1 = true;
-    boolean bool2 = bcoo.b(16);
-    boolean bool3 = bcoo.b(32);
-    boolean bool4 = bcoo.b(8);
+    boolean bool2 = bdvn.b(16);
+    boolean bool3 = bdvn.b(32);
+    boolean bool4 = bdvn.b(8);
     a(16, bool2);
     a(32, bool3);
     a(8, bool4);
-    if ((bcoo.a() == 1) && (bcoo.b() == 0)) {}
+    if ((bdvn.a() == 1) && (bdvn.b() == 0)) {}
     for (;;)
     {
       a(4, bool1);
@@ -331,13 +331,13 @@ public class KidModeAdvanceSettingFragment
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
       a();
-      bcnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bduu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
   
   public int getContentLayoutId()
   {
-    return 2131561122;
+    return 2131561183;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -346,9 +346,9 @@ public class KidModeAdvanceSettingFragment
     if ((getActivity().getAppRuntime() instanceof QQAppInterface)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Bcnu);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Bdut);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addLebaListener(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
-    if (bcoo.b() == 0) {}
+    if (bdvn.b() == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -359,16 +359,16 @@ public class KidModeAdvanceSettingFragment
   public View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131693249));
+    setTitle(getActivity().getString(2131693429));
     return localView;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Bcnu);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Bdut);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeLebaListener(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
-    bcnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "86", "", 0, null);
+    bduu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "86", "", 0, null);
   }
   
   public void onResume()
@@ -380,7 +380,7 @@ public class KidModeAdvanceSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,64 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class nov
+  extends RecyclerView.Adapter<noy>
 {
-  private static final String a = nov.class.getName();
+  private List<ngc> jdField_a_of_type_JavaUtilList = new ArrayList(0);
   
-  public static String a(String paramString)
+  public nov(List<ngc> paramList)
   {
-    localStringBuffer = new StringBuffer();
-    try
-    {
-      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
-      for (;;)
-      {
-        String str = paramString.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuffer.append(str);
-      }
-      return localStringBuffer.toString();
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public ngc a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (ngc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    catch (Exception paramString)
+    return null;
+  }
+  
+  public noy a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558751, paramViewGroup, false);
+    return new noy(this, paramViewGroup, (ImageView)paramViewGroup.findViewById(2131363203), (ImageView)paramViewGroup.findViewById(2131363204), (TextView)paramViewGroup.findViewById(2131363205));
+  }
+  
+  public void a(noy paramnoy, int paramInt)
+  {
+    ngc localngc = a(paramInt);
+    if (localngc == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "http error");
-      }
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramnoy, paramInt, getItemId(paramInt));
+      return;
+    }
+    paramnoy.jdField_a_of_type_Ngc = localngc;
+    noq.a(localngc.c, paramnoy.jdField_a_of_type_AndroidWidgetImageView);
+    if ((localngc.b != null) && (localngc.b.length() > 0)) {
+      noq.a(localngc.b, paramnoy.b);
+    }
+    for (;;)
+    {
+      paramnoy.itemView.setOnClickListener(new now(this, localngc));
+      paramnoy.itemView.setOnTouchListener(new nox(this));
+      break;
+      paramnoy.jdField_a_of_type_AndroidWidgetTextView.setText(localngc.a);
+      paramnoy.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
   
-  public static void a(String paramString, nox paramnox)
+  public int getItemCount()
   {
-    new now(paramnox, paramString).execute(new Void[0]);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

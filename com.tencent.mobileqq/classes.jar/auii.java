@@ -1,14 +1,33 @@
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
+import mqq.app.MobileQQ;
 
-public abstract interface auii
-  extends View.OnTouchListener
+class auii
+  implements bmsc<WeiyunPB.PwdQueryMsgRsp>
 {
-  public abstract void a(View paramView, int paramInt);
+  auii(auie paramauie) {}
   
-  public abstract void b(View paramView, int paramInt);
+  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    }
+    auie.a(this.a).getFileManagerNotifyCenter().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
+  }
   
-  public abstract void c(auhb paramauhb, int paramInt);
+  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
+    }
+    bmsd.a(auie.a(this.a).getApplication().getApplicationContext(), true);
+    if (paramPwdQueryMsgRsp.pwd_open.get()) {
+      bmsd.b(auie.a(this.a).getApplication().getApplicationContext(), true);
+    }
+    auie.a(this.a).getFileManagerNotifyCenter().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
+  }
 }
 
 

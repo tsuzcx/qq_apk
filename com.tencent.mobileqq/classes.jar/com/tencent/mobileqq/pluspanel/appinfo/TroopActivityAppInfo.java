@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agwt;
+import ahpt;
+import ahvi;
 import android.os.Bundle;
-import ayfu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -14,7 +15,7 @@ public class TroopActivityAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842466;
+    return 2130842496;
   }
   
   public int getAppID()
@@ -30,15 +31,15 @@ public class TroopActivityAppInfo
     return BaseApplicationImpl.getContext().getString(2131689489);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramayfu = new Bundle();
-    paramayfu.putString("troop_uin", paramSessionInfo.curFriendUin);
-    paramayfu.putBoolean("hide_operation_bar", true);
-    paramayfu.putBoolean("hide_more_button", true);
-    paramayfu.putBoolean("isScreenOrientationPortrait", true);
-    TroopUtils.startTroopAppActivityActivity(paramBaseChatPie.app, paramBaseChatPie.getActivity(), paramayfu);
-    agwt.a(paramBaseChatPie.app, "0X8005CB8", paramSessionInfo.curType);
+    paramahvi = new Bundle();
+    paramahvi.putString("troop_uin", paramSessionInfo.curFriendUin);
+    paramahvi.putBoolean("hide_operation_bar", true);
+    paramahvi.putBoolean("hide_more_button", true);
+    paramahvi.putBoolean("isScreenOrientationPortrait", true);
+    TroopUtils.startTroopAppActivityActivity(paramBaseChatPie.app, paramBaseChatPie.getActivity(), paramahvi);
+    ahpt.a(paramBaseChatPie.app, "0X8005CB8", paramSessionInfo.curType);
   }
 }
 

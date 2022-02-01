@@ -1,19 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.NearByAssistantTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public final class acwk
-  implements bhbx
+public class acwk
+  implements acos
 {
-  public acwk(Context paramContext) {}
-  
-  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public int a()
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.NearByAssistantTmp localNearByAssistantTmp = new msg_svc.NearByAssistantTmp();
+    localNearByAssistantTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.getMsgCache().p(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("nearby_assistant", 4, "发送附近人助手临时会话消息 有NearbyAssistantKey------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localNearByAssistantTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    }
+    paramRoutingHead.nearby_assistant_tmp.set(localNearByAssistantTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8014;
   }
 }
 

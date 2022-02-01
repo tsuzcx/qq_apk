@@ -1,22 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class atdt
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public Bundle a;
-  String a;
-  public String b;
+  public atdt(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public atdt(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdt
  * JD-Core Version:    0.7.0.1
  */

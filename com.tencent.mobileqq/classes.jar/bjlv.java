@@ -1,32 +1,46 @@
-import com.tencent.tar.jni.ScanFeatureFilterView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public final class bjlv
+public class bjlv
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public float b;
-  public int b;
-  public long b;
-  public boolean b;
+  protected static Lock a = new ReentrantLock();
   
-  public float a(int paramInt, long paramLong)
+  public static void a(Context paramContext)
   {
-    if (paramLong < this.jdField_b_of_type_Long) {
-      return 0.0F;
+    SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("appcenter_app_report", 0).edit();
+    localEditor.putLong("app_last_fullReport_success_time", SystemClock.currentThreadTimeMillis());
+    localEditor.putBoolean("is_app_last_fullReport_success", true);
+    localEditor.putBoolean("is_incremental_report_overflow", false);
+    localEditor.commit();
+    if (new File(paramContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists())
+    {
+      a.lock();
+      paramContext.deleteFile("appcenter_app_report_storage_file.txt");
+      a.unlock();
     }
-    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
   }
   
-  public void a()
+  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, WebView paramWebView, String paramString3) {}
+  
+  public static void a(Context paramContext, String paramString1, WebView paramWebView, String paramString2, boolean paramBoolean) {}
+  
+  public static void b(Context paramContext)
   {
-    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("appcenter_app_report", 0).edit();
+    localEditor.putBoolean("is_app_last_fullReport_success", false);
+    localEditor.commit();
+    if (new File(paramContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists())
+    {
+      a.lock();
+      paramContext.deleteFile("appcenter_app_report_storage_file.txt");
+      a.unlock();
+    }
   }
 }
 

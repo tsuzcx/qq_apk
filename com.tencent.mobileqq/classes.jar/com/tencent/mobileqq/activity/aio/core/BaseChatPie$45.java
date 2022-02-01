@@ -1,26 +1,28 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import bcef;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XEditTextEx;
 
 class BaseChatPie$45
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   BaseChatPie$45(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    this.this$0.setRequestedOrientation4Recording(true);
+    this.this$0.cancelRemainScreenOn();
+    this.this$0.recorderVolumeChange(0);
+    this.this$0.input.setEnabled(true);
+    if (this.val$isNoPermission)
     {
-    default: 
-      return;
-    case 0: 
-      bcef.b(this.this$0.app, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      this.this$0.showAbnormalRecordDlg();
       return;
     }
-    BaseChatPie.access$1400(this.this$0, this.val$fromFlingToR);
-    bcef.b(this.this$0.app, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    QQToast.a(this.this$0.app.getApp(), 2131690019, 1).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131299080));
   }
 }
 

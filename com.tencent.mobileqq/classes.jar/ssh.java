@@ -1,15 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
 
-public class ssh
-  extends DataSetObserver
+public final class ssh
+  implements Parcelable.Creator<DiscoveryInfo>
 {
-  public ssh(FastWebActivity paramFastWebActivity) {}
-  
-  public void onChanged()
+  public DiscoveryInfo a(Parcel paramParcel)
   {
-    super.onChanged();
-    if (FastWebActivity.a(this.a) == null) {}
+    return new DiscoveryInfo(paramParcel);
+  }
+  
+  public DiscoveryInfo[] a(int paramInt)
+  {
+    return new DiscoveryInfo[paramInt];
   }
 }
 

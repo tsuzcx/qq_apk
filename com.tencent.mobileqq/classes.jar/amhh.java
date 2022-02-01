@@ -1,79 +1,16 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amhh
-  implements INetEngine.INetEngineListener
+  implements View.OnClickListener
 {
-  amhh(amhg paramamhg, String paramString, amhe paramamhe) {}
+  amhh(amhg paramamhg) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onClick(View paramView)
   {
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
-    if (this.jdField_a_of_type_Amhg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
-      this.jdField_a_of_type_Amhg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
-    }
-    if (paramNetResp.mResult == 0)
-    {
-      paramNetResp = new File(localHttpNetReq.mOutPath);
-      if (!paramNetResp.exists()) {}
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          paramNetResp = paramNetResp.getParent();
-          FileUtils.uncompressZip(localHttpNetReq.mOutPath, paramNetResp, false);
-          amhf.a(this.jdField_a_of_type_Amhe.b);
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          if (this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi != null)
-          {
-            this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(100);
-            this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(0, "Download Complete!!!");
-          }
-          this.jdField_a_of_type_Amhg.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception paramNetResp)
-        {
-          paramNetResp.printStackTrace();
-        }
-        int i = 0;
-      }
-    } while (this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi == null);
-    this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(2, "");
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi != null) {
-        this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(i);
-      }
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    amhg.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

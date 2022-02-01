@@ -6,6 +6,7 @@ class YtFSM$YtFSMUpdateData
   int imageHeight;
   int imageType;
   int imageWidth;
+  long timeStamp;
   
   private YtFSM$YtFSMUpdateData(YtFSM paramYtFSM) {}
 }

@@ -1,54 +1,37 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ainx
-  extends amsu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ainx(ainq paramainq) {}
+  ainx(ainw paramainw) {}
   
-  public void onConversationRecommendTypeChange(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
-    }
-    ainq.c(this.a, paramInt);
-  }
-  
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ainq.a(this.a, false, false);
-    }
-  }
-  
-  public void onRecommendTroopJoinedOrDeleted(String paramString)
-  {
-    if ((ainq.a(this.a) instanceof aisd)) {
-      ((aisd)ainq.a(this.a)).a(paramString);
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + ainq.b(this.a));
-    }
-    if (ainq.b(this.a))
+    if (paramBoolean)
     {
-      int i = ainq.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + ainq.b(this.a) + "  defaultPos:" + i);
+      if (this.a.a().e()) {
+        this.a.a(true);
       }
-      if (ainq.b(this.a) != i)
-      {
-        ainq.c(this.a, true);
-        ainq.b(this.a, i);
-        ainq.c(this.a, false);
+      ainw.a(this.a, true);
+      ainw.a(this.a).setText(2131718525);
+      this.a.a().c(true);
+      ainw.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      ainw.a(this.a, false);
+      ainw.a(this.a).setText(2131718523);
+      if ((this.a.a().f()) && (StringUtil.isEmpty(this.a.a.a()))) {
+        this.a.a(false);
       }
-      ainq.b(this.a, false);
+      this.a.a().c(false);
+      ainw.b(this.a);
     }
   }
 }

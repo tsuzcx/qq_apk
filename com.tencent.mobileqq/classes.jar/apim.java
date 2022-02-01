@@ -1,41 +1,58 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class apim
-  implements BusinessObserver
+public abstract class apim
+  extends Binder
+  implements apil
 {
-  protected void a(boolean paramBoolean, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, List<aphw> paramList) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public apim()
   {
-    if (paramInt == 1)
-    {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+  }
+  
+  public static apil a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    do
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof apil))) {
+      return (apil)localIInterface;
+    }
+    return new apin(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      return;
-      if (paramInt == 2)
-      {
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
-        return;
-      }
-      if (paramInt == 3)
-      {
-        a(paramBoolean, ((Boolean)paramObject).booleanValue());
-        return;
-      }
-    } while (paramInt != 6);
-    a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

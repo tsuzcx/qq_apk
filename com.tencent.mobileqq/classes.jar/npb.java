@@ -1,24 +1,17 @@
-import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class npb
-  implements bjoe
+public class npb
+  implements View.OnClickListener
 {
-  npb(noy paramnoy, Activity paramActivity, String paramString, bjnw parambjnw) {}
+  public npb(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    AVGameRoomCenterFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

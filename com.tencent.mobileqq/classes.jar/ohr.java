@@ -1,104 +1,69 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ohr
+  extends ohj
 {
-  public static int a(AppRuntime paramAppRuntime, String paramString)
+  public long a;
+  public ohs a;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  
+  public static ohr a(JSONObject paramJSONObject)
   {
-    try
+    if (paramJSONObject == null) {}
+    ohr localohr;
+    Object localObject;
+    for (;;)
     {
-      int i = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getInt(paramString, 0);
-      return i;
+      return null;
+      localohr = new ohr();
+      try
+      {
+        localObject = paramJSONObject.optJSONObject("video");
+        if (localObject != null)
+        {
+          localohr.e = ((JSONObject)localObject).optString("coverUrl");
+          localohr.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
+          if (TextUtils.isEmpty(localohr.jdField_d_of_type_JavaLangString))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AdModuleVideo", 2, "video url is null");
+            return null;
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
     }
-    catch (Exception paramAppRuntime)
+    localohr.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
+    localohr.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
+    localohr.f = paramJSONObject.optString("linkUrl");
+    paramJSONObject = paramJSONObject.optString("appInfo");
+    if (!TextUtils.isEmpty(paramJSONObject))
     {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramAppRuntime);
+      paramJSONObject = new JSONObject(paramJSONObject);
+      localObject = new ohs();
+      ((ohs)localObject).a = paramJSONObject.optString("appid");
+      ((ohs)localObject).b = paramJSONObject.optString("scheme");
+      ((ohs)localObject).c = paramJSONObject.optString("packageName");
+      ((ohs)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
+      ((ohs)localObject).e = paramJSONObject.optString("appName");
+      localohr.jdField_a_of_type_Ohs = ((ohs)localObject);
     }
-    return 0;
+    return localohr;
   }
   
-  public static String a(AppRuntime paramAppRuntime, String paramString)
-  {
-    try
-    {
-      paramAppRuntime = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getString(paramString, "");
-      return paramAppRuntime;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
-    }
-    return "";
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString)
-  {
-    try
-    {
-      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().remove(paramString).apply();
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
-  {
-    try
-    {
-      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putInt(paramString, paramInt).apply();
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
-  {
-    try
-    {
-      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putString(paramString1, paramString2).apply();
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putBoolean(paramString, paramBoolean).apply();
-      return;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
-    }
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime, String paramString)
-  {
-    try
-    {
-      boolean bool = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getBoolean(paramString, false);
-      return bool;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramAppRuntime);
-    }
-    return false;
-  }
+  public void b() {}
 }
 
 

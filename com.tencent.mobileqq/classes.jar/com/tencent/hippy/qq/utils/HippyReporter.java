@@ -3,12 +3,13 @@ package com.tencent.hippy.qq.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import atyn;
+import avec;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.update.HippyQQLibraryManager;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class HippyReporter
   public static final int OPER_TYPE_LOAD_TIMEOUT = 8;
   public static final int OPER_TYPE_LOAD_TIME_OUT = 6;
   public static final int OPER_TYPE_NATIVE_EXCEPTION = 2;
+  public static final int OPER_TYPE_PRELOAD_HIPPY = 10;
   private static final String TAG = "HippyReporter";
   private static HippyReporter sInstance;
   
@@ -48,10 +50,11 @@ public class HippyReporter
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("head", getReportHeadData());
         localJSONObject.put("body", paramJSONArray);
+        QLog.i("HippyReporter", 1, "baseReport data:" + localJSONObject);
         paramJSONArray = getAppInterface();
         if (paramJSONArray != null)
         {
-          ((atyn)paramJSONArray.getBusinessHandler(175)).a(localJSONObject);
+          ((avec)paramJSONArray.getBusinessHandler(BusinessHandlerFactory.GAME_CENTER_UNISSO_HANDLER)).a(localJSONObject);
           return;
         }
       }
@@ -317,24 +320,32 @@ public class HippyReporter
   
   public void reportOper(String paramString, int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    reportOper(paramString, paramInt1, paramInt2, 0, null);
+  }
+  
+  public void reportOper(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
       return;
     }
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("page", paramString);
+      localJSONObject.put("page", paramString1);
       localJSONObject.put("page_ver", paramInt1);
-      localJSONObject.put("ret", 0);
+      localJSONObject.put("ret", paramInt3);
       localJSONObject.put("oper_type", paramInt2);
-      paramString = new JSONArray();
-      paramString.put(localJSONObject);
-      baseReport(paramString);
+      if (!TextUtils.isEmpty(paramString2)) {
+        localJSONObject.put("errmsg", paramString2);
+      }
+      paramString1 = new JSONArray();
+      paramString1.put(localJSONObject);
+      baseReport(paramString1);
       return;
     }
-    catch (Throwable paramString)
+    catch (Throwable paramString1)
     {
-      QLog.e("HippyReporter", 1, "reportOper e:" + paramString);
+      QLog.e("HippyReporter", 1, "reportOper e:" + paramString1);
     }
   }
   

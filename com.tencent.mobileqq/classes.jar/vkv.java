@@ -1,6 +1,16 @@
-public abstract interface vkv<T>
+import UserGrowth.stFriendFeedReq;
+import UserGrowth.stFriendFeedRsp;
+
+public class vkv
+  extends vfo<stFriendFeedRsp>
 {
-  public abstract T a();
+  public vkv(String paramString)
+  {
+    super("FriendFeed", 10006);
+    stFriendFeedReq localstFriendFeedReq = new stFriendFeedReq();
+    localstFriendFeedReq.attachInfo = paramString;
+    this.a = localstFriendFeedReq;
+  }
 }
 
 

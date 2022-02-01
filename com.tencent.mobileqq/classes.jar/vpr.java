@@ -1,15 +1,17 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public class vpr
+class vpr
+  implements AdExposureChecker.ExposureCallback
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
-  {
-    return vqk.a(paramStoryVideoItem);
-  }
+  vpr(vpq paramvpq) {}
   
-  public static boolean a(String paramString)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    return vqk.a(paramString);
+    FLog.e("AdExposureChecker", "onExposure");
+    vpk.a(vpq.a(this.a), (vpj)this.a.a());
   }
 }
 

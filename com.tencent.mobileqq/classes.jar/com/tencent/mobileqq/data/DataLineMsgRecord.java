@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import asgz;
-import aszt;
-import bftf;
+import atlf;
+import auea;
+import bhbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -486,9 +486,9 @@ public class DataLineMsgRecord
         try
         {
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.fileMsgStatus = bftf.a((byte[])localObject2);
+          paramDataLineMsgRecord.fileMsgStatus = bhbx.a((byte[])localObject2);
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.nWeiyunSessionId = bftf.a((byte[])localObject2);
+          paramDataLineMsgRecord.nWeiyunSessionId = bhbx.a((byte[])localObject2);
           paramArrayOfByte = new byte[paramArrayOfByte.length - 16];
           ((ByteArrayInputStream)localObject1).read(paramArrayOfByte);
           paramDataLineMsgRecord.msg = new String(paramArrayOfByte, "UTF-8");
@@ -506,7 +506,7 @@ public class DataLineMsgRecord
         localObject2 = new byte[paramArrayOfByte.length - 8];
         System.arraycopy(paramArrayOfByte, 0, localObject1, 0, 8);
         System.arraycopy(paramArrayOfByte, 8, localObject2, 0, localObject2.length);
-        paramDataLineMsgRecord.fileMsgStatus = bftf.a((byte[])localObject1);
+        paramDataLineMsgRecord.fileMsgStatus = bhbx.a((byte[])localObject1);
         paramDataLineMsgRecord.msg = new String((byte[])localObject2, "UTF-8");
         return;
       }
@@ -661,7 +661,7 @@ public class DataLineMsgRecord
     if (localFileManagerEntity == null)
     {
       localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = aszt.a().longValue();
+      localFileManagerEntity.nSessionId = auea.a().longValue();
       this.entityID = localFileManagerEntity.nSessionId;
       switch (this.nOpType)
       {
@@ -694,7 +694,7 @@ public class DataLineMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.DataLineMsgRecord
  * JD-Core Version:    0.7.0.1
  */

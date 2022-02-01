@@ -1,105 +1,73 @@
-import android.content.Context;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import cooperation.qqreader.helper.LoadingAnimationManager.1;
-import cooperation.qqreader.helper.LoadingAnimationManager.2;
-import cooperation.qqreader.helper.LoadingAnimationManager.3;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-
-public final class bktq
+final class bktq
+  implements bkuu
 {
-  private static bktq jdField_a_of_type_Bktq;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean;
+  private bktq(bktf parambktf) {}
   
-  public static bktq a()
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if (jdField_a_of_type_Bktq == null) {}
+    if (paramLong1 == 2L) {}
     try
     {
-      if (jdField_a_of_type_Bktq == null) {
-        jdField_a_of_type_Bktq = new bktq();
+      this.a.flushRequest();
+      return 0;
+    }
+    catch (Exception paramObject1)
+    {
+      label62:
+      paramObject1.printStackTrace();
+      return -1;
+    }
+    if ((paramObject1 != null) && (paramObject2 != null) && (paramArrayOfObject1 != null))
+    {
+      if (paramArrayOfObject1.length >= 6) {
+        break label241;
       }
-      return jdField_a_of_type_Bktq;
-    }
-    finally {}
-  }
-  
-  private void a(long paramLong)
-  {
-    if (paramLong > 0L)
-    {
-      Message localMessage = Message.obtain(null, new LoadingAnimationManager.3(this));
-      localMessage.what = 30002;
-      ThreadManager.getUIHandler().sendMessageDelayed(localMessage, paramLong);
-      return;
-    }
-    b();
-  }
-  
-  private void b()
-  {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView == null) {
-      return;
-    }
-    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    localImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
-  }
-  
-  @UiThread
-  public void a()
-  {
-    ThreadManager.getUIHandler().removeMessages(30002);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
-      localImageView.setVisibility(8);
-    }
-    this.jdField_a_of_type_JavaLangRunnable = null;
-  }
-  
-  @UiThread
-  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView)
-  {
-    a(paramContext, paramImageView, 0L);
-  }
-  
-  @UiThread
-  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView, long paramLong)
-  {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localImageView != paramImageView) && (localImageView != null)) {
-      a();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getComposition() == null)
-    {
-      this.jdField_a_of_type_JavaLangRunnable = new LoadingAnimationManager.1(this, paramLong);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      try
+      break label238;
+      if (paramLong2 != 0L)
       {
-        ThreadManager.getSubThreadHandler().post(new LoadingAnimationManager.2(this, paramContext));
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        bkvd.b("LoadingAnimationManager", "loadLottieAnimation  fail :", paramContext);
-        return;
+        paramArrayOfObject2 = new bktp(paramLong2);
+        break label251;
+        if (((Integer)paramObject1).intValue() == 0) {
+          break label270;
+        }
       }
     }
-    a(paramLong);
+    label270:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if (((Integer)paramObject2).intValue() == 1) {
+        paramObject1 = new bkuc((String)paramArrayOfObject1[2]);
+      }
+      for (;;)
+      {
+        return this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
+        paramObject1 = new bkud();
+        paramObject1.jdField_a_of_type_Int = ((Integer)paramObject2).intValue();
+        paramObject1.b = ((Integer)paramArrayOfObject1[0]).intValue();
+        paramObject1.jdField_a_of_type_JavaLangString = ((String)paramArrayOfObject1[1]);
+        paramObject1.c = ((String)paramArrayOfObject1[2]);
+        paramObject1.d = ((String)paramArrayOfObject1[3]);
+        paramObject1.e = ((String)paramArrayOfObject1[4]);
+        paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfObject1[5]);
+      }
+      paramArrayOfObject2 = null;
+      break label251;
+      label238:
+      return 13;
+      label241:
+      if (paramArrayOfObject1[0] != null) {
+        break;
+      }
+      return 13;
+      label251:
+      if (paramLong3 != 0L)
+      {
+        bool1 = true;
+        break label62;
+      }
+      boolean bool1 = false;
+      break label62;
+    }
   }
 }
 

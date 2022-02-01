@@ -1,29 +1,20 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ayvj
-  extends RecyclerView.ItemDecoration
+  extends AnimatorListenerAdapter
 {
-  private int a;
-  private int b;
+  public ayvj(ScanOcrView paramScanOcrView, int paramInt) {}
   
-  public ayvj(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    if (paramRecyclerView.getChildPosition(paramView) == 0)
-    {
-      paramRect.left = this.b;
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
+      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
     }
-    paramRect.left = this.a;
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    }
   }
 }
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.jetbrains.annotations.NotNull;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-class sjg
-  extends uha
+final class sjg
+  extends AnimatorListenerAdapter
 {
-  sjg(sig paramsig) {}
+  sjg(View paramView) {}
   
-  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.a.a(paramInt, paramActionSheetItem);
+    this.a.setLayerType(0, null);
   }
 }
 

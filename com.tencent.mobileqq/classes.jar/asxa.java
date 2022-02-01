@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class asxa
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  asxa(aswz paramaswz, String paramString) {}
+  asxa(asww paramasww) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aszt.a(this.jdField_a_of_type_Aswz.a, this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
+    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

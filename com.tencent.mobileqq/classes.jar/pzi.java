@@ -1,22 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class pzi
+  implements blem
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject1 = localJSONObject2;
-    if (paramBaseArticleInfo != null)
-    {
-      localJSONObject1 = localJSONObject2;
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.smallGameData)) {
-        localJSONObject1 = new JSONObject(paramBaseArticleInfo.smallGameData);
-      }
-    }
-    return localJSONObject1;
-  }
+  public pzi(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
+  
+  public void a() {}
 }
 
 

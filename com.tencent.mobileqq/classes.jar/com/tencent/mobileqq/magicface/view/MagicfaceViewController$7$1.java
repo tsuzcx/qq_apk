@@ -2,33 +2,29 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.view.View;
 import android.widget.TextView;
-import avli;
-import avmr;
-import avmu;
+import awrn;
+import awsw;
+import awsz;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class MagicfaceViewController$7$1
   implements Runnable
 {
-  public MagicfaceViewController$7$1(avmu paramavmu, avli paramavli) {}
+  public MagicfaceViewController$7$1(awsz paramawsz, awrn paramawrn) {}
   
   public void run()
   {
     
-    if (this.jdField_a_of_type_Avmu.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Avmu.jdField_a_of_type_Avmr.c();
+    if (this.jdField_a_of_type_Awsz.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.c();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Avmu.jdField_a_of_type_Avmr.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_Avmu.jdField_a_of_type_Avmr.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      if ((this.jdField_a_of_type_Avli != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_Avli.c))) {
-        this.jdField_a_of_type_Avmu.jdField_a_of_type_Avmr.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.turnOffShake();
-      }
+      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.a.setText("");
+      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.jdField_b_of_type_AndroidWidgetTextView.setText("");
       return;
-      ((View)this.jdField_a_of_type_Avmu.jdField_a_of_type_Avmr.jdField_b_of_type_Avmn).setBackgroundColor(this.jdField_a_of_type_Avli.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Avmu.jdField_a_of_type_Avmr.d();
+      ((View)this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.jdField_b_of_type_Awss).setBackgroundColor(this.jdField_a_of_type_Awrn.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Awsz.jdField_a_of_type_Awsw.d();
     }
   }
 }

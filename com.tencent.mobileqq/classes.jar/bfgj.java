@@ -1,13 +1,17 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.os.Handler;
+import android.os.Message;
 
-public class bfgj
+class bfgj
+  extends Handler
 {
-  ajnr jdField_a_of_type_Ajnr;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  bfgj(bfgi parambfgi) {}
   
-  protected bfgj(bfgh parambfgh) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == bfgi.j) && (bfgi.e == this.a.k)) {
+      bfgi.a(this.a);
+    }
+  }
 }
 
 

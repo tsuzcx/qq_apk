@@ -1,6 +1,18 @@
-public abstract interface appr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
+public class appr
+  implements DialogInterface.OnDismissListener
 {
-  public abstract long a();
+  public appr(ARScanEntryView paramARScanEntryView) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
+  }
 }
 
 

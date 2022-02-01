@@ -1,23 +1,21 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
 class aopd
-  implements SensorEventListener
+  implements acmg
 {
-  aopd(aopa paramaopa) {}
+  aopd(aooy paramaooy, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public ToServiceMsg a()
   {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      aopa.a(this.a, paramSensorEvent);
-    }
-    while (paramSensorEvent.sensor.getType() != 3) {
-      return;
-    }
-    aopa.b(this.a, paramSensorEvent);
+    ToServiceMsg localToServiceMsg = aooy.a(this.jdField_a_of_type_Aooy).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

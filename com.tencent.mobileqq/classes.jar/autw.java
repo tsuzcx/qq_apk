@@ -1,23 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class autw
-  extends WebViewPlugin
+  implements azla
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public autw(ForwardSdkShareOption.2 param2) {}
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
-    {
-      paramJsBridgeListener = this.mRuntime.a();
-      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
-      paramString1.setFlags(67108864);
-      paramJsBridgeListener.startActivity(paramString1);
-      return false;
+    return null;
+  }
+  
+  public void onSend(azlb paramazlb)
+  {
+    auuv.b("KEY_STAGE_2_UPLOAD_IMAGE");
+    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramazlb, this.a.b, this.a.c, this.a.d);
+  }
+  
+  public void updateMsg(azlb paramazlb)
+  {
+    if ((paramazlb != null) && (QLog.isColorLevel())) {
+      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramazlb.toString() });
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

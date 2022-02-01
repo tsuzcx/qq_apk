@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.graphics.drawable.Drawable;
-import bjce;
+import bknl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ChannelProxyImpl$16
   implements Runnable
 {
-  public ChannelProxyImpl$16(bjce parambjce, URLDrawable paramURLDrawable) {}
+  public ChannelProxyImpl$16(bknl parambknl, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class ChannelProxyImpl$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afrt;
+import agje;
 import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class PhotoListHelper$2
   implements Runnable
 {
-  public PhotoListHelper$2(afrt paramafrt, PhotoListPanel paramPhotoListPanel) {}
+  public PhotoListHelper$2(agje paramagje, PhotoListPanel paramPhotoListPanel) {}
   
   public void run()
   {

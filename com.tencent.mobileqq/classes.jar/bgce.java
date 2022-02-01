@@ -1,28 +1,32 @@
-class bgce
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.LeftAppShortcutBarPanel.3.1;
+import mqq.os.MqqHandler;
+
+public class bgce
+  implements PopupWindow.OnDismissListener
 {
-  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
-  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
+  bgce(bgcb parambgcb) {}
   
-  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public void onDismiss()
   {
-    int i = 0;
-    int j = paramInt1 - 1;
-    paramInt1 = i;
-    i = j;
-    while (paramInt1 <= i)
+    if ((bgcb.a(this.a) != null) && (bgcb.a(this.a) != null))
     {
-      j = paramInt1 + i >>> 1;
-      int k = paramArrayOfInt[j];
-      if (k < paramInt2) {
-        paramInt1 = j + 1;
-      } else if (k > paramInt2) {
-        i = j - 1;
-      } else {
-        return j;
+      Object localObject = (ImageView)bgcb.a(this.a).findViewById(2131377636);
+      if (localObject != null)
+      {
+        ((ImageView)localObject).setImageResource(2130846206);
+        localObject = (TextView)bgcb.a(this.a).findViewById(2131377623);
+        if (localObject != null) {
+          ((TextView)localObject).setVisibility(0);
+        }
       }
+      bgcb.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new LeftAppShortcutBarPanel.3.1(this), 100L);
     }
-    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 

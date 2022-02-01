@@ -1,25 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class wrd
-  extends QQUIEventReceiver<wrb, wck>
+  extends vzj
 {
-  public wrd(@NonNull wrb paramwrb)
-  {
-    super(paramwrb);
-  }
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public void a(@NonNull wrb paramwrb, @NonNull wck paramwck)
+  public String toString()
   {
-    xvv.b("InteractWidgetPageHolder", "receive poll info event.");
-    if (paramwrb.d()) {
-      paramwrb.a(paramwrb.jdField_a_of_type_Int, paramwrb.b, paramwrb.jdField_a_of_type_Wsk, paramwrb.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wck.class;
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 

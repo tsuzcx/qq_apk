@@ -4,6 +4,7 @@ public class QbarNative$QBarResultJNI
 {
   public String charset;
   public byte[] data;
+  public QbarNative.QBarPoint points;
   public int typeID;
   public String typeName;
 }

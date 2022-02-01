@@ -1,89 +1,190 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anjo
+  implements anjh
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
+  public static int a;
+  private static int jdField_b_of_type_Int = 3;
+  private static int c = 10000;
+  private long jdField_a_of_type_Long;
+  private anit jdField_a_of_type_Anit;
+  private List<TraceData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = System.currentTimeMillis() - 540000L;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int d;
+  private int e;
+  
+  static
   {
-    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
+    jdField_a_of_type_Int = 30000;
   }
   
-  public static void a(String paramString, Context paramContext, boolean paramBoolean)
+  private void a(TraceData paramTraceData)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    if ((paramTraceData == null) || (paramTraceData.result == null)) {}
     do
     {
       return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_unread_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
+      l1 = System.currentTimeMillis();
+      if (l1 - this.jdField_b_of_type_Long < 1000L)
+      {
+        paramTraceData.result.c = this.d;
+        paramTraceData.result.d = this.e;
+        return;
+      }
+    } while ((l1 - this.jdField_b_of_type_Long <= 600000L) && ((!paramTraceData.isSampleFocus) || (l1 - this.jdField_b_of_type_Long <= 300000L)));
+    this.jdField_b_of_type_Long = l1;
+    long l1 = System.currentTimeMillis();
+    this.d = anjc.b();
+    this.e = anjc.a();
+    long l2 = System.currentTimeMillis();
+    QLog.i("TraceReport", 1, "samplingCpuAndMemory cpu:" + this.e + ",memory:" + this.d + ",isSampleFocus:" + paramTraceData.isSampleFocus + ",cost:" + (l2 - l1));
+    paramTraceData.result.c = this.d;
+    paramTraceData.result.d = this.e;
   }
   
-  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
+  private void c(List<TraceData> paramList)
   {
-    boolean bool2;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      bool2 = true;
+    anji localanji = this.jdField_a_of_type_Anit.a();
+    if (localanji != null) {
+      localanji.b(paramList);
     }
-    boolean bool1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Anit == null) {}
+    Object localObject;
     do
     {
-      return bool2;
-      paramContext = a(paramContext, paramString1);
-      bool2 = paramContext.getBoolean("show_video_msg", false);
-      bool1 = bool2;
-      if (!bool2)
+      do
       {
-        paramContext = paramContext.getString("KeyHiddenChatList", "");
-        String str = paramString2 + "|" + paramInt + ";";
-        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
-          bool2 = true;
+        return;
+        localObject = this.jdField_a_of_type_Anit.a();
+      } while (localObject == null);
+      localObject = ((anji)localObject).a();
+    } while (localObject == null);
+    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TraceReport", 2, new Object[] { "onReportStrategyChange reportInterval:", Integer.valueOf(paramInt1), ",reportNum:", Integer.valueOf(paramInt2), ", isFailReport:", Boolean.valueOf(paramBoolean) });
+    }
+    if (paramInt1 > 0) {
+      jdField_a_of_type_Int = paramInt1 * 1000;
+    }
+    if (paramInt2 > 0) {
+      jdField_b_of_type_Int = paramInt2;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(anit paramanit)
+  {
+    this.jdField_a_of_type_Anit = paramanit;
+    paramanit = this.jdField_a_of_type_Anit.a();
+    if (paramanit != null) {
+      paramanit.a(this);
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(List<TraceData> paramList)
+  {
+    anjg localanjg = this.jdField_a_of_type_Anit.a();
+    if (localanjg != null)
+    {
+      localanjg.a(paramList);
+      localanjg.b(paramList);
+    }
+  }
+  
+  public boolean a(TraceData paramTraceData)
+  {
+    long l1 = System.currentTimeMillis();
+    a(paramTraceData);
+    this.jdField_a_of_type_JavaUtilList.add(paramTraceData);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      boolean bool2 = NetworkUtil.isNetworkAvailable(null);
+      long l2 = l1 - this.jdField_a_of_type_Long;
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      if ((paramTraceData.result != null) && (paramTraceData.result.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean))
+      {
+        bool1 = true;
+        if (((i < jdField_b_of_type_Int) || (l2 <= c)) && (((l2 <= jdField_a_of_type_Int) && (!bool1)) || (!bool2))) {
+          break label254;
         }
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
-          bool1 = bool2;
+        a(this.jdField_a_of_type_JavaUtilList);
+        c(this.jdField_a_of_type_JavaUtilList);
+        this.jdField_a_of_type_JavaUtilList.clear();
+        long l3 = System.currentTimeMillis();
+        this.jdField_a_of_type_Long = l3;
+        if (QLog.isColorLevel()) {
+          QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting interval:", Long.valueOf(l2), ",reportSize:", Integer.valueOf(i), ",report all cost:", Long.valueOf(l3 - l1), ",isFailReport:", Boolean.valueOf(bool1) });
         }
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
-    return bool1;
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
+      for (boolean bool1 = false;; bool1 = true)
+      {
+        if ((!bool2) && (QLog.isColorLevel())) {
+          QLog.d("TraceReport", 2, "handleAddTraceReporting not network and save");
+        }
+        return bool1;
+        bool1 = false;
+        break;
+        label254:
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramTraceData);
+        b(localArrayList);
+      }
     }
-    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
+    if (QLog.isColorLevel()) {
+      QLog.d("TraceReport", 2, "handleAddTraceReporting not active and save");
+    }
+    b(this.jdField_a_of_type_JavaUtilList);
+    return false;
   }
   
-  public static void b(String paramString, Context paramContext, boolean paramBoolean)
+  public void b()
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    boolean bool = NetworkUtil.isNetworkAvailable(null);
+    if ((i <= 0) || (!bool) || (!this.jdField_b_of_type_Boolean)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TraceReport", 2, new Object[] { "flushDelayReport reportSize:", Integer.valueOf(i), ", net:", Boolean.valueOf(bool), ",mActive:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+      }
+    }
     do
     {
       return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_video_msg", paramBoolean);
-      paramContext.commit();
+      a(this.jdField_a_of_type_JavaUtilList);
+      c(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
     } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
+    QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting flushDelayReport reportSize:", Integer.valueOf(i) });
   }
   
-  public static boolean b(String paramString, Context paramContext)
+  public void b(List<TraceData> paramList)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
+    anji localanji = this.jdField_a_of_type_Anit.a();
+    if (localanji != null) {
+      localanji.a(paramList);
     }
-    return a(paramContext, paramString).getBoolean("show_video_msg", false);
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    b(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

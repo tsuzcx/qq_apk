@@ -1,25 +1,49 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class auru
-  implements IVideoInnerStatusListener
+  implements View.OnClickListener
 {
-  auru(aurt paramaurt) {}
+  auru(aurs paramaurs, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void notifyVideoClose(int paramInt) {}
-  
-  public void notifyVideoSeek(int paramInt) {}
-  
-  public void notifyVideoStart()
+  public void onClick(View paramView)
   {
-    if (aurt.a(this.a) != null)
+    if (aurs.a(this.jdField_a_of_type_Aurs) != null) {}
+    for (boolean bool = aurs.a(this.jdField_a_of_type_Aurs).a(paramView);; bool = false)
     {
-      avpf.a().a(1, aurt.a(this.a));
+      this.jdField_a_of_type_Aurs.hideSoftInputFromWindow();
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aurs, 1);
+      }
+      if (aurs.a(this.jdField_a_of_type_Aurs))
+      {
+        aurs.a(this.jdField_a_of_type_Aurs).removeView(aurs.a(this.jdField_a_of_type_Aurs));
+        aurs.a(this.jdField_a_of_type_Aurs, false);
+      }
+      try
+      {
+        if ((this.jdField_a_of_type_Aurs.isShowing()) && (!bool)) {
+          this.jdField_a_of_type_Aurs.dismiss();
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(localException));
+          }
+        }
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.a.a(false);
   }
-  
-  public void notifyVideoStop() {}
 }
 
 

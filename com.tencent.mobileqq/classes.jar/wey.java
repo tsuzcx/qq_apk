@@ -1,32 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class wey
-  extends vql
 {
-  public List<xnh> a = new ArrayList();
-  public boolean b;
+  public static WeakReference<QQAppInterface> a = new WeakReference(null);
   
-  public wey(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
+  public static boolean a()
   {
-    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
-    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
-    for (;;)
-    {
-      this.b = bool;
-      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
-      while (paramRspStoryFeedIdList.hasNext())
-      {
-        xnh localxnh = new xnh((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
-        this.a.add(localxnh);
-      }
-      bool = false;
+    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
+    if (localQQAppInterface == null) {
+      throw new IllegalStateException(anvx.a(2131713785));
     }
+    return localQQAppInterface.getNowLiveManager().a;
   }
 }
 

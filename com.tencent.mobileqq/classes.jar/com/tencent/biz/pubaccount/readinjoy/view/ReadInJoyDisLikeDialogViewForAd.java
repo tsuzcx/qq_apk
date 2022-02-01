@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import amtj;
 import android.content.Context;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import anvx;
 
 public class ReadInJoyDisLikeDialogViewForAd
   extends ReadInJoyDisLikeDialogView
@@ -18,7 +18,7 @@ public class ReadInJoyDisLikeDialogViewForAd
     super.a(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131711889));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131712236));
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);

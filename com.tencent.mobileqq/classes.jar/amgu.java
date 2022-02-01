@@ -1,45 +1,24 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.TMG.utils.SoUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amgu
-  implements AVCallback
+  implements View.OnClickListener
 {
-  amgu(amgo paramamgo) {}
+  amgu(amgs paramamgs) {}
   
-  public void onComplete(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      if (!this.a.a())
-      {
-        FileUtils.copyFile(amhf.a() + "libqav_graphics.so", amhf.a() + "libtmg_graphics.so");
-        boolean bool = SoUtil.loadSo("tmg_graphics");
-        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
-        if (!this.a.a())
-        {
-          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
-          amgo.a(this.a, false);
-          this.a.a();
-          paramInt = 1;
-        }
-      }
-    }
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof amgx)) {}
     for (;;)
     {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      amgo.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
-      continue;
-      amgo.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
-      continue;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
+      localObject = (amgx)localObject;
+      if ((((amgx)localObject).a != null) && (this.a.a != null)) {
+        this.a.a.a(((amgx)localObject).a);
+      }
     }
   }
 }

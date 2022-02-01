@@ -1,9 +1,4 @@
-public abstract interface azgx
-{
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean);
-}
+public class azgx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

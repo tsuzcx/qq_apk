@@ -19,7 +19,7 @@ public class TroopFileTransferManager$TaskGenThumbnail
     //   9: getfield 22	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskGenThumbnail:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   12: getfield 28	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   15: invokestatic 34	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: invokestatic 39	aszt:a	(Ljava/lang/String;)I
+    //   18: invokestatic 39	auea:a	(Ljava/lang/String;)I
     //   21: istore_1
     //   22: aload_0
     //   23: getfield 41	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskGenThumbnail:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
@@ -368,7 +368,7 @@ public class TroopFileTransferManager$TaskGenThumbnail
     //   772: iconst_1
     //   773: ldc 204
     //   775: iload_1
-    //   776: invokestatic 209	ayfc:a	(Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;I)Z
+    //   776: invokestatic 209	azlo:a	(Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;I)Z
     //   779: pop
     //   780: iload_3
     //   781: istore_2
@@ -390,7 +390,7 @@ public class TroopFileTransferManager$TaskGenThumbnail
     //   812: getfield 52	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskGenThumbnail:b	I
     //   815: aload_0
     //   816: getfield 52	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskGenThumbnail:b	I
-    //   819: invokestatic 214	bfby:a	(Ljava/lang/String;Ljava/lang/String;II)Z
+    //   819: invokestatic 214	bgke:a	(Ljava/lang/String;Ljava/lang/String;II)Z
     //   822: istore_2
     //   823: goto -492 -> 331
     //   826: new 112	java/io/File

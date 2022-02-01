@@ -1,23 +1,23 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class afiu
   implements DialogInterface.OnClickListener
 {
-  afiu(afit paramafit, String paramString) {}
+  afiu(afit paramafit, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((amrb)this.jdField_a_of_type_Afit.a.app.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Afit.a.app.getProxyManager().a();
-    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.delRecentUser(localRecentUser);
-    }
-    this.jdField_a_of_type_Afit.a.finish();
+    bdla.b(this.jdField_a_of_type_Afit.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Afit.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Afit.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Afit.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

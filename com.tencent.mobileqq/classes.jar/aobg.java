@@ -1,15 +1,17 @@
-public abstract class aobg
+class aobg
+  implements lxy
 {
-  public int b;
+  aobg(aobd paramaobd) {}
   
-  public aobg(int paramInt)
+  public void a(lxx paramlxx)
   {
-    this.b = paramInt;
+    paramlxx.a(this.a.a);
+    paramlxx.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobg
  * JD-Core Version:    0.7.0.1
  */

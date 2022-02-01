@@ -1,17 +1,32 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aijx
-  implements BusinessObserver
+  implements View.OnClickListener
 {
   aijx(aijw paramaijw) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localObject != null)
+      {
+        localObject = ((ChatFragment)localObject).a();
+        if (localObject != null) {
+          ((BaseChatPie)localObject).scrollToMsgByID(aijw.a(this.a));
+        }
+      }
+      apzo.a().a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

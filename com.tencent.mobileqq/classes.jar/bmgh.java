@@ -1,16 +1,39 @@
-import java.util.concurrent.CountDownLatch;
+import android.support.annotation.NonNull;
+import cooperation.qqreader.ui.ReaderHomePageActivity;
+import org.json.JSONObject;
 
-final class bmgh
-  implements bmfg
+public class bmgh
+  extends bmft
 {
-  bmgh(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  public bmgh(ReaderHomePageActivity paramReaderHomePageActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void a(@NonNull bmfs parambmfs)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    parambmfs = parambmfs.a();
+    if (parambmfs == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = parambmfs.getJSONObject("data").getInt("identity");
+        parambmfs = this.a;
+        if (i == 2)
+        {
+          bool = true;
+          bmgk.e(parambmfs, bool);
+          bmgm.d("ReaderHomePageActivity", "queryUserIdentityForTabSwitch: identity = " + i);
+          return;
+        }
+      }
+      catch (Exception parambmfs)
+      {
+        bmgm.a("ReaderHomePageActivity", "queryUserIdentityForTabSwitch:", parambmfs);
+        return;
+      }
+      boolean bool = false;
+    }
   }
 }
 

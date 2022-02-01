@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adln;
+import aect;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 public class GesturePWDCreateActivity$2$2
   implements Runnable
 {
-  public GesturePWDCreateActivity$2$2(adln paramadln) {}
+  public GesturePWDCreateActivity$2$2(aect paramaect) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class GesturePWDCreateActivity$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.2
  * JD-Core Version:    0.7.0.1
  */

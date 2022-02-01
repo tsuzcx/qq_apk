@@ -1,48 +1,25 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-public class aeut
-  extends anep
+class aeut
+  implements Animation.AnimationListener
 {
-  public aeut(ActivateFriendView paramActivateFriendView) {}
+  aeut(aeus paramaeus) {}
   
-  public void b()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
-    do
-    {
-      return;
-      ActivateFriendView.a(this.a, 0);
-      int i = 0;
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-        {
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-          {
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
-          }
-          else
-          {
-            ActivateFriendView.b(this.a);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
-          }
-        }
-      }
-    } while (ActivateFriendView.a(this.a) == null);
-    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.a.a.b.setVisibility(8);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

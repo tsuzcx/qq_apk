@@ -1,43 +1,46 @@
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.Comparator;
 
-public class bcmp
-  extends bciz
+class bcmp
+  implements Comparator<bcff>
 {
-  public bcmp()
-  {
-    this.a = "vote";
-  }
+  bcmp(bcmo parambcmo) {}
   
-  public String a()
+  public int a(bcff parambcff1, bcff parambcff2)
   {
-    return "VoteCover";
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "vote");
-    if (this.ac == null) {}
-    for (String str = "";; str = this.ac)
+    int i = -1;
+    parambcff1 = (bcgt)parambcff1;
+    parambcff2 = (bcgt)parambcff2;
+    anvk localanvk = (anvk)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    boolean bool1 = localanvk.b((String)parambcff1.a());
+    boolean bool2 = localanvk.b((String)parambcff2.a());
+    if ((!bool1) && (!bool2))
     {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "vote");
-      return;
+      bool1 = localanvk.d((String)parambcff1.a());
+      bool2 = localanvk.d((String)parambcff2.a());
+      if ((!bool1) && (!bool2)) {
+        return parambcff2.f() - parambcff1.f();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return parambcff2.f() - parambcff1.f();
     }
-  }
-  
-  public boolean a(bcin parambcin)
-  {
-    if (parambcin == null) {
-      return true;
-    }
-    parambcin = parambcin.a("cover");
-    if (parambcin != null) {}
-    for (;;)
+    if (bool1 != bool2)
     {
-      this.ac = parambcin;
-      return true;
-      parambcin = "";
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
     }
+    return parambcff2.f() - parambcff1.f();
   }
 }
 

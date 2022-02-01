@@ -1,8 +1,12 @@
-public abstract interface bkzj
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bkzj
+  implements View.OnClickListener
 {
-  public abstract void a(aqdp paramaqdp);
+  bkzj(bkzi parambkzi) {}
   
-  public abstract void a(String paramString);
+  public void onClick(View paramView) {}
 }
 
 

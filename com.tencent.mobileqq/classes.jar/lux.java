@@ -1,109 +1,144 @@
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Shader.TileMode;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lux
-  extends ltz
+  extends lva
 {
-  public LinearGradient a;
+  public lus a;
+  public boolean a;
+  public lvm[] a;
   public int b;
-  public Rect b;
+  public lvm[] b;
   public int c;
   public int d;
   public int e;
   
-  public lux()
+  public lux(lus paramlus)
   {
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_ArrayOfLvm = new lvm[6];
+    this.jdField_b_of_type_ArrayOfLvm = new lvm[6];
+    this.jdField_a_of_type_Lus = paramlus;
+    this.jdField_c_of_type_ArrayOfLvm = this.jdField_a_of_type_ArrayOfLvm;
+    this.jdField_b_of_type_Long = 1800L;
   }
   
   public void a(long paramLong)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int j = 0;
+    super.a(paramLong);
+    Rect localRect = this.jdField_a_of_type_Lus.a();
     int i;
-    if ((paramLong > 0L) && (paramLong < 200L))
+    int j;
+    int k;
+    int m;
+    if (this.jdField_a_of_type_Boolean)
     {
-      i = (int)(255L * paramLong / 200L);
-      a(i);
-      if (paramLong >= 200L) {
-        break label164;
+      i = (localRect.left + localRect.right - this.d) / 2;
+      j = (localRect.top + localRect.bottom - this.e) / 2;
+      k = (localRect.left + localRect.right + this.d) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.e) / 2);
+      if (this.jdField_a_of_type_Lus.a == null) {
+        break label237;
       }
-      this.d = ((int)(255L * paramLong / 200L));
+      a(this.jdField_a_of_type_Lus.a());
     }
     for (;;)
     {
-      i = (int)(this.c - paramLong * this.c / 750L);
-      a(0, i, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_Int + i);
+      b(this.jdField_a_of_type_Lus.a());
       return;
-      if ((paramLong >= 200L) && (paramLong <= 700L))
-      {
-        i = 255;
-        break;
-      }
-      i = j;
-      if (paramLong <= 700L) {
-        break;
-      }
-      i = j;
-      if (paramLong >= 750L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 750L) / -50L);
+      i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+      j = (localRect.top + localRect.bottom - this.jdField_c_of_type_Int) / 2;
+      k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.jdField_c_of_type_Int) / 2);
       break;
-      label164:
-      if ((paramLong >= 200L) && (paramLong <= 650L)) {
-        this.d = 255;
-      } else if ((paramLong > 650L) && (paramLong < 750L)) {
-        this.d = ((int)(255L * (paramLong - 750L) / -100L));
-      }
+      label237:
+      a(0);
     }
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    paramPaint.setAlpha(this.d);
-    paramPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
-    paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
-    paramPaint.setAlpha(255);
-    paramPaint.setShader(null);
-    super.a(paramCanvas, paramPaint);
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_a_of_type_ArrayOfLvm.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfLvm[i] = new lvm(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
+      i += 1;
+    }
+    while (j < this.jdField_b_of_type_ArrayOfLvm.length)
+    {
+      this.jdField_b_of_type_ArrayOfLvm[j] = new lvm(paramAVRedPacketManager.a("qav_redpacket_focus_big_" + j * 6 + ".png"));
+      j += 1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label45;
+      }
+    }
+    label45:
+    for (lvm[] arrayOflvm = this.jdField_b_of_type_ArrayOfLvm;; arrayOflvm = this.jdField_a_of_type_ArrayOfLvm)
+    {
+      this.jdField_c_of_type_ArrayOfLvm = arrayOflvm;
+      this.jdField_b_of_type_Long = (this.jdField_c_of_type_ArrayOfLvm.length * 300);
+      return;
+    }
   }
   
   public void b()
   {
+    int j = 0;
     super.b();
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != paramInt)
+    lvm[] arrayOflvm = this.jdField_a_of_type_ArrayOfLvm;
+    int k = arrayOflvm.length;
+    int i = 0;
+    lvm locallvm;
+    while (i < k)
     {
-      this.e = paramInt;
-      c();
+      locallvm = arrayOflvm[i];
+      if (locallvm != null) {
+        locallvm.a();
+      }
+      i += 1;
     }
+    arrayOflvm = this.jdField_b_of_type_ArrayOfLvm;
+    k = arrayOflvm.length;
+    i = j;
+    while (i < k)
+    {
+      locallvm = arrayOflvm[i];
+      if (locallvm != null) {
+        locallvm.a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Lus = null;
+    this.jdField_a_of_type_ArrayOfLvm = null;
+    this.jdField_b_of_type_ArrayOfLvm = null;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 454 / 750);
-    this.c = (paramInt1 * -190 / 750);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2 / 2);
-    c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsRect.bottom, this.e, 0, Shader.TileMode.CLAMP);
+    this.jdField_b_of_type_Int = (paramInt1 * 380 / 750);
+    this.jdField_c_of_type_Int = (paramInt1 * 380 / 750);
+    this.d = (paramInt1 * 500 / 750);
+    this.e = (paramInt1 * 500 / 750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lux
  * JD-Core Version:    0.7.0.1
  */

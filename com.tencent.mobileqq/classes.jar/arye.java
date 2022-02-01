@@ -1,9 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import java.util.Iterator;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
 public class arye
-  implements arxu
+  extends aryn
 {
-  public arye(QfileFavFileTabView paramQfileFavFileTabView) {}
+  public arye(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  
+  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
+      {
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      }
+    }
+  }
 }
 
 

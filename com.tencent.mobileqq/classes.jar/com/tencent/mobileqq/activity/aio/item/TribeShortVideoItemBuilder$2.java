@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrl;
-import agrq;
+import ahkj;
+import ahko;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.mobileqq.data.MessageForTribeShortVideo;
 import com.tencent.qphone.base.util.QLog;
@@ -9,17 +9,17 @@ import com.tencent.qphone.base.util.QLog;
 public class TribeShortVideoItemBuilder$2
   implements Runnable
 {
-  public TribeShortVideoItemBuilder$2(agrl paramagrl, String paramString, agrq paramagrq, long paramLong, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  public TribeShortVideoItemBuilder$2(ahkj paramahkj, String paramString, ahko paramahko, long paramLong, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("TribeShortVideoItemBuilder", 2, "itemBuilder handleGetVideo 2: fileName = " + this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Agrq.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Agrq.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-    this.jdField_a_of_type_Agrq.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-    this.this$0.a(this.jdField_a_of_type_Agrq, this.jdField_a_of_type_Long, this.this$0.c, this.this$0.d, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ahko.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ahko.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
+    this.jdField_a_of_type_Ahko.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
+    this.this$0.a(this.jdField_a_of_type_Ahko, this.jdField_a_of_type_Long, this.this$0.c, this.this$0.d, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, this.jdField_a_of_type_JavaLangString);
   }
 }
 

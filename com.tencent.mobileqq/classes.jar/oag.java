@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class oag
-  implements bjog
+class oag
 {
-  public oag(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onDismiss()
-  {
-    ReadInJoyNativeAdFragment.a(this.a, false);
-  }
+  oag(nzu paramnzu) {}
 }
 
 

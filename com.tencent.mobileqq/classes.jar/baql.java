@@ -1,98 +1,191 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.ThemeURLImageView;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.1;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager.2;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.util.PhotoUtils;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class baql
+  implements Manager
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  public QQAppInterface a;
   
-  public static Drawable a(Context paramContext)
+  public baql(QQAppInterface paramQQAppInterface)
   {
-    if (paramContext == null) {
-      return null;
-    }
-    return paramContext.getResources().getDrawable(2130846076);
+    this.a = paramQQAppInterface;
   }
   
-  private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
+  private SharedPreferences a()
   {
-    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    String str2 = "";
+    String str1 = str2;
+    if (this.a != null)
     {
-      Drawable localDrawable = (Drawable)jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localDrawable != null) {
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-        {
-          paramQQAppInterface = localDrawable;
-          if (jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)) {}
-        }
-        else
-        {
-          ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
-          jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-          paramQQAppInterface = localDrawable;
-        }
+      str1 = str2;
+      if (this.a.getCurrentAccountUin() != null) {
+        str1 = this.a.getCurrentAccountUin();
+      }
+    }
+    str1 = str1 + "_QZoneAlbumRedTouch";
+    return BaseApplication.getContext().getSharedPreferences(str1, 0);
+  }
+  
+  public static boolean c()
+  {
+    long l = 0L;
+    if (QLog.isColorLevel()) {
+      l = System.currentTimeMillis();
+    }
+    if (PhotoUtils.get().checkNewImages())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "checkNewImages cost:" + (System.currentTimeMillis() - l));
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public long a()
+  {
+    return a().getLong("key_photo_guide_has_red_date", 0L);
+  }
+  
+  public void a()
+  {
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "setRedTouch");
+    }
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), baqn.class);
+    localNewIntent.putExtra("req", new operation_red_touch_req(1L));
+    this.a.startServlet(localNewIntent);
+  }
+  
+  @TargetApi(9)
+  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (this.a == null)) {
+      return;
+    }
+    QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.2(this));
+  }
+  
+  public boolean a()
+  {
+    long l2 = a();
+    if (l2 <= 0L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
       }
     }
     do
     {
-      return paramQQAppInterface;
-      paramContext = a(paramContext);
-      paramQQAppInterface = paramContext;
-    } while (paramContext == null);
-    paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
-    ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
-    jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    return paramQQAppInterface;
-  }
-  
-  public static ThemeURLImageView a(Context paramContext)
-  {
-    if (paramContext == null) {}
-    Drawable localDrawable;
-    do
-    {
-      return null;
-      localDrawable = a(paramContext);
-    } while (localDrawable == null);
-    paramContext = new ThemeURLImageView(paramContext);
-    paramContext.setContentDescription("BOT");
-    paramContext.setImageDrawable(localDrawable);
-    return paramContext;
-  }
-  
-  public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
-  {
-    if ((paramSingleLineTextView == null) || (TextUtils.isEmpty(paramString)) || (paramContext == null)) {}
-    do
-    {
-      return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!(localAppRuntime instanceof QQAppInterface)) || (!bezm.b((QQAppInterface)localAppRuntime, paramString))) {
+      return false;
+      long l1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoUploadRedPointTimeInterval", 24) * 60 * 60 * 1000;
+      l2 = System.currentTimeMillis() - l2;
+      if ((l2 <= l1) && (l2 >= 0L)) {
         break;
       }
-      paramString = a((QQAppInterface)localAppRuntime, paramContext);
-    } while (paramString == null);
-    paramSingleLineTextView.setCompoundDrawablePadding((int)bfvh.a(paramContext, 5.0F));
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
-    return;
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
+    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday true");
+    }
+    return true;
   }
   
-  public static boolean a(String paramString)
+  public void b()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return ((localAppRuntime instanceof QQAppInterface)) && (bezm.b((QQAppInterface)localAppRuntime, paramString));
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
+    }
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.1(this));
+  }
+  
+  public boolean b()
+  {
+    if (this.a == null) {
+      return false;
+    }
+    Object localObject = (bbbq)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((bbbq)localObject).a(String.valueOf(100180));
+    return (localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1);
+  }
+  
+  public void c()
+  {
+    if ((!PhotoUtils.isCurrentDayInQzone()) && (PhotoUtils.isOverLastCheck()) && (PhotoUtils.isInCheckTimeQuantum()))
+    {
+      LocalMultiProcConfig.putLong("key_photo_guide_last_check", System.currentTimeMillis());
+      if (b()) {
+        break label65;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
+      }
+      if ((!a()) && (c())) {
+        d();
+      }
+    }
+    label65:
+    while (c()) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
+    }
+    b();
+  }
+  
+  @TargetApi(9)
+  public void d()
+  {
+    int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "GuideSelectPhotoSendRedJumpToQzone", 0);
+    SharedPreferences.Editor localEditor = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    if (Build.VERSION.SDK_INT < 9) {
+      localEditor.commit();
+    }
+    while ((i == 1) && (this.a != null) && (this.a.getApp() != null) && (baqo.a(this.a.getApp(), 84)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "GetQZonePhotoGuideCheck supportJumpToQzone");
+      }
+      new baqo(this.a, this).a();
+      return;
+      localEditor.apply();
+    }
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

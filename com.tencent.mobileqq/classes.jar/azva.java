@@ -1,75 +1,35 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
 
-public abstract class azva
-  extends azuz
+class azva
+  implements IUploadTaskCallback
 {
-  public ResultReceiver a;
+  azva(azuz paramazuz) {}
   
-  public static azva a(Bundle paramBundle)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    if (paramBundle == null) {
-      return null;
-    }
-    int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
-    Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq getReq", 2, "class name is " + ((Class)localObject).getName());
-      }
-      try
-      {
-        localObject = (azva)((Class)localObject).newInstance();
-        ((azva)localObject).b(paramBundle);
-        return localObject;
-      }
-      catch (Exception paramBundle)
-      {
-        return null;
-      }
-    }
-    return null;
+    this.a.f = 1002;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramString;
+    this.a.a(1002, new Object[0]);
   }
   
-  public void a(Bundle paramBundle)
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (this.a.f != paramInt)
     {
-      Parcel localParcel = Parcel.obtain();
-      this.jdField_a_of_type_AndroidOsResultReceiver.writeToParcel(localParcel, 0);
-      localParcel.setDataPosition(0);
-      ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-      localParcel.recycle();
-      paramBundle.putParcelable("redpoint.fromReceiverKey", localResultReceiver);
+      this.a.f = paramInt;
+      this.a.a(this.a.f, new Object[0]);
     }
   }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, Bundle paramBundle);
-  
-  public final boolean a(Bundle paramBundle)
+  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
   {
-    if ((paramBundle == null) || (this.jdField_a_of_type_AndroidOsResultReceiver == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
-      }
-      return false;
-    }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
-    return true;
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    super.b(paramBundle);
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
+    this.a.f = 1001;
+    this.a.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.a(1001, new Object[0]);
   }
 }
 

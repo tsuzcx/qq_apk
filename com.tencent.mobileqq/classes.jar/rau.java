@@ -1,212 +1,81 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function3;
+import org.jetbrains.annotations.NotNull;
 
-public class rau
-  extends ral
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyParam;", "", "status", "", "isDarkMode", "", "avatarUrl", "", "uin", "marginBottom", "useNightMode", "logicAction", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "isOpenPushNotify", "isDefaultOpen", "buttonId", "", "(IZLjava/lang/String;Ljava/lang/String;IZLkotlin/jvm/functions/Function3;)V", "getAvatarUrl", "()Ljava/lang/String;", "setAvatarUrl", "(Ljava/lang/String;)V", "()Z", "setDarkMode", "(Z)V", "getLogicAction", "()Lkotlin/jvm/functions/Function3;", "setLogicAction", "(Lkotlin/jvm/functions/Function3;)V", "getMarginBottom", "()I", "setMarginBottom", "(I)V", "getStatus", "setStatus", "getUin", "setUin", "getUseNightMode", "setUseNightMode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rau
 {
-  protected int a;
-  protected Handler a;
-  protected SparseArray<rai[]> a;
-  protected String a;
-  protected ArrayList<rbh> b = new ArrayList();
+  public static final rav a;
+  private int jdField_a_of_type_Int;
+  @NotNull
+  private String jdField_a_of_type_JavaLangString;
+  @NotNull
+  private Function3<? super Boolean, ? super Boolean, ? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction3;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  @NotNull
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
   
-  public rau(AppInterface paramAppInterface)
+  static
   {
-    super(paramAppInterface);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    a(3, new rai[] { new rai(), new rav(this) });
-    a(2, new rai[] { new rai(), new raz(this) });
-    a(4, new rai[] { new rba(this), new rbb(this, paramAppInterface) });
-    a(5, new rai[] { new rbc(this), new rbd(this, paramAppInterface) });
-    a(6, new rai[] { new rbe(this), new rbf(this, paramAppInterface) });
-    a(7, new rai[] { new rbg(this), new raw(this, paramAppInterface) });
-    a(8, new rai[] { new rax(this), new ray(this) });
+    jdField_a_of_type_Rav = new rav(null);
   }
   
-  public int a()
+  public rau(int paramInt1, boolean paramBoolean1, @NotNull String paramString1, @NotNull String paramString2, int paramInt2, boolean paramBoolean2, @NotNull Function3<? super Boolean, ? super Boolean, ? super Integer, Unit> paramFunction3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction3 = paramFunction3;
+  }
+  
+  public final int a()
   {
     return this.jdField_a_of_type_Int;
   }
   
-  public SkinData a(Context paramContext)
-  {
-    SkinData localSkinData = null;
-    paramContext = bfyz.q(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    if (paramContext != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        if (paramContext != null) {
-          localSkinData = new SkinData(paramContext);
-        }
-        return localSkinData;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext = null;
-        continue;
-      }
-      paramContext = null;
-    }
-  }
-  
-  public String a()
+  @NotNull
+  public final String a()
   {
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public String a(String paramString)
+  @NotNull
+  public final Function3<Boolean, Boolean, Integer, Unit> a()
   {
-    if ("skin".equals(paramString)) {
-      return raj.a();
-    }
-    if ("guide".equals(paramString)) {
-      return raj.c();
-    }
-    return raj.c();
+    return this.jdField_a_of_type_KotlinJvmFunctionsFunction3;
   }
   
-  public String a(String paramString1, String paramString2)
+  public final boolean a()
   {
-    if ("skin".equals(paramString1)) {
-      return raj.a(paramString2);
-    }
-    if ("guide".equals(paramString1)) {
-      return raj.b(paramString2);
-    }
-    return raj.b(paramString2);
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public rai a(int paramInt)
+  public final int b()
   {
-    rai[] arrayOfrai = (rai[])this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if ((arrayOfrai != null) && (this.jdField_a_of_type_Int < arrayOfrai.length)) {
-      return arrayOfrai[this.jdField_a_of_type_Int];
-    }
-    return null;
+    return this.jdField_b_of_type_Int;
   }
   
-  public void a(int paramInt, rai... paramVarArgs)
+  @NotNull
+  public final String b()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramVarArgs);
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public void a(Context paramContext, String paramString, BaseResData paramBaseResData)
+  public final boolean b()
   {
-    bfyz.g(paramContext, paramString, paramBaseResData.seq);
+    return this.jdField_b_of_type_Boolean;
   }
   
-  public void a(rbh paramrbh)
+  @NotNull
+  public String toString()
   {
-    synchronized (this.b)
-    {
-      if (!this.b.contains(paramrbh)) {
-        this.b.add(paramrbh);
-      }
-      return;
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    bcef.b(null, "dc00899", "BizTechReport", "", "skin_download", "skin_guide", 0, 0, paramArrayOfString[0], paramArrayOfString[1], paramArrayOfString[2], String.valueOf(NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication())));
-  }
-  
-  public boolean a(GuideData paramGuideData)
-  {
-    return super.a("guide", paramGuideData);
-  }
-  
-  public boolean a(SkinData paramSkinData)
-  {
-    return super.a("skin", paramSkinData);
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = (String)this.jdField_a_of_type_JavaUtilHashMap.remove("skin_" + paramString);
-    if (paramString != null)
-    {
-      this.jdField_a_of_type_Bgoj.a(false, paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, BaseResData paramBaseResData)
-  {
-    if ((paramBaseResData instanceof GuideData)) {
-      return a((GuideData)paramBaseResData) & true & a(((GuideData)paramBaseResData).skinData);
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, bgod parambgod)
-  {
-    paramString1 = new SkinData(paramString1, paramString3, paramLong1, (int)paramLong2, (int)paramLong3);
-    paramString2 = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext());
-    if ((paramString2 != null) && (paramString2.id.equals(paramString1.id)) && (paramString2.seq != paramString1.seq) && (!this.jdField_a_of_type_JavaLangString.equals(paramString1.id))) {
-      FileUtils.deleteDirectory(raj.a(paramString2.id));
-    }
-    a(parambgod);
-    return super.a("skin", paramString1, 3);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void b(String paramString, BaseResData paramBaseResData)
-  {
-    bfyz.t(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id);
-    bfyz.B(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-  }
-  
-  public void b(rbh paramrbh)
-  {
-    synchronized (this.b)
-    {
-      this.b.remove(paramrbh);
-      return;
-    }
-  }
-  
-  public boolean b(String paramString, BaseResData paramBaseResData)
-  {
-    return (a() != 1) || (!paramBaseResData.id.equals(a()));
-  }
-  
-  public boolean c(String paramString, BaseResData paramBaseResData)
-  {
-    paramString = a(paramString, paramBaseResData.id);
-    long l1 = bfyz.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()) / 86400000L;
-    long l2 = System.currentTimeMillis() / 86400000L;
-    return (bcro.a(new File(paramString))) && (raj.a(paramBaseResData.id)) && (!bfyz.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id)) && (l2 > l1);
-  }
-  
-  public void onDestroy()
-  {
-    this.b.clear();
+    return "status: " + this.jdField_a_of_type_Int + " , isDarkMode: " + this.jdField_a_of_type_Boolean + " , avatarUrl: " + this.jdField_a_of_type_JavaLangString + " , marginBottom: " + this.jdField_b_of_type_Int;
   }
 }
 

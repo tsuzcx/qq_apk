@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajnr;
-import bfed;
+import akjf;
+import bgmj;
 
 public abstract interface TroopPhotoController$OnDataChangeListener
 {
-  public abstract void onAddItem(ajnr paramajnr);
+  public abstract void onAddItem(akjf paramakjf);
   
   public abstract void onDataSetChanged();
   
-  public abstract void onDelItem(ajnr paramajnr);
+  public abstract void onDelItem(akjf paramakjf);
   
   public abstract void onItemSelect(int paramInt);
   
-  public abstract void onUpdateItem(ajnr paramajnr, bfed parambfed);
+  public abstract void onUpdateItem(akjf paramakjf, bgmj parambgmj);
 }
 
 

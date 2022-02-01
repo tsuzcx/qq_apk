@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.haoliyou;
 
-import amxq;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,19 +14,21 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.util.ArraySet;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
-import apdi;
-import auci;
-import aucj;
-import auck;
-import aucl;
-import aucm;
-import aucr;
-import aucs;
-import auct;
-import aucu;
-import aucv;
-import audo;
-import bcef;
+import aoae;
+import aqgm;
+import asax;
+import avic;
+import avid;
+import avie;
+import avif;
+import avig;
+import avil;
+import avim;
+import avin;
+import avio;
+import avip;
+import avji;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -44,7 +45,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JefsClass
-  extends auci
+  extends avic
 {
   private static JefsClass jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass = new JefsClass();
   private static final Set<String> jdField_a_of_type_JavaUtilSet = new ArraySet();
@@ -52,9 +53,9 @@ public class JefsClass
   private static final Set<String> c;
   private int jdField_a_of_type_Int;
   private final SparseArrayCompat<Runnable> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private aucu jdField_a_of_type_Aucu;
-  private aucv jdField_a_of_type_Aucv;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new aucj(this);
+  private avio jdField_a_of_type_Avio;
+  private avip jdField_a_of_type_Avip;
+  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new avid(this);
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -160,11 +161,11 @@ public class JefsClass
     return localArrayMap;
   }
   
-  public static aucu a(JSONObject paramJSONObject)
+  public static avio a(JSONObject paramJSONObject)
   {
-    aucu localaucu = new aucu();
+    avio localavio = new avio();
     if (paramJSONObject == null) {
-      return localaucu;
+      return localavio;
     }
     label200:
     for (;;)
@@ -183,7 +184,7 @@ public class JefsClass
             if (str == null) {
               break label200;
             }
-            localaucu.jdField_a_of_type_JavaUtilSet.add(str);
+            localavio.jdField_a_of_type_JavaUtilSet.add(str);
             break label200;
           }
         }
@@ -202,11 +203,11 @@ public class JefsClass
           localObject1 = ((JSONObject)localObject2).optString("package");
           str = ((JSONObject)localObject2).optString("schema");
           localObject2 = ((JSONObject)localObject2).optString("action");
-          auct localauct = new auct();
-          localauct.a = ((String)localObject1);
-          localauct.b = str.toLowerCase();
-          localauct.c = ((String)localObject2).toLowerCase();
-          localaucu.jdField_a_of_type_JavaUtilList.add(localauct);
+          avin localavin = new avin();
+          localavin.a = ((String)localObject1);
+          localavin.b = str.toLowerCase();
+          localavin.c = ((String)localObject2).toLowerCase();
+          localavio.jdField_a_of_type_JavaUtilList.add(localavin);
         }
         i += 1;
         continue;
@@ -215,7 +216,7 @@ public class JefsClass
       catch (Throwable paramJSONObject)
       {
         QLog.d("TeleScreen|JefsClass", 1, paramJSONObject, new Object[0]);
-        return localaucu;
+        return localavio;
       }
     }
   }
@@ -314,12 +315,12 @@ public class JefsClass
       }
       b(paramInt1, 0);
       a(localRunnable);
-      apdi.a().a(paramInt2, 2);
+      aqgm.a().a(paramInt2, 2);
       return;
     }
   }
   
-  private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, aucs paramaucs)
+  private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, avim paramavim)
   {
     QLog.i("TeleScreen|JefsClass", 1, "intercept: ");
     if (((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue())
@@ -333,7 +334,7 @@ public class JefsClass
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, "src " + str3 + ", ref " + str1);
     }
-    if (!amxq.a())
+    if (!aoae.a())
     {
       a(paramCancelableRunnable);
       return;
@@ -381,6 +382,9 @@ public class JefsClass
       a(paramCancelableRunnable);
       return;
     }
+    if (localObject != null) {
+      asax.a().a(((AppRuntime)localObject).getAccount(), paramIntent);
+    }
     localObject = paramIntent.getData();
     if ((localObject != null) && (((Uri)localObject).getScheme() != null) && (((((Uri)localObject).getScheme().startsWith("tencent")) && ("tauth.qq.com".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().startsWith("qwallet")) && ("open_pay".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("tmast")) && ("sdk_wake".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("tmast")) && ("spaceclean".equals(((Uri)localObject).getAuthority()))) || ((((Uri)localObject).getScheme().equals("https")) && ("ssl.ptlogin2.qq.com".equals(((Uri)localObject).getAuthority())) && ("/jump".equals(((Uri)localObject).getPath())))))
     {
@@ -417,7 +421,7 @@ public class JefsClass
         }
       }
     }
-    paramaucs.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
+    paramavim.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
   }
   
   /* Error */
@@ -426,7 +430,7 @@ public class JefsClass
     // Byte code:
     //   0: ldc_w 256
     //   3: iconst_1
-    //   4: ldc_w 521
+    //   4: ldc_w 532
     //   7: invokestatic 341	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   10: aload_1
     //   11: aload_2
@@ -441,7 +445,7 @@ public class JefsClass
     //   29: ifeq +50 -> 79
     //   32: ldc_w 256
     //   35: iconst_2
-    //   36: ldc_w 523
+    //   36: ldc_w 534
     //   39: bipush 6
     //   41: anewarray 258	java/lang/Object
     //   44: dup
@@ -468,30 +472,30 @@ public class JefsClass
     //   69: iconst_5
     //   70: aload 6
     //   72: aastore
-    //   73: invokestatic 527	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   73: invokestatic 538	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   76: invokestatic 295	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   79: aload 8
     //   81: aload 12
-    //   83: invokevirtual 532	com/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable:a	(Ljava/lang/String;)V
-    //   86: invokestatic 537	apub:a	()Lapub;
+    //   83: invokevirtual 543	com/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable:a	(Ljava/lang/String;)V
+    //   86: invokestatic 548	aqxe:a	()Laqxe;
     //   89: sipush 416
-    //   92: invokevirtual 539	apub:a	(I)Ljava/lang/Object;
-    //   95: checkcast 541	apdk
+    //   92: invokevirtual 550	aqxe:a	(I)Ljava/lang/Object;
+    //   95: checkcast 552	aqgo
     //   98: astore 11
     //   100: aload 11
-    //   102: getfield 543	apdk:jdField_a_of_type_Boolean	Z
+    //   102: getfield 554	aqgo:jdField_a_of_type_Boolean	Z
     //   105: ifeq +183 -> 288
     //   108: aload 11
     //   110: aload 12
     //   112: aload 5
-    //   114: invokevirtual 546	apdk:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   114: invokevirtual 557	aqgo:a	(Ljava/lang/String;Ljava/lang/String;)Z
     //   117: ifne +171 -> 288
     //   120: aload 7
-    //   122: invokestatic 549	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/util/List;)Z
+    //   122: invokestatic 560	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/util/List;)Z
     //   125: ifne +163 -> 288
     //   128: aload 12
     //   130: aload 4
-    //   132: invokestatic 550	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   132: invokestatic 561	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;Ljava/lang/String;)Z
     //   135: ifne +153 -> 288
     //   138: iconst_1
     //   139: istore 10
@@ -503,7 +507,7 @@ public class JefsClass
     //   152: ifne +565 -> 717
     //   155: ldc_w 256
     //   158: iconst_1
-    //   159: ldc_w 552
+    //   159: ldc_w 563
     //   162: invokestatic 341	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: aload_0
     //   166: aload 8
@@ -511,35 +515,35 @@ public class JefsClass
     //   171: iconst_0
     //   172: istore 9
     //   174: aload_2
-    //   175: ldc_w 554
+    //   175: ldc_w 565
     //   178: iconst_1
-    //   179: invokevirtual 558	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   179: invokevirtual 569	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   182: pop
-    //   183: new 560	java/lang/ref/WeakReference
+    //   183: new 571	java/lang/ref/WeakReference
     //   186: dup
     //   187: aload_1
-    //   188: invokespecial 563	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   188: invokespecial 574	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
     //   191: astore 8
-    //   193: ldc_w 565
+    //   193: ldc_w 576
     //   196: aload 6
     //   198: invokevirtual 328	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   201: ifeq +99 -> 300
-    //   204: ldc_w 567
+    //   204: ldc_w 578
     //   207: aload_2
-    //   208: invokevirtual 570	android/content/Intent:getType	()Ljava/lang/String;
-    //   211: invokevirtual 573	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   208: invokevirtual 581	android/content/Intent:getType	()Ljava/lang/String;
+    //   211: invokevirtual 584	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   214: ifne +13 -> 227
     //   217: aload_2
-    //   218: ldc_w 575
+    //   218: ldc_w 586
     //   221: invokevirtual 303	android/content/Intent:hasExtra	(Ljava/lang/String;)Z
     //   224: ifeq +76 -> 300
     //   227: invokestatic 273	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   230: ifeq +13 -> 243
     //   233: ldc_w 256
     //   236: iconst_2
-    //   237: ldc_w 577
+    //   237: ldc_w 588
     //   240: invokestatic 295	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   243: new 579	com/tencent/mobileqq/haoliyou/JefsClass$7
+    //   243: new 590	com/tencent/mobileqq/haoliyou/JefsClass$7
     //   246: dup
     //   247: aload_0
     //   248: aload_2
@@ -547,11 +551,11 @@ public class JefsClass
     //   251: aload 8
     //   253: aload 12
     //   255: aload 13
-    //   257: invokespecial 582	com/tencent/mobileqq/haoliyou/JefsClass$7:<init>	(Lcom/tencent/mobileqq/haoliyou/JefsClass;Landroid/content/Intent;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;Ljava/lang/ref/WeakReference;Ljava/lang/String;Ljava/lang/String;)V
+    //   257: invokespecial 593	com/tencent/mobileqq/haoliyou/JefsClass$7:<init>	(Lcom/tencent/mobileqq/haoliyou/JefsClass;Landroid/content/Intent;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;Ljava/lang/ref/WeakReference;Ljava/lang/String;Ljava/lang/String;)V
     //   260: bipush 64
     //   262: aconst_null
     //   263: iconst_1
-    //   264: invokestatic 588	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   264: invokestatic 599	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   267: return
     //   268: astore_1
     //   269: ldc_w 256
@@ -559,7 +563,7 @@ public class JefsClass
     //   273: aload_1
     //   274: iconst_0
     //   275: anewarray 258	java/lang/Object
-    //   278: invokestatic 591	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   278: invokestatic 602	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   281: aload_0
     //   282: aload 8
     //   284: invokespecial 354	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/Runnable;)V
@@ -573,16 +577,16 @@ public class JefsClass
     //   300: aload 5
     //   302: ifnull +99 -> 401
     //   305: aload 5
-    //   307: ldc_w 593
-    //   310: invokevirtual 447	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   307: ldc_w 604
+    //   310: invokevirtual 458	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   313: ifne +14 -> 327
     //   316: aload 5
-    //   318: ldc_w 595
-    //   321: invokevirtual 447	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   318: ldc_w 606
+    //   321: invokevirtual 458	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   324: ifeq +77 -> 401
-    //   327: ldc_w 567
+    //   327: ldc_w 578
     //   330: aload_2
-    //   331: ldc_w 597
+    //   331: ldc_w 608
     //   334: invokevirtual 306	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   337: invokevirtual 328	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   340: ifeq +38 -> 378
@@ -593,7 +597,7 @@ public class JefsClass
     //   349: aconst_null
     //   350: aload 5
     //   352: aload 11
-    //   354: invokespecial 600	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
+    //   354: invokespecial 611	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
     //   357: return
     //   358: astore_1
     //   359: ldc_w 256
@@ -601,7 +605,7 @@ public class JefsClass
     //   363: aload_1
     //   364: iconst_0
     //   365: anewarray 258	java/lang/Object
-    //   368: invokestatic 591	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   368: invokestatic 602	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   371: aload_0
     //   372: aload 11
     //   374: invokespecial 354	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/Runnable;)V
@@ -617,26 +621,26 @@ public class JefsClass
     //   391: aload 7
     //   393: aload 11
     //   395: iload 9
-    //   397: invokespecial 603	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
+    //   397: invokespecial 614	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
     //   400: return
     //   401: aload 5
     //   403: ifnull +98 -> 501
     //   406: aload 5
-    //   408: ldc_w 605
-    //   411: invokevirtual 447	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   408: ldc_w 616
+    //   411: invokevirtual 458	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   414: ifeq +87 -> 501
     //   417: aload_0
     //   418: aload 5
-    //   420: ldc_w 605
-    //   423: invokevirtual 606	java/lang/String:length	()I
-    //   426: invokevirtual 609	java/lang/String:substring	(I)Ljava/lang/String;
-    //   429: invokespecial 611	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;)Landroid/support/v4/util/ArrayMap;
+    //   420: ldc_w 616
+    //   423: invokevirtual 617	java/lang/String:length	()I
+    //   426: invokevirtual 620	java/lang/String:substring	(I)Ljava/lang/String;
+    //   429: invokespecial 622	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;)Landroid/support/v4/util/ArrayMap;
     //   432: astore_2
-    //   433: ldc_w 567
-    //   436: invokestatic 616	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   433: ldc_w 578
+    //   436: invokestatic 627	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
     //   439: aload_2
-    //   440: ldc_w 618
-    //   443: invokevirtual 621	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   440: ldc_w 629
+    //   443: invokevirtual 632	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   446: invokevirtual 328	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   449: ifeq +29 -> 478
     //   452: aload_0
@@ -645,12 +649,12 @@ public class JefsClass
     //   456: aload 13
     //   458: aconst_null
     //   459: aload_2
-    //   460: ldc_w 623
-    //   463: invokevirtual 621	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   460: ldc_w 634
+    //   463: invokevirtual 632	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   466: checkcast 183	java/lang/String
-    //   469: invokestatic 628	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   469: invokestatic 639	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   472: aload 11
-    //   474: invokespecial 600	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
+    //   474: invokespecial 611	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
     //   477: return
     //   478: aload_0
     //   479: aload_1
@@ -663,31 +667,31 @@ public class JefsClass
     //   491: aload 7
     //   493: aload 11
     //   495: iload 9
-    //   497: invokespecial 603	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
+    //   497: invokespecial 614	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
     //   500: return
     //   501: aload 5
     //   503: ifnull +132 -> 635
     //   506: aload 5
-    //   508: ldc_w 630
-    //   511: invokevirtual 447	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   508: ldc_w 641
+    //   511: invokevirtual 458	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   514: ifeq +121 -> 635
     //   517: aload 5
-    //   519: ldc_w 632
-    //   522: invokevirtual 636	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   519: ldc_w 643
+    //   522: invokevirtual 647	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   525: istore 10
     //   527: iload 10
     //   529: iflt +83 -> 612
     //   532: aload_0
     //   533: aload 5
     //   535: iload 10
-    //   537: invokevirtual 609	java/lang/String:substring	(I)Ljava/lang/String;
-    //   540: invokespecial 611	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;)Landroid/support/v4/util/ArrayMap;
+    //   537: invokevirtual 620	java/lang/String:substring	(I)Ljava/lang/String;
+    //   540: invokespecial 622	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/lang/String;)Landroid/support/v4/util/ArrayMap;
     //   543: astore_2
-    //   544: ldc_w 567
-    //   547: invokestatic 616	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   544: ldc_w 578
+    //   547: invokestatic 627	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
     //   550: aload_2
-    //   551: ldc_w 618
-    //   554: invokevirtual 621	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   551: ldc_w 629
+    //   554: invokevirtual 632	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   557: invokevirtual 328	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   560: ifeq +29 -> 589
     //   563: aload_0
@@ -696,12 +700,12 @@ public class JefsClass
     //   567: aload 13
     //   569: aconst_null
     //   570: aload_2
-    //   571: ldc_w 623
-    //   574: invokevirtual 621	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   571: ldc_w 634
+    //   574: invokevirtual 632	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   577: checkcast 183	java/lang/String
-    //   580: invokestatic 628	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   580: invokestatic 639	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   583: aload 11
-    //   585: invokespecial 600	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
+    //   585: invokespecial 611	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
     //   588: return
     //   589: aload_0
     //   590: aload_1
@@ -714,7 +718,7 @@ public class JefsClass
     //   602: aload 7
     //   604: aload 11
     //   606: iload 9
-    //   608: invokespecial 603	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
+    //   608: invokespecial 614	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
     //   611: return
     //   612: aload_0
     //   613: aload_1
@@ -727,16 +731,16 @@ public class JefsClass
     //   625: aload 7
     //   627: aload 11
     //   629: iload 9
-    //   631: invokespecial 603	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
+    //   631: invokespecial 614	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
     //   634: return
     //   635: aload 5
     //   637: ifnull +57 -> 694
     //   640: aload 5
-    //   642: ldc_w 638
-    //   645: invokevirtual 447	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   642: ldc_w 649
+    //   645: invokevirtual 458	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   648: ifeq +46 -> 694
     //   651: aload_2
-    //   652: ldc_w 639
+    //   652: ldc_w 650
     //   655: invokevirtual 306	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   658: astore_3
     //   659: aconst_null
@@ -744,10 +748,10 @@ public class JefsClass
     //   661: aload_3
     //   662: ifnonnull +18 -> 680
     //   665: aload 5
-    //   667: invokestatic 643	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   670: ldc_w 645
-    //   673: invokevirtual 648	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
-    //   676: invokestatic 628	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   667: invokestatic 654	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   670: ldc_w 656
+    //   673: invokevirtual 659	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
+    //   676: invokestatic 639	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   679: astore_2
     //   680: aload_0
     //   681: aload_1
@@ -756,7 +760,7 @@ public class JefsClass
     //   686: aload_3
     //   687: aload_2
     //   688: aload 11
-    //   690: invokespecial 600	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
+    //   690: invokespecial 611	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
     //   693: return
     //   694: aload_0
     //   695: aload_1
@@ -769,7 +773,7 @@ public class JefsClass
     //   707: aload 7
     //   709: aload 11
     //   711: iload 9
-    //   713: invokespecial 603	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
+    //   713: invokespecial 614	com/tencent/mobileqq/haoliyou/JefsClass:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable;I)V
     //   716: return
     //   717: goto -543 -> 174
     // Local variable table:
@@ -828,8 +832,8 @@ public class JefsClass
     }
     for (;;)
     {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
-      audo.a(paramContext, paramString1, paramString3, paramString4, paramString2, new aucl(this, paramRunnable, new WeakReference(paramContext), paramString1));
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
+      avji.a(paramContext, paramString1, paramString3, paramString4, paramString2, new avif(this, paramRunnable, new WeakReference(paramContext), paramString1));
       return;
       label103:
       localQQAppInterface = null;
@@ -862,8 +866,8 @@ public class JefsClass
     }
     for (;;)
     {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
-      audo.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new aucm(this, new WeakReference(paramContext), paramCancelableRunnable, paramInt, paramString1));
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
+      avji.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new avig(this, new WeakReference(paramContext), paramCancelableRunnable, paramInt, paramString1));
       return;
       label111:
       localQQAppInterface = null;
@@ -928,8 +932,8 @@ public class JefsClass
           }
           try
           {
-            BaseApplicationImpl.context.unregisterReceiver(this.jdField_a_of_type_Aucv);
-            apdi.a().a(paramInt2, -1);
+            BaseApplicationImpl.context.unregisterReceiver(this.jdField_a_of_type_Avip);
+            aqgm.a().a(paramInt2, -1);
             return;
           }
           catch (Throwable localThrowable)
@@ -949,7 +953,7 @@ public class JefsClass
     return jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass;
   }
   
-  public aucr a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
+  public avil a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
   {
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, "checkAndDoAsyn() called with: context = [" + paramContext + "], intent = [" + paramIntent + "], url = [" + paramString + "], todo = [" + paramWeakOuterRefRunnable + "]");
@@ -957,11 +961,11 @@ public class JefsClass
     int i = paramIntent.getIntExtra("key_callback_id", 0);
     paramWeakOuterRefRunnable.b(i);
     paramWeakOuterRefRunnable = new JefsClass.CancelableRunnable(paramWeakOuterRefRunnable);
-    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new auck(this, paramContext, paramIntent, paramString, i));
+    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new avie(this, paramContext, paramIntent, paramString, i));
     return paramWeakOuterRefRunnable.a();
   }
   
-  public aucr a(Context paramContext, Intent paramIntent, String paramString, Runnable paramRunnable)
+  public avil a(Context paramContext, Intent paramIntent, String paramString, Runnable paramRunnable)
   {
     return a(paramContext, paramIntent, paramString, new WeakOuterRefRunnable(paramRunnable, true));
   }
@@ -991,7 +995,7 @@ public class JefsClass
     try
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Aucu = a(paramJSONObject);
+      this.jdField_a_of_type_Avio = a(paramJSONObject);
       return;
     }
     finally

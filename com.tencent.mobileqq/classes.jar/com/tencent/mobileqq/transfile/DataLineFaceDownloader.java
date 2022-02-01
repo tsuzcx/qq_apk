@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bfvo;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -31,9 +31,9 @@ public class DataLineFaceDownloader
   
   private String compressImage(Context paramContext, String paramString)
   {
-    String str = bfvo.a(paramContext, paramString, 0);
+    String str = bheg.a(paramContext, paramString, 0);
     ImageInfo localImageInfo = new ImageInfo();
-    bfvo.a(4, paramContext, paramString, str, true, localImageInfo, 0);
+    bheg.a(4, paramContext, paramString, str, true, localImageInfo, 0);
     return localImageInfo.b;
   }
   

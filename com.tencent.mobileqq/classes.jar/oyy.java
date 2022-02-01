@@ -1,69 +1,21 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oyy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentDotClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyy
+  implements oyp
 {
-  HashMap<String, HashSet<Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  oyz jdField_a_of_type_Oyz;
-  
-  public oyy(oyz paramoyz)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pcf parampcf, @NotNull pdp parampdp, @NotNull ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Oyz = paramoyz;
-  }
-  
-  private void b(String paramString, Object paramObject)
-  {
-    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localHashSet2 != null) && (localHashSet2.contains(paramObject))) {
-      return;
-    }
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null) {
-      localHashSet1 = new HashSet();
-    }
-    localHashSet1.add(paramObject);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    a(paramString, paramObject, true);
-  }
-  
-  public void a(String paramString, Object paramObject, boolean paramBoolean)
-  {
-    b(paramString, paramObject);
-    if (paramBoolean) {}
-    while (this.jdField_a_of_type_Oyz == null) {
-      return;
-    }
-    this.jdField_a_of_type_Oyz.a(paramString, paramObject);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Oyz != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
-    {
-      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator1.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator1.next();
-        Iterator localIterator2 = ((HashSet)localEntry.getValue()).iterator();
-        while (localIterator2.hasNext())
-        {
-          Object localObject = localIterator2.next();
-          this.jdField_a_of_type_Oyz.a((String)localEntry.getKey(), localObject);
-        }
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampcf, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oyz(paramContainer.getVirtualView().findViewBaseByName("id_first_comment_view"), parampcf, parampdp));
   }
 }
 

@@ -153,43 +153,50 @@ public class ArkAppMgr
   
   private boolean checkSignAfterAppPathCache(String paramString)
   {
-    byte[] arrayOfByte;
-    do
+    for (;;)
     {
       synchronized (this.mAppPathCache)
       {
-        if (this.mAppPathCache.get(paramString) != null)
-        {
-          if (((ArkAppMgr.AppPathInfo)this.mAppPathCache.get(paramString)).path == null)
-          {
-            this.mAppPathCache.remove(paramString);
-            ENV.logI("ArkApp.ArkAppMgr", "ArkTemp.checkSignAfterAppPathCache, cachePath is error and checkCache is failed");
-          }
-        }
-        else {
+        if (this.mAppPathCache.get(paramString) == null) {
           return true;
         }
-        localObject = new File(((ArkAppMgr.AppPathInfo)this.mAppPathCache.get(paramString)).path);
-        if ((!((File)localObject).exists()) || (!((File)localObject).isFile()))
+        if (((ArkAppMgr.AppPathInfo)this.mAppPathCache.get(paramString)).path == null)
+        {
+          this.mAppPathCache.remove(paramString);
+          ENV.logI("ArkApp.ArkAppMgr", "ArkTemp.checkSignAfterAppPathCache, cachePath is error and checkCache is failed");
+          return true;
+        }
+        localObject1 = new File(((ArkAppMgr.AppPathInfo)this.mAppPathCache.get(paramString)).path);
+        if ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()))
         {
           this.mAppPathCache.remove(paramString);
           ENV.logI("ArkApp.ArkAppMgr", "ArkTemp.checkSignAfterAppPathCache, cacheFile is error and checkCache is failed");
+          return true;
+        }
+        Object localObject2 = ArkEnvironmentManager.getSharedPreferences("ArkLocalAppUpdateTime");
+        if (localObject2 == null) {
+          return true;
+        }
+        localObject2 = Base64.decode(((SharedPreferences)localObject2).getString(paramString + "_sign", "bad"), 0);
+        if (localObject2 == null)
+        {
+          ENV.logI("ArkApp.ArkAppMgr", "ArkTemp.checkSignAfterAppPathCache, checksign is null");
+          return false;
+        }
+        if ((((File)localObject1).length() <= 0L) || (localObject2.length <= 0)) {
+          break;
+        }
+        boolean bool = ArkAppCGIMgr.verifyAppPackage((File)localObject1, (byte[])localObject2);
+        if (bool)
+        {
+          localObject1 = "success";
+          ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.checkSignAfterAppPathCache, checksign=%s, appName=%s", new Object[] { localObject1, paramString }));
+          return bool;
         }
       }
-      arrayOfByte = Base64.decode(ArkEnvironmentManager.getSharedPreferences("ArkLocalAppUpdateTime").getString(paramString + "_sign", "bad"), 0);
-      if (arrayOfByte == null)
-      {
-        ENV.logI("ArkApp.ArkAppMgr", "ArkTemp.checkSignAfterAppPathCache, checksign is null");
-        return false;
-      }
-    } while ((((File)localObject).length() <= 0L) || (arrayOfByte.length <= 0));
-    boolean bool = ArkAppCGIMgr.getInstance().verifyAppPackage((File)localObject, arrayOfByte);
-    if (bool) {}
-    for (Object localObject = "success";; localObject = "failed")
-    {
-      ENV.logI("ArkApp.ArkAppMgr", String.format("ArkTemp.checkSignAfterAppPathCache, checksign=%s,appName=%s", new Object[] { localObject, paramString }));
-      return bool;
+      Object localObject1 = "failed";
     }
+    return true;
   }
   
   private static int compareVersionString(String paramString1, String paramString2)
@@ -247,12 +254,12 @@ public class ArkAppMgr
     //   3: aload_1
     //   4: ifnull +32 -> 36
     //   7: aload_1
-    //   8: invokevirtual 425	java/lang/String:length	()I
+    //   8: invokevirtual 422	java/lang/String:length	()I
     //   11: ifeq +25 -> 36
     //   14: aload_2
     //   15: ifnull +21 -> 36
     //   18: aload_2
-    //   19: invokevirtual 425	java/lang/String:length	()I
+    //   19: invokevirtual 422	java/lang/String:length	()I
     //   22: ifeq +14 -> 36
     //   25: aload 4
     //   27: ifnull +9 -> 36
@@ -266,39 +273,39 @@ public class ArkAppMgr
     //   40: new 323	java/io/File
     //   43: dup
     //   44: aload_1
-    //   45: invokestatic 429	com/tencent/ark/open/ArkAppMgr:getAppDirByNameAndVersion	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: invokestatic 426	com/tencent/ark/open/ArkAppMgr:getAppDirByNameAndVersion	(Ljava/lang/String;)Ljava/lang/String;
     //   48: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   51: astore 6
     //   53: aload 6
     //   55: invokevirtual 329	java/io/File:exists	()Z
     //   58: ifne +79 -> 137
     //   61: aload 6
-    //   63: invokevirtual 432	java/io/File:delete	()Z
+    //   63: invokevirtual 429	java/io/File:delete	()Z
     //   66: pop
     //   67: aload 6
-    //   69: invokevirtual 435	java/io/File:mkdirs	()Z
+    //   69: invokevirtual 432	java/io/File:mkdirs	()Z
     //   72: pop
     //   73: aload_1
     //   74: aload_2
     //   75: aload_3
-    //   76: invokestatic 439	com/tencent/ark/open/ArkAppMgr:getAppPathByNameAndVersion	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   76: invokestatic 436	com/tencent/ark/open/ArkAppMgr:getAppPathByNameAndVersion	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   79: astore_3
-    //   80: new 441	java/io/FileOutputStream
+    //   80: new 438	java/io/FileOutputStream
     //   83: dup
     //   84: aload_3
-    //   85: invokespecial 442	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   85: invokespecial 439	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   88: astore_2
     //   89: aload_2
     //   90: astore_1
     //   91: aload_2
     //   92: aload 4
-    //   94: invokevirtual 446	java/io/FileOutputStream:write	([B)V
+    //   94: invokevirtual 443	java/io/FileOutputStream:write	([B)V
     //   97: aload_3
     //   98: astore_1
     //   99: aload_2
     //   100: ifnull -62 -> 38
     //   103: aload_2
-    //   104: invokevirtual 449	java/io/FileOutputStream:close	()V
+    //   104: invokevirtual 446	java/io/FileOutputStream:close	()V
     //   107: aload_3
     //   108: areturn
     //   109: astore_1
@@ -308,24 +315,24 @@ public class ArkAppMgr
     //   116: anewarray 4	java/lang/Object
     //   119: dup
     //   120: iconst_0
-    //   121: ldc_w 451
+    //   121: ldc_w 448
     //   124: aastore
     //   125: dup
     //   126: iconst_1
     //   127: aload_1
-    //   128: invokevirtual 421	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 418	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   131: aastore
-    //   132: invokevirtual 407	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   132: invokevirtual 404	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   135: aload_3
     //   136: areturn
     //   137: aload 6
     //   139: invokevirtual 332	java/io/File:isFile	()Z
     //   142: ifeq -69 -> 73
     //   145: aload 6
-    //   147: invokevirtual 432	java/io/File:delete	()Z
+    //   147: invokevirtual 429	java/io/File:delete	()Z
     //   150: pop
     //   151: aload 6
-    //   153: invokevirtual 435	java/io/File:mkdirs	()Z
+    //   153: invokevirtual 432	java/io/File:mkdirs	()Z
     //   156: pop
     //   157: goto -84 -> 73
     //   160: astore_3
@@ -334,7 +341,7 @@ public class ArkAppMgr
     //   163: aload_2
     //   164: astore_1
     //   165: aload_3
-    //   166: invokevirtual 416	java/lang/Exception:printStackTrace	()V
+    //   166: invokevirtual 413	java/lang/Exception:printStackTrace	()V
     //   169: aload_2
     //   170: astore_1
     //   171: getstatic 87	com/tencent/ark/open/ArkAppMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
@@ -343,18 +350,18 @@ public class ArkAppMgr
     //   177: anewarray 4	java/lang/Object
     //   180: dup
     //   181: iconst_0
-    //   182: ldc_w 451
+    //   182: ldc_w 448
     //   185: aastore
     //   186: dup
     //   187: iconst_1
     //   188: aload_3
-    //   189: invokevirtual 421	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   189: invokevirtual 418	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   192: aastore
-    //   193: invokevirtual 407	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   193: invokevirtual 404	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   196: aload_2
     //   197: ifnull +7 -> 204
     //   200: aload_2
-    //   201: invokevirtual 449	java/io/FileOutputStream:close	()V
+    //   201: invokevirtual 446	java/io/FileOutputStream:close	()V
     //   204: aconst_null
     //   205: areturn
     //   206: astore_1
@@ -364,14 +371,14 @@ public class ArkAppMgr
     //   213: anewarray 4	java/lang/Object
     //   216: dup
     //   217: iconst_0
-    //   218: ldc_w 451
+    //   218: ldc_w 448
     //   221: aastore
     //   222: dup
     //   223: iconst_1
     //   224: aload_1
-    //   225: invokevirtual 421	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   225: invokevirtual 418	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   228: aastore
-    //   229: invokevirtual 407	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: invokevirtual 404	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: goto -28 -> 204
     //   235: astore_1
     //   236: aload 5
@@ -379,7 +386,7 @@ public class ArkAppMgr
     //   239: aload_2
     //   240: ifnull +7 -> 247
     //   243: aload_2
-    //   244: invokevirtual 449	java/io/FileOutputStream:close	()V
+    //   244: invokevirtual 446	java/io/FileOutputStream:close	()V
     //   247: aload_1
     //   248: athrow
     //   249: astore_2
@@ -389,14 +396,14 @@ public class ArkAppMgr
     //   256: anewarray 4	java/lang/Object
     //   259: dup
     //   260: iconst_0
-    //   261: ldc_w 451
+    //   261: ldc_w 448
     //   264: aastore
     //   265: dup
     //   266: iconst_1
     //   267: aload_2
-    //   268: invokevirtual 421	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   268: invokevirtual 418	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   271: aastore
-    //   272: invokevirtual 407	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   272: invokevirtual 404	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   275: goto -28 -> 247
     //   278: astore_3
     //   279: aload_1
@@ -552,12 +559,12 @@ public class ArkAppMgr
     //   3: aload_0
     //   4: ifnull +23 -> 27
     //   7: aload_0
-    //   8: invokevirtual 425	java/lang/String:length	()I
+    //   8: invokevirtual 422	java/lang/String:length	()I
     //   11: ifeq +16 -> 27
     //   14: aload_1
     //   15: ifnull +12 -> 27
     //   18: aload_1
-    //   19: invokevirtual 425	java/lang/String:length	()I
+    //   19: invokevirtual 422	java/lang/String:length	()I
     //   22: istore_3
     //   23: iload_3
     //   24: ifne +7 -> 31
@@ -565,12 +572,12 @@ public class ArkAppMgr
     //   29: monitorexit
     //   30: return
     //   31: aload_0
-    //   32: invokestatic 429	com/tencent/ark/open/ArkAppMgr:getAppDirByNameAndVersion	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokestatic 426	com/tencent/ark/open/ArkAppMgr:getAppDirByNameAndVersion	(Ljava/lang/String;)Ljava/lang/String;
     //   35: astore_0
     //   36: aload_0
     //   37: ifnull -10 -> 27
     //   40: aload_0
-    //   41: invokevirtual 425	java/lang/String:length	()I
+    //   41: invokevirtual 422	java/lang/String:length	()I
     //   44: ifeq -17 -> 27
     //   47: new 323	java/io/File
     //   50: dup
@@ -578,18 +585,18 @@ public class ArkAppMgr
     //   52: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   55: astore_0
     //   56: aload_0
-    //   57: invokevirtual 492	java/io/File:isDirectory	()Z
+    //   57: invokevirtual 489	java/io/File:isDirectory	()Z
     //   60: ifeq -33 -> 27
     //   63: aload_0
     //   64: invokevirtual 329	java/io/File:exists	()Z
     //   67: ifeq -40 -> 27
     //   70: aload_0
-    //   71: new 505	com/tencent/ark/open/ArkAppMgr$6
+    //   71: new 502	com/tencent/ark/open/ArkAppMgr$6
     //   74: dup
     //   75: aload_1
     //   76: iload_2
-    //   77: invokespecial 507	com/tencent/ark/open/ArkAppMgr$6:<init>	(Ljava/lang/String;Z)V
-    //   80: invokevirtual 510	java/io/File:listFiles	(Ljava/io/FileFilter;)[Ljava/io/File;
+    //   77: invokespecial 504	com/tencent/ark/open/ArkAppMgr$6:<init>	(Ljava/lang/String;Z)V
+    //   80: invokevirtual 507	java/io/File:listFiles	(Ljava/io/FileFilter;)[Ljava/io/File;
     //   83: pop
     //   84: goto -57 -> 27
     //   87: astore_0
@@ -998,75 +1005,50 @@ public class ArkAppMgr
       paramGetAppPathByNameTask.retCode = -1;
       ENV.logI("ArkApp.ArkAppMgr", String.format("notifyGetAppPathByNameTaskResult, retCode is success but task.appPathInfo.path==NULL, retCode=%d, app-name=%s", new Object[] { Integer.valueOf(paramGetAppPathByNameTask.retCode), paramGetAppPathByNameTask.appName }));
     }
-    Object localObject = ArkDelegateManager.getInstance().getNetDelegate();
-    if (localObject != null) {
-      ArkAppReport.AQQNetTypeToArkReportNetType(((IArkDelegateNet)localObject).getNetworkType());
-    }
-    localObject = paramGetAppPathByNameTask.callback;
-    if (localObject != null)
+    ArkAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = paramGetAppPathByNameTask.callback;
+    if (localIGetAppPathByNameCallback != null)
     {
       if ((paramGetAppPathByNameTask.errMsg == null) || (paramGetAppPathByNameTask.errMsg.length() == 0)) {
         paramGetAppPathByNameTask.errMsg = QueryAppRetCodeToString(paramGetAppPathByNameTask.retCode);
       }
-      ((ArkAppMgr.IGetAppPathByNameCallback)localObject).onGetAppPathByName(paramGetAppPathByNameTask.retCode, paramGetAppPathByNameTask.errMsg, paramGetAppPathByNameTask.appPathInfo, paramGetAppPathByNameTask.userdata);
+      localIGetAppPathByNameCallback.onGetAppPathByName(paramGetAppPathByNameTask.retCode, paramGetAppPathByNameTask.errMsg, paramGetAppPathByNameTask.appPathInfo, paramGetAppPathByNameTask.userdata);
     }
   }
   
   private void notifyUpdateAppByNameResult(int paramInt1, int paramInt2, String paramString, ArkAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     int i = 0;
-    for (;;)
+    synchronized (this.mUpdateAppTaskList)
     {
-      synchronized (this.mUpdateAppTaskList)
+      this.mUpdateAppTaskList.remove(paramUpdateAppByNameTask);
+      int j = (int)(System.currentTimeMillis() - paramUpdateAppByNameTask.startTime);
+      if ((paramUpdateAppByNameTask.appPathInfo != null) && (paramUpdateAppByNameTask.appPathInfo.desc != null) && (!TextUtils.isEmpty(paramUpdateAppByNameTask.appPathInfo.desc.version))) {
+        ??? = paramUpdateAppByNameTask.appPathInfo.desc.version;
+      }
+      ??? = ArkDelegateManager.getInstance().getNetDelegate();
+      if (??? != null) {
+        ArkAppReport.AQQNetTypeToArkReportNetType(((IArkDelegateNet)???).getNetworkType());
+      }
+      paramUpdateAppByNameTask.result = paramInt1;
+      paramUpdateAppByNameTask.retCode = paramInt2;
+      paramUpdateAppByNameTask.errMsg = paramString;
+      if (paramUpdateAppByNameTask.retCode != 0)
       {
-        this.mUpdateAppTaskList.remove(paramUpdateAppByNameTask);
-        int j = (int)(System.currentTimeMillis() - paramUpdateAppByNameTask.startTime);
-        if ((paramUpdateAppByNameTask.appPathInfo != null) && (paramUpdateAppByNameTask.appPathInfo.desc != null) && (!TextUtils.isEmpty(paramUpdateAppByNameTask.appPathInfo.desc.version))) {
-          ??? = paramUpdateAppByNameTask.appPathInfo.desc.version;
-        }
-        ??? = ArkDelegateManager.getInstance().getNetDelegate();
-        if (??? != null) {
-          ArkAppReport.AQQNetTypeToArkReportNetType(((IArkDelegateNet)???).getNetworkType());
-        }
-        paramUpdateAppByNameTask.result = paramInt1;
-        paramUpdateAppByNameTask.retCode = paramInt2;
-        paramUpdateAppByNameTask.errMsg = paramString;
-        if (paramUpdateAppByNameTask.retCode == 0) {
-          break;
-        }
-        if (paramUpdateAppByNameTask.retCode != 0)
-        {
-          ArkUtil.assertTrue(bool1);
-          paramUpdateAppByNameTask.appPathInfo = null;
-          ArkDispatchTask.getInstance().postToMainThread(new ArkAppMgr.10(this, paramUpdateAppByNameTask));
-          return;
-        }
-      }
-      bool1 = false;
-    }
-    if (paramUpdateAppByNameTask.retCode == 0)
-    {
-      bool1 = true;
-      label199:
-      ArkUtil.assertTrue(bool1);
-      if ((paramUpdateAppByNameTask.appPathInfo == null) || (paramUpdateAppByNameTask.appPathInfo.path == null)) {
-        break label287;
+        paramUpdateAppByNameTask.appPathInfo = null;
+        ArkDispatchTask.getInstance().postToMainThread(new ArkAppMgr.10(this, paramUpdateAppByNameTask));
+        return;
       }
     }
-    label287:
-    for (bool1 = bool2;; bool1 = false)
+    if ((paramUpdateAppByNameTask.appPathInfo != null) && (paramUpdateAppByNameTask.appPathInfo.path != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      ArkUtil.assertTrue(bool1);
+      ArkUtil.assertTrue(bool);
       paramInt1 = i;
       if (paramUpdateAppByNameTask.downloadInfo != null) {
         paramInt1 = (int)(paramUpdateAppByNameTask.downloadInfo.updatePeriodByMinutes * (1.0D + 0.4D * Math.random() - 0.2D));
       }
       updateAppUpdateTime(paramUpdateAppByNameTask.appName, paramInt1);
       break;
-      bool1 = false;
-      break label199;
     }
   }
   
@@ -1233,7 +1215,7 @@ public class ArkAppMgr
             localUpdateAppByNameTask.appPathInfo.desc = localQueryAppInfoResult.info.desc;
             paramArrayList = ArkEnvironmentManager.getSharedPreferences("ArkLocalAppUpdateTime").edit();
             paramArrayList.putString(str + "_sign", Base64.encodeToString(localQueryAppInfoResult.info.sign, 0));
-            paramArrayList.commit();
+            paramArrayList.apply();
             ArkAppCGIMgr.getInstance().downloadAppPackage(localQueryAppInfoResult.info.downloadUrl, localQueryAppInfoResult.info.sign, localUpdateAppByNameTask, new ArkAppMgr.9(this));
           }
         }
@@ -1457,21 +1439,20 @@ public class ArkAppMgr
     } while ((paramString2 == null) || ((paramString3 != null) && (compareVersionString(paramString2.desc.version, paramString3) < 0)));
     if (ArkEnvironmentManager.getInstance().isTestEnv())
     {
-      long l = System.currentTimeMillis();
-      if (checkSignAfterAppPathCache(paramString1))
-      {
-        float f = (float)(System.currentTimeMillis() - l) / 1000.0F;
-        paramString3 = new StringBuilder("checkSignAfterAppPathCache,appName, time, app-name=");
-        paramString3.append(paramString1).append(", time=").append(f);
-        ENV.logI("ArkApp.ArkAppMgr", paramString3.toString());
-        return paramString2;
-      }
-      deleteAppByName(paramString1, true);
-      ENV.logI("ArkApp.ArkAppMgr", "checkSignAfterAppPathCache, checkSignAfterAppPathCache is failed");
-      return null;
+      ENV.logI("ArkApp.ArkAppMgr", "checkSignAfterAppPathCache, not checkSign and current arkEnvironment is Test");
+      return paramString2;
     }
-    ENV.logI("ArkApp.ArkAppMgr", "checkSignAfterAppPathCache,not checkSign and current arkEnvironment is Test");
-    return paramString2;
+    long l = System.currentTimeMillis();
+    if (checkSignAfterAppPathCache(paramString1))
+    {
+      float f = (float)(System.currentTimeMillis() - l) / 1000.0F;
+      paramString1 = "checkSignAfterAppPathCache,appName, time, app-name=" + paramString1 + ", time=" + f;
+      ENV.logI("ArkApp.ArkAppMgr", paramString1);
+      return paramString2;
+    }
+    deleteAppByName(paramString1, true);
+    ENV.logI("ArkApp.ArkAppMgr", "checkSignAfterAppPathCache, checkSignAfterAppPathCache is failed");
+    return null;
   }
   
   public boolean handleMessage(Message paramMessage)

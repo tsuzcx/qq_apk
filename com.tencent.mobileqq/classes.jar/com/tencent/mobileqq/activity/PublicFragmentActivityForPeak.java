@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adxr;
-import adxs;
+import aeow;
+import aeox;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,11 +17,11 @@ import java.util.Iterator;
 public class PublicFragmentActivityForPeak
   extends PublicFragmentActivity
 {
-  private ArrayList<WeakReference<adxs>> a;
+  private ArrayList<WeakReference<aeox>> a;
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    adxr.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
+    aeow.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
   }
   
   @Override
@@ -36,12 +36,12 @@ public class PublicFragmentActivityForPeak
   public void doOnBackPressed()
   {
     Object localObject1 = super.a();
-    if ((localObject1 instanceof adxs))
+    if ((localObject1 instanceof aeox))
     {
       if (this.a == null) {
         this.a = new ArrayList(2);
       }
-      this.a.add(new WeakReference((adxs)localObject1));
+      this.a.add(new WeakReference((aeox)localObject1));
     }
     if (this.a != null)
     {
@@ -51,9 +51,9 @@ public class PublicFragmentActivityForPeak
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = (adxs)((WeakReference)localObject2).get();
+          localObject2 = (aeox)((WeakReference)localObject2).get();
           if (localObject2 != null) {
-            ((adxs)localObject2).onBackPressed();
+            ((aeox)localObject2).onBackPressed();
           }
         }
       }
@@ -75,7 +75,7 @@ public class PublicFragmentActivityForPeak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForPeak
  * JD-Core Version:    0.7.0.1
  */

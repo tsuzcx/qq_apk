@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-class aoxt
-  implements DialogInterface.OnDismissListener
+public class aoxt
+  extends aoxv
 {
-  aoxt(aoxr paramaoxr) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aoxt(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    aoxr.a(this.a, false);
-    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(1);
   }
 }
 

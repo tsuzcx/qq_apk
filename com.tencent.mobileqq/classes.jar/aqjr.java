@@ -1,65 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqjr
-  extends aptq<aqjq>
+  implements View.OnClickListener
 {
-  public static aqjq a()
-  {
-    return (aqjq)apub.a().a(342);
-  }
+  public aqjr(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  @NonNull
-  public aqjq a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aqjq();
-  }
-  
-  @Nullable
-  public aqjq a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqjq.a(paramArrayOfaptx);
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
     }
-    return null;
-  }
-  
-  public void a(aqjq paramaqjq) {}
-  
-  public Class<aqjq> clazz()
-  {
-    return aqjq.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 342;
+    if (this.a.jdField_a_of_type_Int == 0)
+    {
+      bdla.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
+      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
+        break label176;
+      }
+      this.a.finish();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.getIntent().getIntExtra("source_activity", 0) != 1) {
+        break;
+      }
+      bdla.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
+      break;
+      label176:
+      if (this.a.c)
+      {
+        aqkw.a(this.a.app.getCurrentAccountUin(), -1);
+        this.a.c = false;
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId))) {
+        this.a.finish();
+      } else {
+        BusinessCardEditActivity.a(this.a, false, true, true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,38 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
-class vez
-  extends GestureDetector.SimpleOnGestureListener
+public class vez
+  implements IMiniMsgUnreadCallback
 {
-  private vez(veq paramveq) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void destroy()
   {
-    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
-    veq.b(this.a);
+    vmp.a("AIOLog", 1, "MiniMsgUser destroy");
+  }
+  
+  public void hide()
+  {
+    vmp.a("AIOLog", 1, "MiniMsgUser hide");
+  }
+  
+  public void hideUnread()
+  {
+    vmp.a("AIOLog", 1, "MiniMsgUser hideUnread");
+  }
+  
+  public boolean show(int paramInt)
+  {
+    vmp.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
     return false;
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
   {
-    return super.onDoubleTapEvent(paramMotionEvent);
+    vmp.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!(veq.a(this.a).getTag() instanceof vex)) || (((veq.a(this.a).getTag() instanceof vex)) && (!veq.a(this.a).a(veq.a(this.a)).booleanValue()))) {
-      veq.c(this.a);
-    }
-    return false;
+    vmp.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
   }
 }
 

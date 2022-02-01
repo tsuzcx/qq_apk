@@ -1,12 +1,16 @@
-public abstract interface njb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView.1;
+
+public class njb
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a();
+  public njb(GameListView.1 param1) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B49A", "0X800B49A", 0, 0, "", "", "", "");
+  }
 }
 
 

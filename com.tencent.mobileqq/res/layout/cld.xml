@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:layout_gravity="center_horizontal" android:id="@id/ns8" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="21.0dip" android:scaleType="centerCrop" />
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center_horizontal" android:id="@id/mx7" android:layout_width="27.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="34.0dip" android:scaleType="fitXY" android:layout_alignLeft="@id/ns8" />
-</RelativeLayout>
+    <com.tencent.image.URLImageView android:id="@id/b6" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="123.0dip" android:src="@drawable/g1d" android:contentDescription="@null" />
+    <TextView android:textSize="@dimen/ayw" android:textStyle="bold" android:textColor="#ff03081a" android:layout_gravity="center_horizontal" android:id="@id/nci" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+        <TextView android:textSize="@dimen/ayo" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已开启QQ授权登录功能" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/mxp" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:src="@drawable/g0s" />
+    </LinearLayout>
+    <Button android:textSize="17.0sp" android:id="@id/ndh" android:layout_width="168.0dip" android:layout_height="40.0dip" android:layout_marginTop="138.0dip" android:text="退出帐号" android:contentDescription="退出帐号" style="@style/b9" />
+</LinearLayout>

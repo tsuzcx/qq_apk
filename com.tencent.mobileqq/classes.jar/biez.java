@@ -1,74 +1,33 @@
-import com.tencent.open.model.CreateVirtualResult;
-import com.tencent.open.virtual.OpenSdkVirtualManager.1;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biez
-  extends bifk
+class biez
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public biez(OpenSdkVirtualManager.1 param1) {}
+  biez(biey parambiey) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.createVirtual.result:", bifi.a(paramString1, this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) });
-    atqa.a("KEY_CREATE_VIRTUAL_D17", this.a.jdField_a_of_type_Biej, paramBoolean);
-    paramString2 = new CreateVirtualResult();
-    int i;
-    if (paramBoolean) {
-      i = paramInt;
-    }
-    for (;;)
+    int i = this.a.a(paramRadioGroup);
+    if (((QQBrowserActivity)this.a.mUIStyleHandler.mHostActivity).c != i)
     {
-      try
-      {
-        paramString1 = new JSONObject(paramString1);
-        i = paramInt;
-        paramInt = paramString1.optInt("ErrorCode");
-        if (paramInt == 0)
-        {
-          i = paramInt;
-          paramString2.jdField_a_of_type_Long = paramString1.optLong("uint64_vuid");
-          i = paramInt;
-          paramString2.jdField_a_of_type_JavaLangString = paramString1.optString("str_head_url");
-        }
-      }
-      catch (JSONException paramString1)
-      {
-        int j = 0;
-        paramInt = i;
-        i = j;
-      }
-      try
-      {
-        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.createResult=", bifi.a(paramString2.toString(), this.a.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) });
-        if (this.a.jdField_a_of_type_Bhvf != null) {
-          this.a.jdField_a_of_type_Bhvf.a(true, paramString2, paramInt);
-        }
-        return;
-      }
-      catch (JSONException paramString1)
-      {
-        for (;;)
-        {
-          i = 1;
-        }
-      }
-      i = 0;
-      if ((i == 0) && (this.a.jdField_a_of_type_Bhvf != null))
-      {
-        this.a.jdField_a_of_type_Bhvf.a(false, null, paramInt);
-        return;
-        QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.createVirtual.e:", paramString1);
-        continue;
-        i = 0;
+      WebViewFragment localWebViewFragment = QQBrowserActivity.a(i, (QQBrowserActivity)this.a.mUIStyleHandler.mHostActivity);
+      ((QQBrowserActivity)this.a.mUIStyleHandler.mHostActivity).c = i;
+      if ((localWebViewFragment.mSwiftTitleUI != null) && (localWebViewFragment.mSwiftTitleUI.mTopSubTabView != null)) {
+        localWebViewFragment.mSwiftTitleUI.mTopSubTabView.setSelectedTab(i);
       }
     }
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biez
  * JD-Core Version:    0.7.0.1
  */

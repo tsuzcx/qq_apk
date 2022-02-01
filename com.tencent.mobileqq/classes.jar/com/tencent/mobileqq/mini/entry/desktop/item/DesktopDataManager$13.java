@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -15,7 +16,7 @@ final class DesktopDataManager$13
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime != null)
     {
-      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppRuntime.getManager(336);
+      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
       if (localDesktopDataManager != null) {
         DesktopDataManager.access$2500(localDesktopDataManager, this.val$appInfo);
       }

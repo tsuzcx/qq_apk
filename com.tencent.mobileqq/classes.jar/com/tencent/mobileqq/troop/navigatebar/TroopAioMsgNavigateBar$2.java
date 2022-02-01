@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.navigatebar;
 
-import beri;
+import bfyo;
 
 public class TroopAioMsgNavigateBar$2
   implements Runnable
 {
-  public TroopAioMsgNavigateBar$2(beri paramberi) {}
+  public TroopAioMsgNavigateBar$2(bfyo parambfyo) {}
   
   public void run()
   {
-    beri.a(this.this$0);
+    bfyo.a(this.this$0);
   }
 }
 

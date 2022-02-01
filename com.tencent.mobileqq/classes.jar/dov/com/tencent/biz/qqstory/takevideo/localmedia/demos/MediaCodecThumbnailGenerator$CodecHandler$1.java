@@ -1,20 +1,20 @@
 package dov.com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import bnnz;
-import bnoc;
-import bnod;
-import bnof;
-import bnog;
+import bpdr;
+import bpdu;
+import bpdv;
+import bpdx;
+import bpdy;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$1
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$1(bnoc parambnoc, bnog parambnog, boolean paramBoolean, bnof parambnof) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$1(bpdu parambpdu, bpdy parambpdy, boolean paramBoolean, bpdx parambpdx) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bnog.a.b != null) {
-      this.jdField_a_of_type_Bnog.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Bnof);
+    if (this.jdField_a_of_type_Bpdy.a.b != null) {
+      this.jdField_a_of_type_Bpdy.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Bpdx);
     }
   }
 }

@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
-import java.util.Comparator;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
 
 public class arxn
-  implements Comparator<Long>
+  extends anvi
 {
-  public arxn(QfileLocalFileDelPicTabView.1 param1) {}
+  public arxn(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
+    if (!this.a.a) {
+      return;
     }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
   }
 }
 

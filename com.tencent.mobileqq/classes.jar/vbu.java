@@ -1,16 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
+@SuppressLint({"HandlerLeak"})
 class vbu
-  implements View.OnClickListener
+  extends Handler
 {
-  vbu(vbt paramvbt) {}
+  WeakReference<vbt> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  vbu(vbt paramvbt1, vbt paramvbt2)
   {
-    vbt.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    vmp.b("WSFallKeyPicMonitor", "init DownloadHandler");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvbt2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    vmp.b("WSFallKeyPicMonitor", "handleMessage to download");
+    if (paramMessage.what == 1)
+    {
+      if (vbt.a(this.jdField_a_of_type_Vbt) != 4) {
+        break label46;
+      }
+      vbt.a(this.jdField_a_of_type_Vbt);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Vbt.b();
+      return;
+      label46:
+      vbt.b(this.jdField_a_of_type_Vbt);
+    }
   }
 }
 

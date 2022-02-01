@@ -1,31 +1,31 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import android.view.View;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-final class uxv
-  implements uxm
+class uxv
+  implements URLDrawableDownListener
 {
-  uxv(Activity paramActivity, String paramString1, WSDownloadParams paramWSDownloadParams, String paramString2, int paramInt) {}
+  uxv(uxu paramuxu) {}
   
-  public void a()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    uyc.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+    uxu.a(this.a);
   }
   
-  public void b()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", "dynamics_" + this.b + this.jdField_a_of_type_Int, 0);
+    uxu.a(this.a);
   }
   
-  public void c()
-  {
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000001);
-    uyc.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public void d()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000005);
+    uxu.a(this.a);
+    AbstractGifImage.resumeAll();
   }
 }
 

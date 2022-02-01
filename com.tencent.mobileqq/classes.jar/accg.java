@@ -1,36 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xab.SubMsgType0xab.MsgBody;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 
-public class accg
-  implements abzb
+class accg
+  implements AdIPCManager.Callback
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  accg(accf paramaccf) {}
+  
+  public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.troop_reward.push", 2, "onLinePush receive 0x210_0xab");
-    }
-    try
+    if (paramResult != null) {}
+    for (boolean bool = paramResult.success;; bool = false)
     {
-      SubMsgType0xab.MsgBody localMsgBody = new SubMsgType0xab.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      ((anca)paramQQAppInterface.getBusinessHandler(20)).a(localMsgBody);
+      acho.b("GdtInterstitialPreDownloader", String.format("predownload.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
       return;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w(".troop.troop_reward.push", 2, "onLinePush 0x210_0xab push exception", paramQQAppInterface);
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
   }
 }
 

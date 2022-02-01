@@ -1,6 +1,7 @@
-public abstract interface avtc<P, R>
+class avtc
 {
-  public abstract R query(P paramP);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
 }
 
 

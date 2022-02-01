@@ -1,32 +1,63 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.funchat.record.QavRecordButtonView;
+import com.tencent.av.chatroom.ChatRoomInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class mnp
-  implements View.OnTouchListener
+class mnp
+  implements lki
 {
-  public mnp(QavRecordButtonView paramQavRecordButtonView) {}
+  private final WeakReference<mnm> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  mnp(mnm parammnm)
   {
-    if (QavRecordButtonView.a(this.a) != 1) {
-      switch (paramMotionEvent.getAction())
-      {
+    this.a = new WeakReference(parammnm);
+  }
+  
+  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
+  {
+    int i;
+    mnm localmnm;
+    if ((paramInt & 0x4) == 4)
+    {
+      i = 1;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
+      }
+      localmnm = (mnm)this.a.get();
+      if (localmnm != null) {
+        break label77;
       }
     }
-    for (;;)
+    label77:
+    do
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      return;
+      i = 0;
+      break;
+      if (localmnm.a())
+      {
+        mnm.a(localmnm, paramChatRoomInfo);
+        return;
+      }
+    } while (i == 0);
+    mnm.a(localmnm, 0);
+  }
+  
+  public void a(lkh paramlkh)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramlkh + "]");
     }
+    mnm localmnm = (mnm)this.a.get();
+    if ((paramlkh == null) || (localmnm == null)) {}
+    while (!localmnm.a()) {
+      return;
+    }
+    mnm.a(localmnm, paramlkh.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mnp
  * JD-Core Version:    0.7.0.1
  */

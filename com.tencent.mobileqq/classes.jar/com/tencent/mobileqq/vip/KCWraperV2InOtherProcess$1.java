@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vip;
 
-import bgor;
-import bgoy;
+import bhzb;
+import bhzi;
 import com.tencent.util.Pair;
 
 public class KCWraperV2InOtherProcess$1
   implements Runnable
 {
-  public KCWraperV2InOtherProcess$1(bgor parambgor, bgoy parambgoy, Pair paramPair) {}
+  public KCWraperV2InOtherProcess$1(bhzb parambhzb, bhzi parambhzi, Pair paramPair) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgoy.a(true, ((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue(), ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue());
+    this.jdField_a_of_type_Bhzi.a(true, ((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue(), ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue());
   }
 }
 

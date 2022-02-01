@@ -1,43 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acro
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acro(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (AppSetting.c) {
-      this.a.g.setContentDescription(amtj.a(2131699928));
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694546), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break label106;
-      }
-      this.a.turnOnShake();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 0;
-      break;
-      label106:
-      this.a.turnOffShake();
-    }
+    ((aobc)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QPAY_HANDLER)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

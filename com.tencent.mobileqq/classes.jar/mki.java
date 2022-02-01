@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mki
-  extends bjnw
+  implements DialogInterface.OnClickListener
 {
-  public mki(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
+  public mki(VideoControlUI paramVideoControlUI, long paramLong) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mki
  * JD-Core Version:    0.7.0.1
  */

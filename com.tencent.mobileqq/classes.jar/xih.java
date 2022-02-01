@@ -1,238 +1,38 @@
-import android.content.Context;
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager.2;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.lang.ref.WeakReference;
 
 public class xih
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback = new xij(this);
-  private SystemEmoticonPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel;
-  private XEditTextEx jdField_a_of_type_ComTencentWidgetXEditTextEx;
-  private xik jdField_a_of_type_Xik;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public xih(Context paramContext, View paramView, xik paramxik)
+  public xih(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Xik = paramxik;
-    c();
-    d();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static QQAppInterface a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131366163));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366026));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365066);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365991));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback);
-  }
-  
-  private void d()
-  {
-    ((PatchedButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131367352)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new xii(this);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-  }
-  
-  private void e()
-  {
-    xvv.b("Q.qqstory.detail.KeyboardAndEmojiManager", "on keyboard up. mIsForceChange = %s.", Boolean.valueOf(this.d));
-    if (this.jdField_b_of_type_Boolean)
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
     {
-      this.c = true;
-      g();
-    }
-    if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Xik != null) {
-      this.jdField_a_of_type_Xik.b(this.d);
-    }
-    this.d = false;
-  }
-  
-  private void f()
-  {
-    xvv.b("Q.qqstory.detail.KeyboardAndEmojiManager", "on keyboard down. mIsForceChange = %s.", Boolean.valueOf(this.d));
-    this.jdField_a_of_type_Boolean = false;
-    boolean bool;
-    if (!this.c) {
-      if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() == 0)
-      {
-        bool = true;
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.clearFocus();
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
       }
+      ykq.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Xik != null) {
-        this.jdField_a_of_type_Xik.c(bool);
-      }
-      this.c = false;
-      this.d = false;
+    label40:
+    while (paramDialogInterface.e()) {
       return;
-      bool = false;
-      break;
-      bool = false;
     }
-  }
-  
-  private void g()
-  {
-    boolean bool;
-    if (!this.c) {
-      if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() == 0)
-      {
-        bool = true;
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.clearFocus();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Xik != null) {
-        this.jdField_a_of_type_Xik.c(bool);
-      }
-      this.c = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
-      return;
-      bool = false;
-      break;
-      bool = false;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.c = true;
-      a(false);
-    }
-    if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-    }
-    if (this.jdField_a_of_type_Xik != null) {
-      this.jdField_a_of_type_Xik.b(this.d);
-    }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setSelected(true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.d = true;
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
-    if (localInputMethodManager != null)
-    {
-      if (!paramBoolean) {
-        break label79;
-      }
-      if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-      }
-      localInputMethodManager.showSoftInput(this.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
-    }
-    for (;;)
-    {
-      xvv.b("Q.qqstory.detail.KeyboardAndEmojiManager", "setKeyBoardState: %s." + paramBoolean);
-      return;
-      label79:
-      localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidViewView.getWindowToken(), 0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      a(false);
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      g();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
-      {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if ((this.jdField_a_of_type_Xik == null) || (!this.jdField_a_of_type_Xik.b()))
-        {
-          this.c = true;
-          if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
-          {
-            g();
-            a(true);
-          }
-          else
-          {
-            a(false);
-            new Handler().postDelayed(new KeyboardAndEmojiManager.2(this), 200L);
-            continue;
-            if (this.jdField_a_of_type_Xik != null) {
-              this.jdField_a_of_type_Xik.d();
-            }
-          }
-        }
-      }
-    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 

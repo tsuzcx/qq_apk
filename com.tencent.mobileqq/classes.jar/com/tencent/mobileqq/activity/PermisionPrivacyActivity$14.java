@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import amsw;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,15 +13,15 @@ class PermisionPrivacyActivity$14
   
   public void run()
   {
-    amsw localamsw = (amsw)this.this$0.app.getManager(51);
-    Card localCard = localamsw.b(this.this$0.app.getCurrentAccountUin());
+    anvk localanvk = (anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Card localCard = localanvk.b(this.this$0.app.getCurrentAccountUin());
     if (localCard != null)
     {
       if (!this.a) {}
       for (boolean bool = true;; bool = false)
       {
         localCard.isHidePrettyGroutIdentity = bool;
-        if (localamsw.a(localCard)) {
+        if (localanvk.a(localCard)) {
           break;
         }
         QLog.e("vip_pretty.Q.security", 1, "onGetPrettyOwnerFlag save card flag=" + this.a + " failed");
@@ -34,7 +35,7 @@ class PermisionPrivacyActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.14
  * JD-Core Version:    0.7.0.1
  */

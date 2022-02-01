@@ -1,23 +1,13 @@
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class zkk
-  extends amyh
+public class zkk
+  implements DialogInterface.OnClickListener
 {
-  WeakReference<zkl> a;
+  public zkk(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public zkk(zkl paramzkl)
-  {
-    this.a = new WeakReference(paramzkl);
-  }
-  
-  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    zkl localzkl = (zkl)this.a.get();
-    if (localzkl != null) {
-      localzkl.a(paramBoolean, paramString, false);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

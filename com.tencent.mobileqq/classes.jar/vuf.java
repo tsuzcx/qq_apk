@@ -1,8 +1,22 @@
-public abstract interface vuf
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.util.VersionUtils;
+
+public class vuf
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public abstract void a();
+  public vuf(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public abstract void b();
+  public void onSystemUiVisibilityChange(int paramInt)
+  {
+    if (paramInt == 4102) {}
+    while (!VersionUtils.isHoneycomb()) {
+      return;
+    }
+    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
+  }
 }
 
 

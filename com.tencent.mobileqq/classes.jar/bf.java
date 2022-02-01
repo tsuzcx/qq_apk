@@ -1,6 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import java.util.ArrayList;
@@ -14,9 +15,9 @@ public class bf
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    amqd localamqd = (amqd)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(8);
-    localamqd.b(113);
-    localamqd.a(116);
+    ansr localansr = (ansr)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    localansr.b(113);
+    localansr.a(116);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -27,14 +28,14 @@ public class bf
       }
       localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
     }
-    localamqd.a(localArrayList);
+    localansr.a(localArrayList);
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,18 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import java.util.Comparator;
 
-class avcf
-  extends ImageSpan
+final class avcf
+  implements Comparator<PadFaceAd>
 {
-  public avcf(Drawable paramDrawable, int paramInt)
+  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
   {
-    super(paramDrawable, paramInt);
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
+      return -1;
+    }
+    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
+      return 0;
+    }
+    return 1;
   }
 }
 

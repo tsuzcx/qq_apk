@@ -1,33 +1,58 @@
-import Wallet.GetPasswordReq;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajvg
+  extends antq
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public ajvg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  protected void onCollectDiscussion(boolean paramBoolean, Long paramLong)
   {
-    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin()))
-    {
-      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
-      localGetPasswordReq.MQOS = "Android";
-      localGetPasswordReq.MQVersion = DeviceInfoUtil.getQQVersionWithCode(paramQQAppInterface.getApp());
-      ((amzg)paramQQAppInterface.getBusinessHandler(42)).a(localGetPasswordReq);
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  protected void onGetDiscAtAllRemianCount(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
-      return;
+    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void onKickoutDiscussionMember(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      bdla.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Ajvt != null) {
+        this.a.jdField_a_of_type_Ajvt.a();
+      }
+      if (this.a.k)
+      {
+        this.a.d(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Ajvv != null) {
+          this.a.jdField_a_of_type_Ajvv.notifyDataSetChanged();
+        }
+      }
     }
-    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
-    localIntent.putExtra("sendUin", paramLong);
-    localIntent.putExtra("tokenId", paramString);
-    paramQQAppInterface.getApp().sendBroadcast(localIntent);
+    for (;;)
+    {
+      if (this.a.c != null) {
+        this.a.c.dismiss();
+      }
+      return;
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131693426), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+  }
+  
+  protected void onUncollectDiscussion(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
+    }
   }
 }
 

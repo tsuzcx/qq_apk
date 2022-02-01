@@ -1,23 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.app.Activity;
+import java.lang.reflect.Method;
 
-public class bmmj
-  extends RecyclerView.ViewHolder
+public abstract class bmmj
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public static bmmj a;
   
-  public bmmj(bmmh parambmmh, View paramView)
+  public static void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380314);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364717));
+    try
+    {
+      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (bmmj)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
+  
+  public static void b(Activity paramActivity, String paramString)
+  {
+    bmmj localbmmj = a;
+    if (localbmmj != null) {
+      localbmmj.a(paramActivity, paramString);
+    }
+  }
+  
+  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmmj
  * JD-Core Version:    0.7.0.1
  */

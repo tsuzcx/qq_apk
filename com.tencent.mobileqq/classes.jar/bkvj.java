@@ -1,36 +1,43 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-final class bkvj
-  extends bkui
+public class bkvj
+  implements IRuntimeInterface
 {
-  bkvj(Context paramContext) {}
+  private static volatile bkvj a;
   
-  public void b(@NonNull bkuj parambkuj)
+  private bkvj()
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
-    }
-    parambkuj = parambkuj.a();
-    boolean bool1 = bool2;
-    if (parambkuj != null)
+    QSecFramework.a(3L, new bkvk(this));
+  }
+  
+  public static bkvj a()
+  {
+    if (a == null) {}
+    try
     {
-      parambkuj = bkvi.a("on_off", parambkuj);
-      if (parambkuj == null) {
-        bool1 = bool2;
+      if (a == null) {
+        a = new bkvj();
       }
+      return a;
     }
-    else
-    {
-      bkvh.a(this.a, bool1);
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 1) {
+      bksv.a(paramString, paramInt2);
+    }
+    while (paramInt1 != 2) {
       return;
     }
-    if (((Integer)parambkuj).intValue() == 1) {}
-    for (bool1 = true;; bool1 = false) {
-      break;
-    }
+    bksv.b(paramString, paramInt2);
+  }
+  
+  public String getInterfaceName()
+  {
+    return "Rpt";
   }
 }
 

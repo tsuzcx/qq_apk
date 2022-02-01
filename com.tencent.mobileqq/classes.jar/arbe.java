@@ -1,60 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-class arbe
-  extends areo
+public class arbe
+  extends aqwt<arbd>
 {
-  arbe(arbb paramarbb) {}
-  
-  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
+  @NonNull
+  public arbd a(int paramInt)
   {
-    super.onPackageEnd(paramEmoticonPackage, paramInt);
-    area.a().b(this.a.a);
-    Object localObject = (arba)arbb.i(this.a).getManager(149);
-    avsq localavsq = (avsq)arbb.j(this.a).getManager(14);
-    List localList = ((arba)localObject).c(paramEmoticonPackage.epId);
-    if ((localList == null) || (localList.size() <= 0)) {}
-    do
+    return new arbd();
+  }
+  
+  @Nullable
+  public arbd a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
     {
-      return;
-      paramEmoticonPackage = new ArrayList();
-      int i = 0;
-      if (i < localList.size())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
-        if (localavsq.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId) == null)
-        {
-          localCustomEmotionData.RomaingType = "needDel";
-          ((arba)localObject).b(localCustomEmotionData);
-          if (!TextUtils.isEmpty(localCustomEmotionData.resid)) {
-            paramEmoticonPackage.add(localCustomEmotionData.resid);
-          }
-        }
-        arbb localarbb = this.a;
-        if (paramInt == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localarbb.a(localCustomEmotionData, bool);
-          i += 1;
-          break;
-        }
+      arbd localarbd = arbd.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
       }
-      localObject = (amrm)arbb.k(this.a).getBusinessHandler(72);
-    } while ((localObject == null) || (paramEmoticonPackage.size() <= 0));
-    if (QLog.isColorLevel()) {
-      QLog.d("FavroamingManager", 2, "delResId: " + paramEmoticonPackage);
+      return localarbd;
     }
-    ((amrm)localObject).a(paramEmoticonPackage, false);
+    return null;
+  }
+  
+  public void a(arbd paramarbd)
+  {
+    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramarbd.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramarbd.toString());
+    }
+  }
+  
+  public Class<arbd> clazz()
+  {
+    return arbd.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 414;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbe
  * JD-Core Version:    0.7.0.1
  */

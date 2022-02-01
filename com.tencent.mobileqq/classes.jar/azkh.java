@@ -1,25 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class azkh
-  extends BroadcastReceiver
+public class azkh
+  implements biyn
 {
-  azkh(azkg paramazkg) {}
+  public azkh(PicShareToWX paramPicShareToWX, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((paramIntent != null) && ("com.qzonex.localalbum.new_photo_notification_feedback_action".equals(paramIntent.getAction())))
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWX", 1, "onWXShareResp resp.errCode = " + paramBaseResp.errCode + ", fromType = " + this.jdField_a_of_type_Int);
+    }
+    if (paramBaseResp.errCode == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzonePhotoGuideNotifyServlet", 2, "QzonePhotoGuideNotifyServlet onReceive");
-      }
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      }
-      this.a.b();
+      PicShareToWX.a(this.jdField_a_of_type_Int, true);
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, true, 0, 1);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      PicShareToWX.a(this.jdField_a_of_type_Int, false);
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramBaseResp.errCode, 1);
     }
   }
 }

@@ -1,16 +1,41 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
-import mqq.os.MqqHandler;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public class blpn
-  implements INetEventHandler
 {
-  blpn(blpm paramblpm) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
+      return paramClass;
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      paramClass.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramClass)
+    {
+      for (;;)
+      {
+        paramClass.printStackTrace();
+      }
+    }
+  }
+  
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    if (paramJceStruct == null) {
+      return null;
+    }
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("utf-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
   }
 }
 

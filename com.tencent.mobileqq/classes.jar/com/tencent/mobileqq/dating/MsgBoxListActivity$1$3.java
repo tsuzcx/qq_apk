@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.dating;
 
-import aqup;
+import aryd;
 
 public class MsgBoxListActivity$1$3
   implements Runnable
 {
-  public MsgBoxListActivity$1$3(aqup paramaqup) {}
+  public MsgBoxListActivity$1$3(aryd paramaryd) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MsgBoxListActivity$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.1.3
  * JD-Core Version:    0.7.0.1
  */

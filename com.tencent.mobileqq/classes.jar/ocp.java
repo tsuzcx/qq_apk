@@ -1,26 +1,20 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ocp
+class ocp
+  implements View.OnClickListener
 {
-  public ocp(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
+  ocp(obm paramobm, int paramInt, oji paramoji) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    SosoInterface.startLocation(new ocv(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
-    }
+    aahr.a((BaseActivity)this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangRefWeakReference.get(), new aaht(this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, obm.a(this.jdField_a_of_type_Obm), this.jdField_a_of_type_Int);
+    obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

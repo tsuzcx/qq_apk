@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import asgz;
-import ashd;
-import aszt;
+import atlf;
+import atlj;
+import auea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -54,7 +54,7 @@ public class WeiyunBroadcastReceiver
         Iterator localIterator = localArrayList.iterator();
         while (localIterator.hasNext())
         {
-          paramContext = aszt.a((WeiYunFileInfo)localIterator.next());
+          paramContext = auea.a((WeiYunFileInfo)localIterator.next());
           paramContext.nOpType = 5;
           localQQAppInterface.getFileManagerDataCenter().a(paramContext);
           localQQAppInterface.getFileManagerRSCenter().b(paramContext);

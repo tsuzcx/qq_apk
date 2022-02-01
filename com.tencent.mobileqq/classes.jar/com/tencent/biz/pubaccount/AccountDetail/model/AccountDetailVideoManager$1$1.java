@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import android.app.Activity;
-import nua;
-import nub;
+import obb;
+import obc;
 
 public class AccountDetailVideoManager$1$1
   implements Runnable
 {
-  public AccountDetailVideoManager$1$1(nub paramnub) {}
+  public AccountDetailVideoManager$1$1(obc paramobc) {}
   
   public void run()
   {

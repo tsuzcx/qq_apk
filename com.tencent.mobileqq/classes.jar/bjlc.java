@@ -1,46 +1,21 @@
-public final class bjlc
-  implements Cloneable
+import java.io.InputStream;
+
+public class bjlc
 {
-  private int a;
+  public int a;
+  public long a;
+  public InputStream a;
+  public String a;
+  public long b;
   
-  public bjlc(int paramInt)
+  public bjlc(String paramString, int paramInt1, int paramInt2)
   {
-    this.a = paramInt;
-  }
-  
-  public bjlc(byte[] paramArrayOfByte)
-  {
-    this(paramArrayOfByte, 0);
-  }
-  
-  public bjlc(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bjlc))) {}
-    while (this.a != ((bjlc)paramObject).a()) {
-      return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.b = this.jdField_a_of_type_JavaLangString.length();
     }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.a;
   }
 }
 

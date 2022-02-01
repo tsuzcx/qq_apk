@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bhht;
+import bisl;
 import com.tencent.qphone.base.util.QLog;
 
 class BindGroupActivity$3

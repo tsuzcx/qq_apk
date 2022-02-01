@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeek
-  implements View.OnClickListener
+  extends anvi
 {
-  public aeek(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public aeek(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean)
+    {
+      paramString = ((anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 

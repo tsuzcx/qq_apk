@@ -22,9 +22,9 @@ public final class Logger
   private static final String TAG = "QAPM_common_Logger";
   @JvmField
   public static boolean debug;
-  private static int intLevel = LogState.OFF.getValue();
+  private static int intLevel = LogState.WARN.getValue();
   @NotNull
-  private static LogState logLevel = LogState.OFF;
+  private static LogState logLevel = LogState.WARN;
   @Nullable
   private static ILogProxy logProxy = DEFAULT_PROXY;
   private static SimpleDateFormat logTimeFormatter;

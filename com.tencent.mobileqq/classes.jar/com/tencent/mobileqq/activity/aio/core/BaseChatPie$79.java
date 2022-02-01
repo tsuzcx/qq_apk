@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amsw;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.NoC2CExtensionInfo;
+import anvk;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import mqq.os.MqqHandler;
 
 class BaseChatPie$79
   implements Runnable
 {
-  BaseChatPie$79(BaseChatPie paramBaseChatPie, amsw paramamsw) {}
+  BaseChatPie$79(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo = this.val$fm.a(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, true);
-    if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.audioPanelType != -1) && (this.this$0.mAudioPanel != null)) {
-      this.this$0.uiHandler.obtainMessage(40, localNoC2CExtensionInfo.audioPanelType, this.this$0.sessionInfo.curType).sendToTarget();
-    }
+    ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c();
+    this.this$0.uiHandler.sendMessage(this.this$0.uiHandler.obtainMessage(64));
   }
 }
 

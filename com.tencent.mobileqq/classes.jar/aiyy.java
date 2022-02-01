@@ -1,22 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
 public class aiyy
-  implements View.OnTouchListener
+  extends Handler
 {
-  public aiyy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private WeakReference<NewFriendActivity> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aiyy(NewFriendActivity paramNewFriendActivity)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.y();
-      paramView = this.a.o;
-      this.a.a("Clk_find", paramView, "");
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
+      return;
     }
-    return true;
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 

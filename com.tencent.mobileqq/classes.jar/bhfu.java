@@ -1,30 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.PagingScrollView;
-import com.tencent.qphone.base.util.QLog;
-
 public class bhfu
-  implements View.OnTouchListener
 {
-  public bhfu(PagingScrollView paramPagingScrollView) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bhfu(String paramString)
   {
-    if (this.a.mIsOnSpecialView)
-    {
-      int i = paramMotionEvent.getAction();
-      if ((i == 1) || (i == 3))
-      {
-        this.a.mIsOnSpecialView = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
-        }
-      }
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bhfu(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.d = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString4;
+    this.b = paramString3;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

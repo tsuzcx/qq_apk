@@ -1,50 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.pannel.viewbinder.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.pannel.viewbinder.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
-class anqb
-  implements anhg
+public class anqb
+  implements Animation.AnimationListener
 {
-  anqb(anqa paramanqa) {}
+  public anqb(ApolloGameViewBinder.GameListAdapter.2.1.1 param1) {}
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Intent localIntent;
-    if (paramBoolean)
-    {
-      QLog.d("AVGameShareJoinRoomAction", 1, "doAction success, roomId: " + paramLong1 + " shareUin: " + paramLong2);
-      localIntent = anha.a().a(this.a.a);
-      if (localIntent == null) {
-        QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: intent is null");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramLong3 != 3L)
-      {
-        localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_join_room");
-        localIntent.putExtra("thridparty_av_game_share_uin", paramLong2);
-        localIntent.putExtra("thridparty_av_game_room_id", paramLong1);
-        this.a.a.startActivity(localIntent);
-      }
-      while ((this.a.a instanceof JumpActivity))
-      {
-        ((JumpActivity)this.a.a).finish();
-        ((JumpActivity)this.a.a).overridePendingTransition(0, 0);
-        return;
-        localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_create_room");
-        localIntent.putExtra("avgame_create_game_type_key", Integer.valueOf(String.valueOf(1)));
-        localIntent.putExtra("avgame_from_type_key", 4);
-        this.a.a.startActivity(localIntent);
-        continue;
-        QLog.e("AVGameShareJoinRoomAction", 1, "doAction fail");
-      }
-    }
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_Anqc.a = null;
   }
   
-  public void a(boolean paramBoolean, String paramString) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

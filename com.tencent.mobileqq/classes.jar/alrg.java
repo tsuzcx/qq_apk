@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alrg
-  implements Comparator<alrk>
+  implements bdbe
 {
-  public alrg(ApolloCmdChannel paramApolloCmdChannel) {}
+  public alrg(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(alrk paramalrk1, alrk paramalrk2)
+  public void onCameraException(Exception paramException)
   {
-    return paramalrk1.a() - paramalrk2.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
+  }
+  
+  public void onDispatchThreadException(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 

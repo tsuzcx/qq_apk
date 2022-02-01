@@ -11,17 +11,17 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ayup;
-import ayuq;
-import ayux;
-import ayuy;
-import ayvb;
-import ayvc;
-import ayvd;
-import ayvi;
-import ayvj;
-import bcef;
-import bfvo;
+import azzl;
+import azzm;
+import azzt;
+import azzu;
+import azzx;
+import azzy;
+import azzz;
+import baae;
+import baaf;
+import bdla;
+import bheg;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,11 +38,11 @@ public class AnonymousView
 {
   private int jdField_a_of_type_Int;
   public RecyclerView a;
-  private ayvd jdField_a_of_type_Ayvd;
+  private azzz jdField_a_of_type_Azzz;
   public QQAppInterface a;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   private String jdField_a_of_type_JavaLangString;
-  private List<ayup> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<azzl> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   
   public AnonymousView(Context paramContext)
@@ -60,19 +60,19 @@ public class AnonymousView
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getContext());
     localLinearLayoutManager.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(getContext());
-    this.jdField_a_of_type_Ayvd = new ayvd(this);
+    this.jdField_a_of_type_Azzz = new azzz(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
     int i = AIOUtils.dp2px(12.0F, getContext().getResources());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new ayvj(i, 0));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ayvd);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new baaf(i, 0));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Azzz);
     e();
     this.b.setOnClickListener(this);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new ayvb(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new ayvc(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnItemTouchListener(new azzx(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new azzy(this));
   }
   
   private void f()
@@ -80,7 +80,7 @@ public class AnonymousView
     if (this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables() != null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      ayux.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      azzt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
   
@@ -103,7 +103,7 @@ public class AnonymousView
         localException.printStackTrace();
       }
     }
-    return bfvo.a();
+    return bheg.a();
   }
   
   public void a()
@@ -119,16 +119,16 @@ public class AnonymousView
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(getContext(), paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
-    this.jdField_a_of_type_Int = ((int)(Math.random() * ayuq.a.length));
+    this.jdField_a_of_type_Int = ((int)(Math.random() * azzm.a.length));
   }
   
-  public void a(List<ayup> paramList)
+  public void a(List<azzl> paramList)
   {
     c();
     a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_Ayvd.notifyDataSetChanged();
+    this.jdField_a_of_type_Azzz.notifyDataSetChanged();
   }
   
   public void b()
@@ -151,24 +151,24 @@ public class AnonymousView
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       f();
-      ayuy.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 1);
-      bcef.b(null, "dc00898", "", "", "", "0X800B46C", 0, 0, "", "", "", "");
+      azzu.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 1);
+      bdla.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
       continue;
       f();
-      ayuy.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2);
-      bcef.b(null, "dc00898", "", "", "", "0X800B46C", 0, 0, "", "", "", "");
+      azzu.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2);
+      bdla.b(null, "dc00898", "", "", "0X800B46C", "0X800B46C", 0, 0, "", "", "", "");
       continue;
       f();
-      ayuy.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext);
-      bcef.b(null, "dc00898", "", "", "", "0X800B46D", 0, 0, "", "", "", "");
+      azzu.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext);
+      bdla.b(null, "dc00898", "", "", "0X800B46D", "0X800B46D", 0, 0, "", "", "", "");
       continue;
       f();
-      ayuy.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 3);
-      bcef.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "", "0X800B473", 0, 0, "", "", "", "");
+      azzu.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 3);
+      bdla.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B473", "0X800B473", 0, 0, "", "", "", "");
       continue;
       f();
-      ayuy.b((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 6);
-      bcef.b(null, "dc00898", "", "", "", "0X800B472", 0, 0, "", "", "", "");
+      azzu.b((BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 6);
+      bdla.b(null, "dc00898", "", "", "0X800B472", "0X800B472", 0, 0, "", "", "", "");
     }
   }
   
@@ -184,7 +184,7 @@ public class AnonymousView
       {
         localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(paramInt1);
         localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
-        if (!(localObject instanceof ayvi)) {
+        if (!(localObject instanceof baae)) {
           break label123;
         }
         i = ((RecyclerView.ViewHolder)localObject).getAdapterPosition();
@@ -194,9 +194,9 @@ public class AnonymousView
       {
         return;
       }
-      ayup localayup = (ayup)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((localayup != null) && (localayup.c == Long.parseLong(paramString)) && (paramBitmap != null)) {
-        ((ayvi)localObject).d.setImageBitmap(paramBitmap);
+      azzl localazzl = (azzl)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((localazzl != null) && (localazzl.c == Long.parseLong(paramString)) && (paramBitmap != null)) {
+        ((baae)localObject).d.setImageBitmap(paramBitmap);
       }
       label123:
       paramInt1 += 1;

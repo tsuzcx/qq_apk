@@ -1,21 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
 
 public class tem
-  implements ter
 {
-  public tem(ChannelBottomBanner paramChannelBottomBanner) {}
+  private static tem a;
   
-  public void a(int paramInt)
+  public static tem a()
   {
-    switch (paramInt)
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
+      if (a == null) {
+        a = new tem();
+      }
+      tem localtem = a;
+      return localtem;
     }
-    this.a.d();
+    finally {}
+  }
+  
+  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
   }
 }
 

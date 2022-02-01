@@ -1,140 +1,223 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.text.TextPaint;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
+import cooperation.plugin.PluginPreInstaller.2;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class blxf
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
+  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qlink_plugin.apk" };
+  private static final String[] b = { "qqreaderplugin.apk", "comic_plugin.apk", "Photoplus.apk" };
+  private static final String[] c = { "qqhotspot_plugin.apk" };
+  private static final String[] d = new String[0];
+  private static final String[] e = { "qqreaderplugin.apk", "comic_plugin.apk" };
+  private Context jdField_a_of_type_AndroidContentContext;
+  private blvy jdField_a_of_type_Blvy;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new blxg(this);
   
-  public blxf(int paramInt1, int paramInt2)
+  public blxf(Context paramContext, blvy paramblvy, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Blvy = paramblvy;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    c();
   }
   
-  private void a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, Paint paramPaint)
+  private int a(String paramString)
   {
-    paramCanvas.drawText(paramString, paramFloat1, paramFloat2, paramPaint);
+    return PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt("total_retried_times_" + paramString, 0);
   }
   
-  private void a(String paramString, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3)
+  private List<String> a()
   {
-    Rect localRect = new Rect();
-    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    while ((localRect.width() + paramInt3 > paramInt1 * 0.8F) || (localRect.height() + paramInt3 > paramInt2 * 0.8F))
+    int j = 0;
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int k = arrayOfString.length;
+    int i = 0;
+    while (i < k)
     {
-      paramPaint.setTextSize(paramPaint.getTextSize() - 2.0F);
-      paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
+      localArrayList.add(arrayOfString[i]);
+      i += 1;
     }
+    if (NetworkUtil.isWifiEnabled(this.jdField_a_of_type_AndroidContentContext))
+    {
+      arrayOfString = b;
+      k = arrayOfString.length;
+      i = 0;
+      if (i < k)
+      {
+        String str = arrayOfString[i];
+        if ((str.equals("Photoplus.apk")) && (VersionUtils.isIceScreamSandwich())) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localArrayList.add(str);
+        }
+      }
+    }
+    if ((DeviceInfoUtil.isLowEndPhoneForPreDownload()) || (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreInstaller", 2, "plugins " + Arrays.toString(e) + "filtered in low end phone");
+      }
+      arrayOfString = e;
+      k = arrayOfString.length;
+      i = j;
+      while (i < k)
+      {
+        localArrayList.remove(arrayOfString[i]);
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PluginPreInstaller", 4, "installPlugin plugin = " + paramString + ", totalTimes = " + paramInt1 + ", todayTimes = " + paramInt2);
+    }
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit();
+    Object localObject = new Date();
+    localObject = jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
+    localEditor.putInt("total_retried_times_" + paramString, paramInt1 + 1);
+    localEditor.putInt("today_retried_times_" + paramString, paramInt2 + 1);
+    localEditor.putString("last_retry_day_" + paramString, (String)localObject);
+    localEditor.commit();
+    this.jdField_a_of_type_Blvy.a(paramString, this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener, true);
+    if ("qqreaderplugin.apk".equals(paramString)) {
+      ThreadManager.post(new PluginPreInstaller.2(this), 5, null, false);
+    }
+    while (!"comic_plugin.apk".equals(paramString)) {
+      return;
+    }
+    blqp.a(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  private int b(String paramString)
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
+    Date localDate = new Date();
+    if (jdField_a_of_type_JavaTextSimpleDateFormat.format(localDate).equals(localSharedPreferences.getString("last_retry_day_" + paramString, ""))) {
+      i = localSharedPreferences.getInt("today_retried_times_" + paramString, 0);
+    }
+    return i;
   }
   
   private void c()
   {
-    Typeface localTypeface = blvx.a().a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (!PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getString("plugin_pre_install_qq_version", "").equals(DeviceInfoUtil.getQQVersion()))
+    {
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit();
+      Iterator localIterator = a().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localEditor.remove("total_retried_times_" + str);
+      }
+      localEditor.commit();
+    }
   }
   
   public void a()
   {
-    c();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_AndroidTextTextPaint.getTextSize());
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-    float f1 = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    int i = this.jdField_a_of_type_JavaLangString.indexOf("\r\n");
-    float f2;
-    if (i < 0)
+    try
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        return;
+      Iterator localIterator = a().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        try
+        {
+          if (this.jdField_a_of_type_Blvy.isPlugininstalled(str)) {
+            continue;
+          }
+          int i = a(str);
+          if (i >= 10) {
+            continue;
+          }
+          int j = b(str);
+          if (j >= 2) {
+            continue;
+          }
+          a(str, i, j);
+        }
+        catch (Exception localException) {}
+        if (QLog.isColorLevel()) {
+          QLog.e("PluginPreInstaller", 2, "preinstall plugin : " + str + " failed.", localException);
+        }
       }
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_JavaLangString, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_JavaLangString, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
-      String str1 = this.jdField_a_of_type_JavaLangString.substring(0, i);
-      String str2 = this.jdField_a_of_type_JavaLangString.substring("\r\n".length() + i);
-      a(str1, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c / 2, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str1, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str1)) / 2.0F, this.c * 0.25F - f1 / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str1, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str1)) / 2.0F, this.c * 0.25F - f1 / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str2, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str2)) / 2.0F, this.c * 0.65F - f1 / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str2, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str2)) / 2.0F, this.c * 0.65F - f1 / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString.trim();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(0);
-    }
+    finally {}
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (AppNetConnInfo.isWifiConn())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("PluginPreInstaller", 2, "preinstall start,wifi_reinstall_only.");
+          }
+          String[] arrayOfString = d;
+          int j = arrayOfString.length;
+          i = 0;
+          if (i < j)
+          {
+            String str = arrayOfString[i];
+            try
+            {
+              if (!this.jdField_a_of_type_Blvy.isPlugininstalled(str))
+              {
+                a(str, a(str), b(str));
+              }
+              else if ("QQWifiPlugin.apk".equals(str))
+              {
+                Intent localIntent = new Intent("com.tencent.mobileqq.cooperation.plugin." + str);
+                localIntent.putExtra("plugin", str);
+                this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+              }
+            }
+            catch (Exception localException)
+            {
+              if (!QLog.isColorLevel()) {
+                break label193;
+              }
+            }
+            QLog.e("PluginPreInstaller", 2, "preinstall plugin : " + str + " failed.", localException);
+          }
+        }
+      }
+      finally {}
+      return;
+      label193:
+      i += 1;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
   }
 }
 

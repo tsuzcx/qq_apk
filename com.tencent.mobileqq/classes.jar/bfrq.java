@@ -1,8 +1,6 @@
-import android.graphics.drawable.Drawable;
-
 public abstract interface bfrq
 {
-  public abstract void a(String paramString, boolean paramBoolean, Drawable paramDrawable);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

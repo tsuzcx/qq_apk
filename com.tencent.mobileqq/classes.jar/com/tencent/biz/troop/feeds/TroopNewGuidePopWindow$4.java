@@ -1,44 +1,45 @@
 package com.tencent.biz.troop.feeds;
 
+import aagb;
 import android.os.Handler;
-import bcef;
-import beba;
-import bfdg;
+import bdla;
+import bfid;
+import bglm;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import zqq;
 
 public class TroopNewGuidePopWindow$4
   implements Runnable
 {
-  public TroopNewGuidePopWindow$4(zqq paramzqq, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
+  public TroopNewGuidePopWindow$4(aagb paramaagb, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     int j = 1;
-    this.this$0.jdField_a_of_type_Beba = beba.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.this$0.jdField_a_of_type_Bfid = bfid.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
     this.this$0.g = this.jdField_a_of_type_Boolean;
     String str1;
-    if (this.this$0.jdField_a_of_type_Beba != null)
+    if (this.this$0.jdField_a_of_type_Bfid != null)
     {
-      boolean bool = bfdg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Beba.i);
-      bfdg.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      boolean bool = bglm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Bfid.i);
+      bglm.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       if (QLog.isColorLevel()) {
-        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Beba.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
+        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Bfid.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
       }
-      if ((!this.this$0.jdField_a_of_type_Beba.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) && (((this.this$0.jdField_a_of_type_Beba.b) && (!bool) && (!this.this$0.jdField_a_of_type_Beba.d)) || (this.jdField_a_of_type_Boolean)))
+      if ((!this.this$0.jdField_a_of_type_Bfid.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) && (((this.this$0.jdField_a_of_type_Bfid.b) && (!bool) && (!this.this$0.jdField_a_of_type_Bfid.d)) || (this.jdField_a_of_type_Boolean)))
       {
-        localObject = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        localObject = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         str1 = "";
         if (localObject == null) {
-          break label435;
+          break label436;
         }
       }
     }
-    label435:
+    label436:
     for (Object localObject = ((TroopManager)localObject).b(this.this$0.b);; localObject = null)
     {
       if (localObject != null) {
@@ -46,13 +47,13 @@ public class TroopNewGuidePopWindow$4
       }
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       String str2 = this.this$0.b;
-      if (this.this$0.jdField_a_of_type_Beba.c) {}
+      if (this.this$0.jdField_a_of_type_Bfid.c) {}
       for (int i = 2;; i = 1)
       {
         if (this.this$0.g) {
           j = 2;
         }
-        bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
+        bdla.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
         if (QLog.isColorLevel()) {
           QLog.d("TroopTipsPopWindow", 2, "initViewInThread showing popup window for troopNotice");
         }
@@ -62,7 +63,7 @@ public class TroopNewGuidePopWindow$4
       if (QLog.isColorLevel()) {
         QLog.d("TroopTipsPopWindow", 2, "initViewInThread, mTroopNotify is null!");
       }
-      bfdg.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      bglm.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       return;
     }
   }

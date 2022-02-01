@@ -1,57 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
 public class ajum
-  extends Handler
+  implements View.OnClickListener
 {
-  ajum(ajul paramajul, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajum(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troop_uin", this.a.c);
+    List localList = (List)this.a.jdField_a_of_type_Ajvt.a.get(ChatHistoryTroopMemberFragment.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break label56;
-      }
+      localArrayList.add(((ajvr)localList.get(i)).a);
+      i += 1;
     }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
-      {
-        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
-        }
-      }
-    }
+    ((Intent)localObject).putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
+    localObject = ((TroopManager)this.a.getActivity().app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
+    bhbu.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bhbu.a((TroopMemberInfo)localObject) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

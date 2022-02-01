@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile;
 
-import aymf;
+import azra;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ProfileCardCheckUpdate$1
   implements Runnable
 {
-  public ProfileCardCheckUpdate$1(aymf paramaymf) {}
+  public ProfileCardCheckUpdate$1(azra paramazra) {}
   
   public void run()
   {

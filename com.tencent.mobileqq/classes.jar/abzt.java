@@ -1,28 +1,82 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class abzt
-  implements abzb
+  implements AdProcessManagerAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public String getMainProcessName()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11e");
+    return "com.tencent.mobileqq";
+  }
+  
+  public String getWebProcessName()
+  {
+    return "com.tencent.mobileqq:tool";
+  }
+  
+  public Boolean isOnMainProcess()
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
     }
-    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.getBusinessHandler(1);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.decodePush0x210_0x11e(paramMsgType0x210.vProtobuf);
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
+  }
+  
+  public Boolean isOnWebProcess()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, AdProcessManager.INSTANCE.getWebProcessName()));
+  }
+  
+  public Boolean isWebProcessRunning()
+  {
+    Object localObject = isWebProcessRunningForPreloading();
+    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
+      return Boolean.valueOf(true);
+    }
+    localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        try
+        {
+          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+          return Boolean.valueOf(bool);
+        }
+        catch (Throwable localThrowable)
+        {
+          acho.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
+        }
+      }
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public Boolean isWebProcessRunningForPreloading()
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
+    return Boolean.valueOf(bihv.s);
   }
 }
 

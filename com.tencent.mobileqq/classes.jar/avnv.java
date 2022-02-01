@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import java.util.Comparator;
-
-class avnv
-  implements Comparator<TroopAssistantData>
+public class avnv
 {
-  avnv(avnu paramavnu) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  public avnv(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, int paramInt2, long paramLong)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

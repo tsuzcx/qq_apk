@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.Editable;
+import android.widget.EditText;
 
-public class otb
-  implements oww
+public final class otb
+  implements awzc<char[]>
 {
-  public otb(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public otb(EditText paramEditText) {}
   
-  public void a(int paramInt)
+  public void a(char[] paramArrayOfChar)
   {
-    if (paramInt != 2) {
-      this.a.d();
-    }
-    pbg localpbg1 = new pbg();
-    pbg localpbg2 = localpbg1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
-    if (paramInt == 2) {}
-    for (String str = "1";; str = "0")
-    {
-      localpbg2.b("result", str);
-      oto.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localpbg1);
-      return;
-    }
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 

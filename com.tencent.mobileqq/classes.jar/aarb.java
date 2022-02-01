@@ -1,83 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
 
-class aarb
-  implements Handler.Callback
+public final class aarb
+  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
 {
-  aarb(aara paramaara) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
   {
-    int i = 0;
-    boolean bool1 = false;
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.a();
-      return true;
-      try
-      {
-        paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        boolean bool2 = bkxa.a().a(paramMessage);
-        boolean bool3 = NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext());
-        boolean bool4 = DeviceInfoUtil.isLowEndPhoneForPreDownload();
-        if (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F) {
-          bool1 = true;
-        }
-        aara.a(this.a, "SmartDeviceProxyMgr check plugin: isInstalled " + bool2 + " isWifiConnected " + bool3 + " lowPhone = " + bool4 + " lowMemory = " + bool1);
-        if ((bool2) || (!bool3) || (bool4) || (bool1)) {
-          continue;
-        }
-        bkxa.a().a();
-        return true;
-      }
-      catch (Exception paramMessage)
-      {
-        return true;
-      }
-      try
-      {
-        if (aara.a(this.a) != null)
-        {
-          paramMessage = new Bundle();
-          paramMessage.putString("notify_cmd", "getServerDeviceList");
-          paramMessage = aara.a(this.a).a(paramMessage);
-          if (paramMessage != null)
-          {
-            paramMessage = paramMessage.getParcelableArray("devicelist");
-            if (paramMessage != null)
-            {
-              DeviceInfo[] arrayOfDeviceInfo = new DeviceInfo[paramMessage.length];
-              while (i < paramMessage.length)
-              {
-                arrayOfDeviceInfo[i] = ((DeviceInfo)paramMessage[i]);
-                i += 1;
-              }
-              aara.a(this.a, arrayOfDeviceInfo);
-              if (arrayOfDeviceInfo != null)
-              {
-                this.a.notifyUI(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
-                return true;
-              }
-            }
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
-    }
-    return true;
+    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
+  }
+  
+  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
+  {
+    return new NewerGuidePlugin.RecommendedListResp[paramInt];
   }
 }
 

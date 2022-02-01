@@ -1,44 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import cooperation.qzone.QZoneShareManager;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sbc
-  extends sif
+public class sbc
+  implements AdapterView.OnItemClickListener
 {
-  sbc(sab paramsab) {}
+  public sbc(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    sab.a(this.a).b(sab.b(this.a));
-    paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putString("title", paramVideoInfo.c);
-    paramActionSheetItem.putString("desc", paramVideoInfo.d);
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com"))) {
-      paramActionSheetItem.putString("detail_url", paramVideoInfo.n);
-    }
-    for (;;)
-    {
-      paramString = new ArrayList(1);
-      paramString.add(paramVideoInfo.b);
-      paramActionSheetItem.putStringArrayList("image_url", paramString);
-      paramActionSheetItem.putLong("req_share_id", 0L);
-      QZoneShareManager.jumpToQzoneShare(sab.a(this.a), sab.a(this.a), paramActionSheetItem, null, 10001);
-      return;
-      paramActionSheetItem.putString("detail_url", paramString + "&sourcefrom=1");
-    }
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2;
+    this.a.a.remove(paramInt);
+    this.a.e();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

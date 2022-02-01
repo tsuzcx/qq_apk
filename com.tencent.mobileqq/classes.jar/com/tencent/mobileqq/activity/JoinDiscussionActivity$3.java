@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import amtj;
 import android.text.format.DateFormat;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.List;
 
@@ -20,7 +20,7 @@ class JoinDiscussionActivity$3
     }
     for (;;)
     {
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + amtj.a(2131705007) + DateFormat.format("yy-M-d", this.this$0.jdField_b_of_type_Long));
+      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + anvx.a(2131705358) + DateFormat.format("yy-M-d", this.this$0.jdField_b_of_type_Long));
       return;
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
     }
@@ -28,7 +28,7 @@ class JoinDiscussionActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.3
  * JD-Core Version:    0.7.0.1
  */

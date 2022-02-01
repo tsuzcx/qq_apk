@@ -1,7 +1,16 @@
-final class pbc
-  implements bjta
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+public class pbc
+  implements pfw
 {
-  public void a() {}
+  public pbc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt != 2) {
+      this.a.d();
+    }
+  }
 }
 
 

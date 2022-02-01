@@ -1,18 +1,26 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.widget.TextView;
 
 class MiniLoadingAdLayout$3
-  implements View.OnClickListener
+  implements Runnable
 {
   MiniLoadingAdLayout$3(MiniLoadingAdLayout paramMiniLoadingAdLayout, MiniLoadingAdLayout.OnDismissListener paramOnDismissListener) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.this$0.dismiss(true, this.val$onDismissListener);
-    EventCollector.getInstance().onViewClicked(paramView);
+    MiniLoadingAdLayout.access$610(this.this$0);
+    if (MiniLoadingAdLayout.access$600(this.this$0) == MiniLoadingAdLayout.access$700(this.this$0)) {
+      MiniLoadingAdLayout.access$800(this.this$0).setVisibility(0);
+    }
+    if (MiniLoadingAdLayout.access$600(this.this$0) > 0)
+    {
+      MiniLoadingAdLayout.access$900(this.this$0).setText(MiniLoadingAdLayout.access$600(this.this$0) + "秒");
+      MiniLoadingAdLayout.access$1000(this.this$0).postDelayed(this, 1000L);
+      return;
+    }
+    this.this$0.dismiss(false, this.val$onDismissListener);
   }
 }
 

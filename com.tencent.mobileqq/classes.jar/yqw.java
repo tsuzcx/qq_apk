@@ -1,349 +1,174 @@
-import android.annotation.TargetApi;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
-import android.media.MediaMuxer;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 
-@TargetApi(18)
-public class yqw
+public final class yqw
+  extends yqz
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
-  private String jdField_a_of_type_JavaLangString;
-  private yqy jdField_a_of_type_Yqy = new yqy(null);
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor;
-  private String jdField_b_of_type_JavaLangString;
+  int jdField_a_of_type_Int;
+  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
+  final String jdField_a_of_type_JavaLangString = "...";
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  int d;
   
-  public yqw(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public yqw(yqv paramyqv, @NonNull Drawable paramDrawable, @NonNull yrd paramyrd, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    super(paramyqv, paramDrawable, paramyrd, paramString1, paramString2);
+    this.jdField_a_of_type_Int = paramyrd.jdField_d_of_type_Int;
+    this.jdField_b_of_type_Int = paramyrd.jdField_c_of_type_Int;
+    a(paramyrd.jdField_a_of_type_JavaLangString);
+    this.e = UIUtils.dip2px(BaseApplicationImpl.getContext(), 7.5F);
   }
   
-  private int a(MediaExtractor paramMediaExtractor, String paramString)
+  public String a()
   {
-    if (paramMediaExtractor == null) {
-      return -1;
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
+    localValueAnimator.setDuration(1000L);
+    localValueAnimator.setRepeatCount(2);
+    localValueAnimator.setRepeatMode(2);
+    localValueAnimator.addUpdateListener(new yqx(this));
+    localValueAnimator.addListener(new yqy(this));
+    localValueAnimator.start();
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    paramCanvas.concat(this.jdField_a_of_type_Yqv.jdField_a_of_type_Yvo.a(this));
+    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
+    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
+      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
     }
-    int i = 0;
-    while (i < paramMediaExtractor.getTrackCount())
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
+    paramCanvas.save();
+    paramCanvas.translate(6.0F, 16.0F);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    paramCanvas.restore();
+    paramCanvas.save();
+    paramCanvas.translate(0.0F, 10.0F);
+    if (this.jdField_a_of_type_Boolean)
     {
-      String str = paramMediaExtractor.getTrackFormat(i).getString("mime");
-      if (QLog.isColorLevel()) {
-        QLog.d("HwVideoMerge", 2, "format for track " + i + " is " + str);
-      }
-      if (str.startsWith(paramString))
+      this.jdField_a_of_type_Yqv.d.setAlpha(this.jdField_d_of_type_Int);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_Yqv.d);
+    }
+    paramCanvas.restore();
+    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.n, 6);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
+    if (this.jdField_d_of_type_Boolean) {
+      DisplayUtil.drawEditRect(paramCanvas, this.jdField_a_of_type_Yqv.jdField_a_of_type_Yvo, this, 0, 2130844578, 2130844585);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    float f2 = this.n;
+    float f1 = this.o;
+    if (f2 * this.j < 200.0F) {
+      f2 = 200.0F / this.j;
+    }
+    if (this.j * f1 < 200.0F) {
+      f1 = 200.0F / this.j;
+    }
+    paramCanvas.save();
+    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
+    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
+      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
+    paramCanvas.save();
+    paramCanvas.translate(6.0F, 16.0F);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    paramCanvas.restore();
+    if (paramBoolean)
+    {
+      paramCanvas.save();
+      paramCanvas.translate(0.0F, 10.0F);
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramMediaExtractor.selectTrack(i);
-        return i;
+        this.jdField_a_of_type_Yqv.d.setAlpha(this.jdField_d_of_type_Int);
+        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_Yqv.d);
       }
-      i += 1;
+      paramCanvas.restore();
     }
-    return -1;
+    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.n, 6);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.restore();
   }
   
-  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt)
+  public void a(String paramString)
   {
-    paramString2 = new yqw(paramString1, paramString2, 0L, 0L);
-    int i = paramString2.a(paramString3, paramInt);
-    if ((i == -2) || (i == -4) || (i == -6)) {
-      if (new File(paramString1).renameTo(new File(paramString3))) {
-        paramInt = 0;
-      }
-    }
-    do
-    {
-      return paramInt;
-      return -10;
-      paramInt = i;
-    } while (i != 0);
-    return paramString2.a();
-  }
-  
-  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
-  {
-    paramString2 = new yqw(paramString1, paramString2, paramLong1, paramLong2);
-    int i = paramString2.a(paramString3, paramInt);
-    if ((i == -2) || (i == -4) || (i == -6)) {
-      if (new File(paramString1).renameTo(new File(paramString3))) {
-        paramInt = 0;
-      }
-    }
-    do
-    {
-      return paramInt;
-      return -10;
-      paramInt = i;
-    } while (i != 0);
-    paramString2.a();
-    return i;
-  }
-  
-  private MediaExtractor a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      MediaExtractor localMediaExtractor = new MediaExtractor();
-      try
-      {
-        localMediaExtractor.setDataSource(paramString);
-        return localMediaExtractor;
-      }
-      catch (IOException localIOException)
-      {
-        a("createExtractor path:" + paramString, localIOException);
-        localMediaExtractor.release();
-        return null;
-      }
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    boolean bool2 = false;
-    int i = 0;
-    while ((!bool2) || (i == 0))
-    {
-      boolean bool1 = bool2;
-      if (!bool2)
-      {
-        bool2 = a();
-        bool1 = bool2;
-        if (!bool2)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Yqy.jdField_a_of_type_Int, this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-          bool1 = bool2;
-        }
-      }
-      bool2 = bool1;
-      if (i == 0)
-      {
-        boolean bool3 = b();
-        bool2 = bool1;
-        i = bool3;
-        if (!bool3)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Yqy.jdField_b_of_type_Int, this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-          bool2 = bool1;
-          i = bool3;
-        }
-      }
-    }
-  }
-  
-  private static void a(String paramString, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        QLog.d("HwVideoMerge", 2, paramString, paramThrowable);
-      }
-    }
-    else {
-      return;
-    }
-    QLog.d("HwVideoMerge", 2, paramString);
-  }
-  
-  private boolean a()
-  {
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor == null) {}
-    int i;
-    do
-    {
-      return true;
-      i = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer, 0);
-    } while (i <= 0);
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags();
-    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-    return false;
-  }
-  
-  private int b()
-  {
-    int i = 0;
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
-    {
-      b();
-      i = -5;
-    }
-    do
-    {
-      return i;
-      this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
-    b();
-    return -6;
-  }
-  
-  private static int b(String paramString, int paramInt)
-  {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
-    {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = null;
-      try
-      {
-        String str = localMediaMetadataRetriever.extractMetadata(24);
-        paramString = str;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("HwVideoMerge", 2, localException, new Object[0]);
-        }
-      }
-      localMediaMetadataRetriever.release();
-      if (paramString == null) {
-        return paramInt;
-      }
-      int i;
-      return paramInt;
-    }
-    catch (IllegalArgumentException paramString)
-    {
-      try
-      {
-        i = Integer.parseInt(paramString);
-        return i;
-      }
-      catch (NumberFormatException paramString) {}
-      paramString = paramString;
-      return paramInt;
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_b_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_b_of_type_AndroidMediaMediaExtractor = null;
-    }
-  }
-  
-  private boolean b()
-  {
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null) {
-      return true;
-    }
-    long l = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    int i = this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Yqy.jdField_a_of_type_JavaNioByteBuffer, 0);
-    if ((i <= 0) || ((this.jdField_b_of_type_Long != 0L) && (l > this.jdField_b_of_type_Long * 1000L)))
-    {
-      QLog.d("HwVideoMerge", 2, "getAudioInputBuffer audio end. sampleTime:" + l);
-      return true;
-    }
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l;
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
-    this.jdField_a_of_type_Yqy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleFlags();
-    this.jdField_b_of_type_AndroidMediaMediaExtractor.advance();
-    return false;
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-    try
-    {
-      a();
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-      b();
-      return i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("HwVideoMerge", 1, "doWork error, ", localException);
-        i = -13;
-      }
-    }
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = a(this.jdField_a_of_type_JavaLangString);
-    int i = a(this.jdField_a_of_type_AndroidMediaMediaExtractor, "video/");
-    if ((this.jdField_a_of_type_AndroidMediaMediaExtractor == null) || (i < 0)) {
-      i = -1;
-    }
-    int j;
-    MediaFormat localMediaFormat1;
-    MediaFormat localMediaFormat2;
-    do
-    {
-      return i;
-      this.jdField_b_of_type_AndroidMediaMediaExtractor = a(this.jdField_b_of_type_JavaLangString);
-      j = a(this.jdField_b_of_type_AndroidMediaMediaExtractor, "audio/");
-      if ((this.jdField_b_of_type_AndroidMediaMediaExtractor == null) || (j < 0)) {
-        return -2;
-      }
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_b_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_b_of_type_Long * 1000L, 0);
-      }
-      localMediaFormat1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-      localMediaFormat2 = this.jdField_b_of_type_AndroidMediaMediaExtractor.getTrackFormat(j);
-      this.jdField_a_of_type_Int = localMediaFormat1.getInteger("width");
-      this.jdField_b_of_type_Int = localMediaFormat1.getInteger("height");
-      this.jdField_a_of_type_Yqy.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      j = b();
-      i = j;
-    } while (j != 0);
+    String str = paramString;
     if (TextUtils.isEmpty(paramString))
     {
-      b();
-      return -9;
+      ykq.e("FaceLayer", "text is empty.");
+      str = "";
     }
-    try
+    ykq.b("FaceLayer", "text:" + str);
+    this.jdField_c_of_type_JavaLangString = str;
+    this.jdField_b_of_type_JavaLangString = str;
+    int j = (int)(this.n - 12.0F);
+    this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
+    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2)
     {
-      if (new File(paramString).exists())
+      int i = this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(1);
+      paramString = this.jdField_c_of_type_JavaLangString.substring(0, i);
+      ykq.b("FaceLayer", "subString : " + this.jdField_c_of_type_JavaLangString + " -> " + paramString);
+      this.jdField_c_of_type_JavaLangString = paramString;
+      i = this.jdField_c_of_type_JavaLangString.length();
+      this.jdField_c_of_type_JavaLangString += "...";
+      this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
+      i -= 1;
+      while ((i > 0) && (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2))
       {
-        b();
-        return -8;
+        paramString = this.jdField_c_of_type_JavaLangString.substring(0, i) + "...";
+        ykq.b("FaceLayer", "delete last char : " + this.jdField_c_of_type_JavaLangString + " -> " + paramString);
+        this.jdField_c_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Yqv.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
+        i -= 1;
       }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
-      paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
-      this.jdField_a_of_type_Yqy.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat1);
-      this.jdField_a_of_type_Yqy.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat2);
-      return j;
+      if (i == 0) {
+        ykq.e("FaceLayer", "text size is too large :" + this.jdField_a_of_type_Int);
+      }
     }
-    catch (IOException paramString)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-      b();
-    }
-    return -7;
+    ykq.b("FaceLayer", "final text : " + this.jdField_c_of_type_JavaLangString + " , original text : " + this.jdField_b_of_type_JavaLangString);
+    paramString = new Rect();
+    this.jdField_a_of_type_AndroidTextStaticLayout.getLineBounds(0, paramString);
+    this.jdField_c_of_type_Int = paramString.height();
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.n, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 12), 4.0F, 4.0F, Path.Direction.CCW);
   }
 }
 

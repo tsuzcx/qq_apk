@@ -1,24 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
 
-final class asdn
-  extends Handler
+class asdn
+  implements bkzq
 {
-  asdn(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  asdn(asdl paramasdl, bkzi parambkzi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    ((asdv)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
+    this.jdField_a_of_type_Asdl.f();
+    if (this.jdField_a_of_type_Bkzi.isShowing()) {
+      this.jdField_a_of_type_Bkzi.dismiss();
+    }
+    bdla.b(asdl.a(this.jdField_a_of_type_Asdl), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdn
  * JD-Core Version:    0.7.0.1
  */

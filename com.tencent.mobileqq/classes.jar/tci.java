@@ -1,50 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class tci
-  implements tcn
+public class tci
+  extends Handler
 {
-  tci(tch paramtch) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public tci(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
   {
-    if (paramBoolean)
-    {
-      if (tch.a(this.a) != null)
-      {
-        paramString = (Animation)tch.a(this.a).getTag(2131369487);
-        paramString.setAnimationListener(new tcj(this));
-        tch.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131717376, 0).a();
+    super(paramLooper);
   }
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
-    {
-      tch.a(this.a).a(tch.a(this.a), tch.a(this.a, paramInt), this.a.a, "", "", paramString2, "", 0, "");
-      return;
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
+      this.a.b();
     }
-    QQToast.a(this.a.a, 1, 2131717380, 0).a();
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (tch.a(this.a) != null)
-      {
-        paramString = (Animation)tch.a(this.a).getTag(2131369487);
-        paramString.setAnimationListener(new tck(this));
-        tch.a(this.a).startAnimation(paramString);
-      }
-      return;
-    }
-    QQToast.a(this.a.a, 1, 2131717382, 0).a();
   }
 }
 

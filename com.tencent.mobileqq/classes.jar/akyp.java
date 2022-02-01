@@ -1,39 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class akyp
-  implements bhfy
+public final class akyp
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public akyp(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
-  
-  public void a()
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+    return new RedPacketInfoBase(paramParcel);
   }
   
-  public void a(String paramString)
+  public RedPacketInfoBase[] a(int paramInt)
   {
-    bdaf.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    bdaf.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    bdaf.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

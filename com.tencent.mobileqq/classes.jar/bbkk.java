@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.data.CardProfile;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
 public class bbkk
+  extends bbkj
 {
-  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
+  public HashMap<String, String> a(String paramString)
   {
-    HashSet localHashSet = new HashSet();
-    ArrayList localArrayList = new ArrayList();
-    paramList1 = paramList1.iterator();
-    paramList2 = paramList2.iterator();
-    while (paramList1.hasNext())
+    if ("ShortVideo.Save".equals(paramString))
     {
-      CardProfile localCardProfile = (CardProfile)paramList1.next();
-      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
-      localArrayList.add(localCardProfile);
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.b + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      return paramString;
     }
-    while (paramList2.hasNext())
-    {
-      paramList1 = (CardProfile)paramList2.next();
-      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
-        localArrayList.add(paramList1);
-      }
-    }
-    return localArrayList;
+    return null;
   }
 }
 

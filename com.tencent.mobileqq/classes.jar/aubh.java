@@ -1,11 +1,17 @@
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aubh
-  extends aubf
+class aubh
+  implements View.OnClickListener
 {
-  public abstract void a(WebView paramWebView);
+  aubh(aubg paramaubg, String paramString) {}
   
-  public abstract void b(WebView paramWebView);
+  public void onClick(View paramView)
+  {
+    auea.a(this.jdField_a_of_type_Aubg.a, this.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

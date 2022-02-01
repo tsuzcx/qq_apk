@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
 
-public class qhh
-  implements ViewBase.IBuilder
+public final class qhh
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.ReadInJoyDraftboxContent>
 {
-  public ViewBase build(VafContext paramVafContext)
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(Parcel paramParcel)
   {
-    return new qhg(paramVafContext);
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[paramInt];
   }
 }
 

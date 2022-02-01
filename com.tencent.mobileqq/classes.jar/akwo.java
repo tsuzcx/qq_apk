@@ -1,8 +1,23 @@
-public abstract interface akwo
+import android.os.Bundle;
+import android.text.TextUtils;
+import mqq.observer.BusinessObserver;
+
+public class akwo
+  implements BusinessObserver
 {
-  public abstract void a(float paramFloat);
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramInt == 1) && (paramBundle != null))
+    {
+      paramInt = paramBundle.getInt("btype");
+      String str = paramBundle.getString("bid");
+      if ((akwm.a(paramInt)) && (!TextUtils.isEmpty(str))) {
+        a(paramInt, str, paramBundle);
+      }
+    }
+  }
 }
 
 

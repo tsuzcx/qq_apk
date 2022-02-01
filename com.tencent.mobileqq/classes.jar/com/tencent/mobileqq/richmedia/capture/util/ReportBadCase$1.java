@@ -2,7 +2,7 @@ package com.tencent.mobileqq.richmedia.capture.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import babj;
+import bbhs;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class ReportBadCase$1
   implements Runnable
 {
-  public ReportBadCase$1(babj parambabj, BadcaseReportUtils.BadDataFrame paramBadDataFrame) {}
+  public ReportBadCase$1(bbhs parambbhs, BadcaseReportUtils.BadDataFrame paramBadDataFrame) {}
   
   public void run()
   {
     ??? = Bitmap.createBitmap(this.a.width, this.a.height, Bitmap.Config.ARGB_8888);
     ((Bitmap)???).copyPixelsFromBuffer(this.a.pictureBuffer);
-    String str1 = babj.a();
-    boolean bool = babj.a((Bitmap)???, str1);
+    String str1 = bbhs.a();
+    boolean bool = bbhs.a((Bitmap)???, str1);
     if (QLog.isColorLevel()) {
       QLog.d("BadcaseReportUtils", 2, "BadcaseReportUtils|writeBitmapToFile success=" + bool);
     }
@@ -30,14 +30,14 @@ public class ReportBadCase$1
       this.a.picturePath = str1;
       this.a.convertedPath = (str1 + "_ct_2");
       BadcaseReportUtils.convertDataFormat(this.a);
-      synchronized (babj.a())
+      synchronized (bbhs.a())
       {
-        babj.a().add(this.a);
+        bbhs.a().add(this.a);
       }
     }
-    synchronized (babj.a())
+    synchronized (bbhs.a())
     {
-      int i = babj.a().size();
+      int i = bbhs.a().size();
       if (i == 3) {
         ThreadManager.postDownLoadTask(new ReportBadCase.1.1(this), 5, null, true);
       }

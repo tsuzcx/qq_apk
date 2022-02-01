@@ -1,8 +1,25 @@
-public abstract interface ajip
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
+
+class ajip
+  implements View.OnLongClickListener
 {
-  public abstract void setFrom(boolean paramBoolean);
+  private WeakReference<ajik> a;
   
-  public abstract void setIsShieldTouchForItem(boolean paramBoolean);
+  public ajip(ajik paramajik)
+  {
+    this.a = new WeakReference(paramajik);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ajik localajik = (ajik)this.a.get();
+    if (localajik != null) {
+      return localajik.onLongClick(paramView);
+    }
+    return false;
+  }
 }
 
 

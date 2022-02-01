@@ -1,12 +1,13 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import absw;
+import aciv;
 import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportConstants.VideoEndType;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import obb;
-import trn;
+import ois;
+import ufy;
 
 class ReadInJoyNativeAdAppVideoView$4
   implements Runnable
@@ -21,16 +22,16 @@ class ReadInJoyNativeAdAppVideoView$4
       ReadInJoyNativeAdAppVideoView.a(this.this$0, ReadInJoyNativeAdAppVideoView.a(this.this$0).getDuration());
       int i = (int)((float)l * 1.0F * ReadInJoyNativeAdAppVideoView.b(this.this$0) / (float)ReadInJoyNativeAdAppVideoView.a(this.this$0) + 0.5D);
       ReadInJoyNativeAdAppVideoView.a(this.this$0).setProgress(i);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(absw.a(l));
-      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(absw.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
+      ReadInJoyNativeAdAppVideoView.a(this.this$0).setText(aciv.a(l));
+      ReadInJoyNativeAdAppVideoView.b(this.this$0).setText(aciv.a(ReadInJoyNativeAdAppVideoView.a(this.this$0)));
       if (ReadInJoyNativeAdAppVideoView.a(this.this$0) - l >= 50L) {
-        break label350;
+        break label357;
       }
       if (!ReadInJoyNativeAdAppVideoView.a(this.this$0))
       {
         ReadInJoyNativeAdAppVideoView.a(this.this$0, (int)ReadInJoyNativeAdAppVideoView.a(this.this$0));
         ReadInJoyNativeAdAppVideoView.b(this.this$0, 1);
-        obb.a(new trn().a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(this.this$0.getContext()).a(obb.f).b(obb.Q).a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(obb.a(ReadInJoyNativeAdAppVideoView.c(this.this$0), ReadInJoyNativeAdAppVideoView.d(this.this$0), ReadInJoyNativeAdAppVideoView.e(this.this$0), ReadInJoyNativeAdAppVideoView.f(this.this$0), ReadInJoyNativeAdAppVideoView.g(this.this$0), ReadInJoyNativeAdAppVideoView.h(this.this$0), (int)ReadInJoyNativeAdAppVideoView.a(this.this$0), obb.aR, 0)).a());
+        ois.a(new ufy().a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(this.this$0.getContext()).a(6).b(7).a(ReadInJoyNativeAdAppVideoView.a(this.this$0)).a(ois.a(ReadInJoyNativeAdAppVideoView.c(this.this$0), ReadInJoyNativeAdAppVideoView.d(this.this$0), ReadInJoyNativeAdAppVideoView.e(this.this$0), ReadInJoyNativeAdAppVideoView.f(this.this$0), ReadInJoyNativeAdAppVideoView.g(this.this$0), ReadInJoyNativeAdAppVideoView.h(this.this$0), (int)ReadInJoyNativeAdAppVideoView.a(this.this$0), 10, 0, ReadInJoyNativeAdAppVideoView.i(this.this$0), ReportConstants.VideoEndType.NORMAL_COMPLETE)).a());
         ReadInJoyNativeAdAppVideoView.c(this.this$0, 0);
         ReadInJoyNativeAdAppVideoView.d(this.this$0, 1);
         ReadInJoyNativeAdAppVideoView.b(this.this$0, 0);
@@ -41,7 +42,7 @@ class ReadInJoyNativeAdAppVideoView$4
     {
       ReadInJoyNativeAdAppVideoView.a(this.this$0).postDelayed(this, 50L);
       return;
-      label350:
+      label357:
       ReadInJoyNativeAdAppVideoView.a(this.this$0, false);
     }
   }

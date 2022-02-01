@@ -38,10 +38,10 @@ public class UserGuideWeishiFragment
     if (QLog.isColorLevel()) {
       QLog.d("UserGuideWeishiFragment", 2, "initUI has been called");
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363648);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380269);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363717);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380604);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380270));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380605));
     b();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new UserGuideWeishiFragment.FinishDeLay5Seconds(new WeakReference(getActivity())), 5000L);
@@ -101,12 +101,12 @@ public class UserGuideWeishiFragment
     //   91: astore 5
     //   93: aload 5
     //   95: ifnull +159 -> 254
-    //   98: new 154	bjov
+    //   98: new 154	blah
     //   101: dup
     //   102: aload 5
     //   104: iload_1
     //   105: iload_2
-    //   106: invokespecial 157	bjov:<init>	(Landroid/graphics/Bitmap;II)V
+    //   106: invokespecial 157	blah:<init>	(Landroid/graphics/Bitmap;II)V
     //   109: astore 5
     //   111: aload 5
     //   113: ifnull +71 -> 184
@@ -363,7 +363,7 @@ public class UserGuideWeishiFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562961, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131563037, null);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -406,7 +406,7 @@ public class UserGuideWeishiFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserGuideWeishiFragment
  * JD-Core Version:    0.7.0.1
  */

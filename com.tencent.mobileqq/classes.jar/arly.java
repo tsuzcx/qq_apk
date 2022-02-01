@@ -1,84 +1,102 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arly
-  extends RecyclerView.OnScrollListener
+  extends arjj<SSOErrorInfoMapConfig>
 {
-  public arly(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public static SSOErrorInfoMapConfig c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)aqxe.a().a(477);
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
+    if (localSSOErrorInfoMapConfig2 == null) {
+      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
-    {
-      if (paramInt != 0) {
-        break label94;
-      }
-      this.a.c = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
-      this.a.ak_();
-    }
+    return localSSOErrorInfoMapConfig1;
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig a()
+  {
+    return new SSOErrorInfoMapConfig();
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig a(aqxa[] paramArrayOfaqxa)
+  {
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
+    paramArrayOfaqxa = paramArrayOfaqxa[0].a;
     for (;;)
     {
-      if (paramInt == 0)
+      String str1;
+      arlw localarlw;
+      String str2;
+      arlx localarlx;
+      try
       {
-        ExtendFriendSquareFragment.c(this.a);
-        this.a.g();
-        this.a.b(false);
-      }
-      return;
-      label94:
-      this.a.c = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        if (!TextUtils.isEmpty(paramArrayOfaqxa))
+        {
+          paramArrayOfaqxa = new JSONObject(paramArrayOfaqxa);
+          Iterator localIterator1 = paramArrayOfaqxa.keys();
+          if (localIterator1.hasNext())
+          {
+            str1 = (String)localIterator1.next();
+            JSONObject localJSONObject1 = paramArrayOfaqxa.optJSONObject(str1);
+            Iterator localIterator2 = localJSONObject1.keys();
+            localarlw = new arlw();
+            if (!localIterator2.hasNext()) {
+              break label220;
+            }
+            str2 = (String)localIterator2.next();
+            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
+            Iterator localIterator3 = localJSONObject2.keys();
+            localarlx = new arlx();
+            if (!localIterator3.hasNext()) {
+              break label204;
+            }
+            String str3 = (String)localIterator3.next();
+            String str4 = localJSONObject2.optString(str3);
+            localarlx.a.put(str3, str4);
+            continue;
+          }
         }
+        return localSSOErrorInfoMapConfig;
       }
+      catch (JSONException paramArrayOfaqxa)
+      {
+        ykq.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfaqxa.getMessage());
+      }
+      label204:
+      localarlw.a.put(str2, localarlx);
+      continue;
+      label220:
+      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localarlw);
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  @NonNull
+  public SSOErrorInfoMapConfig b()
   {
-    this.a.h = this.a.d();
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.a.e != -1L)
-    {
-      long l = System.currentTimeMillis() - this.a.e;
-      f1 = f2;
-      if (l > 0L)
-      {
-        f1 = f2;
-        if (l < 2000L) {
-          f1 = paramInt2 * 1.0F / (float)l;
-        }
-      }
-    }
-    this.a.e = System.currentTimeMillis();
-    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
-    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Arme != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Arme.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
-    }
+    return new SSOErrorInfoMapConfig();
+  }
+  
+  public Class<SSOErrorInfoMapConfig> clazz()
+  {
+    return SSOErrorInfoMapConfig.class;
+  }
+  
+  public int type()
+  {
+    return 477;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arly
  * JD-Core Version:    0.7.0.1
  */

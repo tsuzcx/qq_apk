@@ -24,6 +24,8 @@ import com.tencent.ttpic.audio.LocalAudioDataManager;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.filament.AceMaterialManager;
+import com.tencent.ttpic.filament.CameraViewType;
+import com.tencent.ttpic.filament.CmShowMaterialDisplayType;
 import com.tencent.ttpic.filter.SplitFilter;
 import com.tencent.ttpic.manager.CharmRandomManager;
 import com.tencent.ttpic.manager.RandomGroupManager;
@@ -147,15 +149,23 @@ public class AESticker
       paramVideoPreviewFaceOutlineDetector.setFaceValueDetectType(paramVideoMaterial.getFaceValueDetectType());
       paramVideoPreviewFaceOutlineDetector.clearActionCounter();
       if ((!VideoMaterialUtil.is3DMaterial(paramVideoMaterial)) && (!VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial))) {
-        break label228;
+        break label272;
+      }
+      bool = true;
+      paramVideoPreviewFaceOutlineDetector.setNeedDetect3D(bool);
+      if ((!VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial)) && (!VideoMaterialUtil.isKissMaterial(paramVideoMaterial)) && (!paramVideoMaterial.isNeedFaceMeshFacekit())) {
+        break label277;
       }
     }
-    label228:
+    label272:
+    label277:
     for (boolean bool = true;; bool = false)
     {
-      paramVideoPreviewFaceOutlineDetector.setNeedDetect3D(bool);
-      paramVideoPreviewFaceOutlineDetector.setNeedFaceKit(VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial));
+      paramVideoPreviewFaceOutlineDetector.setNeedFaceMeshFaceKit(bool);
       paramVideoPreviewFaceOutlineDetector.setNeedExpressionWeights(VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial));
+      paramVideoPreviewFaceOutlineDetector.setNeedAvatarFaceKit(paramVideoMaterial.isNeedAvatarFacekit());
+      paramVideoPreviewFaceOutlineDetector.setNeed3DMMTransform(paramVideoMaterial.isUse3DMMTransform());
+      paramVideoPreviewFaceOutlineDetector.setNeedTongueDetect(VideoMaterialUtil.isAnimojiTongueMaterial(paramVideoMaterial));
       paramVideoPreviewFaceOutlineDetector.setNeedPoseEstimate(true);
       VideoPreviewFaceOutlineDetector.setFov(paramVideoMaterial.getFov());
       AIActionCounter.clearAction(AEDetectorType.HAND);
@@ -170,6 +180,8 @@ public class AESticker
       this.mPause = false;
       this.mPauseTimeDiff = 0L;
       return;
+      bool = false;
+      break;
     }
   }
   
@@ -285,8 +297,10 @@ public class AESticker
       return false;
     case 12: 
       return VideoMaterialUtil.isGenderDetect(this.mVideoFilters.getMaterial());
+    case 13: 
+      return VideoMaterialUtil.isEmotionDectectMaterial(this.mVideoFilters.getMaterial());
     }
-    return VideoMaterialUtil.isEmotionDectectMaterial(this.mVideoFilters.getMaterial());
+    return VideoMaterialUtil.isNeedDepthMask(this.mVideoFilters.getMaterial());
   }
   
   public void clear()
@@ -298,8 +312,8 @@ public class AESticker
   {
     Log.i("VideoMemoryManager", "AESticker clear! isClearMemory = " + paramBoolean);
     this.mVideoMaterial = null;
-    this.mCopyFilter.ClearGLSL();
-    this.mSplitFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
+    this.mSplitFilter.clearGLSL();
     if (this.mVideoFilters != null)
     {
       this.mVideoFilters.destroy();
@@ -322,8 +336,9 @@ public class AESticker
     {
       this.faceDetector.nativeSetRefine(false);
       this.faceDetector.setNeedDetect3D(false);
-      this.faceDetector.setNeedFaceKit(false);
+      this.faceDetector.setNeedFaceMeshFaceKit(false);
       this.faceDetector.setNeedExpressionWeights(false);
+      this.faceDetector.setNeedTongueDetect(false);
       this.faceDetector.setNeedPoseEstimate(false);
       this.faceDetector = null;
     }
@@ -423,6 +438,14 @@ public class AESticker
     return this.mVideoFilters.getOnlyDetectOneGesture();
   }
   
+  public Object getParam(String paramString)
+  {
+    if (this.mVideoFilters != null) {
+      return this.mVideoFilters.getParam(paramString);
+    }
+    return null;
+  }
+  
   public List<RenderItem> getRenderItems()
   {
     return this.mVideoFilters.getRenderItems();
@@ -483,6 +506,21 @@ public class AESticker
   public boolean isAnimojiMaterial()
   {
     return VideoMaterialUtil.isAnimojiMaterial(this.mVideoFilters.getMaterial());
+  }
+  
+  public boolean isCloseARGestureRotate()
+  {
+    return this.mVideoMaterial.isCloseARGestureRotate();
+  }
+  
+  public boolean isCloseARGestureScale()
+  {
+    return this.mVideoMaterial.isCloseARGestureScale();
+  }
+  
+  public boolean isCloseARGestureTouch()
+  {
+    return this.mVideoMaterial.isCloseARGestureTouch();
   }
   
   public boolean isCosFunEnableGAN()
@@ -665,7 +703,6 @@ public class AESticker
       paramPTFaceAttr.setFacePoints(paramPTFaceAttr.getTransformFacePoints());
     }
     Set localSet = paramPTFaceAttr.getTriggeredExpression();
-    Object localObject1;
     if (paramAIAttr != null)
     {
       localObject1 = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
@@ -674,15 +711,24 @@ public class AESticker
       }
     }
     HashMap localHashMap = new HashMap();
-    if ((paramPTSegAttr != null) && (this.mVideoFilters.isMaterialSegmentRequired())) {
-      if (this.doStrokeShake) {
-        localObject1 = this.mVideoFilters.doFabbyStrokeShake(paramFrame, paramPTSegAttr.getMaskFrame(), paramFrame, this.enableStrokeShakeGauss);
+    Object localObject2 = this.mVideoFilters.renderMaskToFrame(paramFrame);
+    Object localObject1 = localObject2;
+    if (paramPTSegAttr != null)
+    {
+      localObject1 = localObject2;
+      if (this.mVideoFilters.isMaterialSegmentRequired())
+      {
+        if (!this.doStrokeShake) {
+          break label992;
+        }
+        localObject1 = this.mVideoFilters.doFabbyStrokeShake(paramFrame, paramPTSegAttr.getMaskFrame(), (Frame)localObject2, this.enableStrokeShakeGauss);
       }
     }
+    label1103:
     for (;;)
     {
       this.mVideoFilters.renderARFilterIfNeeded((Frame)localObject1);
-      Object localObject2 = this.mVideoFilters.updateAndRenderHeadCropItemFilters((Frame)localObject1, paramPTFaceAttr);
+      localObject2 = this.mVideoFilters.updateAndRenderHeadCropItemFilters((Frame)localObject1, paramPTFaceAttr);
       localObject1 = localObject2;
       if (this.mVideoFilters.isMaterialSegmentRequired()) {
         localObject1 = this.mVideoFilters.updateAndRenderBgFilters((Frame)localObject2, paramPTFaceAttr);
@@ -756,8 +802,12 @@ public class AESticker
         localObject1 = this.mVideoFilters.updateAndRenderStylyFilters(2, (Frame)localObject1);
         localObject1 = this.mVideoFilters.renderEffectFilter((Frame)localObject1, new int[] { 2, 101 });
         BenchUtil.benchStart("updateAndRenderActMaterial");
-        localObject2 = this.mVideoFilters.updateAndRenderActMaterial((Frame)localObject1, localList1, localList2, i, paramPTFaceAttr.getTimeStamp());
+        localObject1 = this.mVideoFilters.updateAndRenderActMaterial((Frame)localObject1, localList1, localList2, i, paramPTFaceAttr.getTimeStamp());
         BenchUtil.benchEnd("updateAndRenderActMaterial");
+        localObject1 = this.mVideoFilters.updateAndRenderPluginFilter((Frame)localObject1);
+        localObject1 = this.mVideoFilters.UKYOGameRender((Frame)localObject1);
+        localObject1 = this.mVideoFilters.updateAndRenderDepthSmokeItems((Frame)localObject1);
+        localObject2 = this.mVideoFilters.updateAndRenderUVEditItems((Frame)localObject1);
         localObject1 = localObject2;
         if (localHashMap.isEmpty())
         {
@@ -784,12 +834,13 @@ public class AESticker
           this.hairAttr.getMaskFrame().unlock();
         }
         return paramFrame;
+        label992:
         if ((paramPTSegAttr.getMaskFrame() == null) && (!AISegAttr.isRotate())) {
           reset();
         }
-        localObject1 = this.mVideoFilters.doFabbyStroke(paramFrame, paramPTSegAttr.getMaskFrame(), paramPTFaceAttr);
+        localObject1 = this.mVideoFilters.doFabbyStroke((Frame)localObject2, paramPTSegAttr.getMaskFrame(), paramPTFaceAttr);
         if (this.enableBGTransparent) {
-          break label1039;
+          break label1103;
         }
         GlUtil.setBlendMode(true);
         localObject2 = this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
@@ -799,9 +850,6 @@ public class AESticker
         localObject1 = localObject2;
         break;
       }
-      label1039:
-      continue;
-      localObject1 = paramFrame;
     }
   }
   
@@ -827,7 +875,7 @@ public class AESticker
     BenchUtil.benchStart("updateTextureParam2");
     this.mVideoFilters.updateTextureParam(paramPTFaceAttr.getFaceActionCounter(), paramSet, paramPTFaceAttr.getTimeStamp(), paramAIAttr);
     BenchUtil.benchEnd("updateTextureParam2");
-    paramFrame = this.mVideoFilters.processTransformRelatedFilters(paramFrame, paramPTFaceAttr);
+    paramFrame = this.mVideoFilters.processTransformRelatedFilters(paramFrame, paramPTFaceAttr, false);
     if ((this.mVideoMaterial.isNeedReCaculateFace()) && (paramPTFaceAttr.getTransformFacePoints() != null) && (paramPTFaceAttr.getTransformFacePoints().size() > 0)) {
       paramPTFaceAttr.setFacePoints(paramPTFaceAttr.getTransformFacePoints());
     }
@@ -938,6 +986,15 @@ public class AESticker
     Frame localFrame = paramFrame;
     if (this.mVideoFilters != null) {
       localFrame = this.mVideoFilters.renderCustomGroup(paramFrame);
+    }
+    return localFrame;
+  }
+  
+  public Frame renderDepthSmokeFilter(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mVideoFilters != null) {
+      localFrame = this.mVideoFilters.updateAndRenderDepthSmokeItems(paramFrame);
     }
     return localFrame;
   }
@@ -1102,6 +1159,15 @@ public class AESticker
     return this.mVideoFilters.updateAndRenderHeadCropItemFilters(paramFrame, paramPTFaceAttr);
   }
   
+  public Frame renderMaskFrame(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mVideoFilters != null) {
+      localFrame = this.mVideoFilters.renderMaskToFrame(paramFrame);
+    }
+    return localFrame;
+  }
+  
   public void renderMultiViewer(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr, PTSegAttr paramPTSegAttr, Map<Integer, Frame> paramMap)
   {
     if (this.mVideoFilters != null) {
@@ -1123,6 +1189,15 @@ public class AESticker
     Frame localFrame = paramFrame;
     if (this.mVideoFilters != null) {
       localFrame = this.mVideoFilters.updateAndRenderPhantomFilter(paramFrame, paramPTFaceAttr);
+    }
+    return localFrame;
+  }
+  
+  public Frame renderPluginFilter(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mVideoFilters != null) {
+      localFrame = this.mVideoFilters.updateAndRenderPluginFilter(paramFrame);
     }
     return localFrame;
   }
@@ -1197,6 +1272,15 @@ public class AESticker
     Frame localFrame = paramFrame;
     if (this.mVideoFilters != null) {
       localFrame = this.mVideoFilters.updateAndRenderStyleChildWarp(paramFrame, paramPTFaceAttr);
+    }
+    return localFrame;
+  }
+  
+  public Frame renderUVEditFilter(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mVideoFilters != null) {
+      localFrame = this.mVideoFilters.updateAndRenderUVEditItems(paramFrame);
     }
     return localFrame;
   }
@@ -1284,6 +1368,13 @@ public class AESticker
     }
   }
   
+  public void setKapuMaterialDisplayType(CmShowMaterialDisplayType paramCmShowMaterialDisplayType)
+  {
+    if (this.mVideoFilters != null) {
+      this.mVideoFilters.setKapuMaterialDisplayType(paramCmShowMaterialDisplayType);
+    }
+  }
+  
   public void setMuteState(boolean paramBoolean)
   {
     VideoPrefsUtil.setMaterialMute(paramBoolean);
@@ -1292,6 +1383,11 @@ public class AESticker
   public void setPTFaceTransform(AEFaceTransform paramAEFaceTransform)
   {
     this.faceTransform = paramAEFaceTransform;
+  }
+  
+  public void setParam(String paramString, Object paramObject)
+  {
+    this.mVideoFilters.setParam(paramString, paramObject);
   }
   
   public void setRatio(float paramFloat)
@@ -1327,6 +1423,13 @@ public class AESticker
     this.mVideoFilters.setStickerListener(paramInt, paramIStickerListener);
   }
   
+  public void setTouchRotate(float[] paramArrayOfFloat)
+  {
+    if (this.mVideoFilters != null) {
+      this.mVideoFilters.setTouchRotate(paramArrayOfFloat);
+    }
+  }
+  
   public void setTouchScale(float paramFloat)
   {
     if (this.mVideoFilters != null) {
@@ -1360,6 +1463,13 @@ public class AESticker
   {
     if (isExcludeOuterEffectFilterMaterial()) {
       this.mVideoFilters.setVideoEffectOrder(-1);
+    }
+  }
+  
+  public void switchCameraViewType(CameraViewType paramCameraViewType)
+  {
+    if (this.mVideoFilters != null) {
+      this.mVideoFilters.switchCameraViewType(paramCameraViewType);
     }
   }
   

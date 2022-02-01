@@ -1,21 +1,33 @@
 package com.tencent.qqlive.module.videoreport.dtreport.time.base;
 
 import android.os.SystemClock;
+import com.tencent.qqlive.module.videoreport.Log;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 
 public class TimePinProcessor
   implements ITimeProcessor
 {
+  private static final String TAG = "TimePinProcessor";
   private long mBackgroundDuration;
   private long mForegroundDuration;
   private boolean mIsInForeground;
   private boolean mIsTimeForbidden;
+  private long mPinDeviation;
   private int mProcessorState = -1;
   private long mStartTime;
   
-  public TimePinProcessor(boolean paramBoolean)
+  public TimePinProcessor(boolean paramBoolean, long paramLong)
   {
     this.mIsInForeground = paramBoolean;
+    this.mPinDeviation = (2L * paramLong);
     reset();
+  }
+  
+  private void printErrorLog(long paramLong)
+  {
+    if (VideoReport.isDebugMode()) {
+      Log.i("TimePinProcessor", "心跳间隔异常，expected interval = " + (float)this.mPinDeviation / 2.0F + ", actual interval = " + paramLong);
+    }
   }
   
   private void triggerTiming()
@@ -28,15 +40,23 @@ public class TimePinProcessor
         if (bool) {
           return;
         }
-        if (this.mProcessorState == 0) {
+        if (this.mProcessorState == 0)
+        {
+          long l2 = SystemClock.elapsedRealtime() - this.mStartTime;
+          long l1 = l2;
+          if (l2 > this.mPinDeviation)
+          {
+            l1 = this.mPinDeviation;
+            printErrorLog(l1);
+          }
           if (this.mIsInForeground)
           {
-            this.mForegroundDuration += SystemClock.elapsedRealtime() - this.mStartTime;
+            this.mForegroundDuration = (l1 + this.mForegroundDuration);
             this.mStartTime = SystemClock.elapsedRealtime();
           }
           else
           {
-            this.mBackgroundDuration += SystemClock.elapsedRealtime() - this.mStartTime;
+            this.mBackgroundDuration = (l1 + this.mBackgroundDuration);
           }
         }
       }

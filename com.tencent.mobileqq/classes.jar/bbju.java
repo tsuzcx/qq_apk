@@ -1,246 +1,216 @@
-import QQService.AddDiscussMemberInfo;
-import QQService.DiscussReqHeader;
-import QQService.MemberAttrInfo;
-import QQService.ReqAddDiscussMember;
-import QQService.ReqChangeDiscussName;
-import QQService.ReqCreateDiscuss;
-import QQService.ReqGetDiscussInfo;
-import QQService.ReqGetDiscussInteRemark;
-import QQService.ReqJoinDiscuss;
-import QQService.ReqQuitDiscuss;
-import QQService.ReqSetDiscussAttr;
-import QQService.ReqSetDiscussFlag;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.1;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.2;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.3;
+import com.tencent.mobileqq.richmedia.conn.ConnManager.4;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bbju
+  implements bbjx
 {
-  private final int jdField_a_of_type_Int = 0;
-  private DiscussReqHeader jdField_a_of_type_QQServiceDiscussReqHeader = new DiscussReqHeader();
+  private static String jdField_a_of_type_JavaLangString = "PeakAudioTransHandler ConnManager";
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bbjv jdField_a_of_type_Bbjv;
+  private bbjw jdField_a_of_type_Bbjw;
+  private bbou jdField_a_of_type_Bbou;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ArrayList<bbjv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected ConcurrentLinkedQueue<byte[]> a;
   
-  public bbju()
+  public bbju(AppInterface paramAppInterface, bbou parambbou)
   {
-    this.jdField_a_of_type_QQServiceDiscussReqHeader.Version = 0;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Bbou = parambbou;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  private void b(long paramLong)
   {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqSetDiscussFlag");
-    ReqSetDiscussFlag localReqSetDiscussFlag = new ReqSetDiscussFlag();
-    localReqSetDiscussFlag.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    localReqSetDiscussFlag.Flag = paramToServiceMsg.extraData.getByte("flag");
-    paramUniPacket.put("ReqSetDiscussFlag", localReqSetDiscussFlag);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.4(this, paramLong));
   }
   
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a(long paramLong)
   {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqSetDiscussAttr");
-    ReqSetDiscussAttr localReqSetDiscussAttr = new ReqSetDiscussAttr();
-    localReqSetDiscussAttr.Attr = new HashMap();
-    localReqSetDiscussAttr.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    int[] arrayOfInt = paramToServiceMsg.extraData.getIntArray("infoType");
-    paramToServiceMsg = paramToServiceMsg.extraData.getIntArray("attrType");
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    if (this.jdField_a_of_type_Bbjw != null)
     {
-      MemberAttrInfo localMemberAttrInfo = new MemberAttrInfo();
-      localMemberAttrInfo.Value = paramToServiceMsg[i];
-      localMemberAttrInfo.StrValue = "";
-      int k = arrayOfInt[i];
-      localReqSetDiscussAttr.Attr.put(Integer.valueOf(k), localMemberAttrInfo);
-      i += 1;
-    }
-    paramUniPacket.put("ReqSetDiscussAttr", localReqSetDiscussAttr);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
-  }
-  
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqQuitDiscuss");
-    ReqQuitDiscuss localReqQuitDiscuss = new ReqQuitDiscuss();
-    localReqQuitDiscuss.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    paramUniPacket.put("ReqQuitDiscuss", localReqQuitDiscuss);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
-  }
-  
-  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqGetDiscussInfo");
-    ReqGetDiscussInfo localReqGetDiscussInfo = new ReqGetDiscussInfo();
-    Map localMap = (Map)paramToServiceMsg.getAttribute("inteRemarkUinMap");
-    localReqGetDiscussInfo.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    localReqGetDiscussInfo.InteRemarkTimeStamp = paramToServiceMsg.extraData.getLong("InteRemarkTimeStamp", 0L);
-    if (localMap != null) {
-      localReqGetDiscussInfo.UinList = localMap;
-    }
-    localReqGetDiscussInfo.InfoSeq = paramToServiceMsg.extraData.getLong("infoSeq", 0L);
-    localReqGetDiscussInfo.Signature = paramToServiceMsg.extraData.getString("signature");
-    if (QLog.isColorLevel())
-    {
-      paramToServiceMsg = new StringBuilder().append("createGetDiscussInfoBuffer reqUIn =").append(localReqGetDiscussInfo.DiscussUin).append(",inteRemarktime =").append(localReqGetDiscussInfo.InteRemarkTimeStamp).append(",uinList size ");
-      if (localReqGetDiscussInfo.UinList == null) {
-        break label213;
+      if (!this.jdField_a_of_type_Bbou.d()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "closeConnection : TCP not opened  mTCPstate =" + this.jdField_a_of_type_Bbou.b());
       }
     }
-    label213:
-    for (int i = localReqGetDiscussInfo.UinList.size();; i = -1)
-    {
-      QLog.d("DiscussionSender", 2, i + ", signature=" + localReqGetDiscussInfo.Signature);
-      paramUniPacket.put("ReqGetDiscussInfo", localReqGetDiscussInfo);
-      paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-      return true;
+    else {
+      return;
     }
+    this.jdField_a_of_type_Bbou.b(13);
+    this.jdField_a_of_type_Bbjw.b();
+    this.jdField_a_of_type_Bbjw = null;
   }
   
-  private boolean f(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a(long paramLong, bbjw parambbjw)
   {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqGetDiscussInteRemark");
-    ReqGetDiscussInteRemark localReqGetDiscussInteRemark = new ReqGetDiscussInteRemark();
-    localReqGetDiscussInteRemark.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    localReqGetDiscussInteRemark.UinList = ((ArrayList)paramToServiceMsg.getAttribute("inteRemarkUinList"));
     if (QLog.isColorLevel()) {
-      QLog.d("DiscussionSender", 2, "createGetDiscussInteRemarkBuffer reqUIn =" + localReqGetDiscussInteRemark.DiscussUin + " uinList size " + localReqGetDiscussInteRemark.UinList.size());
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "onDisConnect connId = " + paramLong + ",sendDataQueue size =" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + " mTCPstate =" + this.jdField_a_of_type_Bbou.b());
     }
-    paramUniPacket.put("ReqGetDiscussInteRemark", localReqGetDiscussInteRemark);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
-  }
-  
-  private boolean g(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqCreateDiscuss");
-    ReqCreateDiscuss localReqCreateDiscuss = new ReqCreateDiscuss();
-    localReqCreateDiscuss.Name = paramToServiceMsg.extraData.getString("name");
-    ArrayList localArrayList = new ArrayList();
-    long[] arrayOfLong1 = paramToServiceMsg.extraData.getLongArray("uin");
-    int[] arrayOfInt = paramToServiceMsg.extraData.getIntArray("type");
-    long[] arrayOfLong2 = paramToServiceMsg.extraData.getLongArray("refUin");
-    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("refStr");
-    int j = paramToServiceMsg.extraData.getInt("from");
-    int k = arrayOfLong1.length;
-    int i = 0;
-    while (i < k)
+    this.jdField_a_of_type_Bbou.b(10);
+    this.jdField_a_of_type_Bbjv = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Bbou.a())
     {
-      paramToServiceMsg = new AddDiscussMemberInfo();
-      paramToServiceMsg.Uin = arrayOfLong1[i];
-      paramToServiceMsg.Type = arrayOfInt[i];
-      paramToServiceMsg.RefUin = arrayOfLong2[i];
-      paramToServiceMsg.RefStr = arrayOfString[i];
-      localArrayList.add(paramToServiceMsg);
-      i += 1;
+      ((bbov)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0)).a(String.valueOf(paramLong), "TransInfo.ExitSession", null, 0, 0, false);
+      return;
     }
-    localReqCreateDiscuss.Members = localArrayList;
-    localReqCreateDiscuss.Refer = j;
-    paramUniPacket.put("ReqCreateDiscuss", localReqCreateDiscuss);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "onDisConnect : session not open need not sso exit");
   }
   
-  private boolean h(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a(bbjv parambbjv, long paramLong)
   {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqChangeDiscussName");
-    ReqChangeDiscussName localReqChangeDiscussName = new ReqChangeDiscussName();
-    localReqChangeDiscussName.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    localReqChangeDiscussName.NewName = paramToServiceMsg.extraData.getString("newName");
-    paramUniPacket.put("ReqChangeDiscussName", localReqChangeDiscussName);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
-  }
-  
-  private boolean i(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqAddDiscussMember");
-    ReqAddDiscussMember localReqAddDiscussMember = new ReqAddDiscussMember();
-    localReqAddDiscussMember.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
-    ArrayList localArrayList = new ArrayList();
-    long[] arrayOfLong1 = paramToServiceMsg.extraData.getLongArray("uin");
-    int[] arrayOfInt = paramToServiceMsg.extraData.getIntArray("type");
-    long[] arrayOfLong2 = paramToServiceMsg.extraData.getLongArray("refUin");
-    paramToServiceMsg = paramToServiceMsg.extraData.getStringArray("refStr");
-    int j = arrayOfLong1.length;
-    int i = 0;
-    while (i < j)
-    {
-      AddDiscussMemberInfo localAddDiscussMemberInfo = new AddDiscussMemberInfo();
-      localAddDiscussMemberInfo.Uin = arrayOfLong1[i];
-      localAddDiscussMemberInfo.Type = arrayOfInt[i];
-      localAddDiscussMemberInfo.RefUin = arrayOfLong2[i];
-      localAddDiscussMemberInfo.RefStr = paramToServiceMsg[i];
-      localArrayList.add(localAddDiscussMemberInfo);
-      i += 1;
+    if (parambbjv == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is null");
     }
-    localReqAddDiscussMember.Members = localArrayList;
-    paramUniPacket.put("ReqAddDiscussMember", localReqAddDiscussMember);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
-  }
-  
-  private boolean j(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("QQServiceDiscussSvc");
-    paramUniPacket.setFuncName("ReqJoinDiscuss");
-    ReqJoinDiscuss localReqJoinDiscuss = new ReqJoinDiscuss();
-    localReqJoinDiscuss.Signature = paramToServiceMsg.extraData.getString("signature");
-    localReqJoinDiscuss.From = paramToServiceMsg.extraData.getInt("addDisSource");
-    paramUniPacket.put("ReqJoinDiscuss", localReqJoinDiscuss);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-    return true;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionSender", 2, "~~~create wup buffer cmd: " + str);
-    }
-    if ("QQServiceDiscussSvc.ReqAddDiscussMember".equalsIgnoreCase(str)) {
-      return i(paramToServiceMsg, paramUniPacket);
-    }
-    if ("QQServiceDiscussSvc.ReqChangeDiscussName".equalsIgnoreCase(str)) {
-      return h(paramToServiceMsg, paramUniPacket);
-    }
-    if ("QQServiceDiscussSvc.ReqCreateDiscuss".equalsIgnoreCase(str)) {
-      return g(paramToServiceMsg, paramUniPacket);
-    }
-    if ("OidbSvc.0x58a".equalsIgnoreCase(str)) {}
     do
     {
-      return false;
-      if ("QQServiceDiscussSvc.ReqGetDiscussInfo".equalsIgnoreCase(str)) {
-        return e(paramToServiceMsg, paramUniPacket);
+      return;
+      if ((TextUtils.isEmpty(parambbjv.jdField_a_of_type_JavaLangString)) || (parambbjv.jdField_a_of_type_Int == 0))
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : endPoint is illegal");
+        return;
       }
-      if ("QQServiceDiscussSvc.ReqQuitDiscuss".equalsIgnoreCase(str)) {
-        return d(paramToServiceMsg, paramUniPacket);
+      if (!this.jdField_a_of_type_Bbou.a())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : Session not Open");
+        return;
       }
-      if ("QQServiceDiscussSvc.ReqSetDiscussAttr".equalsIgnoreCase(str)) {
-        return c(paramToServiceMsg, paramUniPacket);
+      if (!this.jdField_a_of_type_Bbou.f())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "openNewConnection : TCP not Close mTCPstate =" + this.jdField_a_of_type_Bbou.b());
+        return;
       }
-      if ("QQServiceDiscussSvc.ReqSetDiscussFlag".equalsIgnoreCase(str)) {
-        return b(paramToServiceMsg, paramUniPacket);
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "openNewConnection : host:" + parambbjv.jdField_a_of_type_JavaLangString + ",port=" + parambbjv.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bbjv = parambbjv;
+      if (this.jdField_a_of_type_Bbjw != null) {
+        this.jdField_a_of_type_Bbjw.b();
       }
-      if ("QQServiceDiscussSvc.ReqGetDiscussInteRemark".equalsIgnoreCase(str)) {
-        return f(paramToServiceMsg, paramUniPacket);
+      this.jdField_a_of_type_Bbjw = new LiteTcpConnection(this, paramLong, parambbjv, 3000, 10000);
+    } while (this.jdField_a_of_type_Bbjw == null);
+    this.jdField_a_of_type_Bbjw.a(this);
+    this.jdField_a_of_type_Bbjw.a();
+    this.jdField_a_of_type_Bbou.b(11);
+  }
+  
+  public void a(ArrayList<bbjv> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, bbjw parambbjw, bbjv parambbjv, int paramInt)
+  {
+    int j = 0;
+    parambbjw = (bbov)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
+    if (parambbjv == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect failed ep = null return");
+      b(paramLong);
+    }
+    for (;;)
+    {
+      return;
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.1(this, parambbjw, paramLong, parambbjv));
+        return;
       }
-    } while (!"QQServiceDiscussSvc.ReqJoinDiscuss".equalsIgnoreCase(str));
-    return j(paramToServiceMsg, paramUniPacket);
+      parambbjw = parambbjv.jdField_a_of_type_JavaLangString;
+      int i = parambbjv.jdField_a_of_type_Int;
+      if ((this.jdField_a_of_type_Bbjv == null) || (!parambbjw.equals(this.jdField_a_of_type_Bbjv.jdField_a_of_type_JavaLangString)) || (i != this.jdField_a_of_type_Bbjv.jdField_a_of_type_Int))
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect ip or port changed ");
+        b(paramLong);
+        return;
+      }
+      if (!this.jdField_a_of_type_Bbou.g())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect reConnect state legal lSessionID = " + paramLong);
+        }
+        b(paramLong);
+        return;
+      }
+      if (!this.jdField_a_of_type_Bbou.e())
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "onConnect : TCP not in Opening state = " + this.jdField_a_of_type_Bbou.b());
+        a(paramLong);
+        return;
+      }
+      if (this.jdField_a_of_type_Bbjv.c >= 1)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "reConnect > 1 return");
+        paramInt = 0;
+        for (;;)
+        {
+          i = j;
+          if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            parambbjw = (bbjv)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+            if ((parambbjw != this.jdField_a_of_type_Bbjv) && (parambbjw.c == 0))
+            {
+              this.jdField_a_of_type_Bbjv = parambbjw;
+              i = 1;
+            }
+          }
+          else
+          {
+            if (i == 0) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed change ip new ip = " + this.jdField_a_of_type_Bbjv.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Bbjv.jdField_a_of_type_Int);
+            }
+            a(this.jdField_a_of_type_Bbjv, paramLong);
+            return;
+          }
+          paramInt += 1;
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "onConnect  not ip notify  connect failed ");
+        b(paramLong);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed reconnect ip = " + this.jdField_a_of_type_Bbjv.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_Bbjv.jdField_a_of_type_Int);
+      }
+      if (paramInt == 3) {
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ConnManager.2(this, paramLong), 2000L);
+      }
+      while (this.jdField_a_of_type_Bbjv != null)
+      {
+        parambbjw = this.jdField_a_of_type_Bbjv;
+        parambbjw.c += 1;
+        return;
+        this.jdField_a_of_type_AndroidOsHandler.post(new ConnManager.3(this, paramLong));
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return NetworkUtil.isNetSupportHw(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
+  }
+  
+  public byte[] a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+      return (byte[])this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    }
+    return null;
   }
 }
 

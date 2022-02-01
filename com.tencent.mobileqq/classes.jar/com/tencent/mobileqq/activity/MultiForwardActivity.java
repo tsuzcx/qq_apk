@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afoc;
+import agfg;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +12,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public afoc a = new afoc();
+  public agfg a = new agfg();
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -62,7 +62,7 @@ public class MultiForwardActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MultiForwardActivity
  * JD-Core Version:    0.7.0.1
  */

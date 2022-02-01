@@ -1,40 +1,19 @@
-import android.view.View;
+import com.tencent.mobileqq.data.ContactMatch;
 
-class ajbh
-  extends atbh
+public class ajbh
+  extends ajbn
 {
-  ajbh(ajbf paramajbf) {}
+  public ContactMatch a;
   
-  public void a(View paramView)
+  public ajbh(ContactMatch paramContactMatch)
   {
-    if ((ajbf.a(this.a)) && (ajbf.a(this.a) != null))
-    {
-      if (paramView.getId() != 2131365855) {
-        break label43;
-      }
-      ajbf.a(this.a).a(1);
-    }
-    label43:
-    do
-    {
-      return;
-      if (paramView.getId() == 2131365860)
-      {
-        ajbf.a(this.a).a(3);
-        return;
-      }
-      if (paramView.getId() == 2131365857)
-      {
-        ajbf.a(this.a).a(2);
-        return;
-      }
-      if (paramView.getId() == 2131365854)
-      {
-        ajbf.a(this.a).a(4);
-        return;
-      }
-    } while (paramView.getId() != 2131365856);
-    ajbf.a(this.a).a(5);
+    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
+    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
   }
 }
 

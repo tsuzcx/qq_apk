@@ -1,22 +1,17 @@
-import Wallet.AcsMsg;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class aeud
-  implements aewm
+  implements View.OnCreateContextMenuListener
 {
-  public aeud(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aeud(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void a(AcsMsg paramAcsMsg)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("acsMsg", paramAcsMsg);
-    localMessage.obj = localBundle;
-    this.a.a.sendMessage(localMessage);
+    paramContextMenu.clear();
   }
 }
 

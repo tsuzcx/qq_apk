@@ -1,19 +1,12 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
 
-public class afos
-  implements View.OnClickListener
+public abstract class afos
+  extends afrk
 {
-  public afos(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onClick(View paramView)
-  {
-    AIOLongShotHelper.c(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DEC");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public View a;
+  public TextView a;
 }
 
 

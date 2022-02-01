@@ -1,28 +1,24 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime.Status;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "", "state", "", "privacySelectDes", "", "(ILjava/lang/String;)V", "getPrivacySelectDes", "()Ljava/lang/String;", "setPrivacySelectDes", "(Ljava/lang/String;)V", "getState", "()I", "setState", "(I)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayzt
+class ayzt
+  extends azgm
 {
-  private int jdField_a_of_type_Int;
-  @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  ayzt(ayzg paramayzg) {}
   
-  public ayzt(int paramInt, @NotNull String paramString)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    super.a(paramBoolean, paramBundle);
+    paramBundle = ayzg.a(this.a).getOnlineStatus();
+    long l = azbj.a().a(ayzg.a(this.a));
+    if ((paramBoolean) && (paramBundle == AppRuntime.Status.online) && (l == 1030L))
+    {
+      if (ayzg.a(this.a) != null) {
+        ayzg.a(this.a).a(paramBundle);
+      }
+      this.a.c();
+    }
   }
 }
 

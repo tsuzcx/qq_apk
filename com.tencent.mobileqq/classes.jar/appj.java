@@ -1,98 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.content.Context;
+import android.opengl.GLES20;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class appj
-  extends aptq<appk>
 {
-  private static boolean a;
-  
-  public static boolean a()
+  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
   {
-    appk localappk = (appk)apub.a().a(576);
-    if ((localappk != null) && (!TextUtils.isEmpty(localappk.a))) {
-      a = "1".equals(localappk.a);
-    }
-    return a;
-  }
-  
-  @NonNull
-  public appk a(int paramInt)
-  {
-    return new appk();
-  }
-  
-  public appk a(String paramString)
-  {
-    try
+    int i = 0;
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString2);
+    GLES20.glCompileShader(paramInt);
+    paramContext = new int[1];
+    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
+    if (paramContext[0] == 0)
     {
-      paramString = new JSONObject(paramString).optString("IsDanmuEnable");
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "parse conf, IsDanmuEnable:" + paramString);
+      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
+      GLES20.glDeleteShader(paramInt);
+      paramInt = i;
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {}
+      return paramInt;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
       }
-      paramString = new appk(paramString.trim());
-      return paramString;
+      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  @Nullable
-  public appk a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      appk localappk = a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DanmuConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localappk;
-    }
-    return new appk();
-  }
-  
-  public void a(appk paramappk)
-  {
-    if ((paramappk != null) && (!TextUtils.isEmpty(paramappk.a)))
-    {
-      a = "1".equals(paramappk.a);
-      if (QLog.isColorLevel()) {
-        QLog.e("DanmuConfProcessor", 2, "onUpdate, isDanmuEnable:" + a);
-      }
-    }
-  }
-  
-  public Class<appk> clazz()
-  {
-    return appk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 576;
   }
 }
 

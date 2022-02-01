@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import biby;
-import bicx;
+import bjna;
+import bjnz;
 
 public class MyAppApi$QQDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$2(bicx parambicx) {}
+  public MyAppApi$QQDownloadListener$2(bjnz parambjnz) {}
   
   public void run()
   {
-    biby.a().d();
+    bjna.a().d();
   }
 }
 

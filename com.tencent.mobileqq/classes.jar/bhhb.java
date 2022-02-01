@@ -1,6 +1,16 @@
-public abstract interface bhhb
+import com.tencent.mobileqq.utils.RandomAccessFileManager;
+import java.io.RandomAccessFile;
+
+public class bhhb
 {
-  public abstract void a(int paramInt, String paramString);
+  public volatile int a;
+  public long a;
+  public bhhb a;
+  public RandomAccessFile a;
+  public long b;
+  public bhhb b;
+  
+  public bhhb(RandomAccessFileManager paramRandomAccessFileManager) {}
 }
 
 

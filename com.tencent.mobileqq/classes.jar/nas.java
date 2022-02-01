@@ -1,35 +1,25 @@
-import androidx.annotation.NonNull;
-import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter;
+import com.tencent.av.wtogether.view.QGroupListContentView;
+import com.tencent.qphone.base.util.QLog;
 
 public class nas
-  extends nap
+  extends anqj
 {
-  protected nap a()
-  {
-    return new nas();
-  }
+  public nas(QGroupListContentView paramQGroupListContentView) {}
   
-  public void a(nap paramnap)
+  protected void a(int paramInt)
   {
-    super.a(paramnap);
-  }
-  
-  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
-  {
-    super.a(paramCommonQuestionInfo);
-  }
-  
-  public int b()
-  {
-    return 4;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    return localStringBuilder.toString();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QGroupListContentView", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.a();
   }
 }
 

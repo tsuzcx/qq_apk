@@ -1,63 +1,34 @@
-import android.graphics.Bitmap;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import java.util.UUID;
 
-public class bfok
-  extends WebViewClient
+public abstract interface bfok
 {
-  private bfok(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  public abstract int a();
   
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-  }
+  public abstract long a();
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
-    }
-    if (this.a.a(paramString)) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    }
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
-      return;
-    }
-    catch (Exception paramWebView) {}
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    return;
-  }
+  public abstract String a();
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(true);
-  }
+  public abstract UUID a();
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
-    }
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    for (;;)
-    {
-      return true;
-      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-        this.a.a(paramString);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
 }
 
 

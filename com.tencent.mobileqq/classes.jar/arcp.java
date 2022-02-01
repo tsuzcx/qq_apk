@@ -1,65 +1,87 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class arcp
-  extends bgok
+  extends aqwt<arco>
 {
-  public arcp(MessengerService paramMessengerService) {}
-  
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public static boolean a()
   {
-    if (this.a.a != null) {}
-    try
+    arco localarco = (arco)aqxe.a().a(613);
+    if (localarco != null) {}
+    for (boolean bool = localarco.a();; bool = false)
     {
-      Message localMessage = Message.obtain(null, 5);
-      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
-      {
-        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
-        paramBundle.putString("name", localChatBackgroundInfo.name);
-        paramBundle.putString("url", localChatBackgroundInfo.url);
-      }
-      paramBundle.putInt("type", 2);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
+      return bool;
     }
   }
   
-  public void a(Bundle paramBundle)
+  @NonNull
+  public arco a(int paramInt)
   {
-    Message localMessage;
-    if (this.a.a != null)
+    return new arco();
+  }
+  
+  @Nullable
+  public arco a(aqxa[] paramArrayOfaqxa)
+  {
+    int i = 0;
+    if (paramArrayOfaqxa == null) {}
+    for (;;)
     {
-      localMessage = Message.obtain(null, 5);
-      localMessage.setData(paramBundle);
+      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+        break;
+      }
+      new arco();
+      return arco.a(paramArrayOfaqxa);
+      i = paramArrayOfaqxa.length;
     }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
+    return null;
+  }
+  
+  public void a(arco paramarco)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramarco.toString());
     }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
+  }
+  
+  public Class<arco> clazz()
+  {
+    return arco.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 613;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class apmb
-  implements aplr
+class apmb
+  implements apmv
 {
-  private Bundle a;
+  apmb(aply paramaply, apmc paramapmc, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public apmb() {}
-  
-  public apmb(Bundle paramBundle)
+  public void a()
   {
-    this.a = paramBundle;
+    if (this.jdField_a_of_type_Apmc != null) {
+      this.jdField_a_of_type_Apmc.f();
+    }
   }
   
-  public void launch(Context paramContext, ColorNote paramColorNote)
+  public void a(int paramInt)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
-    localIntent.putExtra("url", paramColorNote.getSubType());
-    if (paramColorNote.getReserve() != null) {}
-    try
-    {
-      localIntent.putExtra("key_scroll_y", new JSONObject(new String(paramColorNote.getReserve())).getInt("key_scroll_y"));
-      localIntent.putExtra("subType", paramColorNote.mSubType);
-      localIntent.addFlags(268435456);
-      if (this.a != null) {
-        localIntent.putExtra("isFromFavourite", this.a.getBoolean("isFromFavourite", false));
-      }
-      paramContext.startActivity(localIntent);
-      swy.c(paramColorNote);
-      return;
+    if (this.jdField_a_of_type_Apmc != null) {
+      this.jdField_a_of_type_Apmc.c(paramInt);
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("WebLauncher", 1, localJSONException, new Object[0]);
-      }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apmc != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apmc != null) {
+      this.jdField_a_of_type_Apmc.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }

@@ -1,17 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class xuu
-  implements xrp
+class xuu
+  implements xux
 {
-  xuu(xuh paramxuh) {}
+  xuu(xut paramxut, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void a()
   {
-    xvv.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
+    ykq.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    xut.a(this.jdField_a_of_type_Xut, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    ykq.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    xut.a(this.jdField_a_of_type_Xut).finish();
+    xut.a(this.jdField_a_of_type_Xut).overridePendingTransition(0, 0);
   }
 }
 

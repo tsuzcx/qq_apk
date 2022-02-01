@@ -1,17 +1,41 @@
-public class bgdd
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+
+public abstract interface bgdd
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public abstract void a();
   
-  public bgdd(int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
+  
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, List<akjf> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d();
+  
+  public abstract void d(String paramString);
 }
 
 

@@ -10,17 +10,18 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import avre;
-import bboh;
-import bbox;
-import bfpx;
-import bgbw;
-import bjmf;
+import awxj;
+import bcvb;
+import bcvr;
+import bgyo;
+import bhkn;
+import bkxs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -166,7 +167,7 @@ public class MsgNotification
   private String getTitle(String paramString, int paramInt)
   {
     if (!TextUtils.isEmpty(paramString)) {}
-    for (String str = paramString; paramInt == 0; str = BaseApplication.getContext().getString(2131718768)) {
+    for (String str = paramString; paramInt == 0; str = BaseApplication.getContext().getString(2131719158)) {
       return str;
     }
     int i = getUnreadCount(paramInt);
@@ -174,25 +175,25 @@ public class MsgNotification
       return str;
     }
     if (paramInt == 3000532) {
-      paramString = BaseApplication.getContext().getString(2131719386);
+      paramString = BaseApplication.getContext().getString(2131719814);
     }
     for (;;)
     {
-      return str + "(" + BaseApplication.getContext().getString(2131693029) + i + BaseApplication.getContext().getString(2131718614) + paramString + ")";
+      return str + "(" + BaseApplication.getContext().getString(2131693165) + i + BaseApplication.getContext().getString(2131719003) + paramString + ")";
       if (paramInt == 3000533)
       {
-        paramString = BaseApplication.getContext().getString(2131719387);
+        paramString = BaseApplication.getContext().getString(2131719815);
       }
       else if (paramInt == 3000534)
       {
-        paramString = BaseApplication.getContext().getString(2131719388);
+        paramString = BaseApplication.getContext().getString(2131719816);
       }
       else
       {
         if (paramInt != 3000535) {
           break;
         }
-        paramString = BaseApplication.getContext().getString(2131719389);
+        paramString = BaseApplication.getContext().getString(2131719817);
       }
     }
     return str;
@@ -412,7 +413,7 @@ public class MsgNotification
     //   192: iconst_0
     //   193: invokestatic 448	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   196: astore 7
-    //   198: getstatic 453	bgbw:e	Z
+    //   198: getstatic 453	bhkn:e	Z
     //   201: ifne +175 -> 376
     //   204: invokestatic 458	cooperation/qzone/push/QZoneNotificationAdapter:getInstance	()Lcooperation/qzone/push/QZoneNotificationAdapter;
     //   207: aload 9
@@ -426,7 +427,7 @@ public class MsgNotification
     //   221: aload_1
     //   222: iconst_0
     //   223: aload_2
-    //   224: invokestatic 469	bjmf:a	(Landroid/content/Context;ILandroid/app/Notification;)V
+    //   224: invokestatic 469	bkxs:a	(Landroid/content/Context;ILandroid/app/Notification;)V
     //   227: invokestatic 32	com/tencent/commonsdk/util/notification/QQNotificationManager:getInstance	()Lcom/tencent/commonsdk/util/notification/QQNotificationManager;
     //   230: astore_1
     //   231: aload_1
@@ -566,7 +567,7 @@ public class MsgNotification
     } while (FriendsStatusUtil.a(paramQQAppInterface.getApp()));
     playSound(paramInt1, paramQQAppInterface);
     paramInt1 = 1;
-    Object localObject3 = (bbox)paramQQAppInterface.getManager(10);
+    Object localObject3 = (bcvr)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
     Object localObject1;
     switch (paramInt2)
     {
@@ -593,20 +594,20 @@ public class MsgNotification
       if (paramInt2 == 366)
       {
         paramString1 = getTitle(paramString1, i);
-        paramInt3 = 2130847436;
+        paramInt3 = 2130847527;
         localObject1 = null;
         localObject3 = null;
         if (paramInt2 != 8) {
           break label1082;
         }
-        localObject5 = avre.a(paramQQAppInterface);
+        localObject5 = awxj.a(paramQQAppInterface);
         localObject1 = localObject3;
-        if (((avre)localObject5).a(paramString3, paramString4)) {
-          localObject1 = ((avre)localObject5).a(paramString3, paramString4, null);
+        if (((awxj)localObject5).a(paramString3, paramString4)) {
+          localObject1 = ((awxj)localObject5).a(paramString3, paramString4, null);
         }
         paramString3 = (String)localObject1;
         label296:
-        if (bgbw.e) {
+        if (bhkn.e) {
           break label1390;
         }
         paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForMz((PendingIntent)localObject4, paramQQAppInterface.getApp(), paramString3, paramString1, paramString2, paramInt3);
@@ -628,7 +629,7 @@ public class MsgNotification
                 paramString2.putExtra("pushtype", paramInt2);
                 paramString1.deleteIntent = PendingIntent.getBroadcast(paramQQAppInterface.getApp(), i, paramString2, 134217728);
               }
-              bjmf.a(paramQQAppInterface.getApp(), 0, paramString1);
+              bkxs.a(paramQQAppInterface.getApp(), 0, paramString1);
               if (localStatus != AppRuntime.Status.dnd) {
                 break label1448;
               }
@@ -651,8 +652,8 @@ public class MsgNotification
               if (localObject3 == null) {
                 break label1560;
               }
-              paramInt1 = ((bbox)localObject3).a(1);
-              ((bbox)localObject3).a(1, paramInt1);
+              paramInt1 = ((bcvr)localObject3).a(1);
+              ((bcvr)localObject3).a(1, paramInt1);
               if (paramInt1 > 0) {
                 break label1557;
               }
@@ -689,15 +690,15 @@ public class MsgNotification
                       localObject1 = localObject3;
                       localObject5 = new QzNotificationStruct(((Uri)localObject4).getQueryParameter("room"), paramString2, paramBoolean1, paramInt2, paramString5, paramString6);
                       localObject1 = localObject3;
-                      if (bboh.a == null)
+                      if (bcvb.a == null)
                       {
                         localObject1 = localObject3;
-                        bboh.a = Collections.synchronizedList(new ArrayList());
+                        bcvb.a = Collections.synchronizedList(new ArrayList());
                       }
                       if (paramBoolean2)
                       {
                         localObject1 = localObject3;
-                        bboh.a.add(localObject5);
+                        bcvb.a.add(localObject5);
                       }
                       try
                       {
@@ -768,30 +769,30 @@ public class MsgNotification
           {
             if ((paramInt2 == 2) || (paramInt2 == 8) || (paramInt2 == 4))
             {
-              paramString1 = BaseApplication.getContext().getString(2131717799);
+              paramString1 = BaseApplication.getContext().getString(2131718181);
               break label240;
             }
-            paramString1 = BaseApplication.getContext().getString(2131717799) + "(" + BaseApplication.getContext().getString(2131693029) + paramInt1 + BaseApplication.getContext().getString(2131718614) + BaseApplication.getContext().getString(2131719385) + ")";
+            paramString1 = BaseApplication.getContext().getString(2131718181) + "(" + BaseApplication.getContext().getString(2131693165) + paramInt1 + BaseApplication.getContext().getString(2131719003) + BaseApplication.getContext().getString(2131719813) + ")";
             break label240;
           }
-          paramString1 = BaseApplication.getContext().getString(2131717799);
+          paramString1 = BaseApplication.getContext().getString(2131718181);
           break label240;
           label1082:
           if (paramInt2 == 366)
           {
-            paramInt3 = 2130841439;
-            localBitmap = bfpx.a(paramQQAppInterface.getApp().getResources(), 2130843981);
-            localObject5 = avre.a(paramQQAppInterface);
+            paramInt3 = 2130841445;
+            localBitmap = bgyo.a(paramQQAppInterface.getApp().getResources(), 2130844021);
+            localObject5 = awxj.a(paramQQAppInterface);
             localObject1 = localBitmap;
-            if (((avre)localObject5).a(paramString3, paramString4)) {
-              localObject1 = ((avre)localObject5).a(paramString3, paramString4, localBitmap);
+            if (((awxj)localObject5).a(paramString3, paramString4)) {
+              localObject1 = ((awxj)localObject5).a(paramString3, paramString4, localBitmap);
             }
             paramString3 = (String)localObject1;
             break label296;
           }
           try
           {
-            paramString3 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848419);
+            paramString3 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848511);
             paramString4 = paramString3;
             if (paramString3 != null) {
               paramString4 = paramString3;
@@ -829,7 +830,7 @@ public class MsgNotification
             {
               try
               {
-                paramString4 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848316);
+                paramString4 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848407);
                 paramString3 = paramString4;
                 QLog.e("MsgNotification", 1, "use small icon ,exp:", localThrowable);
                 paramString3 = paramString4;

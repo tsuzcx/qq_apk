@@ -1,22 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adwu
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public adwu(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adwu(EditInfoActivity paramEditInfoActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.c();
-    }
+    this.a.m();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 class aclh
-  implements View.OnClickListener
+  implements acli
 {
-  aclh(aclf paramaclf) {}
+  aclh(acld paramacld, CustomWebView paramCustomWebView, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    this.a.a.d();
-    aclf.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramString == null) || (!paramString.equals("true")))
+    {
+      acho.a("GdtLandingPageReport", " should supply performance inject. resp: " + paramString);
+      acld.a(this.jdField_a_of_type_Acld, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

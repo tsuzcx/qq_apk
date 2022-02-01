@@ -1,38 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.1;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.15.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import androidx.annotation.NonNull;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class zla
-  implements zmc
+  extends ClickableSpan
 {
-  public zla(VideoPlayerView paramVideoPlayerView) {}
+  public zla(QRDisplayActivity paramQRDisplayActivity, TroopInfo paramTroopInfo) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(@NonNull View paramView)
   {
-    VideoPlayerView.d(this.a, paramBoolean);
-    if (VideoPlayerView.d(this.a)) {
-      this.a.a().post(new VideoPlayerView.15.1(this));
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (VideoPlayerView.b(this.a))
-        {
-          this.a.a().post(new VideoPlayerView.15.2(this));
-          return;
-        }
-      } while (!VideoPlayerView.e(this.a));
-      if (this.a.a() != null) {
-        this.a.a().setLoopback(true);
-      }
-      this.a.h();
-    } while (VideoPlayerView.a(this.a) == null);
-    VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, 5, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopLat, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopLon, 0, "");
+    paramView.putString("leftViewText", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131719629));
+    paramView.putInt("PARAM_EXIT_ANIMATION", 1);
+    paramView.putBoolean(TroopInfoActivity.c, true);
+    TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, paramView);
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.overridePendingTransition(2130771979, 2130771980);
+    bhbu.a("Grp_QR", "search_upgrade", "search_upgrade_click", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin });
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-11692801);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

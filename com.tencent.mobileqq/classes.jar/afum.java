@@ -1,18 +1,29 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afum
-  extends aexg
+public class afum
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  private static ArraySet<Long> a = new ArraySet();
   
-  afum(afuk paramafuk) {}
+  public static void a()
+  {
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
+    {
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
+  }
 }
 
 

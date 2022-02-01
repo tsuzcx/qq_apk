@@ -1,19 +1,18 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
 
-public class zmw
-  implements View.OnClickListener
+public final class zmw
+  implements Parcelable.Creator<ScannerParams>
 {
-  public zmw(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
-  
-  public void onClick(View paramView)
+  public ScannerParams a(Parcel paramParcel)
   {
-    zbh.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ScannerParams(paramParcel);
+  }
+  
+  public ScannerParams[] a(int paramInt)
+  {
+    return new ScannerParams[paramInt];
   }
 }
 

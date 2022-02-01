@@ -1,14 +1,26 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
 
 public class aixv
-  implements ajbk
+  implements blfe
 {
-  public aixv(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
+  public aixv(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    this.a.a.a(paramMotionEvent);
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(false);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(true);
+    }
   }
 }
 

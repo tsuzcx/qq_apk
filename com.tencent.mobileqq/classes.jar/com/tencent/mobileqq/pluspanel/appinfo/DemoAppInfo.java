@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ayfu;
+import ahvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class DemoAppInfo
@@ -11,7 +12,7 @@ public class DemoAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130845344;
+    return 2130845429;
   }
   
   public int getAppID()
@@ -24,10 +25,10 @@ public class DemoAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698291);
+    return BaseApplicationImpl.getContext().getString(2131698583);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo) {}
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo) {}
 }
 
 

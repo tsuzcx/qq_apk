@@ -1,44 +1,71 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportConstants.VideoEndType;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import org.json.JSONObject;
 
-class uld
-  implements uqy
+public class uld
 {
-  uld(ulc paramulc, WSRedDotPushMsg paramWSRedDotPushMsg) {}
-  
-  public void a(urj paramurj)
+  public static void a(skq paramskq, Context paramContext, spn paramspn)
   {
-    ulc.a(this.jdField_a_of_type_Ulc, false);
-    if (paramurj == null) {
-      uya.d("WSRedDotPreloadManager", "WSRedDot preloadTask is null.");
-    }
-    do
+    label54:
+    int i;
+    label123:
+    int j;
+    if (paramspn.e() == 0L)
     {
-      return;
-      uya.b("WSRedDotPreloadManager", "onTaskResponse-resultCode:" + paramurj.b + " | resultBean:" + paramurj.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
-      if (!paramurj.a())
-      {
-        uya.d("WSRedDotPreloadManager", "WSRedDot preload request error. resultCode=" + paramurj.b);
-        return;
+      paramskq.jdField_a_of_type_Rpz.d = paramskq.jdField_a_of_type_Rpz.e;
+      paramskq.jdField_a_of_type_Rpz.e = ((int)paramspn.b());
+      rpz localrpz = paramskq.jdField_a_of_type_Rpz;
+      if (paramskq.jdField_a_of_type_Rpz.d != 0) {
+        break label294;
       }
-    } while (!(paramurj.jdField_a_of_type_Urg instanceof uwt));
-    Object localObject = (uwt)paramurj.jdField_a_of_type_Urg;
-    uya.b("WSRedDotPreloadManager", "WSRedDot recommendRequest.mRequestId=" + ((uwt)localObject).b + ", mCurrentUniSeq=" + ulc.a(this.jdField_a_of_type_Ulc));
-    if ((TextUtils.equals(((uwt)localObject).b, String.valueOf(ulc.a(this.jdField_a_of_type_Ulc)))) && ((paramurj.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp)) && (((stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject).feeds != null) && (((stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject).feeds.size() > 0))
-    {
-      localObject = (stSimpleGetFeedListRsp)paramurj.jdField_a_of_type_JavaLangObject;
-      ArrayList localArrayList = ((stSimpleGetFeedListRsp)localObject).feeds;
-      if (paramurj.jdField_a_of_type_Uqz != null) {
-        uvo.a().a(((stSimpleGetFeedListRsp)localObject).trace_id, paramurj.jdField_a_of_type_Uqz.a);
+      bool = true;
+      localrpz.b = bool;
+      paramskq.jdField_a_of_type_Rpz.c = true;
+      paramskq.jdField_a_of_type_Rpz.h = ((int)paramspn.b());
+      localrpz = paramskq.jdField_a_of_type_Rpz;
+      AdvertisementInfo localAdvertisementInfo = ois.a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+      int k = localrpz.d;
+      int m = localrpz.e;
+      if (!localrpz.b) {
+        break label300;
       }
-      long l = ulc.a(this.jdField_a_of_type_Ulc, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg);
-      ulf.a().a(localArrayList, l);
-      ulc.b(this.jdField_a_of_type_Ulc, false);
-      return;
+      i = 1;
+      if (!localrpz.c) {
+        break label305;
+      }
+      j = 1;
+      label134:
+      JSONObject localJSONObject = ois.a(k, m, i, j, localrpz.f, 1, localrpz.h, 2, 0, localrpz.i, ReportConstants.VideoEndType.NORMAL_COMPLETE, true);
+      ois.a(new ufy().a(paramContext).a(6).b(localrpz.g).a(localAdvertisementInfo).a(paramskq.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(localJSONObject).a());
+      paramspn.m();
+      paramskq.jdField_a_of_type_Rpz.d = 0;
+      paramskq.jdField_a_of_type_Rpz.e = 0;
+      paramContext = paramskq.jdField_a_of_type_Rpz;
+      if (paramskq.jdField_a_of_type_Rpz.d != 0) {
+        break label311;
+      }
     }
-    uya.d("WSRedDotPreloadManager", "WSRedDot preloadList is empty. task.mResultBean=" + paramurj.jdField_a_of_type_JavaLangObject);
+    label294:
+    label300:
+    label305:
+    label311:
+    for (boolean bool = true;; bool = false)
+    {
+      paramContext.b = bool;
+      paramskq.jdField_a_of_type_Rpz.c = false;
+      paramskq.jdField_a_of_type_Rpz.h = 0;
+      return;
+      paramskq.jdField_a_of_type_Rpz.d = ((int)paramspn.e());
+      break;
+      bool = false;
+      break label54;
+      i = 0;
+      break label123;
+      j = 0;
+      break label134;
+    }
   }
 }
 

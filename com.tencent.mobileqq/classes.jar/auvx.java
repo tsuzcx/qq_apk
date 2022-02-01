@@ -1,37 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.transfile.AbsDownloader;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvx
-  extends bgod
+  implements View.OnClickListener
 {
-  public auvx(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
+  public auvx(DeleteFaceFragment paramDeleteFaceFragment) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onClick(View paramView)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    if (parambgoe.a == 0)
-    {
-      parambgoe = AbsDownloader.getFilePath(this.jdField_a_of_type_JavaLangString);
-      if (new File(parambgoe).exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambgoe, 0);
-        return;
-      }
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
     }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
+    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
+      DeleteFaceFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,40 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.submsgtype0x136.Submsgtype0x136.MsgBody;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
 public class acad
-  implements abzb
+  implements AdVideoSpliceAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  public AdError show(AdVideoSpliceAdapter.Params paramParams)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x136");
-    }
-    Submsgtype0x136.MsgBody localMsgBody = new Submsgtype0x136.MsgBody();
-    try
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      if (localMsgBody.uint32_msg_type.get() == 0) {
-        ((anca)paramQQAppInterface.getBusinessHandler(20)).a(String.valueOf(localMsgBody.uint64_group_id.get()), 1, 0, null, 0);
-      }
-      return;
+      acho.d("GdtVideoSpliceAdapter", "show error");
+      return new AdError(4);
     }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x136 " + paramQQAppInterface);
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    acho.b("GdtVideoSpliceAdapter", "show");
+    new TransitionContext(paramParams).b();
+    return new AdError(0);
   }
 }
 

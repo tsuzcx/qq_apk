@@ -1,74 +1,180 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import com.tencent.mobileqq.startup.step.SetSplash;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class anqt
-  extends anrh
+  extends anvw
 {
-  public anqt(QQAppInterface paramQQAppInterface, Context paramContext)
+  private String a;
+  
+  private void a(float paramFloat)
   {
-    super(paramQQAppInterface, paramContext);
+    float f;
+    if (MagnifierSDK.a().a().d > 0.0F)
+    {
+      f = MagnifierSDK.a().a().d;
+      if (MagnifierSDK.a().a().jdField_b_of_type_Long <= 0L) {
+        break label94;
+      }
+    }
+    label94:
+    for (long l = MagnifierSDK.a().a().jdField_b_of_type_Long;; l = 50L)
+    {
+      if ((MagnifierSDK.a().a().jdField_b_of_type_Boolean) && (paramFloat >= f) && (this.c >= l)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      f = 0.95F;
+      break;
+    }
   }
   
-  private boolean C()
+  private void a(aclx paramaclx)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomcode");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("isgroupcode");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("backtype");
-    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("open_type");
-    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extra");
-    auna localauna = (auna)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236);
-    try
+    if (!paramaclx.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName)) {}
+    do
     {
-      i = Integer.parseInt(str3);
-      QLog.i("GroupVideoAction", 1, "[goToGroupVideoPlugin], roomId:" + str1 + ",fromId:" + str2 + " isGroupCode:" + str3);
-      localauna.a(this.jdField_a_of_type_AndroidContentContext, str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), i, "download", str2, str4, str5, str6);
-      return true;
-    }
-    catch (Exception localException)
+      return;
+      paramaclx = paramaclx.b();
+    } while ((!PatchSharedPreUtil.getPatchVerifyStatus(BaseApplicationImpl.sApplication, paramaclx)) || (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null) || (acln.jdField_a_of_type_Int != 0) || (acln.jdField_a_of_type_JavaLangString.equals(paramaclx)));
+    QLog.d("PatchLogTag", 1, "GuardManager exit Main Process to install patch, target patchName=" + paramaclx + ", installed patchName=" + acln.jdField_a_of_type_JavaLangString + ", installStatus=" + acln.jdField_a_of_type_Int);
+    System.exit(-1);
+  }
+  
+  private void b(aclx paramaclx)
+  {
+    String str1 = BaseApplicationImpl.sApplication.getPackageName() + ":MSF";
+    if (!paramaclx.a(BaseApplicationImpl.sApplication, str1)) {}
+    String str2;
+    do
     {
-      for (;;)
+      do
       {
-        int i = 1;
-      }
+        return;
+        paramaclx = paramaclx.b();
+      } while ((!PatchSharedPreUtil.getPatchVerifyStatus(BaseApplicationImpl.sApplication, paramaclx)) || (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null));
+      str2 = PatchSharedPreUtil.getInstalledPatchName(BaseApplicationImpl.sApplication, str1);
+    } while ((!TextUtils.isEmpty(str2)) && (str2.equals(paramaclx)));
+    PatchSharedPreUtil.saveInstalledPatchName(BaseApplicationImpl.sApplication, str1, paramaclx);
+    QLog.d("PatchLogTag", 1, "GuardManager exit MSF Process to install patch, target patchName=" + paramaclx + ", installed patchName=" + acln.jdField_a_of_type_JavaLangString + ", installStatus=" + acln.jdField_a_of_type_Int);
+    MsfServiceSdk.get().onKillProcess();
+  }
+  
+  private void c()
+  {
+    aclx localaclx = acly.a(BaseApplicationImpl.sApplication, "dex");
+    if (localaclx != null)
+    {
+      b(localaclx);
+      a(localaclx);
     }
   }
   
-  private boolean D()
+  private void d()
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    localObject = (auna)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236);
-    QLog.i("GroupVideoAction", 1, "[goToPreLoadGroupVideoPlugin]");
-    ((auna)localObject).a(null, 10L);
-    return true;
+    if ((this.d == GuardManager.e) || (this.d == GuardManager.e + 1))
+    {
+      if (!"com.tencent.mobileqq:qzone".equals(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(false, "com.tencent.mobileqq:qzone");
+      }
+      GuardManager.a(false);
+    }
   }
   
-  public boolean a()
+  private void e()
   {
-    try
+    if (((this.d == GuardManager.d) || (this.d == GuardManager.d + 1)) && (!"com.tencent.mobileqq:tool".equals(this.jdField_a_of_type_JavaLangString))) {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(false, "com.tencent.mobileqq:tool");
+    }
+  }
+  
+  private void f()
+  {
+    if ((this.d == 1L) && (SetSplash.a()) && (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null))
     {
-      if ("openroom".equals(this.c)) {
-        return C();
+      if (QLog.isColorLevel()) {
+        QLog.d("setsplash", 2, "needshowsplashtoday , kill myself");
       }
-      if ("preload".equals(this.c))
+      bdla.a(null, "CliOper", "", "", "0X800483B", "0X800483B", 0, 0, "", "", "", "");
+      System.exit(-1);
+    }
+  }
+  
+  protected void a()
+  {
+    this.c += 1L;
+    this.d += 1L;
+    f();
+    a(MemoryManager.getInstance().getHeapLevel());
+    int i = anvu.a().a(MemoryManager.getMemory(Process.myPid()));
+    int j = anvu.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b);
+    long l = anvu.a().b[(i + j)] / 12000;
+    if (this.c >= l) {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
+    }
+    while ((this.d == 50L) || (this.d == 51L))
+    {
+      GuardManager.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[0]);
+      c();
+      return;
+      if (this.d == 1L)
       {
-        boolean bool = D();
-        return bool;
+        MemoryManager.getInstance().reportMemoryLevel(1L);
+        MemoryManager.getInstance().reportMemory("BG_GUARD");
+      }
+      else if ((this.d == 3L) || (this.d == 4L))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[] { "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", "com.tencent.mobileqq:tool", this.jdField_a_of_type_JavaLangString });
       }
     }
-    catch (Exception localException)
-    {
-      QLog.e("GroupVideoAction", 1, "doAction error: " + localException.getMessage());
-      a("GroupVideoAction");
+    d();
+    e();
+  }
+  
+  protected void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      apzg.a();
     }
-    return false;
+  }
+  
+  protected void b()
+  {
+    if (this.c > 2L) {
+      this.c -= 2L;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ("fake_p_msg".equals(paramString)) {
+      this.c = (anvu.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b, MemoryManager.getMemory(Process.myPid())) / 12000L - 2L);
+    }
+    CoreService.startCoreService(anvu.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
+    aqfv.a();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(1, 0L, 0L);
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      apzg.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anqt
  * JD-Core Version:    0.7.0.1
  */

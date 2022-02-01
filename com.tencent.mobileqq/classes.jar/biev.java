@@ -1,76 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.concurrent.ConcurrentHashMap;
-
-class biev
-  extends Handler
+public class biev
 {
-  public biev(bies parambies, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public String a;
+  public String[] a;
+  public int b;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public biev(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
   {
-    String str1 = null;
-    bhzm.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
-    String str2;
-    bieu localbieu;
-    switch (paramMessage.what)
-    {
-    default: 
-      str2 = (String)paramMessage.obj;
-      if (str2 != null)
-      {
-        localbieu = (bieu)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
-        if (localbieu == null) {
-          bhzm.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
-        }
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-        bias.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        bias.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        if (localbieu.jdField_b_of_type_Int != 1) {
-          str1 = localbieu.jdField_b_of_type_JavaLangString.substring(localbieu.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
-        }
-        for (;;)
-        {
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1: 
-            this.a.jdField_a_of_type_Bier.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-            return;
-            str1 = localbieu.jdField_b_of_type_JavaLangString;
-            continue;
-            bhzm.e("PCPushProxy", "handleMessage get key = null");
-            localbieu = null;
-          }
-        }
-      } while (localbieu == null);
-      if (localbieu.c.startsWith("ANDROIDQQ.PCPUSH.")) {
-        bias.a("100", localbieu.c, str1);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Bier.a(localbieu);
-        return;
-        bias.a("100", "ANDROIDQQ.PCPUSH." + localbieu.c, str1);
-      }
-      this.a.jdField_a_of_type_Bier.a(str2);
-      return;
-    } while (localbieu == null);
-    bias.a("500", localbieu.c, str1);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
   }
 }
 

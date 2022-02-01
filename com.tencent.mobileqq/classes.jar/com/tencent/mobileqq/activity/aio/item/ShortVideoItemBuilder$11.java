@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agnj;
-import agnu;
+import ahfz;
+import ahgk;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -9,16 +9,16 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 public class ShortVideoItemBuilder$11
   implements Runnable
 {
-  public ShortVideoItemBuilder$11(agnj paramagnj, MessageForShortVideo paramMessageForShortVideo) {}
+  public ShortVideoItemBuilder$11(ahfz paramahfz, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    agnu localagnu = agnj.a(this.this$0, this.a.uniseq);
-    if (localagnu != null)
+    ahgk localahgk = ahfz.a(this.this$0, this.a.uniseq);
+    if (localahgk != null)
     {
-      localagnu.a.setVisibility(8);
-      localagnu.d.setVisibility(8);
-      agnj.a(this.this$0, localagnu, 2131717739);
+      localahgk.a.setVisibility(8);
+      localahgk.d.setVisibility(8);
+      ahfz.a(this.this$0, localahgk, 2131718121);
     }
   }
 }

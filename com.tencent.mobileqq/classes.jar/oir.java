@@ -1,22 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
 class oir
-  implements ViewBase.OnClickListener
+  implements DialogInterface.OnShowListener
 {
-  oir(oip paramoip) {}
+  oir(oin paramoin) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (paramViewBase.getEventAttachedData() == null) {
-      return;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
-    paramViewBase.getNativeView().getContext().startActivity(localIntent);
+    oin.a(this.a).getWindow().clearFlags(8);
   }
 }
 

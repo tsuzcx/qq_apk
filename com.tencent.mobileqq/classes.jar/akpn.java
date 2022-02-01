@@ -1,66 +1,55 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class akpn
-  implements TextWatcher
+  extends akmu
 {
-  public akpn(LoginView paramLoginView) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  protected akpn(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    LoginView.c(this.a);
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void initData(Intent paramIntent)
   {
-    Object localObject;
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null)
-      {
-        localObject = (akqc)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
-        if ((localObject != null) && (((akqc)localObject).getCount() != 0)) {
-          break label139;
-        }
-        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
-        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
-        {
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        this.a.b.setVisibility(0);
-      }
+    int i = ((NewPhotoPreviewActivity)this.mActivity).getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
+    ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    ArrayList localArrayList2 = new ArrayList();
+    if (localArrayList1 != null) {
+      localArrayList2.addAll(localArrayList1);
+    }
+    super.initData(paramIntent);
+    this.a.paths.clear();
+    this.a.paths = localArrayList2;
+    this.a.totalPicCount = this.a.paths.size();
+    this.a.firstSelectedPostion = i;
+    if (this.a.firstSelectedPostion >= this.a.totalPicCount) {
+      this.a.firstSelectedPostion = -1;
+    }
+    this.mPhotoCommonData.selectedIndex.clear();
+    this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(this.a.firstSelectedPostion));
+    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    if (this.mPhotoCommonData.selectedPhotoList == null) {
+      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
     }
     for (;;)
     {
-      if (paramCharSequence.length() <= 4) {
-        break label237;
+      if ((paramIntent != null) && (!paramIntent.equals(""))) {
+        this.mPhotoCommonData.selectedPhotoList.add(paramIntent);
       }
-      this.a.b(paramCharSequence.toString());
+      QLog.d("PhotoPreviewLogicScanEntry", 1, new Object[] { "count=", Integer.valueOf(this.a.totalPicCount), " pos=", Integer.valueOf(this.a.firstSelectedPostion) });
       return;
-      label139:
-      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
-      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
-        break;
-      }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
+      this.mPhotoCommonData.selectedPhotoList.clear();
     }
-    label237:
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
   }
 }
 

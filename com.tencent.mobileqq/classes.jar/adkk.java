@@ -1,316 +1,196 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler.Callback;
-import android.os.Looper;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfilePhotoHelper.1;
-import com.tencent.mobileqq.activity.FriendProfilePhotoHelper.2;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
+import mqq.manager.WtloginManager;
 
 public class adkk
-  implements amoz
+  extends anvi
 {
-  public static final String a;
-  public int a;
-  public adkm a;
-  public amoy a;
-  public Uri a;
-  Handler.Callback a;
-  public bhht a;
-  public bjng a;
-  public final BaseActivity a;
-  public QQAppInterface a;
-  public Runnable a;
-  public boolean a;
-  public byte[] a;
-  public String b;
+  public adkk(AuthDevActivity paramAuthDevActivity) {}
   
-  static
+  protected void onDelAuthDevResult(boolean paramBoolean, String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = adkk.class.getSimpleName();
-  }
-  
-  public adkk(BaseActivity paramBaseActivity, adkm paramadkm)
-  {
-    this.jdField_a_of_type_JavaLangRunnable = new FriendProfilePhotoHelper.2(this);
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new adkl(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Adkm = paramadkm;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    paramBaseActivity = (amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2);
-    if (paramBaseActivity != null) {
-      this.jdField_a_of_type_Amoy = paramBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+    boolean bool = false;
+    QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onDelAuthDevResult.isSuccess=", Boolean.valueOf(paramBoolean), " errorMsg=", paramString, " index=", Integer.valueOf(paramInt) });
+    AuthDevActivity.c(this.a);
+    Object localObject;
+    if (AuthDevActivity.a(this.a)) {
+      localObject = AuthDevActivity.b(this.a);
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Amoy != null)
+    while (paramBoolean)
     {
-      ((amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2)).a(this.jdField_a_of_type_Amoy);
-      this.jdField_a_of_type_Amoy = null;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.b = "";
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, String.format("onSendFailed resultCode=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    this.jdField_a_of_type_Bjng.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    c();
-    int i = 2131719408;
-    if (paramInt == 1503) {
-      i = 2131698461;
-    }
-    this.jdField_a_of_type_Adkm.a(i, 1);
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      this.jdField_a_of_type_Adkm.a(2131694108, 1);
-    }
-    label21:
-    int i;
-    do
-    {
-      do
+      if ((paramInt > -1) && (paramInt < ((List)localObject).size()))
       {
-        do
+        paramString = (SvcDevLoginInfo)((List)localObject).get(paramInt);
+        if (Arrays.equals(NetConnInfoCenter.GUID, paramString.vecGuid))
         {
-          do
+          this.a.app.updateSubAccountLogin(this.a.app.getAccount(), false);
+          this.a.app.getApplication().refreAccountList();
+          bhai.a(this.a, this.a.app, true);
+          paramString = this.a.app.getManager(1);
+          paramBoolean = bool;
+          if (paramString == null) {
+            paramBoolean = true;
+          }
+          QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "clear login sig, manage is null : [", Boolean.valueOf(paramBoolean), "]" });
+          if (paramString != null)
           {
-            ArrayList localArrayList;
-            do
-            {
-              break label21;
-              break label21;
-              break label21;
-              do
-              {
-                return;
-              } while (paramIntent == null);
-              i = paramIntent.getIntExtra("req_code_key", 0);
-              if (i != 1025) {
-                break;
-              }
-              localArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-            } while ((localArrayList == null) || (localArrayList.size() <= 0));
-            amov localamov = (amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2);
-            if (paramIntent.getBooleanExtra("action_cover_pick_gallery", false))
-            {
-              localamov.a((String)localArrayList.get(0));
-              b();
-              this.jdField_a_of_type_Bjng.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-              return;
-            }
-            localamov.a(localArrayList);
-            b();
-            return;
-            if (i != 1020) {
-              break;
-            }
-          } while ((paramInt != -1) || (paramIntent == null));
-          paramIntent = paramIntent.getStringExtra("key_cover_selected_img_path");
-        } while (TextUtils.isEmpty(paramIntent));
-        a(paramIntent);
-        return;
-        if (i != 1021) {
-          break;
+            paramString = (WtloginManager)paramString;
+            localObject = this.a.app.getAccount();
+            paramString.clearUserFastLoginData((String)localObject, 16L);
+            paramString.clearUserFastLoginData((String)localObject, 1600001540L);
+            paramString.refreshMemorySig();
+          }
+          return;
+          localObject = AuthDevActivity.a(this.a);
+          continue;
         }
-      } while (paramInt != -1);
-      this.jdField_a_of_type_AndroidNetUri = ((Uri)paramIntent.getParcelableExtra("upload_uri_key"));
-      a(bfvo.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidNetUri));
-      return;
-    } while ((i != 2002) || (paramInt != -1));
-    paramIntent = aymh.a(paramIntent.getStringExtra("card_url_key"));
-    this.jdField_a_of_type_Adkm.a(paramIntent);
-  }
-  
-  public void a(Intent paramIntent, ArrayList<String> paramArrayList)
-  {
-    if (paramIntent.getBooleanExtra("action_cover_pick_gallery", false))
-    {
-      b(paramArrayList);
-      return;
-    }
-    a(paramArrayList);
-  }
-  
-  public void a(Card paramCard)
-  {
-    if (paramCard != null)
-    {
-      paramCard = paramCard.getCoverData(this.jdField_a_of_type_Int);
-      String str = (String)paramCard[0];
-      if ((!TextUtils.isEmpty(str)) && (!str.equals(this.b)))
-      {
-        this.b = str;
-        this.jdField_a_of_type_Int = ((Integer)paramCard[1]).intValue();
-      }
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("Business_Origin", 101);
-    localIntent.putExtra("action_cover_pick_gallery", true);
-    localIntent.putExtra("PhotoConst.32_Bit_Config", true);
-    PhotoUtils.startPhotoEdit(localIntent, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getClass().getName(), bfrj.c(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), bfrj.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), bfrj.c(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), bfrj.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), paramString, bfrj.c());
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_Adkm.a(2131694108, 1);
-      return;
-    }
-    ((amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2)).a(paramArrayList);
-    b();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("is_default_key", paramBoolean);
-    adxr.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localIntent, PublicFragmentActivity.class, CustomCoverFragment.class, 1024);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.excute(new FriendProfilePhotoHelper.1(this), 16, null, false);
-  }
-  
-  protected void b()
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())
-      {
-        this.jdField_a_of_type_Bhht = new bhht(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.jdField_a_of_type_Bhht.setCancelable(false);
-        this.jdField_a_of_type_Bhht.c(2131690729);
-        this.jdField_a_of_type_Bhht.show();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void b(ArrayList<String> paramArrayList)
-  {
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_Adkm.a(2131694108, 1);
-      return;
-    }
-    ((amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2)).a((String)paramArrayList.get(0));
-    b();
-    this.jdField_a_of_type_Bjng.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    int k = 0;
-    this.jdField_a_of_type_Bjng.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    c();
-    this.jdField_a_of_type_Adkm.a(2131719407, 2);
-    if (paramArrayOfByte != null)
-    {
-      Object localObject = ByteBuffer.wrap(paramArrayOfByte);
-      int j = ((ByteBuffer)localObject).get();
-      if (j != 0) {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "error retCode:" + j);
-        }
-      }
-      do
-      {
-        return;
-        byte[] arrayOfByte1 = new byte[4];
-        byte[] arrayOfByte2 = new byte[4];
-        j = 0;
-        while (j < 4)
+        if (paramInt < ((List)localObject).size())
         {
-          int i = ((ByteBuffer)localObject).get();
-          arrayOfByte1[j] = i;
-          arrayOfByte2[(3 - j)] = i;
-          j += 1;
+          ((List)localObject).remove(paramInt);
+          AuthDevActivity.a(this.a, (List)localObject);
         }
-        int m = (int)bezf.a(arrayOfByte1);
-        if (m <= paramArrayOfByte.length - 5)
-        {
-          j = m;
-          if (m >= 0) {}
-        }
-        else
-        {
-          j = (int)bezf.a(arrayOfByte2);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "len:" + j + " bLength:" + HexUtil.bytes2HexStr(arrayOfByte1) + " bFlipLength:" + HexUtil.bytes2HexStr(arrayOfByte2));
-        }
-        if ((j <= paramArrayOfByte.length - 5) && (j >= 0)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "长度超出! len:" + j + " extraInfo.length:" + paramArrayOfByte.length);
-      return;
-      localObject = new byte[j];
-      while (k < j)
-      {
-        localObject[k] = paramArrayOfByte[(k + 5)];
-        k += 1;
       }
-      this.jdField_a_of_type_Adkm.b((byte[])localObject);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691959), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send finish extraInfo is null");
+    if (TextUtils.isEmpty(paramString))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131691958), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    this.jdField_a_of_type_Adkm.b(null);
+    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
   }
   
-  public void c()
+  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {}
-    try
+    QLog.d("Q.devlock.AuthDevActivity", 1, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
+    AuthDevActivity.c(this.a);
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Bhht.dismiss();
-      this.jdField_a_of_type_Bhht = null;
+      bdla.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
+      if ((paramInt > -1) && (AuthDevActivity.a(this.a) != null) && (paramInt < AuthDevActivity.a(this.a).size()))
+      {
+        AuthDevActivity.a(this.a).remove(paramInt);
+        AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      }
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691959), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    catch (Exception localException)
+    if (TextUtils.isEmpty(paramString))
     {
-      for (;;)
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131694204), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void onGetAuthDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    AuthDevActivity.a(this.a).setVisibility(8);
+    if (!AuthDevActivity.a(this.a)) {
+      return;
+    }
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetAuthDevResult.success");
+      AuthDevActivity.b(this.a, paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo);
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
+        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = AuthDevActivity.b(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("Q.devlock.AuthDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
       }
+      AuthDevActivity.a(this.a, AuthDevActivity.b(this.a));
+      return;
+    }
+    QLog.d("Q.devlock.AuthDevActivity", 1, "onGetAuthDevResult.isSuccess=" + paramBoolean);
+    if (paramSvcRspGetDevLoginInfo == null) {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetAuthDevResult.data is null");
+    }
+    for (;;)
+    {
+      AuthDevActivity.a(this.a).setVisibility(4);
+      QQToast.a(this.a, 1, this.a.getString(2131691970), 0).b(this.a.getTitleBarHeight());
+      return;
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetAuthDevResult.data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
+  }
+  
+  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    AuthDevActivity.a(this.a).setVisibility(8);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetHistoryDevResult success");
+      AuthDevActivity.a(this.a).addAll(paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
+      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      return;
+    }
+    String str;
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      str = "";
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label176;
+      }
+    }
+    label176:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onGetHistoryDevResult fail isSuccess=", Boolean.valueOf(paramBoolean), " data==null ? ", Boolean.valueOf(bool), "errorResult : ", str });
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131691970), 0).b(this.a.getTitleBarHeight());
+      return;
+      str = String.valueOf(paramSvcRspGetDevLoginInfo.iResult);
+      break;
+    }
+  }
+  
+  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    AuthDevActivity.a(this.a).setVisibility(8);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, "onGetLoginDevResult success");
+      AuthDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
+      AuthDevActivity.a(this.a).addAll(0, AuthDevActivity.c(this.a));
+      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      return;
+    }
+    String str;
+    if (paramSvcRspGetDevLoginInfo == null)
+    {
+      str = "";
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label192;
+      }
+    }
+    label192:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "onGetLoginDevResult fail isSuccess=", Boolean.valueOf(paramBoolean), " data==null ? ", Boolean.valueOf(bool), "errorResult : ", str });
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131691970), 0).b(this.a.getTitleBarHeight());
+      return;
+      str = String.valueOf(paramSvcRspGetDevLoginInfo.iResult);
+      break;
     }
   }
 }

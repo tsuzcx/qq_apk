@@ -1,21 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class adku
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public adku(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public adku(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GeneralSettingActivity", 2, new Object[] { "mKidModeChatPINYINSwitch click, isChecked=", Boolean.valueOf(paramBoolean) });
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    GeneralSettingActivity.a(this.a).a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131719806);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

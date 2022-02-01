@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif;
 
-import blwd;
-import blwl;
+import bnln;
+import bnlv;
 import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
 
 public class AEGIFStickerListPart$7$1
   implements Runnable
 {
-  public AEGIFStickerListPart$7$1(blwl paramblwl, int paramInt) {}
+  public AEGIFStickerListPart$7$1(bnlv parambnlv, int paramInt) {}
   
   public void run()
   {
-    blwd.a(this.jdField_a_of_type_Blwl.a).setCurrentPosition(this.jdField_a_of_type_Int, false);
+    bnln.a(this.jdField_a_of_type_Bnlv.a).setCurrentPosition(this.jdField_a_of_type_Int, false);
   }
 }
 

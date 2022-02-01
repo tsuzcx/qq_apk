@@ -18,9 +18,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import cooperation.qqcircle.utils.ViewUtils;
-import yzv;
-import yzw;
-import yzx;
+import zpa;
+import zpb;
+import zpc;
 
 public class NestScrollRecyclerView
   extends RecyclerViewCompat
@@ -31,8 +31,8 @@ public class NestScrollRecyclerView
   private NestedScrollingParentHelper jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper;
   private View jdField_a_of_type_AndroidViewView;
   private RefreshHeaderView jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView;
-  private yzv jdField_a_of_type_Yzv;
-  private yzw jdField_a_of_type_Yzw;
+  private zpa jdField_a_of_type_Zpa;
+  private zpb jdField_a_of_type_Zpb;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -63,8 +63,8 @@ public class NestScrollRecyclerView
   
   private void a(RecyclerView paramRecyclerView)
   {
-    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof yzx)) && (((yzx)getAdapter()).b()) && (((NestScrollRecyclerView)paramRecyclerView).a() == null)) {
-      ((NestScrollRecyclerView)paramRecyclerView).a(((yzx)getAdapter()).a());
+    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof zpc)) && (((zpc)getAdapter()).b()) && (((NestScrollRecyclerView)paramRecyclerView).a() == null)) {
+      ((NestScrollRecyclerView)paramRecyclerView).a(((zpc)getAdapter()).a());
     }
   }
   
@@ -116,8 +116,8 @@ public class NestScrollRecyclerView
   
   private boolean a(MotionEvent paramMotionEvent)
   {
-    if (((getAdapter() instanceof yzx)) && (((yzx)getAdapter()).b()) && (((yzx)getAdapter()).a() != null)) {
-      ((yzx)getAdapter()).a().a(paramMotionEvent);
+    if (((getAdapter() instanceof zpc)) && (((zpc)getAdapter()).b()) && (((zpc)getAdapter()).a() != null)) {
+      ((zpc)getAdapter()).a().a(paramMotionEvent);
     }
     if (a() != null) {
       a().a(paramMotionEvent);
@@ -130,14 +130,14 @@ public class NestScrollRecyclerView
     return this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView;
   }
   
-  public yzv a()
+  public zpa a()
   {
-    return this.jdField_a_of_type_Yzv;
+    return this.jdField_a_of_type_Zpa;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Yzw != null) && (this.jdField_a_of_type_AndroidViewView != null) && (!a((RecyclerView)this.jdField_a_of_type_AndroidViewView)) && (ViewUtils.isInViewArea(this.jdField_a_of_type_AndroidViewView, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) && (this.jdField_a_of_type_Yzw.a(paramMotionEvent, (RecyclerView)this.jdField_a_of_type_AndroidViewView)))
+    if ((this.jdField_a_of_type_Zpb != null) && (this.jdField_a_of_type_AndroidViewView != null) && (!a((RecyclerView)this.jdField_a_of_type_AndroidViewView)) && (ViewUtils.isInViewArea(this.jdField_a_of_type_AndroidViewView, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) && (this.jdField_a_of_type_Zpb.a(paramMotionEvent, (RecyclerView)this.jdField_a_of_type_AndroidViewView)))
     {
       a(paramMotionEvent, this.jdField_a_of_type_AndroidViewView);
       return this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
@@ -288,14 +288,14 @@ public class NestScrollRecyclerView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setNestScrollDelegate(yzv paramyzv)
+  public void setNestScrollDelegate(zpa paramzpa)
   {
-    this.jdField_a_of_type_Yzv = paramyzv;
+    this.jdField_a_of_type_Zpa = paramzpa;
   }
   
-  public void setTransDispatchDelegate(yzw paramyzw)
+  public void setTransDispatchDelegate(zpb paramzpb)
   {
-    this.jdField_a_of_type_Yzw = paramyzw;
+    this.jdField_a_of_type_Zpb = paramzpb;
   }
 }
 

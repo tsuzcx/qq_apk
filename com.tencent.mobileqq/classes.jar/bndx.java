@@ -1,84 +1,18 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.app.Activity;
+import android.content.Intent;
 
-public class bndx
-  extends bnlv
+class bndx
+  implements bncy
 {
-  private final List<bnle> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final ConcurrentLinkedQueue<bnle> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private boolean jdField_a_of_type_Boolean = true;
+  bndx(bndw parambndw) {}
   
-  public int a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public bnle a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (bnle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public bnle a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      a(((bmua)bmql.a(4)).a());
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext())
-    {
-      bnle localbnle = (bnle)localIterator.next();
-      if ((localbnle != null) && (TextUtils.equals(paramString, localbnle.jdField_a_of_type_JavaLangString))) {
-        return localbnle;
-      }
-    }
-    return null;
-  }
-  
-  public void a(bnle parambnle)
-  {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + parambnle);
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambnle);
-    if (i >= 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.set(i, parambnle);
-      a(i);
-    }
-  }
-  
-  public void a(Collection<bnle> paramCollection)
-  {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
-      {
-        bnle localbnle = (bnle)paramCollection.next();
-        if (localbnle != null)
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localbnle);
-          if (localbnle.jdField_a_of_type_Int == 0) {
-            this.jdField_a_of_type_JavaUtilList.add(localbnle);
-          }
-        }
-      }
-    }
-    finally {}
-    a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    Intent localIntent = new Intent();
+    localIntent.setAction("ae_editor_bottom_tab_show_hide");
+    localIntent.putExtra("is_show", false);
+    this.a.a.a().sendBroadcast(localIntent);
+    bndw.a(this.a).a(131076, new Object[0]);
   }
 }
 

@@ -1,108 +1,31 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqan
-  extends aptq<aqam>
+  implements View.OnClickListener
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
-  }
+  public aqan(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
-    paramContext.apply();
-  }
-  
-  @NonNull
-  public aqam a(int paramInt)
-  {
-    return new aqam(0);
-  }
-  
-  @Nullable
-  public aqam a(aptx[] paramArrayOfaptx)
-  {
-    j = 0;
-    i = j;
-    if (paramArrayOfaptx != null)
-    {
-      i = j;
-      if (paramArrayOfaptx.length > 0) {
-        paramArrayOfaptx = paramArrayOfaptx[0].a;
-      }
+    bkzi localbkzi = (bkzi)bkzz.a(BaseActivity.sTopActivity, null);
+    localbkzi.a(BaseActivity.sTopActivity.getString(2131690170));
+    localbkzi.a(2131690169, 3);
+    localbkzi.c(2131690168);
+    localbkzi.setOnDismissListener(new aqao(this, localbkzi));
+    localbkzi.a(new aqap(this, localbkzi));
+    if (!localbkzi.isShowing()) {
+      localbkzi.show();
     }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaptx);
-      }
-      i = new JSONObject(paramArrayOfaptx).getInt("isPushSwitchShow");
-    }
-    catch (Exception paramArrayOfaptx)
-    {
-      for (;;)
-      {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaptx);
-          i = j;
-        }
-      }
-    }
-    return new aqam(i);
-  }
-  
-  public void a(aqam paramaqam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramaqam.a);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramaqam.a);
-  }
-  
-  public Class clazz()
-  {
-    return aqam.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 439;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqan
  * JD-Core Version:    0.7.0.1
  */

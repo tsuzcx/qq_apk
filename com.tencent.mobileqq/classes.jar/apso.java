@@ -1,44 +1,37 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class apso
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Rect a;
-  public apsv a;
-  public ArrayList<apsp> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 1;
+  public apso(ArkAppModuleBase.APIAuthority.1 param1, QQCustomDialog paramQQCustomDialog, Activity paramActivity) {}
   
-  public apso(apsv paramapsv, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 24;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Apsv = paramapsv;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.e = paramInt3;
-    if (paramapsv.jdField_a_of_type_Int > 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      paramapsv.jdField_a_of_type_Int += 1;
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apsq != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Apsq.b();
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Apsv.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label39:
+      apsm.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 2);
+      paramDialogInterface = bhdj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131690161), 2131718822, 2131718822, new bhdx(), null);
+      try
+      {
+        paramDialogInterface.show();
+        return;
+      }
+      catch (Exception paramDialogInterface) {}
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label39;
+    }
   }
 }
 

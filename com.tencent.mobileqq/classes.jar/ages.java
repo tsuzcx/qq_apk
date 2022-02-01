@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class ages
-  extends aghj
+  implements MessageQueue.IdleHandler
 {
-  ages(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  ages(ager paramager) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean queueIdle()
   {
-    return new afxj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "queueIdle");
+    }
+    if (agep.b()) {
+      this.a.a();
+    }
+    return false;
   }
 }
 

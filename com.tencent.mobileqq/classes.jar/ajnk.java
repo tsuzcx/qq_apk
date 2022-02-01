@@ -1,30 +1,11 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
-public class ajnk
-  extends aycd
+public abstract interface ajnk
 {
-  public ajnk(PhoneMatchView.1 param1) {}
+  public abstract void a(List<MayKnowRecommend> paramList);
   
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
-  }
-  
-  protected void c(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
-  }
+  public abstract boolean a();
 }
 
 

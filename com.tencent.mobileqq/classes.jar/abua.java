@@ -1,13 +1,14 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class abua
-  implements abpw
+  implements abux
 {
-  public abua(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public abua(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
   
-  public void a(Object... paramVarArgs)
+  public void a(int paramInt, String paramString)
   {
-    GdtVideoCommonView.a(this.a);
+    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
   }
 }
 

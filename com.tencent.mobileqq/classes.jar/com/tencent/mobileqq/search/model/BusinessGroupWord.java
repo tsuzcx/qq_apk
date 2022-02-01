@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.model;
 
-import bawv;
-import baww;
-import bawx;
+import bcdl;
+import bcdm;
+import bcdn;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +10,18 @@ import java.util.List;
 public class BusinessGroupWord
   implements Serializable
 {
-  public bawv clueWordItem;
-  public baww groupID;
-  public List<bawx> hotWordItemList;
+  public bcdl clueWordItem;
+  public bcdm groupID;
+  public List<bcdn> hotWordItemList;
   
   public BusinessGroupWord() {}
   
-  public BusinessGroupWord(baww parambaww, List<bawx> paramList, bawv parambawv)
+  public BusinessGroupWord(bcdm parambcdm, List<bcdn> paramList, bcdl parambcdl)
   {
-    this.groupID = parambaww;
+    this.groupID = parambcdm;
     this.hotWordItemList = new ArrayList();
     this.hotWordItemList = paramList;
-    this.clueWordItem = parambawv;
+    this.clueWordItem = parambcdl;
   }
 }
 

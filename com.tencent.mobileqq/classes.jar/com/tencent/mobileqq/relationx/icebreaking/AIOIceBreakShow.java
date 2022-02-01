@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import afdm;
-import afsn;
-import ahhp;
-import ahmw;
-import amat;
+import afur;
+import agkb;
+import aici;
+import aihq;
+import ancb;
 import android.animation.Animator.AnimatorListener;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -21,17 +21,18 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import azws;
-import azwt;
-import azww;
-import azwy;
-import azxb;
-import bcef;
-import bjmp;
+import bbdb;
+import bbdc;
+import bbdf;
+import bbdh;
+import bbdk;
+import bdla;
+import bkyc;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -39,42 +40,43 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class AIOIceBreakShow
-  implements Handler.Callback, azww
+  implements Handler.Callback, bbdf
 {
   private static int jdField_a_of_type_Int;
-  private afdm jdField_a_of_type_Afdm;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new azwt(this);
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new azws(this);
+  private afur jdField_a_of_type_Afur;
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new bbdc(this);
+  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new bbdb(this);
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Context jdField_a_of_type_AndroidContentContext;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private azwy jdField_a_of_type_Azwy;
-  private bjmp jdField_a_of_type_Bjmp;
+  private bbdh jdField_a_of_type_Bbdh;
+  private bkyc jdField_a_of_type_Bkyc;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private String jdField_a_of_type_JavaLangString;
-  private List<ahmw> jdField_a_of_type_JavaUtilList;
+  private List<aihq> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
-  private bjmp jdField_b_of_type_Bjmp;
+  private bkyc jdField_b_of_type_Bkyc;
   private boolean jdField_b_of_type_Boolean;
   private int c = -1;
+  private int d;
   
   public AIOIceBreakShow(BaseChatPie paramBaseChatPie, Context paramContext, String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Azwy = ((azwy)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(285));
-    this.jdField_a_of_type_Bjmp = new bjmp(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getUIHandler().getLooper(), this);
-    this.jdField_b_of_type_Bjmp = new bjmp(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Bbdh = ((bbdh)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.ICE_BREAKING_MNG));
+    this.jdField_a_of_type_Bkyc = new bkyc(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getUIHandler().getLooper(), this);
+    this.jdField_b_of_type_Bkyc = new bkyc(ThreadManager.getSubThreadLooper(), this);
     jdField_a_of_type_Int = AIOUtils.dp2px(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_Afdm = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.businessFooterDetector;
+    this.jdField_a_of_type_Afur = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.businessFooterDetector;
   }
   
   private void a(int paramInt, String paramString)
   {
-    this.jdField_b_of_type_Bjmp.removeCallbacksAndMessages(null);
-    this.jdField_b_of_type_Bjmp.postDelayed(new AIOIceBreakShow.RemoveRunnable(this, paramInt, paramString), this.jdField_a_of_type_Azwy.jdField_a_of_type_Int * 1000L);
+    this.jdField_b_of_type_Bkyc.removeCallbacksAndMessages(null);
+    this.jdField_b_of_type_Bkyc.postDelayed(new AIOIceBreakShow.RemoveRunnable(this, paramInt, paramString), this.jdField_a_of_type_Bbdh.jdField_a_of_type_Int * 1000L);
   }
   
   private boolean a()
@@ -88,7 +90,7 @@ public class AIOIceBreakShow
     }
     label43:
     for (Object localObject = (ViewGroup)localObject;; localObject = null) {
-      return ((ViewGroup)localObject).getId() == 2131362429;
+      return ((ViewGroup)localObject).getId() == 2131362435;
     }
   }
   
@@ -118,8 +120,8 @@ public class AIOIceBreakShow
         QLog.d("AIOIceBreakShow", 2, "bind data pic urls: " + this.jdField_a_of_type_JavaUtilList);
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new AIOIceBreakView(this.jdField_a_of_type_AndroidContentContext);
-      ((AIOIceBreakView)this.jdField_a_of_type_AndroidWidgetLinearLayout).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131362376, Integer.valueOf(this.c));
+      ((AIOIceBreakView)this.jdField_a_of_type_AndroidWidgetLinearLayout).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_JavaUtilList, this.d);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131362382, Integer.valueOf(this.c));
       ((AIOIceBreakView)this.jdField_a_of_type_AndroidWidgetLinearLayout).setOnIceImageClickListener(this);
     }
     if (this.jdField_a_of_type_Boolean)
@@ -132,10 +134,10 @@ public class AIOIceBreakShow
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       e();
     }
-    amat.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "ice_break", true);
-    Object localObject = (afsn)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(52);
+    ancb.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "ice_break", true);
+    Object localObject = (agkb)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(52);
     if (localObject != null) {
-      ((afsn)localObject).a(true);
+      ((agkb)localObject).a(true);
     }
     c();
     this.jdField_b_of_type_Int = 0;
@@ -151,29 +153,29 @@ public class AIOIceBreakShow
       }
       localObject = PropertyValuesHolder.ofInt("height", new int[] { 0, jdField_a_of_type_Int });
       PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofInt("alpha", new int[] { 0, 100 });
-      this.jdField_a_of_type_Afdm.a(3, 0);
-      this.jdField_a_of_type_Afdm.a(0, false, "icebreak_showFooter", 0);
+      this.jdField_a_of_type_Afur.a(3, 0);
+      this.jdField_a_of_type_Afur.a(0, false, "icebreak_showFooter", 0);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { localObject, localPropertyValuesHolder });
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setAlpha(0.0F);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       if (QLog.isColorLevel()) {
-        QLog.d("AIOIceBreakShow", 2, "real show duration = " + this.jdField_a_of_type_Azwy.jdField_a_of_type_Int);
+        QLog.d("AIOIceBreakShow", 2, "real show duration = " + this.jdField_a_of_type_Bbdh.jdField_a_of_type_Int);
       }
       a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
       b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
       localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app;
       if (this.c != 0) {
-        break label628;
+        break label633;
       }
     }
     for (;;)
     {
-      bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009B95", "0X8009B95", i, 0, "", "", "", "");
+      bdla.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009B95", "0X8009B95", i, 0, "", "", "", "");
       return;
-      this.jdField_a_of_type_Afdm.a(3, jdField_a_of_type_Int);
-      this.jdField_a_of_type_Afdm.a(jdField_a_of_type_Int, false, "icebreak_showFooter", 0);
+      this.jdField_a_of_type_Afur.a(3, jdField_a_of_type_Int);
+      this.jdField_a_of_type_Afur.a(jdField_a_of_type_Int, false, "icebreak_showFooter", 0);
       break;
-      label628:
+      label633:
       i = 2;
     }
   }
@@ -193,10 +195,10 @@ public class AIOIceBreakShow
       localObject2 = new Rect();
       ((View)localObject1).getGlobalVisibleRect((Rect)localObject2);
       i = ((Rect)localObject2).bottom;
-      if (((View)localObject1).getId() == 2131362429) {
+      if (((View)localObject1).getId() == 2131362435) {
         i = ((Rect)localObject2).top;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getContent().findViewById(2131368751);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getContent().findViewById(2131368910);
       localObject2 = new Rect();
       ((View)localObject1).getGlobalVisibleRect((Rect)localObject2);
       if (((Rect)localObject2).top - i > jdField_a_of_type_Int) {
@@ -230,7 +232,7 @@ public class AIOIceBreakShow
       ((FrameLayout.LayoutParams)localObject2).gravity = 81;
       if (i != 0)
       {
-        ((afdm)localObject1).a(this.jdField_a_of_type_AndroidWidgetLinearLayout, (FrameLayout.LayoutParams)localObject2);
+        ((afur)localObject1).a(this.jdField_a_of_type_AndroidWidgetLinearLayout, (FrameLayout.LayoutParams)localObject2);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.refresh(196608);
         if (!QLog.isColorLevel()) {
           break;
@@ -238,7 +240,7 @@ public class AIOIceBreakShow
         QLog.d("AIOIceBreakShow", 2, "locate to ListView");
         return;
       }
-      ((FrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getContent().findViewById(2131372918)).addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject2);
+      ((FrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getContent().findViewById(2131373128)).addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject2);
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -282,8 +284,8 @@ public class AIOIceBreakShow
     if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getParent() != null))
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_Afdm.a(3, 0);
-      this.jdField_a_of_type_Afdm.a(0, false, "icebreak_showFooter", 0);
+      this.jdField_a_of_type_Afur.a(3, 0);
+      this.jdField_a_of_type_Afur.a(0, false, "icebreak_showFooter", 0);
       if (a()) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.refresh(196608);
       }
@@ -298,22 +300,22 @@ public class AIOIceBreakShow
       QLog.d("AIOIceBreakShow", 2, String.format("remove mState: %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }));
     }
     if ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Int != 1)) {}
-    afsn localafsn;
+    agkb localagkb;
     do
     {
       return;
       if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getParent() != null))
       {
         ((ViewGroup)this.jdField_a_of_type_AndroidWidgetLinearLayout.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-        this.jdField_a_of_type_Afdm.a(3, 0);
-        this.jdField_a_of_type_Afdm.a();
+        this.jdField_a_of_type_Afur.a(3, 0);
+        this.jdField_a_of_type_Afur.a();
         this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
       }
       this.jdField_b_of_type_Int = 2;
-      amat.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "ice_break", false);
-      localafsn = (afsn)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(52);
-    } while (localafsn == null);
-    localafsn.a(false);
+      ancb.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "ice_break", false);
+      localagkb = (agkb)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(52);
+    } while (localagkb == null);
+    localagkb.a(false);
   }
   
   private void e()
@@ -345,17 +347,17 @@ public class AIOIceBreakShow
   
   public void a(View paramView)
   {
-    if (azxb.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType))
+    if (bbdk.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType))
     {
       if (QLog.isColorLevel()) {
         QLog.i("IceBreak.IceBreakingUtil", 2, "onImageClick remove matchChat Ice show");
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof ahhp)) {
-        ((ahhp)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).b();
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof aici)) {
+        ((aici)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).b();
       }
       ThreadManager.getSubThreadHandler().post(new AIOIceBreakShow.4(this));
     }
-    while (!azxb.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType)) {
+    while (!bbdk.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -364,9 +366,9 @@ public class AIOIceBreakShow
     ThreadManager.getSubThreadHandler().post(new AIOIceBreakShow.5(this));
   }
   
-  public void a(List<ahmw> paramList)
+  public void a(List<aihq> paramList, int paramInt)
   {
-    int i = this.jdField_a_of_type_Azwy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType);
+    int i = this.jdField_a_of_type_Bbdh.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType);
     if (QLog.isColorLevel()) {
       QLog.d("AIOIceBreakShow", 2, String.format("updateShow, newType = %s, oldType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.c) }));
     }
@@ -382,13 +384,15 @@ public class AIOIceBreakShow
       }
       this.c = i;
       this.jdField_a_of_type_JavaUtilList = paramList;
-      paramList = this.jdField_a_of_type_Bjmp.obtainMessage(0, 1, 0);
-      this.jdField_a_of_type_Bjmp.sendMessage(paramList);
+      this.d = paramInt;
+      paramList = this.jdField_a_of_type_Bkyc.obtainMessage(0, 1, 0);
+      this.jdField_a_of_type_Bkyc.sendMessage(paramList);
       return;
     }
     this.c = i;
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Bjmp.sendEmptyMessage(2);
+    this.d = paramInt;
+    this.jdField_a_of_type_Bkyc.sendEmptyMessage(2);
   }
   
   public void a(boolean paramBoolean)
@@ -404,20 +408,20 @@ public class AIOIceBreakShow
       }
       if ((this.jdField_b_of_type_Int == 0) && (!this.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bjmp.removeMessages(0);
-        this.jdField_a_of_type_Bjmp.removeMessages(1);
-        localMessage = this.jdField_a_of_type_Bjmp.obtainMessage(1, 0, 0);
-        this.jdField_a_of_type_Bjmp.sendMessage(localMessage);
+        this.jdField_a_of_type_Bkyc.removeMessages(0);
+        this.jdField_a_of_type_Bkyc.removeMessages(1);
+        localMessage = this.jdField_a_of_type_Bkyc.obtainMessage(1, 0, 0);
+        this.jdField_a_of_type_Bkyc.sendMessage(localMessage);
       }
     }
     label111:
     while ((this.jdField_b_of_type_Int != 1) || (this.jdField_b_of_type_Boolean)) {
       return;
     }
-    this.jdField_a_of_type_Bjmp.removeMessages(0);
-    this.jdField_a_of_type_Bjmp.removeMessages(1);
-    Message localMessage = this.jdField_a_of_type_Bjmp.obtainMessage(0, 0, 0);
-    this.jdField_a_of_type_Bjmp.sendMessage(localMessage);
+    this.jdField_a_of_type_Bkyc.removeMessages(0);
+    this.jdField_a_of_type_Bkyc.removeMessages(1);
+    Message localMessage = this.jdField_a_of_type_Bkyc.obtainMessage(0, 0, 0);
+    this.jdField_a_of_type_Bkyc.sendMessage(localMessage);
   }
   
   public void b()
@@ -426,8 +430,8 @@ public class AIOIceBreakShow
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
     d();
-    this.jdField_a_of_type_Bjmp.removeCallbacksAndMessages(null);
-    this.jdField_b_of_type_Bjmp.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bkyc.removeCallbacksAndMessages(null);
+    this.jdField_b_of_type_Bkyc.removeCallbacksAndMessages(null);
     if (QLog.isColorLevel()) {
       QLog.i("IceBreak.IceBreakingUtil", 2, "show sprite (normal) onDestroy.");
     }

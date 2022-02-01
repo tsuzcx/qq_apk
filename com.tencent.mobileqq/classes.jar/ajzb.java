@@ -1,21 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajzb
-  implements ajvb
+class ajzb
+  implements View.OnClickListener
 {
-  public ajzb(QzoneHbFragment paramQzoneHbFragment) {}
+  ajzb(ajza paramajza) {}
   
-  public void a() {}
-  
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof Bitmap))
-    {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
-      paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
-    }
+    this.a.a.a.b.performLongClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

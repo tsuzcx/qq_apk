@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajqa;
-import ajqc;
+import aklo;
+import aklq;
 
 public class VideoPlayController$2
   implements Runnable
 {
-  public VideoPlayController$2(ajqa paramajqa) {}
+  public VideoPlayController$2(aklo paramaklo) {}
   
   public void run()
   {
     this.this$0.b(0);
-    if (this.this$0.jdField_a_of_type_Ajqc != null) {
-      this.this$0.jdField_a_of_type_Ajqc.b(this.this$0.jdField_a_of_type_Ajqi);
+    if (this.this$0.jdField_a_of_type_Aklq != null) {
+      this.this$0.jdField_a_of_type_Aklq.b(this.this$0.jdField_a_of_type_Aklw);
     }
   }
 }

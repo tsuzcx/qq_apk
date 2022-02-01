@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-final class bftb
-  extends Handler
+public class bftb
+  extends CountDownTimer
 {
-  bftb(Looper paramLooper)
+  public bftb(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    super(paramLooper);
+    super(paramLong1, paramLong2);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onFinish()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bfta.a();
-      return;
-    }
-    bfta.b();
+    ReciteRecordLayout.a(this.a);
   }
+  
+  public void onTick(long paramLong) {}
 }
 
 

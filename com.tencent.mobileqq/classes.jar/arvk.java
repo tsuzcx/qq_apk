@@ -1,65 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ShareHotChatGrayTips;
+import java.lang.ref.WeakReference;
 
 public class arvk
-  implements atgv
+  extends ClickableSpan
 {
-  public arvk(UniformDownloadActivity paramUniformDownloadActivity) {}
+  private anwr jdField_a_of_type_Anwr;
+  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public arvk(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Anwr = new anwr((BaseActivity)paramContext, paramQQAppInterface, null);
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
+    {
+      paramView = ((HotChatManager)paramView.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
+      this.jdField_a_of_type_Anwr.a(paramView);
     }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
-    bcef.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

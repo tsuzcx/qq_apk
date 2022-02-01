@@ -1,26 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemView;
-
 class svi
-  extends stg
+  implements bkzu
 {
-  private boolean jdField_a_of_type_Boolean;
+  svi(svh paramsvh) {}
   
-  private svi(svg paramsvg, PTSItemView paramPTSItemView, BaseData paramBaseData)
+  public void ad_()
   {
-    super(paramPTSItemView, paramBaseData);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = svg.a(this.jdField_a_of_type_Svg, paramBaseData2);
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView instanceof PTSItemView))) {
-      ((ProteusItemData)paramBaseData2).a.layoutToView((PTSItemView)this.jdField_a_of_type_AndroidViewView, svg.a(this.jdField_a_of_type_Svg), true);
+    if (suw.c(this.a.a))
+    {
+      suw.c(this.a.a, false);
+      suw.a(this.a.a).a(suw.a(this.a.a), suw.b(this.a.a), true, false);
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    svg.a(this.jdField_a_of_type_Svg, paramBaseData1);
+    suw.a(this.a.a).a(suw.a(this.a.a), suw.b(this.a.a), true, true);
   }
 }
 

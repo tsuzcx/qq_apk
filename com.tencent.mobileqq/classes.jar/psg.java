@@ -1,33 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.video.click.RIJVideoHandleClick.10.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class psg
-  extends AnimatorListenerAdapter
+public class psg
+  implements pnq
 {
   psg(psf parampsf) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    psf.a(this.a).setLayerType(0, null);
-    psf.a(this.a).setVisibility(8);
-    psf.a(this.a).setAlpha(1.0F);
-    if (this.a.a() != null) {
-      this.a.i();
+    sxh localsxh = (sxh)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = psf.a(this.a).a(localsxh.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null) {
+      return;
     }
-    psf.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    psf.a(this.a).a().a().a(localsxh.jdField_a_of_type_Spk, localBaseArticleInfo, true, true);
+    ThreadManager.executeOnSubThread(new RIJVideoHandleClick.10.1(this, localBaseArticleInfo));
+    qdc.a(paramView);
   }
 }
 

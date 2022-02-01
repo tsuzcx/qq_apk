@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import android.view.animation.Interpolator;
 
-class blhw
-  implements MediaScanner.OnMediaInfoScannerListener
+final class blhw
+  implements Interpolator
 {
-  blhw(blhu paramblhu) {}
-  
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public float getInterpolation(float paramFloat)
   {
-    if (!paramBoolean)
-    {
-      this.a.a(101);
-      return;
-    }
-    this.a.a(this.a.a, paramLocalMediaInfo);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

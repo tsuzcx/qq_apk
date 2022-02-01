@@ -1,1060 +1,1302 @@
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.component.network.utils.Base64;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopFileData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.ICustomEmotionInfo;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.GestureSelectGridView;
+import com.tencent.widget.GridView;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import msf.msgcomm.msg_comm.GroupInfo;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.GroupFile;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.NotOnlineFile;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.im_msg_body.TransElem;
-import tencent.im.msg.obj_msg.MsgContentInfo;
-import tencent.im.msg.obj_msg.MsgContentInfo.MsgFile;
-import tencent.im.msg.obj_msg.ObjMsg;
-import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
-import tencent.im.msg.resv21.hummer_resv_21.ForwardExtFileInfo;
-import tencent.im.msg.resv21.hummer_resv_21.ResvAttr;
-import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
+import java.util.List<Lcom.tencent.mobileqq.emoticonview.EmoticonInfo;>;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class asdl
+  extends BaseAdapter
+  implements Handler.Callback, View.OnClickListener, blci, AdapterView.OnItemClickListener
 {
-  QQAppInterface a;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ascs jdField_a_of_type_Ascs;
+  private volatile asdu jdField_a_of_type_Asdu;
+  IphoneTitleBarActivity jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  GestureSelectGridView jdField_a_of_type_ComTencentWidgetGestureSelectGridView;
+  List<EmoticonInfo> jdField_a_of_type_JavaUtilList = null;
+  private boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  public TextView b;
+  List<EmoticonInfo> jdField_b_of_type_JavaUtilList = null;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int = -2147483648;
+  RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
+  public TextView c;
+  private volatile boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int = 2147483647;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  TextView jdField_e_of_type_AndroidWidgetTextView;
+  private volatile int f = 0;
   
-  public asdl(QQAppInterface paramQQAppInterface)
+  public asdl(QQAppInterface paramQQAppInterface, IphoneTitleBarActivity paramIphoneTitleBarActivity)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity = paramIphoneTitleBarActivity;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramIphoneTitleBarActivity.getLayoutInflater();
+    this.jdField_a_of_type_Float = paramIphoneTitleBarActivity.getApplicationContext().getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
+    this.jdField_e_of_type_Int = AIOUtils.dp2px(88.0F, paramIphoneTitleBarActivity.getResources());
   }
   
-  private void a(String paramString1, String paramString2)
+  private List<EmoticonInfo> a(List<EmoticonInfo> paramList)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, paramString2);
-    }
-  }
-  
-  private boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {}
-    while (TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(hummer_resv_21.ResvAttr paramResvAttr)
-  {
-    if (paramResvAttr == null) {
-      return false;
-    }
-    return paramResvAttr.forward_ext_file_info.has();
-  }
-  
-  public becp a(MessageForTroopFile paramMessageForTroopFile)
-  {
-    return bfby.a(this.a, paramMessageForTroopFile);
-  }
-  
-  public bfav a(long paramLong)
-  {
-    return bfav.a(paramLong);
-  }
-  
-  public im_msg_body.MsgBody a(int paramInt, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null)
+    ConcurrentHashMap localConcurrentHashMap = a();
+    if ((paramList != null) && (paramList.size() > 0) && (localConcurrentHashMap.size() > 0))
     {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 1, "getMultiMsgBody : message is null");
-      return null;
-    }
-    if (paramInt == 1)
-    {
-      String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "process type:" + str);
-      if (TextUtils.isEmpty(str))
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        QLog.e("FileMultiMsgPackageHandle<QFile>", 1, "getMultiMsgBody : message extInfo type null");
-        return null;
-      }
-    }
-    switch (paramMessageRecord.istroop)
-    {
-    default: 
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "attention, this is a default way to handle, peerType[" + paramMessageRecord.istroop + "] " + ataw.a(this.a, paramMessageRecord));
-      return c(paramMessageRecord);
-    case 0: 
-      return c(paramMessageRecord);
-    case 3000: 
-      return b(paramMessageRecord);
-    }
-    return a(paramMessageRecord);
-  }
-  
-  public im_msg_body.MsgBody a(MessageRecord paramMessageRecord)
-  {
-    im_msg_body.MsgBody localMsgBody = new im_msg_body.MsgBody();
-    Object localObject1 = new obj_msg.ObjMsg();
-    Object localObject2 = new obj_msg.MsgContentInfo();
-    Object localObject3 = new obj_msg.MsgContentInfo.MsgFile();
-    Object localObject4;
-    int i;
-    long l;
-    String str1;
-    if (a(paramMessageRecord))
-    {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: package multi troop file message. " + ataw.a(this.a, paramMessageRecord));
-      localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-      ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_path.set(ByteStringMicro.copyFrom(((String)localObject4).getBytes()));
-      localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardBusType");
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
-      {
-        i = Integer.parseInt((String)localObject4);
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint32_bus_id.set(i);
-      }
-      localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      ((obj_msg.MsgContentInfo.MsgFile)localObject3).str_file_name.set((String)localObject4);
-      l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-      ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint64_file_size.set(l);
-      str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
-      if (!TextUtils.isEmpty(str1))
-      {
-        l = Long.parseLong(str1);
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).int64_dead_time.set(l);
-      }
-      str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
-      if (str1 != null) {
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(str1.getBytes()));
-      }
-      str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-      if (str1 != null) {
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_md5.set(ByteStringMicro.copyFrom(str1.getBytes()));
-      }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage fileMd5 is " + str1);
-      i = aszt.a((String)localObject4);
-      localObject4 = new JSONObject();
-      if ((i != 0) && (i != 2)) {}
-    }
-    for (;;)
-    {
-      int j;
-      try
-      {
-        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth"));
-        j = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight"));
-        ((JSONObject)localObject4).put("width", i);
-        ((JSONObject)localObject4).put("height", j);
-        str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
-        if (!TextUtils.isEmpty(str1)) {
-          ((JSONObject)localObject4).put("duration", Integer.parseInt(str1));
-        }
-        ((JSONObject)localObject4).put("ExtInfo", Base64.encodeToString(a(paramMessageRecord).toByteArray(), 2));
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_ext.set(ByteStringMicro.copyFrom(((JSONObject)localObject4).toString().getBytes()));
-        ((obj_msg.MsgContentInfo)localObject2).msg_file.set((MessageMicro)localObject3);
-        ((obj_msg.ObjMsg)localObject1).uint32_msg_type.set(6);
-        ((obj_msg.ObjMsg)localObject1).msg_content_info.add((MessageMicro)localObject2);
-        paramMessageRecord = new im_msg_body.TransElem();
-        localObject1 = ((obj_msg.ObjMsg)localObject1).toByteArray();
-        paramMessageRecord.elem_type.set(24);
-        localObject2 = ByteBuffer.allocate(2);
-        ((ByteBuffer)localObject2).putShort((short)localObject1.length);
-        localObject3 = new byte[localObject1.length + 3];
-        localObject3[0] = 1;
-        System.arraycopy(((ByteBuffer)localObject2).array(), 0, localObject3, 1, 2);
-        System.arraycopy(localObject1, 0, localObject3, 3, localObject1.length);
-        paramMessageRecord.elem_value.set(ByteStringMicro.copyFrom((byte[])localObject3));
-        localObject1 = new im_msg_body.Elem();
-        ((im_msg_body.Elem)localObject1).trans_elem_info.set(paramMessageRecord);
-        paramMessageRecord = new im_msg_body.RichText();
-        paramMessageRecord.elems.add((MessageMicro)localObject1);
-        localMsgBody.rich_text.set(paramMessageRecord);
-        return localMsgBody;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        localNumberFormatException1.printStackTrace();
-        continue;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-        continue;
-      }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: package normal troop file message. " + ataw.a(this.a, paramMessageRecord));
-      localObject4 = (MessageForTroopFile)paramMessageRecord;
-      Object localObject5 = a((MessageForTroopFile)localObject4);
-      if (localObject5 == null) {
-        continue;
-      }
-      String str2 = ((becp)localObject5).e;
-      if (!TextUtils.isEmpty(str2))
-      {
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_path.set(ByteStringMicro.copyFrom(str2.getBytes()));
-        if (QLog.isDebugVersion()) {
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: get troop fileId[" + str2 + "] " + ataw.a(this.a, paramMessageRecord));
-        }
-        label735:
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint32_bus_id.set(((becp)localObject5).h);
-        str2 = ((becp)localObject5).g;
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).str_file_name.set(str2);
-        l = ((becp)localObject5).c;
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint64_file_size.set(l);
-        l = ((MessageForTroopFile)localObject4).lastTime;
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).int64_dead_time.set(l);
-        localObject5 = ((becp)localObject5).f;
-        if (TextUtils.isEmpty((CharSequence)localObject5)) {
-          break label950;
-        }
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject5).getBytes()));
-        label830:
-        i = aszt.a(str2);
-        paramMessageRecord = new JSONObject();
-        if ((i != 0) && (i != 2)) {}
-      }
-      try
-      {
-        i = ((MessageForTroopFile)localObject4).width;
-        j = ((MessageForTroopFile)localObject4).height;
-        paramMessageRecord.put("width", i);
-        paramMessageRecord.put("height", j);
-        paramMessageRecord.put("duration", ((MessageForTroopFile)localObject4).duration);
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_ext.set(ByteStringMicro.copyFrom(paramMessageRecord.toString().getBytes()));
-        continue;
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: error, can not get troop fileId. " + ataw.a(this.a, paramMessageRecord));
-        break label735;
-        label950:
-        if (!QLog.isDebugVersion()) {
-          break label830;
-        }
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: error, can not get sha. " + ataw.a(this.a, paramMessageRecord));
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        for (;;)
-        {
-          localNumberFormatException2.printStackTrace();
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
+        EmoticonInfo localEmoticonInfo = (EmoticonInfo)localIterator.next();
+        if (localConcurrentHashMap.containsKey(Integer.valueOf(localEmoticonInfo.emoId))) {
+          localEmoticonInfo.isChecked = true;
         }
       }
     }
+    return paramList;
   }
   
-  public hummer_resv_21.ResvAttr a(MessageRecord paramMessageRecord)
+  private ConcurrentHashMap<Integer, Boolean> a()
   {
-    hummer_resv_21.ResvAttr localResvAttr = new hummer_resv_21.ResvAttr();
-    hummer_resv_21.ForwardExtFileInfo localForwardExtFileInfo = new hummer_resv_21.ForwardExtFileInfo();
-    int i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileType:" + i);
-    }
-    localForwardExtFileInfo.uint32_file_type.set(i);
-    long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSenderUin"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo sendUin:" + l);
-    }
-    localForwardExtFileInfo.uint64_sender_uin.set(l);
-    l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo recvUin:" + l);
-    }
-    localForwardExtFileInfo.uint64_receiver_uin.set(l);
-    String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileUuid:" + str);
-    }
-    localForwardExtFileInfo.bytes_file_uuid.set(ByteStringMicro.copyFrom(str.getBytes()));
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileIdCrc:" + str);
-    }
-    localForwardExtFileInfo.str_fileidcrc.set(str);
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileName:" + str);
-    }
-    localForwardExtFileInfo.str_file_name.set(str);
-    l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileSize:" + l);
-    }
-    localForwardExtFileInfo.uint64_file_size.set(l);
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo strSHA1:" + str);
-    }
-    localForwardExtFileInfo.bytes_file_sha1.set(ByteStringMicro.copyFrom(str.getBytes()));
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileMd5:" + str);
-    }
-    localForwardExtFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(str.getBytes()));
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
-    if (!TextUtils.isEmpty(str))
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if (this.jdField_b_of_type_JavaUtilList != null)
     {
-      l = Long.parseLong(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo deadTime:" + str);
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        EmoticonInfo localEmoticonInfo = (EmoticonInfo)localIterator.next();
+        if (localEmoticonInfo.isChecked) {
+          localConcurrentHashMap.put(Integer.valueOf(localEmoticonInfo.emoId), Boolean.valueOf(true));
+        }
       }
-      localForwardExtFileInfo.int64_dead_time.set(l);
     }
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    if (!TextUtils.isEmpty(str))
-    {
-      i = Integer.parseInt(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo imgWidth:" + str);
-      }
-      localForwardExtFileInfo.uint32_img_width.set(i);
-    }
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    if (!TextUtils.isEmpty(str))
-    {
-      i = Integer.parseInt(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo imgWidth:" + str);
-      }
-      localForwardExtFileInfo.uint32_img_height.set(i);
-    }
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
-    if (!TextUtils.isEmpty(str))
-    {
-      l = Long.parseLong(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo videoDur:" + str);
-      }
-      localForwardExtFileInfo.uint64_video_duration.set(l);
-    }
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardBusType");
-    if (!TextUtils.isEmpty(paramMessageRecord))
-    {
-      i = Integer.parseInt(paramMessageRecord);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo bizId:" + paramMessageRecord);
-      }
-      localForwardExtFileInfo.uint32_bus_id.set(i);
-    }
-    localResvAttr.forward_ext_file_info.set(localForwardExtFileInfo);
-    return localResvAttr;
+    return localConcurrentHashMap;
   }
   
-  public void a(ArrayList<MessageRecord> paramArrayList, ByteStringMicro paramByteStringMicro)
+  private void a(View paramView, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeBuddyFilePBMsg: startTime[" + System.currentTimeMillis() + "]");
+      QLog.d("FavEmosmViewPage", 2, "onItemClick ROAMING_TYPE_PANEL");
     }
-    MessageRecord localMessageRecord = bbli.a(-2005);
-    Object localObject = new SubMsgType0x4.MsgBody();
+    paramView = (asdt)paramView.getTag();
+    Object localObject = paramView.jdField_a_of_type_ComTencentImageURLImageView.getDrawable();
+    if ((localObject instanceof URLDrawable))
+    {
+      localObject = (URLDrawable)localObject;
+      if ((((URLDrawable)localObject).getStatus() != 3) && (((URLDrawable)localObject).getStatus() != 2)) {
+        break label97;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmosmViewPage", 2, "onItemClick restartDownload status = " + ((URLDrawable)localObject).getStatus());
+      }
+      ((URLDrawable)localObject).restartDownload();
+    }
+    label97:
+    while (((URLDrawable)localObject).getStatus() != 1) {
+      return;
+    }
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, (EmoticonInfo)getItem(paramInt), aavz.a(paramView.jdField_a_of_type_ComTencentImageURLImageView));
+  }
+  
+  private void a(asdt paramasdt)
+  {
+    paramasdt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramasdt.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    paramasdt.c.setVisibility(8);
+    paramasdt.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    Animatable localAnimatable = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839466);
+    paramasdt.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localAnimatable);
+    localAnimatable.start();
+    paramasdt.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.f == 1)
+    {
+      paramasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+    }
+    paramasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  private void a(URLImageView paramURLImageView, asdt paramasdt)
+  {
+    if ((paramURLImageView.getDrawable() instanceof URLDrawable))
+    {
+      paramURLImageView = (URLDrawable)paramURLImageView.getDrawable();
+      if (paramURLImageView.getStatus() == 0) {
+        a(paramasdt);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((paramURLImageView.getStatus() == 2) || (paramURLImageView.getStatus() == 3))
+    {
+      b(paramasdt);
+      return;
+    }
+    c(paramasdt);
+  }
+  
+  private void a(EmoticonInfo paramEmoticonInfo, String paramString, asdt paramasdt)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramasdt == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmosmViewPage", 2, "updateViewStatus holder is null");
+      }
+    }
     do
     {
-      try
+      return;
+      paramasdt.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(null);
+      if (paramString.equals("needUpload"))
       {
-        paramByteStringMicro = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject).mergeFrom(paramByteStringMicro.toByteArray());
-        localObject = (hummer_resv_21.ResvAttr)paramByteStringMicro.resv_attr.get();
-        if (a((hummer_resv_21.ResvAttr)localObject))
-        {
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode multi buddy file message. " + ataw.a(this.a, localMessageRecord, false));
-          if (a((hummer_resv_21.ResvAttr)localObject, localMessageRecord))
-          {
-            localMessageRecord.isMultiMsg = true;
-            paramArrayList.add(localMessageRecord);
-          }
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayList)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramArrayList);
+        a(paramasdt);
         return;
       }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy file message. " + ataw.a(this.a, localMessageRecord, false));
-    } while (!paramByteStringMicro.msg_not_online_file.has());
-    localObject = (im_msg_body.NotOnlineFile)paramByteStringMicro.msg_not_online_file.get();
-    label293:
-    int i;
-    if (((im_msg_body.NotOnlineFile)localObject).bytes_file_name.has())
-    {
-      String str = ((im_msg_body.NotOnlineFile)localObject).bytes_file_name.get().toStringUtf8();
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileName[" + str + "]");
-      localMessageRecord.saveExtInfoToExtStr("_backup_ForwardFileName", str);
-      if (!((im_msg_body.NotOnlineFile)localObject).uint32_file_type.has()) {
-        break label660;
-      }
-      i = ((im_msg_body.NotOnlineFile)localObject).uint32_file_type.get();
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileType[" + i + "]");
-      localMessageRecord.saveExtInfoToExtStr("_backup_ForwardFileType", String.valueOf(i));
-      label357:
-      if (((im_msg_body.NotOnlineFile)localObject).bytes_file_md5.has()) {
-        localMessageRecord.saveExtInfoToExtStr("_backup_ForwardMd5", asnl.a(((im_msg_body.NotOnlineFile)localObject).bytes_file_md5.get().toByteArray()));
-      }
-      if (!((im_msg_body.NotOnlineFile)localObject).bytes_file_uuid.has()) {
-        break label672;
-      }
-      str = ((im_msg_body.NotOnlineFile)localObject).bytes_file_uuid.get().toStringUtf8();
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy uuid[" + str + "]");
-      localMessageRecord.saveExtInfoToExtStr("_backup_ForwardUuid", str);
-    }
-    for (;;)
-    {
-      if (((im_msg_body.NotOnlineFile)localObject).uint64_file_size.has()) {
-        localMessageRecord.saveExtInfoToExtStr("_backup_ForwardSize", String.valueOf(((im_msg_body.NotOnlineFile)localObject).uint64_file_size.get()));
-      }
-      if (paramByteStringMicro.file_image_info.has())
+      if (paramString.equals("failed"))
       {
-        paramByteStringMicro = (hummer_resv_21.FileImgInfo)paramByteStringMicro.file_image_info.get();
-        if (paramByteStringMicro.uint32_file_width.has())
-        {
-          i = paramByteStringMicro.uint32_file_width.get();
-          localMessageRecord.saveExtInfoToExtStr("_backup_ForwardImgWidth", i + "");
-        }
-        if (paramByteStringMicro.uint32_file_height.has())
-        {
-          i = paramByteStringMicro.uint32_file_height.get();
-          localMessageRecord.saveExtInfoToExtStr("_backup_ForwardImgHeight", i + "");
-        }
+        b(paramasdt);
+        return;
       }
-      paramArrayList.add(localMessageRecord);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeBuddyFilePBMsg: endTime[" + System.currentTimeMillis() + "]");
-      return;
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileName is null");
-      break label293;
-      label660:
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileType is null");
-      break label357;
-      label672:
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy uuid is null");
-    }
+      c(paramasdt);
+    } while (!(paramEmoticonInfo.getZoomDrawable(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getBaseContext(), 0.0F, this.jdField_e_of_type_Int, this.jdField_e_of_type_Int) instanceof URLDrawable));
+    paramasdt.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new asds(this, paramEmoticonInfo, paramasdt));
+    a(paramasdt.jdField_a_of_type_ComTencentImageURLImageView, paramasdt);
   }
   
-  public boolean a(ArrayList<MessageRecord> paramArrayList, msg_comm.Msg paramMsg)
+  private boolean a(EmoticonInfo paramEmoticonInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeGroupFilePb: startTime[" + System.currentTimeMillis() + "]");
-    }
-    boolean bool2;
-    if (paramMsg == null)
+    if ((paramEmoticonInfo instanceof FavoriteEmoticonInfo))
     {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : msg is null");
-      bool2 = false;
-      return bool2;
+      paramEmoticonInfo = (FavoriteEmoticonInfo)paramEmoticonInfo;
+      if ((TextUtils.isEmpty(paramEmoticonInfo.roamingType)) || (!paramEmoticonInfo.roamingType.equals("failed"))) {}
     }
-    if (!paramMsg.msg_body.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : msg has not body");
-      return false;
-    }
-    Object localObject1 = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-    if (!((im_msg_body.MsgBody)localObject1).rich_text.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : rich_text has not body");
-      return false;
-    }
-    localObject1 = (im_msg_body.RichText)((im_msg_body.MsgBody)localObject1).rich_text.get();
-    if (!((im_msg_body.RichText)localObject1).elems.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : rich_text has not elems");
-      return false;
-    }
-    Iterator localIterator = ((im_msg_body.RichText)localObject1).elems.get().iterator();
-    boolean bool1 = false;
-    int i;
-    int k;
-    byte[] arrayOfByte;
-    int j;
-    label311:
-    int m;
     do
     {
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label760;
-        }
-        localObject1 = (im_msg_body.Elem)localIterator.next();
-        if (!((im_msg_body.Elem)localObject1).trans_elem_info.has()) {
-          break label818;
-        }
-        if (!((im_msg_body.Elem)localObject1).trans_elem_info.has())
-        {
-          QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : elem has not trans_elem_info");
-        }
-        else
-        {
-          localObject1 = (im_msg_body.TransElem)((im_msg_body.Elem)localObject1).trans_elem_info.get();
-          i = ((im_msg_body.TransElem)localObject1).elem_type.get();
-          if (i == 24) {
-            break;
-          }
-          QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : trans_elem_info type:" + i);
-        }
-      }
-      k = ((im_msg_body.TransElem)localObject1).elem_value.get().size();
-      arrayOfByte = ((im_msg_body.TransElem)localObject1).elem_value.get().toByteArray();
-      j = 0;
-      i = 0;
-      if (k <= 3) {
-        break label815;
-      }
-      m = j + 1;
-    } while (j > 100);
-    label807:
-    label810:
-    label815:
-    label818:
-    for (;;)
-    {
-      int n = arrayOfByte[i];
-      int i1 = PkgTools.getShortData(arrayOfByte, i + 1);
-      j = k - (i1 + 3);
-      k = i + (i1 + 3);
-      if (n != 1)
-      {
-        i = k;
-        k = j;
-        j = m;
-        break label311;
-      }
-      localObject1 = new byte[i1];
-      PkgTools.copyData((byte[])localObject1, 0, arrayOfByte, i + 3, i1);
-      Object localObject3 = new obj_msg.ObjMsg();
-      for (;;)
-      {
-        try
-        {
-          localObject1 = (obj_msg.ObjMsg)((obj_msg.ObjMsg)localObject3).mergeFrom((byte[])localObject1);
-          i = 0;
-          if (!((obj_msg.MsgContentInfo)((obj_msg.ObjMsg)localObject1).msg_content_info.get(0)).msg_file.bytes_ext.has()) {
-            break label614;
-          }
-          localObject3 = ((obj_msg.MsgContentInfo)((obj_msg.ObjMsg)localObject1).msg_content_info.get(0)).msg_file.bytes_ext.get().toStringUtf8();
-        }
-        catch (Exception localException1)
-        {
-          try
-          {
-            localObject4 = Base64.decode(new JSONObject((String)localObject3).optString("ExtInfo"), 0);
-            localObject3 = new hummer_resv_21.ResvAttr();
-            ((hummer_resv_21.ResvAttr)localObject3).mergeFrom((byte[])localObject4);
-            localObject4 = (MessageForTroopFile)bbli.a(-2017);
-            if (!a((hummer_resv_21.ResvAttr)localObject3, (MessageRecord)localObject4)) {
-              break label810;
-            }
-            paramArrayList.add(localObject4);
-            ((MessageForTroopFile)localObject4).isMultiMsg = true;
-            i = 1;
-            bool1 = true;
-            if (i != 0) {
-              break label807;
-            }
-            localObject3 = bfby.a((obj_msg.ObjMsg)localObject1);
-            if (localObject3 != null) {
-              break label617;
-            }
-            i = m;
-            m = j;
-            j = i;
-            i = k;
-            k = m;
-          }
-          catch (Exception localException3)
-          {
-            localException3.printStackTrace();
-          }
-          localException1 = localException1;
-          i = k;
-          k = j;
-          j = m;
-        }
-        break label311;
-        label614:
-        continue;
-        label617:
-        bfav localbfav = a(paramMsg.msg_head.group_info.group_code.get());
-        Object localObject4 = localbfav.a(this.a, localException3.fileUrl);
-        Object localObject2 = localObject4;
-        if (localObject4 == null)
-        {
-          localbfav.a(this.a, localException3.fileUrl, localException3);
-          localObject2 = localException3;
-        }
-        MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)bbli.a(-2017);
-        localMessageForTroopFile.msgtype = -2017;
-        localMessageForTroopFile.msg = amtj.a(2131703685);
-        for (;;)
-        {
-          try
-          {
-            localMessageForTroopFile.msgData = anwz.a(localObject2);
-            localMessageForTroopFile.parse();
-            paramArrayList.add(localMessageForTroopFile);
-            bool1 = true;
-            i = k;
-            k = j;
-            j = m;
-          }
-          catch (Exception localException2)
-          {
-            localException2.printStackTrace();
-            continue;
-          }
-          label760:
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeGroupFilePb: endTime[" + System.currentTimeMillis() + "]");
-          return bool1;
-        }
-        i = 0;
-      }
-    }
-  }
-  
-  public boolean a(hummer_resv_21.ResvAttr paramResvAttr, MessageRecord paramMessageRecord)
-  {
-    if (!paramResvAttr.forward_ext_file_info.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 1, "saveResvAttrToMr : resvAttr has no forward_ext_file_info");
-      return false;
-    }
-    paramResvAttr = (hummer_resv_21.ForwardExtFileInfo)paramResvAttr.forward_ext_file_info.get();
-    label70:
-    label89:
-    label108:
-    String str;
-    if (!paramResvAttr.uint32_file_type.has())
-    {
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_file_type");
-      if (paramResvAttr.uint64_sender_uin.has()) {
-        break label352;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_sender_uin");
-      if (paramResvAttr.uint64_receiver_uin.has()) {
-        break label372;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_receiver_uin");
-      if (paramResvAttr.bytes_file_uuid.has()) {
-        break label392;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_uuid");
-      if (paramResvAttr.str_fileidcrc.has())
-      {
-        str = paramResvAttr.str_fileidcrc.get();
-        paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileIdCrc", str);
-        a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr fileIdCrc:" + str);
-      }
-      if (paramResvAttr.str_file_name.has()) {
-        break label446;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no str_file_name");
-      label179:
-      if (paramResvAttr.uint64_file_size.has()) {
-        break label462;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_file_size");
-      label198:
-      if (paramResvAttr.bytes_file_sha1.has()) {
-        break label481;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_sha1");
-      label217:
-      if (paramResvAttr.bytes_file_md5.has()) {
-        break label500;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_md5");
-      label236:
-      if (paramResvAttr.uint32_bus_id.has()) {
-        break label519;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_bus_id");
-      label255:
-      if (paramResvAttr.int64_dead_time.has()) {
-        break label554;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no int64_dead_time");
-      label274:
-      if (paramResvAttr.uint32_img_width.has()) {
-        break label573;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_img_width");
-      label293:
-      if (paramResvAttr.uint32_img_height.has()) {
-        break label592;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_img_height");
-      label312:
-      if (paramResvAttr.uint64_video_duration.has()) {
-        break label611;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_video_duration");
-    }
-    for (;;)
-    {
       return true;
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileType", String.valueOf(paramResvAttr.uint32_file_type.get()));
-      break;
-      label352:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSenderUin", String.valueOf(paramResvAttr.uint64_sender_uin.get()));
-      break label70;
-      label372:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardReceiverUin", String.valueOf(paramResvAttr.uint64_receiver_uin.get()));
-      break label89;
-      label392:
-      str = new String(paramResvAttr.bytes_file_uuid.get().toByteArray());
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardUuid", str);
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr uuid:" + str);
-      break label108;
-      label446:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileName", paramResvAttr.str_file_name.get());
-      break label179;
-      label462:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSize", String.valueOf(paramResvAttr.uint64_file_size.get()));
-      break label198;
-      label481:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSha", paramResvAttr.bytes_file_sha1.get().toStringUtf8());
-      break label217;
-      label500:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardMd5", paramResvAttr.bytes_file_md5.get().toStringUtf8());
-      break label236;
-      label519:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardBusType", paramResvAttr.uint32_bus_id.get() + "");
-      break label255;
-      label554:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardDeadTime", String.valueOf(paramResvAttr.int64_dead_time.get()));
-      break label274;
-      label573:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(paramResvAttr.uint32_img_width.get()));
-      break label293;
-      label592:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(paramResvAttr.uint32_img_height.get()));
-      break label312;
-      label611:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardDuration", String.valueOf(paramResvAttr.uint64_video_duration.get()));
-    }
-  }
-  
-  public im_msg_body.MsgBody b(MessageRecord paramMessageRecord)
-  {
-    im_msg_body.MsgBody localMsgBody = new im_msg_body.MsgBody();
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.GroupFile localGroupFile = new im_msg_body.GroupFile();
-    Object localObject2;
-    long l;
-    Object localObject1;
-    int i;
-    hummer_resv_21.FileImgInfo localFileImgInfo;
-    if (a(paramMessageRecord))
-    {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleDiscFileMessage: package multi disc file message. " + ataw.a(this.a, paramMessageRecord));
-      localObject2 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      localGroupFile.bytes_filename.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
-      l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-      localGroupFile.uint64_file_size.set(l);
-      localObject1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-      localGroupFile.bytes_file_id.set(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
-      localObject1 = a(paramMessageRecord);
-      i = aszt.a((String)localObject2);
-      if ((i == 0) || (i == 2))
-      {
-        localObject2 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-        paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-        if ((!TextUtils.isEmpty(paramMessageRecord)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-        {
-          localFileImgInfo = new hummer_resv_21.FileImgInfo();
-          localFileImgInfo.uint32_file_width.set(Integer.valueOf((String)localObject2).intValue());
-          localFileImgInfo.uint32_file_height.set(Integer.valueOf(paramMessageRecord).intValue());
-          ((hummer_resv_21.ResvAttr)localObject1).file_image_info.set(localFileImgInfo);
-        }
-      }
-      localGroupFile.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((hummer_resv_21.ResvAttr)localObject1).toByteArray()));
-    }
-    for (;;)
-    {
-      paramMessageRecord = new im_msg_body.Elem();
-      paramMessageRecord.group_file.set(localGroupFile);
-      localRichText.elems.add(paramMessageRecord);
-      localMsgBody.rich_text.set(localRichText);
-      return localMsgBody;
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleDiscFileMessage: package normal disc file message. " + ataw.a(this.a, paramMessageRecord));
-      localObject1 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      if (localObject1 != null)
-      {
-        paramMessageRecord = ((FileManagerEntity)localObject1).fileName;
-        localGroupFile.bytes_filename.set(ByteStringMicro.copyFrom(paramMessageRecord.getBytes()));
-        l = ((FileManagerEntity)localObject1).fileSize;
-        localGroupFile.uint64_file_size.set(l);
-        localObject2 = ((FileManagerEntity)localObject1).Uuid;
-        localGroupFile.bytes_file_id.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
-        localObject2 = new hummer_resv_21.ResvAttr();
-        localFileImgInfo = new hummer_resv_21.FileImgInfo();
-        i = aszt.a(paramMessageRecord);
-        if ((i == 0) || (i == 2))
-        {
-          localFileImgInfo.uint32_file_width.set(((FileManagerEntity)localObject1).imgWidth);
-          localFileImgInfo.uint32_file_height.set(((FileManagerEntity)localObject1).imgHeight);
-        }
-        ((hummer_resv_21.ResvAttr)localObject2).file_image_info.set(localFileImgInfo);
-        localGroupFile.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((hummer_resv_21.ResvAttr)localObject2).toByteArray()));
-      }
-      else
-      {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleDiscFileMessage. error, get file entity is null. msgUniseq[" + paramMessageRecord.uniseq + "]");
-      }
-    }
-  }
-  
-  public boolean b(ArrayList<MessageRecord> paramArrayList, msg_comm.Msg paramMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeDiscFilepb: startTime[" + System.currentTimeMillis() + "]");
-    }
-    if (paramMsg == null)
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : msg is null");
       return false;
-    }
-    if (!paramMsg.msg_body.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : msg has not body");
-      return false;
-    }
-    paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-    if (!paramMsg.rich_text.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : rich_text has not body");
-      return false;
-    }
-    paramMsg = (im_msg_body.RichText)paramMsg.rich_text.get();
-    if (!paramMsg.elems.has())
-    {
-      QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : rich_text has not elems");
-      return false;
-    }
-    paramMsg = paramMsg.elems.get().iterator();
-    while (paramMsg.hasNext())
-    {
-      Object localObject1 = (im_msg_body.Elem)paramMsg.next();
-      if (!((im_msg_body.Elem)localObject1).group_file.has())
-      {
-        QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : elem has not group_file");
+      if (!(paramEmoticonInfo instanceof PicEmoticonInfo)) {
+        break;
       }
-      else
-      {
-        Object localObject2 = (im_msg_body.GroupFile)((im_msg_body.Elem)localObject1).group_file.get();
-        if (!((im_msg_body.GroupFile)localObject2).bytes_pb_reserve.has())
-        {
-          QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : elem has not reserve info");
-          return false;
-        }
-        Object localObject3 = ((im_msg_body.GroupFile)localObject2).bytes_pb_reserve.get().toByteArray();
-        localObject1 = new hummer_resv_21.ResvAttr();
-        paramMsg = (MessageForFile)bbli.a(-2005);
-        try
-        {
-          ((hummer_resv_21.ResvAttr)localObject1).mergeFrom((byte[])localObject3);
-          if (a((hummer_resv_21.ResvAttr)localObject1))
-          {
-            QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode multi disc file message. " + ataw.a(this.a, paramMsg, false));
-            if (a((hummer_resv_21.ResvAttr)localObject1, paramMsg)) {
-              paramMsg.isMultiMsg = true;
-            }
-            paramArrayList.add(paramMsg);
-            return true;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayList)
-        {
-          paramArrayList.printStackTrace();
-          return false;
-        }
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc file message. " + ataw.a(this.a, paramMsg, false));
-        if (((im_msg_body.GroupFile)localObject2).bytes_filename.has())
-        {
-          localObject3 = ((im_msg_body.GroupFile)localObject2).bytes_filename.get().toStringUtf8();
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileName[" + (String)localObject3 + "]");
-          paramMsg.saveExtInfoToExtStr("_backup_ForwardFileName", aszt.a((String)localObject3));
-          label447:
-          if (((im_msg_body.GroupFile)localObject2).uint64_file_size.has())
-          {
-            long l = ((im_msg_body.GroupFile)localObject2).uint64_file_size.get();
-            paramMsg.saveExtInfoToExtStr("_backup_ForwardSize", l + "");
-          }
-          if (!((im_msg_body.GroupFile)localObject2).bytes_file_id.has()) {
-            break label741;
-          }
-          localObject2 = ((im_msg_body.GroupFile)localObject2).bytes_file_id.get().toStringUtf8();
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileId[" + (String)localObject2 + "]");
-          paramMsg.saveExtInfoToExtStr("_backup_ForwardUuid", (String)localObject2);
-        }
-        for (;;)
-        {
-          if (((hummer_resv_21.ResvAttr)localObject1).file_image_info.has())
-          {
-            localObject1 = (hummer_resv_21.FileImgInfo)((hummer_resv_21.ResvAttr)localObject1).file_image_info.get();
-            int i;
-            if (((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.has())
-            {
-              i = ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.get();
-              paramMsg.saveExtInfoToExtStr("_backup_ForwardImgWidth", i + "");
-            }
-            if (((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.has())
-            {
-              i = ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.get();
-              paramMsg.saveExtInfoToExtStr("_backup_ForwardImgHeight", i + "");
-            }
-          }
-          paramArrayList.add(paramMsg);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeDiscFilepb: endTime[" + System.currentTimeMillis() + "]");
-          break;
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileName is null");
-          break label447;
-          label741:
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileId is null");
-        }
-      }
-    }
+      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
+    } while ((!TextUtils.isEmpty(paramEmoticonInfo.roamingType)) && (paramEmoticonInfo.roamingType.equals("failed")));
+    return false;
     return false;
   }
   
-  public im_msg_body.MsgBody c(MessageRecord paramMessageRecord)
+  private void b(asdt paramasdt)
   {
-    im_msg_body.MsgBody localMsgBody = new im_msg_body.MsgBody();
-    SubMsgType0x4.MsgBody localMsgBody1 = new SubMsgType0x4.MsgBody();
-    Object localObject1 = new im_msg_body.NotOnlineFile();
-    ((im_msg_body.NotOnlineFile)localObject1).uint32_client_type.set(0);
-    Object localObject2;
-    int i;
-    if (a(paramMessageRecord))
+    paramasdt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramasdt.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    paramasdt.c.setVisibility(0);
+    paramasdt.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramasdt.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    if (this.f == 1)
     {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package multi buddy file message. " + ataw.a(this.a, paramMessageRecord));
-      localObject2 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      if ((localObject2 != null) && (((FileManagerEntity)localObject2).getCloudType() == 0))
+      paramasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+    }
+    paramasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  private void c(int paramInt)
+  {
+    if (this.f == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.setTitle(this.jdField_a_of_type_Ascs.a());
+    }
+    while (this.f != 1) {
+      return;
+    }
+    String str = String.format(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691862), new Object[] { Integer.valueOf(paramInt) });
+    this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.setTitle(str);
+  }
+  
+  private void c(asdt paramasdt)
+  {
+    paramasdt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramasdt.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    paramasdt.c.setVisibility(8);
+    paramasdt.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramasdt.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    if (this.f == 1)
+    {
+      paramasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+    }
+    paramasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  private void d(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_b_of_type_JavaUtilList != null)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_b_of_type_JavaUtilList.size())
       {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package multi buddy file message but found online file." + ataw.a(this.a, paramMessageRecord));
-        return null;
+        localObject1 = (EmoticonInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+        this.jdField_b_of_type_JavaUtilList.remove(paramInt);
       }
-      localObject2 = a(paramMessageRecord);
-      long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-      ((im_msg_body.NotOnlineFile)localObject1).uint64_file_size.set(l);
-      Object localObject3 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      ((im_msg_body.NotOnlineFile)localObject1).bytes_file_name.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
-      ((im_msg_body.NotOnlineFile)localObject1).uint32_subcmd.set(2);
-      String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-      if (!TextUtils.isEmpty(str)) {
-        ((im_msg_body.NotOnlineFile)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(str)));
+    }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (localObject1 != null))
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(localObject1);
+      asfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(Integer.valueOf(((EmoticonInfo)localObject1).emoId));
+    }
+  }
+  
+  private void i()
+  {
+    if (this.f == 1)
+    {
+      this.f = 0;
+      this.jdField_a_of_type_Ascs.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      if ((!this.jdField_a_of_type_Ascs.b()) && (!VipUtils.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage fileMd5 is " + str);
-      localMsgBody1.msg_not_online_file.set((MessageMicro)localObject1);
-      i = aszt.a((String)localObject3);
-      if ((i == 0) || (i == 2))
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131691863);
+      this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691864));
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((EmoticonInfo)localIterator.next()).isChecked = false;
+      }
+      this.jdField_a_of_type_Ascs.c();
+      d();
+      if (this.jdField_c_of_type_Boolean)
       {
-        localObject1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-        paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(paramMessageRecord)))
-        {
-          localObject3 = new hummer_resv_21.FileImgInfo();
-          ((hummer_resv_21.FileImgInfo)localObject3).uint32_file_height.set(Integer.valueOf(paramMessageRecord).intValue());
-          ((hummer_resv_21.FileImgInfo)localObject3).uint32_file_width.set(Integer.valueOf((String)localObject1).intValue());
-          localMsgBody1.file_image_info.set((MessageMicro)localObject3);
-        }
+        p();
+        e();
       }
-      localMsgBody1.resv_attr.set((MessageMicro)localObject2);
+      if (this.jdField_a_of_type_Asdu != null) {
+        this.jdField_a_of_type_Asdu.b(false);
+      }
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057D5", 0, 0, "", "", "", "");
+    }
+    while (this.f != 0)
+    {
+      Iterator localIterator;
+      return;
+    }
+    this.f = 1;
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelectMode(true);
+    this.jdField_a_of_type_Ascs.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    c(0);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131692403);
+    this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691847));
+    if ((this.jdField_a_of_type_Ascs.b()) || (VipUtils.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.3F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(0.3F);
+    this.jdField_c_of_type_AndroidWidgetTextView.setAlpha(0.3F);
+    this.jdField_a_of_type_Ascs.b();
+    this.jdField_a_of_type_Ascs.e();
+    if (this.jdField_a_of_type_Asdu != null) {
+      this.jdField_a_of_type_Asdu.b(true);
+    }
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057D3", 0, 0, "", "", "", "");
+  }
+  
+  private void j()
+  {
+    int i;
+    if (Build.VERSION.SDK_INT >= 23) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+        i = 1;
+      }
     }
     for (;;)
     {
-      paramMessageRecord = localMsgBody1.toByteArray();
-      localMsgBody.msg_content.set(ByteStringMicro.copyFrom(paramMessageRecord));
-      return localMsgBody;
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package normal buddy file message. " + ataw.a(this.a, paramMessageRecord));
-      localObject2 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      if (localObject2 != null)
+      if (i == 0)
       {
-        if (((FileManagerEntity)localObject2).getCloudType() == 0)
-        {
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package normal buddy file message but found online file." + ataw.a(this.a, paramMessageRecord));
-          return null;
+        this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.requestPermissions(new asdm(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        return;
+        i = 0;
+      }
+      else
+      {
+        c();
+        this.jdField_a_of_type_Ascs.f();
+        return;
+        i = 1;
+      }
+    }
+  }
+  
+  private void k()
+  {
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    ArrayList localArrayList3;
+    Object localObject3;
+    if (this.jdField_b_of_type_JavaUtilList != null)
+    {
+      this.jdField_c_of_type_Boolean = true;
+      localArrayList4 = new ArrayList();
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      localObject2 = new ArrayList();
+      localArrayList3 = new ArrayList();
+      localObject3 = new ArrayList();
+      localObject1 = ((asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).a();
+      localObject4 = this.jdField_b_of_type_JavaUtilList.iterator();
+      for (;;)
+      {
+        label95:
+        if (!((Iterator)localObject4).hasNext()) {
+          break label292;
         }
-        ((im_msg_body.NotOnlineFile)localObject1).uint64_file_size.set(((FileManagerEntity)localObject2).fileSize);
-        if (!TextUtils.isEmpty(((FileManagerEntity)localObject2).fileName))
+        EmoticonInfo localEmoticonInfo = (EmoticonInfo)((Iterator)localObject4).next();
+        if (localEmoticonInfo.isChecked)
         {
-          ((im_msg_body.NotOnlineFile)localObject1).bytes_file_name.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).fileName.getBytes()));
-          label551:
-          if (TextUtils.isEmpty(((FileManagerEntity)localObject2).Uuid)) {
-            break label728;
+          localEmoticonInfo.isChecked = false;
+          if (a(localEmoticonInfo)) {
+            localArrayList2.add(localEmoticonInfo);
           }
-          ((im_msg_body.NotOnlineFile)localObject1).bytes_file_uuid.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).Uuid.getBytes()));
-          label581:
-          if (TextUtils.isEmpty(((FileManagerEntity)localObject2).strFileMd5)) {
-            break label764;
-          }
-          ((im_msg_body.NotOnlineFile)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).strFileMd5.getBytes()));
-        }
-        for (;;)
-        {
-          paramMessageRecord = new hummer_resv_21.FileImgInfo();
-          i = aszt.a(((FileManagerEntity)localObject2).fileName);
-          if ((i == 0) || (i == 2))
+          for (i = 1;; i = 0)
           {
-            paramMessageRecord.uint32_file_width.set(((FileManagerEntity)localObject2).imgWidth);
-            paramMessageRecord.uint32_file_height.set(((FileManagerEntity)localObject2).imgHeight);
+            if (localObject1 == null) {
+              break label255;
+            }
+            Iterator localIterator = ((List)localObject1).iterator();
+            if (!localIterator.hasNext()) {
+              break label95;
+            }
+            CustomEmotionData localCustomEmotionData = (CustomEmotionData)localIterator.next();
+            if (localCustomEmotionData.emoId != localEmoticonInfo.emoId) {
+              break;
+            }
+            if ((i == 0) && (!TextUtils.isEmpty(localCustomEmotionData.resid))) {
+              localArrayList4.add(localCustomEmotionData.resid);
+            }
+            localArrayList1.add(localCustomEmotionData);
+            break label95;
+            localArrayList3.add(localEmoticonInfo);
           }
-          ((im_msg_body.NotOnlineFile)localObject1).uint32_subcmd.set(2);
-          localMsgBody1.msg_not_online_file.set((MessageMicro)localObject1);
-          localMsgBody1.file_image_info.set(paramMessageRecord);
-          break;
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: offline file name is null. " + ataw.a(this.a, paramMessageRecord));
-          break label551;
-          label728:
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: offline file uuid is null. " + ataw.a(this.a, paramMessageRecord));
-          break label581;
-          label764:
-          if (!TextUtils.isEmpty(((FileManagerEntity)localObject2).str10Md5)) {
-            ((im_msg_body.NotOnlineFile)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).str10Md5.getBytes()));
+        }
+        else
+        {
+          label255:
+          if (a(localEmoticonInfo)) {
+            ((List)localObject2).add(localEmoticonInfo);
+          } else {
+            ((List)localObject3).add(localEmoticonInfo);
           }
         }
       }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage. error, get file entity is null. msgUniseq[" + paramMessageRecord.uniseq + "]");
+      label292:
+      if ((localArrayList3.size() != 0) || (localArrayList2.size() != 0)) {
+        break label328;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmosmViewPage", 2, "handleEmotionMove selectedList is empty!");
+      }
+    }
+    return;
+    label328:
+    Object localObject4 = (anua)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
+    if (localObject4 != null) {
+      ((anua)localObject4).a(localArrayList4);
+    }
+    ArrayList localArrayList4 = new ArrayList();
+    if (localArrayList2.size() > 0) {
+      localArrayList4.addAll(localArrayList2);
+    }
+    if (((List)localObject2).size() > 0) {
+      localArrayList4.addAll((Collection)localObject2);
+    }
+    if (localArrayList3.size() > 0) {
+      localArrayList4.addAll(localArrayList3);
+    }
+    if (((List)localObject3).size() > 0) {
+      localArrayList4.addAll((Collection)localObject3);
+    }
+    d(localArrayList4);
+    Object localObject2 = (asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+    int j = localArrayList1.size();
+    Object localObject1 = ((List)localObject1).iterator();
+    int i = 1;
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject3 = (CustomEmotionData)((Iterator)localObject1).next();
+      if (i >= ((CustomEmotionData)localObject3).emoId) {
+        break label654;
+      }
+      i = ((CustomEmotionData)localObject3).emoId;
+    }
+    label654:
+    for (;;)
+    {
+      break;
+      if (j > 0)
+      {
+        int k = j - 1;
+        j = i;
+        i = k;
+        while (i >= 0)
+        {
+          localObject1 = (CustomEmotionData)localArrayList1.get(i);
+          ((asfk)localObject2).a((CustomEmotionBase)localObject1);
+          localObject1 = ((CustomEmotionData)localObject1).cloneEmotionData((CustomEmotionData)localObject1);
+          j += 1;
+          ((CustomEmotionData)localObject1).emoId = j;
+          ((asfk)localObject2).c((CustomEmotionBase)localObject1);
+          i -= 1;
+        }
+        ((asfk)localObject2).a();
+      }
+      i = localArrayList3.size();
+      j = localArrayList2.size();
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A6D3", "0X800A6D3", 0, 0, String.valueOf(i + j), "", "", "");
+      return;
+    }
+  }
+  
+  private void l()
+  {
+    bkzi localbkzi = (bkzi)bkzz.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, null);
+    localbkzi.a(2131691849);
+    localbkzi.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131692213), 3);
+    localbkzi.c(2131690697);
+    localbkzi.a(new asdn(this, localbkzi));
+    localbkzi.show();
+  }
+  
+  private void m()
+  {
+    if (this.jdField_b_of_type_JavaUtilList == null) {
+      return;
+    }
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((EmoticonInfo)localIterator.next()).isChecked = false;
+    }
+    notifyDataSetChanged();
+    d();
+  }
+  
+  private void n()
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("enter_from", 2);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+    localIntent.putExtra("filter_photolist_troopalbum_toolbar", false);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 20);
+    localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+    localIntent.putExtra("PhotoConst.IS_FROM_EMOTION_FAVORITE", true);
+    localIntent.putExtra("peakconstant.request_code", 100015);
+    this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.startActivityForResult(localIntent, 100015);
+  }
+  
+  private void o()
+  {
+    int i;
+    if (Build.VERSION.SDK_INT >= 23) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.requestPermissions(new asdr(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        return;
+        i = 0;
+      }
+      else
+      {
+        n();
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
+        return;
+        i = 1;
+      }
+    }
+  }
+  
+  private void p()
+  {
+    if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_c_of_type_Boolean = false;
+      ((anua)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER)).notifyUI(2, true, null);
+    }
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public void a()
+  {
+    this.jdField_d_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.f == 0) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (getCount() <= paramInt);
+      localObject = getItem(paramInt);
+    } while (!ICustomEmotionInfo.class.isInstance(localObject));
+    Object localObject = (ICustomEmotionInfo)localObject;
+    this.jdField_b_of_type_Boolean = ((ICustomEmotionInfo)localObject).isChecked();
+    if (!this.jdField_b_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((ICustomEmotionInfo)localObject).setIsChecked(bool);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
+      this.jdField_a_of_type_Boolean = true;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("FavEmosmViewPage", 2, "onSelectBegin");
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.f == 0) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FavEmosmViewPage", 2, new Object[] { "onSelectBegin beginIndex:", Integer.valueOf(paramInt1), "  selectIndex:", Integer.valueOf(paramInt2) });
+    }
+    int j;
+    int i;
+    if (paramInt2 < paramInt1)
+    {
+      j = paramInt1;
+      i = paramInt2;
+      if (this.jdField_d_of_type_Int > paramInt2)
+      {
+        this.jdField_d_of_type_Int = paramInt2;
+        i = paramInt2;
+        j = paramInt1;
+      }
+    }
+    for (;;)
+    {
+      paramInt1 = i;
+      for (;;)
+      {
+        if (paramInt1 > j) {
+          break label174;
+        }
+        localObject = getItem(paramInt1);
+        if (ICustomEmotionInfo.class.isInstance(localObject)) {
+          break;
+        }
+        paramInt1 += 1;
+      }
+      if (this.jdField_c_of_type_Int < paramInt2) {
+        this.jdField_c_of_type_Int = paramInt2;
+      }
+      j = paramInt2;
+      i = paramInt1;
+    }
+    Object localObject = (ICustomEmotionInfo)localObject;
+    if (!this.jdField_b_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((ICustomEmotionInfo)localObject).setIsChecked(bool);
+      break;
+    }
+    label174:
+    paramInt1 = j + 1;
+    if (paramInt1 <= this.jdField_c_of_type_Int)
+    {
+      localObject = getItem(paramInt1);
+      if (!ICustomEmotionInfo.class.isInstance(localObject)) {}
+      for (;;)
+      {
+        paramInt1 += 1;
+        break;
+        ((ICustomEmotionInfo)localObject).setIsChecked(this.jdField_b_of_type_Boolean);
+      }
+    }
+    paramInt1 = this.jdField_d_of_type_Int;
+    if (paramInt1 < i)
+    {
+      localObject = getItem(paramInt1);
+      if (!ICustomEmotionInfo.class.isInstance(localObject)) {}
+      for (;;)
+      {
+        paramInt1 += 1;
+        break;
+        ((ICustomEmotionInfo)localObject).setIsChecked(this.jdField_b_of_type_Boolean);
+      }
+    }
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
+    d();
+  }
+  
+  public void a(ascs paramascs)
+  {
+    this.jdField_a_of_type_Ascs = paramascs;
+    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources();
+    int i = localResources.getDisplayMetrics().widthPixels;
+    int j = AIOUtils.dp2px(0.0F, localResources);
+    int k = AIOUtils.dp2px(4.0F, localResources);
+    int m = AIOUtils.dp2px(4.0F, localResources);
+    this.jdField_a_of_type_Int = ((i - j * 2 - k * 3) / 4);
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_e_of_type_AndroidWidgetTextView = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.rightViewText;
+    this.jdField_d_of_type_AndroidWidgetTextView = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.leftView;
+    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131691863);
+    this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691864));
+    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366058));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366060));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366059));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366069));
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691854));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131371589));
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366067));
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelectMode(false);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366068));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131366012));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(4);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setHorizontalSpacing(k);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setVerticalSpacing(m);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setPadding(j, this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getPaddingTop(), j, this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getPaddingBottom());
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnItemClickListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(this);
+    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setMaximumVelocity((int)(2500.0F * this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density));
+    if ((paramascs.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity)) && (paramascs.jdField_a_of_type_Boolean))
+    {
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131690845);
+      if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
+        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.findViewById(2131363895));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    if ((paramascs.b()) || (VipUtils.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
+  }
+  
+  public void a(asdu paramasdu)
+  {
+    this.jdField_a_of_type_Asdu = paramasdu;
+  }
+  
+  public void a(GridView paramGridView, int paramInt)
+  {
+    if ((paramGridView == null) || (paramInt < 0)) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      i = paramGridView.getFirstVisiblePosition();
+      j = paramGridView.getLastVisiblePosition();
+    } while ((paramInt < i) || (paramInt > j));
+    getView(paramInt, paramGridView.getChildAt(paramInt - i), paramGridView);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        EmoticonInfo localEmoticonInfo = (EmoticonInfo)localIterator.next();
+        if (((localEmoticonInfo instanceof FavoriteEmoticonInfo)) && (TextUtils.isEmpty(((FavoriteEmoticonInfo)localEmoticonInfo).path)) && (((FavoriteEmoticonInfo)localEmoticonInfo).path.equals(paramString1))) {
+          ((FavoriteEmoticonInfo)localEmoticonInfo).roamingType = paramString2;
+        }
+      }
+    }
+  }
+  
+  public void a(List<EmoticonInfo> paramList)
+  {
+    if ((!this.jdField_a_of_type_Ascs.a()) && (paramList == null)) {
+      return;
+    }
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    asfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h();
+    if (this.f == 0) {
+      if (this.jdField_a_of_type_Ascs.a())
+      {
+        if (((List)localObject).size() == 0)
+        {
+          paramList = new EmoticonInfo();
+          paramList.operateType = 1;
+          ((List)localObject).add(0, paramList);
+        }
+      }
+      else
+      {
+        c((List)localObject);
+        d((List)localObject);
+      }
+    }
+    for (;;)
+    {
+      d();
+      return;
+      if (((EmoticonInfo)((List)localObject).get(0)).operateType == 1) {
+        break;
+      }
+      paramList = new EmoticonInfo();
+      paramList.operateType = 1;
+      ((List)localObject).add(0, paramList);
+      break;
+      paramList = (List<EmoticonInfo>)localObject;
+      if (a()) {
+        paramList = a((List)localObject);
+      }
+      c(paramList);
+      paramList = this.jdField_a_of_type_Ascs.a(paramList);
+      if (paramList != null) {
+        d(paramList);
+      } else if (QLog.isColorLevel()) {
+        QLog.d("FavEmosmViewPage", 2, "reloadFavEmotionFinished favEmoList is null");
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.f == 1;
+  }
+  
+  public void b()
+  {
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.setTitle(paramInt);
+  }
+  
+  public void b(List<EmoticonInfo> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Ascs.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_Ascs.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      paramList.addAll(this.jdField_a_of_type_Ascs.jdField_a_of_type_JavaUtilList);
+    }
+    Object localObject;
+    if ((this.jdField_a_of_type_Ascs.a()) && (this.f == 0))
+    {
+      if (paramList.size() != 0) {
+        break label139;
+      }
+      localObject = new EmoticonInfo();
+      ((EmoticonInfo)localObject).operateType = 1;
+      paramList.add(0, localObject);
+    }
+    for (;;)
+    {
+      asfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h();
+      localObject = paramList;
+      if (a()) {
+        localObject = a(paramList);
+      }
+      this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+      this.jdField_b_of_type_JavaUtilList = ((List)localObject);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this);
+      d();
+      return;
+      label139:
+      if (((EmoticonInfo)paramList.get(0)).operateType != 1)
+      {
+        localObject = new EmoticonInfo();
+        ((EmoticonInfo)localObject).operateType = 1;
+        paramList.add(0, localObject);
+      }
+    }
+  }
+  
+  void c()
+  {
+    if (this.jdField_b_of_type_JavaUtilList == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      EmoticonInfo localEmoticonInfo = (EmoticonInfo)((Iterator)localObject).next();
+      if (localEmoticonInfo.isChecked) {
+        localArrayList.add(localEmoticonInfo);
+      }
+    }
+    if (localArrayList.isEmpty())
+    {
+      audr.c(2131692367);
+      return;
+    }
+    localObject = new axjb(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity);
+    this.jdField_a_of_type_Ascs.a().a(new asdo(this, (axjb)localObject));
+    this.jdField_a_of_type_Ascs.a().a(localArrayList);
+  }
+  
+  public void c(List<EmoticonInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  void d()
+  {
+    if (this.jdField_b_of_type_JavaUtilList == null) {
+      return;
+    }
+    int i;
+    if (getCount() > 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#00a5e0"));
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      i = 0;
+      label48:
+      if (!localIterator.hasNext()) {
+        break label103;
+      }
+      if (!((EmoticonInfo)localIterator.next()).isChecked) {
+        break label267;
+      }
+      i += 1;
+    }
+    label267:
+    for (;;)
+    {
+      break label48;
+      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#cccccc"));
+      break;
+      label103:
+      if (this.jdField_a_of_type_Ascs.jdField_a_of_type_Boolean)
+      {
+        if (i >= 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+          return;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        return;
+      }
+      if (i > 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
+        this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(true);
+        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+        this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+        this.jdField_c_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
+      for (;;)
+      {
+        c(i);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691848));
+        return;
+        this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.3F);
+        this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(0.3F);
+        this.jdField_c_of_type_AndroidWidgetTextView.setAlpha(0.3F);
+      }
+    }
+  }
+  
+  public void d(List<EmoticonInfo> paramList)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    super.notifyDataSetChanged();
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Ascs.a(new asdq(this));
+  }
+  
+  void f()
+  {
+    if (this.jdField_a_of_type_Ascs != null) {
+      this.jdField_a_of_type_Ascs.h();
+    }
+  }
+  
+  public void g()
+  {
+    p();
+    this.jdField_a_of_type_Asdu = null;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_b_of_type_JavaUtilList != null) {
+      return this.jdField_b_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    asdt localasdt;
+    EmoticonInfo localEmoticonInfo;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559160, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+      localasdt = new asdt(this);
+      localasdt.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366064));
+      localasdt.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366066));
+      localasdt.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366061);
+      localasdt.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366062);
+      localasdt.c = localView.findViewById(2131366063);
+      localasdt.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366065));
+      localView.setTag(localasdt);
+      localEmoticonInfo = (EmoticonInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+      if (localEmoticonInfo != localasdt.jdField_a_of_type_ComTencentImageURLImageView.getTag(2131381183))
+      {
+        if (localEmoticonInfo.operateType != 1) {
+          break label524;
+        }
+        localasdt.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839698);
+        if (AppSetting.jdField_c_of_type_Boolean) {
+          localasdt.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691845));
+        }
+        label216:
+        localasdt.jdField_a_of_type_ComTencentImageURLImageView.setTag(2131381183, localEmoticonInfo);
+      }
+      if ((localEmoticonInfo instanceof ICustomEmotionInfo))
+      {
+        ICustomEmotionInfo localICustomEmotionInfo = (ICustomEmotionInfo)localEmoticonInfo;
+        a(localEmoticonInfo, localICustomEmotionInfo.getRoamingType(), localasdt);
+        if (localICustomEmotionInfo.isChecked()) {
+          break label559;
+        }
+        localasdt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        localasdt.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845670);
+        label290:
+        if (this.f != 1) {
+          break label582;
+        }
+        localasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        label307:
+        if (localEmoticonInfo.operateType != 1)
+        {
+          paramView = this.jdField_a_of_type_Ascs.a(localEmoticonInfo);
+          if ((!AppSetting.jdField_c_of_type_Boolean) || (TextUtils.isEmpty(paramView)) || (localasdt.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
+            break label648;
+          }
+          if (localICustomEmotionInfo.isChecked()) {
+            break label595;
+          }
+          if ((!AppSetting.jdField_c_of_type_Boolean) || (TextUtils.isEmpty(paramView))) {
+            break label648;
+          }
+          paramView = paramView + "," + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719791);
+        }
+      }
+    }
+    label648:
+    for (;;)
+    {
+      localasdt.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(paramView);
+      if (localEmoticonInfo.operateType == 1)
+      {
+        localasdt.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        localasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localasdt.jdField_b_of_type_AndroidViewView.setVisibility(8);
+        localasdt.c.setVisibility(8);
+        localasdt.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      paramView = this.jdField_a_of_type_Ascs.a(paramInt, localView, localasdt, localEmoticonInfo);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localasdt = (asdt)paramView.getTag();
+      localView = paramView;
+      break;
+      label524:
+      localasdt.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localEmoticonInfo.getZoomDrawable(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getApplicationContext(), this.jdField_a_of_type_Float, this.jdField_e_of_type_Int, this.jdField_e_of_type_Int));
+      break label216;
+      label559:
+      localasdt.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localasdt.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845673);
+      break label290;
+      label582:
+      localasdt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      break label307;
+      label595:
+      if ((AppSetting.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramView))) {
+        paramView = paramView + "," + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690825);
+      }
+    }
+  }
+  
+  public void h()
+  {
+    if (this.f == 0) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = -2147483648;
+    this.jdField_d_of_type_Int = 2147483647;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavEmosmViewPage", 2, "onSelectEnd");
+    }
+    d();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 207)
+    {
+      d(((Integer)paramMessage.obj).intValue());
+      notifyDataSetChanged();
+      d();
+      f();
+    }
+    do
+    {
+      do
+      {
+        return false;
+        if (paramMessage.what == 206)
+        {
+          a((List)paramMessage.obj);
+          return false;
+        }
+      } while ((paramMessage.what != 208) || (!(paramMessage.obj instanceof Integer)));
+      paramMessage = (Integer)paramMessage.obj;
+      switch (paramMessage.intValue())
+      {
+      default: 
+        return false;
+      }
+      QLog.e("FavEmosmViewPage", 1, new Object[] { "update ui, over limit flag:", Boolean.valueOf(CameraEmoAllSend.jdField_b_of_type_Boolean), " ret:", paramMessage, " onResumed:", Boolean.valueOf(this.jdField_d_of_type_Boolean) });
+    } while ((CameraEmoAllSend.jdField_b_of_type_Boolean) || (!this.jdField_d_of_type_Boolean));
+    CameraEmoAllSend.jdField_b_of_type_Boolean = true;
+    if (paramMessage.intValue() == 7) {}
+    for (int i = 1;; i = 2)
+    {
+      aset.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, i);
+      return false;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Ascs.jdField_b_of_type_Boolean)
+      {
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005C7A", "0X8005C7A", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+      }
+      else
+      {
+        i();
+        continue;
+        if (this.jdField_b_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
+          {
+            EmoticonInfo localEmoticonInfo = (EmoticonInfo)localIterator.next();
+            if ((localEmoticonInfo instanceof ICustomEmotionInfo)) {
+              localEmoticonInfo.isChecked = true;
+            }
+          }
+          notifyDataSetChanged();
+          d();
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057D6", 0, 0, "", "", "", "");
+          continue;
+          l();
+          continue;
+          bhoy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, "mvip.n.a.bqsc_edit", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131719134), "");
+          j();
+          continue;
+          k();
+          d();
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getString(2131691853), 0).a();
+        }
+      }
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.jdField_a_of_type_Ascs.a(paramAdapterView, paramView, paramInt, paramLong)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        if (this.f != 0) {
+          break;
+        }
+        if ((this.jdField_a_of_type_Ascs.a()) && (paramInt == 0))
+        {
+          paramAdapterView = this.jdField_b_of_type_JavaUtilList;
+          if ((paramAdapterView != null) && (paramAdapterView.size() > 0) && (((EmoticonInfo)paramAdapterView.get(0)).operateType == 1))
+          {
+            o();
+            return;
+          }
+        }
+        paramAdapterView = getItem(paramInt);
+      } while (!(paramAdapterView instanceof ICustomEmotionInfo));
+      paramAdapterView = (ICustomEmotionInfo)paramAdapterView;
+      str = paramAdapterView.getRoamingType();
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmosmViewPage", 2, "onItemClick roamingType = " + str);
+      }
+      if ((TextUtils.isEmpty(str)) || (!str.equals("needUpload"))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("FavEmosmViewPage", 2, "onItemClick ROAMING_TYPE_NEED_UPLOAD");
+    return;
+    if ((!TextUtils.isEmpty(str)) && (str.equals("failed")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmosmViewPage", 2, "onItemClick ROAMING_TYPE_FAILED");
+      }
+      this.jdField_a_of_type_Ascs.a(this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView, paramInt, paramAdapterView);
+      return;
+    }
+    if ((!TextUtils.isEmpty(str)) && (str.equals("needDownload")))
+    {
+      a(paramView, paramInt);
+      return;
+    }
+    paramAdapterView = (asdt)paramView.getTag();
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, (EmoticonInfo)getItem(paramInt), aavz.a(paramAdapterView.jdField_a_of_type_ComTencentImageURLImageView));
+    return;
+    paramAdapterView = getItem(paramInt);
+    if ((paramAdapterView instanceof EmoticonInfo))
+    {
+      paramAdapterView = (EmoticonInfo)paramAdapterView;
+      if (paramAdapterView.isChecked) {
+        break label324;
+      }
+    }
+    label324:
+    for (boolean bool = true;; bool = false)
+    {
+      paramAdapterView.isChecked = bool;
+      a(this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView, paramInt);
+      d();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdl
  * JD-Core Version:    0.7.0.1
  */

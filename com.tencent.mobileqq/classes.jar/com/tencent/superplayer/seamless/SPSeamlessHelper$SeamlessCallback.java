@@ -4,7 +4,7 @@ import java.util.Map;
 
 public abstract interface SPSeamlessHelper$SeamlessCallback
 {
-  public abstract void onSeamlessExit(String paramString1, String paramString2, Map<String, Object> paramMap);
+  public abstract void onSeamlessExitEnd(String paramString1, String paramString2, Map<String, Object> paramMap);
   
   public abstract void onSeamlessJump(String paramString);
 }

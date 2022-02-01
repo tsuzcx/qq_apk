@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.doutu;
 
-import ahty;
+import aiox;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import aqwb;
-import aqwe;
+import arzv;
+import arzy;
 import com.tencent.widget.HorizontalListView;
 
 public class DoutuEmotionHorizonListView
   extends HorizontalListView
 {
-  private aqwe a;
+  private arzy a;
   
   public DoutuEmotionHorizonListView(Context paramContext)
   {
@@ -35,30 +35,30 @@ public class DoutuEmotionHorizonListView
   {
     if (paramInt1 > 0)
     {
-      if (!(getAdapter() instanceof aqwb)) {
+      if (!(getAdapter() instanceof arzv)) {
         break label34;
       }
-      ((aqwb)getAdapter()).b();
+      ((arzv)getAdapter()).b();
     }
     for (;;)
     {
       super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
       return;
       label34:
-      if ((getAdapter() instanceof ahty)) {
-        ((ahty)getAdapter()).b();
+      if ((getAdapter() instanceof aiox)) {
+        ((aiox)getAdapter()).b();
       }
     }
   }
   
-  public void setTouchListener(aqwe paramaqwe)
+  public void setTouchListener(arzy paramarzy)
   {
-    this.a = paramaqwe;
+    this.a = paramarzy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView
  * JD-Core Version:    0.7.0.1
  */

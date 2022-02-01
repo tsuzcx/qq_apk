@@ -1,18 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-final class uhy
-  implements Comparator<ArticleInfo>
+public class uhy
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public static HashSet<String> a = new HashSet();
+  
+  public static void a()
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
+    a.clear();
+  }
+  
+  public static void a(int paramInt, spg paramspg)
+  {
+    if (paramspg == null) {}
+    spk localspk;
+    AdvertisementInfo localAdvertisementInfo;
+    do
+    {
+      do
+      {
+        return;
+        localspk = paramspg.a();
+        paramspg = paramspg.a();
+      } while ((paramspg == null) || (localspk == null) || (!(localspk.a instanceof AdvertisementInfo)));
+      localAdvertisementInfo = (AdvertisementInfo)localspk.a;
+    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
+    a(paramspg, localAdvertisementInfo, localspk);
+  }
+  
+  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, spk paramspk)
+  {
+    if ((paramspk == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
+    while ((!(paramspk.a instanceof AdvertisementInfo)) || (!paramspk.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
+      return false;
     }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    ois.a(new ufy().a(paramActivity).a(27).b(3).a(paramAdvertisementInfo).a());
+    a.add(paramAdvertisementInfo.mAdTraceId);
+    return true;
   }
 }
 

@@ -1,8 +1,14 @@
-public abstract interface scz
+import android.text.TextUtils;
+
+class scz
+  implements scs<rsv>
 {
-  public abstract void a(rsd paramrsd1, rsd paramrsd2, int paramInt, boolean paramBoolean);
+  scz(scy paramscy) {}
   
-  public abstract void j();
+  public boolean a(rsv paramrsv)
+  {
+    return TextUtils.equals("video/mp4", paramrsv.a);
+  }
 }
 
 

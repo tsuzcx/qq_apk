@@ -1,40 +1,48 @@
-import android.content.res.Resources;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aiso
-  extends amop
+  implements tbk
 {
-  public aiso(TroopFragment paramTroopFragment) {}
+  public aiso(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a(String paramString)
   {
-    if (paramInt2 == 0)
+    Object localObject;
+    if (paramString != null)
     {
-      this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
-    }
-    label47:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, amtj.a(2131714399), 0).a();
+      Iterator localIterator = this.a.c.iterator();
       do
       {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ChannelInfo)localIterator.next();
+      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
+    }
+    for (paramString = (String)localObject;; paramString = null)
+    {
+      if (paramString != null)
+      {
+        if (!TextUtils.isEmpty(paramString.mJumpUrl))
+        {
+          localObject = new Intent(this.a, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("hide_operation_bar", true);
+          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
+          this.a.startActivity((Intent)localObject);
+        }
+      }
+      else {
         return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, amtj.a(2131714398), 0).a();
+      }
+      osg.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694277);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

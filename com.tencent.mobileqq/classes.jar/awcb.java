@@ -1,61 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class awcb
-  extends awca
+  implements IMiniMsgUnreadCallback
 {
-  public awcb(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public awcb(UiApiPlugin paramUiApiPlugin) {}
   
-  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  public void destroy() {}
+  
+  public void hide() {}
+  
+  public void hideUnread()
   {
-    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadHide", true);
+      this.a.a("UnRead", localJSONObject);
       return;
     }
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    catch (Exception localException)
     {
-      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
-        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
-        {
-          String str = amtj.a(2131692111) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-          localArrayList.set(i, this.a.getProxyManager().a().a(localMessageRecord, str, true));
-        }
-        i += 1;
-      }
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
     }
   }
   
-  public void a(awcs paramawcs, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awcd paramawcd)
+  public boolean show(int paramInt)
   {
-    if (paramawcs == null) {
-      return;
-    }
-    if ((paramawcs.b == 8) || (paramawcs.b == 9)) {}
-    for (paramawcs = new asly(this.a, paramawcs, paramHashMap, paramawcd);; paramawcs = new aslw(this.a, paramawcs, paramHashMap, paramawcd))
+    return false;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  {
+    try
     {
-      this.a.getFileManagerEngine().a().a(paramawcs, paramHashMap);
+      paramBundle = new JSONObject();
+      this.a.a("backFromMiniAIO", paramBundle);
       return;
-      if (paramawcs.b == 2)
-      {
-        a(paramHashMap);
-        paramawcd.a(0, 2, paramawcs);
-        return;
-      }
     }
+    catch (Exception paramBundle)
+    {
+      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
+    }
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadC", paramInt);
+      localJSONObject.put("unReadHide", paramBoolean);
+      this.a.a("updateUnreadCount", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

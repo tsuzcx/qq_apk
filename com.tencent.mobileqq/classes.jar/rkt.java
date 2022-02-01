@@ -1,6 +1,9 @@
+import android.os.IInterface;
+
 public abstract interface rkt
+  extends IInterface
 {
-  public abstract void a(int paramInt1, int paramInt2, long paramLong);
+  public abstract rkw a();
 }
 
 

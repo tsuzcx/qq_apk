@@ -3,13 +3,13 @@ package dov.com.tencent.mobileqq.richmedia.capture.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import bmcd;
-import bnyf;
-import bnyh;
+import bnru;
+import bpnx;
+import bpnz;
 
 public abstract class AbsAECaptureButton
   extends RelativeLayout
-  implements bnyf, bnyh
+  implements bpnx, bpnz
 {
   public AbsAECaptureButton(Context paramContext)
   {
@@ -28,7 +28,7 @@ public abstract class AbsAECaptureButton
   
   public void a(boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, bmcd parambmcd) {}
+  public void a(boolean paramBoolean, bnru parambnru) {}
   
   public void b(boolean paramBoolean) {}
 }

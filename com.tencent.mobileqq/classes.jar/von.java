@@ -1,9 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+
 public class von
-  extends vom
+  implements DialogInterface.OnDismissListener
 {
-  public von(voj paramvoj)
+  public von(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramvoj);
+    if (WSVerticalPageFragment.a(this.a) != null) {
+      WSVerticalPageFragment.a(this.a).e();
+    }
   }
 }
 

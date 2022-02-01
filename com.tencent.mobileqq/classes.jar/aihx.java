@@ -1,218 +1,83 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
+import org.apache.http.Header;
 
-public abstract class aihx
-  extends BaseAdapter
+class aihx
+  implements URLDrawableDownListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aihy(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<RecommendTroopItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private View.OnClickListener b = new aihz(this);
+  aihx(aihw paramaihw) {}
   
-  public aihx(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public static View a(Context paramContext, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, View.OnClickListener paramOnClickListener3)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(2131561506, null);
-    aiia localaiia = new aiia();
-    localaiia.jdField_a_of_type_AndroidViewView = localView;
-    localaiia.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369409));
-    if ((localaiia.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-      ((ThemeImageView)localaiia.jdField_a_of_type_AndroidWidgetImageView).setSupportMaskView(false);
-    }
-    localaiia.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131379904));
-    localaiia.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363866));
-    localaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)localView.findViewById(2131363332));
-    localaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)localView.findViewById(2131363339));
-    localaiia.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)localView.findViewById(2131379558));
-    localaiia.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379556));
-    localaiia.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener2);
-    localView.setOnClickListener(paramOnClickListener1);
-    localView.setTag(localaiia);
-    if (paramOnClickListener3 != null)
-    {
-      localaiia.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener3);
-      localaiia.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localView.setTag(-3, Integer.valueOf(AIOUtils.dp2px(100.0F, paramContext.getResources())));
-      return localView;
-    }
-    localaiia.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
-    localaiia.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    localView.setTag(-3, null);
-    return localView;
-  }
-  
-  public static void a(aiia paramaiia, RecommendTroopItem paramRecommendTroopItem, Drawable paramDrawable)
-  {
-    if ((paramaiia == null) || (paramRecommendTroopItem == null))
-    {
-      QLog.d("RecommendTroop", 1, "viewHolder == null || troopItem == null");
-      return;
-    }
-    paramaiia.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    paramaiia.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecommendTroopItem.name);
-    paramaiia.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setContentDescription(paramRecommendTroopItem.name);
-    if (paramRecommendTroopItem.activity > 0)
-    {
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setVisibility(0);
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setHotLevel(paramRecommendTroopItem.activity);
-      paramDrawable = nmx.a(paramRecommendTroopItem);
-      if ((paramDrawable == null) || (paramDrawable.size() <= 0)) {
-        break label274;
-      }
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(0);
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(1);
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setAutoCreateDistanceTextView(true);
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(paramDrawable);
-      label122:
-      if ((!paramRecommendTroopItem.isJoined()) && (!paramRecommendTroopItem.hasRequestJoin)) {
-        break label298;
-      }
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      if (!paramRecommendTroopItem.hasRequestJoin) {
-        break label286;
-      }
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setText(2131698715);
-      label160:
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setMinWidth(ViewUtils.dip2px(60.0F));
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setMinWidth(ViewUtils.dip2px(29.0F));
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setPadding(0, paramaiia.jdField_a_of_type_AndroidWidgetButton.getPaddingTop(), 0, paramaiia.jdField_a_of_type_AndroidWidgetButton.getPaddingBottom());
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(null);
-      label215:
-      if (!TextUtils.isEmpty(paramRecommendTroopItem.intro)) {
-        break label375;
-      }
-      paramaiia.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setText("");
-    }
-    for (;;)
-    {
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setTag(-1, paramRecommendTroopItem);
-      paramaiia.jdField_a_of_type_AndroidWidgetTextView.setTag(-1, paramRecommendTroopItem);
-      paramaiia.jdField_a_of_type_AndroidViewView.setTag(-1, paramRecommendTroopItem);
-      return;
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setVisibility(8);
-      break;
-      label274:
-      paramaiia.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setVisibility(8);
-      break label122;
-      label286:
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setText(2131698716);
-      break label160;
-      label298:
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setText(2131698714);
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setMinWidth(0);
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setMinHeight(0);
-      int i = ViewUtils.dip2px(16.0F);
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setPadding(i, paramaiia.jdField_a_of_type_AndroidWidgetButton.getPaddingTop(), i, paramaiia.jdField_a_of_type_AndroidWidgetButton.getPaddingBottom());
-      paramaiia.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839360);
-      break label215;
-      label375:
-      paramaiia.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setText(new QQText(paramRecommendTroopItem.intro, 11, 16));
-    }
-  }
-  
-  protected abstract int a();
-  
-  public RecommendTroopItem a(int paramInt)
-  {
-    return (RecommendTroopItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem) {}
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    RecommendTroopItem localRecommendTroopItem;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {}
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!localIterator.hasNext());
-      localRecommendTroopItem = (RecommendTroopItem)localIterator.next();
-    } while (!paramString.equals(localRecommendTroopItem.uin));
-    localRecommendTroopItem.hasRequestJoin = true;
     if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroop", 2, "updateJoinStatus, troopUin: " + paramString);
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
     }
-    notifyDataSetChanged();
   }
   
-  public void a(List<RecommendTroopItem> paramList)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramList != null)
+    aihw.a(this.a, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    l2 = -1L;
+    try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
+      l1 = l2;
+      if (localObject != null)
+      {
+        localObject = ((Header)localObject).getValue();
+        l1 = l2;
+        if (localObject != null)
+        {
+          l1 = Long.parseLong((String)localObject);
+          long l3 = System.currentTimeMillis();
+          l1 = l3 - l1;
+        }
+      }
     }
-  }
-  
-  protected abstract int b();
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem) {}
-  
-  protected abstract int c();
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem) {}
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((paramView == null) || (!(paramView.getTag() instanceof aiia))) {
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_AndroidViewView$OnClickListener, null);
-    }
-    for (;;)
+    catch (Exception localException)
     {
-      aiia localaiia = (aiia)paramView.getTag();
-      RecommendTroopItem localRecommendTroopItem = a(paramInt);
-      a(localaiia, localRecommendTroopItem, FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4, localRecommendTroopItem.uin));
-      c(localRecommendTroopItem);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      for (;;)
+      {
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
+          l1 = l2;
+        }
+      }
+    }
+    aihw.a(this.a, paramURLDrawable, l1);
+    paramView = paramView.getTag();
+    if (aiin.b((aihq)paramView))
+    {
+      paramView = (aiig)paramView;
+      if ((aiin.b(paramView)) && (!aihw.a(this.a).contains(paramView.k())))
+      {
+        aihw.a(this.a).add(paramView.k());
+        paramURLDrawable = paramView.m();
+        aihw.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.k()));
+      }
     }
   }
 }

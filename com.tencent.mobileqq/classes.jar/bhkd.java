@@ -1,32 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import mqq.util.WeakReference;
-
-class bhkd
-  extends Handler
+public abstract interface bhkd
 {
-  final WeakReference<bhkb> a;
+  public abstract void a(bhkc parambhkc, float paramFloat1, float paramFloat2);
   
-  public bhkd(bhkb parambhkb)
-  {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(parambhkb);
-  }
+  public abstract void a(bhkc parambhkc, bhke parambhke, float paramFloat1, float paramFloat2);
   
-  public void handleMessage(Message paramMessage)
-  {
-    bhkb localbhkb = (bhkb)this.a.get();
-    if (localbhkb == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localbhkb.e();
-  }
+  public abstract boolean a(bhkc parambhkc, float paramFloat1, float paramFloat2);
 }
 
 

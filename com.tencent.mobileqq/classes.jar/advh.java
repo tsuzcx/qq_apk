@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class advh
-  implements DialogInterface.OnClickListener
 {
-  public advh(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a = 1;
+  public ImageView a;
+  TextView a;
+  public String a;
 }
 
 

@@ -1,45 +1,40 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.forward.ForwardMixedMsgOption;
-import com.tencent.mobileqq.forward.ForwardReplyMsgOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.UUID;
 
-public class atmr
-  implements View.OnClickListener
+class atmr
+  implements atmx
 {
-  public atmr(ForwardMixedMsgOption paramForwardMixedMsgOption) {}
+  atmr(atmo paramatmo, TroopFileTransferManager.Item paramItem, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {}
-    }
-    for (;;)
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. Item.Id=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId() + " errCode:" + paramInt1);
+    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.hideSoftInputFromWindow();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.hasReplyText())
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeLevel = paramInt2;
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeMsg = paramString1;
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeDetailUrl = paramString2;
+      bflo.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+      if ((this.jdField_a_of_type_Atmo.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null))
       {
-        ((azye)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(340)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-        ForwardReplyMsgOption.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+        FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atmo.a.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.troopuin, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString());
+        if (localFileManagerEntity != null)
+        {
+          QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. Item.Id=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId() + " update about entity:" + localFileManagerEntity.nSessionId);
+          localFileManagerEntity.apkSafeLevel = paramInt2;
+          localFileManagerEntity.apkSafeMsg = paramString1;
+          localFileManagerEntity.apkSafeDetailUrl = paramString2;
+          this.jdField_a_of_type_Atmo.a.getFileManagerDataCenter().c(localFileManagerEntity);
+        }
       }
-      for (;;)
-      {
-        this.a.F();
-        break;
-        atnr localatnr = new atnr(this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localatnr.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692452), this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.addPreviewView(localatnr.b());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg not enter preview");
-      }
+    }
+    if (this.jdField_a_of_type_Atmo.a != null) {
+      ((anrb)this.jdField_a_of_type_Atmo.a.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER)).e(new Object[] { this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
     }
   }
 }

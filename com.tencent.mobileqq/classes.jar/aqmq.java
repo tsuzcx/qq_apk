@@ -1,15 +1,27 @@
-import android.net.Uri;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.1;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.2;
+import com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.3;
 
 public class aqmq
+  implements aqmh
 {
-  public static final Uri a;
-  public static final String[] a;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqmh jdField_a_of_type_Aqmh;
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.1(this, paramInt));
+  }
+  
+  public void a(aqmd paramaqmd)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.3(this, paramaqmd));
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.CameraOpenErrorCallbackForward.2(this, paramInt));
   }
 }
 

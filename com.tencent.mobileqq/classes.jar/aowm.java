@@ -1,17 +1,16 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aowm
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class aowm
+  extends aoui
 {
-  aowm(aowk paramaowk, Context paramContext) {}
-  
-  public void callback(String paramString, Bitmap paramBitmap)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (paramBitmap != null) {
-      aowk.a(this.jdField_a_of_type_Aowk, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
-    }
+    paramQQAppInterface = new aowl(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "qzone_publicaccount";
+    return paramQQAppInterface;
   }
 }
 

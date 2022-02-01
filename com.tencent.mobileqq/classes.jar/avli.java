@@ -1,66 +1,134 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.1;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class avli
 {
-  public float a;
-  public int a;
-  public avlj a;
-  public avlm a;
-  public String a;
-  TimerTask a;
-  public boolean a;
-  public int b;
-  public String b = "non-ver";
+  public HashMap<String, String> a;
+  protected boolean a;
+  public String b;
   public boolean b;
-  public int c;
   public String c;
-  public boolean c;
-  public int d;
   public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e = true;
-  public int f = 50;
-  public String f;
-  public boolean f;
-  public int g = 30;
-  public String g;
-  public boolean g;
-  public int h = 0;
-  public String h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
   
-  public avli()
+  public avli(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "send";
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilTimerTask = new ActionGlobalData.1(this);
+    this("default", paramString1, paramString2);
+  }
+  
+  protected avli(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    c();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if ((localObject == null) || (((List)localObject).size() <= 0)) {
+      return false;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  protected String a()
+  {
+    return this.d + this.jdField_b_of_type_JavaLangString;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Float = this.jdField_c_of_type_Int;
-    ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 100L);
+    if (this.jdField_a_of_type_Boolean) {
+      d();
+    }
+    avlf.a(this);
+    this.jdField_a_of_type_Boolean = true;
+    if (!(this instanceof avlh)) {
+      avlf.e(this.d);
+    }
   }
   
-  public void a(avlj paramavlj)
+  public void b()
   {
-    this.jdField_a_of_type_Avlj = paramavlj;
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_b_of_type_Boolean = true;
+    } while ((this instanceof avlh));
+    avlf.d(this.d);
+  }
+  
+  void c()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put("loss", "0");
+      this.jdField_a_of_type_JavaUtilHashMap.put("benefit", "0");
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      return;
+    }
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    HashMap localHashMap1 = new HashMap();
+    for (;;)
+    {
+      String str;
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localHashMap1.putAll(this.jdField_a_of_type_JavaUtilHashMap);
+        if (localObject2 != null)
+        {
+          ??? = ((BaseApplicationImpl)localObject2).getApplicationContext();
+          localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+          if (localObject2 != null)
+          {
+            localObject2 = ((AppRuntime)localObject2).getAccount();
+            str = this.c;
+            if (!this.jdField_b_of_type_Boolean) {
+              break label98;
+            }
+            StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject2, str, true, 0L, 0L, localHashMap1, null);
+          }
+        }
+        c();
+        return;
+      }
+      label98:
+      StatisticCollector.getInstance((Context)???).collectPerformance((String)localObject2, str, false, 0L, 0L, localHashMap2, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     avli
  * JD-Core Version:    0.7.0.1
  */

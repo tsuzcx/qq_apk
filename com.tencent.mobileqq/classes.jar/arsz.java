@@ -1,34 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
 
 public class arsz
-  implements Animation.AnimationListener
 {
-  public arsz(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  private long a;
+  private long b;
+  private long c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public long a()
   {
-    this.a.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
-    this.a.c.setBackgroundDrawable(null);
-    this.a.jdField_a_of_type_Arta.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
-    }
-    Face2FaceDetailBaseView.a(this.a, true);
+    return this.a;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
-    }
+    this.a = 0L;
+    this.b = 0L;
+  }
+  
+  public long b()
+  {
+    this.b = (SystemClock.uptimeMillis() - this.c);
+    this.a += this.b;
+    b();
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.c = SystemClock.uptimeMillis();
+  }
+  
+  public long c()
+  {
+    return this.b;
   }
 }
 

@@ -1,11 +1,21 @@
-class bddr
-  implements bddo
+import android.opengl.EGLContext;
+
+public class bddr
 {
-  bddr(bddq parambddq) {}
+  int jdField_a_of_type_Int;
+  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  int b;
   
-  public void a()
+  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    bddq.a(this.a);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      return;
+    }
   }
 }
 

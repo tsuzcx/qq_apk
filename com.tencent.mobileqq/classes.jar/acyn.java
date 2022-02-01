@@ -1,64 +1,32 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.open.adapter.OpenAppClient;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.manager.TicketManager;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.qapmsdk.qqbattery.QQBatteryMonitor;
+import com.tencent.qapmsdk.qqbattery.monitor.HookMethodCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class acyn
-  implements View.OnClickListener
+  extends acyk
 {
-  acyn(acyf paramacyf, int paramInt, admx paramadmx, String paramString) {}
-  
-  public void onClick(View paramView)
+  public HookMethodCallback a()
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_Int == -3000) && ((this.jdField_a_of_type_Admx.a.istroop == 1001) || (this.jdField_a_of_type_Admx.a.istroop == 10002)))
+    return QQBatteryMonitor.getInstance().getWakeLockHook();
+  }
+  
+  public void a()
+  {
+    try
     {
-      localObject = PkgTools.Decodecgi(this.jdField_a_of_type_JavaLangString);
-      localObject = bfwg.a(this.jdField_a_of_type_Acyf.a.app, this.jdField_a_of_type_Acyf.a, (String)localObject);
-      if (localObject != null) {
-        ((bfvp)localObject).a();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      JavaHookBridge.findAndHookMethod(PowerManager.class, "newWakeLock", new Object[] { Integer.TYPE, String.class, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { Long.TYPE, this });
+      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "release", new Object[] { Integer.TYPE, this });
       return;
-      if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_Acyf.a, this.jdField_a_of_type_Acyf.a.app, this.jdField_a_of_type_Admx.a.action, this.jdField_a_of_type_Admx.a.shareAppID, this.jdField_a_of_type_Admx.a.msgtype);
-      }
-      else if (this.jdField_a_of_type_Int == -3005)
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_Acyf.a, this.jdField_a_of_type_Acyf.a.app, this.jdField_a_of_type_Admx.a.action, this.jdField_a_of_type_Admx.a.shareAppID, this.jdField_a_of_type_Admx.a.msgtype);
-      }
-      else if (this.jdField_a_of_type_Int == -3001)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("schemaurl", this.jdField_a_of_type_JavaLangString);
-        String str = this.jdField_a_of_type_Acyf.a.app.getCurrentAccountUin();
-        ((Bundle)localObject).putString("uin", str);
-        ((Bundle)localObject).putString("vkey", ((TicketManager)this.jdField_a_of_type_Acyf.a.app.getManager(2)).getSkey(str));
-        OpenAppClient.a(this.jdField_a_of_type_Acyf.a, (Bundle)localObject);
-      }
-      else if (agjt.a(this.jdField_a_of_type_Admx.a))
-      {
-        AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_Admx.a, this.jdField_a_of_type_Acyf.a.a, aagn.a(paramView));
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003)) {
-          this.jdField_a_of_type_Admx.a.isInMixedMsg = true;
-        }
-        agjt.a(this.jdField_a_of_type_Acyf.a.app, paramView.getContext(), paramView, this.jdField_a_of_type_Admx.a, this.jdField_a_of_type_Acyf.a.a, false, true, true, null);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
     }
   }
 }

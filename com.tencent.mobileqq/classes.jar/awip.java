@@ -1,16 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class awip
-  extends BroadcastReceiver
+class awip
+  implements DialogInterface.OnClickListener
 {
-  public awip(NearbyJsInterface paramNearbyJsInterface) {}
+  awip(awio paramawio, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.tribePersonalDataModify();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

@@ -31,7 +31,7 @@ public class MiniSDKConst
   public static final String KEY_BASELIB_MIN_UPDATE_TIME = "baselib_min_update_time";
   public static final String MINI_FILE_LOG_PATH = "/Tencent/mini/files/";
   public static final String MINI_SDK_PATCH_VERSION = "0";
-  public static final String MINI_SDK_VERSION = "1.8.0";
+  public static final String MINI_SDK_VERSION = "1.9.0";
   public static final String MINI_TAG = "[mini] ";
   public static final int MULTI_ENTER_ROOM_RESULT_DEVICE_TAKE_UP = -2;
   public static final int MULTI_ENTER_ROOM_RESULT_DUPLICATE_CALL = -3;

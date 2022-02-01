@@ -1,23 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class atqn
-  implements acxa
+  extends bciz
 {
-  public atqn(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
-  
-  public void onAfterStartActivity()
+  public atqn(FaceDecoder paramFaceDecoder)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    super(paramFaceDecoder);
   }
   
-  public void onBeforeStartActivity() {}
-  
-  public void onCancel()
+  protected bcie<bcfj, bcnt> a(FaceDecoder paramFaceDecoder)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    return new atqo(paramFaceDecoder);
   }
 }
 

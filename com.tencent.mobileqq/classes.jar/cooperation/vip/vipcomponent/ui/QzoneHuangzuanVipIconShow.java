@@ -7,12 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
 import android.util.LruCache;
-import blcc;
-import blce;
-import blcg;
-import blci;
-import blcj;
-import blcn;
+import bmot;
+import bmov;
+import bmox;
+import bmoz;
+import bmpa;
+import bmpe;
 import com.tencent.mobileqq.utils.ViewUtils;
 import cooperation.qzone.statistic.Singleton;
 import cooperation.vip.vipcomponent.util.VipResourcesListener;
@@ -25,7 +25,7 @@ public class QzoneHuangzuanVipIconShow
   public static int ICON_ADJUST_ANNUALVIP_MARGIN_TOP = (int)(ViewUtils.getDensity() * 9.0F);
   public static int ICON_ANNUALVIP_HEIGHT = 0;
   public static int ICON_ANNUALVIP_WIDTH = (int)(27.0F * ViewUtils.getDensity());
-  public static int ICON_DEFAULT_SIZE = blcg.b;
+  public static int ICON_DEFAULT_SIZE = bmox.b;
   public static final int LOWEST_LEVEL = 1;
   public static int LV9_GUAN_ICON_HEIGHT = 0;
   public static int LV9_GUAN_ICON_MARGIN_LEFT = 0;
@@ -57,7 +57,7 @@ public class QzoneHuangzuanVipIconShow
   private static final int RES_RIBBON_LEVEL = 3;
   public static int RIBBON_ICON_BG_MARGIN_LEFT;
   public static final int RIBBON_ICON_LEVEL_MARGIN_TOP;
-  private static final Singleton<QzoneHuangzuanVipIconShow, Context> sSingleton = new blce();
+  private static final Singleton<QzoneHuangzuanVipIconShow, Context> sSingleton = new bmov();
   private Context context;
   private LruCache<String, Drawable.ConstantState> layerCache;
   private int[] mAnunalGrayVipIdListInAvatar = { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
@@ -100,21 +100,21 @@ public class QzoneHuangzuanVipIconShow
     this.layerCache = new LruCache(5120);
   }
   
-  private void addToCache(blcc paramblcc, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, String paramString, int paramInt4, boolean paramBoolean2, int paramInt5)
+  private void addToCache(bmot parambmot, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, String paramString, int paramInt4, boolean paramBoolean2, int paramInt5)
   {
     paramString = new StringBuilder().append(paramInt1).append("_").append(paramInt2).append("_").append(paramInt3).append("_").append(paramBoolean1).append("_").append(paramString).append("_").append(paramInt4).append("_");
     if (paramBoolean2) {}
     for (paramInt1 = 1;; paramInt1 = 2)
     {
       paramString = paramInt1 + "_" + paramInt5;
-      if (paramblcc != null) {
-        this.layerCache.put(paramString, paramblcc.a());
+      if (parambmot != null) {
+        this.layerCache.put(paramString, parambmot.a());
       }
       return;
     }
   }
   
-  private static Drawable getBackground(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, blcn paramblcn, int paramInt5)
+  private static Drawable getBackground(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, bmpe parambmpe, int paramInt5)
   {
     switch (paramInt1)
     {
@@ -127,29 +127,29 @@ public class QzoneHuangzuanVipIconShow
     {
       return null;
       if ((!TextUtils.isEmpty(paramString)) && (paramInt4 == 4)) {
-        return blcj.a(2, paramInt3, paramblcn);
+        return bmpa.a(2, paramInt3, parambmpe);
       }
       if (8 == paramInt2)
       {
         if (paramInt5 != 1) {
-          return blcj.a(3, paramInt3, paramblcn);
+          return bmpa.a(3, paramInt3, parambmpe);
         }
-        return blcj.a(2, paramInt3, paramblcn);
+        return bmpa.a(2, paramInt3, parambmpe);
       }
-      return blcj.a(2, paramInt3, paramblcn);
+      return bmpa.a(2, paramInt3, parambmpe);
       if ((!TextUtils.isEmpty(paramString)) && (paramInt4 == 4)) {
-        return blcj.a(1, paramInt3, paramblcn);
+        return bmpa.a(1, paramInt3, parambmpe);
       }
       if (8 == paramInt2)
       {
         if (paramInt5 != 1) {
-          return blcj.a(4, paramInt3, paramblcn);
+          return bmpa.a(4, paramInt3, parambmpe);
         }
-        return blcj.a(1, paramInt3, paramblcn);
+        return bmpa.a(1, paramInt3, parambmpe);
       }
-      return blcj.a(1, paramInt3, paramblcn);
+      return bmpa.a(1, paramInt3, parambmpe);
       if (8 == paramInt2) {
-        return blcj.a(5, paramInt3, paramblcn);
+        return bmpa.a(5, paramInt3, parambmpe);
       }
       if (paramInt2 != 0) {
         break;
@@ -158,30 +158,30 @@ public class QzoneHuangzuanVipIconShow
         return null;
       }
     } while (paramInt4 != 5);
-    return blcj.a(6, paramInt3, paramblcn);
-    return blcj.a(6, paramInt3, paramblcn);
+    return bmpa.a(6, paramInt3, parambmpe);
+    return bmpa.a(6, paramInt3, parambmpe);
   }
   
-  private Drawable getDefaultDrawable(int paramInt, blcn paramblcn)
+  private Drawable getDefaultDrawable(int paramInt, bmpe parambmpe)
   {
-    blcc localblcc = new blcc();
-    paramblcn = blcj.a(1, 1, paramblcn);
-    paramblcn.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt), getRealSize(ICON_DEFAULT_SIZE, paramInt));
-    localblcc.a(paramblcn);
-    return localblcc;
+    bmot localbmot = new bmot();
+    parambmpe = bmpa.a(1, 1, parambmpe);
+    parambmpe.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt), getRealSize(ICON_DEFAULT_SIZE, paramInt));
+    localbmot.a(parambmpe);
+    return localbmot;
   }
   
-  private boolean getDefaultDrawableFromUrl(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, String paramString, blcc paramblcc, blcn paramblcn, boolean paramBoolean2, boolean paramBoolean3, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
+  private boolean getDefaultDrawableFromUrl(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, String paramString, bmot parambmot, bmpe parambmpe, boolean paramBoolean2, boolean paramBoolean3, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (handlePersonalized(paramInt1, paramInt2, paramInt3, paramString, paramblcc, paramblcn, paramBoolean2, paramBoolean3, paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4)) {
+      if (handlePersonalized(paramInt1, paramInt2, paramInt3, paramString, parambmot, parambmpe, paramBoolean2, paramBoolean3, paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4)) {
         return true;
       }
     }
     else if (paramBoolean1)
     {
-      if (handleAnunalVip(paramInt3, paramblcc, paramblcn, paramBoolean2, paramBoolean3, paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4)) {
+      if (handleAnunalVip(paramInt3, parambmot, parambmpe, paramBoolean2, paramBoolean3, paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4)) {
         return true;
       }
     }
@@ -212,7 +212,7 @@ public class QzoneHuangzuanVipIconShow
     return (QzoneHuangzuanVipIconShow)sSingleton.get(null);
   }
   
-  private Drawable getLevelDrawable(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, blcn paramblcn)
+  private Drawable getLevelDrawable(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, bmpe parambmpe)
   {
     if ((paramInt3 <= 0) || (paramInt3 > 9)) {
       return null;
@@ -220,23 +220,23 @@ public class QzoneHuangzuanVipIconShow
     if (paramBoolean2)
     {
       if ((paramBoolean1) && (paramInt1 == 4)) {
-        return blcj.a(this.mAnunalGrayVipIdListInAvatar[(paramInt3 - 1)], paramInt2, paramblcn);
+        return bmpa.a(this.mAnunalGrayVipIdListInAvatar[(paramInt3 - 1)], paramInt2, parambmpe);
       }
-      return blcj.a(this.mNormalGrayVipIdListInAvatar[(paramInt3 - 1)], paramInt2, paramblcn);
+      return bmpa.a(this.mNormalGrayVipIdListInAvatar[(paramInt3 - 1)], paramInt2, parambmpe);
     }
     if ((paramBoolean1) && (paramInt1 == 7)) {
-      return blcj.a(this.mAnunalVipIdListInRibbon[(paramInt3 - 1)], paramInt2, paramblcn);
+      return bmpa.a(this.mAnunalVipIdListInRibbon[(paramInt3 - 1)], paramInt2, parambmpe);
     }
     if ((!paramBoolean1) && (paramInt1 == 7)) {
-      return blcj.a(this.mNormalVipIdListInRibbon[(paramInt3 - 1)], paramInt2, paramblcn);
+      return bmpa.a(this.mNormalVipIdListInRibbon[(paramInt3 - 1)], paramInt2, parambmpe);
     }
     if ((paramBoolean1) && (paramInt1 == 4)) {
-      return blcj.a(this.mAnunalVipIdListInAvatar[(paramInt3 - 1)], paramInt2, paramblcn);
+      return bmpa.a(this.mAnunalVipIdListInAvatar[(paramInt3 - 1)], paramInt2, parambmpe);
     }
-    return blcj.a(this.mNormalVipIdListInAvatar[(paramInt3 - 1)], paramInt2, paramblcn);
+    return bmpa.a(this.mNormalVipIdListInAvatar[(paramInt3 - 1)], paramInt2, parambmpe);
   }
   
-  private static Drawable getLv9Guan(int paramInt1, int paramInt2, int paramInt3, int paramInt4, blcn paramblcn)
+  private static Drawable getLv9Guan(int paramInt1, int paramInt2, int paramInt3, int paramInt4, bmpe parambmpe)
   {
     switch (paramInt1)
     {
@@ -244,9 +244,9 @@ public class QzoneHuangzuanVipIconShow
       return null;
     case 1: 
     case 2: 
-      return blcj.a(121, paramInt4, paramblcn);
+      return bmpa.a(121, paramInt4, parambmpe);
     }
-    return blcj.a(122, paramInt4, paramblcn);
+    return bmpa.a(122, paramInt4, parambmpe);
   }
   
   private static int getRealSize(int paramInt1, int paramInt2)
@@ -254,7 +254,7 @@ public class QzoneHuangzuanVipIconShow
     return (int)(paramInt2 / 100.0D * paramInt1);
   }
   
-  private static Drawable getWindsDrawalbe(int paramInt1, int paramInt2, int paramInt3, blcn paramblcn)
+  private static Drawable getWindsDrawalbe(int paramInt1, int paramInt2, int paramInt3, bmpe parambmpe)
   {
     if (paramInt2 != 9) {
       return null;
@@ -264,15 +264,15 @@ public class QzoneHuangzuanVipIconShow
     default: 
       return null;
     case 0: 
-      return blcj.a(120, paramInt3, paramblcn);
+      return bmpa.a(120, paramInt3, parambmpe);
     }
-    return blcj.a(119, paramInt3, paramblcn);
+    return bmpa.a(119, paramInt3, parambmpe);
   }
   
-  private boolean handleAnunalVip(int paramInt, blcc paramblcc, blcn paramblcn, boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
+  private boolean handleAnunalVip(int paramInt, bmot parambmot, bmpe parambmpe, boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
   {
-    paramblcn = blcj.a(7, 5, paramblcn);
-    if (paramblcn != null) {
+    parambmpe = bmpa.a(7, 5, parambmpe);
+    if (parambmpe != null) {
       if ((!paramBoolean1) || (paramDrawable2 == null)) {
         break label135;
       }
@@ -280,31 +280,31 @@ public class QzoneHuangzuanVipIconShow
     label135:
     for (int i = ANUAL_ICON_MARGIN_LEFT_IF_LV9;; i = 0)
     {
-      paramblcn.setBounds(getRealSize(ICON_DEFAULT_SIZE / 2 + ANUAL_ICON_MARGIN_LEFT + i, paramInt), getRealSize(ICON_ADJUST_ANNUALVIP_MARGIN_TOP, paramInt), getRealSize(i + (ICON_ANNUALVIP_WIDTH + ICON_DEFAULT_SIZE / 2 + ANUAL_ICON_MARGIN_LEFT), paramInt), getRealSize(ICON_ADJUST_ANNUALVIP_MARGIN_TOP + ICON_ANNUALVIP_HEIGHT, paramInt));
-      paramblcc.c(paramblcn);
-      if ((paramDrawable3 != null) && (paramDrawable4 != null) && (paramblcn != null) && ((!paramBoolean2) || (paramDrawable1 != null)) && ((!paramBoolean1) || (paramDrawable2 != null))) {
+      parambmpe.setBounds(getRealSize(ICON_DEFAULT_SIZE / 2 + ANUAL_ICON_MARGIN_LEFT + i, paramInt), getRealSize(ICON_ADJUST_ANNUALVIP_MARGIN_TOP, paramInt), getRealSize(i + (ICON_ANNUALVIP_WIDTH + ICON_DEFAULT_SIZE / 2 + ANUAL_ICON_MARGIN_LEFT), paramInt), getRealSize(ICON_ADJUST_ANNUALVIP_MARGIN_TOP + ICON_ANNUALVIP_HEIGHT, paramInt));
+      parambmot.c(parambmpe);
+      if ((paramDrawable3 != null) && (paramDrawable4 != null) && (parambmpe != null) && ((!paramBoolean2) || (paramDrawable1 != null)) && ((!paramBoolean1) || (paramDrawable2 != null))) {
         break;
       }
-      blci.c("vipIconShow", "nameplateDrawable is null");
+      bmoz.c("vipIconShow", "nameplateDrawable is null");
       return true;
     }
     return false;
   }
   
-  private Drawable handleCustomDiamond(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, int paramInt4, int paramInt5, blcc paramblcc, blcn paramblcn)
+  private Drawable handleCustomDiamond(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, int paramInt4, int paramInt5, bmot parambmot, bmpe parambmpe)
   {
-    Drawable localDrawable = blcj.a(paramString, paramInt2, 10, paramInt1, paramBoolean1, paramInt3, paramblcn);
+    Drawable localDrawable = bmpa.a(paramString, paramInt2, 10, paramInt1, paramBoolean1, paramInt3, parambmpe);
     if (localDrawable != null)
     {
       localDrawable.setBounds(0, 0, getRealSize(localDrawable.getIntrinsicWidth(), paramInt4), getRealSize(localDrawable.getIntrinsicHeight(), paramInt4));
-      paramblcc.g(localDrawable);
-      addToCache(paramblcc, paramInt5, paramInt4, paramInt1, paramBoolean2, paramString, paramInt3, paramBoolean1, paramInt2);
-      return paramblcc;
+      parambmot.g(localDrawable);
+      addToCache(parambmot, paramInt5, paramInt4, paramInt1, paramBoolean2, paramString, paramInt3, paramBoolean1, paramInt2);
+      return parambmot;
     }
-    return getDefaultDrawable(paramInt4, paramblcn);
+    return getDefaultDrawable(paramInt4, parambmpe);
   }
   
-  private void handleDownloadSuccess(int paramInt1, Drawable paramDrawable, int paramInt2, blcc paramblcc, int paramInt3)
+  private void handleDownloadSuccess(int paramInt1, Drawable paramDrawable, int paramInt2, bmot parambmot, int paramInt3)
   {
     int i = 0;
     if (paramDrawable == null) {
@@ -316,19 +316,19 @@ public class QzoneHuangzuanVipIconShow
       return;
     case 0: 
       paramDrawable.setBounds(getRealSize(ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth(), paramInt2) / 2, getRealSize(-PERSONALIZED_ICON_AVATAR_TOP, paramInt2), getRealSize(ICON_DEFAULT_SIZE + paramDrawable.getIntrinsicWidth(), paramInt2) / 2, getRealSize(paramDrawable.getIntrinsicHeight() - PERSONALIZED_ICON_AVATAR_TOP, paramInt2));
-      paramblcc.d(paramDrawable);
+      parambmot.d(paramDrawable);
       return;
     case 1: 
       paramDrawable.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt2), getRealSize(ICON_DEFAULT_SIZE, paramInt2));
-      paramblcc.a(paramDrawable);
+      parambmot.a(paramDrawable);
       return;
     case 2: 
       paramDrawable.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt2), getRealSize(ICON_DEFAULT_SIZE, paramInt2));
-      paramblcc.b(paramDrawable);
+      parambmot.b(paramDrawable);
       return;
     case 3: 
       paramDrawable.setBounds(0, getRealSize(RIBBON_ICON_LEVEL_MARGIN_TOP, paramInt2), getRealSize(ICON_DEFAULT_SIZE, paramInt2), getRealSize(ICON_DEFAULT_SIZE + RIBBON_ICON_LEVEL_MARGIN_TOP, paramInt2));
-      paramblcc.b(paramDrawable);
+      parambmot.b(paramDrawable);
       return;
     case 5: 
       paramInt1 = i;
@@ -336,62 +336,62 @@ public class QzoneHuangzuanVipIconShow
         paramInt1 = ANUAL_ICON_MARGIN_LEFT_IF_LV9;
       }
       paramDrawable.setBounds(getRealSize(ICON_DEFAULT_SIZE / 2 + ANUAL_ICON_MARGIN_LEFT + paramInt1, paramInt2), getRealSize(ICON_ADJUST_ANNUALVIP_MARGIN_TOP, paramInt2), getRealSize(paramInt1 + (ICON_ANNUALVIP_WIDTH + ICON_DEFAULT_SIZE / 2 + ANUAL_ICON_MARGIN_LEFT), paramInt2), getRealSize(ICON_ADJUST_ANNUALVIP_MARGIN_TOP + ICON_ANNUALVIP_HEIGHT, paramInt2));
-      paramblcc.c(paramDrawable);
+      parambmot.c(paramDrawable);
       return;
     case 6: 
       paramDrawable.setBounds(getRealSize(ICON_DEFAULT_SIZE - PERSONALIZED_ICON_ANUAL_LEFT, paramInt2), getRealSize(ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicHeight(), paramInt2), getRealSize(ICON_DEFAULT_SIZE - PERSONALIZED_ICON_ANUAL_LEFT + paramDrawable.getIntrinsicWidth(), paramInt2), getRealSize(ICON_DEFAULT_SIZE, paramInt2));
-      paramblcc.c(paramDrawable);
-      blci.b("@vipIcon", "left" + ICON_DEFAULT_SIZE / 2 + " width = " + paramDrawable.getIntrinsicWidth() + " defualt_width =" + ICON_DEFAULT_SIZE + " height = " + paramDrawable.getIntrinsicHeight());
+      parambmot.c(paramDrawable);
+      bmoz.b("@vipIcon", "left" + ICON_DEFAULT_SIZE / 2 + " width = " + paramDrawable.getIntrinsicWidth() + " defualt_width =" + ICON_DEFAULT_SIZE + " height = " + paramDrawable.getIntrinsicHeight());
       return;
     case 4: 
       paramDrawable.setBounds(0, getRealSize(PERSONALIZED_ICON_LV_MARGIN_TOP, paramInt2), getRealSize(PERSONALIZED_ICON_LV_WIDTH, paramInt2), getRealSize(PERSONALIZED_ICON_LV_HEIGHT + PERSONALIZED_ICON_LV_MARGIN_TOP, paramInt2));
-      paramblcc.b(paramDrawable);
+      parambmot.b(paramDrawable);
       return;
     case 7: 
       paramDrawable.setBounds(getRealSize(LV9_GUAN_ICON_MARGIN_LEFT, paramInt2), getRealSize(LV9_GUAN_ICON_MARGIN_TOP, paramInt2), getRealSize(LV9_GUAN_ICON_WIDTH + LV9_GUAN_ICON_MARGIN_LEFT, paramInt2), getRealSize(LV9_GUAN_ICON_HEIGHT + LV9_GUAN_ICON_MARGIN_TOP, paramInt2));
-      paramblcc.d(paramDrawable);
+      parambmot.d(paramDrawable);
       return;
     case 8: 
       paramDrawable.setBounds(getRealSize(LV9_WINDS_MARGIN_LEFT, paramInt2), getRealSize(LV9_WINDS_MARGIN_TOP, paramInt2), getRealSize(LV9_WINDS_WIDTH + LV9_WINDS_MARGIN_LEFT, paramInt2), getRealSize(LV9_WINDS_HEIGHT + LV9_WINDS_MARGIN_TOP, paramInt2));
-      paramblcc.e(paramDrawable);
+      parambmot.e(paramDrawable);
       return;
     case 9: 
       paramDrawable.setBounds(getRealSize((ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth()) / 2, paramInt2), getRealSize(ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicHeight(), paramInt2), getRealSize((ICON_DEFAULT_SIZE + paramDrawable.getIntrinsicWidth()) / 2, paramInt2), getRealSize(ICON_DEFAULT_SIZE, paramInt2));
-      paramblcc.f(paramDrawable);
-      blci.b("@vipIcon KINGBG", "left=" + (ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth()) / 2 + " width = " + paramDrawable.getIntrinsicWidth() + " defualt_width =" + ICON_DEFAULT_SIZE + " height = " + paramDrawable.getIntrinsicHeight() + " bitmapwith =" + (int)(((BitmapDrawable)paramDrawable).getBitmap().getWidth() / 2 * ViewUtils.getDensity()) + "bitmapheight =" + (int)(((BitmapDrawable)paramDrawable).getBitmap().getHeight() / 2 * ViewUtils.getDensity()));
+      parambmot.f(paramDrawable);
+      bmoz.b("@vipIcon KINGBG", "left=" + (ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth()) / 2 + " width = " + paramDrawable.getIntrinsicWidth() + " defualt_width =" + ICON_DEFAULT_SIZE + " height = " + paramDrawable.getIntrinsicHeight() + " bitmapwith =" + (int)(((BitmapDrawable)paramDrawable).getBitmap().getWidth() / 2 * ViewUtils.getDensity()) + "bitmapheight =" + (int)(((BitmapDrawable)paramDrawable).getBitmap().getHeight() / 2 * ViewUtils.getDensity()));
       return;
     }
     paramDrawable.setBounds(0, 0, getRealSize(paramDrawable.getIntrinsicWidth(), paramInt2), getRealSize(paramDrawable.getIntrinsicHeight(), paramInt2));
-    paramblcc.g(paramDrawable);
+    parambmot.g(paramDrawable);
   }
   
-  private Drawable handleLocationAvatar(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, blcc paramblcc, blcn paramblcn, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, boolean paramBoolean5, Drawable paramDrawable4)
+  private Drawable handleLocationAvatar(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, bmot parambmot, bmpe parambmpe, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, boolean paramBoolean5, Drawable paramDrawable4)
   {
-    Object localObject = paramblcc;
+    Object localObject = parambmot;
     if (paramInt3 == 4)
     {
       if (paramDrawable3 != null)
       {
         paramDrawable3.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4));
-        paramblcc.a(paramDrawable3);
+        parambmot.a(paramDrawable3);
       }
       if (paramDrawable4 != null)
       {
         paramDrawable4.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4));
-        paramblcc.b(paramDrawable4);
+        parambmot.b(paramDrawable4);
       }
       if (paramBoolean5)
       {
-        paramString2 = blcj.a(paramString2, 0, paramInt1, paramInt3, paramblcn);
+        paramString2 = bmpa.a(paramString2, 0, paramInt1, paramInt3, parambmpe);
         if (paramString2 != null)
         {
           paramString2.setBounds(getRealSize(ICON_DEFAULT_SIZE - paramString2.getIntrinsicWidth(), paramInt4) / 2, getRealSize(-PERSONALIZED_ICON_AVATAR_TOP, paramInt4), getRealSize(ICON_DEFAULT_SIZE + paramString2.getIntrinsicWidth(), paramInt4) / 2, getRealSize(paramString2.getIntrinsicHeight() - PERSONALIZED_ICON_AVATAR_TOP, paramInt4));
-          paramblcc.d(paramString2);
+          parambmot.d(paramString2);
         }
         if ((paramDrawable3 != null) && (paramDrawable4 != null) && (paramString2 != null) && ((!paramBoolean4) || (paramDrawable1 != null)) && ((!paramBoolean3) || (paramDrawable2 != null))) {
           break label257;
         }
-        localObject = getDefaultDrawable(paramInt4, paramblcn);
+        localObject = getDefaultDrawable(paramInt4, parambmpe);
       }
     }
     else
@@ -399,34 +399,34 @@ public class QzoneHuangzuanVipIconShow
       return localObject;
     }
     if ((paramDrawable3 == null) || (paramDrawable4 == null) || ((paramBoolean4) && (paramDrawable1 == null)) || ((paramBoolean3) && (paramDrawable2 == null))) {
-      return getDefaultDrawable(paramInt4, paramblcn);
+      return getDefaultDrawable(paramInt4, parambmpe);
     }
     label257:
-    addToCache(paramblcc, paramInt5, paramInt4, paramInt1, paramBoolean2, paramString1, paramInt3, paramBoolean1, paramInt2);
-    return paramblcc;
+    addToCache(parambmot, paramInt5, paramInt4, paramInt1, paramBoolean2, paramString1, paramInt3, paramBoolean1, paramInt2);
+    return parambmot;
   }
   
-  private Drawable handleLocationRibbon(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, blcc paramblcc, blcn paramblcn, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2)
+  private Drawable handleLocationRibbon(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, bmot parambmot, bmpe parambmpe, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    Drawable localDrawable2 = getBackground(paramInt2, paramInt1, 1, paramInt3, paramString2, paramblcn, paramInt5);
+    Drawable localDrawable2 = getBackground(paramInt2, paramInt1, 1, paramInt3, paramString2, parambmpe, paramInt5);
     if (localDrawable2 != null)
     {
       localDrawable2.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4));
-      paramblcc.a(localDrawable2);
+      parambmot.a(localDrawable2);
     }
     Drawable localDrawable1;
     if (!TextUtils.isEmpty(paramString2))
     {
-      localDrawable1 = blcj.a(paramString2, 4, paramInt1, paramInt3, paramblcn);
+      localDrawable1 = bmpa.a(paramString2, 4, paramInt1, paramInt3, parambmpe);
       paramString2 = localDrawable1;
       if (localDrawable1 != null)
       {
         localDrawable1.setBounds(0, getRealSize(PERSONALIZED_ICON_LV_MARGIN_TOP, paramInt4), getRealSize(PERSONALIZED_ICON_LV_WIDTH, paramInt4), getRealSize(PERSONALIZED_ICON_LV_HEIGHT + PERSONALIZED_ICON_LV_MARGIN_TOP, paramInt4));
-        paramblcc.b(localDrawable1);
+        parambmot.b(localDrawable1);
         paramString2 = localDrawable1;
       }
       if ((paramString2 == null) || (localDrawable2 == null) || ((paramBoolean4) && (paramDrawable1 == null)) || ((paramBoolean3) && (paramDrawable2 == null))) {
-        return getDefaultDrawable(paramInt4, paramblcn);
+        return getDefaultDrawable(paramInt4, parambmpe);
       }
     }
     else
@@ -434,52 +434,52 @@ public class QzoneHuangzuanVipIconShow
       if ((paramInt1 == 0) || (paramInt2 == 0)) {}
       for (boolean bool = true;; bool = false)
       {
-        localDrawable1 = getLevelDrawable(paramInt3, 3, paramBoolean1, paramInt1, bool, paramblcn);
+        localDrawable1 = getLevelDrawable(paramInt3, 3, paramBoolean1, paramInt1, bool, parambmpe);
         paramString2 = localDrawable1;
         if (localDrawable1 == null) {
           break;
         }
         localDrawable1.setBounds(0, getRealSize(RIBBON_ICON_LEVEL_MARGIN_TOP, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4), getRealSize(ICON_DEFAULT_SIZE + RIBBON_ICON_LEVEL_MARGIN_TOP, paramInt4));
-        paramblcc.b(localDrawable1);
+        parambmot.b(localDrawable1);
         paramString2 = localDrawable1;
         break;
       }
     }
-    addToCache(paramblcc, paramInt6, paramInt4, paramInt1, paramBoolean2, paramString1, paramInt3, paramBoolean1, paramInt2);
-    return paramblcc;
+    addToCache(parambmot, paramInt6, paramInt4, paramInt1, paramBoolean2, paramString1, paramInt3, paramBoolean1, paramInt2);
+    return parambmot;
   }
   
-  private Drawable handleNotLocationAvatar(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, blcc paramblcc, blcn paramblcn, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
+  private Drawable handleNotLocationAvatar(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, bmot parambmot, bmpe parambmpe, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
   {
-    blci.b("vipIcon", "come to annual vip icon show");
+    bmoz.b("vipIcon", "come to annual vip icon show");
     if ((paramInt5 == 1) && (!TextUtils.isEmpty(paramString2)))
     {
-      Drawable localDrawable = blcj.a(paramString2, 9, paramInt1, paramInt3, paramblcn, paramInt5);
-      blci.b("@vipIcon", "get is kingtype  url = " + paramString2);
+      Drawable localDrawable = bmpa.a(paramString2, 9, paramInt1, paramInt3, parambmpe, paramInt5);
+      bmoz.b("@vipIcon", "get is kingtype  url = " + paramString2);
       if (localDrawable != null)
       {
         localDrawable.setBounds(getRealSize((ICON_DEFAULT_SIZE - localDrawable.getIntrinsicWidth()) / 2, paramInt4), getRealSize(ICON_DEFAULT_SIZE - localDrawable.getIntrinsicHeight(), paramInt4), getRealSize((ICON_DEFAULT_SIZE + localDrawable.getIntrinsicWidth()) / 2, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4));
-        paramblcc.f(localDrawable);
+        parambmot.f(localDrawable);
       }
     }
     if (paramDrawable3 != null)
     {
       paramDrawable3.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4));
-      paramblcc.a(paramDrawable3);
+      parambmot.a(paramDrawable3);
     }
     if (paramDrawable4 != null)
     {
       paramDrawable4.setBounds(0, 0, getRealSize(ICON_DEFAULT_SIZE, paramInt4), getRealSize(ICON_DEFAULT_SIZE, paramInt4));
-      paramblcc.b(paramDrawable4);
+      parambmot.b(paramDrawable4);
     }
-    if (getDefaultDrawableFromUrl(paramInt1, paramBoolean1, paramInt3, paramInt4, paramString2, paramblcc, paramblcn, paramBoolean3, paramBoolean4, paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4)) {
-      return getDefaultDrawable(paramInt4, paramblcn);
+    if (getDefaultDrawableFromUrl(paramInt1, paramBoolean1, paramInt3, paramInt4, paramString2, parambmot, parambmpe, paramBoolean3, paramBoolean4, paramDrawable1, paramDrawable2, paramDrawable3, paramDrawable4)) {
+      return getDefaultDrawable(paramInt4, parambmpe);
     }
-    addToCache(paramblcc, paramInt6, paramInt4, paramInt1, paramBoolean2, paramString1, paramInt3, paramBoolean1, paramInt2);
-    return paramblcc;
+    addToCache(parambmot, paramInt6, paramInt4, paramInt1, paramBoolean2, paramString1, paramInt3, paramBoolean1, paramInt2);
+    return parambmot;
   }
   
-  private Drawable handleNotRibbon(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, blcc paramblcc, blcn paramblcn, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2)
+  private Drawable handleNotRibbon(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, bmot parambmot, bmpe parambmpe, boolean paramBoolean3, boolean paramBoolean4, Drawable paramDrawable1, Drawable paramDrawable2)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -490,32 +490,32 @@ public class QzoneHuangzuanVipIconShow
         bool1 = true;
       }
     }
-    Drawable localDrawable1 = getBackground(paramInt2, paramInt1, 1, paramInt3, paramString2, paramblcn, paramInt5);
+    Drawable localDrawable1 = getBackground(paramInt2, paramInt1, 1, paramInt3, paramString2, parambmpe, paramInt5);
     if ((paramInt1 == 0) || (paramInt2 == 0)) {}
     Drawable localDrawable2;
     for (bool2 = true;; bool2 = false)
     {
-      localDrawable2 = getLevelDrawable(paramInt3, 2, paramBoolean1, paramInt1, bool2, paramblcn);
+      localDrawable2 = getLevelDrawable(paramInt3, 2, paramBoolean1, paramInt1, bool2, parambmpe);
       if ((paramInt3 != 6) && (paramInt3 != 5) && (paramInt3 != 8)) {
         break;
       }
-      return handleNotLocationAvatar(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramInt5, paramInt6, paramblcc, paramblcn, paramBoolean3, paramBoolean4, paramDrawable1, paramDrawable2, localDrawable1, localDrawable2);
+      return handleNotLocationAvatar(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramInt5, paramInt6, parambmot, parambmpe, paramBoolean3, paramBoolean4, paramDrawable1, paramDrawable2, localDrawable1, localDrawable2);
     }
-    return handleLocationAvatar(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramInt6, paramblcc, paramblcn, paramBoolean3, paramBoolean4, paramDrawable1, paramDrawable2, localDrawable1, bool1, localDrawable2);
+    return handleLocationAvatar(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramInt6, parambmot, parambmpe, paramBoolean3, paramBoolean4, paramDrawable1, paramDrawable2, localDrawable1, bool1, localDrawable2);
   }
   
-  private boolean handlePersonalized(int paramInt1, int paramInt2, int paramInt3, String paramString, blcc paramblcc, blcn paramblcn, boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
+  private boolean handlePersonalized(int paramInt1, int paramInt2, int paramInt3, String paramString, bmot parambmot, bmpe parambmpe, boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
   {
-    paramblcn = blcj.a(paramString, 6, paramInt1, paramInt2, paramblcn);
-    blci.b("@vipIcon", "feeds personalized  url = " + paramString);
-    if (paramblcn != null)
+    parambmpe = bmpa.a(paramString, 6, paramInt1, paramInt2, parambmpe);
+    bmoz.b("@vipIcon", "feeds personalized  url = " + paramString);
+    if (parambmpe != null)
     {
-      paramblcn.setBounds(getRealSize(ICON_DEFAULT_SIZE - PERSONALIZED_ICON_ANUAL_LEFT, paramInt3), getRealSize(ICON_DEFAULT_SIZE - paramblcn.getIntrinsicHeight(), paramInt3), getRealSize(ICON_DEFAULT_SIZE - PERSONALIZED_ICON_ANUAL_LEFT + paramblcn.getIntrinsicWidth(), paramInt3), getRealSize(ICON_DEFAULT_SIZE, paramInt3));
-      paramblcc.c(paramblcn);
+      parambmpe.setBounds(getRealSize(ICON_DEFAULT_SIZE - PERSONALIZED_ICON_ANUAL_LEFT, paramInt3), getRealSize(ICON_DEFAULT_SIZE - parambmpe.getIntrinsicHeight(), paramInt3), getRealSize(ICON_DEFAULT_SIZE - PERSONALIZED_ICON_ANUAL_LEFT + parambmpe.getIntrinsicWidth(), paramInt3), getRealSize(ICON_DEFAULT_SIZE, paramInt3));
+      parambmot.c(parambmpe);
     }
-    if ((paramDrawable3 == null) || (paramDrawable4 == null) || (paramblcn == null) || ((paramBoolean2) && (paramDrawable1 == null)) || ((paramBoolean1) && (paramDrawable2 == null)))
+    if ((paramDrawable3 == null) || (paramDrawable4 == null) || (parambmpe == null) || ((paramBoolean2) && (paramDrawable1 == null)) || ((paramBoolean1) && (paramDrawable2 == null)))
     {
-      blci.c("vipIconShow", "personalized Drawable is null");
+      bmoz.c("vipIconShow", "personalized Drawable is null");
       return true;
     }
     return false;
@@ -596,7 +596,7 @@ public class QzoneHuangzuanVipIconShow
     //   22: aload 16
     //   24: areturn
     //   25: aload 8
-    //   27: invokestatic 418	blcb:a	(Ljava/lang/String;)I
+    //   27: invokestatic 418	bmos:a	(Ljava/lang/String;)I
     //   30: istore 11
     //   32: aload_0
     //   33: iload 11
@@ -613,11 +613,11 @@ public class QzoneHuangzuanVipIconShow
     //   53: astore 16
     //   55: aload 17
     //   57: ifnonnull -37 -> 20
-    //   60: new 223	blcc
+    //   60: new 223	bmot
     //   63: dup
-    //   64: invokespecial 247	blcc:<init>	()V
+    //   64: invokespecial 247	bmot:<init>	()V
     //   67: astore 19
-    //   69: new 422	blcf
+    //   69: new 422	bmow
     //   72: dup
     //   73: aload_0
     //   74: aload 9
@@ -630,7 +630,7 @@ public class QzoneHuangzuanVipIconShow
     //   87: iload 6
     //   89: iload_3
     //   90: iload_2
-    //   91: invokespecial 425	blcf:<init>	(Lcooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow;Lcooperation/vip/vipcomponent/util/VipResourcesListener;ILblcc;IIZLjava/lang/String;IZI)V
+    //   91: invokespecial 425	bmow:<init>	(Lcooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow;Lcooperation/vip/vipcomponent/util/VipResourcesListener;ILbmot;IIZLjava/lang/String;IZI)V
     //   94: astore 20
     //   96: iload_2
     //   97: iload 4
@@ -648,7 +648,7 @@ public class QzoneHuangzuanVipIconShow
     //   119: iload 11
     //   121: aload 19
     //   123: aload 20
-    //   125: invokespecial 429	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:handleCustomDiamond	(IIZZLjava/lang/String;IIILblcc;Lblcn;)Landroid/graphics/drawable/Drawable;
+    //   125: invokespecial 429	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:handleCustomDiamond	(IIZZLjava/lang/String;IIILbmot;Lbmpe;)Landroid/graphics/drawable/Drawable;
     //   128: astore 16
     //   130: goto -110 -> 20
     //   133: iconst_0
@@ -690,7 +690,7 @@ public class QzoneHuangzuanVipIconShow
     //   198: iload 6
     //   200: bipush 7
     //   202: aload 20
-    //   204: invokestatic 431	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:getLv9Guan	(IIIILblcn;)Landroid/graphics/drawable/Drawable;
+    //   204: invokestatic 431	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:getLv9Guan	(IIIILbmpe;)Landroid/graphics/drawable/Drawable;
     //   207: astore 16
     //   209: iload 13
     //   211: istore 12
@@ -718,7 +718,7 @@ public class QzoneHuangzuanVipIconShow
     //   264: invokevirtual 257	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   267: aload 19
     //   269: aload 16
-    //   271: invokevirtual 327	blcc:d	(Landroid/graphics/drawable/Drawable;)V
+    //   271: invokevirtual 327	bmot:d	(Landroid/graphics/drawable/Drawable;)V
     //   274: aload 16
     //   276: astore 9
     //   278: iload 13
@@ -729,7 +729,7 @@ public class QzoneHuangzuanVipIconShow
     //   286: iload_1
     //   287: bipush 8
     //   289: aload 20
-    //   291: invokestatic 433	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:getWindsDrawalbe	(IIILblcn;)Landroid/graphics/drawable/Drawable;
+    //   291: invokestatic 433	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:getWindsDrawalbe	(IIILbmpe;)Landroid/graphics/drawable/Drawable;
     //   294: astore 18
     //   296: iload 15
     //   298: istore 13
@@ -761,7 +761,7 @@ public class QzoneHuangzuanVipIconShow
     //   359: invokevirtual 257	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   362: aload 19
     //   364: aload 18
-    //   366: invokevirtual 344	blcc:e	(Landroid/graphics/drawable/Drawable;)V
+    //   366: invokevirtual 344	bmot:e	(Landroid/graphics/drawable/Drawable;)V
     //   369: aload 18
     //   371: astore 17
     //   373: aload 9
@@ -790,7 +790,7 @@ public class QzoneHuangzuanVipIconShow
     //   416: iload 14
     //   418: aload 16
     //   420: aload 17
-    //   422: invokespecial 435	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:handleLocationRibbon	(IIZZLjava/lang/String;IILjava/lang/String;IILblcc;Lblcn;ZZLandroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    //   422: invokespecial 435	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:handleLocationRibbon	(IIZZLjava/lang/String;IILjava/lang/String;IILbmot;Lbmpe;ZZLandroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
     //   425: astore 16
     //   427: goto -407 -> 20
     //   430: aload_0
@@ -810,7 +810,7 @@ public class QzoneHuangzuanVipIconShow
     //   454: iload 14
     //   456: aload 16
     //   458: aload 17
-    //   460: invokespecial 437	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:handleNotRibbon	(IIZZLjava/lang/String;IILjava/lang/String;IILblcc;Lblcn;ZZLandroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    //   460: invokespecial 437	cooperation/vip/vipcomponent/ui/QzoneHuangzuanVipIconShow:handleNotRibbon	(IIZZLjava/lang/String;IILjava/lang/String;IILbmot;Lbmpe;ZZLandroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
     //   463: astore 16
     //   465: goto -445 -> 20
     //   468: astore 5
@@ -839,8 +839,8 @@ public class QzoneHuangzuanVipIconShow
     //   18	446	16	localObject1	Object
     //   49	410	17	localObject2	Object
     //   146	224	18	localDrawable	Drawable
-    //   67	382	19	localblcc	blcc
-    //   94	357	20	localblcf	blcf
+    //   67	382	19	localbmot	bmot
+    //   94	357	20	localbmow	bmow
     // Exception table:
     //   from	to	target	type
     //   2	12	468	finally

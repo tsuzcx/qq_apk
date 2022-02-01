@@ -1,42 +1,61 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 
-public final class bmlr
-  implements zxu
+class bmlr
+  implements View.OnTouchListener
 {
-  public bmlr(FrameVideoHelper paramFrameVideoHelper, zxu paramzxu) {}
+  private float jdField_a_of_type_Float;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b;
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  bmlr(bmlo parambmlo) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bmbx.b("AEEditorMusicHelper", "[extractFrameForSmartMusic], onResult(), isSuccess=" + paramBoolean + ", dataArray=" + paramArrayList + ", frameSize=" + paramLong);
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null)
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (paramMotionEvent.getActionMasked() == 6) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    boolean bool = bmlo.a(this.jdField_a_of_type_Bmlo).onTouchEvent(paramMotionEvent);
+    switch (paramMotionEvent.getAction())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("[extractFrameForSmartMusic], executeTime=").append(this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a()).append(", frameCount=");
-      if (paramArrayList == null)
+    }
+    do
+    {
+      do
       {
-        i = 0;
-        bmbx.a("AEEditorMusicHelper", i + ", size=" + this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.b() + "KB");
-      }
-    }
-    else if (this.jdField_a_of_type_Zxu != null)
-    {
-      if (paramArrayList != null) {
-        break label169;
-      }
-    }
-    label169:
-    for (paramArrayList = null;; paramArrayList = new ArrayList(paramArrayList))
-    {
-      this.jdField_a_of_type_Zxu.a(paramBoolean, paramArrayList, paramLong);
-      if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null) {
-        this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
-      }
-      return;
-      i = paramArrayList.size();
-      break;
-    }
+        do
+        {
+          do
+          {
+            return bool;
+            this.jdField_a_of_type_Float = paramMotionEvent.getX();
+            this.b = paramMotionEvent.getY();
+          } while (bmlo.a(this.jdField_a_of_type_Bmlo) == null);
+          bmlo.a(this.jdField_a_of_type_Bmlo).a("onActionDown", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
+          return bool;
+        } while ((bmlo.a(this.jdField_a_of_type_Bmlo).isInProgress()) || (paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_Boolean) || (bmlo.a(this.jdField_a_of_type_Bmlo) == null));
+        bmlo.a(this.jdField_a_of_type_Bmlo).a("onActionMove", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
+        return bool;
+        if ((Math.abs(this.jdField_a_of_type_Float - f1) > ViewConfiguration.getTouchSlop()) || (Math.abs(this.b - f2) > ViewConfiguration.getTouchSlop())) {
+          break;
+        }
+        paramView = bmlo.a(this.jdField_a_of_type_Bmlo, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (bmlo.a(this.jdField_a_of_type_Bmlo) != null) {
+          bmlo.a(this.jdField_a_of_type_Bmlo).a(paramView[0], paramView[1]);
+        }
+      } while (!bmlo.d(this.jdField_a_of_type_Bmlo));
+      bmmb.a("ar_activity_click", "1");
+      bmlo.c(this.jdField_a_of_type_Bmlo, false);
+      return bool;
+      this.jdField_a_of_type_Boolean = false;
+    } while (bmlo.a(this.jdField_a_of_type_Bmlo) == null);
+    bmlo.a(this.jdField_a_of_type_Bmlo).a("onActionUp", new float[] { 0.0F, 0.0F });
+    return bool;
   }
 }
 

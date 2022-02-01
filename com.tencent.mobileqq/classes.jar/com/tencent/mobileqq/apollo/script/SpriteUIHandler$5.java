@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amat;
-import amau;
+import ancb;
+import ancc;
 import android.os.Message;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -35,7 +35,7 @@ class SpriteUIHandler$5
       return;
     }
     if (3 == this.a) {
-      if ((amat.a(SpriteUIHandler.a(this.this$0).a())) && (amat.b(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
+      if ((ancb.a(SpriteUIHandler.a(this.this$0).a())) && (ancb.b(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
       {
         if (QLog.isColorLevel()) {
           QLog.d("cmshow_scripted_SpriteUIHandler", 2, "addOrRemoveMargin hidden but not should remove margin");

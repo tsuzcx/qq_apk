@@ -1,33 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class avee
-  implements DialogInterface.OnClickListener
+  extends MSFServlet
 {
-  public avee(LocationDialogUtil.6 param6) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
-    }
-    if (BaseActivity.sTopActivity != null) {
-      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
-    }
-    try
+    long l = 0L;
+    if (QLog.isColorLevel())
     {
-      avcw.a(BaseActivity.sTopActivity.app).a(true);
-      label79:
-      avdr.a(this.a.b, "0X800A769");
+      l = System.currentTimeMillis();
+      QLog.d("GameCenterUnissoServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      avec localavec = (avec)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.GAME_CENTER_UNISSO_HANDLER);
+      if (localavec != null) {
+        localavec.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("GameCenterUnissoServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
       return;
+      arrayOfByte = null;
     }
-    catch (Throwable paramDialogInterface)
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
     {
-      break label79;
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GameCenterUnissoServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      PkgTools.DWord2Byte(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
     }
   }
 }

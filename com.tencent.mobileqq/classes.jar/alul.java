@@ -1,30 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
+import java.util.concurrent.ConcurrentHashMap;
 
-class alul
-  implements EIPCResultCallback
+public class alul
+  implements Comparable<alul>
 {
-  alul(aluk paramaluk) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public alul(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
   {
-    if (paramEIPCResult.code == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
-      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + aluk.a(this.a));
-      if (!aluk.a(this.a).equals(paramEIPCResult))
-      {
-        aluk.a(this.a).removeMessages(1);
-        aluk.a(this.a).sendEmptyMessage(1);
-      }
-      return;
-    }
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
-    aluk.a(this.a).removeMessages(1);
-    aluk.a(this.a).sendEmptyMessage(1);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
+    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(alul paramalul)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramalul.jdField_a_of_type_Long);
   }
 }
 

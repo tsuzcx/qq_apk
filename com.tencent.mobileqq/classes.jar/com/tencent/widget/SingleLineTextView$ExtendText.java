@@ -11,7 +11,7 @@ import android.text.Layout;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import bcdb;
+import bdjw;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableColorStateList;
 import java.lang.reflect.Method;
@@ -176,7 +176,7 @@ class SingleLineTextView$ExtendText
             str = "get color from state list fail, state is " + Arrays.toString(paramArrayOfInt) + " but the state list is " + this.mTextColor + " curTs: " + SystemClock.uptimeMillis();
             str = str + " colorFromReflect: " + i;
             QLog.e("SingleLineTextView", 1, str);
-            bcdb.a(new IllegalStateException(str), str);
+            bdjw.a(new IllegalStateException(str), str);
             mColorStateListErrorReported = true;
           }
         }

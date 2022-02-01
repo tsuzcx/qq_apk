@@ -1,17 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
 
 public class nyt
-  extends AnimatorListenerAdapter
+  implements Animation.AnimationListener
 {
-  public nyt(VideoCoverView paramVideoCoverView) {}
+  public nyt(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

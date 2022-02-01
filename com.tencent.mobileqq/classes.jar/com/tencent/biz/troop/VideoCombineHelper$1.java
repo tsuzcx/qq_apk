@@ -1,17 +1,17 @@
 package com.tencent.biz.troop;
 
-import zpq;
-import zpy;
-import zqa;
+import aafb;
+import aafj;
+import aafl;
 
 public class VideoCombineHelper$1
   implements Runnable
 {
-  public VideoCombineHelper$1(zpq paramzpq, zqa paramzqa, zpy paramzpy) {}
+  public VideoCombineHelper$1(aafb paramaafb, aafl paramaafl, aafj paramaafj) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Zqa, this.jdField_a_of_type_Zpy);
+    this.this$0.a(this.jdField_a_of_type_Aafl, this.jdField_a_of_type_Aafj);
   }
 }
 

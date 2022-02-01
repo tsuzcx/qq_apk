@@ -1,6 +1,18 @@
-public abstract interface bnnx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bnnx
+  implements View.OnClickListener
 {
-  public abstract void b(float paramFloat);
+  bnnx(bnnu parambnnu) {}
+  
+  public void onClick(View paramView)
+  {
+    bnqm.a().am();
+    bnnu.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

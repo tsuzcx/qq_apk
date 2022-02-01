@@ -1,24 +1,86 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2.1;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bfdo
-  extends ClickableSpan
+public class bfdo
+  implements View.OnClickListener
 {
-  bfdo(String paramString, MessageRecord paramMessageRecord) {}
+  bfdo(bfdm parambfdm) {}
   
   public void onClick(View paramView)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    avxi.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
+    bfdu localbfdu = (bfdu)paramView.getTag();
+    Object localObject;
+    boolean bool;
+    if ((localbfdu != null) && (localbfdu.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localbfdu.jdField_a_of_type_JavaLangObject != null))
+    {
+      localObject = "";
+      if (!(localbfdu.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label263;
+      }
+      localObject = ((Friends)localbfdu.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localbfdu.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      {
+        if (!localbfdu.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label329;
+        }
+        bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbfdu.jdField_a_of_type_JavaLangString, (String)localObject, 4, "-1");
+        label108:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
+        }
+        if (localbfdu.jdField_a_of_type_Long == 1007L) {
+          this.a.jdField_a_of_type_Bfeq.b();
+        }
+        localbfdu.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.c)
+        {
+          if (!localbfdu.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label352;
+          }
+          paramView.setContentDescription(localbfdu.d.getText().toString() + anvx.a(2131701992));
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.a();
+      if (AppSetting.c) {
+        paramView.postDelayed(new ContactListAdapter.2.1(this, paramView), 2000L);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label263:
+        if ((localbfdu.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+        {
+          localObject = ((PhoneContact)localbfdu.jdField_a_of_type_JavaLangObject).name;
+          break;
+        }
+        if (!(localbfdu.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
+          break;
+        }
+        localObject = (RelationTroopEntity)localbfdu.jdField_a_of_type_JavaLangObject;
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(((RelationTroopEntity)localObject).troopInfo.troopuin);
+      }
+      label329:
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbfdu.jdField_a_of_type_JavaLangString, (String)localObject, 0, "-1");
+      break label108;
+      label352:
+      paramView.setContentDescription(localbfdu.d.getText().toString() + anvx.a(2131701991));
+    }
   }
 }
 

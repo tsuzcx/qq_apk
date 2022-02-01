@@ -1,17 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-final class alxo
-  implements EIPCResultCallback
+public class alxo
+  implements bldx
 {
-  alxo(long paramLong) {}
+  public alxo(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    alvx.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
+    this.a.a = true;
+    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 

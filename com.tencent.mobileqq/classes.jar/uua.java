@@ -1,12 +1,8 @@
 class uua
-  implements uqy
 {
-  uua(utx paramutx, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
-  
-  public void a(urj paramurj)
-  {
-    utx.a(this.jdField_a_of_type_Utx, paramurj, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  String b;
 }
 
 

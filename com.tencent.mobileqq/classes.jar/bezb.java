@@ -1,117 +1,112 @@
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bezb
-  extends SSLSocketFactory
+  extends blgi
 {
-  private final String jdField_a_of_type_JavaLangString = bezb.class.getSimpleName();
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-  private HttpsURLConnection jdField_a_of_type_JavaxNetSslHttpsURLConnection;
+  protected LayoutInflater a;
+  protected boolean a;
   
-  public bezb(HttpsURLConnection paramHttpsURLConnection)
+  public bezb(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection = paramHttpsURLConnection;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public Socket createSocket()
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+  }
+  
+  public Object getItem(int paramInt)
   {
     return null;
   }
   
-  public Socket createSocket(String paramString, int paramInt)
+  public long getItemId(int paramInt)
   {
-    return null;
+    return 0L;
   }
   
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getRequestProperty("Host");
-    if (localObject == null) {}
+    View localView;
+    Object localObject;
+    int i;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562235, null);
+      paramView = new bezc(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369972));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377330));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369960));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369954));
+      localView.setTag(paramView);
+      localObject = (TroopBarPOI)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopBarPOI)localObject).c);
+      ImageView localImageView = paramView.jdField_b_of_type_AndroidWidgetImageView;
+      if (!((TroopBarPOI)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.c)) {
+        break label261;
+      }
+      i = 0;
+      label139:
+      localImageView.setVisibility(i);
+      if (TextUtils.isEmpty(((TroopBarPOI)localObject).d)) {
+        break label268;
+      }
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((TroopBarPOI)localObject).d);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      label177:
+      if (paramInt != 0) {
+        break label280;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      label189:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label291;
+      }
+      localView.setBackgroundResource(17170445);
+    }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "customized createSocket. host: " + paramString);
-      }
-      localObject = paramSocket.getInetAddress();
-      if (paramBoolean) {
-        paramSocket.close();
-      }
-      SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-      paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket((InetAddress)localObject, paramInt);
-      paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-      if (Build.VERSION.SDK_INT >= 17)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Setting SNI hostname");
-        }
-        localSSLCertificateSocketFactory.setHostname(paramSocket, paramString);
-      }
-      for (;;)
-      {
-        localObject = paramSocket.getSession();
-        if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(paramString, (SSLSession)localObject)) {
-          break;
-        }
-        paramSocket.close();
-        throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "No documented SNI support on Android <4.2, trying with reflection");
-        }
-        try
-        {
-          paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
-      }
-      return paramSocket;
-      paramString = localException;
+      localView.setContentDescription(((TroopBarPOI)localObject).c);
+      localView.setFocusable(true);
+      localView.setFocusableInTouchMode(true);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bezc)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label261:
+      i = 8;
+      break label139;
+      label268:
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label177;
+      label280:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      break label189;
+      label291:
+      localView.setBackgroundResource(2130848370);
     }
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return new String[0];
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return new String[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezb
  * JD-Core Version:    0.7.0.1
  */

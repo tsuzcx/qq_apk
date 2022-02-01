@@ -2,9 +2,9 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bgyo;
-import bgzb;
-import bgzd;
+import bijg;
+import bijt;
+import bijv;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import java.io.IOException;
 class WebSoService$3
   implements Runnable
 {
-  WebSoService$3(WebSoService paramWebSoService, File paramFile, String paramString, bgzb parambgzb, Uri paramUri) {}
+  WebSoService$3(WebSoService paramWebSoService, File paramFile, String paramString, bijt parambijt, Uri paramUri) {}
   
   public void run()
   {
@@ -28,19 +28,19 @@ class WebSoService$3
       if (!TextUtils.isEmpty(str))
       {
         l = System.currentTimeMillis();
-        if (bgyo.a(str).equals(this.jdField_a_of_type_JavaLangString))
+        if (bijg.a(str).equals(this.jdField_a_of_type_JavaLangString))
         {
           if (QLog.isColorLevel()) {
             QLog.d("WebSoService", 2, "verify html success cost=" + (System.currentTimeMillis() - l));
           }
-          this.jdField_a_of_type_Bgzb.a(str);
+          this.jdField_a_of_type_Bijt.a(str);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("WebSoService", 2, "verify html fail cost=" + (System.currentTimeMillis() - l));
         }
-        bgzd.a(this.jdField_a_of_type_AndroidNetUri);
-        this.jdField_a_of_type_Bgzb.a("");
+        bijv.a(this.jdField_a_of_type_AndroidNetUri);
+        this.jdField_a_of_type_Bijt.a("");
         return;
       }
     }
@@ -49,8 +49,8 @@ class WebSoService$3
       if (QLog.isColorLevel()) {
         QLog.d("WebSoService", 2, "deal eTag exception=" + localIOException.getMessage());
       }
-      bgzd.a(this.jdField_a_of_type_AndroidNetUri);
-      this.jdField_a_of_type_Bgzb.a("");
+      bijv.a(this.jdField_a_of_type_AndroidNetUri);
+      this.jdField_a_of_type_Bijt.a("");
       localIOException.printStackTrace();
       return;
     }
@@ -59,7 +59,7 @@ class WebSoService$3
       if (QLog.isColorLevel()) {
         QLog.d("WebSoService", 2, "verify load data exception=" + localOutOfMemoryError.getMessage());
       }
-      this.jdField_a_of_type_Bgzb.a("");
+      this.jdField_a_of_type_Bijt.a("");
       localOutOfMemoryError.printStackTrace();
       VipUtils.a(null, "webview_report", "0X8006511", "0X8006511", 1, 1, null);
     }

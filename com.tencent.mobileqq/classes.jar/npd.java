@@ -1,24 +1,16 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
 
 class npd
-  implements bjoe
+  implements DialogInterface.OnClickListener
 {
-  npd(noy paramnoy, Activity paramActivity, String paramString, bjnw parambjnw) {}
+  npd(npc paramnpc) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      noy.c(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    bdla.b(AVGameRoomCenterFragment.a(this.a.a).app, "dc00898", "", "", "0X800B692", "0X800B692", 0, 0, "", "", "", "");
   }
 }
 

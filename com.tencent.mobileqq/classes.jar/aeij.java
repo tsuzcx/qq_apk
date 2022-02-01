@@ -1,26 +1,37 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeij
-  extends MqqHandler
+  extends anvi
 {
-  public aeij(SubLoginActivity paramSubLoginActivity) {}
+  public aeij(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("MoveToGroupActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
     }
-    do
+    this.a.a(paramBoolean);
+    MoveToGroupActivity.a(this.a, true);
+  }
+  
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131694056), 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
     {
+      MoveToGroupActivity.b(this.a);
       return;
-      this.a.finish();
-      return;
-      this.a.e();
-      return;
-    } while (this.a.isFinishing());
-    SubLoginActivity.a(this.a, true);
+      QQToast.a(this.a, 2, this.a.getString(2131694058), 0).b(this.a.getTitleBarHeight());
+    }
   }
 }
 

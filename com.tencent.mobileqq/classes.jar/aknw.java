@@ -1,103 +1,25 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 
-public class aknw
+class aknw
+  extends akmj
 {
-  public static akns a(int paramInt)
+  protected aknw(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    switch (paramInt)
-    {
-    case 15: 
-    case 18: 
-    case 19: 
-    case 25: 
-    case 26: 
-    case 28: 
-    default: 
-      return null;
-    case 17: 
-      return new akoo(BaseApplication.getContext());
-    case 16: 
-      return new akog(BaseApplication.getContext());
-    case 10: 
-      return new akob(BaseApplication.getContext());
-    case 11: 
-    case 29: 
-      return new akoi(BaseApplication.getContext(), false);
-    case 24: 
-      return new akny(BaseApplication.getContext());
-    case 13: 
-      return new aknx(BaseApplication.getContext());
-    case 5: 
-      return new bkyo(BaseApplication.getContext());
-    case 14: 
-    case 27: 
-      return new akol(BaseApplication.getContext());
-    case 7: 
-      return new akoe(BaseApplication.getContext());
-    case 22: 
-      return new akom(BaseApplication.getContext());
-    case 3: 
-      return new akoh(BaseApplication.getContext(), 1);
-    case 2: 
-      return new akoh(BaseApplication.getContext(), 0);
-    case 21: 
-      return new akoa(BaseApplication.getContext());
-    case 8: 
-      return new akoj(BaseApplication.getContext());
-    case 4: 
-      return new akof(BaseApplication.getContext());
-    case 9: 
-      return new akop(BaseApplication.getContext());
-    case 12: 
-      return new akok(BaseApplication.getContext());
-    case 6: 
-      return new akoc(BaseApplication.getContext());
-    case 20: 
-      return new aknt(BaseApplication.getContext(), "");
-    }
-    return new akon(BaseApplication.getContext());
+    super(paramNewPhotoListActivity);
   }
   
-  public static Object a(int paramInt, byte[] paramArrayOfByte)
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
   {
-    Object localObject2 = null;
-    akns localakns = null;
-    Object localObject1 = localakns;
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 0) {
-        localObject1 = localakns;
-      }
-    }
-    else {
-      return localObject1;
-    }
-    switch (paramInt)
-    {
-    }
-    for (localObject1 = localObject2;; localObject1 = new String(paramArrayOfByte))
-    {
-      localakns = a(paramInt);
-      if (localakns == null) {
-        break;
-      }
-      localakns.a(paramArrayOfByte);
-      return localakns;
-    }
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131694625, new Object[] { Integer.valueOf(i) });
   }
   
-  public static byte[] a(int paramInt, Object paramObject)
+  public void initData(Intent paramIntent)
   {
-    if (paramObject == null) {}
-    do
-    {
-      return null;
-      switch (paramInt)
-      {
-      }
-    } while (!(paramObject instanceof aknu));
-    return ((aknu)paramObject).a();
-    return ((String)paramObject).getBytes();
+    super.initData(paramIntent);
   }
 }
 

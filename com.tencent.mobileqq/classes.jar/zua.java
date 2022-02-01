@@ -1,36 +1,20 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zua
-  implements abla
+  implements View.OnClickListener
 {
-  public zua(TroopGiftPanel paramTroopGiftPanel) {}
+  public zua(CommentBottomBar paramCommentBottomBar) {}
   
-  public void onAdClicked(GdtAd paramGdtAd)
+  public void onClick(View paramView)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdClicked");
-  }
-  
-  public void onAdClosed(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdClosed");
-  }
-  
-  public void onAdFailedToLoad(GdtAd paramGdtAd, abkz paramabkz)
-  {
-    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramabkz.a());
-  }
-  
-  public void onAdImpression(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdImpression");
-  }
-  
-  public void onAdLoaded(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
-    TroopGiftPanel.a(this.a, paramGdtAd);
+    this.a.d();
+    if (CommentBottomBar.a(this.a) != null) {
+      CommentBottomBar.a(this.a).onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

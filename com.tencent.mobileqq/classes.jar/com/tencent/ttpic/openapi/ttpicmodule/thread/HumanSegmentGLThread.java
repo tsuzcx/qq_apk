@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 @TargetApi(18)
 public class HumanSegmentGLThread
 {
-  private static final int SEGMENT_HEIGHT = 256;
-  private static final int SEGMENT_WIDTH = 256;
+  private static final int SEGMENT_HEIGHT = 320;
+  private static final int SEGMENT_WIDTH = 320;
   private static final String TAG = "HumanSegmentGLThread";
   private ExpFilter expFilter = new ExpFilter();
   private final String htName = "HumanSegmentGLThread" + System.currentTimeMillis();

@@ -1,18 +1,36 @@
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.view.View;
 
-class axzw
+public abstract interface axzw
 {
-  axzw(axzu paramaxzu) {}
+  public abstract int a();
   
-  @QQPermissionDenied(1)
-  public void denied()
-  {
-    bfur.a(axzu.a(this.a), 2131697857, 2131697858);
-  }
+  public abstract long a();
   
-  @QQPermissionGrant(1)
-  public void grant() {}
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(axzx paramaxzx);
+  
+  public abstract void a(axzy paramaxzy);
+  
+  public abstract void a(axzz paramaxzz);
+  
+  public abstract void a(ayaa paramayaa);
+  
+  public abstract void a(ayab paramayab);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

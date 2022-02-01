@@ -3,8 +3,8 @@ package com.tencent.mobileqq.widget;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfvh;
-import bhgu;
+import bhdz;
+import birm;
 import com.tencent.mobileqq.data.Card;
 
 public class ProfileCardExtendFriendView$5
@@ -14,17 +14,17 @@ public class ProfileCardExtendFriendView$5
   
   public void run()
   {
-    if (bfvh.a(this.this$0.c, this.this$0.b.getWidth()) > 4)
+    if (bhdz.a(this.this$0.c, this.this$0.b.getWidth()) > 4)
     {
       this.this$0.c.setText(this.a.schoolName);
       ImageView localImageView = this.this$0.a;
       if (this.a.authState == 2L) {}
-      for (int i = 2130845045;; i = 2130845046)
+      for (int i = 2130845119;; i = 2130845120)
       {
         localImageView.setImageResource(i);
         this.this$0.a.setVisibility(0);
         if (ProfileCardExtendFriendView.e(this.this$0)) {
-          this.this$0.a.setOnClickListener(new bhgu(this));
+          this.this$0.a.setOnClickListener(new birm(this));
         }
         return;
       }

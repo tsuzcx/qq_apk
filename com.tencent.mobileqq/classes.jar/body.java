@@ -1,43 +1,11 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
+import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class body
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/ClipItemLongClickListener;", "", "onLongClick", "", "item", "Lcom/tencent/weseevideo/camera/mvauto/redo/CutModelKt;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface body
 {
-  public static String a = "ShortVideoGuideUtil";
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    if (VideoEnvironment.getShortVideoSoLibName() == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (ShortVideoUtils.isVideoSoLibLoaded()) {
-          break;
-        }
-        ShortVideoUtils.loadShortVideoSo(paramAppInterface);
-      } while (!ShortVideoUtils.isVideoSoLibLoaded());
-    } while ((AEResUtil.getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE) == 2) || (!bbtd.a().a()) || (bbxj.a() == 2));
-    return true;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    if (VideoEnvironment.getShortVideoSoLibName() == null) {}
-    do
-    {
-      return false;
-      if (ShortVideoUtils.isVideoSoLibLoaded()) {
-        break;
-      }
-      ShortVideoUtils.loadShortVideoSo(paramAppInterface);
-    } while (!ShortVideoUtils.isVideoSoLibLoaded());
-    return true;
-  }
+  public abstract void a(@Nullable CutModelKt paramCutModelKt);
 }
 
 

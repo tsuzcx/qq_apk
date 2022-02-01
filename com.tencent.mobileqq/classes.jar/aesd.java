@@ -1,35 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesd
-  implements DialogInterface.OnClickListener
+  implements beig
 {
-  public aesd(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, String paramString) {}
+  public aesd(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
-    {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getBusinessHandler(1)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatSettingActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      return;
+    this.a.m();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("start_status");
+    if (i == 1) {
+      this.a.m();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694109, 0);
+    do
+    {
+      do
+      {
+        return;
+        if (i == 2)
+        {
+          this.a.m();
+          return;
+        }
+      } while (i != 3);
+      if (!(this.a.jdField_c_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        break;
+      }
+      i = paramBundle.getInt("percent");
+      paramBundle = String.valueOf(i) + "%";
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramBundle);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
+    return;
+    if (QQSettingMe.f(this.a)) {}
+    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130846049);; localDrawable = this.a.a.getResources().getDrawable(2130846050))
+    {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      if (!(localDrawable instanceof Animatable)) {
+        break;
+      }
+      ((Animatable)localDrawable).start();
+      break;
+    }
   }
 }
 

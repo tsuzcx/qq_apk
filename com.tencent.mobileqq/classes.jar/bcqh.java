@@ -1,61 +1,341 @@
-import android.app.Activity;
-import android.content.Intent;
+import ColorNick.QC.readItemInfoReq;
+import ColorNick.QC.readItemInfoRsp;
+import GROUP.MessageRemindReq;
+import GROUP.MessageRemindRsp;
+import MQQ.GetRoamToastReq;
+import MQQ.GetRoamToastRsp;
+import ProfileLogic.QC.readUserInfoReq;
+import ProfileLogic.QC.readUserInfoRsp;
+import ProfileLogic.QC.setUserFlagReq;
+import ProfileLogic.QC.setUserFlagRsp;
+import ProfileLogic.QC.setUserProfileReq;
+import ProfileLogic.QC.setUserProfileRsp;
+import QC.BubbleRecommendReq;
+import QC.BubbleRecommendRsp;
+import QC.FaceReq;
+import QC.FaceRsp;
+import QC.FontRecommendReq;
+import QC.FontRecommendRsp;
+import QC.SetFontBubbleReq;
+import QC.SetFontBubbleRsp;
+import QC.UniGetRsp;
+import QC.UniLoginCheckReq;
+import QC.UniLoginCheckRsp;
+import QC.UniSetRsp;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.QZoneShareManager;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class bcqh
+public class bcqh
+  extends aauq
 {
-  public static void a(Activity paramActivity, Bundle paramBundle, int paramInt)
+  private static int jdField_a_of_type_Int;
+  private static ConcurrentHashMap<String, bhyv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
   {
-    Object localObject = paramBundle;
-    if (paramBundle == null) {
-      localObject = new Bundle();
+    if (paramFromServiceMsg == null) {
+      return null;
     }
-    String str1 = ((Bundle)localObject).getString("title");
-    String str2 = ((Bundle)localObject).getString("summary");
-    String str3 = ((Bundle)localObject).getString("imageUrl");
-    String str4 = ((Bundle)localObject).getString("targetUrl");
-    String str5 = ((Bundle)localObject).getString("sourceName");
-    String str6 = ((Bundle)localObject).getString("iconUrl");
-    localObject = ((Bundle)localObject).getString("sourceUrl");
-    String str7 = paramActivity.getString(2131695880, new Object[] { str1 });
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (paramBundle = " ";; paramBundle = "web")
+    paramToServiceMsg = new UniPacket(true);
+    try
     {
-      bfyv.a(paramActivity, 1001, 1, "web_share", "", str3, str1, str2, str7, str4, "web", null, null, null, paramBundle, null, null, null, str6, str5, "", null, paramInt, (String)localObject, -1L);
-      return;
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = paramToServiceMsg.getByClass("rsp", paramT);
+      return paramToServiceMsg;
     }
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.e("VasService", 1, "decodeWUP: ", paramToServiceMsg);
+    }
+    return null;
   }
   
-  public static void a(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
+  public static void a(bhyv parambhyv, String paramString)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = new QZoneShareData();
-    paramBundle.mTitle = localBundle.getString("title");
-    paramBundle.mSummary = localBundle.getString("summary");
-    String str = localBundle.getString("imageUrl");
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(str);
-    paramBundle.mImageUrls = localArrayList;
-    paramBundle.targetUrl = localBundle.getString("targetUrl");
-    paramBundle.iUrlInfoFrm = -1;
-    paramBundle.mShareBeginTime = System.currentTimeMillis();
-    paramBundle.from = 0;
-    QZoneShareManager.shareToQzone(paramActivity, paramString, paramBundle, null, paramInt);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, parambhyv);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, Intent paramIntent, String paramString)
+  public static void a(String paramString)
   {
-    QLog.d(paramString, 2, "handleShareToFriend: resultCode=" + paramInt);
-    paramActivity.setResult(paramInt);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasService", 2, "decode: cmd=" + paramToServiceMsg.getServiceCmd());
+    }
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramFromServiceMsg.getWupBuffer());
+      if (paramToServiceMsg.getServiceCmd().equals("FriendClone.CloneAuthStatus"))
+      {
+        int i = ((Integer)localUniPacket.getByClass("", Integer.valueOf(-1))).intValue();
+        paramFromServiceMsg = new ArrayList();
+        int j = paramToServiceMsg.extraData.getInt("operation", -1);
+        paramFromServiceMsg.add(Integer.valueOf(i));
+        paramFromServiceMsg.add(Integer.valueOf(j));
+        if (j == 257)
+        {
+          boolean bool = ((Boolean)localUniPacket.getByClass("bOpenAuth", new Boolean(false))).booleanValue();
+          paramFromServiceMsg.add(Boolean.valueOf(bool));
+          if (QLog.isColorLevel()) {
+            QLog.d("VasService", 2, "decode: ret=" + i + " openAuth=" + bool + " funName=" + localUniPacket.getFuncName());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("VasService", 2, "decode: ret=" + i + " funName=" + localUniPacket.getFuncName());
+        }
+      }
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.e("VasService", 1, "decode error: ", paramToServiceMsg);
+      return null;
+    }
+    if (paramToServiceMsg.getServiceCmd().equals("groupnick.readitem"))
+    {
+      paramFromServiceMsg = (readItemInfoRsp)localUniPacket.getByClass("stRsp", new readItemInfoRsp());
+      paramToServiceMsg = paramFromServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("VasService", 2, "decode: ret =  funName = " + localUniPacket.getFuncName() + " infoRsp = " + paramFromServiceMsg.toString());
+        return paramFromServiceMsg;
+      }
+    }
+    else
+    {
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.readUserInfo")) {
+        return (readUserInfoRsp)localUniPacket.getByClass("stRsp", new readUserInfoRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserProfile")) {
+        return (setUserProfileRsp)localUniPacket.getByClass("stRsp", new setUserProfileRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserFlag")) {
+        return (setUserFlagRsp)localUniPacket.getByClass("stRsp", new setUserFlagRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo")) {
+        return (MessageRemindRsp)localUniPacket.getByClass("stRsp", new MessageRemindRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend")) {
+        return (FontRecommendRsp)localUniPacket.getByClass("rsp", new FontRecommendRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend")) {
+        return (BubbleRecommendRsp)localUniPacket.getByClass("rsp", new BubbleRecommendRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble")) {
+        return (SetFontBubbleRsp)localUniPacket.getByClass("rsp", new SetFontBubbleRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast")) {
+        return (GetRoamToastRsp)localUniPacket.getByClass("stRsp", new GetRoamToastRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("Face.setFace")) {
+        return (FaceRsp)localUniPacket.getByClass("rsp", new FaceRsp());
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("QCUniBusinessLogin.check")) {
+        return (UniLoginCheckRsp)localUniPacket.getByClass("rsp", new UniLoginCheckRsp());
+      }
+      if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd())) {
+        return a(paramToServiceMsg, paramFromServiceMsg, new UniSetRsp());
+      }
+      if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd())) {
+        return a(paramToServiceMsg, paramFromServiceMsg, new UniGetRsp());
+      }
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(bhyv.a(paramToServiceMsg)))
+      {
+        paramToServiceMsg = ((bhyv)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(bhyv.a(paramToServiceMsg))).a(paramToServiceMsg, paramFromServiceMsg, localUniPacket);
+        return paramToServiceMsg;
+      }
+      return null;
+      paramToServiceMsg = paramFromServiceMsg;
+    }
+    return paramToServiceMsg;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasService", 2, "encodeReqMsg: cmd=" + paramToServiceMsg.getServiceCmd());
+    }
+    boolean bool;
+    if (paramToServiceMsg.getServiceCmd().equals("FriendClone.CloneAuthStatus"))
+    {
+      i = paramToServiceMsg.extraData.getInt("operation", -1);
+      if (i == 257)
+      {
+        paramUniPacket.setFuncName("getCloneAuthStatus");
+        paramUniPacket.setServantName("MQQ.FriendCloneServer.FriendCloneObj");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        localObject = paramToServiceMsg.extraData.getString("uUin");
+        bool = paramToServiceMsg.extraData.getBoolean("bOpenAuth", false);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          break label153;
+        }
+        QLog.e("VasService", 2, "encodeReqMsg: uin is empty");
+      }
+    }
+    label153:
+    do
+    {
+      do
+      {
+        return false;
+      } while (i != 258);
+      paramUniPacket.setFuncName("setCloneAuthStatus");
+      break;
+      paramUniPacket.put("uUin", Long.valueOf(Long.parseLong((String)localObject)));
+      paramUniPacket.put("bOpenAuth", Boolean.valueOf(bool));
+      if (QLog.isColorLevel()) {
+        QLog.d("VasService", 2, "encodeReqMsg: svName=" + paramUniPacket.getServantName() + " funName=" + paramUniPacket.getFuncName() + " uin=" + paramUniPacket.getByClass("uUin", new Long(1L)) + " openAuth=" + paramUniPacket.getByClass("bOpenAuth", new Boolean(false)));
+      }
+      return true;
+      if (paramToServiceMsg.getServiceCmd().equals("groupnick.readitem"))
+      {
+        paramUniPacket.setFuncName("readItemInfo");
+        paramUniPacket.put("stReq", (readItemInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
+        paramUniPacket.setServantName("QC.readGroupNickServer.readGroupNickObj");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.readUserInfo"))
+      {
+        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
+        paramUniPacket.setFuncName("ReadUserProfile");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (readUserInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserProfile"))
+      {
+        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
+        paramUniPacket.setFuncName("SetUserProfile");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (setUserProfileReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserFlag"))
+      {
+        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
+        paramUniPacket.setFuncName("SetUserFlag");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (setUserFlagReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo"))
+      {
+        paramUniPacket.setServantName("GROUP.GroupCareServer.GroupCareObj");
+        paramUniPacket.setFuncName("getMessageRemindInfo");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (MessageRemindReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend"))
+      {
+        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
+        paramUniPacket.setFuncName("getFontRecommend");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (FontRecommendReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend"))
+      {
+        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
+        paramUniPacket.setFuncName("getBubbleRecommend");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (BubbleRecommendReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("QCUniBusinessLogin.check"))
+      {
+        paramUniPacket.setServantName("QC.UniBusinessLoginServer.UniBusinessLoginObj");
+        paramUniPacket.setFuncName("UniLoginCheck");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (UniLoginCheckReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble"))
+      {
+        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
+        paramUniPacket.setFuncName("setFontBubble");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (SetFontBubbleReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast"))
+      {
+        paramUniPacket.setServantName("MQQ.RoamWrapServer.RoamWrapObj");
+        paramUniPacket.setFuncName("GetRoamToast");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("stReq", (GetRoamToastReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if (paramToServiceMsg.getServiceCmd().equals("Face.setFace"))
+      {
+        paramUniPacket.setServantName("QC.FaceServer.FaceObj");
+        paramUniPacket.setFuncName("setFace");
+        i = jdField_a_of_type_Int;
+        jdField_a_of_type_Int = i + 1;
+        paramUniPacket.setRequestId(i);
+        paramUniPacket.put("req", (FaceReq)paramToServiceMsg.extraData.get("req"));
+        return true;
+      }
+      if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
+        paramUniPacket.setFuncName("uniSet");
+        paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
+        return true;
+      }
+      if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
+        paramUniPacket.setFuncName("uniGet");
+        paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
+        return true;
+      }
+    } while (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(bhyv.a(paramToServiceMsg)));
+    Object localObject = (bhyv)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(bhyv.a(paramToServiceMsg));
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    ((bhyv)localObject).a(paramToServiceMsg, paramUniPacket, i);
+    return true;
+  }
+  
+  public String[] a()
+  {
+    return bcqg.a;
   }
 }
 

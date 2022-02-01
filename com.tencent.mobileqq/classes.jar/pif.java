@@ -1,15 +1,6 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class pif
-  implements FileFilter
+public abstract interface pif
 {
-  pif(pid parampid) {}
-  
-  public boolean accept(File paramFile)
-  {
-    return (!paramFile.getName().endsWith(".json")) && (!paramFile.getName().equalsIgnoreCase("__MACOSX"));
-  }
+  public abstract void a(String paramString, Object paramObject);
 }
 
 

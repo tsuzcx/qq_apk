@@ -1,6 +1,6 @@
 public abstract interface apjh
 {
-  public abstract void a(apjg paramapjg);
+  public abstract void a(boolean paramBoolean);
 }
 
 

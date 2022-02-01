@@ -1,15 +1,42 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
 public class aecr
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aecr(RegisterNewBaseActivity.2 param2) {}
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aecr(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bmgl;
+import bnwd;
 import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 class AEEditorVideoEditFragment$16
   implements Runnable
 {
-  AEEditorVideoEditFragment$16(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, bmgl parambmgl) {}
+  AEEditorVideoEditFragment$16(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, bnwd parambnwd) {}
   
   public void run()
   {

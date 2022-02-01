@@ -1,21 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class anss
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  anss(ansq paramansq) {}
+  anss(ansr paramansr) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((ansq.a(this.a) != null) && (ansq.a(this.a).isShowing())) {
-      ansq.a(this.a).dismiss();
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      this.a.d(8);
     }
-    ((BaseActivity)this.a.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

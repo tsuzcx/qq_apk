@@ -3,7 +3,7 @@ package com.tencent.mobileqq.transfile;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import bftf;
+import bhbx;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
@@ -276,7 +276,7 @@ public class QZoneRecentPhotoDownloader
     if (localObject != null)
     {
       paramOutputStream = paramURLDrawableHandler;
-      if (bftf.a(((URL)localObject).getProtocol(), "troop_photo_qzone"))
+      if (bhbx.a(((URL)localObject).getProtocol(), "troop_photo_qzone"))
       {
         paramURLDrawableHandler = ((URL)localObject).getFile();
         paramDownloadParams = new File(paramURLDrawableHandler);

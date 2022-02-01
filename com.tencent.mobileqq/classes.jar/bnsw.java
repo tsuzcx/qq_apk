@@ -1,16 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tavcut.bean.CropConfig;
 
-class bnsw
-  implements CompoundButton.OnCheckedChangeListener
+public class bnsw
 {
-  bnsw(bnsv parambnsv) {}
+  public int a;
+  public CropConfig a;
+  public String a;
+  public int b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bnsw(String paramString, int paramInt1, int paramInt2, CropConfig paramCropConfig)
   {
-    bnsv.a(this.a).e = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = paramCropConfig;
   }
 }
 

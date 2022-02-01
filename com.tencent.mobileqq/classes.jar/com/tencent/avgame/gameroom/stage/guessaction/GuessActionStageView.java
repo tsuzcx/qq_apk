@@ -10,26 +10,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcef;
+import bdla;
 import com.tencent.avgame.gamelogic.data.Player;
 import com.tencent.avgame.session.AVGameUserInfo;
 import com.tencent.avgame.ui.AVGameText;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mzq;
-import ncp;
-import ned;
-import nee;
-import nef;
-import neg;
-import nep;
-import neq;
-import ner;
-import nju;
+import nfh;
+import nin;
+import nkv;
+import nkw;
+import nkx;
+import nky;
+import nlh;
+import nli;
+import nlj;
+import nqu;
 
 public class GuessActionStageView
   extends RelativeLayout
-  implements nee
+  implements nkw
 {
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -37,8 +37,8 @@ public class GuessActionStageView
   public TextView a;
   AVGameText jdField_a_of_type_ComTencentAvgameUiAVGameText;
   public Runnable a;
-  public ned a;
-  public nef a;
+  public nkv a;
+  public nkx a;
   boolean jdField_a_of_type_Boolean = false;
   View jdField_b_of_type_AndroidViewView;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -66,20 +66,20 @@ public class GuessActionStageView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558722, this, true);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365179));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378999));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378970));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379495));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379496));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378972));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378060));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370134);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367673);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new neq(this));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nju.b());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = nju.a();
-    this.jdField_a_of_type_Ned = new nep(this);
+    LayoutInflater.from(getContext()).inflate(2131558736, this, true);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365264));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379293));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379264));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379804));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379805));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379266));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378348));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370308);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367809);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new nli(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nqu.b());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = nqu.a();
+    this.jdField_a_of_type_Nkv = new nlh(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -96,14 +96,14 @@ public class GuessActionStageView
     return this.jdField_b_of_type_AndroidWidgetImageView;
   }
   
-  public ned a()
+  public nkv a()
   {
-    return this.jdField_a_of_type_Ned;
+    return this.jdField_a_of_type_Nkv;
   }
   
   public void a(Player paramPlayer, AVGameUserInfo paramAVGameUserInfo)
   {
-    if ((ncp.k <= 0) && (paramPlayer != null) && (paramAVGameUserInfo != null) && (paramAVGameUserInfo.hasCameraVideo()))
+    if ((nin.k <= 0) && (paramPlayer != null) && (paramAVGameUserInfo != null) && (paramAVGameUserInfo.hasCameraVideo()))
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
@@ -111,28 +111,28 @@ public class GuessActionStageView
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(mzq parammzq)
+  public void a(nfh paramnfh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GuessActionStageView", 2, "onUpdateCurTopic topic = " + parammzq);
+      QLog.d("GuessActionStageView", 2, "onUpdateCurTopic topic = " + paramnfh);
     }
-    if (parammzq == null) {}
+    if (paramnfh == null) {}
     do
     {
       return;
-      bcef.b(null, "dc00898", "", "", "0X800B04D", "0X800B04D", 1, 0, "", "", "", "");
-      localObject = parammzq.b();
+      bdla.b(null, "dc00898", "", "", "0X800B04D", "0X800B04D", 1, 0, "", "", "", "");
+      localObject = paramnfh.b();
       if ((localObject == null) || (((String)localObject).length() <= 5)) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nju.d());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nqu.d());
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ner(this, (String)localObject));
+      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new nlj(this, (String)localObject));
     } while ((this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0));
-    Object localObject = parammzq.a();
+    Object localObject = paramnfh.a();
     if ((localObject[0] != null) && (localObject[0].length() != 0) && (localObject[1] != null) && (localObject[1].length() != 0) && (localObject[2] != null) && (localObject[2].length() != 0))
     {
-      if (parammzq.a() != 0L) {}
+      if (paramnfh.a() != 0L) {}
       for (boolean bool = true;; bool = false)
       {
         this.jdField_a_of_type_Boolean = bool;
@@ -148,7 +148,7 @@ public class GuessActionStageView
         ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
         ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1600L);
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nju.c());
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nqu.c());
         break;
       }
       label321:
@@ -159,9 +159,9 @@ public class GuessActionStageView
     ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
-  public void a(neg paramneg)
+  public void a(nky paramnky)
   {
-    this.jdField_a_of_type_Ned.a(paramneg);
+    this.jdField_a_of_type_Nkv.a(paramnky);
   }
   
   public void a(boolean paramBoolean)
@@ -201,9 +201,9 @@ public class GuessActionStageView
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
   
-  public void setOnSwitchTopicClickListener(nef paramnef)
+  public void setOnSwitchTopicClickListener(nkx paramnkx)
   {
-    this.jdField_a_of_type_Nef = paramnef;
+    this.jdField_a_of_type_Nkx = paramnkx;
   }
 }
 

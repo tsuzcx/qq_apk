@@ -1,111 +1,88 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import mqq.app.AppActivity;
-import org.json.JSONObject;
-
 public class bdmy
+  extends bdmx
 {
-  public static String a = "tribe_publish_TribePublishLauncher";
+  public int a;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
   
-  public static Intent a(Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
+  public bdmy()
   {
-    if ((paramActivity instanceof AppActivity))
-    {
-      AppActivity localAppActivity = (AppActivity)paramActivity;
-      if (localAppActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
-      {
-        localAppActivity.requestPermissions(new bdmz(localAppActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
-        return null;
-      }
-    }
-    if (ljo.b(paramActivity)) {
-      return null;
-    }
-    if (a(paramActivity)) {
-      return null;
-    }
-    boolean bool = body.b(paramAppInterface);
-    if ((!bool) && (!NetworkUtil.isNetworkAvailable(paramActivity)))
-    {
-      QQToast.a(paramActivity, 2131717741, 0).a();
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "launchTakeVideoForTribe, videoSoUsable=" + bool);
-    }
-    paramAppInterface = new Bundle();
-    paramAppInterface.putString("options", paramString1);
-    paramAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
-    paramAppInterface.putBoolean("PeakConstants.ARG_ALBUM", false);
-    paramAppInterface.putInt("edit_video_type", 10012);
-    paramAppInterface.putInt("entrance_type", 105);
-    paramAppInterface.putInt("extra.busi_type", 11);
-    paramAppInterface.putInt("edit_video_way", 9);
-    paramAppInterface.putInt("key_camera_photo_edit_type", 1);
-    paramAppInterface.putInt("key_camera_video_edit_type", 5);
-    paramAppInterface.putInt("ability_flag", 3);
-    if (bool)
-    {
-      paramActivity = QIMCameraCaptureActivity.a(paramActivity, paramAppInterface);
-      if (!"barindex".equals(paramString2)) {
-        break label315;
-      }
-    }
-    label315:
-    for (int i = 1;; i = 2)
-    {
-      bcef.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "exp_findview", i, 0, "", "", "", "");
-      return paramActivity;
-      paramActivity = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
-      paramActivity.putExtras(paramAppInterface);
-      paramActivity.putExtra("pendingIntentClass", blih.class.getName());
-      paramActivity.putExtra("pendingIntentRequest", paramByte);
-      paramActivity.putExtra("pendingIntentAllWait", true);
-      break;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static JSONObject a(Bundle paramBundle)
+  public String a()
   {
-    if (paramBundle != null)
-    {
-      paramBundle = paramBundle.getString("options");
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "getTribeJsonExtra option: " + paramBundle);
-      }
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        return paramBundle;
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(a, 2, "getTribeJsonExtra: " + paramBundle);
-        }
-      }
-    }
-    return null;
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.l).append("|");
+    localStringBuffer.append(this.m).append("|");
+    localStringBuffer.append(this.n).append("|");
+    localStringBuffer.append(this.o).append("|");
+    localStringBuffer.append(this.p).append("|");
+    localStringBuffer.append(this.q).append("|");
+    localStringBuffer.append(this.r).append("|");
+    localStringBuffer.append(this.s).append("|");
+    localStringBuffer.append(this.t).append("|");
+    localStringBuffer.append(this.u).append("|");
+    return localStringBuffer.toString();
   }
   
-  private static boolean a(Context paramContext)
+  public String toString()
   {
-    boolean bool = false;
-    if (!babd.a())
-    {
-      bfur.a(paramContext, 230).setMessage(amtj.a(2131714106)).setPositiveButton(2131694201, new bdna()).show();
-      bool = true;
-    }
-    return bool;
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.l).append("|");
+    localStringBuffer.append(this.m).append("|");
+    localStringBuffer.append(this.n).append("|");
+    localStringBuffer.append(this.o).append("|");
+    localStringBuffer.append(this.p).append("|");
+    localStringBuffer.append(this.q).append("|");
+    localStringBuffer.append(this.r).append("|");
+    localStringBuffer.append(this.s).append("|");
+    localStringBuffer.append(this.t).append("|");
+    localStringBuffer.append(this.u).append("|");
+    return localStringBuffer.toString();
   }
 }
 

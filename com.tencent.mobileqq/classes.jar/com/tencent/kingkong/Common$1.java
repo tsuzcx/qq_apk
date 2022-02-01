@@ -1,7 +1,7 @@
 package com.tencent.kingkong;
 
-import acgp;
-import acgr;
+import acwx;
+import acwz;
 
 final class Common$1
   implements Runnable
@@ -9,7 +9,7 @@ final class Common$1
   public void run()
   {
     ReportUtil.a(2088, 0, 0, "");
-    acgp.a("KingKongCommon", "QQ Login " + acgr.o());
+    acwx.a("KingKongCommon", "QQ Login " + acwz.o());
   }
 }
 

@@ -1,34 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.content.Context;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class apgq
-  extends amsu
 {
-  public apgq(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  Context a;
+  public ayxa a;
+  public QQCustomDialog a;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public apgq(Context paramContext, ayxa paramayxa)
   {
-    if ((paramBoolean) && (paramString != null))
-    {
-      String str = ContactUtils.getBuddyNickName(this.a.app, paramString, false);
-      int i = 0;
-      while (i < this.a.c.getChildCount())
-      {
-        Object localObject = this.a.c.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof apgz)) && (paramString.equals(((apgz)((View)localObject).getTag()).a)))
-        {
-          localObject = (TextView)((View)localObject).findViewById(2131371777);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
-          }
-        }
-        i += 1;
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ayxa = paramayxa;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 230);
+    paramContext = new apgr(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690143, paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690142, paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131690145);
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
+    }
+    bdla.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
   }
 }
 

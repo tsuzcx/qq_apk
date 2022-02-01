@@ -4,11 +4,11 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class bh
-  extends asbj
+  extends atfq
 {
   public bh(LiteActivity paramLiteActivity) {}
   
-  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if (QLog.isColorLevel()) {
       QLog.d(LiteActivity.a, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
@@ -24,11 +24,11 @@ public class bh
       return;
       if (paramBoolean)
       {
-        aszt.a(paramLong2);
+        auea.a(paramLong2);
         return;
       }
     } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
-    aszt.a(paramLong2, paramInt2, paramString2);
+    auea.a(paramLong2, paramInt2, paramString2);
   }
 }
 

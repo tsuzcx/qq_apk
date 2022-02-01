@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-final class bklr
+class bklr
   implements DialogInterface.OnClickListener
 {
-  bklr(DialogInterface.OnClickListener paramOnClickListener) {}
+  bklr(bkll parambkll, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onClick(paramDialogInterface, paramInt);
     paramDialogInterface.dismiss();
+    RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(this.jdField_a_of_type_JavaLangString);
   }
 }
 

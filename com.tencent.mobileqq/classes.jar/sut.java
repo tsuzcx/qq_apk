@@ -1,19 +1,56 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class sut
-  implements svf
+public class sut
 {
-  sut(sup paramsup) {}
+  private JSONObject a;
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public sut(String paramString)
   {
-    svx.a(paramProteusItemData.b, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    paramViewBase = paramViewBase.getEventAttachedData();
-    if (!TextUtils.isEmpty(paramViewBase)) {
-      pay.d(paramContext, paramViewBase);
+    try
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.a = new JSONObject();
+        return;
+      }
+      this.a = new JSONObject(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public sut(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this.a = new JSONObject();
+    omx.a(paramString1, paramString2, paramString3, paramString4, this.a);
+  }
+  
+  public sut(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramString1);
+    omx.a(paramString2, paramString3, paramString4, paramString5, this.a);
+  }
+  
+  public String a()
+  {
+    return this.a.toString();
+  }
+  
+  protected void a(String paramString, Object paramObject)
+  {
+    try
+    {
+      this.a.put(paramString, paramObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

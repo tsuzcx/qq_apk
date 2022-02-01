@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface slo
-{
-  public abstract void a(View paramView);
-}
+class slo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

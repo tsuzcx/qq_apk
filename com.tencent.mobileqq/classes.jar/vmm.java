@@ -1,65 +1,53 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class vmm
-  implements INetEngine.INetEngineListener
+public class vmm
 {
-  vmm(vml paramvml) {}
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onResp(NetResp paramNetResp)
+  public static vmm a()
   {
-    if (paramNetResp.mResult == 3) {}
-    vmp localvmp;
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((HttpNetReq)paramNetResp.mReq).getUserData();
-      } while ((localObject == null) || (!(localObject instanceof vmp)));
-      localvmp = (vmp)localObject;
-      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((vmp)localObject).jdField_a_of_type_JavaLangString);
-      localvmp.jdField_b_of_type_Long = (System.currentTimeMillis() - localvmp.jdField_a_of_type_Long);
-    } while (localvmp.jdField_a_of_type_Vmi == null);
-    Object localObject = localvmp.jdField_a_of_type_Vmi;
-    if (paramNetResp.mResult == 0) {}
-    for (paramNetResp = new ErrorMessage(0, "");; paramNetResp = new ErrorMessage(paramNetResp.mErrCode, paramNetResp.mErrDesc))
-    {
-      ((vmi)localObject).a(localvmp, paramNetResp);
-      return;
-    }
+    return vmo.a();
   }
   
-  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
+  public stSimpleMetaFeed a()
   {
-    ??? = ???.getUserData();
-    if ((??? != null) && ((??? instanceof vmp)))
-    {
-      vmp localvmp = (vmp)???;
-      int i = (int)(paramLong1 / paramLong2 * 100.0D);
-      synchronized (PreloadDownloader.a)
-      {
-        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext())
-          {
-            vmt localvmt = (vmt)((WeakReference)localIterator.next()).get();
-            if (localvmt != null) {
-              localvmt.a(localvmp.jdField_b_of_type_JavaLangString, localvmp.jdField_a_of_type_Int, i, localvmp);
-            }
-          }
-        }
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
     }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    WSRedDotPushMsg localWSRedDotPushMsg = vnd.a();
+    if (localWSRedDotPushMsg != null) {
+      this.jdField_a_of_type_JavaLangString = localWSRedDotPushMsg.mPushId;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(boolean paramBoolean, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

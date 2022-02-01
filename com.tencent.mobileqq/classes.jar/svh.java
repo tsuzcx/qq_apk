@@ -1,51 +1,82 @@
-import android.text.TextUtils;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusRecommendItemData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.util.VersionUtils;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class svh
-  extends DefaultPTSLiteEventListener
+public class svh
+  extends suv
 {
-  svh(svg paramsvg) {}
+  svh(suw paramsuw) {}
   
-  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
+  private void a(BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel())
+    try
     {
-      paramView = new StringBuilder();
-      paramView.append("identifier = ").append(paramString).append("\n");
-      if (paramHashMap != null)
+      if (!suw.a(this.a).isShowing())
       {
-        Iterator localIterator = paramHashMap.entrySet().iterator();
-        while (localIterator.hasNext())
+        if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.isInFullScreenBlackList()))
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          paramView.append("dataSet [ ").append((String)localEntry.getKey()).append(" ] = ").append((String)localEntry.getValue()).append("\n");
+          suw.a(this.a).getWindow().setFlags(8, 8);
+          suw.a(this.a).getWindow().getDecorView().setSystemUiVisibility(suw.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
+          suw.a(this.a).setOnShowListener(new svl(this));
         }
+        suw.a(this.a).show();
+        olh.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new suu(omx.a(null, null, null, null, paramJSONObject)).i(paramBaseArticleInfo.innerUniqueID).a().a(), false);
       }
-      QLog.i("WebPtsLiteViewCreator", 2, "[onTapEventTriggered], " + paramView.toString());
+      return;
     }
-    qmg.a.a(paramPTSComposer, paramHashMap);
-    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    catch (Exception paramBaseArticleInfo)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "dislikeSheet.show exception=" + paramBaseArticleInfo);
+    }
+  }
+  
+  public int a()
+  {
+    return 7;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    suw.a(this.a, false);
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("channel_id", suw.a(this.a));
+      paramString.put("source", 1);
+      if ((paramBaseArticleInfo.mDislikeInfos != null) && (paramBaseArticleInfo.mDislikeInfos.size() > 0))
+      {
+        suw.a(this.a, (bkzi)bkzz.a(suw.a(this.a), null));
+        paramActionSheetItem = new svi(this);
+        suw.a(this.a).a(paramActionSheetItem);
+        paramActionSheetItem = new ReadInJoyDisLikeDialogView(suw.a(this.a));
+        paramActionSheetItem.setOnUninterestConfirmListener(new svj(this, paramBaseArticleInfo, paramString));
+        paramActionSheetItem.setUninterestData(paramBaseArticleInfo.mDislikeInfos);
+        suw.a(this.a).a(paramActionSheetItem, null);
+        a(paramBaseArticleInfo, paramString);
+        return;
+      }
+    }
+    catch (JSONException paramActionSheetItem)
     {
       do
       {
-        return;
-        paramString = (BaseData)svg.a(this.a).get(paramString);
-      } while (!(paramString instanceof ProteusRecommendItemData));
-      paramString = (ProteusRecommendItemData)paramString;
-      swy.a("id_native_recommend_small_container", paramString, null);
-    } while (TextUtils.isEmpty((CharSequence)paramHashMap.get("jumpUrl")));
-    paramString = pay.a((String)paramHashMap.get("jumpUrl"), paramString.c);
-    pay.d(svg.a(this.a), paramString);
+        for (;;)
+        {
+          paramActionSheetItem.printStackTrace();
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "文章ID为：" + paramBaseArticleInfo.mArticleID + "的负反馈数据为空!");
+    }
   }
 }
 

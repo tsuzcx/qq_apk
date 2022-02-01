@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import alqu;
-import amge;
+import ampv;
+import anhm;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,14 +17,14 @@ class ApolloRender$5
   
   public void run()
   {
-    if ((ApolloRender.getRenderViewByThreadId() instanceof alqu)) {}
-    for (int i = ((alqu)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
+    if ((ApolloRender.getRenderViewByThreadId() instanceof ampv)) {}
+    for (int i = ((ampv)ApolloRender.getRenderViewByThreadId()).getInitHeight();; i = 0)
     {
       int j = i;
       if (i == 0) {
         j = (int)DeviceInfoUtil.getPortraitHeight();
       }
-      String str = amge.b(this.a, this.b, j);
+      String str = anhm.b(this.a, this.b, j);
       ApolloRender.access$300(this.this$0).a(str);
       if (QLog.isColorLevel()) {
         QLog.d("sava_ApolloRender", 2, new Object[] { "addOnCommonScript:", str });

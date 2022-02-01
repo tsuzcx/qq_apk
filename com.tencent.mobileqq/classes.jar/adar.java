@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class adar
-  implements avtb<bgjx>
+class adar
+  extends JobSegment<awxt, awxt>
 {
-  public adar(ChatSettingForTroop paramChatSettingForTroop) {}
+  adar(adap paramadap, String paramString, int paramInt) {}
   
-  public void a(bgjx parambgjx)
+  protected void a(JobContext paramJobContext, awxt paramawxt)
   {
-    if (this.a.f) {
-      return;
-    }
-    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    localFormSimpleItem.setRightText(parambgjx.a);
-    localFormSimpleItem.setTag(2131374805, parambgjx);
-    bcef.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambgjx.c, 1, 0, "", "", "", "");
+    awxy.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new adas(this, this));
   }
 }
 

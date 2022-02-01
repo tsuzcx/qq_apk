@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.arch.lifecycle.LifecycleObserver;
+import com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerView;
 
-class alkm
-  implements View.OnClickListener
+public class alkm
+  implements LifecycleObserver
 {
-  alkm(alkj paramalkj, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
-  {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
-    alkj.a(this.jdField_a_of_type_Alkj);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public alkm(NewerGuideBannerView paramNewerGuideBannerView) {}
 }
 
 

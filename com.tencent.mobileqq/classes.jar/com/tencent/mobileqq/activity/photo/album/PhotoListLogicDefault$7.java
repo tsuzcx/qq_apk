@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ajqv;
+import akmj;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class PhotoListLogicDefault$7
   implements Runnable
 {
-  public PhotoListLogicDefault$7(ajqv paramajqv, String paramString) {}
+  public PhotoListLogicDefault$7(akmj paramakmj, String paramString) {}
   
   public void run()
   {

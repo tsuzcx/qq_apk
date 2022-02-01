@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.main;
 
-import aicl;
-import aiej;
-import airj;
-import ajey;
-import amzp;
+import aixk;
+import aizi;
+import ajmy;
+import akam;
 import android.os.Handler;
 import android.os.Message;
-import apub;
-import apus;
-import bcsz;
+import aoce;
+import aqxe;
+import aqxv;
+import bdzy;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
@@ -19,29 +20,29 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$15
   implements Runnable
 {
-  public MainAssistObserver$15(ajey paramajey, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$15(akam paramakam, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    label411:
-    label493:
+    label412:
+    label494:
     for (;;)
     {
       Object localObject3;
       try
       {
-        Object localObject1 = (airj)this.a.getManager(295);
-        localObject3 = (aiej)this.a.getManager(34);
-        int i = ((aiej)localObject3).d();
+        Object localObject1 = (ajmy)this.a.getManager(QQManagerFactory.CTENTRY_MNG);
+        localObject3 = (aizi)this.a.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+        int i = ((aizi)localObject3).d();
         if (QLog.isColorLevel()) {
           QLog.d("MainAssistObserver", 1, "updateTabContactNotify, totalCount = " + i);
         }
-        apus localapus = (apus)apub.a().a(691);
-        if ((localapus == null) || (!localapus.a(this.a.getCurrentAccountUin()))) {
-          break label493;
+        aqxv localaqxv = (aqxv)aqxe.a().a(691);
+        if ((localaqxv == null) || (!localaqxv.a(this.a.getCurrentAccountUin()))) {
+          break label494;
         }
-        int k = amzp.b(this.a);
-        int m = bcsz.a().a(this.a);
+        int k = aoce.b(this.a);
+        int m = bdzy.a().a(this.a);
         int j = i + k + m;
         i = j;
         if (QLog.isColorLevel())
@@ -66,7 +67,7 @@ public class MainAssistObserver$15
           this.this$0.a.sendMessage((Message)localObject3);
           return;
         }
-        if (((aiej)localObject3).a())
+        if (((aizi)localObject3).a())
         {
           localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
@@ -81,7 +82,7 @@ public class MainAssistObserver$15
           continue;
         }
         if (localException == null) {
-          break label411;
+          break label412;
         }
       }
       catch (Exception localException)
@@ -94,7 +95,7 @@ public class MainAssistObserver$15
       {
         localObject2 = null;
       }
-      else if (aicl.a(this.a).a())
+      else if (aixk.a(this.a).a())
       {
         localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
         ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);

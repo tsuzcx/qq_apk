@@ -1,61 +1,54 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
-public final class mok
-  extends mgr
+class mok
 {
-  WeakReference<ZimuToolbar> a;
+  public int a;
+  public moj a;
+  public boolean a;
   
-  public mok(AppInterface paramAppInterface, Context paramContext, ArrayList<mhr> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
+  public mok(moj parammoj, boolean paramBoolean)
   {
-    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
-    this.a = new WeakReference(paramZimuToolbar);
+    this.jdField_a_of_type_Moj = parammoj;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(String paramString1, long paramLong, String paramString2)
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    boolean bool1 = false;
-    int j;
     int i;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      j = getCount();
-      i = 1;
-      if (i < j)
+    if (this.jdField_a_of_type_Boolean) {
+      for (;;)
       {
-        mhr localmhr = a(i);
-        if ((localmhr != null) && (paramString2.equals(localmhr.a))) {
-          bool1 = true;
+        i = paramInt2;
+        if (paramInt1 >= paramInt2) {
+          break;
         }
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Moj.a.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        i = Math.min(this.jdField_a_of_type_Moj.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
+        System.arraycopy(this.jdField_a_of_type_Moj.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
+        this.jdField_a_of_type_Int += i;
+        paramInt1 += i;
       }
     }
-    for (;;)
+    if (a())
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem, id[" + paramString2 + "], find[" + bool1 + "], seq[" + paramLong + "], from[" + paramString1 + "], mCurSelectedPosition[" + this.d + "]");
-      }
-      j = this.d;
-      boolean bool2 = a(i);
-      if (bool2) {
-        a(paramLong, this.d);
-      }
-      QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem end, from[" + paramString1 + "], seq[" + paramLong + "], id[" + paramString2 + "], find[" + bool1 + "], index[" + i + "], Pos[" + j + "->" + this.d + "], selectResult[" + bool2 + "]");
-      return;
-      i += 1;
-      break;
-      i = 1;
+      i = 0;
+      return i;
     }
+    paramInt2 = Math.min(this.jdField_a_of_type_Moj.a.length - this.jdField_a_of_type_Int, paramInt2);
+    System.arraycopy(this.jdField_a_of_type_Moj.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int += paramInt2;
+    return paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Moj.a.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mok
  * JD-Core Version:    0.7.0.1
  */

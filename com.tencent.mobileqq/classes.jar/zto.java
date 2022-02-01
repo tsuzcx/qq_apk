@@ -1,32 +1,19 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zto
-  extends bfch
+class zto
+  implements View.OnClickListener
 {
-  public zto(TroopGiftPanel paramTroopGiftPanel) {}
+  zto(ztn paramztn) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, amtj.a(2131714440), 0).b(this.a.getResources().getDimensionPixelSize(2131299076));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, amtj.a(2131714407), 0).b(this.a.getResources().getDimensionPixelSize(2131299076));
-    TroopGiftPanel.a(true);
+    if ((!aala.a("SUB_ENTER_FLOAT_MODE")) && (ztn.a(this.a) != null)) {
+      ztn.a(this.a).d();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

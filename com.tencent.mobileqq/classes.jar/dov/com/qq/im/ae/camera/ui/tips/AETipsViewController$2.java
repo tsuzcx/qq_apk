@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.tips;
 
-import blsw;
+import bngy;
 
 public class AETipsViewController$2
   implements Runnable
 {
-  public AETipsViewController$2(blsw paramblsw) {}
+  public AETipsViewController$2(bngy parambngy) {}
   
   public void run()
   {
-    blsw.b(this.this$0);
+    bngy.b(this.this$0);
   }
 }
 

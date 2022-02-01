@@ -1,17 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-class balh
-  implements DialogInterface.OnClickListener
+public class balh
 {
-  balh(bakw parambakw) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.mContext.setResult(8001);
-  }
+  public float a;
+  public bali a;
+  public String a;
+  public List<balj> a;
+  public boolean a;
+  public float b;
+  public String b;
+  public List<balk> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import bamr;
-import baoy;
-import bapb;
+import bbtg;
+import bbvn;
+import bbvq;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,16 +13,16 @@ class StatusManager$3$2$1
   
   public void run()
   {
-    if (baoy.b(this.a.jdField_a_of_type_Bapb.a) != null)
+    if (bbvn.b(this.a.jdField_a_of_type_Bbvq.a) != null)
     {
-      Iterator localIterator = baoy.b(this.a.jdField_a_of_type_Bapb.a).iterator();
+      Iterator localIterator = bbvn.b(this.a.jdField_a_of_type_Bbvq.a).iterator();
       if (localIterator.hasNext())
       {
-        bamr localbamr = (bamr)localIterator.next();
+        bbtg localbbtg = (bbtg)localIterator.next();
         if (this.a.jdField_a_of_type_Boolean) {}
         for (int i = 100;; i = -1)
         {
-          localbamr.a(i, RichStatus.getEmptyStatus(), null);
+          localbbtg.a(i, RichStatus.getEmptyStatus(), null);
           break;
         }
       }

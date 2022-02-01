@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adwa;
-import anat;
-import anau;
+import aenf;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,6 +9,9 @@ import android.view.MotionEvent;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import aodi;
+import aodj;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -22,7 +23,7 @@ public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private anau jdField_a_of_type_Anau = new adwa(this);
+  private aodj jdField_a_of_type_Aodj = new aenf(this);
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
@@ -38,15 +39,15 @@ public class PhoneUnityPhoneLoginActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561270);
-    setTitle(getString(2131694350));
-    setContentBackgroundResource(2130838891);
-    this.leftView.setText(2131698539);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131372420));
+    super.setContentView(2131561331);
+    setTitle(getString(2131694551));
+    setContentBackgroundResource(2130838911);
+    this.leftView.setText(2131698836);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131372614));
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     }
-    addObserver(this.jdField_a_of_type_Anau);
+    addObserver(this.jdField_a_of_type_Aodj);
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -60,7 +61,7 @@ public class PhoneUnityPhoneLoginActivity
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Anau);
+    removeObserver(this.jdField_a_of_type_Aodj);
     super.doOnDestroy();
   }
   
@@ -90,7 +91,7 @@ public class PhoneUnityPhoneLoginActivity
       if (NetworkUtil.isNetSupport(this)) {
         break label91;
       }
-      QQToast.a(this, getString(2131692035), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131692125), 0).b(getTitleBarHeight());
     }
     for (;;)
     {
@@ -100,12 +101,12 @@ public class PhoneUnityPhoneLoginActivity
       bool = true;
       break;
       label91:
-      localObject = (anat)this.app.getBusinessHandler(34);
+      localObject = (aodi)this.app.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
       if ((localObject != null) && (this.jdField_a_of_type_ArrayOfByte != null)) {
         if (paramBoolean) {
-          ((anat)localObject).a(this.jdField_a_of_type_ArrayOfByte);
+          ((aodi)localObject).a(this.jdField_a_of_type_ArrayOfByte);
         } else {
-          ((anat)localObject).b(this.jdField_a_of_type_ArrayOfByte);
+          ((aodi)localObject).b(this.jdField_a_of_type_ArrayOfByte);
         }
       }
     }
@@ -120,7 +121,7 @@ public class PhoneUnityPhoneLoginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity
  * JD-Core Version:    0.7.0.1
  */

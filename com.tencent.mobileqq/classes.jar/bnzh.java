@@ -1,17 +1,47 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
+import android.arch.lifecycle.MutableLiveData;
+import android.content.res.Resources;
+import androidx.annotation.RequiresApi;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.weishi.module.edit.cut.CutExtKt;
+import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import java.util.LinkedList;
 
 public class bnzh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bnxe
 {
-  public bnzh(QIMCameraSegmentCaptureButtonLayoutNew paramQIMCameraSegmentCaptureButtonLayoutNew) {}
+  public bnzh(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  @RequiresApi(api=16)
+  public void a(float paramFloat)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    bnqm.a().a(paramFloat, "combine");
+    CutModelKt localCutModelKt = this.a.a.a();
+    if ((localCutModelKt == null) || (localCutModelKt.getResource() == null)) {
+      return;
+    }
+    float f = localCutModelKt.getResource().getScaleSpeed();
+    if (bnzw.a(f, paramFloat))
+    {
+      bnrh.a("AEEditorMultiCutEditFragment", "[onChangeSpeed] currentSpeed==newSpeed");
+      return;
+    }
+    if ((float)localCutModelKt.getResource().getSelectTimeDuration() / paramFloat < 1000.0F)
+    {
+      AEEditorMultiCutEditFragment.a(this.a).a(f);
+      QQToast.a(this.a.getActivity(), this.a.getResources().getString(2131689700, new Object[] { Integer.valueOf(1) }), 0).a();
+      bnrh.a("AEEditorMultiCutEditFragment", "[onChangeSpeed] new duration < Config.MIN_VIDEO_CLIP_DURATION_IN_MS");
+      return;
+    }
+    AEEditorMultiCutEditFragment.a(this.a).a(paramFloat);
+    long l = CutExtKt.calculateSpeedSeek(AEEditorMultiCutEditFragment.a(this.a), new LinkedList(), localCutModelKt.getUuid());
+    if (l >= 0L) {
+      AEEditorMultiCutEditFragment.a(this.a, l);
+    }
+    AEEditorMultiCutEditFragment.a(this.a).a.postValue(bnzu.a(localCutModelKt.getUuid(), paramFloat, AEEditorMultiCutEditFragment.a(this.a), AEEditorMultiCutEditFragment.a(this.a).getMediaModel()));
   }
 }
 

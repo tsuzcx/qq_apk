@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adxq;
-import adxr;
+import aeov;
+import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,12 +27,12 @@ import java.lang.reflect.Field;
 public class PublicFragmentActivity
   extends FragmentActivity
 {
-  private static ArrayMap<String, adxq> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+  private static ArrayMap<String, aeov> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
   private PublicBaseFragment jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment;
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adxr.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    aeow.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
@@ -42,7 +42,7 @@ public class PublicFragmentActivity
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    adxr.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
+    aeow.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
   }
   
   public static void a(Context paramContext, Class<? extends PublicBaseFragment> paramClass)
@@ -100,12 +100,12 @@ public class PublicFragmentActivity
   
   public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adxr.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    aeow.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
-  public static void a(String paramString, adxq paramadxq)
+  public static void a(String paramString, aeov paramaeov)
   {
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramadxq);
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramaeov);
   }
   
   private PublicBaseFragment b()
@@ -149,7 +149,9 @@ public class PublicFragmentActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -169,14 +171,14 @@ public class PublicFragmentActivity
       a(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131558456);
+    setContentView(2131558458);
     if (this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131367125, this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment);
+    paramBundle.replace(2131367244, this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment);
     paramBundle.commit();
     this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.initSideFling(this, this.mFlingHandler);
     return true;
@@ -193,7 +195,9 @@ public class PublicFragmentActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.onNewIntent(paramIntent);
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentPublicBaseFragment.onNewIntent(paramIntent);
+    }
   }
   
   public void finish()
@@ -251,7 +255,7 @@ public class PublicFragmentActivity
   {
     if (jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString))
     {
-      View localView = ((adxq)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).onCreateView(paramString, paramContext, paramAttributeSet);
+      View localView = ((aeov)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).onCreateView(paramString, paramContext, paramAttributeSet);
       if (localView != null) {
         return localView;
       }
@@ -331,7 +335,7 @@ public class PublicFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

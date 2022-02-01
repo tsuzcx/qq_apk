@@ -1,14 +1,12 @@
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
 
-public abstract interface rqz<R>
+public class rqz
 {
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt, @NotNull String paramString);
-  
-  public abstract void a(R paramR);
-  
-  public abstract void a(@NotNull String paramString);
+  public long a;
+  public String a;
+  public ArrayList<rrm> a = new ArrayList();
+  public long b;
+  public long c;
 }
 
 

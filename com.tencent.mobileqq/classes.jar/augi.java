@@ -1,17 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
+import com.tencent.mobileqq.widget.TabBarView2;
+import java.util.HashMap;
 
 public class augi
-  implements ValueAnimator.AnimatorUpdateListener
+  implements biuc
 {
-  public augi(HotPicMainPanel paramHotPicMainPanel) {}
+  public augi(QfileTabBarView paramQfileTabBarView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
+    if (this.a.a(paramInt2) == null) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setSelected(true);
+      this.a.b(paramInt2);
+    } while (!this.a.jdField_a_of_type_Boolean);
+    try
+    {
+      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
+      localEditor.commit();
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

@@ -1,28 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import com.tencent.qphone.base.util.QLog;
-import odq;
-import org.json.JSONException;
-import org.json.JSONObject;
-import prz;
+import owf;
+import qcw;
 
 public class FrameworkHandler$4
   implements Runnable
 {
+  public FrameworkHandler$4(qcw paramqcw) {}
+  
   public void run()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("channel_id", this.this$0.b());
-      odq.a(null, "", "0X8009415", "0X8009415", 0, 0, "", "", "", localJSONObject.toString(), false);
-      QLog.d("FrameworkHandler", 2, "back_to_top_btn : exposure ; channelID  : " + this.this$0.b());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    owf.a().a();
+    QLog.d("FrameworkHandler", 2, "transformCommentBiuCard | in recommend feeds and transform ");
   }
 }
 

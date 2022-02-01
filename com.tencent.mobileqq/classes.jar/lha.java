@@ -1,12 +1,6 @@
 public abstract interface lha
 {
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(long paramLong, String paramString, int paramInt);
-  
-  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
-  
-  public abstract void b(long paramLong, String paramString);
+  public abstract void a(int paramInt, String paramString);
 }
 
 

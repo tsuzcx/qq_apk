@@ -1,36 +1,346 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class atri
-  extends nmc
+public class atri
+  extends atrb
 {
-  atri(NearbyAppInterface paramNearbyAppInterface) {}
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private List<FileManagerEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public atri(String paramString, int paramInt)
   {
-    boolean bool2 = false;
-    if (paramInt == 0) {
-      awka.b(this.a.getCurrentAccountUin(), false);
-    }
-    for (boolean bool1 = false;; bool1 = awka.b(this.a.getCurrentAccountUin()))
+    super(paramString, paramInt);
+  }
+  
+  public CharSequence a()
+  {
+    return bcnc.a(((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).fileName.toLowerCase(), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public List<bcfj> a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    paramQQAppInterface = new ArrayList();
+    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramContext.hasNext())
     {
-      paramArrayOfByte = new HashMap();
-      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
-      paramBundle = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-      String str = this.a.getCurrentAccountUin();
-      if (paramInt == 0) {
-        bool2 = true;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramContext.next();
+      atri localatri = new atri(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      localatri.a(this.jdField_a_of_type_AndroidOsBundle);
+      ArrayList localArrayList = new ArrayList(1);
+      localArrayList.add(localFileManagerEntity);
+      localatri.a(localArrayList);
+      paramQQAppInterface.add(localatri);
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin", "");
+    }
+  }
+  
+  public void a(List<FileManagerEntity> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(AppConstants.DATALINE_PC_UIN)))
+      {
+        ArrayList localArrayList = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramList.next();
+          if (!aufd.b(localFileManagerEntity)) {
+            localArrayList.add(localFileManagerEntity);
+          }
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
       }
-      paramBundle.collectPerformance(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
-      }
+    }
+    else {
       return;
     }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  protected void b(View paramView)
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramView = (BaseActivity)paramView.getContext();
+    if (localFileManagerEntity.nFileType == 13)
+    {
+      becr.a(localFileManagerEntity.Uuid, paramView, this.jdField_a_of_type_Int, localFileManagerEntity, paramView.app);
+      return;
+    }
+    atyi localatyi = new atyi(paramView.app, paramView, localFileManagerEntity, 10001);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("from_qlink_enter_recent", false);
+    localBundle.putString("c2c_discussion_recentfile", localFileManagerEntity.peerUin);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localBundle.putString("file_browser_extra_params_uin", this.jdField_b_of_type_JavaLangString);
+    }
+    localatyi.a(localBundle);
+    paramView = new atyk(paramView, localatyi);
+    paramView.a(7);
+    if (this.jdField_a_of_type_Int != 0) {
+      paramView.a(this.jdField_a_of_type_Int);
+    }
+    paramView.a(anvx.a(2131703984));
+    paramView.a();
+  }
+  
+  public boolean b()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (localFileManagerEntity != null) {
+      return atpm.a(localFileManagerEntity);
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    Object localObject3;
+    if (this.jdField_a_of_type_JavaLangCharSequence == null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label157;
+      }
+      localObject3 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      localObject1 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject1).append(d());
+      if (((FileManagerEntity)localObject3).nFileType == 13) {
+        break label87;
+      }
+      ((SpannableStringBuilder)localObject1).append(" ").append(auea.c((FileManagerEntity)localObject3));
+    }
+    label87:
+    Object localObject2;
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_a_of_type_JavaLangCharSequence;
+      localObject2 = aufn.b(((FileManagerEntity)localObject3).srvTime);
+      localObject3 = auea.b((FileManagerEntity)localObject3);
+      ((SpannableStringBuilder)localObject1).clear();
+      ((SpannableStringBuilder)localObject1).append((String)localObject2 + " " + (String)localObject3 + " " + BaseApplicationImpl.getContext().getString(2131692238));
+    }
+    label157:
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    long l = 0L;
+    label169:
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+      if (l >= ((FileManagerEntity)localObject2).srvTime) {
+        break label219;
+      }
+      l = ((FileManagerEntity)localObject2).srvTime;
+    }
+    label219:
+    for (;;)
+    {
+      break label169;
+      this.jdField_a_of_type_JavaLangCharSequence = d();
+      break;
+    }
+  }
+  
+  public String c()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject1 = "";
+    int i = auea.a(localFileManagerEntity.fileName);
+    if ((i == 0) || (i == 2))
+    {
+      Object localObject2 = localFileManagerEntity.strMiddleThumPath;
+      localObject1 = localObject2;
+      if (!FileUtil.fileExistsAndNotEmpty((String)localObject2)) {
+        localObject1 = localFileManagerEntity.strLargeThumPath;
+      }
+      localObject2 = localObject1;
+      if (!FileUtil.fileExistsAndNotEmpty((String)localObject1)) {
+        localObject2 = localFileManagerEntity.strThumbPath;
+      }
+      localObject1 = localObject2;
+      if (FileUtil.fileExistsAndNotEmpty((String)localObject2)) {}
+    }
+    for (;;)
+    {
+      if (localFileManagerEntity.nFileType == 13) {
+        localObject1 = becr.f(localFileManagerEntity.Uuid);
+      }
+      return localObject1;
+      if (i == 5) {
+        localObject1 = localFileManagerEntity.getFilePath();
+      }
+    }
+  }
+  
+  protected void c(View paramView)
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramView = (BaseActivity)paramView.getContext();
+    if (atpm.a(localFileManagerEntity)) {
+      atpm.b(localFileManagerEntity);
+    }
+    for (;;)
+    {
+      if ((localFileManagerEntity.cloudType == 3) && (!FileUtil.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())))
+      {
+        audr.a(auea.d(localFileManagerEntity.fileName) + anvx.a(2131709072));
+        atpm.b(localFileManagerEntity);
+      }
+      return;
+      atpm.a(localFileManagerEntity);
+      bdla.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 1, 0, "0", "0", "", "");
+    }
+  }
+  
+  public int d()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public CharSequence d()
+  {
+    int i = 7;
+    if (this.jdField_b_of_type_JavaLangCharSequence != null) {
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    Object localObject1;
+    if (j > 1)
+    {
+      localObject1 = new SpannableStringBuilder(j + anvx.a(2131703988) + "\"");
+      ((SpannableStringBuilder)localObject1).append(bcnc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
+      ((SpannableStringBuilder)localObject1).append("\"").append(anvx.a(2131692269));
+      this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = auea.b((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).trim();
+    if (str.indexOf(anvx.a(2131692260)) == 0) {
+      localSpannableStringBuilder.append(anvx.a(2131692260) + " ");
+    }
+    for (;;)
+    {
+      localObject1 = str;
+      if (i != 0) {}
+      try
+      {
+        localObject1 = str.toLowerCase().substring(i);
+        localSpannableStringBuilder.append(bcnc.a((String)localObject1, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_b_of_type_JavaLangCharSequence == null) {
+          this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder;
+        }
+        return this.jdField_b_of_type_JavaLangCharSequence;
+        if (str.indexOf(anvx.a(2131692264)) == 0)
+        {
+          localSpannableStringBuilder.append(anvx.a(2131692264) + " ");
+        }
+        else if (str.indexOf(anvx.a(2131692261)) == 0)
+        {
+          localSpannableStringBuilder.append(anvx.a(2131692261) + " ");
+          i = 4;
+        }
+        else if (str.indexOf(anvx.a(2131692265)) == 0)
+        {
+          localSpannableStringBuilder.append(anvx.a(2131692265) + " ");
+          i = 4;
+        }
+        else if (str.indexOf(anvx.a(2131692259)) == 0)
+        {
+          localSpannableStringBuilder.append(anvx.a(2131692259) + " ");
+          i = 2;
+        }
+        else if (str.indexOf(anvx.a(2131692263)) == 0)
+        {
+          localSpannableStringBuilder.append(anvx.a(2131692263) + "  ");
+          i = 2;
+        }
+        else if (str.indexOf(anvx.a(2131692262)) == 0)
+        {
+          localSpannableStringBuilder.append(anvx.a(2131692262));
+          i = 2;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Object localObject2 = str;
+        }
+        i = 0;
+      }
+    }
+  }
+  
+  public String d()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (localFileManagerEntity != null) {
+      return localFileManagerEntity.fileName;
+    }
+    return "";
+  }
+  
+  protected void d(View paramView)
+  {
+    paramView = (BaseActivity)paramView.getContext();
+    FileSelectorSearchGroupFragment.a(this);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
+    PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
+  }
+  
+  public int e()
+  {
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (localFileManagerEntity != null)
+    {
+      if (localFileManagerEntity.nFileType == 13) {
+        return 13;
+      }
+      return auea.a(localFileManagerEntity.fileName);
+    }
+    return 11;
   }
 }
 

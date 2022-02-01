@@ -19,6 +19,7 @@ public class FaceStyleItem
   public String cartoonEnlightLut;
   public FaceStyleItem.CartoonFaceLine cartoonFaceLine;
   public String cartoonLut;
+  public FaceStyleItem.ChangeGenderParams changeGenderParams;
   public int countTriggerType;
   public String crazyFacePath;
   public String cropBorderColorRGBA;
@@ -87,7 +88,7 @@ public class FaceStyleItem
   
   public boolean isValid()
   {
-    if ((this.styleChangeType != FaceStyleItem.STYLE_CHANGE_TYPE.GENDER_SWITCH.value) && ((!isBlobValid(this.preProcess.blobNames)) || (!isBlobValid(this.postProcess.blobNames))))
+    if ((this.styleChangeType != FaceStyleItem.StyleChangeType.GENDER_SWITCH.value) && ((!isBlobValid(this.preProcess.blobNames)) || (!isBlobValid(this.postProcess.blobNames))))
     {
       LogUtils.w("TNN", "FaceStyleItem config is invalid.");
       return false;

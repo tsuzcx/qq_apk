@@ -1,22 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
+import com.tencent.ttpic.filament.CMShowUserLoader;
+import java.util.HashMap;
 
-public class bmya
-  implements View.OnClickListener
+public abstract interface bmya
 {
-  public bmya(AdvancedProviderView paramAdvancedProviderView) {}
+  public abstract void a(int paramInt, String paramString, HashMap<String, float[]> paramHashMap);
   
-  public void onClick(View paramView)
-  {
-    List localList = boaz.a().a();
-    if (localList.size() > 1) {
-      yqu.a(this.a.a, localList.get(1));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(CMShowUserLoader paramCMShowUserLoader);
 }
 
 

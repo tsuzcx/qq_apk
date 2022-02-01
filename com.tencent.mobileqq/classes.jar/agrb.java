@@ -1,18 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
 class agrb
-  implements View.OnClickListener
+  extends afos
 {
-  agrb(agra paramagra) {}
-  
-  public void onClick(View paramView)
-  {
-    agra.a(this.a);
-    bcef.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", agra.a(this.a), "空间");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

@@ -1,25 +1,66 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation.39.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ajxt
-  implements PopupWindow.OnDismissListener
+  extends antq
 {
-  public ajxt(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public ajxt(Conversation paramConversation) {}
   
-  public void onDismiss()
+  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (ajxw.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
     {
-      ajxw.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
+      }
+      this.a.a(8, paramString, 3000);
     }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      akgd.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+  }
+  
+  protected void onDelDiscussion()
+  {
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    }
+  }
+  
+  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
+      }
+      this.a.a(8, paramString, 3000);
+    }
+  }
+  
+  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.b(new Conversation.39.1(this, paramString));
+    }
+  }
+  
+  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
+      }
+      this.a.a(0L);
     }
   }
 }

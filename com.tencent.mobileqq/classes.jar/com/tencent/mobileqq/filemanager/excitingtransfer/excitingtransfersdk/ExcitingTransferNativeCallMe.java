@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import android.text.TextUtils;
-import asnp;
+import atrv;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.util.SystemUtil;
@@ -13,7 +13,7 @@ public class ExcitingTransferNativeCallMe
 {
   public static boolean getConfigFromServer()
   {
-    return asnp.a().e();
+    return atrv.a().e();
   }
   
   public static long getFreeSpaceForFile(String paramString)
@@ -46,7 +46,7 @@ public class ExcitingTransferNativeCallMe
   
   public static long getSelfUin()
   {
-    return asnp.a().e();
+    return atrv.a().e();
   }
   
   public static String getVersion()
@@ -102,7 +102,7 @@ public class ExcitingTransferNativeCallMe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNativeCallMe
  * JD-Core Version:    0.7.0.1
  */

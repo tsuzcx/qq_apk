@@ -1,16 +1,20 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
-class ove
-  extends owd
+public class ove
+  extends sqc
 {
-  ove(ouu paramouu, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
-  {
-    super(paramouu, null);
-  }
+  public ove(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  void a(owg paramowg)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    paramowg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyVideoSubChannelActivity.a(this.a).c();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 

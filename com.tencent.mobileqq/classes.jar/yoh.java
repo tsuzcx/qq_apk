@@ -1,21 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tribe.async.reactive.SimpleObserver;
 
 class yoh
-  implements View.OnClickListener
+  extends SimpleObserver<Bitmap>
 {
-  yoh(yog paramyog, TroopStoryItemInfo paramTroopStoryItemInfo) {}
+  yoh(yog paramyog) {}
   
-  public void onClick(View paramView)
+  public void a(Bitmap paramBitmap)
   {
-    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (localStoryVideoItem != null) {
-      ((vns)vux.a().b(3)).a(localStoryVideoItem);
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        ykq.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    else {
+      return;
+    }
+    ykq.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ykq.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 

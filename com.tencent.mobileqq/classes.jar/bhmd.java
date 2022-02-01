@@ -1,25 +1,21 @@
-import android.view.View;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class bhmd
-  implements bhma
+  extends asiv
 {
-  bhmd(bhmc parambhmc) {}
+  bhmd(bhmb parambhmb) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    this.a.a(true, new View[] { this.a.a });
-  }
-  
-  public void b()
-  {
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    this.a.b(5);
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(257);
+    }
   }
 }
 

@@ -1,16 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopSign;
 
-class agyt
-  implements DialogInterface.OnClickListener
+final class agyt
+  implements ahab
 {
-  agyt(agyh paramagyh) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramDialogInterface.dismiss();
-    agyh.I(this.a).setResult(8001);
+    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
+      return 71;
+    }
+    return 84;
   }
 }
 

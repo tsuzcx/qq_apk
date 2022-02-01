@@ -1,8 +1,8 @@
 public abstract interface bnvc
 {
-  public abstract void invalidate();
+  public abstract void a(int paramInt, bnwd parambnwd);
   
-  public abstract void postInvalidate();
+  public abstract void aF_();
 }
 
 

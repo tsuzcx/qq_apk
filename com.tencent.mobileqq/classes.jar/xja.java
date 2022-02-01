@@ -1,42 +1,73 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Bundle;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class xja
-  extends vll<xin, xhl>
+public class xja
+  extends AccessibilityDelegateCompat
 {
-  xja(xin paramxin)
+  public xja(XViewPager paramXViewPager) {}
+  
+  private boolean a()
   {
-    super(paramxin);
+    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
   }
   
-  public void a(@NonNull xin paramxin, @NonNull xhl paramxhl)
+  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
-    if ((!paramxhl.jdField_a_of_type_Boolean) || (!paramxhl.jdField_a_of_type_JavaLangString.equals(xin.a(paramxin))) || (paramxhl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (xin.a(paramxin) == null))
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
+    paramView = AccessibilityRecordCompat.obtain();
+    paramView.setScrollable(a());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
     {
-      xvv.b(this.TAG, "ignore this like list event. %s.", paramxhl.toString());
-      return;
+      paramView.setItemCount(XViewPager.a(this.a).getCount());
+      paramView.setFromIndex(XViewPager.a(this.a));
+      paramView.setToIndex(XViewPager.a(this.a));
     }
-    xvv.a(this.TAG, "receive like list event. %s.", paramxhl.toString());
-    boolean bool2 = xin.a(paramxin);
-    if (paramxhl.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
+    paramAccessibilityNodeInfoCompat.setScrollable(a());
+    if (this.a.canScrollHorizontally(1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
+    }
+    if (this.a.canScrollHorizontally(-1)) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
+    }
+  }
+  
+  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  {
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    switch (paramInt)
     {
-      xin.a(paramxin).b(bool1, paramxhl.b);
-      xin.a(paramxin).b(paramxhl.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
+    default: 
+      return false;
+    case 4096: 
+      if (this.a.canScrollHorizontally(1))
+      {
+        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
+        return true;
       }
-      paramxin.a();
-      return;
+      return false;
     }
+    if (this.a.canScrollHorizontally(-1))
+    {
+      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
+      return true;
+    }
+    return false;
   }
-  
-  public Class acceptEventClass()
-  {
-    return xhl.class;
-  }
-  
-  public void b(@NonNull xin paramxin, @NonNull xhl paramxhl) {}
 }
 
 

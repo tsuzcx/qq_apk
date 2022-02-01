@@ -1,90 +1,23 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 
-public class ajlr
-  extends aycd
+class ajlr
+  extends ShapeDrawable.ShaderFactory
 {
-  public ajlr(BindNumberActivity paramBindNumberActivity) {}
+  ajlr(ajlq paramajlq, float paramFloat) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public Shader resize(int paramInt1, int paramInt2)
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      String str = ContactUtils.getRequestPathKey();
-      if (!TextUtils.isEmpty(str)) {
-        bcef.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
-        this.a.c();
-      }
-    }
-    for (;;)
-    {
-      ContactUtils.clearRequestPathKey();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
-      {
-        this.a.b();
-      }
-      else
-      {
-        if (i == 107)
-        {
-          this.a.a(paramBundle);
-          return;
-        }
-        if (i == 106)
-        {
-          this.a.a(null, 2);
-        }
-        else if (i == 227)
-        {
-          this.a.d();
-        }
-        else if (i == 226)
-        {
-          this.a.e();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
-          }
-          this.a.a(a(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.a(2131717686);
-        }
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      this.a.a(2131717686);
-    }
+    float f1 = paramInt1;
+    paramInt1 = Color.parseColor("#00FFFFFF");
+    paramInt2 = Color.parseColor("#FFFFFFFF");
+    int i = Color.parseColor("#FFFFFFFF");
+    float f2 = this.jdField_a_of_type_Float;
+    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+    return new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { paramInt1, paramInt2, i }, new float[] { 0.0F, f2, 1.0F }, localTileMode);
   }
 }
 

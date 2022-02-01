@@ -1,72 +1,99 @@
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.ArrayList;
 
 public class atyp
-  extends MSFServlet
+  extends atyn
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo;
+  private ArrayList<WeiYunFileInfo> jdField_a_of_type_JavaUtilArrayList;
+  
+  public atyp(QQAppInterface paramQQAppInterface, Context paramContext, WeiYunFileInfo paramWeiYunFileInfo)
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      QLog.d("GameCenterUnissoServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      atyn localatyn = (atyn)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(175);
-      if (localatyn != null) {
-        localatyn.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterUnissoServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
-      return;
-      arrayOfByte = null;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo = paramWeiYunFileInfo;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public Intent a()
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localObject1 != null)
     {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
+      if (localObject1 != null) {
+        break label103;
       }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      QLog.i("WeiYunFileBrowserParams<FileAssistant>", 1, "");
+      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
     }
-    for (;;)
+    Object localObject2;
+    label103:
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameCenterUnissoServlet", 2, "onSend exit cmd=" + str);
-      }
-      return;
-      label117:
-      paramIntent = new byte[4];
-      PkgTools.DWord2Byte(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
-    }
+      do
+      {
+        return localObject1;
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo == null) {
+          break;
+        }
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerRSCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break;
+        }
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break;
+        }
+        localObject1 = auea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.i("WeiYunFileBrowserParams<FileAssistant>", 1, "open a weiyun file with filebrowser, fileSessionId[" + ((FileManagerEntity)localObject1).nSessionId + "] fileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]fileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]");
+        }
+        ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+        localForwardFileInfo.d(2);
+        localForwardFileInfo.b(10003);
+        localForwardFileInfo.b(((FileManagerEntity)localObject1).nSessionId);
+        localForwardFileInfo.d(((FileManagerEntity)localObject1).fileName);
+        localForwardFileInfo.c(((FileManagerEntity)localObject1).WeiYunFileId);
+        localForwardFileInfo.c(((FileManagerEntity)localObject1).nWeiYunSrcType);
+        localForwardFileInfo.d(((FileManagerEntity)localObject1).fileSize);
+        localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
+        ((Intent)localObject2).putExtra("fileinfo", localForwardFileInfo);
+        localObject1 = localObject2;
+      } while (this.jdField_a_of_type_JavaUtilArrayList == null);
+      localObject1 = localObject2;
+    } while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
+    ((Intent)localObject2).putParcelableArrayListExtra("local_weiyun_list", this.jdField_a_of_type_JavaUtilArrayList);
+    return localObject2;
+  }
+  
+  public void a(FileManagerEntity paramFileManagerEntity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+  }
+  
+  public void a(ArrayList<WeiYunFileInfo> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public void b(Bundle paramBundle) {}
+  
+  public boolean b()
+  {
+    return false;
   }
 }
 

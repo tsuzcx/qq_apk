@@ -1,16 +1,16 @@
 package cooperation.ilive.group;
 
-import bkjn;
-import bkjt;
+import blva;
+import blvg;
 
 public class IliveGroupObserver$1
   implements Runnable
 {
-  public IliveGroupObserver$1(bkjn parambkjn, String paramString, bkjt parambkjt) {}
+  public IliveGroupObserver$1(blva paramblva, String paramString, blvg paramblvg) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bkjt);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Blvg);
   }
 }
 

@@ -1,35 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import java.util.Comparator;
 
-public final class aqqj
-  implements Parcelable.Creator
+public class aqqj
+  implements Comparator<ColorNote>
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
-  {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
-    }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
-  }
+  public aqqj(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    return new IPSiteModel.Comic[paramInt];
+    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
   }
 }
 

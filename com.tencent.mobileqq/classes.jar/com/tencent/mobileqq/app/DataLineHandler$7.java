@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amqd;
-import anla;
+import ansr;
+import aont;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -19,7 +19,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class DataLineHandler$7
   implements Runnable
 {
-  public DataLineHandler$7(amqd paramamqd, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
+  public DataLineHandler$7(ansr paramansr, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -63,7 +63,7 @@ public class DataLineHandler$7
       this.this$0.a(localInvalidProtocolBufferMicroException);
       return;
     }
-    amqd.a(this.this$0, localInvalidProtocolBufferMicroException);
+    ansr.a(this.this$0, localInvalidProtocolBufferMicroException);
   }
 }
 

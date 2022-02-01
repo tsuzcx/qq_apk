@@ -1,15 +1,23 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.widget.RotateableView;
 
-class ahjf
-  implements odl
+public class ahjf
+  extends ahjb
 {
-  ahjf(ahiu paramahiu) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
+  boolean jdField_a_of_type_Boolean = false;
+  public long b;
+  String b;
+  long jdField_c_of_type_Long;
+  View jdField_c_of_type_AndroidViewView;
+  String jdField_c_of_type_JavaLangString;
+  int e;
+  int f;
+  int g;
   
-  public void a()
-  {
-    ahiu.b(this.a, false);
-    this.a.a.sendEmptyMessage(1);
-  }
+  public ahjf(ahjd paramahjd) {}
 }
 
 

@@ -18,7 +18,7 @@ import com.tencent.util.VersionUtils;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import yoy;
+import zdr;
 
 public class ShortVideoUtils$WatermarkVideoRunnable
   implements Runnable
@@ -106,7 +106,7 @@ public class ShortVideoUtils$WatermarkVideoRunnable
         {
           try
           {
-            localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130845911);
+            localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130845999);
             if (this.jdField_b_of_type_Int != 576)
             {
               float f = this.jdField_b_of_type_Int / 576.0F;
@@ -134,14 +134,14 @@ public class ShortVideoUtils$WatermarkVideoRunnable
                 if (j != 0) {
                   ((Canvas)localObject6).restore();
                 }
-                if (yoy.a((Bitmap)localObject3, Bitmap.CompressFormat.PNG, 100, ((File)localObject5).getAbsolutePath())) {
+                if (zdr.a((Bitmap)localObject3, Bitmap.CompressFormat.PNG, 100, ((File)localObject5).getAbsolutePath())) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("ShortVideoUtils", 2, "compress watermark to file failed");
                 }
-                yoy.a((Bitmap)localObject3);
-                yoy.a((Bitmap)localObject1);
+                zdr.a((Bitmap)localObject3);
+                zdr.a((Bitmap)localObject1);
                 a(10001);
               }
             }
@@ -171,8 +171,8 @@ public class ShortVideoUtils$WatermarkVideoRunnable
           label631:
           int k = this.jdField_c_of_type_Int - 20 - localException1.getHeight();
         }
-        yoy.a((Bitmap)localObject3);
-        yoy.a(localException1);
+        zdr.a((Bitmap)localObject3);
+        zdr.a(localException1);
         if (jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.isFFmpegCommandRunning()) {
           if (QLog.isColorLevel()) {
             QLog.d("ShortVideoUtils", 2, "generate files mFFmpeg is running!");

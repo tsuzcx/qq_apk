@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import abwz;
-import anlo;
-import awcm;
-import aycx;
-import aycy;
-import aydp;
+import acnh;
+import aooh;
+import axio;
+import azjj;
+import azjk;
+import azkb;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -752,12 +752,12 @@ public class MultiMsgDownloadProcessor
     super.onError();
     if (this.mUiRequest.mDownCallBack != null)
     {
-      aycy localaycy = new aycy();
-      localaycy.b = -1;
-      localaycy.jdField_a_of_type_Aydp = new aydp();
-      localaycy.jdField_a_of_type_Aydp.b = "[MultiMsgDownloadProcessor] download failed";
-      localaycy.jdField_a_of_type_ArrayOfByte = null;
-      this.mUiRequest.mDownCallBack.a(localaycy);
+      azjk localazjk = new azjk();
+      localazjk.b = -1;
+      localazjk.jdField_a_of_type_Azkb = new azkb();
+      localazjk.jdField_a_of_type_Azkb.b = "[MultiMsgDownloadProcessor] download failed";
+      localazjk.jdField_a_of_type_ArrayOfByte = null;
+      this.mUiRequest.mDownCallBack.a(localazjk);
     }
     this.mContent = null;
     sendMessageToUpdate(2005);
@@ -812,16 +812,16 @@ public class MultiMsgDownloadProcessor
     Object localObject1;
     if (this.mUiRequest.mDownCallBack != null)
     {
-      localObject1 = new aycy();
-      ((aycy)localObject1).b = 0;
-      ((aycy)localObject1).jdField_a_of_type_ArrayOfByte = this.mContent;
-      ((aycy)localObject1).jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
-      ((aycy)localObject1).jdField_c_of_type_Int = this.mUiRequest.mFileType;
-      ((aycy)localObject1).jdField_d_of_type_Int = this.mUiRequest.mDownMode;
-      ((aycy)localObject1).jdField_d_of_type_JavaLangString = this.mUiRequest.mRichTag;
-      ((aycy)localObject1).jdField_a_of_type_Long = this.mUiRequest.mUniseq;
-      ((aycy)localObject1).e = this.mUiRequest.resIdStr;
-      this.mUiRequest.mDownCallBack.a((aycy)localObject1);
+      localObject1 = new azjk();
+      ((azjk)localObject1).b = 0;
+      ((azjk)localObject1).jdField_a_of_type_ArrayOfByte = this.mContent;
+      ((azjk)localObject1).jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
+      ((azjk)localObject1).jdField_c_of_type_Int = this.mUiRequest.mFileType;
+      ((azjk)localObject1).jdField_d_of_type_Int = this.mUiRequest.mDownMode;
+      ((azjk)localObject1).jdField_d_of_type_JavaLangString = this.mUiRequest.mRichTag;
+      ((azjk)localObject1).jdField_a_of_type_Long = this.mUiRequest.mUniseq;
+      ((azjk)localObject1).e = this.mUiRequest.resIdStr;
+      this.mUiRequest.mDownCallBack.a((azjk)localObject1);
     }
     for (;;)
     {
@@ -833,7 +833,7 @@ public class MultiMsgDownloadProcessor
       localObject2 = this.app.getProxyManager().a().a(this.mContent, (HashMap)localObject1, (MessageRecord)localObject2, null);
       if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
       {
-        awcm.a().a((HashMap)localObject1, this.mUiRequest.mUniseq, this.app);
+        axio.a().a((HashMap)localObject1, this.mUiRequest.mUniseq, this.app);
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG", 2, "BaseTransProcessoronSuccess.onDownload,MultiMsg ");
         }
@@ -846,7 +846,7 @@ public class MultiMsgDownloadProcessor
     String str;
     if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
     {
-      if (!abwz.d(this.mUinType)) {
+      if (!acnh.d(this.mUinType)) {
         break label56;
       }
       str = "multimsgCd";

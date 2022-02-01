@@ -1,40 +1,71 @@
-import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCTipsUtils.2;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.media.AudioManager;
+import android.os.BatteryManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.provider.Settings.System;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class rjr
 {
-  public static void a(Activity paramActivity)
+  public static double a()
   {
-    if ((paramActivity == null) || (paramActivity.getWindow() == null)) {}
+    double d = 1.0D;
+    if (Build.VERSION.SDK_INT >= 21) {
+      d = ((BatteryManager)BaseApplicationImpl.getApplication().getSystemService("batterymanager")).getIntProperty(4) / 100.0D;
+    }
+    Intent localIntent;
     do
     {
-      return;
-      localObject = paramActivity.getWindow().getDecorView();
-    } while (!(localObject instanceof FrameLayout));
-    Object localObject = (FrameLayout)localObject;
-    View localView = paramActivity.getLayoutInflater().inflate(2131560298, (ViewGroup)localObject, false);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = AIOUtils.dp2px(6.0F, paramActivity.getResources());
-    localLayoutParams.topMargin = (ImmersiveUtils.getStatusBarHeight(paramActivity) + paramActivity.getResources().getDimensionPixelSize(2131299076) - AIOUtils.dp2px(12.0F, paramActivity.getResources()));
-    localView.setLayoutParams(localLayoutParams);
-    paramActivity = (TextView)localView.findViewById(2131379873);
-    if (paramActivity != null) {
-      paramActivity.setText(rjn.e());
+      return d;
+      localIntent = new ContextWrapper(BaseApplicationImpl.getApplication().getApplicationContext()).registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+    } while (localIntent.getIntExtra("level", -1) * 1.0D / localIntent.getIntExtra("scale", -1) == 0.0D);
+    return localIntent.getIntExtra("scale", -1);
+  }
+  
+  public static double a(Context paramContext)
+  {
+    return Settings.System.getInt(paramContext.getContentResolver(), "screen_brightness", 255) * 1.0F / 255.0F;
+  }
+  
+  public static int a()
+  {
+    return bizo.a(null);
+  }
+  
+  public static String a()
+  {
+    return Build.MODEL;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    return paramContext.widthPixels + "_" + paramContext.heightPixels;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = ((AudioManager)paramContext.getSystemService("audio")).isWiredHeadsetOn();
+    if (BluetoothAdapter.getDefaultAdapter().getProfileConnectionState(1) == 2) {}
+    for (int i = 1; (bool) || (i != 0); i = 0) {
+      return true;
     }
-    ((FrameLayout)localObject).addView(localView);
-    localView.setOnClickListener(new rjs(localView));
-    pay.b().postDelayed(new RIJUGCTipsUtils.2(localView), rjn.a() * 1000);
+    return false;
+  }
+  
+  public static double b(Context paramContext)
+  {
+    paramContext = (AudioManager)paramContext.getSystemService("audio");
+    int i = paramContext.getStreamVolume(3);
+    int j = paramContext.getStreamMaxVolume(3);
+    return i * 1.0D / j;
   }
 }
 

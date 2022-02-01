@@ -1,36 +1,106 @@
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.tianshu.TianShuManager;
 
 public class bgiz
-  extends bgit
 {
-  public static bgiz a = new bgiz();
+  public static final String a;
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bgfl parambgfl, boolean paramBoolean)
+  static
   {
-    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambgfl, paramBoolean);
+    jdField_a_of_type_JavaLangString = bgiz.class.getName();
   }
   
-  public static boolean a(Context paramContext, int paramInt)
+  public static bgja a(MessageRecord paramMessageRecord)
   {
-    String str = "qqVipLevel." + paramInt;
-    return new File(a.getDir(paramContext, str)).exists();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessageRecord != null)
+    {
+      localObject1 = localObject2;
+      if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_msg_has")))
+      {
+        localObject1 = new bgja();
+        ((bgja)localObject1).jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_flag"));
+        ((bgja)localObject1).jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_url");
+        ((bgja)localObject1).jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_click_url");
+        ((bgja)localObject1).jdField_c_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_nickname");
+        ((bgja)localObject1).jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_name");
+      }
+    }
+    try
+    {
+      ((bgja)localObject1).jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_nick_color"));
+      ((bgja)localObject1).jdField_c_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_color"));
+      ((bgja)localObject1).jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_bg_color"));
+      if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend")))) {
+        TianShuManager.getInstance().cacheTraceInfo(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
+      }
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to int. " + localException.getMessage());
+      }
+    }
   }
   
-  public long getBID()
+  public static void a(AppInterface paramAppInterface, Context paramContext, bgja parambgja)
   {
-    return 41L;
+    try
+    {
+      if (TextUtils.isEmpty(parambgja.jdField_b_of_type_JavaLangString)) {
+        return;
+      }
+      if (parambgja.jdField_b_of_type_JavaLangString.startsWith("http"))
+      {
+        paramAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+        paramAppInterface.putExtra("url", parambgja.jdField_b_of_type_JavaLangString);
+        uuc.a(paramAppInterface, parambgja.jdField_b_of_type_JavaLangString);
+        paramContext.startActivity(paramAppInterface);
+        return;
+      }
+      if (!parambgja.jdField_b_of_type_JavaLangString.startsWith("mqqapi")) {
+        return;
+      }
+      if ((paramAppInterface instanceof QQAppInterface))
+      {
+        bhey.a((QQAppInterface)paramAppInterface, paramContext, parambgja.jdField_b_of_type_JavaLangString).a();
+        return;
+      }
+    }
+    catch (Exception paramAppInterface)
+    {
+      paramAppInterface.printStackTrace();
+      return;
+    }
+    paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(parambgja.jdField_b_of_type_JavaLangString)));
   }
   
-  protected String getRootDir()
+  public static void a(MessageRecord paramMessageRecord, bgja parambgja)
   {
-    return "qqlevel_icon";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "qqVipLevel.";
+    if ((parambgja == null) || (paramMessageRecord == null)) {
+      return;
+    }
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_has", "1");
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_flag", String.valueOf(parambgja.jdField_a_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_url", parambgja.jdField_a_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_click_url", parambgja.jdField_b_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", parambgja.jdField_c_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nick_color", String.valueOf(parambgja.jdField_b_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_name", parambgja.jdField_d_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_color", String.valueOf(parambgja.jdField_c_of_type_Int));
+    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_bg_color", String.valueOf(parambgja.jdField_d_of_type_Int));
   }
 }
 

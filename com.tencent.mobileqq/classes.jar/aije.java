@@ -1,108 +1,72 @@
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class aije
-  extends amrc
+  extends aihm
 {
-  private aije(DiscussionView paramDiscussionView) {}
-  
-  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public aije(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    }
+    super(paramQQAppInterface);
   }
   
-  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  private static boolean a(List<String> paramList, String paramString)
   {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onCollectDiscussion(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-  }
-  
-  protected void onCreateDiscussion(boolean paramBoolean, int paramInt, long paramLong, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onDelDiscussion()
-  {
-    this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-  }
-  
-  protected void onKickoutDiscussionMember(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-  }
-  
-  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUncollectDiscussion(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-  }
-  
-  protected void onUpdateAllDiscussionIcon()
-  {
-    this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-  }
-  
-  protected void onUpdateDiscussionInteRemark(boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    }
-  }
-  
-  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    }
-  }
-  
-  protected void updateDiscussionList(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.i();
-    }
-    this.a.jdField_a_of_type_Alis.notifyDataSetChanged();
-    if (this.a.c)
+    if ((paramList != null) && (paramList.size() > 0) && (!TextUtils.isEmpty(paramString)))
     {
-      this.a.c = false;
-      if (paramBoolean)
-      {
-        DiscussionView.a(this.a).a(0);
-        this.a.a(100, 800L);
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        if (((String)paramList.next()).equals(paramString)) {
+          return true;
+        }
       }
     }
-    else
+    return false;
+  }
+  
+  public List<aijd> a(String paramString, aiiw paramaiiw, SessionInfo paramSessionInfo)
+  {
+    if ((paramaiiw == null) || (!paramaiiw.jdField_a_of_type_Boolean)) {}
+    do
     {
-      return;
+      return null;
+      localObject1 = paramaiiw.jdField_a_of_type_JavaUtilList;
+    } while ((localObject1 == null) || (((List)localObject1).size() == 0));
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (aijc)((Iterator)localObject1).next();
+      if (a(((aijc)localObject2).jdField_a_of_type_JavaUtilList, paramString))
+      {
+        new aijb().a(this.a, paramSessionInfo, paramString);
+        if ((((aijc)localObject2).b != null) && (((aijc)localObject2).b.size() > 0))
+        {
+          localObject2 = ((aijc)localObject2).b.iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            localArrayList.add(new aijd((aija)((Iterator)localObject2).next(), paramSessionInfo, paramString));
+          }
+        }
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-    this.a.b(2131718604);
+    if (paramaiiw.jdField_a_of_type_Int == 1) {
+      Collections.shuffle(localArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public List<aijd> a(String paramString, SessionInfo paramSessionInfo)
+  {
+    return a(paramString, aiix.a(this.a.getApp(), this.a.getCurrentUin()), paramSessionInfo);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return true;
   }
 }
 

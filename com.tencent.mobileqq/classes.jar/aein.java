@@ -1,18 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aein
-  extends BroadcastReceiver
+  extends Handler
 {
-  public aein(SubLoginActivity paramSubLoginActivity) {}
+  public aein(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
-    SubLoginActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("MoveToGroupActivity", 2, "mWaitingDialogControlHandler operationFinished = " + MoveToGroupActivity.b(this.a));
+    }
+    MoveToGroupActivity.c(this.a, true);
+    if (MoveToGroupActivity.b(this.a))
+    {
+      this.a.a(true);
+      return;
+    }
+    paramMessage = MoveToGroupActivity.a(this.a).obtainMessage(0);
+    MoveToGroupActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    MoveToGroupActivity.a(this.a, true);
   }
 }
 

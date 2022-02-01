@@ -1,16 +1,18 @@
-class vwy
-  implements vlr
+import java.util.Comparator;
+
+final class vwy
+  implements Comparator<vxh>
 {
-  vwy(vwx paramvwx, vwz paramvwz) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public int a(vxh paramvxh1, vxh paramvxh2)
   {
-    vwx.a(this.jdField_a_of_type_Vwx, new vxb[] { new vxb(this.jdField_a_of_type_Vwz, paramLong1, paramLong2) });
+    if ((paramvxh1 == paramvxh2) || (paramvxh1.b == paramvxh2.b)) {
+      return 0;
+    }
+    if (paramvxh1.b < paramvxh2.b) {
+      return -1;
+    }
+    return 1;
   }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

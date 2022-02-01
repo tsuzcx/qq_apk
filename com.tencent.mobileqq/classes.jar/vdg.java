@@ -1,28 +1,88 @@
-import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stFeed;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import java.util.List;
 
-class vdg
-  implements unf<stSimpleMetaFeed>
+public class vdg
+  extends blij<stFeed>
 {
-  vdg(vdf paramvdf, vaa paramvaa, boolean paramBoolean1, boolean paramBoolean2) {}
+  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private uxe jdField_a_of_type_Uxe;
+  private vjt jdField_a_of_type_Vjt;
   
-  public void a(boolean paramBoolean1, List<stSimpleMetaFeed> paramList, boolean paramBoolean2)
+  private vdg(ViewGroup paramViewGroup, uxe paramuxe)
   {
-    paramList = vdf.a(this.jdField_a_of_type_Vdf, paramList);
-    if (this.jdField_a_of_type_Vaa != null) {
-      this.jdField_a_of_type_Vaa.a(paramList, this.jdField_a_of_type_Boolean, this.b, null);
+    super(paramViewGroup, 2131560448);
+    this.jdField_a_of_type_Uxe = paramuxe;
+    b();
+  }
+  
+  public static vdg a(ViewGroup paramViewGroup, uxe paramuxe)
+  {
+    return new vdg(paramViewGroup, paramuxe);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131367843));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131376333));
+    TextView localTextView1 = (TextView)a(2131381578);
+    TextView localTextView2 = (TextView)a(2131381577);
+    ImageView localImageView = (ImageView)a(2131381551);
+    localTextView2.setVisibility(8);
+    localImageView.setVisibility(8);
+    localTextView1.setText(2131720131);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
+    this.jdField_a_of_type_Vjt = new vjt(a(), this.jdField_a_of_type_Uxe);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Vjt);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new uxt());
+  }
+  
+  public RecyclerView a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_Vjt == null)) {}
+    for (;;)
+    {
+      return;
+      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+      if ((i >= 0) && (j < this.jdField_a_of_type_Vjt.b().size())) {
+        while (i <= j)
+        {
+          RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+          if ((localViewHolder instanceof vju)) {
+            ((vju)localViewHolder).b();
+          }
+          i += 1;
+        }
+      }
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject)
+  public void a(stFeed paramstFeed)
   {
-    if (!paramBoolean3)
+    if (paramstFeed == null)
     {
-      if (this.jdField_a_of_type_Vaa != null) {
-        this.jdField_a_of_type_Vaa.a(-1, "task failed.");
-      }
-      this.jdField_a_of_type_Vdf.a(-1, "task failed.");
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Vjt.a(paramstFeed);
+    this.jdField_a_of_type_Vjt.a(paramstFeed.person_meta);
   }
 }
 

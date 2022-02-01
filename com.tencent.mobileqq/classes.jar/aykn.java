@@ -1,16 +1,32 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 
 public class aykn
+  implements URLDrawable.URLDrawableListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public PersonalityLabelPhoto a;
-  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  public int b = 0;
-  public int c = 0;
+  public aykn(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  aykn(aykm paramaykm) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 0) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 0)
+    {
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+    }
+  }
 }
 
 

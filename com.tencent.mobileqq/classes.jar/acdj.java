@@ -1,38 +1,7 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgBody;
+import kotlin.Metadata;
 
-public class acdj
-  implements abzb
-{
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xeb");
-    }
-    try
-    {
-      submsgtype0xeb.MsgBody localMsgBody = new submsgtype0xeb.MsgBody();
-      if (paramabxc.a(paramMsgType0x210)) {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      }
-      aneo.a(paramabxc.a(), localMsgBody);
-      return;
-    }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xeb], errInfo->" + paramabxc.getMessage());
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc, paramMsgType0x210);
-    return null;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData$Companion;", "", "()V", "EVENT_CALL_BACK_JS", "", "EVENT_COUNT_DOWN", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acdj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

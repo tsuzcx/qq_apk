@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend.biz.entity;
 
 import Wallet.AcsMsg;
-import aevc;
+import afmn;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.mobileqq.persistence.Entity;
@@ -26,7 +26,7 @@ public class ReminderEntity
   {
     this.mMsgId = this.mAcsMsg.msg_id;
     this.mReminderTime = this.mAcsMsg.notice_time;
-    this.mKey = aevc.a(this.mAcsMsg);
+    this.mKey = afmn.a(this.mAcsMsg);
   }
   
   private void acsMsgPack()
@@ -68,7 +68,7 @@ public class ReminderEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.entity.ReminderEntity
  * JD-Core Version:    0.7.0.1
  */

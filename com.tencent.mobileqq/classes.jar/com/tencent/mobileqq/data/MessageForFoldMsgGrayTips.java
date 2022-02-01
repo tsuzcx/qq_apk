@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import amtj;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import aqqz;
+import anvx;
+import aruk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
 import java.util.ArrayList;
@@ -45,8 +45,8 @@ public class MessageForFoldMsgGrayTips
     int i = (int)Long.parseLong("E62555", 16);
     if (this.clickSpan == null)
     {
-      this.clickSpan = new SpannableString(amtj.a(2131705703));
-      this.clickSpan.setSpan(new aqqz(this, paramQQAppInterface, paramContext, i | 0xFF000000), 0, this.clickSpan.length(), 33);
+      this.clickSpan = new SpannableString(anvx.a(2131706054));
+      this.clickSpan.setSpan(new aruk(this, paramQQAppInterface, paramContext, i | 0xFF000000), 0, this.clickSpan.length(), 33);
     }
     this.msg = "";
     paramQQAppInterface = new SpannableStringBuilder();
@@ -129,7 +129,7 @@ public class MessageForFoldMsgGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFoldMsgGrayTips
  * JD-Core Version:    0.7.0.1
  */

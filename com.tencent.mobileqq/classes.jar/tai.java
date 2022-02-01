@@ -1,6 +1,19 @@
-public abstract interface tai
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+
+public class tai
+  extends pvq
 {
-  public abstract void a();
+  public tai(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  
+  public void f(String paramString)
+  {
+    boolean bool = bdvn.a();
+    if (bool) {
+      this.a.a.b(true, 3, false);
+    }
+    QLog.d("ReadInJoyListViewGroup", 1, "onRefreshArticles! isLearnModelNow=" + bool);
+  }
 }
 
 

@@ -1,18 +1,17 @@
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.ad.tangram.settings.AdSettingsUtil.a;
+import java.lang.ref.WeakReference;
 
 class aclc
-  extends acjy
+  implements AdSettingsUtil.a
 {
-  aclc(aclb paramaclb, acjr paramacjr) {}
+  private aclc(aclb paramaclb) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onUpdated(WeakReference<Context> paramWeakReference, boolean paramBoolean)
   {
-    if (paramBundle != null)
-    {
-      acmy.a(this.jdField_a_of_type_Acjr, acjt.a(paramBundle));
-      return;
+    if (paramBoolean) {
+      aclb.b(this.a, paramWeakReference);
     }
-    acmy.a(this.jdField_a_of_type_Acjr, 1, "get user info error, try again");
   }
 }
 

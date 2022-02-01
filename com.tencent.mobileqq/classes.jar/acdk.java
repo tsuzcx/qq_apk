@@ -1,23 +1,7 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import kotlin.Metadata;
 
-public class acdk
-  implements abzb
-{
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong)
-  {
-    ((KandianMergeManager)paramQQAppInterface.getManager(162)).a(paramArrayOfByte, paramLong);
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210.vProtobuf, paramMsgInfo.uRealMsgTime);
-    return null;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackReceiver$Companion;", "", "()V", "ACTION_MOTIVE_BROWSING_END_PLUGIN", "", "ACTION_MOTIVE_BROWSING_END_PROXY", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acdk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,17 +1,17 @@
 package com.tencent.biz.lebasearch;
 
+import aady;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.BusinessObserver;
-import zon;
 
 final class Utils$2
   implements Runnable
 {
-  Utils$2(zon paramzon, Bundle paramBundle, BusinessObserver paramBusinessObserver) {}
+  Utils$2(aady paramaady, Bundle paramBundle, BusinessObserver paramBusinessObserver) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zon.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    this.jdField_a_of_type_Aady.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

@@ -1,25 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-public abstract class sht
+class sht
+  implements qha
 {
-  public int a;
-  public BaseArticleInfo a;
-  public HashMap<String, String> a;
-  public int b;
+  sht(shl paramshl, View paramView, int paramInt1, int paramInt2) {}
   
-  public sht(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map<String, String> paramMap)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilHashMap.putAll(paramMap);
+    shl.a(this.jdField_a_of_type_Shl, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
-  
-  public abstract void a(JSONObject paramJSONObject);
 }
 
 

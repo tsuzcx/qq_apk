@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pdy;
-import pea;
-import qpd;
+import pmz;
+import pnb;
+import rbi;
 
 class ReadInJoyListViewGroup$9
   implements Runnable
@@ -11,7 +11,7 @@ class ReadInJoyListViewGroup$9
   
   public void run()
   {
-    if ((qpd.a().a()) && (!this.this$0.a.a().d())) {
+    if ((rbi.a().a()) && (!this.this$0.a.a().d())) {
       this.this$0.a(false, 8);
     }
     while (this.a == null) {

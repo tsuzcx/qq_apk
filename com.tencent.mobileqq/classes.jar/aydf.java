@@ -1,87 +1,256 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
-import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.InterestGuide.2;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class aydf
+  implements Handler.Callback, View.OnClickListener, bito
 {
-  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  public static Boolean a;
+  public static WeakReference<aydf> a;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  RectF jdField_a_of_type_AndroidGraphicsRectF;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  public View a;
+  PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  public String a;
+  int[] jdField_a_of_type_ArrayOfInt;
+  View[] jdField_a_of_type_ArrayOfAndroidViewView;
+  int b;
+  int c;
+  int d = 0;
+  int e = 3;
+  
+  public aydf(String paramString, View paramView, int paramInt)
   {
-    if ((paramBundle == null) || (paramQQAppInterface == null))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramInt;
+    paramString = (BounceScrollView)paramView.findViewById(2131363760);
+    if (paramString != null) {
+      paramString.setScrollListener(new bitn(this, paramString.getContext()));
+    }
+    int i = ayhd.jdField_a_of_type_ArrayOfInt.length;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[i];
+    paramInt = 0;
+    while (paramInt < i)
     {
-      a("picPreSendProcess bundle=null!");
-      return;
+      this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt] = paramView.findViewById(ayhd.jdField_a_of_type_ArrayOfInt[paramInt]);
+      paramInt += 1;
     }
-    paramBundle.setClassLoader(PhotoSendParams.class.getClassLoader());
-    PhotoSendParams localPhotoSendParams = (PhotoSendParams)paramBundle.getParcelable("PhotoConst.photo_send_qzone_pic_file_params");
-    String str1 = paramBundle.getString("uin");
-    String str2 = paramQQAppInterface.getCurrentUin();
-    paramBundle.getString("troop_uin");
-    int i = paramBundle.getInt("uintype", 1003);
-    if ((localPhotoSendParams == null) || (TextUtils.isEmpty(localPhotoSendParams.rawMd5)) || (TextUtils.isEmpty(localPhotoSendParams.thumbPath)) || (!FileUtils.fileExistsAndNotEmpty(localPhotoSendParams.thumbPath)) || (TextUtils.isEmpty(localPhotoSendParams.rawDownloadUrl)) || (TextUtils.isEmpty(str1)))
-    {
-      a("picPreSendProcess sendParams error, friendUin:" + str1);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess params friendUin:" + str1 + ", uinType:" + i + ", sendParams:" + localPhotoSendParams.toString());
-    }
-    RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
-    RichProto.RichProtoReq.PicUpReq localPicUpReq;
-    switch (i)
-    {
-    default: 
-      localPicUpReq = new RichProto.RichProtoReq.PicUpReq();
-      localPicUpReq.selfUin = str2;
-      localPicUpReq.peerUin = str1;
-      localPicUpReq.secondUin = str2;
-      localPicUpReq.fileSize = localPhotoSendParams.fileSize;
-      localPicUpReq.md5 = HexUtil.hexStr2Bytes(localPhotoSendParams.rawMd5);
-      localPicUpReq.fileName = (localPhotoSendParams.rawMd5 + ".jpg");
-      localPicUpReq.width = localPhotoSendParams.rawWidth;
-      localPicUpReq.height = localPhotoSendParams.rawHeight;
-      localPicUpReq.picType = 1000;
-      localPicUpReq.typeHotPic = 3;
-      localPicUpReq.transferUrl = localPhotoSendParams.rawDownloadUrl;
-    }
-    for (paramBundle = "c2c_pic_up"; TextUtils.isEmpty(paramBundle); paramBundle = "grp_pic_up")
-    {
-      a("picPreSendProcess protoKey=null!");
-      return;
-      localPicUpReq = new RichProto.RichProtoReq.PicUpReq();
-      localPicUpReq.selfUin = str2;
-      localPicUpReq.peerUin = str1;
-      localPicUpReq.secondUin = str2;
-      localPicUpReq.fileSize = localPhotoSendParams.fileSize;
-      localPicUpReq.md5 = HexUtil.hexStr2Bytes(localPhotoSendParams.rawMd5);
-      localPicUpReq.fileName = (localPhotoSendParams.rawMd5 + ".jpg");
-      localPicUpReq.width = localPhotoSendParams.rawWidth;
-      localPicUpReq.height = localPhotoSendParams.rawHeight;
-      localPicUpReq.picType = 1000;
-      localPicUpReq.busiType = 1045;
-      localPicUpReq.uinType = 1;
-      localPicUpReq.typeHotPic = 3;
-      localPicUpReq.transferUrl = localPhotoSendParams.rawDownloadUrl;
-    }
-    localRichProtoReq.reqs.add(localPicUpReq);
-    localRichProtoReq.protoKey = paramBundle;
-    localRichProtoReq.protoReqMgr = paramQQAppInterface.getProtoReqManager();
-    localRichProtoReq.callback = new aydg(str2, str1, localPhotoSendParams);
-    RichProtoProc.procRichProtoReq(localRichProtoReq);
+    this.jdField_a_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 500L);
   }
   
-  private static void a(String paramString)
+  public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("PicAioQzonePreSendMgr", 2, paramString);
+    if (paramInt2 == 0)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      if (this.e != 1) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
+      }
     }
+    for (;;)
+    {
+      this.d = paramInt2;
+      return;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (axql.a()) {
+      axql.a("InterestGuide", "MSG_CHECK_INTEREST", new Object[] { Integer.valueOf(paramMessage.what), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getMeasuredHeight()) });
+    }
+    Context localContext;
+    int k;
+    Object localObject;
+    int i;
+    int m;
+    int j;
+    if ((paramMessage.what == 0) && (this.d == 0) && (this.e != 1) && (this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > 0))
+    {
+      if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+        this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+      }
+      localContext = this.jdField_a_of_type_AndroidViewView.getContext();
+      if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_AndroidGraphicsRectF == null))
+      {
+        this.jdField_a_of_type_ArrayOfInt = new int[2];
+        this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+        paramMessage = localContext.getResources().getDisplayMetrics();
+        this.b = paramMessage.widthPixels;
+        this.c = paramMessage.heightPixels;
+        this.jdField_a_of_type_Float = paramMessage.density;
+        this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 120.0F));
+      }
+      k = 0;
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131376888);
+      if (localObject != null)
+      {
+        ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+        paramMessage = ((View)localObject).findViewById(2131379099);
+        localObject = ((View)localObject).findViewById(2131369883);
+        i = this.jdField_a_of_type_ArrayOfInt[1];
+        k = paramMessage.getMeasuredHeight() + i + ((View)localObject).getMeasuredHeight();
+      }
+      paramMessage = new int[3];
+      Message tmp268_267 = paramMessage;
+      tmp268_267[0] = 2131363708;
+      Message tmp273_268 = tmp268_267;
+      tmp273_268[1] = 2131371893;
+      Message tmp278_273 = tmp273_268;
+      tmp278_273[2] = 2131368320;
+      tmp278_273;
+      i = this.c;
+      m = 0;
+      if (m < paramMessage.length)
+      {
+        localObject = this.jdField_a_of_type_AndroidViewView.findViewById(paramMessage[m]);
+        int n;
+        if ((localObject != null) && (((View)localObject).getVisibility() == 0))
+        {
+          ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+          j = i;
+          if (this.jdField_a_of_type_ArrayOfInt[1] > k)
+          {
+            j = i;
+            if (this.jdField_a_of_type_ArrayOfInt[1] < i) {
+              j = this.jdField_a_of_type_ArrayOfInt[1];
+            }
+          }
+          n = j;
+          if (axql.a())
+          {
+            axql.a("InterestGuide", "checkShowGuide_bottom", new Object[] { Integer.valueOf(m), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), Integer.valueOf(((View)localObject).getMeasuredHeight()) });
+            n = j;
+          }
+        }
+        for (;;)
+        {
+          m += 1;
+          i = n;
+          break;
+          n = i;
+          if (axql.a())
+          {
+            axql.a("InterestGuide", "checkShowGuide_bottom", new Object[] { Integer.valueOf(m), localObject });
+            n = i;
+          }
+        }
+      }
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, k, this.b, i);
+      if (axql.a()) {
+        axql.a("InterestGuide", "checkShowGuide", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(k), Integer.valueOf(i) });
+      }
+      localObject = null;
+      i = 0;
+      paramMessage = (Message)localObject;
+      if (0 == 0)
+      {
+        paramMessage = (Message)localObject;
+        if (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
+        {
+          if ((this.jdField_a_of_type_ArrayOfAndroidViewView[i] == null) || (this.jdField_a_of_type_ArrayOfAndroidViewView[i].getVisibility() != 0)) {}
+          do
+          {
+            i += 1;
+            break;
+            this.jdField_a_of_type_ArrayOfAndroidViewView[i].getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+            j = this.jdField_a_of_type_ArrayOfAndroidViewView[i].getMeasuredWidth();
+            k = this.jdField_a_of_type_ArrayOfAndroidViewView[i].getMeasuredHeight();
+          } while (!this.jdField_a_of_type_AndroidGraphicsRectF.contains(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], j + this.jdField_a_of_type_ArrayOfInt[0], k + this.jdField_a_of_type_ArrayOfInt[1]));
+          paramMessage = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
+        }
+      }
+      if (paramMessage != null)
+      {
+        localObject = new LinearLayout(localContext);
+        ((LinearLayout)localObject).setOrientation(1);
+        i = Color.parseColor("#BF000000");
+        j = this.jdField_a_of_type_ArrayOfInt[1];
+        k = paramMessage.getMeasuredHeight();
+        m = this.c - j - k;
+        if (j > 0)
+        {
+          if (m <= this.jdField_a_of_type_Int) {
+            break label1003;
+          }
+          paramMessage = new View(localContext);
+          paramMessage.setBackgroundColor(i);
+          ((LinearLayout)localObject).addView(paramMessage, new LinearLayout.LayoutParams(this.b, j));
+        }
+        ((LinearLayout)localObject).addView(new View(localContext), new LinearLayout.LayoutParams(this.b, k));
+        if (m > 0)
+        {
+          if (m <= this.jdField_a_of_type_Int) {
+            break label1032;
+          }
+          paramMessage = LayoutInflater.from(localContext).inflate(2131561244, null);
+          ((Button)paramMessage.findViewById(2131363792)).setOnClickListener(this);
+        }
+      }
+    }
+    for (;;)
+    {
+      paramMessage.setBackgroundColor(i);
+      ((LinearLayout)localObject).addView(paramMessage, new LinearLayout.LayoutParams(this.b, m));
+      if (axql.a()) {
+        axql.a("InterestGuide", "checkShowGuide", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+      }
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localContext);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(this.b);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(this.c);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView((View)localObject);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(null);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView, 51, 0, 0);
+      return true;
+      label1003:
+      paramMessage = LayoutInflater.from(localContext).inflate(2131561245, null);
+      ((Button)paramMessage.findViewById(2131363792)).setOnClickListener(this);
+      break;
+      label1032:
+      paramMessage = new View(localContext);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      BounceScrollView localBounceScrollView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363760);
+      if (localBounceScrollView != null) {
+        localBounceScrollView.setScrollListener(null);
+      }
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+      jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
+      ThreadManager.post(new InterestGuide.2(this), 5, null, false);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

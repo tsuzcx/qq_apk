@@ -1,13 +1,18 @@
-class bkxt
-  implements amqq
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.util.BinderWarpper;
+
+public final class bkxt
+  implements Parcelable.Creator<BinderWarpper>
 {
-  bkxt(bkxs parambkxs) {}
-  
-  public void onDpcPullFinished(boolean paramBoolean)
+  public BinderWarpper a(Parcel paramParcel)
   {
-    if (paramBoolean) {
-      this.a.a();
-    }
+    return new BinderWarpper(paramParcel.readStrongBinder());
+  }
+  
+  public BinderWarpper[] a(int paramInt)
+  {
+    return new BinderWarpper[paramInt];
   }
 }
 

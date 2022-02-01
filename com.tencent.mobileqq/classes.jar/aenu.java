@@ -1,18 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class aenu
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public aenu(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  public aenu(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.finish();
   }
 }
 

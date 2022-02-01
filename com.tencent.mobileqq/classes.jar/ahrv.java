@@ -1,51 +1,53 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.24.1;
 
-class ahrv
-  implements aprr
+public class ahrv
+  implements ahrc
 {
-  ahrv(ahru paramahru) {}
+  ahrv(ahri paramahri) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "onConfirm: ");
-    if (ahru.a(this.a) != null) {
-      ahru.a(this.a).a(this.a.jdField_a_of_type_Long);
-    }
-    ahru.a(this.a).dismiss();
-    int i = ahru.a(this.a, this.a.jdField_a_of_type_Long);
-    if ((ahru.a(this.a).a(0) == 0) && (this.a.c < 23)) {}
-    for (String str = this.a.a(ahru.a(this.a).a(1));; str = ahru.a(this.a).a(1) + this.a.jdField_a_of_type_AndroidContentContext.getString(2131694174))
+    View localView;
+    if (paramInt == 0)
     {
-      bcef.b(null, "dc00898", "", "", "0X800AE7F", "0X800AE7F", ahru.a(this.a), i, "", "", str, "");
+      localView = this.a.a().findViewById(2131367500);
+      if (localView != null) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localView.setVisibility(0);
+          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+          localAlphaAnimation.setDuration(300L);
+          localView.startAnimation(localAlphaAnimation);
+          localView.postDelayed(new AIOGalleryScene.24.1(this, localView), 8000L);
+          return;
+          if (1 != paramInt) {
+            break;
+          }
+        } while ((this.a.jdField_a_of_type_Bdcw == null) || (((ahri.J(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)ahri.K(this.a)).b)) || (this.a.c));
+        this.a.c(null);
+        return;
+        if (2 != paramInt) {
+          break;
+        }
+        this.a.a(null);
+      } while ((this.a.jdField_a_of_type_Bdcw == null) || (((ahri.L(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)ahri.M(this.a)).b)) || (this.a.c));
+      this.a.jdField_a_of_type_Bdcw.b(this.a.jdField_a_of_type_Ahsn.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
       return;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.a(paramInt1, paramInt2);
-    QLog.d("UpComingMsgLogic.UpcomingTimeSelector", 3, "column: " + paramInt1 + ", row: " + paramInt2);
-    if (paramInt1 == 0) {
-      ahru.a(this.a).a(1);
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    ahru.a(this.a).dismiss();
-    bcef.b(null, "dc00898", "", "", "0X800AE80", "0X800AE80", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    if (ahru.a(this.a) != null) {
-      ahru.a(this.a).a(-1L);
-    }
-    ahru.a(this.a).dismiss();
-    bcef.b(null, "dc00898", "", "", "0X800B411", "0X800B411", 0, 0, "", "", "", "");
+    } while (3 != paramInt);
+    this.a.jdField_a_of_type_Ahsn.a().jdField_a_of_type_Ahtn.i = true;
+    this.a.e.setText("");
+    this.a.u();
   }
 }
 

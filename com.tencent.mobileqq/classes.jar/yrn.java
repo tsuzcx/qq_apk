@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class yrn
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  yrn(yrj paramyrj) {}
+  yrn(yrk paramyrk) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    xwa.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ykq.b("TextLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ykq.b("TextLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.a.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ykq.b("TextLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

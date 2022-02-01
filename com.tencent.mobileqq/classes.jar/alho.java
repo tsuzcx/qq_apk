@@ -1,16 +1,24 @@
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class alho
+  extends alhf
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
-  Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  public Button a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

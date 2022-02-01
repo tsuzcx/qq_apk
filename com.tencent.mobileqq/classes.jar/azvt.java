@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLImageView;
 
-public abstract class azvt
+public class azvt
 {
-  public RegisterNewBaseActivity a;
-  public QQAppInterface a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  protected azvt(RegisterNewBaseActivity paramRegisterNewBaseActivity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
-  }
+  public azvt(azvs paramazvs) {}
 }
 
 

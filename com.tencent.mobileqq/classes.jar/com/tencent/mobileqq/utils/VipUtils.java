@@ -1,14 +1,11 @@
 package com.tencent.mobileqq.utils;
 
 import QQService.EVIPSPEC;
-import aeox;
-import aepe;
-import ajac;
-import ajaj;
-import akle;
-import amil;
-import amsw;
-import amtj;
+import afgi;
+import afgp;
+import ajvr;
+import ajvy;
+import algw;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -26,35 +23,38 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import apub;
-import aqgw;
-import arjk;
-import aucf;
-import aucg;
-import awgl;
-import awgq;
-import awgw;
-import awgx;
-import azvi;
-import bbko;
-import bbyp;
-import bcef;
-import betd;
-import bfur;
-import bfvh;
-import bgag;
-import bgah;
-import bgai;
+import anjv;
+import anvk;
+import anvx;
+import aqxe;
+import arkd;
+import asnq;
+import avhz;
+import avia;
+import axmn;
+import axms;
+import axmy;
+import axmz;
+import bbbq;
+import bcrg;
+import bdfk;
+import bdla;
 import bgaj;
-import bgak;
-import bgal;
-import bgam;
-import bgan;
-import bgao;
-import bgap;
-import bgaq;
-import bgev;
-import bgjy;
+import bhdj;
+import bhdz;
+import bhiy;
+import bhiz;
+import bhja;
+import bhjb;
+import bhjc;
+import bhjd;
+import bhje;
+import bhjf;
+import bhjg;
+import bhjh;
+import bhji;
+import bhnp;
+import bhsv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -66,6 +66,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -130,18 +131,18 @@ public class VipUtils
     return (int)((localDate2.getTime() - localDate1.getTime()) / 86400000L);
   }
   
-  public static int a(arjk paramarjk)
+  public static int a(asnq paramasnq)
   {
     int k = 0;
     int i;
     int j;
-    if ((paramarjk.mVipType & 0x2) != 0)
+    if ((paramasnq.mVipType & 0x2) != 0)
     {
       i = 1;
       j = k;
-      if (!paramarjk.mVipHide)
+      if (!paramasnq.mVipHide)
       {
-        if ((paramarjk.mBigVipHide) || (paramarjk.mBigVipLevel <= 0)) {
+        if ((paramasnq.mBigVipHide) || (paramasnq.mBigVipLevel <= 0)) {
           break label49;
         }
         j = i + 768;
@@ -153,11 +154,11 @@ public class VipUtils
       return j;
       i = 0;
       break;
-      if (((paramarjk.mVipType & 0x100) != 0) && (paramarjk.mVipLevel > 0)) {
+      if (((paramasnq.mVipType & 0x100) != 0) && (paramasnq.mVipLevel > 0)) {
         return i + 512;
       }
       j = k;
-    } while (paramarjk.mVipType == 0);
+    } while (paramasnq.mVipType == 0);
     return 0;
   }
   
@@ -168,7 +169,7 @@ public class VipUtils
   
   public static int a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
+    paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
     switch (paramInt)
     {
     }
@@ -177,7 +178,7 @@ public class VipUtils
       do
       {
         return 0;
-      } while ((paramQQAppInterface == null) || (!awgl.a().a()));
+      } while ((paramQQAppInterface == null) || (!axmn.a().a()));
       return paramQQAppInterface.relationIconFlag >> paramInt * 2 & 0x3;
     } while (paramQQAppInterface == null);
     return paramQQAppInterface.relationIconFlag >> paramInt * 2 & 0x7;
@@ -194,27 +195,27 @@ public class VipUtils
       if (TextUtils.isEmpty(paramString)) {
         str = paramQQAppInterface.getCurrentAccountUin();
       }
-      paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+      paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramQQAppInterface == null) {
-        break label120;
+        break label121;
       }
       if (!paramBoolean) {
-        break label77;
+        break label78;
       }
       paramQQAppInterface = paramQQAppInterface.e(str);
       if (paramQQAppInterface == null) {
-        break label101;
+        break label102;
       }
       paramBoolean = paramQQAppInterface.isServiceEnabled(EVIPSPEC.E_SP_QQVIP);
       if (!paramQQAppInterface.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label87;
+        break label88;
       }
       i = 3;
     }
-    label77:
-    label87:
-    label101:
-    label120:
+    label78:
+    label88:
+    label102:
+    label121:
     do
     {
       for (;;)
@@ -260,7 +261,7 @@ public class VipUtils
     int j = 0;
     int m = 0;
     int i = j;
-    label76:
+    label77:
     int k;
     if (paramAppRuntime != null)
     {
@@ -268,35 +269,34 @@ public class VipUtils
       if (TextUtils.isEmpty(paramString)) {
         str = paramAppRuntime.getAccount();
       }
-      paramAppRuntime = (amsw)paramAppRuntime.getManager(51);
+      paramAppRuntime = (anvk)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramAppRuntime == null) {
-        break label151;
+        break label152;
       }
       paramAppRuntime = paramAppRuntime.e(str);
       if (paramAppRuntime == null) {
-        break label133;
+        break label134;
       }
       if (!paramAppRuntime.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-        break label117;
+        break label118;
       }
       i = 1;
       if (!paramAppRuntime.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-        break label122;
+        break label123;
       }
       j = 2;
       if (!paramAppRuntime.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label127;
+        break label128;
       }
       k = 4;
-      label89:
+      label90:
       if (paramAppRuntime.isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB)) {
         m = 8;
       }
       i = m | k | 0x0 | i | j;
     }
-    label117:
-    label122:
-    label127:
+    label118:
+    label123:
     do
     {
       do
@@ -305,17 +305,18 @@ public class VipUtils
         i = 0;
         break;
         j = 0;
-        break label76;
+        break label77;
         k = 0;
-        break label89;
+        break label90;
         i = j;
       } while (!QLog.isColorLevel());
       QLog.e("VipUtils", 2, "getPrivilegeFlags Friends is null");
       return 0;
       i = j;
     } while (!QLog.isColorLevel());
-    label133:
-    label151:
+    label128:
+    label134:
+    label152:
     QLog.e("VipUtils", 2, "getPrivilegeFlags FriendsManagerImp is null");
     return 0;
   }
@@ -345,88 +346,88 @@ public class VipUtils
       if (j != 0) {
         break label126;
       }
-      localObject = amtj.a(2131715810);
+      localObject = anvx.a(2131716158);
     }
     String str;
     for (;;)
     {
-      str = amtj.a(2131715802);
+      str = anvx.a(2131716150);
       switch (paramInt2)
       {
       default: 
         return null;
         label126:
         if (j == 1) {
-          localObject = amtj.a(2131715794);
+          localObject = anvx.a(2131716142);
         } else if (j == 2) {
-          localObject = amtj.a(2131715819);
+          localObject = anvx.a(2131716167);
         } else {
-          localObject = j + amtj.a(2131715813);
+          localObject = j + anvx.a(2131716161);
         }
         break;
       }
     }
-    localObject = new SpannableString(amtj.a(2131715792) + (String)localObject + amtj.a(2131715807) + str);
+    localObject = new SpannableString(anvx.a(2131716140) + (String)localObject + anvx.a(2131716155) + str);
     paramInt1 = ((SpannableString)localObject).length() - str.length();
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
     return localObject;
-    localObject = new SpannableString(amtj.a(2131715826) + (String)localObject + amtj.a(2131715790) + str);
+    localObject = new SpannableString(anvx.a(2131716174) + (String)localObject + anvx.a(2131716138) + str);
     paramInt1 = ((SpannableString)localObject).length() - str.length();
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
     return localObject;
-    localObject = new SpannableString(amtj.a(2131715799) + str);
+    localObject = new SpannableString(anvx.a(2131716147) + str);
     paramInt1 = ((SpannableString)localObject).length() - str.length();
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
     return localObject;
-    localObject = new SpannableString(amtj.a(2131715814) + str);
+    localObject = new SpannableString(anvx.a(2131716162) + str);
     paramInt1 = ((SpannableString)localObject).length() - str.length();
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
     return localObject;
-    return new SpannableString(amtj.a(2131715805) + (String)localObject + amtj.a(2131715823));
-    return new SpannableString(amtj.a(2131715800) + (String)localObject + amtj.a(2131715793));
-    return new SpannableString(amtj.a(2131715796));
-    return new SpannableString(amtj.a(2131715812));
-    return new SpannableString(amtj.a(2131715815));
-    return new SpannableString(amtj.a(2131715808));
-    localObject = new SpannableString(amtj.a(2131715820) + (String)localObject + amtj.a(2131715789) + str);
+    return new SpannableString(anvx.a(2131716153) + (String)localObject + anvx.a(2131716171));
+    return new SpannableString(anvx.a(2131716148) + (String)localObject + anvx.a(2131716141));
+    return new SpannableString(anvx.a(2131716144));
+    return new SpannableString(anvx.a(2131716160));
+    return new SpannableString(anvx.a(2131716163));
+    return new SpannableString(anvx.a(2131716156));
+    localObject = new SpannableString(anvx.a(2131716168) + (String)localObject + anvx.a(2131716137) + str);
     paramInt1 = ((SpannableString)localObject).length() - str.length();
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
     return localObject;
-    localObject = new SpannableString(amtj.a(2131715821) + str);
+    localObject = new SpannableString(anvx.a(2131716169) + str);
     paramInt1 = ((SpannableString)localObject).length() - str.length();
     ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
     return localObject;
     paramInt1 = a(i, paramInt1) + 30;
     if (paramInt1 >= 0) {
       if (paramInt1 == 0) {
-        localObject = amtj.a(2131715798);
+        localObject = anvx.a(2131716146);
       }
     }
     for (;;)
     {
-      localObject = new SpannableString(amtj.a(2131715816) + (String)localObject + amtj.a(2131715806) + str);
+      localObject = new SpannableString(anvx.a(2131716164) + (String)localObject + anvx.a(2131716154) + str);
       paramInt1 = ((SpannableString)localObject).length() - str.length();
       ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#0000ff")), paramInt1, str.length() + paramInt1, 34);
       return localObject;
       if (paramInt1 == 1)
       {
-        localObject = amtj.a(2131715825);
+        localObject = anvx.a(2131716173);
       }
       else if (paramInt1 == 2)
       {
-        localObject = amtj.a(2131715804);
+        localObject = anvx.a(2131716152);
       }
       else
       {
-        localObject = paramInt1 + amtj.a(2131715801);
+        localObject = paramInt1 + anvx.a(2131716149);
         continue;
-        localObject = amtj.a(2131715791);
+        localObject = anvx.a(2131716139);
       }
     }
-    return new SpannableString(amtj.a(2131715803));
-    return new SpannableString(amtj.a(2131715811));
-    return new SpannableString(amtj.a(2131715817));
-    return new SpannableString(amtj.a(2131715795));
+    return new SpannableString(anvx.a(2131716151));
+    return new SpannableString(anvx.a(2131716159));
+    return new SpannableString(anvx.a(2131716165));
+    return new SpannableString(anvx.a(2131716143));
   }
   
   private static String a(int paramInt, String paramString)
@@ -519,7 +520,7 @@ public class VipUtils
       if (TextUtils.isEmpty(paramString)) {
         str = paramAppRuntime.getAccount();
       }
-      paramAppRuntime = (amsw)paramAppRuntime.getManager(51);
+      paramAppRuntime = (anvk)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramAppRuntime != null)
       {
         paramAppRuntime = paramAppRuntime.e(str);
@@ -559,7 +560,7 @@ public class VipUtils
       if (TextUtils.isEmpty(paramString)) {
         str = paramAppRuntime.getAccount();
       }
-      paramAppRuntime = (amsw)paramAppRuntime.getManager(51);
+      paramAppRuntime = (anvk)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramAppRuntime != null)
       {
         paramAppRuntime = paramAppRuntime.e(str);
@@ -591,9 +592,9 @@ public class VipUtils
     return 0;
   }
   
-  public static void a(Activity paramActivity, bgal parambgal)
+  public static void a(Activity paramActivity, bhjd parambhjd)
   {
-    if ((parambgal == null) || (paramActivity == null) || (TextUtils.isEmpty(parambgal.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(parambgal.d)) || (TextUtils.isEmpty(parambgal.e)) || (TextUtils.isEmpty(parambgal.b)) || (TextUtils.isEmpty(parambgal.c)) || (parambgal.jdField_a_of_type_Int < 1)) {
+    if ((parambhjd == null) || (paramActivity == null) || (TextUtils.isEmpty(parambhjd.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(parambhjd.d)) || (TextUtils.isEmpty(parambhjd.e)) || (TextUtils.isEmpty(parambhjd.b)) || (TextUtils.isEmpty(parambhjd.c)) || (parambhjd.jdField_a_of_type_Int < 1)) {
       return;
     }
     Object localObject = new JSONObject();
@@ -601,21 +602,21 @@ public class VipUtils
     {
       try
       {
-        ((JSONObject)localObject).put("serviceCode", parambgal.b);
-        ((JSONObject)localObject).put("aid", parambgal.d);
-        ((JSONObject)localObject).put("openMonth", String.valueOf(parambgal.jdField_a_of_type_Int));
-        ((JSONObject)localObject).put("offerId", parambgal.e);
-        ((JSONObject)localObject).put("serviceName", parambgal.c);
-        ((JSONObject)localObject).put("userId", parambgal.jdField_a_of_type_JavaLangString);
-        if (!parambgal.jdField_a_of_type_Boolean) {
+        ((JSONObject)localObject).put("serviceCode", parambhjd.b);
+        ((JSONObject)localObject).put("aid", parambhjd.d);
+        ((JSONObject)localObject).put("openMonth", String.valueOf(parambhjd.jdField_a_of_type_Int));
+        ((JSONObject)localObject).put("offerId", parambhjd.e);
+        ((JSONObject)localObject).put("serviceName", parambhjd.c);
+        ((JSONObject)localObject).put("userId", parambhjd.jdField_a_of_type_JavaLangString);
+        if (!parambhjd.jdField_a_of_type_Boolean) {
           ((JSONObject)localObject).put("isCanChange", false);
         }
         localObject = ((JSONObject)localObject).toString();
-        if (parambgal.f == null) {
+        if (parambhjd.f == null) {
           break label233;
         }
-        parambgal = parambgal.f;
-        PayBridgeActivity.tenpay(paramActivity, (String)localObject, 4, parambgal);
+        parambhjd = parambhjd.f;
+        PayBridgeActivity.tenpay(paramActivity, (String)localObject, 4, parambhjd);
         return;
       }
       catch (Exception paramActivity)
@@ -628,13 +629,13 @@ public class VipUtils
       QLog.e("VipUtils", 2, "openRechargeDialog exception : " + paramActivity.getMessage());
       return;
       label233:
-      parambgal = "";
+      parambhjd = "";
     }
   }
   
   public static void a(Context paramContext)
   {
-    a(0, "mvip.pingtai.mobileqq.androidziliaoka.fromqita", "qita", bgev.a("kuoliePersonalCardMaster"), "0");
+    a(0, "mvip.pingtai.mobileqq.androidziliaoka.fromqita", "qita", bhnp.a("kuoliePersonalCardMaster"), paramContext);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener, String paramString4, int paramInt)
@@ -644,7 +645,7 @@ public class VipUtils
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener, String paramString4, int paramInt, boolean paramBoolean)
   {
-    paramContext = bfur.a(paramContext, 0, amtj.a(2131715809), paramString2, paramString3, amtj.a(2131715788), new bgag(paramBoolean, paramContext, paramString1, paramString4, paramInt), paramOnClickListener);
+    paramContext = bhdj.a(paramContext, 0, anvx.a(2131716157), paramString2, paramString3, anvx.a(2131716136), new bhiy(paramBoolean, paramContext, paramString1, paramString4, paramInt), paramOnClickListener);
     if (!paramContext.isShowing()) {
       paramContext.show();
     }
@@ -652,11 +653,11 @@ public class VipUtils
   
   public static void a(Context paramContext, boolean paramBoolean)
   {
-    String str = amtj.a(2131715818);
+    String str = anvx.a(2131716166);
     if (paramBoolean) {}
     for (int i = 16;; i = 9)
     {
-      paramContext = bfur.a(paramContext, 0, str, a(0, i).toString(), amtj.a(2131715824), null, null, new bgah());
+      paramContext = bhdj.a(paramContext, 0, str, a(0, i).toString(), anvx.a(2131716172), null, null, new bhiz());
       if (!paramContext.isShowing()) {
         paramContext.show();
       }
@@ -666,7 +667,7 @@ public class VipUtils
   
   public static void a(Resources paramResources, ImageView paramImageView, String paramString, Drawable paramDrawable)
   {
-    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, paramDrawable, null, new bgaj(paramResources, paramString, paramImageView, paramDrawable));
+    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, paramDrawable, null, new bhjb(paramResources, paramString, paramImageView, paramDrawable));
     if (paramString != null)
     {
       int i = AIOUtils.dp2px(15.0F, paramResources);
@@ -689,7 +690,7 @@ public class VipUtils
   
   public static void a(View paramView)
   {
-    bgam.a(paramView);
+    bhje.a(paramView);
   }
   
   public static void a(View paramView, int paramInt, String paramString)
@@ -704,7 +705,7 @@ public class VipUtils
     if (b(localQQAppInterface))
     {
       paramView = new StringBuilder();
-      paramView.append(bgev.a("NameplateClickSvip"));
+      paramView.append(bhnp.a("NameplateClickSvip"));
       paramView.append("&qq=");
       paramView.append(paramString);
       paramView = paramView.toString();
@@ -719,15 +720,15 @@ public class VipUtils
       localContext.startActivity(localIntent);
       VasWebviewUtil.reportCommercialDrainage(localQQAppInterface.getCurrentAccountUin(), "nameplate", paramString, "", 1, 0, 0, "", "", "");
       return;
-      paramView = bgev.a("NameplateClickDefault");
+      paramView = bhnp.a("NameplateClickDefault");
     }
   }
   
-  public static void a(View paramView, Context paramContext, String paramString, akle paramakle)
+  public static void a(View paramView, Context paramContext, String paramString, algw paramalgw)
   {
-    amsw localamsw = (amsw)((BaseActivity)paramContext).app.getManager(51);
-    if ((localamsw != null) && (localamsw.b(paramString) != null)) {
-      VipUtils.UpdateRecentEfficientVipIconTask.a(paramContext, paramString, paramakle);
+    anvk localanvk = (anvk)((BaseActivity)paramContext).app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if ((localanvk != null) && (localanvk.b(paramString) != null)) {
+      VipUtils.UpdateRecentEfficientVipIconTask.a(paramContext, paramString, paramalgw);
     }
     do
     {
@@ -735,21 +736,21 @@ public class VipUtils
       if (QLog.isColorLevel()) {
         QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - start");
       }
-      paramakle.a.setTextColor(paramContext.getResources().getColor(2131167019));
-      paramakle.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
-    } while (localamsw == null);
-    paramView = new VipUtils.UpdateRecentEfficientVipIconTask(paramView, paramContext, paramString, paramakle);
-    bgam.a(paramView);
-    ThreadManagerV2.executeOnSubThread(new VipUtils.3(localamsw, paramString, paramView));
+      paramalgw.a.setTextColor(paramContext.getResources().getColor(2131167033));
+      paramalgw.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+    } while (localanvk == null);
+    paramView = new VipUtils.UpdateRecentEfficientVipIconTask(paramView, paramContext, paramString, paramalgw);
+    bhje.a(paramView);
+    ThreadManagerV2.executeOnSubThread(new VipUtils.3(localanvk, paramString, paramView));
   }
   
-  public static void a(View paramView, arjk paramarjk)
+  public static void a(View paramView, asnq paramasnq)
   {
-    int i = a(paramarjk);
+    int i = a(paramasnq);
     Context localContext = paramView.getContext();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localQQAppInterface != null) {
-      if (paramarjk.mIsMyFeed) {
+      if (paramasnq.mIsMyFeed) {
         if (i >> 8 == 3) {
           a(localQQAppInterface, localContext, "dhykl");
         }
@@ -757,17 +758,17 @@ public class VipUtils
     }
     for (;;)
     {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009F0C", "0X8009F0C", 0, 0, "", "", "", "");
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009F0C", "0X8009F0C", 0, 0, "", "", "", "");
       return;
       a(localContext);
       continue;
-      b(paramView, i, paramarjk.mUin);
+      b(paramView, i, paramasnq.mUin);
       continue;
       QLog.e("VipUtils", 1, "klClickVipIcon: app is null");
     }
   }
   
-  public static void a(arjk paramarjk, ImageView paramImageView)
+  public static void a(asnq paramasnq, ImageView paramImageView)
   {
     int k = 1;
     int j = 0;
@@ -775,14 +776,14 @@ public class VipUtils
     int i;
     String str;
     int m;
-    if ((paramarjk.mVipType & 0x2) != 0)
+    if ((paramasnq.mVipType & 0x2) != 0)
     {
       i = 1;
-      str = bgan.a(paramarjk);
+      str = bhjf.a(paramasnq);
       if (!a()) {
         break label182;
       }
-      m = a(paramarjk);
+      m = a(paramasnq);
       if (TextUtils.isEmpty(str)) {
         break label182;
       }
@@ -792,7 +793,7 @@ public class VipUtils
       if (i == 0) {
         break label97;
       }
-      a(localResources, paramImageView, str, localResources.getDrawable(2130846979));
+      a(localResources, paramImageView, str, localResources.getDrawable(2130847076));
       i = k;
     }
     for (;;)
@@ -806,7 +807,7 @@ public class VipUtils
         i = 0;
         break;
         label97:
-        a(localResources, paramImageView, str, localResources.getDrawable(2130846977));
+        a(localResources, paramImageView, str, localResources.getDrawable(2130847074));
         i = k;
         break label80;
         label119:
@@ -815,11 +816,11 @@ public class VipUtils
         }
         if (i != 0)
         {
-          a(localResources, paramImageView, str, localResources.getDrawable(2130846979));
+          a(localResources, paramImageView, str, localResources.getDrawable(2130847076));
           i = k;
           break label80;
         }
-        a(localResources, paramImageView, str, localResources.getDrawable(2130846977));
+        a(localResources, paramImageView, str, localResources.getDrawable(2130847074));
         i = k;
         break label80;
       }
@@ -854,8 +855,8 @@ public class VipUtils
       if (TextUtils.isEmpty(paramString1)) {}
       for (paramVarArgs = "UNKNOWN";; paramVarArgs = paramString1)
       {
-        bcef.b(localQQAppInterface, "P_CliOper", paramVarArgs, "", paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
-        amil.a(paramAppInterface, paramString1, paramString2, paramString3, "", paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+        bdla.b(localQQAppInterface, "P_CliOper", paramVarArgs, "", paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+        anjv.a(paramAppInterface, paramString1, paramString2, paramString3, "", paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
         return;
       }
     }
@@ -871,7 +872,7 @@ public class VipUtils
     if (TextUtils.isEmpty(paramString1)) {}
     for (paramVarArgs = "UNKNOWN";; paramVarArgs = paramString1)
     {
-      bcef.b(null, "P_CliOper", paramVarArgs, "", paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+      bdla.b(null, "P_CliOper", paramVarArgs, "", paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
       break;
     }
   }
@@ -907,8 +908,8 @@ public class VipUtils
         if (TextUtils.isEmpty(paramString1)) {}
         for (paramVarArgs = "UNKNOWN";; paramVarArgs = paramString1)
         {
-          bcef.b(localQQAppInterface, "P_CliOper", paramVarArgs, paramString4, paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
-          amil.a(paramAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+          bdla.b(localQQAppInterface, "P_CliOper", paramVarArgs, paramString4, paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+          anjv.a(paramAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
           return;
         }
       }
@@ -924,7 +925,7 @@ public class VipUtils
       if (TextUtils.isEmpty(paramString1)) {}
       for (paramVarArgs = "UNKNOWN";; paramVarArgs = paramString1)
       {
-        bcef.b(null, "P_CliOper", paramVarArgs, paramString4, paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
+        bdla.b(null, "P_CliOper", paramVarArgs, paramString4, paramString2, paramString3, paramInt1, paramInt2, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
         break;
       }
     }
@@ -934,43 +935,43 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      bgal localbgal = new bgal();
-      localbgal.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
-      localbgal.d = paramString;
-      localbgal.e = "1450000515";
-      localbgal.b = "LTMCLUB";
-      localbgal.c = paramBaseActivity.getString(2131694649);
-      localbgal.jdField_a_of_type_Int = paramInt;
-      localbgal.f = "vip";
-      a(paramBaseActivity, localbgal);
+      bhjd localbhjd = new bhjd();
+      localbhjd.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
+      localbhjd.d = paramString;
+      localbhjd.e = "1450000515";
+      localbhjd.b = "LTMCLUB";
+      localbhjd.c = paramBaseActivity.getString(2131694850);
+      localbhjd.jdField_a_of_type_Int = paramInt;
+      localbhjd.f = "vip";
+      a(paramBaseActivity, localbhjd);
     }
   }
   
   public static void a(BaseActivity paramBaseActivity, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
   {
-    bgal localbgal;
+    bhjd localbhjd;
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      localbgal = new bgal();
-      localbgal.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
-      localbgal.d = paramString;
-      localbgal.jdField_a_of_type_Int = paramInt;
-      localbgal.jdField_a_of_type_Boolean = paramBoolean2;
+      localbhjd = new bhjd();
+      localbhjd.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
+      localbhjd.d = paramString;
+      localbhjd.jdField_a_of_type_Int = paramInt;
+      localbhjd.jdField_a_of_type_Boolean = paramBoolean2;
       if (!paramBoolean1) {
         break label103;
       }
-      localbgal.e = "1450000516";
-      localbgal.b = "CJCLUBT";
-      localbgal.c = paramBaseActivity.getString(2131718745);
+      localbhjd.e = "1450000516";
+      localbhjd.b = "CJCLUBT";
+      localbhjd.c = paramBaseActivity.getString(2131719134);
     }
-    for (localbgal.f = "svip";; localbgal.f = "vip")
+    for (localbhjd.f = "svip";; localbhjd.f = "vip")
     {
-      a(paramBaseActivity, localbgal);
+      a(paramBaseActivity, localbhjd);
       return;
       label103:
-      localbgal.e = "1450000515";
-      localbgal.b = "LTMCLUB";
-      localbgal.c = paramBaseActivity.getString(2131694649);
+      localbhjd.e = "1450000515";
+      localbhjd.b = "LTMCLUB";
+      localbhjd.c = paramBaseActivity.getString(2131694850);
     }
   }
   
@@ -995,10 +996,10 @@ public class VipUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
   {
-    amsw localamsw = (amsw)paramQQAppInterface.getManager(51);
-    if (localamsw != null)
+    anvk localanvk = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localanvk != null)
     {
-      paramString1 = localamsw.e(paramString1);
+      paramString1 = localanvk.e(paramString1);
       if (paramString1 != null) {}
       for (int i = paramString1.bigClubTemplateId;; i = 0)
       {
@@ -1009,88 +1010,88 @@ public class VipUtils
     a(paramQQAppInterface, paramContext, paramString2);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Resources paramResources, aepe paramaepe, aeox paramaeox)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Resources paramResources, afgp paramafgp, afgi paramafgi)
   {
-    if (bbyp.b())
+    if (bdfk.b())
     {
-      paramaepe.e.setTextColor(paramResources.getColor(2131167012));
+      paramafgp.e.setTextColor(paramResources.getColor(2131167026));
       return;
     }
-    if (b(paramaeox.i) != 0)
+    if (b(paramafgi.i) != 0)
     {
-      paramaepe.e.setTextColor(paramResources.getColor(2131167156));
+      paramafgp.e.setTextColor(paramResources.getColor(2131167170));
       return;
     }
-    switch (a(paramaeox.f))
+    switch (a(paramafgi.f))
     {
     default: 
-      paramaepe.e.setTextColor(paramResources.getColor(2131167012));
+      paramafgp.e.setTextColor(paramResources.getColor(2131167026));
       return;
     case 1: 
     case 3: 
-      paramaepe.e.setTextColor(paramResources.getColor(2131167156));
+      paramafgp.e.setTextColor(paramResources.getColor(2131167170));
       return;
     case 2: 
-      paramaepe.e.setTextColor(paramResources.getColor(2131167156));
+      paramafgp.e.setTextColor(paramResources.getColor(2131167170));
       return;
     }
-    paramaepe.e.setTextColor(paramResources.getColor(2131167156));
+    paramafgp.e.setTextColor(paramResources.getColor(2131167170));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Resources paramResources, ajaj paramajaj, ajac paramajac)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Resources paramResources, ajvy paramajvy, ajvr paramajvr)
   {
-    if (bbyp.b())
+    if (bdfk.b())
     {
-      paramajaj.e.setTextColor(paramResources.getColor(2131167012));
+      paramajvy.e.setTextColor(paramResources.getColor(2131167026));
       return;
     }
-    if (b(paramajac.i) != 0)
+    if (b(paramajvr.j) != 0)
     {
-      paramajaj.e.setTextColor(paramResources.getColor(2131167156));
+      paramajvy.e.setTextColor(paramResources.getColor(2131167170));
       return;
     }
-    switch (a(paramajac.f))
+    switch (a(paramajvr.g))
     {
     default: 
-      paramajaj.e.setTextColor(paramResources.getColor(2131167012));
+      paramajvy.e.setTextColor(paramResources.getColor(2131167026));
       return;
     case 1: 
     case 3: 
-      paramajaj.e.setTextColor(paramResources.getColor(2131167156));
+      paramajvy.e.setTextColor(paramResources.getColor(2131167170));
       return;
     case 2: 
-      paramajaj.e.setTextColor(paramResources.getColor(2131167156));
+      paramajvy.e.setTextColor(paramResources.getColor(2131167170));
       return;
     }
-    paramajaj.e.setTextColor(paramResources.getColor(2131167156));
+    paramajvy.e.setTextColor(paramResources.getColor(2131167170));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Resources paramResources, betd parambetd, ajac paramajac)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Resources paramResources, bgaj parambgaj, ajvr paramajvr)
   {
-    if (bbyp.b())
+    if (bdfk.b())
     {
-      parambetd.a.setTextColor(paramResources.getColor(2131167012));
+      parambgaj.a.setTextColor(paramResources.getColor(2131167026));
       return;
     }
-    if (b(paramajac.i) != 0)
+    if (b(paramajvr.j) != 0)
     {
-      parambetd.a.setTextColor(paramResources.getColor(2131167156));
+      parambgaj.a.setTextColor(paramResources.getColor(2131167170));
       return;
     }
-    switch (a(paramajac.f))
+    switch (a(paramajvr.g))
     {
     default: 
-      parambetd.a.setTextColor(paramResources.getColor(2131167012));
+      parambgaj.a.setTextColor(paramResources.getColor(2131167026));
       return;
     case 1: 
     case 3: 
-      parambetd.a.setTextColor(paramResources.getColor(2131167156));
+      parambgaj.a.setTextColor(paramResources.getColor(2131167170));
       return;
     case 2: 
-      parambetd.a.setTextColor(paramResources.getColor(2131167156));
+      parambgaj.a.setTextColor(paramResources.getColor(2131167170));
       return;
     }
-    parambetd.a.setTextColor(paramResources.getColor(2131167156));
+    parambgaj.a.setTextColor(paramResources.getColor(2131167170));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -1105,27 +1106,27 @@ public class VipUtils
     VasWebviewUtil.openQQBrowserWithoutAD(paramContext, paramString, 256L, localIntent, false, -1);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, arjk paramarjk, NavBarAIO paramNavBarAIO, ImageView paramImageView, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, asnq paramasnq, NavBarAIO paramNavBarAIO, ImageView paramImageView, boolean paramBoolean)
   {
-    if (bbyp.b()) {
+    if (bdfk.b()) {
       QLog.d("VipUtils", 1, "updateVipTitleAndCard strangerInfo , SimpleUIMode is open now");
     }
     while (!a()) {
       return;
     }
-    String str = bgan.a(paramarjk);
-    int i = a(paramarjk);
+    String str = bhjf.a(paramasnq);
+    int i = a(paramasnq);
     if (i >> 8 == 3) {
-      paramNavBarAIO.setTitleIconRight(str, 2130846979);
+      paramNavBarAIO.setTitleIconRight(str, 2130847076);
     }
     while (i != 0)
     {
-      paramImageView.setContentDescription(amtj.a(2131715797));
+      paramImageView.setContentDescription(anvx.a(2131716145));
       paramImageView.setFocusableInTouchMode(true);
-      paramImageView.setOnTouchListener(new bgaq(paramQQAppInterface, paramBoolean, paramImageView, paramarjk.mUin, a(paramarjk), true));
+      paramImageView.setOnTouchListener(new bhji(paramQQAppInterface, paramBoolean, paramImageView, paramasnq.mUin, a(paramasnq), true));
       return;
       if (i >> 8 == 2) {
-        paramNavBarAIO.setTitleIconRight(str, 2130846979);
+        paramNavBarAIO.setTitleIconRight(str, 2130847076);
       } else {
         paramNavBarAIO.setTitleIconRight("", 0);
       }
@@ -1135,27 +1136,27 @@ public class VipUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, NavBarAIO paramNavBarAIO, ImageView paramImageView, boolean paramBoolean)
   {
-    if (bbyp.b())
+    if (bdfk.b())
     {
       QLog.d("VipUtils", 1, "updateVipTitleAndCard, SimpleUIMode is open now");
       paramNavBarAIO.setTitleIconRight("", 0);
       paramImageView.setOnTouchListener(null);
       return;
     }
-    Object localObject = bgan.a(paramQQAppInterface, paramString);
-    paramBoolean = bgan.a(localObject[0]);
+    Object localObject = bhjf.a(paramQQAppInterface, paramString);
+    paramBoolean = bhjf.a(localObject[0]);
     label129:
     int i;
     if (paramBoolean)
     {
-      bgao localbgao = bgao.a(localObject[0]);
-      if ((!bgan.b(localObject[1])) && (!localbgao.a()))
+      bhjg localbhjg = bhjg.a(localObject[0]);
+      if ((!bhjf.b(localObject[1])) && (!localbhjg.a()))
       {
-        paramNavBarAIO.setTitleIconRight(bgan.a(paramQQAppInterface, paramString, localbgao, false), bgan.a(localbgao));
-        paramImageView.setContentDescription(amtj.a(2131715822));
+        paramNavBarAIO.setTitleIconRight(bhjf.a(paramQQAppInterface, paramString, localbhjg, false), bhjf.a(localbhjg));
+        paramImageView.setContentDescription(anvx.a(2131716170));
         paramImageView.setFocusableInTouchMode(true);
-        localObject = bgap.a(paramQQAppInterface, paramString, "VIA_AIO_TITLE");
-        ((bgap)localObject).a();
+        localObject = bhjh.a(paramQQAppInterface, paramString, "VIA_AIO_TITLE");
+        ((bhjh)localObject).a();
         paramImageView.setOnTouchListener((View.OnTouchListener)localObject);
       }
     }
@@ -1171,7 +1172,7 @@ public class VipUtils
       if (i >> 8 != 3) {
         break label263;
       }
-      paramNavBarAIO.setTitleIconRight(bgan.a(paramQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB), 2130846979);
+      paramNavBarAIO.setTitleIconRight(bhjf.a(paramQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB), 2130847076);
       NamePlateCfgInfo.vipNamePlateExposeReport(paramQQAppInterface, paramString);
     }
     for (;;)
@@ -1179,9 +1180,9 @@ public class VipUtils
       if (a(paramQQAppInterface, paramString, false) != 3) {
         break label325;
       }
-      paramImageView.setContentDescription(amtj.a(2131715822));
+      paramImageView.setContentDescription(anvx.a(2131716170));
       paramImageView.setFocusableInTouchMode(true);
-      paramQQAppInterface = bgap.a(paramQQAppInterface, paramString, "VIA_AIO_TITLE");
+      paramQQAppInterface = bhjh.a(paramQQAppInterface, paramString, "VIA_AIO_TITLE");
       paramQQAppInterface.a();
       paramImageView.setOnTouchListener(paramQQAppInterface);
       return;
@@ -1193,11 +1194,11 @@ public class VipUtils
       label263:
       if (i >> 8 == 2)
       {
-        localObject = bgan.a(paramQQAppInterface, paramString, EVIPSPEC.E_SP_SUPERVIP);
+        localObject = bhjf.a(paramQQAppInterface, paramString, EVIPSPEC.E_SP_SUPERVIP);
         if ((i & 0xF) == 1) {
-          paramNavBarAIO.setTitleIconRight((String)localObject, 2130846979);
+          paramNavBarAIO.setTitleIconRight((String)localObject, 2130847076);
         } else {
-          paramNavBarAIO.setTitleIconRight((String)localObject, 2130846977);
+          paramNavBarAIO.setTitleIconRight((String)localObject, 2130847074);
         }
       }
       else
@@ -1221,13 +1222,13 @@ public class VipUtils
       return;
       if ((paramMsgBody.uint32_src_app_id.get() == 1) && (paramMsgBody.uint32_notice_type.get() == 14))
       {
-        bgjy.a(paramQQAppInterface).b();
+        bhsv.a(paramQQAppInterface).b();
         return;
       }
       if ((paramMsgBody.uint32_src_app_id.get() == 3) && (paramMsgBody.uint32_notice_type.get() == 15)) {
         ThemeCleaner.a(paramQQAppInterface, String.valueOf(paramMsgBody.uint32_clear_themeid.get()));
       }
-      if (awgl.a().a()) {
+      if (axmn.a().a()) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -1246,7 +1247,7 @@ public class VipUtils
       if (((URLDrawable)localObject).getCurrDrawable() != null)
       {
         localObject = ((URLDrawable)localObject).getCurrDrawable();
-        paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, (Drawable)localObject, null, new bgai(bool, paramSingleLineTextView, paramContext));
+        paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, (Drawable)localObject, null, new bhja(bool, paramSingleLineTextView, paramContext));
         if (!bool) {
           break label158;
         }
@@ -1257,7 +1258,7 @@ public class VipUtils
     }
     for (;;)
     {
-      paramSingleLineTextView.setCompoundDrawablePadding((int)bfvh.a(paramContext, 5.0F));
+      paramSingleLineTextView.setCompoundDrawablePadding((int)bhdz.a(paramContext, 5.0F));
       paramSingleLineTextView.setCompoundDrawables(null, a(AIOUtils.dp2px(15.0F, paramContext.getResources()), paramString));
       return;
       localObject = paramContext.getResources().getDrawable(paramInt);
@@ -1273,13 +1274,13 @@ public class VipUtils
   
   public static void a(SingleLineTextView paramSingleLineTextView, Friends paramFriends, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    boolean bool = bgan.a(paramFriends.nameplateVipType);
+    boolean bool = bhjf.a(paramFriends.nameplateVipType);
     if (bool)
     {
-      if (bgan.a(paramFriends.grayNameplateFlag)) {
+      if (bhjf.a(paramFriends.grayNameplateFlag)) {
         break label90;
       }
-      a(paramSingleLineTextView, paramContext, bgan.a(paramQQAppInterface, paramFriends.uin, bgao.a(paramFriends.nameplateVipType), false), bgan.a(bgao.a(paramFriends.nameplateVipType)));
+      a(paramSingleLineTextView, paramContext, bhjf.a(paramQQAppInterface, paramFriends.uin, bhjg.a(paramFriends.nameplateVipType), false), bhjf.a(bhjg.a(paramFriends.nameplateVipType)));
     }
     for (;;)
     {
@@ -1288,7 +1289,7 @@ public class VipUtils
         if (!paramFriends.isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB)) {
           break;
         }
-        a(paramSingleLineTextView, paramContext, bgan.a(paramQQAppInterface, paramFriends.uin, EVIPSPEC.E_SP_BIGCLUB), 2130846979);
+        a(paramSingleLineTextView, paramContext, bhjf.a(paramQQAppInterface, paramFriends.uin, EVIPSPEC.E_SP_BIGCLUB), 2130847076);
       }
       return;
       label90:
@@ -1296,20 +1297,20 @@ public class VipUtils
     }
     if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
     {
-      a(paramSingleLineTextView, paramContext, bgan.a(paramQQAppInterface, paramFriends.uin, EVIPSPEC.E_SP_SUPERVIP), 2130846977);
+      a(paramSingleLineTextView, paramContext, bhjf.a(paramQQAppInterface, paramFriends.uin, EVIPSPEC.E_SP_SUPERVIP), 2130847074);
       return;
     }
     if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
     {
-      a(paramSingleLineTextView, paramContext, bgan.a(paramQQAppInterface, paramFriends.uin, EVIPSPEC.E_SP_QQVIP), 2130846978);
+      a(paramSingleLineTextView, paramContext, bhjf.a(paramQQAppInterface, paramFriends.uin, EVIPSPEC.E_SP_QQVIP), 2130847075);
       return;
     }
     paramSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
   }
   
-  public static void a(String paramString1, awgq paramawgq, QQAppInterface paramQQAppInterface, String paramString2)
+  public static void a(String paramString1, axms paramaxms, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    if (paramawgq == null) {}
+    if (paramaxms == null) {}
     do
     {
       do
@@ -1317,12 +1318,12 @@ public class VipUtils
         do
         {
           return;
-          switch ((int)paramawgq.jdField_a_of_type_Long)
+          switch ((int)paramaxms.jdField_a_of_type_Long)
           {
           default: 
             return;
           case 5: 
-            if (paramawgq.b == 1L)
+            if (paramaxms.b == 1L)
             {
               i = a(paramQQAppInterface, paramString1, 0);
               VasWebviewUtil.reportCommercialDrainage(paramQQAppInterface.getCurrentAccountUin(), "friendspark", paramString2, "", 0, 0, 0, "", "" + (i + 1), "", "" + 1, "" + 1, "", "", 0, 0, 0, 0);
@@ -1330,32 +1331,32 @@ public class VipUtils
             }
             break;
           }
-        } while (paramawgq.b != 2L);
+        } while (paramaxms.b != 2L);
         i = a(paramQQAppInterface, paramString1, 0);
         VasWebviewUtil.reportCommercialDrainage(paramQQAppInterface.getCurrentAccountUin(), "friendspark", "C2C_show", "", 0, 0, 0, "", "" + (i + 1), "", "" + 1, "" + 2, "", "", 0, 0, 0, 0);
         return;
-        if (paramawgq.b == 1L)
+        if (paramaxms.b == 1L)
         {
           i = a(paramQQAppInterface, paramString1, 1);
           VasWebviewUtil.reportCommercialDrainage(paramQQAppInterface.getCurrentAccountUin(), "friendspark", "C2C_show", "", 0, 0, 0, "", "" + (i + 1), "", "" + 2, "" + 1, "", "", 0, 0, 0, 0);
           return;
         }
-      } while (paramawgq.b != 2L);
+      } while (paramaxms.b != 2L);
       int i = a(paramQQAppInterface, paramString1, 1);
       VasWebviewUtil.reportCommercialDrainage(paramQQAppInterface.getCurrentAccountUin(), "friendspark", "C2C_show", "", 0, 0, 0, "", "" + (i + 1), "", "" + 2, "" + 2, "", "", 0, 0, 0, 0);
       return;
       paramString1 = a(a(paramQQAppInterface, paramString1, 5), paramString2);
     } while (TextUtils.isEmpty(paramString1));
-    bcef.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", "", "");
+    bdla.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", "", "");
   }
   
   public static boolean a()
   {
-    aqgw localaqgw = (aqgw)apub.a().a(465);
-    if (localaqgw == null) {
+    arkd localarkd = (arkd)aqxe.a().a(465);
+    if (localarkd == null) {
       return false;
     }
-    return localaqgw.jdField_a_of_type_Boolean;
+    return localarkd.jdField_a_of_type_Boolean;
   }
   
   public static boolean a(int paramInt1, int paramInt2)
@@ -1372,15 +1373,18 @@ public class VipUtils
     return true;
   }
   
-  public static boolean a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static boolean a(int paramInt, String paramString1, String paramString2, String paramString3, Context paramContext)
   {
+    if (paramContext == null) {
+      return false;
+    }
     StringBuilder localStringBuilder = new StringBuilder(paramString3);
     if (paramString3.contains("?")) {
       localStringBuilder.append("&platform=1");
     }
     for (;;)
     {
-      localStringBuilder.append("&qq=" + paramString4);
+      localStringBuilder.append("&qq=0");
       localStringBuilder.append("&adtag=" + paramString2);
       localStringBuilder.append("&aid=" + paramString1);
       if (paramInt == 1) {
@@ -1396,12 +1400,12 @@ public class VipUtils
         QLog.d("Q.profilecard.FrdProfileCard", 2, "gotoQQVipWeb() url = " + paramString1);
       }
       paramString2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString3 = new Intent(paramString2.getApp().getApplicationContext(), QQBrowserActivity.class);
+      paramString3 = new Intent(paramContext, QQBrowserActivity.class);
       paramString3.putExtra("uin", paramString2.getCurrentAccountUin());
       paramString3.putExtra("url", paramString1);
       paramString3.putExtra("hide_more_button", true);
       paramString3.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramString2.getApp().getApplicationContext().startActivity(paramString3);
+      paramContext.startActivity(paramString3);
       return false;
       localStringBuilder.append("?platform=1");
     }
@@ -1419,21 +1423,21 @@ public class VipUtils
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 1067	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   3: getstatic 1069	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   6: ifnonnull +13 -> 19
-    //   9: new 1069	java/util/HashMap
+    //   9: new 1071	java/util/HashMap
     //   12: dup
-    //   13: invokespecial 1070	java/util/HashMap:<init>	()V
-    //   16: putstatic 1067	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   19: getstatic 1067	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   13: invokespecial 1072	java/util/HashMap:<init>	()V
+    //   16: putstatic 1069	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   19: getstatic 1069	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   22: aload_0
-    //   23: invokevirtual 1073	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   26: checkcast 131	java/lang/Integer
+    //   23: invokevirtual 1075	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   26: checkcast 136	java/lang/Integer
     //   29: astore 4
     //   31: aload 4
     //   33: ifnull +21 -> 54
     //   36: aload 4
-    //   38: invokevirtual 139	java/lang/Integer:intValue	()I
+    //   38: invokevirtual 144	java/lang/Integer:intValue	()I
     //   41: istore_2
     //   42: iload_2
     //   43: iload_1
@@ -1444,11 +1448,11 @@ public class VipUtils
     //   51: monitorexit
     //   52: iload_3
     //   53: ireturn
-    //   54: getstatic 1067	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   54: getstatic 1069	com/tencent/mobileqq/utils/VipUtils:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   57: aload_0
     //   58: iload_1
-    //   59: invokestatic 1076	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   62: invokevirtual 1079	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   59: invokestatic 1078	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   62: invokevirtual 1081	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   65: pop
     //   66: iconst_0
     //   67: istore_3
@@ -1494,7 +1498,7 @@ public class VipUtils
       return;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(bgev.a("NameplateClickSvip"));
+    ((StringBuilder)localObject).append(bhnp.a("NameplateClickSvip"));
     ((StringBuilder)localObject).append("&source=kl&qq=");
     ((StringBuilder)localObject).append(paramString);
     paramString = ((StringBuilder)localObject).toString();
@@ -1510,15 +1514,15 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      bgal localbgal = new bgal();
-      localbgal.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
-      localbgal.d = paramString;
-      localbgal.e = "1450000516";
-      localbgal.b = "CJCLUBT";
-      localbgal.c = paramBaseActivity.getString(2131718745);
-      localbgal.jdField_a_of_type_Int = paramInt;
-      localbgal.f = "svip";
-      a(paramBaseActivity, localbgal);
+      bhjd localbhjd = new bhjd();
+      localbhjd.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
+      localbhjd.d = paramString;
+      localbhjd.e = "1450000516";
+      localbhjd.b = "CJCLUBT";
+      localbhjd.c = paramBaseActivity.getString(2131719134);
+      localbhjd.jdField_a_of_type_Int = paramInt;
+      localbhjd.f = "svip";
+      a(paramBaseActivity, localbhjd);
     }
   }
   
@@ -1532,13 +1536,13 @@ public class VipUtils
     {
       localStringBuilder.append(str2 + "?platform=1&type=20001&networkInfo=" + i + "&aid=" + paramString);
       str2 = localStringBuilder.toString();
-      paramString = ((azvi)paramQQAppInterface.getManager(36)).a(String.valueOf(100400));
-      paramQQAppInterface = ((azvi)paramQQAppInterface.getManager(36)).a(str2, paramString);
+      paramString = ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(String.valueOf(100400));
+      paramQQAppInterface = ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(str2, paramString);
       if ((paramString == null) || (paramString.iNewFlag.get() == 0) || (paramString.type.get() != 0)) {
-        break label326;
+        break label328;
       }
     }
-    label326:
+    label328:
     for (boolean bool = true;; bool = false)
     {
       long l = System.currentTimeMillis();
@@ -1561,7 +1565,7 @@ public class VipUtils
   public static void b(QQAppInterface paramQQAppInterface, SubMsgType0x120.MsgBody paramMsgBody)
   {
     String str1 = paramMsgBody.uint32_notice_type.get() + "";
-    Object localObject2 = awgl.a(str1);
+    Object localObject2 = axmn.a(str1);
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
       if (QLog.isColorLevel()) {
@@ -1569,19 +1573,19 @@ public class VipUtils
       }
       return;
     }
-    Object localObject3 = (amsw)paramQQAppInterface.getManager(51);
+    Object localObject3 = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject1 = String.valueOf(paramMsgBody.uint64_frd_uin.get());
     Object localObject4 = ContactUtils.getFriendShowName(paramQQAppInterface, (String)localObject1);
     long l1 = paramMsgBody.uint32_notice_time.get();
     long l2 = paramMsgBody.uint32_notice_type.get();
-    localObject4 = awgw.a(paramQQAppInterface, (String)localObject2, (String)localObject4, (amsw)localObject3);
-    Object localObject5 = awgw.a(paramQQAppInterface, (String)((List)localObject4).get(0), (String)localObject1);
-    localObject3 = awgw.a(paramQQAppInterface.getApp(), (String)((List)localObject5).get(0));
-    paramMsgBody = ((awgx)((List)localObject3).get(0)).jdField_a_of_type_JavaLangString;
+    localObject4 = axmy.a(paramQQAppInterface, (String)localObject2, (String)localObject4, (anvk)localObject3);
+    Object localObject5 = axmy.a(paramQQAppInterface, (String)((List)localObject4).get(0), (String)localObject1);
+    localObject3 = axmy.a(paramQQAppInterface.getApp(), (String)((List)localObject5).get(0));
+    paramMsgBody = ((axmz)((List)localObject3).get(0)).jdField_a_of_type_JavaLangString;
     ((List)localObject4).remove(0);
     ((List)localObject5).remove(0);
     ((List)localObject3).remove(0);
-    localObject2 = new aucf((String)localObject1, (String)localObject1, paramMsgBody, 0, -5020, 2097153, bbko.a());
+    localObject2 = new avhz((String)localObject1, (String)localObject1, paramMsgBody, 0, -5020, 2097153, bcrg.a());
     int i;
     Bundle localBundle;
     String str2;
@@ -1598,7 +1602,7 @@ public class VipUtils
           localBundle.putString("image_resource", str2);
           j = paramMsgBody.lastIndexOf(str2);
           if (j >= 0) {
-            ((aucf)localObject2).a(j, str2.length() + j, localBundle);
+            ((avhz)localObject2).a(j, str2.length() + j, localBundle);
           }
           if (QLog.isColorLevel()) {
             QLog.d("reactive", 2, "addHotFriendAIOGrayTips grayStr=" + paramMsgBody + "iconPos=" + j + "icon=" + str2 + "grayStr=" + paramMsgBody);
@@ -1607,12 +1611,12 @@ public class VipUtils
         i += 1;
       }
     }
-    label429:
-    label492:
+    label430:
+    label493:
     int m;
     if ((localObject4 != null) && (((List)localObject4).size() > 0))
     {
-      Collections.sort((List)localObject4, new bgak());
+      Collections.sort((List)localObject4, new bhjc());
       localObject5 = new ArrayList();
       j = 0;
       if (j < ((List)localObject4).size())
@@ -1626,21 +1630,21 @@ public class VipUtils
           i = 0;
           m = paramMsgBody.indexOf(str2, i);
           if (m >= 0) {
-            break label518;
+            break label519;
           }
         }
       }
     }
-    label518:
-    label1071:
+    label519:
+    label1072:
     for (;;)
     {
-      label506:
+      label507:
       int n;
       if (m < 0)
       {
         j += 1;
-        break label429;
+        break label430;
         n = str2.length();
         i = m + n;
         Iterator localIterator = ((ArrayList)localObject5).iterator();
@@ -1656,34 +1660,34 @@ public class VipUtils
       for (int k = 1;; k = 0)
       {
         if (k != 0) {
-          break label1071;
+          break label1072;
         }
         ((ArrayList)localObject5).add(new Pair(Integer.valueOf(m), Integer.valueOf(m + n)));
         if (m >= 0)
         {
-          ((aucf)localObject2).a(m, i, localBundle);
+          ((avhz)localObject2).a(m, i, localBundle);
           if (QLog.isColorLevel()) {
             QLog.d("VipUtils", 2, "spanPos=" + m + " fromIndex=" + i);
           }
         }
-        break label506;
-        break label492;
+        break label507;
+        break label493;
         i = 0;
         while (i < ((List)localObject3).size())
         {
-          localObject4 = (awgx)((List)localObject3).get(i);
+          localObject4 = (axmz)((List)localObject3).get(i);
           localObject5 = new Bundle();
           ((Bundle)localObject5).putInt("key_action", 1);
-          ((Bundle)localObject5).putString("key_action_DATA", ((awgx)localObject4).b.replace("{uin}", (CharSequence)localObject1));
-          j = ((awgx)localObject4).jdField_a_of_type_Int;
+          ((Bundle)localObject5).putString("key_action_DATA", ((axmz)localObject4).b.replace("{uin}", (CharSequence)localObject1));
+          j = ((axmz)localObject4).jdField_a_of_type_Int;
           if (j >= 0) {
-            ((aucf)localObject2).a(j, ((awgx)localObject4).jdField_a_of_type_JavaLangString.length() + j, (Bundle)localObject5);
+            ((avhz)localObject2).a(j, ((axmz)localObject4).jdField_a_of_type_JavaLangString.length() + j, (Bundle)localObject5);
           }
           i += 1;
         }
         localObject3 = new MessageForUniteGrayTip();
         ((MessageForUniteGrayTip)localObject3).hasRead = 0;
-        ((MessageForUniteGrayTip)localObject3).initGrayTipMsg(paramQQAppInterface, (aucf)localObject2);
+        ((MessageForUniteGrayTip)localObject3).initGrayTipMsg(paramQQAppInterface, (avhz)localObject2);
         localObject2 = new StringBuilder(21);
         ((StringBuilder)localObject2).append(l1).append("_").append(l2);
         ((MessageForUniteGrayTip)localObject3).saveExtInfoToExtStr("friendIconType", str1);
@@ -1705,7 +1709,7 @@ public class VipUtils
         if (TextUtils.isEmpty(paramMsgBody)) {
           break;
         }
-        aucg.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject3);
+        avia.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject3);
         return;
       }
     }

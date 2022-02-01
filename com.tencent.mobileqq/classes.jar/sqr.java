@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class sqr
-  implements View.OnClickListener
+class sqr
+  implements spi
 {
-  public sqr(SlideActiveAnimController paramSlideActiveAnimController) {}
+  sqr(sqp paramsqp) {}
   
-  public void onClick(View paramView)
+  public void a(spk paramspk, spn paramspn, int paramInt1, int paramInt2, Object paramObject)
   {
-    SlideActiveAnimController.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
+      return;
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 

@@ -1,19 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class yti
-  implements Animation.AnimationListener
+public class yti
+  implements zbn
 {
-  yti(ytg paramytg) {}
+  public yti(DoodleLayout paramDoodleLayout) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.dismiss();
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.mBusinessId == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

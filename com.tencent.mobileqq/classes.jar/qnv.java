@@ -1,105 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
+import org.json.JSONObject;
 
-public class qnv
+class qnv
+  implements ViewBase.OnClickListener
 {
-  private static int a(Context paramContext, String paramString)
-  {
-    if ((paramContext == null) || (paramContext.getResources() == null) || (TextUtils.isEmpty(paramString))) {
-      return 0;
-    }
-    return paramContext.getResources().getIdentifier(paramString, "drawable", paramContext.getPackageName());
-  }
+  qnv(qnu paramqnu, qfw paramqfw, int paramInt, Container paramContainer) {}
   
-  public static Drawable a(Context paramContext, String paramString, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (paramContext != null) {
-        break label22;
-      }
-      localObject1 = localObject2;
-    }
-    label22:
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qfw.a();
+    if (localArticleInfo == null) {}
+    JSONObject localJSONObject;
     do
     {
-      return localObject1;
-      if (!a(paramString)) {
-        break;
-      }
-      localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      paramContext = paramContext.getResources().getDrawable(2130841730);
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext;
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext;
-      paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-      localObject1 = paramContext;
-    } while (paramInt <= 0);
-    paramContext.setDecodeHandler(new bfpk(paramInt));
-    return paramContext;
-    if (b(paramString))
-    {
-      paramString = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-      paramString = "qb_public_account_readinjoy_" + paramString;
-      return paramContext.getResources().getDrawable(a(paramContext, paramString));
-    }
-    QLog.e("PTSImageUtil", 1, "[getDrawable] null, imageUrl = " + paramString);
-    return null;
-  }
-  
-  public static void a(PTSImageView paramPTSImageView, String paramString)
-  {
-    if ((paramPTSImageView == null) || (TextUtils.isEmpty(paramString))) {
       return;
-    }
-    if (QLog.isDebugVersion()) {
-      QLog.i("PTSImageUtil", 2, "[setLocalImageDrawable], localPath = " + paramString);
-    }
-    int i;
-    try
+      localJSONObject = localArticleInfo.getProteusItemData();
+    } while (localJSONObject == null);
+    szd localszd = this.jdField_a_of_type_Qfw.a();
+    if (this.jdField_a_of_type_Int == 1126) {}
+    for (boolean bool = true;; bool = false)
     {
-      String str = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-      str = "qb_public_account_readinjoy_" + str;
-      i = a(paramPTSImageView.getContext(), str);
-      if (i == 0)
+      paramViewBase = localArticleInfo;
+      if (!bool)
       {
-        QLog.e("PTSImageUtil", 1, "[setLocalImageDrawable], cannot find the resource, localPath = " + paramString);
-        paramPTSImageView.setImageDrawable(new ColorDrawable(0));
-        return;
+        paramViewBase = localArticleInfo;
+        if (localArticleInfo.mSubArtilceList != null)
+        {
+          paramViewBase = localArticleInfo;
+          if (localArticleInfo.mSubArtilceList.size() > 0)
+          {
+            paramViewBase = localArticleInfo;
+            if (localArticleInfo.mSubArtilceList.get(0) != null) {
+              paramViewBase = (BaseArticleInfo)localArticleInfo.mSubArtilceList.get(0);
+            }
+          }
+        }
       }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("PTSImageUtil", 1, "[setLocalImageDrawable] error, e = " + paramString);
-      paramPTSImageView.setImageDrawable(new ColorDrawable(0));
+      if (!six.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())) {
+        qnu.a(this.jdField_a_of_type_Qnu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase, localszd);
+      }
+      pvj.a().a(paramViewBase.mArticleID, System.currentTimeMillis());
+      qnu.a(this.jdField_a_of_type_Qnu, paramViewBase, bool, localJSONObject);
+      localszd.notifyDataSetChanged();
       return;
     }
-    paramPTSImageView.setImageResource(i);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("images");
   }
 }
 

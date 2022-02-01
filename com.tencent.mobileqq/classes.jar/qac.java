@@ -1,20 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class qac
+  implements qbc
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public qac(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    qai.a(paramBaseArticleInfo, localJSONObject, true);
-    qai.a(paramBaseArticleInfo, localJSONObject);
-    qai.d(paramBaseArticleInfo, localJSONObject);
-    qai.g(paramBaseArticleInfo, localJSONObject);
-    qai.n(paramBaseArticleInfo, localJSONObject);
-    qai.i(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
-    qai.a(localJSONObject, paramBaseArticleInfo);
-    return localJSONObject;
+    ReadInJoySelfFragment.f(this.a);
   }
 }
 

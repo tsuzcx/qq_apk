@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
-import bhmw;
-import bjnw;
+import bixm;
+import bkzi;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -20,12 +20,12 @@ public class ShareActionSheetImplV2
 {
   private static final String TAG = "ShareActionSheetImplV2";
   private ShareActionSheetV2 mImpl;
-  private bhmw mValidator;
+  private bixm mValidator;
   
   public ShareActionSheetImplV2(ShareActionSheetV2 paramShareActionSheetV2)
   {
     this.mImpl = paramShareActionSheetV2;
-    this.mValidator = new bhmw(paramShareActionSheetV2);
+    this.mValidator = new bixm(paramShareActionSheetV2);
   }
   
   public void dismiss()
@@ -43,7 +43,7 @@ public class ShareActionSheetImplV2
     return this.mImpl.findViewById(paramInt);
   }
   
-  public bjnw getActionSheet()
+  public bkzi getActionSheet()
   {
     throw new IllegalStateException("not impl in ShareActionSheetImplV2");
   }

@@ -1,77 +1,71 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-
 public class wlu
-  extends BaseAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public wlu(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
+  public wlu(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void a(List<TroopInfo> paramList)
+  public boolean equals(Object paramObject)
   {
-    if (paramList != null)
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (wlu)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.c != null)
+    {
+      bool1 = bool2;
+      if (this.c.equals(paramObject.c)) {}
+    }
+    for (boolean bool1 = false;; bool1 = bool2)
+    {
+      return bool1;
+      if (paramObject.c != null) {
+        break;
+      }
     }
   }
   
-  public int getCount()
+  public int hashCode()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopInfo localTroopInfo = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      paramView = new wlv(this);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561797, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367979));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371791));
-      localView.setTag(paramView);
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.c != null) {}
+    for (int i = this.c.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
     }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
-      Object localObject = wkp.a().getTroopFaceDrawable(localTroopInfo.troopuin);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (wlv)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
+  }
+  
+  public String toString()
+  {
+    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
   }
 }
 

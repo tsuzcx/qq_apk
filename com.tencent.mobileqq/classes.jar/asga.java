@@ -1,12 +1,27 @@
-import android.os.Bundle;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public abstract interface asga
+public class asga
+  extends DataSetObserver
 {
-  public abstract void a(long paramLong, int paramInt, String paramString);
+  public asga(DragSortListView paramDragSortListView) {}
   
-  public abstract void a(long paramLong, String paramString);
+  private void a()
+  {
+    if (this.a.g == 4) {
+      this.a.a();
+    }
+  }
   
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public void onChanged()
+  {
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    a();
+  }
 }
 
 

@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.forward;
 
-import aara;
-import ahff;
-import amtj;
+import abgm;
+import ahzx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import atky;
-import atlv;
-import atlw;
-import atlx;
-import aucz;
-import bkxa;
+import anvx;
+import aupt;
+import auqq;
+import auqr;
+import auqs;
+import avit;
+import bmij;
 import com.tencent.device.file.DeviceFileHandler;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
@@ -33,13 +34,13 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ocw;
+import okn;
 
 public abstract class ForwardFileBaseOption
-  extends atky
+  extends aupt
 {
   protected static String h;
-  aucz a;
+  avit a;
   public ForwardFileInfo a;
   protected long b;
   ArrayList<ForwardFileInfo> b;
@@ -65,7 +66,7 @@ public abstract class ForwardFileBaseOption
     }
     for (;;)
     {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131692275) + paramString + "\n" + this.jdField_a_of_type_AndroidContentContext.getString(2131692292) + (String)localObject;
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131692365) + paramString + "\n" + this.jdField_a_of_type_AndroidContentContext.getString(2131692382) + (String)localObject;
       if (paramLong < 1048576L)
       {
         localObject = paramLong / 1024L + " KB";
@@ -93,10 +94,10 @@ public abstract class ForwardFileBaseOption
     paramUri = a((Uri)localObject1);
     if (TextUtils.isEmpty(paramUri))
     {
-      if (this.jdField_a_of_type_Aucz != null)
+      if (this.jdField_a_of_type_Avit != null)
       {
-        paramUri = this.jdField_a_of_type_Aucz;
-        h = aucz.jdField_a_of_type_JavaLangString;
+        paramUri = this.jdField_a_of_type_Avit;
+        h = avit.jdField_a_of_type_JavaLangString;
       }
       f(e());
       return false;
@@ -105,13 +106,13 @@ public abstract class ForwardFileBaseOption
     long l = ((File)localObject2).length();
     boolean bool1;
     boolean bool2;
-    if (this.jdField_a_of_type_Aucz != null)
+    if (this.jdField_a_of_type_Avit != null)
     {
-      bool1 = this.jdField_a_of_type_Aucz.jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_Aucz == null) {
+      bool1 = this.jdField_a_of_type_Avit.jdField_a_of_type_Boolean;
+      if (this.jdField_a_of_type_Avit == null) {
         break label228;
       }
-      bool2 = this.jdField_a_of_type_Aucz.b;
+      bool2 = this.jdField_a_of_type_Avit.b;
     }
     for (;;)
     {
@@ -119,7 +120,7 @@ public abstract class ForwardFileBaseOption
       {
         if (((Uri)localObject1).toString().contains("mms/part"))
         {
-          f(this.jdField_a_of_type_AndroidContentContext.getString(2131692279));
+          f(this.jdField_a_of_type_AndroidContentContext.getString(2131692369));
           return false;
           bool1 = false;
           break;
@@ -127,19 +128,19 @@ public abstract class ForwardFileBaseOption
           bool2 = false;
           continue;
         }
-        f(this.jdField_a_of_type_AndroidContentContext.getString(2131692254));
+        f(this.jdField_a_of_type_AndroidContentContext.getString(2131692344));
         return false;
       }
     }
     if ((true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_from_jump")) && (true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromShare")) && (b(paramUri)))
     {
-      paramUri = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755826);
-      paramUri.setContentView(2131559016);
-      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718947));
-      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131692256));
+      paramUri = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755829);
+      paramUri.setContentView(2131559043);
+      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719342));
+      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131692346));
       paramUri.setCanceledOnTouchOutside(false);
       paramUri.setCancelable(false);
-      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690599), new atlw(this));
+      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690676), new auqr(this));
       paramUri.show();
       return false;
     }
@@ -171,13 +172,13 @@ public abstract class ForwardFileBaseOption
   
   private void f(String paramString)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755826);
-    localQQCustomDialog.setContentView(2131559016);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718947));
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755829);
+    localQQCustomDialog.setContentView(2131559043);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719342));
     localQQCustomDialog.setMessage(paramString);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690599), new atlv(this));
+    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690676), new auqq(this));
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -188,10 +189,10 @@ public abstract class ForwardFileBaseOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardFileBaseOption", 2, "uri= " + paramUri);
     }
-    if (this.jdField_a_of_type_Aucz == null) {
-      this.jdField_a_of_type_Aucz = new aucz(this.jdField_a_of_type_AndroidAppActivity, true, new atlx(this));
+    if (this.jdField_a_of_type_Avit == null) {
+      this.jdField_a_of_type_Avit = new avit(this.jdField_a_of_type_AndroidAppActivity, true, new auqs(this));
     }
-    return this.jdField_a_of_type_Aucz.a(paramUri);
+    return this.jdField_a_of_type_Avit.a(paramUri);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -200,9 +201,9 @@ public abstract class ForwardFileBaseOption
     if (paramInt1 == 102)
     {
       str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      if (!((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(50)).a(Long.parseLong(str)))
+      if (!((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(Long.parseLong(str)))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131703874), 2000).a();
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anvx.a(2131704225), 2000).a();
         this.jdField_a_of_type_AndroidAppActivity.finish();
       }
     }
@@ -219,7 +220,7 @@ public abstract class ForwardFileBaseOption
         localArrayList.add(((FileInfo)((Iterator)localObject).next()).c());
       }
       paramIntent = paramIntent.getStringExtra("sPrintParam");
-      ahff.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, localArrayList, paramIntent);
+      ahzx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, localArrayList, paramIntent);
     }
     this.jdField_a_of_type_AndroidAppActivity.finish();
   }
@@ -228,7 +229,7 @@ public abstract class ForwardFileBaseOption
   {
     try
     {
-      paramString2 = ((aara)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(51)).a(Long.parseLong(paramString2));
+      paramString2 = ((abgm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString2));
       Object localObject = new FileInfo(paramString1);
       paramString1 = new ArrayList();
       paramString1.add(localObject);
@@ -238,7 +239,7 @@ public abstract class ForwardFileBaseOption
       ((Intent)localObject).putExtra("device_info", paramString2);
       ((Intent)localObject).putExtra("url", "https://qzs.qq.com/open/mobile/iot_print/html/printOpt.html");
       ((Intent)localObject).putExtra("filetype", paramString3);
-      bkxa.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
+      bmij.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
       return;
     }
     catch (FileNotFoundException paramString1) {}
@@ -261,7 +262,7 @@ public abstract class ForwardFileBaseOption
   {
     super.b();
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.adjustMessageBottomMargin(17.0F);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextColor(2131165695);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextColor(2131165704);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextSize(14.0F);
   }
   
@@ -272,10 +273,10 @@ public abstract class ForwardFileBaseOption
     if (this.jdField_a_of_type_AndroidOsBundle.getInt("uintype") == 1008)
     {
       localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-      localIntent.putExtra("chat_subType", ocw.a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      localIntent.putExtra("chat_subType", okn.a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
       if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendMultiple", false))
       {
-        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", amtj.a(2131703880));
+        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", anvx.a(2131704231));
         localIntent.addFlags(268435456);
         localIntent.addFlags(67108864);
         localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
@@ -304,7 +305,7 @@ public abstract class ForwardFileBaseOption
   protected String e()
   {
     if (h == null) {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131718384);
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131718770);
     }
     return h;
   }

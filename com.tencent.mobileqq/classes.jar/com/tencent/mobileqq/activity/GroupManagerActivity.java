@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adlv;
-import adlw;
-import adlx;
-import adly;
-import adlz;
-import adma;
-import admb;
-import admc;
-import admd;
-import adme;
-import admf;
-import admg;
-import admh;
-import aljm;
-import amsu;
-import amsw;
+import aedb;
+import aedc;
+import aedd;
+import aede;
+import aedf;
+import aedg;
+import aedh;
+import aedi;
+import aedj;
+import aedk;
+import aedl;
+import aedm;
+import aedn;
+import aedo;
+import amhm;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -28,23 +27,28 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import arbn;
-import arbx;
-import arby;
-import arcb;
-import bhht;
-import bjnw;
-import bjon;
+import anvi;
+import anvk;
+import asfx;
+import asgh;
+import asgi;
+import asgl;
+import bisl;
+import bkzi;
+import bkzz;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -62,14 +66,15 @@ public class GroupManagerActivity
   implements Handler.Callback
 {
   private int jdField_a_of_type_Int;
-  private aljm<Groups> jdField_a_of_type_Aljm;
-  private amsu jdField_a_of_type_Amsu = new adlz(this);
+  private amhm<Groups> jdField_a_of_type_Amhm;
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new admd(this);
+  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new aedk(this);
   @SuppressLint({"HandlerLeak"})
-  private Handler jdField_a_of_type_AndroidOsHandler = new adlx(this);
-  private arbx jdField_a_of_type_Arbx = new admf(this);
-  private arcb jdField_a_of_type_Arcb = new admg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aedd(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new aedg(this);
+  private anvi jdField_a_of_type_Anvi = new aedf(this);
+  private asgh jdField_a_of_type_Asgh = new aedm(this);
+  private asgl jdField_a_of_type_Asgl = new aedn(this);
   private Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
   private DragSortListView jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
   private QQCustomDialogWtihInput jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput;
@@ -78,7 +83,7 @@ public class GroupManagerActivity
   public byte[] a;
   private int jdField_b_of_type_Int;
   private Dialog jdField_b_of_type_AndroidAppDialog;
-  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new adme(this);
+  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new aedl(this);
   private boolean jdField_b_of_type_Boolean;
   public byte[] b;
   private boolean c;
@@ -92,13 +97,13 @@ public class GroupManagerActivity
   private void a(byte paramByte)
   {
     c();
-    bjnw localbjnw = (bjnw)bjon.a(this, null);
-    localbjnw.a(2131692884);
-    localbjnw.a(2131692877, 3);
-    localbjnw.c(2131692879);
-    localbjnw.setOnDismissListener(new admh(this));
-    localbjnw.a(new adlw(this, paramByte));
-    this.jdField_a_of_type_AndroidAppDialog = localbjnw;
+    bkzi localbkzi = (bkzi)bkzz.a(this, null);
+    localbkzi.a(2131692990);
+    localbkzi.a(2131692983, 3);
+    localbkzi.c(2131692985);
+    localbkzi.setOnDismissListener(new aedo(this));
+    localbkzi.a(new aedc(this, paramByte));
+    this.jdField_a_of_type_AndroidAppDialog = localbkzi;
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
@@ -111,34 +116,34 @@ public class GroupManagerActivity
   private void d()
   {
     this.leftView.setVisibility(8);
-    setRightButton(2131692881, new adlv(this));
-    setTitle(2131692880);
+    setRightButton(2131692987, new aedb(this));
+    setTitle(2131692986);
   }
   
   private void e()
   {
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = ((DragSortListView)findViewById(16908298));
     Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setFloatViewManager((arby)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setFloatViewManager((asgi)localObject);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnTouchListener((View.OnTouchListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_Arbx);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_Arcb);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new adma(this));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setLeftEventListener(new admb(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_Asgh);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_Asgl);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new aedh(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setLeftEventListener(new aedi(this));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setVerticalScrollBarEnabled(false);
-    localObject = getLayoutInflater().inflate(2131559251, null);
+    localObject = getLayoutInflater().inflate(2131559290, null);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView((View)localObject);
-    ((View)localObject).findViewById(2131367754).setOnClickListener(new admc(this));
+    ((View)localObject).findViewById(2131367890).setOnClickListener(new aedj(this));
     localObject = new View(getActivity());
     ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(10.0F * getResources().getDisplayMetrics().density)));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addFooterView((View)localObject);
   }
   
-  public arbn a(DragSortListView paramDragSortListView)
+  public asfx a(DragSortListView paramDragSortListView)
   {
-    paramDragSortListView = new arbn(paramDragSortListView);
-    paramDragSortListView.d(2131365795);
-    paramDragSortListView.e(2131364601);
+    paramDragSortListView = new asfx(paramDragSortListView);
+    paramDragSortListView.d(2131365893);
+    paramDragSortListView.e(2131364684);
     paramDragSortListView.b(true);
     paramDragSortListView.a(true);
     paramDragSortListView.a(0);
@@ -152,9 +157,9 @@ public class GroupManagerActivity
       QLog.d("GroupManagerActivity", 2, "/************************Start Refresh:");
     }
     this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (amsw)this.app.getManager(51);
+    Object localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject != null) {}
-    for (localObject = ((amsw)localObject).e();; localObject = null)
+    for (localObject = ((anvk)localObject).e();; localObject = null)
     {
       if (localObject != null)
       {
@@ -165,10 +170,10 @@ public class GroupManagerActivity
           this.jdField_a_of_type_JavaUtilList.add(localGroups);
         }
       }
-      if (this.jdField_a_of_type_Aljm == null)
+      if (this.jdField_a_of_type_Amhm == null)
       {
-        this.jdField_a_of_type_Aljm = new aljm(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_Aljm);
+        this.jdField_a_of_type_Amhm = new amhm(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_Amhm);
       }
       while (QLog.isColorLevel())
       {
@@ -182,7 +187,7 @@ public class GroupManagerActivity
             localObject = (String)localObject + (byte)((Groups)this.jdField_a_of_type_JavaUtilList.get(i)).group_id + "   ";
             i += 1;
             continue;
-            this.jdField_a_of_type_Aljm.notifyDataSetChanged();
+            this.jdField_a_of_type_Amhm.notifyDataSetChanged();
             break;
           }
         }
@@ -206,10 +211,10 @@ public class GroupManagerActivity
       }
       return;
     }
-    Object localObject = new bhht(this, this.jdField_a_of_type_Int);
-    ((bhht)localObject).c(paramInt);
+    Object localObject = new bisl(this, this.jdField_a_of_type_Int);
+    ((bisl)localObject).c(paramInt);
     this.jdField_b_of_type_AndroidAppDialog = ((Dialog)localObject);
-    this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(new adly(this));
+    this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(new aede(this));
     this.jdField_b_of_type_AndroidAppDialog.show();
     this.jdField_b_of_type_Boolean = false;
     this.c = false;
@@ -238,10 +243,10 @@ public class GroupManagerActivity
   {
     if (!NetworkUtil.isNetSupport(getApplication()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).a();
       return false;
     }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(1);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if (localFriendListHandler != null) {
       localFriendListHandler.deleteFriendGroup(paramByte);
     }
@@ -254,10 +259,10 @@ public class GroupManagerActivity
   {
     if (!NetworkUtil.isNetSupport(getApplication()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).a();
       return false;
     }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(1);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if (localFriendListHandler != null) {
       localFriendListHandler.addFriendGroup(paramByte, paramString);
     }
@@ -270,10 +275,10 @@ public class GroupManagerActivity
   {
     if (!NetworkUtil.isNetSupport(getApplication()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).a();
       return false;
     }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(1);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if (localFriendListHandler != null) {
       localFriendListHandler.resortFriendGroup(paramArrayOfByte1, paramArrayOfByte2);
     }
@@ -295,10 +300,10 @@ public class GroupManagerActivity
   {
     if (!NetworkUtil.isNetSupport(getApplication()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).a();
       return false;
     }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(1);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if (localFriendListHandler != null) {
       localFriendListHandler.renameFriendGroup(paramByte, paramString);
     }
@@ -333,11 +338,11 @@ public class GroupManagerActivity
       QLog.d("GroupManagerActivity", 2, "onCreate");
     }
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299076);
-    super.setContentView(2131561105);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299080);
+    super.setContentView(2131561166);
     d();
     e();
-    this.app.addObserver(this.jdField_a_of_type_Amsu);
+    this.app.addObserver(this.jdField_a_of_type_Anvi);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     a();
     return true;
@@ -350,7 +355,7 @@ public class GroupManagerActivity
     }
     super.doOnDestroy();
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.app.removeObserver(this.jdField_a_of_type_Amsu);
+    this.app.removeObserver(this.jdField_a_of_type_Anvi);
   }
   
   public void finish()
@@ -389,7 +394,7 @@ public class GroupManagerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity
  * JD-Core Version:    0.7.0.1
  */

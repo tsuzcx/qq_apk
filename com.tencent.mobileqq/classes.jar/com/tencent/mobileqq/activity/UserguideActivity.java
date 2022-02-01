@@ -64,9 +64,9 @@ public class UserguideActivity
         String str1 = ((SharedPreferences)localObject).getString("qq_version", "");
         String str2 = ((SharedPreferences)localObject).getString("qq_version_full", "");
         if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 4810, local build num is " + str1);
+          QLog.e("UserGuide", 2, "pkg build num is 4875, local build num is " + str1);
         }
-        if (!"4810".equals(str1))
+        if (!"4875".equals(str1))
         {
           localHashMap = new HashMap();
           if (!TextUtils.isEmpty(str1)) {
@@ -81,14 +81,14 @@ public class UserguideActivity
           localObject = AppSetting.a();
           paramSplashActivity.putString("qq_version_pre", str1);
           paramSplashActivity.putString("qq_version_full_pre", str2);
-          paramSplashActivity.putString("qq_version", "4810");
+          paramSplashActivity.putString("qq_version", "4875");
           paramSplashActivity.putString("qq_version_full", (String)localObject);
           paramSplashActivity.commit();
           if (QLog.isColorLevel()) {
-            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4810", localObject }));
+            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4875", localObject }));
           }
         }
-        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4810");
+        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4875");
       }
       else
       {
@@ -183,7 +183,7 @@ public class UserguideActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserguideActivity
  * JD-Core Version:    0.7.0.1
  */

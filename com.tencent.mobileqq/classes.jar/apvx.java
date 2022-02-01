@@ -1,35 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Bundle;
 
-class apvx
-  extends apvy
+public abstract class apvx
+  implements apvj
 {
-  private int a;
-  
-  public apvx(int paramInt)
+  public Bundle a()
   {
-    this.a = paramInt;
+    return new Bundle();
   }
   
-  public Object a(Object paramObject)
+  public String a()
   {
-    if (paramObject == null) {}
-    do
-    {
-      return null;
-      paramObject = (ArrayList)paramObject;
-      if (!(paramObject instanceof ArrayList))
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
-      }
-    } while ((this.a < 0) || (this.a >= paramObject.size()));
-    return paramObject.get(this.a);
+    return "QQ.GetUin";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvx
  * JD-Core Version:    0.7.0.1
  */

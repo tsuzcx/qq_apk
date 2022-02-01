@@ -1,49 +1,68 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.1;
+import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.os.MqqHandler;
 
-class qdl
-  implements ViewBase.OnClickListener
+public class qdl
 {
-  qdl(qdf paramqdf, ViewBase paramViewBase, pvc parampvc) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static void a()
   {
-    boolean bool = true;
-    paramViewBase = (qip)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_view");
-    Object localObject = this.jdField_a_of_type_Pvc.a();
-    if (((ArticleInfo)localObject).mProteusTemplateBean == null) {
-      QLog.e("PgcShortContentProteusItem", 1, "articleInfo.mProteusTemplateBean is null");
-    }
-    ViewBase localViewBase;
-    do
+    Object localObject = tlv.a().a();
+    if (localObject != null)
     {
-      return;
-      localObject = ((ArticleInfo)localObject).mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
-      localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
-    } while ((localViewBase == null) || (paramViewBase == null) || (localObject == null));
-    if (!"video_audio_mute".equals(((ViewBean)localObject).valueBean.dynamicValue.get("loadImageWithPath:")))
-    {
-      paramViewBase.a().setMute(bool);
-      if (!bool) {
-        break label140;
+      QLog.d("RIJImageOptMonitor", 1, "executing jobs size: " + ((CopyOnWriteArrayList)localObject).size());
+      if (((CopyOnWriteArrayList)localObject).size() > 0)
+      {
+        localObject = ((CopyOnWriteArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          QLog.d("RIJImageOptMonitor", 1, new Object[] { (tlw)((Iterator)localObject).next() });
+        }
       }
     }
-    label140:
-    for (paramViewBase = "video_audio_mute";; paramViewBase = "video_audio_speak")
+  }
+  
+  public static void a(tlw paramtlw)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new RIJImageOptMonitor.1(paramtlw), qdk.a.a());
+  }
+  
+  public static String[] a(String paramString)
+  {
+    try
     {
-      ((ViewBean)localObject).putMapValue("pgc_video_content_audio_icon", paramViewBase);
-      localViewBase.bindDynamicValue((ViewBean)localObject);
-      return;
-      bool = false;
-      break;
+      InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(paramString);
+      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
+      {
+        String[] arrayOfString = new String[arrayOfInetAddress.length];
+        int i = 0;
+        for (;;)
+        {
+          paramString = arrayOfString;
+          if (i >= arrayOfInetAddress.length) {
+            break;
+          }
+          arrayOfString[i] = arrayOfInetAddress[i].getHostAddress();
+          i += 1;
+        }
+        return paramString;
+      }
     }
+    catch (UnknownHostException paramString)
+    {
+      QLog.e("RIJImageOptMonitor", 1, paramString.getMessage());
+      paramString = null;
+    }
+    return null;
+  }
+  
+  public static void b(tlw paramtlw)
+  {
+    ThreadManager.post(new RIJImageOptMonitor.2(paramtlw), 2, null, true);
   }
 }
 

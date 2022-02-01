@@ -1,65 +1,13 @@
-import android.os.Looper;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class quw
-  extends pkt
+  implements ViewBase.IBuilder
 {
-  public quw(ComponentContentRecommend paramComponentContentRecommend) {}
-  
-  public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if ((ComponentContentRecommend.a(this.a) == null) || (ComponentContentRecommend.a(this.a).mRecommendFollowInfos == null))
-    {
-      QQToast.a(ComponentContentRecommend.a(this.a), 1, amtj.a(2131701470), 1).a();
-      ComponentContentRecommend.a(this.a).clearAnimation();
-    }
-    while (ComponentContentRecommend.a(this.a).mArticleID != paramLong) {
-      return;
-    }
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() <= 0))
-    {
-      QQToast.a(ComponentContentRecommend.a(this.a), 1, amtj.a(2131701473), 1).a();
-      ComponentContentRecommend.a(this.a).clearAnimation();
-      return;
-    }
-    ComponentContentRecommend.a(this.a).clearAnimation();
-    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.clear();
-    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.addAll(paramList);
-    pkm.a().d(ComponentContentRecommend.a(this.a));
-    ComponentContentRecommend.a(this.a).clear();
-    ComponentContentRecommend.a(this.a).addAll(paramList);
-    ComponentContentRecommend.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      QLog.e(ComponentContentRecommend.a, 2, "Please call this method in main thread!!!");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(ComponentContentRecommend.a, 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-    }
-    Iterator localIterator = ComponentContentRecommend.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)localIterator.next();
-      if (paramLong == localRecommendFollowInfo.uin) {
-        localRecommendFollowInfo.isFollowed = paramBoolean;
-      }
-    }
-    ComponentContentRecommend.a(this.a).notifyDataSetChanged();
+    return new quv(paramVafContext);
   }
 }
 

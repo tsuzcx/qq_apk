@@ -1,46 +1,30 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.MaxHeightRelativelayout;
 
 class atnu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends atnt
 {
-  atnu(atnt paramatnt) {}
-  
-  public void onGlobalLayout()
+  public atnu(atno paramatno)
   {
-    if (atnt.a(this.a) != null)
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenChangeToOff";
+  }
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
-        atnt.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      if ((atnt.a(this.a) != null) && (this.a.a != null))
-      {
-        if (atnt.a(this.a).getLineCount() <= 1) {
-          break label144;
-        }
-        atnt.a(this.a).setGravity(19);
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    for (;;)
-    {
-      if (atnt.a(this.a).getHeight() >= ViewUtils.dip2px(atnt.a(this.a) + 2))
-      {
-        this.a.a.setMaxHeight(ViewUtils.dip2px(450.0F));
-        this.a.a.requestLayout();
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardPreviewTextController", 2, " reset height ");
-        }
-      }
-      return;
-      label144:
-      atnt.a(this.a).setGravity(17);
-    }
+    atno.b(this.jdField_a_of_type_Atno, 11, 9);
+    atno.c(this.jdField_a_of_type_Atno, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Atnt = new atnw(this.jdField_a_of_type_Atno);
+    return true;
   }
 }
 

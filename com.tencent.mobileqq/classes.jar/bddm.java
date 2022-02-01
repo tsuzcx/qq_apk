@@ -1,16 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Build;
+import com.tencent.qphone.base.util.QLog;
 
-class bddm
-  implements DialogInterface.OnClickListener
+public class bddm
 {
-  bddm(bddh parambddh, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  public static String[] a = { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X", "SM-W2015", "Redmi Note 3", "R7Plus", "vivo X6Plus A" };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static boolean a()
   {
-    bddh.a(this.jdField_a_of_type_Bddh, this.jdField_a_of_type_JavaLangString, "clk_unableframe_open");
-    paramDialogInterface.dismiss();
-    bddh.a(this.jdField_a_of_type_Bddh, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceDanceEntryUtil", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b()
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (bddt.g())
+    {
+      bool1 = bool3;
+      if (!a())
+      {
+        if (!lph.a(8, 1400000L))
+        {
+          bool1 = bool2;
+          if (!lph.a(4, 2150000L)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        QLog.d("FaceDanceEntryUtil", 2, "FaceDanceEntryUtil check condition 2 +cpuNumber is" + bool1);
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean c()
+  {
+    return (b()) && (bczy.a().e());
   }
 }
 

@@ -1,31 +1,54 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/onlinestatus/view/ConstellationView$initData$1", "Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axzi
-  extends axyk
+public class axzi
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
+  private axzi(StuffContainerView paramStuffContainerView) {}
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    super.a(paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConstellationView", 2, new Object[] { "onGetConstellationTrend: called. ", "bundle: " + paramBundle });
+    if (this.a.a == null) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    axzc localaxzc = this.a;
-    if (paramBundle != null)
+    float f2;
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-      paramBundle = paramBundle.getString("key_today_constellation_trend");
-      if (paramBundle == null) {}
+      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
+      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
+      if (Math.abs(f1) <= Math.abs(f2)) {
+        break label143;
+      }
+      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
+      {
+        if (f1 >= 0.0F) {
+          break label128;
+        }
+        this.a.a.g();
+      }
     }
     for (;;)
     {
-      axzc.a(localaxzc, paramBundle);
-      this.a.a();
-      return;
-      paramBundle = "";
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label128:
+      this.a.a.j();
+      continue;
+      label143:
+      if (f2 > 0.0F) {
+        this.a.a.h();
+      } else {
+        this.a.a.i();
+      }
     }
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
+    return false;
   }
 }
 

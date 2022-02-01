@@ -1,21 +1,74 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import tencent.im.oidb.oidb_0xb60.ClientInfo;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
+import tencent.im.oidb.oidb_0xb60.ReqBody;
 
-public class adax
-  implements View.OnClickListener
+class adax
+  extends JobSegment<awxt, awxt>
 {
-  public adax(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  protected void a(JobContext paramJobContext, awxt paramawxt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramawxt.a())
+    {
+      notifyResult(paramawxt);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "cache is valid");
+      }
     }
-    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      do
+      {
+        return;
+        paramJobContext = BaseApplicationImpl.getApplication().getRuntime();
+        if (paramJobContext != null) {
+          break;
+        }
+        notifyError(new AppInfoError(6, "jobApiPermission app is null"));
+      } while (!QLog.isColorLevel());
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "app is null");
+      return;
+      try
+      {
+        int i = Integer.parseInt(paramawxt.jdField_a_of_type_JavaLangString);
+        oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
+        localReqBody.get_privilege_req.setHasFlag(true);
+        localReqBody.get_privilege_req.appid.set(i);
+        localReqBody.get_privilege_req.app_type.set(paramawxt.jdField_a_of_type_Int);
+        if (paramawxt.jdField_a_of_type_Int == 1)
+        {
+          oidb_0xb60.ClientInfo localClientInfo = new oidb_0xb60.ClientInfo();
+          localClientInfo.platform.set(1);
+          if (!TextUtils.isEmpty(paramawxt.k)) {
+            localClientInfo.sdk_version.set(paramawxt.k);
+          }
+          if (!TextUtils.isEmpty(paramawxt.i)) {
+            localClientInfo.android_package_name.set(paramawxt.i);
+          }
+          if (!TextUtils.isEmpty(paramawxt.j)) {
+            localClientInfo.android_signature.set(paramawxt.j);
+          }
+          localReqBody.client_info.set(localClientInfo);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "send type=" + paramawxt.jdField_a_of_type_Int + ", appid=" + paramawxt.jdField_a_of_type_JavaLangString);
+        }
+        ntb.a(paramJobContext, new aday(this, paramawxt), localReqBody.toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+        return;
+      }
+      catch (NumberFormatException paramJobContext)
+      {
+        notifyError(new AppInfoError(6, "jobApiPermission parse appid error"));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse appid error");
   }
 }
 

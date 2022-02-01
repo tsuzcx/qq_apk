@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class nva
-  implements View.OnClickListener
+final class nva
+  implements nuw
 {
-  nva(num paramnum, String paramString, obr paramobr) {}
-  
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    num.b(this.jdField_a_of_type_Num, this.jdField_a_of_type_JavaLangString);
-    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramInt == 0) && (nuz.a.a())) {
+      nuz.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

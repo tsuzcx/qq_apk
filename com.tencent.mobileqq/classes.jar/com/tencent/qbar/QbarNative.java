@@ -1,26 +1,30 @@
 package com.tencent.qbar;
 
 import android.graphics.Bitmap;
-import aoem;
-import bijn;
+import android.graphics.RectF;
+import android.text.TextUtils;
+import apho;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class QbarNative
 {
   static boolean jdField_a_of_type_Boolean;
-  static boolean b;
+  static boolean jdField_b_of_type_Boolean;
   private int jdField_a_of_type_Int = -1;
+  private int jdField_b_of_type_Int;
+  private int c;
   
   static
   {
     if (BaseApplicationImpl.getContext() != null) {}
     try
     {
-      b = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "c++_shared");
-      if (!b) {
+      jdField_b_of_type_Boolean = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "c++_shared");
+      if (!jdField_b_of_type_Boolean) {
         QLog.e("QbarNative", 1, "Init load c++_shared fail, try system load.");
       }
     }
@@ -29,7 +33,7 @@ public class QbarNative
       try
       {
         System.loadLibrary("c++_shared");
-        b = true;
+        jdField_b_of_type_Boolean = true;
         if (BaseApplicationImpl.getContext() == null) {}
       }
       catch (Throwable localThrowable3)
@@ -50,15 +54,15 @@ public class QbarNative
               System.loadLibrary("QBarMod");
               jdField_a_of_type_Boolean = true;
               if (BaseApplicationImpl.getContext() != null) {
-                aoem.a().a(jdField_a_of_type_Boolean);
+                apho.a().a(jdField_a_of_type_Boolean);
               }
               return;
               localThrowable1 = localThrowable1;
-              b = false;
+              jdField_b_of_type_Boolean = false;
               QLog.w("QbarNative", 1, "loadSoByName, load libc++_shared.so failed:", localThrowable1);
               continue;
               localThrowable2 = localThrowable2;
-              b = false;
+              jdField_b_of_type_Boolean = false;
               QLog.e("QbarNative", 1, "Init system load c++_shared fail:", localThrowable2);
             }
             localThrowable3 = localThrowable3;
@@ -126,6 +130,8 @@ public class QbarNative
     if (QLog.isColorLevel()) {
       QLog.i("QbarNative", 2, "QbarNative : release qbarId:" + this.jdField_a_of_type_Int + " hasSoLoad:" + jdField_a_of_type_Boolean);
     }
+    this.jdField_b_of_type_Int = 0;
+    this.c = 0;
     try
     {
       if (this.jdField_a_of_type_Int < 0) {
@@ -162,8 +168,10 @@ public class QbarNative
       try
       {
         this.jdField_a_of_type_Int = Init(paramInt1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
+        this.jdField_b_of_type_Int = 0;
+        this.c = 0;
         if (this.jdField_a_of_type_Int >= 0) {
-          break label201;
+          break label211;
         }
         return -1;
       }
@@ -175,17 +183,17 @@ public class QbarNative
       paramQbarAiModelParam.superresolution_model_param_path_ = "";
       this.jdField_a_of_type_Int = Init(paramInt1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
     }
-    label201:
+    label211:
     return 0;
   }
   
   public int a(StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
   {
-    List localList = a(3);
-    if ((localList != null) && (localList.size() > 0))
+    ArrayList localArrayList = a(1);
+    if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      paramStringBuilder1.append(((bijn)localList.get(0)).jdField_a_of_type_JavaLangString);
-      paramStringBuilder2.append(((bijn)localList.get(0)).b);
+      paramStringBuilder1.append(((QBarResult)localArrayList.get(0)).jdField_a_of_type_JavaLangString);
+      paramStringBuilder2.append(((QBarResult)localArrayList.get(0)).b);
       return 1;
     }
     return 0;
@@ -197,6 +205,8 @@ public class QbarNative
     if (QLog.isColorLevel()) {
       QLog.i("QbarNative", 2, "QbarNative : scanImage qbarId:" + this.jdField_a_of_type_Int + " hasSoLoad:" + jdField_a_of_type_Boolean);
     }
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
     try
     {
       if (this.jdField_a_of_type_Int < 0) {
@@ -207,9 +217,14 @@ public class QbarNative
       }
     }
     finally {}
+    paramArrayOfByte = a(1);
     paramInt1 = i;
-    if (a(3).size() > 0) {
-      paramInt1 = 0;
+    if (paramArrayOfByte != null)
+    {
+      paramInt1 = i;
+      if (paramArrayOfByte.size() > 0) {
+        paramInt1 = 0;
+      }
     }
     return paramInt1;
   }
@@ -230,226 +245,101 @@ public class QbarNative
     finally {}
   }
   
-  /* Error */
-  public List<bijn> a(int paramInt)
+  public ArrayList<QBarResult> a(int paramInt)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +42 -> 47
-    //   8: ldc 30
-    //   10: iconst_2
-    //   11: new 124	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 208
-    //   20: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: aload_0
-    //   24: getfield 78	com/tencent/qbar/QbarNative:jdField_a_of_type_Int	I
-    //   27: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   30: ldc 136
-    //   32: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: getstatic 48	com/tencent/qbar/QbarNative:jdField_a_of_type_Boolean	Z
-    //   38: invokevirtual 139	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   47: iload_1
-    //   48: ifle +10 -> 58
-    //   51: aload_0
-    //   52: getfield 78	com/tencent/qbar/QbarNative:jdField_a_of_type_Int	I
-    //   55: ifge +9 -> 64
-    //   58: aconst_null
-    //   59: astore 4
-    //   61: aload 4
-    //   63: areturn
-    //   64: iload_1
-    //   65: anewarray 210	com/tencent/qbar/QbarNative$QBarResultJNI
-    //   68: astore 6
-    //   70: iconst_0
-    //   71: istore_1
-    //   72: iload_1
-    //   73: aload 6
-    //   75: arraylength
-    //   76: if_icmpge +61 -> 137
-    //   79: aload 6
-    //   81: iload_1
-    //   82: new 210	com/tencent/qbar/QbarNative$QBarResultJNI
-    //   85: dup
-    //   86: invokespecial 211	com/tencent/qbar/QbarNative$QBarResultJNI:<init>	()V
-    //   89: aastore
-    //   90: aload 6
-    //   92: iload_1
-    //   93: aaload
-    //   94: new 213	java/lang/String
-    //   97: dup
-    //   98: invokespecial 214	java/lang/String:<init>	()V
-    //   101: putfield 217	com/tencent/qbar/QbarNative$QBarResultJNI:charset	Ljava/lang/String;
-    //   104: aload 6
-    //   106: iload_1
-    //   107: aaload
-    //   108: sipush 1024
-    //   111: newarray byte
-    //   113: putfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
-    //   116: aload 6
-    //   118: iload_1
-    //   119: aaload
-    //   120: new 213	java/lang/String
-    //   123: dup
-    //   124: invokespecial 214	java/lang/String:<init>	()V
-    //   127: putfield 224	com/tencent/qbar/QbarNative$QBarResultJNI:typeName	Ljava/lang/String;
-    //   130: iload_1
-    //   131: iconst_1
-    //   132: iadd
-    //   133: istore_1
-    //   134: goto -62 -> 72
-    //   137: aload_0
-    //   138: monitorenter
-    //   139: aload_0
-    //   140: getfield 78	com/tencent/qbar/QbarNative:jdField_a_of_type_Int	I
-    //   143: ifge +7 -> 150
-    //   146: aload_0
-    //   147: monitorexit
-    //   148: aconst_null
-    //   149: areturn
-    //   150: aload_0
-    //   151: aload 6
-    //   153: aload_0
-    //   154: getfield 78	com/tencent/qbar/QbarNative:jdField_a_of_type_Int	I
-    //   157: invokevirtual 226	com/tencent/qbar/QbarNative:GetResults	([Lcom/tencent/qbar/QbarNative$QBarResultJNI;I)I
-    //   160: pop
-    //   161: aload_0
-    //   162: monitorexit
-    //   163: new 228	java/util/ArrayList
-    //   166: dup
-    //   167: invokespecial 229	java/util/ArrayList:<init>	()V
-    //   170: astore 5
-    //   172: aload 6
-    //   174: arraylength
-    //   175: istore_3
-    //   176: iload_2
-    //   177: istore_1
-    //   178: aload 5
-    //   180: astore 4
-    //   182: iload_1
-    //   183: iload_3
-    //   184: if_icmpge -123 -> 61
-    //   187: aload 6
-    //   189: iload_1
-    //   190: aaload
-    //   191: astore 4
-    //   193: aload 4
-    //   195: getfield 224	com/tencent/qbar/QbarNative$QBarResultJNI:typeName	Ljava/lang/String;
-    //   198: ifnull +136 -> 334
-    //   201: aload 4
-    //   203: getfield 224	com/tencent/qbar/QbarNative$QBarResultJNI:typeName	Ljava/lang/String;
-    //   206: invokevirtual 232	java/lang/String:isEmpty	()Z
-    //   209: ifne +125 -> 334
-    //   212: new 191	bijn
-    //   215: dup
-    //   216: invokespecial 233	bijn:<init>	()V
-    //   219: astore 7
-    //   221: aload 7
-    //   223: aload 4
-    //   225: getfield 217	com/tencent/qbar/QbarNative$QBarResultJNI:charset	Ljava/lang/String;
-    //   228: putfield 236	bijn:c	Ljava/lang/String;
-    //   231: aload 7
-    //   233: aload 4
-    //   235: getfield 239	com/tencent/qbar/QbarNative$QBarResultJNI:typeID	I
-    //   238: putfield 240	bijn:jdField_a_of_type_Int	I
-    //   241: aload 7
-    //   243: aload 4
-    //   245: getfield 224	com/tencent/qbar/QbarNative$QBarResultJNI:typeName	Ljava/lang/String;
-    //   248: putfield 193	bijn:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   251: aload 7
-    //   253: aload 4
-    //   255: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
-    //   258: putfield 242	bijn:jdField_a_of_type_ArrayOfByte	[B
-    //   261: aload 7
-    //   263: getfield 236	bijn:c	Ljava/lang/String;
-    //   266: ldc 244
-    //   268: invokevirtual 248	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   271: ifeq +77 -> 348
-    //   274: aload 7
-    //   276: new 213	java/lang/String
-    //   279: dup
-    //   280: aload 4
-    //   282: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
-    //   285: ldc 250
-    //   287: invokespecial 253	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   290: putfield 195	bijn:b	Ljava/lang/String;
-    //   293: aload 7
-    //   295: getfield 195	bijn:b	Ljava/lang/String;
-    //   298: invokestatic 258	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   301: ifeq +23 -> 324
-    //   304: aload 7
-    //   306: new 213	java/lang/String
-    //   309: dup
-    //   310: aload 4
-    //   312: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
-    //   315: ldc_w 260
-    //   318: invokespecial 253	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   321: putfield 195	bijn:b	Ljava/lang/String;
-    //   324: aload 5
-    //   326: aload 7
-    //   328: invokeinterface 263 2 0
-    //   333: pop
-    //   334: iload_1
-    //   335: iconst_1
-    //   336: iadd
-    //   337: istore_1
-    //   338: goto -160 -> 178
-    //   341: astore 4
-    //   343: aload_0
-    //   344: monitorexit
-    //   345: aload 4
-    //   347: athrow
-    //   348: aload 7
-    //   350: new 213	java/lang/String
-    //   353: dup
-    //   354: aload 4
-    //   356: getfield 221	com/tencent/qbar/QbarNative$QBarResultJNI:data	[B
-    //   359: aload 7
-    //   361: getfield 236	bijn:c	Ljava/lang/String;
-    //   364: invokespecial 253	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   367: putfield 195	bijn:b	Ljava/lang/String;
-    //   370: goto -46 -> 324
-    //   373: astore 4
-    //   375: ldc 30
-    //   377: iconst_1
-    //   378: new 124	java/lang/StringBuilder
-    //   381: dup
-    //   382: invokespecial 125	java/lang/StringBuilder:<init>	()V
-    //   385: ldc_w 265
-    //   388: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   391: aload 4
-    //   393: invokevirtual 266	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
-    //   396: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   399: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   402: invokestatic 38	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   405: aload 5
-    //   407: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	408	0	this	QbarNative
-    //   0	408	1	paramInt	int
-    //   1	176	2	i	int
-    //   175	10	3	j	int
-    //   59	252	4	localObject1	Object
-    //   341	14	4	localObject2	Object
-    //   373	19	4	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-    //   170	236	5	localArrayList	java.util.ArrayList
-    //   68	120	6	arrayOfQBarResultJNI	QbarNative.QBarResultJNI[]
-    //   219	141	7	localbijn	bijn
-    // Exception table:
-    //   from	to	target	type
-    //   139	148	341	finally
-    //   150	163	341	finally
-    //   343	345	341	finally
-    //   172	176	373	java/io/UnsupportedEncodingException
-    //   193	324	373	java/io/UnsupportedEncodingException
-    //   324	334	373	java/io/UnsupportedEncodingException
-    //   348	370	373	java/io/UnsupportedEncodingException
+    ArrayList localArrayList3 = null;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("QbarNative", 2, "QbarNative : GetResults qbarId:" + this.jdField_a_of_type_Int + " hasSoLoad:" + jdField_a_of_type_Boolean);
+    }
+    ArrayList localArrayList1 = localArrayList3;
+    if (paramInt > 0)
+    {
+      if (this.jdField_a_of_type_Int < 0) {
+        localArrayList1 = localArrayList3;
+      }
+    }
+    else {
+      return localArrayList1;
+    }
+    QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[paramInt];
+    int i = 0;
+    while (i < paramInt)
+    {
+      arrayOfQBarResultJNI[i] = new QbarNative.QBarResultJNI();
+      arrayOfQBarResultJNI[i].charset = new String();
+      arrayOfQBarResultJNI[i].data = new byte[1024];
+      arrayOfQBarResultJNI[i].typeName = new String();
+      arrayOfQBarResultJNI[i].points = new QbarNative.QBarPoint();
+      i += 1;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Int < 0) {
+        return null;
+      }
+    }
+    finally {}
+    GetResults(arrayOfQBarResultJNI, this.jdField_a_of_type_Int);
+    localArrayList3 = new ArrayList();
+    i = j;
+    for (;;)
+    {
+      ArrayList localArrayList2 = localArrayList3;
+      if (i >= paramInt) {
+        break;
+      }
+      localArrayList2 = arrayOfQBarResultJNI[i];
+      for (;;)
+      {
+        QBarResult localQBarResult;
+        float f1;
+        try
+        {
+          if ((localArrayList2.typeName == null) || (localArrayList2.typeName.isEmpty())) {
+            break;
+          }
+          localQBarResult = new QBarResult();
+          localQBarResult.jdField_a_of_type_JavaLangString = localArrayList2.typeName;
+          if (localArrayList2.charset.equals("ANY"))
+          {
+            localQBarResult.b = new String(localArrayList2.data, "UTF-8");
+            if (TextUtils.isEmpty(localQBarResult.b)) {
+              localQBarResult.b = new String(localArrayList2.data, "ASCII");
+            }
+            localQBarResult.jdField_a_of_type_Float = 1.0F;
+            if ((this.jdField_b_of_type_Int <= 0) || (this.c <= 0)) {
+              break label733;
+            }
+            if (localArrayList2.points.point_cnt > 2)
+            {
+              f1 = Math.min(localArrayList2.points.x0 / this.jdField_b_of_type_Int, localArrayList2.points.x2 / this.jdField_b_of_type_Int);
+              f2 = Math.max(localArrayList2.points.x0 / this.jdField_b_of_type_Int, localArrayList2.points.x2 / this.jdField_b_of_type_Int);
+              localQBarResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f1, Math.min(localArrayList2.points.y0 / this.c, localArrayList2.points.y2 / this.c), f2, Math.max(localArrayList2.points.y0 / this.c, localArrayList2.points.y2 / this.c));
+              localArrayList3.add(localQBarResult);
+              break;
+            }
+          }
+          else
+          {
+            localQBarResult.b = new String(localArrayList2.data, localArrayList2.charset);
+            continue;
+          }
+          f1 = Math.min(localUnsupportedEncodingException.points.x0 / this.jdField_b_of_type_Int, localUnsupportedEncodingException.points.x1 / this.jdField_b_of_type_Int);
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          QLog.e("QbarNative", 1, "GetResults exp:" + localUnsupportedEncodingException.getMessage());
+          return localArrayList3;
+        }
+        float f2 = Math.max(localUnsupportedEncodingException.points.x0 / this.jdField_b_of_type_Int, localUnsupportedEncodingException.points.x1 / this.jdField_b_of_type_Int);
+        localQBarResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f1 - 0.01F, Math.min(localUnsupportedEncodingException.points.y0 / this.c, localUnsupportedEncodingException.points.y1 / this.c) - 0.01F, f2 + 0.01F, Math.max(localUnsupportedEncodingException.points.y0 / this.c, localUnsupportedEncodingException.points.y1 / this.c) + 0.01F);
+        continue;
+        label733:
+        localQBarResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+      }
+      i += 1;
+    }
   }
 }
 

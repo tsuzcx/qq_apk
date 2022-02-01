@@ -1,26 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import MWIFI.SCGet3rdCloudCheck;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class alew
-  implements Animation.AnimationListener
+class alew
+  implements View.OnClickListener
 {
-  public alew(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk) {}
+  alew(aldh paramaldh, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Alfk.a.getLayoutParams());
-    paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(12.0F * SpecailCareListActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, (int)(10.0F * SpecailCareListActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Alfk.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Alfk.a.clearAnimation();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
+    }
+    bixr.a(aldh.a(this.jdField_a_of_type_Aldh), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
+    aldh.a(this.jdField_a_of_type_Aldh).removeMessages(202);
+    aldh.a(this.jdField_a_of_type_Aldh).obtainMessage(202).sendToTarget();
+    bdla.a(aldh.a(this.jdField_a_of_type_Aldh).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

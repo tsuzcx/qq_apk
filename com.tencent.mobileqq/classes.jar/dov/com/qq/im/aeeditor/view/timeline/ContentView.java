@@ -28,7 +28,7 @@ public class ContentView
   
   protected void a()
   {
-    setBackgroundColor(getResources().getColor(2131165218));
+    setBackgroundColor(getResources().getColor(2131165219));
   }
 }
 

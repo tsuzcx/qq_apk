@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zbe;
-import zbi;
+import zqj;
+import zqn;
 
 public class SubscribeJsPlugin$3
   implements Runnable
 {
-  public SubscribeJsPlugin$3(zbe paramzbe, Bitmap paramBitmap, String paramString) {}
+  public SubscribeJsPlugin$3(zqj paramzqj, Bitmap paramBitmap, String paramString) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SubscribeJsPlugin$3
     }
     try
     {
-      String str = zbi.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      String str = zqn.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("avatarData", str);

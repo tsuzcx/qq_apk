@@ -1,15 +1,26 @@
-public class apte
+import com.tencent.ark.ark.VariantWrapper;
+
+class apte
+  implements agov
 {
-  public int a;
-  public String a = "";
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  apte(aptb paramaptb, long paramLong) {}
+  
+  public void a()
+  {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aptb.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_Aptb.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apte
  * JD-Core Version:    0.7.0.1
  */

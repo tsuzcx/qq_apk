@@ -1,82 +1,323 @@
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.util.Log;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy.MusicPlayerListener;
 
+@ProxyService(proxy=MusicPlayerProxy.class)
 public class bkpx
-  extends RemoteCommand
+  implements MusicPlayerProxy
 {
-  private SparseArray<List<bkpy>> a = new SparseArray();
+  private static String jdField_a_of_type_JavaLangString;
+  private long jdField_a_of_type_Long = -1L;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bkpy(this);
+  private axjz jdField_a_of_type_Axjz = new bkqa(this);
+  private axkb jdField_a_of_type_Axkb;
+  private MusicPlayerProxy.MusicPlayerListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMusicPlayerProxy$MusicPlayerListener;
+  private String b;
+  private String c;
   
-  public bkpx(AppRuntime paramAppRuntime)
+  private String a()
   {
-    super("com.tencent.qqfav.favoritesremotecommand");
-    a(0, new bkpz());
+    if (jdField_a_of_type_JavaLangString == null) {
+      jdField_a_of_type_JavaLangString = QQPlayerService.a(8, "MusicPlayerProxyImpl" + this.jdField_b_of_type_JavaLangString);
+    }
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a(int paramInt, bkpy parambkpy)
+  private void a()
   {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
+    for (;;)
     {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
-    }
-    if (!((List)localObject).contains(parambkpy)) {
-      return ((List)localObject).add(parambkpy);
-    }
-    return false;
-  }
-  
-  public boolean b(int paramInt, bkpy parambkpy)
-  {
-    List localList = (List)this.a.get(paramInt);
-    if ((localList != null) && (localList.contains(parambkpy))) {
-      return localList.remove(parambkpy);
-    }
-    return false;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    int i = paramBundle.getInt("com.tencent.qqfav.favoritesremotecommand.id", -1);
-    if (-1 != i)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FavoritesRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
-      }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
+      try
       {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((bkpy)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
+        if (this.jdField_a_of_type_Axkb == null)
         {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+          long l = System.currentTimeMillis();
+          if ((this.jdField_a_of_type_Long != -1L) && (l - this.jdField_a_of_type_Long <= 10000L)) {
+            continue;
+          }
+          this.jdField_a_of_type_Long = l;
+          Intent localIntent = new Intent(BaseApplication.getContext(), QQPlayerService.class);
+          BaseApplication.getContext().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 33);
+          QLog.e("MusicPlayerProxyImpl", 1, "bindQQPlayerService end!");
+        }
       }
-    } while (!((bkpy)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
+      catch (Throwable localThrowable)
+      {
+        QLog.e("MusicPlayerProxyImpl", 1, "bindQQPlayerService exception", localThrowable);
+        continue;
+      }
+      finally {}
+      return;
+      QLog.e("MusicPlayerProxyImpl", 1, "waiting for binding service");
+    }
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null)
+      {
+        BaseApplication.getContext().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+        this.jdField_a_of_type_Axkb = null;
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("MusicPlayerProxyImpl", 1, "unbindQQPlayerService exception", localThrowable);
+      }
+    }
+    finally {}
+  }
+  
+  public com.tencent.qqmini.sdk.launcher.core.model.SongInfo getCurrentSong()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null)
+      {
+        com.tencent.mobileqq.music.SongInfo localSongInfo = this.jdField_a_of_type_Axkb.a();
+        com.tencent.qqmini.sdk.launcher.core.model.SongInfo localSongInfo1 = new com.tencent.qqmini.sdk.launcher.core.model.SongInfo();
+        localSongInfo1.id = localSongInfo.jdField_a_of_type_Long;
+        localSongInfo1.mid = localSongInfo.jdField_a_of_type_JavaLangString;
+        localSongInfo1.uin = localSongInfo.jdField_b_of_type_Long;
+        localSongInfo1.url = localSongInfo.jdField_b_of_type_JavaLangString;
+        localSongInfo1.title = localSongInfo.jdField_c_of_type_JavaLangString;
+        localSongInfo1.summary = localSongInfo.jdField_d_of_type_JavaLangString;
+        localSongInfo1.coverUrl = localSongInfo.e;
+        localSongInfo1.detailUrl = localSongInfo.f;
+        localSongInfo1.album = localSongInfo.g;
+        localSongInfo1.singer = localSongInfo.h;
+        localSongInfo1.singerId = localSongInfo.jdField_c_of_type_Long;
+        localSongInfo1.startTime = localSongInfo.jdField_a_of_type_Int;
+        localSongInfo1.type = localSongInfo.jdField_b_of_type_Int;
+        localSongInfo1.fromMini = localSongInfo.jdField_a_of_type_Boolean;
+        localSongInfo1.duration = localSongInfo.jdField_d_of_type_Long;
+        return localSongInfo1;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "getCurrentSong exception ", localException);
+    }
+    return null;
+  }
+  
+  public int getCurrentSongPosition()
+  {
+    if (this.jdField_a_of_type_Axkb != null) {
+      try
+      {
+        int i = this.jdField_a_of_type_Axkb.d();
+        return i;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("MusicPlayerProxyImpl", 1, "getCurrentSongPosition exception ", localException);
+      }
+    }
+    return 0;
+  }
+  
+  public int getDuration()
+  {
+    if (this.jdField_a_of_type_Axkb != null) {
+      try
+      {
+        int i = this.jdField_a_of_type_Axkb.c();
+        return i;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("MusicPlayerProxyImpl", 1, "getCurrentSongDuration exception ", localException);
+      }
+    }
+    return 0;
+  }
+  
+  public void init(MusicPlayerProxy.MusicPlayerListener paramMusicPlayerListener, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMusicPlayerProxy$MusicPlayerListener = paramMusicPlayerListener;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    a();
+  }
+  
+  public boolean isInit()
+  {
+    return this.jdField_a_of_type_Axkb != null;
+  }
+  
+  public boolean isPlaying()
+  {
+    boolean bool = true;
+    try
+    {
+      StringBuilder localStringBuilder;
+      if ((this.jdField_a_of_type_Axkb == null) || (!this.jdField_a_of_type_Axkb.a(a())))
+      {
+        localStringBuilder = new StringBuilder().append("getBackgroundAudioState: null ");
+        if (this.jdField_a_of_type_Axkb != null) {
+          break label65;
+        }
+      }
+      label65:
+      for (bool = true;; bool = false)
+      {
+        Log.i("MusicPlayerProxyImpl", bool);
+        bool = false;
+        return bool;
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "isPlaying exception ", localException);
+    }
+  }
+  
+  public void pause()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null) {
+        this.jdField_a_of_type_Axkb.a();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "pause exception ", localException);
+    }
+  }
+  
+  public void resume()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null) {
+        this.jdField_a_of_type_Axkb.b();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "resume exception ", localException);
+    }
+  }
+  
+  public void seekTo(int paramInt)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null) {
+        this.jdField_a_of_type_Axkb.b(paramInt);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "seekTo exception ", localException);
+    }
+  }
+  
+  public void setPlayMode(int paramInt)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null) {
+        this.jdField_a_of_type_Axkb.a(paramInt);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "setPlayMode exception ", localException);
+    }
+  }
+  
+  public void startPlay(com.tencent.qqmini.sdk.launcher.core.model.SongInfo[] paramArrayOfSongInfo, int paramInt)
+  {
+    if ((paramArrayOfSongInfo == null) || (paramArrayOfSongInfo.length < 1)) {}
+    while (this.jdField_a_of_type_Axkb == null) {
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_Axkb.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
+      Bundle localBundle = this.jdField_a_of_type_Axkb.a();
+      Object localObject = localBundle;
+      if (localBundle == null)
+      {
+        localObject = new Bundle();
+        this.jdField_a_of_type_Axkb.a((Bundle)localObject);
+      }
+      ((Bundle)localObject).putString("KEY_SOURCE_NAME", this.jdField_c_of_type_JavaLangString);
+      this.jdField_a_of_type_Axkb.a((Bundle)localObject);
+      localObject = new com.tencent.mobileqq.music.SongInfo[paramArrayOfSongInfo.length];
+      int i = 0;
+      while (i < paramArrayOfSongInfo.length)
+      {
+        localObject[i] = new com.tencent.mobileqq.music.SongInfo();
+        localObject[i].g = paramArrayOfSongInfo[i].album;
+        localObject[i].e = paramArrayOfSongInfo[i].coverUrl;
+        localObject[i].f = paramArrayOfSongInfo[i].detailUrl;
+        localObject[i].jdField_d_of_type_Long = paramArrayOfSongInfo[i].duration;
+        localObject[i].jdField_a_of_type_Boolean = paramArrayOfSongInfo[i].fromMini;
+        localObject[i].jdField_a_of_type_Long = paramArrayOfSongInfo[i].id;
+        localObject[i].jdField_a_of_type_JavaLangString = paramArrayOfSongInfo[i].mid;
+        localObject[i].h = paramArrayOfSongInfo[i].singer;
+        localObject[i].jdField_c_of_type_Long = paramArrayOfSongInfo[i].singerId;
+        localObject[i].jdField_a_of_type_Int = paramArrayOfSongInfo[i].startTime;
+        localObject[i].jdField_d_of_type_JavaLangString = paramArrayOfSongInfo[i].summary;
+        localObject[i].jdField_c_of_type_JavaLangString = paramArrayOfSongInfo[i].title;
+        localObject[i].jdField_b_of_type_Int = paramArrayOfSongInfo[i].type;
+        localObject[i].jdField_b_of_type_Long = paramArrayOfSongInfo[i].uin;
+        localObject[i].jdField_b_of_type_JavaLangString = paramArrayOfSongInfo[i].url;
+        i += 1;
+      }
+      this.jdField_a_of_type_Axkb.a(100);
+      this.jdField_a_of_type_Axkb.a(a(), (com.tencent.mobileqq.music.SongInfo[])localObject, paramInt);
+      return;
+    }
+    catch (Exception paramArrayOfSongInfo)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "startPlay exception ", paramArrayOfSongInfo);
+    }
+  }
+  
+  public void stop()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Axkb != null) {
+        this.jdField_a_of_type_Axkb.c();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MusicPlayerProxyImpl", 1, "stop exception ", localException);
+    }
+  }
+  
+  public void unInit()
+  {
+    b();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMusicPlayerProxy$MusicPlayerListener = null;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
   }
 }
 

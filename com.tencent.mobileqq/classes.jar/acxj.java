@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.kingkong.UpdateManager;
+import org.json.JSONObject;
 
 public class acxj
-  implements View.OnClickListener
+  extends Handler
 {
-  public acxj(ChatHistory paramChatHistory) {}
-  
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.k();
-    bcef.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramMessage = paramMessage.getData();
+    try
+    {
+      String str = paramMessage.getString("PATCH_JSON_STRING");
+      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
+      paramMessage = acxi.a(new JSONObject(str));
+      if (paramMessage != null) {
+        UpdateManager.a(paramMessage, bool);
+      }
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      acwx.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+    }
   }
 }
 

@@ -1,51 +1,44 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import QC.UniBusiCommItemAidInfo;
+import QC.UniBusiGetOneItemWithCheckRsp;
+import QC.UniBusiSimpleItemDetail;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class azup
-  extends RecyclerView.ItemDecoration
+class azup
+  implements azuu
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int b;
+  azup(azun paramazun) {}
   
-  private azup(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-  }
-  
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int j = paramRecyclerView.getPaddingLeft();
-    int k = this.jdField_a_of_type_Int;
-    int m = paramRecyclerView.getWidth();
-    int n = paramRecyclerView.getPaddingRight();
-    int i1 = this.b;
-    int i2 = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < i2)
+    if (azun.a(this.a) == null) {}
+    do
     {
-      paramState = paramRecyclerView.getChildAt(i);
-      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      int i3 = paramState.getBottom();
-      i3 = localLayoutParams.bottomMargin + i3;
-      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      i += 1;
-    }
+      do
+      {
+        return;
+        if (paramBoolean) {
+          break label195;
+        }
+        if ((paramUniBusiGetOneItemWithCheckRsp == null) || (paramUniBusiGetOneItemWithCheckRsp.stDetail == null)) {
+          break;
+        }
+      } while (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId != azun.a(this.a).itemId);
+      if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
+      {
+        azun.a(this.a, false);
+        this.a.b();
+        return;
+      }
+    } while (!azun.a(this.a));
+    azun.a(this.a, azun.a(this.a), azun.a(this.a).stAidInfo.androidAid, azun.a(this.a).stAidInfo.payType, azun.a(this.a).stAidInfo.errMsg, azun.a(this.a).stAidInfo.month);
+    return;
+    azun.a(this.a, false);
+    QQToast.a(azun.a(this.a), anvx.a(2131714490), 0).a();
+    azun.a(this.a, null);
+    azun.a(this.a, -1);
+    return;
+    label195:
+    this.a.b();
   }
 }
 

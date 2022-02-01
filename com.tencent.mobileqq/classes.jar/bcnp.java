@@ -1,18 +1,52 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.5.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class bcnp
-  extends ResourcePluginListener
+  extends bcpj
 {
-  public bcnp(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  private TextView a;
+  private TextView b;
+  private TextView c;
+  private TextView d;
   
-  public void a(byte paramByte)
+  public bcnp(View paramView)
   {
-    QLog.d("leba_study", 1, "notifyLebaState ");
-    ThreadManager.excute(new KidModeAdvanceSettingFragment.5.1(this), 32, null, true);
+    super(paramView);
+  }
+  
+  public bcnp(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377395));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377394));
+    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377393));
+    this.d = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377256));
+  }
+  
+  public TextView e()
+  {
+    return this.a;
+  }
+  
+  public TextView f()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView g()
+  {
+    return this.c;
+  }
+  
+  public TextView h()
+  {
+    return this.d;
   }
 }
 

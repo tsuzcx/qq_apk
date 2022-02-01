@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.widget.TextView;
 
-class aylt
-  implements DialogInterface.OnDismissListener
+public class aylt
+  extends ayka
 {
-  aylt(aylr paramaylr, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public TextView g;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aylt(ayls paramayls)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    super(paramayls);
   }
 }
 

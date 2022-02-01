@@ -1,88 +1,32 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class apsv
+public final class apsv
+  implements axkk
 {
-  public float a;
-  public int a;
-  public String a;
-  public ArrayList<Pair<String, Float>> a;
-  Set<Integer> a;
-  public boolean a;
-  public int b;
-  public int c = 36;
+  private String a;
   
   public apsv(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = apsn.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Float = apsn.a(paramString);
-    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.c = a(this.b);
-    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
-      if (this.b % 2 != 0) {
-        break label172;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
-      }
-      return;
-      label172:
-      i = 0;
-    }
+    this.a = paramString;
   }
   
-  private int a(int paramInt)
+  public String getToken()
   {
-    if (paramInt <= 2) {
-      paramInt = apsn.a.nextInt(8) - 4 + 74;
-    }
-    for (;;)
-    {
-      return paramInt / 4 * 4;
-      if (paramInt <= 4) {
-        paramInt = apsn.a.nextInt(8) - 4 + 70;
-      } else if (paramInt <= 6) {
-        paramInt = apsn.a.nextInt(8) - 4 + 66;
-      } else if (paramInt <= 8) {
-        paramInt = apsn.a.nextInt(8) - 4 + 62;
-      } else {
-        paramInt = apsn.a.nextInt(8) - 4 + 60;
-      }
-    }
+    return apsu.a();
   }
   
-  public void a()
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b % 3 != 0) {
-        break label56;
-      }
-    }
-    label56:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
-      }
-      return;
-    }
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
   }
 }
 

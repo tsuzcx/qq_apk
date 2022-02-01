@@ -1,9 +1,17 @@
-public class blcy
+import android.widget.PopupWindow.OnDismissListener;
+
+class blcy
+  implements PopupWindow.OnDismissListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  blcy(blcx paramblcx) {}
+  
+  public void onDismiss()
+  {
+    this.a.jdField_a_of_type_Bldb = null;
+    this.a.jdField_a_of_type_Blda = null;
+    this.a.c();
+    pkh.a = false;
+  }
 }
 
 

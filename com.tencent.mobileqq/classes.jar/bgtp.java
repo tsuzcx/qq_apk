@@ -1,6 +1,12 @@
-public abstract interface bgtp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bgtp
+  implements DialogInterface.OnClickListener
 {
-  public abstract String[] getMultiNameSpace();
+  bgtp(bgtn parambgtn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

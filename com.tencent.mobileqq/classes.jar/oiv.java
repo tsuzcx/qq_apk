@@ -1,34 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.2;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
 
-public class oiv
-  implements szx
+final class oiv
+  implements BusinessObserver
 {
-  public oiv(ois paramois) {}
+  oiv(AdvertisementInfo paramAdvertisementInfo, ufw paramufw, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    AppInterface localAppInterface;
-    if ((ois.a(this.a) instanceof BaseActivity))
+    if (paramBoolean) {}
+    try
     {
-      localAppInterface = ((BaseActivity)ois.a(this.a)).getAppInterface();
-      if ((localAppInterface != null) && (ois.a(this.a) != null) && (!paramBoolean))
-      {
-        rao localrao = (rao)localAppInterface.getManager(270);
-        if ((localrao.a() != 1) || (!localrao.b())) {
-          break label87;
-        }
-        ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        return;
       }
-    }
-    label87:
-    while (((rau)localAppInterface.getManager(261)).a() != 1) {
+      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+      localWebSsoResponseBody.mergeFrom(paramBundle);
+      if ((!localWebSsoResponseBody.ret.has()) || (localWebSsoResponseBody.ret.get() != 0)) {
+        return;
+      }
+      paramBundle = "";
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
+        paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mTitle;
+      }
+      ukq.a("REPORT_LINK", "new report success : title = " + paramBundle + " type = " + this.jdField_a_of_type_Ufw.a());
       return;
     }
-    ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+    ukq.a("REPORT_LINK", "new report fail : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo + " type = " + this.jdField_a_of_type_Ufw.a());
+    return;
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.open.downloadnew;
 
-import abet;
-import bias;
-import bibr;
-import bicl;
+import abuf;
+import bjlu;
+import bjmt;
+import bjnn;
 
 public class MyAppApi$8
   implements Runnable
 {
-  public MyAppApi$8(bicl parambicl, String paramString1, String paramString2) {}
+  public MyAppApi$8(bjnn parambjnn, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bias.a("100", bias.a(this.a, "NEWYYB"), this.b);
-    bibr.a();
+    bjlu.a("100", bjlu.a(this.a, "NEWYYB"), this.b);
+    bjmt.a();
     if (("ANDROID.QQ.YYBXZGAMECENTER".equals(this.a)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(this.a))) {
-      abet.a(null, "765", "205008", this.b, "76501", "1", "156");
+      abuf.a(null, "765", "205008", this.b, "76501", "1", "156");
     }
   }
 }

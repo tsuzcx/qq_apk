@@ -1,54 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 public class wek
-  extends vqr<wge>
 {
-  public String a = "";
-  public String b = "";
-  public int c;
-  
-  public String a()
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
   {
-    return vpl.a("StorySvc.homepage_feed_loadmore_720");
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
-    try
-    {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new wge(localRspFriendStoryFeedVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
+    return wfd.a(paramQQStoryAutoPlayView, paramMotionEvent);
   }
 }
 

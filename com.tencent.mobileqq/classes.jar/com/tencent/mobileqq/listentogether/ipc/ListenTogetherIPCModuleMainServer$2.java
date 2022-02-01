@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import avaj;
-import ayos;
+import awgm;
+import aztn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -9,13 +9,13 @@ import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 public class ListenTogetherIPCModuleMainServer$2
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$2(avaj paramavaj) {}
+  public ListenTogetherIPCModuleMainServer$2(awgm paramawgm) {}
   
   public void run()
   {
-    ayos localayos = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if ((localayos != null) && (localayos.a())) {
-      localayos.d(false);
+    aztn localaztn = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if ((localaztn != null) && (localaztn.a())) {
+      localaztn.d(false);
     }
   }
 }

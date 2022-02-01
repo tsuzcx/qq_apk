@@ -1,10 +1,26 @@
-public abstract interface aztl
+import com.tencent.mobileqq.profile.like.PraiseManager;
+
+public class aztl
+  implements aztj
 {
-  public abstract void a();
+  public int a;
+  public aztj a;
+  public int b;
   
-  public abstract void b();
+  public aztl(PraiseManager paramPraiseManager) {}
   
-  public abstract void c();
+  public void a(int paramInt1, azti paramazti, int paramInt2, String paramString)
+  {
+    paramInt1 = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt1 == this.b)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
+      if (this.jdField_a_of_type_Aztj != null) {
+        this.jdField_a_of_type_Aztj.a(0, null, 0, "");
+      }
+    }
+  }
 }
 
 

@@ -1,17 +1,20 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class agry
-  extends aezf
+class agry
+  implements bils
 {
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  agry(agrt paramagrt) {}
   
-  public agry(agrx paramagrx) {}
+  public void a(View paramView)
+  {
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

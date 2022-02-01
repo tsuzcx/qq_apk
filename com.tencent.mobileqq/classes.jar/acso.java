@@ -1,15 +1,37 @@
-import mqq.app.QQPermissionCallback;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0xab.SubMsgType0xab.MsgBody;
 
-class acso
-  implements QQPermissionCallback
+public class acso
+  implements acpi
 {
-  acso(acsn paramacsn) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    azhh.a().a("Setting tips");
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_reward.push", 2, "onLinePush receive 0x210_0xab");
+    }
+    try
+    {
+      SubMsgType0xab.MsgBody localMsgBody = new SubMsgType0xab.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      ((aoep)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(localMsgBody);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w(".troop.troop_reward.push", 2, "onLinePush 0x210_0xab push exception", paramQQAppInterface);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

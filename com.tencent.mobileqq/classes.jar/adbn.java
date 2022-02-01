@@ -1,30 +1,36 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adbn
-  extends ImageSpan
+public final class adbn
 {
-  public adbn(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  
+  public JSONObject a()
   {
-    super(paramDrawable, paramInt);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
+      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(adbk.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+    }
+    return localJSONObject;
   }
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public String toString()
   {
-    paramCanvas.save();
-    paramCanvas.translate(ScreenUtil.dip2px(5.0F), -ScreenUtil.dip2px(2.0F));
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public Drawable getDrawable()
-  {
-    return super.getDrawable();
+    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
   }
 }
 

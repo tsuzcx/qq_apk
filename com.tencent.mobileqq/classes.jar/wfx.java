@@ -1,22 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class wfx
-  extends vqm
+public final class wfx
+  extends MSFServlet
 {
-  public int b;
-  public int c;
-  
-  public wfx(qqstory_service.RspGetBlackList paramRspGetBlackList)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramRspGetBlackList.result);
-    this.b = paramRspGetBlackList.black_status.get();
-    this.c = paramRspGetBlackList.update_interval.get();
+    if (paramIntent == null) {
+      return;
+    }
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramIntent = bhjl.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
+    }
+    for (;;)
+    {
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
   }
   
-  public String toString()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bhjl.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 

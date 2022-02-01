@@ -1,17 +1,20 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public class axsu
+final class axsu
   implements DialogInterface.OnClickListener
 {
-  public axsu(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  axsu(Context paramContext, String paramString, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axvz.a("0X800AF9C", 1);
-    paramDialogInterface.dismiss();
-    AccountOnlineStateActivity.a(this.a);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

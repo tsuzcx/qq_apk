@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.Window;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 
 public class awuc
-  implements TVK_IMediaPlayer.OnErrorListener
 {
-  awuc(awua paramawua) {}
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public static ProgressDialog a(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoViewTVKImpl", 2, "onError called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "], model = [" + paramInt1 + "], what = [" + paramInt2 + "], position = [" + paramInt3 + "], extra = [" + paramString + "], Info = [" + paramObject + "]");
-    }
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130849611);
+    paramContext = new ReportProgressDialog(paramContext, 2131755829);
+    paramContext.show();
+    paramContext.getWindow().setContentView(2131558435);
+    paramContext.setContentView(2131558435);
+    ((TextView)paramContext.findViewById(2131365644)).setText(paramString);
+    ((ProgressBar)paramContext.findViewById(2131367140)).setIndeterminateDrawable(localDrawable);
+    return paramContext;
   }
 }
 

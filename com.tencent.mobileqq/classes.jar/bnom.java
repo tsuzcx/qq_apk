@@ -1,12 +1,18 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bnom
+class bnom
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong);
+  bnom(bnoc parambnoc) {}
   
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b(long paramLong);
+  public void onClick(View paramView)
+  {
+    bnoc.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

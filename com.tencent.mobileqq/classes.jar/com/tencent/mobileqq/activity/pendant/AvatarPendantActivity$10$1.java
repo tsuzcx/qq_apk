@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import ajkj;
+import akfx;
 
 public class AvatarPendantActivity$10$1
   implements Runnable
 {
-  public AvatarPendantActivity$10$1(ajkj paramajkj) {}
+  public AvatarPendantActivity$10$1(akfx paramakfx) {}
   
   public void run()
   {

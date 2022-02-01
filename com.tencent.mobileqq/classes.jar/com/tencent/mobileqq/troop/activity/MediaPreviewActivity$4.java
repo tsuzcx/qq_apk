@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.troop.activity;
 
-import awhm;
-import awhw;
+import axno;
+import axny;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import java.util.ArrayList;
 
 class MediaPreviewActivity$4
@@ -16,31 +17,31 @@ class MediaPreviewActivity$4
     String str1;
     if (this.this$0.app != null)
     {
-      int j = ((awhw)this.this$0.app.getManager(106)).b();
+      int j = ((axny)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).b();
       if ((this.this$0.b <= 0) || (((MediaPreviewInfo)this.this$0.a.get(0)).a != 2)) {
-        break label108;
+        break label109;
       }
       i = 1;
       if (j != 0) {
-        break label113;
+        break label114;
       }
       str1 = "1";
-      label69:
+      label70:
       if (i == 0) {
-        break label119;
+        break label120;
       }
     }
-    label108:
-    label113:
-    label119:
+    label109:
+    label114:
+    label120:
     for (String str2 = "2";; str2 = "1")
     {
-      awhm.a("clk_detail", "", new String[] { "", str1, "", str2 });
+      axno.a("clk_detail", "", new String[] { "", str1, "", str2 });
       return;
       i = 0;
       break;
       str1 = "2";
-      break label69;
+      break label70;
     }
   }
 }

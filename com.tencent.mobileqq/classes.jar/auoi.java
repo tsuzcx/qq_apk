@@ -1,6 +1,8 @@
-abstract interface auoi
+public abstract interface auoi
 {
-  public abstract void a(int paramInt, Object... paramVarArgs);
+  public abstract void onProgress(int paramInt);
+  
+  public abstract void onResult(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

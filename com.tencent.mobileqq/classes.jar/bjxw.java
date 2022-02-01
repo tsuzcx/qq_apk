@@ -1,35 +1,20 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bjxw
-  extends RecyclerView.RecycledViewPool
+  implements bjwz
 {
-  public bjxw(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
+  public bjxw(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public void a(bjyl parambjyl)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bjxq)))
+    if (parambjyl != null)
     {
-      localObject = (bjxq)localObject;
-      if (((bjxq)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((bjxq)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
+      parambjyl = parambjyl.b;
+      if (!TextUtils.isEmpty(parambjyl)) {
+        QidianProfileCardActivity.a(this.a, parambjyl);
       }
     }
-    return localViewHolder;
   }
 }
 

@@ -1,9 +1,9 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bmbg;
-import bmbj;
-import bmgo;
-import bmkz;
+import bnqq;
+import bnqt;
+import bnwg;
+import boar;
 import com.tencent.tavcut.session.TAVCutImageSession;
 import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 class AEEditorImageEditFragment$15
   implements Runnable
 {
-  AEEditorImageEditFragment$15(AEEditorImageEditFragment paramAEEditorImageEditFragment, int paramInt1, int paramInt2, bmgo parambmgo, AEEditorFilterBean paramAEEditorFilterBean) {}
+  AEEditorImageEditFragment$15(AEEditorImageEditFragment paramAEEditorImageEditFragment, int paramInt1, int paramInt2, bnwg parambnwg, AEEditorFilterBean paramAEEditorFilterBean) {}
   
   public void run()
   {
@@ -21,13 +21,13 @@ class AEEditorImageEditFragment$15
     this.this$0.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.b(false);
     this.this$0.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(false);
     this.this$0.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(this.jdField_a_of_type_Int);
-    AEEditorImageEditFragment.a(this.this$0).a(this.b, this.jdField_a_of_type_Bmgo, this.jdField_a_of_type_Int);
+    AEEditorImageEditFragment.a(this.this$0).a(this.b, this.jdField_a_of_type_Bnwg, this.jdField_a_of_type_Int);
     AEEditorImageEditFragment.a(this.this$0).a(this.b, this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
     if (AEEditorImageEditFragment.a(this.this$0) != null) {
-      AEEditorImageEditFragment.a(this.this$0).setOverlayImage(this.b, this.jdField_a_of_type_Bmgo.a());
+      AEEditorImageEditFragment.a(this.this$0).setOverlayImage(this.b, this.jdField_a_of_type_Bnwg.a());
     }
-    bmbg.a().a().a.put(Integer.valueOf(this.b), this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
-    bmbg.a().a().b.put(Integer.valueOf(this.b), Float.valueOf(-1.0F));
+    bnqq.a().a().a.put(Integer.valueOf(this.b), this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEffectId());
+    bnqq.a().a().b.put(Integer.valueOf(this.b), Float.valueOf(-1.0F));
   }
 }
 

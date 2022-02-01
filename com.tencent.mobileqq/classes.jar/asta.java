@@ -1,12 +1,13 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface asta
+final class asta
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<aswh> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
-  
-  public abstract void b(String paramString1, String paramString2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

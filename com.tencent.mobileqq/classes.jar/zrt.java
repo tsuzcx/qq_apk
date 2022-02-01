@@ -1,105 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserListRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody.Item;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import mqq.app.AppRuntime;
 
-public abstract class zrt
-  extends nmf
+public class zrt
+  implements zrr
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private zrs jdField_a_of_type_Zrs;
+  
+  public zrt(zrs paramzrs)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_Zrs = paramzrs;
+    this.jdField_a_of_type_Zrs.setPresenter(this);
   }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bebc> paramList, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private List<zse> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    ArrayList localArrayList = new ArrayList();
+    if (paramStGetRecommendUserListRsp.expType.get() == 0)
     {
-      if (QLog.isColorLevel())
+      if (paramStGetRecommendUserListRsp.vecUser.has())
       {
-        localObject1 = new StringBuilder().append("GetFileListObserver, errorCode=").append(paramInt).append(", has data=");
-        if (paramArrayOfByte == null) {
-          break label73;
+        paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+        while (paramStGetRecommendUserListRsp.hasNext()) {
+          localArrayList.add(new zse((CertifiedAccountMeta.StUser)paramStGetRecommendUserListRsp.next()));
         }
       }
-      label73:
-      for (bool = true;; bool = false)
-      {
-        QLog.i("TroopFileProtocol", 2, bool);
-        a(false, false, 0, 0, 0, null, null, paramBundle);
-        return;
-      }
     }
-    Object localObject1 = new oidb_0x6d8.RspBody();
-    try
+    else if ((paramStGetRecommendUserListRsp.expType.get() == 1) && (paramStGetRecommendUserListRsp.vecUserWithFeed.has()))
     {
-      ((oidb_0x6d8.RspBody)localObject1).mergeFrom(paramArrayOfByte);
-      if (!((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFileProtocol", 2, "no FileList rsp.");
-        }
-        a(false, false, 0, 0, 0, null, null, paramBundle);
-        return;
+      paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUserWithFeed.get().iterator();
+      while (paramStGetRecommendUserListRsp.hasNext()) {
+        localArrayList.add(new zse((CertifiedAccountMeta.StFeed)paramStGetRecommendUserListRsp.next()));
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = System.currentTimeMillis();
+    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
+    ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
+    VSNetworkHelper.getInstance().sendRequest((VSBaseRequest)localObject, new zru(this, l));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Zrs != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileProtocol", 2, "merge data exception," + paramArrayOfByte.toString());
-      }
-      a(false, false, 0, 0, 0, null, null, paramBundle);
-      return;
+      this.jdField_a_of_type_Zrs.setPresenter(null);
+      this.jdField_a_of_type_Zrs = null;
     }
-    localObject1 = (oidb_0x6d8.GetFileListRspBody)((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.get();
-    if (((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.has())
-    {
-      i = ((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, retCode=" + i);
-      }
-      if (i < 0)
-      {
-        if (i == -1000)
-        {
-          a(true, false, 0, i, 0, null, null, paramBundle);
-          return;
-        }
-        a(false, false, 0, 0, 0, null, null, paramBundle);
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, has not redCode");
-      }
-      a(false, false, 0, 0, 0, null, null, paramBundle);
-      return;
-    }
-    int i = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_all_file_count.get();
-    boolean bool = ((oidb_0x6d8.GetFileListRspBody)localObject1).bool_is_end.get();
-    int j = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_next_index.get();
-    paramArrayOfByte = ((oidb_0x6d8.GetFileListRspBody)localObject1).bytes_context.get();
-    Object localObject2 = ((oidb_0x6d8.GetFileListRspBody)localObject1).rpt_item_list.get();
-    localObject1 = new ArrayList();
-    localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((List)localObject1).add(new bebc((oidb_0x6d8.GetFileListRspBody.Item)((Iterator)localObject2).next()));
-    }
-    a(true, bool, i, paramInt, j, paramArrayOfByte, (List)localObject1, paramBundle);
   }
 }
 

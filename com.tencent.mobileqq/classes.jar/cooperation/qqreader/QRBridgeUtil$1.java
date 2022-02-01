@@ -1,7 +1,7 @@
 package cooperation.qqreader;
 
-import bksn;
-import bkvd;
+import bmdw;
+import bmgm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
@@ -15,13 +15,13 @@ final class QRBridgeUtil$1
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if (localObject == null)
     {
-      bkvd.a("QRBridgeUtil", "App runtime is null, unable to clear reader cache");
+      bmgm.a("QRBridgeUtil", "App runtime is null, unable to clear reader cache");
       return;
     }
-    bksn localbksn = new bksn();
-    File localFile = ((AppRuntime)localObject).getSecurityBusinessRootFile(localbksn);
+    bmdw localbmdw = new bmdw();
+    File localFile = ((AppRuntime)localObject).getSecurityBusinessRootFile(localbmdw);
     if (localFile != null) {}
-    for (localObject = localFile.getAbsolutePath();; localObject = localbksn.oldBusinessDir(((AppRuntime)localObject).getAccount()).getAbsolutePath())
+    for (localObject = localFile.getAbsolutePath();; localObject = localbmdw.oldBusinessDir(((AppRuntime)localObject).getAccount()).getAbsolutePath())
     {
       FileUtils.delete((String)localObject + File.separator + "Online", false);
       return;

@@ -1,171 +1,41 @@
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 
-public class bbvp
+class bbvp
+  extends ansi
 {
-  public static HashMap<String, WeakReference<Drawable>> a;
-  private static boolean a;
-  public static String[] a;
+  bbvp(bbvn parambbvn) {}
   
-  static
+  protected void onUpdateStatusActions(boolean paramBoolean, int paramInt)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static Drawable a(Context paramContext, String paramString)
-  {
-    Object localObject1 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
+    }
+    bbvn.a(this.a, 0L);
+    if (paramBoolean)
     {
-      localObject2 = (Drawable)((WeakReference)jdField_a_of_type_JavaUtilHashMap.get(paramString)).get();
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        return localObject2;
+      if (paramInt == 100)
+      {
+        bbvn.b(this.a, System.currentTimeMillis());
+        bbvn.a(this.a).edit().putLong("k_update_time", bbvn.a(this.a)).commit();
       }
+      this.a.a(true);
     }
-    if (paramString.equals("fivea")) {
-      paramContext = paramContext.getResources().getDrawable(2130842151);
-    }
-    for (;;)
+    if (bbvn.a(this.a) != null)
     {
-      localObject2 = paramContext;
-      if (paramContext == null) {
-        break;
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramContext));
-      return paramContext;
-      if (paramString.equals("palmup"))
+      Iterator localIterator = bbvn.a(this.a).iterator();
+      if (localIterator.hasNext())
       {
-        paramContext = paramContext.getResources().getDrawable(2130842152);
-      }
-      else if (paramString.equals("qheart"))
-      {
-        paramContext = paramContext.getResources().getDrawable(2130842153);
-      }
-      else
-      {
-        paramContext = localObject1;
-        if (!paramString.equals("")) {
-          paramContext = new BitmapDrawable(FileUtil.getBitmapByPath(bbtk.a() + paramString + ".png"));
-        }
-      }
-    }
-  }
-  
-  public static baap a(baap parambaap)
-  {
-    if ((!c()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return parambaap;
-    }
-    baap localbaap = new baap();
-    localbaap.jdField_a_of_type_Int = parambaap.jdField_a_of_type_Int;
-    localbaap.jdField_a_of_type_JavaLangString = parambaap.jdField_a_of_type_JavaLangString;
-    localbaap.jdField_a_of_type_JavaUtilList = new ArrayList();
-    parambaap = parambaap.jdField_a_of_type_JavaUtilList.iterator();
-    if (i != 0) {
-      while (parambaap.hasNext())
-      {
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)parambaap.next();
-        if (!localPtvTemplateInfo.hasGesture()) {
-          localbaap.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
-        }
-      }
-    }
-    return localbaap;
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = paramBoolean;
-    bfyz.a(BaseApplicationImpl.getApplication().getSharedPreferences("GestureRecognitionUtils", 4).edit().putBoolean("shared_gesture_recognize_result", paramBoolean));
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GestureRecognitionUtils", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
-        }
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = bbtd.a().a();
-    if (!bool) {
-      bbtd.a().b();
-    }
-    QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check gestureResource ready " + bool);
-    return bool;
-  }
-  
-  public static boolean c()
-  {
-    boolean bool1;
-    if ((lou.a(8, 1400000L)) || (lou.a(4, 2150000L)))
-    {
-      bool1 = true;
-      QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils check condition 2 +cpuNumber is" + bool1);
-      lnz locallnz = lnz.a();
-      if ((locallnz == null) || (locallnz.b())) {
-        break label196;
-      }
-    }
-    label196:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (Build.VERSION.SDK_INT > 17) {}
-      for (boolean bool3 = true;; bool3 = false)
-      {
-        boolean bool4 = bbwy.d();
-        boolean bool5 = a();
-        QLog.d("GestureRecognitionUtils", 2, "GestureRecognitionUtils isSupportGestureFilter faceFilterCheck: " + true + ";checkDeviceSupport:" + bool1 + ":inBlackLists:" + bool2 + ":isSDKEnable:" + bool3 + ":isNotInShortVideoBlackWhiteList:" + bool4 + ":isHardCodePhoneInBlackList" + bool5);
-        if ((bool1) && (!bool2) && (bool3) && (bool4) && (!bool5))
+        bbtb localbbtb = (bbtb)localIterator.next();
+        if (paramBoolean) {}
+        for (int i = 300;; i = 301)
         {
-          return true;
-          bool1 = false;
+          localbbtb.a(paramInt, i);
           break;
         }
-        return false;
       }
     }
   }

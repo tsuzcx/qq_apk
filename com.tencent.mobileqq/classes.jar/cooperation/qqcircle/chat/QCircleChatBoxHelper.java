@@ -3,9 +3,11 @@ package cooperation.qqcircle.chat;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import cooperation.qqcircle.QCircleConfig;
+import cooperation.qqcircle.events.QCircleRedInfoEvent;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -59,6 +61,7 @@ public class QCircleChatBoxHelper
       this.mUnReadUinList = new LinkedList();
       this.mUnReadInfo = new Pair(Integer.valueOf(this.mUnReadNum), this.mUnReadUinList);
       restoreUnReadInfo(0, this.mUnReadUinList);
+      SimpleEventBus.getInstance().dispatchEvent(new QCircleRedInfoEvent("QCircleChatBoxHelper clearUnReadInfo", true));
       return;
     }
     finally
@@ -84,12 +87,12 @@ public class QCircleChatBoxHelper
     //   14: new 40	java/lang/StringBuilder
     //   17: dup
     //   18: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   21: ldc 128
+    //   21: ldc 144
     //   23: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_0
     //   27: getfield 120	cooperation/qqcircle/chat/QCircleChatBoxHelper:mUnReadInfo	Lcom/tencent/util/Pair;
-    //   30: getfield 132	com/tencent/util/Pair:first	Ljava/lang/Object;
-    //   33: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   30: getfield 148	com/tencent/util/Pair:first	Ljava/lang/Object;
+    //   33: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   36: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   39: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: aload_0
@@ -115,15 +118,15 @@ public class QCircleChatBoxHelper
     //   78: ifnull +142 -> 220
     //   81: aload_2
     //   82: ldc 80
-    //   84: ldc 137
-    //   86: invokeinterface 141 3 0
+    //   84: ldc 153
+    //   86: invokeinterface 157 3 0
     //   91: astore_2
     //   92: aload_2
-    //   93: invokestatic 147	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   93: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   96: ifne +124 -> 220
     //   99: aload_2
     //   100: ldc 8
-    //   102: invokevirtual 151	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   102: invokevirtual 167	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   105: astore_2
     //   106: aload_2
     //   107: arraylength
@@ -133,7 +136,7 @@ public class QCircleChatBoxHelper
     //   113: aload_2
     //   114: iconst_0
     //   115: aaload
-    //   116: invokestatic 155	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   116: invokestatic 171	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   119: putfield 107	cooperation/qqcircle/chat/QCircleChatBoxHelper:mUnReadNum	I
     //   122: iload_1
     //   123: aload_2
@@ -144,7 +147,7 @@ public class QCircleChatBoxHelper
     //   132: aload_2
     //   133: iload_1
     //   134: aaload
-    //   135: invokeinterface 159 2 0
+    //   135: invokeinterface 175 2 0
     //   140: pop
     //   141: iload_1
     //   142: iconst_1
@@ -156,12 +159,12 @@ public class QCircleChatBoxHelper
     //   151: new 40	java/lang/StringBuilder
     //   154: dup
     //   155: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   158: ldc 161
+    //   158: ldc 177
     //   160: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload_0
     //   164: getfield 120	cooperation/qqcircle/chat/QCircleChatBoxHelper:mUnReadInfo	Lcom/tencent/util/Pair;
-    //   167: getfield 132	com/tencent/util/Pair:first	Ljava/lang/Object;
-    //   170: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   167: getfield 148	com/tencent/util/Pair:first	Ljava/lang/Object;
+    //   170: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   173: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   176: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   179: aload_0
@@ -182,8 +185,8 @@ public class QCircleChatBoxHelper
     //   210: ldc 11
     //   212: iconst_1
     //   213: aload_2
-    //   214: invokevirtual 164	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   217: invokestatic 167	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   217: invokestatic 183	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   220: aload_0
     //   221: getfield 120	cooperation/qqcircle/chat/QCircleChatBoxHelper:mUnReadInfo	Lcom/tencent/util/Pair;
     //   224: astore_2

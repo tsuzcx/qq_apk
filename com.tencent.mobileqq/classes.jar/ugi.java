@@ -1,36 +1,59 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class ugi
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "", "secondStateTime", "", "thirdStateTime", "(II)V", "getSecondStateTime", "()I", "getThirdStateTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ugi
 {
-  ugi(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
+  private final int a;
+  private final int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ugi()
   {
-    switch (paramInt)
+    this(0, 0, 3, null);
+  }
+  
+  public ugi(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.a;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-    }
-    do
-    {
-      do
+      if ((paramObject instanceof ugi))
       {
-        return;
-        ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    } while (ugf.a == null);
-    ugf.a.dismiss();
-    ugf.a = null;
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    ugf.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+        paramObject = (ugi)paramObject;
+        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a * 31 + this.b;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "VideoGuide(secondStateTime=" + this.a + ", thirdStateTime=" + this.b + ")";
   }
 }
 

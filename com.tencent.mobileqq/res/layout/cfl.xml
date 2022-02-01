@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ku2" android:layout_width="175.0dip" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/nnk" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/nnl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <ImageView android:id="@id/nnm" android:visibility="visible" android:layout_width="15.0dip" android:layout_height="7.0dip" android:src="@drawable/h19" />
-</LinearLayout>
+    <dov.com.qq.im.aeeditor.view.videotrack.RoundFrameLayout android:id="@id/content" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/a7v" android:background="@drawable/b9l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

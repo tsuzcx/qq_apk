@@ -1,36 +1,46 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class azuf
-  extends andd
+public final class azuf
+  implements EmoticonCallback
 {
-  public azuf(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public azuf(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void delete()
   {
-    if (paramBoolean)
+    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if (paramEmoticonInfo != null) {}
+    try
     {
-      if (!this.a.isAdded())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "onUpdateTroopGetMemberList succ with fragment is detached");
-        }
-        return;
-      }
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), paramLong).apply();
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
+      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
       return;
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
-    QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopObserver onUpdateTroopGetMemberList fail");
+    catch (Throwable paramEmoticonInfo) {}
   }
+  
+  public void setting() {}
 }
 
 

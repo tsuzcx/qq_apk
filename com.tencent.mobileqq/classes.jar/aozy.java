@@ -1,18 +1,77 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.ISecurityFileHelper;
 
-public final class aozy
-  implements Parcelable.Creator<POIInfo>
+public class aozy
+  extends aozw
+  implements ISecurityFileHelper
 {
-  public POIInfo a(Parcel paramParcel)
+  public aozy()
   {
-    return new POIInfo(paramParcel);
+    super(null);
   }
   
-  public POIInfo[] a(int paramInt)
+  protected String a()
   {
-    return new POIInfo[paramInt];
+    return "QQFavoriteMigration";
+  }
+  
+  public String declareBusinessFileName()
+  {
+    return "QQ_Favorite";
+  }
+  
+  public boolean doMigrate(File paramFile)
+  {
+    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
+    File localFile = new File(AppConstants.SDCARD_IMG_FAVORITE);
+    if ((localFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = aozu.a(localFile);
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        localFile = paramFile[i];
+        String str = localFile.getName();
+        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
+          FileUtils.quickMove(localFile.getAbsolutePath(), AppConstants.SDCARD_IMG_FAVORITE + aozu.a(str));
+        }
+        i += 1;
+      }
+    }
+    a();
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    if (a())
+    {
+      File localFile = new File(AppConstants.SDCARD_IMG_FAVORITE);
+      if ((localFile.exists()) && (localFile.isDirectory())) {
+        return true;
+      }
+      a();
+    }
+    return false;
+  }
+  
+  public File oldBusinessDir(String paramString)
+  {
+    return null;
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    return false;
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    return new String[] { "0", "0" };
   }
 }
 

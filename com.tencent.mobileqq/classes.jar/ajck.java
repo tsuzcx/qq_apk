@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class ajck
-  extends vlc
+class ajck
+  implements Comparator<PhoneContact>
 {
-  public ajck(Conversation paramConversation) {}
+  ajck(ajcj paramajcj) {}
   
-  public void d(boolean paramBoolean)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (paramBoolean)
-    {
-      xvv.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
-      this.a.a(1055, 0L, false);
-      return;
-    }
-    Conversation.a(this.a, false);
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

@@ -1,24 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class ort
-  implements ViewBase.OnClickListener
+public class ort
+  extends bkxp
 {
-  ort(ouo paramouo, Container paramContainer) {}
+  public ort(ReadInJoyNaviController.1 param1, View paramView) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Ouo.a == null) {}
-    do
-    {
-      return;
-      paramViewBase = this.jdField_a_of_type_Ouo.a.medalInfo;
-    } while ((paramViewBase == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null));
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+    paramAnimation = new TranslateAnimation(0.0F, 0.0F, ors.e, 0.0F);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setAnimationListener(new oru(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
   }
 }
 

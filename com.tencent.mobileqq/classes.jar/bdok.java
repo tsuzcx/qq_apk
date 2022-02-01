@@ -1,35 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class bdok
-  extends BroadcastReceiver
+public class bdok
+  implements View.OnLongClickListener
 {
-  bdok(bdoi parambdoi) {}
+  public bdok(StructMsgForGeneralShare paramStructMsgForGeneralShare, aftk paramaftk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onLongClick(View paramView)
   {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
-    {
-    default: 
-      bdoi.a(this.a, bdoi.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      bdoi.a(this.a, bdoi.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      bdoi.a(this.a, bdoi.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      bdoi.a(this.a, bdoi.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      bdoi.a(this.a, bdoi.a(this.a).troopUin, 1);
-      return;
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    bdnu localbdnu = (bdnu)paramView.getTag();
+    if (!TextUtils.isEmpty(localbdnu.aa)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localbdnu.aa).intValue();
     }
-    bdoi.a(this.a, bdoi.a(this.a).troopUin, 3);
+    return this.jdField_a_of_type_Aftk.onLongClick(paramView);
   }
 }
 

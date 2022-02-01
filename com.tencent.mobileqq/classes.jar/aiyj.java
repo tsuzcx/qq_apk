@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.support.annotation.NonNull;
 
 public class aiyj
-  implements DialogInterface.OnClickListener
 {
-  public aiyj(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aiyj(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().setResult(8001);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
   }
 }
 

@@ -1,39 +1,19 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-
-public abstract class lpd
-  extends lpi
+public class lpd
 {
-  protected Handler a;
+  public int a;
+  public String a;
+  public String b;
   
-  public lpd()
+  public lpd(int paramInt, String paramString1, String paramString2)
   {
-    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
-    localHandlerThread.start();
-    this.a = new lpe(localHandlerThread.getLooper(), this);
-  }
-  
-  protected abstract void a(Message paramMessage);
-  
-  protected void c()
-  {
-    super.c();
-    Process.setThreadPriority(0);
-    lba.f("GLContextThread", "init: ");
-  }
-  
-  protected void d()
-  {
-    super.f();
-    this.a.getLooper().quit();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
-public abstract class zlk
-  implements URLDrawable.URLDrawableListener
+public class zlk
+  implements DialogInterface.OnCancelListener
 {
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public zlk(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

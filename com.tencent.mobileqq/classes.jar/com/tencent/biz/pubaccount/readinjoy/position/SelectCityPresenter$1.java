@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.position;
 
 import java.util.List;
-import pyh;
+import qkm;
 
 public class SelectCityPresenter$1
   implements Runnable
 {
-  public SelectCityPresenter$1(pyh parampyh, List paramList) {}
+  public SelectCityPresenter$1(qkm paramqkm, List paramList) {}
   
   public void run()
   {
-    pyh.a(this.this$0, this.a);
+    qkm.a(this.this$0, this.a);
   }
 }
 

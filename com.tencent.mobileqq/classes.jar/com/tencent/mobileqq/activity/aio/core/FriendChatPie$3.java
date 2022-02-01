@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
+import agab;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class FriendChatPie$3
   implements Runnable
 {
-  public FriendChatPie$3(afiw paramafiw) {}
+  public FriendChatPie$3(agab paramagab) {}
   
   public void run()
   {

@@ -1,204 +1,101 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.view.ViewParent;
+import com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import cooperation.qqcircle.QCircleConstants;
+import java.io.File;
+import java.util.HashMap;
 
 public class xjy
-  extends xjw
 {
-  public static final String KEY = "ShareGroupFeedProfileSegment";
+  @NonNull
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private IVideoViewBase jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+  private xjz jdField_a_of_type_Xjz = new xjz();
+  private xka jdField_a_of_type_Xka = new xka(this.jdField_a_of_type_Xjz);
+  private xke jdField_a_of_type_Xke = new xke();
   
-  public xjy(Activity paramActivity, int paramInt1, int paramInt2)
+  public xjy(@NonNull Context paramContext)
   {
-    super(paramActivity, paramInt1, paramInt2);
-  }
-  
-  private View a(int paramInt, xsh paramxsh)
-  {
-    ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Xhh.a().getOwner();
-    if (localShareGroupItem == null)
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      xvv.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
-      return paramxsh.a();
-    }
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramxsh.a(2131374343);
-    ImageView localImageView = (ImageView)paramxsh.a(2131367950);
-    TextView localTextView1 = (TextView)paramxsh.a(2131371769);
-    TextView localTextView2 = (TextView)paramxsh.a(2131374369);
-    TextView localTextView3 = (TextView)paramxsh.a(2131374370);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramxsh.a(2131380874);
-    TextView localTextView4 = (TextView)paramxsh.a(2131377961);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramxsh.a(2131374368);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramxsh.a(2131380606);
-    localRelativeLayout1.setOnClickListener(this);
-    localImageView.setImageDrawable(vps.a(localShareGroupItem.headerUnionIdList));
-    if (!TextUtils.isEmpty(localShareGroupItem.getName()))
-    {
-      localTextView1.setText(localShareGroupItem.getName());
-      if (this.jdField_a_of_type_Xhh.f()) {
-        a(localTextView2, localTextView3);
-      }
-      if (!localShareGroupItem.isPublic()) {
-        break label277;
-      }
-      localStoryUserBadgeView.setImageResource(2130846717);
-    }
-    for (;;)
-    {
-      localStoryUserBadgeView.setOnClickListener(null);
-      localStoryUserBadgeView.setVisibility(0);
-      a(localTextView4, 0, null);
-      a(this.jdField_a_of_type_Xhh.a(), paramxsh);
-      a(paramInt, paramxsh, localRelativeLayout2, localStoryHomeHorizontalListView);
-      return paramxsh.a();
-      localTextView1.setText(amtj.a(2131713039) + vkm.a);
-      break;
-      label277:
-      localStoryUserBadgeView.setImageResource(2130846716);
-    }
-  }
-  
-  private void a(TextView paramTextView1, TextView paramTextView2)
-  {
-    if ((this.jdField_a_of_type_Xhh == null) || (this.jdField_a_of_type_Xhh.a() == null)) {
+      zdl.a(bool);
+      this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+      b();
       return;
     }
-    Object localObject = xss.a(this.jdField_a_of_type_Xhh.a(), this.jdField_a_of_type_Xhh.a());
-    CharSequence localCharSequence = localObject[0];
-    localObject = localObject[1];
-    if (TextUtils.isEmpty(localCharSequence)) {
-      paramTextView1.setVisibility(8);
-    }
-    while (TextUtils.isEmpty((CharSequence)localObject))
+  }
+  
+  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, "bus_type_qqstory");
+  }
+  
+  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2, String paramString3)
+  {
+    ykq.d("StoryPlayerTVKWrapper", "createPlayerVideoInfo, %s", new Object[] { paramString2 });
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
+    localTVK_PlayerVideoInfo.setPreLoad(false);
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20161223));
+    localTVK_PlayerVideoInfo.setConfigMap("downloadflag", "0");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("shouq_bus_type", paramString3);
+    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
+    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_subscribe");
+    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(QCircleConstants.QCIRCLE_DOWNLOAD_VIDEO_CACHE_PATH)))
     {
-      paramTextView2.setVisibility(8);
-      return;
-      paramTextView1.setVisibility(0);
-      paramTextView1.setText(localCharSequence);
-    }
-    paramTextView2.setVisibility(0);
-    paramTextView2.setText((CharSequence)localObject);
-  }
-  
-  private View b(int paramInt, xsh paramxsh)
-  {
-    ShareGroupFeedItem localShareGroupFeedItem = this.jdField_a_of_type_Xhh.a();
-    if ((localShareGroupFeedItem == null) || (localShareGroupFeedItem.getOwner() == null))
-    {
-      xvv.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
-      return paramxsh.a();
-    }
-    Object localObject = (RelativeLayout)paramxsh.a(2131374343);
-    ImageView localImageView = (ImageView)paramxsh.a(2131367950);
-    TextView localTextView1 = (TextView)paramxsh.a(2131371769);
-    TextView localTextView2 = (TextView)paramxsh.a(2131374369);
-    TextView localTextView3 = (TextView)paramxsh.a(2131374370);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramxsh.a(2131380874);
-    TextView localTextView4 = (TextView)paramxsh.a(2131377961);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramxsh.a(2131374368);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramxsh.a(2131380606);
-    ((RelativeLayout)localObject).setOnClickListener(this);
-    localObject = bfvo.a();
-    localImageView.setImageDrawable(FaceDrawable.getFaceDrawable(QQStoryContext.a(), 4, String.valueOf(localShareGroupFeedItem.getOwner().groupUin), 3, (Drawable)localObject, (Drawable)localObject));
-    if (!TextUtils.isEmpty(localShareGroupFeedItem.getOwner().getName())) {
-      localTextView1.setText(localShareGroupFeedItem.getOwner().getName());
-    }
-    for (;;)
-    {
-      a(localTextView2, localTextView3);
-      localStoryUserBadgeView.setImageResource(2130846715);
-      localStoryUserBadgeView.setOnClickListener(this);
-      localStoryUserBadgeView.setVisibility(0);
-      a(localTextView4, 2, amtj.a(2131713028));
-      a(this.jdField_a_of_type_Xhh.a(), paramxsh);
-      a(paramInt, paramxsh, localRelativeLayout, localStoryHomeHorizontalListView);
-      return paramxsh.a();
-      localTextView1.setText(amtj.a(2131713046) + vkm.a);
-    }
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_Xhh.f()) && (this.jdField_a_of_type_Xhh.a().getOwner().getRelationType() == 2);
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Xhh != null) && (this.jdField_a_of_type_Xhh.f()) && (this.jdField_a_of_type_Xhh.a().size() > 0)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
-  {
-    if (b()) {
-      return b(paramInt, paramxsh);
-    }
-    if (this.jdField_a_of_type_Xhh.f()) {
-      return a(paramInt, paramxsh);
-    }
-    throw new IllegalStateException("bind view failed because it's not a share group feed.");
-  }
-  
-  public String a()
-  {
-    return "ShareGroupFeedProfileSegment";
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Xhh.a.getOwner().isSubscribe()) {}
-    for (int i = 3; !(this.jdField_a_of_type_Xhh.a.getOwner() instanceof ShareGroupItem); i = 4) {
-      return;
-    }
-    ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Xhh.a.getOwner();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, localShareGroupItem.shareGroupId, String.valueOf(localShareGroupItem.groupUin), i, wkp.a(this.jdField_a_of_type_Int, this.b));
-      return;
-    }
-    QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 2, localShareGroupItem.shareGroupId, null, i, wkp.a(this.jdField_a_of_type_Int, this.b));
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Xhh.f())
+      localTVK_PlayerVideoInfo.setConfigMap("file_dir", paramString2);
+      paramString2 = paramString2.substring(0, paramString2.lastIndexOf(File.separator));
+      if (!TextUtils.isEmpty(paramString2))
       {
-        ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Xhh.a().getOwner();
-        if (localShareGroupItem.isSubscribe())
-        {
-          new xbx(wkp.a()).a(this.jdField_a_of_type_AndroidContentContext, localShareGroupItem.type, localShareGroupItem.shareGroupId, localShareGroupItem.name, localShareGroupItem.groupUin, 20003, 2);
-          continue;
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, amtj.a(2131713018), 0).a();
+        paramString2 = new File(paramString2);
+        if (!paramString2.exists()) {
+          paramString2.mkdirs();
+        }
+      }
+    }
+    localTVK_PlayerVideoInfo.setConfigMap("RawVideoPlay", "true");
+    localTVK_PlayerVideoInfo.setVid(paramString1);
+    return localTVK_PlayerVideoInfo;
+  }
+  
+  private void b()
+  {
+    TVK_SDKMgr.setOnLogListener(this.jdField_a_of_type_Xke);
+    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    ykq.d("StoryPlayerTVKWrapper", "TVK version: %s", new Object[] { TVK_SDKMgr.getSdkVersion() });
+  }
+  
+  public void a()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+      ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.1(this, (TVK_IMediaPlayer)localObject));
+    }
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase != null)
+    {
+      localObject = (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = null;
+      if (((View)localObject).getParent() != null)
+      {
+        ViewParent localViewParent = ((View)localObject).getParent();
+        if ((localViewParent instanceof ViewGroup)) {
+          ((ViewGroup)localViewParent).removeView((View)localObject);
         }
       }
     }

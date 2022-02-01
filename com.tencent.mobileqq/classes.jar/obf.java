@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-final class obf
-  extends LbsManagerService.OnLocationChangeListener
+public class obf
+  implements TVK_SDKMgr.InstallListener
 {
-  obf(String paramString)
-  {
-    super(paramString);
-  }
+  public obf(AccountDetailVideoManager.5 param5) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
+    obb.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    }
+    obb.a = true;
   }
 }
 

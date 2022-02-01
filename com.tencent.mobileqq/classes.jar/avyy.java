@@ -1,71 +1,35 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.jsp.AECameraPlugin;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.io.File;
+import org.json.JSONObject;
 
 public class avyy
-  extends AccessibilityDelegateCompat
+  implements INetEngine.INetEngineListener
 {
-  public avyy(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  public avyy(AECameraPlugin paramAECameraPlugin, String paramString1, String paramString2, String paramString3) {}
   
-  private boolean a()
+  public void onResp(NetResp paramNetResp)
   {
-    return (this.a.a != null) && (this.a.a.getCount() > 1);
-  }
-  
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityEvent.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
+    if (paramNetResp.mErrCode == 0) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
-      paramAccessibilityEvent.setFromIndex(this.a.b);
-      paramAccessibilityEvent.setToIndex(this.a.b);
-    }
-  }
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
-    }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
-    }
-  }
-  
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
-      {
-        this.a.setCurrentItem(this.a.b + 1);
-        return true;
+      AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 2);
+      paramNetResp = AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading succeeded");
+      this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { paramNetResp.toString() });
+      if (AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.mRuntime.a())) {
+        zeb.a(BaseApplicationImpl.getApplication(), new File(this.c));
       }
-      return false;
+      return;
     }
-    if (this.a.canScrollHorizontally(-1))
-    {
-      this.a.setCurrentItem(this.a.b - 1);
-      return true;
-    }
-    return false;
+    AECameraPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, 3);
+    paramNetResp = AECameraPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin, this.jdField_a_of_type_JavaLangString, "downloading failed");
+    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin.callJs(this.b, new String[] { paramNetResp.toString() });
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class amit
-  implements Comparator<ApolloActionData>
+public class amit
+  extends blfl
 {
-  amit(amir paramamir) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
-      return 0;
-    }
-    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
-      return 1;
-    }
-    return -1;
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContactAdd a;
+  public QIMNotifyAddFriend a;
+  public String a;
+  public structmsg.StructMsg a;
+  public long b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

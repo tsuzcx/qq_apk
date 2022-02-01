@@ -1,21 +1,46 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import java.util.List;
 
 class nkq
-  implements WtTicketPromise
+  implements Animator.AnimatorListener
 {
-  nkq(nko paramnko) {}
+  nkq(nkp paramnkp, Animator.AnimatorListener paramAnimatorListener, View paramView) {}
   
-  public void Done(Ticket paramTicket)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    nko.a(this.a, false);
-    this.a.h();
+    if (this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener != null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    }
+    nkp.a(this.jdField_a_of_type_Nkp).remove(paramAnimator);
   }
   
-  public void Failed(ErrMsg paramErrMsg) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener != null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    }
+    nkp.a(this.jdField_a_of_type_Nkp).remove(paramAnimator);
+    if (nkp.a(this.jdField_a_of_type_Nkp)) {
+      nkp.a(this.jdField_a_of_type_Nkp, this.jdField_a_of_type_AndroidViewView);
+    }
+  }
   
-  public void Timeout(ErrMsg paramErrMsg) {}
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener != null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener != null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    }
+    nkp.a(this.jdField_a_of_type_Nkp).add(paramAnimator);
+  }
 }
 
 

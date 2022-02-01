@@ -1,60 +1,179 @@
-import Wallet.AcsMsg;
-import Wallet.AcsPullMsgRsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
-class aewe
-  implements aewl
+public class aewe
+  extends BaseAdapter
 {
-  aewe(aewd paramaewd, String paramString, aewi paramaewi) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public aewe(SelectedAndSearchBar paramSelectedAndSearchBar)
   {
-    do
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = SelectedAndSearchBar.a(paramSelectedAndSearchBar).getResources().getDrawable(2130844916);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bheg.a();
+  }
+  
+  private int a(int paramInt)
+  {
+    int i = 4;
+    if (paramInt == 4) {
+      i = 11;
+    }
+    while (paramInt == 1) {
+      return i;
+    }
+    if (paramInt == 3000) {
+      return 101;
+    }
+    return 1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      try
+      if ((SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) && (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() > 0))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ReminderDataManagerNew", 2, "getReminderListByday onProcessReminderList isSucc : " + paramBoolean);
+        ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() - 1);
+        if (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) {
+          SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).onItemDeleted(localResultRecord);
         }
-        if (paramBoolean)
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.a(false);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
+    if (paramView == null) {
+      paramView = LayoutInflater.from(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar)).inflate(2131559337, null);
+    }
+    for (;;)
+    {
+      paramView.setTag(localResultRecord);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131366345);
+      int i;
+      label97:
+      int j;
+      if (paramInt == getCount() - 1)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        }
+        localImageView.setImageDrawable((Drawable)localObject);
+        if (localResultRecord.uinType != -1) {
+          break label179;
+        }
+        i = localResultRecord.type;
+        if (localResultRecord.type != -1) {
+          break label193;
+        }
+        j = i;
+        label110:
+        localResultRecord.type = j;
+        if (!AppConstants.DATALINE_PC_UIN.equals(localResultRecord.uin)) {
+          break label203;
+        }
+        localImageView.setBackgroundResource(2130844186);
+      }
+      for (;;)
+      {
+        if (AppSetting.c) {
+          localImageView.setContentDescription(localResultRecord.name);
+        }
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localImageView.setImageDrawable(null);
+        break;
+        label179:
+        i = a(localResultRecord.uinType);
+        break label97;
+        label193:
+        j = localResultRecord.type;
+        break label110;
+        label203:
+        if (AppConstants.DATALINE_IPAD_UIN.equals(localResultRecord.uin))
         {
-          aewd.a(this.jdField_a_of_type_Aewd).edit().putString("sp_key_new_fetch_reminder_list_time", this.jdField_a_of_type_JavaLangString).apply();
-          paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-          if (paramBundle != null)
-          {
-            Object localObject = paramBundle.msgs;
-            aewd.a(this.jdField_a_of_type_Aewd, (List)localObject);
-            if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-            {
-              this.jdField_a_of_type_Aewd.a((List)localObject);
-              paramBundle = new ArrayList();
-              localObject = ((ArrayList)localObject).iterator();
-              while (((Iterator)localObject).hasNext()) {
-                paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
-              }
-              aewc.a(aewd.a(this.jdField_a_of_type_Aewd), paramBundle, new aewf(this));
-            }
+          localImageView.setBackgroundResource(2130844184);
+        }
+        else if (AppConstants.DATALINE_PRINTER_UIN.equals(localResultRecord.uin))
+        {
+          localImageView.setBackgroundResource(2130844189);
+        }
+        else if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(localResultRecord.uin))
+        {
+          localImageView.setBackgroundResource(2130839629);
+        }
+        else
+        {
+          if (localResultRecord.type != 5) {
+            break label294;
           }
+          localImageView.setImageResource(2130842118);
         }
       }
-      catch (Throwable paramBundle)
+      label294:
+      String str = localResultRecord.uin;
+      localObject = SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).getBitmapFromCache(i, str);
+      if (localObject == null)
       {
-        QLog.e("ReminderDataManagerNew", 1, "checkTodayReminder throw an exception: " + paramBundle);
-        return;
+        SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).requestDecodeFace(str, i, true);
+        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
       }
-    } while (this.jdField_a_of_type_Aewi == null);
-    this.jdField_a_of_type_Aewi.a();
+      for (;;)
+      {
+        localImageView.setBackgroundDrawable(new BitmapDrawable(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).getResources(), (Bitmap)localObject));
+        break;
+      }
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aewe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bily;
+import bjxa;
 import com.tencent.qidian.data.QidianCorpInfo;
 import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qidian.data.QidianInternalInfo;
@@ -9,11 +9,11 @@ import com.tencent.qidian.data.QidianProfileUiInfo;
 public class QidianManager$3
   implements Runnable
 {
-  public QidianManager$3(bily parambily, QidianExternalInfo paramQidianExternalInfo, QidianInternalInfo paramQidianInternalInfo, QidianCorpInfo paramQidianCorpInfo, QidianProfileUiInfo paramQidianProfileUiInfo) {}
+  public QidianManager$3(bjxa parambjxa, QidianExternalInfo paramQidianExternalInfo, QidianInternalInfo paramQidianInternalInfo, QidianCorpInfo paramQidianCorpInfo, QidianProfileUiInfo paramQidianProfileUiInfo) {}
   
   public void run()
   {
-    bily.a(this.this$0, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianInternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianCorpInfo, this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo);
+    bjxa.a(this.this$0, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianInternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianCorpInfo, this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo);
   }
 }
 

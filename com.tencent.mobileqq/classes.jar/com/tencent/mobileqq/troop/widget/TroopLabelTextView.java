@@ -11,14 +11,14 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bjuk;
-import bjul;
+import blfw;
+import blfx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopLabelTextView
   extends TextView
-  implements bjul
+  implements blfx
 {
   protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -26,7 +26,7 @@ public class TroopLabelTextView
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode;
-  public bjuk a;
+  public blfw a;
   int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private int c;
@@ -71,9 +71,9 @@ public class TroopLabelTextView
   
   private void a()
   {
-    this.jdField_a_of_type_Bjuk = new bjuk();
-    this.jdField_a_of_type_Bjuk.a(true);
-    this.jdField_a_of_type_Bjuk.a(bjuk.c);
+    this.jdField_a_of_type_Blfw = new blfw();
+    this.jdField_a_of_type_Blfw.a(true);
+    this.jdField_a_of_type_Blfw.a(blfw.c);
   }
   
   public void a(Canvas paramCanvas)
@@ -83,7 +83,7 @@ public class TroopLabelTextView
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Bjuk.a(paramCanvas, this);
+    this.jdField_a_of_type_Blfw.a(paramCanvas, this);
   }
   
   public void onDraw(Canvas paramCanvas)

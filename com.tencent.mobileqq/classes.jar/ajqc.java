@@ -1,24 +1,32 @@
-public abstract interface ajqc
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajqc
+  implements View.OnClickListener
 {
-  public abstract void a(ajqi paramajqi);
+  ajqc(ajqb paramajqb, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public abstract void a(ajqi paramajqi, int paramInt);
-  
-  public abstract void a(ajqi paramajqi, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(ajqi paramajqi, long paramLong);
-  
-  public abstract void a(ajqi paramajqi, boolean paramBoolean);
-  
-  public abstract void b(ajqi paramajqi);
-  
-  public abstract void b(ajqi paramajqi, int paramInt);
-  
-  public abstract void c(ajqi paramajqi);
-  
-  public abstract void d(ajqi paramajqi);
-  
-  public abstract void v();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajqb, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Ajqb.isShowing()) {
+        this.jdField_a_of_type_Ajqb.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label38;
+    }
+  }
 }
 
 

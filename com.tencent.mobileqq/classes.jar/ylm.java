@@ -1,14 +1,26 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public abstract interface ylm
+class ylm
+  implements ywk<Boolean, ywq>
 {
-  public abstract void a();
+  ylm(yll paramyll) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(SlideItemInfo paramSlideItemInfo);
-  
-  public abstract void a(String paramString);
+  public Void a(Boolean paramBoolean, ywq paramywq)
+  {
+    if (paramBoolean.booleanValue())
+    {
+      ykq.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramywq.b.size(), paramywq.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      ykq.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramywq.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, anvx.a(2131703128) + paramywq.jdField_a_of_type_Int, 1);
+    }
+  }
 }
 
 

@@ -12,19 +12,19 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import ausz;
-import auta;
-import autb;
-import ayeu;
-import bfuc;
-import bfvo;
-import bgve;
-import bljh;
-import bljs;
-import blvr;
-import blvv;
-import bmbk;
-import bnfm;
+import avyy;
+import avyz;
+import avza;
+import azlg;
+import bhcu;
+import bheg;
+import bifw;
+import bmwf;
+import bmws;
+import bnlb;
+import bnlf;
+import bnqu;
+import bove;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -64,13 +64,13 @@ public class AECameraPlugin
   
   static
   {
-    File localFile = new File(bljs.d);
+    File localFile = new File(bmws.d);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
     if (b(BaseApplicationImpl.getContext()))
     {
-      localFile = new File(bljh.a());
+      localFile = new File(bmwf.a());
       if (!localFile.exists()) {
         localFile.mkdirs();
       }
@@ -114,23 +114,23 @@ public class AECameraPlugin
     Object localObject = paramString.split("\\.");
     localObject = localObject[(localObject.length - 1)];
     if (b(this.mRuntime.a())) {
-      return bljh.a() + paramString.hashCode() + "." + (String)localObject;
+      return bmwf.a() + paramString.hashCode() + "." + (String)localObject;
     }
-    return bljs.d + File.separator + paramString.hashCode() + "." + (String)localObject;
+    return bmws.d + File.separator + paramString.hashCode() + "." + (String)localObject;
   }
   
   private String a(String paramString, int paramInt)
   {
     paramString = new CompressInfo(paramString, paramInt);
-    ayeu.a(paramString);
+    azlg.a(paramString);
     return paramString.e;
   }
   
   private String a(String paramString, int paramInt1, int paramInt2)
   {
-    String str = bljs.d + File.separator + "ae_pic_" + System.currentTimeMillis() + ".jpeg";
+    String str = bmws.d + File.separator + "ae_pic_" + System.currentTimeMillis() + ".jpeg";
     this.jdField_a_of_type_Double = 0.7D;
-    bfvo.a(paramString, str, paramInt1, paramInt2, (int)(this.jdField_a_of_type_Double * 100.0D));
+    bheg.a(paramString, str, paramInt1, paramInt2, (int)(this.jdField_a_of_type_Double * 100.0D));
     return str;
   }
   
@@ -149,7 +149,7 @@ public class AECameraPlugin
     for (;;)
     {
       localBitmap.recycle();
-      paramString.append(bfuc.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
+      paramString.append(bhcu.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
       return paramString;
       paramString = new StringBuilder("data:image/jpeg;base64,");
       localBitmap.compress(Bitmap.CompressFormat.JPEG, 80, localByteArrayOutputStream);
@@ -214,7 +214,7 @@ public class AECameraPlugin
     if (this.mRuntime == null) {
       return;
     }
-    if ((blvr.c(this.mRuntime.a())) || (blvr.d(this.mRuntime.a()))) {}
+    if ((bnlb.c(this.mRuntime.a())) || (bnlb.d(this.mRuntime.a()))) {}
     for (Intent localIntent = new Intent(this.mRuntime.a(), QzoneFeedsPluginProxyActivity.class);; localIntent = new Intent(this.mRuntime.a(), SplashActivity.class))
     {
       localIntent.addFlags(67108864);
@@ -252,13 +252,13 @@ public class AECameraPlugin
     }
   }
   
-  private void a(autb paramautb, @NonNull String paramString)
+  private void a(avza paramavza, @NonNull String paramString)
   {
-    this.jdField_b_of_type_Int = paramautb.jdField_a_of_type_Int;
-    this.c = paramautb.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = paramavza.jdField_a_of_type_Int;
+    this.c = paramavza.jdField_b_of_type_Int;
     this.jdField_b_of_type_JavaLangString = paramString;
-    int i = blvr.I.a();
-    blvv.a(this.mRuntime.a(), a(1), i, paramautb);
+    int i = bnlb.I.a();
+    bnlf.a(this.mRuntime.a(), a(1), i, paramavza);
   }
   
   private void a(@NonNull String paramString)
@@ -284,20 +284,20 @@ public class AECameraPlugin
     if (TextUtils.isEmpty(paramString2)) {
       str = "key_web_selected_pic_path";
     }
-    bmbk.a().a(str, paramString1, 0);
+    bnqu.a().a(str, paramString1, 0);
   }
   
   private boolean a()
   {
     if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getIntent() != null)) {
-      return blvr.h(this.mRuntime.a().getIntent().getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", blvr.a.a()));
+      return bnlb.h(this.mRuntime.a().getIntent().getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", bnlb.a.a()));
     }
     return false;
   }
   
   private String b(@NonNull String paramString)
   {
-    return bljs.d + File.separator + paramString.hashCode() + "_thumb.jpg";
+    return bmws.d + File.separator + paramString.hashCode() + "_thumb.jpg";
   }
   
   private JSONObject b(@NonNull String paramString1, @NonNull String paramString2)
@@ -322,7 +322,7 @@ public class AECameraPlugin
     localHttpNetReq.mOutPath = paramString2;
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     localHttpNetReq.mExcuteTimeLimit = 60000L;
-    localHttpNetReq.mCallback = new auta(paramINetEngineListener);
+    localHttpNetReq.mCallback = new avyz(paramINetEngineListener);
     try
     {
       paramAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
@@ -345,7 +345,7 @@ public class AECameraPlugin
     String str1 = a(paramString);
     String str2 = b(paramString);
     if (!new File(str1).exists()) {
-      QQToast.a(this.mRuntime.a(), 2131718380, 0).a();
+      QQToast.a(this.mRuntime.a(), 2131718766, 0).a();
     }
     for (;;)
     {
@@ -354,10 +354,10 @@ public class AECameraPlugin
       Object localObject;
       if (paramString == null)
       {
-        localObject = blvr.a;
+        localObject = bnlb.a;
         paramString = "";
         label69:
-        if ((localObject != blvr.e) || (TextUtils.isEmpty(paramString))) {
+        if ((localObject != bnlb.e) || (TextUtils.isEmpty(paramString))) {
           break label178;
         }
         localObject = new Intent();
@@ -371,7 +371,7 @@ public class AECameraPlugin
         this.mRuntime.a().setResult(-1, (Intent)localObject);
         this.mRuntime.a().finish();
         return;
-        localObject = blvr.a(paramString.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", blvr.a.a()));
+        localObject = bnlb.a(paramString.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", bnlb.a.a()));
         paramString = paramString.getStringExtra("url");
         break label69;
         label178:
@@ -386,7 +386,7 @@ public class AECameraPlugin
             localIntent.putExtra("h5_key_thumb_path", str2);
             localIntent.putExtra("widgetinfo", URLEncoder.encode(paramString, "UTF-8"));
             if (localObject != null) {
-              bfvo.b((Bitmap)localObject, 80, new File(str2));
+              bheg.b((Bitmap)localObject, 80, new File(str2));
             }
             this.mRuntime.a().setResult(-1, localIntent);
             this.mRuntime.a().finish();
@@ -394,18 +394,18 @@ public class AECameraPlugin
           }
           if (localObject != null)
           {
-            bfvo.b((Bitmap)localObject, 80, new File(str2));
-            bnfm.a(this.mRuntime.a(), str1, str2, blvr.c(this.mRuntime.a()), a(21));
+            bheg.b((Bitmap)localObject, 80, new File(str2));
+            bove.a(this.mRuntime.a(), str1, str2, bnlb.c(this.mRuntime.a()), a(21));
           }
           for (;;)
           {
             return;
-            QQToast.a(this.mRuntime.a(), 2131718380, 0).a();
+            QQToast.a(this.mRuntime.a(), 2131718766, 0).a();
           }
         }
         catch (IOException paramString)
         {
-          QQToast.a(this.mRuntime.a(), 2131718380, 0).a();
+          QQToast.a(this.mRuntime.a(), 2131718766, 0).a();
           return;
         }
         finally
@@ -428,7 +428,7 @@ public class AECameraPlugin
     if (TextUtils.isEmpty(paramString2)) {
       str = "key_web_selected_pic_path";
     }
-    ThreadManager.excute(new AECameraPlugin.2(this, bmbk.a().a(str, "", 0), paramString1), 64, null, true);
+    ThreadManager.excute(new AECameraPlugin.2(this, bnqu.a().a(str, "", 0), paramString1), 64, null, true);
   }
   
   private static boolean b(@NonNull Context paramContext)
@@ -467,12 +467,12 @@ public class AECameraPlugin
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Int = 1;
     String str = a(paramString1);
-    ausz localausz = new ausz(this, paramString1, paramString2, str);
+    avyy localavyy = new avyy(this, paramString1, paramString2, str);
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable = new AECameraPlugin.DownloadRunnable(null);
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_b_of_type_JavaLangString = str;
-    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = localausz;
+    this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = localavyy;
     this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable.c = paramString2;
     ThreadManager.excute(this.jdField_a_of_type_ComTencentMobileqqJspAECameraPlugin$DownloadRunnable, 128, null, true);
   }
@@ -488,7 +488,7 @@ public class AECameraPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = new autb();
+        paramString1 = new avza();
         paramString1.jdField_a_of_type_Int = paramJsBridgeListener.getInt("outMaxWidth");
         paramString1.jdField_b_of_type_Int = paramJsBridgeListener.getInt("outMaxHeight");
         paramString1.jdField_a_of_type_Double = paramJsBridgeListener.optDouble("compression");

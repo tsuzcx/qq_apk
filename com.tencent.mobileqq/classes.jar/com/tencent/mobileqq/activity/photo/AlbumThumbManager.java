@@ -8,8 +8,8 @@ import android.graphics.BitmapFactory.Options;
 import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
-import bked;
-import bkee;
+import blpo;
+import blpp;
 import com.tencent.component.network.utils.BytesBufferPool;
 import com.tencent.component.network.utils.BytesBufferPool.BytesBuffer;
 import com.tencent.image.DownloadParams;
@@ -44,7 +44,7 @@ public class AlbumThumbManager
   private static AlbumThumbManager.TempBuffer tempBuffer;
   private static ByteBuffer tempByteBuffer;
   private boolean isThumbKeyUseSize = false;
-  bked mBlobCache;
+  blpo mBlobCache;
   private final Object mBlobLock = new Object();
   Context mContext;
   
@@ -69,7 +69,7 @@ public class AlbumThumbManager
   private boolean getCacheData(byte[] paramArrayOfByte, long paramLong, BytesBufferPool.BytesBuffer paramBytesBuffer)
   {
     if (paramArrayOfByte == null) {}
-    bkee localbkee;
+    blpp localblpp;
     do
     {
       do
@@ -82,12 +82,12 @@ public class AlbumThumbManager
       } while (this.mBlobCache == null);
       try
       {
-        localbkee = new bkee();
-        localbkee.jdField_a_of_type_Long = paramLong;
-        localbkee.jdField_a_of_type_ArrayOfByte = paramBytesBuffer.data;
+        localblpp = new blpp();
+        localblpp.jdField_a_of_type_Long = paramLong;
+        localblpp.jdField_a_of_type_ArrayOfByte = paramBytesBuffer.data;
         synchronized (this.mBlobLock)
         {
-          if (!this.mBlobCache.a(localbkee)) {
+          if (!this.mBlobCache.a(localblpp)) {
             return false;
           }
         }
@@ -97,17 +97,17 @@ public class AlbumThumbManager
         QLog.e("AlbumThumbManager", 2, "getCacheData ioexception", paramArrayOfByte);
         return false;
       }
-    } while (!isSameKey(paramArrayOfByte, localbkee.jdField_a_of_type_ArrayOfByte));
-    paramBytesBuffer.data = localbkee.jdField_a_of_type_ArrayOfByte;
+    } while (!isSameKey(paramArrayOfByte, localblpp.jdField_a_of_type_ArrayOfByte));
+    paramBytesBuffer.data = localblpp.jdField_a_of_type_ArrayOfByte;
     paramBytesBuffer.offset = paramArrayOfByte.length;
-    paramBytesBuffer.length = (localbkee.jdField_a_of_type_Int - paramBytesBuffer.offset);
+    paramBytesBuffer.length = (localblpp.jdField_a_of_type_Int - paramBytesBuffer.offset);
     return true;
   }
   
   private boolean getCacheData(byte[] paramArrayOfByte, long paramLong, AlbumThumbManager.TempBuffer paramTempBuffer)
   {
     if (paramArrayOfByte == null) {}
-    bkee localbkee;
+    blpp localblpp;
     do
     {
       do
@@ -120,12 +120,12 @@ public class AlbumThumbManager
       } while (this.mBlobCache == null);
       try
       {
-        localbkee = new bkee();
-        localbkee.jdField_a_of_type_Long = paramLong;
-        localbkee.jdField_a_of_type_ArrayOfByte = paramTempBuffer.data;
+        localblpp = new blpp();
+        localblpp.jdField_a_of_type_Long = paramLong;
+        localblpp.jdField_a_of_type_ArrayOfByte = paramTempBuffer.data;
         synchronized (this.mBlobLock)
         {
-          if (!this.mBlobCache.a(localbkee)) {
+          if (!this.mBlobCache.a(localblpp)) {
             return false;
           }
         }
@@ -135,10 +135,10 @@ public class AlbumThumbManager
         QLog.e("AlbumThumbManager", 2, "getCacheData ioexception", paramArrayOfByte);
         return false;
       }
-    } while (!isSameKey(paramArrayOfByte, localbkee.jdField_a_of_type_ArrayOfByte, localbkee.jdField_a_of_type_Int - 16, 16));
-    paramTempBuffer.data = localbkee.jdField_a_of_type_ArrayOfByte;
+    } while (!isSameKey(paramArrayOfByte, localblpp.jdField_a_of_type_ArrayOfByte, localblpp.jdField_a_of_type_Int - 16, 16));
+    paramTempBuffer.data = localblpp.jdField_a_of_type_ArrayOfByte;
     paramTempBuffer.offset = 0;
-    paramTempBuffer.length = (localbkee.jdField_a_of_type_Int - 16);
+    paramTempBuffer.length = (localblpp.jdField_a_of_type_Int - 16);
     return true;
   }
   
@@ -211,7 +211,7 @@ public class AlbumThumbManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lbked;
+    //   3: getfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lblpo;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnull +6 -> 14
@@ -248,15 +248,15 @@ public class AlbumThumbManager
     //   78: invokevirtual 217	java/io/File:mkdirs	()Z
     //   81: pop
     //   82: aload_0
-    //   83: new 152	bked
+    //   83: new 152	blpo
     //   86: dup
     //   87: aload_1
     //   88: sipush 2500
     //   91: ldc 7
     //   93: iconst_0
     //   94: iconst_1
-    //   95: invokespecial 220	bked:<init>	(Ljava/lang/String;IIZI)V
-    //   98: putfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lbked;
+    //   95: invokespecial 220	blpo:<init>	(Ljava/lang/String;IIZI)V
+    //   98: putfield 135	com/tencent/mobileqq/activity/photo/AlbumThumbManager:mBlobCache	Lblpo;
     //   101: goto -90 -> 11
     //   104: astore_1
     //   105: ldc 30

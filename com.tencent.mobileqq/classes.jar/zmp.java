@@ -1,34 +1,89 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.subscribe.network.DoLikeRequest;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver;
+import com.tencent.qphone.base.util.QLog;
 
 public class zmp
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public zmp(RelativeFeedItemView paramRelativeFeedItemView, CertifiedAccountMeta.StFeed paramStFeed) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private String jdField_a_of_type_JavaLangString;
+  private zmr jdField_a_of_type_Zmr;
   
-  public void onClick(View paramView)
+  public zmp(Context paramContext)
   {
-    if ((!RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView)) || (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a() == null) || (!zbi.a(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a()).status.get()))) {}
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    b();
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+    {
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zmq(this);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Zmr = null;
+  }
+  
+  public void a(String paramString, long paramLong, zmr paramzmr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("callUpToolProc from=%s", new Object[] { paramString }));
+    }
+    this.jdField_a_of_type_Zmr = paramzmr;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    paramzmr = new Intent(this.jdField_a_of_type_AndroidContentContext, ARMapThreadStubReceiver.class);
+    paramzmr.setAction("com.tencent.mobileqq.armap.ACTION_START_THREAD");
+    paramzmr.putExtra("from", paramString);
+    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramzmr);
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(108);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(108, paramLong);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!RelativeFeedItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), amtj.a(2131712480), 0).a();
-      }
-      else
-      {
-        RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, false);
-        DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-        VSNetworkHelper.getInstance().sendRequest(localDoLikeRequest, new zmq(this));
+      return true;
+      if (this.jdField_a_of_type_Zmr != null) {
+        this.jdField_a_of_type_Zmr.a();
       }
     }
   }

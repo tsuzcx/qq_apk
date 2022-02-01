@@ -9,23 +9,23 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import ogu;
-import oho;
+import oon;
+import opi;
 
 class CustomTabView$4
   implements Runnable
 {
-  CustomTabView$4(CustomTabView paramCustomTabView, ogu paramogu, ImageView paramImageView, RelativeLayout paramRelativeLayout) {}
+  CustomTabView$4(CustomTabView paramCustomTabView, oon paramoon, ImageView paramImageView, RelativeLayout paramRelativeLayout) {}
   
   public void run()
   {
-    oho.a(this.jdField_a_of_type_Ogu.b);
-    Object localObject = this.jdField_a_of_type_Ogu.jdField_a_of_type_JavaLangString;
+    opi.a(this.jdField_a_of_type_Oon.b);
+    Object localObject = this.jdField_a_of_type_Oon.jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(this.jdField_a_of_type_Ogu.jdField_a_of_type_Int));
+    this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(this.jdField_a_of_type_Oon.jdField_a_of_type_Int));
     if (StringUtil.isEmpty((String)localObject))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843537);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843574);
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = UIUtils.dip2px(CustomTabView.a(this.this$0), 9.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = UIUtils.dip2px(CustomTabView.a(this.this$0), 9.0F);
       ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).leftMargin = (-UIUtils.dip2px(CustomTabView.a(this.this$0), 8.0F));
@@ -37,7 +37,7 @@ class CustomTabView$4
       try
       {
         localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        if (this.jdField_a_of_type_Ogu.f == 1)
+        if (this.jdField_a_of_type_Oon.f == 1)
         {
           this.this$0.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
           this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = UIUtils.dip2px(CustomTabView.a(this.this$0), 63.0F);

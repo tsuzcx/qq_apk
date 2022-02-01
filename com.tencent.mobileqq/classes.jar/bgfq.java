@@ -1,12 +1,22 @@
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment;
+
 public class bgfq
+  extends TroopAppShortcutContainer
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public bgfq(TroopAppShortcutFragment paramTroopAppShortcutFragment, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
+  {
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
+  }
   
-  public bgfq(bgfo parambgfo) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+  }
 }
 
 

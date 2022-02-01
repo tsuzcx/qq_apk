@@ -31,16 +31,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
-import bcef;
-import bdgn;
-import bdgy;
-import bdhu;
-import bdhy;
-import bdjw;
-import bdkw;
-import bdkx;
-import bdky;
-import bdkz;
+import bdla;
+import benq;
+import beob;
+import beox;
+import bepb;
+import beqz;
+import berz;
+import besa;
+import besb;
+import besc;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
@@ -52,16 +52,16 @@ import org.jetbrains.annotations.NotNull;
 
 public class WriteTogetherEditorView
   extends EditText
-  implements View.OnClickListener, View.OnFocusChangeListener, bdjw
+  implements View.OnClickListener, View.OnFocusChangeListener, beqz
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private bdgy jdField_a_of_type_Bdgy;
-  private bdky jdField_a_of_type_Bdky;
-  private List<bdhy> jdField_a_of_type_JavaUtilList;
+  private beob jdField_a_of_type_Beob;
+  private besb jdField_a_of_type_Besb;
+  private List<bepb> jdField_a_of_type_JavaUtilList;
   private Map<String, Float> jdField_a_of_type_JavaUtilMap;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -147,7 +147,7 @@ public class WriteTogetherEditorView
           if (localObject1 != null)
           {
             localObject2 = getEditableText();
-            localObject1 = bdgn.a((CharSequence)localObject1);
+            localObject1 = benq.a((CharSequence)localObject1);
             arrayOfInt[0] += ((CharSequence)localObject1).length();
             if (j != 0) {
               break label190;
@@ -219,10 +219,10 @@ public class WriteTogetherEditorView
   {
     float f1 = (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float) / 2.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167337));
-    paramInt = getResources().getDimensionPixelSize(2131299201);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167363));
+    paramInt = getResources().getDimensionPixelSize(2131299212);
     paramString = a(paramString, paramBoolean, this.jdField_a_of_type_AndroidTextTextPaint, paramInt);
-    float f3 = getResources().getDimensionPixelSize(2131299185);
+    float f3 = getResources().getDimensionPixelSize(2131299196);
     paramBoolean = a(this.jdField_a_of_type_AndroidTextTextPaint, paramString, paramPoint, getWidth(), f3, f3);
     int j = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramString);
     int k = paramPoint.y;
@@ -230,7 +230,7 @@ public class WriteTogetherEditorView
     int n = paramPoint.y;
     int i1 = (int)paramFloat;
     int i2 = (int)f1;
-    int i3 = getResources().getDimensionPixelSize(2131299200);
+    int i3 = getResources().getDimensionPixelSize(2131299211);
     int i;
     RectF localRectF;
     float f2;
@@ -250,7 +250,7 @@ public class WriteTogetherEditorView
     label340:
     for (paramFloat = paramPoint.x + 2.0F * f3 + i3;; paramFloat = paramPoint.x - f3 - j - i3)
     {
-      f3 = getResources().getDimensionPixelSize(2131299202);
+      f3 = getResources().getDimensionPixelSize(2131299213);
       paramCanvas.drawRoundRect(localRectF, f3, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.drawText(paramString, paramFloat, f2 + f1, this.jdField_a_of_type_AndroidTextTextPaint);
       return;
@@ -260,32 +260,32 @@ public class WriteTogetherEditorView
     }
   }
   
-  private void a(Canvas paramCanvas, List<bdhy> paramList)
+  private void a(Canvas paramCanvas, List<bepb> paramList)
   {
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      bdhy localbdhy = (bdhy)localIterator.next();
-      if ((localbdhy != null) && (localbdhy.jdField_c_of_type_Int >= 0))
+      bepb localbepb = (bepb)localIterator.next();
+      if ((localbepb != null) && (localbepb.jdField_c_of_type_Int >= 0))
       {
-        Point localPoint = a(localbdhy.jdField_c_of_type_Int);
+        Point localPoint = a(localbepb.jdField_c_of_type_Int);
         if (localPoint != null)
         {
-          if (a(localbdhy.jdField_c_of_type_Int) == 0) {
+          if (a(localbepb.jdField_c_of_type_Int) == 0) {
             localPoint.y = this.jdField_c_of_type_Int;
           }
-          paramList = (Float)this.jdField_a_of_type_JavaUtilMap.get(localbdhy.jdField_a_of_type_JavaLangString);
+          paramList = (Float)this.jdField_a_of_type_JavaUtilMap.get(localbepb.jdField_a_of_type_JavaLangString);
           if ((paramList != null) && (paramList.floatValue() < 0.5F)) {
-            a(paramCanvas, localPoint, this.jdField_a_of_type_Float, localbdhy.jdField_b_of_type_Int);
+            a(paramCanvas, localPoint, this.jdField_a_of_type_Float, localbepb.jdField_b_of_type_Int);
           }
-          if (localbdhy.jdField_a_of_type_Boolean)
+          if (localbepb.jdField_a_of_type_Boolean)
           {
-            String str = localbdhy.jdField_b_of_type_JavaLangString;
+            String str = localbepb.jdField_b_of_type_JavaLangString;
             paramList = str;
             if (str == null) {
               paramList = "";
             }
-            a(paramCanvas, localPoint, this.jdField_a_of_type_Float, paramList, localbdhy.jdField_b_of_type_Int, localbdhy.jdField_b_of_type_Boolean);
+            a(paramCanvas, localPoint, this.jdField_a_of_type_Float, paramList, localbepb.jdField_b_of_type_Int, localbepb.jdField_b_of_type_Boolean);
           }
         }
       }
@@ -309,7 +309,6 @@ public class WriteTogetherEditorView
   {
     b();
     e();
-    f();
     h();
   }
   
@@ -323,7 +322,7 @@ public class WriteTogetherEditorView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167337));
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167363));
   }
   
   private void f()
@@ -333,7 +332,7 @@ public class WriteTogetherEditorView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdkw(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new berz(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -348,10 +347,10 @@ public class WriteTogetherEditorView
   
   private void h()
   {
-    bdkx localbdkx = new bdkx(this);
-    setCustomSelectionActionModeCallback(localbdkx);
+    besa localbesa = new besa(this);
+    setCustomSelectionActionModeCallback(localbesa);
     if (Build.VERSION.SDK_INT >= 23) {
-      setCustomInsertionActionModeCallback(localbdkx);
+      setCustomInsertionActionModeCallback(localbesa);
     }
   }
   
@@ -365,9 +364,9 @@ public class WriteTogetherEditorView
     invalidate();
   }
   
-  public void a(bdhu parambdhu)
+  public void a(beox parambeox)
   {
-    addTextChangedListener(parambdhu);
+    addTextChangedListener(parambeox);
   }
   
   public void a(String paramString)
@@ -378,17 +377,17 @@ public class WriteTogetherEditorView
   
   public void b()
   {
-    this.jdField_a_of_type_Float = getResources().getDimensionPixelSize(2131299199);
-    this.jdField_b_of_type_Float = getResources().getDimensionPixelSize(2131299203);
+    this.jdField_a_of_type_Float = getResources().getDimensionPixelSize(2131299210);
+    this.jdField_b_of_type_Float = getResources().getDimensionPixelSize(2131299214);
     this.jdField_c_of_type_Float = getLineHeight();
-    this.jdField_d_of_type_Float = getResources().getDimensionPixelSize(2131299185);
-    this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131299191);
+    this.jdField_d_of_type_Float = getResources().getDimensionPixelSize(2131299196);
+    this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131299202);
     super.setOnClickListener(this);
   }
   
-  public void b(bdhu parambdhu)
+  public void b(beox parambeox)
   {
-    removeTextChangedListener(parambdhu);
+    removeTextChangedListener(parambeox);
   }
   
   public void b(String paramString)
@@ -425,6 +424,7 @@ public class WriteTogetherEditorView
   {
     super.onAttachedToWindow();
     g();
+    f();
   }
   
   public void onClick(View paramView)
@@ -437,9 +437,9 @@ public class WriteTogetherEditorView
       setFocusableInTouchMode(true);
       requestFocus();
     }
-    if (this.jdField_a_of_type_Bdky != null)
+    if (this.jdField_a_of_type_Besb != null)
     {
-      this.jdField_a_of_type_Bdky.f();
+      this.jdField_a_of_type_Besb.f();
       setCursorVisible(true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -447,7 +447,7 @@ public class WriteTogetherEditorView
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return new bdkz(this, super.onCreateInputConnection(paramEditorInfo), false);
+    return new besc(this, super.onCreateInputConnection(paramEditorInfo), false);
   }
   
   protected void onDetachedFromWindow()
@@ -460,9 +460,9 @@ public class WriteTogetherEditorView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bdgy != null)
+    if (this.jdField_a_of_type_Beob != null)
     {
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Bdgy.a();
+      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Beob.a();
       if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
         a(paramCanvas, this.jdField_a_of_type_JavaUtilList);
       }
@@ -473,9 +473,9 @@ public class WriteTogetherEditorView
   {
     if (this.e)
     {
-      if (this.jdField_a_of_type_Bdky != null)
+      if (this.jdField_a_of_type_Besb != null)
       {
-        this.jdField_a_of_type_Bdky.f();
+        this.jdField_a_of_type_Besb.f();
         setCursorVisible(true);
       }
       this.e = false;
@@ -493,7 +493,7 @@ public class WriteTogetherEditorView
       if (paramInt1 != 0) {
         setCursorVisible(true);
       }
-    } while (this.jdField_a_of_type_Bdgy == null);
+    } while (this.jdField_a_of_type_Beob == null);
     if (!this.jdField_a_of_type_Boolean)
     {
       bool1 = bool2;
@@ -509,7 +509,7 @@ public class WriteTogetherEditorView
       if (QLog.isColorLevel()) {
         QLog.d("WriteTogetherEditorView", 2, "[onSelectionChanged] userChangeCursorIndex: " + bool1 + ", selStart: " + paramInt1 + ", selEnd: " + paramInt2 + ", mSelStart: " + this.jdField_a_of_type_Int + ", mSelEnd: " + this.jdField_b_of_type_Int + ", mTyping: " + this.jdField_a_of_type_Boolean);
       }
-      this.jdField_a_of_type_Bdgy.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt1, paramInt2, bool1);
+      this.jdField_a_of_type_Beob.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt1, paramInt2, bool1);
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
@@ -537,7 +537,7 @@ public class WriteTogetherEditorView
     default: 
       i = 0;
       if (i != 0) {
-        bcef.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", i, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", i, 0, "", "", "", "");
       }
       i = a().length();
       if (isFocused())
@@ -576,9 +576,9 @@ public class WriteTogetherEditorView
     }
   }
   
-  public void setClient(bdgy parambdgy)
+  public void setClient(beob parambeob)
   {
-    this.jdField_a_of_type_Bdgy = parambdgy;
+    this.jdField_a_of_type_Beob = parambeob;
   }
   
   public void setEditorEnabled(boolean paramBoolean)
@@ -599,9 +599,9 @@ public class WriteTogetherEditorView
   
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener) {}
   
-  public void setOnEditorClickEventListener(bdky parambdky)
+  public void setOnEditorClickEventListener(besb parambesb)
   {
-    this.jdField_a_of_type_Bdky = parambdky;
+    this.jdField_a_of_type_Besb = parambesb;
   }
   
   public void setSelection(int paramInt1, int paramInt2)

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import asgt;
-import asgu;
-import asgw;
-import asgx;
+import atkz;
+import atla;
+import atlc;
+import atld;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -11,7 +11,7 @@ import java.net.Socket;
 public class FileIPv6Detecter$1
   implements Runnable
 {
-  public FileIPv6Detecter$1(asgt paramasgt, asgx paramasgx, long paramLong, asgw paramasgw) {}
+  public FileIPv6Detecter$1(atkz paramatkz, atld paramatld, long paramLong, atlc paramatlc) {}
   
   public void run()
   {
@@ -21,12 +21,12 @@ public class FileIPv6Detecter$1
     {
       try
       {
-        int j = this.jdField_a_of_type_Asgx.jdField_a_of_type_Int;
+        int j = this.jdField_a_of_type_Atld.jdField_a_of_type_Int;
         i = j;
         if (j == 0) {
           i = 80;
         }
-        ((Socket)localObject1).connect(new InetSocketAddress(this.jdField_a_of_type_Asgx.a(), i), 6000);
+        ((Socket)localObject1).connect(new InetSocketAddress(this.jdField_a_of_type_Atld.a(), i), 6000);
       }
       catch (Exception localException4)
       {
@@ -80,29 +80,29 @@ public class FileIPv6Detecter$1
     if (i == 0)
     {
       bool1 = true;
-      QLog.i("FileIPv6Detecter<FileAssistant>", 1, bool1 + " cost:" + (l - this.jdField_a_of_type_Long) + " [" + this.jdField_a_of_type_Asgw.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Asgw.jdField_a_of_type_Int + "] ipInfo[" + this.jdField_a_of_type_Asgx.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Asgx.jdField_a_of_type_Int + "]");
-      localObject1 = asgt.a(this.this$0, this.jdField_a_of_type_Asgw);
+      QLog.i("FileIPv6Detecter<FileAssistant>", 1, bool1 + " cost:" + (l - this.jdField_a_of_type_Long) + " [" + this.jdField_a_of_type_Atlc.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Atlc.jdField_a_of_type_Int + "] ipInfo[" + this.jdField_a_of_type_Atld.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Atld.jdField_a_of_type_Int + "]");
+      localObject1 = atkz.a(this.this$0, this.jdField_a_of_type_Atlc);
       if (localObject1 != null)
       {
-        ((asgu)localObject1).b = false;
+        ((atla)localObject1).b = false;
         if (i != 0) {
           break label322;
         }
         bool1 = true;
-        ((asgu)localObject1).a = bool1;
+        ((atla)localObject1).a = bool1;
         localObject1 = this.this$0;
         if (i != 0) {
           break label327;
         }
         bool1 = bool2;
-        asgt.a((asgt)localObject1, bool1, this.jdField_a_of_type_Asgw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asgx.a(), this.jdField_a_of_type_Asgx.jdField_a_of_type_Int);
+        atkz.a((atkz)localObject1, bool1, this.jdField_a_of_type_Atlc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atld.a(), this.jdField_a_of_type_Atld.jdField_a_of_type_Int);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6Detecter.1
  * JD-Core Version:    0.7.0.1
  */

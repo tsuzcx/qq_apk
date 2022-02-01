@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import asln;
+import atpt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -16,18 +16,18 @@ import java.util.Map;
 public class FileManagerProxy$4
   implements Runnable
 {
-  public FileManagerProxy$4(asln paramasln, long paramLong, String paramString) {}
+  public FileManagerProxy$4(atpt paramatpt, long paramLong, String paramString) {}
   
   public void run()
   {
     Object localObject2 = "select * from ( select * from " + FileManagerEntity.tableName() + " where bDelInFM = 0  and nRelatedSessionId = " + this.jdField_a_of_type_Long + "  order by srvTime desc limit " + 2000 + ") ";
-    EntityManager localEntityManager = asln.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = atpt.a(this.this$0).getEntityManagerFactory().createEntityManager();
     localObject2 = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject2, null);
     for (;;)
     {
-      synchronized (asln.a(this.this$0))
+      synchronized (atpt.a(this.this$0))
       {
-        asln.a(this.this$0, new HashMap());
+        atpt.a(this.this$0, new HashMap());
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder().append("find ZipList file:");
@@ -79,9 +79,9 @@ public class FileManagerProxy$4
       {
         try
         {
-          synchronized (asln.a(this.this$0))
+          synchronized (atpt.a(this.this$0))
           {
-            asln.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
+            atpt.a(this.this$0).put(((FileManagerEntity)???).zipInnerPath, ???);
           }
         }
         catch (Exception localException)
@@ -95,7 +95,7 @@ public class FileManagerProxy$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.4
  * JD-Core Version:    0.7.0.1
  */

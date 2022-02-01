@@ -1,8 +1,25 @@
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import java.util.ArrayList;
 
-public abstract interface bfpr
+public class bfpr
 {
-  public abstract void onClick(View paramView);
+  public int a;
+  public ImageView a;
+  public TextView a;
+  
+  public bfpr(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372790));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365512));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
+  }
 }
 
 

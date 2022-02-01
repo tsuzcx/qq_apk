@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import pkm;
-import qid;
+import pvj;
+import quh;
 
 public class ReadInJoySocializeRecommendFollowView$6
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$6(qid paramqid, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public ReadInJoySocializeRecommendFollowView$6(quh paramquh, RecommendFollowInfo paramRecommendFollowInfo) {}
   
   public void run()
   {
-    pkm localpkm = pkm.a();
+    pvj localpvj = pvj.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localpkm.c(l, i);
+      localpvj.c(l, i);
       return;
     }
   }

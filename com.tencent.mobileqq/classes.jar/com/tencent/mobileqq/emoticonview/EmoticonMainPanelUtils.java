@@ -9,7 +9,7 @@ public class EmoticonMainPanelUtils
 {
   public static EmoticonMainPanel initEmojiPanel(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
   {
-    paramEditText = (EmoticonMainPanel)View.inflate(paramBaseActivity.getBaseContext(), 2131559130, null);
+    paramEditText = (EmoticonMainPanel)View.inflate(paramBaseActivity.getBaseContext(), 2131559158, null);
     paramEditText.setCallBack(paramEmoticonCallback);
     paramEditText.disableGuide = true;
     paramEditText.disableMoreEmotionButton = true;
@@ -23,7 +23,7 @@ public class EmoticonMainPanelUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanelUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.util.DisplayMetrics;
-import bfvo;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -30,7 +30,7 @@ public class CarrierImgDownloader
     try
     {
       paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramURLDrawableHandler);
-      return bfvo.c(bfvo.b(paramFile), 70, 70);
+      return bheg.c(bheg.b(paramFile), 70, 70);
     }
     catch (OutOfMemoryError paramFile)
     {

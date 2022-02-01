@@ -3,7 +3,7 @@ package com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler;
 import java.util.Map;
 
 public class DTViewFlattenEventMapHandler
-  extends DTBaseViewEventMapHandler
+  extends DTBaseElementEventMapHandler
 {
   protected String getElementId(Map<String, Object> paramMap)
   {

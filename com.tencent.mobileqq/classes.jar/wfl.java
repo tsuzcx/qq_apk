@@ -1,58 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTranslateToken;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
 
-public class wfl
-  extends vqr
+public abstract class wfl<Request extends wfm, Respond extends wfh>
+  implements wfk<Request, Respond>
 {
-  public static final String a = vpl.a("StorySvc.translate_share_parameters_to_token");
-  public String b;
-  public int c;
-  public String c;
+  public static Handler a = new Handler(Looper.getMainLooper());
   
-  public String a()
+  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
   {
-    return a;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
-    try
+    if (Thread.currentThread() == a.getLooper().getThread())
     {
-      localRspTranslateToken.mergeFrom(paramArrayOfByte);
-      return new wfm(localRspTranslateToken);
+      b(paramRequest, paramRespond, paramErrorMessage);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
-        }
-      }
-    }
+    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
   }
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
-    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
-    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
-      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    return localReqTranslateToken.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
-  }
+  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 

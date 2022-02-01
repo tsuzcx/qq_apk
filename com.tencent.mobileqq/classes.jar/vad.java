@@ -1,6 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class vad
+  implements View.OnClickListener
 {
-  private static final vab a = new vab(null);
+  vad(vab paramvab) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

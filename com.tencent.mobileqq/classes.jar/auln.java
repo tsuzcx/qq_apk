@@ -1,57 +1,12 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
+import android.os.Bundle;
 
-final class auln
-  extends aulo
+public abstract interface auln
 {
-  private WeakReference<aull> a;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  private auln(aull paramaull)
-  {
-    this.a = new WeakReference(paramaull);
-  }
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (((paramObject instanceof cmd0xcd4.InputNotifyRsp)) && (paramBoolean))
-    {
-      paramObject = (cmd0xcd4.InputNotifyRsp)paramObject;
-      int i = paramObject.sint32_result.get();
-      int j = paramObject.uint32_interval.get();
-      paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
-      if (i != 0) {
-        break label84;
-      }
-      if ((j > 0) && (this.a.get() != null)) {
-        ((aull)this.a.get()).a = (j * 1000);
-      }
-    }
-    return;
-    label84:
-    QLog.d(aull.a(), 1, "send input status fail : " + paramObject);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.get() != null))
-    {
-      if ((!aull.a((aull)this.a.get())) && (paramBoolean2))
-      {
-        if (aull.a((aull)this.a.get()) != null) {
-          aull.a((aull)this.a.get()).a(aull.a((aull)this.a.get()));
-        }
-        aull.a((aull)this.a.get()).input.addTextChangedListener(aull.a((aull)this.a.get()));
-      }
-      aull.a((aull)this.a.get(), paramBoolean2);
-    }
-  }
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
 }
 
 

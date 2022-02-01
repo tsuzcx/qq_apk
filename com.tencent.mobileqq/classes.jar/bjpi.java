@@ -1,12 +1,12 @@
-public abstract interface bjpi
+public abstract class bjpi
 {
-  public abstract void F();
+  public void a() {}
   
-  public abstract void G();
+  public void b() {}
   
-  public abstract void H();
+  public void c() {}
   
-  public abstract void a(float paramFloat);
+  public void d() {}
 }
 
 

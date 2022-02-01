@@ -11,12 +11,12 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bapf;
-import bapg;
-import baph;
-import bapq;
-import bapr;
-import baps;
+import bbvu;
+import bbvv;
+import bbvw;
+import bbwf;
+import bbwg;
+import bbwh;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.text.QQText;
@@ -28,9 +28,9 @@ public class LikesView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private baps jdField_a_of_type_Baps;
+  private bbwh jdField_a_of_type_Bbwh;
   private String jdField_a_of_type_JavaLangString = "LikesView";
-  private List<bapf> jdField_a_of_type_JavaUtilList;
+  private List<bbvu> jdField_a_of_type_JavaUtilList;
   private int b;
   private int c;
   
@@ -66,7 +66,7 @@ public class LikesView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new bapr(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new bbwg(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
@@ -75,8 +75,8 @@ public class LikesView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.LikesView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166468));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166938));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166482));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166952));
       return;
     }
     finally
@@ -87,8 +87,8 @@ public class LikesView
   
   private void b()
   {
-    this.c = getResources().getColor(2131166465);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130847360);
+    this.c = getResources().getColor(2131166479);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130847448);
   }
   
   public Drawable a()
@@ -106,10 +106,10 @@ public class LikesView
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        bapf localbapf = (bapf)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localbapf != null)
+        bbvu localbbvu = (bbvu)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localbbvu != null)
         {
-          localSpannableStringBuilder.append(a(localbapf.a.b, localbapf.a.jdField_a_of_type_JavaLangString));
+          localSpannableStringBuilder.append(a(localbbvu.a.b, localbbvu.a.jdField_a_of_type_JavaLangString));
           if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {
             localSpannableStringBuilder.append(", ");
           }
@@ -117,22 +117,22 @@ public class LikesView
         i += 1;
       }
       if (this.jdField_a_of_type_Long > 1L) {
-        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131718518), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131718904), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
       }
       for (;;)
       {
         setText(new QQText(localSpannableStringBuilder, 3, 12));
         setTextColor(this.c);
-        setMovementMethod(new baph(this.b, getContext().getResources().getColor(2131167276)));
-        setOnClickListener(new bapq(this));
+        setMovementMethod(new bbvw(this.b, getContext().getResources().getColor(2131167296)));
+        setOnClickListener(new bbwf(this));
         return;
-        localSpannableStringBuilder.append(getContext().getResources().getString(2131718517));
+        localSpannableStringBuilder.append(getContext().getResources().getString(2131718903));
       }
     }
     setVisibility(8);
   }
   
-  public void a(List<bapf> paramList, long paramLong)
+  public void a(List<bbvu> paramList, long paramLong)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -154,9 +154,9 @@ public class LikesView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(baps parambaps)
+  public void setOnItemClickListener(bbwh parambbwh)
   {
-    this.jdField_a_of_type_Baps = parambaps;
+    this.jdField_a_of_type_Bbwh = parambbwh;
   }
 }
 

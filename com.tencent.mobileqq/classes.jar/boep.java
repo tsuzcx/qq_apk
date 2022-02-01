@@ -1,8 +1,6 @@
-import java.io.File;
-
 public abstract interface boep
 {
-  public abstract boolean a(File paramFile, boen paramboen, boolean paramBoolean);
+  public abstract void a();
 }
 
 

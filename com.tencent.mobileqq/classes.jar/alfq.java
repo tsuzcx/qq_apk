@@ -1,39 +1,14 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
-
-class alfq
-  implements alep
+public abstract interface alfq
 {
-  alfq(alfo paramalfo, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Alfo.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
-    return;
-  }
+  public abstract void a(int paramInt, float paramFloat);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

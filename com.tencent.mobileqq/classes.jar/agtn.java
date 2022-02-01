@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class agtn
-  implements afyo
+class agtn
+  extends ClickableSpan
 {
-  public agtn(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  agtn(agtf paramagtf) {}
   
-  public void onUpdate(int paramInt)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    paramTextPaint.setColor(-12541697);
   }
 }
 

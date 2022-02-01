@@ -1,8 +1,16 @@
-import android.content.Intent;
+import android.os.Bundle;
 
-public abstract interface axxb
+class axxb
+  extends nte
 {
-  public abstract void a(int paramInt1, double paramDouble1, double paramDouble2, String paramString1, String paramString2, int paramInt2, Intent paramIntent);
+  axxb(axww paramaxww, axxd paramaxxd) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Axxd != null) {
+      this.jdField_a_of_type_Axxd.a(paramInt, paramArrayOfByte, paramBundle);
+    }
+  }
 }
 
 

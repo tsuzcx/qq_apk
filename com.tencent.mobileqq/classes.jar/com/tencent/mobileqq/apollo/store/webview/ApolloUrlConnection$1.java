@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import amfu;
+import anhc;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 
 public class ApolloUrlConnection$1
   implements Runnable
 {
-  public ApolloUrlConnection$1(amfu paramamfu) {}
+  public ApolloUrlConnection$1(anhc paramanhc) {}
   
   public void run()
   {
     try
     {
-      amfu.a(this.this$0).disconnect();
+      anhc.a(this.this$0).disconnect();
       return;
     }
     catch (Throwable localThrowable)

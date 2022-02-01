@@ -1,41 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 
-class awxq
-  implements URLDrawable.URLDrawableListener
+public abstract class awxq
 {
-  awxq(awxp paramawxp, ImageView paramImageView) {}
+  public awxt a;
+  public MiniAppActivity a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public awxq(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
+  }
+  
+  public abstract void a();
+  
+  public void a(awxt paramawxt)
+  {
+    this.jdField_a_of_type_Awxt = paramawxt;
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Awxt = paramawxt;
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
-    }
-  }
+  public abstract boolean a();
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
-    }
-  }
+  public abstract void b();
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
-    }
-    this.jdField_a_of_type_Awxp.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 

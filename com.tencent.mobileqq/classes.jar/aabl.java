@@ -1,49 +1,34 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aabl
+  implements View.OnClickListener
 {
-  public aabl(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  public aabl(CommodityItemView paramCommodityItemView) {}
   
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
+    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
+      if (!(this.a.a() instanceof CommodityBean)) {
+        break label127;
+      }
     }
-    try
+    label127:
+    for (String str = ((CommodityBean)this.a.a()).mUrl;; str = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
-      QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131706549));
+      if (CommodityItemView.a(this.a) != null) {
+        aanb.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + aaba.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
+      }
+      zqm.a(str, 8002);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-    }
-  }
-  
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
     }
   }
 }

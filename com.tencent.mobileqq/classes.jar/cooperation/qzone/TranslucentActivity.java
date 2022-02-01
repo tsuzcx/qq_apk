@@ -1,7 +1,6 @@
 package cooperation.qzone;
 
 import Override;
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,11 +14,13 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import bhht;
-import bkkq;
-import bkkz;
+import anvx;
+import bisl;
+import blvy;
+import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -50,34 +51,34 @@ public class TranslucentActivity
   
   private void startPlugin(Intent paramIntent)
   {
-    bhht localbhht;
-    if (!((bkkq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
+    bisl localbisl;
+    if (!((blvy)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled("qzone_plugin.apk"))
     {
-      localbhht = new bhht(this, getResources().getDimensionPixelSize(2131299076));
-      localbhht.a(amtj.a(2131714086));
-      localbhht.setOnDismissListener(new TranslucentActivity.1(this));
+      localbisl = new bisl(this, getResources().getDimensionPixelSize(2131299080));
+      localbisl.a(anvx.a(2131714433));
+      localbisl.setOnDismissListener(new TranslucentActivity.1(this));
     }
     for (;;)
     {
       String str = QzonePluginProxyActivity.getActivityNameToIntent(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      bkkz localbkkz = new bkkz(0);
-      localbkkz.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localbkkz.d = "QZone";
-      localbkkz.jdField_a_of_type_JavaLangString = "";
-      localbkkz.e = str;
-      localbkkz.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbkkz.jdField_b_of_type_Int = -1;
-      localbkkz.jdField_a_of_type_AndroidAppDialog = localbhht;
-      localbkkz.c = 10000;
-      localbkkz.f = null;
-      bkkq.a(this, localbkkz);
-      if (localbhht == null) {
+      blwh localblwh = new blwh(0);
+      localblwh.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+      localblwh.d = "QZone";
+      localblwh.jdField_a_of_type_JavaLangString = "";
+      localblwh.e = str;
+      localblwh.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localblwh.jdField_b_of_type_Int = -1;
+      localblwh.jdField_a_of_type_AndroidAppDialog = localbisl;
+      localblwh.c = 10000;
+      localblwh.f = null;
+      blvy.a(this, localblwh);
+      if (localbisl == null) {
         finish();
       }
       return;
-      localbhht = null;
+      localbisl = null;
     }
   }
   

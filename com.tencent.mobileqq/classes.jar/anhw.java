@@ -1,248 +1,144 @@
-import AvatarInfo.QQHeadInfo;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.app.face.FaceConstant;
-import com.tencent.mobileqq.app.face.FaceDecodeTask;
-import com.tencent.mobileqq.app.face.FaceDecodeTask.DecodeCompletionListener;
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.content.Context;
+import com.tencent.TMG.opengl.GraphicRendererMgr;
+import com.tencent.TMG.sdk.AVCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import java.util.Map;
 
 public class anhw
-  extends FaceDecodeTask
 {
-  NearbyAppInterface a;
+  static anhw jdField_a_of_type_Anhw;
+  int jdField_a_of_type_Int = 0;
+  public Context a;
+  private anii jdField_a_of_type_Anii = new anid(this);
+  anim jdField_a_of_type_Anim;
+  public bkjp a;
+  private AVCallback jdField_a_of_type_ComTencentTMGSdkAVCallback = new anic(this);
+  public String a;
+  Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
   
-  public anhw(NearbyAppInterface paramNearbyAppInterface, FaceInfo paramFaceInfo, FaceDecodeTask.DecodeCompletionListener paramDecodeCompletionListener)
+  private anhw()
   {
-    super(paramNearbyAppInterface, paramFaceInfo, paramDecodeCompletionListener);
-    this.a = paramNearbyAppInterface;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private void a(anho paramanho, bfpy parambfpy)
+  public static anhw a()
   {
-    if (parambfpy.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      switch (this.faceInfo.c)
-      {
-      }
+    if (jdField_a_of_type_Anhw == null) {
+      jdField_a_of_type_Anhw = new anhw();
     }
-    for (parambfpy.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.c(parambfpy.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);; parambfpy.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.a(parambfpy.jdField_a_of_type_AndroidGraphicsBitmap, 50, 50))
-    {
-      this.bitmap = parambfpy.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramanho.a(this.faceInfo.a(), parambfpy.jdField_a_of_type_AndroidGraphicsBitmap, (byte)1);
-      if (this.bitmap == null) {
-        QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap fail. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
+    return jdField_a_of_type_Anhw;
   }
   
-  private boolean a(anho paramanho)
+  private void d()
   {
-    if (this.needDownload)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap file not exist.. needDownload.faceInfo=" + this.faceInfo);
-      }
-      if (this.faceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo != null) {
-        paramanho.a(this.faceInfo);
-      }
-      return true;
-    }
-    Object localObject = "stranger_" + Integer.toString(this.faceInfo.jdField_b_of_type_Int) + "_" + this.faceInfo.jdField_a_of_type_JavaLangString;
-    Setting localSetting = paramanho.a((String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap key=" + (String)localObject + ",faceinfo=" + this.faceInfo + ",setting=" + localSetting);
-    }
-    if (localSetting != null)
-    {
-      if (this.faceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo != null)
-      {
-        if (this.faceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dwTimestamp > localSetting.headImgTimestamp)
-        {
-          this.needDownload = true;
-          paramanho.a(this.faceInfo);
-          return true;
-        }
-        if (this.faceInfo.jdField_a_of_type_Boolean)
-        {
-          localObject = (apbm)this.a.getManager(180);
-          if (((apbm)localObject).a(((apbm)localObject).a(this.faceInfo.jdField_b_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString), localSetting, this.faceInfo.jdField_a_of_type_Int))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.dynamicAvatar", 2, "NearbyFaceDecodeTask isNeed2UpdateSettingInfo.");
-            }
-            this.needDownload = true;
-            paramanho.a(this.faceInfo);
-            return true;
-          }
-        }
-      }
-      else if (Math.abs(System.currentTimeMillis() - localSetting.updateTimestamp) > 86400000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap need to checkupdate.faceInfo=" + this.faceInfo);
-        }
-        this.faceInfo.jdField_b_of_type_Byte = 1;
-        ((anhm)this.a.a(4)).a(this.faceInfo);
-      }
-      return false;
-    }
-    this.needDownload = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap setting is null. faceInfo=" + this.faceInfo);
-    }
-    if (this.faceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo != null) {
-      paramanho.a(this.faceInfo);
-    }
-    return true;
+    anin.a().a(this.jdField_a_of_type_Anim, new anhx(this));
   }
   
-  public void doDecodeBitmap()
+  public void a()
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap bengin.faceInfo=" + this.faceInfo);
-    }
-    this.faceInfo.a(FaceInfo.p);
-    for (;;)
-    {
-      try
-      {
-        anho localanho = (anho)this.a.getManager(216);
-        if (!localanho.a(this.faceInfo))
-        {
-          bool = true;
-          this.needDownload = bool;
-          bool = a(localanho);
-          if (!bool) {
-            continue;
-          }
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        boolean bool;
-        bfpy localbfpy;
-        BitmapFactory.Options localOptions;
-        NearbyAppInterface localNearbyAppInterface;
-        QLog.e("Q.qqhead.NearByFaceDecodeTask", 1, "doDecodeBitmap OutOfMemoryError. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localOutOfMemoryError);
-        this.faceInfo.a(FaceInfo.q);
-        try
-        {
-          sPendingResultList.add(this);
-          if (handler == null) {
-            continue;
-          }
-          handler.sendMessageAtFrontOfQueue(handler.obtainMessage(EVENT_TASK_COMPLETED, this));
-          return;
-        }
-        catch (Exception localException3) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localException3);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("Q.qqhead.NearByFaceDecodeTask", 1, "doDecodeBitmap exception. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localThrowable);
-        this.faceInfo.a(FaceInfo.q);
-        try
-        {
-          sPendingResultList.add(this);
-          if (handler == null) {
-            continue;
-          }
-          handler.sendMessageAtFrontOfQueue(handler.obtainMessage(EVENT_TASK_COMPLETED, this));
-          return;
-        }
-        catch (Exception localException4) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localException4);
-        return;
-      }
-      finally
-      {
-        this.faceInfo.a(FaceInfo.q);
-      }
-      try
-      {
-        sPendingResultList.add(this);
-        if (handler != null) {
-          handler.sendMessageAtFrontOfQueue(handler.obtainMessage(EVENT_TASK_COMPLETED, this));
-        }
-        return;
-        bool = false;
-      }
-      catch (Exception localException1)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localException1);
-        return;
-      }
-      localbfpy = new bfpy();
-      localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = FaceConstant.FACE_BITMAP_CONFIG;
-      bfpx.a(localException1.a(this.faceInfo), localOptions, localbfpy);
-      if (localbfpy.jdField_a_of_type_Int == 1)
-      {
-        localNearbyAppInterface = this.a;
-        NearbyAppInterface.b();
-      }
-      i += 1;
-      if ((i >= 2) || (localbfpy.jdField_a_of_type_Int != 1))
-      {
-        if ((QLog.isColorLevel()) || (localbfpy.jdField_a_of_type_Int != 0)) {
-          QLog.i("Q.qqhead.NearByFaceDecodeTask", 1, "doDecodeBitmap decode bitmap.faceInfo=" + this.faceInfo + ",result=" + localbfpy.jdField_a_of_type_Int + ", bmp=" + localbfpy.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        a(localException1, localbfpy);
-        this.faceInfo.a(FaceInfo.q);
-        try
-        {
-          sPendingResultList.add(this);
-          if (handler == null) {
-            continue;
-          }
-          handler.sendMessageAtFrontOfQueue(handler.obtainMessage(EVENT_TASK_COMPLETED, this));
-          return;
-        }
-        catch (Exception localException2) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localException2);
-          return;
-        }
-      }
-    }
+    QLog.i("AVEngineWalper", 1, "DestroyEngine()");
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a();
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Anim = new anim(paramInt, paramString1, paramString2);
+  }
+  
+  public void a(long paramLong)
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(paramLong);
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    QLog.e("Begin:TMGProformanceHelper", 1, anil.a());
+    QLog.e("AVEngineWalper", 1, "InitSDKEngine() strAppid=" + paramString2 + ", strUin=" + paramString1 + ", strAccountType=" + paramString3);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Anii);
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_AndroidContentContext);
+    paramContext = new anig();
+    paramContext.jdField_a_of_type_JavaLangString = paramString2;
+    paramContext.b = paramString3;
+    paramContext.c = paramString1;
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(paramContext);
+    d();
+  }
+  
+  public void a(bkjp parambkjp)
+  {
+    this.jdField_a_of_type_Bkjp = parambkjp;
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "ExitRoom!!!, strRoomID" + paramString);
+    anie.a(this.jdField_a_of_type_AndroidContentContext).b();
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(paramString, paramBoolean1, paramBoolean2, this.jdField_a_of_type_Int, new anhy(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new ania(this));
+  }
+  
+  boolean a()
+  {
     try
     {
-      sPendingResultList.add(this);
-      if (handler != null) {
-        handler.sendMessageAtFrontOfQueue(handler.obtainMessage(EVENT_TASK_COMPLETED, this));
-      }
-      throw localObject;
+      GraphicRendererMgr localGraphicRendererMgr = GraphicRendererMgr.getInstance();
+      int i = localGraphicRendererMgr.getRecvDecoderFrameFunctionptr();
+      QLog.e("AVEngineWalper", 1, "mgr=" + String.valueOf(localGraphicRendererMgr) + ", nFunID=" + String.valueOf(i));
+      return true;
     }
-    catch (Exception localException5)
+    catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.faceInfo.jdField_a_of_type_JavaLangString, localException5);
-        }
-      }
+      QLog.e("AVEngineWalper", 1, "CheckGraphicMgrStart stack=" + QLog.getStackTraceString(localThrowable));
     }
+    return false;
   }
   
-  public boolean isExpired()
+  public void b()
   {
-    return this.a == null;
+    anie.a(this.jdField_a_of_type_AndroidContentContext).b();
+  }
+  
+  public void b(long paramLong)
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).b(paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
+  }
+  
+  public void b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bkjq.a().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), new anhz(this, paramString, paramBoolean1, paramBoolean2));
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new anib(this));
+  }
+  
+  public void c()
+  {
+    anie.a(this.jdField_a_of_type_AndroidContentContext).c();
   }
 }
 

@@ -1,31 +1,47 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.QSecRptControllerImpl;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.SdkInfo;
+import com.tencent.tmassistant.common.jce.Ticket;
+import com.tencent.tmassistant.common.jce.TicketWtLogin;
+import com.tencent.tmassistantbase.network.PostHttpRequest;
 
-public class bjhm
-  extends nmf
+public abstract class bjhm
+  extends PostHttpRequest
 {
-  public bjhm(QSecRptControllerImpl paramQSecRptControllerImpl) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(JceStruct paramJceStruct)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
+      if (paramJceStruct == null) {
+        return -1;
       }
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (Throwable paramJceStruct)
     {
-      paramArrayOfByte.printStackTrace();
+      for (;;)
+      {
+        paramJceStruct = null;
+      }
+      Object localObject = new SdkInfo();
+      ((SdkInfo)localObject).versionCode = 1;
+      ((SdkInfo)localObject).versionName = bizw.a().c();
+      ((SdkInfo)localObject).name = "AppNews";
+      ((SdkInfo)localObject).channel = "";
+      ((SdkInfo)localObject).builderNum = "";
+      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
+      localObject = new TicketWtLogin();
+      ((TicketWtLogin)localObject).uin = bizw.a().a();
+      ((TicketWtLogin)localObject).A2 = bizw.a().b().getBytes();
+      Ticket localTicket = new Ticket();
+      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
+      localTicket.type = 1;
+      paramJceStruct.head.ticket = localTicket;
+      int i = paramJceStruct.head.requestId;
+      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
+      return i;
     }
   }
 }

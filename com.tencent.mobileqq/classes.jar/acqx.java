@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acqx
-  implements View.OnClickListener
+  implements acpi
 {
-  public acqx(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(View paramView)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.a.c();
-    bcef.b(this.a.app, "CliOper", "", "", "0X800AA44", "0X800AA44", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    acqq.a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

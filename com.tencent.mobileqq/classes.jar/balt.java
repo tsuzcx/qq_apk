@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import androidx.annotation.Nullable;
 
-class balt
-  implements DialogInterface.OnClickListener
+public abstract interface balt
 {
-  balt(balk parambalk) {}
+  public abstract void a(@Nullable Object paramObject);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.pauseDownload();
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

@@ -1,23 +1,12 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import com.tencent.mobileqq.app.AppConstants;
 
-public class bdod
-  implements Animation.AnimationListener
+public abstract interface bdod
 {
-  public bdod(AudioRecordFragment paramAudioRecordFragment) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static final String an = anvx.a(2131713992);
+  public static final String ao = anvx.a(2131713984);
+  public static final String ap = anvx.a(2131713977);
+  public static final String aq = anvx.a(2131713988);
+  public static final String ar = AppConstants.SDCARD_PATH + "photo" + "/temp/";
 }
 
 

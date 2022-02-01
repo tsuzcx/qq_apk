@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import com.tencent.mobileqq.danmaku.util.DrawUtils;
 
-class arso
-  implements DialogInterface.OnDismissListener
+public class arso
+  extends arsl
 {
-  arso(arsl paramarsl) {}
+  private TextPaint a = new TextPaint();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private String a(arrl paramarrl)
   {
-    arsl.a(this.a).dismiss();
+    return String.valueOf(paramarrl.a());
+  }
+  
+  public artj a(arrl paramarrl)
+  {
+    arsk localarsk = arru.a();
+    float f1 = DrawUtils.getTextWidth(localarsk.c(), a(paramarrl)) + localarsk.f() + localarsk.f();
+    float f2 = DrawUtils.getTextHeight(localarsk.c());
+    f2 = localarsk.e() * 2.0F + f2;
+    paramarrl.a(f2);
+    paramarrl.b(f1);
+    return new artj(f1, f2);
+  }
+  
+  public boolean a(arrl paramarrl)
+  {
+    return true;
+  }
+  
+  public void b(Canvas paramCanvas, arrl paramarrl, arru paramarru, float paramFloat1, float paramFloat2)
+  {
+    paramarru = arru.a();
+    this.a.setTextSize(paramarru.c());
+    this.a.setColor(-1);
+    paramCanvas.drawText(a(paramarrl), paramarru.f() + paramFloat1, paramarru.e() + paramFloat2 - this.a.ascent(), this.a);
   }
 }
 

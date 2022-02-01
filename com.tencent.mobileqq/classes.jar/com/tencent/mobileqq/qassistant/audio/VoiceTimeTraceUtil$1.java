@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.qassistant.audio;
 
 import android.app.Activity;
-import azdw;
-import azeu;
+import bajl;
+import bakl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.util.List;
@@ -12,13 +12,13 @@ import mqq.os.MqqHandler;
 public class VoiceTimeTraceUtil$1
   implements Runnable
 {
-  public VoiceTimeTraceUtil$1(azdw paramazdw, List paramList, Activity paramActivity) {}
+  public VoiceTimeTraceUtil$1(bajl parambajl, List paramList, Activity paramActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(azdw.a(this.this$0).values());
-    String str = azeu.b() + "snapshot.zip";
-    azeu.a("VoiceTimeTraceUtil", "create trace zip: " + str);
+    this.jdField_a_of_type_JavaUtilList.addAll(bajl.a(this.this$0).values());
+    String str = bakl.b() + "snapshot.zip";
+    bakl.a("VoiceTimeTraceUtil", "create trace zip: " + str);
     FileUtils.zipFiles(this.jdField_a_of_type_JavaUtilList, str);
     this.this$0.a("ZIP", str);
     ThreadManager.getUIHandler().post(new VoiceTimeTraceUtil.1.1(this));

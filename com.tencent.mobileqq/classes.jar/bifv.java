@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class bifv
-  implements DialogInterface.OnClickListener
+  implements ThreadExcutor.IThreadListener
 {
-  public bifv(WadlJsBridgeCallBack.2 param2) {}
+  public bifv(WebViewPlugin paramWebViewPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    paramDialogInterface.dismiss();
+    this.a.onPostPluginAsyncTask();
   }
+  
+  public void onPreRun() {}
 }
 
 

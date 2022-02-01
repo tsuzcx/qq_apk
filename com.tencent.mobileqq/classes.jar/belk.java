@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.util.ArrayMap;
+import android.support.v4.util.SparseArrayCompat;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.tencent.util.Pair;
+import java.lang.reflect.Type;
 
-public class belk
-  implements View.OnClickListener
+final class belk
+  implements JsonDeserializer<beli>
 {
-  public belk(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(View paramView)
+  public beli a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
   {
-    this.a.m();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramType = paramJsonElement.getAsJsonObject();
+    paramJsonElement = new beli();
+    paramJsonElement.jdField_a_of_type_Int = paramType.get("nextNum").getAsInt();
+    paramType = paramType.get("numToAttrib").getAsJsonObject();
+    int i = 0;
+    while (i < paramJsonElement.jdField_a_of_type_Int)
+    {
+      Object localObject = paramType.get(i + "").getAsJsonArray();
+      paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
+      localObject = ((JsonArray)localObject).get(1).getAsString();
+      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
+      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(beli.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
+      i += 1;
+    }
+    return paramJsonElement;
   }
 }
 

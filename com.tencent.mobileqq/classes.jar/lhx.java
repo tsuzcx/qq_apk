@@ -1,95 +1,191 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
 import android.text.TextUtils;
-import java.util.Map;
+import com.tencent.av.business.manager.pendant.AVEffectPendantReport.1;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class lhx
-  implements Handler.Callback
+public class lhx
 {
-  public boolean handleMessage(Message paramMessage)
+  private static int jdField_a_of_type_Int;
+  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
+  private static int b;
+  
+  private static Class<?> a()
   {
-    Bundle localBundle = paramMessage.getData();
-    switch (paramMessage.what)
-    {
+    return PendantItem.class;
+  }
+  
+  private static String a()
+  {
+    return "content";
+  }
+  
+  private static String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = lbh.c() + paramPendantItem.getName();
+    }
+    return str;
+  }
+  
+  private static ArrayList<PendantItem> a(String paramString)
+  {
+    localArrayList = new ArrayList();
+    b = 0;
+    jdField_a_of_type_Int = 0;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        int j = mvk.a();
+        Object localObject = a();
+        if (paramString.has((String)localObject))
+        {
+          paramString = paramString.getJSONArray((String)localObject);
+          localObject = a();
+          int i = 0;
+          while (i < paramString.length())
+          {
+            PendantItem localPendantItem = (PendantItem)bgzr.a((JSONObject)paramString.get(i), (Class)localObject);
+            if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
+            {
+              int k = localPendantItem.getPlatform();
+              if ((k == 0) || (j >= k))
+              {
+                boolean bool = b(localPendantItem);
+                localPendantItem.setUsable(bool);
+                localArrayList.add(localPendantItem);
+                b += 1;
+                if (bool) {
+                  jdField_a_of_type_Int += 1;
+                }
+              }
+            }
+            i += 1;
+          }
+        }
+        return localArrayList;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    bhhr.b(jdField_a_of_type_Int, b);
+    lbd.f("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
+  }
+  
+  private static String b()
+  {
+    return lbt.b(e()).a;
+  }
+  
+  public static void b()
+  {
+    bhhr.c();
+    lbd.f("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
+  }
+  
+  private static boolean b(PendantItem paramPendantItem)
+  {
+    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
+      lbd.h("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
     }
     do
     {
+      return false;
+      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
+        return true;
+      }
+    } while (!new File(a(paramPendantItem)).exists());
+    System.currentTimeMillis();
+    String str = SecUtil.getFileMd5(a(paramPendantItem));
+    System.currentTimeMillis();
+    return paramPendantItem.getMd5().equalsIgnoreCase(str);
+  }
+  
+  public static void c()
+  {
+    ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
+  }
+  
+  public static void d()
+  {
+    String str = b();
+    jdField_a_of_type_JavaUtilArrayList = null;
+    jdField_a_of_type_JavaUtilArrayList = a(str);
+  }
+  
+  private static int e()
+  {
+    return 106;
+  }
+  
+  public static void e()
+  {
+    long l1 = -1L;
+    try
+    {
+      localHashMap = new HashMap();
+      bool = bhhr.b();
+      arrayOfInt = bhhr.b();
+      l2 = bhhr.b();
+      if ((!bool) && (arrayOfInt[1] <= 0))
+      {
+        bbgg.a().b(false);
+        bhhr.d();
+      }
+      if (l2 <= 0L) {
+        break label380;
+      }
+      l1 = (System.currentTimeMillis() - l2) / 1000L;
+    }
+    catch (Throwable localThrowable)
+    {
+      int[] arrayOfInt;
       do
       {
-        long l1;
-        int i;
-        long l2;
+        HashMap localHashMap;
         boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (lhw.a() == null);
-            lhw.c();
-            lhw.a(24, lhw.b());
-            try
-            {
-              lhw.a().sendEmptyMessageDelayed(1, 5000L);
-              return false;
-            }
-            catch (NullPointerException paramMessage)
-            {
-              paramMessage.printStackTrace();
-              return false;
-            }
-            l1 = localBundle.getLong("roomId");
-            i = localBundle.getInt("node");
-            l2 = localBundle.getLong("value");
-            bool = localBundle.getBoolean("isNode");
-            lhw.a(i, true);
-          } while (lhw.a(i, true, bool));
-          if ((bool) && (lhw.a(33, true)))
-          {
-            lba.e("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + lhv.a(i));
-            return false;
-          }
-          lhw.a(i + "", l2 + "", bool);
-          lhw.a(i, l2, true);
-          lba.e("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + lhv.a(i) + ", value = " + l2 + "   isNode = " + bool);
-          return false;
-          l1 = localBundle.getLong("roomId");
-          i = localBundle.getInt("node");
-          l2 = localBundle.getLong("value");
-          bool = localBundle.getBoolean("isNode");
-          lhw.a(i, false);
-        } while (lhw.a(i, false, bool));
-        if ((bool) && (lhw.a(33, false)))
-        {
-          lba.e("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + lhv.a(i));
-          return false;
+        long l2;
+        BigDecimal localBigDecimal;
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        if (lhw.a(i)) {
-          lba.d("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + lhv.a(i) + ",  value = " + l2 + "   isNode = " + bool);
+        QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
+        return;
+        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
+          break;
         }
-        lhw.b(i + "", l2 + "", bool);
-        lhw.a(i, l2, false);
-        return false;
-        paramMessage = lhw.a();
-        if (!TextUtils.isEmpty(paramMessage))
-        {
-          lba.d("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
-          bcdf.a(null, "dc03209", paramMessage);
-          lhw.e();
-        }
-      } while ((lhw.a() == null) || (lhw.a().size() == 0));
-      lhw.j();
-      return false;
-      paramMessage = lhw.b();
-      lba.e("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
-    } while (TextUtils.isEmpty(paramMessage));
-    bcdf.a(null, "dc03209", paramMessage);
-    lhw.f();
-    return false;
+      } while (arrayOfInt[0] <= arrayOfInt[1]);
+    }
+    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
+    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
+    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
+    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
+    localHashMap.put("filter_spacing", String.valueOf(l1));
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
+    }
+    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
+    UserAction.flushObjectsToDB(true);
+    lbd.f("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
+    return;
+    label380:
   }
 }
 

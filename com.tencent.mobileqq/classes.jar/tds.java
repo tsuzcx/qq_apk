@@ -1,16 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-
-public class tds
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface tds
 {
-  public tds(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

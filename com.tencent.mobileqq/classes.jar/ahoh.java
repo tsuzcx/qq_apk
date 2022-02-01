@@ -1,14 +1,13 @@
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahoh
+  implements ahnr
 {
-  public List<String> a;
-  public List<ahof> b;
-  
-  public ahoh(List<String> paramList, List<ahof> paramList1)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.a = paramList;
-    this.b = paramList1;
+    paramagtf.d(paramagus, paramString);
   }
 }
 

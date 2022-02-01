@@ -1,42 +1,38 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdgv
-  implements Handler.Callback, bdhb
+  implements View.OnClickListener
 {
-  private bdhc jdField_a_of_type_Bdhc;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this, true);
+  public bdgv(SplashADView paramSplashADView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(paramInt1)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      if (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute()) {
+        break label59;
+      }
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850466);
     }
-  }
-  
-  public void a(bdhc parambdhc)
-  {
-    this.jdField_a_of_type_Bdhc = parambdhc;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Bdhc != null) {
-      return this.jdField_a_of_type_Bdhc.a(paramMessage.what);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label59:
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850467);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgv
  * JD-Core Version:    0.7.0.1
  */

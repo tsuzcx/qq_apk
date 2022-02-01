@@ -1,18 +1,35 @@
-public class xem
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+
+class xem
+  implements whw
 {
-  public String a;
-  public String b;
+  xem(xel paramxel, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public xem(String paramString1, String paramString2)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    a(-1, anvx.a(2131701677));
   }
   
-  public String toString()
+  public void a(int paramInt, String paramString)
   {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, anvx.a(2131701674), 0).a();
+    ykq.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!xeg.b(this.jdField_a_of_type_Xel.a)) {
+      xeg.a(this.jdField_a_of_type_Xel.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

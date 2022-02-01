@@ -1,26 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayrj
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public ayrj(VipTagView paramVipTagView) {}
+  public ayrj(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      QLog.d("OCRPerformFragment", 4, "receive videochat");
+      OCRPerformFragment.a(this.a).finish();
     }
-    VipTagView.a(this.a, false);
-    this.a.invalidate();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    VipTagView.a(this.a, 0.0F);
   }
 }
 

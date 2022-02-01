@@ -1,43 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.v4.util.ArraySet;
 
 class awax
-  extends amsu
+  implements aqfy
 {
-  protected void onAddFriend(String paramString)
+  awax(awaw paramawaw, String paramString) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardManager", 2, "onAddFriend " + paramString);
+    if (awaw.a(this.jdField_a_of_type_Awaw) != null) {
+      awaw.a(this.jdField_a_of_type_Awaw).remove(Integer.valueOf(paramInt1));
     }
-    ArrayList localArrayList;
-    if ((!awas.a(this.a)) && (awas.a(this.a) != null))
-    {
-      localArrayList = (ArrayList)awas.a(this.a).get(Long.valueOf(awas.a(this.a)));
-      if (localArrayList == null) {}
-    }
-    try
-    {
-      long l = Long.parseLong(paramString);
-      if (localArrayList.indexOf(Long.valueOf(l)) != -1)
-      {
-        paramString = new ArrayList(1);
-        paramString.add(Long.valueOf(l));
-        localArrayList = new ArrayList(1);
-        localArrayList.add(Long.valueOf(awas.a(this.a)));
-        HashMap localHashMap = new HashMap(5);
-        localHashMap.put("notRequest", paramString);
-        localHashMap.put("groupUin", localArrayList);
-        ((atub)awas.a(this.a).getBusinessHandler(153)).a(awas.a(this.a), paramString, localHashMap);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MultiCardManager", 2, "onAddFriend error " + paramString.toString());
-    }
+    aqgm.a().a(paramInt1);
+    this.jdField_a_of_type_Awaw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
   }
 }
 

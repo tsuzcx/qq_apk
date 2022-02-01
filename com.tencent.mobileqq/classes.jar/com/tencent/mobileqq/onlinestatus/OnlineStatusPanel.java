@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import axvo;
+import azca;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,7 +18,7 @@ import mqq.os.MqqHandler;
 public class OnlineStatusPanel
   extends RelativeLayout
 {
-  private axvo jdField_a_of_type_Axvo;
+  private azca jdField_a_of_type_Azca;
   EmoticonPagerRadioGroup jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup;
   public OnlineStatusPagerAdapter a;
   public QQViewPager a;
@@ -90,10 +90,10 @@ public class OnlineStatusPanel
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372032));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131372224));
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter = new OnlineStatusPagerAdapter(BaseApplicationImpl.getContext(), paramInt1, paramInt2, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368259));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131368404));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.getLayoutParams();
     if (paramInt2 == 1) {
@@ -113,9 +113,9 @@ public class OnlineStatusPanel
     ThreadManager.getFileThreadHandler().post(new OnlineStatusPanel.2(this, paramBoolean));
   }
   
-  public void setListener(axvo paramaxvo)
+  public void setListener(azca paramazca)
   {
-    this.jdField_a_of_type_Axvo = paramaxvo;
+    this.jdField_a_of_type_Azca = paramazca;
   }
 }
 

@@ -1,107 +1,202 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.biuAndCommentMix.RIJBiuAndCommentMixDataManager.1;
+import com.tencent.biz.pubaccount.readinjoy.biuAndCommentMix.RIJBiuAndCommentRequestData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.AuthorCommentDeleteReq;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.AuthorCommentDeleteRsp;
-import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.CardJumpInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.KeyInfo;
+import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.RspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler;", "", "authorDeleteCommentData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/AuthorCommentDeleteData;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/AuthorCommentDeleteData;)V", "getAuthorDeleteCommentData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/AuthorCommentDeleteData;", "onFailedCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOverTimes", "", "getOnFailedCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFailedCallback", "(Lkotlin/jvm/functions/Function1;)V", "onSuccessCallback", "", "getOnSuccessCallback", "setOnSuccessCallback", "serviceType", "", "getServiceType", "()I", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "handleAuthorCommentDeleteResult", "data", "", "onCommentOperationFailed", "errorCode", "errorMsg", "onCommentOperationSuccess", "send0xd1eRequest", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class owx
+public class owx
+  implements oxa
 {
-  public static final owy a;
-  @Nullable
-  private Function1<? super String, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  @NotNull
-  private final oxk jdField_a_of_type_Oxk;
-  @Nullable
-  private Function1<? super Boolean, Unit> b;
+  private owy jdField_a_of_type_Owy;
+  private owz jdField_a_of_type_Owz;
   
-  static
+  public owx()
   {
-    jdField_a_of_type_Owy = new owy(null);
-  }
-  
-  public owx(@NotNull oxk paramoxk)
-  {
-    this.jdField_a_of_type_Oxk = paramoxk;
-  }
-  
-  private final void b(byte[] paramArrayOfByte)
-  {
-    oidb_0xd1e.AuthorCommentDeleteRsp localAuthorCommentDeleteRsp = new oidb_0xd1e.AuthorCommentDeleteRsp();
-    localAuthorCommentDeleteRsp.mergeFrom(paramArrayOfByte);
-    int i = localAuthorCommentDeleteRsp.over_times.get();
-    if (i > 0)
+    Object localObject = pnn.a();
+    if (localObject != null)
     {
-      paramArrayOfByte = this.b;
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte = (Unit)paramArrayOfByte.invoke(Boolean.valueOf(true));
+      localObject = (pvp)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Owz = ((pvp)localObject).a().a();
+        if (this.jdField_a_of_type_Owz != null) {
+          this.jdField_a_of_type_Owz.a(this);
+        }
+        QLog.d("RIJBiuAndCommentMixDataManager", 1, "RIJBiuAndCommentMixDataManager init");
       }
-      QLog.d("AuthorDeleteCommentHandler", 1, "handleAuthorCommentDeleteResult | delteTimes " + i);
     }
-    do
+  }
+  
+  private oxb a(oidb_cmd0xe16.RspBody paramRspBody, int paramInt, ToServiceMsg paramToServiceMsg)
+  {
+    oxb localoxb = new oxb();
+    localoxb.a(paramInt);
+    if (paramRspBody.msg_key_info.has())
     {
-      return;
-      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-    } while (paramArrayOfByte == null);
-    paramArrayOfByte = (Unit)paramArrayOfByte.invoke("");
-  }
-  
-  @NotNull
-  public final oidb_0xd1e.ReqBody a()
-  {
-    oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
-    oidb_0xd1e.AuthorCommentDeleteReq localAuthorCommentDeleteReq = new oidb_0xd1e.AuthorCommentDeleteReq();
-    oxk localoxk = this.jdField_a_of_type_Oxk;
-    localAuthorCommentDeleteReq.article_id.set(localoxk.a().c());
-    localAuthorCommentDeleteReq.comment_type.set(localoxk.a());
-    localAuthorCommentDeleteReq.content_src.set(localoxk.a().d());
-    localAuthorCommentDeleteReq.first_comment_id.set(localoxk.a());
-    localAuthorCommentDeleteReq.sub_comment_id.set(localoxk.b());
-    localAuthorCommentDeleteReq.src.set(localoxk.a().c());
-    localAuthorCommentDeleteReq.business_info.set(localoxk.a().d());
-    localReqBody.author_comment_delete_req.set((MessageMicro)localAuthorCommentDeleteReq);
-    return localReqBody;
-  }
-  
-  public final void a()
-  {
-    oidb_0xd1e.ReqBody localReqBody = a();
-    nmb.a(pay.a(), (nmf)new owz(this), localReqBody.toByteArray(), "OidbSvc.0xd1e", 3358, 9);
-  }
-  
-  public final void a(int paramInt, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
-    QLog.d("AuthorDeleteCommentHandler", 1, "onCommentOperationFailed | errCode " + paramInt + " ; errMsg " + paramString);
-    paramString = this.b;
-    if (paramString != null) {
-      paramString = (Unit)paramString.invoke(Boolean.valueOf(false));
+      if (paramRspBody.msg_key_info.uint64_feeds_id.has()) {
+        localoxb.b(String.valueOf(paramRspBody.msg_key_info.uint64_feeds_id.get()));
+      }
+      if (paramRspBody.msg_key_info.uint32_feeds_type.has()) {
+        localoxb.b(paramRspBody.msg_key_info.uint32_feeds_type.get());
+      }
+      if ((!paramRspBody.msg_key_info.str_sub_comment_id.has()) || (TextUtils.isEmpty(paramRspBody.msg_key_info.str_sub_comment_id.get()))) {
+        break label455;
+      }
+      localoxb.a(paramRspBody.msg_key_info.str_sub_comment_id.get());
+    }
+    for (;;)
+    {
+      if (paramRspBody.msg_card_jump_info.has())
+      {
+        if ((paramRspBody.msg_card_jump_info.bytes_card_jump_url.has()) && (!TextUtils.isEmpty(paramRspBody.msg_card_jump_info.bytes_card_jump_url.get().toStringUtf8()))) {
+          localoxb.h(paramRspBody.msg_card_jump_info.bytes_card_jump_url.get().toStringUtf8());
+        }
+        if ((paramRspBody.msg_card_jump_info.bytes_comment_btn_url.has()) && (!TextUtils.isEmpty(paramRspBody.msg_card_jump_info.bytes_comment_btn_url.get().toStringUtf8()))) {
+          localoxb.i(paramRspBody.msg_card_jump_info.bytes_comment_btn_url.get().toStringUtf8());
+        }
+        if (paramRspBody.msg_card_jump_info.uint32_available.has()) {
+          localoxb.e(paramRspBody.msg_card_jump_info.uint32_available.get());
+        }
+        if (paramRspBody.msg_card_jump_info.bytes_share_url.has()) {
+          localoxb.c(paramRspBody.msg_card_jump_info.bytes_share_url.get().toStringUtf8());
+        }
+      }
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes() != null))
+      {
+        paramRspBody = (RIJBiuAndCommentRequestData)paramToServiceMsg.getAttributes().get("request_data_entry");
+        if (paramRspBody != null)
+        {
+          localoxb.d(paramRspBody.getContentString());
+          localoxb.d(paramRspBody.getListShowType());
+          localoxb.c(paramRspBody.getCommentType());
+          localoxb.e(paramRspBody.getReplyCommentId());
+          localoxb.f(paramRspBody.getReplyParentCommentId());
+          localoxb.g(paramRspBody.getReplyUin());
+          localoxb.a(paramRspBody.isIsSecondReply());
+          localoxb.f(paramRspBody.getContentSrc());
+        }
+        paramRspBody = paramToServiceMsg.getAttributes().get("article_attributes");
+        if ((paramRspBody instanceof ArticleInfo)) {
+          localoxb.a((ArticleInfo)paramRspBody);
+        }
+      }
+      QLog.d("RIJBiuAndCommentMixDataManager", 1, "onBiuAndCommentMixSend RIJBiuAndCommentRespData info is" + localoxb.toString());
+      return localoxb;
+      label455:
+      if ((paramRspBody.msg_key_info.str_comment_id.has()) && (!TextUtils.isEmpty(paramRspBody.msg_key_info.str_comment_id.get()))) {
+        localoxb.a(paramRspBody.msg_key_info.str_comment_id.get());
+      }
     }
   }
   
-  public final void a(@Nullable Function1<? super String, Unit> paramFunction1)
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean, String paramString3, String paramString4, ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    if (paramArticleInfo == null) {
+      QLog.d("RIJBiuAndCommentMixDataManager", 1, "createLocalComment article info is null");
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("comment", paramString1);
+      localJSONObject.put("commentId", paramString3);
+      localJSONObject.put("isSecondReply", paramBoolean);
+      localJSONObject.put("replyUin", paramString4);
+      paramString1 = pdv.a(paramArticleInfo);
+      if (paramString1 != null) {
+        paramString1.a(paramString1.a(paramInt1, localJSONObject.toString()), paramString2, paramInt2);
+      }
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
   
-  public final void a(@NotNull byte[] paramArrayOfByte)
+  private void a(oxb paramoxb)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "data");
-    b(paramArrayOfByte);
+    if ((paramoxb == null) || (paramoxb.a() == null))
+    {
+      QLog.d("RIJBiuAndCommentMixDataManager", 2, "reportMixCommentBiuResult | respData or mArticleInfo is null");
+      return;
+    }
+    ArticleInfo localArticleInfo = paramoxb.a();
+    paramoxb = "";
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("rowkey", localArticleInfo.innerUniqueID);
+      ((JSONObject)localObject).put("article_id", localArticleInfo.mArticleID);
+      ((JSONObject)localObject).put("content_type", 1);
+      ((JSONObject)localObject).put("time", System.currentTimeMillis() / 1000L);
+      localObject = ((JSONObject)localObject).toString();
+      paramoxb = (oxb)localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.d("RIJBiuAndCommentMixDataManager", 2, localJSONException.getMessage());
+      }
+    }
+    olh.a(null, pbq.a(localArticleInfo), "0X800AC6A", "0X800AC6A", 0, 0, String.valueOf(localArticleInfo.mArticleID), "", localArticleInfo.innerUniqueID, paramoxb, false);
   }
   
-  public final void b(@Nullable Function1<? super Boolean, Unit> paramFunction1)
+  public void a()
   {
-    this.b = paramFunction1;
+    this.jdField_a_of_type_Owz.a();
+    this.jdField_a_of_type_Owz = null;
+    this.jdField_a_of_type_Owy = null;
+    QLog.d("RIJBiuAndCommentMixDataManager", 1, "onDestroy clear info");
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, RIJBiuAndCommentRequestData paramRIJBiuAndCommentRequestData)
+  {
+    if ((paramArticleInfo == null) || (paramRIJBiuAndCommentRequestData == null)) {
+      QLog.d("RIJBiuAndCommentMixDataManager", 1, "requestCreateBiuAndCommentMixComment someThing is null");
+    }
+    while (this.jdField_a_of_type_Owz == null) {
+      return;
+    }
+    QLog.d("RIJBiuAndCommentMixDataManager", 1, "requestCreateBiuAndCommentMixComment goTo pbRequest");
+    this.jdField_a_of_type_Owz.a(paramArticleInfo, paramRIJBiuAndCommentRequestData);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    oidb_cmd0xe16.RspBody localRspBody = new oidb_cmd0xe16.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, localRspBody);
+    paramToServiceMsg = a(localRspBody, i, paramToServiceMsg);
+    ThreadManager.getUIHandler().post(new RIJBiuAndCommentMixDataManager.1(this, paramToServiceMsg, i));
+    if (i == 0) {
+      a(paramToServiceMsg);
+    }
+  }
+  
+  public void a(owy paramowy)
+  {
+    this.jdField_a_of_type_Owy = paramowy;
+    QLog.d("RIJBiuAndCommentMixDataManager", 1, "setBiuAndCommentListener");
   }
 }
 

@@ -1,229 +1,134 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.OkHttpClient.Builder;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import org.json.JSONObject;
+import java.util.LinkedHashMap;
 
 public class bgos
+  implements View.OnClickListener
 {
-  public static Map<String, Long> a;
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private int b = -1;
+  int jdField_a_of_type_Int = 1000;
+  long jdField_a_of_type_Long = 0L;
+  protected Context a;
+  protected Drawable a;
+  protected bfhz a;
+  protected bfxw a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected HashMap<Integer, bgoy> a;
+  protected Drawable b;
+  protected Drawable c;
   
-  static
+  public bgos(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, bfhz parambfhz, bfxw parambfxw)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap(10);
+    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bfhz = parambfhz;
+    this.jdField_a_of_type_Bfxw = parambfxw;
   }
   
-  public bgos(String paramString)
+  protected int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private String a()
-  {
-    return MD5.toMD5("cmd=rsp&key=a4d7ea5belhtimecard&uin=" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private String a(int paramInt)
-  {
-    return MD5.toMD5("cmd=" + paramInt + "&key=" + "a4d7ea5belhtimecard" + "&uin=" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private OkHttpClient a()
-  {
-    return new OkHttpClient().newBuilder().connectTimeout(5L, TimeUnit.SECONDS).readTimeout(5L, TimeUnit.SECONDS).build();
-  }
-  
-  private JSONObject a(int paramInt)
-  {
-    int i;
-    try
+    switch (paramInt)
     {
-      Object localObject = b(paramInt);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return null;
-      }
-      QLog.d("LhHelper", 1, "reqCgi cmd = " + paramInt);
-      localObject = new Request.Builder().url((String)localObject).build();
-      localObject = a().newCall((Request)localObject).execute();
-      i = ((Response)localObject).code();
-      if (i == 200)
-      {
-        localObject = new JSONObject(((Response)localObject).body().string()).optJSONObject("12042");
-        if (localObject == null) {
-          break label280;
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("data");
-        if (localObject == null) {
-          break label280;
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("rsp");
-        if (localObject == null) {
-          break label280;
-        }
-        i = ((JSONObject)localObject).optInt("ret");
-        String str = ((JSONObject)localObject).optString("sign");
-        QLog.d("LhHelper", 1, "reqCgi retCode = " + i);
-        if ((i == 0) && (a().equalsIgnoreCase(str))) {
-          return localObject;
-        }
-        QLog.e("LhHelper", 1, "reqCgi rsp sign error, cmd = " + paramInt);
-        return null;
-      }
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "reqCgi exception cmd =" + paramInt + ", e = ", localThrowable);
+    return 0;
+  }
+  
+  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2)) != null) {
       return null;
     }
-    QLog.e("LhHelper", 1, "reqCgi http errorCode = " + i + " ,cmd = " + paramInt);
-    label280:
-    return null;
-  }
-  
-  private JSONObject a(JSONObject paramJSONObject)
-  {
-    try
+    int i = a(paramTroopFeedItem.type);
+    bgoy localbgoy2 = (bgoy)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    bgoy localbgoy1 = localbgoy2;
+    if (localbgoy2 == null)
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("req", paramJSONObject);
-      localJSONObject1.put("12042", localJSONObject2);
-      return localJSONObject1;
+      localbgoy1 = a(i);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbgoy1);
     }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("LhHelper", 1, "buildReqData exception e = ", paramJSONObject);
+    if (localbgoy1 != null) {
+      return localbgoy1.a(paramTroopFeedItem, paramInt, paramBoolean);
     }
     return null;
   }
   
-  private String b(int paramInt)
+  protected bgoy a(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      String str = a(paramInt);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("cmd", paramInt);
-      localJSONObject.put("sign", str);
-      localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
-      str = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?data=" + a(localJSONObject);
-      return str;
+    default: 
+      return new bgov(this);
+    case 0: 
+      return new bgov(this);
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "buildReqUrl cmd = " + paramInt + "exception e = ", localThrowable);
-    }
-    return null;
+    return new bgoz(this);
   }
   
-  public int a()
+  public void a()
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(2));
   }
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (a(2) != null) {
-        return true;
-      }
-      QLog.e("LhHelper", 1, "receiveReq rsp data is error");
+    if ((paramView.getTag() instanceof bgou)) {
+      this.jdField_a_of_type_Bfxw.b(true);
     }
-    catch (Throwable localThrowable)
+    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < this.jdField_a_of_type_Int)
     {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "receiveReq exception e = ", localThrowable);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return false;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public boolean b()
-  {
-    try
-    {
-      JSONObject localJSONObject = a(3);
-      if (localJSONObject != null)
-      {
-        int i = localJSONObject.optInt("lhState", -1);
-        QLog.d("LhHelper", 1, "reqLhStatus lhState = " + i);
-        if (i == 2) {
-          return true;
-        }
-      }
-      else
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus rsp data is error");
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    int i;
+    if ((localTroopInfo != null) && (str != null)) {
+      if (str.equals(localTroopInfo.troopowneruin)) {
+        i = 0;
       }
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus exception e = ", localThrowable);
+      ((Intent)localObject).putExtra("url", String.format("https://web.qun.qq.com/qqweb/m/qun/notification/index.html?gc=%s&role=%d&_bid=2223&_wv=1031", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      localObject = paramView.getTag();
+      if (!(localObject instanceof bgox)) {
+        break;
+      }
+      localObject = ((bgox)localObject).a;
+      if ((localObject == null) || (!((TroopFeedItem)localObject).isStoryType())) {
+        break;
+      }
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_story_pgc", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+      break;
+      if ((localTroopInfo.Administrator != null) && (localTroopInfo.Administrator.contains(str))) {
+        i = 1;
+      } else {
+        i = 2;
       }
     }
-    return false;
-  }
-  
-  public int c()
-  {
-    try
-    {
-      JSONObject localJSONObject = a(1);
-      if (localJSONObject != null)
-      {
-        this.jdField_a_of_type_Int = localJSONObject.optInt("buyoutMonth", -1);
-        this.b = localJSONObject.optInt("buyoutType", -1);
-        int i = localJSONObject.optInt("cardState", -1);
-        if ((this.jdField_a_of_type_Int != -1) && (this.b != -1))
-        {
-          if (i == 0) {
-            return 1;
-          }
-        }
-        else
-        {
-          QLog.e("LhHelper", 1, "checkUserStatus buyoutData is error");
-          break label101;
-        }
-      }
-      else
-      {
-        QLog.e("LhHelper", 1, "checkUserStatus rsp data is empty");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "checkUserStatus exception e = ", localThrowable);
-    }
-    return 2;
-    label101:
-    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgos
  * JD-Core Version:    0.7.0.1
  */

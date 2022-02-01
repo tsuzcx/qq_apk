@@ -17,7 +17,7 @@ final class PhoneContactManagerImp$23
     Object localObject = null;
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844902);
+      Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844976);
       localObject = localBitmap;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

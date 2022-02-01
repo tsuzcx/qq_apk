@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
@@ -58,6 +59,11 @@ public class MapJsPlugin
     for (;;)
     {
       return;
+      if (((this.mMiniAppContext instanceof BaseRuntime)) && (!((BaseRuntime)this.mMiniAppContext).isForground()))
+      {
+        paramRequestEvent.fail("app is not in the forground.");
+        return;
+      }
       if (!TextUtils.isEmpty(paramString2)) {}
       for (boolean bool = true; !((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(this.mMiniAppContext.getAttachedActivity(), paramString1, bool, new MapJsPlugin.3(this, paramOnLocationFinish, paramRequestEvent)); bool = false)
       {
@@ -97,7 +103,7 @@ public class MapJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.MapJsPlugin
  * JD-Core Version:    0.7.0.1
  */

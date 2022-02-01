@@ -5,10 +5,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import odq;
-import pay;
-import pbg;
-import qod;
+import olh;
+import pqf;
+import pqg;
+import rai;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class PTSLiteSwiperEventDispatcher$handleSwiperDrag$1
@@ -21,12 +21,12 @@ public final class PTSLiteSwiperEventDispatcher$handleSwiperDrag$1
     if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
       QLog.i("PTSLiteSwiperEventDispatcher", 1, "[handleSwiperDrag] identifier is null.");
     }
-    Object localObject = pay.a();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyUtils.baseR5Builder()");
-    ((pbg)localObject).a("type", "1");
-    localObject = qod.a(((pbg)localObject).a(), this.jdField_a_of_type_JavaUtilHashMap);
+    Object localObject = pqf.a();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJTransMergeKanDianReport.baseR5Builder()");
+    ((pqg)localObject).a("type", "1");
+    localObject = rai.a(((pqg)localObject).a(), this.jdField_a_of_type_JavaUtilHashMap);
     QLog.i("PTSLiteSwiperEventDispatcher", 1, "[handleSwiperDrag], actionName = 0X800A5CC, r5 = " + (String)localObject);
-    odq.a(null, "", "0X800A5CC", "0X800A5CC", 0, 0, "", "", "", (String)localObject);
+    olh.a(null, "", "0X800A5CC", "0X800A5CC", 0, 0, "", "", "", (String)localObject);
   }
 }
 

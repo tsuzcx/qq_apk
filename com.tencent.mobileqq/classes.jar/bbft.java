@@ -1,30 +1,41 @@
-import android.text.TextUtils;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
-public class bbft
+class bbft
+  implements ServiceConnection
 {
-  public int a;
-  public String a;
+  bbft(bbfs parambbfs) {}
   
-  public bbft(String paramString, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString.equals(paramString);
+    bbfr.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Bbfo.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
+    {
+      this.a.b.send(paramComponentName);
+      return;
     }
-    return false;
+    catch (RemoteException paramComponentName)
+    {
+      bbfr.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
   }
   
-  public String toString()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    this.a.b = null;
   }
 }
 

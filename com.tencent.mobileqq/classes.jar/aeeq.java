@@ -1,32 +1,20 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aeeq
-  implements View.OnKeyListener
+  implements adnm
 {
-  public aeeq(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public aeeq(JumpActivity paramJumpActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAfterStartActivity()
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label36;
-      }
-      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
-    }
-    for (;;)
-    {
-      return false;
-      label36:
-      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
-        SelectedAndSearchBar.a(this.a).a();
-      }
-    }
+    this.a.finish();
+  }
+  
+  public void onBeforeStartActivity() {}
+  
+  public void onCancel()
+  {
+    this.a.finish();
   }
 }
 

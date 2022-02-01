@@ -1,53 +1,89 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfcz
 {
-  private static final Drawable a = new ColorDrawable(-5658199);
-  
-  public static String a()
+  public static void a(Context paramContext)
   {
-    return "https://qun.qq.com/interactive/userhonor?gc=<$GC>&uin=<$UIN>&_wv=3&&_wwv=128";
+    String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.10", Integer.valueOf(0) });
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", str);
+    localIntent.putExtra("isShowAd", false);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    paramContext.startActivity(localIntent);
+    ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.troopCreate", 2, "enterTroopCreate");
+    }
   }
   
-  protected static void a()
+  public static void a(Context paramContext, int paramInt)
   {
-    int i = 0;
-    while (i < 20)
+    if ((paramInt == 1) || (paramInt == 2)) {}
+    for (String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.10", Integer.valueOf(1) });; str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.10", Integer.valueOf(0) }))
     {
-      Object localObject = String.format("https://pub.idqqimg.com/pc/misc/groupgift/global_troop_level_%d.png", new Object[] { Integer.valueOf(i) });
-      URLDrawable.removeMemoryCacheByUrl((String)localObject);
-      localObject = AbsDownloader.getFile((String)localObject);
-      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isFile())) {
-        ((File)localObject).delete();
+      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("isShowAd", false);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("troop_create_from", paramInt);
+      ((BaseActivity)paramContext).startActivityForResult(localIntent, 51);
+      ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.troopCreate", 2, "enterTroopCreateForResult");
       }
-      i += 1;
+      return;
     }
   }
   
-  public static boolean a(Context paramContext)
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-    String str = new SimpleDateFormat("yyyy年MM月dd日").format(localCalendar.getTime());
-    if ((!TextUtils.isEmpty(str)) && (str.equals(SharePreferenceUtils.get(paramContext, "glamour_has_update_today")))) {
-      return false;
+    if ((paramContext == null) || (paramBundle == null)) {
+      return;
     }
-    if (localCalendar.get(11) >= 4)
-    {
-      a();
-      SharePreferenceUtils.set(paramContext, "glamour_has_update_today", str);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtras(paramBundle);
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("isShowAd", false);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    Object localObject = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.10", Integer.valueOf(0) });
+    paramString = (String)localObject + String.format("&initgrouptype=%s", new Object[] { paramString });
+    localObject = new Intent(paramContext, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramString);
+    ((Intent)localObject).putExtra("isShowAd", false);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    paramContext.startActivity((Intent)localObject);
+    ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.troopCreate", 2, "enterTroopCreateFromH5");
     }
-    return true;
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString1);
+    localIntent.putExtra("uin", paramString2);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", false);
+    localIntent.putExtra("isShowAd", false);
+    paramContext.startActivity(localIntent);
   }
 }
 

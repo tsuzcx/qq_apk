@@ -1,14 +1,37 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QZoneCommonRequest;
+import cooperation.qzone.QzoneExternalRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class arvg
-  extends asbj
+  extends MSFServlet
 {
-  public arvg(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
-  
-  protected void onZipImageThumbDownloadCompleted(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
+    if (paramIntent == null) {}
+    while (!(paramIntent instanceof QzoneCommonIntent)) {
+      return;
+    }
+    paramIntent = (QzoneCommonIntent)paramIntent;
+    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if ((paramIntent instanceof QzoneCommonIntent))
+    {
+      QZoneCommonRequest localQZoneCommonRequest = ((QzoneCommonIntent)paramIntent).getRequest();
+      byte[] arrayOfByte = localQZoneCommonRequest.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localQZoneCommonRequest.uniKey());
+      paramPacket.putSendData(paramIntent);
     }
   }
 }

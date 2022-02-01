@@ -1,8 +1,19 @@
-import eipc.EIPCResult;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
-public abstract interface aubb
+public class aubb
+  implements ault
 {
-  public abstract void a(String paramString, EIPCResult paramEIPCResult);
+  public aubb(SimpleFileViewer paramSimpleFileViewer) {}
+  
+  public void a()
+  {
+    this.a.e();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.i(paramString);
+  }
 }
 
 

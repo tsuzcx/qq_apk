@@ -1,38 +1,20 @@
-import android.os.SystemClock;
-import android.support.v4.util.SimpleArrayMap;
-import com.tencent.biz.videostory.EventControlUtils.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import java.util.Timer;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zvm
+class zvm
+  implements View.OnClickListener
 {
-  private static SimpleArrayMap<String, Long> a = new SimpleArrayMap();
-  private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
+  zvm(zvh paramzvh, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public static void a(String paramString, long paramLong, zvn paramzvn)
+  public void onClick(View paramView)
   {
-    try
-    {
-      Object localObject = (Long)a.get(paramString);
-      long l = SystemClock.elapsedRealtime();
-      QLog.i("EventControlUtils", 2, "currentTime" + l);
-      if ((localObject != null) && (l - ((Long)localObject).longValue() < paramLong))
-      {
-        LogUtils.w("EventControlUtils", "throttling in timeInterval" + paramLong);
-        return;
-      }
-      a.put(paramString, Long.valueOf(l));
-      localObject = (Timer)b.get(paramString);
-      if (localObject != null) {
-        ((Timer)localObject).cancel();
-      }
-      localObject = new Timer();
-      ((Timer)localObject).schedule(new EventControlUtils.1(paramzvn), paramLong);
-      b.put(paramString, localObject);
-      return;
-    }
-    catch (Exception paramString) {}
+    zux.b(this.jdField_a_of_type_Zvh.a, zux.a(this.jdField_a_of_type_Zvh.a).a(zux.a(this.jdField_a_of_type_Zvh.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
+    zux.c(this.jdField_a_of_type_Zvh.a, true);
+    zux.a(this.jdField_a_of_type_Zvh.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

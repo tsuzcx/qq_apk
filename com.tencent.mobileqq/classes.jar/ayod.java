@@ -1,114 +1,44 @@
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementHelper.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.NotificationCompat.BigTextStyle;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.support.v4.app.NotificationCompat.Style;
+import android.text.TextUtils;
+import androidx.annotation.RequiresApi;
+import com.tencent.commonsdk.util.notification.SdkInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ayod
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/NotificationBuilder;", "", "()V", "build", "Landroid/app/Notification;", "contentIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayod
 {
-  public static String a(int paramInt)
-  {
-    String str = "";
-    if ((paramInt >= 1) && (paramInt < 10000)) {
-      str = String.valueOf(paramInt);
-    }
-    do
-    {
-      return str;
-      if ((paramInt >= 10000) && (paramInt < 100000000))
-      {
-        if (paramInt % 10000 < 500) {
-          return paramInt / 10000 + "万";
-        }
-        f = paramInt * 1.0F / 10000.0F;
-        return Math.round(f * 10.0F) * 1.0F / 10.0F + "万";
-      }
-    } while (paramInt < 100000000);
-    if (paramInt % 100000000 < 5000000) {
-      return paramInt / 100000000 + "亿";
-    }
-    float f = paramInt * 1.0F / 1.0E+008F;
-    return Math.round(f * 10.0F) * 1.0F / 10.0F + "亿";
-  }
+  public static final ayod a = new ayod();
   
-  public static void a(Context paramContext)
+  @RequiresApi(16)
+  @NotNull
+  public final Notification a(@Nullable PendingIntent paramPendingIntent, @NotNull ayog paramayog)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeAchivementHelper", 2, String.format("jumpToLifeAchivementMiniAppAddPage miniAppUrl=%s", new Object[] { "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Findex%2Findex&_vt=3&referer=2062&via=2062_3&_sig=1925072163" }));
+    Intrinsics.checkParameterIsNotNull(paramayog, "pushComponent");
+    NotificationCompat.BigTextStyle localBigTextStyle = new NotificationCompat.BigTextStyle();
+    localBigTextStyle.bigText((CharSequence)paramayog.c);
+    paramPendingIntent = new NotificationCompat.Builder((Context)BaseApplication.context).setSmallIcon(2130841445).setAutoCancel(true).setContentText((CharSequence)paramayog.c).setWhen(System.currentTimeMillis()).setTicker((CharSequence)paramayog.c).setContentIntent(paramPendingIntent).setPriority(2).setStyle((NotificationCompat.Style)localBigTextStyle);
+    if (!TextUtils.isEmpty((CharSequence)paramayog.a)) {
+      paramPendingIntent.setContentTitle((CharSequence)paramayog.a);
     }
-    MiniAppLauncher.startMiniApp(paramContext, "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Findex%2Findex&_vt=3&referer=2062&via=2062_3&_sig=1925072163", 2062, null);
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramString = "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Fachievement%2Fachievement&_vt=3&referer=2062&via=2062_3&_sig=831969013&openid=" + paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeAchivementHelper", 2, String.format("jumpToLifeAchivementMiniAppAchivementListPage miniAppUrl=%s", new Object[] { paramString }));
+    if ((SdkInfoUtil.isOreo()) && (SdkInfoUtil.isTargetSDKOreo())) {
+      paramPendingIntent.setChannelId("CHANNEL_ID_OTHER");
     }
-    MiniAppLauncher.startMiniApp(paramContext, paramString, 2062, null);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramString = "mqqapi://miniapp/open?_atype=0&_mappid=1110348796&_mvid=&_path=pages%2Fachievement%2Fachievement&_vt=3&referer=2062&via=2062_3&_sig=831969013&openid=" + paramString + "&achievement_id=" + paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("LifeAchivementHelper", 2, String.format("jumpToLifeAchivementMiniAppAchiivementDetailPage miniAppUrl=%s", new Object[] { paramString }));
+    paramayog = ayoh.a.a(paramayog.b);
+    if (paramayog != null) {
+      paramPendingIntent.setLargeIcon(paramayog);
     }
-    MiniAppLauncher.startMiniApp(paramContext, paramString, 2062, null);
-  }
-  
-  public static void a(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setClickable(false);
-    paramView.postDelayed(new LifeAchivementHelper.1(paramView), 500L);
-  }
-  
-  public static boolean a(Card paramCard, bhha parambhha, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool2;
-    boolean bool3;
-    label31:
-    boolean bool1;
-    if ((parambhha == null) || (parambhha.a(10)))
-    {
-      bool2 = true;
-      if ((paramCard == null) || (paramCard.switch_life_achievement == 1)) {
-        break label116;
-      }
-      bool3 = true;
-      if (!paramBoolean1) {
-        break label128;
-      }
-      if ((!bool2) || (!bool3)) {
-        break label122;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LifeAchivementHelper", 2, String.format("shouldShowAchivementPanelOrNot configEnable:%s,switchEnable:%s,hasLifeAchivement:%s,isSelf:%s,result:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool1) }));
-      }
-      return bool1;
-      bool2 = false;
-      break;
-      label116:
-      bool3 = false;
-      break label31;
-      label122:
-      bool1 = false;
-      continue;
-      label128:
-      if ((bool2) && (bool3) && (paramBoolean2)) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-    }
+    paramPendingIntent = paramPendingIntent.build();
+    Intrinsics.checkExpressionValueIsNotNull(paramPendingIntent, "notifyBuilder.build()");
+    return paramPendingIntent;
   }
 }
 

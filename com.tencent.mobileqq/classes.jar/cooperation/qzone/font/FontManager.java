@@ -1,8 +1,8 @@
 package cooperation.qzone.font;
 
 import android.text.TextUtils;
-import aqxf;
-import avki;
+import asbp;
+import awqn;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.FontSoLoader;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -32,7 +32,7 @@ public class FontManager
   public static final String FONT_SUFFIX_TTF = ".ttf";
   static final String TAG = "FontManager";
   private static FileCacheService mFileCache;
-  private static final avki<FontManager, Void> sSingleton = new FontManager.1();
+  private static final awqn<FontManager, Void> sSingleton = new FontManager.1();
   private ConcurrentHashMap<Integer, FontInfo> catchFontInfoMap = new ConcurrentHashMap();
   private ConcurrentHashMap<Integer, ArrayList<FontManager.DownLoadFontTask>> downloadingFontIDs;
   private String fontDir;
@@ -850,10 +850,10 @@ public class FontManager
     LocalMultiProcConfig.putString4Uin("qzone_super_font_save_data", (String)localObject, paramLong);
   }
   
-  public void startFontSoDownload(aqxf paramaqxf)
+  public void startFontSoDownload(asbp paramasbp)
   {
-    paramaqxf = new FontManager.2(this);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.a, null, paramaqxf);
+    paramasbp = new FontManager.2(this);
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gk.a, null, paramasbp);
   }
 }
 

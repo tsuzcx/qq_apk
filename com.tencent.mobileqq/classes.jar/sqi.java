@@ -1,29 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.BubblePopupWindow;
 
-public class sqi
-  implements View.OnClickListener
+class sqi
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public sqi(ReadinjoyTabbar paramReadinjoyTabbar) {}
+  sqi(sqd paramsqd) {}
   
-  public void onClick(View paramView)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
-    {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).a();
-      label49:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i = paramSeekBar.getProgress();
+    int j = sqd.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + spm.a(j));
     }
-    catch (Exception localException)
+    if (j == 3) {
+      sqd.a(this.a).a(i * 1000, sqd.a(this.a));
+    }
+    for (;;)
     {
-      break label49;
+      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+      return;
+      if (j == 5) {
+        sqd.a(this.a).c(i * 1000);
+      }
     }
   }
 }

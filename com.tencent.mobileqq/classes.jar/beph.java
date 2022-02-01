@@ -1,20 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
 
-public class beph
-  extends beou
+class beph
+  extends aofu
 {
-  public beph(View paramView)
-  {
-    super(paramView);
-  }
+  beph(bepg parambepg) {}
   
-  protected void a()
+  protected void onTroopFlagExt3Update(String paramString, long paramLong)
   {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
+    if ((0x40000000 & paramLong) != 0L)
+    {
+      bepg.a(this.a).a(EditorState.CLOSED_BY_ADMIN, bepg.a(this.a).getString(2131720152));
+      return;
+    }
+    bepg.a(this.a).a(EditorState.OPEN_BY_ADMIN);
   }
 }
 

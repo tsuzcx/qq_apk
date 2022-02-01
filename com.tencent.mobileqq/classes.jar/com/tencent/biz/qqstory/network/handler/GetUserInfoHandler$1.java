@@ -3,30 +3,30 @@ package com.tencent.biz.qqstory.network.handler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import wcg;
+import wrb;
 
 public class GetUserInfoHandler$1
   implements Runnable
 {
-  public GetUserInfoHandler$1(wcg paramwcg) {}
+  public GetUserInfoHandler$1(wrb paramwrb) {}
   
   public void run()
   {
-    synchronized (wcg.a(this.this$0))
+    synchronized (wrb.a(this.this$0))
     {
-      if (!wcg.a(this.this$0).isEmpty())
+      if (!wrb.a(this.this$0).isEmpty())
       {
-        this.this$0.a(1, wcg.a(this.this$0));
-        wcg.a(this.this$0, new ArrayList());
+        this.this$0.a(1, wrb.a(this.this$0));
+        wrb.a(this.this$0, new ArrayList());
       }
-      wcg.a(this.this$0).set(false);
+      wrb.a(this.this$0).set(false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

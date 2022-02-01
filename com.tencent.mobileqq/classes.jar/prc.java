@@ -1,28 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public class prc
-  implements prl
+final class prc
+  implements INetEventHandler
 {
-  public prc(VideoView paramVideoView) {}
+  prc(Context paramContext) {}
   
-  public void a(String[] paramArrayOfString1, String[] arg2)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if ((??? != null) && (???.length > 0) && (paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
+    if (paramBoolean)
     {
-      String str = ???[0];
-      synchronized (this.a)
-      {
-        if ((!TextUtils.isEmpty(VideoView.access$3200(this.a))) && (VideoView.access$3200(this.a).equals(paramArrayOfString1[0])))
-        {
-          this.a.openVideoByUrl(str);
-          return;
-        }
-        QLog.d("gifvideo.VideoView", 2, "not current video");
-      }
+      prb.a(this.a);
+      return;
     }
-    QLog.d("gifvideo.VideoView", 2, "urls null");
+    prb.a("");
+    prb.b("");
   }
 }
 

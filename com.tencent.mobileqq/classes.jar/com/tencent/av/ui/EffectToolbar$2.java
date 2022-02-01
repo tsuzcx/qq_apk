@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
-import lhr;
+import lid;
 
 class EffectToolbar$2
   implements Runnable

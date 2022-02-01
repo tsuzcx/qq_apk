@@ -1,16 +1,22 @@
-public abstract interface aqoy
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+
+public class aqoy
+  implements aqov
 {
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void c(String paramString1, String paramString2);
-  
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public void launch(Context paramContext, ColorNote paramColorNote)
+  {
+    String str = paramColorNote.getSubType();
+    Object localObject = str.split("-");
+    if (localObject.length > 0) {
+      str = localObject[0];
+    }
+    if (localObject.length > 1) {
+      localObject = localObject[1];
+    }
+    paramColorNote = paramColorNote.getReserve();
+    bmaf.a(paramContext, "", Long.parseLong(str), paramColorNote);
+  }
 }
 
 

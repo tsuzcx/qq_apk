@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import amtj;
+import aanb;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
-import zxp;
 
 class VideoPlayerView$19
   implements Runnable
@@ -13,9 +13,9 @@ class VideoPlayerView$19
   {
     VideoPlayerView.a(this.this$0, 9);
     VideoPlayerView.b(this.this$0, false);
-    zxp.a("subscribe_account_video_play", zxp.a(zxp.a(this.a, 0L, VideoPlayerView.a(this.this$0), 0L)));
+    aanb.a("subscribe_account_video_play", aanb.a(aanb.a(this.a, 0L, VideoPlayerView.a(this.this$0), 0L)));
     if (!VideoPlayerView.j(this.this$0)) {
-      QQToast.a(this.this$0.getContext(), 1, amtj.a(2131715359), 0).a();
+      QQToast.a(this.this$0.getContext(), 1, anvx.a(2131715707), 0).a();
     }
   }
 }

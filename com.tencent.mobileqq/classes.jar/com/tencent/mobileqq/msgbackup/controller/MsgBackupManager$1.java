@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import avtq;
-import avwu;
+import awzs;
+import axcw;
 
 public class MsgBackupManager$1
   implements Runnable
 {
-  public MsgBackupManager$1(avtq paramavtq) {}
+  public MsgBackupManager$1(awzs paramawzs) {}
   
   public void run()
   {
-    avwu.a("MsgBackup.BackupAndMigrateManager", "onDestory .....deleteMsgBackupFiles.", new Object[0]);
+    axcw.a("MsgBackup.BackupAndMigrateManager", "onDestory .....deleteMsgBackupFiles.", new Object[0]);
     this.this$0.f();
   }
 }

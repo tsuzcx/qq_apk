@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.view.OcrImageTextView;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 
 public class axlf
-  implements axor
+  implements axkq
 {
-  public axlf(OCRPerformFragment paramOCRPerformFragment) {}
+  public axlf(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void a()
+  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    axlj.a("0X800AAE1", 0);
-    if (OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(false);
-    }
-  }
-  
-  public void b()
-  {
-    if (!OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(true);
-    }
+    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
+    Bundle localBundle = new Bundle();
+    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
+    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
+    paramString.setData(localBundle);
+    paramString.sendToTarget();
   }
 }
 

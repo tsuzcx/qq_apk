@@ -7,12 +7,12 @@ import android.support.v4.view.PagerAdapter;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import bbxj;
-import bmql;
-import bmqu;
-import bmsq;
-import bmyx;
-import boba;
+import bdee;
+import bogd;
+import bogm;
+import boii;
+import boop;
+import bpqs;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -30,58 +30,58 @@ public class QIMPtvTemplateViewPagerAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  bmyx jdField_a_of_type_Bmyx;
-  private boba jdField_a_of_type_Boba;
+  boop jdField_a_of_type_Boop;
+  private bpqs jdField_a_of_type_Bpqs;
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
   public HashMap<Integer, GridView> a;
-  private List<bmsq> jdField_a_of_type_JavaUtilList;
+  private List<boii> jdField_a_of_type_JavaUtilList;
   
-  public QIMPtvTemplateViewPagerAdapter(Context paramContext, bmyx parambmyx, int paramInt)
+  public QIMPtvTemplateViewPagerAdapter(Context paramContext, boop paramboop, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bmyx = parambmyx;
+    this.jdField_a_of_type_Boop = paramboop;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boba = ((boba)bmql.a(3));
+    this.jdField_a_of_type_Bpqs = ((bpqs)bogd.a(3));
   }
   
-  public bmsq a(int paramInt)
+  public boii a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt) && (paramInt >= 0)) {
-      return (bmsq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (boii)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public bmsq a(bmsq parambmsq)
+  public boii a(boii paramboii)
   {
-    if (parambmsq == null) {
-      return parambmsq;
+    if (paramboii == null) {
+      return paramboii;
     }
     int i;
     label17:
     int j;
     label25:
-    bmsq localbmsq;
+    boii localboii;
     if (!AIManager.isDetectorReady(AEDetectorType.SEGMENT))
     {
       i = 1;
-      if (bbxj.f()) {
+      if (bdee.f()) {
         break label187;
       }
       j = 1;
       if ((j == 0) && (i == 0)) {
         break label190;
       }
-      localbmsq = new bmsq();
-      localbmsq.jdField_a_of_type_Int = parambmsq.jdField_a_of_type_Int;
-      localbmsq.jdField_a_of_type_JavaLangString = parambmsq.jdField_a_of_type_JavaLangString;
-      localbmsq.b = parambmsq.b;
-      localbmsq.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if ((parambmsq.jdField_a_of_type_JavaUtilList == null) || (parambmsq.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      localboii = new boii();
+      localboii.jdField_a_of_type_Int = paramboii.jdField_a_of_type_Int;
+      localboii.jdField_a_of_type_JavaLangString = paramboii.jdField_a_of_type_JavaLangString;
+      localboii.b = paramboii.b;
+      localboii.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if ((paramboii.jdField_a_of_type_JavaUtilList == null) || (paramboii.jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break label198;
       }
-      parambmsq = parambmsq.jdField_a_of_type_JavaUtilList.iterator();
+      paramboii = paramboii.jdField_a_of_type_JavaUtilList.iterator();
     }
     label187:
     label190:
@@ -89,17 +89,17 @@ public class QIMPtvTemplateViewPagerAdapter
     for (;;)
     {
       label110:
-      if (!parambmsq.hasNext()) {
+      if (!paramboii.hasNext()) {
         break label198;
       }
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)parambmsq.next();
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramboii.next();
       if (((i != 0) && (localPtvTemplateInfo.kind == 7)) || ((j != 0) && (localPtvTemplateInfo.kind == 11))) {}
       for (int k = 1;; k = 0)
       {
         if (k != 0) {
           break label196;
         }
-        localbmsq.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
+        localboii.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
         break label110;
         i = 0;
         break label17;
@@ -109,10 +109,10 @@ public class QIMPtvTemplateViewPagerAdapter
       }
     }
     label198:
-    return localbmsq;
+    return localboii;
   }
   
-  public void a(List<bmsq> paramList)
+  public void a(List<boii> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -123,8 +123,8 @@ public class QIMPtvTemplateViewPagerAdapter
     paramViewGroup = (GridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     if (paramViewGroup != null)
     {
-      paramViewGroup = (bmqu)paramViewGroup.getAdapter();
-      this.jdField_a_of_type_Boba.a(paramViewGroup);
+      paramViewGroup = (bogm)paramViewGroup.getAdapter();
+      this.jdField_a_of_type_Bpqs.a(paramViewGroup);
     }
   }
   
@@ -140,7 +140,7 @@ public class QIMPtvTemplateViewPagerAdapter
     }
     GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     int j;
-    bmqu localbmqu;
+    bogm localbogm;
     if (localGridView == null)
     {
       localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
@@ -161,13 +161,13 @@ public class QIMPtvTemplateViewPagerAdapter
         localGridView.setPadding(k, k, k, i * 4);
         localGridView.setClipToPadding(false);
         localGridView.setSelector(new ColorDrawable(0));
-        localbmqu = new bmqu(this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_Bmyx, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Boba.a(localbmqu, 112);
-        this.jdField_a_of_type_Boba.a(localbmqu, 113);
-        this.jdField_a_of_type_Boba.a(localbmqu, 114);
-        this.jdField_a_of_type_Boba.a(localbmqu, 115);
+        localbogm = new bogm(this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_Boop, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Bpqs.a(localbogm, 112);
+        this.jdField_a_of_type_Bpqs.a(localbogm, 113);
+        this.jdField_a_of_type_Bpqs.a(localbogm, 114);
+        this.jdField_a_of_type_Bpqs.a(localbogm, 115);
         if (paramInt == 0) {
-          this.jdField_a_of_type_Boba.a(localbmqu, 111);
+          this.jdField_a_of_type_Bpqs.a(localbogm, 111);
         }
         localGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localGridView);
@@ -175,22 +175,22 @@ public class QIMPtvTemplateViewPagerAdapter
     }
     for (;;)
     {
-      localbmqu.a(a((bmsq)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
-      localGridView.setAdapter(localbmqu);
+      localbogm.a(a((boii)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      localGridView.setAdapter(localbogm);
       paramViewGroup.addView(localGridView);
       if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateViewPagerAdapter", 2, "instantiateItem: invoked. info: ptvTemplateAdapter = " + localbmqu);
+        QLog.i("PtvTemplateViewPagerAdapter", 2, "instantiateItem: invoked. info: ptvTemplateAdapter = " + localbogm);
       }
       return localGridView;
       localGridView.setHorizontalSpacing(j);
       break;
-      localbmqu = (bmqu)localGridView.getAdapter();
-      this.jdField_a_of_type_Boba.a(localbmqu, 112);
-      this.jdField_a_of_type_Boba.a(localbmqu, 113);
-      this.jdField_a_of_type_Boba.a(localbmqu, 114);
-      this.jdField_a_of_type_Boba.a(localbmqu, 115);
+      localbogm = (bogm)localGridView.getAdapter();
+      this.jdField_a_of_type_Bpqs.a(localbogm, 112);
+      this.jdField_a_of_type_Bpqs.a(localbogm, 113);
+      this.jdField_a_of_type_Bpqs.a(localbogm, 114);
+      this.jdField_a_of_type_Bpqs.a(localbogm, 115);
       if (paramInt == 0) {
-        this.jdField_a_of_type_Boba.a(localbmqu, 111);
+        this.jdField_a_of_type_Bpqs.a(localbogm, 111);
       }
     }
   }

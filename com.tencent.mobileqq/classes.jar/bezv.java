@@ -1,43 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bezv
+  implements QQPermissionCallback
 {
-  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends Entity> paramMap, long paramLong)
+  public bezv(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramMap == null) {
-      QLog.e("SerializableManager", 4, "bad Entity Param");
-    }
-    Object localObject;
-    do
-    {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject = new TroopFileTansferItemEntity();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    } while (!paramQQAppInterface.drop(((TroopFileTansferItemEntity)localObject).getTableName()));
-    paramMap = paramMap.values().iterator();
-    while (paramMap.hasNext())
-    {
-      localObject = (Entity)paramMap.next();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-      ((Entity)localObject).setStatus(1000);
-      paramQQAppInterface.persist((Entity)localObject);
-    }
-    return true;
+    bhdj.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezv
  * JD-Core Version:    0.7.0.1
  */

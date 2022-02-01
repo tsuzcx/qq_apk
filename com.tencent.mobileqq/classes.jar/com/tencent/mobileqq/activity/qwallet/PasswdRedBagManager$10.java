@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajuj;
-import ajul;
+import akqc;
+import akqe;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,16 +11,16 @@ import java.util.Set;
 public class PasswdRedBagManager$10
   implements Runnable
 {
-  public PasswdRedBagManager$10(ajul paramajul) {}
+  public PasswdRedBagManager$10(akqe paramakqe) {}
   
   public void run()
   {
     try
     {
-      Object localObject = ajul.a(this.this$0).a();
+      Object localObject = akqe.a(this.this$0).a();
       if (localObject != null)
       {
-        ajul.a(this.this$0, false);
+        akqe.a(this.this$0, false);
         localObject = ((HashMap)localObject).entrySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
@@ -35,7 +35,7 @@ public class PasswdRedBagManager$10
       if (QLog.isDevelopLevel()) {
         localThrowable.printStackTrace();
       }
-      ajul.b(this.this$0, false);
+      akqe.b(this.this$0, false);
     }
   }
 }

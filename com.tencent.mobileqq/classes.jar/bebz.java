@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Intent;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2.1;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class bebz
-  implements DialogInterface.OnClickListener
+public class bebz
+  implements biyn
 {
-  bebz(bebp parambebp, FileManagerEntity paramFileManagerEntity) {}
+  public bebz(TeamWorkForceShare.2.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (paramInt == 1) {
-      bebp.a(this.jdField_a_of_type_Bebp, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if ((TeamWorkForceShare.b(this.a.a.this$0) == null) || (!TeamWorkForceShare.b(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d(TeamWorkForceShare.a(), 1, "wx rsp = " + paramBaseResp.errCode);
+    if (this.a.a.a) {}
+    for (byte b = 86;; b = 120)
+    {
+      TeamWorkForceShare.a(this.a.a.this$0).onActivityResult(new Intent(), b, paramBaseResp.errCode);
+      WXShareHelper.a().b(this);
+      return;
     }
   }
 }

@@ -17,7 +17,6 @@ import com.tencent.ad.tangram.loader.AdLoaderWithJSON;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.net.AdNet;
-import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.protocol.gdt_analysis_event;
 import com.tencent.ad.tangram.util.AdAppUtil;
 import com.tencent.ad.tangram.util.AdClickUtil.Params;
@@ -107,15 +106,6 @@ public final class AdReporterForAnalysis
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
-  public static AdAnalysisEvent createEventForGetQADID(Context paramContext, int paramInt, long paramLong)
-  {
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1044, localgdt_analysis_event);
-    localgdt_analysis_event.internalErrorCode = paramInt;
-    localgdt_analysis_event.duration = paramLong;
-    return new AdAnalysisEvent(localgdt_analysis_event, 102);
-  }
-  
   public static AdAnalysisEvent createEventForIPV4(Context paramContext, int paramInt)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
@@ -157,7 +147,7 @@ public final class AdReporterForAnalysis
     }
   }
   
-  public static AdAnalysisEvent createEventForLocation(Context paramContext, boolean paramBoolean, long paramLong)
+  public static AdAnalysisEvent createEventForLocation(Context paramContext, boolean paramBoolean, long paramLong1, long paramLong2)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, 1038, localgdt_analysis_event);
@@ -165,8 +155,9 @@ public final class AdReporterForAnalysis
     for (int i = 0;; i = 1)
     {
       localgdt_analysis_event.internalErrorCode = i;
+      localgdt_analysis_event.duration = paramLong1;
       if (paramBoolean) {
-        localgdt_analysis_event.interval = paramLong;
+        localgdt_analysis_event.interval = paramLong2;
       }
       return new AdAnalysisEvent(localgdt_analysis_event, 102);
     }
@@ -286,17 +277,6 @@ public final class AdReporterForAnalysis
     reportForStatisticsStart(paramContext, 4, paramAd, paramString);
   }
   
-  public static void reportForActivityStatusChanged(Context paramContext, Ad paramAd, String paramString1, int paramInt, String paramString2)
-  {
-    paramAd = createEventForAd(paramContext, 1102, paramAd);
-    paramAd.api = paramString1;
-    paramAd.activityStatus = paramInt;
-    paramAd.androidFromProcessName = paramString2;
-    paramAd.androidToProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    paramAd.androidActivityName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
-  }
-  
   public static void reportForAppInstalled(AdClickUtil.Params paramParams)
   {
     Object localObject2 = null;
@@ -331,6 +311,27 @@ public final class AdReporterForAnalysis
   public static void reportForBanner(Context paramContext, Ad paramAd)
   {
     paramAd = createEventForAd(paramContext, 1054, paramAd);
+    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
+  }
+  
+  public static void reportForCanvasDataBuildEnd(Context paramContext, Ad paramAd, boolean paramBoolean, long paramLong)
+  {
+    paramAd = createEventForAd(paramContext, 1202, paramAd);
+    paramAd.duration = paramLong;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramAd.errorCode1 = i;
+      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
+      return;
+    }
+  }
+  
+  public static void reportForCanvasDataBuildError(Context paramContext, Ad paramAd, String paramString)
+  {
+    paramAd = createEventForAd(paramContext, 1201, paramAd);
+    paramAd.androidActivityName = paramString;
+    paramAd.internalErrorMessage = paramString;
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
   }
   
@@ -828,16 +829,6 @@ public final class AdReporterForAnalysis
   public static void reportForSdkMsgStatisticsStart(Context paramContext, Ad paramAd, String paramString)
   {
     reportForStatisticsStart(paramContext, 6, paramAd, paramString);
-  }
-  
-  public static void reportForStartActivity(Context paramContext, Ad paramAd, String paramString1, String paramString2)
-  {
-    paramAd = createEventForAd(paramContext, 1101, paramAd);
-    paramAd.api = paramString1;
-    paramAd.androidFromProcessName = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    paramAd.androidToProcessName = paramString2;
-    paramAd.androidActivityName = paramString2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
   }
   
   private static void reportForStatisticsEnd(Context paramContext, int paramInt, int[] paramArrayOfInt, Ad paramAd, AdHttp.Params paramParams)

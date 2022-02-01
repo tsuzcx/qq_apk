@@ -1,16 +1,23 @@
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.widgets.QQMapRoutingHelper.1.1;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaed
-  implements bezd
+class aaed
+  implements aaea
 {
-  aaed(aaec paramaaec) {}
+  aaed(aaec paramaaec, String paramString) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void callback(Bundle paramBundle)
   {
-    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
+    boolean bool = paramBundle.getBoolean("isSuccess", false);
+    if (bool)
+    {
+      paramBundle = paramBundle.getString("data");
+      this.jdField_a_of_type_Aaec.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_Aaec.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
   }
 }
 

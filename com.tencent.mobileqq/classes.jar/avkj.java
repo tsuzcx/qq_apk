@@ -1,26 +1,12 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class avkj
+final class avkj
+  implements DialogInterface.OnClickListener
 {
-  private List<avkk> a = Collections.synchronizedList(new ArrayList());
-  
-  void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((avkk)localIterator.next()).a(paramLong);
-    }
-  }
-  
-  void b(long paramLong)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((avkk)localIterator.next()).b(paramLong);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

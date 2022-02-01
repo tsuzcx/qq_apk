@@ -1,18 +1,26 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-class bgik
-  implements Handler.Callback
+public abstract class bgik
+  extends ntf
 {
-  bgik(bgih parambgih) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public bgik()
   {
-    if ((paramMessage != null) && (paramMessage.obj != null)) {
-      bgih.a().a(paramMessage.obj.toString());
-    }
-    return false;
+    super(false);
   }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      return;
+    }
+  }
+  
+  protected abstract void a(boolean paramBoolean);
 }
 
 

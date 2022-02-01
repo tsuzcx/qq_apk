@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahtj;
+import aioi;
 
 public class ZhituManager$12
   implements Runnable
 {
-  public ZhituManager$12(ahtj paramahtj) {}
+  public ZhituManager$12(aioi paramaioi) {}
   
   public void run()
   {
-    ahtj.a(this.this$0);
+    aioi.a(this.this$0);
   }
 }
 

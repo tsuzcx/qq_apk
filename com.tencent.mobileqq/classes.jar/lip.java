@@ -1,28 +1,31 @@
-import android.content.Context;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
 
 public class lip
+  extends lio
 {
-  public static lil a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
+  public lip(VideoAppInterface paramVideoAppInterface)
   {
-    VideoAppInterface localVideoAppInterface = null;
-    if (AudioHelper.f()) {
-      QLog.w("ARZimuTaskFactory", 1, "create, id[" + paramString + "], seq[" + paramLong + "]");
-    }
-    if ("spit".equals(paramString))
-    {
-      paramVideoAppInterface = new liu(paramLong, paramVideoAppInterface);
-      localVideoAppInterface = paramVideoAppInterface;
-      if ((paramContext instanceof liv))
-      {
-        ((liu)paramVideoAppInterface).a((liv)paramContext);
-        localVideoAppInterface = paramVideoAppInterface;
-      }
-    }
-    return localVideoAppInterface;
+    super(paramVideoAppInterface);
   }
+  
+  public int a(String paramString)
+  {
+    return 1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

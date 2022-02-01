@@ -1,21 +1,78 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.BubblePopupWindow;
 
 public class adpa
-  extends CardObserver
+  implements aftk, View.OnClickListener, blak
 {
-  public adpa(Leba paramLeba) {}
+  protected PointF a;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   
-  public void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public adpa(ChatHistory paramChatHistory)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+  }
+  
+  void a(View paramView)
+  {
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131365475) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    {
+      a(paramView);
+      return false;
     }
+    bhjq localbhjq = new bhjq();
+    localbhjq.a(2131365475, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690756), 2130838986);
+    if (localbhjq.a() > 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((adpb)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
+      int j = AIOUtils.dp2px(10.0F, paramView.getResources());
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhcw.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbhjq, this, null);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
+      a(paramView);
+      return true;
+    }
+    a(paramView);
+    return false;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

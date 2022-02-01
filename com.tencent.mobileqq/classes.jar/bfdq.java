@@ -1,13 +1,14 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.data.Friends;
 
 class bfdq
-  implements bfdu
 {
-  bfdq(bfdm parambfdm, String paramString) {}
+  public int a;
+  public Friends a;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public bfdq(Friends paramFriends, int paramInt)
   {
-    if (paramInt == 0) {}
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

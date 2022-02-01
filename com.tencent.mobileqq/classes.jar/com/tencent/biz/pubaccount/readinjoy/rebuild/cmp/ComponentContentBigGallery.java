@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pvc;
+import qfw;
 
 public class ComponentContentBigGallery
   extends ComponentContentBig
@@ -30,21 +30,21 @@ public class ComponentContentBigGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560110, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560157, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.b = ((TextView)paramView.findViewById(2131367369));
+    this.b = ((TextView)paramView.findViewById(2131367493));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      paramObject = ((pvc)paramObject).a();
+      paramObject = ((qfw)paramObject).a();
       this.b.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }

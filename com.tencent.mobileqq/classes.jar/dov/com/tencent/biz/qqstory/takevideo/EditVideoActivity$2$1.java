@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import amtj;
 import android.os.Build.VERSION;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class EditVideoActivity$2$1
@@ -14,7 +14,7 @@ class EditVideoActivity$2$1
     if (((Build.VERSION.SDK_INT > 16) && (this.a.this$0.isDestroyed())) || (this.a.this$0.isFinishing())) {
       return;
     }
-    QQToast.a(this.a.this$0, amtj.a(2131702888), 0).a();
+    QQToast.a(this.a.this$0, anvx.a(2131703239), 0).a();
     this.a.this$0.finish();
   }
 }

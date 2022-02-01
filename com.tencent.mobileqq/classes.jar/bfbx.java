@@ -1,48 +1,54 @@
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import com.tencent.mobileqq.troop.widget.PresetWordFlowLayout;
 
-class bfbx
-  extends amop
+public class bfbx
+  implements TextWatcher
 {
-  bfbx(bfbw parambfbw) {}
+  public bfbx(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
-  protected void a(Object paramObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a == null) {}
-    for (;;)
+    TextView localTextView;
+    if (!TextUtils.isEmpty(TroopNickRuleFragment.a(this.a).getText().toString()))
     {
-      return;
-      paramObject = (becp)paramObject;
-      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
+      TroopNickRuleFragment.a(this.a).setHint("");
+      paramInt1 = 0;
+      if ((this.a.a.getChildCount() > 0) && (TroopNickRuleFragment.a(this.a)))
       {
-        long l = paramObject.jdField_b_of_type_Long;
-        Iterator localIterator = this.a.a.getMessageFacade().getAIOList(String.valueOf(l), 1).iterator();
-        while (localIterator.hasNext())
+        paramCharSequence = (bewc)this.a.a.getChildAt(0).getTag();
+        if (paramCharSequence != null)
         {
-          Object localObject = (ChatMessage)localIterator.next();
-          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
-          {
-            localObject = (MessageForTroopFile)localObject;
-            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
-              this.a.a.getMessageFacade().removeMsgByUniseq(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
-              this.a.a.getMessageFacade().removeMsgByUniseq(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            }
+          localTextView = paramCharSequence.a;
+          if (paramInt1 == 0) {
+            break label122;
           }
         }
       }
+    }
+    label122:
+    for (paramCharSequence = this.a.getString(2131719693);; paramCharSequence = TroopNickRuleFragment.a(this.a).getText())
+    {
+      localTextView.setText(paramCharSequence);
+      return;
+      TroopNickRuleFragment.a(this.a).setHint(2131719693);
+      paramInt1 = 1;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbx
  * JD-Core Version:    0.7.0.1
  */

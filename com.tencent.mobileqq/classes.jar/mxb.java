@@ -1,174 +1,134 @@
-import com.tencent.avcore.jni.data.AVUserInfo;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.wtogether.data.WTFileInfo;
+import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
+import com.tencent.qphone.base.util.QLog;
 
 public class mxb
 {
-  public static int a(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    int j = 0;
-    while (i < 4)
-    {
-      j |= (paramArrayOfByte[(3 - i)] & 0xFF) << (3 - i) * 4;
-      i += 1;
-    }
-    return j;
-  }
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static String jdField_a_of_type_JavaLangString;
+  private static long b;
   
-  public static long a(byte[] paramArrayOfByte)
+  public static String a(myv parammyv)
   {
-    long l = 0L;
-    int i = 0;
-    while (i < 8)
-    {
-      l |= (paramArrayOfByte[(7 - i)] & 0xFF) << (7 - i) * 8;
-      i += 1;
-    }
-    return l;
-  }
-  
-  public static AVUserInfo a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if (paramArrayOfByte == null) {
+    if ((parammyv == null) || (parammyv.a == null)) {
       return null;
     }
-    if ((paramArrayOfByte.length != paramInt) || (paramArrayOfByte.length < 16)) {
-      return null;
-    }
-    byte[] arrayOfByte = new byte[8];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 8);
-    long l = a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 8, arrayOfByte, 0, 4);
-    int i = a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 12, arrayOfByte, 0, 4);
-    int j = a(arrayOfByte);
-    paramInt = 2;
-    if (paramArrayOfByte.length > 16)
-    {
-      arrayOfByte = new byte[1];
-      System.arraycopy(paramArrayOfByte, 16, arrayOfByte, 0, 1);
-      paramInt = arrayOfByte[0];
-    }
-    for (;;)
-    {
-      paramArrayOfByte = new AVUserInfo();
-      paramArrayOfByte.account = l;
-      paramArrayOfByte.accountType = i;
-      paramArrayOfByte.pstnStatus = j;
-      paramArrayOfByte.micAuthByAdmin = paramInt;
-      if (mwv.c()) {
-        mwv.a("MavJniUtil", "AVUserInfo-->Uin = " + l + " ,isPstn = " + i + " ,pstnState = " + j + " ,micOffByAdmin = " + paramInt);
-      }
-      return paramArrayOfByte;
-      mwv.a("MavJniUtil", "getAVInfoFromByte", new Throwable("打印调用栈"));
+    return parammyv.a.c();
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    b = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.i("WTDataReportUtil", 2, "onEnterWTRoom, start[" + jdField_a_of_type_Long + "]");
     }
   }
   
-  public static ArrayList<AVUserInfo> a(byte[] paramArrayOfByte, int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    if (paramArrayOfByte == null) {
-      if (mwv.c()) {
-        mwv.b("MavJniUtil", "getAVInfoListFromByte--> buf is null");
-      }
-    }
-    int i;
-    ArrayList localArrayList;
-    Object localObject;
-    do
+    long l1 = 0L;
+    if ((paramString1 == null) || (!TextUtils.equals(paramString1, jdField_a_of_type_JavaLangString)))
     {
-      do
-      {
-        do
-        {
-          return null;
-          if (paramInt != 0) {
-            break;
-          }
-        } while (!mwv.c());
-        mwv.b("MavJniUtil", "getAVInfoListFromByte--> structLen is 0");
-        return null;
-        i = paramArrayOfByte.length;
-        if (i % paramInt == 0) {
-          break;
-        }
-      } while (!mwv.c());
-      mwv.b("MavJniUtil", "getAVInfoListFromByte--> buf len is incorrect");
-      return null;
-      int j = i / paramInt;
-      localArrayList = new ArrayList();
-      i = 0;
-      if (i >= j) {
-        break label162;
+      if (QLog.isColorLevel()) {
+        QLog.i("WTDataReportUtil", 2, "onPlayEnd, from[" + paramString2 + "], report before.");
       }
-      localObject = new byte[paramInt];
-      System.arraycopy(paramArrayOfByte, i * paramInt, localObject, 0, paramInt);
-      localObject = a((byte[])localObject, paramInt);
-      if (localObject != null) {
+      return;
+    }
+    Object localObject1 = VideoController.a().a();
+    label69:
+    Object localObject2;
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      if (localObject1 != null) {
+        break label233;
+      }
+      localObject2 = null;
+      label77:
+      if (localObject2 == null) {
+        break label244;
+      }
+      l1 = ((nag)localObject2).jdField_a_of_type_Int;
+    }
+    label233:
+    label244:
+    for (long l2 = ((nag)localObject2).b;; l2 = 0L)
+    {
+      localObject2 = String.valueOf(l1 / 1000L);
+      String str = String.valueOf(l2 / 1000L);
+      mrr.a("0X800B639", 0, 0, (String)localObject2, str, "", "");
+      b += l2;
+      jdField_a_of_type_JavaLangString = null;
+      if (localObject1 != null) {
+        ((naf)localObject1).a(paramString1);
+      }
+      if (!QLog.isColorLevel()) {
         break;
       }
-    } while (!mwv.c());
-    mwv.b("MavJniUtil", "Can not get AVUserInfo...Error");
-    return null;
-    if ((((AVUserInfo)localObject).accountType == 1) && (((AVUserInfo)localObject).pstnStatus != 3)) {}
-    for (;;)
-    {
-      i += 1;
-      break;
-      localArrayList.add(localObject);
+      QLog.i("WTDataReportUtil", 2, "onPlayEnd, from[" + paramString2 + "], key[" + paramString1 + "], r2[" + (String)localObject2 + "], r3[" + str + "]");
+      return;
+      localObject1 = ((WatchTogetherMediaPlayCtrl)localObject1).a();
+      break label69;
+      localObject2 = ((naf)localObject1).a(paramString1);
+      break label77;
     }
-    label162:
-    if (mwv.c()) {
-      mwv.a("MavJniUtil", "getAVInfoListFromByte --> length = " + localArrayList.size());
-    }
-    return localArrayList;
   }
   
-  public static long[] a(byte[] paramArrayOfByte)
+  public static void a(myv parammyv, long paramLong)
   {
-    long[] arrayOfLong2 = null;
-    long[] arrayOfLong1 = arrayOfLong2;
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length >= 8) {
-        break label25;
-      }
-      arrayOfLong1 = arrayOfLong2;
-    }
-    label25:
+    if ((parammyv == null) || (parammyv.a == null)) {}
     int i;
+    String str1;
+    String str2;
     do
     {
-      return arrayOfLong1;
-      i = paramArrayOfByte.length;
-      arrayOfLong1 = arrayOfLong2;
-    } while (i % 8 != 0);
-    arrayOfLong2 = new long[i / 8];
-    byte[] arrayOfByte = new byte[8];
-    int j = 0;
-    for (;;)
+      return;
+      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        a(jdField_a_of_type_JavaLangString, "onPlayStart");
+      }
+      jdField_a_of_type_Int += 1;
+      jdField_a_of_type_JavaLangString = a(parammyv);
+      i = parammyv.a.a();
+      str1 = String.valueOf(paramLong / 1000L);
+      str2 = parammyv.a.a();
+      parammyv = parammyv.a.b();
+      mrr.a("0X800B62E", i, 0, str1, "", str2, parammyv);
+    } while (!QLog.isColorLevel());
+    QLog.i("WTDataReportUtil", 2, "onPlayStart, key[" + jdField_a_of_type_JavaLangString + "], from[" + i + "], r2[" + str1 + "], r4[" + str2 + "], r5[" + parammyv + "]");
+  }
+  
+  public static void a(myv parammyv, String paramString)
+  {
+    a(a(parammyv), paramString);
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Long != 0L) {}
+    for (long l = Math.abs(SystemClock.elapsedRealtime() - jdField_a_of_type_Long);; l = 0L)
     {
-      arrayOfLong1 = arrayOfLong2;
-      if (i < 8) {
-        break;
+      int i = jdField_a_of_type_Int;
+      String str1 = String.valueOf(l / 1000L);
+      String str2 = String.valueOf(b / 1000L);
+      mrr.a("0X800B6C0", i, 0, str1, str2, "", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("WTDataReportUtil", 2, "onExitWTRoom, from[" + i + "], r2[" + str1 + "], r3[" + str2 + "]");
       }
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, 8);
-      long l = a(arrayOfByte);
-      if (l == 0L)
-      {
-        mwv.c("MavJniUtil", "getUinListFromBuf-->get the wrong uin==0");
-        return arrayOfLong2;
-      }
-      arrayOfLong2[(j / 8)] = l;
-      j += 8;
-      i -= 8;
+      b = 0L;
+      jdField_a_of_type_Long = 0L;
+      jdField_a_of_type_Int = 0;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mxb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class begd
+class begd
+  implements AbsListView.OnScrollListener
 {
-  protected long a;
-  protected beep a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
-  zsa a;
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
   
-  private begd(long paramLong, TroopFileTransferManager.Item paramItem)
+  begd(begb parambegb) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Zsa = new bege(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
-    {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      return;
-    }
+    this.b = paramInt3;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
   
-  public static begd a(long paramLong, TroopFileTransferManager.Item paramItem)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramLong == 0L)
+    for (;;)
     {
-      befc.a("TroopFilePreviewWorker", befc.a, "getWoker. troopuin=0");
-      return null;
+      try
+      {
+        int i = this.jdField_a_of_type_Begb.jdField_a_of_type_Int;
+        if (i > 0) {
+          return;
+        }
+        if ((paramInt != 0) || (this.jdField_a_of_type_Begb.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
+          continue;
+        }
+        if (this.jdField_a_of_type_Begb.e)
+        {
+          this.jdField_a_of_type_Begb.c(true);
+          continue;
+        }
+        this.jdField_a_of_type_Begb.c(false);
+      }
+      finally {}
+      this.jdField_a_of_type_Begb.a(this.jdField_a_of_type_Begb.jdField_a_of_type_Long, this.jdField_a_of_type_Begb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Begb.c, 50, 0);
     }
-    if (paramItem == null)
-    {
-      befc.a("TroopFilePreviewWorker", befc.a, "getWoker. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      befc.a("TroopFilePreviewWorker", befc.a, "getWoker. item.id=null");
-      return null;
-    }
-    return new begd(paramLong, paramItem);
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public boolean a()
-  {
-    QQAppInterface localQQAppInterface = befa.a();
-    if (localQQAppInterface == null)
-    {
-      befc.a("TroopFilePreviewWorker", befc.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo app=null");
-      return false;
-    }
-    befc.c("TroopFilePreviewWorker", befc.a, "[" + this.jdField_a_of_type_JavaLangString + "] getPreviewInfo");
-    this.jdField_a_of_type_Beep = zrj.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 0, true, false, this.jdField_a_of_type_Zsa);
-    return true;
   }
 }
 

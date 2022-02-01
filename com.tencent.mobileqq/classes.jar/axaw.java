@@ -1,34 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
-public abstract class axaw
-  extends awyd
+public class axaw
+  implements DialogInterface.OnClickListener
 {
-  public boolean a;
+  public axaw(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public axaw(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext);
+    MsgBackupCompleteFragment.a(this.a);
+    if (MsgBackupCompleteFragment.a(this.a) == 1) {
+      axct.a("0X800A253", 5);
+    }
+    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+      return;
+    }
+    axct.a("0X800A267", 2);
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(PicInfo paramPicInfo);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
 }
 
 

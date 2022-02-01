@@ -1,28 +1,49 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class xhg
-  extends SimpleObserver<xhh>
+  extends xcz
 {
-  public xhg(xhc paramxhc) {}
+  public final ErrorMessage a;
+  public final boolean a;
+  public final String b;
   
-  public void a(xhh paramxhh)
+  public xhg(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    super.onNext(paramxhh);
-    xhc.a(this.a, paramxhh, false, new ErrorMessage());
+    super(new xcy("ERROR_" + paramErrorMessage));
+    this.b = null;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("ERROR");
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
   }
   
-  public void onCancel()
+  public xhg(@NonNull String paramString, boolean paramBoolean)
   {
-    super.onCancel();
-    xvv.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+    super(new xcy("LOADING_" + paramString));
+    this.b = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("LOADING");
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
   }
   
-  public void onError(@NonNull Error paramError)
+  public boolean b()
   {
-    super.onError(paramError);
-    xhc.a(this.a, null, false, (ErrorMessage)paramError);
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+  }
+  
+  public boolean c()
+  {
+    return this.b != null;
   }
 }
 

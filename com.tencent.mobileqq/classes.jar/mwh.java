@@ -1,14 +1,10 @@
-import android.content.Context;
-
 public abstract interface mwh
 {
-  public abstract Context getContext();
-  
-  public abstract mwx getNativeEventProcessor();
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mwh
  * JD-Core Version:    0.7.0.1
  */

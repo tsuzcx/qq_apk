@@ -5,17 +5,17 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import pch;
-import pgt;
+import pli;
+import ppx;
 
 public class RIJFrameworkHeaderManager$2
   implements Runnable
 {
-  public RIJFrameworkHeaderManager$2(pgt parampgt, View paramView1, int paramInt1, int paramInt2, View paramView2, ReadInJoyXListView paramReadInJoyXListView) {}
+  public RIJFrameworkHeaderManager$2(ppx paramppx, View paramView1, int paramInt1, int paramInt2, View paramView2, ReadInJoyXListView paramReadInJoyXListView) {}
   
   public void run()
   {
-    if ((pch.b()) && (pch.a())) {}
+    if ((pli.b()) && (pli.a())) {}
     int j;
     do
     {
@@ -27,7 +27,7 @@ public class RIJFrameworkHeaderManager$2
         if ((j != this.jdField_a_of_type_Int) && (QLog.isColorLevel())) {
           QLog.d("RIJFrameworkReportManager", 2, "initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=" + j + ",heightDef =" + this.jdField_a_of_type_Int);
         }
-        if (!pch.a()) {
+        if (!pli.a()) {
           break;
         }
         if (j <= this.jdField_b_of_type_Int * 3)
@@ -46,7 +46,7 @@ public class RIJFrameworkHeaderManager$2
           QLog.d("RIJFrameworkReportManager", 2, "initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=" + i + ",heightDef =" + this.jdField_a_of_type_Int);
         }
       } while (i > this.jdField_b_of_type_Int);
-      pgt.a(this.this$0).i();
+      ppx.a(this.this$0).i();
       return;
     } while (j <= this.jdField_a_of_type_Int);
     this.jdField_b_of_type_AndroidViewView.setPadding(0, j, 0, 0);
@@ -54,7 +54,7 @@ public class RIJFrameworkHeaderManager$2
     if (QLog.isColorLevel()) {
       QLog.d("RIJFrameworkReportManager", 2, "initUI 看点 mListView.setPadding statusLineHeight=" + j);
     }
-    pgt.a(this.this$0).i();
+    ppx.a(this.this$0).i();
   }
 }
 

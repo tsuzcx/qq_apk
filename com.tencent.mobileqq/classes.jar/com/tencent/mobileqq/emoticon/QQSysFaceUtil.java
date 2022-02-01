@@ -4,12 +4,12 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Build.VERSION;
-import apub;
-import aqbs;
-import aqbu;
+import aqxe;
 import arev;
-import arfa;
-import bblk;
+import arex;
+import asjb;
+import asjg;
+import bcsc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 import com.tencent.mobileqq.text.EmotcationConstants;
@@ -32,11 +32,11 @@ public class QQSysFaceUtil
   
   public static int convertToLocal(int paramInt)
   {
-    int i = arev.a().a(1).b(paramInt);
+    int i = asjb.a().a(1).b(paramInt);
     if (i == -1)
     {
-      if (paramInt < bblk.b.length) {
-        return bblk.b[paramInt];
+      if (paramInt < bcsc.b.length) {
+        return bcsc.b[paramInt];
       }
       QLog.d("SysFaceUtil", 1, new Object[] { "unrecognized serverId:", Integer.valueOf(paramInt) });
       return paramInt;
@@ -46,11 +46,11 @@ public class QQSysFaceUtil
   
   public static int convertToServer(int paramInt)
   {
-    int i = arev.a().a(1).a(paramInt);
+    int i = asjb.a().a(1).a(paramInt);
     if (i == -1)
     {
-      if (paramInt < bblk.a.length) {
-        return bblk.a[paramInt];
+      if (paramInt < bcsc.a.length) {
+        return bcsc.a[paramInt];
       }
       QLog.d("SysFaceUtil", 1, new Object[] { "unrecognized localId:", Integer.valueOf(paramInt) });
       return paramInt;
@@ -63,12 +63,12 @@ public class QQSysFaceUtil
     if (sAnimEmoCount == -1)
     {
       long l = System.currentTimeMillis();
-      aqbu localaqbu = (aqbu)apub.a().a(545);
-      if (!android.text.TextUtils.isEmpty(localaqbu.a.a)) {
-        sAnimEmoCount = parseAnimCountByModel(localaqbu.a.a, Build.MODEL);
+      arex localarex = (arex)aqxe.a().a(545);
+      if (!android.text.TextUtils.isEmpty(localarex.a.a)) {
+        sAnimEmoCount = parseAnimCountByModel(localarex.a.a, Build.MODEL);
       }
-      if ((sAnimEmoCount == -1) && (!android.text.TextUtils.isEmpty(localaqbu.a.b))) {
-        sAnimEmoCount = parseAnimCountByVersion(localaqbu.a.b, Build.VERSION.SDK_INT);
+      if ((sAnimEmoCount == -1) && (!android.text.TextUtils.isEmpty(localarex.a.b))) {
+        sAnimEmoCount = parseAnimCountByVersion(localarex.a.b, Build.VERSION.SDK_INT);
       }
       QLog.d("SysFaceUtil", 1, new Object[] { "animCount:", Integer.valueOf(sAnimEmoCount), ", parseCostTime = [", System.currentTimeMillis() - l + "]" });
     }
@@ -88,25 +88,25 @@ public class QQSysFaceUtil
   
   public static String getEMCode(int paramInt)
   {
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(1);
-    if ((localQQSysAndEmojiResInfo instanceof arfa)) {
-      return ((arfa)localQQSysAndEmojiResInfo).b(paramInt);
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof asjg)) {
+      return ((asjg)localQQSysAndEmojiResInfo).b(paramInt);
     }
     return null;
   }
   
   public static String getEMCode(String paramString)
   {
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(1);
-    if ((localQQSysAndEmojiResInfo instanceof arfa)) {
-      return ((arfa)localQQSysAndEmojiResInfo).a(paramString);
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof asjg)) {
+      return ((asjg)localQQSysAndEmojiResInfo).a(paramString);
     }
     return null;
   }
   
   public static String getFaceDescription(int paramInt)
   {
-    String str2 = arev.a().a(1).a(paramInt);
+    String str2 = asjb.a().a(1).a(paramInt);
     String str1 = str2;
     if (android.text.TextUtils.isEmpty(str2))
     {
@@ -137,7 +137,7 @@ public class QQSysFaceUtil
     {
       return localObject;
       return ((Resources)localObject).getDrawable(paramInt);
-      localDrawable = arev.a().a(1).a(paramInt);
+      localDrawable = asjb.a().a(1).a(paramInt);
       localObject = localDrawable;
     } while (!QLog.isColorLevel());
     QLog.d("SysFaceUtil", 2, "getFaceDrawable in new way");
@@ -149,9 +149,9 @@ public class QQSysFaceUtil
     if (paramInt < 0) {
       throw new IllegalArgumentException("invaid sysface gif index: " + paramInt);
     }
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(1);
-    if ((localQQSysAndEmojiResInfo instanceof arfa)) {
-      return ((arfa)localQQSysAndEmojiResInfo).b(paramInt);
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof asjg)) {
+      return ((asjg)localQQSysAndEmojiResInfo).b(paramInt);
     }
     return null;
   }
@@ -163,16 +163,16 @@ public class QQSysFaceUtil
   
   public static int getLocalIdFromEMCode(String paramString)
   {
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(1);
-    if ((localQQSysAndEmojiResInfo instanceof arfa)) {
-      return ((arfa)localQQSysAndEmojiResInfo).a(paramString);
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof asjg)) {
+      return ((asjg)localQQSysAndEmojiResInfo).a(paramString);
     }
     return -1;
   }
   
   public static ArrayList<Integer> getOrderList()
   {
-    Object localObject = arev.a().a(1).a();
+    Object localObject = asjb.a().a(1).a();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
       return localObject;
     }
@@ -189,27 +189,27 @@ public class QQSysFaceUtil
   
   public static boolean isApolloEmoticon(int paramInt)
   {
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(1);
-    if ((localQQSysAndEmojiResInfo instanceof arfa)) {
-      return ((arfa)localQQSysAndEmojiResInfo).d(paramInt);
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof asjg)) {
+      return ((asjg)localQQSysAndEmojiResInfo).d(paramInt);
     }
     return false;
   }
   
   public static boolean isEmoReady(int paramInt)
   {
-    return arev.a().a(1).a(paramInt);
+    return asjb.a().a(1).a(paramInt);
   }
   
   public static boolean isStaticFace(int paramInt)
   {
-    Object localObject = arev.a().a(1);
-    if ((localObject instanceof arfa))
+    Object localObject = asjb.a().a(1);
+    if ((localObject instanceof asjg))
     {
-      localObject = (arfa)localObject;
+      localObject = (asjg)localObject;
       try
       {
-        boolean bool = ((arfa)localObject).c(paramInt);
+        boolean bool = ((asjg)localObject).c(paramInt);
         return bool;
       }
       catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
@@ -231,13 +231,13 @@ public class QQSysFaceUtil
   
   public static int maxServerId()
   {
-    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = arev.a().a(1);
-    if ((localQQSysAndEmojiResInfo instanceof arfa))
+    QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = asjb.a().a(1);
+    if ((localQQSysAndEmojiResInfo instanceof asjg))
     {
-      int j = ((arfa)localQQSysAndEmojiResInfo).c();
+      int j = ((asjg)localQQSysAndEmojiResInfo).c();
       int i = j;
       if (j == 0) {
-        i = bblk.b.length;
+        i = bcsc.b.length;
       }
       return i;
     }
@@ -314,12 +314,12 @@ public class QQSysFaceUtil
   
   public static void preLoadEmoDrawable()
   {
-    arev.a().a(1).c();
+    asjb.a().a(1).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysFaceUtil
  * JD-Core Version:    0.7.0.1
  */

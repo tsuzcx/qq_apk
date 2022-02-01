@@ -1,33 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class qae
+  implements qbc
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public qae(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    qai.y(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_content_wrapper", new JSONObject());
-    localJSONObject1.put("id_article_wrapper", new JSONObject());
-    localJSONObject1.put("id_summary_wrapper", new JSONObject());
-    localJSONObject1.put("id_info_wrapper", new JSONObject());
-    qai.d(paramBaseArticleInfo, localJSONObject1);
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", amtj.a(2131711942));
-    localJSONObject1.put("id_summary", localJSONObject2);
-    localJSONObject1.put("id_image_content", new JSONObject());
-    localJSONObject2 = new JSONObject();
-    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
-    localJSONObject1.put("id_article_small_imge", localJSONObject2);
-    qai.a(paramBaseArticleInfo, localJSONObject1, true);
-    qai.g(paramBaseArticleInfo, localJSONObject1);
-    qai.n(paramBaseArticleInfo, localJSONObject1);
-    qai.E(paramBaseArticleInfo, localJSONObject1);
-    qai.F(paramBaseArticleInfo, localJSONObject1);
-    qai.b(localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_big_cell");
-    return localJSONObject1;
+    tto.a(this.a.getActivity(), null, "https://viola.qq.com/js/myFamily.js?_rij_violaUrl=1&v_tid=6&v_bundleName=myFamily&hideNav=1&statusColor=1&v_nav_immer=1&v_bid=3740", null);
   }
 }
 

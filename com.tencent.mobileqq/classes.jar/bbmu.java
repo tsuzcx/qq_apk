@@ -1,20 +1,66 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bbmu
-  implements bbnb
+class bbmu
+  extends Handler
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm, MessageHandler paramMessageHandler)
+  protected WeakReference<bbmt> a;
+  
+  public bbmu(bbmt parambbmt1, Looper paramLooper, bbmt parambbmt2)
   {
-    ((PublicAccountHandler)paramMessageHandler.app.getBusinessHandler(11)).a(paramMsgType0x210.sub_msg_type.get(), paramMsgType0x210.msg_content.get().toByteArray());
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbmt2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    bbmt localbbmt = (bbmt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbbmt == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
+      }
+      return;
+    }
+    int i = paramMessage.what;
+    switch (i)
+    {
+    default: 
+      throw new RuntimeException("Unhandled msg what=" + i);
+    case 1: 
+      paramMessage = (Object[])paramMessage.obj;
+      try
+      {
+        localbbmt.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        bbmt.a(this.jdField_a_of_type_Bbmt);
+        return;
+      }
+    case 2: 
+      this.jdField_a_of_type_Bbmt.a();
+      return;
+    case 3: 
+      paramMessage = (String)paramMessage.obj;
+      try
+      {
+        bbmt.a(this.jdField_a_of_type_Bbmt, paramMessage);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
+        bbmt.a(this.jdField_a_of_type_Bbmt);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Bbmt.b();
   }
 }
 

@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akem;
-import amtj;
+import alaf;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class DrawRedpacketPannelPreviewFragment$4$1
   implements Runnable
 {
-  public DrawRedpacketPannelPreviewFragment$4$1(akem paramakem, boolean paramBoolean) {}
+  public DrawRedpacketPannelPreviewFragment$4$1(alaf paramalaf, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Akem.a.getActivity() == null) || (this.jdField_a_of_type_Akem.a.getActivity().isFinishing())) {}
+    if ((this.jdField_a_of_type_Alaf.a.getActivity() == null) || (this.jdField_a_of_type_Alaf.a.getActivity().isFinishing())) {}
     for (;;)
     {
       return;
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akem.a, this.jdField_a_of_type_Boolean);
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akem.a);
+      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Alaf.a, this.jdField_a_of_type_Boolean);
+      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Alaf.a);
       if (QLog.isColorLevel()) {
         QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onRecog---" + this.jdField_a_of_type_Boolean);
       }
-      if (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akem.a))
+      if (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Alaf.a))
       {
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setTextColor(Color.parseColor("#00D9B5"));
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setCompoundDrawablesWithIntrinsicBounds(2130847180, 0, 0, 0);
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setCompoundDrawablePadding(UIUtils.dip2px(this.jdField_a_of_type_Akem.a.getActivity(), 5.0F));
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setText(amtj.a(2131702679));
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setTextColor(Color.parseColor("#00D9B5"));
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setCompoundDrawablesWithIntrinsicBounds(2130847278, 0, 0, 0);
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setCompoundDrawablePadding(UIUtils.dip2px(this.jdField_a_of_type_Alaf.a.getActivity(), 5.0F));
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setText(anvx.a(2131703030));
       }
-      while (DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akem.a))
+      while (DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Alaf.a))
       {
-        DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akem.a);
+        DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Alaf.a);
         return;
-        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        if ((DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akem.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akem.a).a(false, false) == 0)) {
-          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setText("......");
+        DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        if ((DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Alaf.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Alaf.a).a(false, false) == 0)) {
+          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setText("......");
         } else {
-          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Akem.a).setText(amtj.a(2131702669));
+          DrawRedpacketPannelPreviewFragment.d(this.jdField_a_of_type_Alaf.a).setText(anvx.a(2131703020));
         }
       }
     }

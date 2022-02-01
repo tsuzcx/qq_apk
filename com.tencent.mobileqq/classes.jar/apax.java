@@ -1,8 +1,18 @@
-public class apax
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.applets.data.AppletItem;
+
+public final class apax
+  implements Parcelable.Creator<AppletItem>
 {
-  public static int a(float paramFloat)
+  public AppletItem a(Parcel paramParcel)
   {
-    return Float.floatToIntBits(paramFloat);
+    return new AppletItem(paramParcel);
+  }
+  
+  public AppletItem[] a(int paramInt)
+  {
+    return new AppletItem[paramInt];
   }
 }
 

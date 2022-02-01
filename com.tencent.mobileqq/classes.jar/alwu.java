@@ -1,12 +1,25 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class alwu
-  implements AVCallback
+  extends BroadcastReceiver
 {
-  public alwu(CmGameAvHandler.11 param11) {}
+  public alwu(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onComplete(int paramInt, String paramString) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
+    {
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
+  }
 }
 
 

@@ -1,24 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class vsi
-  extends vta
 {
-  qqstory_service.RspLikeFeed a;
-  
-  public vsi() {}
-  
-  public vsi(qqstory_service.RspLikeFeed paramRspLikeFeed)
+  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
   {
-    super(paramRspLikeFeed.result);
-    this.a = paramRspLikeFeed;
+    paramBuilder.build(paramString).report();
   }
   
-  public void a() {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString) {}
+  public static void a(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    paramstSimpleMetaFeed = new WSStatisticsReporter.Builder().setSceneFrom("QQ_official_account").setSopName("chat_page").setTestId(vnd.a(10007)).setPushId("").setFlush(true).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("content", paramInt, paramstSimpleMetaFeed)).setOperationId("").setImmediatelyUpload(vnd.c());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("qq_group_num", paramString);
+    localHashMap.put("card_type", "1");
+    paramstSimpleMetaFeed.addExtParams(localHashMap);
+    a(paramstSimpleMetaFeed, "gzh_click");
+  }
 }
 
 

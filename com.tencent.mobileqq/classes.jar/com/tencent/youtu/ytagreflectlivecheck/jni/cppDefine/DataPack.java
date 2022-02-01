@@ -4,6 +4,7 @@ public class DataPack
 {
   public long beginTime;
   public long changePointTime;
+  public long[] changePointTimeList;
   public int config_begin;
   public int frameNum;
   public int height;
@@ -13,6 +14,7 @@ public class DataPack
   public byte[] seqID;
   public RawImgData[] videoData;
   public int width;
+  public RawYuvData[] yuvDatas;
 }
 
 

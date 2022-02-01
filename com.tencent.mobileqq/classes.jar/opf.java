@@ -1,158 +1,134 @@
-import android.content.Context;
+import android.net.Uri;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class opf
-  implements bbrg, bbri, blvp
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private opg jdField_a_of_type_Opg;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  private boolean c;
-  
-  public opf(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (AEResUtil.getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE) != 0) {}
+    if (StringUtil.isEmpty(paramString)) {
+      paramQQAppInterface = "";
+    }
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    b();
-    if (this.jdField_a_of_type_Opg != null) {
-      this.jdField_a_of_type_Opg.a(paramInt);
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      blvn.a().a(this);
-    }
-  }
-  
-  private void c()
-  {
-    if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
-      a(1);
-    }
-  }
-  
-  public void a()
-  {
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-  }
-  
-  public void a(opg paramopg)
-  {
-    this.jdField_a_of_type_Opg = paramopg;
-  }
-  
-  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (paramAEResInfo.resPrefix.equals(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix))
-    {
-      if (paramInt != 0)
+      return paramQQAppInterface;
+      paramQQAppInterface = a(paramQQAppInterface);
+      if (paramQQAppInterface == null) {
+        return "";
+      }
+      paramString = paramQQAppInterface.optString(paramString);
+      if (StringUtil.isEmpty(paramString)) {
+        return "";
+      }
+      paramQQAppInterface = paramString;
+      try
       {
-        bmbx.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] error :" + paramInt);
-        a(3);
+        if (!"qqshop".equals(Uri.parse(paramString).getScheme())) {
+          return "";
+        }
       }
-    }
-    else {
-      return;
-    }
-    bmbx.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] success");
-    this.c = true;
-    c();
-  }
-  
-  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2) {}
-  
-  public void onConfigResult(int paramInt1, int paramInt2)
-  {
-    int j = 0;
-    int k = 1;
-    VideoEnvironment.LogDownLoad("ReadInJoyCameraCaptureSoManager", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    int i;
-    if (paramInt1 != 1)
-    {
-      i = k;
-      if (paramInt1 != 0) {}
-    }
-    else
-    {
-      if (paramInt2 == 0) {
-        break label69;
-      }
-      i = k;
-    }
-    if (i != 0) {
-      a(3);
-    }
-    return;
-    label69:
-    ArrayList localArrayList = new ArrayList(1);
-    if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList) == 0)
-    {
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-      if (AEResUtil.getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE) == 2)
+      catch (Throwable paramQQAppInterface)
       {
-        blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, this, false);
-        paramInt1 = j;
+        QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
       }
     }
-    for (;;)
-    {
-      i = paramInt1;
-      break;
-      this.c = true;
-      VideoEnvironment.LogDownLoad("ReadInJoyCameraCaptureSoManager", "onConfigResult| getFilterSoState != 2", null);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 1;
-    }
+    return paramString;
   }
   
-  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
+  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    paramQQAppInterface = a(paramQQAppInterface);
+    if (paramQQAppInterface == null) {
+      return "";
+    }
+    try
     {
-      if (paramInt == 0) {
-        break label62;
+      Iterator localIterator = paramQQAppInterface.keys();
+      while (localIterator.hasNext())
+      {
+        Uri localUri = Uri.parse(paramQQAppInterface.optString((String)localIterator.next()));
+        if ((localUri != null) && (localUri.getHost() != null) && (localUri.getHost().equals(paramString1)))
+        {
+          paramQQAppInterface = localUri.getQueryParameter(paramString2);
+          return paramQQAppInterface;
+        }
       }
-      a(3);
     }
-    for (;;)
+    catch (Throwable paramQQAppInterface)
     {
-      VideoEnvironment.LogDownLoad("ReadInJoyCameraCaptureSoManager", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      return;
-      label62:
-      this.b = true;
-      c();
+      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
     }
+    return "";
   }
   
-  public void onNetWorkNone()
+  public static String a(String paramString)
   {
-    VideoEnvironment.LogDownLoad("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
+    if (StringUtil.isEmpty(paramString)) {
+      return "";
+    }
+    try
+    {
+      paramString = Uri.parse(paramString).getHost();
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramString, new Object[0]);
+    }
+    return "";
   }
   
-  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
+  public static String a(String paramString1, String paramString2)
+  {
+    if (StringUtil.isEmpty(paramString1)) {
+      return "";
+    }
+    try
+    {
+      paramString1 = Uri.parse(paramString1).getQueryParameter(paramString2);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramString1, new Object[0]);
+    }
+    return "";
+  }
+  
+  private static JSONObject a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (aktz)paramQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.a("qqshop") != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQShopFakeUrlHelper", 2, " getQQShopConfig: " + paramQQAppInterface.a("qqshop"));
+      }
+      return paramQQAppInterface.a("qqshop");
+    }
+    return null;
+  }
+  
+  public static String b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = a(paramQQAppInterface, paramString);
+    if (StringUtil.isEmpty(paramQQAppInterface)) {
+      return "";
+    }
+    try
+    {
+      paramQQAppInterface = Uri.parse(paramQQAppInterface).getHost();
+      return paramQQAppInterface;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
+    }
+    return "";
+  }
 }
 
 

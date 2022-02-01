@@ -1,71 +1,35 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atts
-  implements TextWatcher
+final class atts
+  implements View.OnClickListener
 {
-  public int a;
-  public CharSequence a;
-  public boolean a;
-  int b = -1;
-  int c = -1;
+  atts(FileManagerEntity paramFileManagerEntity, atuw paramatuw) {}
   
-  public atts(BlockableEditTextView paramBlockableEditTextView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = "";
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
-    while (this.jdField_a_of_type_Int >= 0) {
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      localQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
+      audr.d(BaseActivity.sTopActivity.getString(2131692595));
+      if ((this.jdField_a_of_type_Atuw != null) && (this.jdField_a_of_type_Atuw.c())) {
+        auea.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      }
+      label70:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_Boolean = false;
-      return;
+      break label70;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
-    do
-    {
-      Editable localEditable;
-      attt[] arrayOfattt;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_Int = 0;
-          } while (paramInt3 == paramInt2);
-          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
-        } while (localEditable == null);
-        arrayOfattt = (attt[])localEditable.getSpans(paramInt1, paramInt1, attt.class);
-      } while ((arrayOfattt == null) || (arrayOfattt.length <= 0));
-      this.b = localEditable.getSpanStart(arrayOfattt[0]);
-      this.c = localEditable.getSpanEnd(arrayOfattt[0]);
-    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
-    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

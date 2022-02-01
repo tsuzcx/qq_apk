@@ -1,65 +1,95 @@
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfoCheckUtil.2;
+import com.tencent.mobileqq.data.troop.TroopInfoExt;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class arvq
-  implements bjoe
 {
-  public arvq(UniformDownloadActivity paramUniformDownloadActivity) {}
+  protected static int a = 5000;
   
-  public void OnClick(View paramView, int paramInt)
+  public static void a() {}
+  
+  private static void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_Bjnw == null) {
-      return;
-    }
-    if (paramView != null)
-    {
-      paramView = this.a.jdField_a_of_type_Bjnw.a(paramInt);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if ((!paramView.equals(this.a.getResources().getString(2131691698))) && (!paramView.equals(this.a.getResources().getString(2131691699)))) {
-          break label270;
-        }
-        bcef.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
-        if (!UniformDownloadActivity.a(this.a)) {
-          break label241;
-        }
-        if (!bibr.g()) {
-          break label231;
-        }
-        bibc.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
-        paramView = UniformDownloadActivity.a(this.a);
-        UniformDownloadActivity.a(this.a, paramView);
-        paramView = UniformDownloadActivity.a(this.a, paramView);
-        if (QLog.isColorLevel()) {
-          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
-        }
-        UniformDownloadActivity.a(this.a, paramView);
-        UniformDownloadActivity.b(this.a);
-        this.a.finish();
-        this.a.overridePendingTransition(0, 0);
-      }
-    }
+    ThreadManager.getUIHandler().post(new TroopInfoCheckUtil.2(paramString));
+  }
+  
+  private static void d()
+  {
+    Object localObject = new HashSet(Arrays.asList(new String[] { "Administrator", "adminNameShow", "allowMemberAtAll", "allowMemberKick", "allowMemberModifTroopName", "appealDeadline", "associatePubAccount", "cAlbumResult", "cGroupLevel", "cGroupOption", "cGroupRankSysFlag", "cGroupRankUserFlag", "cNewGroupRankUserFlag", "cmdUinFlagEx2", "cmduinFlagEx3Grocery", "dailyNewMemberUins", "dwAdditionalFlag", "dwAppPrivilegeFlag", "dwAuthGroupType", "dwCmdUinJoinTime", "dwCmdUinUinFlag", "dwGagTimeStamp", "dwGagTimeStamp_me", "dwGroupClassExt", "dwGroupFlag", "dwGroupFlagExt", "dwGroupFlagExt3", "dwGroupInfoSeq", "dwGroupLevelSeq", "dwLastBAFTipMsgUniSeq", "dwLastBAFTipMsgUniSeq2", "dwLastInsertBAFTipTime", "dwOfficeMode", "dwTimeStamp", "eliminated", "exitTroopReason", "feeds_id", "fingertroopmemo", "gameSwitchStatus", "grade", "groupCardPrefixIntro", "groupCardPrefixJson", "groupFlagExt4", "groupFreezeReason", "hasSetNewTroopHead", "hasSetNewTroopName", "hlGuildAppid", "hlGuildBinary", "hlGuildOrgid", "hlGuildSubType", "isAllowHistoryMsgFlag", "isNewTroop", "isShowInNearbyTroops", "isTroopBlocked", "joinTroopAnswer", "joinTroopQuestion", "lastMsgTime", "lastShareLbsMsgUniseq", "location", "mAtOrReplyMeUins", "mCanSearchByKeywords", "mCanSearchByTroopUin", "mComparePartInt", "mCompareSpell", "mGroupClassExtText", "mHeaderUinsNew", "mHeaderUinsOld", "mIsFreezed", "mMemberCardSeq", "mMemberInvitingFlag", "mMemberNumSeq", "mOldMemberCardSeq", "mOldMemberNumSeq", "mQZonePhotoNum", "mRichFingerMemo", "mSomeMemberUins", "mTags", "mTribeStatus", "mTroopAvatarId", "mTroopFileVideoIsWhite", "mTroopFileVideoReqInterval", "mTroopNeedPayNumber", "mTroopPicListJson", "maxAdminNum", "maxInviteMemNum", "memberListToShow", "myHonorList", "nMsgLimitFreq", "nTroopGrade", "newTroopLevelMap", "newTroopName", "newTroopNameTimeStamp", "oldTroopName", "ownerNameShow", "school", "showGameSwitchStatus", "strLastAnnouncement", "strLocation", "strQZonePhotoUrls", "timeSec", "topicId", "troopAuthenticateInfo", "troopCreateTime", "troopCreditLevel", "troopCreditLevelInfo", "troopHonorGrayFlag", "troopInfoExtByte", "troopLat", "troopLevelMap", "troopLon", "troopPrivilegeFlag", "troopRepeatType", "troopTypeExt", "troopcode", "troopface", "troopmask", "troopmemo", "troopname", "troopowneruin", "trooptype", "troopuin", "udwCmdUinRingtoneID", "uin", "wClickBAFTipCount", "wInsertBAFTipCount", "wMemberMax", "wMemberNum", "wMemberNumClient", "wSpecialClass" }));
+    List localList = TableBuilder.getValidField(TroopInfo.class);
     for (;;)
     {
-      this.a.jdField_a_of_type_Bjnw.dismiss();
+      try
+      {
+        int j = localList.size();
+        i = 0;
+        if (i >= j) {
+          continue;
+        }
+        Field localField = (Field)localList.get(i);
+        if (((HashSet)localObject).contains(localField.getName())) {
+          continue;
+        }
+        localObject = localField.getName();
+      }
+      catch (Exception localException)
+      {
+        int i;
+        localException.printStackTrace();
+        String str = "";
+        continue;
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        a("TroopInfo新加字段" + (String)localObject + ",是否需要修改TroopHandler.getTroopList中loadall。");
+      }
       return;
-      label231:
-      UniformDownloadActivity.c(this.a);
-      continue;
-      label241:
-      UniformDownloadActivity.b(this.a).setVisibility(0);
-      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
-      continue;
-      label270:
-      if ((paramView.equals(this.a.getResources().getString(2131691697))) || (paramView.equals(this.a.getResources().getString(2131690078))) || (paramView.equals(this.a.getResources().getString(2131690077)))) {
-        UniformDownloadActivity.c(this.a);
+      i += 1;
+    }
+  }
+  
+  private static void e()
+  {
+    int i = 0;
+    HashSet localHashSet = new HashSet(Arrays.asList(new String[] { "group_info_ext_seq", "lucky_word_id", "light_char_num", "lucky_word", "star_id" }));
+    String str2 = "";
+    try
+    {
+      Field[] arrayOfField = TroopInfoExt.class.getDeclaredFields();
+      int j = arrayOfField.length;
+      Object localObject = str2;
+      if (i < j)
+      {
+        localObject = arrayOfField[i];
+        int k = ((Field)localObject).getModifiers();
+        if (((!Modifier.isStatic(k)) || (!Modifier.isFinal(k))) && (!localHashSet.contains(((Field)localObject).getName()))) {
+          localObject = ((Field)localObject).getName();
+        }
+      }
+      else
+      {
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          a("TroopInfoExt新加字段" + (String)localObject + ",是否需要修改TroopHandler.getTroopList中loadall。");
+        }
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        String str1 = str2;
+        continue;
+        i += 1;
       }
     }
   }

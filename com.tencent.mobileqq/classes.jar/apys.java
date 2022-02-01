@@ -1,293 +1,195 @@
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ark.ArkAppPanelReport.ReqBody;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.MiniAppConfBean.1;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.Proto.EchoRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Map;
 
 public class apys
+  extends BusinessHandler
 {
-  private int jdField_a_of_type_Int = 60;
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new MiniAppConfBean.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString = "";
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString = "";
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString = "";
-  private boolean jdField_e_of_type_Boolean;
-  private String jdField_f_of_type_JavaLangString = "";
-  private boolean jdField_f_of_type_Boolean;
-  private String jdField_g_of_type_JavaLangString = "";
-  private boolean jdField_g_of_type_Boolean;
-  private boolean h;
+  private static final int[] a = { BusinessHandlerFactory.ARKAPP_HANDLER };
   
-  public static apys a(aptx[] paramArrayOfaptx)
+  public apys(QQAppInterface paramQQAppInterface)
   {
-    apys localapys = new apys();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    super(paramQQAppInterface);
+  }
+  
+  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    try
     {
-      int j;
-      try
-      {
-        if (i < paramArrayOfaptx.length)
-        {
-          String str1 = paramArrayOfaptx[i].jdField_a_of_type_JavaLangString;
-          if (str1 == null) {
-            break label671;
-          }
-          Object localObject = new JSONObject(str1);
-          if (((JSONObject)localObject).has("aio_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("aio_mini_app_on", 1) != 1) {
-              break label685;
-            }
-            bool = true;
-            localapys.jdField_a_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_local_search"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_local_search", 1) != 1) {
-              break label691;
-            }
-            bool = true;
-            localapys.jdField_b_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_refresh_time")) {
-            localapys.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("mini_app_refresh_time", 60);
-          }
-          if (((JSONObject)localObject).has("popBarShowMiniAppStore"))
-          {
-            if (((JSONObject)localObject).optInt("popBarShowMiniAppStore", 0) != 1) {
-              break label697;
-            }
-            bool = true;
-            localapys.jdField_c_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("minigame_splash")) {
-            SplashMiniGameUtil.saveConfigData(str1);
-          }
-          if (((JSONObject)localObject).has("mini_app_entry_auto_show"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_entry_auto_show", 0) != 1) {
-              break label703;
-            }
-            bool = true;
-            localapys.jdField_d_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("contact_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("contact_mini_app_on", 0) != 1) {
-              break label709;
-            }
-            bool = true;
-            localapys.jdField_f_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("more_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("more_mini_app_on", 0) != 1) {
-              break label715;
-            }
-            bool = true;
-            localapys.jdField_e_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("group_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("group_mini_app_on", 0) != 1) {
-              break label721;
-            }
-            bool = true;
-            localapys.jdField_g_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("avatar_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("avatar_mini_app_on", 0) != 1) {
-              break label727;
-            }
-            bool = true;
-            localapys.h = bool;
-            if (((JSONObject)localObject).has("avatar_mini_app_url")) {
-              localapys.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("avatar_mini_app_url");
-            }
-          }
-          if (((JSONObject)localObject).has("back_to_home_scene_list"))
-          {
-            if (localapys.jdField_a_of_type_JavaUtilArrayList == null) {
-              localapys.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-            }
-            localapys.jdField_a_of_type_JavaUtilArrayList.clear();
-            String[] arrayOfString = ((JSONObject)localObject).optString("back_to_home_scene_list", "1044|1007|1008|2003").split("\\|");
-            int k = arrayOfString.length;
-            j = 0;
-            if (j < k)
-            {
-              String str2 = arrayOfString[j];
-              if (TextUtils.isEmpty(str2)) {
-                break label678;
-              }
-              localapys.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(str2));
-              break label678;
-            }
-          }
-          if (1 == ((JSONObject)localObject).optInt("enable_c2c_plus_panel", 0))
-          {
-            localapys.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("url", "");
-            localapys.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("icon", "");
-            localapys.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("icon_night", "");
-            localapys.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon", "");
-            localapys.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon_night", "");
-            localapys.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("name", BaseApplicationImpl.sApplication.getString(2131697917));
-            localObject = BaseApplicationImpl.getApplication().getRuntime();
-            if ((localObject instanceof QQAppInterface))
-            {
-              localObject = (QQAppInterface)localObject;
-              agxo.a((QQAppInterface)localObject).a((QQAppInterface)localObject, localapys);
-            }
-          }
-          localStringBuilder.append("config: ").append(str1).append(",");
-        }
+      paramToServiceMsg = new String((byte[])paramObject, "UTF-8");
+      paramFromServiceMsg = paramToServiceMsg;
+      if (paramToServiceMsg == null) {
+        paramFromServiceMsg = "";
       }
-      catch (Exception paramArrayOfaptx)
+      return paramFromServiceMsg;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      for (;;)
       {
-        QLog.d("MiniAppConfProcessor", 2, "parse, failed!");
-        paramArrayOfaptx.printStackTrace();
-        return null;
+        ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive_AppMsg, fail convert data to string", new Object[0]));
+        paramToServiceMsg = null;
       }
-      QLog.e("MiniAppConfProcessor", 2, "parse, content:" + localStringBuilder.toString());
-      return localapys;
-      label671:
-      i += 1;
-      continue;
-      label678:
-      j += 1;
-      continue;
-      label685:
-      boolean bool = false;
-      continue;
-      label691:
-      bool = false;
-      continue;
-      label697:
-      bool = false;
-      continue;
-      label703:
-      bool = false;
-      continue;
-      label709:
-      bool = false;
-      continue;
-      label715:
-      bool = false;
-      continue;
-      label721:
-      bool = false;
-      continue;
-      label727:
-      bool = false;
     }
   }
   
-  public int a()
+  private void a(String paramString, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
   {
-    return this.jdField_a_of_type_Int;
+    paramBusinessObserver = super.createToServiceMsg(paramString, paramBusinessObserver);
+    paramBusinessObserver.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
+    paramBusinessObserver.addAttribute("IsGenericCmd", Boolean.valueOf(paramBoolean));
+    paramBusinessObserver.addAttribute("IsPanelRequest", Boolean.valueOf(false));
+    paramBusinessObserver.addAttribute("NotifyType", Integer.valueOf(paramInt2));
+    paramBusinessObserver.putWupBuffer(paramArrayOfByte);
+    if (paramInt1 > 0) {
+      paramBusinessObserver.setTimeout(paramInt1);
+    }
+    if (!anrx.a().containsKey(paramString)) {
+      anrx.a(paramString, a);
+    }
+    super.sendPbReq(paramBusinessObserver);
   }
   
-  public String a()
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = (Proto.EchoRsp)new Proto.EchoRsp().mergeFrom((byte[])paramObject);
+        if (paramToServiceMsg == null) {
+          return null;
+        }
+        if (paramToServiceMsg.msg.has())
+        {
+          paramToServiceMsg = paramToServiceMsg.msg.get();
+          paramFromServiceMsg = paramToServiceMsg;
+          if (paramToServiceMsg == null) {
+            paramFromServiceMsg = "";
+          }
+          return paramFromServiceMsg;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        return null;
+      }
+      paramToServiceMsg = null;
+    }
   }
   
-  public ArrayList<Integer> a()
+  public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    ArkAppPanelReport.ReqBody localReqBody = new ArkAppPanelReport.ReqBody();
+    localReqBody.bytes_app_name.set(ByteStringMicro.copyFromUtf8(paramString));
+    ArkAppCenter.a("ArkApp.BusinessHandler", String.format("reportArkAppPanelIconClick appName=%s", new Object[] { paramString }));
+    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "ArkAppPanel.Report");
+    paramString.putWupBuffer(localReqBody.toByteArray());
+    paramString.setNeedCallback(false);
+    sendPbReq(paramString);
+    return true;
   }
   
-  public boolean a()
+  public boolean a(String paramString, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
   {
-    return this.jdField_a_of_type_Boolean;
+    if ((TextUtils.isEmpty(paramString)) || (paramBusinessObserver == null)) {
+      return false;
+    }
+    paramBusinessObserver = super.createToServiceMsg(paramString, paramBusinessObserver);
+    paramBusinessObserver.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
+    paramBusinessObserver.addAttribute("IsGenericCmd", Boolean.valueOf(true));
+    paramBusinessObserver.addAttribute("IsPanelRequest", Boolean.valueOf(true));
+    paramBusinessObserver.addAttribute("NotifyType", Integer.valueOf(paramInt2));
+    if (paramInt1 > 0) {
+      paramBusinessObserver.setTimeout(paramInt1);
+    }
+    if (!anrx.a().containsKey(paramString)) {
+      anrx.a(paramString, a);
+    }
+    super.sendPbReq(paramBusinessObserver);
+    return true;
   }
   
-  public String b()
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    if ((TextUtils.isEmpty(paramString1)) || (paramBusinessObserver == null)) {
+      return false;
+    }
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "";
+    }
+    try
+    {
+      paramString2 = str.getBytes("UTF-8");
+      a(paramString1, true, paramString2, paramInt1, paramInt2, paramBusinessObserver);
+      return true;
+    }
+    catch (Exception paramString2)
+    {
+      ArkAppCenter.c("ArkApp.BusinessHandler", String.format("sendAppMsg, fail convert content to bytes array, cmd=%s, content=%s", new Object[] { paramString1, str }));
+    }
+    return false;
   }
   
-  public boolean b()
+  public Class<? extends BusinessObserver> observerClass()
   {
-    return this.jdField_b_of_type_Boolean;
+    return null;
   }
   
-  public String c()
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public String e()
-  {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public String f()
-  {
-    return this.jdField_f_of_type_JavaLangString;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public String g()
-  {
-    return this.jdField_g_of_type_JavaLangString;
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public boolean h()
-  {
-    return this.h;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("miniAppEntryEnable:").append(this.jdField_a_of_type_Boolean).append(", miniAppRefreshTime:").append(this.jdField_a_of_type_Int).append(",miniAppLocalSearchEnable").append(this.jdField_b_of_type_Boolean);
-    return super.toString();
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    long l1 = ((Long)paramToServiceMsg.getAttribute("SendTime")).longValue();
+    long l2 = System.currentTimeMillis();
+    boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("IsGenericCmd")).booleanValue();
+    boolean bool3 = ((Boolean)paramToServiceMsg.getAttribute("IsPanelRequest")).booleanValue();
+    int i = ((Integer)paramToServiceMsg.getAttribute("NotifyType")).intValue();
+    String str = paramFromServiceMsg.getServiceCmd();
+    ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive, cmd=%s, app-msg=%s, panelRequest=%s, suc=%s, delay=%d, ", new Object[] { str, Boolean.toString(bool2), Boolean.toString(bool3), Boolean.toString(bool1), Long.valueOf(l2 - l1) }));
+    if (bool1) {
+      if (bool2) {
+        if (!bool3) {}
+      }
+    }
+    for (;;)
+    {
+      if (paramObject != null)
+      {
+        super.notifyUI(paramToServiceMsg, i, true, paramObject);
+        return;
+        paramObject = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        continue;
+        if (str.equalsIgnoreCase("ArkAppSvc.Echo")) {
+          paramObject = b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        }
+      }
+      else
+      {
+        super.notifyUI(paramToServiceMsg, i, false, null);
+        return;
+      }
+      paramObject = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apys
  * JD-Core Version:    0.7.0.1
  */

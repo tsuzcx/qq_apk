@@ -1,8 +1,17 @@
-public final class bkuf
+public class bkuf
 {
-  public static String a = "tab_index";
-  public static String b = "url_params";
-  public static String c = "com.qqreader.redpoint_change";
+  public int a;
+  public long a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  
+  public String toString()
+  {
+    return "[type:" + this.jdField_a_of_type_Int + ",cate:" + this.b + ",subcate:" + this.c + ",expire:" + this.jdField_a_of_type_Long + ",act:" + this.d + ",iscache:" + this.jdField_a_of_type_Boolean + "]";
+  }
 }
 
 

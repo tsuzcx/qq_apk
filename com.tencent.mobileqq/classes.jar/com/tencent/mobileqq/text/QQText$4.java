@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.text;
 
-import bcef;
-import bjog;
+import bdla;
+import bkzs;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQText$4
-  implements bjog
+  implements bkzs
 {
   QQText$4(QQText paramQQText, QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void onDismiss()
   {
-    bcef.b(this.val$app, "dc00898", "", "", "0X800A92E", "0X800A92E", this.val$reportFromType, 0, "", "", "", "");
+    bdla.b(this.val$app, "dc00898", "", "", "0X800A92E", "0X800A92E", this.val$reportFromType, 0, "", "", "", "");
   }
 }
 

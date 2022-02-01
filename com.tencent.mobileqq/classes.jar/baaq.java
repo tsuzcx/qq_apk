@@ -1,184 +1,81 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.biz.qqstory.takevideo.CameraFocusView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 public class baaq
-  implements GLGestureListener
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  baar jdField_a_of_type_Baar;
-  private CameraFocusView jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView;
-  private float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private final int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private final int jdField_d_of_type_Int;
+  public int a;
+  public long a;
+  private boolean a;
+  public long b;
   
-  public baaq(Context paramContext, baar parambaar)
+  public baaq(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader, long paramLong)
   {
-    paramContext = ViewConfiguration.get(paramContext);
-    this.jdField_c_of_type_Int = 300;
-    this.jdField_d_of_type_Int = paramContext.getScaledTouchSlop();
-    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Baar = parambaar;
-  }
-  
-  public baaq(CameraFocusView paramCameraFocusView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = paramCameraFocusView;
-    paramCameraFocusView = ViewConfiguration.get(paramCameraFocusView.getContext());
-    this.jdField_c_of_type_Int = 300;
-    this.jdField_d_of_type_Int = paramCameraFocusView.getScaledTouchSlop();
-    this.jdField_a_of_type_Int = paramCameraFocusView.getScaledDoubleTapSlop();
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
-  }
-  
-  private void a(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
-  {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = ((ProfileColorScreenComponent.ColorScreenLoader.a(paramColorScreenLoader).jdField_a_of_type_Int + 1) * paramLong);
+    if (Build.VERSION.SDK_INT == 15) {}
+    for (boolean bool = true;; bool = false)
     {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      return;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.jdField_c_of_type_Float = paramMotionEvent.getX();
-      this.jdField_d_of_type_Float = paramMotionEvent.getY();
-    } while ((a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float)) || (!a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long)));
-    if (this.jdField_a_of_type_Baar != null)
-    {
-      this.jdField_a_of_type_Baar.a(paramMotionEvent);
+      this.jdField_a_of_type_Boolean = bool;
       return;
     }
-    b(paramMotionEvent, paramGLSurfaceView);
   }
   
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    int i = (int)paramFloat3 - (int)paramFloat1;
-    int j = (int)paramFloat4 - (int)paramFloat2;
-    return i * i + j * j > this.jdField_d_of_type_Int * this.jdField_d_of_type_Int;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  private boolean a(long paramLong1, long paramLong2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return paramLong2 - paramLong1 < this.jdField_c_of_type_Int;
-  }
-  
-  private boolean a(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
-  {
-    boolean bool = true;
-    int[] arrayOfInt = new int[2];
-    paramGLSurfaceView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[0];
-    int j = arrayOfInt[1];
-    int k = paramGLSurfaceView.getWidth();
-    int m = paramGLSurfaceView.getHeight();
-    if ((paramMotionEvent.getRawX() < i) || (paramMotionEvent.getRawX() > i + k) || (paramMotionEvent.getRawY() < j) || (paramMotionEvent.getRawY() > j + m)) {
-      bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorScreenManager", 2, "onAnimationEnd: " + ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
     }
-    return bool;
+    ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setVisibility(8);
+    ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).post(new ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1(this));
   }
   
-  private void b(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    if (((paramGLSurfaceView instanceof CameraCaptureView)) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) && (((CameraCaptureView)paramGLSurfaceView).a() != 1))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
-      a((CameraCaptureView)paramGLSurfaceView, paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (QLog.isColorLevel()) {
-        QLog.d("GLGestureListener", 2, new Object[] { "", "CameraFocusGesture isRecording == false" });
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileColorScreenComponent", 2, "onAnimationStart: " + ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
+    }
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      try
+      {
+        float f = (paramValueAnimator.getAnimatedFraction() + this.jdField_a_of_type_Int) * (float)this.jdField_a_of_type_Long;
+        if (f <= (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).jdField_a_of_type_Long)
+        {
+          ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setAlpha(f / (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).jdField_a_of_type_Long);
+          return;
+        }
+        if ((this.b > 0L) && ((float)this.b - f <= (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).b))
+        {
+          ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setAlpha(((float)this.b - f) / (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).b);
+          return;
+        }
+      }
+      catch (Exception paramValueAnimator)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        QLog.e("ProfileColorScreenComponent", 1, "onAnimationUpdate: ", paramValueAnimator);
       }
     }
-  }
-  
-  private void c(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
-  {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Float = paramMotionEvent.getX(1);
-      this.jdField_b_of_type_Float = paramMotionEvent.getY(1);
-      return;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.jdField_c_of_type_Float = paramMotionEvent.getX(1);
-      this.jdField_d_of_type_Float = paramMotionEvent.getY(1);
-    } while ((a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float)) || (!a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long)));
-    paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-    if (this.jdField_a_of_type_Baar != null) {
-      this.jdField_a_of_type_Baar.a(paramMotionEvent);
-    }
-    for (;;)
-    {
-      paramMotionEvent.recycle();
-      return;
-      d(paramMotionEvent, paramGLSurfaceView);
-    }
-  }
-  
-  private void d(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
-  {
-    if (((paramGLSurfaceView instanceof CameraCaptureView)) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) && (((CameraCaptureView)paramGLSurfaceView).a() != 1))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
-      a((CameraCaptureView)paramGLSurfaceView, paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (QLog.isColorLevel()) {
-        QLog.d("GLGestureListener", 2, new Object[] { "", "CameraFocusGesture isRecording == true" });
-      }
-    }
-    paramMotionEvent.recycle();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a();
-    }
-  }
-  
-  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
-  {
-    paramCameraCaptureView.a(paramFloat1, paramFloat2);
-  }
-  
-  public int onGetPriority()
-  {
-    return 0;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    GLSurfaceView localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
-    if (!a(paramMotionEvent, localGLSurfaceView)) {}
-    do
-    {
-      return false;
-      if ((!paramBoolean) && (i == 1)) {
-        a(paramMotionEvent, localGLSurfaceView);
-      }
-    } while ((!paramBoolean) || (i != 2));
-    c(paramMotionEvent, localGLSurfaceView);
-    return false;
   }
 }
 

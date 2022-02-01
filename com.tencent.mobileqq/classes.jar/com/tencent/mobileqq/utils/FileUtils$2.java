@@ -10,7 +10,7 @@ final class FileUtils$2
   
   public void run()
   {
-    QQToast.a(this.val$context, 2131689937, 1).a();
+    QQToast.a(this.val$context, 2131689966, 1).a();
   }
 }
 

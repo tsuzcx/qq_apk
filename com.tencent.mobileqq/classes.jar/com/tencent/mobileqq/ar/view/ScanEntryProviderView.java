@@ -6,8 +6,8 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import aolf;
-import aono;
+import apog;
+import apqp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
@@ -18,8 +18,8 @@ public abstract class ScanEntryProviderView
   extends FrameLayout
 {
   public Context a;
-  public aolf a;
-  public aono a;
+  public apog a;
+  public apqp a;
   public AppInterface a;
   private boolean a;
   protected View b;
@@ -27,12 +27,12 @@ public abstract class ScanEntryProviderView
   protected boolean l;
   public boolean m;
   
-  public ScanEntryProviderView(Context paramContext, aono paramaono)
+  public ScanEntryProviderView(Context paramContext, apqp paramapqp)
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aono = paramaono;
+    this.jdField_a_of_type_Apqp = paramapqp;
   }
   
   public abstract void a(Bundle paramBundle);
@@ -41,10 +41,15 @@ public abstract class ScanEntryProviderView
   
   public void a(String paramString) {}
   
+  public boolean a()
+  {
+    return false;
+  }
+  
   public void c()
   {
-    if (this.jdField_a_of_type_Aolf != null) {
-      this.jdField_a_of_type_Aolf.g();
+    if (this.jdField_a_of_type_Apog != null) {
+      this.jdField_a_of_type_Apog.g();
     }
   }
   
@@ -57,15 +62,15 @@ public abstract class ScanEntryProviderView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Aolf != null) {
-      this.jdField_a_of_type_Aolf.h();
+    if (this.jdField_a_of_type_Apog != null) {
+      this.jdField_a_of_type_Apog.h();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Aolf != null) {
-      this.jdField_a_of_type_Aolf.j();
+    if (this.jdField_a_of_type_Apog != null) {
+      this.jdField_a_of_type_Apog.j();
     }
   }
   
@@ -73,8 +78,8 @@ public abstract class ScanEntryProviderView
   {
     this.m = true;
     this.l = false;
-    if (this.jdField_a_of_type_Aolf != null) {
-      this.jdField_a_of_type_Aolf.g();
+    if (this.jdField_a_of_type_Apog != null) {
+      this.jdField_a_of_type_Apog.g();
     }
   }
   
@@ -83,8 +88,8 @@ public abstract class ScanEntryProviderView
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Aono != null) {
-        this.jdField_a_of_type_Aono.a(paramBoolean);
+      if (this.jdField_a_of_type_Apqp != null) {
+        this.jdField_a_of_type_Apqp.a(paramBoolean);
       }
     }
   }
@@ -93,8 +98,8 @@ public abstract class ScanEntryProviderView
   {
     this.m = false;
     this.l = true;
-    if (this.jdField_a_of_type_Aolf != null) {
-      this.jdField_a_of_type_Aolf.h();
+    if (this.jdField_a_of_type_Apog != null) {
+      this.jdField_a_of_type_Apog.h();
     }
   }
   

@@ -1,30 +1,111 @@
-import com.tencent.av.ui.VideoNetStateBar;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoInviteFloatBarUICtr.3.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class mll
-  extends ldz
+  extends lee
 {
-  public mll(VideoNetStateBar paramVideoNetStateBar) {}
+  mll(mli parammli) {}
+  
+  protected void a(long paramLong, int paramInt)
+  {
+    super.a(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onDestroyInviteUI-->reason=" + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
+      this.a.a();
+    }
+  }
   
   protected void a(long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
     }
-    this.a.i();
+    this.a.jdField_a_of_type_Lfe.al = true;
+    if (this.a.jdField_b_of_type_Int == 1) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
+    }
+  }
+  
+  protected void a(long paramLong, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->groupId=" + paramLong);
+    }
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
+      this.a.a();
+    }
+  }
+  
+  protected void a(long paramLong, ArrayList<lcu> paramArrayList, int paramInt1, int paramInt2)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (String.valueOf(((lcu)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
+        this.a.a();
+      }
+    }
+  }
+  
+  protected void b()
+  {
+    super.b();
+    this.a.a(false);
   }
   
   protected void b(long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+      QLog.w("VideoInviteFloatBarUICtr", 1, "onEnterRoomSuc, groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
     }
-    this.a.i();
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new VideoInviteFloatBarUICtr.3.1(this, paramLong2), 500L);
+    this.a.jdField_a_of_type_ComTencentAvVideoController.b();
+    lzh.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
+    if (this.a.jdField_a_of_type_Mlh != null) {
+      this.a.jdField_a_of_type_Mlh.c();
+    }
+    muy.a().a(this.a.f);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.a();
+    }
+  }
+  
+  protected void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->notifyByGroupId=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {}
+    this.a.a();
+  }
+  
+  protected void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->groupId=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mll
  * JD-Core Version:    0.7.0.1
  */

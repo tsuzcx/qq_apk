@@ -1,29 +1,32 @@
-import android.os.Handler;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.CardProfile;
 
-public class azwl
-  extends atuh
+class azwl
+  implements axpj
 {
-  azwl(azwk paramazwk) {}
+  azwl(azwk paramazwk, CardProfile paramCardProfile, ImageView paramImageView) {}
   
-  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetIntimateInfo");
-    }
-    azwk.a(this.a).removeObserver(this.a.a);
-    azwk.a(this.a).removeMessages(1);
-    if (paramBoolean)
+    this.jdField_a_of_type_Azwk.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Azwk.a;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
     {
-      azwk.a(this.a, paramIntimateInfo);
-      this.a.a();
-      return;
+      str1 = "1";
+      if (!paramBoolean) {
+        break label69;
+      }
     }
-    azwk.a(this.a).post(new FriendClueCommonGroupHelper.2.1(this));
-    QLog.e("FriendClueCommonGroupHelper", 1, "get intimateInfo failed");
+    label69:
+    for (String str2 = "2";; str2 = "1")
+    {
+      axpb.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
+      return;
+      str1 = "2";
+      break;
+    }
   }
 }
 

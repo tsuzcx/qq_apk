@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.QQTextProxy.Proxy;
-import com.tencent.mobileqq.text.AbsQQText;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
-public final class bcbb
-  implements RecentRoute.QQTextProxy.Proxy
+public class bcbb
 {
-  public AbsQQText generalQQText(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    return new QQText(paramCharSequence, paramInt1, paramInt2);
-  }
+  public volatile long a;
+  public volatile String a;
+  
+  public bcbb(UniteSearchActivity paramUniteSearchActivity) {}
 }
 
 

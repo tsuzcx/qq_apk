@@ -1,68 +1,138 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.biz.AuthorizeConfig.2;
-import com.tencent.biz.AuthorizeConfig.2.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class nkp
-  implements BusinessObserver
+  implements nkj
 {
-  public nkp(AuthorizeConfig.2 param2) {}
+  private List<Animator> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private nkk jdField_a_of_type_Nkk;
+  private nko jdField_a_of_type_Nko;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
+    boolean bool = false;
+    Random localRandom = new Random();
+    int i = localRandom.nextInt(50);
+    if (localRandom.nextInt(100) % 101 + 0 < 20 + i % 31) {
+      bool = true;
     }
-    if (paramBoolean)
+    return bool;
+  }
+  
+  private void b(View paramView)
+  {
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.2F, 0.5F });
+    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.2F, 0.5F });
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.setDuration(2000L);
+    localAnimatorSet.setStartDelay(1000L);
+    localAnimatorSet.playSequentially(new Animator[] { localObjectAnimator, paramView });
+    localAnimatorSet.addListener(new nkt(this));
+    localAnimatorSet.start();
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SurvivalSeatBgPresenterImp", 4, "cancelAllAnimation " + this.jdField_a_of_type_JavaUtilList.size());
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      Animator localAnimator = (Animator)localIterator.next();
+      localAnimator.cancel();
+      this.jdField_a_of_type_JavaUtilList.remove(localAnimator);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.3F });
+    paramView.setDuration(300L);
+    paramView.addListener(new nks(this));
+    paramView.start();
+  }
+  
+  public void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
+  {
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 0.5F });
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.setDuration(1000L);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
+    localAnimatorSet.addListener(new nkq(this, paramAnimatorListener, paramView));
+    localAnimatorSet.start();
+  }
+  
+  public void a(List<Long> paramList)
+  {
+    if ((this.jdField_a_of_type_Nkk == null) || (this.jdField_a_of_type_Nko == null)) {}
+    for (;;)
+    {
+      return;
+      paramList = this.jdField_a_of_type_Nkk.a(paramList).iterator();
+      while (paramList.hasNext())
       {
-        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
-        try
-        {
-          localWebviewWhiteListResponse.mergeFrom(paramBundle);
-          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
-          }
-          if (paramInt == 0)
-          {
-            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
-            bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
-            return;
-          }
-          if (paramInt == 304)
-          {
-            this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-            this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
-            this.a.this$0.g();
-            this.a.this$0.i();
-            bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
-            return;
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
-          }
-        }
+        Integer localInteger = (Integer)paramList.next();
+        this.jdField_a_of_type_Nko.a(localInteger.intValue());
       }
     }
-    this.a.this$0.g();
-    this.a.this$0.i();
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
+  }
+  
+  public void a(nkk paramnkk)
+  {
+    this.jdField_a_of_type_Nkk = paramnkk;
+  }
+  
+  public void a(nko paramnko)
+  {
+    this.jdField_a_of_type_Nko = paramnko;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Nkk != null) {
+      this.jdField_a_of_type_Nkk.a();
+    }
+    if (this.jdField_a_of_type_Nko != null) {
+      this.jdField_a_of_type_Nko.notifyDataSetChanged();
+    }
+  }
+  
+  public void b(View paramView, Animator.AnimatorListener paramAnimatorListener)
+  {
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { 1.0F, 0.0F });
+    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.5F, 0.0F });
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.setDuration(200L);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
+    localAnimatorSet.addListener(new nkr(this, paramAnimatorListener));
+    localAnimatorSet.start();
+  }
+  
+  public void b(List<Long> paramList)
+  {
+    if ((this.jdField_a_of_type_Nkk == null) || (this.jdField_a_of_type_Nko == null)) {}
+    for (;;)
+    {
+      return;
+      paramList = this.jdField_a_of_type_Nkk.b(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Integer localInteger = (Integer)paramList.next();
+        this.jdField_a_of_type_Nko.a(localInteger.intValue());
+      }
+    }
   }
 }
 

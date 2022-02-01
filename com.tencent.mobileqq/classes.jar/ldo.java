@@ -1,18 +1,9 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
-
-class ldo
-  implements mva
+public class ldo
 {
-  ldo(ldn paramldn, lds paramlds, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  @Deprecated
+  public static boolean a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Lds.j = paramInt;
-    this.jdField_a_of_type_Lds.i = paramString2;
-    DeviceCapabilityExamination.a(this.jdField_a_of_type_Lds, this.jdField_a_of_type_Ldn.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Ldn.jdField_a_of_type_Ldl != null) {
-      this.jdField_a_of_type_Ldn.jdField_a_of_type_Ldl.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
-    }
+    return (paramInt2 == 2) || (paramInt2 == 3) || (paramInt1 == 25) || (paramInt1 == 26);
   }
 }
 

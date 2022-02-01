@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class azug
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+public final class azug
+  implements EmoticonListProvider
 {
-  public azug(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
-  
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public List<EmotionPanelInfo> getEmotionPanelInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
-    }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
-    }
-    return 1;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new EmotionPanelInfo(7, 7, null));
+    return localArrayList;
   }
 }
 

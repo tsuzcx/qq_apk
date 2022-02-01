@@ -1,31 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import kotlin.Metadata;
 
-class asuw
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class asuw
+  implements DialogInterface.OnCancelListener
 {
-  asuw(asuu paramasuu) {}
+  public static final asuw a = new asuw();
   
-  public void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = this.a.a.h();
-    if ((i == 2) || (i == 3))
-    {
-      i = ataw.b(this.a.a.e());
-      bcef.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((i == 1) && (this.a.a.a() != null)) {
-        this.a.a.a().a();
-      }
-    }
+    bdla.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
   }
 }
 

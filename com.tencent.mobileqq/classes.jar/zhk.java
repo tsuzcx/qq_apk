@@ -1,46 +1,24 @@
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zhk
-  implements zhe
+public class zhk
+  implements View.OnClickListener
 {
-  zhk(zhf paramzhf) {}
+  public zhk(LeftTabBarView paramLeftTabBarView, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
-    if (zhf.a(this.a))
-    {
-      zhf.b(this.a, false);
-      if (zhf.a(this.a) != null) {
-        zhf.a(this.a).setVisibility(0);
-      }
-      if (zhf.a(this.a) != null) {
-        zhf.a(this.a).setVisibility(0);
-      }
-    }
+    long l = System.currentTimeMillis();
+    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {}
     for (;;)
     {
-      zhf.a(this.a, false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.dismiss();
+      LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
-    if (zhf.a(this.a) != paramInt)
-    {
-      zhf.a(this.a, paramInt);
-      zhf.a(this.a);
-      zhf.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      zhf.a(this.a).commit();
-    }
-    this.a.c();
-    zhf.a(this.a, true);
   }
 }
 

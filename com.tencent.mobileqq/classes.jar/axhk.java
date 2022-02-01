@@ -1,19 +1,21 @@
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
-class axhk
-  implements View.OnClickListener
+public class axhk
+  extends RecyclerView.ItemDecoration
 {
-  axhk(axhi paramaxhi, axhd paramaxhd) {}
+  private final int jdField_a_of_type_Int = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
   
-  public void onClick(View paramView)
+  private axhk(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_Axhi.dismiss();
-    if (this.jdField_a_of_type_Axhd.a != null) {
-      this.jdField_a_of_type_Axhd.a.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramRect.top = this.jdField_a_of_type_Int;
   }
 }
 

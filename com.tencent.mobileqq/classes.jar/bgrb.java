@@ -1,32 +1,53 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
 
-public class bgrb
-  extends bgqy
+class bgrb
+  implements ITransactionCallback
 {
-  public bgrb(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
+  bgrb(bgra parambgra) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    }
+    this.a.e();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onSuccess");
+    }
+    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
+    try
     {
-    case 1: 
-    case 2: 
-    default: 
+      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
+      if (paramArrayOfByte.str_fileid.has()) {
+        this.a.c = paramArrayOfByte.str_fileid.get();
+      }
+      this.a.b = true;
+      this.a.b();
       return;
     }
-    Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList);
-    this.a.c = this.a.jdField_a_of_type_JavaUtilArrayList.toString();
-    this.a.a(false, 0);
-    this.a.jdField_a_of_type_Boolean = paramBoolean;
-    if (!paramBoolean) {
-      VipFunCallPreviewActivity.a(this.a, (Bundle)paramObject);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(50);
   }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

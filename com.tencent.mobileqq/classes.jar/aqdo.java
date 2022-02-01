@@ -1,89 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class aqdo
-  extends aptq<aqdn>
+  implements aqdl
 {
-  @NonNull
-  public static aqdn a()
-  {
-    aqdn localaqdn2 = (aqdn)apub.a().a(435);
-    aqdn localaqdn1 = localaqdn2;
-    if (localaqdn2 == null) {
-      localaqdn1 = new aqdn();
-    }
-    return localaqdn1;
-  }
+  public void onRotationUpdateOriginal(float[] paramArrayOfFloat) {}
   
-  @NonNull
-  public aqdn a(int paramInt)
-  {
-    return new aqdn();
-  }
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat) {}
   
-  @Nullable
-  public aqdn a(aptx[] paramArrayOfaptx)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaptx != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfaptx.length > 0) {
-        localObject1 = aqdn.a(paramArrayOfaptx);
-      }
-    }
-    return localObject1;
-  }
+  public void onSensorSupport(int paramInt, boolean paramBoolean) {}
   
-  public void a(aqdn paramaqdn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramaqdn.toString());
-    }
-  }
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
   
-  public Class<aqdn> clazz()
-  {
-    return aqdn.class;
-  }
+  public void updateAzimuth(float paramFloat) {}
   
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
+  public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
   
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
+  public void updatePitch(float paramFloat) {}
   
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
+  public void updateRoll(float paramFloat) {}
   
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
+  public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3) {}
   
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 435;
-  }
+  public void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdo
  * JD-Core Version:    0.7.0.1
  */

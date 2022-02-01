@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.chat.autoreply;
 
-import axvz;
+import azcl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForAutoReply;
@@ -24,7 +24,7 @@ public final class AutoReplyUtil$1
         localObject = ((List)localObject).iterator();
       }
     } while (!((MessageRecord)((Iterator)localObject).next() instanceof MessageForAutoReply));
-    axvz.a("0X800B0AD");
+    azcl.a("0X800B0AD");
   }
 }
 

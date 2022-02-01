@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import bjkz;
-import bmqh;
-import bmql;
-import bmrk;
+import bkwk;
+import bofz;
+import bogd;
+import bohc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.FlowMusic;
@@ -32,7 +32,7 @@ public class GetSingleFullMusicInfoTask
   extends AsyncStep
   implements INetEngine.INetEngineListener
 {
-  private bmrk jdField_a_of_type_Bmrk;
+  private bohc jdField_a_of_type_Bohc;
   protected FlowMusic a;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -40,20 +40,20 @@ public class GetSingleFullMusicInfoTask
   private String b;
   private String c;
   
-  public GetSingleFullMusicInfoTask(FlowMusic paramFlowMusic, bmrk parambmrk)
+  public GetSingleFullMusicInfoTask(FlowMusic paramFlowMusic, bohc parambohc)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataFlowMusic = paramFlowMusic;
-    this.jdField_a_of_type_Bmrk = parambmrk;
-    paramFlowMusic = (QIMMusicConfigManager)bmql.a(2);
+    this.jdField_a_of_type_Bohc = parambohc;
+    paramFlowMusic = (QIMMusicConfigManager)bogd.a(2);
     this.c = paramFlowMusic.getApp().getCurrentAccountUin();
     this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramFlowMusic.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
   }
   
-  public GetSingleFullMusicInfoTask(String paramString, bmrk parambmrk)
+  public GetSingleFullMusicInfoTask(String paramString, bohc parambohc)
   {
     this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bmrk = parambmrk;
-    paramString = (QIMMusicConfigManager)bmql.a(2);
+    this.jdField_a_of_type_Bohc = parambohc;
+    paramString = (QIMMusicConfigManager)bogd.a(2);
     this.c = paramString.getApp().getCurrentAccountUin();
     this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramString.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
   }
@@ -61,9 +61,9 @@ public class GetSingleFullMusicInfoTask
   private static String a(long paramLong)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
+    ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000228").append("_").append("TCOHANTCNlddnsTY").append("_").append("uZliVvhTJzkDPlHX").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bjkz.a((String)localObject).toLowerCase();
+    String str = bkwk.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -112,9 +112,9 @@ public class GetSingleFullMusicInfoTask
   
   private void a(boolean paramBoolean, FlowMusic arg2)
   {
-    if (this.jdField_a_of_type_Bmrk != null)
+    if (this.jdField_a_of_type_Bohc != null)
     {
-      this.jdField_a_of_type_Bmrk.a(paramBoolean, ???);
+      this.jdField_a_of_type_Bohc.a(paramBoolean, ???);
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -136,10 +136,10 @@ public class GetSingleFullMusicInfoTask
       localHttpNetReq.mExcuteTimeLimit = 60000L;
       localHttpNetReq.mCallback = this;
       long l = System.currentTimeMillis() / 1000L;
-      String str = ((TicketManagerImpl)bmqh.a().getManager(2)).getSkey(this.c);
+      String str = ((TicketManagerImpl)bofz.a().getManager(2)).getSkey(this.c);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("app_id", "2000000025");
-      localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
+      localHashMap.put("app_id", "2000000228");
+      localHashMap.put("app_key", "TCOHANTCNlddnsTY");
       localHashMap.put("device_id", DeviceInfoUtil.getIMEI());
       localHashMap.put("timestamp", String.valueOf(l));
       localHashMap.put("sign", a(l));
@@ -150,7 +150,7 @@ public class GetSingleFullMusicInfoTask
         QLog.d("QQInitHandler", 2, "QQMusicReq SingleFullMusicInfoTask songId:" + (String)???);
       }
       this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
-      if (this.jdField_a_of_type_Bmrk != null) {}
+      if (this.jdField_a_of_type_Bohc != null) {}
     }
     try
     {

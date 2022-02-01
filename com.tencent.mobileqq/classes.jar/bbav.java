@@ -1,30 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
-class bbav
-  implements View.OnClickListener
+public class bbav
+  extends bbbe<ReceiptMessageReadMemberListContainerFragment>
 {
-  bbav(bbau parambbau, baxr parambaxr) {}
-  
-  public void onClick(View paramView)
+  public bbav(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag())) {
-      bbau.a(this.jdField_a_of_type_Bbau, paramView.getContext(), this.jdField_a_of_type_Baxr);
+    super(paramReceiptMessageReadMemberListContainerFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
     }
-    try
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      bcef.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.jdField_a_of_type_Baxr.b, "", "", "");
-      label64:
-      EventCollector.getInstance().onViewClicked(paramView);
+      for (;;)
+      {
+        try
+        {
+          paramBundle = new oidb_0x986.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
+          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
+          if (!paramArrayOfByte.hasNext()) {
+            break;
+          }
+          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
+          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
+            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
+              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            } else {
+              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+          return;
+        }
+      }
+      if (paramBundle.uint64_next_uin.get() == 0L)
+      {
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+        return;
+      }
+      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
+      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      break label64;
-    }
+    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
 }
 

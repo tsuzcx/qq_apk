@@ -1,21 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
+import android.os.Message;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class alda
-  extends bkql
+class alda
+  extends apaq
 {
-  public alda(ShortVideoPlayActivity paramShortVideoPlayActivity, Activity paramActivity, bkqn parambkqn, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
-  {
-    super(paramActivity, parambkqn, paramInt1, paramInt2, paramAppRuntime);
-  }
+  alda(alcz paramalcz) {}
   
-  public void onClick(View paramView)
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      alcz.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
+    }
   }
 }
 

@@ -1,21 +1,10 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class tco
-  implements AdapterView.OnItemClickListener
+public abstract interface tco
 {
-  public tco(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  public abstract void a();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-    }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

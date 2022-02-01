@@ -1,25 +1,13 @@
-import java.util.List;
+import java.util.HashMap;
 
-public class lbm
+class lbm
 {
-  @ausx(a="codec")
-  public int a;
-  @ausx(a="min_version")
-  public String a;
-  @ausx(a="disable_sdks")
-  public List<Integer> a;
-  @ausx(a="upload")
-  public boolean a;
-  @ausx(a="min_sdk")
-  public int b;
-  @ausx(a="expdate")
-  public String b;
-  @ausx(a="samples")
-  public List<lbn> b;
-  @ausx(a="async_min_sdk")
-  public int c;
-  @ausx(a="test_ver")
-  public int d;
+  HashMap<Integer, lbo> a = new HashMap();
+  
+  public String toString()
+  {
+    return "size[" + this.a.size() + "]";
+  }
 }
 
 

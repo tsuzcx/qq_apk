@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import avdm;
-import ayfu;
+import ahvi;
+import awjp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -20,7 +21,7 @@ public class LocationAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839189;
+    return 2130839209;
   }
   
   public int getAppID()
@@ -49,17 +50,17 @@ public class LocationAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719039);
+    return BaseApplicationImpl.getContext().getString(2131719444);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.getActivity()))
     {
       CheckPermission.requestSDCardPermission(paramBaseChatPie.getActivity(), null);
       return;
     }
-    new avdm(paramBaseChatPie.app, paramBaseChatPie).a();
+    new awjp(paramBaseChatPie.app, paramBaseChatPie).a();
   }
 }
 

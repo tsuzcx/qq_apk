@@ -1,38 +1,28 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.StackBlur;
 
-final class bgyc
-  implements ValueCallback<String>
+public class bgyc
+  implements DownloadParams.DecodeHandler
 {
-  bgyc(WebViewFragment paramWebViewFragment) {}
+  private final int a = 10;
+  private final int b = 20;
   
-  public void a(String paramString)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftWebViewUtils", 2, "evaluateJavascript: " + paramString);
-    }
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (String str = paramString.trim();; str = "")
+    try
     {
-      if (!TextUtils.isEmpty(str))
-      {
-        paramString = str;
-        if (str.startsWith("\"")) {
-          paramString = str.replaceFirst("\"", "");
-        }
-        str = paramString;
-        if (paramString.endsWith("\"")) {
-          str = paramString.substring(0, paramString.length() - 1);
-        }
-        localBundle.putString("banner_wording", String.format(amtj.a(2131713733), new Object[] { str }));
-      }
-      this.a.goToConversation(localBundle);
-      return;
+      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
+      StackBlur.fastblur(paramDownloadParams, 10);
+      return paramDownloadParams;
     }
+    catch (OutOfMemoryError paramDownloadParams)
+    {
+      return paramBitmap;
+    }
+    catch (Exception paramDownloadParams) {}
+    return paramBitmap;
   }
 }
 

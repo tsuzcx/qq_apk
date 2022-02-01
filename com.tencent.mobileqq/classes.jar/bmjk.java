@@ -1,11 +1,25 @@
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import android.view.View;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class bmjk
-  implements bmpj
+  implements bkzq
 {
-  public bmjk(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public bmjk(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, bkzi parambkzi) {}
   
-  public void a(int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.e();
+      return;
+      TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, 29954);
+      continue;
+      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

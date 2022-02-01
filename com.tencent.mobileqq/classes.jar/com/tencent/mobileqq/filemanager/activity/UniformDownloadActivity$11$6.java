@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
-import arvk;
+import aszq;
 
 public class UniformDownloadActivity$11$6
   implements Runnable
 {
-  public UniformDownloadActivity$11$6(arvk paramarvk) {}
+  public UniformDownloadActivity$11$6(aszq paramaszq) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class UniformDownloadActivity$11$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6
  * JD-Core Version:    0.7.0.1
  */

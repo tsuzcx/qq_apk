@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import bfvp;
+import bheh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class JumpAction$4
   implements Runnable
 {
-  public JumpAction$4(bfvp parambfvp) {}
+  public JumpAction$4(bheh parambheh) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131698620, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131698917, 0).a();
   }
 }
 

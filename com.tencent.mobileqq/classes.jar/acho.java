@@ -1,8 +1,54 @@
-public abstract interface acho
+import com.tencent.qphone.base.util.QLog;
+
+public class acho
 {
-  public abstract void a(int paramInt, aafm paramaafm);
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, null);
+  }
   
-  public abstract void a(long paramLong);
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
+  }
+  
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
 }
 
 

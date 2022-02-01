@@ -1,24 +1,29 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aevx
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public aevx(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public aevx(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).onItemDeleted(localResultRecord);
+    }
+    this.a.a(false);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aevx
  * JD-Core Version:    0.7.0.1
  */

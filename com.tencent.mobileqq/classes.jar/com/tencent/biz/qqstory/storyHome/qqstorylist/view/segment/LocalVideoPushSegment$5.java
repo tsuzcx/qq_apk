@@ -11,15 +11,15 @@ import android.provider.MediaStore.Images.Thumbnails;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import xpn;
-import xtx;
-import xud;
-import xvv;
+import yei;
+import yis;
+import yiy;
+import ykq;
 
 public class LocalVideoPushSegment$5
   implements Runnable
 {
-  public LocalVideoPushSegment$5(xtx paramxtx, LocalMediaInfo paramLocalMediaInfo, xud paramxud) {}
+  public LocalVideoPushSegment$5(yis paramyis, LocalMediaInfo paramLocalMediaInfo, yiy paramyiy) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class LocalVideoPushSegment$5
     long l = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id;
     Object localObject2 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject2).inMutable = true;
-    localObject2 = MediaStore.Images.Thumbnails.getThumbnail(xtx.b(this.this$0).getContentResolver(), l, 1, (BitmapFactory.Options)localObject2);
+    localObject2 = MediaStore.Images.Thumbnails.getThumbnail(yis.b(this.this$0).getContentResolver(), l, 1, (BitmapFactory.Options)localObject2);
     if (localObject2 != null) {}
     try
     {
@@ -42,7 +42,7 @@ public class LocalVideoPushSegment$5
         localCanvas.save();
         localCanvas.restore();
         ((Bitmap)localObject2).recycle();
-        localObject1 = new BitmapDrawable(xtx.c(this.this$0).getResources(), this.this$0.a.a((Bitmap)localObject1));
+        localObject1 = new BitmapDrawable(yis.c(this.this$0).getResources(), this.this$0.a.a((Bitmap)localObject1));
         ThreadManager.getUIHandler().post(new LocalVideoPushSegment.5.1(this, (BitmapDrawable)localObject1));
         return;
       }
@@ -51,10 +51,10 @@ public class LocalVideoPushSegment$5
     {
       for (;;)
       {
-        xvv.c("Q.qqstory.home.LocalVideoPushSegment", "create new bitmap error:%s", localException);
+        ykq.c("Q.qqstory.home.LocalVideoPushSegment", "create new bitmap error:%s", localException);
         BitmapDrawable localBitmapDrawable = null;
         continue;
-        localBitmapDrawable = new BitmapDrawable(xtx.d(this.this$0).getResources(), (Bitmap)localObject2);
+        localBitmapDrawable = new BitmapDrawable(yis.d(this.this$0).getResources(), (Bitmap)localObject2);
       }
     }
   }

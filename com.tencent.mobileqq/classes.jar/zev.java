@@ -1,21 +1,60 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zev
-  implements View.OnClickListener
+public abstract class zev
 {
-  public zev(CommentBottomBar paramCommentBottomBar) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new zew(this);
+  View jdField_a_of_type_AndroidViewView;
+  zeq jdField_a_of_type_Zeq;
+  zer jdField_a_of_type_Zer;
+  zex jdField_a_of_type_Zex;
+  boolean b = false;
   
-  public void onClick(View paramView)
+  public zev(zex paramzex, View paramView)
   {
-    this.a.d();
-    if (CommentBottomBar.a(this.a) != null) {
-      CommentBottomBar.a(this.a).onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Zex = paramzex;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(CharSequence paramCharSequence) {}
+  
+  void a(zeq paramzeq)
+  {
+    this.jdField_a_of_type_Zeq = paramzeq;
+  }
+  
+  public void a(zer paramzer)
+  {
+    this.jdField_a_of_type_Zer = paramzer;
+    if (this.jdField_a_of_type_Zer != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+    this.jdField_a_of_type_AndroidViewView.setClickable(false);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.b != paramBoolean)
+    {
+      this.b = paramBoolean;
+      zeq localzeq = this.jdField_a_of_type_Zeq;
+      if (localzeq != null) {
+        localzeq.a(this, paramBoolean);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public void d(boolean paramBoolean) {}
 }
 
 

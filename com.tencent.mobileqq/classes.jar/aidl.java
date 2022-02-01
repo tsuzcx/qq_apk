@@ -1,36 +1,29 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aidl
-  implements FaceDecoder.DecodeTaskCompletionListener
+class aidl
+  implements View.OnClickListener
 {
-  public aidl(OverlappingImgLayout paramOverlappingImgLayout) {}
+  aidl(aidd paramaidd) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null) || (OverlappingImgLayout.a(this.a) == null) || (paramString.length() == 0)) {}
-    do
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if ((this.a.sessionInfo.curType == 1001) || (this.a.sessionInfo.curType == 10002)) {
+      bdla.b(this.a.app, "CliOper", "", "", "0X800514F", "0X800514F", 0, 0, "", "", "", "");
+    }
+    for (;;)
     {
+      bdla.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+      aftr.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramInt1 = 0;
-      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
-      {
-        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
-        {
-          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
-          if (QLog.isColorLevel()) {
-            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
-          }
-        }
-        paramInt1 += 1;
+      if (this.a.sessionInfo.curType == 1010) {
+        bdla.b(this.a.app, "CliOper", "", "", "0X80049C6", "0X80049C6", 0, 0, "", "", "", "");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+    }
   }
 }
 

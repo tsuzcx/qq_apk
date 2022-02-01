@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import abeu;
-import amov;
+import abug;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,20 +17,23 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import annk;
-import annp;
-import augf;
-import auic;
-import barh;
-import bbox;
-import bftf;
-import bfwh;
-import bhht;
-import blig;
+import anri;
+import aoqd;
+import aoqi;
+import avlz;
+import avnw;
+import bbxw;
+import bcvr;
+import bhbx;
+import bhez;
+import bisl;
+import bmux;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -43,11 +45,11 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
 import java.io.File;
 import java.util.Vector;
-import yxi;
+import zmk;
 
 public class QQSettingMsgHistoryActivity
   extends IphoneTitleBarActivity
-  implements ViewTreeObserver.OnGlobalLayoutListener, annp
+  implements ViewTreeObserver.OnGlobalLayoutListener, aoqi
 {
   private static volatile ScanSpaceManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager;
   static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "ChatHistoryEventConfig.json";
@@ -56,7 +58,7 @@ public class QQSettingMsgHistoryActivity
   private View jdField_a_of_type_AndroidViewView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bhht jdField_a_of_type_Bhht;
+  bisl jdField_a_of_type_Bisl;
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
@@ -87,7 +89,7 @@ public class QQSettingMsgHistoryActivity
   private void a(long paramLong)
   {
     this.jdField_a_of_type_Long -= paramLong;
-    String str = annk.a(this.jdField_a_of_type_Long);
+    String str = aoqd.a(this.jdField_a_of_type_Long);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
   }
   
@@ -124,15 +126,15 @@ public class QQSettingMsgHistoryActivity
     //   50: invokestatic 147	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:c	()V
     //   53: aload_1
     //   54: invokestatic 149	com/tencent/mobileqq/activity/QQSettingMsgHistoryActivity:b	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   57: invokestatic 153	bfws:a	()V
+    //   57: invokestatic 153	bhfk:a	()V
     //   60: invokestatic 156	com/tencent/mobileqq/ark/ArkAppCenter:b	()V
-    //   63: invokestatic 159	avbv:b	()V
+    //   63: invokestatic 159	awhy:b	()V
     //   66: aload_0
     //   67: ifnull +12 -> 79
     //   70: aload_0
     //   71: aload_1
     //   72: invokevirtual 162	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   75: invokestatic 167	bkox:a	(Landroid/app/Activity;Ljava/lang/String;)Z
+    //   75: invokestatic 167	bmaf:a	(Landroid/app/Activity;Ljava/lang/String;)Z
     //   78: pop
     //   79: aload_1
     //   80: invokestatic 173	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:deleteAllH5Data	(Lcom/tencent/common/app/AppInterface;)V
@@ -152,7 +154,7 @@ public class QQSettingMsgHistoryActivity
     //   115: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
     //   121: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   124: invokestatic 195	noe:b	()Ljava/lang/String;
+    //   124: invokestatic 195	nvf:b	()Ljava/lang/String;
     //   127: astore_0
     //   128: aload_0
     //   129: ifnull +14 -> 143
@@ -161,7 +163,7 @@ public class QQSettingMsgHistoryActivity
     //   136: aload_0
     //   137: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
     //   140: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   143: invokestatic 197	noe:d	()Ljava/lang/String;
+    //   143: invokestatic 197	nvf:d	()Ljava/lang/String;
     //   146: astore_0
     //   147: aload_0
     //   148: ifnull +14 -> 162
@@ -170,7 +172,7 @@ public class QQSettingMsgHistoryActivity
     //   155: aload_0
     //   156: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
     //   159: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   162: invokestatic 199	noe:a	()Ljava/lang/String;
+    //   162: invokestatic 199	nvf:a	()Ljava/lang/String;
     //   165: astore_0
     //   166: aload_0
     //   167: ifnull +14 -> 181
@@ -179,7 +181,7 @@ public class QQSettingMsgHistoryActivity
     //   174: aload_0
     //   175: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
     //   178: invokestatic 191	fd:a	(Ljava/io/File;)V
-    //   181: invokestatic 201	noe:c	()Ljava/lang/String;
+    //   181: invokestatic 201	nvf:c	()Ljava/lang/String;
     //   184: astore_0
     //   185: aload_0
     //   186: ifnull +14 -> 200
@@ -389,8 +391,8 @@ public class QQSettingMsgHistoryActivity
     //   663: aload_0
     //   664: invokestatic 191	fd:a	(Ljava/io/File;)V
     //   667: invokestatic 311	com/tencent/mobileqq/vas/VasQuickUpdateManager:cleanCache	()V
-    //   670: invokestatic 314	bobd:b	()V
-    //   673: invokestatic 318	ahns:f	()V
+    //   670: invokestatic 314	bpqv:b	()V
+    //   673: invokestatic 318	aiin:f	()V
     //   676: return
     //   677: astore_0
     //   678: invokestatic 323	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -453,7 +455,7 @@ public class QQSettingMsgHistoryActivity
       return;
     }
     BaseApplication.getContext().getPackageName();
-    a(bftf.a(BaseApplication.getContext()) + "thumbnails/");
+    a(bhbx.a(BaseApplication.getContext()) + "thumbnails/");
   }
   
   private static void a(String paramString)
@@ -477,22 +479,22 @@ public class QQSettingMsgHistoryActivity
   public static void a(String paramString, boolean paramBoolean)
   {
     int j = 0;
-    while (j < amov.jdField_a_of_type_JavaUtilVector.size())
+    while (j < anri.jdField_a_of_type_JavaUtilVector.size())
     {
-      a(amov.jdField_a_of_type_JavaLangString + ((Integer)amov.jdField_a_of_type_JavaUtilVector.get(j)).intValue() + "/");
+      a(anri.jdField_a_of_type_JavaLangString + ((Integer)anri.jdField_a_of_type_JavaUtilVector.get(j)).intValue() + "/");
       j += 1;
     }
-    a(amov.jdField_a_of_type_JavaLangString + "background" + "/");
+    a(anri.jdField_a_of_type_JavaLangString + "background" + "/");
     a(AppConstants.SDCARD_PATH + "temp" + "/");
-    a(amov.jdField_a_of_type_JavaLangString + "temp" + "/");
-    a(amov.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
+    a(anri.jdField_a_of_type_JavaLangString + "temp" + "/");
+    a(anri.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
     a(AppConstants.PATH_CARD_QZONE);
-    a(amov.jdField_a_of_type_JavaLangString + "voice" + "/");
-    a(abeu.a() + "/");
+    a(anri.jdField_a_of_type_JavaLangString + "voice" + "/");
+    a(abug.a() + "/");
     a(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_SCREENSHOTS);
-    a(augf.jdField_a_of_type_JavaLangString);
-    a(auic.jdField_a_of_type_JavaLangString);
-    a(barh.a());
+    a(avlz.jdField_a_of_type_JavaLangString);
+    a(avnw.jdField_a_of_type_JavaLangString);
+    a(bbxw.a());
   }
   
   private void b(int paramInt)
@@ -525,8 +527,8 @@ public class QQSettingMsgHistoryActivity
     if (n < 1) {}
     for (localObject = "<1%";; localObject = n + "%")
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131698081), new Object[] { localObject }));
-      localObject = annk.a(paramLong1);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(getString(2131698367), new Object[] { localObject }));
+      localObject = aoqd.a(paramLong1);
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_Long = paramLong1;
       QLog.d("QQSettingMsgHistoryActivity", 1, "showSpaceInfo qqSpaceLength: " + j + " phoneSpaceLength: " + k + " avaliableSpaceLength: " + m);
@@ -558,21 +560,21 @@ public class QQSettingMsgHistoryActivity
   
   private static void c(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getManager(10);
+    paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
     if (paramQQAppInterface == null) {}
-    while (!(paramQQAppInterface instanceof bbox)) {
+    while (!(paramQQAppInterface instanceof bcvr)) {
       return;
     }
-    ((bbox)paramQQAppInterface).a = null;
+    ((bcvr)paramQQAppInterface).a = null;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365256);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131371426);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131376797));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365257));
-    this.jdField_c_of_type_JavaLangString = getResources().getString(2131690609);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365348);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131371612);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377066));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365349));
+    this.jdField_c_of_type_JavaLangString = getResources().getString(2131690686);
   }
   
   private void e()
@@ -580,7 +582,7 @@ public class QQSettingMsgHistoryActivity
     if ((jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager != null) && (jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a()))
     {
       b(jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b, jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.a(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.b(), jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanScanSpaceManager.c());
-      blig.a(this);
+      bmux.a(this);
       if (VersionUtils.isGingerBread()) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
       }
@@ -596,19 +598,19 @@ public class QQSettingMsgHistoryActivity
   
   private void f()
   {
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131364487);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131374217);
-    this.e = this.jdField_c_of_type_AndroidViewView.findViewById(2131372431);
-    this.f = this.jdField_c_of_type_AndroidViewView.findViewById(2131372400);
-    this.g = this.jdField_c_of_type_AndroidViewView.findViewById(2131373941);
-    this.h = this.jdField_c_of_type_AndroidViewView.findViewById(2131372398);
-    this.i = this.jdField_c_of_type_AndroidViewView.findViewById(2131372396);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131374216));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131365008));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131364569);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131374452);
+    this.e = this.jdField_c_of_type_AndroidViewView.findViewById(2131372625);
+    this.f = this.jdField_c_of_type_AndroidViewView.findViewById(2131372594);
+    this.g = this.jdField_c_of_type_AndroidViewView.findViewById(2131374170);
+    this.h = this.jdField_c_of_type_AndroidViewView.findViewById(2131372592);
+    this.i = this.jdField_c_of_type_AndroidViewView.findViewById(2131372590);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131374451));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131365092));
     ((GradientDrawable)this.g.getBackground()).setColor(Color.parseColor("#00CAFC"));
     ((GradientDrawable)this.h.getBackground()).setColor(Color.parseColor("#FFCC00"));
     ((GradientDrawable)this.i.getBackground()).setColor(Color.parseColor("#EBEDF5"));
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298440);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298444);
     this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int / 8);
     this.jdField_c_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - this.jdField_a_of_type_Int * 2 - this.jdField_b_of_type_Int * 2);
@@ -628,10 +630,10 @@ public class QQSettingMsgHistoryActivity
     }
     if (j == 2)
     {
-      setTitle(2131718554);
+      setTitle(2131718943);
       return;
     }
-    setTitle(2131698524);
+    setTitle(2131698821);
   }
   
   public void a(int paramInt)
@@ -643,7 +645,7 @@ public class QQSettingMsgHistoryActivity
   {
     b(100);
     b(paramLong1, paramLong2, paramLong3, paramLong4);
-    blig.a(this);
+    bmux.a(this);
     if (VersionUtils.isGingerBread()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
     }
@@ -674,15 +676,15 @@ public class QQSettingMsgHistoryActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561445);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131376862));
-    setTitle(2131691359);
+    super.setContentView(2131561507);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131377134));
+    setTitle(2131691444);
     d();
     f();
     e();
     this.jdField_b_of_type_JavaLangString = this.app.getCurrentAccountUin();
     setVolumeControlStream(3);
-    if (bfwh.a(this)) {
+    if (bhez.a(this)) {
       VipUtils.a(this.app, "Safe_SpaceClean", "SpaceClean_", "enter_MsgHistory_had_installed_secure", 0, 0, null);
     }
     for (;;)
@@ -695,12 +697,12 @@ public class QQSettingMsgHistoryActivity
   
   public void doOnDestroy()
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
       dismissDialog(1);
     }
     super.doOnDestroy();
     a();
-    yxi.a(this);
+    zmk.a(this);
   }
   
   public void doOnPostResume()
@@ -717,7 +719,7 @@ public class QQSettingMsgHistoryActivity
   public void doOnStart()
   {
     super.doOnStart();
-    ((VasExtensionHandler)this.app.getBusinessHandler(71)).a(new String[] { this.app.getCurrentAccountUin() }, new int[] { 42255 });
+    ((VasExtensionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(new String[] { this.app.getCurrentAccountUin() }, new int[] { 42255 });
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -754,12 +756,12 @@ public class QQSettingMsgHistoryActivity
   
   public String setLastActivityName()
   {
-    return getString(2131690684);
+    return getString(2131690761);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity
  * JD-Core Version:    0.7.0.1
  */

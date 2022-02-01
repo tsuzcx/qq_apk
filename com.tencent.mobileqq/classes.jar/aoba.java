@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
-
-public final class aoba
-  implements Parcelable.Creator<ARRelationShipAIOMsg>
+public abstract interface aoba
 {
-  public ARRelationShipAIOMsg a(Parcel paramParcel)
-  {
-    return new ARRelationShipAIOMsg(paramParcel);
-  }
-  
-  public ARRelationShipAIOMsg[] a(int paramInt)
-  {
-    return new ARRelationShipAIOMsg[paramInt];
-  }
+  public abstract void a();
 }
 
 

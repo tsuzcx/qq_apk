@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adne;
-import amqx;
+import aeel;
 import android.graphics.Bitmap;
+import antl;
 
 public class JoinDiscussionActivity$FaceObserver$1
   implements Runnable
 {
-  public JoinDiscussionActivity$FaceObserver$1(adne paramadne) {}
+  public JoinDiscussionActivity$FaceObserver$1(aeel paramaeel) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class JoinDiscussionActivity$FaceObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,44 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import java.io.FileOutputStream;
 
 public class atpg
-  implements DialogInterface.OnClickListener
 {
-  public atpg(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  int jdField_a_of_type_Int = -1;
+  long jdField_a_of_type_Long = -1L;
+  atmh jdField_a_of_type_Atmh;
+  atph jdField_a_of_type_Atph;
+  HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
+  String jdField_a_of_type_JavaLangString;
+  short jdField_a_of_type_Short = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  HttpMsg jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int = 0;
+  long jdField_c_of_type_Long = 0L;
+  String jdField_c_of_type_JavaLangString;
+  int jdField_d_of_type_Int = 0;
+  long jdField_d_of_type_Long = 0L;
+  String jdField_d_of_type_JavaLangString;
+  long jdField_e_of_type_Long;
+  String jdField_e_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atpg()
   {
-    if (paramInt == 1)
-    {
-      if (ForwardSdkShareOption.a(this.a))
-      {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", atku.e.intValue());
-        this.a.m();
-      }
-      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
-    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
-    paramDialogInterface.setResult(0);
-    StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountCliOper(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.finish();
+    this.e = 0L;
+  }
+  
+  public String toString()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atpg
  * JD-Core Version:    0.7.0.1
  */

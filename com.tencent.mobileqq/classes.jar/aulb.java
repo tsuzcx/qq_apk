@@ -1,48 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.os.Bundle;
 
-class aulb
-  implements TVK_SDKMgr.OnLogListener
+public abstract interface aulb
 {
-  aulb(aula paramaula) {}
+  public abstract int a();
   
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public abstract int a(aulc paramaulc);
   
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-    return 0;
-  }
+  public abstract int a(String paramString, Bundle paramBundle);
   
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public abstract int b();
   
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public abstract int c();
   
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 

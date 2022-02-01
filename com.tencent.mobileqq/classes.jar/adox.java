@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adox
-  extends amyh
+class adox
+  implements View.OnClickListener
 {
-  public adox(Leba paramLeba) {}
+  adox(ador paramador, MessageRecord paramMessageRecord) {}
   
-  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (Leba.a(this.a) != null)) {
-      Leba.a(this.a).b();
-    }
+    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Ador.a.a, aavz.a(paramView));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

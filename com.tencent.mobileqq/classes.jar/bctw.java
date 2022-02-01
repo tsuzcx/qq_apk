@@ -1,152 +1,185 @@
+import android.app.KeyguardManager;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.Intent;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.TroopInviteVideoDecoder.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import mqq.os.MqqHandler;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.DealInviteInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.InviteInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.UninviteInfo;
 
 public class bctw
-  extends bjuw
+  implements bctu
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<bcty> jdField_a_of_type_JavaUtilList;
-  Map<String, bcty> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static HashMap<String, Long> a = new HashMap();
   
-  public bctw(QQAppInterface paramQQAppInterface, Context paramContext, View.OnClickListener paramOnClickListener, List<bcty> paramList)
+  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public String a(String paramString)
-  {
-    Object localObject = (bcty)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null) {
-      return paramString;
-    }
-    localObject = ContactUtils.getTeamworkAuthorzShowName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((bcty)localObject).jdField_a_of_type_JavaLangString, ((bcty)localObject).b, ((bcty)localObject).jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      ((bcty)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c = ((String)localObject);
-    }
-    return ((bcty)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bcty parambcty)
-  {
-    if (parambcty == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(0, parambcty);
-    this.jdField_a_of_type_JavaUtilMap.put(parambcty.jdField_a_of_type_JavaLangString, parambcty);
-  }
-  
-  public void a(String paramString)
-  {
-    bcty localbcty = (bcty)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localbcty == null) {
-      return;
-    }
-    localbcty.c = a(paramString);
-    notifyDataSetChanged();
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = (bcty)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    label116:
-    Object localObject;
-    int i;
-    if (paramView == null)
+    submsgtype0xb1.MsgBody localMsgBody = new submsgtype0xb1.MsgBody();
+    try
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562863, null);
-      paramView = new bctx(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368030));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371769));
-      paramView.b = ((TextView)localView.findViewById(2131377734));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362983));
-      localView.setTag(paramView);
-      if (this.jdField_a_of_type_Int != 2) {
-        break label262;
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      long l1 = 2000L;
+      if (!paramBoolean) {
+        l1 = 10000L;
       }
-      paramView.b.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localObject = (bcty)getItem(paramInt);
-      String str = String.valueOf(((bcty)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get());
-      FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localFaceDrawable);
-      str = a(str);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      i = ((bcty)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.get();
-      if (i != 1) {
-        break label281;
+      ThreadManager.getUIHandler().postDelayed(new TroopInviteVideoDecoder.1(paramQQAppInterface, localMsgBody, paramBoolean), l1);
+      long l2;
+      if (localMsgBody.deal_info.has())
+      {
+        l1 = localMsgBody.deal_info.uint64_group_code.get();
+        l2 = localMsgBody.deal_info.uint64_uin.get();
+        paramArrayOfByte = localMsgBody.deal_info.str_id.get();
+        int i = localMsgBody.deal_info.uint32_deal_result.get();
+        if (paramQQAppInterface.getCurrentAccountUin().equals(l2 + ""))
+        {
+          Intent localIntent = new Intent("tencent.video.q2v.close_invite_msg_box_by_invite_id");
+          localIntent.putExtra("groupId", l1);
+          localIntent.putExtra("inviteId", paramArrayOfByte);
+          paramQQAppInterface.getApp().sendBroadcast(localIntent);
+        }
+        if (i == 0) {
+          paramQQAppInterface.getGAudioHandler().a(l1, l2, paramArrayOfByte);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "recv 0x210_0xb1, msgBody.deal_info.has()==》troopUin：" + l1 + ", memUin:" + l2 + ", invitedId:" + paramArrayOfByte + ", dealResult:" + i);
+        }
       }
-      paramView.b.setText(2131718830);
+      if (localMsgBody.univite_info.has())
+      {
+        l1 = localMsgBody.univite_info.uint64_group_code.get();
+        l2 = localMsgBody.univite_info.uint64_uin.get();
+        paramArrayOfByte = localMsgBody.univite_info.str_id.get();
+        paramQQAppInterface.getGAudioHandler().b(l1, l2, paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "recv 0x210_0xb1, msgBody.univite_info.has()==》troopUin：" + l1 + ", memUin:" + l2 + ", invitedId:" + paramArrayOfByte + ", dealResult:" + paramArrayOfByte);
+        }
+        if (!paramBoolean) {
+          a.put(paramArrayOfByte, Long.valueOf(System.currentTimeMillis() / 1000L));
+        }
+      }
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("TroopInviteVideoDecoder", 2, "recv 0x210_0xb1, prase msgBody error");
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, submsgtype0xb1.InviteInfo paramInviteInfo, boolean paramBoolean)
+  {
+    submsgtype0xb1.InviteInfo localInviteInfo;
+    long l1;
+    if (paramInviteInfo.has())
+    {
+      localInviteInfo = (submsgtype0xb1.InviteInfo)paramInviteInfo.get();
+      l1 = System.currentTimeMillis() / 1000L;
+      if (l1 - localInviteInfo.uint32_expire_time.get() <= 900L) {
+        break label106;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "邀请过期了=》troopUin:" + localInviteInfo.uint64_group_code.get() + "|uint32_expire_time:" + localInviteInfo.uint32_expire_time.get() + ", currentTime:" + l1);
+      }
+    }
+    label106:
+    Object localObject;
+    do
+    {
+      do
+      {
+        long l2;
+        do
+        {
+          return;
+          if ((paramBoolean) || (!a.containsKey(localInviteInfo.str_id.get()))) {
+            break;
+          }
+          l2 = ((Long)a.get(localInviteInfo.str_id.get())).longValue();
+          if (l1 - l2 >= 10L) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "离线-上线的时候收到邀请的前10s内先收到了取消的邀请=》troopUin:" + localInviteInfo.uint64_group_code.get() + "|receiveUnInviteTime:" + l2 + ", currentTime:" + l1);
+        return;
+        paramBoolean = paramQQAppInterface.getAVNotifyCenter().c(localInviteInfo.uint64_group_code.get());
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "msgBody.invite_info.has()==》troopUin:" + localInviteInfo.uint64_group_code.get() + "|uint32_expire_time:" + localInviteInfo.uint32_expire_time.get() + ", currentTime:" + l1 + ", hasGroupVideo:" + paramBoolean);
+        }
+        localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      } while ((!paramBoolean) || (((TroopManager)localObject).d(localInviteInfo.uint64_group_code.get() + "", localInviteInfo.uint64_uin.get() + "")));
+      paramBoolean = false;
+      if (paramQQAppInterface.getAVNotifyCenter().b() > 0L) {
+        paramBoolean = true;
+      }
+      if (((TroopManager)localObject).b() != 2) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "只允许同时存在两个邀请框");
+    return;
+    if (((TroopManager)localObject).b() > 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "hasGroupInviting");
+      }
+      paramInviteInfo = new Intent(paramQQAppInterface.getApp().getApplicationContext(), MultiIncomingCallsActivity.class);
+      paramInviteInfo.putExtra("uinType", 1);
+      paramInviteInfo.putExtra("peerUin", String.valueOf(localInviteInfo.uint64_uin.get()));
     }
     for (;;)
     {
-      paramView.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = ((bcty)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo;
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bctx)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label262:
-      paramView.b.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label116;
-      label281:
-      if (i == 2) {
-        paramView.b.setText(2131718831);
-      } else {
-        paramView.b.setText(amtj.a(2131713814));
+      ((TroopManager)localObject).c(String.valueOf(localInviteInfo.uint64_group_code.get()), String.valueOf(localInviteInfo.uint64_uin.get()));
+      if (((KeyguardManager)paramQQAppInterface.getApp().getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode())
+      {
+        localObject = new Intent();
+        ((Intent)localObject).setAction("tencent.video.v2q.ReceiveRequest");
+        ((Intent)localObject).putExtra("revVideoRequest", true);
+        ((Intent)localObject).setPackage(paramQQAppInterface.getApp().getPackageName());
+        paramQQAppInterface.getApp().sendBroadcast((Intent)localObject);
       }
+      paramInviteInfo.addFlags(268435456);
+      paramInviteInfo.putExtra("relationType", 1);
+      paramInviteInfo.putExtra("discussId", localInviteInfo.uint64_group_code.get());
+      paramInviteInfo.putExtra("friendUin", localInviteInfo.uint64_uin.get());
+      paramInviteInfo.putExtra("inviteId", localInviteInfo.str_id.get());
+      paramInviteInfo.putExtra("hasGVideoJoined", paramBoolean);
+      paramInviteInfo.putExtra("memberType", mvi.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), localInviteInfo.uint64_group_code.get() + ""));
+      paramQQAppInterface.getApp().startActivity(paramInviteInfo);
+      return;
+      paramInviteInfo = new Intent(paramQQAppInterface.getApp().getApplicationContext(), GaInviteDialogActivity.class);
     }
+  }
+  
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInviteVideoDecoder", 2, "processMsg0x210Sub0xb1");
+    }
+    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
+    a(paramMessageHandler.app, paramMsgType0x210, false);
+    bcrx.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
   }
 }
 

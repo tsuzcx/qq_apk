@@ -1,188 +1,41 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/data/DataBiliDoubleItemWhite;", "Lcom/tencent/biz/pubaccount/readinjoy/pts/data/PTSLiteDataFactory$IPTSLiteDataJson;", "()V", "addR5ReportJson", "", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "r5", "Lorg/json/JSONObject;", "bindSubscriptInfo", "jsonData", "getItemJsonObject", "updateDataJson", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qma
-  implements qme
+public class qma
 {
-  public static final qmb a = new qmb(null);
-  
-  private final JSONObject a(ArticleInfo paramArticleInfo)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramArticleInfo == null) {
-      return new JSONObject();
+    JSONObject localJSONObject1 = new JSONObject();
+    if (TextUtils.isEmpty(paramBaseArticleInfo.avatar)) {
+      localJSONObject1.put("avator_url", "default_comment_avatar");
     }
-    localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("rowKey", paramArticleInfo.innerUniqueID);
-      localJSONObject.put("title", paramArticleInfo.mTitle);
-      localJSONObject.put("cover_image_url", paramArticleInfo.mFirstPagePicUrl);
-      localJSONObject.put("author", paramArticleInfo.mSubscribeName);
-      Object localObject;
-      if (!TextUtils.isEmpty((CharSequence)paramArticleInfo.mJsonVideoList))
-      {
-        localObject = rwv.a(paramArticleInfo.getVideoDuration() * 1000);
-        if (localObject == null) {
-          break label177;
-        }
-        localObject = ((StringBuilder)localObject).toString();
-        if (localObject == null) {
-          break label177;
-        }
-      }
-      for (;;)
-      {
-        localJSONObject.put("duration", localObject);
-        localJSONObject.put("comment", rwv.d(paramArticleInfo.mVideoCommentCount));
-        localJSONObject.put("count", rwv.c(paramArticleInfo.mVideoPlayCount));
-        if (paramArticleInfo.mCommentCount > 0L) {
-          localJSONObject.put("comment", rwv.d((int)paramArticleInfo.mCommentCount));
-        }
-        localJSONObject.put("jump_url", paramArticleInfo.mArticleContentUrl);
-        break;
-        label177:
-        localObject = "";
-      }
-      return localJSONObject;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("DataBiliDoubleItemWhite", 1, "[getItemJsonObject] e = " + paramArticleInfo);
-    }
-  }
-  
-  private final void c(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
-  {
-    Object localObject2 = null;
-    Object localObject1 = paramArticleInfo.mSubArtilceList;
-    if (localObject1 != null) {
-      localObject1 = (ArticleInfo)((List)localObject1).get(0);
-    }
-    try
-    {
-      paramJSONObject.put("left_mark_text", paramArticleInfo.subscriptWording);
-      paramJSONObject.put("left_mark_color", qnr.a(paramArticleInfo.subscriptWordingColor));
-      paramJSONObject.put("left_mark_backgroundcolor", qnr.a(paramArticleInfo.subscriptBgColor));
-      paramJSONObject.put("left_corner_mark", paramArticleInfo.subscriptType);
-      if (localObject1 != null)
-      {
-        paramArticleInfo = ((ArticleInfo)localObject1).subscriptWording;
-        label82:
-        paramJSONObject.put("right_mark_text", paramArticleInfo);
-        if (localObject1 == null) {
-          break label164;
-        }
-        paramArticleInfo = ((ArticleInfo)localObject1).subscriptWordingColor;
-        label99:
-        paramJSONObject.put("right_mark_color", qnr.a(paramArticleInfo));
-        if (localObject1 == null) {
-          break label169;
-        }
-      }
-      label164:
-      label169:
-      for (paramArticleInfo = ((ArticleInfo)localObject1).subscriptBgColor;; paramArticleInfo = null)
-      {
-        paramJSONObject.put("right_mark_backgroundcolor", qnr.a(paramArticleInfo));
-        paramArticleInfo = localObject2;
-        if (localObject1 != null) {
-          paramArticleInfo = Integer.valueOf(((ArticleInfo)localObject1).subscriptType);
-        }
-        paramJSONObject.put("right_corner_mark", paramArticleInfo);
-        return;
-        localObject1 = null;
-        break;
-        paramArticleInfo = null;
-        break label82;
-        paramArticleInfo = null;
-        break label99;
-      }
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("DataBiliDoubleItemWhite", 1, "[bindSubscriptInfo] e = " + paramArticleInfo);
-    }
-  }
-  
-  public void a(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArticleInfo, "articleInfo");
-    Intrinsics.checkParameterIsNotNull(paramJSONObject, "jsonData");
-    Object localObject = paramArticleInfo.mSubArtilceList;
-    if (localObject != null) {}
-    for (int i = ((List)localObject).size(); i <= 0; i = 0) {
-      return;
-    }
-    paramJSONObject.put("pts_page_name", "bili_double_items_white");
-    JSONArray localJSONArray = new JSONArray();
-    localJSONArray.put(0, a(paramArticleInfo));
-    localObject = paramArticleInfo.mSubArtilceList;
-    if (localObject != null) {}
-    for (localObject = (ArticleInfo)((List)localObject).get(0);; localObject = null)
-    {
-      localJSONArray.put(1, a((ArticleInfo)localObject));
-      paramJSONObject.put("datas", localJSONArray);
-      c(paramArticleInfo, paramJSONObject);
-      return;
-    }
-  }
-  
-  public void b(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArticleInfo, "articleInfo");
-    Intrinsics.checkParameterIsNotNull(paramJSONObject, "r5");
-    String str;
-    int i;
-    try
-    {
-      paramJSONObject.put("feeds_type", 1056);
-      if (!TextUtils.isEmpty((CharSequence)paramArticleInfo.mJsonVideoList)) {
-        break label119;
-      }
-      str = "1";
-      paramJSONObject.put("double_card_type", str);
-      paramArticleInfo = paramArticleInfo.mSubArtilceList;
-      if (paramArticleInfo == null) {
-        break label126;
-      }
-      i = paramArticleInfo.size();
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      label67:
-      QLog.e("DataBiliDoubleItemWhite", 1, "[addR5ReportJson], e = " + paramArticleInfo);
-      return;
-    }
-    paramJSONObject.put("double_card_pos", paramArticleInfo);
-    return;
-    label129:
     for (;;)
     {
-      paramArticleInfo = "1";
-      break label67;
-      for (;;)
+      qmm.s(paramBaseArticleInfo, localJSONObject1);
+      qmm.a(paramBaseArticleInfo, localJSONObject1, true);
+      uks.e(paramBaseArticleInfo, localJSONObject1);
+      uks.a(paramBaseArticleInfo, localJSONObject1);
+      qmm.n(paramBaseArticleInfo, localJSONObject1);
+      qmm.g(paramBaseArticleInfo, localJSONObject1);
+      qmm.i(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_brand_optimization_cell");
+      qmm.a(localJSONObject1, paramBaseArticleInfo);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
       {
-        if (i <= 0) {
-          break label129;
-        }
-        paramArticleInfo = "0";
-        break label67;
-        label119:
-        str = "0";
-        break;
-        label126:
-        i = 0;
+        qmm.f(paramBaseArticleInfo, localJSONObject1);
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("article_model", paramBaseArticleInfo);
+        localJSONObject1.put("id_view_AdBanner", localJSONObject2);
       }
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_article_brand_optimization", localJSONObject2);
+      localJSONObject1.put("id_info_operate_parent", new JSONObject());
+      localJSONObject1.put("id_ad_brand_container", new JSONObject());
+      return localJSONObject1;
+      localJSONObject1.put("avator_url", paramBaseArticleInfo.avatar);
     }
   }
 }

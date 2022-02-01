@@ -4,7 +4,7 @@ import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import ayde;
+import azjq;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class PicPreDownloader$ScreenBroadcastReceiver
@@ -36,7 +36,7 @@ public class PicPreDownloader$ScreenBroadcastReceiver
     }
     for (;;)
     {
-      ayde.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.a());
+      azjq.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.a());
       if ((PicPreDownloader.a() != PicPreDownloader.a) || (PicPreDownloader.a)) {
         break;
       }

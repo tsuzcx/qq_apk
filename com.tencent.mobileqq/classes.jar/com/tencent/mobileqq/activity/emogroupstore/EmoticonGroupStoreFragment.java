@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import agyh;
-import agzl;
-import aham;
-import aisz;
-import aita;
-import aitb;
-import aitc;
-import aitd;
-import aite;
-import aitf;
-import aith;
-import aitk;
-import aitl;
-import amtj;
-import anam;
+import ahri;
+import ahsl;
+import ahtm;
+import ajoo;
+import ajop;
+import ajoq;
+import ajor;
+import ajos;
+import ajot;
+import ajou;
+import ajow;
+import ajoz;
+import ajpa;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -44,11 +42,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import arao;
-import araq;
-import arba;
-import arbb;
-import bgga;
+import anvx;
+import aodb;
+import asey;
+import asfa;
+import asfk;
+import asfl;
+import bhou;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
@@ -62,6 +62,7 @@ import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
@@ -94,14 +95,13 @@ public class EmoticonGroupStoreFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  private aitf jdField_a_of_type_Aitf;
-  private aitl jdField_a_of_type_Aitl;
-  anam jdField_a_of_type_Anam = new aisz(this);
+  private ajou jdField_a_of_type_Ajou;
+  private ajpa jdField_a_of_type_Ajpa;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aita(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajop(this);
   private View jdField_a_of_type_AndroidViewView;
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
@@ -109,7 +109,8 @@ public class EmoticonGroupStoreFragment
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private araq jdField_a_of_type_Araq;
+  aodb jdField_a_of_type_Aodb = new ajoo(this);
+  private asfa jdField_a_of_type_Asfa;
   TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("    ");
@@ -122,7 +123,7 @@ public class EmoticonGroupStoreFragment
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private List<EmoticonFromGroupEntity> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, aith> jdField_b_of_type_JavaUtilMap;
+  private Map<String, ajow> jdField_b_of_type_JavaUtilMap;
   private volatile boolean jdField_b_of_type_Boolean;
   private View jdField_c_of_type_AndroidViewView;
   private Button jdField_c_of_type_AndroidWidgetButton;
@@ -130,7 +131,7 @@ public class EmoticonGroupStoreFragment
   private List<EmoticonFromGroupEntity> jdField_c_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private View jdField_d_of_type_AndroidViewView;
   private Button jdField_d_of_type_AndroidWidgetButton;
-  private List<aith> jdField_d_of_type_JavaUtilList;
+  private List<ajow> jdField_d_of_type_JavaUtilList;
   private View jdField_e_of_type_AndroidViewView;
   private Button jdField_e_of_type_AndroidWidgetButton;
   private List<String> jdField_e_of_type_JavaUtilList = new ArrayList();
@@ -156,7 +157,7 @@ public class EmoticonGroupStoreFragment
       if (localEmoticonFromGroupEntity != null) {
         if (localEmoticonFromGroupEntity.msg == null)
         {
-          MessageForPic localMessageForPic = this.jdField_a_of_type_Araq.a(localEmoticonFromGroupEntity);
+          MessageForPic localMessageForPic = this.jdField_a_of_type_Asfa.a(localEmoticonFromGroupEntity);
           if (localMessageForPic != null)
           {
             localEmoticonFromGroupEntity.msg = localMessageForPic;
@@ -164,8 +165,8 @@ public class EmoticonGroupStoreFragment
           }
           else
           {
-            this.jdField_a_of_type_Araq.b(localEmoticonFromGroupEntity);
-            this.jdField_a_of_type_Araq.a(localEmoticonFromGroupEntity);
+            this.jdField_a_of_type_Asfa.b(localEmoticonFromGroupEntity);
+            this.jdField_a_of_type_Asfa.a(localEmoticonFromGroupEntity);
           }
         }
         else
@@ -178,11 +179,11 @@ public class EmoticonGroupStoreFragment
   
   private void b(List<EmoticonFromGroupEntity> paramList)
   {
-    Object localObject1 = (arba)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    Object localObject1 = (asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Fragment", 2, "call getEmoticonDataList from EmoticonGroupStoreFragment.filterFavEmo");
     }
-    Object localObject2 = ((arba)localObject1).a();
+    Object localObject2 = ((asfk)localObject1).a();
     localObject1 = new ArrayList();
     if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
     {
@@ -200,7 +201,7 @@ public class EmoticonGroupStoreFragment
     while (paramList.hasNext())
     {
       EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)paramList.next();
-      if (this.jdField_a_of_type_Araq.a((List)localObject1, localEmoticonFromGroupEntity.bigURL))
+      if (this.jdField_a_of_type_Asfa.a((List)localObject1, localEmoticonFromGroupEntity.bigURL))
       {
         localEmoticonFromGroupEntity.status = 0;
         ((List)localObject2).add(localEmoticonFromGroupEntity);
@@ -211,21 +212,21 @@ public class EmoticonGroupStoreFragment
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131379986));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131372636));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363826));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131367741));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363852));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131380325));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131372830));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363898));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131367877));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363924));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131561867, this.titleRoot, false);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365969);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365970);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131365971));
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363824);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363825);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363854));
-    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363853));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131561935, this.titleRoot, false);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366070);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366071);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131366072));
+    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363896);
+    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363897);
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363926));
+    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363925));
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
@@ -235,29 +236,29 @@ public class EmoticonGroupStoreFragment
     Object localObject = new LinearLayoutManager(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, false);
     ((LinearLayoutManager)localObject).setRecycleChildrenOnDetach(true);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131379977));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131380316));
     this.jdField_f_of_type_AndroidViewView = new View(this.titleRoot.getContext());
     localObject = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_f_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor(getString(2131165364)));
+    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor(getString(2131165370)));
     try
     {
-      this.jdField_g_of_type_AndroidViewView = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131561862, this.titleRoot, false);
-      this.h = this.jdField_g_of_type_AndroidViewView.findViewById(2131366688);
+      this.jdField_g_of_type_AndroidViewView = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131561930, this.titleRoot, false);
+      this.h = this.jdField_g_of_type_AndroidViewView.findViewById(2131366804);
       this.h.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_g_of_type_AndroidViewView.findViewById(2131370404));
-      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new aitb(this));
-      this.jdField_a_of_type_Aitf = new aitf(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Aitf);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131379984));
-      this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_g_of_type_AndroidViewView.findViewById(2131363837));
-      this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_g_of_type_AndroidViewView.findViewById(2131363836));
+      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_g_of_type_AndroidViewView.findViewById(2131370587));
+      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ajoq(this));
+      this.jdField_a_of_type_Ajou = new ajou(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+      this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ajou);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131380323));
+      this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_g_of_type_AndroidViewView.findViewById(2131363909));
+      this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_g_of_type_AndroidViewView.findViewById(2131363908));
       this.jdField_e_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_f_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.i = this.mContentView.findViewById(2131367742);
-      ((URLImageView)this.i.findViewById(2131368542)).setImageDrawable(URLDrawable.getDrawable("https://imgcache.gtimg.cn/ACT/svip_act/act_img/public/201802/m1517913373_empty_img_1.png"));
+      this.i = this.mContentView.findViewById(2131367878);
+      ((URLImageView)this.i.findViewById(2131368700)).setImageDrawable(URLDrawable.getDrawable("https://imgcache.gtimg.cn/ACT/svip_act/act_img/public/201802/m1517913373_empty_img_1.png"));
       this.jdField_g_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      this.jdField_g_of_type_AndroidWidgetButton.setId(2131378037);
+      this.jdField_g_of_type_AndroidWidgetButton.setId(2131378325);
       localObject = new RelativeLayout.LayoutParams(ScreenUtil.dip2px(21.0F), ScreenUtil.dip2px(20.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
@@ -285,7 +286,7 @@ public class EmoticonGroupStoreFragment
     while ((getActivity() != null) && (k != 0))
     {
       ArrayList localArrayList = new ArrayList();
-      String str = String.format(getString(2131692851), new Object[] { Integer.valueOf(k) });
+      String str = String.format(getString(2131692957), new Object[] { Integer.valueOf(k) });
       if (k < 3) {
         j = paramList.size();
       }
@@ -294,7 +295,7 @@ public class EmoticonGroupStoreFragment
       {
         if (k < j)
         {
-          URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_Araq.a((EmoticonFromGroupEntity)paramList.get(k), 65537, ScreenUtil.dip2px(11.0F), null);
+          URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_Asfa.a((EmoticonFromGroupEntity)paramList.get(k), 65537, ScreenUtil.dip2px(11.0F), null);
           int m = k + 1;
           k = m;
           if (localURLDrawable != null)
@@ -305,7 +306,7 @@ public class EmoticonGroupStoreFragment
             if (1 != localURLDrawable.getStatus())
             {
               localURLDrawable.startDownload();
-              localURLDrawable.setURLDrawableListener(new aite(this));
+              localURLDrawable.setURLDrawableListener(new ajot(this));
               k = m;
               continue;
               k = paramList.size();
@@ -315,7 +316,7 @@ public class EmoticonGroupStoreFragment
         }
       }
       this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangStringBuilder + str);
-      paramList = new aitk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramList = new ajoz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       paramList.a(localArrayList, ScreenUtil.dip2px(11.0F));
       paramList.setBounds(0, 0, ScreenUtil.dip2px(33.0F), ScreenUtil.dip2px(22.0F));
       this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ImageSpan(paramList, 0), 0, this.jdField_a_of_type_JavaLangStringBuilder.length() - 4, 17);
@@ -328,11 +329,11 @@ public class EmoticonGroupStoreFragment
   private void d()
   {
     this.leftView.setVisibility(0);
-    this.leftView.setText(2131692852);
-    this.leftView.setTextColor(getResources().getColor(2131165351));
-    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130840324));
-    this.centerView.setTextColor(getResources().getColor(2131165351));
-    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840291);
+    this.leftView.setText(2131692958);
+    this.leftView.setTextColor(getResources().getColor(2131165357));
+    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130840360));
+    this.centerView.setTextColor(getResources().getColor(2131165357));
+    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840327);
     this.jdField_g_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -344,7 +345,7 @@ public class EmoticonGroupStoreFragment
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new aitc(this));
+    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new ajor(this));
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
     e();
@@ -354,9 +355,9 @@ public class EmoticonGroupStoreFragment
   
   private void e()
   {
-    this.jdField_a_of_type_Aitl = new aitl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this, this.jdField_a_of_type_Araq.a(), this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidSupportV4ViewViewPager, this.jdField_b_of_type_AndroidWidgetButton);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aitl);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new aitd(this));
+    this.jdField_a_of_type_Ajpa = new ajpa(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this, this.jdField_a_of_type_Asfa.a(), this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidSupportV4ViewViewPager, this.jdField_b_of_type_AndroidWidgetButton);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ajpa);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new ajos(this));
   }
   
   private void f()
@@ -402,12 +403,12 @@ public class EmoticonGroupStoreFragment
     }
     Object localObject3 = localConcurrentHashMap1.entrySet().iterator();
     Map.Entry localEntry;
-    aith localaith;
+    ajow localajow;
     EmoticonFromGroupEntity localEmoticonFromGroupEntity;
     if (((Iterator)localObject3).hasNext())
     {
       localEntry = (Map.Entry)((Iterator)localObject3).next();
-      localaith = new aith();
+      localajow = new ajow();
       localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)((List)localEntry.getValue()).get(0);
       if (1 == localEmoticonFromGroupEntity.fromType)
       {
@@ -417,13 +418,13 @@ public class EmoticonGroupStoreFragment
     }
     for (;;)
     {
-      localaith.jdField_a_of_type_JavaLangString = localEmoticonFromGroupEntity.troopUin;
-      localaith.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-      localaith.jdField_a_of_type_Boolean = false;
-      localaith.b = ((String)localObject1);
-      localaith.jdField_a_of_type_Int = ((List)localEntry.getValue()).size();
-      localCopyOnWriteArrayList.add(localaith);
-      localConcurrentHashMap2.put(localaith.jdField_a_of_type_JavaLangString, localaith);
+      localajow.jdField_a_of_type_JavaLangString = localEmoticonFromGroupEntity.troopUin;
+      localajow.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+      localajow.jdField_a_of_type_Boolean = false;
+      localajow.b = ((String)localObject1);
+      localajow.jdField_a_of_type_Int = ((List)localEntry.getValue()).size();
+      localCopyOnWriteArrayList.add(localajow);
+      localConcurrentHashMap2.put(localajow.jdField_a_of_type_JavaLangString, localajow);
       break;
       if (3000 == localEmoticonFromGroupEntity.fromType)
       {
@@ -438,9 +439,9 @@ public class EmoticonGroupStoreFragment
           ThreadManager.getUIHandler().post(new EmoticonGroupStoreFragment.11(this));
           return;
         }
-        this.jdField_a_of_type_Aitf.a(this.jdField_d_of_type_JavaUtilList);
-        this.jdField_a_of_type_Aitf.notifyDataSetChanged();
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(amtj.a(2131703183) + this.jdField_b_of_type_JavaUtilList.size() + amtj.a(2131703195));
+        this.jdField_a_of_type_Ajou.a(this.jdField_d_of_type_JavaUtilList);
+        this.jdField_a_of_type_Ajou.notifyDataSetChanged();
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(anvx.a(2131703534) + this.jdField_b_of_type_JavaUtilList.size() + anvx.a(2131703546));
       }
       else
       {
@@ -463,7 +464,7 @@ public class EmoticonGroupStoreFragment
   {
     Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((aith)localIterator.next()).jdField_a_of_type_Boolean = false;
+      ((ajow)localIterator.next()).jdField_a_of_type_Boolean = false;
     }
     if (!this.jdField_e_of_type_JavaUtilList.isEmpty()) {
       this.jdField_e_of_type_JavaUtilList.clear();
@@ -472,13 +473,13 @@ public class EmoticonGroupStoreFragment
   
   private void m()
   {
-    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840291);
+    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840327);
     this.jdField_g_of_type_AndroidWidgetButton.setEnabled(true);
   }
   
   private void n()
   {
-    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840292);
+    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840328);
     this.jdField_g_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
@@ -572,7 +573,7 @@ public class EmoticonGroupStoreFragment
   
   public int getContentLayoutId()
   {
-    return 2131561865;
+    return 2131561933;
   }
   
   public void init(Bundle paramBundle)
@@ -581,25 +582,25 @@ public class EmoticonGroupStoreFragment
       QLog.d("EmoticonFromGroup_Fragment", 2, "emoticonFromGroupFragment init start.");
     }
     super.init(paramBundle);
-    super.setTitle(amtj.a(2131703184));
+    super.setTitle(anvx.a(2131703535));
     paramBundle = getActivity();
     if (paramBundle != null)
     {
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramBundle;
       paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppInterface();
       if (!(paramBundle instanceof QQAppInterface)) {
-        break label203;
+        break label204;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Araq = ((bgga)paramBundle.getManager(235)).jdField_a_of_type_Araq;
-      paramBundle = (arbb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(103);
+      this.jdField_a_of_type_Asfa = ((bhou)paramBundle.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_Asfa;
+      paramBundle = (asfl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
       if (paramBundle != null) {
         paramBundle.b();
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anam);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aodb);
       c();
       d();
       f();
@@ -611,7 +612,7 @@ public class EmoticonGroupStoreFragment
       QLog.e("EmoticonFromGroup_Fragment", 1, "activity is null");
       b();
       break;
-      label203:
+      label204:
       QLog.e("EmoticonFromGroup_Fragment", 1, "app is null");
       b();
     }
@@ -643,7 +644,7 @@ public class EmoticonGroupStoreFragment
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_Aitl != null) && (this.jdField_a_of_type_Aitl.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Ajpa != null) && (this.jdField_a_of_type_Ajpa.jdField_a_of_type_Boolean))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
@@ -652,9 +653,9 @@ public class EmoticonGroupStoreFragment
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_Aitl.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Aitl.a(false);
-      this.jdField_a_of_type_Aitl.notifyDataSetChanged();
+      this.jdField_a_of_type_Ajpa.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajpa.a(false);
+      this.jdField_a_of_type_Ajpa.notifyDataSetChanged();
       m();
       a(true);
       resetLeftButton();
@@ -691,32 +692,32 @@ public class EmoticonGroupStoreFragment
       }
       n();
       a(false);
-      setLeftButton(amtj.a(2131703216), this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.leftViewNotBack.setTextColor(getResources().getColor(2131165351));
+      setLeftButton(anvx.a(2131703567), this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.leftViewNotBack.setTextColor(getResources().getColor(2131165357));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBFBFBF"));
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844307));
+      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844374));
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_Aitl.a(true);
-      this.jdField_a_of_type_Aitl.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Aitl.notifyDataSetChanged();
+      this.jdField_a_of_type_Ajpa.a(true);
+      this.jdField_a_of_type_Ajpa.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Ajpa.notifyDataSetChanged();
       VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickMutiSel", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       continue;
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_Aitl.a(false);
-      this.jdField_a_of_type_Aitl.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Ajpa.a(false);
+      this.jdField_a_of_type_Ajpa.jdField_a_of_type_Boolean = false;
       this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Araq.d(new ArrayList(this.jdField_a_of_type_JavaUtilList));
+      this.jdField_a_of_type_Asfa.d(new ArrayList(this.jdField_a_of_type_JavaUtilList));
       Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject1).hasNext()) {
         ((EmoticonFromGroupEntity)((Iterator)localObject1).next()).status = 0;
       }
-      localObject1 = (arao)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(259);
-      ((arao)localObject1).b -= this.jdField_a_of_type_JavaUtilList.size();
+      localObject1 = (asey)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EMOFROMGROUP_DB_MANAGER);
+      ((asey)localObject1).b -= this.jdField_a_of_type_JavaUtilList.size();
       this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Aitl.notifyDataSetChanged();
+      this.jdField_a_of_type_Ajpa.notifyDataSetChanged();
       m();
       a(true);
       resetLeftButton();
@@ -736,7 +737,7 @@ public class EmoticonGroupStoreFragment
         continue;
         localObject1 = ((ImgPreviewAdapter)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
         if ((localObject1 != null) && (((EmoticonFromGroupEntity)localObject1).msg != null)) {
-          agyh.b(new aham(agzl.a(((EmoticonFromGroupEntity)localObject1).msg)), this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0);
+          ahri.b(new ahtm(ahsl.a(((EmoticonFromGroupEntity)localObject1).msg)), this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0);
         }
         for (;;)
         {
@@ -745,14 +746,14 @@ public class EmoticonGroupStoreFragment
           QLog.e("EmoticonFromGroup_Fragment.msgnull", 1, "preview send msg is null.");
         }
         localObject1 = ((ImgPreviewAdapter)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
-        if (this.jdField_a_of_type_Araq.a((EmoticonFromGroupEntity)localObject1))
+        if (this.jdField_a_of_type_Asfa.a((EmoticonFromGroupEntity)localObject1))
         {
           this.jdField_c_of_type_JavaUtilList.add(localObject1);
-          this.jdField_d_of_type_AndroidWidgetButton.setText(amtj.a(2131703175));
+          this.jdField_d_of_type_AndroidWidgetButton.setText(anvx.a(2131703526));
           this.jdField_d_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-          this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844307));
+          this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844374));
           this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
-          this.jdField_a_of_type_Aitl.notifyDataSetChanged();
+          this.jdField_a_of_type_Ajpa.notifyDataSetChanged();
         }
         if (localObject1 != null) {
           EmoticonUtils.reportFavAddEmotionEvent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4, ((EmoticonFromGroupEntity)localObject1).md5, null);
@@ -783,7 +784,7 @@ public class EmoticonGroupStoreFragment
           {
             localObject2 = (String)((Iterator)localObject1).next();
             this.jdField_e_of_type_JavaUtilList.add(localObject2);
-            ((aith)this.jdField_b_of_type_JavaUtilMap.get(localObject2)).jdField_a_of_type_Boolean = true;
+            ((ajow)this.jdField_b_of_type_JavaUtilMap.get(localObject2)).jdField_a_of_type_Boolean = true;
           }
           if (!this.jdField_b_of_type_Boolean)
           {
@@ -803,11 +804,11 @@ public class EmoticonGroupStoreFragment
           if (j == 0)
           {
             localObject1 = new ArrayList(this.jdField_b_of_type_JavaUtilList);
-            localObject2 = this.jdField_a_of_type_Araq.a((List)localObject1);
+            localObject2 = this.jdField_a_of_type_Asfa.a((List)localObject1);
             if (localObject2 != null)
             {
               c((List)localObject1);
-              this.jdField_a_of_type_Aitl.a((Map)localObject2, (List)localObject1);
+              this.jdField_a_of_type_Ajpa.a((Map)localObject2, (List)localObject1);
             }
           }
           for (;;)
@@ -825,15 +826,15 @@ public class EmoticonGroupStoreFragment
               ((List)localObject1).addAll((Collection)this.jdField_a_of_type_JavaUtilMap.get(str));
             }
             Collections.sort((List)localObject1);
-            localObject2 = this.jdField_a_of_type_Araq.a((List)localObject1);
+            localObject2 = this.jdField_a_of_type_Asfa.a((List)localObject1);
             if (localObject2 != null)
             {
               c((List)localObject1);
-              this.jdField_a_of_type_Aitl.a((Map)localObject2, (List)localObject1);
+              this.jdField_a_of_type_Ajpa.a((Map)localObject2, (List)localObject1);
             }
           }
           l();
-          this.jdField_a_of_type_Aitf.notifyDataSetChanged();
+          this.jdField_a_of_type_Ajou.notifyDataSetChanged();
           VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickFilterReset", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
         }
       }
@@ -844,13 +845,13 @@ public class EmoticonGroupStoreFragment
   {
     super.onDestroyView();
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Araq.b(this.jdField_c_of_type_JavaUtilList);
-    this.jdField_a_of_type_Araq.c(this.jdField_c_of_type_JavaUtilList);
+    this.jdField_a_of_type_Asfa.b(this.jdField_c_of_type_JavaUtilList);
+    this.jdField_a_of_type_Asfa.c(this.jdField_c_of_type_JavaUtilList);
     MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
     if (localMqqHandler != null) {
       localMqqHandler.obtainMessage(10).sendToTarget();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anam);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aodb);
   }
   
   public void onPause()
@@ -864,8 +865,8 @@ public class EmoticonGroupStoreFragment
     super.onResume();
     a();
     AbstractGifImage.resumeAll();
-    if (this.jdField_a_of_type_Aitl != null) {
-      this.jdField_a_of_type_Aitl.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Ajpa != null) {
+      this.jdField_a_of_type_Ajpa.notifyDataSetChanged();
     }
     if ((this.jdField_d_of_type_AndroidWidgetButton != null) && (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null))
     {
@@ -875,17 +876,17 @@ public class EmoticonGroupStoreFragment
         if (localEmoticonFromGroupEntity.status != 0) {
           break label123;
         }
-        this.jdField_d_of_type_AndroidWidgetButton.setText(amtj.a(2131703218));
+        this.jdField_d_of_type_AndroidWidgetButton.setText(anvx.a(2131703569));
         this.jdField_d_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-        this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844307));
+        this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844374));
         this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
       }
     }
     return;
     label123:
-    this.jdField_d_of_type_AndroidWidgetButton.setText(amtj.a(2131703179));
+    this.jdField_d_of_type_AndroidWidgetButton.setText(anvx.a(2131703530));
     this.jdField_d_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-    this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844306));
+    this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844373));
     this.jdField_d_of_type_AndroidWidgetButton.setEnabled(true);
   }
 }

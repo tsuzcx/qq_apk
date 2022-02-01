@@ -1,38 +1,60 @@
-abstract class acic
-  implements com.tencent.mobileqq.javahooksdk.HookMethodCallback
+import com.tencent.ad.tangram.net.AdNet;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.statistics.GdtReportForAntiSpam.1;
+import com.tencent.gdtad.statistics.GdtReportForAntiSpam.2;
+import org.json.JSONObject;
+
+public final class acic
 {
-  public static com.tencent.qapmsdk.battery.monitor.MethodHookParam a(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
+  public static void a(JSONObject paramJSONObject)
   {
-    com.tencent.qapmsdk.battery.monitor.MethodHookParam localMethodHookParam = new com.tencent.qapmsdk.battery.monitor.MethodHookParam();
-    if (paramMethodHookParam != null)
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)) || (paramJSONObject.length() <= 0)) {
+      return;
+    }
+    try
     {
-      localMethodHookParam.args = paramMethodHookParam.args;
-      localMethodHookParam.method = paramMethodHookParam.method;
-      localMethodHookParam.result = paramMethodHookParam.result;
-      localMethodHookParam.thisObject = paramMethodHookParam.thisObject;
-      localMethodHookParam.throwable = paramMethodHookParam.throwable;
+      paramJSONObject.put("ct", System.currentTimeMillis());
+      b(paramJSONObject);
+      return;
     }
-    return localMethodHookParam;
-  }
-  
-  public abstract com.tencent.qapmsdk.battery.monitor.HookMethodCallback a();
-  
-  public abstract void a();
-  
-  public void afterHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
-  {
-    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
-    if (localHookMethodCallback != null) {
-      localHookMethodCallback.afterHookedMethod(a(paramMethodHookParam));
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        acho.d("GdtReportForAntiSpam", "reportAntiSpamForClick", localThrowable);
+      }
     }
   }
   
-  public void beforeHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
+  public static void b(JSONObject paramJSONObject)
   {
-    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
-    if (localHookMethodCallback != null) {
-      localHookMethodCallback.beforeHookedMethod(a(paramMethodHookParam));
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)) || (paramJSONObject.length() <= 0)) {
+      return;
     }
+    try
+    {
+      paramJSONObject.put("cn_t", AdNet.getType(BaseApplicationImpl.getApplication()));
+      byte[] arrayOfByte = paramJSONObject.toString().getBytes();
+      AdThreadManager.INSTANCE.post(new GdtReportForAntiSpam.1(arrayOfByte, paramJSONObject), 4);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        acho.d("GdtReportForAntiSpam", "receiveReportForAntiSpamOnReportServer", localThrowable);
+      }
+    }
+  }
+  
+  public static void c(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (JSONObject.NULL.equals(paramJSONObject)) || (paramJSONObject.length() <= 0)) {
+      return;
+    }
+    byte[] arrayOfByte = paramJSONObject.toString().getBytes();
+    AdThreadManager.INSTANCE.post(new GdtReportForAntiSpam.2(arrayOfByte, paramJSONObject), 4);
   }
 }
 

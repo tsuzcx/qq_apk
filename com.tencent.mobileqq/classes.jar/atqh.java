@@ -1,47 +1,52 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class atqh
-  implements FaceDecoder.DecodeTaskCompletionListener
+public class atqh
+  extends bcbd<bcfj, bcnt>
 {
-  atqh(atqf paramatqf) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public atqh(ListView paramListView, FaceDecoder paramFaceDecoder, List<bcfj> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (atqf.a(this.a) == null) {}
-    while (atqf.a(this.a).isPausing()) {
+    super(paramFaceDecoder, paramList);
+    if (paramString == null) {
       return;
     }
-    paramInt2 = atqf.a(this.a).findFirstVisibleItemPosition();
-    int i = atqf.a(this.a).getChildCount();
-    paramInt1 = 1;
-    label74:
-    if (paramInt1 < i) {
-      if (((String)((Pair)atqf.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
+    if (paramString.size() == 1)
+    {
+      paramListView = (atqf)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
       {
-        atqm localatqm = (atqm)atqf.a(this.a).getChildViewHolder(atqf.a(this.a).getChildAt(paramInt1));
-        if (!(localatqm instanceof atql)) {
-          break label170;
+        paramFaceDecoder = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new atqf();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramFaceDecoder.add(paramQQAppInterface);
         }
-        ((atql)localatqm).a.setImageBitmap(paramBitmap);
+        a(paramFaceDecoder);
+        return;
       }
     }
-    for (;;)
-    {
-      paramInt1 += 1;
-      break label74;
-      break;
-      label170:
-      QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
-    }
+    a(paramString);
+  }
+  
+  protected bcif<bcfj, bcnt> a(int paramInt)
+  {
+    return new atqo(ChatFileSearchFragment.a(this.a));
+  }
+  
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atqi(paramViewGroup);
   }
 }
 

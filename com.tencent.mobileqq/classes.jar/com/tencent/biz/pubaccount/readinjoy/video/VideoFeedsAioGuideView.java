@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import amtj;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,17 +11,18 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import odq;
-import rvs;
-import rvw;
-import rvx;
-import ryo;
-import sid;
-import sie;
+import olh;
+import shx;
+import shy;
+import skq;
+import sut;
+import suu;
+import swr;
 
 public class VideoFeedsAioGuideView
   extends FrameLayout
@@ -45,7 +45,7 @@ public class VideoFeedsAioGuideView
   
   static
   {
-    jdField_a_of_type_JavaLangString = amtj.a(2131715194);
+    jdField_a_of_type_JavaLangString = anvx.a(2131715542);
   }
   
   public VideoFeedsAioGuideView(Activity paramActivity, QQAppInterface paramQQAppInterface, VideoFeedsRecyclerView paramVideoFeedsRecyclerView)
@@ -60,7 +60,7 @@ public class VideoFeedsAioGuideView
   
   private void d()
   {
-    setBackgroundResource(2130842743);
+    setBackgroundResource(2130842775);
     int i = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 6.0F);
     int j = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 3.0F);
     setPadding(i, j, i, j);
@@ -70,8 +70,8 @@ public class VideoFeedsAioGuideView
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-654311425);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843140);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843140);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843176);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843176);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 19;
     localLayoutParams.rightMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 10.0F);
@@ -98,7 +98,7 @@ public class VideoFeedsAioGuideView
       this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(360L);
       this.jdField_a_of_type_AndroidViewAnimationAnimation.setRepeatMode(2);
       this.jdField_a_of_type_AndroidViewAnimationAnimation.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new rvw(this));
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new shx(this));
     }
     if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null)
     {
@@ -106,7 +106,7 @@ public class VideoFeedsAioGuideView
       this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(360L);
       this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatMode(2);
       this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatCount(-1);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(new rvx(this));
+      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(new shy(this));
     }
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setStartOffset(180L);
     this.jdField_b_of_type_AndroidViewAnimationAnimation.setStartOffset(0L);
@@ -115,14 +115,14 @@ public class VideoFeedsAioGuideView
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = true;
-      sie localsie = new sie(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      odq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j, "0X8009833", "0X8009833", 0, 0, "", "", "", localsie.a().a(), false);
+      suu localsuu = new suu(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      olh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j, "0X8009833", "0X8009833", 0, 0, "", "", "", localsuu.a().a(), false);
     }
   }
   
-  public void a(rvs paramrvs)
+  public void a(swr paramswr)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramrvs.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramswr.a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
@@ -133,12 +133,12 @@ public class VideoFeedsAioGuideView
       this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.rightMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 12.0F);
       setOnClickListener(this);
     }
-    if (getParent() != paramrvs.d)
+    if (getParent() != paramswr.d)
     {
       if (getParent() != null) {
         ((ViewGroup)getParent()).removeView(this);
       }
-      paramrvs.d.addView(this, this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+      paramswr.d.addView(this, this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
     }
   }
   
@@ -163,8 +163,8 @@ public class VideoFeedsAioGuideView
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecyclerView.a();
-    sie localsie = new sie(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-    odq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j, "0X8009834", "0X8009834", 0, 0, "", "", "", localsie.a().a(), false);
+    suu localsuu = new suu(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    olh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j, "0X8009834", "0X8009834", 0, 0, "", "", "", localsuu.a().a(), false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

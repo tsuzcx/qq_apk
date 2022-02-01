@@ -1,78 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
-public class aqdt
-  extends aptq<aqds>
+public abstract class aqdt
+  extends aqds
 {
-  @NonNull
-  public aqds a(int paramInt)
+  public int a;
+  protected Context a;
+  protected aqec a;
+  public Matrix4 a;
+  public float[] b = new float[3];
+  public float[] c = new float[3];
+  
+  public aqdt(Context paramContext, int paramInt, SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    return new aqds();
+    super(paramSensorManager, paramaqdl);
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(paramContext);
   }
   
-  @Nullable
-  public aqds a(aptx[] paramArrayOfaptx)
+  private void a(Context paramContext)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Aqec = new aqec();
+  }
+  
+  protected void a(float[] paramArrayOfFloat)
+  {
+    if ((this.jdField_a_of_type_Aqdl == null) || (paramArrayOfFloat == null)) {}
+    do
     {
-      aqds localaqds = aqds.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localaqds;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqds paramaqds)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramaqds.toString());
-    }
-  }
-  
-  public Class<aqds> clazz()
-  {
-    return aqds.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 585;
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
+        this.jdField_a_of_type_Aqec.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          this.jdField_a_of_type_Aqdl.updateAzimuth(this.c[0]);
+          return;
+        }
+        this.b[0] = this.c[1];
+        this.b[1] = (-this.c[0]);
+        this.b[2] = (-this.c[2]);
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          this.jdField_a_of_type_Aqdl.updateRotation(this.b[0], this.b[1], this.b[2]);
+          return;
+        }
+      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
+      this.jdField_a_of_type_Aqdl.updateRotation(this.b[0], this.b[1], this.b[2]);
+    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
+    this.jdField_a_of_type_Aqdl.onRotationUpdateOriginal(paramArrayOfFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdt
  * JD-Core Version:    0.7.0.1
  */

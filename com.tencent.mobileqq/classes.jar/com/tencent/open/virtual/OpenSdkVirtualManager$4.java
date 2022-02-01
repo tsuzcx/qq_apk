@@ -1,13 +1,13 @@
 package com.tencent.open.virtual;
 
-import bhvf;
-import biej;
-import biey;
+import bjgg;
+import bjpl;
+import bjqa;
 
 public class OpenSdkVirtualManager$4
   implements Runnable
 {
-  public OpenSdkVirtualManager$4(biey parambiey, String paramString1, String paramString2, biej parambiej, bhvf parambhvf) {}
+  public OpenSdkVirtualManager$4(bjqa parambjqa, String paramString1, String paramString2, bjpl parambjpl, bjgg parambjgg) {}
   
   /* Error */
   public void run()
@@ -24,7 +24,7 @@ public class OpenSdkVirtualManager$4
     //   14: iconst_0
     //   15: putfield 45	com/tencent/mobileqq/pic/CompressInfo:f	I
     //   18: aload_2
-    //   19: invokestatic 50	ayeu:a	(Lcom/tencent/mobileqq/pic/CompressInfo;)Z
+    //   19: invokestatic 50	azlg:a	(Lcom/tencent/mobileqq/pic/CompressInfo;)Z
     //   22: pop
     //   23: ldc 52
     //   25: iconst_1
@@ -193,8 +193,8 @@ public class OpenSdkVirtualManager$4
     //   295: aload 4
     //   297: ldc 142
     //   299: aload_0
-    //   300: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Biej	Lbiej;
-    //   303: getfield 145	biej:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   300: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bjpl	Lbjpl;
+    //   303: getfield 145	bjpl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   306: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   309: invokevirtual 154	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   312: pop
@@ -229,22 +229,22 @@ public class OpenSdkVirtualManager$4
     //   358: aload_3
     //   359: astore_2
     //   360: aload_0
-    //   361: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbiey;
+    //   361: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbjqa;
     //   364: iconst_0
-    //   365: invokestatic 167	biey:a	(Lbiey;I)I
+    //   365: invokestatic 167	bjqa:a	(Lbjqa;I)I
     //   368: pop
     //   369: aload_3
     //   370: astore_2
     //   371: aload_0
-    //   372: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbiey;
+    //   372: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbjqa;
     //   375: aload_0
-    //   376: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Biej	Lbiej;
+    //   376: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bjpl	Lbjpl;
     //   379: aload_0
     //   380: getfield 19	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   383: aload 4
     //   385: aload_0
-    //   386: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bhvf	Lbhvf;
-    //   389: invokestatic 170	biey:a	(Lbiey;Lbiej;Ljava/lang/String;Lorg/json/JSONObject;Lbhvf;)V
+    //   386: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bjgg	Lbjgg;
+    //   389: invokestatic 170	bjqa:a	(Lbjqa;Lbjpl;Ljava/lang/String;Lorg/json/JSONObject;Lbjgg;)V
     //   392: aload_3
     //   393: ifnull +7 -> 400
     //   396: aload_3
@@ -258,16 +258,16 @@ public class OpenSdkVirtualManager$4
     //   409: ldc 175
     //   411: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   414: aload_0
-    //   415: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bhvf	Lbhvf;
+    //   415: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bjgg	Lbjgg;
     //   418: ifnull +18 -> 436
     //   421: aload_0
-    //   422: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bhvf	Lbhvf;
+    //   422: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bjgg	Lbjgg;
     //   425: iconst_0
     //   426: aload_0
     //   427: getfield 19	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   430: aconst_null
     //   431: bipush 254
-    //   433: invokevirtual 183	bhvf:a	(ZLjava/lang/String;Ljava/lang/String;I)V
+    //   433: invokevirtual 183	bjgg:a	(ZLjava/lang/String;Ljava/lang/String;I)V
     //   436: return
     //   437: astore_2
     //   438: ldc 52

@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import ajye;
-import ajyg;
-import akcq;
+import aktx;
+import aktz;
+import akyj;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class QWalletRedManager$1
   implements Runnable
 {
-  public QWalletRedManager$1(akcq paramakcq) {}
+  public QWalletRedManager$1(akyj paramakyj) {}
   
   public void run()
   {
-    Object localObject = (ajyg)akcq.a(this.this$0).getManager(245);
+    Object localObject = (aktz)akyj.a(this.this$0).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
     if (localObject != null)
     {
-      ((ajyg)localObject).c("redPoint", this.this$0);
-      localObject = ((ajyg)localObject).a("redPoint");
-      akcq.a(this.this$0).parseConfig((ajye)localObject);
+      ((aktz)localObject).c("redPoint", this.this$0);
+      localObject = ((aktz)localObject).a("redPoint");
+      akyj.a(this.this$0).parseConfig((aktx)localObject);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + akcq.a(this.this$0));
+      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + akyj.a(this.this$0));
     }
   }
 }

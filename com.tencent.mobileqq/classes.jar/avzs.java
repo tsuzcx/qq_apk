@@ -1,6 +1,18 @@
-public abstract interface avzs
+class avzs
+  extends ayra
 {
-  public abstract void a(int paramInt);
+  avzs(avzr paramavzr, avpm paramavpm) {}
+  
+  public void ipJudgeSuccess(boolean paramBoolean, String paramString)
+  {
+    avzr.a(this.jdField_a_of_type_Avzr, this.jdField_a_of_type_Avpm);
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    bdla.a(null, "dc00898", "", "", "0X800B0EB", "0X800B0EB", 0, 0, "", "", "", "");
+    avzr.a(this.jdField_a_of_type_Avzr, this.jdField_a_of_type_Avpm);
+  }
 }
 
 

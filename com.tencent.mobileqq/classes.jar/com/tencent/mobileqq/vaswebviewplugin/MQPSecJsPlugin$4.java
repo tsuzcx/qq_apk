@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bguj;
-import bgve;
-import bgzt;
+import bifb;
+import bifw;
+import bikl;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MQPSecJsPlugin$4
@@ -13,9 +13,9 @@ class MQPSecJsPlugin$4
   
   public void run()
   {
-    bguj localbguj = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbguj != null) && ((localbguj instanceof bgzt))) {
-      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131692035), 0).b(((bgzt)localbguj).getTitleBarHeight());
+    bifb localbifb = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbifb != null) && ((localbifb instanceof bikl))) {
+      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131692125), 0).b(((bikl)localbifb).getTitleBarHeight());
     }
   }
 }

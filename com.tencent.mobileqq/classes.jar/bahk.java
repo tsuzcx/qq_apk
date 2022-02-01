@@ -1,178 +1,117 @@
 import android.text.TextUtils;
-import com.tencent.image.GifDrawable;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class bahk
+  implements ante, Manager
 {
   private QQAppInterface a;
   
   public bahk(QQAppInterface paramQQAppInterface)
   {
     this.a = paramQQAppInterface;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
-  }
-  
-  public int a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
+    String str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.SilkCfg.name(), "null");
+    if (!"null".equalsIgnoreCase(str))
     {
-      paramMessageRecord = this.a.getTransFileController().findProcessor(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-      if ((paramMessageRecord instanceof BaseTransProcessor)) {
-        return (int)((BaseTransProcessor)paramMessageRecord).getFileStatus();
+      bhhd.a(paramQQAppInterface, str);
+      bhhd.a(paramQQAppInterface, true);
+      str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.StreamCfg.name(), "null");
+      if ("null".equalsIgnoreCase(str)) {
+        break label161;
       }
-    }
-    return -1;
-  }
-  
-  protected void a(MessageForShortVideo paramMessageForShortVideo)
-  {
-    bbrz localbbrz = new bbrz(this.a, this.a.getApplication(), paramMessageForShortVideo, null);
-    bbry.a().a(paramMessageForShortVideo.uniseq, localbbrz);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord == null) || (this.a == null)) {}
-    for (;;)
-    {
-      return;
-      long l = System.currentTimeMillis();
-      if (((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForLightVideo))) {
-        this.a.getMessageFacade().addSendMessage(paramMessageRecord);
-      }
-      while (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("addMsg cost:").append(System.currentTimeMillis() - l).append(" uniseq = ").append(paramMessageRecord.uniseq).append(", msgtype = ").append(paramMessageRecord.msgtype);
-        QLog.d("MediaMsgController", 2, localStringBuilder.toString());
-        return;
-        ((anaj)this.a.getBusinessHandler(13)).a(paramMessageRecord);
-        this.a.getMessageFacade().addMessage(paramMessageRecord, this.a.getCurrentAccountUin());
-      }
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, amwl paramamwl, baho parambaho)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (parambaho != null) {
-      parambaho.onSendBegin(paramMessageRecord);
-    }
-    this.a.getMessageFacade().sendMessage(paramMessageRecord, paramamwl);
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
-      return true;
-    }
-    int i;
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
+      bahs.a(paramQQAppInterface, str);
+      bahs.a(paramQQAppInterface, true);
     }
     for (;;)
     {
-      return b(i);
-      if (((paramMessageRecord instanceof MessageForPic)) && (((MessageForPic)paramMessageRecord).size <= 0L))
+      paramQQAppInterface = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (paramQQAppInterface.length > 13)
       {
-        int j = a(paramMessageRecord);
-        i = j;
-        if (j == -1) {
-          return true;
+        boolean bool = "1".equals(paramQQAppInterface[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, bool);
+        if (paramQQAppInterface.length > 14)
+        {
+          bool = "1".equals(paramQQAppInterface[13]);
+          bdkk.a(BaseApplicationImpl.sApplication, bool);
         }
       }
-      else
-      {
-        i = 0;
-      }
+      DeviceProfileManager.a(this);
+      return;
+      bhhd.a(paramQQAppInterface, false);
+      break;
+      label161:
+      bahs.a(paramQQAppInterface, false);
     }
   }
   
-  public boolean a(String paramString)
+  public void a(String paramString)
+  {
+    QQAppInterface localQQAppInterface = this.a;
+    NetworkCenter.getInstance();
+    if (localQQAppInterface != null)
+    {
+      bahs.b(localQQAppInterface, paramString);
+      bahs.b(localQQAppInterface, true);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      bahm.a(localQQAppInterface, paramString);
+      bahm.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
+    NetworkCenter.getInstance();
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
     {
-      return false;
-      File localFile = new File(paramString);
-      if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
+      baib.a(localQQAppInterface, paramString);
+      baib.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    baib.a();
+    DeviceProfileManager.b(this);
+    bhhd.a();
+    bahs.a();
+  }
+  
+  public void onDpcPullFinished(boolean paramBoolean)
+  {
+    Object localObject = this.a;
+    if ((localObject != null) && (paramBoolean))
+    {
+      bhhd.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.SilkCfg.name(), ""));
+      bhhd.a((QQAppInterface)localObject, true);
+      bahs.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.StreamCfg.name(), ""));
+      bahs.a((QQAppInterface)localObject, true);
+      localObject = DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (localObject.length > 13)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
+        paramBoolean = "1".equals(localObject[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, paramBoolean);
+        if (localObject.length > 14)
+        {
+          paramBoolean = "1".equals(localObject[13]);
+          bdkk.a(BaseApplicationImpl.sApplication, paramBoolean);
         }
-        return true;
-      }
-      i = bkkh.a(paramString);
-    } while ((i != 2000) && (i != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
-    }
-    return true;
-  }
-  
-  public int b(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = this.a.getTransFileController().findProcessor(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
-      if (!(paramMessageRecord instanceof BaseTransProcessor)) {}
-    }
-    for (int i = ((BaseTransProcessor)paramMessageRecord).getCurrentProgress();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaMsgController", 2, new Object[] { "getUploadProgress:", Integer.valueOf(i) });
-      }
-      return i;
-    }
-  }
-  
-  public boolean b(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForShortVideo))
-    {
-      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramMessageRecord;
-      if ((localMessageForShortVideo.busiType == 0) && (localMessageForShortVideo.videoFileStatus != 998) && (TextUtils.isEmpty(localMessageForShortVideo.md5)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaMsgController", 2, "isVideoNeedPreCompress is true, " + paramMessageRecord.uniseq);
-        }
-        return true;
       }
     }
-    return false;
-  }
-  
-  public boolean c(MessageRecord paramMessageRecord)
-  {
-    boolean bool = false;
-    if (b(paramMessageRecord))
-    {
-      bool = true;
-      a((MessageForShortVideo)paramMessageRecord);
-    }
-    return bool;
   }
 }
 

@@ -1,74 +1,100 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.MessageHandler;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0x3b.Submsgtype0x3b.MsgBody;
 
 public class acqv
-  implements bjoe
+  implements acpi
 {
-  public acqv(AddRequestActivity paramAddRequestActivity, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
-    {
-      long l1 = bcsy.a().b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = bcsy.a().a(Long.valueOf(l1));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
-      {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
-        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
-        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
-        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
-        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
-        if ((paramView != null) && (1 < paramView.size()))
-        {
-          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getMsgHandler().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131718142, 1000L, false);
-        }
-      }
-    }
+    boolean bool = false;
     for (;;)
     {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
-      break;
-      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
-      if (paramView != null) {}
-      for (paramInt = paramView.size();; paramInt = -1)
+      try
       {
-        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
-        break;
+        Submsgtype0x3b.MsgBody localMsgBody = new Submsgtype0x3b.MsgBody();
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder().append("0x210Push_0x3b, group code: ");
+          if (!localMsgBody.uint64_group_code.has()) {
+            break label396;
+          }
+          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
+          localObject1 = ((StringBuilder)localObject1).append(paramMsgType0x210).append(", user switch: ");
+          if (localMsgBody.uint32_user_show_flag.has())
+          {
+            paramMsgType0x210 = String.valueOf(localMsgBody.uint32_user_show_flag.get());
+            QLog.d("Q.getTroopMemberLevelInfo", 2, paramMsgType0x210 + ", level map changed: " + localMsgBody.uint32_member_level_changed.has() + ",uint32_member_level_new_changed" + localMsgBody.uint32_member_level_new_changed.has());
+          }
+        }
+        else
+        {
+          if (!localMsgBody.uint64_group_code.has()) {
+            break label395;
+          }
+          if (localMsgBody.uint32_user_show_flag.has())
+          {
+            int i = localMsgBody.uint32_user_show_flag.get();
+            paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
+            Object localObject2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+            localObject1 = ((TroopManager)localObject2).b(paramMsgType0x210);
+            ((TroopInfo)localObject1).cGroupRankUserFlag = ((byte)i);
+            ((TroopManager)localObject2).b((TroopInfo)localObject1);
+            localObject2 = (aoep)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+            if (localObject2 != null)
+            {
+              if (i == 1) {
+                bool = true;
+              }
+              ((aoep)localObject2).notifyUI(152, true, new Object[] { paramMsgType0x210, Boolean.valueOf(bool) });
+            }
+            if (1 == ((TroopInfo)localObject1).cGroupRankUserFlag) {
+              ((aoep)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).f(paramMsgType0x210);
+            }
+          }
+          if (localMsgBody.uint32_member_level_changed.has())
+          {
+            l = localMsgBody.uint64_group_code.get();
+            ((aoep)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).f(String.valueOf(l));
+          }
+          if (!localMsgBody.uint32_member_level_new_changed.has()) {
+            break label395;
+          }
+          long l = localMsgBody.uint64_group_code.get();
+          ((aoep)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).f(String.valueOf(l));
+          return;
+        }
+        paramMsgType0x210 = "";
+        continue;
+        return;
       }
-      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
-      continue;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694064, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      catch (Exception paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.getTroopMemberLevelInfo", 2, "0x210Push_0x3b, failed to parse Submsgtype0x3b.MsgBody");
+        }
+      }
+      label395:
+      label396:
+      paramMsgType0x210 = "";
     }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

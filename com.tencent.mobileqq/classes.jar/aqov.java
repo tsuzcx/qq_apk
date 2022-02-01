@@ -1,6 +1,9 @@
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+
 public abstract interface aqov
 {
-  public abstract aqou a(int paramInt);
+  public abstract void launch(Context paramContext, ColorNote paramColorNote);
 }
 
 

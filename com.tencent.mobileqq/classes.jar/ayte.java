@@ -1,13 +1,77 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OcrControl.5.1;
+import com.tencent.mobileqq.ocr.OcrControl.5.2;
+import com.tencent.mobileqq.ocr.OcrControl.5.3;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayte
-  implements aytk
+  implements apix
 {
-  public ayte(ComponentCenter paramComponentCenter) {}
+  ayte(aytd paramaytd) {}
   
-  public void a(aysw paramaysw)
+  public void a(int paramInt, String paramString, apki paramapki)
   {
-    paramaysw.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.control", 2, "retCode:" + paramInt + ",sessionId:" + paramString + ",recogResult:" + paramapki);
+    }
+    paramString = aytd.a(this.a, paramString);
+    long l = 0L;
+    if (paramString != null) {
+      l = System.currentTimeMillis() - paramString.c;
+    }
+    int k = -1;
+    int m = -1;
+    int i = m;
+    int j = k;
+    if (paramString != null)
+    {
+      i = m;
+      j = k;
+      if (paramString.a != null)
+      {
+        if ((paramInt != 0) || (paramapki == null) || (paramapki.a == null)) {
+          break label282;
+        }
+        paramapki = paramapki.a;
+        OcrRecogResult localOcrRecogResult = paramapki.a();
+        if (aytd.a(this.a) != null) {
+          aytd.a(this.a).a(0, localOcrRecogResult, paramString.a.b, l);
+        }
+        if ((localOcrRecogResult != null) && ((this.a.a == 1) || (this.a.a == 2))) {
+          ThreadManager.postImmediately(new OcrControl.5.1(this, localOcrRecogResult, paramString), null, false);
+        }
+        if (paramapki.a == null) {
+          break label334;
+        }
+        i = paramapki.a.a;
+        j = paramapki.a.b;
+      }
+    }
+    for (;;)
+    {
+      k = j;
+      j = i;
+      i = k;
+      for (;;)
+      {
+        ThreadManager.postImmediately(new OcrControl.5.2(this, paramString), null, false);
+        ThreadManager.post(new OcrControl.5.3(this, j, i, paramInt), 5, null, false);
+        return;
+        label282:
+        i = m;
+        j = k;
+        if (aytd.a(this.a) != null)
+        {
+          aytd.a(this.a).a(3, null, paramString.a.b, l);
+          i = m;
+          j = k;
+        }
+      }
+      label334:
+      j = -1;
+      i = -1;
+    }
   }
 }
 

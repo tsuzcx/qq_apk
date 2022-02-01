@@ -1,16 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bnym
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public bnym(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public bnym(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    this.a.getActivity().getIntent().putExtra("startTimeEdit", AEEditorVideoEditFragment.a(this.a, false));
+    this.a.getActivity().getIntent().putExtra("endTimeEdit", AEEditorVideoEditFragment.b(this.a, false));
+    this.a.getActivity().getIntent().putExtra("endSpeedEdit", AEEditorVideoEditFragment.a(this.a, false));
+    bnqm.a().p();
+    this.a.a().a(this.a.getActivity());
   }
 }
 

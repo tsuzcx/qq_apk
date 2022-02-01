@@ -1,75 +1,82 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import java.io.UnsupportedEncodingException;
 
 public class adfy
-  implements avtb<List<EmoticonPackage>>
+  implements TextWatcher
 {
-  public adfy(EmosmActivity paramEmosmActivity) {}
+  public adfy(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(List<EmoticonPackage> paramList)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.a.jdField_a_of_type_Arbl != null) {
-      this.a.jdField_a_of_type_Arbl.a();
-    }
-    if ((paramList != null) && (paramList.size() > 0))
+    if (AddFriendVerifyActivity.a(this.a) != 4)
     {
-      EmoticonPackage localEmoticonPackage;
-      if (this.a.b == 1)
+      int i = paramEditable.length();
+      if (i > 30)
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        paramEditable = paramEditable.toString();
+        if (i > 30)
         {
-          localEmoticonPackage = (EmoticonPackage)paramList.next();
-          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          i = paramEditable.length();
+          if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
+          for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
+          {
+            i = paramEditable.length();
+            break;
           }
         }
-      }
-      if (this.a.b == 2)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localEmoticonPackage = (EmoticonPackage)paramList.next();
-          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
-          }
-        }
+        this.a.a.setText(paramEditable);
+        this.a.a.setSelection(paramEditable.length());
       }
     }
-    if (this.a.b == 1)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.findHeaderViewPosition(this.a.jdField_a_of_type_AndroidViewView) == -1) {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.a.jdField_a_of_type_AndroidViewView);
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.a.d();
-      if (this.a.b != 2) {
-        break label344;
-      }
-      this.a.setTitle(2131691783);
-    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (AddFriendVerifyActivity.a(this.a) != 4) {}
     for (;;)
     {
-      if (this.a.jdField_a_of_type_Arbl != null) {
-        this.a.jdField_a_of_type_Arbl.notifyDataSetChanged();
-      }
       return;
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      try
       {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        break;
+        paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
+        paramInt1 = 90 - paramInt3;
+        paramCharSequence = paramCharSequence.toString();
+        paramInt2 = paramInt1;
+        if (paramInt3 > 90)
+        {
+          paramInt2 = paramInt3;
+          if (paramInt2 > 90)
+          {
+            paramInt1 = paramCharSequence.length();
+            if ((paramInt1 >= 2) && (Character.isHighSurrogate(paramCharSequence.charAt(paramInt1 - 2)))) {}
+            for (paramCharSequence = paramCharSequence.substring(0, paramInt1 - 2);; paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1))
+            {
+              paramInt2 = paramCharSequence.getBytes("utf-8").length;
+              paramInt1 = 90 - paramInt2;
+              break;
+            }
+          }
+          AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
+          AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
+          paramInt2 = paramInt1;
+        }
+        if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0)
+        {
+          paramCharSequence = paramInt2 + "";
+          AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
+          return;
+        }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeHeaderView(this.a.jdField_a_of_type_AndroidViewView);
-      break;
-      label344:
-      this.a.setTitle(2131691989);
+      catch (UnsupportedEncodingException paramCharSequence)
+      {
+        paramCharSequence.printStackTrace();
+      }
     }
   }
 }

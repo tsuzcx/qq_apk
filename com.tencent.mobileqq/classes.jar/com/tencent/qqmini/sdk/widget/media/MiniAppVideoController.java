@@ -13,7 +13,6 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.FrameLayout;
@@ -33,6 +32,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInitListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.widget.VideoGestureRelativeLayout.VideoGestureListener;
@@ -59,6 +59,7 @@ public class MiniAppVideoController
   private boolean isPause;
   private boolean isVideoPrepared = false;
   private int lastBufferProgress = 0;
+  private MiniAppVideoPlayerListenerHolder listenerHolder;
   private AudioManager mAudioManager;
   private long mCurrPos;
   private int maxVolume = 0;
@@ -75,7 +76,6 @@ public class MiniAppVideoController
   private IVideoPlayerUI ui;
   private long videoPlayerId;
   private Observer videoPlayerStatusObserver;
-  private View videoView;
   private int webViewId;
   
   public MiniAppVideoController(Activity paramActivity)
@@ -291,6 +291,11 @@ public class MiniAppVideoController
     return new MiniAppVideoController.7(this);
   }
   
+  private AbsVideoPlayer.OnVideoViewInitListener getOnVideoViewInitListener()
+  {
+    return new MiniAppVideoController.1(this);
+  }
+  
   private VideoGestureRelativeLayout.VideoGestureListener getVideoGestureListener()
   {
     return new MiniAppVideoController.3(this);
@@ -317,7 +322,13 @@ public class MiniAppVideoController
       this.maxVolume = this.mAudioManager.getStreamMaxVolume(3);
     }
     this.player = new IVideoPlayerImpl(this.activity);
-    this.player.setUpPlayer(paramMiniAppVideoConfig, new MiniAppVideoController.1(this, paramMiniAppVideoConfig), getOnControllerClickListener(), getOnVideoPreparedListener(), getOnCompletionListener(), getOnErrorListener(), getOnInfoListener(), getOnSeekCompleteListener());
+    this.listenerHolder = initPlayerListenerHolder();
+    this.player.createVideoView(this.listenerHolder.onVideoViewInitListener);
+  }
+  
+  private MiniAppVideoPlayerListenerHolder initPlayerListenerHolder()
+  {
+    return new MiniAppVideoPlayerListenerHolder.Builder().setOnVideoViewInitListener(getOnVideoViewInitListener()).setOnControllerClickListener(getOnControllerClickListener()).setOnVideoPreparedListener(getOnVideoPreparedListener()).setOnCompletionListener(getOnCompletionListener()).setOnErrorListener(getOnErrorListener()).setOnInfoListener(getOnInfoListener()).setOnSeekCompleteListener(getOnSeekCompleteListener()).build();
   }
   
   private void initPoster(MiniAppVideoConfig paramMiniAppVideoConfig)
@@ -380,68 +391,68 @@ public class MiniAppVideoController
     //   0: aconst_null
     //   1: astore 6
     //   3: aload_1
-    //   4: invokestatic 617	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: invokestatic 662	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifne +134 -> 141
     //   10: aload_1
-    //   11: ldc_w 619
-    //   14: invokevirtual 424	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   11: ldc_w 664
+    //   14: invokevirtual 422	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   17: ifeq +124 -> 141
-    //   20: getstatic 391	android/os/Build$VERSION:SDK_INT	I
+    //   20: getstatic 389	android/os/Build$VERSION:SDK_INT	I
     //   23: bipush 15
     //   25: if_icmple +116 -> 141
-    //   28: new 621	java/io/FileInputStream
+    //   28: new 666	java/io/FileInputStream
     //   31: dup
     //   32: aload_0
     //   33: getfield 99	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:config	Lcom/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig;
-    //   36: getfield 571	com/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig:mUrls	Ljava/lang/String;
-    //   39: invokespecial 623	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   36: getfield 616	com/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig:mUrls	Ljava/lang/String;
+    //   39: invokespecial 668	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   42: astore_3
-    //   43: new 393	android/media/MediaExtractor
+    //   43: new 391	android/media/MediaExtractor
     //   46: dup
-    //   47: invokespecial 624	android/media/MediaExtractor:<init>	()V
+    //   47: invokespecial 669	android/media/MediaExtractor:<init>	()V
     //   50: astore 5
     //   52: aload 5
     //   54: aload_3
-    //   55: invokevirtual 628	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   58: invokevirtual 632	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   55: invokevirtual 673	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   58: invokevirtual 677	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
     //   61: aload_0
     //   62: aload 5
-    //   64: invokespecial 634	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
+    //   64: invokespecial 679	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
     //   67: istore_2
     //   68: iload_2
     //   69: iconst_m1
     //   70: if_icmple +53 -> 123
     //   73: aload 5
     //   75: iload_2
-    //   76: invokevirtual 410	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   76: invokevirtual 408	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   79: astore_1
     //   80: aload_1
-    //   81: ldc_w 636
-    //   84: invokevirtual 639	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   81: ldc_w 681
+    //   84: invokevirtual 684	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   87: ifeq +14 -> 101
     //   90: aload_0
     //   91: aload_1
-    //   92: ldc_w 636
-    //   95: invokevirtual 643	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   98: putfield 609	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:rotation	I
+    //   92: ldc_w 681
+    //   95: invokevirtual 688	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   98: putfield 654	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:rotation	I
     //   101: aload_0
     //   102: aload_1
-    //   103: ldc_w 645
-    //   106: invokevirtual 643	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   109: putfield 605	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originWidth	I
+    //   103: ldc_w 690
+    //   106: invokevirtual 688	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   109: putfield 650	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originWidth	I
     //   112: aload_0
     //   113: aload_1
-    //   114: ldc_w 647
-    //   117: invokevirtual 643	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   120: putfield 607	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originHeight	I
+    //   114: ldc_w 692
+    //   117: invokevirtual 688	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   120: putfield 652	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originHeight	I
     //   123: aload_3
     //   124: ifnull +7 -> 131
     //   127: aload_3
-    //   128: invokevirtual 650	java/io/FileInputStream:close	()V
+    //   128: invokevirtual 695	java/io/FileInputStream:close	()V
     //   131: aload 5
     //   133: ifnull +8 -> 141
     //   136: aload 5
-    //   138: invokevirtual 653	android/media/MediaExtractor:release	()V
+    //   138: invokevirtual 698	android/media/MediaExtractor:release	()V
     //   141: return
     //   142: astore 4
     //   144: aconst_null
@@ -449,18 +460,18 @@ public class MiniAppVideoController
     //   146: aload 6
     //   148: astore_1
     //   149: ldc 10
-    //   151: ldc_w 655
+    //   151: ldc_w 700
     //   154: aload 4
-    //   156: invokestatic 661	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   156: invokestatic 706	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   159: pop
     //   160: aload_3
     //   161: ifnull +7 -> 168
     //   164: aload_3
-    //   165: invokevirtual 650	java/io/FileInputStream:close	()V
+    //   165: invokevirtual 695	java/io/FileInputStream:close	()V
     //   168: aload_1
     //   169: ifnull -28 -> 141
     //   172: aload_1
-    //   173: invokevirtual 653	android/media/MediaExtractor:release	()V
+    //   173: invokevirtual 698	android/media/MediaExtractor:release	()V
     //   176: return
     //   177: astore_1
     //   178: aconst_null
@@ -470,11 +481,11 @@ public class MiniAppVideoController
     //   183: aload 4
     //   185: ifnull +8 -> 193
     //   188: aload 4
-    //   190: invokevirtual 650	java/io/FileInputStream:close	()V
+    //   190: invokevirtual 695	java/io/FileInputStream:close	()V
     //   193: aload_3
     //   194: ifnull +7 -> 201
     //   197: aload_3
-    //   198: invokevirtual 653	android/media/MediaExtractor:release	()V
+    //   198: invokevirtual 698	android/media/MediaExtractor:release	()V
     //   201: aload_1
     //   202: athrow
     //   203: astore_1
@@ -813,7 +824,7 @@ public class MiniAppVideoController
         if (!this.isChangingProgress) {
           this.ui.setProgressByPlayingTime(this.player.getDuration(), this.player.getCurrentPostion());
         }
-        if (!this.pageWebView.getClass().getName().equals("com.tencent.qqmini.minigame.GameJsService")) {
+        if (!"com.tencent.qqmini.minigame.GameJsService".equals(this.pageWebView.getClass().getName())) {
           break label180;
         }
         callbackVideoStateChange("timeUpdate");

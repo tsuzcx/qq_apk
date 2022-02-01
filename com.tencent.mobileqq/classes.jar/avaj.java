@@ -1,234 +1,693 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.1;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.3;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.music.QzoneMusicHelper;
-import eipc.EIPCResult;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.fts.entity.FTSEntity;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class avaj
-  extends QIPCModule
 {
-  private avaj()
+  public static final Map<Class<?>, String> a;
+  public static ConcurrentHashMap<Class, LinkedHashMap<String, Field>> a;
+  public static ConcurrentHashMap<Class, LinkedHashSet<Field>> b;
+  public static ConcurrentHashMap<Class, LinkedHashSet<Field>> c;
+  public static ConcurrentHashMap<Class, FTSEntity> d;
+  
+  static
   {
-    super("ListenTogetherIPCModuleMainServer");
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    b = new ConcurrentHashMap();
+    c = new ConcurrentHashMap();
+    d = new ConcurrentHashMap();
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Byte.TYPE, "INTEGER");
+    jdField_a_of_type_JavaUtilMap.put(Boolean.TYPE, "INTEGER");
+    jdField_a_of_type_JavaUtilMap.put(Short.TYPE, "INTEGER");
+    jdField_a_of_type_JavaUtilMap.put(Integer.TYPE, "INTEGER");
+    jdField_a_of_type_JavaUtilMap.put(Long.TYPE, "INTEGER");
+    jdField_a_of_type_JavaUtilMap.put(String.class, "TEXT");
+    jdField_a_of_type_JavaUtilMap.put([B.class, "BLOB");
+    jdField_a_of_type_JavaUtilMap.put(Float.TYPE, "REAL");
+    jdField_a_of_type_JavaUtilMap.put(Double.TYPE, "REAL");
   }
   
-  public static avaj a()
+  public static FTSEntity a(Class<? extends FTSEntity> paramClass)
   {
-    return avak.a();
+    FTSEntity localFTSEntity2 = (FTSEntity)d.get(paramClass);
+    FTSEntity localFTSEntity1 = localFTSEntity2;
+    if (localFTSEntity2 == null) {}
+    try
+    {
+      localFTSEntity1 = (FTSEntity)paramClass.newInstance();
+      d.put(paramClass, localFTSEntity1);
+      return localFTSEntity1;
+    }
+    catch (Exception localException)
+    {
+      throw new RuntimeException(paramClass.getSimpleName() + " must have an empty constructor. ", localException);
+    }
   }
   
-  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
+  public static FTSEntity a(Map paramMap, Class<? extends FTSEntity> paramClass)
   {
-    if ((!"action_status_changed".equals(paramString)) || (paramBundle == null)) {}
+    FTSEntity localFTSEntity;
+    label286:
     for (;;)
     {
-      return null;
-      paramBundle = paramBundle.getString("data");
+      Field localField;
+      Object localObject1;
+      Object localObject2;
       try
       {
-        paramBundle = new JSONObject(paramBundle);
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-        {
-          localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (QLog.isColorLevel()) {
-            QLog.d("ListenTogetherIPCModuleMainServer", 2, "statusChanged action:" + paramString + " data=" + paramBundle + " app:" + localQQAppInterface);
-          }
-          if ((localQQAppInterface == null) || (paramBundle == null)) {
-            continue;
-          }
-          ((ListenTogetherManager)localQQAppInterface.getManager(331)).a(paramBundle);
-          paramString = new EIPCResult();
-          paramString.code = 0;
-          return paramString;
+        localFTSEntity = (FTSEntity)paramClass.newInstance();
+        Iterator localIterator = a(paramClass).values().iterator();
+        if (!localIterator.hasNext()) {
+          break;
         }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          QLog.i("ListenTogetherIPCModuleMainServer", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
+        localField = (Field)localIterator.next();
+        localObject1 = paramMap.get(localField.getName());
+        if (localObject1 == null) {
           continue;
-          QQAppInterface localQQAppInterface = null;
         }
-      }
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "callWebClientStatusChanged data:" + paramJSONObject + "  isToolRunning:" + bool);
-    }
-    if (bool)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", localBundle, null);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    boolean bool1 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    for (;;)
-    {
-      return null;
-      if ("action_status_changed".equals(paramString)) {
-        return a(paramString, paramBundle, paramInt);
-      }
-      if ("isOpener".equals(paramString))
-      {
-        paramString = new Bundle();
-        paramString.putBoolean("result", bdav.a().a());
-        paramString = EIPCResult.createResult(0, paramString);
-        if (paramInt > 0)
-        {
-          callbackResult(paramInt, paramString);
-          return null;
+        if (!((String)jdField_a_of_type_JavaUtilMap.get(localField.getType())).equals("INTEGER")) {
+          break label286;
         }
-      }
-      else if ("isShowAtmosphere".equals(paramString))
-      {
-        try
+        localObject2 = (Long)localObject1;
+        if (localField.getType().equals(Byte.TYPE))
         {
-          paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
-          paramBundle = new Bundle();
-          if ((bdav.a().a()) || (bdav.a().a(paramString))) {
-            break label609;
-          }
-          label220:
-          paramBundle.putBoolean("result", bool1);
-          paramString = EIPCResult.createResult(0, paramBundle);
-          if (paramInt > 0)
+          paramClass = Byte.valueOf(((Long)localObject2).byteValue());
+          try
           {
-            callbackResult(paramInt, paramString);
-            return null;
+            localField.set(localFTSEntity, paramClass);
           }
-        }
-        catch (JSONException paramString)
-        {
-          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
-          return null;
-        }
-      }
-    }
-    if ("setPlayerId".equals(paramString)) {
-      try
-      {
-        paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
-        bday.a().a(paramInt);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
-        return null;
-      }
-    }
-    if ("setThemeEnabled".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramInt = paramBundle.optInt("id");
-        paramBundle = bdav.a();
-        bool1 = bool2;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-        paramBundle.a(paramString, bool1);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
-        return null;
-      }
-    }
-    if ("showFloatView".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramBundle = paramBundle.optString("coverUrl");
-        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-    }
-    if ("pauseFloatView".equals(paramString))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
-      return null;
-    }
-    if ("changeMusicList".equals(paramString)) {}
-    for (;;)
-    {
-      SongInfo localSongInfo;
-      try
-      {
-        paramString = new JSONObject(paramBundle.getString("data"));
-        int j = paramString.optInt("playType");
-        int k = paramString.optInt("index");
-        paramString = paramString.getJSONArray("songList");
-        paramBundle = new SongInfo[paramString.length()];
-        paramInt = i;
-        if (paramInt < paramString.length())
-        {
-          localSongInfo = QzoneMusicHelper.convertSongInfo(paramString.getJSONObject(paramInt));
-          if (localSongInfo.a != 0L) {
-            break label615;
+          catch (IllegalAccessException paramClass)
+          {
+            paramClass.printStackTrace();
           }
-          localSongInfo.a = paramInt;
-          break label615;
+          continue;
         }
-        QQPlayerService.a(paramBundle, j, k);
-        return null;
+        if (!localField.getType().equals(Boolean.TYPE)) {
+          break label206;
+        }
       }
-      catch (JSONException paramString)
+      catch (Exception paramMap)
       {
-        paramString.printStackTrace();
-        return null;
+        throw new RuntimeException(paramClass.getSimpleName() + " must have an empty constructor. ", paramMap);
       }
-      if (!"stopMusicBox".equals(paramString)) {
+      if (((Long)localObject2).longValue() == 1L) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramClass = Boolean.valueOf(bool);
         break;
       }
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
-      return null;
-      label609:
-      bool1 = true;
-      break label220;
-      label615:
-      paramBundle[paramInt] = localSongInfo;
-      paramInt += 1;
+      label206:
+      if (localField.getType().equals(Short.TYPE))
+      {
+        paramClass = Short.valueOf(((Long)localObject2).shortValue());
+      }
+      else if (localField.getType().equals(Integer.TYPE))
+      {
+        paramClass = Integer.valueOf(((Long)localObject2).intValue());
+      }
+      else
+      {
+        paramClass = localObject1;
+        if (localField.getType().equals(Long.TYPE))
+        {
+          paramClass = Long.valueOf(((Long)localObject2).longValue());
+          continue;
+          paramClass = localObject1;
+          if (((String)jdField_a_of_type_JavaUtilMap.get(localField.getType())).equals("REAL"))
+          {
+            localObject2 = (Double)localObject1;
+            if (localField.getType().equals(Float.TYPE))
+            {
+              paramClass = Float.valueOf(((Double)localObject2).floatValue());
+            }
+            else
+            {
+              paramClass = localObject1;
+              if (localField.getType().equals(Double.TYPE)) {
+                paramClass = Double.valueOf(((Double)localObject2).doubleValue());
+              }
+            }
+          }
+        }
+      }
+    }
+    localFTSEntity.postRead();
+    return localFTSEntity;
+  }
+  
+  private static String a(auzs paramauzs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(paramauzs.jdField_b_of_type_JavaLangString))
+    {
+      localStringBuilder.append(" ORDER BY ");
+      localStringBuilder.append(paramauzs.jdField_b_of_type_JavaLangString);
+    }
+    if (paramauzs.jdField_a_of_type_Int > 0)
+    {
+      localStringBuilder.append(" LIMIT ");
+      localStringBuilder.append(paramauzs.jdField_a_of_type_Int);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(auzs paramauzs, auzu paramauzu)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramauzu = a(paramauzs.jdField_a_of_type_JavaLangClass, paramauzu);
+    if ((!TextUtils.isEmpty(paramauzu)) || (!TextUtils.isEmpty(paramauzs.jdField_a_of_type_JavaLangString)))
+    {
+      localStringBuilder.append(" WHERE ");
+      if (!TextUtils.isEmpty(paramauzu)) {
+        localStringBuilder.append(paramauzu);
+      }
+      if ((!TextUtils.isEmpty(paramauzu)) && (!TextUtils.isEmpty(paramauzs.jdField_a_of_type_JavaLangString))) {
+        localStringBuilder.append(" AND ");
+      }
+      if (!TextUtils.isEmpty(paramauzs.jdField_a_of_type_JavaLangString)) {
+        localStringBuilder.append(paramauzs.jdField_a_of_type_JavaLangString);
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(auzs paramauzs, auzu paramauzu, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d(paramauzs, paramBoolean));
+    localStringBuilder.append(a(paramauzs, paramauzu));
+    if (!paramBoolean) {
+      localStringBuilder.append(a(paramauzs));
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(auzs paramauzs, List<Integer> paramList)
+  {
+    String str = a(paramauzs, false);
+    if ((paramList == null) || (paramList.size() > 0)) {
+      throw new IllegalArgumentException("columnTyps must be empty and not null.");
+    }
+    paramauzs = a(paramauzs.jdField_a_of_type_JavaLangClass).values().iterator();
+    while (paramauzs.hasNext())
+    {
+      Object localObject = (Field)paramauzs.next();
+      localObject = (String)jdField_a_of_type_JavaUtilMap.get(((Field)localObject).getType());
+      if (((String)localObject).equals("INTEGER")) {
+        paramList.add(Integer.valueOf(1));
+      } else if (((String)localObject).equals("REAL")) {
+        paramList.add(Integer.valueOf(2));
+      } else if (((String)localObject).equals("TEXT")) {
+        paramList.add(Integer.valueOf(3));
+      } else if (((String)localObject).equals("BLOB")) {
+        paramList.add(Integer.valueOf(4));
+      }
+    }
+    return str;
+  }
+  
+  private static String a(auzs paramauzs, boolean paramBoolean)
+  {
+    if (paramauzs.jdField_a_of_type_ArrayOfAuzu != null)
+    {
+      if (paramauzs.jdField_a_of_type_ArrayOfAuzu.length == 1) {
+        return a(paramauzs, paramauzs.jdField_a_of_type_ArrayOfAuzu[0], paramBoolean);
+      }
+      if (paramauzs.jdField_a_of_type_ArrayOfAuzu.length > 1)
+      {
+        if (paramauzs.jdField_a_of_type_Boolean) {
+          return b(paramauzs, paramBoolean);
+        }
+        return c(paramauzs, paramBoolean);
+      }
+    }
+    return a(paramauzs, null, paramBoolean);
+  }
+  
+  public static String a(FTSEntity paramFTSEntity, List<Integer> paramList, List<byte[]> paramList1)
+  {
+    paramFTSEntity.preWrite();
+    paramList1.clear();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("INSERT INTO ");
+    localStringBuilder.append(paramFTSEntity.getTableName());
+    localStringBuilder.append("(");
+    Object localObject1 = a(paramFTSEntity.getClass());
+    Set localSet = a(paramFTSEntity.getClass());
+    Object localObject2 = ((Map)localObject1).values().iterator();
+    Field localField;
+    for (int i = 1; ((Iterator)localObject2).hasNext(); i = 0)
+    {
+      localField = (Field)((Iterator)localObject2).next();
+      if (i == 0) {
+        localStringBuilder.append(',');
+      }
+      localStringBuilder.append(localField.getName());
+      if (localSet.contains(localField))
+      {
+        localStringBuilder.append(',');
+        localStringBuilder.append(paramFTSEntity.getIndexColumnName(localField.getName()));
+      }
+    }
+    localStringBuilder.append(") VALUES(");
+    localObject2 = ((Map)localObject1).entrySet().iterator();
+    i = 0;
+    if (((Iterator)localObject2).hasNext())
+    {
+      localField = (Field)((Map.Entry)((Iterator)localObject2).next()).getValue();
+      if (!localField.getType().equals([B.class)) {}
+    }
+    label522:
+    label633:
+    for (;;)
+    {
+      try
+      {
+        paramList.add(Integer.valueOf(i));
+        paramList1.add((byte[])localField.get(paramFTSEntity));
+        i += 1;
+        if (!localSet.contains(localField)) {
+          break label633;
+        }
+        i += 1;
+      }
+      catch (IllegalAccessException localIllegalAccessException5)
+      {
+        localIllegalAccessException5.printStackTrace();
+        continue;
+      }
+      localObject1 = ((Map)localObject1).values().iterator();
+      int j = 1;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Field)((Iterator)localObject1).next();
+        if (j == 0) {
+          localStringBuilder.append(',');
+        }
+        if (((Field)localObject2).getType().equals(String.class)) {
+          localStringBuilder.append("'");
+        }
+        for (;;)
+        {
+          try
+          {
+            localStringBuilder.append(((Field)localObject2).get(paramFTSEntity));
+            localStringBuilder.append("'");
+            if (localSet.contains(localObject2))
+            {
+              localStringBuilder.append(',');
+              localStringBuilder.append("'");
+              localStringBuilder.append((String)paramFTSEntity.indexContentMap.get(((Field)localObject2).getName()));
+              localStringBuilder.append("'");
+            }
+            j = 0;
+          }
+          catch (IllegalAccessException localIllegalAccessException1)
+          {
+            localIllegalAccessException1.printStackTrace();
+            continue;
+          }
+          if (((Field)localObject2).getType().equals(Boolean.TYPE)) {
+            for (;;)
+            {
+              try
+              {
+                if (!((Boolean)((Field)localObject2).get(paramFTSEntity)).booleanValue()) {
+                  break label522;
+                }
+                j = 1;
+                localStringBuilder.append(j);
+              }
+              catch (IllegalAccessException localIllegalAccessException2)
+              {
+                localIllegalAccessException2.printStackTrace();
+              }
+              break;
+              j = 0;
+            }
+          }
+          if (((Field)localObject2).getType().equals([B.class))
+          {
+            localStringBuilder.append("?");
+            try
+            {
+              paramList.add(Integer.valueOf(i));
+              paramList1.add((byte[])((Field)localObject2).get(paramFTSEntity));
+            }
+            catch (IllegalAccessException localIllegalAccessException3)
+            {
+              localIllegalAccessException3.printStackTrace();
+            }
+          }
+          else
+          {
+            try
+            {
+              localStringBuilder.append(((Field)localObject2).get(paramFTSEntity));
+            }
+            catch (IllegalAccessException localIllegalAccessException4)
+            {
+              localIllegalAccessException4.printStackTrace();
+            }
+          }
+        }
+      }
+      localStringBuilder.append(")");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  private static String a(Class<? extends FTSEntity> paramClass, auzu paramauzu)
+  {
+    int j = 0;
+    if (paramauzu == null) {
+      return "";
+    }
+    Object localObject2 = a(paramClass);
+    String str = paramauzu.jdField_a_of_type_JavaLangString;
+    if ((TextUtils.isEmpty(str)) || (paramauzu == null) || (TextUtils.isEmpty(paramauzu.jdField_b_of_type_JavaLangString))) {
+      return "";
+    }
+    Object localObject1 = a(paramClass);
+    paramClass = a(paramClass);
+    Field localField = (Field)((Map)localObject1).get(str);
+    localObject1 = new StringBuilder(128);
+    if (paramClass.contains(localField))
+    {
+      ((StringBuilder)localObject1).append(((FTSEntity)localObject2).getIndexColumnName(str));
+      ((StringBuilder)localObject1).append(" MATCH '");
+      if ((!paramClass.contains(localField)) && (!paramauzu.jdField_b_of_type_Boolean)) {
+        break label170;
+      }
+      paramClass = avak.b(paramauzu.jdField_b_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      int i;
+      if (paramClass != null)
+      {
+        i = j;
+        if (paramClass.length != 0) {}
+      }
+      else
+      {
+        return "";
+        ((StringBuilder)localObject1).append(str);
+        break;
+        label170:
+        localObject2 = avak.a(paramauzu.jdField_b_of_type_JavaLangString);
+        if (localObject2 == null) {
+          break label342;
+        }
+        paramClass = new String[((ArrayList)localObject2).size()];
+        i = 0;
+        while (i < ((ArrayList)localObject2).size())
+        {
+          str = (String)((ArrayList)localObject2).get(i);
+          paramClass[i] = ("*" + str + "*");
+          i += 1;
+        }
+      }
+      if (i < paramClass.length)
+      {
+        if (i > 0)
+        {
+          if (!paramauzu.jdField_a_of_type_Boolean) {
+            break label312;
+          }
+          ((StringBuilder)localObject1).append(" OR ");
+        }
+        for (;;)
+        {
+          ((StringBuilder)localObject1).append("\"");
+          ((StringBuilder)localObject1).append(paramClass[i]);
+          ((StringBuilder)localObject1).append("\"");
+          i += 1;
+          break;
+          label312:
+          ((StringBuilder)localObject1).append(" ");
+        }
+      }
+      ((StringBuilder)localObject1).append("'");
+      return ((StringBuilder)localObject1).toString();
+      continue;
+      label342:
+      paramClass = null;
+    }
+  }
+  
+  public static String a(Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    FTSEntity localFTSEntity = a(paramClass);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CREATE VIRTUAL TABLE ");
+    if ((paramBoolean1) && (paramBoolean2)) {
+      localStringBuilder.append("IF NOT EXISTS ");
+    }
+    localStringBuilder.append(localFTSEntity.getTableName());
+    localStringBuilder.append(" USING ");
+    if (paramBoolean1) {
+      localStringBuilder.append("fts4");
+    }
+    Object localObject2;
+    Object localObject1;
+    for (;;)
+    {
+      localStringBuilder.append("(");
+      localObject2 = a(paramClass);
+      localObject1 = a(paramClass);
+      localObject2 = ((Map)localObject2).values().iterator();
+      for (int i = 1; ((Iterator)localObject2).hasNext(); i = 0)
+      {
+        Field localField = (Field)((Iterator)localObject2).next();
+        String str = (String)jdField_a_of_type_JavaUtilMap.get(localField.getType());
+        if (i == 0) {
+          localStringBuilder.append(',');
+        }
+        localStringBuilder.append(localField.getName());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(str);
+        if (((Set)localObject1).contains(localField))
+        {
+          localStringBuilder.append(',');
+          localStringBuilder.append(localFTSEntity.getIndexColumnName(localField.getName()));
+          localStringBuilder.append(" ");
+          localStringBuilder.append("TEXT");
+        }
+      }
+      localStringBuilder.append("fts3");
+    }
+    if ((paramBoolean1) && (paramBoolean3))
+    {
+      localObject2 = new HashSet();
+      ((Set)localObject2).addAll((Collection)localObject1);
+      ((Set)localObject2).addAll(b(paramClass));
+      paramClass = ((Set)localObject2).iterator();
+      while (paramClass.hasNext())
+      {
+        localObject1 = (Field)paramClass.next();
+        localStringBuilder.append(", notindexed=");
+        localStringBuilder.append(((Field)localObject1).getName());
+      }
+    }
+    if ((paramBoolean1) && (localFTSEntity.needCompress()) && (paramBoolean4)) {
+      localStringBuilder.append(", compress=qqcompress, uncompress=qquncompress");
+    }
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
+  }
+  
+  public static Map<String, Field> a(Class<? extends FTSEntity> paramClass)
+  {
+    Object localObject2 = (LinkedHashMap)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramClass);
+    Object localObject1 = localObject2;
+    Field[] arrayOfField;
+    LinkedHashMap localLinkedHashMap;
+    if (localObject2 == null)
+    {
+      arrayOfField = paramClass.getFields();
+      localLinkedHashMap = new LinkedHashMap();
+      localObject1 = (LinkedHashSet)b.get(paramClass);
+      if (localObject1 != null) {
+        break label389;
+      }
+      localObject1 = new LinkedHashSet();
+      b.put(paramClass, localObject1);
+    }
+    label389:
+    for (;;)
+    {
+      localObject2 = (LinkedHashSet)c.get(paramClass);
+      if (localObject2 == null)
+      {
+        localObject2 = new LinkedHashSet();
+        c.put(paramClass, localObject2);
+      }
+      for (;;)
+      {
+        int j = arrayOfField.length;
+        int i = 0;
+        if (i < j)
+        {
+          Field localField = arrayOfField[i];
+          if (localField.isAnnotationPresent(auzx.class)) {}
+          for (;;)
+          {
+            i += 1;
+            break;
+            if (!localField.getDeclaringClass().equals(FTSEntity.class))
+            {
+              localObject3 = localField.getName();
+              if ((((String)localObject3).equals("ext1")) || (((String)localObject3).equals("ext2")) || (((String)localObject3).equals("ext3")) || (((String)localObject3).equals("exts"))) {
+                throw new RuntimeException("Field '" + (String)localObject3 + "' cannot be declared in subclass. It is a reserved field in FTSEntity.");
+              }
+            }
+            if (localField.isAnnotationPresent(auzw.class))
+            {
+              if (!localField.getType().equals(String.class)) {
+                throw new RuntimeException(paramClass.getSimpleName() + "The type of Filed declared with @index must be String. Field is " + localField.getName());
+              }
+              ((LinkedHashSet)localObject1).add(localField);
+            }
+            if (localField.isAnnotationPresent(auzy.class)) {
+              ((LinkedHashSet)localObject2).add(localField);
+            }
+            localField.getName();
+            Object localObject3 = localField.getType();
+            if ((String)jdField_a_of_type_JavaUtilMap.get(localObject3) != null) {
+              localLinkedHashMap.put(localField.getName(), localField);
+            }
+          }
+        }
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramClass, localLinkedHashMap);
+        localObject1 = localLinkedHashMap;
+        return localObject1;
+      }
+    }
+  }
+  
+  public static Set<Field> a(Class<? extends FTSEntity> paramClass)
+  {
+    Set localSet2 = (Set)b.get(paramClass);
+    Set localSet1 = localSet2;
+    if (localSet2 == null)
+    {
+      a(paramClass);
+      localSet1 = (Set)b.get(paramClass);
+    }
+    return localSet1;
+  }
+  
+  private static String b(auzs paramauzs, boolean paramBoolean)
+  {
+    int j = 0;
+    if ((paramauzs == null) || (paramauzs.jdField_a_of_type_ArrayOfAuzu == null) || (paramauzs.jdField_a_of_type_ArrayOfAuzu.length < 2)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = j;
+    if (!paramBoolean)
+    {
+      localStringBuilder.append(d(paramauzs, false));
+      localStringBuilder.append(" WHERE rowid in (");
+      i = j;
+    }
+    while (i < paramauzs.jdField_a_of_type_ArrayOfAuzu.length)
+    {
+      if (i > 0) {
+        localStringBuilder.append(" UNION ");
+      }
+      localStringBuilder.append(a(paramauzs, paramauzs.jdField_a_of_type_ArrayOfAuzu[i], true));
+      i += 1;
+    }
+    if (!paramBoolean)
+    {
+      localStringBuilder.append(")");
+      localStringBuilder.append(a(paramauzs));
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static Set<Field> b(Class<? extends FTSEntity> paramClass)
+  {
+    Set localSet2 = (Set)c.get(paramClass);
+    Set localSet1 = localSet2;
+    if (localSet2 == null)
+    {
+      a(paramClass);
+      localSet1 = (Set)c.get(paramClass);
+    }
+    return localSet1;
+  }
+  
+  private static String c(auzs paramauzs, boolean paramBoolean)
+  {
+    if ((paramauzs == null) || (paramauzs.jdField_a_of_type_ArrayOfAuzu == null) || (paramauzs.jdField_a_of_type_ArrayOfAuzu.length < 2)) {
+      return "";
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    if (!paramBoolean)
+    {
+      localStringBuilder1.append(d(paramauzs, false));
+      localStringBuilder1.append(" WHERE rowid in (");
+    }
+    String str = a(paramauzs, paramauzs.jdField_a_of_type_ArrayOfAuzu[0], true);
+    int i = 1;
+    while (i < paramauzs.jdField_a_of_type_ArrayOfAuzu.length)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(a(paramauzs, paramauzs.jdField_a_of_type_ArrayOfAuzu[i], true));
+      localStringBuilder2.append(" AND rowid in (");
+      localStringBuilder2.append(str);
+      localStringBuilder2.append(")");
+      str = localStringBuilder2.toString();
+      i += 1;
+    }
+    localStringBuilder1.append(str);
+    if (!paramBoolean)
+    {
+      localStringBuilder1.append(")");
+      localStringBuilder1.append(a(paramauzs));
+    }
+    return localStringBuilder1.toString();
+  }
+  
+  private static String d(auzs paramauzs, boolean paramBoolean)
+  {
+    FTSEntity localFTSEntity = a(paramauzs.jdField_a_of_type_JavaLangClass);
+    Object localObject = a(paramauzs.jdField_a_of_type_JavaLangClass);
+    paramauzs = new StringBuilder();
+    paramauzs.append("SELECT ");
+    if (paramBoolean) {
+      paramauzs.append("rowid");
+    }
+    for (;;)
+    {
+      paramauzs.append(" FROM ");
+      paramauzs.append(localFTSEntity.getTableName());
+      return paramauzs.toString();
+      localObject = ((Map)localObject).keySet().iterator();
+      for (int i = 1; ((Iterator)localObject).hasNext(); i = 0)
+      {
+        String str = (String)((Iterator)localObject).next();
+        if (i == 0) {
+          paramauzs.append(',');
+        }
+        paramauzs.append(str);
+      }
     }
   }
 }

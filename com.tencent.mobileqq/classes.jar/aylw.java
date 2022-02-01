@@ -1,22 +1,8 @@
 public class aylw
+  extends aylx
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
-  
-  public aylw(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
-  }
+  public String a;
+  public String b;
 }
 
 

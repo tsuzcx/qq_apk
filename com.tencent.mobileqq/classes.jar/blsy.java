@@ -1,23 +1,27 @@
 import android.os.Handler;
-import android.os.Message;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.2.1;
 
-class blsy
-  extends Handler
+public class blsy
+  implements bltg
 {
-  private blsy(blsw paramblsw) {}
+  blsy(blsw paramblsw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1004: 
-    case 1009: 
-      blsw.a(this.a);
-      return;
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "enter room successfully!!!");
     }
-    this.a.a();
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
+      }
+      new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
+      return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    }
   }
 }
 

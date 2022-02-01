@@ -1,23 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class vzq
-  extends QQUIEventReceiver<vzf, vzp>
+public abstract interface vzq<T>
 {
-  public vzq(@NonNull vzf paramvzf)
-  {
-    super(paramvzf);
-  }
-  
-  public void a(@NonNull vzf paramvzf, @NonNull vzp paramvzp)
-  {
-    vzf.a(paramvzf, paramvzp.jdField_a_of_type_Wod, paramvzp.jdField_a_of_type_JavaLangString);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vzp.class;
-  }
+  public abstract T a();
 }
 
 

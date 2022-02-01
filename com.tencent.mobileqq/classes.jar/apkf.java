@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class apkf
-  implements View.OnClickListener
+public class apkf
 {
-  apkf(apke paramapke, akho paramakho) {}
+  public int a = 3000;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    this.jdField_a_of_type_Apke.a(this.jdField_a_of_type_Akho);
-    this.jdField_a_of_type_Apke.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
   }
 }
 

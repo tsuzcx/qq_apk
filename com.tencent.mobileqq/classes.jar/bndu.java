@@ -1,20 +1,14 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-class bndu
-  extends QQUIEventReceiver<bndn, bnho>
+public abstract interface bndu<T extends RecyclerView.ViewHolder>
 {
-  public bndu(@NonNull bndn parambndn)
-  {
-    super(parambndn);
-  }
+  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
   
-  public void a(@NonNull bndn parambndn, @NonNull bnho parambnho) {}
+  public abstract void b(@NonNull T paramT, int paramInt);
   
-  public Class acceptEventClass()
-  {
-    return bnho.class;
-  }
+  public abstract void c(@NonNull T paramT, int paramInt);
 }
 
 

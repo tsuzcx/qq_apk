@@ -1,22 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ayzk
+class ayzk
+  extends aoef
 {
-  protected QQAppInterface a;
+  ayzk(ayzg paramayzg) {}
   
-  public ayzk(QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean, bdxt parambdxt)
   {
-    this.a = paramQQAppInterface;
+    if ((!paramBoolean) || (ayzg.a(this.a) == null) || (ayzg.a(this.a).isFinishing()) || (ayzg.a(this.a) == null) || (parambdxt == null)) {
+      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      ayzg.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
   
-  public abstract void a();
+  protected void b(boolean paramBoolean, bdxt parambdxt)
+  {
+    if ((!paramBoolean) || (ayzg.a(this.a) == null) || (ayzg.a(this.a).isFinishing()) || (ayzg.a(this.a) == null) || (parambdxt == null)) {
+      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      ayzg.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
   
-  public abstract void a(int paramInt, ByteStringMicro paramByteStringMicro);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract boolean a(int paramInt);
+  protected void c(boolean paramBoolean, bdxt parambdxt)
+  {
+    if ((!paramBoolean) || (ayzg.a(this.a) == null) || (ayzg.a(this.a).isFinishing()) || (ayzg.a(this.a) == null) || (parambdxt == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      ayzg.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
 }
 
 

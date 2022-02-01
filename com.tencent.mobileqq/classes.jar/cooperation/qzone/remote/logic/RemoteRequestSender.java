@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bblk;
+import bcsc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -566,7 +566,7 @@ public class RemoteRequestSender
     {
       localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", paramArrayList);
       localBundle.putInt("key_quality", i);
-      paramString2 = String.valueOf(bblk.a());
+      paramString2 = String.valueOf(bcsc.a());
       localBundle.putString("key_upload_client_key", paramString2);
       paramString3 = QZoneHelper.UserInfo.getInstance();
       paramString3.qzone_uin = paramString1;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bfdm;
+import bgls;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopRobotManager$1
   implements Runnable
 {
-  public TroopRobotManager$1(bfdm parambfdm) {}
+  public TroopRobotManager$1(bgls parambgls) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class TroopRobotManager$1
     {
       localRobot.mergeFrom(arrayOfByte);
       this.this$0.a(localRobot);
-      bfdm.a(this.this$0);
+      bgls.a(this.this$0);
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)

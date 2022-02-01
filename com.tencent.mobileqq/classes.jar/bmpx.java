@@ -1,23 +1,58 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.aeeditor.view.playtrack.view.PlayTrackExpandWidthView;
-import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
+import NS_NEW_MOBILE_REPORT.AccessRspHead;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bmpx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends MSFServlet
 {
-  public bmpx(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).b(i);
-    int j = this.jdField_a_of_type_Int;
-    i = VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.b - i) + j;
-    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).a().scrollTo(i, 0);
-    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).scrollTo(i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("YYBAdvServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramFromServiceMsg.getResultCode();
+        if (i != 1000) {
+          break;
+        }
+        paramIntent = bmpw.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
+      } while (paramIntent == null);
+      QLog.d("YYBAdvServlet", 2, "handler MobileReport result , resultCode=" + i + " error code " + paramIntent.err_code + " error msg " + paramIntent.err_msg);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("YYBAdvServlet", 2, "MobileReport fail, resultCode=" + i);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("selfuin", 0L);
+    paramIntent = paramIntent.getStringArrayListExtra("uninstall_app_list");
+    if (QLog.isColorLevel()) {
+      QLog.d("YYBAdvServlet", 2, "YYB send");
+    }
+    if (paramIntent != null)
+    {
+      bmpw localbmpw = new bmpw(Long.valueOf(l).longValue(), paramIntent);
+      byte[] arrayOfByte = localbmpw.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null)
+      {
+        QLog.e("YYBAdvServlet", 1, "onSend request encode result is null.cmd=" + localbmpw.uniKey());
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(15000L);
+      paramPacket.setSSOCommand(localbmpw.getCmdString());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

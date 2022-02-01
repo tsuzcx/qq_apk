@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import pix;
-import pjr;
+import ptu;
+import puo;
 
 public class DynamicChannelHeaderModule$1
   implements Runnable
 {
-  public DynamicChannelHeaderModule$1(pjr parampjr, int paramInt1, int paramInt2, pix parampix) {}
+  public DynamicChannelHeaderModule$1(puo parampuo, int paramInt1, int paramInt2, ptu paramptu) {}
   
   public void run()
   {
-    pjr.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Pix);
+    puo.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Ptu);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.qapmsdk.base.listener;
 import java.util.List;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/listener/IMemoryDumpListener;", "Lcom/tencent/qapmsdk/base/listener/IBaseListener;", "onFinishDump", "", "isSuccess", "", "objInfo", "", "zipPath", "onHprofDumped", "onPrepareDump", "", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public abstract interface IMemoryDumpListener
@@ -12,7 +13,7 @@ public abstract interface IMemoryDumpListener
   
   public abstract void onHprofDumped(@NotNull String paramString);
   
-  @NotNull
+  @Nullable
   public abstract List<String> onPrepareDump(@NotNull String paramString);
 }
 

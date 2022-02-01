@@ -1,18 +1,24 @@
-import java.util.List;
+import android.widget.TextView;
 
-public class vao
+class vao
+  implements vai
 {
-  public Object a;
-  public List<vaq> a;
-  public boolean a;
-  public boolean b;
+  vao(vaj paramvaj, boolean paramBoolean) {}
   
-  public vao(List<vaq> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    vaj.a(this.jdField_a_of_type_Vaj, null);
+    if ((vaj.a(this.jdField_a_of_type_Vaj) != null) && (vaj.a(this.jdField_a_of_type_Vaj)) && (vaj.a(this.jdField_a_of_type_Vaj) != null)) {
+      vaj.a(this.jdField_a_of_type_Vaj).setText(vaj.a(this.jdField_a_of_type_Vaj).a());
+    }
+    if ((vaj.b(this.jdField_a_of_type_Vaj)) && (vaj.a(this.jdField_a_of_type_Vaj) != 0L))
+    {
+      vaj.b(this.jdField_a_of_type_Vaj);
+      vaj.b(this.jdField_a_of_type_Vaj, false);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      vaj.c(this.jdField_a_of_type_Vaj);
+    }
   }
 }
 

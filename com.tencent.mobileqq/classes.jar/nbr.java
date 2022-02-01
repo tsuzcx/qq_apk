@@ -1,280 +1,110 @@
-import android.annotation.SuppressLint;
-import com.tencent.avgame.gameresult.GameResultUploadMgrForRemote.2;
-import com.tencent.avgame.gameresult.GameResultUploadMgrForRemote.4;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class nbr
 {
-  private volatile WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentHashMap<String, nbu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static int d = 48;
+  public int a;
+  public long a;
+  private nbt a;
+  public int b;
+  public int c;
   
-  public nbr(QQAppInterface paramQQAppInterface)
+  public nbr()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Nbt = new nbt();
   }
   
-  private QQAppInterface a()
+  private static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      synchronized (this.jdField_a_of_type_JavaLangRefWeakReference)
-      {
-        QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        return localQQAppInterface;
+    int i = 0;
+    int j = 0;
+    while (i < 4)
+    {
+      j |= (paramArrayOfByte[(3 - i + paramInt)] & 0xFF) << (3 - i) * 4;
+      i += 1;
+    }
+    return j;
+  }
+  
+  private static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < 8)
+    {
+      l |= (paramArrayOfByte[(7 - i + paramInt)] & 0xFF) << (7 - i) * 8;
+      i += 1;
+    }
+    return l;
+  }
+  
+  public static ArrayList<nbr> a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte == null) {
+      if (ncl.c()) {
+        ncl.b("AVInviteAccount", "getListFromBuffer detail is null");
       }
     }
+    do
+    {
+      return null;
+      if (paramInt != 0) {
+        break;
+      }
+    } while (!ncl.c());
+    ncl.b("AVInviteAccount", "getListFromBuffer buflen == 0");
     return null;
-  }
-  
-  @SuppressLint({"HandlerLeak"})
-  private TransProcessorHandler a()
-  {
-    return new nbs(this, ThreadManagerV2.getFileThreadLooper());
-  }
-  
-  private String a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
-  {
-    TransFileController localTransFileController = paramQQAppInterface.getTransFileController();
-    Object localObject = a();
-    localTransFileController.addHandle((TransProcessorHandler)localObject);
-    ((TransProcessorHandler)localObject).addFilter(new Class[] { BDHCommonUploadProcessor.class });
-    localObject = new TransferRequest();
-    ((TransferRequest)localObject).mIsUp = true;
-    ((TransferRequest)localObject).mCommandId = 78;
-    ((TransferRequest)localObject).mLocalPath = paramString2;
-    ((TransferRequest)localObject).mUniseq = ((Math.random() * 1000000.0D));
-    ((TransferRequest)localObject).mPeerUin = ("" + paramInt);
-    ((TransferRequest)localObject).mSelfUin = paramQQAppInterface.getCurrentUin();
-    ((TransferRequest)localObject).mFileType = 24;
-    ((TransferRequest)localObject).extraObject = paramString1;
-    paramQQAppInterface = new Bdh_extinfo.CommFileExtReq();
-    paramQQAppInterface.uint32_action_type.set(0);
-    paramQQAppInterface.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-    ((TransferRequest)localObject).mExtentionInfo = paramQQAppInterface.toByteArray();
-    localTransFileController.transferAsync((TransferRequest)localObject);
-    return paramString1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      synchronized (this.jdField_a_of_type_JavaLangRefWeakReference)
-      {
-        this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-        return;
-      }
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 19	nbr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   6: aload_1
-    //   7: invokevirtual 193	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   10: ifne +31 -> 41
-    //   13: ldc 195
-    //   15: iconst_1
-    //   16: new 105	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   23: aload_1
-    //   24: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc 197
-    //   29: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: return
-    //   41: new 205	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote$3
-    //   44: dup
-    //   45: aload_0
-    //   46: aload_0
-    //   47: getfield 19	nbr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   50: aload_1
-    //   51: invokevirtual 208	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   54: checkcast 210	nbu
-    //   57: aload_1
-    //   58: invokespecial 213	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote$3:<init>	(Lnbr;Lnbu;Ljava/lang/String;)V
-    //   61: bipush 16
-    //   63: aconst_null
-    //   64: iconst_0
-    //   65: invokestatic 217	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   68: goto -30 -> 38
-    //   71: astore_1
-    //   72: aload_0
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	nbr
-    //   0	76	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	38	71	finally
-    //   41	68	71	finally
-  }
-  
-  /* Error */
-  public void a(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 195
-    //   4: iconst_1
-    //   5: new 105	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   12: aload_1
-    //   13: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: ldc 220
-    //   18: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokestatic 223	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   27: aload_0
-    //   28: getfield 19	nbr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   31: astore_3
-    //   32: aload_3
-    //   33: monitorenter
-    //   34: aload_0
-    //   35: getfield 19	nbr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   38: aload_1
-    //   39: invokevirtual 193	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   42: ifne +8 -> 50
-    //   45: aload_3
-    //   46: monitorexit
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: return
-    //   50: aload_0
-    //   51: getfield 19	nbr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   54: aload_1
-    //   55: invokevirtual 226	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   58: pop
-    //   59: aload_3
-    //   60: monitorexit
-    //   61: goto -14 -> 47
-    //   64: astore_1
-    //   65: aload_3
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: athrow
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	nbr
-    //   0	74	1	paramString	String
-    //   0	74	2	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   34	47	64	finally
-    //   50	61	64	finally
-    //   65	67	64	finally
-    //   2	34	69	finally
-    //   67	69	69	finally
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
+    int i = a(paramArrayOfByte, 0);
+    ArrayList localArrayList = new ArrayList();
+    paramInt = 0;
     for (;;)
     {
-      nbu localnbu;
-      try
+      if (paramInt < i)
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1);
-        if (!bool) {
-          return;
-        }
-        localnbu = (nbu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-        localnbu.jdField_a_of_type_Nbt.a(paramString1, paramInt, paramString2);
-        if (paramInt == 0)
+        nbr localnbr = new nbr();
+        localnbr.jdField_a_of_type_Int = a(paramArrayOfByte, d * paramInt + 4);
+        localnbr.jdField_a_of_type_Long = a(paramArrayOfByte, d * paramInt + 4 + 8);
+        try
         {
-          localnbu.jdField_a_of_type_Boolean = false;
-          continue;
+          localnbr.jdField_a_of_type_Nbt.a = new String(paramArrayOfByte, d * paramInt + 4 + 16, 5, "UTF-8");
+          localnbr.jdField_a_of_type_Nbt.b = new String(paramArrayOfByte, d * paramInt + 4 + 21, 5, "UTF-8");
+          localnbr.jdField_a_of_type_Nbt.c = new String(paramArrayOfByte, d * paramInt + 4 + 26, 12, "UTF-8");
+          localnbr.b = a(paramArrayOfByte, d * paramInt + 4 + 40);
+          localnbr.c = a(paramArrayOfByte, d * paramInt + 4 + 44);
+          localArrayList.add(localnbr);
+          paramInt += 1;
         }
-        if (paramInt != 1) {
-          continue;
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            if (ncl.c()) {
+              ncl.a("AVInviteAccount", "getListFromBuffer", localUnsupportedEncodingException);
+            }
+          }
         }
-      }
-      finally {}
-      localnbu.jdField_b_of_type_Boolean = false;
-      if (localnbu.c) {
-        b(paramString1);
       }
     }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, nbt paramnbt)
-  {
+    i = d * i + 4;
+    paramInt = a(paramArrayOfByte, i);
+    i += 4;
+    int j = a(paramArrayOfByte, i);
     try
     {
-      if (QLog.isDebugVersion()) {
-        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, "recv avgame upload request playId:" + paramString1);
-      }
-      nbu localnbu = new nbu(this, null);
-      localnbu.jdField_a_of_type_JavaLangString = paramString2;
-      localnbu.jdField_b_of_type_JavaLangString = paramString3;
-      localnbu.jdField_a_of_type_Nbt = paramnbt;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, localnbu);
-      ThreadManagerV2.excute(new GameResultUploadMgrForRemote.2(this, paramString2, localnbu, paramQQAppInterface, paramString1), 16, null, false);
-      return true;
+      paramArrayOfByte = new String(paramArrayOfByte, i + 4, j, "UTF-8");
+      QLog.d("AVInviteAccount", 1, String.format("getListFromBuffer retCode[%d], tips length[%d], tips[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramArrayOfByte }));
+      lwf.a(paramInt, paramArrayOfByte);
+      return localArrayList;
     }
-    finally {}
-  }
-  
-  public void b(String paramString)
-  {
-    for (;;)
+    catch (UnsupportedEncodingException paramArrayOfByte)
     {
-      try
+      for (;;)
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-        if (!bool) {
-          return;
-        }
-        localObject = (nbu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        if ((((nbu)localObject).jdField_b_of_type_Boolean) || (((nbu)localObject).jdField_a_of_type_Boolean))
-        {
-          ((nbu)localObject).c = true;
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("视频正在上传[%b], 图片正在上传[%b],需要延迟清理", new Object[] { Boolean.valueOf(((nbu)localObject).jdField_b_of_type_Boolean), Boolean.valueOf(((nbu)localObject).jdField_a_of_type_Boolean) }));
-          continue;
-        }
-        str = ((nbu)localObject).jdField_a_of_type_JavaLangString;
+        paramArrayOfByte.printStackTrace();
+        paramArrayOfByte = "";
       }
-      finally {}
-      String str;
-      Object localObject = ((nbu)localObject).jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("清理资源[%s]", new Object[] { paramString }));
-      }
-      ThreadManagerV2.excute(new GameResultUploadMgrForRemote.4(this, str, (String)localObject), 16, null, false);
     }
   }
 }

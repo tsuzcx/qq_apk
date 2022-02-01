@@ -18,6 +18,7 @@ public final class CondFitUser
   public int iOccupationId;
   public long lUIN;
   public String locDesc;
+  public String personalSignature;
   public RichStatus richStatus;
   public String strNick = "";
   public byte[] vRichSign;

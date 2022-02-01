@@ -1,24 +1,35 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class aktf
-  implements bbup
+  implements TextWatcher
 {
-  public aktf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aktf(TransactionActivity paramTransactionActivity) {}
   
-  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
+    if (TransactionActivity.b(this.a).getText().length() > 4) {
+      if (!TransactionActivity.b(this.a).isEnabled())
+      {
+        TransactionActivity.b(this.a).setEnabled(true);
+        TransactionActivity.b(this.a).setClickable(true);
+        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
+      }
     }
-    aktv.a(paramBoolean1);
-    if (paramBoolean1)
-    {
-      NewFlowCameraActivity.h(this.a, true);
+    while (!TransactionActivity.b(this.a).isEnabled()) {
       return;
     }
-    this.a.a.g();
+    TransactionActivity.b(this.a).setClickable(false);
+    TransactionActivity.b(this.a).setEnabled(false);
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

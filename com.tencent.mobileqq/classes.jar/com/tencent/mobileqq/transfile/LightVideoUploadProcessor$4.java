@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import bfwl;
+import bhfd;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.highway.api.IRequestCallback;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoRspExtInfo;
@@ -101,7 +101,7 @@ class LightVideoUploadProcessor$4
       i = ((Bdh_extinfo.VideoInfo)localObject2).uint32_size.get();
       int j = ((Bdh_extinfo.VideoInfo)localObject2).uint32_time.get();
       ((Bdh_extinfo.VideoInfo)localObject2).uint32_format.get();
-      bfwl.a(String.valueOf(this.this$0.mUiRequest.mUniseq), "svrcomp_r", "sendAckToBDHServer success!  MD5:" + HexUtil.bytes2HexStr((byte[])localObject3));
+      bhfd.a(String.valueOf(this.this$0.mUiRequest.mUniseq), "svrcomp_r", "sendAckToBDHServer success!  MD5:" + HexUtil.bytes2HexStr((byte[])localObject3));
       this.this$0.mUiRequest.mMd5 = HexUtil.bytes2HexStr((byte[])localObject3);
       this.this$0.mUiRequest.mLocalPath = ShortVideoUtils.getShortVideoSavePath(LightVideoUploadProcessor.access$200(this.this$0), "mp4");
       this.this$0.mMd5Str = this.this$0.mUiRequest.mMd5;

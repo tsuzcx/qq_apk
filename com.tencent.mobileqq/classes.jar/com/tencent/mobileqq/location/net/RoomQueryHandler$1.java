@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.location.net;
 
 import android.os.Handler;
-import avdj;
+import awjm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RoomQueryHandler$1
   implements Runnable
 {
-  public RoomQueryHandler$1(avdj paramavdj, int paramInt, String paramString) {}
+  public RoomQueryHandler$1(awjm paramawjm, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (avdj.a(this.this$0).get())
+    if (awjm.a(this.this$0).get())
     {
       QLog.d("RoomQueryHandler", 1, new Object[] { "run: invoked. stop old loop query ", " uinType: ", Integer.valueOf(this.jdField_a_of_type_Int), " sessionUin: ", this.jdField_a_of_type_JavaLangString });
       return;
     }
-    avdj.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    avdj.a(this.this$0).postDelayed(this, avdj.a());
+    awjm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    awjm.a(this.this$0).postDelayed(this, awjm.a());
   }
 }
 

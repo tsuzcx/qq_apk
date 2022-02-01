@@ -1,40 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adlq
-  implements View.OnClickListener
+final class adlq
+  implements DialogInterface.OnClickListener
 {
-  public adlq(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  adlq(adnm paramadnm, adnn paramadnn) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
+    if (this.jdField_a_of_type_Adnm != null) {
+      this.jdField_a_of_type_Adnm.onCancel();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      continue;
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      continue;
-      Intent localIntent = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(localIntent);
-      continue;
-      localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
-      this.a.startActivityForResult(localIntent, 11);
-      this.a.overridePendingTransition(2130771997, 2130771990);
+    msa.e(true, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
+    msa.b(this.jdField_a_of_type_Adnn.a);
   }
 }
 

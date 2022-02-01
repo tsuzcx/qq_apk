@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import anca;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ChatHistoryTroopMemberFragment$26
@@ -10,7 +11,7 @@ class ChatHistoryTroopMemberFragment$26
   
   public void run()
   {
-    ((anca)this.this$0.b.getBusinessHandler(20)).a(this.this$0.c, this.this$0.j, this.this$0.e);
+    ((aoep)this.this$0.b.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.this$0.c, this.this$0.j, this.this$0.e);
   }
 }
 

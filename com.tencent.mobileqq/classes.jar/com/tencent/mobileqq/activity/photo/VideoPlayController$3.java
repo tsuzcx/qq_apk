@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajqa;
+import aklo;
 
 public class VideoPlayController$3
   implements Runnable
 {
-  public VideoPlayController$3(ajqa paramajqa) {}
+  public VideoPlayController$3(aklo paramaklo) {}
   
   public void run()
   {

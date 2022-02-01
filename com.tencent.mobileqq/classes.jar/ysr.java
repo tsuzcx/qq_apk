@@ -1,24 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnFocusChangeListener;
 
-public class ysr
-  implements View.OnClickListener
+class ysr
+  implements View.OnFocusChangeListener
 {
-  public ysr(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  ysr(yso paramyso) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
-    }
+    ykq.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 

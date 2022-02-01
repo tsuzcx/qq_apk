@@ -2,14 +2,14 @@ package com.tencent.mobileqq.hotpic;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import augn;
+import avmh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
 public class HotPicManager$5
   implements Runnable
 {
-  public HotPicManager$5(augn paramaugn, int paramInt) {}
+  public HotPicManager$5(avmh paramavmh, int paramInt) {}
   
   public void run()
   {

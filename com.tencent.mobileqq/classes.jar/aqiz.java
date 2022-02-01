@@ -1,77 +1,68 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public class aqiz
-  extends aptq<aqja>
+  implements Executor
 {
-  @NonNull
-  public aqja a(int paramInt)
-  {
-    return new aqja();
-  }
+  final aqja<Runnable> jdField_a_of_type_Aqja = new aqja(30);
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  @Nullable
-  public aqja a(aptx[] paramArrayOfaptx)
+  public void a()
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    try
     {
-      aqja localaqja = aqja.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfaptx[0].a);
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Aqja.a();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
+        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
       }
-      return localaqja;
+      return;
     }
-    return new aqja();
+    finally {}
   }
   
-  public void a(aqja paramaqja)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
+    try
+    {
+      this.jdField_a_of_type_Aqja.a();
+      return;
     }
-  }
-  
-  public Class<aqja> clazz()
-  {
-    return aqja.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public int type()
+  public void execute(Runnable paramRunnable)
   {
-    return 589;
+    try
+    {
+      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
+      this.jdField_a_of_type_Aqja.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqiz
  * JD-Core Version:    0.7.0.1
  */

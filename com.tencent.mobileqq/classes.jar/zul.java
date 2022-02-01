@@ -1,24 +1,20 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class zul
-  implements nnv
+class zul
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoReplyRsp>
 {
-  public zul(PluginJumpManager paramPluginJumpManager) {}
+  zul(zug paramzug, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    if (paramInt == 0) {
-      nny.a("urlplugin.cfg", this.a.mContext, "1007", new zum(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
-      return;
-    }
-    this.a.loadConfigFromFile();
+    wad.a().dispatch(this.jdField_a_of_type_Zug.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Zug.hashCode()) }));
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

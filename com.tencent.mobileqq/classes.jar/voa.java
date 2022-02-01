@@ -1,13 +1,25 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class voa
+class voa
+  implements View.OnClickListener
 {
-  public StoryVideoItem a;
-  public StoryVideoItem b;
+  voa(vny paramvny) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
+    if (aala.a("vertical_video_top_homepage_click")) {
+      vmp.a("AbsWsUIGroup", "fast click, ignored: vertical video top homepage");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      vsj.e(vny.a(this.a).a(), vny.a(this.a).b(), vny.a(this.a));
+      uyt.a(vny.a(this.a).getActivity(), "from_qq_chat", 0, false);
+    }
   }
 }
 

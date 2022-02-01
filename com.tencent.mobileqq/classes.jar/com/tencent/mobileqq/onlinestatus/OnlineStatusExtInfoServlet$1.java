@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import axvi;
+import azbt;
 import java.util.ArrayList;
 import tencent.im.oidb.cmd0xe84.oidb_0xe84.Condition;
 
 public class OnlineStatusExtInfoServlet$1
   extends ArrayList<oidb_0xe84.Condition>
 {
-  public OnlineStatusExtInfoServlet$1(axvi paramaxvi, oidb_0xe84.Condition paramCondition1, oidb_0xe84.Condition paramCondition2)
+  public OnlineStatusExtInfoServlet$1(azbt paramazbt, oidb_0xe84.Condition paramCondition1, oidb_0xe84.Condition paramCondition2)
   {
     add(this.val$condition);
     add(this.val$condition2);

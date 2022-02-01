@@ -38,11 +38,6 @@ public abstract class OutBaseJsPlugin
     return "";
   }
   
-  public void handleNativeResponse(String paramString1, String paramString2, int paramInt)
-  {
-    MiniAppController.getInstance().handleNativeResponse(this, paramString1, paramString2, paramInt);
-  }
-  
   public void onDestroy()
   {
     this.isDestroy = true;

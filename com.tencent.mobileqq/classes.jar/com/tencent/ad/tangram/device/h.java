@@ -3,7 +3,7 @@ package com.tencent.ad.tangram.device;
 import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.file.a;
+import com.tencent.ad.tangram.file.AdFile;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.io.File;
@@ -23,9 +23,9 @@ import java.lang.ref.WeakReference;
   
   private h() {}
   
-  private static a createFile(Context paramContext, boolean paramBoolean)
+  private static AdFile createFile(Context paramContext, boolean paramBoolean)
   {
-    return new a(paramContext.getDir("ams", 0).getAbsolutePath() + File.separator + "tangram" + File.separator + "cache", "metadata.dat", "UTF-8", paramBoolean);
+    return new AdFile(paramContext.getDir("ams", 0).getAbsolutePath() + File.separator + "tangram" + File.separator + "cache", "metadata.dat", "UTF-8", paramBoolean);
   }
   
   private void flush(Context paramContext)
@@ -58,7 +58,7 @@ import java.lang.ref.WeakReference;
     String str;
     do
     {
-      a locala;
+      AdFile localAdFile;
       do
       {
         while (paramContext == null)
@@ -72,11 +72,11 @@ import java.lang.ref.WeakReference;
         }
         paramContext.close();
         return null;
-        locala = createFile(paramContext, false);
-        paramContext = locala;
-      } while (!locala.open());
-      str = locala.readFully();
-      paramContext = locala;
+        localAdFile = createFile(paramContext, false);
+        paramContext = localAdFile;
+      } while (!localAdFile.open());
+      str = localAdFile.readFully();
+      paramContext = localAdFile;
     } while (TextUtils.isEmpty(str));
     return h.a.fromString(str);
   }

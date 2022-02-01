@@ -1,14 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.AbsListView;
 
-public class poy
-  implements pqe
+class poy
+  extends qdb
 {
-  public poy(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  poy(pob parampob, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    tgc.a(this.a.a.getContext(), "viola测试页面", "https://kandian.qq.com/viola/bundle_home.js?v_bid=3256&statusColor=1", null);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 

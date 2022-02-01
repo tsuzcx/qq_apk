@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amyl
-  implements Comparator<QIMNotifyAddFriend>
+  implements View.OnClickListener
 {
   amyl(amyk paramamyk) {}
   
-  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
+  public void onClick(View paramView)
   {
-    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
+    amyk.a(this.a, true);
+    this.a.a();
+    amyk.a(this.a, -1, -1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

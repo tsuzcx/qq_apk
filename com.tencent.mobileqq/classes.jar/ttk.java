@@ -1,56 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class ttk
-  implements ViewBase.OnClickListener
+public class ttk
+  implements Animation.AnimationListener
 {
-  ttk(ttj paramttj) {}
+  public ttk(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i;
-    boolean bool;
-    if ((this.a.jdField_a_of_type_Tti.a instanceof ProteusItemData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-        bool = true;
-      }
-    }
-    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (twh.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
-    {
-      twh.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      return;
-      swu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bool = true;
-      i = 4;
-      continue;
-      bool = true;
-      i = 3;
-      continue;
-      i = 5;
-      bool = false;
-      continue;
-      bool = true;
-      i = 8;
-      continue;
-      bool = true;
-      i = 1000;
-      continue;
-      i = 2;
-      bool = true;
-    }
-    svz.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tti.a, bool, i);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ttk
  * JD-Core Version:    0.7.0.1
  */

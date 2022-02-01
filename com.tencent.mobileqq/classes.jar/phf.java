@@ -1,17 +1,49 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$LinkAdatper$ViewHolder;", "", "root", "Landroid/view/View;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/ui/CommentLinkView$LinkAdatper;Landroid/view/View;)V", "vDelete", "getVDelete", "()Landroid/view/View;", "vDescription", "Landroid/widget/TextView;", "getVDescription", "()Landroid/widget/TextView;", "vIcon", "Lcom/tencent/biz/pubaccount/readinjoy/proteus/view/impl/NativeReadInjoyImageView;", "getVIcon", "()Lcom/tencent/biz/pubaccount/readinjoy/proteus/view/impl/NativeReadInjoyImageView;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 final class phf
-  implements View.OnClickListener
 {
-  phf(String paramString, sjy paramsjy) {}
+  @NotNull
+  private final View jdField_a_of_type_AndroidViewView;
+  @NotNull
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  @NotNull
+  private final NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
   
-  public void onClick(View paramView)
+  public phf(View paramView)
   {
-    odq.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-    psf.b(this.jdField_a_of_type_Sjy.g);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramView = localObject.findViewById(2131368381);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.icon)");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)paramView);
+    paramView = localObject.findViewById(2131365538);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.description)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+    paramView = localObject.findViewById(2131365489);
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "root.findViewById(R.id.delete)");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  @NotNull
+  public final View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  @NotNull
+  public final TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  @NotNull
+  public final NativeReadInjoyImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
   }
 }
 

@@ -1,27 +1,11 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
 
 public class bhvb
-  extends npj
 {
-  public bhvb(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public static boolean a(Context paramContext)
   {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
-    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-    {
-      if (!paramOpenID.openID.equals(this.a.b))
-      {
-        this.a.d();
-        TroopAbilityPreVerificationFragment.a(this.a);
-        return;
-      }
-      this.a.c();
-      return;
-    }
-    this.a.c(amtj.a(2131714146));
+    return blvm.a(paramContext, VipWallpaperService.class.getName());
   }
 }
 

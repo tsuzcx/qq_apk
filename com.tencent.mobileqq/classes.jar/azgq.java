@@ -1,25 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer;
-
-public class azgq
-  implements Animator.AnimatorListener
+public final class azgq
 {
-  public azgq(VoicePanelSlideContainer paramVoicePanelSlideContainer) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    VoicePanelSlideContainer.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VoicePanelSlideContainer.a(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public long d;
 }
 
 

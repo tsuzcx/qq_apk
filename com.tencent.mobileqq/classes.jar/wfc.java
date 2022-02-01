@@ -1,42 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.content.Intent;
+import android.util.SparseIntArray;
+import mqq.app.MSFServlet;
 
 public class wfc
-  extends vqr
 {
-  public String a;
-  
-  public String a()
+  public static void a(SparseIntArray paramSparseIntArray)
   {
-    return vpl.a("StoryGroupSvc.get_dynamic_group_feedid_list");
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
-    try
+    int[][] arrayOfInt = wes.a;
+    int j = arrayOfInt.length;
+    int i = 0;
+    if (i < j)
     {
-      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new wfd(localRspGroupStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
+      int[] arrayOfInt1 = arrayOfInt[i];
+      int k = arrayOfInt1[0];
+      int m = arrayOfInt1[1];
+      if (k != -1) {
+        paramSparseIntArray.put(weg.a(k), m);
+      }
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        i += 1;
+        break;
+        paramSparseIntArray.put(m, m);
       }
     }
   }
   
-  protected byte[] a()
-  {
-    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
-    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGroupStoryFeedIdList.toByteArray();
-  }
+  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean) {}
 }
 
 

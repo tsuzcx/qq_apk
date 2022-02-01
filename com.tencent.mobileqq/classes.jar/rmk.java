@@ -1,22 +1,7 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class rmk
-  implements View.OnClickListener
-{
-  public rmk(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((AbsPublishColumnFragment.a(this.a) != null) && (AbsPublishColumnFragment.a(this.a).isShowing())) {
-      AbsPublishColumnFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rmk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

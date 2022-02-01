@@ -1,24 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager;
+import com.tencent.nativevue.NativeVueLogAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.utils.ViolaUtils;
 
-class ucv
-  implements Animation.AnimationListener
+public class ucv
+  implements NativeVueLogAdapter
 {
-  ucv(ucp paramucp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void logD(String paramString)
   {
-    this.a.a(ucp.a(this.a));
-    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeVueLoaderManager", 2, "[NativeVue Debug]: " + paramString);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void logE(String paramString)
+  {
+    QLog.e("NativeVueLoaderManager", 1, "[NativeVue Error]: " + paramString);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onNativeVueError(String paramString)
+  {
+    ViolaUtils.reportNVError(paramString, NativeVueLoaderManager.a().a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucv
  * JD-Core Version:    0.7.0.1
  */

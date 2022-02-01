@@ -1,53 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class bhrf
-  extends URLDrawableDownListener.Adapter
+class bhrf
+  implements Handler.Callback
 {
-  public bhrf(CardContainer paramCardContainer) {}
+  bhrf(bhrc parambhrc) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public boolean handleMessage(Message paramMessage)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
+    if ((paramMessage != null) && (paramMessage.obj != null)) {
+      bhrc.a().a(paramMessage.obj.toString());
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    CardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    return false;
   }
 }
 

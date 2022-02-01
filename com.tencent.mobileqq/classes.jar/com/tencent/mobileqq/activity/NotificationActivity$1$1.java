@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import adrz;
+import aejb;
 
 public class NotificationActivity$1$1
   implements Runnable
 {
-  public NotificationActivity$1$1(adrz paramadrz) {}
+  public NotificationActivity$1$1(aejb paramaejb) {}
   
   public void run()
   {
-    this.a.a.a();
+    this.a.a.c();
   }
 }
 

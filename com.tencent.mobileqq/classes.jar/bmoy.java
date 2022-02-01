@@ -1,16 +1,6 @@
 public class bmoy
 {
-  private float a;
-  
-  public float a()
-  {
-    return this.a;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.a = paramFloat;
-  }
+  public static final String a = bmoy.class.getName();
 }
 
 

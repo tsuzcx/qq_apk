@@ -1,125 +1,49 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Context;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import java.util.HashSet;
-import java.util.Set;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class ows
-  extends PopupWindow
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private oww jdField_a_of_type_Oww;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public ows(Activity paramActivity, ArticleInfo paramArticleInfo)
+  public ows(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    a(a());
-    setTouchable(true);
-    setFocusable(true);
-    setOutsideTouchable(false);
-    setInputMethodMode(1);
-    setBackgroundDrawable(new ColorDrawable(0));
-    a();
+    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
-  private void a(VafContext paramVafContext)
+  public int getCount()
   {
-    TemplateBean localTemplateBean = pcj.a(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
-    ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
-    setContentView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    paramVafContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
-    setHeight(paramVafContext.mLayoutHeight);
-    setWidth(paramVafContext.mLayoutWidth);
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public VafContext a()
+  public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (Object localObject = new owt(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; localObject = (owt)paramView.getTag())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qle();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
-      ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "comment_feeds");
+      ((owt)localObject).a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
+      localObject = ((owt)localObject).a();
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  }
-  
-  public void a()
-  {
-    setOnDismissListener(new owt(this));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    }
-  }
-  
-  protected void a(float paramFloat)
-  {
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
-    localLayoutParams.alpha = paramFloat;
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(View paramView)
-  {
-    if (isShowing())
-    {
-      dismiss();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-    a(0);
-    a(1.0F);
-    setAnimationStyle(2131755038);
-    showAtLocation(paramView, 17, 0, 0);
-    paramView = new pbg();
-    paramView.i().b("wording", "" + pcj.a());
-    oto.a("0X8009FE7", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramView);
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void a(Container paramContainer)
-  {
-    if (paramContainer == null) {
-      return;
-    }
-    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new owu(this));
-  }
-  
-  public void a(oww paramoww)
-  {
-    this.jdField_a_of_type_Oww = paramoww;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
 }
 

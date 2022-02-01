@@ -1,18 +1,62 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.Context;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.ArrayList;
 
-public abstract interface aofm
-  extends IInterface
+public class aofm
 {
-  public abstract void a();
+  private int a;
+  private int b;
   
-  public abstract void a(int paramInt);
+  public aofm(QQAppInterface paramQQAppInterface)
+  {
+    TroopManager.a(paramQQAppInterface);
+  }
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
+  {
+    String str;
+    if (paramEditText != null)
+    {
+      str = "";
+      if (paramInt != 0) {
+        break label167;
+      }
+      this.a = ((int)(Math.random() * TroopManager.c.size()));
+      if (TroopManager.c.size() != 1) {
+        break label125;
+      }
+      str = (String)TroopManager.c.get(0);
+      TroopManager.a(paramQQAppInterface);
+    }
+    label167:
+    for (;;)
+    {
+      Object localObject = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      localObject = ContactUtils.getTroopMemberName(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
+      paramEditText.setText(bgcz.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
+      paramEditText.append(str);
+      paramEditText.setSelection(paramEditText.getText().length());
+      return;
+      label125:
+      if (this.a < TroopManager.c.size())
+      {
+        str = (String)TroopManager.c.get(this.a);
+        TroopManager.c.remove(this.a);
+        continue;
+        if (this.b < TroopManager.d.size())
+        {
+          str = (String)TroopManager.d.get(this.b);
+          this.b = ((this.b + 1) % TroopManager.d.size());
+        }
+      }
+    }
+  }
 }
 
 

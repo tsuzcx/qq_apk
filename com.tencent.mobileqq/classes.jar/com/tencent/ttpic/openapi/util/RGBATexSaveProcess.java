@@ -39,7 +39,7 @@ public class RGBATexSaveProcess
   
   public void clear()
   {
-    this.mFilter.ClearGLSL();
+    this.mFilter.clearGLSL();
     this.mRenderFrame.clear();
     this.mData = null;
   }

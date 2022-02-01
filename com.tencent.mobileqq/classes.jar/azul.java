@@ -1,56 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class azul
-  extends Handler
+  extends RecyclerView.OnScrollListener
 {
-  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
+  public azul(StickyNoteShopLayout paramStickyNoteShopLayout) {}
   
-  private azul(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
-    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
-    do
+    if (paramInt == 0)
     {
-      return;
-      switch (paramMessage.what)
+      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
+      int i = 0;
+      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
       {
-      case 0: 
-      default: 
-        return;
-      case -1: 
-        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
-        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      case 1: 
-        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
-        return;
+        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
+        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
+        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
       }
-    } while (this.a.get() == null);
-    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
-      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
+      {
+        this.a.a(true);
+        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
+      }
     }
-    for (;;)
-    {
-      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
-      return;
-      sendEmptyMessage(5);
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
   }
 }
 

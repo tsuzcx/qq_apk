@@ -1,17 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class bfer
+  implements bfhh
 {
-  ajnr jdField_a_of_type_Ajnr;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
+  bfer(bfeq parambfeq) {}
   
-  protected bfer(bfeq parambfeq) {}
+  public void a(ArrayList<Entity> paramArrayList)
+  {
+    if (this.a.a != null) {
+      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
+    }
+  }
 }
 
 

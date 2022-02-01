@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
-import avwu;
-import awct;
-import bcef;
+import anza;
+import axcw;
+import axiv;
+import bdla;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
@@ -72,7 +72,7 @@ public class MultiMsgDownHandler
           if (localObject2 != null)
           {
             MultiMsg.Ipv4Info localIpv4Info = new MultiMsg.Ipv4Info();
-            localIpv4Info.uint32_ip_v4_addr.set(avwu.a(((ExcitingTransferHostInfo)localObject2).mstrIp));
+            localIpv4Info.uint32_ip_v4_addr.set(axcw.a(((ExcitingTransferHostInfo)localObject2).mstrIp));
             if (QLog.isDevelopLevel()) {
               QLog.i("MultiMsg_TAG_opt", 2, "Multimsg download handler ipv4:  " + ((ExcitingTransferHostInfo)localObject2).mstrIp);
             }
@@ -140,7 +140,7 @@ public class MultiMsgDownHandler
         }
       }
       paramReqBody.rpt_multimsg_applydown_req.add(localMultiMsgApplyDownReq);
-      if ((paramReqCommon.multiMsgType == 0) && (awct.b)) {
+      if ((paramReqCommon.multiMsgType == 0) && (axiv.b)) {
         paramReqBody.uint32_bu_type.set(2);
       }
     }
@@ -211,12 +211,12 @@ public class MultiMsgDownHandler
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     if (((FromServiceMsg)localObject1).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject1).getResultCode();
       if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localanza, localRichProtoResp.resps);
       }
     }
     List localList;
@@ -224,7 +224,7 @@ public class MultiMsgDownHandler
     {
       RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
       return;
-      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localanza, localRichProtoResp.resps);
       continue;
       try
       {
@@ -236,7 +236,7 @@ public class MultiMsgDownHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
       }
     }
     int i = 0;
@@ -269,7 +269,7 @@ public class MultiMsgDownHandler
         localObject1 = null;
       }
     }
-    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
     for (;;)
     {
       i += 1;
@@ -337,11 +337,11 @@ public class MultiMsgDownHandler
           j += 1;
         }
       }
-      setResult(0, 0, "", "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+      setResult(0, 0, "", "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
       continue;
       label899:
       if (j == 196) {
-        bcef.b(null, "CliOper", "", "", "0X8006627", "0X8006627", 0, 1, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "0X8006627", "0X8006627", 0, 1, 0, "", "", "", "");
       }
       if (GroupPicUpHandler.shouldRetryByRetCode(j))
       {
@@ -352,7 +352,7 @@ public class MultiMsgDownHandler
           return;
         }
       }
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
     }
   }
   

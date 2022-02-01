@@ -1,35 +1,73 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import java.util.List;
 
 public class aknx
-  extends aknz
+  extends akmj
 {
-  public aknx(Context paramContext)
+  private int a;
+  private int b;
+  private int c;
+  
+  public aknx(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_JavaLangString = amtj.a(2131696708);
-    this.b = this.jdField_a_of_type_JavaLangString;
+    super(paramNewPhotoListActivity);
   }
   
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  protected void b()
   {
-    if ((paramObject instanceof aknx))
+    if ((this.mPhotoCommonData != null) && (this.mPhotoCommonData.selectedPhotoList != null) && (this.mActivity != null))
     {
-      paramObject = (aknx)paramObject;
-      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
+      Intent localIntent = new Intent();
+      localIntent.putStringArrayListExtra("img_list", this.mPhotoCommonData.selectedPhotoList);
+      ((NewPhotoListActivity)this.mActivity).setResult(-1, localIntent);
+      ((NewPhotoListActivity)this.mActivity).finish();
+      AlbumUtil.anim(this.mActivity, false, false);
     }
-    for (parambdyi = paramObject;; parambdyi = paramObject)
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a = paramIntent.getIntExtra("min_width", 200);
+    this.b = paramIntent.getIntExtra("min_height", 200);
+    this.c = paramIntent.getIntExtra("max_gif_size", 8388608);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramIntent == null) {}
+    while ((paramInt2 != -1) || (paramInt1 != 100010) || (this.mPhotoCommonData.selectedPhotoList == null) || (this.mActivity == null)) {
+      return;
+    }
+    paramIntent = new Intent();
+    paramIntent.putStringArrayListExtra("img_list", this.mPhotoCommonData.selectedPhotoList);
+    ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
+    ((NewPhotoListActivity)this.mActivity).finish();
+  }
+  
+  public void updateAddData(List<LocalMediaInfo> paramList, int paramInt)
+  {
+    if (paramList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(bdyi.class.getSimpleName() + ".troop.special_msg.at_all_msg", 2, "updateMsgInfo");
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)paramList.get(i);
+        if ((!localLocalMediaInfo.path.endsWith(".gif")) && ((localLocalMediaInfo.mediaHeight < this.b) || (localLocalMediaInfo.mediaWidth < this.a))) {
+          paramList.remove(i);
+        }
+        if ((localLocalMediaInfo.path.endsWith(".gif")) && (localLocalMediaInfo.fileSize > this.c)) {
+          paramList.remove(i);
+        }
+        i -= 1;
       }
-      return parambdyi;
-      paramObject = new aknx(BaseApplication.getContext());
-      paramObject.a(paramMessageRecord.senderuin);
-      paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
     }
+    super.updateAddData(paramList, paramInt);
   }
 }
 

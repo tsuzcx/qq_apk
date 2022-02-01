@@ -1,9 +1,8 @@
-import dov.com.qq.im.capture.data.TemplateData;
-import java.util.List;
-
-public abstract interface bmsc
+public abstract interface bmsc<T>
 {
-  public abstract void a(List<TemplateData> paramList);
+  public abstract void a(int paramInt, String paramString, T paramT);
+  
+  public abstract void a(T paramT);
 }
 
 

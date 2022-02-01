@@ -1,17 +1,17 @@
-import android.app.Activity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-class asxu
-  implements aszj
+public class asxu
+  implements DialogInterface.OnClickListener
 {
-  asxu(asxp paramasxp, List paramList) {}
+  public asxu(FMActivity paramFMActivity) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aszk.d(asxp.a(this.jdField_a_of_type_Asxp).getString(2131692493));
-    bfby.a(asxp.a(this.jdField_a_of_type_Asxp), asxp.a(this.jdField_a_of_type_Asxp), this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
   }
 }
 

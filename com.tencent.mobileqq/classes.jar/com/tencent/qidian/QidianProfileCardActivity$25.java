@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
 import android.text.TextUtils;
-import aymg;
+import azrb;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.QZoneHelper;
@@ -22,7 +22,7 @@ class QidianProfileCardActivity$25
     localObject2 = QZoneHelper.UserInfo.getInstance();
     ((QZoneHelper.UserInfo)localObject2).qzone_uin = this.this$0.app.getCurrentAccountUin();
     ((QZoneHelper.UserInfo)localObject2).nickname = ((String)localObject1);
-    QZoneHelper.forwardToUserHome(this.this$0, (QZoneHelper.UserInfo)localObject2, this.this$0.jdField_a_of_type_Aymg.a.a, this.this$0.jdField_a_of_type_Aymg.a.g, -1, 5, this.this$0.jdField_a_of_type_Aufm, this.a, false);
+    QZoneHelper.forwardToUserHome(this.this$0, (QZoneHelper.UserInfo)localObject2, this.this$0.jdField_a_of_type_Azrb.a.a, this.this$0.jdField_a_of_type_Azrb.a.g, -1, 5, this.this$0.jdField_a_of_type_Avlg, this.a, false);
     QidianProfileCardActivity.b(this.this$0, false);
   }
 }

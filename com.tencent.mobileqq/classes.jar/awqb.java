@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
-public final class awqb
-  implements Parcelable.Creator<Comments.Comment>
+public class awqb
 {
-  public Comments.Comment a(Parcel paramParcel)
-  {
-    return new Comments.Comment(paramParcel);
-  }
-  
-  public Comments.Comment[] a(int paramInt)
-  {
-    return new Comments.Comment[paramInt];
-  }
+  public int a = 1;
+  public Bitmap a;
+  public int b = Color.parseColor("#FFFF0000");
+  public int c;
 }
 
 

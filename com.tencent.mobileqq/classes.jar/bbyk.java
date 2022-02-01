@@ -1,61 +1,76 @@
-import QC.UniSetRsp;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SearchHistory;
 
-class bbyk
-  implements BusinessObserver
+public class bbyk
+  extends bbzc
 {
-  bbyk(bbyj parambbyj, long paramLong) {}
+  private SearchHistory a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bbyk(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel())
+    this.a = paramSearchHistory;
+  }
+  
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public SearchHistory a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.extralInfo;
+  }
+  
+  public void a(String paramString) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    switch (this.a.type)
     {
-      QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "sendSwitchBubbleUnread onObserver update: ", Boolean.valueOf(paramBoolean), "type: ", Integer.valueOf(paramInt) });
-      if ((paramObject instanceof UniSetRsp)) {
-        QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "ret: ", Integer.valueOf(((UniSetRsp)paramObject).ret) });
-      }
-    }
-    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0))
-    {
-      paramObject = this.jdField_a_of_type_Bbyj;
-      if (bbyj.a(this.jdField_a_of_type_Bbyj).get() == 1)
+    default: 
+    case 3000: 
+    case 1: 
+    case 1006: 
+    case 56938: 
+    case 1008: 
+      do
       {
-        paramBoolean = true;
-        paramInt = bbyj.b(this.jdField_a_of_type_Bbyj).get();
-        if (bbyj.c(this.jdField_a_of_type_Bbyj).get() != 1) {
-          break label168;
-        }
-      }
-      label168:
-      for (bool = true;; bool = false)
-      {
-        paramObject.a(paramBoolean, paramInt, false, bool, this.jdField_a_of_type_Long);
-        return;
-        paramBoolean = false;
-        break;
-      }
+        return 1;
+        return 101;
+        return 4;
+        return 11;
+      } while (!TextUtils.equals(this.a.uin, AppConstants.NEW_KANDIAN_UIN));
+      return 110;
     }
-    paramObject = this.jdField_a_of_type_Bbyj;
-    if (bbyj.a(this.jdField_a_of_type_Bbyj).get() == 1)
-    {
-      paramBoolean = true;
-      paramInt = bbyj.b(this.jdField_a_of_type_Bbyj).get();
-      if (bbyj.c(this.jdField_a_of_type_Bbyj).get() != 1) {
-        break label237;
-      }
-    }
-    for (;;)
-    {
-      paramObject.a(false, paramBoolean, paramInt, bool, false, false);
-      return;
-      paramBoolean = false;
-      break;
-      label237:
-      bool = false;
-    }
+    return 111;
+  }
+  
+  public String c()
+  {
+    return this.a.displayName;
+  }
+  
+  public String d()
+  {
+    return this.a.uin;
   }
 }
 

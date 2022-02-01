@@ -1,18 +1,18 @@
 package com.tencent.gdtad.aditem;
 
-import abkp;
-import abkq;
+import acaf;
+import acag;
 import java.lang.ref.WeakReference;
 
 public class GdtAdLoader$2
   implements Runnable
 {
-  public GdtAdLoader$2(abkp paramabkp) {}
+  public GdtAdLoader$2(acaf paramacaf) {}
   
   public void run()
   {
-    if ((abkp.a(this.this$0) != null) && (abkp.a(this.this$0).get() != null)) {
-      ((abkq)abkp.a(this.this$0).get()).onResponse(this.this$0);
+    if ((acaf.a(this.this$0) != null) && (acaf.a(this.this$0).get() != null)) {
+      ((acag)acaf.a(this.this$0).get()).onResponse(this.this$0);
     }
   }
 }

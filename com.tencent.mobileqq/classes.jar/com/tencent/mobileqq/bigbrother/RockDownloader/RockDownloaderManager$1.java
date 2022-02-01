@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import apdd;
+import aqgh;
 import com.tencent.qphone.base.util.QLog;
 
 public class RockDownloaderManager$1
   implements Runnable
 {
-  public RockDownloaderManager$1(apdd paramapdd) {}
+  public RockDownloaderManager$1(aqgh paramaqgh) {}
   
   public void run()
   {
     try
     {
-      apdd.a(this.this$0);
+      aqgh.a(this.this$0);
       return;
     }
     catch (Exception localException)

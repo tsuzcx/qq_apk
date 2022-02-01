@@ -1,14 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-public class qhr
-  implements ViewBase.IBuilder
+public abstract interface qhr
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new qhq(paramVafContext);
-  }
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
+  
+  public abstract void a(List<qkk> paramList);
 }
 
 

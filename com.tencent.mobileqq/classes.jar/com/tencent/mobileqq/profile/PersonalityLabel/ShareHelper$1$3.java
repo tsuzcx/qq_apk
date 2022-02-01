@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import aylr;
-import ayls;
+import azqm;
+import azqn;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class ShareHelper$1$3
   implements Runnable
 {
-  public ShareHelper$1$3(ayls paramayls, long paramLong) {}
+  public ShareHelper$1$3(azqn paramazqn, long paramLong) {}
   
   public void run()
   {
-    String str = aylr.a(this.jdField_a_of_type_Ayls.a);
+    String str = azqm.a(this.jdField_a_of_type_Azqn.a);
     ThreadManager.getUIHandler().post(new ShareHelper.1.3.1(this, str));
   }
 }

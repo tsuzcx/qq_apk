@@ -1,117 +1,102 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import org.json.JSONObject;
-import tencent.kandian.im.apn.PushComponentExtPB.MsgBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtDataProcessor;", "", "()V", "convertAdditionalField", "Lorg/json/JSONObject;", "pushExtraData", "", "brief", "convertPacket", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtData;", "msgBody", "Ltencent/kandian/im/apn/PushComponentExtPB$MsgBody;", "generateActionData", "process0X135PBBuffer", "base64PbBuffer", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qoh
+public class qoh
+  implements qqa
 {
-  public static final qoi a = new qoi(null);
-  
-  @NonNull
-  private final qog a(PushComponentExtPB.MsgBody paramMsgBody)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    qog localqog = new qog(null, null, null, null, null, null, 63, null);
-    String str;
-    if (paramMsgBody.articleIds.has())
-    {
-      str = paramMsgBody.articleIds.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.articleIds.get()");
-      localqog.jdField_a_of_type_JavaLangString = str;
-    }
-    if (paramMsgBody.foldStatus.has())
-    {
-      str = paramMsgBody.foldStatus.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.foldStatus.get()");
-      localqog.b = str;
-    }
-    if (paramMsgBody.algoId.has())
-    {
-      str = paramMsgBody.algoId.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.algoId.get()");
-      localqog.c = str;
-    }
-    if (paramMsgBody.strategyId.has())
-    {
-      str = paramMsgBody.strategyId.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.strategyId.get()");
-      localqog.d = str;
-    }
-    if (paramMsgBody.subscripts.has())
-    {
-      str = paramMsgBody.subscripts.get();
-      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.subscripts.get()");
-      localqog.e = str;
-    }
-    if (paramMsgBody.pushExtData.has())
-    {
-      paramMsgBody = paramMsgBody.pushExtData.get().toByteArray();
-      Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.pushExtData.get().toByteArray()");
-      localqog.jdField_a_of_type_ArrayOfByte = paramMsgBody;
-    }
-    return localqog;
+    return null;
   }
   
-  @NotNull
-  public final JSONObject a(@NotNull String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "pushExtraData");
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mKdLiveInfo == null) || (paramBaseArticleInfo.mSubArtilceList == null) || (paramBaseArticleInfo.mSubArtilceList.get(0) == null) || (((ArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0)).mKdLiveInfo == null)) {
+      return new JSONObject();
+    }
     JSONObject localJSONObject = new JSONObject();
-    if (TextUtils.isEmpty((CharSequence)paramString)) {
-      return localJSONObject;
-    }
-    paramString = new JSONObject(paramString);
-    localJSONObject.put("id", paramString.optString("id", ""));
-    localJSONObject.put("push_ext_data", paramString);
-    localJSONObject.put("push_rowkey", paramString.optString("push_rowkey", ""));
-    localJSONObject.put("subscripts", paramString.optString("subscripts", ""));
-    localJSONObject.put("article_id", paramString.optString("article_id", ""));
-    return localJSONObject;
-  }
-  
-  @NotNull
-  public final JSONObject a(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "pushExtraData");
-    Intrinsics.checkParameterIsNotNull(paramString2, "brief");
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("brief", paramString2);
-    if (TextUtils.isEmpty((CharSequence)paramString1)) {
-      return localJSONObject;
-    }
-    localJSONObject.put("orangeWord", new JSONObject(paramString1).optString("orangeWord", ""));
-    return localJSONObject;
-  }
-  
-  @NonNull
-  @NotNull
-  public final qog a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "base64PbBuffer");
-    byte[] arrayOfByte = bfuc.decode(paramString, 0);
-    Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "Base64Util.decode(base64…ffer, Base64Util.DEFAULT)");
-    paramString = new PushComponentExtPB.MsgBody();
-    try
+    localJSONObject.put("style_ID", "ReadInJoy_live_double_video_cell");
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
+    rpk localrpk2 = paramBaseArticleInfo.mKdLiveInfo;
+    rpk localrpk1 = localBaseArticleInfo.mKdLiveInfo;
+    String str2 = " ";
+    String str1 = str2;
+    if (paramBaseArticleInfo.mSubscribeName != null)
     {
-      paramString.mergeFrom(arrayOfByte);
-      return a(paramString);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      str1 = str2;
+      if (paramBaseArticleInfo.mSubscribeName.length() > 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("RIJPushComponentExtDataProcessor", 2, "process0X135PBBuffer: failed. ", (Throwable)localException);
+        if (paramBaseArticleInfo.mSubscribeName.length() <= 10) {
+          break label555;
         }
+        str1 = paramBaseArticleInfo.mSubscribeName.substring(0, 10);
+        str1 = str1 + "...";
       }
     }
+    localJSONObject.put("left_user_name_text", str1);
+    localJSONObject.put("left_video_title_text", paramBaseArticleInfo.mTitle);
+    localJSONObject.put("left_video_bg_url", paramBaseArticleInfo.mFirstPagePicUrl);
+    localJSONObject.put("left_jump_url", paramBaseArticleInfo.mArticleContentUrl);
+    localJSONObject.put("left_live_status_bg_url", localrpk2.a);
+    if (!TextUtils.isEmpty(localrpk2.b)) {
+      localJSONObject.put("left_live_status_icon_url", localrpk2.b);
+    }
+    localJSONObject.put("left_live_status_text", localrpk2.c);
+    if (!TextUtils.isEmpty(localrpk2.d)) {
+      localJSONObject.put("left_live_hot_icon_url", localrpk2.d);
+    }
+    localJSONObject.put("left_live_hot_text", localrpk2.e);
+    str2 = " ";
+    str1 = str2;
+    if (localBaseArticleInfo.mSubscribeName != null)
+    {
+      str1 = str2;
+      if (localBaseArticleInfo.mSubscribeName.length() > 0)
+      {
+        if (localBaseArticleInfo.mSubscribeName.length() <= 10) {
+          break label563;
+        }
+        str1 = localBaseArticleInfo.mSubscribeName.substring(0, 10);
+      }
+    }
+    label555:
+    label563:
+    for (str1 = str1 + "...";; str1 = localBaseArticleInfo.mSubscribeName)
+    {
+      localJSONObject.put("right_user_name_text", str1);
+      localJSONObject.put("right_video_title_text", localBaseArticleInfo.mTitle);
+      localJSONObject.put("right_video_bg_url", localBaseArticleInfo.mFirstPagePicUrl);
+      localJSONObject.put("right_jump_url", localBaseArticleInfo.mArticleContentUrl);
+      localJSONObject.put("right_live_status_bg_url", localrpk1.a);
+      if (!TextUtils.isEmpty(localrpk1.b)) {
+        localJSONObject.put("right_live_status_icon_url", localrpk1.b);
+      }
+      localJSONObject.put("right_live_status_text", localrpk1.c);
+      if (!TextUtils.isEmpty(localrpk1.d)) {
+        localJSONObject.put("right_live_hot_icon_url", localrpk1.d);
+      }
+      localJSONObject.put("right_live_hot_text", localrpk1.e);
+      localJSONObject.put("left_jump_report_info", paramBaseArticleInfo.mReportCommonData);
+      localJSONObject.put("right_jump_report_info", localBaseArticleInfo.mReportCommonData);
+      QLog.d("LiveDoubleVideoProteusItem", 1, localJSONObject.toString());
+      return localJSONObject;
+      str1 = paramBaseArticleInfo.mSubscribeName;
+      break;
+    }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

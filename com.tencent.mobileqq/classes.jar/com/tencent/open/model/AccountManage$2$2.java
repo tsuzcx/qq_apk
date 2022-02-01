@@ -1,17 +1,17 @@
 package com.tencent.open.model;
 
 import android.os.Bundle;
-import biel;
+import bjpn;
 import mqq.observer.SSOAccountObserver;
 
 public class AccountManage$2$2
   implements Runnable
 {
-  public AccountManage$2$2(biel parambiel, String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle) {}
+  public AccountManage$2$2(bjpn parambjpn, String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Biel.a.onGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Bjpn.a.onGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

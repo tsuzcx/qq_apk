@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class tdi
-  implements View.OnClickListener
+  implements blem
 {
-  public tdi(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, tdl paramtdl) {}
+  public tdi(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Tdl);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void a() {}
 }
 
 

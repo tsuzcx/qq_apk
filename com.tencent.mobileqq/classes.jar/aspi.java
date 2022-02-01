@@ -1,21 +1,42 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.widget.XEditTextEx;
 
-final class aspi
-  implements View.OnClickListener
+public class aspi
+  implements asuq
 {
-  aspi(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public aspi(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b = "";
+    ExtendFriendProfileEditFragment.b(this.a, 0);
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
+      ((ExtendFriendEditFragment)localFragment).a = null;
+    }
+    ExtendFriendProfileEditFragment.a(this.a, null);
+    ExtendFriendProfileEditFragment.c(this.a);
+    if (ExtendFriendProfileEditFragment.b(this.a))
+    {
+      ExtendFriendProfileEditFragment.a(this.a, true);
+      ExtendFriendProfileEditFragment.b(this.a);
+    }
+    for (;;)
+    {
+      this.a.c = true;
+      ExtendFriendProfileEditFragment.b(this.a);
+      return;
+      ExtendFriendProfileEditFragment.a(this.a, false);
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))) {
+        ExtendFriendProfileEditFragment.a(this.a);
+      }
+    }
   }
 }
 

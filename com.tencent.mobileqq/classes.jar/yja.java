@@ -1,51 +1,95 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class yja
+class yja
+  extends ntd
 {
-  protected final int a;
-  protected Context a;
-  protected final String a;
-  protected yjb a;
-  protected boolean a;
-  protected boolean b;
+  WeakReference<yiz> b;
+  WeakReference<ImageView> c;
   
-  public yja(Context paramContext, String paramString, int paramInt)
+  public yja(yiz paramyiz, ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = new WeakReference(paramyiz);
+    this.c = new WeakReference(paramImageView);
   }
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public void a(yjb paramyjb)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Yjb = paramyjb;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
+    }
+    yiz localyiz = (yiz)this.b.get();
+    paramBundle = (ImageView)this.c.get();
+    if ((localyiz == null) || (paramBundle == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return null;
+        if ((paramInt == 0) && (paramArrayOfByte != null)) {
+          try
+          {
+            Object localObject = new qqstory_710_message.RspStoryMessageList();
+            ((qqstory_710_message.RspStoryMessageList)localObject).mergeFrom(paramArrayOfByte);
+            if ((((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.has()) && (((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.get() == 0) && (((qqstory_710_message.RspStoryMessageList)localObject).message_num.get() > 0) && (!((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().isEmpty()))
+            {
+              paramArrayOfByte = ((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().iterator();
+              for (;;)
+              {
+                if (paramArrayOfByte.hasNext())
+                {
+                  localObject = new ybe((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
+                  if (((ybe)localObject).d)
+                  {
+                    paramArrayOfByte = ((ybe)localObject).a;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
+                    }
+                    if (TextUtils.isEmpty(paramArrayOfByte)) {
+                      break;
+                    }
+                    wzk.a(paramBundle, wzk.b(paramArrayOfByte), true, (int)bhdz.a(yiz.b(localyiz), 33.0F));
+                    return null;
+                  }
+                }
+              }
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      paramArrayOfByte = bheg.b();
+      QQStoryContext.a();
+      paramArrayOfByte = FaceDrawable.getFaceDrawable(QQStoryContext.a(), 1, Long.toString(yiz.a(localyiz)), 3, paramArrayOfByte, paramArrayOfByte);
+      if (paramArrayOfByte != null) {
+        paramBundle.setImageDrawable(paramArrayOfByte);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
+    return null;
   }
 }
 

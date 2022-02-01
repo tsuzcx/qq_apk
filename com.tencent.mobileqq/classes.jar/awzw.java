@@ -1,51 +1,118 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awzw
-  implements View.OnClickListener
+  implements awzn
 {
-  public awzw(NearbyProfileDisplayTribePanel.13.1 param1) {}
+  public static String a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (TextUtils.isEmpty(awzr.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl))
+    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
+  }
+  
+  public awzw(QQAppInterface paramQQAppInterface) {}
+  
+  public static String a(String paramString, MessageRecord paramMessageRecord)
+  {
+    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
+    paramMessageRecord = new JSONObject();
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramMessageRecord.put("selfuin", paramString);
+      paramMessageRecord.put("uuid", str);
+      paramMessageRecord.put("msgType", 4);
+      paramMessageRecord.put("msgSubType", 10);
+      return paramMessageRecord.toString();
     }
-    Object localObject1 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a, QQBrowserActivity.class);
-    Object localObject2 = new StringBuilder().append(awzr.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl).append("&gender=");
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)
+    catch (JSONException paramString)
     {
-      i = 0;
-      label98:
-      ((Intent)localObject1).putExtra("url", i);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.startActivity((Intent)localObject1);
-      localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.app;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.e != 2) {
-        break label215;
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
     }
-    label215:
-    for (localObject1 = "1";; localObject1 = "2")
-    {
-      bcef.b((QQAppInterface)localObject2, "dc00899", "grp_lbs", "", "rank_list", "clk_icon", 0, 0, (String)localObject1, "", "", "");
-      break;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
-      break label98;
-    }
   }
+  
+  public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll((Collection)paramHashMap.get((String)localIterator.next()));
+    }
+    return localArrayList;
+  }
+  
+  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
+      try
+      {
+        paramMessageRecord = axcw.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
+        return paramMessageRecord;
+      }
+      catch (JSONException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+      }
+    }
+    return "";
+  }
+  
+  public axaa a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    axaa localaxaa = new axaa();
+    localaxaa.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
+    localaxaa.jdField_a_of_type_Boolean = true;
+    return localaxaa;
+  }
+  
+  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
+      try
+      {
+        paramMessageRecord = axcw.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
+        return paramMessageRecord;
+      }
+      catch (JSONException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+      }
+    }
+    return "";
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof ChatMessage)) {
+      return axiv.a((ChatMessage)paramMessageRecord);
+    }
+    return false;
+  }
+  
+  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return paramMsgBackupResEntity.msgType == 4;
+  }
+  
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 

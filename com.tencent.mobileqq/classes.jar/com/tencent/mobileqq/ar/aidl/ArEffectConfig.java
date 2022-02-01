@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aoez;
+import apib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new aoez();
+  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new apib();
   public int a;
   public ArrayList<String> a;
   public int b;

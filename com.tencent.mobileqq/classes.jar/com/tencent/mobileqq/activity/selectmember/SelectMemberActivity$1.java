@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import anca;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,12 +12,12 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    anca localanca = (anca)this.this$0.app.getBusinessHandler(20);
-    if (localanca != null) {}
+    aoep localaoep = (aoep)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    if (localaoep != null) {}
     try
     {
-      localanca.b(Long.valueOf(this.this$0.mGroupCode));
-      localanca.a(Long.valueOf(this.this$0.mGroupCode));
+      localaoep.b(Long.valueOf(this.this$0.mGroupCode));
+      localaoep.a(Long.valueOf(this.this$0.mGroupCode));
       return;
     }
     catch (NumberFormatException localNumberFormatException)

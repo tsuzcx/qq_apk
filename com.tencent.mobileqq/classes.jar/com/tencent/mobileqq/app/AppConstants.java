@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amtj;
 import android.os.Environment;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -71,6 +71,10 @@ public abstract interface AppConstants
   public static final long FANS_MSG_BOX_UIN_LONGVALUE = 1050L;
   public static final String FAVORITES_UIN;
   public static final long FAVORITES_UIN_LONGVALUE = 9988L;
+  public static final String FILE_ASSISTANT_UIN;
+  public static final long FILE_ASSISTANT_UIN_LONGVALUE = 3636666661L;
+  public static final String FILTER_MSG_UIN;
+  public static final long FILTER_MSG_UIN_LONGVALUE = 9911L;
   public static final String FM_EXTERNAL_SAVEFILE_UIN;
   public static final long FM_EXTERNAL_SAVEFILE_UIN_LONGVALUE = 9990L;
   public static final String FORGET_PWD_URL = "https://ti.qq.com/safe/forgetpw?source_id=2756";
@@ -456,6 +460,8 @@ public abstract interface AppConstants
   public static final String TAG_RAW_SHORT_VIDEO = "short_video";
   public static final String TEAM_WORK_WORD_UIN;
   public static final long TEAM_WORK_WORD_UIN_LONMGVALUE = 9951L;
+  public static final String TEMP_MSG_BOX_UIN;
+  public static final long TEMP_MSG_BOX_UIN_LONGVALUE = 9912L;
   public static final String TENCENT_DOCS_ASSISTANT_UIN;
   public static final long TENCENT_DOCS_ASSISTANT_UIN_LONGVALUE = 9930L;
   public static final long TIME_30_DAYS = 2592000000L;
@@ -507,6 +513,7 @@ public abstract interface AppConstants
     DATALINE_PC_UIN = String.valueOf(9993L);
     DATALINE_IPAD_UIN = String.valueOf(9962L);
     DATALINE_PRINTER_UIN = String.valueOf(9978L);
+    FILE_ASSISTANT_UIN = String.valueOf(3636666661L);
     TROOP_ASSISTANT_UIN = String.valueOf(9994L);
     RECOMMEND_CONTACT_UIN = String.valueOf(9995L);
     VOTE_MSG_UIN = String.valueOf(9996L);
@@ -582,6 +589,8 @@ public abstract interface AppConstants
     MINI_GAME_PUBLIC_ACCOUNT_UIN = String.valueOf(1983141935L);
     QQ_VIP_UIN = String.valueOf(2659464438L);
     AUDIO_ROOM_UIN = String.valueOf(3606676177L);
+    TEMP_MSG_BOX_UIN = String.valueOf(9912L);
+    FILTER_MSG_UIN = String.valueOf(9911L);
     SDCARD_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
     SDCARD_PATH = SDCARD_ROOT + "/Tencent/MobileQQ/";
     SDCARD_PATH_CHATRECORD = SDCARD_ROOT + "/Tencent/MobileQQ/ChatRecord/";
@@ -678,8 +687,8 @@ public abstract interface AppConstants
       SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD = VFSAssistantUtils.getSDKPrivatePath(SDCARD_PATH_PUBLIC_ACCOUNT + "preload/");
       SDCARD_PATH_PUBLIC_ACCOUNT_PRELOAD_IMAGE = VFSAssistantUtils.getSDKPrivatePath(SDCARD_PATH_PUBLIC_ACCOUNT + "preimg/");
       SDCARD_IMG_VIDEO = SDCARD_ROOT + "/DCIM/Video/";
-      SDCARD_IMG_VIDEO_GN9000L = SDCARD_ROOT + amtj.a(2131699761);
-      SDCARD_IMG_VIDEO_VIVO_X7 = SDCARD_ROOT + amtj.a(2131699762);
+      SDCARD_IMG_VIDEO_GN9000L = SDCARD_ROOT + anvx.a(2131700112);
+      SDCARD_IMG_VIDEO_VIVO_X7 = SDCARD_ROOT + anvx.a(2131700113);
       SDCARD_IMG_VIDEO_RUBBISH_MX040 = SDCARD_ROOT + "/Camera/Video/";
       SDCARD_PATH_PUBLIC_ACCOUNT_IMAGE_COLLECTION_PRELOAD = SDCARD_PATH_PUBLIC_ACCOUNT + "imagecollection/";
       PATH_NEWER_GUIDE_DIR_NAME = SDCARD_PATH + "/newerGuide/";

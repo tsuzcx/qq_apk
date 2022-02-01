@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas.wallpaper;
 
-import achl;
+import acxt;
 import android.app.WallpaperColors;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,84 +10,84 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.SurfaceHolder;
-import aqhx;
-import aqhy;
-import bgha;
-import bgio;
-import bgks;
-import bgkt;
-import bgku;
-import bgkw;
-import bgky;
-import bgkz;
-import bglb;
-import bgle;
-import bglf;
+import arlh;
+import arli;
+import bhpu;
+import bhrj;
+import bhvc;
+import bhvd;
+import bhve;
+import bhvg;
+import bhvi;
+import bhvj;
+import bhvl;
+import bhvo;
+import bhvp;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.reporter.ab.AbProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import kotlin.jvm.functions.Function0;
 
 public final class WallpaperHelper
 {
-  private bgks jdField_a_of_type_Bgks;
-  private bgky jdField_a_of_type_Bgky;
-  private bglb jdField_a_of_type_Bglb;
+  private bhvc jdField_a_of_type_Bhvc;
+  private bhvi jdField_a_of_type_Bhvi;
+  private bhvl jdField_a_of_type_Bhvl;
   private WallpaperHelper.ReTryRunnable jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable = new WallpaperHelper.ReTryRunnable(this);
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  private bgkw a(bgky parambgky, bgks parambgks)
+  private bhvg a(bhvi parambhvi, bhvc parambhvc)
   {
     this.jdField_a_of_type_JavaLangString = null;
-    Object localObject = new File(parambgks.b);
-    QLog.i("VipWallpaper", 1, "use " + parambgks.toString() + " imgFile exists = " + ((File)localObject).exists());
-    if (!parambgks.jdField_a_of_type_JavaLangString.equals("0"))
+    Object localObject = new File(parambhvc.b);
+    QLog.i("VipWallpaper", 1, "use " + parambhvc.toString() + " imgFile exists = " + ((File)localObject).exists());
+    if (!parambhvc.jdField_a_of_type_JavaLangString.equals("0"))
     {
-      localObject = new bgkt(this, parambgky, parambgks, (File)localObject);
-      if ((aqhy.c().a()) && (parambgky.a()))
+      localObject = new bhvd(this, parambhvi, parambhvc, (File)localObject);
+      if ((arli.c().a()) && (parambhvi.a()))
       {
-        parambgky = new File(parambgks.b.replace("aioImage", "aio_bg.mp4"));
-        if (parambgky.exists())
+        parambhvi = new File(parambhvc.b.replace("aioImage", "aio_bg.mp4"));
+        if (parambhvi.exists())
         {
-          parambgks = bgio.a().a(parambgky, true, (Function0)localObject);
+          parambhvc = bhrj.a().a(parambhvi, true, (Function0)localObject);
           this.jdField_a_of_type_JavaLangString = "wallpaper-video";
-          parambgky = parambgks;
-          if (parambgks != null) {}
+          parambhvi = parambhvc;
+          if (parambhvc != null) {}
         }
       }
     }
-    for (parambgky = (Drawable)((Function0)localObject).invoke();; parambgky = null)
+    for (parambhvi = (Drawable)((Function0)localObject).invoke();; parambhvi = null)
     {
-      if (parambgky == null) {
-        parambgky = VipWallpaperService.a();
+      if (parambhvi == null) {
+        parambhvi = VipWallpaperService.a();
       }
       for (;;)
       {
-        if (parambgky != null)
+        if (parambhvi != null)
         {
-          QLog.i("VipWallpaper", 1, "use " + parambgky.getClass().getName());
-          return new bgkz(parambgky);
+          QLog.i("VipWallpaper", 1, "use " + parambhvi.getClass().getName());
+          return new bhvj(parambhvi);
         }
         QLog.i("VipWallpaper", 1, "drawable error");
         return null;
       }
-      parambgks = null;
+      parambhvc = null;
       break;
     }
   }
   
-  private bgky a(SurfaceHolder paramSurfaceHolder)
+  private bhvi a(SurfaceHolder paramSurfaceHolder)
   {
     if (Build.VERSION.SDK_INT >= 26) {
-      return new bglf(paramSurfaceHolder);
+      return new bhvp(paramSurfaceHolder);
     }
-    return new bgle(paramSurfaceHolder);
+    return new bhvo(paramSurfaceHolder);
   }
   
-  private void a(bgks parambgks, boolean paramBoolean)
+  private void a(bhvc parambhvc, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Boolean) {}
     do
@@ -96,20 +96,20 @@ public final class WallpaperHelper
       {
         return;
         if (paramBoolean) {
-          this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.jdField_a_of_type_Bgks = null;
+          this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.jdField_a_of_type_Bhvc = null;
         }
-      } while (parambgks.equals(this.jdField_a_of_type_Bgks));
+      } while (parambhvc.equals(this.jdField_a_of_type_Bhvc));
       b();
-      bgkw localbgkw = a(this.jdField_a_of_type_Bgky, parambgks);
-      if (localbgkw != null)
+      bhvg localbhvg = a(this.jdField_a_of_type_Bhvi, parambhvc);
+      if (localbhvg != null)
       {
-        this.jdField_a_of_type_Bglb = new bglb(localbgkw, this.jdField_a_of_type_Bgky);
-        this.jdField_a_of_type_Bglb.a();
-        this.jdField_a_of_type_Bgks = parambgks;
+        this.jdField_a_of_type_Bhvl = new bhvl(localbhvg, this.jdField_a_of_type_Bhvi);
+        this.jdField_a_of_type_Bhvl.a();
+        this.jdField_a_of_type_Bhvc = parambhvc;
         return;
       }
-      this.jdField_a_of_type_Bgks = null;
-      this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.a(parambgks);
+      this.jdField_a_of_type_Bhvc = null;
+      this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.a(parambhvc);
     } while (!paramBoolean);
     ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable);
     ThreadManagerV2.getUIHandlerV2().postDelayed(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable, 3000L);
@@ -117,10 +117,10 @@ public final class WallpaperHelper
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bglb != null)
+    if (this.jdField_a_of_type_Bhvl != null)
     {
-      this.jdField_a_of_type_Bglb.d();
-      this.jdField_a_of_type_Bglb = null;
+      this.jdField_a_of_type_Bhvl.d();
+      this.jdField_a_of_type_Bhvl = null;
     }
   }
   
@@ -144,22 +144,22 @@ public final class WallpaperHelper
   public void a(Context paramContext, SurfaceHolder paramSurfaceHolder)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bgky = a(paramSurfaceHolder);
+    this.jdField_a_of_type_Bhvi = a(paramSurfaceHolder);
     paramContext = VipWallpaperService.a(paramContext);
-    paramContext.registerOnSharedPreferenceChangeListener(new bgku(this));
+    paramContext.registerOnSharedPreferenceChangeListener(new bhve(this));
     a(VipWallpaperService.a(paramContext), true);
   }
   
   public void a(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_Bglb != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Bglb.a(paramInt2, paramInt3);
+    if ((this.jdField_a_of_type_Bhvl != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Bhvl.a(paramInt2, paramInt3);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bglb == null) {
+    if (this.jdField_a_of_type_Bhvl == null) {
       if (paramBoolean)
       {
         ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable);
@@ -174,13 +174,13 @@ public final class WallpaperHelper
         if (!paramBoolean) {
           break;
         }
-        this.jdField_a_of_type_Bglb.b();
-      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!bgha.a()));
-      QAPM.setAbFactor("壁纸服务", this.jdField_a_of_type_JavaLangString, achl.class);
+        this.jdField_a_of_type_Bhvl.b();
+      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!bhpu.a()));
+      AbProxy.setAbFactor("壁纸服务", this.jdField_a_of_type_JavaLangString, acxt.class);
     } while (!QLog.isColorLevel());
     QLog.d("VipWallpaper", 2, "wallpaperType=" + this.jdField_a_of_type_JavaLangString);
     return;
-    this.jdField_a_of_type_Bglb.c();
+    this.jdField_a_of_type_Bhvl.c();
   }
 }
 

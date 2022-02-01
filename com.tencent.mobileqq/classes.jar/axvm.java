@@ -1,49 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
 public class axvm
-  implements BusinessObserver
+  implements URLDrawable.URLDrawableListener
 {
-  public void a(boolean paramBoolean) {}
+  public axvm(StoryPlayController paramStoryPlayController, ImageView paramImageView, axzv paramaxzv) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void b(boolean paramBoolean) {}
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, (Bundle)paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, (Bundle)paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, (Bundle)paramObject);
-      return;
-    case 5: 
-      a(paramBoolean);
-      return;
-    case 6: 
-      b(paramBoolean);
-      return;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (this.jdField_a_of_type_Axzv != null) {
+      this.jdField_a_of_type_Axzv.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
     }
-    b(paramBoolean, (Bundle)paramObject);
   }
 }
 

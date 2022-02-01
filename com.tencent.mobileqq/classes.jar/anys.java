@@ -1,32 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class anys
-  implements MediaPlayer.OnPreparedListener
+public class anys
 {
-  anys(anyn paramanyn) {}
+  public int a;
+  public FromServiceMsg a;
+  public ToServiceMsg a;
+  public Object a;
+  public boolean a;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public anys(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + anyn.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      anyn.b(this.a, true);
-      if (anyn.b(this.a))
-      {
-        this.a.a.start();
-        anyn.c(this.a, false);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public anys(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

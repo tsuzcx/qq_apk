@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
-import aukk;
-import aukm;
-import aukp;
+import avqf;
+import avqh;
+import avqk;
 import java.util.HashMap;
 
 public class IdentificationPoseReflect$5$1
   implements Runnable
 {
-  public IdentificationPoseReflect$5$1(aukm paramaukm, HashMap paramHashMap) {}
+  public IdentificationPoseReflect$5$1(avqh paramavqh, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aukm.a.a.a(this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Avqh.a.a.a(this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

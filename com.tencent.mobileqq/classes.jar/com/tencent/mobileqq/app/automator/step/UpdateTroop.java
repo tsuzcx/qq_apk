@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import anca;
-import andd;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
-import angr;
+import aoep;
+import aofu;
+import aojh;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -16,16 +18,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class UpdateTroop
   extends AsyncStep
 {
-  private andd a;
+  private aofu a;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Andd == null)
+    if (this.jdField_a_of_type_Aofu == null)
     {
-      this.jdField_a_of_type_Andd = new angr(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Andd);
+      this.jdField_a_of_type_Aofu = new aojh(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Aofu);
     }
-    ((anca)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(20)).b();
+    ((aoep)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b();
   }
   
   public int a()
@@ -38,17 +40,17 @@ public class UpdateTroop
       if (((localObject instanceof QQEntityManagerFactory)) && (((QQEntityManagerFactory)localObject).isUpdated())) {
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = false;
       }
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(52);
+      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(QQManagerFactory.TROOP_MANAGER);
       if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onCheckTroopList:Done");
         }
         long l2 = SystemClock.uptimeMillis();
-        anca localanca = (anca)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(20);
+        aoep localaoep = (aoep)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
         l2 = SystemClock.uptimeMillis() - l2;
         ((TroopManager)localObject).b();
-        localanca.notifyUI(2, true, null);
+        localaoep.notifyUI(2, true, null);
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(2));
         l1 = SystemClock.uptimeMillis() - l1 - l2;
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("UpdateTroop_withoutHandlerCost", Long.valueOf(l1));
@@ -74,10 +76,10 @@ public class UpdateTroop
   
   public void c()
   {
-    if (this.jdField_a_of_type_Andd != null)
+    if (this.jdField_a_of_type_Aofu != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Andd);
-      this.jdField_a_of_type_Andd = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aofu);
+      this.jdField_a_of_type_Aofu = null;
     }
   }
 }

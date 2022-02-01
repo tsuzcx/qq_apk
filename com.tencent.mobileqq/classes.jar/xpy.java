@@ -1,26 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
 
 public class xpy
-  extends QQUIEventReceiver<xpw, wdg>
 {
-  public xpy(@NonNull xpw paramxpw)
-  {
-    super(paramxpw);
-  }
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(@NonNull xpw paramxpw, @NonNull wdg paramwdg)
+  public xpy(String paramString)
   {
-    if ((paramwdg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwdg.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    paramxpw.b(paramwdg.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wdg.class;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

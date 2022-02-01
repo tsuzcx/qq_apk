@@ -1,21 +1,28 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.qphone.base.util.QLog;
 
-class bala
-  implements MessageQueue.IdleHandler
+public class bala
 {
-  bala(bakw parambakw) {}
+  private bakr a;
   
-  public boolean queueIdle()
+  public bala(bakr parambakr)
   {
-    AIOPictureData localAIOPictureData = this.a.a();
-    baji localbaji = new baji();
-    if ((localAIOPictureData != null) && (localbaji.a(localAIOPictureData, 4)) && (localbaji.a(localAIOPictureData, 4) == null))
-    {
-      this.a.f(true);
-      this.a.updateUI();
+    this.a = parambakr;
+  }
+  
+  public void a(balb parambalb)
+  {
+    if (parambalb == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceModel", 2, "executeCommand commandInformation is null");
+      }
     }
-    return false;
+    bajr localbajr;
+    do
+    {
+      return;
+      localbajr = new bakn(this.a).a(parambalb.a);
+    } while (localbajr == null);
+    new bako(localbajr).a(parambalb);
   }
 }
 

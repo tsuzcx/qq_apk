@@ -1,23 +1,8 @@
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 
-class yrp
-  implements View.OnTouchListener
+public abstract interface yrp<T extends yro>
 {
-  yrp(yro paramyro) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
-    }
-  }
+  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
 }
 
 

@@ -1,16 +1,20 @@
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
+
 public class avjs
+  implements awzd<T, List<FontBubble>>
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
+  public avjs(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public avjs(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public List<FontBubble> a(T paramT)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).app, paramT);
+    FontBubble localFontBubble = new FontBubble();
+    localFontBubble.viewType = 0;
+    paramT.add(localFontBubble);
+    return paramT;
   }
 }
 

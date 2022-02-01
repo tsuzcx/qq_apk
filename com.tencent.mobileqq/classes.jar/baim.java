@@ -1,66 +1,76 @@
-import android.app.Activity;
-import com.tencent.richmediabrowser.core.IMvpFactory;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BrowserBaseView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class baim
-  implements IMvpFactory
+  implements baii
 {
-  public BrowserBaseModel createModel(int paramInt, BasePresenter paramBasePresenter)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 100: 
-      return new baji();
-    case 101: 
-      return new bajj();
-    case 102: 
-      return new baje();
-    }
-    return new bajf();
-  }
+  private baik jdField_a_of_type_Baik;
+  private ArrayList<baii> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public BasePresenter createPresenter(int paramInt)
+  public baij a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    paramArrayOfByte = new baij(paramArrayOfByte, paramInt1, paramInt2);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (;;)
     {
-    default: 
-      return null;
-    case 100: 
-      return new bajq();
-    case 101: 
-      return new bajt();
-    case 102: 
-      return new bajm();
-    }
-    return new bajo();
-  }
-  
-  public BrowserBaseView createView(Activity paramActivity, int paramInt, BasePresenter paramBasePresenter)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+      Object localObject = paramArrayOfByte;
+      baii localbaii;
+      baij localbaij;
+      if (localIterator.hasNext())
       {
-        do
+        localbaii = (baii)localIterator.next();
+        if (this.jdField_a_of_type_Baik != null) {
+          this.jdField_a_of_type_Baik.a(localbaii, paramArrayOfByte);
+        }
+        localbaij = localbaii.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
+        localObject = localbaij;
+        if (localbaij != null)
         {
-          do
+          localObject = localbaij;
+          if (localbaij.jdField_a_of_type_ArrayOfByte != null)
           {
-            return null;
-          } while (!(paramBasePresenter instanceof bajq));
-          return new bakw(paramActivity, (bajq)paramBasePresenter);
-        } while (!(paramBasePresenter instanceof bajt));
-        return new balk(paramActivity, (bajt)paramBasePresenter);
-      } while (!(paramBasePresenter instanceof bajm));
-      return new bakl(paramActivity, (bajm)paramBasePresenter);
-    } while (!(paramBasePresenter instanceof bajo));
-    return new bakr(paramActivity, (bajo)paramBasePresenter);
+            if (localbaij.jdField_a_of_type_Int != 0) {
+              break label121;
+            }
+            localObject = localbaij;
+          }
+        }
+      }
+      return localObject;
+      label121:
+      paramArrayOfByte = localbaij;
+      if (this.jdField_a_of_type_Baik != null)
+      {
+        this.jdField_a_of_type_Baik.b(localbaii, localbaij);
+        paramArrayOfByte = localbaij;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((baii)localIterator.next()).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((baii)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void a(baii parambaii)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambaii);
+  }
+  
+  public void a(baik parambaik)
+  {
+    this.jdField_a_of_type_Baik = parambaik;
   }
 }
 

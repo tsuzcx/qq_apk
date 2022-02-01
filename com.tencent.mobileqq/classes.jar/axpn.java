@@ -1,53 +1,28 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class axpn
-  implements axpm
+class axpn
+  extends bbbk
 {
-  public void a(Matrix paramMatrix) {}
+  axpn(axpk paramaxpk, QQAppInterface paramQQAppInterface) {}
   
-  public void a(MotionEvent paramMotionEvent) {}
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void b(MotionEvent paramMotionEvent) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void c(MotionEvent paramMotionEvent) {}
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
+    }
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
+    {
+      this.jdField_a_of_type_Axpk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
+      aocj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
+      }
+    }
   }
 }
 

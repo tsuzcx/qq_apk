@@ -1,306 +1,68 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.mobileqq.troop.troopgame.TroopMemberGradeLevelView;
 import com.tencent.qphone.base.util.QLog;
 
 public class bgge
 {
-  private static Long a;
-  public static String a;
-  public static String b = "openMonth";
-  public static String c = "aid";
-  public static String d = "offerId";
-  public static String e = "serviceName";
-  public static String f = "serviceCode";
-  public static String g = "type";
-  public static String h = "callbacksn";
-  public static String i = "payUrl";
+  private BaseChatItemLayout jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
   
-  static
+  public bgge(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
   {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    jdField_a_of_type_JavaLangString = "sendUin";
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
   }
   
-  public static String a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1).append("|").append(paramInt1).append("|").append(paramInt2).append("|").append(paramInt3).append("|").append(paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("VasH5PayUtil", 2, "getOpenVipParam result = " + localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private static StringBuilder a(String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ("SVHHZLH".equals(paramString2))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null)) {}
+    do
     {
-      long l = 16781315L;
-      if (paramBoolean3) {
-        l = 0x1001003 | 0x80000;
-      }
-      localObject = "https://h5.qzone.qq.com/vip/payBigDialog/{openUin}/{openMonth}?_wv={wv}&_wwv=13&_proxy=1&aid={aid}".replace("{openUin}", "0");
-      if (paramInt > 0) {}
-      for (paramString2 = String.valueOf(paramInt);; paramString2 = "0")
+      do
       {
-        paramString1 = new StringBuilder(((String)localObject).replace("{openMonth}", paramString2).replace("{aid}", paramString1).replace("{wv}", String.valueOf(l)));
-        return paramString1;
-      }
-    }
-    Object localObject = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-    ((StringBuilder)localObject).append(paramString1);
-    if ("CJCLUBT".equals(paramString2)) {
-      if (paramBoolean2) {
-        ((StringBuilder)localObject).append("&type=!svip");
-      }
-    }
-    for (;;)
-    {
-      paramString1 = (String)localObject;
-      if (paramInt <= 0) {
-        break;
-      }
-      if (!paramBoolean1) {
-        break label198;
-      }
-      ((StringBuilder)localObject).append("&month=!" + paramInt);
-      return localObject;
-      ((StringBuilder)localObject).append("&type=svip");
-      continue;
-      if ("LTMCLUB".equals(paramString2)) {
-        ((StringBuilder)localObject).append("&type=vip");
-      }
-    }
-    label198:
-    ((StringBuilder)localObject).append("&month=" + paramInt);
-    return localObject;
-  }
-  
-  private static StringBuilder a(String paramString1, String paramString2, String paramString3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("&type=" + paramString2);
-    localStringBuilder.append("&month=" + paramString3);
-    return localStringBuilder;
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt)
-  {
-    Intent localIntent = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    if (!(paramActivity instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramActivity.startActivityForResult(localIntent, paramInt);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramInt1, paramBoolean1, paramBoolean2, false);
-      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramActivity.startActivityForResult(paramString2, paramInt2);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramString3);
-      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramActivity.startActivityForResult(paramString2, paramInt);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramContext.startActivity(localIntent);
-  }
-  
-  private static void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
-  {
-    StringBuilder localStringBuilder;
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      localStringBuilder = new StringBuilder();
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label189;
-      }
-      localStringBuilder.append("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-      if (!TextUtils.isEmpty(paramString1)) {
-        localStringBuilder.append(paramString1);
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        localStringBuilder.append("&type=" + paramString2);
-      }
-      if (!TextUtils.isEmpty(paramString3)) {
-        localStringBuilder.append("&sendServiceUin=" + paramString3);
-      }
-      if (paramInt > 0) {
-        localStringBuilder.append("&month=" + paramInt);
-      }
-      paramString1 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-      paramString1.putExtra("url", localStringBuilder.toString());
-      paramContext.startActivity(paramString1);
-      return;
-      label189:
-      localStringBuilder.append(paramString4);
-      if ((!TextUtils.isEmpty(paramString1)) && (!paramString4.contains("aid="))) {
-        if (paramString4.contains("?")) {
-          localStringBuilder.append("&aid=" + paramString1);
-        } else {
-          localStringBuilder.append("?aid=" + paramString1);
-        }
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, "");
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
-  {
-    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramString3, "", false, false);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramBoolean4);
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramString1.append("&disableChannel=" + paramString3);
-      }
-      if (paramBoolean3) {
-        paramString1.append("&disableMobile=1");
-      }
-      if (!TextUtils.isEmpty(paramString4))
+        return;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a;
+      } while (localObject == null);
+      if ((nty.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || ("1000000".equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin)) || ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForTroopConfess)))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("VasH5PayUtil", 2, "openH5Pay callback = " + paramString4);
+          QLog.d("TroopMemGradeLevelBuilder", 2, "handleMemberGradeLevel not need show");
         }
-        paramString1.append("&return_url=" + paramString4);
+        ((TroopMemberGradeLevelView)localObject).setVisibility(8);
+        return;
       }
-      paramString2 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramContext.startActivity(paramString2);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Bundle paramBundle)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (paramBundle == null)) {
+    } while (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 1);
+    if (!bhbt.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin))
+    {
+      ((TroopMemberGradeLevelView)localObject).setVisibility(8);
       return;
     }
-    paramQQAppInterface = paramBundle.getString(c);
-    String str1 = paramBundle.getString(g);
-    int j = paramBundle.getInt(b);
-    String str2 = paramBundle.getString(jdField_a_of_type_JavaLangString);
-    paramBundle.getString(d);
-    paramBundle.getString(e);
-    paramBundle.getString(f);
-    paramBundle.getString(h);
-    a(paramContext, paramQQAppInterface, str1, j, str2, paramBundle.getString(i));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    if ((!TextUtils.isEmpty(paramString5)) && ((paramString5.equals("svipdiyCardH5Pay")) || (paramString5.equals("vipdiyCardH5Pay"))))
+    Object localObject = (bggg)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag(2131364559);
+    if (localObject == null)
     {
-      a(paramContext, paramString1, paramString3, paramInt, false, false, "hfpay");
-      return;
-    }
-    a(paramContext, paramString1, paramString3, paramInt, false, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramContext, paramString1, paramString3, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public static void a(String paramString, Context paramContext)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param is empty");
-      return;
-    }
-    if (paramContext == null)
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam context is null");
-      return;
-    }
-    Object localObject = paramString.split("\\|");
-    if (localObject.length != 5)
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param not correct: " + localObject);
-      return;
-    }
-    paramString = localObject[0];
-    String str1 = localObject[1];
-    CharSequence localCharSequence = localObject[2];
-    String str2 = localObject[3];
-    localObject = localObject[4];
-    boolean bool1;
-    boolean bool2;
-    if (str1.equals("1"))
-    {
-      bool1 = true;
-      if (!str2.equals("1")) {
-        break label209;
-      }
-      bool2 = true;
+      localObject = new bggg(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setTag(2131364559, localObject);
     }
     for (;;)
     {
-      if (!TextUtils.isDigitsOnly(localCharSequence))
+      ((bggg)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+      ((bggg)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+      paramQQAppInterface = (bgfx)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAME_CARD_MANAGER);
+      if (paramQQAppInterface != null)
       {
-        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param openMonth not correct: " + localCharSequence);
+        paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, (bgfy)localObject);
         return;
-        if (str1.equals("0"))
-        {
-          bool1 = false;
-          break;
-        }
-        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardType not correct: " + str1);
-        return;
-        label209:
-        if (str2.equals("0"))
-        {
-          bool2 = false;
-        }
-        else
-        {
-          QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardMonth not correct: " + str2);
-          return;
-        }
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopMemGradeLevelBuilder", 2, "troopGameCardManager is null");
+      return;
     }
-    a(paramContext, (String)localObject, paramString, Integer.parseInt(localCharSequence), bool2, bool1);
   }
 }
 

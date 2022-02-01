@@ -1,29 +1,10 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import com.tencent.biz.qrcode.activity.ScannerResult;
 
-public class zmu
-  implements ViewPager.OnPageChangeListener
+public abstract interface zmu
 {
-  public zmu(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  public abstract void a(int paramInt);
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    
-    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
-    }
-    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
-      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
-    }
-  }
+  public abstract void a(ScannerResult paramScannerResult, int paramInt);
 }
 
 

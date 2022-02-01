@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import mqq.util.WeakReference;
@@ -29,7 +30,7 @@ class MiniAppSearchFragment$SearchEditTextWatcher
       localDataChangedListener.onTextChanged(paramCharSequence.toString());
     }
     if (!TextUtils.isEmpty(paramCharSequence)) {
-      ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).sendSearchAppRequest(paramCharSequence.toString());
+      ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).sendSearchAppRequest(paramCharSequence.toString());
     }
     while (localDataChangedListener == null) {
       return;

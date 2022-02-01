@@ -1,13 +1,13 @@
-import NS_KING_INTERFACE.stPostFeedDingReq;
-import NS_KING_INTERFACE.stPostFeedDingRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class uwr
-  extends urg<stPostFeedDingRsp>
+final class uwr
+  implements DialogInterface.OnClickListener
 {
-  public uwr(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super("PostFeedDing");
-    this.a = new stPostFeedDingReq(paramString, null, paramInt);
+    paramDialogInterface.dismiss();
+    bjna.a().a(uwq.a());
   }
 }
 

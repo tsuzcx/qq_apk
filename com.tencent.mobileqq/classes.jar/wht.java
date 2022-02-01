@@ -1,46 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import mqq.observer.BusinessObserver;
 
-public class wht
-  extends wje
+class wht
+  implements BusinessObserver
 {
-  private String a;
+  wht(whs paramwhs, long paramLong, whu paramwhu, String paramString, whv paramwhv) {}
   
-  public wht()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    a(false, true);
-  }
-  
-  public void a()
-  {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    TransFileController localTransFileController = localQQAppInterface.getTransFileController();
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mUpCallBack = new whu(this);
-    localTransferRequest.mLocalPath = this.a;
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mFileType = 196610;
-    localTransferRequest.mSelfUin = localQQAppInterface.getCurrentUin();
-    localTransferRequest.mPeerUin = "";
-    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localTransFileController.transferAsync(localTransferRequest);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
-      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    Object localObject;
+    whv localwhv;
+    String str;
+    if (paramBoolean)
+    {
+      localObject = paramBundle.getByteArray("data");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        localwhv = this.jdField_a_of_type_Whu.a((byte[])localObject);
+        if (localwhv != null)
+        {
+          paramInt = localwhv.jdField_a_of_type_Int;
+          str = localwhv.jdField_a_of_type_JavaLangString;
+          if (paramInt == 0)
+          {
+            localwhv.a();
+            ykq.a("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s success take time:%d data length=%d", this.jdField_a_of_type_JavaLangString, Long.valueOf(l), Integer.valueOf(localObject.length));
+            ykv.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { str, String.valueOf(l), ykv.a(BaseApplication.getContext()) });
+          }
+        }
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.a);
+    for (;;)
+    {
+      this.jdField_a_of_type_Whv.a(paramBoolean, paramBundle);
+      return;
+      localwhv.a(paramInt, str);
+      ykq.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), str, Long.valueOf(l), Integer.valueOf(localObject.length) });
+      break;
+      ykq.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:%s error. response is null", new Object[] { this.jdField_a_of_type_JavaLangString });
+      ykv.b("story_net", this.jdField_a_of_type_JavaLangString, 0, 940002, new String[] { "response is null", String.valueOf(l), ykv.a(BaseApplication.getContext()) });
+      continue;
+      this.jdField_a_of_type_Whv.a(-2, paramBundle);
+      ykq.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_Whu.a() + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      ykv.b("story_net", this.jdField_a_of_type_Whu.a(), 0, 940002, new String[] { "rsp data error", String.valueOf(l), ykv.a(BaseApplication.getContext()) });
+      continue;
+      paramInt = paramBundle.getInt("data_error_code");
+      localObject = paramBundle.getString("data_error_msg");
+      this.jdField_a_of_type_Whv.a(paramInt, paramBundle);
+      ykq.d("Q.qqstory.net:LegoNetworkRequester", "get cmd:" + this.jdField_a_of_type_JavaLangString + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      ykv.b("story_net", this.jdField_a_of_type_JavaLangString, 0, paramInt, new String[] { localObject, String.valueOf(l), ykv.a(BaseApplication.getContext()) });
+    }
   }
 }
 

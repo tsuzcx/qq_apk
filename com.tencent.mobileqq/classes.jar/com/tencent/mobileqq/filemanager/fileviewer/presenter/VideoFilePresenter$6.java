@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import asvt;
-import aswz;
+import auaa;
+import aubg;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
 public class VideoFilePresenter$6
   implements Runnable
 {
-  public VideoFilePresenter$6(asvt paramasvt) {}
+  public VideoFilePresenter$6(auaa paramauaa) {}
   
   public void run()
   {
-    if (asvt.a(this.this$0) != null) {
-      this.this$0.a.d(asvt.a(this.this$0).isPlaying());
+    if (auaa.a(this.this$0) != null) {
+      this.this$0.a.d(auaa.a(this.this$0).isPlaying());
     }
     for (;;)
     {
-      asvt.d(this.this$0);
+      auaa.d(this.this$0);
       return;
       this.this$0.a.d(false);
     }
@@ -24,7 +24,7 @@ public class VideoFilePresenter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.6
  * JD-Core Version:    0.7.0.1
  */

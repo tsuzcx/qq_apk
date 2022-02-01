@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aedy;
+import aevg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class RiskInfoItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<RiskInfoItem> CREATOR = new aedy();
+  public static final Parcelable.Creator<RiskInfoItem> CREATOR = new aevg();
   public int a;
   public String a;
   public int b;
@@ -48,7 +48,7 @@ public class RiskInfoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskInfoItem
  * JD-Core Version:    0.7.0.1
  */

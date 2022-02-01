@@ -1,109 +1,154 @@
-import android.text.TextUtils;
-import com.tencent.av.chatroom.ChatRoomInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.av.chatroom.chatroom_sso.Msg;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljv
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
-  private static long e;
-  public final long a;
-  public ChatRoomInfo a;
-  public final String a;
-  public final long b;
-  public long c;
-  public long d;
-  public int e;
-  private int f;
+  private static volatile ljv jdField_a_of_type_Ljv;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ljw[] jdField_a_of_type_ArrayOfLjw = new ljw[4];
   
-  static
+  public static ljv a()
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-    jdField_d_of_type_Int = 4;
-  }
-  
-  public ljv(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
-  {
-    this.jdField_b_of_type_Long = a();
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo = paramChatRoomInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_d_of_type_Long = paramLong3;
-    this.jdField_e_of_type_Int = paramInt;
-    if (this.jdField_e_of_type_Int == jdField_a_of_type_Int)
+    if (jdField_a_of_type_Ljv == null) {}
+    try
     {
-      paramChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      paramChatRoomInfo.jdField_b_of_type_Int += 1;
+      if (jdField_a_of_type_Ljv == null) {
+        jdField_a_of_type_Ljv = new ljv();
+      }
+      return jdField_a_of_type_Ljv;
     }
-    this.f = 0;
+    finally {}
   }
   
-  private static long a()
+  public int a()
   {
-    long l = jdField_e_of_type_Long + 1L;
-    jdField_e_of_type_Long = l;
-    return l;
+    return this.jdField_a_of_type_ArrayOfLjw.length;
   }
   
   public void a()
   {
-    this.f += 1;
-  }
-  
-  public void a(int paramInt)
-  {
-    ChatRoomInfo localChatRoomInfo;
-    if (paramInt == jdField_c_of_type_Int)
-    {
-      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      localChatRoomInfo.jdField_d_of_type_Int += 1;
-    }
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "clear.");
     for (;;)
     {
-      if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
-        this.jdField_e_of_type_Int = paramInt;
-      }
-      return;
-      if (paramInt == jdField_b_of_type_Int)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-        localChatRoomInfo.jdField_c_of_type_Int += 1;
+        if (i < this.jdField_a_of_type_ArrayOfLjw.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjw[i] != null)
+          {
+            this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_ArrayOfByte = null;
+            this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_Int = 0;
+          }
+        }
+        else {
+          return;
+        }
       }
+      i += 1;
     }
   }
   
-  public boolean a()
+  public void a(int paramInt1, int paramInt2)
   {
-    return this.jdField_d_of_type_Long != -9223372036854775808L;
-  }
-  
-  public boolean a(chatroom_sso.Msg paramMsg)
-  {
-    if (paramMsg == null) {}
-    while ((this.jdField_d_of_type_Long != paramMsg.msg_id.get()) || (this.jdField_a_of_type_Long != paramMsg.uin.get()) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get()))) {
-      return false;
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjw.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_Int == paramInt1)
+          {
+            this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_Int = paramInt2;
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
+          }
+          return;
+        }
+      }
+      finally {}
+      i += 1;
     }
-    return true;
   }
   
-  public boolean b()
+  public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    return (this.jdField_e_of_type_Int == jdField_b_of_type_Int) && (this.f < 3) && (this.jdField_d_of_type_Long == -9223372036854775808L);
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjw.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
+            this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_Int = paramInt;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
   }
   
-  public String toString()
+  public boolean a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(60);
-    localStringBuilder.append("ChatRoomMsg{senderUin: ").append(this.jdField_a_of_type_Long).append(", serverSeq: ").append(this.jdField_d_of_type_Long).append(", localSeq: ").append(this.jdField_b_of_type_Long).append(", state: ").append(this.jdField_e_of_type_Int).append("}");
-    return localStringBuilder.toString();
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      while (i < this.jdField_a_of_type_ArrayOfLjw.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfLjw[i] == null) {
+          this.jdField_a_of_type_ArrayOfLjw[i] = new ljw(this);
+        }
+        if ((this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
+          this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        }
+        this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_Int = 0;
+        i += 1;
+      }
+      return true;
+    }
+  }
+  
+  public byte[] a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLjw.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_Int == paramInt)
+          {
+            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLjw[i].jdField_a_of_type_ArrayOfByte;
+            return arrayOfByte;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
+          return null;
+        }
+      }
+      finally {}
+      i += 1;
+    }
   }
 }
 

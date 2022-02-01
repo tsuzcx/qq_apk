@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
 
 class qnc
-  implements bbzh
+  implements rgl
 {
-  qnc(qnb paramqnb, String paramString) {}
+  qnc(qmx paramqmx, qfw paramqfw, Container paramContainer, int paramInt) {}
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  public void a(int paramInt)
   {
-    QLog.i("PTSSoLoader", 1, "[onLoadResult], resCode = " + paramInt);
-    if (paramInt == 0)
-    {
-      paramLoadExtResult = bbyt.a(this.jdField_a_of_type_JavaLangString);
-      QLog.i("PTSSoLoader", 1, "[onLoadResult], load so succeeded, name = " + this.jdField_a_of_type_JavaLangString + ", currentVersion = " + paramLoadExtResult);
-      if (qnb.a(this.jdField_a_of_type_Qnb, paramLoadExtResult, "1.1.2")) {
-        qnb.a(this.jdField_a_of_type_Qnb, true);
-      }
+    Object localObject = this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((rrl)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
     }
-    qnb.a(this.jdField_a_of_type_Qnb, this.jdField_a_of_type_JavaLangString, paramInt, bbyt.a(this.jdField_a_of_type_JavaLangString));
+    localObject = (rrm)((rrl)localObject).a.get(paramInt);
+    qmx.a(this.jdField_a_of_type_Qmx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Qfw.a(), (int)((rrm)localObject).a, this.jdField_a_of_type_Qfw.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Qfw.a());
   }
 }
 

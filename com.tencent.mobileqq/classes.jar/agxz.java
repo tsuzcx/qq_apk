@@ -1,12 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxz
-  implements zop
+class agxz
+  extends ahaa
 {
-  public agxz(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  agxz(agvm paramagvm)
+  {
+    super(paramagvm, null);
+  }
   
-  public void callback(Bundle paramBundle) {}
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agqz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

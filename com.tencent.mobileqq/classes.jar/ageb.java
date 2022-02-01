@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
-final class ageb
-  implements aghk
+public class ageb
+  implements ageg
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public ageb(ColorPicker paramColorPicker, agee paramagee) {}
+  
+  public void a()
   {
-    if (auen.a(paramQQAppInterface).a()) {
-      return 78;
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Agee.a);
   }
 }
 

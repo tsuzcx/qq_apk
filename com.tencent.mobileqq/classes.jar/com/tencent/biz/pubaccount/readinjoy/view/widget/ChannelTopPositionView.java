@@ -6,13 +6,13 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import tbh;
+import top;
 
 public class ChannelTopPositionView
   extends RelativeLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tbh(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new top(this);
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   
   public ChannelTopPositionView(Context paramContext)
@@ -31,14 +31,14 @@ public class ChannelTopPositionView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559980, this, true);
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560024, this, true);
     b();
     c();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131372865));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373059));
   }
   
   private void c()
@@ -48,7 +48,7 @@ public class ChannelTopPositionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView
  * JD-Core Version:    0.7.0.1
  */

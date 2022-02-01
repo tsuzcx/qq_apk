@@ -1,55 +1,20 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
-import com.tencent.mobileqq.mini.out.CommonObserver;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.POI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
 
-public class avfo
-  extends CommonObserver
+class avfo
+  extends bhow
 {
-  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
+  avfo(avfn paramavfn) {}
+  
+  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
   {
-    avfn.a(this.a, false);
-    Object localObject1;
-    if (paramBoolean)
-    {
-      avfn.a(this.a);
-      localObject1 = paramLocationResp.poilist.get().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
-        localObject2 = LocationRoom.Venue.a(avfn.a(this.a).app.getCurrentUin(), (LBSShare.POI)localObject2);
-        avfn.a(this.a).add(localObject2);
-      }
-      localObject1 = this.a;
-      if (paramLocationResp.next.get() <= 0) {
-        break label198;
-      }
-    }
-    label198:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      avfn.b((avfn)localObject1, paramBoolean);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + avfn.a(this.a).size() + ", mHashMore = " + avfn.a(this.a));
-      }
-      if (avfn.a(this.a) != null) {
-        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
-      }
+    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
+    if (paramObject == null) {
       return;
     }
+    avfn.a(this.a, (ArrayList)paramObject);
+    avfn.a(this.a).a(avfn.a(this.a));
+    avfn.a(this.a).notifyDataSetChanged();
   }
-  
-  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
 }
 
 

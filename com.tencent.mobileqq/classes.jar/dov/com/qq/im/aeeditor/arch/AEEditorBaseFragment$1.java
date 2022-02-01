@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import bmbx;
+import bnrh;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import dov.com.qq.im.aeeditor.view.ProgressView;
 
@@ -19,7 +19,7 @@ class AEEditorBaseFragment$1
   {
     if (this.this$0.getActivity().isFinishing())
     {
-      bmbx.c("AEEditorBaseFragment", "Activity has been destroy.");
+      bnrh.c("AEEditorBaseFragment", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)

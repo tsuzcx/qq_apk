@@ -1,160 +1,41 @@
-import android.support.v4.util.ArrayMap;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.viola.vinstance.VInstanceAction.VInstanceEventListener;
-import com.tencent.viola.vinstance.VInstanceManager;
-import com.tencent.viola.vinstance.VInstanceManager.Builder;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public class tpj
+class tpj
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ArrayMap();
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
   
-  public static void a()
+  tpj(tpi paramtpi, View paramView, int paramInt1, int paramInt2)
   {
-    if (a()) {}
-    while (jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    Object localObject = rtb.a;
-    localObject = new VInstanceManager.Builder().application(BaseApplicationImpl.getApplication()).param(new JSONObject()).preconditionAdapter(new tpi((String)localObject)).serviceJsUrl((String)localObject).isBlockingMode(false);
-    VInstanceManager.getInstance().init((VInstanceManager.Builder)localObject);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  private void a(ViewGroup paramViewGroup, View paramView)
+  public boolean onPreDraw()
   {
-    VInstanceManager.getInstance().onScroll(paramViewGroup, paramView, 0, 0);
-  }
-  
-  public static void a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo == null) || (!paramBaseArticleInfo.isWormhole())) {}
-    while (a()) {
-      return;
+    this.jdField_a_of_type_Tpi.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a) + tpi.a(this.jdField_a_of_type_Tpi));
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Tpi.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Tpi.a) + tpi.b(this.jdField_a_of_type_Tpi));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    a();
-    b(paramBaseArticleInfo);
-  }
-  
-  private static boolean a()
-  {
-    return !pds.a();
-  }
-  
-  private static void b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (a()) {
-      return;
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a, this.jdField_a_of_type_Tpi.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a)));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a).setVisibility(4);
     }
-    VInstanceManager.getInstance().createVInstance(paramBaseArticleInfo.getWormholeId(), paramBaseArticleInfo.getWormholeData());
-  }
-  
-  public void a(View paramView)
-  {
-    if (a()) {
-      return;
-    }
-    VInstanceManager.getInstance().disappear(paramView);
-  }
-  
-  public void a(View paramView, ViewGroup paramViewGroup)
-  {
-    if (a()) {
-      return;
-    }
-    VInstanceManager.getInstance().willAppear(paramView, paramViewGroup);
-  }
-  
-  public void a(AbsListView paramAbsListView)
-  {
-    if (a()) {}
-    for (;;)
-    {
-      return;
-      if (paramAbsListView != null)
-      {
-        int j = paramAbsListView.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          View localView = paramAbsListView.getChildAt(i);
-          if ((localView instanceof WormholeView)) {
-            a(paramAbsListView, ((WormholeView)localView).a());
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (a()) {
-      return;
-    }
-    VInstanceManager.getInstance().removeVInstanceEventListener(paramString);
-  }
-  
-  public void a(String paramString, VInstanceAction.VInstanceEventListener paramVInstanceEventListener)
-  {
-    if (a()) {
-      return;
-    }
-    VInstanceManager.getInstance().addVInstanceEventListener(paramString, paramVInstanceEventListener);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (a()) {
-      return;
-    }
-    VInstanceManager.getInstance().createVInstance(paramString1, paramString2);
-  }
-  
-  public boolean a(BaseArticleInfo paramBaseArticleInfo, int paramInt, View paramView)
-  {
-    if (a()) {}
-    while (paramBaseArticleInfo == null) {
-      return false;
-    }
-    String str = paramBaseArticleInfo.getWormholeId();
-    this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(paramInt));
-    return VInstanceManager.getInstance().bindData(str, paramBaseArticleInfo.getWormholeData(), paramView);
-  }
-  
-  public void b()
-  {
-    if (a()) {
-      return;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("pageDestroy", 1);
-      VInstanceManager.getInstance().release(new ArrayList(this.jdField_a_of_type_JavaUtilMap.keySet()), localJSONObject.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpi.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpj
  * JD-Core Version:    0.7.0.1
  */

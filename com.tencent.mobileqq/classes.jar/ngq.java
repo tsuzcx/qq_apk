@@ -1,18 +1,87 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.avgame.ipc.UserInfo;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.avgame.ui.AVGameOverlayFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ngq
-  implements Parcelable.Creator<UserInfo>
+public class ngq
 {
-  public UserInfo a(Parcel paramParcel)
+  private BroadcastReceiver a;
+  public boolean a;
+  private boolean b = true;
+  
+  private ngq()
   {
-    return new UserInfo(paramParcel);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ngr(this);
   }
   
-  public UserInfo[] a(int paramInt)
+  public static ngq a()
   {
-    return new UserInfo[paramInt];
+    return ngs.a;
+  }
+  
+  private void c()
+  {
+    try
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
+      localIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
+      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public boolean a(int paramInt, String paramString, nfv paramnfv)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("GlobalExitRoomManagement", 2, "onRoomSelfExit: exitType:" + paramInt + "  exitRoomTip:" + paramString);
+    }
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      if ((paramInt != 0) && (!this.jdField_a_of_type_Boolean) && (this.b))
+      {
+        paramnfv = new Intent();
+        paramnfv.putExtra("type", 1);
+        paramnfv.putExtra("tip", paramString);
+        paramnfv.putExtra("public_fragment_window_feature", 1);
+        paramnfv.setFlags(268435456);
+        aeow.a(BaseApplicationImpl.getContext(), paramnfv, PublicTransFragmentActivity.class, AVGameOverlayFragment.class);
+      }
+      return bool;
+      paramInt = 0;
+      continue;
+      bool = true;
+      paramInt = 1;
+      continue;
+      paramInt = 1;
+      continue;
+      paramInt = 0;
+    }
+  }
+  
+  public void b()
+  {
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import azuu;
+import bbbc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,12 +16,12 @@ class ReceiptMessageReadMemberListContainerFragment$6
   {
     MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getMessageFacade().queryMsgItemByUniseq(ReceiptMessageReadMemberListContainerFragment.a(this.this$0).curFriendUin, ReceiptMessageReadMemberListContainerFragment.a(this.this$0).curType, ReceiptMessageReadMemberListContainerFragment.c(this.this$0));
     if (ReceiptMessageReadMemberListContainerFragment.a(this.this$0).size() == 0) {
-      azuu.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "3");
+      bbbc.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "3");
     }
     while (ReceiptMessageReadMemberListContainerFragment.b(this.this$0).size() <= 0) {
       return;
     }
-    azuu.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "4");
+    bbbc.a(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), localMessageRecord, "4");
   }
 }
 

@@ -1,8 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
-public abstract interface stl
+public class stl
+  extends stj
 {
-  public abstract void a(BaseData paramBaseData);
+  public stl(ssz paramssz)
+  {
+    super(paramssz);
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    this.a.a.t = ((Long)paramObject).intValue();
+  }
 }
 
 

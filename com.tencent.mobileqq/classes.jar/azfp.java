@@ -1,14 +1,19 @@
-public class azfp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$1$1"}, k=3, mv={1, 1, 16})
+final class azfp
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  azfp(azfo paramazfo) {}
   
-  public azfp(String paramString1, String paramString2, String paramString3)
+  public final void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.a.dismiss();
+    this.a.a().a(1040);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

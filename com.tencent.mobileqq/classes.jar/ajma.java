@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajma
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ajma(BindVerifyActivity paramBindVerifyActivity) {}
+  public ajma(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
-    }
-    BindVerifyActivity.a(this.a);
-    this.a.a(2131718142, 1000L, true);
+    aeou.a(PublicAccountFragment.a(this.a), null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,31 @@
-import java.util.Map;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class pfz
-  extends pse
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pfz
+  extends ntf
 {
-  pfz(pey parampey, String paramString, Map paramMap, boolean paramBoolean)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    super(paramString);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      this.a.a(paramArrayOfByte);
+      return;
+    }
+    this.a.a(paramInt, "Empty error message.");
   }
   
-  public void a(prx paramprx)
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
   {
-    paramprx.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
+    {
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
+    }
   }
 }
 

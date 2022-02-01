@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel;
 
-import bnmk;
+import bpcc;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
 
 class EditTextPanel$2$1$1
   implements Runnable
 {
-  EditTextPanel$2$1$1(EditTextPanel.2.1 param1, bnmk parambnmk) {}
+  EditTextPanel$2$1$1(EditTextPanel.2.1 param1, bpcc parambpcc) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bnmk.a(this.jdField_a_of_type_Bnmk.a.getProgress());
+    this.jdField_a_of_type_Bpcc.a(this.jdField_a_of_type_Bpcc.a.getProgress());
   }
 }
 

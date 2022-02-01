@@ -1,34 +1,14 @@
-public class azfm
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+
+class azfm
+  extends View.AccessibilityDelegate
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public float b;
-  public int b;
-  public String b;
-  public float c;
-  public String c;
-  public float d;
-  public float e;
+  azfm(azfk paramazfk) {}
   
-  public static String a(int paramInt)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "\"第一个\"";
-    case 2: 
-      return "\"第二个\"";
-    case 3: 
-      return "\"第三个\"";
-    case 4: 
-      return "\"第四个\"";
-    }
-    return "\"第五个\"";
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

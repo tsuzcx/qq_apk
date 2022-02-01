@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity;
 
+import bdxs;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+
 class AccountManageActivity$24
   implements Runnable
 {
@@ -7,7 +11,8 @@ class AccountManageActivity$24
   
   public void run()
   {
-    this.this$0.g();
+    bdxs localbdxs = (bdxs)this.this$0.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
+    this.this$0.runOnUiThread(new AccountManageActivity.24.1(this));
   }
 }
 

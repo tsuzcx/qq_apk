@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afad;
-import akgd;
+import afrp;
+import albw;
 import com.tencent.qphone.base.util.QLog;
 
 class CustomizeStrategyFactory$3
@@ -13,7 +13,7 @@ class CustomizeStrategyFactory$3
   {
     try
     {
-      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = akgd.a(this.a.jdField_a_of_type_Afad.a);
+      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = albw.a(this.a.jdField_a_of_type_Afrp.a);
       this.a.c = true;
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");
@@ -34,7 +34,7 @@ class CustomizeStrategyFactory$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.3
  * JD-Core Version:    0.7.0.1
  */

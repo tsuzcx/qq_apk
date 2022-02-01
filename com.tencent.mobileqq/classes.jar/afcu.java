@@ -1,10 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-final class afcu
-  implements DialogInterface.OnClickListener
+public class afcu
+  implements nyc
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public afcu(TroopInfoActivity paramTroopInfoActivity) {}
+  
+  public void a()
+  {
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.l();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+  }
 }
 
 

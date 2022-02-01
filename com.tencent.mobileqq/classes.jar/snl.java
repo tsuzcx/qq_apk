@@ -1,6 +1,30 @@
-public abstract interface snl
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
+class snl
+  extends suv
 {
-  public abstract void a(String paramString);
+  snl(smg paramsmg) {}
+  
+  public int a()
+  {
+    return 19;
+  }
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    smg.a(this.a, paramVideoInfo, paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
 }
 
 

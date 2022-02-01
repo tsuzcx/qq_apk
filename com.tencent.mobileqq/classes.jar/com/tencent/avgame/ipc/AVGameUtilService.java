@@ -10,14 +10,18 @@ import com.tencent.av.opengl.effects.AEFilterSupport;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.ui.AVGameActivity;
 import com.tencent.commonsdk.util.notification.NotificationFactory;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import mqq.app.AppService;
-import mzl;
-import naf;
-import ngg;
+import mqq.os.MqqHandler;
+import ndj;
+import nfc;
+import nfv;
+import nmy;
 
 public class AVGameUtilService
   extends AppService
@@ -31,7 +35,7 @@ public class AVGameUtilService
     if (QLog.isColorLevel()) {
       QLog.d("AVGameUtilService", 2, "startServiceForeground ");
     }
-    long l = mzl.a().a().a();
+    long l = nfc.a().a().a();
     if (l == 0L)
     {
       if (QLog.isColorLevel()) {
@@ -42,10 +46,10 @@ public class AVGameUtilService
     Object localObject = new Intent(this, AVGameActivity.class);
     ((Intent)localObject).putExtra("key_room_be_new_enter", false);
     ((Intent)localObject).putExtra("key_room_id", String.valueOf(l));
-    String str1 = getResources().getString(2131690354);
-    String str2 = getResources().getString(2131690353);
+    String str1 = getResources().getString(2131690394);
+    String str2 = getResources().getString(2131690393);
     localObject = PendingIntent.getActivity(getApplication(), 0, (Intent)localObject, 134217728);
-    startForeground(3000531, NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130840385).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setContentIntent((PendingIntent)localObject).build());
+    startForeground(3000531, NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130840422).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setContentIntent((PendingIntent)localObject).build());
   }
   
   public static void a(Context paramContext)
@@ -105,6 +109,28 @@ public class AVGameUtilService
     }
   }
   
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameUtilService", 2, "restartProcessForPk " + paramContext + " " + paramIntent);
+    }
+    if ((paramContext == null) || (paramIntent == null)) {}
+    do
+    {
+      return;
+      Intent localIntent = new Intent(paramContext, AVGameActivity.class);
+      if (paramIntent != null) {
+        localIntent.putExtras(paramIntent);
+      }
+      localIntent.putExtra("key_room_be_new_enter", false);
+      localIntent.putExtra("key_from_survival", true);
+      localIntent.putExtra("key_pk_restart_process", true);
+      ThreadManager.getUIHandler().postDelayed(new AVGameUtilService.1(paramContext, localIntent), 500L);
+      paramQQAppInterface = (ndj)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.notifyUI(13, true, null);
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     if (paramQQAppInterface == null) {
@@ -115,7 +141,7 @@ public class AVGameUtilService
     for (;;)
     {
       return;
-      if (ngg.a())
+      if (nmy.a())
       {
         if (paramBoolean) {
           a(paramQQAppInterface);
@@ -188,7 +214,7 @@ public class AVGameUtilService
   
   public static boolean a()
   {
-    if (ngg.a()) {
+    if (nmy.a()) {
       return true;
     }
     return jdField_a_of_type_Boolean;

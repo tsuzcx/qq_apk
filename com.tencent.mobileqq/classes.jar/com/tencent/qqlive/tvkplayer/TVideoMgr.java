@@ -114,7 +114,7 @@ public class TVideoMgr
     TVKLogUtil.setOnTVideoLogListener(paramOnTVideoLogListener);
   }
   
-  public void setUpc(String paramString)
+  public static void setUpc(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {

@@ -1,80 +1,27 @@
-import SummaryCardTaf.SSummaryCardRsp;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
 
 public class aynf
-  extends CardObserver
+  extends Handler
 {
-  public aynf(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
-  
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public aynf(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
-    }
-    String str = this.a.app.getCurrentAccountUin();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
-    localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.b();
-    if ((paramBoolean) && (paramObject != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
     {
-      if ((paramObject instanceof Card)) {
-        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, str), 5, null, true);
-      }
-      while (!(paramObject instanceof Pair)) {
-        return;
-      }
-      paramObject = (Pair)paramObject;
-      Message localMessage;
-      if (((Integer)paramObject.first).intValue() == 101107)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        this.a.d = 2;
-        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      }
-      for (;;)
-      {
-        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
-        StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
-        return;
-        if (((Integer)paramObject.first).intValue() == 101108)
-        {
-          this.a.jdField_a_of_type_Int = 2;
-          this.a.d = 5;
-          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-        }
-        else
-        {
-          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
-            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-        }
-      }
-    }
-    if (!paramBoolean) {}
-    for (paramObject = "-104";; paramObject = "-105")
-    {
-      localHashMap.put("param_FailCode", paramObject);
-      StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
-      paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-      return;
+      paramMessage = this.a;
+      paramMessage.f += 1;
+      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
     }
   }
 }

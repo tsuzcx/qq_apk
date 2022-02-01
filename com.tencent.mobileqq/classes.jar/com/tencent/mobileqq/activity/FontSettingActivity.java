@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adgj;
-import adgk;
-import adgl;
-import adgm;
-import adgn;
-import adgo;
-import adgp;
-import adgq;
-import adgr;
-import aezp;
-import amtj;
-import anaj;
+import adxp;
+import adxq;
+import adxr;
+import adxs;
+import adxt;
+import adxu;
+import adxv;
+import adxw;
+import adxx;
+import afrb;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
@@ -30,14 +28,17 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcef;
-import bfqb;
-import bjtg;
-import bjtk;
+import anvx;
+import aocy;
+import bdla;
+import bgys;
+import bles;
+import blew;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.FontSettingManager.FontLevel;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -57,13 +58,13 @@ import mqq.os.MqqHandler;
 
 public class FontSettingActivity
   extends BaseActivity
-  implements ViewPager.OnPageChangeListener, bjtg, FontSettingManager.FontLevel
+  implements ViewPager.OnPageChangeListener, bles, FontSettingManager.FontLevel
 {
   private float jdField_a_of_type_Float = 16.0F;
-  public adgn a;
-  adgo jdField_a_of_type_Adgo;
-  public adgp a;
-  adgr jdField_a_of_type_Adgr;
+  public adxt a;
+  adxu jdField_a_of_type_Adxu;
+  public adxv a;
+  adxx jdField_a_of_type_Adxx;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -76,11 +77,11 @@ public class FontSettingActivity
   RangeButtonView jdField_a_of_type_ComTencentWidgetRangeButtonView;
   public ArrayList<View> a;
   public List<ChatMessage> a;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adgm(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adxs(this);
   public boolean a;
   ViewGroup b;
   public ListView b;
-  public ArrayList<adgq> b;
+  public ArrayList<adxw> b;
   public boolean b;
   ViewGroup c;
   public boolean c;
@@ -134,59 +135,59 @@ public class FontSettingActivity
   
   private void a(View paramView)
   {
-    ((TextView)paramView.findViewById(2131369068)).setOnClickListener(new adgj(this));
-    ((TextView)paramView.findViewById(2131369115)).setText(amtj.a(2131703812));
-    ((TextView)paramView.findViewById(2131369068)).setMaxWidth(getResources().getDisplayMetrics().widthPixels);
+    ((TextView)paramView.findViewById(2131369231)).setOnClickListener(new adxp(this));
+    ((TextView)paramView.findViewById(2131369278)).setText(anvx.a(2131704163));
+    ((TextView)paramView.findViewById(2131369231)).setMaxWidth(getResources().getDisplayMetrics().widthPixels);
   }
   
   private void d()
   {
     e();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131367016));
-    this.jdField_a_of_type_Adgo = new adgo(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Adgo);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131367006));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131367134));
+    this.jdField_a_of_type_Adxu = new adxu(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Adxu);
+    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131367124));
     this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setCirclePadding((int)TypedValue.applyDimension(1, 10.0F, getResources().getDisplayMetrics()));
     this.jdField_a_of_type_ComTencentWidgetListView = a();
     g();
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentWidgetListView);
-    this.jdField_a_of_type_Adgn = new adgn(this);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Adgn);
-    this.jdField_a_of_type_Adgp = new adgp(this, this.app, this.jdField_a_of_type_Adgn, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null);
+    this.jdField_a_of_type_Adxt = new adxt(this);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Adxt);
+    this.jdField_a_of_type_Adxv = new adxv(this, this.app, this.jdField_a_of_type_Adxt, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(this, this.app);
-    this.jdField_a_of_type_Adgp.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+    this.jdField_a_of_type_Adxv.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
     h();
     this.jdField_b_of_type_ComTencentWidgetListView = a();
     b();
-    this.jdField_a_of_type_Adgr = new adgr(this, this, this.app, this.jdField_b_of_type_ComTencentWidgetListView);
+    this.jdField_a_of_type_Adxx = new adxx(this, this, this.app, this.jdField_b_of_type_ComTencentWidgetListView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ComTencentWidgetListView);
-    this.jdField_b_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Adgr);
-    this.jdField_a_of_type_Adgo.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView = ((RangeButtonView)findViewById(2131367009));
+    this.jdField_b_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Adxx);
+    this.jdField_a_of_type_Adxu.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentWidgetRangeButtonView = ((RangeButtonView)findViewById(2131367127));
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new bjtk(amtj.a(2131703820), TypedValue.applyDimension(1, 13.92F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new bjtk("", TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new bjtk(amtj.a(2131703819), TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new bjtk("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new bjtk(amtj.a(2131703818), TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new blew(anvx.a(2131704171), TypedValue.applyDimension(1, 13.92F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new blew("", TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new blew(anvx.a(2131704170), TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new blew("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new blew(anvx.a(2131704169), TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics)));
     this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setTitleData(localArrayList);
     this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setOnChangerListener(this);
     this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setThumbPosition(a());
     localArrayList = new ArrayList();
-    localArrayList.add(getString(2131691006));
-    localArrayList.add(getString(2131691007));
-    localArrayList.add(getString(2131691008));
-    localArrayList.add(getString(2131691009));
-    localArrayList.add(getString(2131691010));
+    localArrayList.add(getString(2131691091));
+    localArrayList.add(getString(2131691092));
+    localArrayList.add(getString(2131691093));
+    localArrayList.add(getString(2131691094));
+    localArrayList.add(getString(2131691095));
     this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setContentDescList(localArrayList);
   }
   
   private void e()
   {
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378747));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131379040));
     this.jdField_a_of_type_AndroidViewViewGroup = new NavBarCommon(this);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)getResources().getDimension(2131299076));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)getResources().getDimension(2131299080));
     a(this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_b_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup, 0, localLayoutParams);
   }
@@ -206,7 +207,7 @@ public class FontSettingActivity
       localMessageForText.frienduin = "2720152058";
       localMessageForText.senderuin = "2720152058";
       localMessageForText.issend = 1000;
-      Object localObject1 = amtj.a(2131703821);
+      Object localObject1 = anvx.a(2131704172);
       localMessageForText.msg = ((String)localObject1);
       localMessageForText.sb = ((CharSequence)localObject1);
       localObject1 = new MessageForText();
@@ -215,15 +216,15 @@ public class FontSettingActivity
       ((MessageForText)localObject1).selfuin = ((String)localObject2);
       ((MessageForText)localObject1).senderuin = ((String)localObject2);
       ((MessageForText)localObject1).issend = 1;
-      localObject2 = amtj.a(2131703811);
+      localObject2 = anvx.a(2131704162);
       ((MessageForText)localObject1).msg = ((String)localObject2);
       ((MessageForText)localObject1).sb = ((CharSequence)localObject2);
-      ((MessageForText)localObject1).vipBubbleID = ((anaj)this.app.getBusinessHandler(13)).b();
+      ((MessageForText)localObject1).vipBubbleID = ((aocy)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b();
       localObject2 = new MessageForText();
       ((MessageForText)localObject2).frienduin = "2720152058";
       ((MessageForText)localObject2).senderuin = "2720152058";
       ((MessageForText)localObject2).issend = 1000;
-      String str = amtj.a(2131703814);
+      String str = anvx.a(2131704165);
       ((MessageForText)localObject2).msg = str;
       ((MessageForText)localObject2).sb = str;
       this.jdField_a_of_type_JavaUtilList.add(localMessageForText);
@@ -232,8 +233,8 @@ public class FontSettingActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType = 0;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.textSizeForTextItem = ChatTextSizeSettingActivity.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg = new aezp();
-      if (aezp.a(this, this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, true, 7, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg = new afrb();
+      if (afrb.a(this, this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, true, 7, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg)) {
         this.jdField_a_of_type_ComTencentWidgetListView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg.a);
       }
     }
@@ -241,16 +242,16 @@ public class FontSettingActivity
   
   private void h()
   {
-    adgq localadgq1 = new adgq(this, 0, amtj.a(2131698640), amtj.a(2131703815), "3:28PM", "2720152058", 0);
-    adgq localadgq2 = new adgq(this, 2130840406, amtj.a(2131690589), amtj.a(2131703810), "3:28PM", AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
-    adgq localadgq3 = new adgq(this, 2130840408, amtj.a(2131689472), amtj.a(2131703816), "3:28PM", AppConstants.TROOP_ASSISTANT_UIN, 5000);
-    adgq localadgq4 = new adgq(this, 2130844119, amtj.a(2131694020), amtj.a(2131703817), "3:28PM", AppConstants.DATALINE_PC_UIN, 6000);
-    adgq localadgq5 = new adgq(this, 0, amtj.a(2131703822), amtj.a(2131703813), "3:28PM", "2632129500", 0);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localadgq1);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localadgq2);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localadgq3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localadgq4);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localadgq5);
+    adxw localadxw1 = new adxw(this, 0, anvx.a(2131698937), anvx.a(2131704166), "3:28PM", "2720152058", 0);
+    adxw localadxw2 = new adxw(this, 2130840443, anvx.a(2131690666), anvx.a(2131704161), "3:28PM", AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
+    adxw localadxw3 = new adxw(this, 2130840445, anvx.a(2131689472), anvx.a(2131704167), "3:28PM", AppConstants.TROOP_ASSISTANT_UIN, 5000);
+    adxw localadxw4 = new adxw(this, 2130844186, anvx.a(2131694211), anvx.a(2131704168), "3:28PM", AppConstants.DATALINE_PC_UIN, 6000);
+    adxw localadxw5 = new adxw(this, 0, anvx.a(2131704173), anvx.a(2131704164), "3:28PM", "2632129500", 0);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localadxw1);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localadxw2);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localadxw3);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localadxw4);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localadxw5);
   }
   
   private void i()
@@ -298,7 +299,7 @@ public class FontSettingActivity
     }
     for (;;)
     {
-      bcef.b(this.app, "CliOper", "", "", "0X8004FA2", "0X8004FA2", 0, 0, "" + (int)this.jdField_a_of_type_Float, "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X8004FA2", "0X8004FA2", 0, 0, "" + (int)this.jdField_a_of_type_Float, "", "", "");
       if (!FontSettingManager.setCustomDensity(this, this.jdField_a_of_type_Float, false)) {
         bool = true;
       }
@@ -306,8 +307,8 @@ public class FontSettingActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.textSizeForTextItem = ChatTextSizeSettingActivity.a(this);
       this.jdField_b_of_type_ComTencentWidgetListView.removeAllViewsInLayout();
       this.jdField_a_of_type_ComTencentWidgetListView.removeAllViewsInLayout();
-      this.jdField_a_of_type_Adgn.notifyDataSetChanged();
-      this.jdField_a_of_type_Adgr.notifyDataSetChanged();
+      this.jdField_a_of_type_Adxt.notifyDataSetChanged();
+      this.jdField_a_of_type_Adxx.notifyDataSetChanged();
       f();
       return;
       this.jdField_a_of_type_Float = 13.92F;
@@ -332,7 +333,7 @@ public class FontSettingActivity
         return;
         if (!ThemeBackground.getThemeBackgroundEnable())
         {
-          this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838892);
+          this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838912);
           this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
           return;
         }
@@ -342,7 +343,7 @@ public class FontSettingActivity
       } while (!ThemeBackground.getThemeBackground(this.jdField_b_of_type_ComTencentWidgetListView.getContext(), "theme_bg_message_path_png", this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground));
       if (("null".equals(this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.path)) || (this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.img == null))
       {
-        this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838892);
+        this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838912);
         this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
         return;
       }
@@ -358,7 +359,7 @@ public class FontSettingActivity
     do
     {
       return;
-      this.jdField_a_of_type_AndroidAppDialog = bfqb.a(this, 2131692436, 2131692434, 2131692433, 2131692435, new adgk(this), new adgl(this));
+      this.jdField_a_of_type_AndroidAppDialog = bgys.a(this, 2131692538, 2131692536, 2131692535, 2131692537, new adxq(this), new adxr(this));
     } while (isFinishing());
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -381,8 +382,8 @@ public class FontSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561100);
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376679));
+    super.setContentView(2131561161);
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376947));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       this.jdField_c_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
@@ -396,7 +397,7 @@ public class FontSettingActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Adgr.a();
+    this.jdField_a_of_type_Adxx.a();
     this.app.removeHandler(FontSettingActivity.class);
     if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
@@ -429,7 +430,7 @@ public class FontSettingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity
  * JD-Core Version:    0.7.0.1
  */

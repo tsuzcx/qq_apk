@@ -1,61 +1,28 @@
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azat
-  implements bjoe
+  implements View.OnClickListener
 {
-  public azat(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString, bjnw parambjnw) {}
+  public azat(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    azbq.a(AutoReplyEditActivity.a(this.a), true);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
+    if (AutoReplyEditActivity.a(this.a) != null) {
+      localIntent.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.e();
-      return;
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
-      {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app.getBusinessHandler(1)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app.getHandler(ChatActivity.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app.getHandler(ChatSettingActivity.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
-          this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
-        if (bftf.b(this.jdField_a_of_type_JavaLangString)) {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.finish();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.a(2131691348, 1);
-        continue;
-        if (bftf.b(this.jdField_a_of_type_JavaLangString)) {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    this.a.getActivity().setResult(325, localIntent);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

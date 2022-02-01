@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.apollo.store;
 
-import alnr;
+import amme;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -20,9 +21,9 @@ class ApolloBoxEnterView$2
         return;
         localObject = (QQAppInterface)ApolloBoxEnterView.a(this.this$0).get();
       } while ((ApolloBoxEnterView.a(this.this$0) == null) || (localObject == null));
-      Object localObject = (alnr)((QQAppInterface)localObject).getManager(153);
+      Object localObject = (amme)((QQAppInterface)localObject).getManager(QQManagerFactory.APOLLO_MANAGER);
       ApolloBoxEnterView.a(this.this$0).hadStolen = 1;
-      ((alnr)localObject).a(ApolloBoxEnterView.a(this.this$0));
+      ((amme)localObject).a(ApolloBoxEnterView.a(this.this$0));
     } while (!QLog.isColorLevel());
     QLog.d("ApolloBoxEnterView", 2, "updateApolloPandora");
   }

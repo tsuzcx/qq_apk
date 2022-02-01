@@ -3,13 +3,13 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnxn;
+import bpnf;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bnxn();
+  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bpnf();
   public int a;
   public String a;
   public ArrayList<String> a;

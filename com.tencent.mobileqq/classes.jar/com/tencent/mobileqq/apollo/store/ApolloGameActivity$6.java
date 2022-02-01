@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import amtj;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -9,7 +9,7 @@ class ApolloGameActivity$6
 {
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131699515), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131699866), 1).a();
   }
 }
 

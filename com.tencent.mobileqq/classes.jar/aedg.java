@@ -1,32 +1,32 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aedg
-  extends MqqHandler
+  implements TextWatcher
 {
-  public aedg(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public aedg(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (paramMessage.what)
-    {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
+    int i;
+    if ((paramEditable != null) && (paramEditable.toString().getBytes().length > 24)) {
+      i = 1;
     }
-    int i = 0;
-    while (i < 6)
+    for (;;)
     {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
+      if ((i >= paramEditable.length()) || (paramEditable.toString().substring(0, i).getBytes().length > 24))
+      {
+        paramEditable.replace(0, paramEditable.length(), paramEditable.toString().substring(0, i - 1));
+        return;
+      }
       i += 1;
     }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

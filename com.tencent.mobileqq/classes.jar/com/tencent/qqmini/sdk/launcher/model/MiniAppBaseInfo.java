@@ -36,7 +36,9 @@ public class MiniAppBaseInfo
   public static final String TAG = "MiniAppInfo";
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
+  public String amsAdInfo;
   public ApkgBaseInfo apkgInfo;
+  public String apngUrl;
   public String appId;
   public AppMode appMode;
   @Deprecated
@@ -56,6 +58,9 @@ public class MiniAppBaseInfo
   public FirstPageInfo firstPage;
   public String firstPath;
   public String iconUrl;
+  public String ide_extraAppid;
+  public String ide_extraData;
+  public String ide_scene;
   public String link;
   public int linkType;
   public String name;
@@ -72,6 +77,7 @@ public class MiniAppBaseInfo
   public List<String> socketDomainList;
   public int startMode;
   public List<SubPkgInfo> subpkgs;
+  public int tianshuAdId;
   public long timestamp;
   public List<String> udpIpList = new ArrayList();
   public List<String> uploadFileDomainList;
@@ -132,6 +138,12 @@ public class MiniAppBaseInfo
     {
       this.enableLoadingAd = bool;
       this.prepayId = paramParcel.readString();
+      this.amsAdInfo = paramParcel.readString();
+      this.apngUrl = paramParcel.readString();
+      this.ide_scene = paramParcel.readString();
+      this.ide_extraAppid = paramParcel.readString();
+      this.ide_extraData = paramParcel.readString();
+      this.tianshuAdId = paramParcel.readInt();
       return;
     }
   }
@@ -294,13 +306,19 @@ public class MiniAppBaseInfo
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeString(this.prepayId);
+      paramParcel.writeString(this.amsAdInfo);
+      paramParcel.writeString(this.apngUrl);
+      paramParcel.writeString(this.ide_scene);
+      paramParcel.writeString(this.ide_extraAppid);
+      paramParcel.writeString(this.ide_extraData);
+      paramParcel.writeInt(this.tianshuAdId);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo
  * JD-Core Version:    0.7.0.1
  */

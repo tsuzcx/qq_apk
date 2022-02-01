@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import akrw;
+import alps;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -17,16 +17,16 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import babd;
-import bfzt;
-import bmqu;
-import bmxx;
-import bmxy;
-import bmxz;
-import bmya;
-import bmyb;
-import bmyx;
-import boaz;
+import bbhm;
+import bhil;
+import bogm;
+import bonp;
+import bonq;
+import bonr;
+import bons;
+import bont;
+import boop;
+import bpqr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
@@ -56,7 +56,7 @@ public class AdvancedProviderView
   
   private Animation a(QIMProviderContainerView paramQIMProviderContainerView, View paramView, float paramFloat1, float paramFloat2)
   {
-    return new bfzt(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bmyb(this, paramQIMProviderContainerView, paramView));
+    return new bhil(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bont(this, paramQIMProviderContainerView, paramView));
   }
   
   public static int b()
@@ -64,8 +64,8 @@ public class AdvancedProviderView
     int i = 0;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_settings", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "beauty_level_" + str + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
-    if (akrw.jdField_a_of_type_Int == 2) {}
+    str = "beauty_level_" + str + "_CAMERA_ID_" + alps.jdField_a_of_type_Int;
+    if (alps.jdField_a_of_type_Int == 2) {}
     for (;;)
     {
       i = localSharedPreferences.getInt(str, i);
@@ -82,7 +82,7 @@ public class AdvancedProviderView
     int j = 0;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sharp_face_settings", 0);
     String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str2 = bmqu.b;
+    String str2 = bogm.b;
     int i;
     if ((TextUtils.isEmpty(str2)) || ("0".equals(str2)))
     {
@@ -90,8 +90,8 @@ public class AdvancedProviderView
       if (i == 0) {
         break label163;
       }
-      str1 = "sharp_face_level_" + str1 + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
-      if (akrw.jdField_a_of_type_Int != 2) {
+      str1 = "sharp_face_level_" + str1 + "_CAMERA_ID_" + alps.jdField_a_of_type_Int;
+      if (alps.jdField_a_of_type_Int != 2) {
         break label157;
       }
       i = j;
@@ -116,14 +116,14 @@ public class AdvancedProviderView
   
   protected int a()
   {
-    return 2131560841;
+    return 2131560901;
   }
   
   public void a(int paramInt)
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_settings", 0).edit();
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "beauty_level_" + str + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
+    str = "beauty_level_" + str + "_CAMERA_ID_" + alps.jdField_a_of_type_Int;
     localEditor.putInt(str, paramInt);
     localEditor.apply();
     if (QLog.isColorLevel()) {
@@ -136,41 +136,41 @@ public class AdvancedProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560841, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560901, this, false);
     }
-    paramBundle = this.jdField_a_of_type_AndroidViewView.findViewById(2131363401);
-    if (!babd.d()) {
+    paramBundle = this.jdField_a_of_type_AndroidViewView.findViewById(2131363470);
+    if (!bbhm.d()) {
       paramBundle.setVisibility(8);
     }
-    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131377324);
-    SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363409);
+    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131377597);
+    SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363478);
     if (Build.VERSION.SDK_INT >= 21) {
       localSeekBar.setSplitTrack(false);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363402);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363471);
     int i = b();
     localSeekBar.setProgress(i);
     localTextView.setText("+" + i / 10.0F);
-    QIMProviderContainerView localQIMProviderContainerView = (QIMProviderContainerView)((Activity)getContext()).findViewById(2131373060);
-    View localView2 = ((Activity)getContext()).findViewById(2131366945);
-    localSeekBar.setOnSeekBarChangeListener(new bmxx(this, localTextView, localView2, paramBundle, localQIMProviderContainerView, localView1));
-    localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377326);
+    QIMProviderContainerView localQIMProviderContainerView = (QIMProviderContainerView)((Activity)getContext()).findViewById(2131373270);
+    View localView2 = ((Activity)getContext()).findViewById(2131367063);
+    localSeekBar.setOnSeekBarChangeListener(new bonp(this, localTextView, localView2, paramBundle, localQIMProviderContainerView, localView1));
+    localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377599);
     if (Build.VERSION.SDK_INT >= 21) {
       localSeekBar.setSplitTrack(false);
     }
-    localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377325);
+    localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377598);
     i = c();
     localSeekBar.setProgress(i);
     localTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(i / 10.0F) }));
-    localSeekBar.setOnSeekBarChangeListener(new bmxy(this, localTextView, localView2, localView1, localQIMProviderContainerView, paramBundle));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131381058).setOnClickListener(new bmxz(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131381059).setOnClickListener(new bmya(this));
-    this.c = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381060));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381066));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381062));
-    this.d = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381061));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381067));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381063));
+    localSeekBar.setOnSeekBarChangeListener(new bonq(this, localTextView, localView2, localView1, localQIMProviderContainerView, paramBundle));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131381417).setOnClickListener(new bonr(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131381418).setOnClickListener(new bons(this));
+    this.c = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381419));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381425));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381421));
+    this.d = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381420));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381426));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381422));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     a(this.jdField_a_of_type_AndroidViewView);
   }
@@ -180,13 +180,13 @@ public class AdvancedProviderView
     int i = 0;
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("sharp_face_settings", 0).edit();
     String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str2 = bmqu.b;
+    String str2 = bogm.b;
     if ((TextUtils.isEmpty(str2)) || ("0".equals(str2))) {
       i = 1;
     }
     String str1 = "sharp_face_level_" + str3 + "filterId" + str2;
     if (i != 0) {
-      str1 = "sharp_face_level_" + str3 + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
+      str1 = "sharp_face_level_" + str3 + "_CAMERA_ID_" + alps.jdField_a_of_type_Int;
     }
     for (;;)
     {
@@ -203,12 +203,12 @@ public class AdvancedProviderView
   public void c()
   {
     g();
-    Object localObject1 = boaz.a().a();
+    Object localObject1 = bpqr.a().a();
     View localView;
     Object localObject2;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377322);
+      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377595);
       if (((List)localObject1).size() <= 0) {
         break label296;
       }
@@ -220,7 +220,7 @@ public class AdvancedProviderView
           if (!((QIMBeautyItem)localObject2).a()) {
             break label270;
           }
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845841);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845929);
         }
         if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(((QIMBeautyItem)localObject2).b))) {
           this.jdField_b_of_type_AndroidWidgetTextView.setText(((QIMBeautyItem)localObject2).b);
@@ -249,7 +249,7 @@ public class AdvancedProviderView
       if (!((QIMBeautyItem)localObject1).a()) {
         break label283;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845841);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845929);
     }
     for (;;)
     {
@@ -272,10 +272,10 @@ public class AdvancedProviderView
       localView.setVisibility(0);
       return;
       label270:
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845854);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845942);
       break;
       label283:
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845854);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845942);
     }
     localView.setVisibility(8);
   }
@@ -287,36 +287,36 @@ public class AdvancedProviderView
     do
     {
       return;
-      SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363409);
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363402);
+      SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363478);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363471);
       i = b();
       localSeekBar.setProgress(i);
       localTextView.setText("+" + i / 10.0F);
-    } while (this.jdField_a_of_type_Bmyx == null);
-    this.jdField_a_of_type_Bmyx.a(i);
+    } while (this.jdField_a_of_type_Boop == null);
+    this.jdField_a_of_type_Boop.a(i);
   }
   
   public void g()
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377326);
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377325);
+      SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377599);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377598);
       int i = c();
       localSeekBar.setProgress(i);
       localTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(i / 10.0F) }));
-      if (this.jdField_a_of_type_Bmyx != null)
+      if (this.jdField_a_of_type_Boop != null)
       {
-        this.jdField_a_of_type_Bmyx.b(i);
+        this.jdField_a_of_type_Boop.b(i);
         localTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(i / 10.0F) }));
       }
-      localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363409);
-      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363402);
+      localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363478);
+      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363471);
       i = b();
       localSeekBar.setProgress(i);
       localTextView.setText("+" + i / 10.0F);
-      if (this.jdField_a_of_type_Bmyx != null) {
-        this.jdField_a_of_type_Bmyx.a(i);
+      if (this.jdField_a_of_type_Boop != null) {
+        this.jdField_a_of_type_Boop.a(i);
       }
     }
   }

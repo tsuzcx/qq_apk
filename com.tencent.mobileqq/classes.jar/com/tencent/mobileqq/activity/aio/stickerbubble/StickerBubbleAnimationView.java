@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import ahlu;
-import ahlv;
-import ahlw;
-import ahly;
-import ahlz;
-import ahmb;
-import ahmc;
-import ahmd;
-import ahme;
-import ahmf;
+import aigo;
+import aigp;
+import aigq;
+import aigs;
+import aigt;
+import aigv;
+import aigw;
+import aigx;
+import aigy;
+import aigz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -41,24 +41,24 @@ import java.util.Set;
 
 public class StickerBubbleAnimationView
   extends View
-  implements ahmd, View.OnAttachStateChangeListener
+  implements aigx, View.OnAttachStateChangeListener
 {
   private static SparseArray<Float> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private ahmf jdField_a_of_type_Ahmf;
+  private aigz jdField_a_of_type_Aigz;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private String jdField_a_of_type_JavaLangString = "";
   private List<Long> jdField_a_of_type_JavaUtilList;
-  private Map<String, List<ahmc>> jdField_a_of_type_JavaUtilMap;
+  private Map<String, List<aigw>> jdField_a_of_type_JavaUtilMap;
   private Set<String> jdField_a_of_type_JavaUtilSet;
   private boolean jdField_a_of_type_Boolean = true;
   private long jdField_b_of_type_Long;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Map<String, List<ahmc>> jdField_b_of_type_JavaUtilMap;
+  private Map<String, List<aigw>> jdField_b_of_type_JavaUtilMap;
   private Map<String, BitmapDrawable[]> c;
   private Map<String, Integer> d;
-  private Map<String, List<ahme>> e;
+  private Map<String, List<aigy>> e;
   
   public StickerBubbleAnimationView(Context paramContext)
   {
@@ -78,13 +78,13 @@ public class StickerBubbleAnimationView
     }
   }
   
-  private ahmc a(ahme paramahme, long paramLong)
+  private aigw a(aigy paramaigy, long paramLong)
   {
-    ahlv localahlv = new ahlv(ahme.a(paramahme));
-    ahlu localahlu = new ahlu(ahme.a(paramahme));
-    paramahme = new ahmc(((BitmapDrawable[])this.c.get(ahme.a(paramahme)))[0], ahme.a(paramahme), localahlv, localahlu, 1.0D, paramLong, ahme.a(paramahme), ahme.a(paramahme));
-    paramahme.a(this);
-    return paramahme;
+    aigp localaigp = new aigp(aigy.a(paramaigy));
+    aigo localaigo = new aigo(aigy.a(paramaigy));
+    paramaigy = new aigw(((BitmapDrawable[])this.c.get(aigy.a(paramaigy)))[0], aigy.a(paramaigy), localaigp, localaigo, 1.0D, paramLong, aigy.a(paramaigy), aigy.a(paramaigy));
+    paramaigy.a(this);
+    return paramaigy;
   }
   
   @Nullable
@@ -116,41 +116,41 @@ public class StickerBubbleAnimationView
     return paramArrayOfBitmapDrawable[0];
   }
   
-  private void a(ahlw paramahlw, BitmapDrawable[] paramArrayOfBitmapDrawable, String paramString, int paramInt)
+  private void a(aigq paramaigq, BitmapDrawable[] paramArrayOfBitmapDrawable, String paramString, int paramInt)
   {
-    ThreadManager.post(new StickerBubbleAnimationView.2(this, paramArrayOfBitmapDrawable, paramahlw, paramString, paramInt), 8, null, true);
+    ThreadManager.post(new StickerBubbleAnimationView.2(this, paramArrayOfBitmapDrawable, paramaigq, paramString, paramInt), 8, null, true);
   }
   
-  private void a(ahme paramahme, long paramLong)
+  private void a(aigy paramaigy, long paramLong)
   {
     List localList;
     Object localObject;
-    if (ahme.a(paramahme))
+    if (aigy.a(paramaigy))
     {
-      localList = (List)this.jdField_b_of_type_JavaUtilMap.get(ahme.a(paramahme));
+      localList = (List)this.jdField_b_of_type_JavaUtilMap.get(aigy.a(paramaigy));
       localObject = localList;
       if (localList == null)
       {
         localObject = new LinkedList();
-        if (!ahme.a(paramahme)) {
+        if (!aigy.a(paramaigy)) {
           break label111;
         }
-        this.jdField_b_of_type_JavaUtilMap.put(ahme.a(paramahme), localObject);
+        this.jdField_b_of_type_JavaUtilMap.put(aigy.a(paramaigy), localObject);
       }
       label66:
-      if (!ahme.a(paramahme)) {
+      if (!aigy.a(paramaigy)) {
         break label130;
       }
     }
     label130:
-    for (paramahme = b(paramahme, paramLong);; paramahme = a(paramahme, paramLong))
+    for (paramaigy = b(paramaigy, paramLong);; paramaigy = a(paramaigy, paramLong))
     {
-      ((List)localObject).add(paramahme);
+      ((List)localObject).add(paramaigy);
       return;
-      localList = (List)this.jdField_a_of_type_JavaUtilMap.get(ahme.a(paramahme));
+      localList = (List)this.jdField_a_of_type_JavaUtilMap.get(aigy.a(paramaigy));
       break;
       label111:
-      this.jdField_a_of_type_JavaUtilMap.put(ahme.a(paramahme), localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(aigy.a(paramaigy), localObject);
       break label66;
     }
   }
@@ -236,11 +236,11 @@ public class StickerBubbleAnimationView
       String str = (String)paramSet.next();
       if (!this.c.containsKey(str))
       {
-        ahmb localahmb = ahlz.a(str);
-        if (localahmb != null)
+        aigv localaigv = aigt.a(str);
+        if (localaigv != null)
         {
-          this.c.put(str, localahmb.a());
-          this.d.put(str, Integer.valueOf(localahmb.a()));
+          this.c.put(str, localaigv.a());
+          this.d.put(str, Integer.valueOf(localaigv.a()));
           if (QLog.isColorLevel()) {
             QLog.d("StickerBubbleAnimationView", 2, "get frames from cache");
           }
@@ -289,9 +289,9 @@ public class StickerBubbleAnimationView
           localObject2 = ((List)localObject1).iterator();
           if (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (ahmc)((Iterator)localObject2).next();
-            BitmapDrawable localBitmapDrawable = a(paramLong, ((ahmc)localObject3).a(), arrayOfBitmapDrawable, k);
-            ((ahmc)localObject3).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, paramLong, localBitmapDrawable);
+            localObject3 = (aigw)((Iterator)localObject2).next();
+            BitmapDrawable localBitmapDrawable = a(paramLong, ((aigw)localObject3).a(), arrayOfBitmapDrawable, k);
+            ((aigw)localObject3).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, paramLong, localBitmapDrawable);
             continue;
           }
           j = ((List)localObject1).size() + i;
@@ -311,9 +311,9 @@ public class StickerBubbleAnimationView
         localObject1 = localList.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (ahmc)((Iterator)localObject1).next();
-          localObject3 = a(paramLong, ((ahmc)localObject2).a(), arrayOfBitmapDrawable, k);
-          ((ahmc)localObject2).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, paramLong, (Drawable)localObject3);
+          localObject2 = (aigw)((Iterator)localObject1).next();
+          localObject3 = a(paramLong, ((aigw)localObject2).a(), arrayOfBitmapDrawable, k);
+          ((aigw)localObject2).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, paramLong, (Drawable)localObject3);
         }
         i = j + localList.size();
         break label399;
@@ -331,13 +331,13 @@ public class StickerBubbleAnimationView
     }
   }
   
-  private ahmc b(ahme paramahme, long paramLong)
+  private aigw b(aigy paramaigy, long paramLong)
   {
-    ahlv localahlv = new ahlv(ahme.a(paramahme));
-    ahlu localahlu = new ahlu(ahme.a(paramahme));
-    paramahme = new ahmc(((BitmapDrawable[])this.c.get(ahme.a(paramahme)))[0], ahme.a(paramahme), localahlv, localahlu, paramLong, 1.7D, true, ahme.a(paramahme), ahme.a(paramahme));
-    paramahme.a(this);
-    return paramahme;
+    aigp localaigp = new aigp(aigy.a(paramaigy));
+    aigo localaigo = new aigo(aigy.a(paramaigy));
+    paramaigy = new aigw(((BitmapDrawable[])this.c.get(aigy.a(paramaigy)))[0], aigy.a(paramaigy), localaigp, localaigo, paramLong, 1.7D, true, aigy.a(paramaigy), aigy.a(paramaigy));
+    paramaigy.a(this);
+    return paramaigy;
   }
   
   private void b()
@@ -346,12 +346,12 @@ public class StickerBubbleAnimationView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    if (ahly.a == null) {
-      ahly.b();
+    if (aigs.a == null) {
+      aigs.b();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(ahly.a);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(aigs.a);
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(ahly.a);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(aigs.a);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(30.0F);
@@ -401,10 +401,10 @@ public class StickerBubbleAnimationView
           break label183;
         }
         this.jdField_a_of_type_JavaLangString = "";
-        if (this.jdField_a_of_type_Ahmf == null) {
+        if (this.jdField_a_of_type_Aigz == null) {
           break;
         }
-        this.jdField_a_of_type_Ahmf.a();
+        this.jdField_a_of_type_Aigz.a();
         return;
       }
     }
@@ -415,27 +415,27 @@ public class StickerBubbleAnimationView
     this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(ahmc paramahmc)
+  public void a(aigw paramaigw)
   {
-    post(new StickerBubbleAnimationView.1(this, paramahmc));
+    post(new StickerBubbleAnimationView.1(this, paramaigw));
   }
   
-  public void a(ahme paramahme)
+  public void a(aigy paramaigy)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(ahme.a(paramahme)))
+    if (!this.jdField_a_of_type_JavaLangString.equals(aigy.a(paramaigy)))
     {
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = ahme.a(paramahme);
+      this.jdField_a_of_type_JavaLangString = aigy.a(paramaigy);
     }
     this.jdField_a_of_type_Int += 1;
-    List localList = (List)this.e.get(ahme.a(paramahme));
+    List localList = (List)this.e.get(aigy.a(paramaigy));
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.e.put(ahme.a(paramahme), localObject);
+      this.e.put(aigy.a(paramaigy), localObject);
     }
-    ((List)localObject).add(paramahme);
+    ((List)localObject).add(paramaigy);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -458,7 +458,7 @@ public class StickerBubbleAnimationView
         }
         Iterator localIterator2 = ((List)localObject).iterator();
         while (localIterator2.hasNext()) {
-          a((ahme)localIterator2.next(), l);
+          a((aigy)localIterator2.next(), l);
         }
         ((List)localObject).clear();
       }
@@ -474,7 +474,7 @@ public class StickerBubbleAnimationView
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleAnimationView", 2, "onViewAttachedToWindow");
     }
-    ahlz.a();
+    aigt.a();
   }
   
   public void onViewDetachedFromWindow(View paramView)
@@ -488,14 +488,14 @@ public class StickerBubbleAnimationView
     this.d.clear();
     this.e.clear();
     this.jdField_a_of_type_JavaUtilSet.clear();
-    if (this.jdField_a_of_type_Ahmf != null) {
-      this.jdField_a_of_type_Ahmf.b();
+    if (this.jdField_a_of_type_Aigz != null) {
+      this.jdField_a_of_type_Aigz.b();
     }
   }
   
-  public void setAnimationCallback(ahmf paramahmf)
+  public void setAnimationCallback(aigz paramaigz)
   {
-    this.jdField_a_of_type_Ahmf = paramahmf;
+    this.jdField_a_of_type_Aigz = paramaigz;
   }
   
   public void setShowText(boolean paramBoolean)

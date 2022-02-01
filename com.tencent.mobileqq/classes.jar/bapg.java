@@ -1,14 +1,13 @@
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+
 public class bapg
+  implements bkzs
 {
-  public String a;
-  public String b;
+  public bapg(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public bapg() {}
-  
-  public bapg(String paramString1, String paramString2)
+  public void onDismiss()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    bdla.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,107 +1,192 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.TagEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Ljava.lang.String;>;
+import java.util.Set;
 
-public final class wjv
+public class wjv
+  implements wja
 {
-  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
+  private long jdField_a_of_type_Long;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  
+  private QQStoryContext a()
   {
-    Object localObject = paramMap.get(paramK);
-    if ((localObject != null) || (paramMap.containsKey(paramK))) {
-      paramT = localObject;
+    return QQStoryContext.a();
+  }
+  
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public List<zbe> a(String paramString)
+  {
+    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = new ArrayList();
     }
-    return paramT;
+    localObject = new ArrayList();
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      ((List)localObject).add(new zbe((TagEntry)paramString.next()));
+    }
+    return localObject;
   }
   
-  public static String a(String paramString)
+  public List<zbe> a(String paramString, List<StoryVideoItem> paramList)
   {
-    return AppConstants.SDCARD_FILE_SAVE_TMP_PATH + AbsDownloader.getFileName(paramString);
-  }
-  
-  public static String a(String paramString, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str1 = null;
-    int i = 1;
-    String[] arrayOfString = paramString.split("&");
-    int k = arrayOfString.length;
-    int j = 0;
-    paramString = str1;
-    if (j < k)
+    try
     {
-      str1 = arrayOfString[j];
-      String str2 = str1.split("=")[0];
-      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
-      {
-        if (i != 0) {
-          i = 0;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(str1);
-          j += 1;
-          break;
-          localStringBuilder.append('&');
-        }
-      }
-      str1 = paramString;
-      if (QLog.isColorLevel())
-      {
-        if (paramString != null) {
-          break label216;
-        }
-        paramString = new StringBuilder();
-      }
-      for (;;)
-      {
-        paramString.append(str2);
-        str1 = paramString;
-        paramString = str1;
-        break;
-        label216:
-        paramString.append('|');
-      }
-    }
-    if ((paramString != null) && (QLog.isColorLevel())) {
-      QLog.d("ShareUtil", 2, "remove params:" + paramString);
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+      paramString = a(paramList, a(paramString));
       return paramString;
-      arrayOfString = paramString.split("\\?");
-    } while (arrayOfString.length != 2);
-    paramString = arrayOfString[0];
-    String[] arrayOfString = arrayOfString[1].split("&");
-    StringBuilder localStringBuilder = new StringBuilder("?");
-    int i = 0;
-    if (i < arrayOfString.length)
+    }
+    finally
     {
-      Object localObject = arrayOfString[i].split("=");
-      if (localObject.length != 2) {}
-      for (;;)
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public List<zbe> a(List<StoryVideoItem> paramList, List<zbe> paramList1)
+  {
+    ArrayList localArrayList;
+    HashSet localHashSet;
+    try
+    {
+      localArrayList = new ArrayList();
+      localHashSet = new HashSet();
+      if (paramList != null)
       {
-        i += 1;
-        break;
-        localObject = localObject[0];
-        if ("s".equals(localObject)) {
-          arrayOfString[i] = ((String)localObject + "=" + "140");
-        }
-        localStringBuilder.append(arrayOfString[i]);
-        if (i + 1 < arrayOfString.length) {
-          localStringBuilder.append("&");
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
+          if ((localStoryVideoItem.mTagInfoBase != null) && (!localHashSet.contains(localStoryVideoItem.mTagInfoBase)))
+          {
+            localArrayList.add(localStoryVideoItem.mTagInfoBase);
+            localHashSet.add(localStoryVideoItem.mTagInfoBase);
+          }
         }
       }
+      if (paramList1 == null) {
+        break label167;
+      }
     }
-    return paramString + localStringBuilder.toString();
+    finally {}
+    paramList = paramList1.iterator();
+    while (paramList.hasNext())
+    {
+      paramList1 = (zbe)paramList.next();
+      if (!localHashSet.contains(paramList1))
+      {
+        localArrayList.add(paramList1);
+        localHashSet.add(paramList1);
+      }
+    }
+    label167:
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = a().a().createEntityManager();
+  }
+  
+  public void a(String paramString, List<zbe> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
+            localTagEntry.setStatus(1001);
+            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localTagEntry);
+          }
+        }
+      }
+      finally
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+          throw paramString;
+        }
+        finally {}
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().begin();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = ((zbe)paramList.next()).a();
+          ((TagEntry)localObject).feedId = paramString;
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace((Entity)localObject);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().commit();
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+      }
+    }
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    Object localObject = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L) {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+    for (;;)
+    {
+      if (localArrayList.size() > 0) {
+        ykq.d("Q.qqstory:TagManager", "request still waiting , %s", new Object[] { localArrayList });
+      }
+      if (paramList.size() == 0) {
+        break;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localObject = new wtc();
+      ((wtc)localObject).a = paramList;
+      wfi.a().a((wfm)localObject, new wjw(this));
+      ykq.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
+          localArrayList.add(str);
+        } else {
+          ((List)localObject).add(str);
+        }
+      }
+      paramList = (List<String>)localObject;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 

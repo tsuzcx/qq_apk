@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awgr;
-import awgw;
+import axmt;
+import axmy;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.defaultValue;
@@ -13,11 +13,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ExtensionInfo
   extends Entity
 {
-  public static final int AUDIO_PANEL_TYPE__LS = 3;
-  public static final int AUDIO_PANEL_TYPE__NONE = -1;
-  public static final int AUDIO_PANEL_TYPE__PRESS_RECORDER = 1;
-  public static final int AUDIO_PANEL_TYPE__RECORDER = 2;
-  public static final int AUDIO_PANEL_TYPE__VOICE_CHANGER = 0;
+  public static final int AUDIO_PANEL_TYPE_LS = 3;
+  public static final int AUDIO_PANEL_TYPE_NONE = -1;
+  public static final int AUDIO_PANEL_TYPE_PRESS_RECORDER = 1;
+  public static final int AUDIO_PANEL_TYPE_RECORDER = 2;
+  public static final int AUDIO_PANEL_TYPE_VOICE_CHANGER = 0;
   public static final long CHAT_FONT_ID_UNAVAILABLE = 0L;
   public static final int CHAT_INPUT_TYPE_ADUIO = 2;
   public static final int CHAT_INPUT_TYPE_KEYBOARD = 1;
@@ -125,7 +125,7 @@ public class ExtensionInfo
   @defaultValue(defaultInteger=0)
   public int messageEnableVibrateNew;
   @notColumn
-  public ConcurrentHashMap<Long, awgr> mutualMarks;
+  public ConcurrentHashMap<Long, axmt> mutualMarks;
   public int mutual_mark_version;
   public String mutual_marks_store_json;
   public int newBestIntimacyType = 0;
@@ -175,16 +175,16 @@ public class ExtensionInfo
   
   private void migrateOldExtensionInfoToNewMutualMark_TypeBoat()
   {
-    if (awgw.a()) {
+    if (axmy.a()) {
       if ((this.newBestIntimacyType >= 1) && (this.newBestIntimacyType <= 2) && ((this.mutualMarks == null) || (this.mutualMarks.get(Long.valueOf(12L)) == null)))
       {
         if (this.mutualMarks == null) {
           this.mutualMarks = new ConcurrentHashMap();
         }
-        localawgr = new awgr();
-        localawgr.a = 12L;
-        localawgr.jdField_b_of_type_Long = this.newBestIntimacyType;
-        this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+        localaxmt = new axmt();
+        localaxmt.a = 12L;
+        localaxmt.jdField_b_of_type_Long = this.newBestIntimacyType;
+        this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
       }
     }
     while ((this.bestIntimacyType < 1) || (this.bestIntimacyType > 2) || ((this.mutualMarks != null) && (this.mutualMarks.get(Long.valueOf(12L)) != null))) {
@@ -193,10 +193,10 @@ public class ExtensionInfo
     if (this.mutualMarks == null) {
       this.mutualMarks = new ConcurrentHashMap();
     }
-    awgr localawgr = new awgr();
-    localawgr.a = 12L;
-    localawgr.jdField_b_of_type_Long = this.bestIntimacyType;
-    this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+    axmt localaxmt = new axmt();
+    localaxmt.a = 12L;
+    localaxmt.jdField_b_of_type_Long = this.bestIntimacyType;
+    this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
   }
   
   private void migrateOldExtensionInfoToNewMutualMark_TypeChat()
@@ -206,14 +206,14 @@ public class ExtensionInfo
       if (this.mutualMarks == null) {
         this.mutualMarks = new ConcurrentHashMap();
       }
-      awgr localawgr = new awgr();
-      localawgr.a = 5L;
-      localawgr.jdField_b_of_type_Long = this.chatHotLevel;
-      localawgr.d = this.lastChatTime;
-      localawgr.c = this.chatDays;
-      localawgr.jdField_b_of_type_Boolean = this.hasRemindChat;
-      localawgr.i = this.chatAnimStartTime;
-      this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+      axmt localaxmt = new axmt();
+      localaxmt.a = 5L;
+      localaxmt.jdField_b_of_type_Long = this.chatHotLevel;
+      localaxmt.d = this.lastChatTime;
+      localaxmt.c = this.chatDays;
+      localaxmt.jdField_b_of_type_Boolean = this.hasRemindChat;
+      localaxmt.i = this.chatAnimStartTime;
+      this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
     }
   }
   
@@ -224,14 +224,14 @@ public class ExtensionInfo
       if (this.mutualMarks == null) {
         this.mutualMarks = new ConcurrentHashMap();
       }
-      awgr localawgr = new awgr();
-      localawgr.a = 4L;
-      localawgr.jdField_b_of_type_Long = this.friendshipLevel;
-      localawgr.d = this.lastFriendshipTime;
-      localawgr.c = this.friendshipChatDays;
-      localawgr.jdField_b_of_type_Boolean = this.hasRemindFrdship;
-      localawgr.i = this.frdshipAnimStartTime;
-      this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+      axmt localaxmt = new axmt();
+      localaxmt.a = 4L;
+      localaxmt.jdField_b_of_type_Long = this.friendshipLevel;
+      localaxmt.d = this.lastFriendshipTime;
+      localaxmt.c = this.friendshipChatDays;
+      localaxmt.jdField_b_of_type_Boolean = this.hasRemindFrdship;
+      localaxmt.i = this.frdshipAnimStartTime;
+      this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
     }
   }
   
@@ -242,13 +242,13 @@ public class ExtensionInfo
       if (this.mutualMarks == null) {
         this.mutualMarks = new ConcurrentHashMap();
       }
-      awgr localawgr = new awgr();
-      localawgr.a = 6L;
-      localawgr.jdField_b_of_type_Long = this.praiseHotLevel;
-      localawgr.d = this.lastpraiseTime;
-      localawgr.jdField_b_of_type_Boolean = this.hasRemindPraise;
-      localawgr.i = this.praiseAnimStartTime;
-      this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+      axmt localaxmt = new axmt();
+      localaxmt.a = 6L;
+      localaxmt.jdField_b_of_type_Long = this.praiseHotLevel;
+      localaxmt.d = this.lastpraiseTime;
+      localaxmt.jdField_b_of_type_Boolean = this.hasRemindPraise;
+      localaxmt.i = this.praiseAnimStartTime;
+      this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
     }
   }
   
@@ -259,13 +259,13 @@ public class ExtensionInfo
       if (this.mutualMarks == null) {
         this.mutualMarks = new ConcurrentHashMap();
       }
-      awgr localawgr = new awgr();
-      localawgr.a = 8L;
-      localawgr.jdField_b_of_type_Long = this.qzoneVisitType;
-      localawgr.d = this.lastQzoneVisitTime;
-      localawgr.c = this.qzoneHotDays;
-      localawgr.jdField_b_of_type_Boolean = this.hasRemindQzoneVisit;
-      this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+      axmt localaxmt = new axmt();
+      localaxmt.a = 8L;
+      localaxmt.jdField_b_of_type_Long = this.qzoneVisitType;
+      localaxmt.d = this.lastQzoneVisitTime;
+      localaxmt.c = this.qzoneHotDays;
+      localaxmt.jdField_b_of_type_Boolean = this.hasRemindQzoneVisit;
+      this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
     }
   }
   
@@ -276,17 +276,17 @@ public class ExtensionInfo
       if (this.mutualMarks == null) {
         this.mutualMarks = new ConcurrentHashMap();
       }
-      awgr localawgr = new awgr();
-      localawgr.a = 7L;
-      localawgr.jdField_b_of_type_Long = this.loverChatLevel;
-      localawgr.d = this.loverLastChatTime;
-      localawgr.c = this.loverChatDays;
+      axmt localaxmt = new axmt();
+      localaxmt.a = 7L;
+      localaxmt.jdField_b_of_type_Long = this.loverChatLevel;
+      localaxmt.d = this.loverLastChatTime;
+      localaxmt.c = this.loverChatDays;
       if (this.loverTransFlag)
       {
-        localawgr.f = 2L;
-        localawgr.g = (NetConnInfoCenter.getServerTimeMillis() / 1000L + 86400L);
+        localaxmt.f = 2L;
+        localaxmt.g = (NetConnInfoCenter.getServerTimeMillis() / 1000L + 86400L);
       }
-      this.mutualMarks.put(Long.valueOf(localawgr.a), localawgr);
+      this.mutualMarks.put(Long.valueOf(localaxmt.a), localaxmt);
     }
   }
   
@@ -392,7 +392,7 @@ public class ExtensionInfo
     //   108: aload_0
     //   109: aload_0
     //   110: getfield 398	com/tencent/mobileqq/data/ExtensionInfo:mutual_marks_store_json	Ljava/lang/String;
-    //   113: invokestatic 407	awgr:a	(Ljava/lang/String;)Ljava/util/concurrent/ConcurrentHashMap;
+    //   113: invokestatic 407	axmt:a	(Ljava/lang/String;)Ljava/util/concurrent/ConcurrentHashMap;
     //   116: putfield 227	com/tencent/mobileqq/data/ExtensionInfo:mutualMarks	Ljava/util/concurrent/ConcurrentHashMap;
     //   119: aload_0
     //   120: invokespecial 409	com/tencent/mobileqq/data/ExtensionInfo:migrateOldExtensionInfoToNewMutualMark	()V
@@ -669,7 +669,7 @@ public class ExtensionInfo
     //   129: aload_0
     //   130: aload_0
     //   131: getfield 227	com/tencent/mobileqq/data/ExtensionInfo:mutualMarks	Ljava/util/concurrent/ConcurrentHashMap;
-    //   134: invokestatic 461	awgr:a	(Ljava/util/concurrent/ConcurrentHashMap;)Ljava/lang/String;
+    //   134: invokestatic 461	axmt:a	(Ljava/util/concurrent/ConcurrentHashMap;)Ljava/lang/String;
     //   137: putfield 398	com/tencent/mobileqq/data/ExtensionInfo:mutual_marks_store_json	Ljava/lang/String;
     //   140: return
     //   141: astore_2
@@ -930,7 +930,7 @@ public class ExtensionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ExtensionInfo
  * JD-Core Version:    0.7.0.1
  */

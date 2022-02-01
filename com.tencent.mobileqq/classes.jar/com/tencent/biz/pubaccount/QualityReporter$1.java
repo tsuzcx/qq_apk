@@ -4,8 +4,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import oee;
-import rdt;
+import olv;
+import rqa;
 import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.BasicInfo;
 import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.PlayInfo;
 import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
@@ -14,14 +14,14 @@ import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.VideoInfo;
 public final class QualityReporter$1
   implements Runnable
 {
-  public QualityReporter$1(rdt paramrdt) {}
+  public QualityReporter$1(rqa paramrqa) {}
   
   public void run()
   {
     cc_sso_report_svr.ReportInfoReq localReportInfoReq = new cc_sso_report_svr.ReportInfoReq();
     localReportInfoReq.basic_info.channel.set(0);
     localReportInfoReq.basic_info.platform.set(1);
-    localReportInfoReq.basic_info.version.set("8.4.8.4810");
+    localReportInfoReq.basic_info.version.set("8.4.10.4875");
     localReportInfoReq.basic_info.setHasFlag(true);
     localReportInfoReq.video_info.busitype.set(this.a.jdField_a_of_type_Int);
     localReportInfoReq.video_info.file_size.set(this.a.q);
@@ -45,7 +45,7 @@ public final class QualityReporter$1
       if (QLog.isColorLevel()) {
         QLog.d("QualityReporter", 2, "reportVideoQulity: vid=" + this.a.b);
       }
-      oee.a(localReportInfoReq);
+      olv.a(localReportInfoReq);
       return;
     }
   }

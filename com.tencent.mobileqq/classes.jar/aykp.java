@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 
-public final class aykp
-  implements Parcelable.Creator<PersonalityLabel>
+public class aykp
+  implements URLDrawable.URLDrawableListener
 {
-  public PersonalityLabel a(Parcel paramParcel)
+  public aykp(NearbyMomentFragment paramNearbyMomentFragment) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new PersonalityLabel(paramParcel);
+    if (NearbyMomentFragment.a(this.a) == 2) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
+    }
   }
   
-  public PersonalityLabel[] a(int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return new PersonalityLabel[paramInt];
+    if (NearbyMomentFragment.a(this.a) == 2)
+    {
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+    }
   }
 }
 

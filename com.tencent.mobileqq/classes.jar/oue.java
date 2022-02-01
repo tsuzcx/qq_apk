@@ -1,22 +1,14 @@
 import android.view.View;
+import android.view.animation.Animation;
 
 class oue
-  implements bjoe
+  extends bkxp
 {
-  oue(ouc paramouc, ouo paramouo, bjnw parambjnw) {}
+  oue(ouc paramouc, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      this.jdField_a_of_type_Ouc.a().a(this.jdField_a_of_type_Ouo, this.jdField_a_of_type_Ouc.c);
-      this.jdField_a_of_type_Ouc.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

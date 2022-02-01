@@ -1,13 +1,18 @@
 import android.view.View;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.AbsListView.RecyclerListener;
 
 class akkn
-  implements bjoy
+  implements AbsListView.RecyclerListener
 {
-  akkn(akkk paramakkk, View paramView) {}
+  akkn(akkm paramakkm) {}
   
-  public void a()
+  public void onMovedToScrapHeap(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof akko))) {
+      ((akko)paramView).a.setImageDrawable(null);
+    }
   }
 }
 

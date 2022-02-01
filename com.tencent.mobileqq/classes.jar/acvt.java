@@ -1,22 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.BsnsTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-final class acvt
-  implements DialogInterface.OnCancelListener
+public class acvt
+  implements acos
 {
-  acvt(acxb paramacxb, acxa paramacxa) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a()
   {
-    if (this.jdField_a_of_type_Acxb.a) {
-      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    return 1021;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.BsnsTmp localBsnsTmp = new msg_svc.BsnsTmp();
+    localBsnsTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.getMsgCache().g(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CircleGroupRoutingType", 2, "circleGroup------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      }
+      localBsnsTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    if (this.jdField_a_of_type_Acxa != null) {
-      this.jdField_a_of_type_Acxa.onCancel();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    paramRoutingHead.bsns_tmp.set(localBsnsTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 6012;
   }
 }
 

@@ -1,28 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-class whw
-  implements URLDrawable.URLDrawableListener
+public abstract interface whw
 {
-  whw(whv paramwhv) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    whv.c(this.a, false);
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    whv.b(this.a, false);
-  }
+  public abstract void a(MessageMicro paramMessageMicro);
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    whv.a(this.a, true);
-  }
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

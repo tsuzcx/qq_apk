@@ -1,17 +1,6 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.39.1;
-import com.tencent.qphone.base.util.QLog;
-
-public class ammr
-  implements alod
+public abstract interface ammr
 {
-  public ammr(ApolloPanel paramApolloPanel) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    QLog.d("ApolloPanel", 2, "onStatusUpdate, currentStatus=" + paramInt + "， is3dAvailable=" + paramBoolean);
-    this.a.post(new ApolloPanel.39.1(this));
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

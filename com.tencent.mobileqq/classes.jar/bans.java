@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.qassistant.wake.WakeManager.ServiceHelloQQCallback.1;
 
 public class bans
-  implements DialogInterface.OnClickListener
+  implements banf
 {
-  public bans(SignatureEditFragment paramSignatureEditFragment) {}
+  bans(banp parambanp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    baos.a().a(baos.a().b);
-    this.a.getActivity().finish();
+    banp.a(this.a).post(new WakeManager.ServiceHelloQQCallback.1(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.b = false;
+    if (paramBoolean) {
+      this.a.a("ServiceHelloQQCallback onInit success");
+    }
+    for (;;)
+    {
+      bakl.a("HelloQQWake", "HelloQQHelper init isMonitor：" + this.a.b);
+      return;
+      bakl.a("HelloQQWake", "HelloQQHelper init failure");
+    }
   }
 }
 

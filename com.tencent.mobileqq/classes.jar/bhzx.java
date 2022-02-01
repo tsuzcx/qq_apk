@@ -1,30 +1,34 @@
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import java.util.concurrent.Executor;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Card;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class bhzx<Param, Progress, Result>
-  extends AsyncTask<Param, Progress, Result>
+public class bhzx
 {
-  protected String a;
-  protected String b;
-  
-  public bhzx(String paramString1, String paramString2)
+  public static bhzt a(Activity paramActivity, @NonNull JSONObject paramJSONObject, azrb paramazrb, String paramString)
   {
-    this.a = paramString1;
-    if (!paramString1.toLowerCase().startsWith("http")) {
-      this.a = ("https://openmobile.qq.com/" + paramString1);
+    if ((paramazrb == null) || (paramazrb.a == null)) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal card info is null");
     }
-    this.b = paramString2;
-  }
-  
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public Executor a()
-  {
-    if (Build.VERSION.SDK_INT >= 11) {
-      return AsyncTask.THREAD_POOL_EXECUTOR;
+    long l1 = paramazrb.a.lCurrentStyleId;
+    if (l1 < 0L) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id=" + l1);
     }
-    return null;
+    long l2 = paramJSONObject.optLong("id");
+    if (l2 != l1) {
+      throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal style id(" + l1 + ") and json id(" + l2 + ") not match");
+    }
+    if (l2 == azri.l) {}
+    for (paramActivity = new bhzy(paramActivity, paramJSONObject, paramazrb);; paramActivity = new bhzz(paramActivity, paramJSONObject, paramazrb))
+    {
+      paramActivity.a(paramString);
+      return paramActivity;
+      if (l2 != azri.m) {
+        break;
+      }
+    }
+    throw new JSONException("DIYProfileTemplate.QVipProfileTemplateCreator illegal id=" + l2);
   }
 }
 

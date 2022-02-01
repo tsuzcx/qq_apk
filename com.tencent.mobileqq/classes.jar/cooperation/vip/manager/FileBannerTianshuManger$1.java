@@ -1,16 +1,16 @@
 package cooperation.vip.manager;
 
-import blax;
-import blbu;
-import blbw;
+import bmni;
 import cooperation.qzone.util.QZLog;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileBannerTianshuManger$1
   implements Runnable
 {
-  public FileBannerTianshuManger$1(blax paramblax) {}
+  public FileBannerTianshuManger$1(bmni parambmni) {}
   
   public void run()
   {
@@ -18,11 +18,11 @@ public class FileBannerTianshuManger$1
       QZLog.i("FileBannerTianshuManger", "getTianShuAd");
     }
     ArrayList localArrayList = new ArrayList();
-    blbu localblbu = new blbu();
-    localblbu.jdField_a_of_type_Int = blax.jdField_a_of_type_Int;
-    localblbu.b = 1;
-    localArrayList.add(localblbu);
-    blbw.a().a(localArrayList, this.this$0.jdField_a_of_type_Blbv);
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mPosId = bmni.jdField_a_of_type_Int;
+    localTianShuAdPosItemData.mNeedCnt = 1;
+    localArrayList.add(localTianShuAdPosItemData);
+    TianShuManager.getInstance().requestAdv(localArrayList, this.this$0.jdField_a_of_type_CooperationVipTianshuTianShuGetAdvCallback);
   }
 }
 

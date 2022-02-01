@@ -1,18 +1,7 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-
 public class myd
-  implements BusinessObserver
 {
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 1)
-    {
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-    }
-  }
+  int a;
+  int b;
 }
 
 

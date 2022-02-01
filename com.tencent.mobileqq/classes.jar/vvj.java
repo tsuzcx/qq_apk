@@ -1,299 +1,297 @@
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.UnionIdMapEntity;
-import com.tencent.biz.qqstory.database.UserEntry;
-import com.tencent.biz.qqstory.model.UserManager.1;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
+import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qqcircle.QCircleConstants;
+import cooperation.qqcircle.picload.QCircleFeedPicLoader;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class vvj
-  implements vuf
 {
-  protected vkq<String, QQUserUIItem> a;
-  private wcg a;
+  private static final String jdField_a_of_type_JavaLangString = QCircleConstants.QCIRCLE_INNER_ROOT_PATH + "qcirclePlugin/";
+  private static volatile vvj jdField_a_of_type_Vvj;
+  private static final String jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "pluginAsset/";
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private Future<vvp> jdField_a_of_type_JavaUtilConcurrentFuture;
+  private Future<vvp> jdField_b_of_type_JavaUtilConcurrentFuture;
+  private Future<vvp> c;
   
-  public vvj()
+  private String a(Future<vvp> paramFuture)
   {
-    this.jdField_a_of_type_Vkq = new vkq(300);
-    this.jdField_a_of_type_Wcg = new wcg();
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
-  
-  protected static String a(String paramString)
-  {
-    return "k_" + paramString;
-  }
-  
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public QQUserUIItem a()
-  {
-    return b(QQStoryContext.a().b());
-  }
-  
-  public QQUserUIItem a(QQUserUIItem paramQQUserUIItem)
-  {
-    String str = paramQQUserUIItem.uid;
-    b(str);
-    paramQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(str), paramQQUserUIItem);
-    a().a().createEntityManager().persistOrReplace(paramQQUserUIItem.convert2UserEntry());
-    return paramQQUserUIItem;
-  }
-  
-  public QQUserUIItem a(@NonNull String paramString)
-  {
-    yos.a(paramString);
-    QQUserUIItem localQQUserUIItem = b(paramString);
-    paramString = localQQUserUIItem;
-    if (localQQUserUIItem == null)
-    {
-      paramString = new QQUserUIItem();
-      paramString.uid = QQStoryContext.a().b();
-      paramString.qq = wkp.a().getCurrentAccountUin();
-      paramString.nickName = wkp.a().getCurrentNickname();
-      paramString.headUrl = "";
-      xvv.d("Q.qqstory.user.UserManager", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { paramString.toString() });
-    }
-    return paramString;
-  }
-  
-  @Nullable
-  public QQUserUIItem a(@NonNull String paramString, boolean paramBoolean)
-  {
-    String str = paramString;
-    if ("0_1000".equals(paramString)) {
-      str = (String)((vuq)vux.a(10)).b("qqstory_my_union_id", paramString);
-    }
-    QQUserUIItem localQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(str));
-    paramString = localQQUserUIItem;
-    if (localQQUserUIItem == null)
-    {
-      if (paramBoolean) {
-        break label62;
+    if (paramFuture != null) {
+      try
+      {
+        if (paramFuture.get() != null)
+        {
+          paramFuture = ((vvp)paramFuture.get()).toString();
+          return paramFuture;
+        }
       }
-      paramString = localQQUserUIItem;
+      catch (Exception paramFuture)
+      {
+        return "";
+      }
     }
-    label62:
-    do
-    {
-      return paramString;
-      localQQUserUIItem = d(str);
-      paramString = localQQUserUIItem;
-    } while (localQQUserUIItem != null);
-    xvv.d("Q.qqstory.user.UserManager", "%s get userItem is null", new Object[] { str });
-    return localQQUserUIItem;
+    return "";
   }
   
-  public String a(String paramString, boolean paramBoolean)
+  public static vvj a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "-9";
-    }
-    if (QQStoryContext.a().a(paramString)) {
-      return QQStoryContext.a().a();
-    }
-    Object localObject = b(paramString);
-    if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).qq))) {
-      return ((QQUserUIItem)localObject).qq;
-    }
-    localObject = a(a().a().createEntityManager(), UnionIdMapEntity.class, UnionIdMapEntity.class.getSimpleName(), UnionIdMapEntity.selectionUnionId(), new String[] { paramString });
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      return ((UnionIdMapEntity)((List)localObject).get(0)).qq;
-    }
-    if (paramBoolean) {}
-    for (localObject = "wait and ask from net";; localObject = "ret")
-    {
-      xvv.d("Q.qqstory.user.UserManager", "unionId %s cannot find uin ,%s", new Object[] { paramString, localObject });
-      localObject = new vwe("-9", paramString);
-      a(1, (vwe)localObject);
-      if (paramBoolean) {
-        break;
-      }
-      return "-9";
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      xvv.e("Q.qqstory.user.UserManager", "Cannot req on UI thread");
-      return "-9";
-    }
+    if (jdField_a_of_type_Vvj == null) {}
     try
     {
-      localObject.wait(10000L);
-      xvv.d("Q.qqstory.user.UserManager", "%s wait end", new Object[] { paramString });
-      return ((vwe)localObject).a;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        xvv.d("Q.qqstory.user.UserManager", "%s wait exception", new Object[] { paramString, localInterruptedException });
+      if (jdField_a_of_type_Vvj == null) {
+        jdField_a_of_type_Vvj = new vvj();
       }
+      return jdField_a_of_type_Vvj;
     }
     finally {}
   }
   
-  public void a() {}
-  
-  protected void a(int paramInt, vwe paramvwe)
+  private vvm a(vvp paramvvp)
   {
-    if (paramInt == 1) {}
-    for (Object localObject = "unionId";; localObject = "uin")
+    if (paramvvp != null)
     {
-      xvv.d("Q.qqstory.user.UserManager", "start get user id: %s , convert from %s", new Object[] { paramvwe, localObject });
-      long l = System.currentTimeMillis();
-      localObject = new wdx();
-      ((wdx)localObject).c = paramInt;
-      ((wdx)localObject).a.add(paramvwe);
-      boolean bool = paramvwe.a();
-      vqn.a().a((vqr)localObject, new vvk(this, paramvwe, bool, l));
-      return;
-    }
-  }
-  
-  public void a(@NonNull String paramString1, @NonNull String paramString2)
-  {
-    yos.a(paramString1);
-    yos.a(paramString2);
-    EntityManager localEntityManager = a().a().createEntityManager();
-    UnionIdMapEntity localUnionIdMapEntity = new UnionIdMapEntity();
-    localUnionIdMapEntity.unionId = paramString1;
-    localUnionIdMapEntity.qq = paramString2;
-    localEntityManager.persistOrReplace(localUnionIdMapEntity);
-  }
-  
-  public void a(@NonNull String paramString, wch paramwch)
-  {
-    QQUserUIItem localQQUserUIItem = a(paramString, false);
-    wci localwci = new wci();
-    if (localQQUserUIItem != null)
-    {
-      localwci.a = localQQUserUIItem;
-      paramwch.a(localwci);
-      return;
-    }
-    ThreadManager.excute(new UserManager.1(this, paramString, localwci, paramwch), 32, null, true);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return alem.a(QQStoryContext.a().getCurrentAccountUin() + paramString);
-  }
-  
-  @Nullable
-  public QQUserUIItem b(@NonNull String paramString)
-  {
-    return a(paramString, true);
-  }
-  
-  public String b(String paramString, boolean paramBoolean)
-  {
-    Object localObject = e(paramString);
-    if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).uid))) {
-      return ((QQUserUIItem)localObject).uid;
-    }
-    localObject = a(a().a().createEntityManager(), UnionIdMapEntity.class, UnionIdMapEntity.class.getSimpleName(), UnionIdMapEntity.selectionQQ(), new String[] { paramString });
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      return ((UnionIdMapEntity)((List)localObject).get(0)).unionId;
-    }
-    if (paramBoolean) {}
-    for (localObject = "wait and ask from net";; localObject = "ret")
-    {
-      xvv.d("Q.qqstory.user.UserManager", "qq %s cannot find unionid ,%s", new Object[] { paramString, localObject });
-      localObject = new vwe(paramString, "");
-      a(0, (vwe)localObject);
-      if (paramBoolean) {
-        break;
+      if (!a(paramvvp.a(), paramvvp.c())) {
+        break label47;
       }
-      return "";
+      if (paramvvp.a() >= 8041000) {
+        return new vvm(paramvvp);
+      }
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkNetOnly():version not support");
     }
-    if (Looper.getMainLooper() == Looper.myLooper())
+    for (;;)
     {
-      xvv.e("Q.qqstory.user.UserManager", "Cannot req on UI thread");
-      return "";
+      return null;
+      label47:
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkNetOnly():crash to many time");
     }
+  }
+  
+  private vvm a(vvp paramvvp1, vvp paramvvp2)
+  {
+    if (paramvvp1.a() > paramvvp2.a())
+    {
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_asset").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvvp1.a()).setExt1(String.valueOf(paramvvp2.a())).setRetCode(0L));
+      if (a(paramvvp1.a(), paramvvp1.c()))
+      {
+        if (paramvvp1.a() >= 8041000)
+        {
+          QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_minversion").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvvp1.a()).setExt1(String.valueOf(8041000)).setRetCode(0L));
+          QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():use netWork plugin, net version:" + paramvvp1.a() + " asset version:" + paramvvp2.a() + " MiniSupportVersion" + 8041000);
+          return new vvm(paramvvp1);
+        }
+        QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_minversion").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvvp1.a()).setExt1(String.valueOf(8041000)).setRetCode(1L));
+        QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():net plugin version:" + paramvvp1.a() + " mini not support, go to checkAsset");
+        return a(paramvvp2, true);
+      }
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_crash_max").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvvp1.a()).setExt1(String.valueOf(8041000)).setRetCode(1L));
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():net plugin version:" + paramvvp1.a() + " crash too many, go to checkAsset");
+      return a(paramvvp2, true);
+    }
+    QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():net plugin version:" + paramvvp1.a() + " lower then asset, go to checkAsset");
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_asset").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvvp1.a()).setExt1(String.valueOf(paramvvp2.a())).setRetCode(1L));
+    return a(paramvvp2, true);
+  }
+  
+  private vvm a(vvp paramvvp, boolean paramBoolean)
+  {
+    if (a(paramvvp.a(), paramvvp.c()))
+    {
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkAsset():use asset plugin , assetVersion:" + paramvvp.a() + " , hasNetPlugin: " + paramBoolean + " ,MiniSupportVersion" + 8041000);
+      return new vvm(paramvvp);
+    }
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result").setPluginType("Q_CIRCLE_PLUGIN_ASSET").setPluginVersion(paramvvp.a()).setRetCode(3L));
+    ILoadPluginDelegate.disPatchCallback(3, "crash too many");
+    return null;
+  }
+  
+  private boolean a()
+  {
+    if (Build.VERSION.SDK_INT > 16)
+    {
+      QLog.i("QCIRCLE_PLUGIN", 1, "isUnSupport():false");
+      return false;
+    }
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_system_unsupport"));
+    QLog.i("QCIRCLE_PLUGIN", 1, "isUnSupport():true");
+    return true;
+  }
+  
+  private boolean a(int paramInt, String paramString)
+  {
+    int i = BaseApplicationImpl.context.getSharedPreferences("QCircle_crash_share", 0).getInt("QCircle_crash_count_" + paramInt, 0);
+    if ("Q_CIRCLE_PLUGIN_ASSET".equals(paramString)) {}
+    while (i < QzoneConfig.getQCircleMaxCrashCount()) {
+      return true;
+    }
+    vwj.a().a(paramInt);
+    QLog.i("QCIRCLE_PLUGIN", 1, "crashValidEnable():net plugin ,current version:" + paramInt + ",crashed to many times");
+    return false;
+  }
+  
+  private boolean a(QCirclePluginInfo paramQCirclePluginInfo)
+  {
+    if (paramQCirclePluginInfo == null) {
+      return false;
+    }
+    if ((FileUtil.isFileExists(paramQCirclePluginInfo.pluginManagerPath)) && (FileUtil.isFileExists(paramQCirclePluginInfo.pluginZipPath)))
+    {
+      File localFile1 = new File(paramQCirclePluginInfo.pluginManagerPath);
+      File localFile2 = new File(paramQCirclePluginInfo.pluginZipPath);
+      if ((localFile1.length() == paramQCirclePluginInfo.managerFilelength) && (localFile2.length() == paramQCirclePluginInfo.zipFileLength))
+      {
+        QLog.i("QCIRCLE_PLUGIN", 1, "fileLengthValid():true");
+        return true;
+      }
+    }
+    QLog.i("QCIRCLE_PLUGIN", 1, "fileLengthValid():false");
+    return false;
+  }
+  
+  private vvm b(vvp paramvvp)
+  {
+    if (paramvvp != null)
+    {
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_wns_load_asset").setPluginType("Q_CIRCLE_PLUGIN_ASSET").setPluginVersion(paramvvp.a()));
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkWNS():WNS force use asset");
+      return a(paramvvp, false);
+    }
+    QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():WNS force use asset no asset info");
+    return null;
+  }
+  
+  private vvm c(vvp paramvvp)
+  {
+    if (paramvvp != null) {}
+    return null;
+  }
+  
+  public List<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
     try
     {
-      localObject.wait(10000L);
-      xvv.d("Q.qqstory.user.UserManager", "%s wait end", new Object[] { paramString });
-      return ((vwe)localObject).b;
+      localArrayList.add(a(this.jdField_b_of_type_JavaUtilConcurrentFuture));
+      localArrayList.add(a(this.jdField_a_of_type_JavaUtilConcurrentFuture));
+      localArrayList.add(a(this.c));
+      return localArrayList;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Exception localException) {}
+    return localArrayList;
+  }
+  
+  public Future<vvp> a(QCirclePluginInfo paramQCirclePluginInfo)
+  {
+    if (!a(paramQCirclePluginInfo)) {
+      return null;
+    }
+    if (this.c == null) {
+      this.c = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new vvk(this, "Q_CIRCLE_PLUGIN_NETWORK", paramQCirclePluginInfo));
+    }
+    return this.c;
+  }
+  
+  public vvm a()
+  {
+    for (;;)
     {
-      for (;;)
+      try
       {
-        xvv.d("Q.qqstory.user.UserManager", "%s wait exception", new Object[] { paramString, localInterruptedException });
+        Object localObject1 = (vvp)this.jdField_b_of_type_JavaUtilConcurrentFuture.get();
+        vvp localvvp2 = (vvp)this.jdField_a_of_type_JavaUtilConcurrentFuture.get();
+        if (this.c != null)
+        {
+          localvvp1 = (vvp)this.c.get();
+          if (a()) {
+            return null;
+          }
+          Object localObject2 = c((vvp)localObject1);
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            if (QzoneConfig.useQCircleAssetPluginAlways()) {
+              return b(localvvp2);
+            }
+            localObject1 = localObject2;
+            if (localvvp1 != null)
+            {
+              localObject1 = localObject2;
+              if (localvvp2 != null) {
+                localObject1 = a(localvvp1, localvvp2);
+              }
+            }
+            localObject2 = localObject1;
+            if (localObject1 == null)
+            {
+              localObject2 = localObject1;
+              if (localvvp2 != null) {
+                localObject2 = a(localvvp2, false);
+              }
+            }
+            localObject1 = localObject2;
+            if (localObject2 == null)
+            {
+              localObject1 = localObject2;
+              if (localvvp1 != null)
+              {
+                localObject1 = localObject2;
+                if (localvvp2 == null)
+                {
+                  localObject1 = a(localvvp1);
+                  return localObject1;
+                }
+              }
+            }
+          }
+        }
       }
-    }
-    finally {}
-  }
-  
-  public void b() {}
-  
-  public QQUserUIItem c(@NonNull String paramString)
-  {
-    QQUserUIItem localQQUserUIItem = b(paramString);
-    if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
-      this.jdField_a_of_type_Wcg.a(paramString);
-    }
-    return localQQUserUIItem;
-  }
-  
-  public void c()
-  {
-    String str = QQStoryContext.a().b();
-    if ((str.equals("0_1000")) || (a() == null))
-    {
-      xvv.d("Q.qqstory.user.UserManager", "current union %s is default or userItem is null", new Object[] { str });
-      a(1, new vwe(QQStoryContext.a().a(), str));
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():exception:" + localInterruptedException.getMessage());
+        QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result").setRetCode(5L));
+        ILoadPluginDelegate.disPatchCallback(5, "un know exception");
+        QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():there is no plugin can be used");
+        return null;
+      }
+      catch (ExecutionException localExecutionException)
+      {
+        localExecutionException.printStackTrace();
+        QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():exception:" + localExecutionException.getMessage());
+        continue;
+        return localExecutionException;
+      }
+      vvp localvvp1 = null;
     }
   }
   
-  @Nullable
-  protected QQUserUIItem d(String paramString)
+  public void a()
   {
-    Object localObject = a(a().a().createEntityManager(), UserEntry.class, UserEntry.class.getSimpleName(), UserEntry.getUserSelectionNoArg(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
-    {
-      xvv.a("Q.qqstory.user.UserManager", "%s cannot get userItem from db", paramString);
-      return null;
-    }
-    paramString = (UserEntry)((List)localObject).get(0);
-    localObject = new QQUserUIItem(paramString);
-    return (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(paramString.unionId), (vkp)localObject);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Vkq.a(0);
-  }
-  
-  protected QQUserUIItem e(String paramString)
-  {
-    Object localObject = a(a().a().createEntityManager(), UserEntry.class, UserEntry.class.getSimpleName(), UserEntry.getUserSelectionByQQ(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
-    {
-      xvv.a("Q.qqstory.user.UserManager", "qq %s cannot get userItem from db", paramString);
-      return null;
-    }
-    paramString = (UserEntry)((List)localObject).get(0);
-    localObject = new QQUserUIItem(paramString);
-    return (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(paramString.qq), (vkp)localObject);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = QCircleFeedPicLoader.createPool(1, 1);
+    QCirclePluginInfo localQCirclePluginInfo = new QCirclePluginInfo();
+    localQCirclePluginInfo.version = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new vvk(this, "Q_CIRCLE_PLUGIN_ASSET", localQCirclePluginInfo));
+    localQCirclePluginInfo = new QCirclePluginInfo();
+    localQCirclePluginInfo.version = -2;
+    localQCirclePluginInfo.pluginZipPath = (AppConstants.SDCARD_ROOT + "/" + "qcircle-plugin.jpg");
+    localQCirclePluginInfo.pluginManagerPath = (AppConstants.SDCARD_ROOT + "/" + "qcircle-pluginmanager.jpg");
+    this.jdField_b_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new vvk(this, "Q_CIRCLE_PLUGIN_TEST", localQCirclePluginInfo));
   }
 }
 

@@ -1,8 +1,27 @@
-import java.util.List;
+import UserGrowth.stGetAIOFeedDetailRsp;
+import UserGrowth.stSimpleMetaFeed;
 
-public abstract interface vih
+class vih
+  implements vfg
 {
-  public abstract void a(List<vil> paramList, List<vim> paramList1);
+  vih(vic paramvic, long paramLong) {}
+  
+  public void a(vfr paramvfr)
+  {
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    if ((!paramvfr.a()) || (!(paramvfr.jdField_a_of_type_JavaLangObject instanceof stGetAIOFeedDetailRsp))) {
+      vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
+    }
+    stSimpleMetaFeed localstSimpleMetaFeed;
+    do
+    {
+      return;
+      vkk.a().a(l, paramvfr.jdField_a_of_type_Vfo, "feeds", true);
+      paramvfr = (stGetAIOFeedDetailRsp)paramvfr.jdField_a_of_type_JavaLangObject;
+      localstSimpleMetaFeed = paramvfr.feed;
+    } while ((!paramvfr.enable) || (localstSimpleMetaFeed == null));
+    vic.a(this.jdField_a_of_type_Vic, localstSimpleMetaFeed);
+  }
 }
 
 

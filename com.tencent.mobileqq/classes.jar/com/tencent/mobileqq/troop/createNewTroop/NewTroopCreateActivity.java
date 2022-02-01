@@ -15,11 +15,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bcef;
-import bdxd;
-import bdxe;
-import bdxf;
-import bhjm;
+import bdla;
+import bfeg;
+import bfeh;
+import bfei;
+import biuc;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.widget.RedDotTextView;
@@ -29,7 +29,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NewTroopCreateActivity
   extends FragmentActivity
-  implements bhjm
+  implements biuc
 {
   protected int a;
   protected AnimatorListenerAdapter a;
@@ -52,8 +52,8 @@ public class NewTroopCreateActivity
   
   public NewTroopCreateActivity()
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new bdxe(this);
-    this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new bdxf(this);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new bfeh(this);
+    this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new bfei(this);
   }
   
   private void a(AbsNewTroopBaseView paramAbsNewTroopBaseView)
@@ -106,7 +106,7 @@ public class NewTroopCreateActivity
     if (this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView != null) {
       this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.n();
     }
-    bcef.b(this.app, "dc00899", "grp_create", "", "grp_create_bytype", "exp_grptype", 0, 0, "", "", "", "");
+    bdla.b(this.app, "dc00899", "grp_create", "", "grp_create_bytype", "exp_grptype", 0, 0, "", "", "", "");
   }
   
   protected void a()
@@ -114,7 +114,7 @@ public class NewTroopCreateActivity
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_title");
     if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = getString(2131691160);
+      this.jdField_a_of_type_JavaLangString = getString(2131691245);
     }
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_default_tab", 0);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_exit_animation", 0);
@@ -144,8 +144,8 @@ public class NewTroopCreateActivity
   @TargetApi(14)
   protected void b()
   {
-    super.setContentView(2131559519);
-    View localView = findViewById(2131376679);
+    super.setContentView(2131559552);
+    View localView = findViewById(2131376947);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       if (Build.VERSION.SDK_INT >= 14) {
@@ -153,17 +153,17 @@ public class NewTroopCreateActivity
       }
       localView.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378727);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369068));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369070));
-    this.d = ((TextView)findViewById(2131369099));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2 = ((TabBarView2)findViewById(2131379316));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131379317));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(0, getString(2131719248));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(0).setContentDescription(getString(2131719248));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(1, getString(2131719249));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(1).setContentDescription(getString(2131719249));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379020);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369278));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369233));
+    this.d = ((TextView)findViewById(2131369262));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2 = ((TabBarView2)findViewById(2131379620));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131379621));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(0, getString(2131719669));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(0).setContentDescription(getString(2131719669));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(1, getString(2131719670));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.a(1).setContentDescription(getString(2131719670));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setOnTabChangeListener(this);
   }
   
@@ -172,16 +172,16 @@ public class NewTroopCreateActivity
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718082);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718467);
     this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     if (AppSetting.c)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131718082));
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131718467));
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bdxd(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bfeg(this));
   }
   
   @Override

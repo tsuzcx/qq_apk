@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import amtj;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
@@ -12,33 +11,34 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bkwm;
+import anvx;
+import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.BorderTextView;
 import java.util.List;
-import pai;
-import pvc;
-import qpi;
-import qps;
-import qtr;
-import qui;
-import rdm;
-import rdn;
-import rdo;
-import rdp;
+import pjr;
+import qfw;
+import rbn;
+import rbx;
+import rfw;
+import rgn;
+import rps;
+import rpt;
+import rpu;
+import rpv;
 
 public class ComponentContentHotQuestion
   extends RelativeLayout
-  implements qpi
+  implements rbn
 {
   public Context a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qui(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rgn(this);
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   BorderTextView jdField_a_of_type_ComTencentWidgetBorderTextView;
-  public qtr a;
+  public rfw a;
   TextView b;
   
   public ComponentContentHotQuestion(Context paramContext)
@@ -61,7 +61,7 @@ public class ComponentContentHotQuestion
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qtr = new qtr();
+    this.jdField_a_of_type_Rfw = new rfw();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
     a();
@@ -69,7 +69,7 @@ public class ComponentContentHotQuestion
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560114, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560161, this, true);
   }
   
   public void a() {}
@@ -81,17 +81,17 @@ public class ComponentContentHotQuestion
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368415));
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131366106));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378707));
-    this.b = ((TextView)paramView.findViewById(2131371967));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131368572));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView = ((BorderTextView)paramView.findViewById(2131366208));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379001));
+    this.b = ((TextView)paramView.findViewById(2131372158));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setBorderWidth(2);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setRadius(4.0F);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextColor(Color.parseColor("#12B7F5"));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(amtj.a(2131701435));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anvx.a(2131701786));
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetBorderTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -102,59 +102,59 @@ public class ComponentContentHotQuestion
   {
     b();
     ArticleInfo localArticleInfo;
-    rdn localrdn;
-    if ((paramObject instanceof pvc))
+    rpt localrpt;
+    if ((paramObject instanceof qfw))
     {
-      paramObject = (pvc)paramObject;
-      this.jdField_a_of_type_Qtr.a(paramObject);
+      paramObject = (qfw)paramObject;
+      this.jdField_a_of_type_Rfw.a(paramObject);
       localArticleInfo = paramObject.a();
-      localrdn = (rdn)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-      pai.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
-      if (!TextUtils.isEmpty(localrdn.jdField_a_of_type_JavaLangString))
+      localrpt = (rpt)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+      pjr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mSinglePicture, getContext());
+      if (!TextUtils.isEmpty(localrpt.jdField_a_of_type_JavaLangString))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrdn.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrpt.jdField_a_of_type_JavaLangString);
       }
-      if ((localrdn.jdField_a_of_type_Rdo != null) && (!TextUtils.isEmpty(localrdn.jdField_a_of_type_Rdo.b)))
+      if ((localrpt.jdField_a_of_type_Rpu != null) && (!TextUtils.isEmpty(localrpt.jdField_a_of_type_Rpu.b)))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrdn.jdField_a_of_type_Rdo.b);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localrpt.jdField_a_of_type_Rpu.b);
       }
-      if ((localrdn.jdField_a_of_type_Rdp != null) && (localrdn.jdField_a_of_type_Rdp.jdField_a_of_type_Int >= 0))
+      if ((localrpt.jdField_a_of_type_Rpv != null) && (localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_Int >= 0))
       {
         this.b.setVisibility(0);
-        StringBuilder localStringBuilder = new StringBuilder().append(bkwm.b(localrdn.jdField_a_of_type_Rdp.jdField_a_of_type_Int));
-        if (!TextUtils.isEmpty(localrdn.jdField_a_of_type_Rdp.jdField_a_of_type_JavaLangString)) {
+        StringBuilder localStringBuilder = new StringBuilder().append(bmhv.b(localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_Int));
+        if (!TextUtils.isEmpty(localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_JavaLangString)) {
           break label240;
         }
-        paramObject = amtj.a(2131701450);
+        paramObject = anvx.a(2131701801);
         paramObject = paramObject;
         this.b.setText(paramObject);
       }
-      if (TextUtils.isEmpty(localrdn.h)) {
+      if (TextUtils.isEmpty(localrpt.h)) {
         break label251;
       }
-      this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(localrdn.h);
+      this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(localrpt.h);
     }
     label240:
     label251:
     do
     {
       return;
-      paramObject = localrdn.jdField_a_of_type_Rdp.jdField_a_of_type_JavaLangString;
+      paramObject = localrpt.jdField_a_of_type_Rpv.jdField_a_of_type_JavaLangString;
       break;
       if (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12)
       {
-        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(amtj.a(2131701469));
+        this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anvx.a(2131701820));
         return;
       }
     } while (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int != 13);
-    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(amtj.a(2131701401));
+    this.jdField_a_of_type_ComTencentWidgetBorderTextView.setText(anvx.a(2131701752));
   }
   
-  public void a(qps paramqps)
+  public void a(rbx paramrbx)
   {
-    this.jdField_a_of_type_Qtr.a(paramqps);
+    this.jdField_a_of_type_Rfw.a(paramrbx);
   }
   
   public void b()

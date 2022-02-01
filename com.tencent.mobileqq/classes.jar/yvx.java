@@ -1,36 +1,82 @@
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.24;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import java.io.File;
+import java.net.URI;
 
 public class yvx
-  implements View.OnTouchListener
+  extends yvs<yvv>
 {
-  public yvx(QRDisplayActivity.24 param24) {}
+  ImageView a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private yvx(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new RelativeLayout(paramContext);
+    paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.a = new ImageView(paramContext);
+    this.a.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramViewGroup.addView(this.a);
+    return paramViewGroup;
+  }
+  
+  public void a(yvv paramyvv, int paramInt)
+  {
+    super.a(paramyvv, paramInt);
+    Object localObject = paramyvv.a.a;
+    if ((localObject != null) && (localObject.length > 0))
     {
-    }
-    do
-    {
-      do
+      localObject = localObject[0];
+      if ((localObject != null) && (((wkp)localObject).jdField_a_of_type_Int == 1))
       {
-        return true;
-      } while (QRDisplayActivity.a(this.a.this$0) == null);
-      QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
-      return true;
-      if (QRDisplayActivity.a(this.a.this$0) != null) {
-        QRDisplayActivity.a(this.a.this$0).cancel();
+        localObject = ((wkp)localObject).jdField_a_of_type_Wko;
+        if (localObject != null)
+        {
+          float f = ypx.a(this.a.getResources()) / ((wko)localObject).d;
+          paramyvv = new File(paramyvv.c, ((wko)localObject).jdField_a_of_type_JavaLangString);
+          yry.a().a(this.a.getContext(), this.a, paramyvv.toURI().toString(), (int)(((wko)localObject).b * f), (int)(((wko)localObject).c * f), null);
+          paramyvv = new RelativeLayout.LayoutParams((int)(((wko)localObject).b * f), (int)(((wko)localObject).c * f));
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x1) != 0) {
+            paramyvv.addRule(9);
+          }
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x2) != 0) {
+            paramyvv.addRule(10);
+          }
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x4) != 0) {
+            paramyvv.addRule(11);
+          }
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x8) != 0) {
+            paramyvv.addRule(12);
+          }
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x10) != 0) {
+            paramyvv.addRule(14);
+          }
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x20) != 0) {
+            paramyvv.addRule(15);
+          }
+          if ((((wko)localObject).jdField_a_of_type_Int & 0x40) != 0) {
+            paramyvv.addRule(13);
+          }
+          if ((((wko)localObject).jdField_a_of_type_ArrayOfInt != null) && (((wko)localObject).jdField_a_of_type_ArrayOfInt.length >= 4))
+          {
+            paramyvv.leftMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[0] * f));
+            paramyvv.topMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[1] * f));
+            paramyvv.rightMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[2] * f));
+            paramyvv.bottomMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[3] * f));
+          }
+          this.a.setLayoutParams(paramyvv);
+        }
       }
-    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
-    bfpm.c(this.a.this$0.d);
-    this.a.this$0.onClick(this.a.this$0.d);
-    return true;
+    }
   }
 }
 

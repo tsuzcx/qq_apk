@@ -1,97 +1,57 @@
-import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apba
+public class apba
 {
   private static apba a;
-  private static apba b;
-  private static apba c;
-  public float a;
-  public float b;
-  public float c;
-  public float d;
   
-  static
+  public static apba a()
   {
-    jdField_a_of_type_Apba = new apba();
-    jdField_b_of_type_Apba = new apba();
-    jdField_c_of_type_Apba = new apba();
+    if (a == null) {
+      a = new apba();
+    }
+    return a;
   }
   
-  public apba a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramFloat4;
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
   }
   
-  public apba a(Matrix4 paramMatrix4)
+  public void a(long paramLong1, long paramLong2)
   {
-    paramMatrix4 = paramMatrix4.val;
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramMatrix4[0];
-    float f3 = this.jdField_b_of_type_Float;
-    float f4 = paramMatrix4[4];
-    float f5 = this.jdField_c_of_type_Float;
-    float f6 = paramMatrix4[8];
-    float f7 = this.d;
-    float f8 = paramMatrix4[12];
-    float f9 = this.jdField_a_of_type_Float;
-    float f10 = paramMatrix4[1];
-    float f11 = this.jdField_b_of_type_Float;
-    float f12 = paramMatrix4[5];
-    float f13 = this.jdField_c_of_type_Float;
-    float f14 = paramMatrix4[9];
-    float f15 = this.d;
-    float f16 = paramMatrix4[13];
-    float f17 = this.jdField_a_of_type_Float;
-    float f18 = paramMatrix4[2];
-    float f19 = this.jdField_b_of_type_Float;
-    float f20 = paramMatrix4[6];
-    float f21 = this.jdField_c_of_type_Float;
-    float f22 = paramMatrix4[10];
-    float f23 = this.d;
-    float f24 = paramMatrix4[14];
-    float f25 = this.jdField_a_of_type_Float;
-    float f26 = paramMatrix4[3];
-    float f27 = this.jdField_b_of_type_Float;
-    float f28 = paramMatrix4[7];
-    float f29 = this.jdField_c_of_type_Float;
-    float f30 = paramMatrix4[11];
-    float f31 = this.d;
-    return a(f1 * f2 + f3 * f4 + f5 * f6 + f7 * f8, f9 * f10 + f11 * f12 + f13 * f14 + f15 * f16, f17 * f18 + f19 * f20 + f21 * f22 + f23 * f24, paramMatrix4[15] * f31 + (f25 * f26 + f27 * f28 + f29 * f30));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
   }
   
-  public boolean equals(Object paramObject)
+  public void b(long paramLong)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (apba)paramObject;
-      if (Float.floatToIntBits(this.jdField_a_of_type_Float) != Float.floatToIntBits(paramObject.jdField_a_of_type_Float)) {
-        return false;
-      }
-      if (Float.floatToIntBits(this.jdField_b_of_type_Float) != Float.floatToIntBits(paramObject.jdField_b_of_type_Float)) {
-        return false;
-      }
-      if (Float.floatToIntBits(this.jdField_c_of_type_Float) != Float.floatToIntBits(paramObject.jdField_c_of_type_Float)) {
-        return false;
-      }
-    } while (Float.floatToIntBits(this.d) == Float.floatToIntBits(paramObject.d));
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
   }
   
-  public int hashCode()
+  public void c(long paramLong)
   {
-    return (((Float.floatToIntBits(this.jdField_a_of_type_Float) + 31) * 31 + Float.floatToIntBits(this.jdField_b_of_type_Float)) * 31 + Float.floatToIntBits(this.jdField_c_of_type_Float)) * 31 + Float.floatToIntBits(this.d);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
   }
 }
 

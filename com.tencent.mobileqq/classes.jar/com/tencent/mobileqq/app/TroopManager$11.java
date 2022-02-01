@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import mqq.os.MqqHandler;
+
 class TroopManager$11
   implements Runnable
 {
@@ -7,7 +11,8 @@ class TroopManager$11
   
   public void run()
   {
-    this.this$0.b(this.a, -1L);
+    TroopInfo localTroopInfo = (TroopInfo)this.this$0.a.find(TroopInfo.class, this.a);
+    ThreadManager.getUIHandler().post(new TroopManager.11.1(this, localTroopInfo));
   }
 }
 

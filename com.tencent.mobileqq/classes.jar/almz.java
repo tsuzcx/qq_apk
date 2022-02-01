@@ -1,99 +1,42 @@
 import android.content.Context;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.StatFs;
-import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.InputSource;
+import java.io.InputStream;
 
 public class almz
+  implements ImageAssetDelegate
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new alna(this, Looper.getMainLooper());
-  private String jdField_a_of_type_JavaLangString = "antiphishingConfig";
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c = 1;
-  private int d = 2;
+  private Context a;
   
-  public static long a()
+  public almz(Context paramContext)
   {
-    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getAvailableBlocks() * l;
+    this.a = paramContext;
   }
   
-  private String a()
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append("/Tencent/com/tencent/mobileqq/antiphishingconfig.xml").toString();
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public ArrayList<String> a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (!this.jdField_a_of_type_Boolean)) {
-      a();
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, Context paramContext)
-  {
-    if (paramInt <= this.jdField_a_of_type_Int)
-    {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "nNewVersion:" + paramInt + "nLocalConfigVer:" + this.jdField_a_of_type_Int + "Do not Need Update!");
-      return;
-    }
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Int == paramInt) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 7200000L))
-    {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "Config Updata, Frequence limited!");
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Int = paramInt;
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "filehash:" + paramString2 + "downloadurl:" + paramString1);
-    ThreadManager.post(new AntiphishingUrlConfig.2(this, paramContext, paramString1, paramString2), 5, null, true);
-  }
-  
-  public void a(String paramString, Context paramContext)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public boolean a()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Parase Config!");
-    Object localObject = a();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = new File((String)localObject);
-    alnd localalnd = new alnd();
     try
     {
-      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localalnd);
-      this.jdField_a_of_type_Int = localalnd.a();
-      this.jdField_a_of_type_JavaUtilArrayList = localalnd.a();
-      return true;
+      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
+      paramLottieImageAsset.close();
+      return localObject;
     }
-    catch (Exception localException)
+    catch (Throwable paramLottieImageAsset)
     {
-      localException.printStackTrace();
+      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
     }
-    return false;
+    return null;
   }
 }
 

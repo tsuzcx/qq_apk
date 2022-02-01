@@ -1,32 +1,8 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import java.util.ArrayList;
 
-class axgx
-  implements AdapterView.OnItemSelectedListener
+public abstract interface axgx
 {
-  private axgx(axgt paramaxgt) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Axgs.a();
-    if (localOnItemSelectedListener != null) {
-      localOnItemSelectedListener.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
-    }
-  }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView)
-  {
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Axgs.a();
-    if (localOnItemSelectedListener != null) {
-      localOnItemSelectedListener.onNothingSelected(paramAdapterView);
-    }
-  }
+  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
 }
 
 

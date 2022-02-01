@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.theme.diy;
 
-import avtb;
-import bdbk;
-import bdbw;
+import awzc;
+import beik;
+import beiw;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements avtb<bdbk>
+  implements awzc<beik>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(bdbk parambdbk)
+  public void postQuery(beik parambeik)
   {
-    if ((parambdbk != null) && (parambdbk.b())) {
+    if ((parambeik != null) && (parambeik.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }

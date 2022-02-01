@@ -1,50 +1,73 @@
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class zwr
+class zwr
+  implements TextWatcher
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  private String b = "";
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public static zwr a(String paramString)
+  zwr(zwk paramzwk) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramString == null) {
-      return null;
+    aadd localaadd = null;
+    if (paramEditable == null) {
+      return;
+    }
+    this.jdField_a_of_type_Zwk.a.removeTextChangedListener(this);
+    String str = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
+    int i = str.indexOf('/');
+    Object localObject = localaadd;
+    if (i >= 0)
+    {
+      localObject = localaadd;
+      if (i < str.length() - 1)
+      {
+        localObject = new aadc(paramEditable.toString());
+        localaadd = new aadd();
+        localaadd.jdField_a_of_type_Float = ((int)(22.0D * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5D));
+        localaadd.jdField_a_of_type_Int = 0;
+        localaadd.jdField_a_of_type_JavaLangCharSequence = paramEditable.toString();
+        aadb.a(localaadd, str, null, (aadc)localObject, null, false);
+      }
+    }
+    if (localObject != null) {
+      i = this.jdField_a_of_type_Zwk.a.getSelectionEnd();
     }
     try
     {
-      zwr localzwr = new zwr();
-      paramString = new JSONObject(paramString);
-      localzwr.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
-      localzwr.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
-      localzwr.b = paramString.optString("md5", "");
-      return localzwr;
+      this.jdField_a_of_type_Zwk.a.setText((CharSequence)localObject);
+      this.jdField_a_of_type_Zwk.a.setSelection(i);
+      this.b = 0;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Zwk.a.addTextChangedListener(this);
+      return;
     }
-    catch (Exception paramString)
+    catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
     {
-      paramString.printStackTrace();
+      for (;;)
+      {
+        this.jdField_a_of_type_Zwk.a.setText(paramEditable.toString());
+        i = paramEditable.toString().length();
+      }
     }
-    return null;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public JSONObject a()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
+    if (paramCharSequence == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt3;
   }
 }
 

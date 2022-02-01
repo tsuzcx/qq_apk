@@ -1,30 +1,55 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adqs
-  implements ActionMode.Callback
+  extends CardObserver
 {
-  public adqs(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public adqs(ChatSettingActivity paramChatSettingActivity) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    return false;
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
+        {
+          String str = ContactUtils.getFriendNick(this.a.app, ChatSettingActivity.a(this.a));
+          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.b(this.a)))) {
+            ChatSettingActivity.a(this.a, str);
+          }
+        }
+        if ((this.a.h != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.h);
+        }
+      }
+      return;
+    }
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramMenu.clear();
-    return false;
+    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return false;
+    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
   }
 }
 

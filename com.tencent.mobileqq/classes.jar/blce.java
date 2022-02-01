@@ -1,14 +1,8 @@
-import android.content.Context;
-import cooperation.qzone.statistic.Singleton;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-
-public final class blce
-  extends Singleton<QzoneHuangzuanVipIconShow, Context>
+public abstract interface blce
 {
-  protected QzoneHuangzuanVipIconShow a(Context paramContext)
-  {
-    return new QzoneHuangzuanVipIconShow(paramContext);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

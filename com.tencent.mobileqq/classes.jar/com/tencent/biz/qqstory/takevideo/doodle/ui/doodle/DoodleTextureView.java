@@ -8,17 +8,17 @@ import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import yeo;
-import yfk;
-import yft;
+import yth;
+import yud;
+import yum;
 
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, yeo
+  implements GLSurfaceView.Renderer, yth
 {
   int jdField_a_of_type_Int = 320;
-  yfk jdField_a_of_type_Yfk;
+  yud jdField_a_of_type_Yud;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -38,8 +38,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Yfk != null) {
-      this.jdField_a_of_type_Yfk.c(paramInt);
+    if (this.jdField_a_of_type_Yud != null) {
+      this.jdField_a_of_type_Yud.c(paramInt);
     }
   }
   
@@ -63,8 +63,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Yfk != null) {
-      this.jdField_a_of_type_Yfk.e();
+    if (this.jdField_a_of_type_Yud != null) {
+      this.jdField_a_of_type_Yud.e();
     }
   }
   
@@ -73,9 +73,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Yfk != null)
+    if (this.jdField_a_of_type_Yud != null)
     {
-      paramGL10 = (yft)this.jdField_a_of_type_Yfk.a(102);
+      paramGL10 = (yum)this.jdField_a_of_type_Yud.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -84,8 +84,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Yfk != null) {
-      this.jdField_a_of_type_Yfk.d();
+    if (this.jdField_a_of_type_Yud != null) {
+      this.jdField_a_of_type_Yud.d();
     }
   }
   
@@ -95,10 +95,10 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(yfk paramyfk)
+  public void setOpController(yud paramyud)
   {
-    this.jdField_a_of_type_Yfk = paramyfk;
-    this.jdField_a_of_type_Yfk.a(this);
+    this.jdField_a_of_type_Yud = paramyud;
+    this.jdField_a_of_type_Yud.a(this);
     super.queueEvent(new DoodleTextureView.1(this));
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
 import Override;
-import afhz;
+import afze;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -47,10 +47,10 @@ public class ConfessHalfScreenActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167276);
-    paramBundle = findViewById(2131363709);
+    getWindow().setBackgroundDrawableResource(2131167296);
+    paramBundle = findViewById(2131363780);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167276);
+      paramBundle.setBackgroundResource(2131167296);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
     if (this.jdField_a_of_type_Int <= 0)
@@ -61,7 +61,7 @@ public class ConfessHalfScreenActivity
       finish();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afhz(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afze(this);
     }
     try
     {
@@ -116,7 +116,7 @@ public class ConfessHalfScreenActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity
  * JD-Core Version:    0.7.0.1
  */

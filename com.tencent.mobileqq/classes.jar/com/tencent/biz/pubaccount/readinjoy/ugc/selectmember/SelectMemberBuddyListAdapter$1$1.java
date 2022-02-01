@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
 import android.view.View;
-import ror;
+import sbg;
 
 public class SelectMemberBuddyListAdapter$1$1
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$1$1(ror paramror, View paramView) {}
+  public SelectMemberBuddyListAdapter$1$1(sbg paramsbg, View paramView) {}
   
   public void run()
   {

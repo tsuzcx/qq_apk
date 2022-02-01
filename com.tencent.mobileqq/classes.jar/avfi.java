@@ -1,17 +1,18 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfi
   implements View.OnClickListener
 {
-  public avfi(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public avfi(ImgHeaderView paramImgHeaderView, Activity paramActivity, MessageRecord paramMessageRecord) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

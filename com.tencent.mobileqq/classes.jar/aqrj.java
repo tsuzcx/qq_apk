@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenFullToast;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
 public class aqrj
-  implements View.OnClickListener
+  implements aims
 {
-  public aqrj(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
+  public aqrj(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((ColorNoteSmallScreenService.a(this.a) != null) && (ColorNoteSmallScreenService.a(this.a).a()))
+    {
+      ColorNoteSmallScreenService.a(this.a).a();
+      ColorNoteSmallScreenService.a(this.a).b();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.onClick(this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast);
+  }
+  
+  public void b()
+  {
+    ColorNoteSmallScreenService.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
   }
 }
 

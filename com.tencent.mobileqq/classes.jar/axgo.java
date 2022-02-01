@@ -1,21 +1,34 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class axgo
+  implements axex
 {
-  public static int a(Context paramContext)
+  public axgo(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void a()
   {
-    int i = NetworkUtil.getNetworkType(paramContext);
-    if (i == 1) {
-      return 2;
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).a();
     }
-    if (i == 2) {
-      return 3;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (MultiCardFragment.a(this.a) != null)
+    {
+      MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      MultiCardFragment.a(this.a).setScrollState(2);
+      MultiCardFragment.a(this.a).fling(-paramInt);
     }
-    if (i == 3) {
-      return 4;
+  }
+  
+  public boolean a()
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      return MultiCardFragment.a(this.a).a();
     }
-    return 1;
+    return true;
   }
 }
 

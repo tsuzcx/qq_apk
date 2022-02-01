@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.LinearLayout;
 
-public class qun
-  implements View.OnClickListener
+class qun
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public qun(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  qun(quh paramquh) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ComponentContentNoteCard.a(this.a).onClick(ComponentContentNoteCard.a(this.a).a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    quh.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    quh.a(this.a).requestLayout();
   }
 }
 

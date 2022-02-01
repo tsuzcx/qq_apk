@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import aopt;
-import aopu;
+import apsu;
+import apsv;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,16 +9,16 @@ import java.util.Iterator;
 public class ArkAppMusicModule$GlobalMusicCallback$1
   implements Runnable
 {
-  public ArkAppMusicModule$GlobalMusicCallback$1(aopu paramaopu, int paramInt) {}
+  public ArkAppMusicModule$GlobalMusicCallback$1(apsv paramapsv, int paramInt) {}
   
   public void run()
   {
-    Iterator localIterator = aopt.a.iterator();
+    Iterator localIterator = apsu.a.iterator();
     while (localIterator.hasNext())
     {
-      aopt localaopt = (aopt)((WeakReference)localIterator.next()).get();
-      if (localaopt != null) {
-        localaopt.a(this.a);
+      apsu localapsu = (apsu)((WeakReference)localIterator.next()).get();
+      if (localapsu != null) {
+        localapsu.a(this.a);
       }
     }
   }

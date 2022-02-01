@@ -72,13 +72,13 @@ public class PanoramaGuideAnimate
     setOrientation(1);
     setGravity(1);
     this.imgPhone = new ImageView(this.context);
-    this.imgPhone.setImageResource(2130847535);
+    this.imgPhone.setImageResource(2130847626);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
     addView(this.imgPhone, localLayoutParams);
     this.tvToast = new TextView(this.context);
     if (paramInt == 1) {
-      this.tvToast.setText(this.context.getResources().getString(2131716902));
+      this.tvToast.setText(this.context.getResources().getString(2131717265));
     }
     for (;;)
     {
@@ -90,7 +90,7 @@ public class PanoramaGuideAnimate
       this.imgPhone.setTranslationX(0.0F);
       startTimer();
       return;
-      this.tvToast.setText(this.context.getResources().getString(2131716903));
+      this.tvToast.setText(this.context.getResources().getString(2131717266));
     }
   }
   

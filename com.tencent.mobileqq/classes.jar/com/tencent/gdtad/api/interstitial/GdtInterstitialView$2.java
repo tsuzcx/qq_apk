@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmm;
-import abrl;
+import accc;
+import acho;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -18,9 +18,9 @@ public final class GdtInterstitialView$2
     }
     for (;;)
     {
-      abrl.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+      acho.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      WeakReference localWeakReference = abmm.a().a(this.jdField_a_of_type_JavaLangString);
+      WeakReference localWeakReference = accc.a().a(this.jdField_a_of_type_JavaLangString);
       if (localWeakReference != null)
       {
         if (localWeakReference.get() == null)
@@ -29,7 +29,7 @@ public final class GdtInterstitialView$2
         }
         else
         {
-          ((GdtInterstitialFragment)localWeakReference.get()).a(4, this.jdField_a_of_type_Int, this.b, -2147483648, -2147483648L);
+          ((GdtInterstitialFragment)localWeakReference.get()).a(4, this.jdField_a_of_type_Int, this.b, -2147483648);
           bool = true;
         }
       }

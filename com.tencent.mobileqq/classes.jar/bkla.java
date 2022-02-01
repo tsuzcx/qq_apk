@@ -1,16 +1,54 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bkla
+class bkla
+  extends BroadcastReceiver
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bkkx jdField_a_of_type_Bkkx;
-  bkkz jdField_a_of_type_Bkkz;
+  private bkla(bkky parambkky) {}
   
-  bkla(Context paramContext, bkkz parambkkz, bkkx parambkkx)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bkkz = parambkkz;
-    this.jdField_a_of_type_Bkkx = parambkkx;
+    if (bkky.a(this.a).getContext() == null) {
+      return;
+    }
+    paramContext = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        String str1 = paramIntent.getStringExtra("file_path");
+        String str2 = paramIntent.getStringExtra("video_thumb_path");
+        long l = paramIntent.getLongExtra("video_duration", 0L);
+        boolean bool = paramIntent.getBooleanExtra("is_video", false);
+        paramContext.put("filePath", ((IMiniAppFileManager)bkky.b(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str1));
+        if (!bool) {
+          continue;
+        }
+        i = 1;
+        paramContext.put("isVideo", i);
+        if (bool)
+        {
+          paramContext.put("videoDuration", (l + 999L) / 1000L);
+          paramContext.put("cover", ((IMiniAppFileManager)bkky.c(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str2));
+        }
+      }
+      catch (JSONException paramIntent)
+      {
+        int i;
+        paramIntent.printStackTrace();
+        continue;
+      }
+      QLog.e("LaunchCameraPlugin", 1, "data: " + paramContext);
+      bkky.a(this.a, "custom_event_checkin_onCameraInfoEvent", paramContext.toString());
+      return;
+      i = 0;
+    }
   }
 }
 

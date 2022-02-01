@@ -1,15 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class qpm
-  implements bjrf
+  implements ViewBase.OnClickListener
 {
-  qpm(qpk paramqpk) {}
+  qpm(qph paramqph, qfw paramqfw) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onClick(ViewBase paramViewBase)
   {
-    qpk.a(this.a, (pvc)this.a.a, paramInt, paramArrayList, paramObject);
+    qph.a(this.jdField_a_of_type_Qph, this.jdField_a_of_type_Qfw, paramViewBase);
+    qph.a(this.jdField_a_of_type_Qph, this.jdField_a_of_type_Qfw.a());
   }
 }
 

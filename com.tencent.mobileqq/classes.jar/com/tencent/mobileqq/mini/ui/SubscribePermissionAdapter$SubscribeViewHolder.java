@@ -16,9 +16,9 @@ public class SubscribePermissionAdapter$SubscribeViewHolder
   public SubscribePermissionAdapter$SubscribeViewHolder(View paramView)
   {
     super(paramView);
-    this.contentTextView = ((TextView)paramView.findViewById(2131379471));
-    this.detailImageView = ((ImageView)paramView.findViewById(2131369153));
-    this.authSwitch = ((Switch)paramView.findViewById(2131378040));
+    this.contentTextView = ((TextView)paramView.findViewById(2131379780));
+    this.detailImageView = ((ImageView)paramView.findViewById(2131369315));
+    this.authSwitch = ((Switch)paramView.findViewById(2131378328));
   }
 }
 

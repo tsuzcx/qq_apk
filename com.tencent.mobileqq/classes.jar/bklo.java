@@ -1,6 +1,16 @@
-public abstract interface bklo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1;
+
+public class bklo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public bklo(TroopAlbumPlugin.2.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

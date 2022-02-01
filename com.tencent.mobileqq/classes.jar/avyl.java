@@ -1,30 +1,98 @@
-import android.os.Build.VERSION;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Looper;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class avyl
 {
+  private static aaut a = new aaut(BaseApplicationImpl.sApplication);
+  
   public static void a()
   {
-    if (Build.VERSION.SDK_INT > 25)
+    try
     {
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().runFinalization();
+      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new avym(90001) });
     }
-    for (;;)
+    catch (NoSuchMethodException localNoSuchMethodException2)
     {
-      return;
-      int i = 0;
-      while (i < 2)
+      try
       {
-        ArrayList localArrayList = new ArrayList();
-        do
-        {
-          localArrayList.add(new WeakReference(new byte[100]));
-        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
-        i += 1;
+        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new avym(90002) });
       }
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new avym(90003) });
+            try
+            {
+              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new avym(90004) });
+              return;
+            }
+            catch (NoSuchMethodException localNoSuchMethodException4)
+            {
+              bhbx.a(localNoSuchMethodException4);
+            }
+            localNoSuchMethodException1 = localNoSuchMethodException1;
+            bhbx.a(localNoSuchMethodException1);
+            continue;
+            localNoSuchMethodException2 = localNoSuchMethodException2;
+            bhbx.a(localNoSuchMethodException2);
+          }
+        }
+        catch (NoSuchMethodException localNoSuchMethodException3)
+        {
+          for (;;)
+          {
+            bhbx.a(localNoSuchMethodException3);
+          }
+        }
+      }
+    }
+  }
+  
+  private static void b(boolean paramBoolean, int paramInt)
+  {
+    String str = null;
+    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject != null) {
+      str = ((QQAppInterface)localObject).getCurrentAccountUin();
+    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
+  }
+  
+  private static void c()
+  {
+    if (BaseApplicationImpl.sImageCache != null) {
+      BaseApplicationImpl.sImageCache.evictAll();
+    }
+    System.gc();
+    Thread.yield();
+    System.gc();
+    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
+    try
+    {
+      Thread.sleep(1000L);
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
     }
   }
 }

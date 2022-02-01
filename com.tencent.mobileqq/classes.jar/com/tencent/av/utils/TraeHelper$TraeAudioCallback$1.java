@@ -1,12 +1,12 @@
 package com.tencent.av.utils;
 
 import android.media.MediaPlayer.OnCompletionListener;
-import mui;
+import mvg;
 
 public class TraeHelper$TraeAudioCallback$1
   implements Runnable
 {
-  public TraeHelper$TraeAudioCallback$1(mui parammui, MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public TraeHelper$TraeAudioCallback$1(mvg parammvg, MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
   
   public void run()
   {

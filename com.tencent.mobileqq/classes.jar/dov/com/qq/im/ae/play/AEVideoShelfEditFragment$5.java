@@ -2,7 +2,7 @@ package dov.com.qq.im.ae.play;
 
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import bmbx;
+import bnrh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
 import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
@@ -35,7 +35,7 @@ class AEVideoShelfEditFragment$5
     AEVideoShelfEditFragment.access$800(this.this$0);
     if (AEVideoShelfEditFragment.access$900(this.this$0).isEmpty())
     {
-      bmbx.c("AEVideoShelfEditFrag", "init NodeGroup Error!");
+      bnrh.c("AEVideoShelfEditFrag", "init NodeGroup Error!");
       return;
     }
     paramVoid = new ArrayList();

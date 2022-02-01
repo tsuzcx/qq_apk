@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.transfile.BaseTransFileController;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class awkd
-  extends BaseTransFileController
+final class awkd
+  implements DialogInterface.OnClickListener
 {
-  private NearbyAppInterface a;
-  
-  public awkd(NearbyAppInterface paramNearbyAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramNearbyAppInterface);
-    this.a = paramNearbyAppInterface;
-  }
-  
-  public void destroy() {}
-  
-  public BaseTransProcessor getProcessor(TransferRequest paramTransferRequest)
-  {
-    if (paramTransferRequest == null) {}
-    do
-    {
-      return null;
-      if ((paramTransferRequest.mFileType == 8) || (paramTransferRequest.mFileType == 64) || (paramTransferRequest.mFileType == 21)) {
-        return new NearbyPeoplePhotoUploadProcessor(this, paramTransferRequest);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.richmedia.TransFileController", 2, paramTransferRequest.toString());
-    return null;
+    bdla.b(null, "CliOper", "", "", "0X800A971", "0X800A971", 0, 0, "0", "0", "0", "");
   }
 }
 

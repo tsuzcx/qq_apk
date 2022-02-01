@@ -1,57 +1,19 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqnn
-  implements aqnm
+  extends aofu
 {
-  private Handler a;
+  public aqnn(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
   
-  public Resources a()
+  protected void onOIDB0XA80_0_Ret(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    return BaseApplicationImpl.getApplication().getResources();
-  }
-  
-  public Handler a()
-  {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
+    if (QLog.isColorLevel()) {
+      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
     }
-    return this.a;
-  }
-  
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
-  {
-    try
-    {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
+    if (paramBoolean) {
+      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
     }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 26;
-  }
-  
-  public boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 11;
   }
 }
 

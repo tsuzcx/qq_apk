@@ -1,10 +1,14 @@
-public abstract interface pqz
+import android.content.Context;
+
+final class pqz
+  implements ttx
 {
-  public abstract void a();
+  pqz(Context paramContext, String paramString) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void a()
+  {
+    pkh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

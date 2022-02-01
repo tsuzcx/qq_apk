@@ -1,11 +1,11 @@
 package cooperation.qzone.music;
 
 import NS_NEXTRADIO_QZONEBGMUSIC.BroadcastForQzone;
-import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -147,7 +147,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = amtj.a(2131700356);
+        localObject2 = anvx.a(2131700707);
       }
       return localObject2;
     }

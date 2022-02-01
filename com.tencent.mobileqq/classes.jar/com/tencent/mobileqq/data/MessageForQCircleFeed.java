@@ -22,8 +22,10 @@ public class MessageForQCircleFeed
   public static final String MSG_QCIRCLE_FEED_KEY_IMAGE_COUNT = "imageCount";
   public static final String MSG_QCIRCLE_FEED_KEY_IS_FIRST_MSG_WITH_NEWFRIEND = "isFirstMsgWithNewFriend";
   public static final String MSG_QCIRCLE_FEED_KEY_LBS_INFO = "lbsinfo";
+  public static final String MSG_QCIRCLE_FEED_KEY_LIKE_COUNT = "likeCount";
   public static final String MSG_QCIRCLE_FEED_KEY_LIKE_NUMS = "likeNums";
   public static final String MSG_QCIRCLE_FEED_KEY_MEDIA_DATAS = "mediaDatas";
+  public static final String MSG_QCIRCLE_FEED_KEY_PUSH_COUNT = "pushCount";
   public static final String MSG_QCIRCLE_FEED_KEY_SUMMERY = "summery";
   public static final String MSG_QCIRCLE_FEED_KEY_TIME = "time";
   public static final String MSG_QCIRCLE_FEED_KEY_TITLE = "title";
@@ -46,8 +48,10 @@ public class MessageForQCircleFeed
   public boolean isFirstMsgWithNewFriend;
   public boolean isOldStructMsg;
   public String lbsInfo;
+  public int likeCount;
   public HashMap<String, String> mapExt;
   public ArrayList<MessageForQCircleFeed.MediaData> mediaDatas;
+  public int pushCount;
   public String summery;
   public String title;
   public int type;
@@ -108,6 +112,8 @@ public class MessageForQCircleFeed
       this.content = this.feedMsg.optString("content");
       this.coverImageUrl = this.feedMsg.optString("coverImageUrl");
       this.imageCount = this.feedMsg.optInt("imageCount");
+      this.pushCount = this.feedMsg.optInt("pushCount");
+      this.likeCount = this.feedMsg.optInt("likeCount");
       this.actionUrl = this.feedMsg.optString("actionUrl");
       this.ulikeNum = this.feedMsg.optInt("likeNums");
       this.uCommentNum = this.feedMsg.optInt("commentNums");
@@ -159,7 +165,7 @@ public class MessageForQCircleFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQCircleFeed
  * JD-Core Version:    0.7.0.1
  */

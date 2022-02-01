@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import bgve;
-import bgzt;
+import bifw;
+import bikl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -408,7 +408,7 @@ public class QzoneSettingJsPlugin
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131717797), 0);
+      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131718179), 0);
       paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
       QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeGet-:" + i);
       return true;
@@ -446,7 +446,7 @@ public class QzoneSettingJsPlugin
     }
     paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.syncNoPhotoSetting"));
     QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeSetting-:" + i);
-    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131717797), i);
+    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131718179), i);
     return true;
   }
   
@@ -497,8 +497,8 @@ public class QzoneSettingJsPlugin
       boolean bool = localJSONObject.optBoolean("hidden");
       localJSONObject.optBoolean("disable");
       paramWebViewPlugin = paramWebViewPlugin.mRuntime.a(paramWebViewPlugin.mRuntime.a());
-      if ((paramWebViewPlugin != null) && ((paramWebViewPlugin instanceof bgzt))) {
-        ((bgzt)paramWebViewPlugin).setRightButton(paramArrayOfString, paramJsBridgeListener, null, bool, i + 1000, 0, null, null);
+      if ((paramWebViewPlugin != null) && ((paramWebViewPlugin instanceof bikl))) {
+        ((bikl)paramWebViewPlugin).setRightButton(paramArrayOfString, paramJsBridgeListener, null, bool, i + 1000, 0, null, null);
       }
     }
     catch (JSONException paramJsBridgeListener)
@@ -690,7 +690,7 @@ public class QzoneSettingJsPlugin
         paramArrayOfString.printStackTrace();
       }
     }
-    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131717792) + l, true);
+    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131718174) + l, true);
     if (bool) {
       i = 1;
     }
@@ -726,7 +726,7 @@ public class QzoneSettingJsPlugin
         continue;
       }
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowQzoneRemindfeedSetting-:" + bool);
-      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131717792) + l, bool);
+      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131718174) + l, bool);
       return true;
       bool = true;
     }

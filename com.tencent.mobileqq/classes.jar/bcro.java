@@ -1,836 +1,454 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.1;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.utils.FileUtils;
+import AccostSvc.RespClientMsg;
+import AccostSvc.RespDeleteBlackList;
+import AccostSvc.RespGetBlackList;
+import AccostSvc.RespHeader;
+import AccostSvc.RespInsertBlackList;
+import AccostSvc.SvrMsg;
+import MessageSvcPack.RequestPushStatus;
+import MessageSvcPack.SvcResponseDelMsgV2;
+import MessageSvcPack.SvcResponseDelRoamMsg;
+import MessageSvcPack.SvcResponseGetMsgV2;
+import MessageSvcPack.SvcResponsePullGroupMsgSeq;
+import MessageSvcPack.SvcResponseSetRoamMsg;
+import OnlinePushPack.SvcReqPushMsg;
+import PushAdMsg.AdMsgInfo;
+import PushNotifyPack.RequestPushNotify;
+import PushNotifyPack.SvcRequestPushReadedNotify;
+import QQService.RespGetSign;
+import QQService.RespOffFilePack;
+import QQService.RespTmpChatPicDownload;
+import QQService.SCPushStreamMsg;
+import QQService.SCRespUploadStreamMsg;
+import QQService.StreamData;
+import QQService.StreamInfo;
+import android.os.Bundle;
+import android.os.RemoteException;
+import com.qq.jce.wup.UniPacket;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class bcro
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private bcrs jdField_a_of_type_Bcrs;
-  private bcrt jdField_a_of_type_Bcrt;
-  private bcru jdField_a_of_type_Bcru;
-  private bcrv jdField_a_of_type_Bcrv;
-  private bcrw jdField_a_of_type_Bcrw;
-  private bcrz jdField_a_of_type_Bcrz;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private static final String a = MessageHandler.class.getSimpleName();
   
-  private bcqw a(bcrc parambcrc, JSONObject paramJSONObject)
+  private <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
   {
-    int n;
-    Object localObject1;
-    Object localObject3;
-    label38:
-    Object localObject2;
-    int i1;
-    int i;
-    Paint localPaint;
-    Object localObject5;
-    int k;
-    Object localObject4;
-    int i4;
-    if ((parambcrc instanceof SpriteGLView))
-    {
-      n = 4;
-      localObject1 = paramJSONObject.optString("text");
-      if (!(parambcrc instanceof SpriteGLView)) {
-        break label764;
-      }
-      localObject3 = new bcsi((SpriteGLView)parambcrc);
-      ((bcqw)localObject3).c(1.0F / n);
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_Bcrv != null) {
-        localObject2 = this.jdField_a_of_type_Bcrv.a((bcrb)localObject3, (String)localObject1);
-      }
-      i1 = paramJSONObject.optInt("textSize", 20) * n;
-      i = Color.parseColor(paramJSONObject.optString("textColor"));
-      localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      localPaint.setColor(i);
-      localPaint.setTextSize(i1);
-      localObject5 = paramJSONObject.optJSONObject("size");
-      k = (int)localPaint.measureText((String)localObject2);
-      localObject4 = paramJSONObject.optString("imageRight");
-      i4 = paramJSONObject.optInt("imagePadding") * n;
-      if (TextUtils.isEmpty((CharSequence)localObject4)) {
-        break label961;
-      }
-      if (this.jdField_a_of_type_Bcru == null) {
-        break label955;
-      }
-      localObject1 = this.jdField_a_of_type_Bcru.a((bcrb)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-      label205:
-      if (localObject1 != null) {
-        break label817;
-      }
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    label817:
-    label946:
-    label955:
-    label961:
-    for (;;)
-    {
-      int j;
-      int m;
-      int i2;
-      float f2;
-      float f1;
-      float f6;
-      float f3;
-      float f5;
-      try
-      {
-        localObject4 = bfvo.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-        localObject1 = localObject4;
-        if (localObject1 == null) {
-          break label946;
-        }
-        i = ((Bitmap)localObject1).getWidth();
-        j = ((Bitmap)localObject1).getHeight();
-        j *= n;
-        i *= n;
-        if (localObject5 == null) {
-          break label935;
-        }
-        if (((JSONObject)localObject5).optInt("width") == 0) {
-          break label932;
-        }
-        k = ((JSONObject)localObject5).optInt("width") * n;
-        if (((JSONObject)localObject5).optInt("height") == 0) {
-          break label925;
-        }
-        m = ((JSONObject)localObject5).optInt("height") * n;
-        if (this.jdField_a_of_type_Bcrv != null) {
-          this.jdField_a_of_type_Bcrv.a(k - i - i4, (String)localObject2, localPaint);
-        }
-        localObject2 = a(k - i - i4, (String)localObject2, localPaint);
-        i2 = m;
-        m = k;
-        if (this.jdField_a_of_type_Bcrv == null) {
-          break label919;
-        }
-        k = this.jdField_a_of_type_Bcrv.a(m, i, i4, (String)localObject2, localPaint);
-        i3 = k;
-        if (k == 0) {
-          i3 = (int)localPaint.measureText((String)localObject2);
-        }
-        i = i + i3 + i4;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        int i3;
-        float f7;
-        float f4;
-        label764:
-        if (QLog.isColorLevel()) {
-          QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(localOutOfMemoryError));
-        }
-      }
-      try
-      {
-        localObject4 = Bitmap.createBitmap(m, i2, Bitmap.Config.ARGB_8888);
-        localObject5 = new Canvas((Bitmap)localObject4);
-        ((Canvas)localObject5).drawColor(-16777216, PorterDuff.Mode.CLEAR);
-        f7 = i1 * 0.8F;
-        f2 = 0.0F;
-        f1 = 0.0F;
-        f4 = 0.0F;
-        f6 = 0.0F;
-        f3 = 0.0F;
-        f5 = 0.0F;
-        paramJSONObject = paramJSONObject.optString("gravity");
-        if (paramJSONObject == null) {
-          break label913;
-        }
-        if (!paramJSONObject.contains("left")) {
-          break label858;
-        }
-        f1 = 0.0F;
-        if (!paramJSONObject.contains("top")) {
-          break label877;
-        }
-        f2 = 0.0F;
-        f3 = f5;
-        f4 = f2;
-        if (paramJSONObject.equals("center"))
-        {
-          f1 = (m - i) / 2;
-          f4 = (i2 - i1) / 2;
-          f3 = (i2 - j) / 2;
-        }
-        if (paramJSONObject.contains("center_horizontal")) {
-          f1 = (m - i) / 2;
-        }
-        f2 = f1;
-        if (!paramJSONObject.contains("center_vertical")) {
-          break label913;
-        }
-        f2 = (i2 - i1) / 2;
-        f3 = (i2 - j) / 2;
-        f4 = f2;
-        f2 = f1;
-        f1 = f3;
-        if ((this.jdField_a_of_type_Bcrv == null) || (!this.jdField_a_of_type_Bcrv.a((Canvas)localObject5, (String)localObject2, f2, f4, f7, m, i2, localPaint))) {
-          ((Canvas)localObject5).drawText((String)localObject2, f2, f4 + f7, localPaint);
-        }
-        if (localObject1 != null)
-        {
-          paramJSONObject = new Matrix();
-          paramJSONObject.postScale(n, n);
-          f3 = i4;
-          paramJSONObject.postTranslate(i3 + (f3 + f2), f1);
-          ((Canvas)localObject5).drawBitmap((Bitmap)localObject1, paramJSONObject, localPaint);
-        }
-        ((bcrb)localObject3).a(parambcrc, (Bitmap)localObject4);
-      }
-      catch (OutOfMemoryError parambcrc)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("SceneBuilder", 2, "buildLabel" + QLog.getStackTraceString(parambcrc));
-        return localObject3;
-      }
-      return localObject3;
-      n = 1;
-      break;
-      localObject3 = new bcsv((SpriteNativeView)parambcrc);
-      break label38;
-      continue;
-      label858:
-      if (paramJSONObject.contains("right"))
-      {
-        f1 = m - i;
-        continue;
-        label877:
-        f3 = f5;
-        f2 = f6;
-        if (paramJSONObject.contains("bottom"))
-        {
-          f2 = i2 - i1;
-          f3 = i2 - j;
-          continue;
-          f1 = f3;
-          continue;
-          k = 0;
-          continue;
-          m = i1;
-          continue;
-          continue;
-          i2 = i1;
-          m = k;
-          continue;
-          j = 0;
-          i = 0;
-          continue;
-          localObject1 = null;
-          break label205;
-          localObject1 = null;
-          j = 0;
-          i = 0;
-        }
-      }
-    }
-  }
-  
-  private bcqw a(bcrc parambcrc, JSONObject paramJSONObject, bcra parambcra)
-  {
-    Object localObject1 = null;
-    Object localObject3 = paramJSONObject.optString("type");
-    if ("layer".equals(localObject3)) {
-      if ((parambcrc instanceof SpriteGLView)) {
-        localObject1 = new bcsf((SpriteGLView)parambcrc);
-      }
-    }
-    Object localObject6;
-    label134:
-    int i;
-    int j;
-    label412:
-    label457:
-    Object localObject2;
-    while (localObject1 == null)
-    {
-      localObject3 = null;
-      return localObject3;
-      localObject1 = new bcst((SpriteNativeView)parambcrc);
-      continue;
-      if ("image".equals(localObject3))
-      {
-        localObject1 = null;
-        Object localObject4 = paramJSONObject.optString("path");
-        localObject6 = paramJSONObject.optString("event");
-        if ((parambcrc instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)parambcrc;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new bcsi((SpriteGLView)localObject3);
-            if (this.jdField_a_of_type_Bcru != null) {
-              localObject1 = this.jdField_a_of_type_Bcru.a((bcrb)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
-            }
-            if (localObject1 != null) {
-              break label412;
-            }
-          }
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              localObject4 = bfvo.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
-              localObject1 = localObject3;
-              if (localObject4 == null) {
-                break;
-              }
-              localObject1 = paramJSONObject.optJSONObject("size");
-              if (localObject1 == null) {
-                break label457;
-              }
-              i = ((JSONObject)localObject1).optInt("width");
-              j = ((JSONObject)localObject1).optInt("height");
-            }
-            catch (OutOfMemoryError localOutOfMemoryError2)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError2));
-              }
-            }
-            try
-            {
-              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, j, true);
-              ((bcrb)localObject3).a(parambcrc, (Bitmap)localObject1);
-              localObject1 = localObject3;
-            }
-            catch (OutOfMemoryError localOutOfMemoryError1)
-            {
-              if (!QLog.isColorLevel()) {
-                break label457;
-              }
-              QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError1));
-            }
-          }
-          localObject3 = new bcsc((SpriteGLView)localObject3, true, (String)localObject6);
-          ((bcsc)localObject3).a(new bcrp(this, parambcra, (String)localObject6));
-          break label134;
-          localObject3 = (SpriteNativeView)parambcrc;
-          if (TextUtils.isEmpty((CharSequence)localObject6))
-          {
-            localObject3 = new bcsv((SpriteNativeView)localObject3);
-            break label134;
-          }
-          localObject3 = new bcss((SpriteNativeView)localObject3, (String)localObject6);
-          ((bcss)localObject3).a(new bcrq(this, parambcra, (bcqw)localObject3, (String)localObject6));
-          break label134;
-          localObject5 = localObject1;
-          continue;
-          localObject2 = localObject5;
-        }
-      }
-      if ("video".equals(localObject3))
-      {
-        if ((parambcrc instanceof SpriteGLView))
-        {
-          localObject3 = (SpriteGLView)parambcrc;
-          localObject2 = new VideoSprite((SpriteGLView)localObject3, ((SpriteGLView)localObject3).getContext(), true);
-          ((VideoSprite)localObject2).c(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
-          if (paramJSONObject.optBoolean("isKey", false)) {
-            ((SpriteGLView)localObject3).setVideoTimeGetter((VideoSprite)localObject2);
-          }
-          if (paramJSONObject.optBoolean("autoClose", false)) {
-            ((VideoSprite)localObject2).a(this.jdField_a_of_type_Bcrz);
-          }
-          ((VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
-        }
-        else
-        {
-          localObject2 = (SpriteNativeView)parambcrc;
-          localObject3 = this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path");
-          localObject2 = new bcsw((SpriteNativeView)localObject2, (String)localObject3);
-          ((bcsw)localObject2).a((String)localObject3, paramJSONObject.optBoolean("isLooping", false));
-        }
-      }
-      else if ("label".equals(localObject3)) {
-        localObject2 = a(parambcrc, paramJSONObject);
-      }
-    }
-    ((bcqw)localObject2).a(paramJSONObject.optString("name"));
-    ((bcqw)localObject2).a(paramJSONObject.optInt("tag"));
-    ((bcqw)localObject2).a((float)paramJSONObject.optDouble("x", 0.0D));
-    ((bcqw)localObject2).b((float)paramJSONObject.optDouble("y", 0.0D));
-    ((bcqw)localObject2).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
-    ((bcqw)localObject2).c(((bcqw)localObject2).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
-    ((bcqw)localObject2).d((float)paramJSONObject.optDouble("rotate", 0.0D));
-    ((bcqw)localObject2).e(((bcqw)parambcra).a());
-    localObject3 = paramJSONObject.optJSONArray("actions");
-    if (localObject3 != null) {
-      ((bcqw)localObject2).a(a((JSONArray)localObject3));
-    }
-    Object localObject5 = paramJSONObject.optJSONObject("frames");
-    if (localObject5 != null)
-    {
-      localObject3 = new bcqx();
-      ((bcqx)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("fps");
-      localObject5 = ((JSONObject)localObject5).optJSONArray("datas");
-      j = ((JSONArray)localObject5).length();
-      ((bcqx)localObject3).jdField_a_of_type_ArrayOfBcqy = new bcqy[j];
-      i = 0;
-      while (i < j)
-      {
-        ((bcqx)localObject3).jdField_a_of_type_ArrayOfBcqy[i] = new bcqy();
-        localObject6 = ((JSONArray)localObject5).optJSONObject(i);
-        localObject3.jdField_a_of_type_ArrayOfBcqy[i].jdField_a_of_type_Float = ((JSONObject)localObject6).optInt("x");
-        localObject3.jdField_a_of_type_ArrayOfBcqy[i].b = ((JSONObject)localObject6).optInt("y");
-        i += 1;
-      }
-      ((bcqw)localObject2).a((bcqx)localObject3);
-    }
-    localObject3 = paramJSONObject.optString("horizontal_align");
-    if (localObject3 != null)
-    {
-      if (((String)localObject3).equals("left")) {
-        ((bcqw)localObject2).c(0);
-      }
-    }
-    else
-    {
-      label1028:
-      localObject3 = paramJSONObject.optString("vertical_align");
-      if (localObject3 != null)
-      {
-        if (!((String)localObject3).equals("top")) {
-          break label1180;
-        }
-        ((bcqw)localObject2).d(0);
-      }
-    }
-    for (;;)
-    {
-      localObject3 = localObject2;
-      if (!(localObject2 instanceof bcra)) {
-        break;
-      }
-      localObject5 = (bcra)localObject2;
-      paramJSONObject = paramJSONObject.optJSONArray("children");
-      j = paramJSONObject.length();
-      i = 0;
-      for (;;)
-      {
-        localObject3 = localObject2;
-        if (i >= j) {
-          break;
-        }
-        localObject3 = a(parambcrc, paramJSONObject.getJSONObject(i), parambcra);
-        if (localObject3 != null) {
-          ((bcra)localObject5).a((bcqw)localObject3);
-        }
-        i += 1;
-      }
-      if (((String)localObject3).equals("right"))
-      {
-        ((bcqw)localObject2).c(1);
-        break label1028;
-      }
-      if (!((String)localObject3).equals("center")) {
-        break label1028;
-      }
-      ((bcqw)localObject2).c(2);
-      break label1028;
-      label1180:
-      if (((String)localObject3).equals("bottom")) {
-        ((bcqw)localObject2).d(1);
-      } else if (((String)localObject3).equals("center")) {
-        ((bcqw)localObject2).d(2);
-      }
-    }
-  }
-  
-  private bcra a(bcrc parambcrc, String paramString)
-  {
-    Object localObject1;
-    if ((parambcrc instanceof SpriteGLView))
-    {
-      localObject1 = new bcsf((SpriteGLView)parambcrc);
-      if (paramString != null) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      return localObject1;
-      localObject1 = new bcst((SpriteNativeView)parambcrc);
-      break;
-      try
-      {
-        label43:
-        paramString = new JSONObject(paramString);
-        Object localObject2 = paramString.optJSONObject("size");
-        int i = ((JSONObject)localObject2).optInt("width");
-        int j = ((JSONObject)localObject2).optInt("height");
-        this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localObject2 = ((ViewGroup)parambcrc).getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-          ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
-          ((ViewGroup)parambcrc).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          ((bcqw)localObject1).c(this.jdField_a_of_type_Float);
-          if (this.jdField_a_of_type_Bcrw != null) {
-            this.jdField_a_of_type_Bcrw.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
-          }
-        }
-        paramString = paramString.optJSONArray("scene");
-        if (paramString != null)
-        {
-          j = paramString.length();
-          i = 0;
-          while (i < j)
-          {
-            localObject2 = a(parambcrc, paramString.getJSONObject(i), (bcra)localObject1);
-            if (localObject2 != null) {
-              ((bcra)localObject1).a((bcqw)localObject2);
-            }
-            i += 1;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-      }
-      catch (Exception parambcrc) {}
-    }
-    QLog.e("SceneBuilder", 2, "buildFromJson" + QLog.getStackTraceString(parambcrc));
-    return localObject1;
-  }
-  
-  private bcre a(JSONObject paramJSONObject)
-  {
-    Object localObject1 = null;
-    JSONObject localJSONObject = null;
-    Object localObject2 = paramJSONObject.optString("type");
-    String str = paramJSONObject.optString("timeType");
-    int j = paramJSONObject.optInt("duration");
-    if (((String)localObject2).equals("sequence")) {
-      localObject1 = new bcrn(a(paramJSONObject.optJSONArray("actions")));
-    }
-    label513:
-    label516:
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        ((bcre)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
-        if (str != null)
-        {
-          if (!str.equals("linear")) {
-            break label473;
-          }
-          ((bcre)localObject1).e = 0;
-        }
-        label102:
-        if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_Bcrz != null)) {
-          ((bcre)localObject1).a(new bcrr(this));
-        }
-      }
-      return localObject1;
-      if (((String)localObject2).equals("delay"))
-      {
-        localObject1 = new bcrg(j);
-      }
-      else
-      {
-        if (((String)localObject2).equals("position"))
-        {
-          localJSONObject = paramJSONObject.optJSONObject("from");
-          localObject2 = paramJSONObject.optJSONObject("to");
-          if ((this.jdField_a_of_type_Bcrs == null) || (!"$POSITIONX$".equals(((JSONObject)localObject2).optString("x")))) {
-            break label513;
-          }
-          bcrd[] arrayOfbcrd = this.jdField_a_of_type_Bcrs.a(localJSONObject, (JSONObject)localObject2, this.jdField_a_of_type_Float);
-          if ((arrayOfbcrd == null) || (arrayOfbcrd.length != 2)) {
-            break label513;
-          }
-          localObject1 = new bcri(j, arrayOfbcrd[0].jdField_a_of_type_Float, arrayOfbcrd[0].b, arrayOfbcrd[1].jdField_a_of_type_Float, arrayOfbcrd[1].b);
-        }
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label516;
-          }
-          localObject1 = new bcri(j, (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"), (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"));
-          break;
-          if (((String)localObject2).equals("scale"))
-          {
-            localObject1 = new bcrm(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
-            break;
-          }
-          if (((String)localObject2).equals("alpha"))
-          {
-            localObject1 = new bcrk(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
-            break;
-          }
-          localObject1 = localJSONObject;
-          if (!((String)localObject2).equals("rotate")) {
-            break;
-          }
-          localObject1 = new bcrl(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
-          break;
-          label473:
-          if (str.equals("easeIn"))
-          {
-            ((bcre)localObject1).e = 1;
-            break label102;
-          }
-          if (!str.equals("easeOut")) {
-            break label102;
-          }
-          ((bcre)localObject1).e = 2;
-          break label102;
-        }
-      }
-    }
-  }
-  
-  public static String a(int paramInt, String paramString, Paint paramPaint)
-  {
-    String str2 = "";
-    if (paramInt <= 0) {}
-    float f;
-    do
-    {
-      return paramString;
-      f = paramPaint.measureText("...");
-    } while ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt);
-    int i = paramString.length() - 1;
-    for (;;)
-    {
-      String str1 = str2;
-      if (i > 0)
-      {
-        if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt) {
-          str1 = paramString.substring(0, i) + "...";
-        }
-      }
-      else {
-        return str1;
-      }
-      i -= 1;
-    }
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    StringBuffer localStringBuffer;
-    Object localObject;
-    if (paramFile.exists())
-    {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
-    }
-    else
-    {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject = FileUtils.readFileToString((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label225;
-        }
-        if (localObject[i].startsWith("﻿")) {
-          localObject[i] = localObject[i].replace("﻿", "");
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i]);
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label218;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("SceneBuilder", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
-        return false;
-      }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("SceneBuilder", 2, "isAnimationPackageValid IOException");
-      return false;
-      label218:
-      i += 1;
-    }
-    label225:
-    return true;
-  }
-  
-  private bcre[] a(JSONArray paramJSONArray)
-  {
-    int j = paramJSONArray.length();
-    bcre[] arrayOfbcre = new bcre[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfbcre[i] = a(paramJSONArray.optJSONObject(i));
-      i += 1;
-    }
-    return arrayOfbcre;
-  }
-  
-  private static String b(String paramString)
-  {
+    UniPacket localUniPacket = new UniPacket(true);
     try
     {
-      localInputStreamReader = new InputStreamReader(new FileInputStream(new File(paramString)));
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
     }
-    catch (Exception paramString)
+    catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        label66:
-        localBufferedReader = null;
-        InputStreamReader localInputStreamReader = null;
-      }
+      return null;
     }
+    catch (RuntimeException paramArrayOfByte) {}
+    return null;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, int paramInt, String paramString, long paramLong)
+  {
+    FromServiceMsg localFromServiceMsg = new FromServiceMsg(paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
+    localFromServiceMsg.extraData.putLong("ServerReplyCode", paramLong);
+    localFromServiceMsg.setBusinessFail(paramInt, paramInt, paramString);
     try
     {
-      localBufferedReader = new BufferedReader(localInputStreamReader);
-      try
-      {
-        paramString = new StringBuilder();
-        for (;;)
-        {
-          String str = localBufferedReader.readLine();
-          if (str == null) {
-            break;
-          }
-          paramString.append(str);
-          paramString.append('\n');
-        }
-        paramString.printStackTrace();
+      if (paramToServiceMsg.actionListener != null) {
+        paramToServiceMsg.actionListener.onActionResult(localFromServiceMsg);
       }
-      catch (Exception paramString) {}
+      return;
     }
-    catch (Exception paramString)
-    {
-      localBufferedReader = null;
-      break label66;
+    catch (RemoteException paramToServiceMsg) {}
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, long paramLong)
+  {
+    a(paramToServiceMsg, 1001, "", paramLong);
+  }
+  
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("push", 2, "decodeVideoChatStatus");
     }
-    if (localBufferedReader != null) {}
-    try
+    return null;
+  }
+  
+  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    RespGetSign localRespGetSign = (RespGetSign)a(paramFromServiceMsg.getWupBuffer(), "RespGetSign", new RespGetSign());
+    if ((localRespGetSign == null) || (localRespGetSign.iReplyCode != 0))
     {
-      localBufferedReader.close();
-      if (localInputStreamReader != null) {}
-      try
+      if (localRespGetSign == null) {}
+      for (long l = 2139062143L;; l = localRespGetSign.iReplyCode)
       {
-        localInputStreamReader.close();
+        a(paramToServiceMsg, l);
+        paramFromServiceMsg.extraData.putLong("ServerReplyCode", l);
         return null;
       }
-      catch (IOException paramString)
+    }
+    return new bcrq(this, localRespGetSign.vKey, localRespGetSign.vSign);
+  }
+  
+  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = (SCRespUploadStreamMsg)a(paramFromServiceMsg.getWupBuffer(), "SCRespUploadStreamMsg", new SCRespUploadStreamMsg());
+    if (paramToServiceMsg == null) {
+      return null;
+    }
+    paramFromServiceMsg = paramToServiceMsg.stStreamInfo;
+    return new bcrr(bdnl.a(paramFromServiceMsg.iMsgId, 0), paramToServiceMsg.shResetSeq, paramFromServiceMsg.shFlowLayer, paramFromServiceMsg, paramToServiceMsg.result);
+  }
+  
+  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = (SCPushStreamMsg)a(paramFromServiceMsg.getWupBuffer(), "SCPushStreamMsg", new SCPushStreamMsg());
+    if (paramToServiceMsg == null) {
+      return null;
+    }
+    paramFromServiceMsg = paramToServiceMsg.stStreamInfo;
+    StreamData localStreamData = paramToServiceMsg.stStreamData;
+    long l = paramToServiceMsg.lKey;
+    Object[] arrayOfObject = new Object[6];
+    arrayOfObject[0] = Long.valueOf(l);
+    arrayOfObject[1] = paramFromServiceMsg;
+    arrayOfObject[2] = localStreamData;
+    arrayOfObject[3] = Long.valueOf(paramToServiceMsg.bubbleID);
+    arrayOfObject[4] = Long.valueOf(paramToServiceMsg.subBubbleId);
+    arrayOfObject[5] = Long.valueOf(paramToServiceMsg.diyAddonId);
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "decodeServerPushStream: iSeq:" + paramToServiceMsg.iSeq + ", lKey: " + l + ", vipBubbleID:" + arrayOfObject[3] + ", subBubbleId:" + arrayOfObject[4] + ", diyAddonId:" + arrayOfObject[5]);
+    }
+    return arrayOfObject;
+  }
+  
+  private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
+    paramFromServiceMsg = new byte[paramToServiceMsg.length - 4];
+    System.arraycopy(paramToServiceMsg, 4, paramFromServiceMsg, 0, paramToServiceMsg.length - 4);
+    return (RequestPushNotify)a(paramFromServiceMsg, "req_PushNotify", new RequestPushNotify());
+  }
+  
+  private Object g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (SvrMsg)a(paramFromServiceMsg.getWupBuffer(), "SvrMsg", new SvrMsg());
+  }
+  
+  private Object h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (RespGetBlackList)a(paramFromServiceMsg.getWupBuffer(), "RespGetBlackList", new RespGetBlackList());
+  }
+  
+  private Object i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    RespInsertBlackList localRespInsertBlackList = (RespInsertBlackList)a(paramFromServiceMsg.getWupBuffer(), "RespInsertBlackList", new RespInsertBlackList());
+    paramFromServiceMsg.extraData.putString("insertUin", paramToServiceMsg.extraData.getString("insertUin"));
+    paramToServiceMsg = localRespInsertBlackList;
+    if (localRespInsertBlackList.stHeader.eReplyCode != 0) {
+      paramToServiceMsg = null;
+    }
+    return paramToServiceMsg;
+  }
+  
+  private Object j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    RespDeleteBlackList localRespDeleteBlackList = (RespDeleteBlackList)a(paramFromServiceMsg.getWupBuffer(), "RespDeleteBlackList", new RespDeleteBlackList());
+    paramFromServiceMsg.extraData.putString("deleteUin", paramToServiceMsg.extraData.getString("deleteUin"));
+    paramToServiceMsg = localRespDeleteBlackList;
+    if (localRespDeleteBlackList.stHeader.eReplyCode != 0) {
+      paramToServiceMsg = null;
+    }
+    return paramToServiceMsg;
+  }
+  
+  private Object k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (RespClientMsg)a(paramFromServiceMsg.getWupBuffer(), "RespClientMsg", new RespClientMsg());
+  }
+  
+  private Object l(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (SvcReqPushMsg)a(paramFromServiceMsg.getWupBuffer(), "req", new SvcReqPushMsg());
+  }
+  
+  private Object m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (SvcRequestPushReadedNotify)a(paramFromServiceMsg.getWupBuffer(), "req", new SvcRequestPushReadedNotify());
+  }
+  
+  private Object n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = (RespTmpChatPicDownload)a(paramFromServiceMsg.getWupBuffer(), "RespTmpChatPicDownload", new RespTmpChatPicDownload());
+    paramToServiceMsg = paramFromServiceMsg;
+    if (paramFromServiceMsg == null) {
+      paramToServiceMsg = null;
+    }
+    return paramToServiceMsg;
+  }
+  
+  private Object o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = (SvcResponseGetMsgV2)a(paramFromServiceMsg.getWupBuffer(), "resp_GetMsgV2", new SvcResponseGetMsgV2());
+    if (paramToServiceMsg != null)
+    {
+      awoi.a("Video", "Receive message packet: seq = " + paramFromServiceMsg.getRequestSsoSeq() + " size = " + paramToServiceMsg.vMsgInfos.size());
+      return paramToServiceMsg;
+    }
+    return null;
+  }
+  
+  private Object p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramToServiceMsg = (SvcResponseDelMsgV2)a(paramFromServiceMsg.getWupBuffer(), "resp_DelMsgV2", new SvcResponseDelMsgV2());
+    if (paramToServiceMsg != null) {
+      return paramToServiceMsg;
+    }
+    return null;
+  }
+  
+  private Object q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    RespOffFilePack localRespOffFilePack = (RespOffFilePack)a(paramFromServiceMsg.getWupBuffer(), "RespOffFilePack", new RespOffFilePack());
+    paramToServiceMsg.extraData.getLong("msgTime");
+    byte b1 = paramToServiceMsg.extraData.getByte("type");
+    paramToServiceMsg.extraData.getString("friendUin");
+    if ((localRespOffFilePack == null) || (localRespOffFilePack.iReplyCode != 0))
+    {
+      paramToServiceMsg = paramFromServiceMsg.extraData;
+      if (localRespOffFilePack == null) {}
+      for (l1 = 2139062143L;; l1 = localRespOffFilePack.iReplyCode)
       {
-        paramString.printStackTrace();
+        paramToServiceMsg.putLong("ServerReplyCode", l1);
         return null;
       }
-      localBufferedReader.close();
-      localInputStreamReader.close();
-      paramString = paramString.toString();
-      return paramString;
     }
-    catch (IOException paramString)
+    byte b2 = localRespOffFilePack.vBody[0];
+    long l1 = PkgTools.getLongData(localRespOffFilePack.vBody, 1);
+    int i = PkgTools.getShortData(localRespOffFilePack.vBody, 5);
+    paramFromServiceMsg = new byte[i];
+    PkgTools.copyData(paramFromServiceMsg, 0, localRespOffFilePack.vBody, 7, i);
+    paramFromServiceMsg = PkgTools.getUTFString(paramFromServiceMsg, 0, i);
+    i += 7;
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "<<<<decodeGetOffLineFileResp cSubCmd:" + b2);
+    }
+    long l2;
+    long l3;
+    long l4;
+    long l5;
+    byte[] arrayOfByte;
+    switch (b2)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
+    case 4: 
+    case 5: 
+    default: 
+      return null;
+    case 1: 
+      l2 = PkgTools.getLongLongData(localRespOffFilePack.vBody, i);
+      i += 8;
+      l3 = PkgTools.getLongLongData(localRespOffFilePack.vBody, i);
+      i += 8;
+      l4 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      i += 4;
+      l5 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      i += 4;
+      short s = PkgTools.getShortData(localRespOffFilePack.vBody, i);
+      j = i + 2;
+      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      j += 2;
+      paramToServiceMsg = new byte[i];
+      PkgTools.copyData(paramToServiceMsg, 0, localRespOffFilePack.vBody, j, paramToServiceMsg.length);
+      j += paramToServiceMsg.length;
+      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      j += 2;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, localRespOffFilePack.vBody, j, arrayOfByte.length);
+      i = j + arrayOfByte.length;
+      byte b3 = localRespOffFilePack.vBody[i];
+      i += 1;
+      long l6 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      if (QLog.isColorLevel()) {
+        QLog.d("wk", 2, "" + l1 + "|" + l5 + "|" + s + "|" + paramToServiceMsg + "|" + arrayOfByte + "|" + b3);
       }
+      return new bcrp(this, l1, paramFromServiceMsg, b2, b1, l2, l3, l4, l5, s, paramToServiceMsg, arrayOfByte, b3, l6);
+    case 2: 
+      return new bcrp(this, l1, paramFromServiceMsg, b2, b1);
+    case 3: 
+      j = localRespOffFilePack.vBody[i];
+      i += 1;
+      PkgTools.getShortData(localRespOffFilePack.vBody, i);
+      i += 2;
+      PkgTools.getShortData(localRespOffFilePack.vBody, i);
+      i += 2;
+      PkgTools.getShortData(localRespOffFilePack.vBody, i);
+      i += 2;
+      PkgTools.getShortData(localRespOffFilePack.vBody, i);
+      i += 2;
+      j = localRespOffFilePack.vBody[i];
+      i += 1;
+      l2 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      j = i + 4;
+      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      j += 2;
+      PkgTools.copyData(new byte[i], 0, localRespOffFilePack.vBody, j, i);
+      j += i;
+      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      j += 2;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, localRespOffFilePack.vBody, j, i);
+      j += i;
+      i = localRespOffFilePack.vBody[j];
+      j += 1;
+      PkgTools.copyData(new byte[i], 0, localRespOffFilePack.vBody, j, i);
+      j += i;
+      i = localRespOffFilePack.vBody[j];
+      j += 1;
+      PkgTools.copyData(new byte[i], 0, localRespOffFilePack.vBody, j, i);
+      j += i;
+      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      j += 2;
+      Object localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, localRespOffFilePack.vBody, j, i);
+      localObject = PkgTools.getUTFString((byte[])localObject, 0, i);
+      i = j + i;
+      j = localRespOffFilePack.vBody[i];
+      i += 1;
+      l3 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      i += 4;
+      l4 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      i += 4;
+      PkgTools.getShortData(localRespOffFilePack.vBody, i);
+      i += 2;
+      PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      i += 4;
+      l5 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      if (QLog.isColorLevel()) {
+        QLog.i(a, 2, "<<<<decodeGetOffLineFileResp dwUploadTime = " + l5);
+      }
+      return new bcrp(this, l1, paramFromServiceMsg, b2, b1, l2, HexUtil.bytes2HexStr(arrayOfByte), l4, paramToServiceMsg.extraData.getLong("msgTime"), paramToServiceMsg.extraData.getShort("msgSeq"), l3, (String)localObject, paramToServiceMsg.extraData.getLong("delUin"));
     }
+    int j = PkgTools.getShortData(localRespOffFilePack.vBody, i);
+    paramToServiceMsg = new byte[j];
+    PkgTools.copyData(paramToServiceMsg, 0, localRespOffFilePack.vBody, i + 2, j);
+    return new bcrp(this, l1, paramFromServiceMsg, b2, b1, paramToServiceMsg);
   }
   
-  public bcro a(int paramInt)
+  private Object r(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return (SvcResponseSetRoamMsg)a(paramFromServiceMsg.getWupBuffer(), "resp_SetRoamMsg", new SvcResponseSetRoamMsg());
   }
   
-  public bcro a(bcrt parambcrt)
+  private Object s(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bcrt = parambcrt;
-    return this;
+    return (SvcResponseDelRoamMsg)a(paramFromServiceMsg.getWupBuffer(), "resp_DelRoamMsg", new SvcResponseDelRoamMsg());
   }
   
-  public bcro a(bcru parambcru)
+  private Object t(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bcru = parambcru;
-    return this;
+    return (AdMsgInfo)a(paramFromServiceMsg.getWupBuffer(), "PushADMsg", new AdMsgInfo());
   }
   
-  public bcro a(bcrv parambcrv)
+  private Object u(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bcrv = parambcrv;
-    return this;
+    paramToServiceMsg = (SvcResponsePullGroupMsgSeq)a(paramFromServiceMsg.getWupBuffer(), "resp_PullGroupMsgSeq", new SvcResponsePullGroupMsgSeq());
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "decodePullGroupMsgNumResp res" + paramToServiceMsg);
+    }
+    return paramToServiceMsg;
   }
   
-  public bcro a(bcrw parambcrw)
+  private Object v(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bcrw = parambcrw;
-    return this;
+    return (RequestPushStatus)a(paramFromServiceMsg.getWupBuffer(), "req_PushStatus", new RequestPushStatus());
   }
   
-  public bcro a(bcrz parambcrz)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bcrz = parambcrz;
-    return this;
-  }
-  
-  public bcro a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void a(bcrc parambcrc, bcrx parambcrx)
-  {
-    ThreadManager.post(new SceneBuilder.1(this, parambcrc, parambcrx), 8, null, true);
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "decodeRespMsg cmd: " + str);
+    }
+    if ("MessageSvc.PushNotify".equalsIgnoreCase(str)) {
+      return f(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.GetMsgV4".equalsIgnoreCase(str)) {
+      return o(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.DelMsgV2".equalsIgnoreCase(str)) {
+      return p(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("TransService.ReqOffFilePack".equalsIgnoreCase(str)) {
+      return q(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("TransService.ReqTmpChatPicDownload".equalsIgnoreCase(str)) {
+      return n(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.SetRoamMsgAllUser".equalsIgnoreCase(str)) {
+      return r(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.DelRoamMsg".equalsIgnoreCase(str)) {
+      return s(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("ADMsgSvc.PushMsg".equalsIgnoreCase(str)) {
+      return t(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("OnlinePush.ReqPush".equalsIgnoreCase(str)) {
+      return l(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.PushReaded".equalsIgnoreCase(str)) {
+      return m(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("TransService.ReqGetSign".equalsIgnoreCase(str)) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("StreamSvr.RespUploadStreamMsg".equalsIgnoreCase(str)) {
+      return d(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.SendVideoMsg".equalsIgnoreCase(str)) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("StreamSvr.PushStreamMsg".equalsIgnoreCase(str)) {
+      return e(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("AccostSvc.ClientMsg".equals(str)) {
+      return k(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("AccostSvc.ReqInsertBlackList".equals(str)) {
+      return i(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("AccostSvc.ReqDeleteBlackList".equals(str)) {
+      return j(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("AccostSvc.ReqGetBlackList".equals(str)) {
+      return h(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("AccostSvc.SvrMsg".equals(str)) {
+      return g(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.PullGroupMsgSeq".equalsIgnoreCase(str)) {
+      return u(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MessageSvc.RequestPushStatus".equalsIgnoreCase(str)) {
+      return v(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcro
  * JD-Core Version:    0.7.0.1
  */

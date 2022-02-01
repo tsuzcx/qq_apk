@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import slk;
-import sll;
+import syu;
+import syv;
 
 public class KandianTipFloatingWindow$1
   implements Runnable
 {
-  public KandianTipFloatingWindow$1(slk paramslk, sll paramsll, View paramView) {}
+  public KandianTipFloatingWindow$1(syu paramsyu, syv paramsyv, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sll.a.onClick(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Syv.a.onClick(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

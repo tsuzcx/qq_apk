@@ -1,17 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
 public class axpa
-  implements ValueAnimator.AnimatorUpdateListener
+  implements INetEventHandler
 {
-  public axpa(ScanOcrView paramScanOcrView, axpb paramaxpb) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public axpa(NearbyJsInterface paramNearbyJsInterface) {}
+  
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Axpb.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    int i = HttpUtil.getNetWorkType();
+    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
+    this.jdField_a_of_type_Int = i;
   }
 }
 

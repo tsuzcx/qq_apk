@@ -1,12 +1,30 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearch;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
-final class bbah
-  implements Comparator<MostUsedSearch>
+public class bbah
+  implements View.OnLongClickListener
 {
-  public int a(MostUsedSearch paramMostUsedSearch1, MostUsedSearch paramMostUsedSearch2)
+  private WeakReference<ReceiptMessageDetailFragment> a;
+  
+  private bbah(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    return Long.signum(paramMostUsedSearch2.latestUsedTime - paramMostUsedSearch1.latestUsedTime);
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
+    }
+    bkzi localbkzi = bkzi.a(paramView.getActivity());
+    localbkzi.b(2131691261);
+    localbkzi.c(2131690697);
+    localbkzi.a(new bbai(this, paramView, localbkzi));
+    localbkzi.show();
+    return true;
   }
 }
 

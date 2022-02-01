@@ -1,6 +1,19 @@
-public abstract interface bhfc
+import java.util.Collection;
+
+public class bhfc
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  public static int a(Collection paramCollection)
+  {
+    if (paramCollection == null) {
+      return 0;
+    }
+    return paramCollection.size();
+  }
+  
+  public static boolean a(Collection paramCollection)
+  {
+    return (paramCollection == null) || (paramCollection.isEmpty());
+  }
 }
 
 

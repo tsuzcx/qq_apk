@@ -1,18 +1,36 @@
-public abstract interface atbi
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+
+public class atbi
+  implements atbo
 {
-  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
+  public atbi(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
+  public View.OnClickListener a(TextView paramTextView)
+  {
+    this.a.a = paramTextView;
+    return new atbj(this);
+  }
   
-  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
+  public boolean a()
+  {
+    return this.a.c;
+  }
   
-  public abstract void updatePage(int paramInt1, int paramInt2);
+  public boolean b()
+  {
+    return this.a.b;
+  }
   
-  public abstract void webLog(String paramString);
+  public boolean c()
+  {
+    return QfileCloudFileTabView.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbi
  * JD-Core Version:    0.7.0.1
  */

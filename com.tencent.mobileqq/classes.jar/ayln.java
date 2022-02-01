@@ -1,53 +1,149 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ayln
-  implements BusinessObserver
+  extends aylp
 {
-  public void a(boolean paramBoolean, String paramString, long paramLong1, long paramLong2) {}
-  
-  public void a(boolean paramBoolean, String paramString, long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ayln(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
+    super(paramContext, paramQQAppInterface);
+  }
+  
+  public int a(ayka paramayka)
+  {
+    return 2;
+  }
+  
+  public View a(ViewGroup paramViewGroup, ayka paramayka)
+  {
+    paramayka = (aylo)paramayka;
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561280, paramViewGroup, false);
+    paramayka.g = ((TextView)paramViewGroup.findViewById(2131380198));
+    paramayka.e = ((ImageView)paramViewGroup.findViewById(2131369488));
+    return paramViewGroup;
+  }
+  
+  public ayka a()
+  {
+    return new aylo(this);
+  }
+  
+  public void d(ayka paramayka)
+  {
+    ayly localayly = (ayly)paramayka.a;
+    if ((localayly.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localayly.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0))
     {
+      ayll.a(this.a, localayly.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 4);
+      return;
     }
-    do
+    super.d(paramayka);
+  }
+  
+  public void f(ayka paramayka)
+  {
+    aylo localaylo = (aylo)paramayka;
+    Object localObject1 = (ayly)localaylo.a;
+    paramayka = ((ayly)localObject1).n;
+    paramayka = bhif.a(this.a, localaylo.a.a, paramayka);
+    Object localObject2;
+    if (TextUtils.isEmpty(paramayka))
     {
-      return;
-      if (paramBoolean)
-      {
-        paramObject = (Object[])paramObject;
-        a(true, (String)paramObject[0], (PersonalityLabel)paramObject[1], (byte[])paramObject[2], ((Integer)paramObject[3]).intValue());
-        return;
+      localaylo.g.setVisibility(8);
+      localObject2 = (String)localaylo.e.getTag(2131378495);
+      if (((ayly)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null) {
+        break label475;
       }
-      a(false, null, null, null, 0);
-      return;
-      paramObject = (Object[])paramObject;
-      if (paramBoolean)
+      paramayka = new File(((ayly)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath + "");
+    }
+    for (boolean bool = paramayka.exists();; bool = false)
+    {
+      label132:
+      int i;
+      if (bool)
       {
-        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), (PersonalityLabelInfo)paramObject[2], ((Integer)paramObject[3]).intValue(), (byte[])paramObject[4]);
-        return;
+        localObject1 = ((ayly)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath;
+        if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+        {
+          localaylo.e.setTag(2131378495, localObject1);
+          localObject2 = (LinearLayout.LayoutParams)localaylo.e.getLayoutParams();
+          i = UIUtils.dip2px(BaseApplicationImpl.getContext(), 180.0F);
+          if (localObject2 != null) {
+            break label368;
+          }
+          localObject2 = new LinearLayout.LayoutParams(-2, -2);
+          localaylo.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
       }
-      if ((paramObject != null) && (paramObject.length > 0))
+      for (;;)
       {
-        a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), null, 0, null);
+        try
+        {
+          localObject2 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130845460);
+          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130845460);
+          ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "profileCard";
+          if (!bool) {
+            continue;
+          }
+          paramayka = URLDrawable.getDrawable(paramayka, (URLDrawable.URLDrawableOptions)localObject2);
+          paramayka.setTag(bgxc.a(DisplayUtil.dip2px(localaylo.e.getContext(), 3.0F), 0, 0));
+          paramayka.setDecodeHandler(bgxc.f);
+          localaylo.e.setImageDrawable(paramayka);
+        }
+        catch (Exception paramayka)
+        {
+          label368:
+          localaylo.e.setImageDrawable(this.a.getResources().getDrawable(2130845460));
+          QLog.i("PicMomentItemBuilder", 1, paramayka.toString());
+          continue;
+        }
+        localaylo.e.setTag(localaylo);
+        localaylo.e.setOnClickListener(this);
         return;
+        localaylo.g.setVisibility(0);
+        if ((paramayka instanceof SpannableString)) {
+          localaylo.g.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        localaylo.g.setText(paramayka);
+        break;
+        localObject1 = ((ayly)localObject1).jdField_a_of_type_JavaLangString;
+        break label132;
+        if ((((LinearLayout.LayoutParams)localObject2).width <= i) && (((LinearLayout.LayoutParams)localObject2).height <= i)) {
+          if (((LinearLayout.LayoutParams)localObject2).weight < ((LinearLayout.LayoutParams)localObject2).height)
+          {
+            ((LinearLayout.LayoutParams)localObject2).height = i;
+            localaylo.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          else
+          {
+            ((LinearLayout.LayoutParams)localObject2).width = i;
+            continue;
+            paramayka = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+          }
+        }
       }
-      a(false, "", -1L, null, 0, null);
-      return;
-      paramObject = (Object[])paramObject;
-      if (paramBoolean)
-      {
-        a(true, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
-        return;
-      }
-    } while (paramObject == null);
-    a(false, (String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
+      label475:
+      paramayka = null;
+    }
   }
 }
 

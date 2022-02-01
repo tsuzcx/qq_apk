@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.ui;
 
-import amtj;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -9,16 +8,17 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bkwm;
+import anvx;
+import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import osu;
-import otx;
-import ouo;
-import oyk;
+import pau;
+import pca;
+import pdp;
+import php;
 
 public class NativeExposeReplyCommentView
   extends FrameLayout
@@ -29,8 +29,8 @@ public class NativeExposeReplyCommentView
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private osu jdField_a_of_type_Osu;
-  private ouo jdField_a_of_type_Ouo;
+  private pau jdField_a_of_type_Pau;
+  private pdp jdField_a_of_type_Pdp;
   private View jdField_b_of_type_AndroidViewView;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -60,13 +60,13 @@ public class NativeExposeReplyCommentView
     a();
   }
   
-  private SubCommentData a(ouo paramouo, int paramInt)
+  private SubCommentData a(pdp parampdp, int paramInt)
   {
-    if ((paramouo != null) && ((paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)))
+    if ((parampdp != null) && ((parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)))
     {
-      paramouo = (CommentData)paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
-      if ((paramouo.subCommentList != null) && (paramouo.subCommentList.size() > paramInt)) {
-        return (SubCommentData)paramouo.subCommentList.get(paramInt);
+      parampdp = (CommentData)parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+      if ((parampdp.subCommentList != null) && (parampdp.subCommentList.size() > paramInt)) {
+        return (SubCommentData)parampdp.subCommentList.get(paramInt);
       }
     }
     return null;
@@ -74,17 +74,17 @@ public class NativeExposeReplyCommentView
   
   private void a()
   {
-    inflate(this.jdField_a_of_type_AndroidContentContext, 2131560176, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366714));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366724));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366725));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376970));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376979));
-    this.d = ((TextView)findViewById(2131376980));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376291));
-    this.e = ((TextView)findViewById(2131376290));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366726);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376981);
+    inflate(this.jdField_a_of_type_AndroidContentContext, 2131560222, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366830));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366840));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366841));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377242));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377251));
+    this.d = ((TextView)findViewById(2131377252));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376546));
+    this.e = ((TextView)findViewById(2131376545));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366842);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131377253);
   }
   
   private void a(int paramInt)
@@ -112,31 +112,31 @@ public class NativeExposeReplyCommentView
   
   private void b()
   {
-    if (!(this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {}
-    while (((CommentData)this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData).subCommentNum < 3) {
+    if (!(this.jdField_a_of_type_Pdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {}
+    while (((CommentData)this.jdField_a_of_type_Pdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData).subCommentNum < 3) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new oyk(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(new oyk(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new oyk(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidWidgetLinearLayout));
-    this.d.setOnTouchListener(new oyk(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidWidgetLinearLayout));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new php(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(new php(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new php(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidWidgetLinearLayout));
+    this.d.setOnTouchListener(new php(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidWidgetLinearLayout));
   }
   
-  public void a(ouo paramouo)
+  public void a(pdp parampdp)
   {
-    if ((paramouo == null) || (paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
-    while (!(paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {
+    if ((parampdp == null) || (parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
+    while (!(parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {
       return;
     }
-    CommentData localCommentData = (CommentData)paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
-    if (!paramouo.a())
+    CommentData localCommentData = (CommentData)parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData;
+    if (!parampdp.a())
     {
       setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_Ouo = paramouo;
+    this.jdField_a_of_type_Pdp = parampdp;
     setVisibility(0);
-    List localList = paramouo.jdField_a_of_type_JavaUtilList;
+    List localList = parampdp.jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
@@ -147,10 +147,10 @@ public class NativeExposeReplyCommentView
     {
       if (i == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramouo.jdField_a_of_type_JavaUtilList.get(i));
-        this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(otx.a());
-        this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)paramouo.b.get(i));
-        this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(otx.a());
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)parampdp.jdField_a_of_type_JavaUtilList.get(i));
+        this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(pca.a());
+        this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)parampdp.b.get(i));
+        this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(pca.a());
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
@@ -161,10 +161,10 @@ public class NativeExposeReplyCommentView
         break;
         if (i == 1)
         {
-          this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)paramouo.jdField_a_of_type_JavaUtilList.get(i));
-          this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(otx.a());
-          this.d.setText((CharSequence)paramouo.b.get(i));
-          this.d.setMovementMethod(otx.a());
+          this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)parampdp.jdField_a_of_type_JavaUtilList.get(i));
+          this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(pca.a());
+          this.d.setText((CharSequence)parampdp.b.get(i));
+          this.d.setMovementMethod(pca.a());
           this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           this.d.setOnClickListener(this);
           this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
@@ -173,7 +173,7 @@ public class NativeExposeReplyCommentView
     }
     if (localCommentData.subCommentNum > 2)
     {
-      this.e.setText(amtj.a(2131706193) + bkwm.a(localCommentData.subCommentNum, 99989500L, "9999万+", "0") + amtj.a(2131706192));
+      this.e.setText(anvx.a(2131706545) + bmhv.a(localCommentData.subCommentNum, 99989500L, "9999万+", "0") + anvx.a(2131706544));
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     }
@@ -209,28 +209,28 @@ public class NativeExposeReplyCommentView
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Osu == null) || (this.jdField_a_of_type_Ouo == null)) {}
+    if ((this.jdField_a_of_type_Pau == null) || (this.jdField_a_of_type_Pdp == null)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_Ouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {
+      if ((this.jdField_a_of_type_Pdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) {
         switch (paramView.getId())
         {
         default: 
           break;
-        case 2131366714: 
-        case 2131366725: 
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130842971);
-          this.jdField_a_of_type_Osu.a(this.jdField_a_of_type_Ouo, a(this.jdField_a_of_type_Ouo, 0), 2);
+        case 2131366830: 
+        case 2131366841: 
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843003);
+          this.jdField_a_of_type_Pau.a(this.jdField_a_of_type_Pdp, a(this.jdField_a_of_type_Pdp, 0), 2);
           break;
-        case 2131376970: 
-        case 2131376980: 
-          this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130842971);
-          this.jdField_a_of_type_Osu.a(this.jdField_a_of_type_Ouo, a(this.jdField_a_of_type_Ouo, 1), 2);
+        case 2131377242: 
+        case 2131377252: 
+          this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843003);
+          this.jdField_a_of_type_Pau.a(this.jdField_a_of_type_Pdp, a(this.jdField_a_of_type_Pdp, 1), 2);
           break;
-        case 2131376291: 
-          this.jdField_a_of_type_Osu.a(this.jdField_a_of_type_Ouo, null, 1);
+        case 2131376546: 
+          this.jdField_a_of_type_Pau.a(this.jdField_a_of_type_Pdp, null, 1);
         }
       }
     }
@@ -246,9 +246,9 @@ public class NativeExposeReplyCommentView
     measure(paramInt1, paramInt2);
   }
   
-  public void setAdapter(osu paramosu)
+  public void setAdapter(pau parampau)
   {
-    this.jdField_a_of_type_Osu = paramosu;
+    this.jdField_a_of_type_Pau = parampau;
   }
 }
 

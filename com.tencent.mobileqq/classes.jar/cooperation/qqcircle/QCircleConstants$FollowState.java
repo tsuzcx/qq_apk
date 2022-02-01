@@ -3,9 +3,9 @@ package cooperation.qqcircle;
 public class QCircleConstants$FollowState
 {
   public static final int FOLLOW = 1;
-  public static final int TOP = 2;
+  public static final int FOLLOWED = 2;
+  public static final int MUTUAL_FOLLOW = 3;
   public static final int UNFOLLOW = 0;
-  public static final int UNTOP = 3;
 }
 
 

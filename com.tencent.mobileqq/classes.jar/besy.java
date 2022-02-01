@@ -1,94 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
-import com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipsLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.22.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 
 public class besy
-  implements aing
+  implements ISuperPlayer.OnCompletionListener
 {
-  public Context a;
-  private final View jdField_a_of_type_AndroidViewView;
-  public betb a;
-  public IndexBar a;
-  public IndexBarTipsLayout a;
-  public QQAppInterface a;
-  public XListView a;
-  private String jdField_a_of_type_JavaLangString = "";
+  public besy(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public besy(QQAppInterface paramQQAppInterface, Context paramContext, TroopChatPie paramTroopChatPie, View paramView, XListView paramXListView)
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Betb = new betb(this, paramTroopChatPie);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Betb);
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368649));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368648));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setOnIndexBarTouchListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setVisibility(8);
-  }
-  
-  public void a(String paramString, int paramInt, float paramFloat)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setText(paramString, paramFloat);
-    }
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      if (!"★".equals(paramString)) {
-        break label50;
-      }
-      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
-    }
-    label50:
-    do
-    {
-      return;
-      paramInt = this.jdField_a_of_type_Betb.a(paramString);
-    } while (paramInt == -1);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(paramInt + this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount());
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
+      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_JavaLangString = "";
-    }
-    IndexBarTipsLayout localIndexBarTipsLayout;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null)
-    {
-      localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
-      if (!paramBoolean) {
-        break label67;
-      }
-    }
-    for (;;)
-    {
-      localIndexBarTipsLayout.setVisibility(i);
-      return;
-      label67:
-      i = 8;
-    }
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.22.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besy
  * JD-Core Version:    0.7.0.1
  */

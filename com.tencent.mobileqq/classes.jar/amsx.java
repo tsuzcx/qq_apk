@@ -1,39 +1,28 @@
-import com.tencent.mobileqq.app.FriendsManager.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import java.util.Observable;
+import java.util.Observer;
 
 public class amsx
-  extends AccountObserver
+  implements Observer
 {
-  amsx(amsw paramamsw) {}
+  public amsx(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    ThreadManager.executeOnSubThread(new FriendsManager.1.1(this, paramString2, paramString1));
-  }
-  
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "onOnlineStatusChanged isSuccess = " + paramBoolean1 + " ,curStatus =  , isUserSet = " + paramStatus + " ,isFriendListChang = " + paramBoolean3 + " ,timeStamp = " + paramLong + " ,isGatherListChange = " + paramBoolean4);
-    }
-    amsw.a(this.a).mAutomator.a(paramBoolean3, paramLong, paramBoolean4);
-    if (!paramBoolean3)
+    if ((paramObject != null) && ((paramObject instanceof Bundle)))
     {
-      amzf localamzf = new amzf(amsw.a(this.a));
-      amsw.a(this.a).mAutomator.a(101, localamzf);
+      paramObservable = (Bundle)paramObject;
+      long l1 = paramObservable.getLong("START_TIME_KEY");
+      long l2 = paramObservable.getLong("END_TIME_KEY");
+      paramObject = paramObservable.getString("MESSAGE");
+      int i = paramObservable.getInt("FROM");
+      int j = paramObservable.getInt("TO");
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+      }
     }
-    ((axvk)amsw.a(this.a).getManager(369)).a(paramBoolean1, paramStatus);
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    super.onOnlineStatusPush(paramStatus, paramLong);
-    ((axvk)amsw.a(this.a).getManager(369)).a(paramLong);
   }
 }
 

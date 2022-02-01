@@ -13,7 +13,7 @@ public class AVUserInfo
   
   public String toString()
   {
-    return "AVUserInfo{account=" + this.account + ", openId='" + this.openId + '\'' + ", accountType=" + this.accountType + ", pstnStatus=" + this.pstnStatus + ", micAuthByAdmin=" + this.micAuthByAdmin + '}';
+    return "AVUserInfo{account=" + this.account + ", openId=[" + this.openId + ']' + ", accountType=" + this.accountType + ", pstnStatus=" + this.pstnStatus + ", micAuthByAdmin=" + this.micAuthByAdmin + '}';
   }
 }
 

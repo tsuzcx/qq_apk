@@ -1,28 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
-final class mnw
-  implements mng
+public class mnw
+  implements Animation.AnimationListener
 {
-  public void a(int paramInt)
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public mnw(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
-    mnu.a(false, paramInt);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lbd.f("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
   }
   
-  public void b(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
-    mnu.a(true, 0);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mnw
  * JD-Core Version:    0.7.0.1
  */

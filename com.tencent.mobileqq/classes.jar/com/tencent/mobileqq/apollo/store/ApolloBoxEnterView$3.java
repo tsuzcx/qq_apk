@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.apollo.store;
 
-import alnr;
+import amme;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfzl;
-import bjng;
+import bhid;
+import bkys;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ApolloPandora;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -51,8 +52,8 @@ class ApolloBoxEnterView$3
       if (localJSONObject == null) {
         return;
       }
-      localalnr = (alnr)localQQAppInterface.getManager(153);
-      localObject2 = localalnr.a(str + "", true);
+      localamme = (amme)localQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
+      localObject2 = localamme.a(str + "", true);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -69,7 +70,7 @@ class ApolloBoxEnterView$3
       ((ApolloPandora)localObject1).boxType = ((short)localJSONObject.optInt("objType"));
       ((ApolloPandora)localObject1).boxSubType = ((short)localJSONObject.optInt("objSubType"));
       if (TextUtils.isEmpty(((ApolloPandora)localObject1).mBoxTipUrl)) {
-        break label551;
+        break label552;
       }
       ((ApolloPandora)localObject1).canSteal = 1;
       ((ApolloPandora)localObject1).hadStolen = 0;
@@ -79,16 +80,16 @@ class ApolloBoxEnterView$3
       QQAppInterface localQQAppInterface;
       String str;
       Object localObject1;
-      alnr localalnr;
+      amme localamme;
       while (QLog.isColorLevel())
       {
         QLog.e("ApolloBoxEnterView", 2, "handleQueryPandora failed ", localException);
         return;
-        label551:
+        label552:
         localException.canSteal = 0;
       }
     }
-    localalnr.a((ApolloPandora)localObject1);
+    localamme.a((ApolloPandora)localObject1);
     if ((ApolloBoxEnterView.a(this.this$0) != null) && (ApolloBoxEnterView.a(this.this$0).equals(String.valueOf(str))))
     {
       ApolloBoxEnterView.a(this.this$0, (ApolloPandora)localObject1);
@@ -96,7 +97,7 @@ class ApolloBoxEnterView$3
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("ApolloBoxEnterView", 2, "handleQueryPandora canSteal: " + ((ApolloPandora)localObject1).canSteal + ", hadStolen: " + ((ApolloPandora)localObject1).hadStolen + ",boxType:" + ((ApolloPandora)localObject1).boxType + ", checkPoint: " + bfzl.a(localQQAppInterface.getApp(), ((ApolloPandora)localObject1).checkPoint * 1000L));
+      QLog.d("ApolloBoxEnterView", 2, "handleQueryPandora canSteal: " + ((ApolloPandora)localObject1).canSteal + ", hadStolen: " + ((ApolloPandora)localObject1).hadStolen + ",boxType:" + ((ApolloPandora)localObject1).boxType + ", checkPoint: " + bhid.a(localQQAppInterface.getApp(), ((ApolloPandora)localObject1).checkPoint * 1000L));
       return;
     }
   }

@@ -1,29 +1,46 @@
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x128.submsgtype0x128.MsgBody;
 
 public class bcth
-  implements AdapterView.OnItemLongClickListener
+  implements bctu
 {
-  public bcth(TableQueryViewer paramTableQueryViewer, Context paramContext) {}
-  
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
   {
-    paramAdapterView = ((bctb)TableQueryViewer.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer).get(paramInt)).b;
-    paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
-    if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
-    {
-      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690532), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendDecoder", 2, "extendfriend limitchat offLinePush receive submsgtype0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message");
     }
-    return true;
+    int i = paramMsgType0x210.sub_msg_type.get();
+    try
+    {
+      paramList = new submsgtype0x128.MsgBody();
+      paramList.mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
+      paramMsgType0x210 = (aslm)paramMessageHandler.app.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+      if (i == 296) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramMsgType0x210.a(paramList, bool);
+        QLog.d("ExtendFriendDecoderExtendFriendLimitChat", 2, "SubMsgType0x27.ChatMatchInfo subType " + i);
+        bcrx.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+        return;
+      }
+      return;
+    }
+    catch (Exception paramMsgType0x210)
+    {
+      QLog.e("ExtendFriendDecoder", 1, "troopFormLog offLinePush receive submsgtype match chat0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message, errInfo->" + paramMsgType0x210.getMessage() + " msgType" + i);
+    }
   }
 }
 

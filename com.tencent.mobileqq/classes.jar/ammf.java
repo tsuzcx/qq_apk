@@ -1,44 +1,50 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class ammf
-  implements alol
+class ammf
+  extends QQLruCache<String, ApolloBaseInfo>
 {
-  public ammf(ApolloPanel paramApolloPanel) {}
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  ammf(amme paramamme, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-    if (this.a.c.getVisibility() == 0)
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public ApolloBaseInfo a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  {
+    if (paramApolloBaseInfo != null) {}
+    try
     {
-      if ((!paramBoolean2) || (paramInt >= 5)) {
-        break label110;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (!paramBoolean1) {
-        break label94;
-      }
-      this.a.a.setVisibility(0);
-      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
+      amme.a(this.a).remove(Long.valueOf(Long.parseLong(paramApolloBaseInfo.uin)));
+      return (ApolloBaseInfo)super.put(paramString, paramApolloBaseInfo);
     }
-    label94:
-    label110:
-    do
+    catch (NumberFormatException localNumberFormatException)
     {
-      ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
-      do
+      for (;;)
       {
-        return;
-      } while (paramInt <= 0);
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        QLog.e("ApolloManager", 1, localNumberFormatException, new Object[0]);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, ApolloBaseInfo paramApolloBaseInfo1, ApolloBaseInfo paramApolloBaseInfo2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramApolloBaseInfo1, paramApolloBaseInfo2);
+    if (paramApolloBaseInfo1 != null) {}
+    try
+    {
+      if (amme.a(this.a).size() < 1024) {
+        amme.a(this.a).add(Long.valueOf(Long.parseLong(paramApolloBaseInfo1.uin)));
+      }
       return;
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    } while ((paramInt != 0) || (!paramBoolean1));
-    this.a.a.setVisibility(8);
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("ApolloManager", 1, paramString, new Object[0]);
+      return;
+    }
+    catch (OutOfMemoryError paramString) {}
   }
 }
 

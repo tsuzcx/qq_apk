@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.graphics.Bitmap;
 
-public class bgrq
-  implements BusinessObserver
+public abstract interface bgrq
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public abstract Bitmap a(String paramString1, String paramString2);
 }
 
 

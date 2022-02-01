@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ny2" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.mobileqq.togetherui.writetogether.SavingAnimView android:id="@id/ny8" android:visibility="gone" android:layout_width="@dimen/bfi" android:layout_height="@dimen/bfi" android:layout_marginRight="@dimen/bfh" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:saving_stroke_width="@dimen/bfj" app:saving_view_color="@color/skin_bar_text" />
-        <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/ny5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ny8" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:gravity="left" android:id="@id/ny7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xle" android:layout_toRightOf="@id/ny8" android:layout_centerVertical="true" android:alpha="0.0" />
-        <com.tencent.mobileqq.togetherui.writetogether.SavingAnimView android:layout_width="@dimen/bfi" android:layout_height="@dimen/bfi" android:layout_marginLeft="@dimen/bfh" android:layout_toRightOf="@id/ny7" android:layout_centerVertical="true" android:alpha="0.0" />
-    </RelativeLayout>
-    <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:id="@id/ny4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/bfr" android:textColor="@color/skin_bar_text" android:id="@id/ny3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+<RelativeLayout android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/nii" android:layout_width="fill_parent" android:layout_height="250.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/xai" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/nj5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/xah" style="@style/i0" />
+    </LinearLayout>
 </RelativeLayout>

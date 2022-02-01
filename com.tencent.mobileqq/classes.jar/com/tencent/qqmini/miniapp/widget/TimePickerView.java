@@ -36,7 +36,7 @@ public class TimePickerView
   private TimePickerView.OnConfirmListener mOnConfirmListener;
   private TimePicker mTimePicker;
   private int minute;
-  private int minuteMaxValue;
+  private int minuteMaxValue = 59;
   private int minuteMinValue;
   private NumberPicker minuteNumberPicker;
   

@@ -1,34 +1,77 @@
-import android.graphics.Color;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class xap
-  extends wrx
+public class xap
+  extends BaseAdapter
 {
-  xap(xao paramxao) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void d()
+  public xap(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
   {
-    super.d();
-    if (LiuHaiUtils.b(this.a.b()))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(List<TroopInfo> paramList)
+  {
+    if (paramList != null)
     {
-      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363657);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      localLayoutParams.height = xao.a(this.a);
-      if (!ScreenUtil.checkDeviceHasNavigationBar(this.a.a.getContext())) {
-        localLinearLayout.setBackgroundColor(Color.parseColor("#181818"));
-      }
-      localLinearLayout.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
   }
   
-  public void g()
+  public int getCount()
   {
-    super.g();
-    xao.a(this.a).a();
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    TroopInfo localTroopInfo = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      paramView = new xaq(this);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561865, null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368115));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371981));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
+      Object localObject = wzk.a().getTroopFaceDrawable(localTroopInfo.troopuin);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (xaq)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
   }
 }
 

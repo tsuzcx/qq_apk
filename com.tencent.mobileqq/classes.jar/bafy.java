@@ -1,54 +1,45 @@
-import android.annotation.TargetApi;
-import android.view.Surface;
-import com.tencent.ttpic.openapi.filter.TextureRender;
+import android.view.View;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
-@TargetApi(14)
-public class bafy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileExtendFriendSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileExtendFriendSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileExtendFriendSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "profileExtendFriendTv", "Landroid/widget/TextView;", "getProfileExtendFriendTv", "()Landroid/widget/TextView;", "setProfileExtendFriendTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bafy
+  extends RecyclerView.ViewHolder
 {
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private bafv jdField_a_of_type_Bafv;
-  private bafw jdField_a_of_type_Bafw;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  @NotNull
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  @NotNull
+  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
-  public void a()
+  public bafy(@NotNull View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
-    {
-      this.jdField_a_of_type_AndroidViewSurface.release();
-      this.jdField_a_of_type_AndroidViewSurface = null;
+    super(paramView);
+    View localView = paramView.findViewById(2131366319);
+    if (localView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
     }
-    if (this.jdField_a_of_type_Bafw != null)
-    {
-      this.jdField_a_of_type_Bafw.a();
-      this.jdField_a_of_type_Bafw = null;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
+    paramView = paramView.findViewById(2131366323);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
     }
-    if (this.jdField_a_of_type_Bafv != null)
-    {
-      this.jdField_a_of_type_Bafv.a();
-      this.jdField_a_of_type_Bafv = null;
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
   }
   
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
+  @NotNull
+  public final TextView a()
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-    this.jdField_a_of_type_Bafw.a(paramLong);
-    this.jdField_a_of_type_Bafw.a();
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
   
-  public void a(bafx parambafx, Surface paramSurface)
+  @NotNull
+  public final FormSwitchItem a()
   {
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    this.jdField_a_of_type_Bafv = new bafv(parambafx.a(), 1);
-    this.jdField_a_of_type_Bafw = new bafw(this.jdField_a_of_type_Bafv);
-    this.jdField_a_of_type_Bafw.a(paramSurface);
-    this.jdField_a_of_type_Bafw.b();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   }
 }
 

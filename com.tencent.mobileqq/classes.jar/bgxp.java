@@ -1,62 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bgxp
-  implements Handler.Callback
+final class bgxp
+  implements DownloadParams.DecodeHandler
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final bgxq jdField_a_of_type_Bgxq;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  
-  public bgxp(bgxq parambgxq)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bgxq = parambgxq;
-    this.jdField_a_of_type_AndroidOsHandler = new bjng(Looper.getMainLooper(), this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.b = false;
-    do
+    paramDownloadParams = paramDownloadParams.tag;
+    if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_Bgxq.a(paramBundle))
-        {
-        }
-      }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+      int i = ((int[])(int[])paramDownloadParams)[0];
+      GdtSmartBlur.a().a(paramBitmap, i);
     }
-    if (!this.b) {
-      a(paramMessage.getData());
-    }
-    return true;
+    return paramBitmap;
   }
 }
 

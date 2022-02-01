@@ -1,112 +1,89 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class betz
+final class betz
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ArrayList<betv> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private long d;
+  betz(beua parambeua) {}
   
-  public betz()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public betz(long paramLong1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, ArrayList<betv> paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = (System.currentTimeMillis() + paramInt1 * 1000);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_c_of_type_Int = (paramInt4 * 1000);
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.d = paramLong2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public betv a(long paramLong)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      betv localbetv = (betv)localIterator.next();
-      if (localbetv.c() == paramLong) {
-        return localbetv;
-      }
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = localContext.getString(2131696005);
+    Object localObject2 = null;
+    int i = -1;
+    if (paramBoolean) {
+      paramInt = i;
     }
-    return null;
-  }
-  
-  public ArrayList<betv> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long b()
-  {
-    return this.jdField_c_of_type_Long;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public long c()
-  {
-    return this.d;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Long = paramInt;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        paramInt = i;
+        localObject1 = new WebSsoBody.WebSsoResponseBody();
+        paramInt = i;
+        ((WebSsoBody.WebSsoResponseBody)localObject1).mergeFrom(paramBundle);
+        paramInt = i;
+        i = ((WebSsoBody.WebSsoResponseBody)localObject1).ret.get();
+        paramInt = i;
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject1).data.get());
+        if (i == 0) {
+          continue;
+        }
+        paramInt = i;
+        str = paramBundle.optString("msg");
+        localObject1 = localObject2;
+        paramBundle = str;
+        paramInt = i;
+        if (TextUtils.isEmpty(str))
+        {
+          paramInt = i;
+          paramBundle = localContext.getString(2131696006, new Object[] { Integer.valueOf(i) });
+          localObject1 = localObject2;
+        }
+        localObject2 = localObject1;
+        paramInt = i;
+        localObject1 = paramBundle;
+        paramBundle = localObject2;
+      }
+      catch (Exception paramBundle)
+      {
+        Object localObject1 = localContext.getString(2131696006, new Object[] { Integer.valueOf(9992) });
+        paramBundle = null;
+        continue;
+      }
+      this.a.a(paramInt, (String)localObject1, paramBundle);
+      return;
+      paramInt = i;
+      localObject1 = betx.a(paramBundle.getJSONObject("result").optJSONArray("feeds"));
+      paramBundle = str;
+      continue;
+      paramInt = i;
+      localObject1 = localContext.getString(2131696006, new Object[] { Integer.valueOf(9991) });
+      paramBundle = null;
+      paramInt = -1;
+      continue;
+      paramInt = i;
+      localObject1 = localContext.getString(2131696006, new Object[] { Integer.valueOf(9992) });
+      paramBundle = null;
+      paramInt = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betz
  * JD-Core Version:    0.7.0.1
  */

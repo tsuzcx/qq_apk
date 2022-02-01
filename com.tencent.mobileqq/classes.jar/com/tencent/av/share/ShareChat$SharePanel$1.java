@@ -1,29 +1,32 @@
 package com.tencent.av.share;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
-import com.tencent.qphone.base.util.QLog;
-import lyh;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import lyx;
 
 public class ShareChat$SharePanel$1
-  extends ResultReceiver
+  implements Runnable
 {
-  public ShareChat$SharePanel$1(lyh paramlyh, Handler paramHandler, long paramLong, int paramInt)
-  {
-    super(paramHandler);
-  }
+  public ShareChat$SharePanel$1(lyx paramlyx, QQAppInterface paramQQAppInterface, TroopInfoData paramTroopInfoData, Intent paramIntent, Context paramContext, int paramInt) {}
   
-  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    QLog.w("ShareChat", 1, "shareToQzone.onReceiveResult, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-    paramBundle = this.jdField_a_of_type_Lyh;
-    int i = this.jdField_a_of_type_Int;
-    if (paramInt == -1) {}
-    for (paramInt = 2;; paramInt = 3)
+    try
     {
-      paramBundle.a(1, i, paramInt);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, (byte)3, false, false);
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("face", localBitmap);
+      }
+      this.jdField_a_of_type_AndroidContentContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
       return;
+    }
+    catch (Exception localException)
+    {
+      this.this$0.a(5, this.jdField_a_of_type_Int, 3);
     }
   }
 }

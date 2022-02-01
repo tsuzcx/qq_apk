@@ -1,71 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-final class bbfp
-  implements Comparator<bayp>
+public abstract class bbfp
+  extends Binder
+  implements bbfo
 {
-  private final amsw jdField_a_of_type_Amsw;
-  private final avsy jdField_a_of_type_Avsy;
-  
-  bbfp(QQAppInterface paramQQAppInterface)
+  public bbfp()
   {
-    this.jdField_a_of_type_Avsy = ((avsy)paramQQAppInterface.getManager(11));
-    this.jdField_a_of_type_Amsw = ((amsw)paramQQAppInterface.getManager(51));
+    attachInterface(this, "com.tencent.mobileqq.richmedia.ICallBack");
   }
   
-  public int a(bayp parambayp1, bayp parambayp2)
+  public static bbfo a(IBinder paramIBinder)
   {
-    int i = -1;
-    parambayp1 = this.jdField_a_of_type_Avsy.c(((baxl)parambayp1).e());
-    parambayp2 = this.jdField_a_of_type_Avsy.c(((baxl)parambayp2).e());
-    if ((parambayp1 == null) || (parambayp2 == null)) {
-      if ((parambayp1 == null) && (parambayp2 == null)) {
-        i = 0;
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.richmedia.ICallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof bbfo))) {
+      return (bbfo)localIInterface;
+    }
+    return new bbfq(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.richmedia.ICallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+      paramInt1 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      }
+      paramParcel1 = a(paramInt1, (Bundle)localObject1);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+      localObject1 = localObject2;
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (CompressInfo)CompressInfo.CREATOR.createFromParcel(paramParcel1);
+      }
+      a((CompressInfo)localObject1);
+      paramParcel2.writeNoException();
+      if (localObject1 != null)
+      {
+        paramParcel2.writeInt(1);
+        ((CompressInfo)localObject1).writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
       }
     }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return i;
-          } while (parambayp2 == null);
-          return 1;
-          if ((parambayp1.uin.equals("0")) && (parambayp2.uin.equals("0"))) {
-            break;
-          }
-          if ((!parambayp1.uin.equals("0")) && (!parambayp2.uin.equals("0"))) {
-            return 0;
-          }
-        } while (!parambayp2.uin.equals("0"));
-        return 1;
-        bool1 = this.jdField_a_of_type_Amsw.a(parambayp1.unifiedCode, true);
-        bool2 = this.jdField_a_of_type_Amsw.a(parambayp2.unifiedCode, true);
-        if ((!bool1) && (!bool2)) {
-          break;
-        }
-        if ((bool1) && (bool2)) {
-          return 0;
-        }
-      } while (bool2);
-      return 1;
-      boolean bool1 = TextUtils.isEmpty(parambayp1.pinyinFirst);
-      bool2 = TextUtils.isEmpty(parambayp2.pinyinFirst);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return parambayp1.pinyinFirst.toLowerCase().charAt(0) - parambayp2.pinyinFirst.toLowerCase().charAt(0);
+    paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+    paramInt1 = paramParcel1.readInt();
+    localObject1 = localObject3;
+    if (paramParcel1.readInt() != 0) {
+      localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    }
+    a(paramInt1, (Bundle)localObject1);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

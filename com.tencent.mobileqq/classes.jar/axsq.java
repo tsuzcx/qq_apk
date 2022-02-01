@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
 public class axsq
-  extends AccountObserver
+  implements DialogInterface.OnDismissListener
 {
-  public axsq(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public axsq(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, "onOnlineStatusChanged, isSuccess: " + paramBoolean1 + " , mIsUpdateStatus: " + AccountOnlineStateActivity.a(this.a) + ", isUserSet: " + paramBoolean2);
-    }
-    if (AccountOnlineStateActivity.a(this.a))
-    {
-      AccountOnlineStateActivity.a(this.a, false);
-      if (paramBoolean1) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    AccountOnlineStateActivity.a(this.a, false, -1);
+    this.a.finish();
   }
 }
 

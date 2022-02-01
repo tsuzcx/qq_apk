@@ -1,69 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class axwr
+public final class axwr
+  implements Parcelable.Creator<VideoData>
 {
-  private double jdField_a_of_type_Double = 0.0D;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private axws jdField_a_of_type_Axws;
-  private String jdField_a_of_type_JavaLangString;
-  private double jdField_b_of_type_Double = 0.0D;
-  private int jdField_b_of_type_Int;
-  
-  axwr(String paramString, int paramInt)
+  public VideoData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
+    return new VideoData(paramParcel);
   }
   
-  void a()
+  public VideoData[] a(int paramInt)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Double = 0.0D;
-    this.jdField_b_of_type_Double = 0.0D;
-  }
-  
-  public void a(double paramDouble)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int - 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
-      }
-      this.jdField_a_of_type_Double += paramDouble;
-      this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
-      this.jdField_b_of_type_Int += 1;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = l;
-      return;
-      this.jdField_a_of_type_Double += paramDouble;
-      if (l - this.jdField_a_of_type_Long < 30L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. batch mode count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
-        }
-        this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
-        this.jdField_b_of_type_Int += 1;
-        return;
-      }
-      double d = this.jdField_a_of_type_Double / (this.jdField_b_of_type_Int + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. triggered count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double + " ave: " + d);
-      }
-      if (this.jdField_a_of_type_Axws != null) {
-        this.jdField_a_of_type_Axws.a(d, this.jdField_b_of_type_Double);
-      }
-      a();
-    }
-  }
-  
-  void a(axws paramaxws)
-  {
-    this.jdField_a_of_type_Axws = paramaxws;
+    return new VideoData[paramInt];
   }
 }
 

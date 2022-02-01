@@ -1,43 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.screenshare.ScreenShareCtrl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
 import com.tencent.av.ui.AVActivity;
-import mqq.util.WeakReference;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class lvo
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public lvo(ScreenShareCtrl paramScreenShareCtrl, int paramInt) {}
+  public lvo(RedPacketGameView paramRedPacketGameView, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    bcef.b(null, "dc00898", "", "", "0X800B48F", "0X800B48F", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    if (ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl) != null)
+    AVActivity localAVActivity = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a();
+    if (localAVActivity != null)
     {
-      paramDialogInterface = (AVActivity)ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).get();
-      if (paramDialogInterface != null) {
-        break label95;
-      }
+      localAVActivity.a.j(this.jdField_a_of_type_Long);
+      ((VideoAppInterface)localAVActivity.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true), Long.valueOf(this.jdField_a_of_type_Long) });
     }
-    label95:
-    for (paramDialogInterface = localObject;; paramDialogInterface = paramDialogInterface.a())
-    {
-      if (paramDialogInterface != null)
-      {
-        paramDialogInterface.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl.a());
-        paramDialogInterface.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl.a());
-        paramDialogInterface.a();
-      }
-      return;
-      paramDialogInterface = null;
-      break;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvo
  * JD-Core Version:    0.7.0.1
  */

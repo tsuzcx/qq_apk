@@ -35,7 +35,7 @@ public class b
       return 0L;
     }
     b.a locala = (b.a)a.get(paramString);
-    if (!locala.c)
+    if ((locala != null) && (!locala.c))
     {
       locala.c = true;
       a.put(paramString, locala);
@@ -50,15 +50,22 @@ public class b
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      InetAddress[] arrayOfInetAddress = ((b.a)a.get(str)).b;
-      int j = arrayOfInetAddress.length;
-      int i = 0;
-      while (i < j)
+      Object localObject = (b.a)a.get(str);
+      if (localObject != null)
       {
-        if (paramString.equals(arrayOfInetAddress[i].getHostAddress())) {
-          return str;
+        localObject = ((b.a)localObject).b;
+        if (localObject != null)
+        {
+          int j = localObject.length;
+          int i = 0;
+          while (i < j)
+          {
+            if (paramString.equals(localObject[i].getHostAddress())) {
+              return str;
+            }
+            i += 1;
+          }
         }
-        i += 1;
       }
     }
     return paramString;

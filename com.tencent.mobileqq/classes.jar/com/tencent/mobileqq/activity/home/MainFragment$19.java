@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import pay;
+import pkh;
 
 class MainFragment$19
   implements Runnable
@@ -11,7 +11,7 @@ class MainFragment$19
   {
     try
     {
-      pay.d();
+      pkh.c();
       return;
     }
     catch (Exception localException)

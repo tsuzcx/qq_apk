@@ -1,24 +1,61 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import org.json.JSONObject;
 
-final class bkks
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+@JsPlugin(secondary=true)
+public class bkks
+  extends BaseJsPlugin
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  @JsEvent({"checkGameBuddyType"})
+  public void checkGameBuddyType(RequestEvent paramRequestEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
+      QLog.d("GameBuddyPlugin", 2, new Object[] { "[checkGameBuddyType 2.0], req:", paramRequestEvent });
     }
-    bkkq.a(paramPluginManagerClient);
-    bkkq.a(null);
-    while (!bkkq.a().isEmpty())
+    try
     {
-      paramPluginManagerClient = (bkla)bkkq.a().poll();
-      if (paramPluginManagerClient != null) {
-        bkkq.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_Bkkz, paramPluginManagerClient.jdField_a_of_type_Bkkx);
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      if ("checkGameBuddyType".equals(((JSONObject)localObject).optString("api_name")))
+      {
+        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
+        Bundle localBundle = new Bundle();
+        localBundle.putString("uin_value", (String)localObject);
+        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bkkt(this, paramRequestEvent));
       }
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
+    }
+  }
+  
+  @JsEvent({"invokeGameBuddyAio"})
+  public void invokeGameBuddyAio(RequestEvent paramRequestEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameBuddyPlugin", 2, new Object[] { "[invokeGameBuddyAio 2.0], req:", paramRequestEvent });
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      if ("invokeGameBuddyAio".equals(((JSONObject)localObject).optString("api_name")))
+      {
+        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
+        Bundle localBundle = new Bundle();
+        localBundle.putString("uin_value", (String)localObject);
+        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bkku(this, paramRequestEvent, (String)localObject));
+      }
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
     }
   }
 }

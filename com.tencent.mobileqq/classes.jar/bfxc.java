@@ -1,24 +1,33 @@
 public class bfxc
+  implements Comparable<bfxc>
 {
+  public int a;
   public String a;
-  public boolean a;
+  public int b;
   public String b;
-  public String c;
-  public String d;
   
-  public bfxc(String paramString)
+  public bfxc(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public bfxc(String paramString1, String paramString2, String paramString3, String paramString4)
+  public int a(bfxc parambfxc)
   {
-    this.d = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString4;
-    this.b = paramString3;
-    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_b_of_type_Int < parambfxc.jdField_b_of_type_Int) {
+      return -1;
+    }
+    if (this.jdField_b_of_type_Int > parambfxc.jdField_b_of_type_Int) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
   }
 }
 

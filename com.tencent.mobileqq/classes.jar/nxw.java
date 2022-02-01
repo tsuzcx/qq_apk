@@ -1,46 +1,48 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nxw
-  extends URLDrawableDownListener.Adapter
+class nxw
+  implements BusinessObserver
 {
-  public nxw(VideoCoverFragment paramVideoCoverFragment) {}
+  nxw(nxu paramnxu) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    while (!(paramView instanceof ImageView)) {
+    if (this.a.a) {
       return;
     }
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = paramURLDrawable.getIntrinsicWidth();
-    int j = paramURLDrawable.getIntrinsicHeight();
-    localLayoutParams.width = (i * AIOUtils.dp2px(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
-    paramView.setLayoutParams(localLayoutParams);
-    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-    paramView.requestLayout();
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nxu.a(this.a);
+      return;
+    }
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          nxu.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        nxu.a(this.a);
+        return;
+      }
+      paramBundle = nxu.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    nxu.a(this.a, paramBundle);
   }
 }
 

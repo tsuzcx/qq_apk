@@ -1,23 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.15;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-class bcwo
-  implements DialogInterface.OnClickListener
+public class bcwo
+  implements INetEngine.INetEngineListener
 {
-  bcwo(bcwn parambcwn, TimDocSSOMsg.UinRightInfo paramUinRightInfo) {}
+  public bcwo(PtvTemplateManager.15 param15) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Bcwn.a.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bcwn.a.jdField_a_of_type_Bctw.b(String.valueOf(this.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get()));
-    this.jdField_a_of_type_Bcwn.a.jdField_a_of_type_Bctw.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Bcwn.a.b == 1) {
-      bcef.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_Bcwn.a), "dc00898", "", "", "0x8007CFD", "0x8007CFD", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.a.doodleUrl + " resultcode: " + paramNetResp.mHttpCode);
+    }
+    this.a.a.doodleUsable = this.a.this$0.a(this.a.a, false);
+    if (this.a.a.doodleUsable) {}
+    try
+    {
+      nwp.a(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
+      if (paramNetResp.mResult == 0)
+      {
+        Object localObject = this.a.this$0.a();
+        if (localObject != null)
+        {
+          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+          if (((PreDownloadController)localObject).isEnable()) {
+            ((PreDownloadController)localObject).preDownloadSuccess(this.a.a.doodleUrl, paramNetResp.mTotalFileLen);
+          }
+        }
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localIOException.printStackTrace();
+        }
+      }
     }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

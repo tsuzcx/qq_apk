@@ -1,62 +1,42 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class pip
 {
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<piq> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<String, String> b = new HashMap();
+  private static boolean a;
   
-  public int a()
+  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String a(int paramInt, String paramString)
-  {
-    String str2 = "";
-    piq localpiq = a(paramInt);
-    String str1 = str2;
-    if (localpiq != null)
-    {
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!"style_ID".equalsIgnoreCase(paramString)) {
-          break label46;
-        }
-        str1 = localpiq.jdField_a_of_type_JavaLangString;
-      }
+    if (BaseApplicationImpl.sApplication == null) {
+      return null;
     }
-    return str1;
-    label46:
-    return (String)localpiq.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562928, null);
+    ((DragTextView)localView.findViewById(2131380453)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131378414)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131380194)).setText(paramInt5);
+    return localView;
   }
   
-  public String a(String paramString)
+  public static void a(boolean paramBoolean)
   {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public piq a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
+    try
     {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (piq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
+      a = paramBoolean;
+      return;
     }
-    return localObject1;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public String b(String paramString)
+  public static boolean a()
   {
-    return (String)this.b.get(paramString);
+    return a;
   }
 }
 

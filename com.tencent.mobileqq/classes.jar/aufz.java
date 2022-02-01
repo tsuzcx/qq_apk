@@ -1,86 +1,98 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
-import com.tencent.mobileqq.hotchat.ui.HeartView;
-import java.util.Random;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RouterHandler;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.5;
+import cooperation.troop.TroopFileProxyActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aufz
-  extends aufy
+  extends AsyncTask<Void, Void, Void>
 {
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-  private int[] jdField_a_of_type_ArrayOfInt = { Color.parseColor("#c797ff"), Color.parseColor("#80b9f4"), Color.parseColor("#67d0d7"), Color.parseColor("#67d78e"), Color.parseColor("#b5e255"), Color.parseColor("#f2c64f"), Color.parseColor("#f6a455"), Color.parseColor("#ff96b9"), Color.parseColor("#ff6a6a") };
+  public aufz(QFileSendBarManager.5 param5) {}
   
-  public aufz(Context paramContext, int paramInt)
+  protected Void a(Void... paramVarArgs)
   {
-    super(paramContext, paramInt);
-  }
-  
-  public aufz(Context paramContext, int paramInt, aufs paramaufs)
-  {
-    super(paramContext, paramInt, paramaufs);
-  }
-  
-  public static void a(HeartLayout paramHeartLayout)
-  {
-    if ((paramHeartLayout == null) || (paramHeartLayout.a() == null)) {}
-    do
+    paramVarArgs = aufu.a(this.a.this$0);
+    Object localObject1 = aufu.b(this.a.this$0);
+    int i = aufu.a(this.a.this$0);
+    if (i == 5)
     {
-      return;
-      paramHeartLayout = paramHeartLayout.a();
-    } while (paramHeartLayout == null);
-    paramHeartLayout.j = 2400;
-    aufu.b = 0.05F;
-  }
-  
-  public Bitmap a()
-  {
-    super.a();
-    return b();
-  }
-  
-  public Bitmap b()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      Bitmap localBitmap1;
-      Bitmap localBitmap2;
-      do
-      {
-        return null;
-        if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-          this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
-        }
-        if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
-          this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-        }
-        localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        localBitmap2 = HeartView.a(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      } while (localBitmap2 == null);
-      Canvas localCanvas = this.jdField_a_of_type_AndroidGraphicsCanvas;
-      localCanvas.setBitmap(localBitmap2);
-      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      localPaint.setColorFilter(new PorterDuffColorFilter(this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_ArrayOfInt.length)], PorterDuff.Mode.SRC_ATOP));
-      localCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, localPaint);
-      localPaint.setColorFilter(null);
-      if (Build.VERSION.SDK_INT >= 11) {
-        localCanvas.setBitmap(null);
-      }
-      return localBitmap2;
+      TroopFileProxyActivity.a.addAll(atpm.a());
+      return null;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return null;
+    label115:
+    Object localObject2;
+    if (paramVarArgs.equals(AppConstants.DATALINE_PC_UIN))
+    {
+      localObject1 = new ArrayList();
+      ((ArrayList)localObject1).addAll(atpm.a());
+      paramVarArgs = (ansr)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      paramVarArgs.a((ArrayList)localObject1);
+      localObject1 = atpm.b().iterator();
+      i = 0;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+        if (((FileManagerEntity)localObject2).nFileType == 13)
+        {
+          int j = i;
+          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
+            j = i | 0x1;
+          }
+          i = j;
+        }
+      }
+    }
+    for (;;)
+    {
+      break label115;
+      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
+      {
+        paramVarArgs.a((FileManagerEntity)localObject2);
+      }
+      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
+      {
+        i |= 0x4;
+        continue;
+        if (atpm.e().size() > 0) {
+          this.a.this$0.a.getFileManagerEngine().a().a(atpm.e(), AppConstants.DATALINE_PC_UIN, 6000, null);
+        }
+        if ((i & 0x2) == 0) {
+          break;
+        }
+        return null;
+        if (i == 6002)
+        {
+          localObject1 = new ArrayList();
+          ((ArrayList)localObject1).addAll(atpm.a());
+          ((RouterHandler)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
+          return null;
+        }
+        if (i == 9501)
+        {
+          localObject1 = (abkw)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+          localObject2 = new ArrayList();
+          ((ArrayList)localObject2).addAll(atpm.a());
+          ((abkw)localObject1).a().a(paramVarArgs, (List)localObject2);
+          return null;
+        }
+        this.a.this$0.a.getFileManagerEngine().a(false, (String)localObject1, paramVarArgs, i);
+        return null;
+      }
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    aufu.c(this.a.this$0);
+    atpm.b();
+    this.a.this$0.a(null);
   }
 }
 

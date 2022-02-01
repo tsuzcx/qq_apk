@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qtd
-  implements View.OnClickListener
+public class qtd
+  implements ViewBase.IBuilder
 {
-  qtd(qtc paramqtc) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new qtc(paramVafContext);
   }
 }
 

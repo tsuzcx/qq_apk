@@ -22,8 +22,6 @@ public class FaceBeautyAutoFilter$MicCureFaceFilter
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    new StringBuilder().append("value = ").append(this.filterType).toString();
-    String str = "yijian/" + this.fileNames[this.filterType] + "_" + this.quality + ".jpg";
     float f2 = this.qualities[this.quality];
     float f1 = f2;
     if (this.filterType == 5)
@@ -38,7 +36,7 @@ public class FaceBeautyAutoFilter$MicCureFaceFilter
       if (this.filterType == 4)
       {
         if (this.quality != 3) {
-          break label273;
+          break label246;
         }
         f2 = 1.1F;
       }
@@ -46,7 +44,7 @@ public class FaceBeautyAutoFilter$MicCureFaceFilter
     for (;;)
     {
       this.glslProgramShader = BaseFilter.getFragmentShader(97);
-      addParam(new TextureResParam("inputImageTexture2", str, 33986));
+      addParam(new TextureResParam("inputImageTexture2", "yijian/" + this.fileNames[this.filterType] + "_" + this.quality + ".jpg", 33986));
       addParam(new UniformParam.FloatParam("quality", f2));
       addParam(new UniformParam.FloatParam("add_red", 0.0F));
       addParam(new UniformParam.FloatParam("red_m", 0.0F));
@@ -65,7 +63,7 @@ public class FaceBeautyAutoFilter$MicCureFaceFilter
       }
       f1 = 0.88F;
       break;
-      label273:
+      label246:
       f2 = f1;
       if (this.quality == 2) {
         f2 = 1.0F;

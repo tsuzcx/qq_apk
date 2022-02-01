@@ -1,18 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class sqa
-  implements pvt
+public abstract interface sqa
 {
-  public sqa(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      ReadinjoyTabFrame.g(this.a);
-    }
-    QLog.d("ReadInJoyTabFrame", 2, "ugcAccountCreateResult result = " + paramInt);
-  }
+  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
 }
 
 

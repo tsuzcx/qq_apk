@@ -7,13 +7,14 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import awmj;
-import awmk;
-import awml;
-import awmo;
-import awmp;
-import bhab;
+import axsl;
+import axsm;
+import axsn;
+import axsq;
+import axsr;
+import bikt;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,7 +28,7 @@ public class GameRoomTransActivity
   public GameRoomTransActivity()
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new awmo(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new axsq(this);
   }
   
   public void a()
@@ -57,7 +58,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((bhab)this.app.getBusinessHandler(107)).b(i, j, new awmk(this, i));
+      ((bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).b(i, j, new axsm(this, i));
       return;
     }
     catch (Exception localException)
@@ -73,7 +74,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bhab)this.app.getBusinessHandler(107)).a(str, true, new awml(this, str, i));
+    ((bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(str, true, new axsn(this, str, i));
   }
   
   protected void d()
@@ -81,7 +82,7 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((bhab)this.app.getBusinessHandler(107)).a(new awmp(this, l, i, j));
+    ((bikt)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(new axsr(this, l, i, j));
   }
   
   @Override
@@ -101,7 +102,7 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new awmj(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new axsl(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
       a();

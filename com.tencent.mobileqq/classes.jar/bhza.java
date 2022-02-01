@@ -1,14 +1,27 @@
-import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dualsim.common.IKingCardInterface.OnChangeListener;
+import dualsim.common.OrderCheckResult;
+import mqq.app.AppRuntime;
 
 public class bhza
-  implements ValueCallback<String>
+  implements IKingCardInterface.OnChangeListener
 {
-  public bhza(DownloadInterfaceNew.2 param2) {}
-  
-  public void a(String paramString)
+  public void onChanged(OrderCheckResult paramOrderCheckResult)
   {
-    bhzm.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("KC.KCWraperV2", 1, "state changed");
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((AppRuntime)localObject).getAccount())
+    {
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramOrderCheckResult != null)) {
+        bhyw.a((String)localObject, paramOrderCheckResult);
+      }
+      return;
+    }
   }
 }
 

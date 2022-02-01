@@ -1,15 +1,18 @@
-import android.view.View;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
-class aysg
-  implements bjoe
+public class aysg
+  implements ayvp
 {
-  aysg(aysb paramaysb, ArrayList paramArrayList, bjnw parambjnw) {}
+  public aysg(OCRResultActivity paramOCRResultActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, ayvq paramayvq)
   {
-    ((bgaf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
-    this.jdField_a_of_type_Bjnw.e();
+    if ((paramayvq != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramayvq.b)))
+    {
+      OCRResultActivity.c(this.a, paramayvq.b);
+      OCRResultActivity.a(this.a, false);
+    }
   }
 }
 

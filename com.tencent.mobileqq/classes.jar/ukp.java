@@ -1,63 +1,133 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.NativeAd.report.JumpMode;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ukp
-  extends zhc
-  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private static String a = "ReadInJoyAdInnerUtils";
   
-  public ukp(Context paramContext)
+  public static String a(String paramString, int paramInt)
   {
-    this(paramContext, 2131755172);
-  }
-  
-  protected ukp(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    b();
-  }
-  
-  private void b()
-  {
-    setContentView(2131560004);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381220));
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131381183);
-    TextView localTextView = (TextView)findViewById(2131381213);
-    localFrameLayout.setOnClickListener(this);
-    localTextView.setOnClickListener(this);
-  }
-  
-  private void c()
-  {
-    if (isShowing()) {
-      dismiss();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
+    int i = 0;
+    int j = 0;
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      uvm.c();
-      c();
+      String str1 = paramString;
+      for (;;)
+      {
+        try
+        {
+          if (j < paramString.length())
+          {
+            if (String.valueOf(paramString.charAt(j)).getBytes().length != 1) {
+              continue;
+            }
+            i += 1;
+            if ((j >= paramString.length() - 1) || (i < paramInt)) {
+              continue;
+            }
+            str1 = paramString.substring(0, j) + "...";
+          }
+        }
+        catch (Exception localException)
+        {
+          String str2 = paramString;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("ReadInJoyAdUtils", 2, "getTitle error");
+        }
+        return str1;
+        i += 2;
+      }
+      j += 1;
     }
+    return paramString;
+  }
+  
+  public static JSONObject a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3)))
+    {
+      QLog.e("ReadInJoyAdUtils", 2, "getBusinessJson error articleId123:" + paramString1 + " tag:" + paramString2 + " cashInfo:" + paramString3);
+      return null;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramString1)) {
+        localJSONObject.put("article_id", paramString1);
+      }
+      if (!TextUtils.isEmpty(paramString3)) {
+        localJSONObject.put("cash_tag", paramString3);
+      }
+      if (!TextUtils.isEmpty(paramString2)) {
+        localJSONObject.put("tags", paramString2);
+      }
+      return localJSONObject;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    if (paramJSONObject2 == null) {}
+    for (;;)
+    {
+      return paramJSONObject1;
+      try
+      {
+        if (paramJSONObject2.has("article_id")) {
+          paramJSONObject1.put("article_id", paramJSONObject2.get("article_id"));
+        }
+        if (paramJSONObject2.has("tags")) {
+          paramJSONObject1.put("tags", paramJSONObject2.get("tags"));
+        }
+        if (paramJSONObject2.has("cash_tag")) {
+          paramJSONObject1.put("cash_tag", paramJSONObject2.get("cash_tag"));
+        }
+        if (paramJSONObject2.has("message")) {
+          paramJSONObject1.put("message", paramJSONObject2.get("message"));
+        }
+        if (paramJSONObject2.has("rowkey"))
+        {
+          paramJSONObject1.put("rowkey", paramJSONObject2.get("rowkey"));
+          return paramJSONObject1;
+        }
+      }
+      catch (Exception paramJSONObject2)
+      {
+        paramJSONObject2.printStackTrace();
+      }
+    }
+    return paramJSONObject1;
+  }
+  
+  public static void a(ProteusInnerData paramProteusInnerData, int paramInt)
+  {
+    if (paramProteusInnerData == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 1, "doClickReport adData null");
+      }
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 1, "doClickReport");
+      }
+      localQQAppInterface = (QQAppInterface)pkh.a();
+    } while (localQQAppInterface == null);
+    ois.a(new ufy().a(localQQAppInterface).a(BaseApplication.getContext()).a(1).b(18).a(JumpMode.UNKNOWN).a(ukt.a(paramProteusInnerData)).d(paramInt).d(ois.a(paramProteusInnerData)).a());
   }
 }
 

@@ -1,100 +1,116 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConvertConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 
 class bbsd
-  implements VideoConverter.Processor
+  implements VideoPlayerCallback
 {
-  bbrv jdField_a_of_type_Bbrv;
-  bbsc jdField_a_of_type_Bbsc;
-  final String jdField_a_of_type_JavaLangString;
-  Throwable jdField_a_of_type_JavaLangThrowable;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  final String b;
+  bbsd(bbrz parambbrz, VideoPlayParam paramVideoPlayParam) {}
   
-  bbsd(WeakReference<QQAppInterface> paramWeakReference, String paramString1, String paramString2, bbrv parambbrv, bbsc parambbsc)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    this.jdField_a_of_type_Bbsc = parambbsc;
-    this.jdField_a_of_type_JavaLangThrowable = null;
-    if (paramString2 == null) {
-      throw new IllegalArgumentException("null == outputFilePath");
-    }
-    this.jdField_a_of_type_Bbrv = parambbrv;
-  }
-  
-  private boolean a()
-  {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
-  }
-  
-  public VideoConverter.VideoConvertConfig getEncodeConfig(int paramInt1, int paramInt2)
-  {
-    VideoConverter.VideoConvertConfig localVideoConvertConfig = new VideoConverter.VideoConvertConfig();
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localVideoConvertConfig.output = localFile;
-    localVideoConvertConfig.scaleRate = this.jdField_a_of_type_Bbrv.jdField_a_of_type_Float;
-    localVideoConvertConfig.videoFrameRate = ((int)this.jdField_a_of_type_Bbrv.b);
-    localVideoConvertConfig.videoBitRate = ((int)this.jdField_a_of_type_Bbrv.jdField_a_of_type_Long);
-    localVideoConvertConfig.setRotation = a();
-    return localVideoConvertConfig;
-  }
-  
-  public void onCanceled()
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onCanceled!");
+      QLog.i("AIOVideoView", 0, "onCapFrame, id:" + paramLong + ", isSuccess:" + paramBoolean + ", w:" + paramInt1 + ", h:" + paramInt2);
     }
-    if (this.jdField_a_of_type_Bbsc != null) {
-      this.jdField_a_of_type_Bbsc.a(null, 3);
-    }
+    bbrz.a(this.jdField_a_of_type_Bbrz, paramBitmap);
   }
   
-  public void onFailed(Throwable paramThrowable)
+  public void onDownloadComplete(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onFailed");
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "onDownloadComplete");
+    aklw localaklw = this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a(this.jdField_a_of_type_Bbrz.a());
+    if (localaklw != null) {
+      localaklw.a = false;
     }
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    if (this.jdField_a_of_type_Bbsc != null) {
-      this.jdField_a_of_type_Bbsc.a(null, 2);
-    }
+    this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a(2003, 0L);
   }
   
-  public void onProgress(int paramInt)
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onFirstFrameRendered(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
+      QLog.d("AIOVideoView", 0, "onFirstFrameRendered, id:" + paramLong);
     }
-    if ((this.jdField_a_of_type_Bbsc != null) && (paramInt >= 0) && (paramInt <= 10000)) {
-      this.jdField_a_of_type_Bbsc.a(null, paramInt / 10000.0F);
-    }
+    bbrz.a(this.jdField_a_of_type_Bbrz, paramLong, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
   }
   
-  public void onSuccessed()
+  public void onLoopBack(long paramLong1, long paramLong2) {}
+  
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().e("AIOVideoView", 1, "onPlayError, id = " + paramLong + " ,module = " + paramInt1 + " , errorType = " + paramInt2 + ", errCode = " + paramInt3 + " , exInfo = " + paramString);
+    bbrz.a(this.jdField_a_of_type_Bbrz, paramInt1, paramInt3, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+  }
+  
+  public void onPlayProgress(long paramLong1, long paramLong2)
+  {
+    bbrz.a(this.jdField_a_of_type_Bbrz, paramLong2);
+    int i = (int)(paramLong2 / this.jdField_a_of_type_Bbrz.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs() * 10000.0D);
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "onPlayProgress, id = " + paramLong1 + " , position = " + paramLong2 + " , progress = " + i);
+    this.jdField_a_of_type_Bbrz.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(paramLong2));
+    this.jdField_a_of_type_Bbrz.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
+  }
+  
+  public void onStateChange(long paramLong, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: HWCompressProcessor onSucceed");
+      QLog.d("AIOVideoView", 0, "onStateChange , state = " + paramInt + ", msgUniseq=" + paramLong);
     }
-    if (this.jdField_a_of_type_Bbsc != null) {
-      this.jdField_a_of_type_Bbsc.a(null, 1);
+    switch (paramInt)
+    {
+    case 7: 
+    default: 
+    case 4: 
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          bbrz.a(this.jdField_a_of_type_Bbrz, 5);
+          this.jdField_a_of_type_Bbrz.updateUI();
+          if (!this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsMute) {
+            bbrz.a(this.jdField_a_of_type_Bbrz);
+          }
+          localObject = this.jdField_a_of_type_Bbrz.a();
+          if (localObject != null)
+          {
+            this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a(((AIOVideoData)localObject).a);
+            this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a(((AIOVideoData)localObject).a, false);
+          }
+        } while (!this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a(this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.getCurrentPosition()));
+        this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a();
+        localObject = this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.getSelectedItem();
+      } while ((localObject == null) || (!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)) || (this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a() == null) || (this.jdField_a_of_type_Bbrz.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null));
+      this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a().a(bbpf.a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).d, this.jdField_a_of_type_Bbrz.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos(), this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a(), this.jdField_a_of_type_Bbrz.jdField_a_of_type_Bbqi.a));
+      return;
+    case 8: 
+      this.jdField_a_of_type_Bbrz.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(this.jdField_a_of_type_Bbrz.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs()));
+      this.jdField_a_of_type_Bbrz.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(100);
+      bbrz.a(this.jdField_a_of_type_Bbrz, 0);
+      this.jdField_a_of_type_Bbrz.updateUI();
+      return;
+    case 9: 
+      bbrz.b(this.jdField_a_of_type_Bbrz);
+      return;
+    case 6: 
+      bbrz.a(this.jdField_a_of_type_Bbrz, 6);
+      this.jdField_a_of_type_Bbrz.updateUI();
+      return;
     }
+    bbrz.a(this.jdField_a_of_type_Bbrz, 3);
+    this.jdField_a_of_type_Bbrz.updateUI();
   }
 }
 

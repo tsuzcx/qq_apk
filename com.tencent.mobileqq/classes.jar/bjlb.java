@@ -1,48 +1,12 @@
-public final class bjlb
-  implements Cloneable
+public class bjlb
 {
-  private long a;
+  public final int a;
+  public final String a;
   
-  public bjlb(long paramLong)
+  public bjlb(String paramString, int paramInt)
   {
-    this.a = paramLong;
-  }
-  
-  public bjlb(byte[] paramArrayOfByte)
-  {
-    this(paramArrayOfByte, 0);
-  }
-  
-  public bjlb(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.a = (paramArrayOfByte[(paramInt + 3)] << 24 & 0xFF000000);
-    this.a += (paramArrayOfByte[(paramInt + 2)] << 16 & 0xFF0000);
-    this.a += (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public long a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bjlb))) {}
-    while (this.a != ((bjlb)paramObject).a()) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return (int)this.a;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.content.Context;
-import blbv;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
 import mqq.util.WeakReference;
 
 class MiniGameAdBannerPopup$GetAdCallback
-  implements blbv
+  implements TianShuGetAdvCallback
 {
   private final WeakReference<Context> context;
   private final MiniAppConfig miniAppConfig;

@@ -1,29 +1,18 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class amoj
-  implements View.OnSystemUiVisibilityChangeListener
+class amoj
 {
-  public amoj(BaseActivity paramBaseActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      BaseActivity.mIsInMultiScreen = bool;
-      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
-      }
-      return;
-    }
-  }
+  amoj(amog paramamog) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoj
  * JD-Core Version:    0.7.0.1
  */

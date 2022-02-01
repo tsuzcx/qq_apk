@@ -1,8 +1,21 @@
-public abstract interface ayrq
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+
+public class ayrq
+  implements ayvp
 {
-  public abstract void a(Object paramObject);
+  public ayrq(OCRPerformFragment paramOCRPerformFragment, ayru paramayru) {}
   
-  public abstract void b(Object paramObject);
+  public void a(int paramInt, ayvq paramayvq)
+  {
+    if ((paramayvq != null) && (!TextUtils.isEmpty(paramayvq.b)))
+    {
+      if (!this.jdField_a_of_type_Ayru.b.equalsIgnoreCase(paramayvq.b)) {
+        OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment, paramayvq.b, this.jdField_a_of_type_Ayru.b(paramayvq.b), false);
+      }
+      ayrt.a("0X800B559", ayrt.a(paramayvq.b));
+    }
+  }
 }
 
 

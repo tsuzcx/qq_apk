@@ -1,4 +1,20 @@
-public abstract interface bnyx {}
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+
+public class bnyx
+  implements View.OnClickListener
+{
+  public bnyx(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

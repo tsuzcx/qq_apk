@@ -1,11 +1,11 @@
 package com.tencent.open.filedownload.ui;
 
-import bied;
+import bjpf;
 
 public class ApkFileDownloadButton$1$2
   implements Runnable
 {
-  public ApkFileDownloadButton$1$2(bied parambied) {}
+  public ApkFileDownloadButton$1$2(bjpf parambjpf) {}
   
   public void run()
   {

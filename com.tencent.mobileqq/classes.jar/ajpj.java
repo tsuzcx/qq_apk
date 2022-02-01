@@ -1,22 +1,32 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class ajpj
-  implements DialogInterface.OnClickListener
+  extends AsyncTask<Void, Void, ArrayList<String>>
 {
-  ajpj(ajpd paramajpd) {}
+  ajpj(ajpi paramajpi, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected ArrayList<String> a(Void... paramVarArgs)
   {
-    if (paramInt == 1) {
-      ajpd.a(this.a, ajpd.a(this.a));
-    }
-    while (paramInt != 0) {
+    return this.jdField_a_of_type_Ajpi.a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  protected void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      QLog.e("SDKEmotionSettingManager", 1, " openSetEmotion error pathList = " + paramArrayList);
+      ajpi.a(this.jdField_a_of_type_Ajpi, ajpi.a(this.jdField_a_of_type_Ajpi), Long.valueOf(ajpi.a(this.jdField_a_of_type_Ajpi)).longValue(), false, "");
+      ajpi.a(this.jdField_a_of_type_Ajpi);
       return;
     }
-    this.a.b();
-    ajpd.a(this.a).moveTaskToBack(true);
+    int i = paramArrayList.size();
+    bdla.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
+    ajpi.a(this.jdField_a_of_type_Ajpi).clear();
+    ajpi.a(this.jdField_a_of_type_Ajpi).addAll(paramArrayList);
+    this.jdField_a_of_type_Ajpi.a(paramArrayList);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
-import atux;
-import atvk;
+import auzx;
+import avak;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
 
 public class TroopIndex
@@ -16,15 +16,15 @@ public class TroopIndex
   public String ext7;
   public String ext8;
   public String ext9;
-  @atux
+  @auzx
   public String mMemberCard;
-  @atux
+  @auzx
   public String mMemberName;
-  @atux
+  @auzx
   public String mMemberNick;
-  @atux
+  @auzx
   public String mMemberUin;
-  @atux
+  @auzx
   public String mTroopUin;
   public long oId = -1L;
   public int type = -1;
@@ -79,7 +79,7 @@ public class TroopIndex
     label139:
     label154:
     label168:
-    for (this.ext5 = "";; this.ext5 = atvk.a(this.ext4))
+    for (this.ext5 = "";; this.ext5 = avak.a(this.ext4))
     {
       this.ext6 = this.mMemberUin;
       this.ext7 = this.mMemberNick;
@@ -92,11 +92,11 @@ public class TroopIndex
       break;
       str = this.mMemberCard.replace("'", "''");
       break label38;
-      this.ext3 = atvk.a(this.ext2);
+      this.ext3 = avak.a(this.ext2);
       break label67;
     }
     label182:
-    this.ext8 = atvk.a(this.ext7);
+    this.ext8 = avak.a(this.ext7);
   }
   
   public boolean needCompress()
@@ -127,7 +127,7 @@ public class TroopIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.TroopIndex
  * JD-Core Version:    0.7.0.1
  */

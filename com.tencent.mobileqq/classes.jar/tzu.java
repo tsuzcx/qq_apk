@@ -1,43 +1,69 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class tzu
-  extends Handler
+final class tzu
+  implements sal
 {
-  public tzu(ReadInJoyPatchAdView paramReadInJoyPatchAdView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  tzu(String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, BridgeModule paramBridgeModule, int paramInt2, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyPatchAdView", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
-    {
-    }
+    Object localObject = paramList.iterator();
+    UgcVideo localUgcVideo;
     do
     {
-      return;
-      int i = 0;
-      if ((paramMessage.obj instanceof Integer)) {
-        i = ((Integer)paramMessage.obj).intValue();
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
-      ReadInJoyPatchAdView.a(this.a, i);
+      localUgcVideo = (UgcVideo)((Iterator)localObject).next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
+    for (;;)
+    {
+      if (localUgcVideo != null)
+      {
+        localObject = rth.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a();
+        if (localUgcVideo.status == UgcVideo.STATUS_PAUSE) {
+          olh.a("0X800AC62", (String)localObject);
+        }
+        while ((NetworkUtil.isMobileNetWork(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
+        {
+          long l = rth.a(localUgcVideo);
+          if (l > 0L)
+          {
+            rth.a(BaseActivity.sTopActivity, l, new tzv(this, localUgcVideo, paramList), null);
+            return;
+            if (localUgcVideo.status == UgcVideo.STATUS_FAILED) {
+              olh.a("0X800AC63", (String)localObject);
+            }
+          }
+          else
+          {
+            sad.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+            tzr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+            return;
+          }
+        }
+        sad.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+        tzr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
+      }
+      tzr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
       return;
-      ReadInJoyPatchAdView.a(this.a);
-      return;
-    } while (this.a.a == null);
-    this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
+      localUgcVideo = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fpsreport;
 
-import achv;
+import acyd;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -11,7 +11,7 @@ public class FPSXListView
   extends XListView
 {
   private int jdField_a_of_type_Int;
-  private achv jdField_a_of_type_Achv;
+  private acyd jdField_a_of_type_Acyd;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   
@@ -32,8 +32,8 @@ public class FPSXListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Achv != null) {
-      this.jdField_a_of_type_Achv.a();
+    if (this.jdField_a_of_type_Acyd != null) {
+      this.jdField_a_of_type_Acyd.a();
     }
   }
   
@@ -45,16 +45,16 @@ public class FPSXListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Achv != null)) {
-      this.jdField_a_of_type_Achv.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Acyd != null)) {
+      this.jdField_a_of_type_Acyd.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Achv != null) {
-      this.jdField_a_of_type_Achv.a(paramInt);
+    if (this.jdField_a_of_type_Acyd != null) {
+      this.jdField_a_of_type_Acyd.a(paramInt);
     }
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
@@ -78,8 +78,8 @@ public class FPSXListView
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Achv = new achv();
-    this.jdField_a_of_type_Achv.a(paramString);
+    this.jdField_a_of_type_Acyd = new acyd();
+    this.jdField_a_of_type_Acyd.a(paramString);
   }
   
   public void setReportType(int paramInt)

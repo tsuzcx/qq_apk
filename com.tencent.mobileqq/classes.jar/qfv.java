@@ -1,21 +1,19 @@
-import android.view.View;
-
-class qfv
-  implements bjoe
+public class qfv
 {
-  qfv(qft paramqft) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      qft.a(this.a).dismiss();
-      return;
-      qft.a(this.a, false);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
   }
 }
 

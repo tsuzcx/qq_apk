@@ -1,36 +1,47 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class vft
-  implements AdapterView.OnItemClickListener
+public class vft
 {
-  vft(vfs paramvfs) {}
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new vfu(this);
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new vfv(Looper.getMainLooper(), this);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static vft a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "onItemClick!");
+    return vfw.a();
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
+      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio"));
     }
-    paramAdapterView = (vgc)vfs.a.get(paramInt);
-    paramView = new Intent(paramView.getContext(), PublicAccountImageCollectionMainActivity.class);
-    paramView.putExtra("recommend_source", paramAdapterView.c);
-    paramView.putExtra("recommend_position", paramInt + 1);
-    paramView.putExtra("click_source", 2);
-    paramView.putExtra("source_for_report", 15);
-    vfx.a(vfs.a(this.a), paramView, String.valueOf(paramAdapterView.d));
-    if ((vfs.a(this.a) instanceof PublicAccountImageCollectionMainActivity))
+    this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    vmp.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestOrAbandonAudioFocus] isFocus:" + paramBoolean);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    if (paramBoolean)
     {
-      paramView = (PublicAccountImageCollectionMainActivity)vfs.a(this.a);
-      paramInt += 1;
-      paramView.a(2, paramInt, paramAdapterView.c);
-      odq.a(null, paramView.a, "0X8007B94", "0X8007B94", 0, 0, paramView.b, paramView.c, paramAdapterView.d, "" + paramInt, false);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      return;
     }
-    syn.a().a();
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1500L);
   }
 }
 

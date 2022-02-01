@@ -1,16 +1,16 @@
 package cooperation.qqcircle.chat;
 
-import abwp;
-import abwx;
-import amwh;
+import acmw;
+import acnf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aucf;
-import aucg;
-import bbko;
-import bbli;
-import bftf;
+import anyv;
+import avhz;
+import avia;
+import bcrg;
+import bcsa;
+import bhbx;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,6 +30,7 @@ import java.util.Random;
 public class QCircleChatUtil
 {
   private static final int MAX_UN_READ_COUNT = 99;
+  public static final String QCIRCLE_CHAT_HIDE_MENU_KEY = "qcircle_chat_hide_menu_key";
   public static final String QCIRCLE_CHAT_ICEBREAK_MESSAGE_KEY = "qcircle_chat_msg_data_key";
   public static final String QCIRCLE_CHAT_SHARE_ARK_INTENT_KEY = "qcircle_chat_share_ark_intent_key";
   public static final String QCIRCLE_CHAT_SHARE_COVER_URL_KEY = "qcircle_chat_share_cover_url_key";
@@ -48,8 +49,8 @@ public class QCircleChatUtil
     for (;;)
     {
       return paramString;
-      MessageForQCircleIceBreak localMessageForQCircleIceBreak = (MessageForQCircleIceBreak)bbli.a(-7013);
-      long l1 = bbko.a() - 5L;
+      MessageForQCircleIceBreak localMessageForQCircleIceBreak = (MessageForQCircleIceBreak)bcsa.a(-7013);
+      long l1 = bcrg.a() - 5L;
       long l2;
       if (paramMessageRecord != null)
       {
@@ -66,7 +67,7 @@ public class QCircleChatUtil
           QLog.i("QCircleChatUtil", 4, String.format(Locale.getDefault(), "addIceBreakMessage in seq %s  time %s", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
         }
         paramString = localMessageForQCircleIceBreak;
-        if (amwh.a(paramQQAppInterface, localMessageForQCircleIceBreak, false)) {
+        if (anyv.a(paramQQAppInterface, localMessageForQCircleIceBreak, false)) {
           continue;
         }
         paramQQAppInterface.getMessageFacade().addMessage(localMessageForQCircleIceBreak, paramQQAppInterface.getCurrentAccountUin(), false, false, true, true);
@@ -86,19 +87,19 @@ public class QCircleChatUtil
   public static MessageForUniteGrayTip addShowFuelTipsGrayMessage(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, MessageRecord paramMessageRecord)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QCircleChatUtil", 2, String.format("addGrayTipsMessage frdUin:%s msg:%s ", new Object[] { paramString1, bftf.a(paramString2) }));
+      QLog.i("QCircleChatUtil", 2, String.format("addGrayTipsMessage frdUin:%s msg:%s ", new Object[] { paramString1, bhbx.a(paramString2) }));
     }
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1))) {
       return null;
     }
-    long l2 = bbko.a();
+    long l2 = bcrg.a();
     if (paramMessageRecord != null) {}
     for (long l1 = paramMessageRecord.shmsgseq;; l1 = Math.abs(new Random().nextInt()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QCircleChatUtil", 2, "addGrayTipsMessage start add tip message");
       }
-      paramString1 = new aucf(paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, paramInt, -5022, 656395, l2);
+      paramString1 = new avhz(paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, paramInt, -5022, 656395, l2);
       paramString1.d = paramString2;
       paramString1.c = paramString2;
       paramString2 = new MessageForUniteGrayTip();
@@ -107,7 +108,7 @@ public class QCircleChatUtil
       paramString2.shmsgseq = l1;
       paramString2.mNeedTimeStamp = false;
       paramString2.updateUniteGrayTipMsgData(paramQQAppInterface);
-      aucg.a(paramQQAppInterface, paramString2);
+      avia.a(paramQQAppInterface, paramString2);
       return paramString2;
     }
   }

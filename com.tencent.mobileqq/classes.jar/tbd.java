@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.model.AspectRatio;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public final class tbd
-  implements Parcelable.Creator<AspectRatio>
+public class tbd
+  implements pvb
 {
-  public AspectRatio a(Parcel paramParcel)
+  public tbd(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    return new AspectRatio(paramParcel);
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.6.2(this));
   }
   
-  public AspectRatio[] a(int paramInt)
+  public void b(MessageRecord paramMessageRecord)
   {
-    return new AspectRatio[paramInt];
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.6.1(this));
   }
 }
 

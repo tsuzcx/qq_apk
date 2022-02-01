@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahtj;
-import ahty;
-import ahua;
+import aioi;
+import aiox;
+import aioz;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.SendPhotoTask;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -18,14 +18,14 @@ import java.util.ArrayList;
 public class ZhituPicAdapter$1
   implements Runnable
 {
-  public ZhituPicAdapter$1(ahty paramahty, ahua paramahua) {}
+  public ZhituPicAdapter$1(aiox paramaiox, aioz paramaioz) {}
   
   public void run()
   {
     Object localObject3;
     if (!this.a.jdField_b_of_type_Boolean)
     {
-      localObject3 = ahtj.a(ahty.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+      localObject3 = aioi.a(aiox.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
       if (!(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
         break label462;
       }
@@ -54,12 +54,12 @@ public class ZhituPicAdapter$1
               break;
             }
             localObject1 = localObject3;
-            if (ahtj.a(ahty.a(this.this$0)).a() != 7220) {
+            if (aioi.a(aiox.a(this.this$0)).a() != 7220) {
               break label318;
             }
             this.a.jdField_b_of_type_JavaLangString = ((File)localObject1).getAbsolutePath();
-            ahtj.a(ahty.a(this.this$0)).f(this.a);
-            bcef.b(ahty.a(this.this$0), "dc00898", "", "", "0X8008C72", "0X8008C72", ahtj.a(ahtj.a(ahty.a(this.this$0)).a()), 0, "", "", "", "");
+            aioi.a(aiox.a(this.this$0)).f(this.a);
+            bdla.b(aiox.a(this.this$0), "dc00898", "", "", "0X8008C72", "0X8008C72", aioi.a(aioi.a(aiox.a(this.this$0)).a()), 0, "", "", "", "");
             return;
           }
           catch (IOException localIOException)
@@ -69,13 +69,13 @@ public class ZhituPicAdapter$1
           }
           catch (OutOfMemoryError localOutOfMemoryError1)
           {
-            ahtj.a(localOutOfMemoryError1);
+            aioi.a(localOutOfMemoryError1);
             return;
           }
           if (this.a.jdField_b_of_type_JavaLangString == null) {
             try
             {
-              Object localObject2 = ahtj.a(ahty.a(this.this$0)).a(this.a);
+              Object localObject2 = aioi.a(aiox.a(this.this$0)).a(this.a);
               if (localObject2 == null) {
                 break;
               }
@@ -86,13 +86,13 @@ public class ZhituPicAdapter$1
               for (;;)
               {
                 QLog.e("ZhituManager", 1, "oom when save bitmap");
-                ahtj.a(localOutOfMemoryError2);
+                aioi.a(localOutOfMemoryError2);
                 localFile = null;
               }
             }
           }
         }
-        localFile = ahtj.a(ahty.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+        localFile = aioi.a(aiox.a(this.this$0)).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
         FileUtils.copyFile(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
         continue;
         localObject3 = new Intent();
@@ -100,13 +100,13 @@ public class ZhituPicAdapter$1
         localArrayList.add(localFile.getAbsolutePath());
         ((Intent)localObject3).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
         ((Intent)localObject3).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1044);
-        ((Intent)localObject3).putExtra("uin", ahty.a(this.this$0).curFriendUin);
-        ((Intent)localObject3).putExtra("uintype", ahty.a(this.this$0).curType);
-        ((Intent)localObject3).putExtra("troop_uin", ahty.a(this.this$0).troopUin);
+        ((Intent)localObject3).putExtra("uin", aiox.a(this.this$0).curFriendUin);
+        ((Intent)localObject3).putExtra("uintype", aiox.a(this.this$0).curType);
+        ((Intent)localObject3).putExtra("troop_uin", aiox.a(this.this$0).troopUin);
         ((Intent)localObject3).putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
         ((Intent)localObject3).putExtra("send_in_background", true);
         ((Intent)localObject3).putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
-        new SendPhotoTask(ahty.a(this.this$0), (Intent)localObject3, null).run();
+        new SendPhotoTask(aiox.a(this.this$0), (Intent)localObject3, null).run();
       }
     }
   }

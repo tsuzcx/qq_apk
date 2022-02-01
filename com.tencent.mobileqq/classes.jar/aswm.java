@@ -1,28 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aswm
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   aswm(aswl paramaswl) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!aswl.a(this.a)) {}
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
+    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
+    if (asxd.a >= asxd.b)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(asxd.a, asxd.b);
       return;
-      long l = aslg.b();
-      bcef.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", 4, 0, "" + l, "0", "", "");
-      if ((1 == aswl.a(this.a)) && (!aswl.b(this.a))) {
-        aszg.a(aswl.a(this.a), 2131697801, 2131697800, new aswn(this));
-      } else {
-        aswl.a(this.a);
-      }
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(asxd.a, 0L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.ThemeRecentDynamicAvatarView;
 
 public class axhe
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public axhe(GradientAnimTextView paramGradientAnimTextView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
-  }
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public ThemeRecentDynamicAvatarView a;
+  public String a;
 }
 
 

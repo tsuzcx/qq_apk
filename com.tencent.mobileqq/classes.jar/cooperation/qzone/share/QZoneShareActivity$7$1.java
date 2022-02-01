@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
-import amtj;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,7 +23,7 @@ class QZoneShareActivity$7$1
   {
     if (this.val$currentCount > this.val$maxWordCnt)
     {
-      QQToast.a(this.this$1.this$0, 4, 2131717214, 0).a();
+      QQToast.a(this.this$1.this$0, 4, 2131717577, 0).a();
       return;
     }
     this.this$1.this$0.hideKeyboardAndEmo();
@@ -80,7 +80,7 @@ class QZoneShareActivity$7$1
         continue;
         label378:
         QZoneShareActivity.access$900(this.this$1.this$0);
-        QQToast.a(this.this$1.this$0, 5, amtj.a(2131711446), 0).a();
+        QQToast.a(this.this$1.this$0, 5, anvx.a(2131711793), 0).a();
         continue;
         int i = 1;
         continue;

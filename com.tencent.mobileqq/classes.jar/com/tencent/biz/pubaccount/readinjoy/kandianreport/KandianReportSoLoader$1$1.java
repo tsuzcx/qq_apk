@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import odq;
+import olh;
 
 class KandianReportSoLoader$1$1
   implements Runnable
@@ -21,7 +21,7 @@ class KandianReportSoLoader$1$1
           continue;
         }
         i = 1;
-        odq.a(null, "", "0X8009A1C", "0X8009A1C", 0, i, "", "", "", "copy file step", false);
+        olh.a(null, "", "0X8009A1C", "0X8009A1C", 0, i, "", "", "", "copy file step", false);
         if (!bool)
         {
           QLog.d("kandianreport.KandianReportSoLoader", 1, "copy fail, delete so");
@@ -31,7 +31,7 @@ class KandianReportSoLoader$1$1
       catch (Throwable localThrowable)
       {
         int i;
-        odq.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "", "copy file exception : " + localThrowable.toString(), false);
+        olh.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "", "copy file exception : " + localThrowable.toString(), false);
         QLog.d("kandianreport.KandianReportSoLoader", 1, "jscjni downloadSoFiles read so config fail");
         continue;
       }

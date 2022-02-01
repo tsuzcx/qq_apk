@@ -1,33 +1,78 @@
 package com.tencent.qapmsdk.impl.appstate;
 
-import com.tencent.qapmsdk.impl.g.b;
+import android.os.Looper;
+import com.tencent.qapmsdk.impl.instrumentation.j;
+import com.tencent.qapmsdk.impl.instrumentation.k;
 
 public class g
-  extends c
 {
-  private String b;
+  protected ThreadLocal<j> a = new ThreadLocal();
+  protected ThreadLocal<k<j>> b = new ThreadLocal();
+  protected j c;
   
-  public void b(String paramString)
+  public void a()
   {
-    super.b(paramString);
-    this.b = paramString;
+    this.a.remove();
+    if (this.b.get() != null) {
+      ((k)this.b.get()).pop();
+    }
+    b();
   }
   
-  public h c()
+  public void a(j paramj, Boolean paramBoolean)
   {
-    Object localObject;
-    if (!b.c) {
-      localObject = null;
-    }
-    h localh;
+    if (paramj == null) {}
     do
     {
-      return localObject;
-      localh = super.c();
-      localObject = localh;
-    } while (localh == null);
-    localh.a(this.a.b());
-    return localh;
+      do
+      {
+        return;
+      } while (e() == null);
+      this.b.set(e());
+      if ((e().isEmpty()) || (e().peek() != paramj)) {
+        e().push(paramj);
+      }
+      this.a.set(paramj);
+    } while (!paramBoolean.booleanValue());
+    this.c = paramj;
+  }
+  
+  public void b()
+  {
+    if ((this.b.get() == null) || (((k)this.b.get()).isEmpty())) {
+      this.a.set(null);
+    }
+    j localj;
+    do
+    {
+      return;
+      localj = (j)((k)this.b.get()).peek();
+      this.a.set(localj);
+    } while (Looper.myLooper() != Looper.getMainLooper());
+    this.c = localj;
+  }
+  
+  public j c()
+  {
+    return (j)this.a.get();
+  }
+  
+  public void d()
+  {
+    this.a.remove();
+    if (this.b.get() != null) {
+      ((k)this.b.get()).clear();
+    }
+  }
+  
+  protected k<j> e()
+  {
+    k localk2 = (k)this.b.get();
+    k localk1 = localk2;
+    if (localk2 == null) {
+      localk1 = new k();
+    }
+    return localk1;
   }
 }
 

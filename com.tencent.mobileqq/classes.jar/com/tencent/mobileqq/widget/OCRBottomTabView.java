@@ -32,9 +32,9 @@ public class OCRBottomTabView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131561250, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379409));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369042));
+    LayoutInflater.from(paramContext).inflate(2131561311, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379714));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369205));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OCRBottomTabView);
     paramAttributeSet = paramContext.getString(1);
     Drawable localDrawable = paramContext.getDrawable(0);

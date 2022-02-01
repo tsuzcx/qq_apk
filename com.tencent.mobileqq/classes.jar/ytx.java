@@ -1,13 +1,4 @@
-import android.view.MotionEvent;
-
-public abstract interface ytx
-{
-  public abstract void a(ytx paramytx);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent);
-}
+public abstract interface ytx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

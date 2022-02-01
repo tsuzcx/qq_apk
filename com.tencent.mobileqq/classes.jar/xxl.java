@@ -1,19 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class xxl
-  implements Parcelable.Creator<EditTakeVideoSource>
+class xxl
+  implements whw
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
+  xxl(xxi paramxxi, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  
+  public void a(int paramInt, Bundle paramBundle)
   {
-    return new EditTakeVideoSource(paramParcel);
+    a(-1, anvx.a(2131713791));
   }
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    return new EditTakeVideoSource[paramInt];
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, anvx.a(2131713788), 0).a();
+    ykq.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!xxi.a(this.jdField_a_of_type_Xxi).get()) {
+      xxi.a(this.jdField_a_of_type_Xxi, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

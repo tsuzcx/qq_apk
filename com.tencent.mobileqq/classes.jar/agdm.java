@@ -1,17 +1,102 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class agdm
-  extends aghj
+public class agdm
+  implements agdi
 {
-  agdm(agcw paramagcw)
+  public static final agdj<agdm> a;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  
+  static
   {
-    super(paramagcw, null);
+    jdField_a_of_type_Agdj = new agdn();
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public agdm() {}
+  
+  public agdm(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    return new agrj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public agdm(agdg paramagdg)
+  {
+    paramagdg.a();
+    this.jdField_a_of_type_Float = paramagdg.a();
+    this.b = paramagdg.a();
+    this.c = paramagdg.a();
+    this.jdField_a_of_type_Long = paramagdg.a();
+  }
+  
+  public agdm(agdm paramagdm)
+  {
+    if (paramagdm != null) {
+      a(paramagdm.a(), paramagdm.b(), paramagdm.c(), 0L);
+    }
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.c = paramFloat3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(agdg paramagdg, int paramInt)
+  {
+    paramagdg.a(1);
+    paramagdg.a(this.jdField_a_of_type_Float);
+    paramagdg.a(this.b);
+    paramagdg.a(this.c);
+    paramagdg.a(this.jdField_a_of_type_Long);
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_a_of_type_Float *= paramFloat;
+    this.b *= paramFloat;
+    this.c *= paramFloat;
   }
 }
 

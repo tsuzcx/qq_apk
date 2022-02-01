@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import java.util.ArrayList;
 
 public class ajks
-  implements DialogInterface.OnClickListener
+  extends abgl
 {
-  public ajks(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  public ajks(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (DeviceFragment.a(this.a) != null) {
+        DeviceFragment.b(this.a).a(this.a.b(), true, null);
+      }
+    }
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a = ((ArrayList)paramArrayList.clone());
+    this.a.a.notifyDataSetChanged();
   }
 }
 

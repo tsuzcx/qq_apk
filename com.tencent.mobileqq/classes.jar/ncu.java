@@ -1,113 +1,122 @@
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.util.LruCache;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo.Pair;
+import com.tencent.avgame.ui.AVGameText;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ncu
-  extends ReportDialog
+  extends RecyclerView.Adapter<ncv>
 {
-  protected static final LruCache<String, URLDrawable> a;
-  private View.OnClickListener a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private ndl jdField_a_of_type_Ndl;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public ncu(Context paramContext, ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> paramArrayList, int paramInt, HashMap<String, String> paramHashMap, ndl paramndl)
   {
-    jdField_a_of_type_AndroidUtilLruCache = new LruCache(20);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Ndl = paramndl;
   }
   
-  public ncu(Context paramContext, nak paramnak)
+  public SurvivalPkResultInfo.Pair<Integer, Long> a(int paramInt)
   {
-    super(paramContext, 2131755826);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ncv(this);
-    if (QLog.isColorLevel()) {
-      QLog.i("GameListDescriptionDialog", 2, "GameListDescriptionDialog show");
+    if ((paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (SurvivalPkResultInfo.Pair)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    a(paramnak);
+    return null;
   }
   
-  public static Dialog a(Context paramContext, nak paramnak)
+  public ArrayList<SurvivalPkResultInfo.Pair<Integer, Long>> a()
   {
-    paramContext = new ncu(paramContext, paramnak);
-    paramContext.show();
-    return paramContext;
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  private void a(nak paramnak)
+  public ncv a(ViewGroup paramViewGroup, int paramInt)
   {
-    setContentView(2131558729);
-    getWindow().setLayout(-1, -1);
-    View localView = findViewById(2131364222);
-    localView.setOnClickListener(new ncw(this));
-    Object localObject1 = (TextView)findViewById(2131371615);
-    TextView localTextView = (TextView)findViewById(2131365445);
-    Object localObject2 = findViewById(2131369566);
-    ((View)localObject2).setOnTouchListener(new ncx(this));
-    ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131376679).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localObject2 = findViewById(2131364615);
-    ((View)localObject2).setBackgroundDrawable(njh.a(getContext().getResources(), "avgame_guide_close_nor@2x.png", "avgame_guide_close_press@2x.png"));
-    ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramnak != null)
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558748, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558752, paramViewGroup, false)) {
+      return new ncv(paramViewGroup);
+    }
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ncv paramncv, int paramInt)
+  {
+    Object localObject = a(paramInt);
+    if (localObject == null)
     {
-      if (TextUtils.isEmpty(paramnak.l)) {
-        break label284;
-      }
-      ((TextView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(paramnak.l, URLDrawableHelper.TRANSPARENT, URLDrawableHelper.TRANSPARENT));
-      localObject1 = njh.a("avgame_list_card_bg@3x.png");
-      if (localObject1 == null) {
-        break label302;
-      }
-      localObject2 = new BitmapDrawable((Bitmap)localObject1);
-      label180:
-      if (TextUtils.isEmpty(paramnak.c)) {
-        break label309;
-      }
-      localObject1 = null;
-      if (jdField_a_of_type_AndroidUtilLruCache != null) {
-        localObject1 = (URLDrawable)jdField_a_of_type_AndroidUtilLruCache.get(paramnak.c);
-      }
-      Object localObject3 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = URLDrawable.getDrawable(paramnak.c, (Drawable)localObject2, (Drawable)localObject2);
-        ((URLDrawable)localObject1).startDownload();
-        localObject3 = localObject1;
-        if (jdField_a_of_type_AndroidUtilLruCache != null)
-        {
-          jdField_a_of_type_AndroidUtilLruCache.put(paramnak.c, localObject1);
-          localObject3 = localObject1;
-        }
-      }
-      localView.setBackgroundDrawable(localObject3);
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramncv, paramInt, getItemId(paramInt));
+      return;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_Ndl.a(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).second), (byte)1);
+    ncv.a(paramncv).setImageBitmap(localBitmap);
+    ncv.a(paramncv).setTypeface(AVGameText.a());
+    ncv.a(paramncv).setText(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).first));
+    localBitmap = nqf.a("avgame_pk_result_rank_num@2x.png");
+    if (localBitmap != null) {
+      ncv.a(paramncv).setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    }
+    localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(((SurvivalPkResultInfo.Pair)localObject).second));
+    ncv.b(paramncv).setText((CharSequence)localObject);
+    float f = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    localObject = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { 1712460323, 1713576244 });
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (i == 1) {
+      ((GradientDrawable)localObject).setCornerRadius(f);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(paramnak.b)) {
-        localTextView.setText(paramnak.b);
-      }
-      return;
-      label284:
-      if (paramnak.a == null) {
-        break;
-      }
-      ((TextView)localObject1).setText(paramnak.a);
+      ncv.a(paramncv).setBackgroundDrawable((Drawable)localObject);
       break;
-      label302:
-      localObject2 = URLDrawableHelper.TRANSPARENT;
-      break label180;
-      label309:
-      localView.setBackgroundDrawable((Drawable)localObject2);
+      if ((i > 1) && (paramInt == 0)) {
+        ((GradientDrawable)localObject).setCornerRadii(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
+      } else if ((i > 1) && (paramInt == i - 1)) {
+        ((GradientDrawable)localObject).setCornerRadii(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f });
+      } else {
+        ((GradientDrawable)localObject).setCornerRadius(0.0F);
+      }
     }
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int > this.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = this.jdField_a_of_type_Int)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GamePKResultRankAdapter", 2, "getItemCount size: " + i);
+      }
+      return i;
+    }
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 

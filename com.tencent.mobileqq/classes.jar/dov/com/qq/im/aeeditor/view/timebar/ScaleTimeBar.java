@@ -8,10 +8,10 @@ import android.graphics.Paint.FontMetrics;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bmoz;
-import bmpa;
+import boer;
+import boes;
 import java.util.List;
-import zau;
+import zpz;
 
 public class ScaleTimeBar
   extends ScaleView
@@ -49,18 +49,18 @@ public class ScaleTimeBar
     this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131296283);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165239));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165240));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(zpz.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.d);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165240));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165241));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(zpz.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(this.d);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165239));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165240));
   }
   
   private int b()
@@ -71,7 +71,7 @@ public class ScaleTimeBar
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bmoz == null) {}
+    if (this.jdField_a_of_type_Boer == null) {}
     do
     {
       return;
@@ -81,9 +81,9 @@ public class ScaleTimeBar
       if (this.jdField_b_of_type_Int == 0) {
         this.jdField_b_of_type_Int = (getHeight() / 2);
       }
-    } while (this.jdField_a_of_type_Bmoz.a() == null);
-    bmpa localbmpa = null;
-    int j = this.jdField_a_of_type_Bmoz.a().size();
+    } while (this.jdField_a_of_type_Boer.a() == null);
+    boes localboes = null;
+    int j = this.jdField_a_of_type_Boer.a().size();
     Object localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     float f1 = this.jdField_b_of_type_Int + (((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top) / 2.0F - ((Paint.FontMetrics)localObject).bottom;
     int i = 0;
@@ -91,14 +91,14 @@ public class ScaleTimeBar
     float f2;
     if (i < j)
     {
-      localObject = (bmpa)this.jdField_a_of_type_Bmoz.a().get(i);
-      f2 = this.jdField_a_of_type_Int + this.jdField_a_of_type_Bmoz.a() * ((bmpa)localObject).a();
-      if (this.jdField_a_of_type_Bmoz.a((bmpa)localObject) == this.jdField_a_of_type_Long)
+      localObject = (boes)this.jdField_a_of_type_Boer.a().get(i);
+      f2 = this.jdField_a_of_type_Int + this.jdField_a_of_type_Boer.a() * ((boes)localObject).a();
+      if (this.jdField_a_of_type_Boer.a((boes)localObject) == this.jdField_a_of_type_Long)
       {
         if (i >= j - 1) {
           break label516;
         }
-        localbmpa = (bmpa)this.jdField_a_of_type_Bmoz.a().get(i + 1);
+        localboes = (boes)this.jdField_a_of_type_Boer.a().get(i + 1);
       }
     }
     label516:
@@ -113,15 +113,15 @@ public class ScaleTimeBar
       {
         i += 1;
         break label110;
-        if (this.jdField_a_of_type_Bmoz.a((bmpa)localObject) <= this.jdField_a_of_type_Long) {
+        if (this.jdField_a_of_type_Boer.a((boes)localObject) <= this.jdField_a_of_type_Long) {
           break label516;
         }
-        if (localbmpa == null) {
+        if (localboes == null) {
           break;
         }
         f2 = this.jdField_a_of_type_Int;
-        f3 = this.jdField_a_of_type_Bmoz.a();
-        float f4 = localbmpa.a();
+        f3 = this.jdField_a_of_type_Boer.a();
+        float f4 = localboes.a();
         if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           break;
         }
@@ -129,17 +129,17 @@ public class ScaleTimeBar
         paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, 0, i, f2 + f4 * f3, f1, this.jdField_c_of_type_AndroidGraphicsPaint);
         return;
         f3 = this.jdField_b_of_type_Int;
-        if (((bmpa)localObject).b() == 1)
+        if (((boes)localObject).b() == 1)
         {
           paramCanvas.drawCircle(f2, f3, this.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
-        else if (((bmpa)localObject).b() == 0)
+        else if (((boes)localObject).b() == 0)
         {
-          String str = this.jdField_a_of_type_Bmoz.a((bmpa)localObject);
+          String str = this.jdField_a_of_type_Boer.a((boes)localObject);
           if (!TextUtils.isEmpty(str))
           {
             int k = str.length();
-            if ((this.jdField_a_of_type_Bmoz.a((bmpa)localObject) == this.jdField_a_of_type_Long) && (i < j - 1)) {
+            if ((this.jdField_a_of_type_Boer.a((boes)localObject) == this.jdField_a_of_type_Long) && (i < j - 1)) {
               paramCanvas.drawText(str, 0, k, f2 - this.jdField_a_of_type_Float * k / 2.0F, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
             } else {
               paramCanvas.drawText(str, 0, k, f2 - this.jdField_a_of_type_Float * k / 2.0F, f1, this.jdField_a_of_type_AndroidGraphicsPaint);

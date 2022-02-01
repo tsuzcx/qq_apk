@@ -13,15 +13,17 @@ class HippyImageView$1
   
   public void onRequestFail(Throwable paramThrowable, String paramString)
   {
-    if (TextUtils.equals(this.mFetchUrl, HippyImageView.access$300(this.this$0)))
+    if (TextUtils.equals(this.mFetchUrl, HippyImageView.access$400(this.this$0)))
     {
-      if ((this.val$sourceType == HippyImageView.access$400()) && (!TextUtils.isEmpty(this.this$0.mHippyImageViewDefalutImgeUrl)))
+      HippyImageView.access$502(this.this$0, 0);
+      if ((this.val$sourceType == HippyImageView.access$600()) && (!TextUtils.isEmpty(this.this$0.mHippyImageViewDefalutImgeUrl)))
       {
-        HippyImageView.access$502(this.this$0, null);
+        HippyImageView.access$702(this.this$0, null);
         this.this$0.setDefaultSource(this.this$0.mHippyImageViewDefalutImgeUrl);
       }
     }
-    else {
+    else
+    {
       return;
     }
     this.this$0.handleImageRequest(null, this.val$sourceType, paramThrowable);
@@ -34,7 +36,9 @@ class HippyImageView$1
   
   public void onRequestSuccess(HippyDrawable paramHippyDrawable)
   {
-    if (TextUtils.equals(this.mFetchUrl, HippyImageView.access$200(this.this$0))) {
+    if (TextUtils.equals(this.mFetchUrl, HippyImageView.access$200(this.this$0)))
+    {
+      HippyImageView.access$302(this.this$0, 2);
       this.this$0.handleImageRequest(paramHippyDrawable, this.val$sourceType, null);
     }
   }

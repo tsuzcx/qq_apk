@@ -1,11 +1,9 @@
-public class pkc
+final class pkc
+  implements rsy<String>
 {
-  public int a;
-  public long a;
-  
-  public String toString()
+  public boolean a(String paramString)
   {
-    return "articleId : " + this.jdField_a_of_type_Long + "  launchFrom: " + this.jdField_a_of_type_Int;
+    return (paramString.toLowerCase().contains("readinjoy")) && (!paramString.contains("readinjoy_local_reset_config_version")) && (!paramString.contains("readinjoy_remote_reset_config_version"));
   }
 }
 

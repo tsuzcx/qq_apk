@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import aitj;
+import ajoy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.PagerAdapter;
@@ -10,11 +10,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import araq;
-import bgga;
+import asfa;
+import bhou;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.LinkedList;
@@ -25,8 +26,8 @@ public class ImgPreviewAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aitj(this);
-  private araq jdField_a_of_type_Araq;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajoy(this);
+  private asfa jdField_a_of_type_Asfa;
   private LinkedList<URLImageView> jdField_a_of_type_JavaUtilLinkedList;
   private List<EmoticonFromGroupEntity> jdField_a_of_type_JavaUtilList;
   
@@ -35,7 +36,7 @@ public class ImgPreviewAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_a_of_type_Araq = ((bgga)paramQQAppInterface.getManager(235)).jdField_a_of_type_Araq;
+    this.jdField_a_of_type_Asfa = ((bhou)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_Asfa;
   }
   
   public EmoticonFromGroupEntity a(int paramInt)
@@ -79,14 +80,14 @@ public class ImgPreviewAdapter
     }
     for (;;)
     {
-      localURLImageView.setImageDrawable((URLDrawable)this.jdField_a_of_type_Araq.a((EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt), 1, -1, null));
+      localURLImageView.setImageDrawable((URLDrawable)this.jdField_a_of_type_Asfa.a((EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt), 1, -1, null));
       localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramViewGroup.addView(localURLImageView);
       return localURLImageView;
       localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
       localURLImageView.setLayoutParams(new Gallery.LayoutParams(ScreenUtil.dip2px(166.0F), ScreenUtil.dip2px(166.0F)));
       localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localURLImageView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165436));
+      localURLImageView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165442));
     }
   }
   

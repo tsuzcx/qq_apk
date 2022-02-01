@@ -1,18 +1,17 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnInfoListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnInfoListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bjfg
-  implements IMediaPlayer.OnInfoListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  bjfg(bjey parambjey, ReliableVideoPlayer.OnInfoListener paramOnInfoListener) {}
+  bjfg(bjff parambjff, bjcg parambjcg) {}
   
-  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnInfoListener != null) {
-      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bjey, paramInt1, paramInt2);
-    }
-    return false;
+    this.jdField_a_of_type_Bjcg.b = paramBoolean;
+    this.jdField_a_of_type_Bjff.notifyDataSetChanged();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

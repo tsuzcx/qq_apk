@@ -1,33 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
 
-class anlr
-  implements abvz
+final class anlr
+  implements anfg
 {
-  anlr(anlp paramanlp, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
+  anlr(String paramString, String[] paramArrayOfString, anlp paramanlp) {}
   
-  public ToServiceMsg a()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    ToServiceMsg localToServiceMsg = anlp.b(this.jdField_a_of_type_Anlp).createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putByte("cmd", (byte)0);
-    localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putByte("sendType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", 1025);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
-    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
-    bbln localbbln = new bbln();
-    localbbln.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    localbbln.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localToServiceMsg.putWupBuffer(bblf.a(anlp.b(this.jdField_a_of_type_Anlp), 9, this.jdField_a_of_type_JavaLangString, localbbln, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
-    return localToServiceMsg;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
+      if (paramArrayOfInt.exists()) {
+        try
+        {
+          paramString = anlq.a(this.jdField_a_of_type_ArrayOfJavaLangString);
+          if (anlq.a(this.jdField_a_of_type_JavaLangString))
+          {
+            paramArrayOfInt = anlq.a(paramArrayOfInt, paramString);
+            this.jdField_a_of_type_Anlp.a(0, paramString, paramArrayOfInt);
+          }
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
+            return;
+            this.jdField_a_of_type_Anlp.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+          }
+          this.jdField_a_of_type_Anlp.a(-1, null, null);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Anlp.a(-1, null, null);
+    }
   }
 }
 

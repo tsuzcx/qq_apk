@@ -1,33 +1,13 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public abstract class akns
-  implements aknu
+class akns
+  implements biyc
 {
-  public int a;
-  public long a;
-  public bdyj a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  akns(aknr paramaknr, Runnable paramRunnable) {}
   
-  public akns()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_Bdyj = new bdyj();
-  }
-  
-  @Nullable
-  public abstract Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
-  
-  public boolean a()
-  {
-    return true;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

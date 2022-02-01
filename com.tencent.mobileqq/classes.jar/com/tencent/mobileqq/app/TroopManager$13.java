@@ -1,13 +1,17 @@
 package com.tencent.mobileqq.app;
 
+import aofl;
+import mqq.os.MqqHandler;
+
 class TroopManager$13
   implements Runnable
 {
-  TroopManager$13(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3) {}
+  TroopManager$13(TroopManager paramTroopManager, String paramString, aofl paramaofl) {}
   
   public void run()
   {
-    this.this$0.a(this.a, this.b, this.c, -100, null, null, -100, -100, -100, -100L, -100L);
+    String str = this.this$0.d(this.jdField_a_of_type_JavaLangString);
+    ThreadManager.getUIHandler().post(new TroopManager.13.1(this, str));
   }
 }
 

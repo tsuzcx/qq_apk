@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.Utils;
 
-class akpt
-  implements DialogInterface.OnClickListener
+public class akpt
+  extends akpu
 {
-  akpt(akpr paramakpr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akpt(String paramString)
   {
-    paramDialogInterface.dismiss();
+    super(paramString);
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateHeif";
+  }
+  
+  static boolean a(String paramString)
+  {
+    return Utils.isHeifFile(paramString);
   }
 }
 

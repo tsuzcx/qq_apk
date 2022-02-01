@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
-import blbu;
-import blbw;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +10,11 @@ public class ReaderTianShuSdk
   public static void requestAd(int paramInt1, int paramInt2, ReaderTianShuSdk.RequestListener paramRequestListener)
   {
     ArrayList localArrayList = new ArrayList();
-    blbu localblbu = new blbu();
-    localblbu.a = paramInt1;
-    localblbu.b = paramInt2;
-    localArrayList.add(localblbu);
-    blbw.a().a(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mPosId = paramInt1;
+    localTianShuAdPosItemData.mNeedCnt = paramInt2;
+    localArrayList.add(localTianShuAdPosItemData);
+    TianShuManager.getInstance().requestAdv(localArrayList, new ReaderTianShuSdk.ReaderTianShuGetAdvCallback(paramInt1, paramRequestListener));
   }
 }
 

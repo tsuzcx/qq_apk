@@ -1,24 +1,32 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.Nullable;
 
-public class azzs
-  implements bbpy
+class azzs
+  extends bafn
 {
-  azzs(azzq paramazzq) {}
+  azzs(azzr paramazzr) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Card paramCard)
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousManager", 2, String.format("onGetCardDisplaySetting isSuccess=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
+    if ((paramBoolean) && (paramCard != null)) {
+      if (bagq.a.a(42425, paramCard, null) != 0) {
+        break label91;
+      }
+    }
+    label91:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      this.a.b(paramBoolean);
+      if (azzr.a(this.a) != null) {
+        azzr.a(this.a).removeObserver(azzr.a(this.a));
+      }
+      return;
     }
   }
 }

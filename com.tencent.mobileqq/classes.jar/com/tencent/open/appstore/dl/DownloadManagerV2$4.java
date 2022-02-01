@@ -1,21 +1,21 @@
 package com.tencent.open.appstore.dl;
 
-import bhyo;
-import bicl;
+import bjjq;
+import bjnn;
 
 public class DownloadManagerV2$4
   implements Runnable
 {
-  public DownloadManagerV2$4(bhyo parambhyo) {}
+  public DownloadManagerV2$4(bjjq parambjjq) {}
   
   public void run()
   {
-    if (!bhyo.a(this.this$0))
+    if (!bjjq.a(this.this$0))
     {
-      if (!bicl.a().b()) {
+      if (!bjnn.a().b()) {
         this.this$0.a(true);
       }
-      bhyo.a(this.this$0, true);
+      bjjq.a(this.this$0, true);
     }
   }
 }

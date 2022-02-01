@@ -1,39 +1,49 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class ugc
-  extends pkt
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
+  public long a;
+  public AdvertisementInfo a;
+  public String a;
+  public boolean a;
+  public long b;
+  public long c;
+  public long d;
   
-  public ugc(ufd paramufd, String paramString, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    long l1;
+    long l2;
+    long l3;
+    if (paramBundle != null)
+    {
+      String str = paramBundle.getString("adid", "");
+      l1 = paramBundle.getLong("navigationStart", 0L);
+      l2 = paramBundle.getLong("htmlLoaded", 0L);
+      l3 = paramBundle.getLong("domComplete", 0L);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.equals(this.jdField_a_of_type_JavaLangString))) {
+        break label71;
+      }
+    }
+    label71:
+    do
+    {
+      return;
+      if (l1 > 0L) {
+        this.b = l1;
+      }
+      if (l2 > 0L) {
+        this.c = l2;
+      }
+    } while (l3 <= 0L);
+    this.d = l3;
   }
   
-  public void a(long paramLong, int paramInt, String paramString)
+  public boolean a()
   {
-    super.a(paramLong, paramInt, paramString);
-    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("feedsId", String.valueOf(paramLong));
-      paramString.put("retCode", paramInt);
-      paramString.put("feedsType", this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
-    }
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L) && ((this.b > 0L) || (this.c > 0L) || (this.d > 0L));
   }
 }
 

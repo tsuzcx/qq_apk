@@ -1,26 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class aezi
-  implements View.OnClickListener
+  extends aoef
 {
-  public aezi(BaseChatItemLayout paramBaseChatItemLayout) {}
+  public aezi(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, bdxt parambdxt)
   {
-    String str = (String)paramView.getTag();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatItemLayout", 2, "vip_card_extension jumpUrl=" + str);
+    if ((paramBoolean) && (parambdxt != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    {
+      parambdxt = parambdxt.c();
+      if ((parambdxt != null) && (!parambdxt.contains(this.a.jdField_a_of_type_JavaLangString))) {}
     }
-    if (!StringUtil.isEmpty(str)) {
-      VasWebviewUtil.openQQBrowserActivity(this.a.getContext(), str, 256L, null, false, -1);
+    else
+    {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    parambdxt = (bdxj)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_CONTROLL);
+    SubAccountUgActivity.a(this.a, parambdxt, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(boolean paramBoolean, bdxt parambdxt)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
+      if (parambdxt != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + parambdxt.b + " subAccount=" + parambdxt.c + " errType=" + parambdxt.jdField_a_of_type_Int + " errMsg=" + parambdxt.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((parambdxt == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(parambdxt.c)))) {}
+    do
+    {
+      return;
+      this.a.e();
+      if (this.a.b)
+      {
+        this.a.b = false;
+        if (paramBoolean)
+        {
+          this.a.a();
+          this.a.c(this.a.getString(2131719091));
+          return;
+        }
+        this.a.b(this.a.getString(2131719090));
+        return;
+      }
+    } while (!paramBoolean);
+    parambdxt = (bdxj)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_CONTROLL);
+    Pair localPair = parambdxt.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    parambdxt.a(this.a.app, this.a, localPair, new aezj(this, parambdxt, localPair));
   }
 }
 

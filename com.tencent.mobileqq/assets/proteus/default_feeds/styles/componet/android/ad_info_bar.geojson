@@ -27,12 +27,34 @@
 				"type": "relative",
             "value": "351"
 			},
-			"subviews": [{
+			"subviews": [
+				{
+					"view_type": "ReadInjoyAsynImageView",
+					"view_id": "id_ad_color_label_img",
+					"height": {
+						"type": "relative",
+						"value": "20.5"
+					},
+					"width": {
+						"type": "relative",
+						"value": "72"
+					},
+					"event_type": "cmd_color_icon_click",
+					"margin_right": "7",
+					"margin_top": "3.5",
+					"attributes": {
+						"setImageWithURLString:lineup:": [
+							"$color_label_path",
+							"$1"
+						]
+					}
+			    },
+				{
 					"view_type": "UILabel",
 					"view_id": "id_info_status",
 					"height": {
 						"type": "relative",
-                "value": "30"
+						"value": "30"
 					},
 					"width": {
 						"type": "wrap_content"

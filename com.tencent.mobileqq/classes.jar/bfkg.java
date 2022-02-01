@@ -1,15 +1,13 @@
-public class bfkg
+import java.util.Comparator;
+
+class bfkg
+  implements Comparator<bfkj>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  bfkg(bfkf parambfkf) {}
   
-  public String toString()
+  public int a(bfkj parambfkj1, bfkj parambfkj2)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.b).append("]");
-    return localStringBuilder.toString();
+    return parambfkj2.b - parambfkj1.b;
   }
 }
 

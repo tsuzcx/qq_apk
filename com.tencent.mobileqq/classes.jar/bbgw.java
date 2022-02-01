@@ -1,38 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-public class bbgw
-  implements bbha
+public final class bbgw
+  implements Parcelable.Creator<FilterCategory>
 {
-  protected View a;
-  
-  public bbgw(ViewGroup paramViewGroup)
+  public FilterCategory a(Parcel paramParcel)
   {
-    this.a = new LinearLayout(paramViewGroup.getContext());
-    this.a.setVisibility(8);
+    return new FilterCategory(paramParcel);
   }
   
-  public View a()
+  public FilterCategory[] a(int paramInt)
   {
-    return this.a;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public List<bbhb> a()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    return new FilterCategory[paramInt];
   }
 }
 

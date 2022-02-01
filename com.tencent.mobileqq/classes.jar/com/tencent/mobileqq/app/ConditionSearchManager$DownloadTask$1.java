@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ampm;
-import ampp;
+import anrz;
+import ansc;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
@@ -12,7 +12,7 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConditionSearchManager$DownloadTask$1
   implements Runnable
 {
-  public ConditionSearchManager$DownloadTask$1(ampp paramampp, String paramString, File paramFile, QQAppInterface paramQQAppInterface, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConditionSearchManager$DownloadTask$1(ansc paramansc, String paramString, File paramFile, QQAppInterface paramQQAppInterface, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
@@ -21,18 +21,18 @@ public class ConditionSearchManager$DownloadTask$1
       QLog.d("ConditionSearch.Manager", 2, "DownloadTask runnable start, url=" + this.jdField_a_of_type_JavaLangString);
     }
     Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.downloadData(ampp.a(this.this$0), (String)localObject, this.jdField_a_of_type_JavaIoFile);
+    int i = HttpDownloadUtil.downloadData(ansc.a(this.this$0), (String)localObject, this.jdField_a_of_type_JavaIoFile);
     if (i == 0) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ConditionSearch.Manager", 2, "onCheckupConfig | download result = " + bool);
       }
-      localObject = (ampm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59);
+      localObject = (anrz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
       if (localObject != null) {
-        ((ampm)localObject).a(i, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+        ((anrz)localObject).a(i, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
       }
-      localObject = (PreDownloadController)ampp.b(this.this$0).getManager(193);
+      localObject = (PreDownloadController)ansc.b(this.this$0).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
       String str = this.jdField_a_of_type_JavaLangString;
       long l1 = l2;
       if (bool)

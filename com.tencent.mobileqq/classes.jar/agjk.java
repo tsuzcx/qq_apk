@@ -1,42 +1,176 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.theme.diy.ThemeBackground.BusinessFlag;
+import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
+import com.tencent.qapmsdk.base.reporter.ab.AbProxy;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.QEffectView;
+import java.io.File;
 
-class agjk
-  implements View.OnClickListener
+public class agjk
+  implements agin
 {
-  agjk(agjj paramagjj) {}
+  private long jdField_a_of_type_Long;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QEffectView jdField_a_of_type_ComTencentQqEffectQEffectView;
   
-  public void onClick(View paramView)
+  public agjk(BaseChatPie paramBaseChatPie)
   {
-    ple.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, null);
-    agjl localagjl = (agjl)AIOUtils.getHolder(paramView);
-    ChatMessage localChatMessage = localagjl.a;
-    MessageForPubAccount localMessageForPubAccount;
-    if ((localChatMessage instanceof MessageForPubAccount))
-    {
-      localMessageForPubAccount = (MessageForPubAccount)localChatMessage;
-      if ((localMessageForPubAccount.mPAMessage == null) || (localMessageForPubAccount.mPAMessage.mMsgId <= 0L)) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public static String a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = afrb.a(paramContext, paramString1, paramString2);
+    if (paramContext.contains("aioImage")) {
+      return paramContext.replace("aioImage", "aio_bg.mp4");
     }
-    for (long l = localMessageForPubAccount.mPAMessage.mMsgId;; l = -1L)
+    return null;
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = a(paramContext, paramString1, paramString2);
+    if (!TextUtils.isEmpty(paramContext)) {
+      return new File(paramContext).exists();
+    }
+    return false;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.pause();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (localChatMessage.istroop == 1))
+    case 4: 
+    default: 
+    case 14: 
+      do
       {
-        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "Clk_all", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-        if (((bfas)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, localChatMessage.uniseq)) {
-          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "top_one", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+        return;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      StringBuilder localStringBuilder = new StringBuilder().append("destroy qeffect, duration:");
+      if (this.jdField_a_of_type_Long == 0L) {}
+      for (long l = this.jdField_a_of_type_Long;; l = System.currentTimeMillis() - this.jdField_a_of_type_Long)
+      {
+        QLog.i("QEffectBgProvider", 1, l);
+        if (this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl() != null) {
+          ((View)this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl()).destroyDrawingCache();
+        }
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        return;
+      }
+    case 15: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if ((paramSessionInfo != null) && (paramSessionInfo.chatBg != null))
+    {
+      str1 = paramSessionInfo.curFriendUin;
+      if (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null)
+      {
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView = new QEffectView(paramContext);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot.addView(this.jdField_a_of_type_ComTencentQqEffectQEffectView, 0, new ViewGroup.LayoutParams(-1, -1));
+      }
+      if (paramSessionInfo.chatBg.a != null) {
+        if ((paramSessionInfo.chatBg.a instanceof asbf))
+        {
+          ThemeBackground.sAIOBusinessFlag.setUseStatic();
+          paramSessionInfo = "aio-bg-static";
+          this.jdField_a_of_type_ComTencentQqEffectQEffectView.setExtOptions(2, QEffectApngImageView.a(new int[] { 0 }, "-chatBg-"));
+          str2 = paramQQAppInterface.getCurrentUin();
+          i = ChatBackgroundManager.a(paramContext, str2, str1);
+          if ((i <= 0) || (!ChatBackgroundManager.a())) {
+            break label239;
+          }
+          ((bhou)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(i, new agjl(this, i));
+          paramContext = paramSessionInfo + "-effect";
+          ThemeBackground.sAIOBusinessFlag.setUseEffect();
+          AbProxy.setAbFactor("AIO背景", paramContext, acxr.class);
         }
       }
-      agjj.a(this.a, localagjl, localChatMessage, l);
-      agjj.a(this.a, localChatMessage);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    }
+    label239:
+    while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null) {
+      for (;;)
+      {
+        String str1;
+        String str2;
+        int i;
+        return;
+        if ((paramSessionInfo.chatBg.a instanceof URLDrawable))
+        {
+          ThemeBackground.sAIOBusinessFlag.setUseApng();
+          paramSessionInfo = "aio-bg-dynamic";
+          continue;
+          ThemeBackground.sAIOBusinessFlag.setUseStatic();
+        }
+        else
+        {
+          paramSessionInfo = "aio-bg-default";
+          continue;
+          if ((ChatBackgroundManager.a(paramContext, str2, str1)) && (ChatBackgroundManager.a()))
+          {
+            paramContext = afrb.a(paramContext, str2, str1);
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+            this.jdField_a_of_type_ComTencentQqEffectQEffectView.setSrc(paramContext.replace("aioImage", ""), "zip");
+            QLog.i("QEffectBgProvider", 1, "set qeffect for custom background aioImageID:" + ChatBackgroundManager.d(paramContext));
+            paramContext = paramSessionInfo + "-3d";
+            ThemeBackground.sAIOBusinessFlag.setUse3D();
+          }
+          else if (a(paramContext, str2, str1))
+          {
+            paramQQAppInterface = ThemeBackground.getDynamicDrawable(a(paramContext, str2, str1), 2130839154);
+            bhrj.a().a(paramQQAppInterface, true);
+            paramContext = paramSessionInfo;
+            if (paramQQAppInterface != null)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot.setBackgroundDrawable(paramQQAppInterface);
+              paramContext = paramSessionInfo + "-video";
+              ThemeBackground.sAIOBusinessFlag.setUseVideo();
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+            paramContext = paramSessionInfo;
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 4, 14, 15, 16, 17 };
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.resume();
     }
   }
 }

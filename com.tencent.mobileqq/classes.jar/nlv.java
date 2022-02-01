@@ -1,23 +1,52 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.stage.guesstext.GuessTextStageView;
+import com.tencent.qphone.base.util.QLog;
 
-class nlv
-  implements AbsListView.OnScrollListener
+public class nlv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  nlv(nlt paramnlt, PoiMapActivity paramPoiMapActivity) {}
+  public nlv(GuessTextStageView paramGuessTextStageView, String paramString) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onGlobalLayout()
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Nlt.jdField_a_of_type_Nlq.b))
+    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getPaddingRight();
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Nlt.b(false);
-      if (!PoiMapActivity.b(this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
-        this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      QLog.d("GuessTextStageView", 2, "onShowGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
+      QLog.d("GuessTextStageView", 2, "onShowGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getWidth());
+      QLog.d("GuessTextStageView", 2, "onShowGameTopicTips caluWidth  = " + i);
+    }
+    ViewGroup.LayoutParams localLayoutParams;
+    if (i > 0)
+    {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      if (nqu.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.b) <= 1) {
+        break label282;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_Nlu.a().b());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessTextStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
       }
     }
+    label282:
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_Nlu.a().a());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextGuessTextStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    } while (!QLog.isColorLevel());
+    QLog.d("GuessTextStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
   }
 }
 

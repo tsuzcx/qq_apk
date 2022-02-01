@@ -1,18 +1,19 @@
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+
 class bncr
-  implements afpa
+  implements Observer<bnpr>
 {
-  bncr(bncq parambncq) {}
+  bncr(bncm parambncm) {}
   
-  public void a()
+  public void a(@Nullable bnpr parambnpr)
   {
-    this.a.a.a.a(-1, bncp.a(this.a.a), 2130772030, 0, false);
-    bncp.a(this.a.a, null);
-  }
-  
-  public void b()
-  {
-    this.a.a.a.a(-1, bncp.a(this.a.a), 2130772030, 0, false);
-    bncp.a(this.a.a, null);
+    if (parambnpr == null) {}
+    while (parambnpr.b != AECaptureMode.PLAY) {
+      return;
+    }
+    bncm.a(this.a);
   }
 }
 

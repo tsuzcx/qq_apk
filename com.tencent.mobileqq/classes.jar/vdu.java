@@ -1,16 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import rx.functions.Action1;
-
 public class vdu
-  implements Action1<Bitmap>
+  implements vds
 {
-  public vdu(RoundImageView paramRoundImageView) {}
-  
-  public void a(Bitmap paramBitmap)
+  public void a()
   {
-    RoundImageView.a(this.a, paramBitmap);
-    RoundImageView.a(this.a);
+    vmp.e("OnJumpListener", "[OnJumpListener.java][onJumpWSClient]");
+  }
+  
+  public void b()
+  {
+    vmp.e("OnJumpListener", "[OnJumpListener.java][onJumpMiniApp]");
+  }
+  
+  public void c()
+  {
+    vmp.e("OnJumpListener", "[OnJumpListener.java][onJumpWebH5]");
+  }
+  
+  public void d()
+  {
+    vmp.e("OnJumpListener", "[OnJumpListener.java][onDownloadWSApp]");
   }
 }
 

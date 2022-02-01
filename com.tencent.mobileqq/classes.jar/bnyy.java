@@ -1,16 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.widget.ImageView;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.player.MoviePlayer;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
 public class bnyy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements boeo
 {
-  public bnyy(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnyy(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    if ((AEEditorMultiCutEditFragment.a(this.a) != null) && (AEEditorMultiCutEditFragment.a(this.a).a())) {
+      AEEditorMultiCutEditFragment.a(this.a).b();
+    }
+    this.a.a.f();
+  }
+  
+  public void a(int paramInt)
+  {
+    long l = AEEditorMultiCutEditFragment.a(this.a).a(paramInt);
+    if (AEEditorMultiCutEditFragment.a(this.a).a()) {
+      AEEditorMultiCutEditFragment.a(this.a).b();
+    }
+    this.a.a.a(paramInt, 0);
+    AEEditorMultiCutEditFragment.c(this.a, l);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a.a(paramInt, 0);
+    this.a.a.setScrollByPassive(false);
+    paramInt = (int)(this.a.a.a() * (float)(AEEditorMultiCutEditFragment.a(this.a).getPosition().getTimeUs() / 1000L));
+    if (this.a.a.getWidth() / 2 - paramInt >= AEEditorMultiCutEditFragment.a(this.a))
+    {
+      AEEditorMultiCutEditFragment.c(this.a).setVisibility(0);
+      return;
+    }
+    AEEditorMultiCutEditFragment.c(this.a).setVisibility(8);
   }
 }
 

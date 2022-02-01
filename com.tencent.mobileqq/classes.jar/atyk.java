@@ -1,224 +1,185 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
-import com.tencent.mobileqq.app.asyncdb.FullCache;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.gamecenter.message.UinToTinyId;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import org.jetbrains.annotations.Nullable;
 
 public class atyk
-  extends FullCache
 {
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<String, Pair<String, String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private atyn jdField_a_of_type_Atyn;
+  private Class<?> jdField_a_of_type_JavaLangClass;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public atyk(QQAppInterface paramQQAppInterface, DBDelayManager paramDBDelayManager)
+  public atyk(Context paramContext, atyn paramatyn)
   {
-    super(paramQQAppInterface, paramDBDelayManager, UinToTinyId.class);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    c();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Atyn = paramatyn;
+    this.jdField_a_of_type_JavaLangClass = FileBrowserActivity.class;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  private UinToTinyId a(String paramString)
+  private boolean a()
   {
-    return (UinToTinyId)findCache(paramString);
+    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3);
   }
   
-  @Nullable
-  private String a(String paramString1, String paramString2, String paramString3)
+  private void b()
   {
-    if (TextUtils.isEmpty(paramString3)) {
-      return null;
-    }
-    UinToTinyId localUinToTinyId = a(paramString3);
-    if (localUinToTinyId != null)
-    {
+    d(-1);
+  }
+  
+  private boolean b()
+  {
+    if (!a()) {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.tiny_msg.TinyIdCache", 2, "findUinWithTinyId UIN = " + localUinToTinyId.friendUin + ",  fromTinyId = " + paramString1 + ", toTinyId = " + paramString2);
+        QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser isFromAIO return false, mEntranceType:" + this.jdField_a_of_type_Int);
       }
-      return localUinToTinyId.friendUin;
     }
-    localUinToTinyId = new UinToTinyId();
-    long l = this.jdField_a_of_type_Long - 1L;
-    this.jdField_a_of_type_Long = l;
-    localUinToTinyId.friendUin = String.valueOf(l);
-    localUinToTinyId.tinyId = paramString3;
-    localUinToTinyId.fromTinyId = paramString1;
-    localUinToTinyId.toTinyId = paramString2;
-    addCache(localUinToTinyId);
-    d();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.TinyIdCache", 2, "findUinWithTinyId NULL UIN = " + localUinToTinyId.friendUin + ",  fromTinyId = " + paramString1 + ", toTinyId = " + paramString2 + ", time = " + NetConnInfoCenter.getServerTime());
-    }
-    return localUinToTinyId.friendUin;
+    ChatMessage localChatMessage;
+    SessionInfo localSessionInfo;
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          localChatMessage = this.jdField_a_of_type_Atyn.a();
+          if (localChatMessage != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser getChatMessage return falase");
+        return false;
+        localSessionInfo = this.jdField_a_of_type_Atyn.a();
+        if (localSessionInfo != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser getSessionInfo return falase");
+      return false;
+      if (this.jdField_a_of_type_Atyn.c())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser set video resume, return true");
+        }
+        return true;
+      }
+      if (this.jdField_a_of_type_Atyn.d()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser canUseNewVideoBrowser is false, don't start new video browser");
+    return false;
+    aufd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidGraphicsRect, localChatMessage, localSessionInfo, this.jdField_a_of_type_Atyn.a(), this.jdField_a_of_type_Atyn.e(), this.jdField_a_of_type_Atyn.f(), null);
+    return true;
   }
   
   private void c()
   {
-    do
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        this.cacheMap.clear();
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localObject2 = ((EntityManager)localObject1).query(UinToTinyId.class);
-        ((EntityManager)localObject1).close();
-        if (localObject2 != null)
-        {
-          b();
-          localObject1 = ((List)localObject2).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (UinToTinyId)((Iterator)localObject1).next();
-            this.cacheMap.put(((UinToTinyId)localObject2).tinyId, localObject2);
-          }
-        }
-        localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_name_tinyid_uin_mapping", 0);
-      }
-      catch (Exception localException)
-      {
-        QLog.d("Q.tiny_msg.TinyIdCache", 1, "doInit occur error", localException);
-        return;
-      }
-      SharedPreferences localSharedPreferences;
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_Long = localSharedPreferences.getLong("key_last_uin_consume_" + (String)localObject2, 9223372036854775807L);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.tiny_msg.TinyIdCache", 2, "doInit size = " + this.cacheMap.size() + ", lastUinConsume = " + this.jdField_a_of_type_Long);
+    atym localatym = new atym(this);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131692476);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692478);
+    audn.a(this.jdField_a_of_type_AndroidContentContext, str1, str2, localatym);
   }
   
-  private void d()
+  private void d(int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_name_tinyid_uin_mapping", 0);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localSharedPreferences.edit().putLong("key_last_uin_consume_" + str, this.jdField_a_of_type_Long).apply();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.TinyIdCache", 2, "persistLastConsumeId lastUinConsume = " + this.jdField_a_of_type_Long);
-    }
-  }
-  
-  public Pair<String, String> a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      localObject1 = (Pair)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    }
+    if ((this.jdField_a_of_type_Atyn.d()) && (b())) {}
     for (;;)
     {
-      if ((QLog.isColorLevel()) && (localObject1 != null)) {
-        QLog.d("Q.tiny_msg.TinyIdCache", 2, "findTinyId  from cache fromTinyId = " + (String)((Pair)localObject1).first + ", toTinyId = " + (String)((Pair)localObject1).second);
-      }
-      return localObject1;
-      Iterator localIterator = this.cacheMap.values().iterator();
-      do
+      return;
+      Intent localIntent = this.jdField_a_of_type_Atyn.a();
+      if (localIntent == null)
       {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (UinToTinyId)localIterator.next();
-      } while (!TextUtils.equals(((UinToTinyId)localObject1).friendUin, paramString));
-      localObject1 = new Pair(((UinToTinyId)localObject1).fromTinyId, ((UinToTinyId)localObject1).toTinyId);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+        QLog.i("FileBrowserCreator<FileAssistant>", 1, "openFileBrowser error, intent params is null.");
+        return;
+      }
+      if (this.jdField_b_of_type_Int != -1) {
+        localIntent.setFlags(this.jdField_b_of_type_Int);
+      }
+      localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangClass);
+      localIntent.putExtra("file_enter_file_browser_type", this.jdField_a_of_type_Int);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("file_enter_file_browser_type", this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+        localBundle.putParcelable("file_browser_params_thumb_bound", this.jdField_a_of_type_AndroidGraphicsRect);
+      }
+      this.jdField_a_of_type_Atyn.b(localBundle);
+      localIntent.putExtra("file_browser_extra_params", localBundle);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        localIntent.putExtra("selfSet_leftViewText", this.jdField_a_of_type_JavaLangString);
+      }
+      if (paramInt != -1) {
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, paramInt);
+      }
+      while ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      {
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130772039, 2130772041);
+        return;
+        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      }
     }
-  }
-  
-  public String a(String paramString)
-  {
-    String str = "";
-    Pair localPair = a(paramString);
-    paramString = str;
-    if (localPair != null) {
-      paramString = (String)localPair.first;
-    }
-    return paramString;
-  }
-  
-  /* Error */
-  public String a(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 42	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifne +12 -> 18
-    //   9: aload_2
-    //   10: invokestatic 42	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   13: istore_3
-    //   14: iload_3
-    //   15: ifeq +9 -> 24
-    //   18: aconst_null
-    //   19: astore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload_1
-    //   23: areturn
-    //   24: aload_0
-    //   25: aload_1
-    //   26: aload_2
-    //   27: new 54	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   34: aload_1
-    //   35: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_2
-    //   39: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokespecial 268	atyk:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   48: astore_1
-    //   49: goto -29 -> 20
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_1
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	this	atyk
-    //   0	57	1	paramString1	String
-    //   0	57	2	paramString2	String
-    //   13	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	52	finally
-    //   24	49	52	finally
   }
   
   public void a()
   {
-    destroy();
+    c(-1);
   }
   
-  public void b()
+  public void a(int paramInt)
   {
-    this.cacheMap.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void destroy()
+  public void a(Rect paramRect)
   {
-    b();
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
   }
   
-  public String getKey(Entity paramEntity)
+  public void a(Class<?> paramClass)
   {
-    return ((UinToTinyId)paramEntity).tinyId;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Atyn.b()))
+    {
+      if (aufd.a(this.jdField_a_of_type_AndroidContentContext, false, new atyl(this, paramInt))) {
+        c();
+      }
+      return;
+    }
+    d(paramInt);
   }
 }
 

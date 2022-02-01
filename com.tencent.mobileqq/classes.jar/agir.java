@@ -1,49 +1,64 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class agir
-  extends arep
+class agir
+  implements awiy
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bhht jdField_a_of_type_Bhht;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PicEmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
+  agir(agiq paramagiq) {}
   
-  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, PicEmoticonInfo paramPicEmoticonInfo, SessionInfo paramSessionInfo, bhht parambhht)
+  public void a(awit paramawit, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo = paramPicEmoticonInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Bhht = parambhht;
+    if ((agiq.a(this.a) == agiq.a(this.a).getTipManager().a()) && (agiq.a(this.a, paramawit.a(), paramawit.a()))) {
+      agiq.a(this.a).getTipManager().a();
+    }
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public void a(awit paramawit, int paramInt1, int paramInt2) {}
+  
+  public void a(awit paramawit, LocationRoom.Venue paramVenue, List<awir> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "onJsonComplete:" + paramEmoticonPackage.epId);
+      QLog.d("LocationShareHelper", 2, "[queryLocationRoom] onUpdateUserLocations: invoked. sessionUin: " + paramawit.a() + " itemList: " + paramList.size());
     }
-    if (paramInt == 0)
-    {
-      if (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId)) {
-        return;
+    paramVenue = awnx.a(agiq.a(this.a).app).a().a();
+    if ((paramVenue != null) && (paramVenue.equals(paramawit))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareHelper", 2, new Object[] { "onUpdateUserLocations: invoked. ", " roomKey: ", paramawit, " currentFloatWindowVisibleRoomKey: ", paramVenue });
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-      agif.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bhht);
-      return;
     }
-    agif.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bhht);
+    do
+    {
+      do
+      {
+        return;
+      } while (!agiq.a(this.a, paramawit.a(), paramawit.a()));
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        break;
+      }
+    } while (agiq.a(this.a) != agiq.a(this.a).getTipManager().a());
+    agiq.a(this.a).getTipManager().a();
+    return;
+    paramVenue = new ArrayList();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      paramVenue.add(((awir)paramList.get(i)).a());
+      i += 1;
+    }
+    boolean bool = paramVenue.contains(agiq.a(this.a).app.getCurrentUin());
+    agiq.a(this.a).a(bool, agiq.a(this.a, paramawit, (String)paramVenue.get(0)), paramList.size(), paramVenue);
+    agiq.a(this.a).getTipManager().a(agiq.a(this.a), new Object[0]);
+  }
+  
+  public void b(awit paramawit, int paramInt)
+  {
+    if ((agiq.a(this.a) == agiq.a(this.a).getTipManager().a()) && (agiq.a(this.a, paramawit.a(), paramawit.a()))) {
+      agiq.a(this.a).getTipManager().a();
+    }
   }
 }
 

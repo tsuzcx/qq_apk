@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.widget.EditText;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.text.EmotcationConstants;
@@ -151,7 +151,7 @@ public class SystemEmoticonInfo
   public void send(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
   {
     if (this.src_type == 1) {
-      bcef.b(null, "CliOper", "", "", "0X8005507", "0X8005507", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "0X8005507", "0X8005507", 0, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -161,14 +161,14 @@ public class SystemEmoticonInfo
       paramEditText.requestFocus();
       return;
       if (this.src_type == 2) {
-        bcef.b(null, "CliOper", "", "", "0X8005508", "0X8005508", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "0X8005508", "0X8005508", 0, 0, "", "", "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

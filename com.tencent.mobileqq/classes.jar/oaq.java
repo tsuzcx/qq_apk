@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class oaq
-  implements View.OnClickListener
+public class oaq
 {
-  oaq(oap paramoap) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
 }
 
 

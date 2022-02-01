@@ -2,14 +2,14 @@ package com.tencent.mobileqq.systemmsg;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bcsz;
+import bdzy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class GroupSystemMsgController$2
   implements Runnable
 {
-  public GroupSystemMsgController$2(bcsz parambcsz, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public GroupSystemMsgController$2(bdzy parambdzy, QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class GroupSystemMsgController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.GroupSystemMsgController.2
  * JD-Core Version:    0.7.0.1
  */

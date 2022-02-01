@@ -2,10 +2,10 @@ package com.tencent.mobileqq.apollo.data;
 
 import java.util.HashMap;
 
-public final class ApolloDress$1
+final class ApolloDress$1
   extends HashMap<String, Integer>
 {
-  public ApolloDress$1()
+  ApolloDress$1()
   {
     put("TopSuit", Integer.valueOf(0));
     put("BottomSuit", Integer.valueOf(1));

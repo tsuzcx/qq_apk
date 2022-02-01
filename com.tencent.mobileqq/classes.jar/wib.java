@@ -1,130 +1,103 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wib
-  extends wjc
+public abstract class wib<M, VH extends wia<M>>
+  extends RecyclerView.Adapter<wia<M>>
 {
-  public static final String a;
-  public boolean a;
-  private final int[] a;
+  protected Context a;
+  protected View a;
+  protected why a;
+  protected whz a;
+  protected View b;
   
-  static
+  public wib(Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + vpl.a(2131698833);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public wib(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  public int a()
   {
-    QQAppInterface localQQAppInterface = wkp.a();
-    vvj localvvj = (vvj)vux.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = localQQAppInterface.getCurrentNickname();
-    String str;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
-    {
-      str = this.c + amtj.a(2131706170);
-      this.jdField_d_of_type_JavaLangString = str;
-      this.f = paramStoryVideoItem.mOwnerUid;
-      this.e = localvvj.a(this.f, false);
-      this.g = paramStoryVideoItem.mDoodleText;
-      str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      this.h = str;
-      if (!paramStoryVideoItem.isMine()) {
-        break label363;
-      }
-      i = 0;
-      label137:
-      this.b = i;
-      this.c = localQQAppInterface.getCurrentNickname();
-      paramStoryVideoItem = localvvj.b(this.f);
-      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
-        this.c = paramStoryVideoItem.nickName;
-      }
-      this.jdField_d_of_type_JavaLangString = a();
-      this.k = this.jdField_d_of_type_JavaLangString;
-      this.i = b();
-      this.j = ("#" + vkm.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-      this.jdField_d_of_type_Int = 11;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label369;
-      }
-    }
-    label363:
-    label369:
-    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label377;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
-      return;
-      str = this.c + amtj.a(2131706171) + vkm.jdField_a_of_type_JavaLangString;
-      break;
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
       i = 1;
-      break label137;
     }
-    label377:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
   }
   
-  protected String a(int paramInt)
+  public final wia a(ViewGroup paramViewGroup, int paramInt)
   {
-    int i = 3;
-    if (paramInt == 1)
-    {
-      str1 = this.e;
-      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-      str3 = this.f;
-      str4 = this.h;
-      paramInt = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        i = 1;
-      }
+    if (paramInt == 1024) {
+      paramViewGroup = new wia(this.jdField_a_of_type_AndroidViewView);
     }
-    String str1 = jdField_a_of_type_JavaLangString;
-    String str2 = this.e;
-    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    String str4 = this.f;
-    String str5 = this.h;
-    int j = this.b;
-    if (this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-      i = 1;
+      if (this.jdField_a_of_type_Why != null) {
+        paramViewGroup.itemView.setOnClickListener(new wic(this, paramViewGroup));
+      }
+      if (this.jdField_a_of_type_Whz != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new wid(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new wia(this.b);
+      } else {
+        paramViewGroup = b(paramViewGroup, paramInt);
+      }
     }
   }
   
-  protected void a(wjk paramwjk)
+  public void a(View paramView)
   {
-    vwk localvwk;
-    if ((paramwjk instanceof wjl))
+    if (paramView == null)
     {
-      localvwk = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
-      if (localvwk != null) {}
-    }
-    else
-    {
+      Log.w("HeaderAndFooterAdapter", "add the header view is null");
       return;
     }
-    paramwjk = (wjl)paramwjk;
-    paramwjk.o = localvwk.b;
-    if (localvwk.a == 2) {}
-    for (paramwjk.p = amtj.a(2131706172);; paramwjk.p = (localvwk.c + amtj.a(2131706173)))
-    {
-      paramwjk.jdField_d_of_type_JavaLangString = a();
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyDataSetChanged();
   }
+  
+  public void a(why paramwhy)
+  {
+    this.jdField_a_of_type_Why = paramwhy;
+  }
+  
+  public void a(whz paramwhz)
+  {
+    this.jdField_a_of_type_Whz = paramwhz;
+  }
+  
+  public final void a(wia paramwia, int paramInt)
+  {
+    switch (paramwia.getItemViewType())
+    {
+    default: 
+      b(paramwia, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramwia, paramInt, getItemId(paramInt));
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void b(VH paramVH, int paramInt);
+  
+  public abstract long getItemId(int paramInt);
 }
 
 

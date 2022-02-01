@@ -1,21 +1,47 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alev
-  implements Animation.AnimationListener
+class alev
+  implements View.OnClickListener
 {
-  public alev(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk) {}
+  alev(aldh paramaldh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Alfk.c.setVisibility(4);
+    Object localObject = (bdno)paramView.getTag();
+    if (localObject != null) {
+      ((bdno)localObject).jdField_a_of_type_Bheh.k();
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(((bdno)localObject).jdField_a_of_type_JavaLangString))
+      {
+        i = Integer.parseInt(((bdno)localObject).jdField_a_of_type_JavaLangString);
+        bdla.b(aldh.a(this.a).app, "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
+        localObject = new aqwm(aldh.a(this.a).getApplicationContext(), arph.jdField_a_of_type_JavaLangString);
+        if (localObject != null)
+        {
+          ((aqwm)localObject).b();
+          ((aqwm)localObject).c();
+        }
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+        int i = 0;
+        continue;
+        i = 0;
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

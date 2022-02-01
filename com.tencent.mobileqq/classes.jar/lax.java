@@ -1,8 +1,6 @@
-import org.json.JSONObject;
-
-public abstract interface lax
+class lax
 {
-  public abstract void a(String paramString, JSONObject paramJSONObject);
+  private static lav a = new lav(null);
 }
 
 

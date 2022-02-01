@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.fragment;
 
-import bllh;
-import bllp;
+import bmyq;
+import bmyy;
 
 public class AEAbstractPhotoListFragment$QueryPhotoTask$1
   implements Runnable
 {
-  public AEAbstractPhotoListFragment$QueryPhotoTask$1(bllp parambllp) {}
+  public AEAbstractPhotoListFragment$QueryPhotoTask$1(bmyy parambmyy) {}
   
   public void run()
   {

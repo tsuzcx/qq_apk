@@ -1,40 +1,45 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingFragment;
+import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ansc
-  extends anrh
+  extends AbsPreDownloadTask
 {
-  public ansc(QQAppInterface paramQQAppInterface, Context paramContext)
+  public File a;
+  public GetResourceRespInfo a;
+  
+  public ansc(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public boolean a()
+  public void realCancel()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("scheme")) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgid")) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("busiid")))
-      {
-        String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("msgid");
-        String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("busiid");
-        String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("scheme");
-        String str1 = "";
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("domain")) {
-          str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("domain");
-        }
-        QQNotifySettingFragment.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, str4, str1);
-      }
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
     }
-    catch (Exception localException)
-    {
-      QLog.e("QQNotifySettingAction", 1, "doAction error: " + localException.getMessage());
-      a("QQNotifySettingAction");
+  }
+  
+  public void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
     }
-    return false;
+    String str = this.key;
+    QQAppInterface localQQAppInterface = this.app;
+    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
+    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] url=" + this.key;
   }
 }
 

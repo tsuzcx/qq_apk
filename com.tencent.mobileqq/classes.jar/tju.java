@@ -1,38 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import mqq.app.MobileQQ;
 
-final class tju
-  implements View.OnClickListener
+class tju
+  implements biyn
 {
-  tju(BridgeModule paramBridgeModule, String paramString) {}
+  tju(tjt paramtjt, ArticleInfo paramArticleInfo, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("timestamp", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-      EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = true;
+    if ((tjt.a(this.jdField_a_of_type_Tjt) == null) || (!tjt.a(this.jdField_a_of_type_Tjt).equals(paramBaseResp.transaction))) {
       return;
     }
-    catch (JSONException localJSONException)
+    switch (paramBaseResp.errCode)
     {
-      for (;;)
-      {
-        QLog.e("BridgeModuleHelper", 1, "[setTitleClickListener]: " + localJSONException.getMessage());
-      }
+    case -1: 
+    default: 
+      znl.b(1, 2131718766);
+      bool = false;
+    }
+    for (;;)
+    {
+      paramBaseResp = (AppInterface)pkh.a();
+      tkj.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      return;
+      znl.b(2, 2131718784);
+      continue;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tju
  * JD-Core Version:    0.7.0.1
  */

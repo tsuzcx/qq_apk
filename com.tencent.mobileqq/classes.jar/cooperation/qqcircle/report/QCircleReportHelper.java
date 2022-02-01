@@ -4,8 +4,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.PowerManager;
 import android.text.TextUtils;
-import bhpc;
-import biaq;
+import bizw;
+import bjls;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleGetSessionInfoRequest;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleHeartbeatSignalReportRequest;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
@@ -35,12 +35,13 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
 import qqcircle.QQCircleReport.SingleDcData;
-import wkd;
+import wyy;
 
 public class QCircleReportHelper
 {
   public static final String MAP_KEY_CIRCLE_INVITE_ID = "circle_invite";
   public static final String MAP_KEY_FEED_REPORT_INFO = "FeedReportInfo";
+  public static final String MAP_KEY_MSG_REPORT_INFO = "MsgReportInfo";
   public static final String MAP_KEY_SESSION = "SessionID";
   public static final String MAP_KEY_SUB_SESSION = "SubSessionID";
   private static final int REPORT_HEAER_BEAT_INTERVAL_TIME = 600000;
@@ -54,6 +55,9 @@ public class QCircleReportHelper
   public static final int SCENE_PAGE_ID_MESSAGE_PAGE = 59;
   public static final int SCENE_PAGE_ID_PAT_NAME_POLYMERIZATION_PAGE = 72;
   public static final int SCENE_PAGE_ID_PERSONAL_DETAIL_PAGE = 32;
+  public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_FRIEND_PAGE = 84;
+  public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_GROUP_PAGE = 83;
+  public static final int SCENE_PAGE_ID_POLYMERIZE_DETAIL_QZONE_PAGE = 85;
   public static final int SCENE_PAGE_ID_PUBLISH_PLUS = 36;
   public static final int SCENE_PAGE_ID_TAG_PAGE = 31;
   public static final int SCENE_PAGE_ID_TAG_POLYMERIZATION_PAGE = 71;
@@ -174,13 +178,14 @@ public class QCircleReportHelper
           this.mLaunchTimestamp = l;
           checkNeedReportLaunch();
         } while (this.mSession == null);
-        QLog.d("QCircleReportHelper", 1, "handleReportSessionRsp scene:" + paramInt + ",Session:" + new String(this.mSession));
+        QLog.d("QCircleReportHelper", 1, "handleReportSessionRsp scene:ENTRY_APP，Session:" + new String(this.mSession));
         QCircleReporter.getInstance().reportCacheDataListToServerWithSession(this.mSession);
         return;
       } while (1 != paramStGetSessionInfoRsp.sessionType.get());
       this.mSession = paramStGetSessionInfoRsp.sessonID.get().toByteArray();
       this.mSessionLifeCircle = paramStGetSessionInfoRsp.expireTime.get();
       this.mLastActiveTimestamp = System.currentTimeMillis();
+      QLog.d("QCircleReportHelper", 1, "handleReportSessionRsp scene:EXPIRED，Session:" + new String(this.mSession));
       return;
     } while (2 != paramStGetSessionInfoRsp.sessionType.get());
     updateSubSession(36, paramStGetSessionInfoRsp.subSessonID.get().toByteArray());
@@ -188,7 +193,7 @@ public class QCircleReportHelper
   
   private boolean isAppOnForeground()
   {
-    return wkd.a(QCircleCommonUtil.getQQAppInterface());
+    return wyy.a(QCircleCommonUtil.getQQAppInterface());
   }
   
   private boolean isDeviceInteractive()
@@ -327,7 +332,7 @@ public class QCircleReportHelper
   {
     try
     {
-      if ((this.mPageStack != null) && (this.mPageStack.size() > 0))
+      if (this.mPageStack.size() > 0)
       {
         int i = ((Integer)this.mPageStack.peek()).intValue();
         QZLog.d("QCircleReportHelper", 4, "getPageId:" + i);
@@ -409,7 +414,7 @@ public class QCircleReportHelper
   public List<FeedCloudCommon.Entry> newBaseEntries()
   {
     checkNeedReportHeartBeat();
-    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { newEntry("uin", String.valueOf(bhpc.a().a())), newEntry("network_type", getNetworkType()), newEntry("app_version", "8.4.8.4810"), newEntry("qua", QUA.getQUA3()), newEntry("platform", "android"), newEntry("report_from", "1"), newEntry("os_version", Build.VERSION.RELEASE), newEntry("mobile_type", Build.MODEL), newEntry("respond_type", biaq.e()), newEntry("device_info", Build.DEVICE), newEntry("imei", biaq.c()), newEntry("idfa", ""), newEntry("idfv", "") }));
+    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { newEntry("uin", String.valueOf(bizw.a().a())), newEntry("network_type", getNetworkType()), newEntry("app_version", "8.4.10.4875"), newEntry("qua", QUA.getQUA3()), newEntry("platform", "android"), newEntry("report_from", "1"), newEntry("os_version", Build.VERSION.RELEASE), newEntry("mobile_type", Build.MODEL), newEntry("respond_type", bjls.e()), newEntry("device_info", Build.DEVICE), newEntry("imei", bjls.c()), newEntry("idfa", ""), newEntry("idfv", "") }));
   }
   
   public List<FeedCloudCommon.BytesEntry> newSessionEntries()
@@ -422,7 +427,23 @@ public class QCircleReportHelper
   
   public List<FeedCloudCommon.BytesEntry> newSessionEntries(int paramInt)
   {
+    return newSessionEntries(paramInt, null);
+  }
+  
+  public List<FeedCloudCommon.BytesEntry> newSessionEntries(int paramInt, byte[] paramArrayOfByte)
+  {
+    return newSessionEntries(paramInt, paramArrayOfByte, null);
+  }
+  
+  public List<FeedCloudCommon.BytesEntry> newSessionEntries(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
     ArrayList localArrayList = new ArrayList();
+    if (paramArrayOfByte1 != null) {
+      localArrayList.add(newEntry("FeedReportInfo", paramArrayOfByte1));
+    }
+    if (paramArrayOfByte2 != null) {
+      localArrayList.add(newEntry("MsgReportInfo", paramArrayOfByte2));
+    }
     if (this.mSession != null) {
       localArrayList.add(newEntry("SessionID", this.mSession));
     }
@@ -443,37 +464,6 @@ public class QCircleReportHelper
       else
       {
         QLog.e("QCircleReportHelper", 1, "newSessionEntries mSession is null!");
-      }
-    }
-    return null;
-  }
-  
-  public List<FeedCloudCommon.BytesEntry> newSessionEntries(int paramInt, byte[] paramArrayOfByte)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramArrayOfByte != null) {
-      localArrayList.add(newEntry("FeedReportInfo", paramArrayOfByte));
-    }
-    if (this.mSession != null) {
-      localArrayList.add(newEntry("SessionID", this.mSession));
-    }
-    for (;;)
-    {
-      if (getSubSession(paramInt) != null) {
-        localArrayList.add(newEntry("SubSessionID", getSubSession(paramInt)));
-      }
-      if (localArrayList.size() <= 0) {
-        break;
-      }
-      return localArrayList;
-      if (this.mOldSession != null)
-      {
-        localArrayList.add(newEntry("SessionID", this.mOldSession));
-        QLog.w("QCircleReportHelper", 2, "newSessionEntries mSession retired!try use oldSession");
-      }
-      else
-      {
-        QLog.e("QCircleReportHelper", 2, "newSessionEntries mSession is null!");
       }
     }
     return null;
@@ -505,10 +495,10 @@ public class QCircleReportHelper
   public void popPageScene(int paramInt)
   {
     QLog.d("QCircleReportHelper", 2, "popPageScene scene:" + paramInt);
-    if ((this.mPageStack != null) && (this.mPageStack.contains(Integer.valueOf(paramInt))))
+    if (this.mPageStack.contains(Integer.valueOf(paramInt)))
     {
       if (((Integer)this.mPageStack.peek()).intValue() != paramInt) {
-        break label121;
+        break label110;
       }
       this.mPageStack.pop();
       QLog.d("QCircleReportHelper", 2, "popPageScene success");
@@ -517,14 +507,13 @@ public class QCircleReportHelper
     {
       if (this.mPageStack.size() == 0)
       {
-        QLog.w("QCircleReportHelper", 2, "no QQCircle Page Alive");
+        QLog.w("QCircleReportHelper", 1, "no QQCircle Page Alive,exit QQCircle");
         retireSession();
         this.mPageLifeMap.clear();
         reportQCircleActiveIntervalTime(1);
-        releaseQCircleMemory();
       }
       return;
-      label121:
+      label110:
       QLog.e("QCircleReportHelper", 2, "popPageScene error!mismatch scene,current Page:" + this.mPageStack);
     }
   }
@@ -532,20 +521,17 @@ public class QCircleReportHelper
   public void pushPageScene(int paramInt)
   {
     QLog.d("QCircleReportHelper", 2, "pushPageScene scene:" + paramInt);
-    if (this.mPageStack != null)
+    if ((this.mPageStack.size() > 0) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 0)) && (this.mPageStack.contains(Integer.valueOf(paramInt))))
     {
-      if ((this.mPageStack.size() > 0) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 0)) && (this.mPageStack.contains(Integer.valueOf(paramInt))))
-      {
-        QLog.w("QCircleReportHelper", 2, "pushPageScene scene:" + paramInt + ",PageStack leak:" + this.mPageStack + ",force clear");
-        this.mPageStack.clear();
-        this.mPageLifeMap.clear();
-        reportQCircleActiveIntervalTime(1);
-        retireSession();
-      }
-      this.mPageStack.push(Integer.valueOf(paramInt));
-      QCircleReporter.getInstance().flush();
-      QLog.d("QCircleReportHelper", 2, "pushPageScene success");
+      QLog.e("QCircleReportHelper", 1, "pushPageScene scene:" + paramInt + ",PageStack leak:" + this.mPageStack + ",force clear");
+      this.mPageStack.clear();
+      this.mPageLifeMap.clear();
+      reportQCircleActiveIntervalTime(1);
+      retireSession();
     }
+    this.mPageStack.push(Integer.valueOf(paramInt));
+    QCircleReporter.getInstance().flush();
+    QLog.d("QCircleReportHelper", 2, "pushPageScene success");
   }
   
   public void recordPageEndShow(int paramInt)
@@ -599,6 +585,7 @@ public class QCircleReportHelper
   
   public void updateReportSessionWhenExpired()
   {
+    QLog.d("QCircleReportHelper", 2, "updateReportSessionWhenExpired");
     requestReportSession(null, 2);
   }
   

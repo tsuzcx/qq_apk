@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
 import android.media.SoundPool;
-import anyy;
-import anyz;
+import apca;
+import apcb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
@@ -12,21 +12,21 @@ import java.util.Set;
 public class ARPromotionSoundPlayer$1
   implements Runnable
 {
-  public ARPromotionSoundPlayer$1(anyy paramanyy) {}
+  public ARPromotionSoundPlayer$1(apca paramapca) {}
   
   public void run()
   {
     try
     {
-      Iterator localIterator = anyy.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = apca.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        anyz localanyz = (anyz)((Map.Entry)localIterator.next()).getValue();
-        if (localanyz != null) {
-          anyy.a(this.this$0).stop(localanyz.a);
+        apcb localapcb = (apcb)((Map.Entry)localIterator.next()).getValue();
+        if (localapcb != null) {
+          apca.a(this.this$0).stop(localapcb.a);
         }
       }
-      anyy.a(this.this$0).release();
+      apca.a(this.this$0).release();
     }
     catch (Exception localException)
     {
@@ -36,7 +36,7 @@ public class ARPromotionSoundPlayer$1
       }
       return;
     }
-    anyy.a(this.this$0).clear();
+    apca.a(this.this$0).clear();
   }
 }
 

@@ -1,41 +1,17 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
 
-public class acoo
-  implements View.OnFocusChangeListener
+public abstract interface acoo
 {
-  public acoo(AddAccountActivity paramAddAccountActivity) {}
+  public abstract int a();
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
-      if (true == paramBoolean)
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
-          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
-        }
-        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText) || (true != paramBoolean))
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
-  }
+  public abstract void a(List<acoo> paramList);
+  
+  public abstract boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre);
+  
+  public abstract boolean a(im_msg_body.Elem paramElem);
 }
 
 

@@ -30,6 +30,8 @@ import java.util.Set;
 public class PTFaceAttr
 {
   public static final PTFaceAttr EmptyFaceAttr = new PTFaceAttr(new PTFaceAttr.Builder().facePoints(new ArrayList(90)).irisPoints(new ArrayList(90)).faceAngles(new ArrayList(3)).pointsVis(new ArrayList(90)).triggeredExpression(new HashSet()).faceDetectScale(1.0D).rotation(0).faceDetector(null).faceActionCounter(new HashMap()).timeStamp(System.currentTimeMillis()));
+  private int[] autoBrightnessCurve;
+  private int[] autoContrastCurve;
   private List<List<PointF>> bodyPoints;
   private int[] curve;
   private Map<String, Long> detectTimes;
@@ -65,6 +67,7 @@ public class PTFaceAttr
   private long mTimeStamp;
   private List<List<PointF>> mTransformFacePoints;
   private Set<Integer> mTriggeredExpression;
+  private PTFaceAttr reusedFaceAttr;
   private float[] rgbGain;
   private List<LinkedList<FaceInfo>> shookFaceInfos;
   private Frame starMaskFrame;
@@ -97,20 +100,22 @@ public class PTFaceAttr
     this.faceDetector = PTFaceAttr.Builder.access$2100(paramBuilder);
     this.rgbGain = PTFaceAttr.Builder.access$2200(paramBuilder);
     this.curve = PTFaceAttr.Builder.access$2300(paramBuilder);
-    this.faceAverageL = PTFaceAttr.Builder.access$2400(paramBuilder);
-    this.faceKitVerticesArray = PTFaceAttr.Builder.access$2500(paramBuilder);
-    this.face3DVerticesArray = PTFaceAttr.Builder.access$2600(paramBuilder);
-    this.face3DRotationArray = PTFaceAttr.Builder.access$2700(paramBuilder);
-    this.featureIndicesArray = PTFaceAttr.Builder.access$2800(paramBuilder);
-    this.facePiont2DCenter = PTFaceAttr.Builder.access$2900(paramBuilder);
-    this.lastFaceDetectedPhoneRotation = PTFaceAttr.Builder.access$3000(paramBuilder);
-    this.isPhoneFlatHorizontal = PTFaceAttr.Builder.access$3100(paramBuilder);
-    this.shookFaceInfos = PTFaceAttr.Builder.access$3200(paramBuilder);
-    this.detectTimes = PTFaceAttr.Builder.access$3300(paramBuilder);
-    this.faceDetWidth = PTFaceAttr.Builder.access$3400(paramBuilder);
-    this.faceDetHeight = PTFaceAttr.Builder.access$3500(paramBuilder);
-    this.faceDetRotation = PTFaceAttr.Builder.access$3600(paramBuilder);
-    this.expressions = PTFaceAttr.Builder.access$3700(paramBuilder);
+    this.autoContrastCurve = PTFaceAttr.Builder.access$2400(paramBuilder);
+    this.autoBrightnessCurve = PTFaceAttr.Builder.access$2500(paramBuilder);
+    this.faceAverageL = PTFaceAttr.Builder.access$2600(paramBuilder);
+    this.faceKitVerticesArray = PTFaceAttr.Builder.access$2700(paramBuilder);
+    this.face3DVerticesArray = PTFaceAttr.Builder.access$2800(paramBuilder);
+    this.face3DRotationArray = PTFaceAttr.Builder.access$2900(paramBuilder);
+    this.featureIndicesArray = PTFaceAttr.Builder.access$3000(paramBuilder);
+    this.facePiont2DCenter = PTFaceAttr.Builder.access$3100(paramBuilder);
+    this.lastFaceDetectedPhoneRotation = PTFaceAttr.Builder.access$3200(paramBuilder);
+    this.isPhoneFlatHorizontal = PTFaceAttr.Builder.access$3300(paramBuilder);
+    this.shookFaceInfos = PTFaceAttr.Builder.access$3400(paramBuilder);
+    this.detectTimes = PTFaceAttr.Builder.access$3500(paramBuilder);
+    this.faceDetWidth = PTFaceAttr.Builder.access$3600(paramBuilder);
+    this.faceDetHeight = PTFaceAttr.Builder.access$3700(paramBuilder);
+    this.faceDetRotation = PTFaceAttr.Builder.access$3800(paramBuilder);
+    this.expressions = PTFaceAttr.Builder.access$3900(paramBuilder);
   }
   
   private static boolean checkFaceFeatureOutScreen(List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
@@ -123,6 +128,25 @@ public class PTFaceAttr
       return false;
     }
     if (!localRectF.contains(((PointF)paramList.get(66)).x, ((PointF)paramList.get(66)).y)) {
+      return false;
+    }
+    float f1 = ((PointF)paramList.get(69)).x;
+    f1 = (((PointF)paramList.get(9)).x + f1) / 2.0F;
+    float f2 = ((PointF)paramList.get(69)).y;
+    paramList = new PointF(f1, (((PointF)paramList.get(9)).y + f2) / 2.0F);
+    return localRectF.contains(paramList.x, paramList.y);
+  }
+  
+  public static boolean checkFaceFeatureOutScreenUKYO(List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return false;
+    }
+    RectF localRectF = new RectF(0.0F, 0.0F, (float)(paramInt1 * paramDouble), (float)(paramInt2 * paramDouble));
+    if (!localRectF.contains(((PointF)paramList.get(61)).x, ((PointF)paramList.get(61)).y)) {
+      return false;
+    }
+    if (!localRectF.contains(((PointF)paramList.get(57)).x, ((PointF)paramList.get(57)).y)) {
       return false;
     }
     float f1 = ((PointF)paramList.get(69)).x;
@@ -215,6 +239,16 @@ public class PTFaceAttr
   public List<List<PointF>> getAllIrisPoints()
   {
     return this.mIrisPoints;
+  }
+  
+  public int[] getAutoBrightnessCurve()
+  {
+    return this.autoBrightnessCurve;
+  }
+  
+  public int[] getAutoContrastCurve()
+  {
+    return this.autoContrastCurve;
   }
   
   public List<List<PointF>> getBodyPoints()
@@ -394,6 +428,11 @@ public class PTFaceAttr
     return this.mRecordFaceInfo;
   }
   
+  public PTFaceAttr getReusedFaceAttr()
+  {
+    return this.reusedFaceAttr;
+  }
+  
   public int getRotation()
   {
     return this.mRotation;
@@ -552,6 +591,16 @@ public class PTFaceAttr
     this.mFaceInfoList.addAll(localArrayList);
   }
   
+  public void setAutoBrightnessCurve(int[] paramArrayOfInt)
+  {
+    this.autoBrightnessCurve = paramArrayOfInt;
+  }
+  
+  public void setAutoContrastCurve(int[] paramArrayOfInt)
+  {
+    this.autoContrastCurve = paramArrayOfInt;
+  }
+  
   public void setBodyPoints(List<List<PointF>> paramList)
   {
     this.bodyPoints = paramList;
@@ -640,6 +689,11 @@ public class PTFaceAttr
   public void setRGBGain(float[] paramArrayOfFloat)
   {
     this.rgbGain = paramArrayOfFloat;
+  }
+  
+  public void setReusedFaceAttr(PTFaceAttr paramPTFaceAttr)
+  {
+    this.reusedFaceAttr = paramPTFaceAttr;
   }
   
   public void setRotation(int paramInt)

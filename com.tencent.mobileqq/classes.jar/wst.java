@@ -1,20 +1,54 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDeleteVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wst
-  extends wsr
+  extends wfm<wur>
 {
-  public final View b;
+  private static final String b = weg.a("StorySvc.video_show_delete");
+  public String a;
   
-  public wst(View paramView)
+  public wst(String paramString)
   {
-    super((ViewGroup)paramView.getParent());
-    this.b = paramView;
+    this.a = paramString;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public String a()
   {
-    return this.b;
+    return b;
+  }
+  
+  public wur a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDeleteVideo localRspDeleteVideo = new qqstory_service.RspDeleteVideo();
+    try
+    {
+      localRspDeleteVideo.mergeFrom(paramArrayOfByte);
+      return new wur(localRspDeleteVideo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDeleteVideo localReqDeleteVideo = new qqstory_service.ReqDeleteVideo();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDeleteVideo.vid_list.addAll(localArrayList);
+    return localReqDeleteVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "DeleteVideoRequest{vid='" + this.a + '\'' + '}';
   }
 }
 

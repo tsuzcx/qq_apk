@@ -1,97 +1,73 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
 public class xqn
-  implements xrq
+  extends vzx
 {
-  protected waz a;
-  private xpu jdField_a_of_type_Xpu;
-  private xqp jdField_a_of_type_Xqp;
-  protected xqt a;
-  protected xrr a;
-  protected xrs a;
+  public xqn(QQStoryShieldActivity paramQQStoryShieldActivity) {}
   
-  public xqn(xqp paramxqp)
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    this.jdField_a_of_type_Xqp = paramxqp;
-    this.jdField_a_of_type_Xpu = new xpu();
-  }
-  
-  public Object a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    xvv.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
-    if (this.jdField_a_of_type_Xqt == null)
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
     {
-      if (this.jdField_a_of_type_Xrs != null)
-      {
-        this.jdField_a_of_type_Xrs.a(a());
-        return;
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
       }
-      xvv.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Xqt.a);
-    this.jdField_a_of_type_Waz = waz.a(localArrayList);
-    this.jdField_a_of_type_Waz.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_Waz.a(new xqo(this, localArrayList));
-    this.jdField_a_of_type_Waz.b();
-  }
-  
-  public void a(Object paramObject)
-  {
-    boolean bool2 = true;
-    if ((paramObject instanceof xqt))
-    {
-      this.jdField_a_of_type_Xqt = ((xqt)paramObject);
-      return;
-    }
-    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    if (this.jdField_a_of_type_Xqt == null)
-    {
-      bool1 = true;
-      xvv.e("GetMyStoryDesFromVidListStep", bool1);
-      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-      if (this.jdField_a_of_type_Xqt != null) {
-        break label96;
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
       }
     }
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      yos.a(bool1, new Object[0]);
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
       return;
-      bool1 = false;
+      paramBoolean = false;
       break;
     }
   }
   
-  public void a(xrr paramxrr)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_Xrr = paramxrr;
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Biso.b();
+    if (paramBoolean1) {
+      return;
+    }
+    QQToast.a(this.a, 2131694515, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
+    {
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    {
+      localSwitch.setChecked(paramBoolean1);
+      return;
+    }
   }
-  
-  public void a(xrs paramxrs)
-  {
-    this.jdField_a_of_type_Xrs = paramxrs;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

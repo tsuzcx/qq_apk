@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
-import pdy;
+import pmz;
 
 public class RIJDataFetchManager$3
   implements Runnable
 {
-  public RIJDataFetchManager$3(pdy parampdy, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  public RIJDataFetchManager$3(pmz parampmz, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {

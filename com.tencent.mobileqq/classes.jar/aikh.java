@@ -1,47 +1,44 @@
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
 
-public class aikh
+class aikh
   implements View.OnClickListener
 {
-  public aikh(TroopActivity paramTroopActivity) {}
+  aikh(aikg paramaikg, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    boolean bool = false;
-    switch (paramView.getId())
+    aikg.a(this.jdField_a_of_type_Aikg, 2);
+    aikg.a(this.jdField_a_of_type_Aikg).a();
+    bdla.b(aikg.a(this.jdField_a_of_type_Aikg), "P_CliOper", "Safe_AntiFraud", aikg.a(this.jdField_a_of_type_Aikg).curFriendUin, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    Object localObject1 = (Bundle)bhce.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
+    if (localObject1 != null) {}
+    for (localObject1 = ((Bundle)localObject1).getString("BannerURL");; localObject1 = null)
     {
-    default: 
-      this.a.b();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.a != null)
-      {
-        Intent localIntent = new Intent();
-        if (!this.a.a.isEmpty()) {
-          bool = true;
-        }
-        localIntent.putExtra("isDataChanged", bool);
-        this.a.setResult(-1, localIntent);
+      Object localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = "https://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
       }
-      this.a.onBackPressed();
-      continue;
-      bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-      if (this.a.a())
+      if (this.jdField_a_of_type_Int == 1) {}
+      for (localObject1 = ((String)localObject2).replace("$SUBAPP$", "notice");; localObject1 = ((String)localObject2).replace("$SUBAPP$", "tips"))
       {
-        this.a.b();
-      }
-      else
-      {
-        bcef.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
-        this.a.a();
+        localObject1 = ((String)localObject1).replace("$SYSTEM$", "android").replace("$EVILUIN$", aikg.a(this.jdField_a_of_type_Aikg).curFriendUin).replace("$USERUIN$", aikg.a(this.jdField_a_of_type_Aikg).getAccount());
+        localObject2 = BaseActivity.sTopActivity;
+        Intent localIntent = new Intent((Context)localObject2, QQBrowserDelegationActivity.class);
+        localIntent.putExtra("injectrecommend", true);
+        localIntent.putExtra("url", (String)localObject1);
+        ((Context)localObject2).startActivity(localIntent);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
       }
     }
   }

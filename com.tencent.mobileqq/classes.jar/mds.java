@@ -1,30 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
 
 public class mds
-  implements View.OnTouchListener
+  implements mik
 {
-  public mds(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mds(DoubleVideoMeetingCtrlUI.4 param4) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.a.this$0.j = true;
+    this.a.this$0.M();
+  }
+  
+  public void b()
+  {
+    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
+    this.a.this$0.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mds
  * JD-Core Version:    0.7.0.1
  */

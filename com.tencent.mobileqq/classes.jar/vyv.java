@@ -1,14 +1,18 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vyv
-  implements Comparator<wkm>
+  implements View.OnClickListener
 {
-  vyv(vyu paramvyu) {}
+  vyv(vys paramvys) {}
   
-  public int a(wkm paramwkm1, wkm paramwkm2)
+  public void onClick(View paramView)
   {
-    return vzb.a(paramwkm1.a.mCreateTime, paramwkm2.a.mCreateTime);
+    if (vys.a(this.a) != null) {
+      vys.a(this.a).a(vys.a(this.a));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

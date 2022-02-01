@@ -1,58 +1,24 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aeay
-  implements bdbg
+  implements Animation.AnimationListener
 {
-  public aeay(QQSettingMe paramQQSettingMe) {}
+  public aeay(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void a(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.m();
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
   }
   
-  public void b(Bundle paramBundle)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1) {
-      this.a.m();
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (i == 2)
-        {
-          this.a.m();
-          return;
-        }
-      } while (i != 3);
-      if (!(this.a.jdField_c_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        break;
-      }
-      i = paramBundle.getInt("percent");
-      paramBundle = String.valueOf(i) + "%";
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramBundle);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    return;
-    if (QQSettingMe.f(this.a)) {}
-    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130845961);; localDrawable = this.a.a.getResources().getDrawable(2130845962))
-    {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      if (!(localDrawable instanceof Animatable)) {
-        break;
-      }
-      ((Animatable)localDrawable).start();
-      break;
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
 }

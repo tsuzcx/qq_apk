@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.4.1;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class andl
-  implements BusinessObserver
+  implements EIPCResultCallback
 {
-  public void a(boolean paramBoolean, Object paramObject) {}
+  andl(andj paramandj, andi paramandi) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramInt == 999) {
-      a(paramBoolean, paramObject);
+    Object localObject = (IPCSpriteContext)paramEIPCResult.data.getParcelable("IPCSpriteContext");
+    paramEIPCResult = paramEIPCResult.data.getString("js_content");
+    QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "checkfDressChanged CmShow_ spriteJs:" + paramEIPCResult);
+    if (TextUtils.isEmpty(paramEIPCResult)) {
+      anis.a(this.jdField_a_of_type_Andi.a(), 300, 301, new Object[] { "spriteJs is empty" });
     }
+    do
+    {
+      return;
+      localObject = (andf)andj.a(this.jdField_a_of_type_Andj).a(100);
+    } while (localObject == null);
+    ThreadManagerV2.excute(new CmShowSpriteDrawerInfoBridge.4.1(this, paramEIPCResult, (andf)localObject), 16, null, false);
   }
 }
 

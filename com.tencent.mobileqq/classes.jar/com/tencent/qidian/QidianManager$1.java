@@ -1,15 +1,15 @@
 package com.tencent.qidian;
 
-import bily;
+import bjxa;
 
 public class QidianManager$1
   implements Runnable
 {
-  public QidianManager$1(bily parambily) {}
+  public QidianManager$1(bjxa parambjxa) {}
   
   public void run()
   {
-    bily.a(this.this$0);
+    bjxa.a(this.this$0);
   }
 }
 

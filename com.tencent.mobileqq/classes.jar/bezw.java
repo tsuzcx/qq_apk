@@ -1,13 +1,22 @@
+import android.view.KeyEvent;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+
 public class bezw
+  implements bgqs
 {
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  public bezw(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    new bcek(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
+      TroopBarReplyActivity.a(this.a, false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezw
  * JD-Core Version:    0.7.0.1
  */

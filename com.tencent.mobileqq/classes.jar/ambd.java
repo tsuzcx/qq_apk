@@ -1,8 +1,13 @@
-public abstract interface ambd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+
+public class ambd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public ambd(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -8,9 +8,9 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import bcad;
-import bfqd;
-import bfqf;
+import bdgy;
+import bgyu;
+import bgyw;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -60,7 +60,7 @@ public class PreDownloadScheduler
   private boolean mEnable = true;
   private boolean mEnableFPSAndCPU;
   private long mEnableTime;
-  private bfqf mFPSListener = new PreDownloadScheduler.1(this);
+  private bgyw mFPSListener = new PreDownloadScheduler.1(this);
   private boolean mFPSReady;
   private long mFPSReadyCount;
   private double mFPSThreshold = 30.0D;
@@ -153,14 +153,14 @@ public class PreDownloadScheduler
     {
       if (this.mPendingList.size() <= 0)
       {
-        bfqd.a().b(this.mFPSListener);
+        bgyu.a().b(this.mFPSListener);
         if (QLog.isColorLevel()) {
           QLog.d("PreDownloadScheduler", 2, "[fps callback disabled],there is no pending task!");
         }
       }
       if (this.mPendingList.size() > 0)
       {
-        bfqd.a().a(this.mFPSListener);
+        bgyu.a().a(this.mFPSListener);
         if (QLog.isColorLevel()) {
           QLog.d("PreDownloadScheduler", 2, "[fps callback enabled],there is pending tasks!");
         }
@@ -786,7 +786,7 @@ public class PreDownloadScheduler
   public void onDestroy()
   {
     if (this.mEnableFPSAndCPU) {
-      bfqd.a().b(this.mFPSListener);
+      bgyu.a().b(this.mFPSListener);
     }
     this.mHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
     synchronized (this.mLock)
@@ -821,12 +821,12 @@ public class PreDownloadScheduler
   
   public boolean requestPreDownload(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, AbsPreDownloadTask paramAbsPreDownloadTask)
   {
-    if ((bcad.e) && (!bcad.a.contains(Integer.valueOf(paramInt1))) && (!PreDownloadConstants.sPreDownloadWhiteList.contains(Integer.valueOf(paramInt1))))
+    if ((bdgy.e) && (!bdgy.a.contains(Integer.valueOf(paramInt1))) && (!PreDownloadConstants.sPreDownloadWhiteList.contains(Integer.valueOf(paramInt1))))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Perf", 2, "delay pre_download,busindessID:" + paramInt1);
       }
-      bcad.f = System.currentTimeMillis();
+      bdgy.f = System.currentTimeMillis();
       return false;
     }
     if ((paramInt1 == 0) || (TextUtils.isEmpty(paramString3)) || (paramAbsPreDownloadTask == null))

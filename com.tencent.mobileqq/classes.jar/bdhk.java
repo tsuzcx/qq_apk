@@ -1,8 +1,51 @@
-import com.tencent.mobileqq.together.writetogether.websocket.msg.UserNewInfoMsg;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
-public abstract interface bdhk
+public class bdhk
+  extends URLDrawableParams
 {
-  public abstract void a(boolean paramBoolean, UserNewInfoMsg paramUserNewInfoMsg);
+  private ProtocolDownloader a;
+  
+  public bdhk(MobileQQ paramMobileQQ)
+  {
+    super(paramMobileQQ);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
+      this.a = new HttpDownloader();
+    }
+    return this.a;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return VasApngIPCModule.getInstance();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847846);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847846);
+  }
 }
 
 

@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.IBatteryListener;
-import com.tencent.qphone.base.util.QLog.ILogCallback;
-import mqq.util.IServiceCmdCallback;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.gdtad.statistics.GdtReporter;
 
-class acie
-  implements IBatteryListener, QLog.ILogCallback, IServiceCmdCallback
+public class acie
 {
-  @NotNull
-  public String getSosoClassName()
+  public static void a(int paramInt, String paramString1, String paramString2)
   {
-    return SosoInterface.class.getPackage().getName();
+    GdtReporter.doCgiReport("https://t.gdt.qq.com/conv/src/50/conv?" + "click_id={$clickid$}&product_id={$appid$}&conv_type={$convtype$}&conv_time={$convtime$}".replace("{$clickid$}", paramString1).replace("{$appid$}", paramString2).replace("{$convtype$}", new StringBuilder().append(paramInt).append("").toString()).replace("{$convtime$}", new StringBuilder().append(System.currentTimeMillis() / 1000L).append("").toString()));
   }
   
-  public void onCmdRequest(String paramString)
+  public static void a(Ad paramAd, int paramInt)
   {
-    BatteryMonitor.getInstance().onCmdRequest(paramString);
+    if (TextUtils.isEmpty(paramAd.getUrlForEffect()))
+    {
+      acho.d("GdtTraceReporter", String.format("report %d error", new Object[] { Integer.valueOf(paramInt) }));
+      return;
+    }
+    acho.b("GdtTraceReporter", String.format("report %d", new Object[] { Integer.valueOf(paramInt) }));
+    GdtReporter.doCgiReport(paramAd.getUrlForEffect().replaceAll("__CLICK_ID__", paramAd.getTraceId()).replaceAll("__ACTION_ID__", String.valueOf(paramInt)));
   }
-  
-  public void onCmdResponse(String paramString) {}
-  
-  public void onPrintLog(@NotNull String paramString) {}
-  
-  public void onUsageAlarm(int paramInt1, int paramInt2, int paramInt3, @NotNull String paramString1, @NotNull String paramString2) {}
-  
-  public void onWriteLog(String paramString1, String paramString2)
-  {
-    BatteryMonitor.getInstance().onWriteLog(paramString1, paramString2);
-  }
-  
-  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 

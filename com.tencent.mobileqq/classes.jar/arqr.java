@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.os.Handler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class arqr
-  implements View.OnClickListener
+class arqr
+  implements nth
 {
-  arqr(arql paramarql) {}
+  arqr(arqp paramarqp) {}
   
-  public final void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    bcef.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 1, 0, "", "", "", "");
-    this.a.dismiss();
-    if (arql.a(this.a) != null)
+    if (!paramBoolean)
     {
-      arqn localarqn = arql.a(this.a);
-      if (localarqn == null) {
-        Intrinsics.throwNpe();
+      arqp.a(this.a).removeCallbacks(arqp.a(this.a));
+      arqp.a(this.a).run();
+      if (arqp.a(this.a) != null) {
+        arqp.a(this.a).a();
       }
-      localarqn.a(arql.a(this.a));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

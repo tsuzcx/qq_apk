@@ -1,11 +1,10 @@
 package com.tencent.qapmsdk.memory;
 
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import com.tencent.qapmsdk.base.listener.IInspectorListener;
 import com.tencent.qapmsdk.common.util.InspectUUID;
 import java.util.ArrayList;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
 class MemoryLeakMonitor$1
   implements IInspectorListener
@@ -21,14 +20,14 @@ class MemoryLeakMonitor$1
   
   public void onFinishDump(boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void onHprofDumped(@NotNull String paramString) {}
+  public void onHprofDumped(@NonNull String paramString) {}
   
   public boolean onLeaked(InspectUUID paramInspectUUID)
   {
     return true;
   }
   
-  @Nullable
+  @NonNull
   public List<String> onPrepareDump(String paramString)
   {
     return new ArrayList();

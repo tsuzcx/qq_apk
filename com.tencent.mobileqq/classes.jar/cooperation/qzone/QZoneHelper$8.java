@@ -1,6 +1,7 @@
 package cooperation.qzone;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import cooperation.qzone.plugin.QZonePluginManager;
 
 final class QZoneHelper$8
@@ -10,7 +11,7 @@ final class QZoneHelper$8
   
   public void run()
   {
-    QZonePluginManager localQZonePluginManager = (QZonePluginManager)this.val$app.getManager(175);
+    QZonePluginManager localQZonePluginManager = (QZonePluginManager)this.val$app.getManager(QQManagerFactory.QZONE_PLUGIN_MANAGER);
     if (localQZonePluginManager != null) {
       localQZonePluginManager.setReadyToNetworking();
     }

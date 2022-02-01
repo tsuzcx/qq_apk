@@ -1,35 +1,78 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.utils.StringUtil;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfhu
-  implements AdapterView.OnItemSelectedListener
+  extends bfht
 {
-  public bfhu(WheelPickerLayout paramWheelPickerLayout) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
-    WheelPickerLayout.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
+    int i = 0;
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
+    }
+    for (;;)
     {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
+      JSONObject localJSONObject;
+      try
       {
-        if (i != paramInt)
-        {
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        paramJSONObject = paramJSONObject.getJSONArray("content");
+        if (i >= paramJSONObject.length()) {
+          break label283;
         }
-        paramInt += 1;
+        localJSONObject = paramJSONObject.getJSONObject(i);
+        int j = localJSONObject.getInt("type");
+        if (j == 5)
+        {
+          if (localJSONObject.has("file_path")) {
+            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
+          }
+          localTroopFeedItem.type = 0;
+          if (localJSONObject.has("sharesize")) {
+            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
+          }
+          boolean bool = localJSONObject.has("bus_id");
+          if (bool) {}
+          try
+          {
+            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
+            if (!localJSONObject.has("sharefile")) {
+              break label308;
+            }
+            localTroopFeedItem.title = localJSONObject.getString("sharefile");
+          }
+          catch (JSONException localJSONException)
+          {
+            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
+            continue;
+          }
+        }
+        if (j != 3) {
+          break label308;
+        }
       }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
+      if (localJSONObject.has("pic_id"))
+      {
+        localTroopFeedItem.picPath = ("https://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
+        break label308;
+        label283:
+        if ((StringUtil.isEmpty(localTroopFeedItem.linkUrl)) || (StringUtil.isEmpty(localTroopFeedItem.content))) {
+          break;
+        }
+        return localTroopFeedItem;
+      }
+      label308:
+      i += 1;
     }
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

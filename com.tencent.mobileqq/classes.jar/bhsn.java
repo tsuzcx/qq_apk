@@ -1,33 +1,44 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.OpenAuthorityAccountView;
+import android.app.Activity;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
 import com.tencent.qphone.base.util.QLog;
 
 public class bhsn
-  implements View.OnLayoutChangeListener
 {
-  public bhsn(OpenAuthorityAccountView paramOpenAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static bhsh a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity)
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenAuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
-    }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
+      if (paramQQVipMsgInfo == null) {
+        return new MoreMsgHeaderView(paramActivity);
+      }
+      try
+      {
+        if (paramQQVipMsgInfo.msgType == 1)
+        {
+          paramQQVipMsgInfo = new QQVipArkHeaderView(paramActivity, null);
+          return paramQQVipMsgInfo;
+        }
+      }
+      catch (Throwable paramQQVipMsgInfo)
+      {
+        QLog.d("QQVipPubHeaderFactory", 4, "decode header(web) faile:" + paramQQVipMsgInfo.getMessage());
+        return null;
+      }
+      if (paramQQVipMsgInfo.msgType == 2) {
+        return new ImgHeaderView(paramActivity);
+      }
+      if (paramQQVipMsgInfo.msgType == 3) {
+        return new TextHeaderView(paramActivity);
+      }
+      paramQQVipMsgInfo = new MoreMsgHeaderView(paramActivity);
+      return paramQQVipMsgInfo;
     }
+    QLog.d("QQVipPubHeaderFactory", 4, "createHeader fail activity is null");
+    return null;
   }
 }
 

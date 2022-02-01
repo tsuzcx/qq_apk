@@ -1,67 +1,65 @@
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class bafp
+  extends bafn
 {
-  public final int a;
-  public final long a;
-  private List<baep> a;
-  private int b;
-  public final long b;
-  private int c;
+  public bafp(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  public bafp(int paramInt, long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean, String paramString, Card paramCard)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((baep)localIterator.next()).b();
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, "onGetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  private void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((baep)localIterator.next()).c();
+    if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
+      return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public int a(float paramFloat)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i >= 6)
+    if (paramBoolean)
     {
-      baep localbaep1 = (baep)this.jdField_a_of_type_JavaUtilList.get(0);
-      baep localbaep2 = (baep)this.jdField_a_of_type_JavaUtilList.get(i - 1);
-      float f = (float)(localbaep2.b() - localbaep1.b()) * 1000.0F / (i - 1);
-      paramFloat = (float)(Math.abs(localbaep2.a()) - Math.abs(localbaep1.a())) / ((i - 1) * paramFloat);
-      f = 1.1F * f;
-      if (f < paramFloat) {
-        return 1;
+      paramString = this.a;
+      if (paramCard != null) {}
+      for (;;)
+      {
+        InterestSwitchEditActivity.a(paramString, paramCard);
+        bagq.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a));
+        InterestSwitchEditActivity.a(this.a);
+        return;
+        paramCard = InterestSwitchEditActivity.a(this.a);
       }
-      i = (int)Math.floor(f / (f - paramFloat));
-      xvv.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
-      return Math.min(8, i);
     }
-    return 1;
+    QQToast.a(this.a, anvx.a(2131705280), 0).b(this.a.getTitleBarHeight());
   }
   
-  public String toString()
+  public void a(boolean paramBoolean, String paramString, Card paramCard, ArrayList<ReqSetSettingItem> paramArrayList)
   {
-    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, "onSetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
+    }
+    if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      QQToast.a(BaseApplicationImpl.sApplication, 2131719155, 0).b(this.a.getTitleBarHeight());
+      if (paramArrayList != null)
+      {
+        paramString = paramArrayList.iterator();
+        while (paramString.hasNext())
+        {
+          paramCard = (ReqSetSettingItem)paramString.next();
+          bagq.a.a(paramCard.a(), InterestSwitchEditActivity.a(this.a)).c(paramCard.b());
+        }
+      }
+    }
+    InterestSwitchEditActivity.a(this.a);
   }
 }
 

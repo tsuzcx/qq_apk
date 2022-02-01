@@ -1,50 +1,11 @@
-import android.content.Context;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-
-public class utc
-  implements usl<TVK_UserInfo, TVK_PlayerVideoInfo>
+class utc
+  implements twi
 {
-  public usj<TVK_UserInfo, TVK_PlayerVideoInfo> a()
-  {
-    return new ute();
-  }
+  utc(uta paramuta) {}
   
-  public usk a(Context paramContext, usr paramusr)
+  public void a(String paramString1, String paramString2)
   {
-    paramusr = null;
-    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    if (localTVK_IProxyFactory != null) {
-      paramusr = localTVK_IProxyFactory.createMediaPlayer(paramContext, null);
-    }
-    return new utd(paramusr);
-  }
-  
-  public usn a(Context paramContext)
-  {
-    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    if (localTVK_IProxyFactory != null) {
-      return new utf(localTVK_IProxyFactory.getCacheMgr(paramContext));
-    }
-    return null;
-  }
-  
-  public usr a(Context paramContext, boolean paramBoolean)
-  {
-    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    IVideoViewBase localIVideoViewBase = null;
-    if (localTVK_IProxyFactory != null) {
-      if (!paramBoolean) {
-        break label34;
-      }
-    }
-    label34:
-    for (localIVideoViewBase = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);; localIVideoViewBase = localTVK_IProxyFactory.createVideoView(paramContext)) {
-      return new utj(localIVideoViewBase);
-    }
+    this.a.callJs(paramString1, new String[] { paramString2 });
   }
 }
 

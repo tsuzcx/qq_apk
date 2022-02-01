@@ -1,7 +1,7 @@
 package cooperation.photoplus;
 
 import android.text.TextUtils;
-import ayja;
+import aznv;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.photoplus.sticker.Sticker;
@@ -81,7 +81,7 @@ class PhotoPlusManager$UpdateTask
         }
         else
         {
-          localObject1 = ayja.a(str);
+          localObject1 = aznv.a(str);
           if (localSticker.md5.equalsIgnoreCase((String)localObject1))
           {
             this.this$0.a(str);

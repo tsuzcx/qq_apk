@@ -1,24 +1,25 @@
 public class ype
 {
-  public static String a(String paramString, int paramInt)
-  {
-    if (paramString.getBytes().length <= paramInt) {
-      return paramString;
-    }
-    int k = paramString.length();
-    int j = 0;
-    for (int i = 0;; i = j) {
-      if (j < k)
-      {
-        j += Character.charCount(paramString.codePointAt(j));
-        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
-      }
-      else
-      {
-        return paramString.substring(0, i);
-      }
-    }
-  }
+  @zef(a="tag_type")
+  public int a;
+  @zef(a="tag_id")
+  public long a;
+  @zef(a="tag_name")
+  public String a;
+  @zef(a="join_count")
+  public int b;
+  @zef(a="tag_desc")
+  public String b;
+  @zef(a="music_type")
+  public int c;
+  @zef(a="wording")
+  public String c;
+  @zef(a="music_id")
+  public String d;
+  @zef(a="music_title")
+  public String e;
+  @zef(a="music_download_url")
+  public String f;
 }
 
 

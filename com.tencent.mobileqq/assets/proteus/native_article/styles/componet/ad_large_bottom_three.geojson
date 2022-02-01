@@ -56,8 +56,7 @@
                     "layout_type": "layout_relative",
                     "below_of_view": "id_tv_title_three",
                     "height": {
-                        "type": "relative",
-                        "value": "18"
+                        "type": "wrap_content"
                     },
                     "width": {
                         "type": "match_parent"
@@ -148,12 +147,14 @@
                                 },
                                 {
                                     "view_type": "ReadInJoyAdDownloadView",
-                                    "view_id": "id_view_AdDownloadView_three",
+                                    "view_id": "id_view_AdDownloadView",
                                     "height": {
-                                        "type": "wrap_content"
+                                        "type": "relative",
+                                        "value": "20"
                                     },
                                     "width": {
-                                        "type": "wrap_content"
+                                        "type": "relative",
+                                        "value": "52"
                                     },
                                     "align_parent_center_vertical": "YES",
                                     "event_type": "ad_button_click_in_detail",

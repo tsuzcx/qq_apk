@@ -5,7 +5,7 @@ import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.utils.ViewUtils;
-import qjw;
+import qwb;
 
 public class NativeMiddleBodyView$RadiusView
   extends RelativeLayout
@@ -23,7 +23,7 @@ public class NativeMiddleBodyView$RadiusView
   
   public View.OnLayoutChangeListener a()
   {
-    return new qjw(this);
+    return new qwb(this);
   }
   
   public void setBottomLeftRadius(String paramString)

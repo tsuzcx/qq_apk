@@ -1,6 +1,6 @@
 package com.tencent.qg.loader;
 
-import bila;
+import bjwc;
 
 class QGDownloader$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class QGDownloader$1$1
   
   public void run()
   {
-    bila.a(this.jdField_a_of_type_ComTencentQgLoaderQGDownloader$1.this$0, this.jdField_a_of_type_ComTencentQgLoaderQGDownloader$1.a, this.jdField_a_of_type_Boolean);
+    bjwc.a(this.jdField_a_of_type_ComTencentQgLoaderQGDownloader$1.this$0, this.jdField_a_of_type_ComTencentQgLoaderQGDownloader$1.a, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,31 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class aosq
-  implements aosh
+public class aosq
+  extends aoui
 {
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  public aosq(String paramString, long paramLong)
+  private aouc a(aouc paramaouc, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localBundle.putString("Uin", this.jdField_a_of_type_JavaLangString);
+    paramaouc.a = paramString;
+    paramaouc.b = "avgame";
+    paramaouc.c = "create_room";
+    paramString = paramString.split("\\?");
+    if (paramString.length != 2) {}
+    for (;;)
+    {
+      return paramaouc;
+      paramString = paramString[1].split("&");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        Object localObject = paramString[i];
+        if (localObject.split("=").length == 2)
+        {
+          int j = localObject.indexOf("=");
+          paramaouc.a(localObject.substring(0, j), localObject.substring(j + 1));
+        }
+        i += 1;
+      }
     }
-    localBundle.putLong("ViewHandle", this.jdField_a_of_type_Long);
-    return localBundle;
   }
   
-  public String a()
+  public aouc a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
   {
-    return "QQ.GetNickname";
+    return a(new aosp(paramQQAppInterface, paramActivity), paramString);
+  }
+  
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
+  {
+    return a(new aosp(paramQQAppInterface, paramContext), paramString);
   }
 }
 

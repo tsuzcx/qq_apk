@@ -1,17 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0xe9.SubMsgType0xe9.MsgBody;
 
 public class actq
-  implements DialogInterface.OnDismissListener
+  implements acpi
 {
-  public actq(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
-      AuthDevActivity.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush Audio Trans 0x210_0xe9");
     }
+    try
+    {
+      SubMsgType0xe9.MsgBody localMsgBody = new SubMsgType0xe9.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = localMsgBody.bytes_business.get().toByteArray();
+        QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 =" + paramQQAppInterface.length);
+        QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 businessBytes = " + paramQQAppInterface.length);
+      }
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      do
+      {
+        paramQQAppInterface.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 push exception = " + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

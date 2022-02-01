@@ -25,7 +25,7 @@ class d
       com.tencent.beacon.core.e.d.d("[qimei] process CMD_RESPONSE_GEN_QIMEI", new Object[0]);
       this.a.a(paramArrayOfByte);
       com.tencent.beacon.core.a.d.a().a(112, false);
-      i.a(e.a(this.a));
+      i.a(e.a(this.a), System.currentTimeMillis());
       return;
       paramBoolean = false;
     }

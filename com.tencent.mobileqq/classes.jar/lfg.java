@@ -1,22 +1,16 @@
-import android.content.Context;
-import android.media.AudioManager;
-import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class lfg
 {
-  static int a = 0;
-  static int b = 0;
+  public int a;
+  public long a;
+  public String a;
+  Map<String, Object> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public static boolean a(Context paramContext)
+  public lfg(lfe paramlfe)
   {
-    try
-    {
-      paramContext = (AudioManager)paramContext.getSystemService("audio");
-      boolean bool = Boolean.parseBoolean(paramContext.getClass().getMethod("isWiredHeadsetOn", new Class[0]).invoke(paramContext, (Object[])null).toString());
-      return bool;
-    }
-    catch (Exception paramContext) {}
-    return false;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

@@ -1,21 +1,17 @@
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.fragment.BottomTabSettingFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
 
-public class auvq
+class auvq
   implements View.OnClickListener
 {
-  public auvq(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  auvq(auvp paramauvp, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
-    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(0) });
+    if (BottomTabSettingFragment.a(this.jdField_a_of_type_Auvp.a) != ((Integer)paramView.getTag()).intValue()) {
+      BottomTabSettingFragment.a(this.jdField_a_of_type_Auvp.a, this.jdField_a_of_type_Int);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

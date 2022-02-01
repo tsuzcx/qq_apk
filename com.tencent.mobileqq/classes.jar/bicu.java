@@ -1,28 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class bicu
-  implements DialogInterface.OnClickListener
+  extends QIPCModule
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private static volatile bicu a;
   
-  public bicu(bicl parambicl, DialogInterface.OnClickListener paramOnClickListener, String paramString1, String paramString2)
+  private bicu(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_JavaLangString = bias.a(paramString1, "NEWYYB");
-    this.b = paramString2;
+    super(paramString);
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static bicu a()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bicu("weibo_qipc_module");
+      }
+      return a;
     }
-    this.jdField_a_of_type_Bicl.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-    this.jdField_a_of_type_Bicl.jdField_a_of_type_Bicw = null;
-    bias.a("710", this.jdField_a_of_type_JavaLangString, this.b);
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    QLog.d("WeiBoQIPCModule", 1, "onCall main proc action : " + paramString);
+    if ("action_install_weibo_sdk".equals(paramString))
+    {
+      bicv.a(3);
+      callbackResult(paramInt, EIPCResult.createSuccessResult(new Bundle()));
+    }
+    return null;
   }
 }
 

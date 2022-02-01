@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import appoint.define.appoint_define.CommonLabel;
 import appoint.define.appoint_define.PublisherInfo;
-import bfzl;
+import bhid;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -352,7 +352,7 @@ public class StrangerInfo
       label1054:
       if (localStrangerInfo.recentVisitorTime > 0)
       {
-        paramPublisherInfo = bfzl.a(localStrangerInfo.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
+        paramPublisherInfo = bhid.a(localStrangerInfo.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
         localStrangerInfo.timeStr = paramPublisherInfo;
         return localStrangerInfo;
       }
@@ -375,7 +375,7 @@ public class StrangerInfo
   {
     super.postRead();
     if (this.recentVisitorTime > 0) {
-      this.timeStr = bfzl.a(this.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
+      this.timeStr = bhid.a(this.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
     }
     int i;
     if (!TextUtils.isEmpty(this.interestNameStr)) {
@@ -465,7 +465,7 @@ public class StrangerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.StrangerInfo
  * JD-Core Version:    0.7.0.1
  */

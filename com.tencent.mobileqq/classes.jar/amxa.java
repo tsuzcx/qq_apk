@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
-final class amxa
-  extends LbsManagerService.OnLocationChangeListener
+class amxa
+  implements MediaPlayer.OnCompletionListener
 {
-  amxa(String paramString, ToServiceMsg paramToServiceMsg)
-  {
-    super(paramString);
-  }
+  amxa(amwv paramamwv, amxv paramamxv, JSONObject paramJSONObject) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    synchronized (this.a)
-    {
-      this.a.notify();
-      return;
-    }
+    this.jdField_a_of_type_Amxv.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Amwv.a(10);
   }
 }
 

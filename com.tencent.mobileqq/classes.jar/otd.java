@@ -1,27 +1,58 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class otd
-  implements opa
+  implements INetInfoHandler
 {
-  public otd(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  private otd(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(opd paramopd)
+  public void onNetMobile2None()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onBiuAndCommentSend fragment");
-    if (paramopd == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramopd.a()))
-    {
-      QLog.d("ReadInJoyCommentListFragment", 1, localObject);
-      if ((paramopd == null) || (paramopd.a() != 0)) {
-        break;
-      }
-      ooz.a(paramopd.c(), paramopd.a(), paramopd.c(), paramopd.b(), paramopd.a(), paramopd.d(), paramopd.e(), paramopd.a());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
     }
-    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131711999), 0).a();
+    this.a.b(false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
+    }
+    this.a.d(true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
+    }
+    this.a.c(false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
+    }
+    this.a.d(false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
+    }
+    this.a.c(true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
+    }
+    this.a.b(true);
   }
 }
 

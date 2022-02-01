@@ -1,11 +1,8 @@
-import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
-import java.util.HashMap;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public abstract interface acmg
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
+  public abstract ToServiceMsg a();
 }
 
 

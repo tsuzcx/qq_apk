@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.activity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bdqp;
+import bexs;
 
 public class TroopAvatarWallPreviewActivity$5$1
   implements Runnable
 {
-  public TroopAvatarWallPreviewActivity$5$1(bdqp parambdqp) {}
+  public TroopAvatarWallPreviewActivity$5$1(bexs parambexs) {}
   
   public void run()
   {

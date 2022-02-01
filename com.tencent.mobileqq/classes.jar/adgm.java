@@ -1,21 +1,42 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adgm
-  extends MqqHandler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adgm(FontSettingActivity paramFontSettingActivity) {}
+  public adgm(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onGlobalLayout()
   {
-    if (16711697 == paramMessage.what)
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
     {
-      FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
     }
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

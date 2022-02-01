@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import xhc;
-import xhf;
-import xhh;
+import xvx;
+import xwa;
+import xwc;
 
 public class DetailFeedAllInfoPuller$2
   implements Runnable
 {
-  public DetailFeedAllInfoPuller$2(xhc paramxhc, xhh paramxhh, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
+  public DetailFeedAllInfoPuller$2(xvx paramxvx, xwc paramxwc, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    xhc.a(this.this$0).a(this.jdField_a_of_type_Xhh, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    xvx.a(this.this$0).a(this.jdField_a_of_type_Xwc, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

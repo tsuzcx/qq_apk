@@ -1,6 +1,13 @@
-class blvu
+import android.support.annotation.NonNull;
+import java.util.concurrent.ThreadFactory;
+
+public final class blvu
+  implements ThreadFactory
 {
-  private static blvs a = new blvs(null);
+  public Thread newThread(@NonNull Runnable paramRunnable)
+  {
+    return new Thread(paramRunnable, "PluginDex2Oat");
+  }
 }
 
 

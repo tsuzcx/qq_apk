@@ -1,7 +1,4 @@
-public abstract interface zbv
-{
-  public abstract void a(boolean paramBoolean, int paramInt);
-}
+public abstract class zbv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

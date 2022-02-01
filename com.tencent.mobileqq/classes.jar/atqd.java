@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class atqd
-  implements View.OnClickListener
+public abstract class atqd
 {
-  public atqd(ForwardStructingMsgOption paramForwardStructingMsgOption, boolean paramBoolean, String paramString, long paramLong) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a.hideSoftInputFromWindow();
-      ForwardStructingMsgOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.F();
-    }
-  }
+  public abstract String a();
+  
+  public abstract HashMap<String, ArrayList<MessageRecord>> a();
+  
+  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
+  
+  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
+  
+  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
+  
+  public abstract String b();
 }
 
 

@@ -1,14 +1,41 @@
-import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.videoplatform.api.IThreadMgr;
+import mqq.os.MqqHandler;
 
-public abstract interface baqc
+public class baqc
+  implements IThreadMgr
 {
-  public abstract Object a();
+  public void postOnSubThread(Runnable paramRunnable)
+  {
+    ThreadManager.getSubThreadHandler().post(paramRunnable);
+  }
   
-  public abstract void a(View paramView, boolean paramBoolean);
+  public void postOnSubThreadDelayed(Runnable paramRunnable, long paramLong)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void postOnUIThread(Runnable paramRunnable)
+  {
+    ThreadManager.getUIHandler().post(paramRunnable);
+  }
   
-  public abstract void onClick(View paramView);
+  public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
+  {
+    ThreadManager.getUIHandler().postDelayed(paramRunnable, paramLong);
+  }
+  
+  public void quitSubThread() {}
+  
+  public void removeCallbackOnSubHandler(Runnable paramRunnable)
+  {
+    ThreadManager.getSubThreadHandler().removeCallbacks(paramRunnable);
+  }
+  
+  public void removeCallbackOnUIHandler(Runnable paramRunnable)
+  {
+    ThreadManager.getUIHandler().removeCallbacks(paramRunnable);
+  }
 }
 
 

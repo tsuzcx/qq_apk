@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import abwe;
-import abwz;
+import acml;
+import acnh;
 import java.util.Map;
 
 class C2CMessageManager$2$2
@@ -11,8 +11,8 @@ class C2CMessageManager$2$2
   
   public void run()
   {
-    if (this.a.this$0.a.refreshActionMap.containsKey(abwz.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.this$0.a.refreshActionMap.remove(abwz.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (this.a.this$0.a.refreshActionMap.containsKey(acnh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.this$0.a.refreshActionMap.remove(acnh.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
   }
 }

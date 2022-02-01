@@ -1,221 +1,264 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Toast;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.ui.AVGameActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gamelogic.data.UserScore;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.GameStatusInfo;
+import trpc.qq_vgame.common.AvGameCommon.RoomInfo;
+import trpc.qq_vgame.game_ranking.AvGameRanking.GetRankingListRsp;
+import trpc.qq_vgame.game_ranking.AvGameRanking.UserScoreInfo;
 
-public abstract class nff
-  implements View.OnClickListener, ngc
+public class nff
 {
-  int jdField_a_of_type_Int = 0;
-  Resources jdField_a_of_type_AndroidContentResResources = null;
-  protected ViewGroup a;
-  public AVGameAppInterface a;
-  protected final String a;
-  protected WeakReference<Context> a;
-  public ncq a;
-  public nfy a;
-  boolean jdField_a_of_type_Boolean = false;
+  static HashMap<Integer, Class<? extends ngd>> a = new HashMap(5);
   
-  public nff(AVGameAppInterface paramAVGameAppInterface, BaseActivity paramBaseActivity, ViewGroup paramViewGroup)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    paramAVGameAppInterface = a();
-    if (paramAVGameAppInterface == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "AVGameControlUI-->can not get AVActivity");
+    a.put(Integer.valueOf(1), nge.class);
+    a.put(Integer.valueOf(2), ngg.class);
+    a.put(Integer.valueOf(3), ngh.class);
+    a.put(Integer.valueOf(4), ngi.class);
+    a.put(Integer.valueOf(5), ngj.class);
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if ((paramInt >= 3) && (paramInt <= 102)) {
+      return 3;
+    }
+    if ((paramInt >= 103) && (paramInt <= 202)) {
+      return 2;
+    }
+    if ((paramInt >= 300) && (paramInt <= 399)) {
+      return 5;
+    }
+    if ((paramInt >= 400) && (paramInt <= 499)) {
+      return 4;
+    }
+    return 0;
+  }
+  
+  @Nullable
+  public static RoomInfo a(AvGameCommon.RoomInfo paramRoomInfo)
+  {
+    RoomInfo localRoomInfo = null;
+    if (paramRoomInfo != null)
+    {
+      localRoomInfo = new RoomInfo();
+      localRoomInfo.parseFrom(paramRoomInfo);
+    }
+    return localRoomInfo;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return String.valueOf(paramInt);
+    case 1: 
+      return "NT_ROOM_ENTER";
+    case 2: 
+      return "NT_ROOM_LEAVE";
+    case 3: 
+      return "NT_ROOM_DESTORY";
+    case 4: 
+      return "NT_ROOM_USER_CHANGE_STATUS";
+    case 101: 
+      return "NT_GAME_CHANGE";
+    case 102: 
+      return "NT_GAME_START";
+    case 103: 
+      return "NT_ANSWER_RIGHT";
+    case 104: 
+      return "NT_TOPIC_TIMEOUT";
+    case 105: 
+      return "NT_TOPIC_CHANGE";
+    case 106: 
+      return "NT_NEXT_ACTOR_TIPS";
+    case 107: 
+      return "NT_ACTOR_CHANGE";
+    case 108: 
+      return "NT_ACTOR_GIVEOUT_ANSWER";
+    case 201: 
+      return "NT_TRANSLATE_INFO";
+    }
+    return "NT_MATCH_STATUS";
+  }
+  
+  public static <F, S> String a(List<Pair<F, S>> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Pair localPair = (Pair)paramList.next();
+      localStringBuilder.append("\n").append("[").append(localPair.first).append(",").append(localPair.second).append("]");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  @NotNull
+  public static List<UserScore> a(AvGameRanking.GetRankingListRsp paramGetRankingListRsp)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramGetRankingListRsp = paramGetRankingListRsp.ranking_list.get();
+    if ((paramGetRankingListRsp != null) && (paramGetRankingListRsp.size() > 0))
+    {
+      int i = 0;
+      while (i < paramGetRankingListRsp.size())
+      {
+        UserScore localUserScore = new UserScore();
+        localUserScore.parseFrom((AvGameRanking.UserScoreInfo)paramGetRankingListRsp.get(i));
+        localArrayList.add(localUserScore);
+        i += 1;
       }
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidContentResResources = paramAVGameAppInterface.getResources();
-    } while (this.jdField_a_of_type_AndroidContentResResources != null);
-    lba.g(this.jdField_a_of_type_JavaLangString, "mRes is null. exit video progress");
-    paramBaseActivity = paramAVGameAppInterface.getString(2131719474) + " 0x08";
-    Toast.makeText(paramAVGameAppInterface.getApplicationContext(), paramBaseActivity, 0).show();
-    paramAVGameAppInterface.finish();
+    return localArrayList;
   }
   
-  public static boolean a(Context paramContext)
+  @Nullable
+  public static nfg a(AvGameCommon.GameStatusInfo paramGameStatusInfo)
   {
-    return true;
-  }
-  
-  protected AVGameActivity a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    while (!(this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof AVGameActivity)) {
+    if (paramGameStatusInfo == null) {
       return null;
     }
-    return (AVGameActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  protected abstract void a(long paramLong, int paramInt, View paramView);
-  
-  public abstract void a(long paramLong, int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(long paramLong, View paramView);
-  
-  public void a(long paramLong, String paramString)
-  {
-    AVGameActivity localAVGameActivity = a();
-    if (localAVGameActivity == null) {
-      return;
-    }
-    String str;
-    if ("android.permission.CAMERA".equals(paramString)) {
-      str = localAVGameActivity.getString(2131695175);
-    }
-    for (paramString = localAVGameActivity.getString(2131695176);; paramString = localAVGameActivity.getString(2131695186))
+    try
     {
-      a(paramLong, str, paramString);
-      return;
-      if (!"android.permission.RECORD_AUDIO".equals(paramString)) {
-        break;
+      nfw localnfw = new nfw();
+      try
+      {
+        localnfw.a(paramGameStatusInfo);
+        return localnfw;
       }
-      str = localAVGameActivity.getString(2131695185);
+      catch (Exception localException1)
+      {
+        paramGameStatusInfo = localnfw;
+      }
     }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramGameStatusInfo = null;
+      }
+    }
+    QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getGame ex=", localException1.getMessage(), localException1 });
+    return paramGameStatusInfo;
   }
   
-  void a(long paramLong, String paramString1, String paramString2)
+  public static nfh a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo, boolean paramBoolean)
   {
-    if (a()) {}
-    AVGameActivity localAVGameActivity;
+    if (paramGameQuestionInfo == null) {
+      paramGameQuestionInfo = null;
+    }
+    Object localObject;
     do
     {
-      return;
-      localAVGameActivity = a();
-    } while (localAVGameActivity == null);
-    paramString1 = bfur.a(localAVGameActivity, 230).setMessage(paramString1).setTitle(paramString2).setNegativeButton(2131690620, new nfi(this, paramLong));
-    if (njh.a(localAVGameActivity)) {}
-    for (int i = 2131695187;; i = 2131695188)
-    {
-      paramString1.setPositiveButton(i, new nfh(this, paramLong)).show();
-      return;
-    }
+      return paramGameQuestionInfo;
+      int i = a(paramGameQuestionInfo.type.get());
+      localObject = (Class)a.get(Integer.valueOf(i));
+      if (localObject == null) {
+        return null;
+      }
+      localObject = (nfh)((Class)localObject).newInstance();
+      ((nfh)localObject).a(paramBoolean);
+      ((nfh)localObject).a(paramGameQuestionInfo);
+      paramGameQuestionInfo = (AvGameCommon.GameQuestionInfo)localObject;
+    } while (!QLog.isColorLevel());
+    QLog.i("avgame_logic.GameUtil", 2, String.format("parseTopic {\n%s\n}", new Object[] { localObject }));
+    return localObject;
   }
   
-  public void a(List<ncs> paramList) {}
-  
-  public void a(ncq paramncq)
+  public static void a(String paramString1, String paramString2, String[] paramArrayOfString, MessageMicro... paramVarArgs)
   {
-    this.jdField_a_of_type_Ncq = paramncq;
+    new StringBuilder(1024);
   }
   
-  public void a(nfy paramnfy)
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_Nfy = paramnfy;
-    this.jdField_a_of_type_Nfy.a(this);
+    return paramInt == 1;
   }
   
-  public boolean a()
+  public static boolean a(nga paramnga)
   {
-    return this.jdField_a_of_type_Int == 6;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  protected boolean a(long paramLong, String paramString, View paramView, int paramInt)
-  {
-    AVGameActivity localAVGameActivity = a();
-    if (localAVGameActivity == null) {
-      return false;
-    }
+    if ((paramnga.a == 2) || (paramnga.a == 300) || (paramnga.a == 400)) {}
     int i;
-    if (localAVGameActivity.checkSelfPermission(paramString) == 0)
-    {
-      i = 1;
-      if (i != 0) {
-        break label263;
-      }
-      if (!a(localAVGameActivity)) {
-        break label212;
-      }
-      nfg localnfg = new nfg(this, paramString, paramLong, paramInt, paramView);
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "checkSelfPermission, begin, permission[" + paramString + "], mRequestPermissionIng[" + this.jdField_a_of_type_Boolean + "], seq[" + paramLong + "]");
-      this.jdField_a_of_type_Boolean = true;
-      localAVGameActivity.requestPermissions(localnfg, 0, new String[] { paramString });
-      if (!"android.permission.CAMERA".equals(paramString)) {
-        break label169;
-      }
-      bcef.b(null, "dc00898", "", "", "0X800B03D", "0X800B03D", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    do
     {
       return false;
-      i = 0;
-      break;
-      label169:
-      if ("android.permission.RECORD_AUDIO".equals(paramString))
-      {
-        b(paramLong, paramView);
-        bcef.b(null, "dc00898", "", "", "0X800B03C", "0X800B03C", 0, 0, "", "", "", "");
-        continue;
-        label212:
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "checkSelfPermission, fail, permission[" + paramString + "], seq[" + paramLong + "]");
-        a(paramLong, paramString);
-      }
-    }
-    label263:
+      i = a(paramnga.a);
+    } while ((i != 3) && (i != 5) && (i != 4) && (i != 2));
     return true;
   }
   
-  public void b() {}
-  
-  public void b(long paramLong)
+  @Nullable
+  public static nfh b(AvGameCommon.GameQuestionInfo paramGameQuestionInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 3;
+    try
+    {
+      paramGameQuestionInfo = a(paramGameQuestionInfo, paramBoolean);
+      return paramGameQuestionInfo;
+    }
+    catch (InstantiationException paramGameQuestionInfo)
+    {
+      QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getTopic ex=", paramGameQuestionInfo.getMessage(), paramGameQuestionInfo });
+      return null;
+    }
+    catch (IllegalAccessException paramGameQuestionInfo)
+    {
+      QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getTopic ex=", paramGameQuestionInfo.getMessage(), paramGameQuestionInfo });
+      return null;
+    }
+    catch (Exception paramGameQuestionInfo)
+    {
+      QLog.d("avgame_logic.GamePlayHandler", 1, new Object[] { "getTopic ex=", paramGameQuestionInfo.getMessage(), paramGameQuestionInfo });
+    }
+    return null;
   }
   
-  protected abstract void b(long paramLong, View paramView);
-  
-  protected abstract void c();
-  
-  public void c(long paramLong)
+  public static boolean b(int paramInt)
   {
-    this.jdField_a_of_type_Int = 5;
+    return (paramInt == 3) || (paramInt == 4);
   }
   
-  public void d(long paramLong)
+  public static boolean b(nga paramnga)
   {
-    this.jdField_a_of_type_Int = 6;
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = null;
+    boolean bool = true;
+    if (paramnga == null) {
+      return false;
+    }
+    if ((a(paramnga)) && (paramnga.b == 1)) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
   
-  public void onClick(View paramView)
+  public static boolean c(int paramInt)
   {
-    a(AudioHelper.b(), paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramInt == 3;
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt <= 5);
   }
 }
 

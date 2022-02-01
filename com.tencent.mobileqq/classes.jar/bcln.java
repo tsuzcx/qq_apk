@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class bcln
-  implements DialogInterface.OnClickListener
+public final class bcln
+  implements ThreadFactory
 {
-  bcln(bclk parambclk) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public Thread newThread(Runnable paramRunnable)
+  {
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+  }
 }
 
 

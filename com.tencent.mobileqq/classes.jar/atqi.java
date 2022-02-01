@@ -1,24 +1,14 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-class atqi
-  extends RecyclerView.OnScrollListener
+public class atqi
+  extends atqp
 {
-  atqi(atqf paramatqf) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public atqi(ViewGroup paramViewGroup)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      atqf.a(this.a).pause();
-    }
-    while (!atqf.a(this.a).isPausing()) {
-      return;
-    }
-    atqf.a(this.a).resume();
-    atqf.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_Int = 2131560842;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
 }
 

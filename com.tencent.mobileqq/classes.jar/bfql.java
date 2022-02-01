@@ -1,38 +1,25 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bfql
+  implements DialogInterface.OnClickListener
 {
-  public static String a(Context paramContext)
-  {
-    if (paramContext == null) {}
-    do
-    {
-      return null;
-      paramContext = paramContext.getFilesDir();
-    } while (paramContext == null);
-    return paramContext.getParent() + "/lib/";
-  }
+  public bfql(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
   
-  public static void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramString != null) && ((paramString.contains("NativeGifFactory")) || (paramString.contains("NativeGifIndex8")) || (paramString.contains("libkIndexGif")) || (paramString.contains("libskia"))))
-    {
-      BaseApplicationImpl.getApplication().getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("GifSoLoader", 2, String.format("Crash in libkIndexGif support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfql
  * JD-Core Version:    0.7.0.1
  */

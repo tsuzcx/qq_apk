@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.view.View;
 import android.widget.FrameLayout;
-import bacv;
+import bbje;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
@@ -14,7 +14,7 @@ public abstract class ProviderView
   Context a;
   protected Handler a;
   protected View a;
-  protected bacv a;
+  protected bbje a;
   protected AppInterface a;
   protected QQSlidingTabView a;
   protected int b;
@@ -40,9 +40,9 @@ public abstract class ProviderView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(bacv parambacv)
+  public void setProviderViewListener(bbje parambbje)
   {
-    this.jdField_a_of_type_Bacv = parambacv;
+    this.jdField_a_of_type_Bbje = parambbje;
   }
   
   public void setTabBarPosition(int paramInt)

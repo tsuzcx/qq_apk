@@ -1,160 +1,115 @@
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.aio.video.aio_video.ErrInfo;
+import tencent.aio.video.aio_video.RspGetUinByOpenId;
 
-public class bidp
-  implements DownloadListener
+class bidp
+  extends ntf
 {
-  protected static bidp a;
-  protected bidr a;
+  bidp(bidm parambidm, bids parambids) {}
   
-  public static bidp a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
+    if (QLog.isColorLevel()) {
+      QLog.i("urlSecMgr", 2, "receive getUinWithOpenID code=" + paramInt);
+    }
+    Object localObject = "";
+    j = -1;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      i = j;
+      paramBundle = (Bundle)localObject;
+      if (paramArrayOfByte != null) {
+        paramBundle = (Bundle)localObject;
+      }
+    }
     try
     {
-      if (jdField_a_of_type_Bidp == null) {
-        jdField_a_of_type_Bidp = new bidp();
-      }
-      bidp localbidp = jdField_a_of_type_Bidp;
-      return localbidp;
+      aio_video.RspGetUinByOpenId localRspGetUinByOpenId = new aio_video.RspGetUinByOpenId();
+      paramBundle = (Bundle)localObject;
+      localRspGetUinByOpenId.mergeFrom(paramArrayOfByte);
+      paramBundle = (Bundle)localObject;
+      localObject = localRspGetUinByOpenId.err_info.err_msg.get().toStringUtf8();
+      paramBundle = (Bundle)localObject;
+      i = localRspGetUinByOpenId.err_info.err_code.get();
+      paramBundle = (Bundle)localObject;
     }
-    finally {}
-  }
-  
-  public void a(Looper paramLooper)
-  {
-    this.jdField_a_of_type_Bidr = new bidr(paramLooper);
-  }
-  
-  protected void a(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Bidr == null) {
-      this.jdField_a_of_type_Bidr = new bidr();
-    }
-    this.jdField_a_of_type_Bidr.sendMessage(paramMessage);
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    bhzm.a("NoticeDownloadListener", "onInstallSucceed ,appId" + paramString1);
-    paramString1 = biby.a().b(paramString2);
-    if (paramString1 != null)
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      paramString2 = this.jdField_a_of_type_Bidr.obtainMessage();
-      paramString2.what = 6;
-      Bundle localBundle = new Bundle();
-      localBundle.putString(bibw.b, paramString1.jdField_c_of_type_JavaLangString);
-      paramString2.setData(localBundle);
-      a(paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    bhzm.a("NoticeDownloadListener", "onDownloadError ,downloadInfo" + paramDownloadInfo);
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bidr.obtainMessage();
-    localMessage.what = -2;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    localMessage.obj = paramString;
-    localMessage.arg2 = paramInt2;
-    a(localMessage);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.a("NoticeDownloadListener", "onDownloadFinish ");
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bidr.obtainMessage();
-    localMessage.what = 4;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
-    do
-    {
-      return;
-      bhzm.a("NoticeDownloadListener", "onDownloadPause " + paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    } while ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (paramDownloadInfo.b));
-    Message localMessage = this.jdField_a_of_type_Bidr.obtainMessage();
-    localMessage.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bhzm.a("NoticeDownloadListener", "onDownloadUpdate notify enter infos=" + paramList.size());
-    paramList = paramList.iterator();
-    for (;;)
-    {
-      DownloadInfo localDownloadInfo;
-      if (paramList.hasNext())
+      for (;;)
       {
-        localDownloadInfo = (DownloadInfo)paramList.next();
-        if ((localDownloadInfo == null) || (localDownloadInfo.jdField_c_of_type_Int == 1)) {
-          continue;
+        label340:
+        i = j;
+        continue;
+        paramArrayOfByte = "";
+        paramInt = 0;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("getUinWithOpenID error code=").append(paramInt);
+      if (paramArrayOfByte == null)
+      {
+        paramArrayOfByte = ", data=null";
+        QLog.i("urlSecMgr", 2, paramArrayOfByte);
+        paramArrayOfByte = "";
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Bids != null)
+        {
+          localObject = new Bundle();
+          if (paramInt != 0) {
+            i = 0;
+          }
+          ((Bundle)localObject).putInt("result", i);
+          ((Bundle)localObject).putString("errMsg", paramBundle);
+          ((Bundle)localObject).putString("retUin", paramArrayOfByte);
+          this.jdField_a_of_type_Bids.a((Bundle)localObject);
         }
-        if (!localDownloadInfo.b) {}
-      }
-      else
-      {
         return;
+        paramArrayOfByte = ", msg=" + paramBundle + ", errCode=" + i;
+        break;
+        paramBundle = new aio_video.RspGetUinByOpenId();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          long l = paramBundle.uin.get();
+          paramArrayOfByte = String.valueOf(l);
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle)
+        {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("urlSecMgr", 2, new Object[] { "getUinWithOpenID uin:", Long.valueOf(paramBundle.uin.get()) });
+            }
+            paramInt = 1;
+            i = j;
+            paramBundle = (Bundle)localObject;
+          }
+          catch (InvalidProtocolBufferMicroException paramBundle)
+          {
+            break label340;
+          }
+          paramBundle = paramBundle;
+          paramArrayOfByte = "";
+          if (QLog.isColorLevel()) {
+            QLog.i("urlSecMgr", 2, "parse error", paramBundle);
+          }
+          paramInt = 0;
+          i = j;
+          paramBundle = (Bundle)localObject;
+        }
       }
-      Message localMessage = this.jdField_a_of_type_Bidr.obtainMessage();
-      localMessage.what = 2;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("appId", localDownloadInfo.jdField_c_of_type_JavaLangString);
-      localMessage.setData(localBundle);
-      a(localMessage);
     }
   }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.b) {
-      return;
-    }
-    Object localObject2 = new StringBuilder().append("onDownloadWait notify enter info.id=");
-    if (paramDownloadInfo == null) {}
-    for (Object localObject1 = "";; localObject1 = paramDownloadInfo.jdField_c_of_type_JavaLangString)
-    {
-      bhzm.a("NoticeDownloadListener", (String)localObject1);
-      localObject1 = this.jdField_a_of_type_Bidr.obtainMessage();
-      ((Message)localObject1).what = 20;
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      ((Message)localObject1).setData((Bundle)localObject2);
-      a((Message)localObject1);
-      return;
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

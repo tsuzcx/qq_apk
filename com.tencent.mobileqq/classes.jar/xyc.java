@@ -1,57 +1,29 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class xyc
-  extends ygj
+public class xyc
+  implements xwl
 {
-  private final List<yfy> a = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private WeakReference<xvm> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public int a()
+  public xyc(int paramInt)
   {
-    return this.a.size();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public yfy a(int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (yfy)this.a.get(paramInt);
+    ykq.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
     }
-    return null;
+    ((xvm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
   }
   
-  public yfy a(String paramString)
+  public void a(xvm paramxvm)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      yfy localyfy = (yfy)localIterator.next();
-      if (TextUtils.equals(paramString, localyfy.a)) {
-        return localyfy;
-      }
-    }
-    return null;
-  }
-  
-  public void a(Collection<yfy> paramCollection)
-  {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(yfy paramyfy)
-  {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramyfy);
-    int i = this.a.indexOf(paramyfy);
-    if (i >= 0)
-    {
-      this.a.set(i, paramyfy);
-      a(i);
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxvm);
   }
 }
 

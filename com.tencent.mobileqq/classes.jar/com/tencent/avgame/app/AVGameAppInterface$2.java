@@ -1,7 +1,7 @@
 package com.tencent.avgame.app;
 
-import mzl;
-import ngu;
+import nfc;
+import nnm;
 
 class AVGameAppInterface$2
   implements Runnable
@@ -10,8 +10,8 @@ class AVGameAppInterface$2
   
   public void run()
   {
-    ngu.a();
-    mzl.a().a();
+    nnm.a();
+    nfc.a().a();
   }
 }
 

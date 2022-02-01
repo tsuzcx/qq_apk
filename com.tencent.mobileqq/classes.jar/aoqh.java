@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import java.util.List;
 
-class aoqh
-  implements afwf
+public abstract interface aoqh
 {
-  aoqh(aoqa paramaoqa, long paramLong) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
-  }
+  public abstract void a(List<aoqb> paramList);
 }
 
 

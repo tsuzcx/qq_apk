@@ -1,17 +1,7 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
-class suq
-  implements ViewFactory.FoundClickableViewListener
+public class suq
 {
-  suq(sup paramsup, Context paramContext, ProteusItemData paramProteusItemData) {}
-  
-  public void onFound(ViewBase paramViewBase)
-  {
-    paramViewBase.setOnClickListener(new sur(this));
-  }
+  public long a;
+  public long b;
 }
 
 

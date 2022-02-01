@@ -1,19 +1,109 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class xgu
+  extends xgt
 {
-  public int a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
+  private xgt a;
   
-  public xgu(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
+  public Activity a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return this.a.a();
+  }
+  
+  public OpenPlayerBuilder.Data a()
+  {
+    return this.a.a();
+  }
+  
+  public XViewPager a()
+  {
+    return this.a.a();
+  }
+  
+  public String a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public xcy a()
+  {
+    return this.a.a();
+  }
+  
+  public xdb a()
+  {
+    return this.a.a();
+  }
+  
+  public xgl a()
+  {
+    return this.a.a();
+  }
+  
+  public xgt a()
+  {
+    return this.a;
+  }
+  
+  public xhe a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(vzx paramvzx)
+  {
+    this.a.a(paramvzx);
+  }
+  
+  public void a(xfj paramxfj)
+  {
+    this.a.a(paramxfj);
+  }
+  
+  public void a(xgt paramxgt)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
+    }
+    this.a = paramxgt;
+  }
+  
+  public void a(xhm paramxhm)
+  {
+    this.a.a(paramxhm);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public void b(vzx paramvzx)
+  {
+    this.a.b(paramvzx);
+  }
+  
+  public void b(xfj paramxfj)
+  {
+    this.a.b(paramxfj);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 

@@ -43,7 +43,7 @@ public class MiniAppGameDebugSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131562331;
+    return 2131562399;
   }
   
   public void onAttach(Activity paramActivity)
@@ -55,32 +55,32 @@ public class MiniAppGameDebugSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371265);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131371451);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_system_webview", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.1(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371263);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131371449);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_old_desktop", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.2(this));
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)paramView.findViewById(2131371264);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)paramView.findViewById(2131371450);
     paramBundle = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_sdk_minigame_", 4);
     localFormSwitchItem.setChecked(paramBundle.getBoolean("_minigame_start_with_sdk", false));
     localFormSwitchItem.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.3(this, paramBundle));
-    localFormSwitchItem = (FormSwitchItem)paramView.findViewById(2131371240);
+    localFormSwitchItem = (FormSwitchItem)paramView.findViewById(2131371426);
     localFormSwitchItem.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_sdk_miniapp_", 4).getBoolean("_miniapp_start_with_sdk", true));
     localFormSwitchItem.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.4(this));
-    localFormSwitchItem = (FormSwitchItem)paramView.findViewById(2131371239);
+    localFormSwitchItem = (FormSwitchItem)paramView.findViewById(2131371425);
     localFormSwitchItem.setChecked(paramBundle.getBoolean("_minigame_enable_jank_canary_brief", false));
     localFormSwitchItem.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.5(this, paramBundle));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371243);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131371429);
     paramBundle.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_ipv6only_miniapp_", 4).getBoolean("_user_ipv6only_miniapp_", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.6(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371242);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131371428);
     paramBundle.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_embedded_video_", 4).getBoolean("_user_embedded_video_", true));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.7(this));
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131371241);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131371427);
     paramBundle.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_embedded_live_", 4).getBoolean("_user_embedded_live_", true));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.8(this));
-    paramView = (FormSwitchItem)paramView.findViewById(2131371244);
+    paramView = (FormSwitchItem)paramView.findViewById(2131371430);
     paramView.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_loadingad_select_use_nulllist_", 4).getBoolean("_loadingad_select_use_nulllist_", false));
     paramView.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.9(this));
   }

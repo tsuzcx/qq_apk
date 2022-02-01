@@ -1,9 +1,9 @@
 package com.tencent.gamecenter.appointment;
 
-import aber;
+import abud;
 import android.content.Intent;
 import android.text.TextUtils;
-import bifq;
+import bjqs;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlResult;
 import java.util.Iterator;
@@ -30,7 +30,7 @@ class GameCenterReceiver$2
     default: 
       return;
     case 1: 
-      bifq.a().a();
+      bjqs.a().a();
       return;
     case 2: 
       synchronized (this.this$0.a)
@@ -41,7 +41,7 @@ class GameCenterReceiver$2
         {
           Iterator localIterator = this.this$0.a.iterator();
           if (localIterator.hasNext()) {
-            ((aber)localIterator.next()).onTaskDeleted(str, (String)localObject4);
+            ((abud)localIterator.next()).onTaskDeleted(str, (String)localObject4);
           }
         }
       }
@@ -54,7 +54,7 @@ class GameCenterReceiver$2
         {
           localObject4 = this.this$0.a.iterator();
           if (((Iterator)localObject4).hasNext()) {
-            ((aber)((Iterator)localObject4).next()).onTaskComplete(localWadlResult1);
+            ((abud)((Iterator)localObject4).next()).onTaskComplete(localWadlResult1);
           }
         }
       }
@@ -67,7 +67,7 @@ class GameCenterReceiver$2
       {
         localObject4 = this.this$0.a.iterator();
         if (((Iterator)localObject4).hasNext()) {
-          ((aber)((Iterator)localObject4).next()).onTaskInstall(localWadlResult2);
+          ((abud)((Iterator)localObject4).next()).onTaskInstall(localWadlResult2);
         }
       }
     }

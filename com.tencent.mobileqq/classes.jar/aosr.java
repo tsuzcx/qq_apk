@@ -1,28 +1,35 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract class aosr
-  implements aosh
+public class aosr
+  extends aouc
 {
-  private final String a;
-  
-  public aosr(String paramString)
+  public aosr(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a = paramString;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public Bundle a()
+  public boolean a()
   {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.a)) {
-      localBundle.putString("Domain", this.a);
+    try
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromType");
+      if ((str != null) && (str.equals("1"))) {
+        bdla.b(a(), "dc00898", "", "", "0X800B693", "0X800B693", 0, 0, "", "", "", "");
+      }
+      PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, AVGameRoomCenterFragment.class);
+      return true;
     }
-    return localBundle;
-  }
-  
-  public String a()
-  {
-    return "QQ.GetPSKey";
+    catch (Exception localException)
+    {
+      QLog.e("AVGameShareEntryLobbyAction", 1, "doAction error: " + localException.getMessage());
+      a("AVGameShareEntryLobbyAction");
+    }
+    return true;
   }
 }
 

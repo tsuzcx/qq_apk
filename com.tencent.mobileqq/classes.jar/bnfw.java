@@ -1,44 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.mobileqq.utils.StackBlur;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bnfw
-  extends JobSegment<Bitmap, Bitmap>
+  extends boiu
 {
-  public int a;
+  public bnfw(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public bnfw()
+  public void a()
   {
-    this.a = 10;
-  }
-  
-  public bnfw(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
     }
-    StackBlur.fastblur(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    xvv.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
+    if (AEMaterialProviderView.a(this.a)) {
       return;
     }
-    super.notifyResult(paramJobContext);
+    this.a.a(true);
   }
 }
 

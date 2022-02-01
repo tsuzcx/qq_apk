@@ -1,72 +1,30 @@
-import android.content.Context;
-import android.os.Looper;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class run
+class run
+  implements View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = run.class.getSimpleName();
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
-  private HashMap<Integer, ruu> jdField_a_of_type_JavaUtilHashMap;
-  private rut jdField_a_of_type_Rut;
-  private ruv jdField_a_of_type_Ruv;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  run(rum paramrum, ReadInJoyDraftboxItem paramReadInJoyDraftboxItem) {}
   
-  public run(Context paramContext, String paramString, HashMap<Integer, ruu> paramHashMap, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void c()
-  {
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, "", "");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new ruo(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new rup(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new ruq(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new rur(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnExtractFrameListener(new rus(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, 0L, 0L, localTVK_PlayerVideoInfo);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, null);
-    this.jdField_a_of_type_Ruv = new ruv(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Ruv.sendEmptyMessageDelayed(1, this.jdField_a_of_type_Long);
-    c();
-  }
-  
-  public void a(rut paramrut)
-  {
-    this.jdField_a_of_type_Rut = paramrut;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Ruv != null)
+    Intent localIntent = new Intent(rum.a(this.jdField_a_of_type_Rum), ReadInJoyDeliverUGCActivity.class);
+    localIntent.putExtra("readinjoy_draftbox_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
+    localIntent.putExtra("is_from_kan_dian", true);
+    localIntent.putExtra("support_topic", true);
+    if ((rum.a(this.jdField_a_of_type_Rum) instanceof BaseActivity))
     {
-      this.jdField_a_of_type_Ruv.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Ruv = null;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.type == 0) {
+        ((BaseActivity)rum.a(this.jdField_a_of_type_Rum)).startActivityForResult(localIntent, 1000);
+      }
+      olh.a(null, "", "0X80096DF", "0X80096DF", 0, 0, rum.a(this.jdField_a_of_type_Rum, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-    }
-    this.jdField_a_of_type_Rut = null;
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = null;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

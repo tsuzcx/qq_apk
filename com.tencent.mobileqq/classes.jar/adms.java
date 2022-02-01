@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.mobileqq.portal.SanHuaView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class adms
-  extends OvershootInterpolator
+public final class adms
+  implements adnl
 {
-  private boolean jdField_a_of_type_Boolean;
+  public adms(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public adms(HongbaoShowerActivity paramHongbaoShowerActivity) {}
-  
-  public float getInterpolation(float paramFloat)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      HongbaoShowerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity).a();
+    AudioHelper.b("发起音视频_获取会议id_rsp");
+    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
+    Bundle localBundle1 = localBundle2;
+    if (localBundle2 == null) {
+      localBundle1 = new Bundle();
     }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
+    localBundle1.putInt("ConfAppID", paramInt1);
+    localBundle1.putInt("MeetingConfID", paramInt2);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
   }
 }
 

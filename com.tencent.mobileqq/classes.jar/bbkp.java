@@ -1,192 +1,38 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 
 public class bbkp
-  implements SharedPreferences.Editor
 {
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private boolean jdField_a_of_type_Boolean;
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  static String jdField_a_of_type_JavaLangString = "DataCollector";
+  Handler jdField_a_of_type_AndroidOsHandler = new bbkq(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public boolean a;
   
-  public bbkp(bbko parambbko) {}
-  
-  private void a()
+  static
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = bbko.a(this.jdField_a_of_type_Bbko).edit();
-    if ((bbko.a(this.jdField_a_of_type_Bbko) != null) && (bbko.a(this.jdField_a_of_type_Bbko).size() > 0))
-    {
-      Iterator localIterator = bbko.a(this.jdField_a_of_type_Bbko).keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = bbko.a(this.jdField_a_of_type_Bbko).get(str);
-        if ((localObject instanceof Long)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(str, ((Long)localObject).longValue());
-        } else if ((localObject instanceof String)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(str, (String)localObject);
-        } else if ((localObject instanceof Boolean)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(str, ((Boolean)localObject).booleanValue());
-        } else if ((localObject instanceof Integer)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(str, ((Integer)localObject).intValue());
-        } else if ((localObject instanceof Float)) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(str, ((Float)localObject).floatValue());
-        }
-      }
-    }
+    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
+    jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
-  @TargetApi(9)
-  public void apply()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (Build.VERSION.SDK_INT < 9) {
-        try
-        {
-          a();
-          if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit())
-          {
-            bbko.a(this.jdField_a_of_type_Bbko).clear();
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d(bbko.a(), 2, "AsyncEditor commit fail!");
-          return;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w(bbko.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w(bbko.a(), 2, "commit Exception ! ", localException);
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-      } else {
-        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
-      }
-    }
-  }
-  
-  public SharedPreferences.Editor clear()
+  public bbkp(Context paramContext)
   {
     this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).clear();
-    return this;
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
   }
   
-  public boolean commit()
+  static Looper a()
   {
-    boolean bool1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      try
-      {
-        a();
-        boolean bool2 = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-        if (bool2)
-        {
-          bbko.a(this.jdField_a_of_type_Bbko).clear();
-          return bool2;
-        }
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          return bool1;
-        }
-        QLog.d(bbko.a(), 2, "AsyncEditor commit fail!");
-        return bool2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(bbko.a(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return false;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(bbko.a(), 2, "commit Exception ! ", localException);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return false;
-      }
-    }
-    else
-    {
-      bool1 = false;
-    }
-    return bool1;
+    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
   }
   
-  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).put(paramString, Boolean.valueOf(paramBoolean));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).put(paramString, Float.valueOf(paramFloat));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putInt(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).put(paramString, Integer.valueOf(paramInt));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putLong(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).put(paramString, Long.valueOf(paramLong));
-    return this;
-  }
-  
-  public SharedPreferences.Editor putString(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).put(paramString1, paramString2);
-    return this;
-  }
-  
-  @Deprecated
-  public SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
-  {
-    return this;
-  }
-  
-  public SharedPreferences.Editor remove(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    bbko.a(this.jdField_a_of_type_Bbko).remove(paramString);
-    return this;
-  }
+  protected void a(Message paramMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkp
  * JD-Core Version:    0.7.0.1
  */

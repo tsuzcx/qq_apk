@@ -1,16 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class pac
-  implements View.OnClickListener
+public class pac
 {
-  pac(pab parampab, String paramString1, String paramString2) {}
+  private static List<pfh> a;
   
-  public void onClick(View paramView)
+  private pac()
   {
-    pab.a(this.jdField_a_of_type_Pab).a(this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    a = new ArrayList();
+  }
+  
+  public static pac a()
+  {
+    return pae.a();
+  }
+  
+  public List<pfh> a()
+  {
+    if (a == null) {
+      return null;
+    }
+    return a;
+  }
+  
+  public void a()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public void a(pfh parampfh)
+  {
+    if ((parampfh == null) || (a == null)) {}
+    while (a.contains(parampfh)) {
+      return;
+    }
+    a.add(parampfh);
+  }
+  
+  public void b(pfh parampfh)
+  {
+    if ((a == null) || (a.size() == 0)) {
+      return;
+    }
+    a.remove(parampfh);
   }
 }
 

@@ -1,22 +1,9 @@
-public abstract class sgm
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$IVideoColumnBannerAction;", "", "onJumpToColumnPlay", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sgm
 {
-  abstract void a();
-  
-  abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  abstract void a(int paramInt, Object paramObject);
-  
-  abstract void a(String paramString);
-  
-  abstract void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  abstract void a(sdj paramsdj);
-  
-  abstract void a(sdj paramsdj, int paramInt);
-  
-  abstract void a(boolean paramBoolean);
-  
-  abstract void b(sdj paramsdj);
+  public abstract void a();
 }
 
 

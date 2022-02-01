@@ -1,19 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
 
 public class zyr
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zyr(SingleLyricView paramSingleLyricView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, zyw paramzyw, zyv paramzyv)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(f);
+    a(paramContext, null, paramStFeed, paramzyw, paramzyv);
+  }
+  
+  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, zyw paramzyw, zyv paramzyv)
+  {
+    bkzi localbkzi = bkzi.a(paramContext);
+    localbkzi.a(paramContext.getString(2131719123));
+    localbkzi.a(2131719124, 3);
+    localbkzi.c(2131690697);
+    localbkzi.a(new zys(localbkzi, paramzyv));
+    localbkzi.a(new zyt(paramStUser, paramStFeed, paramzyw, paramzyv, localbkzi));
+    if (!localbkzi.isShowing()) {
+      localbkzi.show();
     }
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, zyw paramzyw, zyv paramzyv)
+  {
+    a(paramContext, paramStUser, null, paramzyw, paramzyv);
   }
 }
 

@@ -1,15 +1,28 @@
+import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class bbdp
 {
-  public int a;
+  public String a;
+  public List<String> a;
+  public String b = "";
   
-  public bbdp(int paramInt)
+  public bbdp()
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int a()
+  @NonNull
+  public String toString()
   {
-    return this.a;
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("qzoneName").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("updateContent").append("=").append(this.b).append("|");
+    localStringBuilder.append("imgUrls").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|");
+    return localStringBuilder.toString();
   }
 }
 

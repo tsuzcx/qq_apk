@@ -1,30 +1,22 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
-class zud
-  implements ActionMode.Callback
+public class zud
+  implements Animation.AnimationListener
 {
-  zud(zuc paramzuc, TroopGiftPanel paramTroopGiftPanel) {}
+  public zud(CommentBottomBar paramCommentBottomBar, boolean paramBoolean) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return false;
+    if (!this.jdField_a_of_type_Boolean) {
+      CommentBottomBar.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
+    }
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

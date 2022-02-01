@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.mayknow;
 
-import aipx;
+import ajlm;
 
 public class RecommendsAdapter$2
   implements Runnable
 {
-  public RecommendsAdapter$2(aipx paramaipx) {}
+  public RecommendsAdapter$2(ajlm paramajlm) {}
   
   public void run()
   {

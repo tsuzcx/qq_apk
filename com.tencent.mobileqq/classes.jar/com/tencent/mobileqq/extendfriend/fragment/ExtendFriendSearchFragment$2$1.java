@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import arlo;
-import arme;
+import aspu;
+import asqk;
 
 public class ExtendFriendSearchFragment$2$1
   implements Runnable
 {
-  public ExtendFriendSearchFragment$2$1(arlo paramarlo) {}
+  public ExtendFriendSearchFragment$2$1(aspu paramaspu) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ExtendFriendSearchFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

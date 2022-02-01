@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.model;
 
-import vvf;
+import wka;
 
 public class TroopNickNameManager$3
   implements Runnable
 {
-  public TroopNickNameManager$3(vvf paramvvf) {}
+  public TroopNickNameManager$3(wka paramwka) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopNickNameManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.3
  * JD-Core Version:    0.7.0.1
  */

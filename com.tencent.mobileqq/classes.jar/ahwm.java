@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public abstract interface ahwm
+public class ahwm
+  extends ahvq
 {
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public void b(BaseChatPie paramBaseChatPie)
+  {
+    if (!nut.b(paramBaseChatPie.sessionInfo.curFriendUin)) {
+      a(paramBaseChatPie.sessionInfo.curType, 219);
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    if (!nut.b(paramBaseChatPie.sessionInfo.curFriendUin)) {
+      a(paramBaseChatPie.sessionInfo.curType, 211);
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 212);
+    a(paramBaseChatPie.sessionInfo.curType, 213);
+  }
 }
 
 

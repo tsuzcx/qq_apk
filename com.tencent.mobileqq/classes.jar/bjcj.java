@@ -1,38 +1,37 @@
-import android.os.Bundle;
-import android.util.Log;
-import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
 
-class bjcj
-  implements EIPCResultCallback
+public class bjcj
+  implements InputFilter
 {
-  bjcj(bjce parambjce, IMiniAppContext paramIMiniAppContext, String paramString, AsyncResult paramAsyncResult) {}
+  public bjcj(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null) && (paramEIPCResult.data.getBoolean("hasCreateOrManageTroop")))
+    paramInt3 = 12 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
     {
-      TroopApplicationListUtil.startTroopActivityAndAddTroopApplication(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult);
-      return;
+      CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
+      return "";
     }
-    try
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
+    }
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
     {
-      paramEIPCResult = new JSONObject();
-      paramEIPCResult.put("errMsg", "not group manager");
-      paramEIPCResult.put("errorCode", 41004);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, paramEIPCResult);
-      TroopApplicationListUtil.showToast(41004);
-      return;
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
+        return "";
+      }
     }
-    catch (Exception paramEIPCResult)
-    {
-      QLog.e("ChannelProxyImpl", 1, "addGroupApp, exception: " + Log.getStackTraceString(paramEIPCResult));
-    }
+    CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

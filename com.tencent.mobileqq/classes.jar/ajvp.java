@@ -1,17 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajvp
-  implements akgi
+  implements View.OnClickListener
 {
-  public ajvp(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public ajvp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    this.a.startActivity(localIntent);
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    if (this.a.d == 11) {
+      bdla.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.tav.core.AssetExportSession;
+import com.tencent.tavcut.exporter.MovieExporter.VideoCompressListener;
 
-public class bmzn
-  implements View.OnClickListener
+class bmzn
+  implements MovieExporter.VideoCompressListener
 {
-  public bmzn(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
+  bmzn(bmzm parambmzm, MovieExporter.VideoCompressListener paramVideoCompressListener, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCompressCanceled()
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.onTabChecked(this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressCanceled();
+  }
+  
+  public void onCompressError(AssetExportSession paramAssetExportSession)
+  {
+    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressError(paramAssetExportSession);
+  }
+  
+  public void onCompressFinish(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressFinish(paramString);
+  }
+  
+  public void onCompressStart()
+  {
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressStart();
+  }
+  
+  public void onCompressing(float paramFloat)
+  {
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressing(paramFloat);
   }
 }
 

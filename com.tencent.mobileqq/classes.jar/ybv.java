@@ -1,24 +1,38 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ybv
-  implements WXShareHelper.WXShareListener
 {
-  public void onWXShareResp(BaseResp paramBaseResp)
+  private vzr<ycb> a;
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
+    try
+    {
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
+      }
+      return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
-      this.jdField_a_of_type_Ybu.a.runOnUiThread(new PKVideoSharer.2.1(this));
+  }
+  
+  public void a(List<ycb> paramList)
+  {
+    try
+    {
+      if (this.a == null) {
+        this.a = new vzr(new ybx());
+      }
+      this.a.a(paramList);
+      return;
     }
+    finally {}
   }
 }
 

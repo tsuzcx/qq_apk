@@ -2,20 +2,20 @@ package com.tencent.mobileqq.triton.internal.touch;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click;", "", "startX", "", "startY", "(FF)V", "duration", "", "getDuration", "()J", "setDuration", "(J)V", "endX", "getEndX", "()F", "setEndX", "(F)V", "endY", "getEndY", "setEndY", "getStartX", "setStartX", "getStartY", "setStartY", "timestamp", "getTimestamp", "setTimestamp", "Triton_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/internal/touch/TouchEventManager$Click;", "", "startX", "", "startY", "(II)V", "duration", "", "getDuration", "()J", "setDuration", "(J)V", "endX", "getEndX", "()I", "setEndX", "(I)V", "endY", "getEndY", "setEndY", "getStartX", "setStartX", "getStartY", "setStartY", "timestamp", "getTimestamp", "setTimestamp", "Triton_release"}, k=1, mv={1, 1, 16})
 final class TouchEventManager$Click
 {
   private long duration;
-  private float endX;
-  private float endY;
-  private float startX;
-  private float startY;
+  private int endX;
+  private int endY;
+  private int startX;
+  private int startY;
   private long timestamp;
   
-  public TouchEventManager$Click(float paramFloat1, float paramFloat2)
+  public TouchEventManager$Click(int paramInt1, int paramInt2)
   {
-    this.startX = paramFloat1;
-    this.startY = paramFloat2;
+    this.startX = paramInt1;
+    this.startY = paramInt2;
     this.timestamp = System.currentTimeMillis();
   }
   
@@ -24,22 +24,22 @@ final class TouchEventManager$Click
     return this.duration;
   }
   
-  public final float getEndX()
+  public final int getEndX()
   {
     return this.endX;
   }
   
-  public final float getEndY()
+  public final int getEndY()
   {
     return this.endY;
   }
   
-  public final float getStartX()
+  public final int getStartX()
   {
     return this.startX;
   }
   
-  public final float getStartY()
+  public final int getStartY()
   {
     return this.startY;
   }
@@ -54,24 +54,24 @@ final class TouchEventManager$Click
     this.duration = paramLong;
   }
   
-  public final void setEndX(float paramFloat)
+  public final void setEndX(int paramInt)
   {
-    this.endX = paramFloat;
+    this.endX = paramInt;
   }
   
-  public final void setEndY(float paramFloat)
+  public final void setEndY(int paramInt)
   {
-    this.endY = paramFloat;
+    this.endY = paramInt;
   }
   
-  public final void setStartX(float paramFloat)
+  public final void setStartX(int paramInt)
   {
-    this.startX = paramFloat;
+    this.startX = paramInt;
   }
   
-  public final void setStartY(float paramFloat)
+  public final void setStartY(int paramInt)
   {
-    this.startY = paramFloat;
+    this.startY = paramInt;
   }
   
   public final void setTimestamp(long paramLong)

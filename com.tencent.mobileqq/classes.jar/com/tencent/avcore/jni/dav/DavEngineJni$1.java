@@ -1,7 +1,7 @@
 package com.tencent.avcore.jni.dav;
 
-import mwk;
-import mwv;
+import nbz;
+import ncl;
 
 class DavEngineJni$1
   implements Runnable
@@ -11,7 +11,7 @@ class DavEngineJni$1
   public void run()
   {
     if (DavEngineJni.sDisableReOpen) {
-      mwv.c("DavEngineJni", "changePreviewSize, 禁止响应重开摄像头, w[" + this.val$w + "], h[" + this.val$h + "]");
+      ncl.c("DavEngineJni", "changePreviewSize, 禁止响应重开摄像头, w[" + this.val$w + "], h[" + this.val$h + "]");
     }
     while (this.this$0.mEventListener == null) {
       return;

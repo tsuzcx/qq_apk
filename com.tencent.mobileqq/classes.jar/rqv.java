@@ -1,31 +1,18 @@
-import android.app.Activity;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 
-public class rqv
-  extends FragmentPagerAdapter
+public final class rqv
+  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
 {
-  public rqv(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
+  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
   {
-    super(paramFragmentManager);
+    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
   }
   
-  public int getCount()
+  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
   {
-    return SelectVideoTabFragment.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
+    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
   }
 }
 

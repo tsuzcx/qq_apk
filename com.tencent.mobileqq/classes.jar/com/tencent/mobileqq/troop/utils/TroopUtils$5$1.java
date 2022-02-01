@@ -10,7 +10,7 @@ class TroopUtils$5$1
   public void run()
   {
     if (this.this$0.val$context != null) {
-      QQToast.a(this.this$0.val$context, 2131698749, 0).a();
+      QQToast.a(this.this$0.val$context, 2131699073, 0).a();
     }
   }
 }

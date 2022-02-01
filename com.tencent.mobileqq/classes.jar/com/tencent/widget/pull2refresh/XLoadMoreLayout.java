@@ -1,6 +1,5 @@
 package com.tencent.widget.pull2refresh;
 
-import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,12 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bjxd;
-import vpl;
+import anvx;
+import blio;
+import weg;
 
 public class XLoadMoreLayout
   extends FrameLayout
-  implements bjxd
+  implements blio
 {
   protected int a;
   protected View a;
@@ -101,19 +101,19 @@ public class XLoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_JavaLangString = amtj.a(2131716034);
-    this.c = amtj.a(2131716035);
-    this.d = amtj.a(2131716036);
-    this.b = vpl.a(2131698845);
-    this.e = amtj.a(2131716037);
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131716382);
+    this.c = anvx.a(2131716383);
+    this.d = anvx.a(2131716384);
+    this.b = weg.a(2131699196);
+    this.e = anvx.a(2131716385);
   }
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131560378, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373173);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373177));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373178));
+    LayoutInflater.from(getContext()).inflate(2131560428, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373384);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131373388));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373389));
     c(0);
   }
   

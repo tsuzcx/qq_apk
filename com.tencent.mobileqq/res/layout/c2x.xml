@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/n14" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_a" android:layout_alignParentBottom="true">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="7.0dip">
-            <TextView android:textSize="12.0sp" android:textColor="@color/ij" android:id="@id/nqq" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/ij" android:id="@id/np9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bb_">
-            <View android:layout_gravity="center_vertical" android:background="@drawable/evt" android:layout_width="fill_parent" android:layout_height="@dimen/bbb" />
-            <dov.com.qq.im.aeeditor.view.AEEditorMusicWaveView android:layout_gravity="center_vertical" android:id="@id/kn0" android:layout_width="fill_parent" android:layout_height="@dimen/bba" />
-        </FrameLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="@dimen/bb_" android:layout_marginRight="16.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:id="@id/not" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9e" />
-            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/nqu" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/np2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9f" />
-        </LinearLayout>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="52.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lmy" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="140.0dip" android:singleLine="true" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/dta" android:layout_width="16.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/eqr" android:scaleType="center" />
     </LinearLayout>
-    <FrameLayout android:id="@id/mp9" android:background="@drawable/abt" android:layout_width="fill_parent" android:layout_height="@dimen/bb5" android:layout_above="@id/n14">
-        <View android:layout_gravity="bottom" android:background="#99d4d9e5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-    </FrameLayout>
-    <dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout android:orientation="vertical" android:id="@id/n6t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/n14" android:layout_alignParentTop="true" />
+    <dov.com.qq.im.ae.view.AECompoundButton android:id="@id/ivTitleBtnLeft" android:background="@drawable/b0w" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="8.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:foregroundHeight="35.0dip" app:foregroundResource="@drawable/evc" app:foregroundWidth="35.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/dl" android:gravity="center" android:id="@id/ivTitleBtnRightText" android:background="@drawable/b8j" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:layout_marginBottom="3.0dip" android:minWidth="96.0dip" android:text="@string/fv3" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

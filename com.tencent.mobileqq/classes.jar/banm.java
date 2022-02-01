@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import mqq.app.QQPermissionCallback;
 
-public class banm
-  implements DialogInterface.OnClickListener
+class banm
+  implements QQPermissionCallback
 {
-  public banm(SignatureEditFragment paramSignatureEditFragment) {}
+  banm(banl parambanl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.locationText = "";
-    this.a.a(0, 0, 0, 0, null, 1);
-    SignatureEditFragment.a(this.a);
+    banp.a().a("QQAssistantGuider");
   }
 }
 

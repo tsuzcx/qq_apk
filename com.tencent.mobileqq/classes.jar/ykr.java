@@ -1,6 +1,12 @@
-public abstract interface ykr
+public class ykr
 {
-  public abstract void a(ykv paramykv);
+  public static void a(int paramInt, String paramString)
+  {
+    ykt localykt = new ykt();
+    localykt.a(paramInt, 1);
+    localykt.a = paramString;
+    wfi.a().a(localykt, new yks());
+  }
 }
 
 

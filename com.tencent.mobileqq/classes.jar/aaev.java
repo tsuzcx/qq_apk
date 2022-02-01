@@ -1,17 +1,13 @@
-import android.graphics.Canvas;
-import com.tencent.biz.widgets.TabLayout;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-
-public class aaev
-  implements Function1<Canvas, Unit>
+class aaev
+  implements bmiz
 {
-  public aaev(TabLayout paramTabLayout) {}
+  aaev(aaeq paramaaeq, aoep paramaoep, String paramString1, int paramInt, String paramString2) {}
   
-  public Unit a(Canvas paramCanvas)
+  public void a(int paramInt)
   {
-    TabLayout.b(this.a, paramCanvas);
-    return null;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Aoep != null)) {
+      this.jdField_a_of_type_Aoep.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
+    }
   }
 }
 

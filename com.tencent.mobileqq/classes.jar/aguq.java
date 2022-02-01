@@ -1,13 +1,23 @@
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aguq
-  implements agut
+class aguq
+  implements aueo
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  aguq(agtf paramagtf, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    paramagap.b(paramMessageRecord, paramagcc, paramString);
+    paramView = new Intent(this.jdField_a_of_type_Agtf.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
+    paramView.putExtra("uin", this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    paramView.putExtra("uintype", this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick);
+    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Agtf.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    audy.a("0X800506C");
   }
 }
 

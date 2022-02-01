@@ -1,6 +1,6 @@
 package cooperation.qzone.patch;
 
-import amtj;
+import anvx;
 
 class QZonePatchService$1
   implements Runnable
@@ -9,8 +9,8 @@ class QZonePatchService$1
   
   public void run()
   {
-    QZonePatchService.log(amtj.a(2131711185));
-    QZonePatchService.log(amtj.a(2131711186));
+    QZonePatchService.log(anvx.a(2131711532));
+    QZonePatchService.log(anvx.a(2131711533));
     QZonePatchService.access$000();
     QZonePatchService.access$100(this.val$patchMd5, this.val$patchUrl);
   }

@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahli
-  implements Comparator<MessageRecord>
+  extends ahle
 {
-  ahli(ahlf paramahlf) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public ahli(QQAppInterface paramQQAppInterface)
   {
-    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
+    super(paramQQAppInterface);
   }
 }
 

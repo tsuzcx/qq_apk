@@ -1,19 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3.1;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class tsh
-  implements tye
+  implements Function1<Canvas, Unit>
 {
-  public tsh(VideoFeedsGameAdComManager.3.1 param1) {}
+  public tsh(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void a()
+  public Unit a(Canvas paramCanvas)
   {
-    this.a.a.this$0.b(true);
+    ColorBandVideoEntranceButton.a(this.a, paramCanvas);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tsh
  * JD-Core Version:    0.7.0.1
  */

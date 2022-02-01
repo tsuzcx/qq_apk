@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.app.Activity;
-import bgve;
+import bifw;
 import java.util.HashMap;
 
 class RedTouchWebviewHandler$1

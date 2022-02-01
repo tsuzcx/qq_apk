@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile.quic;
 
 import android.text.TextUtils;
-import aqbq;
-import bfyz;
-import bjkf;
+import aret;
+import bhhr;
+import bkvq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -11,12 +11,13 @@ import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.quic.open.QuicDownloader;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import npo;
+import nwp;
 
 public class QuicNetResMgr
   implements INetEngine.INetEngineListener
@@ -37,6 +38,11 @@ public class QuicNetResMgr
     return getQuicSoSavePath() + "libandromeda.so";
   }
   
+  public static String getAndromedaSoTempPath()
+  {
+    return getQuicSoSaveTempPath() + "libandromeda.so";
+  }
+  
   public static final QuicNetResMgr getInstance()
   {
     return QuicNetResMgr.QuicNetResMgrHolder.access$000();
@@ -45,6 +51,11 @@ public class QuicNetResMgr
   public static String getQuicEngineSoPath()
   {
     return getQuicSoSavePath() + "libquic_engine.so";
+  }
+  
+  public static String getQuicEngineSoTempPath()
+  {
+    return getQuicSoSaveTempPath() + "libquic_engine.so";
   }
   
   public static String getQuicSoSavePath()
@@ -65,6 +76,24 @@ public class QuicNetResMgr
     return "/quic_net_res";
   }
   
+  public static String getQuicSoSaveTempPath()
+  {
+    try
+    {
+      Object localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "/quic_net_res/temp");
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      localObject = ((File)localObject).getAbsolutePath() + File.separator;
+      return localObject;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("QuicNetResMgr", 1, "npe:", localNullPointerException);
+    }
+    return "/quic_net_res/temp";
+  }
+  
   public static String getSdcardQuicResPath()
   {
     StringBuilder localStringBuilder = new StringBuilder(AppConstants.SDCARD_PATH);
@@ -80,7 +109,7 @@ public class QuicNetResMgr
     if (paramString == null) {
       return false;
     }
-    String str = (String)bfyz.a("key_quic_net_md5", "");
+    String str = (String)bhhr.a("key_quic_net_md5", "");
     if (!str.equals(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -103,7 +132,7 @@ public class QuicNetResMgr
   }
   
   /* Error */
-  public void downloadQuicRes(aqbq paramaqbq)
+  public void downloadQuicRes(aret paramaret)
   {
     // Byte code:
     //   0: aload_0
@@ -111,130 +140,127 @@ public class QuicNetResMgr
     //   2: aload_1
     //   3: ifnull +13 -> 16
     //   6: aload_1
-    //   7: getfield 173	aqbq:a	Ljava/lang/String;
-    //   10: invokestatic 161	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: getfield 180	aret:a	Ljava/lang/String;
+    //   10: invokestatic 168	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: ifeq +14 -> 27
     //   16: ldc 30
     //   18: iconst_1
-    //   19: ldc 175
-    //   21: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   19: ldc 182
+    //   21: invokestatic 185	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   24: aload_0
     //   25: monitorexit
     //   26: return
     //   27: aload_1
-    //   28: invokevirtual 180	aqbq:a	()Z
+    //   28: invokevirtual 187	aret:a	()Z
     //   31: ifeq -7 -> 24
     //   34: aload_0
     //   35: aload_1
-    //   36: getfield 183	aqbq:b	Ljava/lang/String;
-    //   39: invokevirtual 185	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:checkNeedDownload	(Ljava/lang/String;)Z
-    //   42: ifne +21 -> 63
-    //   45: invokestatic 187	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:getAndromedaSoPath	()Ljava/lang/String;
-    //   48: invokestatic 192	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
-    //   51: ifeq +12 -> 63
-    //   54: invokestatic 194	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:getQuicEngineSoPath	()Ljava/lang/String;
-    //   57: invokestatic 192	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
-    //   60: ifne -36 -> 24
-    //   63: aload_0
-    //   64: getfield 196	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:mIsDownloading	Z
-    //   67: ifne -43 -> 24
-    //   70: aload_0
-    //   71: iconst_1
-    //   72: putfield 196	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:mIsDownloading	Z
-    //   75: aload_1
-    //   76: getfield 173	aqbq:a	Ljava/lang/String;
-    //   79: aload_1
-    //   80: getfield 173	aqbq:a	Ljava/lang/String;
-    //   83: ldc 198
-    //   85: invokevirtual 202	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   88: iconst_1
-    //   89: iadd
-    //   90: invokevirtual 206	java/lang/String:substring	(I)Ljava/lang/String;
-    //   93: astore_3
-    //   94: new 208	com/tencent/mobileqq/transfile/HttpNetReq
-    //   97: dup
-    //   98: invokespecial 209	com/tencent/mobileqq/transfile/HttpNetReq:<init>	()V
-    //   101: astore_2
-    //   102: aload_2
-    //   103: aload_0
-    //   104: putfield 213	com/tencent/mobileqq/transfile/HttpNetReq:mCallback	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
-    //   107: aload_2
-    //   108: aload_1
-    //   109: getfield 173	aqbq:a	Ljava/lang/String;
-    //   112: putfield 216	com/tencent/mobileqq/transfile/HttpNetReq:mReqUrl	Ljava/lang/String;
-    //   115: aload_2
-    //   116: iconst_0
-    //   117: putfield 219	com/tencent/mobileqq/transfile/HttpNetReq:mHttpMethod	I
-    //   120: aload_2
-    //   121: new 41	java/lang/StringBuilder
-    //   124: dup
-    //   125: invokespecial 42	java/lang/StringBuilder:<init>	()V
-    //   128: invokestatic 221	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:getSdcardQuicResPath	()Ljava/lang/String;
-    //   131: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: aload_3
-    //   135: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: putfield 224	com/tencent/mobileqq/transfile/HttpNetReq:mOutPath	Ljava/lang/String;
-    //   144: aload_2
-    //   145: invokestatic 229	com/tencent/mobileqq/transfile/NetworkCenter:getInstance	()Lcom/tencent/mobileqq/transfile/NetworkCenter;
-    //   148: invokevirtual 233	com/tencent/mobileqq/transfile/NetworkCenter:getNetType	()I
-    //   151: invokestatic 239	com/tencent/mobileqq/utils/NetworkUtil:getConnRetryTimes	(I)I
-    //   154: putfield 242	com/tencent/mobileqq/transfile/HttpNetReq:mContinuErrorLimit	I
-    //   157: aload_2
-    //   158: aload_1
-    //   159: invokevirtual 246	com/tencent/mobileqq/transfile/HttpNetReq:setUserData	(Ljava/lang/Object;)V
-    //   162: invokestatic 70	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   165: invokevirtual 250	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   168: astore_1
-    //   169: ldc 252
-    //   171: aload_1
-    //   172: invokevirtual 257	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
-    //   175: ifeq -151 -> 24
-    //   178: aload_1
-    //   179: checkcast 252	com/tencent/mobileqq/app/QQAppInterface
-    //   182: iconst_0
-    //   183: invokevirtual 261	com/tencent/mobileqq/app/QQAppInterface:getNetEngine	(I)Lcom/tencent/mobileqq/transfile/INetEngine;
-    //   186: aload_2
-    //   187: invokeinterface 267 2 0
-    //   192: goto -168 -> 24
-    //   195: astore_1
-    //   196: ldc 30
-    //   198: iconst_1
-    //   199: aload_1
-    //   200: iconst_0
-    //   201: anewarray 4	java/lang/Object
-    //   204: invokestatic 270	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   207: aload_0
-    //   208: iconst_0
-    //   209: putfield 196	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:mIsDownloading	Z
-    //   212: goto -188 -> 24
-    //   215: astore_1
-    //   216: aload_0
-    //   217: monitorexit
-    //   218: aload_1
-    //   219: athrow
+    //   36: getfield 190	aret:b	Ljava/lang/String;
+    //   39: invokevirtual 192	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:checkNeedDownload	(Ljava/lang/String;)Z
+    //   42: ifne +10 -> 52
+    //   45: aload_0
+    //   46: invokevirtual 195	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:quicSoFileExist	()Z
+    //   49: ifne -25 -> 24
+    //   52: aload_0
+    //   53: getfield 197	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:mIsDownloading	Z
+    //   56: ifne -32 -> 24
+    //   59: aload_0
+    //   60: iconst_1
+    //   61: putfield 197	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:mIsDownloading	Z
+    //   64: aload_1
+    //   65: getfield 180	aret:a	Ljava/lang/String;
+    //   68: aload_1
+    //   69: getfield 180	aret:a	Ljava/lang/String;
+    //   72: ldc 199
+    //   74: invokevirtual 203	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   77: iconst_1
+    //   78: iadd
+    //   79: invokevirtual 207	java/lang/String:substring	(I)Ljava/lang/String;
+    //   82: astore_3
+    //   83: new 209	com/tencent/mobileqq/transfile/HttpNetReq
+    //   86: dup
+    //   87: invokespecial 210	com/tencent/mobileqq/transfile/HttpNetReq:<init>	()V
+    //   90: astore_2
+    //   91: aload_2
+    //   92: aload_0
+    //   93: putfield 214	com/tencent/mobileqq/transfile/HttpNetReq:mCallback	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
+    //   96: aload_2
+    //   97: aload_1
+    //   98: getfield 180	aret:a	Ljava/lang/String;
+    //   101: putfield 217	com/tencent/mobileqq/transfile/HttpNetReq:mReqUrl	Ljava/lang/String;
+    //   104: aload_2
+    //   105: iconst_0
+    //   106: putfield 220	com/tencent/mobileqq/transfile/HttpNetReq:mHttpMethod	I
+    //   109: aload_2
+    //   110: new 41	java/lang/StringBuilder
+    //   113: dup
+    //   114: invokespecial 42	java/lang/StringBuilder:<init>	()V
+    //   117: invokestatic 222	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:getSdcardQuicResPath	()Ljava/lang/String;
+    //   120: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: aload_3
+    //   124: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: putfield 225	com/tencent/mobileqq/transfile/HttpNetReq:mOutPath	Ljava/lang/String;
+    //   133: aload_2
+    //   134: invokestatic 230	com/tencent/mobileqq/transfile/NetworkCenter:getInstance	()Lcom/tencent/mobileqq/transfile/NetworkCenter;
+    //   137: invokevirtual 234	com/tencent/mobileqq/transfile/NetworkCenter:getNetType	()I
+    //   140: invokestatic 240	com/tencent/mobileqq/utils/NetworkUtil:getConnRetryTimes	(I)I
+    //   143: putfield 243	com/tencent/mobileqq/transfile/HttpNetReq:mContinuErrorLimit	I
+    //   146: aload_2
+    //   147: aload_1
+    //   148: invokevirtual 247	com/tencent/mobileqq/transfile/HttpNetReq:setUserData	(Ljava/lang/Object;)V
+    //   151: invokestatic 75	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   154: invokevirtual 251	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   157: astore_1
+    //   158: ldc 253
+    //   160: aload_1
+    //   161: invokevirtual 258	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
+    //   164: ifeq -140 -> 24
+    //   167: aload_1
+    //   168: checkcast 253	com/tencent/mobileqq/app/QQAppInterface
+    //   171: iconst_0
+    //   172: invokevirtual 262	com/tencent/mobileqq/app/QQAppInterface:getNetEngine	(I)Lcom/tencent/mobileqq/transfile/INetEngine;
+    //   175: aload_2
+    //   176: invokeinterface 268 2 0
+    //   181: goto -157 -> 24
+    //   184: astore_1
+    //   185: ldc 30
+    //   187: iconst_1
+    //   188: aload_1
+    //   189: iconst_0
+    //   190: anewarray 4	java/lang/Object
+    //   193: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   196: aload_0
+    //   197: iconst_0
+    //   198: putfield 197	com/tencent/mobileqq/transfile/quic/QuicNetResMgr:mIsDownloading	Z
+    //   201: goto -177 -> 24
+    //   204: astore_1
+    //   205: aload_0
+    //   206: monitorexit
+    //   207: aload_1
+    //   208: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	220	0	this	QuicNetResMgr
-    //   0	220	1	paramaqbq	aqbq
-    //   101	86	2	localHttpNetReq	com.tencent.mobileqq.transfile.HttpNetReq
-    //   93	42	3	str	String
+    //   0	209	0	this	QuicNetResMgr
+    //   0	209	1	paramaret	aret
+    //   90	86	2	localHttpNetReq	com.tencent.mobileqq.transfile.HttpNetReq
+    //   82	42	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   162	192	195	java/lang/Exception
-    //   6	16	215	finally
-    //   16	24	215	finally
-    //   27	63	215	finally
-    //   63	162	215	finally
-    //   162	192	215	finally
-    //   196	212	215	finally
+    //   151	181	184	java/lang/Exception
+    //   6	16	204	finally
+    //   16	24	204	finally
+    //   27	52	204	finally
+    //   52	151	204	finally
+    //   151	181	204	finally
+    //   185	201	204	finally
   }
   
   public void onResp(NetResp paramNetResp)
   {
     Object localObject = paramNetResp.mReq;
     String str = ((NetReq)localObject).mOutPath;
-    localObject = (aqbq)((NetReq)localObject).getUserData();
+    localObject = (aret)((NetReq)localObject).getUserData();
     if (localObject == null)
     {
       QLog.e("QuicNetResMgr", 1, "DownloadResItem is null!");
@@ -244,14 +270,14 @@ public class QuicNetResMgr
     int i;
     if (paramNetResp.mResult == 0)
     {
-      i = verifyResMD5(str, ((aqbq)localObject).b);
+      i = verifyResMD5(str, ((aret)localObject).b);
       if (i != 100) {
         break label186;
       }
-      if (unzipFile(str, getQuicSoSavePath()))
+      if (unzipFile(str, getQuicSoSaveTempPath()))
       {
-        saveQuicResMD5(((aqbq)localObject).b);
-        QuicDownloader.loadSoSupport();
+        saveQuicResMD5(((aret)localObject).b);
+        QuicDownloader.tryLoadSoSupport();
         if (QLog.isColorLevel()) {
           QLog.d("QuicNetResMgr", 2, "quic unzipFile success.init so: " + QuicDownloader.initError());
         }
@@ -273,9 +299,14 @@ public class QuicNetResMgr
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
+  public boolean quicSoFileExist()
+  {
+    return ((FileUtils.fileExists(getAndromedaSoPath())) && (FileUtils.fileExists(getQuicEngineSoPath()))) || ((FileUtils.fileExists(getAndromedaSoTempPath())) && (FileUtils.fileExists(getQuicEngineSoTempPath())));
+  }
+  
   protected void saveQuicResMD5(String paramString)
   {
-    bfyz.b("key_quic_net_md5", paramString);
+    bhhr.b("key_quic_net_md5", paramString);
     if (QLog.isColorLevel()) {
       QLog.d("QuicNetResMgr", 2, new Object[] { "saveResItem md5:", paramString });
     }
@@ -285,7 +316,7 @@ public class QuicNetResMgr
   {
     try
     {
-      npo.a(new File(paramString1), paramString2);
+      nwp.a(new File(paramString1), paramString2);
       return true;
     }
     catch (IOException paramString1)
@@ -331,7 +362,7 @@ public class QuicNetResMgr
       {
         try
         {
-          paramString1 = bjkf.a(localFile);
+          paramString1 = bkvq.a(localFile);
         }
         catch (Exception paramString1)
         {

@@ -1,33 +1,93 @@
-import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.AdClickPos;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class uhn
-  implements pbq
+class uhn
+  implements ViewBase.OnClickListener
 {
-  public uhn(ReadInjoyWebShareHelper.4 param4) {}
+  uhn(uhm paramuhm) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(ViewBase paramViewBase)
   {
-    boolean bool = true;
-    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    int k;
+    Object localObject;
+    int j;
+    int i;
+    if (this.a.jdField_a_of_type_Uhl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData != null)
     {
-    case -1: 
-    default: 
-      yyi.a(1, 2131718380);
-      bool = false;
+      k = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+      localObject = AdClickPos.SoftAdComponent;
+      j = 0;
+      switch (k)
+      {
+      default: 
+        paramViewBase = (ViewBase)localObject;
+        i = -1;
+      }
     }
-    while (this.a.a)
+    for (;;)
     {
-      uhk.a(this.a.this$0, "we_chat", bool);
+      if ((j != 0) && (k != -1))
+      {
+        localObject = ukt.a((AdData)this.a.jdField_a_of_type_Uhl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+        if ((localObject != null) && (((AdvertisementInfo)localObject).mSoftAdType != 0)) {
+          ((AdvertisementInfo)localObject).adClickPos = paramViewBase;
+        }
+        tjk.a(this.a.jdField_a_of_type_AndroidContentContext, (AdvertisementInfo)localObject, true, i);
+      }
       return;
-      yyi.a(2, 2131718398);
-      continue;
-      bool = false;
+      if (this.a.jdField_a_of_type_AndroidContentContext != null)
+      {
+        tkf.a(this.a.jdField_a_of_type_Uhl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+        i = 8;
+        paramViewBase = (ViewBase)localObject;
+        continue;
+        j = 1;
+        i = 5;
+        paramViewBase = (ViewBase)localObject;
+        continue;
+        j = 1;
+        i = 4;
+        paramViewBase = (ViewBase)localObject;
+        continue;
+        paramViewBase = AdClickPos.SoftAdClickBtn;
+        if (uki.g((AdData)this.a.jdField_a_of_type_Uhl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
+        {
+          uki.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Uhl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, 8);
+          return;
+        }
+        if (uki.h((AdData)this.a.jdField_a_of_type_Uhl.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {}
+        for (i = 1;; i = 8)
+        {
+          j = 1;
+          break;
+          j = 1;
+          paramViewBase = (ViewBase)localObject;
+          i = 1;
+          break;
+          j = 1;
+          i = 3;
+          paramViewBase = (ViewBase)localObject;
+          break;
+          j = 1;
+          i = 1000;
+          paramViewBase = (ViewBase)localObject;
+          break;
+          paramViewBase = AdClickPos.SoftAdClickBtn;
+          i = 1;
+          j = 1;
+          break;
+        }
+      }
+      else
+      {
+        i = 8;
+        paramViewBase = (ViewBase)localObject;
+      }
     }
-    uhk.a(this.a.this$0, "we_chat_circle", bool);
   }
 }
 

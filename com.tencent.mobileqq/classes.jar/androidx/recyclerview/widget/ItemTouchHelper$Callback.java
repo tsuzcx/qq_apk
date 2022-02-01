@@ -42,7 +42,7 @@ public abstract class ItemTouchHelper$Callback
   private int getMaxDragScroll(RecyclerView paramRecyclerView)
   {
     if (this.mCachedMaxScrollSpeed == -1) {
-      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297259);
+      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297260);
     }
     return this.mCachedMaxScrollSpeed;
   }

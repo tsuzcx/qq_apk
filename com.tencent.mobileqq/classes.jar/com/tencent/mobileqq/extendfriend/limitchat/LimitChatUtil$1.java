@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.limitchat;
 
-import arnn;
-import bcef;
+import asrt;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -13,12 +13,12 @@ public final class LimitChatUtil$1
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A801", "0X800A801", 0, 0, "", "", arnn.a(localQQAppInterface, this.a), "");
+    bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A801", "0X800A801", 0, 0, "", "", asrt.a(localQQAppInterface, this.a), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.limitchat.LimitChatUtil.1
  * JD-Core Version:    0.7.0.1
  */

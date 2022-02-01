@@ -1,38 +1,15 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileFilter;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class anwl
-  implements FileFilter
+final class anwl
+  implements DialogInterface.OnDismissListener
 {
-  anwl(anwk paramanwk, SparseArray paramSparseArray) {}
+  anwl(Activity paramActivity, int paramInt) {}
   
-  public boolean accept(File paramFile)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = new File(paramFile, "config.json");
-    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
-      localObject = FileUtils.readFileContent((File)localObject);
-    }
-    try
-    {
-      int i = Integer.parseInt(paramFile.getName());
-      long l = new JSONObject((String)localObject).optLong("version");
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
-      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

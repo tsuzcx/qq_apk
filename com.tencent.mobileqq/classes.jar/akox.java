@@ -1,24 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3;
-import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.2.1;
-
-public class akox
-  implements Animator.AnimatorListener
+class akox
+  implements biyc
 {
-  public akox(CareNotificationBar.3 param3) {}
+  akox(akov paramakov, Runnable paramRunnable) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    this.a.a.post(new CareNotificationBar.3.2.1(this));
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

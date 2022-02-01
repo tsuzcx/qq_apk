@@ -1,29 +1,19 @@
-import android.view.View;
-import com.tencent.superplayer.view.ISPlayerVideoView;
+import android.os.Handler;
+import android.os.Message;
 
-public class utb
-  implements usr
+class utb
+  extends Handler
 {
-  private ISPlayerVideoView a;
+  utb(uta paramuta) {}
   
-  public utb(ISPlayerVideoView paramISPlayerVideoView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = paramISPlayerVideoView;
-  }
-  
-  public View a()
-  {
-    if ((this.a instanceof View)) {
-      return (View)this.a;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.a != null) {
-      this.a.setFixedSize(paramInt1, paramInt2);
-    }
+    this.a.a = false;
   }
 }
 

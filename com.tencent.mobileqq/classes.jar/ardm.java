@@ -1,31 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ardm
-  implements alup
+  extends aqwt<ardl>
 {
-  public ardm(MessengerService.IncomingHandler.4 param4) {}
-  
-  public void a()
+  @NonNull
+  public ardl a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", 0);
-    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    return new ardl();
   }
   
-  public void a(int paramInt)
+  @Nullable
+  public ardl a(aqxa[] paramArrayOfaqxa)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", paramInt);
-    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
+    {
+      ardl localardl = ardl.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localardl;
+    }
+    return null;
+  }
+  
+  public void a(ardl paramardl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramardl.toString());
+    }
+  }
+  
+  public Class<ardl> clazz()
+  {
+    return ardl.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 442;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.3;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class tgf
-  implements nnv
+public final class tgf
+  implements Parcelable.Creator<BaseData>
 {
-  public tgf(ViolaAccessHelper.3 param3) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public BaseData a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "downOffline  code " + paramInt + "  param " + paramString);
-    }
-    if (paramInt == 0) {
-      if (paramString == null) {
-        if (this.a.jdField_a_of_type_Tgj != null) {
-          this.a.jdField_a_of_type_Tgj.a();
-        }
-      }
-    }
-    while (this.a.jdField_a_of_type_Tgj == null)
-    {
-      return;
-      if (paramString.contains("url"))
-      {
-        QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
-        return;
-      }
-      long l1 = System.currentTimeMillis();
-      long l2 = this.a.jdField_a_of_type_Long;
-      if (this.a.jdField_a_of_type_Tgj != null) {
-        this.a.jdField_a_of_type_Tgj.a();
-      }
-      QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. no update. cost=", Long.valueOf(l1 - l2) });
-      return;
-    }
-    this.a.jdField_a_of_type_Tgj.b();
+    return new BaseData(paramParcel);
   }
   
-  public void progress(int paramInt)
+  public BaseData[] a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Tgj != null) {
-      this.a.jdField_a_of_type_Tgj.a(paramInt);
-    }
+    return new BaseData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tgf
  * JD-Core Version:    0.7.0.1
  */

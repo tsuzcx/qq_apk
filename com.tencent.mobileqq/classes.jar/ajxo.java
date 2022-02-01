@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.data.AppShareID;
+import mqq.os.MqqHandler;
 
 public class ajxo
-  implements DialogInterface.OnClickListener
+  extends ansi
 {
-  public ajxo(TransactionActivity paramTransactionActivity) {}
+  public ajxo(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetAppShareInfo(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
-    this.a.b();
+    if (paramBoolean) {
+      this.a.a(0L);
+    }
+  }
+  
+  protected void onGetRealNameStatus(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  {
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      if (!this.a.h) {
+        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
+      }
+    }
   }
 }
 

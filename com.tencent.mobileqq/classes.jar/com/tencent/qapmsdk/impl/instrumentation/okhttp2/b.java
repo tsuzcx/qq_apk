@@ -4,20 +4,20 @@ import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.g;
 import com.tencent.qapmsdk.impl.instrumentation.h;
+import com.tencent.qapmsdk.impl.instrumentation.i;
 import java.io.IOException;
 
 public class b
   implements Callback
 {
-  private g a;
+  private h a;
   private Callback b;
   
-  public b(Callback paramCallback, g paramg)
+  public b(Callback paramCallback, h paramh)
   {
     this.b = paramCallback;
-    this.a = paramg;
+    this.a = paramh;
   }
   
   private int a(Response paramResponse, long paramLong)
@@ -34,7 +34,7 @@ public class b
     return 0;
   }
   
-  private g a()
+  private h a()
   {
     return this.a;
   }
@@ -50,15 +50,15 @@ public class b
   
   private void a(Exception paramException)
   {
-    g localg;
+    h localh;
     com.tencent.qapmsdk.impl.a.a.a locala;
     if (com.tencent.qapmsdk.impl.g.b.c())
     {
-      localg = a();
-      h.a(localg, paramException);
-      if (!localg.f())
+      localh = a();
+      i.a(localh, paramException);
+      if (!localh.f())
       {
-        locala = localg.j();
+        locala = localh.j();
         if (locala != null) {
           break label33;
         }
@@ -66,11 +66,11 @@ public class b
     }
     return;
     label33:
-    if (localg.h())
+    if (localh.h())
     {
       paramException = "";
-      if (localg.k() != null) {
-        paramException = localg.k();
+      if (localh.k() != null) {
+        paramException = localh.k();
       }
       Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMCallbackExtension", "error message:", paramException });
       com.tencent.qapmsdk.impl.d.a.a(locala, paramException);

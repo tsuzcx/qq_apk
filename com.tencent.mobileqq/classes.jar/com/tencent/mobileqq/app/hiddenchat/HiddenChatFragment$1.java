@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.hiddenchat;
 
-import akju;
+import alfm;
 import android.os.Message;
-import anjh;
-import anuz;
-import avnu;
+import aoma;
+import aoxz;
+import awtz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -22,9 +22,9 @@ class HiddenChatFragment$1
   {
     Object localObject1 = HiddenChatFragment.a(this.this$0).getProxyManager().a().a();
     HiddenChatFragment.a(this.this$0).a((List)localObject1);
-    Object localObject2 = HiddenChatFragment.a((List)localObject1, avnu.a().c(HiddenChatFragment.a(this.this$0)));
+    Object localObject2 = HiddenChatFragment.a((List)localObject1, awtz.a().c(HiddenChatFragment.a(this.this$0)));
     localObject1 = new ArrayList(((List)localObject2).size());
-    akju.a((List)localObject2, HiddenChatFragment.a(this.this$0), this.this$0.getActivity(), (List)localObject1, ((List)localObject2).size());
+    alfm.a((List)localObject2, HiddenChatFragment.a(this.this$0), this.this$0.getActivity(), (List)localObject1, ((List)localObject2).size());
     if (QLog.isColorLevel()) {
       QLog.i("tag_hidden_chat", 2, "data|size" + ((List)localObject1).size());
     }

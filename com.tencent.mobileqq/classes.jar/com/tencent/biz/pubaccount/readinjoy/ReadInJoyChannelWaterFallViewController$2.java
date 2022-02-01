@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import bkwm;
-import odq;
-import ojk;
-import pay;
+import bmhv;
+import olh;
+import orh;
+import pqf;
 
 public class ReadInJoyChannelWaterFallViewController$2
   implements Runnable
 {
-  public ReadInJoyChannelWaterFallViewController$2(ojk paramojk) {}
+  public ReadInJoyChannelWaterFallViewController$2(orh paramorh) {}
   
   public void run()
   {
-    if (ojk.a(this.this$0) == 40677)
+    if (orh.a(this.this$0) == 40677)
     {
-      odq.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bkwm.a("default_feeds_proteus_offline_bid"), "", "", pay.b(ojk.a(this.this$0)), false);
+      olh.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bmhv.a("default_feeds_proteus_offline_bid"), "", "", pqf.b(orh.a(this.this$0)), false);
       return;
     }
-    odq.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bkwm.a("default_feeds_proteus_offline_bid"), "", "", pay.b(ojk.a(this.this$0)), false);
+    olh.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bmhv.a("default_feeds_proteus_offline_bid"), "", "", pqf.b(orh.a(this.this$0)), false);
   }
 }
 

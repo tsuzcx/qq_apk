@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import akxm;
+import alvi;
 import java.util.ArrayList;
 
 public class LbsFilterStatusManager$2
   implements Runnable
 {
-  public LbsFilterStatusManager$2(akxm paramakxm, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public LbsFilterStatusManager$2(alvi paramalvi, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
-    akxm.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    alvi.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

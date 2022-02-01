@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nwu" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/nwq" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ayp" android:ellipsize="end" android:id="@id/nwt" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <View android:layout_gravity="center_horizontal" android:id="@id/nxz" android:background="@color/ap2" android:layout_width="@dimen/bf0" android:layout_height="@dimen/bex" android:layout_marginTop="@dimen/bez" android:layout_marginBottom="@dimen/bey" />
-        <TextView android:textSize="@dimen/ayp" android:layout_gravity="center_horizontal" android:id="@id/nwr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bf7" android:text="@string/xoc" />
-    </LinearLayout>
-</RelativeLayout>
+    <View android:layout_gravity="center" android:id="@id/n7y" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+</merge>

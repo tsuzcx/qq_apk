@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.text.TextUtils;
-import aoqa;
+import aptb;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class ArkAppQQModule$26
   implements Runnable
 {
-  public ArkAppQQModule$26(aoqa paramaoqa, long paramLong, String paramString1, String paramString2) {}
+  public ArkAppQQModule$26(aptb paramaptb, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {

@@ -1,18 +1,23 @@
-class aftl
-  implements bfft
+import android.content.Context;
+import androidx.recyclerview.widget.GridLayoutManager;
+import com.tencent.mobileqq.activity.aio.PanelAdapter;
+
+public class aftl
+  extends GridLayoutManager
 {
-  aftl(aftj paramaftj, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public aftl(PanelAdapter paramPanelAdapter, Context paramContext, int paramInt)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ((afii)aftj.a(this.jdField_a_of_type_Aftj)).f = true;
-      this.jdField_a_of_type_Aftj.a(true);
-      return;
-    }
-    ((afii)aftj.a(this.jdField_a_of_type_Aftj)).f = false;
-    this.jdField_a_of_type_Aftj.a(false);
+    super(paramContext, paramInt);
+  }
+  
+  public boolean canScrollHorizontally()
+  {
+    return false;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return false;
   }
 }
 

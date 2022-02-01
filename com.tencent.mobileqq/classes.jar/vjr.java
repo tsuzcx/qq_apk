@@ -1,26 +1,15 @@
-public class vjr
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+
+class vjr
+  implements vew
 {
-  public static double a(int[] paramArrayOfInt)
+  vjr(vjo paramvjo) {}
+  
+  public void a()
   {
-    int j = 0;
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    double d1 = 0.0D;
-    int i = 0;
-    while (i < k)
-    {
-      d1 += paramArrayOfInt[i];
-      i += 1;
-    }
-    double d3 = d1 / k;
-    i = j;
-    d1 = d2;
-    while (i < k)
-    {
-      d1 += (paramArrayOfInt[i] - d3) * (paramArrayOfInt[i] - d3);
-      i += 1;
-    }
-    return d1 / k;
+    vjo.a(this.a).setVisibility(8);
+    vjo.a(this.a).setVisibility(0);
   }
 }
 

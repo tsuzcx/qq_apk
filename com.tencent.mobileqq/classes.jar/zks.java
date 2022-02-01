@@ -1,65 +1,36 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.TextureView;
-import com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1;
-import mqq.util.WeakReference;
+import android.os.CountDownTimer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity.26;
 
 public class zks
+  implements View.OnTouchListener
 {
-  private long jdField_a_of_type_Long;
-  private volatile Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final Handler b;
+  public zks(QRDisplayActivity.26 param26) {}
   
-  private void a(TextureView paramTextureView, zkt paramzkt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramzkt = new WeakReference(paramzkt);
-    paramTextureView = new WeakReference(paramTextureView);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideoFrameCheckHelper.1(this, paramzkt, paramTextureView), 40L);
-  }
-  
-  private boolean a(TextureView paramTextureView)
-  {
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if (!paramTextureView.isAvailable()) {
-        break label152;
-      }
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    }
+    do
+    {
+      do
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      int i = paramTextureView.getWidth() / 16;
-      int j = paramTextureView.getHeight() / 16;
-      if ((i <= 0) || (j <= 0)) {
-        break label159;
-      }
-      if (Build.VERSION.SDK_INT >= 17) {}
-      for (this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);; this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        if (!wmy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16)) {
-          break;
-        }
-        xvv.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
         return true;
+      } while (QRDisplayActivity.a(this.a.this$0) == null);
+      QRDisplayActivity.a(this.a.this$0, false);
+      QRDisplayActivity.a(this.a.this$0).start();
+      return true;
+      if (QRDisplayActivity.a(this.a.this$0) != null) {
+        QRDisplayActivity.a(this.a.this$0).cancel();
       }
-      xvv.d("VideoFrameCheckHelper", "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
-    }
-    catch (Exception paramTextureView)
-    {
-      paramTextureView.printStackTrace();
-      return false;
-    }
-    return false;
-    label152:
-    xvv.d("VideoFrameCheckHelper", "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
-    label159:
-    return false;
+    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
+    bgyd.c(this.a.this$0.d);
+    this.a.this$0.onClick(this.a.this$0.d);
+    return true;
   }
 }
 

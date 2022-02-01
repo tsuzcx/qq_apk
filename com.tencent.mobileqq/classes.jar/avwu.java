@@ -1,576 +1,255 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
-import com.tencent.mobileqq.transfile.IPAddressUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.aio.video.aio_video.ReqGetOpenIdByUin;
 
 public class avwu
+  extends MSFServlet
 {
-  public static AtomicLong a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
-  
-  static
+  public static NewIntent a(long paramLong1, long paramLong2, QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Boolean = true;
-    b = true;
-    c = true;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(1L);
+    int i = bhbx.a(paramLong2);
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), avwu.class);
+    localNewIntent.putExtra("appId", i);
+    localNewIntent.putExtra("sso_command", "QQAIOMediaSvc.get_openid_by_uin");
+    localNewIntent.putExtra("req_type", 1);
+    localNewIntent.putExtra("uin", paramLong1);
+    paramQQAppInterface.startServlet(localNewIntent);
+    return localNewIntent;
   }
   
-  public static int a(int paramInt)
+  /* Error */
+  private void a(int paramInt, Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramInt == -1000) {
-      return 1;
-    }
-    return 2;
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 5
+    //   3: aload_3
+    //   4: invokevirtual 62	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   7: invokestatic 68	bhjl:b	([B)[B
+    //   10: astore 9
+    //   12: aload_3
+    //   13: invokevirtual 72	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   16: ifeq +326 -> 342
+    //   19: aload 9
+    //   21: ifnull +321 -> 342
+    //   24: new 74	android/os/Bundle
+    //   27: dup
+    //   28: invokespecial 75	android/os/Bundle:<init>	()V
+    //   31: astore 8
+    //   33: aload_2
+    //   34: ldc 29
+    //   36: iconst_0
+    //   37: invokevirtual 81	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   40: istore 4
+    //   42: aload_2
+    //   43: ldc 44
+    //   45: lconst_0
+    //   46: invokevirtual 85	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   49: lstore 6
+    //   51: aload 8
+    //   53: ldc 29
+    //   55: iload 4
+    //   57: invokevirtual 89	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   60: aload 8
+    //   62: ldc 44
+    //   64: lload 6
+    //   66: invokevirtual 93	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   69: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   72: ifeq +61 -> 133
+    //   75: ldc 100
+    //   77: iconst_2
+    //   78: new 102	java/lang/StringBuilder
+    //   81: dup
+    //   82: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   85: ldc 105
+    //   87: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: iload 5
+    //   92: invokevirtual 112	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   95: ldc 114
+    //   97: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: aload_3
+    //   101: invokevirtual 118	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   104: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   107: ldc 123
+    //   109: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: iload 4
+    //   114: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   117: ldc 125
+    //   119: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: lload 6
+    //   124: invokevirtual 128	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   133: iload 5
+    //   135: ifeq +154 -> 289
+    //   138: new 138	tencent/aio/video/aio_video$RspGetOpenIdByUin
+    //   141: dup
+    //   142: invokespecial 139	tencent/aio/video/aio_video$RspGetOpenIdByUin:<init>	()V
+    //   145: astore_3
+    //   146: aload_3
+    //   147: aload 9
+    //   149: invokevirtual 143	tencent/aio/video/aio_video$RspGetOpenIdByUin:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   152: pop
+    //   153: aload_3
+    //   154: getfield 147	tencent/aio/video/aio_video$RspGetOpenIdByUin:err_info	Ltencent/aio/video/aio_video$ErrInfo;
+    //   157: getfield 153	tencent/aio/video/aio_video$ErrInfo:err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   160: invokevirtual 158	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   163: istore 4
+    //   165: iload 4
+    //   167: ifne +59 -> 226
+    //   170: aload_3
+    //   171: getfield 162	tencent/aio/video/aio_video$RspGetOpenIdByUin:open_id	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   174: invokevirtual 167	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   177: invokevirtual 172	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   180: astore_3
+    //   181: aload 8
+    //   183: ldc 174
+    //   185: aload_3
+    //   186: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: ldc 100
+    //   191: iconst_2
+    //   192: new 102	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   199: ldc 180
+    //   201: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: aload_3
+    //   205: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   211: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: aload_0
+    //   215: aload_2
+    //   216: iload_1
+    //   217: iconst_1
+    //   218: aload 8
+    //   220: ldc 182
+    //   222: invokevirtual 186	avwu:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   225: return
+    //   226: aload_3
+    //   227: getfield 147	tencent/aio/video/aio_video$RspGetOpenIdByUin:err_info	Ltencent/aio/video/aio_video$ErrInfo;
+    //   230: getfield 189	tencent/aio/video/aio_video$ErrInfo:err_msg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   233: invokevirtual 167	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   236: invokevirtual 172	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   239: astore_3
+    //   240: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   243: ifeq +38 -> 281
+    //   246: ldc 100
+    //   248: iconst_2
+    //   249: new 102	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   256: ldc 191
+    //   258: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: iload 4
+    //   263: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   266: ldc 193
+    //   268: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: aload_3
+    //   272: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   278: invokestatic 196	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   281: aload 8
+    //   283: ldc 198
+    //   285: aload_3
+    //   286: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   289: aload_0
+    //   290: aload_2
+    //   291: iload_1
+    //   292: iconst_0
+    //   293: aload 8
+    //   295: ldc 182
+    //   297: invokevirtual 186	avwu:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   300: return
+    //   301: astore_3
+    //   302: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   305: ifeq -16 -> 289
+    //   308: ldc 100
+    //   310: iconst_2
+    //   311: ldc 200
+    //   313: aload_3
+    //   314: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   317: goto -28 -> 289
+    //   320: astore_2
+    //   321: aload_2
+    //   322: athrow
+    //   323: astore_3
+    //   324: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   327: ifeq -38 -> 289
+    //   330: ldc 100
+    //   332: iconst_2
+    //   333: ldc 205
+    //   335: aload_3
+    //   336: invokestatic 203	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   339: goto -50 -> 289
+    //   342: iconst_0
+    //   343: istore 5
+    //   345: goto -321 -> 24
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	348	0	this	avwu
+    //   0	348	1	paramInt	int
+    //   0	348	2	paramIntent	Intent
+    //   0	348	3	paramFromServiceMsg	FromServiceMsg
+    //   40	222	4	i	int
+    //   1	343	5	bool	boolean
+    //   49	74	6	l	long
+    //   31	263	8	localBundle	android.os.Bundle
+    //   10	138	9	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   138	165	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   170	225	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   226	281	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   281	289	301	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   138	165	320	finally
+    //   170	225	320	finally
+    //   226	281	320	finally
+    //   281	289	320	finally
+    //   302	317	320	finally
+    //   324	339	320	finally
+    //   138	165	323	java/lang/Exception
+    //   170	225	323	java/lang/Exception
+    //   226	281	323	java/lang/Exception
+    //   281	289	323	java/lang/Exception
   }
   
-  public static int a(String paramString)
+  private void a(Intent paramIntent, Packet paramPacket)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return 0;
-      paramString = paramString.split("\\.");
-    } while (paramString.length != 4);
-    try
-    {
-      int i = Integer.parseInt(paramString[0]);
-      int j = Integer.parseInt(paramString[1]);
-      int k = Integer.parseInt(paramString[2]);
-      int m = Integer.parseInt(paramString[3]);
-      return m << 24 | i | j << 8 | k << 16;
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    paramIntent = paramIntent.getStringExtra("sso_command");
+    if (QLog.isColorLevel()) {
+      QLog.d("FetchOpenIdServlet", 2, "sendPacket uin=" + l + " appId=" + i);
     }
-    catch (Exception paramString)
-    {
-      QLog.e("MsgBackup", 1, paramString, new Object[0]);
-    }
-    return 0;
+    aio_video.ReqGetOpenIdByUin localReqGetOpenIdByUin = new aio_video.ReqGetOpenIdByUin();
+    localReqGetOpenIdByUin.app_id.set(i);
+    localReqGetOpenIdByUin.target_uin.set(l);
+    paramPacket.setSSOCommand(paramIntent);
+    paramPacket.putSendData(bhjl.a(localReqGetOpenIdByUin.toByteArray()));
   }
   
-  public static long a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    long l = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(1L + l);
-    return l;
+    int i = paramIntent.getIntExtra("req_type", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FetchOpenIdServlet", 2, "onReceive cmd:" + i);
+    }
+    a(i, paramIntent, paramFromServiceMsg);
   }
   
-  public static long a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
-      return paramMessageRecord.shmsgseq;
-    }
-    return 0xFFFF & (short)(int)paramMessageRecord.shmsgseq;
-  }
-  
-  public static String a(double paramDouble)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    double d1 = paramDouble;
-    if (paramDouble < 0.0D)
-    {
-      localStringBuilder.append('-');
-      d1 = -paramDouble;
-    }
-    long l3 = (100.0D * d1 + 0.5D);
-    long l1 = 100L;
-    int i = 3;
-    int j;
-    long l2;
-    for (;;)
-    {
-      j = i;
-      l2 = l1;
-      if (l1 * 10L > l3) {
-        break;
-      }
-      l1 *= 10L;
-      i += 1;
-    }
-    while (j > 0)
-    {
-      if (j == 2) {
-        localStringBuilder.append('.');
-      }
-      l1 = l3 / l2 % 10L;
-      l2 /= 10L;
-      if ((j != 1) || (l1 != 0L)) {
-        localStringBuilder.append((char)(int)(l1 + 48L));
-      }
-      j -= 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private static String a(double paramDouble, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return b(paramDouble);
-    }
-    return a(paramDouble);
-  }
-  
-  public static String a(long paramLong)
-  {
-    return a(paramLong, true);
-  }
-  
-  private static String a(long paramLong, boolean paramBoolean)
-  {
-    if (paramLong == 0L) {
-      str = "0K";
-    }
-    do
-    {
-      return str;
-      if (paramLong <= 1024L)
-      {
-        if (paramBoolean) {
-          return "1.00K";
-        }
-        return "1.0K";
-      }
-      str = "";
-      if (paramLong >= 1073741824L)
-      {
-        str = "" + a(paramLong / 1073741824.0D, paramBoolean);
-        return str + "G";
-      }
-      if (paramLong >= 1048576L)
-      {
-        if (paramLong >= 1048576000L)
-        {
-          str = "" + a(paramLong / 1048576.0D / 1024.0D, paramBoolean);
-          return str + "G";
-        }
-        str = "" + a(paramLong / 1048576.0D, paramBoolean);
-        return str + "M";
-      }
-    } while (paramLong < 1024L);
-    if (paramLong >= 1024000L)
-    {
-      str = "" + a(paramLong / 1024.0D / 1024.0D, paramBoolean);
-      return str + "M";
-    }
-    String str = "" + a(paramLong / 1024.0D, paramBoolean);
-    return str + "K";
-  }
-  
-  public static String a(avtx paramavtx)
-  {
-    String str = String.format("%s_%d", new Object[] { paramavtx.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramavtx.jdField_a_of_type_Int)) });
-    if (!TextUtils.isEmpty(paramavtx.b)) {
-      str = String.format("%s_%d_%s", new Object[] { paramavtx.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramavtx.jdField_a_of_type_Int)), paramavtx.b });
-    }
-    return avwn.c + str + ".db";
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    String str = "http://%s:%d/";
-    if (IPAddressUtil.isIPv6LiteralAddress(paramString)) {
-      str = "http://[%s]:%d/";
-    }
-    return String.format(str, new Object[] { paramString, Integer.valueOf(paramInt) });
-  }
-  
-  public static String a(String paramString1, int paramInt, String paramString2)
-  {
-    String str = String.format("%s_%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-    }
-    return avwn.c + str + ".db";
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      a("MsgBackup", "decryptPartionUrlParams key is null", new Object[0]);
-    }
-    String str = paramString1;
-    if (b)
-    {
-      str = paramString1;
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        str = paramString1;
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          a("MsgBackup", "originUrl = %s, encryptkey = %s", new Object[] { paramString1, paramString2 });
-          String[] arrayOfString = paramString1.split("\\/");
-          str = paramString1;
-          if (arrayOfString.length == 2)
-          {
-            paramString1 = MsgBackupJniProxy.decryptFromString(arrayOfString[1], paramString2);
-            str = "/" + paramString1;
-            a("MsgBackup", "decryptUrl = %s", new Object[] { str });
-          }
-        }
-      }
-    }
-    return str;
-  }
-  
-  public static String a(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString3)) {
-      a("MsgBackup", "decrptUrlPathParams key is null", new Object[0]);
-    }
-    if ((b) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      a("MsgBackup", "decrptUrlPathParams originUrl = %s, ip = %s, port = %d, encryptkey is not null!", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-      paramString1 = paramString1.split(a(paramString2, paramInt));
-      if (paramString1.length == 2)
-      {
-        paramString2 = (String)a(MsgBackupJniProxy.decryptFromString(paramString1[1], paramString3)).get("filepath");
-        if (TextUtils.isEmpty(paramString2)) {
-          return "";
-        }
-        paramString1 = paramString2;
-        if (c) {
-          paramString1 = Uri.decode(paramString2);
-        }
-        paramString1 = a(paramString1);
-        a("decrptUrlPathParams filepath = %s", paramString1, new Object[0]);
-      }
-    }
-    for (;;)
-    {
-      return paramString1;
-      paramString1 = "";
-    }
-  }
-  
-  public static Map<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\?");
-      if (paramString.length > 1)
-      {
-        paramString = paramString[1].split("&");
-        int j = paramString.length;
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject = paramString[i];
-          int k = localObject.indexOf("=");
-          if (k == -1) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            localHashMap.put(localObject.substring(0, k), localObject.substring(k + 1));
-          }
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static void a()
-  {
-    FileUtil.deleteFile(avwn.jdField_a_of_type_JavaLangString);
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000))
-    {
-      paramMsgBackupResEntity.msgSeq = paramMessageRecord.shmsgseq;
-      return;
-    }
-    int i = bblk.b(paramMessageRecord.msgUid);
-    paramMsgBackupResEntity.msgSeq = (0xFFFF & (short)(int)paramMessageRecord.shmsgseq);
-    paramMsgBackupResEntity.msgRandom = i;
-  }
-  
-  public static void a(MsgBackupMsgEntity paramMsgBackupMsgEntity)
-  {
-    if ((b) && (paramMsgBackupMsgEntity != null))
-    {
-      if (!TextUtils.isEmpty(paramMsgBackupMsgEntity.chatUin)) {
-        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.decryptFromString(paramMsgBackupMsgEntity.chatUin, avtq.c);
-      }
-      if (paramMsgBackupMsgEntity.extraData != null) {
-        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extraData, avtq.c);
-      }
-      if (paramMsgBackupMsgEntity.extensionData != null) {
-        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extensionData, avtq.c);
-      }
-    }
-  }
-  
-  public static void a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (avtq.b != null)) {
-      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupResEntity.extraData, avtq.b);
-    }
-  }
-  
-  public static void a(String paramString, avtx paramavtx)
-  {
-    paramString = paramString.substring(0, paramString.indexOf(".")).split("_");
-    paramavtx.jdField_a_of_type_JavaLangString = paramString[0];
-    paramavtx.jdField_a_of_type_Int = c(Integer.parseInt(paramString[1]));
-    if (paramString.length > 2) {
-      paramavtx.b = paramString[2];
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (!jdField_a_of_type_Boolean) {}
-    String str;
-    do
-    {
-      return;
-      str = paramString1;
-      if (TextUtils.isEmpty(paramString1)) {
-        str = "MsgBackup";
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d(str, 4, String.format(paramString2, paramVarArgs));
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (!jdField_a_of_type_Boolean) {}
-    while (!QLog.isDevelopLevel()) {
-      return;
-    }
-    QLog.d("MsgBackup", 4, String.format(paramString, paramVarArgs));
-  }
-  
-  public static boolean a()
-  {
-    String str = avwn.c;
-    Object localObject = new File(str);
-    boolean bool2 = ((File)localObject).exists();
-    if (!bool2) {
-      bool2 = ((File)localObject).mkdirs();
-    }
-    for (;;)
-    {
-      boolean bool1;
-      if (bool2)
-      {
-        File localFile = new File(avwn.b);
-        boolean bool3 = localFile.exists();
-        bool1 = bool3;
-        localObject = localFile;
-        if (!bool3)
-        {
-          bool1 = localFile.mkdirs();
-          localObject = localFile;
-        }
-      }
-      for (;;)
-      {
-        a("Manager.init.file mkdirs result = %b,dbDirExist = %b,filePath = %s,multimsgDirExist = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((File)localObject).exists()), str, Boolean.valueOf(bool1) });
-        return bool2;
-        bool1 = false;
-      }
-    }
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong <= 1048576L;
-  }
-  
-  public static int b(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public static long b(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
-      return 0L;
-    }
-    return bblk.b(paramMessageRecord.msgUid);
-  }
-  
-  public static String b(double paramDouble)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    double d1 = paramDouble;
-    if (paramDouble < 0.0D)
-    {
-      localStringBuilder.append('-');
-      d1 = -paramDouble;
-    }
-    long l3 = (100.0D * d1 + 0.5D);
-    long l1 = 100L;
-    int i = 3;
-    int j;
-    long l2;
-    for (;;)
-    {
-      j = i;
-      l2 = l1;
-      if (l1 * 10L > l3) {
-        break;
-      }
-      l1 *= 10L;
-      i += 1;
-    }
-    while (j > 0)
-    {
-      if (j == 2) {
-        localStringBuilder.append('.');
-      }
-      l1 = l3 / l2;
-      l2 /= 10L;
-      localStringBuilder.append((char)(int)(l1 % 10L + 48L));
-      j -= 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(String paramString)
-  {
-    return avwn.b + paramString;
-  }
-  
-  public static String b(String paramString, int paramInt)
-  {
-    return paramString + "_" + paramInt;
-  }
-  
-  public static String b(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      a("MsgBackup", "encryptUrlParams key is null", new Object[0]);
-    }
-    String str = paramString1;
-    if (b)
-    {
-      str = paramString1;
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        str = paramString1;
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          a("MsgBackup", "encryptUrlParams urlParams = %s, encryptkey is not null!", new Object[] { paramString1 });
-          str = MsgBackupJniProxy.encryptFromString(paramString1, paramString2);
-          a("MsgBackup", "encryptUrlParams params = %s", new Object[] { str });
-        }
-      }
-    }
-    return str;
-  }
-  
-  public static String b(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString3)) {
-      a("MsgBackup", "decryptUrlParams key is null", new Object[0]);
-    }
-    Object localObject = paramString1;
-    if (b)
-    {
-      localObject = paramString1;
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        localObject = paramString1;
-        if (!TextUtils.isEmpty(paramString3))
-        {
-          a("MsgBackup", "originUrl = %s, ip = %s, port = %d, encryptkey is not null!", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-          paramString2 = a(paramString2, paramInt);
-          localObject = paramString1.split(paramString2);
-          if (localObject.length == 2)
-          {
-            paramString1 = MsgBackupJniProxy.decryptFromString(localObject[1], paramString3);
-            paramString1 = paramString2 + paramString1;
-          }
-          a("MsgBackup", "decryptUrl = %s", new Object[] { paramString1 });
-          localObject = paramString1;
-        }
-      }
-    }
-    return localObject;
-  }
-  
-  public static void b(MsgBackupMsgEntity paramMsgBackupMsgEntity)
-  {
-    if ((b) && (paramMsgBackupMsgEntity != null) && (avtq.b != null))
-    {
-      if (!TextUtils.isEmpty(paramMsgBackupMsgEntity.chatUin)) {
-        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.encryptFromString(paramMsgBackupMsgEntity.chatUin, avtq.b);
-      }
-      if (paramMsgBackupMsgEntity.extraData != null) {
-        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extraData, avtq.b);
-      }
-      if (paramMsgBackupMsgEntity.extensionData != null) {
-        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extensionData, avtq.b);
-      }
-    }
-  }
-  
-  public static void b(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (avtq.c != null)) {
-      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupResEntity.extraData, avtq.c);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, String.format(paramString2, paramVarArgs));
+      QLog.d("FetchOpenIdServlet", 2, "onSend");
     }
-  }
-  
-  public static void b(String paramString, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup", 2, String.format(paramString, paramVarArgs));
-    }
-  }
-  
-  public static int c(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 2) {
-      return 3000;
-    }
-    return 0;
-  }
-  
-  public static String c(String paramString)
-  {
-    String str = paramString;
-    if (c) {
-      str = Uri.encode(paramString);
-    }
-    return str;
+    a(paramIntent, paramPacket);
   }
 }
 

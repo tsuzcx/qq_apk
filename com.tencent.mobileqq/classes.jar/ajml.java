@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 
-public class ajml
-  implements Animation.AnimationListener
+public abstract interface ajml
 {
-  public ajml(CountryActivity paramCountryActivity, int paramInt) {}
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.requestLayout();
-  }
+  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
 }
 
 

@@ -1,93 +1,94 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.1;
 
 public class vrf
-  extends vsz
+  extends uyw<vpj>
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  String jdField_a_of_type_JavaLangString;
-  vtb jdField_a_of_type_Vtb;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new vrh(this);
+  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
+  private WSPlayerControlBar jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+  private WSVerticalVideoRelativeLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout;
+  private vrn jdField_a_of_type_Vrn;
+  private boolean jdField_a_of_type_Boolean;
   
-  public vrf(CommentEntry paramCommentEntry, vtb paramvtb)
+  public vrf(Context paramContext, vrn paramvrn, WSVerticalVideoRelativeLayout paramWSVerticalVideoRelativeLayout)
   {
-    this(paramCommentEntry.feedId, paramCommentEntry.replierUnionId, paramCommentEntry.content, paramCommentEntry.fakeId, paramCommentEntry.pbType, paramCommentEntry.extras, paramCommentEntry.commentType, paramvtb);
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    super(paramContext);
+    this.jdField_a_of_type_Vrn = paramvrn;
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = paramWSVerticalVideoRelativeLayout;
+    if ((this.jdField_a_of_type_Vrn != null) && (this.jdField_a_of_type_Vrn.a != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = this.jdField_a_of_type_Vrn.a.a();
+    }
   }
   
-  public vrf(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, vtb paramvtb)
+  private void i()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.jdField_a_of_type_Vtb = paramvtb;
-    paramString1 = xwa.a("home_page-comment_suc-d1");
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
-    {
-      this.jdField_a_of_type_Int = paramInt1;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout == null) {
       return;
     }
+    WSVerticalItemVideoProgressController.1 local1 = new WSVerticalItemVideoProgressController.1(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout.setDispatchTouchEventListener(new vrg(this, local1));
   }
   
-  public String a()
+  protected void a() {}
+  
+  public void a(float paramFloat)
   {
-    return vrd.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setProgress(paramFloat);
+    }
   }
   
-  public vta a(byte[] paramArrayOfByte)
+  public boolean a()
   {
-    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
-    try
-    {
-      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
-      return new vrg(localRspAddFeedComment, this.jdField_a_of_type_Vtb);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  protected byte[] a()
+  protected int b()
   {
-    qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
-    localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqAddFeedComment.content.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    localReqAddFeedComment.fake_id.set(this.jdField_a_of_type_Long);
-    localReqAddFeedComment.source.set(this.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqAddFeedComment.reply_union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    return 2131560079;
+  }
+  
+  protected void b()
+  {
+    a(0.0F);
+  }
+  
+  protected void c()
+  {
+    h();
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131381079));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
+    i();
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.a();
     }
-    if (this.jdField_b_of_type_Int == 1) {
-      localReqAddFeedComment.type.set(1);
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.b();
     }
-    for (;;)
-    {
-      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
-      if (!TextUtils.isEmpty(this.d)) {
-        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
-      }
-      return localReqAddFeedComment.toByteArray();
-      localReqAddFeedComment.type.set(0);
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.c();
     }
   }
 }

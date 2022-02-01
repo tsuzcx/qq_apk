@@ -1,16 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ahwo
-  implements View.OnTouchListener
+  extends ahvq
 {
-  public ahwo(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    a(paramBaseChatPie.sessionInfo.curType, 213);
   }
 }
 

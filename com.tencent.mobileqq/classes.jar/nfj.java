@@ -1,85 +1,78 @@
-import android.os.Handler;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.1;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.2;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.3;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.4;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.5;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.6;
-import com.tencent.qav.QavDef.MultiUserInfo;
-import java.util.List;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.pb.PBEnumField;
+import java.util.HashMap;
+import java.util.Map;
+import trpc.qq_vgame.nofity.AvGameNotify.NotifyMsg;
 
 public class nfj
-  extends myh
 {
-  public nfj(AVGameControlUIImpl paramAVGameControlUIImpl) {}
+  private static Map<Integer, Integer> a = new HashMap(16);
   
-  public void a()
+  static
   {
-    nht.a().b().post(new AVGameControlUIImpl.2.1(this));
+    a.put(Integer.valueOf(1), Integer.valueOf(1));
+    a.put(Integer.valueOf(2), Integer.valueOf(1));
+    a.put(Integer.valueOf(3), Integer.valueOf(1));
+    a.put(Integer.valueOf(4), Integer.valueOf(1));
+    a.put(Integer.valueOf(101), Integer.valueOf(1));
+    a.put(Integer.valueOf(102), Integer.valueOf(2));
+    a.put(Integer.valueOf(103), Integer.valueOf(2));
+    a.put(Integer.valueOf(104), Integer.valueOf(2));
+    a.put(Integer.valueOf(105), Integer.valueOf(2));
+    a.put(Integer.valueOf(106), Integer.valueOf(2));
+    a.put(Integer.valueOf(107), Integer.valueOf(2));
+    a.put(Integer.valueOf(108), Integer.valueOf(2));
+    a.put(Integer.valueOf(110), Integer.valueOf(2));
+    a.put(Integer.valueOf(201), Integer.valueOf(2));
+    a.put(Integer.valueOf(403), Integer.valueOf(1));
+    a.put(Integer.valueOf(501), Integer.valueOf(1));
+    a.put(Integer.valueOf(502), Integer.valueOf(1));
+    a.put(Integer.valueOf(503), Integer.valueOf(1));
+    a.put(Integer.valueOf(504), Integer.valueOf(1));
+    a.put(Integer.valueOf(505), Integer.valueOf(1));
+    a.put(Integer.valueOf(506), Integer.valueOf(1));
+    a.put(Integer.valueOf(507), Integer.valueOf(1));
+    a.put(Integer.valueOf(508), Integer.valueOf(1));
+    a.put(Integer.valueOf(509), Integer.valueOf(1));
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  private static BusinessHandler a(AVGameAppInterface paramAVGameAppInterface, int paramInt)
   {
-    if (paramInt2 != -1)
-    {
-      if (paramInt1 != 2) {
-        break label38;
-      }
-      AVGameControlUIImpl.b(this.a, 1);
+    if (paramAVGameAppInterface == null) {
+      return null;
+    }
+    paramInt = ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
+    if (paramInt == 1) {
+      paramAVGameAppInterface = paramAVGameAppInterface.a(1);
     }
     for (;;)
     {
-      AVGameControlUIImpl.a(this.a).post(new AVGameControlUIImpl.2.5(this));
-      return;
-      label38:
-      if (paramInt1 == 1) {
-        AVGameControlUIImpl.b(this.a, 4);
-      } else if (paramInt1 == 0) {
-        if (paramInt2 == 0) {
-          AVGameControlUIImpl.b(this.a, 5);
-        } else {
-          AVGameControlUIImpl.b(this.a, 6);
-        }
+      return paramAVGameAppInterface;
+      if (paramInt == 2) {
+        paramAVGameAppInterface = paramAVGameAppInterface.a(3);
+      } else {
+        paramAVGameAppInterface = null;
       }
     }
   }
   
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt)
+  public static void a(AVGameAppInterface paramAVGameAppInterface, AvGameNotify.NotifyMsg paramNotifyMsg)
   {
-    nht.a().b().post(new AVGameControlUIImpl.2.2(this, paramMultiUserInfo, paramBoolean));
-  }
-  
-  public void a(List<QavDef.MultiUserInfo> paramList) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    nht.a().b().post(new AVGameControlUIImpl.2.4(this, paramLong, paramBoolean, paramInt));
-  }
-  
-  public void b(int paramInt)
-  {
-    nhn localnhn = ngu.b().a();
-    if ((localnhn == null) || (localnhn.e)) {
+    paramAVGameAppInterface = a(paramAVGameAppInterface, paramNotifyMsg.type.get());
+    if (paramAVGameAppInterface != null)
+    {
+      if (!(paramAVGameAppInterface instanceof ngu)) {
+        break label32;
+      }
+      ((ngu)paramAVGameAppInterface).a(paramNotifyMsg);
+    }
+    label32:
+    while (!(paramAVGameAppInterface instanceof ngt)) {
       return;
     }
-    nht.a().b().post(new AVGameControlUIImpl.2.3(this, paramInt));
+    ((ngt)paramAVGameAppInterface).a(paramNotifyMsg);
   }
-  
-  public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
-  
-  public void b(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    nht.a().b().post(new AVGameControlUIImpl.2.6(this, paramLong, paramBoolean, paramInt));
-  }
-  
-  public void c(int paramInt) {}
 }
 
 

@@ -1,30 +1,15 @@
-import android.os.Handler;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.together.ui.TogetherPopupDialog.1.1;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadParam;
 
-public class bdfw
-  extends bddc
+public abstract interface bdfw
 {
-  bdfw(bdfv parambdfv) {}
+  public abstract LoadExtResult a(LoadParam paramLoadParam);
   
-  protected void a()
-  {
-    if (this.a.jdField_a_of_type_Bddq == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!this.a.jdField_a_of_type_Bddq.a()) {
-          break;
-        }
-      } while (bdfv.a(this.a) == null);
-      bdfv.a(this.a).postDelayed(new TogetherPopupDialog.1.1(this), 5000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bdfy == null) || (this.a.jdField_a_of_type_AndroidWidgetFrameLayout == null));
-    this.a.jdField_a_of_type_Bdfy.a();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
-  }
+  public abstract void a(LoadParam paramLoadParam, bdgc parambdgc);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
 }
 
 

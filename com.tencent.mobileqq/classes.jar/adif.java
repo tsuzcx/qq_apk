@@ -1,44 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class adif
-  implements bbbg
+  extends baex
 {
-  public adif(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adif(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onAction(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 1;
-    bayp localbayp = (bayp)paramView.getTag(2131380831);
-    if (localbayp == null) {}
-    for (;;)
+    boolean bool = true;
+    if (!paramBoolean1)
     {
-      return;
-      String str1 = localbayp.b();
-      String str2 = localbayp.a().toString();
-      paramView = "-1";
-      if ((localbayp instanceof baxd))
+      AssistantSettingActivity.a(this.a, 2131718593, 1);
+      AssistantSettingActivity localAssistantSettingActivity = this.a;
+      if (!paramBoolean2) {}
+      for (paramBoolean1 = bool;; paramBoolean1 = false)
       {
-        paramView = ((baxd)localbayp).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        this.a.a.notifyDataSetChanged();
+        AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean1, AssistantSettingActivity.b(this.a));
         return;
-        if ((localbayp instanceof baxj)) {
-          paramView = ((baxj)localbayp).a;
-        } else if ((localbayp instanceof baxo)) {
-          paramView = ((baxo)localbayp).a().troopuin;
-        } else if ((localbayp instanceof baxe)) {
-          i = 0;
-        } else {
-          i = -1;
-        }
       }
     }
+    AssistantSettingActivity.b(this.a, paramBoolean2, AssistantSettingActivity.b(this.a));
   }
 }
 

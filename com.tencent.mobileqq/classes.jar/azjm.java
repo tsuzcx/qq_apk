@@ -1,32 +1,21 @@
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoViewFactory;
+import android.os.IInterface;
 
-public class azjm
+public abstract interface azjm
+  extends IInterface
 {
-  static {}
+  public abstract int a();
   
-  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
-  {
-    return VideoViewFactory.createQQVideoPlayView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
-  }
+  public abstract void a();
   
-  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
-  {
-    return VideoViewFactory.createCropBubbleView(paramContext, paramLong, paramVideoPlayParam, paramBoolean);
-  }
+  public abstract void a(int paramInt);
   
-  public static IBaseVideoView b(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
-  {
-    return VideoViewFactory.createBaseVideoView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public static IBaseVideoView c(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
-  {
-    return VideoViewFactory.createBaseVideoViewFS(paramContext, paramLong, paramVideoPlayParam, paramImageView);
-  }
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract int[] a();
+  
+  public abstract boolean[] a();
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.webviewplugin;
 
-import aact;
+import aasf;
 import com.tencent.smtt.sdk.WebView;
 
 public class QzonePlugin$1
   implements Runnable
 {
-  public QzonePlugin$1(aact paramaact, byte[] paramArrayOfByte) {}
+  public QzonePlugin$1(aasf paramaasf, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (aact.a(this.this$0) != null) {
-      aact.a(this.this$0).postUrl(aact.a(this.this$0), this.a);
+    if (aasf.a(this.this$0) != null) {
+      aasf.a(this.this$0).postUrl(aasf.a(this.this$0), this.a);
     }
   }
 }

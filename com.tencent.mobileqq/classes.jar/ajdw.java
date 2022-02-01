@@ -1,28 +1,50 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class ajdw
-  implements bhhy
+  extends RecyclerView.ViewHolder
 {
-  public ajdw(MainFragment paramMainFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void a()
+  public ajdw(Context paramContext, View paramView)
   {
-    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    if ((i == 2) && (j == 20))
+    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  public static ajdw a(Context paramContext, View paramView)
+  {
+    return new ajdw(paramContext, paramView);
+  }
+  
+  public static ajdw a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ajdw(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("mainactivity", 2, "gesturepwd manual move.");
-      }
-      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
-      this.a.getActivity().overridePendingTransition(2130771997, 2130771990);
-      MainFragment.a(true);
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
     }
+    return localView1;
   }
 }
 

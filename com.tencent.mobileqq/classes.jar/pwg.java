@@ -1,26 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-
-public class pwg
+final class pwg
+  implements pwk
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private long b = 0L;
-  
-  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
+  public void l()
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
+    pwb.a().a(null, false);
   }
   
-  public pwg a(long paramLong)
+  public void m()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public pwg b(long paramLong)
-  {
-    this.b = paramLong;
-    return this;
+    pwb.a().a(false);
   }
 }
 

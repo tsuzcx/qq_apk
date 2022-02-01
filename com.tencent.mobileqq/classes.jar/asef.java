@@ -1,7 +1,6 @@
-public abstract class asef
-  extends asec
+class asef
 {
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  private static asee a = new asee();
 }
 
 

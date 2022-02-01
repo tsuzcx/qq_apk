@@ -1,26 +1,24 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class atmi
-  implements View.OnTouchListener
+public abstract interface atmi
 {
-  public atmi(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
-    }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    return false;
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(atly paramatly);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

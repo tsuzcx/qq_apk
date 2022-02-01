@@ -55,11 +55,11 @@ public class StructLongMessageIpSaver
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: aconst_null
-    //   5: astore 4
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: aconst_null
+    //   6: astore_3
     //   7: aload_2
     //   8: astore_1
     //   9: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
@@ -145,37 +145,37 @@ public class StructLongMessageIpSaver
     //   164: aload_1
     //   165: invokevirtual 131	java/io/IOException:printStackTrace	()V
     //   168: return
-    //   169: astore_3
-    //   170: aload 4
-    //   172: astore_2
-    //   173: aload_2
-    //   174: astore_1
-    //   175: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   178: ifeq +13 -> 191
-    //   181: aload_2
-    //   182: astore_1
-    //   183: ldc 12
-    //   185: iconst_2
-    //   186: ldc 160
-    //   188: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   191: aload_2
-    //   192: astore_1
-    //   193: aload_3
-    //   194: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
-    //   197: aload_2
-    //   198: ifnull -139 -> 59
-    //   201: aload_2
-    //   202: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   205: return
-    //   206: astore_1
-    //   207: aload_1
-    //   208: invokevirtual 131	java/io/IOException:printStackTrace	()V
-    //   211: return
-    //   212: astore_1
-    //   213: aload_3
-    //   214: astore_2
-    //   215: aload_1
-    //   216: astore_3
+    //   169: astore_1
+    //   170: aload_3
+    //   171: astore_2
+    //   172: aload_1
+    //   173: astore_3
+    //   174: aload_2
+    //   175: astore_1
+    //   176: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   179: ifeq +13 -> 192
+    //   182: aload_2
+    //   183: astore_1
+    //   184: ldc 12
+    //   186: iconst_2
+    //   187: ldc 160
+    //   189: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   192: aload_2
+    //   193: astore_1
+    //   194: aload_3
+    //   195: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
+    //   198: aload_2
+    //   199: ifnull -140 -> 59
+    //   202: aload_2
+    //   203: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   206: return
+    //   207: astore_1
+    //   208: aload_1
+    //   209: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   212: return
+    //   213: astore_3
+    //   214: aload 4
+    //   216: astore_2
     //   217: aload_2
     //   218: astore_1
     //   219: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -219,7 +219,7 @@ public class StructLongMessageIpSaver
     //   283: astore_3
     //   284: goto -67 -> 217
     //   287: astore_3
-    //   288: goto -115 -> 173
+    //   288: goto -114 -> 174
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	291	0	this	StructLongMessageIpSaver
@@ -227,22 +227,21 @@ public class StructLongMessageIpSaver
     //   60	2	1	localIOException1	java.io.IOException
     //   67	1	1	localObject2	Object
     //   163	2	1	localIOException2	java.io.IOException
-    //   174	19	1	localObject3	Object
-    //   206	2	1	localIOException3	java.io.IOException
-    //   212	4	1	localException1	java.lang.Exception
+    //   169	4	1	localFileNotFoundException1	java.io.FileNotFoundException
+    //   175	19	1	localObject3	Object
+    //   207	2	1	localIOException3	java.io.IOException
     //   218	19	1	localObject4	Object
     //   250	8	1	localIOException4	java.io.IOException
     //   260	10	1	localObject5	Object
     //   279	1	1	localObject6	Object
-    //   3	263	2	localObject7	Object
+    //   4	262	2	localObject7	Object
     //   271	2	2	localIOException5	java.io.IOException
-    //   1	1	3	localObject8	Object
-    //   169	45	3	localFileNotFoundException1	java.io.FileNotFoundException
-    //   216	22	3	localObject9	Object
-    //   256	4	3	localObject10	Object
+    //   6	189	3	localObject8	Object
+    //   213	25	3	localException1	java.lang.Exception
+    //   256	4	3	localObject9	Object
     //   283	1	3	localException2	java.lang.Exception
     //   287	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   5	166	4	localObject11	Object
+    //   1	214	4	localObject10	Object
     //   15	66	5	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
@@ -253,21 +252,21 @@ public class StructLongMessageIpSaver
     //   31	37	169	java/io/FileNotFoundException
     //   39	47	169	java/io/FileNotFoundException
     //   68	92	169	java/io/FileNotFoundException
-    //   201	205	206	java/io/IOException
-    //   9	17	212	java/lang/Exception
-    //   19	29	212	java/lang/Exception
-    //   31	37	212	java/lang/Exception
-    //   39	47	212	java/lang/Exception
-    //   68	92	212	java/lang/Exception
+    //   202	206	207	java/io/IOException
+    //   9	17	213	java/lang/Exception
+    //   19	29	213	java/lang/Exception
+    //   31	37	213	java/lang/Exception
+    //   39	47	213	java/lang/Exception
+    //   68	92	213	java/lang/Exception
     //   245	249	250	java/io/IOException
     //   9	17	256	finally
     //   19	29	256	finally
     //   31	37	256	finally
     //   39	47	256	finally
     //   68	92	256	finally
-    //   175	181	256	finally
-    //   183	191	256	finally
-    //   193	197	256	finally
+    //   176	182	256	finally
+    //   184	192	256	finally
+    //   194	198	256	finally
     //   219	225	256	finally
     //   227	235	256	finally
     //   237	241	256	finally
@@ -293,11 +292,11 @@ public class StructLongMessageIpSaver
     //   0: aload_0
     //   1: monitorenter
     //   2: aconst_null
-    //   3: astore 4
-    //   5: aconst_null
-    //   6: astore_2
-    //   7: aconst_null
-    //   8: astore_3
+    //   3: astore_3
+    //   4: aconst_null
+    //   5: astore_2
+    //   6: aconst_null
+    //   7: astore 4
     //   9: aload_2
     //   10: astore_1
     //   11: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
@@ -430,41 +429,41 @@ public class StructLongMessageIpSaver
     //   251: aload_1
     //   252: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   255: goto -184 -> 71
-    //   258: astore_1
-    //   259: aload_3
-    //   260: astore_2
-    //   261: aload_1
-    //   262: astore_3
-    //   263: aload_2
-    //   264: astore_1
-    //   265: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   268: ifeq +13 -> 281
-    //   271: aload_2
-    //   272: astore_1
-    //   273: ldc 12
-    //   275: iconst_2
-    //   276: ldc 160
-    //   278: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: aload_2
-    //   282: astore_1
-    //   283: aload_3
-    //   284: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
-    //   287: aload_2
-    //   288: ifnull -217 -> 71
-    //   291: aload_2
-    //   292: invokevirtual 197	java/io/BufferedWriter:close	()V
-    //   295: goto -224 -> 71
-    //   298: astore_1
-    //   299: aload_1
-    //   300: invokevirtual 131	java/io/IOException:printStackTrace	()V
-    //   303: goto -232 -> 71
-    //   306: astore_1
-    //   307: aload_1
-    //   308: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   311: goto -240 -> 71
-    //   314: astore_3
-    //   315: aload 4
-    //   317: astore_2
+    //   258: astore_3
+    //   259: aload 4
+    //   261: astore_2
+    //   262: aload_2
+    //   263: astore_1
+    //   264: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   267: ifeq +13 -> 280
+    //   270: aload_2
+    //   271: astore_1
+    //   272: ldc 12
+    //   274: iconst_2
+    //   275: ldc 160
+    //   277: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   280: aload_2
+    //   281: astore_1
+    //   282: aload_3
+    //   283: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
+    //   286: aload_2
+    //   287: ifnull -216 -> 71
+    //   290: aload_2
+    //   291: invokevirtual 197	java/io/BufferedWriter:close	()V
+    //   294: goto -223 -> 71
+    //   297: astore_1
+    //   298: aload_1
+    //   299: invokevirtual 131	java/io/IOException:printStackTrace	()V
+    //   302: goto -231 -> 71
+    //   305: astore_1
+    //   306: aload_1
+    //   307: invokevirtual 164	java/lang/Exception:printStackTrace	()V
+    //   310: goto -239 -> 71
+    //   313: astore_1
+    //   314: aload_3
+    //   315: astore_2
+    //   316: aload_1
+    //   317: astore_3
     //   318: aload_2
     //   319: astore_1
     //   320: invokestatic 119	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -516,7 +515,7 @@ public class StructLongMessageIpSaver
     //   404: astore_3
     //   405: goto -87 -> 318
     //   408: astore_3
-    //   409: goto -146 -> 263
+    //   409: goto -147 -> 262
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	412	0	this	StructLongMessageIpSaver
@@ -528,26 +527,27 @@ public class StructLongMessageIpSaver
     //   230	2	1	localIOException2	java.io.IOException
     //   240	7	1	str	String
     //   250	2	1	localException2	java.lang.Exception
-    //   258	4	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   264	19	1	localObject4	Object
-    //   298	2	1	localIOException3	java.io.IOException
-    //   306	2	1	localException3	java.lang.Exception
+    //   263	19	1	localObject4	Object
+    //   297	2	1	localIOException3	java.io.IOException
+    //   305	2	1	localException3	java.lang.Exception
+    //   313	4	1	localException4	java.lang.Exception
     //   319	19	1	localObject5	Object
     //   353	2	1	localIOException4	java.io.IOException
-    //   361	10	1	localException4	java.lang.Exception
+    //   361	10	1	localException5	java.lang.Exception
     //   373	10	1	localObject6	Object
     //   400	1	1	localObject7	Object
-    //   6	373	2	localObject8	Object
+    //   5	374	2	localObject8	Object
     //   384	2	2	localIOException5	java.io.IOException
-    //   392	2	2	localException5	java.lang.Exception
-    //   8	276	3	localObject9	Object
-    //   314	25	3	localException6	java.lang.Exception
-    //   369	4	3	localObject10	Object
+    //   392	2	2	localException6	java.lang.Exception
+    //   3	1	3	localObject9	Object
+    //   258	57	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   317	22	3	localObject10	Object
+    //   369	4	3	localObject11	Object
     //   404	1	3	localException7	java.lang.Exception
     //   408	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   3	313	4	localObject11	Object
+    //   7	253	4	localObject12	Object
     //   17	205	5	localFile	java.io.File
-    //   52	168	6	localObject12	Object
+    //   52	168	6	localObject13	Object
     // Exception table:
     //   from	to	target	type
     //   63	71	74	java/io/IOException
@@ -558,9 +558,9 @@ public class StructLongMessageIpSaver
     //   219	227	82	finally
     //   231	235	82	finally
     //   251	255	82	finally
-    //   291	295	82	finally
-    //   299	303	82	finally
-    //   307	311	82	finally
+    //   290	294	82	finally
+    //   298	302	82	finally
+    //   306	310	82	finally
     //   346	350	82	finally
     //   354	358	82	finally
     //   362	366	82	finally
@@ -583,18 +583,18 @@ public class StructLongMessageIpSaver
     //   117	123	258	java/io/FileNotFoundException
     //   125	131	258	java/io/FileNotFoundException
     //   133	157	258	java/io/FileNotFoundException
-    //   291	295	298	java/io/IOException
-    //   291	295	306	java/lang/Exception
-    //   11	19	314	java/lang/Exception
-    //   21	29	314	java/lang/Exception
-    //   31	37	314	java/lang/Exception
-    //   39	46	314	java/lang/Exception
-    //   48	54	314	java/lang/Exception
-    //   97	105	314	java/lang/Exception
-    //   107	115	314	java/lang/Exception
-    //   117	123	314	java/lang/Exception
-    //   125	131	314	java/lang/Exception
-    //   133	157	314	java/lang/Exception
+    //   290	294	297	java/io/IOException
+    //   290	294	305	java/lang/Exception
+    //   11	19	313	java/lang/Exception
+    //   21	29	313	java/lang/Exception
+    //   31	37	313	java/lang/Exception
+    //   39	46	313	java/lang/Exception
+    //   48	54	313	java/lang/Exception
+    //   97	105	313	java/lang/Exception
+    //   107	115	313	java/lang/Exception
+    //   117	123	313	java/lang/Exception
+    //   125	131	313	java/lang/Exception
+    //   133	157	313	java/lang/Exception
     //   346	350	353	java/io/IOException
     //   346	350	361	java/lang/Exception
     //   11	19	369	finally
@@ -607,9 +607,9 @@ public class StructLongMessageIpSaver
     //   117	123	369	finally
     //   125	131	369	finally
     //   133	157	369	finally
-    //   265	271	369	finally
-    //   273	281	369	finally
-    //   283	287	369	finally
+    //   264	270	369	finally
+    //   272	280	369	finally
+    //   282	286	369	finally
     //   320	326	369	finally
     //   328	336	369	finally
     //   338	342	369	finally

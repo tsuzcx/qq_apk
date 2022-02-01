@@ -1,14 +1,26 @@
-import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bfea
+public class bfea
+  implements AdapterView.OnItemClickListener
 {
-  String jdField_a_of_type_JavaLangString;
-  TroopTips0x857.RedGrayTipsInfo jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
+  public bfea(NewTroopContactView paramNewTroopContactView) {}
   
-  public bfea(bfdz parambfdz, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
+    String str = ((ResultRecord)paramView.getTag()).uin;
+    if (this.a.a(str))
+    {
+      NewTroopContactView.a(this.a, str);
+      this.a.a.notifyDataSetChanged();
+      this.a.b(false);
+      NewTroopContactView.a(this.a);
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

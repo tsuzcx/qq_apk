@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.core.net.c.k;
+import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -643,7 +645,7 @@ public class MonitorSocketOutputStream
           if ((this.monitorSocketImpl.d == null) || (!this.monitorSocketImpl.d.contains(":MSF"))) {
             break label809;
           }
-          if (!com.tencent.mobileqq.msf.core.net.m.q.contains(toString())) {
+          if (!m.q.contains(toString())) {
             continue;
           }
           paramArrayOfByte = null;
@@ -675,7 +677,7 @@ public class MonitorSocketOutputStream
           paramArrayOfByte = null;
           continue;
         }
-        if (!com.tencent.mobileqq.msf.core.net.c.m.g.contains(toString())) {
+        if (!k.g.contains(toString())) {
           break label611;
         }
         paramArrayOfByte = this.monitorSocketImpl;

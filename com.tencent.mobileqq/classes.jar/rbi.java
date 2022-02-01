@@ -1,223 +1,114 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.1;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.jetbrains.annotations.Nullable;
+import java.util.Set;
+import org.json.JSONArray;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class rbi
 {
-  private int jdField_a_of_type_Int;
-  public AppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private rat jdField_a_of_type_Rat = new rbj(this);
-  rbk jdField_a_of_type_Rbk;
+  private List<rbl> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   
-  public rbi(AppInterface paramAppInterface, int paramInt)
+  public static rbi a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
+    return rbk.a();
   }
   
-  @Nullable
-  private RefreshData a(int paramInt1, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt2)
+  public rbl a()
   {
-    rao localrao = (rao)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(270);
-    RefreshData localRefreshData;
-    if (paramRefreshInfo.has())
+    rbl localrbl1 = new rbl();
+    long l = NetConnInfoCenter.getServerTime();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      paramRefreshInfo = new RefreshData(paramRefreshInfo);
-      localRefreshData = localrao.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramInt2);
-      if (QLog.isColorLevel())
+      rbl localrbl2 = (rbl)localIterator.next();
+      if (localrbl2.jdField_a_of_type_Long + localrbl2.jdField_a_of_type_Int > l)
       {
-        QLog.d("Q.readinjoy.4tab", 2, "onReqGuideInfo 5bd回包 ");
-        if (paramRefreshInfo != null) {
-          break label226;
-        }
-        QLog.d("Q.readinjoy.4tab", 2, "newRefreshData = " + paramRefreshInfo);
-        label89:
-        if (localRefreshData != null) {
-          break label257;
-        }
-        QLog.d("Q.readinjoy.4tab", 2, "oldRefreshData = " + localRefreshData);
-      }
-      label120:
-      if (paramRefreshInfo != null) {
-        break label289;
-      }
-      if (localRefreshData != null)
-      {
-        bfyz.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null, paramInt2);
-        FileUtils.deleteFilesInDirectory(rbm.a());
-        localrao.a(0, "", -1L, paramInt2);
+        localrbl1.jdField_a_of_type_JavaUtilSet.addAll(localrbl2.jdField_a_of_type_JavaUtilSet);
+        localrbl1.b.addAll(localrbl2.b);
       }
     }
-    for (;;)
-    {
-      if (paramRefreshInfo != null)
-      {
-        paramRefreshInfo.setShowInSource(true, this.jdField_a_of_type_Int);
-        if (localRefreshData != null) {
-          paramRefreshInfo.isShown = localRefreshData.isShown;
-        }
-        bfyz.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramRefreshInfo.toJson().toString(), paramInt2);
-      }
-      return localRefreshData;
-      paramRefreshInfo = null;
-      break;
-      label226:
-      QLog.d("Q.readinjoy.4tab", 2, "newRefreshData = " + paramRefreshInfo.toString());
-      break label89;
-      label257:
-      QLog.d("Q.readinjoy.4tab", 2, "oldRefreshData = " + localRefreshData.toString());
-      break label120;
-      label289:
-      if (((localRefreshData == null) || (!paramRefreshInfo.id.equals(localRefreshData.id)) || (paramRefreshInfo.seq > localRefreshData.seq)) && (paramInt1 <= paramRefreshInfo.endTime))
-      {
-        FileUtils.deleteFilesInDirectory(rbm.a());
-        localrao.a(paramRefreshInfo, this.jdField_a_of_type_Int);
-      }
-    }
-  }
-  
-  private void a(int paramInt1, RefreshData paramRefreshData, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo, int paramInt2)
-  {
-    Object localObject;
-    if (paramSkinInfo.has())
-    {
-      paramSkinInfo = new SkinData(paramSkinInfo);
-      localObject = new GuideData(paramGuideInfo, paramInt2);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.4tab", 2, "guideData = " + localObject);
-      }
-      paramGuideInfo = (rau)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(261);
-      if ((this.jdField_a_of_type_Boolean) || (paramInt1 < ((GuideData)localObject).beginTime) || (paramInt1 > ((GuideData)localObject).endTime)) {
-        break label215;
-      }
-      a(261, "", (BaseResData)localObject);
-      label112:
-      localObject = paramGuideInfo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-      if ((paramSkinInfo != null) || (paramGuideInfo.a() != 1)) {
-        break label259;
-      }
-      this.jdField_a_of_type_JavaLangString = paramGuideInfo.a();
-      bfyz.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
-      if ((paramRefreshData != null) && (paramInt1 <= paramRefreshData.endTime))
-      {
-        paramRefreshData.isShown = true;
-        bfyz.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramRefreshData.toJson().toString(), paramInt2);
-      }
-    }
-    label215:
-    while ((paramSkinInfo == null) || (localObject == null) || (!((SkinData)localObject).id.equals(paramSkinInfo.id)) || (((SkinData)localObject).seq == paramSkinInfo.seq))
-    {
-      return;
-      paramSkinInfo = null;
-      break;
-      if ((paramInt1 > ((GuideData)localObject).endTime) || (!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
-        break label112;
-      }
-      paramGuideInfo.a((GuideData)localObject);
-      paramGuideInfo.a(((GuideData)localObject).skinData);
-      break label112;
-    }
-    label259:
-    bfyz.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramSkinInfo.toJson().toString());
-    if (paramSkinInfo.id.equals(paramGuideInfo.a()))
-    {
-      this.jdField_a_of_type_JavaLangString = paramSkinInfo.id;
-      return;
-    }
-    FileUtils.deleteDirectory(raj.a(paramSkinInfo.id));
-  }
-  
-  private void a(int paramInt, String paramString, BaseResData paramBaseResData)
-  {
-    if (this.jdField_a_of_type_Rbk != null) {
-      this.jdField_a_of_type_Rbk.a(paramInt, paramString, paramBaseResData);
-    }
-  }
-  
-  private void a(int paramInt1, oidb_0x5bd.GuideInfo paramGuideInfo, int paramInt2)
-  {
-    ran localran = (ran)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(271);
-    Object localObject;
-    int i;
-    if (paramGuideInfo.has())
-    {
-      paramGuideInfo = new GuideData(paramGuideInfo, paramInt2);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoySkinAndRefreshFacadeManager", 2, "guideData = " + paramGuideInfo);
-      }
-      localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-      if (paramGuideInfo == null) {
-        break label284;
-      }
-      paramGuideInfo.business = "operation_guide";
-      GuideData localGuideData = (GuideData)((EntityManager)localObject).find(GuideData.class, new String[] { paramGuideInfo.id, paramGuideInfo.uin, paramGuideInfo.business });
-      if ((localGuideData == null) || (localGuideData.showTime == 0)) {
-        ((EntityManager)localObject).persistOrReplace(paramGuideInfo);
-      }
-      paramGuideInfo = localran.a("operation_guide", paramGuideInfo.id);
-      if (paramGuideInfo == null) {
-        return;
-      }
-      paramGuideInfo = paramGuideInfo.iterator();
-      i = 0;
-      label167:
-      if (!paramGuideInfo.hasNext()) {
-        return;
-      }
-      localObject = (GuideData)paramGuideInfo.next();
-      if ((i != 0) || (((GuideData)localObject).source != paramInt2) || (paramInt1 < ((GuideData)localObject).beginTime) || (paramInt1 > ((GuideData)localObject).endTime)) {
-        break label249;
-      }
-      a(271, "operation_guide", (BaseResData)localObject);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label167;
-      paramGuideInfo = null;
-      break;
-      label249:
-      if ((paramInt1 <= ((GuideData)localObject).endTime) && (NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
-        localran.a("operation_guide", (BaseResData)localObject);
-      }
-    }
-    label284:
-    localran.a(paramInt2);
+    localrbl1.b.removeAll(localrbl1.jdField_a_of_type_JavaUtilSet);
+    QLog.e("UserReadUnReadInfoManager", 1, "getEffectUserReadInfo:" + localrbl1);
+    return localrbl1;
   }
   
   public void a()
   {
-    ThreadManager.post(new ReadInjoySkinAndRefreshFacade.1(this), 5, null, true);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    QLog.e("UserReadUnReadInfoManager", 1, "clearUserReadUnRead");
   }
   
-  public void a(rbk paramrbk)
+  public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Rbk = paramrbk;
+    int j = 0;
+    rbl localrbl = new rbl();
+    localrbl.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
+    try
+    {
+      localrbl.jdField_a_of_type_Int = (paramJSONObject.getInt("effective_time") * 1000);
+      Object localObject = paramJSONObject.optJSONArray("clicked_rowkey");
+      JSONArray localJSONArray = paramJSONObject.optJSONArray("expose_rowkey");
+      int i;
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      {
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          localrbl.jdField_a_of_type_JavaUtilSet.add(str);
+          i += 1;
+        }
+      }
+      if ((localJSONArray != null) && (localJSONArray.length() > 0))
+      {
+        i = j;
+        while (i < localJSONArray.length())
+        {
+          localObject = localJSONArray.getString(i);
+          localrbl.b.add(localObject);
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("UserReadUnReadInfoManager", 1, "", localException);
+      QLog.i("UserReadUnReadInfoManager", 1, "addUserReadInfo:" + paramJSONObject);
+      this.jdField_a_of_type_JavaUtilList.add(localrbl);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    rbl localrbl = a();
+    return (!localrbl.jdField_a_of_type_JavaUtilSet.isEmpty()) || (!localrbl.b.isEmpty());
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Rbk = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Rat);
+    QLog.e("UserReadUnReadInfoManager", 1, "onStart");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void c()
+  {
+    QLog.e("UserReadUnReadInfoManager", 1, "onStop");
+    a();
   }
 }
 

@@ -1,34 +1,78 @@
-class xxx
-  implements yfx
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
+
+public class xxx
+  extends wag<xxi, wcx>
 {
-  xxx(xxs paramxxs) {}
-  
-  public void a()
+  public xxx(xxi paramxxi)
   {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    xxs.a(this.a);
+    super(paramxxi);
   }
   
-  public void a(String paramString)
+  private void c(@NonNull xxi paramxxi, @NonNull wcx paramwcx)
   {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    xzd localxzd = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
+    if ((xxi.a(paramxxi) == null) || (!xxi.a(paramxxi).a.date.equals(paramwcx.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
     {
-      localxzd.a("download_face", 0, 0, new String[] { str, paramString });
-      xwb.b("0X80075DD");
-      if (!((ydh)vux.a(8)).a(paramString, true)) {
-        xvv.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
+      ykq.b(this.TAG, "ignore this upload status event. %s.", paramwcx.toString());
       return;
+    }
+    ykq.a(this.TAG, "receive upload status change event. %s.", paramwcx.toString());
+    int i = 0;
+    for (;;)
+    {
+      StoryVideoItem localStoryVideoItem;
+      if (i < xxi.a(paramxxi).a().size())
+      {
+        localStoryVideoItem = (StoryVideoItem)xxi.a(paramxxi).a().get(i);
+        if (!localStoryVideoItem.equals(paramwcx.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
+          break label159;
+        }
+        if (paramwcx.b != null) {
+          break label135;
+        }
+        localStoryVideoItem.copy(paramwcx.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      }
+      for (;;)
+      {
+        paramxxi.a();
+        ykq.d(this.TAG, "can't find the video whose state has been changed.");
+        return;
+        label135:
+        xxi.a(paramxxi).a(localStoryVideoItem);
+        xxi.a(paramxxi).a(paramwcx.b, i);
+      }
+      label159:
+      i += 1;
     }
   }
   
-  public void b(String paramString)
+  public void a(@NonNull xxi paramxxi, @NonNull wcx paramwcx)
   {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
+    if (paramwcx.a()) {
+      ykq.b(this.TAG, "ignore this upload status event, because it's a troop video.");
+    }
+    do
+    {
+      return;
+      if (paramwcx.c())
+      {
+        ykq.a(this.TAG, "receive share group video upload status change event. %s.", paramwcx.toString());
+        return;
+      }
+    } while (!paramwcx.b());
+    ykq.a(this.TAG, "receive personal video upload status change event. %s.", paramwcx.toString());
+    c(paramxxi, paramwcx);
   }
+  
+  public Class acceptEventClass()
+  {
+    return wcx.class;
+  }
+  
+  public void b(@NonNull xxi paramxxi, @NonNull wcx paramwcx) {}
 }
 
 

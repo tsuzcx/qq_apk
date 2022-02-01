@@ -1,63 +1,24 @@
-import com.tencent.av.chatroom.ChatRoomInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.beauty.BeautySeekView;
 
-class mms
-  implements ljw
+public class mms
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final WeakReference<mmp> a;
+  public mms(BeautySeekView paramBeautySeekView) {}
   
-  mms(mmp parammmp)
+  public void onGlobalLayout()
   {
-    this.a = new WeakReference(parammmp);
-  }
-  
-  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
-  {
-    int i;
-    mmp localmmp;
-    if ((paramInt & 0x4) == 4)
+    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
     {
-      i = 1;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
-      }
-      localmmp = (mmp)this.a.get();
-      if (localmmp != null) {
-        break label77;
-      }
+      this.a.a = false;
+      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
     }
-    label77:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (localmmp.a())
-      {
-        mmp.a(localmmp, paramChatRoomInfo);
-        return;
-      }
-    } while (i == 0);
-    mmp.a(localmmp, 0);
-  }
-  
-  public void a(ljv paramljv)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramljv + "]");
-    }
-    mmp localmmp = (mmp)this.a.get();
-    if ((paramljv == null) || (localmmp == null)) {}
-    while (!localmmp.a()) {
-      return;
-    }
-    mmp.a(localmmp, paramljv.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mms
  * JD-Core Version:    0.7.0.1
  */

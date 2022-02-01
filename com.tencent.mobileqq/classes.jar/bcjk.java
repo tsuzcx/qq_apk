@@ -1,50 +1,16 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bcjk
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  bcjk(bcji parambcji, View paramView) {}
+  bcjk(bcje parambcje, bcgf parambcgf, bcor parambcor) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (!this.jdField_a_of_type_Bcji.b)
-      {
-        this.jdField_a_of_type_Bcji.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131374170);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131374170, paramMotionEvent);
-        }
-        paramMotionEvent.start();
-      }
-      return true;
-      this.jdField_a_of_type_Bcji.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Bcji.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131374170);
-      if (paramView != null) {
-        paramView.reverse();
-      }
-    }
+    this.jdField_a_of_type_Bcgf.a(this.jdField_a_of_type_Bcor.a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

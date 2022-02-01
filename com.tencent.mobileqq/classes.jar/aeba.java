@@ -1,18 +1,41 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
 import com.tencent.qphone.base.util.QLog;
 
-public class aeba
-  extends anam
+class aeba
+  extends anvi
 {
-  public aeba(QQSettingMe paramQQSettingMe) {}
+  aeba(aeaz paramaeaz) {}
   
-  public void a()
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
     }
-    this.a.c(this.a.a.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Aebd);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Aebd, false);
+      this.a.c(this.a.jdField_a_of_type_Aebd);
+      return;
+    }
+    this.a.jdField_a_of_type_Aebd.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Aebd);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
-import bnku;
+import bpam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import yfp;
+import yui;
 
 public class DoodleMagicAlgoHandler
 {
@@ -81,17 +81,17 @@ public class DoodleMagicAlgoHandler
         localRenderPoint.xList = paramArrayOfFloat1;
         localRenderPoint.yList = paramArrayOfFloat2;
         localRenderPoint.aList = paramArrayOfFloat3;
-        if (!(localVideoFilterBase instanceof yfp)) {
+        if (!(localVideoFilterBase instanceof yui)) {
           break label108;
         }
-        ((yfp)localVideoFilterBase).a(localRenderPoint);
+        ((yui)localVideoFilterBase).a(localRenderPoint);
       }
     }
     label108:
-    while (!(localVideoFilterBase instanceof bnku)) {
+    while (!(localVideoFilterBase instanceof bpam)) {
       return;
     }
-    ((bnku)localVideoFilterBase).a(localRenderPoint);
+    ((bpam)localVideoFilterBase).a(localRenderPoint);
   }
   
   public static void setFilter(VideoFilterBase paramVideoFilterBase)
@@ -112,7 +112,7 @@ public class DoodleMagicAlgoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler
  * JD-Core Version:    0.7.0.1
  */

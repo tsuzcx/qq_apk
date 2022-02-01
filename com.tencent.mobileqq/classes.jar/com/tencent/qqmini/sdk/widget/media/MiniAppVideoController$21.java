@@ -7,7 +7,7 @@ class MiniAppVideoController$21
   
   public void run()
   {
-    this.this$0.play((MiniAppVideoController.access$800(this.this$0).initialTime * 1000.0D));
+    this.this$0.play((MiniAppVideoController.access$000(this.this$0).initialTime * 1000.0D));
   }
 }
 

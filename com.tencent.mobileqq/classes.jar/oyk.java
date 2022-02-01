@@ -1,37 +1,20 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public class oyk
-  implements View.OnTouchListener
+public final class oyk
+  implements qhl
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
+  public oyk(CommentInfo paramCommentInfo) {}
   
-  public oyk(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return false;
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
+      return;
     }
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849280));
-      return false;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849307));
-    return false;
+    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
 }
 

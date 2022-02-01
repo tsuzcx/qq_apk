@@ -11,7 +11,7 @@ public class RichProto$RichProtoReq
   public int commandId;
   public byte[] extention;
   public String protoKey;
-  ProtoReqManager.ProtoReq protoReq;
+  public ProtoReqManager.ProtoReq protoReq;
   public ProtoReqManager protoReqMgr;
   public List<RichProto.RichProtoReq.ReqCommon> reqs = new ArrayList();
   RichProto.RichProtoResp resp = new RichProto.RichProtoResp();

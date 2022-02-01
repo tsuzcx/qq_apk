@@ -1,42 +1,109 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acfh
-  implements abyl
+class acfh
+  implements achf
 {
-  public int a()
-  {
-    return 7400;
-  }
+  private acfh(acey paramacey) {}
   
-  public boolean a()
+  public String a(String paramString)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(144);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.getMsgCache().o(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    int i = 0;
+    if ((acey.a(this.a) == null) || (acey.a(this.a).a() == null) || (acey.a(this.a).a() == null))
+    {
+      QLog.i("Web", 1, "onGetAdInfo fail data empty");
+      i = 1;
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    if (TextUtils.isEmpty(acey.a(this.a).a().adsContent))
+    {
+      QLog.i("Web", 1, "onGetAdInfo fail adsContent empty");
+      i = 1;
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(acey.a(this.a).a().getTraceId())))
+    {
+      QLog.i("Web", 1, "onGetAdInfo fail req=" + paramString + ",local=" + acey.a(this.a).a().getTraceId());
+      i = 1;
+    }
+    if (i != 0)
+    {
+      if (acey.a(this.a) != null) {
+        acey.a(this.a).a();
+      }
+      if (acey.a(this.a) != null) {
+        acey.a(this.a).c();
+      }
+      return "";
+    }
+    if (acey.a(this.a) != null) {
+      acey.a(this.a).d();
+    }
+    return acey.a(this.a).a().adsContent;
   }
   
-  public int b()
+  public void a()
   {
-    return 3014;
+    if (QLog.isColorLevel()) {
+      QLog.i("GdtMvViewController", 2, "onVideoClose");
+    }
+    this.a.a(false);
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        localObject2 = localJSONObject;
+        QLog.e("GdtMvViewController", 1, "onReportAntiSpam,json error:" + paramString);
+      }
+      catch (JSONException localJSONException1)
+      {
+        try
+        {
+          if (acey.a(this.a) != null)
+          {
+            localJSONObject.put("pd", acey.a(this.a).b());
+            localObject2 = localJSONObject;
+          }
+          this.a.a.a((JSONObject)localObject2);
+          return;
+        }
+        catch (JSONException localJSONException2)
+        {
+          Object localObject2;
+          Object localObject1;
+          break label57;
+        }
+        localJSONException1 = localJSONException1;
+        localObject1 = null;
+      }
+      label57:
+      localObject2 = localObject1;
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (acey.a(this.a) != null)
+    {
+      acey.a(this.a).a(1, paramString, paramBoolean);
+      return;
+    }
+    QLog.i("Web", 1, "mvAnimationController null");
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GdtMvViewController", 2, "onVideoMute");
+    }
+    this.a.b(false);
   }
 }
 

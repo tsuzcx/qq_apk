@@ -12,10 +12,9 @@ import android.support.annotation.Keep;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.system.a;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ad.tangram.util.e;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -89,6 +88,195 @@ public final class AdNet
       return null;
     } while (e.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION"));
     return null;
+  }
+  
+  /* Error */
+  private static int getDataTypeOnAndroidQ(int paramInt)
+  {
+    // Byte code:
+    //   0: new 113	java/lang/Integer
+    //   3: dup
+    //   4: iconst_1
+    //   5: invokespecial 116	java/lang/Integer:<init>	(I)V
+    //   8: astore_3
+    //   9: new 113	java/lang/Integer
+    //   12: dup
+    //   13: iconst_2
+    //   14: invokespecial 116	java/lang/Integer:<init>	(I)V
+    //   17: astore 6
+    //   19: new 113	java/lang/Integer
+    //   22: dup
+    //   23: iconst_3
+    //   24: invokespecial 116	java/lang/Integer:<init>	(I)V
+    //   27: astore 7
+    //   29: new 113	java/lang/Integer
+    //   32: dup
+    //   33: iconst_4
+    //   34: invokespecial 116	java/lang/Integer:<init>	(I)V
+    //   37: astore 8
+    //   39: aload 7
+    //   41: astore 4
+    //   43: aload 6
+    //   45: astore_2
+    //   46: ldc 118
+    //   48: ldc 120
+    //   50: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   53: ldc 118
+    //   55: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   58: astore 5
+    //   60: aload 7
+    //   62: astore 4
+    //   64: aload 6
+    //   66: astore_2
+    //   67: aload 5
+    //   69: astore_3
+    //   70: ldc 118
+    //   72: ldc 131
+    //   74: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   77: ldc 118
+    //   79: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   82: astore 6
+    //   84: aload 7
+    //   86: astore 4
+    //   88: aload 6
+    //   90: astore_2
+    //   91: aload 5
+    //   93: astore_3
+    //   94: ldc 118
+    //   96: ldc 133
+    //   98: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   101: ldc 118
+    //   103: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   106: astore 7
+    //   108: aload 7
+    //   110: astore 4
+    //   112: aload 6
+    //   114: astore_2
+    //   115: aload 5
+    //   117: astore_3
+    //   118: ldc 118
+    //   120: ldc 135
+    //   122: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   125: ldc 118
+    //   127: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   130: astore 9
+    //   132: aload 9
+    //   134: astore 8
+    //   136: aload 5
+    //   138: astore_3
+    //   139: aload 6
+    //   141: astore_2
+    //   142: aload 7
+    //   144: astore 4
+    //   146: aload 8
+    //   148: astore 5
+    //   150: ldc 118
+    //   152: ldc 137
+    //   154: iconst_1
+    //   155: anewarray 82	java/lang/Class
+    //   158: dup
+    //   159: iconst_0
+    //   160: getstatic 141	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   163: aastore
+    //   164: invokevirtual 145	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   167: ldc 118
+    //   169: iconst_1
+    //   170: anewarray 4	java/lang/Object
+    //   173: dup
+    //   174: iconst_0
+    //   175: iload_0
+    //   176: invokestatic 149	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   179: aastore
+    //   180: invokevirtual 155	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   183: astore 6
+    //   185: aload 6
+    //   187: aload_3
+    //   188: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   191: istore_1
+    //   192: iload_1
+    //   193: ifeq +23 -> 216
+    //   196: iconst_2
+    //   197: ireturn
+    //   198: astore 5
+    //   200: ldc 16
+    //   202: ldc 160
+    //   204: aload 5
+    //   206: invokestatic 163	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   209: aload 8
+    //   211: astore 5
+    //   213: goto -63 -> 150
+    //   216: aload 6
+    //   218: aload_2
+    //   219: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   222: ifeq +5 -> 227
+    //   225: iconst_3
+    //   226: ireturn
+    //   227: aload 6
+    //   229: aload 4
+    //   231: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   234: ifeq +5 -> 239
+    //   237: iconst_4
+    //   238: ireturn
+    //   239: aload 6
+    //   241: aload 5
+    //   243: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   246: istore_1
+    //   247: iload_1
+    //   248: ifeq +6 -> 254
+    //   251: bipush 7
+    //   253: ireturn
+    //   254: iconst_0
+    //   255: ireturn
+    //   256: astore_2
+    //   257: ldc 16
+    //   259: ldc 160
+    //   261: aload_2
+    //   262: invokestatic 163	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   265: iconst_0
+    //   266: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	267	0	paramInt	int
+    //   191	57	1	bool	boolean
+    //   45	174	2	localObject1	Object
+    //   256	6	2	localThrowable1	Throwable
+    //   8	180	3	localObject2	Object
+    //   41	189	4	localObject3	Object
+    //   58	91	5	localObject4	Object
+    //   198	7	5	localThrowable2	Throwable
+    //   211	31	5	localObject5	Object
+    //   17	223	6	localObject6	Object
+    //   27	116	7	localObject7	Object
+    //   37	173	8	localObject8	Object
+    //   130	3	9	localObject9	Object
+    // Exception table:
+    //   from	to	target	type
+    //   46	60	198	java/lang/Throwable
+    //   70	84	198	java/lang/Throwable
+    //   94	108	198	java/lang/Throwable
+    //   118	132	198	java/lang/Throwable
+    //   150	192	256	java/lang/Throwable
+    //   216	225	256	java/lang/Throwable
+    //   227	237	256	java/lang/Throwable
+    //   239	247	256	java/lang/Throwable
+  }
+  
+  private static int getDataTypeOnAndroidR(int paramInt)
+  {
+    long l = a.getBitMaskForNetworkType(paramInt);
+    if ((0x804B & l) != 0L) {
+      return 2;
+    }
+    if ((0x16BB4 & l) != 0L) {
+      return 3;
+    }
+    if ((0x61000 & l) != 0L) {
+      return 4;
+    }
+    if ((l & 0x80000) != 0L) {
+      return 7;
+    }
+    return 0;
   }
   
   public static int getIpFamily(Context paramContext)
@@ -210,178 +398,17 @@ public final class AdNet
     }
   }
   
-  /* Error */
   public static int getType(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +5 -> 6
-    //   4: iconst_0
-    //   5: ireturn
-    //   6: aload_0
-    //   7: invokevirtual 72	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   10: astore 7
-    //   12: aload 7
-    //   14: ifnonnull +5 -> 19
-    //   17: iconst_0
-    //   18: ireturn
-    //   19: new 118	java/lang/Integer
-    //   22: dup
-    //   23: iconst_1
-    //   24: invokespecial 258	java/lang/Integer:<init>	(I)V
-    //   27: astore_2
-    //   28: new 118	java/lang/Integer
-    //   31: dup
-    //   32: iconst_2
-    //   33: invokespecial 258	java/lang/Integer:<init>	(I)V
-    //   36: astore 4
-    //   38: new 118	java/lang/Integer
-    //   41: dup
-    //   42: iconst_3
-    //   43: invokespecial 258	java/lang/Integer:<init>	(I)V
-    //   46: astore 5
-    //   48: aload 4
-    //   50: astore_0
-    //   51: ldc 250
-    //   53: ldc_w 260
-    //   56: invokevirtual 264	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   59: ldc 250
-    //   61: invokevirtual 269	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   64: astore_3
-    //   65: aload 4
-    //   67: astore_0
-    //   68: aload_3
-    //   69: astore_2
-    //   70: ldc 250
-    //   72: ldc_w 271
-    //   75: invokevirtual 264	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   78: ldc 250
-    //   80: invokevirtual 269	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   83: astore 4
-    //   85: aload 4
-    //   87: astore_0
-    //   88: aload_3
-    //   89: astore_2
-    //   90: ldc 250
-    //   92: ldc_w 273
-    //   95: invokevirtual 264	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   98: ldc 250
-    //   100: invokevirtual 269	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   103: astore 6
-    //   105: aload 4
-    //   107: astore_2
-    //   108: aload 6
-    //   110: astore_0
-    //   111: aload 7
-    //   113: ldc 134
-    //   115: invokevirtual 78	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   118: checkcast 136	android/net/ConnectivityManager
-    //   121: astore 4
-    //   123: aload 4
-    //   125: ifnonnull +25 -> 150
-    //   128: iconst_0
-    //   129: ireturn
-    //   130: astore_3
-    //   131: ldc 16
-    //   133: ldc_w 274
-    //   136: aload_3
-    //   137: invokestatic 179	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   140: aload_2
-    //   141: astore_3
-    //   142: aload_0
-    //   143: astore_2
-    //   144: aload 5
-    //   146: astore_0
-    //   147: goto -36 -> 111
-    //   150: aload 4
-    //   152: invokevirtual 278	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
-    //   155: astore 4
-    //   157: aload 4
-    //   159: ifnonnull +5 -> 164
-    //   162: iconst_0
-    //   163: ireturn
-    //   164: aload 4
-    //   166: invokevirtual 282	android/net/NetworkInfo:getType	()I
-    //   169: tableswitch	default:+132 -> 301, 0:+43->212, 1:+134->303, 2:+43->212, 3:+43->212, 4:+43->212, 5:+43->212, 6:+134->303
-    //   213: <illegal opcode>
-    //   214: ldc_w 284
-    //   217: iconst_1
-    //   218: anewarray 82	java/lang/Class
-    //   221: dup
-    //   222: iconst_0
-    //   223: getstatic 288	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   226: aastore
-    //   227: invokevirtual 292	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   230: ldc 250
-    //   232: iconst_1
-    //   233: anewarray 4	java/lang/Object
-    //   236: dup
-    //   237: iconst_0
-    //   238: aload 4
-    //   240: invokevirtual 295	android/net/NetworkInfo:getSubtype	()I
-    //   243: invokestatic 122	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   246: aastore
-    //   247: invokevirtual 301	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   250: astore 4
-    //   252: aload 4
-    //   254: aload_3
-    //   255: invokevirtual 305	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   258: ifeq +5 -> 263
-    //   261: iconst_2
-    //   262: ireturn
-    //   263: aload 4
-    //   265: aload_2
-    //   266: invokevirtual 305	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   269: ifeq +5 -> 274
-    //   272: iconst_3
-    //   273: ireturn
-    //   274: aload 4
-    //   276: aload_0
-    //   277: invokevirtual 305	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   280: istore_1
-    //   281: iload_1
-    //   282: ifeq +5 -> 287
-    //   285: iconst_4
-    //   286: ireturn
-    //   287: iconst_0
-    //   288: ireturn
-    //   289: astore_0
-    //   290: ldc 16
-    //   292: ldc_w 274
-    //   295: aload_0
-    //   296: invokestatic 109	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   299: iconst_0
-    //   300: ireturn
-    //   301: iconst_0
-    //   302: ireturn
-    //   303: iconst_1
-    //   304: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	305	0	paramContext	Context
-    //   280	2	1	bool	boolean
-    //   27	239	2	localObject1	Object
-    //   64	25	3	localObject2	Object
-    //   130	7	3	localThrowable	Throwable
-    //   141	114	3	localObject3	Object
-    //   36	239	4	localObject4	Object
-    //   46	99	5	localInteger	Integer
-    //   103	6	6	localObject5	Object
-    //   10	102	7	localContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   51	65	130	java/lang/Throwable
-    //   70	85	130	java/lang/Throwable
-    //   90	105	130	java/lang/Throwable
-    //   111	123	289	java/lang/Throwable
-    //   150	157	289	java/lang/Throwable
-    //   164	212	289	java/lang/Throwable
-    //   212	261	289	java/lang/Throwable
-    //   263	272	289	java/lang/Throwable
-    //   274	281	289	java/lang/Throwable
+    int j = getTypeInternal(paramContext);
+    int i = j;
+    if (j == 7) {
+      i = 0;
+    }
+    return i;
   }
   
-  public static int getTypeWith5G(Context paramContext)
+  private static int getTypeInternal(Context paramContext)
   {
     if (paramContext == null) {
       return 0;
@@ -390,84 +417,49 @@ public final class AdNet
     if (localContext == null) {
       return 0;
     }
-    Object localObject2 = new Integer(1);
-    Object localObject3 = new Integer(2);
-    Object localObject6 = new Integer(3);
-    Integer localInteger = new Integer(4);
-    Object localObject1 = localObject6;
-    paramContext = (Context)localObject3;
-    for (;;)
+    try
     {
-      try
-      {
-        localObject5 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_2_G").get(TelephonyManager.class);
-        localObject1 = localObject6;
-        paramContext = (Context)localObject3;
-        localObject2 = localObject5;
-        localObject3 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_3_G").get(TelephonyManager.class);
-        localObject1 = localObject6;
-        paramContext = (Context)localObject3;
-        localObject2 = localObject5;
-        localObject6 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_4_G").get(TelephonyManager.class);
-        localObject1 = localObject6;
-        paramContext = (Context)localObject3;
-        localObject2 = localObject5;
-        Object localObject7 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_5_G").get(TelephonyManager.class);
-        localObject1 = localObject6;
-        paramContext = localObject7;
-        localObject2 = localObject3;
-        localObject3 = localObject5;
-      }
-      catch (Throwable localThrowable)
-      {
-        Object localObject4 = localObject2;
-        Object localObject5 = localInteger;
-        localObject2 = paramContext;
-        paramContext = (Context)localObject5;
-        continue;
+      Object localObject = (ConnectivityManager)ConnectivityManager.class.cast(localContext.getSystemService("connectivity"));
+      if (localObject == null) {
         return 0;
       }
-      try
-      {
-        localObject5 = (ConnectivityManager)localContext.getSystemService("connectivity");
-        if (localObject5 == null) {
-          return 0;
-        }
-        localObject5 = ((ConnectivityManager)localObject5).getActiveNetworkInfo();
-        if (localObject5 == null) {
-          return 0;
-        }
-        switch (((NetworkInfo)localObject5).getType())
-        {
-        case 0: 
-        case 2: 
-        case 3: 
-        case 4: 
-        case 5: 
-          localObject5 = TelephonyManager.class.getDeclaredMethod("getNetworkClass", new Class[] { Integer.TYPE }).invoke(TelephonyManager.class, new Object[] { Integer.valueOf(((NetworkInfo)localObject5).getSubtype()) });
-          if (localObject5.equals(localObject3)) {
-            return 2;
-          }
-          if (localObject5.equals(localObject2)) {
-            return 3;
-          }
-          if (localObject5.equals(localObject1)) {
-            return 4;
-          }
-          boolean bool = localObject5.equals(paramContext);
-          if (bool) {
-            return 7;
-          }
-          return 0;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        AdLog.e("AdNet", "getType", paramContext);
+      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+      if (localObject == null) {
         return 0;
+      }
+      switch (((NetworkInfo)localObject).getType())
+      {
+      case 0: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+        if (Build.VERSION.SDK_INT <= 29) {
+          return getDataTypeOnAndroidQ(((NetworkInfo)localObject).getSubtype());
+        }
+        if (!e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE")) {
+          return 0;
+        }
+        paramContext = (TelephonyManager)TelephonyManager.class.cast(localContext.getSystemService("phone"));
+        if (paramContext == null) {
+          return 0;
+        }
+        int i = getDataTypeOnAndroidR(paramContext.getNetworkType());
+        return i;
       }
     }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AdNet", "getTypeInternal", paramContext);
+      return 0;
+    }
+    return 0;
     return 1;
+  }
+  
+  public static int getTypeWith5G(Context paramContext)
+  {
+    return getType(paramContext);
   }
   
   public static String getUserAgent()

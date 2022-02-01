@@ -1,27 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.util.Comparator;
 
 class aqvw
-  extends Handler
+  implements Comparator<Rect>
 {
-  aqvw(aqvu paramaqvu, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aqvw(aqvt paramaqvt) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    switch (paramMessage.what)
-    {
-    }
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
     do
     {
-      return;
-    } while (aqvu.a(this.a));
-    QLog.e("CameraHelper", 1, "checkPermission uncertain");
-    aqvu.a(this.a, false, 1830004);
+      return -1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return 1;
+      }
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return 1;
+    }
+    return 0;
   }
 }
 

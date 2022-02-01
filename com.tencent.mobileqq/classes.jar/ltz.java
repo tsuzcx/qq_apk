@@ -1,137 +1,38 @@
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
+import java.util.List;
 
-public abstract class ltz
+public abstract interface ltz
 {
-  public float a;
-  public int a;
-  public long a;
-  public Matrix a;
-  public Rect a;
-  public luz a;
-  public float b;
-  public float c;
-  public float d = 1.0F;
+  public abstract void a();
   
-  public ltz()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
+  public abstract void a(int paramInt);
   
-  public float a()
-  {
-    return this.d;
-  }
+  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
   
-  protected float a(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 + paramInt2) / 2;
-  }
+  public abstract void a(int paramInt, lua paramlua);
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
+  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preRotate(this.c, this.jdField_a_of_type_Float, this.b);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(this.d, this.d, this.jdField_a_of_type_Float, this.b);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(float paramFloat)
-  {
-    if (this.c != paramFloat)
-    {
-      this.c = paramFloat;
-      a();
-    }
-  }
+  public abstract boolean a();
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void b();
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = 1;
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    float f1 = a(paramInt1, paramInt3);
-    float f2 = b(paramInt2, paramInt4);
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_Float != f1)
-    {
-      this.jdField_a_of_type_Float = f1;
-      paramInt1 = 1;
-    }
-    if (this.b != f2)
-    {
-      this.b = f2;
-      paramInt1 = i;
-    }
-    for (;;)
-    {
-      if (paramInt1 != 0) {
-        a();
-      }
-      return;
-    }
-  }
+  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
   
-  public abstract void a(long paramLong);
+  public abstract void d();
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_Luz != null)
-    {
-      paramCanvas.save();
-      paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      paramPaint.setAlpha(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Luz.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
-      paramCanvas.restore();
-    }
-  }
+  public abstract void e();
   
-  protected float b(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 + paramInt2) / 2;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Luz != null)
-    {
-      this.jdField_a_of_type_Luz.a();
-      this.jdField_a_of_type_Luz = null;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = null;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void b(float paramFloat)
-  {
-    if (this.d != paramFloat)
-    {
-      this.d = paramFloat;
-      a();
-    }
-  }
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ltz
  * JD-Core Version:    0.7.0.1
  */

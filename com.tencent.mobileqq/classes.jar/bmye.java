@@ -1,8 +1,33 @@
-public abstract interface bmye
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
+
+public class bmye
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  public bmye(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
   
-  public abstract void b();
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AEAlbumLinearLayout.a(this.a, 0);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.b(this.a)));
+    }
+    AEAlbumLinearLayout.a(this.a, 0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.b(this.a));
+    }
+  }
 }
 
 

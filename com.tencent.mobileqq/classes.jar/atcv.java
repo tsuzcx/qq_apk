@@ -1,33 +1,22 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewStub;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class atcv
-  implements RadioGroup.OnCheckedChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public atcv(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public atcv(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      asgv.a().a(0);
-      continue;
-      asgv.a().a(1);
-      continue;
-      asgv.a().a(2);
-    }
+    FileAssistantActivity.a(this.a).getLayoutParams().height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    FileAssistantActivity.a(this.a).requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcv
  * JD-Core Version:    0.7.0.1
  */

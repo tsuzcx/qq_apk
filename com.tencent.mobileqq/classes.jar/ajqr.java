@@ -1,22 +1,30 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoListLogicBase;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ajqr
-  extends axkw
+  implements ajwx
 {
-  public ajqr(NewPhotoListActivity paramNewPhotoListActivity) {}
+  public ajqr(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  protected void onGetQZoneAlbumListNum(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
-      ((ajrc)this.a.mPhotoListLogic.mOtherCommonData).a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
+    case 4: 
+      this.a.n();
+      return;
     }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a);
+    this.a.o();
   }
 }
 

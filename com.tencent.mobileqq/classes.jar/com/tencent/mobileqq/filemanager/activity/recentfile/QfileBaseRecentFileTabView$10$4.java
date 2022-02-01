@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import arzv;
+import ateb;
 
 public class QfileBaseRecentFileTabView$10$4
   implements Runnable
 {
-  public QfileBaseRecentFileTabView$10$4(arzv paramarzv) {}
+  public QfileBaseRecentFileTabView$10$4(ateb paramateb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QfileBaseRecentFileTabView$10$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.4
  * JD-Core Version:    0.7.0.1
  */

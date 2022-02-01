@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.NamePlateCfgInfo;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afqt
-  implements afrb, afrc, afrq
+  implements View.OnClickListener
 {
-  private final BaseChatPie a;
+  public afqt(BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public afqt(afqw paramafqw, BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    this.a = paramBaseChatPie;
-    paramafqw.a(this);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public int[] a()
-  {
-    return new int[0];
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 2) {
-      atyf.a("0", "1", "176", "969", "96902", "207497", "", "0", "20", "0");
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof NamePlateCfgInfo)))
+    {
+      NamePlateCfgInfo localNamePlateCfgInfo = (NamePlateCfgInfo)paramView.getTag();
+      if ((localNamePlateCfgInfo.mVipType != 3) && (localNamePlateCfgInfo.mVipType != 259)) {
+        break label106;
+      }
+      VipUtils.a(BaseActivity.sTopActivity.app, this.a.getContext(), localNamePlateCfgInfo.mVipType, localNamePlateCfgInfo.mNamePlateId, "mios.p.cl.cztx_qlncmp");
     }
-    while (paramInt != 3) {
+    for (;;)
+    {
+      bdla.b(BaseActivity.sTopActivity.app, "dc00898", "", "", "qq_vip", "0X8009CAB", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label106:
+      VipUtils.b(BaseActivity.sTopActivity.app, this.a.getContext(), "mios.p.cl.cztx_qlncmp");
     }
-    atyf.a("0", "1", "176", "969", "96902", "207496", "", "0", "20", "0");
   }
 }
 

@@ -1,107 +1,83 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 
 public class ywm
-  implements BusinessObserver
 {
-  public ywm(QRJumpActivity paramQRJumpActivity, String paramString1, String paramString2, Activity paramActivity, String paramString3) {}
+  public Handler a;
+  public HandlerThread a;
+  public ywn a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ywm()
   {
-    Object localObject1 = null;
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
+  }
+  
+  private float a(Bitmap paramBitmap)
+  {
+    int i1 = paramBitmap.getHeight() / 16;
+    int i2 = paramBitmap.getWidth() / 9;
+    int k = 0;
     int i = 0;
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.isFinishing()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive suc=%b ", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if ((paramBoolean) && (paramBundle != null))
+    int j = 0;
+    while (k < paramBitmap.getHeight())
     {
-      paramBundle = paramBundle.getString("result");
-      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive result=%s", new Object[] { paramBundle }));
-    }
-    for (;;)
-    {
-      try
+      int m = 0;
+      if (m < paramBitmap.getWidth())
       {
-        Object localObject2 = new JSONObject(paramBundle);
-        yuy localyuy;
-        if (((JSONObject)localObject2).getInt("r") == 0) {
-          localyuy = new yuy(((JSONObject)localObject2).getString("d"));
-        }
-        boolean bool;
-        Bundle localBundle;
-        paramBundle = null;
-      }
-      catch (Exception paramBundle)
-      {
-        try
+        int n = paramBitmap.getPixel(m, k);
+        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
         {
-          if (((JSONObject)localObject2).has("wpa"))
-          {
-            paramBoolean = "1".equals(((JSONObject)localObject2).getString("wpa"));
-            bool = ((JSONObject)localObject2).has("extvalue");
-            paramInt = i;
-            if (((JSONObject)localObject2).has("exttype"))
-            {
-              if ("2".equals(((JSONObject)localObject2).getString("exttype"))) {
-                break label353;
-              }
-              paramInt = i;
-              if ("1".equals(((JSONObject)localObject2).getString("exttype"))) {
-                break label353;
-              }
-            }
-            paramBundle = new Bundle();
-            if (paramBoolean) {}
-            try
-            {
-              paramBundle.putBoolean("issupportwpa", paramBoolean);
-              if ((paramInt != 0) && (bool))
-              {
-                localObject1 = ((JSONObject)localObject2).getString("exttype");
-                localObject2 = ((JSONObject)localObject2).getString("extvalue");
-                paramBundle.putString("exttype", (String)localObject1);
-                paramBundle.putString("extvalue", (String)localObject2);
-              }
-              paramBundle.putString("authKey", this.jdField_a_of_type_JavaLangString);
-              paramBundle.putString("authSig", this.b);
-              localObject1 = paramBundle;
-              paramBundle = localyuy;
-            }
-            catch (Exception localException)
-            {
-              localBundle = paramBundle;
-              paramBundle = localyuy;
-              continue;
-            }
-            if (localObject1 != null) {
-              yvc.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.app, this.jdField_a_of_type_AndroidAppActivity, paramBundle, this.c, (Bundle)localObject1);
-            }
-            this.jdField_a_of_type_AndroidAppActivity.finish();
-            return;
-            paramBundle = paramBundle;
-            paramBundle = null;
-            continue;
-          }
+          n = j + 1;
+          j = i;
         }
-        catch (Exception paramBundle)
+        for (i = n;; i = n)
         {
-          paramBundle = localyuy;
-          continue;
-          paramBoolean = false;
-          continue;
+          n = m + i2;
+          m = i;
+          i = j;
+          j = m;
+          m = n;
+          break;
+          n = j;
+          j = i + 1;
         }
       }
-      continue;
-      label353:
-      paramInt = 1;
+      k += i1;
     }
+    float f = j / (i + j);
+    ykq.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
+    return f;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_Ywn = new ywn(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, ywk<Boolean, ywq> paramywk, ywk<Boolean, ywp> paramywk1)
+  {
+    ywo localywo = new ywo();
+    localywo.jdField_a_of_type_JavaLangString = paramString1;
+    localywo.jdField_b_of_type_JavaLangString = paramString2;
+    localywo.jdField_a_of_type_Boolean = paramBoolean1;
+    localywo.jdField_a_of_type_Int = paramInt1;
+    localywo.jdField_b_of_type_Int = paramInt2;
+    localywo.c = paramInt3;
+    localywo.d = paramInt4;
+    localywo.jdField_b_of_type_Boolean = paramBoolean2;
+    localywo.jdField_b_of_type_Ywk = paramywk;
+    localywo.jdField_a_of_type_Ywk = paramywk1;
+    Message.obtain(this.jdField_a_of_type_Ywn, 1, localywo).sendToTarget();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
 }
 

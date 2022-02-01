@@ -1,41 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
-class axdp
-  implements View.OnClickListener
+public class axdp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  axdp(axdo paramaxdo, Context paramContext, axfs paramaxfs, axdv paramaxdv) {}
+  public axdp(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    String str1 = this.jdField_a_of_type_Axfs.h;
-    String str2 = this.jdField_a_of_type_Axfs.i;
-    Object localObject2 = this.jdField_a_of_type_Axfs.k;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      localObject1 = this.jdField_a_of_type_Axfs.j;
-      localIntent.putExtra("url", String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str2, str1, localObject1, localObject2 }));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      localObject2 = new bcek(this.jdField_a_of_type_Axdo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(this.jdField_a_of_type_Axdv.jdField_a_of_type_Axfs.e));
-      if (!this.jdField_a_of_type_Axdo.jdField_a_of_type_Boolean) {
-        break label220;
-      }
-    }
-    label220:
-    for (Object localObject1 = "1";; localObject1 = "2")
-    {
-      ((bcek)localObject2).a(new String[] { localObject1, "", "", this.jdField_a_of_type_Axdv.jdField_a_of_type_Axfs.c }).a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject1 = localObject2;
-      break;
-    }
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((0.0F - this.jdField_a_of_type_Int) * f1));
+    paramValueAnimator.topMargin = (this.b + Math.round((this.c - this.b) * f1));
+    paramValueAnimator.width = (this.d + Math.round((this.e - this.d) * f1));
+    int i = this.f;
+    paramValueAnimator.height = (Math.round(f1 * (this.g - this.f)) + i);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

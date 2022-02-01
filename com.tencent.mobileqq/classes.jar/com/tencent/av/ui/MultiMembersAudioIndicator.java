@@ -10,7 +10,7 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import mes;
+import mfo;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
@@ -34,19 +34,19 @@ public class MultiMembersAudioIndicator
   
   public RadioButton a()
   {
-    mes localmes = new mes(this, super.getContext());
-    localmes.setButtonDrawable(2130842207);
-    localmes.setGravity(17);
+    mfo localmfo = new mfo(this, super.getContext());
+    localmfo.setButtonDrawable(2130842221);
+    localmfo.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localmes.setLayoutParams(localLayoutParams);
-    localmes.setClickable(false);
-    localmes.setFocusable(false);
-    return localmes;
+    localmfo.setLayoutParams(localLayoutParams);
+    localmfo.setClickable(false);
+    localmfo.setFocusable(false);
+    return localmfo;
   }
   
   public void a()

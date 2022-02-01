@@ -1,37 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class vtr
-  implements vqp<wel, wgf>
+public class vtr
 {
-  vtr(vtp paramvtp) {}
-  
-  public void a(@NonNull wel paramwel, @Nullable wgf paramwgf, @NonNull ErrorMessage paramErrorMessage)
-  {
-    xvv.b("AddressDataProvider", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramwgf != null))
-    {
-      xvv.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramwgf.toString());
-      this.a.jdField_a_of_type_JavaLangObject = new vts(paramwgf.a, paramwgf.c, paramwgf.d, paramwgf.e, paramwgf.f, paramwel.d, paramwel.e);
-      this.a.a("country", paramwgf.a);
-      this.a.a("province", paramwgf.c);
-      this.a.a("city", paramwgf.d);
-      this.a.a("district", paramwgf.e);
-      this.a.a("street", paramwgf.f);
-      this.a.a("longitude", paramwel.d);
-      this.a.a("latitude", paramwel.e);
-      this.a.a("time", System.currentTimeMillis());
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      xvv.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramwel });
-      this.a.a(false, null);
-    }
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public ZImageView a;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
 }
 
 

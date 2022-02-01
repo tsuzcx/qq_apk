@@ -6,15 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import tdm;
-import tdn;
+import tqx;
+import tqy;
 
 public class ReadInJoySelectPositionHeader
   extends RelativeLayout
 {
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private tdn jdField_a_of_type_Tdn;
+  private tqy jdField_a_of_type_Tqy;
   private TextView b;
   
   public ReadInJoySelectPositionHeader(Context paramContext)
@@ -37,11 +37,11 @@ public class ReadInJoySelectPositionHeader
   
   private void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131560271, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377053));
-    this.b = ((TextView)localView.findViewById(2131367666));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367667));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tdm(this, paramContext));
+    View localView = LayoutInflater.from(paramContext).inflate(2131560317, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377327));
+    this.b = ((TextView)localView.findViewById(2131367802));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367803));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tqx(this, paramContext));
   }
   
   public void setGPSCity(String paramString)
@@ -49,9 +49,9 @@ public class ReadInJoySelectPositionHeader
     this.b.setText(paramString);
   }
   
-  public void setSelectCityListener(tdn paramtdn)
+  public void setSelectCityListener(tqy paramtqy)
   {
-    this.jdField_a_of_type_Tdn = paramtdn;
+    this.jdField_a_of_type_Tqy = paramtqy;
   }
   
   public void setSelectedCity(String paramString)
@@ -61,7 +61,7 @@ public class ReadInJoySelectPositionHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoySelectPositionHeader
  * JD-Core Version:    0.7.0.1
  */

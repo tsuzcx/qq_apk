@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/ew1" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbh"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mkb" android:layout_width="@dimen/bbi" android:layout_height="@dimen/bbi" android:layout_centerInParent="true" app:qqArMapGuideRadius="6">
-        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
-        <ImageView android:id="@id/nh3" android:background="@drawable/ew0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/eq4" android:scaleType="center" />
-        <ImageView android:layout_gravity="right" android:id="@id/nru" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/eqj" />
-        <ImageView android:layout_gravity="right" android:id="@id/nrv" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/eqk" />
-        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+<RelativeLayout android:background="#66000000" android:paddingBottom="@dimen/b_a" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/n5z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ProgressBar android:id="@id/g1f" android:layout_width="30.0dip" android:layout_height="30.0dip" style="@style/l8" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/jfb" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="10.0dip" android:text="@string/wbw" android:maxLines="1" android:singleLine="true" />
+        </LinearLayout>
+        <Button android:textSize="14.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/mli" android:background="@drawable/ewf" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:layout_below="@id/n5z" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </RelativeLayout>

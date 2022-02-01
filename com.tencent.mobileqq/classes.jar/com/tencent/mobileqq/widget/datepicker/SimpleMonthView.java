@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget.datepicker;
 
-import amtj;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -14,7 +13,8 @@ import android.text.format.Time;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bhkw;
+import anvx;
+import bivm;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -59,7 +59,7 @@ public class SimpleMonthView
   private int T = 6;
   protected Paint a;
   final Time jdField_a_of_type_AndroidTextFormatTime = new Time(Time.getCurrentTimezone());
-  private bhkw jdField_a_of_type_Bhkw;
+  private bivm jdField_a_of_type_Bivm;
   private CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
   protected Boolean a;
   private String jdField_a_of_type_JavaLangString;
@@ -158,7 +158,7 @@ public class SimpleMonthView
   {
     int i1;
     MessageRecord localMessageRecord;
-    if ((this.jdField_a_of_type_Bhkw != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
+    if ((this.jdField_a_of_type_Bivm != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
     {
       i1 = 0;
       if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
@@ -171,7 +171,7 @@ public class SimpleMonthView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhkw.a(this, paramCalendarDay, localMessageRecord);
+      this.jdField_a_of_type_Bivm.a(this, paramCalendarDay, localMessageRecord);
       return;
       label129:
       i1 += 1;
@@ -342,7 +342,7 @@ public class SimpleMonthView
         i1 = this.p;
         label504:
         this.jdField_d_of_type_AndroidGraphicsPaint.setColor(i1);
-        paramCanvas.drawText(amtj.a(2131713266), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawText(anvx.a(2131713613), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
         label541:
         if (i7 == 0) {
           break label745;
@@ -543,9 +543,9 @@ public class SimpleMonthView
     this.T = a();
   }
   
-  public void setOnDayClickListener(bhkw parambhkw)
+  public void setOnDayClickListener(bivm parambivm)
   {
-    this.jdField_a_of_type_Bhkw = parambhkw;
+    this.jdField_a_of_type_Bivm = parambivm;
   }
   
   public void setStartAndEndDate(CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)

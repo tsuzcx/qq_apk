@@ -1,42 +1,93 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.CaptureTemplateManager.2;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
+import cooperation.weiyun.channel.pb.WeiyunPB.RspMsgBody;
 
-public class bmsb
-  implements INetEngine.INetEngineListener
+class bmsb<T>
+  implements bmrz
 {
-  public bmsb(CaptureTemplateManager.2 param2) {}
+  private static final String jdField_a_of_type_JavaLangString = anvx.a(2131700451);
+  private final int jdField_a_of_type_Int;
+  private final bmsc<T> jdField_a_of_type_Bmsc;
   
-  public void onResp(NetResp paramNetResp)
+  bmsb(int paramInt, bmsc<T> parambmsc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " resultcode: " + paramNetResp.mHttpCode);
-    }
-    boolean bool = false;
-    if (paramNetResp.mResult == 0)
-    {
-      bool = bmsa.a(this.a.this$0, this.a.a, this.a.b);
-      if (bool)
-      {
-        PreDownloadController localPreDownloadController = (PreDownloadController)this.a.this$0.getApp().getManager(193);
-        if (localPreDownloadController.isEnable()) {
-          localPreDownloadController.preDownloadSuccess(this.a.c, paramNetResp.mTotalFileLen);
-        }
-      }
-    }
-    if (!bool) {
-      bmsa.a(this.a.this$0, this.a.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " downloadSuccess " + bool);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bmsc = parambmsc;
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Bmsc == null) {
+      return;
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      this.jdField_a_of_type_Bmsc.a(paramInt, paramString, null);
+      return;
+    }
+    try
+    {
+      paramString = (WeiyunPB.MsgBody)new WeiyunPB.MsgBody().mergeFrom(paramArrayOfByte);
+      paramString = (WeiyunPB.RspMsgBody)paramString.RspMsg_body.get();
+      if (paramString == null)
+      {
+        bmuc.a().w("BaseCallback", "rspMsgBody is null.");
+        paramString = jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Bmsc.a(1828003, paramString, null);
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      bmuc.a().w("BaseCallback", "decode Rsp Body failed.", paramString);
+      paramString = jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bmsc.a(1828003, paramString, null);
+      return;
+    }
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      paramString = jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Bmsc.a(1828001, paramString, null);
+      return;
+    case 26113: 
+      this.jdField_a_of_type_Bmsc.a(paramString.LibInfoListGetMsgRsp_body);
+      return;
+    case 2402: 
+      this.jdField_a_of_type_Bmsc.a(paramString.DiskFileBatchDownloadMsgRsp_body);
+      return;
+    case 2414: 
+      this.jdField_a_of_type_Bmsc.a(paramString.DiskFileDocDownloadAbsMsgRsp_body);
+      return;
+    case 2509: 
+      this.jdField_a_of_type_Bmsc.a(paramString.DiskDirFileBatchDeleteExMsgRsp_body);
+      return;
+    case 2803: 
+      this.jdField_a_of_type_Bmsc.a(paramString.DiskPicBackupRsp_body);
+      return;
+    case 2804: 
+      this.jdField_a_of_type_Bmsc.a(paramString.DiskAlbumStatusReportRsp_body);
+      return;
+    case 11001: 
+      this.jdField_a_of_type_Bmsc.a(paramString.PwdQueryMsgRsp_body);
+      return;
+    case 11005: 
+      this.jdField_a_of_type_Bmsc.a(paramString.PwdVerifyMsgRsp_body);
+      return;
+    case 245700: 
+      this.jdField_a_of_type_Bmsc.a(paramString.CrossBidProxyCopyFileToOtherBidMsgRsp_body);
+      return;
+    case 245706: 
+      this.jdField_a_of_type_Bmsc.a(paramString.CrossBidProxyOfflineFileGetListMsgRsp_body);
+      return;
+    case 246000: 
+      this.jdField_a_of_type_Bmsc.a(paramString.QqSdkFileUploadMsgRsp_body);
+      return;
+    case 246001: 
+      this.jdField_a_of_type_Bmsc.a(paramString.AioPicAndVideoCopyToWeiyunMsgRsp_body);
+      return;
+    }
+    this.jdField_a_of_type_Bmsc.a(paramString.WeiyunShareAddFromMobileQQMsgRsp_body);
+  }
 }
 
 

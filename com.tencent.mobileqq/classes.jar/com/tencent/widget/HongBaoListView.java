@@ -12,12 +12,12 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import ayhx;
-import ayil;
-import ayjc;
-import bjqy;
-import bjqz;
-import bjsd;
+import azms;
+import azng;
+import aznx;
+import blck;
+import blcl;
+import bldp;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -32,10 +32,10 @@ public class HongBaoListView
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
-  public ayhx a;
-  public ayil a;
-  public bjqz a;
-  bjsd jdField_a_of_type_Bjsd;
+  public azms a;
+  public azng a;
+  public blcl a;
+  bldp jdField_a_of_type_Bldp;
   public float[] a;
   public boolean[] a;
   public int b;
@@ -58,7 +58,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[10];
     this.jdField_a_of_type_ArrayOfFloat = new float[10];
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bjqy(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new blck(this));
   }
   
   public HongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
@@ -68,7 +68,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[10];
     this.jdField_a_of_type_ArrayOfFloat = new float[10];
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bjqy(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new blck(this));
   }
   
   public int a()
@@ -94,7 +94,7 @@ public class HongBaoListView
   
   public void d()
   {
-    super.setOverScrollListener(this.jdField_a_of_type_Bjsd);
+    super.setOverScrollListener(this.jdField_a_of_type_Bldp);
     e();
     setComboListener(null);
     super.setOverscrollHeader(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
@@ -120,9 +120,9 @@ public class HongBaoListView
       if (i2 < 0) {
         n = 0;
       }
-      this.jdField_a_of_type_Ayil.k = (-n);
+      this.jdField_a_of_type_Azng.k = (-n);
       n = i1;
-      if (this.jdField_a_of_type_Ayil.a(paramCanvas)) {
+      if (this.jdField_a_of_type_Azng.a(paramCanvas)) {
         n = 1;
       }
       if (n != 0) {
@@ -137,13 +137,13 @@ public class HongBaoListView
     {
       if (this.m)
       {
-        bjse.jdField_a_of_type_Int = 300;
+        bldq.jdField_a_of_type_Int = 300;
         return;
       }
-      bjse.jdField_a_of_type_Int = 600;
+      bldq.jdField_a_of_type_Int = 600;
       return;
     }
-    bjse.jdField_a_of_type_Int = 400;
+    bldq.jdField_a_of_type_Int = 400;
   }
   
   public void f()
@@ -159,8 +159,8 @@ public class HongBaoListView
   public void g()
   {
     h();
-    this.jdField_a_of_type_Ayil.a(false, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Ayil.c();
+    this.jdField_a_of_type_Azng.a(false, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Azng.c();
     invalidate();
   }
   
@@ -197,9 +197,9 @@ public class HongBaoListView
   
   public void h()
   {
-    this.jdField_a_of_type_Ayil.e();
-    if (this.jdField_a_of_type_Ayil.a != null) {
-      this.jdField_a_of_type_Ayil.a.c();
+    this.jdField_a_of_type_Azng.e();
+    if (this.jdField_a_of_type_Azng.a != null) {
+      this.jdField_a_of_type_Azng.a.c();
     }
   }
   
@@ -230,7 +230,7 @@ public class HongBaoListView
     }
     h();
     this.k = true;
-    this.jdField_a_of_type_Ayil.j = 255;
+    this.jdField_a_of_type_Azng.j = 255;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -239,7 +239,7 @@ public class HongBaoListView
     if ((!this.f) || (this.g)) {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
     }
-    while (!this.jdField_a_of_type_Ayhx.d) {
+    while (!this.jdField_a_of_type_Azms.d) {
       return bool;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -250,10 +250,10 @@ public class HongBaoListView
       return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent.getY();
       this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-      if (this.jdField_a_of_type_Bjqz != null) {
-        this.jdField_a_of_type_Bjqz.a(this);
+      if (this.jdField_a_of_type_Blcl != null) {
+        this.jdField_a_of_type_Blcl.a(this);
       }
-      if ((this.k) && (this.jdField_a_of_type_Ayil != null) && (this.jdField_a_of_type_Ayil.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())))
+      if ((this.k) && (this.jdField_a_of_type_Azng != null) && (this.jdField_a_of_type_Azng.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())))
       {
         if (getScrollY() == 0) {
           this.j = true;
@@ -283,15 +283,15 @@ public class HongBaoListView
         {
           localException.printStackTrace();
         }
-      } while (this.jdField_a_of_type_Bjqz == null);
-      this.jdField_a_of_type_Bjqz.a(paramInt1, paramInt2);
+      } while (this.jdField_a_of_type_Blcl == null);
+      this.jdField_a_of_type_Blcl.a(paramInt1, paramInt2);
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Ayil != null) && (this.jdField_a_of_type_Ayil.a != null)) {
-      this.jdField_a_of_type_Ayil.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((this.jdField_a_of_type_Azng != null) && (this.jdField_a_of_type_Azng.a != null)) {
+      this.jdField_a_of_type_Azng.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -301,7 +301,7 @@ public class HongBaoListView
     if ((!this.f) || (this.g)) {
       bool = super.onTouchEvent(paramMotionEvent);
     }
-    while (!this.jdField_a_of_type_Ayhx.d) {
+    while (!this.jdField_a_of_type_Azms.d) {
       return bool;
     }
     bool = super.onTouchEvent(paramMotionEvent);
@@ -311,8 +311,8 @@ public class HongBaoListView
     for (;;)
     {
       return bool;
-      if (this.jdField_a_of_type_Bjqz != null) {
-        this.jdField_a_of_type_Bjqz.b(this);
+      if (this.jdField_a_of_type_Blcl != null) {
+        this.jdField_a_of_type_Blcl.b(this);
       }
       if (paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int) == -1) {}
       switch (this.mTouchMode)
@@ -322,7 +322,7 @@ public class HongBaoListView
         break;
       case 3: 
       case 5: 
-        if (this.jdField_a_of_type_Bjqz != null)
+        if (this.jdField_a_of_type_Blcl != null)
         {
           int n = paramMotionEvent.getPointerCount();
           if (n > this.jdField_b_of_type_Int) {
@@ -349,7 +349,7 @@ public class HongBaoListView
             if (f1 > this.d / 2)
             {
               setSpringbackOffset(-this.d);
-              this.jdField_a_of_type_Bjqz.c();
+              this.jdField_a_of_type_Blcl.c();
               n = 0;
               while (n < this.jdField_b_of_type_Int)
               {
@@ -357,22 +357,22 @@ public class HongBaoListView
                 n += 1;
               }
             }
-            this.jdField_a_of_type_Bjqz.a();
+            this.jdField_a_of_type_Blcl.a();
             continue;
             if (this.j)
             {
               long l1 = System.currentTimeMillis();
-              if ((this.jdField_a_of_type_Ayil != null) && (l1 - this.jdField_a_of_type_Long > 800L) && (getScrollY() == 0))
+              if ((this.jdField_a_of_type_Azng != null) && (l1 - this.jdField_a_of_type_Long > 800L) && (getScrollY() == 0))
               {
                 this.jdField_a_of_type_Long = l1;
-                if (this.jdField_a_of_type_Ayil.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-                  this.jdField_a_of_type_Bjqz.b();
+                if (this.jdField_a_of_type_Azng.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+                  this.jdField_a_of_type_Blcl.b();
                 }
               }
             }
             this.j = false;
-            if (this.jdField_a_of_type_Bjqz != null) {
-              this.jdField_a_of_type_Bjqz.c(this);
+            if (this.jdField_a_of_type_Blcl != null) {
+              this.jdField_a_of_type_Blcl.c(this);
             }
             this.jdField_a_of_type_Int = -1;
             continue;
@@ -402,9 +402,9 @@ public class HongBaoListView
     }
   }
   
-  public void setComboListener(bjqz parambjqz)
+  public void setComboListener(blcl paramblcl)
   {
-    this.jdField_a_of_type_Bjqz = parambjqz;
+    this.jdField_a_of_type_Blcl = paramblcl;
   }
   
   public void setContentBackground(Drawable paramDrawable)
@@ -430,8 +430,8 @@ public class HongBaoListView
   
   public void setLogo(Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ayil != null) {
-      this.jdField_a_of_type_Ayil.a(paramBoolean, paramBitmap);
+    if (this.jdField_a_of_type_Azng != null) {
+      this.jdField_a_of_type_Azng.a(paramBoolean, paramBitmap);
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     invalidate();
@@ -453,17 +453,17 @@ public class HongBaoListView
     super.setOverScrollHeader(paramView);
   }
   
-  public void setOverScrollListener(bjsd parambjsd)
+  public void setOverScrollListener(bldp parambldp)
   {
-    if (parambjsd != null) {
-      this.jdField_a_of_type_Bjsd = parambjsd;
+    if (parambldp != null) {
+      this.jdField_a_of_type_Bldp = parambldp;
     }
     if (this.mForHongBao)
     {
       super.setOverScrollListener(null);
       return;
     }
-    super.setOverScrollListener(parambjsd);
+    super.setOverScrollListener(parambldp);
   }
   
   public void setOverscrollHeader(Drawable paramDrawable)
@@ -483,7 +483,7 @@ public class HongBaoListView
   {
     if (paramBoolean)
     {
-      this.mOverScrollHeaderShadow = getResources().getDrawable(2130840564);
+      this.mOverScrollHeaderShadow = getResources().getDrawable(2130840603);
       return;
     }
     this.mOverScrollHeaderShadow = null;
@@ -496,7 +496,7 @@ public class HongBaoListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.HongBaoListView
  * JD-Core Version:    0.7.0.1
  */

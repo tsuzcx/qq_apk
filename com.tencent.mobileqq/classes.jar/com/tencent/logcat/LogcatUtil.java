@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import bcfa;
+import bdlv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,7 +30,7 @@ public class LogcatUtil
   private static void a()
   {
     QLog.e("LogcatUtil", 1, "get trace file begin");
-    String str2 = bcfa.a(String.valueOf(100));
+    String str2 = bdlv.a(String.valueOf(100));
     StringBuilder localStringBuilder = new StringBuilder(50);
     localStringBuilder.append("AdditionInfo:0|");
     String str1 = "";
@@ -68,7 +68,7 @@ public class LogcatUtil
     localStringBuilder.append((String)localObject3).append("|").append((String)localObject1).append("|");
     localStringBuilder.append("|").append("pub").append("|").append(System.currentTimeMillis());
     localStringBuilder.append("|").append(100).append("|").append(Build.MODEL).append("|").append(Build.VERSION.RELEASE);
-    i = bcfa.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
+    i = bdlv.a(BaseApplicationImpl.getContext(), str2, localStringBuilder.toString());
     if (i == 1)
     {
       bool = true;
@@ -76,7 +76,7 @@ public class LogcatUtil
       if (i == 1) {
         break label332;
       }
-      bool = bcfa.a(str2, localStringBuilder.toString());
+      bool = bdlv.a(str2, localStringBuilder.toString());
       QLog.e("LogcatUtil", 1, new Object[] { "get trace file fileName = ", str2, ",get java trace status=", Boolean.valueOf(bool) });
     }
   }
@@ -150,13 +150,13 @@ public class LogcatUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 7
+    //   1: astore 8
     //   3: aconst_null
     //   4: astore 5
     //   6: aconst_null
     //   7: astore 9
     //   9: aconst_null
-    //   10: astore 8
+    //   10: astore 7
     //   12: iconst_0
     //   13: istore_2
     //   14: aload_1
@@ -274,19 +274,19 @@ public class LogcatUtil
     //   253: dup
     //   254: getstatic 46	com/tencent/logcat/LogcatUtil:b	Ljava/lang/String;
     //   257: invokespecial 316	java/io/File:<init>	(Ljava/lang/String;)V
-    //   260: astore 11
+    //   260: astore 10
     //   262: aload 9
     //   264: astore 5
     //   266: aload_1
     //   267: astore 6
-    //   269: aload 11
+    //   269: aload 10
     //   271: invokevirtual 319	java/io/File:exists	()Z
     //   274: ifne +120 -> 394
     //   277: aload 9
     //   279: astore 5
     //   281: aload_1
     //   282: astore 6
-    //   284: aload 11
+    //   284: aload 10
     //   286: invokevirtual 322	java/io/File:mkdirs	()Z
     //   289: pop
     //   290: aload 9
@@ -297,7 +297,7 @@ public class LogcatUtil
     //   300: dup
     //   301: new 27	java/io/File
     //   304: dup
-    //   305: aload 11
+    //   305: aload 10
     //   307: aload 4
     //   309: invokespecial 291	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   312: invokespecial 325	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
@@ -345,16 +345,16 @@ public class LogcatUtil
     //   396: astore 5
     //   398: aload_1
     //   399: astore 6
-    //   401: aload 11
+    //   401: aload 10
     //   403: invokevirtual 192	java/io/File:listFiles	()[Ljava/io/File;
-    //   406: astore 10
-    //   408: aload 10
+    //   406: astore 11
+    //   408: aload 11
     //   410: ifnull -120 -> 290
     //   413: aload 9
     //   415: astore 5
     //   417: aload_1
     //   418: astore 6
-    //   420: aload 10
+    //   420: aload 11
     //   422: arraylength
     //   423: istore_3
     //   424: iload_2
@@ -364,7 +364,7 @@ public class LogcatUtil
     //   431: astore 5
     //   433: aload_1
     //   434: astore 6
-    //   436: aload 10
+    //   436: aload 11
     //   438: iload_2
     //   439: aaload
     //   440: invokevirtual 343	java/io/File:delete	()Z
@@ -406,111 +406,115 @@ public class LogcatUtil
     //   510: astore 4
     //   512: aconst_null
     //   513: astore_1
-    //   514: aload 7
-    //   516: astore 5
-    //   518: aload_1
-    //   519: astore 6
-    //   521: ldc 68
-    //   523: iconst_1
-    //   524: ldc_w 336
-    //   527: aload 4
-    //   529: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   532: aload_1
-    //   533: ifnull +7 -> 540
+    //   514: aload 8
+    //   516: astore 7
+    //   518: aload 7
+    //   520: astore 5
+    //   522: aload_1
+    //   523: astore 6
+    //   525: ldc 68
+    //   527: iconst_1
+    //   528: ldc_w 336
+    //   531: aload 4
+    //   533: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   536: aload_1
-    //   537: invokevirtual 339	java/io/FileInputStream:close	()V
-    //   540: aload 7
-    //   542: ifnull -365 -> 177
-    //   545: aload 7
-    //   547: invokevirtual 340	java/io/FileOutputStream:close	()V
-    //   550: return
-    //   551: astore_1
-    //   552: aload_1
-    //   553: invokevirtual 305	java/io/IOException:printStackTrace	()V
-    //   556: return
-    //   557: astore_1
-    //   558: aload_1
-    //   559: invokevirtual 305	java/io/IOException:printStackTrace	()V
-    //   562: goto -22 -> 540
-    //   565: astore 4
-    //   567: aconst_null
-    //   568: astore_1
-    //   569: aload_1
-    //   570: ifnull +7 -> 577
+    //   537: ifnull +7 -> 544
+    //   540: aload_1
+    //   541: invokevirtual 339	java/io/FileInputStream:close	()V
+    //   544: aload 7
+    //   546: ifnull -369 -> 177
+    //   549: aload 7
+    //   551: invokevirtual 340	java/io/FileOutputStream:close	()V
+    //   554: return
+    //   555: astore_1
+    //   556: aload_1
+    //   557: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   560: return
+    //   561: astore_1
+    //   562: aload_1
+    //   563: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   566: goto -22 -> 544
+    //   569: astore 4
+    //   571: aconst_null
+    //   572: astore_1
     //   573: aload_1
-    //   574: invokevirtual 339	java/io/FileInputStream:close	()V
-    //   577: aload 5
-    //   579: ifnull +8 -> 587
-    //   582: aload 5
-    //   584: invokevirtual 340	java/io/FileOutputStream:close	()V
-    //   587: aload 4
-    //   589: athrow
-    //   590: astore_1
-    //   591: aload_1
-    //   592: invokevirtual 305	java/io/IOException:printStackTrace	()V
-    //   595: goto -18 -> 577
-    //   598: astore_1
-    //   599: aload_1
-    //   600: invokevirtual 305	java/io/IOException:printStackTrace	()V
-    //   603: goto -16 -> 587
-    //   606: astore 4
-    //   608: aload 6
-    //   610: astore_1
-    //   611: goto -42 -> 569
-    //   614: astore 6
-    //   616: aload 4
-    //   618: astore 5
-    //   620: aload 6
-    //   622: astore 4
-    //   624: goto -55 -> 569
-    //   627: astore 4
-    //   629: goto -60 -> 569
-    //   632: astore 4
-    //   634: goto -120 -> 514
-    //   637: astore 5
-    //   639: aload 4
-    //   641: astore 7
-    //   643: aload 5
-    //   645: astore 4
-    //   647: goto -133 -> 514
-    //   650: astore 4
-    //   652: aconst_null
-    //   653: astore_1
-    //   654: aload 8
-    //   656: astore 5
-    //   658: goto -300 -> 358
-    //   661: astore 4
-    //   663: aload 8
-    //   665: astore 5
-    //   667: goto -309 -> 358
+    //   574: ifnull +7 -> 581
+    //   577: aload_1
+    //   578: invokevirtual 339	java/io/FileInputStream:close	()V
+    //   581: aload 5
+    //   583: ifnull +8 -> 591
+    //   586: aload 5
+    //   588: invokevirtual 340	java/io/FileOutputStream:close	()V
+    //   591: aload 4
+    //   593: athrow
+    //   594: astore_1
+    //   595: aload_1
+    //   596: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   599: goto -18 -> 581
+    //   602: astore_1
+    //   603: aload_1
+    //   604: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   607: goto -16 -> 591
+    //   610: astore 4
+    //   612: aload 6
+    //   614: astore_1
+    //   615: goto -42 -> 573
+    //   618: astore 6
+    //   620: aload 4
+    //   622: astore 5
+    //   624: aload 6
+    //   626: astore 4
+    //   628: goto -55 -> 573
+    //   631: astore 4
+    //   633: goto -60 -> 573
+    //   636: astore 4
+    //   638: aload 8
+    //   640: astore 7
+    //   642: goto -124 -> 518
+    //   645: astore 5
+    //   647: aload 4
+    //   649: astore 7
+    //   651: aload 5
+    //   653: astore 4
+    //   655: goto -137 -> 518
+    //   658: astore 4
+    //   660: aconst_null
+    //   661: astore_1
+    //   662: aload 7
+    //   664: astore 5
+    //   666: goto -308 -> 358
+    //   669: astore 4
+    //   671: aload 7
+    //   673: astore 5
+    //   675: goto -317 -> 358
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	670	0	this	LogcatUtil
-    //   0	670	1	paramString	String
+    //   0	678	0	this	LogcatUtil
+    //   0	678	1	paramString	String
     //   13	435	2	i	int
     //   423	4	3	j	int
     //   50	433	4	localObject1	Object
-    //   510	18	4	localIOException1	IOException
-    //   565	23	4	localObject2	Object
-    //   606	11	4	localObject3	Object
-    //   622	1	4	localObject4	Object
-    //   627	1	4	localObject5	Object
-    //   632	8	4	localIOException2	IOException
-    //   645	1	4	localIOException3	IOException
-    //   650	1	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   661	1	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   4	615	5	localObject6	Object
-    //   637	7	5	localIOException4	IOException
-    //   656	10	5	localObject7	Object
+    //   510	22	4	localIOException1	IOException
+    //   569	23	4	localObject2	Object
+    //   610	11	4	localObject3	Object
+    //   626	1	4	localObject4	Object
+    //   631	1	4	localObject5	Object
+    //   636	12	4	localIOException2	IOException
+    //   653	1	4	localIOException3	IOException
+    //   658	1	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   669	1	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   4	619	5	localObject6	Object
+    //   645	7	5	localIOException4	IOException
+    //   664	10	5	localObject7	Object
     //   61	235	6	localObject8	Object
     //   348	7	6	localFileNotFoundException3	java.io.FileNotFoundException
-    //   399	210	6	str	String
-    //   614	7	6	localObject9	Object
-    //   1	641	7	localObject10	Object
-    //   10	654	8	localObject11	Object
+    //   399	214	6	str	String
+    //   618	7	6	localObject9	Object
+    //   10	662	7	localObject10	Object
+    //   1	638	8	localObject11	Object
     //   7	423	9	localObject12	Object
-    //   406	31	10	arrayOfFile	File[]
-    //   260	142	11	localFile	File
+    //   260	142	10	localFile	File
+    //   406	31	11	arrayOfFile	File[]
     // Exception table:
     //   from	to	target	type
     //   157	165	184	java/io/IOException
@@ -526,50 +530,50 @@ public class LogcatUtil
     //   14	52	510	java/io/IOException
     //   52	153	510	java/io/IOException
     //   198	207	510	java/io/IOException
-    //   545	550	551	java/io/IOException
-    //   536	540	557	java/io/IOException
-    //   14	52	565	finally
-    //   52	153	565	finally
-    //   198	207	565	finally
-    //   573	577	590	java/io/IOException
-    //   582	587	598	java/io/IOException
-    //   214	243	606	finally
-    //   250	262	606	finally
-    //   269	277	606	finally
-    //   284	290	606	finally
-    //   297	317	606	finally
-    //   401	408	606	finally
-    //   420	424	606	finally
-    //   436	444	606	finally
-    //   521	532	606	finally
-    //   317	324	614	finally
-    //   324	331	614	finally
-    //   336	345	614	finally
-    //   451	469	614	finally
-    //   358	369	627	finally
-    //   214	243	632	java/io/IOException
-    //   250	262	632	java/io/IOException
-    //   269	277	632	java/io/IOException
-    //   284	290	632	java/io/IOException
-    //   297	317	632	java/io/IOException
-    //   401	408	632	java/io/IOException
-    //   420	424	632	java/io/IOException
-    //   436	444	632	java/io/IOException
-    //   317	324	637	java/io/IOException
-    //   324	331	637	java/io/IOException
-    //   336	345	637	java/io/IOException
-    //   451	469	637	java/io/IOException
-    //   14	52	650	java/io/FileNotFoundException
-    //   52	153	650	java/io/FileNotFoundException
-    //   198	207	650	java/io/FileNotFoundException
-    //   214	243	661	java/io/FileNotFoundException
-    //   250	262	661	java/io/FileNotFoundException
-    //   269	277	661	java/io/FileNotFoundException
-    //   284	290	661	java/io/FileNotFoundException
-    //   297	317	661	java/io/FileNotFoundException
-    //   401	408	661	java/io/FileNotFoundException
-    //   420	424	661	java/io/FileNotFoundException
-    //   436	444	661	java/io/FileNotFoundException
+    //   549	554	555	java/io/IOException
+    //   540	544	561	java/io/IOException
+    //   14	52	569	finally
+    //   52	153	569	finally
+    //   198	207	569	finally
+    //   577	581	594	java/io/IOException
+    //   586	591	602	java/io/IOException
+    //   214	243	610	finally
+    //   250	262	610	finally
+    //   269	277	610	finally
+    //   284	290	610	finally
+    //   297	317	610	finally
+    //   401	408	610	finally
+    //   420	424	610	finally
+    //   436	444	610	finally
+    //   525	536	610	finally
+    //   317	324	618	finally
+    //   324	331	618	finally
+    //   336	345	618	finally
+    //   451	469	618	finally
+    //   358	369	631	finally
+    //   214	243	636	java/io/IOException
+    //   250	262	636	java/io/IOException
+    //   269	277	636	java/io/IOException
+    //   284	290	636	java/io/IOException
+    //   297	317	636	java/io/IOException
+    //   401	408	636	java/io/IOException
+    //   420	424	636	java/io/IOException
+    //   436	444	636	java/io/IOException
+    //   317	324	645	java/io/IOException
+    //   324	331	645	java/io/IOException
+    //   336	345	645	java/io/IOException
+    //   451	469	645	java/io/IOException
+    //   14	52	658	java/io/FileNotFoundException
+    //   52	153	658	java/io/FileNotFoundException
+    //   198	207	658	java/io/FileNotFoundException
+    //   214	243	669	java/io/FileNotFoundException
+    //   250	262	669	java/io/FileNotFoundException
+    //   269	277	669	java/io/FileNotFoundException
+    //   284	290	669	java/io/FileNotFoundException
+    //   297	317	669	java/io/FileNotFoundException
+    //   401	408	669	java/io/FileNotFoundException
+    //   420	424	669	java/io/FileNotFoundException
+    //   436	444	669	java/io/FileNotFoundException
   }
   
   public boolean handleMessage(Message paramMessage)

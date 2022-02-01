@@ -1,6 +1,18 @@
-public abstract interface bapp
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
+
+class bapp
+  implements Comparator<QCallRecord>
 {
-  public abstract void a(String paramString);
+  bapp(bapo parambapo) {}
+  
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  {
+    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
+      return 0;
+    }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+  }
 }
 
 

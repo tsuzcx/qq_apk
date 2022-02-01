@@ -1,10 +1,29 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.biz.qcircleshadow.lib.delegate.IPluginInfoDelegate;
+import java.util.List;
 
 public class vvc
-  extends vko
+  implements IPluginInfoDelegate
 {
-  public Map<String, wei> a = new HashMap();
+  public List<String> getAllPluginInitInfo()
+  {
+    return vvj.a().a();
+  }
+  
+  public String getCurrentPluginInfo()
+  {
+    if ((vvq.a().a() == null) || (vvq.a().a().a() == null)) {
+      return "";
+    }
+    return vvq.a().a().a().toString();
+  }
+  
+  public int getCurrentPluginVersion()
+  {
+    if ((vvq.a().a() == null) || (vvq.a().a().a() == null)) {
+      return -1;
+    }
+    return vvq.a().a().a().a();
+  }
 }
 
 

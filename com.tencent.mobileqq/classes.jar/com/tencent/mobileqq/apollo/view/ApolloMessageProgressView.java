@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amtj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
+import anvx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.MessageProgressView;
 
@@ -24,7 +24,7 @@ public class ApolloMessageProgressView
     localPaint.setTextSize(AIOUtils.dp2px(15.0F, getResources()));
     localPaint.setColor(-1);
     localPaint.setTextAlign(Paint.Align.CENTER);
-    paramCanvas.drawText(amtj.a(2131699616), this.a, getHeight() - AIOUtils.dp2px(25.0F, getResources()), localPaint);
+    paramCanvas.drawText(anvx.a(2131699967), this.a, getHeight() - AIOUtils.dp2px(25.0F, getResources()), localPaint);
   }
   
   @TargetApi(11)

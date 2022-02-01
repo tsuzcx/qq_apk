@@ -1,38 +1,27 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.app.DeviceCapabilityExamination;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.VideoController;
+import com.tencent.av.mediacodec.AndroidCodec;
+import com.tencent.av.mediacodec.NativeCodec;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class ldp
-  implements mve
 {
-  public ldp(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
-  
-  public void a(int paramInt, long paramLong, String paramString1, String paramString2)
+  public static void a(long paramLong, VideoController paramVideoController, ldr paramldr, ldq paramldq)
   {
-    if (AudioHelper.f()) {
-      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed onFinish result: " + paramInt + ", timeConsuming: " + paramLong + ", gpuVendor: " + paramString1 + ", gpuModel: " + paramString2);
+    long l1 = System.currentTimeMillis();
+    String str = paramldr.a();
+    paramVideoController = paramVideoController.a(paramLong, paramldr.a(), str.getBytes());
+    long l2 = System.currentTimeMillis();
+    if (paramVideoController == null) {}
+    for (paramVideoController = "";; paramVideoController = new String(paramVideoController))
+    {
+      QLog.w("DeviceCapability", 1, "doCodecTest, codec[" + paramldr.jdField_a_of_type_Int + "], sampleMD5[" + paramldr.jdField_a_of_type_JavaLangString + "], cmdParams[" + str + "], result[" + paramVideoController + "], cost[" + (l2 - l1) + "], seq[" + paramLong + "]");
+      NativeCodec.hardwareCodecLevelInfo();
+      QLog.w("DeviceCapability", 1, "doCodecTest get_info_test numCores: " + llq.e() + ", cpu frep: " + llq.d() + ", memory: " + llq.a() + ", output format: " + AndroidCodec.getHwDetectOutputFormatForReport() + ", H264EncBaseLineLevel: " + NativeCodec.mH264EncBaseLineLevel + ", H264DecBaseLineLevel: " + NativeCodec.mH264DecBaseLineLevel + ", H264EncHighProfileLevel: " + NativeCodec.mH264EncHighProfileLevel + ", H264DecHighProfileLevel: " + NativeCodec.mH264DecHighProfileLevel + ", H265EncLevel: " + NativeCodec.mH265EncLevel + ", H265DecLevel: " + NativeCodec.mH265DecLevel);
+      paramldr = new ncp('=', ';');
+      paramldr.a(paramVideoController);
+      paramldq.a(paramldr.a("i_resultCode", -99), "", 0, paramldr.a("i_delay", -99), null);
+      return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", Build.HARDWARE);
-    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-    localHashMap.put("manufacturer", Build.MANUFACTURER);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("product", Build.PRODUCT);
-    localHashMap.put("fingerprint", Build.FINGERPRINT);
-    localHashMap.put("gpu_vendor", paramString1);
-    localHashMap.put("gpu_model", paramString2);
-    localHashMap.put("result", String.valueOf(paramInt));
-    localHashMap.put("time_consuming", String.valueOf(paramLong));
-    if (AudioHelper.f()) {
-      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
-    }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

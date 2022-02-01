@@ -1,129 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.List;
 
 public class asnq
 {
-  int a;
-  protected long a;
-  protected asno a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferDownloadCompletedInfo a;
-  protected ExcitingTransferDownloaderFirstPkgRp a;
-  int b;
-  int c = 0;
+  public static final int FOOTER_TYPE_LOADING = 0;
+  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
+  public static final int FOOTER_TYPE_LOAD_OVER = 2;
+  public static final int TYPE_CAMPUS_VERIFY = 7;
+  public static final int TYPE_EMTPY = 2;
+  public static final int TYPE_FEED = 0;
+  public static final int TYPE_FEED_ADV = 4;
+  public static final int TYPE_FEED_BANNER = 6;
+  public static final int TYPE_FOOTER = 1;
+  public static final int TYPE_MINI_RECOMM = 5;
+  public int clothesId;
+  public int fontId;
+  public int fontType;
+  public boolean mAddFriendVerified;
+  public int mAge;
+  public AlumBasicData mAlumbasicdata;
+  public int mAvailLikeCount;
+  public boolean mBigVipHide;
+  public int mBigVipLevel;
+  public String mDeclaration;
+  public int mFooterType;
+  public int mGender;
+  public boolean mIsMyFeed;
+  public List<asnr> mLabelInfos;
+  public boolean mLiked;
+  public String mNickName;
+  public int mPopularity;
+  public List<asns> mSchoolInfos;
+  public String mStrRecomTrace;
+  public int mTemplateId;
+  public int mType;
+  public String mUin;
+  public boolean mVipHide;
+  public int mVipLevel;
+  public int mVipType;
+  public int mVoiceDuration;
+  public String mVoiceUrl;
+  public boolean mbAllowStrangerVote;
+  public byte[] voiceCode;
   
-  public asnq(QQAppInterface paramQQAppInterface)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  protected String a()
-  {
-    return "actGroupPDFileDownload";
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
-  {
-    this.jdField_a_of_type_Asno = new asno();
-    this.jdField_a_of_type_Asno.jdField_a_of_type_Long = paramInt;
-    this.jdField_a_of_type_Asno.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Asno.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Asno.d = paramLong2;
-    this.jdField_a_of_type_Asno.c = paramLong3;
-    this.jdField_a_of_type_Asno.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Asno.jdField_b_of_type_Int = 1;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    if (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime > paramExcitingTransferDownloadCompletedInfo.m_uStartTime) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.m_uStartTime);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.c = i;
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = paramLong;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Asno == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo == null))
-    {
-      QLog.e("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloadDataReport err. param err");
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Asno != null) {
-      localHashMap.putAll(this.jdField_a_of_type_Asno.a());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
-    }
-    for (;;)
-    {
-      localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
-      localHashMap.put("param_stackType", String.valueOf(ataw.b()));
-      localHashMap.put("param_loginType", String.valueOf(ataw.c()));
-      localHashMap.put("param_ishttps", String.valueOf(this.c));
-      QLog.i("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloadDataReport: act=" + a() + localHashMap.toString());
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), a(), paramBoolean, 0L, 0L, localHashMap, "");
-      this.jdField_a_of_type_Asno = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
-      return;
-      localHashMap.put("param_CSTime", String.valueOf(0));
-      localHashMap.put("param_HttpFirstTime", String.valueOf(0));
-      localHashMap.put("param_HttpFirstDataSize", String.valueOf(0));
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSEndTime = paramLong;
+    return (paramObject != null) && ((paramObject instanceof asnq)) && (bhbx.a(((asnq)paramObject).mUin, this.mUin));
   }
 }
 

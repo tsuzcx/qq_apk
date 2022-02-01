@@ -1,32 +1,38 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lne
-  extends ldz
 {
-  public lne(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public int a;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
   
-  protected void a(long paramLong, ArrayList<lcp> paramArrayList, int paramInt1, int paramInt2)
+  public lne(AVNotifyCenter paramAVNotifyCenter) {}
+  
+  public boolean a()
   {
-    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 4) && (this.jdField_c_of_type_Int == 0);
   }
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
-    }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    GaInviteLockActivity.a(this.a, paramInt);
+    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 5) && (this.jdField_c_of_type_Int == 0);
+  }
+  
+  public String toString()
+  {
+    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.d + "], gameId[" + this.e + "], liveExtraMode[" + this.jdField_c_of_type_Int + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.f + "], time[" + this.jdField_c_of_type_Long + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lne
  * JD-Core Version:    0.7.0.1
  */

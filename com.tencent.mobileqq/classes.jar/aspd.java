@@ -1,50 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
-final class aspd
-  implements View.OnClickListener
+public class aspd
+  implements DialogInterface.OnClickListener
 {
-  aspd(String paramString, asqp paramasqp) {}
+  public aspd(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        localaspe = new aspe(this);
-        localasyq = asyq.a(this.jdField_a_of_type_JavaLangString);
-        if (localasyq != null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
-        }
-      }
-      catch (Exception localException)
-      {
-        aspe localaspe;
-        asyq localasyq;
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (localasyq.a(false))
-      {
-        if (!NetworkUtil.isNetSupportHw(BaseApplicationImpl.getContext())) {
-          aszk.a(2131692955);
-        } else if (bhnb.a(this.jdField_a_of_type_Asqp.getActivity(), 5, new aspf(this, localaspe))) {
-          aszg.a(this.jdField_a_of_type_Asqp.getActivity(), 2131692374, 2131692377, localaspe);
-        }
-      }
-      else {
-        localaspe.onYes();
-      }
-    }
+    ExtendFriendFragment.a(this.a).dismiss();
+    ExtendFriendFragment.a(this.a, null);
+    ExtendFriendFragment.a(this.a).finish();
   }
 }
 

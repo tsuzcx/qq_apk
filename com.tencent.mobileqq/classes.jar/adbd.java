@@ -1,19 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class adbd
-  implements bhdc
+class adbd
+  extends ntf
 {
-  public adbd(ChatSettingForTroop paramChatSettingForTroop) {}
+  adbd(adbb paramadbb, adbn paramadbn, JSONObject paramJSONObject, adaa paramadaa) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
-    bftc.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bftc.a(this.a.a) });
+    if (QLog.isColorLevel()) {
+      QLog.i(adbb.a, 2, "onResult appid=" + adbb.b(this.jdField_a_of_type_Adbb).a + ", openid=" + this.jdField_a_of_type_Adbn.a + ", openkey=" + this.jdField_a_of_type_Adbn.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      addh.a(this.jdField_a_of_type_Adaa, paramInt, "reportScore result error, try again");
+      return;
+    }
+    addh.a(this.jdField_a_of_type_Adaa, adac.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

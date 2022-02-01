@@ -1,32 +1,44 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class azwu
-  implements View.OnClickListener
+class azwu
+  implements bkzq
 {
-  public azwu(AIOIceBreakView paramAIOIceBreakView) {}
+  azwu(azwp paramazwp, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    AIOIceBreakView.a(this.a).showPlusItemPanel(24);
-    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
-    if (abwz.a(AIOIceBreakView.a(this.a).sessionInfo.curType) != 1044) {
-      if (AIOIceBreakView.a(this.a).sessionInfo.curType != 0) {
-        break label136;
-      }
-    }
-    label136:
-    for (int i = 1;; i = 2)
+    if ((paramInt == 0) && (azwp.b(this.jdField_a_of_type_Azwp) != null))
     {
-      bcef.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
-      bcef.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramView = new Intent(azwp.c(this.jdField_a_of_type_Azwp), EditInfoActivity.class);
+      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("default_text", this.b);
+      paramView.putExtra("uin", ((azrb)azwp.a(this.jdField_a_of_type_Azwp)).jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
+      paramView.putExtra("max_limit_mode", 1);
+      paramView.putExtra("edit_type", 2);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label169;
+      }
+      paramView.putExtra("max_num", 60);
+      paramView.putExtra("isTroopNick", true);
+      paramView.putExtra("troopUin", ((azrb)azwp.b(this.jdField_a_of_type_Azwp)).jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      azwp.d(this.jdField_a_of_type_Azwp).startActivityForResult(paramView, 1034);
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
+      label169:
+      paramInt = 36;
+      if (this.jdField_a_of_type_Int == 2) {
+        paramInt = 60;
+      }
+      paramView.putExtra("max_num", paramInt);
+      paramView.putExtra("support_emotion", true);
     }
   }
 }

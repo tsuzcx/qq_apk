@@ -1,37 +1,32 @@
+import android.app.Activity;
+import android.content.res.Resources;
 import android.view.View;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awlx
-  implements awnc
+class awlx
+  implements View.OnClickListener
 {
-  public awlx(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  awlx(awlt paramawlt, Activity paramActivity) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.f();
-    bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
-  }
-  
-  public void a(View paramView, awnf paramawnf)
-  {
-    if (paramawnf.jdField_a_of_type_Boolean) {
-      QQToast.a(this.a, 1, amtj.a(2131704233), 1).a();
-    }
-    do
+    if (this.jdField_a_of_type_Awlt.a()) {}
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      GameRoomInviteActivity.a(this.a, paramawnf.jdField_a_of_type_JavaLangString, paramawnf.jdField_a_of_type_Int);
-      paramawnf.jdField_a_of_type_Boolean = true;
-      this.a.a.a(paramView, paramawnf.jdField_a_of_type_Boolean);
-      if (paramawnf.jdField_a_of_type_Int == 1)
-      {
-        bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
       }
-    } while (paramawnf.jdField_a_of_type_Int != 0);
-    bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+      awlt.a(this.jdField_a_of_type_Awlt).setClickable(false);
+      awlt.a(this.jdField_a_of_type_Awlt).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840624));
+      awlt.a(this.jdField_a_of_type_Awlt).a(true);
+      bdla.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+    }
   }
 }
 

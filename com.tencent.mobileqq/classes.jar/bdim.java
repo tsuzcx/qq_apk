@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadTraceHelper.Proxy;
 
-class bdim
-  extends bdis
+public final class bdim
+  implements IMCoreProxyRoute.ThreadTraceHelper.Proxy
 {
-  bdim(bdid parambdid, EditorState paramEditorState, List paramList)
+  public void addWaitingTransThread(long paramLong, String paramString)
   {
-    super(parambdid, paramEditorState, paramList);
+    bdlv.b(paramLong, paramString);
   }
   
-  public void a(EditorState paramEditorState)
+  public void removeWaitingTransThread(long paramLong)
   {
-    super.a(paramEditorState);
-    bdid.a(this.a).a(false, false);
+    bdlv.a(paramLong);
+  }
+  
+  public void setCurrentTransThread(long paramLong, String paramString)
+  {
+    bdlv.a(paramLong, paramString);
   }
 }
 

@@ -5,10 +5,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import bmsl;
-import bnld;
-import bnle;
-import bnlv;
+import boid;
+import bpav;
+import bpaw;
+import bpbn;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 import java.util.Iterator;
@@ -19,9 +19,9 @@ public class FacePagerAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private bmsl jdField_a_of_type_Bmsl;
-  private bnld jdField_a_of_type_Bnld;
-  private bnlv jdField_a_of_type_Bnlv;
+  private boid jdField_a_of_type_Boid;
+  private bpav jdField_a_of_type_Bpav;
+  private bpbn jdField_a_of_type_Bpbn;
   private List<FaceListPage> jdField_a_of_type_JavaUtilList = new LinkedList();
   
   public FacePagerAdapter(Context paramContext)
@@ -61,33 +61,33 @@ public class FacePagerAdapter
   
   public void a(int paramInt)
   {
-    bnle localbnle = this.jdField_a_of_type_Bnlv.a(paramInt);
-    if (localbnle != null)
+    bpaw localbpaw = this.jdField_a_of_type_Bpbn.a(paramInt);
+    if (localbpaw != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
         if ((localFaceListPage.jdField_a_of_type_Int == paramInt) && (localFaceListPage.jdField_a_of_type_Boolean)) {
-          localFaceListPage.a(localbnle);
+          localFaceListPage.a(localbpaw);
         }
       }
     }
   }
   
-  public void a(bmsl parambmsl)
+  public void a(boid paramboid)
   {
-    this.jdField_a_of_type_Bmsl = parambmsl;
+    this.jdField_a_of_type_Boid = paramboid;
   }
   
-  public void a(bnld parambnld)
+  public void a(bpav parambpav)
   {
-    this.jdField_a_of_type_Bnld = parambnld;
+    this.jdField_a_of_type_Bpav = parambpav;
   }
   
-  public void a(bnlv parambnlv)
+  public void a(bpbn parambpbn)
   {
-    this.jdField_a_of_type_Bnlv = parambnlv;
+    this.jdField_a_of_type_Bpbn = parambpbn;
     notifyDataSetChanged();
   }
   
@@ -101,9 +101,9 @@ public class FacePagerAdapter
       {
         if (!localFaceListPage.jdField_a_of_type_Boolean)
         {
-          bnle localbnle = this.jdField_a_of_type_Bnlv.a(paramInt);
+          bpaw localbpaw = this.jdField_a_of_type_Bpbn.a(paramInt);
           localFaceListPage.jdField_a_of_type_Boolean = true;
-          localFaceListPage.a(localbnle);
+          localFaceListPage.a(localbpaw);
         }
         localFaceListPage.a();
       }
@@ -131,9 +131,9 @@ public class FacePagerAdapter
         bool = false;
       }
     }
-    Object localObject = this.jdField_a_of_type_Bnlv.a(paramInt);
+    Object localObject = this.jdField_a_of_type_Bpbn.a(paramInt);
     localFaceListPage.jdField_a_of_type_Boolean = true;
-    localFaceListPage.a((bnle)localObject);
+    localFaceListPage.a((bpaw)localObject);
   }
   
   public void d(int paramInt)
@@ -147,7 +147,7 @@ public class FacePagerAdapter
         if ((localFaceListPage.jdField_a_of_type_Int != paramInt) && (localFaceListPage.jdField_a_of_type_Boolean))
         {
           localFaceListPage.jdField_a_of_type_Boolean = false;
-          localFaceListPage.a(this.jdField_a_of_type_Bnlv.a(localFaceListPage.jdField_a_of_type_Int));
+          localFaceListPage.a(this.jdField_a_of_type_Bpbn.a(localFaceListPage.jdField_a_of_type_Int));
           if (QLog.isColorLevel()) {
             QLog.i("FacePagerAdapter", 2, "clearOtherView position:" + localFaceListPage.jdField_a_of_type_Int + ", current:" + paramInt);
           }
@@ -167,10 +167,10 @@ public class FacePagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Bnlv == null) {
+    if (this.jdField_a_of_type_Bpbn == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Bnlv.a();
+    return this.jdField_a_of_type_Bpbn.a();
   }
   
   public int getItemPosition(Object paramObject)
@@ -180,17 +180,17 @@ public class FacePagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Bnlv == null) {
+    if (this.jdField_a_of_type_Bpbn == null) {
       return null;
     }
-    bnle localbnle = this.jdField_a_of_type_Bnlv.a(paramInt);
-    FaceListPage localFaceListPage = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bmsl, this.jdField_a_of_type_Bnld);
+    bpaw localbpaw = this.jdField_a_of_type_Bpbn.a(paramInt);
+    FaceListPage localFaceListPage = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boid, this.jdField_a_of_type_Bpav);
     paramViewGroup.addView(localFaceListPage);
     localFaceListPage.jdField_a_of_type_Int = paramInt;
     if (((ViewPager)paramViewGroup).getCurrentItem() == paramInt) {}
     for (localFaceListPage.jdField_a_of_type_Boolean = true;; localFaceListPage.jdField_a_of_type_Boolean = false)
     {
-      localFaceListPage.a(localbnle);
+      localFaceListPage.a(localbpaw);
       this.jdField_a_of_type_JavaUtilList.add(localFaceListPage);
       return localFaceListPage;
     }

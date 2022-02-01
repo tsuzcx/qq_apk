@@ -3,7 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqrz;
+import arvl;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ public class SpecialCareInfo
   extends Entity
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<SpecialCareInfo> CREATOR = new aqrz();
+  public static final Parcelable.Creator<SpecialCareInfo> CREATOR = new arvl();
   public long dateTime;
   public int friendRingId;
   public int globalSwitch;
@@ -84,7 +84,7 @@ public class SpecialCareInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.SpecialCareInfo
  * JD-Core Version:    0.7.0.1
  */

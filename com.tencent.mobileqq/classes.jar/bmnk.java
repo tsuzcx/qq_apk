@@ -1,11 +1,27 @@
-public abstract interface bmnk
-  extends bmng
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import cooperation.qzone.util.QZLog;
+
+class bmnk
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void x();
+  bmnk(bmni parambmni) {}
   
-  public abstract void y();
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public abstract void z();
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QZLog.i("FileBannerTianshuManger", "onLoadSuccessed picUrlDrawable ");
+    this.a.a(this.a.jdField_a_of_type_JavaLangString, paramURLDrawable);
+    this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 101);
+    if (this.a.b == 1) {
+      this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 137);
+    }
+  }
 }
 
 

@@ -1,49 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.lbssearch.httpresponse.AdInfo;
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.util.WeakReference;
 
 class axxa
-  implements axxz
+  extends nte
 {
-  axxa(axwz paramaxwz, LatLng paramLatLng, int paramInt) {}
+  axxa(axww paramaxww, String paramString, axxd paramaxxd) {}
   
-  public void a(PoiBean paramPoiBean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    axxb localaxxb = (axxb)axwz.a(this.jdField_a_of_type_Axwz).get();
-    if (localaxxb == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. mCallback is null ");
-      }
-      return;
+    if (paramInt != 0) {
+      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
     }
-    if ((paramPoiBean == null) || (paramPoiBean.adInfo == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
-      }
-      localaxxb.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", axwz.a(this.jdField_a_of_type_Axwz), axwz.a(this.jdField_a_of_type_Axwz));
-      return;
-    }
-    String str1;
-    if (TextUtils.isEmpty(paramPoiBean.adInfo.city))
-    {
-      str1 = "";
-      if (!TextUtils.isEmpty(paramPoiBean.adInfo.district)) {
-        break label213;
-      }
-    }
-    label213:
-    for (String str2 = "";; str2 = paramPoiBean.adInfo.district)
-    {
-      str1 = str1 + str2;
-      localaxxb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, axwz.a(this.jdField_a_of_type_Axwz), axwz.a(this.jdField_a_of_type_Axwz));
-      return;
-      str1 = paramPoiBean.adInfo.city;
-      break;
+    if (this.jdField_a_of_type_Axxd != null) {
+      this.jdField_a_of_type_Axxd.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }

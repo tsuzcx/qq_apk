@@ -1,36 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 
-public abstract interface uzp
-  extends ujc<uzq>
+public class uzp
+  implements EmoticonCallback
 {
-  public abstract int a();
+  public void delete() {}
   
-  public abstract int a(int paramInt);
+  public void emoticonMall() {}
   
-  public abstract long a();
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
   
-  public abstract List<vaq> a(ArrayList paramArrayList);
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
   
-  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  public void send() {}
   
-  public abstract void a(String paramString);
+  public void send(EmoticonInfo paramEmoticonInfo) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void setting() {}
 }
 
 

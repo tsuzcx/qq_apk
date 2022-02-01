@@ -1,53 +1,106 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import GROUP.MessageRemindRsp;
+import MQQ.GetRoamToastRsp;
+import QC.BubbleRecommendRsp;
+import QC.FaceRsp;
+import QC.FontRecommendRsp;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.qphone.base.util.QLog;
 
-class aodb
-  implements aojg
+public class aodb
+  implements BusinessObserver
 {
-  aodb(aocz paramaocz, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
+  public void a() {}
   
-  public void a()
-  {
-    aojg localaojg = aocz.a(this.jdField_a_of_type_Aocz, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localaojg != null) {
-      localaojg.a();
-    }
-  }
+  public void a(int paramInt) {}
   
-  public void a(long paramLong1, long paramLong2)
-  {
-    aojg localaojg = aocz.a(this.jdField_a_of_type_Aocz, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localaojg != null) {
-      localaojg.a(paramLong1, paramLong2);
-    }
-  }
+  public void a(Bundle paramBundle) {}
   
-  public void a(boolean paramBoolean, aojh paramaojh)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp) {}
+  
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp) {}
+  
+  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp) {}
+  
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp) {}
+  
+  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp) {}
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void d(boolean paramBoolean, Object paramObject) {}
+  
+  public void e(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramaojh.c + ", url = " + paramaojh.a);
-    if (paramBoolean) {
-      if (!aocz.a(this.jdField_a_of_type_Aocz, paramaojh.c, paramaojh.b))
-      {
-        aocz.a(this.jdField_a_of_type_Aocz, paramaojh.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    aojg localaojg;
-    do
+    switch (paramInt)
     {
+    default: 
+    case 101: 
+      do
+      {
+        return;
+        if ((paramObject instanceof Integer))
+        {
+          a(((Integer)paramObject).intValue());
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
       return;
-      if (this.jdField_a_of_type_Aocz.a(paramaojh.d, paramaojh.c, paramaojh.b) == 0) {}
-      localaojg = aocz.a(this.jdField_a_of_type_Aocz, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localaojg == null);
-    localaojg.a(paramBoolean, paramaojh);
-  }
-  
-  public void b()
-  {
-    aojg localaojg = aocz.a(this.jdField_a_of_type_Aocz, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localaojg != null) {
-      localaojg.b();
+    case 100: 
+      a();
+      return;
+    case 102: 
+      b(paramBoolean, paramObject);
+      return;
+    case 103: 
+      c(paramBoolean, paramObject);
+      return;
+    case 104: 
+      d(paramBoolean, paramObject);
+      return;
+    case 105: 
+      a(paramBoolean, paramObject);
+      return;
+    case 106: 
+      e(paramBoolean, paramObject);
+      return;
+    case 113: 
+      a(paramBoolean, (MessageRemindRsp)paramObject);
+      return;
+    case 107: 
+      a(paramBoolean, (FontRecommendRsp)paramObject);
+      return;
+    case 108: 
+      a(paramBoolean, (BubbleRecommendRsp)paramObject);
+      return;
+    case 109: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 110: 
+      a((Bundle)paramObject);
+      return;
+    case 111: 
+      a(paramBoolean, (GetRoamToastRsp)paramObject);
+      return;
+    case 112: 
+      a(paramBoolean, (FaceRsp)paramObject);
+      return;
     }
+    paramObject = (Object[])paramObject;
+    a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
   }
 }
 

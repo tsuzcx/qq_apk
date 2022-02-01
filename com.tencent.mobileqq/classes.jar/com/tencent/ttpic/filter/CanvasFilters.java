@@ -4,7 +4,7 @@ import android.graphics.PointF;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.math.BitUtils;
-import com.tencent.ttpic.fabby.FabbyUtil.TRANSFORM_TYPE;
+import com.tencent.ttpic.fabby.FabbyUtil.TransformType;
 import com.tencent.ttpic.model.GridModel;
 import com.tencent.ttpic.model.RenderParam;
 import com.tencent.ttpic.openapi.model.Rect;
@@ -57,7 +57,7 @@ public class CanvasFilters
       Object localObject2 = localObject1;
       float f2;
       float f3;
-      if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TRANSFORM_TYPE.MIRROR_TOP_BOTTOM.value))
+      if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TransformType.MIRROR_TOP_BOTTOM.value))
       {
         paramFloat = localObject1[0];
         f1 = localObject1[1];
@@ -78,7 +78,7 @@ public class CanvasFilters
         localObject2[11] = f2;
       }
       localObject1 = localObject2;
-      if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TRANSFORM_TYPE.MIRROR_LEFT_RIGHT.value))
+      if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TransformType.MIRROR_LEFT_RIGHT.value))
       {
         paramFloat = localObject2[0];
         f1 = localObject2[1];

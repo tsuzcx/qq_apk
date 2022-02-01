@@ -1,17 +1,17 @@
 package com.tencent.biz.troopgift;
 
+import aaic;
+import aaid;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.util.DisplayUtil;
-import zsq;
-import zsr;
 
 public class GridListAdapter$1
   implements Runnable
 {
-  public GridListAdapter$1(zsq paramzsq, zsr paramzsr) {}
+  public GridListAdapter$1(aaic paramaaic, aaid paramaaid) {}
   
   public void run()
   {

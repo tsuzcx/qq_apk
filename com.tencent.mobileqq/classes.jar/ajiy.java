@@ -1,59 +1,155 @@
-import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.ViewUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ajiy
-  implements afrc
+public abstract class ajiy
 {
-  private agwg jdField_a_of_type_Agwg;
-  private ajjs jdField_a_of_type_Ajjs;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  @SuppressLint({"UseSparseArrays"})
+  public static Map<Integer, ColorStateList> a;
+  protected int a;
+  protected ajja a;
+  protected ajkt a;
+  public Context a;
+  protected Drawable a;
+  protected blfk a;
+  public QQAppInterface a;
+  public Entity a;
+  protected boolean a;
   
-  ajiy(ajjs paramajjs)
+  static
   {
-    this.jdField_a_of_type_Ajjs = paramajjs;
+    jdField_a_of_type_JavaUtilMap = new HashMap(5);
   }
   
-  private ListView a()
+  protected ajiy(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity)
   {
-    return this.jdField_a_of_type_Ajjs.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
   }
   
-  public void a(int paramInt)
+  protected static ColorStateList a(Context paramContext, int paramInt)
   {
-    switch (paramInt)
+    ColorStateList localColorStateList2 = (ColorStateList)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    ColorStateList localColorStateList1 = localColorStateList2;
+    if (localColorStateList2 == null)
     {
-    default: 
-    case 3: 
-    case 5: 
-    case 19: 
-      do
+      localColorStateList1 = paramContext.getResources().getColorStateList(paramInt);
+      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localColorStateList1);
+    }
+    return localColorStateList1;
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  protected Drawable a()
+  {
+    boolean bool = bdfk.b();
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean != bool)) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
+    for (;;)
+    {
+      try
       {
-        do
-        {
-          return;
-          this.jdField_a_of_type_Agwg = new agwg();
-          return;
-        } while (this.b);
-        this.b = true;
-        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
+        Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+        if (!bool) {
+          continue;
+        }
+        i = 2130844917;
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(i);
+        this.jdField_a_of_type_Boolean = bool;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        int i;
+        continue;
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      i = 2130844916;
+    }
+  }
+  
+  public abstract View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener);
+  
+  protected blfk a(Context paramContext)
+  {
+    int i = ViewUtils.dip2px(152.0F);
+    int j = a();
+    int k = b();
+    paramContext = a();
+    int[] arrayOfInt1 = b();
+    int[] arrayOfInt2 = c();
+    return new ajiz(this, j, k, new int[] { i }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  protected void a(int paramInt, blfm[] paramArrayOfblfm) {}
+  
+  public void a(ajja paramajja)
+  {
+    this.jdField_a_of_type_Ajja = paramajja;
+  }
+  
+  public void a(View paramView, int paramInt, ajjb paramajjb, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Blfk != null) {}
+    for (int i = this.jdField_a_of_type_Blfk.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, paramajjb, paramOnClickListener);; i = 0)
+    {
+      if ((this.jdField_a_of_type_Ajkt != null) && (this.jdField_a_of_type_Ajkt.jdField_a_of_type_Int != -1))
+      {
+        if (paramInt != this.jdField_a_of_type_Ajkt.jdField_a_of_type_Int) {
+          paramView.scrollTo(0, 0);
+        }
+      }
+      else {
         return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Agwg.b(this.jdField_a_of_type_Ajjs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      }
+      paramView.scrollTo(i, 0);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Agwg = null;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public int[] a()
+  protected int[] a()
   {
-    return new int[] { 3, 5, 13, 19, 12 };
+    return null;
+  }
+  
+  protected int b()
+  {
+    return 1;
+  }
+  
+  protected int[] b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected int[] c()
+  {
+    return null;
   }
 }
 

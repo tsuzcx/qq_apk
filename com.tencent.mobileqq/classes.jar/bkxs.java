@@ -1,68 +1,143 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.app.Notification;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils.1;
+import com.tencent.util.BadgeUtils.2;
 
 public class bkxs
 {
-  private static bkxs jdField_a_of_type_Bkxs;
-  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.homeworkCfg.name();
-  private int jdField_a_of_type_Int = 22;
-  private amqq jdField_a_of_type_Amqq = new bkxt(this);
+  public static int a;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new BadgeUtils.2();
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
   
-  private bkxs()
+  static
   {
-    DeviceProfileManager.a(this.jdField_a_of_type_Amqq);
-    a();
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Int = -1;
   }
   
-  public static bkxs a()
+  public static int a()
   {
-    if (jdField_a_of_type_Bkxs == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bkxs == null) {
-        jdField_a_of_type_Bkxs = new bkxs();
-      }
-      return jdField_a_of_type_Bkxs;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 1) {}
+    String str = "";
+    int i;
+    if (jdField_a_of_type_Int != -1) {
+      i = jdField_a_of_type_Int;
     }
     for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("BadgeUtils", 2, "getLimitCount Limitcount" + i);
+      }
+      return i;
       try
       {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999");
         if (QLog.isColorLevel()) {
-          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+          QLog.d("BadgeUtils", 2, "LimitConfig:" + (String)localObject);
         }
-        return;
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length > 3) {
+          str = localObject[3];
+        }
+        jdField_a_of_type_Int = Integer.valueOf(str).intValue();
+        i = jdField_a_of_type_Int;
       }
       catch (Exception localException)
       {
-        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
-        this.jdField_a_of_type_Int = 22;
-        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("BadgeUtils", 2, "getLimitCount e:" + localException.toString());
+        }
+        jdField_a_of_type_Int = 999;
+        i = jdField_a_of_type_Int;
       }
-      this.jdField_a_of_type_Int = 22;
     }
   }
   
-  public boolean a()
+  public static void a()
   {
-    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
-    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("BadgeUtils", 2, "enableBadge mobileqq");
+    }
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    BadgeUtilImpl.enableBadge(BaseApplicationImpl.sApplication);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if ((!jdField_a_of_type_Boolean) && (paramInt > 0)) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+      } while (!a(paramContext));
+      i = a();
+      QLog.d("BadgeUtils_UnreadMonitor", 1, "setBadge limit: " + i + ", count: " + paramInt);
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        break;
+      }
+      BadgeUtilImpl.setLimitCount(i);
+      try
+      {
+        BadgeUtilImpl.setBadge(paramContext, paramInt);
+        return;
+      }
+      catch (Exception paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("BadgeUtilImpl", 2, "badge not support");
+    return;
+    ThreadManager.executeOnSubThread(new BadgeUtils.1(i, paramContext, paramInt));
+  }
+  
+  public static void a(Context paramContext, int paramInt, Notification paramNotification)
+  {
+    if (!c) {
+      if (!b)
+      {
+        c = CommonBadgeUtilImpl.isMIUI6();
+        b = true;
+        if (c) {}
+      }
+      else
+      {
+        return;
+      }
+    }
+    QLog.d("BadgeUtils_UnreadMonitor", 1, "setMIUI6Badge count: " + paramInt);
+    BadgeUtilImpl.setLimitCount(a());
+    BadgeUtilImpl.setMIUI6Badge(paramContext, paramInt, paramNotification);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return BadgeUtilImpl.isSupportBadge(paramContext);
+  }
+  
+  public static void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BadgeUtils", 2, "disableBadge mobileqq");
+    }
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, 2000L);
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

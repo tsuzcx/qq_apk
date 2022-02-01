@@ -1,131 +1,146 @@
-import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Array;
+import mqq.util.WeakReference;
 
-public class bbvy
+public final class bbvy<T>
 {
-  private static int jdField_a_of_type_Int;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static long[] jdField_a_of_type_ArrayOfLong = new long[20];
-  private static int jdField_b_of_type_Int;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static long[] jdField_b_of_type_ArrayOfLong = new long[20];
-  private static int jdField_c_of_type_Int;
-  private static long[] jdField_c_of_type_ArrayOfLong = new long[20];
-  private static int jdField_d_of_type_Int;
-  private static long[] jdField_d_of_type_ArrayOfLong = new long[20];
+  private int jdField_a_of_type_Int = -1;
+  private WeakReference<T>[] jdField_a_of_type_ArrayOfMqqUtilWeakReference;
   
-  public static void a()
+  public bbvy()
   {
-    if ((jdField_c_of_type_Int == 20) && (!jdField_a_of_type_Boolean))
-    {
-      if (!jdField_b_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
-      {
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Boolean = true;
-        l = 0L;
-        j = 0;
-        while (j < jdField_c_of_type_Int)
-        {
-          l += jdField_c_of_type_ArrayOfLong[j];
-          d1 = jdField_c_of_type_ArrayOfLong[j] / 1000.0D;
-          QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[FrameBuffer]temp=" + d1 + "ms framefpsOnce=" + 1000.0D / d1);
-          j += 1;
-        }
-      }
-      double d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[FrameBuffer]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        bbvw.a("sv_preprocess_frame_buffer", d1);
-      }
-      long l = 0L;
-      int j = 0;
-      while (j < jdField_d_of_type_Int)
-      {
-        l += jdField_d_of_type_ArrayOfLong[j];
-        d1 = jdField_d_of_type_ArrayOfLong[j] / 1000.0D;
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[ClipVideo]temp=" + d1 + "ms ClipVideoFpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[ClipVideo]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        bbvw.a("sv_preprocess_clip_video", d1);
-      }
-      l = 0L;
-      j = 0;
-      while (j < 20)
-      {
-        d1 = (jdField_b_of_type_ArrayOfLong[j] - jdField_a_of_type_ArrayOfLong[j]) / 1000.0D;
-        l = (l + d1);
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]temp=" + d1 + "ms InputfpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 20L;
-      QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Process=" + 1000.0D / d1);
-      if (i != 0) {
-        bbvw.a("sv_preprocess_total_time", d1);
-      }
-      d1 = (jdField_b_of_type_ArrayOfLong[19] - jdField_a_of_type_ArrayOfLong[0]) / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Camera=" + 1000.0D / d1);
-      }
-    }
+    this(16);
   }
   
-  public static void a(long paramLong)
+  public bbvy(int paramInt)
   {
-    if (jdField_a_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
-      int i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
+    this.jdField_a_of_type_ArrayOfMqqUtilWeakReference = ((WeakReference[])Array.newInstance(WeakReference.class, paramInt));
   }
   
-  public static void b()
+  /* Error */
+  public T a()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_0
+    //   4: monitorenter
+    //   5: aload 4
+    //   7: astore_3
+    //   8: aload_0
+    //   9: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   12: iconst_m1
+    //   13: if_icmpeq +22 -> 35
+    //   16: aload_0
+    //   17: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   20: istore_1
+    //   21: aload_0
+    //   22: getfield 30	bbvy:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   25: arraylength
+    //   26: istore_2
+    //   27: iload_1
+    //   28: iload_2
+    //   29: if_icmple +10 -> 39
+    //   32: aload 4
+    //   34: astore_3
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: aload_3
+    //   38: areturn
+    //   39: aload_0
+    //   40: getfield 30	bbvy:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   43: aload_0
+    //   44: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   47: aaload
+    //   48: invokevirtual 34	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   51: astore_3
+    //   52: aload_0
+    //   53: getfield 30	bbvy:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   56: aload_0
+    //   57: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   60: aconst_null
+    //   61: aastore
+    //   62: aload_0
+    //   63: aload_0
+    //   64: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   67: iconst_1
+    //   68: isub
+    //   69: putfield 19	bbvy:jdField_a_of_type_Int	I
+    //   72: goto -37 -> 35
+    //   75: astore_3
+    //   76: aload_0
+    //   77: monitorexit
+    //   78: aload_3
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	this	bbvy
+    //   20	10	1	i	int
+    //   26	4	2	j	int
+    //   7	45	3	localObject1	Object
+    //   75	4	3	localObject2	Object
+    //   1	32	4	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   8	27	75	finally
+    //   39	72	75	finally
   }
   
-  public static void b(long paramLong)
+  /* Error */
+  public boolean a(T paramT)
   {
-    if (jdField_b_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_b_of_type_ArrayOfLong;
-      int i = jdField_b_of_type_Int;
-      jdField_b_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
-  }
-  
-  public static void c(long paramLong)
-  {
-    if (jdField_c_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_c_of_type_ArrayOfLong;
-      int i = jdField_c_of_type_Int;
-      jdField_c_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
-  }
-  
-  public static void d(long paramLong)
-  {
-    if (jdField_d_of_type_Int < 20)
-    {
-      long[] arrayOfLong = jdField_d_of_type_ArrayOfLong;
-      int i = jdField_d_of_type_Int;
-      jdField_d_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   6: iconst_m1
+    //   7: if_icmpeq +17 -> 24
+    //   10: aload_0
+    //   11: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   14: aload_0
+    //   15: getfield 30	bbvy:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   18: arraylength
+    //   19: iconst_1
+    //   20: isub
+    //   21: if_icmpge +36 -> 57
+    //   24: aload_0
+    //   25: aload_0
+    //   26: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   29: iconst_1
+    //   30: iadd
+    //   31: putfield 19	bbvy:jdField_a_of_type_Int	I
+    //   34: aload_0
+    //   35: getfield 30	bbvy:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
+    //   38: aload_0
+    //   39: getfield 19	bbvy:jdField_a_of_type_Int	I
+    //   42: new 21	mqq/util/WeakReference
+    //   45: dup
+    //   46: aload_1
+    //   47: invokespecial 40	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   50: aastore
+    //   51: iconst_1
+    //   52: istore_2
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: iload_2
+    //   56: ireturn
+    //   57: iconst_0
+    //   58: istore_2
+    //   59: goto -6 -> 53
+    //   62: astore_1
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload_1
+    //   66: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	67	0	this	bbvy
+    //   0	67	1	paramT	T
+    //   52	7	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	24	62	finally
+    //   24	51	62	finally
   }
 }
 

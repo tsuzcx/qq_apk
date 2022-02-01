@@ -3,7 +3,7 @@ package com.tencent.ttpic.openapi.model;
 import com.tencent.ttpic.model.CharmRange;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +17,8 @@ public class FaceItem
   public int blendIris;
   public int blendMode;
   public CharmRange charmRange;
+  public float cos3DAmbientStrength = 1.0F;
+  public float cos3DDiffuseStrength = 1.0F;
   public int countTriggerType;
   public boolean disable3DCorrect = false;
   public String externalTriggerWords;
@@ -25,7 +27,8 @@ public class FaceItem
   public List<Float> facePoints;
   public int featureStatType;
   public StickerItem.ValueRange featureStatValueRange;
-  public FaceOffUtil.FEATURE_TYPE featureType;
+  public FaceOffUtil.FeatureType featureType;
+  public float filterSkin = 0.0F;
   public int frameDuration;
   public int frameType;
   public int frames;
@@ -34,7 +37,7 @@ public class FaceItem
   public int height;
   public String id;
   public String irisImage;
-  public boolean is3DCos = false;
+  public int is3DCos;
   public float[] lipsRGBA;
   public String lipsStyleMask;
   public int personID;

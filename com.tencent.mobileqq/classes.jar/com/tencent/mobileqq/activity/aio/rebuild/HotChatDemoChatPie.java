@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgz;
+import aibs;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -18,6 +18,7 @@ import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.HotChatInfo;
@@ -29,7 +30,7 @@ import java.net.URLEncoder;
 import mqq.os.MqqHandler;
 
 public class HotChatDemoChatPie
-  extends ahgz
+  extends aibs
 {
   protected int a;
   protected ImageView a;
@@ -43,7 +44,7 @@ public class HotChatDemoChatPie
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1))
     {
-      paramString2 = ((HotChatManager)this.app.getManager(60)).a(paramString2);
+      paramString2 = ((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString2);
       str = paramString1;
       if (paramString2 != null) {
         str = paramString2.name;
@@ -93,7 +94,7 @@ public class HotChatDemoChatPie
         this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
         paramDrawable = new SimpleTextView(this.mActivity);
-        paramDrawable.setText(this.mActivity.getText(2131698293));
+        paramDrawable.setText(this.mActivity.getText(2131698585));
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.bottomMargin = this.b;
         localLayoutParams.gravity = 1;
@@ -110,7 +111,7 @@ public class HotChatDemoChatPie
         paramDrawable.addRule(15);
         paramDrawable.rightMargin = this.c;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramDrawable);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845347);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845432);
       } while (this.mContent == null);
       this.mContent.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
       return;
@@ -170,7 +171,7 @@ public class HotChatDemoChatPie
     this.mCacnelSellPttPanle = true;
     if ((this.sessionInfo.troopUin == null) || (this.sessionInfo.troopUin.length() == 0))
     {
-      paramIntent = ((TroopManager)this.app.getManager(52)).b(this.sessionInfo.curFriendUin);
+      paramIntent = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.sessionInfo.curFriendUin);
       if (paramIntent != null) {
         this.sessionInfo.troopUin = paramIntent.troopcode;
       }
@@ -182,8 +183,8 @@ public class HotChatDemoChatPie
   {
     if (this.mTitleBtnLeft != null)
     {
-      this.mTitleBtnLeft.setText(2131698292);
-      this.mTitleBtnLeft.setContentDescription(this.mActivity.getString(2131698292));
+      this.mTitleBtnLeft.setText(2131698584);
+      this.mTitleBtnLeft.setContentDescription(this.mActivity.getString(2131698584));
       this.mTitleBtnLeft.setBackgroundDrawable(null);
     }
   }

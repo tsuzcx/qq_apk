@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import blux;
+import bnka;
 import java.util.List;
 
 class AEPlayShowPart$6
@@ -22,8 +22,8 @@ class AEPlayShowPart$6
         int i = 0;
         while (i < localList.size())
         {
-          blux localblux = (blux)localList.get(i);
-          if ((localblux != null) && (this.val$tabName != null) && (this.val$tabName.equals(localblux.b)))
+          bnka localbnka = (bnka)localList.get(i);
+          if ((localbnka != null) && (this.val$tabName != null) && (this.val$tabName.equals(localbnka.b)))
           {
             AEPlayShowPart.access$600(this.this$0, i);
             if (AEPlayShowPart.access$700(this.this$0).getCurrentPageView() != null) {

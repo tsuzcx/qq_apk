@@ -1,63 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ankr
+public abstract interface ankr
 {
-  private Signature a()
-  {
-    try
-    {
-      Signature localSignature = Signature.getInstance("SHA256withRSA");
-      return localSignature;
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-    {
-      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "getSignature error : ", localNoSuchAlgorithmException.getMessage() });
-    }
-    return null;
-  }
-  
-  private boolean a(Signature paramSignature, Key paramKey)
-  {
-    try
-    {
-      paramSignature.initVerify((PublicKey)paramKey);
-      return true;
-    }
-    catch (InvalidKeyException paramSignature)
-    {
-      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "initForVerify error : ", paramSignature.getMessage() });
-    }
-    return false;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte1, Key paramKey, byte[] paramArrayOfByte2)
-  {
-    Signature localSignature = a();
-    if (localSignature == null)
-    {
-      QLog.e("RsaUsingShaAlgorithm", 1, "verifySignature fail");
-      return false;
-    }
-    if (!a(localSignature, paramKey))
-    {
-      QLog.e("RsaUsingShaAlgorithm", 1, "initForVerify fail");
-      return false;
-    }
-    try
-    {
-      localSignature.update(paramArrayOfByte2);
-      boolean bool = localSignature.verify(paramArrayOfByte1);
-      return bool;
-    }
-    catch (SignatureException paramArrayOfByte1) {}
-    return false;
-  }
+  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

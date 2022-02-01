@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import befc;
-import begc;
+import bfmf;
+import bfnf;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopFileDownloader$1
   implements Runnable
 {
-  public TroopFileDownloader$1(begc parambegc) {}
+  public TroopFileDownloader$1(bfnf parambfnf) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      befc.b("TroopFileDownloader", befc.a, "[" + this.this$0.b + "] download. had stoped");
+      bfmf.b("TroopFileDownloader", bfmf.a, "[" + this.this$0.b + "] download. had stoped");
     }
     while (this.this$0.a()) {
       return;

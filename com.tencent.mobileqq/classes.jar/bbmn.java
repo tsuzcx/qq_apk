@@ -1,41 +1,54 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DataLineDecoder.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.annotation.TargetApi;
+import android.view.Surface;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
+@TargetApi(14)
 public class bbmn
-  implements bbnb
 {
-  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean)
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private bbmk jdField_a_of_type_Bbmk;
+  private bbml jdField_a_of_type_Bbml;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline");
-    }
-    if (paramBoolean)
+    if (this.jdField_a_of_type_AndroidViewSurface != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline: return isReaded4DataLine:" + paramBoolean);
-      }
-      return;
+      this.jdField_a_of_type_AndroidViewSurface.release();
+      this.jdField_a_of_type_AndroidViewSurface = null;
     }
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    if (this.jdField_a_of_type_Bbml != null)
     {
-      new Handler(localLooper).post(new DataLineDecoder.1(this, paramMessageHandler, paramMsg));
-      return;
+      this.jdField_a_of_type_Bbml.a();
+      this.jdField_a_of_type_Bbml = null;
     }
-    ((amqd)paramMessageHandler.app.getBusinessHandler(8)).a(paramMsg);
+    if (this.jdField_a_of_type_Bbmk != null)
+    {
+      this.jdField_a_of_type_Bbmk.a();
+      this.jdField_a_of_type_Bbmk = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    }
   }
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm, MessageHandler paramMessageHandler)
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    a(paramMessageHandler, paramMsg, parambbkm.h);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+    this.jdField_a_of_type_Bbml.a(paramLong);
+    this.jdField_a_of_type_Bbml.a();
+  }
+  
+  public void a(bbmm parambbmm, Surface paramSurface)
+  {
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    this.jdField_a_of_type_Bbmk = new bbmk(parambbmm.a(), 1);
+    this.jdField_a_of_type_Bbml = new bbml(this.jdField_a_of_type_Bbmk);
+    this.jdField_a_of_type_Bbml.a(paramSurface);
+    this.jdField_a_of_type_Bbml.b();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
   }
 }
 

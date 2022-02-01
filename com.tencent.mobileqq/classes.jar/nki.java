@@ -1,16 +1,38 @@
-import android.os.Handler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
 
-class nki
-  extends nkn
+public class nki
+  implements Animator.AnimatorListener
 {
-  nki(nkh paramnkh) {}
+  public nki(TalkingEffectLayout paramTalkingEffectLayout) {}
   
-  public boolean a(int paramInt, String paramString, naf paramnaf)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    bija.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
-    nkh.a(this.a).removeCallbacksAndMessages(null);
-    nkh.a(this.a).sendEmptyMessage(2);
-    return true;
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationCancel(paramAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationEnd(paramAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationRepeat(paramAnimator);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (TalkingEffectLayout.a(this.a) != null) {
+      TalkingEffectLayout.a(this.a).onAnimationStart(paramAnimator);
+    }
   }
 }
 

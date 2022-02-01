@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.structmsg;
 
-import agpx;
-import bcef;
-import bcho;
+import ahin;
+import bdla;
+import bdom;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.portal.PortalManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgForGeneralShare$5$2
   implements Runnable
 {
-  public StructMsgForGeneralShare$5$2(bcho parambcho, agpx paramagpx, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$5$2(bdom parambdom, ahin paramahin, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -22,20 +23,20 @@ public class StructMsgForGeneralShare$5$2
     }
     String str2 = "";
     String str1;
-    if ((this.jdField_a_of_type_Agpx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Agpx.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      if (this.jdField_a_of_type_Agpx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+    if ((this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
+      if (this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
       {
-        str1 = this.jdField_a_of_type_Agpx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-        str2 = this.jdField_a_of_type_Agpx.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+        str1 = this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+        str2 = this.jdField_a_of_type_Ahin.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
       }
     }
     for (;;)
     {
-      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(79);
+      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_PORTAL);
       if (localPortalManager != null) {}
       for (int j = localPortalManager.a();; j = -1)
       {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
         return;
         i = 2;
         break;
@@ -47,7 +48,7 @@ public class StructMsgForGeneralShare$5$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.5.2
  * JD-Core Version:    0.7.0.1
  */

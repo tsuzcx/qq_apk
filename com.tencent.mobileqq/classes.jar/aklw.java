@@ -1,24 +1,43 @@
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.util.ArrayList;
 
 public class aklw
-  extends akln
 {
-  public Button a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public int a;
+  public long a;
+  public Bundle a;
+  public MessageForShortVideo a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public long e;
+  public boolean e;
+  
+  public aklw()
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.getShortVideoSavePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 

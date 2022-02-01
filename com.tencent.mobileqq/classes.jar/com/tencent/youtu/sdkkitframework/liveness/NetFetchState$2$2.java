@@ -1,5 +1,6 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 
 class NetFetchState$2$2
@@ -11,7 +12,7 @@ class NetFetchState$2$2
     put("ui_tips", "net_fetch_failed");
     put("process_action", "failed");
     put("error_code", Integer.valueOf(2097153));
-    put("message", "msg_net_error:" + this.val$tips1 + " " + this.val$howToFix1);
+    put("message", CommonUtils.makeMessageJson(2097153, "msg_net_error", "msg_net_error " + this.val$tips1 + " " + this.val$howToFix1));
   }
 }
 

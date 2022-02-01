@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arlj
-  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
+public class arlj
 {
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
+  private static String a = "https://h5.vip.qq.com/p/pay/index?_wv=17301507&_wwv=8192&aid=mvip.g.a.zh_jjms&month=1&type=vip";
+  
+  @NonNull
+  public static arlj a(String paramString)
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+    arlj localarlj = new arlj();
+    if (TextUtils.isEmpty(paramString)) {
+      return localarlj;
+    }
+    a(paramString);
+    return localarlj;
   }
   
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  public static String a()
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
+    return a;
+  }
+  
+  private static void a(String paramString)
+  {
+    try
+    {
+      a = new JSONObject(paramString).getJSONObject("android").getString("payH5Url");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlj
  * JD-Core Version:    0.7.0.1
  */

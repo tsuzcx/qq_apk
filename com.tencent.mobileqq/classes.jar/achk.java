@@ -1,81 +1,49 @@
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
-import com.tencent.qapmsdk.base.config.PluginCombination;
-import com.tencent.qapmsdk.base.reporter.ab.AbType;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Build.VERSION;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class achk
+class achk
+  implements acgx
 {
-  public static Class<? extends AbType>[] a = { achj.class, achl.class };
-  
-  public static int a(String paramString, HashMap<String, String> paramHashMap)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    if (paramString != null)
+    Object localObject = null;
+    if (paramacfw != null) {}
+    for (paramVarArgs = paramacfw.a(); (paramacfw == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      if ("actSceneMem".equals(paramString)) {
-        return PluginCombination.leakPlugin.plugin;
-      }
-      if ("actScenePerf".equals(paramString)) {
-        return PluginCombination.resourcePlugin.plugin;
-      }
-      if (!"unifiedMonitor".equals(paramString)) {}
+      acho.d("GdtOSVersionJsCall", "handleJsCallRequest error");
+      return true;
     }
-    switch (Integer.parseInt((String)paramHashMap.get("family")))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    default: 
-      return -1;
-    case 9: 
-    case 10: 
-      return PluginCombination.dropFramePlugin.plugin;
-    case 0: 
-      return PluginCombination.loopStackPlugin.plugin;
-    case 20: 
-      return PluginCombination.resourcePlugin.plugin;
+      localJSONObject.put("osVersion", Build.VERSION.RELEASE);
     }
-    return PluginCombination.batteryPlugin.plugin;
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    if (paramHashMap == null) {}
-    do
-    {
-      return;
-      paramHashMap.put("deviceLv", String.valueOf(DeviceInfoUtil.getPerfLevel()));
-      paramString = QAPM.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
-    } while ((paramString == null) || (paramString.length() <= 0));
-    paramHashMap.put("abfactor", paramString);
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return;
-    }
-    for (;;)
+    catch (JSONException localJSONException)
     {
       try
       {
-        if (paramJSONObject.has("newplugin"))
+        for (;;)
         {
-          i = paramJSONObject.getInt("newplugin");
-          String str = QAPM.getAbFactorByQapmPlugin(i);
-          if ((str == null) || (str.length() <= 0)) {
-            break;
+          paramacfw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacfw != null) {
+            paramString = paramacfw.a();
           }
-          paramJSONObject.put("abfactor", str);
-          return;
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getOSVersion", paramString);
+          return true;
+          localJSONException = localJSONException;
+          localJSONException.printStackTrace();
         }
       }
-      catch (Exception paramJSONObject)
+      catch (Throwable paramString)
       {
-        QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
-        return;
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
       }
-      int i = paramJSONObject.getInt("plugin");
     }
   }
 }

@@ -1,20 +1,66 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 class sbl
-  implements DialogInterface.OnClickListener
+  implements Comparator<sbj>
 {
-  sbl(sbk paramsbk, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(sbj paramsbj)
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Sbk, sab.a(this.jdField_a_of_type_Sbk.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
+    if (paramsbj.jdField_a_of_type_Int != -1) {
+      return paramsbj.jdField_a_of_type_Int;
+    }
+    Friends localFriends = paramsbj.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = ContactUtils.getFriendStatus(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
+    for (;;)
+    {
+      paramsbj.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
+    }
+  }
+  
+  public int a(sbj paramsbj1, sbj paramsbj2)
+  {
+    return a(paramsbj1) - a(paramsbj2);
   }
 }
 

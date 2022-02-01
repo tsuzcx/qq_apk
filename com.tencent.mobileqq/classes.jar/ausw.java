@@ -1,104 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.text.QQText;
 
-@Deprecated
-public class ausw
+class ausw
+  extends ausx
 {
-  public void call(String paramString, List<String> paramList, ausv paramausv)
+  public ImageView a;
+  public TextView a;
+  
+  public ausw(View paramView)
   {
-    Object localObject2 = null;
-    Method[] arrayOfMethod = getClass().getDeclaredMethods();
-    int j = arrayOfMethod.length;
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1 = localObject2;
-      if (i < j)
-      {
-        localObject1 = arrayOfMethod[i];
-        if ((!((Method)localObject1).getName().equals(paramString)) || (((Method)localObject1).getParameterTypes().length != paramList.size())) {}
-      }
-      else
-      {
-        if (localObject1 != null) {}
-        try
-        {
-          if (paramList.size() == 0) {}
-          for (localObject2 = ((Method)localObject1).invoke(this, new Object[0]);; localObject2 = ((Method)localObject1).invoke(this, paramList.toArray()))
-          {
-            localObject1 = ((Method)localObject1).getReturnType();
-            if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
-              break;
-            }
-            if (paramausv == null) {
-              break label276;
-            }
-            paramausv.a(null);
-            return;
-          }
-          if (paramausv != null) {
-            if (customCallback())
-            {
-              paramausv.a(localObject2.toString());
-              return;
-            }
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          if (paramausv != null) {
-            paramausv.a();
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("JB", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
-          }
-          if (paramausv != null)
-          {
-            paramausv.a();
-            return;
-            paramausv.a(localObject2);
-            return;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            if (paramausv != null) {
-              paramausv.a();
-            }
-          }
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          for (;;)
-          {
-            if (paramausv != null) {
-              paramausv.a();
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (paramausv != null) {
-              paramausv.a();
-            }
-          }
-        }
-        label276:
-        return;
-      }
-      i += 1;
-    }
+    super(paramView);
+    this.jdField_a_of_type_Int = ausq.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368764));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380370));
+    paramView.setTag(this);
   }
   
-  public boolean customCallback()
+  public void a(String paramString1, String paramString2, FaceDecoder paramFaceDecoder)
   {
-    return false;
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject, 2));
+    localObject = paramFaceDecoder.getBitmapFromCache(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
+    {
+      localObject = bheg.a();
+      paramString2 = (String)localObject;
+      if (!paramFaceDecoder.isPausing())
+      {
+        paramFaceDecoder.requestDecodeFace(paramString1, 1, false);
+        paramString2 = (String)localObject;
+      }
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
 }
 

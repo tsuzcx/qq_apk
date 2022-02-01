@@ -1,9 +1,8 @@
-public class bfli
+import java.util.HashMap;
+
+public abstract interface bfli
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  public abstract void a(long paramLong, HashMap<bfkz, bfla> paramHashMap);
 }
 
 

@@ -1,163 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import org.json.JSONObject;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
 
 public class aowj
+  extends aoui
 {
-  public static int a;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-  public static int b = 3;
-  public static int c = 1;
-  public static int d = 3;
-  public static int e = 3;
-  public static int f = 10;
-  public static int g = 1;
-  private aotj jdField_a_of_type_Aotj;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  protected WeakReference<QQAppInterface> a;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    jdField_a_of_type_Int = 5;
-  }
-  
-  public aowj(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app);
+    paramQQAppInterface = new aowi(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "open_homepage";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    ArkAppCenter.b(false);
-  }
-  
-  public static boolean a(Node paramNode, JSONObject paramJSONObject)
-  {
-    boolean bool = true;
-    if (paramNode == null) {
-      bool = false;
-    }
-    for (;;)
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      return bool;
-      try
+      int i = 0;
+      while (i < paramContext.length)
       {
-        String str = paramNode.getNodeName();
-        NodeList localNodeList = paramNode.getChildNodes();
-        JSONObject localJSONObject = new JSONObject();
-        int i = 0;
-        int k;
-        for (int j = 0;; j = k)
-        {
-          if (i < localNodeList.getLength())
-          {
-            Node localNode = localNodeList.item(i);
-            if ((localNode instanceof Element))
-            {
-              a(localNode, localJSONObject);
-              k = 1;
-            }
-            else
-            {
-              k = j;
-              if ((localNode instanceof Text))
-              {
-                paramJSONObject.put(str, paramNode.getFirstChild().getNodeValue());
-                k = j;
-              }
-            }
-          }
-          else
-          {
-            if (j == 0) {
-              break;
-            }
-            paramJSONObject.put(str, localJSONObject);
-            return true;
-          }
-          i += 1;
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
         }
-        return false;
+        i += 1;
       }
-      catch (Exception paramNode) {}
     }
-  }
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_Aotj != null) {
-      return this.jdField_a_of_type_Aotj.a();
-    }
-    return null;
-  }
-  
-  BaseChatPie a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aotj != null) {
-      this.jdField_a_of_type_Aotj.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Aotj != null)
-    {
-      if ((paramInt2 == 22) || (paramInt1 != 22)) {
-        break label27;
-      }
-      this.jdField_a_of_type_Aotj.a();
-    }
-    label27:
-    while ((paramInt2 != 22) || (paramInt1 == 22)) {
-      return;
-    }
-    this.jdField_a_of_type_Aotj.b();
-  }
-  
-  public void a(List<aouk> paramList, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkRecommendController", 2, "showAppPanel.mChatPie is null");
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_Aotj == null) {
-      this.jdField_a_of_type_Aotj = new aotj(a());
-    }
-    this.jdField_a_of_type_Aotj.a();
-    this.jdField_a_of_type_Aotj.a(paramList, paramInt, null);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aotj != null)
-    {
-      this.jdField_a_of_type_Aotj.c();
-      this.jdField_a_of_type_Aotj = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = null;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    return paramQQAppInterface;
   }
 }
 

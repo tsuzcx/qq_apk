@@ -1,52 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class blwu
+class blwu
+  implements blvw
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b = 6;
+  blwu(blws paramblws) {}
   
-  public blwu()
+  public void a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    }
   }
   
-  public blwu(List<String> paramList, String paramString, JSONObject paramJSONObject)
+  public void a(File paramFile1, File paramFile2, File paramFile3)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramJSONObject != null)
-    {
-      a(paramJSONObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
-    this.jdField_a_of_type_Int = 3;
-    this.b = 6;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
   {
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangString != null) {}
-      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
-      {
-        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
-        this.b = paramJSONObject.getInt("pendantNum");
-        return;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
   }
 }

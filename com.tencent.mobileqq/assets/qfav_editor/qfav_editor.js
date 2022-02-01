@@ -29,7 +29,7 @@ QfavEditor.E.prototype._bindEvents = function () {
     this.rootElement.addEventListener('focusout', function () { _oSelf._onFocusOut(); }, true);
     this.rootElement.addEventListener('blur', function () { _oSelf._onblur(); }, true);
     this.rootElement.addEventListener('touchend', function () { _oSelf._onTapEnd(); }, true);
-    this.rootElement.addEventListener('click', function () { _oSelf._onClick(); }, true);
+    this.rootElement.addEventListener('click', function (e) { _oSelf._onClick(e); }, true);
     document.addEventListener("paste", function () { _oSelf._onPaste(); }, false);
     document.addEventListener("input", function () { _oSelf._onInput(); }, false);
 }
@@ -79,9 +79,62 @@ QfavEditor.E.prototype._onTapEnd = function (e) {
 
     this._currentRange = null;
 }
-QfavEditor.E.prototype._onClick = function (e) {
+QfavEditor.E.prototype._onClick = function (event) {
     QfavUtil.log('_onClick');
+    var self = QfavEditor._editor;
+    var wrappers = document.getElementsByClassName("wrapper");;
+    if (isUnvalid(wrappers)) {
+        return;
+    }
+    var sel;
+    for (var i = 0; i < wrappers.length; i++) {
+        var wrapper = wrappers[i];
+        if (event.pageY > wrapper.offsetTop && event.pageY < wrapper.offsetTop + wrapper.offsetHeight) {
+            if (event.pageX < wrapper.offsetLeft + wrapper.clientWidth / 2) {
+                sel = self.findPreviousElementNode(wrapper);
+            } else if (event.pageX > wrapper.offsetLeft + wrapper.clientWidth / 2) {
+                sel = wrapper.nextSibling;
+            }
+        }
+    }
+    if (sel) {
+        var range = document.createRange();
+        range.setStart(sel, 0);
+        range.setEnd(sel, 0);
+        self._currentRange = range;
+        self.restoreSelection();
+        self._onFocus();
+    }
     this.notifyOnClickQfavEditor();
+}
+
+
+QfavEditor.E.prototype.findPreviousElementNode = function (node) {
+    while (node != this.rootElement) {
+        var pre = node.previousSibling;
+        if (pre) {
+            while (pre.lastElementChild) {
+                pre = pre.lastElementChild;
+            }
+            return pre;
+        }
+        node = node.parentNode;
+    }
+    return null;
+}
+
+QfavEditor.E.prototype.findPreviousNode = function (node) {
+    while (node != this.rootElement) {
+        var pre = node.previousSibling;
+        if (pre) {
+            while (pre.lastChild) {
+                pre = pre.lastChild;
+            }
+            return pre;
+        }
+        node = node.parentNode;
+    }
+    return null;
 }
 
 QfavEditor.E.prototype.ignoreChange = function (igore) {
@@ -458,11 +511,11 @@ playAudio = function (fid, fileName) {
             playbtn.className = 'play-btn vertical-center pause';
             // 暂停
             if (category == 2) { // 语音
-                playbtn.style.backgroundImage= "url(https://static-res.qq.com/static-res/favorite/qfav_audio_play.png)";
-                            updateWare(item, true);
+                playbtn.style.backgroundImage = "url(https://static-res.qq.com/static-res/favorite/qfav_audio_play.png)";
+                updateWare(item, true);
 
             } else {  // 录音
-                playbtn.style.backgroundImage= "url(https://static-res.qq.com/static-res/favorite/qfav_ptt_play.png)";
+                playbtn.style.backgroundImage = "url(https://static-res.qq.com/static-res/favorite/qfav_ptt_play.png)";
             }
             QfavUtil.notify('playAudio', { fid: fid, fileName: fileName, md5: md5, play: false, progress: progress });
         } else {
@@ -471,10 +524,10 @@ playAudio = function (fid, fileName) {
             playbtn.className = 'play-btn vertical-center playing';
 
             if (category == 2) { // 语音
-                playbtn.style.backgroundImage= "url(https://static-res.qq.com/static-res/favorite/qfav_audio_pause.png)";
+                playbtn.style.backgroundImage = "url(https://static-res.qq.com/static-res/favorite/qfav_audio_pause.png)";
                 updateWare(item, false);
             } else {  // 录音
-                playbtn.style.backgroundImage= "url(https://static-res.qq.com/static-res/favorite/qfav_ptt_pause.png)";
+                playbtn.style.backgroundImage = "url(https://static-res.qq.com/static-res/favorite/qfav_ptt_pause.png)";
             }
             QfavUtil.notify('playAudio', { fid: fid, fileName: fileName, md5: md5, play: true, progress: progress });
         }
@@ -492,21 +545,25 @@ function notifyPreventFinish(prevent) {
 }
 
 function openFile(file) {
-    if(file == undefined || file == null) {
+    if (file == undefined || file == null) {
         return;
     }
 
     var fid = file.getAttribute('fid');
     var path = file.getAttribute('path');
-    if(fid == undefined && path == null) {
+    if (fid == undefined && path == null) {
         return;
     }
-    if(path == undefined) {
+    if (path == undefined) {
         path = "";
     }
-     QfavUtil.notify('openFile', { fid: fid, path: path });
+    QfavUtil.notify('openFile', { fid: fid, path: path });
 }
 
-ignoreChange = function(ignore) {
-  QfavEditor._editor.ignoreChange(ignore);
+ignoreChange = function (ignore) {
+    QfavEditor._editor.ignoreChange(ignore);
+}
+
+function openLocation(locationDiv) {
+
 }

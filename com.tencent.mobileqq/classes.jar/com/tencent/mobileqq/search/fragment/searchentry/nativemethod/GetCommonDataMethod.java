@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
 import android.content.Context;
-import bbgh;
-import bjnd;
+import bcmz;
+import bkyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -23,7 +23,7 @@ public class GetCommonDataMethod
     localHippyMap.pushString("seqno", UniteSearchActivity.d);
     localHippyMap.pushString("search_engine", "qb-page");
     localHippyMap.pushString("session_id", UniteSearchActivity.e);
-    localHippyMap.pushString("engine_url", bjnd.a(bjnd.a(bbgh.a(5, bbgh.b(10)), "q"), "q", ""));
+    localHippyMap.pushString("engine_url", bkyp.a(bkyp.a(bcmz.a(5, bcmz.b(10)), "q"), "q", ""));
     localHippyMap.pushString("entryID", new JSONObject().toString());
     return localHippyMap;
   }

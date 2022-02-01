@@ -1,15 +1,18 @@
-class ovd
-  extends owd
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+
+public class ovd
+  implements TopGestureLayout.OnGestureListener
 {
-  ovd(ouu paramouu)
+  public ovd(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  
+  public void flingLToR()
   {
-    super(paramouu, null);
+    ReadInJoyVideoSubChannelActivity.a(this.a, true);
+    this.a.finish();
   }
   
-  void a(owg paramowg)
-  {
-    paramowg.onCommentStateError(1001);
-  }
+  public void flingRToL() {}
 }
 
 

@@ -2,17 +2,17 @@ package com.tencent.mobileqq.mini.out.webPlugins;
 
 import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import aqyp;
-import aqyt;
-import ardu;
-import bgve;
+import anvx;
+import ascz;
+import asdd;
+import ashz;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -43,12 +43,13 @@ public class MiniAppPlugin
   public static final String MINI_APP_HOST = "sou.qq.com";
   public static final String PLUGIN_NAMESPACE = "miniApp";
   public static final String SCHEME = "miniApp";
+  public static final int SHARE_TARGET_QQ = 0;
   public static final String TAG = "MiniAppPlugin";
   private static final String URL_PREFIX_HTTP_MINIAPP_HEAD_URL_1 = "https://www.mqqapi.com//microapp/open?";
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "https://mqqapi//microapp/open?";
   private static final String URL_PREFIX_MINIGAME_PAY_BY_H5 = "https://h5.qzone.qq.com/miniapp/act/midasPay";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private aqyp remoteRespObserver = new MiniAppPlugin.3(this);
+  private ascz remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -244,7 +245,7 @@ public class MiniAppPlugin
         paramJsBridgeListener.putString("miniapp_appid", paramString1);
         paramJsBridgeListener.putString("miniapp_type", paramString2);
         paramJsBridgeListener.putString("miniapp_via", paramString3);
-        sendRemoteReq(aqyt.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
+        sendRemoteReq(asdd.a("ipc_start_miniapp", paramVarArgs, this.remoteRespObserver.key, paramJsBridgeListener), false, false);
       }
       catch (Throwable paramJsBridgeListener)
       {
@@ -422,30 +423,30 @@ public class MiniAppPlugin
   public void onCreate()
   {
     super.onCreate();
-    ardu.a().a(this.remoteRespObserver);
+    ashz.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ardu.a().b(this.remoteRespObserver);
+    ashz.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!ardu.a().a())
+    if (!ashz.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), amtj.a(2131705952), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), anvx.a(2131706303), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      ardu.a().b(paramBundle);
+      ashz.a().b(paramBundle);
       return;
     }
-    ardu.a().a(paramBundle);
+    ashz.a().a(paramBundle);
   }
 }
 

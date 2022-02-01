@@ -1,7 +1,4 @@
-public abstract interface acjf
-{
-  public abstract void a(int paramInt);
-}
+class acjf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

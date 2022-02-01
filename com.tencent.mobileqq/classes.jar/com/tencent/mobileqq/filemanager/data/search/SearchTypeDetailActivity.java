@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
 import Override;
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.SparseArray;
 import android.view.MotionEvent;
+import anvx;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -50,12 +50,12 @@ public class SearchTypeDetailActivity
     this.jdField_a_of_type_Int = super.getIntent().getIntExtra("qfile_search_param_type", -1);
     this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("qfile_search_param_uin");
     this.jdField_a_of_type_JavaUtilList = super.getIntent().getBundleExtra("qfile_search_param_others").getIntegerArrayList("qfile_search_param_others");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, amtj.a(2131712779));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, amtj.a(2131712783));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, amtj.a(2131712782));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, amtj.a(2131712781));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, amtj.a(2131712780));
-    super.setContentView(2131558936);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, anvx.a(2131713126));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, anvx.a(2131713130));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, anvx.a(2131713129));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, anvx.a(2131713128));
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, anvx.a(2131713127));
+    super.setContentView(2131558963);
     super.setTitle((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int));
     paramBundle = getSupportFragmentManager().beginTransaction();
     ChatFileSearchFragment localChatFileSearchFragment = new ChatFileSearchFragment();
@@ -64,7 +64,7 @@ public class SearchTypeDetailActivity
     localChatFileSearchFragment.b = this.jdField_a_of_type_Int;
     localChatFileSearchFragment.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
     localChatFileSearchFragment.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBundle.replace(2131365087, localChatFileSearchFragment);
+    paramBundle.replace(2131365171, localChatFileSearchFragment);
     paramBundle.commit();
     return true;
   }
@@ -78,7 +78,7 @@ public class SearchTypeDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.SearchTypeDetailActivity
  * JD-Core Version:    0.7.0.1
  */

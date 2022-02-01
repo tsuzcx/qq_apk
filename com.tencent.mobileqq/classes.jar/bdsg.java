@@ -1,8 +1,16 @@
-import android.net.Uri;
+import android.graphics.Outline;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 
-public abstract interface bdsg
+class bdsg
+  extends ViewOutlineProvider
 {
-  public abstract void a(Uri paramUri);
+  bdsg(bdsf parambdsf, int paramInt) {}
+  
+  public void getOutline(View paramView, Outline paramOutline)
+  {
+    paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), this.jdField_a_of_type_Int);
+  }
 }
 
 

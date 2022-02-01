@@ -1,29 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-class awuo
-  implements awps
+public class awuo
+  implements DialogInterface.OnDismissListener
 {
-  awuo(awun paramawun) {}
+  public awuo(MedalGuideView paramMedalGuideView) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (awun.a(this.a) != null)
-    {
-      awun.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695859));
-      awun.a(this.a).b();
-      awun.a(this.a).c();
-    }
-  }
-  
-  public void a(Comments paramComments)
-  {
-    if (awun.a(this.a) != null)
-    {
-      awun.a(this.a);
-      awun.a(this.a).a(paramComments);
-      awun.a(this.a).b();
-    }
+    MedalGuideView.a(this.a);
   }
 }
 

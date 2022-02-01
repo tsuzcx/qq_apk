@@ -1,17 +1,40 @@
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 public class avlw
 {
-  public int a = -1;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c = 1;
-  public String c;
-  public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
+  int a = 0;
+  
+  public static avlw a(String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      for (;;)
+      {
+        return null;
+        try
+        {
+          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+          Object localObject = paramString.getElementsByTagName("hotpic_config");
+          if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
+          {
+            localObject = new avlw();
+            ((avlw)localObject).a = Integer.parseInt(paramString.getElementsByTagName("entry").item(0).getFirstChild().getNodeValue());
+            return localObject;
+          }
+        }
+        catch (Exception paramString) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HotPicConfProcessor", 1, "handleHotPicConfig failed" + paramString);
+    return null;
+  }
 }
 
 

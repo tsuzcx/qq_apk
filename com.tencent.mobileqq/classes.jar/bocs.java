@@ -1,9 +1,10 @@
-import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.tavcut.bean.TextEditorData;
 
-public class bocs
+public abstract interface bocs
 {
-  public AVIOStruct a;
-  public byte[] a;
+  public abstract void a();
+  
+  public abstract void a(TextEditorData paramTextEditorData);
 }
 
 

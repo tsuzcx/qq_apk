@@ -1,22 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ahyq
-  implements View.OnClickListener
+class ahyq
+  implements BusinessObserver
 {
-  public ahyq(SearchBaseActivity paramSearchBaseActivity) {}
+  ahyq(ahyl paramahyl) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.h != 1) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          nwu.a(this.a.app, paramBundle);
+          this.a.a = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
+          ahyl.a(this.a, paramBundle);
+          this.a.updateSession_updateTitle(this.a.mActivity.getIntent());
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail ret code error: " + paramInt);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      if (QLog.isColorLevel())
+      {
+        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
+          return;
+        }
+      }
+    }
   }
 }
 

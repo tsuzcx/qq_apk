@@ -1,28 +1,21 @@
-import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import java.lang.ref.WeakReference;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
 final class zzb
-  implements VSDispatchObserver.onVSRspCallBack<WEISHI.stGetPersonalPageRsp>
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  private final WeakReference<zyx> a;
+  zzb(Window paramWindow) {}
   
-  public zzb(zyx paramzyx)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.a = new WeakReference(paramzyx);
-  }
-  
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
-  {
-    paramVSBaseRequest = (zyx)this.a.get();
-    if (paramVSBaseRequest == null) {}
-    do
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
     {
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
       return;
-      paramVSBaseRequest.a(paramstGetPersonalPageRsp, false);
-    } while (paramstGetPersonalPageRsp == null);
-    zyx.a(paramVSBaseRequest, paramstGetPersonalPageRsp.toByteArray());
+    }
   }
 }
 

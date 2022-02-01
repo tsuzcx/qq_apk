@@ -1,49 +1,72 @@
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfs
-  implements View.OnTouchListener
+  extends aqwt<arft>
 {
-  public arfs(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static arft a()
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
-      }
+    return (arft)aqxe.a().a(647);
+  }
+  
+  @NonNull
+  public arft a(int paramInt)
+  {
+    return new arft();
+  }
+  
+  @Nullable
+  public arft a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return arft.a(paramArrayOfaqxa);
     }
-    while (paramMotionEvent.getAction() != 0)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
-      return false;
+    return null;
+  }
+  
+  public void a(arft paramarft)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaHttpsConfProcessor", 2, "RichmediaHttpsConfProcessor onUpdate");
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+  }
+  
+  public Class<arft> clazz()
+  {
+    return arft.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 647;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfs
  * JD-Core Version:    0.7.0.1
  */

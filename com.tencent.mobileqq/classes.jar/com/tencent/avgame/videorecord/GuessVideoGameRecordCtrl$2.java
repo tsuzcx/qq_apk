@@ -3,40 +3,40 @@ package com.tencent.avgame.videorecord;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
-import bija;
+import bjuc;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import java.nio.IntBuffer;
-import mzl;
-import naf;
-import nkh;
+import nfc;
+import nfv;
+import nrh;
 
 public class GuessVideoGameRecordCtrl$2
   implements Runnable
 {
-  public GuessVideoGameRecordCtrl$2(nkh paramnkh, int[] paramArrayOfInt) {}
+  public GuessVideoGameRecordCtrl$2(nrh paramnrh, int[] paramArrayOfInt) {}
   
   public void run()
   {
     if (this.a != null) {}
     try
     {
-      Bitmap localBitmap = Bitmap.createBitmap(nkh.a(this.this$0), nkh.b(this.this$0), Bitmap.Config.ARGB_8888);
+      Bitmap localBitmap = Bitmap.createBitmap(nrh.a(this.this$0), nrh.b(this.this$0), Bitmap.Config.ARGB_8888);
       localBitmap.copyPixelsFromBuffer(IntBuffer.wrap(this.a));
       Matrix localMatrix = new Matrix();
       localMatrix.setScale(1.0F, -1.0F);
-      boolean bool = FileUtil.writeBitmapToFile(Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), localMatrix, true), nkh.a(this.this$0));
+      boolean bool = FileUtil.writeBitmapToFile(Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), localMatrix, true), nrh.a(this.this$0));
       if (!bool) {
-        nkh.a(this.this$0, null);
+        nrh.a(this.this$0, null);
       }
-      bija.a(this.this$0.a, "save photo " + bool + " " + nkh.a(this.this$0));
+      bjuc.a(this.this$0.a, "save photo " + bool + " " + nrh.a(this.this$0));
       if (!this.this$0.b()) {
-        mzl.a().a().a(nkh.b(this.this$0), nkh.a(this.this$0), nkh.a(this.this$0));
+        nfc.a().a().a(nrh.b(this.this$0), nrh.a(this.this$0), nrh.a(this.this$0));
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      bija.a(this.this$0.a, "save photo " + localThrowable);
+      bjuc.a(this.this$0.a, "save photo " + localThrowable);
     }
   }
 }

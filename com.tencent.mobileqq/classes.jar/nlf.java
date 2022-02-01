@@ -1,35 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.UiSettings;
+import com.tencent.avgame.gameroom.stage.StageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class nlf
-  implements Animation.AnimationListener
+  implements nhz
 {
-  public nlf(PoiMapActivity paramPoiMapActivity) {}
+  public nlf(StageView paramStageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    if (PoiMapActivity.h(this.a) != null) {
-      PoiMapActivity.i(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("StageView", 2, "onLoad " + paramLottieDrawable);
     }
-    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.p);
-    this.a.b.setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
-      this.a.e.setVisibility(0);
+    if (paramLottieDrawable != null)
+    {
+      this.a.b = paramLottieDrawable;
+      this.a.b.addAnimatorListener(new nlg(this));
     }
-    PoiMapActivity.e(this.a).clearAnimation();
-    this.a.a = false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

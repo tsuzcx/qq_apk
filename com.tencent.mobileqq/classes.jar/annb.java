@@ -1,34 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
 
-class annb
-  implements PermissionMonitor.Listener
+public class annb
+  implements bivu
 {
-  static
-  {
-    if (!anmw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public annb(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
   
-  annb(anmw paramanmw) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
-    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 4)) {
-      return;
+    if (paramInt == 1) {
+      this.a.getActivity().finish();
     }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)anmw.a(this.jdField_a_of_type_Anmw), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

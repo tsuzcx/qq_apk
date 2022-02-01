@@ -1,12 +1,12 @@
 package com.tencent.qqprotect.qsec;
 
-import bjik;
-import bjiv;
+import bktv;
+import bkug;
 
 public class FilterManager$1
   implements Runnable
 {
-  public FilterManager$1(bjik parambjik, bjiv parambjiv) {}
+  public FilterManager$1(bktv parambktv, bkug parambkug) {}
   
   public void run()
   {

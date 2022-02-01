@@ -1,105 +1,85 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.5;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
 public class bbyc
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements INetEngine.INetEngineListener
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  bbyd jdField_a_of_type_Bbyd;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
+  public bbyc(ScribbleResMgr.5 param5) {}
   
-  public bbyc()
+  public void onResp(NetResp paramNetResp)
   {
-    a();
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Bbyd = new bbyd();
-    this.jdField_a_of_type_Bbyd.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Bbyd.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
+    int j = 2;
+    QLog.i("ScribbleResMgr", 2, "DownloadResIcon onResp resp.mResult:  " + paramNetResp.mResult);
+    int i = j;
+    Object localObject;
+    String str1;
+    String str2;
+    if (paramNetResp.mResult == 0)
     {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      localObject = "";
+      str1 = "";
+      if (this.a.a == 3)
+      {
+        localObject = ScribbleResMgr.a(this.a.this$0);
+        str1 = ScribbleResMgr.b(this.a.this$0);
       }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      if (this.a.a == 4)
+      {
+        localObject = ScribbleResMgr.c(this.a.this$0);
+        str1 = ScribbleResMgr.d(this.a.this$0);
+      }
+      str2 = FileUtils.calcMd5((String)localObject);
+      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
+        break label259;
+      }
+      str1 = ScribbleResMgr.a;
+      i = nwp.a((String)localObject, str1);
+      if (i == 0) {
+        break label334;
+      }
+      QLog.e("ScribbleResMgr", 2, "unZipFolder  failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
     }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Bbyd = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    label259:
+    label334:
+    for (i = 0;; i = 1)
     {
+      if (i != 0) {
+        i = 1;
+      }
       for (;;)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
+        if (paramNetResp.mResult == 3) {
+          i = 4;
         }
+        paramNetResp = new ScribbleResMgr.ResInfo();
+        paramNetResp.resType = this.a.a;
+        paramNetResp.sourceId = 0;
+        ScribbleResMgr.a(this.a.this$0, paramNetResp, i);
+        return;
+        if (str2 == null) {}
+        for (localObject = "";; localObject = str2)
+        {
+          str2 = str1;
+          if (str1 == null) {
+            str2 = "";
+          }
+          QLog.e("ScribbleResMgr", 2, "check wrong md5 =" + (String)localObject + " desMd5 = " + str2);
+          i = j;
+          break;
+        }
+        i = 2;
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bbyd.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
   }
   
-  public void d()
-  {
-    this.jdField_a_of_type_Bbyd.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

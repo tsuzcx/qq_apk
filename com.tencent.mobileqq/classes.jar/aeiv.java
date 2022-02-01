@@ -1,124 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aeiv
-  extends aqyp
+  implements View.OnClickListener
 {
-  public aeiv(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public aeiv(NearbyActivity paramNearbyActivity) {}
   
-  public void onBindedToClient()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onBindedToClient");
-    }
-    ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.4.1(this), 30L);
-  }
-  
-  public void onDisconnectWithService()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onDisconnectWithService");
-    }
-  }
-  
-  public void onPushMsg(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onPushMsg");
-    }
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onResponse");
-    }
-    if (paramBundle == null) {}
-    long l;
-    do
+    int i = 0;
+    while (i < this.a.a.size())
     {
-      do
-      {
-        return;
-      } while (paramBundle.getInt("respkey", 0) != TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).key);
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, false);
-      str = paramBundle.getString("cmd");
-      paramBundle.getString("callbackid");
-      localObject = paramBundle.getBundle("response");
-      paramBundle = paramBundle.getBundle("request");
-      l = bcxh.a("get_url_time");
-    } while ((!"ipc_cmd_get_team_work_url".equals(str)) || (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) == null));
-    String str = ((Bundle)localObject).getString("url");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", str);
-    QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
-    if ((!TextUtils.isEmpty(str)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a()))
-    {
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a, ((Bundle)localObject).getBoolean("needRefresh"));
-      if (this.a.getIntent().getStringExtra("tdsourcetag") != null)
-      {
-        localObject = this.a.getIntent().getStringExtra("tdsourcetag");
-        str = bcvs.b(str, (String)localObject);
-        if (TeamWorkDocEditBrowserActivity.a(this.a.webView.getContext(), str, (String)localObject, true))
-        {
-          bcvs.a(paramBundle, "0X8009ED7");
-          this.a.getActivity().finish();
-        }
-        for (;;)
-        {
-          bcxh.a("WebLog_WebViewFragment", "get_url_time", String.valueOf(l) + " - url:" + str);
-          return;
-          bcvs.a(paramBundle, "0X8009ED6");
-          this.a.webView.loadUrl(str);
-        }
-      }
-      if (TeamWorkDocEditBrowserActivity.a(this.a.webView.getContext(), str, "s_qq_file_edit", true))
-      {
-        bcvs.a(paramBundle, "0X8009ED7");
-        this.a.getActivity().finish();
-      }
-      for (;;)
-      {
-        bcxh.a("WebLog_WebViewFragment", "get_url_time", String.valueOf(l) + " - url:" + str);
-        return;
-        bcvs.a(paramBundle, "0X8009ED6");
-        this.a.webView.loadUrl(str);
-      }
+      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
+      i += 1;
     }
-    int i = ((Bundle)localObject).getInt("retCode");
-    str = ((Bundle)localObject).getString("errorStr");
-    Object localObject = ((Bundle)localObject).getString("redirectUrl");
-    if ((Math.abs(i) == 115) && (!TextUtils.isEmpty((CharSequence)localObject)))
-    {
-      str = this.a.getIntent().getStringExtra("tdsourcetag");
-      if (TeamWorkDocEditBrowserActivity.a(this.a.webView.getContext(), (String)localObject, str, true))
-      {
-        bcvs.a(paramBundle, "0X8009ED7");
-        this.a.getActivity().finish();
-      }
-      for (;;)
-      {
-        bcxh.a("WebLog_WebViewFragment", "get_url_time", String.valueOf(l) + " - redirectUrl:" + (String)localObject);
-        return;
-        bcvs.a(paramBundle, "0X8009ED6");
-        this.a.webView.loadUrl((String)localObject);
-      }
-    }
-    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a(i, str);
-    if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, null)) {
-      bcxh.a(null, "0X800A755");
-    }
-    bcxh.a("WebLog_WebViewFragment", "get_url_time", "retCode = " + i + " errorStr = " + str);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

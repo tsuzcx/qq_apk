@@ -1,13 +1,13 @@
 package cooperation.smartdevice.ipc;
 
 import android.os.Bundle;
-import bkxg;
+import bmip;
 import java.util.ArrayList;
 
 public class SmartDeviceIPCHost$3
   implements Runnable
 {
-  public SmartDeviceIPCHost$3(bkxg parambkxg, Bundle paramBundle) {}
+  public SmartDeviceIPCHost$3(bmip parambmip, Bundle paramBundle) {}
   
   public void run()
   {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
 import android.content.res.Resources;
-import arom;
+import asss;
 import com.tencent.mobileqq.app.QQAppInterface;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
@@ -14,7 +14,7 @@ public final class ColdPalaceHelper$strWarnMeForbbiden$2
   extends Lambda
   implements Function0<String>
 {
-  public ColdPalaceHelper$strWarnMeForbbiden$2(arom paramarom)
+  public ColdPalaceHelper$strWarnMeForbbiden$2(asss paramasss)
   {
     super(0);
   }
@@ -23,12 +23,12 @@ public final class ColdPalaceHelper$strWarnMeForbbiden$2
   {
     MobileQQ localMobileQQ = this.this$0.a().getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localMobileQQ, "app.application");
-    return localMobileQQ.getResources().getString(2131698157);
+    return localMobileQQ.getResources().getString(2131698443);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.utils.ColdPalaceHelper.strWarnMeForbbiden.2
  * JD-Core Version:    0.7.0.1
  */

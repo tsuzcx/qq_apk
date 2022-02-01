@@ -1,20 +1,55 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.fragment.BottomTabSettingFragment;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 public class auvp
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public auvp(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public auvp(BottomTabSettingFragment paramBottomTabSettingFragment) {}
   
-  public void onClick(View paramView)
+  private View.OnClickListener a(int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    return new auvq(this, paramInt);
+  }
+  
+  public int getCount()
+  {
+    return BottomTabSettingFragment.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getActivity());
+    if (paramInt == BottomTabSettingFragment.a(this.a)) {
+      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844669));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      if (paramInt < BottomTabSettingFragment.a(this.a).size()) {
+        localFormSimpleItem.setLeftText((CharSequence)BottomTabSettingFragment.a(this.a).get(Integer.valueOf(paramInt)));
+      }
+      localFormSimpleItem.setTag(Integer.valueOf(paramInt));
+      localFormSimpleItem.setOnClickListener(a(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localFormSimpleItem;
+      localFormSimpleItem.setRightIcon(null);
+    }
   }
 }
 

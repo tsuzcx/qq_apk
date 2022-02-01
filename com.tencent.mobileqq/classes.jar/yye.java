@@ -1,16 +1,58 @@
-import java.util.Comparator;
+import android.graphics.Bitmap;
 
-class yye
-  implements Comparator<yyc>
+public class yye
 {
-  yye(yyd paramyyd) {}
+  private static boolean[] a;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public int a(yyc paramyyc1, yyc paramyyc2)
+  static
   {
-    if (paramyyc1.d > paramyyc2.d) {
-      return 1;
+    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
+  }
+  
+  public yye(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(int[] paramArrayOfInt)
+  {
+    int i = 0;
+    while (i < 5) {
+      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
+      {
+        jdField_a_of_type_ArrayOfBoolean[i] = false;
+        i += 1;
+      }
+      else
+      {
+        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
+        int k = arrayOfBoolean[i];
+        if (paramArrayOfInt[i] > 0) {}
+        for (int j = 1;; j = 0)
+        {
+          arrayOfBoolean[i] = (j | k);
+          break;
+        }
+      }
     }
-    return -1;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 4)) {
+      return true;
+    }
+    return jdField_a_of_type_ArrayOfBoolean[paramInt];
   }
 }
 

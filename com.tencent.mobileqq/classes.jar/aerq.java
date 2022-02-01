@@ -1,77 +1,30 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class aerq
-  extends aliy
+  implements View.OnTouchListener
 {
-  private List<aert> jdField_a_of_type_JavaUtilList;
+  public aerq(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public aerq(List<aert> paramList)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramList, paramList.app, paramList.b, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    switch (paramMotionEvent.getAction())
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2131562784, paramViewGroup, false);
-      paramView = new aerv(null);
-      paramView.c = ((ImageView)localView.findViewById(2131369251));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379724));
-      ((TextView)localView.findViewById(2131379845)).setText("");
-      localView.setTag(paramView);
-      localObject = (aert)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((TextUtils.isEmpty(((aert)localObject).e)) || (((aert)localObject).e.equals(((aert)localObject).b))) {
-        break label231;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aert)localObject).b + "(" + ((aert)localObject).e + ")");
     }
     for (;;)
     {
-      paramView.jdField_a_of_type_JavaLangString = ((aert)localObject).jdField_a_of_type_JavaLangString;
-      paramView.jdField_a_of_type_Aert = ((aert)localObject);
-      paramView.c.setImageBitmap(a(1, ((aert)localObject).jdField_a_of_type_JavaLangString));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (aerv)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label231:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aert)localObject).b);
+      return false;
+      mvk.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
+      mvk.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      mvk.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
+      continue;
+      mvk.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
+      mvk.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
+      mvk.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
     }
   }
 }

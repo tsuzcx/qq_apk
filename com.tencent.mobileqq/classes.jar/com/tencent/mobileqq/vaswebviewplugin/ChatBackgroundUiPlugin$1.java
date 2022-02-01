@@ -3,15 +3,15 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import aqyp;
-import bgve;
+import ascz;
+import bifw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.qphone.base.util.QLog;
 
 class ChatBackgroundUiPlugin$1
-  extends aqyp
+  extends ascz
 {
   ChatBackgroundUiPlugin$1(ChatBackgroundUiPlugin paramChatBackgroundUiPlugin) {}
   

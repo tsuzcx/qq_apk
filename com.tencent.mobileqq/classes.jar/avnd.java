@@ -1,8 +1,9 @@
-import mqq.manager.Manager;
-
 public abstract interface avnd
-  extends Manager
-{}
+{
+  public abstract void f();
+  
+  public abstract void g();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

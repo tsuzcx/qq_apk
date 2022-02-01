@@ -1,121 +1,233 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager.1;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajvc
-  implements Manager
+  implements View.OnClickListener
 {
-  public Context a;
-  private bfxr jdField_a_of_type_Bfxr;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ajvc(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ajvc(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  }
-  
-  private void a(ajve paramajve, int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    if (paramajve != null)
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
+    for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("retCode", paramInt);
-      localBundle.putString("retMsg", paramString1);
-      localBundle.putString("payTime", paramString2);
-      localBundle.putString("orderId", paramString3);
-      paramajve.a(localBundle);
-    }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Bfxr != null) && (this.jdField_a_of_type_Bfxr.isShowing())) {
-      this.jdField_a_of_type_Bfxr.dismiss();
-    }
-    this.jdField_a_of_type_Bfxr = bfur.a(this.jdField_a_of_type_AndroidContentContext, amtj.a(2131707929), "", amtj.a(2131707930), new ajvd(this), null, null);
-    this.jdField_a_of_type_Bfxr.show();
-  }
-  
-  public boolean a(String paramString, JSONObject paramJSONObject, ajve paramajve)
-  {
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString)))
-    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
       if (QLog.isColorLevel()) {
-        QLog.e("PublicQuickPayManager", 2, "jsonParams=" + paramJSONObject + ", puin=" + paramString);
+        QLog.d("Q.history.BaseFragment", 2, "mOnKickOutBtnClickListener onclick");
       }
-      return false;
-    }
-    if (!((ajyg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245)).a(paramString))
-    {
-      a();
-      a(paramajve, -4, "auth failed!", null, null);
-      return false;
-    }
-    String str1 = paramJSONObject.optString("appId");
-    paramString = paramJSONObject.optString("orderId");
-    Object localObject = paramJSONObject.optString("expireTime");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", str1);
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-    {
-      if (Long.parseLong((String)localObject) <= NetConnInfoCenter.getServerTimeMillis() / 1000L)
+      int j = paramView.getId();
+      Object localObject1 = (String)paramView.getTag();
+      boolean bool1 = ((String)localObject1).equals(this.a.jdField_f_of_type_JavaLangString);
+      int i;
+      if ((this.a.jdField_g_of_type_JavaLangString != null) && (this.a.jdField_g_of_type_JavaLangString.contains((CharSequence)localObject1)))
       {
-        a();
-        a(paramajve, -6, "expireTime overdue", null, null);
-        return false;
+        i = 1;
+        label100:
+        boolean bool4 = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.a.jdField_f_of_type_JavaLangString);
+        if (((!bool4) || (((String)localObject1).equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
+          break label314;
+        }
+        i = 1;
       }
-      paramajve = new PublicQuickPayManager.1(this, new Handler(), paramajve, paramString);
-      localBundle.putParcelable("_qwallet_payresult_receiver", paramajve);
-      paramString = "";
-      try
+      Object localObject2;
+      for (;;)
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("tokenId", paramJSONObject.optString("tokenId"));
-        String str2 = paramJSONObject.optString("bargainor_id", "0");
-        paramJSONObject = paramJSONObject.optString("channel", "other");
-        ((JSONObject)localObject).put("appInfo", "appid#" + str1 + "|bargainor_id#" + str2 + "|channel#" + paramJSONObject);
-        paramJSONObject = ((JSONObject)localObject).toString();
-        paramString = paramJSONObject;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
+        if (j == 2131365473)
         {
-          paramJSONObject.printStackTrace();
+          localObject2 = paramView.findViewById(2131365474);
+          bool1 = bool2;
+          if (((View)localObject2).getTag() != null)
+          {
+            bool1 = bool2;
+            if ((((View)localObject2).getTag() instanceof Boolean)) {
+              bool1 = ((Boolean)((View)localObject2).getTag()).booleanValue();
+            }
+          }
+          localObject2 = this.a.a((String)localObject1, bool1);
+          if (this.a.jdField_d_of_type_Int == 20)
+          {
+            if (localObject2 == null) {
+              break;
+            }
+            localObject1 = ((ajvy)localObject2).a.getTag();
+            if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {
+              break;
+            }
+            i = ((Integer)localObject1).intValue();
+            if (i < 0) {
+              break;
+            }
+            localObject1 = (ajvr)this.a.jdField_a_of_type_Ajvt.getItem(i);
+            this.a.a((ajvr)localObject1);
+            break;
+            i = 0;
+            break label100;
+            label314:
+            i = 0;
+            continue;
+          }
+          if (this.a.jdField_g_of_type_Boolean)
+          {
+            if (this.a.jdField_a_of_type_Ajvt.jdField_b_of_type_JavaUtilList.contains(localObject1)) {
+              this.a.jdField_a_of_type_Ajvt.jdField_b_of_type_JavaUtilList.remove(localObject1);
+            }
+            for (;;)
+            {
+              ChatHistoryTroopMemberFragment.a(this.a);
+              this.a.jdField_a_of_type_Ajvt.notifyDataSetChanged();
+              break;
+              if (i != 0) {
+                this.a.jdField_a_of_type_Ajvt.jdField_b_of_type_JavaUtilList.add(localObject1);
+              }
+            }
+          }
+          if (bool1)
+          {
+            if (this.a.v.equals(localObject1)) {
+              break;
+            }
+            if (localObject2 != null) {
+              ((ajvy)localObject2).a.a(true);
+            }
+            if (!TextUtils.isEmpty(this.a.v))
+            {
+              localObject2 = this.a.a(this.a.v, bool1);
+              if (localObject2 != null) {
+                ((ajvy)localObject2).a.b(true);
+              }
+            }
+            this.a.v = ((String)localObject1);
+            break;
+          }
+          if (this.a.u.equals(localObject1)) {
+            break;
+          }
+          if (localObject2 != null) {
+            ((ajvy)localObject2).a.a(true);
+          }
+          if (!TextUtils.isEmpty(this.a.u))
+          {
+            localObject2 = this.a.a(this.a.u, bool1);
+            if (localObject2 != null) {
+              ((ajvy)localObject2).a.b(true);
+            }
+          }
+          this.a.u = ((String)localObject1);
+          break;
         }
       }
-      localBundle.putString("payparmas_json", paramString);
-      localBundle.putInt("payparmas_paytype", 9);
-      localBundle.putLong("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "publicpaymsg.pay.result", "payinvoke", null, 0, null));
-      localBundle.putInt("pay_requestcode", 9);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, paramajve, 9, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicQuickPayManager", 2, "open OpenPayActivity success");
+      if (j == 2131377832)
+      {
+        localObject2 = paramView.findViewById(2131380027);
+        bool1 = bool3;
+        if (((View)localObject2).getTag() != null)
+        {
+          bool1 = bool3;
+          if ((((View)localObject2).getTag() instanceof Boolean)) {
+            bool1 = ((Boolean)((View)localObject2).getTag()).booleanValue();
+          }
+        }
+        if (this.a.jdField_g_of_type_Boolean)
+        {
+          if (!this.a.jdField_a_of_type_Ajvt.jdField_b_of_type_JavaUtilList.contains(localObject1)) {
+            break label767;
+          }
+          this.a.jdField_a_of_type_Ajvt.jdField_b_of_type_JavaUtilList.remove(localObject1);
+        }
+        for (;;)
+        {
+          ChatHistoryTroopMemberFragment.a(this.a);
+          this.a.jdField_a_of_type_Ajvt.notifyDataSetChanged();
+          if (!bool1) {
+            break label792;
+          }
+          localObject1 = this.a.a(this.a.v, bool1);
+          if (localObject1 != null)
+          {
+            ((ajvy)localObject1).a.b(true);
+            this.a.v = "";
+          }
+          this.a.jdField_a_of_type_Ajvv.notifyDataSetChanged();
+          break;
+          label767:
+          if (i != 0) {
+            this.a.jdField_a_of_type_Ajvt.jdField_b_of_type_JavaUtilList.add(localObject1);
+          }
+        }
+        label792:
+        localObject1 = this.a.a(this.a.u, bool1);
+        if (localObject1 != null)
+        {
+          ((ajvy)localObject1).a.b(true);
+          this.a.u = "";
+        }
       }
-      return true;
+      else if ((j == 2131363940) && (this.a.jdField_f_of_type_Boolean))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.history.BaseFragment", 2, "delBtn onClick, uin=" + (String)localObject1);
+        }
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        {
+          if (this.a.getActivity().isResume()) {
+            QQToast.a(this.a.getActivity(), this.a.getString(2131694255), 0).b(this.a.getActivity().getTitleBarHeight());
+          }
+        }
+        else if (this.a.jdField_d_of_type_Int == 1)
+        {
+          this.a.f((String)localObject1);
+        }
+        else if (this.a.jdField_d_of_type_Int == 13)
+        {
+          localObject2 = this.a.a((String)localObject1);
+          this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          this.a.jdField_a_of_type_Ajvt.a();
+          if (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())
+          {
+            if (localObject2 != null) {
+              this.a.jdField_b_of_type_JavaUtilList.remove(localObject2);
+            }
+            this.a.jdField_a_of_type_Ajvv.notifyDataSetChanged();
+          }
+        }
+        else if (this.a.jdField_d_of_type_Int == 21)
+        {
+          localObject2 = this.a.a((String)localObject1);
+          this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          this.a.jdField_a_of_type_Ajvt.a();
+          if (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())
+          {
+            if (localObject2 != null) {
+              this.a.jdField_b_of_type_JavaUtilList.remove(localObject2);
+            }
+            this.a.jdField_a_of_type_Ajvv.notifyDataSetChanged();
+          }
+        }
+        else
+        {
+          localObject2 = new ArrayList();
+          ((List)localObject2).add(Long.valueOf(Long.parseLong((String)localObject1)));
+          ChatHistoryTroopMemberFragment.a(this.a, (List)localObject2);
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("PublicQuickPayManager", 2, "publicQuickPay parameters parse error");
-    }
-    a();
-    a(paramajve, -4, "params parse error", null, null);
-    return false;
   }
-  
-  public void onDestroy() {}
 }
 
 

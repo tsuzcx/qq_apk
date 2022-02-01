@@ -1,38 +1,113 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class aenx
-  extends bfch
+  extends BaseAdapter
 {
-  public aenx(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeny(this);
+  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, String paramString)
+  public aenx(List<ProfileLabelInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
-    }
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  private void a(ProfileLabelInfo paramProfileLabelInfo)
+  {
+    Object localObject = null;
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azvn.a().keySet().iterator();
+    if (localIterator.hasNext())
     {
-      paramString = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramString);
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
+      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        break label114;
+      }
+      localObject = localProfileLabelInfo;
+    }
+    label114:
+    for (;;)
+    {
+      break;
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azvn.a(localObject)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azvn.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Azvn.a(localObject));
+        return;
+      }
+      a(paramProfileLabelInfo.labelId);
+      return;
     }
   }
   
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  private void a(Long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
     }
-    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
-    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
-    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
+    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
+    if (paramLong != null) {
+      paramLong.toggleStatus();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramArrayOfLong1);
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562932, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      paramView = new aenw();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378442));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_Int = paramInt;
+      int i = paramInt % ProfileActivity.a.length;
+      localView.setBackgroundResource(ProfileActivity.a[i][0]);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      aenw localaenw = (aenw)paramView.getTag();
+      localView = paramView;
+      paramView = localaenw;
     }
   }
 }

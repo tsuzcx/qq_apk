@@ -1,147 +1,17 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public class bgsi
+class bgsi
+  implements bdyy
 {
-  public static long a;
-  public static WebViewPluginEngine a;
-  public static final Object a;
-  public static HashMap<Integer, bgsk> a;
-  public static volatile boolean a;
-  public static WebViewPluginEngine b;
-  public static HashMap<Integer, bgsk> b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static volatile boolean d;
+  bgsi(bgsh parambgsh) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static void a()
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      bgsk localbgsk;
-      HashMap localHashMap;
-      while (localIterator.hasNext())
-      {
-        localbgsk = (bgsk)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbgsk.a));
-        localHashMap.put("totalNum", String.valueOf(localbgsk.b));
-        localHashMap.put("hasProc", String.valueOf(localbgsk.c));
-        localHashMap.put("noProc", String.valueOf(localbgsk.d));
-        StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
-      }
-      localIterator = b.values().iterator();
-      while (localIterator.hasNext())
-      {
-        localbgsk = (bgsk)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbgsk.a));
-        localHashMap.put("totalNum", String.valueOf(localbgsk.b));
-        localHashMap.put("hasProc", String.valueOf(localbgsk.c));
-        localHashMap.put("noProc", String.valueOf(localbgsk.d));
-        StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
-      }
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "reportInterval...");
-      }
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.a != null) {
+      this.a.a.a.a.a.a();
     }
-  }
-  
-  public static void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_accelerator_mode_", 3);
-    localBundle.putInt("from", paramInt);
-    bgxy.a().a(localBundle);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
-  }
-  
-  public static void b(int paramInt)
-  {
-    int j = 0;
-    Object localObject = (aqdu)apub.a().a(158);
-    if ((localObject != null) && (((aqdu)localObject).b == 1)) {
-      return;
-    }
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (!bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("from", 305);
-      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "preloadWebview...");
-      }
-    }
-    localObject = new bgsk(paramInt);
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      localObject = (bgsk)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    ((bgsk)localObject).b += 1;
-    int k = ((bgsk)localObject).c;
-    if (bool)
-    {
-      i = 1;
-      label184:
-      ((bgsk)localObject).c = (i + k);
-      k = ((bgsk)localObject).d;
-      if (!bool) {
-        break label244;
-      }
-    }
-    label244:
-    for (int i = j;; i = 1)
-    {
-      ((bgsk)localObject).d = (k + i);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
-      if (((bgsk)localObject).b <= 3) {
-        break;
-      }
-      a();
-      return;
-      i = 0;
-      break label184;
-    }
-  }
-  
-  public static boolean b(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 

@@ -1,12 +1,16 @@
-public abstract interface bgrv
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+
+public class bgrv
+  implements bdye
 {
-  public abstract int getRenderHeight();
+  public bgrv(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public abstract int getRenderWidth();
-  
-  public abstract void onDrawBegin();
-  
-  public abstract void onSetRenderer(bgrw parambgrw);
+  public void a()
+  {
+    bdym localbdym = new bdym(new bdyd[] { new bdyl(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new bdyl(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
+    localbdym.a = true;
+    TroopGiftToAllSurfaceView.a(this.a).a(new bdyd[] { localbdym });
+  }
 }
 
 

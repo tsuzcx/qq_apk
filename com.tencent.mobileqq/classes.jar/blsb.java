@@ -1,26 +1,17 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.widget.SimpleTextView;
+import cooperation.comic.ui.QQComicTabBarView;
 
 public class blsb
-  implements bfzz<Float>
 {
-  public blsb(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
+  public ImageView a;
+  public URLDrawable a;
+  public RedTouchUI a;
+  public SimpleTextView a;
   
-  @TargetApi(11)
-  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
-  {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
-    }
-    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
-  }
+  public blsb(QQComicTabBarView paramQQComicTabBarView) {}
 }
 
 

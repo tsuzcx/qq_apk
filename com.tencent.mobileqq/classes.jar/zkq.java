@@ -1,19 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-class zkq
-  implements View.OnClickListener
+public class zkq
+  implements DialogInterface.OnCancelListener
 {
-  zkq(zkp paramzkp, afxp paramafxp) {}
+  public zkq(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    zkp.a(this.jdField_a_of_type_Zkp).removeCallbacks(zkp.a(this.jdField_a_of_type_Zkp));
-    zkp.a(this.jdField_a_of_type_Zkp, true);
-    zkp.a(this.jdField_a_of_type_Zkp, this.jdField_a_of_type_Afxp, this.jdField_a_of_type_Afxp.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.h) {
+      return;
+    }
+    this.a.i = -1;
+    this.a.h = true;
+    QRDisplayActivity.a(this.a).dismiss();
   }
 }
 

@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class afyc
-  implements DialogInterface.OnClickListener
+public class afyc
+  implements OnCompositionLoadedListener
 {
-  afyc(afxz paramafxz) {}
+  public afyc(AudioTransitionAnimManager.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    paramDialogInterface.dismiss();
+    afyb.a(this.a.this$0, paramLottieComposition, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount;
 
 import android.text.TextUtils;
-import bkwm;
+import bmhv;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import ofc;
+import omv;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 
 public class VideoPlayRecommendHandler$4
@@ -22,9 +22,9 @@ public class VideoPlayRecommendHandler$4
       ((oidb_0x6cf.ReqBody)localObject).uint64_uin.set(this.jdField_a_of_type_Long);
       ((oidb_0x6cf.ReqBody)localObject).uint32_req_source.set(this.jdField_a_of_type_Int);
       ((oidb_0x6cf.ReqBody)localObject).uint32_req_times.set(this.jdField_b_of_type_Int);
-      ((oidb_0x6cf.ReqBody)localObject).uint32_req_network.set(ofc.a(this.this$0));
+      ((oidb_0x6cf.ReqBody)localObject).uint32_req_network.set(omv.a(this.this$0));
       ((oidb_0x6cf.ReqBody)localObject).uint32_req_os.set(1);
-      ((oidb_0x6cf.ReqBody)localObject).uint32_req_sim_type.set(bkwm.d());
+      ((oidb_0x6cf.ReqBody)localObject).uint32_req_sim_type.set(bmhv.d());
       ((oidb_0x6cf.ReqBody)localObject).uint32_req_sub_source.set(4);
       ByteStringMicro localByteStringMicro;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
@@ -46,7 +46,7 @@ public class VideoPlayRecommendHandler$4
         ((oidb_0x6cf.ReqBody)localObject).bytes_cookie.set(localByteStringMicro);
       }
       localObject = this.this$0.makeOIDBPkg("OidbSvc.0x6cf", 1743, 2, ((oidb_0x6cf.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Ofd.hashCode()));
+      ((ToServiceMsg)localObject).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Omw.hashCode()));
       this.this$0.sendPbReq((ToServiceMsg)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getPolymericRecommendVideo: videoFromType: " + this.jdField_a_of_type_Int + ", polymericTopicId: " + this.jdField_b_of_type_Long + ", requestTime: " + this.jdField_b_of_type_Int + ", cookie: " + this.c + ", commonWebData: " + this.jdField_b_of_type_JavaLangString + "articleId: " + this.jdField_a_of_type_JavaLangString + ", uin: " + this.jdField_a_of_type_Long);

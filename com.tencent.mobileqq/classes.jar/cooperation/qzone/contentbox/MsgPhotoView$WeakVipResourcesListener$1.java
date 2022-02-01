@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bkyt;
+import bmkt;
 import java.lang.ref.WeakReference;
 
 class MsgPhotoView$WeakVipResourcesListener$1
@@ -26,7 +26,7 @@ class MsgPhotoView$WeakVipResourcesListener$1
     label68:
     for (int i = 11;; i = 10)
     {
-      bkyt.a(i, 1);
+      bmkt.a(i, 1);
       return;
     }
   }

@@ -1,37 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class sxm
-  implements View.OnClickListener
+  extends Handler
 {
-  public int a;
+  public List<Handler.Callback> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str;
-    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaUtilList.size())
-    {
-      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-      str = localCommunityConfigInfo.jumpUrl;
-      paramView.postDelayed(new ReadInJoyDiandianHeaderController.OnCommunityItemListener.1(this, paramView), 300L);
-      odq.a(null, "", "0X8009B9F", "0X8009B9F", 0, 0, localQQAppInterface.getCurrentAccountUin(), localCommunityConfigInfo.bid + "", this.jdField_a_of_type_Int + 1 + "", "", false);
-    }
-    for (;;)
-    {
-      pay.a(paramView.getContext(), str);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.jdField_a_of_type_JavaLangString;
-      odq.a(null, "", "0X8009BA3", "0X8009BA3", 0, 0, localQQAppInterface.getCurrentAccountUin(), "", "", "", false);
-    }
+    Iterator localIterator = this.a.iterator();
+    while ((localIterator.hasNext()) && (!((Handler.Callback)localIterator.next()).handleMessage(paramMessage))) {}
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
-import roq;
+import sbf;
 
 public class SelectMemberBuddyListAdapter$2
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$2(roq paramroq) {}
+  public SelectMemberBuddyListAdapter$2(sbf paramsbf) {}
   
   public void run()
   {

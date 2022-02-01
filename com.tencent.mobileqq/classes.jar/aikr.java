@@ -1,20 +1,93 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aikr
-  implements Comparator<MessageRecord>
+public class aikr
+  implements ailp, View.OnClickListener
 {
-  aikr(aikq paramaikq) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  View jdField_a_of_type_AndroidViewView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public aikr(Activity paramActivity, SessionInfo paramSessionInfo)
   {
-    if (paramMessageRecord1.shmsgseq < paramMessageRecord2.shmsgseq) {
-      return 1;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public int a()
+  {
+    return 59;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560700, null);
+      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368375);
+      if (paramVarArgs != null) {
+        paramVarArgs.setText(2131693136);
+      }
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
-    if (paramMessageRecord1.shmsgseq > paramMessageRecord2.shmsgseq) {
-      return -1;
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(@NonNull ailr paramailr, boolean paramBoolean)
+  {
+    boolean bool = a(paramailr);
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopClassInfoTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
     }
-    return 0;
+    if (paramBoolean) {
+      if (!bool)
+      {
+        paramailr.a(this, new Object[0]);
+        bhbu.a("Grp_edu", "Grp_AIO", "classinfotopGuidebar_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin });
+      }
+    }
+    while (!bool) {
+      return;
+    }
+    paramailr.a();
+  }
+  
+  public boolean a(@NonNull ailr paramailr)
+  {
+    int i = paramailr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopClassInfoTipsBar", 2, new Object[] { "show cur type=", Integer.valueOf(i) });
+    }
+    return i == b();
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 27;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkTroopClassInfoTipsBar", 2, "click tips, jump to web");
+    }
+    bghd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, bghd.c);
+    bdla.b(null, "dc00898", "", "", "0X800B280", "0X800B280", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

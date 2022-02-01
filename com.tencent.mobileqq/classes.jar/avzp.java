@@ -1,14 +1,35 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class avzp
+final class avzp
+  extends ayra
 {
-  public int a;
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public String a;
+  avzp(BusinessObserver paramBusinessObserver, int paramInt) {}
+  
+  public void getAppConfigSuccess(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = avzo.a(paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, false, null);
+      QLog.e("FaceDetectForThirdPartyServlet", 1, "getAppConfigSuccess, but appconf is null");
+    }
+    do
+    {
+      return;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("app_id", this.jdField_a_of_type_Int);
+      localBundle.putSerializable("FaceRecognition.AppConf", paramArrayOfByte);
+      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, true, localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", paramArrayOfByte });
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, false, null);
+  }
 }
 
 

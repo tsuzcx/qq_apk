@@ -1,85 +1,67 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.Rect;
 import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class ayfh
-  implements Comparable<ayfh>
+class ayfh
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public int[] a;
-  public int b;
-  public Drawable b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  ayfh(ayek paramayek) {}
   
-  public int a(ayfh paramayfh)
+  public void onClick(View paramView)
   {
-    if (paramayfh != null) {
-      return this.c - paramayfh.c;
-    }
-    return 0;
-  }
-  
-  public Drawable a()
-  {
-    try
+    PicInfo localPicInfo;
+    Object localObject;
+    int i;
+    int j;
+    if ((paramView.getTag() instanceof PicInfo))
     {
-      if ((this.a == null) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)))
-      {
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.e, (URLDrawable.URLDrawableOptions)localObject);
-        localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
-        StateListDrawable localStateListDrawable = new StateListDrawable();
-        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
-        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
-        this.a = localStateListDrawable;
+      localPicInfo = (PicInfo)paramView.getTag();
+      localObject = aavz.a(paramView);
+      i = 0;
+      if (i >= this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label280;
       }
-      return this.a;
+      if (ayek.a(this.a).nowUserType != 0) {
+        break label233;
+      }
+      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {
+        break label266;
+      }
+      j = i;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      for (;;)
+      label87:
+      this.a.a.a(j, (Rect)localObject);
+      bdla.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
+      if (this.a.a.e == 3) {}
+      for (localObject = "2";; localObject = "1")
       {
-        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
+        bdla.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, (String)localObject, "", "", "");
+        if (axpp.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
+          this.a.a.app.getNearbyProxy().b(localPicInfo.jdField_a_of_type_JavaLangString);
+        }
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label233:
+        j = i;
+        if (TextUtils.equals(localPicInfo.jdField_a_of_type_JavaLangString, ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString)) {
+          break label87;
+        }
+        label266:
+        i += 1;
+        break;
       }
-    }
-  }
-  
-  public Drawable b()
-  {
-    try
-    {
-      if ((this.b == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
-      {
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
-        localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
-        StateListDrawable localStateListDrawable = new StateListDrawable();
-        localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
-        localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
-        this.b = localStateListDrawable;
-      }
-      return this.b;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
-      }
+      label280:
+      j = 0;
     }
   }
 }

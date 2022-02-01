@@ -1,181 +1,89 @@
-import android.animation.ValueAnimator;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.view.animation.LinearInterpolator;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.TranDbRecord.PicDbRecord;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ForwardSendPicUtil.1;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class bheb
-  extends Drawable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private final ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private final ValueAnimator jdField_c_of_type_AndroidAnimationValueAnimator;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float e;
-  
-  public bheb()
+  private static String a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localResources.getColor(2131167045));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Float = AIOUtils.dp2px(1.5F, BaseApplicationImpl.getApplication().getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1400L).setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bhec(this));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bhed(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(500L).setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bhee(this));
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130844973);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-  }
-  
-  private float a(float paramFloat)
-  {
-    if (paramFloat < 0.5F) {
-      return paramFloat;
-    }
-    return (float)(Math.sin(3.141592653589793D * (paramFloat - 0.5F)) * 0.5D + 0.5D);
-  }
-  
-  private float b(float paramFloat)
-  {
-    if (paramFloat > 0.5F) {
-      return (float)(0.75D * Math.sin(3.141592653589793D * (paramFloat - 0.5F)) + 0.25D);
-    }
-    return (float)Math.pow(paramFloat, 2.0D);
-  }
-  
-  public void a()
-  {
-    this.jdField_d_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void b()
-  {
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 255;
-    if (this.jdField_c_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.end();
-    }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.end();
-    }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_c_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.end();
-    }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.end();
-    }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
-    }
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    float f1;
-    float f2;
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
+    String str = VFSAssistantUtils.getSDKPrivatePath(bheg.a(paramContext, paramString, paramInt));
+    ImageInfo localImageInfo = new ImageInfo();
+    if (paramBoolean) {}
+    for (int i = 7;; i = 4)
     {
-      Rect localRect = getBounds();
-      this.jdField_a_of_type_Int = localRect.width();
-      this.jdField_b_of_type_Int = localRect.height();
-      this.e = (Math.min(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int) / 2.0F - this.jdField_a_of_type_Float);
-      f1 = this.jdField_a_of_type_Int / 2.0F;
-      f2 = this.e;
-      float f3 = this.jdField_a_of_type_Int / 2.0F;
-      float f4 = this.e;
-      float f5 = this.jdField_b_of_type_Int / 2.0F;
-      float f6 = this.e;
-      float f7 = this.jdField_b_of_type_Int / 2.0F;
-      float f8 = this.e;
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addArc(new RectF(f1 - f2, f5 - f6, f3 + f4, f7 + f8), -90.0F, 360.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
-      this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-      f1 = this.e * 1.3F;
-      f2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF((this.jdField_a_of_type_Int - f1) / 2.0F, (this.jdField_b_of_type_Int - f2) * 0.57F, (f1 + this.jdField_a_of_type_Int) / 2.0F, f2 + (this.jdField_b_of_type_Int - f2) * 0.57F);
+      bheg.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
+      return localImageInfo.b;
     }
-    if (this.jdField_d_of_type_Int == 1)
-    {
-      this.jdField_b_of_type_AndroidGraphicsPath.reset();
-      f1 = b(this.jdField_b_of_type_Float);
-      f2 = a(this.jdField_b_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPathMeasure.getSegment(f1 * this.jdField_c_of_type_Float, f2 * this.jdField_c_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPath, true);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    while (this.jdField_d_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRect.right = ((int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.jdField_d_of_type_Float));
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.e * 1.3F * this.jdField_d_of_type_Float + this.jdField_a_of_type_AndroidGraphicsRectF.left);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public int getOpacity()
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
   {
-    return -2;
+    return a(paramQQAppInterface, paramString1, paramString2, paramInt, paramString3, paramBoolean, paramContext, 0);
   }
   
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, boolean paramBoolean, Context paramContext, int paramInt2)
+  {
+    Object localObject;
+    if ((paramContext instanceof Activity))
+    {
+      localObject = ((Activity)paramContext).getIntent();
+      if (localObject == null) {}
+    }
+    for (boolean bool = ((Intent)localObject).getBooleanExtra("isFromFavorites", false);; bool = false)
+    {
+      localObject = "ForwardSendPicUtil.sendPicTo." + paramContext.getClass().getSimpleName();
+      bheg.a(-1L, paramInt1, true, "image_send_prepare", (String)localObject + ", isQzoneShare=" + paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage start!");
+      }
+      paramString1 = a(paramContext, paramString1, paramInt1, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage end!");
+      }
+      if (!FileUtils.fileExistsAndNotEmpty(paramString1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardSendPicUtil", 2, "sendPicTo,pic not exist,return false!");
+        }
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord start!");
+      }
+      if (paramString1 != null)
+      {
+        int i = 1009;
+        if (bool) {
+          i = 1053;
+        }
+        paramContext = new azko();
+        paramContext.a(paramString1);
+        paramContext.d(i);
+        paramContext.d(paramString2);
+        paramContext.c(TranDbRecord.PicDbRecord.EXTRA_FLAG_SEND_PHOTO);
+        paramContext.e(paramString3);
+        paramContext.c(paramQQAppInterface.getCurrentAccountUin());
+        paramContext.e(paramInt1);
+        paramString2 = azjv.a(2, i);
+        paramString2.a(paramContext.a());
+        paramString2.c = paramInt2;
+        azjv.a(paramString2, paramQQAppInterface);
+        ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord end!");
+      }
+      return true;
+    }
+  }
 }
 
 

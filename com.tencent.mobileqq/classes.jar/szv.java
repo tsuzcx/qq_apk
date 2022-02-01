@@ -1,76 +1,30 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-public abstract class szv
-  implements soj
+public class szv
+  implements Animation.AnimationListener
 {
-  private static final String a;
-  protected int a;
-  protected Context a;
-  protected SlideActiveAnimController a;
-  protected szw a;
-  protected szx a;
-  public zvb a;
+  public szv(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = szv.class.getSimpleName();
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public szv(Context paramContext)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (this.jdField_a_of_type_Szw != null) {
-      this.jdField_a_of_type_Szw.a(paramInt1, paramInt2);
+    ImageView localImageView = ReadInJoyFastWebBottomSocialView.a(this.a);
+    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
+    for (int i = 2130842914;; i = 2130842916)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
-    }
-  }
-  
-  public void a(SlideActiveAnimController paramSlideActiveAnimController)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
-  }
-  
-  public void a(szw paramszw)
-  {
-    this.jdField_a_of_type_Szw = paramszw;
-  }
-  
-  public void a(szx paramszx)
-  {
-    this.jdField_a_of_type_Szx = paramszx;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Szx != null) {
-      this.jdField_a_of_type_Szx.a(paramBoolean);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,74 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class atoa
-  extends GridLayoutManager.SpanSizeLookup
+  extends atnt
 {
-  atoa(atnz paramatnz) {}
-  
-  public int getSpanSize(int paramInt)
+  public atoa(atno paramatno)
   {
-    if (this.a.getItemViewType(paramInt) == atnv.b) {
-      return 5;
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateChangeToOffWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (a("onResumeTrans")) {
+      return;
     }
-    return 1;
+    atno.a(this.jdField_a_of_type_Atno, 9, 11);
+    atno.a(this.jdField_a_of_type_Atno, 9, 14, false);
+    a("StateUploadingWhenRecv");
+    this.jdField_a_of_type_Atnt = new atov(this.jdField_a_of_type_Atno);
+    this.jdField_a_of_type_Atno.a(true, 0L);
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (a("onSenderUploadException")) {
+      return;
+    }
+    atno.a(this.jdField_a_of_type_Atno, 9, 12, true);
+    a("StateExcepInvalidWhenRecv");
+    this.jdField_a_of_type_Atnt = new atoe(this.jdField_a_of_type_Atno);
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    if (a("onSenderUploadCompleted")) {
+      return false;
+    }
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((auea.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
+    }
+    this.jdField_a_of_type_Atno.a(paramLong, localFileManagerEntity.peerUin);
+    localFileManagerEntity.setCloudType(1);
+    atno.a(this.jdField_a_of_type_Atno, 1, 0, true);
+    a("StateGotoOffFileProcess");
+    this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Atnt = new atof(this.jdField_a_of_type_Atno);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (a("onSenderCancelUpload")) {
+      return;
+    }
+    atno.a(this.jdField_a_of_type_Atno, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Atnt = new atnw(this.jdField_a_of_type_Atno);
   }
 }
 

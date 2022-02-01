@@ -1,348 +1,129 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.StatFs;
-import android.text.TextUtils;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWVoiceController.1;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 public class bkyl
-  implements bfyc, bgat
 {
-  public static String a;
-  public static String b;
-  public static String c = "record_local_path";
-  public static String d = "shard_pref_name";
-  public int a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bkym(this);
-  private bgas jdField_a_of_type_Bgas;
-  private bkyn jdField_a_of_type_Bkyn;
-  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  protected WeakReference<Context> a;
-  private int b;
-  private String e;
-  
-  static
+  public static String a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = "record_status";
-    jdField_b_of_type_JavaLangString = "record_url";
-  }
-  
-  public bkyl(Context paramContext, bkyn parambkyn)
-  {
-    this.jdField_a_of_type_Int = 360000;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Bkyn = parambkyn;
-  }
-  
-  public static SharedPreferences a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences(d, 0);
-  }
-  
-  private boolean b()
-  {
-    if (QQServiceForAV.a())
+    Object localObject = null;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHWVoiceController", 2, "VideoProcessAlive");
+      paramString2 = a(paramString1.getBytes("UTF-8"), paramString2.getBytes("UTF-8"));
+      paramString1 = localObject;
+      if (paramString2 != null) {
+        paramString1 = bhcu.encodeToString(paramString2, 2);
       }
-      return true;
+      return paramString1;
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return false;
-    }
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((ActivityManager)((Context)localObject).getSystemService("activity")).getRunningAppProcesses();
-    if (localObject != null)
+    catch (UnsupportedEncodingException paramString1)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video")) {
-          return true;
-        }
-      }
+      paramString1.printStackTrace();
     }
-    return false;
+    return null;
   }
   
-  private void f(String paramString)
+  private static byte[] a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    byte[] arrayOfByte = new byte[24];
+    if (arrayOfByte.length > paramArrayOfByte.length)
     {
-      return;
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localObject == null);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a((Context)localObject);
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).remove(paramString);
-    ((SharedPreferences.Editor)localObject).commit();
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
+      return arrayOfByte;
+    }
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
+    return arrayOfByte;
   }
   
-  public int a()
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.jdField_a_of_type_Bkyn.b();
-    return 250;
-  }
-  
-  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    this.jdField_a_of_type_Int -= 200;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, this.jdField_a_of_type_Int);
-    return this.jdField_a_of_type_Int + 200;
-  }
-  
-  public String a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    try
+    {
+      paramArrayOfByte2 = new SecretKeySpec(a(paramArrayOfByte2), "DESede");
+      Cipher localCipher = Cipher.getInstance("DESede");
+      localCipher.init(1, paramArrayOfByte2);
+      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      return paramArrayOfByte1;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
       return null;
     }
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localContext == null) {
+    catch (NoSuchPaddingException paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString2 = paramString2.getBytes("UTF-8");
+      paramString1 = b(bhcu.decode(paramString1, 0), paramString2);
+      if (paramString1 != null)
+      {
+        paramString1 = new String(paramString1, "UTF-8");
+        return paramString1;
+      }
       return null;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a(localContext);
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_Bgas != null) {
-      return;
-    }
-    Handler localHandler = new Handler();
-    if (paramString.endsWith("amr")) {}
-    for (int i = 0;; i = 1)
+    catch (UnsupportedEncodingException paramString1)
     {
-      this.jdField_a_of_type_Bgas = new bgas(paramString, localHandler, i);
-      this.jdField_a_of_type_Bgas.a(BaseApplication.getContext());
-      this.jdField_a_of_type_Bgas.b();
-      this.jdField_a_of_type_Bgas.a(this);
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bgas.b();
-      return;
+      paramString1.printStackTrace();
+      return null;
     }
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    a();
-    if (this.jdField_a_of_type_Bkyn == null) {
-      return;
-    }
-    if (this.jdField_b_of_type_Int > 0)
+    catch (IllegalArgumentException paramString1)
     {
-      this.jdField_a_of_type_Bkyn.b(this.jdField_b_of_type_Int, paramString);
-      this.jdField_b_of_type_Int = 0;
-      return;
-    }
-    this.jdField_a_of_type_Bkyn.a(3, this.e);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    paramRecorderParam = bfyl.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
-    azbu.a(paramString);
-    azbu.a(paramString, paramRecorderParam, paramRecorderParam.length);
-    bftt.b(2131230745, false);
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
-  {
-    azbu.b(paramString);
-    this.jdField_a_of_type_Bkyn.a(paramString, paramDouble);
-  }
-  
-  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    azbu.a(paramString1);
-    this.jdField_a_of_type_Bkyn.c();
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    azbu.a(paramString, paramArrayOfByte, paramInt1);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Bgas != null)
-    {
-      this.jdField_a_of_type_Bgas.e();
-      this.jdField_a_of_type_Bgas = null;
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b()))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 200L);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.e = paramString;
-    String str2 = a(paramString);
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
-    {
-      str1 = str2;
-      if (!new File(str2).exists())
+      for (;;)
       {
-        f(paramString);
-        str1 = null;
+        paramString1.printStackTrace();
       }
     }
-    if ((this.jdField_a_of_type_Bkyn != null) && (!TextUtils.isEmpty(str1)))
-    {
-      this.jdField_a_of_type_Bkyn.a(1, paramString);
-      d(str1);
-      return;
-    }
-    ThreadManager.postImmediately(new TroopHWVoiceController.1(this), null, false);
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam) {}
-  
-  public void c(String paramString)
+  public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    try
     {
-      return;
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localObject == null);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a((Context)localObject);
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putString(this.e, paramString);
-    ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam) {}
-  
-  public void d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_Bgas != null) {
-      return;
+      paramArrayOfByte2 = new SecretKeySpec(a(paramArrayOfByte2), "DESede");
+      Cipher localCipher = Cipher.getInstance("DESede");
+      localCipher.init(2, paramArrayOfByte2);
+      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      return paramArrayOfByte1;
     }
-    Handler localHandler = new Handler();
-    if (paramString.endsWith("amr")) {}
-    for (int i = 0;; i = 1)
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
     {
-      this.jdField_a_of_type_Bgas = new bgas(paramString, localHandler, i);
-      this.jdField_a_of_type_Bgas.a(BaseApplication.getContext());
-      this.jdField_a_of_type_Bgas.b();
-      this.jdField_a_of_type_Bgas.a(this);
-      this.jdField_a_of_type_Bgas.b();
-      return;
+      paramArrayOfByte1.printStackTrace();
+      return null;
     }
-  }
-  
-  public void e(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    Context localContext;
-    do
+    catch (NoSuchPaddingException paramArrayOfByte1)
     {
-      return;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localContext == null);
-    Object localObject = Environment.getExternalStorageDirectory();
-    int i;
-    if ((((File)localObject).exists()) && (((File)localObject).canWrite()))
-    {
-      i = 1;
-      if ((!Environment.getExternalStorageState().equals("mounted")) || (i == 0)) {
-        break label115;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0)
+      for (;;)
       {
-        if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
-        {
-          if (b())
-          {
-            QQToast.a(BaseApplication.getContext(), 2131694732, 0).a();
-            return;
-            i = 0;
-            break;
-            label115:
-            i = 0;
-            continue;
-          }
-          if (AudioHelper.b(1))
-          {
-            ChatActivityUtils.a(localContext);
-            return;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopHWVoiceController", 2, "startRecord() is called");
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(localContext);
-          }
-          localObject = new QQRecorder.RecorderParam(bfyl.jdField_a_of_type_Int, 0, 0);
-          paramString = BuddyTransfileProcessor.getTransferFilePath(paramString, null, 2, null);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a((QQRecorder.RecorderParam)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.i("QQRecorder", 2, "path: " + paramString);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
-          bftt.a(localContext, true);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopHWVoiceController", 2, "QQRecorder start() is called,time is:" + System.currentTimeMillis());
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(paramString);
-          return;
-        }
-        QQToast.a(BaseApplication.getContext(), 2131717958, 0).a();
-        return;
+        paramArrayOfByte1.printStackTrace();
       }
     }
-    QQToast.a(BaseApplication.getContext(), 2131694120, 0).a();
+    catch (Exception paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
   }
 }
 

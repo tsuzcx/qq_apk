@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.ar.view;
 
-import amtj;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,10 +20,14 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import aonv;
+import anvx;
+import apmz;
+import apqw;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public final class ViewfinderView
   extends View
@@ -37,6 +40,7 @@ public final class ViewfinderView
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private String jdField_a_of_type_JavaLangString;
+  private List<apmz> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 18;
@@ -45,11 +49,10 @@ public final class ViewfinderView
   private boolean jdField_b_of_type_Boolean = true;
   private float jdField_c_of_type_Float;
   private int jdField_c_of_type_Int;
-  private Rect jdField_c_of_type_AndroidGraphicsRect;
+  private Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
   private int jdField_d_of_type_Int;
   private Rect jdField_d_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_e_of_type_Int;
-  private Rect jdField_e_of_type_AndroidGraphicsRect = new Rect();
+  private int e;
   private int f;
   private int g;
   private int h;
@@ -58,7 +61,7 @@ public final class ViewfinderView
   public ViewfinderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844778);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844852);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ViewfinderView);
     this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(4, a(paramContext, 3.0F));
@@ -72,13 +75,13 @@ public final class ViewfinderView
     this.jdField_a_of_type_Int = paramAttributeSet.getColor(5, Color.parseColor("#000000"));
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(7);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = amtj.a(2131715476);
+      this.jdField_a_of_type_JavaLangString = anvx.a(2131715824);
     }
     this.i = paramAttributeSet.getColor(6, Color.parseColor("#FFFFFF"));
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(10, false);
     this.jdField_a_of_type_Float = paramAttributeSet.getDimensionPixelSize(8, a(paramContext, 20.0F));
     this.jdField_b_of_type_Float = paramAttributeSet.getDimensionPixelSize(9, b(paramContext, 14.0F));
-    this.jdField_e_of_type_Int = a(paramContext, 8.0F);
+    this.e = a(paramContext, 8.0F);
     paramAttributeSet.recycle();
   }
   
@@ -93,22 +96,22 @@ public final class ViewfinderView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsRect.set(paramRect.left - this.jdField_e_of_type_Int, paramRect.top - this.jdField_e_of_type_Int, paramRect.right + this.jdField_e_of_type_Int, paramRect.bottom + this.jdField_e_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.left, this.jdField_d_of_type_AndroidGraphicsRect.top, this.jdField_d_of_type_AndroidGraphicsRect.left + this.jdField_d_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.top + this.jdField_c_of_type_Int);
+    this.jdField_c_of_type_AndroidGraphicsRect.set(paramRect.left - this.e, paramRect.top - this.e, paramRect.right + this.e, paramRect.bottom + this.e);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_d_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.top + this.jdField_c_of_type_Int);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.left, this.jdField_d_of_type_AndroidGraphicsRect.top, this.jdField_d_of_type_AndroidGraphicsRect.left + this.jdField_c_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.top + this.jdField_d_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.top + this.jdField_d_of_type_Int);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.right - this.jdField_d_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.top, this.jdField_d_of_type_AndroidGraphicsRect.right, this.jdField_d_of_type_AndroidGraphicsRect.top + this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.right - this.jdField_d_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.top + this.jdField_c_of_type_Int);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.right - this.jdField_c_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.top, this.jdField_d_of_type_AndroidGraphicsRect.right, this.jdField_d_of_type_AndroidGraphicsRect.top + this.jdField_d_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.right - this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.top + this.jdField_d_of_type_Int);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.left, this.jdField_d_of_type_AndroidGraphicsRect.bottom - this.jdField_d_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.left + this.jdField_c_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.bottom - this.jdField_d_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.left, this.jdField_d_of_type_AndroidGraphicsRect.bottom - this.jdField_c_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.left + this.jdField_d_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.bottom - this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.left + this.jdField_d_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.right - this.jdField_d_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.bottom - this.jdField_c_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.right, this.jdField_d_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.right - this.jdField_d_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.bottom - this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRect.right - this.jdField_c_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.bottom - this.jdField_d_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect.right, this.jdField_d_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRect.right - this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.bottom - this.jdField_d_of_type_Int, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
     paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int / 2, this.jdField_c_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.reset();
   }
@@ -129,7 +132,7 @@ public final class ViewfinderView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aonv(this, paramRect));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new apqw(this, paramRect));
       this.jdField_b_of_type_Boolean = true;
     }
     if (this.jdField_b_of_type_Boolean)
@@ -154,13 +157,13 @@ public final class ViewfinderView
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.i);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_e_of_type_AndroidGraphicsRect);
+      this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_d_of_type_AndroidGraphicsRect);
       String str = this.jdField_a_of_type_JavaLangString;
       int j = this.jdField_a_of_type_JavaLangString.length();
       float f1 = paramRect.centerX();
       float f2 = paramRect.centerY() + paramRect.height() / 2;
       float f3 = this.jdField_a_of_type_Float;
-      paramCanvas.drawText(str, 0, j, f1, this.jdField_e_of_type_AndroidGraphicsRect.height() + (f2 + f3), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText(str, 0, j, f1, this.jdField_d_of_type_AndroidGraphicsRect.height() + (f2 + f3), this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.reset();
     }
   }
@@ -192,24 +195,25 @@ public final class ViewfinderView
         return;
         localObject = this.jdField_b_of_type_AndroidGraphicsRect;
       } while (localObject == null);
-      int j = paramCanvas.getWidth();
-      int k = paramCanvas.getHeight();
+      paramCanvas.getWidth();
+      paramCanvas.getHeight();
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(123);
-      paramCanvas.drawRect(0.0F, 0.0F, j, ((Rect)localObject).top, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, ((Rect)localObject).top, ((Rect)localObject).left, ((Rect)localObject).bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(((Rect)localObject).right, ((Rect)localObject).top, j, ((Rect)localObject).bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, ((Rect)localObject).bottom, j, k, this.jdField_a_of_type_AndroidGraphicsPaint);
       a((Rect)localObject, paramCanvas);
       b((Rect)localObject, paramCanvas);
       c((Rect)localObject, paramCanvas);
-      if ((this.jdField_c_of_type_AndroidGraphicsRect != null) && (this.jdField_c_of_type_AndroidGraphicsRect.width() != 0) && (this.jdField_c_of_type_AndroidGraphicsRect.height() != 0))
+      localObject = this.jdField_a_of_type_JavaUtilList;
+      if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(4.0F);
-        paramCanvas.drawRect(this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          apmz localapmz = (apmz)((Iterator)localObject).next();
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(4.0F);
+          paramCanvas.drawRect(localapmz.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
       }
     } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
     Object localObject = new TextPaint();
@@ -229,12 +233,9 @@ public final class ViewfinderView
     }
   }
   
-  public void setDetectRect(Rect paramRect)
+  public void setDetectRect(List<apmz> paramList)
   {
-    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
-    if ((paramRect != null) && (paramRect.width() > 0) && (paramRect.height() > 0)) {
-      this.jdField_c_of_type_AndroidGraphicsRect.set(paramRect);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
     postInvalidate();
   }
   

@@ -1,61 +1,28 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.CommentLinkViewContainer;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class oyl
-  extends ViewBase
+  extends ClickableSpan
 {
-  private CommentLinkViewContainer a;
+  public oyl(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
   
-  public oyl(VafContext paramVafContext)
+  public void onClick(View paramView)
   {
-    super(paramVafContext);
-    this.a = new CommentLinkViewContainer(paramVafContext.getContext());
+    pbq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramView = new pbu(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(pau.a).b(this.b.area).c(0).a().a();
+    olh.a(null, pbq.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
   }
   
-  public int getComMeasuredHeight()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measure(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramObject);
-      if (((paramObject instanceof ouo)) && (((ouo)paramObject).a != null)) {
-        this.a.a((ouo)paramObject);
-      }
-    }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

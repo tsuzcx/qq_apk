@@ -1,28 +1,21 @@
-import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class nzw
-  implements ViewPager.PageTransformer
+class nzw
+  implements Animation.AnimationListener
 {
-  private nzw(VerticleViewPager paramVerticleViewPager) {}
+  nzw(nzu paramnzu) {}
   
-  public void transformPage(View paramView, float paramFloat)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramFloat < -1.0F)
-    {
-      paramView.setAlpha(0.0F);
-      return;
-    }
-    if (paramFloat <= 1.0F)
-    {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
-      return;
-    }
-    paramView.setAlpha(0.0F);
+    this.a.a.a.setVisibility(0);
+    this.a.a.a.startAnimation(this.a.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

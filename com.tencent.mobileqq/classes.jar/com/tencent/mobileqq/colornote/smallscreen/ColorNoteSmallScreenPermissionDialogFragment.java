@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import apku;
-import apnr;
-import apns;
-import bcef;
-import bfur;
+import aqny;
+import aqqv;
+import aqqw;
+import bdla;
+import bhdj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -48,15 +48,15 @@ public class ColorNoteSmallScreenPermissionDialogFragment
     if (localObject != null) {}
     for (int i = ((Intent)localObject).getIntExtra("key_permission_from", 1);; i = 1)
     {
-      int m = 2131690792;
+      int m = 2131690877;
       int j;
       if (i == 2)
       {
-        j = 2131690793;
-        localObject = bfur.a(getActivity(), 230).setMessage(j).setPositiveButton(2131690794, new apnr(this));
-        ((QQCustomDialog)localObject).setTitle(2131690795);
+        j = 2131690878;
+        localObject = bhdj.a(getActivity(), 230).setMessage(j).setPositiveButton(2131690879, new aqqv(this));
+        ((QQCustomDialog)localObject).setTitle(2131690880);
         ((QQCustomDialog)localObject).setCancelable(true);
-        ((QQCustomDialog)localObject).setOnCancelListener(new apns(this));
+        ((QQCustomDialog)localObject).setOnCancelListener(new aqqw(this));
         ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
         ((QQCustomDialog)localObject).show();
         a = true;
@@ -67,7 +67,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
       label197:
       for (i = k;; i = 2)
       {
-        bcef.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
         paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
         V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
         return paramLayoutInflater;
@@ -75,7 +75,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
         if (i != 3) {
           break;
         }
-        apku.b(true);
+        aqny.b(true);
         j = m;
         break;
       }

@@ -1,16 +1,16 @@
 package com.tencent.open.model;
 
 import android.os.Bundle;
-import biel;
+import bjpn;
 
 public class AccountManage$2$1
   implements Runnable
 {
-  public AccountManage$2$1(biel parambiel, String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle) {}
+  public AccountManage$2$1(bjpn parambjpn, String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {
-    biel.a(this.jdField_a_of_type_Biel, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    bjpn.a(this.jdField_a_of_type_Bjpn, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

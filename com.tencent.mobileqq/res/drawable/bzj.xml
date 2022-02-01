@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <corners android:radius="1.0dip" />
-        </shape>
-        <color android:color="#ffffffff" />
-    </item>
-    <item android:id="@android:id/progress">
-        <clip android:gravity="left" android:clipOrientation="horizontal">
-            <shape>
-                <corners android:radius="1.0dip" />
-                <gradient android:startColor="#ff00fcf4" android:endColor="#ffd6ff2d" />
-            </shape>
-        </clip>
-    </item>
-</layer-list>
+    <item android:state_pressed="false" android:drawable="@android:color/transparent" />
+    <item android:state_pressed="true" android:drawable="@drawable/jm" />
+    <item android:state_selected="true" android:drawable="@drawable/jm" />
+    <item android:drawable="@android:color/transparent" />
+</selector>

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import afvi;
-import afvl;
+import agnx;
+import agoa;
 
 class QQCustomArkDialog$1
-  implements afvl
+  implements agoa
 {
   QQCustomArkDialog$1(QQCustomArkDialog paramQQCustomArkDialog) {}
   
-  public boolean closeView(afvi paramafvi)
+  public boolean closeView(agnx paramagnx)
   {
     if (this.this$0.isShowing())
     {
@@ -18,7 +18,7 @@ class QQCustomArkDialog$1
     return false;
   }
   
-  public boolean openCardView(afvi paramafvi, String paramString1, String paramString2)
+  public boolean openCardView(agnx paramagnx, String paramString1, String paramString2)
   {
     return false;
   }

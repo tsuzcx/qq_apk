@@ -1,59 +1,148 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.contact.troop.troopnotificationcontroller.TroopNotificationShowNewEntryConfigController.1;
+import com.tencent.mobileqq.activity.contact.troop.troopnotificationcontroller.TroopNotificationShowNewEntryConfigController.2;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.os.MqqHandler;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ajij
-  implements View.OnClickListener
+public class ajij
+  extends ajib
 {
-  ajij(ajif paramajif) {}
+  private List<ajfo> a;
   
-  public void onClick(View paramView)
+  public ajij(QQAppInterface paramQQAppInterface)
   {
-    int i = paramView.getId();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  private void c()
+  {
+    Object localObject1 = (aocd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.RECENT_MANAGER_FOR_3RDPART);
     if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenNewEntryNotShow, Recent need to create and add");
     }
-    switch (i)
+    Object localObject2 = ((ajfn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_NOTIFICATION_MANAGER)).a();
+    if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.jdField_a_of_type_Ajhk != null)
+      localObject2 = bdzy.a().a();
+      if (localObject2 != null)
       {
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Ajhk.a.msg);
-        continue;
-        if (this.a.jdField_a_of_type_Ajhk != null)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putInt("forward_type", -1);
-          localBundle.putString("forward_text", this.a.jdField_a_of_type_Ajhk.a.msg);
-          Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
-          localIntent.putExtras(localBundle);
-          ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
-          }
-          this.a.c = false;
-          ajif.a(this.a).setVisibility(8);
-          ajif.a(this.a, 0, null);
-          this.a.jdField_a_of_type_Ajbe.a(ajif.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-          this.a.jdField_a_of_type_Ajbe.notifyDataSetChanged();
-          this.a.b = 1;
+        long l = ((structmsg.StructMsg)localObject2).msg_time.get();
+        ((aocd)localObject1).a(AppConstants.TROOP_NOTIFICATION_UIN, 9000, anvx.a(2131691074), l, l);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        if (localObject1 != null) {
+          ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(1009));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenNewEntryNotShow, Recent be Added");
         }
       }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenNewEntryNotShow, structMsg is null");
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenNewEntryNotShow, getMessageRecordListFromCache() is null or empty");
+      }
+      ((aocd)localObject1).a(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      if (localObject1 != null) {
+        ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(1009));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenNewEntryNotShow, getMessageRecordListFromCache() is null or empty。 when deleteRecent");
+  }
+  
+  private void c(aqxv paramaqxv)
+  {
+    if (QLog.isColorLevel())
+    {
+      if (paramaqxv != null) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenHasNewConf, newConf = " + paramaqxv.toString());
+      }
+    }
+    else
+    {
+      if ((paramaqxv != null) && (paramaqxv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+        break label92;
+      }
+      c();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenHasNewConf, call updateRecentUserListWhenNewEntryNotShow");
+      }
+    }
+    label92:
+    do
+    {
+      return;
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenHasNewConf, newConf is null ");
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "updateRecentUserListWhenHasNewConf, delete notification entry in recent");
+      }
+      ((aocd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.RECENT_MANAGER_FOR_3RDPART)).a(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
+      paramaqxv = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    } while (paramaqxv == null);
+    paramaqxv.sendMessage(paramaqxv.obtainMessage(1009));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new TroopNotificationShowNewEntryConfigController.1(this, paramInt));
+  }
+  
+  public void a(ajfo paramajfo)
+  {
+    if (paramajfo != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramajfo);
+    }
+  }
+  
+  public void a(aqxv paramaqxv)
+  {
+    ThreadManager.getUIHandler().post(new TroopNotificationShowNewEntryConfigController.2(this, paramaqxv));
+  }
+  
+  public void b()
+  {
+    super.b();
+  }
+  
+  public void b(ajfo paramajfo)
+  {
+    if (paramajfo != null) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramajfo);
+    }
+  }
+  
+  public void b(aqxv paramaqxv)
+  {
+    if (paramaqxv == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "INewTroopNotificationUnreadCountChangedListener, newConf = " + paramaqxv.toString());
+    }
+    a(paramaqxv);
+    c(paramaqxv);
   }
 }
 

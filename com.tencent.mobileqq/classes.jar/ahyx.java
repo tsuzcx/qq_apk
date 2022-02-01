@@ -1,16 +1,37 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahyx
-  extends amsu
+class ahyx
+  extends aoav
 {
-  public ahyx(SearchBaseFragment paramSearchBaseFragment) {}
+  ahyx(ahyl paramahyl) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onDownPublicAccount()
   {
-    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
-      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    }
+  }
+  
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.updateSession(this.a.mActivity.getIntent());
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.updateSession(this.a.mActivity.getIntent());
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.updateSession(this.a.mActivity.getIntent());
     }
   }
 }

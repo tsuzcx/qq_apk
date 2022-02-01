@@ -15,7 +15,7 @@ class TextPreviewActivity$8
     Drawable localDrawable = this.this$0.jdField_a_of_type_Gb.a(this.this$0.e);
     if (localDrawable == null)
     {
-      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bgod);
+      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bhyn);
       return;
     }
     Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
@@ -25,7 +25,7 @@ class TextPreviewActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

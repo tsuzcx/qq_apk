@@ -1,39 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class odi
-  extends BroadcastReceiver
+public class odi
+  implements View.OnClickListener
 {
-  odi(ocw paramocw, boolean paramBoolean, MqqHandler paramMqqHandler) {}
+  public odi(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
-    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Ocw.a(str, i, 12, -1, null);
-      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
-      }
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    try
-    {
-      for (;;)
-      {
-        paramContext.unregisterReceiver(this.jdField_a_of_type_Ocw.a);
-        label65:
-        this.jdField_a_of_type_Ocw.a = null;
-        return;
-        this.jdField_a_of_type_Ocw.a(str, i, 11, -1, null);
-      }
-    }
-    catch (Exception paramContext)
-    {
-      break label65;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,24 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
-
-public class apjo
-  implements Camera.PictureCallback
+public abstract interface apjo
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final apje jdField_a_of_type_Apje;
-  private final apjg jdField_a_of_type_Apjg;
+  public abstract long a();
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
-  }
+  public abstract void a(int paramInt, apki paramapki);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aplp paramaplp);
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

@@ -1,56 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class bifn
+  extends SosoInterface.OnLocationListener
 {
-  private static String a(String paramString)
+  public bifn(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    String str = paramString;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        str = paramString;
-        if (!paramString.startsWith("##@")) {
-          str = "##@" + paramString;
-        }
-      }
-      return str;
-    }
-    catch (Throwable localThrowable) {}
-    return paramString;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    paramString2 = "step" + paramInt + "-->" + paramString2;
-    QLog.d("WadlStep." + paramString1, 2, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, a(paramString2));
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, a(paramString2));
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, a(paramString2));
-  }
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
 }
 
 

@@ -1,8 +1,16 @@
-import android.content.Intent;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface avyn
+public class avyn
 {
-  public abstract void a(Intent paramIntent);
+  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new avyo();
+  private static ConcurrentHashMap<Long, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  static HookMethodCallback b = new avyp();
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(Thread.currentThread().getId()), Long.valueOf(0L));
+  }
 }
 
 

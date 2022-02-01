@@ -1,21 +1,6 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-
-class xjp
-  extends whf
+public abstract interface xjp
 {
-  xjp(xjn paramxjn, FeedItem paramFeedItem) {}
-  
-  public void a()
-  {
-    super.a();
-    xjn.a(this.jdField_a_of_type_Xjn, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    xwa.a("home_page", "suc_share", 2, paramInt, new String[] { xwa.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", xwa.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
-  }
+  public abstract boolean a(xjm paramxjm, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 

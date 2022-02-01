@@ -2,7 +2,7 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bftf;
+import bhbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -85,7 +85,7 @@ class CorpReq$2
             if (QLog.isColorLevel())
             {
               ((StringBuffer)localObject3).append(" nick=");
-              ((StringBuffer)localObject3).append(bftf.a((String)localObject1));
+              ((StringBuffer)localObject3).append(bhbx.a((String)localObject1));
               paramBundle = (Bundle)localObject1;
             }
             ((Map)localObject2).put(localObject5, paramBundle);

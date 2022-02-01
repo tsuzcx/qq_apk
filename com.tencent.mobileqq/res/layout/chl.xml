@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="@drawable/blj" android:layout_width="43.0dip" android:layout_height="70.0dip"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dwf" android:layout_width="18.0dip" android:layout_height="8.0dip" android:src="@drawable/f8o" />
-    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k9z" android:background="@drawable/bw4" android:padding="1.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="16.0dip" android:text="99+" />
-</RelativeLayout>
+    <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ku3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.5dip" android:layout_marginRight="7.0dip">
+        <ImageView android:background="@drawable/gsx" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/kun" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ku2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip">
+        <ImageView android:background="@drawable/gsv" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/kuk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

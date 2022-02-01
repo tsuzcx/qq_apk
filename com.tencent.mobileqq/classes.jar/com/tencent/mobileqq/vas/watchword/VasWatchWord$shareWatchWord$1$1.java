@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vas.watchword;
 
-import bglg;
+import bhvq;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import yyi;
+import znl;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class VasWatchWord$shareWatchWord$1$1
@@ -13,11 +13,11 @@ public final class VasWatchWord$shareWatchWord$1$1
   
   public final void run()
   {
-    bglg localbglg = bglg.a;
+    bhvq localbhvq = bhvq.a;
     String str = this.a;
     Intrinsics.checkExpressionValueIsNotNull(str, "sharemsg");
-    localbglg.a(str);
-    yyi.a(2, 2131719608);
+    localbhvq.a(str);
+    znl.a(2, 2131720061);
   }
 }
 

@@ -1,16 +1,37 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface amek
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/config/WeatherConfigBean$Companion;", "", "()V", "PRELOAD_AD_KEY", "", "TAG", "parse", "Lcom/tencent/mobileqq/activity/weather/config/WeatherConfigBean;", "content", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amek
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void a(int[] paramArrayOfInt, int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(List<amei> paramList);
-  
-  public abstract void e();
+  @JvmStatic
+  @NotNull
+  public final amej a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "content");
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherConfigBean", 2, "parse from:" + paramString + ' ');
+    }
+    try
+    {
+      if (new JSONObject(paramString).optInt("ConfigEnableWeatherPreloadAd", 1) == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        amej localamej = new amej(bool);
+        return localamej;
+      }
+      return new amej(false, 1, null);
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("WeatherConfigBean", 1, "error parse weather manage content:" + paramString, (Throwable)localJSONException);
+    }
+  }
 }
 
 

@@ -1,235 +1,93 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.handler.RIJCommentInLikeFeedUpvoteActionHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.FeedsInfo;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.ReqBody;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.RspBody;
 
 public class qip
-  extends ViewBase
+  extends qil
 {
-  private int jdField_a_of_type_Int;
-  private NativeVideoView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
-  
-  public qip(VafContext paramVafContext)
+  public qip(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView = new NativeVideoView(paramVafContext.getContext());
+    super(paramqep, paramHandler, paramAppInterface, paramEntityManager, paramqxn, paramExecutorService);
   }
   
-  public NativeVideoView a()
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean, ArticleInfo paramArticleInfo)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView;
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.getComMeasuredWidth();
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setBackgroundColor(this.mBackground);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setCoverUrl(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayIconUrl(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setVideoVid(this.c);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayIconSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    if (!TextUtils.isEmpty(this.d)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setVideoUrl(this.d);
-    }
-    try
+    Object localObject1 = new oidb_cmd0x83e.ReqBody();
+    if (paramBoolean) {}
+    for (int i = 2;; i = 3)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setVideoBusiType(Integer.parseInt(this.e));
-      refresh();
+      if (paramLong1 != -1L) {
+        ((oidb_cmd0x83e.ReqBody)localObject1).uint64_uin.set(paramLong1);
+      }
+      if (paramLong2 != -1L) {
+        ((oidb_cmd0x83e.ReqBody)localObject1).uint64_feeds_id.set(paramLong2);
+      }
+      ((oidb_cmd0x83e.ReqBody)localObject1).uint32_operation.set(i);
+      Object localObject2 = new oidb_cmd0x83e.FeedsInfo();
+      ((oidb_cmd0x83e.FeedsInfo)localObject2).feeds_type.set(paramArticleInfo.busiType);
+      ((oidb_cmd0x83e.FeedsInfo)localObject2).uint32_business_id.set((int)paramArticleInfo.businessId);
+      ((oidb_cmd0x83e.ReqBody)localObject1).msg_feeds_info.set((MessageMicro)localObject2);
+      localObject2 = String.valueOf(pkh.a()) + System.currentTimeMillis();
+      ((oidb_cmd0x83e.ReqBody)localObject1).bytes_req_seq.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      localObject1 = qxp.a("OidbSvc.0x83e", 2110, 0, ((oidb_cmd0x83e.ReqBody)localObject1).toByteArray());
+      ((ToServiceMsg)localObject1).addAttribute("0x83e_article", paramArticleInfo);
+      ((ToServiceMsg)localObject1).addAttribute("0x83e_upvote_operation_type", Integer.valueOf(i));
+      this.jdField_a_of_type_Qep.b((ToServiceMsg)localObject1);
       return;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyVideoView", 2, localNumberFormatException.getMessage());
-      }
-    }
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    String str;
-    switch (paramInt)
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    oidb_cmd0x83e.RspBody localRspBody = new oidb_cmd0x83e.RspBody();
+    if (a(paramFromServiceMsg, paramObject, localRspBody) == 0)
     {
-    case 1144: 
-    case 1145: 
-    case 1147: 
-    default: 
-      return super.setAttribute(paramInt, paramObject);
-    case 1143: 
-      if (((paramObject instanceof JSONArray)) && (((JSONArray)paramObject).length() == 2))
+      QLog.d("RIJCommentInLikeFeedUpvoteActionHandler", 1, "handle0x83eUpvoteAction result OK");
+      if (QLog.isColorLevel())
       {
-        str = ((JSONArray)paramObject).optString(0);
-        paramObject = ((JSONArray)paramObject).optString(1);
-      }
-      try
-      {
-        paramInt = Integer.parseInt(str);
-        int i = Integer.parseInt(paramObject);
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_b_of_type_Int = i;
-        return true;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          paramObject.printStackTrace();
+        if (localRspBody.uint64_feeds_id.has()) {
+          QLog.d("RIJCommentInLikeFeedUpvoteActionHandler", 2, "upvote feeds id:" + localRspBody.uint64_feeds_id.get());
         }
-      }
-    case 1146: 
-      if (((paramObject instanceof JSONArray)) && (((JSONArray)paramObject).length() == 2)) {
-        try
+        if (localRspBody.uint32_operation.has())
         {
-          str = ((JSONArray)paramObject).optString(0);
-          paramObject = ((JSONArray)paramObject).optString(1);
-          this.c = str;
-          this.e = paramObject;
-          return true;
-        }
-        catch (NumberFormatException paramObject)
-        {
-          paramObject.printStackTrace();
-          return false;
-        }
-      }
-      break;
-    }
-    if ((paramObject instanceof JSONObject)) {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setReportR5(paramObject.toString());
-        paramObject = (JSONObject)paramObject;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setRowKey(paramObject.optString("rowkey"));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setDtPgid(paramObject.optString("dt_pgid"));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setChannelId(Long.parseLong(paramObject.optString("channel_id")));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPuin(paramObject.optString("puin"));
-        return true;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          QLog.d("ReadInJoyVideoView", 1, paramObject.getMessage());
+          paramFromServiceMsg = new StringBuilder().append("upvote status:");
+          if (localRspBody.uint32_operation.get() != 2) {
+            break label167;
+          }
         }
       }
     }
-    return false;
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
+    for (boolean bool = true;; bool = false)
     {
-    case 1143: 
-    case 1146: 
-    case 1148: 
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1139: 
-      this.c = paramString;
-      return true;
-    case 1137: 
-      this.d = paramString;
-      return true;
-    case 1138: 
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return true;
-    case 1140: 
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setLoop("yes".equals(paramString.toLowerCase()));
-        return true;
-      }
-      return false;
-    case 1141: 
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setMute("yes".equals(paramString.toLowerCase()));
-        return true;
-      }
-      return false;
-    case 1142: 
-      if (!TextUtils.isEmpty(paramString)) {
-        try
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setScaleType(Integer.parseInt(paramString));
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-          return false;
-        }
-      }
-      return false;
-    case 1144: 
-      this.jdField_b_of_type_JavaLangString = paramString;
-      return true;
-    case 1145: 
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayIconVisible("yes".equals(paramString.toLowerCase()));
-        return true;
-      }
-      return false;
-    case 1147: 
-      if (!TextUtils.isEmpty(paramString)) {
-        try
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayMode(Integer.parseInt(paramString));
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-          return false;
-        }
-      }
-      return false;
-    }
-    if (!TextUtils.isEmpty(paramString)) {
+      QLog.d("RIJCommentInLikeFeedUpvoteActionHandler", 2, bool);
       try
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setAutoPlayMode(Integer.parseInt(paramString));
-        return true;
+        paramToServiceMsg = (ArticleInfo)paramToServiceMsg.getAttribute("0x83e_article");
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJCommentInLikeFeedUpvoteActionHandler.1(this, paramToServiceMsg));
+        return;
       }
-      catch (NumberFormatException paramString)
+      catch (Exception paramToServiceMsg)
       {
-        paramString.printStackTrace();
-        return false;
+        label167:
+        QLog.d("RIJCommentInLikeFeedUpvoteActionHandler", 1, "failed to update article ", paramToServiceMsg);
       }
     }
-    return false;
   }
 }
 

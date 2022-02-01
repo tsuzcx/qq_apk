@@ -1,72 +1,80 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.GetFlagInfoRsp;
-import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.RspBody;
-import tencent.kandian.flaginfo.flag_info.FlagInfo;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 
-class pwn
-  extends nmf
+public class pwn
 {
-  pwn(pwm parampwm) {}
+  static int jdField_a_of_type_Int = -1;
+  static long jdField_a_of_type_Long;
+  static int jdField_b_of_type_Int = -1;
+  static long jdField_b_of_type_Long;
+  static int c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static int a()
   {
-    int i = 0;
-    int k = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      return;
-    }
-    for (;;)
+    return c;
+  }
+  
+  static void a(AbsListView paramAbsListView)
+  {
+    pwp localpwp = new pwp();
+    int i = paramAbsListView.getLastVisiblePosition();
+    int j = ((ListAdapter)paramAbsListView.getAdapter()).getCount();
+    localpwp.jdField_a_of_type_Int = b();
+    localpwp.jdField_b_of_type_Int = Math.abs(jdField_b_of_type_Int - jdField_a_of_type_Int);
+    localpwp.jdField_a_of_type_Long = (jdField_b_of_type_Long - jdField_a_of_type_Long);
+    localpwp.c = (j - i);
+    localpwp.jdField_b_of_type_Long = jdField_b_of_type_Long;
+    localpwp.d = j;
+    pwo.a(localpwp);
+  }
+  
+  public static void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
+    do
     {
-      try
+      do
       {
-        paramBundle = new oidb_0xe1b.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.msg_get_flag_info_rsp.has()) || (!paramBundle.msg_get_flag_info_rsp.rpt_msg_flag_info_list.has())) {
-          break;
-        }
-        paramArrayOfByte = ((oidb_0xe1b.GetFlagInfoRsp)paramBundle.msg_get_flag_info_rsp.get()).rpt_msg_flag_info_list.get();
-        int j = i;
-        if (paramArrayOfByte != null)
-        {
-          j = i;
-          if (!paramArrayOfByte.isEmpty())
-          {
-            i = 0;
-            paramInt = k;
-            j = paramInt;
-            if (i < paramArrayOfByte.size())
-            {
-              paramBundle = (flag_info.FlagInfo)paramArrayOfByte.get(i);
-              if (paramBundle == null) {
-                break label178;
-              }
-              paramInt = paramBundle.uint32_teenager_flag.get();
-              break label178;
-            }
-          }
-        }
-        if (j != 0) {
-          break label168;
-        }
-        bkwm.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+        return;
+        b(paramAbsListView, paramInt);
+      } while ((pwo.jdField_a_of_type_Long < 0L) || (pwo.jdField_b_of_type_Long < 0L));
+      switch (paramInt)
+      {
+      default: 
         return;
       }
-      catch (Exception paramArrayOfByte) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SelfInfoModule", 2, "updateSelfYoungsterModeSetting failed.");
-      return;
-      label168:
-      bkwm.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
-      return;
-      label178:
-      i += 1;
+    } while ((jdField_b_of_type_Int >= 0) || (jdField_b_of_type_Long >= 0L));
+    jdField_b_of_type_Int = paramAbsListView.getFirstVisiblePosition();
+    jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    a(paramAbsListView);
+    return;
+    jdField_a_of_type_Int = paramAbsListView.getFirstVisiblePosition();
+    jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    jdField_b_of_type_Int = -1;
+    jdField_b_of_type_Long = -1L;
+  }
+  
+  static int b()
+  {
+    if (jdField_a_of_type_Int > jdField_b_of_type_Int) {
+      return 0;
     }
+    return 1;
+  }
+  
+  private static void b(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
+      return;
+    }
+    c = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
+    if (c < 0) {
+      c = 0;
+    }
+    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(c) });
   }
 }
 

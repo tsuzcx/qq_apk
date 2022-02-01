@@ -1,19 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qqr
-  implements View.OnTouchListener
+public class qqr
+  implements ViewBase.OnClickListener
 {
-  qqr(qqm paramqqm, LinearLayout paramLinearLayout) {}
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private szd jdField_a_of_type_Szd;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public qqr(ArticleInfo paramArticleInfo, szd paramszd)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Szd = paramszd;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = this.jdField_a_of_type_Szd.a().a();
+    if (paramViewBase != null) {
+      paramViewBase.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
     }
-    return false;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+    }
   }
 }
 

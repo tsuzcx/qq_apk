@@ -1,41 +1,23 @@
-import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
-import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.av.ReqGroupVideo.ReqCheckGroupCanJoin;
+import com.tencent.av.ReqGroupVideo.RspCheckGroupCanJoin;
+import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.2.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
-class lye
-  extends lgb<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
+public class lye
+  extends lgn<ReqGroupVideo.ReqCheckGroupCanJoin, ReqGroupVideo.RspCheckGroupCanJoin>
 {
-  lye(lyc paramlyc) {}
+  public lye(AVSchema paramAVSchema) {}
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCheckGroupCanJoin paramReqCheckGroupCanJoin, ReqGroupVideo.RspCheckGroupCanJoin paramRspCheckGroupCanJoin, Object paramObject)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
-    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
-    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
-    int i = lfy.a(paramRspCreateShareUrl);
-    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
-    if (i == 0)
-    {
-      this.a.c = paramObject;
-      this.a.b = paramReqCreateShareUrl;
-      bfxg.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
-    }
-    for (;;)
-    {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      return;
-      if (i != 11001) {}
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new AVSchema.2.1(this, paramRspCheckGroupCanJoin, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lye
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahbf
-  implements DialogInterface.OnClickListener
+class ahbf
+  implements awre
 {
-  public ahbf(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  ahbf(ahaw paramahaw, ChatMessage paramChatMessage, ahbj paramahbj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ahbj paramahbj)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
+    }
+    ahaw.a(this.jdField_a_of_type_Ahaw, paramahbj);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ahaw.a(this.jdField_a_of_type_Ahaw, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Ahbj);
+    }
   }
 }
 

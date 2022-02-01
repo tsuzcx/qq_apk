@@ -1,21 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-
-public class sqj
+public abstract interface sqj
 {
-  public ReadInJoyBaseFragment a;
-  public ski a;
-  public boolean a;
-  public boolean b;
-  
-  public sqj()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public ReadInJoyBaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
-  }
+  public abstract void a(spk paramspk);
 }
 
 

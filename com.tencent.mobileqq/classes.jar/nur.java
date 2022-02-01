@@ -1,14 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
-class nur
-  implements DialogInterface.OnDismissListener
+public class nur
+  implements BusinessObserver
 {
-  nur(num paramnum) {}
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.f = false;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
   }
 }
 

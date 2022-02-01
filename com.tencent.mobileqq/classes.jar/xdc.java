@@ -1,33 +1,20 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-public class xdc
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbh>
+public abstract interface xdc
 {
-  public xdc(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public abstract List<xdf> a(List<xcy> paramList);
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbh paramwbh)
-  {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwbh.jdField_a_of_type_JavaLangString)) {}
-    while ((paramwbh.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramwbh.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramwbh.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwbh);
-  }
+  @NonNull
+  public abstract xdb a();
   
-  public Class acceptEventClass()
-  {
-    return wbh.class;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, xde paramxde);
+  
+  public abstract boolean a(xcz paramxcz);
+  
+  public abstract void b();
 }
 
 

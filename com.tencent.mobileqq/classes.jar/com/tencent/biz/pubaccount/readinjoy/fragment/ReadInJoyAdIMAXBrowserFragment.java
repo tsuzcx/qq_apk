@@ -9,9 +9,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bgtw;
-import bhkb;
+import bieo;
+import biur;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.NativeAd.report.constant.ActionEntity;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -20,15 +21,16 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import mqq.app.AppRuntime;
-import pmp;
-import pmq;
-import rwv;
+import pxm;
+import pxn;
+import six;
 
 public class ReadInJoyAdIMAXBrowserFragment
   extends WebViewFragment
 {
   public long a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ActionEntity jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity;
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private boolean jdField_a_of_type_Boolean;
@@ -41,10 +43,27 @@ public class ReadInJoyAdIMAXBrowserFragment
   
   private View.OnClickListener a()
   {
-    return new pmq(this);
+    return new pxn(this);
   }
   
   private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) {}
+    int i;
+    do
+    {
+      return;
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mImaxShowAdType;
+      if (i == 1001)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity = ActionEntity.ImaxVideo;
+        return;
+      }
+    } while (i != 1002);
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity = ActionEntity.ImaxPic;
+  }
+  
+  private void b()
   {
     LiuHaiUtils.a(getActivity());
     if (LiuHaiUtils.b()) {
@@ -57,23 +76,23 @@ public class ReadInJoyAdIMAXBrowserFragment
         this.mUIStyleHandler.mSwiftTitleUI.titleContainer.setVisibility(8);
       }
       if (this.mUIStyleHandler.mRootView != null) {
-        adjustWebViewTopMargin(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296654), 0);
+        adjustWebViewTopMargin(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296655), 0);
       }
       if (this.mUIStyleHandler.webviewWrapper == null) {
         return;
       }
       int j = UIUtils.dip2px(getActivity(), 30.0F);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getActivity());
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842937);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842969);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(9);
       localLayoutParams.leftMargin = UIUtils.dip2px(getActivity(), 15.0F);
       localLayoutParams.topMargin = (UIUtils.dip2px(getActivity(), 15.0F) + i);
       this.mUIStyleHandler.webviewWrapper.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pmp(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pxm(this));
       this.b = new ImageView(getActivity());
-      this.b.setBackgroundResource(2130842939);
+      this.b.setBackgroundResource(2130842971);
       localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(11);
@@ -98,7 +117,7 @@ public class ReadInJoyAdIMAXBrowserFragment
     }
     if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.mRootView != null))
     {
-      paramBundle = this.mUIStyleHandler.mRootView.findViewById(2131365102);
+      paramBundle = this.mUIStyleHandler.mRootView.findViewById(2131365186);
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -106,13 +125,14 @@ public class ReadInJoyAdIMAXBrowserFragment
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.setVisibility(8);
     }
-    rwv.a(getHostActivity());
+    six.b(getHostActivity());
     paramBundle = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramBundle instanceof ToolAppRuntime)) {
       this.jdField_a_of_type_MqqAppAppRuntime = paramBundle.getAppRuntime("modular_web");
     }
-    a();
+    b();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)getIntent().getParcelableExtra("ad"));
+    a();
     return i;
   }
   
@@ -124,14 +144,14 @@ public class ReadInJoyAdIMAXBrowserFragment
       this.mUIStyleHandler.mUIStyle.needHideBottomBar = true;
       this.mUIStyle.isCurrentTitleTransparent = true;
     }
-    rwv.a(getHostActivity());
+    six.b(getHostActivity());
     return super.doCreateLoopStep_InitData(paramBundle);
   }
   
   public void onResume()
   {
     super.onResume();
-    rwv.a(getHostActivity());
+    six.b(getHostActivity());
   }
 }
 

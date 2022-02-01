@@ -1,16 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
-public class acoe
-  extends axvm
-{
-  public acoe(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    AccountManageActivity.b(this.a);
-  }
-}
+public abstract interface acoe
+  extends acnw<acod>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

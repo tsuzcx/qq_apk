@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bdrl
-  implements DialogInterface.OnClickListener
+class bdrl
+  implements AdExposureChecker.ExposureCallback
 {
-  public bdrl(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bdrl(bdrk parambdrk, akrc paramakrc, Context paramContext, GdtAd paramGdtAd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onExposure(WeakReference<View> paramWeakReference)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "reportImpression...");
+    }
+    this.jdField_a_of_type_Akrc.a(this.jdField_a_of_type_AndroidContentContext, 1);
+    this.jdField_a_of_type_Akrc.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression());
+    akrc.a("public.tailplace.show", "", "", "1", "");
+  }
 }
 
 

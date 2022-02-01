@@ -1,29 +1,15 @@
-import android.os.Bundle;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
-class aaav
-  extends aqyp
+public class aaav
+  extends aaap
 {
-  aaav(aaaq paramaaaq) {}
+  public aaav(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == aaaq.a(this.a).key))
-    {
-      String str1 = paramBundle.getString("cmd");
-      String str2 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("request");
-      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
-      {
-        int i = paramBundle.getInt("result", 1);
-        this.a.callJs(str2, new String[] { Integer.toString(i) });
-      }
-    }
+    aaau.a(this.a.a.this$0, aaau.b(this.a.a.this$0));
   }
 }
 

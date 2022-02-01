@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmvr;
+import bolj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextMap> CREATOR = new bmvr();
+  public static final Parcelable.Creator<TextMap> CREATOR = new bolj();
   private Map<Integer, String> a = new HashMap();
   
   public DynamicTextItem$TextMap() {}
@@ -72,15 +72,21 @@ public class DynamicTextItem$TextMap
   public String a(int paramInt)
   {
     int i = a();
-    if ((paramInt < 0) || (paramInt >= i)) {
-      throw new IndexOutOfBoundsException("location " + paramInt + " is out of bounds, TextMap size is " + i);
+    Object localObject;
+    if (i == 0) {
+      localObject = "";
     }
-    String str2 = (String)this.a.get(Integer.valueOf(paramInt));
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
+    String str;
+    do
+    {
+      return localObject;
+      if ((paramInt < 0) || (paramInt >= i)) {
+        throw new IndexOutOfBoundsException("location " + paramInt + " is out of bounds, TextMap size is " + i);
+      }
+      str = (String)this.a.get(Integer.valueOf(paramInt));
+      localObject = str;
+    } while (str != null);
+    return "";
   }
   
   @NonNull

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.app.parser;
 
 import android.app.Activity;
-import anqa;
+import aost;
 import com.tencent.qphone.base.util.QLog;
-import mxn;
+import ncz;
 
 public class AVGameShareJoinRoomAction$2
   implements Runnable
 {
-  public AVGameShareJoinRoomAction$2(anqa paramanqa, mxn parammxn, String paramString1, String paramString2) {}
+  public AVGameShareJoinRoomAction$2(aost paramaost, ncz paramncz, String paramString1, String paramString2) {}
   
   public void run()
   {
     if ((this.this$0.a instanceof Activity))
     {
-      this.jdField_a_of_type_Mxn.a((Activity)this.this$0.a, 1, this.jdField_a_of_type_JavaLangString, this.b);
+      this.jdField_a_of_type_Ncz.a((Activity)this.this$0.a, 1, this.jdField_a_of_type_JavaLangString, this.b);
       return;
     }
     QLog.e("AVGameShareJoinRoomAction", 2, "directJoinRoom context not instance of activity");

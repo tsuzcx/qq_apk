@@ -1,74 +1,83 @@
-import android.graphics.Rect;
-import android.view.View;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ario
-  implements arrj
+public class ario
+  implements aqwv<String>
 {
-  ario(arin paramarin, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
+  public String a;
+  public HashMap<String, arip> a;
   
-  public int a()
+  public ario()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashMap.put("*", new arip(this));
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public Rect a(int paramInt)
+  public void a(String paramString)
   {
-    Rect localRect = new Rect(0, 0, 0, 0);
-    int i = a();
-    if (i > 1) {
-      if (paramInt == 0)
-      {
-        localRect.right = this.b;
-        localRect.left = (this.b * 2);
+    int i;
+    Object localObject2;
+    arip localarip;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (localJSONObject.length() == 0) {
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      paramString = localJSONObject.names();
+      i = 0;
+      if (i >= paramString.length()) {
+        break label212;
+      }
+      localObject1 = paramString.getString(i).trim().toLowerCase();
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label213;
+      }
+      localObject2 = localJSONObject.optJSONObject((String)localObject1);
+      localarip = new arip(this);
+      localarip.c = ((JSONObject)localObject2).getInt("CellNetAutoDownloadSize");
+      localarip.b = ((JSONObject)localObject2).getInt("CellNetWarningSize");
+      localarip.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
+      if (!((String)localObject1).contains(",")) {
+        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localarip);
       }
     }
-    while (i != 1)
+    catch (JSONException paramString)
     {
-      return localRect;
-      if (paramInt == i - 1)
+      QLog.e("", 1, QLog.getStackTraceString(paramString));
+      return;
+    }
+    Object localObject1 = ((String)localObject1).split(",");
+    int j = 0;
+    for (;;)
+    {
+      if (j < localObject1.length)
       {
-        localRect.left = this.b;
-        localRect.right = (this.b * 2);
-        return localRect;
+        localObject2 = localObject1[j].trim().toLowerCase();
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localarip);
+        }
       }
-      paramInt = this.b;
-      localRect.right = paramInt;
-      localRect.left = paramInt;
-      return localRect;
+      else
+      {
+        label212:
+        label213:
+        i += 1;
+        break;
+      }
+      j += 1;
     }
-    paramInt = this.b * 2;
-    localRect.right = paramInt;
-    localRect.left = paramInt;
-    return localRect;
-  }
-  
-  public View a(int paramInt)
-  {
-    int j = a();
-    if (j <= b()) {}
-    for (int i = 2131561061;; i = 2131561062)
-    {
-      View localView = View.inflate(this.jdField_a_of_type_Arin.itemView.getContext(), i, null);
-      arin.a(this.jdField_a_of_type_Arin, localView, (arim)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
-      arin.a(this.jdField_a_of_type_Arin, (arim)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
-      return localView;
-    }
-  }
-  
-  public int b()
-  {
-    return 2;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ario
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.listentogether.predownload;
 
-import avbv;
-import avbx;
+import awhy;
+import awia;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 public class ListenTogetherResDownloader$2$1
   implements Runnable
 {
-  public ListenTogetherResDownloader$2$1(avbx paramavbx, NetResp paramNetResp, boolean paramBoolean, MusicInfo paramMusicInfo) {}
+  public ListenTogetherResDownloader$2$1(awia paramawia, NetResp paramNetResp, boolean paramBoolean, MusicInfo paramMusicInfo) {}
   
   public void run()
   {
@@ -21,7 +22,7 @@ public class ListenTogetherResDownloader$2$1
     localHashMap.put("errCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrCode));
     localHashMap.put("result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult));
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "listen_together_download_quality", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
-    ((ListenTogetherManager)avbv.a(this.jdField_a_of_type_Avbx.a).getManager(331)).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherDataMusicInfo);
+    ((ListenTogetherManager)awhy.a(this.jdField_a_of_type_Awia.a).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherDataMusicInfo);
   }
 }
 

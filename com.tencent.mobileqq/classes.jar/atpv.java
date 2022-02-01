@@ -1,55 +1,85 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class atpv
-  extends andd
 {
-  public atpv(ForwardShareCardOption paramForwardShareCardOption) {}
+  public int a;
+  public long a;
+  public final String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public long f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  String l = null;
   
-  public void onTroopShareLink(boolean paramBoolean, bfli parambfli)
+  public atpv(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
-    }
-    this.a.z();
-    if (ForwardShareCardOption.a(this.a) != -1)
+    this.jdField_a_of_type_JavaLangString = "actFilePreview";
+    this.l = paramString;
+  }
+  
+  private HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      if ((!paramBoolean) || (parambfli.jdField_a_of_type_Int != 0)) {
-        break label189;
-      }
-      if (parambfli.jdField_a_of_type_Boolean)
-      {
-        ForwardShareCardOption.a(this.a, parambfli.b);
-        if (ForwardShareCardOption.a(this.a) == 0) {}
-      }
-      else
-      {
-        do
-        {
-          return;
-          ForwardShareCardOption.b(this.a, parambfli.b);
-        } while (ForwardShareCardOption.a(this.a) != 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((parambfli.jdField_a_of_type_JavaLangString != null) && (parambfli.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
+      this.jdField_d_of_type_JavaLangString = String.valueOf(9004);
+      this.h += "_NotNetWork";
     }
-    for (;;)
+    localHashMap.put("param_serverip", String.valueOf(this.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_uuid", String.valueOf(this.jdField_c_of_type_JavaLangString));
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_d_of_type_JavaLangString));
+    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_url", String.valueOf(this.jdField_e_of_type_JavaLangString));
+    localHashMap.put("param_key", String.valueOf(this.jdField_f_of_type_JavaLangString));
+    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_errMsg", String.valueOf(this.h));
+    localHashMap.put("param_fileName", String.valueOf(this.g));
+    localHashMap.put("param_fileExt", String.valueOf(this.i));
+    localHashMap.put("param_source", String.valueOf(this.j));
+    localHashMap.put("param_stage", String.valueOf(this.k));
+    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
+    this.h = "";
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    HashMap localHashMap = a();
+    if (QLog.isDevelopLevel())
     {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label189:
-      if (((parambfli.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) || ((!parambfli.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1))) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
+      localStringBuilder.append("strReportUin[" + this.l + "],");
+      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
+      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
+      Iterator localIterator = localHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
       }
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131692722), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
     }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.l, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
   }
 }
 

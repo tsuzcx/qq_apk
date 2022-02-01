@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aaaz
-  extends LbsManagerService.OnLocationChangeListener
+  implements biyn
 {
-  aaaz(aaay paramaaay, String paramString)
-  {
-    super(paramString);
-  }
+  aaaz(aaau paramaaau) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
+    if ((aaau.c(this.a) == null) || (!aaau.c(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
-    aaax.a(this.a.jdField_a_of_type_Aaax, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(aaau.a(this.a), 1, "分享失败", 0).a();
+      return;
+    }
+    QQToast.a(aaau.a(this.a), 2, "分享成功", 0).a();
   }
 }
 

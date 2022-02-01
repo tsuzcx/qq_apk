@@ -1,17 +1,20 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class afac
-  extends QQLruCache<String, ahdi>
+  implements TextView.OnEditorActionListener
 {
-  public afac(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public afac(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void a(boolean paramBoolean, String paramString, ahdi paramahdi1, ahdi paramahdi2)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super.entryRemoved(paramBoolean, paramString, paramahdi1, paramahdi2);
+    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
+    }
+    return false;
   }
 }
 

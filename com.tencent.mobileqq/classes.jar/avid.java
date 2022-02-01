@@ -1,20 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-class avid
-  extends BroadcastReceiver
+public class avid
+  extends ThreadLocal<Boolean>
 {
-  avid(avic paramavic) {}
+  public avid(JefsClass paramJefsClass) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected Boolean a()
   {
-    if (paramIntent == null) {}
-    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (avic.a(this.a) == null)) {
-      return;
-    }
-    avic.a(this.a).a();
+    return Boolean.valueOf(false);
   }
 }
 

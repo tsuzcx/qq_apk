@@ -1,19 +1,24 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nzi
-  implements DialogInterface.OnCancelListener
+public class nzi
+  implements View.OnClickListener
 {
-  nzi(nyz paramnyz, JsResult paramJsResult, Context paramContext) {}
+  public nzi(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, oji paramoji) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nyz.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString.contains(anvx.a(2131703658)))) {
+      olh.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString);
     }
   }
 }

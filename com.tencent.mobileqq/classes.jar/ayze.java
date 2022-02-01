@@ -1,17 +1,17 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayze
-  implements TypeEvaluator<PointF>
+  extends azbd
 {
-  public ayze(VasProfileTagView paramVasProfileTagView) {}
+  public ayze(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public void a(int paramInt)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    AccountOnlineStateActivity.a(this.a).b();
   }
 }
 

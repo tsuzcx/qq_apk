@@ -1,134 +1,61 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class new
-  implements ned
+public abstract class new<T extends nel>
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  nee jdField_a_of_type_Nee;
-  neg jdField_a_of_type_Neg;
+  protected int a;
+  protected T a;
+  protected ney a;
   
-  public new(nee paramnee)
+  public new(@NonNull View paramView)
   {
-    this.jdField_a_of_type_Nee = paramnee;
+    super(paramView);
   }
   
-  public String a(Context paramContext, naf paramnaf)
+  protected void a() {}
+  
+  public final void a(View paramView)
   {
-    paramContext = "";
-    Object localObject = paramnaf.a();
-    if (localObject == null)
+    if (paramView != null) {
+      paramView.setOnClickListener(this);
+    }
+  }
+  
+  public void a(ney paramney)
+  {
+    this.jdField_a_of_type_Ney = paramney;
+  }
+  
+  public void a(nfa paramnfa, T paramT, int paramInt) {}
+  
+  public final void b(nfa paramnfa, nel paramnel, int paramInt)
+  {
+    if (paramnel != null)
     {
-      QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip null gameItem");
-      localObject = paramContext;
-      if (TextUtils.isEmpty(paramContext))
-      {
-        localObject = BaseApplicationImpl.getContext().getResources().getString(2131690302);
-        QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip tips isEmpty");
-      }
-      paramContext = paramnaf.c();
-      if (TextUtils.isEmpty(paramContext)) {
-        break label98;
-      }
-      paramContext = paramContext + "\n";
+      this.jdField_a_of_type_Nel = paramnel;
+      a(paramnfa, this.jdField_a_of_type_Nel, paramInt);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label109;
-      }
-      return localObject;
-      paramContext = ((nak)localObject).m;
-      break;
-      label98:
-      QLog.e("GuessPictureStagePresenter", 1, "songTypeString tips isEmpty");
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      this.jdField_a_of_type_Nel = null;
+      a(paramnfa, null, paramInt);
     }
-    label109:
-    return paramContext + (String)localObject;
   }
   
-  public String a(Context paramContext, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramContext == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessPictureStagePresenter", 2, "getGameRuleAnswerTip null context");
-      }
-      return "";
+    if (this.jdField_a_of_type_Ney != null) {
+      this.jdField_a_of_type_Ney.a(paramView, this.jdField_a_of_type_Nel, this.jdField_a_of_type_Int);
     }
-    return paramContext.getResources().getString(2131690301);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public neg a()
-  {
-    return this.jdField_a_of_type_Neg;
-  }
-  
-  public void a(mzq parammzq)
-  {
-    this.jdField_a_of_type_Nee.a(parammzq);
-  }
-  
-  public void a(naf paramnaf)
-  {
-    a(mzl.a(paramnaf), false);
-    this.jdField_a_of_type_Neg.a().d(false);
-  }
-  
-  public void a(neg paramneg)
-  {
-    this.jdField_a_of_type_Neg = paramneg;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Nee.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Nee.a(paramBoolean1, paramBoolean2);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void b(naf paramnaf)
-  {
-    a(mzl.a(paramnaf), true);
-    a(paramnaf.a());
-    this.jdField_a_of_type_Neg.a().d(true);
-    String str = paramnaf.e() + 1 + "/" + paramnaf.f();
-    this.jdField_a_of_type_Neg.a().b(str);
-    this.jdField_a_of_type_Neg.a(this.jdField_a_of_type_Nee.a(), paramnaf.a().f(), paramnaf.a().d());
-    this.jdField_a_of_type_Neg.a().k(paramnaf);
-  }
-  
-  public void c(naf paramnaf)
-  {
-    a(mzl.a(paramnaf), true);
-    a(paramnaf.a());
-    this.jdField_a_of_type_Neg.a(this.jdField_a_of_type_Nee.a(), paramnaf.a().f(), paramnaf.a().d());
-    String str = paramnaf.e() + 1 + "/" + paramnaf.f();
-    this.jdField_a_of_type_Neg.a().b(str);
-    this.jdField_a_of_type_Neg.a().k(paramnaf);
-  }
-  
-  public void d(naf paramnaf) {}
-  
-  public void e(naf paramnaf) {}
-  
-  public void f(naf paramnaf) {}
 }
 
 

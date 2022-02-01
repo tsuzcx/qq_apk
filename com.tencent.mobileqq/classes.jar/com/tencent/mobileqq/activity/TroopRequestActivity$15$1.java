@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import aepn;
-import amsw;
+import afgy;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopRequestActivity$15$1
   implements Runnable
 {
-  public TroopRequestActivity$15$1(aepn paramaepn, String paramString) {}
+  public TroopRequestActivity$15$1(afgy paramafgy, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aepn.a.app != null)
+    if (this.jdField_a_of_type_Afgy.a.app != null)
     {
-      localObject = (amsw)this.jdField_a_of_type_Aepn.a.app.getManager(51);
+      localObject = (anvk)this.jdField_a_of_type_Afgy.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localObject != null)
       {
-        localObject = ((amsw)localObject).b(this.jdField_a_of_type_JavaLangString);
+        localObject = ((anvk)localObject).b(this.jdField_a_of_type_JavaLangString);
         if (localObject != null) {
-          this.jdField_a_of_type_Aepn.a.runOnUiThread(new TroopRequestActivity.15.1.1(this, (Card)localObject));
+          this.jdField_a_of_type_Afgy.a.runOnUiThread(new TroopRequestActivity.15.1.1(this, (Card)localObject));
         }
       }
     }
@@ -34,7 +35,7 @@ public class TroopRequestActivity$15$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

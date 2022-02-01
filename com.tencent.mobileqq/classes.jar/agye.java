@@ -1,150 +1,17 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.richmedia.RichmediaService;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agye
+class agye
+  extends ahaa
 {
-  private static agye jdField_a_of_type_Agye;
-  private final ArrayList<agyg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public static agye a()
+  agye(agvm paramagvm)
   {
-    if (jdField_a_of_type_Agye == null) {}
-    try
-    {
-      if (jdField_a_of_type_Agye == null) {
-        jdField_a_of_type_Agye = new agye();
-      }
-      return jdField_a_of_type_Agye;
-    }
-    finally {}
+    super(paramagvm, null);
   }
   
-  public static void a(Activity paramActivity)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (paramActivity != null) {}
-    try
-    {
-      QQCustomDialog localQQCustomDialog = bfur.a(paramActivity, 230).setMessage(amtj.a(2131699196)).setPositiveButton(paramActivity.getString(2131693580), new agyf(paramActivity));
-      if ((localQQCustomDialog != null) && (!paramActivity.isFinishing())) {
-        localQQCustomDialog.show();
-      }
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AIOGalleryMsgRevokeMgr", 0, "showDialog exception: " + paramActivity.getMessage());
-    }
-  }
-  
-  public static void a(Activity paramActivity, RelativeLayout paramRelativeLayout)
-  {
-    if ((paramActivity != null) && (paramRelativeLayout != null))
-    {
-      ImageView localImageView = new ImageView(paramActivity);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localImageView.setImageResource(2130845138);
-      localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      paramRelativeLayout.addView(localImageView, localLayoutParams);
-      a(paramActivity);
-      bcef.b(null, "dc00898", "", "", "0X8009EB8", "0X8009EB8", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForShortVideo)) || ((paramMessageRecord instanceof MessageForMarketFace)) || ((paramMessageRecord instanceof MessageForFile)) || ((paramMessageRecord instanceof MessageForTroopFile)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForStructing)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOGalleryMsgRevokeMgr", 0, "sendMsgRevokeRequest:" + paramMessageRecord);
-      }
-      Object localObject2 = a();
-      if (localObject2 != null) {
-        synchronized (((agye)localObject2).jdField_a_of_type_JavaUtilArrayList)
-        {
-          localObject2 = ((agye)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
-          if (((Iterator)localObject2).hasNext()) {
-            ((agyg)((Iterator)localObject2).next()).a(paramMessageRecord.uniseq);
-          }
-        }
-      }
-      ??? = RichmediaService.a();
-      if (??? != null)
-      {
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putLong("msg_revoke_uniseq", paramMessageRecord.uniseq);
-        boolean bool = ((RichmediaService)???).a(300, -1, (Bundle)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOGalleryMsgRevokeMgr", 0, "sendMsgRevokeRequest result:" + bool);
-        }
-      }
-    }
-  }
-  
-  public void a(agyg paramagyg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramagyg)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramagyg);
-      }
-      return;
-    }
-  }
-  
-  public void a(Bundle arg1)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("notifyMsgRevoke, mScene:");
-      if (??? == null) {
-        break label51;
-      }
-    }
-    label51:
-    for (Object localObject1 = ???.toString();; localObject1 = "")
-    {
-      QLog.i("AIOGalleryMsgRevokeMgr", 0, (String)localObject1);
-      if (??? != null) {
-        break;
-      }
-      return;
-    }
-    long l = ???.getLong("msg_revoke_uniseq", 0L);
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (((Iterator)localObject1).hasNext()) {
-        ((agyg)((Iterator)localObject1).next()).a(l);
-      }
-    }
-  }
-  
-  public void b(agyg paramagyg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramagyg);
-      return;
-    }
+    return new ahcp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

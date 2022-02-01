@@ -1,27 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aduk
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnCancelListener
 {
-  public aduk(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  public aduk(DialogActivity paramDialogActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (String str1 = "1";; str1 = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    this.a.finish();
   }
 }
 

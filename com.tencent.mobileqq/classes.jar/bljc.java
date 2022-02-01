@@ -1,37 +1,57 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 import java.util.List;
-import mqq.util.WeakReference;
 
-final class bljc
-  extends PagerAdapter
+class bljc
+  extends RecyclerView.AdapterDataObserver
 {
-  private List<bljb> a;
+  bljc(bljb parambljb) {}
   
-  public void a(List<bljb> paramList)
+  public void onChanged()
   {
-    this.a = ((List)new WeakReference(paramList).get());
-  }
-  
-  public int getCount()
-  {
-    return this.a.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    View localView = bljb.a((bljb)this.a.get(paramInt));
-    if ((bljb.a((bljb)this.a.get(paramInt)) instanceof bljx)) {
-      ((bljx)bljb.a((bljb)this.a.get(paramInt))).a();
+    this.a.notifyDataSetChanged();
+    if (bljb.a(this.a) != null) {
+      bljb.a(this.a).a(bljb.a(this.a));
     }
-    paramViewGroup.addView(localView);
-    return localView;
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    return paramView == paramObject;
+    this.a.notifyItemRangeChanged(bljb.a(this.a).size() + paramInt1, paramInt2);
+    if (bljb.a(this.a) != null) {
+      bljb.a(this.a).a(bljb.a(this.a));
+    }
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(bljb.a(this.a).size() + paramInt1, paramInt2, paramObject);
+    if (bljb.a(this.a) != null) {
+      bljb.a(this.a).a(bljb.a(this.a));
+    }
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(bljb.a(this.a).size() + paramInt1, paramInt2);
+    if (bljb.a(this.a) != null) {
+      bljb.a(this.a).a(bljb.a(this.a));
+    }
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.notifyItemMoved(bljb.a(this.a).size() + paramInt1, bljb.a(this.a).size() + paramInt2);
+    if (bljb.a(this.a) != null) {
+      bljb.a(this.a).a(bljb.a(this.a));
+    }
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(bljb.a(this.a).size() + paramInt1, paramInt2);
+    if (bljb.a(this.a) != null) {
+      bljb.a(this.a).a(bljb.a(this.a));
+    }
   }
 }
 

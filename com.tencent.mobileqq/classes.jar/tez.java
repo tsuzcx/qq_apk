@@ -1,21 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class tez
-  extends pkt
+  implements tgo
 {
-  public tez(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public tez(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void a(tfb paramtfb)
+  public int a()
   {
-    this.a.setDataSource(paramtfb);
-    this.a.a(ColorBandVideoEntranceButton.a(this.a));
-    QLog.d("ColorBandVideoEntranceButton", 1, "onHandle0x6cfResp reddot,data=" + paramtfb);
+    return 0;
   }
+  
+  public BaseData a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    tkj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tez
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package dov.com.qq.im.ptv;
 
 import android.app.Activity;
 import android.content.Intent;
-import bnbd;
+import boqv;
 import com.tencent.mobileqq.activity.photo.PeakService;
 import com.tencent.qphone.base.util.QLog;
 

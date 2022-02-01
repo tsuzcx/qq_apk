@@ -1,31 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class adwt
-  implements View.OnClickListener
+public class adwt
+  extends bhlv
 {
-  adwt(adws paramadws) {}
+  public adwt(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof adwr))
-    {
-      localObject = (adwr)localObject;
-      if ((((adwr)localObject).a >= 0) && (((adwr)localObject).a < this.a.a.a.size()))
-      {
-        localObject = (ProfileLabelInfo)this.a.a.a.remove(((adwr)localObject).a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        adws.a(this.a, (ProfileLabelInfo)localObject);
-        bcef.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
   }
 }
 

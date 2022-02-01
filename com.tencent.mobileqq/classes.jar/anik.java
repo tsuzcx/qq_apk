@@ -1,49 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.FriendInfo;
-import java.util.ArrayList;
 
-public class anik
+class anik
+  implements bkjr
 {
-  alnr jdField_a_of_type_Alnr;
-  ArrayList<ApolloBaseInfo> jdField_a_of_type_JavaUtilArrayList;
+  anik(anij paramanij, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback) {}
   
-  public anik(QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
-    this.jdField_a_of_type_Alnr = ((alnr)paramQQAppInterface.getManager(153));
+    QLog.e(anij.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onError  identifier=" + this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((anhv)this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((anhv)this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + this.jdField_a_of_type_ArrayOfByte.length + ", s info=" + paramString);
+    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onError(paramInt, paramString);
   }
   
-  public void a()
+  public void a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "saveInBatch size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    this.jdField_a_of_type_Alnr.b(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public void a(Friends paramFriends, FriendInfo paramFriendInfo)
-  {
-    ApolloBaseInfo localApolloBaseInfo = this.jdField_a_of_type_Alnr.b(paramFriends.uin);
-    if (localApolloBaseInfo != null) {
-      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime) || (localApolloBaseInfo.cmshow3dFlag != paramFriendInfo.cCentiShow3DFlag))
-      {
-        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
-        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
-        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
-        localApolloBaseInfo.apolloSignStr = "";
-        localApolloBaseInfo.cmshow3dFlag = paramFriendInfo.cCentiShow3DFlag;
-        localApolloBaseInfo.apolloUpdateTime = NetConnInfoCenter.getServerTime();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localApolloBaseInfo);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "apolloBaseInfo return null uin: " + paramFriends.uin);
+    QLog.e(anij.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onSuccess  startParam_.identifier=" + this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((anhv)this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((anhv)this.jdField_a_of_type_Anij.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + paramArrayOfByte.length + ", bytes.length=" + this.jdField_a_of_type_ArrayOfByte.length);
+    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onSuccess(paramArrayOfByte);
   }
 }
 

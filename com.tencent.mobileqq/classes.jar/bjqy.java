@@ -1,70 +1,52 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.widget.HongBaoListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
 
-public class bjqy
-  implements Handler.Callback
+public final class bjqy
+  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
 {
-  public bjqy(HongBaoListView paramHongBaoListView) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
+    boolean bool2 = true;
+    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.f = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0)
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            this.a.setIsShowingPreguide(true);
-            this.a.jdField_a_of_type_Ayil.a(this.a.d / 5, 300L);
-            this.a.springBackTo(-this.a.d);
-            if (this.a.jdField_a_of_type_Bjqz != null) {
-              this.a.jdField_a_of_type_Bjqz.b(false);
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
-            this.a.invalidate();
-            return false;
-            this.a.a(300L);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-          } while (this.a.jdField_a_of_type_Bjqz == null);
-          this.a.jdField_a_of_type_Bjqz.a(false);
-          return false;
-          this.a.setIsShowingPreguide(true);
-          i = this.a.d / 2;
-          this.a.setSpringbackOffset(-this.a.d);
-          if (paramMessage.arg1 != 0) {
-            i = paramMessage.arg1;
-          }
-          this.a.springBackTo(-i);
-          this.a.jdField_a_of_type_Ayil.a(this.a.d / 5, 300L);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
-        } while (this.a.jdField_a_of_type_Bjqz == null);
-        this.a.jdField_a_of_type_Bjqz.b(false);
-        return false;
-        this.a.a(300L);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-      } while (this.a.jdField_a_of_type_Bjqz == null);
-      this.a.jdField_a_of_type_Bjqz.a(false);
-      return false;
-      this.a.setIsShowingPreguide(false);
-      this.a.setSpringbackOffset(0);
-      return false;
-      if (!this.a.isStackFromBottom()) {
-        this.a.setStackFromBottom(true);
+      bool1 = true;
+      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
+      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
+      localWadlJsBridgeDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label203;
       }
-      this.a.setStackFromBottom(false);
-    } while (this.a.k);
-    int i = (int)this.a.getResources().getDimension(2131298203);
-    this.a.springBackTo(-i);
-    return false;
+    }
+    label203:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
+      return localWadlJsBridgeDownloadInfo;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public WadlJsBridgeDownloadInfo[] a(int paramInt)
+  {
+    return new WadlJsBridgeDownloadInfo[paramInt];
   }
 }
 

@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adot
-  extends axkw
+class adot
+  implements View.OnClickListener
 {
-  public adot(Leba paramLeba) {}
+  adot(ador paramador, String paramString) {}
   
-  protected void onGetQZoneFeedCountFin(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
-    {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
-    }
-    if (paramBoolean1)
-    {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    this.jdField_a_of_type_Ador.a.app.vibratorAndAudioForShake(this.jdField_a_of_type_JavaLangString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

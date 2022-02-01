@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import java.util.List;
-import zbm;
-import zbn;
-import zbo;
+import zqr;
+import zqs;
+import zqt;
 
 public class FollowedRecommendBannerModel$1$1
   implements Runnable
 {
-  public FollowedRecommendBannerModel$1$1(zbn paramzbn, List paramList, boolean paramBoolean) {}
+  public FollowedRecommendBannerModel$1$1(zqs paramzqs, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (zbm.a(this.jdField_a_of_type_Zbn.a) != null) {
-      zbm.a(this.jdField_a_of_type_Zbn.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    if (zqr.a(this.jdField_a_of_type_Zqs.a) != null) {
+      zqr.a(this.jdField_a_of_type_Zqs.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
     }
   }
 }

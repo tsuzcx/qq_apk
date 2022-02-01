@@ -1,24 +1,16 @@
-import UserGrowth.stSimpleMetaPerson;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.common.util.NetworkUtil;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vci
-  implements bjoe
+  implements View.OnClickListener
 {
-  vci(vch paramvch, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  vci(vcg paramvcg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetworkAvailable(vch.a(this.jdField_a_of_type_Vch)))
-    {
-      bhzt.a().a(2131719692);
-      return;
-    }
-    vch.a(this.jdField_a_of_type_Vch).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    vch.a(this.jdField_a_of_type_Vch).setText("关注");
-    vch.a(this.jdField_a_of_type_Vch).setVisibility(0);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

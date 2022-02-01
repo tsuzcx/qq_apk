@@ -1,16 +1,22 @@
-import android.graphics.Rect;
-import android.hardware.Camera.AutoFocusCallback;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
 public class bbus
+  extends Editable.Factory
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback;
-  public bbsp a;
-  public bbss a;
-  public boolean a;
-  Rect b;
+  public bbus(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public bbus(bbuk parambbuk) {}
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QQTextBuilder(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
-import bgmm;
+import ajza;
+import bhww;
 
 public class Conversation$UICallBack$2
   implements Runnable
 {
-  public Conversation$UICallBack$2(ajdm paramajdm) {}
+  public Conversation$UICallBack$2(ajza paramajza) {}
   
   public void run() {}
 }

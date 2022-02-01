@@ -1,11 +1,40 @@
-import com.tencent.oskplayer.util.Singleton;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.util.Property;
+import android.widget.ImageView;
 
-public class zyl
-  extends Singleton<zyk>
+final class zyl
+  extends Property<ImageView, Matrix>
 {
-  protected zyk a()
+  zyl(Class paramClass, String paramString)
   {
-    return new zyk();
+    super(paramClass, paramString);
+  }
+  
+  public Matrix a(ImageView paramImageView)
+  {
+    return null;
+  }
+  
+  public void a(ImageView paramImageView, Matrix paramMatrix)
+  {
+    Drawable localDrawable = paramImageView.getDrawable();
+    if (localDrawable == null) {
+      return;
+    }
+    if (paramMatrix == null) {
+      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
+    }
+    for (;;)
+    {
+      paramImageView.invalidate();
+      return;
+      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramImageView.getImageMatrix() == null) {
+        paramImageView.setImageMatrix(new Matrix());
+      }
+      paramImageView.setImageMatrix(paramMatrix);
+    }
   }
 }
 

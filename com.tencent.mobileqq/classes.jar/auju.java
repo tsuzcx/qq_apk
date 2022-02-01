@@ -1,50 +1,48 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-class auju
-  implements EIPCResultCallback
+public final class auju
+  extends WebViewClient
 {
-  auju(aujs paramaujs, axkv paramaxkv) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private auju(Context paramContext, IHostInterface.IWebClient paramIWebClient)
   {
-    int i = 11;
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
-    {
-      aujs.a(this.jdField_a_of_type_Aujs, 11);
-      QLog.e("FaceContext", 1, "refreshIpStateOnSubProcess error, eipcResult is null or data is null");
-      this.jdField_a_of_type_Axkv.onFailedResponse(null, -1, "eipcResult is null");
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
+      super.onPageFinished(paramWebView, paramString);
     }
-    Object localObject;
-    if (paramEIPCResult.code == 0)
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
     {
-      boolean bool = paramEIPCResult.data.getBoolean("usable", false);
-      localObject = this.jdField_a_of_type_Aujs;
-      if (bool) {}
-      for (;;)
-      {
-        aujs.a((aujs)localObject, i);
-        paramEIPCResult = paramEIPCResult.data.getString("msg");
-        this.jdField_a_of_type_Axkv.ipJudgeSuccess(bool, paramEIPCResult);
-        return;
-        i = 10;
-      }
+      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
+      paramWebView.putExtra("param_force_internal_browser", true);
+      paramWebView.putExtra("url", paramString);
+      aflm.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
     }
-    if (paramEIPCResult.code == -102)
-    {
-      aujs.a(this.jdField_a_of_type_Aujs, 11);
-      i = paramEIPCResult.data.getInt("code");
-      localObject = paramEIPCResult.data.getString("cmd");
-      paramEIPCResult = paramEIPCResult.data.getString("msg");
-      this.jdField_a_of_type_Axkv.onFailedResponse((String)localObject, i, paramEIPCResult);
-      return;
-    }
-    aujs.a(this.jdField_a_of_type_Aujs, 11);
-    QLog.e("FaceContext", 1, new Object[] { "refreshIpStateOnSubProcess error, unknown code : ", Integer.valueOf(paramEIPCResult.code) });
-    this.jdField_a_of_type_Axkv.onFailedResponse(null, -1, "unknown code");
+    return true;
   }
 }
 

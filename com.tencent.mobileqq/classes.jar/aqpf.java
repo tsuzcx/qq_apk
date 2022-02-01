@@ -1,8 +1,50 @@
-import android.graphics.Canvas;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface aqpf
+public class aqpf
+  implements aqov
 {
-  public abstract void a(Canvas paramCanvas, aqoa paramaqoa, aqoj paramaqoj, float paramFloat1, float paramFloat2);
+  private Bundle a;
+  
+  public aqpf() {}
+  
+  public aqpf(Bundle paramBundle)
+  {
+    this.a = paramBundle;
+  }
+  
+  public void launch(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
+    localIntent.putExtra("url", paramColorNote.getSubType());
+    if (paramColorNote.getReserve() != null) {}
+    try
+    {
+      localIntent.putExtra("key_scroll_y", new JSONObject(new String(paramColorNote.getReserve())).getInt("key_scroll_y"));
+      localIntent.putExtra("subType", paramColorNote.mSubType);
+      localIntent.addFlags(268435456);
+      if (this.a != null) {
+        localIntent.putExtra("isFromFavourite", this.a.getBoolean("isFromFavourite", false));
+      }
+      paramContext.startActivity(localIntent);
+      tkj.c(paramColorNote);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("WebLauncher", 1, localJSONException, new Object[0]);
+      }
+    }
+  }
 }
 
 

@@ -1,20 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class aihz
-  implements View.OnClickListener
+public class aihz
+  implements aiiq
 {
-  aihz(aihx paramaihx) {}
+  public aihw a;
   
-  public void onClick(View paramView)
+  public aihz(aihw paramaihw)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    TroopUtils.openRecommendTroop(aihx.a(this.a), localRecommendTroopItem, this.a.b(), this.a.c());
-    this.a.a(localRecommendTroopItem);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramaihw;
+  }
+  
+  public void a(List<aihq> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (this.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
+      }
+      aihw.a(this.a);
+      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramInt, paramString3, paramString1, paramList, paramString2));
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
   }
 }
 

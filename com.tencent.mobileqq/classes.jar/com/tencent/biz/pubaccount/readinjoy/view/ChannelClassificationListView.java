@@ -7,17 +7,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
-import skr;
-import sks;
-import sku;
+import syb;
+import syc;
+import sye;
 
-public class ChannelClassificationListView<T extends sku>
+public class ChannelClassificationListView<T extends sye>
   extends DisableSlideHorizontalListView
 {
   private int jdField_a_of_type_Int;
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private ArrayList<T> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ChannelClassificationListView<T>.sks jdField_a_of_type_Sks;
+  private ChannelClassificationListView<T>.syc jdField_a_of_type_Syc;
   
   public ChannelClassificationListView(Context paramContext)
   {
@@ -33,17 +33,17 @@ public class ChannelClassificationListView<T extends sku>
   
   private void a()
   {
-    this.jdField_a_of_type_Sks = new sks(this, null);
-    setAdapter(this.jdField_a_of_type_Sks);
+    this.jdField_a_of_type_Syc = new syc(this, null);
+    setAdapter(this.jdField_a_of_type_Syc);
     setDividerWidth(DisplayUtil.dip2px(getContext(), 10.0F));
-    setOnScrollStateChangedListener(new skr(this));
+    setOnScrollStateChangedListener(new syb(this));
   }
   
   public void setData(int paramInt, ArrayList<T> paramArrayList)
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Sks.notifyDataSetChanged();
+    this.jdField_a_of_type_Syc.notifyDataSetChanged();
   }
   
   public void setOnItemClickListener(@Nullable AdapterView.OnItemClickListener paramOnItemClickListener)

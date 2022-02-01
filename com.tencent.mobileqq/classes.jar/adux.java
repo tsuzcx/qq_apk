@@ -1,239 +1,25 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class adux
-  extends CardObserver
+  implements biyn
 {
-  public adux(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adux(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      if (paramBoolean1) {
-        PermisionPrivacyActivity.a(this.a, this.a.d.a(), paramBoolean2);
-      }
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    QLog.e("Q.security", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin empty!");
-  }
-  
-  public void onGetAllowStrangerInviteToGroupSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((this.a.isFinishing()) || (this.a.app == null)) {
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      znl.a(1, 2131718766);
       return;
     }
-    if (!paramBoolean1)
-    {
-      this.a.a(2131718207, 1);
-      Card localCard = ((amsw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-      PermisionPrivacyActivity.a(this.a, this.a.e.a(), localCard.strangerInviteMeGroupOpen);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.e.a(), paramBoolean2);
-  }
-  
-  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (!this.a.isFinishing()))
-    {
-      if (paramBoolean2) {
-        break label106;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(amtj.a(2131698540));
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        Card localCard = ((amsw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-        QLog.d("interactive", 2, "PermisionPrivacyActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + localCard.allowCalInteractive);
-      }
-      return;
-      label106:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(amtj.a(2131698541));
-    }
-  }
-  
-  public void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
-  }
-  
-  public void onGetPrettyOwnerFlag(boolean paramBoolean, Object paramObject)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    if (paramObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramBoolean = ((Boolean)paramObject).booleanValue();
-        PermisionPrivacyActivity.a(this.a, paramBoolean);
-        this.a.j.setChecked(paramBoolean);
-        QLog.e("vip_pretty.Q.security", 1, "onGetPrettyOwnerFlag " + paramBoolean);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("vip_pretty.Q.security", 1, "onGetPrettyOwnerFlag ex:" + paramObject);
-        return;
-      }
-      paramBoolean = false;
-    }
-  }
-  
-  public void onGetTroopHonorSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (!this.a.isFinishing()))
-    {
-      if (paramBoolean2) {
-        this.a.b.setRightText(amtj.a(2131698540));
-      }
-    }
-    else {
-      return;
-    }
-    this.a.b.setRightText(amtj.a(2131698541));
-  }
-  
-  public void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onSetAllowSeeLoginDays(boolean paramBoolean)
-  {
-    Card localCard = ((amsw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-    PermisionPrivacyActivity.a(this.a, this.a.d.a(), localCard.allowPeopleSee);
-  }
-  
-  public void onSetCalReactiveDays(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (!this.a.isFinishing()))
-    {
-      Card localCard = ((amsw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-      if (localCard.allowCalInteractive) {
-        break label108;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(amtj.a(2131698540));
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("PermisionPrivacyActivity onSetCalReactiveDays isAllow= ");
-        if (localCard.allowCalInteractive) {
-          break label126;
-        }
-      }
-    }
-    label108:
-    label126:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("interactive", 2, paramBoolean);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(amtj.a(2131698541));
-      break;
-    }
-  }
-  
-  public void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131718207, 1);
-    }
-    if (paramBoolean2)
-    {
-      PermisionPrivacyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
-  }
-  
-  public void onSetMedal(boolean paramBoolean)
-  {
-    int i = 1;
-    boolean bool = false;
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131718207), 3000).b(this.a.getTitleBarHeight());
-      localObject1 = this.a;
-      localObject2 = this.a.i.a();
-      paramBoolean = bool;
-      if (!this.a.i.a().isChecked()) {
-        paramBoolean = true;
-      }
-      PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, (CompoundButton)localObject2, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.security", 2, "PermisionPrivacyActivity onSetMedal failed");
-      }
-      return;
-    }
-    Object localObject1 = ((amsw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-    if (!this.a.isFinishing())
-    {
-      localObject2 = this.a;
-      Switch localSwitch = this.a.i.a();
-      if (((Card)localObject1).medalSwitchDisable) {
-        break label260;
-      }
-      paramBoolean = true;
-      PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject2, localSwitch, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.security", 2, "PermisionPrivacyActivity onSetMedal medalSwitchDisable= " + ((Card)localObject1).medalSwitchDisable);
-      }
-    }
-    Object localObject2 = this.a.app;
-    if (((Card)localObject1).medalSwitchDisable) {}
-    for (;;)
-    {
-      bcef.b((QQAppInterface)localObject2, "dc00898", "", "", "0X80073A0", "0X80073A0", i, 0, "", "", "", "");
-      return;
-      label260:
-      paramBoolean = false;
-      break;
-      i = 0;
-    }
-  }
-  
-  public void onSetPrettyOwnerFlag(boolean paramBoolean, Object paramObject)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    if (paramObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramBoolean = ((Boolean)paramObject).booleanValue();
-        PermisionPrivacyActivity.a(this.a, paramBoolean);
-        QLog.e("vip_pretty.Q.security", 1, "onSetPrettyOwnerFlag " + paramBoolean);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("vip_pretty.Q.security", 1, "onSetPrettyOwnerFlag ex:" + paramObject);
-        return;
-      }
-      paramBoolean = false;
-    }
+    znl.a(2, 2131718784);
   }
 }
 

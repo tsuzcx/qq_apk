@@ -1,69 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-class astz
-  implements asri
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class astz
+  implements View.OnClickListener
 {
-  astz(astk paramastk) {}
+  astz(astx paramastx) {}
   
-  public void a()
+  public final void onClick(View paramView)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Asqs.a();
-    becp localbecp = this.a.a(localFileManagerEntity);
-    if ((TextUtils.isEmpty(astk.a(this.a))) && (localbecp.a != null)) {
-      astk.a(this.a, localbecp.a.toString());
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "v");
+    Object localObject = paramView.getTag();
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
     }
-    bebp localbebp = new bebp(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if ((localbecp.b == 10) || (localbecp.b == 9)) {
-      if (localbecp.a != null)
-      {
-        localbebp.b(localbecp.a);
-        localFileManagerEntity.status = 2;
-      }
+    int i = ((Integer)localObject).intValue();
+    localObject = astx.a(this.a);
+    if (localObject == null) {
+      Intrinsics.throwNpe();
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : resumeDownload error, infoId is null");
-      return;
-      if (localbecp.b == 7)
-      {
-        if (localFileManagerEntity.isZipInnerFile) {
-          localbebp.a(localFileManagerEntity);
-        }
-        for (;;)
-        {
-          localFileManagerEntity.status = 2;
-          return;
-          localbebp.a(localFileManagerEntity.strTroopFilePath, localbecp.g, localbecp.c, localbecp.h);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : can not handle file info status,download error");
-  }
-  
-  public void b()
-  {
-    Object localObject = this.a.jdField_a_of_type_Asqs.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = this.a.a((FileManagerEntity)localObject);
-    if ((TextUtils.isEmpty(astk.a(this.a))) && (((becp)localObject).a != null)) {
-      astk.a(this.a, ((becp)localObject).a.toString());
+    localObject = (asqs)((List)localObject).get(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("CompletePersonalDataDialog", 2, "onClick position = " + i);
     }
-    if (!TextUtils.isEmpty(astk.a(this.a)))
-    {
-      localTroopFileTransferManager.d(UUID.fromString(astk.a(this.a)));
-      if (ataw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        this.a.a("0x8009D61", null);
-      }
-    }
-    astk.a(this.a, (becp)localObject);
+    astx.a(this.a, (asqs)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

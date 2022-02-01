@@ -4,12 +4,12 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.qq.jce.wup.ObjectCreateException;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.HexUtil;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.mobileqq.msf.core.a.a.a;
 import com.tencent.mobileqq.msf.core.net.a.f;
 import com.tencent.mobileqq.msf.core.net.j;
@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -69,14 +68,15 @@ public class aj
   public static final String Y = "GrayUinPro.Check";
   public static final String Z = "res";
   public static final String a = "MSF.C.NetConnTag";
-  private static int aB = 0;
-  private static final String aF = "gray_uin_check_dir";
-  private static final String aG = "gray_uin_check_file_num";
-  private static final String aH = "gray_uin_check_file";
-  private static final String aI;
+  private static String aB;
+  private static int aC = 0;
+  private static final String aG = "gray_uin_check_dir";
+  private static final String aH = "gray_uin_check_file_num";
+  private static final String aI = "gray_uin_check_file";
   private static final String aJ;
   private static final String aK;
-  private static AtomicBoolean aL = new AtomicBoolean();
+  private static final String aL;
+  private static AtomicBoolean aM = new AtomicBoolean();
   public static final int ac = -10008;
   public static final int ad = -302;
   public static final int ae = 302;
@@ -96,52 +96,52 @@ public class aj
   public static int x;
   public static boolean y;
   public static long z;
-  public aj.a C = new aj.a(this);
+  public aj.a C;
   MsfCore D;
-  public f I = null;
-  aj.c K = new aj.c(this);
+  public f I;
+  aj.c K;
   long L;
-  AtomicBoolean Q = new AtomicBoolean();
-  int R = 0;
-  long S = 0L;
-  long T = 0L;
-  HashSet X = new HashSet();
-  private long aA = 0L;
-  private byte[] aC = null;
-  private long aD = 0L;
-  private Random aE = new Random(System.currentTimeMillis());
-  public int aa = -1;
-  public AtomicBoolean ab = new AtomicBoolean();
-  ArrayList ag = new ArrayList();
-  boolean ah = false;
-  private HashSet aj = new HashSet();
+  AtomicBoolean Q;
+  int R;
+  long S;
+  long T;
+  HashSet X;
+  private long aA;
+  private byte[] aD;
+  private long aE;
+  private Random aF;
+  public int aa;
+  public AtomicBoolean ab;
+  ArrayList ag;
+  boolean ah;
+  private HashSet aj;
   private ToServiceMsg ak;
   private Handler al;
-  private SimpleDateFormat an = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-  private int ap = 0;
-  private String aq = "0";
-  private HashSet au = new HashSet();
-  private volatile boolean av = false;
-  private Object aw = new Object();
-  private long ax = 0L;
-  private long ay = 0L;
-  private long az = SystemClock.uptimeMillis();
+  private SimpleDateFormat an;
+  private int ap;
+  private String aq;
+  private HashSet au;
+  private volatile boolean av;
+  private Object aw;
+  private long ax;
+  private long ay;
+  private long az;
   public n b;
-  public ConcurrentHashMap d = new ConcurrentHashMap();
-  public ConcurrentHashMap e = new ConcurrentHashMap();
-  public ConcurrentHashMap f = new ConcurrentHashMap();
-  public LinkedBlockingDeque g = new LinkedBlockingDeque(1000);
-  public LinkedBlockingDeque h = new LinkedBlockingDeque();
-  aj.b i = new aj.b(this);
-  public int j = 10;
-  public int k = 3072;
-  public int l = 0;
-  public int m = 500;
-  public int n = 0;
-  public int o = 300;
-  public long p = 0L;
-  public boolean q = false;
-  public volatile boolean r = false;
+  public ConcurrentHashMap d;
+  public ConcurrentHashMap e;
+  public ConcurrentHashMap f;
+  public LinkedBlockingDeque g;
+  public LinkedBlockingDeque h;
+  aj.b i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  public long p;
+  public boolean q;
+  public volatile boolean r;
   
   static
   {
@@ -168,74 +168,413 @@ public class aj
     N = null;
     O = 0;
     P = false;
-    aB = -1;
+    aC = -1;
     U = 0L;
     V = -1;
     W = new AtomicBoolean();
-    aI = "/storage/emulated/0/tencent" + File.separator + "MobileQQ" + File.separator + "gray_uin_check_dir";
-    aJ = "/storage/emulated/0/tencent" + File.separator + "MobileQQ" + File.separator + "gray_uin_check_dir" + File.separator + "gray_uin_check_file_num";
-    aK = "/storage/emulated/0/tencent" + File.separator + "MobileQQ" + File.separator + "gray_uin_check_dir" + File.separator + "gray_uin_check_file";
+    aJ = "/storage/emulated/0/tencent" + File.separator + "MobileQQ" + File.separator + "gray_uin_check_dir";
+    aK = "/storage/emulated/0/tencent" + File.separator + "MobileQQ" + File.separator + "gray_uin_check_dir" + File.separator + "gray_uin_check_file_num";
+    aL = "/storage/emulated/0/tencent" + File.separator + "MobileQQ" + File.separator + "gray_uin_check_dir" + File.separator + "gray_uin_check_file";
     af = new CopyOnWriteArraySet();
   }
   
+  /* Error */
   public aj(MsfCore paramMsfCore)
   {
-    this.D = paramMsfCore;
-    HandlerThread localHandlerThread = new HandlerThread("mergehandle", 5);
-    localHandlerThread.start();
-    this.al = new Handler(localHandlerThread.getLooper());
-    this.ap = paramMsfCore.getMsfAppid();
-    this.b = new n(paramMsfCore, this.al);
-    this.K.setName("MsfCoreMsgSender");
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 262	java/lang/Object:<init>	()V
+    //   4: aload_0
+    //   5: new 150	java/util/concurrent/ConcurrentHashMap
+    //   8: dup
+    //   9: invokespecial 151	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   12: putfield 264	com/tencent/mobileqq/msf/core/aj:d	Ljava/util/concurrent/ConcurrentHashMap;
+    //   15: aload_0
+    //   16: new 150	java/util/concurrent/ConcurrentHashMap
+    //   19: dup
+    //   20: invokespecial 151	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   23: putfield 266	com/tencent/mobileqq/msf/core/aj:e	Ljava/util/concurrent/ConcurrentHashMap;
+    //   26: aload_0
+    //   27: new 150	java/util/concurrent/ConcurrentHashMap
+    //   30: dup
+    //   31: invokespecial 151	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   34: putfield 268	com/tencent/mobileqq/msf/core/aj:f	Ljava/util/concurrent/ConcurrentHashMap;
+    //   37: aload_0
+    //   38: new 270	java/util/concurrent/LinkedBlockingDeque
+    //   41: dup
+    //   42: sipush 1000
+    //   45: invokespecial 271	java/util/concurrent/LinkedBlockingDeque:<init>	(I)V
+    //   48: putfield 273	com/tencent/mobileqq/msf/core/aj:g	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   51: aload_0
+    //   52: new 270	java/util/concurrent/LinkedBlockingDeque
+    //   55: dup
+    //   56: invokespecial 274	java/util/concurrent/LinkedBlockingDeque:<init>	()V
+    //   59: putfield 276	com/tencent/mobileqq/msf/core/aj:h	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   62: aload_0
+    //   63: new 278	java/util/HashSet
+    //   66: dup
+    //   67: invokespecial 279	java/util/HashSet:<init>	()V
+    //   70: putfield 281	com/tencent/mobileqq/msf/core/aj:aj	Ljava/util/HashSet;
+    //   73: aload_0
+    //   74: new 283	com/tencent/mobileqq/msf/core/aj$b
+    //   77: dup
+    //   78: aload_0
+    //   79: invokespecial 286	com/tencent/mobileqq/msf/core/aj$b:<init>	(Lcom/tencent/mobileqq/msf/core/aj;)V
+    //   82: putfield 288	com/tencent/mobileqq/msf/core/aj:i	Lcom/tencent/mobileqq/msf/core/aj$b;
+    //   85: aload_0
+    //   86: bipush 10
+    //   88: putfield 290	com/tencent/mobileqq/msf/core/aj:j	I
+    //   91: aload_0
+    //   92: sipush 3072
+    //   95: putfield 292	com/tencent/mobileqq/msf/core/aj:k	I
+    //   98: aload_0
+    //   99: iconst_0
+    //   100: putfield 294	com/tencent/mobileqq/msf/core/aj:l	I
+    //   103: aload_0
+    //   104: sipush 500
+    //   107: putfield 296	com/tencent/mobileqq/msf/core/aj:m	I
+    //   110: aload_0
+    //   111: iconst_0
+    //   112: putfield 298	com/tencent/mobileqq/msf/core/aj:n	I
+    //   115: aload_0
+    //   116: sipush 300
+    //   119: putfield 300	com/tencent/mobileqq/msf/core/aj:o	I
+    //   122: aload_0
+    //   123: lconst_0
+    //   124: putfield 302	com/tencent/mobileqq/msf/core/aj:p	J
+    //   127: aload_0
+    //   128: iconst_0
+    //   129: putfield 304	com/tencent/mobileqq/msf/core/aj:q	Z
+    //   132: aload_0
+    //   133: iconst_0
+    //   134: putfield 306	com/tencent/mobileqq/msf/core/aj:r	Z
+    //   137: aload_0
+    //   138: new 308	java/text/SimpleDateFormat
+    //   141: dup
+    //   142: ldc_w 310
+    //   145: invokestatic 316	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   148: invokespecial 319	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
+    //   151: putfield 321	com/tencent/mobileqq/msf/core/aj:an	Ljava/text/SimpleDateFormat;
+    //   154: aload_0
+    //   155: new 323	com/tencent/mobileqq/msf/core/aj$a
+    //   158: dup
+    //   159: aload_0
+    //   160: invokespecial 324	com/tencent/mobileqq/msf/core/aj$a:<init>	(Lcom/tencent/mobileqq/msf/core/aj;)V
+    //   163: putfield 326	com/tencent/mobileqq/msf/core/aj:C	Lcom/tencent/mobileqq/msf/core/aj$a;
+    //   166: aload_0
+    //   167: iconst_0
+    //   168: putfield 328	com/tencent/mobileqq/msf/core/aj:ap	I
+    //   171: aload_0
+    //   172: ldc 185
+    //   174: putfield 330	com/tencent/mobileqq/msf/core/aj:aq	Ljava/lang/String;
+    //   177: aload_0
+    //   178: aconst_null
+    //   179: putfield 332	com/tencent/mobileqq/msf/core/aj:I	Lcom/tencent/mobileqq/msf/core/net/a/f;
+    //   182: aload_0
+    //   183: new 334	com/tencent/mobileqq/msf/core/aj$c
+    //   186: dup
+    //   187: aload_0
+    //   188: invokespecial 335	com/tencent/mobileqq/msf/core/aj$c:<init>	(Lcom/tencent/mobileqq/msf/core/aj;)V
+    //   191: putfield 337	com/tencent/mobileqq/msf/core/aj:K	Lcom/tencent/mobileqq/msf/core/aj$c;
+    //   194: aload_0
+    //   195: new 278	java/util/HashSet
+    //   198: dup
+    //   199: invokespecial 279	java/util/HashSet:<init>	()V
+    //   202: putfield 339	com/tencent/mobileqq/msf/core/aj:au	Ljava/util/HashSet;
+    //   205: aload_0
+    //   206: iconst_0
+    //   207: putfield 341	com/tencent/mobileqq/msf/core/aj:av	Z
+    //   210: aload_0
+    //   211: new 4	java/lang/Object
+    //   214: dup
+    //   215: invokespecial 262	java/lang/Object:<init>	()V
+    //   218: putfield 343	com/tencent/mobileqq/msf/core/aj:aw	Ljava/lang/Object;
+    //   221: aload_0
+    //   222: lconst_0
+    //   223: putfield 345	com/tencent/mobileqq/msf/core/aj:ax	J
+    //   226: aload_0
+    //   227: lconst_0
+    //   228: putfield 347	com/tencent/mobileqq/msf/core/aj:ay	J
+    //   231: aload_0
+    //   232: invokestatic 353	android/os/SystemClock:uptimeMillis	()J
+    //   235: putfield 355	com/tencent/mobileqq/msf/core/aj:az	J
+    //   238: aload_0
+    //   239: lconst_0
+    //   240: putfield 357	com/tencent/mobileqq/msf/core/aj:aA	J
+    //   243: aload_0
+    //   244: aconst_null
+    //   245: putfield 359	com/tencent/mobileqq/msf/core/aj:aD	[B
+    //   248: aload_0
+    //   249: new 221	java/util/concurrent/atomic/AtomicBoolean
+    //   252: dup
+    //   253: invokespecial 222	java/util/concurrent/atomic/AtomicBoolean:<init>	()V
+    //   256: putfield 361	com/tencent/mobileqq/msf/core/aj:Q	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   259: aload_0
+    //   260: iconst_0
+    //   261: putfield 363	com/tencent/mobileqq/msf/core/aj:R	I
+    //   264: aload_0
+    //   265: lconst_0
+    //   266: putfield 365	com/tencent/mobileqq/msf/core/aj:S	J
+    //   269: aload_0
+    //   270: lconst_0
+    //   271: putfield 367	com/tencent/mobileqq/msf/core/aj:T	J
+    //   274: aload_0
+    //   275: new 278	java/util/HashSet
+    //   278: dup
+    //   279: invokespecial 279	java/util/HashSet:<init>	()V
+    //   282: putfield 369	com/tencent/mobileqq/msf/core/aj:X	Ljava/util/HashSet;
+    //   285: aload_0
+    //   286: lconst_0
+    //   287: putfield 371	com/tencent/mobileqq/msf/core/aj:aE	J
+    //   290: aload_0
+    //   291: new 373	java/util/Random
+    //   294: dup
+    //   295: invokestatic 378	java/lang/System:currentTimeMillis	()J
+    //   298: invokespecial 381	java/util/Random:<init>	(J)V
+    //   301: putfield 383	com/tencent/mobileqq/msf/core/aj:aF	Ljava/util/Random;
+    //   304: aload_0
+    //   305: iconst_m1
+    //   306: putfield 385	com/tencent/mobileqq/msf/core/aj:aa	I
+    //   309: aload_0
+    //   310: new 221	java/util/concurrent/atomic/AtomicBoolean
+    //   313: dup
+    //   314: invokespecial 222	java/util/concurrent/atomic/AtomicBoolean:<init>	()V
+    //   317: putfield 387	com/tencent/mobileqq/msf/core/aj:ab	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   320: aload_0
+    //   321: new 176	java/util/ArrayList
+    //   324: dup
+    //   325: invokespecial 177	java/util/ArrayList:<init>	()V
+    //   328: putfield 389	com/tencent/mobileqq/msf/core/aj:ag	Ljava/util/ArrayList;
+    //   331: aload_0
+    //   332: iconst_0
+    //   333: putfield 391	com/tencent/mobileqq/msf/core/aj:ah	Z
+    //   336: aload_0
+    //   337: aload_1
+    //   338: putfield 393	com/tencent/mobileqq/msf/core/aj:D	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   341: new 395	android/os/HandlerThread
+    //   344: dup
+    //   345: ldc_w 397
+    //   348: iconst_5
+    //   349: invokespecial 400	android/os/HandlerThread:<init>	(Ljava/lang/String;I)V
+    //   352: astore_2
+    //   353: aload_2
+    //   354: invokevirtual 403	android/os/HandlerThread:start	()V
+    //   357: aload_0
+    //   358: new 405	android/os/Handler
+    //   361: dup
+    //   362: aload_2
+    //   363: invokevirtual 409	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   366: invokespecial 412	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   369: putfield 414	com/tencent/mobileqq/msf/core/aj:al	Landroid/os/Handler;
+    //   372: aload_0
+    //   373: aload_1
+    //   374: invokevirtual 420	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
+    //   377: putfield 328	com/tencent/mobileqq/msf/core/aj:ap	I
+    //   380: aload_0
+    //   381: new 422	com/tencent/mobileqq/msf/core/net/n
+    //   384: dup
+    //   385: aload_1
+    //   386: aload_0
+    //   387: getfield 414	com/tencent/mobileqq/msf/core/aj:al	Landroid/os/Handler;
+    //   390: invokespecial 425	com/tencent/mobileqq/msf/core/net/n:<init>	(Lcom/tencent/mobileqq/msf/core/MsfCore;Landroid/os/Handler;)V
+    //   393: putfield 427	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   396: aload_0
+    //   397: getfield 337	com/tencent/mobileqq/msf/core/aj:K	Lcom/tencent/mobileqq/msf/core/aj$c;
+    //   400: ldc_w 429
+    //   403: invokevirtual 433	com/tencent/mobileqq/msf/core/aj$c:setName	(Ljava/lang/String;)V
+    //   406: invokestatic 438	com/tencent/mobileqq/msf/core/a/a:c	()[Ljava/lang/String;
+    //   409: astore_1
+    //   410: aload_1
+    //   411: ifnull +117 -> 528
+    //   414: aload_0
+    //   415: aload_1
+    //   416: iconst_0
+    //   417: aaload
+    //   418: invokestatic 444	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   421: putfield 290	com/tencent/mobileqq/msf/core/aj:j	I
+    //   424: aload_0
+    //   425: aload_1
+    //   426: iconst_1
+    //   427: aaload
+    //   428: invokestatic 444	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   431: putfield 292	com/tencent/mobileqq/msf/core/aj:k	I
+    //   434: aload_0
+    //   435: aload_1
+    //   436: iconst_2
+    //   437: aaload
+    //   438: invokestatic 444	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   441: putfield 300	com/tencent/mobileqq/msf/core/aj:o	I
+    //   444: aload_0
+    //   445: aload_1
+    //   446: iconst_3
+    //   447: aaload
+    //   448: invokestatic 444	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   451: putfield 296	com/tencent/mobileqq/msf/core/aj:m	I
+    //   454: invokestatic 450	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   457: ifeq +71 -> 528
+    //   460: ldc 36
+    //   462: iconst_2
+    //   463: new 226	java/lang/StringBuilder
+    //   466: dup
+    //   467: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   470: ldc_w 452
+    //   473: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   476: aload_0
+    //   477: getfield 292	com/tencent/mobileqq/msf/core/aj:k	I
+    //   480: invokevirtual 455	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   483: ldc_w 457
+    //   486: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: aload_0
+    //   490: getfield 300	com/tencent/mobileqq/msf/core/aj:o	I
+    //   493: invokevirtual 455	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   496: ldc_w 459
+    //   499: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   502: aload_0
+    //   503: getfield 296	com/tencent/mobileqq/msf/core/aj:m	I
+    //   506: invokevirtual 455	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   509: ldc_w 461
+    //   512: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: aload_0
+    //   516: getfield 290	com/tencent/mobileqq/msf/core/aj:j	I
+    //   519: invokevirtual 455	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   522: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   525: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   528: aload_0
+    //   529: invokestatic 466	com/tencent/mobileqq/msf/core/a/a:d	()[Ljava/lang/String;
+    //   532: invokevirtual 469	com/tencent/mobileqq/msf/core/aj:a	([Ljava/lang/String;)V
+    //   535: aload_0
+    //   536: invokestatic 471	com/tencent/mobileqq/msf/core/a/a:e	()Ljava/lang/String;
+    //   539: invokestatic 444	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   542: putfield 298	com/tencent/mobileqq/msf/core/aj:n	I
+    //   545: invokestatic 450	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   548: ifeq +32 -> 580
+    //   551: ldc 36
+    //   553: iconst_2
+    //   554: new 226	java/lang/StringBuilder
+    //   557: dup
+    //   558: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   561: ldc_w 473
+    //   564: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   567: aload_0
+    //   568: getfield 298	com/tencent/mobileqq/msf/core/aj:n	I
+    //   571: invokevirtual 455	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   574: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   577: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   580: aload_0
+    //   581: invokespecial 475	com/tencent/mobileqq/msf/core/aj:v	()V
+    //   584: return
+    //   585: astore_1
+    //   586: ldc 36
+    //   588: iconst_1
+    //   589: new 226	java/lang/StringBuilder
+    //   592: dup
+    //   593: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   596: ldc_w 477
+    //   599: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: aload_1
+    //   603: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   606: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   609: aload_1
+    //   610: invokestatic 483	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   613: goto -85 -> 528
+    //   616: astore_1
+    //   617: ldc 36
+    //   619: iconst_1
+    //   620: new 226	java/lang/StringBuilder
+    //   623: dup
+    //   624: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   627: ldc_w 477
+    //   630: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   633: aload_1
+    //   634: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   637: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   640: aload_1
+    //   641: invokestatic 483	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   644: goto -109 -> 535
+    //   647: astore_1
+    //   648: ldc 36
+    //   650: iconst_1
+    //   651: new 226	java/lang/StringBuilder
+    //   654: dup
+    //   655: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   658: ldc_w 477
+    //   661: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   664: aload_1
+    //   665: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   668: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   671: aload_1
+    //   672: invokestatic 483	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   675: goto -95 -> 580
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	678	0	this	aj
+    //   0	678	1	paramMsfCore	MsfCore
+    //   352	11	2	localHandlerThread	android.os.HandlerThread
+    // Exception table:
+    //   from	to	target	type
+    //   406	410	585	java/lang/Exception
+    //   414	528	585	java/lang/Exception
+    //   528	535	616	java/lang/Exception
+    //   535	580	647	java/lang/Exception
+  }
+  
+  private void A()
+  {
+    boolean bool2 = false;
     try
     {
-      paramMsfCore = com.tencent.mobileqq.msf.core.a.a.c();
-      if (paramMsfCore != null)
+      for (ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup(); localThreadGroup.getParent() != null; localThreadGroup = localThreadGroup.getParent()) {}
+      Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
+      localThreadGroup.enumerate(arrayOfThread);
+      int i2 = this.g.size();
+      int i3 = arrayOfThread.length;
+      int i1 = 0;
+      for (;;)
       {
-        this.j = Integer.parseInt(paramMsfCore[0]);
-        this.k = Integer.parseInt(paramMsfCore[1]);
-        this.o = Integer.parseInt(paramMsfCore[2]);
-        this.m = Integer.parseInt(paramMsfCore[3]);
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.NetConnTag", 2, "maxDelaySize: " + this.k + " noMergeSize: " + this.o + " globaldelayTime: " + this.m + " delayWaitSendCount: " + this.j);
+        boolean bool1 = bool2;
+        if (i1 < i3)
+        {
+          localThreadGroup = arrayOfThread[i1];
+          if ((localThreadGroup != null) && ("MsfCoreMsgSender".equals(localThreadGroup.getName()))) {
+            bool1 = true;
+          }
         }
+        else
+        {
+          QLog.d("MSF.C.NetConnTag", 1, "sender alive:" + bool1 + " size: " + i2);
+          return;
+        }
+        i1 += 1;
       }
       return;
     }
-    catch (Exception paramMsfCore)
+    catch (Exception localException)
     {
-      try
-      {
-        for (;;)
-        {
-          a(com.tencent.mobileqq.msf.core.a.a.d());
-          try
-          {
-            this.n = Integer.parseInt(com.tencent.mobileqq.msf.core.a.a.e());
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.NetConnTag", 2, "mergeDuration: " + this.n);
-            }
-            return;
-          }
-          catch (Exception paramMsfCore)
-          {
-            QLog.d("MSF.C.NetConnTag", 1, " " + paramMsfCore, paramMsfCore);
-          }
-          paramMsfCore = paramMsfCore;
-          QLog.d("MSF.C.NetConnTag", 1, " " + paramMsfCore, paramMsfCore);
-        }
-      }
-      catch (Exception paramMsfCore)
-      {
-        for (;;)
-        {
-          QLog.d("MSF.C.NetConnTag", 1, " " + paramMsfCore, paramMsfCore);
-        }
-      }
+      QLog.d("MSF.C.NetConnTag", 1, "printCurrentThreads error", localException);
     }
   }
   
-  private static boolean A()
+  private void B()
+  {
+    File localFile1 = new File(aJ);
+    File localFile2 = new File(aK);
+    try
+    {
+      if (!localFile1.exists()) {
+        localFile1.mkdir();
+      }
+      if (!localFile2.exists()) {
+        localFile2.createNewFile();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d("MSF.C.NetConnTag", 1, "ensureFileExist " + localThrowable);
+    }
+  }
+  
+  private static boolean C()
   {
     if ((MsfCore.sCore == null) || (MsfCore.sCore.sender == null) || (MsfCore.sCore.sender.b == null)) {}
     while (MsfCore.sCore.sender.b.f() != 2) {
@@ -269,118 +608,118 @@ public class aj
   private void b(Context paramContext)
   {
     // Byte code:
-    //   0: new 225	java/lang/StringBuilder
+    //   0: new 226	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   7: invokestatic 538	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   10: invokevirtual 542	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   13: invokevirtual 545	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   16: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc_w 547
-    //   22: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   7: invokestatic 596	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: invokevirtual 600	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   13: invokevirtual 603	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   16: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: ldc_w 605
+    //   22: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   28: astore_1
-    //   29: new 225	java/lang/StringBuilder
+    //   29: new 226	java/lang/StringBuilder
     //   32: dup
-    //   33: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   33: invokespecial 227	java/lang/StringBuilder:<init>	()V
     //   36: aload_1
-    //   37: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc_w 549
-    //   43: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: ldc_w 607
+    //   43: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   49: astore_3
-    //   50: new 234	java/io/File
+    //   50: new 235	java/io/File
     //   53: dup
     //   54: aload_3
-    //   55: invokespecial 551	java/io/File:<init>	(Ljava/lang/String;)V
+    //   55: invokespecial 528	java/io/File:<init>	(Ljava/lang/String;)V
     //   58: astore_2
     //   59: aload_2
     //   60: astore_1
     //   61: aload_2
-    //   62: invokevirtual 554	java/io/File:canRead	()Z
+    //   62: invokevirtual 610	java/io/File:canRead	()Z
     //   65: ifne +12 -> 77
-    //   68: new 234	java/io/File
+    //   68: new 235	java/io/File
     //   71: dup
     //   72: aload_3
-    //   73: invokespecial 551	java/io/File:<init>	(Ljava/lang/String;)V
+    //   73: invokespecial 528	java/io/File:<init>	(Ljava/lang/String;)V
     //   76: astore_1
-    //   77: invokestatic 449	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   77: invokestatic 450	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   80: ifeq +71 -> 151
     //   83: ldc 36
     //   85: iconst_2
-    //   86: new 225	java/lang/StringBuilder
+    //   86: new 226	java/lang/StringBuilder
     //   89: dup
-    //   90: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 556
-    //   96: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   93: ldc_w 612
+    //   96: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload_1
-    //   100: invokevirtual 545	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   103: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc_w 558
-    //   109: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 603	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   103: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: ldc_w 614
+    //   109: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: aload_1
-    //   113: invokevirtual 561	java/io/File:isFile	()Z
-    //   116: invokevirtual 564	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   119: ldc_w 566
-    //   122: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 617	java/io/File:isFile	()Z
+    //   116: invokevirtual 520	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   119: ldc_w 619
+    //   122: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: aload_1
-    //   126: invokevirtual 554	java/io/File:canRead	()Z
-    //   129: invokevirtual 564	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   132: ldc_w 568
-    //   135: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 610	java/io/File:canRead	()Z
+    //   129: invokevirtual 520	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   132: ldc_w 621
+    //   135: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: aload_1
-    //   139: invokevirtual 571	java/io/File:length	()J
-    //   142: invokevirtual 574	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokestatic 576	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   151: new 578	java/util/Properties
+    //   139: invokevirtual 624	java/io/File:length	()J
+    //   142: invokevirtual 627	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   148: invokestatic 629	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   151: new 631	java/util/Properties
     //   154: dup
-    //   155: invokespecial 579	java/util/Properties:<init>	()V
+    //   155: invokespecial 632	java/util/Properties:<init>	()V
     //   158: astore 4
     //   160: aload_1
-    //   161: invokevirtual 582	java/io/File:exists	()Z
+    //   161: invokevirtual 531	java/io/File:exists	()Z
     //   164: ifeq +228 -> 392
-    //   167: new 584	java/io/FileInputStream
+    //   167: new 634	java/io/FileInputStream
     //   170: dup
     //   171: aload_1
-    //   172: invokespecial 587	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   172: invokespecial 637	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   175: astore_2
     //   176: aload_2
     //   177: astore_1
     //   178: aload 4
     //   180: aload_2
-    //   181: invokevirtual 591	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   181: invokevirtual 641	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   184: aload_2
     //   185: astore_1
     //   186: aload_2
-    //   187: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   187: invokevirtual 644	java/io/FileInputStream:close	()V
     //   190: aload_2
     //   191: ifnull +7 -> 198
     //   194: aload_2
-    //   195: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   195: invokevirtual 644	java/io/FileInputStream:close	()V
     //   198: aload 4
-    //   200: ldc_w 596
-    //   203: invokevirtual 599	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   200: ldc_w 646
+    //   203: invokevirtual 649	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   206: astore_1
     //   207: aload_1
     //   208: ifnull +171 -> 379
     //   211: aload_1
-    //   212: invokevirtual 602	java/lang/String:trim	()Ljava/lang/String;
-    //   215: invokevirtual 604	java/lang/String:length	()I
+    //   212: invokevirtual 652	java/lang/String:trim	()Ljava/lang/String;
+    //   215: invokevirtual 654	java/lang/String:length	()I
     //   218: ifle +161 -> 379
     //   221: aload_1
-    //   222: invokestatic 609	com/tencent/mobileqq/msf/core/d:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/msf/core/d;
+    //   222: invokestatic 659	com/tencent/mobileqq/msf/core/d:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/msf/core/d;
     //   225: astore_2
     //   226: aload_2
-    //   227: invokevirtual 611	com/tencent/mobileqq/msf/core/d:c	()Ljava/lang/String;
+    //   227: invokevirtual 661	com/tencent/mobileqq/msf/core/d:c	()Ljava/lang/String;
     //   230: ifnull +10 -> 240
     //   233: aload_2
-    //   234: invokevirtual 612	com/tencent/mobileqq/msf/core/d:f	()I
+    //   234: invokevirtual 662	com/tencent/mobileqq/msf/core/d:f	()I
     //   237: ifgt +61 -> 298
     //   240: return
     //   241: astore_1
     //   242: aload_1
-    //   243: invokevirtual 615	java/io/IOException:printStackTrace	()V
+    //   243: invokevirtual 665	java/io/IOException:printStackTrace	()V
     //   246: goto -48 -> 198
     //   249: astore_3
     //   250: aconst_null
@@ -388,15 +727,15 @@ public class aj
     //   252: aload_2
     //   253: astore_1
     //   254: aload_3
-    //   255: invokevirtual 616	java/lang/Exception:printStackTrace	()V
+    //   255: invokevirtual 666	java/lang/Exception:printStackTrace	()V
     //   258: aload_2
     //   259: ifnull -61 -> 198
     //   262: aload_2
-    //   263: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   263: invokevirtual 644	java/io/FileInputStream:close	()V
     //   266: goto -68 -> 198
     //   269: astore_1
     //   270: aload_1
-    //   271: invokevirtual 615	java/io/IOException:printStackTrace	()V
+    //   271: invokevirtual 665	java/io/IOException:printStackTrace	()V
     //   274: goto -76 -> 198
     //   277: astore_2
     //   278: aconst_null
@@ -404,51 +743,51 @@ public class aj
     //   280: aload_1
     //   281: ifnull +7 -> 288
     //   284: aload_1
-    //   285: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   285: invokevirtual 644	java/io/FileInputStream:close	()V
     //   288: aload_2
     //   289: athrow
     //   290: astore_1
     //   291: aload_1
-    //   292: invokevirtual 615	java/io/IOException:printStackTrace	()V
+    //   292: invokevirtual 665	java/io/IOException:printStackTrace	()V
     //   295: goto -7 -> 288
     //   298: aload_1
-    //   299: invokevirtual 602	java/lang/String:trim	()Ljava/lang/String;
-    //   302: ldc_w 474
-    //   305: ldc 194
-    //   307: invokevirtual 620	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   299: invokevirtual 652	java/lang/String:trim	()Ljava/lang/String;
+    //   302: ldc_w 477
+    //   305: ldc 195
+    //   307: invokevirtual 670	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   310: astore_1
     //   311: aload_0
-    //   312: getfield 426	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   312: getfield 427	com/tencent/mobileqq/msf/core/aj:b	Lcom/tencent/mobileqq/msf/core/net/n;
     //   315: aload_1
-    //   316: invokevirtual 622	com/tencent/mobileqq/msf/core/net/n:a	(Ljava/lang/String;)V
+    //   316: invokevirtual 672	com/tencent/mobileqq/msf/core/net/n:a	(Ljava/lang/String;)V
     //   319: ldc 36
     //   321: iconst_1
-    //   322: new 225	java/lang/StringBuilder
+    //   322: new 226	java/lang/StringBuilder
     //   325: dup
-    //   326: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   329: ldc_w 624
-    //   332: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   329: ldc_w 674
+    //   332: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: aload_1
-    //   336: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   336: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   342: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   345: aload 4
-    //   347: ldc_w 626
-    //   350: invokevirtual 599	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   347: ldc_w 676
+    //   350: invokevirtual 649	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   353: astore_1
     //   354: aload_1
     //   355: ifnull -115 -> 240
     //   358: aload_1
-    //   359: invokevirtual 602	java/lang/String:trim	()Ljava/lang/String;
-    //   362: invokevirtual 604	java/lang/String:length	()I
+    //   359: invokevirtual 652	java/lang/String:trim	()Ljava/lang/String;
+    //   362: invokevirtual 654	java/lang/String:length	()I
     //   365: ifle -125 -> 240
     //   368: aload_1
-    //   369: invokestatic 630	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   372: invokevirtual 633	java/lang/Integer:intValue	()I
-    //   375: putstatic 214	com/tencent/mobileqq/msf/core/aj:aB	I
+    //   369: invokestatic 680	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   372: invokevirtual 683	java/lang/Integer:intValue	()I
+    //   375: putstatic 215	com/tencent/mobileqq/msf/core/aj:aC	I
     //   378: return
     //   379: aload_0
-    //   380: invokespecial 635	com/tencent/mobileqq/msf/core/aj:v	()V
+    //   380: invokespecial 685	com/tencent/mobileqq/msf/core/aj:x	()V
     //   383: return
     //   384: astore_2
     //   385: goto -105 -> 280
@@ -517,7 +856,7 @@ public class aj
     if (QLog.isDevelopLevel()) {
       QLog.d("MSF.C.NetConnTag", 4, "conn is also closed.not need send heartbeat msg");
     }
-    x();
+    z();
   }
   
   public static boolean b(String paramString)
@@ -527,101 +866,11 @@ public class aj
   
   public static byte[] b(ToServiceMsg paramToServiceMsg, int paramInt)
   {
-    int i1;
-    Object localObject;
-    try
-    {
-      if (MsfCore.sCore != null)
-      {
-        i1 = MsfCore.sCore.mLocaleId;
-        int i3 = com.tencent.mobileqq.msf.core.a.a.bf();
-        int i2 = i3;
-        if (i3 < 1) {
-          i2 = 1;
-        }
-        i3 = (int)(Math.random() * 100.0D);
-        if ((paramToServiceMsg.getServiceCmd().equals("MessageSvc.PbGetMsg")) && (i3 % i2 == i2 - 1))
-        {
-          localObject = new SSOReserveField.ReserveFields();
-          paramToServiceMsg = (String)paramToServiceMsg.getAttribute("sso_push_timestamp");
-          if (paramToServiceMsg != null)
-          {
-            String[] arrayOfString = paramToServiceMsg.split("\\|");
-            String str1 = Build.MODEL.replace('\n', '-');
-            i2 = Build.VERSION.SDK_INT;
-            String str2 = Build.DISPLAY;
-            String str3 = Build.MANUFACTURER;
-            if (arrayOfString.length == 3)
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("model:" + str1 + ";");
-              localStringBuilder.append("os:" + i2 + ";");
-              localStringBuilder.append("version:v2");
-              if (com.tencent.mobileqq.msf.core.a.a.bl())
-              {
-                localStringBuilder.append("man:" + str3);
-                localStringBuilder.append("sys:" + str2);
-              }
-              ((SSOReserveField.ReserveFields)localObject).sso_send.set(Long.parseLong(arrayOfString[0]));
-              ((SSOReserveField.ReserveFields)localObject).sdk_recv.set(Long.parseLong(arrayOfString[1]));
-              ((SSOReserveField.ReserveFields)localObject).app_recv.set(Long.parseLong(arrayOfString[2]));
-              ((SSOReserveField.ReserveFields)localObject).sdk_send.set(System.currentTimeMillis());
-              ((SSOReserveField.ReserveFields)localObject).type.set(w);
-              ((SSOReserveField.ReserveFields)localObject).extra.set(localStringBuilder.toString());
-              if (i1 > 0) {
-                ((SSOReserveField.ReserveFields)localObject).locale_id.set(i1);
-              }
-              if ((2 <= paramInt) && (N != null))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("MSF.C.NetConnTag", 2, "MSF.C.CodecWarpper buildReserveFiled sGwV4Sec:" + N);
-                }
-                ((SSOReserveField.ReserveFields)localObject).client_ipcookie.set(ByteStringMicro.copyFrom(N));
-              }
-            }
-            QLog.d("MSF.C.NetConnTag", 1, "msf get timestamp:" + paramToServiceMsg + ", length:" + arrayOfString.length + ", model:" + str1 + ", type:" + w);
-          }
-        }
-        else if (i1 > 0)
-        {
-          paramToServiceMsg = new SSOReserveField.ReserveFields();
-          paramToServiceMsg.locale_id.set(i1);
-          label507:
-          localObject = paramToServiceMsg;
-          if (2 > paramInt) {
-            break label622;
-          }
-          localObject = paramToServiceMsg;
-          if (N == null) {
-            break label622;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.NetConnTag", 2, "MSF.C.CodecWarpper buildReserveFiled sGwV4Sec:" + N);
-          }
-          localObject = paramToServiceMsg;
-          if (paramToServiceMsg == null) {
-            localObject = new SSOReserveField.ReserveFields();
-          }
-          ((SSOReserveField.ReserveFields)localObject).client_ipcookie.set(ByteStringMicro.copyFrom(N));
-        }
-      }
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.d("MSF.C.NetConnTag", 1, "failed to construct reserve field", paramToServiceMsg);
+    paramToServiceMsg = d(paramToServiceMsg, paramInt);
+    if (paramToServiceMsg == null) {
       return null;
     }
-    label622:
-    do
-    {
-      paramToServiceMsg = ((SSOReserveField.ReserveFields)localObject).toByteArray();
-      return paramToServiceMsg;
-      paramToServiceMsg = null;
-      break label507;
-      i1 = 0;
-      break;
-    } while (localObject != null);
-    return null;
+    return paramToServiceMsg.toByteArray();
   }
   
   public static byte[] b(byte[] paramArrayOfByte)
@@ -634,9 +883,119 @@ public class aj
   
   public static void c(String paramString)
   {
-    if (!A()) {
+    if (!C()) {
       as = paramString;
     }
+  }
+  
+  public static byte[] c(ToServiceMsg paramToServiceMsg, int paramInt)
+  {
+    if (TextUtils.isEmpty(aB)) {
+      return null;
+    }
+    SSOReserveField.ReserveFields localReserveFields = d(paramToServiceMsg, paramInt);
+    paramToServiceMsg = localReserveFields;
+    if (localReserveFields == null) {
+      paramToServiceMsg = new SSOReserveField.ReserveFields();
+    }
+    paramToServiceMsg.qimei.set(ByteStringMicro.copyFrom(aB.getBytes()));
+    return paramToServiceMsg.toByteArray();
+  }
+  
+  private static SSOReserveField.ReserveFields d(ToServiceMsg paramToServiceMsg, int paramInt)
+  {
+    Object localObject;
+    for (;;)
+    {
+      try
+      {
+        if (MsfCore.sCore == null) {
+          break label609;
+        }
+        i1 = MsfCore.sCore.mLocaleId;
+        int i3 = com.tencent.mobileqq.msf.core.a.a.bf();
+        int i2 = i3;
+        if (i3 < 1) {
+          i2 = 1;
+        }
+        i3 = (int)(Math.random() * 100.0D);
+        if ((paramToServiceMsg.getServiceCmd().equals("MessageSvc.PbGetMsg")) && (i3 % i2 == i2 - 1))
+        {
+          localObject = new SSOReserveField.ReserveFields();
+          paramToServiceMsg = (String)paramToServiceMsg.getAttribute("sso_push_timestamp");
+          if (paramToServiceMsg == null) {
+            break;
+          }
+          String[] arrayOfString = paramToServiceMsg.split("\\|");
+          String str1 = Build.MODEL.replace('\n', '-');
+          i2 = Build.VERSION.SDK_INT;
+          String str2 = Build.DISPLAY;
+          String str3 = Build.MANUFACTURER;
+          if (arrayOfString.length == 3)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("model:" + str1 + ";");
+            localStringBuilder.append("os:" + i2 + ";");
+            localStringBuilder.append("version:v2");
+            if (com.tencent.mobileqq.msf.core.a.a.bl())
+            {
+              localStringBuilder.append("man:" + str3);
+              localStringBuilder.append("sys:" + str2);
+            }
+            ((SSOReserveField.ReserveFields)localObject).sso_send.set(Long.parseLong(arrayOfString[0]));
+            ((SSOReserveField.ReserveFields)localObject).sdk_recv.set(Long.parseLong(arrayOfString[1]));
+            ((SSOReserveField.ReserveFields)localObject).app_recv.set(Long.parseLong(arrayOfString[2]));
+            ((SSOReserveField.ReserveFields)localObject).sdk_send.set(System.currentTimeMillis());
+            ((SSOReserveField.ReserveFields)localObject).type.set(w);
+            ((SSOReserveField.ReserveFields)localObject).extra.set(localStringBuilder.toString());
+            if (i1 > 0) {
+              ((SSOReserveField.ReserveFields)localObject).locale_id.set(i1);
+            }
+            if ((2 <= paramInt) && (N != null))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("MSF.C.NetConnTag", 2, "MSF.C.CodecWarpper buildReserveFiled sGwV4Sec:" + N);
+              }
+              ((SSOReserveField.ReserveFields)localObject).client_ipcookie.set(ByteStringMicro.copyFrom(N));
+            }
+          }
+          QLog.d("MSF.C.NetConnTag", 1, "msf get timestamp:" + paramToServiceMsg + ", length:" + arrayOfString.length + ", model:" + str1 + ", type:" + w);
+          break;
+        }
+        if (i1 > 0)
+        {
+          paramToServiceMsg = new SSOReserveField.ReserveFields();
+          paramToServiceMsg.locale_id.set(i1);
+          localObject = paramToServiceMsg;
+          if (2 > paramInt) {
+            break;
+          }
+          localObject = paramToServiceMsg;
+          if (N == null) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.C.NetConnTag", 2, "MSF.C.CodecWarpper buildReserveFiled sGwV4Sec:" + N);
+          }
+          localObject = paramToServiceMsg;
+          if (paramToServiceMsg == null) {
+            localObject = new SSOReserveField.ReserveFields();
+          }
+          ((SSOReserveField.ReserveFields)localObject).client_ipcookie.set(ByteStringMicro.copyFrom(N));
+          return localObject;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.d("MSF.C.NetConnTag", 1, "failed to construct reserve field", paramToServiceMsg);
+        return null;
+      }
+      paramToServiceMsg = null;
+      continue;
+      label609:
+      int i1 = 0;
+    }
+    return localObject;
   }
   
   public static void d(int paramInt)
@@ -656,13 +1015,6 @@ public class aj
     return localStringBuffer.toString();
   }
   
-  private static void e(String paramString)
-  {
-    if (A()) {
-      as = paramString;
-    }
-  }
-  
   /* Error */
   private String f(int paramInt)
   {
@@ -671,91 +1023,91 @@ public class aj
     //   1: astore 5
     //   3: aconst_null
     //   4: astore 6
-    //   6: new 234	java/io/File
+    //   6: new 235	java/io/File
     //   9: dup
-    //   10: getstatic 247	com/tencent/mobileqq/msf/core/aj:aJ	Ljava/lang/String;
-    //   13: invokespecial 551	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: getstatic 248	com/tencent/mobileqq/msf/core/aj:aK	Ljava/lang/String;
+    //   13: invokespecial 528	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore_3
-    //   17: new 234	java/io/File
+    //   17: new 235	java/io/File
     //   20: dup
-    //   21: getstatic 249	com/tencent/mobileqq/msf/core/aj:aK	Ljava/lang/String;
-    //   24: invokespecial 551	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: getstatic 250	com/tencent/mobileqq/msf/core/aj:aL	Ljava/lang/String;
+    //   24: invokespecial 528	java/io/File:<init>	(Ljava/lang/String;)V
     //   27: astore 7
-    //   29: ldc 194
+    //   29: ldc 195
     //   31: astore_2
     //   32: aload_2
     //   33: astore 4
     //   35: aload 7
-    //   37: invokevirtual 582	java/io/File:exists	()Z
+    //   37: invokevirtual 531	java/io/File:exists	()Z
     //   40: ifeq +43 -> 83
     //   43: aload_2
     //   44: astore 4
     //   46: aload 7
-    //   48: invokevirtual 898	java/io/File:delete	()Z
+    //   48: invokevirtual 960	java/io/File:delete	()Z
     //   51: pop
     //   52: aload_2
     //   53: astore 4
     //   55: ldc 36
     //   57: iconst_1
-    //   58: new 225	java/lang/StringBuilder
+    //   58: new 226	java/lang/StringBuilder
     //   61: dup
-    //   62: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   65: ldc_w 900
-    //   68: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: getstatic 249	com/tencent/mobileqq/msf/core/aj:aK	Ljava/lang/String;
-    //   74: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   62: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   65: ldc_w 962
+    //   68: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: getstatic 250	com/tencent/mobileqq/msf/core/aj:aL	Ljava/lang/String;
+    //   74: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   83: aload_2
     //   84: astore 4
     //   86: aload_3
-    //   87: invokevirtual 582	java/io/File:exists	()Z
+    //   87: invokevirtual 531	java/io/File:exists	()Z
     //   90: ifne +74 -> 164
     //   93: aload_2
     //   94: astore 4
     //   96: aload_0
-    //   97: invokespecial 902	com/tencent/mobileqq/msf/core/aj:z	()V
+    //   97: invokespecial 964	com/tencent/mobileqq/msf/core/aj:B	()V
     //   100: aload_2
     //   101: astore 4
     //   103: aload_0
     //   104: iload_1
-    //   105: invokespecial 904	com/tencent/mobileqq/msf/core/aj:e	(I)Ljava/lang/String;
+    //   105: invokespecial 966	com/tencent/mobileqq/msf/core/aj:e	(I)Ljava/lang/String;
     //   108: astore_2
     //   109: aload_2
     //   110: astore 4
-    //   112: new 906	java/io/FileOutputStream
+    //   112: new 968	java/io/FileOutputStream
     //   115: dup
     //   116: aload_3
-    //   117: invokespecial 907	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   117: invokespecial 969	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   120: astore_3
     //   121: aload_3
     //   122: ifnull +453 -> 575
     //   125: aload_3
     //   126: aload_2
-    //   127: invokevirtual 910	java/lang/String:getBytes	()[B
-    //   130: invokevirtual 913	java/io/FileOutputStream:write	([B)V
+    //   127: invokevirtual 807	java/lang/String:getBytes	()[B
+    //   130: invokevirtual 972	java/io/FileOutputStream:write	([B)V
     //   133: aload 6
     //   135: astore 4
     //   137: aload 4
     //   139: ifnull +8 -> 147
     //   142: aload 4
-    //   144: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   144: invokevirtual 644	java/io/FileInputStream:close	()V
     //   147: aload_2
     //   148: astore 4
     //   150: aload_3
     //   151: ifnull +10 -> 161
     //   154: aload_3
-    //   155: invokevirtual 914	java/io/FileOutputStream:close	()V
+    //   155: invokevirtual 973	java/io/FileOutputStream:close	()V
     //   158: aload_2
     //   159: astore 4
     //   161: aload 4
     //   163: areturn
     //   164: aload_2
     //   165: astore 4
-    //   167: new 584	java/io/FileInputStream
+    //   167: new 634	java/io/FileInputStream
     //   170: dup
     //   171: aload_3
-    //   172: invokespecial 587	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   172: invokespecial 637	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   175: astore_3
     //   176: iload_1
     //   177: newarray byte
@@ -764,15 +1116,15 @@ public class aj
     //   181: ifnull +379 -> 560
     //   184: aload_3
     //   185: aload_2
-    //   186: invokevirtual 918	java/io/FileInputStream:read	([B)I
+    //   186: invokevirtual 977	java/io/FileInputStream:read	([B)I
     //   189: pop
-    //   190: new 198	java/lang/String
+    //   190: new 199	java/lang/String
     //   193: dup
     //   194: aload_2
-    //   195: invokespecial 920	java/lang/String:<init>	([B)V
+    //   195: invokespecial 979	java/lang/String:<init>	([B)V
     //   198: astore_2
     //   199: aload_3
-    //   200: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   200: invokevirtual 644	java/io/FileInputStream:close	()V
     //   203: aconst_null
     //   204: astore 5
     //   206: aload_3
@@ -783,28 +1135,28 @@ public class aj
     //   215: astore 4
     //   217: ldc 36
     //   219: iconst_1
-    //   220: new 225	java/lang/StringBuilder
+    //   220: new 226	java/lang/StringBuilder
     //   223: dup
-    //   224: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   227: ldc_w 922
-    //   230: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   227: ldc_w 981
+    //   230: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: aload 4
-    //   235: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   235: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   244: goto -97 -> 147
     //   247: astore_3
     //   248: ldc 36
     //   250: iconst_1
-    //   251: new 225	java/lang/StringBuilder
+    //   251: new 226	java/lang/StringBuilder
     //   254: dup
-    //   255: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   258: ldc_w 924
-    //   261: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   258: ldc_w 983
+    //   261: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload_3
-    //   265: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   265: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   274: aload_2
     //   275: areturn
     //   276: astore_3
@@ -820,53 +1172,53 @@ public class aj
     //   291: astore_3
     //   292: ldc 36
     //   294: iconst_1
-    //   295: new 225	java/lang/StringBuilder
+    //   295: new 226	java/lang/StringBuilder
     //   298: dup
-    //   299: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   302: ldc_w 926
-    //   305: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   302: ldc_w 985
+    //   305: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   308: aload 4
-    //   310: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   313: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   316: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   310: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   313: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   316: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   319: aload 5
     //   321: ifnull +8 -> 329
     //   324: aload 5
-    //   326: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   326: invokevirtual 644	java/io/FileInputStream:close	()V
     //   329: aload_2
     //   330: astore 4
     //   332: aload_3
     //   333: ifnull -172 -> 161
     //   336: aload_3
-    //   337: invokevirtual 914	java/io/FileOutputStream:close	()V
+    //   337: invokevirtual 973	java/io/FileOutputStream:close	()V
     //   340: aload_2
     //   341: areturn
     //   342: astore_3
     //   343: ldc 36
     //   345: iconst_1
-    //   346: new 225	java/lang/StringBuilder
+    //   346: new 226	java/lang/StringBuilder
     //   349: dup
-    //   350: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   353: ldc_w 924
-    //   356: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   353: ldc_w 983
+    //   356: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: aload_3
-    //   360: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   363: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   366: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   360: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   363: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   366: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   369: aload_2
     //   370: areturn
     //   371: astore 4
     //   373: ldc 36
     //   375: iconst_1
-    //   376: new 225	java/lang/StringBuilder
+    //   376: new 226	java/lang/StringBuilder
     //   379: dup
-    //   380: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   383: ldc_w 922
-    //   386: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   383: ldc_w 981
+    //   386: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: aload 4
-    //   391: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   394: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   397: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   391: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   394: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   397: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   400: goto -71 -> 329
     //   403: astore_2
     //   404: aconst_null
@@ -876,38 +1228,38 @@ public class aj
     //   410: aload 4
     //   412: ifnull +8 -> 420
     //   415: aload 4
-    //   417: invokevirtual 594	java/io/FileInputStream:close	()V
+    //   417: invokevirtual 644	java/io/FileInputStream:close	()V
     //   420: aload_3
     //   421: ifnull +7 -> 428
     //   424: aload_3
-    //   425: invokevirtual 914	java/io/FileOutputStream:close	()V
+    //   425: invokevirtual 973	java/io/FileOutputStream:close	()V
     //   428: aload_2
     //   429: athrow
     //   430: astore 4
     //   432: ldc 36
     //   434: iconst_1
-    //   435: new 225	java/lang/StringBuilder
+    //   435: new 226	java/lang/StringBuilder
     //   438: dup
-    //   439: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   442: ldc_w 922
-    //   445: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   439: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   442: ldc_w 981
+    //   445: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   448: aload 4
-    //   450: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   453: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   456: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   450: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   453: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   456: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   459: goto -39 -> 420
     //   462: astore_3
     //   463: ldc 36
     //   465: iconst_1
-    //   466: new 225	java/lang/StringBuilder
+    //   466: new 226	java/lang/StringBuilder
     //   469: dup
-    //   470: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   473: ldc_w 924
-    //   476: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   473: ldc_w 983
+    //   476: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   479: aload_3
-    //   480: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   483: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: invokestatic 463	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   480: invokevirtual 480	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   483: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   486: invokestatic 464	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   489: goto -61 -> 428
     //   492: astore_2
     //   493: aload 5
@@ -930,7 +1282,7 @@ public class aj
     //   524: astore 5
     //   526: goto -234 -> 292
     //   529: astore 4
-    //   531: ldc 194
+    //   531: ldc 195
     //   533: astore_2
     //   534: aconst_null
     //   535: astore 6
@@ -947,7 +1299,7 @@ public class aj
     //   554: aload 6
     //   556: astore_3
     //   557: goto -265 -> 292
-    //   560: ldc 194
+    //   560: ldc 195
     //   562: astore_2
     //   563: aconst_null
     //   564: astore 5
@@ -1024,6 +1376,13 @@ public class aj
     //   176	180	529	java/lang/Throwable
     //   184	199	529	java/lang/Throwable
     //   199	203	546	java/lang/Throwable
+  }
+  
+  private static void f(String paramString)
+  {
+    if (C()) {
+      as = paramString;
+    }
   }
   
   private int g(ToServiceMsg paramToServiceMsg)
@@ -1115,7 +1474,7 @@ public class aj
           {
             this.ax = l1;
             if (QLog.isColorLevel()) {
-              y();
+              A();
             }
           }
         }
@@ -1143,11 +1502,11 @@ public class aj
       i1 = i2;
       if (!this.X.contains(paramToServiceMsg.getUin()))
       {
-        this.aD += 1L;
-        if (this.aD >= 2L)
+        this.aE += 1L;
+        if (this.aE >= 2L)
         {
           i1 = i2;
-          if (this.aE.nextInt(20) >= 2) {}
+          if (this.aF.nextInt(20) >= 2) {}
         }
         else
         {
@@ -1168,7 +1527,12 @@ public class aj
     return as;
   }
   
-  private void u()
+  private void v()
+  {
+    UserAction.getQimei(new ak(this));
+  }
+  
+  private void w()
   {
     this.aj.add("StatSvc.register");
     this.aj.add("PushService.register");
@@ -1181,7 +1545,7 @@ public class aj
     this.aj.add("SSO.LoginMerge");
   }
   
-  private void v()
+  private void x()
   {
     if (MsfSdkUtils.isBuildTestEnvValid())
     {
@@ -1195,11 +1559,11 @@ public class aj
       return;
     }
     this.b.a("socket://183.3.233.202:14000");
-    aB = 62;
+    aC = 62;
     QLog.d("MSF.C.NetConnTag", 1, "set buildTestServer Address socket://183.3.233.202:14000");
   }
   
-  private void w()
+  private void y()
   {
     if (this.b.b())
     {
@@ -1221,69 +1585,13 @@ public class aj
     if (QLog.isDevelopLevel()) {
       QLog.d("MSF.C.NetConnTag", 4, "conn is also closed.not need send heartbeat msg");
     }
-    x();
-  }
-  
-  private void x()
-  {
-    this.R = 0;
-    this.Q.set(false);
-  }
-  
-  private void y()
-  {
-    boolean bool2 = false;
-    try
-    {
-      for (ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup(); localThreadGroup.getParent() != null; localThreadGroup = localThreadGroup.getParent()) {}
-      Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
-      localThreadGroup.enumerate(arrayOfThread);
-      int i2 = this.g.size();
-      int i3 = arrayOfThread.length;
-      int i1 = 0;
-      for (;;)
-      {
-        boolean bool1 = bool2;
-        if (i1 < i3)
-        {
-          localThreadGroup = arrayOfThread[i1];
-          if ((localThreadGroup != null) && ("MsfCoreMsgSender".equals(localThreadGroup.getName()))) {
-            bool1 = true;
-          }
-        }
-        else
-        {
-          QLog.d("MSF.C.NetConnTag", 1, "sender alive:" + bool1 + " size: " + i2);
-          return;
-        }
-        i1 += 1;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MSF.C.NetConnTag", 1, "printCurrentThreads error", localException);
-    }
+    z();
   }
   
   private void z()
   {
-    File localFile1 = new File(aI);
-    File localFile2 = new File(aJ);
-    try
-    {
-      if (!localFile1.exists()) {
-        localFile1.mkdir();
-      }
-      if (!localFile2.exists()) {
-        localFile2.createNewFile();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.d("MSF.C.NetConnTag", 1, "ensureFileExist " + localThrowable);
-    }
+    this.R = 0;
+    this.Q.set(false);
   }
   
   public int a(ToServiceMsg paramToServiceMsg)
@@ -1353,7 +1661,7 @@ public class aj
     ((com.tencent.msf.service.protocol.e.c)localObject).b = paramString;
     ((com.tencent.msf.service.protocol.e.c)localObject).d = f(18);
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.NetConnTag", 2, "getInfoMachine = " + ((com.tencent.msf.service.protocol.e.c)localObject).d + " file_path = " + aJ);
+      QLog.d("MSF.C.NetConnTag", 2, "getInfoMachine = " + ((com.tencent.msf.service.protocol.e.c)localObject).d + " file_path = " + aK);
     }
     localUniPacket.put("req", localObject);
     localObject = new ToServiceMsg("", paramString, "GrayUinPro.Check");
@@ -1400,12 +1708,12 @@ public class aj
         if (((com.tencent.msf.service.protocol.e.d)localObject1).a == 1)
         {
           this.D.getSsoRespHandler();
-          al.a.put(paramFromServiceMsg.getUin(), localObject1);
+          am.a.put(paramFromServiceMsg.getUin(), localObject1);
           QLog.d("MSF.C.NetConnTag", 1, Thread.currentThread().getName() + " onRecvCheckRoleResp setAccountNoLogin uin=" + MsfSdkUtils.getShortUin(paramFromServiceMsg.getUin()));
           this.D.getAccountCenter().k(paramFromServiceMsg.getUin());
           return;
         }
-        al.a.remove(paramFromServiceMsg.getUin());
+        am.a.remove(paramFromServiceMsg.getUin());
         return;
       }
       catch (ObjectCreateException paramFromServiceMsg)
@@ -1436,7 +1744,7 @@ public class aj
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.NetConnTag", 2, "conn is also closed.");
         }
-        x();
+        z();
       }
       do
       {
@@ -1450,7 +1758,7 @@ public class aj
             QLog.d("MSF.C.NetConnTag", 2, "Heartbeat continueTimeoutCount is " + this.R + ",closeConn closeByNetDetectFailed");
           }
           this.D.sender.b.a(com.tencent.qphone.base.a.p);
-          x();
+          z();
           return;
         }
         catch (Exception paramFromServiceMsg) {}
@@ -1464,16 +1772,16 @@ public class aj
           QLog.d("MSF.C.NetConnTag", 2, "timenow - firstSendHeartBeatTime is " + (l1 - this.S) + ",closeConn continueWaitRspTimeout");
         }
         this.D.sender.b.a(com.tencent.qphone.base.a.e);
-        x();
+        z();
         return;
       }
-      w();
+      y();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.NetConnTag", 2, "recv heart resp.now conn is alive.");
     }
-    x();
+    z();
   }
   
   public void a(ToServiceMsg paramToServiceMsg, int paramInt)
@@ -1505,7 +1813,7 @@ public class aj
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.aC = paramArrayOfByte;
+    this.aD = paramArrayOfByte;
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt)
@@ -1621,8 +1929,8 @@ public class aj
     {
       try
       {
-        v();
-        u();
+        x();
+        w();
       }
       catch (Exception localException)
       {
@@ -1791,7 +2099,7 @@ public class aj
           }
           QLog.d("MSF.C.NetConnTag", 2, "xiaomi 2s: " + paramToServiceMsg.getRequestSsoSeq() + " msg timeout , addtoqueueTime is " + (l3 - l2) + ",try close conn");
           this.D.sender.b.a(com.tencent.qphone.base.a.q);
-          x();
+          z();
           return true;
           return true;
           if ((l1 != 0L) && (l1 <= this.b.l().e())) {
@@ -1823,7 +2131,7 @@ public class aj
               V = -1;
               QLog.d("MSF.C.NetConnTag", 1, "found first msg screen on timeout try close conn " + paramToServiceMsg);
               this.D.sender.b.a(com.tencent.qphone.base.a.t);
-              x();
+              z();
               return true;
             }
           }
@@ -1831,7 +2139,7 @@ public class aj
           if (!com.tencent.mobileqq.msf.core.a.a.bo()) {
             break label1349;
           }
-          w();
+          y();
           for (;;)
           {
             if (paramToServiceMsg.getMsfCommand() != MsfCommand._msf_HeartbeatAlive) {
@@ -1912,7 +2220,7 @@ public class aj
           A.set(0);
           B.clear();
           this.D.sender.b.a(com.tencent.qphone.base.a.e);
-          x();
+          z();
         }
         else if (QLog.isColorLevel())
         {
@@ -2054,14 +2362,14 @@ public class aj
         this.D.addRespToQuque(paramToServiceMsg, (FromServiceMsg)???);
         return paramToServiceMsg.getRequestSsoSeq();
       }
-      if (aL.get())
+      if (aM.get())
       {
         ??? = w.a(paramToServiceMsg);
         ((FromServiceMsg)???).setBusinessFail(2014, "error");
         this.D.addRespToQuque(paramToServiceMsg, (FromServiceMsg)???);
         return paramToServiceMsg.getRequestSsoSeq();
       }
-      localObject2 = (com.tencent.msf.service.protocol.e.d)al.a.get(paramToServiceMsg.getUin());
+      localObject2 = (com.tencent.msf.service.protocol.e.d)am.a.get(paramToServiceMsg.getUin());
       ??? = localObject2;
       if (localObject2 != null)
       {
@@ -2069,7 +2377,7 @@ public class aj
         if (paramToServiceMsg.getServiceCmd().equals("wtlogin.login"))
         {
           this.X.remove(paramToServiceMsg.getUin());
-          al.a.remove(paramToServiceMsg.getUin());
+          am.a.remove(paramToServiceMsg.getUin());
           ??? = null;
         }
       }
@@ -2316,7 +2624,7 @@ public class aj
   
   public byte[] e()
   {
-    return this.aC;
+    return this.aD;
   }
   
   public byte[] e(ToServiceMsg paramToServiceMsg)
@@ -2338,24 +2646,25 @@ public class aj
           byte b2 = j.b();
           i1 = (byte)NetConnInfoCenter.getActiveNetIpFamily(false);
           if (!P) {
-            break label312;
+            break label324;
           }
           b1 = (byte)(i1 | 0x4);
           if (this.b.l().b() == null) {
-            break label322;
+            break label334;
           }
           i1 = this.b.l().b().d();
           localObject2 = b(paramToServiceMsg, i1);
+          byte[] arrayOfByte1 = c(paramToServiceMsg, i1);
           h();
-          byte[] arrayOfByte1 = e();
-          byte[] arrayOfByte2 = paramToServiceMsg.getWupBuffer();
+          byte[] arrayOfByte2 = e();
+          byte[] arrayOfByte3 = paramToServiceMsg.getWupBuffer();
           if (591 == CodecWarpper.getSharedObjectVersion()) {
-            return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", (String)localObject1, arrayOfByte1, paramToServiceMsg.getAppId(), this.D.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b2, arrayOfByte2, false);
+            return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", (String)localObject1, arrayOfByte2, paramToServiceMsg.getAppId(), this.D.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b2, arrayOfByte3, false);
           }
           if ((595 == CodecWarpper.getSharedObjectVersion()) || (600 == CodecWarpper.getSharedObjectVersion())) {
-            return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", (String)localObject1, arrayOfByte1, paramToServiceMsg.getAppId(), this.D.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b2, (byte[])localObject2, arrayOfByte2, false);
+            return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", (String)localObject1, arrayOfByte2, paramToServiceMsg.getAppId(), this.D.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b2, (byte[])localObject2, arrayOfByte1, arrayOfByte3, false);
           }
-          return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", (String)localObject1, arrayOfByte1, paramToServiceMsg.getAppId(), this.D.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b2, b1, (byte[])localObject2, arrayOfByte2, false);
+          return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", (String)localObject1, arrayOfByte2, paramToServiceMsg.getAppId(), this.D.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b2, b1, (byte[])localObject2, arrayOfByte1, arrayOfByte3, false);
         }
         return new byte[0];
       }
@@ -2366,10 +2675,10 @@ public class aj
         localObject1 = new byte[0];
       }
       return localObject1;
-      label312:
+      label324:
       byte b1 = (byte)(i1 & 0xFFFFFFFB);
       continue;
-      label322:
+      label334:
       int i1 = 1;
     }
   }
@@ -2409,7 +2718,7 @@ public class aj
             if (l1 - this.S <= com.tencent.mobileqq.msf.core.a.a.P()) {
               break label299;
             }
-            w();
+            y();
             QLog.d("MSF.C.NetConnTag", 1, "preDetectTimeoutMsg cmd:" + (String)localObject + ", ssoSeq:" + paramToServiceMsg.getRequestSsoSeq());
             if (this.D.statReporter != null)
             {

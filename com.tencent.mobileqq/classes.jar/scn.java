@@ -1,11 +1,19 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$OnFollowActionListener;", "", "onFollowClick", "", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface scn
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
+final class scn
+  implements View.OnTouchListener
 {
-  public abstract void d(@Nullable VideoInfo paramVideoInfo);
+  scn(scl paramscl) {}
+  
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.dismiss();
+    return false;
+  }
 }
 
 

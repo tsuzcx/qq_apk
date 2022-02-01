@@ -8,12 +8,12 @@ import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Iterator;
 import java.util.List;
-import uah;
+import uoe;
 
 public class ReadInJoyNewSearchActivity$5$1
   implements Runnable
 {
-  public ReadInJoyNewSearchActivity$5$1(uah paramuah) {}
+  public ReadInJoyNewSearchActivity$5$1(uoe paramuoe) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class ReadInJoyNewSearchActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

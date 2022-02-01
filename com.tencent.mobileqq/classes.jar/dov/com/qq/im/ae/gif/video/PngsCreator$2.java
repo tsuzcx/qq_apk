@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.gif.video;
 
-import blzw;
-import bmab;
+import bnpg;
+import bnpl;
 
 public class PngsCreator$2
   implements Runnable
 {
-  public PngsCreator$2(blzw paramblzw) {}
+  public PngsCreator$2(bnpg parambnpg) {}
   
   public void run()
   {
-    blzw.b(this.this$0, 0);
-    blzw.a(this.this$0).a();
-    blzw.a(this.this$0).a();
+    bnpg.b(this.this$0, 0);
+    bnpg.a(this.this$0).a();
+    bnpg.a(this.this$0).a();
   }
 }
 

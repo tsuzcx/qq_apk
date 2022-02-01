@@ -1,35 +1,53 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 
-class ayvy
-  implements Animator.AnimatorListener
+public class ayvy
+  implements ayvx
 {
-  ayvy(ayvw paramayvw, View paramView, long paramLong, int paramInt) {}
+  public void a(Matrix paramMatrix) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(MotionEvent paramMotionEvent) {}
+  
+  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    ayvw.a = false;
-    if (this.jdField_a_of_type_Long != 0L) {
-      aywa.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    }
+    return false;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    ayvw.a = false;
-    if (this.jdField_a_of_type_Long != 0L) {
-      aywa.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    }
+    return false;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
   {
-    ayvw.a = true;
+    return false;
+  }
+  
+  public void b(MotionEvent paramMotionEvent) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return false;
+  }
+  
+  public void c(MotionEvent paramMotionEvent) {}
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

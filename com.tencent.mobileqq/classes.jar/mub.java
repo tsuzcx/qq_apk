@@ -1,73 +1,63 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioSession;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class mub
-  implements AdapterView.OnItemClickListener
+public class mub
 {
-  mub(mua parammua, Button paramButton, long paramLong, bjnw parambjnw) {}
+  private static Boolean[] a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  private static void a()
   {
-    if (mua.a(this.jdField_a_of_type_Mua) != null)
+    a = new Boolean[4];
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qavUseSurface.name(), "1|1|1|1");
+    int i;
+    if (!TextUtils.isEmpty(str))
     {
-      paramAdapterView = (muh)mua.a(this.jdField_a_of_type_Mua).getItem(paramInt);
-      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Mua.a != null))
+      String[] arrayOfString = str.split("\\|");
+      i = 0;
+      if (i < a.length)
       {
-        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
-          break label199;
+        if (i < arrayOfString.length) {
+          a[i] = Boolean.valueOf("1".equals(arrayOfString[i]));
         }
-        mak.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+        for (;;)
+        {
+          i += 1;
+          break;
+          a[i] = Boolean.valueOf(false);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
-        }
-        bcef.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
       }
     }
-    for (;;)
+    else
     {
-      mua.a(this.jdField_a_of_type_Mua, true);
-      this.jdField_a_of_type_Mua.a.a(msu.a());
-      this.jdField_a_of_type_Mua.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      label199:
-      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
+      i = 0;
+      while (i < a.length)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
-        }
-        bcef.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
-      }
-      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
-        }
-        bcef.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
-      }
-      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
-        }
-        bcef.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
+        a[i] = Boolean.valueOf(false);
+        i += 1;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavDpcUtil", 2, "initQavSurfaceDpc, dpcValue[" + str + "]");
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if (a == null) {
+      a();
+    }
+    if ((a == null) || (paramInt >= a.length)) {}
+    while ((a[paramInt] == null) || (!a[paramInt].booleanValue())) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mub
  * JD-Core Version:    0.7.0.1
  */

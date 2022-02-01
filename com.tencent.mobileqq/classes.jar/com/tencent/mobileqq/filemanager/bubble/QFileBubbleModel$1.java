@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import asgh;
+import atkn;
 
 public class QFileBubbleModel$1
   implements Runnable
 {
-  public QFileBubbleModel$1(asgh paramasgh) {}
+  public QFileBubbleModel$1(atkn paramatkn) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class QFileBubbleModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.QFileBubbleModel.1
  * JD-Core Version:    0.7.0.1
  */

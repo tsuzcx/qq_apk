@@ -6,13 +6,13 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import bbdx;
+import bckp;
 
 public class RichNodeRootLayout
   extends LinearLayout
 {
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bbdx jdField_a_of_type_Bbdx;
+  private bckp jdField_a_of_type_Bckp;
   private boolean jdField_a_of_type_Boolean;
   
   public RichNodeRootLayout(Context paramContext)
@@ -46,8 +46,8 @@ public class RichNodeRootLayout
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Bbdx != null) {
-      this.jdField_a_of_type_Bbdx.a();
+    if (this.jdField_a_of_type_Bckp != null) {
+      this.jdField_a_of_type_Bckp.a();
     }
   }
   

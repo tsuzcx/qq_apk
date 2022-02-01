@@ -1,29 +1,33 @@
+import android.graphics.Bitmap;
+
 class wwh
-  implements wxd
+  implements xro
 {
-  wwh(wwe paramwwe, wuv paramwuv) {}
+  wwh(wwg paramwwg, String paramString) {}
   
-  public boolean a_(wwz paramwwz, int paramInt1, int paramInt2)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
+    if (wwg.a(this.jdField_a_of_type_Wwg))
     {
-      return this.jdField_a_of_type_Wuv.a(this.jdField_a_of_type_Wwe, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
+      paramString = bheg.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
       {
-        i = 2;
+        wwg.a(this.jdField_a_of_type_Wwg, false);
+        return;
       }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
+      bool = zdr.a(paramString, wwg.a(this.jdField_a_of_type_Wwg));
+      paramString.recycle();
+      wwg.b(this.jdField_a_of_type_Wwg, bool);
+      return;
     }
+    boolean bool = zdr.a(paramBitmap, wwg.a(this.jdField_a_of_type_Wwg));
+    wwg.c(this.jdField_a_of_type_Wwg, bool);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    ykq.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    wwg.d(this.jdField_a_of_type_Wwg, false);
   }
 }
 

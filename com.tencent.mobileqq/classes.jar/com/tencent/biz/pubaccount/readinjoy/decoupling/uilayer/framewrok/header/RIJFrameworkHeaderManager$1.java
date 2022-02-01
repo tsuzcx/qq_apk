@@ -4,16 +4,16 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 import com.tencent.qphone.base.util.QLog;
-import pgt;
+import ppx;
 
 public class RIJFrameworkHeaderManager$1
   implements Runnable
 {
-  public RIJFrameworkHeaderManager$1(pgt parampgt, View paramView1, int paramInt, View paramView2, ReadInJoyXListView paramReadInJoyXListView) {}
+  public RIJFrameworkHeaderManager$1(ppx paramppx, View paramView1, int paramInt, View paramView2, ReadInJoyXListView paramReadInJoyXListView) {}
   
   public void run()
   {
-    pgt.a(this.this$0).i();
+    ppx.a(this.this$0).i();
     int i = this.jdField_a_of_type_AndroidViewView.getHeight();
     if ((i != this.jdField_a_of_type_Int) && (QLog.isColorLevel())) {
       QLog.d("RIJFrameworkReportManager", 2, "initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=" + i + ",h = " + this.jdField_a_of_type_Int);

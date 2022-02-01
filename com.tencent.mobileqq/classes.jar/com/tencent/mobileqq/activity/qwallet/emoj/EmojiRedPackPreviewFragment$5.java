@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import amtj;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import anvx;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -37,7 +37,7 @@ class EmojiRedPackPreviewFragment$5
         AbstractGifImage.resumeAll();
         return;
       }
-      this.this$0.tips.setText(amtj.a(2131703145));
+      this.this$0.tips.setText(anvx.a(2131703496));
       this.this$0.reCaptureBtn.setVisibility(0);
       this.this$0.numberProbar.setVisibility(8);
       this.this$0.sendBtn.setVisibility(8);

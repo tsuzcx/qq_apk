@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import acyr;
-import agye;
+import adpd;
+import ahrf;
 
 public class ChatHistoryEmotionView$4
   implements Runnable
 {
-  public ChatHistoryEmotionView$4(acyr paramacyr) {}
+  public ChatHistoryEmotionView$4(adpd paramadpd) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      agye.a(acyr.a(this.this$0));
+      ahrf.a(adpd.a(this.this$0));
     }
     this.this$0.g();
   }

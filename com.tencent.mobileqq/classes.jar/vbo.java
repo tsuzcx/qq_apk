@@ -1,54 +1,16 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.content.DialogInterface;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class vbo
-  extends vct
+final class vbo
+  extends bhdx
 {
-  public vbo(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  vbo(WSDownloadParams paramWSDownloadParams) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewGroup, 2131560023, paramInt, paramWSVerticalPageFragment);
-  }
-  
-  public FrameLayout a()
-  {
-    if ((this.jdField_a_of_type_Ula instanceof vbl)) {
-      return ((vbl)this.jdField_a_of_type_Ula).a();
-    }
-    return null;
-  }
-  
-  public vbl a(int paramInt)
-  {
-    return new vcu(a(), this);
-  }
-  
-  public void a() {}
-  
-  protected boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((((vaq)this.jdField_a_of_type_JavaLangObject).a() instanceof stSimpleMetaFeed)))
-    {
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((vaq)this.jdField_a_of_type_JavaLangObject).a();
-      uya.e("WS_VIDEO_PLAY_TIME", "[WSVerticalCommonVideoHolder.java][isPlayLoop] isLoop:" + localstSimpleMetaFeed.isLoop);
-      return localstSimpleMetaFeed.isLoop;
-    }
-    return super.a();
-  }
-  
-  public void b() {}
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  public void c() {}
-  
-  protected boolean c()
-  {
-    return true;
+    paramDialogInterface.dismiss();
+    vbj.a(126, this.a);
+    vkf.a(this.a.mScene, false, false);
   }
 }
 

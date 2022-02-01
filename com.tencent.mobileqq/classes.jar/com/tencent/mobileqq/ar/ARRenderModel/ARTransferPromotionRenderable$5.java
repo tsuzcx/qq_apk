@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aobk;
+import apem;
 
 public class ARTransferPromotionRenderable$5
   implements Runnable
 {
   public void run()
   {
-    aobk.a(this.this$0, true);
+    apem.a(this.this$0, true);
     this.this$0.f();
   }
 }

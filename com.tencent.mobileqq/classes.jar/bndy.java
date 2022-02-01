@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
 
-public final class bndy
-  implements Parcelable.Creator<EditVideoGame.GameResultItem>
+class bndy
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  public EditVideoGame.GameResultItem a(Parcel paramParcel)
-  {
-    return new EditVideoGame.GameResultItem(paramParcel);
-  }
+  bndy(bndw parambndw) {}
   
-  public EditVideoGame.GameResultItem[] a(int paramInt)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    return new EditVideoGame.GameResultItem[paramInt];
+    bncv.a(bnbp.a(paramRatio).f);
+    this.a.a.notifyDataSetChanged();
   }
 }
 

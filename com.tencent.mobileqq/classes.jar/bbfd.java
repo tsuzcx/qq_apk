@@ -1,109 +1,58 @@
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public abstract class bbfd
+public class bbfd
+  implements Application.ActivityLifecycleCallbacks
 {
-  public long a;
-  public final bbfe a;
-  public String a;
-  public int b;
-  public int c;
+  public bbfd(ResourceGrabView paramResourceGrabView) {}
   
-  public bbfd(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bbfe = parambbfe;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabView", 2, "onActivityCreated activity: " + paramActivity);
+    }
+    ResourceGrabView.a(this.a, new WeakReference(paramActivity));
   }
   
-  protected abstract bays a(List<bayt> paramList, String paramString);
-  
-  public List<bays> a(bbfs parambbfs)
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    boolean bool2 = false;
-    long l = System.currentTimeMillis();
-    if (parambbfs.jdField_a_of_type_AndroidOsBundle == null) {
-      parambbfs.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabView", 2, "onActivityDestroyed activity: " + paramActivity);
     }
-    parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("searchRequestFromHome", true);
-    ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_a_of_type_Bbfe.a(parambbfs);
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-    if ((localList != null) && (!localList.isEmpty()))
+    if ((paramActivity instanceof FragmentActivity))
     {
-      bays localbays = a(localList, parambbfs.jdField_a_of_type_JavaLangString);
-      if (((localbays instanceof bayd)) && (localbays.a() != null) && (localbays.a().size() > 0)) {
-        parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-      }
-      boolean bool1;
-      if (localbays != null)
-      {
-        bool1 = bool2;
-        if (localbays.a() != null)
-        {
-          bool1 = bool2;
-          if (localbays.a().size() > localbays.a()) {
-            bool1 = true;
-          }
-        }
-        if (!(localbays instanceof bkpw)) {
-          break label385;
-        }
-      }
-      for (;;)
-      {
-        localArrayList.add(localbays);
-        localbays = b(localList, parambbfs.jdField_a_of_type_JavaLangString);
-        if (((localbays instanceof bayd)) && (localbays.a() != null) && (localbays.a().size() > 0)) {
-          parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-        }
-        if (localbays != null)
-        {
-          localArrayList.add(new baya(localbays));
-          localArrayList.add(localbays);
-        }
-        localbays = c(localList, parambbfs.jdField_a_of_type_JavaLangString);
-        if (((localbays instanceof bayf)) && (localbays.a() != null) && (localbays.a().size() > 0)) {
-          parambbfs.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-        }
-        if (localbays != null)
-        {
-          localArrayList.add(new baya(localbays));
-          localArrayList.add(localbays);
-        }
-        this.jdField_b_of_type_Int = localList.size();
-        return localArrayList;
-        label385:
-        if ((localbays instanceof asmk)) {
-          localArrayList.add(new baya(localbays, amtj.a(2131704513), bool1));
-        } else if (bgbo.e(GroupSearchEngine.a(this.jdField_b_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) == 1) {
-          localArrayList.add(new baya(localbays, localbays.a().toString() + " " + this.jdField_a_of_type_Long + "ms", bool1));
-        } else if ((localbays instanceof bayl)) {
-          localArrayList.add(new baya(localbays, amtj.a(2131704493), true));
-        } else if ((localbays instanceof bayh)) {
-          localArrayList.add(new baya(localbays, localbays.a(), bool1));
-        } else if ((localbays instanceof bawl)) {
-          localArrayList.add(new baya(localbays, amtj.a(2131704501), bool1));
-        } else {
-          localArrayList.add(new baya(localbays));
-        }
+      paramActivity = ((FragmentActivity)paramActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+      if ((paramActivity instanceof ResourceGrabFragment)) {
+        ((ResourceGrabFragment)paramActivity).d();
       }
     }
-    this.jdField_b_of_type_Int = 0;
-    return localArrayList;
+    ResourceGrabView.a(this.a, null);
   }
   
-  protected bays b(List<bayt> paramList, String paramString)
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity)
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabView", 2, "onActivityResumed activity: " + paramActivity);
+    }
+    ResourceGrabView.a(this.a, new WeakReference(paramActivity));
+    this.a.a(ResourceGrabView.a(this.a));
+    ResourceGrabView.a(this.a);
   }
   
-  protected bays c(List<bayt> paramList, String paramString)
-  {
-    return null;
-  }
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

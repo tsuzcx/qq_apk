@@ -102,6 +102,12 @@ public class SuperPlayerSDKMgr
   {
     sLogListener = paramILogListener;
   }
+  
+  public static void setUpcInfo(String paramString, int paramInt)
+  {
+    TVideoMgr.setUpc(paramString);
+    TPPlayerMgr.setUpcInfo(paramString, paramInt);
+  }
 }
 
 

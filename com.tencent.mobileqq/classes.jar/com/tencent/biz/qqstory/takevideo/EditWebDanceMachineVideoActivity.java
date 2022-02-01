@@ -1,7 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -12,11 +11,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import anvx;
 import com.tencent.mobileqq.richmedia.capture.view.FadedButton;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import xzd;
-import ybz;
+import ynw;
+import yqs;
 
 public class EditWebDanceMachineVideoActivity
   extends EditVideoActivity
@@ -25,7 +25,7 @@ public class EditWebDanceMachineVideoActivity
   public static int a;
   private long jdField_a_of_type_Long = -1L;
   private String jdField_a_of_type_JavaLangString = "https://qun.qq.com/qqweb/m/qun/qun_activity/dance-game.html";
-  private ybz jdField_a_of_type_Ybz;
+  private yqs jdField_a_of_type_Yqs;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString = "?ddcat=%s&ddid=%s&uuid=%s&md5=%s&uin=%s&nick=%s&score=%s&percent=%s&_wv=16778243&_bid=2932";
   private String c = "";
@@ -58,13 +58,13 @@ public class EditWebDanceMachineVideoActivity
       super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       return;
     }
-    this.jdField_a_of_type_Ybz.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Yqs.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    paramBundle = (RelativeLayout)findViewById(2131364079);
+    paramBundle = (RelativeLayout)findViewById(2131364154);
     paramBundle.removeAllViews();
     paramBundle.getLayoutParams().height = ScreenUtil.dip2px(70.0F);
     GradientDrawable localGradientDrawable = new GradientDrawable();
@@ -82,30 +82,30 @@ public class EditWebDanceMachineVideoActivity
     localFadedButton.setBackgroundDrawable(localGradientDrawable);
     localFadedButton.setTextSize(1, 18.0F);
     localFadedButton.setTextColor(-1);
-    localFadedButton.setText(amtj.a(2131703073));
+    localFadedButton.setText(anvx.a(2131703424));
     localFadedButton.setGravity(17);
     localFadedButton.setOnClickListener(this);
     paramBundle.addView(localFadedButton);
-    this.jdField_a_of_type_Ybz = new ybz();
+    this.jdField_a_of_type_Yqs = new yqs();
     paramBundle = "";
-    if ((this.jdField_a_of_type_Xzd.a.mEditSource instanceof EditTakeVideoSource)) {
-      paramBundle = ((EditTakeVideoSource)this.jdField_a_of_type_Xzd.a.mEditSource).jdField_b_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_Ynw.a.mEditSource instanceof EditTakeVideoSource)) {
+      paramBundle = ((EditTakeVideoSource)this.jdField_a_of_type_Ynw.a.mEditSource).jdField_b_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_Ybz.a(this, paramBundle, this.jdField_a_of_type_Xzd.a.mEditSource.getSourcePath(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Xzd);
+    this.jdField_a_of_type_Yqs.a(this, paramBundle, this.jdField_a_of_type_Ynw.a.mEditSource.getSourcePath(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Ynw);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ybz != null) {
-      this.jdField_a_of_type_Ybz.a();
+    if (this.jdField_a_of_type_Yqs != null) {
+      this.jdField_a_of_type_Yqs.a();
     }
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ybz.b();
+    this.jdField_a_of_type_Yqs.b();
     EventCollector.getInstance().onViewClicked(paramView);
   }
   

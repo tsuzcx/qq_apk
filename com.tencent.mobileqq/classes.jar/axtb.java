@@ -1,16 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
-class axtb
-  extends axus
+public class axtb
+  extends DataSetObserver
 {
-  axtb(axsv paramaxsv) {}
+  public axtb(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  public void a(int paramInt)
+  public void onChanged()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    axsv.a(this.a).b();
+    super.onChanged();
+    this.a.a();
   }
 }
 

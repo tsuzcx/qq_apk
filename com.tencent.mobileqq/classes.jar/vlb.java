@@ -1,20 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import UserGrowth.stNotificationReq;
+import UserGrowth.stNotificationRsp;
 
-class vlb
-  extends SimpleJob<Object>
+public class vlb
+  extends vfo<stNotificationRsp>
 {
-  vlb(vla paramvla, String paramString, boolean paramBoolean)
+  public vlb(String paramString)
   {
-    super(paramString);
-  }
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    this.jdField_a_of_type_Vla.b(this.jdField_a_of_type_Boolean);
-    return null;
+    super("Notification", 4);
+    stNotificationReq localstNotificationReq = new stNotificationReq();
+    localstNotificationReq.linkStrategyArgs = vmq.a();
+    localstNotificationReq.push_info = paramString;
+    this.a = localstNotificationReq;
+    vmp.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
   }
 }
 

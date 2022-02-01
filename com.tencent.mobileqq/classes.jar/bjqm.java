@@ -1,6 +1,6 @@
-public abstract interface bjqm
+public class bjqm
 {
-  public abstract boolean a(int paramInt);
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
 }
 
 

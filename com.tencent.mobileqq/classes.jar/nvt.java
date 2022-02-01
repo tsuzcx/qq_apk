@@ -1,91 +1,82 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
+import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import java.util.ArrayList;
 
 public class nvt
-  extends nui
+  implements bcug
 {
-  public nvt(Context paramContext, ArrayList<obr> paramArrayList, nts paramnts, String paramString1, String paramString2)
+  private QQAppInterface a;
+  
+  public nvt(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, paramArrayList, paramnts, paramString1, paramString2);
+    this.a = paramQQAppInterface;
+    nvs.a();
   }
   
-  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, obq paramobq, int paramInt, nts paramnts, String paramString1, String paramString2)
+  public int a()
   {
-    paramobq = a(paramobq, paramInt);
-    if (paramobq.isEmpty())
-    {
-      paramContext = paramView;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("AccountDetailWindowViewWrapper", 2, "createView return convertView!");
-        paramContext = paramView;
-      }
-    }
-    do
-    {
-      return paramContext;
-      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
-        break;
-      }
-      paramView = (LinearLayout)paramView;
-      Object localObject = paramView.getTag();
-      if ((localObject == null) || (!(localObject instanceof nvt)) || (!((nvt)localObject).a(paramobq))) {
-        break;
-      }
-      paramContext = paramView;
-    } while (!QLog.isDevelopLevel());
-    QLog.d("AccountDetailWindowViewWrapper", 2, "createView reuse!");
-    return paramView;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailWindowViewWrapper", 2, "createView new create!");
-    }
-    paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131558410, paramViewGroup, false);
-    paramView.setPadding(0, AIOUtils.dp2px(20.0F, paramViewGroup.getResources()), 0, 0);
-    paramContext = new nvt(paramContext, paramobq, paramnts, paramString1, paramString2);
-    paramView.setTag(paramContext);
-    paramContext.a(paramView);
-    return paramView;
+    return 1;
   }
   
-  @TargetApi(9)
-  private void a(LinearLayout paramLinearLayout)
+  public ReqItem a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailWindowViewWrapper", 2, "buildView!");
+      QLog.d("BnrReport", 2, "getCheckUpdateItemData");
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = AIOUtils.dp2px(140.0F, (Resources)localObject);
-    int j = AIOUtils.dp2px(10.0F, (Resources)localObject);
-    if (Build.VERSION.SDK_INT >= 9) {
-      ((HorizontalScrollView)paramLinearLayout.findViewById(2131381130)).setOverScrollMode(2);
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.cOperType = 1;
+    localReqItem.eServiceID = 118;
+    BnrReport.BNRConfigMsg localBNRConfigMsg = nvs.a(this.a.getCurrentAccountUin());
+    if (localBNRConfigMsg != null) {
+      localReqItem.vecParam = bhjl.a(localBNRConfigMsg.toByteArray());
     }
-    localObject = (GridView)paramLinearLayout.findViewById(2131381121);
-    ((GridView)localObject).setClickable(true);
-    ((GridView)localObject).setColumnWidth(i);
-    ((GridView)localObject).setStretchMode(0);
-    ((GridView)localObject).setHorizontalSpacing(j);
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    ((GridView)localObject).setLayoutParams(new LinearLayout.LayoutParams((i + j) * k - j, -2));
-    ((GridView)localObject).setNumColumns(k);
-    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
-    if (Build.VERSION.SDK_INT >= 9) {
-      ((GridView)localObject).setOverScrollMode(2);
+    nvs.a = true;
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
     }
-    ((GridView)localObject).setAdapter(new nvu(this));
-    paramLinearLayout.setClickable(false);
-    paramLinearLayout.setOnClickListener(null);
+    BnrReport.BNRConfigMsg localBNRConfigMsg;
+    if (paramRespItem.cResult == 2) {
+      if (paramRespItem.eServiceID == 118)
+      {
+        paramRespItem = bhjl.b(paramRespItem.vecUpdate);
+        if (paramRespItem != null) {
+          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localBNRConfigMsg.mergeFrom(paramRespItem);
+        nvs.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
+        nvs.a(this.a, 74);
+        nvs.a = false;
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      catch (Exception paramRespItem)
+      {
+        paramRespItem.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
+      }
+    }
   }
 }
 

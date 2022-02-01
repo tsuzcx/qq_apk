@@ -1,31 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import java.util.ArrayList;
+import java.util.List;
 
-final class bfvb
-  implements DialogInterface.OnClickListener
+public abstract class bfvb
+  extends bfur
 {
-  bfvb(Activity paramActivity, bcan parambcan) {}
+  public List<Integer> b = new ArrayList();
+  public int g = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfvb()
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-    }
-    while (this.jdField_a_of_type_Bcan == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bcan.b();
+    this.b.add(Integer.valueOf(0));
+    this.b.add(Integer.valueOf(3));
+    this.b.add(Integer.valueOf(1));
+    this.b.add(Integer.valueOf(2));
+  }
+  
+  public int e()
+  {
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar;
 
-public final class oet
-  implements Parcelable.Creator<VideoInfo.KdTagItem>
+public class oet
+  implements ViewPager.OnPageChangeListener
 {
-  public VideoInfo.KdTagItem a(Parcel paramParcel)
+  public oet(VideoCoverFragment paramVideoCoverFragment, ViewPager.OnPageChangeListener paramOnPageChangeListener) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    return new VideoInfo.KdTagItem(paramParcel);
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
+    }
   }
   
-  public VideoInfo.KdTagItem[] a(int paramInt)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    return new VideoInfo.KdTagItem[paramInt];
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment, paramInt);
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+    }
+    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
+      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a(paramInt);
+    }
+    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
+      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a().setProgress(paramInt, 0);
+    }
   }
 }
 

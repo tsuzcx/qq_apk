@@ -1,18 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import java.util.Iterator;
+import java.util.List;
 
-final class alci
-  implements DialogInterface.OnClickListener
+public class alci
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  alci(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public alci(RecordMicView paramRecordMicView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = RecordMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
+    {
+      alcj localalcj = (alcj)paramValueAnimator.next();
+      localalcj.jdField_c_of_type_Float = (localalcj.f + (localalcj.g - localalcj.f) * f);
+      localalcj.d = (localalcj.h + (localalcj.i - localalcj.h) * f);
+      localalcj.e = (localalcj.j + (localalcj.k - localalcj.j) * f);
+      localalcj.a = (localalcj.b + (int)((localalcj.jdField_c_of_type_Int - localalcj.b) * f));
     }
+    this.a.invalidate();
   }
 }
 

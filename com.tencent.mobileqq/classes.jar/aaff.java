@@ -1,47 +1,29 @@
-import android.content.Context;
-import java.lang.reflect.Method;
-import mqq.app.IActivityDispatchCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aaff
-  implements IActivityDispatchCallback
+class aaff
+  extends aafw
 {
-  public static aaff a;
-  
-  public static void a()
+  aaff(aafb paramaafb, aafj paramaafj, String paramString)
   {
-    try
+    super(paramaafb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      Method localMethod = Class.forName("com.tencent.mobileqq.screendetect.ScreenShotDetector").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (aaff)localMethod.invoke(null, new Object[0]);
-      return;
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aafb.a));
+      this.jdField_a_of_type_Aafb.a = System.currentTimeMillis();
     }
-    catch (Throwable localThrowable) {}
-  }
-  
-  public static void a(Context paramContext)
-  {
-    aaff localaaff = a;
-    if (localaaff != null) {
-      localaaff.c(paramContext);
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aafj.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
     }
   }
-  
-  public static void b(Context paramContext)
-  {
-    aaff localaaff = a;
-    if (localaaff != null) {
-      localaaff.d(paramContext);
-    }
-  }
-  
-  public abstract void c(Context paramContext);
-  
-  public abstract void d(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaff
  * JD-Core Version:    0.7.0.1
  */

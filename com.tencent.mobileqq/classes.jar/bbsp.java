@@ -1,8 +1,4 @@
-public class bbsp
-{
-  public int a = -1;
-  public bbsm a;
-}
+public class bbsp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

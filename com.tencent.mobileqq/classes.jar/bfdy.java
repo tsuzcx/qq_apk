@@ -1,35 +1,52 @@
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
+
 public class bfdy
+  implements bfes
 {
-  public static int A = -99;
-  public static int B = -98;
-  public static int C = -97;
-  public static int D = -36;
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 1;
-  public static int f = 2;
-  public static int g = 3;
-  public static int h = 4;
-  public static int i = 5;
-  public static int j = 6;
-  public static int k = 7;
-  public static int l = 8;
-  public static int m = 101;
-  public static int n = 102;
-  public static int o = 103;
-  public static int p = 104;
-  public static int q = 105;
-  public static int r = 106;
-  public static int s = 107;
-  public static int t = 108;
-  public static int u = 109;
-  public static int v = 111;
-  public static int w = 112;
-  public static int x = 113;
-  public static int y = 114;
-  public static int z = 100;
+  public bfdy(NewTroopContactView paramNewTroopContactView) {}
+  
+  public ArrayList<ResultRecord> a()
+  {
+    return this.a.c;
+  }
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Bfdm.notifyDataSetChanged();
+    if (this.a.jdField_a_of_type_Bfdm.getGroupCount() > 0)
+    {
+      Groups localGroups1 = this.a.jdField_a_of_type_Bfdm.a(1007L);
+      Groups localGroups2 = this.a.jdField_a_of_type_Bfdm.a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.a(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setIsNeedScrollPositionTop(true);
+        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.smoothScrollToPositionFromTop(1, 0, 0);
+      }
+      if (localGroups1 != null) {
+        this.a.jdField_a_of_type_Bfeq.a();
+      }
+      if (localGroups2 != null) {
+        this.a.jdField_a_of_type_Bfeq.c();
+      }
+    }
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.c.size())
+    {
+      localArrayList.add(((ResultRecord)this.a.c.get(i)).uin);
+      i += 1;
+    }
+    return localArrayList;
+  }
 }
 
 

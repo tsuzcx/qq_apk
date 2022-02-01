@@ -1,74 +1,59 @@
-import com.tencent.beacon.event.UserAction;
-import com.tencent.beacon.upload.TunnelInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.utils.ReportUtils.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.24.1;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.24.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class akgk
+  extends anvi
 {
-  static
-  {
-    UserAction.registerTunnel(new TunnelInfo("000004B5DU3Q3LD1"));
-  }
+  public akgk(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  private static final String a(AppRuntime paramAppRuntime)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    if (paramAppRuntime == null) {
-      return "";
-    }
-    return paramAppRuntime.getAccount();
-  }
-  
-  public static Map<String, String> a(JSONObject paramJSONObject)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramJSONObject == null) {
-      return localHashMap;
-    }
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
+    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
     {
-      String str = (String)localIterator.next();
-      localHashMap.put(str, paramJSONObject.optString(str));
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
+      }
+      return;
     }
-    return localHashMap;
-  }
-  
-  public static void a()
-  {
-    ThreadManagerV2.executeOnFileThread(new ReportUtils.1());
-  }
-  
-  public static void a(String paramString1, String paramString2, Map<String, String> paramMap)
-  {
-    if (paramMap != null)
-    {
-      if ((!paramMap.containsKey("A8")) && (BaseApplicationImpl.getApplication() != null)) {
-        paramMap.put("A8", a(BaseApplicationImpl.getApplication().peekAppRuntime()));
-      }
-      if (!paramMap.containsKey("plat")) {
-        paramMap.put("plat", "android");
-      }
-      if (!paramMap.containsKey("version")) {
-        paramMap.put("version", "8.4.8");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
     }
-    UserAction.onUserActionToTunnel(paramString1, paramString2, true, -1L, -1L, paramMap, true, true);
+    AvatarPendantActivity.d(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    String str2 = QQHeadDownloadHandler.get1080QQHeadDownLoadUrl(paramSetting.url, paramSetting.bFaceFlags);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str2)) {
+      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
+    }
+    this.a.d = paramSetting.headImgTimestamp;
+    ThreadManager.getUIHandler().post(new AvatarPendantActivity.24.2(this, str1));
   }
   
-  public static void a(String paramString1, String paramString2, JSONObject paramJSONObject)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    a(paramString1, paramString2, a(paramJSONObject));
+    AvatarPendantActivity.d(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    if (paramBoolean) {
+      ThreadManager.excute(new AvatarPendantActivity.24.1(this), 32, null, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,41 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x120.SubMsgType0x120.MsgBody;
 
 public class acqc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements acpi
 {
-  public acqc(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onGlobalLayout()
+  private static void a(acnk paramacnk, MsgType0x210 paramMsgType0x210)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
-    {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x120,");
     }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
+    try
     {
+      SubMsgType0x120.MsgBody localMsgBody = new SubMsgType0x120.MsgBody();
+      if (paramacnk.a(paramMsgType0x210))
+      {
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        VipUtils.a(paramacnk.a(), localMsgBody);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x120, handle0x210_0x120push");
+        }
+      }
       return;
-      i = 0;
-      break;
     }
-    ((EditText)localObject).setCursorVisible(true);
+    catch (Exception paramacnk)
+    {
+      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x120], errInfo->" + paramacnk.getMessage());
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgType0x210);
+    return null;
   }
 }
 

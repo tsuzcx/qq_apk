@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class aflh
-  implements afmz
 {
-  public aflh(DoodlePanel paramDoodlePanel) {}
-  
-  public void a(afmy paramafmy)
-  {
-    this.a.a(paramafmy);
-    paramafmy = "" + paramafmy.a + ";" + paramafmy.b + ";" + paramafmy.c;
-    SharePreferenceUtils.set(this.a.getContext(), "aio_doodle_colorpicker_select", paramafmy);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

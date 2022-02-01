@@ -3,10 +3,8 @@ package com.tencent.mobileqq.mini.report;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
@@ -591,22 +589,6 @@ public class MiniReportManager
   public static void reportEventType(MiniAppConfig paramMiniAppConfig, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     reportEventType(paramMiniAppConfig, paramInt, null, null, null, 0, paramString1, 0L, null, paramString2, paramString3, paramString4, paramString5);
-  }
-  
-  public static void reportJsError(AppBrandRuntime paramAppBrandRuntime, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      return;
-      if ((paramAppBrandRuntime != null) && (paramAppBrandRuntime.apkgInfo != null)) {}
-      for (paramAppBrandRuntime = paramAppBrandRuntime.apkgInfo.appConfig; !isJsErrorReported(paramAppBrandRuntime, paramString2); paramAppBrandRuntime = null)
-      {
-        reportEventType(paramAppBrandRuntime, 23, paramString1, paramString2, null, 0);
-        appendJsErrorToReportedList(paramAppBrandRuntime, paramString2);
-        return;
-      }
-    }
   }
 }
 

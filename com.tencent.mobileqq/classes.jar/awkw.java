@@ -1,26 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-
-public class awkw
-  implements AdapterView.OnItemClickListener
+class awkw
+  implements awks
 {
-  public awkw(GameQuickWordsPanel paramGameQuickWordsPanel) {}
+  awkw(awkt paramawkt) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramView = new acwc();
-    paramView.c = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    paramView.a = System.currentTimeMillis();
-    acvv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
-    this.a.jdField_a_of_type_Ahgc.hideAllPanels();
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      awkt.b(this.a);
+      return;
+    case 1: 
+      awkt.c(this.a);
+      return;
+    case 2: 
+      awkt.a(this.a);
+      return;
+    case 3: 
+      awkt.d(this.a);
+      return;
+    }
+    awkt.e(this.a);
   }
 }
 

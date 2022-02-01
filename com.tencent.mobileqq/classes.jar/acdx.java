@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.DeliverGiftMsg;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
 
-public class acdx
-  extends acew
+class acdx
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public int a()
-  {
-    return 1000;
-  }
+  acdx(acdv paramacdv, ViewGroup paramViewGroup) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    new bblb().a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.deliver_gift_msg.has();
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(7942);
+    }
   }
 }
 

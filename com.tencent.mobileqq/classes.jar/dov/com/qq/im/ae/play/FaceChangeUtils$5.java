@@ -1,23 +1,22 @@
 package dov.com.qq.im.ae.play;
 
-import android.graphics.Bitmap;
+import com.tencent.ttpic.openapi.filter.SimpleGLThread;
 
 final class FaceChangeUtils$5
   implements Runnable
 {
-  FaceChangeUtils$5(Bitmap paramBitmap, FaceChangeUtils.CropFaceCallback paramCropFaceCallback) {}
+  FaceChangeUtils$5(Runnable paramRunnable, SimpleGLThread paramSimpleGLThread) {}
   
   public void run()
   {
     try
     {
-      FaceChangeUtils.access$300(this.val$photo, this.val$callback);
+      this.val$runnable.run();
       return;
     }
-    catch (Exception localException)
+    finally
     {
-      localException.printStackTrace();
-      this.val$callback.onFail(-1);
+      this.val$glThread.destroy();
     }
   }
 }

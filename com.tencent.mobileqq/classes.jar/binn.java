@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigGroupInfo;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public class binn
+final class binn
+  implements bilx
 {
-  public List<bino> a;
-  
-  public binn() {}
-  
-  public binn(mobileqq_qidian.ConfigGroupInfo paramConfigGroupInfo)
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if (paramConfigGroupInfo.rpt_msg_config_info.has())
-    {
-      paramConfigGroupInfo = paramConfigGroupInfo.rpt_msg_config_info.get();
-      this.a = new ArrayList(paramConfigGroupInfo.size());
-      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
-      while (paramConfigGroupInfo.hasNext())
-      {
-        mobileqq_qidian.ConfigInfo localConfigInfo = (mobileqq_qidian.ConfigInfo)paramConfigGroupInfo.next();
-        this.a.add(new bino(localConfigInfo));
-      }
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
     }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 

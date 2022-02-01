@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import android.view.SurfaceView;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bgve;
-import bhzt;
+import bifw;
+import bjkv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
@@ -22,46 +22,46 @@ public class QZoneFloatJsHandleLogic
   public static String url = "";
   private static SurfaceView view;
   
-  public static void handleDownLoadFloatFinish(bgve parambgve, String... paramVarArgs)
+  public static void handleDownLoadFloatFinish(bifw parambifw, String... paramVarArgs)
   {
-    if ((parambgve == null) || (parambgve.a() == null) || (parambgve.a() == null)) {}
+    if ((parambifw == null) || (parambifw.a() == null) || (parambifw.a() == null)) {}
     FrameLayout localFrameLayout;
     do
     {
       do
       {
         return;
-        localFrameLayout = (FrameLayout)parambgve.a().findViewById(2131381043);
+        localFrameLayout = (FrameLayout)parambifw.a().findViewById(2131381402);
         if ((view != null) && (view.getParent() == localFrameLayout))
         {
-          QZoneHelper.resumeQZoneFloatObjectView(parambgve.a(), view);
+          QZoneHelper.resumeQZoneFloatObjectView(parambifw.a(), view);
           return;
         }
-        url = parambgve.a().getUrl();
+        url = parambifw.a().getUrl();
         if (paramVarArgs != null) {
           data = paramVarArgs[0];
         }
       } while (TextUtils.isEmpty(data));
-      view = QZoneHelper.createQZoneFloatObjectView(parambgve.a(), data);
+      view = QZoneHelper.createQZoneFloatObjectView(parambifw.a(), data);
     } while (view == null);
     localFrameLayout.addView(view, new FrameLayout.LayoutParams(-1, -1));
   }
   
-  public static void handleSetFloatFinish(bgve parambgve, String... paramVarArgs)
+  public static void handleSetFloatFinish(bifw parambifw, String... paramVarArgs)
   {
-    if (parambgve == null) {}
+    if (parambifw == null) {}
     do
     {
       do
       {
         return;
-        parambgve = parambgve.a();
-      } while (parambgve == null);
-      paramVarArgs = (FrameLayout)parambgve.findViewById(2131381043);
+        parambifw = parambifw.a();
+      } while (parambifw == null);
+      paramVarArgs = (FrameLayout)parambifw.findViewById(2131381402);
       if ((paramVarArgs != null) && (view != null)) {
         paramVarArgs.removeView(view);
       }
-      QZoneHelper.stopQZoneFloatObjectView(parambgve, view);
+      QZoneHelper.stopQZoneFloatObjectView(parambifw, view);
       view = null;
       paramVarArgs = new Intent("action_js2qzone");
       Bundle localBundle = new Bundle();
@@ -70,11 +70,11 @@ public class QZoneFloatJsHandleLogic
       if (QLog.isColorLevel()) {
         QLog.d("QZoneFloatJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
       }
-      QZoneHelper.forwardToQzoneTransluentActivity(parambgve, QZoneHelper.UserInfo.getInstance(), paramVarArgs);
-      QZoneWebViewJsHandleLogic.doRefreshFeed(parambgve);
-      parambgve.finish();
+      QZoneHelper.forwardToQzoneTransluentActivity(parambifw, QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+      QZoneWebViewJsHandleLogic.doRefreshFeed(parambifw);
+      parambifw.finish();
     } while (!QZoneHelper.isInFloatItemBlacklist());
-    bhzt.a().a(QZoneHelper.STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW, 1);
+    bjkv.a().a(QZoneHelper.STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW, 1);
   }
 }
 

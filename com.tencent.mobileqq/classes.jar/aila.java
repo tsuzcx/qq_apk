@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.widget.QQBlurView;
 
-public class aila
-  implements DialogInterface.OnClickListener
+class aila
+  implements View.OnAttachStateChangeListener
 {
-  public aila(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  aila(aikz paramaikz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    this.a.k();
-    this.a.q();
-    if (TroopNotifyAndRecommendView.b(this.a) != null) {
-      TroopNotifyAndRecommendView.b(this.a).setVisibility(8);
+    if (aikz.a(this.a) != null) {
+      aikz.a(this.a).destory();
     }
-    bcef.b(this.a.a, "dc00899", "Grp_contacts_news", "", "notice", "clear_clk", 0, 0, "", "", "", "");
+    if (aikz.a(this.a) != null)
+    {
+      aikz.a(this.a).c();
+      aikz.a(this.a, null);
+    }
+    aikz.a(this.a).removeOnAttachStateChangeListener(this);
   }
 }
 

@@ -1,46 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class xiw
-  extends vll<xin, xhv>
+public class xiw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xiw(xin paramxin)
-  {
-    super(paramxin);
-  }
+  public xiw(XViewPager paramXViewPager) {}
   
-  public void a(@NonNull xin paramxin, @NonNull xhv paramxhv)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((!paramxhv.jdField_a_of_type_JavaLangString.equals(xin.a(paramxin))) || (paramxhv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (xin.a(paramxin) == null))
-    {
-      xvv.b(this.TAG, "ignore this comment list event. %s.", paramxhv.toString());
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.scrollTo(i, 0);
+    XViewPager.a(this.a, i);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(2);
     }
-    if (!xin.a(paramxin).c())
-    {
-      xvv.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramxhv.toString() });
-      return;
-    }
-    xvv.a(this.TAG, "receive comment list event. %s.", paramxhv.toString());
-    xin.a(paramxin).a(paramxhv.jdField_a_of_type_JavaUtilList, paramxhv.c);
-    xin.a(paramxin).a().updateVideoInfo(paramxhv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (xin.a(paramxin).a().size() < 1)
-    {
-      xin.a(paramxin).b();
-      return;
-    }
-    paramxin.a();
   }
-  
-  public Class acceptEventClass()
-  {
-    return xhv.class;
-  }
-  
-  public void b(@NonNull xin paramxin, @NonNull xhv paramxhv) {}
 }
 
 

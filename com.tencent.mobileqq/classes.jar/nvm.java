@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class nvm
-  implements View.OnClickListener
+public abstract interface nvm
 {
-  nvm(num paramnum, obr paramobr) {}
+  public abstract void a(String paramString1, int paramInt, String paramString2);
   
-  public void onClick(View paramView)
-  {
-    num.a(this.jdField_a_of_type_Num);
-    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a();
+  
+  public abstract void b(String paramString1, int paramInt, String paramString2);
+  
+  public abstract boolean b();
 }
 
 

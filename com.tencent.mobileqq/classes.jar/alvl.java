@@ -1,8 +1,6 @@
-public class alvl
+public abstract interface alvl
 {
-  public int a;
-  public CharSequence a;
-  public int b;
+  public abstract void a(String paramString);
 }
 
 

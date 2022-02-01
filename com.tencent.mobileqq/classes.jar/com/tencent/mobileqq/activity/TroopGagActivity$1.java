@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import bfbz;
+import bgkf;
 
 public class TroopGagActivity$1
   implements Runnable
 {
-  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bfbz parambfbz) {}
+  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bgkf parambgkf) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopGagActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.1
  * JD-Core Version:    0.7.0.1
  */

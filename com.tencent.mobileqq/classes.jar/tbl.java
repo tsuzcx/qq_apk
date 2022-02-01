@@ -1,13 +1,16 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
-class tbl
-  implements PopupWindow.OnDismissListener
+public class tbl
+  implements bdyw
 {
-  tbl(tbk paramtbk) {}
+  public tbl(ReadInJoySkinGuideView.1 param1) {}
   
-  public void onDismiss()
+  public void a(bdxz parambdxz)
   {
-    this.a.a(1.0F);
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, parambdxz));
   }
 }
 

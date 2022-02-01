@@ -1,22 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
 
 public class vkn
-  extends SimpleJob<Void>
 {
-  public vkn(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
+  private static int a(String paramString)
   {
-    super(paramString);
+    int i = 2;
+    if (TextUtils.equals(paramString, "trends")) {
+      i = 6;
+    }
+    return i;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static vkl a(String paramString)
   {
-    int i = vns.a();
-    xvv.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    int i = a(paramString);
+    if (!TextUtils.equals(paramString, "trends")) {
+      return new vkm(i);
+    }
+    return new vko(i);
   }
 }
 

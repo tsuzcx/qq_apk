@@ -65,7 +65,7 @@ public class ImmersiveTitleBar2
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break label82;
       }
-      setBackgroundResource(2130850016);
+      setBackgroundResource(2130850109);
       return;
       bool = false;
       break;
@@ -73,7 +73,7 @@ public class ImmersiveTitleBar2
       setCustomHeight(0);
     }
     label82:
-    setBackgroundColor(getResources().getColor(2131167070));
+    setBackgroundColor(getResources().getColor(2131167084));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)

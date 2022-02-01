@@ -1,81 +1,33 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "", "adId", "", "adSource", "resVersion", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getAdId", "()Ljava/lang/String;", "getAdSource", "getResVersion", "()I", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tvp
+class tvp
+  implements DialogInterface.OnCancelListener
 {
-  private final int jdField_a_of_type_Int;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final String b;
+  tvp(tvm paramtvm, String paramString) {}
   
-  public tvp(@NotNull String paramString1, @NotNull String paramString2, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final String b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    paramDialogInterface = new JSONObject();
+    try
     {
-      if ((paramObject instanceof tvp))
-      {
-        paramObject = (tvp)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int)) {}
+      paramDialogInterface.put("index", tvm.a(this.jdField_a_of_type_Tvm));
+      paramDialogInterface.put("type", 1);
+      if (tvm.a(this.jdField_a_of_type_Tvm) != null) {
+        ((BridgeModule)tvm.a(this.jdField_a_of_type_Tvm).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       }
+      return;
     }
-    else {
-      return true;
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      str = this.b;
-      if (str != null) {
-        j = str.hashCode();
-      }
-      return (i * 31 + j) * 31 + this.jdField_a_of_type_Int;
-    }
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "AdResCheckInfo(adId=" + this.jdField_a_of_type_JavaLangString + ", adSource=" + this.b + ", resVersion=" + this.jdField_a_of_type_Int + ")";
+    catch (JSONException paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvp
  * JD-Core Version:    0.7.0.1
  */

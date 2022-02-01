@@ -1,19 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 
-class zut
-  implements ValueAnimator.AnimatorUpdateListener
+public class zut
+  implements Dispatcher.Dispatchable
 {
-  zut(zur paramzur, Container paramContainer) {}
+  public int a;
+  public Object a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public zut(int paramInt, Object... paramVarArgs)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
-    localLayoutParams.topMargin = paramValueAnimator.intValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
   }
 }
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import qqcircle.QQCircleRelation.RelationBiz;
-import vha;
+import vvv;
 
 class QCircleDoubleFollowUserHepler$1
   implements VSDispatchObserver.onVSRspCallBack<FeedCloudRead.StGetFollowListRsp>
@@ -89,7 +89,7 @@ class QCircleDoubleFollowUserHepler$1
         }
         QCircleDoubleFollowUserHepler.access$202(this.this$0, (List)QCircleDoubleFollowUserHepler.access$000(this.this$0).clone());
         this.this$0.updateFollowUserList(QCircleDoubleFollowUserHepler.access$200(this.this$0));
-        vha.a(System.currentTimeMillis());
+        vvv.a(System.currentTimeMillis());
         return;
         QLog.e("QCircleDoubleFollowUserHepler", 1, "doGetFollowUser fail: retCode:" + paramLong);
         return;

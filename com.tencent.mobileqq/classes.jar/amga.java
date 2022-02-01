@@ -1,273 +1,203 @@
 import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ExpandableListView;
 
-class amga
-  implements BusinessObserver
+public abstract class amga
+  extends blef
+  implements FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
-  private long jdField_a_of_type_Long;
-  private amgb jdField_a_of_type_Amgb;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<amfz> jdField_a_of_type_JavaUtilList;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  protected ExpandableListView a;
   
-  public amga(amgb paramamgb, String paramString1, String paramString2)
+  public amga(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Amgb = paramamgb;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+    bheg.a();
   }
   
-  public JSONObject a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(amgz paramamgz, Bitmap paramBitmap)
   {
-    if (paramBundle == null) {
-      return null;
+    a(paramamgz, paramBitmap, true);
+  }
+  
+  protected void a(amgz paramamgz, Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (paramamgz.jdField_c_of_type_AndroidWidgetImageView == null) {
+      return;
     }
-    JSONObject localJSONObject;
-    for (;;)
+    if (AppConstants.DATALINE_PC_UIN.equals(paramamgz.a))
     {
-      try
-      {
-        localJSONObject = new JSONObject();
-        if (!paramBoolean) {
-          break label323;
-        }
-        Object localObject = paramBundle.getByteArray("extra_data");
-        if (localObject == null) {
-          break;
-        }
-        paramBundle = new WebSSOAgent.UniSsoServerRsp();
-        paramBundle.mergeFrom((byte[])localObject);
-        localJSONObject.put("ssoRet", 0);
-        if (paramBundle.ret.has())
-        {
-          long l = paramBundle.ret.get();
-          localJSONObject.put("businessRet", l);
-          if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, biz ret code=" + l);
-          }
-          if (paramBundle.errmsg.has())
-          {
-            localObject = paramBundle.errmsg.get();
-            localJSONObject.put("msg", localObject);
-            if (QLog.isColorLevel()) {
-              QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, errmsg=" + (String)localObject);
-            }
-            if (!paramBundle.rspdata.has()) {
-              break label473;
-            }
-            paramBundle = paramBundle.rspdata.get();
-            localJSONObject.put("data", paramBundle);
-            if (!QLog.isColorLevel()) {
-              break label473;
-            }
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, rspData=" + paramBundle);
-            break label473;
-          }
-        }
-        else
-        {
-          localJSONObject.put("businessRet", 0);
-          continue;
-        }
-        localJSONObject.put("msg", "SSO发送成功");
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return null;
-      }
+      paramamgz.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844186);
+      return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.w("apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, ret success but no data");
-    }
-    localJSONObject.put("ssoRet", 255);
-    localJSONObject.put("businessRet", 0);
-    localJSONObject.put("msg", "SSO返回数据包为空");
-    break label473;
-    label323:
-    int i = paramBundle.getInt("extra_result_code");
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, msfResultCode=" + i);
-    }
-    if (i == 1001)
+    if (AppConstants.DATALINE_IPAD_UIN.equals(paramamgz.a))
     {
-      localJSONObject.put("ssoRet", 201);
-      localJSONObject.put("businessRet", 0);
-      localJSONObject.put("msg", amtj.a(2131699735));
+      paramamgz.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844184);
+      return;
+    }
+    if (AppConstants.DATALINE_PRINTER_UIN.equals(paramamgz.a))
+    {
+      paramamgz.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130844189);
+      return;
+    }
+    if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramamgz.a))
+    {
+      paramamgz.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130839629);
+      return;
+    }
+    if (paramBitmap == null) {
+      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(paramamgz.jdField_c_of_type_Int, paramamgz.a);
     }
     for (;;)
     {
-      localJSONObject.put("ssoRet", 202);
-      localJSONObject.put("businessRet", 0);
-      localJSONObject.put("msg", amtj.a(2131699732));
-      label473:
-      do
+      Bitmap localBitmap = paramBitmap;
+      if (paramBitmap == null)
       {
-        localJSONObject.put("ssoRet", 255);
-        localJSONObject.put("businessRet", 0);
-        localJSONObject.put("msg", amtj.a(2131699736));
-        return localJSONObject;
-        if (i == 1002) {
-          break;
+        if (paramBoolean) {
+          paramBitmap = bheg.a();
         }
-      } while (i != 1013);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((amfz)localIterator.next()).a(this, this.jdField_a_of_type_Amgb);
+        localBitmap = paramBitmap;
+        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing())
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramamgz.a, paramamgz.jdField_c_of_type_Int, false);
+          localBitmap = paramBitmap;
+        }
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "notifySSORsp, mReceivedSSO:" + this.jdField_b_of_type_Boolean);
-    }
-  }
-  
-  public void a(amfz paramamfz)
-  {
-    if (paramamfz != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramamfz);
-    }
-  }
-  
-  public void a(Context paramContext, String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
-  {
-    if ((paramJSONObject == null) || (paramContext == null) || (paramAppInterface == null)) {}
-    try
-    {
-      if (!QLog.isColorLevel()) {
-        return;
+      if (localBitmap == null) {
+        break;
       }
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "sendRequest, requestJsonObj:" + paramJSONObject + " context:" + paramContext + " app:" + paramAppInterface);
+      paramamgz.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
       return;
     }
-    catch (Exception paramContext)
+  }
+  
+  public void a(View paramView, int paramInt) {}
+  
+  protected void a(String paramString, Bitmap paramBitmap)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int i = 0;
+    if (i < j)
     {
-      Object localObject;
-      long l;
-      paramContext.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "sendRequest, currentUrl:" + paramString + " requestJsonObj:requestJsonObj");
-    }
-    if ((paramJSONObject.optInt("needCookie") == 1) && (!TextUtils.isEmpty(paramString)))
-    {
-      localObject = SwiftBrowserCookieMonster.c(paramString);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof amgz)))
       {
-        if (((String)localObject).indexOf(',') != -1) {
-          ((String)localObject).replace(',', ';');
+        localObject = (amgz)localObject;
+        if (paramString != null) {
+          break label69;
         }
-        paramJSONObject.put("Cookie", localObject);
+        a((amgz)localObject, null, false);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "Get cookie:" + npn.c((String)localObject, new String[0]) + " from " + npn.b(paramString, new String[0]));
+      label69:
+      while (!paramString.equals(((amgz)localObject).a))
+      {
+        i += 1;
+        break;
       }
+      ((amgz)localObject).jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
     }
-    localObject = new WebSSOAgent.UniSsoServerReqComm();
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.8");
-    paramString = new WebSSOAgent.UniSsoServerReq();
-    paramString.comm.set((MessageMicro)localObject);
-    paramJSONObject.remove("callback");
-    paramJSONObject.remove("cmd");
-    paramJSONObject.remove("needCookie");
-    paramJSONObject.remove("timeout");
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("fingerprint", Build.FINGERPRINT);
-    ((JSONObject)localObject).put("model", Build.MODEL);
-    ((JSONObject)localObject).put("manufacturer", Build.MANUFACTURER);
-    ((JSONObject)localObject).put("brand", Build.BRAND);
-    ((JSONObject)localObject).put("device", Build.DEVICE);
-    ((JSONObject)localObject).put("product", Build.PRODUCT);
-    ((JSONObject)localObject).put("id", Build.ID);
-    ((JSONObject)localObject).put("level", Build.VERSION.SDK_INT);
-    ((JSONObject)localObject).put("cpu_abi", Build.CPU_ABI);
-    ((JSONObject)localObject).put("cpu_abi2", Build.CPU_ABI2);
-    paramJSONObject.put("option", localObject);
-    paramString.reqdata.set(paramJSONObject.toString());
-    paramContext = new NewIntent(paramContext, auwo.class);
-    paramContext.putExtra("extra_cmd", this.jdField_a_of_type_JavaLangString);
-    paramContext.putExtra("extra_data", paramString.toByteArray());
-    paramContext.putExtra("extra_timeout", -1L);
-    paramContext.setObserver(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, req, send request to msf");
+  }
+  
+  public int a_()
+  {
+    return 0;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
     }
-    paramAppInterface.startServlet(paramContext);
-    if (this.jdField_a_of_type_Amgb != null)
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    return null;
+  }
+  
+  public long getChildId(int paramInt1, int paramInt2)
+  {
+    return 0L;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public int getChildrenCount(int paramInt)
+  {
+    return 0;
+  }
+  
+  public Object getGroup(int paramInt)
+  {
+    return null;
+  }
+  
+  public int getGroupCount()
+  {
+    return 0;
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public boolean hasStableIds()
+  {
+    return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) && (paramBitmap != null)) {
+      a(paramString, paramBitmap);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0)
     {
-      paramContext = this.jdField_a_of_type_Amgb;
-      l = System.currentTimeMillis();
-      this.jdField_a_of_type_Long = l;
-      paramContext.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+    }
+    while (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
       return;
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 10000L) && (this.jdField_a_of_type_Boolean) && (((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) || (!this.jdField_b_of_type_Boolean));
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_OrgJsonJSONObject = a(paramBoolean, paramBundle);
-      this.jdField_b_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebSSOTask, onReceive, isSuccess: " + paramBoolean + " mResultJson:" + this.jdField_a_of_type_OrgJsonJSONObject);
-      }
-      a();
-      if (this.jdField_a_of_type_Amgb != null) {
-        this.jdField_a_of_type_Amgb.b = System.currentTimeMillis();
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, Exception: " + paramBundle.getMessage());
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mSSOCmd:").append(this.jdField_a_of_type_JavaLangString).append(" mPreloadTS:").append(this.jdField_a_of_type_Long).append(" mIsSuccess:").append(this.jdField_a_of_type_Boolean).append(" mReceivedSSO:").append(this.jdField_b_of_type_Boolean).append(" mResultJson:").append(this.jdField_a_of_type_OrgJsonJSONObject);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+    a(null, null);
   }
 }
 

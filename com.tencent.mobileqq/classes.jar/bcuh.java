@@ -1,50 +1,73 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
 
 public class bcuh
-  extends BusinessHandler
-  implements Handler.Callback
+  extends FriendListHandler
+  implements bcug
 {
-  private String[] a = { "docs.qq.com" };
+  public static String a;
+  private ToServiceMsg a;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "GetSimpleInfoCheckUpdateItem";
+  }
   
   public bcuh(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  private void a(Runnable paramRunnable)
+  public int a()
   {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bcui(this, paramRunnable)) == null) {
-      return;
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject2 = null;
+    getFriendInfo(this.app.getAccount());
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null)
+    {
+      aauq localaauq = this.app.mqqService.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
+      localObject1 = localObject2;
+      if (localaauq != null)
+      {
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        localObject1 = localObject2;
+        if (localaauq.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localUniPacket))
+        {
+          localObject1 = new ReqItem();
+          ((ReqItem)localObject1).eServiceID = 113;
+          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
+        }
+      }
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    return localObject1;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void a(RespItem paramRespItem)
   {
-    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
+    if ((paramRespItem.eServiceID == 113) && (paramRespItem.cResult == 2))
+    {
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetSimpleInfo");
+      localFromServiceMsg.setMsgSuccess();
+      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
+      this.app.receiveToService(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localFromServiceMsg);
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void send(ToServiceMsg paramToServiceMsg)
   {
-    return false;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
   }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return bcuf.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

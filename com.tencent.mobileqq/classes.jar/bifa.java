@@ -1,48 +1,39 @@
-import com.tencent.open.virtual.OpenSdkVirtualManager.2;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class bifa
-  extends bifk
+  implements View.OnLongClickListener
 {
-  public bifa(OpenSdkVirtualManager.2 param2) {}
+  public bifa(UnVisibleWebViewFragment paramUnVisibleWebViewFragment) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public boolean onLongClick(View paramView)
   {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-    atqa.a("KEY_DELETE_VIRTUAL_D18", this.a.jdField_a_of_type_Biej, paramBoolean);
-    int i = paramInt;
-    if (paramBoolean) {}
-    for (;;)
+    if (!this.a.mSetting.a("web_view_long_click", true))
     {
-      try
-      {
-        i = new JSONObject(paramString1).optInt("ErrorCode");
-        paramInt = i;
-        i = paramInt;
-        if (paramInt == 0)
-        {
-          paramBoolean = true;
-          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.deleteVirtual.result:", paramString1 });
-          if (this.a.jdField_a_of_type_Bhvf != null) {
-            this.a.jdField_a_of_type_Bhvf.a(paramBoolean, paramInt);
-          }
-          return;
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
       }
-      catch (Exception paramString2)
-      {
-        QLog.e("SDK_LOGIN.OpenSdkVirtualManager", 1, "Exception.e", paramString2);
-        i = paramInt;
+      return true;
+    }
+    if (!this.a.mSetting.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
       }
-      paramBoolean = false;
-      paramInt = i;
+      return false;
+    }
+    bigy localbigy = (bigy)this.a.mComponentsProvider.a(8);
+    if ((localbigy != null) && (localbigy.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifa
  * JD-Core Version:    0.7.0.1
  */

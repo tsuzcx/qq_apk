@@ -1,23 +1,18 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
 
 public class zln
-  implements ViewPager.OnPageChangeListener
+  extends behd
 {
-  public zln(SubscribeBannerView paramSubscribeBannerView) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public zln(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
-      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
-    }
+    super(paramContext, paramString, paramBoolean);
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    bdla.b(null, "dc00898", "", "", "0X800B5AC", "0X800B5AC", 0, 0, "", "", "", "");
   }
 }
 

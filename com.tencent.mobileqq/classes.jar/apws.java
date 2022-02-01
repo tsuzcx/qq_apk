@@ -1,172 +1,89 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.business.AvGameConfProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class apws
-  extends aptq<nji>
+class apws
+  extends BaseAdapter
 {
-  private final List<apwt> a = new LinkedList();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<apxo> jdField_a_of_type_JavaUtilList;
   
-  public static nji a()
+  public apws(apwn paramapwn, Context paramContext)
   {
-    nji localnji = (nji)apub.a().a(642);
-    if (localnji != null) {
-      return localnji;
-    }
-    return new nji();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a(int paramInt)
+  public apxo a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameConfProcessor", 2, "[notifyListeners]:" + this.a.size());
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
     }
-    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-    try
+    return (apxo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<apxo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView == null)
     {
-      synchronized (this.a)
-      {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
-        {
-          apwt localapwt = (apwt)localIterator.next();
-          try
-          {
-            localapwt.a(paramInt);
-          }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("AvGameConfProcessor", 1, localThrowable2, new Object[0]);
-          }
-        }
+      paramView = new apwu(this);
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844858);
+      localObject1 = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      localObject1 = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
+      ((RelativeLayout.LayoutParams)localObject1).addRule(13);
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
+      localObject1 = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      ((View)localObject1).setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject2 = a(paramInt);
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((apxo)localObject2).d))) {
+        ArkAppCacheMgr.getAppIcon(((apxo)localObject2).a, new apwt(this, paramView));
       }
-      this.a.clear();
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject2 = (apwu)paramView.getTag();
+      localObject1 = paramView;
+      paramView = (View)localObject2;
     }
-    catch (Throwable localThrowable1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvGameConfProcessor", 1, localThrowable1, new Object[0]);
-      }
-      return;
-    }
-    label162:
-  }
-  
-  @NonNull
-  public nji a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("AvGameConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new nji();
-  }
-  
-  @Nullable
-  public nji a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvGameConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
-      }
-      return nji.a(paramArrayOfaptx[0]);
-    }
-    return null;
-  }
-  
-  public void a(apwt paramapwt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameConfProcessor", 2, "[getConfig]");
-    }
-    synchronized (this.a)
-    {
-      if (this.a.size() > 0)
-      {
-        this.a.add(paramapwt);
-        return;
-      }
-      this.a.add(paramapwt);
-      apub.a().a(new int[] { 642 });
-      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-      ThreadManager.getSubThreadHandler().postAtTime(new AvGameConfProcessor.1(this), this, SystemClock.uptimeMillis() + 10000L);
-      return;
-    }
-  }
-  
-  public void a(nji paramnji)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramnji == null) {
-        break label48;
-      }
-    }
-    label48:
-    for (paramnji = paramnji.toString();; paramnji = " empty")
-    {
-      QLog.d("AvGameConfProcessor", 2, paramnji);
-      a(0);
-      return;
-    }
-  }
-  
-  public Class clazz()
-  {
-    return nji.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("AvGameConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-    a(paramInt);
-  }
-  
-  public int type()
-  {
-    return 642;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apws
  * JD-Core Version:    0.7.0.1
  */

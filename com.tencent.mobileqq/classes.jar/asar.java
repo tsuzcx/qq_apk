@@ -1,39 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.download.unite.DownloadDialogFragment;
 
 public class asar
-  extends ataq
+  implements DialogInterface.OnCancelListener
 {
-  public asar(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public asar(DownloadDialogFragment paramDownloadDialogFragment) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    DownloadDialogFragment.a(this.a, 2);
   }
 }
 

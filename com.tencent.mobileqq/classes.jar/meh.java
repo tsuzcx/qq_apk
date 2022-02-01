@@ -1,57 +1,53 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
 class meh
-  extends lff
+  implements View.OnClickListener
 {
-  meh(mee parammee) {}
+  meh(meg parammeg) {}
   
-  protected void a(long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("MultiIncomingCallUICtr", 1, "onConnected, seq[" + paramLong + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.b();
-    lyq.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
-    if (this.a.jdField_a_of_type_Mkk != null) {
-      this.a.jdField_a_of_type_Mkk.c();
-    }
-    if (this.a.jdField_a_of_type_Lez.d == 1) {
-      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
-    }
-    mua.a().a(this.a.f);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString)
-  {
-    if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(paramString)))
+    int i = 0;
+    mej localmej = (mej)paramView.getTag();
+    if (meg.a(this.a) == null)
     {
-      this.a.a(paramLong, paramInt);
-      this.a.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
+    bdla.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
     if (QLog.isColorLevel()) {
-      QLog.w("MultiIncomingCallUICtr", 1, "onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + paramLong + "]");
+      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(localmej.jdField_a_of_type_Long));
     }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-    if (this.a.jdField_a_of_type_Mkk != null) {
-      this.a.jdField_a_of_type_Mkk.a();
+    meg.a(this.a).getCurrentAccountUin();
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
+    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
+    localIntent.putExtra("memberUin", String.valueOf(localmej.jdField_a_of_type_Long));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      i = 1000;
     }
-    this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "onDestroyUI, peerUin:" + paramString + ", isQuit:" + paramBoolean + ", mPeerUin:" + this.a.jdField_c_of_type_JavaLangString);
+    for (;;)
+    {
+      localIntent.putExtra("uinType", i);
+      localIntent.setPackage(meg.a(this.a).getApplication().getPackageName());
+      meg.a(this.a).getApp().sendBroadcast(localIntent);
+      break;
+      if (this.a.jdField_a_of_type_Int == 2) {
+        i = 1004;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     meh
  * JD-Core Version:    0.7.0.1
  */

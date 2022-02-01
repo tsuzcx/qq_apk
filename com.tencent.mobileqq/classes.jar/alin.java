@@ -1,26 +1,17 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import com.tencent.widget.SingleLineTextView;
 
 public class alin
-  extends aliz
+  extends alhf
 {
-  public View a;
-  public Button a;
-  public CheckBox a;
+  public ImageView a;
   public TextView a;
-  public PhoneContact a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  
-  public alin()
-  {
-    this.c = 11;
-  }
+  public DragTextView a;
+  public MyGridView a;
+  public SingleLineTextView a;
 }
 
 

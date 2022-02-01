@@ -1,23 +1,57 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public final class acwq
-  implements QQPermissionCallback
+public class acwq
+  implements acos
 {
-  public acwq(DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a()
   {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 0);
+    return 10007;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean a()
   {
-    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.a.onClick(null, 1);
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(164);
+    byte[] arrayOfByte = paramQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (arrayOfByte != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
+    }
+    paramMessageRecord = paramQQAppInterface.getTinyIdCache().a(paramMessageRecord.frienduin);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramMessageRecord);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramMessageRecord)
+    {
+      for (;;)
+      {
+        QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
+      }
+    }
+    localCommTmp.to_uin.set(l1);
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8042;
   }
 }
 

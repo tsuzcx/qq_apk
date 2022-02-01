@@ -1,26 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ztp
-  implements DialogInterface.OnClickListener
+class ztp
+  implements View.OnClickListener
 {
-  public ztp(TroopGiftPanel paramTroopGiftPanel) {}
+  ztp(ztn paramztn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1)
+    if (!zsl.e())
     {
-      bgge.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      bcef.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
+      CertifiedAccountMeta.StFeed localStFeed = ztn.a(this.a);
+      if (localStFeed != null)
+      {
+        this.a.d(localStFeed);
+        if (this.a.a() != null) {
+          this.a.a().c(localStFeed);
+        }
+      }
     }
-    while (paramInt != 0) {
-      return;
-    }
-    bcef.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

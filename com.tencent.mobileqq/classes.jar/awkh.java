@@ -1,48 +1,34 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class awkh
+  implements DialogInterface.OnClickListener
 {
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "*S1*" + bfpt.a(paramString.getBytes(), 11);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
-    }
-    return str;
-  }
+  public awkh(LocationDialogUtil.6 param6) {}
   
-  public static boolean a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {
-      throw new NullPointerException("isBase64 src should not be null");
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "onClick: invoked. showStartShareLocationDialog  ", " which: ", Integer.valueOf(paramInt) });
     }
-    return paramString.startsWith("*S1*");
-  }
-  
-  public static String b(String paramString)
-  {
-    if (paramString == null) {
-      throw new NullPointerException("decode src should not be null");
+    if (BaseActivity.sTopActivity != null) {
+      LocationShareFragment.b(BaseActivity.sTopActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
-    }
-    String str = paramString;
-    if (a(paramString))
+    try
     {
-      paramString = new String(bfpt.a(paramString.substring("*S1*".length()), 11));
-      str = paramString;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
-        str = paramString;
-      }
+      awiz.a(BaseActivity.sTopActivity.app).a(true);
+      label79:
+      awju.a(this.a.b, "0X800A769");
+      return;
     }
-    return str;
+    catch (Throwable paramDialogInterface)
+    {
+      break label79;
+    }
   }
 }
 

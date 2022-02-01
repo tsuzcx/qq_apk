@@ -1,22 +1,31 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class yxg
-  implements Handler.Callback
 {
-  public yxg(ScannerActivity paramScannerActivity) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static yxk a(Context paramContext, String paramString)
   {
-    switch (paramMessage.what)
+    paramContext = yxk.a(paramContext);
+    if (paramContext != null)
     {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        yxk localyxk = (yxk)paramContext.next();
+        if (TextUtils.equals(paramString, localyxk.a)) {
+          return localyxk;
+        }
+      }
     }
-    for (;;)
-    {
-      return true;
-      this.a.c();
-    }
+    return null;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return !TextUtils.isEmpty(SharePreferenceUtils.get(paramContext, "qqstory_savedMusicList"));
   }
 }
 

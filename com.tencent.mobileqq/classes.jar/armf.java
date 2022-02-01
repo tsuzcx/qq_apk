@@ -1,45 +1,74 @@
-import android.graphics.Rect;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class armf
-  extends RecyclerView.ItemDecoration
 {
   private int a;
   private int b;
-  private int c;
-  private int d;
+  private int c = 1;
   
-  public armf(Fragment paramFragment)
+  public static armf a(aqxa paramaqxa)
   {
-    this.a = AIOUtils.dp2px(11.0F, paramFragment.getResources());
-    this.b = AIOUtils.dp2px(11.0F, paramFragment.getResources());
-    this.c = AIOUtils.dp2px(8.0F, paramFragment.getResources());
-    this.d = AIOUtils.dp2px(8.0F, paramFragment.getResources());
+    armf localarmf = new armf();
+    if (paramaqxa != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramaqxa.jdField_a_of_type_Int + " content->" + paramaqxa.jdField_a_of_type_JavaLangString);
+      }
+    }
+    try
+    {
+      paramaqxa = new JSONObject(paramaqxa.jdField_a_of_type_JavaLangString);
+      localarmf.a(paramaqxa.optInt("hotword_switch_message", 0));
+      localarmf.b(paramaqxa.optInt("hotword_switch_contact", 0));
+      localarmf.c(paramaqxa.optInt("hotword_switch_dongtai", 1));
+      return localarmf;
+    }
+    catch (Exception paramaqxa)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramaqxa.toString());
+    }
+    return localarmf;
   }
   
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  void a(int paramInt)
   {
-    int i = paramRecyclerView.getAdapter().getItemCount();
-    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
-    {
-      paramRect.set(0, this.a, 0, 0);
-      return;
-    }
-    if (paramInt == i - 1)
-    {
-      paramRect.set(this.c, this.a, this.d, this.b);
-      return;
-    }
-    paramRect.set(this.c, this.a, this.d, 0);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armf
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,7 @@ public final class DesktopLayoutKt
       localObject1 = new ImageView(paramContext.getContext());
       ((ImageView)localObject1).setTag(paramContext);
       localObject2 = Unit.INSTANCE;
-      ((ImageView)localObject1).setId(2131371008);
+      ((ImageView)localObject1).setId(2131371201);
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
@@ -96,7 +96,7 @@ public final class DesktopLayoutKt
       localObject3 = new LinearLayout(((ViewGroup)localObject2).getContext());
       ((LinearLayout)localObject3).setTag(localObject2);
       paramContext = Unit.INSTANCE;
-      ((LinearLayout)localObject3).setId(2131371050);
+      ((LinearLayout)localObject3).setId(2131371242);
       paramContext = (View)localObject3;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
@@ -138,7 +138,7 @@ public final class DesktopLayoutKt
       localObject5 = new RelativeLayout(((ViewGroup)localObject4).getContext());
       ((RelativeLayout)localObject5).setTag(localObject4);
       paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject5).setId(2131370745);
+      ((RelativeLayout)localObject5).setId(2131370930);
       paramContext = (View)localObject5;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
@@ -171,7 +171,7 @@ public final class DesktopLayoutKt
       localObject7 = new TextView(((ViewGroup)localObject6).getContext());
       ((TextView)localObject7).setTag(localObject6);
       paramContext = Unit.INSTANCE;
-      ((TextView)localObject7).setId(2131371002);
+      ((TextView)localObject7).setId(2131371195);
       paramContext = (View)localObject7;
       localObject1 = paramContext.getLayoutParams();
       if (localObject1 == null) {
@@ -308,7 +308,7 @@ public final class DesktopLayoutKt
     if (("QQ小程序" instanceof Integer))
     {
       ((TextView)localObject7).setText(((Number)"QQ小程序").intValue());
-      ((TextView)localObject7).setTextColor(((TextView)localObject7).getResources().getColor(2131167019));
+      ((TextView)localObject7).setTextColor(((TextView)localObject7).getResources().getColor(2131167033));
       ((TextView)localObject7).setTextSize(17.0F);
       ((ViewGroup)localObject6).addView((View)localObject7);
       paramContext = Unit.INSTANCE;
@@ -316,7 +316,7 @@ public final class DesktopLayoutKt
       localObject7 = new RelativeLayout(((ViewGroup)localObject6).getContext());
       ((RelativeLayout)localObject7).setTag(localObject6);
       paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject7).setId(2131370963);
+      ((RelativeLayout)localObject7).setId(2131371148);
       paramContext = (View)localObject7;
       j = LayoutAttrsKt.getDp(80);
       localObject1 = paramContext.getLayoutParams();
@@ -462,7 +462,7 @@ public final class DesktopLayoutKt
       paramContext = Unit.INSTANCE;
     }
     paramContext = (View)localObject7;
-    localObject1 = Integer.valueOf(2130850166);
+    localObject1 = Integer.valueOf(2130850268);
     if ((localObject1 instanceof String))
     {
       paramContext.setBackgroundColor(Color.parseColor((String)localObject1));
@@ -472,7 +472,7 @@ public final class DesktopLayoutKt
       localObject9 = new RelativeLayout(((ViewGroup)localObject8).getContext());
       ((RelativeLayout)localObject9).setTag(localObject8);
       paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject9).setId(2131370998);
+      ((RelativeLayout)localObject9).setId(2131371183);
       paramContext = (View)localObject9;
       j = LayoutAttrsKt.getDp(22);
       localObject1 = paramContext.getLayoutParams();
@@ -622,7 +622,7 @@ public final class DesktopLayoutKt
     localObject1 = new ImageView(paramContext.getContext());
     ((ImageView)localObject1).setTag(paramContext);
     localObject10 = Unit.INSTANCE;
-    ((ImageView)localObject1).setId(2131370997);
+    ((ImageView)localObject1).setId(2131371182);
     localObject10 = (View)localObject1;
     j = LayoutAttrsKt.getDp(22);
     Object localObject11 = ((View)localObject10).getLayoutParams();
@@ -649,7 +649,7 @@ public final class DesktopLayoutKt
       ((View)localObject10).getLayoutParams().width = i;
       ((View)localObject10).getLayoutParams().height = j;
       label2549:
-      ((ImageView)localObject1).setImageResource(2130840980);
+      ((ImageView)localObject1).setImageResource(2130841017);
       ((ImageView)localObject1).setVisibility(0);
       paramContext.addView((View)localObject1);
       paramContext = Unit.INSTANCE;
@@ -657,7 +657,7 @@ public final class DesktopLayoutKt
       localObject11 = new TextView(((ViewGroup)localObject10).getContext());
       ((TextView)localObject11).setTag(localObject10);
       paramContext = Unit.INSTANCE;
-      ((TextView)localObject11).setId(2131370999);
+      ((TextView)localObject11).setId(2131371184);
       localView = (View)localObject11;
       paramContext = localView.getLayoutParams();
       if (paramContext == null) {
@@ -792,7 +792,7 @@ public final class DesktopLayoutKt
     Object localObject9 = new ImageView(((ViewGroup)localObject8).getContext());
     ((ImageView)localObject9).setTag(localObject8);
     paramContext = Unit.INSTANCE;
-    ((ImageView)localObject9).setId(2131370994);
+    ((ImageView)localObject9).setId(2131371179);
     paramContext = (View)localObject9;
     j = LayoutAttrsKt.getDp(22);
     localObject1 = paramContext.getLayoutParams();
@@ -932,7 +932,7 @@ public final class DesktopLayoutKt
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
       paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject9).setImageResource(2130840966);
+    ((ImageView)localObject9).setImageResource(2130840999);
     ((ViewGroup)localObject8).addView((View)localObject9);
     paramContext = Unit.INSTANCE;
     ((ViewGroup)localObject6).addView((View)localObject7);
@@ -943,7 +943,7 @@ public final class DesktopLayoutKt
     localObject1 = new DragRecyclerView(paramContext.getContext());
     ((DragRecyclerView)localObject1).setTag(paramContext);
     Object localObject4 = Unit.INSTANCE;
-    ((DragRecyclerView)localObject1).setId(2131370746);
+    ((DragRecyclerView)localObject1).setId(2131370931);
     localObject4 = (View)localObject1;
     Object localObject5 = ((View)localObject4).getLayoutParams();
     if (localObject5 != null)
@@ -983,7 +983,7 @@ public final class DesktopLayoutKt
       localObject1 = new LinearLayout(paramContext.getContext());
       ((LinearLayout)localObject1).setTag(paramContext);
       localObject2 = Unit.INSTANCE;
-      ((LinearLayout)localObject1).setId(2131371047);
+      ((LinearLayout)localObject1).setId(2131371239);
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
@@ -1052,7 +1052,7 @@ public final class DesktopLayoutKt
     localObject4 = Unit.INSTANCE;
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
     Object localObject2 = (View)localObject1;
-    localObject3 = Integer.valueOf(2130838892);
+    localObject3 = Integer.valueOf(2130838912);
     if ((localObject3 instanceof String))
     {
       ((View)localObject2).setBackgroundColor(Color.parseColor((String)localObject3));
@@ -1062,7 +1062,7 @@ public final class DesktopLayoutKt
       localObject3 = new ImageView(((ViewGroup)localObject2).getContext());
       ((ImageView)localObject3).setTag(localObject2);
       localObject4 = Unit.INSTANCE;
-      ((ImageView)localObject3).setId(2131371048);
+      ((ImageView)localObject3).setId(2131371240);
       localObject4 = (View)localObject3;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
@@ -1089,7 +1089,7 @@ public final class DesktopLayoutKt
       ((View)localObject4).getLayoutParams().width = i;
       ((View)localObject4).getLayoutParams().height = -1;
       label4489:
-      ((ImageView)localObject3).setImageResource(2130840967);
+      ((ImageView)localObject3).setImageResource(2130841000);
       ((ViewGroup)localObject2).addView((View)localObject3);
       localObject2 = Unit.INSTANCE;
       paramContext.addView((View)localObject1);
@@ -1098,7 +1098,7 @@ public final class DesktopLayoutKt
       localObject1 = new LinearLayout(paramContext.getContext());
       ((LinearLayout)localObject1).setTag(paramContext);
       localObject2 = Unit.INSTANCE;
-      ((LinearLayout)localObject1).setId(2131365406);
+      ((LinearLayout)localObject1).setId(2131365499);
       localObject2 = (View)localObject1;
       localObject3 = ((View)localObject2).getLayoutParams();
       if (localObject3 == null) {
@@ -1183,7 +1183,7 @@ public final class DesktopLayoutKt
     localObject4 = Unit.INSTANCE;
     ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
     localObject2 = (View)localObject1;
-    localObject3 = Integer.valueOf(2130840969);
+    localObject3 = Integer.valueOf(2130841002);
     if ((localObject3 instanceof String))
     {
       ((View)localObject2).setBackgroundColor(Color.parseColor((String)localObject3));
@@ -1194,7 +1194,7 @@ public final class DesktopLayoutKt
       localObject3 = new TextView(((ViewGroup)localObject2).getContext());
       ((TextView)localObject3).setTag(localObject2);
       localObject4 = Unit.INSTANCE;
-      ((TextView)localObject3).setId(2131365399);
+      ((TextView)localObject3).setId(2131365492);
       localObject4 = (View)localObject3;
       localObject5 = ((View)localObject4).getLayoutParams();
       if (localObject5 == null) {
@@ -1222,8 +1222,8 @@ public final class DesktopLayoutKt
       ((View)localObject4).getLayoutParams().height = -2;
       label5134:
       ((TextView)localObject3).setGravity(17);
-      ((TextView)localObject3).setText(2131711113);
-      ((TextView)localObject3).setCompoundDrawables(((TextView)localObject3).getContext().getDrawable(2130840971), null, null, null);
+      ((TextView)localObject3).setText(2131711460);
+      ((TextView)localObject3).setCompoundDrawables(((TextView)localObject3).getContext().getDrawable(2130841004), null, null, null);
       ((TextView)localObject3).setCompoundDrawablePadding(LayoutAttrsKt.getDp(12));
       if (!("#FFFFFF" instanceof Integer)) {
         break label5827;
@@ -1238,7 +1238,7 @@ public final class DesktopLayoutKt
       localObject3 = new RelativeLayout(((ViewGroup)localObject2).getContext());
       ((RelativeLayout)localObject3).setTag(localObject2);
       paramContext = Unit.INSTANCE;
-      ((RelativeLayout)localObject3).setId(2131371004);
+      ((RelativeLayout)localObject3).setId(2131371197);
       paramContext = (View)localObject3;
       j = LayoutAttrsKt.getDp(66);
       localObject1 = paramContext.getLayoutParams();
@@ -1271,7 +1271,7 @@ public final class DesktopLayoutKt
       localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
       ((ImageView)localObject5).setTag(localObject4);
       paramContext = Unit.INSTANCE;
-      ((ImageView)localObject5).setId(2131371003);
+      ((ImageView)localObject5).setId(2131371196);
       paramContext = (View)localObject5;
       j = LayoutAttrsKt.getDp(48);
       localObject1 = paramContext.getLayoutParams();
@@ -1412,14 +1412,14 @@ public final class DesktopLayoutKt
     ((RelativeLayout.LayoutParams)localObject7).addRule(14, -1);
     paramContext = Unit.INSTANCE;
     ((View)localObject6).setLayoutParams((ViewGroup.LayoutParams)localObject7);
-    ((ImageView)localObject5).setImageResource(2130848326);
+    ((ImageView)localObject5).setImageResource(2130848417);
     ((ViewGroup)localObject4).addView((View)localObject5);
     paramContext = Unit.INSTANCE;
     localObject4 = (ViewGroup)localObject3;
     localObject5 = new ImageView(((ViewGroup)localObject4).getContext());
     ((ImageView)localObject5).setTag(localObject4);
     paramContext = Unit.INSTANCE;
-    ((ImageView)localObject5).setId(2131371005);
+    ((ImageView)localObject5).setId(2131371198);
     paramContext = (View)localObject5;
     j = LayoutAttrsKt.getDp(15);
     localObject1 = paramContext.getLayoutParams();
@@ -1570,7 +1570,7 @@ public final class DesktopLayoutKt
       paramContext.rightMargin = LayoutAttrsKt.getDp(4);
       paramContext = Unit.INSTANCE;
     }
-    ((ImageView)localObject5).setImageResource(2130840974);
+    ((ImageView)localObject5).setImageResource(2130841007);
     ((ViewGroup)localObject4).addView((View)localObject5);
     paramContext = Unit.INSTANCE;
     ((ViewGroup)localObject2).addView((View)localObject3);

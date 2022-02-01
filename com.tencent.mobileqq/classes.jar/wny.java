@@ -1,81 +1,12 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
 
 public class wny
-  implements wnm
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final boolean jdField_a_of_type_Boolean;
-  private int b = -1;
+  public float a;
+  public float b;
+  public float c;
   
-  public wny(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public List<String> a()
-  {
-    xvv.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, ArrayList<wsk> paramArrayList, wod paramwod)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      xvv.b("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "close , set data invalidate");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      wsk localwsk = (wsk)paramArrayList.next();
-      if ((!localwsk.a()) && (!TextUtils.isEmpty(localwsk.a))) {
-        localArrayList.add(localwsk.a);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    this.jdField_a_of_type_Int = paramInt;
-    int i;
-    if ((paramwod instanceof wor))
-    {
-      paramArrayList = (wor)paramwod;
-      if (paramArrayList.a != null)
-      {
-        i = paramArrayList.a.jdField_a_of_type_Int;
-        this.b = i;
-        label129:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        if (paramwod != null) {
-          break label186;
-        }
-      }
-    }
-    label186:
-    for (paramArrayList = "";; paramArrayList = paramwod.toString())
-    {
-      xvv.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
-      return;
-      i = -1;
-      break;
-      this.b = -1;
-      break label129;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.b == 12;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 13;
-  }
+  private wny(DotAnimationView paramDotAnimationView) {}
 }
 
 

@@ -21,7 +21,8 @@ public class APMConfig
     sPluginToQapmPluginConfigMap.put("ceilingvalue", PluginCombination.ceilingValuePlugin);
     sPluginToQapmPluginConfigMap.put("leak", PluginCombination.leakPlugin);
     sPluginToQapmPluginConfigMap.put("dropframe", PluginCombination.dropFramePlugin);
-    sPluginToQapmPluginConfigMap.put("battery", PluginCombination.batteryPlugin);
+    sPluginToQapmPluginConfigMap.put("bigbitmap", PluginCombination.bigBitmapPlugin);
+    sPluginToQapmPluginConfigMap.put("battery", PluginCombination.qqBatteryPlugin);
   }
   
   public APMModuleConfig getSampleConfig(String paramString)

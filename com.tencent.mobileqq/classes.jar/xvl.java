@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.ArrayList;
+import java.util.List;
 
-class xvl
-  implements View.OnClickListener
+public class xvl
+  extends wpt
 {
-  xvl(xvj paramxvj) {}
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onClick(View paramView)
+  public xvl(ErrorMessage paramErrorMessage, String paramString, int paramInt)
   {
-    if (xvj.a(this.a) != null) {
-      xvj.a(this.a).K_();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

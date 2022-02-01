@@ -1,110 +1,41 @@
-import android.os.Bundle;
-import com.tencent.jungle.videohub.proto.CommProtocolProto.commResponse;
-import com.tencent.jungle.videohub.proto.CommonUserProto.LoginCheckRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.Map;
 
-class auno
-  extends nmf
+public abstract class auno
+  implements MethodChannel.MethodCallHandler
 {
-  auno(aunn paramaunn, int paramInt1, int paramInt2, aunq paramaunq) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    String str = paramMethodCall.method;
+    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
+    if (TextUtils.isEmpty(str))
     {
-      localStringBuilder = new StringBuilder().append("login: errorCode=").append(paramInt).append(" bundle=");
-      if (paramBundle != null) {
-        break label138;
-      }
-    }
-    label138:
-    for (Object localObject = "null";; localObject = paramBundle.toString())
-    {
-      QLog.d("ODCsChannel", 2, (String)localObject + " data=" + Arrays.toString(paramArrayOfByte));
-      if ((paramInt == 0) && (paramArrayOfByte != null)) {
-        break label162;
-      }
-      QLog.i("ODCsChannel", 2, "login: fail，errorCode=" + paramInt + " data=" + Arrays.toString(paramArrayOfByte));
-      if (this.jdField_a_of_type_Int <= 0) {
-        break;
-      }
-      this.jdField_a_of_type_Aunn.a(this.c, paramArrayOfByte, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aunq);
+      paramResult.notImplemented();
       return;
     }
-    aunn.a(this.jdField_a_of_type_Aunn, paramInt, null, paramBundle, this.jdField_a_of_type_Aunq);
-    return;
-    label162:
-    localObject = new CommProtocolProto.commResponse();
-    try
+    if (str.equals("sendRequest"))
     {
-      ((CommProtocolProto.commResponse)localObject).mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("ODCsChannel", 2, new Object[] { "MSF.C.NetConnTag", " code=" + ((CommProtocolProto.commResponse)localObject).code.get() + " msg=" + ((CommProtocolProto.commResponse)localObject).msg.get() + " seq=" + ((CommProtocolProto.commResponse)localObject).seq.get() + " data[]=" + Arrays.toString(((CommProtocolProto.commResponse)localObject).body.get().toByteArray()) });
-      }
-      if (((CommProtocolProto.commResponse)localObject).code.get() == 1008)
+      paramMethodCall = paramMethodCall.argument("req");
+      if ((paramMethodCall instanceof Map))
       {
-        QLog.i("ODCsChannel", 2, "sendPBRequest: fail，token illegal, errorCode=1008");
-        aunn.a(this.jdField_a_of_type_Aunn, this.c, paramArrayOfByte, true, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Aunq);
+        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
         return;
       }
+      paramResult.notImplemented();
+      return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException1.printStackTrace();
-        ((CommProtocolProto.commResponse)localObject).code.set(-10);
-        QLog.e("ODCsChannel", 2, "login: error=" + localInvalidProtocolBufferMicroException1.getMessage());
-      }
-      if (((CommProtocolProto.commResponse)localObject).code.get() != 0)
-      {
-        QLog.i("ODCsChannel", 2, "login: fail，errorCode=" + ((CommProtocolProto.commResponse)localObject).code.get() + " data=" + Arrays.toString(paramArrayOfByte));
-        if (this.jdField_a_of_type_Int > 0)
-        {
-          this.jdField_a_of_type_Aunn.a(this.c, paramArrayOfByte, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aunq);
-          return;
-        }
-        aunn.a(this.jdField_a_of_type_Aunn, paramInt, null, paramBundle, this.jdField_a_of_type_Aunq);
-        return;
-      }
-      CommonUserProto.LoginCheckRsp localLoginCheckRsp = new CommonUserProto.LoginCheckRsp();
-      try
-      {
-        localLoginCheckRsp.mergeFrom(((CommProtocolProto.commResponse)localObject).body.get().toByteArray());
-        aunn.a(this.jdField_a_of_type_Aunn, localLoginCheckRsp);
-        if (aunn.a(this.jdField_a_of_type_Aunn) == null)
-        {
-          QLog.i("ODCsChannel", 2, "login: fail，errorCode=" + paramInt + " data=" + Arrays.toString(paramArrayOfByte));
-          if (this.jdField_a_of_type_Int > 0)
-          {
-            this.jdField_a_of_type_Aunn.a(this.c, paramArrayOfByte, this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Aunq);
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-      {
-        for (;;)
-        {
-          localInvalidProtocolBufferMicroException2.printStackTrace();
-          QLog.e("ODCsChannel", 2, "startGroupVideoOrVoice error=" + localInvalidProtocolBufferMicroException2.getMessage());
-        }
-        aunn.a(this.jdField_a_of_type_Aunn, paramInt, (CommProtocolProto.commResponse)localObject, paramBundle, this.jdField_a_of_type_Aunq);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ODCsChannel", 2, new Object[] { "MSF.C.NetConnTag", " uid=" + localLoginCheckRsp.uid.get() + " user_sig=" + localLoginCheckRsp.user_sig.get() });
-      }
-      this.jdField_a_of_type_Aunn.a(this.c, paramArrayOfByte, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aunq);
-    }
+    paramResult.notImplemented();
   }
 }
 

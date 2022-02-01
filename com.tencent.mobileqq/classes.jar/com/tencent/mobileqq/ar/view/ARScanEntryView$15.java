@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import aodo;
+import apgq;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ARScanEntryView$15

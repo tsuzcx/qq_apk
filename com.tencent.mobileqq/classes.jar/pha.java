@@ -1,22 +1,73 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage.RIJTipMessageManager.1.1;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage.RIJTipMessageManager.1.2;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
 public class pha
-  implements pke
+  extends TextBase
 {
-  public void a(MessageRecord paramMessageRecord) {}
+  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
+  private static final int b = Utils.dp2px(16.0D);
+  private NativeCommentTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
   
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  public pha(VafContext paramVafContext)
   {
-    pgz.a(this.a).a().runOnUiThread(new RIJTipMessageManager.1.2(this));
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView = new NativeCommentTextView(paramVafContext.getContext());
   }
   
-  public void b(MessageRecord paramMessageRecord)
+  public void a(pcf parampcf, View paramView, int paramInt)
   {
-    pgz.a(this.a).a().runOnUiThread(new RIJTipMessageManager.1.1(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(parampcf, paramView, paramInt);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextSize(0, b * ozx.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextColor(jdField_a_of_type_Int);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return super.setAttribute(paramInt, paramObject);
+    } while (!(paramObject instanceof pdp));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setCommentModel((pdp)paramObject);
+    return true;
   }
 }
 

@@ -1,434 +1,101 @@
-import android.os.Handler;
-import android.os.RemoteCallbackList;
-import com.tencent.common.app.BaseApplicationImpl;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.1;
-import com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.2;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
 
 public class aoct
-  extends aofb
+  implements bcug
 {
-  WeakReference<ArConfigService> a;
+  private AppInterface a;
   
-  public aoct(ArConfigService paramArConfigService)
+  public aoct(AppInterface paramAppInterface)
   {
-    QLog.d("ArConfig_ArConfigService", 1, "ArConfigManagerStub constructor");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramArConfigService);
+    this.a = paramAppInterface;
   }
   
-  public ARCommonConfigInfo a()
+  public int a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (Object localObject = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "getARCommonConfigInfo error arConfigService is null");
-        return null;
-      }
-      if (((ArConfigService)localObject).jdField_a_of_type_Anyd != null) {}
-      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Anyd.a();; localObject = null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject }));
-        }
-        return localObject;
-      }
-    }
+    return 1;
   }
   
-  public ArConfigInfo a()
+  public ReqItem a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (Object localObject = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "getArConfigInfo error arConfigService is null");
-        return null;
-      }
-      if (((ArConfigService)localObject).jdField_a_of_type_Aodg != null) {}
-      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Aodg.a();; localObject = null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "getArConfigInfo | mConfigInfo = " + localObject);
-        }
-        return localObject;
-      }
-    }
+    QLog.i("ReqDpcInfoNewItem", 1, "getCheckUpdateItemData");
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.eServiceID = 117;
+    localReqItem.cOperType = 1;
+    byte[] arrayOfByte1 = DeviceProfileManager.a(this.a).toByteArray();
+    byte[] arrayOfByte2 = new byte[arrayOfByte1.length + 4];
+    PkgTools.DWord2Byte(arrayOfByte2, 0, arrayOfByte1.length + 4);
+    PkgTools.copyData(arrayOfByte2, 4, arrayOfByte1, arrayOfByte1.length);
+    localReqItem.vecParam = arrayOfByte2;
+    return localReqItem;
   }
   
-  public ArEffectConfig a()
+  public void a(RespItem paramRespItem)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (Object localObject = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService is null");
-        return null;
-      }
-      if (((ArConfigService)localObject).jdField_a_of_type_Aodg != null) {}
-      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Aodg.a();; localObject = null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "getArEffectConfig|mEffectConfig=" + localObject);
-        }
-        return localObject;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (Object localObject = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
-    {
-      if (localObject == null) {
-        QLog.d("ArConfig_ArConfigService", 1, "downloadResource error arConfigService is null");
-      }
-      while (((ArConfigService)localObject).jdField_a_of_type_Aodg == null) {
-        return;
-      }
-      ((ArConfigService)localObject).jdField_a_of_type_Aodg.a(false, false);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("click_download", "1");
-      localObject = (QQAppInterface)((ArConfigService)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "downloadResource,mApp is null! ");
-        return;
-      }
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(((QQAppInterface)localObject).getCurrentAccountUin(), "ar_client_download_times", true, 0L, 0L, localHashMap, null);
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadFaceResource error arConfigService is null");
-    }
-    while (!(ArConfigService.a(localArConfigService) instanceof QQAppInterface)) {
-      return;
-    }
-    aodk.a(paramInt, (QQAppInterface)ArConfigService.b(localArConfigService));
-  }
-  
-  public void a(aofd paramaofd)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerFaceCallback error arConfigService is null");
-    }
-    while ((paramaofd == null) || (ArConfigService.b(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.b(localArConfigService).register(paramaofd);
-  }
-  
-  public void a(aofj paramaofj)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerMiniCallback error arConfigService is null");
-    }
-    while ((paramaofj == null) || (ArConfigService.c(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.c(localArConfigService).register(paramaofj);
-  }
-  
-  public void a(aofm paramaofm)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerArCallback error arConfigService is null");
-    }
-    while ((paramaofm == null) || (ArConfigService.a(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.a(localArConfigService).register(paramaofm);
-  }
-  
-  public void a(aofp paramaofp)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "registerArSoCallback error arConfigService is null");
-    }
-    while (paramaofp == null) {
-      return;
-    }
-    ArConfigService.d(localArConfigService).register(paramaofp);
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "handleNewConfig error arConfigService is null");
-    }
-    while (localArConfigService.jdField_a_of_type_Aodg == null) {
-      return;
-    }
-    localArConfigService.jdField_a_of_type_Aodg.a(paramArConfigInfo);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (ArConfigService localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localArConfigService = null)
-    {
-      if (localArConfigService == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "isFaceResConfigReady error arConfigService is null");
-        return false;
-      }
-      if ((ArConfigService.c(localArConfigService) instanceof QQAppInterface))
-      {
-        boolean bool = aodk.a((QQAppInterface)ArConfigService.d(localArConfigService));
-        if (!bool) {
-          aodk.a((QQAppInterface)ArConfigService.e(localArConfigService));
-        }
-        return bool;
-      }
-      return false;
-    }
-  }
-  
-  public void b()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "cancelDownload error arConfigService is null");
-    }
-    while (localArConfigService.jdField_a_of_type_Aodg == null) {
-      return;
-    }
-    localArConfigService.jdField_a_of_type_Aodg.a.a();
-  }
-  
-  public void b(int paramInt)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadMiniResource error arConfigService is null");
-    }
-    while (!(ArConfigService.f(localArConfigService) instanceof QQAppInterface)) {
-      return;
-    }
-    aoki.a(paramInt, (QQAppInterface)ArConfigService.g(localArConfigService));
-  }
-  
-  public void b(aofd paramaofd)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterFaceCallback error arConfigService is null");
-    }
-    while ((paramaofd == null) || (ArConfigService.b(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.b(localArConfigService).unregister(paramaofd);
-  }
-  
-  public void b(aofj paramaofj)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterMiniCallback error arConfigService is null");
-    }
-    while ((paramaofj == null) || (ArConfigService.c(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.c(localArConfigService).unregister(paramaofj);
-  }
-  
-  public void b(aofm paramaofm)
-  {
-    QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback");
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback error arConfigService is null");
-    }
-    while ((paramaofm == null) || (ArConfigService.a(localArConfigService) == null)) {
-      return;
-    }
-    ArConfigService.a(localArConfigService).unregister(paramaofm);
-  }
-  
-  public void b(aofp paramaofp)
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "unregisterArSoCallback error arConfigService is null");
-    }
-    while (paramaofp == null) {
-      return;
-    }
-    ArConfigService.d(localArConfigService).unregister(paramaofp);
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (ArConfigService localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localArConfigService = null)
-    {
-      if (localArConfigService == null)
-      {
-        QLog.d("ArConfig_ArConfigService", 1, "isMiniResConfigReady error arConfigService is null");
-        return false;
-      }
-      if ((ArConfigService.h(localArConfigService) instanceof QQAppInterface))
-      {
-        boolean bool = aoki.a(true, (QQAppInterface)ArConfigService.i(localArConfigService));
-        if (!bool) {
-          aoki.a(true, (QQAppInterface)ArConfigService.j(localArConfigService));
-        }
-        if (!aoki.a(false, (QQAppInterface)ArConfigService.k(localArConfigService))) {
-          aoki.a(false, (QQAppInterface)ArConfigService.l(localArConfigService));
-        }
-        return bool;
-      }
-      return false;
-    }
-  }
-  
-  public void c()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArSo error arConfigService is null");
-    }
+    QLog.i("ReqDpcInfoNewItem", 1, "handleCheckUpdateItemData" + paramRespItem.cResult);
+    byte[] arrayOfByte;
     int i;
-    do
+    if (paramRespItem.eServiceID == 117)
     {
-      do
+      if (paramRespItem.cResult != 2) {
+        break label225;
+      }
+      arrayOfByte = bhjl.b(paramRespItem.vecUpdate);
+      if (arrayOfByte != null) {
+        paramRespItem = new ConfigurationService.RespGetConfig();
+      }
+    }
+    else
+    {
+      try
       {
-        return;
-        ArConfigService.a(localArConfigService, false);
-        ArConfigService.a(localArConfigService);
-        ArConfigService.b(localArConfigService);
-        ArConfigService.c(localArConfigService);
-        ArConfigService.d(localArConfigService);
-        ArConfigService.e(localArConfigService);
-      } while (ArConfigService.e(localArConfigService));
-      i = (ArConfigService.a(localArConfigService) + ArConfigService.b(localArConfigService) + ArConfigService.c(localArConfigService) + ArConfigService.d(localArConfigService) + ArConfigService.e(localArConfigService)) / 5;
-      ArConfigService.a(localArConfigService).post(new ArConfigService.ArConfigManagerStub.1(this, localArConfigService, i));
-    } while (i != 100);
-    ArConfigService.a(localArConfigService).post(new ArConfigService.ArConfigManagerStub.2(this, localArConfigService));
-  }
-  
-  public void c(int paramInt)
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localObject = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramRespItem.mergeFrom(arrayOfByte);
+        if ((paramRespItem != null) && (paramRespItem.result.get() == 0)) {
+          if ((paramRespItem.config_list != null) && (paramRespItem.config_list.size() > 0))
+          {
+            DeviceProfileManager.a().a(paramRespItem, this.a.getCurrentAccountUin());
+            i = 1;
+            if (i == 0) {
+              DeviceProfileManager.a().a(4);
+            }
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ReqDpcInfoNewItem", 2, "error: " + paramRespItem.getMessage());
+          }
+          paramRespItem.printStackTrace();
+          paramRespItem = null;
+        }
+        QLog.i("ReqDpcInfoNewItem", 1, "respGetConfig has no contentlist");
+        if ((this.a instanceof QQAppInterface)) {
+          ((vzu)((QQAppInterface)this.a).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1023, true, Boolean.valueOf(false));
+        }
+      }
     }
-    if (localObject == null) {
-      QLog.d("ArConfig_ArConfigService", 1, "onToolScannerActivityStateChanged error arConfigService is null");
-    }
-    do
+    for (;;)
     {
-      return;
-      localObject = (yxs)ArConfigService.m((ArConfigService)localObject).getManager(243);
-    } while (localObject == null);
-    ((yxs)localObject).a(paramInt);
-  }
-  
-  public boolean c()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      i = 0;
+      break;
+      label225:
+      QLog.i("ReqDpcInfoNewItem", 1, "error happend item.cResult = " + paramRespItem.cResult);
     }
-    if (localArConfigService == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "isArSoReady error arConfigService is null");
-      return false;
-    }
-    if ((ArConfigService.a()) && (ArConfigService.a(localArConfigService)) && (ArConfigService.b(localArConfigService)) && (ArConfigService.c(localArConfigService)) && (ArConfigService.d(localArConfigService))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public void d()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArCoreSo error arConfigService is null");
-      return;
-    }
-    ArConfigService.d(localArConfigService);
-  }
-  
-  public boolean d()
-  {
-    ArConfigService localArConfigService = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localArConfigService = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localArConfigService == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "isArCoreSoReady error arConfigService is null");
-      return false;
-    }
-    return ArConfigService.c(localArConfigService);
   }
 }
 

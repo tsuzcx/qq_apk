@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.data.ApolloActionPush;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public abstract interface aloo
+public class aloo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
+  public aloo(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    EditLocalVideoActivity.a(this.a).dismiss();
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.listentogether.data;
 
-import amtj;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import auzt;
-import avbv;
+import anvx;
+import awfw;
+import awhy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -24,7 +24,7 @@ import tencent.aio.media.aio_media.Song;
 public class MusicInfo
   implements ISong
 {
-  public static final Parcelable.Creator<MusicInfo> CREATOR = new auzt();
+  public static final Parcelable.Creator<MusicInfo> CREATOR = new awfw();
   public int a;
   public long a;
   public String a;
@@ -66,7 +66,7 @@ public class MusicInfo
     default: 
       return 0;
     }
-    return 2130840563;
+    return 2130840602;
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -152,7 +152,7 @@ public class MusicInfo
     case 1: 
       return "QQ音乐";
     }
-    return amtj.a(2131706146);
+    return anvx.a(2131706498);
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong)
@@ -221,7 +221,7 @@ public class MusicInfo
   
   public String c()
   {
-    return avbv.a(this.jdField_a_of_type_JavaLangString);
+    return awhy.a(this.jdField_a_of_type_JavaLangString);
   }
   
   public String d()

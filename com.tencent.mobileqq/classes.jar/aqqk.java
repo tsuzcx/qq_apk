@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aqqk
-  implements Parcelable.Creator
+public class aqqk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
-  {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
-  }
+  public aqqk(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    aqnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    if (!paramBoolean) {
+      new aqns().c(null);
+    }
+    ((aqoj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.COLOR_NOTE_HANDLER)).a(paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      bdla.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
 }
 

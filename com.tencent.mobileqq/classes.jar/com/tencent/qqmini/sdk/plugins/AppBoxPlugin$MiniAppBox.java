@@ -236,7 +236,9 @@ class AppBoxPlugin$MiniAppBox
   
   boolean show(int paramInt1, int paramInt2)
   {
-    if (this.adBox == null) {
+    if (this.adBox == null)
+    {
+      QMLog.e("SDK_MiniAppBox", "adBox is null");
       return false;
     }
     AppBrandTask.runTaskOnUiThread(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
@@ -245,7 +247,7 @@ class AppBoxPlugin$MiniAppBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppBoxPlugin.MiniAppBox
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-public abstract interface bgzj
-  extends bguj
+public class bgzj
 {
-  public abstract View a();
+  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
+  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public abstract void a(String paramString);
+  public bgzj(int paramInt)
+  {
+    paramInt = Math.max(paramInt, 5);
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bgzk(this, paramInt * 1024 * 1024);
+  }
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
+    }
+  }
 }
 
 

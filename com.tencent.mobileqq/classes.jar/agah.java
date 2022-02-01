@@ -1,21 +1,43 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class agah
-  implements URLDrawable.URLDrawableListener
+  extends auzh
 {
-  agah(afzw paramafzw, StateListDrawable paramStateListDrawable) {}
+  agah(agab paramagab) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onBandIntimateRelationship");
+      }
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateIntimateRelationship");
+      }
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onDisbandIntimateRelationship");
+      }
+      this.a.a();
+    }
   }
 }
 

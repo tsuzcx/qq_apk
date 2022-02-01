@@ -1,65 +1,34 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import com.tencent.qphone.base.util.QLog;
 
 public class riz
-  implements TextWatcher
+  implements qcj
 {
-  private int jdField_a_of_type_Int;
+  public riz(ComponentPGCShortContentBig paramComponentPGCShortContentBig, rrn paramrrn) {}
   
-  public riz(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    int k = paramEditable.length();
-    int i;
-    int j;
-    label24:
-    Drawable[] arrayOfDrawable;
-    if (this.jdField_a_of_type_Int > 0)
+    if ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) != null) && ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) instanceof VideoView)))
     {
-      i = 1;
-      if (k <= 0) {
-        break label120;
-      }
-      j = 1;
-      if ((j ^ i) != 0)
+      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
       {
-        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
-        if (k <= 0) {
-          break label125;
+        paramArrayOfString2 = paramArrayOfString2[0];
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Rrn.e)) && (this.jdField_a_of_type_Rrn.e.equals(paramArrayOfString1[0])) && (this.jdField_a_of_type_Rrn.e.equals(((MediaVideoView)ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig)).getVideoVid())))
+        {
+          ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig, paramArrayOfString2);
+          return;
         }
-        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130839579);
+        QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not current video");
+        return;
       }
-    }
-    for (;;)
-    {
-      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      this.jdField_a_of_type_Int = k;
-      if (paramEditable.length() <= 0) {
-        break label133;
-      }
-      pkm.a().g(paramEditable.toString());
+      QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "urls null");
       return;
-      i = 0;
-      break;
-      label120:
-      j = 0;
-      break label24;
-      label125:
-      arrayOfDrawable[2] = null;
     }
-    label133:
-    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
+    QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not vieoview");
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

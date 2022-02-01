@@ -1,77 +1,21 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.ISecurityFileHelper;
+import java.util.Comparator;
 
-public class anww
-  extends anwu
-  implements ISecurityFileHelper
+class anww
+  implements Comparator<anwz>
 {
-  public anww()
-  {
-    super(null);
-  }
+  anww(anwv paramanwv) {}
   
-  protected String a()
+  public int a(anwz paramanwz1, anwz paramanwz2)
   {
-    return "QQFavoriteMigration";
-  }
-  
-  public String declareBusinessFileName()
-  {
-    return "QQ_Favorite";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
-    File localFile = new File(AppConstants.SDCARD_IMG_FAVORITE);
-    if ((localFile.exists()) && (paramFile.isDirectory()))
+    if ((paramanwz1 == null) || (paramanwz2 == null)) {}
+    do
     {
-      paramFile = anws.a(localFile);
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        localFile = paramFile[i];
-        String str = localFile.getName();
-        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
-          FileUtils.quickMove(localFile.getAbsolutePath(), AppConstants.SDCARD_IMG_FAVORITE + anws.a(str));
-        }
-        i += 1;
+      return 0;
+      if (paramanwz1.a > paramanwz2.a) {
+        return 1;
       }
-    }
-    a();
-    return true;
-  }
-  
-  public boolean needMigration()
-  {
-    if (a())
-    {
-      File localFile = new File(AppConstants.SDCARD_IMG_FAVORITE);
-      if ((localFile.exists()) && (localFile.isDirectory())) {
-        return true;
-      }
-      a();
-    }
-    return false;
-  }
-  
-  public File oldBusinessDir(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    return false;
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    return new String[] { "0", "0" };
+    } while (paramanwz1.a >= paramanwz2.a);
+    return -1;
   }
 }
 

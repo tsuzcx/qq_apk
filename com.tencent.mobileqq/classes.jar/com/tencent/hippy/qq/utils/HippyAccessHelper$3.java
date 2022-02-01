@@ -13,12 +13,14 @@ final class HippyAccessHelper$3
   
   public void onError(int paramInt, String paramString)
   {
+    HippyReporter.getInstance().reportOper(this.val$moduleName, this.val$hippyQQEngine.getPreloadModuleVersion(), 10, paramInt, paramString);
     HippyErrorManager.getInstance().endAllOperation();
     QLog.e("HippyAccessHelper", 1, "preloadHippyPage onError statusCode:" + paramInt + " msg:" + paramString);
   }
   
   public void onSuccess()
   {
+    HippyReporter.getInstance().reportOper(this.val$moduleName, this.val$hippyQQEngine.getPreloadModuleVersion(), 10, 0, null);
     HippyErrorManager.getInstance().endAllOperation();
     synchronized (HippyAccessHelper.access$100())
     {

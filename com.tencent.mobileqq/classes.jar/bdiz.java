@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import com.tencent.mobileqq.startup.step.RecordTracer;
 
-class bdiz
-  extends bdji<UserState>
+public final class bdiz
 {
-  bdiz(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
-  
-  public void a(UserState paramUserState)
-  {
-    bdiu.a(this.a).g();
-  }
+  public static final RecordTracer a = new RecordTracer();
 }
 
 

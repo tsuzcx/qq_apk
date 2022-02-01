@@ -9,14 +9,15 @@ import trpc.qq_vgame.common.AvGameCommon.Result;
 public final class AvGameLobbyInfo$CmdGetGameLobbyInfoRsp
   extends MessageMicro<CmdGetGameLobbyInfoRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "res", "banner_list", "random_match_info" }, new Object[] { null, null, null }, CmdGetGameLobbyInfoRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "res", "banner_list", "random_match_info", "pk_list" }, new Object[] { null, null, null, null }, CmdGetGameLobbyInfoRsp.class);
   public final PBRepeatMessageField<AvGameLobbyInfo.BannerInfo> banner_list = PBField.initRepeatMessage(AvGameLobbyInfo.BannerInfo.class);
+  public final PBRepeatMessageField<AvGameLobbyInfo.PKCardInfo> pk_list = PBField.initRepeatMessage(AvGameLobbyInfo.PKCardInfo.class);
   public AvGameLobbyInfo.RandomMatchInfo random_match_info = new AvGameLobbyInfo.RandomMatchInfo();
   public AvGameCommon.Result res = new AvGameCommon.Result();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trpc.qq_vgame.stranger_match.AvGameLobbyInfo.CmdGetGameLobbyInfoRsp
  * JD-Core Version:    0.7.0.1
  */

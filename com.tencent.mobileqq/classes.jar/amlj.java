@@ -1,34 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-class amlj
-  implements View.OnClickListener
+public class amlj
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
   amlj(amli paramamli) {}
   
-  public void onClick(View paramView)
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    Object localObject = amwn.a(amlh.a(this.a.a));
+    if (localObject == null) {}
+    do
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1036) {
-        break label69;
-      }
-      ((alnr)amli.a(this.a).app.getManager(153)).a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label69:
-      alnn localalnn = (alnn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211);
-      if (localalnn != null) {
-        localalnn.e();
-      }
-    }
+      localObject = ((amyo)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
   }
 }
 

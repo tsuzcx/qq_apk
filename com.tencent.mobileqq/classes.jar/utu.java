@@ -1,41 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class utu
-  implements uyv
+public class utu
+  implements sjo
 {
-  utu(utr paramutr, Context paramContext, int paramInt) {}
+  public utu(PublicAccountH5AbilityPlugin.7 param7, bisl parambisl, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(String paramString, Bundle paramBundle)
   {
-    uyc.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramString, 1, utr.a(this.jdField_a_of_type_Utr), this.jdField_a_of_type_Int);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      ukw.a(this.jdField_a_of_type_AndroidContentContext, paramString);
+    int i;
+    if ("CMD_CAMERA_CAPTURE_SO_DOWNLOAD".equals(paramString))
+    {
+      this.jdField_a_of_type_Bisl.dismiss();
+      i = paramBundle.getInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage VideoFeedsIPCClient.callback downloadResult=" + i);
+      }
     }
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = utr.a(this.jdField_a_of_type_Utr);
-    localWSDownloadParams.mEventId = 401;
-    localWSDownloadParams.mTestId = uvr.b();
-    localWSDownloadParams.mScheme = paramString;
-    unq.a((Activity)this.jdField_a_of_type_AndroidContentContext, localWSDownloadParams, false);
-  }
-  
-  public void d(String paramString, int paramInt)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      utr.a(this.jdField_a_of_type_Utr, this.jdField_a_of_type_AndroidContentContext, paramString);
+    switch (i)
+    {
+    default: 
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131718123, 0).a();
+      return;
+    case 1: 
+      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.jdField_a_of_type_Sjm.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() isSoReady:" + bool);
+      }
+      uta.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.g, this.h);
+      return;
     }
+    bhdj.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$7.this$0.jdField_a_of_type_AndroidAppActivity, 230).setMessage(anvx.a(2131708243)).setNegativeButton(2131690697, new bhdx()).setPositiveButton(2131694399, new utv(this)).show();
   }
 }
 

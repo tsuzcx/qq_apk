@@ -1,89 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfoUser;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class rer
-  implements Cloneable
+  extends rbp
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c = 1;
-  
-  public rer(SocializeFeedsInfo paramSocializeFeedsInfo) {}
-  
-  private void a(articlesummary.SocializeFeedsInfo paramSocializeFeedsInfo)
+  public rer(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    int j = 0;
-    long l;
-    int i;
-    label63:
-    String str;
-    if (paramSocializeFeedsInfo.msg_master_uin.has())
-    {
-      l = psy.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint64_uin);
-      this.jdField_a_of_type_Long = l;
-      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label190;
-      }
-      i = psy.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).enum_uin_type);
-      this.jdField_a_of_type_Int = i;
-      i = j;
-      if (paramSocializeFeedsInfo.msg_master_uin.has()) {
-        i = psy.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint32_star_style);
-      }
-      this.b = i;
-      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label202;
-      }
-      if (!paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.has()) {
-        break label195;
-      }
-      str = paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.get().toStringUtf8();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((paramSocializeFeedsInfo.msg_master_uin.has()) && (paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.has())) {
-        this.c = paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.get();
-      }
-      return;
-      l = 0L;
-      break;
-      label190:
-      i = 0;
-      break label63;
-      label195:
-      str = "";
-      continue;
-      label202:
-      str = "";
-    }
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  public rer a()
+  public rbp a()
   {
-    try
-    {
-      rer localrer = (rer)super.clone();
-      return localrer;
+    this.jdField_a_of_type_Boolean = true;
+    return c();
+  }
+  
+  public rbp d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Rbo != null) && ((this.jdField_a_of_type_Rbo instanceof ComponentContentSpecialTopic))) {
+      localLinearLayout.addView((ComponentContentSpecialTopic)this.jdField_a_of_type_Rbo);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public rbp e()
+  {
     return null;
   }
   
-  public boolean a()
+  public rbp g()
   {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Rbo = new ComponentContentSpecialTopic(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

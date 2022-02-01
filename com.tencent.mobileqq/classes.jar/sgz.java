@@ -1,22 +1,42 @@
-import android.content.Context;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerFactory;", "", "createMediaPlayer", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "videoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "createPlayerVideoView", "context", "Landroid/content/Context;", "isUseTextureView", "", "createPreloader", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader;", "obtainMediaPlayer", "token", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface sgz
+final class sgz
+  implements sxa
 {
-  @Nullable
-  public abstract sgx a(@NotNull String paramString);
+  sgz(shb paramshb, HashMap paramHashMap) {}
   
-  @NotNull
-  public abstract sgx a(@Nullable shf paramshf);
-  
-  @NotNull
-  public abstract sha a();
-  
-  @NotNull
-  public abstract shf a(@NotNull Context paramContext, boolean paramBoolean);
+  public void a(sxc paramsxc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoExtractFrame", 2, "换链回包 mHasDestory = " + sgy.a().get() + ", vid = " + paramsxc.jdField_b_of_type_JavaLangString);
+    }
+    if ((sgy.a().get()) || (!this.jdField_a_of_type_Shb.jdField_a_of_type_JavaLangString.equals(paramsxc.jdField_b_of_type_JavaLangString))) {}
+    for (;;)
+    {
+      return;
+      paramsxc = paramsxc.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramsxc.hasNext())
+      {
+        sxc localsxc = (sxc)paramsxc.next();
+        if ((localsxc.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localsxc.jdField_c_of_type_JavaLangString)) && (localsxc.jdField_c_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_Shb.jdField_a_of_type_Long))))
+        {
+          this.jdField_a_of_type_Shb.jdField_b_of_type_Int = localsxc.jdField_b_of_type_Int;
+          this.jdField_a_of_type_Shb.jdField_c_of_type_Int = localsxc.jdField_c_of_type_Int;
+          sgy.a(this.jdField_a_of_type_Shb, localsxc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Shb.jdField_b_of_type_Long);
+        }
+      }
+      for (int i = 1; (i == 0) && (QLog.isColorLevel()); i = 0)
+      {
+        QLog.d("VideoExtractFrame", 2, "no found videoInfo.tag = " + this.jdField_a_of_type_Shb.jdField_b_of_type_JavaLangString);
+        return;
+      }
+    }
+  }
 }
 
 

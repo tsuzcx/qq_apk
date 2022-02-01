@@ -1,10 +1,15 @@
-public abstract interface amhx
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.Switch;
+
+public class amhx
 {
-  public abstract String a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract boolean a(int paramInt);
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public arpq a;
+  public Switch a;
 }
 
 

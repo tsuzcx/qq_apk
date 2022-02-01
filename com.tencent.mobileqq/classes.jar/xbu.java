@@ -1,128 +1,256 @@
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.10;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.4;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.5;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.7;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.8;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CopyOnWriteArraySet;
+import javax.annotation.concurrent.GuardedBy;
 
 public class xbu
-  extends BaseAdapter
 {
-  List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @GuardedBy("sPendingPreloadQueue")
+  private static long jdField_a_of_type_Long;
+  private static Context jdField_a_of_type_AndroidContentContext;
+  private static Handler jdField_a_of_type_AndroidOsHandler;
+  private static TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = new xbw();
+  private static TVK_ICacheMgr.IPreloadCompleteCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback;
+  @GuardedBy("sPendingPreloadQueue")
+  private static final Queue<xca> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private static final CopyOnWriteArraySet<xcb> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet;
+  @GuardedBy("sPendingPreloadQueue")
+  private static xca jdField_a_of_type_Xca;
   
-  public xbu(List<QQStoryUserInfo> paramList)
+  static
   {
-    Collection localCollection;
-    if (localCollection != null)
+    jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+    jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback = new xbv();
+  }
+  
+  public static int a(xca paramxca)
+  {
+    int i = 1;
+    if (paramxca == null) {
+      throw new NullPointerException("preloadItem is null");
+    }
+    paramxca = new File(paramxca.c);
+    if (wbl.a(paramxca)) {
+      return 1;
+    }
+    if ((paramxca.isFile()) && (paramxca.length() >= 409600L)) {}
+    while (i != 0)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
+      return 2;
+      i = 0;
+    }
+    if (paramxca.length() > 0L) {
+      return 3;
+    }
+    return 4;
+  }
+  
+  private static TVK_ICacheMgr a()
+  {
+    if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getApplication())) {
+      return TVK_SDKMgr.getProxyFactory().getCacheMgr(BaseApplicationImpl.getApplication());
+    }
+    return null;
+  }
+  
+  public static void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilQueue)
+    {
+      Object localObject1 = new ArrayList(jdField_a_of_type_JavaUtilQueue);
+      jdField_a_of_type_JavaUtilQueue.clear();
+      localObject1 = ((List)localObject1).iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        xca localxca = (xca)((Iterator)localObject1).next();
+        jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.4(localxca));
+      }
     }
   }
   
-  public void a(List<QQStoryUserInfo> paramList)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    }
-    super.notifyDataSetChanged();
+    a(paramString, xko.a(BaseApplicationImpl.getContext()).a());
   }
   
-  public int getCount()
+  public static void a(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    if (paramBoolean)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2131561725, null);
-      paramView = new xbv(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366241));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - AIOUtils.dp2px(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365402));
-      paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      localView.setTag(paramView);
-      localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
-      paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 2) {
-        break label289;
+      File localFile = wbl.a(paramString, 0, true, true);
+      if (localFile != null) {
+        ((wan)wjs.a(28)).a(paramString, 0, new xbx(localFile, paramString));
       }
-      if (paramInt != 0) {
-        break label254;
-      }
-      localView.setBackgroundResource(2130839491);
-      label186:
-      localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.getFaceBitmap(((QQStoryUserInfo)localObject).uin, true);
-      if (localObject == null) {
-        break label349;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
     }
-    for (;;)
+  }
+  
+  public static void a(xca paramxca)
+  {
+    if (paramxca == null) {
+      throw new IllegalArgumentException("item should not be null");
+    }
+    synchronized (jdField_a_of_type_JavaUtilQueue)
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (xbv)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
+      if (!jdField_a_of_type_JavaUtilQueue.contains(paramxca)) {
+        jdField_a_of_type_JavaUtilQueue.offer(paramxca);
+      }
+      b(false);
+      return;
+    }
+  }
+  
+  public static void b()
+  {
+    ??? = a();
+    if (??? != null)
+    {
+      ((TVK_ICacheMgr)???).removePreloadCallback();
+      ((TVK_ICacheMgr)???).releasePreload(20161223);
+    }
+    synchronized (jdField_a_of_type_JavaUtilQueue)
+    {
+      Object localObject2 = new ArrayList(jdField_a_of_type_JavaUtilQueue);
+      if (jdField_a_of_type_Xca != null) {
+        ((List)localObject2).add(0, jdField_a_of_type_Xca);
+      }
+      jdField_a_of_type_Xca = null;
+      jdField_a_of_type_JavaUtilQueue.clear();
+      localObject2 = ((List)localObject2).iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        xca localxca = (xca)((Iterator)localObject2).next();
+        jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.5(localxca));
+      }
+    }
+  }
+  
+  private static void b(TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo, String paramString, xca paramxca)
+  {
+    paramString = paramString.replace("https://", "http://");
+    paramTVK_ICacheMgr.setOnPreLoadCompleteCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback);
+    paramTVK_ICacheMgr.setPreloadCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback);
+    jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    paramTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, paramTVK_PlayerVideoInfo);
+    jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.10(paramxca));
+  }
+  
+  /* Error */
+  private static void b(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: getstatic 27	xbu:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   3: astore_1
+    //   4: aload_1
+    //   5: monitorenter
+    //   6: iload_0
+    //   7: ifne +9 -> 16
+    //   10: getstatic 119	xbu:jdField_a_of_type_Xca	Lxca;
+    //   13: ifnonnull +45 -> 58
+    //   16: getstatic 27	xbu:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   19: invokeinterface 260 1 0
+    //   24: checkcast 76	xca
+    //   27: putstatic 119	xbu:jdField_a_of_type_Xca	Lxca;
+    //   30: getstatic 119	xbu:jdField_a_of_type_Xca	Lxca;
+    //   33: ifnull +22 -> 55
+    //   36: invokestatic 266	com/tribe/async/async/Bosses:get	()Lcom/tribe/async/async/Boss;
+    //   39: new 268	xby
+    //   42: dup
+    //   43: ldc_w 270
+    //   46: invokespecial 271	xby:<init>	(Ljava/lang/String;)V
+    //   49: invokeinterface 277 2 0
+    //   54: pop
+    //   55: aload_1
+    //   56: monitorexit
+    //   57: return
+    //   58: ldc_w 270
+    //   61: ldc_w 279
+    //   64: getstatic 119	xbu:jdField_a_of_type_Xca	Lxca;
+    //   67: invokestatic 284	ykq:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   70: goto -15 -> 55
+    //   73: astore_2
+    //   74: aload_1
+    //   75: monitorexit
+    //   76: aload_2
+    //   77: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	78	0	paramBoolean	boolean
+    //   3	72	1	localQueue	Queue
+    //   73	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	16	73	finally
+    //   16	55	73	finally
+    //   55	57	73	finally
+    //   58	70	73	finally
+    //   74	76	73	finally
+  }
+  
+  private static void c(@NonNull xca paramxca)
+  {
+    TVK_ICacheMgr localTVK_ICacheMgr;
+    switch (a(paramxca))
+    {
+    default: 
+      localTVK_ICacheMgr = a();
+      if (localTVK_ICacheMgr == null)
+      {
+        jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.8(paramxca));
+        b(true);
+        return;
+      }
       break;
-      label254:
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        localView.setBackgroundResource(2130839482);
-        break label186;
-      }
-      localView.setBackgroundResource(2130839485);
-      break label186;
-      label289:
-      if (this.jdField_a_of_type_JavaUtilList.size() == 2)
-      {
-        if (paramInt == 0)
-        {
-          localView.setBackgroundResource(2130839491);
-          break label186;
-        }
-        localView.setBackgroundResource(2130839482);
-        break label186;
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label186;
-      }
-      localView.setBackgroundResource(2130839482);
-      break label186;
-      label349:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bfvo.a());
+    case 1: 
+    case 2: 
+      jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.7(paramxca));
+      b(true);
+      return;
     }
+    String[] arrayOfString = new String[1];
+    arrayOfString[0] = paramxca.b;
+    int i = ((Integer)((wjl)wjs.a(10)).b("key_story_video_preload_duration", Integer.valueOf(2))).intValue();
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = xjy.a(paramxca.a, paramxca.c);
+    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(i));
+    if (arrayOfString[0].contains("qqstocdnd"))
+    {
+      wah localwah = (wah)wjs.a(4);
+      String str = localwah.b();
+      if (!TextUtils.isEmpty(str))
+      {
+        arrayOfString[0] = bkyp.a(arrayOfString[0], "authkey", str);
+        b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramxca);
+        return;
+      }
+      Bosses.get().postJob(new xbz("Q.qqstory.playernew.TVKPreloader", localwah, arrayOfString, i, paramxca, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
+      return;
+    }
+    b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramxca);
   }
 }
 

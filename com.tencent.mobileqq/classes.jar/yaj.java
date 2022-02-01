@@ -1,26 +1,25 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import java.util.ArrayList;
 import java.util.List;
 
-class yaj
-  implements AbsListView.OnScrollListener
+public class yaj
+  extends wpt
 {
-  int jdField_a_of_type_Int = 0;
+  public int a;
+  public String a;
+  public List<ShareGroupCollectionItem> a;
   
-  yaj(yah paramyah) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public yaj(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public String toString()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == yah.a(this.jdField_a_of_type_Yah, yah.a(this.jdField_a_of_type_Yah)).a().size()) && (!yah.a(this.jdField_a_of_type_Yah, yah.a(this.jdField_a_of_type_Yah)).a()))
-    {
-      paramAbsListView = yah.a(this.jdField_a_of_type_Yah);
-      yah.a(this.jdField_a_of_type_Yah, yah.a(this.jdField_a_of_type_Yah)).b(paramAbsListView);
-    }
+    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

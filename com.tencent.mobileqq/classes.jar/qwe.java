@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
 
 public class qwe
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public qwe(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public qwe(NativeShareView paramNativeShareView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

@@ -1,9 +1,36 @@
 import android.view.View;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface qps
+class qps
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, Map<String, Object> paramMap);
+  qps(qph paramqph, qfw paramqfw, PgcSmallView paramPgcSmallView, Container paramContainer) {}
+  
+  public void onClick(View paramView)
+  {
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qfw.a();
+    localArticleInfo.clickArea = 11;
+    QLog.d("PgcShortContentProteusItem", 1, "click short content small image");
+    if (this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
+    {
+      localArticleInfo.clickJumpTarget = qsj.a(this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a.jdField_a_of_type_Rrn.h, "-1");
+      pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a.jdField_a_of_type_Rrn.h, null);
+    }
+    for (;;)
+    {
+      pqb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localArticleInfo.clickJumpTarget = qsj.a(this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a.jdField_a_of_type_Rqu.c, "-1");
+      pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a.jdField_a_of_type_Rqu.c, null);
+    }
+  }
 }
 
 

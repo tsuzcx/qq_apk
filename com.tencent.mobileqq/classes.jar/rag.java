@@ -1,46 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function3;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xe5c.cmd0xe5c.RspBody;
-import tencent.im.oidb.cmd0xe5c.cmd0xe5c.VideoRspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$fetchVideoWatchWord$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rag
-  extends nmf
+public class rag
 {
-  rag(Function3 paramFunction3) {}
-  
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
+  public static void a(String paramString1, String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
-    QLog.i("RIJWriteWatchWordModel", 1, "fetchVideoWatchWord error code = " + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new cmd0xe5c.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (cmd0xe5c.VideoRspBody)paramBundle.video_rsp_body.get();
-      paramBundle = this.a;
-      if (paramBundle != null)
-      {
-        String str1 = paramArrayOfByte.watch_word.get();
-        String str2 = paramArrayOfByte.url.get();
-        Intrinsics.checkExpressionValueIsNotNull(str2, "videoRspBody.url.get()");
-        paramArrayOfByte = (Unit)paramBundle.invoke(str1, str2, Boolean.valueOf(paramArrayOfByte.is_open.get()));
-      }
-    }
-    do
-    {
-      return;
-      paramArrayOfByte = this.a;
-    } while (paramArrayOfByte == null);
-    paramArrayOfByte = (Unit)paramArrayOfByte.invoke(null, "", Boolean.valueOf(false));
+    a("0X800A833", "", "", "", new rah().a("type", paramString2).a("msg", paramString1).a());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    QLog.i("PTSReport", 1, "[reportData], actionName = " + paramString1 + ", r2 = " + paramString2 + ", r3 = " + paramString3 + ", r4 = " + paramString4 + ", r5 = " + paramString5);
+    olh.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a("0X800A832", "", "", "", new rah().a("type", paramString2).a("msg", paramString1).a());
   }
 }
 

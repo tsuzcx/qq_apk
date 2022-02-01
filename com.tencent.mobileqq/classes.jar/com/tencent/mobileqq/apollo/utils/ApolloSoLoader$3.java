@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import afvh;
+import agnw;
 
 public final class ApolloSoLoader$3
   implements Runnable
 {
   public void run()
   {
-    afvh.a(3);
+    agnw.a(3);
   }
 }
 

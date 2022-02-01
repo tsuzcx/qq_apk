@@ -1,37 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$columnTextTranslationAnim$1$1"}, k=3, mv={1, 1, 16})
-final class rua
-  implements ValueAnimator.AnimatorUpdateListener
+public class rua
+  implements bkzq
 {
-  rua(rtv paramrtv, rvs paramrvs) {}
+  public rua(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_Rvs.e;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "videoHolder.columnBannerPrefix");
-    ViewGroup.LayoutParams localLayoutParams = ((TextView)localObject).getLayoutParams();
-    localObject = localLayoutParams;
-    if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      localObject = null;
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
     }
-    localObject = (ViewGroup.MarginLayoutParams)localObject;
-    if (localObject != null)
+    ReadInJoyDeliverUGCActivity.b(this.a, true);
+    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
+    switch (paramInt)
     {
-      Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
-      }
-      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = ((Integer)paramValueAnimator).intValue();
-      this.jdField_a_of_type_Rvs.e.requestLayout();
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      rtg.c();
+      olh.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", pqf.c(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.c(this.a);
+      rtg.d();
     }
   }
 }

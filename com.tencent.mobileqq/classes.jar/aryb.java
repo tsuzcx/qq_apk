@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aryb
+class aryb
+  implements View.OnClickListener
 {
-  ArrayList<FavFileInfo> a = new ArrayList();
-  ArrayList<FavFileInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  ArrayList<FavFileInfo> c = new ArrayList();
-  ArrayList<FavFileInfo> d = new ArrayList();
-  ArrayList<FavFileInfo> e = new ArrayList();
+  aryb(arya paramarya) {}
   
-  public aryb(arxv paramarxv) {}
-  
-  ArrayList<FavFileInfo> a(String paramString)
+  public void onClick(View paramView)
   {
-    int i = aszt.a(paramString);
-    if (i == 0) {
-      return this.a;
+    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    {
+      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.a(this.a.a, null);
+      this.a.a.finish();
     }
-    if ((i == 3) || (i == 6) || (i == 7) || (i == 9) || (i == 10)) {
-      return this.jdField_b_of_type_JavaUtilArrayList;
-    }
-    if (i == 2) {
-      return this.c;
-    }
-    if (i == 5) {
-      return this.d;
-    }
-    return this.e;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

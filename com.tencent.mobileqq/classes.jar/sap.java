@@ -1,20 +1,57 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import org.jetbrains.annotations.NotNull;
 
 class sap
-  extends sif
+  implements sdm
 {
-  sap(sab paramsab) {}
+  sap(sao paramsao, UgcVideo paramUgcVideo) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a(float paramFloat)
   {
-    if (paramVideoInfo != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE)
     {
-      rha.b(sab.a(this.a), paramVideoInfo.g, 1);
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = ((int)paramFloat);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status = UgcVideo.STATUS_UPLOADING;
+      if (sao.a(this.jdField_a_of_type_Sao) != null) {
+        sao.a(this.jdField_a_of_type_Sao).a(3, true, false, null);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("RIJUGC.UploadCoverTaskStep", 0, "coverProgress =" + paramFloat);
+      }
     }
-    QLog.e("VideoFeedsShareController", 1, "add to topic failed, mPlayingVideoInfo = null");
+  }
+  
+  public void a(int paramInt, @NotNull String paramString)
+  {
+    QLog.e("RIJUGC.UploadCoverTaskStep", 1, "upload cover fail, errCode=" + paramInt + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status = UgcVideo.STATUS_FAILED;
+      if (sao.a(this.jdField_a_of_type_Sao) != null) {
+        sao.a(this.jdField_a_of_type_Sao).a(3, false, false, paramString);
+      }
+      sao.a(this.jdField_a_of_type_Sao).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+      this.jdField_a_of_type_Sao.d();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("RIJUGC.UploadCoverTaskStep", 1, "upload cover success");
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.UploadCoverTaskStep", 0, "upload cover url=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverUrl = paramString;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.status != UgcVideo.STATUS_PAUSE)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
+      if (sao.a(this.jdField_a_of_type_Sao) != null) {
+        sao.a(this.jdField_a_of_type_Sao).a(3, true, true, null);
+      }
+    }
+    sao.a(this.jdField_a_of_type_Sao).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    this.jdField_a_of_type_Sao.d();
   }
 }
 

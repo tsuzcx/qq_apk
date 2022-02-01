@@ -1,39 +1,82 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.OpenID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adbw
-  extends npj
+class adbw
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  public adbw(ChatSettingForTroop paramChatSettingForTroop) {}
+  adaa a;
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public adbw(adaa paramadaa)
   {
-    if ((this.a.isFinishing()) || (this.a.m)) {}
-    do
+    this.a = paramadaa;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
+    try
     {
-      do
-      {
-        return;
-        this.a.p();
-        if (this.a.b != null) {
-          this.a.b.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
-        }
-      } while (paramOpenID.openID.equals(this.a.e));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
-      }
-      this.a.s();
+      paramDialogInterface.put("confirm", false);
+      paramDialogInterface.put("cancel", true);
+      addh.a(this.a, paramDialogInterface);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      String str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      adaa localadaa = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      addh.a(localadaa, -1, paramDialogInterface);
+    }
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boolean bool2 = true;
+    paramDialogInterface = new JSONObject();
+    boolean bool1;
+    if (paramInt == 1) {
+      bool1 = true;
+    }
+    try
+    {
+      paramDialogInterface.put("confirm", bool1);
+      if (paramInt != 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        paramDialogInterface.put("cancel", bool1);
+        addh.a(this.a, paramDialogInterface);
+        return;
+        bool1 = false;
+        break;
+      }
+      String str;
+      adaa localadaa;
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      localadaa = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      addh.a(localadaa, -1, paramDialogInterface);
+    }
   }
 }
 

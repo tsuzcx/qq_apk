@@ -1,10 +1,16 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public abstract interface afkv
+public class afkv
+  extends bkxp
 {
-  public abstract void a(String paramString, int paramInt);
+  public afkv(VisitorsActivity paramVisitorsActivity) {}
   
-  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.e.setVisibility(0);
+  }
 }
 
 

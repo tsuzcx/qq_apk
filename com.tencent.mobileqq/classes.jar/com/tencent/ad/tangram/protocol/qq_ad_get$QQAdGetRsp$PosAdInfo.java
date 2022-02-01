@@ -4,7 +4,7 @@ public final class qq_ad_get$QQAdGetRsp$PosAdInfo
 {
   public qq_ad_get.QQAdGetRsp.AdInfo[] ads_info;
   public String msg;
-  public indicator.NoAdIndicator no_ad_indicator = new indicator.NoAdIndicator();
+  public indicator.NoAdIndicator no_ad_indicator;
   public String pos_id;
   public int report_type = 0;
   public int ret = 0;

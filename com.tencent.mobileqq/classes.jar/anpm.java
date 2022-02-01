@@ -1,121 +1,24 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanelListAdapter.1;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanelListAdapter.1.1.1;
 
 public class anpm
-  extends anpp
+  implements Animation.AnimationListener
 {
-  protected anpm(QQAppInterface paramQQAppInterface, anpt paramanpt)
+  public anpm(ApolloPanelListAdapter.1.1.1 param1) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramQQAppInterface, paramanpt);
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_Anoa.a = null;
   }
   
-  public int a(QQMessageFacade.Message paramMessage)
-  {
-    return 267;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public anpt a(QQMessageFacade.Message paramMessage)
-  {
-    Object localObject3 = bfsm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130840403));
-    this.jdField_a_of_type_Anpt.a((Bitmap)localObject3);
-    Object localObject2 = c();
-    this.jdField_a_of_type_Anpt.d((String)localObject2);
-    Object localObject4 = afdj.a(paramMessage);
-    Object localObject1 = localObject2;
-    if (localObject4 != null)
-    {
-      localObject1 = localObject2;
-      if (!((PAMessage)localObject4).items.isEmpty())
-      {
-        localObject1 = ((PAMessage.Item)((PAMessage)localObject4).items.get(0)).title;
-        if ((((PAMessage.Item)((PAMessage)localObject4).items.get(0)).cover != null) || (((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList == null)) {
-          break label214;
-        }
-        this.jdField_a_of_type_Anpt.c((String)localObject1);
-        localObject1 = (String)((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList.get(0);
-        this.jdField_a_of_type_Anpt.d((String)localObject1);
-      }
-    }
-    for (;;)
-    {
-      localObject2 = this.jdField_a_of_type_Anpt.b();
-      localObject2 = (String)localObject2 + (String)localObject1;
-      this.jdField_a_of_type_Anpt.b((String)localObject2);
-      a(paramMessage, this.jdField_a_of_type_Anpt);
-      if (paramMessage.extStr != null) {
-        break;
-      }
-      return null;
-      label214:
-      this.jdField_a_of_type_Anpt.d((String)localObject1);
-    }
-    if (((paramMessage.extLong & 0x1) == 0) && (!paramMessage.extStr.contains("lockDisplay"))) {
-      return null;
-    }
-    if (((paramMessage.extLong & 0x1) == 1) && (!paramMessage.getExtInfoFromExtStr("lockDisplay").equals("true"))) {
-      return null;
-    }
-    Intent localIntent = this.jdField_a_of_type_Anpt.a();
-    localObject4 = this.jdField_a_of_type_Anpt.c();
-    String str1 = this.jdField_a_of_type_Anpt.a();
-    localIntent.putExtra("need_report", true);
-    localIntent.putExtra("incoming_msguid", paramMessage.msgUid);
-    localIntent.putExtra("incoming_shmsgseq", paramMessage.shmsgseq);
-    String str2 = localIntent.getStringExtra("uin");
-    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str2))) {}
-    for (localObject2 = ((String)localObject4).replace(str2, "");; localObject2 = localObject4)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {}
-      while (AppConstants.REMINDER_UIN.equals(str2))
-      {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
-        localObject2 = localObject1;
-        pay.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade(), paramMessage, localIntent);
-        this.jdField_a_of_type_Anpt.a(localIntent);
-        this.jdField_a_of_type_Anpt.c((String)localObject4);
-        this.jdField_a_of_type_Anpt.d((String)localObject2);
-        this.jdField_a_of_type_Anpt.b((String)localObject1);
-        this.jdField_a_of_type_Anpt.a((Bitmap)localObject3);
-        return this.jdField_a_of_type_Anpt;
-        localObject1 = (String)localObject2 + " : " + (String)localObject1;
-      }
-      if (AppConstants.KANDIAN_DAILY_UIN.equals(str2))
-      {
-        localObject2 = BaseApplicationImpl.getContext().getResources().getDrawable(2130842709);
-        if ((localObject2 instanceof BitmapDrawable)) {
-          localObject2 = ((BitmapDrawable)localObject2).getBitmap();
-        }
-      }
-      for (;;)
-      {
-        localObject3 = localObject2;
-        localObject2 = str1;
-        break;
-        if ((localObject2 instanceof SkinnableBitmapDrawable))
-        {
-          localObject2 = ((SkinnableBitmapDrawable)localObject2).getBitmap();
-          continue;
-          localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131689656);
-          localObject2 = localObject1;
-          break;
-        }
-        localObject2 = localObject3;
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

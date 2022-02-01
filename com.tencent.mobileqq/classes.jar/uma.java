@@ -1,12 +1,21 @@
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+
 class uma
+  implements umf
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  uma(ulx paramulx) {}
   
-  public String toString()
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    String str = ulx.c(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      ulx.c(this.a, paramGiftServiceBean);
+      ulx.c(this.a).setText(paramGiftServiceBean.t);
+    }
+    ulx.a(this.a);
   }
 }
 

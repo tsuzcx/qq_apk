@@ -1,11 +1,4 @@
-public abstract interface bnld
-{
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
-}
+class bnld {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

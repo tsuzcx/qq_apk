@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import bcef;
+import bdla;
 
 class SelectMemberActivity$20
   implements Runnable
@@ -12,7 +12,7 @@ class SelectMemberActivity$20
     if (this.val$isSelectMode) {}
     for (String str = "multiMode_exp";; str = "singleMode_exp")
     {
-      bcef.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", str, 0, 0, this.val$troopUin, "0", "", "");
+      bdla.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", str, 0, 0, this.val$troopUin, "0", "", "");
       return;
     }
   }

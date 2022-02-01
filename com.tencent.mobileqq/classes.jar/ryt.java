@@ -1,21 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class ryt
-  implements Animator.AnimatorListener
+final class ryt
+  extends ntf
 {
-  public ryt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, rvu paramrvu) {}
+  ryt(ryu paramryu, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(this.jdField_a_of_type_Rvu);
+    if (this.jdField_a_of_type_Ryu != null)
+    {
+      this.jdField_a_of_type_Ryu.a(paramInt, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback =" + this.jdField_a_of_type_Ryu);
+      }
+    }
+    for (;;)
+    {
+      pvm.a().e(this.jdField_a_of_type_Int);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJUGC.PublishVideoHelper", 2, "moveVideo: errorCode = " + paramInt + "callback is null.");
+      }
+    }
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Ryu != null) {
+      this.jdField_a_of_type_Ryu.a(paramInt, paramString);
+    }
+    QLog.e("RIJUGC.PublishVideoHelper", 1, "moveVideo: columnId = " + this.jdField_a_of_type_Int + "errorCode = " + paramInt + ",errorMsg =" + paramString);
+    return true;
   }
 }
 

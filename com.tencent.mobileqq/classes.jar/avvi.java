@@ -1,22 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class avvi
-  implements bhle
+class avvi
+  implements ActionCallback
 {
-  public avvi(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  avvi(avux paramavux, avvs paramavvs) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void onResult(String paramString)
   {
-    if (paramInt == 1)
+    try
     {
-      if (MsgBackupPCAuthFragment.a(this.a)) {
-        this.a.k();
-      }
-      this.a.onBackEvent();
-    }
-    while (paramInt != 2) {
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Avvs.a(i, "");
       return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
     }
   }
 }

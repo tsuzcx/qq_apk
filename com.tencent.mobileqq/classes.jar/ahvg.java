@@ -1,28 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public class ahvg
-  extends BroadcastReceiver
+public final class ahvg
+  extends RecyclerView.ViewHolder
 {
-  public ahvg(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+  private ImageView b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ahvg(@NonNull View paramView)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.d(this.a) == 9003) && (BlessSelectMemberActivity.e(this.a) == 32))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
-      }
-      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
-      paramContext.putExtra("broadcastType", 1);
-      this.a.app.getApp().sendBroadcast(paramContext);
-      this.a.finish();
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368525));
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramView.getContext(), this.jdField_a_of_type_AndroidWidgetImageView).b(8388661).a();
+    this.b = ((ImageView)paramView.findViewById(2131366927));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378673));
   }
 }
 

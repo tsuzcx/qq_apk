@@ -1,34 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-class bghi
-  implements View.OnClickListener
+public abstract interface bghi
 {
-  bghi(bghh parambghh) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.dismiss();
-      continue;
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      this.a.dismiss();
-      continue;
-      if (this.a.a != null) {
-        this.a.a.b();
-      }
-      this.a.dismiss();
-    }
-  }
+  public abstract void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle);
 }
 
 

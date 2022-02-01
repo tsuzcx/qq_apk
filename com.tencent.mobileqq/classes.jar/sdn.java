@@ -1,6 +1,10 @@
 public abstract interface sdn
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void a(sdm paramsdm);
+  
+  public abstract void b();
 }
 
 

@@ -16,7 +16,9 @@ public class WatermarkStaticFilter
   public WatermarkStaticFilter(StickerItem paramStickerItem, String paramString)
   {
     super(paramStickerItem, paramString);
-    this.wmGroup = new WMGroup(paramStickerItem.wmGroupConfig);
+    if (paramStickerItem.wmGroupConfig != null) {
+      this.wmGroup = new WMGroup(paramStickerItem.wmGroupConfig);
+    }
     this.wmPosRect = new RectF();
   }
   
@@ -60,7 +62,9 @@ public class WatermarkStaticFilter
   
   public void reset()
   {
-    this.wmGroup.reset();
+    if (this.wmGroup != null) {
+      this.wmGroup.reset();
+    }
     super.reset();
   }
   

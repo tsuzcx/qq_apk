@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
 class awjd
-  implements DialogInterface.OnClickListener
+  implements TencentDirectionListener
 {
   awjd(awiz paramawiz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDirectionChanged(double paramDouble, int paramInt)
+  {
+    if (awiz.a(this.a) != null)
+    {
+      awiz.a(this.a, 180.0D + paramDouble);
+      awiz.a(this.a, false);
+    }
+  }
 }
 
 

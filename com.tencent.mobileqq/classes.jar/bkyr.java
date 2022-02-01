@@ -1,26 +1,11 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceStruct;
+import android.view.animation.Interpolator;
 
 public class bkyr
+  implements Interpolator
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  public float getInterpolation(float paramFloat)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
-    {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramClass.readFrom(paramArrayOfByte);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    return bkxo.a(paramFloat);
   }
 }
 

@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bkxb
-  implements DialogInterface.OnDismissListener
+public class bkxb
 {
-  bkxb(bkxa parambkxa, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public long a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
-  }
+  public bkxb(bkxa parambkxa) {}
 }
 
 

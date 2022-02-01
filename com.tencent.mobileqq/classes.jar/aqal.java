@@ -1,72 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aqal
-  extends aptq<aqak>
+class aqal
+  implements DialogInterface.OnDismissListener
 {
-  @NonNull
-  public aqak a(int paramInt)
-  {
-    return new aqak();
-  }
+  aqal(aqak paramaqak, bkzi parambkzi) {}
   
-  @Nullable
-  public aqak a(aptx[] paramArrayOfaptx)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
-    {
-      aqak localaqak = aqak.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localaqak;
-    }
-    return null;
-  }
-  
-  public void a(aqak paramaqak)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramaqak.toString());
-    }
-  }
-  
-  public Class<aqak> clazz()
-  {
-    return aqak.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 488;
+    this.jdField_a_of_type_Bkzi.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,16 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class asvx
-  implements ShareActionSheet.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  asvx(asvt paramasvt) {}
+  asvx(asvw paramasvw) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramActionSheetItem == null) {}
-    do
-    {
-      return;
-      asvt.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (this.a.a == null);
-    this.a.a.a(paramActionSheetItem);
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 

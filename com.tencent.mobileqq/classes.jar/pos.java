@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-
-public class pos
-  implements pqe
+class pos
+  extends qdb
 {
-  public pos(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pos(pob parampob, String paramString)
   {
-    ReadInJoySelfFragment.b(this.a);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramqcu.a();
   }
 }
 

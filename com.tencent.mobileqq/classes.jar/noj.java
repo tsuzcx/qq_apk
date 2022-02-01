@@ -1,19 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.ui.AVGameActivity;
+import com.tencent.avgame.ui.AVGameActivity.6;
+
 public class noj
-  implements non
+  implements DialogInterface.OnClickListener
 {
-  public void a(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public noj(AVGameActivity.6 param6) {}
   
-  public void b(Runnable paramRunnable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new Thread(paramRunnable).start();
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
+    paramDialogInterface.dismiss();
+    this.a.this$0.finish();
   }
 }
 

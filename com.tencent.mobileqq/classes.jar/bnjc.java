@@ -1,15 +1,11 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.cmshow.AECMShowRequestController.CmShowDataWrapper;
 
-public class bnjc
-  implements Comparator<bngv>
+public abstract interface bnjc
 {
-  public bnjc(DoodleLayout paramDoodleLayout) {}
+  public abstract void a(int paramInt, @Nullable AECMShowRequestController.CmShowDataWrapper paramCmShowDataWrapper);
   
-  public int a(bngv parambngv1, bngv parambngv2)
-  {
-    return parambngv2.a() - parambngv1.a();
-  }
+  public abstract void c(int paramInt);
 }
 
 

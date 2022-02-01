@@ -1,20 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class wnl
-  implements View.OnClickListener
+  implements wns
 {
-  wnl(wnk paramwnk, wnj paramwnj) {}
+  wnl(wni paramwni) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable wly paramwly, Error paramError)
   {
-    if (VideoCoverListBar.a(this.jdField_a_of_type_Wnk.jdField_a_of_type_Wnj.a) != null) {
-      VideoCoverListBar.a(this.jdField_a_of_type_Wnk.jdField_a_of_type_Wnj.a).a(wnk.a(this.jdField_a_of_type_Wnk));
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
     }
-    xwa.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", wnk.a(this.jdField_a_of_type_Wnk) });
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b();
+  }
+  
+  public void a(@Nullable wly paramwly, @NonNull List<StoryVideoItem> paramList)
+  {
+    if (!paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      }
+      wni.a(this.a, paramList);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+    }
+    this.a.b();
   }
 }
 

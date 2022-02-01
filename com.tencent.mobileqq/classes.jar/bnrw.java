@@ -1,19 +1,17 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
 
 public class bnrw
-  implements AdapterView.OnItemSelectedListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bnrw(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public bnrw(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f);
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

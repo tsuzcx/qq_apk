@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import ajkw;
+import akgk;
 
 public class AvatarPendantActivity$24$2
   implements Runnable
 {
-  public AvatarPendantActivity$24$2(ajkw paramajkw, String paramString) {}
+  public AvatarPendantActivity$24$2(akgk paramakgk, String paramString) {}
   
   public void run()
   {
-    if (AvatarPendantActivity.a(this.jdField_a_of_type_Ajkw.a))
+    if (AvatarPendantActivity.a(this.jdField_a_of_type_Akgk.a))
     {
-      AvatarPendantActivity.b(this.jdField_a_of_type_Ajkw.a, this.jdField_a_of_type_JavaLangString);
-      AvatarPendantActivity.a(this.jdField_a_of_type_Ajkw.a, false);
+      AvatarPendantActivity.b(this.jdField_a_of_type_Akgk.a, this.jdField_a_of_type_JavaLangString);
+      AvatarPendantActivity.a(this.jdField_a_of_type_Akgk.a, false);
     }
   }
 }

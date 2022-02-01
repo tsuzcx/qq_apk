@@ -2,7 +2,7 @@ package com.tencent.biz.richframework.network.cache;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import udo;
+import url;
 
 public abstract class Cache
 {
@@ -17,7 +17,7 @@ public abstract class Cache
   
   public String getCacheName(String paramString)
   {
-    return udo.c(paramString);
+    return url.c(paramString);
   }
   
   public abstract Cache.CacheInputStream getStream(String paramString);

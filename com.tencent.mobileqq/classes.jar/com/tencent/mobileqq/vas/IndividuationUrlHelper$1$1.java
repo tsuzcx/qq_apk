@@ -2,20 +2,20 @@ package com.tencent.mobileqq.vas;
 
 import android.content.res.Resources;
 import android.widget.ImageView;
-import bgew;
-import bgex;
+import bhnq;
+import bhnr;
 import com.tencent.mobileqq.utils.VipUtils;
 
 public class IndividuationUrlHelper$1$1
   implements Runnable
 {
-  public IndividuationUrlHelper$1$1(bgew parambgew, bgex parambgex, String paramString) {}
+  public IndividuationUrlHelper$1$1(bhnq parambhnq, bhnr parambhnr, String paramString) {}
   
   public void run()
   {
-    Resources localResources = this.jdField_a_of_type_Bgex.a.getResources();
+    Resources localResources = this.jdField_a_of_type_Bhnr.a.getResources();
     if (localResources != null) {
-      VipUtils.a(localResources, this.jdField_a_of_type_Bgex.a, this.jdField_a_of_type_JavaLangString, localResources.getDrawable(2130846976));
+      VipUtils.a(localResources, this.jdField_a_of_type_Bhnr.a, this.jdField_a_of_type_JavaLangString, localResources.getDrawable(2130847073));
     }
   }
 }

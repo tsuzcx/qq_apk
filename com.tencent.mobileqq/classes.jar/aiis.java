@@ -1,17 +1,41 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aiis
-  extends GridLayoutManager.SpanSizeLookup
+public class aiis
+  extends aiit
 {
-  aiis(aiir paramaiir, GridLayoutManager paramGridLayoutManager) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public int getSpanSize(int paramInt)
+  public JSONObject a()
   {
-    if ((this.jdField_a_of_type_Aiir.a(paramInt)) || (this.jdField_a_of_type_Aiir.b(paramInt)) || (this.jdField_a_of_type_Aiir.c(paramInt)) || (this.jdField_a_of_type_Aiir.b())) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.a);
+      localJSONObject2.put("keyword", this.b);
+      localJSONObject2.put("appid", this.e);
+      localJSONObject2.put("expose_md5s", this.f);
+      localJSONObject2.put("expose_urls", this.g);
+      localJSONObject2.put("click_md5", this.h);
+      localJSONObject2.put("click_url", this.i);
+      localJSONObject2.put("aio_type", this.c);
+      localJSONObject2.put("mobile_type", this.j);
+      localJSONObject2.put("to_user_id", this.d);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
-    return 1;
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
+    }
+    return localJSONObject1;
   }
 }
 

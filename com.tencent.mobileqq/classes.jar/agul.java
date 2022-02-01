@@ -1,13 +1,36 @@
+import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agul
-  implements agut
+class agul
+  extends ClickableSpan
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  agul(agtf paramagtf, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    paramagap.b(paramMessageRecord, paramagcc);
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    bdla.b(this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
+    try
+    {
+      this.jdField_a_of_type_Agtf.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

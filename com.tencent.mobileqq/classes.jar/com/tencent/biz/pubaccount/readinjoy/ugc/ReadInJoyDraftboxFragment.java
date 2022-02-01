@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import amtj;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,17 +26,17 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import pim;
-import pkm;
-import pwc;
-import ria;
+import ptj;
+import pvj;
+import qhi;
+import rum;
 
 public class ReadInJoyDraftboxFragment
   extends IphoneTitleBarFragment
 {
   private List<ReadInJoyDraftboxItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private pwc jdField_a_of_type_Pwc = pkm.a().a();
-  private ria jdField_a_of_type_Ria;
+  private qhi jdField_a_of_type_Qhi = pvj.a().a();
+  private rum jdField_a_of_type_Rum;
   
   private void b()
   {
@@ -73,7 +73,7 @@ public class ReadInJoyDraftboxFragment
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849445);
+      this.leftView.setBackgroundResource(2130849537);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -104,32 +104,32 @@ public class ReadInJoyDraftboxFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_Ria = new ria(getActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Rum = new rum(getActivity(), this.jdField_a_of_type_JavaUtilList);
     if (this.mContentView != null)
     {
-      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365781);
-      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Ria);
+      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365879);
+      paramLayoutInflater.setAdapter(this.jdField_a_of_type_Rum);
       paramLayoutInflater.setDragEnable(true);
       paramLayoutInflater.setDivider(new ColorDrawable(Color.parseColor("#FFF2F2F2")));
       paramLayoutInflater.setDividerHeight(ViewUtils.dip2px(0.5F));
-      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365780));
+      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365878));
     }
-    setTitle(amtj.a(2131712106));
+    setTitle(anvx.a(2131712453));
     if (this.leftView != null) {
-      this.leftView.setText(amtj.a(2131712107));
+      this.leftView.setText(anvx.a(2131712454));
     }
     a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560169;
+    return 2131560215;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    pim.a.a(getActivity(), "109");
+    ptj.a.a(getActivity(), "109");
   }
   
   public void onResume()

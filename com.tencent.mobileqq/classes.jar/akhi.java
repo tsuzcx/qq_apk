@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class akhi
-  implements bjog
+  implements DialogInterface.OnClickListener
 {
-  public akhi(AppletsFolderManager.2 param2) {}
+  public akhi(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    akhg.a(this.a.this$0, false);
+    if (this.a.a != null) {
+      this.a.a.setText("");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhi
  * JD-Core Version:    0.7.0.1
  */

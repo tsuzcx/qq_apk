@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.share;
 
-import bhht;
+import bisl;
 
 class MiniProgramOpenSdkUtil$TimeOutInfo
 {
   boolean isTimeout;
-  bhht progressDialog;
+  bisl progressDialog;
 }
 
 

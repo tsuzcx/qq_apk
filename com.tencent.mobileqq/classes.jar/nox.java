@@ -1,8 +1,25 @@
-public abstract interface nox
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class nox
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  nox(nov paramnov) {}
   
-  public abstract void a(String paramString);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

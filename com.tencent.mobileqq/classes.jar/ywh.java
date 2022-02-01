@@ -1,25 +1,30 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 public class ywh
-  implements Comparator<String>
+  implements TextWatcher
 {
-  public ywh(QRDisplayActivity paramQRDisplayActivity) {}
+  public ywh(ywf paramywf) {}
   
-  public int a(String paramString1, String paramString2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    String str = zdx.a(paramEditable.toString(), 30);
+    if (str.length() < paramEditable.length()) {
+      paramEditable.replace(0, paramEditable.length(), str);
     }
-    while (paramString1 != null) {
-      return i;
+    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
+    ykq.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_Ywi != null) {
+      this.a.jdField_a_of_type_Ywi.a(this.a.jdField_a_of_type_JavaLangString);
     }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
   }
 }
 

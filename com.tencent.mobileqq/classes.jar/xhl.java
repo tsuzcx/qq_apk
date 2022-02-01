@@ -1,28 +1,49 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xhl
-  extends vko
+  extends xhm
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
+  private long a;
   
-  public xhl(ErrorMessage paramErrorMessage, String paramString)
+  public xhl(@NonNull ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
   }
   
-  public String toString()
+  protected View a(ViewGroup paramViewGroup)
   {
-    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return paramViewGroup;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xhf == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L)
+      {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        wlh localwlh = this.jdField_a_of_type_Xhf.a().getVideoLinkInfo();
+        if ((localwlh != null) && (localwlh.a()) && (localwlh.a.a()))
+        {
+          xbp.a(a(), localwlh.a.c, localwlh.a.b, 1010);
+          ykv.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Xhf.a });
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        }
+      }
+    }
   }
 }
 

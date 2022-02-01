@@ -1,36 +1,24 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11a.submsgtype0x11a.MsgBody;
+import com.tencent.ad.tangram.lbs.AdLocation;
+import com.tencent.ad.tangram.lbs.AdLocationAdapter;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class abzq
-  implements abzb
+public final class abzq
+  implements AdLocationAdapter
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
+  public AdLocation getLocationCache()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11a");
-    }
-    try
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = LbsManagerService.getCachedLbsInfo("gdt_tangram");
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null))
     {
-      submsgtype0x11a.MsgBody localMsgBody = new submsgtype0x11a.MsgBody();
-      if (paramabxc.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        avth.a().a(localMsgBody);
-      }
-      return;
+      AdLocation localAdLocation = new AdLocation();
+      localAdLocation.latitude = localSosoLbsInfo.mLocation.mLat02;
+      localAdLocation.longitude = localSosoLbsInfo.mLocation.mLon02;
+      localAdLocation.timeMillis = localSosoLbsInfo.mLocation.locationTime;
+      return localAdLocation;
     }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x11a], errInfo->" + paramabxc.getMessage());
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc, paramMsgType0x210);
+    acho.b("GdtLocationAdapter", String.format("getLocationCache %s", new Object[] { null }));
     return null;
   }
 }

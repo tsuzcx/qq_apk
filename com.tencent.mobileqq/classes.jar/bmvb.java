@@ -1,78 +1,59 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class bmvb
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g = 2;
+  public static int a;
+  private static QQFilterRenderManager a;
+  public static int b;
+  private static QQFilterRenderManager b;
+  public static int c = 2;
+  private static int d;
   
-  public bmvb()
+  static
   {
-    this.jdField_a_of_type_Int = 0;
+    bmwb.a();
+    bbhm.a(false);
+    jdField_b_of_type_Int = 1;
   }
   
-  public int a(float paramFloat)
+  public static int a()
   {
-    return AIOUtils.dp2px(paramFloat, BaseApplicationImpl.getApplication().getResources());
+    return d;
   }
   
-  public bmva a()
+  public static QQFilterRenderManager a()
   {
-    bmva localbmva = new bmva();
-    a(localbmva);
-    return localbmva;
+    return new QQFilterRenderManager(new int[] { 70, 80, 90, 184 });
   }
   
-  public bmvb a(float paramFloat1, float paramFloat2)
+  public static QQFilterRenderManager a(int paramInt)
   {
-    this.e = a(paramFloat1);
-    this.f = a(paramFloat2);
-    return this;
+    if (paramInt == c) {
+      return a;
+    }
+    return EffectsCameraCaptureView.a();
   }
   
-  public bmvb a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  public static void a(QQFilterRenderManager paramQQFilterRenderManager)
   {
-    this.c = a(paramFloat1);
-    this.d = a(paramFloat2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
+    a = paramQQFilterRenderManager;
   }
   
-  public bmvb a(Bitmap paramBitmap)
+  public static QQFilterRenderManager b()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    return this;
-  }
-  
-  public bmvb a(Typeface paramTypeface)
-  {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-    return this;
-  }
-  
-  void a(bmva parambmva)
-  {
-    parambmva.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    parambmva.e = this.e;
-    parambmva.f = this.f;
-    parambmva.c = this.c;
-    parambmva.d = this.d;
-    parambmva.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    parambmva.b = this.b;
-    parambmva.jdField_a_of_type_AndroidGraphicsTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
-    parambmva.g = parambmva.a(parambmva.jdField_a_of_type_Int);
-    parambmva.h = parambmva.a(parambmva.b);
-    parambmva.i = this.g;
+    try
+    {
+      if ((jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.isSurfaceDestroyed())) {
+        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
+      }
+      if (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
+        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = a();
+      }
+      QQFilterRenderManager localQQFilterRenderManager = jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+      return localQQFilterRenderManager;
+    }
+    finally {}
   }
 }
 

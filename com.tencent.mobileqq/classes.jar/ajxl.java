@@ -1,22 +1,19 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajxl
-  extends amsu
+  extends almi
 {
-  public ajxl(TransactionActivity paramTransactionActivity) {}
+  public ajxl(Conversation paramConversation) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!paramBoolean) || (paramString == null)) {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    TransactionActivity.c(this.a, ContactUtils.getBuddyNickName(this.a.app, TransactionActivity.c(this.a), false));
-    paramString = akgd.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), AIOUtils.dp2px(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.c(this.a).getPaint());
-    TransactionActivity.c(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
+    this.a.a(0L);
   }
 }
 

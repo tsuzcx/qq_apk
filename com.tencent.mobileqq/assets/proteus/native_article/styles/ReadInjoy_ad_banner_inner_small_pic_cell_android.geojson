@@ -89,7 +89,7 @@
                     "margin_bottom": "5",
                     "height": {
                       "type": "relative",
-                      "value": "16"
+                      "value": "28"
                     },
                     "width": {
                       "type": "match_parent"
@@ -139,10 +139,11 @@
                         "view_id": "id_view_AdDownloadView",
                         "height": {
                           "type": "relative",
-                          "value": "30"
+                          "value": "25"
                         },
                         "width": {
-                          "type": "wrap_content"
+                          "type": "relative",
+                          "value": "62"
                         },
                         "align_parent_center_vertical": "YES",
                         "left_of_view": "id_dislike_button",

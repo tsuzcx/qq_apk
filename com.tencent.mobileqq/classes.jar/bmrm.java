@@ -1,92 +1,45 @@
-import android.app.Activity;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.2;
+import mqq.os.MqqHandler;
 
-public abstract class bmrm
+public class bmrm
+  implements auir
 {
-  public int a;
-  protected SegmentKeeper a;
-  public Object a;
-  public ArrayList<bmrn> a;
-  public int b;
-  protected int c;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public MqqHandler a;
   
-  public bmrm(Object paramObject)
+  public bmrm(MqqHandler paramMqqHandler, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public abstract float a();
-  
-  public abstract int a();
-  
-  public abstract int a(Activity paramActivity, int paramInt);
-  
-  public String a()
+  public void a(int paramInt, String paramString)
   {
-    return String.valueOf(this.jdField_a_of_type_JavaLangObject.hashCode());
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bmrn)localIterator.next()).a(this);
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bmrn)localIterator.next()).a(this, paramInt);
-      }
-    }
-  }
-  
-  public abstract void a(Activity paramActivity, int paramInt);
-  
-  public void a(bmrn parambmrn)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambmrn)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambmrn);
-      }
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
       return;
     }
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.2(this, paramString));
   }
   
-  public void a(SegmentKeeper paramSegmentKeeper)
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = paramSegmentKeeper;
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bmrn)localIterator.next()).b(this);
-      }
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(100, 1500L);
+      return;
     }
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.1(this));
   }
-  
-  public void b(Activity paramActivity, int paramInt) {}
 }
 
 

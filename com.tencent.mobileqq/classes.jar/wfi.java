@@ -1,73 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgListHeadNode;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
 
 public class wfi
-  extends vqr<wgt>
 {
-  private static final String jdField_a_of_type_JavaLangString = vpl.a("StoryLrSvc.msglist_head_node");
-  private List<Long> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private int c;
+  public static volatile wfi a;
   
-  public int a()
+  public static wfi a()
   {
-    return this.c;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgListHeadNode localRspMsgListHeadNode = new qqstory_service.RspMsgListHeadNode();
-    try
-    {
-      localRspMsgListHeadNode.mergeFrom(paramArrayOfByte);
-      return new wgt(localRspMsgListHeadNode);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+    Object localObject = a;
+    if (localObject == null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("RecentTabHaloRequest", 2, "decodeResponse: failed. Message: exception: " + paramArrayOfByte);
+        wfi localwfi2 = a;
+        localObject = localwfi2;
+        if (localwfi2 == null)
+        {
+          localObject = new wfi();
+          a = (wfi)localObject;
         }
+        return localObject;
       }
+      finally {}
     }
+    return localwfi1;
   }
   
-  protected byte[] a()
+  public <Request extends wfm, Respond extends wfh> void a(Request paramRequest, wfk<Request, Respond> paramwfk)
   {
-    qqstory_service.ReqMsgListHeadNode localReqMsgListHeadNode = new qqstory_service.ReqMsgListHeadNode();
-    PBBytesField localPBBytesField = localReqMsgListHeadNode.current_seq;
-    if (this.b != null) {}
-    for (String str = this.b;; str = "")
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-      localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
-      localReqMsgListHeadNode.source.set(this.c);
-      localReqMsgListHeadNode.setHasFlag(true);
-      return localReqMsgListHeadNode.toByteArray();
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");
-    localStringBuilder.append("mCurrentSeq='").append(this.b).append('\'');
-    localStringBuilder.append(", mUins=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append(", mWhen=").append(this.c);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    paramRequest = new wfj(paramRequest);
+    paramRequest.jdField_a_of_type_Wfk = paramwfk;
+    paramRequest.jdField_a_of_type_Wfm.a(paramRequest);
+    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_Wfm);
   }
 }
 

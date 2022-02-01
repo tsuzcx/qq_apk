@@ -1,52 +1,73 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amal;
-import amau;
-import ambl;
-import amky;
+import amme;
+import anbt;
+import ancc;
+import anct;
+import anmz;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
+import mqq.os.MqqHandler;
 
 public class ApolloDrawerInfoViewListener$2
   implements Runnable
 {
-  public ApolloDrawerInfoViewListener$2(amky paramamky, boolean paramBoolean, Object paramObject) {}
+  public ApolloDrawerInfoViewListener$2(anmz paramanmz, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
+    Object localObject1;
     try
     {
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangObject == null)) {
+        return;
+      }
+      if (anmz.a(this.this$0).get() == null) {
+        return;
+      }
+      localObject1 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
+      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0)) {
+        return;
+      }
+      anct localanct = (anct)anmz.a(this.this$0).get();
+      localObject2 = localanct.a();
+      ancc localancc = localanct.a();
+      if ((localObject2 == null) || (localancc == null)) {
+        return;
+      }
+      Iterator localIterator = ((ArrayList)localObject1).iterator();
+      while (localIterator.hasNext())
       {
-        if (amky.a(this.this$0).get() == null) {
-          return;
-        }
-        Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
-        if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
-        {
-          Object localObject1 = (ambl)amky.a(this.this$0).get();
-          amal localamal = ((ambl)localObject1).a();
-          localObject1 = ((ambl)localObject1).a();
-          if ((localamal != null) && (localObject1 != null))
-          {
-            localObject2 = ((ArrayList)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              String str = (String)((Iterator)localObject2).next();
-              if (str.equals(((amau)localObject1).b)) {
-                localamal.a(str, true);
-              }
-            }
-          }
+        String str = (String)localIterator.next();
+        if (str.equals(localancc.b)) {
+          ((anbt)localObject2).a(str, true);
         }
       }
-      return;
+      if (localThrowable.a() == null) {
+        return;
+      }
     }
     catch (Throwable localThrowable)
     {
       QLog.e("ApolloDrawerInfoViewListener", 1, localThrowable, new Object[0]);
+      return;
+    }
+    Object localObject2 = localThrowable.a().getCurrentUin();
+    boolean bool = anmz.a(this.this$0, (String)localObject2, (ArrayList)localObject1);
+    QLog.d("ApolloDrawerInfoViewListener", 1, "onApolloDressChange reGetFrame:" + bool);
+    if (bool)
+    {
+      localObject1 = (amme)localThrowable.a().getManager(QQManagerFactory.APOLLO_MANAGER);
+      if ((localObject1 != null) && (amme.a(localThrowable.a()) != 2))
+      {
+        ThreadManager.getSubThreadHandler().post(new ApolloDrawerInfoViewListener.2.1(this, (amme)localObject1));
+        ThreadManager.getSubThreadHandler().postDelayed(new ApolloDrawerInfoViewListener.2.2(this, (amme)localObject1), 100L);
+      }
     }
   }
 }

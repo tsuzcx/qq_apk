@@ -17,20 +17,20 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
-import mzq;
-import nar;
-import ncp;
-import ned;
-import nee;
-import neg;
-import neh;
-import nfa;
-import nfb;
-import nju;
+import nfh;
+import ngh;
+import nin;
+import nkv;
+import nkw;
+import nky;
+import nkz;
+import nls;
+import nlt;
+import nqu;
 
 public class GuessStarStageView
   extends RelativeLayout
-  implements nee
+  implements nkw
 {
   int jdField_a_of_type_Int = 0;
   View jdField_a_of_type_AndroidViewView;
@@ -40,8 +40,8 @@ public class GuessStarStageView
   AVGameText jdField_a_of_type_ComTencentAvgameUiAVGameText;
   public Runnable a;
   ArrayList<Pair<Integer, String>> jdField_a_of_type_JavaUtilArrayList;
-  public ned a;
-  neh jdField_a_of_type_Neh;
+  public nkv a;
+  nkz jdField_a_of_type_Nkz;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   AVGameText jdField_b_of_type_ComTencentAvgameUiAVGameText;
@@ -68,20 +68,20 @@ public class GuessStarStageView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558725, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365179));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378999));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378970));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378972));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367673);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379495));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379496));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370134);
+    LayoutInflater.from(getContext()).inflate(2131558739, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365264));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379293));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379264));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379266));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367809);
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379804));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379805));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370308);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nju.b());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = nju.a();
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nqu.b());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = nqu.a();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_Ned = new nfa(this);
+    this.jdField_a_of_type_Nkv = new nls(this);
   }
   
   private void a(String paramString)
@@ -91,14 +91,14 @@ public class GuessStarStageView
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     if ((paramString != null) && (paramString.length() > 5)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nju.d());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nqu.d());
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new nfb(this, paramString));
+      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new nlt(this, paramString));
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nju.c());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nqu.c());
     }
   }
   
@@ -107,14 +107,14 @@ public class GuessStarStageView
     return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
-  public ned a()
+  public nkv a()
   {
-    return this.jdField_a_of_type_Ned;
+    return this.jdField_a_of_type_Nkv;
   }
   
   public void a(Player paramPlayer, AVGameUserInfo paramAVGameUserInfo)
   {
-    if (ncp.k <= 0)
+    if (nin.k <= 0)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
@@ -122,16 +122,16 @@ public class GuessStarStageView
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(mzq parammzq)
+  public void a(nfh paramnfh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GuessStarStageView", 2, "onUpdateCurTopic topic = " + parammzq);
+      QLog.d("GuessStarStageView", 2, "onUpdateCurTopic topic = " + paramnfh);
     }
-    if (parammzq == null) {
+    if (paramnfh == null) {
       return;
     }
-    parammzq = (nar)parammzq;
-    String[] arrayOfString = parammzq.a();
+    paramnfh = (ngh)paramnfh;
+    String[] arrayOfString = paramnfh.a();
     if ((arrayOfString[0] != null) && (arrayOfString[0].length() != 0) && (arrayOfString[1] != null) && (arrayOfString[1].length() != 0) && (arrayOfString[2] != null) && (arrayOfString[2].length() != 0))
     {
       this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFFFFF", arrayOfString[2]);
@@ -142,7 +142,7 @@ public class GuessStarStageView
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = parammzq.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = paramnfh.jdField_a_of_type_JavaUtilArrayList;
       if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
         break;
       }
@@ -154,9 +154,9 @@ public class GuessStarStageView
     }
   }
   
-  public void a(neg paramneg)
+  public void a(nky paramnky)
   {
-    this.jdField_a_of_type_Ned.a(paramneg);
+    this.jdField_a_of_type_Nkv.a(paramnky);
   }
   
   public void a(boolean paramBoolean)
@@ -184,8 +184,8 @@ public class GuessStarStageView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Neh != null) {
-        this.jdField_a_of_type_Neh.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (this.jdField_a_of_type_Nkz != null) {
+        this.jdField_a_of_type_Nkz.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
       }
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -193,9 +193,9 @@ public class GuessStarStageView
     }
   }
   
-  public void setStageRecordPresenter(neh paramneh)
+  public void setStageRecordPresenter(nkz paramnkz)
   {
-    this.jdField_a_of_type_Neh = paramneh;
+    this.jdField_a_of_type_Nkz = paramnkz;
   }
 }
 

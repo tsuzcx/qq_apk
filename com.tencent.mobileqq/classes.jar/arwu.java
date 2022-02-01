@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class arwu
-  implements bjqj
+class arwu
+  implements DialogInterface.OnClickListener
 {
-  public arwu(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  arwu(arws paramarws) {}
   
-  public void a(int paramInt)
-  {
-    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

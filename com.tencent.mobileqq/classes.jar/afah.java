@@ -1,39 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afah
-  implements akbj
+  implements View.OnClickListener
 {
-  public afah(CustomizeStrategyFactory.PanelStrategy.1 param1) {}
+  public afah(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
+    if (this.a.mSwiftTitleUI != null)
     {
-      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, bfvo.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
-      if (localBitmap != null) {
-        this.a.a.icon = localBitmap;
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      this.a.mSwiftTitleUI.mUIStyle.isScreenLandscape = false;
+      this.a.mSwiftTitleUI.mUIStyle.mIsPortraitOnly = Boolean.valueOf(true);
+      if (this.a.mUIStyleHandler != null) {
+        this.a.mUIStyleHandler.updateScreenOrientation();
       }
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    this.a.onClick(this.a.mSwiftTitleUI.rightViewImg);
+    this.a.a(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

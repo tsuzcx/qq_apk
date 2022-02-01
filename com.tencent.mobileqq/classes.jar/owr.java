@@ -1,20 +1,24 @@
-import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class owr
-  implements View.OnClickListener
+public class owr
+  implements AdapterView.OnItemClickListener
 {
-  owr(owq paramowq, ouo paramouo, Context paramContext) {}
+  public owr(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d("GuideHelper", 1, "getBottomGuideView : " + owq.a(this.jdField_a_of_type_Owq));
-    owq.a(this.jdField_a_of_type_Owq, "0X8009FEA", this.jdField_a_of_type_Ouo.a);
-    pay.a(this.jdField_a_of_type_AndroidContentContext, owq.a(this.jdField_a_of_type_Owq));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.doOnBackPressed();
+    paramAdapterView = paramView.getTag();
+    if ((paramAdapterView instanceof owt))
+    {
+      paramAdapterView = (owt)paramAdapterView;
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
+    }
   }
 }
 

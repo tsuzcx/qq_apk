@@ -1,35 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
 
-public class xqt
+class xqt
+  implements bkzq
 {
-  public int a;
-  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
-  public String a;
-  public final ArrayList<String> a;
-  public vwa a;
-  public boolean a;
+  xqt(xqs paramxqs, bkzi parambkzi, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public xqt()
+  public void OnClick(View paramView, int paramInt)
   {
-    this(0, null);
-  }
-  
-  public xqt(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Vwa = new vwa();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
-  }
-  
-  public static xqt a(String paramString)
-  {
-    xqt localxqt = new xqt();
-    localxqt.jdField_a_of_type_JavaLangString = paramString;
-    return localxqt;
+    this.jdField_a_of_type_Bkzi.e();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Xqs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_Xqs.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 

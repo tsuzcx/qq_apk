@@ -19,7 +19,7 @@ public final class qvideo_recom$QueryRecomQunVideoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.qapp.qvideoproj.qvideo_recom.qvideo_recom.QueryRecomQunVideoRsp
  * JD-Core Version:    0.7.0.1
  */

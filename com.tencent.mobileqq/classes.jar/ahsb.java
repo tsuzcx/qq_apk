@@ -1,29 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.1;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.2;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahsb
-  implements INetInfoHandler
+class ahsb
+  implements DialogInterface.OnClickListener
 {
-  ahsb(ahsa paramahsa) {}
+  ahsb(ahri paramahri) {}
   
-  public void onNetMobile2None()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ahsa.a(this.a).post(new VoiceTextSttProcessController.1.1(this));
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    ahsa.a(this.a).post(new VoiceTextSttProcessController.1.2(this));
+    if (this.a.a != null) {
+      this.a.a.n();
+    }
   }
 }
 

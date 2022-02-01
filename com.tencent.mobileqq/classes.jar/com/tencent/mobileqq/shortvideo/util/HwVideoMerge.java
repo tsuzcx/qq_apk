@@ -163,7 +163,7 @@ public class HwVideoMerge
   {
     // Byte code:
     //   0: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   3: invokestatic 221	bbws:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   3: invokestatic 221	bddn:a	(Landroid/content/Context;)Ljava/lang/String;
     //   6: astore 6
     //   8: new 223	java/io/File
     //   11: dup
@@ -259,7 +259,7 @@ public class HwVideoMerge
     //   234: pop
     //   235: aload 5
     //   237: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   240: invokestatic 277	bbws:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   240: invokestatic 277	bddn:b	(Landroid/content/Context;)Ljava/lang/String;
     //   243: invokeinterface 258 2 0
     //   248: pop
     //   249: new 165	java/lang/StringBuilder
@@ -392,7 +392,7 @@ public class HwVideoMerge
   {
     // Byte code:
     //   0: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   3: invokestatic 221	bbws:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   3: invokestatic 221	bddn:a	(Landroid/content/Context;)Ljava/lang/String;
     //   6: astore 5
     //   8: new 223	java/io/File
     //   11: dup
@@ -475,7 +475,7 @@ public class HwVideoMerge
     //   199: pop
     //   200: aload 4
     //   202: invokestatic 215	com/tencent/mobileqq/shortvideo/VideoEnvironment:getContext	()Landroid/content/Context;
-    //   205: invokestatic 277	bbws:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   205: invokestatic 277	bddn:b	(Landroid/content/Context;)Ljava/lang/String;
     //   208: invokeinterface 258 2 0
     //   213: pop
     //   214: new 284	com/tencent/mobileqq/shortvideo/util/HwVideoMerge$LogStream
@@ -823,7 +823,7 @@ public class HwVideoMerge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.HwVideoMerge
  * JD-Core Version:    0.7.0.1
  */

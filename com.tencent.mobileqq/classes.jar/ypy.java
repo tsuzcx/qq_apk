@@ -1,6 +1,20 @@
-public abstract interface ypy
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class ypy
+  implements Animation.AnimationListener
 {
-  public abstract void a(ypu paramypu, yqc paramyqc);
+  ypy(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

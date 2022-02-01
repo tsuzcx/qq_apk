@@ -1,50 +1,45 @@
-import java.util.HashMap;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View;
 
 public class badx
-  extends badz
+  extends badm
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  private boolean a;
   
-  public HashMap<String, String> a(String paramString)
+  public badx(azxt paramazxt, azrb paramazrb)
   {
-    if ("actStreamingVideoPlay".equalsIgnoreCase(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("StreamingVideoSupport", String.valueOf(this.jdField_a_of_type_Boolean));
-      paramString.put("FirstBufferTime", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("PlayProgress", String.valueOf(this.b));
-      paramString.put("LoadProgress", String.valueOf(this.c));
-      paramString.put("FileDuration", String.valueOf(this.d));
-      paramString.put("FileLen", String.valueOf(this.e));
-      paramString.put("param_seekTimes", String.valueOf(this.f));
-      paramString.put("PlayResult", String.valueOf(this.g));
-      paramString.put("param_playTimeCost", String.valueOf(this.jdField_a_of_type_Long));
-      return paramString;
-    }
-    return null;
+    super(paramazxt, paramazrb);
   }
   
-  public String toString()
+  public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("supportProgressive ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("playReadyTime ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("exitPlayProgress ").append(this.b);
-    localStringBuilder.append("exitCacheProgress ").append(this.c);
-    localStringBuilder.append("durationTime ").append(this.d);
-    localStringBuilder.append("fileSize ").append(this.e);
-    localStringBuilder.append("seekTimes ").append(this.f);
-    localStringBuilder.append("playResult ").append(this.g);
-    localStringBuilder.append("playTimeCost").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    return "VasProfileHeaderV5Component";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    {
+      VasProfileQVipV5View localVasProfileQVipV5View = new VasProfileQVipV5View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
+      localVasProfileQVipV5View.setProfileArgs(this.jdField_a_of_type_Boolean);
+      localVasProfileQVipV5View.setClickListener(this);
+      localVasProfileQVipV5View.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipV5View;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  {
+    Intent localIntent = paramBaseActivity.getIntent();
+    if (localIntent != null) {
+      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
+    }
+    super.a(paramBaseActivity, paramBundle);
   }
 }
 

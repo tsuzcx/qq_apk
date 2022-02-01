@@ -1,47 +1,35 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PeakAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class bbjf
-  extends bbjg
+  implements GLSurfaceView.EGLContextFactory
 {
-  PeakAppInterface a;
+  public bbjf(QIdentifierCaptureView paramQIdentifierCaptureView) {}
   
-  public bbjf(PeakAppInterface paramPeakAppInterface)
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    this.a = paramPeakAppInterface;
-  }
-  
-  public AppInterface a()
-  {
-    return this.a;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      a(new bluo(this.a));
-      super.b();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIdentifierCaptureView", 2, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    this.a.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    this.a.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    return this.a.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    this.a.h();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("QIdentifierCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    a(paramToServiceMsg, null, bbof.class);
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIdentifierCaptureView", 2, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
   }
 }
 

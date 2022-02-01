@@ -1,7 +1,22 @@
-import kotlin.Metadata;
+import android.os.Handler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arqm {}
+class arqm
+  implements nth
+{
+  arqm(arqk paramarqk) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (!paramBoolean)
+    {
+      arqk.a(this.a).removeCallbacks(arqk.a(this.a));
+      arqk.a(this.a).run();
+      if (arqk.a(this.a) != null) {
+        arqk.a(this.a).a();
+      }
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

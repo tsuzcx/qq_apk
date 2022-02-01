@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
-import vdt;
+import vsm;
 
 public class RotationSeekBar
   extends SeekBar
@@ -17,7 +17,7 @@ public class RotationSeekBar
   private static float jdField_a_of_type_Float = -1.0F;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private vdt jdField_a_of_type_Vdt;
+  private vsm jdField_a_of_type_Vsm;
   private float[] jdField_a_of_type_ArrayOfFloat;
   
   public RotationSeekBar(Context paramContext)
@@ -93,8 +93,8 @@ public class RotationSeekBar
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Vdt != null)) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Vdt.a();
+    if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Vsm != null)) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Vsm.a();
     }
     return super.dispatchTouchEvent(a(paramMotionEvent));
   }
@@ -137,14 +137,14 @@ public class RotationSeekBar
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnRotationChangeListener(vdt paramvdt)
+  public void setOnRotationChangeListener(vsm paramvsm)
   {
-    this.jdField_a_of_type_Vdt = paramvdt;
+    this.jdField_a_of_type_Vsm = paramvsm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

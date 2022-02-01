@@ -1,16 +1,30 @@
-import android.view.MotionEvent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class agtj
-  implements View.OnTouchListener
+  implements aueo
 {
-  agtj(agth paramagth, afce paramafce) {}
+  agtj(agtf paramagtf, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bhyi parambhyi) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
-    return false;
+    paramView = new Bundle();
+    paramView.putString(bhoy.i, this.jdField_a_of_type_JavaLangString);
+    paramView.putString(bhoy.c, this.b);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+      paramView.putString(bhoy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
+    }
+    bhoy.a(this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agtf.jdField_a_of_type_AndroidContentContext, paramView);
+    String str = this.c;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
+    for (paramView = "0";; paramView = "1")
+    {
+      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bhyi.a(this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), this.jdField_a_of_type_Agtf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "", "", "");
+      return;
+    }
   }
 }
 

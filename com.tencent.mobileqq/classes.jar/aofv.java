@@ -1,10 +1,15 @@
-public abstract interface aofv
+class aofv
 {
-  public abstract void a(int paramInt, String paramString, aohg paramaohg);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofv
  * JD-Core Version:    0.7.0.1
  */

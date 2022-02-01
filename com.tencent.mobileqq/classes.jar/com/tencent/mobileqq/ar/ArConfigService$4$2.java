@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aoco;
+import apfq;
 
 public class ArConfigService$4$2
   implements Runnable
 {
-  public ArConfigService$4$2(aoco paramaoco) {}
+  public ArConfigService$4$2(apfq paramapfq) {}
   
   public void run()
   {

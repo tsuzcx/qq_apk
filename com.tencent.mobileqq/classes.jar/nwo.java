@@ -1,115 +1,346 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.AccountDetailActivity.9.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class nwo
-  extends anxq
 {
-  public nwo(AccountDetailActivity paramAccountDetailActivity) {}
-  
-  public int a()
+  public static final String a(int paramInt)
   {
-    return 4;
+    String str = "";
+    if (paramInt == 0) {
+      str = "contact";
+    }
+    do
+    {
+      return str;
+      if (paramInt == 1) {
+        return "group";
+      }
+    } while (paramInt != 3000);
+    return "discussions";
   }
   
-  public void a(Object paramObject)
+  public static String a(InputStream paramInputStream)
   {
-    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
+    try
     {
-      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+      StringBuilder localStringBuilder = new StringBuilder();
+      for (;;)
+      {
+        String str = paramInputStream.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuilder.append(str);
       }
-      paramObject = new JSONObject();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {}
+      paramInputStream = localStringBuilder.toString();
+    }
+    catch (Exception paramInputStream)
+    {
+      paramInputStream.printStackTrace();
+      return null;
+    }
+    return paramInputStream;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return "null";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("\"");
+    int j = paramString.length();
+    int i = 0;
+    if (i < j)
+    {
+      char c = paramString.charAt(i);
+      switch (c)
+      {
+      default: 
+        if (c <= '\037') {
+          localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        }
+        break;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append('\\').append(c);
+        continue;
+        localStringBuilder.append("\\t");
+        continue;
+        localStringBuilder.append("\\b");
+        continue;
+        localStringBuilder.append("\\n");
+        continue;
+        localStringBuilder.append("\\r");
+        continue;
+        localStringBuilder.append("\\f");
+        continue;
+        localStringBuilder.append(c);
+      }
+    }
+    localStringBuilder.append("\"");
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    str2 = "";
+    Object localObject1 = str2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject1 = str2;
+      if (paramInt <= 0) {}
     }
     try
     {
-      paramObject.put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-      paramObject.put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name);
-      paramObject.put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
-      paramObject.put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedGrade);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add("find.mp.qq.com");
-      localArrayList.add("post.mp.qq.com");
-      localArrayList.add("article.mp.qq.com");
-      autn.a("follow", paramObject, localArrayList, null);
-      if (this.a.f)
+      Object localObject2 = Uri.parse(paramString);
+      localObject1 = str2;
+      if (((Uri)localObject2).isHierarchical())
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
+        localObject2 = ((Uri)localObject2).getHost();
+        localObject1 = str2;
+        if (localObject2 != null)
         {
-          paramObject = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
-          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "mp_msg_sys_12", "scan_via", 0, 0, paramObject, "", "", this.a.jdField_g_of_type_JavaLangString);
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
-        this.a.jdField_b_of_type_AndroidViewView.setEnabled(false);
-        this.a.I();
-        this.a.i();
-        this.a.z();
-        AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
-        {
-          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.e);
-          if (QLog.isColorLevel()) {
-            QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
+          localObject2 = ((String)localObject2).split("\\.");
+          localObject1 = str2;
+          if (localObject2.length > 0)
+          {
+            int i = Math.max(0, localObject2.length - (paramInt + 1));
+            localObject1 = new StringBuilder(256);
+            ((StringBuilder)localObject1).append(localObject2[i]);
+            i += 1;
+            while (i < localObject2.length)
+            {
+              ((StringBuilder)localObject1).append('.').append(localObject2[i]);
+              i += 1;
+            }
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
         }
-        if (this.a.jdField_g_of_type_Int == 50) {
-          AccountDetailActivity.a(this.a, 1);
-        }
-        if ((this.a.h == 115) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-          ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(134247140, this.a.e, null, null, null, 0L, false);
-        }
-        if (this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("report_business_tvalue"))
-        {
-          int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("report_business_tvalue", -1);
-          paramObject = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("strp1");
-          if (i != -1) {
-            ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(i, this.a.e, paramObject, null, null, 0L, false);
-          }
-        }
-        return;
       }
     }
-    catch (JSONException paramObject)
+    catch (Exception localException)
     {
       for (;;)
       {
-        paramObject.printStackTrace();
-        continue;
-        paramObject = "";
+        localException.printStackTrace();
+        String str1 = str2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QLog", 2, "Get " + paramInt + " level domain= " + (String)localObject1 + " from " + paramString);
+    }
+    return localObject1;
+  }
+  
+  public static String a(String paramString, String... paramVarArgs)
+  {
+    String str;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      return str;
+    }
+    paramString = paramString.replaceAll("(?<=\\?|#|&)((?i)sid|3g_sid|uin|sec_sig|MOBINFO|originuin)=[^&#]*&", "").replaceAll("[\\?#&]((?i)sid|3g_sid|uin|sec_sig|MOBINFO|originuin)=[^&#]*(?=#|$)", "").replaceAll("(?<=\\?|#|&)((?i)from)=androidqq&", "").replaceAll("[\\?#&]((?i)from)=androidqq(?=#|$)", "");
+    int j = paramVarArgs.length;
+    int i = 0;
+    for (;;)
+    {
+      str = paramString;
+      if (i >= j) {
+        break;
+      }
+      paramString = paramString.replace(paramVarArgs[i], "");
+      i += 1;
+    }
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_error_code", paramInt);
+    localIntent.putExtra("key_error_msg", paramString1);
+    localIntent.putExtra("key_error_detail", paramString2);
+    localIntent.putExtra("key_response", "");
+    ((Activity)paramContext).setResult(-1, localIntent);
+  }
+  
+  public static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
+  {
+    a(paramQQAppInterface, paramString1, "connect_share2qq", paramString2, paramLong1, paramLong2, paramString3);
+  }
+  
+  public static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4)
+  {
+    if (paramString4 == null) {
+      paramString4 = "";
+    }
+    for (;;)
+    {
+      if (paramString1 == null) {
+        paramString1 = "";
+      }
+      for (;;)
+      {
+        String str1 = "";
+        if (paramLong2 > 0L) {
+          str1 = String.valueOf(paramLong2);
+        }
+        String str2 = "";
+        if (paramLong1 > 0L) {
+          str2 = String.valueOf(paramLong1);
+        }
+        bdla.b(paramQQAppInterface, "P_CliOper", "qqconnect", paramString1, paramString2, paramString3, 0, 0, str2, str1, paramString4, "");
+        return;
       }
     }
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public static void a(String paramString)
   {
-    this.a.d(2131694775);
+    if (paramString != null) {}
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public static boolean a(String paramString)
   {
-    paramObject = this.a;
-    paramObject.jdField_c_of_type_Int -= 1;
-    if (this.a.jdField_c_of_type_Int == 0) {
-      this.a.M();
+    if (TextUtils.isEmpty(paramString)) {}
+    String str;
+    File[] arrayOfFile;
+    do
+    {
+      do
+      {
+        return false;
+        str = paramString;
+        if (!paramString.endsWith(File.separator)) {
+          str = paramString + File.separator;
+        }
+        paramString = new File(str);
+      } while ((paramString == null) || (!paramString.exists()) || (!paramString.isDirectory()));
+      arrayOfFile = paramString.listFiles();
+    } while (arrayOfFile == null);
+    int i = 0;
+    if (i < arrayOfFile.length)
+    {
+      if (arrayOfFile[i] == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (arrayOfFile[i].isFile()) {
+          b(arrayOfFile[i].getAbsolutePath());
+        } else {
+          a(arrayOfFile[i].getAbsolutePath());
+        }
+      }
     }
-    this.a.jdField_b_of_type_AndroidViewView.postDelayed(new AccountDetailActivity.9.1(this), 1000L);
+    paramString.delete();
+    if (QLog.isColorLevel()) {
+      QLog.d("Util", 2, new Object[] { "deleteDirectory dirPath:", str });
+    }
+    return true;
+  }
+  
+  public static String b(String paramString)
+  {
+    return a(paramString, 1);
+  }
+  
+  public static String b(String paramString, String... paramVarArgs)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    return paramString.replaceAll("((?i)sid|uin|sec_sig|MOBINFO)=[^&#]+", "$1=****");
+  }
+  
+  public static void b(String paramString)
+  {
+    if (paramString != null) {}
+  }
+  
+  public static boolean b(String paramString)
+  {
+    boolean bool2 = false;
+    paramString = new File(paramString);
+    boolean bool1 = bool2;
+    if (paramString.isFile())
+    {
+      bool1 = bool2;
+      if (!paramString.exists()) {}
+    }
+    try
+    {
+      paramString.delete();
+      bool1 = true;
+      return bool1;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static String c(String paramString)
+  {
+    paramString = paramString.toCharArray();
+    int i = 0;
+    if (i < paramString.length)
+    {
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+          paramString[i] = ((char)(paramString[i] - 65248));
+        }
+      }
+    }
+    return new String(paramString);
+  }
+  
+  public static String c(String paramString, String... paramVarArgs)
+  {
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(paramString)) {
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label39;
+      }
+    }
+    for (paramVarArgs = "(?<=(a1|a2|key|token|uin|sid|sig|stwxweb)=\\S)[^; ]+(?=[^;$])";; paramVarArgs = String.format("(?<=(a1|a2|key|token|uin|sid|sig|stwxweb%s)=\\S)[^; ]+(?=[^;$])", new Object[] { ((StringBuilder)localObject).toString() }))
+    {
+      localObject = paramString.toLowerCase().replaceAll(paramVarArgs, "*");
+      return localObject;
+      label39:
+      localObject = new StringBuilder("");
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = paramVarArgs[i];
+        if (!TextUtils.isEmpty(str)) {
+          ((StringBuilder)localObject).append("|").append(str);
+        }
+        i += 1;
+      }
+    }
   }
 }
 

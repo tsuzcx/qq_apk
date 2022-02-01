@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.managers;
 
-import anoh;
-import apub;
-import aqas;
-import avni;
+import aora;
+import aqxe;
+import ardv;
+import awtn;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PushNotificationManager$1
   implements Runnable
 {
-  public PushNotificationManager$1(avni paramavni, QQAppInterface paramQQAppInterface) {}
+  public PushNotificationManager$1(awtn paramawtn, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    avni.a(this.this$0, (aqas)apub.a().a(390));
-    anoh.a(this.a);
+    awtn.a(this.this$0, (ardv)aqxe.a().a(390));
+    aora.a(this.a);
   }
 }
 

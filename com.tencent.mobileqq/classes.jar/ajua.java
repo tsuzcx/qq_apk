@@ -1,37 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.photo.album.preview.PicPreviewPresent;
-import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class ajua
-  extends PicPreviewPresent
+  implements bgjf
 {
-  public ajua(PreviewBean paramPreviewBean)
+  private long jdField_a_of_type_Long;
+  
+  public ajua(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    super(paramPreviewBean);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public long a()
   {
-    String str = this.mBean.getPath();
-    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
-    localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    paramViewGroup = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(str), localURLDrawableOptions);
-    if (paramViewGroup == null) {
-      QLog.w("PEAK", 2, "drawable == null");
-    }
-    paramView.setImageDrawable(paramViewGroup);
-    return paramView;
+    return this.jdField_a_of_type_Long;
   }
 }
 

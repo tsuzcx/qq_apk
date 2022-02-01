@@ -1,44 +1,14 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.common.config.AppSetting;
 
-public class admg
-  implements arcb
+public abstract interface admg
 {
-  public admg(GroupManagerActivity paramGroupManagerActivity) {}
+  public static final String a;
+  public static final boolean a;
   
-  public void a(int paramInt)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
-    }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
-    {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-      }
-      if (b == 0)
-      {
-        localObject = new QQToast(this.a);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131719012);
-        ((QQToast)localObject).a();
-      }
-    }
-    else
-    {
-      return;
-    }
-    GroupManagerActivity.a(this.a, b);
-    bcef.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
+    jdField_a_of_type_JavaLangString = anvx.a(2131701058);
+    jdField_a_of_type_Boolean = AppSetting.c;
   }
 }
 

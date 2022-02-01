@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.relationx.friendclue;
 
-import azwp;
-import azwq;
+import bbcx;
+import bbcy;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class FriendClueManager$2$1
   implements Runnable
 {
-  public FriendClueManager$2$1(azwq paramazwq) {}
+  public FriendClueManager$2$1(bbcy parambbcy) {}
   
   public void run()
   {
-    QQToast.a(azwp.a(this.a.a), 1, 2131693152, 1).a();
+    QQToast.a(bbcx.a(this.a.a), 1, 2131693325, 1).a();
   }
 }
 

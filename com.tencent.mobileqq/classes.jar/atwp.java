@@ -1,23 +1,36 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class atwp
-  implements ViewSwitcher.ViewFactory
+  implements audq
 {
   atwp(atwo paramatwo) {}
   
-  public View makeView()
+  public void onNo() {}
+  
+  public void onYes()
   {
-    CornerImageView localCornerImageView = new CornerImageView(atwo.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(AIOUtils.dp2px(30.0F, atwo.a(this.a).getResources()) / 2);
-    return localCornerImageView;
+    int i = this.a.a.g();
+    if (this.a.a.f() == 6000) {
+      if (i == 0) {
+        if (this.a.a.h() == 2) {
+          atwk.c(this.a.a);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a.a != null) {
+        this.a.a.a.d();
+      }
+      return;
+      atwk.a(this.a.a);
+      continue;
+      atwk.c(this.a.a);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+      }
+    }
   }
 }
 

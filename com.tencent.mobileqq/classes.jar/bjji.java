@@ -1,18 +1,19 @@
-import com.tencent.mqp.app.sec.d;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjji
-  implements bjjo
+  implements View.OnClickListener
 {
-  public bjji(QSecFramework paramQSecFramework) {}
+  public bjji(CommonTitleBar paramCommonTitleBar) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 == 1) && (paramInt2 == 1))
-    {
-      d.e(1, d.x(), null);
-      QSecFramework.a(this.a).b(this);
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

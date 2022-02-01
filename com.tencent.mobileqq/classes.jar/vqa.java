@@ -1,12 +1,24 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
-final class vqa
-  implements InvocationHandler
+public class vqa
 {
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public int d;
+  
+  public vqa(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return null;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 

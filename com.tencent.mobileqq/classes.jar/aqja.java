@@ -1,35 +1,57 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public class aqja
+public class aqja<T>
 {
-  public static int a = 1;
-  public static int b = 2;
-  public int c = b;
+  final AbstractCollection<T> a;
   
-  private static aqja b(String paramString)
+  public aqja(int paramInt)
   {
-    aqja localaqja = new aqja();
-    try
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      localaqja.c = new JSONObject(paramString).optInt("action", b);
-      return localaqja;
+      this.a = new ArrayDeque();
+      return;
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
-    }
-    return localaqja;
+    this.a = new ArrayBlockingQueue(30);
   }
   
-  public boolean a()
+  public T a()
   {
-    return this.c == a;
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
+    }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramT);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqja
  * JD-Core Version:    0.7.0.1
  */

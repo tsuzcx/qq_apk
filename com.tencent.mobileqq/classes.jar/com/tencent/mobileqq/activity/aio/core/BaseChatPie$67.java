@@ -1,112 +1,53 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amsu;
-import android.text.TextUtils;
-import arib;
+import ahfn;
+import android.os.Message;
+import bbtj;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import friendlist.GetOnlineInfoResp;
-import java.util.Arrays;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForRichState;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class BaseChatPie$67
-  extends amsu
+  implements Runnable
 {
-  BaseChatPie$67(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$67(BaseChatPie paramBaseChatPie, bbtj parambbtj) {}
   
-  public void onAddFriend(String paramString)
+  public void run()
   {
-    BaseChatPie.access$2500(this.this$0, paramString);
-  }
-  
-  public void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    BaseChatPie.access$3500(this.this$0, paramBoolean, paramString1, paramString2);
-  }
-  
-  public void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.access$3300(this.this$0, paramBoolean, paramObject);
-  }
-  
-  public void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if (TextUtils.equals(paramString, this.this$0.sessionInfo.curFriendUin)) {
-      this.this$0.updateOnlineStatus();
-    }
-  }
-  
-  public void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.access$3400(this.this$0, paramObject);
-  }
-  
-  public void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
-  {
-    if (arib.a(this.this$0.app, this.this$0.mContext, this.this$0.sessionInfo))
+    MessageRecord localMessageRecord = this.this$0.app.getMessageFacade().getMsgItemByUniseq(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, ahfn.a);
+    Object localObject;
+    Message localMessage;
+    if ((localMessageRecord instanceof MessageForRichState))
     {
-      arib.a(this.this$0.app, this.this$0.mContext, this.this$0.sessionInfo, this.this$0.listView, paramHashSet);
-      return;
+      localObject = new HashMap();
+      ((Map)localObject).put("chatMessage", localMessageRecord);
+      ((Map)localObject).put("sigZanInfo", this.val$zanInfo);
+      this.this$0.uiHandler.removeMessages(267387138);
+      localMessage = this.this$0.uiHandler.obtainMessage(267387138);
+      localMessage.obj = localObject;
     }
-    AvatarLayout.a(this.this$0.app, this.this$0.listView, paramHashSet);
-  }
-  
-  public void onGetStrangerInfo(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.access$3200(this.this$0, paramBoolean, paramObject);
-  }
-  
-  public void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    BaseChatPie.access$2600(this.this$0, paramBoolean, paramLong, paramInt1, paramInt2);
-  }
-  
-  public void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    BaseChatPie.access$2800(this.this$0, paramBoolean, paramString1, paramString2);
-  }
-  
-  public void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    BaseChatPie.access$2700(this.this$0, paramBoolean);
-  }
-  
-  public void onUpdateC2ChatStatus(boolean paramBoolean, HashMap<String, String> paramHashMap)
-  {
-    BaseChatPie.access$3100(this.this$0, paramHashMap);
-  }
-  
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    if (arib.a(this.this$0.app, this.this$0.mContext, this.this$0.sessionInfo))
+    try
     {
-      arib.a(this.this$0.app, this.this$0.mContext, this.this$0.sessionInfo, this.this$0.listView, Arrays.asList(new String[] { paramString }));
+      localObject = new JSONObject(localMessageRecord.msg);
+      ((JSONObject)localObject).put("count", this.val$zanInfo.b);
+      ((JSONObject)localObject).put("zanfalg", this.val$zanInfo.c);
+      this.this$0.app.getMessageFacade().updateMsgContentByUniseq(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
+      label186:
+      this.this$0.uiHandler.sendMessageDelayed(localMessage, 1000L);
       return;
     }
-    AvatarLayout.a(this.this$0.app, this.this$0.listView, Arrays.asList(new String[] { paramString }));
+    catch (JSONException localJSONException)
+    {
+      break label186;
+    }
   }
-  
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.access$2900(this.this$0, paramBoolean, paramObject);
-  }
-  
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    BaseChatPie.access$3000(this.this$0, paramString, paramBoolean);
-  }
-  
-  public void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.this$0.updateOnlineStatus();
-  }
-  
-  public void onUpdateRecentList() {}
 }
 
 

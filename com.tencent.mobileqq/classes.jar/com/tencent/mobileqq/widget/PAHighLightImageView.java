@@ -8,37 +8,37 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bhfs;
+import biqk;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class PAHighLightImageView
   extends PAImageView
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private bhfs jdField_a_of_type_Bhfs;
+  private biqk jdField_a_of_type_Biqk;
   
   public PAHighLightImageView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bhfs = new bhfs(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Bhfs);
+    this.jdField_a_of_type_Biqk = new biqk(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_Biqk);
   }
   
   public PAHighLightImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bhfs = new bhfs(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Bhfs);
+    this.jdField_a_of_type_Biqk = new biqk(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_Biqk);
   }
   
   public PAHighLightImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bhfs = new bhfs(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Bhfs);
+    this.jdField_a_of_type_Biqk = new biqk(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_Biqk);
   }
   
   public void a()
@@ -46,7 +46,7 @@ public class PAHighLightImageView
     ViewGroup localViewGroup = (ViewGroup)getParent();
     if (localViewGroup != null)
     {
-      View localView = localViewGroup.findViewById(2131373120);
+      View localView = localViewGroup.findViewById(2131373331);
       if (localView != null) {
         localViewGroup.removeView(localView);
       }
@@ -56,10 +56,10 @@ public class PAHighLightImageView
   public void a(Context paramContext, boolean paramBoolean)
   {
     ViewGroup localViewGroup = (ViewGroup)getParent();
-    if ((localViewGroup != null) && (localViewGroup.findViewById(2131373120) == null))
+    if ((localViewGroup != null) && (localViewGroup.findViewById(2131373331) == null))
     {
       View localView = new View(paramContext);
-      localView.setId(2131373120);
+      localView.setId(2131373331);
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(Color.argb(77, 0, 0, 0));
       if (paramBoolean) {

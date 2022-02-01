@@ -1,16 +1,15 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aetm
-  extends bjmc
+  implements DialogInterface.OnClickListener
 {
-  public aetm(VisitorsActivity paramVisitorsActivity) {}
+  public aetm(RegisterActivity paramRegisterActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    paramDialogInterface.dismiss();
   }
 }
 

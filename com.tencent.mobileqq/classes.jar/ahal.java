@@ -1,29 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.widget.TextView;
 
-public final class ahal
-  implements Parcelable.Creator<AIORichMediaData>
+class ahal
+  extends afqr
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public AIORichMediaData[] a(int paramInt)
-  {
-    return new AIORichMediaData[paramInt];
-  }
+  ahal(ahak paramahak) {}
 }
 
 

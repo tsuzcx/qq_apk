@@ -1,74 +1,30 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class aofr
-  implements aofp
+public class aofr
+  implements aofo
 {
-  private IBinder a;
+  public int a;
+  public String a;
+  public String b;
   
-  aofr(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
+  private aofr(TroopManager paramTroopManager) {}
   
-  public void a()
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin))) {
       return;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.", 2, "newRealLevel:" + this.jdField_a_of_type_Int + ",troopUin : " + this.b + ",memberUin" + this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    if (paramTroopMemberInfo.getStatus() == 1000) {
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
   }
 }
 

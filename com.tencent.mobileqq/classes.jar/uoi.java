@@ -1,15 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class uoi
+public class uoi
   implements View.OnClickListener
 {
-  uoi(uog paramuog) {}
+  public uoi(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
+    this.a.doOnBackPressed();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

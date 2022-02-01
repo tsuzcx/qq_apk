@@ -1,154 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class aehu
-  extends anbq
+  implements aeid
 {
-  public aehu(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public aehu(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  protected void b(boolean paramBoolean, bcqu parambcqu)
+  public void a()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() isSucc=" + paramBoolean);
-      if (parambcqu != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() mainAccount=" + parambcqu.jdField_b_of_type_JavaLangString + " subAccount=" + parambcqu.c + " errType=" + parambcqu.jdField_a_of_type_Int + " errMsg=" + parambcqu.jdField_a_of_type_JavaLangString);
-      }
-    }
-    this.a.e();
-    Object localObject2;
-    if (paramBoolean)
-    {
-      this.a.c(this.a.getString(2131718657));
-      bcqj.a(this.a.app);
-      this.a.getActivity().setTitle("");
-      this.a.finish();
-      if ((QLog.isColorLevel()) && (parambcqu != null))
-      {
-        localObject2 = new StringBuilder().append("onBindSubAccount:");
-        if (!paramBoolean) {
-          break label873;
-        }
-      }
-    }
-    label873:
-    for (Object localObject1 = "..success";; localObject1 = "...failed..")
-    {
-      QLog.d("SUB_ACCOUNT", 2, (String)localObject1 + " ...errorMsg = " + parambcqu.jdField_a_of_type_JavaLangString + "...errorType = " + parambcqu.jdField_a_of_type_Int);
-      do
-      {
-        return;
-      } while (parambcqu == null);
-      switch (parambcqu.jdField_a_of_type_Int)
-      {
-      default: 
-        localObject2 = this.a.getString(2131718648);
-        localObject1 = localObject2;
-        if (parambcqu != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            localObject1 = parambcqu.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.a.b((String)localObject1);
-        break;
-      case 1002: 
-        bcqk.a(this.a.app, this.a);
-        break;
-      case 1003: 
-        this.a.b(this.a.getString(2131718649));
-        break;
-      case 1004: 
-        switch (parambcqu.jdField_b_of_type_Int)
-        {
-        default: 
-          localObject2 = parambcqu.jdField_a_of_type_JavaLangString;
-          localObject1 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onBindSubAccount:bind error happen but msg is null shit, ");
-            }
-            localObject1 = this.a.getString(2131718648);
-          }
-          this.a.b((String)localObject1);
-          break;
-        case 1200: 
-        case 1214: 
-        case 1215: 
-          localObject1 = this.a.getString(2131718682);
-          localObject2 = this.a.getString(2131718651);
-          this.a.a((String)localObject1, (String)localObject2, new aehv(this, parambcqu));
-          break;
-        case 1218: 
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131717798);
-          this.a.b((String)localObject1);
-          break;
-        case 1232: 
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718652);
-          this.a.b((String)localObject1);
-          break;
-        case 1233: 
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718647);
-          this.a.b((String)localObject1);
-          break;
-        case 1240: 
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718653);
-          this.a.b((String)localObject1);
-          break;
-        case 1241: 
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718646);
-          this.a.b((String)localObject1);
-          break;
-        case 1242: 
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718655);
-          this.a.b((String)localObject1);
-        }
-        break;
-      case 1011: 
-        localObject2 = this.a.getString(2131718648);
-        localObject1 = localObject2;
-        if (parambcqu != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(parambcqu.jdField_a_of_type_JavaLangString)) {
-            localObject1 = parambcqu.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.a.b((String)localObject1);
-        localObject1 = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject1).putExtra("subuin", parambcqu.c);
-        ((Intent)localObject1).putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-        this.a.startActivity((Intent)localObject1);
-        break;
-      }
-    }
+    LoginPhoneNumActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    LoginPhoneNumActivity.a(this.a);
   }
 }
 

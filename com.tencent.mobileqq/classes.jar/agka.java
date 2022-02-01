@@ -1,28 +1,22 @@
-import android.os.SystemClock;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agka
-  implements bjoe
+  implements View.OnClickListener
 {
-  agka(agjz paramagjz, MessageForPokeEmo paramMessageForPokeEmo, bjnw parambjnw) {}
+  agka(agjz paramagjz) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    switch (paramView.getId())
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Agjz.c < 500L);
-      this.jdField_a_of_type_Agjz.c = l;
-      acvv.b(this.jdField_a_of_type_Agjz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agjz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agjz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      agjz.a(this.a, paramView);
     }
   }
 }

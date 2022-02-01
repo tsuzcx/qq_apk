@@ -1,20 +1,23 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
+
 public class awfh
+  extends BroadcastReceiver
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
+  public awfh(ListenTogetherManager paramListenTogetherManager) {}
   
-  public awfh(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    if (paramIntent == null) {}
+    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
+      return;
+    }
+    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
+    ListenTogetherManager.c(this.a);
   }
 }
 

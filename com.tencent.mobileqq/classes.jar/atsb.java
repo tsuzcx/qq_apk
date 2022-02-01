@@ -1,49 +1,122 @@
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class atsb
-  implements axht
 {
-  public atsb(NearbyHybridFragment paramNearbyHybridFragment) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
+  private String c;
+  private String d;
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<ExcitingTransferHostInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<ExcitingTransferHostInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
   public boolean a()
   {
-    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
-    }
-    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(str)) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localJSONObject.put("status", paramInt1);
-      localJSONObject.put("direction", paramInt2);
-      localJSONObject.put("height", paramInt3);
-      if (this.a.jdField_a_of_type_Atsc != null) {
-        this.a.jdField_a_of_type_Atsc.mWebview.callJs(str, new String[] { localJSONObject.toString() });
-      }
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
       return false;
     }
-    catch (JSONException localJSONException)
+    if (0L == this.jdField_a_of_type_Long)
     {
-      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
+      return false;
     }
-    return false;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
+      return false;
+    }
+    if (TextUtils.isEmpty(this.b))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
+      return false;
+    }
+    if (TextUtils.isEmpty(this.c))
+    {
+      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
+      return false;
+    }
+    return true;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public void c(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public void d(String paramString)
+  {
+    this.d = paramString;
   }
 }
 

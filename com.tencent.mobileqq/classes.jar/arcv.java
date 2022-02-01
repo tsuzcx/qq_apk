@@ -1,37 +1,87 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class arcv
-  extends VasQuickUpdateManager.CallBacker
+public class arcv
+  implements aqwv<String>
 {
-  arcv(arcu paramarcu) {}
+  public ArrayList<arcw> a = new ArrayList();
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a(String paramString)
   {
-    paramString2 = (MessengerService)this.a.a.get();
-    if (paramString2 == null) {}
-    do
+    this.a.clear();
+    if (TextUtils.isEmpty(paramString))
     {
-      do
+      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
       {
+        paramString = new JSONObject(paramString).optJSONArray("random_list");
+        if (paramString != null)
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            arcw localarcw = new arcw();
+            localarcw.a = localJSONObject.optString("nick", "");
+            localarcw.b = localJSONObject.optString("headid", "");
+            localarcw.c = localJSONObject.optString("url", "");
+            if ((!TextUtils.isEmpty(localarcw.a)) && (!TextUtils.isEmpty(localarcw.b)) && (!TextUtils.isEmpty(localarcw.c))) {
+              break label230;
+            }
+            if (!QLog.isColorLevel()) {
+              break label235;
+            }
+            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
+            break label235;
+            if (j == 0) {
+              break label240;
+            }
+            this.a.add(localarcw);
+            break label240;
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
         return;
-      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
-      paramString1 = new Bundle();
-    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
-    paramString2.d.putString("cmd", "card_download");
-    paramString1.putInt("result", paramInt1);
-    paramString1.putString("message", paramString3);
-    paramString2.d.putBundle("response", paramString1);
-    paramString2.a(paramString2.d);
-    paramString2.d = null;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
+        return;
+      }
+      label230:
+      int j = 1;
+      continue;
+      label235:
+      j = 0;
+      continue;
+      label240:
+      i += 1;
+    }
+  }
+  
+  public String toString()
+  {
+    if (this.a.size() > 0) {
+      return this.a.toString();
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcv
  * JD-Core Version:    0.7.0.1
  */

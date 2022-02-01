@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class agfy
-  extends aghj
+public class agfy
+  implements agge
 {
-  agfy(agcw paramagcw)
+  public agfy(AIOLongShotHelper paramAIOLongShotHelper) {}
+  
+  public void a()
   {
-    super(paramagcw, null);
+    this.a.b();
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void b()
   {
-    return new agma(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.b();
   }
 }
 

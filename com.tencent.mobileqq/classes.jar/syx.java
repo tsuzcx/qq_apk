@@ -1,25 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import android.view.ViewGroup;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class syx
-  implements Animator.AnimatorListener
 {
-  public syx(ZImageView paramZImageView) {}
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public ArrayBlockingQueue a;
+  private syy jdField_a_of_type_Syy;
+  private int b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public syx(int paramInt1, int paramInt2, ViewGroup paramViewGroup, syy paramsyy)
   {
-    ZImageView.access$000(this.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Syy = paramsyy;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public syx(int paramInt, ViewGroup paramViewGroup, syy paramsyy)
   {
-    ZImageView.access$000(this.a);
+    this(paramInt, 1, paramViewGroup, paramsyy);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.transfile;
 
-import amwl;
-import amwm;
+import anyz;
+import anza;
 import com.tencent.qphone.base.util.QLog;
 
 class GroupPicUploadProcessor$5
-  extends amwl
+  extends anyz
 {
   GroupPicUploadProcessor$5(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
-  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, anza paramanza)
   {
     if ((this.this$0.mUiRequest.mUinType == 1026) && (QLog.isColorLevel())) {
       QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
     }
     this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
-    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramamwm);
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramanza);
     if (paramBoolean)
     {
       this.this$0.onSuccess();
       return;
     }
-    if (paramamwm != null) {
-      this.this$0.shouldMsgReportSucc = paramamwm.d;
+    if (paramanza != null) {
+      this.this$0.shouldMsgReportSucc = paramanza.d;
     }
     this.this$0.onError();
   }

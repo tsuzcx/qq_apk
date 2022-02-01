@@ -1,64 +1,26 @@
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class azuc
-  implements aycx
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  public azuc(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public azuc(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(aycy paramaycy)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    if ((paramaycy.b == 0) && (paramaycy.a != null))
-    {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMessageFacade().getMsgItemByUniseq(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).curFriendUin, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).curType, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
-      if (localMessageRecord == null)
-      {
-        localObject = new MessageForStructing();
-        ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
-      }
-      paramaycy = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getProxyManager().a().a(paramaycy.a, null, (MessageRecord)localObject, null);
-      if ((paramaycy != null) && (!paramaycy.isEmpty()))
-      {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
-        return;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramaycy.b);
-    }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 3)
-    {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(0);
+    StickyNotePublishFragment.a(this.a).requestFocus();
+    bkxz.a(StickyNotePublishFragment.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -25,7 +25,7 @@ public class QQVipHeadLayout
   
   public int getLayoutId()
   {
-    return 2131561811;
+    return 2131561879;
   }
   
   public boolean isPined()

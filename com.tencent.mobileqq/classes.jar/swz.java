@@ -1,60 +1,108 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlResponse;
+import com.tencent.mobileqq.ac.ArticleCenter.RetInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 class swz
+  implements BusinessObserver
 {
-  public long a;
-  public List<Pair<Long, Long>> a;
-  private boolean a;
-  public long b;
-  public List<Pair<Long, Long>> b;
-  public long c;
-  public long d;
-  public long e;
+  swz(swx paramswx, long paramLong, NewIntent paramNewIntent, sxb paramsxb, String paramString) {}
   
-  public swz(long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID time : " + (l1 - l2));
     }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {
-      return;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean)
+    {
+      if (this.jdField_a_of_type_Sxb != null) {
+        this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString, "error");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID notSuccess!");
+      }
     }
-    this.d = NetConnInfoCenter.getServerTimeMillis();
-    if (this.jdField_b_of_type_Long == 0L) {
-      this.jdField_b_of_type_Long = this.d;
-    }
-    this.e = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {}
+    label299:
     do
     {
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            return;
+            paramBundle = paramBundle.getByteArray("data");
+            if ((paramBundle == null) || (paramBundle.length <= 0))
+            {
+              if (this.jdField_a_of_type_Sxb != null) {
+                this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString, "error");
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID empty data!");
+              }
+            }
+            else
+            {
+              try
+              {
+                localObject = new ArticleCenter.GetVidByUrlResponse();
+                ((ArticleCenter.GetVidByUrlResponse)localObject).mergeFrom(paramBundle);
+                if (((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() == 0) {
+                  break label299;
+                }
+                if (this.jdField_a_of_type_Sxb != null) {
+                  this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString, "error");
+                }
+                if (QLog.isColorLevel())
+                {
+                  QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID error:" + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() + ", " + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.err_info.get());
+                  return;
+                }
+              }
+              catch (Exception paramBundle)
+              {
+                if (this.jdField_a_of_type_Sxb != null) {
+                  this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString, "error");
+                }
+              }
+            }
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID exception!");
+        return;
+        paramBundle = ((ArticleCenter.GetVidByUrlResponse)localObject).vid.get();
+        if (paramBundle == null) {
+          break;
+        }
+        Object localObject = paramBundle.toStringUtf8();
+        paramBundle = (Bundle)localObject;
+        if (this.jdField_a_of_type_Sxb != null)
+        {
+          paramBundle = (Bundle)localObject;
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            paramBundle = "error";
+          }
+          this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID vid:" + paramBundle);
       return;
-      l3 = (this.c - this.d) / 100L;
-    } while (l3 == 0L);
-    long l1 = paramLong - this.e;
-    long l2 = (this.c - this.jdField_a_of_type_Long) / 100L;
-    long l3 = Utils.px2dp((float)(l1 / l3));
-    this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
-    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
-      this.jdField_b_of_type_JavaUtilList.add(new Pair(Long.valueOf(this.c - this.d), Long.valueOf(l1)));
-    }
-    this.e = paramLong;
+      if (this.jdField_a_of_type_Sxb != null) {
+        this.jdField_a_of_type_Sxb.a(this.jdField_a_of_type_JavaLangString, "error");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.readinjoy.video.ThirdVideoManager", 2, "CMD_VIDEO_URLFORUUID null vid!");
   }
 }
 

@@ -2,12 +2,12 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.content.Intent;
-import atky;
+import aupt;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ForwardCompositeOption
-  extends atky
+  extends aupt
 {
   public ForwardCompositeOption(Intent paramIntent)
   {

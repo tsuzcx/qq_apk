@@ -1,8 +1,11 @@
-public abstract interface avpa
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+
+class avpa
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public abstract void a();
+  avpa(avor paramavor) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void OnDownloadCallback(String paramString) {}
 }
 
 

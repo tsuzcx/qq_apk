@@ -1,64 +1,63 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.data.Groups;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 public class adrm
-  extends BaseAdapter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private adrm(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public adrm(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public int getCount()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (MoveToGroupActivity.a(this.a) != null) {
-      return MoveToGroupActivity.a(this.a).size();
+    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
+      paramCompoundButton.setTag(Boolean.FALSE);
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    int i;
+    do
     {
-      localView = this.a.getLayoutInflater().inflate(2131559489, null);
-      int i = (byte)((Groups)MoveToGroupActivity.a(this.a).get(paramInt)).group_id;
-      localObject = (ImageView)localView.findViewById(2131364538);
-      if (i != MoveToGroupActivity.a(this.a)) {
-        break label163;
+      do
+      {
+        do
+        {
+          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null);
+        i = this.a.app.getTroopMask(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      } while (i == -1);
+      if (!paramBoolean) {
+        break;
       }
-      ((ImageView)localObject).setVisibility(0);
+    } while (i != 1);
+    ChatSettingForTroop.a(this.a, 4);
+    label82:
+    if (ChatSettingForTroop.a(this.a) != null) {
+      ChatSettingForTroop.d(this.a);
     }
-    for (;;)
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean)
     {
-      localObject = (TextView)localView.findViewById(2131367780);
-      ((TextView)localObject).setText(((Groups)MoveToGroupActivity.a(this.a).get(paramInt)).group_name);
-      localView.setContentDescription(((TextView)localObject).getText().toString());
-      localView.setTag(Integer.valueOf(paramInt));
-      localView.setOnClickListener(this.a);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = paramView;
+      str = "msg_open";
+      label116:
+      bdla.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", str, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
+      if (!paramBoolean) {
+        break label224;
+      }
+    }
+    label224:
+    for (String str = "msg_open";; str = "msg_close")
+    {
+      bhbu.a("Grp_msg", "grpData_admin", str, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bhbu.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
       break;
-      label163:
-      ((ImageView)localObject).setVisibility(8);
+      if (i == 1) {
+        break;
+      }
+      ChatSettingForTroop.a(this.a, 1);
+      break label82;
+      str = "msg_close";
+      break label116;
     }
   }
 }

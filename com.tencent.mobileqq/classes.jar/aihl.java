@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
-
-class aihl
-  implements Comparator<PhoneContact>
+public class aihl
+  implements aiho
 {
-  aihl(aihk paramaihk) {}
+  private long a;
+  private long b;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public long a()
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    return this.b;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a = paramLong;
+  }
+  
+  public void b(long paramLong)
+  {
+    if (this.a != 0L)
+    {
+      this.b = (paramLong - this.a + this.b);
+      this.a = 0L;
+    }
   }
 }
 

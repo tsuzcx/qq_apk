@@ -1,17 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.View;
+import android.view.Window;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
 
-public class smo
-  implements ViewFactory.FoundClickableViewListener
+class smo
+  implements DialogInterface.OnShowListener
 {
-  public smo(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
+  smo(smg paramsmg) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    paramViewBase.setOnClickListener(new smp(this));
+    smg.a(this.a, "mShareActionSheet onShow()");
+    this.a.a.a().getWindow().getDecorView().setSystemUiVisibility(smg.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
+    this.a.a.a().getWindow().clearFlags(8);
   }
 }
 

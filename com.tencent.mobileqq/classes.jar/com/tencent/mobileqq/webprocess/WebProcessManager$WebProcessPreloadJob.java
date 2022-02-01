@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import bgso;
+import bide;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -8,32 +8,32 @@ class WebProcessManager$WebProcessPreloadJob
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  WeakReference<bgso> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<bide> jdField_a_of_type_JavaLangRefWeakReference;
   
-  WebProcessManager$WebProcessPreloadJob(int paramInt, bgso parambgso)
+  WebProcessManager$WebProcessPreloadJob(int paramInt, bide parambide)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambgso);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambide);
   }
   
   public void run()
   {
-    bgso localbgso = (bgso)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    bide localbide = (bide)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (!WebProcessManager.c())
     {
       WebProcessManager.b(true);
       WebProcessManager.a(false);
       WebProcessManager.b(this.jdField_a_of_type_Int);
-      if (localbgso != null) {
-        localbgso.onResult(true);
+      if (localbide != null) {
+        localbide.onResult(true);
       }
     }
     for (;;)
     {
       WebProcessManager.a().set(false);
       return;
-      if (localbgso != null) {
-        localbgso.onResult(false);
+      if (localbide != null) {
+        localbide.onResult(false);
       }
     }
   }

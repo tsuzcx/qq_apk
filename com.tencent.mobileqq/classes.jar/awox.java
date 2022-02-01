@@ -1,82 +1,30 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class awox
-  extends Binder
-  implements awow
+public class awox
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public awox()
+  public int a;
+  public boolean a;
+  public int b;
+  
+  public awox(String paramString)
   {
-    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+    super(paramString);
   }
   
-  public static awow a(IBinder paramIBinder)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof awow))) {
-      return (awow)localIInterface;
-    }
-    return new awoy(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+      this.b = ((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-    localObject1 = localObject2;
-    if (paramParcel1.readInt() != 0) {
-      localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
-    }
-    paramParcel1 = a((Message)localObject1);
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-    }
-    for (;;)
-    {
-      return true;
-      paramParcel2.writeInt(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
     }
   }
 }

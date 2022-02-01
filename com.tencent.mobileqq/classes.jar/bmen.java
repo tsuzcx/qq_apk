@@ -1,33 +1,16 @@
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.app.Activity;
+import android.content.Intent;
 
-public class bmen
+class bmen
+  implements audq
 {
-  public static final Lyric a(Lyric paramLyric)
+  bmen(bmem parambmem, Activity paramActivity, Intent paramIntent) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (paramLyric == null) {
-      return new Lyric(2, 0, null);
-    }
-    Lyric localLyric = new Lyric(2, paramLyric.mOffset, new ArrayList());
-    localLyric.mType = paramLyric.mType;
-    paramLyric = paramLyric.mSentences.iterator();
-    while (paramLyric.hasNext())
-    {
-      Object localObject = (Sentence)paramLyric.next();
-      if (localObject != null)
-      {
-        localObject = ((Sentence)localObject).mUILine.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          SentenceUI localSentenceUI = (SentenceUI)((Iterator)localObject).next();
-          localLyric.mSentences.add(new Sentence(localSentenceUI));
-        }
-      }
-    }
-    return localLyric;
+    aupt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
   }
 }
 

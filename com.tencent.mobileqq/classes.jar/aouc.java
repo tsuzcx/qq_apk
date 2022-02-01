@@ -1,33 +1,42 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-class aouc
-  implements aoug
+public abstract class aouc
+  extends bheh
 {
-  aouc(aotv paramaotv, aouf paramaouf, String paramString, aouh paramaouh) {}
-  
-  public void a(byte[] paramArrayOfByte)
+  public aouc(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.b }));
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public void a(String paramString)
+  {
+    HashMap localHashMap = new HashMap(1);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aouh.a(false);
-      return;
-      if (!aotv.b(paramArrayOfByte, this.jdField_a_of_type_Aouf.d))
-      {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.b, this.jdField_a_of_type_Aouf.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString });
-        if (aotv.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.b, str }));
-      }
+    if (this.a == null) {
+      this.a = "";
     }
-    this.jdField_a_of_type_Aouh.a(true);
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append(str).append("source:").append(this.a).append("server_name:").append(this.b).append("action_name:").append(this.c);
+    localHashMap.put("keyJumpParserUtilDoActionErrorInfo", paramString.toString());
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance("", "keyJumpParserUtil", true, 0L, 0L, localHashMap, "", false);
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

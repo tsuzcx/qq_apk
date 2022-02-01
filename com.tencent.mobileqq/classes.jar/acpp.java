@@ -1,61 +1,41 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodePushNotify;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpp
-  extends CardObserver
+  implements acpi
 {
-  public acpp(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    Object localObject;
-    if ((paramBoolean) && (paramObject != null))
-    {
-      if (!(paramObject instanceof Card)) {
-        break label163;
-      }
-      localObject = (Card)paramObject;
-      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
-      {
-        paramObject = bfrj.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
-        if (this.a.a != null) {
-          paramObject = bfrj.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
-        }
-        if (!TextUtils.isEmpty(paramObject))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(paramObject);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x10b");
     }
-    for (;;)
+    wms localwms = (wms)paramQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
+    try
     {
-      if (bily.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
-        this.a.c.setVisibility(8);
+      qqstory_service.MsgTabNodePushNotify localMsgTabNodePushNotify = new qqstory_service.MsgTabNodePushNotify();
+      localMsgTabNodePushNotify.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface = (wmr)paramQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
+      if (localwms.a) {
+        paramQQAppInterface.a().a(localMsgTabNodePushNotify);
       }
       return;
-      label163:
-      if ((paramObject instanceof ContactCard))
-      {
-        localObject = (ContactCard)paramObject;
-        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
-        {
-          paramObject = bfrj.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
-          if (this.a.a != null) {
-            paramObject = bfrj.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
-          }
-          if (!TextUtils.isEmpty(paramObject))
-          {
-            this.a.c.setVisibility(0);
-            this.a.c.setText(paramObject);
-          }
-        }
-      }
     }
+    catch (InvalidProtocolBufferMicroException paramQQAppInterface)
+    {
+      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xf3], errInfo->" + paramQQAppInterface.getMessage());
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

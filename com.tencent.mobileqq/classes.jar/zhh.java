@@ -1,17 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-class zhh
-  implements View.OnClickListener
+public abstract interface zhh
 {
-  zhh(zhf paramzhf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

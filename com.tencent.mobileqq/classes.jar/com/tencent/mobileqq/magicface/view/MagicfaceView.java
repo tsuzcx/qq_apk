@@ -5,15 +5,15 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import avmn;
-import avmq;
+import awss;
+import awsv;
 
 public class MagicfaceView
   extends SurfaceView
-  implements SurfaceHolder.Callback, avmn
+  implements SurfaceHolder.Callback, awss
 {
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private avmq jdField_a_of_type_Avmq;
+  private awsv jdField_a_of_type_Awsv;
   public volatile boolean a;
   private volatile boolean b;
   
@@ -280,9 +280,9 @@ public class MagicfaceView
     this.b = paramBoolean;
   }
   
-  public void setSurfaceCreatelistener(avmq paramavmq)
+  public void setSurfaceCreatelistener(awsv paramawsv)
   {
-    this.jdField_a_of_type_Avmq = paramavmq;
+    this.jdField_a_of_type_Awsv = paramawsv;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
@@ -290,8 +290,8 @@ public class MagicfaceView
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Avmq != null) {
-      this.jdField_a_of_type_Avmq.a();
+    if (this.jdField_a_of_type_Awsv != null) {
+      this.jdField_a_of_type_Awsv.a();
     }
   }
   

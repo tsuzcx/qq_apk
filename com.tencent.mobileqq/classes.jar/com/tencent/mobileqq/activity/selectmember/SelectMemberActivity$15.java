@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amsu;
+import anvi;
 
 class SelectMemberActivity$15
-  extends amsu
+  extends anvi
 {
   SelectMemberActivity$15(SelectMemberActivity paramSelectMemberActivity) {}
   

@@ -1,18 +1,25 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
 public class bmib
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public bmib(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
+  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
   {
-    super.onShowPress(paramMotionEvent);
-    AEEditorImageEditFragment.a(this.a).toggleAEKit(AEEditorImageEditFragment.a(this.a), false);
-    bmbx.a("AEEditorImageEditFragment", "[onTouch] onShowPress");
+    if (paramBundle == null) {
+      return false;
+    }
+    paramAppInterface = new Intent();
+    paramAppInterface.putExtra("share_data", paramBundle);
+    paramAppInterface.putExtra("readinjoy_launch_style", 2);
+    paramAppInterface.putExtra("readinjoy_launch_source", 11);
+    paramAppInterface.putExtra("channel_id", 9999);
+    bdla.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
+    bmhv.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
+    return true;
   }
 }
 

@@ -1,13 +1,19 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class agui
-  implements agut
+class agui
+  implements aueo
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  agui(agtf paramagtf) {}
+  
+  public void onClick(View paramView)
   {
-    paramagap.c(paramagcc.b);
+    paramView = bhdj.a(this.a.a, 230);
+    paramView.setTitle(2131691489);
+    paramView.setMessage(2131691490);
+    paramView.setNegativeButton(2131690697, new aguj(this, paramView));
+    paramView.setPositiveButton(2131694399, new aguk(this));
+    paramView.show();
   }
 }
 

@@ -1,128 +1,113 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class aycu
+  extends aycx
+  implements View.OnClickListener
 {
-  public static aycv a;
-  public static boolean a;
-  public static long c = 0L;
-  protected long a;
-  protected QQAppInterface a;
-  protected long b;
-  protected long d = 524288000L;
-  protected long e = 31457280L;
-  protected long f = 31457280L;
-  protected long g = 31457280L;
+  private int jdField_a_of_type_Int;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  static
+  public aycu(PicBrowserActivity paramPicBrowserActivity, aavo paramaavo)
   {
-    jdField_a_of_type_Boolean = true;
+    super(paramPicBrowserActivity, paramaavo);
   }
   
-  public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  protected RelativeLayout a()
   {
-    c();
-    jdField_a_of_type_Aycv.a(paramLong, paramBoolean1, paramBoolean2);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559544, null);
   }
   
-  public static final void b()
+  public void b(ViewGroup paramViewGroup)
   {
-    c();
-    jdField_a_of_type_Aycv.b();
+    super.b(paramViewGroup);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377456));
+    this.b = ((TextView)paramViewGroup.findViewById(2131365478));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
   }
   
-  public static final void c()
+  protected void c(int paramInt)
   {
-    if (jdField_a_of_type_Aycv == null) {
-      try
+    if (paramInt == this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aydd.a() <= 1)
       {
-        if (jdField_a_of_type_Aycv == null) {
-          jdField_a_of_type_Aycv = new aycv();
-        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.b.setVisibility(8);
+      }
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+  }
+  
+  public void l()
+  {
+    ArrayList localArrayList = this.jdField_a_of_type_Aydd.a();
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int < localArrayList.size())) {
+      localArrayList.add(0, (PicInfo)localArrayList.remove(this.jdField_a_of_type_Int));
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("intent_param_pic_infos", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.setResult(-1, localIntent);
+    super.l();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131377456: 
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
-      }
-      finally {}
-    }
-  }
-  
-  public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
-  {
-    d();
-    paramBoolean = a();
-    if (QLog.isColorLevel()) {
-      ayde.a("PIC_TAG_PRELOAD", "isOverLimit", "isInDPCWhiteList:" + paramBoolean);
-    }
-    if ((paramInt2 == 0) || ((paramBoolean) && (paramInt2 != 3)))
-    {
-      if (this.b >= this.d)
-      {
-        aydr.a(paramInt2, this.d);
-        ayde.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowWIFI:" + this.b);
-        return -8;
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Aydd.b();
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694245), 0).a();
       }
     }
-    else if (paramInt2 == 1)
+    int i = this.jdField_a_of_type_Aydd.b();
+    if (i < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Int -= 1;
+    }
+    for (;;)
     {
-      if (this.jdField_a_of_type_Long >= this.e)
-      {
-        aydr.a(paramInt2, this.e);
-        ayde.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax4GFlow:" + this.e);
-        return -8;
+      d();
+      c(this.jdField_a_of_type_Aydd.b());
+      break;
+      if (i == this.jdField_a_of_type_Int) {
+        if (i == this.jdField_a_of_type_Aydd.a() - 1) {
+          this.jdField_a_of_type_Int = (i - 1);
+        } else {
+          this.jdField_a_of_type_Int = i;
+        }
       }
     }
-    else if (paramInt2 == 2)
-    {
-      if (this.jdField_a_of_type_Long >= this.f)
-      {
-        aydr.a(paramInt2, this.f);
-        ayde.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax3GFlow:" + this.f);
-        return -8;
-      }
-    }
-    else if ((paramInt2 == 3) && (this.jdField_a_of_type_Long >= this.g))
-    {
-      aydr.a(paramInt2, this.g);
-      ayde.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",PreDownMax2GFlow:" + this.g);
-      return -8;
-    }
-    return 0;
   }
   
-  public void a()
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    jdField_a_of_type_Boolean = aydq.a("PicPreDownSwitchNew", Boolean.valueOf(true)).booleanValue();
-    c = aydq.a("PicAuDownTimePoint", 0L);
-    this.d = aydq.a("MaxWifiFlow", 524288000L);
-    this.e = aydq.a("Max4GFlow", 31457280L);
-    this.f = aydq.a("Max3GFlow", 31457280L);
-    this.g = aydq.a("Max2GFlow", 31457280L);
-    if (QLog.isColorLevel()) {
-      QLog.d("PIC_TAG_PRELOAD.BaseStrategy", 2, "initConfig(): PreDownUseLocalFlowSet=" + jdField_a_of_type_Boolean + " PicAuDownTimePoint=" + c + " PreDownMaxWifiFlow=" + this.d + " PreDownMax4GFlow=" + this.e + " PreDownMax3GFlow=" + this.f + " PreDownMax2GFlow=" + this.g);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
-  }
-  
-  public boolean a()
-  {
-    return DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name());
-  }
-  
-  public void d()
-  {
-    c();
-    long[] arrayOfLong = jdField_a_of_type_Aycv.a();
-    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
-    this.b = (arrayOfLong[2] + arrayOfLong[3]);
-    if (QLog.isColorLevel()) {
-      ayde.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", "picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",C2CPicDownFlowXG:" + arrayOfLong[0] + ",Group/DiscussPicDownFlowXG:" + arrayOfLong[1] + ",picTrafficFlowWIFI:" + this.b + ",C2CPicDownFlowWIFI:" + arrayOfLong[2] + ",Group/DiscussPicDownFlowWIFI:" + arrayOfLong[3]);
-    }
+    super.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    c(paramInt);
   }
 }
 

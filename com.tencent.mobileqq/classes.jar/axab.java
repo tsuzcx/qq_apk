@@ -1,108 +1,139 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-class axab
-  implements BusinessObserver
+public class axab
+  implements awzn
 {
-  axab(awzr paramawzr) {}
+  public axab() {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public axab(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-    }
-    Object localObject;
-    if (paramBoolean)
+    this();
+  }
+  
+  public static axcb a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    switch (paramMsgBackupResEntity.msgType)
     {
-      try
+    default: 
+      return null;
+    case 1: 
+      return new axce(paramMsgBackupResEntity);
+    case 2: 
+      return new axcj(paramMsgBackupResEntity);
+    }
+    return new axcg(paramMsgBackupResEntity);
+  }
+  
+  public static axch a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForPic)) {
+      return new axcd((MessageForPic)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      return new axci((MessageForShortVideo)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForPtt)) {
+      return new axcf((MessageForPtt)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMarketFace)) {
+      return new axbz(paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return new axcc((MessageForMixedMsg)paramMessageRecord);
+    }
+    return null;
+  }
+  
+  public axaa a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    paramMessageRecord = a(paramMsgBackupResEntity);
+    if (paramMessageRecord != null) {
+      return paramMessageRecord.a();
+    }
+    return new axaa();
+  }
+  
+  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return null;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    paramMessageRecord = a(paramMessageRecord);
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord.a();
+      Object localObject = paramMessageRecord.a();
+      if (QLog.isColorLevel()) {
+        paramMessageRecord.a("onExport");
+      }
+      if (localObject != null)
       {
-        ((awhw)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label544;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
-        }
-        if (paramInt == 0) {
-          break label302;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
+        paramList.addAll((Collection)localObject);
+        if (QLog.isColorLevel())
         {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
-          return;
-        }
-        QQToast.a(this.a.a, 1, amtj.a(2131706492), 1).a();
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QQToast.a(this.a.a, 1, amtj.a(2131706428), 1).a();
-        if (!QLog.isColorLevel()) {
-          break label587;
-        }
-      }
-      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
-      return;
-      label302:
-      if (paramBundle.optInt("retcode") == 0)
-      {
-        paramBundle = this.a;
-        if (awzr.a(this.a)) {
-          break label588;
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            localObject = (MsgBackupResEntity)paramList.next();
+            if (QLog.isColorLevel()) {
+              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+            }
+          }
         }
       }
     }
-    label544:
-    label587:
-    label588:
-    for (paramBoolean = true;; paramBoolean = false)
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
     {
-      awzr.a(paramBundle, paramBoolean);
-      localObject = this.a.a;
-      if (awzr.a(this.a)) {}
-      for (paramBundle = amtj.a(2131706457);; paramBundle = amtj.a(2131706415))
-      {
-        QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-        awzr.a(this.a, 1, 60);
-        if ((!awzr.a(this.a)) && (awzr.a(this.a).getChildAt(2).getVisibility() != 0))
-        {
-          paramBundle = (Button)awzr.a(this.a).getChildAt(1).findViewById(2131379944);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167045));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839326));
-        }
-        if (!awzr.a(this.a)) {
-          break;
-        }
-        paramBundle = (Button)awzr.a(this.a).getChildAt(1).findViewById(2131379944);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131167047));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839365));
-        return;
+      paramMessageRecord = a(paramMessageRecord);
+      if (paramMessageRecord != null) {
+        return paramMessageRecord.a();
       }
-      QQToast.a(this.a.a, 1, amtj.a(2131706424), 1).a();
-      return;
-      QQToast.a(this.a.a, 1, amtj.a(2131706430), 1).a();
-      return;
+    }
+    return false;
+  }
+  
+  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
+  }
+  
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    axch localaxch = a(paramMessageRecord);
+    if (localaxch != null)
+    {
+      if (QLog.isColorLevel()) {
+        localaxch.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
+      }
+      localaxch.b();
+      if (paramList != null)
+      {
+        paramMessageRecord = paramList.iterator();
+        while (paramMessageRecord.hasNext())
+        {
+          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
+          if (paramList != null) {
+            paramList.a();
+          }
+        }
+      }
     }
   }
 }

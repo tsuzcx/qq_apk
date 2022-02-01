@@ -1,25 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class avjo
-  implements Drawable.Callback
+class avjo
+  implements DialogInterface.OnClickListener
 {
-  public avjo(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  avjo(avjn paramavjn, BaseChatPie paramBaseChatPie, String paramString) {}
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity();
+    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localBaseActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -9,10 +9,10 @@ import com.tencent.ttpic.model.GridModel;
 import com.tencent.ttpic.model.GridSettingModel;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
 import com.tencent.ttpic.openapi.filter.FrameAlphaFilter;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.MaskMergeFilter;
-import com.tencent.ttpic.openapi.filter.MaskStickerFilter.MaskTransformFilter;
 import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.filter.StaticStickerFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.MaskMergeFilter;
+import com.tencent.ttpic.openapi.filter.maskstickerfilter.MaskTransformFilter;
 import com.tencent.ttpic.openapi.model.Rect;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
 import com.tencent.ttpic.util.FrameUtil;
@@ -431,7 +431,7 @@ public class FabbyMvFilter
       this.mCanvasFilters.clearGLSLSelf();
     }
     if (this.motionBlurFilter != null) {
-      this.motionBlurFilter.ClearGLSL();
+      this.motionBlurFilter.clearGLSL();
     }
     Frame[] arrayOfFrame = this.mCopyFrame;
     int j = arrayOfFrame.length;

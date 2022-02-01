@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.mini.fake.FakeReceiver;
 import com.tencent.mobileqq.mini.fake.FakeSdkReceiver;
 import com.tencent.mobileqq.mini.fake.IFakeReceiver;
 import com.tencent.qphone.base.util.QLog;
@@ -25,17 +24,14 @@ public class AppBrandTaskPreloadReceiver
     if (this.mFakeReceiver != null) {
       return this.mFakeReceiver;
     }
-    if (AppLoaderFactory.isSDKMode()) {}
-    for (this.mFakeReceiver = new FakeSdkReceiver();; this.mFakeReceiver = new FakeReceiver()) {
-      return this.mFakeReceiver;
-    }
+    this.mFakeReceiver = new FakeSdkReceiver();
+    return this.mFakeReceiver;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppLoaderFactory.initLaunchMode(paramIntent);
     String str = paramIntent.getAction();
-    QLog.i("miniapp-start", 1, "AppBrandTaskPreloadReceiver onReceive action: " + str + " sdkMode:" + AppLoaderFactory.isSDKMode());
+    QLog.i("minisdk-start", 1, "AppBrandTaskPreloadReceiver onReceive action: " + str);
     getFakeBrandUI().onReceive(paramContext, paramIntent);
     if (((this instanceof AppBrandTaskPreloadReceiver3)) || ((this instanceof AppBrandTaskPreloadReceiver4)) || ((this instanceof AppBrandTaskPreloadReceiver5))) {
       paramContext.getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 0).apply();

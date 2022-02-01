@@ -1,33 +1,28 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.DataMigrationService;
 
 public class anta
-  extends anri
+  extends Handler
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  public anta(DataMigrationService paramDataMigrationService) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramQQAppInterface = new ansz(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wxminiapp";
-    paramQQAppInterface.c = "launch";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    int i = paramMessage.arg1;
+    paramMessage = (Intent)paramMessage.obj;
+    if (paramMessage == null)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+      this.a.stopSelf(i);
+      return;
     }
-    return paramQQAppInterface;
+    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
+    {
+      DataMigrationService.a(this.a, paramMessage, i);
+      return;
+    }
+    this.a.stopSelf(i);
   }
 }
 

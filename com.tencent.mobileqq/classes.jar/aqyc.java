@@ -1,77 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.Nullable;
 
 public class aqyc
-  extends aqxl
 {
-  public aqyc(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.qav.video", paramQQAppInterface);
-  }
+  public double a;
+  public int a;
+  public boolean a = true;
+  public double b;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public int a()
+  public boolean equals(@Nullable Object paramObject)
   {
-    return 10049;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
-    }
-    try
+    if ((paramObject == null) || (!(paramObject instanceof aqyc))) {}
+    do
     {
-      FileUtils.uncompressZip(paramString, mrz.c(), false);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      aqxb.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
+      return false;
+      paramObject = (aqyc)paramObject;
+    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e) || (this.f != paramObject.f) || (this.g != paramObject.g) || (this.h != paramObject.h) || (this.b != paramObject.b));
     return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyc
  * JD-Core Version:    0.7.0.1
  */

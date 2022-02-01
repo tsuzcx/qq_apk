@@ -84,6 +84,34 @@ public class AppBrandPage
     return null;
   }
   
+  private BrandPageWebview getBrandPageWebviewByUrl(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    Map.Entry localEntry;
+    do
+    {
+      Iterator localIterator;
+      while (!localIterator.hasNext())
+      {
+        do
+        {
+          return null;
+          if (isTabBarPage()) {
+            break;
+          }
+        } while (!paramString.equals(this.mPageUrl));
+        return getBrandPageWebview();
+        paramString = AppBrandUtil.getUrlWithoutParams(paramString);
+        localIterator = this.mTabPageCache.entrySet().iterator();
+      }
+      localEntry = (Map.Entry)localIterator.next();
+    } while (!paramString.equals(localEntry.getKey()));
+    if (localEntry.getValue() != null) {}
+    for (paramString = ((PageWebviewContainer)localEntry.getValue()).getBrandPageWebview();; paramString = null) {
+      return paramString;
+    }
+  }
+  
   private void handleLoadedPage(String paramString1, String paramString2, PageEventListener paramPageEventListener)
   {
     Iterator localIterator = this.mTabPageCache.entrySet().iterator();
@@ -98,7 +126,9 @@ public class AppBrandPage
         }
         localPageWebviewContainer.setVisibility(0);
         this.mCurPageWebviewContainer = localPageWebviewContainer;
-        paramPageEventListener.onWebViewReady(paramString2, this.mPageUrl, this.mRootContainer.getShowingPageWebViewId());
+        if (isPageWebViewReady(paramString1)) {
+          paramPageEventListener.onWebViewReady(paramString2, this.mPageUrl, this.mRootContainer.getShowingPageWebViewId());
+        }
       }
       else
       {
@@ -209,6 +239,15 @@ public class AppBrandPage
     this.mTabBar.setOnTabItemClickListener(this.mRootContainer);
     updateViewStyle(this.mNavigationStyle);
     setSwipeBackCallback(this);
+  }
+  
+  private boolean isPageWebViewReady(String paramString)
+  {
+    paramString = getBrandPageWebviewByUrl(paramString);
+    if (paramString != null) {
+      return paramString.isReady();
+    }
+    return false;
   }
   
   private boolean isReadyLoadUrl(String paramString)
@@ -603,6 +642,26 @@ public class AppBrandPage
     return null;
   }
   
+  public BrandPageWebview getBrandPageWebviewById(int paramInt)
+  {
+    if (!isTabBarPage())
+    {
+      if (getPageWebviewId() == paramInt) {
+        return getBrandPageWebview();
+      }
+      return null;
+    }
+    Iterator localIterator = this.mTabPageCache.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      PageWebviewContainer localPageWebviewContainer = (PageWebviewContainer)((Map.Entry)localIterator.next()).getValue();
+      if (localPageWebviewContainer.getWebViewId() == paramInt) {
+        return localPageWebviewContainer.getBrandPageWebview();
+      }
+    }
+    return null;
+  }
+  
   public CapsuleButton getCapsuleButton()
   {
     if (this.mNavigationBar != null) {
@@ -743,21 +802,23 @@ public class AppBrandPage
   {
     boolean bool2 = true;
     boolean bool1 = true;
-    if (!isReadyLoadUrl(paramString1))
-    {
+    if (!isReadyLoadUrl(paramString1)) {
       QMLog.e("AppBrandPage", "loadurl not ready, return.");
-      return;
     }
-    if (paramString1.equals(this.mPageUrl))
+    do
     {
-      paramPageEventListener.onWebViewReady(paramString2, this.mPageUrl, this.mRootContainer.getShowingPageWebViewId());
-      if (!"appLaunch".equals(paramString2)) {}
-      for (;;)
-      {
-        onResume(bool1);
-        return;
-        bool1 = false;
+      return;
+      if (!paramString1.equals(this.mPageUrl)) {
+        break;
       }
+    } while (!isPageWebViewReady(this.mPageUrl));
+    paramPageEventListener.onWebViewReady(paramString2, this.mPageUrl, this.mRootContainer.getShowingPageWebViewId());
+    if (!"appLaunch".equals(paramString2)) {}
+    for (;;)
+    {
+      onResume(bool1);
+      return;
+      bool1 = false;
     }
     this.mRootContainer.hideSoftInput(this);
     realLoadUrl(paramString1, paramString2, paramPageEventListener);

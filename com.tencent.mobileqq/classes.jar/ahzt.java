@@ -1,23 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class ahzt
-  extends RecyclerView.ViewHolder
+public class ahzt
+  implements OnCompositionLoadedListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  public ahzt(ConfessChatPie.3 param3) {}
   
-  public ahzt(ahzq paramahzq, View paramView)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376717));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
+    int i = AIOUtils.dp2px(30.0F, this.a.this$0.mContext.getResources());
+    int j = AIOUtils.dp2px(30.0F, this.a.this$0.mContext.getResources());
+    if (paramLottieComposition == null)
+    {
+      QLog.e(this.a.this$0.tag, 1, "onCompositionLoaded lottieComposition is null");
+      return;
+    }
+    Object localObject = paramLottieComposition.getBounds();
+    float f1 = i / ((Rect)localObject).width();
+    float f2 = j / ((Rect)localObject).height();
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).setScale(f1, f2);
+    ((LottieDrawable)localObject).loop(false);
+    ahzq.a(this.a.this$0, (LottieDrawable)localObject);
+    ahzq.a(this.a.this$0).addAnimatorListener(new ahzu(this));
+    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
   }
 }
 

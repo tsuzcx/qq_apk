@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.PBStringField;
 import mqq.app.Packet;
 
@@ -35,7 +35,7 @@ public class MiniAppGetFormIdServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetFormId");
-    paramPacket.putSendData(bgau.a((byte[])localObject));
+    paramPacket.putSendData(bhjl.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

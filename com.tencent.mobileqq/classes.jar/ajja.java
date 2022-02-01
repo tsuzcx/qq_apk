@@ -1,21 +1,6 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnClickListener;
-
-class ajja
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface ajja
 {
-  ajja(ajiz paramajiz) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (ajiz.a(this.a) != null)
-    {
-      ajiz.a(this.a).onClick(ajiz.a(this.a));
-      return true;
-    }
-    return false;
-  }
+  public abstract int c();
 }
 
 

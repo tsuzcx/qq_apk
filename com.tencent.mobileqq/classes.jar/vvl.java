@@ -1,71 +1,38 @@
 import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class vvl
-  extends vtw<vvo>
+class vvl
+  implements Comparator<String>
 {
-  private long jdField_a_of_type_Long;
-  private vwt jdField_a_of_type_Vwt = new vvm(this);
-  protected boolean a;
+  vvl(vvk paramvvk, String paramString) {}
   
-  public vvl()
+  public int a(String paramString1, String paramString2)
   {
-    d();
-  }
-  
-  private void d()
-  {
-    Object localObject = (vuq)vux.a(10);
-    this.jdField_a_of_type_Long = ((Long)((vuq)localObject).b("edit_video_weather_expiry_time", Long.valueOf(0L))).longValue();
-    if (this.jdField_a_of_type_Long >= System.currentTimeMillis())
+    try
     {
-      int i = ((Integer)((vuq)localObject).b("edit_video_weather_filter_data", Integer.valueOf(-999))).intValue();
-      localObject = (String)((vuq)localObject).b("edit_video_weather_desc", "");
-      if ((i != -999) && (!TextUtils.isEmpty((CharSequence)localObject)))
-      {
-        xvv.b("WeatherDataProvider", "get local weather data. temperature = %d. expiryTime = %d. currentTime=%d.", Integer.valueOf(i), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(System.currentTimeMillis()));
-        this.jdField_a_of_type_JavaLangObject = new vvo(i, (String)localObject);
-        return;
+      String str2 = paramString1.substring(this.jdField_a_of_type_JavaLangString.length(), paramString1.indexOf(".jpg"));
+      String str1 = paramString2.substring(this.jdField_a_of_type_JavaLangString.length(), paramString2.indexOf(".jpg"));
+      paramString1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        paramString1 = "0";
       }
+      paramString2 = str1;
+      if (TextUtils.isEmpty(str1)) {
+        paramString2 = "0";
+      }
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 - l2 < 0L) {
+        return 1;
+      }
+      return -1;
     }
-    xvv.d("WeatherDataProvider", "no valid local weather data.");
-  }
-  
-  public vvo a()
-  {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long >= System.currentTimeMillis())) {
-      return null;
-    }
-    return (vvo)this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    xvv.a("WeatherDataProvider", "requestWeather[longitude=%s,latitude=%s]", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    wfg localwfg = new wfg(1, paramInt1, paramInt2);
-    vqn.a().a(localwfg, new vvn(this));
-  }
-  
-  protected void a(vwp paramvwp)
-  {
-    xvv.b("WeatherDataProvider", "requestWeather.");
-    if (this.jdField_a_of_type_Boolean)
+    catch (Exception paramString1)
     {
-      xvv.b("WeatherDataProvider", "is request ing....");
-      return;
+      QLog.i("QCIRCLE_PLUGIN", 1, "sort exception:" + paramString1.toString());
     }
-    this.jdField_a_of_type_Boolean = true;
-    vwq localvwq = (vwq)vux.a(9);
-    vwp localvwp = paramvwp;
-    if (paramvwp == null) {
-      localvwp = localvwq.b();
-    }
-    if (localvwp != null)
-    {
-      a(localvwp.b, localvwp.a);
-      return;
-    }
-    localvwq.a(this.jdField_a_of_type_Vwt);
-    localvwq.c();
+    return 0;
   }
 }
 

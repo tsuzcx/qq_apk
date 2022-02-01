@@ -1,203 +1,198 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bhha
-  implements aptf
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1 };
-  private bhhb jdField_a_of_type_Bhhb;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private final Boolean[] jdField_a_of_type_ArrayOfJavaLangBoolean = new Boolean[14];
-  
-  public bhha(QQAppInterface paramQQAppInterface, bhhb parambhhb)
+  public static float a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bhhb = parambhhb;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {
+      return 0.0F;
+    }
+    return Math.round(paramInt1 * 1.0F / paramInt2 * 100.0F) / 100.0F;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    Bitmap localBitmap2 = null;
+    Bitmap localBitmap1;
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      localBitmap1 = null;
+    }
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().a("profile_btn_config", this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().a("profile_switch_config", this);
+      return localBitmap1;
+      localBitmap1 = paramBitmap;
+    } while (a(paramBitmap.getWidth(), paramBitmap.getHeight()) == a(paramInt1, paramInt2));
+    Paint localPaint = new Paint();
+    localPaint.setStyle(Paint.Style.STROKE);
+    localPaint.setAntiAlias(true);
+    int i;
+    int j;
+    if (paramInt1 >= paramBitmap.getWidth())
+    {
+      localBitmap1 = paramBitmap;
+      if (paramInt2 >= paramBitmap.getHeight()) {}
+    }
+    else
+    {
+      if (a(paramBitmap.getWidth(), paramInt1) < a(paramBitmap.getHeight(), paramInt2)) {
+        break label964;
+      }
+      i = (int)(paramBitmap.getHeight() * 1.0F / paramBitmap.getWidth() * paramInt1);
+      j = paramInt1;
+    }
+    for (;;)
+    {
+      localBitmap2 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
+      new Canvas(localBitmap2).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, localBitmap2.getWidth(), localBitmap2.getHeight()), localPaint);
+      localBitmap1 = localBitmap2;
+      paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(paramBitmap);
+      localCanvas.drawBitmap(localBitmap1, new Rect(0, 0, localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), new Rect(0, 0, localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() - localBitmap1.getWidth() / 3, 0, localBitmap1.getWidth(), localBitmap1.getHeight() / 3), new Rect(paramBitmap.getWidth() - localBitmap1.getWidth() / 3, 0, paramBitmap.getWidth(), localBitmap1.getHeight() / 3), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(0, localBitmap1.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, localBitmap1.getHeight()), new Rect(0, paramBitmap.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, paramBitmap.getHeight()), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth(), localBitmap1.getHeight()), new Rect(paramBitmap.getWidth() - localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3, paramBitmap.getWidth(), paramBitmap.getHeight()), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() / 3, 0, localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), new Rect(localBitmap1.getWidth() / 3, 0, paramBitmap.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(0, localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3), new Rect(0, localBitmap1.getHeight() / 3, localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, localBitmap1.getWidth(), localBitmap1.getHeight() - localBitmap1.getHeight() / 3), new Rect(paramBitmap.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, paramBitmap.getWidth(), paramBitmap.getHeight() - localBitmap1.getHeight() / 3), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3, localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight()), new Rect(localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3, paramBitmap.getWidth() - localBitmap1.getWidth() / 3, paramBitmap.getHeight()), localPaint);
+      localCanvas.drawBitmap(localBitmap1, new Rect(localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, localBitmap1.getWidth() - localBitmap1.getWidth() / 3, localBitmap1.getHeight() - localBitmap1.getHeight() / 3), new Rect(localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3, paramBitmap.getWidth() - localBitmap1.getWidth() / 3, paramBitmap.getHeight() - localBitmap1.getHeight() / 3), localPaint);
+      if (localBitmap2 != null) {
+        localBitmap2.recycle();
+      }
+      return paramBitmap;
+      label964:
+      j = (int)(paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight() * paramInt2);
+      i = paramInt2;
     }
   }
   
-  private void a(String paramString)
+  public static String a(String paramString)
   {
-    int[] arrayOfInt = new int[14];
-    int i = 0;
-    while (i < 14)
-    {
-      arrayOfInt[i] = jdField_a_of_type_ArrayOfInt[i];
-      i += 1;
+    if (TextUtils.isEmpty(paramString)) {
+      ykq.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json is null");
     }
-    label349:
-    label504:
-    label509:
-    try
+    for (;;)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label516;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label349;
-      }
-      localObject = "";
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
+      return null;
+      try
       {
-        Object localObject;
-        localException1 = localException1;
-        QLog.e("ProfileConfigHelper", 1, "initProfileSwitchConfig fail.", localException1);
-        i = 0;
-        if (i < 14)
+        paramString = new JSONObject(paramString).optJSONArray("bg");
+        if (paramString == null)
         {
-          arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
-          if (arrayOfInt[i] == 1) {}
-          for (bool = true;; bool = false)
-          {
-            arrayOfBoolean[i] = Boolean.valueOf(bool);
-            i += 1;
-            break;
+          ykq.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array is null");
+          return null;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        ykq.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json is illegal:" + paramString);
+        return null;
+      }
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        if (localJSONObject != null)
+        {
+          if ("image_view".equals(localJSONObject.optString("type"))) {
+            return localJSONObject.optString("content");
           }
+          ykq.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array don't have image view");
         }
-      }
-    }
-    finally
-    {
-      i = 0;
-      if (i >= 14) {
-        break label509;
-      }
-      Boolean[] arrayOfBoolean = this.jdField_a_of_type_ArrayOfJavaLangBoolean;
-      if (arrayOfInt[i] != 1) {
-        break label504;
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        arrayOfBoolean[i] = Boolean.valueOf(bool);
         i += 1;
-        break;
       }
     }
-    localObject = aptd.a((String)localObject, "profile_switch_config");
-    paramString = (String)localObject;
-    label516:
-    for (;;) {}
   }
   
-  private void b(String paramString)
+  public static void a(Context paramContext, String paramString)
   {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    label165:
-    for (;;)
+    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Card paramCard, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  {
+    if (!arkc.c().a)
     {
-      try
-      {
-        if (!TextUtils.isEmpty(paramString)) {
-          break label165;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-        {
-          str = "";
-          str = aptd.a(str, "profile_btn_config");
-          paramString = str;
-        }
-      }
-      catch (Exception localException1)
-      {
-        String str;
-        localException1.printStackTrace();
-        Object localObject1 = localObject4;
-        if (TextUtils.isEmpty(null)) {
-          localObject1 = amtj.a(2131707556);
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        continue;
-      }
-      finally
-      {
-        paramString = (String)localObject3;
-        if (TextUtils.isEmpty(null)) {
-          paramString = amtj.a(2131707556);
-        }
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      try
-      {
-        str = new JSONObject(paramString).optString("call_wording");
-        localObject3 = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject3 = amtj.a(2131707556);
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.i("ProfileConfigHelper", 2, String.format("initVoiceBtnConfig [str:%s content:%s]", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        continue;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    }
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return amtj.a(2131707538);
-    }
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      b(null);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().a(this);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Bhhb = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, apte paramapte)
-  {
-    if (paramapte == null) {}
-    for (;;)
-    {
+      QQToast.a(paramActivity, 0, anvx.a(2131710854), 0).a();
       return;
-      if ("profile_btn_config".equals(paramString)) {
-        b(paramapte.jdField_a_of_type_JavaLangString);
-      }
-      while (this.jdField_a_of_type_Bhhb != null)
-      {
-        this.jdField_a_of_type_Bhhb.a(paramInt, paramString);
-        return;
-        if ("profile_switch_config".equals(paramString)) {
-          a(paramapte.jdField_a_of_type_JavaLangString);
-        }
-      }
+    }
+    if (!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramCard.uin)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramCard = bhaa.a(bool, paramCard.cardId);
+      Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+      localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("isShowAd", false);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("has_red_dot", false);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent.putExtra("individuation_url_type", 40203);
+      localIntent.putExtra("url", paramCard);
+      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramCard, -1L, localIntent, true, 1036);
+      return;
     }
   }
   
-  public boolean a(int paramInt)
+  public static void a(TroopInfo paramTroopInfo, String paramString, Activity paramActivity)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while ((paramInt < 0) || (paramInt >= 14)) {
-      return false;
+    if (paramTroopInfo == null)
+    {
+      QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage error,because troop info is null");
+      return;
     }
-    if (this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt] == null) {
-      a(null);
+    if (paramTroopInfo.checkFlagExt4(3))
+    {
+      QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage open mine page");
+      a(arju.c().a("troop", paramTroopInfo.troopuin), paramString, paramActivity);
+      return;
     }
-    return this.jdField_a_of_type_ArrayOfJavaLangBoolean[paramInt].booleanValue();
+    QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage open home page");
+    a(arju.c().a("troop"), paramString, paramActivity);
+  }
+  
+  public static void a(String paramString1, String paramString2, Context paramContext)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("uin", paramString2);
+    localIntent.putExtra("isShowAd", false);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("has_red_dot", false);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    localIntent.putExtra("individuation_url_type", 40402);
+    localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    localIntent.putExtra("url", paramString1);
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, paramString1, -1L, localIntent, false, 0);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (!bhzf.a(paramQQAppInterface, "hide_diy_template_guide", false)) {
+      bool = arkc.c().a;
+    }
+    return bool;
   }
 }
 

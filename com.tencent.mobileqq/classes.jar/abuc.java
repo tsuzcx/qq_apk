@@ -1,53 +1,43 @@
-import android.os.Handler;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
 import com.tencent.qphone.base.util.QLog;
 
-public class abuc
-  implements INetInfoHandler
+final class abuc
+  extends BroadcastReceiver
 {
-  public abuc(GdtVideoCommonView paramGdtVideoCommonView) {}
-  
-  public void onNetMobile2None()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetMobile2None()");
-    GdtVideoCommonView.a(this.a, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetNone2Mobile() apn=" + paramString + " onNetWifi2None " + GdtVideoCommonView.c(this.a));
-    GdtVideoCommonView.a(this.a, 2);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    GdtVideoCommonView.a(this.a, 2);
-    if ((this.a.a) && (this.a.a()))
+    boolean bool = false;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      GdtVideoCommonView.d(this.a);
-      GdtVideoCommonView.a(this.a).post(GdtVideoCommonView.a(this.a));
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            bjqp.c("GameCenterBroadcastReceiver", "mScreenOff = true");
+          }
+          GameCenterCheck.a();
+          return;
+        }
+        if (!"android.intent.action.BATTERY_CHANGED".equals(paramContext)) {
+          break;
+        }
+        abub.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+      } while (!QLog.isColorLevel());
+      bjqp.c("GameCenterBroadcastReceiver", "battery cap= " + abub.a);
+      return;
+    } while ((!"android.intent.action.ACTION_POWER_CONNECTED".equals(paramContext)) && (!"android.intent.action.ACTION_POWER_DISCONNECTED".equals(paramContext)));
+    int i = paramIntent.getIntExtra("status", -1);
+    if ((i == 2) || (i == 5)) {
+      bool = true;
     }
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.i("GdtVideoCommonView", 1, "INetInfoHandler onNetWifi2None()");
-    GdtVideoCommonView.b(this.a, true);
-    GdtVideoCommonView.a(this.a, 0);
+    abub.b = bool;
   }
 }
 

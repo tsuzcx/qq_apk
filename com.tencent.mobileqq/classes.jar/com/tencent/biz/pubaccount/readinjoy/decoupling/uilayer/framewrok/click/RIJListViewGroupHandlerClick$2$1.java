@@ -4,32 +4,32 @@ import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import pgk;
-import pgl;
-import pgm;
-import pkp;
-import slt;
+import ppo;
+import ppp;
+import ppq;
+import pvm;
+import szd;
 
 public class RIJListViewGroupHandlerClick$2$1
   implements Runnable
 {
-  public RIJListViewGroupHandlerClick$2$1(pgl parampgl, PBRepeatMessageField paramPBRepeatMessageField, PBStringField paramPBStringField) {}
+  public RIJListViewGroupHandlerClick$2$1(ppp paramppp, PBRepeatMessageField paramPBRepeatMessageField, PBStringField paramPBStringField) {}
   
   public void run()
   {
-    pgk.a(this.jdField_a_of_type_Pgl.jdField_a_of_type_Pgk, this.jdField_a_of_type_Pgl.jdField_a_of_type_Pgm);
-    int i = this.jdField_a_of_type_Pgl.jdField_a_of_type_Pgm.a().getCount();
-    if (this.jdField_a_of_type_Pgl.b < i)
+    ppo.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_Ppo, this.jdField_a_of_type_Ppp.jdField_a_of_type_Ppq);
+    int i = this.jdField_a_of_type_Ppp.jdField_a_of_type_Ppq.a().getCount();
+    if (this.jdField_a_of_type_Ppp.b < i)
     {
-      Object localObject = this.jdField_a_of_type_Pgl.jdField_a_of_type_Pgm.a().getItem(this.jdField_a_of_type_Pgl.b);
+      Object localObject = this.jdField_a_of_type_Ppp.jdField_a_of_type_Ppq.a().getItem(this.jdField_a_of_type_Ppp.b);
       if ((localObject instanceof ArticleInfo))
       {
         localObject = (ArticleInfo)localObject;
-        ((ArticleInfo)localObject).setSearchWordInfo(this.jdField_a_of_type_Pgl.jdField_a_of_type_Pgm.a().getString(2131693236), this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField, this.jdField_a_of_type_ComTencentMobileqqPbPBStringField);
+        ((ArticleInfo)localObject).setSearchWordInfo(this.jdField_a_of_type_Ppp.jdField_a_of_type_Ppq.a().getString(2131693416), this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField, this.jdField_a_of_type_ComTencentMobileqqPbPBStringField);
         ((ArticleInfo)localObject).invalidateProteusTemplateBean();
       }
     }
-    pkp.a().b();
+    pvm.a().b();
   }
 }
 

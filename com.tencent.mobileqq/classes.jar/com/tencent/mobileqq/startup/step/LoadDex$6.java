@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bcfv;
+import bdmt;
 
 class LoadDex$6
   implements Runnable
@@ -9,7 +9,7 @@ class LoadDex$6
   
   public void run()
   {
-    bcfv.a();
+    bdmt.a();
   }
 }
 

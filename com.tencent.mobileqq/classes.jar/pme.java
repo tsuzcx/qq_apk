@@ -1,23 +1,38 @@
-import android.webkit.ValueCallback;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pme
-  implements ValueCallback<Boolean>
+public class pme
+  implements AladdinConfigHandler
 {
-  pme(pmd parampmd) {}
-  
-  public void a(Boolean paramBoolean)
+  public static boolean a()
   {
-    if (paramBoolean.booleanValue())
+    return ((Boolean)bmhv.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      tvg.a.a("hasResourceInfo");
-      tvi.a.a(pmd.a(this.a));
-      tvi.a.a();
-      this.a.a(true);
-      return;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "enable_1160_use_new_report_service")) {
+        bmhv.a("use_new_report_channel_for_1160", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      }
     }
-    tvg.a.a("noResourceInfo");
-    tvi.a.a(tuz.a.d());
-    this.a.a(false);
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bmhv.a("use_new_report_channel_for_1160", Boolean.valueOf(false));
   }
 }
 

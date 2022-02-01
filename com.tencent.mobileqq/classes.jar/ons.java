@@ -1,35 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import mqq.app.AppRuntime;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ons
+class ons
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  private View a;
+  ons(onq paramonq) {}
   
-  public ons(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (pay.a() != null)
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
     {
-      paramArkAppMessage = pay.a().getApplication();
-      if (paramArkAppMessage != null) {}
+      Intent localIntent = new Intent("action_decode_finish");
+      localIntent.putExtra("bitmap", paramBitmap);
+      localIntent.putExtra("uin", paramString);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
-    else
-    {
-      return;
-    }
-    this.a = new View(paramArkAppMessage);
-    this.a.setVisibility(8);
   }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a() {}
-  
-  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

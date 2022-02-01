@@ -1,55 +1,25 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import java.util.List;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
 class bdfr
-  implements Animation.AnimationListener
+  implements bdgo
 {
-  bdfr(bdfo parambdfo, AnimatorSet paramAnimatorSet) {}
+  bdfr(bdfq parambdfq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    int i = 0;
-    while (i < 3)
+    this.a.jdField_a_of_type_Int = paramInt;
+    LoadParam localLoadParam = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam;
+    long l = this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (bdgg.a()) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Bdfo.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Bdfo.b.size()))
-      {
-        Object localObject2 = (String)this.jdField_a_of_type_Bdfo.b.get(i);
-        Drawable localDrawable = bfvo.a(true);
-        localObject1 = FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof FaceDrawable))) {
-          ((FaceDrawable)localObject2).cancel();
-        }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
-      }
-      i += 1;
+      bdgd.a(localLoadParam, l, null, "load.item.getconfig.end", paramInt + "&v=" + bdfm.a() + "&f=" + this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      bdfq.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, paramSoInfo);
+      return;
     }
-    this.jdField_a_of_type_Bdfo.d.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Bdfo.c.setTranslationX(0.0F);
-    this.jdField_a_of_type_Bdfo.c.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new bdfs(this));
-    this.jdField_a_of_type_Bdfo.d.startAnimation(paramAnimation);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

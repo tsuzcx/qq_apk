@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import QMF_PROTOCAL.QmfBusiControl;
 import QMF_PROTOCAL.QmfDownstream;
-import bgau;
+import bhjl;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class ProtocolUtils
     {
       try
       {
-        paramArrayOfByte = ((WNSStream)localObject1).unpack(bgau.b(paramArrayOfByte));
+        paramArrayOfByte = ((WNSStream)localObject1).unpack(bhjl.b(paramArrayOfByte));
         if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode == 0))
         {
           localObject1 = new UniAttribute();

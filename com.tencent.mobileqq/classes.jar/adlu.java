@@ -1,24 +1,21 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adlu
-  extends BroadcastReceiver
+final class adlu
+  implements DialogInterface.OnClickListener
 {
-  public adlu(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  adlu(adnn paramadnn, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adnm paramadnm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
-      }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
+    this.jdField_a_of_type_Adnn.d = false;
+    this.jdField_a_of_type_Adnn.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_Adnn);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

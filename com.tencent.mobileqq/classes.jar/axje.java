@@ -1,56 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class axje
-  implements axjb
 {
-  private static volatile axje jdField_a_of_type_Axje;
-  private axjb jdField_a_of_type_Axjb;
-  private List<axjf> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public static HashMap<Integer, String> a = new HashMap();
   
-  public static axje a()
+  static
   {
-    if (jdField_a_of_type_Axje == null) {}
-    try
-    {
-      if (jdField_a_of_type_Axje == null) {
-        jdField_a_of_type_Axje = new axje();
-      }
-      return jdField_a_of_type_Axje;
-    }
-    finally {}
+    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131718156));
+    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131718154));
+    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131718961));
+    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131691262));
+    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131718151));
+    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131718168));
+    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131718155));
   }
   
-  public List<axjf> a()
+  public static String a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    new axjc().a(this);
-  }
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(axjb paramaxjb)
-  {
-    this.jdField_a_of_type_Axjb = paramaxjb;
-  }
-  
-  public void a(List<axjf> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_Axjb != null) {
-      this.jdField_a_of_type_Axjb.a(paramList);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Axjb = null;
-    jdField_a_of_type_Axje = null;
+    return (String)a.get(Integer.valueOf(paramInt));
   }
 }
 

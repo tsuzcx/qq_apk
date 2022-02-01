@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aycj
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
   aycj(aych paramaych) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

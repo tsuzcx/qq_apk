@@ -1,32 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
 
-public class xfj
-  implements Subscriber
+public abstract interface xfj
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public xfj(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
-  }
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
   
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
-  {
-    paramList.add(ypa.class);
-  }
+  public abstract void c();
   
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
-    }
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

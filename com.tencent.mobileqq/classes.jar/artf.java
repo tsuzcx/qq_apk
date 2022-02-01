@@ -1,48 +1,114 @@
-public class artf
-  extends arti
+import java.util.Comparator;
+import java.util.List;
+
+public class artf<T>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int;
+  private final artg<T> jdField_a_of_type_Artg;
+  private final arth jdField_a_of_type_Arth;
+  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
   
-  public artf(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public artf(Comparator<T> paramComparator, arth<T> paramarth)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.b = paramString3;
-    this.c = paramString4;
-    this.d = paramString5;
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
+    this.jdField_a_of_type_Arth = paramarth;
+    this.jdField_a_of_type_Artg = new artg();
+    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
   }
   
-  public boolean equals(Object paramObject)
+  private void a(long paramLong, List<T> paramList, artg<T> paramartg)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof artf))
+    if ((arqu.a().a().a()) && ((paramList == null) || (paramList.isEmpty())) && (!a()) && ((paramartg.jdField_a_of_type_JavaLangObject instanceof arrl)))
     {
-      paramObject = (artf)paramObject;
-      bool1 = bool2;
-      if (this.b.equals(paramObject.b))
-      {
-        bool1 = bool2;
-        if (this.e.equals(paramObject.e)) {
-          bool1 = true;
-        }
+      paramList = (arrl)paramartg.jdField_a_of_type_JavaLangObject;
+      long l = Math.abs(paramList.d() - paramLong);
+      if (l > 60000L) {
+        artm.d("DanmakuDataSource", "Danmaku upload to screen fail, deltaTime = " + l + " , curTime = " + paramLong + ", curDanmaku = " + paramList);
       }
     }
-    return bool1;
   }
   
-  public String toString()
+  public int a()
   {
-    return this.e + "_" + this.b;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_Artg.jdField_a_of_type_Artg.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public List<T> a(long paramLong, List<T> paramList, int paramInt)
+  {
+    artg localartg = this.jdField_a_of_type_Artg.jdField_a_of_type_Artg;
+    int j;
+    for (int i = 0; (i < paramInt) && (localartg != this.jdField_a_of_type_Artg) && (this.jdField_a_of_type_Arth.a(localartg.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
+    {
+      j = i;
+      if (paramList != null)
+      {
+        paramList.add(localartg.jdField_a_of_type_JavaLangObject);
+        j = i + 1;
+      }
+      this.jdField_a_of_type_Int -= 1;
+      localartg = localartg.jdField_a_of_type_Artg;
+    }
+    a(paramLong, paramList, localartg);
+    this.jdField_a_of_type_Artg.jdField_a_of_type_Artg = localartg;
+    localartg.b = this.jdField_a_of_type_Artg;
+    return paramList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Artg.jdField_a_of_type_Artg = this.jdField_a_of_type_Artg;
+    this.jdField_a_of_type_Artg.b = this.jdField_a_of_type_Artg;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Artg.jdField_a_of_type_Artg == this.jdField_a_of_type_Artg;
+  }
+  
+  public boolean a(T paramT)
+  {
+    if (paramT == null) {
+      return false;
+    }
+    for (artg localartg = this.jdField_a_of_type_Artg.b; (localartg != this.jdField_a_of_type_Artg) && (this.jdField_a_of_type_JavaUtilComparator.compare(localartg.jdField_a_of_type_JavaLangObject, paramT) > 0); localartg = localartg.b) {}
+    if (paramT.equals(localartg.jdField_a_of_type_JavaLangObject)) {
+      return false;
+    }
+    paramT = new artg(paramT, localartg.jdField_a_of_type_Artg, localartg);
+    localartg.jdField_a_of_type_Artg.b = paramT;
+    localartg.jdField_a_of_type_Artg = paramT;
+    this.jdField_a_of_type_Int += 1;
+    return true;
+  }
+  
+  public T b()
+  {
+    artg localartg = this.jdField_a_of_type_Artg.b;
+    if (localartg != this.jdField_a_of_type_Artg) {
+      return localartg.jdField_a_of_type_JavaLangObject;
+    }
+    return null;
+  }
+  
+  public boolean b(T paramT)
+  {
+    if (paramT == null) {
+      return false;
+    }
+    for (artg localartg = this.jdField_a_of_type_Artg.jdField_a_of_type_Artg; (localartg != this.jdField_a_of_type_Artg) && (this.jdField_a_of_type_JavaUtilComparator.compare(localartg.jdField_a_of_type_JavaLangObject, paramT) < 0); localartg = localartg.jdField_a_of_type_Artg) {}
+    if (paramT.equals(localartg.jdField_a_of_type_JavaLangObject)) {
+      return false;
+    }
+    paramT = new artg(paramT, localartg, localartg.b);
+    localartg.b.jdField_a_of_type_Artg = paramT;
+    localartg.b = paramT;
+    this.jdField_a_of_type_Int += 1;
+    return true;
   }
 }
 

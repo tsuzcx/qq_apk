@@ -1,25 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aelj
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public aelj(TroopInfoActivity paramTroopInfoActivity) {}
+  public aelj(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
     {
-      bcef.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
-      paramDialogInterface.dismiss();
-      return;
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.a(this.a, paramContext);
     }
+    do
+    {
+      boolean bool;
+      do
+      {
+        return;
+        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
+          break;
+        }
+        paramContext = paramIntent.getStringExtra("uin");
+        bool = paramIntent.getBooleanExtra("configPCActive", false);
+      } while (!this.a.app.getAccount().equals(paramContext));
+      if (true == bool)
+      {
+        NotifyPushSettingActivity.g(this.a).setVisibility(0);
+        return;
+      }
+      NotifyPushSettingActivity.g(this.a).setVisibility(8);
+      return;
+    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
+    paramContext = paramIntent.getStringExtra("uin");
+    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 

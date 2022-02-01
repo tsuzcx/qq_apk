@@ -1,21 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.view.View;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
 
-final class npf
-  implements HostnameVerifier
+public class npf
+  implements ney
 {
-  npf(URL paramURL) {}
+  public npf(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void a(View paramView, nel paramnel, int paramInt)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
-    if (bool) {
-      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    if (paramnel == null) {
+      return;
     }
-    return bool;
+    switch (((nej)paramnel).e())
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.d();
+      return;
+    case 2: 
+      this.a.b();
+      return;
+    }
+    this.a.c();
   }
 }
 

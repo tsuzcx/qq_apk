@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhc
-  implements View.OnClickListener
+public class ahhc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhc(ahgz paramahgz, String paramString) {}
+  public ahhc(SixCombolEffectView paramSixCombolEffectView, ahhr paramahhr) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_Ahgz.app.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ahgz.a.a(localHotChatInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Ahhr.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Ahhr.b) && (this.jdField_a_of_type_Ahhr.a < 0.52F)) {
+      this.jdField_a_of_type_Ahhr.b = true;
+    }
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import avsf;
-import ayco;
+import awyg;
+import azja;
 import com.tencent.mobileqq.data.MessageForPic;
 
 public class MixedMsgManager$6
   implements Runnable
 {
-  public MixedMsgManager$6(avsf paramavsf, MessageForPic paramMessageForPic) {}
+  public MixedMsgManager$6(awyg paramawyg, MessageForPic paramMessageForPic) {}
   
   public void run()
   {
-    ayco.b(this.a);
+    azja.b(this.a);
   }
 }
 

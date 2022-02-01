@@ -1,29 +1,42 @@
-import org.jetbrains.annotations.NotNull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-class sgp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$columnTextTranslationAnim$1$1"}, k=3, mv={1, 1, 16})
+final class sgp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  sgp(sgk paramsgk, swr paramswr) {}
   
-  sgp(sgn paramsgn, String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("PlayParams{vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", url='").append(this.jdField_b_of_type_JavaLangString).append('\'').append(", playType=");
-    if (this.jdField_a_of_type_Int == 101) {}
-    for (String str = "VOD";; str = "LIVE") {
-      return str + '}';
+    Object localObject1 = this.jdField_a_of_type_Swr.b();
+    if (localObject1 != null) {}
+    for (localObject1 = ((TextView)localObject1).getLayoutParams();; localObject1 = null)
+    {
+      Object localObject2 = localObject1;
+      if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
+        localObject2 = null;
+      }
+      localObject1 = (ViewGroup.MarginLayoutParams)localObject2;
+      if (localObject1 == null) {
+        return;
+      }
+      Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator != null) {
+        break;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+    }
+    ((ViewGroup.MarginLayoutParams)localObject1).leftMargin = ((Integer)paramValueAnimator).intValue();
+    paramValueAnimator = this.jdField_a_of_type_Swr.b();
+    if (paramValueAnimator != null) {
+      paramValueAnimator.requestLayout();
     }
   }
 }

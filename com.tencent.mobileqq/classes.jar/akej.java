@@ -1,27 +1,22 @@
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class akej
-  implements OnCompositionLoadedListener
 {
-  public akej(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public static void a(String paramString)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
-    {
-      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
-      ajvu.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
+    a(paramString, "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    bdla.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(akfu.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
     }
   }
 }

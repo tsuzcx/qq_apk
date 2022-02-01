@@ -1,19 +1,29 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adlg
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public adlg(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public adlg(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

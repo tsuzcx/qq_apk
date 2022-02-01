@@ -1,22 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
-class asul
-  implements View.OnClickListener
+public class asul
+  implements Animator.AnimatorListener
 {
-  asul(asuj paramasuj) {}
+  public asul(ExtendFriendSearchBarView paramExtendFriendSearchBarView, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int i = ataw.b(this.a.a.e());
-    bcef.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-    asri localasri = this.a.a.a();
-    if (localasri != null) {
-      localasri.a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.topMargin = (-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.topMargin = (-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,27 +1,76 @@
 import android.support.annotation.NonNull;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.List;
 
-class ydz
-  implements ymt
+public abstract class ydz<T extends FeedItem>
 {
-  ydz(ydv paramydv) {}
+  protected T a;
+  public boolean b;
   
-  public void a(@NonNull yna paramyna)
+  public ydz(@NonNull T paramT)
   {
-    switch (paramyna.a)
-    {
+    zdl.a(paramT);
+    this.a = paramT;
+  }
+  
+  public static ydz a(int paramInt)
+  {
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
+    if (localFeedItem == null) {
+      return null;
     }
+    return localFeedItem.generateHomeFeed();
+  }
+  
+  public T a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, wsq paramwsq, wsk paramwsk, wsn paramwsn);
+  
+  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
+  
+  public abstract void b();
+  
+  public List<StoryVideoItem> d()
+  {
+    return new ArrayList(0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
     do
     {
-      return;
-      int i = paramyna.b;
-      this.a.jdField_a_of_type_Yde.a = i;
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
-      xwb.b("0X80075D8");
-    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId != 3));
-    LpReportInfo_pf00064.allReport(615, 3, 2);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (ydz)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

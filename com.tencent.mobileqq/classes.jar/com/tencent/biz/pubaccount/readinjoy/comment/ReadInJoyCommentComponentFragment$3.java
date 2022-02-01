@@ -19,7 +19,7 @@ class ReadInJoyCommentComponentFragment$3
     if (!new File(this.a).exists())
     {
       this.this$0.g();
-      this.this$0.a(1, this.this$0.getString(2131717343));
+      this.this$0.a(1, this.this$0.getString(2131717709));
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyCommentComponentFragment", 2, "startUploadPic file not exist, path=" + this.a);
       }

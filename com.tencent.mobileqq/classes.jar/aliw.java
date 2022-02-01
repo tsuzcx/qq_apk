@@ -1,8 +1,41 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
-public abstract interface aliw
+public class aliw
+  extends AbsRecentStatus
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  public int[] declareStatus()
+  {
+    return new int[4];
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      return false;
+    }
+    paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).getMessageFacade();
+    if ((paramIMCoreAppRuntime != null) && (paramIMCoreAppRuntime.hasDraftText(paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getRecentUserType())))
+    {
+      paramRecentBaseData.mStatus = 4;
+      return false;
+    }
+    paramRecentBaseData.mStatus = 0;
+    return false;
+  }
+  
+  public int priority()
+  {
+    return AbsRecentStatus.PRIORITY_DRAFT;
+  }
 }
 
 

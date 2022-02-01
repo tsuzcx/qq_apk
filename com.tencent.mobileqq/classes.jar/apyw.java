@@ -1,55 +1,39 @@
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class apyw
+class apyw
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  public boolean a = true;
+  apyw(apyu paramapyu) {}
   
-  public static apyw a(String paramString)
+  public void beginAppload(String paramString, int paramInt)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        apyw localapyw = new apyw();
-        if (new JSONObject(paramString).optInt("enableMultiChannelReport", 1) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localapyw.a = bool;
-          return localapyw;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
+    if (paramInt == 1) {
+      apyo.a(paramString);
     }
-    QLog.e("MultiChannelReportProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
   }
   
-  public static String a(apyw paramapyw)
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramapyw != null) {}
-    try
+    if (paramInt == 1)
     {
-      localJSONObject.put("isMultiChannelReportEnable", paramapyw.a);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramapyw)
-    {
-      for (;;)
-      {
-        paramapyw.printStackTrace();
+      apyo.b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
       }
     }
+  }
+  
+  public void onReleaseAndReload(String paramString, int paramInt)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new apyx(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyw
  * JD-Core Version:    0.7.0.1
  */

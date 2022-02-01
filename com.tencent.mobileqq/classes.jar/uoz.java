@@ -1,31 +1,45 @@
-import UserGrowth.stFeed;
-import UserGrowth.stMagicBrand;
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StMessageStatus;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowFeedsRsp;
+import NS_COMM.COMM.StCommonExt;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
-class uoz
-  implements ved
+public class uoz
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFollowFeedsRsp>
 {
-  uoz(uou paramuou) {}
+  public uoz(FolderFollowTabFragment paramFolderFollowTabFragment, zsx paramzsx) {}
   
-  public void a(Object paramObject)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowFeedsRsp paramStGetFollowFeedsRsp)
   {
-    if (uyo.b()) {}
-    while (!(paramObject instanceof stSchema)) {
+    boolean bool = true;
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowFeedsRsp == null))
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        QQToast.a(FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment), 1, paramString, 0).a();
+      }
       return;
     }
-    uxr.a(uou.a(this.a).a(), (stSchema)paramObject, 700, uou.a(this.a), "bottom_label");
-    uou.a(this.a, "bottom_label", 2);
-  }
-  
-  public void b(Object paramObject)
-  {
-    if (uyo.b()) {}
-    while ((!(paramObject instanceof stSchema)) || (uou.a(this.a).feed == null) || (uou.a(this.a).feed.magicBrand == null)) {
+    this.jdField_a_of_type_Zsx.a().b(paramStGetFollowFeedsRsp.livePageInfo.get());
+    if (paramStGetFollowFeedsRsp.messStatus.get() != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment.a(paramStGetFollowFeedsRsp.messStatus.noticeCount.get());
+      FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment, paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
+    }
+    paramVSBaseRequest = paramStGetFollowFeedsRsp.careLive.get();
+    paramString = this.jdField_a_of_type_Zsx;
+    COMM.StCommonExt localStCommonExt = paramStGetFollowFeedsRsp.extInfo;
+    if (paramStGetFollowFeedsRsp.isFinish.get() == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramString.b(paramVSBaseRequest, localStCommonExt, paramBoolean);
       return;
     }
-    uxr.a(uou.a(this.a).a(), (stSchema)paramObject, 700, uou.a(this.a), "bottom_label");
-    uou.a(this.a, "bottom_label", uou.a(this.a).feed.magicBrand.type);
   }
 }
 

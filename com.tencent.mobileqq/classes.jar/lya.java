@@ -1,29 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
-class lya
-  implements DialogInterface.OnClickListener
+public final class lya
+  implements Parcelable.Creator<RecvGVideoLevelInfo>
 {
-  lya(lxz paramlxz, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Lxz.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Lxz.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lxz.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Lxz.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyb(this));
+    return new RecvGVideoLevelInfo(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lya
  * JD-Core Version:    0.7.0.1
  */

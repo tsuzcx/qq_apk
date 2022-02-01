@@ -1,129 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgsvc.msg_svc.TransSvrInfo;
-import qqcircle.QQCirclePrivateMsgAIO.PrivateMsgTransSvrInfo;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahkt
-  extends amwl
+  implements View.OnClickListener
 {
-  ahkt(ahkr paramahkr) {}
+  ahkt(ahks paramahks) {}
   
-  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
+    ahku localahku = (ahku)AIOUtils.getHolder(paramView);
+    Object localObject = (MessageForTroopFee)localahku.a;
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", ((MessageForTroopFee)localObject).actionUrl);
+    paramView.getContext().startActivity(localIntent);
+    localObject = ((TroopManager)this.a.a.getManager(QQManagerFactory.TROOP_MANAGER)).b(localahku.b);
+    int i;
+    if (localObject != null)
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.updateAddFriendAndShieldView();
+      if (!((TroopInfo)localObject).isTroopOwner(this.a.a.getCurrentAccountUin())) {
+        break label161;
       }
+      i = 0;
     }
-  }
-  
-  public void onMessageRecordAdded(List<MessageRecord> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
+    for (;;)
     {
-      paramList = (MessageRecord)paramList.get(0);
-      if ((!paramList.isSendFromLocal()) && (!(paramList instanceof MessageForUniteGrayTip)) && (paramList.frienduin != null) && (paramList.frienduin.equals(this.a.sessionInfo.curFriendUin)))
-      {
-        ahkr.a(this.a);
-        ahkr.a(this.a, paramList);
-      }
-    }
-  }
-  
-  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.updateAddFriendAndShieldView();
-      }
-    }
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onSendResult, isSucc:" + paramBoolean + " uin:" + paramString + " uniseq:" + paramLong);
-    }
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramString.equals(this.a.sessionInfo.curFriendUin));
-      this.a.hasSentRecvMsg = true;
-      this.a.refresh(262144, null, paramLong);
-    } while ((!paramBoolean) || (((amsw)this.a.app.getManager(51)).b(this.a.sessionInfo.curFriendUin)));
-    ahkr.a(this.a);
-  }
-  
-  protected void onSendResultWithTransInfo(boolean paramBoolean, msg_svc.TransSvrInfo paramTransSvrInfo)
-  {
-    if ((paramBoolean) && (paramTransSvrInfo != null) && (paramTransSvrInfo.bytes_trans_info.has()))
-    {
-      byte[] arrayOfByte = paramTransSvrInfo.bytes_trans_info.get().toByteArray();
-      if (arrayOfByte.length > 0) {
-        paramTransSvrInfo = new QQCirclePrivateMsgAIO.PrivateMsgTransSvrInfo();
-      }
-      try
-      {
-        paramTransSvrInfo.mergeFrom(arrayOfByte);
-        int i = paramTransSvrInfo.int32_ret_code.get();
-        paramTransSvrInfo = paramTransSvrInfo.str_err_msg.get();
-        QLog.d(this.a.tag, 2, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",retCode:", Integer.valueOf(i), ",tips:", paramTransSvrInfo });
-        if ((i == 0) && (!TextUtils.isEmpty(paramTransSvrInfo)))
-        {
-          QQToast.a(this.a.mContext, 0, paramTransSvrInfo, 0).a();
-          QLog.d(this.a.tag, 2, new Object[] { "onSendResultWithTransInfo Show Toast,tips:", paramTransSvrInfo });
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          QLog.e(this.a.tag, 1, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",exception:" + localInvalidProtocolBufferMicroException.toString() });
-        }
-      }
-    }
-    QLog.d(this.a.tag, 1, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",transSvrInfo is empty!" });
-  }
-  
-  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
-  {
-    this.a.refresh(65536);
-  }
-  
-  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
+      bdla.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localahku.b, i + "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label161:
+      if (((TroopInfo)localObject).isAdmin()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2);
-    }
-    this.a.refresh(196608);
   }
 }
 

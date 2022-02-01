@@ -1,35 +1,32 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class aojh
+  extends aofu
 {
-  public int a;
-  public long a;
-  public HttpNetReq a;
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "";
-  public String d;
+  private aojh(UpdateTroop paramUpdateTroop) {}
   
-  public aojh()
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojh
  * JD-Core Version:    0.7.0.1
  */

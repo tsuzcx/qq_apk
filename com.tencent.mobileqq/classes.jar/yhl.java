@@ -1,116 +1,40 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.List;
 
 class yhl
-  extends ygz<yhk>
+  extends yev
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  yhl(yhk paramyhk) {}
   
-  protected yhl(yhk paramyhk, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(int paramInt, View paramView, Object paramObject, yhc paramyhc)
   {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378281));
-  }
-  
-  private void a(int paramInt)
-  {
-    char[] arrayOfChar = String.valueOf(paramInt).toCharArray();
-    paramInt = 0;
-    Object localObject1;
-    while (paramInt < arrayOfChar.length)
+    if (UIUtils.isFastDoubleClick()) {}
+    label6:
+    do
     {
-      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      do
       {
-        localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        localObject2 = new RelativeLayout.LayoutParams(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 40.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 62.0F));
-        if (paramInt != 0) {
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 1.0F);
-        }
-        ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_CENTER);
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+        do
+        {
+          break label6;
+          do
+          {
+            return;
+          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
+          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
+        paramObject = yhk.a(this.a).b(paramObject.mOwnerUid);
+      } while (paramObject == null);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
       }
-      a((ImageView)localObject1, arrayOfChar[paramInt]);
-      paramInt += 1;
-    }
-    paramInt = arrayOfChar.length;
-    while (paramInt < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
-    {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView((View)localObject1);
-      paramInt += 1;
-    }
-  }
-  
-  private void a(ImageView paramImageView, char paramChar)
-  {
-    if (paramImageView == null) {
-      return;
-    }
-    switch (paramChar)
-    {
-    case '.': 
-    case '/': 
-    default: 
-      return;
-    case '-': 
-      paramImageView.setImageResource(2130846765);
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130846766);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130846767);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130846768);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130846769);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130846770);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130846771);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130846772);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130846773);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130846774);
-      return;
-    }
-    paramImageView.setImageResource(2130846775);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561803, paramViewGroup, false);
-  }
-  
-  public void a(yhk paramyhk, int paramInt)
-  {
-    super.a(paramyhk, paramInt);
-    if (paramyhk != null) {
-      a(paramyhk.c);
-    }
+    } while (yhk.a(this.a) == null);
+    yhk.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
   }
 }
 

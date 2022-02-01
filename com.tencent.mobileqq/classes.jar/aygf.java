@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aygf
-  implements DialogInterface.OnClickListener
+class aygf
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aygf(ayfx paramayfx) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    mrd.b();
+    bkzi localbkzi = bkzi.a(this.a.a);
+    localbkzi.a(2131717316, 1);
+    localbkzi.c(2131690697);
+    localbkzi.a(new aygg(this, localbkzi));
+    localbkzi.show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

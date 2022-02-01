@@ -1,44 +1,29 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class xir
-  extends vll<xin, xgq>
+  implements xjp
 {
-  xir(xin paramxin)
-  {
-    super(paramxin);
-  }
+  xir(xim paramxim, StoryVideoItem paramStoryVideoItem) {}
   
-  public void a(@NonNull xin paramxin, @NonNull xgq paramxgq)
+  public boolean a(xjm paramxjm, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if ((!paramxgq.jdField_a_of_type_JavaLangString.equals(xin.a(paramxin))) || (paramxgq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (xin.a(paramxin) == null)) {
-      xvv.b(this.TAG, "ignore this comment list event. %s.", paramxgq.toString());
+    if (this.jdField_a_of_type_Xim.isCanceled()) {
+      return true;
     }
-    boolean bool2;
-    boolean bool1;
-    do
+    ykq.e(this.jdField_a_of_type_Xim.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
+    if (paramInt2 == 102)
     {
-      return;
-      xvv.a(this.TAG, "receive comment list event. %s.", paramxgq.toString());
-      bool2 = xin.a(paramxin);
-      bool1 = true;
-      if (paramxgq.jdField_a_of_type_Int == 0) {
-        bool1 = false;
-      }
-      xin.a(paramxin).a(bool1);
-      xin.a(paramxin).a(bool1, paramxgq.b);
-      xin.a(paramxin).a(bool1, paramxgq.jdField_a_of_type_Boolean);
-      xin.a(paramxin).a(paramxgq.jdField_a_of_type_JavaUtilList, paramxgq.c, bool1);
-    } while (bool2 != bool1);
-    paramxin.b(paramxgq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      paramxjm.d();
+      return true;
+    }
+    VideoViewVideoHolder.c(this.jdField_a_of_type_Xim.a, 7);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xim.a, false);
+    VideoViewVideoHolder.b(this.jdField_a_of_type_Xim.a, paramInt2);
+    xim.b(this.jdField_a_of_type_Xim, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Xim.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
+    return true;
   }
-  
-  public Class acceptEventClass()
-  {
-    return xgq.class;
-  }
-  
-  public void b(@NonNull xin paramxin, @NonNull xgq paramxgq) {}
 }
 
 

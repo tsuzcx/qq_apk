@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.jsp;
 
-import aqkt;
-import aqku;
-import autl;
-import bcvc;
+import aroe;
+import arof;
+import avzk;
+import becb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONException;
@@ -12,21 +12,21 @@ import org.json.JSONObject;
 public class DocxApiPlugin$3
   implements Runnable
 {
-  public DocxApiPlugin$3(autl paramautl, String paramString1, String paramString2, String paramString3) {}
+  public DocxApiPlugin$3(avzk paramavzk, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject = aqku.a();
-    if ((((aqkt)localObject).a()) && (((aqkt)localObject).b()) && (bcvc.a(this.a)))
+    Object localObject = arof.a();
+    if ((((aroe)localObject).a()) && (((aroe)localObject).b()) && (becb.a(this.a)))
     {
-      localObject = bcvc.b(this.a);
+      localObject = becb.b(this.a);
       this.this$0.callJs(this.b, new String[] { localObject });
     }
     for (;;)
     {
       localObject = new ArrayList(1);
       ((ArrayList)localObject).add(this.c);
-      autl.a(this.this$0, (ArrayList)localObject);
+      avzk.a(this.this$0, (ArrayList)localObject);
       return;
       try
       {

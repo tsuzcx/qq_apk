@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import awwp;
-import awwq;
+import aycr;
+import aycs;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class NearbyProfilePicBrowserActivity
@@ -32,7 +32,7 @@ public class NearbyProfilePicBrowserActivity
   {
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
     if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Aagp = new awwq(this);; this.jdField_a_of_type_Aagp = new awwp(this)) {
+    for (this.jdField_a_of_type_Aawb = new aycs(this);; this.jdField_a_of_type_Aawb = new aycr(this)) {
       return super.doOnCreate(paramBundle);
     }
   }

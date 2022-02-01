@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adya
-  implements apom
+  implements View.OnClickListener
 {
-  public adya(QQBrowserActivity paramQQBrowserActivity) {}
+  public adya(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onColorNoteAnimFinish()
+  public void onClick(View paramView)
   {
-    QQBrowserActivity.a(this.a);
+    if (this.a.app != null)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
+      localIntent.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

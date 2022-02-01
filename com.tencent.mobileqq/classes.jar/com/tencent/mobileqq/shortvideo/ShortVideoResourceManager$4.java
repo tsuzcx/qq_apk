@@ -5,7 +5,7 @@ final class ShortVideoResourceManager$4
 {
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bbrg, "new_qq_android_native_short_other_");
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bcya, "new_qq_android_native_short_other_");
   }
 }
 

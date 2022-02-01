@@ -1,29 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class sny
-  extends Handler
+class sny
+  extends AnimatorListenerAdapter
 {
-  public sny(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
+  sny(snv paramsnv, swu paramswu) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Snv.b(this.jdField_a_of_type_Swu);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a != null)
-    {
-      if (paramMessage.obj != null) {
-        this.a.a.a((String)paramMessage.obj);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.a(null);
+    snv.a(this.jdField_a_of_type_Snv).setRepeatCount(0);
   }
 }
 

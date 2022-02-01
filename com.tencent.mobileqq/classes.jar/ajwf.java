@@ -1,27 +1,55 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajwf
-  implements MediaPlayer.OnPreparedListener
 {
-  public ajwf(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
+  ArrayList<Object> a = new ArrayList();
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  private boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
+    boolean bool = false;
+    if (this.a != null) {}
+    for (int i = this.a.size() + 0;; i = 0)
+    {
+      if (i >= 20) {
+        bool = true;
+      }
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("Q.history.", 2, "isOverLimit");
+      }
+      return bool;
     }
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
-    bftt.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
+  }
+  
+  public List<Object> a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      this.a.remove(paramObject);
+      return;
     }
-    paramMediaPlayer.start();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
+    if (a())
+    {
+      audr.a(2131692370);
+      return;
+    }
+    this.a.add(paramObject);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return this.a.contains(paramObject);
   }
 }
 

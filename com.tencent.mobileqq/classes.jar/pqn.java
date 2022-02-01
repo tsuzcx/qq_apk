@@ -1,40 +1,51 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
-public class pqn
-  implements URLDrawable.URLDrawableListener
+class pqn
+  implements View.OnClickListener
 {
-  public pqn(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
+  pqn(pqk parampqk) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
+    this.a.c();
+    Object localObject = ((KandianMergeManager)pkh.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
+    if ((localObject != null) && (((KandianMsgBoxRedPntInfo)localObject).isFromNotification))
+    {
+      pro.a(pqk.a(this.a).a(), 5, false, ((KandianMsgBoxRedPntInfo)localObject).mMsgId);
+      if (Aladdin.getConfig(338).getIntegerFromString("allow_report_in_dau", 0) == 1)
+      {
+        if (!(pqk.a(this.a).a() instanceof ReadInJoyNewFeedsActivity)) {
+          break label127;
+        }
+        ((ReadInJoyNewFeedsActivity)pqk.a(this.a).a()).g(2);
+      }
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      pro.a(pqk.a(this.a).a(), 3);
+      break;
+      label127:
+      if ((pqk.a(this.a).a() instanceof SplashActivity))
+      {
+        localObject = pqx.a(pqk.a(this.a).a());
+        if (localObject != null) {
+          ((ReadinjoyTabFrame)localObject).a(2);
+        }
+      }
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).removeMessages(-2);
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).sendEmptyMessage(-2);
   }
 }
 

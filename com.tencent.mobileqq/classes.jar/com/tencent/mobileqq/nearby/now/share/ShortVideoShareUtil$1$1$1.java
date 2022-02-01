@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.nearby.now.share;
 
 import android.text.TextUtils;
-import awhw;
-import awrd;
-import awre;
-import awrs;
-import bcek;
+import axny;
+import axxf;
+import axxg;
+import axxu;
+import bdlf;
 
 public class ShortVideoShareUtil$1$1$1
   implements Runnable
 {
-  public ShortVideoShareUtil$1$1$1(awre paramawre, awhw paramawhw) {}
+  public ShortVideoShareUtil$1$1$1(axxg paramaxxg, axny paramaxny) {}
   
   public void run()
   {
-    bcek localbcek = new bcek(this.jdField_a_of_type_Awre.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(awrs.d);
-    int i = this.jdField_a_of_type_Awhw.b();
-    String str2 = awrs.a;
-    if (TextUtils.equals(awrs.a, "2")) {}
-    for (String str1 = awrs.c;; str1 = "")
+    bdlf localbdlf = new bdlf(this.jdField_a_of_type_Axxg.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(axxu.d);
+    int i = this.jdField_a_of_type_Axny.b();
+    String str2 = axxu.a;
+    if (TextUtils.equals(axxu.a, "2")) {}
+    for (String str1 = axxu.c;; str1 = "")
     {
-      localbcek.a(new String[] { "1", String.valueOf(i), str2, str1 }).a();
+      localbdlf.a(new String[] { "1", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

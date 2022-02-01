@@ -1,14 +1,18 @@
 package com.tencent.tavcut.session;
 
 import android.util.SparseArray;
+import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tavcut.bean.Size;
 import com.tencent.tavcut.player.MoviePlayer;
 import com.tencent.tavcut.session.config.SessionConfig;
+import com.tencent.tavcut.view.TAVCutVideoView;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
 import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
+import com.tencent.weseevideo.editor.sticker.StickerController;
 
 class TAVCutVideoSession$11
   implements MediaBuilderListener
@@ -20,8 +24,8 @@ class TAVCutVideoSession$11
     if (paramVideoRenderChainManager == null) {
       return;
     }
-    paramMediaBuilderOutput = TAVCutVideoSession.access$100(this.this$0, paramVideoRenderChainManager);
-    paramVideoRenderChainManager.getComposition().setRenderSize(paramMediaBuilderOutput);
+    CGSize localCGSize = TAVCutVideoSession.access$100(this.this$0, paramVideoRenderChainManager);
+    paramVideoRenderChainManager.getComposition().setRenderSize(localCGSize);
     TAVCutVideoSession.access$200(this.this$0, paramVideoRenderChainManager.getComposition());
     this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
     this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
@@ -30,11 +34,16 @@ class TAVCutVideoSession$11
     for (paramMediaBuilderOutput = this.this$0.sessionConfig.getRenderLayoutMode();; paramMediaBuilderOutput = null)
     {
       localTAVComposition.setRenderLayoutMode(paramMediaBuilderOutput);
-      if (this.this$0.getPlayer() == null) {
+      if (this.this$0.getPlayer() != null)
+      {
+        this.this$0.getPlayer().setPlayRange(new CMTimeRange(CMTime.CMTimeZero, paramVideoRenderChainManager.getComposition().getDuration()));
+        this.this$0.getPlayer().updateComposition(paramVideoRenderChainManager.getComposition(), this.val$autoPlay);
+      }
+      if ((this.this$0.getStickerController() == null) || (this.this$0.tavCutVideoView == null)) {
         break;
       }
-      this.this$0.getPlayer().setPlayRange(new CMTimeRange(CMTime.CMTimeZero, paramVideoRenderChainManager.getComposition().getDuration()));
-      this.this$0.getPlayer().updateComposition(paramVideoRenderChainManager.getComposition(), this.val$autoPlay);
+      this.this$0.tavCutVideoView.adjustStickerContainer(new Size((int)localCGSize.width, (int)localCGSize.height));
+      this.this$0.getStickerController().setStickerContainer(this.this$0.tavCutVideoView.getStickerContainer());
       return;
     }
   }

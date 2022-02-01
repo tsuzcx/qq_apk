@@ -1,57 +1,83 @@
-import com.tencent.mobileqq.transfile.RichMediaUtil;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.shapes.Shape;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class blhd
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  private int jdField_a_of_type_Int;
+  private blhc jdField_a_of_type_Blhc;
+  private int b;
+  private int c = 12;
+  private int d = 8;
   
-  public static int a()
+  public blhd(blhc paramblhc)
   {
-    a();
-    return a;
+    this.jdField_a_of_type_Blhc = paramblhc;
   }
   
-  private static void a()
+  private int a(float paramFloat)
   {
-    String[] arrayOfString;
-    if (c == 0)
+    return DisplayUtil.dip2px(blhc.a(this.jdField_a_of_type_Blhc), paramFloat);
+  }
+  
+  private static int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      arrayOfString = RichMediaUtil.getVersionCode().split("\\.");
-      if (arrayOfString.length >= 4) {}
+    default: 
+      return 32;
+    case 49: 
+      return 33;
+    case 50: 
+      return 34;
+    case 51: 
+      return 36;
     }
-    else
-    {
-      return;
-    }
-    try
-    {
-      a = Integer.valueOf(arrayOfString[0]).intValue();
-      b = Integer.valueOf(arrayOfString[1]).intValue();
-      d = Integer.valueOf(arrayOfString[2]).intValue();
-      c = Integer.valueOf(arrayOfString[3]).intValue();
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException) {}
+    return 35;
   }
   
-  public static int b()
+  private static Drawable a(float paramFloat, int paramInt)
   {
-    a();
-    return b;
+    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat }, null, null));
+    localShapeDrawable.getPaint().setColor(paramInt);
+    return localShapeDrawable;
   }
   
-  public static int c()
+  private static Drawable a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    a();
-    return c;
+    Object localObject = new blhf(a(paramInt3));
+    ((blhf)localObject).resize(paramInt1, paramInt2);
+    localObject = new ShapeDrawable((Shape)localObject);
+    ((ShapeDrawable)localObject).setIntrinsicWidth(paramInt1);
+    ((ShapeDrawable)localObject).setIntrinsicHeight(paramInt2);
+    ((ShapeDrawable)localObject).getPaint().setColor(paramInt4);
+    return localObject;
   }
   
-  public static int d()
+  public blhc a()
   {
-    a();
-    return d;
+    Drawable localDrawable1 = a(a(this.jdField_a_of_type_Int), this.b);
+    this.jdField_a_of_type_Blhc.c(localDrawable1);
+    localDrawable1 = a(a(this.c), a(this.d), 49, this.b);
+    Drawable localDrawable2 = a(a(this.d), a(this.c), 51, this.b);
+    this.jdField_a_of_type_Blhc.b(localDrawable2);
+    this.jdField_a_of_type_Blhc.a(localDrawable1);
+    return this.jdField_a_of_type_Blhc;
+  }
+  
+  public blhd a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public blhd b(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
   }
 }
 

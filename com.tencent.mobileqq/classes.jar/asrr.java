@@ -1,28 +1,47 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class asrr
-  extends asdv
+public class asrr
+  extends asrp
 {
-  asrr(asrq paramasrq, ashw paramashw) {}
-  
-  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public asrr(asro paramasro, asqt paramasqt)
   {
-    if (paramBoolean2) {}
-    for (paramString1 = paramString4 + "&isthumb=0";; paramString1 = paramString4)
+    super(paramasro, paramasqt);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Asqt.a();
+    this.jdField_a_of_type_Asqt.a().a(paramInt);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
     {
-      QLog.i("VideoForC2C<QFile>XOXO", 2, "[" + this.jdField_a_of_type_Asrq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  ID[" + paramLong2 + "]onUpdateGetOfflineDownloadInfo");
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_Asrq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
-        this.jdField_a_of_type_Asrq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+    default: 
+      return false;
+    case 103: 
+      this.jdField_a_of_type_Asqt.a().a();
+    case 104: 
+      this.jdField_a_of_type_Asro.a(0, paramInt2);
+    case 105: 
+      for (;;)
+      {
+        return true;
+        this.jdField_a_of_type_Asro.a(0, paramInt2);
       }
-      this.jdField_a_of_type_Asrq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bUseMediaPlatform = paramBoolean2;
-      aszt.a(this.jdField_a_of_type_Asrq.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Asrq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new asrs(this, paramLong1, paramBoolean1, paramString3, paramBundle, paramShort, paramBoolean2, paramString2, paramString1));
-      return;
     }
+    this.jdField_a_of_type_Asqt.a().a();
+    this.jdField_a_of_type_Asro.a(0, paramInt2);
+    this.jdField_a_of_type_Asro.b(paramInt1, paramInt2);
+    return false;
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Asqt.a().a();
   }
 }
 

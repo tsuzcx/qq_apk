@@ -1,10 +1,13 @@
 public class blqu
-  extends blqs
 {
-  blqt a()
-  {
-    return new blqv();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = "";
+  public String e;
 }
 
 

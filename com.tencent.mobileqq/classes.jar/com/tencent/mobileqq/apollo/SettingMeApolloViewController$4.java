@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import ambl;
+import anct;
 
 class SettingMeApolloViewController$4
   implements Runnable

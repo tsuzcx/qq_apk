@@ -1,43 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.Stream;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class vyt
+class vyt
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = true;
+  vyt(vys paramvys) {}
   
-  public void a(@NonNull vxd paramvxd, vyx paramvyx)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
-        }
-        Stream.of(paramvxd).map(new vxt("MsgTabPreloader")).map(new vxq(null)).subscribe(new vyu(this, paramvyx, paramvxd));
-      }
-    }
-    else {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
-    }
-    Stream.of(paramvxd).map(new vxt("MsgTabPreloader")).subscribe(new vyw(this, paramvyx, paramvxd));
+    this.a.b.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.g.setVisibility(8);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

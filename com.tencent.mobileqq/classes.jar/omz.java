@@ -1,27 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class omz
-  implements CompoundButton.OnCheckedChangeListener
+final class omz
+  implements biyn
 {
-  public omz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  omz(String paramString, uvb paramuvb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (!paramCompoundButton.isPressed())
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    boolean bool = true;
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
       return;
     }
-    ReadInJoySettingActivity localReadInJoySettingActivity = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      ReadInJoySettingActivity.c(localReadInJoySettingActivity, bool);
-      ReadInJoySettingActivity.d(this.a, paramBoolean);
-      break;
+    case -1: 
+    default: 
+      znl.b(1, 2131718766);
+      bool = false;
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      if (this.jdField_a_of_type_Uvb == null) {
+        break;
+      }
+      this.jdField_a_of_type_Uvb.a(bool);
+      return;
+      znl.b(2, 2131718784);
+      continue;
+      bool = false;
     }
   }
 }

@@ -1,15 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import java.util.List;
-
-public class olt
-  extends pkt
+public abstract interface olt
 {
-  public olt(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
-  
-  public void a_(List<ucy> paramList)
-  {
-    this.a.a(paramList);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

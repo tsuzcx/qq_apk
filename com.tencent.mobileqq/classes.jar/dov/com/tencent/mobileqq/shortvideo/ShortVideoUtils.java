@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import aktw;
+import alrs;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import boef;
+import bptx;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -408,8 +408,8 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = boef.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(aktw.d);
+    paramFile = bptx.a(paramFile);
+    StringBuilder localStringBuilder = new StringBuilder(alrs.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -427,8 +427,8 @@ public class ShortVideoUtils
     if (paramString == null) {
       return null;
     }
-    paramString = boef.a(new File(paramString));
-    StringBuilder localStringBuilder = new StringBuilder(aktw.d);
+    paramString = bptx.a(new File(paramString));
+    StringBuilder localStringBuilder = new StringBuilder(alrs.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -496,8 +496,8 @@ public class ShortVideoUtils
   
   public static String b()
   {
-    String str = boef.a();
-    return aktw.d + "shortvideo" + File.separator + "temp" + File.separator + "source" + File.separator + str + "watermark.png";
+    String str = bptx.a();
+    return alrs.d + "shortvideo" + File.separator + "temp" + File.separator + "source" + File.separator + str + "watermark.png";
   }
   
   public static String b(int paramInt)
@@ -557,8 +557,8 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = boef.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(aktw.d);
+    paramFile = bptx.a(paramFile);
+    StringBuilder localStringBuilder = new StringBuilder(alrs.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -583,7 +583,7 @@ public class ShortVideoUtils
     if (!TextUtils.isEmpty(paramString1))
     {
       String str = MD5.toMD5(paramString1);
-      StringBuilder localStringBuilder = new StringBuilder(aktw.d);
+      StringBuilder localStringBuilder = new StringBuilder(alrs.d);
       localStringBuilder.append("shortvideo");
       localStringBuilder.append(File.separator);
       localStringBuilder.append(str);
@@ -619,7 +619,7 @@ public class ShortVideoUtils
   
   private static String c()
   {
-    StringBuilder localStringBuilder = new StringBuilder(aktw.d);
+    StringBuilder localStringBuilder = new StringBuilder(alrs.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
@@ -645,7 +645,7 @@ public class ShortVideoUtils
   
   private static String c(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(aktw.d);
+    StringBuilder localStringBuilder = new StringBuilder(alrs.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString);

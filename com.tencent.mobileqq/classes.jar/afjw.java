@@ -1,44 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afjw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public afjw(TroopChatPie paramTroopChatPie) {}
+  public afjw(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = (anca)this.a.app.getBusinessHandler(20);
-    if ((NetworkUtil.isNetSupport(this.a.app.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
-      if (((TroopManager)this.a.app.getManager(52)).c(this.a.sessionInfo.curFriendUin).isTroopOwner(this.a.app.getCurrentAccountUin())) {
-        paramDialogInterface.l(this.a.sessionInfo.curFriendUin);
-      }
+    QLog.d("VerifyCodeActivity", 1, new Object[] { "refreshVerifyCode isRefresh=", Boolean.valueOf(this.a.b) });
+    if (!this.a.b) {
+      this.a.a();
     }
-    for (;;)
-    {
-      new bcek(this.a.app).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.sessionInfo.curFriendUin }).a();
-      return;
-      paramDialogInterface.k(this.a.sessionInfo.curFriendUin);
-      continue;
-      if (paramDialogInterface != null) {
-        QQToast.a(this.a.mActivity, 1, 2131694108, 0).a();
-      } else {
-        QQToast.a(this.a.mActivity, 1, 2131691945, 0).a();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afjw
  * JD-Core Version:    0.7.0.1
  */

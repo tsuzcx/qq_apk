@@ -1,40 +1,104 @@
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.utils.PermissionUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerResult;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class zmt
-  implements RadioGroup.OnCheckedChangeListener
+  implements Handler.Callback
 {
-  public zmt(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private apnc jdField_a_of_type_Apnc;
+  private String jdField_a_of_type_JavaLangString = "QR_CODE";
+  private zmu jdField_a_of_type_Zmu;
+  private Handler b;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public zmt(Context paramContext, zmu paramzmu)
   {
-    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
-      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
-    }
-    while (RelativePersonalBottomView.b(this.a).getId() != paramInt)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Zmu = paramzmu;
+    this.jdField_a_of_type_Apnc = apnc.a();
+    this.jdField_a_of_type_Apnc.a(paramContext, hashCode(), "QrImageScan");
+  }
+  
+  public void a()
+  {
+    try
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        this.jdField_a_of_type_AndroidOsHandler = null;
+      }
+      if (this.b != null)
+      {
+        this.b.removeCallbacksAndMessages(null);
+        this.b = null;
+      }
+      if (this.jdField_a_of_type_Apnc != null) {
+        this.jdField_a_of_type_Apnc.a(hashCode(), "QrImageScan");
+      }
+      this.jdField_a_of_type_Zmu = null;
+      this.jdField_a_of_type_AndroidContentContext = null;
       return;
     }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = PermissionUtils.isStorePermissionEnable(this.a.getContext());; bool = true)
+    finally {}
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      return;
+    }
+    paramString = Uri.parse("file://" + paramString);
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
+    try
     {
-      if (!bool)
+      if (this.jdField_a_of_type_AndroidOsHandler == null)
       {
-        bfur.a((PublicFragmentActivity)this.a.getContext());
-        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
-        break;
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+        this.b = new Handler(this.jdField_a_of_type_AndroidContentContext.getMainLooper(), this);
       }
-      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
-      break;
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramInt, 0, paramString).sendToTarget();
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      int i = paramMessage.arg1;
+      paramMessage = zmk.a((Uri)paramMessage.obj, this.jdField_a_of_type_AndroidContentContext, i);
+      if ((paramMessage != null) && (paramMessage.b()))
+      {
+        if (this.b != null) {
+          this.b.obtainMessage(2, i, 0, paramMessage).sendToTarget();
+        }
+      }
+      else if (this.b != null)
+      {
+        this.b.obtainMessage(3, i, 0).sendToTarget();
+        continue;
+        i = paramMessage.arg1;
+        if (this.jdField_a_of_type_Zmu != null)
+        {
+          this.jdField_a_of_type_Zmu.a((ScannerResult)paramMessage.obj, i);
+          continue;
+          i = paramMessage.arg1;
+          if (this.jdField_a_of_type_Zmu != null) {
+            this.jdField_a_of_type_Zmu.a(i);
+          }
+        }
+      }
     }
   }
 }

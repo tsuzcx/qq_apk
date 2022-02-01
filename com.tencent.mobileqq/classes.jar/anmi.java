@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-class anmi
-  implements ProtoReqManager.IProtoRespBack
+public class anmi
 {
-  anmi(anmf paramanmf) {}
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
+  public long d;
   
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  static
   {
-    if (paramProtoResp.resp.getResultCode() != 1000)
-    {
-      this.a.a(4006, false, null);
-      return;
-    }
-    anmf.a(this.a, paramProtoResp, paramProtoReq);
+    jdField_a_of_type_JavaLangString = DeviceInfoUtil.getModel();
+    b = DeviceInfoUtil.getDeviceOSVersion();
+    c = DeviceInfoUtil.getCpuType();
+    jdField_a_of_type_Int = DeviceInfoUtil.getCpuNumber();
+    jdField_a_of_type_Long = DeviceInfoUtil.getCpuFrequency();
   }
 }
 

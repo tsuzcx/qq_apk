@@ -1,24 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import org.json.JSONObject;
 
-final class amxr
-  implements DialogInterface.OnClickListener
+public class amxr
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  amxr(DialogInterface.OnClickListener paramOnClickListener) {}
+  public amxr(CmGameAvHandler.9 param9) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onComplete(int paramInt1, int paramInt2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
+    int i = 0;
+    if (paramInt2 == 0) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        amwn.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
+      }
+      catch (Exception localException) {}
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxr
  * JD-Core Version:    0.7.0.1
  */

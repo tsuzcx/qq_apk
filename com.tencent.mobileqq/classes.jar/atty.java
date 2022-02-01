@@ -1,13 +1,31 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atty
+final class atty
+  implements View.OnClickListener
 {
-  public static boolean a(String paramString)
+  atty(atuw paramatuw, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    try
+    {
+      audz localaudz = new audz();
+      localaudz.b = "file_forward";
+      localaudz.a = 9;
+      audy.a(this.jdField_a_of_type_Atuw.a().getCurrentAccountUin(), localaudz);
+      aufd.a(this.jdField_a_of_type_Atuw.a(), this.jdField_a_of_type_Atuw.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      label61:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
+    catch (Exception localException)
+    {
+      break label61;
+    }
   }
 }
 

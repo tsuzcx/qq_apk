@@ -1,12 +1,21 @@
-public class achi
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+
+class achi
+  extends ache
 {
-  public int a;
-  public long a;
-  
-  achi(long paramLong, int paramInt)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a(); (paramacfw == null) || (paramString == null); paramString = null)
+    {
+      QLog.i("WebGdtMvWebReportServerAntiHandler", 1, "webPlugin == null || activity == null");
+      return true;
+    }
+    QLog.i("WebGdtMvWebReportServerAntiHandler", 1, "args=" + Arrays.toString(paramVarArgs));
+    paramacfw = paramVarArgs[0];
+    a(paramacfw);
+    return true;
   }
 }
 

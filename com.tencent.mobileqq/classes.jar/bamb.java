@@ -1,34 +1,54 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qassistant.statemachine.QuitVoicePanelState.1;
+import mqq.os.MqqHandler;
 
 public class bamb
-  extends WebChromeClient
+  extends bamd
 {
-  private bamb(ActionUrlActivity paramActionUrlActivity) {}
+  private bamm a;
   
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public bamb(bamm parambamm)
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
+    this.a = parambamm;
+  }
+  
+  public String a()
+  {
+    return bamb.class.getSimpleName();
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public boolean a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return super.a(paramMessage);
     }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+    if (this.a != null)
+    {
+      if (((paramMessage.obj instanceof Boolean)) && (this.a.a() != null))
+      {
+        boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+        ThreadManager.getUIHandler().post(new QuitVoicePanelState.1(this, bool));
+      }
+      if (this.a.a() != null) {
+        this.a.a().b();
+      }
+      this.a.c(1);
+      this.a.a(1);
+    }
+    return true;
   }
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void b()
   {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    super.onProgressChanged(paramWebView, paramInt);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    this.a.setTitle(paramString);
-    this.a.a();
+    super.b();
   }
 }
 

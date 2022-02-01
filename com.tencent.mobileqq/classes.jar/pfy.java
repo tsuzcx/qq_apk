@@ -1,19 +1,7 @@
-import java.util.Map;
-import java.util.Set;
+import kotlin.Metadata;
 
-class pfy
-  extends pse
-{
-  pfy(pey parampey, String paramString, Set paramSet, Map paramMap)
-  {
-    super(paramString);
-  }
-  
-  public void a(prx paramprx)
-  {
-    paramprx.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pfy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

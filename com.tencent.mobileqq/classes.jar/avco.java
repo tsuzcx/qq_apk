@@ -1,75 +1,53 @@
-import android.support.annotation.Nullable;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
 public class avco
+  extends avck
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int = -1;
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private String jdField_a_of_type_JavaLangString;
+  private ImageView b;
+  private TextView d;
+  private TextView e;
   
-  public avco(String paramString, LatLng paramLatLng, double paramDouble)
+  public avco(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public LatLng a()
-  {
-    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(LatLng paramLatLng, Double paramDouble)
-  {
-    if (paramLatLng != null) {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    super(paramContext, paramView, paramViewGroup);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559236, paramViewGroup, false);
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
     }
-    if (paramDouble != null) {
-      this.jdField_a_of_type_Double = paramDouble.doubleValue();
-    }
+    this.b = ((ImageView)paramContext.findViewById(2131368722));
+    this.d = ((TextView)paramContext.findViewById(2131380182));
+    this.e = ((TextView)paramContext.findViewById(2131380033));
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    if ((paramObject instanceof avco))
+    super.a(paramFeedsItemData);
+    this.e.setText(paramFeedsItemData.title + "");
+    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
+      this.d.setVisibility(8);
+    }
+    for (;;)
     {
-      paramObject = (avco)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130847086);
+      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130847086);
+      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
+      this.b.setImageDrawable(paramFeedsItemData);
+      return;
+      this.d.setVisibility(0);
+      this.d.setText(paramFeedsItemData.subTitle + "");
     }
-    return super.equals(paramObject);
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
   }
 }
 

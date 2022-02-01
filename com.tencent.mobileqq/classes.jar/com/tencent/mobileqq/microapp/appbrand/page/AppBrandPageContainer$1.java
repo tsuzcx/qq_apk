@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import bhht;
+import bisl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.g.a;
@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 class AppBrandPageContainer$1
   implements g.a
 {
-  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, WeakReference paramWeakReference, String paramString1, String paramString2, bhht parambhht) {}
+  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, WeakReference paramWeakReference, String paramString1, String paramString2, bisl parambisl) {}
   
   public void onInitApkgInfo$76ec3a73(int paramInt, c paramc)
   {

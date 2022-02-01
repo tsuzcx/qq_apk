@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aoch;
+import apfj;
 
 public class ARScanAR
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanAR> CREATOR = new aoch();
+  public static final Parcelable.Creator<ARScanAR> CREATOR = new apfj();
   public int a;
   public long a;
   public String a;

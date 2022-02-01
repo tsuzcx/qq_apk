@@ -7,7 +7,7 @@ class CaptureQmcfSoDownloadFragment$1
   
   public void run()
   {
-    this.this$0.b();
+    this.this$0.c();
   }
 }
 

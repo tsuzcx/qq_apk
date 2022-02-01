@@ -1,24 +1,57 @@
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zyo
-  implements zym
 {
-  public zyo(SingleLyricView paramSingleLyricView) {}
+  int a;
+  public String a;
+  int jdField_b_of_type_Int;
+  private final String jdField_b_of_type_JavaLangString = "image_url";
+  private final String c = "image_width";
+  private final String d = "image_height";
   
-  public void a()
+  public zyo() {}
+  
+  public zyo(String paramString, int paramInt1, int paramInt2)
   {
-    SingleLyricView.a(this.a).b();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void a(long paramLong)
+  public String a()
   {
-    this.a.post(new SingleLyricView.1.1(this, paramLong));
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
+      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
-  public void b()
+  public void a(String paramString)
   {
-    SingleLyricView.a(this.a).c();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
+      this.jdField_a_of_type_Int = paramString.getInt("image_width");
+      this.jdField_b_of_type_Int = paramString.getInt("image_height");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.leba.core.redtouch;
 
 import android.os.Handler;
-import auxq;
-import axgc;
+import awdp;
+import aymh;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import nmq;
+import ntq;
 
 public class LebaSpecificRedTouch$1
   implements Runnable
 {
-  public LebaSpecificRedTouch$1(auxq paramauxq, QQAppInterface paramQQAppInterface, Handler paramHandler, RedTouch paramRedTouch, long paramLong) {}
+  public LebaSpecificRedTouch$1(awdp paramawdp, QQAppInterface paramQQAppInterface, Handler paramHandler, RedTouch paramRedTouch, long paramLong) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    Object localObject = (nmq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70);
-    localObject = ((nmq)localObject).a(((nmq)localObject).a(), false);
+    Object localObject = (ntq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
+    localObject = ((ntq)localObject).a(((ntq)localObject).a(), false);
     if (QLog.isColorLevel()) {
       QLog.d("nearby.redpoint", 2, "updateNearbyRedPointAsync, getNearbyRedPoint costTime=" + (System.currentTimeMillis() - l));
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new LebaSpecificRedTouch.1.1(this, (axgc)localObject));
+    this.jdField_a_of_type_AndroidOsHandler.post(new LebaSpecificRedTouch.1.1(this, (aymh)localObject));
   }
 }
 

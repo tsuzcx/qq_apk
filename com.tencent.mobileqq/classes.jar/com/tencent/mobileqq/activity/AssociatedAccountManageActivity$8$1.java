@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acti;
+import adju;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.face.FaceDrawable;
@@ -8,14 +8,14 @@ import com.tencent.mobileqq.app.face.FaceDrawable;
 public class AssociatedAccountManageActivity$8$1
   implements Runnable
 {
-  public AssociatedAccountManageActivity$8$1(acti paramacti, String paramString, View paramView) {}
+  public AssociatedAccountManageActivity$8$1(adju paramadju, String paramString, View paramView) {}
   
   public void run()
   {
     try
     {
-      FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_Acti.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368236);
+      FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_Adju.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368381);
       if (localImageView != null) {
         localImageView.setImageDrawable(localFaceDrawable);
       }

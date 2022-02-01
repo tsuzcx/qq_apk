@@ -1,182 +1,182 @@
 import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lhg
-  extends lhm
 {
-  public static final String[] b;
-  public final ConcurrentHashMap<String, Integer> a;
-  public int b;
-  private int c;
-  public String d;
+  static int jdField_a_of_type_Int = 0;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString = "";
+  static String b = "";
+  static String c = "";
   
-  static
+  public static void a(int paramInt)
   {
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "params.dat" };
-  }
-  
-  public lhg(VideoAppInterface paramVideoAppInterface)
-  {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_c_of_type_ArrayOfJavaLangString = jdField_b_of_type_ArrayOfJavaLangString;
-  }
-  
-  public int a()
-  {
-    return 591;
-  }
-  
-  public int a(String paramString)
-  {
-    Integer localInteger = null;
-    if (!TextUtils.isEmpty(paramString)) {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    }
-    if (localInteger == null) {
-      return 50;
-    }
-    return localInteger.intValue();
-  }
-  
-  public List<PendantItem> a(int paramInt, String paramString)
-  {
-    Object localObject = super.a(paramInt, paramString);
-    ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    if ((paramInt != 1) && (paramInt != 3) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
-        if (localPendantItem != null) {
-          localArrayList.add(localPendantItem);
-        }
+      long l = System.currentTimeMillis();
+      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+      jdField_a_of_type_JavaLangString = "";
+      jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    g(paramString);
+    if (!TextUtils.isEmpty(b)) {
+      a("0X8008025", b);
+    }
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    if ((paramVideoAppInterface != null) && (paramString != null))
+    {
+      g(paramString);
+      paramVideoAppInterface = (lin)paramVideoAppInterface.a(5);
+      boolean bool = paramVideoAppInterface.a(3, "normal");
+      if ((paramVideoAppInterface.a(3, "interact")) || (bool)) {
+        a("0X8008026", null);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "parse, cid[" + paramInt + "], config[" + paramString + "], size[" + localArrayList.size() + "]");
-    }
-    return localArrayList;
-  }
-  
-  public lho a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_c_of_type_Int == 3002) {
-      a(0L, "getVideoPendant");
-    }
-    lho locallho = super.a(paramInt1, paramInt2);
-    if ((locallho != null) && (locallho.a != null)) {
-      locallho.a.extraParam = Integer.valueOf(this.jdField_b_of_type_Int);
-    }
-    return locallho;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, fromMuteKey[" + paramInt + "], seq[" + l + "], data[" + paramString + "]");
-    }
-    if (paramInt == 3004) {}
-    do
+    else
     {
-      do
-      {
-        return;
-        if (paramInt == 3002)
-        {
-          if (this.jdField_c_of_type_Int == 3003) {
-            a(l, this.d);
-          }
-          this.jdField_c_of_type_Int = 3002;
-          return;
-        }
-        if (paramInt != 3003) {
-          break;
-        }
-      } while (!"creativecop".equals(paramString));
-      this.jdField_c_of_type_Int = 3003;
-      a(l, null);
       return;
-    } while (paramInt != 3005);
-    this.jdField_c_of_type_Int = 3005;
-    a(l, null);
+    }
+    a("0X8008027", null);
   }
   
-  public void a(long paramLong, String paramString)
+  public static void a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "clearMuteFlag, muteFlag[" + this.jdField_c_of_type_Int + "], from[" + paramString + "], cur[" + this.d + "], value[" + this.jdField_b_of_type_Int + "]");
-    }
-    if ((this.jdField_c_of_type_Int == 3003) || (this.jdField_c_of_type_Int == 3005)) {
-      a(paramLong, this.d);
-    }
-    this.jdField_c_of_type_Int = 0;
+    g(paramString);
+    a("0X8008021", null);
   }
   
-  public void a(String paramString, int paramInt, boolean paramBoolean)
+  public static void a(String paramString, int paramInt)
   {
-    if (a()) {}
-    do
+    if ((paramInt == 1) || (paramInt == 3))
     {
-      do
-      {
-        return;
-      } while ((TextUtils.equals(paramString, this.d)) && (paramInt == this.jdField_b_of_type_Int));
-      this.d = paramString;
-      this.jdField_b_of_type_Int = paramInt;
-    } while (TextUtils.isEmpty(this.d));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.d, Integer.valueOf(paramInt));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-    PendantItem localPendantItem = (PendantItem)a();
-    if (localPendantItem == null)
-    {
-      this.d = null;
-      this.jdField_b_of_type_Int = 50;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onDestroyUI, peerUin[" + paramString + "], quit[" + paramBoolean + "], item[" + a() + "]");
-      }
+      a(paramString, 10L, paramInt);
       return;
-      this.d = localPendantItem.getId();
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_c_of_type_Int == 3002) || (this.jdField_c_of_type_Int == 3003);
-  }
-  
-  public boolean a(long paramLong, PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramLong, paramPendantItem);
-    if ((!a()) && (bool) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
     {
-      lgn locallgn = (lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-      if (locallgn != null) {
-        locallgn.a(3004, paramPendantItem.getId());
+      long l = System.currentTimeMillis();
+      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+    }
+    jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    g(paramString2);
+    b = paramString1;
+  }
+  
+  public static void a(String paramString, long paramLong, int paramInt)
+  {
+    lbd.f("MagicDataReport", "DOUBLE SCREEN DataReport onStateReport: |" + paramString + "|" + paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("activeName", paramString);
+    localHashMap.put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatFace", true, -1L, -1L, localHashMap, true);
+    try
+    {
+      UserAction.flushObjectsToDB(true);
+      int i = 0;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+        if (paramInt != 0) {
+          b(paramInt, paramString);
+        }
+        return;
       }
     }
-    return bool;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        lbd.h("MagicDataReport", localException.getMessage());
+        continue;
+        paramInt = 3;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 5;
+      }
+    }
   }
   
-  public int b()
+  public static void a(String paramString1, String paramString2)
   {
-    return 3004;
+    a("CliOper", paramString1, 0, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    lbd.f("MagicDataReport", "reportClickEvent key = " + paramString2 + ", fromType = " + paramInt + ", value = " + paramString3 + ", mRoomId = " + c);
+    bdla.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    lbd.f("MagicDataReport", "WL_DEBUG reportChangeFace fromType = " + paramInt + ", id = " + paramString);
+    if ((TextUtils.isEmpty(c)) || (c.equals("0")))
+    {
+      VideoController localVideoController = VideoController.a();
+      c = localVideoController.a(localVideoController.a().d) + "";
+    }
+    if (paramInt == 5)
+    {
+      a("dc00898", "0X800984E", paramInt, paramString);
+      return;
+    }
+    a("dc00898", "0X80088B3", paramInt, paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    g(paramString);
+    a("0X800812F", null);
+  }
+  
+  public static void c(String paramString)
+  {
+    g(paramString);
+    a("0X8008130", null);
+  }
+  
+  public static void d(String paramString)
+  {
+    g(paramString);
+    a("0X800984D", null);
+  }
+  
+  public static void e(String paramString)
+  {
+    g(paramString);
+    a("0X8008131", null);
+  }
+  
+  public static void f(String paramString)
+  {
+    g(paramString);
+    a("0X8008022", null);
+  }
+  
+  static void g(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0"))) {
+      c = paramString;
+    }
   }
 }
 

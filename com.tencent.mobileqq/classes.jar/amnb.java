@@ -1,17 +1,6 @@
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import java.util.List;
-
 public abstract interface amnb
 {
-  public abstract amnk a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<amnk> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean);
-  
-  public abstract boolean a(int paramInt);
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

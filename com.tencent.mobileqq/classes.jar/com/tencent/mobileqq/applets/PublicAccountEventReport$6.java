@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.applets;
 
-import anxs;
-import bcef;
+import apau;
+import bdla;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -17,8 +17,8 @@ public final class PublicAccountEventReport$6
     if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      anxs.a(str1, 102, str2, bool, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.mPosition + "");
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.d, "");
+      apau.a(str1, 102, str2, bool, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.mPosition + "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 1, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.d, "");
       return;
     }
   }

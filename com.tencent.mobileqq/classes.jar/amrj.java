@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import java.nio.channels.SocketChannel;
 
 public class amrj
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public long a;
+  public String a;
+  public SocketChannel a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public amrj(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    }
-    b(paramBoolean, paramObject);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
+    this.jdField_c_of_type_Int = 0;
   }
 }
 

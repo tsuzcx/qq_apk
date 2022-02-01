@@ -7,7 +7,7 @@ class AppBrandLaunchManager$3
   
   public void run()
   {
-    AppBrandLaunchManager.access$300(this.this$0);
+    AppBrandLaunchManager.access$200(this.this$0);
   }
 }
 

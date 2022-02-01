@@ -1,31 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
 
 class blpw
-  implements Animation.AnimationListener
+  extends aoav
 {
-  blpw(blpr paramblpr, int paramInt) {}
+  blpw(blpu paramblpu, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_a_of_type_Blpr.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView != null) && (!blpr.a(this.jdField_a_of_type_Blpr)))
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isSuccess", paramBoolean);
+    ((Bundle)localObject).putString("uin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putAll((Bundle)localObject);
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Blpr.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setAlpha(1.0F);
-      this.jdField_a_of_type_Blpr.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(4);
+      localObject = new StringBuilder().append("publicAccount.followUin, isSuccess=").append(paramBoolean).append("; result=");
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+        break label108;
+      }
     }
-    if (blpr.b(this.jdField_a_of_type_Blpr) != null)
+    label108:
+    for (paramString = this.jdField_a_of_type_AndroidOsBundle.toString();; paramString = "null")
     {
-      blpr.c(this.jdField_a_of_type_Blpr).a(this.jdField_a_of_type_Int, new Object[0]);
-      blpr.d(this.jdField_a_of_type_Blpr).a(196612, new Object[0]);
+      QLog.d("BuscardPluginRemoteCommand", 2, paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      }
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Blpr.jdField_a_of_type_Bljy.a().a(true, 150);
   }
 }
 

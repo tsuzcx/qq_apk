@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adkn;
-import adko;
-import adkp;
-import adkq;
-import agzl;
-import amtj;
+import aebt;
+import aebu;
+import aebv;
+import aebw;
+import ahsl;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -20,17 +19,19 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import apbm;
-import awxa;
-import aykh;
-import bcef;
-import bfrj;
-import bfur;
-import bjnw;
+import anvx;
+import aqeq;
+import aydc;
+import azpc;
+import bdla;
+import bhaa;
+import bhdj;
+import bkzi;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DynamicAvatar;
 import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
@@ -43,18 +44,18 @@ import java.util.ArrayList;
 
 public class FriendProfilePicBrowserActivity
   extends PicBrowserActivity
-  implements DialogInterface.OnCancelListener, View.OnClickListener, awxa
+  implements DialogInterface.OnCancelListener, View.OnClickListener, aydc
 {
   public int a;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public aykh a;
+  public azpc a;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   
   private File a()
   {
-    PicInfo localPicInfo = this.jdField_a_of_type_Aykh.a();
+    PicInfo localPicInfo = this.jdField_a_of_type_Azpc.a();
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "getCurPicPathUrl, curPicInfo=" + localPicInfo);
     }
@@ -71,8 +72,8 @@ public class FriendProfilePicBrowserActivity
   {
     int i = -1;
     String str2 = "";
-    if (this.jdField_a_of_type_Aykh != null) {
-      i = this.jdField_a_of_type_Aykh.a();
+    if (this.jdField_a_of_type_Azpc != null) {
+      i = this.jdField_a_of_type_Azpc.a();
     }
     String str1 = str2;
     if (i >= 0)
@@ -150,7 +151,7 @@ public class FriendProfilePicBrowserActivity
     this.jdField_b_of_type_JavaUtilArrayList = ((Bundle)localObject).getParcelableArrayList("picInfos");
     if (this.jdField_a_of_type_Int == 1)
     {
-      localObject = ((apbm)this.app.getManager(180)).a(this.app.getCurrentAccountUin());
+      localObject = ((aqeq)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).a(this.app.getCurrentAccountUin());
       localPicInfo = new PicInfo();
       if (localObject != null)
       {
@@ -186,7 +187,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    bfrj.a(localFile.getAbsolutePath(), this);
+    bhaa.a(localFile.getAbsolutePath(), this);
   }
   
   private void h()
@@ -195,7 +196,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    bfrj.a(localFile.getAbsolutePath(), this.app, this);
+    bhaa.a(localFile.getAbsolutePath(), this.app, this);
   }
   
   private void i()
@@ -204,7 +205,7 @@ public class FriendProfilePicBrowserActivity
     if (localFile == null) {
       return;
     }
-    bfrj.b(localFile.getAbsolutePath(), this.app, this);
+    bhaa.b(localFile.getAbsolutePath(), this.app, this);
   }
   
   private void j()
@@ -217,7 +218,7 @@ public class FriendProfilePicBrowserActivity
       }
       return;
     }
-    agzl.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
+    ahsl.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
   }
   
   private void k()
@@ -225,10 +226,10 @@ public class FriendProfilePicBrowserActivity
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "deletePic");
     }
-    QQCustomDialog localQQCustomDialog = bfur.a(this, 0);
-    localQQCustomDialog.setMessage(getString(2131691350)).setCancelable(true);
-    localQQCustomDialog.setNegativeButton(2131690620, new adko(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131690602, new adkp(this, localQQCustomDialog));
+    QQCustomDialog localQQCustomDialog = bhdj.a(this, 0);
+    localQQCustomDialog.setMessage(getString(2131691435)).setCancelable(true);
+    localQQCustomDialog.setNegativeButton(2131690697, new aebu(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131690679, new aebv(this, localQQCustomDialog));
     if (!isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -244,14 +245,14 @@ public class FriendProfilePicBrowserActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Aykh != null) && (this.jdField_a_of_type_Aykh.a() == paramInt1)) {
+    if ((this.jdField_a_of_type_Azpc != null) && (this.jdField_a_of_type_Azpc.a() == paramInt1)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Aykh != null) && (this.jdField_a_of_type_Aykh.a() == paramInt)) {
+    if ((this.jdField_a_of_type_Azpc != null) && (this.jdField_a_of_type_Azpc.a() == paramInt)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     }
   }
@@ -270,26 +271,26 @@ public class FriendProfilePicBrowserActivity
   
   public void c()
   {
-    boolean bool = this.jdField_a_of_type_Aykh.f();
+    boolean bool = this.jdField_a_of_type_Azpc.f();
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "showActionSheet, ,forbid=" + bool);
     }
     if (bool) {
       return;
     }
-    bjnw localbjnw = bjnw.a(this, false);
-    localbjnw.b(2131693017);
-    localbjnw.b(2131692575);
-    localbjnw.c(amtj.a(2131704047));
-    localbjnw.b(2131692571);
+    bkzi localbkzi = bkzi.a(this, false);
+    localbkzi.b(2131693153);
+    localbkzi.b(2131692677);
+    localbkzi.c(anvx.a(2131704398));
+    localbkzi.b(2131692673);
     if (this.jdField_a_of_type_Int == 2) {
-      localbjnw.a(amtj.a(2131704007), 3);
+      localbkzi.a(anvx.a(2131704358), 3);
     }
-    localbjnw.d(amtj.a(2131704048));
-    localbjnw.a(new adkn(this, localbjnw));
-    localbjnw.show();
-    bcef.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
-    bcef.b(this.app, "dc00898", "", "", "0X800A8C9", "0X800A8C9", 0, 0, "1", "", "", "");
+    localbkzi.d(anvx.a(2131704399));
+    localbkzi.a(new aebt(this, localbkzi));
+    localbkzi.show();
+    bdla.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
+    bdla.b(this.app, "dc00898", "", "", "0X800A8C9", "0X800A8C9", 0, 0, "1", "", "", "");
   }
   
   @Override
@@ -323,17 +324,17 @@ public class FriendProfilePicBrowserActivity
       return false;
     }
     getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_Aagp = new adkq(this);
+    this.jdField_a_of_type_Aawb = new aebw(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377206));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377479));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367372));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131704052));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367496));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131704403));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
-    this.jdField_a_of_type_Aykh.a(false);
+    this.jdField_a_of_type_Azpc.a(false);
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
@@ -341,7 +342,7 @@ public class FriendProfilePicBrowserActivity
         break label287;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_Aykh.a(true);
+      this.jdField_a_of_type_Azpc.a(true);
     }
     label287:
     for (int i = 1;; i = 0)
@@ -350,7 +351,7 @@ public class FriendProfilePicBrowserActivity
       if (i != 0)
       {
         paramBundle = "1";
-        bcef.b(localQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramBundle, "", "", "");
+        bdla.b(localQQAppInterface, "dc00898", "", "", "0X8007103", "0X8007103", 0, 0, paramBundle, "", "", "");
       }
       for (;;)
       {
@@ -358,7 +359,7 @@ public class FriendProfilePicBrowserActivity
         paramBundle = "0";
         break;
         if (this.jdField_a_of_type_Int == 2) {
-          bcef.b(this.app, "dc00898", "", "", "0X8007C11", "0X8007C11", 0, 0, "", "", "", "");
+          bdla.b(this.app, "dc00898", "", "", "0X8007C11", "0X8007C11", 0, 0, "", "", "", "");
         }
       }
     }
@@ -367,8 +368,8 @@ public class FriendProfilePicBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Aykh != null) {
-      this.jdField_a_of_type_Aykh.u();
+    if (this.jdField_a_of_type_Azpc != null) {
+      this.jdField_a_of_type_Azpc.u();
     }
   }
   
@@ -407,7 +408,7 @@ public class FriendProfilePicBrowserActivity
       localIntent.putExtra("setHead_fileid", a());
       setResult(-1, localIntent);
       finish();
-      bcef.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
+      bdla.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
       continue;
       c();
     }
@@ -422,7 +423,7 @@ public class FriendProfilePicBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,73 @@
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Random;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
+
 public class lks
 {
-  public static final lks a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b = 720;
+  private long jdField_a_of_type_Long;
+  private llb jdField_a_of_type_Llb;
+  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
   
-  static
+  public lks(lkr paramlkr) {}
+  
+  private void a()
   {
-    jdField_a_of_type_Lks = new lks();
+    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
+    localPutinfoHead.enum_body_type.set(1);
+    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
+    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llb.jdField_a_of_type_JavaLangString.getBytes()));
+    localPutinfoHead.uint64_seq.set(new Random().nextLong());
+    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lkr.jdField_a_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
   }
   
-  public lks()
+  private void b()
   {
-    this.jdField_a_of_type_Int = 1280;
+    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
+    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Llb.jdField_a_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Llb.jdField_b_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
+    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llb.jdField_b_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llb.jdField_c_of_type_JavaLangString.getBytes()));
+    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Llb.jdField_c_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Llb.jdField_d_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Llb.jdField_e_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Llb.f);
+    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
+    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Llb.g);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Llb.h);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Llb.i);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Llb.j);
+    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
+    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llb.jdField_d_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Llb.m);
+    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Llb.l);
+    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Llb.jdField_e_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
   }
   
-  public String toString()
+  public void a(long paramLong, llb paramllb)
   {
-    StringBuffer localStringBuffer = new StringBuffer("ChipAbilityInfo{");
-    localStringBuffer.append("mChipPowerMark = '").append(lkr.a(this.jdField_a_of_type_Long)).append('\'');
-    localStringBuffer.append("mPowerSupport = '").append(this.jdField_a_of_type_Boolean).append('\'');
-    localStringBuffer.append("mMaxWidth = '").append(this.jdField_a_of_type_Int).append('\'');
-    localStringBuffer.append("mMaxHeight = '").append(this.b).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Llb = paramllb;
+  }
+  
+  public byte[] a()
+  {
+    a();
+    b();
+    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
   }
 }
 

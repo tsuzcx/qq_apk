@@ -1,84 +1,52 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
 
-class axtn
-  implements View.OnClickListener
+public class axtn
+  extends TransProcessorHandler
 {
-  axtn(axsv paramaxsv) {}
+  public axtn(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramView.getTag() instanceof axto)) {}
-    SubAccountInfo localSubAccountInfo;
-    Object localObject1;
-    switch (((axto)paramView.getTag()).a)
-    {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMessage == null) {
       return;
-    case 2: 
-      localSubAccountInfo = (SubAccountInfo)paramView.getTag(2131361895);
-      if (localSubAccountInfo != null)
-      {
-        localObject1 = axsv.a(this.a).getApplication().getAllAccounts();
-        Object localObject2 = new ArrayList();
-        if (localObject1 != null) {
-          ((List)localObject2).addAll((Collection)localObject1);
-        }
-        if ((localObject2 != null) && (((List)localObject2).size() > 0))
-        {
-          localObject2 = ((List)localObject2).iterator();
-          do
-          {
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            localObject1 = (SimpleAccount)((Iterator)localObject2).next();
-          } while (!TextUtils.equals(((SimpleAccount)localObject1).getUin(), localSubAccountInfo.subuin));
-        }
-      }
-      break;
     }
-    for (;;)
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      if (localObject1 != null) {
-        this.a.a((SimpleAccount)localObject1, axsv.a(this.a).app);
-      }
-      for (;;)
-      {
-        bcef.b(axsv.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
-        bcef.b(axsv.a(this.a), "CliOper", "", "", "0X80072D2", "0X80072D2", 0, 0, "", "", "", "");
-        axvz.a("0X800AF3A");
+    case 1004: 
+    default: 
+      return;
+    case 1002: 
+      if (localFileMsg.fileSize <= 0L) {
         break;
-        if (localSubAccountInfo != null)
-        {
-          localObject1 = new Intent("before_account_change");
-          axsv.a(this.a).sendBroadcast((Intent)localObject1);
-          localObject1 = new Intent(axsv.a(this.a), SubAccountUgActivity.class);
-          ((Intent)localObject1).putExtra("subAccount", localSubAccountInfo.subuin);
-          axsv.a(this.a).startActivity((Intent)localObject1);
-        }
       }
-      localObject1 = (SimpleAccount)paramView.getTag(2131361895);
-      this.a.a((SimpleAccount)localObject1, axsv.a(this.a));
-      bcef.b(axsv.a(this.a), "dc00898", "", "", "0X800AC36", "0X800AC36", 0, 0, "", "", "", "");
-      bcef.b(axsv.a(this.a), "CliOper", "", "", "0X80072D3", "0X80072D3", 0, 0, "", "", "", "");
-      axvz.a("0X800AF3A");
-      break;
-      localObject1 = null;
+    }
+    for (int i = (int)(localFileMsg.transferedSize * 100L / localFileMsg.fileSize); QLog.isColorLevel(); i = 0)
+    {
+      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
+      }
+      i = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+      if (i >= 0) {
+        this.a.a.set(0, Integer.valueOf(i));
+      }
+      this.a.a(this.a.a);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
+      }
+      this.a.l();
+      this.a.c(anvx.a(2131706658));
+      this.a.a(true, null);
+      return;
     }
   }
 }

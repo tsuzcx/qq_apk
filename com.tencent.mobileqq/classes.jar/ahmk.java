@@ -1,9 +1,28 @@
-import android.annotation.SuppressLint;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class ahmk
+public class ahmk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private static ahmg a = new ahmg(null);
+  public ahmk(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
+    }
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    {
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+      return;
+      paramValueAnimator.leftMargin = i;
+    }
+  }
 }
 
 

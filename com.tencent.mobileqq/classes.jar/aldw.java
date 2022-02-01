@@ -1,18 +1,28 @@
-import android.media.AudioManager;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldw
-  implements bgnl
+class aldw
+  implements View.OnClickListener
 {
-  public aldw(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldw(aldh paramaldh) {}
   
-  public void a(bgnk parambgnk)
+  public void onClick(View paramView)
   {
-    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
-    if (VersionUtils.isrFroyo()) {
-      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("string_from", false);
+      localBundle.putBoolean("string_uin", true);
+      localBundle.putLong("device_din", 0L);
+      localBundle.putInt("sTitleID", 0);
+      blzq.a(aldh.a(this.a), localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
     }
   }
 }

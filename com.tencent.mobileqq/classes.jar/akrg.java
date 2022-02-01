@@ -1,35 +1,28 @@
-import android.animation.Animator;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import tencent.im.qqwallet.QWalletPubAdReport.ReportReq;
 
-public class akrg
-  extends akqf
+class akrg
+  implements bmhi
 {
-  public akrg(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  akrg(akrc paramakrc, int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt, String... paramVarArgs)
   {
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null)) {
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+      QLog.i("QWalletGdtAdManager", 2, "get getPskeyAsync success");
     }
-    if (this.a.jdField_a_of_type_Aksb != null) {
-      this.a.jdField_a_of_type_Aksb.a();
-    }
-    this.a.h();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.v();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
-    }
+    paramVarArgs = akrc.a(this.jdField_a_of_type_Akrc, paramVarArgs[0], this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), akqa.class);
+    localNewIntent.putExtra("cmd", "ReportSvc.Statistics");
+    localNewIntent.putExtra("data", bhjl.a(paramVarArgs.toByteArray()));
+    localNewIntent.setObserver(new akrh(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
 }
 

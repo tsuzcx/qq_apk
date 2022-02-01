@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import java.util.ArrayList;
 
 public class aivj
-  implements aivg
+  extends ajki
 {
-  public aivj(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
-  
-  public boolean a(TencentDocItem paramTencentDocItem)
-  {
-    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
-  }
+  public int a;
+  public String a;
+  public ArrayList<aivk> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

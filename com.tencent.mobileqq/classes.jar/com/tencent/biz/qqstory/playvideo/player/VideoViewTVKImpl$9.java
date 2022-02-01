@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import wvv;
+import xkq;
 
 public class VideoViewTVKImpl$9
   implements Runnable
 {
-  public VideoViewTVKImpl$9(wvv paramwvv, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoViewTVKImpl$9(xkq paramxkq, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {

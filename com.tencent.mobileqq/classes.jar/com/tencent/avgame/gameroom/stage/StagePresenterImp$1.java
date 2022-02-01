@@ -3,40 +3,40 @@ package com.tencent.avgame.gameroom.stage;
 import android.os.Build.VERSION;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mxh;
-import mzl;
-import mzq;
-import naf;
-import ncq;
-import neh;
-import nei;
-import nej;
+import lfm;
+import nfc;
+import nfh;
+import nfv;
+import nio;
+import nkz;
+import nla;
+import nlb;
 
 public class StagePresenterImp$1
   implements Runnable
 {
-  public StagePresenterImp$1(nej paramnej) {}
+  public StagePresenterImp$1(nlb paramnlb) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("StagePresenterImp", 2, "realStartRunnale");
     }
-    naf localnaf = mzl.a().a();
-    if (!localnaf.a()) {}
+    nfv localnfv = nfc.a().a();
+    if (!localnfv.a()) {}
     do
     {
       return;
-      nej.a(this.this$0, localnaf);
-      if (localnaf.d(mzl.a().a().getAccount()))
+      nlb.a(this.this$0, localnfv);
+      if (localnfv.d(nfc.a().a().getAccount()))
       {
-        this.this$0.jdField_a_of_type_Ncq.a().a();
-        this.this$0.jdField_a_of_type_Ncq.a().b(this.this$0.jdField_a_of_type_Nei.a());
+        this.this$0.jdField_a_of_type_Nio.a().a();
+        this.this$0.jdField_a_of_type_Nio.a().b(this.this$0.jdField_a_of_type_Nla.a());
       }
-      this.this$0.jdField_a_of_type_Ncq.a().f();
-      localnaf.a().a();
+      this.this$0.jdField_a_of_type_Nio.a().f();
+      localnfv.a().a();
     } while (Build.VERSION.SDK_INT < 16);
-    mxh.a().a(localnaf.a().a());
+    lfm.a().a(localnfv.a().a());
   }
 }
 

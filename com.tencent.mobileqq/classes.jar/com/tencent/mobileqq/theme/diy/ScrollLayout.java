@@ -14,8 +14,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Scroller;
-import bdbu;
-import bdbv;
+import beiu;
+import beiv;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PrintStream;
 
@@ -41,8 +41,8 @@ public class ScrollLayout
   int mTouchSlop;
   int mTouchState = 0;
   VelocityTracker mVelocityTracker;
-  bdbu onScreenChangeListener;
-  bdbv onScreenChangeListenerDataLoad;
+  beiu onScreenChangeListener;
+  beiv onScreenChangeListenerDataLoad;
   
   public ScrollLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -336,14 +336,14 @@ public class ScrollLayout
     }
   }
   
-  public void setOnScreenChangeListener(bdbu parambdbu)
+  public void setOnScreenChangeListener(beiu parambeiu)
   {
-    this.onScreenChangeListener = parambdbu;
+    this.onScreenChangeListener = parambeiu;
   }
   
-  public void setOnScreenChangeListenerDataLoad(bdbv parambdbv)
+  public void setOnScreenChangeListenerDataLoad(beiv parambeiv)
   {
-    this.onScreenChangeListenerDataLoad = parambdbv;
+    this.onScreenChangeListenerDataLoad = parambeiv;
   }
   
   public void setToScreen(int paramInt1, int paramInt2)

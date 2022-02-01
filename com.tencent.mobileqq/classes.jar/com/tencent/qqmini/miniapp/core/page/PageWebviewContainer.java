@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.provider.Settings.System;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.qqmini.miniapp.core.page.widget.MiniSwipeRefreshLayout;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
@@ -46,7 +46,7 @@ public class PageWebviewContainer
   private NativeViewContainer mNaitveViewLayout;
   public int mNaitveViewScrollY = 0;
   private PageWebviewContainer.RotationObserver mRotationObserver;
-  private SwipeRefreshLayout mSwipeRefreshLayout;
+  private MiniSwipeRefreshLayout mSwipeRefreshLayout;
   private String pageOrientation = WindowInfo.ORIENTATION_PORTRAIT;
   public int refreshStyleColor = -1;
   
@@ -64,8 +64,9 @@ public class PageWebviewContainer
     this.mMiniAppContext = paramIMiniAppContext;
     this.mNaitveViewLayout = new NativeViewContainer(paramIMiniAppContext, this);
     ViewCompat.setImportantForAccessibility(this.mNaitveViewLayout, 4);
-    this.mSwipeRefreshLayout = new SwipeRefreshLayout(getContext());
+    this.mSwipeRefreshLayout = new MiniSwipeRefreshLayout(getContext());
     this.mSwipeRefreshLayout.setOnRefreshListener(this);
+    this.mSwipeRefreshLayout.setTouchSlop(100);
     addView(this.mSwipeRefreshLayout, new FrameLayout.LayoutParams(-1, -1));
     notifyChangePullDownRefreshStyle(this.refreshStyleColor);
     this.mRotationObserver = new PageWebviewContainer.RotationObserver(this);
@@ -349,6 +350,9 @@ public class PageWebviewContainer
   
   public int getWebViewId()
   {
+    if ((this.mBrandPageWebview == null) || (this.mBrandPageWebview.getRealView() == null)) {
+      return -1;
+    }
     return this.mBrandPageWebview.getRealView().getPageWebViewId();
   }
   

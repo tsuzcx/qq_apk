@@ -1,30 +1,29 @@
-import mqq.os.MqqHandler;
-
-class aqwj
-  implements aqwe
+public class aqwj
 {
-  aqwj(aqwg paramaqwg, MqqHandler paramMqqHandler) {}
+  private String a;
   
-  public void a(int paramInt)
+  public aqwj(String paramString, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
+    this.a = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof aqwj))) {}
+    while (!toString().equals(paramObject.toString())) {
+      return false;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
+    return true;
+  }
+  
+  public String toString()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwj
  * JD-Core Version:    0.7.0.1
  */

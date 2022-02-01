@@ -2,12 +2,12 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.content.Context;
 import android.content.Intent;
-import bgxd;
+import bihv;
 
 public class SwiftBrowserStatistics$4
   implements Runnable
 {
-  public SwiftBrowserStatistics$4(bgxd parambgxd, String paramString1, Intent paramIntent, Context paramContext, long paramLong, String paramString2) {}
+  public SwiftBrowserStatistics$4(bihv parambihv, String paramString1, Intent paramIntent, Context paramContext, long paramLong, String paramString2) {}
   
   /* Error */
   public void run()
@@ -30,9 +30,9 @@ public class SwiftBrowserStatistics$4
     //   33: invokevirtual 61	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   36: ifne +33 -> 69
     //   39: aload_0
-    //   40: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   43: getfield 66	bgxd:a	Lbgxf;
-    //   46: getfield 71	bgxf:jdField_a_of_type_Int	I
+    //   40: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   43: getfield 66	bihv:a	Lbihx;
+    //   46: getfield 71	bihx:jdField_a_of_type_Int	I
     //   49: bipush 11
     //   51: if_icmpge +18 -> 69
     //   54: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -50,26 +50,26 @@ public class SwiftBrowserStatistics$4
     //   80: invokestatic 53	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   83: ifne +20 -> 103
     //   86: aload_0
-    //   87: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   90: getfield 66	bgxd:a	Lbgxf;
+    //   87: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   90: getfield 66	bihv:a	Lbihx;
     //   93: aload 5
     //   95: ldc 93
     //   97: invokevirtual 96	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   100: putfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   100: putfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   103: aload_0
-    //   104: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   107: getfield 66	bgxd:a	Lbgxf;
-    //   110: getfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   104: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   107: getfield 66	bihv:a	Lbihx;
+    //   110: getfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   113: ifne +23 -> 136
     //   116: aload_0
-    //   117: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   120: getfield 66	bgxd:a	Lbgxf;
+    //   117: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   120: getfield 66	bihv:a	Lbihx;
     //   123: aload_0
     //   124: getfield 22	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_AndroidContentIntent	Landroid/content/Intent;
     //   127: ldc 101
     //   129: iconst_0
     //   130: invokevirtual 107	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   133: putfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   133: putfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   136: aload 4
     //   138: ldc 109
     //   140: invokevirtual 91	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
@@ -78,11 +78,11 @@ public class SwiftBrowserStatistics$4
     //   147: invokestatic 53	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   150: ifne +18 -> 168
     //   153: aload_0
-    //   154: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   157: getfield 66	bgxd:a	Lbgxf;
+    //   154: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   157: getfield 66	bihv:a	Lbihx;
     //   160: aload 4
     //   162: invokestatic 115	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   165: putfield 117	bgxf:b	I
+    //   165: putfield 117	bihx:b	I
     //   168: aload_0
     //   169: getfield 20	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   172: ldc 119
@@ -99,45 +99,45 @@ public class SwiftBrowserStatistics$4
     //   192: astore 4
     //   194: bipush 10
     //   196: istore_1
-    //   197: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   197: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   200: invokevirtual 133	java/util/HashMap:isEmpty	()Z
     //   203: ifeq +55 -> 258
     //   206: aload_0
-    //   207: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
+    //   207: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
     //   210: aload_0
     //   211: getfield 24	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   214: aload_0
-    //   215: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   218: getfield 66	bgxd:a	Lbgxf;
-    //   221: invokevirtual 136	bgxd:a	(Landroid/content/Context;Lbgxf;)V
-    //   224: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   215: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   218: getfield 66	bihv:a	Lbihx;
+    //   221: invokevirtual 136	bihv:a	(Landroid/content/Context;Lbihx;)V
+    //   224: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   227: invokevirtual 133	java/util/HashMap:isEmpty	()Z
     //   230: ifne +14 -> 244
-    //   233: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   233: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   236: ldc 138
     //   238: invokevirtual 142	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   241: ifne +17 -> 258
-    //   244: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   244: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   247: ldc 138
     //   249: bipush 10
     //   251: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   254: invokevirtual 150	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   257: pop
-    //   258: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   258: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   261: ldc 138
     //   263: invokevirtual 142	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   266: ifeq +18 -> 284
-    //   269: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   269: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   272: ldc 138
     //   274: invokevirtual 154	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   277: checkcast 111	java/lang/Integer
     //   280: invokevirtual 158	java/lang/Integer:intValue	()I
     //   283: istore_1
-    //   284: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   284: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   287: aload 4
     //   289: invokevirtual 142	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   292: ifeq +629 -> 921
-    //   295: getstatic 129	bgxf:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   295: getstatic 129	bihx:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   298: aload 4
     //   300: invokevirtual 154	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   303: checkcast 111	java/lang/Integer
@@ -165,9 +165,9 @@ public class SwiftBrowserStatistics$4
     //   345: i2l
     //   346: lrem
     //   347: aload_0
-    //   348: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   351: getfield 66	bgxd:a	Lbgxf;
-    //   354: getfield 177	bgxf:c	I
+    //   348: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   351: getfield 66	bihv:a	Lbihx;
+    //   354: getfield 177	bihx:c	I
     //   357: i2l
     //   358: lcmp
     //   359: ifne +532 -> 891
@@ -183,9 +183,9 @@ public class SwiftBrowserStatistics$4
     //   380: aload 4
     //   382: astore 5
     //   384: aload_0
-    //   385: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   388: getfield 66	bgxd:a	Lbgxf;
-    //   391: getfield 117	bgxf:b	I
+    //   385: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   388: getfield 66	bihv:a	Lbihx;
+    //   391: getfield 117	bihx:b	I
     //   394: iconst_m1
     //   395: if_icmpeq +38 -> 433
     //   398: new 183	java/lang/StringBuilder
@@ -196,9 +196,9 @@ public class SwiftBrowserStatistics$4
     //   410: ldc 190
     //   412: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   415: aload_0
-    //   416: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   419: getfield 66	bgxd:a	Lbgxf;
-    //   422: getfield 117	bgxf:b	I
+    //   416: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   419: getfield 66	bihv:a	Lbihx;
+    //   422: getfield 117	bihx:b	I
     //   425: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   428: invokevirtual 196	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   431: astore 5
@@ -212,33 +212,33 @@ public class SwiftBrowserStatistics$4
     //   449: ldc 198
     //   451: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   454: aload_0
-    //   455: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   458: getfield 66	bgxd:a	Lbgxf;
-    //   461: getfield 71	bgxf:jdField_a_of_type_Int	I
+    //   455: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   458: getfield 66	bihv:a	Lbihx;
+    //   461: getfield 71	bihx:jdField_a_of_type_Int	I
     //   464: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   467: ldc 200
     //   469: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   472: aload_0
-    //   473: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   476: getfield 66	bgxd:a	Lbgxf;
-    //   479: getfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   473: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   476: getfield 66	bihv:a	Lbihx;
+    //   479: getfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   482: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   485: ldc 205
     //   487: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   490: aload_0
-    //   491: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   494: getfield 66	bgxd:a	Lbgxf;
-    //   497: getfield 117	bgxf:b	I
+    //   491: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   494: getfield 66	bihv:a	Lbihx;
+    //   497: getfield 117	bihx:b	I
     //   500: invokevirtual 193	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   503: ldc 207
     //   505: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   508: aload_0
-    //   509: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   512: getfield 66	bgxd:a	Lbgxf;
-    //   515: getfield 208	bgxf:jdField_a_of_type_Long	J
+    //   509: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   512: getfield 66	bihv:a	Lbihx;
+    //   515: getfield 208	bihx:jdField_a_of_type_Long	J
     //   518: aload_0
-    //   519: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   522: getfield 210	bgxd:b	J
+    //   519: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   522: getfield 210	bihv:b	J
     //   525: lsub
     //   526: invokevirtual 213	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   529: ldc 215
@@ -246,8 +246,8 @@ public class SwiftBrowserStatistics$4
     //   534: aload_0
     //   535: getfield 26	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_Long	J
     //   538: aload_0
-    //   539: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   542: getfield 210	bgxd:b	J
+    //   539: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   542: getfield 210	bihv:b	J
     //   545: lsub
     //   546: invokevirtual 213	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   549: ldc 217
@@ -257,13 +257,13 @@ public class SwiftBrowserStatistics$4
     //   559: invokevirtual 196	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   562: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   565: aload_0
-    //   566: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
+    //   566: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
     //   569: aload_0
-    //   570: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   573: getfield 66	bgxd:a	Lbgxf;
-    //   576: getfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   570: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   573: getfield 66	bihv:a	Lbihx;
+    //   576: getfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   579: aload 6
-    //   581: invokevirtual 220	bgxd:a	(ZLmqq/app/AppRuntime;)Ljava/lang/String;
+    //   581: invokevirtual 220	bihv:a	(ZLmqq/app/AppRuntime;)Ljava/lang/String;
     //   584: astore 6
     //   586: new 222	org/json/JSONObject
     //   589: dup
@@ -292,9 +292,9 @@ public class SwiftBrowserStatistics$4
     //   636: getfield 28	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:b	Ljava/lang/String;
     //   639: astore 7
     //   641: aload_0
-    //   642: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   645: getfield 66	bgxd:a	Lbgxf;
-    //   648: getfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   642: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   645: getfield 66	bihv:a	Lbihx;
+    //   648: getfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   651: ifeq +245 -> 896
     //   654: iconst_1
     //   655: istore_2
@@ -307,41 +307,41 @@ public class SwiftBrowserStatistics$4
     //   667: iload_2
     //   668: iconst_1
     //   669: aload_0
-    //   670: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   673: getfield 66	bgxd:a	Lbgxf;
-    //   676: getfield 71	bgxf:jdField_a_of_type_Int	I
+    //   670: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   673: getfield 66	bihv:a	Lbihx;
+    //   676: getfield 71	bihx:jdField_a_of_type_Int	I
     //   679: aload 5
     //   681: getstatic 242	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
     //   684: aload_0
-    //   685: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   688: getfield 66	bgxd:a	Lbgxf;
-    //   691: getfield 208	bgxf:jdField_a_of_type_Long	J
+    //   685: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   688: getfield 66	bihv:a	Lbihx;
+    //   691: getfield 208	bihx:jdField_a_of_type_Long	J
     //   694: aload_0
-    //   695: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   698: getfield 210	bgxd:b	J
+    //   695: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   698: getfield 210	bihv:b	J
     //   701: lsub
     //   702: invokestatic 245	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   705: aload_0
     //   706: getfield 26	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_Long	J
     //   709: aload_0
-    //   710: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   713: getfield 210	bgxd:b	J
+    //   710: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   713: getfield 210	bihv:b	J
     //   716: lsub
     //   717: invokestatic 245	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   720: invokestatic 250	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   720: invokestatic 250	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   723: iload_1
     //   724: ifeq +128 -> 852
     //   727: aload_0
     //   728: getfield 20	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   731: aload_0
-    //   732: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   735: getfield 66	bgxd:a	Lbgxf;
-    //   738: getfield 71	bgxf:jdField_a_of_type_Int	I
+    //   732: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   735: getfield 66	bihv:a	Lbihx;
+    //   738: getfield 71	bihx:jdField_a_of_type_Int	I
     //   741: iconst_1
     //   742: aload_0
-    //   743: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   746: getfield 66	bgxd:a	Lbgxf;
-    //   749: getfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   743: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   746: getfield 66	bihv:a	Lbihx;
+    //   749: getfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   752: invokestatic 253	com/tencent/gamecenter/activities/GameCenterActivity:a	(Ljava/lang/String;IZZ)V
     //   755: aload 4
     //   757: invokevirtual 231	org/json/JSONObject:toString	()Ljava/lang/String;
@@ -350,9 +350,9 @@ public class SwiftBrowserStatistics$4
     //   763: getfield 28	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:b	Ljava/lang/String;
     //   766: astore 5
     //   768: aload_0
-    //   769: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   772: getfield 66	bgxd:a	Lbgxf;
-    //   775: getfield 99	bgxf:jdField_a_of_type_Boolean	Z
+    //   769: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   772: getfield 66	bihv:a	Lbihx;
+    //   775: getfield 99	bihx:jdField_a_of_type_Boolean	Z
     //   778: ifeq +123 -> 901
     //   781: iconst_1
     //   782: istore_1
@@ -365,36 +365,36 @@ public class SwiftBrowserStatistics$4
     //   794: iload_1
     //   795: iconst_1
     //   796: aload_0
-    //   797: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   800: getfield 66	bgxd:a	Lbgxf;
-    //   803: getfield 71	bgxf:jdField_a_of_type_Int	I
+    //   797: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   800: getfield 66	bihv:a	Lbihx;
+    //   803: getfield 71	bihx:jdField_a_of_type_Int	I
     //   806: aload_0
     //   807: getfield 20	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   810: getstatic 242	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
     //   813: aload_0
-    //   814: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   817: getfield 66	bgxd:a	Lbgxf;
-    //   820: getfield 208	bgxf:jdField_a_of_type_Long	J
+    //   814: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   817: getfield 66	bihv:a	Lbihx;
+    //   820: getfield 208	bihx:jdField_a_of_type_Long	J
     //   823: aload_0
-    //   824: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   827: getfield 210	bgxd:b	J
+    //   824: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   827: getfield 210	bihv:b	J
     //   830: lsub
     //   831: invokestatic 245	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   834: aload_0
     //   835: getfield 26	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:jdField_a_of_type_Long	J
     //   838: aload_0
-    //   839: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   842: getfield 210	bgxd:b	J
+    //   839: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   842: getfield 210	bihv:b	J
     //   845: lsub
     //   846: invokestatic 245	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   849: invokestatic 250	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   849: invokestatic 250	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   852: aload_0
-    //   853: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbgxd;
-    //   856: getfield 66	bgxd:a	Lbgxf;
+    //   853: getfield 18	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics$4:this$0	Lbihv;
+    //   856: getfield 66	bihv:a	Lbihx;
     //   859: iconst_m1
-    //   860: putfield 117	bgxf:b	I
+    //   860: putfield 117	bihx:b	I
     //   863: iconst_m1
-    //   864: putstatic 257	bgxf:d	I
+    //   864: putstatic 257	bihx:d	I
     //   867: return
     //   868: astore 4
     //   870: ldc 79

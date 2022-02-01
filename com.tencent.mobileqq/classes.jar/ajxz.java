@@ -1,16 +1,23 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
-class ajxz
-  extends ajxv
+public class ajxz
+  extends aocp
 {
-  ajxz(ajxy paramajxy) {}
+  public ajxz(Conversation paramConversation) {}
   
-  public void a(int paramInt)
+  protected void b(int paramInt)
   {
-    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
     }
+    if (paramInt == 1)
+    {
+      this.a.a.a(31, 2);
+      this.a.a.a(-1, null);
+      return;
+    }
+    this.a.a.l();
   }
 }
 

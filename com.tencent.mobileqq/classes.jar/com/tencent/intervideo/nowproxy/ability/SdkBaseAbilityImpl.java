@@ -83,7 +83,10 @@ public class SdkBaseAbilityImpl
   
   public Bundle getTickets()
   {
-    return LoginData.getLoginBundle(Global.sLoginData);
+    if (Global.sLoginData != null) {
+      return LoginData.getLoginBundle(Global.sLoginData);
+    }
+    return null;
   }
   
   public void hasPluginLoaded()

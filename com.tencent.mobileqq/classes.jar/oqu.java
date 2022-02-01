@@ -1,28 +1,135 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqu
-  implements ViewBase.OnClickListener
+public abstract class oqu
 {
-  oqu(ouc paramouc, ouo paramouo) {}
+  int jdField_a_of_type_Int;
+  protected Activity a;
+  protected Map<Integer, Set<Long>> a;
+  tds jdField_a_of_type_Tds;
+  protected Map<Integer, Boolean> b = new HashMap();
+  protected Map<Integer, Map<Long, rot>> c = new HashMap();
+  protected Map<Integer, rot> d = new HashMap();
   
-  public final void onClick(ViewBase paramViewBase)
+  protected oqu()
   {
-    if ((this.jdField_a_of_type_Ouc.a() == null) || (this.jdField_a_of_type_Ouo.a == null)) {}
-    do
-    {
-      return;
-      paramViewBase = this.jdField_a_of_type_Ouc.a();
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      pay.a(paramViewBase.getContext(), this.jdField_a_of_type_Ouo.a.activityJumpUrl);
-    } while (this.jdField_a_of_type_Ouc.a() == null);
-    this.jdField_a_of_type_Ouc.a().e(this.jdField_a_of_type_Ouo);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
+  
+  protected oqu(Activity paramActivity)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public Activity a()
+  {
+    return this.jdField_a_of_type_AndroidAppActivity;
+  }
+  
+  public ViewGroup a()
+  {
+    return null;
+  }
+  
+  public Map<Long, rot> a(Integer paramInteger)
+  {
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    paramInteger = (Map)this.c.get(paramInteger);
+    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
+      localConcurrentHashMap.putAll(paramInteger);
+    }
+    return localConcurrentHashMap;
+  }
+  
+  public Set<Long> a(Integer paramInteger)
+  {
+    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
+    Object localObject = localSet;
+    if (localSet == null)
+    {
+      localObject = new HashSet();
+      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
+    }
+    return localObject;
+  }
+  
+  public spg a()
+  {
+    return null;
+  }
+  
+  public spz a()
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    bmhv.e(true);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(ViewGroup paramViewGroup) {}
+  
+  public void a(tds paramtds, int paramInt)
+  {
+    this.jdField_a_of_type_Tds = paramtds;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public boolean a(Integer paramInteger)
+  {
+    paramInteger = (Boolean)this.b.get(paramInteger);
+    if (paramInteger != null) {
+      return paramInteger.booleanValue();
+    }
+    return false;
+  }
+  
+  public Map<Long, rot> b(Integer paramInteger)
+  {
+    Map localMap = (Map)this.c.get(paramInteger);
+    Object localObject = localMap;
+    if (localMap == null)
+    {
+      localObject = new ConcurrentHashMap();
+      this.c.put(paramInteger, localObject);
+    }
+    return localObject;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    bmhv.e(false);
+  }
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void k() {}
+  
+  public void n() {}
 }
 
 

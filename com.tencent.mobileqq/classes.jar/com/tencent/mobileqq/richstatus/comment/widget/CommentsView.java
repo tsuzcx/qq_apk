@@ -15,15 +15,15 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bapg;
-import baph;
-import bapj;
-import bapk;
-import bapl;
-import bapm;
-import bapn;
-import bapo;
-import bapp;
+import bbvv;
+import bbvw;
+import bbvy;
+import bbvz;
+import bbwa;
+import bbwb;
+import bbwc;
+import bbwd;
+import bbwe;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
@@ -38,10 +38,10 @@ public class CommentsView
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bapj<View> jdField_a_of_type_Bapj;
-  private bapn jdField_a_of_type_Bapn;
-  private bapo jdField_a_of_type_Bapo;
-  private bapp jdField_a_of_type_Bapp;
+  private bbvy<View> jdField_a_of_type_Bbvy;
+  private bbwc jdField_a_of_type_Bbwc;
+  private bbwd jdField_a_of_type_Bbwd;
+  private bbwe jdField_a_of_type_Bbwe;
   private List<CommentItem> jdField_a_of_type_JavaUtilList;
   private int b;
   private int c;
@@ -69,20 +69,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new bapm(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new bbwb(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_Bapj.a();
+    View localView2 = (View)this.jdField_a_of_type_Bbvy.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562003, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562068, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -91,7 +91,7 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    baph localbaph = new baph(this.b, this.b);
+    bbvw localbbvw = new bbvw(this.b, this.b);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if ((localCommentItem == null) || (localCommentItem.user == null)) {
       return;
@@ -106,7 +106,7 @@ public class CommentsView
     if (!TextUtils.isEmpty(paramView))
     {
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131717679));
+      localSpannableStringBuilder.append(getContext().getString(2131718050));
       localSpannableStringBuilder.append(" ");
       if (localCommentItem.toReplyUser == null) {
         break label270;
@@ -123,18 +123,18 @@ public class CommentsView
       }
       localTextView.setText(new QQText(localSpannableStringBuilder, 3, 16));
       localTextView.setTextColor(this.c);
-      localTextView.setMovementMethod(localbaph);
-      localTextView.setOnClickListener(new bapk(this, localbaph, paramInt));
-      localTextView.setOnLongClickListener(new bapl(this, localbaph, paramInt));
+      localTextView.setMovementMethod(localbbvw);
+      localTextView.setOnClickListener(new bbvz(this, localbbvw, paramInt));
+      localTextView.setOnLongClickListener(new bbwa(this, localbbvw, paramInt));
       return;
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Bapj = new bapj();
+    this.jdField_a_of_type_Bbvy = new bbvy();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167212);
+    this.c = getResources().getColor(2131167226);
   }
   
   public void a()
@@ -176,8 +176,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166468));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166938));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166482));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166952));
       return;
     }
     finally
@@ -200,7 +200,7 @@ public class CommentsView
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Bapj.a(paramView2);
+    this.jdField_a_of_type_Bbvy.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
@@ -213,19 +213,19 @@ public class CommentsView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(bapn parambapn)
+  public void setOnItemClickListener(bbwc parambbwc)
   {
-    this.jdField_a_of_type_Bapn = parambapn;
+    this.jdField_a_of_type_Bbwc = parambbwc;
   }
   
-  public void setOnItemLongClickListener(bapo parambapo)
+  public void setOnItemLongClickListener(bbwd parambbwd)
   {
-    this.jdField_a_of_type_Bapo = parambapo;
+    this.jdField_a_of_type_Bbwd = parambbwd;
   }
   
-  public void setOnSpanItemClick(bapp parambapp)
+  public void setOnSpanItemClick(bbwe parambbwe)
   {
-    this.jdField_a_of_type_Bapp = parambapp;
+    this.jdField_a_of_type_Bbwe = parambbwe;
   }
 }
 

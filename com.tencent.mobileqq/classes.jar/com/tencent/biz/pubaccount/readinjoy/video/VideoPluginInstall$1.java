@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import sdl;
+import spp;
 
 public class VideoPluginInstall$1
   implements Runnable
 {
-  public VideoPluginInstall$1(sdl paramsdl) {}
+  public VideoPluginInstall$1(spp paramspp) {}
   
   public void run()
   {
-    sdl.a(this.this$0);
+    spp.a(this.this$0);
   }
 }
 

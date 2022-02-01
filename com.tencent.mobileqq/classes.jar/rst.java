@@ -1,27 +1,19 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
 
-public abstract class rst
-  implements sdk
+public final class rst
+  implements Parcelable.Creator<WeishiRedDotInfo>
 {
-  public void a(sdj paramsdj) {}
-  
-  public void a(sdj paramsdj, String paramString) {}
-  
-  public void a(sdj paramsdj, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
-  
-  public boolean a(sdj paramsdj, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public WeishiRedDotInfo a(Parcel paramParcel)
   {
-    return false;
+    return new WeishiRedDotInfo(paramParcel);
   }
   
-  public boolean a(sdj paramsdj, int paramInt, Object paramObject)
+  public WeishiRedDotInfo[] a(int paramInt)
   {
-    return false;
+    return new WeishiRedDotInfo[paramInt];
   }
-  
-  public void b(sdj paramsdj) {}
-  
-  public void c(sdj paramsdj) {}
 }
 
 

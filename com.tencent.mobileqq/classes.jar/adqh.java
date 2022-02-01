@@ -1,101 +1,60 @@
-import QQService.DeviceItemDes;
-import QQService.SvcDevLoginInfo;
-import android.os.Bundle;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class adqh
-  extends MqqHandler
+class adqh
+  implements View.OnClickListener
 {
-  public adqh(LoginInfoActivity paramLoginInfoActivity) {}
+  adqh(adqg paramadqg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if ((paramView.getTag() instanceof String))
     {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("LoginInfoActivity.AccDevSec", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
-              }
-            } while (LoginInfoActivity.a(this.a) == null);
-            LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
-            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-            return;
-            LoginInfoActivity.a(this.a, this.a.findViewById(1));
-            return;
-            LoginInfoActivity.b(this.a, this.a.findViewById(2));
-            return;
-          } while (LoginInfoActivity.a(this.a) == null);
-          localObject = paramMessage.getData();
-        } while (localObject == null);
-        paramMessage = ((Bundle)localObject).getString(AuthDevRenameActivity.f);
-        Object localObject = ((Bundle)localObject).getByteArray(AuthDevRenameActivity.h);
-        int i = 0;
-        for (;;)
-        {
-          if (i < LoginInfoActivity.a(this.a).size())
-          {
-            SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)LoginInfoActivity.a(this.a).get(i);
-            if ((localSvcDevLoginInfo != null) && (Arrays.equals(localSvcDevLoginInfo.stDeviceItemDes.vecItemDes, (byte[])localObject))) {
-              localSvcDevLoginInfo.strDeviceName = paramMessage;
-            }
-          }
-          else
-          {
-            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-            return;
-          }
-          i += 1;
-        }
-      } while ((LoginInfoActivity.a(this.a) == null) || ((!LoginInfoActivity.a(this.a)) && (!LoginInfoActivity.b(this.a))));
-      paramMessage = this.a.getString(2131716208);
-      if (LoginInfoActivity.a(this.a) >= 4)
-      {
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        return;
+    Object localObject1 = (ChatMessage)((amgk)paramView.getTag()).a;
+    if (this.a.b()) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a((ChatMessage)localObject1)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c((ChatMessage)localObject1);
       }
-      LoginInfoActivity.a(this.a).setVisibility(0);
-      LoginInfoActivity.a(this.a, (LoginInfoActivity.a(this.a) + 1) % 4);
-      switch (LoginInfoActivity.a(this.a))
-      {
-      }
+    }
+    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg))) {
       for (;;)
       {
-        sendEmptyMessageDelayed(20170210, 300L);
-        return;
-        paramMessage = paramMessage + this.a.getString(2131718050);
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        continue;
-        paramMessage = paramMessage + this.a.getString(2131718051);
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        continue;
-        paramMessage = paramMessage + this.a.getString(2131718052);
-        LoginInfoActivity.a(this.a).setText(paramMessage);
-        continue;
-        LoginInfoActivity.a(this.a).setText(paramMessage);
+        this.a.jdField_a_of_type_Amgj.notifyDataSetChanged();
+        break;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a()) {
+          break;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b((ChatMessage)localObject1);
       }
-      paramMessage = paramMessage.getData();
-    } while (paramMessage == null);
-    boolean bool = paramMessage.getBoolean("bSafe");
-    paramMessage = paramMessage.getString("TipText");
-    LoginInfoActivity.a(this.a, bool, paramMessage);
+    }
+    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
+    Object localObject2;
+    if ((localObject1 instanceof StructMsgForGeneralShare))
+    {
+      localObject2 = (StructMsgForGeneralShare)localObject1;
+      bdor localbdor = new bdor(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (StructMsgForGeneralShare)localObject2);
+      StructMsgForGeneralShare.onClickEvent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localbdor);
+    }
+    for (;;)
+    {
+      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
+      break;
+      if ((localObject1 instanceof StructMsgForAudioShare))
+      {
+        localObject2 = (StructMsgForAudioShare)localObject1;
+        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
+      }
+    }
   }
 }
 

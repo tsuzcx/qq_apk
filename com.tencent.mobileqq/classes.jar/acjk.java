@@ -1,99 +1,245 @@
-import android.app.Application;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.ad.tangram.canvas.views.form.AdFormData;
+import com.tencent.ad.tangram.canvas.views.form.AdFormError;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormItemData;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormTableData;
+import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
+import com.tencent.ad.tangram.net.AdHttp;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acjk
+class acjk
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static String jdField_a_of_type_JavaLangString = "";
-  
-  public static String a(Application paramApplication)
+  private static acjm a(byte[] paramArrayOfByte)
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    String str1 = "";
-    Context localContext = paramApplication.getApplicationContext();
-    Object localObject = str1;
-    if (a(paramApplication))
+    acjm localacjm = new acjm(null);
+    localacjm.setUrl("https://h5.gdt.qq.com/player/api/form/saveForNative");
+    localacjm.method = "POST";
+    localacjm.contentType = "application/json";
+    localacjm.connectTimeoutMillis = 5000;
+    localacjm.readTimeoutMillis = 5000;
+    localacjm.requestData = paramArrayOfByte;
+    return localacjm;
+  }
+  
+  public static AdFormError a(AdFormData paramAdFormData)
+  {
+    byte[] arrayOfByte = a(paramAdFormData);
+    Object localObject;
+    if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
-      String str2 = paramApplication.getDeviceId();
-      localObject = str1;
-      if (!TextUtils.isEmpty(str2)) {
-        localObject = "" + str2;
-      }
-      str1 = paramApplication.getSubscriberId();
-      if (TextUtils.isEmpty(str1)) {
-        break label170;
-      }
-      paramApplication = (String)localObject + str1;
+      acho.d("GdtFormUploadUtil", "upload error");
+      localObject = new AdFormError(4, -1, null);
+      return localObject;
     }
+    AdFormError localAdFormError = new AdFormError(4, -1, null);
+    int i = 0;
     for (;;)
     {
-      localObject = paramApplication;
-      if (TextUtils.isEmpty(paramApplication))
+      acjm localacjm;
+      if (i < 3)
       {
-        localObject = paramApplication;
-        if (Build.VERSION.SDK_INT >= 23) {
-          localObject = bjms.c();
-        }
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramApplication = (Application)localObject;
-        if (!((String)localObject).startsWith("012345678912345")) {}
+        localacjm = a(arrayOfByte);
+        if (localacjm != null) {}
       }
       else
       {
-        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+        acho.d("GdtFormUploadUtil", "upload error");
+        return localAdFormError;
       }
-      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
-      return jdField_a_of_type_JavaLangString;
-      label170:
-      str1 = paramApplication.getSimOperator();
-      paramApplication = (Application)localObject;
-      if (!TextUtils.isEmpty(str1)) {
-        paramApplication = (String)localObject + str1;
+      AdHttp.send(localacjm);
+      if (localacjm.isSuccess()) {
+        localAdFormError = a(paramAdFormData, localacjm);
+      }
+      localObject = localAdFormError;
+      if (localacjm.a == 0) {
+        break;
+      }
+      localObject = localAdFormError;
+      if (localacjm.a == 1) {
+        break;
+      }
+      localObject = localAdFormError;
+      if (localacjm.a == 2) {
+        break;
+      }
+      localObject = localAdFormError;
+      if (localacjm.a == 4) {
+        break;
+      }
+      i += 1;
+    }
+  }
+  
+  private static AdFormError a(AdFormData paramAdFormData, acjm paramacjm)
+  {
+    if ((paramAdFormData == null) || (!paramAdFormData.isValid()) || (paramacjm == null) || (!paramacjm.isSuccess()))
+    {
+      acho.d("GdtFormUploadUtil", "commit error");
+      paramacjm = new AdFormError(4, -1, null);
+      return paramacjm;
+    }
+    Object localObject1;
+    try
+    {
+      localObject2 = new JSONObject(new String(paramacjm.responseData, "UTF-8"));
+      paramacjm.a = ((JSONObject)localObject2).getInt("code");
+      localObject1 = ((JSONObject)localObject2).optString("message");
+      acho.b("GdtFormUploadUtil", "parseResponse code:" + paramacjm.a + " message:" + (String)localObject1);
+      if (paramacjm.a == 0)
+      {
+        paramAdFormData = new AdFormError(1, -1, null);
+        return paramAdFormData;
+      }
+    }
+    catch (UnsupportedEncodingException paramAdFormData)
+    {
+      acho.d("GdtFormUploadUtil", "parseResponse", paramAdFormData);
+      return new AdFormError(4, -1, null);
+      if (paramacjm.a != 1) {
+        break label452;
+      }
+      localObject1 = new AdFormError(4, -1, null);
+      paramacjm = ((JSONObject)localObject2).getJSONObject("data");
+      if ((paramacjm == null) || (JSONObject.NULL.equals(paramacjm)))
+      {
+        acho.d("GdtFormUploadUtil", "parseResponse error");
+        return localObject1;
+      }
+    }
+    catch (JSONException paramAdFormData)
+    {
+      acho.d("GdtFormUploadUtil", "parseResponse", paramAdFormData);
+      return new AdFormError(4, -1, null);
+    }
+    Object localObject2 = paramacjm.getJSONArray("items");
+    if (((JSONArray)localObject2).length() != paramAdFormData.table.getSize())
+    {
+      acho.d("GdtFormUploadUtil", "parseResponse error");
+      return localObject1;
+    }
+    for (;;)
+    {
+      paramacjm = (acjm)localObject1;
+      int i;
+      if (i >= ((JSONArray)localObject2).length()) {
+        break;
+      }
+      paramacjm = paramAdFormData.table.getItem(i);
+      if ((paramacjm == null) || (!paramacjm.isValid()))
+      {
+        acho.d("GdtFormUploadUtil", "parseResponse error");
+        return new AdFormError(4, -1, null);
+      }
+      JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
+      if ((localJSONObject == null) || (JSONObject.NULL.equals(localJSONObject)))
+      {
+        acho.d("GdtFormUploadUtil", "parseResponse error");
+        return new AdFormError(4, i, paramacjm.title.text);
+      }
+      int j = localJSONObject.getInt("errorCode");
+      if (j == 0)
+      {
+        i += 1;
+      }
+      else
+      {
+        if (j == 1) {
+          return new AdFormError(5, i, paramacjm.title.text);
+        }
+        if (j == 2) {
+          return new AdFormError(6, i, paramacjm.title.text);
+        }
+        acho.d("GdtFormUploadUtil", "parseResponse error");
+        return new AdFormError(4, i, paramacjm.title.text);
+        label452:
+        if (paramacjm.a == 3) {
+          return new AdFormError(4, -1, null);
+        }
+        if (paramacjm.a == 4) {
+          return new AdFormError(7, -1, null);
+        }
+        paramAdFormData = new AdFormError(4, -1, null);
+        return paramAdFormData;
+        i = 0;
       }
     }
   }
   
-  private static boolean a(Application paramApplication)
+  public static JSONArray a(AdFormData paramAdFormData)
   {
-    boolean bool = true;
-    if (jdField_a_of_type_Int == -1)
+    if ((paramAdFormData == null) || (!paramAdFormData.isValid()))
     {
-      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
-      if (bool) {
-        jdField_a_of_type_Int = 1;
-      }
+      acho.d("GdtFormUploadUtil", "toJson error");
+      return null;
     }
-    while (jdField_a_of_type_Int > 0) {
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    if (i < paramAdFormData.table.getSize())
+    {
+      Object localObject = paramAdFormData.table.getItem(i);
+      if ((localObject == null) || (!((AdFormItemData)localObject).isValid())) {
+        acho.d("GdtFormUploadUtil", "toJson error");
+      }
       for (;;)
       {
-        return bool;
-        jdField_a_of_type_Int = 0;
+        i += 1;
+        break;
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("name", ((AdFormItemData)localObject).title.text);
+          localJSONObject.put("require", ((AdFormItemData)localObject).required);
+          if ((localObject instanceof GdtFormItemTextBoxData))
+          {
+            localObject = (GdtFormItemTextBoxData)GdtFormItemTextBoxData.class.cast(localObject);
+            localJSONObject.put("regexType", ((GdtFormItemTextBoxData)localObject).regexType);
+            localJSONObject.put("value", ((GdtFormItemTextBoxData)localObject).getResult());
+          }
+          localJSONArray.put(i, localJSONObject);
+        }
+        catch (JSONException localJSONException)
+        {
+          acho.d("GdtFormUploadUtil", "toJson", localJSONException);
+        }
       }
     }
-    return false;
+    return localJSONArray;
   }
   
-  private static boolean a(Application paramApplication, String paramString)
+  private static byte[] a(AdFormData paramAdFormData)
   {
-    if (paramApplication == null) {}
-    PackageManager localPackageManager;
-    do
+    JSONArray localJSONArray = a(paramAdFormData);
+    if ((paramAdFormData == null) || (!paramAdFormData.isValid()) || (localJSONArray == null) || (JSONObject.NULL.equals(localJSONArray)))
     {
-      return false;
-      localPackageManager = paramApplication.getPackageManager();
-    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
-    return true;
+      acho.d("GdtFormUploadUtil", "getRequestData error");
+      return null;
+    }
+    if (TextUtils.isEmpty(paramAdFormData.tokenForUpload)) {}
+    for (String str = "";; str = paramAdFormData.tokenForUpload) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("token", str);
+        localJSONObject.put("formId", paramAdFormData.formId);
+        localJSONObject.put("formValue", localJSONArray.toString());
+        paramAdFormData = localJSONObject.toString().getBytes("UTF-8");
+        return paramAdFormData;
+      }
+      catch (JSONException paramAdFormData)
+      {
+        acho.d("GdtFormUploadUtil", "getRequestData", paramAdFormData);
+        return null;
+      }
+      catch (UnsupportedEncodingException paramAdFormData)
+      {
+        acho.d("GdtFormUploadUtil", "getRequestData", paramAdFormData);
+      }
+    }
+    return null;
   }
 }
 

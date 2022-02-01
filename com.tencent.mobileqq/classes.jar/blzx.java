@@ -1,6 +1,19 @@
-public abstract interface blzx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class blzx
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString);
+  blzx(blzs paramblzs) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (!this.a.b) {
+      blzs.a(this.a, 1);
+    }
+    this.a.b = false;
+    this.a.a = null;
+  }
 }
 
 

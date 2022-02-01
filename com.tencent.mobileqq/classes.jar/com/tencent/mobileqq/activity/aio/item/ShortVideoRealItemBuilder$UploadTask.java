@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bbqf;
-import bbqx;
-import bbrp;
+import bcwz;
+import bcxr;
+import bcyj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -129,11 +129,11 @@ public class ShortVideoRealItemBuilder$UploadTask
     for (int i = 4;; i = 2)
     {
       ((QQAppInterface)localObject1).getMessageFacade().updateMsgContentByUniseq(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
-      localObject2 = bbqf.a(0, i);
-      bbrp localbbrp = bbqf.a(localMessageForShortVideo, (bbqx)localObject2);
-      localbbrp.a = false;
-      ((bbqx)localObject2).a(localbbrp);
-      bbqf.a((bbqx)localObject2, (QQAppInterface)localObject1);
+      localObject2 = bcwz.a(0, i);
+      bcyj localbcyj = bcwz.a(localMessageForShortVideo, (bcxr)localObject2);
+      localbcyj.a = false;
+      ((bcxr)localObject2).a(localbcyj);
+      bcwz.a((bcxr)localObject2, (QQAppInterface)localObject1);
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.i("ShortVideoRealItemBuilder", 2, "[" + localMessageForShortVideo.uniseq + "]mMessageForShortVideo = " + localMessageForShortVideo + "\n |- upload cost:" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);

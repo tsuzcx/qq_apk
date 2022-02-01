@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget;
 
-import aezn;
+import afqz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bdzi;
+import bfgl;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class ScrollerRunnable
   private long jdField_a_of_type_Long = -1L;
   private View jdField_a_of_type_AndroidViewView;
   @Nullable
-  private bdzi jdField_a_of_type_Bdzi;
+  private bfgl jdField_a_of_type_Bfgl;
   protected ListView a;
   protected Runnable a;
   HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -53,7 +53,7 @@ public class ScrollerRunnable
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131299076) + 0.5D));
+      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131299080) + 0.5D));
       return;
       bool = false;
     }
@@ -61,8 +61,8 @@ public class ScrollerRunnable
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Bdzi != null) {
-      return this.jdField_a_of_type_Bdzi.a(this.k);
+    if (this.jdField_a_of_type_Bfgl != null) {
+      return this.jdField_a_of_type_Bfgl.a(this.k);
     }
     return false;
   }
@@ -250,9 +250,9 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a(@Nullable bdzi parambdzi)
+  public void a(@Nullable bfgl parambfgl)
   {
-    this.jdField_a_of_type_Bdzi = parambdzi;
+    this.jdField_a_of_type_Bfgl = parambfgl;
   }
   
   public void a(boolean paramBoolean)
@@ -315,9 +315,9 @@ public class ScrollerRunnable
     if ((this.k == 5) && (this.jdField_a_of_type_Long > 0L))
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof aezn))
+      if ((localObject instanceof afqz))
       {
-        localObject = ((aezn)localObject).a();
+        localObject = ((afqz)localObject).a();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           i1 = ((List)localObject).size();

@@ -1,31 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-final class bfxh
-  extends andd
+public class bfxh
+  extends aqwt<bfxg>
 {
-  bfxh(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
-  
-  protected void onOIDB0X88D_0_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  @NonNull
+  public bfxg a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long != paramLong) {
-      return;
+    QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    return new bfxg();
+  }
+  
+  @Nullable
+  public bfxg a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "onParsed");
     }
-    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
-    if ((paramInt1 & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-      if (paramInt1 != 480) {
-        break;
-      }
-      if (paramBoolean) {
-        bfxk.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      return;
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return bfxg.a(paramArrayOfaqxa[0].a);
     }
+    return null;
+  }
+  
+  public void a(bfxg parambfxg) {}
+  
+  public Class<bfxg> clazz()
+  {
+    return bfxg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("JoinTroopSecurityTipsConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 669;
   }
 }
 

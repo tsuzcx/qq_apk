@@ -1,16 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
-public class bmzb
-  implements ValueAnimator.AnimatorUpdateListener
+class bmzb
+  extends RecyclerView.OnScrollListener
 {
-  public bmzb(QIMCircleProgress paramQIMCircleProgress) {}
+  bmzb(bmza parambmza) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.c();
+    if (paramInt == 0)
+    {
+      DropFrameMonitor.getInstance().stopMonitorScene("list_photo", false);
+      return;
+    }
+    DropFrameMonitor.getInstance().startMonitorScene("list_photo");
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

@@ -1,121 +1,68 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcfr
+  extends bcfs
 {
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private TreeMap<bcfs, String> jdField_a_of_type_JavaUtilTreeMap;
+  public static final String a;
+  public int a;
+  public CharSequence a;
+  public CharSequence b;
+  public String b;
+  public CharSequence c;
   
-  private String a()
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nBusiness\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bcfr.class.getSimpleName();
+  }
+  
+  public bcfr(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bcfr(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      localObject = (Map.Entry)localIterator.next();
-      if (i < 20) {}
+    default: 
+      i = 1;
     }
-    else
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      return localStringBuilder.toString();
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = bcnc.a(paramString.optString("leftImageTagText"));
+      this.jdField_a_of_type_JavaLangCharSequence = bcnc.a(paramString.optString("firstLineText"));
+      this.jdField_b_of_type_JavaLangCharSequence = bcnc.a(paramString.optString("secondLineText"));
+      this.c = bcnc.a(paramString.optJSONArray("thirdLineText"));
+      return;
     }
-    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((bcfs)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
-    Object localObject = new ArrayList(((bcfs)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
-    Collections.sort((List)localObject);
-    localObject = ((List)localObject).iterator();
-    int j = 0;
-    for (;;)
+    catch (JSONException paramString)
     {
-      bcfs localbcfs;
-      if (((Iterator)localObject).hasNext())
-      {
-        localbcfs = (bcfs)((Iterator)localObject).next();
-        if (j >= 5) {
-          localStringBuilder.append("\t\t").append("…").append("\n");
-        }
-      }
-      else
-      {
-        i += 1;
-        break;
-      }
-      j += 1;
-      localStringBuilder.append("\t\t").append(localbcfs.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localbcfs.jdField_a_of_type_Int).append(")").append("\n");
+      paramString.printStackTrace();
     }
   }
   
-  private void a(bcft parambcft)
+  public boolean b()
   {
-    parambcft.a();
-    c(parambcft);
-    b(parambcft);
-  }
-  
-  private String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nSystem\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private void b(bcft parambcft)
-  {
-    Object localObject = parambcft.a();
-    parambcft = new HashMap(20);
-    localObject = ((HashMap)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      String str = (String)localEntry.getValue();
-      if (bcft.a(str) == null) {
-        parambcft.put(localEntry.getKey(), str);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(parambcft);
-  }
-  
-  private void c(bcft parambcft)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
-    parambcft = parambcft.b().entrySet().iterator();
-    while (parambcft.hasNext())
-    {
-      Object localObject = (Map.Entry)parambcft.next();
-      bcfs localbcfs = (bcfs)((Map.Entry)localObject).getKey();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localbcfs.jdField_a_of_type_Int));
-      }
-      else
-      {
-        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        Map localMap = this.jdField_a_of_type_JavaUtilMap;
-        int i = localInteger.intValue();
-        localMap.put(localObject, Integer.valueOf(localbcfs.jdField_a_of_type_Int + i));
-      }
-    }
-  }
-  
-  public String a(bcft parambcft)
-  {
-    a(parambcft);
-    return a() + b();
+    return true;
   }
 }
 

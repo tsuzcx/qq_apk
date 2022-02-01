@@ -1,41 +1,8 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-public class anrq
-  extends anrh
+class anrq
 {
-  public anrq(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  private boolean C()
-  {
-    Object localObject = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("friendUin"));
-    localObject = AddFriendLogicActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, 1, (String)localObject, "", 3001, 11, "", "", null, "", "");
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("OdAddFriendAction", 1, "doAction error: " + localException.getMessage());
-      a("OdAddFriendAction");
-    }
-    return false;
-  }
+  short a = -1;
+  short b = -1;
+  short c = 0;
 }
 
 

@@ -1,6 +1,10 @@
+import android.graphics.Bitmap;
+
 public abstract interface anny
 {
-  public abstract void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm);
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Bitmap paramBitmap);
 }
 
 

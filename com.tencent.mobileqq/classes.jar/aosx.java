@@ -1,13 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.ark.open.ArkAppMgr;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aosx
+  extends aoui
 {
-  public static void a(String paramString1, String paramString2, String paramString3, aops paramaops)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)) && (aorg.a() != null)) {
-      ArkAppMgr.getInstance().getAppPathByNameTimeout(3000L, paramString1, paramString2, "0.0.0.1", null, new aosy(paramString1, paramString3, paramaops));
-    }
+    paramQQAppInterface = new aosw(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "assistant_setting";
+    paramQQAppInterface.c = "ASSISTANT_SETTING";
+    return paramQQAppInterface;
   }
 }
 

@@ -30,16 +30,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhrt;
-import bhru;
-import bhrv;
-import bhrw;
-import bhrx;
-import bhrz;
-import bhsa;
-import bhsc;
-import bhvo;
-import bhvu;
+import bjcq;
+import bjcr;
+import bjcs;
+import bjct;
+import bjcu;
+import bjcw;
+import bjcx;
+import bjcz;
+import bjgp;
+import bjgv;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -55,7 +55,7 @@ import java.util.List;
 
 public abstract class FriendChooser
   extends BaseActivity
-  implements View.OnClickListener, Animation.AnimationListener, bhvu
+  implements View.OnClickListener, Animation.AnimationListener, bjgv
 {
   public float a;
   public int a;
@@ -74,9 +74,9 @@ public abstract class FriendChooser
   protected LinearLayout a;
   protected RelativeLayout a;
   protected TextView a;
-  public bhrx a;
-  protected bhsa a;
-  public bhvo a;
+  public bjcu a;
+  protected bjcx a;
+  public bjgp a;
   public InnerFrameManager a;
   protected XListView a;
   protected String a;
@@ -103,7 +103,7 @@ public abstract class FriendChooser
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_Int = 99999;
     this.jdField_b_of_type_Int = 99999;
-    this.jdField_a_of_type_AndroidOsHandler = new bhrw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bjct(this);
   }
   
   protected int a()
@@ -115,13 +115,13 @@ public abstract class FriendChooser
   
   protected void a()
   {
-    this.jdField_a_of_type_JavaLangString = super.getString(2131718092);
-    this.jdField_b_of_type_JavaLangString = super.getString(2131690865);
-    this.jdField_c_of_type_JavaLangString = super.getString(2131690865);
+    this.jdField_a_of_type_JavaLangString = super.getString(2131718477);
+    this.jdField_b_of_type_JavaLangString = super.getString(2131690950);
+    this.jdField_c_of_type_JavaLangString = super.getString(2131690950);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
     this.d.setVisibility(0);
-    this.d.setText(2131689835);
+    this.d.setText(2131689864);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.d.setOnClickListener(this);
@@ -130,25 +130,25 @@ public abstract class FriendChooser
   protected void a(Friend paramFriend)
   {
     boolean bool;
-    if (this.jdField_a_of_type_Bhvo.a(paramFriend.jdField_a_of_type_JavaLangString))
+    if (this.jdField_a_of_type_Bjgp.a(paramFriend.jdField_a_of_type_JavaLangString))
     {
       bool = false;
       this.jdField_b_of_type_JavaUtilArrayList.remove(paramFriend);
-      this.jdField_a_of_type_Bhvo.b(paramFriend.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bjgp.b(paramFriend.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
       b(bool);
       e();
       return;
-      if (this.jdField_a_of_type_Bhvo.c() >= this.jdField_a_of_type_Int)
+      if (this.jdField_a_of_type_Bjgp.c() >= this.jdField_a_of_type_Int)
       {
         h();
         return;
       }
       bool = true;
       this.jdField_b_of_type_JavaUtilArrayList.add(paramFriend);
-      this.jdField_a_of_type_Bhvo.a(paramFriend.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bjgp.a(paramFriend.jdField_a_of_type_JavaLangString);
     }
   }
   
@@ -163,7 +163,7 @@ public abstract class FriendChooser
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bhsa.notifyDataSetChanged();
+      this.jdField_a_of_type_Bjcx.notifyDataSetChanged();
       return;
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
@@ -184,7 +184,7 @@ public abstract class FriendChooser
             localArrayList2.add(localFriend);
           }
         }
-        Collections.sort(localArrayList2, new bhrz(this));
+        Collections.sort(localArrayList2, new bjcw(this));
         this.jdField_a_of_type_JavaUtilList.addAll(localArrayList1);
         this.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
       }
@@ -198,7 +198,7 @@ public abstract class FriendChooser
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    this.jdField_a_of_type_Bhsa.notifyDataSetChanged();
+    this.jdField_a_of_type_Bjcx.notifyDataSetChanged();
   }
   
   protected void a(boolean paramBoolean)
@@ -274,15 +274,15 @@ public abstract class FriendChooser
     if (Build.VERSION.SDK_INT >= 9) {
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_Bhrx = new bhrx(this);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Bhrx);
+    this.jdField_a_of_type_Bjcu = new bjcu(this);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Bjcu);
     this.jdField_a_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_b_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
     this.jdField_b_of_type_AndroidWidgetButton.setText(this.jdField_c_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new bhrt(this));
+    this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new bjcq(this));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -293,7 +293,7 @@ public abstract class FriendChooser
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
     localLayoutParams.width = ((int)((this.jdField_b_of_type_JavaUtilArrayList.size() * 36 + this.jdField_b_of_type_JavaUtilArrayList.size() * 10) * this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams(localLayoutParams);
-    if (this.jdField_a_of_type_Bhvo.c() == this.jdField_a_of_type_Int) {
+    if (this.jdField_a_of_type_Bjgp.c() == this.jdField_a_of_type_Int) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     }
     for (;;)
@@ -301,7 +301,7 @@ public abstract class FriendChooser
       if (paramBoolean) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 200L);
       }
-      this.jdField_a_of_type_Bhrx.notifyDataSetChanged();
+      this.jdField_a_of_type_Bjcu.notifyDataSetChanged();
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -328,22 +328,22 @@ public abstract class FriendChooser
   protected void d()
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366179));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368234));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363774));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376347);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376951));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371842);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bhsc(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366280));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368378));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363845));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376602);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377223));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372032);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bjcz(this));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838891);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838911);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(0);
-    this.jdField_a_of_type_Bhsa = new bhsa(this, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bhsa);
+    this.jdField_a_of_type_Bjcx = new bjcx(this, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bjcx);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new bhru(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bhrv(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new bjcr(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bjcs(this));
   }
   
   @Override
@@ -467,21 +467,21 @@ public abstract class FriendChooser
     super.setTheme(2131755153);
     super.setContentView(a());
     OpenAppClient.a(this.app);
-    this.jdField_a_of_type_Bhvo = bhvo.a();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131378727);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369068));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369070));
-    this.d = ((TextView)super.findViewById(2131369099));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372049));
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)super.findViewById(2131376945));
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = ((InnerFrameManager)super.findViewById(2131372055));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131376870));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131377055));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365703));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365704));
-    this.e = ((TextView)super.findViewById(2131377021));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371724));
+    this.jdField_a_of_type_Bjgp = bjgp.a();
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131379020);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369278));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369231));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369233));
+    this.d = ((TextView)super.findViewById(2131369262));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372241));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)super.findViewById(2131377217));
+    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = ((InnerFrameManager)super.findViewById(2131372248));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131377142));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131377329));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365797));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365798));
+    this.e = ((TextView)super.findViewById(2131377294));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371912));
     a();
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(this);
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.setAppIntf(this.app);
@@ -494,8 +494,8 @@ public abstract class FriendChooser
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.d();
-    if (this.jdField_a_of_type_Bhsa != null) {
-      this.jdField_a_of_type_Bhsa = null;
+    if (this.jdField_a_of_type_Bjcx != null) {
+      this.jdField_a_of_type_Bjcx = null;
     }
   }
   

@@ -1,39 +1,22 @@
-import android.content.Context;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.Arrays;
 
-public final class bgai
-  implements URLDrawable.URLDrawableListener
+class bgai
+  implements AbsListView.OnScrollListener
 {
-  public bgai(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
+  bgai(bgah parambgah) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(AIOUtils.dp2px(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
-      return;
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(null);
-      }
+    paramInt1 = Arrays.binarySearch(bgah.a(this.a), paramInt1);
+    if ((paramInt1 >= 0) && (bgah.a(this.a).a != null)) {
+      bgah.a(this.a).a.setChooseIndex(paramInt1);
     }
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

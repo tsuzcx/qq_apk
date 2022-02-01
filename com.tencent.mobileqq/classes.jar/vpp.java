@@ -1,11 +1,17 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public class vpp
+class vpp
+  implements AdExposureChecker.ExposureCallback
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  vpp(vpo paramvpo) {}
+  
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    return vqi.a(paramQQStoryAutoPlayView, paramMotionEvent);
+    FLog.e("AdExposureChecker", "onExposure");
+    vpk.a(vpo.a(this.a), (vpj)this.a.a());
   }
 }
 

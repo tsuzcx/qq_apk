@@ -3,12 +3,14 @@ package com.tencent.avcore.jni.mav;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import mwc;
-import mwl;
-import mwm;
-import mws;
+import nbp;
+import nca;
+import ncb;
+import ncc;
+import nci;
 
 public class MavEngineProxy
+  implements ncb
 {
   private MavEngineJni mMavEngineJni;
   
@@ -122,9 +124,9 @@ public class MavEngineProxy
     this.mMavEngineJni.init(paramContext, paramLong, paramInt, paramString, paramSDKConfigInfo);
   }
   
-  protected void initEngine(mwc parammwc, mwl parammwl, String paramString)
+  protected void initEngine(nbp paramnbp, nca paramnca, String paramString)
   {
-    this.mMavEngineJni = new MavEngineJni(parammwc, parammwl);
+    this.mMavEngineJni = new MavEngineJni(paramnbp, paramnca);
     MavEngineJni.regCallbacks();
     setAndroidPath(paramString);
   }
@@ -259,9 +261,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.setAudioOutputMode(paramInt);
   }
   
-  public void setEventListener(mwm parammwm)
+  public void setEventListener(ncc paramncc)
   {
-    this.mMavEngineJni.setEventListener(parammwm);
+    this.mMavEngineJni.setEventListener(paramncc);
   }
   
   public int setHowlingDetectEnable(boolean paramBoolean)
@@ -279,9 +281,9 @@ public class MavEngineProxy
     return this.mMavEngineJni.setMicMode(paramInt);
   }
   
-  public void setNetChannel(mws parammws)
+  public void setNetChannel(nci paramnci)
   {
-    this.mMavEngineJni.setNetChannel(parammws);
+    this.mMavEngineJni.setNetChannel(paramnci);
   }
   
   public int setOutputFormat(int paramInt1, int paramInt2, int paramInt3, int paramInt4)

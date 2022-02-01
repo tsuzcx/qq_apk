@@ -4,7 +4,7 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 class du
-  implements aszj
+  implements audq
 {
   du(dt paramdt, DataLineMsgRecord paramDataLineMsgRecord, dv paramdv) {}
   

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import bgxy;
+import biiq;
 import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
 import com.tencent.qphone.base.util.QLog;
 
 public class SwiftWebAccelerator$4
   implements Runnable
 {
-  public SwiftWebAccelerator$4(bgxy parambgxy, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
+  public SwiftWebAccelerator$4(biiq parambiiq, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
   
   public void run()
   {

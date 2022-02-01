@@ -1,14 +1,6 @@
-class amsa
-  implements bcan
+public abstract interface amsa
 {
-  amsa(amrz paramamrz) {}
-  
-  public void a()
-  {
-    this.a.y();
-  }
-  
-  public void b() {}
+  public abstract void a();
 }
 
 

@@ -1,23 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 class xyl
-  implements vqp<wel, wgf>
+  extends wwa
 {
-  xyl(xyj paramxyj) {}
+  xyl(xyi paramxyi) {}
   
-  public void a(@NonNull wel paramwel, @Nullable wgf paramwgf, @NonNull ErrorMessage paramErrorMessage)
+  public void a()
   {
-    xvv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramwgf != null))
-    {
-      xvv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramwgf.toString());
-      paramwel = new vts(paramwgf.a, paramwgf.c, paramwgf.d, paramwgf.e, paramwgf.f, paramwel.d, paramwel.e);
-      this.a.a(0, paramwel);
-      return;
-    }
-    xvv.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    super.a();
+    xyi.a(this.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    ykv.a("home_page", "suc_share", 2, paramInt, new String[] { ykv.b(xyi.a(this.a).a) + "", ykv.a(xyi.a(this.a).a) + "", xyi.a(this.a).a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    ykv.a("home_page", "share_chanel", 2, paramInt, new String[] { ykv.b(xyi.a(this.a).a) + "", ykv.a(xyi.a(this.a).a) + "", xyi.a(this.a).a.feedId });
   }
 }
 

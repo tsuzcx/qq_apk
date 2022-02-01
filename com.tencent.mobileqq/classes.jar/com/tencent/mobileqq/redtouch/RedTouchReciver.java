@@ -2,7 +2,7 @@ package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import azva;
+import bbbi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RedTouchReciver
@@ -13,9 +13,9 @@ public class RedTouchReciver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    azva localazva = azva.a(paramBundle);
-    if (localazva != null) {
-      localazva.a(this.a, paramBundle);
+    bbbi localbbbi = bbbi.a(paramBundle);
+    if (localbbbi != null) {
+      localbbbi.a(this.a, paramBundle);
     }
   }
 }

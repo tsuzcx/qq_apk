@@ -1,73 +1,76 @@
-final class bjif
-  implements bjjj
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.appcommon.js.DownloadInterface;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class bjif
+  implements bjoh
 {
-  private bjif(bjhu parambjhu) {}
+  protected String a;
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public bjif(DownloadInterface paramDownloadInterface, String paramString)
   {
-    if (paramLong1 == 2L) {}
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onException(String paramString)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+      return;
+    }
+    bjko.e("DownloadInterface", "JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
+  }
+  
+  public void onResult(ArrayList<ApkUpdateDetail> paramArrayList)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+      return;
+    }
+    bjko.a("DownloadInterface", "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
     try
     {
-      this.a.flushRequest();
-      return 0;
-    }
-    catch (Exception paramObject1)
-    {
-      label62:
-      paramObject1.printStackTrace();
-      return -1;
-    }
-    if ((paramObject1 != null) && (paramObject2 != null) && (paramArrayOfObject1 != null))
-    {
-      if (paramArrayOfObject1.length >= 6) {
-        break label241;
-      }
-      break label238;
-      if (paramLong2 != 0L)
+      while (i < paramArrayList.size())
       {
-        paramArrayOfObject2 = new bjie(paramLong2);
-        break label251;
-        if (((Integer)paramObject1).intValue() == 0) {
-          break label270;
-        }
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
+        i += 1;
       }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
     }
-    label270:
-    for (boolean bool2 = true;; bool2 = false)
+    catch (JSONException paramArrayList)
     {
-      if (((Integer)paramObject2).intValue() == 1) {
-        paramObject1 = new bjir((String)paramArrayOfObject1[2]);
-      }
       for (;;)
       {
-        return this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
-        paramObject1 = new bjis();
-        paramObject1.jdField_a_of_type_Int = ((Integer)paramObject2).intValue();
-        paramObject1.b = ((Integer)paramArrayOfObject1[0]).intValue();
-        paramObject1.jdField_a_of_type_JavaLangString = ((String)paramArrayOfObject1[1]);
-        paramObject1.c = ((String)paramArrayOfObject1[2]);
-        paramObject1.d = ((String)paramArrayOfObject1[3]);
-        paramObject1.e = ((String)paramArrayOfObject1[4]);
-        paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfObject1[5]);
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
       }
-      paramArrayOfObject2 = null;
-      break label251;
-      label238:
-      return 13;
-      label241:
-      if (paramArrayOfObject1[0] != null) {
-        break;
-      }
-      return 13;
-      label251:
-      if (paramLong3 != 0L)
-      {
-        bool1 = true;
-        break label62;
-      }
-      boolean bool1 = false;
-      break label62;
     }
+    bjko.b("DownloadInterface", ">>checkUpdate jsUrl:" + paramArrayList);
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
   }
 }
 

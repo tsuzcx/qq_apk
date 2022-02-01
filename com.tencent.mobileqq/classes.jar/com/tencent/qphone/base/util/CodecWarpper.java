@@ -115,11 +115,11 @@ public abstract class CodecWarpper
   
   private static native void closeReceData();
   
-  private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean);
+  private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean);
   
   private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, boolean paramBoolean);
   
-  private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean);
+  private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean);
   
   public static native int getAppid();
   
@@ -138,12 +138,12 @@ public abstract class CodecWarpper
   
   public static native int getVersionCode();
   
-  public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean)
+  public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean)
   {
     Object localObject = null;
     try
     {
-      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramByte3, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramByte3, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramBoolean);
       return paramString1;
     }
     catch (Exception paramString2)
@@ -176,12 +176,12 @@ public abstract class CodecWarpper
     return null;
   }
   
-  public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean)
+  public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean)
   {
     Object localObject = null;
     try
     {
-      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramBoolean);
       return paramString1;
     }
     catch (Exception paramString2)

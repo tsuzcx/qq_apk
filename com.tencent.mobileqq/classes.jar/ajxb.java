@@ -1,18 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajxb
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public ajxb(SendHbActivity paramSendHbActivity) {}
+  public ajxb(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
+    bdla.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
+    bdla.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
   }
 }
 

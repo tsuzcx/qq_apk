@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.text.TextUtils;
-import bbsu;
+import bczp;
 import com.tencent.mobileqq.shortvideo.util.VidUtil;
 import java.io.File;
 
@@ -198,7 +198,7 @@ public class RecordThumbnailUtils
     //   340: aload 11
     //   342: iload_2
     //   343: iload_3
-    //   344: invokestatic 125	bbwx:a	([I[BII)V
+    //   344: invokestatic 125	bdds:a	([I[BII)V
     //   347: aload 12
     //   349: iload_2
     //   350: iload_3
@@ -396,7 +396,7 @@ public class RecordThumbnailUtils
   public static String a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     File localFile = new File(paramString);
-    return a(paramString, paramInt1, paramInt2, bbsu.a + File.separator + VidUtil.getVidFromSourceDirFile(localFile) + ".jpg", paramInt3, paramConfig);
+    return a(paramString, paramInt1, paramInt2, bczp.a + File.separator + VidUtil.getVidFromSourceDirFile(localFile) + ".jpg", paramInt3, paramConfig);
   }
   
   /* Error */
@@ -626,7 +626,7 @@ public class RecordThumbnailUtils
   public static String b(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     paramConfig = new File(paramString);
-    return a(0, paramString, paramInt1, paramInt2, bbsu.a + File.separator + VidUtil.getVidFromSourceDirFile(paramConfig) + ".jpg", paramInt3);
+    return a(0, paramString, paramInt1, paramInt2, bczp.a + File.separator + VidUtil.getVidFromSourceDirFile(paramConfig) + ".jpg", paramInt3);
   }
   
   private static native int nativeGenCover(Bitmap paramBitmap, int paramInt1, int paramInt2);

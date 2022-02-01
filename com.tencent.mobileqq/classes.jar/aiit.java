@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-class aiit
-  implements View.OnClickListener
+public abstract class aiit
 {
-  aiit(aiir paramaiir, aiix paramaiix) {}
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Aiir.a != null)
-    {
-      int i = this.jdField_a_of_type_Aiix.getAdapterPosition();
-      this.jdField_a_of_type_Aiir.a.a(paramView, this.jdField_a_of_type_Aiix, i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract JSONObject a();
 }
 
 

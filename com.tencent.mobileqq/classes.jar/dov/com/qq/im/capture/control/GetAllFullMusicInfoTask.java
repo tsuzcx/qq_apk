@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import bmqh;
-import bmql;
+import bofz;
+import bogd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bmql.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bogd.a(2);
   private List<FlowMusic> jdField_a_of_type_JavaUtilList;
   private List<FlowMusic> b = new ArrayList();
   private String jdField_c_of_type_JavaLangString;
@@ -159,7 +159,7 @@ public class GetAllFullMusicInfoTask
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.b);
     }
     Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(bmqh.a().getCurrentAccountUin());
+    QIMMusicConfigManager.b(bofz.a().getCurrentAccountUin());
   }
   
   public int a()

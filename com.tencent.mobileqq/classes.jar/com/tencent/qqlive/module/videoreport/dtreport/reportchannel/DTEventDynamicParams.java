@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import com.tencent.qqlive.module.videoreport.IEventDynamicParams;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
 import com.tencent.qqlive.module.videoreport.dtreport.verifydata.VerifyDataHelper;
+import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import java.util.Map;
 
 public class DTEventDynamicParams
@@ -24,7 +25,9 @@ public class DTEventDynamicParams
   
   private void checkParams(@NonNull Map<String, Object> paramMap)
   {
-    VerifyDataHelper.checkMap(paramMap);
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      VerifyDataHelper.checkMap(paramMap);
+    }
   }
   
   public static DTEventDynamicParams getInstance()
@@ -46,7 +49,9 @@ public class DTEventDynamicParams
   {
     Map localMap = (Map)this.mEventParams.get();
     localMap.clear();
-    this.mDtParamProvider.setEventDynamicParams(paramString, localMap);
+    if (this.mDtParamProvider != null) {
+      this.mDtParamProvider.setEventDynamicParams(paramString, localMap);
+    }
     checkParams(localMap);
     if (paramMap != null) {
       paramMap.putAll(localMap);
@@ -58,7 +63,9 @@ public class DTEventDynamicParams
   {
     Map localMap = (Map)this.mNonRealTimeParams.get();
     localMap.clear();
-    this.mDtParamProvider.setNonRealtimePublicDynamicParams(localMap);
+    if (this.mDtParamProvider != null) {
+      this.mDtParamProvider.setNonRealtimePublicDynamicParams(localMap);
+    }
     checkParams(localMap);
     if (paramMap != null) {
       paramMap.putAll(localMap);
@@ -71,7 +78,9 @@ public class DTEventDynamicParams
   {
     Map localMap = (Map)this.mRealTimeParams.get();
     localMap.clear();
-    this.mDtParamProvider.setRealtimePublicDynamicParams(localMap);
+    if (this.mDtParamProvider != null) {
+      this.mDtParamProvider.setRealtimePublicDynamicParams(localMap);
+    }
     checkParams(localMap);
     if (paramMap != null) {
       paramMap.putAll(localMap);

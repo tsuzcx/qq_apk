@@ -1,36 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import java.util.HashSet;
-
-public class aykz
-  implements Animator.AnimatorListener
+public abstract class aykz
 {
-  public aykz(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, aylc paramaylc, View paramView) {}
+  public void a(String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Aylc.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
+  public void a(String paramString, long paramLong) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Aylc.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
-  }
+  public void b(String paramString) {}
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void b(String paramString, long paramLong) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void c(String paramString) {}
+  
+  public void c(String paramString, long paramLong) {}
 }
 
 

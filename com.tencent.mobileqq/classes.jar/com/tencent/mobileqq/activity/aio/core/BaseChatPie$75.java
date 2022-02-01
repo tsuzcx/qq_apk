@@ -1,29 +1,42 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import anaz;
-import bbwb;
-import bfur;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import admh;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 class BaseChatPie$75
-  extends anaz
+  implements Runnable
 {
-  BaseChatPie$75(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$75(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage) {}
   
-  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (((this.this$0.getActivity() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
-    do
+    admh.a(this.this$0.app, this.this$0.sessionInfo);
+    this.this$0.app.getMessageFacade().removeMsgByMessageRecord(this.val$cm, false);
+    Object localObject = EmojiStickerManager.a(this.val$cm);
+    if (localObject != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.tag, 2, "VideoRedbag, onCheckRealNameRsp in aio");
+      EmojiStickerManager.a().jdField_b_of_type_Int = 0;
+      EmojiStickerManager.a().jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(localObject, Boolean.valueOf(true));
+      localObject = EmojiStickerManager.a().a(this.val$cm);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Long localLong = (Long)((Iterator)localObject).next();
+          this.this$0.app.getMessageFacade().removeMsgByUniseq(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, localLong.longValue());
+        }
       }
-    } while ((!paramBoolean) || (paramInt != bbwb.a));
-    bfur.a(this.this$0.getActivity(), 0, null, this.this$0.getActivity().getString(2131718471), 2131718473, 2131718472, new BaseChatPie.75.1(this), new BaseChatPie.75.2(this)).show();
+    }
+    this.this$0.uiHandler.post(new BaseChatPie.75.1(this));
   }
 }
 

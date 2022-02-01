@@ -1,30 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class acyk
-  implements View.OnClickListener
+abstract class acyk
+  implements com.tencent.mobileqq.javahooksdk.HookMethodCallback
 {
-  acyk(acyf paramacyf, PicEmoticonInfo paramPicEmoticonInfo) {}
-  
-  public void onClick(View paramView)
+  public static com.tencent.qapmsdk.qqbattery.monitor.MethodHookParam a(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
   {
-    if ((paramView != null) && ((paramView instanceof ImageView)))
+    com.tencent.qapmsdk.qqbattery.monitor.MethodHookParam localMethodHookParam = new com.tencent.qapmsdk.qqbattery.monitor.MethodHookParam();
+    if (paramMethodHookParam != null)
     {
-      View localView = (View)paramView.getParent();
-      Object localObject = paramView.getTag();
-      String str = EmoticonUtils.emoticonSoundPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.eId);
-      if (this.jdField_a_of_type_Acyf.a.a == null) {
-        this.jdField_a_of_type_Acyf.a.a = new acyq(this.jdField_a_of_type_Acyf.a);
-      }
-      this.jdField_a_of_type_Acyf.a.a.a(1, localView, localObject, str);
+      localMethodHookParam.args = paramMethodHookParam.args;
+      localMethodHookParam.method = paramMethodHookParam.method;
+      localMethodHookParam.result = paramMethodHookParam.result;
+      localMethodHookParam.thisObject = paramMethodHookParam.thisObject;
+      localMethodHookParam.throwable = paramMethodHookParam.throwable;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return localMethodHookParam;
+  }
+  
+  public abstract com.tencent.qapmsdk.qqbattery.monitor.HookMethodCallback a();
+  
+  public abstract void a();
+  
+  public void afterHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
+  {
+    com.tencent.qapmsdk.qqbattery.monitor.HookMethodCallback localHookMethodCallback = a();
+    if (localHookMethodCallback != null) {
+      localHookMethodCallback.afterHookedMethod(a(paramMethodHookParam));
+    }
+  }
+  
+  public void beforeHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
+  {
+    com.tencent.qapmsdk.qqbattery.monitor.HookMethodCallback localHookMethodCallback = a();
+    if (localHookMethodCallback != null) {
+      localHookMethodCallback.beforeHookedMethod(a(paramMethodHookParam));
+    }
   }
 }
 

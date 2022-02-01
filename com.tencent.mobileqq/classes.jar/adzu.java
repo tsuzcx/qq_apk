@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adzu
-  implements View.OnClickListener
+  implements aofl
 {
-  public adzu(QQMapActivity paramQQMapActivity) {}
+  public adzu(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    this.a.onBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 

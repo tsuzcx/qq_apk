@@ -1,33 +1,72 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class argd
-  extends FrameLayout
+public class argd
+  extends aqwt<arge>
 {
-  public argd(arga paramarga, Context paramContext)
+  @NonNull
+  public arge a(int paramInt)
   {
-    super(paramContext);
+    return new arge();
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  @Nullable
+  public arge a(aqxa[] paramArrayOfaqxa)
   {
-    int i = arga.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      arge localarge = arge.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localarge;
     }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    return null;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void a(arge paramarge)
   {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(arga.a(this.a).getMeasuredWidth() - arga.a(this.a).getPaddingLeft() - arga.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramarge });
+    }
+  }
+  
+  public Class<arge> clazz()
+  {
+    return arge.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 362;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argd
  * JD-Core Version:    0.7.0.1
  */

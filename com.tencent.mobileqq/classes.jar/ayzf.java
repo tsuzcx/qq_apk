@@ -1,19 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
 public class ayzf
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public ayzf(VasProfileTagView paramVasProfileTagView, VipTagView paramVipTagView) {}
+  public ayzf(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
-    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramValueAnimator.x, paramValueAnimator.y);
+    azcl.a("0X800AF9C", 1);
+    paramDialogInterface.dismiss();
+    AccountOnlineStateActivity.a(this.a);
   }
 }
 

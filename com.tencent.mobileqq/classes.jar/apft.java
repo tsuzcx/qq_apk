@@ -1,45 +1,54 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.7.1;
+import com.tencent.mobileqq.ar.ArConfigService.7.2;
+import com.tencent.mobileqq.ar.ArConfigService.7.3;
 import com.tencent.qphone.base.util.QLog;
 
 public class apft
-  extends Handler
+  implements apmi
 {
-  private QQAnimationDrawable b;
+  public apft(ArConfigService paramArConfigService) {}
   
-  public apft(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
+  public void a()
   {
-    this.b = paramQQAnimationDrawable2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "mARCOREResourceDownloadCallBack");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong1, long paramLong2)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("mARCOREResourceDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.d(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.7.1(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, apmj paramapmj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARCOREResourceDownloadCallBack result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
     {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      if (!(paramMessage.obj instanceof Long)) {
-        break label170;
+      ArConfigService.e(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.7.2(this));
       }
-      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
-      paramMessage = (Long)paramMessage.obj;
-      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
-        break;
-      }
-      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
-      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+    }
+    while (ArConfigService.e(this.a)) {
       return;
     }
-    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
-    this.a.scheduleSelf(this.b, paramMessage.longValue());
-    return;
-    label170:
-    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
+    ArConfigService.a(this.a).post(new ArConfigService.7.3(this));
+    ArConfigService.a(this.a, true);
   }
+  
+  public void b() {}
 }
 
 

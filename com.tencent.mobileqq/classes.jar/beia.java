@@ -1,23 +1,36 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class beia
-  extends JobSegment<String, beie>
+  implements bhog
 {
-  private beic jdField_a_of_type_Beic;
-  private String jdField_a_of_type_JavaLangString;
+  beia(behx parambehx) {}
   
-  public beia(beic parambeic)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Beic = parambeic;
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = bhrr.a.getDir(paramQQAppInterface.getApp().getApplicationContext(), paramString1);
+      if ((!TextUtils.isEmpty(paramQQAppInterface)) && (behx.a(this.a) != null))
+      {
+        behx.a(this.a, true);
+        this.a.a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString + " mIsUserSkin=" + this.a.jdField_a_of_type_Boolean);
+        }
+        if (this.a.jdField_a_of_type_Boolean) {
+          ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
+        }
+      }
+    }
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    xvv.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    vqn.a().a(new beid(this.jdField_a_of_type_Beic, this.jdField_a_of_type_JavaLangString), new beib(this));
-  }
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.FromService;
 
 public final class acwv
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator<FromService>
 {
-  public acwv(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public FromService a(Parcel paramParcel)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    bcef.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    FromService localFromService = new FromService();
+    localFromService.jdField_a_of_type_Int = paramParcel.readInt();
+    localFromService.b = paramParcel.readInt();
+    localFromService.c = paramParcel.readInt();
+    localFromService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localFromService;
+  }
+  
+  public FromService[] a(int paramInt)
+  {
+    return new FromService[paramInt];
   }
 }
 

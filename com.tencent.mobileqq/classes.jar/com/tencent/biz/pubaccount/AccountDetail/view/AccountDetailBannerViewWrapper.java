@@ -17,22 +17,22 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nts;
-import nui;
-import obq;
-import obr;
+import oat;
+import obj;
+import ojh;
+import oji;
 
 public class AccountDetailBannerViewWrapper
-  extends nui
+  extends obj
 {
-  public AccountDetailBannerViewWrapper(Context paramContext, ArrayList<obr> paramArrayList, nts paramnts, String paramString1, String paramString2)
+  public AccountDetailBannerViewWrapper(Context paramContext, ArrayList<oji> paramArrayList, oat paramoat, String paramString1, String paramString2)
   {
-    super(paramContext, paramArrayList, paramnts, paramString1, paramString2);
+    super(paramContext, paramArrayList, paramoat, paramString1, paramString2);
   }
   
-  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, obq paramobq, int paramInt, nts paramnts, String paramString1, String paramString2)
+  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, ojh paramojh, int paramInt, oat paramoat, String paramString1, String paramString2)
   {
-    paramViewGroup = a(paramobq, paramInt);
+    paramViewGroup = a(paramojh, paramInt);
     if (paramViewGroup.isEmpty())
     {
       paramContext = paramView;
@@ -49,8 +49,8 @@ public class AccountDetailBannerViewWrapper
         break;
       }
       paramView = (RelativeLayout)paramView;
-      paramobq = paramView.getTag();
-      if ((paramobq == null) || (!(paramobq instanceof AccountDetailBannerViewWrapper)) || (!((AccountDetailBannerViewWrapper)paramobq).a(paramViewGroup))) {
+      paramojh = paramView.getTag();
+      if ((paramojh == null) || (!(paramojh instanceof AccountDetailBannerViewWrapper)) || (!((AccountDetailBannerViewWrapper)paramojh).a(paramViewGroup))) {
         break;
       }
       paramContext = paramView;
@@ -60,23 +60,23 @@ public class AccountDetailBannerViewWrapper
     if (QLog.isDevelopLevel()) {
       QLog.d("AccountDetailBannerViewWrapper", 2, "createView new create!");
     }
-    paramContext = new AccountDetailBannerViewWrapper(paramContext, paramViewGroup, paramnts, paramString1, paramString2);
+    paramContext = new AccountDetailBannerViewWrapper(paramContext, paramViewGroup, paramoat, paramString1, paramString2);
     paramView = paramContext.a();
     paramView.setTag(paramContext);
     return paramView;
   }
   
-  private View a(obr paramobr)
+  private View a(oji paramoji)
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
     URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
     localURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramobr.e, null, null, true));
+    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramoji.e, null, null, true));
     localURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
     localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localRelativeLayout.addView(localURLImageView);
-    localRelativeLayout.setTag(paramobr);
+    localRelativeLayout.setTag(paramoji);
     localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     return localRelativeLayout;
   }
@@ -98,7 +98,7 @@ public class AccountDetailBannerViewWrapper
     ArrayList localArrayList = new ArrayList();
     Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(a((obr)((Iterator)localObject).next()));
+      localArrayList.add(a((oji)((Iterator)localObject).next()));
     }
     localObject = new AccountDetailBannerViewWrapper.ViewPagerAdapter();
     ((AccountDetailBannerViewWrapper.ViewPagerAdapter)localObject).a(localArrayList);

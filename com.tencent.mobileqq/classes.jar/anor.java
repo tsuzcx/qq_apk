@@ -1,37 +1,44 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class anor
-  implements View.OnTouchListener
+public class anor
+  implements amnb
 {
-  anor(anon paramanon, ImageView paramImageView) {}
+  public anor(ApolloPanel paramApolloPanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
+    if (this.a.c.getVisibility() == 0)
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      if ((!paramBoolean2) || (paramInt >= 5)) {
+        break label110;
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (!paramBoolean1) {
+        break label94;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      this.a.a.setVisibility(0);
+      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
     }
-    for (;;)
+    label94:
+    label110:
+    do
     {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+      ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
+      do
+      {
+        return;
+      } while (paramInt <= 0);
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      return;
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    } while ((paramInt != 0) || (!paramBoolean1));
+    this.a.a.setVisibility(8);
   }
 }
 

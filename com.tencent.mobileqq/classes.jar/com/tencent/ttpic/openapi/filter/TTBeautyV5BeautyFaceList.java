@@ -165,9 +165,9 @@ public class TTBeautyV5BeautyFaceList
     this.mFaceFeatureFilter.clearGLSLSelf();
     this.mWrinklesRemoveFilter2.clearGLSLSelf();
     this.mBlurFilter1.clearGLSLSelf();
-    this.mDeepBlurFilter.ClearGLSL();
-    this.mCopyFilter.ClearGLSL();
-    this.mContrastFilter.ClearGLSL();
+    this.mDeepBlurFilter.clearGLSL();
+    this.mCopyFilter.clearGLSL();
+    this.mContrastFilter.clearGLSL();
     this.mBlurFrame1.clear();
     this.mBlurFrame2.clear();
     GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);

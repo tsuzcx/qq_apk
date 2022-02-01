@@ -1,6 +1,19 @@
-public abstract interface aurf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aurf
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  public aurf(ForwardFileOption paramForwardFileOption) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.F();
+    ForwardFileOption.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

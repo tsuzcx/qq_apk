@@ -1,20 +1,141 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.RemoteException;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.RichmediaService;
+import com.tencent.mobileqq.richmedia.RichmediaService.IncomingHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BinderWarpper;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bbfw
-  extends bbee
+  extends Handler
 {
-  private Comparator<bayp> a = new bbfx(this);
+  final WeakReference<RichmediaService> a;
   
-  public bbfw(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public bbfw(Looper paramLooper, RichmediaService paramRichmediaService)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    super(paramLooper);
+    this.a = new WeakReference(paramRichmediaService);
   }
   
-  public Comparator<bayp> a()
+  void a(QQAppInterface paramQQAppInterface, Message paramMessage, Bundle paramBundle)
   {
-    return this.a;
+    long l = paramBundle.getLong("vidoe_record_uniseq");
+    int i = paramBundle.getInt("video_segment_mode");
+    bbot localbbot = bboo.a(paramQQAppInterface).a(l, i);
+    bbos localbbos = new bbos();
+    switch (paramMessage.what)
+    {
+    case 205: 
+    default: 
+      super.handleMessage(paramMessage);
+    case 204: 
+    case 206: 
+      return;
+    case 200: 
+      localbbos.jdField_a_of_type_JavaLangString = paramBundle.getString("video_slice_path");
+      localbbos.d = paramBundle.getInt("video_slice_index");
+      localbbos.jdField_a_of_type_Int = paramBundle.getInt("video_slice_width");
+      localbbos.jdField_b_of_type_Int = paramBundle.getInt("video_slice_height");
+      localbbos.jdField_c_of_type_Long = paramBundle.getLong("video_slice_timestamp");
+      localbbos.jdField_c_of_type_Int = 1;
+      localbbot.a(localbbos, paramBundle);
+      return;
+    case 201: 
+      localbbos.jdField_c_of_type_Int = 3;
+      localbbot.a(localbbos, paramBundle);
+      return;
+    case 202: 
+      localbbos.jdField_c_of_type_Int = 4;
+      localbbot.a(localbbos, paramBundle);
+      return;
+    case 203: 
+      localbbos.jdField_c_of_type_Int = 5;
+      localbbos.jdField_a_of_type_Int = paramBundle.getInt("video_slice_width");
+      localbbos.jdField_b_of_type_Int = paramBundle.getInt("video_slice_height");
+      localbbos.e = ((int)paramBundle.getLong("video_duration"));
+      localbbot.a(localbbos, paramBundle);
+      return;
+    case 207: 
+      localbbot.jdField_b_of_type_Int = ((int)paramBundle.getLong("video_duration"));
+      localbbot.jdField_b_of_type_Long = paramBundle.getLong("video_start_time");
+      localbbot.a();
+      return;
+    }
+    localbbot.b();
+    bboo.a(paramQQAppInterface).a(localbbot);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    RichmediaService localRichmediaService = (RichmediaService)this.a.get();
+    if (localRichmediaService == null) {
+      return;
+    }
+    Bundle localBundle = paramMessage.getData();
+    if (localBundle != null)
+    {
+      localBundle.setClassLoader(getClass().getClassLoader());
+      localBundle.getInt("msg_sub_cmd");
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      if ((localBundle != null) && (paramMessage.what >= 200) && (paramMessage.what <= 208))
+      {
+        if (!QQAppInterface.class.isInstance(RichmediaService.b(localRichmediaService))) {
+          break;
+        }
+        a((QQAppInterface)RichmediaService.c(localRichmediaService), paramMessage, localBundle);
+      }
+      if (((paramMessage.what != 250) && (paramMessage.what != 1)) || (!QQAppInterface.class.isInstance(RichmediaService.d(localRichmediaService)))) {
+        break;
+      }
+      switch (paramMessage.what)
+      {
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+        bbfr.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
+        localRichmediaService.b = paramMessage.replyTo;
+        if (localBundle != null)
+        {
+          Object localObject = (BinderWarpper)localBundle.getParcelable("ICallBack_BinderWrapper");
+          if (localObject != null)
+          {
+            localRichmediaService.a = bbfp.a(((BinderWarpper)localObject).a);
+            localObject = new Bundle();
+            int[] arrayOfInt = azjv.a((QQAppInterface)RichmediaService.a(localRichmediaService));
+            try
+            {
+              ((Bundle)localObject).putIntArray("key_compress_config", arrayOfInt);
+              localRichmediaService.a.a(6, (Bundle)localObject);
+            }
+            catch (RemoteException localRemoteException)
+            {
+              bbfr.a("RichmediaService", "ICALLBACK_CMD_INIT_COMPRESS_CONFIG remote error:" + localRemoteException);
+              localRemoteException.printStackTrace();
+            }
+            continue;
+            bbfr.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
+            localRichmediaService.b = null;
+            localRichmediaService.a = null;
+          }
+        }
+        break;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("RichmediaService", 2, "Call RichMediaService: " + paramMessage.what);
+    }
+    ThreadManager.getUIHandler().post(new RichmediaService.IncomingHandler.1(this));
   }
 }
 

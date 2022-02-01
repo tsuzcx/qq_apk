@@ -1,26 +1,43 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashSet;
 
 class bkzo
-  implements ScaleGestureDetector.OnScaleGestureListener
+  implements View.OnClickListener
 {
-  bkzo(bkzk parambkzk) {}
+  bkzo(bkzi parambkzi) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(View paramView)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (bkzk.a(this.a) != null) {
-      bkzk.a(this.a).a("onActionScale", new float[] { f });
+    int i = paramView.getId();
+    Object localObject;
+    if ((bkzi.a(this.a)) && ((bkzi.a(this.a) == null) || (!bkzi.a(this.a).contains(Integer.valueOf(i)))) && (bkzi.b(this.a) != -1) && (i != bkzi.b(this.a)))
+    {
+      localObject = (View)bkzi.a(this.a).get(bkzi.b(this.a));
+      ((View)localObject).findViewById(2131361972).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131361971);
+      bkzi.a(this.a, (TextView)localObject, false);
+      localObject = (View)bkzi.a(this.a).get(i);
+      ((View)localObject).findViewById(2131361972).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131361971);
+      bkzi.a(this.a, (TextView)localObject, true);
+      bkzi.a(this.a, i);
     }
-    return true;
+    if (bkzi.a(this.a) != null) {
+      bkzi.a(this.a).OnClick(paramView, i);
+    }
+    if (bkzi.a(this.a) != null)
+    {
+      localObject = (TextView)paramView.findViewById(2131361971);
+      if ((localObject != null) && ((localObject instanceof TextView))) {
+        bkzi.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return true;
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

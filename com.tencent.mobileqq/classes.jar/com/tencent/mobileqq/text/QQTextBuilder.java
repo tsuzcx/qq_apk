@@ -2,7 +2,7 @@ package com.tencent.mobileqq.text;
 
 import android.text.Editable.Factory;
 import android.text.SpannableStringBuilder;
-import aqyy;
+import asdi;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -197,7 +197,7 @@ public class QQTextBuilder
           }
           continue;
           Object localObject4 = (QQText.SmallEmojiSpan)localException;
-          localObject4 = aqyy.a(((QQText.SmallEmojiSpan)localObject4).mEpId, ((QQText.SmallEmojiSpan)localObject4).mEId);
+          localObject4 = asdi.a(((QQText.SmallEmojiSpan)localObject4).mEpId, ((QQText.SmallEmojiSpan)localObject4).mEId);
           ((StringBuilder)localObject1).replace(j - i, k - i, String.valueOf(new char[] { '\024', localObject4[3], localObject4[2], localObject4[1], localObject4[0] }));
           continue;
           ((StringBuilder)localObject1).replace(j - i, k - i, TextUtils.getSysEmotcationString(((QQText.EmoticonSpan)localObject4).index));
@@ -275,7 +275,7 @@ public class QQTextBuilder
         localStringBuilder.replace(k, m, TextUtils.getEmojiString(((QQText.EmoticonSpan)localObject2).index));
         continue;
         localObject2 = (QQText.SmallEmojiSpan)localObject2;
-        localObject2 = aqyy.a(((QQText.SmallEmojiSpan)localObject2).mEpId, ((QQText.SmallEmojiSpan)localObject2).mEId);
+        localObject2 = asdi.a(((QQText.SmallEmojiSpan)localObject2).mEpId, ((QQText.SmallEmojiSpan)localObject2).mEId);
         localStringBuilder.replace(k, m, String.valueOf(new char[] { '\024', localObject2[3], localObject2[2], localObject2[1], localObject2[0] }));
         if (QLog.isColorLevel())
         {

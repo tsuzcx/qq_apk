@@ -1,18 +1,6 @@
-public class yzn
+public abstract interface yzn
 {
-  public Object a;
-  public boolean a;
-  
-  public yzn(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public yzn(Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(int paramInt);
 }
 
 

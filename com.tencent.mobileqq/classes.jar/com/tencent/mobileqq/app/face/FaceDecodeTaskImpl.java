@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.app.face;
 
-import amqx;
-import anca;
 import android.util.Pair;
-import apbm;
-import bfvo;
+import antl;
+import aoep;
+import aqeq;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -126,8 +128,8 @@ public class FaceDecodeTaskImpl
       label331:
       if ((this.faceInfo.jdField_a_of_type_Boolean) && (localException2 != null) && ((this.faceInfo.jdField_a_of_type_Int == 1) || (this.faceInfo.jdField_a_of_type_Int == 32)))
       {
-        apbm localapbm = (apbm)this.app.getManager(180);
-        if (localapbm.a(localapbm.b(this.faceInfo.jdField_b_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString), (Setting)localException2.second, this.faceInfo.jdField_a_of_type_Int))
+        aqeq localaqeq = (aqeq)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER);
+        if (localaqeq.a(localaqeq.b(this.faceInfo.jdField_b_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString), (Setting)localException2.second, this.faceInfo.jdField_a_of_type_Int))
         {
           if (QLog.isColorLevel()) {
             QLog.i("Q.dynamicAvatar", 2, "FaceDecodeTaskImpl isNeed2UpdateSettingInfo.");
@@ -163,55 +165,55 @@ public class FaceDecodeTaskImpl
     Object localObject;
     if ((this.faceInfo.jdField_a_of_type_Int == 101) || (this.faceInfo.jdField_a_of_type_Int == 1001))
     {
-      localObject = (amqx)this.app.getBusinessHandler(6);
+      localObject = (antl)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
       if (this.faceInfo.jdField_a_of_type_Int == 1001)
       {
-        this.bitmap = ((amqx)localObject).a(GroupIconHelper.a(this.faceInfo.jdField_a_of_type_JavaLangString), false);
+        this.bitmap = ((antl)localObject).a(GroupIconHelper.a(this.faceInfo.jdField_a_of_type_JavaLangString), false);
         this.needDownload = false;
       }
     }
-    label252:
+    label254:
     do
     {
       do
       {
         return true;
-        this.bitmap = ((amqx)localObject).a(this.faceInfo.jdField_a_of_type_JavaLangString, false);
+        this.bitmap = ((antl)localObject).a(this.faceInfo.jdField_a_of_type_JavaLangString, false);
         break;
         if ((this.faceInfo.jdField_a_of_type_Int != 4) && (this.faceInfo.jdField_a_of_type_Int != 113)) {
-          break label299;
+          break label302;
         }
-        if (!((HotChatManager)this.app.getManager(60)).b(this.faceInfo.jdField_a_of_type_JavaLangString)) {
-          break label252;
+        if (!((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(this.faceInfo.jdField_a_of_type_JavaLangString)) {
+          break label254;
         }
         localObject = this.app.getFaceBitmapCacheKey(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, (byte)this.faceInfo.c, this.faceInfo.jdField_b_of_type_Int, this.faceInfo.d, false);
         this.bitmap = this.app.getBitmapFromCache((String)localObject);
       } while (this.bitmap != null);
       int i = HotChatManager.a(this.faceInfo.jdField_a_of_type_JavaLangString, this.app);
-      this.bitmap = bfvo.a(BaseApplicationImpl.sApplication.getResources(), i);
+      this.bitmap = bheg.a(BaseApplicationImpl.sApplication.getResources(), i);
       this.app.putBitmapToCache((String)localObject, this.bitmap, (byte)1);
       return true;
       if (!TroopUtils.hasSetTroopHead(this.faceInfo.jdField_a_of_type_JavaLangString))
       {
-        this.bitmap = ((anca)this.app.getBusinessHandler(20)).a(this.faceInfo.jdField_a_of_type_JavaLangString, false);
+        this.bitmap = ((aoep)this.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.faceInfo.jdField_a_of_type_JavaLangString, false);
         this.needDownload = false;
         return true;
       }
       if ((Setting)this.app.getQQHeadSetting(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int).second != null) {
-        break label380;
+        break label383;
       }
       this.needDownload = true;
     } while (!QLog.isColorLevel());
-    label299:
+    label302:
     QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap, needdown-settingNull, faceInfo=" + this.faceInfo.toString());
     return true;
-    label380:
+    label383:
     if (!this.app.isFaceFileExist(this.faceInfo.jdField_a_of_type_Int, this.faceInfo.jdField_a_of_type_JavaLangString, this.faceInfo.jdField_b_of_type_Int, this.faceInfo.d)) {}
     for (boolean bool = true;; bool = false)
     {
       this.needDownload = bool;
       if (!this.needDownload) {
-        break label476;
+        break label480;
       }
       if (!QLog.isColorLevel()) {
         break;
@@ -219,7 +221,7 @@ public class FaceDecodeTaskImpl
       QLog.d("Q.qqhead.FaceDecodeTaskImpl", 2, "doDecodeBitmap, needdown-fileNotExit, faceInfo=" + this.faceInfo.toString());
       return true;
     }
-    label476:
+    label480:
     return false;
   }
 }

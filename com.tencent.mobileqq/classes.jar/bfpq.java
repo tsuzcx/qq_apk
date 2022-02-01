@@ -1,19 +1,19 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bfpq
-  extends View.AccessibilityDelegate
+public class bfpq
+  implements View.OnClickListener
 {
-  bfpq(CharSequence paramCharSequence, String paramString) {}
+  public bfpq(HomeworkGuideFragment paramHomeworkGuideFragment) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void onClick(View paramView)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
-    }
-    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
+    this.a.getActivity().setResult(1000);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

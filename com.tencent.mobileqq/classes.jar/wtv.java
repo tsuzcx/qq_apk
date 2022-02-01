@@ -1,23 +1,21 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
-class wtv
-  implements wus
+public class wtv
 {
-  wtv(wtr paramwtr, StoryVideoItem paramStoryVideoItem) {}
+  public final String a;
+  public final zaw a;
+  public final zbe a;
+  public final String b;
   
-  public void a(wur paramwur)
+  public wtv(String paramString1, zbe paramzbe, zaw paramzaw, String paramString2)
   {
-    if (this.jdField_a_of_type_Wtr.isCanceled()) {}
-    do
-    {
-      return;
-      xvv.a(this.jdField_a_of_type_Wtr.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Wtr.a.c]);
-    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a, 12));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtr.a, 12);
-    this.jdField_a_of_type_Wtr.a.d = 1;
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtr.a).a(this.jdField_a_of_type_Wtr.a, paramwur, VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a));
-    xwa.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Zbe = paramzbe;
+    this.jdField_a_of_type_Zaw = paramzaw;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Zbe + ", comInfo=" + this.jdField_a_of_type_Zaw + ", extCfgInfo=" + this.b + '}';
   }
 }
 

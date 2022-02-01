@@ -1,50 +1,149 @@
-import com.tencent.lbssearch.httpresponse.BaseObject;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
-import com.tencent.map.tools.net.http.HttpResponseListener;
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import android.content.SharedPreferences;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class axxu
-  implements HttpResponseListener<BaseObject>
 {
-  private final axxz jdField_a_of_type_Axxz;
-  private final LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  boolean a;
+  protected int b;
+  boolean b;
+  protected int c;
+  protected int d;
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
+  protected String i = "";
+  protected String j = "";
+  protected String k = "";
+  protected String l = "";
+  protected String m = "";
+  protected String n = "";
+  protected String o = "";
+  protected String p = "";
   
-  public axxu(axxt paramaxxt, LatLng paramLatLng, axxz paramaxxz)
+  static
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Axxz = paramaxxz;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    jdField_c_of_type_JavaLangString = "";
+    jdField_d_of_type_JavaLangString = "";
   }
   
-  public void a(int paramInt, BaseObject paramBaseObject)
+  public axxu()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(axxq.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Axxt.b + "] netGet onSuccess. resultCode : " + paramInt + " result : " + paramBaseObject);
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public axxu a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return this;
+  }
+  
+  public axxu a(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
     }
-    if ((paramBaseObject instanceof Geo2AddressResultObject))
+    if (this.jdField_b_of_type_Boolean) {
+      this.m = ("" + axqc.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+    }
+    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
+    if (l1 % 1000L > 500L) {}
+    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
     {
-      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
-      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null) && (paramBaseObject.result.pois.size() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(axxq.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Axxt.b + "]  netGet invoked success. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poi_size : " + paramBaseObject.result.pois.size());
-        }
-        Poi[] arrayOfPoi = new Poi[paramBaseObject.result.pois.size()];
-        paramBaseObject = new PoiBean(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, (Poi[])paramBaseObject.result.pois.toArray(arrayOfPoi));
-        this.jdField_a_of_type_Axxt.a("netGet", paramBaseObject);
-        this.jdField_a_of_type_Axxz.a(paramBaseObject);
-      }
+      this.e = (l1 + "");
+      this.f = jdField_c_of_type_JavaLangString;
+      this.g = jdField_b_of_type_JavaLangString;
+      this.h = jdField_a_of_type_JavaLangString;
+      this.i = (HttpUtil.getNetWorkType() + "");
+      bdla.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+      return;
     }
   }
   
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  public axxu b()
   {
-    QLog.e(axxq.a, 1, paramThrowable, new Object[] { "[status][poiLoader][" + this.jdField_a_of_type_Axxt.b + "] netGet invoked fail. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " errorCode : " + paramInt + " errorMsg : " + paramString });
-    this.jdField_a_of_type_Axxz.a(null);
+    this.jdField_b_of_type_Boolean = true;
+    return this;
+  }
+  
+  public axxu b(String paramString)
+  {
+    this.f = paramString;
+    return this;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
+    }
+    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
+    }
+    this.i = (HttpUtil.getNetWorkType() + "");
+    bdla.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
+  }
+  
+  public axxu c(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public axxu d(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public axxu e(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public axxu f(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public axxu g(String paramString)
+  {
+    this.p = paramString;
+    return this;
+  }
+  
+  public axxu h(String paramString)
+  {
+    this.j = paramString;
+    return this;
+  }
+  
+  public axxu i(String paramString)
+  {
+    this.k = paramString;
+    return this;
   }
 }
 

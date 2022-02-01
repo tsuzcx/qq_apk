@@ -1,15 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.8.1;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.AppInterface;
 
 public class blre
-  implements zwb
 {
-  blre(blqw paramblqw) {}
-  
-  public void a()
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    ThreadManager.getUIHandler().postDelayed(new VideoStoryCapturePart.8.1(this), 500L);
+    if (a(paramString6))
+    {
+      blrb.a(paramAppInterface, new blqo().a(paramString1).b("3").c("39815").d(paramString2).e(paramString3).a(new String[] { paramString4 }));
+      return;
+    }
+    blrb.a(paramAppInterface, paramString1, "3", "300392", paramString3, new String[] { paramString5, paramString4 });
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return ("detail".equals(paramString)) || ("tag".equals(paramString)) || ("topic".equals(paramString));
+  }
+  
+  public static void b(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    if (a(paramString6))
+    {
+      blrb.a(paramAppInterface, new blqo().a(paramString1).b("3").c("39816").d(paramString2).e(paramString3).a(new String[] { paramString4 }));
+      return;
+    }
+    blrb.a(paramAppInterface, paramString1, "3", "300393", paramString3, new String[] { paramString5, paramString4 });
+  }
+  
+  public static void c(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    if (a(paramString6))
+    {
+      blrb.a(paramAppInterface, new blqo().a(paramString1).b("2").c("200778").d(paramString2).e(paramString3).a(new String[] { paramString4 }));
+      return;
+    }
+    blrb.a(paramAppInterface, paramString1, "2", "210393", paramString3, new String[] { paramString5, paramString4 });
   }
 }
 

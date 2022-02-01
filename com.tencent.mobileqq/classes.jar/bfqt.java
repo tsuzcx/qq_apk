@@ -1,56 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
-class bfqt
-  extends CustomLruCache<String, Drawable>
+public class bfqt
+  implements bghi
 {
-  bfqt(bfqs parambfqs, int paramInt)
-  {
-    super(paramInt);
-  }
+  public bfqt(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  protected int a(String paramString, Drawable paramDrawable)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
     {
-      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getActivity(), 2131697182, 0).a();
+        paramJSONObject = AIOUtils.setOpenAIOIntent(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
+        paramJSONObject.addFlags(268435456);
+        paramJSONObject.putExtra("uin", this.a.b);
+        paramJSONObject.putExtra("uintype", 1);
+        this.a.getActivity().startActivity(paramJSONObject);
+        this.a.getActivity().overridePendingTransition(2130771990, 2130772301);
       }
     }
-    int m;
-    int k;
-    do
+    else
     {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
-      paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
-      }
+      return;
     }
-    for (;;)
+    if (paramInt == 111000)
     {
-      k += 1;
-      break;
+      QQToast.a(this.a.getActivity(), 2131697181, 0).a();
+      return;
     }
+    QQToast.a(this.a.getActivity(), 2131697241, 0).a();
   }
 }
 

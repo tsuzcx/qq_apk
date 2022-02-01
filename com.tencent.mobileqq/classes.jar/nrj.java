@@ -1,32 +1,74 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
 
-class nrj
-  extends Handler
+public class nrj
 {
-  nrj(nri paramnri) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static int a(Bitmap paramBitmap, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.jdField_a_of_type_Int == this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.getScrollY())
+    int[] arrayOfInt = new int[1];
+    if (paramInt == -1)
     {
-      if ((this.a.jdField_a_of_type_Int > 0) && (!this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.a()))
-      {
-        int i = this.a.jdField_a_of_type_Int;
-        i = (int)(this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_Int * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + this.a.jdField_a_of_type_Int);
-        int j = (int)(this.a.jdField_a_of_type_Int - (this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight() + this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_Float * 56.0F - this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_Int * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double)));
-        if ((i > this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight() + this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_Float * 56.0F) || (i > this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_b_of_type_AndroidWidgetTextView.getHeight())) {
-          this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.scrollBy(0, -j);
-        }
-      }
-      return;
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      GLES20.glBindTexture(3553, arrayOfInt[0]);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentBizLebasearchLebaSearchPluginManagerActivity.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.getScrollY();
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    for (;;)
+    {
+      return arrayOfInt[0];
+      GLES20.glBindTexture(3553, paramInt);
+      GLUtils.texSubImage2D(3553, 0, 0, 0, paramBitmap);
+      arrayOfInt[0] = paramInt;
+    }
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    int[] arrayOfInt = new int[1];
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString);
+    GLES20.glCompileShader(paramInt);
+    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
+    {
+      bjuc.a("OpenGlUtils", "Compilation\n" + GLES20.glGetShaderInfoLog(paramInt));
+      return 0;
+    }
+    return paramInt;
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int[] arrayOfInt = new int[1];
+    int i = a(paramString1, 35633);
+    if (i == 0)
+    {
+      bjuc.a("OpenGlUtils", "Vertex Shader Failed");
+      return 0;
+    }
+    int j = a(paramString2, 35632);
+    if (j == 0)
+    {
+      bjuc.a("OpenGlUtils", "Fragment Shader Failed");
+      return 0;
+    }
+    int k = GLES20.glCreateProgram();
+    GLES20.glAttachShader(k, i);
+    GLES20.glAttachShader(k, j);
+    GLES20.glLinkProgram(k);
+    GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
+    if (arrayOfInt[0] <= 0)
+    {
+      bjuc.a("OpenGlUtils", "Linking Failed");
+      return 0;
+    }
+    GLES20.glDeleteShader(i);
+    GLES20.glDeleteShader(j);
+    return k;
   }
 }
 

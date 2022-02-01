@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-
 class BaseChatPie$50
   implements Runnable
 {
@@ -10,7 +7,7 @@ class BaseChatPie$50
   
   public void run()
   {
-    QQToast.a(this.this$0.app.getApp(), 2131689991, 1).b(this.this$0.getTitleBarHeight());
+    this.this$0.playPersonalSound(2131230732);
   }
 }
 

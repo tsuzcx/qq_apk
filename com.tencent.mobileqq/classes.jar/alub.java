@@ -1,17 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
-
-class alub
-  implements ValueCallback<String>
+public abstract interface alub
 {
-  alub(alua paramalua) {}
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
-    }
-  }
+  public abstract void a();
 }
 
 

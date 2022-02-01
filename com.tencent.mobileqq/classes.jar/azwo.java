@@ -1,113 +1,157 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.widget.SingleLineTextView;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class azwo
-  extends aptq<azwm>
+public abstract class azwo
+  extends azwn<View>
 {
-  @NonNull
-  public azwm a(int paramInt)
+  protected azww a;
+  protected baea a;
+  protected birs a;
+  
+  public azwo(azxt paramazxt, azrb paramazrb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendClueConfigProcessor", 2, String.format("migrateOldOrDefaultContent type=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    return new azwm();
+    super(paramazxt, paramazrb);
   }
   
-  @Nullable
-  public azwm a(aptx[] paramArrayOfaptx)
+  private void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5, azri paramazri)
   {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    int i;
-    if (paramArrayOfaptx != null)
+    azri.a(paramView1, "background", paramazri, "commonItemTopBorderBackground");
+    azri.a(paramTextView, "color", paramazri, "commonItemContentColor");
+    azri.a(paramView2, "color", paramazri, "commonItemContentColor");
+    azri.a(paramImageView, "src", paramazri, "commonItemMoreSrc");
+    if (paramImageView != null)
     {
-      localObject1 = localObject3;
-      if (paramArrayOfaptx.length > 0)
+      paramView1 = paramImageView.getLayoutParams();
+      paramView1.width = -2;
+      paramView1.height = -2;
+      paramImageView.setLayoutParams(paramView1);
+    }
+    if (paramView3 != null)
+    {
+      paramView3.setBackgroundResource(0);
+      paramView3.setVisibility(8);
+    }
+    if (paramView4 != null) {
+      paramView4.setBackgroundResource(0);
+    }
+    if (paramView5 != null) {
+      paramView5.setBackgroundResource(0);
+    }
+  }
+  
+  private void b(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  {
+    if (paramView1 != null) {
+      paramView1.setBackgroundResource(2130839498);
+    }
+    this.jdField_a_of_type_Baea.a(paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+  }
+  
+  private void c(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  {
+    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+    if (paramView1 != null) {
+      paramView1.setBackgroundResource(2130839498);
+    }
+    if (paramTextView != null) {
+      paramTextView.setTextColor(localResources.getColorStateList(2131167026));
+    }
+    if ((paramView2 instanceof TextView)) {
+      ((TextView)paramView2).setTextColor(localResources.getColorStateList(2131167106));
+    }
+    for (;;)
+    {
+      if (paramImageView != null)
       {
-        int j = paramArrayOfaptx.length;
-        i = 0;
-        localObject1 = localObject3;
-        if (i < j)
-        {
-          localObject1 = paramArrayOfaptx[i];
-          if (localObject1 == null) {
-            break label179;
-          }
-        }
+        paramImageView.setImageResource(2130839337);
+        paramView1 = paramImageView.getLayoutParams();
+        paramView1.width = -2;
+        paramView1.height = -2;
+        paramImageView.setLayoutParams(paramView1);
+      }
+      if (paramView3 != null)
+      {
+        paramView3.setBackgroundResource(0);
+        paramView3.setVisibility(8);
+      }
+      if (paramView4 != null) {
+        paramView4.setBackgroundResource(0);
+      }
+      if (paramView5 != null) {
+        paramView5.setBackgroundResource(0);
+      }
+      return;
+      if ((paramView2 instanceof SingleLineTextView)) {
+        ((SingleLineTextView)paramView2).setTextColor(localResources.getColorStateList(2131167106));
       }
     }
-    label179:
-    Object localObject2;
-    for (localObject1 = ((aptx)localObject1).a;; localObject2 = null)
+  }
+  
+  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView)
+  {
+    a(paramView1, paramTextView, paramView2, paramImageView, null, null, null);
+  }
+  
+  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed content=\n%s", new Object[] { localObject1 }));
+      azri localazri = ((azrb)this.b).jdField_a_of_type_Azri;
+      if ((localazri != null) && (localazri.a != null) && (!localazri.a.isEmpty()))
+      {
+        a(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5, localazri);
+        return;
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        try
-        {
-          azwm localazwm = new azwm();
-          localObject1 = new JSONObject((String)localObject1);
-          if (((JSONObject)localObject1).has("friendClueSwitch")) {
-            localazwm.a = ((JSONObject)localObject1).getBoolean("friendClueSwitch");
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendClueConfigProcessor", 2, String.format("onParsed friendClueConfig=%s", new Object[] { localazwm }));
-          }
-          localObject1 = localazwm;
-          return localObject1;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("FriendClueConfigProcessor", 1, "onParsed fail.", localException);
-        }
+      if (azri.a(((azrb)this.b).jdField_a_of_type_Long))
+      {
+        b(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+        return;
       }
-      i += 1;
-      break;
+    }
+    catch (Exception paramView1)
+    {
+      QLog.e("AbsProfileContentComponent", 1, "updateItemTheme fail.", paramView1);
+      return;
+    }
+    c(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+  }
+  
+  protected void a(TextView paramTextView, View paramView)
+  {
+    a(null, paramTextView, paramView, null, null, null, null);
+  }
+  
+  protected void a(TextView paramTextView, View paramView, ImageView paramImageView)
+  {
+    a(null, paramTextView, paramView, paramImageView, null, null, null);
+  }
+  
+  public void a(azww paramazww, birs parambirs, baea parambaea)
+  {
+    this.jdField_a_of_type_Azww = paramazww;
+    this.jdField_a_of_type_Birs = parambirs;
+    this.jdField_a_of_type_Baea = parambaea;
+  }
+  
+  protected void a(ProfileContentTitleView paramProfileContentTitleView, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (FrameLayout localFrameLayout = paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetFrameLayout;; localFrameLayout = null)
+    {
+      a(paramProfileContentTitleView.jdField_b_of_type_AndroidViewViewGroup, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetTextView, null, paramProfileContentTitleView.jdField_b_of_type_AndroidWidgetImageView, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetImageView, paramProfileContentTitleView.c, localFrameLayout);
+      return;
     }
   }
   
-  public void a(azwm paramazwm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendClueConfigProcessor", 2, String.format("onUpdate newConf=%s", new Object[] { paramazwm }));
-    }
-  }
-  
-  public Class<azwm> clazz()
-  {
-    return azwm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendClueConfigProcessor", 2, String.format("onReqFailed failCode=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-  }
-  
-  public int type()
-  {
-    return 677;
-  }
+  public abstract String a_();
 }
 
 

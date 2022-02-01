@@ -1,15 +1,10 @@
-public class amwm
+class amwm
 {
-  public int a;
-  public long a = 9223372036854775807L;
-  public String a;
-  public int b = 1000;
-  public int c;
-  public int d = -1;
+  private static amwf a = new amwf("cm_game_module");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwm
  * JD-Core Version:    0.7.0.1
  */

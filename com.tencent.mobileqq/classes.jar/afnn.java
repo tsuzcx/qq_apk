@@ -1,313 +1,484 @@
-import android.content.Context;
+import Wallet.AcsAckMsgReq;
+import Wallet.AcsAckMsgRsp;
+import Wallet.AcsDelMsgReq;
+import Wallet.AcsDelMsgRsp;
+import Wallet.AcsGetMsgListReq;
+import Wallet.AcsGetMsgListRsp;
+import Wallet.AcsGetMsgReq;
+import Wallet.AcsGetMsgRsp;
+import Wallet.AcsHead;
+import Wallet.AcsPullMsgReq;
+import Wallet.AcsPullMsgRsp;
+import Wallet.AcsQueryReq;
+import Wallet.AcsQueryRsp;
+import Wallet.AcsSubNoticeReq;
+import Wallet.AcsSubNoticeRsp;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.DrawerFrame;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.activateFriend.biz.QQReminderServlet.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import java.io.Serializable;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
 
-public abstract class afnn
-  implements bhdo
+public class afnn
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int;
-  public Context a;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new afno(this);
-  public FragmentActivity a;
-  private View jdField_a_of_type_AndroidViewView;
-  public ViewGroup a;
-  private bhdo jdField_a_of_type_Bhdo = new afnq(this);
-  public SessionInfo a;
-  public BaseChatPie a;
-  public QQAppInterface a;
-  private DrawerFrame jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame;
-  private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  private boolean jdField_a_of_type_Boolean;
-  public ViewGroup b;
+  private static final String a = afnn.class.getSimpleName();
   
-  public afnn(BaseChatPie paramBaseChatPie)
+  private static AcsHead a()
   {
-    if (paramBaseChatPie == null) {}
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
-    this.jdField_a_of_type_AndroidViewViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIORootView;
-    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mDrawerFrame;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerCallbacks(this.jdField_a_of_type_Bhdo);
-    m();
-    Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+    AcsHead localAcsHead = new AcsHead();
+    localAcsHead.model = DeviceInfoUtil.getModel();
+    localAcsHead.platform = "Android";
+    localAcsHead.version = DeviceInfoUtil.getQQVersion();
+    return localAcsHead;
   }
   
-  private SystemBarCompact a()
+  private void a(Bundle paramBundle, Packet paramPacket)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
-    {
-      Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localFragment != null) {
-        return ((ChatFragment)localFragment).a;
-      }
-    }
-    return null;
-  }
-  
-  private boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 != null) && (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getParent() != null);
-  }
-  
-  private boolean d()
-  {
-    boolean bool = true;
-    if ((ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null)) || (bbyp.b())) {
-      bool = false;
-    }
-    return bool;
-  }
-  
-  private void m()
-  {
-    NavBarAIO localNavBarAIO = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mCustomTitleView;
-    if (localNavBarAIO != null) {
-      localNavBarAIO.addOnLayoutChangeListener(new afnp(this, localNavBarAIO));
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.DelMsg");
+    paramBundle = (AcsDelMsgReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("DelMsg");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
     }
   }
   
-  private void n()
+  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
   {
-    boolean bool = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, "addImmersiveTitleBar, isVisible: " + bool);
-    }
-    if (!bool)
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 == null) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = new ImmersiveTitleBar2(this.jdField_a_of_type_AndroidContentContext);
-      }
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom());
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, localLayoutParams);
-      ((TopGestureLayout)this.jdField_a_of_type_AndroidViewViewGroup).setPadding2(0, 0, 0, 0);
-      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(false);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      localLayoutParams.leftMargin += this.jdField_a_of_type_AndroidGraphicsRect.left;
-      localLayoutParams.rightMargin += this.jdField_a_of_type_AndroidGraphicsRect.right;
-      localLayoutParams.topMargin += this.jdField_a_of_type_AndroidGraphicsRect.top;
-      localLayoutParams.bottomMargin += this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      this.b.setFitsSystemWindows(true);
-      p();
-    }
-  }
-  
-  private void o()
-  {
-    boolean bool = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, "removeImmersiveTitleBar, isVisible: " + bool);
-    }
-    if (bool)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
-      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
-      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-        this.jdField_a_of_type_AndroidViewViewGroup.setPadding(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-      }
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      if (this.jdField_a_of_type_AndroidGraphicsRect != null)
-      {
-        localLayoutParams.leftMargin -= this.jdField_a_of_type_AndroidGraphicsRect.left;
-        localLayoutParams.rightMargin -= this.jdField_a_of_type_AndroidGraphicsRect.right;
-        localLayoutParams.topMargin -= this.jdField_a_of_type_AndroidGraphicsRect.top;
-        localLayoutParams.bottomMargin -= this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      }
-      this.b.setFitsSystemWindows(false);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label230;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setSystemBarDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    for (;;)
-    {
-      if (d()) {
-        ImmersiveUtils.a(false, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow());
-      }
+    if (paramAppInterface == null) {
       return;
-      label230:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setSystemBarColor(this.jdField_a_of_type_Int, false);
     }
+    AcsGetMsgListReq localAcsGetMsgListReq = new AcsGetMsgListReq();
+    localAcsGetMsgListReq.head = a();
+    localAcsGetMsgListReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsGetMsgListReq.record_start = paramInt1;
+    localAcsGetMsgListReq.record_size = paramInt2;
+    NewIntent localNewIntent = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    localNewIntent.putExtra("account", paramAppInterface.getAccount());
+    localNewIntent.putExtra("req", localAcsGetMsgListReq);
+    localNewIntent.putExtra("param_req_type", 2000);
+    localNewIntent.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(localNewIntent);
   }
   
-  private void p()
+  public static void a(AppInterface paramAppInterface, String paramString, long paramLong, int paramInt, BusinessObserver paramBusinessObserver)
   {
-    boolean bool = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, "updateImmersiveTitleBar, isVisible: " + bool);
-    }
-    if (bool)
-    {
-      SystemBarCompact localSystemBarCompact = a();
-      if (localSystemBarCompact != null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localSystemBarCompact.mStatusBarDarwable;
-        this.jdField_a_of_type_Int = localSystemBarCompact.mStatusBarColor;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setSystemBarColor(0, false);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label113;
-      }
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    for (;;)
-    {
-      if (d()) {
-        ImmersiveUtils.a(true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow());
-      }
+    if (paramAppInterface == null) {
       return;
-      label113:
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(this.jdField_a_of_type_Int);
+    }
+    AcsDelMsgReq localAcsDelMsgReq = new AcsDelMsgReq();
+    localAcsDelMsgReq.head = a();
+    localAcsDelMsgReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsDelMsgReq.msg_id = paramString;
+    localAcsDelMsgReq.mn_appid = paramLong;
+    localAcsDelMsgReq.source = paramInt;
+    paramString = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    paramString.putExtra("account", paramAppInterface.getAccount());
+    paramString.putExtra("req", localAcsDelMsgReq);
+    paramString.putExtra("param_req_type", 2001);
+    paramString.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(paramString);
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, BusinessObserver paramBusinessObserver)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    AcsSubNoticeReq localAcsSubNoticeReq = new AcsSubNoticeReq();
+    localAcsSubNoticeReq.head = a();
+    localAcsSubNoticeReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsSubNoticeReq.msg_id = paramString1;
+    localAcsSubNoticeReq.domain = paramString2;
+    paramString1 = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    paramString1.putExtra("account", paramAppInterface.getAccount());
+    paramString1.putExtra("req", localAcsSubNoticeReq);
+    paramString1.putExtra("param_req_type", 2002);
+    paramString1.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(paramString1);
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString, BusinessObserver paramBusinessObserver)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    AcsPullMsgReq localAcsPullMsgReq = new AcsPullMsgReq();
+    localAcsPullMsgReq.head = a();
+    localAcsPullMsgReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsPullMsgReq.day = paramString;
+    paramString = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    paramString.putExtra("account", paramAppInterface.getAccount());
+    paramString.putExtra("req", localAcsPullMsgReq);
+    paramString.putExtra("param_req_type", 2003);
+    paramString.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(paramString);
+  }
+  
+  public static void a(AppInterface paramAppInterface, ArrayList<String> paramArrayList, BusinessObserver paramBusinessObserver)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    AcsAckMsgReq localAcsAckMsgReq = new AcsAckMsgReq();
+    localAcsAckMsgReq.head = a();
+    localAcsAckMsgReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsAckMsgReq.msg_id_list = paramArrayList;
+    paramArrayList = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    paramArrayList.putExtra("account", paramAppInterface.getAccount());
+    paramArrayList.putExtra("req", localAcsAckMsgReq);
+    paramArrayList.putExtra("param_req_type", 2004);
+    paramArrayList.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(paramArrayList);
+  }
+  
+  private void b(Bundle paramBundle, Packet paramPacket)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.GetMsgList");
+    paramBundle = (AcsGetMsgListReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("GetMsgList");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
     }
   }
   
-  protected abstract View a();
-  
-  public void a()
+  public static void b(AppInterface paramAppInterface, String paramString1, String paramString2, BusinessObserver paramBusinessObserver)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    if (paramAppInterface == null) {
+      return;
+    }
+    AcsGetMsgReq localAcsGetMsgReq = new AcsGetMsgReq();
+    localAcsGetMsgReq.head = a();
+    localAcsGetMsgReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsGetMsgReq.msg_id = paramString1;
+    localAcsGetMsgReq.domain = paramString2;
+    paramString1 = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    paramString1.putExtra("account", paramAppInterface.getAccount());
+    paramString1.putExtra("req", localAcsGetMsgReq);
+    paramString1.putExtra("param_req_type", 2005);
+    paramString1.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(paramString1);
+  }
+  
+  public static void b(AppInterface paramAppInterface, String paramString, BusinessObserver paramBusinessObserver)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    AcsQueryReq localAcsQueryReq = new AcsQueryReq();
+    localAcsQueryReq.head = a();
+    localAcsQueryReq.uin = Long.parseLong(paramAppInterface.getCurrentAccountUin());
+    localAcsQueryReq.msg_id = paramString;
+    paramString = new NewIntent(paramAppInterface.getApplication(), afnn.class);
+    paramString.putExtra("account", paramAppInterface.getAccount());
+    paramString.putExtra("req", localAcsQueryReq);
+    paramString.putExtra("param_req_type", 2006);
+    paramString.setObserver(paramBusinessObserver);
+    paramAppInterface.startServlet(paramString);
+  }
+  
+  private void c(Bundle paramBundle, Packet paramPacket)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.SubNotice");
+    paramBundle = (AcsSubNoticeReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("SubNotice");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
+    }
+  }
+  
+  private void d(Bundle paramBundle, Packet paramPacket)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.PullMsg");
+    paramBundle = (AcsPullMsgReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("PullMsg");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
+    }
+  }
+  
+  private void e(Bundle paramBundle, Packet paramPacket)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.AckMsg");
+    paramBundle = (AcsAckMsgReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("AckMsg");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
+    }
+  }
+  
+  private void f(Bundle paramBundle, Packet paramPacket)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.GetMsg");
+    paramBundle = (AcsGetMsgReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("GetMsg");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
+    }
+  }
+  
+  private void g(Bundle paramBundle, Packet paramPacket)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramBundle.getString("account"), "NoticeSvr.Query");
+    paramBundle = (AcsQueryReq)paramBundle.getSerializable("req");
+    paramPacket.setServantName("Wallet.NoticeAccessServer.NoticeAccessObj");
+    paramPacket.setFuncName("Query");
+    paramPacket.addRequestPacket("req", paramBundle);
+    paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+    paramPacket.setTimeout(15000L);
+    if (!localToServiceMsg.isNeedCallback()) {
+      paramPacket.setNoResponse();
+    }
+  }
+  
+  public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
+  {
+    int i = paramIntent.getIntExtra("param_req_type", 0);
+    if (i == 0) {
+      super.notifyObserver(paramIntent, paramInt, paramBoolean, paramBundle, paramClass);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
+      paramIntent = ((NewIntent)paramIntent).getObserver();
+    } while (paramIntent == null);
+    ThreadManager.post(new QQReminderServlet.1(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject1 = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "cmd: " + (String)localObject1 + " ");
+    }
+    if (localObject1 == null) {}
+    Object localObject2;
+    do
+    {
+      return;
+      if (((String)localObject1).equals("NoticeSvr.GetMsgList"))
+      {
+        localObject1 = new Bundle();
+        try
+        {
+          localObject2 = (AcsGetMsgListRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsGetMsgListRsp());
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          if (localObject2 != null)
+          {
+            ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+            notifyObserver(paramIntent, 2000, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+            return;
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          paramFromServiceMsg.printStackTrace();
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          notifyObserver(paramIntent, 2000, false, (Bundle)localObject1, null);
+          return;
+        }
+        notifyObserver(paramIntent, 2000, false, (Bundle)localObject1, null);
+        return;
+      }
+      if (((String)localObject1).equals("NoticeSvr.DelMsg"))
+      {
+        localObject1 = new Bundle();
+        try
+        {
+          localObject2 = (AcsDelMsgRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsDelMsgRsp());
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          if (localObject2 != null)
+          {
+            ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+            notifyObserver(paramIntent, 2001, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+            return;
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          notifyObserver(paramIntent, 2001, false, (Bundle)localObject1, null);
+          return;
+        }
+        notifyObserver(paramIntent, 2001, false, (Bundle)localObject1, null);
+        return;
+      }
+      if (((String)localObject1).equals("NoticeSvr.SubNotice"))
+      {
+        localObject1 = new Bundle();
+        try
+        {
+          localObject2 = (AcsSubNoticeRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsSubNoticeRsp());
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          if (localObject2 != null)
+          {
+            ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+            notifyObserver(paramIntent, 2002, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+            return;
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          notifyObserver(paramIntent, 2002, false, (Bundle)localObject1, null);
+          return;
+        }
+        notifyObserver(paramIntent, 2002, false, (Bundle)localObject1, null);
+        return;
+      }
+      if (((String)localObject1).equals("NoticeSvr.PullMsg"))
+      {
+        localObject1 = new Bundle();
+        try
+        {
+          localObject2 = (AcsPullMsgRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsPullMsgRsp());
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          if (localObject2 != null)
+          {
+            ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+            notifyObserver(paramIntent, 2003, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+            return;
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          notifyObserver(paramIntent, 2003, false, (Bundle)localObject1, null);
+          return;
+        }
+        notifyObserver(paramIntent, 2003, false, (Bundle)localObject1, null);
+        return;
+      }
+      if (((String)localObject1).equals("NoticeSvr.AckMsg"))
+      {
+        localObject1 = new Bundle();
+        try
+        {
+          localObject2 = (AcsAckMsgRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsAckMsgRsp());
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          if (localObject2 != null)
+          {
+            ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+            notifyObserver(paramIntent, 2004, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+            return;
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          notifyObserver(paramIntent, 2004, false, (Bundle)localObject1, null);
+          return;
+        }
+        notifyObserver(paramIntent, 2004, false, (Bundle)localObject1, null);
+        return;
+      }
+      if (((String)localObject1).equals("NoticeSvr.GetMsg"))
+      {
+        localObject1 = new Bundle();
+        try
+        {
+          localObject2 = (AcsGetMsgRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsGetMsgRsp());
+          ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+          if (localObject2 != null)
+          {
+            ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+            notifyObserver(paramIntent, 2005, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+            return;
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          notifyObserver(paramIntent, 2005, false, (Bundle)localObject1, null);
+          return;
+        }
+        notifyObserver(paramIntent, 2005, false, (Bundle)localObject1, null);
+        return;
+      }
+    } while (!((String)localObject1).equals("NoticeSvr.Query"));
+    localObject1 = new Bundle();
     try
     {
-      this.jdField_a_of_type_AndroidViewView = a();
-      if (this.jdField_a_of_type_AndroidViewView == null) {}
-      this.jdField_a_of_type_Boolean = true;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
+      localObject2 = (AcsQueryRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new AcsQueryRsp());
+      ((Bundle)localObject1).putSerializable("req", paramIntent.getSerializableExtra("req"));
+      if (localObject2 != null)
       {
-        localOutOfMemoryError.printStackTrace();
-        QLog.d("BaseChatDrawer", 1, "BaseChatDrawer createDrawerView oom", localOutOfMemoryError);
+        ((Bundle)localObject1).putSerializable("rsp", (Serializable)localObject2);
+        notifyObserver(paramIntent, 2006, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+        return;
       }
     }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null))
+    catch (Exception paramFromServiceMsg)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(this.jdField_a_of_type_AndroidViewView, 1);
-      b();
+      notifyObserver(paramIntent, 2006, false, (Bundle)localObject1, null);
+      return;
     }
+    notifyObserver(paramIntent, 2006, false, (Bundle)localObject1, null);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(boolean paramBoolean)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(paramBoolean);
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent == null) {
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
-    }
-    return false;
-  }
-  
-  protected abstract void b();
-  
-  public void b(int paramInt) {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(1, paramBoolean);
-    }
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a())) {
-      p();
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      j();
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerEnabled(paramBoolean);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      l();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null)
+    switch (paramIntent.getInt("param_req_type", 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerCallbacks(null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = null;
+    default: 
+      return;
+    case 2000: 
+      b(paramIntent, paramPacket);
+      return;
+    case 2001: 
+      a(paramIntent, paramPacket);
+      return;
+    case 2002: 
+      c(paramIntent, paramPacket);
+      return;
+    case 2003: 
+      d(paramIntent, paramPacket);
+      return;
+    case 2004: 
+      e(paramIntent, paramPacket);
+      return;
+    case 2005: 
+      f(paramIntent, paramPacket);
+      return;
     }
-    Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
-    o();
-    if (this.jdField_a_of_type_Boolean) {
-      k();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, String.format("onDestroy, mHadInflated: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    }
+    g(paramIntent, paramPacket);
   }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void k() {}
-  
-  public void l() {}
 }
 
 

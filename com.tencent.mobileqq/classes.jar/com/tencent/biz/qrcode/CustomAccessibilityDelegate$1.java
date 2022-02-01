@@ -1,17 +1,17 @@
 package com.tencent.biz.qrcode;
 
-import yuv;
-import yuw;
+import zjo;
+import zjp;
 
 public class CustomAccessibilityDelegate$1
   implements Runnable
 {
-  public CustomAccessibilityDelegate$1(yuv paramyuv) {}
+  public CustomAccessibilityDelegate$1(zjo paramzjo) {}
   
   public void run()
   {
-    if (yuv.a(this.this$0) != null) {
-      yuv.a(this.this$0).b();
+    if (zjo.a(this.this$0) != null) {
+      zjo.a(this.this$0).b();
     }
   }
 }

@@ -1,14 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class acay
-  implements lxl
+class acay
+  implements View.OnClickListener
 {
-  acay(MsgType0x210 paramMsgType0x210) {}
+  acay(acav paramacav) {}
   
-  public void a(lxk paramlxk)
+  public void onClick(View paramView)
   {
-    paramlxk.b(this.a.vProtobuf);
-    paramlxk.a();
+    this.a.jdField_a_of_type_Acbf.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView, this.a.a(paramView), acav.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

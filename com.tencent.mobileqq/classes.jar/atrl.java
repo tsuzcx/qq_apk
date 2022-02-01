@@ -1,16 +1,13 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
 public class atrl
-  implements Handler.Callback
+  extends anrc
 {
-  public atrl(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  public atrl(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(Object paramObject)
   {
-    this.a.a(paramMessage);
-    return false;
+    TroopFileSearchFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

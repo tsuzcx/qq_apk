@@ -1,8 +1,6 @@
-public abstract interface bbtc
+public class bbtc
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public static final String a = anvx.a(2131713573);
 }
 
 

@@ -1,21 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.content.Context;
+import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IFlutterProxy;
+import io.flutter.view.FlutterMain;
 
-public class bkno
-  implements DialogInterface.OnClickListener
+class bkno
+  implements IFlutterProxy
 {
-  public bkno(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  bkno(bknl parambknl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void initFlutterRuntime(BaseRuntime paramBaseRuntime, Context paramContext)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    try
+    {
+      FlutterMain.setNativeLibDir(TissueEnvImpl.getNativeLibDirInSubProgress());
+      FlutterMain.startInitialization(paramContext.getApplicationContext());
+      FlutterMain.ensureInitializationComplete(paramContext.getApplicationContext(), null);
+      return;
+    }
+    catch (IllegalStateException paramBaseRuntime) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkno
  * JD-Core Version:    0.7.0.1
  */

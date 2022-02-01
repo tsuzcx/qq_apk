@@ -1,7 +1,7 @@
 package cooperation.vip.widget;
 
 import android.text.TextUtils;
-import blda;
+import bmpr;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,7 +9,7 @@ import java.net.URL;
 public class VipGeneralGdtShowView$2
   implements Runnable
 {
-  public VipGeneralGdtShowView$2(blda paramblda, String paramString) {}
+  public VipGeneralGdtShowView$2(bmpr parambmpr, String paramString) {}
   
   public void run()
   {

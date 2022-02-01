@@ -1,67 +1,76 @@
-import android.text.TextUtils;
-import android.util.SparseIntArray;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
 
-public final class ayfl
+class ayfl
+  implements DownloadListener
 {
-  public final SparseIntArray a = new SparseIntArray();
-  public final SparseIntArray b = new SparseIntArray();
-  public final SparseIntArray c = new SparseIntArray();
-  public final SparseIntArray d = new SparseIntArray();
+  ayfl(ayek paramayek) {}
   
-  private void a(String paramString)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOPlusPanelAppInfoOrderConfigProcessor", 2, "Config parse configText: " + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("c2c"))
-      {
-        paramString = paramString.optJSONObject("c2c");
-        if (paramString != null)
-        {
-          if (paramString.has("defaultTheme")) {
-            a(paramString.optJSONObject("defaultTheme"), this.a);
-          }
-          if (paramString.has("conciseTheme")) {
-            a(paramString.optJSONObject("conciseTheme"), this.b);
-          }
-        }
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramString, new Object[0]);
+    this.a.jdField_a_of_type_Int = 4;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    if (ayek.a(this.a) != null) {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, String.valueOf(ayek.a(this.a).tinyId), "", "yes", "android");
     }
   }
   
-  private void a(JSONObject paramJSONObject, SparseIntArray paramSparseIntArray)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (paramJSONObject != null) {
-      try
-      {
-        Iterator localIterator = paramJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          int i = paramJSONObject.optInt(str);
-          paramSparseIntArray.put(Integer.parseInt(str), i);
-        }
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramJSONObject, new Object[0]);
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.a.jdField_a_of_type_Ayjm != null) {
+      this.a.jdField_a_of_type_Ayjm.a(5);
+    }
+    if (ayek.a(this.a) != null) {
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, String.valueOf(ayek.a(this.a).tinyId), "", "yes", "android");
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Int = 1;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = (DownloadInfo)paramList.get(0);
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 2;
+      localMessage.arg1 = paramList.f;
+      localMessage.sendToTarget();
+      if ((paramList.f == 0) && (ayek.a(this.a) != null)) {
+        bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, String.valueOf(ayek.a(this.a).tinyId), "", "yes", "android");
       }
     }
   }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

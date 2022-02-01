@@ -1,26 +1,68 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class syc
-  implements basm
+public class syc
+  extends BaseAdapter
 {
-  syc(sya paramsya) {}
+  private syc(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public void a()
+  public T a(int paramInt)
   {
-    sya.a(this.a).setVisibility(8);
-    sya.b(this.a).setVisibility(8);
+    return (sye)ChannelClassificationListView.a(this.a).get(paramInt);
   }
   
-  public void b()
+  public int getCount()
   {
-    sya.a(this.a, false);
-    sya.a(this.a, 3);
-    this.a.a();
-    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_hotword_show_lasttime", System.currentTimeMillis()).commit();
+    return ChannelClassificationListView.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562736, paramViewGroup, false);
+      paramView.setOnClickListener(new syd(this, paramViewGroup));
+    }
+    for (;;)
+    {
+      Object localObject = (sye)ChannelClassificationListView.a(this.a).get(paramInt);
+      paramView.setTag(Integer.valueOf(paramInt));
+      ((TextView)paramView).setText(((sye)localObject).a());
+      if (!((sye)localObject).a())
+      {
+        ((sye)localObject).a(true);
+        localObject = new JSONObject();
+      }
+      try
+      {
+        ((JSONObject)localObject).put("subchannelid", a(paramInt).b());
+        ((JSONObject)localObject).put("subchannelname", a(paramInt).a());
+        ((JSONObject)localObject).put("channelid", ChannelClassificationListView.a(this.a));
+        olh.a(null, pkh.a() + "", "0X8009932", "0X8009932", 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

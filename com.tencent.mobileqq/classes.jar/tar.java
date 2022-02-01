@@ -1,8 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public abstract interface tar
 {
-  public abstract void a(TopicInfo paramTopicInfo);
+  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
 }
 
 

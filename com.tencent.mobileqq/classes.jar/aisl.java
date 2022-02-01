@@ -1,35 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aisl
-  implements bjoe
+  implements ansd
 {
-  public aisl(ContactsTroopAdapter paramContactsTroopAdapter, boolean paramBoolean, TroopInfo paramTroopInfo, bjnw parambjnw) {}
+  public aisl(AddContactsView paramAddContactsView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_AndroidContentContext, 1, 2131692035, 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
     }
-    for (;;)
+    if ((paramInt == 2) && (paramBoolean))
     {
-      this.jdField_a_of_type_Bjnw.e();
-      return;
-      paramView = (amoo)this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(22);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, 1);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, 0);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
-      }
+      this.a.d = true;
+      this.a.f();
     }
   }
 }

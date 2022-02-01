@@ -1,40 +1,25 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bhyd
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  public bhyd(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public bhyd(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public bhyd(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    if (this.a.getRequestedOrientation() == 0) {
+      this.a.setRequestedOrientation(1);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.setResult(0);
+      this.a.finish();
+    }
   }
 }
 

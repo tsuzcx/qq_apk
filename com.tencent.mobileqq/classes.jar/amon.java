@@ -1,74 +1,104 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amon
-  extends anav
+  implements GLSurfaceView.EGLContextFactory
 {
-  public void a()
+  private amon(ApolloSurfaceView paramApolloSurfaceView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    int i = Build.VERSION.SDK_INT;
-    Object localObject = BaseApplicationImpl.sApplication;
-    boolean bool1;
-    if (i > 10)
+    if (ApolloSurfaceView.access$700(this.a) != 0) {}
+    for (int i = 2;; i = amme.a())
     {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
-      if ((BaseActivity2.topActivity != null) && (BaseActivity2.topActivity.getClass().getName().equals(localObject)))
+      QLog.d("ApolloSurfaceView", 1, new Object[] { "[createContext], id:" + Thread.currentThread().getId(), ",openGLVersion:", Integer.valueOf(i) });
+      int[] arrayOfInt = new int[3];
+      arrayOfInt[0] = 12440;
+      arrayOfInt[1] = i;
+      arrayOfInt[2] = 12344;
+      EGLContext localEGLContext2 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, arrayOfInt);
+      EGLContext localEGLContext1 = localEGLContext2;
+      if (localEGLContext2 == null)
       {
-        bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131694546), "qqsetting_screenshot_key", false);
-        boolean bool2 = bfrw.a(BaseApplication.getContext());
-        if ((bool1) && (bool2))
+        localEGLContext1 = localEGLContext2;
+        if (arrayOfInt[1] == 3)
         {
-          if (BaseActivity2.topActivity.screenShot == null)
-          {
-            if (!BaseActivity2.topActivity.isPause) {
-              break label164;
-            }
-            localObject = BaseActivity2.topActivity.getApplicationContext();
-            label118:
-            BaseActivity2.topActivity.screenShot = new ScreenShot((Context)localObject, BaseActivity2.topActivity.getWindow());
-          }
-          bool1 = BaseActivity2.topActivity.screenShot.b();
-          if (!bool1) {
-            break label172;
-          }
-          ScreenShot.a("BaseActivity2 is showing");
+          QLog.e("ApolloSurfaceView", 1, "[createContext], context error, try foll back opengl 2.0");
+          arrayOfInt[1] = 2;
+          localEGLContext1 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, arrayOfInt);
         }
+      }
+      this.a.mIsDestroy.set(false);
+      return localEGLContext1;
+    }
+  }
+  
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    QLog.d("ApolloSurfaceView", 1, "[destroyContext], id:" + Thread.currentThread().getId());
+    Object localObject;
+    if (ApolloSurfaceView.access$800(this.a))
+    {
+      localObject = amwn.a();
+      if (localObject != null)
+      {
+        if (!(localObject instanceof QQAppInterface)) {
+          break label161;
+        }
+        localObject = ApolloCmdChannel.getChannel((QQAppInterface)localObject);
       }
     }
     for (;;)
     {
-      return;
-      i = 0;
-      break;
-      label164:
-      localObject = BaseActivity2.topActivity;
-      break label118;
-      label172:
-      if (!BaseActivity2.topActivity.screenShot.c()) {
-        BaseActivity2.access$000(BaseActivity2.topActivity);
-      }
-      while (QLog.isColorLevel())
+      if (localObject != null)
       {
-        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
-        return;
-        if ((!bgbw.g) && (Build.VERSION.SDK_INT < 11)) {
-          bgbt.a().a(BaseActivity2.topActivity.getWindow());
+        ((ApolloCmdChannel)localObject).callbackDirect(this.a.isJsRuntime(), this.a.getLuaState(), 0, "sc.force_stop_game.local", "{}");
+        ((ApolloCmdChannel)localObject).destroyMusic();
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloSurfaceView", 2, "destroyContext, closeGame)");
         }
       }
+      for (;;)
+      {
+        this.a.mIsDestroy.set(true);
+        if (this.a.mRender != null) {
+          this.a.mRender.onDestroy();
+        }
+        if (paramEGL10 != null) {
+          paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+        }
+        return;
+        label161:
+        if (!(localObject instanceof CmGameAppInterface)) {
+          break label226;
+        }
+        QLog.i("cmgame_process.", 1, "[destroyContext] in game.");
+        localObject = amwn.a();
+        break;
+        if ((this.a.mApolloWorker != null) && (this.a.mApolloWorker.a != null)) {
+          this.a.mApolloWorker.a.a("if(\"undefined\" != typeof clearSprite && clearSprite){clearSprite();}");
+        }
+      }
+      label226:
+      localObject = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amon
  * JD-Core Version:    0.7.0.1
  */

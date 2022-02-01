@@ -1,35 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-class awdr
-  extends ayem
+public class awdr
 {
-  awdr(awdi paramawdi, String paramString, awdd paramawdd) {}
+  public int a;
+  public int b;
   
-  public void a(int paramInt, aydt paramaydt)
+  public awdr(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramaydt != null)
-    {
-      str1 = str2;
-      i = j;
-      if (paramaydt.a != null)
-      {
-        i = paramaydt.a.a;
-        str1 = paramaydt.a.b;
-      }
-    }
-    awdi.a(this.jdField_a_of_type_Awdi, this.jdField_a_of_type_Awdd, paramInt, i, str1);
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    awdi.a(this.jdField_a_of_type_Awdi, this.jdField_a_of_type_Awdd, paramInt);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

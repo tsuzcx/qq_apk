@@ -1,6 +1,8 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import achq;
+import aanc;
+import aanf;
+import acxy;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,17 +17,17 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import babd;
-import bahd;
-import bbwq;
-import bbxg;
-import bfpx;
-import bmql;
-import bmtm;
-import bmxe;
-import bmxf;
-import bnzv;
-import bnzx;
+import bbhm;
+import bbns;
+import bddl;
+import bdeb;
+import bgyo;
+import bogd;
+import boje;
+import bomw;
+import bomx;
+import bppn;
+import bppp;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
@@ -59,19 +61,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vkm;
-import voj;
-import vtn;
-import vuq;
-import vux;
-import xvv;
-import xwa;
-import yos;
-import yoy;
-import ypi;
-import yqs;
-import zxq;
-import zxt;
+import vzh;
+import wde;
+import wii;
+import wjl;
+import wjs;
+import ykq;
+import ykv;
+import zdl;
+import zdr;
+import zeb;
+import zfl;
 
 @TargetApi(14)
 public class VideoCompositeHelper
@@ -86,9 +86,9 @@ public class VideoCompositeHelper
   {
     try
     {
-      xvv.b(TAG, "LoadExtractedShortVideoSo :soLoadStatus=" + VideoEnvironment.getShortVideoSoLibLoadStatus());
+      ykq.b(TAG, "LoadExtractedShortVideoSo :soLoadStatus=" + VideoEnvironment.getShortVideoSoLibLoadStatus());
       int i = VideoEnvironment.loadAVCodecSoNotify("AVCodec", null, true);
-      xvv.b(TAG, "LoadExtractedShortVideoSo :code=" + i);
+      ykq.b(TAG, "LoadExtractedShortVideoSo :code=" + i);
       return;
     }
     catch (Throwable localThrowable)
@@ -101,19 +101,19 @@ public class VideoCompositeHelper
   {
     if (EncodeVideoUtil.adjustBitrate(paramString1, paramString2, paramPublishVideoEntry) != 0)
     {
-      xvv.d(TAG, "adjustBitrate: errcode" + paramInt);
+      ykq.d(TAG, "adjustBitrate: errcode" + paramInt);
       File localFile = new File(paramString2);
       if (localFile.exists()) {
         localFile.delete();
       }
-      ypi.c(paramString1, paramString2);
+      zeb.c(paramString1, paramString2);
       paramPublishVideoEntry.useSrcFile = true;
     }
   }
   
   private int compressVideoByFFMPEG(String paramString1, String paramString2, int paramInt)
   {
-    xvv.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] encode video file is too big, so need to compress to:" + paramInt);
+    ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] encode video file is too big, so need to compress to:" + paramInt);
     long l2 = System.currentTimeMillis();
     Object localObject1 = new Object();
     AtomicInteger localAtomicInteger = new AtomicInteger(-1);
@@ -123,24 +123,24 @@ public class VideoCompositeHelper
     {
       try
       {
-        xvv.c(TAG, "compressVideoWithBitrate!");
+        ykq.c(TAG, "compressVideoWithBitrate!");
         FFmpegUtils.compressVideoWithBitrate(paramString2, str, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject1, localAtomicInteger, 1));
       }
       catch (IOException localIOException)
       {
-        xvv.d(TAG, "Wait encode video exception:" + localIOException);
+        ykq.d(TAG, "Wait encode video exception:" + localIOException);
         paramInt = 943001;
         continue;
       }
       catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
       {
-        xvv.d(TAG, "Wait encode video exception:" + localFFmpegCommandAlreadyRunningException);
+        ykq.d(TAG, "Wait encode video exception:" + localFFmpegCommandAlreadyRunningException);
         paramInt = 943002;
         continue;
       }
       catch (InterruptedException localInterruptedException)
       {
-        xvv.d(TAG, "Wait encode video exception:" + localInterruptedException);
+        ykq.d(TAG, "Wait encode video exception:" + localInterruptedException);
         paramInt = 943003;
         continue;
         FileUtils.deleteFile(str);
@@ -151,17 +151,17 @@ public class VideoCompositeHelper
       {
         localObject1.wait(180000L);
         paramInt = localAtomicInteger.get();
-        xvv.c(TAG, "compressVideoWithBitrate end!");
+        ykq.c(TAG, "compressVideoWithBitrate end!");
         if (paramInt == 0)
         {
           FileUtils.deleteFile(paramString2);
           FileUtils.rename(str, paramString2);
-          l1 = ypi.a(paramString2);
-          i = yqs.c(paramString2);
-          xvv.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] ffmpeg compress encode video file size to:" + l1 + " video bitrate to:" + i);
+          l1 = zeb.a(paramString2);
+          i = zfl.c(paramString2);
+          ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " [improve_video_clear] ffmpeg compress encode video file size to:" + l1 + " video bitrate to:" + i);
           l2 = System.currentTimeMillis() - l2;
-          xvv.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " compressVideoByFFMPEG end errorCode:" + paramInt + " cost time=" + l2);
-          xwa.b("video_improve", "compress_video_2", 0, paramInt, new String[] { String.valueOf(i), String.valueOf(l2), String.valueOf(l1) });
+          ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramString1 + " compressVideoByFFMPEG end errorCode:" + paramInt + " cost time=" + l2);
+          ykv.b("video_improve", "compress_video_2", 0, paramInt, new String[] { String.valueOf(i), String.valueOf(l2), String.valueOf(l1) });
           return paramInt;
         }
       }
@@ -171,51 +171,51 @@ public class VideoCompositeHelper
   
   private int convertImageToVideo(PublishVideoEntry paramPublishVideoEntry)
   {
-    zxt localzxt = new zxt(940006, "");
+    aanf localaanf = new aanf(940006, "");
     String str = paramPublishVideoEntry.getStringExtra("KEY_PIC_TO_VIDEO_LOCAL_PIC_PATH", "");
-    if ((str.isEmpty()) || (!ypi.c(str))) {
-      return localzxt.a();
+    if ((str.isEmpty()) || (!zeb.c(str))) {
+      return localaanf.a();
     }
-    ypi.f(paramPublishVideoEntry.mLocalRawVideoDir);
+    zeb.f(paramPublishVideoEntry.mLocalRawVideoDir);
     int n = paramPublishVideoEntry.backgroundMusicDuration / 1000;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
-    bfpx.a(str, localOptions);
+    bgyo.a(str, localOptions);
     int i = ScreenUtil.SCREEN_WIDTH;
     float f = localOptions.outWidth / localOptions.outHeight;
-    int k = babd.a(i);
-    int m = babd.a((int)(k / f));
+    int k = bbhm.a(i);
+    int m = bbhm.a((int)(k / f));
     int j = k;
     i = m;
-    if (m > bnzv.a)
+    if (m > bppn.a)
     {
-      j = babd.a((int)(k * bnzv.a / m));
-      i = bnzv.a;
+      j = bbhm.a((int)(k * bppn.a / m));
+      i = bppn.a;
     }
-    zxq.a().a(str, paramPublishVideoEntry.mLocalRawVideoDir, String.valueOf(n), j, i, false, 0, new VideoCompositeHelper.2(this, localzxt, paramPublishVideoEntry));
+    aanc.a().a(str, paramPublishVideoEntry.mLocalRawVideoDir, String.valueOf(n), j, i, false, 0, new VideoCompositeHelper.2(this, localaanf, paramPublishVideoEntry));
     waitThread("convertImageToVideo ");
-    return localzxt.a();
+    return localaanf.a();
   }
   
   private static void deleteCache(PublishVideoEntry paramPublishVideoEntry)
   {
     if (new File(paramPublishVideoEntry.mLocalRawVideoDir).isDirectory())
     {
-      ypi.d(paramPublishVideoEntry.mLocalRawVideoDir);
-      xvv.d(TAG, "delete filePath: %s", new Object[] { paramPublishVideoEntry.mLocalRawVideoDir });
+      zeb.d(paramPublishVideoEntry.mLocalRawVideoDir);
+      ykq.d(TAG, "delete filePath: %s", new Object[] { paramPublishVideoEntry.mLocalRawVideoDir });
       return;
     }
     int i = paramPublishVideoEntry.mLocalRawVideoDir.lastIndexOf("/");
     paramPublishVideoEntry = paramPublishVideoEntry.mLocalRawVideoDir.substring(0, i);
-    ypi.d(paramPublishVideoEntry);
-    xvv.d(TAG, "delete filePath: %s", new Object[] { paramPublishVideoEntry });
+    zeb.d(paramPublishVideoEntry);
+    ykq.d(TAG, "delete filePath: %s", new Object[] { paramPublishVideoEntry });
   }
   
   public static void deleteVideoCache(PublishVideoEntry paramPublishVideoEntry)
   {
     if (paramPublishVideoEntry.businessId == 2)
     {
-      xvv.b(TAG, "deleteVideoCache ignore because business id is qq");
+      ykq.b(TAG, "deleteVideoCache ignore because business id is qq");
       return;
     }
     if ((!paramPublishVideoEntry.isLocalPublish) && (!TextUtils.isEmpty(paramPublishVideoEntry.mLocalRawVideoDir)) && (!paramPublishVideoEntry.mLocalRawVideoDir.contains(Environment.DIRECTORY_DCIM)))
@@ -230,19 +230,19 @@ public class VideoCompositeHelper
       if (paramPublishVideoEntry.isPicture) {
         QQStoryContext.a().a().sendBroadcast(new Intent("android.intent.action.MEDIA_MOUNTED", Uri.parse("file://" + Environment.getExternalStorageDirectory())));
       }
-      ypi.d(paramPublishVideoEntry.videoUploadTempDir);
-      xvv.d(TAG, "delete file:%s", new Object[] { paramPublishVideoEntry.videoUploadTempDir });
+      zeb.d(paramPublishVideoEntry.videoUploadTempDir);
+      ykq.d(TAG, "delete file:%s", new Object[] { paramPublishVideoEntry.videoUploadTempDir });
       return;
       label139:
       updatePublishVideoProcessState(paramPublishVideoEntry.fakeVid, PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC);
       if (isAllPartSuccess(paramPublishVideoEntry.multiFragmentGroupId, PublishVideoEntry.VIDEO_PROCESS_STATE_UPLOAD_SUC))
       {
-        xvv.d(TAG, "groupId=%s all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
+        ykq.d(TAG, "groupId=%s all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
         deleteCache(paramPublishVideoEntry);
       }
       else
       {
-        xvv.d(TAG, "groupId=%s not all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
+        ykq.d(TAG, "groupId=%s not all success", new Object[] { paramPublishVideoEntry.multiFragmentGroupId });
       }
     }
   }
@@ -259,7 +259,7 @@ public class VideoCompositeHelper
     //   11: astore 4
     //   13: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
     //   16: ldc_w 412
-    //   19: invokestatic 138	xvv:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: invokestatic 138	ykq:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: getstatic 417	android/os/Build$VERSION:SDK_INT	I
     //   25: bipush 16
     //   27: if_icmpge +15 -> 42
@@ -344,21 +344,21 @@ public class VideoCompositeHelper
       paramInt2 = rotateVideoWhenNeeded(paramString3, paramPublishVideoEntry);
       if (paramInt2 == 0)
       {
-        xvv.d(TAG, "EncodeLocalVideo: Change need rotation. inputVideoPath=%s  rotateFilePath=%s", new Object[] { paramString1, paramPublishVideoEntry });
-        ypi.b(paramPublishVideoEntry, paramString3);
+        ykq.d(TAG, "EncodeLocalVideo: Change need rotation. inputVideoPath=%s  rotateFilePath=%s", new Object[] { paramString1, paramPublishVideoEntry });
+        zeb.b(paramPublishVideoEntry, paramString3);
       }
     }
     else
     {
       return paramInt1;
     }
-    xvv.e(TAG, "EncodeLocalVideo: not rotate retcode =" + paramInt2);
+    ykq.e(TAG, "EncodeLocalVideo: not rotate retcode =" + paramInt2);
     return paramInt1;
   }
   
   private int encodeLocalVideoInner(PublishVideoEntry paramPublishVideoEntry, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, boolean paramBoolean, int paramInt4)
   {
-    if (!ypi.c(paramString1)) {
+    if (!zeb.c(paramString1)) {
       return 940007;
     }
     File localFile = new File(paramString1);
@@ -368,7 +368,7 @@ public class VideoCompositeHelper
     {
       bool = true;
       if (!bool) {
-        xvv.e(TAG, "encode local video incompatible: model = " + Build.MODEL + " compatible = " + bool);
+        ykq.e(TAG, "encode local video incompatible: model = " + Build.MODEL + " compatible = " + bool);
       }
       paramPublishVideoEntry = new VideoCompositeHelper.HWCompressProcessor(paramPublishVideoEntry, paramString2, paramInt3, paramInt1, paramInt2, paramBoolean, true, paramInt4);
       VideoConverter localVideoConverter = new VideoConverter();
@@ -378,7 +378,7 @@ public class VideoCompositeHelper
       if (setMoovAndTimeStamp(paramString2, paramString3) != 0) {
         break label203;
       }
-      ypi.g(paramString2);
+      zeb.g(paramString2);
     }
     for (;;)
     {
@@ -386,7 +386,7 @@ public class VideoCompositeHelper
       bool = false;
       break;
       label203:
-      ypi.b(paramString2, paramString3);
+      zeb.b(paramString2, paramString3);
     }
     label214:
     paramPublishVideoEntry = new Object();
@@ -405,33 +405,33 @@ public class VideoCompositeHelper
     }
     catch (IOException paramPublishVideoEntry)
     {
-      xvv.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
+      ykq.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
       return 943001;
     }
     catch (FFmpegCommandAlreadyRunningException paramPublishVideoEntry)
     {
-      xvv.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
+      ykq.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
       return 943002;
     }
     catch (InterruptedException paramPublishVideoEntry)
     {
-      xvv.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
+      ykq.d(TAG, "Wait encode video exception:" + paramPublishVideoEntry);
     }
   }
   
   private int encodePicToVideo(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
     if (Build.VERSION.SDK_INT < 18) {}
-    for (boolean bool = false; bool; bool = ((Boolean)((vuq)vux.a(10)).b("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(true))).booleanValue())
+    for (boolean bool = false; bool; bool = ((Boolean)((wjl)wjs.a(10)).b("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(true))).booleanValue())
     {
-      int j = new bbxg().a(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
+      int j = new bdeb().a(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
       int i = j;
       if (j != 0)
       {
         i = j;
         if (j != 942014)
         {
-          xvv.d(TAG, "convert picture to video by mediaCodec error. use ffmepg to convert again.");
+          ykq.d(TAG, "convert picture to video by mediaCodec error. use ffmepg to convert again.");
           i = encodePicToVideoWithFFmpeg(paramPublishVideoEntry.mLocalRawVideoDir, paramString);
         }
       }
@@ -443,8 +443,8 @@ public class VideoCompositeHelper
   private int encodePicToVideoWithFFmpeg(String paramString1, String paramString2)
   {
     int i = 0;
-    xvv.d(TAG, "encodePicToVideoWithFFmpeg");
-    if (!ypi.c(paramString1)) {
+    ykq.d(TAG, "encodePicToVideoWithFFmpeg");
+    if (!zeb.c(paramString1)) {
       i = 940007;
     }
     Object localObject;
@@ -465,12 +465,12 @@ public class VideoCompositeHelper
           if (j == 0) {
             continue;
           }
-          xvv.d(TAG, "Compress pic to video failed, trying to compress small pic. encodeRequest.get() = %d", new Object[] { Integer.valueOf(localAtomicInteger.get()) });
+          ykq.d(TAG, "Compress pic to video failed, trying to compress small pic. encodeRequest.get() = %d", new Object[] { Integer.valueOf(localAtomicInteger.get()) });
           str = paramString1 + ".small.jpeg";
           i = resizeToSmallBitmap(paramString1, str);
           if (i != 0)
           {
-            xvv.e(TAG, "resizeToSmallBitmap failed. nRetCode = " + i);
+            ykq.e(TAG, "resizeToSmallBitmap failed. nRetCode = " + i);
             return i;
           }
         }
@@ -479,17 +479,17 @@ public class VideoCompositeHelper
       }
       catch (IOException paramString1)
       {
-        xvv.d(TAG, "Wait convert pic exception:" + paramString1);
+        ykq.d(TAG, "Wait convert pic exception:" + paramString1);
         return 942001;
       }
       catch (FFmpegCommandAlreadyRunningException paramString1)
       {
-        xvv.d(TAG, "Wait convert pic exception:" + paramString1);
+        ykq.d(TAG, "Wait convert pic exception:" + paramString1);
         return 942002;
       }
       catch (InterruptedException paramString1)
       {
-        xvv.d(TAG, "Wait convert pic exception:" + paramString1);
+        ykq.d(TAG, "Wait convert pic exception:" + paramString1);
         return 942003;
       }
     }
@@ -499,7 +499,7 @@ public class VideoCompositeHelper
       try
       {
         localObject.wait(300000L);
-        xvv.d(TAG, "convertPicToVideo end");
+        ykq.d(TAG, "convertPicToVideo end");
         i = localAtomicInteger.get();
         return i;
       }
@@ -508,17 +508,17 @@ public class VideoCompositeHelper
     }
     catch (IOException paramString1)
     {
-      xvv.d(TAG, "Wait convert pic exception:" + paramString1);
+      ykq.d(TAG, "Wait convert pic exception:" + paramString1);
       return 942001;
     }
     catch (FFmpegCommandAlreadyRunningException paramString1)
     {
-      xvv.d(TAG, "Wait convert pic exception:" + paramString1);
+      ykq.d(TAG, "Wait convert pic exception:" + paramString1);
       return 942002;
     }
     catch (InterruptedException paramString1)
     {
-      xvv.d(TAG, "Wait convert pic exception:" + paramString1);
+      ykq.d(TAG, "Wait convert pic exception:" + paramString1);
     }
   }
   
@@ -572,7 +572,7 @@ public class VideoCompositeHelper
           l5 = l6;
           l6 = l2;
         }
-        xvv.d(TAG, "version = %d", new Object[] { Integer.valueOf(k) });
+        ykq.d(TAG, "version = %d", new Object[] { Integer.valueOf(k) });
         return i;
       }
       try
@@ -595,10 +595,10 @@ public class VideoCompositeHelper
         l2 = ((JSONObject)localObject).optLong("afTimeEnd", -1L);
         l4 = l5;
         l3 = l2;
-        xvv.b(TAG, "this is part video encode start %d end %d, audio start %d end %d", Long.valueOf(l1), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l2));
+        ykq.b(TAG, "this is part video encode start %d end %d, audio start %d end %d", Long.valueOf(l1), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l2));
         l4 = l6;
         l6 = l2;
-        if ((paramPublishVideoEntry.hwEncodeRecordVideo) || (TextUtils.isEmpty(paramPublishVideoEntry.mIFrameVideoPath)) || (!ypi.a(paramPublishVideoEntry.mIFrameVideoPath, paramString))) {
+        if ((paramPublishVideoEntry.hwEncodeRecordVideo) || (TextUtils.isEmpty(paramPublishVideoEntry.mIFrameVideoPath)) || (!zeb.a(paramPublishVideoEntry.mIFrameVideoPath, paramString))) {
           break label690;
         }
         j = 1;
@@ -621,16 +621,16 @@ public class VideoCompositeHelper
       localObject = paramPublishVideoEntry.videoUploadTempDir + "rotate_" + ((File)localObject).getName();
       if (rotateVideoWhenNeeded(paramString, (String)localObject) == 0)
       {
-        xvv.d(TAG, "EncodeLocalVideo: Change need rotation. inputVideoPath = " + paramString + " rotateFilePath = " + (String)localObject);
-        ypi.b((String)localObject, paramString);
+        ykq.d(TAG, "EncodeLocalVideo: Change need rotation. inputVideoPath = " + paramString + " rotateFilePath = " + (String)localObject);
+        zeb.b((String)localObject, paramString);
       }
       k = VideoEnvironment.getAVCodecVersion();
       if (k <= 28) {
         break label637;
       }
-      xvv.d(TAG, "version is %d", new Object[] { Integer.valueOf(k) });
-      l2 = ypi.c(paramString);
-      xvv.b(TAG, "file size %d, file %s", Long.valueOf(l2), paramString);
+      ykq.d(TAG, "version is %d", new Object[] { Integer.valueOf(k) });
+      l2 = zeb.c(paramString);
+      ykq.b(TAG, "file size %d, file %s", Long.valueOf(l2), paramString);
       k = i;
       if (l2 > 2097152L)
       {
@@ -638,14 +638,14 @@ public class VideoCompositeHelper
         if (j == 0)
         {
           k = i;
-          if (ypi.g(paramString))
+          if (zeb.g(paramString))
           {
             CodecParam.mBitrateMode = 1;
             i = CodecParam.mMaxrate;
             CodecParam.mMaxrate = 1677720;
             k = encodeVideo(paramPublishVideoEntry.mLocalRawVideoDir, l1, l4, l5, l6, paramPublishVideoEntry.mMosaicMask, paramPublishVideoEntry.mMosaicSize, paramPublishVideoEntry.isMuteRecordVoice, paramString);
-            l1 = ypi.c(paramString);
-            xvv.d(TAG, "fix bitrate file size %d, orig bitrate:%d, file %s", new Object[] { Long.valueOf(l1), Integer.valueOf(i), paramString });
+            l1 = zeb.c(paramString);
+            ykq.d(TAG, "fix bitrate file size %d, orig bitrate:%d, file %s", new Object[] { Long.valueOf(l1), Integer.valueOf(i), paramString });
             CodecParam.mBitrateMode = 0;
             CodecParam.mMaxrate = i;
           }
@@ -657,19 +657,19 @@ public class VideoCompositeHelper
   
   private static int encodeVideo(String paramString1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, String paramString2)
   {
-    vuq localvuq = (vuq)vux.a(10);
-    int m = ((Integer)localvuq.b("key_encode_crf", Integer.valueOf(23))).intValue();
+    wjl localwjl = (wjl)wjs.a(10);
+    int m = ((Integer)localwjl.b("key_encode_crf", Integer.valueOf(23))).intValue();
     int i = CodecParam.mQmax;
     int j = CodecParam.mQmin;
     int k = CodecParam.mMaxQdiff;
-    int n = ((Integer)localvuq.b("key_encode_qmax", Integer.valueOf(CodecParam.mQmax))).intValue();
-    int i1 = ((Integer)localvuq.b("key_encode_qmin", Integer.valueOf(CodecParam.mQmin))).intValue();
-    int i2 = ((Integer)localvuq.b("key_encode_qdiff", Integer.valueOf(CodecParam.mMaxQdiff))).intValue();
+    int n = ((Integer)localwjl.b("key_encode_qmax", Integer.valueOf(CodecParam.mQmax))).intValue();
+    int i1 = ((Integer)localwjl.b("key_encode_qmin", Integer.valueOf(CodecParam.mQmin))).intValue();
+    int i2 = ((Integer)localwjl.b("key_encode_qdiff", Integer.valueOf(CodecParam.mMaxQdiff))).intValue();
     CodecParam.mCRFValue = m;
     CodecParam.mQmax = 35;
     CodecParam.mQmin = i1;
     CodecParam.mMaxQdiff = i2;
-    xvv.d(TAG, "story encode param crf=%d, qmax=%d->%d, qmin=%d->%d, qdiff=>%d->%d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(i2) });
+    ykq.d(TAG, "story encode param crf=%d, qmax=%d->%d, qmin=%d->%d, qdiff=>%d->%d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(i2) });
     try
     {
       paramString1 = new EncodeThread(null, new Handler(Looper.getMainLooper()), paramString1, paramString2, null);
@@ -695,7 +695,7 @@ public class VideoCompositeHelper
   
   public static long getDurationOfVideo(String paramString)
   {
-    if (!ypi.b(paramString)) {}
+    if (!zeb.b(paramString)) {}
     while (Build.VERSION.SDK_INT < 10) {
       return 0L;
     }
@@ -714,7 +714,7 @@ public class VideoCompositeHelper
   
   public static float getHeightWidthRatioOfVideo(String paramString)
   {
-    if (!ypi.b(paramString)) {}
+    if (!zeb.b(paramString)) {}
     while (Build.VERSION.SDK_INT < 10) {
       return 0.0F;
     }
@@ -739,9 +739,9 @@ public class VideoCompositeHelper
   @NonNull
   public static PublishVideoEntry getPublishVideoEntry(String paramString)
   {
-    Object localObject1 = new vtn(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    ((vtn)localObject1).verifyAuthentication();
-    Object localObject2 = ((vtn)localObject1).createEntityManager();
+    Object localObject1 = new wii(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    ((wii)localObject1).verifyAuthentication();
+    Object localObject2 = ((wii)localObject1).createEntityManager();
     localObject1 = new PublishVideoEntry();
     localObject2 = query((EntityManager)localObject2, PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), PublishVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
     paramString = (String)localObject1;
@@ -775,7 +775,7 @@ public class VideoCompositeHelper
     }
     catch (Exception localException)
     {
-      xvv.e(TAG, "format error %s", new Object[] { paramString });
+      ykq.e(TAG, "format error %s", new Object[] { paramString });
     }
     return 0;
   }
@@ -794,7 +794,7 @@ public class VideoCompositeHelper
       return j;
       if (paramPublishVideoEntry.isCancel)
       {
-        ypi.g(paramString);
+        zeb.g(paramString);
         return -19;
       }
       l = System.currentTimeMillis();
@@ -812,39 +812,39 @@ public class VideoCompositeHelper
         }
       }
       i = setMoovAndTimeStamp(paramString, str, i);
-      if (bmxe.c) {
-        bmxe.g.a(2, System.currentTimeMillis() - l);
+      if (bomw.c) {
+        bomw.g.a(2, System.currentTimeMillis() - l);
       }
       if (i != 0) {
         break;
       }
-      xvv.d(TAG, "set moov in front of file success. targetMergedTempMp4 = " + str);
-      ypi.b(str, paramString);
+      ykq.d(TAG, "set moov in front of file success. targetMergedTempMp4 = " + str);
+      zeb.b(str, paramString);
       j = i;
     } while (!AudioHelper.a());
     long l = System.currentTimeMillis();
     if (!paramPublishVideoEntry.isCancel) {
-      i = voj.a(paramString);
+      i = wde.a(paramString);
     }
     if (paramPublishVideoEntry.isCancel) {
       i = -22;
     }
     if (i == 0) {
-      xvv.d(TAG, "isHuaweiGreen: reEncodeVideoWithFFMpeg succeed. output path = " + paramString);
+      ykq.d(TAG, "isHuaweiGreen: reEncodeVideoWithFFMpeg succeed. output path = " + paramString);
     }
     for (;;)
     {
       j = i;
-      if (!bmxe.c) {
+      if (!bomw.c) {
         break;
       }
-      bmxe.g.a(3, System.currentTimeMillis() - l);
+      bomw.g.a(3, System.currentTimeMillis() - l);
       return i;
-      xvv.d(TAG, "set moov in front of file fail %d", new Object[] { Integer.valueOf(i) });
-      xvv.b(TAG, "set moov in front of file failed targetFile = " + paramString);
+      ykq.d(TAG, "set moov in front of file fail %d", new Object[] { Integer.valueOf(i) });
+      ykq.b(TAG, "set moov in front of file failed targetFile = " + paramString);
       i = j;
       break label182;
-      xvv.e(TAG, "isHuaweiGreen: reEncodeVideoWithFFMpeg failed. errorCode = " + i);
+      ykq.e(TAG, "isHuaweiGreen: reEncodeVideoWithFFMpeg failed. errorCode = " + i);
     }
   }
   
@@ -865,7 +865,7 @@ public class VideoCompositeHelper
         str1 = paramPublishVideoEntry.mIFrameVideoPath;
       }
     }
-    if (!ypi.c(str1)) {
+    if (!zeb.c(str1)) {
       return 940007;
     }
     str2 = paramPublishVideoEntry.videoUploadTempDir + "_merge_video_x.mp4";
@@ -895,61 +895,61 @@ public class VideoCompositeHelper
     }
     for (;;)
     {
-      xvv.d(TAG, "hwEncodeRecordVideo mediaCodec trim video cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l1) });
+      ykq.d(TAG, "hwEncodeRecordVideo mediaCodec trim video cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l1) });
       long l2 = getDurationOfVideo(paramPublishVideoEntry.mLocalRawVideoDir);
       l1 = SystemClock.elapsedRealtime();
       int j;
-      if ((!TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) && (ypi.c(paramPublishVideoEntry.backgroundMusicPath))) {
+      if ((!TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) && (zeb.c(paramPublishVideoEntry.backgroundMusicPath))) {
         j = 1;
       }
-      bbwq localbbwq;
+      bddl localbddl;
       for (;;)
       {
         if ((!paramPublishVideoEntry.isMuteRecordVoice) && ((j == 0) || (paramPublishVideoEntry.isMixOriginal)) && (!TextUtils.isEmpty(paramPublishVideoEntry.mAudioFilePath)) && (!paramPublishVideoEntry.isLocalPublish))
         {
-          if (!ypi.c(paramPublishVideoEntry.mAudioFilePath))
+          if (!zeb.c(paramPublishVideoEntry.mAudioFilePath))
           {
-            xvv.d(TAG, "audio not exist");
-            ypi.b(str2, paramString);
+            ykq.d(TAG, "audio not exist");
+            zeb.b(str2, paramString);
             return 0;
-            ypi.c(str1, str2);
+            zeb.c(str1, str2);
             paramPublishVideoEntry.useSrcFile = true;
             break;
             return i;
             j = 0;
             continue;
           }
-          xvv.d(TAG, "trim audio");
+          ykq.d(TAG, "trim audio");
           localObject = paramPublishVideoEntry.videoUploadTempDir + l1 + "_segment_mc_audio";
           if (!paramPublishVideoEntry.isCancel) {
-            i = bahd.a(paramPublishVideoEntry.mAudioFilePath, (String)localObject, paramPublishVideoEntry.videoRangeStart * 1.0F / (float)l2, paramPublishVideoEntry.videoRangeEnd * 1.0F / (float)l2);
+            i = bbns.a(paramPublishVideoEntry.mAudioFilePath, (String)localObject, paramPublishVideoEntry.videoRangeStart * 1.0F / (float)l2, paramPublishVideoEntry.videoRangeEnd * 1.0F / (float)l2);
           }
           if (paramPublishVideoEntry.isCancel) {
             return -17;
           }
           if (i != 0)
           {
-            xvv.d(TAG, "mediacodec AudioEncoder.clipAudioFile: errcode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
-            xwa.b("publish_story", "clip_audio", 1, i, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
-            ypi.b(str2, paramString);
+            ykq.d(TAG, "mediacodec AudioEncoder.clipAudioFile: errcode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
+            ykv.b("publish_story", "clip_audio", 1, i, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
+            zeb.b(str2, paramString);
             return 0;
           }
           j = AudioEncoder.a((String)localObject);
           if (j != 0)
           {
-            xvv.d(TAG, "checkSourceAudioIsOK: errorCode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
-            xwa.b("publish_story", "clip_audio", 1, j, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
-            ypi.b(str2, paramString);
+            ykq.d(TAG, "checkSourceAudioIsOK: errorCode=%s, rangeStart=%s, rangeEnd=%s, duration=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramPublishVideoEntry.videoRangeStart), Integer.valueOf(paramPublishVideoEntry.videoRangeEnd), Long.valueOf(l2) });
+            ykv.b("publish_story", "clip_audio", 1, j, new String[] { "rangeStart=" + paramPublishVideoEntry.videoRangeStart + " rangeEnd=" + paramPublishVideoEntry.videoRangeEnd + " duration=" + l2 });
+            zeb.b(str2, paramString);
             return 0;
           }
-          xvv.d(TAG, "audio to mp4");
+          ykq.d(TAG, "audio to mp4");
           str1 = paramPublishVideoEntry.videoUploadTempDir + "mc_audio.mp4";
           if (paramPublishVideoEntry.saveMode <= 5)
           {
             i = paramPublishVideoEntry.saveMode;
-            localbbwq = AudioEncoder.a(null, null, i);
-            localbbwq.b = str1;
-            localbbwq.a = ((String)localObject);
+            localbddl = AudioEncoder.a(null, null, i);
+            localbddl.b = str1;
+            localbddl.a = ((String)localObject);
             if (paramPublishVideoEntry.isCancel) {
               break label1045;
             }
@@ -957,15 +957,15 @@ public class VideoCompositeHelper
         }
       }
       label1045:
-      for (i = AudioEncoder.a(localbbwq);; i = j)
+      for (i = AudioEncoder.a(localbddl);; i = j)
       {
         if (paramPublishVideoEntry.isCancel) {
           i = -21;
         }
         if (i != 0)
         {
-          ypi.g(str1);
-          xvv.d(TAG, "mediacodec AudioEncoder.encodeSafely: errorCode=%s", new Object[] { Integer.valueOf(i) });
+          zeb.g(str1);
+          ykq.d(TAG, "mediacodec AudioEncoder.encodeSafely: errorCode=%s", new Object[] { Integer.valueOf(i) });
           return i;
           i = 0;
           break;
@@ -974,32 +974,32 @@ public class VideoCompositeHelper
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
-        xvv.d(TAG, "video audio mp4");
+        ykq.d(TAG, "video audio mp4");
         l2 = SystemClock.elapsedRealtime();
-        ypi.g(str3);
+        zeb.g(str3);
         if (!paramPublishVideoEntry.isCancel) {
           i = HwVideoMerge.merge(str2, str1, str3, 0);
         }
         if (paramPublishVideoEntry.isCancel)
         {
-          ypi.g(str1);
-          ypi.g(str3);
+          zeb.g(str1);
+          zeb.g(str3);
           return -18;
         }
-        xvv.d(TAG, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
+        ykq.d(TAG, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
         if (i != 0)
         {
-          xvv.d(TAG, "HwVideoMerge->merge: errorCode=%s", new Object[] { Integer.valueOf(i) });
+          ykq.d(TAG, "HwVideoMerge->merge: errorCode=%s", new Object[] { Integer.valueOf(i) });
           return i;
         }
         l1 = SystemClock.elapsedRealtime() - l1;
-        xvv.a(TAG, "mediacodec encode audio time cost=%s", Long.valueOf(l1));
-        if (bmxe.c) {
-          bmxe.g.a(1, l1);
+        ykq.a(TAG, "mediacodec encode audio time cost=%s", Long.valueOf(l1));
+        if (bomw.c) {
+          bomw.g.a(1, l1);
         }
         for (paramPublishVideoEntry = str3;; paramPublishVideoEntry = str2)
         {
-          ypi.b(paramPublishVideoEntry, paramString);
+          zeb.b(paramPublishVideoEntry, paramString);
           return i;
         }
       }
@@ -1040,13 +1040,13 @@ public class VideoCompositeHelper
       localRetCode.setMessage("needDownloadMusic and the file exist");
       return localRetCode;
     }
-    bmtm localbmtm = (bmtm)bmql.a().c(8);
+    boje localboje = (boje)bogd.a().c(8);
     MusicItemInfo localMusicItemInfo = new MusicItemInfo();
     localMusicItemInfo.setPath(str2);
     localMusicItemInfo.mUrl = str1;
     localMusicItemInfo.mType = 5;
     localMusicItemInfo.mMusicName = paramPublishVideoEntry.getStringExtra("vs_publish_entry_json_key_song_name", "unknown name");
-    if (!localbmtm.a(localMusicItemInfo, new VideoCompositeHelper.3(this, paramPublishVideoEntry, localRetCode, str1)))
+    if (!localboje.a(localMusicItemInfo, new VideoCompositeHelper.3(this, paramPublishVideoEntry, localRetCode, str1)))
     {
       localRetCode.setCode(-1);
       localRetCode.setMessage("needDownloadMusic cant startDownload maybe path is null or the music has downloaded");
@@ -1061,7 +1061,7 @@ public class VideoCompositeHelper
     try
     {
       notifyAll();
-      xvv.c(TAG, "[vs_publish_flow]  | " + paramString + " notifyAll() ");
+      ykq.c(TAG, "[vs_publish_flow]  | " + paramString + " notifyAll() ");
       return;
     }
     finally {}
@@ -1075,11 +1075,11 @@ public class VideoCompositeHelper
   private int resizeToSmallBitmap(String paramString1, String paramString2)
   {
     int j = 0;
-    paramString1 = bfpx.a(paramString1);
+    paramString1 = bgyo.a(paramString1);
     int i;
     if (paramString1 == null)
     {
-      xvv.e(TAG, "BitmapManager.decodeFile in resizeToSmallBitmap failed");
+      ykq.e(TAG, "BitmapManager.decodeFile in resizeToSmallBitmap failed");
       i = 942007;
     }
     do
@@ -1096,18 +1096,18 @@ public class VideoCompositeHelper
         }
         if (m <= 540)
         {
-          xvv.e(TAG, "No need resize. srcWidth < destWidth, srcWidth = " + m + " destWidth = " + 540);
+          ykq.e(TAG, "No need resize. srcWidth < destWidth, srcWidth = " + m + " destWidth = " + 540);
           return 942006;
         }
-        Bitmap localBitmap = yoy.b(paramString1, 540, i, false, false);
+        Bitmap localBitmap = zdr.b(paramString1, 540, i, false, false);
         if (localBitmap == null)
         {
-          xvv.e(TAG, "resizeAndFillBitmapEdge in resizeToSmallBitmap failed");
+          ykq.e(TAG, "resizeAndFillBitmapEdge in resizeToSmallBitmap failed");
           return 942005;
         }
-        if (!yoy.a(localBitmap, paramString2))
+        if (!zdr.a(localBitmap, paramString2))
         {
-          xvv.e(TAG, "compressToFile in resizeToSmallBitmap failed");
+          ykq.e(TAG, "compressToFile in resizeToSmallBitmap failed");
           return 942008;
         }
         if ((localBitmap != null) && (!localBitmap.isRecycled())) {
@@ -1137,7 +1137,7 @@ public class VideoCompositeHelper
     //   19: invokespecial 132	java/util/concurrent/atomic/AtomicInteger:<init>	(I)V
     //   22: astore 7
     //   24: aload_1
-    //   25: invokestatic 1155	yqs:a	(Ljava/lang/String;)I
+    //   25: invokestatic 1155	zfl:a	(Ljava/lang/String;)I
     //   28: istore_3
     //   29: iload_3
     //   30: iconst_m1
@@ -1146,7 +1146,7 @@ public class VideoCompositeHelper
     //   37: ireturn
     //   38: getstatic 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:TAG	Ljava/lang/String;
     //   41: ldc_w 1158
-    //   44: invokestatic 55	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 55	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   47: invokestatic 526	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   50: invokevirtual 1162	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
     //   53: aload_1
@@ -1176,7 +1176,7 @@ public class VideoCompositeHelper
     //   106: lsub
     //   107: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   110: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 55	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   113: invokestatic 55	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload 7
     //   118: invokevirtual 158	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   121: istore_3
@@ -1199,7 +1199,7 @@ public class VideoCompositeHelper
     //   150: aload_1
     //   151: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   154: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokestatic 87	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: invokestatic 87	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   160: ldc_w 1171
     //   163: ireturn
     //   164: astore_1
@@ -1212,7 +1212,7 @@ public class VideoCompositeHelper
     //   181: aload_1
     //   182: invokevirtual 212	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   185: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 87	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: invokestatic 87	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   191: aload 6
     //   193: monitorexit
     //   194: ldc_w 1174
@@ -1246,14 +1246,14 @@ public class VideoCompositeHelper
     Object localObject = new Object();
     AtomicInteger localAtomicInteger = new AtomicInteger(953005);
     long l = System.currentTimeMillis();
-    xvv.b(TAG, "setMoovAndTimeStamp start!");
+    ykq.b(TAG, "setMoovAndTimeStamp start!");
     try
     {
       FFmpegUtils.setTimestamp(BaseApplicationImpl.getApplication(), paramString1, paramString2, paramInt, new VideoCompositeHelper.FFMPEGResponseCallback(localObject, localAtomicInteger, 3));
       try
       {
         localObject.wait(180000L);
-        xvv.a(TAG, "setMoovAndTimeStamp end, take time:%d", Long.valueOf(System.currentTimeMillis() - l));
+        ykq.a(TAG, "setMoovAndTimeStamp end, take time:%d", Long.valueOf(System.currentTimeMillis() - l));
         paramInt = localAtomicInteger.get();
         return paramInt;
       }
@@ -1262,17 +1262,17 @@ public class VideoCompositeHelper
     }
     catch (IOException paramString1)
     {
-      xvv.d(TAG, "Wait encode video exception:" + paramString1);
+      ykq.d(TAG, "Wait encode video exception:" + paramString1);
       return 945002;
     }
     catch (FFmpegCommandAlreadyRunningException paramString1)
     {
-      xvv.d(TAG, "Wait encode video exception:" + paramString1);
+      ykq.d(TAG, "Wait encode video exception:" + paramString1);
       return 953003;
     }
     catch (InterruptedException paramString1)
     {
-      xvv.d(TAG, "Wait encode video exception:" + paramString1);
+      ykq.d(TAG, "Wait encode video exception:" + paramString1);
     }
   }
   
@@ -1286,40 +1286,40 @@ public class VideoCompositeHelper
   
   private int videoSynthesisForStory(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry, boolean paramBoolean)
   {
-    xvv.d(TAG, "videoSynthesisForStory start");
+    ykq.d(TAG, "videoSynthesisForStory start");
     long l = SystemClock.elapsedRealtime();
-    Object localObject = new bnzx(paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry);
-    ((bnzx)localObject).b(paramPublishVideoEntry.hwBitrateMode);
+    Object localObject = new bppp(paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry);
+    ((bppp)localObject).b(paramPublishVideoEntry.hwBitrateMode);
     if (paramBoolean) {
-      ((bnzx)localObject).a();
+      ((bppp)localObject).a();
     }
     if (paramPublishVideoEntry.isNeedHighProfile)
     {
-      ((bnzx)localObject).c(8);
-      xvv.b(TAG, "codec high profile is enable when story video encode");
+      ((bppp)localObject).c(8);
+      ykq.b(TAG, "codec high profile is enable when story video encode");
     }
-    if (vuq.e())
+    if (wjl.e())
     {
-      xvv.d(TAG, "story debug mode is enable");
-      localObject = (vuq)vux.a(10);
-      i = ((Integer)((vuq)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
-      int j = ((Integer)((vuq)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(-1))).intValue();
-      paramBoolean = ((Boolean)((vuq)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
-      bnzx localbnzx = new bnzx(i * 1000, paramPublishVideoEntry);
-      localbnzx.a();
-      localbnzx.b(j);
-      localObject = localbnzx;
+      ykq.d(TAG, "story debug mode is enable");
+      localObject = (wjl)wjs.a(10);
+      i = ((Integer)((wjl)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
+      int j = ((Integer)((wjl)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(-1))).intValue();
+      paramBoolean = ((Boolean)((wjl)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
+      bppp localbppp = new bppp(i * 1000, paramPublishVideoEntry);
+      localbppp.a();
+      localbppp.b(j);
+      localObject = localbppp;
       if (paramBoolean)
       {
-        localbnzx.c(8);
-        localObject = localbnzx;
+        localbppp.c(8);
+        localObject = localbppp;
       }
     }
-    int i = new bnzv().a(paramString1, paramString2, (bnzx)localObject, paramPublishVideoEntry);
+    int i = new bppn().a(paramString1, paramString2, (bppp)localObject, paramPublishVideoEntry);
     l = SystemClock.elapsedRealtime() - l;
-    xvv.d(TAG, "[videoSynthesis]generate files|first step cost:" + l / 1000.0D);
-    if (bmxe.c) {
-      bmxe.g.a(0, l);
+    ykq.d(TAG, "[videoSynthesis]generate files|first step cost:" + l / 1000.0D);
+    if (bomw.c) {
+      bomw.g.a(0, l);
     }
     return i;
   }
@@ -1328,7 +1328,7 @@ public class VideoCompositeHelper
   {
     try
     {
-      xvv.c(TAG, "[vs_publish_flow]  | " + paramString + " wait() ");
+      ykq.c(TAG, "[vs_publish_flow]  | " + paramString + " wait() ");
       wait(340000L);
       return;
     }
@@ -1336,7 +1336,7 @@ public class VideoCompositeHelper
     {
       for (;;)
       {
-        xvv.c(TAG, "[vs_publish_flow]  | " + paramString + " wait InterruptedException");
+        ykq.c(TAG, "[vs_publish_flow]  | " + paramString + " wait InterruptedException");
         localInterruptedException.printStackTrace();
       }
     }
@@ -1345,30 +1345,30 @@ public class VideoCompositeHelper
   
   public void composite(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    yos.a(paramPublishVideoEntry);
-    yos.a(paramString);
-    yos.a(paramVideoCompositeCallBack);
-    xvv.d(TAG, "composite create thread");
+    zdl.a(paramPublishVideoEntry);
+    zdl.a(paramString);
+    zdl.a(paramVideoCompositeCallBack);
+    ykq.d(TAG, "composite create thread");
     ThreadManager.newFreeThread(new VideoCompositeHelper.1(this, paramPublishVideoEntry, paramString, paramBoolean1, paramBoolean2, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
   }
   
   public void doComposite(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    xvv.c(TAG, "[vs_publish_flow]  doComposite from:" + paramPublishVideoEntry.businessId + "| fakeid:" + paramPublishVideoEntry.fakeVid + " doComposite start");
+    ykq.c(TAG, "[vs_publish_flow]  doComposite from:" + paramPublishVideoEntry.businessId + "| fakeid:" + paramPublishVideoEntry.fakeVid + " doComposite start");
     paramPublishVideoEntry.isMixOriginal = paramPublishVideoEntry.getBooleanExtra("isMixOriginal", false);
-    Object localObject = new File(vkm.g);
+    Object localObject = new File(vzh.g);
     ((File)localObject).mkdirs();
-    String str = localObject + File.separator + ypi.a(paramPublishVideoEntry.mLocalRawVideoDir) + ".mp4";
+    String str = localObject + File.separator + zeb.a(paramPublishVideoEntry.mLocalRawVideoDir) + ".mp4";
     int i;
     if ((paramPublishVideoEntry.isPicture) && (!paramPublishVideoEntry.hwEncodeRecordVideo))
     {
-      xvv.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodePicToVideo start");
+      ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodePicToVideo start");
       i = encodePicToVideo(paramPublishVideoEntry, str);
       if ((i != 942014) && (i != 942007)) {
         break label1061;
       }
-      localObject = "outOfMemory file info:" + yoy.a(paramPublishVideoEntry.mLocalRawVideoDir);
-      xvv.d(TAG, "memory info:%s", new Object[] { MagnifierSDK.a().a().b() });
+      localObject = "outOfMemory file info:" + zdr.a(paramPublishVideoEntry.mLocalRawVideoDir);
+      ykq.d(TAG, "memory info:%s", new Object[] { MagnifierSDK.a().a().c() });
     }
     for (;;)
     {
@@ -1376,26 +1376,26 @@ public class VideoCompositeHelper
       int j;
       if (i != 0)
       {
-        xvv.e(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "[improve_video_clear] mediaCodec encode video failed:" + i);
+        ykq.e(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "[improve_video_clear] mediaCodec encode video failed:" + i);
         paramVideoCompositeCallBack.onVideoCompositeFinish(i, (String)localObject, paramString);
         return;
         if (QLog.isColorLevel()) {
-          xvv.a(TAG, "[improve_video_clear] record video (local file is %s)size=%s, bitrate=%s and need to encode to bitrate=%s", Boolean.valueOf(paramPublishVideoEntry.isLocalPublish), Long.valueOf(ypi.a(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(yqs.c(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(paramPublishVideoEntry.videoMaxrate));
+          ykq.a(TAG, "[improve_video_clear] record video (local file is %s)size=%s, bitrate=%s and need to encode to bitrate=%s", Boolean.valueOf(paramPublishVideoEntry.isLocalPublish), Long.valueOf(zeb.a(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(zfl.c(paramPublishVideoEntry.mLocalRawVideoDir)), Integer.valueOf(paramPublishVideoEntry.videoMaxrate));
         }
         if ((paramPublishVideoEntry.isLocalPublish) && (!paramPublishVideoEntry.hwEncodeRecordVideo))
         {
-          xvv.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeLocalVideo start");
+          ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeLocalVideo start");
           i = encodeLocalVideo(paramPublishVideoEntry, paramPublishVideoEntry.mLocalRawVideoDir, paramPublishVideoEntry.videoRangeStart, paramPublishVideoEntry.videoRangeEnd, paramPublishVideoEntry.videoMaxrate, paramPublishVideoEntry.videoUploadTempDir, str, paramPublishVideoEntry.isMuteRecordVoice, paramPublishVideoEntry.businessId);
-          l1 = ypi.a(str);
-          int k = yqs.c(str);
-          xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " encode video info file size:" + l1 + " bitrate=" + k + " and upload limit=" + vuq.c());
+          l1 = zeb.a(str);
+          int k = zfl.c(str);
+          ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " encode video info file size:" + l1 + " bitrate=" + k + " and upload limit=" + wjl.c());
           if (paramPublishVideoEntry.businessId == 1)
           {
-            if (vuq.c())
+            if (wjl.c())
             {
               j = 1;
               label529:
-              xwa.b("video_improve", "encode_video", j, i, new String[] { String.valueOf(k), String.valueOf(paramPublishVideoEntry.videoDuration), String.valueOf(l1) });
+              ykv.b("video_improve", "encode_video", j, i, new String[] { String.valueOf(k), String.valueOf(paramPublishVideoEntry.videoDuration), String.valueOf(l1) });
             }
           }
           else
@@ -1408,20 +1408,20 @@ public class VideoCompositeHelper
               if (paramPublishVideoEntry.videoDuration > 0L)
               {
                 j = i;
-                if (l1 > vuq.c() / 10000 * paramPublishVideoEntry.videoDuration)
+                if (l1 > wjl.c() / 10000 * paramPublishVideoEntry.videoDuration)
                 {
-                  i = vuq.d();
+                  i = wjl.d();
                   j = compressVideoByFFMPEG(paramPublishVideoEntry.fakeVid, str, i);
                   if (paramPublishVideoEntry.isCancel)
                   {
-                    ypi.g(str);
+                    zeb.g(str);
                     j = -20;
                   }
                 }
               }
             }
-            if (bmxe.c) {
-              bmxe.g.a(4, System.currentTimeMillis() - l2);
+            if (bomw.c) {
+              bomw.g.a(4, System.currentTimeMillis() - l2);
             }
             i = j;
             localObject = "";
@@ -1433,9 +1433,9 @@ public class VideoCompositeHelper
             break label1055;
           }
           l1 = System.currentTimeMillis();
-          xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo start");
+          ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo start");
           j = convertImageToVideo(paramPublishVideoEntry);
-          xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo end errorCode:" + j + " cost:" + (System.currentTimeMillis() - l1) + "ms");
+          ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " convertImageToVideo end errorCode:" + j + " cost:" + (System.currentTimeMillis() - l1) + "ms");
         }
       }
       for (;;)
@@ -1444,7 +1444,7 @@ public class VideoCompositeHelper
         if (j != 0) {
           break;
         }
-        xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo start");
+        ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo start");
         l1 = System.currentTimeMillis();
         if (!paramPublishVideoEntry.isCancel) {
           j = hwEncodeRecordVideo(paramPublishVideoEntry, str, paramBoolean1);
@@ -1452,12 +1452,12 @@ public class VideoCompositeHelper
         i = j;
         if (paramPublishVideoEntry.isCancel)
         {
-          ypi.g(str);
+          zeb.g(str);
           i = -14;
         }
-        xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo end errorCode:" + i + " cost:" + (System.currentTimeMillis() - l1) + "ms");
+        ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " hwEncodeRecordVideo end errorCode:" + i + " cost:" + (System.currentTimeMillis() - l1) + "ms");
         break;
-        xvv.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeRecordVideoForAFVF start");
+        ykq.d(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " not hwEncode and encodeRecordVideoForAFVF start");
         j = encodeRecordVideoForAFVF(paramPublishVideoEntry, str);
         i = j;
         if (j == 0) {
@@ -1480,45 +1480,45 @@ public class VideoCompositeHelper
   public void mergeMusic(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
     boolean bool = false;
-    xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " start mergeMusic");
-    if ((TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) || (bnzv.a(paramPublishVideoEntry)) || ((paramPublishVideoEntry.useSrcFile) && (!paramPublishVideoEntry.isMuteRecordVoice) && (!paramPublishVideoEntry.isMixOriginal))) {}
+    ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " start mergeMusic");
+    if ((TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath)) || (bppn.a(paramPublishVideoEntry)) || ((paramPublishVideoEntry.useSrcFile) && (!paramPublishVideoEntry.isMuteRecordVoice) && (!paramPublishVideoEntry.isMixOriginal))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ypi.b(paramString1, paramString2);
-      xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " noMerge end");
+      zeb.b(paramString1, paramString2);
+      ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " noMerge end");
       paramVideoCompositeCallBack.onVideoCompositeFinish(0, "", paramString2);
       return;
     }
     VideoCompositeHelper.RetCode localRetCode = needAndStartDownloadMusic(paramPublishVideoEntry);
-    if ((localRetCode.getCode() != 0) || (!ypi.b(paramPublishVideoEntry.backgroundMusicPath)))
+    if ((localRetCode.getCode() != 0) || (!zeb.b(paramPublishVideoEntry.backgroundMusicPath)))
     {
-      xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " needAndStartDownloadMusic failed code:" + localRetCode.getCode() + ",msg:" + localRetCode.getMessage());
+      ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " needAndStartDownloadMusic failed code:" + localRetCode.getCode() + ",msg:" + localRetCode.getMessage());
       paramVideoCompositeCallBack.onVideoCompositeFinish(941000, localRetCode.getMessage(), "");
       return;
     }
     long l = getDurationOfVideo(paramString1);
     if (l > 0L)
     {
-      xvv.b(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " duration > 0 need to modify video duration from %d to %d", Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
+      ykq.b(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " duration > 0 need to modify video duration from %d to %d", Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
       paramPublishVideoEntry.backgroundMusicDuration = ((int)Math.min(paramPublishVideoEntry.backgroundMusicDuration, l));
     }
     if ((!paramPublishVideoEntry.isLocalPublish) || (detectHasAudioStream(paramString1))) {
       bool = true;
     }
-    xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " detect mp4 whether has original Audio:" + bool);
+    ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " detect mp4 whether has original Audio:" + bool);
     try
     {
       if ((paramPublishVideoEntry.isMixOriginal) && (bool))
       {
-        xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " mixOriginalAndBackgroundMusic start");
+        ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " mixOriginalAndBackgroundMusic start");
         FFmpegUtils.mixOriginalAndBackgroundMusic(BaseApplicationImpl.getApplication(), paramString1, paramString2, paramPublishVideoEntry, paramBoolean, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
         return;
       }
     }
     catch (Exception paramString2)
     {
-      xvv.b(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " combine audio throw exception:", paramString2);
-      ypi.g(paramString1);
+      ykq.b(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + " combine audio throw exception:", paramString2);
+      zeb.g(paramString1);
       paramVideoCompositeCallBack.onVideoCompositeFinish(941000, "combine audio exception", "");
       return;
     }
@@ -1527,7 +1527,7 @@ public class VideoCompositeHelper
       FFmpegUtils.combinBackgroundMusicWithVideCodecH264(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
       return;
     }
-    xvv.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "  recordVideo combinBackgroundMusic start");
+    ykq.c(TAG, "[vs_publish_flow] | fakeid:" + paramPublishVideoEntry.fakeVid + "  recordVideo combinBackgroundMusic start");
     FFmpegUtils.combinBackgroundMusic(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, paramBoolean, new VideoCompositeHelper.MusicCallBack(paramString1, paramString2, paramVideoCompositeCallBack));
   }
   
@@ -1538,7 +1538,7 @@ public class VideoCompositeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
+import mqq.os.MqqHandler;
 
-class blsx
-  implements Observer<bmah>
+public class blsx
+  extends bltn
 {
   blsx(blsw paramblsw) {}
   
-  public void a(@Nullable bmah parambmah)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (parambmah == null) {
-      return;
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
     }
-    blsw.a(this.a, parambmah.b);
   }
 }
 

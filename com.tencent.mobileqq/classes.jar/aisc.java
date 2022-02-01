@@ -1,20 +1,25 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.widget.SingleLineTextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-class aisc
-  extends aliz
+public class aisc
+  extends Handler
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public RecentRecommendTroopItem a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public aisc(AddContactsActivity paramAddContactsActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Aitf.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    usa.a().a(300);
+  }
 }
 
 

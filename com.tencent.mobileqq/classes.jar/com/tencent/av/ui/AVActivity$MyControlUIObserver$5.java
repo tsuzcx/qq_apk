@@ -1,17 +1,17 @@
 package com.tencent.av.ui;
 
 import com.tencent.mobileqq.utils.AudioHelper;
-import mbd;
+import mby;
 
 public class AVActivity$MyControlUIObserver$5
   implements Runnable
 {
-  public AVActivity$MyControlUIObserver$5(mbd parammbd) {}
+  public AVActivity$MyControlUIObserver$5(mby parammby) {}
   
   public void run()
   {
     long l = AudioHelper.b();
-    this.a.a.a.E(l);
+    this.a.a.a.F(l);
     QavPanel localQavPanel = this.a.a.a.a();
     if (localQavPanel != null) {
       localQavPanel.g();

@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import Wallet.FocusMpIdRsp;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import mqq.observer.BusinessObserver;
 
-public class bknx
-  implements DialogInterface.OnClickListener
+class bknx
+  implements BusinessObserver
 {
-  public bknx(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bknx(bknl parambknl, AsyncResult paramAsyncResult) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bkmt.a(this.a, 5, null);
-    this.a.finish();
+    paramBundle = (FocusMpIdRsp)paramBundle.getSerializable("rsp");
+    if ((paramBundle == null) || (paramBundle.err_code != 0))
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, null);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, null);
   }
 }
 

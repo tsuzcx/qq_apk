@@ -1,17 +1,73 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class ageu
-  extends aghj
+  implements biog
 {
-  ageu(agcw paramagcw)
+  ageu(ager paramager) {}
+  
+  public void a(int paramInt)
   {
-    super(paramagcw, null);
+    if ((!ager.a(this.a)) && (paramInt == 1)) {
+      this.a.a();
+    }
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt, float paramFloat)
   {
-    return new agqn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (ager.a(this.a)) {
+      this.a.a(paramInt, paramFloat);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    ager.a(this.a);
+    if (ager.a(this.a)) {
+      this.a.b(paramInt);
+    }
+  }
+  
+  public void f()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hideSoftInput();
+    }
+    if (ager.a(this.a)) {
+      this.a.f();
+    }
+    if (!ancb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        ancb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
+      }
+      return;
+    }
+  }
+  
+  public void g()
+  {
+    if (ager.a(this.a)) {
+      this.a.g();
+    }
+  }
+  
+  public void h()
+  {
+    if (ager.a(this.a)) {
+      this.a.h();
+    }
+  }
+  
+  public void i()
+  {
+    ager.b(this.a);
+    if (ager.a(this.a)) {
+      this.a.i();
+    }
+    if (ancb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      ancb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
+    }
   }
 }
 

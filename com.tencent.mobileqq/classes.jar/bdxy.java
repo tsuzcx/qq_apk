@@ -1,30 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class bdxy
+public abstract interface bdxy
 {
-  public int a;
-  public String a;
-  public ArrayList<bdxy> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public bdxy() {}
-  
-  public bdxy(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = ((Integer)bdxx.a().get(paramString)).intValue();
-  }
+  public abstract String a();
 }
 
 

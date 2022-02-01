@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo;
 
-import amkb;
-import amke;
+import anln;
+import anlq;
 
 final class ApolloRender$8
   implements Runnable
 {
-  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, amkb paramamkb) {}
+  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, anln paramanln) {}
   
   public void run()
   {
-    amke.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Amkb);
+    anlq.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anln);
   }
 }
 

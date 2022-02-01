@@ -1,35 +1,88 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
-class aqvy
+public class aqvy
 {
-  aqvy(aqvx paramaqvx, boolean paramBoolean) {}
+  public float a;
+  public int a;
+  public String a;
+  public ArrayList<Pair<String, Float>> a;
+  Set<Integer> a;
+  public boolean a;
+  public int b;
+  public int c = 36;
   
-  @QQPermissionDenied(1818)
-  public void denied()
+  public aqvy(String paramString)
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    aqvx.a(this.jdField_a_of_type_Aqvx);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = aqvq.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Float = aqvq.a(paramString);
+    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.c = a(this.b);
+    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Aqvx.onGetError(1830001);
-      return;
+      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
+      if (this.b % 2 != 0) {
+        break label172;
+      }
     }
-    aqvx.a(this.jdField_a_of_type_Aqvx, false, 1830001);
+    for (;;)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
+      }
+      return;
+      label172:
+      i = 0;
+    }
   }
   
-  @QQPermissionGrant(1818)
-  public void grant()
+  private int a(int paramInt)
   {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    aqvx.a(this.jdField_a_of_type_Aqvx);
-    if (this.jdField_a_of_type_Boolean)
+    if (paramInt <= 2) {
+      paramInt = aqvq.a.nextInt(8) - 4 + 74;
+    }
+    for (;;)
     {
-      aqvx.b(this.jdField_a_of_type_Aqvx);
+      return paramInt / 4 * 4;
+      if (paramInt <= 4) {
+        paramInt = aqvq.a.nextInt(8) - 4 + 70;
+      } else if (paramInt <= 6) {
+        paramInt = aqvq.a.nextInt(8) - 4 + 66;
+      } else if (paramInt <= 8) {
+        paramInt = aqvq.a.nextInt(8) - 4 + 62;
+      } else {
+        paramInt = aqvq.a.nextInt(8) - 4 + 60;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b % 3 != 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
+      }
       return;
     }
-    aqvx.a(this.jdField_a_of_type_Aqvx, true, 0);
   }
 }
 

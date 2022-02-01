@@ -1,22 +1,96 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdku
-  implements View.OnClickListener
 {
-  public bdku(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  public static boolean a;
   
-  public void onClick(View paramView)
+  private static String a(QQAppInterface paramQQAppInterface)
   {
-    WriteTogetherEditorFragment.a(this.a, true);
-    WriteTogetherEditorFragment.e(this.a);
-    if ((bdgn.a(WriteTogetherEditorFragment.a(this.a).f)) || (!WriteTogetherEditorFragment.a(this.a).a())) {
-      WriteTogetherEditorFragment.f(this.a);
+    if (paramQQAppInterface == null) {
+      return "unknown";
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (NetworkUtil.getNetworkType(paramQQAppInterface.getApp()))
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "none";
+    case 1: 
+      return "Wi-Fi";
+    case 2: 
+      return "2G";
+    case 3: 
+      return "3G";
+    case 4: 
+      return "4G";
+    }
+    return "5G";
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface, bdkv parambdkv)
+  {
+    parambdkv.a = DeviceInfoUtil.getDeviceModel();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.getSosoInfo();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
+      parambdkv.c = localSosoLbsInfo.mLocation.city;
+    }
+    parambdkv.b = a(paramQQAppInterface);
+    return parambdkv.toString();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, bdkv parambdkv)
+  {
+    parambdkv = a(paramQQAppInterface, parambdkv);
+    if (QLog.isColorLevel()) {
+      QLog.i("PushReportController", 1, "reportPushEvent detail=" + parambdkv);
+    }
+    if (paramQQAppInterface == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PushReportController", 1, "not Rumtime");
+      }
+      paramQQAppInterface = new Intent();
+      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramQQAppInterface.putExtra("reporting_tag", "dc03266");
+      paramQQAppInterface.putExtra("reporting_detail", parambdkv);
+      paramQQAppInterface.putExtra("reporting_count", 1);
+      paramQQAppInterface.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("PushReportController", 1, " Rumtime");
+    }
+    bdla.b(paramQQAppInterface, "dc03266", parambdkv, 1);
+  }
+  
+  public static void a(String paramString, bdkv parambdkv)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("&")))
+    {
+      paramString = paramString.split("&");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        if (paramString[i].contains("pushfrom"))
+        {
+          String[] arrayOfString = paramString[i].split("=");
+          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
+            parambdkv.g = arrayOfString[1];
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

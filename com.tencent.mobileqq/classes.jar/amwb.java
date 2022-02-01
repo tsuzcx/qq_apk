@@ -1,229 +1,108 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.apollo.player.CMSActionStatus;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.player.action.CMSAction.Companion.MODE;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgResp;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class amwb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/apollo/player/manager/CMSBornPlayerManager$recordActionByRecorder$listenerWrapper$1", "Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "hasCompleteOrInterrupt", "", "onActionStatusChange", "", "action", "Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "status", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "onRecordDone", "success", "recordKey", "", "recordPath", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amwb
+  implements amvk
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SendMessageHandler jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler;
-  private FromServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private String jdField_a_of_type_JavaLangString;
-  private msg_svc.PbSendMsgResp jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private int d;
-  private int e;
-  private int f;
   
-  public amwb(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, int paramInt5, boolean paramBoolean2, int paramInt6, msg_svc.PbSendMsgResp paramPbSendMsgResp, SendMessageHandler paramSendMessageHandler)
+  amwb(amvz paramamvz, amvq paramamvq) {}
+  
+  public void a(@NotNull CMSAction paramCMSAction)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.e = paramInt5;
-    this.jdField_c_of_type_Boolean = paramBoolean2;
-    this.f = paramInt6;
-    this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp = paramPbSendMsgResp;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler = paramSendMessageHandler;
+    Intrinsics.checkParameterIsNotNull(paramCMSAction, "action");
+    amvl.a(this, paramCMSAction);
   }
   
-  private void a(msg_svc.PbSendMsgResp paramPbSendMsgResp, String paramString, int paramInt1, int paramInt2)
+  public void a(@NotNull CMSAction paramCMSAction, @NotNull CMSActionStatus paramCMSActionStatus)
   {
-    if (paramInt1 == 1006) {
-      f(paramPbSendMsgResp, paramString, paramInt1, paramInt2);
+    Intrinsics.checkParameterIsNotNull(paramCMSAction, "action");
+    Intrinsics.checkParameterIsNotNull(paramCMSActionStatus, "status");
+    if (paramCMSActionStatus == CMSActionStatus.START) {
+      QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayerManager", 1, "recordAction " + paramCMSAction.d() + " state change to " + paramCMSActionStatus);
     }
-    for (;;)
-    {
-      if ((paramPbSendMsgResp.errmsg.has()) && (paramInt2 == 201)) {
-        MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramInt1, paramPbSendMsgResp.errmsg.get(), paramString);
-      }
+    while (!paramCMSActionStatus.isEndState()) {
       return;
-      if (paramInt1 == 1022) {
-        e(paramPbSendMsgResp, paramString, paramInt1, paramInt2);
-      } else if (paramInt1 == 1010) {
-        d(paramPbSendMsgResp, paramString, paramInt1, paramInt2);
-      } else if ((paramInt1 == 1001) || (paramInt1 == 10002)) {
-        c(paramPbSendMsgResp, paramString, paramInt1, paramInt2);
-      } else if (paramInt1 == 0) {
-        b(paramPbSendMsgResp, paramString, paramInt1, paramInt2);
+    }
+    anis.a(paramCMSAction.a().toReportFeatureId(), CMSAction.a(paramCMSAction, null, null, 3, null), 1, paramCMSActionStatus.toReportErrorCode(), new Object[0]);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayerManager", 1, "recordAction " + paramCMSAction.d() + ", state change, but hasCompleteOrInterrupt skip!!");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayerManager", 1, "recordAction " + paramCMSAction.d() + " state change to " + paramCMSActionStatus);
+    if ((paramCMSActionStatus == CMSActionStatus.INTERRUPT) || (paramCMSActionStatus == CMSActionStatus.COMPLETE))
+    {
+      paramCMSAction = (Lock)amvy.a(amvy.a);
+      paramCMSAction.lock();
+    }
+    try
+    {
+      if (!amvy.a(amvy.a).contains(this.jdField_a_of_type_Amvz)) {
+        amvy.a(amvy.a).add(this.jdField_a_of_type_Amvz);
       }
+      paramCMSActionStatus = Unit.INSTANCE;
+      paramCMSAction.unlock();
+      amvy.a(amvy.a, this.jdField_a_of_type_Amvq);
+      return;
+    }
+    finally
+    {
+      paramCMSAction.unlock();
     }
   }
   
-  private void b(msg_svc.PbSendMsgResp paramPbSendMsgResp, String paramString, int paramInt1, int paramInt2)
+  public void a(@NotNull CMSAction paramCMSAction, boolean paramBoolean, @NotNull String paramString1, @Nullable String paramString2)
   {
-    if (paramInt2 == 16)
+    Object localObject2 = null;
+    Intrinsics.checkParameterIsNotNull(paramCMSAction, "action");
+    Intrinsics.checkParameterIsNotNull(paramString1, "recordKey");
+    Lock localLock = (Lock)amvy.a(amvy.a);
+    localLock.lock();
+    if (paramBoolean) {}
+    try
     {
-      String str = paramPbSendMsgResp.errmsg.get();
-      paramPbSendMsgResp = str;
-      if (TextUtils.isEmpty(str)) {
-        paramPbSendMsgResp = amtj.a(2131705750);
-      }
-      paramPbSendMsgResp = new aucf(paramString, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getCurrentAccountUin(), paramPbSendMsgResp, paramInt1, -5020, 1376257, bbko.a());
-      paramString = new MessageForUniteGrayTip();
-      paramString.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, paramPbSendMsgResp);
-      aucg.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, paramString);
-    }
-  }
-  
-  private void c(msg_svc.PbSendMsgResp paramPbSendMsgResp, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramPbSendMsgResp.errmsg.has()) && ((paramInt2 == 63) || (paramInt2 == 64) || (paramInt2 == 65) || ((paramInt2 >= 10000) && (paramInt2 < 20000))))
-    {
-      anky.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, paramString, paramPbSendMsgResp.errmsg.get(), paramInt1, false, false);
-      switch (paramInt2)
+      for (Object localObject1 = CMSActionStatus.COMPLETE;; localObject1 = CMSActionStatus.ERROR_APNG_ENCODE_FAIL)
       {
-      default: 
-        if ((paramInt2 >= 10000) && (paramInt2 < 20000))
-        {
-          paramString = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app;
-          if (paramInt1 != 1001) {
-            break label271;
-          }
+        a(paramCMSAction, (CMSActionStatus)localObject1);
+        amvy.a(amvy.a).remove(this.jdField_a_of_type_Amvz);
+        anis.b(paramCMSAction.a().toReportFeatureId(), CMSAction.a(paramCMSAction, null, null, 3, null));
+        List localList = (List)amvy.a(amvy.a).remove(paramString1);
+        StringBuilder localStringBuilder = new StringBuilder().append("recordAction recordDone ").append(this.jdField_a_of_type_Amvz.a().d()).append(", success:").append(paramBoolean).append(" path:").append(paramString2).append(", listeners size:");
+        localObject1 = localObject2;
+        if (localList != null) {
+          localObject1 = Integer.valueOf(localList.size());
         }
-        break;
+        QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayerManager", 1, localObject1);
+        if (localList == null) {
+          break label250;
+        }
+        localObject1 = ((Iterable)localList).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((amvk)((Iterator)localObject1).next()).a(paramCMSAction, paramBoolean, paramString1, paramString2);
+        }
       }
-    }
-    label271:
-    for (paramPbSendMsgResp = "0";; paramPbSendMsgResp = "1")
-    {
-      bcef.b(paramString, "dc00899", "grp_lbs", "", "c2c_tmp", "no_send", 0, 0, paramPbSendMsgResp, "" + paramInt2, "", "");
-      return;
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, "CliOper", "", "", "0X80052A8", "0X80052A8", 0, 0, "", "", "", "");
-      break;
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, "CliOper", "", "", "0X80052A9", "0X80052A9", 0, 0, "", "", "", "");
-      break;
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, "CliOper", "", "", "0X80052AA", "0X80052AA", 0, 0, "", "", "", "");
-      break;
-    }
-  }
-  
-  private void d(msg_svc.PbSendMsgResp paramPbSendMsgResp, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramPbSendMsgResp.errmsg.has()) && ((paramInt2 == 54) || (paramInt2 == 61) || (paramInt2 == 62) || (paramInt2 == 63) || (paramInt2 == 64) || (paramInt2 == 65))) {
-      anky.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, paramString, paramPbSendMsgResp.errmsg.get(), paramInt1, false, false);
-    }
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 63: 
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, "CliOper", "", "", "0X80052A8", "0X80052A8", 0, 0, "", "", "", "");
-      return;
-    case 64: 
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, "CliOper", "", "", "0X80052A9", "0X80052A9", 0, 0, "", "", "", "");
+      paramCMSAction = Unit.INSTANCE;
+      label250:
       return;
     }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, "CliOper", "", "", "0X80052AA", "0X80052AA", 0, 0, "", "", "", "");
-  }
-  
-  private void e(msg_svc.PbSendMsgResp paramPbSendMsgResp, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramPbSendMsgResp.errmsg.has()) && (paramInt2 == 201)) {
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramInt1, paramPbSendMsgResp.errmsg.get(), paramString);
-    }
-  }
-  
-  private void f(msg_svc.PbSendMsgResp paramPbSendMsgResp, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramPbSendMsgResp.errmsg.has()) && ((paramInt2 == 1600) || (paramInt2 == 1601) || (paramInt2 == 1602) || (paramInt2 == 1603))) {
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramInt1, paramPbSendMsgResp.errmsg.get(), paramString);
-    }
-  }
-  
-  public amwb a()
-  {
-    a(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp, this.jdField_a_of_type_JavaLangString, this.d, this.f);
-    if ((this.f == 10) || (this.f == 34))
+    finally
     {
-      this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.d, this.jdField_a_of_type_Long);
-      if (MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.removeMessageObserver(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_b_of_type_Long);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
-      }
+      localLock.unlock();
     }
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
-    int i = MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_c_of_type_Int);
-    Object[] arrayOfObject = new Object[8];
-    arrayOfObject[0] = this.jdField_a_of_type_JavaLangString;
-    arrayOfObject[1] = Integer.valueOf(this.d);
-    arrayOfObject[2] = Integer.valueOf(this.f);
-    arrayOfObject[3] = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("sendmsgHandler");
-    arrayOfObject[4] = Long.valueOf(this.jdField_c_of_type_Long);
-    arrayOfObject[5] = Long.valueOf(this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.has()) {}
-    for (Object localObject = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get();; localObject = "")
-    {
-      arrayOfObject[6] = localObject;
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, arrayOfObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.f);
-      if (abwz.a(this.d) == 1032) {
-        arrayOfObject[7] = Integer.valueOf(this.e);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(i, true, arrayOfObject);
-      if (this.jdField_c_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_Int;
-        localObject = new amwm();
-        ((amwm)localObject).jdField_b_of_type_Int = 2900;
-        ((amwm)localObject).jdField_a_of_type_Long = this.f;
-        ((amwm)localObject).jdField_c_of_type_Int = (i + 1);
-        ((amwm)localObject).jdField_a_of_type_JavaLangString = MessageHandler.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
-        ((amwm)localObject).d = 1;
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, 5006, false, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), localObject });
-        MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_a_of_type_Long, false);
-      }
-      if ((this.jdField_b_of_type_Int == -7005) && (QLog.isColorLevel())) {
-        QLog.e("Q.msg.MessageHandler", 2, "ExtendFriendLimitChat SendC2CMessageResp_PB MessageForLimitChatConfirm Uniseq = " + this.jdField_a_of_type_Long + " replyCode = " + this.f);
-      }
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_b_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.c(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
-      if ((this.d == 1025) || (this.d == 1024))
-      {
-        long l = System.currentTimeMillis();
-        l = this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler.a(l);
-        ((bing)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getBusinessHandler(85)).a(this.jdField_a_of_type_JavaLangString, this.f, l);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
 }
 

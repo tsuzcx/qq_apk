@@ -1,14 +1,16 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bfmj
-  implements FilenameFilter
+  implements View.OnClickListener
 {
-  bfmj(bfmf parambfmf, String paramString) {}
+  bfmj(bfmi parambfmi) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(View paramView)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,82 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertModule$ReqParams;", "", "()V", "channelId", "", "getChannelId", "()J", "setChannelId", "(J)V", "followPuin", "", "getFollowPuin", "()Ljava/lang/String;", "setFollowPuin", "(Ljava/lang/String;)V", "lastClickArticleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "getLastClickArticleInfo", "()Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "setLastClickArticleInfo", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)V", "reqRecommendFlag", "", "getReqRecommendFlag", "()I", "setReqRecommendFlag", "(I)V", "updateTimes", "getUpdateTimes", "setUpdateTimes", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/PersonalHomePageConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class plz
+  implements AladdinConfigHandler
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  @Nullable
-  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 1;
+  public static final pma a = new pma(null);
   
-  public final int a()
+  public plz()
   {
-    return this.jdField_a_of_type_Int;
+    bmhv.e();
   }
   
-  public final long a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public final BaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public final void a(@Nullable BaseArticleInfo paramBaseArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-  }
-  
-  public final void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public final int b()
-  {
-    return this.b;
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("channelId = ").append(this.jdField_a_of_type_Long).append(", followPuin = ").append(this.jdField_a_of_type_JavaLangString).append(", updateTimes = ").append(this.jdField_a_of_type_Int).append(", reqRecommendFlag = ").append(this.b).append(", lastClickArticleInfo = ");
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localObject != null) {}
-    for (localObject = pma.a.a((BaseArticleInfo)localObject);; localObject = null) {
-      return (String)localObject + ' ';
+    try
+    {
+      paramString = pku.a(paramString);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "configs");
+      paramString = paramString.entrySet().iterator();
+      while (paramString.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramString.next();
+        if ("personal_page_url".equals(localEntry.getKey()))
+        {
+          bmhv.g(URLDecoder.decode((String)localEntry.getValue(), "UTF-8"));
+          bmhv.e();
+        }
+      }
+      return true;
     }
+    catch (UnsupportedEncodingException paramString)
+    {
+      QLog.e("PersonalHomePageConfigHandler", 2, "[PersonalHomePageConfigHandler]: URLDecoder Error in:" + paramString);
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bmhv.g("");
   }
 }
 

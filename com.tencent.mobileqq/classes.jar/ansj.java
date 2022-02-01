@@ -1,33 +1,36 @@
-import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
 public class ansj
-  extends anri
+  implements Manager
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  private bgyx jdField_a_of_type_Bgyx;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public Object a;
+  
+  public ansj(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = new ansg(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qstory";
-    paramQQAppInterface.c = "opencontent";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public bgyx a()
+  {
+    if (this.jdField_a_of_type_Bgyx == null) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+      if (this.jdField_a_of_type_Bgyx == null) {
+        this.jdField_a_of_type_Bgyx = new bgyx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
+      return this.jdField_a_of_type_Bgyx;
     }
-    return paramQQAppInterface;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Bgyx != null) {
+      this.jdField_a_of_type_Bgyx.a();
+    }
   }
 }
 

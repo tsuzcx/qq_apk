@@ -1,22 +1,29 @@
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
+import com.tencent.widget.ListView;
 
-public final class bccm
-  implements bcab
+public class bccm
+  extends bcbd<bcfj, bcnt>
 {
-  public bccm(ImageView paramImageView1, ImageView paramImageView2) {}
-  
-  public void a()
+  public bccm(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
-    }
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected bcif<bcfj, bcnt> a(int paramInt)
+  {
+    return new bcjc(this.a.a);
+  }
+  
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bcpj(paramViewGroup, 2131562829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccm
  * JD-Core Version:    0.7.0.1
  */

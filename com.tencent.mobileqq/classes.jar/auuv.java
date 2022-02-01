@@ -1,286 +1,319 @@
-import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.os.Handler;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter.1;
+import com.tencent.mobileqq.forward.ForwardStatisticsReporter.2;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class auuv
-  extends ContentObserver
 {
-  protected Context a;
-  protected Handler a;
-  protected String a;
-  protected String b;
+  private static Map<String, Long> a = new HashMap();
   
-  public auuv(Handler paramHandler, Context paramContext, String paramString1, String paramString2)
+  static
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    aqcj localaqcj = new aqcj();
+    localaqcj.jdField_a_of_type_JavaLangString = "OpenShare";
+    localaqcj.b = "KEY_STAGE_1_TOTAL";
+    localaqcj.c = "KEY_STAGE_2_TOTAL";
+    localaqcj.jdField_a_of_type_Long = 30000L;
+    localaqcj.jdField_a_of_type_JavaUtilSet = new ForwardStatisticsReporter.1();
+    aqci.a("OpenShare", localaqcj);
+    localaqcj = new aqcj();
+    localaqcj.jdField_a_of_type_JavaLangString = "OpenLogin";
+    localaqcj.b = "KEY_LOGIN_STAGE_1_TOTAL";
+    localaqcj.c = "KEY_AUTHORITY_TOTAL";
+    localaqcj.jdField_a_of_type_Long = 30000L;
+    localaqcj.jdField_a_of_type_JavaUtilSet = new ForwardStatisticsReporter.2();
+    aqci.a("OpenLogin", localaqcj);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  protected void a(Cursor paramCursor)
+  public static void a()
   {
     try
     {
-      paramCursor.close();
+      a.clear();
       return;
     }
-    catch (Exception paramCursor) {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public void a(String paramString1, String paramString2)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    try
+    {
+      long l = System.currentTimeMillis();
+      a.put(paramString, Long.valueOf(l));
+      aqci.a(paramString, l);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
   /* Error */
-  public void onChange(boolean paramBoolean)
+  public static void a(String paramString, long paramLong)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: iload_1
-    //   4: invokespecial 45	android/database/ContentObserver:onChange	(Z)V
-    //   7: aload_0
-    //   8: getfield 24	auuv:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   11: ifnull +10 -> 21
-    //   14: aload_0
-    //   15: getfield 16	auuv:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   18: ifnonnull +4 -> 22
-    //   21: return
-    //   22: ldc 47
-    //   24: invokestatic 53	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   27: astore_2
-    //   28: aload_0
-    //   29: getfield 24	auuv:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   32: invokevirtual 57	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   35: aload_2
-    //   36: iconst_3
-    //   37: anewarray 59	java/lang/String
-    //   40: dup
-    //   41: iconst_0
-    //   42: ldc 61
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_1
-    //   47: ldc 63
-    //   49: aastore
-    //   50: dup
-    //   51: iconst_2
-    //   52: ldc 65
-    //   54: aastore
-    //   55: aconst_null
-    //   56: aconst_null
-    //   57: ldc 67
-    //   59: invokevirtual 73	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   62: astore_2
-    //   63: aload_2
-    //   64: ifnull +255 -> 319
-    //   67: aload_2
-    //   68: invokeinterface 77 1 0
-    //   73: ifeq +246 -> 319
-    //   76: aload_2
-    //   77: aload_2
-    //   78: ldc 63
-    //   80: invokeinterface 81 2 0
-    //   85: invokeinterface 85 2 0
-    //   90: astore 4
-    //   92: aload_0
-    //   93: getfield 26	auuv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   96: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   99: ifne +59 -> 158
-    //   102: aload 4
-    //   104: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   107: ifeq +18 -> 125
-    //   110: aload_0
-    //   111: aload_2
-    //   112: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   115: aload_2
-    //   116: ifnull -95 -> 21
-    //   119: aload_0
-    //   120: aload_2
-    //   121: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   124: return
-    //   125: aload_0
-    //   126: getfield 26	auuv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   129: invokestatic 99	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   132: aload 4
-    //   134: invokevirtual 103	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   137: invokevirtual 108	java/util/regex/Matcher:matches	()Z
-    //   140: ifne +18 -> 158
-    //   143: aload_0
-    //   144: aload_2
-    //   145: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   148: aload_2
-    //   149: ifnull -128 -> 21
-    //   152: aload_0
-    //   153: aload_2
-    //   154: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   157: return
-    //   158: aload_0
-    //   159: getfield 28	auuv:b	Ljava/lang/String;
-    //   162: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   165: ifeq +18 -> 183
-    //   168: aload_0
-    //   169: aload_2
-    //   170: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   173: aload_2
-    //   174: ifnull -153 -> 21
-    //   177: aload_0
-    //   178: aload_2
-    //   179: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   182: return
-    //   183: aload_2
-    //   184: aload_2
-    //   185: ldc 65
-    //   187: invokeinterface 81 2 0
-    //   192: invokeinterface 85 2 0
-    //   197: astore 5
-    //   199: aload 5
-    //   201: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   204: ifne +115 -> 319
-    //   207: aload_0
-    //   208: getfield 28	auuv:b	Ljava/lang/String;
-    //   211: invokestatic 99	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   214: aload 5
-    //   216: invokevirtual 103	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   219: astore 5
-    //   221: aload 5
-    //   223: invokevirtual 111	java/util/regex/Matcher:find	()Z
-    //   226: ifne +18 -> 244
-    //   229: aload_0
-    //   230: aload_2
-    //   231: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   234: aload_2
-    //   235: ifnull -214 -> 21
-    //   238: aload_0
-    //   239: aload_2
-    //   240: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   243: return
-    //   244: aload 5
-    //   246: invokevirtual 115	java/util/regex/Matcher:group	()Ljava/lang/String;
-    //   249: astore 5
-    //   251: aload 5
-    //   253: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   256: istore_1
-    //   257: iload_1
-    //   258: ifne +61 -> 319
-    //   261: new 117	org/json/JSONObject
-    //   264: dup
-    //   265: invokespecial 119	org/json/JSONObject:<init>	()V
-    //   268: astore 6
-    //   270: aload 6
-    //   272: ldc 121
-    //   274: aload 4
-    //   276: invokevirtual 125	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   279: pop
-    //   280: aload 6
-    //   282: ldc 127
-    //   284: aload 5
-    //   286: invokevirtual 125	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   289: pop
-    //   290: aload 6
-    //   292: invokevirtual 130	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   295: astore 4
-    //   297: aload 4
-    //   299: astore_3
-    //   300: aload_3
-    //   301: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   304: ifne +15 -> 319
-    //   307: aload_0
-    //   308: getfield 16	auuv:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   311: iconst_1
-    //   312: aload_3
-    //   313: invokevirtual 136	android/os/Handler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   316: invokevirtual 141	android/os/Message:sendToTarget	()V
-    //   319: aload_2
-    //   320: ifnull -299 -> 21
-    //   323: aload_0
-    //   324: aload_2
-    //   325: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   328: return
-    //   329: astore 4
-    //   331: aload 4
-    //   333: invokevirtual 144	org/json/JSONException:printStackTrace	()V
-    //   336: goto -36 -> 300
-    //   339: astore_3
-    //   340: aload_2
-    //   341: ifnull +8 -> 349
-    //   344: aload_0
-    //   345: aload_2
-    //   346: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   349: aload_2
-    //   350: ifnull -329 -> 21
-    //   353: aload_0
-    //   354: aload_2
-    //   355: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   358: return
-    //   359: astore_3
-    //   360: aconst_null
-    //   361: astore_2
-    //   362: aload_2
-    //   363: ifnull +8 -> 371
-    //   366: aload_0
-    //   367: aload_2
-    //   368: invokevirtual 93	auuv:a	(Landroid/database/Cursor;)V
-    //   371: aload_3
-    //   372: athrow
-    //   373: astore_3
-    //   374: goto -12 -> 362
-    //   377: astore_3
-    //   378: goto -16 -> 362
-    //   381: astore_2
-    //   382: aconst_null
-    //   383: astore_2
-    //   384: goto -44 -> 340
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 91	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   6: invokevirtual 95	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   9: checkcast 97	com/tencent/common/app/AppInterface
+    //   12: astore_3
+    //   13: aload_3
+    //   14: ifnonnull +32 -> 46
+    //   17: ldc 99
+    //   19: iconst_1
+    //   20: new 101	java/lang/StringBuilder
+    //   23: dup
+    //   24: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   27: ldc 104
+    //   29: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: aload_0
+    //   33: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: return
+    //   46: aload_3
+    //   47: invokevirtual 121	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   50: astore_3
+    //   51: ldc 99
+    //   53: iconst_1
+    //   54: iconst_5
+    //   55: anewarray 4	java/lang/Object
+    //   58: dup
+    //   59: iconst_0
+    //   60: aload_0
+    //   61: aastore
+    //   62: dup
+    //   63: iconst_1
+    //   64: ldc 123
+    //   66: aastore
+    //   67: dup
+    //   68: iconst_2
+    //   69: lload_1
+    //   70: invokestatic 78	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   73: aastore
+    //   74: dup
+    //   75: iconst_3
+    //   76: ldc 125
+    //   78: aastore
+    //   79: dup
+    //   80: iconst_4
+    //   81: aload_3
+    //   82: invokestatic 130	bjhh:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: aastore
+    //   86: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   89: invokestatic 137	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   92: invokestatic 143	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   95: aload_3
+    //   96: aload_0
+    //   97: iconst_1
+    //   98: lload_1
+    //   99: lconst_0
+    //   100: aconst_null
+    //   101: ldc 145
+    //   103: iconst_0
+    //   104: invokevirtual 149	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   107: aload_0
+    //   108: iconst_1
+    //   109: lload_1
+    //   110: aconst_null
+    //   111: invokestatic 152	aqci:a	(Ljava/lang/String;ZJLjava/util/HashMap;)V
+    //   114: goto -72 -> 42
+    //   117: astore_0
+    //   118: ldc 2
+    //   120: monitorexit
+    //   121: aload_0
+    //   122: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	387	0	this	auuv
-    //   0	387	1	paramBoolean	boolean
-    //   27	341	2	localObject1	java.lang.Object
-    //   381	1	2	localException1	Exception
-    //   383	1	2	localObject2	java.lang.Object
-    //   1	312	3	localObject3	java.lang.Object
-    //   339	1	3	localException2	Exception
-    //   359	13	3	localObject4	java.lang.Object
-    //   373	1	3	localObject5	java.lang.Object
-    //   377	1	3	localObject6	java.lang.Object
-    //   90	208	4	str	String
-    //   329	3	4	localJSONException	org.json.JSONException
-    //   197	88	5	localObject7	java.lang.Object
-    //   268	23	6	localJSONObject	org.json.JSONObject
+    //   0	123	0	paramString	String
+    //   0	123	1	paramLong	long
+    //   12	84	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   261	297	329	org/json/JSONException
-    //   67	115	339	java/lang/Exception
-    //   125	148	339	java/lang/Exception
-    //   158	173	339	java/lang/Exception
-    //   183	234	339	java/lang/Exception
-    //   244	257	339	java/lang/Exception
-    //   261	297	339	java/lang/Exception
-    //   300	319	339	java/lang/Exception
-    //   331	336	339	java/lang/Exception
-    //   28	63	359	finally
-    //   67	115	373	finally
-    //   125	148	373	finally
-    //   158	173	373	finally
-    //   183	234	373	finally
-    //   244	257	373	finally
-    //   261	297	373	finally
-    //   300	319	373	finally
-    //   331	336	373	finally
-    //   344	349	377	finally
-    //   28	63	381	java/lang/Exception
+    //   3	13	117	finally
+    //   17	42	117	finally
+    //   46	114	117	finally
+  }
+  
+  public static void a(String paramString, long paramLong, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    String str = ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin();
+    QLog.d("ForwardStatisticsReporter", 1, new Object[] { "reportSaveImage key=", paramString, ",duration=", Long.valueOf(paramLong), ", uin=", bjhh.a(str) });
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, paramString, paramBoolean, paramLong, 0L, paramHashMap, "", false);
+    aqci.a(paramString, true, paramLong, paramHashMap);
+  }
+  
+  public static void a(String paramString, Bundle paramBundle, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("PARAM_ERROR_CODE", Integer.toString(paramBundle.getInt("code")));
+    localHashMap.put("param_error_ret", Integer.toString(paramBundle.getInt("ret")));
+    a(paramString, localHashMap, paramBoolean);
+  }
+  
+  public static void a(String paramString, bjpl parambjpl)
+  {
+    try
+    {
+      a(paramString, parambjpl, true);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static void a(String paramString, bjpl parambjpl, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    if (parambjpl == null) {}
+    for (parambjpl = "";; parambjpl = parambjpl.jdField_a_of_type_JavaLangString)
+    {
+      a(paramString, parambjpl, paramHashMap, paramBoolean);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, bjpl parambjpl, boolean paramBoolean)
+  {
+    try
+    {
+      a(paramString, parambjpl, null, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, long paramLong, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      Object localObject;
+      try
+      {
+        localObject = (Long)a.get(paramString1);
+        if (localObject == null)
+        {
+          QLog.e("ForwardStatisticsReporter", 1, new Object[] { "report invalid key =", paramString1 });
+          return;
+        }
+        a.remove(paramString1);
+        paramLong -= ((Long)localObject).longValue();
+        if ((paramHashMap == null) || (paramHashMap.isEmpty()))
+        {
+          QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString1, "=", Long.valueOf(paramLong), ", uin=", bjhh.a(paramString2) });
+          StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(paramString2, paramString1, paramBoolean, paramLong, 0L, paramHashMap, "", false);
+          aqci.a(paramString1, paramBoolean, paramLong, paramHashMap);
+          if (!"KEY_STAGE_2_TOTAL".equals(paramString1)) {
+            continue;
+          }
+          a.clear();
+          continue;
+        }
+        localObject = new StringBuilder();
+      }
+      finally {}
+      Iterator localIterator = paramHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        ((StringBuilder)localObject).append((String)localEntry.getKey()).append("=").append((String)localEntry.getValue()).append(" ");
+      }
+      QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString1, "=", Long.valueOf(paramLong), ", uin=", bjhh.a(paramString2), ", params[", ((StringBuilder)localObject).toString(), "]" });
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    try
+    {
+      a(paramString1, paramString2, System.currentTimeMillis(), paramHashMap, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    try
+    {
+      a(paramString1, paramString2, null, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    try
+    {
+      a(paramString, ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin(), paramHashMap, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      a(paramString, ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin(), paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    try
+    {
+      a(paramString, true);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
 }
 

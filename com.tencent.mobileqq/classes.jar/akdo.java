@@ -1,6 +1,17 @@
-public abstract interface akdo
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class akdo
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt);
+  akdo(akdn paramakdn) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    akdn.a(this.a, paramView);
+    return false;
+  }
 }
 
 

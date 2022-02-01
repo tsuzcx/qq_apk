@@ -1,39 +1,52 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
 public class aeps
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  public aeps(TroopRequestActivity paramTroopRequestActivity) {}
+  public aeps(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    anbm localanbm = (anbm)this.a.app.getBusinessHandler(26);
-    ArrayList localArrayList = new ArrayList();
-    try
+    QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF error_code:" + paramEIPCResult.code);
+    switch (paramEIPCResult.code)
     {
-      if (!TextUtils.isEmpty(this.a.b)) {
-        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+    default: 
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      if (this.jdField_a_of_type_Boolean) {
+        QQIdentiferLegacy.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
       }
-      localanbm.a(localArrayList);
+      break;
     }
-    catch (NumberFormatException localNumberFormatException)
+    for (;;)
     {
-      for (;;)
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
+      return;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      break;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      if (paramEIPCResult.data != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", localNumberFormatException);
-        }
+        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf"));
+        QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
+      }
+      QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF success conf :" + QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
+      break;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
+      break;
+      if ("identify".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        aept.a(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy), "0X800B2BE");
+        this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeCallbacks(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -6,10 +6,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
-import atku;
-import atky;
-import atnh;
-import bcef;
+import aupp;
+import aupt;
+import ausc;
+import bdla;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
@@ -21,7 +21,7 @@ public class BaseForwardSelectionActivity
   extends FragmentActivity
 {
   protected Bundle a;
-  public atky a;
+  public aupt a;
   public boolean a;
   public boolean b;
   
@@ -67,7 +67,7 @@ public class BaseForwardSelectionActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Atky.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Aupt.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -79,8 +79,8 @@ public class BaseForwardSelectionActivity
       this.b = getIntent().getBooleanExtra("call_by_forward", false);
       if (this.b)
       {
-        this.jdField_a_of_type_Atky = atnh.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Atky.a();
+        this.jdField_a_of_type_Aupt = ausc.a(paramBundle, this.app, this);
+        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aupt.a();
       }
     }
     return true;
@@ -88,8 +88,8 @@ public class BaseForwardSelectionActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Atky != null) {
-      this.jdField_a_of_type_Atky.y();
+    if (this.jdField_a_of_type_Aupt != null) {
+      this.jdField_a_of_type_Aupt.y();
     }
     super.doOnDestroy();
   }
@@ -112,14 +112,14 @@ public class BaseForwardSelectionActivity
     paramIntent = (String)paramIntent.get(0);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-    if ((i == atku.f.intValue()) || (i == atku.k.intValue()))
+    if ((i == aupp.f.intValue()) || (i == aupp.k.intValue()))
     {
-      this.jdField_a_of_type_Atky.b(i);
+      this.jdField_a_of_type_Aupt.b(i);
       return;
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     a();
-    bcef.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    bdla.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void finish()

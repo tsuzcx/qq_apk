@@ -1,48 +1,14 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
 
 public class ajlf
+  extends anyz
 {
-  public static List<ajlg> a;
+  private ajlf(FriendFragment paramFriendFragment) {}
   
-  public static void a(JSONObject paramJSONObject)
+  protected void onUpdateFriendsList()
   {
-    int i = 2;
-    if ((paramJSONObject != null) && (paramJSONObject.has("entryList")))
-    {
-      paramJSONObject = paramJSONObject.optJSONArray("entryList");
-      ArrayList localArrayList = new ArrayList();
-      if (paramJSONObject.length() > 2) {}
-      for (;;)
-      {
-        int j = 0;
-        while (j < i)
-        {
-          JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
-          ajlg localajlg = new ajlg();
-          localajlg.jdField_a_of_type_Int = localJSONObject.optInt("id");
-          Object localObject = localJSONObject.optJSONObject("image");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("src");
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localajlg.jdField_a_of_type_JavaLangString = ("https://gxh.vip.qq.com/xydata" + (String)localObject);
-            }
-          }
-          localajlg.c = localJSONObject.optString("name");
-          localajlg.d = localJSONObject.optString("desc");
-          localajlg.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
-          localajlg.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
-          localajlg.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
-          localArrayList.add(localajlg);
-          j += 1;
-        }
-        i = paramJSONObject.length();
-      }
-      a = localArrayList;
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
     }
   }
 }

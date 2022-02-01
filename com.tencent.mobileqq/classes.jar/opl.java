@@ -1,40 +1,103 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class opl
 {
-  private VideoCompositeHelper jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper = new VideoCompositeHelper();
-  private opn jdField_a_of_type_Opn;
-  
-  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
+  public static int a(AppRuntime paramAppRuntime, String paramString)
   {
-    if (this.jdField_a_of_type_Opn != null) {
-      this.jdField_a_of_type_Opn.a(paramPublishVideoEntry, paramInt, paramString);
+    try
+    {
+      int i = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getInt(paramString, 0);
+      return i;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramAppRuntime);
+    }
+    return 0;
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString)
+  {
+    try
+    {
+      paramAppRuntime = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getString(paramString, "");
+      return paramAppRuntime;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
+    return "";
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString)
+  {
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().remove(paramString).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
     }
   }
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Opn != null) {
-      this.jdField_a_of_type_Opn.a(paramPublishVideoEntry, paramString);
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putInt(paramString, paramInt).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
     }
   }
   
-  public void a(String paramString)
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
-    VideoCompositeHelper.deleteVideoCache(VideoCompositeHelper.getPublishVideoEntry(paramString));
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putString(paramString1, paramString2).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
   }
   
-  public void a(String paramString1, String paramString2)
+  public static void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    paramString1 = VideoCompositeHelper.getPublishVideoEntry(paramString1);
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.composite(paramString1, paramString2 + ".tmp.mp4", false, true, new opm(this, l, paramString1));
+    try
+    {
+      paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).edit().putBoolean(paramString, paramBoolean).apply();
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramAppRuntime);
+    }
   }
   
-  public void a(opn paramopn)
+  public static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    this.jdField_a_of_type_Opn = paramopn;
+    try
+    {
+      boolean bool = paramAppRuntime.getApplication().getSharedPreferences("ecshop_pref", 4).getBoolean(paramString, false);
+      return bool;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramAppRuntime);
+    }
+    return false;
   }
 }
 

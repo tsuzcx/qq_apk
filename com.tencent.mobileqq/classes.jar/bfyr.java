@@ -1,80 +1,106 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bfyr
+  extends bfye
 {
-  public static int a()
+  public bfyr(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_versioncode", 0);
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 11;
   }
   
-  public static void a(int paramInt)
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_versioncode", paramInt);
-    localEditor.apply();
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_predownload_success_key", paramBoolean);
-    localEditor.apply();
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_predownload_success_key", false);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0);
-    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
-    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
-      return true;
+    paramObject = bffr.a(paramInt1, paramLong1, paramInt2);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131698364);
+    paramList = "";
+    boolean bool2 = false;
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq4Troop(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if (localMessageRecord != null) {
+      paramList = localMessageRecord.senderuin;
     }
-    return false;
+    boolean bool1 = bool2;
+    if (paramLong2 != bfyo.a)
+    {
+      bool1 = bool2;
+      if (paramLong1 < paramLong2) {
+        bool1 = true;
+      }
+    }
+    String str2;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      str2 = this.jdField_a_of_type_JavaLangString + ".troop.special_msg.confess_to_me";
+      localStringBuilder = new StringBuilder().append("需要定位的第一条消息是否已经拉到本地：");
+      if (localMessageRecord == null) {
+        break label188;
+      }
+    }
+    label188:
+    for (bool2 = true;; bool2 = false)
+    {
+      QLog.d(str2, 2, bool2 + ", isShow = " + bool1);
+      if (!bool1) {
+        break;
+      }
+      return new bfyg(true, str1, paramObject, paramList);
+    }
+    return null;
   }
   
-  public static int b()
+  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_dialog_versioncode", 0);
+    paramTextView1.setText(anvx.a(2131714524));
+    paramTextView2.setText(anvx.a(2131714535));
+    paramTextView1.setTextSize(1, 13.0F);
+    paramTextView2.setTextSize(1, 13.0F);
   }
   
-  public static void b(int paramInt)
+  public void a(int paramInt1, bffr parambffr, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_dialog_versioncode", paramInt);
-    localEditor.apply();
+    super.a(paramInt1, parambffr, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
+    paramString = null;
+    if (paramLong != bfyo.a) {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq4Troop(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong);
+    }
+    if (paramString != null) {
+      paramTextView1.setText(anvx.a(2131714529));
+    }
+    if (((paramString instanceof MessageForQQWalletMsg)) && (MessageForQQWalletMsg.isRedPacketMsg(paramString)))
+    {
+      paramString = (MessageForQQWalletMsg)paramString;
+      if ((paramString.messageType == 7) || (paramString.messageType == 8))
+      {
+        paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718519));
+        parambffr.b = true;
+      }
+    }
+    while (paramInt2 <= 0)
+    {
+      return;
+      paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718503));
+      parambffr.a = true;
+      return;
+    }
+    parambffr.a = false;
+    paramTextView2.setText(anvx.a(2131714527));
   }
   
-  public static void b(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_has_show_upgrade_dialog", paramBoolean);
-    localEditor.apply();
-  }
+  public void a(int paramInt, Object paramObject, String paramString) {}
   
-  public static boolean b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_has_show_upgrade_dialog", false);
-  }
-  
-  public static void c(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_normal_upgrade_version", paramInt);
-    localEditor.apply();
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_normal_upgrade", paramBoolean);
-    localEditor.apply();
-  }
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.open.downloadnew;
 
 import android.content.DialogInterface.OnClickListener;
-import bhzm;
-import bhzq;
-import bicl;
-import bicp;
+import bjko;
+import bjks;
+import bjnn;
+import bjnr;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 import oicq.wlogin_sdk.tools.util;
@@ -12,12 +12,12 @@ import oicq.wlogin_sdk.tools.util;
 public class MyAppApi$15$1
   implements Runnable
 {
-  public MyAppApi$15$1(bicp parambicp, byte[] paramArrayOfByte, String paramString) {}
+  public MyAppApi$15$1(bjnr parambjnr, byte[] paramArrayOfByte, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bicp.jdField_a_of_type_Bhzq.a();
-    if (this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a != null) {
+    this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjks.a();
+    if (this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a != null) {
       for (;;)
       {
         try
@@ -33,20 +33,20 @@ public class MyAppApi$15$1
           Object localObject;
           localException2.printStackTrace();
           continue;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a()).startToAuthorized(this.jdField_a_of_type_Bicp.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a, "2");
+          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a()).startToAuthorized(this.jdField_a_of_type_Bjnr.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a, "2");
           continue;
         }
         try
         {
           str = util.buf_to_string(this.jdField_a_of_type_ArrayOfByte);
-          this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + str);
-          this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.d = this.jdField_a_of_type_Bicp.jdField_a_of_type_Long;
-          if (this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a() <= 2)
+          this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + str);
+          this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.d = this.jdField_a_of_type_Bjnr.jdField_a_of_type_Long;
+          if (this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a() <= 2)
           {
-            ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a()).startToAuthorized(this.jdField_a_of_type_Bicp.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a, "2");
-            this.jdField_a_of_type_Bicp.jdField_a_of_type_Bicl.a = null;
-            if (this.jdField_a_of_type_Bicp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-              this.jdField_a_of_type_Bicp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+            ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a()).startToAuthorized(this.jdField_a_of_type_Bjnr.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a, "2");
+            this.jdField_a_of_type_Bjnr.jdField_a_of_type_Bjnn.a = null;
+            if (this.jdField_a_of_type_Bjnr.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+              this.jdField_a_of_type_Bjnr.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
             }
             return;
           }
@@ -58,7 +58,7 @@ public class MyAppApi$15$1
         }
       }
     }
-    bhzm.e("MyAppApi", "startToAuthorizedDirect->onGetA1 mLastAuthorizeParam = null, needCarryQQIdentity = true");
+    bjko.e("MyAppApi", "startToAuthorizedDirect->onGetA1 mLastAuthorizeParam = null, needCarryQQIdentity = true");
   }
 }
 

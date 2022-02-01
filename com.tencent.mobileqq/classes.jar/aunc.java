@@ -1,16 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.Callable;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
-class aunc
-  implements Callable<aumc>
+public class aunc
+  extends aumo
 {
-  aunc(auna paramauna) {}
-  
-  public aumc a()
+  public aunc(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return auml.b(auna.a(this.a).getApplication(), "GVideo", localQQAppInterface.getCurrentUin());
+    super(paramString, paramBinaryMessenger);
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new aund(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return aune.a;
   }
 }
 

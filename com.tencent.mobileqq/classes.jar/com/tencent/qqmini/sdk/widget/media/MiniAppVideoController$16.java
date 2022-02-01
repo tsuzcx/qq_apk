@@ -7,8 +7,8 @@ class MiniAppVideoController$16
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$0).release();
-    MiniAppVideoController.access$600(this.this$0).release();
+    MiniAppVideoController.access$300(this.this$0).release();
+    MiniAppVideoController.access$200(this.this$0).release();
     MiniAppVideoController.access$3300(this.this$0);
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
-import bhrs;
+import bjcp;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 
 class DeviceFriendListOpenFrame$2
@@ -19,9 +19,9 @@ class DeviceFriendListOpenFrame$2
     {
       if (i < j)
       {
-        bhrs localbhrs = (bhrs)this.this$0.a.getChildAt(i).getTag();
-        if ((localbhrs != null) && (this.jdField_a_of_type_JavaLangString.equals(localbhrs.b))) {
-          localbhrs.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        bjcp localbjcp = (bjcp)this.this$0.a.getChildAt(i).getTag();
+        if ((localbjcp != null) && (this.jdField_a_of_type_JavaLangString.equals(localbjcp.b))) {
+          localbjcp.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
       }
       else

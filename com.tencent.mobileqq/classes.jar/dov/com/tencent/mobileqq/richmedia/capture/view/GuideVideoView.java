@@ -1,15 +1,15 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import afbb;
+import afsn;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bnyc;
-import bnyd;
-import bnye;
+import bpnu;
+import bpnv;
+import bpnw;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -33,13 +33,13 @@ import mqq.os.MqqHandler;
 
 public class GuideVideoView
   extends LinearLayout
-  implements afbb, View.OnClickListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements afsn, View.OnClickListener, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bnyc jdField_a_of_type_Bnyc;
-  private bnyd jdField_a_of_type_Bnyd;
-  private bnye jdField_a_of_type_Bnye;
+  private bpnu jdField_a_of_type_Bpnu;
+  private bpnv jdField_a_of_type_Bpnv;
+  private bpnw jdField_a_of_type_Bpnw;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   protected FadedButton a;
@@ -109,8 +109,8 @@ public class GuideVideoView
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton) {
-      if (this.jdField_a_of_type_Bnyc != null) {
-        this.jdField_a_of_type_Bnyc.a();
+      if (this.jdField_a_of_type_Bpnu != null) {
+        this.jdField_a_of_type_Bpnu.a();
       }
     }
     for (;;)
@@ -142,15 +142,15 @@ public class GuideVideoView
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Bnyd != null) {
-      this.jdField_a_of_type_Bnyd.a();
+    if (this.jdField_a_of_type_Bpnv != null) {
+      this.jdField_a_of_type_Bpnv.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bnye != null) {
-      this.jdField_a_of_type_Bnye.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_Bpnw != null) {
+      this.jdField_a_of_type_Bpnw.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -211,19 +211,19 @@ public class GuideVideoView
     }
   }
   
-  public void setOnCloseListener(bnyc parambnyc)
+  public void setOnCloseListener(bpnu parambpnu)
   {
-    this.jdField_a_of_type_Bnyc = parambnyc;
+    this.jdField_a_of_type_Bpnu = parambpnu;
   }
   
-  public void setOnCompleteListener(bnyd parambnyd)
+  public void setOnCompleteListener(bpnv parambpnv)
   {
-    this.jdField_a_of_type_Bnyd = parambnyd;
+    this.jdField_a_of_type_Bpnv = parambpnv;
   }
   
-  public void setOnErrorListener(bnye parambnye)
+  public void setOnErrorListener(bpnw parambpnw)
   {
-    this.jdField_a_of_type_Bnye = parambnye;
+    this.jdField_a_of_type_Bpnw = parambpnw;
   }
 }
 

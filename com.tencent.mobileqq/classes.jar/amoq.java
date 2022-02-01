@@ -1,54 +1,31 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.utils.TbsLogClient;
-import mqq.os.MqqHandler;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amoq
-  extends TbsLogClient
+  implements ampn
 {
-  public amoq(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
+  private int a;
+  
+  public amoq(int paramInt)
   {
-    super(paramContext);
+    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
   }
   
-  public void d(String paramString1, String paramString2)
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
+    {
+      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void showLog(String paramString)
-  {
-    if (this.a.b == -1) {
-      this.a.b = 0;
-    }
-    if (this.a.b == 1) {
-      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
-    }
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
+    return arrayOfEGLConfig[0];
   }
 }
 

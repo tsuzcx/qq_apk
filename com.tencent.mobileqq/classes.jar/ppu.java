@@ -1,19 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ppu
-  implements ValueAnimator.AnimatorUpdateListener
+class ppu
+  implements blcw
 {
-  public ppu(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  ppu(ppr paramppr, pne parampne, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJDislikeManager", 2, "onAdComplain");
+    }
+    if ((this.jdField_a_of_type_Pne.a().a() instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_Pne.a().a(), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 

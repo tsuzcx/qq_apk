@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.werewolves;
 
-import ahgc;
+import aiav;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,17 +9,17 @@ import android.widget.FrameLayout;
 public class GameView
   extends FrameLayout
 {
-  ahgc a;
+  aiav a;
   
   public GameView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public GameView(Context paramContext, ahgc paramahgc)
+  public GameView(Context paramContext, aiav paramaiav)
   {
     super(paramContext);
-    this.a = paramahgc;
+    this.a = paramaiav;
   }
   
   public GameView(Context paramContext, AttributeSet paramAttributeSet)

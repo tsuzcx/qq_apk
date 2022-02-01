@@ -1,23 +1,50 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class ahvu
-  implements InputFilter
+  extends ahvq
 {
-  public ahvu(BookEditText paramBookEditText) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  ahvu()
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
+    a(new ahvm());
+  }
+  
+  public void b(BaseChatPie paramBaseChatPie)
+  {
+    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
+    a(paramBaseChatPie.sessionInfo.curType);
+    a(paramBaseChatPie.sessionInfo.curType, 1200000007);
+    a(paramBaseChatPie.sessionInfo.curType, 1106658188);
+    if (avmh.a(localQQAppInterface).b()) {
+      a(paramBaseChatPie.sessionInfo.curType, 1107930043);
     }
-    while (!QQText.containsEmoji(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
+    a(paramBaseChatPie.sessionInfo.curType, 1104864062);
+    a(paramBaseChatPie.sessionInfo.curType, 1104864068);
+    a(paramBaseChatPie.sessionInfo.curType, 1104864066);
+    a(paramBaseChatPie.sessionInfo.curType, 1104639410);
+    if (this.a.a(paramBaseChatPie.getActivity(), localQQAppInterface.getCurrentAccountUin())) {
+      a(paramBaseChatPie.sessionInfo.curType, 1106114157);
     }
-    return "";
+    a(paramBaseChatPie.sessionInfo.curType, 1200000010);
+    a(paramBaseChatPie.sessionInfo.curType, 1104864070);
+    a(paramBaseChatPie.sessionInfo.curType, 1104788679);
+    a(paramBaseChatPie.sessionInfo.curType, 1104874204);
+    if (bbbf.a()) {
+      a(paramBaseChatPie.sessionInfo.curType, 1106189400);
+    }
+    if ((amme.a(paramBaseChatPie.getActivity())) && (amme.c("discuss") == 1)) {
+      a(paramBaseChatPie.sessionInfo.curType, 1200000008);
+    }
+    if (((becf)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_MANAGER)).a().booleanValue())
+    {
+      a(paramBaseChatPie.sessionInfo.curType, 1200000002);
+      ahpt.a(localQQAppInterface, "0X80093F3", paramBaseChatPie.sessionInfo.curType);
+    }
+    if (!apwl.a) {
+      a(paramBaseChatPie.sessionInfo.curType, 1200000009);
+    }
   }
 }
 

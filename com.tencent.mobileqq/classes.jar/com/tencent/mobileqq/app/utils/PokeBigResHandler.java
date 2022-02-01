@@ -2,9 +2,9 @@ package com.tencent.mobileqq.app.utils;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import anxe;
-import bjkf;
-import boaj;
+import apag;
+import bkvq;
+import bpqb;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandler;
@@ -35,7 +35,7 @@ public class PokeBigResHandler
   private static String e = "";
   private static String f = "";
   private static final String g = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "bigPoke");
-  private anxe jdField_a_of_type_Anxe = new anxe();
+  private apag jdField_a_of_type_Apag = new apag();
   
   static
   {
@@ -67,9 +67,9 @@ public class PokeBigResHandler
         if (!TextUtils.isEmpty(VFSAssistantUtils.getSDKPrivatePath(g)))
         {
           FileUtils.delete(VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
-          boaj.a(g);
+          bpqb.a(g);
           FileUtils.uncompressZip(paramString, VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString), false);
-          boaj.a(jdField_a_of_type_JavaLangString);
+          bpqb.a(jdField_a_of_type_JavaLangString);
         }
         FileUtils.delete(paramString, false);
         long l2 = System.currentTimeMillis();
@@ -169,7 +169,7 @@ public class PokeBigResHandler
     File localFile = new File(str);
     if ((localFile.exists()) && (localFile.list() != null))
     {
-      boaj.a(str);
+      bpqb.a(str);
       return true;
     }
     return false;
@@ -263,7 +263,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bjkf.a(localFile);
+            paramString = bkvq.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -287,7 +287,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bjkf.a(localFile);
+            paramString = bkvq.a(localFile);
           }
           catch (Exception paramString)
           {

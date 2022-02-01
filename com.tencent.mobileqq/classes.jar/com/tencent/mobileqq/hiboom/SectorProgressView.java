@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bfvo;
+import bheg;
 import com.tencent.mobileqq.util.DisplayUtil;
 
 public class SectorProgressView
@@ -64,7 +64,7 @@ public class SectorProgressView
     }
     if (jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = bfvo.a(getResources(), 2130847326);
+      jdField_a_of_type_AndroidGraphicsBitmap = bheg.a(getResources(), 2130847413);
       jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     }
   }

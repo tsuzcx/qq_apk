@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import android.content.Intent;
-import qxp;
+import rjv;
 
 public class PublicAccountBrowser$1
   implements Runnable

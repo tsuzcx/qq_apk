@@ -1,71 +1,50 @@
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.maxvideo.trim.TrimNative;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 
 public class altv
 {
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  
-  public WebResourceResponse a()
+  public static int a(String paramString)
   {
-    try
+    MediaMetadataRetriever localMediaMetadataRetriever;
+    if (Build.VERSION.SDK_INT >= 14)
     {
-      if (this.b != null)
+      localMediaMetadataRetriever = new MediaMetadataRetriever();
+      try
       {
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
-          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
+        localMediaMetadataRetriever.setDataSource(paramString);
+        paramString = localMediaMetadataRetriever.extractMetadata(12);
+        QLog.i("FormatDetector", 1, "detectFormatSupport: mimeType=" + paramString);
+        if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("video/")))
+        {
+          QLog.e("FormatDetector", 1, "detectFormatSupport: wrong mimeType=" + paramString);
+          return -1;
         }
-        if (!FileUtils.fileExists(this.b)) {
-          break label102;
+        paramString = localMediaMetadataRetriever.extractMetadata(17);
+        QLog.i("FormatDetector", 1, "detectFormatSupport: hasVideo=" + paramString);
+        if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase("yes")))
+        {
+          QLog.e("FormatDetector", 1, "detectFormatSupport: no video content!");
+          return -1;
         }
-        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
-        return localWebResourceResponse;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
-    }
-    return null;
-    label102:
-    return null;
-  }
-  
-  public String a()
-  {
-    return "file://" + this.b;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (FileUtils.fileExists(this.b)))
+      catch (Exception paramString)
       {
-        if (FileUtils.getFileOrFolderSize(this.b) <= 8388608L) {
-          break label84;
+        for (;;)
+        {
+          QLog.e("FormatDetector", 1, "detectFormatSupport:", paramString);
+          localMediaMetadataRetriever.release();
         }
-        this.jdField_a_of_type_Boolean = true;
       }
-      while (QLog.isColorLevel())
+      finally
       {
-        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
-        return;
-        label84:
-        this.jdField_a_of_type_ArrayOfByte = FileUtils.readFile(this.b);
+        localMediaMetadataRetriever.release();
       }
-      return;
+      return 0;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
-    }
+    return TrimNative.detect(paramString);
   }
 }
 

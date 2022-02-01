@@ -1,132 +1,120 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import aara;
-import abem;
-import abwp;
-import abwx;
-import abwz;
-import acjp;
-import acvu;
-import acvv;
-import acwc;
-import aews;
-import aewx;
-import aeyb;
-import aezf;
-import aezl;
-import aezn;
-import aezp;
-import aezq;
-import afaz;
-import afca;
-import afcm;
-import afdm;
-import afdp;
-import afgw;
-import afhw;
-import afih;
-import afim;
-import afls;
-import afmp;
-import afnn;
+import aade;
+import aahv;
+import aail;
+import abgm;
+import abty;
+import acmw;
+import acnf;
+import acnh;
+import aczy;
+import admg;
+import admh;
+import admo;
+import afod;
 import afoi;
-import afpb;
-import afpo;
-import afqg;
-import afqj;
-import afqw;
+import afpn;
+import afqr;
 import afqx;
-import afqy;
+import afqz;
 import afrb;
-import afrd;
-import afri;
-import afrl;
-import afrt;
-import afrz;
-import afsd;
+import afrc;
 import afsl;
-import afsn;
-import afss;
-import afst;
-import afsu;
-import aftn;
-import afvh;
-import afvi;
-import afvw;
-import aghp;
-import agib;
-import agjd;
-import agjt;
-import agkc;
+import aftg;
+import aftr;
+import afur;
+import afuu;
+import afyb;
+import afzb;
+import afzm;
+import afzr;
+import agcw;
+import agdt;
+import ager;
+import agfm;
+import aggf;
+import aggs;
+import aghq;
+import aght;
+import agih;
+import agii;
+import agij;
+import agim;
+import agio;
+import agit;
+import agiw;
+import agje;
+import agjk;
+import agjr;
+import agjz;
+import agkb;
 import agkg;
-import agkm;
-import agmk;
-import agmx;
-import agmy;
-import agnj;
-import agnu;
-import agnv;
-import agok;
-import agpx;
-import agpy;
-import agql;
-import agwt;
-import agxc;
-import agxe;
-import ahcd;
-import ahda;
-import ahgc;
-import ahiu;
-import ahln;
-import ahly;
-import ahlz;
-import ahmo;
-import ahmq;
-import ahov;
-import ahpb;
-import ahpe;
-import ahpf;
-import ahpk;
-import ahpm;
-import ahpw;
-import ahpx;
-import ahqa;
-import ahqh;
-import ahqj;
-import ahqp;
-import ahqs;
-import ahrd;
-import ahtj;
-import ajiq;
-import ajul;
-import akxy;
-import akya;
-import akyb;
-import almr;
-import alne;
-import alnn;
-import alnr;
-import alpg;
-import alps;
-import amal;
-import amat;
-import amaz;
-import ambc;
-import amlu;
-import amnm;
-import amoa;
-import ampg;
-import amph;
-import ampv;
-import amrh;
-import amrp;
-import amsu;
-import amsw;
-import amtj;
-import amuu;
-import amwf;
-import amzb;
-import anaz;
+import agkh;
+import agki;
+import aglh;
+import agnq;
+import agnw;
+import agnx;
+import agol;
+import ahag;
+import ahas;
+import ahbt;
+import ahcj;
+import ahcs;
+import ahcw;
+import ahdc;
+import ahfa;
+import ahfn;
+import ahfo;
+import ahfz;
+import ahgk;
+import ahgl;
+import ahha;
+import ahin;
+import ahio;
+import ahjb;
+import ahpt;
+import ahqc;
+import ahqe;
+import ahwv;
+import ahxs;
+import aiav;
+import aido;
+import aigh;
+import aigs;
+import aigt;
+import aihi;
+import aihk;
+import aijq;
+import aijw;
+import aijz;
+import aika;
+import aikg;
+import aiki;
+import aikv;
+import aikw;
+import aikz;
+import ailg;
+import aili;
+import ailo;
+import ailr;
+import aimc;
+import aioi;
+import akee;
+import alvu;
+import alvw;
+import alvx;
+import amks;
+import amlf;
+import amma;
+import amme;
+import amog;
+import amos;
+import anbt;
+import ancb;
+import anch;
+import anck;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -156,8 +144,6 @@ import android.os.Environment;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Process;
@@ -175,6 +161,7 @@ import android.text.TextWatcher;
 import android.text.method.MovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
+import android.util.Pair;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -205,137 +192,150 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anlo;
-import anmr;
-import aowj;
-import aowk;
-import apec;
-import apff;
-import apse;
-import aqhd;
-import aquj;
-import aqwb;
-import aqwf;
-import aqwg;
-import aqwt;
-import arib;
-import asbj;
-import ashb;
-import asln;
-import atid;
-import atmm;
-import atoe;
-import aubv;
-import aucf;
-import aucg;
-import audg;
-import audx;
-import auen;
-import aues;
-import auet;
-import aufo;
-import augn;
-import auij;
-import auww;
+import annl;
+import annn;
+import anqn;
+import anrt;
+import anru;
+import ansi;
+import antv;
+import anud;
+import anvi;
+import anvk;
+import anvx;
+import anxi;
+import anyt;
+import aobq;
+import aodo;
+import aooh;
+import aopk;
+import apzn;
+import apzo;
+import aqhg;
+import aqij;
+import aqvh;
+import arkl;
+import arxx;
+import arzv;
+import arzz;
+import asaa;
+import asan;
+import asmh;
+import atpt;
+import aumk;
+import aurh;
+import ausz;
+import avhp;
+import avhz;
+import avia;
+import avja;
+import avjr;
+import avkh;
+import avkm;
+import avkn;
 import avli;
-import avma;
-import avmr;
-import avnb;
-import avnj;
-import avsf;
-import avsq;
-import awcm;
-import awgw;
-import awgy;
-import awhm;
-import awhn;
-import aydq;
-import azbu;
-import azca;
-import azjc;
-import azuu;
-import azux;
-import azxj;
-import azye;
-import azyi;
-import babd;
-import bamu;
-import bapt;
-import baqh;
-import bbko;
-import bbpn;
-import bbub;
-import bbwb;
-import bbxj;
-import bbyp;
-import bcdm;
-import bcef;
-import bcer;
-import bcgn;
-import bcgr;
-import bcws;
-import bdav;
-import bdyo;
-import bdzi;
-import becw;
-import becx;
-import bevq;
-import bevs;
-import bevt;
-import beyh;
-import bfas;
-import bfbz;
-import bfcf;
-import bfcx;
-import bfcy;
-import bfip;
-import bfpm;
-import bfsu;
-import bfta;
-import bftc;
-import bftf;
-import bfth;
-import bftk;
-import bftt;
-import bfua;
-import bfur;
-import bfwu;
-import bfwz;
-import bfxd;
-import bfxf;
-import bfyc;
-import bfyg;
-import bfyl;
-import bfyz;
-import bfzg;
-import bgae;
-import bgdk;
-import bgga;
-import bggc;
-import bgsw;
-import bhfj;
-import bhht;
-import bhjt;
-import bily;
-import bjmm;
-import bjmp;
-import bjnm;
-import bjnw;
-import bjon;
-import bjsd;
-import bjvd;
-import bjvk;
-import bjvm;
-import bkfq;
-import bkkh;
-import bkmt;
-import bkrk;
-import bleg;
-import blfa;
-import blig;
-import blvr;
-import bmau;
-import bnbb;
+import avmh;
+import avod;
+import awcv;
+import awrn;
+import awsf;
+import awsw;
+import awtg;
+import awto;
+import awyg;
+import awyr;
+import axio;
+import axmy;
+import axna;
+import axno;
+import axnp;
+import axny;
+import azkc;
+import bahi;
+import baho;
+import bapk;
+import bbbc;
+import bbbf;
+import bbds;
+import bben;
+import bber;
+import bbhm;
+import bbtj;
+import bbwi;
+import bbww;
+import bcrg;
+import bcwh;
+import bdaw;
+import bdcw;
+import bdee;
+import bdfk;
+import bdkh;
+import bdla;
+import bdlm;
+import bdnl;
+import bdnp;
+import bedr;
+import behu;
+import bffr;
+import bfgl;
+import bfjz;
+import bfka;
+import bgcz;
+import bgdb;
+import bgdc;
+import bggl;
+import bgiy;
+import bgkf;
+import bgkl;
+import bgld;
+import bgle;
+import bgrg;
+import bgyd;
+import bhbl;
+import bhbr;
+import bhbu;
+import bhbx;
+import bhbz;
+import bhcc;
+import bhcl;
+import bhcs;
+import bhdj;
+import bhfm;
+import bhfr;
+import bhfv;
+import bhfx;
+import bhgu;
+import bhgy;
+import bhhd;
+import bhhr;
+import bhhy;
+import bhiw;
+import bhmb;
+import bhou;
+import bhow;
+import bidm;
+import biqb;
+import bisl;
+import biuj;
+import bjxa;
+import bkxz;
+import bkyc;
+import bkyy;
+import bkzi;
+import bkzz;
+import bldp;
+import blgv;
+import blgx;
+import blrb;
+import blvp;
+import blyb;
+import bmct;
+import bmqx;
+import bmrr;
+import bmux;
+import bnlb;
+import bnqe;
+import boqt;
 import com.immersion.stickersampleapp.HapticManager;
 import com.rookery.translate.AITranslator;
 import com.tencent.av.gaudio.AVNotifyCenter;
@@ -380,6 +380,7 @@ import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.activity.aio.helper.DecodeAIOInputBitmapHeightTask;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
 import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
@@ -388,7 +389,6 @@ import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob;
 import com.tencent.mobileqq.activity.aio.rebuild.SaveTextDraftJob;
-import com.tencent.mobileqq.activity.aio.tips.SougouInputGrayTips;
 import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 import com.tencent.mobileqq.activity.aio.tips.VipSpecialCareGrayTips;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
@@ -397,10 +397,11 @@ import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.mobileqq.activity.richmedia.MX3FlowCameraActivity;
 import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
@@ -409,6 +410,7 @@ import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SignatureManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -532,6 +534,7 @@ import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XPanelContainer;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
+import common.config.service.QzoneConfig;
 import dov.com.qq.im.ae.SessionWrap;
 import dov.com.qq.im.ptv.LightVideoConfigMgr;
 import gb;
@@ -555,22 +558,19 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lfg;
-import lmt;
+import lfl;
+import lng;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import nmy;
-import npt;
-import nrz;
+import nty;
+import nwu;
+import nza;
 import org.jetbrains.annotations.NotNull;
-import ple;
-import ynm;
-import znt;
-import zsj;
-import zsz;
+import pwb;
+import zcf;
 
 public class BaseChatPie
-  implements acvu, aezl, afca, agxc, ajiq, ampg, amph, Handler.Callback, TextWatcher, View.OnClickListener, View.OnTouchListener, apff, bjsd, bjvk, bjvm, EmoticonCallback, INetInfoHandler, AbsListView.OnScrollButtomListener, AbsListView.OnScrollListener, AbsListView.RecyclerListener, Observer
+  implements admg, afqx, aftg, ahqc, akee, Handler.Callback, TextWatcher, View.OnClickListener, View.OnTouchListener, anrt, anru, aqij, bldp, blgv, blgx, EmoticonCallback, INetInfoHandler, AbsListView.OnScrollButtomListener, AbsListView.OnScrollListener, AbsListView.RecyclerListener, Observer
 {
   private static final int CALLER_ON_CREATE = 1;
   private static final int CALLER_ON_NEW_INTENT = 2;
@@ -599,35 +599,32 @@ public class BaseChatPie
   protected TextView addFriendTv;
   protected ViewStub addView;
   public ViewGroup afRoot;
-  public aewx aioTipsController;
+  public afoi aioTipsController;
   public boolean apolloIsShowing;
   public QQAppInterface app;
   public QQCustomDialog authDialog;
-  public afdm businessFooterDetector;
-  private boolean canPullRefresh = true;
-  Runnable cancelMessageBox = new BaseChatPie.44(this);
-  private CardObserver cardObserver = new BaseChatPie.72(this);
+  public afur businessFooterDetector;
+  Runnable cancelMessageBox = new BaseChatPie.43(this);
+  private CardObserver cardObserver = new BaseChatPie.71(this);
   protected BaseChatpieHelper chatPieHelper;
-  bggc cmShowActionObserver = new BaseChatPie.73(this);
-  private ampv configObserver = new BaseChatPie.71(this);
+  bhow cmShowActionObserver = new BaseChatPie.72(this);
+  private ansi configObserver = new BaseChatPie.70(this);
   private boolean couldTrigerDismissPanel = true;
   private long createTime;
-  private int currentPanelId = 0;
   protected String defaultEpId;
   protected int defaultPanelType = -1;
   protected int dirty = 131075;
-  private aqwg doutuManager;
-  private avsq emoticonManager;
-  private amrh emoticonObserver = new BaseChatPie.74(this);
+  private asaa doutuManager;
+  private awyr emoticonManager;
+  private antv emoticonObserver = new BaseChatPie.73(this);
   private EmotionKeywordAdapter emotionKeywordAdapter;
   private EmotionKeywordHorizonListView emotionKeywordList;
   private EmotionKeywordLayout emotionLayout;
   public View expandStickerView;
   protected int fateOfRecorder = 0;
-  private asbj fmob;
   public ImageView freeTalkImg;
   protected FriendListHandler friendListHandler;
-  private amsu friendListObserver = new BaseChatPie.67(this);
+  private anvi friendListObserver = new BaseChatPie.66(this);
   public boolean hasAutoInput;
   private boolean hasCheckedBoxVisible;
   public boolean hasDestory;
@@ -637,8 +634,8 @@ public class BaseChatPie
   boolean hasUnread = false;
   int hasUnreadCount = 0;
   protected View headView;
-  public afqw helperProvider;
-  private afih imeListener;
+  public agih helperProvider;
+  private afzm imeListener;
   public XEditTextEx input;
   public boolean isBack2Root;
   protected boolean isBeingInputDraft;
@@ -661,33 +658,33 @@ public class BaseChatPie
   private long lastRefreshTime = -1L;
   private int lastVisiblePositionY = -1;
   protected LinearLayout linearLayout;
-  public aezn listAdapter;
+  public afqz listAdapter;
   public ChatXListView listView;
   protected boolean loadSearchedMessage;
   protected View loadingView;
-  public zsj mAIOGiftPanelContainer;
+  public aahv mAIOGiftPanelContainer;
   public ViewGroup mAIORootView;
   public FragmentActivity mActivity;
   public AIOAnimationConatiner mAnimContainer;
   public QQCustomDialog mApolloGameDialog;
-  public amlu mApolloInfo;
+  public annl mApolloInfo;
   public ApolloPanel mApolloPanel;
   private int mApolloPanelStatus = -1;
-  public alps mApolloViewController;
-  public amnm mApolloViewObserver = new amnm(this);
-  public aowj mArkController;
-  protected ahpb mArkTipsBar;
+  public amos mApolloViewController;
+  public annn mApolloViewObserver = new annn(this);
+  public apzn mArkController;
+  protected aijw mArkTipsBar;
   public AudioPanel mAudioPanel;
-  public bhht mAuthEmoticonDialog;
-  public bhht mAuthcmShowDialog;
+  public bisl mAuthEmoticonDialog;
+  public bisl mAuthcmShowDialog;
   public long mBlockRefreshJumpBottomStartTime = -1L;
   protected List<QQOperationViopTipTask> mBlueTipsTaskList = new ArrayList();
   public QQBlurView mBottomBlurView;
   boolean mBubbleCacheMsgAborted = false;
-  protected ahpe mC2BTipsBar;
+  protected aijz mC2BTipsBar;
   protected boolean mCacnelSellPttPanle;
-  public afnn mChatDrawer;
-  public aqwt mComboUIManager;
+  public ager mChatDrawer;
+  public asan mComboUIManager;
   public RelativeLayout mContent;
   public Context mContext;
   protected int mCurrentAIOState = -1;
@@ -696,7 +693,7 @@ public class BaseChatPie
   public TextView mDefautlBtnLeft;
   protected float mDensity;
   protected DoodlePanel mDoodlePanel;
-  private avnb mDraftManager;
+  private awtg mDraftManager;
   public String mDraftText;
   public DrawerFrame mDrawerFrame;
   public int mEffectPullRefreshCount;
@@ -714,21 +711,20 @@ public class BaseChatPie
   protected int mFirstVisibleItem;
   protected View mFirstVisibleView;
   protected PhotoListPanel mFlashPicPanel;
-  audx mFontBubbleObserver;
-  protected ahpk mFraudTipsBar;
+  avjr mFontBubbleObserver;
+  protected aikg mFraudTipsBar;
   public PatchedButton mFunBtn;
-  protected ahrd mFunCallTipBar;
-  private lmt mGAudioObserver;
+  protected aimc mFunCallTipBar;
+  private lng mGAudioObserver;
   protected TextView mGagInputBtn;
   private GestureDetector mGestureDetector;
-  protected bfip mGiftAnimationController;
+  protected bgrg mGiftAnimationController;
   private boolean mHasGuideVoiceChangerDone = true;
-  aues mHiBoomAuthObserver;
-  auet mHiBoomForwardAuthObserver;
+  avkm mHiBoomAuthObserver;
+  avkn mHiBoomForwardAuthObserver;
   public HotPicMainPanel mHotPicMainPanel;
   public ImageButton mIconButtonInInputRight;
   public View mIconLayoutInInputRight;
-  protected MessageQueue.IdleHandler mIdleHanlder;
   public InputLinearLayout mInputBar;
   private View.OnLayoutChangeListener mInputBarOnLayoutChangeListener;
   public InputGlobalLayoutListener mInputGloblLayoutListener;
@@ -743,8 +739,8 @@ public class BaseChatPie
   protected int mLastVisibleItem;
   protected View mLastVisibleView;
   int mListViewBottomMargin = 0;
-  protected ahqa mLocationShareTipBar;
-  private avmr mMagicfaceViewController;
+  protected aikz mLocationShareTipBar;
+  private awsw mMagicfaceViewController;
   protected View mMask;
   private int mMsgInputLen;
   private int mMsgSignalCount;
@@ -754,43 +750,41 @@ public class BaseChatPie
   private View mMsgboxline;
   private NoC2CExtensionInfo mNoC2CExtensionInfo;
   private MovementMethod mNormalMovementMethod;
-  protected ahqh mOperateTips;
-  public ajul mPasswdRedBagManager;
+  protected ailg mOperateTips;
   private int mPkgId = -1;
   private long mPreMrShMsgSeqForCurType = -1L;
-  public bhht mProgressDialog;
+  public bisl mProgressDialog;
   private TextView mPttBtn;
-  private bhjt mPttPlayVolumeDialog;
-  public amzb mQQMapActivityProxy;
+  private biuj mPttPlayVolumeDialog;
+  public aobq mQQMapActivityProxy;
   private int mReadedCnt;
-  private BroadcastReceiver mReceiver = new BaseChatPie.33(this);
+  private BroadcastReceiver mReceiver = new BaseChatPie.32(this);
   private int mReceiverState;
-  public bhjt mRecordToastDialog;
+  public biuj mRecordToastDialog;
   private Runnable mRetryShowInputPanelTask;
   RichTextPanel mRichTextPanel;
   protected ImageView mRightButtonRedDot;
   private Runnable mRunOnShow = new BaseChatPie.1(this);
-  bjvd mSCCallbak = new BaseChatPie.2(this);
   private PowerManager.WakeLock mScreenWakeLoack;
   int mScrollState = 0;
   protected ScrollerRunnable mScrollerRunnable;
   protected MoveToBottomScroller mScrollerdownRunnable;
-  private anaz mShortVideoObserver = new BaseChatPie.75(this);
+  private aodo mShortVideoObserver = new BaseChatPie.74(this);
   public boolean mSingleTitle = true;
   public MessageForReplyText.SourceMsgInfo mSourceMsgInfo;
   private boolean mStickerBubbleQuickButtonHandlingTouchDown;
   private boolean mStickerBubbleQuickButtonReported;
-  private ahmo mStickerBubbleSendTouchDelegate;
-  final agpy mStructingMsgItemViewCache = new agpy();
+  private aihi mStickerBubbleSendTouchDelegate;
+  final ahio mStructingMsgItemViewCache = new ahio();
   public TextView mSubTilteText;
   public ViewGroup mSubTitleLayout;
   protected ImageView mSubTitleLeftImageView;
   public TextView mSubTitleText2;
-  protected ahqp mTimTipsBar;
+  protected ailo mTimTipsBar;
   protected View mTipRoot;
   protected RelativeLayout mTipsContainer;
   protected RelativeLayout mTipsLayout;
-  public ahqs mTipsMgr;
+  public ailr mTipsMgr;
   public ImageView mTitleBtnCall;
   protected TextView mTitleBtnLeft;
   protected ImageView mTitleBtnRight;
@@ -799,7 +793,6 @@ public class BaseChatPie
   public FrameLayout mTitleBtnRightSearch;
   public TextView mTitleBubbleLeft;
   protected TextView mTitleCount;
-  protected int mTitleHeight;
   public ImageView mTitleIcon;
   public ImageView mTitleIcon2;
   public ImageView mTitleIconRight;
@@ -807,18 +800,18 @@ public class BaseChatPie
   protected String mTitleLeftText = "";
   protected boolean mTitleShowUnread;
   public TextView mTitleText;
-  protected View.OnClickListener mTroopReplyMsgSourceClick = new BaseChatPie.87(this);
-  public bdzi mTroopTips;
+  protected View.OnClickListener mTroopReplyMsgSourceClick = new BaseChatPie.86(this);
+  public bfgl mTroopTips;
   private TextView mUnReadTxt;
   private int mUnReadedCnt;
-  protected becx mUserActionState;
+  protected bfka mUserActionState;
   protected RelativeLayout mVideoBtn;
   protected VideoStatusTipsBar mVideoStatusBar;
   public QqViewFlipper mViewFlipper;
   protected VoiceTextPanel mVoiceTextEditPanel;
   private boolean mZhituButtonExposeReported;
   public boolean mZhituSwitch;
-  protected ahpx mlightalkTipsBar;
+  protected aikw mlightalkTipsBar;
   private MediaPlayerManager mpm;
   private Runnable msgSignalRunnable;
   public boolean needAutoInput;
@@ -831,7 +824,7 @@ public class BaseChatPie
   protected CharSequence oldSubTitleText;
   public boolean onShowDone;
   protected AIOFakePanel panelCamera;
-  public agxe panelManager;
+  public ahqe panelManager;
   public PanelIconLinearLayout panelicons;
   protected String pcmForVadPath;
   private ImageView phoneImage;
@@ -852,7 +845,6 @@ public class BaseChatPie
   public XPanelContainer root;
   protected boolean sendCloseSearchBroadCast;
   private int sendMsgSignalMaxCount = 10;
-  protected boolean sendOnEnterEnabled;
   public SessionInfo sessionInfo = new SessionInfo();
   public boolean setSubTitleVisiable;
   protected TextView shieldTV;
@@ -867,7 +859,7 @@ public class BaseChatPie
   public ImageView titleBgView;
   private View titleCover;
   private TextView tvReceiptTips;
-  public final MqqHandler uiHandler = new bjmp(Looper.getMainLooper(), this, true);
+  public final MqqHandler uiHandler = new bkyc(Looper.getMainLooper(), this, true);
   private long vasLastRefreshReqTime;
   protected final int verAnimDuration = 300;
   
@@ -878,15 +870,14 @@ public class BaseChatPie
     this.mAIORootView = paramViewGroup;
     this.mActivity = paramFragmentActivity;
     this.mContext = paramContext;
-    this.mTitleHeight = this.mContext.getResources().getDimensionPixelSize(2131299076);
     if (inputMaxLength == 0) {
       inputMaxLength = paramContext.getResources().getInteger(2131427342);
     }
-    this.helperProvider = new afqw();
+    this.helperProvider = new agih();
     this.helperProvider.a(this);
     initHelper();
     this.chatPieHelper = new BaseChatpieHelper(this);
-    this.panelManager = new agxe(paramContext, this);
+    this.panelManager = new ahqe(paramContext, this);
     this.panelManager.a();
   }
   
@@ -895,11 +886,11 @@ public class BaseChatPie
     boolean bool1 = false;
     boolean bool2 = isOneWayFriend();
     if (bool2) {
-      bcef.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "Manage_stranger", "Manage_str_add", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "Manage_stranger", "Manage_str_add", 0, 0, "", "", "", "");
     }
     FragmentActivity localFragmentActivity = this.mActivity;
     SessionInfo localSessionInfo = this.sessionInfo;
-    String str = this.app.getApp().getString(2131690599);
+    String str = this.app.getApp().getString(2131690676);
     if (this.mActivity.getIntent().getStringExtra("param_return_addr") != null) {
       bool1 = true;
     }
@@ -935,54 +926,54 @@ public class BaseChatPie
     }
     if (this.sessionInfo.curType == 1)
     {
-      bcef.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "AIO", "AIO_appear", 0, 0, ChatActivityUtils.b(this.sessionInfo.curType), String.valueOf(i), "", "");
+      bdla.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "AIO", "AIO_appear", 0, 0, ChatActivityUtils.b(this.sessionInfo.curType), String.valueOf(i), "", "");
       return;
     }
-    bcef.b(this.app, "CliOper", "", "", "AIO", "AIO_appear", 0, 0, ChatActivityUtils.b(this.sessionInfo.curType), String.valueOf(i), "", "");
+    bdla.b(this.app, "CliOper", "", "", "AIO", "AIO_appear", 0, 0, ChatActivityUtils.b(this.sessionInfo.curType), String.valueOf(i), "", "");
   }
   
   private void batchUpdateMessageCommon(ChatMessage paramChatMessage, MessageRecord paramMessageRecord)
   {
-    aeyb localaeyb;
+    afpn localafpn;
     if (isActivityResume())
     {
-      ((afpo)this.helperProvider.a(65)).a(paramMessageRecord);
+      ((aggs)this.helperProvider.a(65)).a(paramMessageRecord);
       if ((!paramMessageRecord.isread) && ((paramMessageRecord instanceof MessageForPoke)) && (!paramMessageRecord.isSend()))
       {
         this.app.getMsgCache().jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageRecord.uniseq), (MessageForPoke)paramMessageRecord);
         ((MessageForPoke)paramMessageRecord).isPlayed = false;
       }
       if ((!paramMessageRecord.isread) && (!paramMessageRecord.isSend()) && ((paramMessageRecord instanceof MessageForArkFlashChat)) && (!isFullScreenMode())) {
-        ((FlashChatManager)this.app.getManager(217)).a((MessageForArkFlashChat)paramMessageRecord);
+        ((FlashChatManager)this.app.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a((MessageForArkFlashChat)paramMessageRecord);
       }
       setReaded();
       if (this.sessionInfo.curType == 1) {
-        awhn.a(this.app, this.sessionInfo.curFriendUin);
+        axnp.a(this.app, this.sessionInfo.curFriendUin);
       }
       this.isHaveNewAfterIn = true;
       this.hasUnread = true;
-      if ((!paramMessageRecord.isSend()) && (paramMessageRecord.msgtype == -2039) && (!alnr.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramMessageRecord.uniseq)))) {
-        alnr.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramMessageRecord.uniseq));
+      if ((!paramMessageRecord.isSend()) && (paramMessageRecord.msgtype == -2039) && (!amme.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramMessageRecord.uniseq)))) {
+        amme.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramMessageRecord.uniseq));
       }
-      localaeyb = (aeyb)this.app.getManager(218);
+      localafpn = (afpn)this.app.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER);
       if (paramMessageRecord.isSend()) {
         break label322;
       }
-      localaeyb.a(paramMessageRecord);
+      localafpn.a(paramMessageRecord);
       if ((paramMessageRecord instanceof MessageForText)) {
-        ((bcws)this.app.getManager(272)).a(paramChatMessage);
+        ((bedr)this.app.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(paramChatMessage);
       }
-      if ((!(this instanceof ahiu)) || (!((ahiu)this).j) || (this.listView.getLastVisiblePosition() != this.listAdapter.getCount() - 1)) {
+      if ((!(this instanceof aido)) || (!((aido)this).j) || (this.listView.getLastVisiblePosition() != this.listAdapter.getCount() - 1)) {
         break label331;
       }
-      this.uiHandler.postDelayed(new BaseChatPie.34(this), 800L);
+      this.uiHandler.postDelayed(new BaseChatPie.33(this), 800L);
     }
     for (;;)
     {
       this.hasSentRecvMsg = true;
       return;
       label322:
-      localaeyb.a(this, paramMessageRecord);
+      localafpn.a(this, paramMessageRecord);
       break;
       label331:
       paramChatMessage.mMsgAnimFlag = true;
@@ -994,20 +985,17 @@ public class BaseChatPie
   {
     if (isActivityResume())
     {
-      if (((paramMessageRecord instanceof MessageForUniteGrayTip)) && (this.sessionInfo.curFriendUin.equals(paramMessageRecord.senderuin)) && (apse.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.sessionInfo.curType, this.sessionInfo.topicId)))
+      if (((paramMessageRecord instanceof MessageForUniteGrayTip)) && (this.sessionInfo.curFriendUin.equals(paramMessageRecord.senderuin)) && (aqvh.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.sessionInfo.curType, this.sessionInfo.topicId)))
       {
         MessageForUniteGrayTip localMessageForUniteGrayTip = (MessageForUniteGrayTip)paramMessageRecord;
-        String str = localMessageForUniteGrayTip.tipParam.c;
         localMessageForUniteGrayTip.hasRead = 1;
         localMessageForUniteGrayTip.updateUniteGrayTipMsgData(this.app);
         if (localMessageForUniteGrayTip.tipParam.b == 2097153) {
-          awgy.a(this.app, this.sessionInfo, localMessageForUniteGrayTip, this.uiHandler, this.mAnimContainer, localMessageForUniteGrayTip.subType);
+          axna.a(this.app, this.sessionInfo, localMessageForUniteGrayTip, this.uiHandler, this.mAnimContainer, localMessageForUniteGrayTip.subType);
         }
       }
-      afdp.a().a(this.app, this.sessionInfo, paramMessageRecord, this.mAnimContainer, this);
-      if (beyh.a(this, this.app, paramObject)) {
-        return true;
-      }
+      afuu.a().a(this.app, this.sessionInfo, paramMessageRecord, this.mAnimContainer, this);
+      return bggl.a(this, this.app, paramObject);
     }
     return false;
   }
@@ -1015,13 +1003,13 @@ public class BaseChatPie
   private void batchUpdateMessageForApollo(MessageRecord paramMessageRecord)
   {
     if ((32768 != paramMessageRecord.extraflag) && ((paramMessageRecord instanceof MessageForApollo))) {
-      ((alnn)this.app.getManager(211)).a((MessageForApollo)paramMessageRecord, "aio");
+      ((amma)this.app.getManager(QQManagerFactory.APOLLO_GAME_MANAGER)).a((MessageForApollo)paramMessageRecord, "aio");
     }
   }
   
   private void batchUpdateMessageLBS(ChatMessage paramChatMessage, MessageRecord paramMessageRecord)
   {
-    if ((String.valueOf(AppConstants.SYSTEM_MSG_UIN).equalsIgnoreCase(paramMessageRecord.frienduin)) && (!paramMessageRecord.isread))
+    if ((AppConstants.SYSTEM_MSG_UIN.equalsIgnoreCase(paramMessageRecord.frienduin)) && (!paramMessageRecord.isread))
     {
       messageTips(this.app.getMessageFacade().getIncomingMsg());
       return;
@@ -1040,14 +1028,14 @@ public class BaseChatPie
   {
     setReaded();
     if (this.sessionInfo.curType == 1) {
-      awhn.a(this.app, this.sessionInfo.curFriendUin);
+      axnp.a(this.app, this.sessionInfo.curFriendUin);
     }
     this.isHaveNewAfterIn = true;
     this.hasSentRecvMsg = true;
     determineBatchUpdateJumpBottom(paramObject, paramMessageRecord);
     if (((paramMessageRecord instanceof MessageForStructing)) && ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000) || (paramMessageRecord.istroop == 0))) {
       if ("viewMultiMsg".equals(((MessageForStructing)paramMessageRecord).structingMsg.mMsgAction)) {
-        awcm.a().a(this.app, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, true);
+        axio.a().a(this.app, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, true);
       }
     }
     do
@@ -1059,19 +1047,19 @@ public class BaseChatPie
         return;
       }
     } while (!(paramMessageRecord instanceof MessageForArkFlashChat));
-    ((FlashChatManager)this.app.getManager(217)).a((MessageForArkFlashChat)paramMessageRecord);
+    ((FlashChatManager)this.app.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a((MessageForArkFlashChat)paramMessageRecord);
   }
   
   private void batchUpdateMessageLocalDiscuss(MessageForText paramMessageForText)
   {
     if ((paramMessageForText.atInfoList != null) && (paramMessageForText.atInfoList.size() > 0))
     {
-      bcef.b(this.app, "CliOper", "", "", "0X8006211", "0X8006211", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X8006211", "0X8006211", 0, 0, "", "", "", "");
       if ((paramMessageForText.atInfoList == null) || (paramMessageForText.atInfoList.size() != 1)) {
         break label125;
       }
       if (!((MessageForText.AtTroopMemberInfo)paramMessageForText.atInfoList.get(0)).isIncludingAll()) {
-        bcef.b(this.app, "CliOper", "", "", "0X8006212", "0X8006212", 0, 0, "", "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X8006212", "0X8006212", 0, 0, "", "", "", "");
       }
     }
     for (;;)
@@ -1089,7 +1077,7 @@ public class BaseChatPie
         } while (!((MessageForText.AtTroopMemberInfo)paramMessageForText.next()).isIncludingAll());
         for (int i = 1; i == 0; i = 0)
         {
-          bcef.b(this.app, "CliOper", "", "", "0X8006213", "0X8006213", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8006213", "0X8006213", 0, 0, "", "", "", "");
           return;
         }
       }
@@ -1101,7 +1089,7 @@ public class BaseChatPie
     if ((paramMessageRecord.msgtype != -2006) || (!(paramObject instanceof MessageForFoldMsg)))
     {
       paramObject = this.app.getMessageFacade().getIncomingMsg();
-      if (MessageForPtt.class.isInstance(paramMessageRecord)) {
+      if ((paramMessageRecord instanceof MessageForPtt)) {
         paramObject.msg = ((MessageForPtt)paramMessageRecord).getSummaryMsg();
       }
       messageTips(paramObject);
@@ -1126,7 +1114,7 @@ public class BaseChatPie
         AIOUtils.preStartQWebIfNeed(this.app, this, this.listAdapter, (ChatMessage)paramObject);
       }
       return false;
-      if (((paramMessageRecord.istroop == 1001) || (paramMessageRecord.istroop == 10002)) && (this.sessionInfo.curFriendUin.equals(paramMessageRecord.senderuin)) && (abwz.d(this.sessionInfo.curType))) {
+      if (((paramMessageRecord.istroop == 1001) || (paramMessageRecord.istroop == 10002)) && (this.sessionInfo.curFriendUin.equals(paramMessageRecord.senderuin)) && (acnh.d(this.sessionInfo.curType))) {
         batchUpdateMessageLBS((ChatMessage)paramObject, paramMessageRecord);
       } else if ((isActivityResume()) && (!paramMessageRecord.isread)) {
         batchUpdateMessageOther(paramObject, paramMessageRecord);
@@ -1187,7 +1175,7 @@ public class BaseChatPie
       } while (batchUpdateMessageRev(paramObject, localMessageRecord));
       for (;;)
       {
-        bcdm.a(0, 0, ((MessageRecord)paramObject).istroop, 1);
+        bdkh.a(0, 0, ((MessageRecord)paramObject).istroop, 1);
         return;
         batchUpdateMessageLocal(paramObject, localMessageRecord);
       }
@@ -1210,12 +1198,12 @@ public class BaseChatPie
   private void branchUpdateRefreshMessageContext(Object paramObject)
   {
     paramObject = (QQMessageFacade.RefreshMessageContext)paramObject;
-    Object localObject = (aezq)paramObject.context;
-    if (!android.text.TextUtils.equals(this.sessionInfo.curFriendUin, ((aezq)localObject).a())) {}
+    Object localObject = (afrc)paramObject.context;
+    if (!android.text.TextUtils.equals(this.sessionInfo.curFriendUin, ((afrc)localObject).a())) {}
     do
     {
       return;
-      if ((this.sessionInfo.curType == paramObject.uinType) && (this.pullReqTime != ((aezq)localObject).a()))
+      if ((this.sessionInfo.curType == paramObject.uinType) && (this.pullReqTime != ((afrc)localObject).a()))
       {
         if (QLog.isColorLevel()) {
           QLog.d(this.tag, 2, "refreshMessageContext sync other MiniAIO");
@@ -1223,29 +1211,17 @@ public class BaseChatPie
         refresh(131073);
         return;
       }
-    } while ((this.pullReqTime != ((aezq)localObject).a()) || (!paramObject.needRefreshAIO) || (!apse.a(paramObject.uinType, paramObject.topicId, this.sessionInfo.curType, this.sessionInfo.topicId)));
+    } while ((this.pullReqTime != ((afrc)localObject).a()) || (!paramObject.needRefreshAIO) || (!aqvh.a(paramObject.uinType, paramObject.topicId, this.sessionInfo.curType, this.sessionInfo.topicId)));
     localObject = paramObject.resultMsgList;
     if ((localObject != null) && (((List)localObject).size() > 0)) {
       this.mEffectPullRefreshCount += 1;
     }
-    boolean bool;
-    long l;
-    if (!paramObject.isComplete)
-    {
-      bool = true;
-      this.canPullRefresh = bool;
-      l = this.pullReqTime + 300L - SystemClock.uptimeMillis();
-      if (l <= 0L) {
-        break label221;
-      }
-    }
+    long l = this.pullReqTime + 300L - SystemClock.uptimeMillis();
+    if (l > 0L) {}
     for (;;)
     {
-      this.uiHandler.postDelayed(new BaseChatPie.35(this, paramObject), l);
+      this.uiHandler.postDelayed(new BaseChatPie.34(this, paramObject), l);
       return;
-      bool = false;
-      break;
-      label221:
       l = 0L;
     }
   }
@@ -1259,27 +1235,27 @@ public class BaseChatPie
     if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
     for (int i = 1; i == 0; i = 0)
     {
-      bcgn.a(paramString, true);
-      bcgn.a(paramString);
+      bdnl.a(paramString, true);
+      bdnl.a(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putInt("DiyTextId", paramRecorderParam.e);
-      bcgn.a(paramString, this.app, this.sessionInfo.curFriendUin, paramLong, true, 0, paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.d, localBundle);
+      bdnl.a(paramString, this.app, this.sessionInfo.curFriendUin, paramLong, true, 0, paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.d, localBundle);
       return;
     }
-    azbu.a(paramString);
+    bahi.a(paramString);
   }
   
   private void cancelShieldMsg(String paramString)
   {
     ChatActivityUtils.a(this.app, this.mActivity, this.sessionInfo.curType, paramString, this.sessionInfo.phoneNum, true);
     if (this.sessionInfo.curType == 1010) {
-      bcef.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "0X8004954", "0X8004954", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "0X8004954", "0X8004954", 0, 0, "", "", "", "");
     }
   }
   
   private void changeCheckBoxHidden(AIOLongShotHelper paramAIOLongShotHelper)
   {
-    this.mTitleBtnLeft.setBackgroundResource(2130850593);
+    this.mTitleBtnLeft.setBackgroundResource(2130850724);
     if (QLog.isColorLevel()) {
       QLog.i(this.tag, 2, "set left text from set checkbox: " + this.mTitleLeftText);
     }
@@ -1290,19 +1266,19 @@ public class BaseChatPie
         this.mCustomTitleView.e();
       }
       if (!this.isThemeDefault) {
-        break label351;
+        break label339;
       }
       if (!android.text.TextUtils.isEmpty(this.mDefautlBtnLeft.getText())) {
-        break label340;
+        break label328;
       }
       this.mDefautlBtnLeft.setVisibility(8);
     }
     for (;;)
     {
-      awcm.a().a();
+      axio.a().a();
       paramAIOLongShotHelper.b();
       this.listAdapter.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      ((afpb)getHelper(66)).b();
+      ((aggf)getHelper(66)).b();
       this.mTitleBtnRight.setVisibility(0);
       this.mTitleBtnRightSearch.setVisibility(8);
       if (this.app != null)
@@ -1315,27 +1291,24 @@ public class BaseChatPie
         showBottomBar();
         this.isMultiSelectHideIPB = false;
       }
-      this.mAIORootView.findViewById(2131369124).setVisibility(0);
+      this.mAIORootView.findViewById(2131369287).setVisibility(0);
       this.mTitleLayout.setVisibility(0);
       this.mSubTitleLayout.setVisibility(0);
-      paramAIOLongShotHelper = this.listView.getLayoutParams();
-      if ((paramAIOLongShotHelper instanceof ViewGroup.MarginLayoutParams)) {
-        paramAIOLongShotHelper = (ViewGroup.MarginLayoutParams)paramAIOLongShotHelper;
-      }
+      this.listView.getLayoutParams();
       if ((this.mUnReadTxt != null) && (!android.text.TextUtils.isEmpty(this.mUnReadTxt.getText().toString())) && (!"0".equals(this.mUnReadTxt.getText().toString())))
       {
         this.mUnReadTxt.setVisibility(0);
-        ((aftn)getHelper(53)).a();
+        ((aglh)getHelper(53)).a();
       }
-      amat.a(this.app, "select_more_msg", false);
+      ancb.a(this.app, "select_more_msg", false);
       return;
       this.mTitleBtnLeft.setText(this.mTitleLeftText);
       this.mTitleLeftText = "";
       break;
-      label340:
+      label328:
       this.mDefautlBtnLeft.setVisibility(0);
       continue;
-      label351:
+      label339:
       this.mDefautlBtnLeft.setVisibility(8);
     }
   }
@@ -1348,26 +1321,26 @@ public class BaseChatPie
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       int i = Color.parseColor("#7f000000");
       this.receiptCover.setBackgroundColor(i);
-      this.receiptCover.setId(2131374020);
+      this.receiptCover.setId(2131374249);
       this.receiptCover.setOnClickListener(this);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131374052);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131374281);
       this.mContent.addView(this.receiptCover, (ViewGroup.LayoutParams)localObject);
       this.tvReceiptTips = new TextView(this.mContext);
       localObject = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(40.0F, this.mContent.getResources()));
       this.tvReceiptTips.setGravity(17);
       this.tvReceiptTips.setTextSize(14.0F);
-      this.tvReceiptTips.setId(2131374052);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368751);
+      this.tvReceiptTips.setId(2131374281);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368910);
       this.mContent.addView(this.tvReceiptTips, (ViewGroup.LayoutParams)localObject);
       this.titleCover = new View(this.mContext);
-      localObject = new RelativeLayout.LayoutParams(-1, this.mContext.getResources().getDimensionPixelSize(2131299076));
+      localObject = new RelativeLayout.LayoutParams(-1, this.mContext.getResources().getDimensionPixelSize(2131299080));
       this.titleCover.setBackgroundColor(i);
-      this.titleCover.setId(2131374050);
+      this.titleCover.setId(2131374279);
       this.titleCover.setOnClickListener(this);
-      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131376501);
+      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131376760);
       this.afRoot.addView(this.titleCover, (ViewGroup.LayoutParams)localObject);
     }
-    ((RelativeLayout.LayoutParams)this.listView.getLayoutParams()).addRule(2, 2131374052);
+    ((RelativeLayout.LayoutParams)this.listView.getLayoutParams()).addRule(2, 2131374281);
     this.receiptCover.setVisibility(paramInt);
     this.tvReceiptTips.setVisibility(paramInt);
     this.titleCover.setVisibility(paramInt);
@@ -1386,7 +1359,7 @@ public class BaseChatPie
   private void checkInitApolloViewController()
   {
     if (this.mApolloViewController == null) {
-      this.mApolloViewController = new alps();
+      this.mApolloViewController = new amos();
     }
   }
   
@@ -1417,7 +1390,7 @@ public class BaseChatPie
     boolean bool1;
     if ((this.sessionInfo != null) && (!this.isSimpleBar))
     {
-      paramIntent = (amsw)this.app.getManager(51);
+      paramIntent = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((this.sessionInfo.curType == 3000) || (this.sessionInfo.curType == 1))
       {
         bool2 = doChooseNoC2CInputType(paramIntent);
@@ -1447,7 +1420,7 @@ public class BaseChatPie
         QLog.d(this.tag, 2, "chooseChatInputType doChooseC2CInputType needGuide = " + bool2);
         bool1 = bool2;
         continue;
-        if ((this.sessionInfo != null) && (this.isSimpleBar) && (QLog.isColorLevel())) {
+        if ((this.sessionInfo != null) && (QLog.isColorLevel())) {
           QLog.d(this.tag, 2, "chooseC2CChatInputType isSimpleBar = " + this.isSimpleBar);
         }
       }
@@ -1474,28 +1447,28 @@ public class BaseChatPie
   }
   
   @NotNull
-  private String clickSendTextButtonForC2C(afqj paramafqj, int paramInt1, int paramInt2, MixedMsgInfo paramMixedMsgInfo, MessageRecord paramMessageRecord, acwc paramacwc)
+  private String clickSendTextButtonForC2C(aght paramaght, int paramInt1, int paramInt2, MixedMsgInfo paramMixedMsgInfo, MessageRecord paramMessageRecord, admo paramadmo)
   {
     if (QLog.isColorLevel()) {
       QLog.d("SendMsgBtn", 2, " send sessionInfo.curType != VALUE.UIN_TYPE_TROOP start sendMessage currenttime:" + System.currentTimeMillis());
     }
-    if (paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null)
+    if (paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null)
     {
-      paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mType = 0;
+      paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mType = 0;
       if (((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForMixedMsg))) {
-        paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.oriMsgType = 1;
+        paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.oriMsgType = 1;
       }
       if (paramMessageRecord != null) {
-        paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.packSourceMsg(this.app, paramMessageRecord);
+        paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.packSourceMsg(this.app, paramMessageRecord);
       }
     }
     ArrayList localArrayList = new ArrayList();
-    String str = bevq.a(this.input.getEditableText(), localArrayList);
+    String str = bgcz.a(this.input.getEditableText(), localArrayList);
     boolean bool = isReplyTextMode();
     PhotoListPanel localPhotoListPanel = (PhotoListPanel)this.panelManager.a(4);
     if ((this.receiptMode) || (bool)) {
       if (bool) {
-        azyi.a().a(this.app, this.sessionInfo, str, localArrayList, paramacwc, paramMessageRecord, null, null);
+        bber.a().a(this.app, this.sessionInfo, str, localArrayList, paramadmo, paramMessageRecord, null, null);
       }
     }
     for (;;)
@@ -1504,91 +1477,91 @@ public class BaseChatPie
         QLog.d("SendMsgBtn", 2, " send sessionInfo.curType != VALUE.UIN_TYPE_TROOP end sendMessage currenttime:" + System.currentTimeMillis());
       }
       return str;
-      sendMessageInner(str, paramacwc, localArrayList);
+      sendMessageInner(str, paramadmo, localArrayList);
       continue;
-      if ((!paramafqj.b()) && (paramMixedMsgInfo != null) && (paramMixedMsgInfo.a()))
+      if ((!paramaght.b()) && (paramMixedMsgInfo != null) && (paramMixedMsgInfo.a()))
       {
-        ((avsf)this.app.getManager(174)).a(this.app, this, localArrayList, paramMixedMsgInfo);
-        paramafqj.c();
+        ((awyg)this.app.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a(this.app, this, localArrayList, paramMixedMsgInfo);
+        paramaght.c();
       }
       else if ((this.sessionInfo.curType == 0) && (localPhotoListPanel != null) && (localPhotoListPanel.a(str)))
       {
         if (!localPhotoListPanel.a(true, this)) {
-          sendMessageInner(str, paramacwc, localArrayList);
+          sendMessageInner(str, paramadmo, localArrayList);
         }
-        ((afrt)this.helperProvider.a(7)).b(hashCode());
+        ((agje)this.helperProvider.a(7)).b(hashCode());
       }
       else
       {
-        sendMessageInner(str, paramacwc, null);
+        sendMessageInner(str, paramadmo, null);
         if ((paramInt1 + paramInt2 > 0) && (localPhotoListPanel != null))
         {
           localPhotoListPanel.a(false, null);
-          ((afrt)this.helperProvider.a(7)).b(hashCode());
+          ((agje)this.helperProvider.a(7)).b(hashCode());
         }
       }
     }
   }
   
   @NotNull
-  private String clickSendTextButtonForTroop(afqj paramafqj, int paramInt1, int paramInt2, MixedMsgInfo paramMixedMsgInfo, MessageRecord paramMessageRecord, acwc paramacwc)
+  private String clickSendTextButtonForTroop(aght paramaght, int paramInt1, int paramInt2, MixedMsgInfo paramMixedMsgInfo, MessageRecord paramMessageRecord, admo paramadmo)
   {
-    if (paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null)
+    if (paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null)
     {
-      paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mType = 0;
+      paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mType = 0;
       if (((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForMixedMsg))) {
-        paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.oriMsgType = 1;
+        paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.oriMsgType = 1;
       }
       if (paramMessageRecord != null) {
-        paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.packSourceMsg(this.app, paramMessageRecord);
+        paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.packSourceMsg(this.app, paramMessageRecord);
       }
     }
     Object localObject1 = new ArrayList();
-    String str1 = bevq.a(this.input.getEditableText(), (ArrayList)localObject1);
+    String str1 = bgcz.a(this.input.getEditableText(), (ArrayList)localObject1);
     createAtMsg(true);
     Object localObject2 = new ArrayList();
-    String str2 = bevq.a(this.input.getEditableText(), (ArrayList)localObject2);
+    String str2 = bgcz.a(this.input.getEditableText(), (ArrayList)localObject2);
     boolean bool = isReplyTextMode();
     PhotoListPanel localPhotoListPanel = (PhotoListPanel)this.panelManager.a(4);
     if ((this.receiptMode) || (bool)) {
       if (bool) {
-        azyi.a().a(this.app, this.sessionInfo, str1, (ArrayList)localObject1, paramacwc, paramMessageRecord, str2, (ArrayList)localObject2);
+        bber.a().a(this.app, this.sessionInfo, str1, (ArrayList)localObject1, paramadmo, paramMessageRecord, str2, (ArrayList)localObject2);
       }
     }
     do
     {
       return str1;
-      sendMessageInner(str1, paramacwc, (ArrayList)localObject1);
+      sendMessageInner(str1, paramadmo, (ArrayList)localObject1);
       return str1;
-      if ((!paramafqj.b()) && (paramMixedMsgInfo != null) && (paramMixedMsgInfo.a()))
+      if ((!paramaght.b()) && (paramMixedMsgInfo != null) && (paramMixedMsgInfo.a()))
       {
-        ((avsf)this.app.getManager(174)).a(this.app, this, (ArrayList)localObject1, paramMixedMsgInfo);
-        paramafqj.c();
+        ((awyg)this.app.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a(this.app, this, (ArrayList)localObject1, paramMixedMsgInfo);
+        paramaght.c();
         return str1;
       }
       if ((localPhotoListPanel != null) && (localPhotoListPanel.a(str1)))
       {
         if (!localPhotoListPanel.a(true, this)) {
-          sendMessageInner(str1, paramacwc, (ArrayList)localObject1);
+          sendMessageInner(str1, paramadmo, (ArrayList)localObject1);
         }
-        ((afrt)this.helperProvider.a(7)).b(hashCode());
+        ((agje)this.helperProvider.a(7)).b(hashCode());
         return str1;
       }
-      if (this.input.getTag(2131373800) == null) {
+      if (this.input.getTag(2131374018) == null) {
         break;
       }
-    } while (this.input.getTag(2131373800) == null);
-    paramMessageRecord = (MessageForTroopGift)this.input.getTag(2131373800);
-    paramacwc.e = paramMessageRecord.senderUin;
-    paramafqj = amtj.a(2131700131);
-    paramMixedMsgInfo = bfyz.i(this.mContext, "wantWord");
+    } while (this.input.getTag(2131374018) == null);
+    paramMessageRecord = (MessageForTroopGift)this.input.getTag(2131374018);
+    paramadmo.e = paramMessageRecord.senderUin;
+    paramaght = anvx.a(2131700482);
+    paramMixedMsgInfo = bhhr.i(this.mContext, "wantWord");
     if (!android.text.TextUtils.isEmpty(paramMixedMsgInfo)) {
-      paramafqj = paramMixedMsgInfo;
+      paramaght = paramMixedMsgInfo;
     }
     for (;;)
     {
-      this.input.setText(paramafqj);
-      paramafqj = ContactUtils.getMemberDisplaynameByIstroop(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin, paramMessageRecord.senderUin + "");
+      this.input.setText(paramaght);
+      paramaght = ContactUtils.getMemberDisplaynameByIstroop(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin, paramMessageRecord.senderUin + "");
       paramMixedMsgInfo = this.app;
       localObject1 = this.mContext;
       str1 = this.sessionInfo.curFriendUin;
@@ -1597,21 +1570,21 @@ public class BaseChatPie
       if (this.sessionInfo.curType == 1) {}
       for (bool = true;; bool = false)
       {
-        paramafqj = bevq.a(paramMixedMsgInfo, (Context)localObject1, str1, paramMessageRecord, paramafqj, false, (EditText)localObject2, bool);
-        if ((paramafqj != null) && (paramafqj.length() != 0)) {
-          this.input.getEditableText().insert(0, paramafqj);
+        paramaght = bgcz.a(paramMixedMsgInfo, (Context)localObject1, str1, paramMessageRecord, paramaght, false, (EditText)localObject2, bool);
+        if ((paramaght != null) && (paramaght.length() != 0)) {
+          this.input.getEditableText().insert(0, paramaght);
         }
-        paramafqj = new ArrayList();
-        paramMixedMsgInfo = bevq.a(this.input.getEditableText(), paramafqj);
-        sendMessageInner(paramMixedMsgInfo, paramacwc, paramafqj);
+        paramaght = new ArrayList();
+        paramMixedMsgInfo = bgcz.a(this.input.getEditableText(), paramaght);
+        sendMessageInner(paramMixedMsgInfo, paramadmo, paramaght);
         return paramMixedMsgInfo;
       }
-      sendMessageInner(str1, paramacwc, (ArrayList)localObject1);
+      sendMessageInner(str1, paramadmo, (ArrayList)localObject1);
       if ((paramInt1 + paramInt2 <= 0) || (localPhotoListPanel == null)) {
         break;
       }
       localPhotoListPanel.a(false, null);
-      ((afrt)this.helperProvider.a(7)).b(hashCode());
+      ((agje)this.helperProvider.a(7)).b(hashCode());
       return str1;
     }
   }
@@ -1625,18 +1598,18 @@ public class BaseChatPie
       }
       this.mApolloViewObserver.jdField_a_of_type_Boolean = false;
     }
-    ((alnr)this.app.getManager(153)).a(null);
+    ((amme)this.app.getManager(QQManagerFactory.APOLLO_MANAGER)).a(null);
     if (this.mApolloViewController != null) {
       this.mApolloViewController.f(this);
     }
-    alnr.jdField_a_of_type_JavaUtilHashSet.clear();
-    ((alpg)this.app.getManager(232)).a();
+    amme.jdField_a_of_type_JavaUtilHashSet.clear();
+    ((amog)this.app.getManager(QQManagerFactory.APOLLO_RESPONSE_MANAGER)).a();
   }
   
   private void destroyArk()
   {
-    aowk.a().b(this);
-    afvh.a(2);
+    apzo.a().b(this);
+    agnw.a(2);
     ArkFlashChatContainerWrapper.a(2);
     if (this.mArkController != null)
     {
@@ -1674,12 +1647,12 @@ public class BaseChatPie
     }
     if (!android.text.TextUtils.isEmpty(this.sessionInfo.curFriendUin))
     {
-      abwz.b(this.app, this.sessionInfo.curFriendUin, this.sessionInfo.curType, -3010);
-      abwz.b(this.app, this.sessionInfo.curFriendUin, this.sessionInfo.curType, -4020);
+      acnh.b(this.app, this.sessionInfo.curFriendUin, this.sessionInfo.curType, -3010);
+      acnh.b(this.app, this.sessionInfo.curFriendUin, this.sessionInfo.curType, -4020);
     }
-    afaz localafaz = afaz.a(this.app);
-    if (localafaz != null) {
-      localafaz.b();
+    afsl localafsl = afsl.a(this.app);
+    if (localafsl != null) {
+      localafsl.b();
     }
   }
   
@@ -1710,7 +1683,7 @@ public class BaseChatPie
           this.input.getInputExtras(false).clear();
         }
         this.input.setCompoundDrawables(null, null, null, null);
-        this.input.setTag(2131373788, null);
+        this.input.setTag(2131374006, null);
       }
     }
     catch (RuntimeException localThrowable)
@@ -1718,7 +1691,6 @@ public class BaseChatPie
       try
       {
         this.input.setSelection(0);
-        this.input.a = null;
         this.input.setOnPrivateIMECommandListener(null);
         this.input.setOnEditorActionListener(null);
         this.input.setOnKeyListener(null);
@@ -1823,7 +1795,7 @@ public class BaseChatPie
       this.receiptMode = false;
       changeCoverVisibility(8);
     }
-    azuu.a().a();
+    bbbc.a().a();
     if (this.titleCover != null)
     {
       this.afRoot.removeViewInLayout(this.titleCover);
@@ -1832,7 +1804,7 @@ public class BaseChatPie
       this.titleCover = null;
       this.receiptCover = null;
       this.tvReceiptTips = null;
-      ((RelativeLayout.LayoutParams)this.listView.getLayoutParams()).addRule(2, 2131368751);
+      ((RelativeLayout.LayoutParams)this.listView.getLayoutParams()).addRule(2, 2131368910);
     }
   }
   
@@ -1848,23 +1820,26 @@ public class BaseChatPie
   
   private void destroyUnRegReceivers()
   {
-    BaseChatPie.22 local22 = new BaseChatPie.22(this);
+    BaseChatPie.21 local21 = new BaseChatPie.21(this);
     if (AppSetting.e)
     {
-      ThreadManager.executeOnSubThread(local22, true);
+      ThreadManager.executeOnSubThread(local21, true);
       return;
     }
-    local22.run();
+    local21.run();
   }
   
   private void determineBatchUpdateJumpBottom(Object paramObject, MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord.frienduin.equals(this.sessionInfo.curFriendUin)) && (apse.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.sessionInfo.curType, this.sessionInfo.topicId)))
+    boolean bool;
+    if ((paramMessageRecord.frienduin.equals(this.sessionInfo.curFriendUin)) && (aqvh.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.sessionInfo.curType, this.sessionInfo.topicId)))
     {
-      if ((!(paramObject instanceof MessageForArkApp)) || (((MessageForArkApp)paramObject).getProcessState() != 1002)) {
-        break label172;
+      ChatMessage localChatMessage = (ChatMessage)paramObject;
+      if (((paramObject instanceof MessageForArkApp)) && (((MessageForArkApp)paramObject).getProcessState() == 1002)) {
+        break label178;
       }
-      ((ChatMessage)paramObject).mMsgAnimFlag = false;
+      bool = true;
+      localChatMessage.mMsgAnimFlag = bool;
       if (paramMessageRecord.msgtype == -2058) {
         break label183;
       }
@@ -1875,13 +1850,13 @@ public class BaseChatPie
     }
     for (;;)
     {
-      ((aeyb)this.app.getManager(218)).a(this, paramMessageRecord);
+      ((afpn)this.app.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER)).a(this, paramMessageRecord);
       if ((paramMessageRecord instanceof MessageForText)) {
-        ((bcws)this.app.getManager(272)).a((ChatMessage)paramObject);
+        ((bedr)this.app.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a((ChatMessage)paramObject);
       }
       return;
-      label172:
-      ((ChatMessage)paramObject).mMsgAnimFlag = true;
+      label178:
+      bool = false;
       break;
       label183:
       instantUpdate(false, false);
@@ -1914,12 +1889,12 @@ public class BaseChatPie
     return paramBoolean;
   }
   
-  private boolean doChooseC2CInputType(amsw paramamsw)
+  private boolean doChooseC2CInputType(anvk paramanvk)
   {
-    ExtensionInfo localExtensionInfo2 = paramamsw.a(this.sessionInfo.curFriendUin, false);
+    ExtensionInfo localExtensionInfo2 = paramanvk.a(this.sessionInfo.curFriendUin, false);
     ExtensionInfo localExtensionInfo1 = localExtensionInfo2;
     if (localExtensionInfo2 == null) {
-      if (paramamsw.d()) {}
+      if (paramanvk.d()) {}
     }
     label26:
     do
@@ -1931,14 +1906,14 @@ public class BaseChatPie
       localExtensionInfo1 = new ExtensionInfo();
       localExtensionInfo1.uin = this.sessionInfo.curFriendUin;
       localExtensionInfo1.timestamp = System.currentTimeMillis();
-      if (abwz.d(this.sessionInfo.curType)) {}
+      if (acnh.d(this.sessionInfo.curType)) {}
       for (localExtensionInfo1.chatInputType = 0;; localExtensionInfo1.chatInputType = 1)
       {
         this.mExtensionInfo = localExtensionInfo1;
         if (QLog.isColorLevel()) {
           QLog.d(this.tag, 2, "doChooseC2CInputType extInfo.chatInputType = " + localExtensionInfo1.chatInputType);
         }
-        if (aews.b) {
+        if (afod.b) {
           break;
         }
         switch (localExtensionInfo1.chatInputType)
@@ -1960,12 +1935,12 @@ public class BaseChatPie
     return false;
   }
   
-  private boolean doChooseNoC2CInputType(amsw paramamsw)
+  private boolean doChooseNoC2CInputType(anvk paramanvk)
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo2 = paramamsw.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
+    NoC2CExtensionInfo localNoC2CExtensionInfo2 = paramanvk.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
     NoC2CExtensionInfo localNoC2CExtensionInfo1 = localNoC2CExtensionInfo2;
     if (localNoC2CExtensionInfo2 == null) {
-      if (paramamsw.d()) {}
+      if (paramanvk.d()) {}
     }
     label36:
     do
@@ -2011,7 +1986,7 @@ public class BaseChatPie
         QLog.d(this.tag, 2, "mActivity == null");
       }
     }
-    while (((afqy)getHelper(39)).a()) {
+    while (((agij)getHelper(39)).a()) {
       return;
     }
     if ((this.mActivity instanceof SplashActivity))
@@ -2116,7 +2091,7 @@ public class BaseChatPie
       }
       else if (paramInt1 == 18000)
       {
-        ((afri)getHelper(11)).a(paramInt2, paramIntent);
+        ((agit)getHelper(11)).a(paramInt2, paramIntent);
       }
       else if (paramInt2 == -1)
       {
@@ -2183,7 +2158,7 @@ public class BaseChatPie
         return;
         instantUpdate(false, false);
         return;
-        bbpn.a(this.app, this.mActivity, paramIntent, this.sessionInfo, paramInt3, paramInt1);
+        bcwh.a(this.app, this.mActivity, paramIntent, this.sessionInfo, paramInt3, paramInt1);
         return;
         ChatActivityUtils.a(this.app, this.mActivity, this.sessionInfo, paramInt1, paramIntent, 10);
         return;
@@ -2192,7 +2167,7 @@ public class BaseChatPie
         instantUpdate(true, false);
         this.mActivity.getWindow().clearFlags(1024);
         return;
-        paramIntent.putExtra("selfSet_leftViewText", this.app.getApplication().getString(2131718771));
+        paramIntent.putExtra("selfSet_leftViewText", this.app.getApplication().getString(2131719161));
         startChatAndSendMsg(paramIntent.getExtras());
         return;
         doOnActivityResultOkOption(paramIntent);
@@ -2203,7 +2178,7 @@ public class BaseChatPie
         if (paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0) == 2) {}
         for (;;)
         {
-          ((afqj)this.helperProvider.a(24)).a(localArrayList, bool);
+          ((aght)this.helperProvider.a(24)).a(localArrayList, bool);
           return;
           bool = false;
         }
@@ -2212,10 +2187,10 @@ public class BaseChatPie
         doOnActivityResultOkNearBy(paramIntent);
         return;
       } while (paramIntent == null);
-      acvv.a(this.app, this.mContext, this.sessionInfo, paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH"), false, true, paramIntent.getStringExtra(bkrk.d), null);
+      admh.a(this.app, this.mContext, this.sessionInfo, paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH"), false, true, paramIntent.getStringExtra(bmct.d), null);
       return;
     case 9010: 
-      bbwb.a(paramIntent, getActivity());
+      bdcw.a(paramIntent, getActivity());
       return;
     case 9011: 
       setNeedLongScreenShot(paramIntent);
@@ -2224,7 +2199,7 @@ public class BaseChatPie
       setLeftCheckBoxVisible(false, null, false);
       return;
     }
-    QQToast.a(this.mContext, 2, 2131693185, 1).a();
+    QQToast.a(this.mContext, 2, 2131693363, 1).a();
   }
   
   private void doOnActivityResultOkFile(int paramInt)
@@ -2272,7 +2247,7 @@ public class BaseChatPie
           str2 = "";
           paramIntent = "";
         }
-        acvv.a(this.mContext, this.app, this.sessionInfo, str4, str5, str6, str7, str8, str9, str1, str2, paramIntent, localBundle);
+        admh.a(this.mContext, this.app, this.sessionInfo, str4, str5, str6, str7, str8, str9, str1, str2, paramIntent, localBundle);
       }
     }
   }
@@ -2288,7 +2263,7 @@ public class BaseChatPie
         if (QLog.isColorLevel()) {
           QLog.d(this.tag, 2, "onActivityResult new nick is " + paramIntent);
         }
-        this.uiHandler.post(new BaseChatPie.32(this));
+        this.uiHandler.post(new BaseChatPie.31(this));
       }
     }
   }
@@ -2307,7 +2282,7 @@ public class BaseChatPie
       }
       for (;;)
       {
-        ((afqy)getHelper(39)).a(this.mActivity.getIntent());
+        ((agij)getHelper(39)).a(this.mActivity.getIntent());
         return;
         instantUpdate(false, false);
       }
@@ -2327,7 +2302,7 @@ public class BaseChatPie
         }
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(paramIntent);
-        ((afqj)this.helperProvider.a(24)).a(localArrayList, false);
+        ((aght)this.helperProvider.a(24)).a(localArrayList, false);
       }
       return;
     }
@@ -2340,7 +2315,8 @@ public class BaseChatPie
       if ((paramIntent != null) && (paramIntent.getExtras() != null))
       {
         Bundle localBundle = paramIntent.getExtras();
-        Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(this.mContext, SplashActivity.class), new int[] { 2 });
+        Intent localIntent = new Intent(this.mContext, SplashActivity.class);
+        AIOUtils.setOpenAIOIntent(localIntent, new int[] { 2 });
         localIntent.putExtras(new Bundle(localBundle));
         this.mActivity.startActivity(localIntent);
       }
@@ -2367,7 +2343,7 @@ public class BaseChatPie
       if (!android.text.TextUtils.isEmpty(paramIntent))
       {
         int i = Integer.parseInt(paramIntent);
-        paramIntent = (amoa)this.app.getBusinessHandler(53);
+        paramIntent = (anqn)this.app.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
         if (paramIntent != null) {
           paramIntent.a(i);
         }
@@ -2399,12 +2375,9 @@ public class BaseChatPie
   
   private void doOnActivityResultUnknown(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramInt == 2000) {
+      ((agij)getHelper(39)).a(this.mActivity.getIntent());
     }
-    ((afqy)getHelper(39)).a(this.mActivity.getIntent());
   }
   
   private void doOnActivityResultVideoType(Intent paramIntent)
@@ -2412,7 +2385,7 @@ public class BaseChatPie
     try
     {
       int i = Integer.parseInt(paramIntent.getStringExtra("babyq_video_type"));
-      paramIntent = (amoa)this.app.getBusinessHandler(53);
+      paramIntent = (anqn)this.app.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
       if (paramIntent != null) {
         paramIntent.a(i);
       }
@@ -2424,10 +2397,10 @@ public class BaseChatPie
     }
   }
   
-  private void doOnListViewMeasure(afsn paramafsn, int paramInt1, int paramInt2, int paramInt3)
+  private void doOnListViewMeasure(agkb paramagkb, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramafsn != null) && (!paramafsn.c()) && (paramafsn.b()) && (paramInt1 == 0)) {
-      paramafsn.e();
+    if ((paramagkb != null) && (!paramagkb.c()) && (paramagkb.b()) && (paramInt1 == 0)) {
+      paramagkb.f();
     }
     this.listView.setOnMeasureListener(null);
     this.listView.setSelectionFromBottom(paramInt2, paramInt3);
@@ -2446,9 +2419,9 @@ public class BaseChatPie
     if (paramIntent.getBooleanExtra("message_box_click", false))
     {
       this.isBack2Root = true;
-      this.mTitleBtnLeft.setText(2131718771);
+      this.mTitleBtnLeft.setText(2131719161);
       adjustTitleDimension();
-      this.mTitleBtnLeft.setContentDescription(amtj.a(2131700128));
+      this.mTitleBtnLeft.setContentDescription(anvx.a(2131700479));
     }
     for (;;)
     {
@@ -2463,7 +2436,7 @@ public class BaseChatPie
       if (this.mAnimContainer != null) {
         this.mAnimContainer.a();
       }
-      afdp.a().a();
+      afuu.a().a();
       hideZhituIcon();
       return;
       if (localBundle != null)
@@ -2471,9 +2444,9 @@ public class BaseChatPie
         this.isBack2Root = localBundle.getBoolean("isBack2Root");
         if (this.isBack2Root)
         {
-          this.mTitleBtnLeft.setText(2131718771);
+          this.mTitleBtnLeft.setText(2131719161);
           adjustTitleDimension();
-          this.mTitleBtnLeft.setContentDescription(amtj.a(2131700109));
+          this.mTitleBtnLeft.setContentDescription(anvx.a(2131700460));
         }
       }
     }
@@ -2487,10 +2460,10 @@ public class BaseChatPie
     for (int j = 0; (i >= 0) && (i < m); j = k)
     {
       Object localObject = this.listAdapter.getItem(i);
-      if (!afhw.a(localObject))
+      if (!afzb.a(localObject))
       {
         k = j;
-        if (!afhw.b(localObject)) {}
+        if (!afzb.b(localObject)) {}
       }
       else
       {
@@ -2569,10 +2542,10 @@ public class BaseChatPie
     }
     paramList = (List<ChatMessage>)localObject;
     if (1001 == this.sessionInfo.curType) {
-      if (!awhm.jdField_a_of_type_JavaUtilHashSet.contains(this.sessionInfo.curFriendUin))
+      if (!axno.jdField_a_of_type_JavaUtilHashSet.contains(this.sessionInfo.curFriendUin))
       {
         paramList = (List<ChatMessage>)localObject;
-        if (!awhm.a(this.app, this.sessionInfo.curFriendUin)) {}
+        if (!axno.a(this.app, this.sessionInfo.curFriendUin)) {}
       }
       else
       {
@@ -2583,11 +2556,11 @@ public class BaseChatPie
     if (10002 == this.sessionInfo.curType)
     {
       paramCharSequence = paramList;
-      if (awhm.a(this.app, this.sessionInfo.curFriendUin)) {
+      if (axno.a(this.app, this.sessionInfo.curFriendUin)) {
         paramCharSequence = null;
       }
     }
-    if (abwz.a(this.sessionInfo.curType) == 1032) {
+    if (acnh.a(this.sessionInfo.curType) == 1032) {
       paramCharSequence = null;
     }
     if (10010 == this.sessionInfo.curType) {
@@ -2652,13 +2625,13 @@ public class BaseChatPie
     }
   }
   
-  private ahmo getStickerBubbleTouchDelegate(View paramView)
+  private aihi getStickerBubbleTouchDelegate(View paramView)
   {
     if (this.mStickerBubbleSendTouchDelegate == null)
     {
-      ahmq localahmq = new ahmq(this.mContext, this);
-      this.mStickerBubbleSendTouchDelegate = new ahmo(localahmq, paramView, agkg.b(this.app));
-      localahmq.a(this.mStickerBubbleSendTouchDelegate);
+      aihk localaihk = new aihk(this.mContext, this);
+      this.mStickerBubbleSendTouchDelegate = new aihi(localaihk, paramView, ahcw.b(this.app));
+      localaihk.a(this.mStickerBubbleSendTouchDelegate);
     }
     return this.mStickerBubbleSendTouchDelegate;
   }
@@ -2702,13 +2675,13 @@ public class BaseChatPie
                   this.mApolloPanel.p();
                   return false;
                 } while (this.mApolloPanel == null);
-                localObject = (amlu)paramMessage.obj;
+                localObject = (annl)paramMessage.obj;
                 if (paramMessage.arg1 == 1)
                 {
                   this.mApolloPanel.g();
                   return false;
                 }
-                this.mApolloPanel.a((amlu)localObject);
+                this.mApolloPanel.a((annl)localObject);
                 return false;
               } while (this.mApolloPanel == null);
               this.mApolloPanel.o();
@@ -2724,9 +2697,9 @@ public class BaseChatPie
           } while ((paramMessage.obj == null) || (android.text.TextUtils.isEmpty(paramMessage.obj.toString())));
           if (this.mApolloGameDialog == null)
           {
-            localObject = new BaseChatPie.15(this);
-            BaseChatPie.16 local16 = new BaseChatPie.16(this);
-            this.mApolloGameDialog = bfur.a(this.mActivity, 0, amtj.a(2131700132), paramMessage.obj.toString(), amtj.a(2131700101), amtj.a(2131700138), (DialogInterface.OnClickListener)localObject, local16);
+            localObject = new BaseChatPie.14(this);
+            BaseChatPie.15 local15 = new BaseChatPie.15(this);
+            this.mApolloGameDialog = bhdj.a(this.mActivity, 0, anvx.a(2131700483), paramMessage.obj.toString(), anvx.a(2131700452), anvx.a(2131700489), (DialogInterface.OnClickListener)localObject, local15);
           }
           this.mApolloGameDialog.show();
           return false;
@@ -2767,7 +2740,7 @@ public class BaseChatPie
       if (this.mProgressDialog != null)
       {
         this.mProgressDialog.dismiss();
-        QQToast.a(this.app.getApp(), 2131697902, 0).b(this.mContext.getApplicationContext().getResources().getDimensionPixelSize(2131299076));
+        QQToast.a(this.app.getApp(), 2131698185, 0).b(this.mContext.getApplicationContext().getResources().getDimensionPixelSize(2131299080));
       }
       HashMap localHashMap = new HashMap();
       localHashMap.put("nickCount", paramMessage.arg1 + "");
@@ -2786,14 +2759,14 @@ public class BaseChatPie
     do
     {
       return;
-      bcef.b(this.app, "dc00898", "", "", "0X8007FA8", "0X8007FA8", 0, 0, "", "", "", "");
+      bdla.b(this.app, "dc00898", "", "", "0X8007FA8", "0X8007FA8", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d(this.tag, 2, "[Doutu] handleMessage : MSG_SHOW_DOUTU_EMOTION_LAYOUT");
       }
       if (this.doutuManager == null) {
-        this.doutuManager = ((aqwg)this.app.getManager(214));
+        this.doutuManager = ((asaa)this.app.getManager(QQManagerFactory.DOUTU_MAGAGER));
       }
-      this.doutuManager.a(this.mContext, this.mContent, this.mActivity, this.sessionInfo, this.uiHandler, (aqwf)paramMessage.obj);
+      this.doutuManager.a(this.mContext, this.mContent, this.mActivity, this.sessionInfo, this.uiHandler, (arzz)paramMessage.obj);
       if (this.emotionLayout != null)
       {
         this.emotionLayout.hide();
@@ -2812,8 +2785,8 @@ public class BaseChatPie
       }
       resumeAppShorcutBar();
       return;
-    } while ((this.doutuManager == null) || (this.doutuManager.jdField_a_of_type_Aqwb == null));
-    this.doutuManager.jdField_a_of_type_Aqwb.notifyDataSetChanged();
+    } while ((this.doutuManager == null) || (this.doutuManager.jdField_a_of_type_Arzv == null));
+    this.doutuManager.jdField_a_of_type_Arzv.notifyDataSetChanged();
   }
   
   private void handleEmoticonMessage(Message paramMessage)
@@ -2858,17 +2831,12 @@ public class BaseChatPie
       }
       resumeAppShorcutBar();
       return;
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (paramMessage.obj != null)
-      {
-        localObject1 = localObject2;
-        if ((paramMessage.obj instanceof String)) {
-          localObject1 = (String)paramMessage.obj;
-        }
+      String str = null;
+      if ((paramMessage.obj instanceof String)) {
+        str = (String)paramMessage.obj;
       }
       if (this.emotionLayout != null) {
-        this.emotionLayout.show((String)localObject1);
+        this.emotionLayout.show(str);
       }
       if (this.mApolloViewController != null) {
         this.mApolloViewController.a(false);
@@ -2880,7 +2848,7 @@ public class BaseChatPie
       EmojiStickerManager.a().c(this);
       this.uiHandler.removeMessages(67);
       this.uiHandler.sendEmptyMessageDelayed(67, 6000L);
-      ((afsu)getHelper(14)).a();
+      ((agki)getHelper(14)).a();
       return;
       disableZhitu();
     } while ((this.input == null) || (paramMessage.arg1 != 1));
@@ -2894,7 +2862,7 @@ public class BaseChatPie
       paramEditable = paramEditable.toString();
       String str = paramEditable.toLowerCase();
       if (this.emoticonManager.a(str)) {
-        ThreadManager.post(new BaseChatPie.62(this, str, paramEditable), 5, null, true);
+        ThreadManager.post(new BaseChatPie.61(this, str, paramEditable), 5, null, true);
       }
       return;
     }
@@ -2916,16 +2884,16 @@ public class BaseChatPie
       return;
       this.root.a(1);
       return;
-    } while (!afqx.a(getApp(), this.mContext, this.input.getText().toString(), getCurType()));
-    if (!ahtj.a(this.app).a(this.input.getText()))
+    } while (!agii.a(getApp(), this.mContext, this.input.getText().toString(), getCurType()));
+    if (!aioi.a(this.app).a(this.input.getText()))
     {
-      QQToast.a(this.mContext, amtj.a(2131700130), 0).a();
-      bcef.b(getApp(), "dc00898", "", "", "0X800932D", "0X800932D", 0, 0, "", "", "", "");
+      QQToast.a(this.mContext, anvx.a(2131700481), 0).a();
+      bdla.b(getApp(), "dc00898", "", "", "0X800932D", "0X800932D", 0, 0, "", "", "", "");
       return;
     }
     if (com.tencent.mobileqq.text.TextUtils.isContainComplexScript(this.input.getText().toString()))
     {
-      QQToast.a(this.mContext, amtj.a(2131700102), 0).a();
+      QQToast.a(this.mContext, anvx.a(2131700453), 0).a();
       return;
     }
     boolean bool;
@@ -2933,7 +2901,7 @@ public class BaseChatPie
     {
       bool = true;
       this.mZhituSwitch = bool;
-      this.mIconButtonInInputRight.setImageResource(2130838103);
+      this.mIconButtonInInputRight.setImageResource(2130838117);
       this.mIconButtonInInputRight.setActivated(this.mZhituSwitch);
       if (!this.mZhituSwitch) {
         break label346;
@@ -2944,7 +2912,7 @@ public class BaseChatPie
       if (this.doutuManager != null) {
         this.doutuManager.b();
       }
-      if (amat.a(this.app)) {
+      if (ancb.a(this.app)) {
         break label341;
       }
     }
@@ -2952,9 +2920,9 @@ public class BaseChatPie
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        amat.a(this.app, "zhitu", true);
+        ancb.a(this.app, "zhitu", true);
       }
-      auen.c.set(false);
+      avkh.c.set(false);
       this.root.a(28, false);
       return;
       bool = false;
@@ -3010,7 +2978,7 @@ public class BaseChatPie
           localChatMessage.parse();
           paramList = ((MessageForMarketFace)localChatMessage).mMarkFaceMessage;
         }
-        if (((paramList.mobileparam != null) && (paramList.mobileparam.length > 0)) || ((paramList.mediaType == 3) && (abwz.d(this.sessionInfo.curType)))) {
+        if (((paramList.mobileparam != null) && (paramList.mobileparam.length > 0)) || ((paramList.mediaType == 3) && (acnh.d(this.sessionInfo.curType)))) {
           ((MessageForMarketFace)localChatMessage).needToPlay = true;
         }
       }
@@ -3028,32 +2996,32 @@ public class BaseChatPie
         QLog.d(this.tag, 2, "read confirm send readconfirm");
       }
       this.uiHandler.sendEmptyMessageDelayed(16711689, 300000L);
-      ThreadManager.post(new BaseChatPie.17(this), 8, null, false);
+      ThreadManager.post(new BaseChatPie.16(this), 8, null, false);
       return true;
     case 12: 
       if (QLog.isColorLevel()) {
         QLog.d(this.tag, 2, "handleMessage MSG_REFRESH_LIST");
       }
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof amwf)))
+      if ((paramMessage.obj instanceof anyt))
       {
-        paramMessage = (amwf)paramMessage.obj;
+        paramMessage = (anyt)paramMessage.obj;
         paramMessage.e = (System.currentTimeMillis() - paramMessage.d);
         MessageHandler.a(paramMessage, this.app);
       }
       refreshListAdapter();
       if (this.mScrollState == 0)
       {
-        apec.a().a(getApp(), 1500);
-        almr.a().a(getApp(), 1500);
+        aqhg.a().a(getApp(), 1500);
+        amks.a().a(getApp(), 1500);
       }
       return true;
     case 78: 
       long l = paramMessage.getData().getLong("messageUniseq");
       int i = paramMessage.arg1;
       ChatMessage localChatMessage = (ChatMessage)this.app.getMessageProxy(this.sessionInfo.curType).a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, l);
-      if ((localChatMessage != null) && (paramMessage.obj != null) && ((paramMessage.obj instanceof amwf)))
+      if ((localChatMessage != null) && ((paramMessage.obj instanceof anyt)))
       {
-        paramMessage = (amwf)paramMessage.obj;
+        paramMessage = (anyt)paramMessage.obj;
         paramMessage.e = (System.currentTimeMillis() - paramMessage.d);
         MessageHandler.a(paramMessage, this.app);
         localChatMessage.setIsSentByXG(paramMessage.b);
@@ -3081,9 +3049,9 @@ public class BaseChatPie
       this.mProgressDialog.c(false);
     }
     this.app.getMsgCache().b(false);
-    QQToast.a(this.mContext, 2131693968, 0).b(getTitleBarHeight());
+    QQToast.a(this.mContext, 2131694159, 0).b(getTitleBarHeight());
     if (paramMessage.arg1 == 1) {
-      anmr.b(this.sessionInfo.curFriendUin, this.sessionInfo.curType, anmr.b, anmr.l);
+      aopk.b(this.sessionInfo.curFriendUin, this.sessionInfo.curType, aopk.b, aopk.l);
     }
     return true;
   }
@@ -3140,7 +3108,7 @@ public class BaseChatPie
         if (!((MessageForPoke)paramList).isPlayed)
         {
           MessageForPoke localMessageForPoke = (MessageForPoke)paramList;
-          agkc.a().a(this.app, this.sessionInfo.curFriendUin, localMessageForPoke.interactType, 0, localMessageForPoke.strength);
+          ahcs.a().a(this.app, this.sessionInfo.curFriendUin, localMessageForPoke.interactType, 0, localMessageForPoke.strength);
           if (QLog.isColorLevel()) {
             QLog.d("PokeMsg", 2, "receive PokeMsg strength:" + localMessageForPoke.strength + "." + paramList);
           }
@@ -3151,87 +3119,101 @@ public class BaseChatPie
     do
     {
       return;
-      agkc.a().a(this.app, this.sessionInfo.curFriendUin, -1, 0, -1);
+      ahcs.a().a(this.app, this.sessionInfo.curFriendUin, -1, 0, -1);
     } while (!QLog.isColorLevel());
     QLog.d("PokeMsg", 2, "receive unPokeMsg strength:-1." + paramList);
   }
   
   private void handleRefreshSingleTitle(List<ChatMessage> paramList, MessageRecord paramMessageRecord)
   {
-    Object localObject;
-    String str;
-    StringBuilder localStringBuilder;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
     boolean bool;
     if (this.mSingleTitle)
     {
       if ((1000 != this.sessionInfo.curType) || (paramMessageRecord != null) || (paramList.size() != 0)) {
-        break label215;
+        break label300;
       }
-      localObject = ChatActivityUtils.a(this.mContext, this.app, this.sessionInfo.realTroopUin);
+      localObject1 = ChatActivityUtils.a(this.mContext, this.app, this.sessionInfo.realTroopUin);
+      localObject2 = localObject1;
+      if (paramMessageRecord != null)
+      {
+        localObject3 = paramMessageRecord.getExtInfoFromExtStr("temp_conv_biz_name");
+        String str = paramMessageRecord.getExtInfoFromExtStr("temp_conv_biz_content");
+        localObject2 = localObject1;
+        if (!((String)localObject3).equals(""))
+        {
+          localObject2 = localObject1;
+          if (!str.equals("")) {
+            localObject2 = String.format(this.mContext.getString(2131698275), new Object[] { str, localObject3 });
+          }
+        }
+      }
       if (QLog.isColorLevel())
       {
-        str = this.tag;
-        localStringBuilder = new StringBuilder().append("sessionInfo.curType = ").append(this.sessionInfo.curType).append(", mr = null ? ");
+        localObject1 = this.tag;
+        localObject3 = new StringBuilder().append("sessionInfo.curType = ").append(this.sessionInfo.curType).append(", mr = null ? ");
         if (paramMessageRecord != null) {
-          break label401;
+          break label486;
         }
         bool = true;
-        label103:
-        localStringBuilder = localStringBuilder.append(bool).append("，mr.type = ");
+        label188:
+        localObject3 = ((StringBuilder)localObject3).append(bool).append("，mr.type = ");
         if (paramMessageRecord != null) {
-          break label407;
+          break label492;
         }
       }
     }
-    label401:
-    label407:
+    label300:
+    label486:
+    label492:
     for (paramMessageRecord = "null";; paramMessageRecord = Integer.valueOf(paramMessageRecord.istroop))
     {
-      QLog.d(str, 2, paramMessageRecord + ", newList.size() = " + paramList.size());
-      if (localObject == null) {
-        break label418;
+      QLog.d((String)localObject1, 2, paramMessageRecord + ", newList.size() = " + paramList.size());
+      if (localObject2 == null) {
+        break label503;
       }
       setSubTitleVisable(true);
       this.mSubTilteText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       this.mTitleLayout.setOnClickListener(null);
       this.mSubTitleLayout.setOnClickListener(null);
-      setSubTitleText((String)localObject);
+      setSubTitleText((String)localObject2);
       if (jdField_a_of_type_Boolean) {
-        this.mSubTilteText.setContentDescription((CharSequence)localObject);
+        this.mSubTilteText.setContentDescription((CharSequence)localObject2);
       }
       return;
-      label215:
       if ((this.sessionInfo.curType == 0) || (this.sessionInfo.curType == 1025))
       {
-        localObject = ChatActivityUtils.a(this.app, this.mContext, this.sessionInfo.curFriendUin);
+        localObject1 = ChatActivityUtils.a(this.app, this.mContext, this.sessionInfo.curFriendUin);
         break;
       }
       if ((this.sessionInfo.curType == 1001) || (this.sessionInfo.curType == 10002))
       {
-        localObject = this.mContext;
+        localObject1 = this.mContext;
         if (this.sessionInfo.curType == 1001) {}
-        for (int i = 2131697985;; i = 2131693947)
+        for (int i = 2131698269;; i = 2131694138)
         {
-          localObject = ((Context)localObject).getString(i);
+          localObject1 = ((Context)localObject1).getString(i);
           break;
         }
       }
       if (this.sessionInfo.curType == 10004)
       {
-        localObject = this.mContext.getString(2131697986);
+        localObject1 = this.mContext.getString(2131698270);
         break;
       }
       if (this.sessionInfo.curType == 10010)
       {
-        localObject = this.mContext.getString(2131693946);
+        localObject1 = this.mContext.getString(2131718938);
         break;
       }
-      localObject = ChatActivityUtils.a(this.mContext, paramMessageRecord, this.app);
+      localObject1 = ChatActivityUtils.a(this.mContext, paramMessageRecord, this.app);
       break;
       bool = false;
-      break label103;
+      break label188;
     }
-    label418:
+    label503:
     setSubTitleVisable(false);
   }
   
@@ -3250,29 +3232,29 @@ public class BaseChatPie
       return true;
     case 38: 
       if (this.mlightalkTipsBar == null) {
-        this.mlightalkTipsBar = new ahpx(this.app, this.mTipsMgr, this.sessionInfo, this.mActivity);
+        this.mlightalkTipsBar = new aikw(this.app, this.mTipsMgr, this.sessionInfo, this.mActivity);
       }
       if (this.mTipsMgr.a(this.mlightalkTipsBar, new Object[0]))
       {
         if (QLog.isColorLevel()) {
           QLog.d("LightalkBlueTipsBar", 2, "BaseChatPie:handleMessage() : TYPE_ON_SHOW =====>");
         }
-        ThreadManager.getSubThreadHandler().post(new BaseChatPie.18(this));
-        bcef.b(this.app, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "1", "", "", "");
+        ThreadManager.getSubThreadHandler().post(new BaseChatPie.17(this));
+        bdla.b(this.app, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "1", "", "", "");
       }
       return true;
     case 35: 
       if (this.mFunCallTipBar == null) {
-        this.mFunCallTipBar = new ahrd(this.app, this.mTipsMgr, this.mContext, this.sessionInfo.curFriendUin, new BaseChatPie.19(this));
+        this.mFunCallTipBar = new aimc(this.app, this.mTipsMgr, this.mContext, this.sessionInfo.curFriendUin, new BaseChatPie.18(this));
       }
       this.mFunCallTipBar.a(this.sessionInfo.curFriendUin);
       this.mTipsMgr.a(this.mFunCallTipBar, new Object[0]);
       return true;
     case 26: 
-      acvv.c(this.app, this.sessionInfo, true);
+      admh.c(this.app, this.sessionInfo, true);
       return true;
     case 58: 
-      acvv.a(this, this.app, this.sessionInfo, true);
+      admh.a(this, this.app, this.sessionInfo, true);
       return true;
     case 28: 
       this.mTipsMgr.a();
@@ -3298,13 +3280,13 @@ public class BaseChatPie
     switch (paramView.getId())
     {
     default: 
-    case 2131369068: 
-    case 2131369436: 
-    case 2131369874: 
-    case 2131379417: 
-    case 2131369082: 
-    case 2131377934: 
-    case 2131378762: 
+    case 2131369231: 
+    case 2131369605: 
+    case 2131370044: 
+    case 2131379722: 
+    case 2131369245: 
+    case 2131378222: 
+    case 2131379056: 
       do
       {
         return;
@@ -3314,7 +3296,7 @@ public class BaseChatPie
           if (this.sessionInfo.curType == 1008)
           {
             paramView = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-            bcef.b(this.app, "dc00899", "Pb_account_lifeservice", this.sessionInfo.curFriendUin, "0X80064F8", "0X80064F8", 0, 0, paramView, "", "", "");
+            bdla.b(this.app, "dc00899", "Pb_account_lifeservice", this.sessionInfo.curFriendUin, "0X80064F8", "0X80064F8", 0, 0, paramView, "", "", "");
           }
         }
         for (;;)
@@ -3326,7 +3308,7 @@ public class BaseChatPie
             if ((paramView == null) || (!"comic".equals(arrayOfString[0]))) {
               break;
             }
-            bkfq.a(this.app, "3006", "2", "40025", arrayOfString[1], new String[] { "1" });
+            blrb.a(this.app, "3006", "2", "40025", arrayOfString[1], new String[] { "1" });
             return;
           }
           catch (Exception paramView)
@@ -3346,7 +3328,7 @@ public class BaseChatPie
         if (QLog.isDevelopLevel()) {
           QLog.d("reportEvent", 4, " curType : " + this.sessionInfo.curType + ", mEntryFriendCard: " + this.mEntryFriendCard);
         }
-        bcef.b(this.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, ChatActivityUtils.b(this.sessionInfo.curType), "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, ChatActivityUtils.b(this.sessionInfo.curType), "", "", "");
         return;
       } while (this.isJubaoMode);
       onClickTitleLayout(paramView);
@@ -3357,41 +3339,39 @@ public class BaseChatPie
   
   private boolean handleUpdateBubbleCache(Message paramMessage)
   {
-    switch (paramMessage.what)
+    long l;
+    if (paramMessage.what == 16711697)
     {
-    }
-    for (;;)
-    {
-      return false;
-      long l = System.currentTimeMillis();
-      if (l - this.vasLastRefreshReqTime < 1000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.tag, 2, "MSG_BUBBLE_CACHE_UPDATE, frequency limit, abort");
-        }
+      l = System.currentTimeMillis();
+      if (l - this.vasLastRefreshReqTime >= 1000L) {
+        break label46;
       }
-      else
+      if (QLog.isColorLevel()) {
+        QLog.d(this.tag, 2, "MSG_BUBBLE_CACHE_UPDATE, frequency limit, abort");
+      }
+    }
+    label46:
+    boolean bool;
+    do
+    {
+      do
       {
+        return false;
         this.vasLastRefreshReqTime = l;
-        if (this.mScrollState != 0)
-        {
-          this.mBubbleCacheMsgAborted = true;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.tag, 2, "MSG_BUBBLE_CACHE_UPDATE, scrolling, abort");
-          }
+        if (this.mScrollState == 0) {
+          break;
         }
-        else
-        {
-          boolean bool = bgae.a(this.app, this.listView);
-          if (QLog.isColorLevel()) {
-            QLog.d(this.tag, 2, "MSG_BUBBLE_CACHE_UPDATE, needRefresh=" + bool);
-          }
-          if (bool) {
-            refresh(196608);
-          }
-        }
+        this.mBubbleCacheMsgAborted = true;
+      } while (!QLog.isColorLevel());
+      QLog.d(this.tag, 2, "MSG_BUBBLE_CACHE_UPDATE, scrolling, abort");
+      return false;
+      bool = bhiw.a(this.app, this.listView);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.tag, 2, "MSG_BUBBLE_CACHE_UPDATE, needRefresh=" + bool);
       }
-    }
+    } while (!bool);
+    refresh(196608);
+    return false;
   }
   
   private boolean handleWeiyunMsg(Message paramMessage)
@@ -3401,18 +3381,18 @@ public class BaseChatPie
     default: 
       return false;
     case 100: 
-      if (bleg.a(0)) {
-        blfa.a(this.app, getActivity(), getTitleBarHeight());
+      if (bmqx.a(0)) {
+        bmrr.a(this.app, getActivity(), getTitleBarHeight());
       }
       return true;
     }
     int i = paramMessage.arg1;
-    if (bleg.a(i))
+    if (bmqx.a(i))
     {
-      if (!bleg.d(i)) {
+      if (!bmqx.d(i)) {
         break label82;
       }
-      bleg.a(this.app);
+      bmqx.a(this.app);
     }
     for (;;)
     {
@@ -3425,8 +3405,8 @@ public class BaseChatPie
   
   private boolean ifListViewNeedToScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    afsn localafsn = (afsn)getHelper(52);
-    return ((this.root.a() == 1) && (paramInt2 - paramInt1 != paramInt4 - paramInt3)) || ((localafsn != null) && (localafsn.a()));
+    agkb localagkb = (agkb)getHelper(52);
+    return ((this.root.a() == 1) && (paramInt2 - paramInt1 != paramInt4 - paramInt3)) || ((localagkb != null) && (localagkb.a()));
   }
   
   private void initAudioPanelFlag(boolean paramBoolean1, boolean paramBoolean2)
@@ -3478,9 +3458,9 @@ public class BaseChatPie
         bool = true;
       }
       localQQBlurView.setEnableBlur(bool);
-      this.mBottomBlurView.setDisableBlurDrawableRes(2130838139);
-      this.mBottomBlurView.a(new BaseChatPie.7(this));
-      this.mBottomBlurView.setDirtyListener(new BaseChatPie.8(this));
+      this.mBottomBlurView.setDisableBlurDrawableRes(2130838153);
+      this.mBottomBlurView.a(new BaseChatPie.6(this));
+      this.mBottomBlurView.setDirtyListener(new BaseChatPie.7(this));
       this.mBottomBlurView.d();
       return;
     }
@@ -3489,14 +3469,14 @@ public class BaseChatPie
   
   private void initInput()
   {
-    this.mInputBarOnLayoutChangeListener = new BaseChatPie.6(this);
+    this.mInputBarOnLayoutChangeListener = new BaseChatPie.5(this);
     this.mInputBar.addOnLayoutChangeListener(this.mInputBarOnLayoutChangeListener);
     adjustInputInInputLayout();
   }
   
   private void initMsgSignalRunnable()
   {
-    this.msgSignalRunnable = new BaseChatPie.63(this);
+    this.msgSignalRunnable = new BaseChatPie.62(this);
   }
   
   private boolean isApolloForward()
@@ -3510,9 +3490,9 @@ public class BaseChatPie
     int i = 0;
     for (;;)
     {
-      if ((i >= abwz.q.length) || (this.sessionInfo.curType == abwz.q[i]))
+      if ((i >= acnh.q.length) || (this.sessionInfo.curType == acnh.q[i]))
       {
-        if (i < abwz.q.length) {
+        if (i < acnh.q.length) {
           bool = true;
         }
         return bool;
@@ -3535,7 +3515,7 @@ public class BaseChatPie
   {
     if (this.sessionInfo.curType == 1008)
     {
-      this.listView.postDelayed(new BaseChatPie.40(this), 300L);
+      this.listView.postDelayed(new BaseChatPie.39(this), 300L);
       return paramInt;
     }
     this.refreshBottomCount += 1;
@@ -3545,7 +3525,7 @@ public class BaseChatPie
     if (refreshDelayForNextPie)
     {
       if (!blockRefreshJumpBottom()) {
-        this.listView.post(new BaseChatPie.41(this));
+        this.listView.post(new BaseChatPie.40(this));
       }
       refreshDelayForNextPie = false;
       return paramInt;
@@ -3555,7 +3535,7 @@ public class BaseChatPie
       this.listView.setSelectionFromBottom(this.listView.getCount() - 1, 0);
       return paramInt;
     }
-    this.listView.post(new BaseChatPie.42(this));
+    this.listView.post(new BaseChatPie.41(this));
     return paramInt;
   }
   
@@ -3590,7 +3570,7 @@ public class BaseChatPie
     {
       if (i >= 0)
       {
-        this.listView.post(new BaseChatPie.27(this, i));
+        this.listView.post(new BaseChatPie.26(this, i));
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "SearchToAIOLoadTime", true, System.currentTimeMillis() - l, 0L, null, null);
         this.needjumpToMsg = false;
         return;
@@ -3606,7 +3586,7 @@ public class BaseChatPie
       for (localObject = ChatActivityUtils.b(localList, this.sessionInfo, this.app);; localObject = ChatActivityUtils.a(localList, this.sessionInfo, this.app))
       {
         setList(localList, ChatActivityUtils.a(this.app, this.mContext, this.sessionInfo, (MessageRecord)localObject, -1L));
-        this.listView.post(new BaseChatPie.28(this));
+        this.listView.post(new BaseChatPie.27(this));
         break;
       }
       label312:
@@ -3625,7 +3605,7 @@ public class BaseChatPie
       int i = getIndexOfMsg(localList, this.refreshScrollMsg);
       if (i >= 0)
       {
-        this.listView.post(new BaseChatPie.31(this, i));
+        this.listView.post(new BaseChatPie.30(this, i));
         this.refreshScrollMsg = -1L;
       }
     }
@@ -3642,17 +3622,17 @@ public class BaseChatPie
         paramInt4 = -1;
         paramInt3 = paramInt4;
         if (paramInt5 <= 0) {
-          break label455;
+          break label483;
         }
         if (paramInt2 < paramList1.size()) {
-          break label469;
+          break label497;
         }
         paramInt2 = paramList1.size() - 1;
       }
     }
     label177:
-    label455:
-    label469:
+    label483:
+    label497:
     for (;;)
     {
       if (paramInt2 < 0) {}
@@ -3671,20 +3651,20 @@ public class BaseChatPie
         {
           paramInt3 = paramInt2;
           if (paramInt2 >= 0) {
-            break label455;
+            break label483;
           }
           paramInt3 = paramInt2;
           if (paramList1.size() <= i + 1) {
-            break label455;
+            break label483;
           }
           l = ((ChatMessage)paramList1.get(i + 1)).uniseq;
           paramInt4 = 0;
           paramInt3 = paramInt2;
           if (paramInt4 >= paramInt5) {
-            break label455;
+            break label483;
           }
           if (((ChatMessage)paramList2.get(paramInt4)).uniseq != l) {
-            break label272;
+            break label300;
           }
           paramBoolean = true;
         }
@@ -3692,7 +3672,9 @@ public class BaseChatPie
         {
           if (paramInt4 >= 0)
           {
-            paramInt3 = this.mReadedCnt + paramInt4;
+            paramList1 = onJumpTopGetNewTop(paramInt4, paramList2, paramList1, this.mReadedCnt);
+            paramInt4 = ((Integer)paramList1.first).intValue();
+            paramInt3 = ((Integer)paramList1.second).intValue();
             paramInt2 = paramInt3;
             if (paramBoolean) {
               paramInt2 = paramInt3 - 1;
@@ -3766,7 +3748,7 @@ public class BaseChatPie
     if (!this.sessionInfo.curFriendUin.equals(paramString)) {
       return;
     }
-    paramString = abwz.q;
+    paramString = acnh.q;
     int m = paramString.length;
     int i = 0;
     for (;;)
@@ -3784,7 +3766,7 @@ public class BaseChatPie
         if (j == 0) {
           break;
         }
-        this.mActivity.runOnUiThread(new BaseChatPie.70(this));
+        this.mActivity.runOnUiThread(new BaseChatPie.69(this));
         return;
       }
       i += 1;
@@ -3799,10 +3781,10 @@ public class BaseChatPie
       {
         if (!StringUtil.isEmpty(this.sessionInfo.curFriendUin))
         {
-          acvv.a(this.app, this.sessionInfo);
+          admh.a(this.app, this.sessionInfo);
           setReaded();
           if (this.sessionInfo.curType == 1) {
-            awhn.a(this.app, this.sessionInfo.curFriendUin);
+            axnp.a(this.app, this.sessionInfo.curFriendUin);
           }
           QLog.d(this.tag, 1, "setReaded() call");
         }
@@ -3824,7 +3806,7 @@ public class BaseChatPie
   
   private void onGetFriendDateNickInner(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((!paramBoolean) || (this.sessionInfo == null) || (!bftf.a(paramString1, this.sessionInfo.curFriendUin))) {}
+    if ((!paramBoolean) || (this.sessionInfo == null) || (!bhbx.a(paramString1, this.sessionInfo.curFriendUin))) {}
     do
     {
       return;
@@ -3842,7 +3824,7 @@ public class BaseChatPie
         getActivity().setTitle(this.mTitleText.getText());
       }
     } while (!QLog.isDevelopLevel());
-    aquj.a(this.tag, new Object[] { "onGetFriendDateNick", paramString2 });
+    arxx.a(this.tag, new Object[] { "onGetFriendDateNick", paramString2 });
   }
   
   private void onGetFriendNickBatchInner(boolean paramBoolean, Object paramObject)
@@ -3870,25 +3852,25 @@ public class BaseChatPie
         }
         i = 1;
         break;
-        if (awcm.a().jdField_a_of_type_Int != 2) {
+        if (axio.a().jdField_a_of_type_Int != 2) {
           this.mProgressDialog.dismiss();
         }
-        awcm.a().b.clear();
+        axio.a().b.clear();
         if ((paramBoolean) && (paramObject != null)) {
-          awcm.a().b.putAll((Map)paramObject);
+          axio.a().b.putAll((Map)paramObject);
         }
-        if (awcm.a().b.size() == 0) {
-          QQToast.a(this.app.getApp(), 2131697901, 0).b(getTitleBarHeight());
+        if (axio.a().b.size() == 0) {
+          QQToast.a(this.app.getApp(), 2131698184, 0).b(getTitleBarHeight());
         }
         while (QLog.isDevelopLevel())
         {
           QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
           return;
           if (paramObject != null) {
-            if (awcm.a().jdField_a_of_type_Int == 6) {
-              ((afri)this.helperProvider.a(11)).a((Map)paramObject, awcm.a().jdField_a_of_type_JavaUtilArrayList, awcm.a().jdField_a_of_type_Int);
+            if (axio.a().jdField_a_of_type_Int == 6) {
+              ((agit)this.helperProvider.a(11)).a((Map)paramObject, axio.a().jdField_a_of_type_JavaUtilArrayList, axio.a().jdField_a_of_type_Int);
             } else {
-              ((afrl)this.helperProvider.a(1)).a((Map)paramObject, awcm.a().jdField_a_of_type_JavaUtilArrayList, awcm.a().jdField_a_of_type_Int);
+              ((agiw)this.helperProvider.a(1)).a((Map)paramObject, axio.a().jdField_a_of_type_JavaUtilArrayList, axio.a().jdField_a_of_type_Int);
             }
           }
         }
@@ -3901,58 +3883,55 @@ public class BaseChatPie
   private void onGetSigZanInfoInner(Object paramObject)
   {
     if (this.mScrollState != 0) {}
-    while ((agmx.jdField_a_of_type_Long == 0L) || (!(paramObject instanceof bamu))) {
+    while ((ahfn.jdField_a_of_type_Long == 0L) || (!(paramObject instanceof bbtj))) {
       return;
     }
-    ThreadManager.post(new BaseChatPie.68(this, (bamu)paramObject), 5, null, false);
+    ThreadManager.post(new BaseChatPie.67(this, (bbtj)paramObject), 5, null, false);
   }
   
   private void onGetStrangerInfoInner(boolean paramBoolean, Object paramObject)
   {
-    if ((!paramBoolean) || (paramObject == null) || (this.listView == null) || (!(paramObject instanceof Set))) {
+    if ((!paramBoolean) || (this.listView == null) || (!(paramObject instanceof Set))) {
       return;
     }
-    bgae.a(this.app);
+    bhiw.a(this.app);
     Set localSet = (Set)paramObject;
     int k = this.listView.getChildCount();
     int i = 0;
-    label47:
+    label43:
     Object localObject1;
     ChatMessage localChatMessage;
-    label102:
+    label94:
     int j;
     if (i < k)
     {
       paramObject = this.listView.getChildAt(i);
-      if ((paramObject != null) && ((paramObject instanceof BaseChatItemLayout)))
+      if ((paramObject instanceof BaseChatItemLayout))
       {
-        localObject1 = (aezf)AIOUtils.getHolder(paramObject);
+        localObject1 = (afqr)AIOUtils.getHolder(paramObject);
         localChatMessage = AIOUtils.getMessage(paramObject);
         if (!localChatMessage.isSend()) {
-          break label247;
+          break label236;
         }
         paramObject = localChatMessage.selfuin;
-        Object localObject2 = (amsw)this.app.getManager(51);
-        if ((localObject1 != null) && (((aezf)localObject1).a != null) && (paramObject != null) && (localSet.contains(paramObject)))
+        Object localObject2 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((localObject1 != null) && (((afqr)localObject1).a != null) && (paramObject != null) && (localSet.contains(paramObject)))
         {
-          localObject2 = ((amsw)localObject2).a(paramObject);
+          localObject2 = ((anvk)localObject2).a(paramObject);
           if (localObject2 != null)
           {
             Object localObject3 = Long.valueOf(((ExtensionInfo)localObject2).pendantId);
-            if (localObject3 != null)
-            {
-              if (((Long)localObject3).longValue() == 0L) {
-                break label304;
-              }
-              localObject3 = ((AvatarPendantManager)this.app.getManager(46)).a(((Long)localObject3).longValue());
-              localObject1 = ((aezf)localObject1).a;
-              if (i == k) {
-                break label298;
-              }
-              j = 1;
-              label220:
-              ((PendantInfo)localObject3).a((View)localObject1, j, localChatMessage.uniseq, paramObject, ((ExtensionInfo)localObject2).pendantDiyId);
+            if (((Long)localObject3).longValue() == 0L) {
+              break label293;
             }
+            localObject3 = ((AvatarPendantManager)this.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a(((Long)localObject3).longValue());
+            localObject1 = ((afqr)localObject1).a;
+            if (i == k) {
+              break label287;
+            }
+            j = 1;
+            label209:
+            ((PendantInfo)localObject3).a((View)localObject1, j, localChatMessage.uniseq, paramObject, ((ExtensionInfo)localObject2).pendantDiyId);
           }
         }
       }
@@ -3960,24 +3939,24 @@ public class BaseChatPie
     for (;;)
     {
       i += 1;
-      break label47;
+      break label43;
       break;
-      label247:
+      label236:
       if ((localChatMessage.istroop == 1000) || (localChatMessage.istroop == 1020) || (localChatMessage.istroop == 1004))
       {
         paramObject = localChatMessage.frienduin;
-        break label102;
+        break label94;
       }
       paramObject = localChatMessage.senderuin;
-      break label102;
-      label298:
+      break label94;
+      label287:
       j = 2;
-      break label220;
-      label304:
-      if (((aezf)localObject1).a.jdField_a_of_type_ComTencentImageURLImageView != null)
+      break label209;
+      label293:
+      if (((afqr)localObject1).a.jdField_a_of_type_ComTencentImageURLImageView != null)
       {
-        ((aezf)localObject1).a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
-        ((aezf)localObject1).a.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+        ((afqr)localObject1).a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+        ((afqr)localObject1).a.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
       }
     }
   }
@@ -3988,7 +3967,7 @@ public class BaseChatPie
     for (paramObject = (Card)paramObject;; paramObject = null)
     {
       if ((paramBoolean) && (this.sessionInfo.curFriendUin != null) && (paramObject != null) && (this.sessionInfo.curFriendUin.equals(paramObject.uin)) && ((this.sessionInfo.curType == 1001) || (this.sessionInfo.curType == 1003) || (this.sessionInfo.curType == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
-        acvv.f(this.app, this.sessionInfo);
+        admh.f(this.app, this.sessionInfo);
       }
       if ((paramBoolean) && (paramObject != null)) {}
       switch (this.sessionInfo.curType)
@@ -3998,7 +3977,7 @@ public class BaseChatPie
         {
           updateFriendNick();
           if (QLog.isColorLevel()) {
-            QLog.d(this.tag, 2, "onCardDownload nick = " + bftf.a(this.sessionInfo.curFriendNick));
+            QLog.d(this.tag, 2, "onCardDownload nick = " + bhbx.a(this.sessionInfo.curFriendNick));
           }
           this.mTitleText.setText(this.sessionInfo.curFriendNick);
           if (AppSetting.jdField_c_of_type_Boolean)
@@ -4007,8 +3986,8 @@ public class BaseChatPie
             this.mTitleText.setContentDescription(paramObject);
             getActivity().setTitle(this.mTitleText.getText());
           }
-          if ((3000 == this.sessionInfo.curType) && ((this instanceof afim))) {
-            ((afim)this).a(this.sessionInfo.curFriendNick, this.sessionInfo.curFriendUin, this.mTitleText);
+          if ((3000 == this.sessionInfo.curType) && ((this instanceof afzr))) {
+            ((afzr)this).a(this.sessionInfo.curFriendNick, this.sessionInfo.curFriendUin, this.mTitleText);
           }
         }
       case 1034: 
@@ -4095,19 +4074,19 @@ public class BaseChatPie
     }
     if (paramInt2 == 0)
     {
-      alne.a().a(paramLong);
+      amlf.a().a(paramLong);
       return;
     }
-    alne.a().a(paramLong, paramInt2);
-    this.mActivity.runOnUiThread(new BaseChatPie.69(this, paramLong));
+    amlf.a().a(paramLong, paramInt2);
+    this.mActivity.runOnUiThread(new BaseChatPie.68(this, paramLong));
   }
   
   private void onSend()
   {
-    afss localafss = (afss)getHelper(29);
+    agkg localagkg = (agkg)getHelper(29);
     if ((this.input.getText().length() <= 0) && (getPhotoListSelectCount() <= 0))
     {
-      localafss.b(false);
+      localagkg.b(false);
       return;
     }
     long l1 = System.currentTimeMillis();
@@ -4122,7 +4101,7 @@ public class BaseChatPie
         QLog.d(this.tag, 2, " onClick fun_btn end mInputStat = " + this.mInputStat + "text.length" + this.input.getText().length() + "cast time :" + (l2 - l1));
       }
     }
-    localafss.b(true);
+    localagkg.b(true);
   }
   
   private void onSetCommentInner(boolean paramBoolean, String paramString1, String paramString2)
@@ -4146,7 +4125,7 @@ public class BaseChatPie
         }
         this.sessionInfo.curFriendNick = paramString2;
         if (QLog.isColorLevel()) {
-          QLog.d(this.tag, 2, "onSetComment curFriendNick" + bftf.a(this.sessionInfo.curFriendNick));
+          QLog.d(this.tag, 2, "onSetComment curFriendNick" + bhbx.a(this.sessionInfo.curFriendNick));
         }
         this.mTitleText.setText(this.sessionInfo.curFriendNick);
       } while (!AppSetting.jdField_c_of_type_Boolean);
@@ -4162,9 +4141,6 @@ public class BaseChatPie
         paramString2.curFriendNick = paramString1;
         break;
       }
-    case 1: 
-      instantUpdate(false, false);
-      return;
     }
     instantUpdate(false, false);
   }
@@ -4172,7 +4148,7 @@ public class BaseChatPie
   private void onSetGenralSettingsTroopFilterInner(boolean paramBoolean)
   {
     if ((!paramBoolean) && (isActivityResume())) {
-      QQToast.a(this.app.getApp(), 2130839615, this.mContext.getString(2131719243), 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApp(), 2130839636, this.mContext.getString(2131719664), 0).b(getTitleBarHeight());
     }
   }
   
@@ -4183,16 +4159,16 @@ public class BaseChatPie
     {
       try
       {
-        this.emotionLayout = ((EmotionKeywordLayout)View.inflate(this.mContext, 2131558601, null));
-        localObject = (afsu)getHelper(14);
-        boolean bool = ((afsu)localObject).a();
+        this.emotionLayout = ((EmotionKeywordLayout)View.inflate(this.mContext, 2131558613, null));
+        localObject = (agki)getHelper(14);
+        boolean bool = ((agki)localObject).a();
         if (!bool) {
           continue;
         }
-        this.emotionKeywordList = ((afsu)localObject).a(this.input);
-        this.emotionKeywordList.setTouchListener(new BaseChatPie.53(this));
+        this.emotionKeywordList = ((agki)localObject).a(this.input);
+        this.emotionKeywordList.setTouchListener(new BaseChatPie.52(this));
         localObject = new RelativeLayout.LayoutParams(-1, -2);
-        ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368751);
+        ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368910);
         if (!bool) {
           continue;
         }
@@ -4207,9 +4183,9 @@ public class BaseChatPie
         continue;
       }
       this.mContent.addView(this.emotionLayout, (ViewGroup.LayoutParams)localObject);
-      this.emoticonManager = ((avsq)this.app.getManager(14));
+      this.emoticonManager = ((awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER));
       return;
-      this.emotionKeywordList = ((EmotionKeywordHorizonListView)this.emotionLayout.findViewById(2131366017));
+      this.emotionKeywordList = ((EmotionKeywordHorizonListView)this.emotionLayout.findViewById(2131366118));
       this.emotionKeywordAdapter = new EmotionKeywordAdapter(this.mContext, this.app, this.sessionInfo, this.input, this);
       this.emotionKeywordList.setAdapter(this.emotionKeywordAdapter);
     }
@@ -4217,7 +4193,7 @@ public class BaseChatPie
   
   private void onShow_setReaded()
   {
-    if ((avnj.e) && (bfyg.a(BaseApplication.getContext())))
+    if ((awto.e) && (bhgy.a(BaseApplication.getContext())))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQLSActivity", 2, "setReaded return : QQLSActivity is alive");
@@ -4233,14 +4209,14 @@ public class BaseChatPie
   private void onShow_updateUI()
   {
     NativeVideoImage.resumeAll();
-    com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = agjt.jdField_c_of_type_Int;
+    com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = ahcj.jdField_c_of_type_Int;
     AbstractGifImage.resumeAll();
     com.etrump.mixlayout.ETTextView.enableAnimation = true;
     ApngImage.playByTag(0);
     AbstractVideoImage.resumeAll();
-    nrz.a().a();
+    nza.a().a();
     this.mAnimContainer.d();
-    ((AvatarPendantManager)this.app.getManager(46)).b();
+    ((AvatarPendantManager)this.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).b();
     this.listView.setVisibility(0);
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "onShow_updateUI: listView.setVisibility(View.VISIBLE)");
@@ -4264,14 +4240,14 @@ public class BaseChatPie
       this.input.setOnTouchListener(this);
       if ((this.isOpenFromShare) && (this.mIsFirtShowShareMsg))
       {
-        atoe.a(this.mActivity, this.helperProvider);
+        ausz.a(this.mActivity, this.helperProvider);
         this.mIsFirtShowShareMsg = false;
       }
       if ((this.isOpenFromThirdParty) && (this.mIsFirstShowOpenIdMsg))
       {
-        localObject = (atmm)this.helperProvider.a(37);
+        localObject = (aurh)this.helperProvider.a(37);
         if (localObject != null) {
-          ((atmm)localObject).a(this.mActivity.getIntent(), true);
+          ((aurh)localObject).a(this.mActivity.getIntent(), true);
         }
         this.mIsFirstShowOpenIdMsg = false;
       }
@@ -4279,9 +4255,9 @@ public class BaseChatPie
       if (((SharedPreferences)localObject).getBoolean("sdcard_related_download_failed", false))
       {
         if (Environment.getExternalStorageState().equals("mounted")) {
-          break label355;
+          break label356;
         }
-        QQToast.a(BaseApplication.getContext(), 2131694119, 0).b(getTitleBarHeight());
+        QQToast.a(BaseApplication.getContext(), 2131694316, 0).b(getTitleBarHeight());
       }
     }
     for (;;)
@@ -4291,16 +4267,16 @@ public class BaseChatPie
       ((SharedPreferences.Editor)localObject).commit();
       if (!this.uiHandler.hasMessages(64))
       {
-        int i = awgw.a();
+        int i = axmy.a();
         this.uiHandler.sendEmptyMessageDelayed(64, i * 1000);
       }
       EmojiStickerManager.a().a(this);
       return;
       showAudioPanelIfNeed(true, false);
       break;
-      label355:
+      label356:
       if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() < 1) {
-        QQToast.a(BaseApplication.getContext(), 2131717957, 0).b(getTitleBarHeight());
+        QQToast.a(BaseApplication.getContext(), 2131718342, 0).b(getTitleBarHeight());
       }
     }
   }
@@ -4319,7 +4295,7 @@ public class BaseChatPie
         if (this.mEnterExtPanel != 1) {
           break label103;
         }
-        this.root.post(new BaseChatPie.54(this));
+        this.root.post(new BaseChatPie.53(this));
       }
     }
     for (;;)
@@ -4328,7 +4304,7 @@ public class BaseChatPie
       return;
       label103:
       if (this.mEnterExtPanel == 2) {
-        this.root.post(new BaseChatPie.55(this));
+        this.root.post(new BaseChatPie.54(this));
       }
     }
   }
@@ -4336,7 +4312,7 @@ public class BaseChatPie
   private void onUpdateC2ChatStatusInner(HashMap<String, String> paramHashMap)
   {
     if (!paramHashMap.containsKey(this.sessionInfo.curFriendUin)) {}
-    aezf localaezf;
+    afqr localafqr;
     for (;;)
     {
       return;
@@ -4344,27 +4320,35 @@ public class BaseChatPie
       while (i < this.listView.getChildCount())
       {
         paramHashMap = this.listView.getChildAt(i);
-        if ((paramHashMap != null) && ((paramHashMap instanceof BaseChatItemLayout)))
+        if ((paramHashMap instanceof BaseChatItemLayout))
         {
-          localaezf = (aezf)AIOUtils.getHolder(paramHashMap);
+          localafqr = (afqr)AIOUtils.getHolder(paramHashMap);
           paramHashMap = AIOUtils.getMessage(paramHashMap);
-          if ((localaezf != null) && (paramHashMap != null) && (!paramHashMap.isSendFromLocal()) && (paramHashMap.istroop != 1) && (paramHashMap.istroop != 3000))
+          if ((localafqr != null) && (paramHashMap != null) && (!paramHashMap.isSendFromLocal()) && (paramHashMap.istroop != 1) && (paramHashMap.istroop != 3000))
           {
-            if (!arib.a(this.app, this.mContext, this.sessionInfo)) {
-              break label136;
+            if (!asmh.a(this.app, this.mContext, this.sessionInfo)) {
+              break label135;
             }
-            arib.a(this.app, this.mContext, this.sessionInfo, paramHashMap, localaezf);
+            asmh.a(this.app, this.mContext, this.sessionInfo, paramHashMap, localafqr);
           }
         }
         i += 1;
       }
     }
-    label136:
-    if ((paramHashMap.istroop == 1010) || (paramHashMap.istroop == 1001) || (paramHashMap.istroop == 10002) || (paramHashMap.istroop == 10010)) {}
-    for (paramHashMap = FaceDrawable.getStrangerFaceDrawable(this.app, 200, paramHashMap.senderuin, true);; paramHashMap = FaceDrawable.getFaceDrawable(this.app, 1, paramHashMap.senderuin))
+    label135:
+    int j;
+    if ((paramHashMap.istroop == 1010) || (paramHashMap.istroop == 1001) || (paramHashMap.istroop == 10002) || (paramHashMap.istroop == 10010)) {
+      if (axny.a(paramHashMap.senderuin)) {
+        j = 202;
+      }
+    }
+    label189:
+    for (paramHashMap = FaceDrawable.getStrangerFaceDrawable(this.app, j, paramHashMap.senderuin, true);; paramHashMap = FaceDrawable.getFaceDrawable(this.app, 1, paramHashMap.senderuin))
     {
-      localaezf.a.setHeaderIcon(paramHashMap);
+      localafqr.a.setHeaderIcon(paramHashMap);
       break;
+      j = 200;
+      break label189;
     }
   }
   
@@ -4394,15 +4378,14 @@ public class BaseChatPie
       QLog.d(this.tag, 2, "onUpdateFriendInfo wrong uinType");
       return;
     } while ((this.sessionInfo.curType == 1034) || (((this.sessionInfo.curType != 1006) || (!paramString.equals(this.sessionInfo.contactUin))) && (!paramString.equals(this.sessionInfo.curFriendUin))));
-    String str = null;
     if ((this.sessionInfo.curType == 1006) && (paramString.equals(this.sessionInfo.contactUin))) {
-      str = ContactUtils.getFriendDisplayName(this.app, paramString);
+      paramString = ContactUtils.getFriendDisplayName(this.app, paramString);
     }
     for (;;)
     {
-      this.sessionInfo.curFriendNick = str;
+      this.sessionInfo.curFriendNick = paramString;
       if (QLog.isColorLevel()) {
-        QLog.d(this.tag, 2, "onUpdateFriendInfo title" + bftf.a(str));
+        QLog.d(this.tag, 2, "onUpdateFriendInfo title" + bhbx.a(paramString));
       }
       this.mTitleText.setText(this.sessionInfo.curFriendNick);
       if (!AppSetting.jdField_c_of_type_Boolean) {
@@ -4413,9 +4396,9 @@ public class BaseChatPie
       getActivity().setTitle(this.mTitleText.getText());
       return;
       if (this.sessionInfo.curType == 1024) {
-        str = npt.b(this.app, paramString);
-      } else if (paramString.equals(this.sessionInfo.curFriendUin)) {
-        str = ContactUtils.getFriendShowName(this.app, paramString);
+        paramString = nwu.b(this.app, paramString);
+      } else {
+        paramString = ContactUtils.getFriendShowName(this.app, paramString);
       }
     }
   }
@@ -4432,15 +4415,15 @@ public class BaseChatPie
     {
       if (i == 0)
       {
-        getActivity().requestPermissions(new BaseChatPie.85(this), 2, new String[] { "android.permission.RECORD_AUDIO" });
+        getActivity().requestPermissions(new BaseChatPie.84(this), 2, new String[] { "android.permission.RECORD_AUDIO" });
         return;
         i = 0;
       }
       else
       {
-        afgw.a().a(this.mContext);
+        afyb.a().a(this.mContext);
         this.root.a(2);
-        agwt.a(this.app, "0X8005CAC", this.sessionInfo.curType);
+        ahpt.a(this.app, "0X8005CAC", this.sessionInfo.curType);
         return;
         i = 1;
       }
@@ -4469,11 +4452,11 @@ public class BaseChatPie
     {
       label58:
       if (i == 0) {
-        getActivity().requestPermissions(new BaseChatPie.83(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        getActivity().requestPermissions(new BaseChatPie.82(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
       }
       for (;;)
       {
-        agwt.a(this.app, "0X800407A", this.sessionInfo.curType);
+        ahpt.a(this.app, "0X800407A", this.sessionInfo.curType);
         return;
         i = 0;
         break;
@@ -4501,7 +4484,7 @@ public class BaseChatPie
         this.mEmoPanel.preloadWebProcess();
       }
       showEmoticonGuideBubble();
-      agwt.a(this.app, "0X8005CAD", this.sessionInfo.curType);
+      ahpt.a(this.app, "0X8005CAD", this.sessionInfo.curType);
       VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentUin(), "ep_mall", "0X8005795", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
     }
   }
@@ -4517,32 +4500,20 @@ public class BaseChatPie
   {
     Intent localIntent = new Intent(this.mContext, QQBrowserActivity.class);
     localIntent.putExtra("finish_animation_up_down", true);
-    bfcx localbfcx = bfcx.a();
-    Object localObject2 = localbfcx.a("troop_homework_create_notice");
+    bgld localbgld = bgld.a();
+    Object localObject2 = localbgld.a("troop_homework_create_notice");
     Object localObject1 = localObject2;
     if (android.text.TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "https://web.qun.qq.com/mannounce/schooledit.html?_bid=148&_wv=1031&from=<$FROM>&content=<$CONTENT>&gc=<$GC>";
     }
-    localObject2 = new bfcy();
-    ((bfcy)localObject2).jdField_a_of_type_JavaLangString = this.sessionInfo.curFriendUin;
-    ((bfcy)localObject2).c = "aio";
-    ((bfcy)localObject2).i = "";
-    localIntent.putExtra("url", localbfcx.a((String)localObject1, (bfcy)localObject2));
+    localObject2 = new bgle();
+    ((bgle)localObject2).jdField_a_of_type_JavaLangString = this.sessionInfo.curFriendUin;
+    ((bgle)localObject2).c = "aio";
+    ((bgle)localObject2).i = "";
+    localIntent.putExtra("url", localbgld.a((String)localObject1, (bgle)localObject2));
     this.mContext.startActivity(localIntent);
-    this.mActivity.overridePendingTransition(2130772300, 2130771990);
-    bftc.a(this.app, this.sessionInfo.curFriendUin, "Grp_notice", "CreateNotice_Clk", 0, 0, new String[] { this.sessionInfo.curFriendUin, "", "", "" });
-  }
-  
-  private void panelPokeAction(int paramInt)
-  {
-    if (paramInt == 26)
-    {
-      this.panelicons.setShowRed(26, false);
-      agkg.a(this.app, true);
-      paramInt = agkg.b(this.app);
-      acvv.b(this.app, BaseApplicationImpl.getContext(), this.sessionInfo, paramInt, "", "");
-      bcef.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "0X8007F23", "0X8007F23", paramInt, 0, "", "", "", "");
-    }
+    this.mActivity.overridePendingTransition(2130772299, 2130771990);
+    bhbu.a(this.app, this.sessionInfo.curFriendUin, "Grp_notice", "CreateNotice_Clk", 0, 0, new String[] { this.sessionInfo.curFriendUin, "", "", "" });
   }
   
   private void panelPtvAction()
@@ -4552,7 +4523,7 @@ public class BaseChatPie
     {
       if (!bool)
       {
-        getActivity().requestPermissions(new BaseChatPie.84(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+        getActivity().requestPermissions(new BaseChatPie.83(this), 3, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
       doShowPtv(true);
@@ -4564,27 +4535,30 @@ public class BaseChatPie
   {
     if ((this.mActivity instanceof SplashActivity))
     {
-      if (this.mActivity.isFinishing()) {
+      if (this.mActivity.isFinishing()) {}
+      Fragment localFragment;
+      do
+      {
         return true;
-      }
-      Fragment localFragment = ((SplashActivity)this.mActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if ((localFragment != null) && (!localFragment.isVisible())) {
-        return true;
-      }
+        localFragment = ((SplashActivity)this.mActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      } while ((localFragment != null) && (!localFragment.isVisible()));
     }
-    return paramObject == null;
+    if (paramObject == null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   private boolean preFinish(int paramInt)
   {
-    afls.a().a();
+    agcw.a().a();
     if (this.uiHandler.hasMessages(59)) {
       this.uiHandler.removeMessages(59);
     }
     if (this.mApolloViewObserver != null) {
       this.mApolloViewObserver.a(true, paramInt);
     }
-    this.helperProvider.a(11);
+    this.helperProvider.a(12);
     this.isHaveNewAfterIn = false;
     boolean bool1 = restoreMultiSelectModeBeforeFinish(false);
     if ((bool1) && (paramInt == 0)) {
@@ -4705,15 +4679,15 @@ public class BaseChatPie
     } while (paramInt2 == -1);
     this.mScrollerRunnable.a(paramInt1, paramInt2, paramInt2, null, this.uiHandler, 6);
     return;
-    this.mUserActionState = new becx();
-    this.mUserActionState.d = becx.jdField_c_of_type_Int;
-    this.mUserActionState.a = bdyo.a(paramInt1, paramLong1, paramInt2);
+    this.mUserActionState = new bfka();
+    this.mUserActionState.d = bfka.jdField_c_of_type_Int;
+    this.mUserActionState.a = bffr.a(paramInt1, paramLong1, paramInt2);
     this.app.getMessageFacade().getTroopMessageManager().addObserver(this);
   }
   
   private void refreshHeadMessage_other(int paramInt1, long paramLong1, int paramInt2, long paramLong2, Runnable paramRunnable)
   {
-    ThreadManager.post(new BaseChatPie.38(this, paramLong1, paramInt2, paramLong2, paramInt1, paramRunnable), 8, null, true);
+    ThreadManager.post(new BaseChatPie.37(this, paramLong1, paramInt2, paramLong2, paramInt1, paramRunnable), 8, null, true);
   }
   
   private void refreshHeadMessage_replyMsg(int paramInt1, long paramLong1, int paramInt2, int paramInt3, long paramLong2, Runnable paramRunnable)
@@ -4722,12 +4696,12 @@ public class BaseChatPie
     {
       if (paramLong2 - paramLong1 > paramInt2)
       {
-        QQToast.a(this.mActivity, 2131697162, 0).b(this.mActivity.getTitleBarHeight());
+        QQToast.a(this.mActivity, 2131697439, 0).b(this.mActivity.getTitleBarHeight());
         if (QLog.isColorLevel()) {
           QLog.d(this.tag, 2, "refreshHeadMessage: invalidate unread count");
         }
         if (paramInt3 == 1) {
-          agmk.a(this.app, null, "0X800A36B");
+          ahfa.a(this.app, null, "0X800A36B");
         }
       }
       do
@@ -4739,9 +4713,9 @@ public class BaseChatPie
         if (NetworkUtil.isNetworkAvailable(this.mActivity)) {
           break;
         }
-        QQToast.a(this.mActivity, 2131696687, 0).b(this.mActivity.getTitleBarHeight());
+        QQToast.a(this.mActivity, 2131696954, 0).b(this.mActivity.getTitleBarHeight());
       } while (paramInt3 != 1);
-      agmk.a(this.app, null, "0X800A36B");
+      ahfa.a(this.app, null, "0X800A36B");
       return;
       if (this.mTroopTips != null) {
         this.mTroopTips.a(paramLong2, paramLong1, false);
@@ -4759,11 +4733,11 @@ public class BaseChatPie
         break label450;
       }
       paramRunnable = (MessageRecord)localList.get(paramInt2);
-      if ((abwz.a(paramRunnable)) || ((paramRunnable instanceof MessageForSafeGrayTips))) {}
+      if ((acnh.a(paramRunnable)) || ((paramRunnable instanceof MessageForSafeGrayTips))) {}
     }
     for (;;)
     {
-      if ((paramRunnable != null) && (!aucg.a(paramRunnable)))
+      if ((paramRunnable != null) && (!avia.a(paramRunnable)))
       {
         paramInt2 = this.listAdapter.a(paramRunnable.uniseq);
         if (paramInt2 != -1)
@@ -4774,25 +4748,25 @@ public class BaseChatPie
           break label216;
         }
         if (paramRunnable.msgtype == -2006) {
-          QQToast.a(this.mActivity, amtj.a(2131700122), 0).b(this.mActivity.getTitleBarHeight());
+          QQToast.a(this.mActivity, anvx.a(2131700473), 0).b(this.mActivity.getTitleBarHeight());
         }
         if (paramInt3 != 1) {
           break;
         }
-        agmk.a(this.app, null, "0X800A36B");
+        ahfa.a(this.app, null, "0X800A36B");
         return;
       }
-      QQToast.a(this.mActivity, 2131697162, 0).b(this.mActivity.getTitleBarHeight());
+      QQToast.a(this.mActivity, 2131697439, 0).b(this.mActivity.getTitleBarHeight());
       if (paramInt3 != 1) {
         break;
       }
-      agmk.a(this.app, null, "0X800A36B");
+      ahfa.a(this.app, null, "0X800A36B");
       return;
-      QQToast.a(this.mActivity, 2131697163, 0).b(this.mActivity.getTitleBarHeight());
+      QQToast.a(this.mActivity, 2131697440, 0).b(this.mActivity.getTitleBarHeight());
       if (paramInt3 != 1) {
         break;
       }
-      agmk.a(this.app, null, "0X800A36B");
+      ahfa.a(this.app, null, "0X800A36B");
       return;
       label450:
       paramRunnable = null;
@@ -4803,7 +4777,7 @@ public class BaseChatPie
   {
     if (paramLong2 - paramLong1 > 200L)
     {
-      QQToast.a(this.mActivity, 2131719141, 0).b(this.mActivity.getTitleBarHeight());
+      QQToast.a(this.mActivity, 2131719546, 0).b(this.mActivity.getTitleBarHeight());
       if (QLog.isColorLevel()) {
         QLog.d(this.tag, 2, "refreshHeadMessage: invalidate unread count TYPE_TROOP_ESSENCEMSG");
       }
@@ -4813,7 +4787,7 @@ public class BaseChatPie
     {
       if (!NetworkUtil.isNetworkAvailable(this.mActivity))
       {
-        QQToast.a(this.mActivity, 2131696687, 0).b(this.mActivity.getTitleBarHeight());
+        QQToast.a(this.mActivity, 2131696954, 0).b(this.mActivity.getTitleBarHeight());
         return;
       }
       if (this.mTroopTips != null) {
@@ -4828,7 +4802,7 @@ public class BaseChatPie
       this.mScrollerRunnable.a(paramInt, i, i, null, 6);
       return;
     }
-    QQToast.a(this.mActivity, 2131719141, 0).b(this.mActivity.getTitleBarHeight());
+    QQToast.a(this.mActivity, 2131719546, 0).b(this.mActivity.getTitleBarHeight());
   }
   
   private void refreshHeadMessage_unreadMsg(long paramLong1, long paramLong2, Runnable paramRunnable)
@@ -4867,9 +4841,9 @@ public class BaseChatPie
     paramList = getAIOList(this.onShowDone);
     if (this.listView != null)
     {
-      bfzg.a(null, "AIO_BaseChatPie_Remove_Sticker_Cost");
+      bhhy.a(null, "AIO_BaseChatPie_Remove_Sticker_Cost");
       EmojiStickerManager.a().a(this, paramList);
-      bfzg.a("AIO_BaseChatPie_Remove_Sticker_Cost", null);
+      bhhy.a("AIO_BaseChatPie_Remove_Sticker_Cost", null);
     }
     handleMarketFaceMsgRefresh(paramList);
     Object localObject = getMessageRecordSource(paramList);
@@ -4880,14 +4854,14 @@ public class BaseChatPie
     localObject = getMessageSourceSequenceExt(paramList, ChatActivityUtils.a(this.app, this.mContext, this.sessionInfo, (MessageRecord)localObject, this.mPreMrShMsgSeqForCurType));
     if (this.sessionInfo.curType == 1)
     {
-      bfas localbfas = (bfas)this.app.getManager(132);
-      if (localbfas.b(this.sessionInfo.curFriendUin)) {
-        localbfas.a(this.sessionInfo.curFriendUin, paramList);
+      bgiy localbgiy = (bgiy)this.app.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+      if (localbgiy.b(this.sessionInfo.curFriendUin)) {
+        localbgiy.a(this.sessionInfo.curFriendUin, paramList);
       }
     }
     handleRefreshPokeStatus(paramList);
     if (this.isJubaoMode) {
-      paramList = auww.a(paramList);
+      paramList = awcv.a(paramList);
     }
     for (;;)
     {
@@ -4921,7 +4895,7 @@ public class BaseChatPie
         paramInt1 = paramInt5 - (paramInt4 - this.mReadedCnt);
         this.mScrollerRunnable.a(this.listView.getHeaderViewsCount(), -1, null, 7);
         if ((this.mScrollerRunnable.a() == 22) || (this.mScrollerRunnable.a() == 103)) {
-          QQToast.a(this.app.getApp(), 1, this.mContext.getString(2131697257), 3000).b(getTitleBarHeight());
+          QQToast.a(this.app.getApp(), 1, this.mContext.getString(2131697534), 3000).b(getTitleBarHeight());
         }
       }
       while (paramInt6 != 7)
@@ -4965,7 +4939,7 @@ public class BaseChatPie
         jumpToSpecifiedMsgSimply();
         paramInt1 = paramInt3;
         break;
-        QQToast.a(this.app.getApp(), 1, this.mContext.getString(2131697258), 3000).b(getTitleBarHeight());
+        QQToast.a(this.app.getApp(), 1, this.mContext.getString(2131697535), 3000).b(getTitleBarHeight());
         return paramInt1;
       }
       paramInt3 = this.mReadedCnt;
@@ -5008,7 +4982,7 @@ public class BaseChatPie
       if (i < 0) {
         break label169;
       }
-      if ((i != paramInt3 - 1) || (!aucg.a((MessageRecord)paramList2.get(i)))) {
+      if ((i != paramInt3 - 1) || (!avia.a((MessageRecord)paramList2.get(i)))) {
         break label104;
       }
       i = -1;
@@ -5033,7 +5007,7 @@ public class BaseChatPie
           i = paramInt1;
         } while (paramInt3 <= 0);
         i = paramInt1;
-      } while (aucg.a((MessageRecord)paramList2.get(paramInt3 - 1)));
+      } while (avia.a((MessageRecord)paramList2.get(paramInt3 - 1)));
       return paramInt3;
       label169:
       i = -1;
@@ -5063,7 +5037,7 @@ public class BaseChatPie
   
   private void reportCancelPttEvent(int paramInt)
   {
-    bfxf.a(this.app, paramInt);
+    bhfx.a(this.app, paramInt);
   }
   
   private void reportClassicAndSmallEmoticon(String paramString, boolean paramBoolean, EmoticonMainPanel paramEmoticonMainPanel, QQAppInterface paramQQAppInterface)
@@ -5075,7 +5049,7 @@ public class BaseChatPie
   {
     Bundle localBundle = this.mActivity.getIntent().getExtras();
     if ((localBundle != null) && (localBundle.getBoolean("key_notification_click_action", false))) {
-      bcef.b(this.app, "CliOper", "", "", "0X80046A7", "0X80046A7", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X80046A7", "0X80046A7", 0, 0, "", "", "", "");
     }
   }
   
@@ -5116,14 +5090,14 @@ public class BaseChatPie
     else {
       return bool;
     }
-    awcm.a().jdField_a_of_type_Int = 0;
+    axio.a().jdField_a_of_type_Int = 0;
     return paramBoolean;
   }
   
-  private void saveC2CChatInputType(amsw paramamsw, int paramInt1, int paramInt2)
+  private void saveC2CChatInputType(anvk paramanvk, int paramInt1, int paramInt2)
   {
-    ExtensionInfo localExtensionInfo = paramamsw.a(this.sessionInfo.curFriendUin, false);
-    paramamsw = localExtensionInfo;
+    ExtensionInfo localExtensionInfo = paramanvk.a(this.sessionInfo.curFriendUin, false);
+    paramanvk = localExtensionInfo;
     if (localExtensionInfo == null)
     {
       if (this.mExtensionInfo != null)
@@ -5131,20 +5105,20 @@ public class BaseChatPie
         if (QLog.isColorLevel()) {
           QLog.d(this.tag, 2, "saveC2CChatInputType | mExtensionInfo != null");
         }
-        paramamsw = this.mExtensionInfo;
+        paramanvk = this.mExtensionInfo;
       }
     }
     else
     {
-      if (paramamsw.chatInputType != paramInt1)
+      if (paramanvk.chatInputType != paramInt1)
       {
-        paramamsw.chatInputType = paramInt1;
-        paramamsw.isDataChanged = true;
+        paramanvk.chatInputType = paramInt1;
+        paramanvk.isDataChanged = true;
       }
-      if (paramamsw.showC2CPanel != paramInt2)
+      if (paramanvk.showC2CPanel != paramInt2)
       {
-        paramamsw.showC2CPanel = paramInt2;
-        paramamsw.isDataChanged = true;
+        paramanvk.showC2CPanel = paramInt2;
+        paramanvk.isDataChanged = true;
       }
       this.mExtensionInfo = null;
     }
@@ -5153,19 +5127,19 @@ public class BaseChatPie
   private void saveChatInputType()
   {
     long l = System.currentTimeMillis();
-    amsw localamsw;
+    anvk localanvk;
     int i;
     if ((this.sessionInfo != null) && (!this.isSimpleBar))
     {
-      localamsw = (amsw)this.app.getManager(51);
+      localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((this.root.a() != 2) || (this.root.a() == null) || (this.root.a().getVisibility() != 0)) {
-        break label138;
+        break label139;
       }
       i = 1;
       if ((this.sessionInfo.curType != 3000) && (this.sessionInfo.curType != 1)) {
-        break label143;
+        break label144;
       }
-      saveNoC2CChatInputType(localamsw, 0, i);
+      saveNoC2CChatInputType(localanvk, 0, i);
     }
     for (;;)
     {
@@ -5173,12 +5147,12 @@ public class BaseChatPie
         QLog.d("save_inptut", 2, "saveChatInputType cost :" + (System.currentTimeMillis() - l));
       }
       return;
-      label138:
+      label139:
       i = 0;
       break;
-      label143:
+      label144:
       if (isC2CSession()) {
-        saveC2CChatInputType(localamsw, 0, i);
+        saveC2CChatInputType(localanvk, 0, i);
       }
     }
   }
@@ -5194,9 +5168,9 @@ public class BaseChatPie
     saveChatInputType();
   }
   
-  private void saveNoC2CChatInputType(amsw paramamsw, int paramInt1, int paramInt2)
+  private void saveNoC2CChatInputType(anvk paramanvk, int paramInt1, int paramInt2)
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo2 = paramamsw.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
+    NoC2CExtensionInfo localNoC2CExtensionInfo2 = paramanvk.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
     NoC2CExtensionInfo localNoC2CExtensionInfo1 = localNoC2CExtensionInfo2;
     if (localNoC2CExtensionInfo2 == null)
     {
@@ -5220,27 +5194,27 @@ public class BaseChatPie
         localNoC2CExtensionInfo1.showC2CPanel = paramInt2;
         localNoC2CExtensionInfo1.isDataChanged = true;
       }
-      paramamsw.a(localNoC2CExtensionInfo1, false);
+      paramanvk.a(localNoC2CExtensionInfo1, false);
       this.mNoC2CExtensionInfo = null;
     }
   }
   
-  private void sendMessageInner(String paramString, acwc paramacwc, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
+  private void sendMessageInner(String paramString, admo paramadmo, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
   {
     if (this.receiptMode)
     {
-      azuu.a().a(this.app, this.sessionInfo, paramString, paramArrayList, paramacwc);
+      bbbc.a().a(this.app, this.sessionInfo, paramString, paramArrayList, paramadmo);
       switchReceiptMode();
       return;
     }
-    acvv.a(this.app, this.mContext, this.sessionInfo, paramString, paramArrayList, paramacwc);
+    admh.a(this.app, this.mContext, this.sessionInfo, paramString, paramArrayList, paramadmo);
   }
   
-  private void setC2CLastAudioPanelType(amsw paramamsw)
+  private void setC2CLastAudioPanelType(anvk paramanvk)
   {
-    ExtensionInfo localExtensionInfo = paramamsw.a(this.sessionInfo.curFriendUin, false);
-    if ((localExtensionInfo == null) && (!paramamsw.d())) {
-      ThreadManager.getSubThreadHandler().post(new BaseChatPie.78(this, paramamsw));
+    ExtensionInfo localExtensionInfo = paramanvk.a(this.sessionInfo.curFriendUin, false);
+    if ((localExtensionInfo == null) && (!paramanvk.d())) {
+      ThreadManager.getSubThreadHandler().post(new BaseChatPie.77(this, paramanvk));
     }
     if ((localExtensionInfo != null) && (localExtensionInfo.audioPanelType != -1)) {
       this.mAudioPanel.setCurrentPannel(localExtensionInfo.audioPanelType, false);
@@ -5263,11 +5237,11 @@ public class BaseChatPie
     }
   }
   
-  private void setNoC2CLastAudioPanelType(amsw paramamsw)
+  private void setNoC2CLastAudioPanelType(anvk paramanvk)
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo = paramamsw.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
-    if ((localNoC2CExtensionInfo == null) && (!paramamsw.d())) {
-      ThreadManager.getSubThreadHandler().post(new BaseChatPie.79(this, paramamsw));
+    NoC2CExtensionInfo localNoC2CExtensionInfo = paramanvk.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
+    if ((localNoC2CExtensionInfo == null) && (!paramanvk.d())) {
+      ThreadManager.getSubThreadHandler().post(new BaseChatPie.78(this, paramanvk));
     }
     if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.audioPanelType != -1)) {
       this.mAudioPanel.setCurrentPannel(localNoC2CExtensionInfo.audioPanelType, false);
@@ -5278,7 +5252,7 @@ public class BaseChatPie
   {
     ChatActivityUtils.a(this.app, this.mActivity, this.sessionInfo.curType, paramString, this.sessionInfo.phoneNum, false);
     if (this.sessionInfo.curType == 1010) {
-      bcef.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "0X8004953", "0X8004953", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", this.sessionInfo.curFriendUin, "0X8004953", "0X8004953", 0, 0, "", "", "", "");
     }
   }
   
@@ -5287,27 +5261,27 @@ public class BaseChatPie
     return (this.sessionInfo.curType != 1008) && (!this.isFromSeachResult);
   }
   
-  private void showAudioPanelIfNeedForC2C(amsw paramamsw, boolean paramBoolean1, boolean paramBoolean2)
+  private void showAudioPanelIfNeedForC2C(anvk paramanvk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ExtensionInfo localExtensionInfo = paramamsw.a(this.sessionInfo.curFriendUin, false);
-    paramamsw = localExtensionInfo;
+    ExtensionInfo localExtensionInfo = paramanvk.a(this.sessionInfo.curFriendUin, false);
+    paramanvk = localExtensionInfo;
     if (localExtensionInfo == null)
     {
       if (this.mExtensionInfo != null) {
-        paramamsw = this.mExtensionInfo;
+        paramanvk = this.mExtensionInfo;
       }
     }
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.tag, 2, "showAudioPanelIfNeedForC2C extInfo.chatInputType = " + paramamsw.chatInputType + " extInfo.showC2CPanel = " + paramamsw.showC2CPanel);
+        QLog.d(this.tag, 2, "showAudioPanelIfNeedForC2C extInfo.chatInputType = " + paramanvk.chatInputType + " extInfo.showC2CPanel = " + paramanvk.showC2CPanel);
       }
-      if (paramamsw.chatInputType == 2) {
+      if (paramanvk.chatInputType == 2) {
         break label111;
       }
     }
     label111:
-    while (paramamsw.showC2CPanel != 1)
+    while (paramanvk.showC2CPanel != 1)
     {
       do
       {
@@ -5319,27 +5293,27 @@ public class BaseChatPie
     initAudioPanelFlag(paramBoolean1, paramBoolean2);
   }
   
-  private void showAudioPanelIfNeedForNoC2C(amsw paramamsw, boolean paramBoolean1, boolean paramBoolean2)
+  private void showAudioPanelIfNeedForNoC2C(anvk paramanvk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo = paramamsw.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
-    paramamsw = localNoC2CExtensionInfo;
+    NoC2CExtensionInfo localNoC2CExtensionInfo = paramanvk.a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
+    paramanvk = localNoC2CExtensionInfo;
     if (localNoC2CExtensionInfo == null)
     {
       if (this.mNoC2CExtensionInfo != null) {
-        paramamsw = this.mNoC2CExtensionInfo;
+        paramanvk = this.mNoC2CExtensionInfo;
       }
     }
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.tag, 2, "showAudioPanelIfNeedForNoC2C noC2CExtInfo.chatInputType = " + paramamsw.chatInputType + " noC2CExtInfo.showC2CPanel = " + paramamsw.showC2CPanel);
+        QLog.d(this.tag, 2, "showAudioPanelIfNeedForNoC2C noC2CExtInfo.chatInputType = " + paramanvk.chatInputType + " noC2CExtInfo.showC2CPanel = " + paramanvk.showC2CPanel);
       }
-      if (paramamsw.chatInputType == 2) {
+      if (paramanvk.chatInputType == 2) {
         break label118;
       }
     }
     label118:
-    while (paramamsw.showC2CPanel != 1)
+    while (paramanvk.showC2CPanel != 1)
     {
       do
       {
@@ -5353,7 +5327,7 @@ public class BaseChatPie
   
   private void showEmoticonGuideBubble()
   {
-    ((afoi)this.helperProvider.a(54)).a();
+    ((agfm)this.helperProvider.a(54)).a();
   }
   
   private void showInputPanelIfNeeded()
@@ -5388,7 +5362,7 @@ public class BaseChatPie
     return;
     showInputPanel();
     this.uiHandler.removeCallbacks(this.mRetryShowInputPanelTask);
-    this.mRetryShowInputPanelTask = new BaseChatPie.24(this, (Intent)localObject);
+    this.mRetryShowInputPanelTask = new BaseChatPie.23(this, (Intent)localObject);
     this.uiHandler.postDelayed(this.mRetryShowInputPanelTask, 100L);
   }
   
@@ -5411,7 +5385,7 @@ public class BaseChatPie
       panelAudioAction();
       return;
     case 9: 
-      agwt.a(this.app, this.mActivity);
+      ahpt.a(this.app, this.mActivity);
       return;
     case 6: 
       panelPtvAction();
@@ -5421,10 +5395,7 @@ public class BaseChatPie
       return;
     case 14: 
       this.root.a(14);
-      agwt.a(this.app, "0X8005977", this.sessionInfo.curType);
-      return;
-    case 26: 
-      panelPokeAction(paramInt);
+      ahpt.a(this.app, "0X8005977", this.sessionInfo.curType);
       return;
     case 22: 
       this.root.a(22);
@@ -5434,7 +5405,7 @@ public class BaseChatPie
       return;
     }
     PublishHomeWorkFragment.a(this.app, this.mActivity, this.sessionInfo.curFriendUin);
-    bftc.a(this.app, this.sessionInfo.curFriendUin, "homework", "AioAssign_Clk", 0, 0, new String[] { this.sessionInfo.curFriendUin, "", "", bftc.a(this.app, this.sessionInfo.curFriendUin) });
+    bhbu.a(this.app, this.sessionInfo.curFriendUin, "homework", "AioAssign_Clk", 0, 0, new String[] { this.sessionInfo.curFriendUin, "", "", bhbu.a(this.app, this.sessionInfo.curFriendUin) });
   }
   
   private void showPlusPanelIfNeeded()
@@ -5466,14 +5437,14 @@ public class BaseChatPie
     QLog.d(this.tag, 2, "showPlusPanelIfNeeded() isReadyToShow false");
     return;
     this.root.a(8);
-    this.uiHandler.postDelayed(new BaseChatPie.25(this, (Intent)localObject), 100L);
+    this.uiHandler.postDelayed(new BaseChatPie.24(this, (Intent)localObject), 100L);
   }
   
   public static void showPttToast(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i = bfxd.b(paramBoolean1, paramBoolean2, paramBoolean3);
+    int i = bhfv.b(paramBoolean1, paramBoolean2, paramBoolean3);
     if (i > 0) {
-      QQToast.a(paramContext, i, 0).b(paramContext.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(paramContext, i, 0).b(paramContext.getResources().getDimensionPixelSize(2131299080));
     }
   }
   
@@ -5540,14 +5511,14 @@ public class BaseChatPie
   
   private void showUnbindFriendActionSheet()
   {
-    bjnw localbjnw = (bjnw)bjon.a(getActivity(), null);
-    localbjnw.a(this.app.getApplication().getResources().getString(2131718525));
-    localbjnw.a(2131718523, 3);
-    localbjnw.b(2131718522);
-    localbjnw.c(2131690620);
-    localbjnw.a(new BaseChatPie.11(this, localbjnw));
-    localbjnw.show();
-    bcef.b(null, "dc00898", "", "", "0X800ACA2", "0X800ACA2", 0, 0, "", "0", "0", "");
+    bkzi localbkzi = (bkzi)bkzz.a(getActivity(), null);
+    localbkzi.a(this.app.getApplication().getResources().getString(2131718911));
+    localbkzi.a(2131718909, 3);
+    localbkzi.b(2131718908);
+    localbkzi.c(2131690697);
+    localbkzi.a(new BaseChatPie.10(this, localbkzi));
+    localbkzi.show();
+    bdla.b(null, "dc00898", "", "", "0X800ACA2", "0X800ACA2", 0, 0, "", "0", "0", "");
   }
   
   private void udpateAIOBackgrourd(Message paramMessage)
@@ -5573,7 +5544,7 @@ public class BaseChatPie
     }
     if ((this.sessionInfo.isQimUserOnline) && (this.sessionInfo.isQimUserTitleForm) && (!this.sessionInfo.isNightMode))
     {
-      this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+      this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
       this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
     }
     for (;;)
@@ -5583,29 +5554,29 @@ public class BaseChatPie
       break;
       if ((this.sessionInfo.isTimUserOnline) && (this.sessionInfo.isTimUserTitleForm) && (!this.sessionInfo.isNightMode))
       {
-        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
       }
       else if ((this.sessionInfo.curType == 1033) || (this.sessionInfo.curType == 1034))
       {
-        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
       }
       else if (this.sessionInfo.curType == 10007)
       {
         if (!ThemeUtil.isNowThemeIsNight(this.app, false, null))
         {
-          this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+          this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
           this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
         }
       }
       else
       {
         this.afRoot.setBackgroundDrawable((Drawable)paramMessage.obj);
-        if (bdav.a().c()) {
-          bdav.a().b(this.afRoot.getContext(), this.afRoot);
+        if (behu.a().k_()) {
+          behu.a().b(this.afRoot.getContext(), this.afRoot);
         }
-        ((afrz)this.helperProvider.a(17)).a(this.mContext, this.app, this.sessionInfo);
+        ((agjk)this.helperProvider.a(17)).a(this.mContext, this.app, this.sessionInfo);
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.delmsg", 1, "MSG_SHOW_AIO_BACKGROUND sessionInfo:  isQimUserOnline = " + this.sessionInfo.isQimUserOnline + "  isQimUserTitleForm = " + this.sessionInfo.isQimUserTitleForm + "  isTimUserOnline = " + this.sessionInfo.isTimUserOnline + " isTimUserTitleForm = " + this.sessionInfo.isTimUserTitleForm + "  isNightMode = " + this.sessionInfo.isNightMode + "  curType = " + this.sessionInfo.curType);
         }
@@ -5640,13 +5611,13 @@ public class BaseChatPie
   {
     if (paramString != null)
     {
-      if ((this.afRoot == null) || (this.sessionInfo == null) || (this.sessionInfo.chatBg == null) || ((this.sessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (!aezp.a(this.mContext, this.app.getCurrentAccountUin(), this.sessionInfo.curFriendUin, true, 7, this.sessionInfo.chatBg)))) {
+      if ((this.afRoot == null) || (this.sessionInfo == null) || (this.sessionInfo.chatBg == null) || ((this.sessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (!afrb.a(this.mContext, this.app.getCurrentAccountUin(), this.sessionInfo.curFriendUin, true, 7, this.sessionInfo.chatBg)))) {
         break label330;
       }
       if ((!this.sessionInfo.isQimUserOnline) || (!this.sessionInfo.isQimUserTitleForm) || (this.sessionInfo.isNightMode)) {
         break label184;
       }
-      this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+      this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
       this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
     }
     for (;;)
@@ -5656,12 +5627,12 @@ public class BaseChatPie
       label184:
       if ((this.sessionInfo.isTimUserOnline) && (this.sessionInfo.isTimUserTitleForm) && (!this.sessionInfo.isNightMode))
       {
-        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
       }
       else if ((this.sessionInfo.curType == 1033) || (this.sessionInfo.curType == 1034))
       {
-        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
       }
       else
@@ -5678,15 +5649,15 @@ public class BaseChatPie
     if (((paramInt1 == 21) || (paramInt2 == 21)) && (this.mApolloPanel != null)) {
       this.mApolloPanel.a(paramInt1, paramInt2, this.mApolloPanel);
     }
-    amal localamal;
-    if ((ambc.b(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin)) && (!ambc.a(this.app)))
+    anbt localanbt;
+    if ((anck.b(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin)) && (!anck.a(this.app)))
     {
-      localamal = ambc.a(this.app);
+      localanbt = anck.a(this.app);
       if (paramInt1 != 21) {
         break label170;
       }
-      if (localamal != null) {
-        localamal.a(1);
+      if (localanbt != null) {
+        localanbt.a(1);
       }
     }
     for (;;)
@@ -5710,8 +5681,8 @@ public class BaseChatPie
       }
       return;
       label170:
-      if ((paramInt2 == 21) && (localamal != null)) {
-        localamal.a(2);
+      if ((paramInt2 == 21) && (localanbt != null)) {
+        localanbt.a(2);
       }
     }
   }
@@ -5771,8 +5742,8 @@ public class BaseChatPie
       if (QLog.isColorLevel()) {
         QLog.i("forward", 2, "updateSession_forwardType from forward");
       }
-      if ((paramIntent.getIntExtra("uintype", -1) == 1) && (((bfbz)this.app.getManager(48)).a(paramIntent.getStringExtra("uin"), true).jdField_a_of_type_Boolean)) {
-        QQToast.a(this.app.getApp(), 2131696866, 0).b(getTitleBarHeight());
+      if ((paramIntent.getIntExtra("uintype", -1) == 1) && (((bgkf)this.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramIntent.getStringExtra("uin"), true).jdField_a_of_type_Boolean)) {
+        QQToast.a(this.app.getApp(), 2131697134, 0).b(getTitleBarHeight());
       }
     }
     else
@@ -5789,7 +5760,7 @@ public class BaseChatPie
       if (QLog.isDevelopLevel()) {
         QLog.i(this.tag, 1, "updateSession_forwardType, postDelayed!");
       }
-      this.uiHandler.postDelayed(new BaseChatPie.12(this, paramBoolean, paramIntent, paramIntent), 500L);
+      this.uiHandler.postDelayed(new BaseChatPie.11(this, paramBoolean, paramIntent), 500L);
       setLeftCheckBoxVisible(false, null, false);
       return;
       if ((i == 1001) || (i == -4)) {
@@ -5800,14 +5771,15 @@ public class BaseChatPie
   
   private void updateSession_initIntentData(Intent paramIntent)
   {
+    boolean bool2 = true;
     this.sessionInfo.curFriendUin = paramIntent.getStringExtra("uin");
     this.sessionInfo.curType = paramIntent.getIntExtra("uintype", -1);
     this.sessionInfo.isQimUserOnline = false;
     this.sessionInfo.isTimUserOnline = false;
     if (this.sessionInfo.curType == 0)
     {
-      ahcd.a().a(this.app, this.sessionInfo);
-      ahov.a().a(this.app, this.sessionInfo);
+      ahwv.a().a(this.app, this.sessionInfo);
+      aijq.a().a(this.app, this.sessionInfo);
     }
     if (this.sessionInfo.curType == 1026)
     {
@@ -5819,7 +5791,7 @@ public class BaseChatPie
     this.sessionInfo.phoneNum = paramIntent.getStringExtra("phonenum");
     this.sessionInfo.entrance = paramIntent.getIntExtra("entrance", 0);
     this.refreshMessageContext = new QQMessageFacade.RefreshMessageContext();
-    this.refreshMessageContext.context = new aezq(this.sessionInfo.curFriendUin);
+    this.refreshMessageContext.context = new afrc(this.sessionInfo.curFriendUin);
     this.sessionInfo.troopUin = paramIntent.getStringExtra("troop_uin");
     this.sessionInfo.contactUin = null;
     this.sessionInfo.realTroopUin = null;
@@ -5845,34 +5817,34 @@ public class BaseChatPie
       }
       this.isOpenFromThirdParty = paramIntent.getBooleanExtra("thridparty_pull_aio", false);
       this.isFromManageStranger = paramIntent.getBooleanExtra("is_from_manage_stranger", false);
-      boolean bool2 = paramIntent.getBooleanExtra("need_jump_to_msg", false);
+      boolean bool3 = paramIntent.getBooleanExtra("need_jump_to_msg", false);
       if (paramIntent.getIntExtra("aio_msg_source", 999) != 1) {
-        break label510;
+        break label514;
       }
       bool1 = true;
-      label439:
+      label442:
       this.isFromSeachResult = bool1;
-      if ((this.isFromSeachResult) || (bool2))
+      if ((this.isFromSeachResult) || (bool3))
       {
         this.timeOrSeq = paramIntent.getLongExtra("searched_timeorseq", -1L);
         if (this.timeOrSeq <= -1L) {
-          break label515;
+          break label519;
         }
       }
     }
-    label515:
-    for (boolean bool1 = true;; bool1 = false)
+    label514:
+    label519:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
       this.loadSearchedMessage = bool1;
       AIOUtils.isUserOperatedInAIO = false;
       this.sendCloseSearchBroadCast = false;
-      this.helperProvider.a(1);
+      this.helperProvider.a(2);
       return;
       bool1 = false;
       break;
-      label510:
       bool1 = false;
-      break label439;
+      break label442;
     }
   }
   
@@ -5886,9 +5858,9 @@ public class BaseChatPie
       QLog.d("forward", 2, "updateSession_otherThings appShareId=" + l);
     }
     if (l > 0L) {
-      this.uiHandler.postDelayed(new BaseChatPie.13(this, paramIntent), 20L);
+      this.uiHandler.postDelayed(new BaseChatPie.12(this, paramIntent), 20L);
     }
-    this.helperProvider.a(3);
+    this.helperProvider.a(4);
     if (paramIntent.getIntExtra("entrance", 0) == 9)
     {
       this.isJubaoMode = true;
@@ -5901,7 +5873,7 @@ public class BaseChatPie
   private void updateSession_updateInput(Intent paramIntent)
   {
     setInputStat(0);
-    ((afqj)this.helperProvider.a(24)).b();
+    ((aght)this.helperProvider.a(24)).b();
     this.sessionInfo.textSizeForTextItem = ChatTextSizeSettingActivity.a(this.mContext);
     this.input.setTextSize(0, this.sessionInfo.textSizeForTextItem);
     String str = paramIntent.getStringExtra("input_text");
@@ -5909,7 +5881,7 @@ public class BaseChatPie
     if (str != null) {
       this.input.setText(str);
     }
-    while (baqh.a(this, this.mActivity.getIntent())) {
+    while (bbww.a(this, this.mActivity.getIntent())) {
       return;
     }
     loadTextDraft();
@@ -5917,7 +5889,7 @@ public class BaseChatPie
   
   private void updateShiledStatusAsync(boolean paramBoolean, String paramString)
   {
-    ThreadManager.post(new BaseChatPie.10(this, paramString, paramBoolean), 8, null, true);
+    ThreadManager.post(new BaseChatPie.9(this, paramString, paramBoolean), 8, null, true);
   }
   
   private void updateTipsBar()
@@ -5965,13 +5937,13 @@ public class BaseChatPie
             n = this.listView.getHeaderViewsCount();
           } while ((i < j - k) || (i > m - n));
           paramMessage = this.listView.getChildAt(i - this.listView.getFirstVisiblePosition());
-        } while ((paramMessage == null) || (!(paramMessage instanceof LinearLayout)));
-        localObject = (bamu)((Map)localObject).get("sigZanInfo");
-      } while (!(AIOUtils.getHolder(paramMessage) instanceof agmy));
-      paramMessage = (agmy)AIOUtils.getHolder(paramMessage);
-    } while ((((bamu)localObject).jdField_a_of_type_JavaLangString == null) || (!((bamu)localObject).jdField_a_of_type_JavaLangString.equals(paramMessage.a.b)));
-    paramMessage.a.d = ((bamu)localObject).b;
-    paramMessage.a.f = ((bamu)localObject).jdField_c_of_type_Int;
+        } while (!(paramMessage instanceof LinearLayout));
+        localObject = (bbtj)((Map)localObject).get("sigZanInfo");
+      } while (!(AIOUtils.getHolder(paramMessage) instanceof ahfo));
+      paramMessage = (ahfo)AIOUtils.getHolder(paramMessage);
+    } while ((((bbtj)localObject).jdField_a_of_type_JavaLangString == null) || (!((bbtj)localObject).jdField_a_of_type_JavaLangString.equals(paramMessage.a.b)));
+    paramMessage.a.d = ((bbtj)localObject).b;
+    paramMessage.a.f = ((bbtj)localObject).jdField_c_of_type_Int;
     paramMessage.a.j();
   }
   
@@ -5988,18 +5960,17 @@ public class BaseChatPie
     this.app.addObserver(this.configObserver);
     this.app.setCheckPttListener(this);
     this.app.setCheckPtvListener(this);
-    this.app.getFileManagerNotifyCenter().addObserver(this.fmob);
     this.app.getMessageFacade().addObserver(this);
     this.app.getAVNotifyCenter().addObserver(this.mGAudioObserver);
     this.app.addObserver(this.emoticonObserver);
     this.app.addObserver(this.cmShowActionObserver);
     this.app.addObserver(this.mApolloViewObserver);
     this.app.addObserver(this.mShortVideoObserver);
-    this.mHiBoomAuthObserver = new aues(getActivity());
+    this.mHiBoomAuthObserver = new avkm(getActivity());
     this.app.addObserver(this.mHiBoomAuthObserver);
-    this.mHiBoomForwardAuthObserver = new auet(getActivity());
+    this.mHiBoomForwardAuthObserver = new avkn(getActivity());
     this.app.addObserver(this.mHiBoomForwardAuthObserver);
-    this.mFontBubbleObserver = new audx(this);
+    this.mFontBubbleObserver = new avjr(this);
     this.app.addObserver(this.mFontBubbleObserver);
   }
   
@@ -6024,7 +5995,7 @@ public class BaseChatPie
       if (this.expandStickerView == null)
       {
         this.expandStickerView = new View(this.mContext);
-        this.expandStickerView.setId(2131374021);
+        this.expandStickerView.setId(2131374250);
         localObject = new AbsListView.LayoutParams(-1, 80);
         this.expandStickerView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
@@ -6042,13 +6013,13 @@ public class BaseChatPie
   public void adjustInputLayout(int paramInt)
   {
     paramInt = Math.max(paramInt, 0);
-    Object localObject = (LinearLayout)this.mAIORootView.findViewById(2131367353);
+    Object localObject = (LinearLayout)this.mAIORootView.findViewById(2131367477);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
     if (paramInt != localLayoutParams.bottomMargin)
     {
       localLayoutParams.bottomMargin = paramInt;
       ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
-      ((afss)getHelper(29)).d();
+      ((agkg)getHelper(29)).d();
     }
     if (this.mIconLayoutInInputRight != null)
     {
@@ -6069,12 +6040,12 @@ public class BaseChatPie
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (((afqj)this.helperProvider.a(24)).a(paramEditable)) {
+    if (((aght)this.helperProvider.a(24)).a(paramEditable)) {
       return;
     }
-    afsd localafsd = (afsd)getHelper(27);
-    if (localafsd != null) {
-      localafsd.a(paramEditable);
+    agjr localagjr = (agjr)getHelper(27);
+    if (localagjr != null) {
+      localagjr.a(paramEditable);
     }
     handleTextChangedReal(paramEditable);
   }
@@ -6086,7 +6057,7 @@ public class BaseChatPie
     if ((str != null) && (str.equals("nearby_qzone_to_aio")))
     {
       str = localIntent.getStringExtra("uin");
-      localIntent.putExtra("key_has_talk", amuu.a(this.app, str));
+      localIntent.putExtra("key_has_talk", anxi.a(this.app, str));
       this.mActivity.setResult(-1, localIntent);
     }
   }
@@ -6095,18 +6066,18 @@ public class BaseChatPie
   {
     if (paramInt3 == 0)
     {
-      bevq[] arrayOfbevq = (bevq[])this.input.getEditableText().getSpans(paramInt1, paramInt1 + paramInt2, bevq.class);
-      if ((arrayOfbevq != null) && (arrayOfbevq.length > 0)) {
-        bcef.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 0, "", "", "", "");
+      bgcz[] arrayOfbgcz = (bgcz[])this.input.getEditableText().getSpans(paramInt1, paramInt1 + paramInt2, bgcz.class);
+      if ((arrayOfbgcz != null) && (arrayOfbgcz.length > 0)) {
+        bdla.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 0, "", "", "", "");
       }
     }
-    ((afst)getHelper(41)).a(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    ((afqj)this.helperProvider.a(24)).a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    ((agkh)getHelper(41)).a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    ((aght)this.helperProvider.a(24)).a(paramCharSequence, paramInt1, paramInt2, paramInt3);
   }
   
   public void cacheSendShakeMsg(MessageForShakeWindow paramMessageForShakeWindow)
   {
-    ((afpo)this.helperProvider.a(65)).a(paramMessageForShakeWindow);
+    ((aggs)this.helperProvider.a(65)).a(paramMessageForShakeWindow);
   }
   
   public void cancelRemainScreenOn()
@@ -6153,13 +6124,13 @@ public class BaseChatPie
       if (QLog.isColorLevel()) {
         QLog.i("QQRecorder", 2, "disPlayAudioRecord updatePttRecordMessage: " + paramString);
       }
-      acvv.a(this.app, this.sessionInfo, paramString, -3, paramLong);
+      admh.a(this.app, this.sessionInfo, paramString, -3, paramLong);
       instantUpdate(true, true);
       return;
     }
     if (paramString != null)
     {
-      paramString = bcgn.a(paramString);
+      paramString = bdnl.a(paramString);
       if ((paramString != null) && (paramString.exists())) {
         paramString.delete();
       }
@@ -6180,7 +6151,7 @@ public class BaseChatPie
   {
     this.input.setText("");
     this.input.setCompoundDrawables(null, null, null, null);
-    this.input.setTag(2131373788, null);
+    this.input.setTag(2131374006, null);
     this.input.setSelection(0);
     this.mSourceMsgInfo = null;
     PhotoListPanel localPhotoListPanel = (PhotoListPanel)this.panelManager.a(4);
@@ -6190,12 +6161,12 @@ public class BaseChatPie
     if (getCurrentPanel() == 28) {
       hideAllPanels();
     }
-    ((afqj)this.helperProvider.a(24)).d();
+    ((aght)this.helperProvider.a(24)).d();
   }
   
   public void clickSendTextButton()
   {
-    acwc localacwc = null;
+    admo localadmo = null;
     if (isFullScreenMode()) {
       hideFullScreenInput(false);
     }
@@ -6206,8 +6177,8 @@ public class BaseChatPie
       refresh(this.dirty);
       return;
     }
-    afqj localafqj = (afqj)this.helperProvider.a(24);
-    aucg.a();
+    aght localaght = (aght)this.helperProvider.a(24);
+    avia.a();
     Object localObject1 = (PhotoListPanel)this.panelManager.a(4);
     int i;
     label95:
@@ -6221,10 +6192,10 @@ public class BaseChatPie
         break label311;
       }
       j = ((PhotoListPanel)localObject1).c();
-      if ((localafqj.b()) && (this.input.getText().length() <= 0) && (i + j <= 0)) {
+      if ((localaght.b()) && (this.input.getText().length() <= 0) && (i + j <= 0)) {
         break label314;
       }
-      localMixedMsgInfo = localafqj.a();
+      localMixedMsgInfo = localaght.a();
       if (localMixedMsgInfo != null) {
         break label316;
       }
@@ -6241,15 +6212,15 @@ public class BaseChatPie
     for (Object localObject3 = this.input.getText().toString();; localObject3 = localObject1)
     {
       LogcatUtil.a((String)localObject3);
-      if (this.input.getTag(2131373788) == null) {
+      if (this.input.getTag(2131374006) == null) {
         this.mSourceMsgInfo = null;
       }
-      localObject2 = localacwc;
+      localObject2 = localadmo;
       if (this.mSourceMsgInfo != null)
       {
-        localObject2 = localacwc;
+        localObject2 = localadmo;
         if (!android.text.TextUtils.isEmpty(this.mSourceMsgInfo.mSourceMsgTroopName)) {
-          localObject2 = ((azye)this.app.getManager(340)).b(this.mSourceMsgInfo.getUniSeq());
+          localObject2 = ((bben)this.app.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).b(this.mSourceMsgInfo.getUniSeq());
         }
       }
       localObject1 = localObject2;
@@ -6257,14 +6228,14 @@ public class BaseChatPie
       {
         localObject1 = localObject2;
         if (this.mSourceMsgInfo != null) {
-          localObject1 = ahln.c(this.app, this.sessionInfo, this.mSourceMsgInfo);
+          localObject1 = aigh.c(this.app, this.sessionInfo, this.mSourceMsgInfo);
         }
       }
-      aydq.a((String)localObject3);
+      azkc.a((String)localObject3);
       if (((String)localObject3).length() <= inputMaxLength) {
         break label331;
       }
-      ChatActivityUtils.a(this.mContext, 2131718135, 1);
+      ChatActivityUtils.a(this.mContext, 2131718520, 1);
       return;
       i = 0;
       break label95;
@@ -6275,14 +6246,14 @@ public class BaseChatPie
       break label149;
     }
     label331:
-    localacwc = new acwc();
-    setSendTextMsgParams(localacwc);
-    audg.a(this).jdField_a_of_type_Boolean = false;
-    localacwc.i = this.isSendToRobotServer;
+    localadmo = new admo();
+    setSendTextMsgParams(localadmo);
+    avja.a(this).jdField_a_of_type_Boolean = false;
+    localadmo.i = this.isSendToRobotServer;
     this.isSendToRobotServer = false;
-    Object localObject2 = (afsd)getHelper(27);
+    Object localObject2 = (agjr)getHelper(27);
     if (localObject2 != null) {
-      ((afsd)localObject2).a((String)localObject3, localacwc, 0);
+      ((agjr)localObject2).a((String)localObject3, localadmo, 0);
     }
     if ((this.sessionInfo.curType == 1) || (this.sessionInfo.curType == 3000))
     {
@@ -6291,7 +6262,7 @@ public class BaseChatPie
       }
       localObject2 = getSourceMsgForNonAnonymous((MessageRecord)localObject1);
     }
-    for (localObject1 = clickSendTextButtonForTroop(localafqj, i, j, localMixedMsgInfo, (MessageRecord)localObject2, localacwc);; localObject1 = localObject3)
+    for (localObject1 = clickSendTextButtonForTroop(localaght, i, j, localMixedMsgInfo, (MessageRecord)localObject2, localadmo);; localObject1 = localObject3)
     {
       reportClassicAndSmallEmoticon((String)localObject1, false, this.mEmoPanel, this.app);
       clearInput();
@@ -6307,12 +6278,12 @@ public class BaseChatPie
       }
       this.mTipsMgr.a(1002, new Object[] { localObject1 });
       if (this.app.getApplication().getResources().getConfiguration().orientation == 2) {
-        bcef.b(this.app, "CliOper", "", "", "0X8005C7C", "0X8005C7C", 0, 0, "", "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X8005C7C", "0X8005C7C", 0, 0, "", "", "", "");
       }
-      agmk.a(this.app, (MessageRecord)localObject2, "0X800A369");
-      ((afqy)getHelper(39)).a();
+      ahfa.a(this.app, (MessageRecord)localObject2, "0X800A369");
+      ((agij)getHelper(39)).a();
       return;
-      localObject3 = clickSendTextButtonForC2C(localafqj, i, j, localMixedMsgInfo, (MessageRecord)localObject1, localacwc);
+      localObject3 = clickSendTextButtonForC2C(localaght, i, j, localMixedMsgInfo, (MessageRecord)localObject1, localadmo);
       localObject2 = localObject1;
     }
   }
@@ -6328,14 +6299,14 @@ public class BaseChatPie
       return;
     }
     boolean bool1;
-    label74:
+    label75:
     Object localObject;
     QQAppInterface localQQAppInterface;
     Context localContext;
     String str1;
     String str2;
     XEditTextEx localXEditTextEx;
-    if (((HotChatManager)this.app.getManager(60)).a(this.sessionInfo.curFriendUin) != null)
+    if (((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.sessionInfo.curFriendUin) != null)
     {
       bool1 = true;
       localObject = ContactUtils.getMemberDisplaynameByIstroop(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin, this.mSourceMsgInfo.mSourceMsgSenderUin + "");
@@ -6345,25 +6316,25 @@ public class BaseChatPie
       str2 = this.mSourceMsgInfo.mSourceMsgSenderUin + "";
       localXEditTextEx = this.input;
       if (this.sessionInfo.curType != 1) {
-        break label252;
+        break label253;
       }
     }
-    label252:
+    label253:
     for (boolean bool2 = true;; bool2 = false)
     {
-      localObject = bevq.a(localQQAppInterface, localContext, str1, str2, (String)localObject, bool1, localXEditTextEx, bool2, true);
+      localObject = bgcz.a(localQQAppInterface, localContext, str1, str2, (String)localObject, bool1, localXEditTextEx, bool2, true);
       if ((localObject == null) || (((SpannableString)localObject).length() <= 0)) {
         break;
       }
       if (!paramBoolean) {
-        break label258;
+        break label259;
       }
       this.input.getEditableText().insert(0, (CharSequence)localObject);
       return;
       bool1 = false;
-      break label74;
+      break label75;
     }
-    label258:
+    label259:
     if (this.input.getSelectionStart() < 0) {}
     for (;;)
     {
@@ -6373,7 +6344,7 @@ public class BaseChatPie
     }
   }
   
-  public afnn createChatDrawer()
+  public ager createChatDrawer()
   {
     return null;
   }
@@ -6386,7 +6357,7 @@ public class BaseChatPie
   public void createQQMapActivityProxy()
   {
     if (this.mQQMapActivityProxy == null) {
-      this.mQQMapActivityProxy = new amzb(this.app.getAccount());
+      this.mQQMapActivityProxy = new aobq(this.app.getAccount());
     }
   }
   
@@ -6399,8 +6370,8 @@ public class BaseChatPie
   {
     if ((this.mIconLayoutInInputRight != null) && (this.mZhituSwitch))
     {
-      ahtj.a(this.app).c();
-      this.mIconButtonInInputRight.setImageResource(2130838103);
+      aioi.a(this.app).c();
+      this.mIconButtonInInputRight.setImageResource(2130838117);
       this.mIconButtonInInputRight.setActivated(false);
       this.mZhituSwitch = false;
     }
@@ -6429,37 +6400,34 @@ public class BaseChatPie
     if (this.app.getMessageFacade().getCurrChatUin() == null) {}
     do
     {
-      bfcf localbfcf;
+      bgkl localbgkl;
       do
       {
         return;
-        localbfcf = ((bfbz)this.app.getManager(48)).a(this.sessionInfo.curFriendUin, true);
+        localbgkl = ((bgkf)this.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.sessionInfo.curFriendUin, true);
       } while (this.input == null);
-      Object localObject = (afqj)this.helperProvider.a(24);
-      ((afqj)localObject).jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      Object localObject = (aght)this.helperProvider.a(24);
+      ((aght)localObject).jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
       if (this.mGagInputBtn == null)
       {
         TextView localTextView = new TextView(this.mContext);
-        localTextView.setId(2131367364);
-        localTextView.setBackgroundResource(2130849760);
+        localTextView.setId(2131367488);
+        localTextView.setBackgroundResource(2130849853);
         localTextView.setTextSize(1, 17.0F);
-        localTextView.setTextColor(this.mContext.getResources().getColor(2131166991));
+        localTextView.setTextColor(this.mContext.getResources().getColor(2131167005));
         localTextView.setEnabled(false);
         localTextView.setGravity(17);
-        int i = ((ViewGroup)((afqj)localObject).jdField_a_of_type_AndroidViewView.getParent()).indexOfChild(((afqj)localObject).jdField_a_of_type_AndroidViewView);
+        int i = ((ViewGroup)((aght)localObject).jdField_a_of_type_AndroidViewView.getParent()).indexOfChild(((aght)localObject).jdField_a_of_type_AndroidViewView);
         localObject = new LinearLayout.LayoutParams(this.input.getWidth(), -2);
         ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.dp2px(14.0F, getActivity().getResources());
         ((LinearLayout.LayoutParams)localObject).gravity = 80;
         this.mInputBar.addView(localTextView, i, (ViewGroup.LayoutParams)localObject);
         this.mGagInputBtn = localTextView;
       }
-      if (localbfcf != null)
+      if (localbgkl != null)
       {
-        if (this.mGagInputBtn != null)
-        {
-          QLog.d(this.tag, 1, "fightgag.doDisableInputStat text" + localbfcf.b);
-          this.mGagInputBtn.setText(localbfcf.b);
-        }
+        QLog.d(this.tag, 1, "fightgag.doDisableInputStat text" + localbgkl.b);
+        this.mGagInputBtn.setText(localbgkl.b);
         if (this.root.a() == 2) {
           this.root.a();
         }
@@ -6521,9 +6489,9 @@ public class BaseChatPie
     }
     hideSoftInput();
     if (paramConfiguration.orientation == 2) {
-      bcef.b(this.app, "CliOper", "", "", "0X8005C7B", "0X8005C7B", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X8005C7B", "0X8005C7B", 0, 0, "", "", "", "");
     }
-    this.helperProvider.a(18);
+    this.helperProvider.a(19);
     ArkAppCenterUtil.doOnConfigurationChanged(paramConfiguration);
   }
   
@@ -6549,19 +6517,19 @@ public class BaseChatPie
     this.mCurrentAIOState = 2;
     AIOUtils.printColorLevelLog(this.tag, "doOnCreate", hashCode(), this.mCurrentAIOState);
     updateSession(this.mActivity.getIntent());
-    bfzg.a("AIO_updateSession", "AIO_doOnCreate_otherCost");
+    bhhy.a("AIO_updateSession", "AIO_doOnCreate_otherCost");
     getAndParseAIOList();
     BaseActivity.sActivityRoute.add(getClass().getSimpleName());
     addBusinessObservers();
     this.app.setHandler(ChatActivity.class, this.uiHandler);
-    bfzg.a("AIO_doOnCreate_otherCost", "AIO_doOnCreate_handleRequest");
+    bhhy.a("AIO_doOnCreate_otherCost", "AIO_doOnCreate_handleRequest");
     if (paramBoolean) {
       handleRequest(this.mActivity.getIntent(), 1);
     }
     for (;;)
     {
       this.chatPieHelper.a();
-      bfzg.a("AIO_doOnCreate_handleRequest", null);
+      bhhy.a("AIO_doOnCreate_handleRequest", null);
       return true;
       handleRequest(this.mActivity.getIntent(), 2);
     }
@@ -6569,74 +6537,71 @@ public class BaseChatPie
   
   protected void doOnCreate_initData()
   {
-    this.friendListHandler = ((FriendListHandler)this.app.getBusinessHandler(1));
-    this.aioTipsController = new aewx(this.mTipsLayout);
-    this.sessionInfo.chatBg = new aezp();
-    if (this.fmob == null) {
-      this.fmob = new BaseChatPie.MyFMObserver(this, null);
-    }
+    this.friendListHandler = ((FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.aioTipsController = new afoi(this.mTipsLayout);
+    this.sessionInfo.chatBg = new afrb();
     if (this.mGAudioObserver == null) {
       this.mGAudioObserver = new BaseChatPie.MyAVObserver(this, null);
     }
     this.speakerPhoneOn = this.app.getLoudSpeakerState();
     this.mpm = MediaPlayerManager.a(this.app);
     this.needUpload = true;
-    this.mTipsMgr = new ahqs(this.app, this.sessionInfo, this.aioTipsController, this.root, this.mBlueTipsTaskList);
-    this.mPasswdRedBagManager = ((ajul)this.app.getManager(125));
+    this.mTipsMgr = new ailr(this.app, this.sessionInfo, this.aioTipsController, this.root, this.mBlueTipsTaskList);
+    this.helperProvider.a(1);
   }
   
   protected void doOnCreate_initUI()
   {
     this.isThemeDefault = ThemeUtil.isDefaultOrDIYTheme(false);
-    this.root = ((XPanelContainer)this.mAIORootView.findViewById(2131376679));
-    this.mEmotionSearchPanel = ((EmotionSearchPanel)this.mAIORootView.findViewById(2131366037));
+    this.root = ((XPanelContainer)this.mAIORootView.findViewById(2131376947));
+    this.mEmotionSearchPanel = ((EmotionSearchPanel)this.mAIORootView.findViewById(2131366138));
     this.panelManager.a(this.root);
     this.root.setOnPanelChangeListener(this);
     this.root.setOnChangeMultiScreenListener(this);
-    this.root.setReadyToShowChangeListener(new BaseChatPie.3(this));
+    this.root.setReadyToShowChangeListener(new BaseChatPie.2(this));
     this.root.jdField_c_of_type_Boolean = true;
     this.root.setReadyToShow(false);
-    this.afRoot = ((ViewGroup)this.mAIORootView.findViewById(2131362294));
-    agkc.a().a((FitSystemWindowsRelativeLayout)this.afRoot);
-    this.mContent = ((RelativeLayout)this.mAIORootView.findViewById(2131364407));
-    this.mTipRoot = this.mAIORootView.findViewById(2131374032);
-    this.mTipsContainer = ((RelativeLayout)this.mAIORootView.findViewById(2131364504));
-    this.mTipsLayout = ((RelativeLayout)this.mAIORootView.findViewById(2131374037));
-    this.mCustomTitleView = ((NavBarAIO)this.mAIORootView.findViewById(2131376501));
-    this.titleBgView = ((ImageView)this.mAIORootView.findViewById(2131376502));
-    this.mTitleLayout = ((ViewGroup)this.mAIORootView.findViewById(2131378762));
-    this.mSubTitleLayout = ((ViewGroup)this.mAIORootView.findViewById(2131377934));
-    this.mTitleBtnLeft = ((TextView)this.mAIORootView.findViewById(2131369068));
-    this.mTitleBubbleLeft = ((TextView)this.mAIORootView.findViewById(2131369106));
-    this.mDefaultLeftBack = ((ImageView)this.mAIORootView.findViewById(2131369436));
-    this.mDefautlBtnLeft = ((TextView)this.mAIORootView.findViewById(2131379417));
-    this.mTitleBtnRightLayout = ((RelativeLayout)this.mAIORootView.findViewById(2131369124));
-    this.mTitleBtnRight = ((ImageView)this.mAIORootView.findViewById(2131369082));
-    this.mTitleBtnRightSearch = ((FrameLayout)this.mAIORootView.findViewById(2131369097));
-    this.freeTalkImg = ((ImageView)this.mAIORootView.findViewById(2131376186));
-    this.mRightButtonRedDot = ((ImageView)this.mAIORootView.findViewById(2131376187));
+    this.afRoot = ((ViewGroup)this.mAIORootView.findViewById(2131362299));
+    ahcs.a().a((FitSystemWindowsRelativeLayout)this.afRoot);
+    this.mContent = ((RelativeLayout)this.mAIORootView.findViewById(2131364488));
+    this.mTipRoot = this.mAIORootView.findViewById(2131374261);
+    this.mTipsContainer = ((RelativeLayout)this.mAIORootView.findViewById(2131364586));
+    this.mTipsLayout = ((RelativeLayout)this.mAIORootView.findViewById(2131374266));
+    this.mCustomTitleView = ((NavBarAIO)this.mAIORootView.findViewById(2131376760));
+    this.titleBgView = ((ImageView)this.mAIORootView.findViewById(2131376761));
+    this.mTitleLayout = ((ViewGroup)this.mAIORootView.findViewById(2131379056));
+    this.mSubTitleLayout = ((ViewGroup)this.mAIORootView.findViewById(2131378222));
+    this.mTitleBtnLeft = ((TextView)this.mAIORootView.findViewById(2131369231));
+    this.mTitleBubbleLeft = ((TextView)this.mAIORootView.findViewById(2131369269));
+    this.mDefaultLeftBack = ((ImageView)this.mAIORootView.findViewById(2131369605));
+    this.mDefautlBtnLeft = ((TextView)this.mAIORootView.findViewById(2131379722));
+    this.mTitleBtnRightLayout = ((RelativeLayout)this.mAIORootView.findViewById(2131369287));
+    this.mTitleBtnRight = ((ImageView)this.mAIORootView.findViewById(2131369245));
+    this.mTitleBtnRightSearch = ((FrameLayout)this.mAIORootView.findViewById(2131369260));
+    this.freeTalkImg = ((ImageView)this.mAIORootView.findViewById(2131376435));
+    this.mRightButtonRedDot = ((ImageView)this.mAIORootView.findViewById(2131376436));
     this.mRightButtonRedDot.setVisibility(8);
-    this.mTitleBtnCall = ((ImageView)this.mAIORootView.findViewById(2131369077));
-    this.mTitleBtnCall.setContentDescription(this.app.getApp().getString(2131694890));
+    this.mTitleBtnCall = ((ImageView)this.mAIORootView.findViewById(2131369240));
+    this.mTitleBtnCall.setContentDescription(this.app.getApp().getString(2131695106));
     this.mTitleBtnLeft.setOnClickListener(this);
     this.mTitleBtnRight.setOnClickListener(this);
     this.mDefaultLeftBack.setOnClickListener(this);
     this.mDefautlBtnLeft.setOnClickListener(this);
-    this.mAIORootView.findViewById(2131369874).setOnClickListener(this);
+    this.mAIORootView.findViewById(2131370044).setOnClickListener(this);
     this.mCustomTitleView.setOnClickListener(this);
-    this.mTitleBtnRight.setContentDescription(this.app.getApp().getString(2131690706));
-    this.mTitleText = ((TextView)this.mAIORootView.findViewById(2131378707));
-    this.mTitleCount = ((TextView)this.mAIORootView.findViewById(2131365635));
-    this.mTitleIcon = ((ImageView)this.mAIORootView.findViewById(2131378752));
-    this.mTitleIcon2 = ((ImageView)this.mAIORootView.findViewById(2131378753));
-    this.mTitleIconRight = ((ImageView)this.mAIORootView.findViewById(2131378754));
-    this.mViewFlipper = ((QqViewFlipper)this.mAIORootView.findViewById(2131378797));
+    this.mTitleBtnRight.setContentDescription(this.app.getApp().getString(2131690783));
+    this.mTitleText = ((TextView)this.mAIORootView.findViewById(2131379001));
+    this.mTitleCount = ((TextView)this.mAIORootView.findViewById(2131365728));
+    this.mTitleIcon = ((ImageView)this.mAIORootView.findViewById(2131379046));
+    this.mTitleIcon2 = ((ImageView)this.mAIORootView.findViewById(2131379047));
+    this.mTitleIconRight = ((ImageView)this.mAIORootView.findViewById(2131379048));
+    this.mViewFlipper = ((QqViewFlipper)this.mAIORootView.findViewById(2131379091));
     this.mViewFlipper.setMeasureAllChildren(false);
-    this.mSubTilteText = ((TextView)this.mAIORootView.findViewById(2131378795));
-    this.mSubTitleText2 = ((TextView)this.mAIORootView.findViewById(2131378796));
-    this.addView = ((ViewStub)this.mAIORootView.findViewById(2131373882));
-    this.mSubTitleLeftImageView = ((ImageView)this.mAIORootView.findViewById(2131365805));
-    this.listView = ((ChatXListView)this.mAIORootView.findViewById(2131370017));
+    this.mSubTilteText = ((TextView)this.mAIORootView.findViewById(2131379089));
+    this.mSubTitleText2 = ((TextView)this.mAIORootView.findViewById(2131379090));
+    this.addView = ((ViewStub)this.mAIORootView.findViewById(2131374111));
+    this.mSubTitleLeftImageView = ((ImageView)this.mAIORootView.findViewById(2131365903));
+    this.listView = ((ChatXListView)this.mAIORootView.findViewById(2131370188));
     this.listView.setChatPie(this);
     this.listView.setActTAG("actFPSAIO");
     this.listView.setStackFromBottom(true);
@@ -6652,18 +6617,18 @@ public class BaseChatPie
     this.listView.setChoiceMode(2);
     this.listView.a();
     this.mGestureDetector = new GestureDetector(this.mContext, new BaseChatPie.MyOnGestureListener(this));
-    this.mAnimContainer = ((AIOAnimationConatiner)this.mAIORootView.findViewById(2131362701));
+    this.mAnimContainer = ((AIOAnimationConatiner)this.mAIORootView.findViewById(2131362716));
     this.mAnimContainer.a(this.listView);
     this.mAnimContainer.a = this.mApolloViewObserver;
-    this.businessFooterDetector = new afdm(this.mContext, this.listView, this);
-    this.listAdapter = new aezn(this.app, this.mActivity, this.sessionInfo, this.mAnimContainer, this);
-    ((akya)getHelper(4)).b();
+    this.businessFooterDetector = new afur(this.mContext, this.listView, this);
+    this.listAdapter = new afqz(this.app, this.mActivity, this.sessionInfo, this.mAnimContainer, this);
+    ((alvw)getHelper(4)).b();
     if (this.headView == null)
     {
       this.headView = new View(this.mContext);
-      int i = this.mContext.getResources().getDimensionPixelSize(2131299076);
+      int i = this.mContext.getResources().getDimensionPixelSize(2131299080);
       this.headView.setLayoutParams(new AbsListView.LayoutParams(-1, i));
-      this.headView.setId(2131362430);
+      this.headView.setId(2131362436);
       this.listView.addHeaderView(this.headView, null, false);
       this.listView.setOverscrollHeaderTop(i);
     }
@@ -6671,12 +6636,11 @@ public class BaseChatPie
     this.listAdapter.a(this.listView);
     this.mScrollerRunnable = new ScrollerRunnable(this.listView);
     this.mScrollerdownRunnable = new MoveToBottomScroller(this.listView, this.businessFooterDetector);
-    this.mBottomBlurView = ((QQBlurView)this.mAIORootView.findViewById(2131380315));
-    this.panelicons = ((PanelIconLinearLayout)this.mAIORootView.findViewById(2131372228));
+    this.mBottomBlurView = ((QQBlurView)this.mAIORootView.findViewById(2131380650));
+    this.panelicons = ((PanelIconLinearLayout)this.mAIORootView.findViewById(2131372419));
     this.panelicons.setPanelIconListener(this);
     this.panelicons.setHelperProvider(this.helperProvider);
-    this.input = ((XEditTextEx)this.mAIORootView.findViewById(2131368750));
-    this.input.a = this.mSCCallbak;
+    this.input = ((XEditTextEx)this.mAIORootView.findViewById(2131368909));
     this.input.removeTextChangedListener(this);
     try
     {
@@ -6684,40 +6648,40 @@ public class BaseChatPie
       this.input.addTextChangedListener(this);
       this.input.setOnClickListener(this);
       this.input.getInputExtras(true).putInt("SOGOU_EXPRESSION", 1);
-      this.imeListener = new afih(this);
+      this.imeListener = new afzm(this);
       this.input.setOnPrivateIMECommandListener(this.imeListener);
-      abem.a(this.app.getApp(), this.input);
-      ((afqj)this.helperProvider.a(24)).a(this.mAIORootView);
+      abty.a(this.app.getApp(), this.input);
+      ((aght)this.helperProvider.a(24)).a(this.mAIORootView);
       this.root.a(this.input);
-      this.mVideoBtn = ((RelativeLayout)this.mAIORootView.findViewById(2131380488));
-      bnbb.a(this.mAIORootView, true);
+      this.mVideoBtn = ((RelativeLayout)this.mAIORootView.findViewById(2131380828));
+      boqt.a(this.mAIORootView, true);
       this.helperProvider.a(0);
-      this.mFunBtn = ((PatchedButton)this.mAIORootView.findViewById(2131367352));
-      this.mFunBtn.setText(amtj.a(2131700117));
+      this.mFunBtn = ((PatchedButton)this.mAIORootView.findViewById(2131367476));
+      this.mFunBtn.setText(anvx.a(2131700468));
       if (AppSetting.jdField_c_of_type_Boolean) {
-        this.mFunBtn.setContentDescription(amtj.a(2131700108));
+        this.mFunBtn.setContentDescription(anvx.a(2131700459));
       }
       this.mFunBtn.setOnClickListener(this);
-      this.mFunBtn.setOnLongClickListener(new BaseChatPie.4(this));
-      this.mInputBar = ((InputLinearLayout)this.mAIORootView.findViewById(2131368751));
-      this.mIconLayoutInInputRight = this.mAIORootView.findViewById(2131362379);
-      this.mIconButtonInInputRight = ((ImageButton)this.mAIORootView.findViewById(2131362378));
+      this.mFunBtn.setOnLongClickListener(new BaseChatPie.3(this));
+      this.mInputBar = ((InputLinearLayout)this.mAIORootView.findViewById(2131368910));
+      this.mIconLayoutInInputRight = this.mAIORootView.findViewById(2131362385);
+      this.mIconButtonInInputRight = ((ImageButton)this.mAIORootView.findViewById(2131362384));
       this.mIconButtonInInputRight.setOnTouchListener(this);
-      bfpm.a(this.mIconButtonInInputRight, new BaseChatPie.5(this));
-      this.mIconButtonInInputRight.setImageResource(2130838103);
+      bgyd.a(this.mIconButtonInInputRight, new BaseChatPie.4(this));
+      this.mIconButtonInInputRight.setImageResource(2130838117);
       this.mZhituSwitch = false;
       initFakeInputView();
       initUPFakeInputView();
       if (this.mArkController == null) {
-        this.mArkController = new aowj(this);
+        this.mArkController = new apzn(this);
       }
       this.titleBgView.setVisibility(8);
       initInput();
       initBottomBlurView();
       if (Build.VERSION.SDK_INT >= 16)
       {
-        ViewGroup localViewGroup = (ViewGroup)this.mAIORootView.findViewById(2131372918);
-        bfsu.a(this.app, localViewGroup, getActivity(), getSessionInfo());
+        ViewGroup localViewGroup = (ViewGroup)this.mAIORootView.findViewById(2131373128);
+        bhbl.a(this.app, localViewGroup, getActivity(), getSessionInfo());
       }
       if ((this.mAIORootView.getParent() instanceof DrawerFrame))
       {
@@ -6767,24 +6731,24 @@ public class BaseChatPie
       destroyPtt();
       destroyScrollerRunnable();
       destroyArk();
-      Object localObject = (avsq)this.app.getManager(14);
-      ((avsq)localObject).b();
-      ((avsq)localObject).c();
+      Object localObject = (awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
+      ((awyr)localObject).b();
+      ((awyr)localObject).c();
       EmojiStickerManager.a().a(this, this.sessionInfo.curFriendUin, this.sessionInfo.curType, this.onShowDone);
       onPanelDestroy();
-      agkg.a();
-      agkg.b();
-      agkc.a().a(3);
-      agkc.a().a(6);
-      agkc.a().a(12);
-      agkc.a().a(15);
-      agkc.a().a(18);
-      agkc.a().a(9);
+      ahcw.a();
+      ahcw.b();
+      ahcs.a().a(3);
+      ahcs.a().a(6);
+      ahcs.a().a(12);
+      ahcs.a().a(15);
+      ahcs.a().a(18);
+      ahcs.a().a(9);
       if (this.mHotPicMainPanel != null)
       {
-        localObject = augn.a(this.app);
+        localObject = avmh.a(this.app);
         if (localObject != null) {
-          ((augn)localObject).a(false);
+          ((avmh)localObject).a(false);
         }
       }
       this.uiHandler.removeCallbacksAndMessages(null);
@@ -6795,7 +6759,7 @@ public class BaseChatPie
         this.mAnimContainer.b();
       }
       ChatActivityUtils.b();
-      acvv.a();
+      admh.a();
       unbindDrawables();
       this.isNeedDelayShowUnreaded = Boolean.valueOf(true);
       if (this.mUnReadTxt != null) {
@@ -6811,54 +6775,51 @@ public class BaseChatPie
       this.mMsgSignalCount = 0;
       this.mMsgSignalNetType = 0;
       ThreadManager.getSubThreadHandler().removeCallbacks(this.msgSignalRunnable);
-      afdp.a().a();
-      znt.a().a();
+      afuu.a().a();
+      aade.a().a();
       refreshDelayForNextPie = true;
-      if (this.mIdleHanlder != null) {
-        Looper.myQueue().removeIdleHandler(this.mIdleHanlder);
-      }
-      bfwz.a();
+      bhfr.a();
       this.app.getPicPreDownloader().c();
-      azca.a();
-      agmx.jdField_a_of_type_Long = 0L;
+      baho.a();
+      ahfn.jdField_a_of_type_Long = 0L;
       if (isVivoShot == 1) {
         setVivoSetting(0);
       }
       ChatActivityUtils.a();
-      bfta.a(false);
+      bhbr.a(false);
       this.mStructingMsgItemViewCache.a();
-      nrz.a().c();
+      nza.a().c();
       this.app.getMsgCache().jdField_a_of_type_JavaUtilHashMap.clear();
       destroyUnRegReceivers();
       BaseActivity.sActivityRoute.remove(getClass().getSimpleName());
-      localObject = (beyh)this.app.getManager(223);
+      localObject = (bggl)this.app.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
       if (localObject != null) {
-        ((beyh)localObject).c();
+        ((bggl)localObject).c();
       }
-      bfth.a().a();
+      bhbz.a().a();
       cancelRemainScreenOn();
-      aqwg.a(this.mContent, this.app);
+      asaa.a(this.mContent, this.app);
       if (this.mComboUIManager != null)
       {
         this.mComboUIManager.a();
         this.mComboUIManager = null;
       }
       HotPicPageView.c();
-      auij.a(this.app);
-      ahcd.a().a(false);
+      avod.a(this.app);
+      ahwv.a().a(false);
       destroyReceipt();
       CustomizeStrategyFactory.a().a(false);
-      this.helperProvider.a(13);
-      ahtj.a(this.app).c();
+      this.helperProvider.a(14);
+      aioi.a(this.app).c();
       hideZhituIcon();
       if (this.mTitleBtnRight != null) {
         this.mTitleBtnRight.setOnClickListener(null);
       }
-      aucg.b();
+      avia.b();
       this.playMode = 0;
       this.mStickerBubbleQuickButtonReported = false;
       this.mZhituButtonExposeReported = false;
-      bgae.a();
+      bhiw.a();
       this.mFirstVisibleView = null;
       this.mLastVisibleView = null;
       this.mFirstVisibleItem = 0;
@@ -6894,14 +6855,13 @@ public class BaseChatPie
   
   public void doOnNewIntent_clearBusinessData()
   {
-    bfwz.a();
-    this.helperProvider.a(20);
+    bhfr.a();
+    this.helperProvider.a(21);
     AIOUtils.setIsNotLoadSuit(false);
     this.isPauseRefresh = false;
     this.hasSetReaded = false;
     this.isBack2Root = false;
     this.speakerPhoneOn = true;
-    this.canPullRefresh = true;
     this.mEffectPullRefreshCount = 0;
     this.isOpenFromShare = false;
     this.isOpenFromThirdParty = false;
@@ -6977,22 +6937,11 @@ public class BaseChatPie
   protected void doOnNewIntent_updateBusinessData(Intent paramIntent)
   {
     Bundle localBundle = paramIntent.getExtras();
-    boolean bool = paramIntent.getBooleanExtra("isNeedUpdate", false);
+    paramIntent.getBooleanExtra("isNeedUpdate", false);
     this.mIsCurrentSession = false;
-    if ((!this.mIsCurrentSession) || (localBundle.containsKey("forward_type"))) {
-      updateSession(paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("forward", 2, "updateSession_otherThings appShareId=" + localBundle.getLong("res_share_id", 0L));
-      }
-      return;
-      if ((this.dirty != 0) || (bool)) {
-        instantUpdate(true, false);
-      } else if (localBundle.getLong("res_share_id", 0L) > 0L) {
-        ForwardUtils.handleAppShareAction(this.app, this.mActivity, this.sessionInfo, paramIntent);
-      }
+    updateSession(paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("forward", 2, "updateSession_otherThings appShareId=" + localBundle.getLong("res_share_id", 0L));
     }
   }
   
@@ -7012,7 +6961,7 @@ public class BaseChatPie
     this.mCurrentAIOState = 5;
     AIOUtils.printColorLevelLog(this.tag, "doOnPause", hashCode(), this.mCurrentAIOState);
     this.app.getMessageFacade().pauseChatActivity();
-    afvh.a(0);
+    agnw.a(0);
     ArkFlashChatContainerWrapper.a(0);
     NativeVideoImage.pauseAll();
     AbstractGifImage.pauseAll();
@@ -7020,13 +6969,14 @@ public class BaseChatPie
     if (!isActivityResume()) {
       AbstractVideoImage.pauseAll();
     }
-    agnv.a(this.listView);
-    agnj.e();
+    ahgl.a(this.listView);
+    ahfz.e();
     ShortVideoRealItemBuilder.e();
-    ((afqg)getHelper(83)).b(true);
-    ThreadManager.post(new BaseChatPie.23(this), 5, null, false);
+    ApolloItemBuilder.e();
+    ((aghq)getHelper(83)).b(true);
+    ThreadManager.post(new BaseChatPie.22(this), 5, null, false);
     if (this.isHaveNewAfterIn) {
-      acvv.a(this.app, this.sessionInfo);
+      admh.a(this.app, this.sessionInfo);
     }
     this.uiHandler.removeMessages(16711689);
     this.uiHandler.removeCallbacks(this.mRetryShowInputPanelTask);
@@ -7066,7 +7016,7 @@ public class BaseChatPie
     if (this.mApolloViewController != null) {
       this.mApolloViewController.e(this);
     }
-    this.helperProvider.a(9);
+    this.helperProvider.a(10);
     if (enableBlur()) {
       this.mBottomBlurView.b();
     }
@@ -7121,7 +7071,7 @@ public class BaseChatPie
       AIOUtils.setIsNotLoadSuit(true);
       this.onShowDone = false;
       if (this.sessionInfo.curType == 1008) {
-        bfwu.a(null, "pubAcc_structMsg_display", this.sessionInfo.curFriendUin);
+        bhfm.a(null, "pubAcc_structMsg_display", this.sessionInfo.curFriendUin);
       }
     }
     for (;;)
@@ -7138,11 +7088,11 @@ public class BaseChatPie
         this.mEntryFriendCard = false;
         this.speakerPhoneOn = this.app.getLoudSpeakerState();
         this.mpm.a(this.listView, this.listAdapter, this);
-        nrz.a().a(this.app, this.listView, this.sessionInfo);
-        avnj.f = true;
+        nza.a().a(this.app, this.listView, this.sessionInfo);
+        awto.f = true;
         ThreadRegulator.a().a(1, 1500L);
         enableMosaicEffect(((AIOLongShotHelper)getHelper(15)).c());
-        ((afss)getHelper(29)).a(getStatusTxtDartElseLight());
+        ((agkg)getHelper(29)).a(getStatusTxtDartElseLight());
         return;
       }
       refresh(131072);
@@ -7155,9 +7105,9 @@ public class BaseChatPie
   
   protected void doOnResume_updateUI()
   {
-    bfzg.a(null, "AIO_doOnResume_updateUI");
-    ((afss)getHelper(29)).a(this.mTitleBtnLeft);
-    afvh.a(1);
+    bhhy.a(null, "AIO_doOnResume_updateUI");
+    ((agkg)getHelper(29)).a(this.mTitleBtnLeft);
+    agnw.a(1);
     ArkFlashChatContainerWrapper.a(1);
     loadBackgroundAsync();
     if (this.mEmoPanel != null) {
@@ -7168,28 +7118,28 @@ public class BaseChatPie
     }
     if ((this.mFunBtn != null) && (this.input != null)) {
       if ((this.input.getText().length() <= 0) && (getPhotoListSelectCount() <= 0)) {
-        break label312;
+        break label313;
       }
     }
-    label312:
+    label313:
     for (boolean bool = true;; bool = false)
     {
       setFunBtnEnabled(bool);
-      bfzg.a("AIO_doOnResume_updateUI", null);
+      bhhy.a("AIO_doOnResume_updateUI", null);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mTipRoot.getLayoutParams();
-      int j = (int)this.mActivity.getResources().getDimension(2131299076);
+      int j = (int)this.mActivity.getResources().getDimension(2131299080);
       int i = j;
       if (this.linearLayout != null)
       {
         i = j;
         if (this.linearLayout.getVisibility() == 0) {
-          i = j + (int)this.mActivity.getResources().getDimension(2131297076);
+          i = j + (int)this.mActivity.getResources().getDimension(2131297077);
         }
       }
       localLayoutParams.topMargin = i;
       this.mTipRoot.setLayoutParams(localLayoutParams);
       updateUI_titleBarForTheme();
-      this.helperProvider.a(5);
+      this.helperProvider.a(6);
       if (enableBlur())
       {
         this.mBottomBlurView.setDebugTag("AIO." + this.sessionInfo.curType + "." + MsfSdkUtils.getShortUin(this.sessionInfo.curFriendUin));
@@ -7206,7 +7156,7 @@ public class BaseChatPie
   {
     this.mCurrentAIOState = 3;
     AIOUtils.printColorLevelLog(this.tag, "doOnStart", hashCode(), this.mCurrentAIOState);
-    this.helperProvider.a(4);
+    this.helperProvider.a(5);
   }
   
   public void doOnStop()
@@ -7233,23 +7183,24 @@ public class BaseChatPie
       }
       String str;
       int i;
-      ple localple;
+      pwb localpwb;
       if ((this.mActivity != null) && (this.mActivity.getIntent() != null))
       {
         str = this.mActivity.getIntent().getStringExtra("uin");
         i = this.mActivity.getIntent().getIntExtra("uintype", -1);
-        localple = ple.a();
+        localpwb = pwb.a();
         if (this.listAdapter == null) {
-          break label259;
+          break label262;
         }
       }
-      label259:
+      label262:
       for (localObject = this.listAdapter.a();; localObject = null)
       {
-        localple.a(0, (List)localObject, str, i, this.hasUnreadCount);
-        agnj.g();
+        localpwb.a(0, (List)localObject, str, i, this.hasUnreadCount);
+        ahfz.g();
         ShortVideoRealItemBuilder.g();
-        this.helperProvider.a(10);
+        ApolloItemBuilder.g();
+        this.helperProvider.a(11);
         return;
       }
     }
@@ -7311,8 +7262,8 @@ public class BaseChatPie
     }
     updateTipsBar();
     updateRichTextPanel(paramInt1, paramInt2);
-    ((afrd)this.helperProvider.a(10)).a(paramInt1, paramInt2);
-    ((afss)getHelper(29)).a(paramInt1, paramInt2);
+    ((agio)this.helperProvider.a(10)).a(paramInt1, paramInt2);
+    ((agkg)getHelper(29)).a(paramInt1, paramInt2);
   }
   
   public void doShowPtv()
@@ -7323,17 +7274,17 @@ public class BaseChatPie
   public void doShowPtv(boolean paramBoolean)
   {
     int j = 0;
-    Object localObject = (afqj)this.helperProvider.a(24);
+    Object localObject = (aght)this.helperProvider.a(24);
     if ((this.sessionInfo.curType == 1033) || (this.sessionInfo.curType == 1034)) {}
-    for (int i = 1; (((afqj)localObject).a()) && ((i != 0) || (isReplyTextMode())); i = 0)
+    for (int i = 1; (((aght)localObject).a()) && ((i != 0) || (isReplyTextMode())); i = 0)
     {
-      ((afqj)localObject).a(true);
+      ((aght)localObject).a(true);
       return;
     }
     if (this.recorder != null) {
       this.recorder.a();
     }
-    if ((paramBoolean) && (((afqj)localObject).a())) {}
+    if ((paramBoolean) && (((aght)localObject).a())) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
@@ -7342,8 +7293,8 @@ public class BaseChatPie
       if (!this.app.isUsingCameraOnVideo()) {
         break label226;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695417, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299076));
-      agwt.a(this.app, "0X8005E91", this.sessionInfo.curType);
+      QQToast.a(BaseApplicationImpl.getContext(), 2131695634, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299080));
+      ahpt.a(this.app, "0X8005E91", this.sessionInfo.curType);
       if (this.root.a() != 1) {
         break;
       }
@@ -7351,23 +7302,19 @@ public class BaseChatPie
       return;
     }
     label226:
-    if (babd.a())
+    if (bbhm.a())
     {
-      localObject = null;
-      if (this.sessionInfo != null) {
-        localObject = new SessionWrap(this.sessionInfo.curFriendUin, this.sessionInfo.curFriendNick, this.sessionInfo.curType, this.sessionInfo.troopUin);
-      }
-      localObject = ynm.a((SessionWrap)localObject, this.mActivity.getClass().getName(), 10000, 100);
-      ((Bundle)localObject).putInt("VIDEO_STORY_FROM_TYPE", blvr.e.a());
+      localObject = zcf.a(new SessionWrap(this.sessionInfo.curFriendUin, this.sessionInfo.curFriendNick, this.sessionInfo.curType, this.sessionInfo.troopUin), this.mActivity.getClass().getName(), 10000, 100);
+      ((Bundle)localObject).putInt("VIDEO_STORY_FROM_TYPE", bnlb.e.a());
       if (bool) {}
       for (i = 200;; i = 205)
       {
         ((Bundle)localObject).putInt("AECAMERA_MODE", i);
         ((Bundle)localObject).putInt("qq_sub_business_id", 106);
         ((Bundle)localObject).putBoolean("input_full_screen_mode", bool);
-        ynm.a().a(getActivity(), (Bundle)localObject, 11);
-        bmau.a().a(false);
-        bmau.a().e();
+        zcf.a().a(getActivity(), (Bundle)localObject, 11);
+        bnqe.a().a(false);
+        bnqe.a().e();
         break;
       }
     }
@@ -7376,7 +7323,7 @@ public class BaseChatPie
     {
       try
       {
-        localObject = aara.a(this.app, Long.parseLong(this.sessionInfo.curFriendUin));
+        localObject = abgm.a(this.app, Long.parseLong(this.sessionInfo.curFriendUin));
         i = j;
         if (localObject != null) {
           i = ((DeviceInfo)localObject).productId;
@@ -7387,7 +7334,7 @@ public class BaseChatPie
         i = 0;
         continue;
       }
-      afcm.a(this.app, this.mContext, getActivity(), this.sessionInfo, i, 1);
+      aftr.a(this.app, this.mContext, getActivity(), this.sessionInfo, i, 1);
       break;
       i = 0;
     }
@@ -7431,11 +7378,11 @@ public class BaseChatPie
       ((MqqHandler)localObject).sendMessageDelayed(localMessage, l);
       this.isNeedDelayShowUnreaded = Boolean.valueOf(false);
       this.mUnReadedCnt = i;
-      localObject = (aftn)getHelper(53);
+      localObject = (aglh)getHelper(53);
       if (localObject != null)
       {
-        ((aftn)localObject).c(this.mUnReadedCnt);
-        ((aftn)localObject).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+        ((aglh)localObject).c(this.mUnReadedCnt);
+        ((aglh)localObject).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
       }
       return;
       i = 0;
@@ -7462,22 +7409,22 @@ public class BaseChatPie
   {
     if (paramBoolean)
     {
-      ((CommonTextView)this.mTitleText).setMosaicEffect(new bhfj(10));
-      ((OnlineStatusLyricView)this.mSubTilteText).setMosaicEffect(new bhfj(10));
-      ((CommonTextView)this.mSubTitleText2).setMosaicEffect(new bhfj(10));
-      ((CommonImageView)this.mTitleIcon).setMosaicEffect(new bhfj(10));
-      ((CommonImageView)this.mTitleIcon2).setMosaicEffect(new bhfj(10));
-      ((CommonImageView)this.mTitleIconRight).setMosaicEffect(new bhfj(10));
-      localObject = this.mActivity.findViewById(2131365840);
+      ((CommonTextView)this.mTitleText).setMosaicEffect(new biqb(10));
+      ((OnlineStatusLyricView)this.mSubTilteText).setMosaicEffect(new biqb(10));
+      ((CommonTextView)this.mSubTitleText2).setMosaicEffect(new biqb(10));
+      ((CommonImageView)this.mTitleIcon).setMosaicEffect(new biqb(10));
+      ((CommonImageView)this.mTitleIcon2).setMosaicEffect(new biqb(10));
+      ((CommonImageView)this.mTitleIconRight).setMosaicEffect(new biqb(10));
+      localObject = this.mActivity.findViewById(2131365938);
       if (localObject != null) {
-        ((CommonImageView)localObject).setMosaicEffect(new bhfj(10));
+        ((CommonImageView)localObject).setMosaicEffect(new biqb(10));
       }
-      ((CommonTextView)this.mTitleCount).setMosaicEffect(new bhfj(10));
-      if (!nmy.a().a(this.sessionInfo.curFriendUin))
+      ((CommonTextView)this.mTitleCount).setMosaicEffect(new biqb(10));
+      if (!nty.a().a(this.sessionInfo.curFriendUin))
       {
-        localObject = SkinEngine.getInstances().getDefaultThemeDrawable(2130849953);
+        localObject = SkinEngine.getInstances().getDefaultThemeDrawable(2130850046);
         this.afRoot.setBackgroundDrawable((Drawable)localObject);
-        this.sessionInfo.chatBg = new aezp();
+        this.sessionInfo.chatBg = new afrb();
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
       }
@@ -7489,7 +7436,7 @@ public class BaseChatPie
     ((CommonImageView)this.mTitleIcon).setMosaicEffect(null);
     ((CommonImageView)this.mTitleIcon2).setMosaicEffect(null);
     ((CommonImageView)this.mTitleIconRight).setMosaicEffect(null);
-    Object localObject = this.mActivity.findViewById(2131365840);
+    Object localObject = this.mActivity.findViewById(2131365938);
     if (localObject != null) {
       ((CommonImageView)localObject).setMosaicEffect(null);
     }
@@ -7497,10 +7444,10 @@ public class BaseChatPie
     loadBackgroundAsync();
   }
   
-  public MessageForArkApp findCurrentArkMsg(afvi paramafvi)
+  public MessageForArkApp findCurrentArkMsg(agnx paramagnx)
   {
     Object localObject;
-    if (paramafvi == null)
+    if (paramagnx == null)
     {
       localObject = null;
       return localObject;
@@ -7522,13 +7469,13 @@ public class BaseChatPie
           } while (!(localObject instanceof MessageForArkApp));
           localMessageForArkApp = (MessageForArkApp)localObject;
           localObject = localMessageForArkApp;
-          if (localMessageForArkApp.arkContainer == paramafvi) {
+          if (localMessageForArkApp.arkContainer == paramagnx) {
             break;
           }
         } while (localMessageForArkApp.mExtendMsgArkAppList == null);
         localObject = localMessageForArkApp.mExtendMsgArkAppList.iterator();
       }
-    } while (((MessageForArkApp)((Iterator)localObject).next()).arkContainer != paramafvi);
+    } while (((MessageForArkApp)((Iterator)localObject).next()).arkContainer != paramagnx);
     return localMessageForArkApp;
     return null;
   }
@@ -7542,9 +7489,9 @@ public class BaseChatPie
     }
     if (!bool)
     {
-      agkg.a();
-      agkg.b();
-      agkc.a().a();
+      ahcw.a();
+      ahcw.b();
+      ahcs.a().a();
       finish(1);
     }
   }
@@ -7553,7 +7500,7 @@ public class BaseChatPie
   {
     if ((paramInt == 0) || (paramInt == 1))
     {
-      SplashActivity.jdField_c_of_type_Int = acjp.a().a(0, 1, 0, 0, 2000, 302, 8L, Process.myTid(), "exitAIO");
+      SplashActivity.jdField_c_of_type_Int = aczy.a().a(0, 1, 0, 0, 2000, 302, 8L, Process.myTid(), "exitAIO");
       SplashActivity.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     }
     this.mCurrentAIOState = 7;
@@ -7561,10 +7508,10 @@ public class BaseChatPie
     if (preFinish(paramInt)) {
       return true;
     }
-    afmp.b();
+    agdt.b();
     pauseWhenBack();
     onFinish_setReaded();
-    if (this.mActivity.getIntent().getBooleanExtra("key_req_by_contact_sync", false)) {
+    if ((this.mActivity.getIntent() != null) && (this.mActivity.getIntent().getBooleanExtra("key_req_by_contact_sync", false))) {
       this.mActivity.moveTaskToBack(true);
     }
     backToQzoneUserHomeActivity();
@@ -7580,7 +7527,7 @@ public class BaseChatPie
         Object localObject = this.mTitleBtnLeft.getTag();
         String[] arrayOfString = (String[])localObject;
         if ((localObject != null) && ("comic".equals(arrayOfString[0]))) {
-          bkfq.a(this.app, "3006", "2", "40025", arrayOfString[1], new String[] { "3" });
+          blrb.a(this.app, "3006", "2", "40025", arrayOfString[1], new String[] { "3" });
         }
       }
       catch (Exception localException)
@@ -7600,7 +7547,7 @@ public class BaseChatPie
       }
       hideAppShortcutBar();
       DuiButtonImageView.b();
-      this.helperProvider.a(12);
+      this.helperProvider.a(13);
       this.mCurrentAIOState = 8;
       ListenTogetherManager.a(this.app, this.sessionInfo, hashCode());
       if (this.hasCheckedBoxVisible) {
@@ -7645,7 +7592,7 @@ public class BaseChatPie
   protected List<ChatMessage> getAIOList(boolean paramBoolean)
   {
     List localList = getAIOList(this.app, paramBoolean);
-    if (((aubv)this.app.getManager(379)).a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin))
+    if (((avhp)this.app.getManager(QQManagerFactory.CUSTOMIZE_GRAY_TIPS)).a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin))
     {
       localList = getAIOList(this.app, paramBoolean);
       if (QLog.isColorLevel()) {
@@ -7668,7 +7615,7 @@ public class BaseChatPie
   
   protected void getAndParseAIOList()
   {
-    ThreadManager.post(new BaseChatPie.39(this), 8, null, true);
+    ThreadManager.post(new BaseChatPie.38(this), 8, null, true);
   }
   
   public AIOAnimationConatiner getAnimContainer()
@@ -7758,7 +7705,7 @@ public class BaseChatPie
     return this.mFunBtn.isEnabled();
   }
   
-  public zsz getGiftAioPanelData()
+  public aail getGiftAioPanelData()
   {
     if (this.mAIOGiftPanelContainer != null) {
       return this.mAIOGiftPanelContainer.a();
@@ -7766,15 +7713,15 @@ public class BaseChatPie
     return null;
   }
   
-  public bfip getGiftAnimationController()
+  public bgrg getGiftAnimationController()
   {
     if (this.mGiftAnimationController == null) {
-      this.mGiftAnimationController = new bfip(this, this.mActivity, this.app);
+      this.mGiftAnimationController = new bgrg(this, this.mActivity, this.app);
     }
     return this.mGiftAnimationController;
   }
   
-  public <T extends afrb> T getHelper(int paramInt)
+  public <T extends agim> T getHelper(int paramInt)
   {
     return this.helperProvider.a(paramInt);
   }
@@ -7789,20 +7736,20 @@ public class BaseChatPie
     return this.mInputStat != 2;
   }
   
-  public ahqa getLocationShareTipBar()
+  public aikz getLocationShareTipBar()
   {
     return this.mLocationShareTipBar;
   }
   
-  public avmr getMagicfaceViewController()
+  public awsw getMagicfaceViewController()
   {
     if (this.mMagicfaceViewController == null) {
-      this.mMagicfaceViewController = new avmr(this);
+      this.mMagicfaceViewController = new awsw(this);
     }
     return this.mMagicfaceViewController;
   }
   
-  public agxe getPanelManager()
+  public ahqe getPanelManager()
   {
     return this.panelManager;
   }
@@ -7829,7 +7776,7 @@ public class BaseChatPie
   
   public QQRecorder.RecorderParam getRecorderParam()
   {
-    return new QQRecorder.RecorderParam(bfyl.jdField_a_of_type_Int, 0, 0);
+    return new QQRecorder.RecorderParam(bhhd.jdField_a_of_type_Int, 0, 0);
   }
   
   public XPanelContainer getRoot()
@@ -7867,10 +7814,10 @@ public class BaseChatPie
         if (this.listView.getFooterViewsCount() > 0)
         {
           i = paramInt;
-          if (((View)localObject).getId() == 2131362429)
+          if (((View)localObject).getId() == 2131362435)
           {
             i = paramInt;
-            if (!((akya)getHelper(4)).b()) {
+            if (!((alvw)getHelper(4)).b()) {
               i = 2;
             }
           }
@@ -7901,7 +7848,7 @@ public class BaseChatPie
         break;
       }
       i = paramInt;
-      if (((akya)getHelper(4)).b()) {
+      if (((alvw)getHelper(4)).b()) {
         break;
       }
       i = 2;
@@ -7938,14 +7885,14 @@ public class BaseChatPie
     return null;
   }
   
-  public ahqs getTipManager()
+  public ailr getTipManager()
   {
     return this.mTipsMgr;
   }
   
   public int getTitleBarHeight()
   {
-    return this.mContext.getResources().getDimensionPixelSize(2131299076);
+    return AIOUtils.getTitleBarHeight(this.mContext);
   }
   
   public final MqqHandler getUIHandler()
@@ -7953,7 +7900,7 @@ public class BaseChatPie
     return this.uiHandler;
   }
   
-  public agpy getViewCache()
+  public ahio getViewCache()
   {
     return this.mStructingMsgItemViewCache;
   }
@@ -7962,12 +7909,12 @@ public class BaseChatPie
   {
     EmojiHomeUiPlugin.openEmojiHomePage(this.mActivity, this.app.getAccount(), paramInt);
     if (6 == paramInt) {
-      bcef.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiTianjia", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiTianjia", 0, 0, "", "", "", "");
     }
     while (9 != paramInt) {
       return;
     }
-    bcef.b(null, "CliOper", "", "", "MbGuanli", "MbGiftClick", 0, 0, "", "", "", "");
+    bdla.b(null, "CliOper", "", "", "MbGuanli", "MbGiftClick", 0, 0, "", "", "", "");
   }
   
   public void grantForCamera()
@@ -7982,7 +7929,7 @@ public class BaseChatPie
     {
       try
       {
-        localObject = aara.a(this.app, Long.parseLong(this.sessionInfo.curFriendUin));
+        localObject = abgm.a(this.app, Long.parseLong(this.sessionInfo.curFriendUin));
         if (localObject == null) {
           continue;
         }
@@ -7996,10 +7943,10 @@ public class BaseChatPie
         i = 0;
         continue;
       }
-      afcm.a(this.app, this.mContext, getActivity(), this.sessionInfo, i, 0);
-      localObject = (amoa)this.app.getBusinessHandler(53);
-      if (((amoa)localObject).a(0)) {
-        ((amoa)localObject).a();
+      aftr.a(this.app, this.mContext, getActivity(), this.sessionInfo, i, 0);
+      localObject = (anqn)this.app.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
+      if (((anqn)localObject).a(0)) {
+        ((anqn)localObject).a();
       }
       return;
       int i = 0;
@@ -8040,10 +7987,10 @@ public class BaseChatPie
           this.businessFooterDetector.a(i, true, "handleMsg_showFooter", 0);
           return false;
         }
-        if (1 != ((alnr)this.app.getManager(153)).b(this.app.getCurrentUin()))
+        if (1 != ((amme)this.app.getManager(QQManagerFactory.APOLLO_MANAGER)).b(this.app.getCurrentUin()))
         {
           i = 1;
-          if ((i == 0) || (ambc.a(this.app))) {
+          if ((i == 0) || (anck.a(this.app))) {
             break label282;
           }
         }
@@ -8067,10 +8014,10 @@ public class BaseChatPie
       int i = paramMessage.arg1;
       String str = paramMessage.getData().getString("senderUin");
       paramMessage = (ApolloActionData)paramMessage.obj;
-      ((alpg)this.app.getManager(232)).a(this, paramMessage, i, str);
+      ((amog)this.app.getManager(QQManagerFactory.APOLLO_RESPONSE_MANAGER)).a(this, paramMessage, i, str);
       return false;
     }
-    ((alpg)this.app.getManager(232)).a();
+    ((amog)this.app.getManager(QQManagerFactory.APOLLO_RESPONSE_MANAGER)).a();
     return false;
   }
   
@@ -8094,7 +8041,7 @@ public class BaseChatPie
     if (this.emotionKeywordAdapter != null) {
       this.emotionKeywordAdapter.reportExposeData();
     }
-    ((afsu)getHelper(14)).b();
+    ((agki)getHelper(14)).b();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -8107,7 +8054,7 @@ public class BaseChatPie
     handleApolloMessage(paramMessage);
     handleApolloPanelMessage(paramMessage);
     handlePttMessage(paramMessage);
-    ((afqg)getHelper(83)).a(paramMessage);
+    ((aghq)getHelper(83)).a(paramMessage);
     handleUpdateBubbleCache(paramMessage);
     handleWeiyunMsg(paramMessage);
     switch (paramMessage.what)
@@ -8137,7 +8084,7 @@ public class BaseChatPie
               do
               {
                 return true;
-                QQToast.a(this.app.getApp(), 2131718116, 1).b(getTitleBarHeight());
+                QQToast.a(this.app.getApp(), 2131718501, 1).b(getTitleBarHeight());
                 return true;
               } while ((this.listView == null) || (paramMessage.arg1 <= 50));
               localLayoutParams = (RelativeLayout.LayoutParams)this.listView.getLayoutParams();
@@ -8149,13 +8096,13 @@ public class BaseChatPie
             return true;
             paramMessage = (PlusPanel)this.panelManager.a(8);
           } while (paramMessage == null);
-          paramMessage.c();
+          paramMessage.a();
           return true;
           updateZanInfo(paramMessage);
           return true;
           boolean bool = paramMessage.getData().getBoolean("showRedDot");
           if (bool) {
-            bcef.b(this.app, "CliOper", "", "", "0X8005B00", "0X8005B00", 0, 0, "", "", "", "");
+            bdla.b(this.app, "CliOper", "", "", "0X8005B00", "0X8005B00", 0, 0, "", "", "", "");
           }
           this.mCustomTitleView.b(bool);
           return true;
@@ -8228,7 +8175,7 @@ public class BaseChatPie
             this.mMask = new View(this.mContext);
             this.mMask.setBackgroundColor(1996488704);
             RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-            localLayoutParams.addRule(6, 2131370017);
+            localLayoutParams.addRule(6, 2131370188);
             localLayoutParams.addRule(2, this.mInputBar.getId());
             this.mMask.setLayoutParams(localLayoutParams);
             this.mContent.addView(this.mMask);
@@ -8269,7 +8216,7 @@ public class BaseChatPie
   
   protected void handleRequest(Intent paramIntent, int paramInt)
   {
-    int i = paramIntent.getIntExtra(bftk.h, -1);
+    int i = paramIntent.getIntExtra(bhcc.h, -1);
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "handleRequest requestCode " + i);
     }
@@ -8277,12 +8224,12 @@ public class BaseChatPie
       this.chatPieHelper.b(paramIntent);
     }
     if (paramInt == 1) {
-      ahpm.b(this.app, this.sessionInfo.curFriendUin);
+      aiki.b(this.app, this.sessionInfo.curFriendUin);
     }
     while ((paramInt != 2) || (this.mIsCurrentSession)) {
       return;
     }
-    ahpm.b(this.app, this.sessionInfo.curFriendUin);
+    aiki.b(this.app, this.sessionInfo.curFriendUin);
   }
   
   protected void handleScrollOutScreen(View paramView)
@@ -8298,39 +8245,44 @@ public class BaseChatPie
           {
             return;
             paramView = AIOUtils.getHolder(paramView);
-            if (agnu.class.isInstance(paramView))
+            if ((paramView instanceof ahgk))
             {
-              ((agnu)paramView).a();
+              ((ahgk)paramView).a();
               return;
             }
-            if (agok.class.isInstance(paramView))
+            if ((paramView instanceof ahha))
             {
-              ((agok)paramView).a();
+              ((ahha)paramView).a();
               return;
             }
-            if (aghp.class.isInstance(paramView))
+            if ((paramView instanceof ahag))
             {
-              ((aghp)paramView).a();
+              ((ahag)paramView).a();
               return;
             }
-            if (!(paramView instanceof agql)) {
+            if (!(paramView instanceof ahjb)) {
               break;
             }
-            paramView = (agql)paramView;
+            paramView = (ahjb)paramView;
           } while (paramView.a == null);
           paramView.a.d();
           return;
-          if (!(paramView instanceof agjd)) {
+          if (!(paramView instanceof ahbt)) {
             break;
           }
-          paramView = (agjd)paramView;
+          paramView = (ahbt)paramView;
         } while (paramView.a == null);
         paramView.a.d();
         return;
-      } while (!(paramView instanceof agib));
-      paramView = (agib)paramView;
-    } while (paramView.a == null);
-    paramView.a.d();
+        if (!(paramView instanceof ahas)) {
+          break;
+        }
+        paramView = (ahas)paramView;
+      } while (paramView.a == null);
+      paramView.a.d();
+      return;
+    } while (!(paramView instanceof agnq));
+    ((agnq)paramView).a();
   }
   
   protected void handleSignalAfterTextChanged(Editable paramEditable)
@@ -8382,8 +8334,8 @@ public class BaseChatPie
         bool1 = true;
         setFunBtnEnabled(bool1);
       }
-      afsu localafsu = (afsu)getHelper(14);
-      if ((!localafsu.a()) || (this.sessionInfo.curType == 1008)) {
+      agki localagki = (agki)getHelper(14);
+      if ((!localagki.a()) || (this.sessionInfo.curType == 1008)) {
         break label430;
       }
       i = 1;
@@ -8406,13 +8358,13 @@ public class BaseChatPie
       bool1 = true;
       label213:
       setFunBtnEnabled(bool1);
-      afss localafss = (afss)getHelper(29);
+      agkg localagkg = (agkg)getHelper(29);
       if (paramEditable.length() <= 0) {
         break label440;
       }
       bool1 = true;
       label240:
-      localafss.a(bool1);
+      localagkg.a(bool1);
       if (this.hasDraftText)
       {
         if (paramEditable.length() <= 0) {
@@ -8428,14 +8380,14 @@ public class BaseChatPie
         QLog.d(this.tag, 2, "check zhitu condition: " + paramEditable.length() + " / " + this.receiptMode + " / " + this.mZhituSwitch);
       }
       if (i != 0) {
-        localafsu.b(paramEditable);
+        localagki.b(paramEditable);
       }
       if (isShowStickerLayout(paramEditable))
       {
         if (i == 0) {
           break label450;
         }
-        localafsu.a(paramEditable);
+        localagki.a(paramEditable);
       }
     }
     for (;;)
@@ -8471,7 +8423,7 @@ public class BaseChatPie
     if ((!this.receiptMode) && (paramEditable.length() > 0) && (this.mZhituSwitch))
     {
       this.uiHandler.removeMessages(84);
-      ahtj.a(this.app).a(this.app, paramEditable, this.listAdapter.a(), getCurType(), true);
+      aioi.a(this.app).a(this.app, paramEditable, this.listAdapter.a(), getCurType(), true);
       this.uiHandler.sendEmptyMessageDelayed(84, 10000L);
     }
   }
@@ -8480,13 +8432,13 @@ public class BaseChatPie
   {
     int i = 1;
     boolean bool;
-    if ((paramEditable.toString().trim().length() > 0) && (((afqx)getHelper(18)).a(this.mContext, paramEditable.toString(), this.input)))
+    if ((paramEditable.toString().trim().length() > 0) && (((agii)getHelper(18)).a(this.mContext, paramEditable.toString(), this.input)))
     {
       bool = true;
       if (QLog.isColorLevel()) {
-        QLog.d(this.tag, 2, "check valid input condition: " + bool + " / " + this.receiptMode + " / " + ahtj.a(this.sessionInfo.curType));
+        QLog.d(this.tag, 2, "check valid input condition: " + bool + " / " + this.receiptMode + " / " + aioi.a(this.sessionInfo.curType));
       }
-      if ((!bool) || (this.receiptMode) || (!ahtj.a(this.sessionInfo.curType)) || (this.mSourceMsgInfo != null) || ((this instanceof ahgc))) {
+      if ((!bool) || (this.receiptMode) || (!aioi.a(this.sessionInfo.curType)) || (this.mSourceMsgInfo != null) || ((this instanceof aiav))) {
         break label306;
       }
       bool = true;
@@ -8494,8 +8446,8 @@ public class BaseChatPie
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, "afterTextChange,isValidInput = " + bool);
       }
-      ahtj localahtj = ahtj.a(this.app);
-      if ((!bool) || (!localahtj.a(paramEditable))) {
+      aioi localaioi = aioi.a(this.app);
+      if ((!bool) || (!localaioi.a(paramEditable))) {
         break label311;
       }
       label205:
@@ -8506,20 +8458,20 @@ public class BaseChatPie
       }
       if (i != 0)
       {
-        if (!atid.a(this.app).b(this.app)) {
+        if (!aumk.a(this.app).b(this.app)) {
           break label369;
         }
         if (this.mIconLayoutInInputRight.getVisibility() != 0) {
           break label321;
         }
-        if ((paramEditable.length() <= 20) && (localahtj.a(paramEditable))) {
+        if ((paramEditable.length() <= 20) && (localaioi.a(paramEditable))) {
           break label316;
         }
         this.mIconButtonInInputRight.setSelected(false);
         this.mZhituSwitch = false;
         showZhituIcon();
-        localahtj.c();
-        this.mIconButtonInInputRight.setImageResource(2130838103);
+        localaioi.c();
+        this.mIconButtonInInputRight.setImageResource(2130838117);
       }
     }
     label306:
@@ -8539,7 +8491,7 @@ public class BaseChatPie
       return;
       showZhituIcon();
     } while (this.hasDraftText);
-    bcef.b(this.app, "CliOper", "", "", "0X80094D0", "0X80094D0", 0, 0, "", "", "", "");
+    bdla.b(this.app, "CliOper", "", "", "0X80094D0", "0X80094D0", 0, 0, "", "", "", "");
     return;
     label369:
     this.mIconLayoutInInputRight.setVisibility(8);
@@ -8558,7 +8510,7 @@ public class BaseChatPie
     }
     if (this.mTipRoot != null)
     {
-      int i = (int)this.mActivity.getResources().getDimension(2131299076);
+      int i = (int)this.mActivity.getResources().getDimension(2131299080);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mTipRoot.getLayoutParams();
       localLayoutParams.topMargin = i;
       this.mTipRoot.setLayoutParams(localLayoutParams);
@@ -8582,19 +8534,15 @@ public class BaseChatPie
           this.root.b();
         }
       }
-      else
+      else if (((this.root.a() instanceof VoiceTextPanel)) && (((InputMethodManager)localObject).isActive()))
       {
-        View localView = this.root.a();
-        if ((localView != null) && ((localView instanceof VoiceTextPanel)) && (((InputMethodManager)localObject).isActive()))
-        {
-          if (!paramBoolean) {
-            break label98;
-          }
-          this.root.b();
+        if (!paramBoolean) {
+          break label92;
         }
+        this.root.b();
       }
     }
-    label98:
+    label92:
     do
     {
       return;
@@ -8617,9 +8565,9 @@ public class BaseChatPie
   
   public void hideAppShortcutBar()
   {
-    afsn localafsn = (afsn)this.helperProvider.a(52);
-    if (localafsn != null) {
-      localafsn.h();
+    agkb localagkb = (agkb)this.helperProvider.a(52);
+    if (localagkb != null) {
+      localagkb.i();
     }
   }
   
@@ -8640,7 +8588,7 @@ public class BaseChatPie
   
   public void hideFullScreenInput(boolean paramBoolean)
   {
-    ((afqj)this.helperProvider.a(24)).a(paramBoolean);
+    ((aght)this.helperProvider.a(24)).a(paramBoolean);
   }
   
   public void hideGiftPanel()
@@ -8676,7 +8624,7 @@ public class BaseChatPie
   {
     if ((this.mActivity != null) && (this.mIconLayoutInInputRight != null) && (this.mIconLayoutInInputRight.getVisibility() == 0))
     {
-      this.mIconButtonInInputRight.setImageResource(2130838103);
+      this.mIconButtonInInputRight.setImageResource(2130838117);
       this.mIconLayoutInInputRight.setVisibility(8);
       this.mZhituSwitch = false;
       this.input.setPadding(this.input.getPaddingLeft(), this.input.getPaddingTop(), AIOUtils.dp2px(11.0F, this.mActivity.getResources()), this.input.getPaddingBottom());
@@ -8704,8 +8652,8 @@ public class BaseChatPie
     {
       this.mFakeInput = new View(this.mActivity);
       this.mFakeInputParam = new RelativeLayout.LayoutParams(-1, (int)(15.0F * this.mDensity + 0.5F));
-      this.mFakeInputParam.addRule(3, 2131368751);
-      this.mFakeInput.setId(2131362371);
+      this.mFakeInputParam.addRule(3, 2131368910);
+      this.mFakeInput.setId(2131362377);
       if (this.mContent != null) {
         this.mContent.addView(this.mFakeInput, this.mFakeInputParam);
       }
@@ -8713,7 +8661,7 @@ public class BaseChatPie
     this.mFakeInput.setVisibility(0);
     this.mFakeInput.setOnClickListener(this);
     if (AppSetting.jdField_c_of_type_Boolean) {
-      bfpm.a(this.mFakeInput, false);
+      bgyd.a(this.mFakeInput, false);
     }
   }
   
@@ -8730,21 +8678,20 @@ public class BaseChatPie
   
   protected void initTipsTaskList()
   {
-    this.mOperateTips = new ahqh(this.app, this.mTipsMgr, this.app.getApp(), this.root, this.mBlueTipsTaskList, this.sessionInfo, this.listAdapter);
-    ahqj localahqj = new ahqj(this.app, this.mTipsMgr, this.mActivity, this.mActivity.getIntent());
+    this.mOperateTips = new ailg(this.app, this.mTipsMgr, this.app.getApp(), this.root, this.mBlueTipsTaskList, this.sessionInfo, this.listAdapter);
+    aili localaili = new aili(this.app, this.mTipsMgr, this.mActivity, this.mActivity.getIntent());
     this.mVideoStatusBar = new VideoStatusTipsBar(this.app, this.sessionInfo, this.mTipsMgr, this.mActivity, this.uiHandler);
-    this.mFraudTipsBar = new ahpk(this.app, this.mTipsMgr, this.app.getApp(), this.sessionInfo, this.uiHandler);
-    new SougouInputGrayTips(this.app, this.mTipsMgr, this.mContext, this.sessionInfo);
-    ahpw localahpw = new ahpw(this.app, this.mTipsMgr, this.mActivity, this.sessionInfo, this.listAdapter);
+    this.mFraudTipsBar = new aikg(this.app, this.mTipsMgr, this.app.getApp(), this.sessionInfo, this.uiHandler);
+    aikv localaikv = new aikv(this.app, this.mTipsMgr, this.mActivity, this.sessionInfo, this.listAdapter);
     VipSpecialCareGrayTips localVipSpecialCareGrayTips = new VipSpecialCareGrayTips(this.app, this.mTipsMgr, this.mActivity, this.sessionInfo);
-    ahpf localahpf = new ahpf(this.app, this.mTipsMgr, this.mActivity);
-    this.mLocationShareTipBar = new ahqa(this);
+    aika localaika = new aika(this.app, this.mTipsMgr, this.mActivity);
+    this.mLocationShareTipBar = new aikz(this);
     this.mTipsMgr.a(this.mOperateTips);
-    this.mTipsMgr.a(localahqj);
+    this.mTipsMgr.a(localaili);
     this.mTipsMgr.a(this.mVideoStatusBar);
     this.mTipsMgr.a(this.mFraudTipsBar);
-    this.mTipsMgr.a(localahpf);
-    this.mTipsMgr.a(localahpw);
+    this.mTipsMgr.a(localaika);
+    this.mTipsMgr.a(localaikv);
     this.mTipsMgr.a(localVipSpecialCareGrayTips);
     this.mTipsMgr.a(this.mLocationShareTipBar);
   }
@@ -8755,8 +8702,8 @@ public class BaseChatPie
     {
       this.mFakeUpInput = new View(this.mActivity);
       this.mFakeUpInputParam = new RelativeLayout.LayoutParams(-1, (int)(12.0F * this.mDensity + 0.5F));
-      this.mFakeUpInputParam.addRule(6, 2131368751);
-      this.mFakeUpInput.setId(2131362372);
+      this.mFakeUpInputParam.addRule(6, 2131368910);
+      this.mFakeUpInput.setId(2131362378);
       if (this.mContent != null) {
         this.mContent.addView(this.mFakeUpInput, this.mFakeUpInputParam);
       }
@@ -8764,7 +8711,7 @@ public class BaseChatPie
     this.mFakeUpInput.setVisibility(0);
     this.mFakeUpInput.setOnClickListener(this);
     if (AppSetting.jdField_c_of_type_Boolean) {
-      bfpm.a(this.mFakeUpInput, false);
+      bgyd.a(this.mFakeUpInput, false);
     }
   }
   
@@ -8812,21 +8759,26 @@ public class BaseChatPie
   
   public boolean isExtensionInfo()
   {
-    boolean bool = true;
-    if ((this.sessionInfo.curType == 3000) || (this.sessionInfo.curType == 1)) {
-      bool = false;
-    }
-    return bool;
+    return (this.sessionInfo.curType != 3000) && (this.sessionInfo.curType != 1);
   }
   
   public boolean isFullScreenMode()
   {
-    return ((afqj)this.helperProvider.a(24)).a();
+    return ((aght)this.helperProvider.a(24)).a();
   }
   
   public boolean isMsgBoxVisable()
   {
-    return (this.mMsgbox != null) && (this.mMsgbox.getVisibility() == 0);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.mMsgbox != null)
+    {
+      bool1 = bool2;
+      if (this.mMsgbox.getVisibility() == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean isNeedRecreatePanel(int paramInt)
@@ -8852,12 +8804,12 @@ public class BaseChatPie
   
   protected boolean isNeedUpdate(MessageRecord paramMessageRecord)
   {
-    return (this.sessionInfo.curFriendUin.equals(paramMessageRecord.frienduin)) && ((this.sessionInfo.curType == paramMessageRecord.istroop) || ((abwz.d(this.sessionInfo.curType)) && (abwz.d(paramMessageRecord.istroop)))) && (apse.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.sessionInfo.curType, this.sessionInfo.topicId));
+    return (this.sessionInfo.curFriendUin.equals(paramMessageRecord.frienduin)) && ((this.sessionInfo.curType == paramMessageRecord.istroop) || ((acnh.d(this.sessionInfo.curType)) && (acnh.d(paramMessageRecord.istroop)))) && (aqvh.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.sessionInfo.curType, this.sessionInfo.topicId));
   }
   
   public boolean isOneWayFriend()
   {
-    return azxj.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin);
+    return bbds.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin);
   }
   
   public boolean isPTVRecording()
@@ -8932,8 +8884,8 @@ public class BaseChatPie
   
   protected boolean isShowStickerLayout(Editable paramEditable)
   {
-    afsu localafsu = (afsu)getHelper(14);
-    return (paramEditable.length() > 0) && (!this.receiptMode) && (!this.mZhituSwitch) && (!isReplyTextMode()) && (!isFullScreenMode()) && (localafsu.b()) && (this.sessionInfo.curType != 10007);
+    agki localagki = (agki)getHelper(14);
+    return (paramEditable.length() > 0) && (!this.receiptMode) && (!this.mZhituSwitch) && (!isReplyTextMode()) && (!isFullScreenMode()) && (localagki.b()) && (this.sessionInfo.curType != 10007);
   }
   
   public boolean isSimpleBar()
@@ -8961,7 +8913,7 @@ public class BaseChatPie
     {
       int i = getIndexOfMsg((List)localObject, paramLong);
       if (i >= 0) {
-        this.listView.post(new BaseChatPie.29(this, i));
+        this.listView.post(new BaseChatPie.28(this, i));
       }
     }
     else
@@ -8974,7 +8926,7 @@ public class BaseChatPie
     for (localObject = ChatActivityUtils.b(localList, this.sessionInfo, this.app);; localObject = ChatActivityUtils.a(localList, this.sessionInfo, this.app))
     {
       setList(localList, ChatActivityUtils.a(this.app, this.mContext, this.sessionInfo, (MessageRecord)localObject, -1L));
-      this.listView.post(new BaseChatPie.30(this));
+      this.listView.post(new BaseChatPie.29(this));
       break;
     }
   }
@@ -8982,9 +8934,8 @@ public class BaseChatPie
   public void jumpToSpecifiedMsg(ChatMessage paramChatMessage)
   {
     List localList = this.listAdapter.a();
-    long l = paramChatMessage.time;
     if ((this.sessionInfo.curType == 3000) || (this.sessionInfo.curType == 1)) {}
-    for (l = paramChatMessage.shmsgseq;; l = paramChatMessage.time)
+    for (long l = paramChatMessage.shmsgseq;; l = paramChatMessage.time)
     {
       if (localList.size() > 0)
       {
@@ -9010,12 +8961,12 @@ public class BaseChatPie
     QLog.d(this.tag, 2, "leftBackEvent() disableBackForPTV true");
     return;
     if ((this.mDoodlePanel != null) && (this.mDoodlePanel.a(true) > 0)) {
-      bcef.b(this.app, "dc00898", "", "", "0X80081B8", "0X80081B8", 1, 0, "", "", "", "");
+      bdla.b(this.app, "dc00898", "", "", "0X80081B8", "0X80081B8", 1, 0, "", "", "", "");
     }
     if ((this.mDoodlePanel != null) && (this.mDoodlePanel.a(true) > 10))
     {
-      BaseChatPie.45 local45 = new BaseChatPie.45(this, paramBoolean);
-      bfur.a(this.mContext, 230, null, this.mContext.getString(2131689858), this.mContext.getString(2131689856), this.mContext.getString(2131689857), local45, local45).show();
+      BaseChatPie.44 local44 = new BaseChatPie.44(this, paramBoolean);
+      bhdj.a(this.mContext, 230, null, this.mContext.getString(2131689887), this.mContext.getString(2131689885), this.mContext.getString(2131689886), local44, local44).show();
       return;
     }
     doLeftBackEvent(paramBoolean);
@@ -9029,40 +8980,47 @@ public class BaseChatPie
       QLog.i(this.tag, 1, "loadBackgroundAsync: skip for mosaic is on");
       return;
     }
-    ThreadManager.postImmediately(new BaseChatPie.26(this), null, true);
+    ThreadManager.postImmediately(new BaseChatPie.25(this), null, true);
   }
   
   protected void loadTextDraft()
   {
     this.input.setText("");
     this.mSourceMsgInfo = null;
-    this.mDraftManager = avnb.a(this.app);
+    this.mDraftManager = awtg.a(this.app);
     this.isBeingInputDraft = true;
     ThreadManager.post(new GetTextDraftJob(this.uiHandler, this.sessionInfo, this.mDraftManager, this.app, this), 8, null, true);
   }
   
   public void magicfaceSend(Emoticon paramEmoticon)
   {
-    acvv.a(this.app, this.mContext, this.sessionInfo, paramEmoticon);
+    admh.a(this.app, this.mContext, this.sessionInfo, paramEmoticon);
   }
   
   protected void messageTips(QQMessageFacade.Message paramMessage)
   {
     if (this.isJubaoMode) {}
-    while ((!BaseChatpieHelper.a(this.sessionInfo, this.app, paramMessage)) || (isFullScreenMode()) || (bjnm.a(this.app).c(paramMessage)) || (((afqy)getHelper(39)).a(paramMessage)) || (24 == this.mTipsMgr.a())) {
+    while ((!BaseChatpieHelper.a(this.sessionInfo, this.app, paramMessage)) || (isFullScreenMode()) || (bkyy.a(this.app).c(paramMessage)) || (((agij)getHelper(39)).a(paramMessage)) || (24 == this.mTipsMgr.a())) {
       return;
     }
     Intent localIntent = this.app.getIntentByMessage(this.mContext, paramMessage, false);
     if (9002 == paramMessage.istroop) {
       localIntent.putExtra("af_key_from", 2);
     }
-    paramMessage = new BaseChatPie.43(this, paramMessage, localIntent);
+    paramMessage = new BaseChatPie.42(this, paramMessage, localIntent);
     this.mActivity.runOnUiThread(paramMessage);
   }
   
   protected boolean needShowTimeForLastMsgItem()
   {
     return true;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    if (this.listAdapter != null) {
+      this.listAdapter.notifyDataSetChanged();
+    }
   }
   
   public void onAudioPanelTypeChanged(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -9072,27 +9030,27 @@ public class BaseChatPie
       break label7;
     }
     label7:
-    label217:
-    label222:
+    label218:
     label223:
+    label224:
     for (;;)
     {
       return;
       if (!paramBoolean2)
       {
-        Object localObject = (amsw)this.app.getManager(51);
+        Object localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if ((this.sessionInfo.curType == 3000) || (this.sessionInfo.curType == 1))
         {
-          localObject = ((amsw)localObject).a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
+          localObject = ((anvk)localObject).a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
           if (localObject != null) {
-            break label222;
+            break label223;
           }
           localObject = this.mNoC2CExtensionInfo;
         }
         for (;;)
         {
           if (localObject == null) {
-            break label223;
+            break label224;
           }
           if (paramInt == 2)
           {
@@ -9101,7 +9059,7 @@ public class BaseChatPie
           }
           if (!((NoC2CExtensionInfo)localObject).isDataChanged) {
             if (((NoC2CExtensionInfo)localObject).audioPanelType == paramInt) {
-              break label132;
+              break label133;
             }
           }
           for (paramBoolean1 = true;; paramBoolean1 = false)
@@ -9110,7 +9068,7 @@ public class BaseChatPie
             ((NoC2CExtensionInfo)localObject).audioPanelType = paramInt;
             return;
           }
-          ExtensionInfo localExtensionInfo = ((amsw)localObject).a(this.sessionInfo.curFriendUin, false);
+          ExtensionInfo localExtensionInfo = ((anvk)localObject).a(this.sessionInfo.curFriendUin, false);
           localObject = localExtensionInfo;
           if (localExtensionInfo == null) {
             localObject = this.mExtensionInfo;
@@ -9125,7 +9083,7 @@ public class BaseChatPie
           }
           if (!((ExtensionInfo)localObject).isDataChanged) {
             if (((ExtensionInfo)localObject).audioPanelType == paramInt) {
-              break label217;
+              break label218;
             }
           }
           for (paramBoolean1 = bool;; paramBoolean1 = false)
@@ -9147,7 +9105,7 @@ public class BaseChatPie
     if ((this.mTitleText != null) && (this.input != null))
     {
       this.input.requestFocus();
-      bjmm.a(this.input);
+      bkxz.a(this.input);
       str = this.mTitleText.getText().toString() + " ";
       i = this.input.getSelectionStart();
       localEditable = this.input.getEditableText();
@@ -9171,8 +9129,8 @@ public class BaseChatPie
       }
       return true;
     }
-    akya localakya = (akya)getHelper(4);
-    if ((localakya != null) && (localakya.a())) {
+    alvw localalvw = (alvw)getHelper(4);
+    if ((localalvw != null) && (localalvw.a())) {
       return true;
     }
     if (this.doutuManager != null) {
@@ -9188,10 +9146,10 @@ public class BaseChatPie
       }
       return false;
     }
-    if (((afqy)getHelper(39)).a()) {
+    if (((agij)getHelper(39)).a()) {
       return true;
     }
-    ((afst)getHelper(41)).a();
+    ((agkh)getHelper(41)).a();
     return finish(0);
   }
   
@@ -9217,53 +9175,38 @@ public class BaseChatPie
   
   public void onCheckedChanged(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i2 = 1;
+    int i1 = 1;
     AIOLongShotHelper localAIOLongShotHelper = (AIOLongShotHelper)getHelper(15);
-    int m;
+    int i;
     int k;
     int j;
-    int i;
-    int n;
+    int m;
     if (!localAIOLongShotHelper.a()) {
       if (AIOUtils.getAIOMsgMenuDpcConfig(1) == 0)
       {
-        m = 1;
-        if (m != 0)
+        i = 1;
+        if (i != 0)
         {
-          paramChatMessage = awcm.a().jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          paramChatMessage = axio.a().jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
           k = 0;
           j = 0;
           i = 1;
           if (!paramChatMessage.hasNext()) {
-            break label283;
+            break label261;
           }
           paramCompoundButton = (Map.Entry)paramChatMessage.next();
           if (!((Boolean)paramCompoundButton.getValue()).booleanValue()) {
-            break label264;
+            break label242;
           }
-          n = k + 1;
+          m = k + 1;
           paramCompoundButton = (ChatMessage)paramCompoundButton.getKey();
-          k = amrp.a(paramCompoundButton) | j;
-          j = i;
-          if (m != 0)
-          {
-            j = i;
-            if (i != 0) {
-              if (anlo.a(paramCompoundButton))
-              {
-                j = i;
-                if (n <= 1) {}
-              }
-              else
-              {
-                j = 0;
-              }
-            }
+          k = anud.a(paramCompoundButton) | j;
+          if ((!aooh.a(paramCompoundButton)) || (m > 1)) {
+            i = 0;
           }
-          if (j != 0) {
-            break label222;
+          if (i != 0) {
+            break label196;
           }
-          i = j;
         }
       }
     }
@@ -9271,36 +9214,37 @@ public class BaseChatPie
     {
       if (k == 0)
       {
-        j = i2;
-        label176:
-        ((afpb)getHelper(66)).a(i & j);
-        i = awcm.a().c();
-        ((afsl)getHelper(40)).b(i);
+        j = i1;
+        label150:
+        ((aggf)getHelper(66)).a(i & j);
+        i = axio.a().c();
+        ((agjz)getHelper(40)).b(i);
         return;
-        m = 0;
+        i = 0;
         break;
-        label222:
-        i = n;
+        label196:
+        j = i;
+        i = m;
       }
       for (;;)
       {
-        n = k;
-        int i1 = j;
+        m = k;
+        int n = j;
         k = i;
-        j = n;
-        i = i1;
+        j = m;
+        i = n;
         break;
         j = 0;
-        break label176;
+        break label150;
         localAIOLongShotHelper.a(paramChatMessage, paramCompoundButton, paramBoolean);
         return;
-        label264:
-        n = i;
+        label242:
+        m = i;
         i = k;
         k = j;
-        j = n;
+        j = m;
       }
-      label283:
+      label261:
       k = j;
     }
   }
@@ -9308,11 +9252,11 @@ public class BaseChatPie
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131369068) && (i != 2131369436) && (i != 2131379417) && (i != 2131369874)) {
+    if ((i != 2131369231) && (i != 2131369605) && (i != 2131379722) && (i != 2131370044)) {
       AIOUtils.isUserOperatedInAIO = true;
     }
-    if ((i != 2131362373) && (i != 2131372779)) {
-      ((afqg)getHelper(83)).b(true);
+    if ((i != 2131362379) && (i != 2131372972)) {
+      ((aghq)getHelper(83)).b(true);
     }
     removeEmoticonGuideBubble();
     handleTitleBarClick(paramView);
@@ -9324,7 +9268,7 @@ public class BaseChatPie
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      alnr.jdField_a_of_type_JavaUtilArrayList.clear();
+      amme.jdField_a_of_type_JavaUtilArrayList.clear();
       this.mReadedCnt = this.listAdapter.getCount();
       if (this.mReadedCnt > 0)
       {
@@ -9333,7 +9277,7 @@ public class BaseChatPie
         this.listView.setSelectionFromBottom(this.listView.getCount() - 1, 0);
       }
       paramView.setVisibility(8);
-      ((aftn)getHelper(53)).onClick(paramView);
+      ((aglh)getHelper(53)).onClick(paramView);
       continue;
       onSend();
       continue;
@@ -9345,10 +9289,10 @@ public class BaseChatPie
       {
         localQQAppInterface.setLoudSpeakerState(bool);
         this.mpm.c();
-        ((avsq)this.app.getManager(14)).a(this.mpm.a(), this.sessionInfo, this.speakerPhoneOn);
+        ((awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(this.mpm.a(), this.sessionInfo, this.speakerPhoneOn);
         break;
       }
-      ((afqg)getHelper(83)).c();
+      ((aghq)getHelper(83)).c();
     }
   }
   
@@ -9373,7 +9317,7 @@ public class BaseChatPie
     if (paramInt == 36)
     {
       l = System.currentTimeMillis();
-      this.mVoiceTextEditPanel = ((VoiceTextPanel)View.inflate(this.mContext, 2131558665, null));
+      this.mVoiceTextEditPanel = ((VoiceTextPanel)View.inflate(this.mContext, 2131558677, null));
       this.mVoiceTextEditPanel.a(this.app, this, this.sessionInfo, this.mInputBar, this.panelicons);
       if (QLog.isColorLevel()) {
         QLog.d("OpenPanel", 2, "openVoiceTextEditPanel:" + (System.currentTimeMillis() - l));
@@ -9383,7 +9327,7 @@ public class BaseChatPie
     if (paramInt == 3)
     {
       l = System.currentTimeMillis();
-      this.mEmoPanel = ((EmoticonMainPanel)View.inflate(this.mContext, 2131559130, null));
+      this.mEmoPanel = ((EmoticonMainPanel)View.inflate(this.mContext, 2131559158, null));
       this.mEmoPanel.setCallBack(this);
       localObject = this.mEmoPanel;
       if ((isFullScreenMode()) || (this.receiptMode)) {}
@@ -9405,7 +9349,7 @@ public class BaseChatPie
     if (paramInt == 2)
     {
       l = System.currentTimeMillis();
-      this.mAudioPanel = ((AudioPanel)View.inflate(this.mContext, 2131560910, null));
+      this.mAudioPanel = ((AudioPanel)View.inflate(this.mContext, 2131560971, null));
       this.mAudioPanel.a(this.app, this, this.sessionInfo, this.mInputBar, this.panelicons);
       setLastAudioPanelType(-1);
       if (this.receiptMode) {
@@ -9422,8 +9366,8 @@ public class BaseChatPie
         return null;
       }
       l = System.currentTimeMillis();
-      localObject = ((afrt)this.helperProvider.a(7)).a(hashCode());
-      this.mFlashPicPanel = agwt.a(this.app, this, this.mInputBar, this.panelicons, true, (Intent)localObject);
+      localObject = ((agje)this.helperProvider.a(7)).a(hashCode());
+      this.mFlashPicPanel = ahpt.a(this.app, this, this.mInputBar, this.panelicons, true, (Intent)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("OpenPanel", 2, "OpenFlashPicPanel:" + (System.currentTimeMillis() - l));
       }
@@ -9436,9 +9380,9 @@ public class BaseChatPie
     }
     if (paramInt == 21)
     {
-      this.mApolloPanel = ((ApolloPanel)View.inflate(this.mContext, 2131558588, null));
+      this.mApolloPanel = ((ApolloPanel)View.inflate(this.mContext, 2131558600, null));
       this.mApolloPanel.a(this, this.sessionInfo, this.mPkgId, this.mJumpActionId, this.mApolloPanelStatus);
-      bfzg.a("apollo_panel_open", null);
+      bhhy.a("apollo_panel_open", null);
       return this.mApolloPanel;
     }
     if (paramInt == 22) {
@@ -9446,7 +9390,7 @@ public class BaseChatPie
     }
     if (paramInt == 24)
     {
-      this.mHotPicMainPanel = ((HotPicMainPanel)View.inflate(this.mContext, 2131558612, null));
+      this.mHotPicMainPanel = ((HotPicMainPanel)View.inflate(this.mContext, 2131558624, null));
       this.mHotPicMainPanel.a(this.app, this.mContext, this, this.panelicons, this.root);
       return this.mHotPicMainPanel;
     }
@@ -9454,8 +9398,8 @@ public class BaseChatPie
     {
       if (this.mDoodlePanel == null)
       {
-        this.mDoodlePanel = ((DoodlePanel)View.inflate(this.mContext, 2131558596, null));
-        this.mDoodlePanel.a(this.app, this, Long.valueOf(this.sessionInfo.curFriendUin).longValue(), this.sessionInfo.curType, this.root, new BaseChatPie.64(this));
+        this.mDoodlePanel = ((DoodlePanel)View.inflate(this.mContext, 2131558608, null));
+        this.mDoodlePanel.a(this.app, this, Long.parseLong(this.sessionInfo.curFriendUin), this.sessionInfo.curType, this.root, new BaseChatPie.63(this));
       }
       return this.mDoodlePanel;
     }
@@ -9473,18 +9417,30 @@ public class BaseChatPie
   
   public void onDispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    ((akya)getHelper(4)).a(paramMotionEvent);
+    ((alvw)getHelper(4)).a(paramMotionEvent);
   }
   
   protected void onDoubleTap(MotionEvent paramMotionEvent)
   {
+    SpriteUIHandler localSpriteUIHandler;
     if ((!this.isJubaoMode) && (this.app != null))
     {
-      paramMotionEvent = ((amaz)this.app.getManager(249)).a();
-      if (paramMotionEvent != null) {
-        paramMotionEvent.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin);
+      Object localObject = (anch)this.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER);
+      localSpriteUIHandler = ((anch)localObject).a();
+      localObject = ((anch)localObject).a();
+      if ((localSpriteUIHandler != null) && (localObject != null))
+      {
+        if (QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowHeightSwitch", 0) != 0) {
+          break label85;
+        }
+        localSpriteUIHandler.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin);
       }
     }
+    label85:
+    while (!localSpriteUIHandler.a(paramMotionEvent, this.mContent)) {
+      return;
+    }
+    localSpriteUIHandler.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin);
   }
   
   public void onEmotionKeywordDimiss()
@@ -9501,8 +9457,6 @@ public class BaseChatPie
     }
   }
   
-  public void onEnterCamera() {}
-  
   protected void onEnterReceiptMode() {}
   
   public void onEventComplite()
@@ -9516,9 +9470,9 @@ public class BaseChatPie
   public void onExpandFullScreen()
   {
     changeCoverVisibility(8);
-    afrt localafrt = (afrt)this.helperProvider.a(7);
-    if (localafrt != null) {
-      localafrt.d();
+    agje localagje = (agje)this.helperProvider.a(7);
+    if (localagje != null) {
+      localagje.d();
     }
   }
   
@@ -9605,7 +9559,7 @@ public class BaseChatPie
     if (this.listView == null) {
       return true;
     }
-    if (((akya)getHelper(4)).b()) {
+    if (((alvw)getHelper(4)).b()) {
       return false;
     }
     float f1 = paramMotionEvent.getX();
@@ -9614,9 +9568,9 @@ public class BaseChatPie
     while (i >= 0)
     {
       paramMotionEvent = this.listView.getChildAt(i);
-      if ((paramMotionEvent != null) && ((AIOUtils.getHolder(paramMotionEvent) instanceof afvw)))
+      if ((paramMotionEvent != null) && ((AIOUtils.getHolder(paramMotionEvent) instanceof agol)))
       {
-        paramMotionEvent = paramMotionEvent.findViewById(2131362940);
+        paramMotionEvent = paramMotionEvent.findViewById(2131362957);
         Rect localRect = new Rect();
         paramMotionEvent.getGlobalVisibleRect(localRect);
         if (localRect.contains((int)f1, (int)f2)) {
@@ -9628,12 +9582,17 @@ public class BaseChatPie
     return true;
   }
   
+  protected Pair<Integer, Integer> onJumpTopGetNewTop(int paramInt1, List<ChatMessage> paramList1, List<ChatMessage> paramList2, int paramInt2)
+  {
+    return new Pair(Integer.valueOf(paramInt1), Integer.valueOf(this.mReadedCnt + paramInt1));
+  }
+  
   public void onListScrollChanged(int paramInt)
   {
     if (this.mAnimContainer != null) {
       this.mAnimContainer.c(paramInt);
     }
-    ((aftn)getHelper(53)).d(paramInt);
+    ((aglh)getHelper(53)).d(paramInt);
   }
   
   public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
@@ -9655,20 +9614,20 @@ public class BaseChatPie
           do
           {
             return;
-            agkc.a().a(paramView);
+            ahcs.a().a(paramView);
             localObject1 = AIOUtils.getHolder(paramView);
-          } while (!agpx.class.isInstance(localObject1));
-          localObject1 = (agpx)localObject1;
-        } while ((((agpx)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (!MessageForStructing.class.isInstance(((agpx)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage)));
-        localObject2 = (MessageForStructing)((agpx)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      } while ((((MessageForStructing)localObject2).structingMsg == null) || (!(((MessageForStructing)localObject2).structingMsg instanceof StructMsgForGeneralShare)) || ((!(this.mContext instanceof ChatActivity)) && (!(this.mContext instanceof SplashActivity))));
+          } while (!(localObject1 instanceof ahin));
+          localObject1 = (ahin)localObject1;
+        } while ((((ahin)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (!(((ahin)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)));
+        localObject2 = (MessageForStructing)((ahin)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      } while ((!(((MessageForStructing)localObject2).structingMsg instanceof StructMsgForGeneralShare)) || ((!(this.mContext instanceof ChatActivity)) && (!(this.mContext instanceof SplashActivity))));
       if (((StructMsgForGeneralShare)((MessageForStructing)localObject2).structingMsg).mIsPAVideoStructMsg) {
-        bcgr.a().a(paramView, (StructMsgForGeneralShare)((MessageForStructing)localObject2).structingMsg);
+        bdnp.a().a(paramView, (StructMsgForGeneralShare)((MessageForStructing)localObject2).structingMsg);
       }
       localObject1 = ((FragmentActivity)this.mContext).getChatFragment().a().getViewCache();
       localObject2 = ((StructMsgForGeneralShare)((MessageForStructing)localObject2).structingMsg).getLayoutStr();
     } while (localObject1 == null);
-    ((agpy)localObject1).a((String)localObject2, (ViewGroup)paramView.findViewById(2131364441));
+    ((ahio)localObject1).a((String)localObject2, (ViewGroup)paramView.findViewById(2131364522));
   }
   
   public void onMsgBoxShow()
@@ -9738,7 +9697,7 @@ public class BaseChatPie
   
   public void onOverScrollTargetValue()
   {
-    if (((akya)getHelper(4)).b()) {}
+    if (((alvw)getHelper(4)).b()) {}
     int i;
     int j;
     do
@@ -9754,7 +9713,7 @@ public class BaseChatPie
       }
     } while ((this.mInputBar == null) || (this.mInputBar.getVisibility() != 0) || (i != j) || (!this.isOverScrollTarget));
     this.root.a(1);
-    bcef.b(this.app, "CliOper", "", "", "0X8004454", "0X8004454", 0, 0, "", "", "", "");
+    bdla.b(this.app, "CliOper", "", "", "0X8004454", "0X8004454", 0, 0, "", "", "", "");
   }
   
   public void onPanelChanged(int paramInt1, int paramInt2)
@@ -9795,7 +9754,7 @@ public class BaseChatPie
     }
     for (;;)
     {
-      ((akya)getHelper(4)).a();
+      ((alvw)getHelper(4)).a();
       return;
       bool = false;
       break;
@@ -9866,9 +9825,9 @@ public class BaseChatPie
     if (this.mIconButtonInInputRight != null)
     {
       this.mZhituSwitch = false;
-      this.mIconButtonInInputRight.setActivated(this.mZhituSwitch);
+      this.mIconButtonInInputRight.setActivated(false);
     }
-    ahtj.a(this.app).c();
+    aioi.a(this.app).c();
     AIOUtils.isUserOperatedInAIO = true;
     if (!(paramObject instanceof Integer))
     {
@@ -9881,7 +9840,7 @@ public class BaseChatPie
     if (QLog.isColorLevel()) {
       QLog.d("XPanel", 2, "onPanelIconClick panelID=" + i + "currentID=" + this.root.a());
     }
-    ((afqg)getHelper(83)).b(true);
+    ((aghq)getHelper(83)).b(true);
     removeEmoticonGuideBubble();
     if ((isFullScreenMode()) && ((i == 2) || (i == 10) || (i == 8))) {
       hideFullScreenInput(false);
@@ -9922,12 +9881,12 @@ public class BaseChatPie
   {
     if (paramInt == 0)
     {
-      bcef.b(this.app, "CliOper", "", "", "0X800484E", "0X800484E", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X800484E", "0X800484E", 0, 0, "", "", "", "");
       this.uiHandler.removeMessages(25);
       if ((this.mPttPlayVolumeDialog == null) || (!this.mPttPlayVolumeDialog.isShowing()))
       {
-        this.mPttPlayVolumeDialog = new bhjt(this.mContext);
-        this.mPttPlayVolumeDialog.a(this.mContext.getString(2131697931));
+        this.mPttPlayVolumeDialog = new biuj(this.mContext);
+        this.mPttPlayVolumeDialog.a(this.mContext.getString(2131698214));
         this.mPttPlayVolumeDialog.show();
       }
     }
@@ -9940,7 +9899,7 @@ public class BaseChatPie
   protected void onPostSetReadConfirm(QQAppInterface paramQQAppInterface)
   {
     this.hasSetReaded = true;
-    afdp.a().a(paramQQAppInterface, this.sessionInfo, this.mAnimContainer, this);
+    afuu.a().a(paramQQAppInterface, this.sessionInfo, this.mAnimContainer, this);
   }
   
   public void onPostThemeChanged()
@@ -9952,12 +9911,12 @@ public class BaseChatPie
     if ((this.app != null) && (this.mContext != null) && (this.afRoot != null) && (this.sessionInfo.chatBg != null))
     {
       this.sessionInfo.chatBg.jdField_a_of_type_Boolean = false;
-      if (aezp.a(this.mContext, this.app.getCurrentAccountUin(), this.sessionInfo.curFriendUin, true, 7, this.sessionInfo.chatBg))
+      if (afrb.a(this.mContext, this.app.getCurrentAccountUin(), this.sessionInfo.curFriendUin, true, 7, this.sessionInfo.chatBg))
       {
         if ((!this.sessionInfo.isQimUserOnline) || (!this.sessionInfo.isQimUserTitleForm) || (this.sessionInfo.isNightMode)) {
           break label279;
         }
-        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+        this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
         this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
       }
     }
@@ -9971,18 +9930,18 @@ public class BaseChatPie
         updateUI_titleBarForTheme();
         if (this.mCustomTitleView != null)
         {
-          this.mCustomTitleView.a(2130850596, 2130850597);
-          this.mCustomTitleView.setRight1Icon(2130850056, 2130850057);
+          this.mCustomTitleView.a(2130850727, 2130850728);
+          this.mCustomTitleView.setRight1Icon(2130850149, 2130850150);
         }
-        ((akya)getHelper(4)).b();
-        ((afss)getHelper(29)).a(getStatusTxtDartElseLight());
+        ((alvw)getHelper(4)).b();
+        ((agkg)getHelper(29)).a(getStatusTxtDartElseLight());
         ArkAppCenterUtil.onThemeChanged();
-        bdav.a().b(getActivity(), this.root);
+        behu.a().b(getActivity(), this.root);
         return;
         label279:
         if ((this.sessionInfo.isTimUserOnline) && (this.sessionInfo.isTimUserTitleForm) && (!this.sessionInfo.isNightMode))
         {
-          this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849953));
+          this.afRoot.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130850046));
           this.sessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(1711276032);
           continue;
         }
@@ -10007,7 +9966,7 @@ public class BaseChatPie
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.helperProvider.a(19);
+    this.helperProvider.a(20);
     int j = this.listView.getFooterViewsCount();
     int k = this.listView.getHeaderViewsCount();
     int i = paramInt3 - k - j;
@@ -10015,16 +9974,16 @@ public class BaseChatPie
     if (QLog.isColorLevel()) {
       QLog.i("BaseChatPieOnScroll", 2, "firstVisibleItem = " + paramInt1 + ",visibleItemCount = " + paramInt2 + ",totalItemCount = " + paramInt3 + ",footerCnt = " + j + ",headerCnt = " + k + ",botCnt=" + m);
     }
-    Object localObject = (afsd)getHelper(27);
+    Object localObject = (agjr)getHelper(27);
     if (localObject != null) {
-      ((afsd)localObject).b(paramInt1);
+      ((agjr)localObject).b(paramInt1);
     }
     doUpdateUnreadBubble(paramInt1, paramInt2, paramInt3, j, k, i, m);
-    localObject = afmp.a();
+    localObject = agdt.a();
     if (paramAbsListView.getChildAt(0) != null)
     {
       i = paramAbsListView.getChildAt(0).getTop();
-      ((afmp)localObject).a(paramInt1, paramInt2, k, j, paramInt3, i, paramAbsListView.getWidth(), paramAbsListView.getHeight());
+      ((agdt)localObject).a(paramInt1, paramInt2, k, j, paramInt3, i, paramAbsListView.getWidth(), paramAbsListView.getHeight());
       if (this.mFirstVisibleItem >= paramInt1) {
         break label326;
       }
@@ -10038,7 +9997,7 @@ public class BaseChatPie
       }
       this.mFirstVisibleView = paramAbsListView.getChildAt(0);
       this.mLastVisibleView = paramAbsListView.getChildAt(paramInt2 - 1);
-      ((afrd)this.helperProvider.a(10)).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      ((agio)this.helperProvider.a(10)).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
       if ((paramInt1 + paramInt2 == paramInt3) && (this.mScrollerRunnable != null)) {
         this.mScrollerRunnable.d();
       }
@@ -10055,11 +10014,11 @@ public class BaseChatPie
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     this.mScrollState = paramInt;
-    nrz.a().a(paramAbsListView, paramInt);
-    ((bgga)this.app.getManager(235)).a.a(this.listView, this.listAdapter, paramInt);
+    nza.a().a(paramAbsListView, paramInt);
+    ((bhou)this.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(this.listView, this.listAdapter, paramInt);
     if (paramInt == 0)
     {
-      ahda.a(false);
+      ahxs.a(false);
       this.listAdapter.b();
       URLDrawable.resume();
       AbstractGifImage.resumeAll();
@@ -10068,36 +10027,37 @@ public class BaseChatPie
       VasFaceManager.b();
       com.etrump.mixlayout.ETTextView.enableAnimation = true;
       gb.a(this);
-      agnj.f();
+      ahfz.f();
       ShortVideoRealItemBuilder.f();
+      ApolloItemBuilder.f();
       this.mAnimContainer.d();
-      bfua.a(this.app);
-      ((alnr)this.app.getManager(153)).g();
-      ((alnn)this.app.getManager(211)).a(2, this.sessionInfo.curFriendUin, this.sessionInfo.curType);
-      ((AvatarPendantManager)this.app.getManager(46)).b();
-      if ((this.mBubbleCacheMsgAborted) && (this.uiHandler != null))
+      bhcs.a(this.app);
+      ((amme)this.app.getManager(QQManagerFactory.APOLLO_MANAGER)).g();
+      ((amma)this.app.getManager(QQManagerFactory.APOLLO_GAME_MANAGER)).a(2, this.sessionInfo.curFriendUin, this.sessionInfo.curType);
+      ((AvatarPendantManager)this.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).b();
+      if (this.mBubbleCacheMsgAborted)
       {
         this.mBubbleCacheMsgAborted = false;
         this.uiHandler.removeMessages(16711697);
         paramAbsListView = this.uiHandler.obtainMessage(16711697);
         this.uiHandler.sendMessageDelayed(paramAbsListView, BubbleManager.jdField_a_of_type_Long);
       }
-      apec.a().a(this.app, 0);
-      almr.a().a(this.app, 0);
+      aqhg.a().a(this.app, 0);
+      amks.a().a(this.app, 0);
       EmojiStickerManager.a().b(this);
       DropFrameMonitor.getInstance().stopMonitorScene("list_aio_" + this.sessionInfo.curType, false);
       DuiButtonImageView.d();
       if (this.dirty == 0) {
-        bfth.a().a(this.listView);
+        bhbz.a().a(this.listView);
       }
-      ((bgsw)this.app.getManager(290)).a(this.listView, this.listAdapter);
-      this.helperProvider.a(16);
-      afmp.a().a(this.mScrollState);
+      ((bidm)this.app.getManager(QQManagerFactory.URL_SECURITY_CHECK_MANAGER)).a(this.listView, this.listAdapter);
+      this.helperProvider.a(17);
+      agdt.a().a(this.mScrollState);
       if (paramInt != 1) {
-        break label520;
+        break label521;
       }
       resetArkMsgInputState();
-      this.helperProvider.a(14);
+      this.helperProvider.a(15);
     }
     for (;;)
     {
@@ -10105,7 +10065,7 @@ public class BaseChatPie
         this.mScrollerRunnable.d();
       }
       return;
-      ahda.a(true);
+      ahxs.a(true);
       if (paramInt == 2) {
         this.listAdapter.a();
       }
@@ -10113,29 +10073,30 @@ public class BaseChatPie
       {
         VasFaceManager.a();
         URLDrawable.pause();
-        if (!agjt.j)
+        if (!ahcj.j)
         {
           AbstractGifImage.pauseAll();
           ApngImage.pauseAll();
           com.etrump.mixlayout.ETTextView.enableAnimation = false;
         }
         AbstractVideoImage.pauseAll();
-        agnj.e();
+        ahfz.e();
         ShortVideoRealItemBuilder.e();
+        ApolloItemBuilder.e();
         this.mAnimContainer.c();
         if (paramInt == 1) {
           hideTroopFCView(false);
         }
-        ((AvatarPendantManager)this.app.getManager(46)).a();
+        ((AvatarPendantManager)this.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a();
         DropFrameMonitor.getInstance().startMonitorScene("list_aio_" + this.sessionInfo.curType);
         DuiButtonImageView.c();
-        ((bgsw)this.app.getManager(290)).a();
+        ((bidm)this.app.getManager(QQManagerFactory.URL_SECURITY_CHECK_MANAGER)).a();
         break;
         this.listAdapter.b();
       }
-      label520:
+      label521:
       if (paramInt == 2) {
-        this.helperProvider.a(15);
+        this.helperProvider.a(16);
       }
     }
   }
@@ -10147,9 +10108,9 @@ public class BaseChatPie
       this.isVivoScrollToButtom = Boolean.valueOf(true);
       setVivoSetting(1);
       this.isOverScrollTarget = true;
-      aftn localaftn = (aftn)getHelper(53);
-      if (localaftn != null) {
-        localaftn.b(paramInt);
+      aglh localaglh = (aglh)getHelper(53);
+      if (localaglh != null) {
+        localaglh.b(paramInt);
       }
     }
   }
@@ -10158,31 +10119,31 @@ public class BaseChatPie
   {
     LogUtil.timeLogEnd(BaseApplicationImpl.getContext(), null, null, null, null, "aio_end", null, false, null);
     AIOUtils.printColorLevelLog(this.tag, "onShow start ", hashCode(), this.mCurrentAIOState);
-    bfzg.a(null, "AIO_onShow");
-    bfzg.a(null, "AIO_onShow_emotion");
+    bhhy.a(null, "AIO_onShow");
+    bhhy.a(null, "AIO_onShow_emotion");
     onShow_EmotionLayout();
-    bfzg.a("AIO_onShow_emotion", null);
+    bhhy.a("AIO_onShow_emotion", null);
     onShow_business();
-    bfzg.a(null, "AIO_onShow_updateUI");
+    bhhy.a(null, "AIO_onShow_updateUI");
     onShow_updateUI();
-    bfzg.a("AIO_onShow_updateUI", "AIO_onShow_videoStatus");
+    bhhy.a("AIO_onShow_updateUI", "AIO_onShow_videoStatus");
     onShow_videoStatus();
-    bfzg.a("AIO_onShow_videoStatus", "AIO_onShow_report");
+    bhhy.a("AIO_onShow_videoStatus", "AIO_onShow_report");
     aioEventReport(this.mActivity.getIntent());
-    bfzg.a("AIO_onShow_report", "AIO_onShow_otherThings");
+    bhhy.a("AIO_onShow_report", "AIO_onShow_otherThings");
     onShow_otherThings();
-    bfzg.a("AIO_onShow_otherThings", "AIO_onShow_setReaded");
+    bhhy.a("AIO_onShow_otherThings", "AIO_onShow_setReaded");
     onShow_setReaded();
-    bfzg.a("AIO_onShow_setReaded", null);
+    bhhy.a("AIO_onShow_setReaded", null);
     if ((this.mActivity.getIntent() != null) && (this.mActivity.getIntent().hasExtra("launchApolloGame")) && (this.mActivity.getIntent().getBooleanExtra("launchApolloGame", false))) {
-      ((alnn)this.app.getManager(211)).a(this.mActivity.getIntent(), this.sessionInfo.curType);
+      ((amma)this.app.getManager(QQManagerFactory.APOLLO_GAME_MANAGER)).a(this.mActivity.getIntent(), this.sessionInfo.curType);
     }
     if (this.mApolloViewController != null) {
       this.mApolloViewController.d(this);
     }
-    bfta.a(false);
-    this.helperProvider.a(8);
-    bfzg.a("AIO_onShow", null);
+    bhbr.a(false);
+    this.helperProvider.a(9);
+    bhhy.a("AIO_onShow", null);
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "AIOTime onShow end");
     }
@@ -10190,7 +10151,7 @@ public class BaseChatPie
       this.mRichTextPanel.b();
     }
     if (this.mComboUIManager == null) {
-      this.mComboUIManager = new aqwt(this.app, this.mActivity, this, this.mContent, this.mTroopTips, this.mAnimContainer);
+      this.mComboUIManager = new asan(this.app, this.mActivity, this, this.mContent, this.mTroopTips, this.mAnimContainer);
     }
     if (!(this instanceof TroopChatPie)) {
       playGiftAnimationPlayList(true);
@@ -10201,9 +10162,9 @@ public class BaseChatPie
   
   public void onShowFirst(int paramInt)
   {
-    this.helperProvider.a(6);
+    this.helperProvider.a(7);
     this.root.setReadyToShow(true);
-    bfzg.a("AIO_SysMsgCost", "AIO_onShow_first");
+    bhhy.a("AIO_SysMsgCost", "AIO_onShow_first");
     this.onShowDone = true;
     this.uiHandler.removeCallbacks(this.mRunOnShow);
     AIOUtils.printColorLevelLog(this.tag, "onShowFirst " + paramInt, hashCode(), this.mCurrentAIOState);
@@ -10214,10 +10175,10 @@ public class BaseChatPie
     updateInputBarBg();
     chooseChatInputType(this.mActivity.getIntent());
     setOverScrollHandleVisable(true);
-    if ((this.sessionInfo.curType == 0) && (bftf.b(this.sessionInfo.curFriendUin))) {
-      ThreadManager.executeOnSubThread(new BaseChatPie.58(this), true);
+    if ((this.sessionInfo.curType == 0) && (bhbx.b(this.sessionInfo.curFriendUin))) {
+      ThreadManager.executeOnSubThread(new BaseChatPie.57(this), true);
     }
-    Object localObject = new BaseChatPie.59(this);
+    Object localObject = new BaseChatPie.58(this);
     if (AppSetting.e) {
       ThreadManager.executeOnSubThread((Runnable)localObject, true);
     }
@@ -10228,8 +10189,8 @@ public class BaseChatPie
       }
       checkInitApolloViewController();
       onShow();
-      ambc.a(this.app);
-      bfzg.a(null, "AIO_apolloSurface");
+      anck.a(this.app);
+      bhhy.a(null, "AIO_apolloSurface");
       if ((this.isJubaoMode) || (!ifApolloFunAvailThenInit()))
       {
         this.businessFooterDetector.a();
@@ -10238,11 +10199,11 @@ public class BaseChatPie
         }
       }
       updateSession_updatePanel();
-      aowk.a().a(this);
-      bfzg.a("AIO_apolloSurface", null);
+      apzo.a().a(this);
+      bhhy.a("AIO_apolloSurface", null);
       DuiButtonImageView.a();
-      bfzg.a("AIO_onShow_first", null);
-      localObject = (VasExtensionHandler)this.app.getBusinessHandler(71);
+      bhhy.a("AIO_onShow_first", null);
+      localObject = (VasExtensionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
       ((VasExtensionHandler)localObject).d(this.sessionInfo.curFriendUin);
       ((VasExtensionHandler)localObject).e(this.sessionInfo.curFriendUin);
       if (Build.VERSION.SDK_INT >= 26) {}
@@ -10251,21 +10212,21 @@ public class BaseChatPie
         View.class.getMethod("setImportantForAutofill", new Class[] { Integer.TYPE }).invoke(this.input, new Object[] { Integer.valueOf(8) });
         CustomizeStrategyFactory.a().a(true);
         PokePanel.a(this.app);
-        if (!agkg.b)
+        if (!ahcw.b)
         {
-          ThreadManager.executeOnSubThread(new BaseChatPie.60(this));
+          ThreadManager.executeOnSubThread(new BaseChatPie.59(this));
           if (SplashActivity.b != 0)
           {
-            acjp.a().a(SplashActivity.b);
+            aczy.a().a(SplashActivity.b);
             SplashActivity.b = 0;
           }
           gm.a(this.app, getUIHandler(), this.sessionInfo);
-          localObject = (bgsw)this.app.getManager(290);
-          ((bgsw)localObject).a(this.sessionInfo.curType, this.sessionInfo.curFriendUin);
-          ((bgsw)localObject).a(this.listView, this.listAdapter);
+          localObject = (bidm)this.app.getManager(QQManagerFactory.URL_SECURITY_CHECK_MANAGER);
+          ((bidm)localObject).a(this.sessionInfo.curType, this.sessionInfo.curFriendUin);
+          ((bidm)localObject).a(this.listView, this.listAdapter);
           showInputPanelIfNeeded();
           showPlusPanelIfNeeded();
-          this.helperProvider.a(7);
+          this.helperProvider.a(8);
           return;
           ((Runnable)localObject).run();
         }
@@ -10276,8 +10237,8 @@ public class BaseChatPie
         {
           QLog.w(this.tag, 2, "disable auto fill error", localException);
           continue;
-          if (!ahly.jdField_a_of_type_Boolean) {
-            ThreadManager.executeOnSubThread(new BaseChatPie.61(this));
+          if (!aigs.jdField_a_of_type_Boolean) {
+            ThreadManager.executeOnSubThread(new BaseChatPie.60(this));
           }
         }
       }
@@ -10300,13 +10261,13 @@ public class BaseChatPie
       initTipsTaskList();
       this.needInitTips = false;
     }
-    ((aeyb)this.app.getManager(218)).b();
+    ((afpn)this.app.getManager(QQManagerFactory.APP_GUIDE_TIPS_MANAGER)).b();
   }
   
   protected void onShow_otherThings()
   {
     adjustTitleDimension();
-    blig.a(BaseApplicationImpl.getContext(), new BaseChatPie.56(this), null);
+    bmux.a(BaseApplicationImpl.getContext(), new BaseChatPie.55(this), null);
     Intent localIntent = this.mActivity.getIntent();
     if (localIntent == null) {
       QLog.e(this.tag, 1, "onShow_otherThings: intent == null");
@@ -10322,17 +10283,17 @@ public class BaseChatPie
       if (bool)
       {
         localIntent.removeExtra("PhotoConst.SEND_FLAG");
-        agwt.a(this.mActivity, this.sessionInfo, localIntent);
+        ahpt.a(this.mActivity, this.sessionInfo, localIntent);
         if (this.receiptMode) {
           switchReceiptMode();
         }
       }
-      ThreadManager.getSubThreadHandler().post(new BaseChatPie.57(this));
+      ThreadManager.getSubThreadHandler().post(new BaseChatPie.56(this));
       this.app.getQQProxyForQlink().b();
       this.uiHandler.sendEmptyMessageDelayed(31, 800L);
       reportNotificationClick();
-      bfua.a(this.app);
-      apec.a().a(this.app, 0);
+      bhcs.a(this.app);
+      aqhg.a().a(this.app, 0);
       SignatureManager.a(this.app, this.sessionInfo.curFriendUin, null);
       isPackageExist(BaseApplication.getContext(), "com.vivo.smartshot");
       if (QLog.isColorLevel()) {
@@ -10354,7 +10315,7 @@ public class BaseChatPie
   {
     try
     {
-      audg.a(this).b(paramInt3);
+      avja.a(this).b(paramInt3);
       return;
     }
     catch (Throwable paramCharSequence)
@@ -10378,17 +10339,17 @@ public class BaseChatPie
     if (this.doutuManager != null) {
       this.doutuManager.b();
     }
-    ((afqg)getHelper(83)).b(true);
+    ((aghq)getHelper(83)).b(true);
     removeEmoticonGuideBubble();
     switch (paramView.getId())
     {
     default: 
       return false;
-    case 2131370017: 
+    case 2131370188: 
       if (this.mZhituSwitch)
       {
-        ahtj.a(this.app).c();
-        this.mIconButtonInInputRight.setImageResource(2130838103);
+        aioi.a(this.app).c();
+        this.mIconButtonInInputRight.setImageResource(2130838117);
         this.mIconButtonInInputRight.setSelected(false);
         this.mZhituSwitch = false;
       }
@@ -10406,13 +10367,13 @@ public class BaseChatPie
           this.mpm.b(true);
         }
       }
-    case 2131368750: 
+    case 2131368909: 
       this.input.onTouch(paramView, paramMotionEvent);
       return false;
     }
     handleInputRightButtonTouch(paramView, paramMotionEvent);
     if ((getCurrentPanel() != 28) && (paramMotionEvent.getAction() == 0)) {
-      bcef.b(this.app, "CliOper", "", "", "0X80094D1", "0X80094D1", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X80094D1", "0X80094D1", 0, 0, "", "", "", "");
     }
     return true;
   }
@@ -10424,10 +10385,10 @@ public class BaseChatPie
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "listView onViewCompleteVisableAndReleased");
     }
-    if (((this.listAdapter != null) && (this.listAdapter.getCount() > 0)) || ((this.sessionInfo.curType == 0) && (!bftf.b(this.sessionInfo.curFriendUin))))
+    if (((this.listAdapter != null) && (this.listAdapter.getCount() > 0)) || ((this.sessionInfo.curType == 0) && (!bhbx.b(this.sessionInfo.curFriendUin))))
     {
       this.pullReqTime = SystemClock.uptimeMillis();
-      ((aezq)this.refreshMessageContext.context).a(this.pullReqTime);
+      ((afrc)this.refreshMessageContext.context).a(this.pullReqTime);
       this.refreshMessageContext.needAutoNavigateTop = false;
       this.refreshMessageContext.needNotifyUI = true;
       if (this.sessionInfo.curType == 1008)
@@ -10451,7 +10412,7 @@ public class BaseChatPie
   
   public void openOptionActivity()
   {
-    if ((bftf.b(this.sessionInfo.curFriendUin)) && (bftf.a(this.mContext))) {
+    if ((bhbx.b(this.sessionInfo.curFriendUin)) && (bhbx.a(this.mContext))) {
       return;
     }
     Intent localIntent = new Intent(this.mContext, ChatSettingActivity.class);
@@ -10468,11 +10429,11 @@ public class BaseChatPie
   
   protected void pauseWhenBack()
   {
-    afvh.a(2);
+    agnw.a(2);
     ArkFlashChatContainerWrapper.a(2);
-    bfta.a(true);
+    bhbr.a(true);
     this.mAnimContainer.c();
-    ((AvatarPendantManager)this.app.getManager(46)).a();
+    ((AvatarPendantManager)this.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a();
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
   }
@@ -10482,36 +10443,36 @@ public class BaseChatPie
     if (((getActivity() instanceof SplashActivity)) && (SplashActivity.jdField_a_of_type_Int != 2)) {
       return;
     }
-    beyh localbeyh = (beyh)this.app.getManager(223);
-    localbeyh.a(this);
+    bggl localbggl = (bggl)this.app.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
+    localbggl.a(this);
     if (paramBoolean) {
-      localbeyh.b();
+      localbggl.b();
     }
-    localbeyh.a(this.mActivity.getSharedPreferences("AIOAnimationControlManager_limit_key", 4));
+    localbggl.a(this.mActivity.getSharedPreferences("AIOAnimationControlManager_limit_key", 4));
     if (QLog.isColorLevel()) {
       QLog.d(".troop.send_gift", 2, "playTroopGiftAnimationPlayList");
     }
-    this.uiHandler.post(new BaseChatPie.88(this, localbeyh, paramBoolean));
+    this.uiHandler.post(new BaseChatPie.87(this, localbggl, paramBoolean));
   }
   
   public void playMaigcface(Emoticon paramEmoticon, int paramInt, String paramString, boolean paramBoolean)
   {
     if ((this.mAudioPanel != null) && (this.mAudioPanel.b() != 1)) {}
-    avli localavli;
+    awrn localawrn;
     do
     {
       do
       {
         return;
       } while ((!paramBoolean) && (paramInt == 1) && (this.root != null) && (this.root.a() != 0));
-      localavli = avma.a(paramEmoticon, 1);
-    } while ((!paramBoolean) && (localavli != null) && (paramInt == 1) && (!localavli.jdField_c_of_type_Boolean));
+      localawrn = awsf.a(paramEmoticon, 1);
+    } while ((!paramBoolean) && (localawrn != null) && (paramInt == 1) && (!localawrn.jdField_c_of_type_Boolean));
     getMagicfaceViewController().a(paramEmoticon, paramInt, paramString);
   }
   
   public void playPersonalSound(int paramInt)
   {
-    bftt.b(paramInt, false);
+    bhcl.b(paramInt, false);
   }
   
   public void preStartBaseAIO()
@@ -10531,11 +10492,11 @@ public class BaseChatPie
     AIOUtils.setIsNotLoadSuit(false);
     LogUtil.timeLogEnd(BaseApplicationImpl.getContext(), null, null, null, null, "aio_begin", null, false, null);
     this.mDensity = this.app.getApplication().getResources().getDisplayMetrics().density;
-    bfzg.a(null, "AIO_doOnCreate_initUI");
+    bhhy.a(null, "AIO_doOnCreate_initUI");
     doOnCreate_initUI();
-    bfzg.a("AIO_doOnCreate_initUI", "AIO_doOnCreate_initData");
+    bhhy.a("AIO_doOnCreate_initUI", "AIO_doOnCreate_initData");
     doOnCreate_initData();
-    bfzg.a("AIO_doOnCreate_initData", "AIO_updateSession");
+    bhhy.a("AIO_doOnCreate_initData", "AIO_updateSession");
   }
   
   public void recoderToListen(String paramString, QQRecorder.RecorderParam paramRecorderParam)
@@ -10549,10 +10510,10 @@ public class BaseChatPie
     label28:
     for (int i = 1; i == 0; i = 0)
     {
-      bcgn.a(paramString, false);
+      bdnl.a(paramString, false);
       return;
     }
-    azbu.b(paramString);
+    bahi.b(paramString);
   }
   
   public void recorderEnd(String paramString, QQRecorder.RecorderParam paramRecorderParam)
@@ -10572,34 +10533,31 @@ public class BaseChatPie
     }
     while (i == 0)
     {
-      bcgn.a(paramString, false);
-      bcgn.a(paramString);
+      bdnl.a(paramString, false);
+      bdnl.a(paramString);
       return;
       label66:
       i = 0;
     }
-    azbu.b(paramString);
+    bahi.b(paramString);
   }
   
   public void recorderError(String paramString, boolean paramBoolean1, boolean paramBoolean2, QQRecorder.RecorderParam paramRecorderParam)
   {
     cancelSendPttInner(paramString, this.recordingUniseq, paramBoolean2, paramRecorderParam);
-    this.mActivity.runOnUiThread(new BaseChatPie.46(this, paramBoolean1));
+    this.mActivity.runOnUiThread(new BaseChatPie.45(this, paramBoolean1));
   }
   
-  public void recorderInit(bfyc parambfyc, boolean paramBoolean, QQRecorder.RecorderParam paramRecorderParam)
+  public void recorderInit(bhgu parambhgu, boolean paramBoolean, QQRecorder.RecorderParam paramRecorderParam)
   {
-    if (this.uiHandler != null)
+    if (this.uiHandler.hasMessages(16711688))
     {
-      if (this.uiHandler.hasMessages(16711688))
-      {
-        this.uiHandler.removeMessages(16711688);
-        checkOrUpdatePttRecord(0, null, -1L);
-      }
       this.uiHandler.removeMessages(16711688);
-      this.uiHandler.removeMessages(16711686);
-      this.uiHandler.removeMessages(16711687);
+      checkOrUpdatePttRecord(0, null, -1L);
     }
+    this.uiHandler.removeMessages(16711688);
+    this.uiHandler.removeMessages(16711686);
+    this.uiHandler.removeMessages(16711687);
     setRequestedOrientation4Recording(false);
     remainScreenOn();
     this.mpm.a(true);
@@ -10610,7 +10568,7 @@ public class BaseChatPie
     if (this.recorder == null) {
       this.recorder = new QQRecorder(this.mContext);
     }
-    if ((parambfyc != null) && ((parambfyc instanceof PressToSpeakPanel)) && (((PressToSpeakPanel)parambfyc).b()))
+    if (((parambhgu instanceof PressToSpeakPanel)) && (((PressToSpeakPanel)parambhgu).b()))
     {
       str = RmVFSUtils.getVFSPath(AppConstants.SDCARD_PATH + "ppt/", true);
       File localFile = new File(str);
@@ -10623,7 +10581,7 @@ public class BaseChatPie
     this.recorder.a(paramRecorderParam);
     String str = BuddyTransfileProcessor.getTransferFilePath(this.app.getCurrentAccountUin(), null, 2, null, false);
     paramRecorderParam = MessageForPtt.getLocalFilePath(paramRecorderParam.jdField_c_of_type_Int, str);
-    if ((str != null) && (!str.equals(paramRecorderParam))) {
+    if (!str.equals(paramRecorderParam)) {
       new File(str).deleteOnExit();
     }
     for (;;)
@@ -10631,7 +10589,7 @@ public class BaseChatPie
       if (QLog.isColorLevel()) {
         QLog.i("QQRecorder", 2, "path: " + paramRecorderParam);
       }
-      this.recorder.a(parambfyc);
+      this.recorder.a(parambhgu);
       if (QLog.isColorLevel()) {
         QLog.d(this.tag, 2, "QQRecorder start() is called,time is:" + System.currentTimeMillis());
       }
@@ -10649,7 +10607,7 @@ public class BaseChatPie
     if (QLog.isColorLevel()) {
       QLog.d("QQRecorder", 2, "onRecorderPerpare path = " + paramString);
     }
-    Object localObject = bfyl.a(paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.jdField_a_of_type_Int);
+    Object localObject = bhhd.a(paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.jdField_a_of_type_Int);
     int i;
     if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null)
     {
@@ -10657,8 +10615,8 @@ public class BaseChatPie
       if (i != 0) {
         break label127;
       }
-      bcgn.a(this.app, paramRecorderParam.jdField_c_of_type_Int, paramString, 0, (int)(System.currentTimeMillis() / 1000L));
-      bcgn.a(paramString, (byte[])localObject, localObject.length, (short)0);
+      bdnl.a(this.app, paramRecorderParam.jdField_c_of_type_Int, paramString, 0, (int)(System.currentTimeMillis() / 1000L));
+      bdnl.a(paramString, (byte[])localObject, localObject.length, (short)0);
       label94:
       if (paramString != null)
       {
@@ -10678,20 +10636,20 @@ public class BaseChatPie
       i = 0;
       break;
       label127:
-      azbu.a(paramString);
-      azbu.a(paramString, (byte[])localObject, localObject.length);
+      bahi.a(paramString);
+      bahi.a(paramString, (byte[])localObject, localObject.length);
       break label94;
       if (this.receiptMode)
       {
-        localObject = acvv.a(this.app, paramString, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int);
+        localObject = admh.a(this.app, paramString, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int);
         paramString = (String)localObject;
         if (localObject != null)
         {
           ((MessageForPtt)localObject).msgVia = this.sessionInfo.entrance;
-          azuu.a().a = ((MessageForPtt)localObject);
+          bbbc.a().a = ((MessageForPtt)localObject);
         }
       }
-      for (paramString = (String)localObject;; paramString = acvv.a(this.app, paramString, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int))
+      for (paramString = (String)localObject;; paramString = admh.a(this.app, paramString, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int))
       {
         if (paramString == null) {
           break label279;
@@ -10710,10 +10668,10 @@ public class BaseChatPie
   
   public int recorderSetTimeout()
   {
-    int i = agkm.a(this.app, "Normal_MaxPtt") * 1000;
+    int i = ahdc.a(this.app, "Normal_MaxPtt") * 1000;
     int j = VipUtils.a(this.app, null);
     if ((j & 0x4) != 0) {
-      i = agkm.a(this.app, "SVIP_MaxPtt") * 1000;
+      i = ahdc.a(this.app, "SVIP_MaxPtt") * 1000;
     }
     for (;;)
     {
@@ -10721,7 +10679,7 @@ public class BaseChatPie
       this.uiHandler.sendEmptyMessageDelayed(16711687, i);
       return i + 200;
       if ((j & 0x2) != 0) {
-        i = agkm.a(this.app, "VIP_MaxPtt") * 1000;
+        i = ahdc.a(this.app, "VIP_MaxPtt") * 1000;
       }
     }
   }
@@ -10731,21 +10689,21 @@ public class BaseChatPie
     if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
     for (paramInt2 = 1; paramInt2 == 0; paramInt2 = 0)
     {
-      bcgn.a(paramString, paramArrayOfByte, paramInt1, (short)0);
+      bdnl.a(paramString, paramArrayOfByte, paramInt1, (short)0);
       return;
     }
-    azbu.a(paramString, paramArrayOfByte, paramInt1);
+    bahi.a(paramString, paramArrayOfByte, paramInt1);
   }
   
   public void recorderTimeTooShort(String paramString)
   {
     checkOrUpdatePttRecord(2, paramString, this.recordingUniseq);
-    this.mActivity.runOnUiThread(new BaseChatPie.50(this));
+    this.mActivity.runOnUiThread(new BaseChatPie.49(this));
   }
   
   public void recorderVolumeChange(int paramInt)
   {
-    this.mActivity.runOnUiThread(new BaseChatPie.49(this, paramInt));
+    this.mActivity.runOnUiThread(new BaseChatPie.48(this, paramInt));
   }
   
   public void refresh(int paramInt)
@@ -10753,16 +10711,14 @@ public class BaseChatPie
     refresh(paramInt, null, -1L);
   }
   
-  public void refresh(int paramInt, amwf paramamwf, long paramLong)
+  public void refresh(int paramInt, anyt paramanyt, long paramLong)
   {
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "refresh with dirty: " + paramInt + " uniseq: " + paramLong + " currentPauseRefreshFlag: " + this.isPauseRefresh);
     }
     if ((this.isPauseRefresh) && (this.dirty == paramInt)) {}
     Message localMessage;
-    label297:
-    label300:
-    label302:
+    label285:
     do
     {
       int i;
@@ -10770,42 +10726,32 @@ public class BaseChatPie
       {
         return;
         i = paramInt & 0xFFFF0000;
-        if ((paramInt & 0xFFFF) > (this.dirty & 0xFFFF))
-        {
-          paramInt &= 0xFFFF;
-          this.dirty = (i | paramInt);
-          if (QLog.isColorLevel()) {
-            QLog.d(this.tag, 2, "refresh with refreshFlag: " + i + " scrollFlag: " + paramInt);
-          }
-          if ((!isActivityResume()) && (this.root.a() != 6) && (this.root.a() != 5) && (this.root.a() != 35) && (!blockRefreshJumpBottom())) {
-            break label297;
-          }
+        paramInt = Math.max(paramInt & 0xFFFF, this.dirty & 0xFFFF);
+        this.dirty = (i | paramInt);
+        if (QLog.isColorLevel()) {
+          QLog.d(this.tag, 2, "refresh with refreshFlag: " + i + " scrollFlag: " + paramInt);
         }
-        for (paramInt = 1;; paramInt = 0)
+        if ((isActivityResume()) || (this.root.a() == 6) || (this.root.a() == 5) || (this.root.a() == 35) || (blockRefreshJumpBottom())) {}
+        for (paramInt = 1; paramInt != 0; paramInt = 0)
         {
-          if (paramInt == 0) {
-            break label300;
-          }
           if (i != 262144) {
-            break label302;
+            break label285;
           }
           localMessage = new Message();
           Bundle localBundle = new Bundle();
           localBundle.putLong("messageUniseq", paramLong);
           localMessage.setData(localBundle);
           localMessage.what = 78;
-          localMessage.obj = paramamwf;
+          localMessage.obj = paramanyt;
           localMessage.arg1 = 0;
           this.uiHandler.sendMessageDelayed(localMessage, 400L);
           return;
-          paramInt = this.dirty & 0xFFFF;
-          break;
         }
       }
       localMessage = new Message();
       localMessage.what = 12;
-      if (paramamwf != null) {
-        localMessage.obj = paramamwf;
+      if (paramanyt != null) {
+        localMessage.obj = paramanyt;
       }
       if (i < 196608) {
         break;
@@ -10819,16 +10765,16 @@ public class BaseChatPie
     }
     this.uiHandler.sendMessageDelayed(localMessage, 1000L - (paramLong - this.lastRefreshTime));
     return;
-    paramamwf = (akya)getHelper(4);
+    paramanyt = (alvw)getHelper(4);
     if (Looper.myLooper() != Looper.getMainLooper()) {
-      this.mActivity.runOnUiThread(new BaseChatPie.36(this, paramamwf));
+      this.mActivity.runOnUiThread(new BaseChatPie.35(this, paramanyt));
     }
     for (;;)
     {
       this.uiHandler.removeMessages(12);
       this.uiHandler.sendMessage(localMessage);
       return;
-      if ((!paramamwf.b()) && (this.listAdapter != null)) {
+      if ((!paramanyt.b()) && (this.listAdapter != null)) {
         this.listAdapter.d();
       }
     }
@@ -10858,10 +10804,10 @@ public class BaseChatPie
           break;
         }
         localChatMessage = (ChatMessage)paramMessageRecord.next();
-      } while (abwz.a(localChatMessage));
+      } while (acnh.a(localChatMessage));
       l1 = localChatMessage.shmsgseq;
     }
-    paramMessageRecord = new BaseChatPie.37(this);
+    paramMessageRecord = new BaseChatPie.36(this);
     this.mScrollerRunnable.b(paramInt3);
     paramInt3 = 0;
     if (this.mTipsMgr.a() == 9) {
@@ -10933,11 +10879,11 @@ public class BaseChatPie
     }
     for (;;)
     {
-      ((afpo)this.helperProvider.a(65)).c();
-      if ((k == j) && (!((akya)getHelper(4)).b())) {
+      ((aggs)this.helperProvider.a(65)).c();
+      if ((k == j) && (!((alvw)getHelper(4)).b())) {
         this.listAdapter.d();
       }
-      afmp.a().a(localList2);
+      agdt.a().a(localList2);
       return;
       if (this.hasSentRecvMsg)
       {
@@ -10972,7 +10918,6 @@ public class BaseChatPie
     this.app.removeObserver(this.configObserver);
     this.app.setCheckPttListener(null);
     this.app.setCheckPtvListener(null);
-    this.app.getFileManagerNotifyCenter().deleteObserver(this.fmob);
     if (this.app.getMessageFacade() != null) {
       this.app.getMessageFacade().deleteObserver(this);
     }
@@ -10992,7 +10937,7 @@ public class BaseChatPie
   
   public void removeEmoticonGuideBubble()
   {
-    ((afoi)this.helperProvider.a(54)).b();
+    ((agfm)this.helperProvider.a(54)).b();
   }
   
   public void removeStickerExpandView()
@@ -11035,10 +10980,7 @@ public class BaseChatPie
     do
     {
       return;
-      if (paramLong == 0L) {
-        agmk.a(this.app, this.sessionInfo, Long.parseLong(paramChatMessage.senderuin));
-      }
-      paramString = ahln.a(this.app, paramChatMessage, paramInt, paramLong, paramString);
+      paramString = aigh.a(this.app, paramChatMessage, paramInt, paramLong, paramString);
     } while (paramString == null);
     this.mSourceMsgInfo = paramString;
     if (android.text.TextUtils.isEmpty(this.mSourceMsgInfo.mSourceMsgTroopName))
@@ -11046,15 +10988,15 @@ public class BaseChatPie
       paramString = this.mTroopReplyMsgSourceClick;
       paramInt = this.input.getWidth();
       int i = this.input.getPaddingLeft();
-      paramString = bevt.a(this.app, this.mActivity, this.mSourceMsgInfo, paramInt - i * 2, this.input.getPaint(), paramString);
+      paramString = bgdc.a(this.app, this.mActivity, this.mSourceMsgInfo, paramInt - i * 2, this.input.getPaint(), paramString);
       if (paramString == null) {
-        break label313;
+        break label288;
       }
       this.input.setCompoundDrawables(null, paramString.getDrawable(), null, null);
       this.input.setCompoundDrawablePadding(20);
-      this.input.setTag(2131373788, paramString);
+      this.input.setTag(2131374006, paramString);
       this.mNormalMovementMethod = this.input.getMovementMethod();
-      this.input.setMovementMethod(bevs.a());
+      this.input.setMovementMethod(bgdb.a());
       disableZhitu();
       hideZhituIcon();
       shouldHideLightVideoBtn(2);
@@ -11065,12 +11007,12 @@ public class BaseChatPie
     }
     for (;;)
     {
-      this.uiHandler.postDelayed(new BaseChatPie.86(this), 200L);
+      this.uiHandler.postDelayed(new BaseChatPie.85(this), 200L);
       MessageForReplyText.reportReplyMsg(this.app, this.sessionInfo, paramChatMessage);
       return;
       paramString = null;
       break;
-      label313:
+      label288:
       if (this.mNormalMovementMethod != null) {
         this.input.setMovementMethod(this.mNormalMovementMethod);
       }
@@ -11086,7 +11028,7 @@ public class BaseChatPie
   
   protected void reportSendPttEvent(int paramInt1, int paramInt2)
   {
-    bfxf.a(this.app, this.sessionInfo.curType, paramInt1, paramInt2);
+    bhfx.a(this.app, this.sessionInfo.curType, paramInt1, paramInt2);
   }
   
   public void resetRefreshMessageContext()
@@ -11096,14 +11038,13 @@ public class BaseChatPie
     this.refreshMessageContext.retryIndex = 0;
     this.refreshMessageContext.repullLongMsgIndex = 0;
     this.refreshMessageContext.repullStickerMsgIndex = 0;
-    this.canPullRefresh = true;
   }
   
   public void resumeAppShorcutBar()
   {
-    afsn localafsn = (afsn)this.helperProvider.a(52);
-    if (localafsn != null) {
-      localafsn.g();
+    agkb localagkb = (agkb)this.helperProvider.a(52);
+    if (localagkb != null) {
+      localagkb.h();
     }
   }
   
@@ -11140,7 +11081,7 @@ public class BaseChatPie
     }
     for (;;)
     {
-      bcer.a().b("ChatFragment");
+      bdlm.a().b("ChatFragment");
       return;
       localFragmentTransaction.add(16908290, MainFragment.a(), MainFragment.class.getName());
       break;
@@ -11169,29 +11110,29 @@ public class BaseChatPie
         do
         {
           return;
-          localObject = (amsw)this.app.getManager(51);
+          localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
           if ((this.sessionInfo.curType != 3000) && (this.sessionInfo.curType != 1)) {
             break;
           }
-          localObject = ((amsw)localObject).a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
+          localObject = ((anvk)localObject).a(this.sessionInfo.curFriendUin, this.sessionInfo.curType, false);
         } while ((localObject == null) || (!((NoC2CExtensionInfo)localObject).isDataChanged));
         ThreadManager.getFileThreadHandler().post(new BaseChatPie.SaveInputTypeTask((Entity)localObject, this.app));
         return;
       } while (!isC2CSession());
-      localObject = ((amsw)localObject).a(this.sessionInfo.curFriendUin, false);
+      localObject = ((anvk)localObject).a(this.sessionInfo.curFriendUin, false);
     } while ((localObject == null) || (!((ExtensionInfo)localObject).isDataChanged));
     ThreadManager.getFileThreadHandler().post(new BaseChatPie.SaveInputTypeTask((Entity)localObject, this.app));
   }
   
-  protected void saveTextDraft(SessionInfo paramSessionInfo, avnb paramavnb, Spanned paramSpanned, QQAppInterface paramQQAppInterface, String paramString1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, String paramString2)
+  protected void saveTextDraft(SessionInfo paramSessionInfo, awtg paramawtg, Spanned paramSpanned, QQAppInterface paramQQAppInterface, String paramString1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, String paramString2)
   {
     if (this.input != null)
     {
-      Object localObject = (afqj)this.helperProvider.a(24);
-      String str = ((afqj)localObject).a(paramSpanned);
-      paramSpanned = ((afqj)localObject).a(paramSpanned);
-      localObject = this.input.getTag(2131373788);
-      ThreadManager.post(new SaveTextDraftJob(this, new SessionInfo(paramSessionInfo), paramavnb, str, paramSpanned, paramQQAppInterface, paramString1, paramSourceMsgInfo, localObject, paramString2), 8, null, false);
+      Object localObject = (aght)this.helperProvider.a(24);
+      String str = ((aght)localObject).a(paramSpanned);
+      paramSpanned = ((aght)localObject).a(paramSpanned);
+      localObject = this.input.getTag(2131374006);
+      ThreadManager.post(new SaveTextDraftJob(this, new SessionInfo(paramSessionInfo), paramawtg, str, paramSpanned, paramQQAppInterface, paramString1, paramSourceMsgInfo, localObject, paramString2), 8, null, false);
     }
   }
   
@@ -11215,9 +11156,9 @@ public class BaseChatPie
     }
   }
   
-  public void send(amlu paramamlu)
+  public void send(annl paramannl)
   {
-    paramamlu.a(this.app, this.mActivity, this.input, this.sessionInfo);
+    paramannl.a(this.app, this.mActivity, this.input, this.sessionInfo);
   }
   
   public void send(EmoticonInfo paramEmoticonInfo)
@@ -11228,7 +11169,7 @@ public class BaseChatPie
   public void send(String paramString, EmojiStickerManager.StickerInfo paramStickerInfo)
   {
     if (this.receiptMode) {}
-    label569:
+    label561:
     for (;;)
     {
       return;
@@ -11240,32 +11181,32 @@ public class BaseChatPie
         QLog.e("EmojiStickerManager", 1, " send, emojiText is empty");
         return;
       }
-      acwc localacwc;
+      admo localadmo;
       if ((paramString.length() > 0) && (paramStickerInfo != null))
       {
         this.mSourceMsgInfo = null;
-        aydq.a(paramString);
+        azkc.a(paramString);
         if (paramString.length() > 3478)
         {
-          ChatActivityUtils.a(this.mContext, 2131718135, 1);
+          ChatActivityUtils.a(this.mContext, 2131718520, 1);
           return;
         }
-        localacwc = new acwc();
-        localacwc.b = this.mMsgSignalCount;
-        localacwc.jdField_a_of_type_Int = this.mMsgSignalSum;
-        localacwc.jdField_c_of_type_Boolean = this.mIsMsgSignalOpen;
-        localacwc.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-        localacwc.jdField_a_of_type_Long = System.currentTimeMillis();
-        localacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = this.mSourceMsgInfo;
-        localacwc.i = this.isSendToRobotServer;
-        localacwc.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo = paramStickerInfo;
+        localadmo = new admo();
+        localadmo.b = this.mMsgSignalCount;
+        localadmo.jdField_a_of_type_Int = this.mMsgSignalSum;
+        localadmo.jdField_c_of_type_Boolean = this.mIsMsgSignalOpen;
+        localadmo.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+        localadmo.jdField_a_of_type_Long = System.currentTimeMillis();
+        localadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = this.mSourceMsgInfo;
+        localadmo.i = this.isSendToRobotServer;
+        localadmo.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo = paramStickerInfo;
         this.isSendToRobotServer = false;
         if ((this.sessionInfo.curType == 1) || (this.sessionInfo.curType == 3000))
         {
           if (QLog.isColorLevel()) {
             QLog.d("SendMsgBtn", 2, " send curType == VALUE.UIN_TYPE_TROOP or disc start sendMessage currenttime:" + System.currentTimeMillis());
           }
-          sendMessageInner(paramString, localacwc, new ArrayList());
+          sendMessageInner(paramString, localadmo, new ArrayList());
           reportClassicAndSmallEmoticon(paramString, false, this.mEmoPanel, this.app);
           if (QLog.isColorLevel()) {
             QLog.d("SendMsgBtn", 2, " msgReport start currenttime:" + System.currentTimeMillis());
@@ -11279,22 +11220,21 @@ public class BaseChatPie
           }
           this.mTipsMgr.a(1002, new Object[] { paramString });
           if (this.app.getApplication().getResources().getConfiguration().orientation == 2) {
-            bcef.b(this.app, "CliOper", "", "", "0X8005C7C", "0X8005C7C", 0, 0, "", "", "", "");
+            bdla.b(this.app, "CliOper", "", "", "0X8005C7C", "0X8005C7C", 0, 0, "", "", "", "");
           }
         }
       }
       for (;;)
       {
         if (this.mArkController == null) {
-          break label569;
+          break label561;
         }
         this.mArkController.c();
         return;
         if (QLog.isColorLevel()) {
           QLog.d("SendMsgBtn", 2, " send sessionInfo.curType != VALUE.UIN_TYPE_TROOP start sendMessage currenttime:" + System.currentTimeMillis());
         }
-        new ArrayList();
-        sendMessageInner(paramString, localacwc, null);
+        sendMessageInner(paramString, localadmo, null);
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -11307,28 +11247,28 @@ public class BaseChatPie
   
   public void sendPtt(String paramString, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, int paramInt3, boolean paramBoolean, int paramInt4)
   {
-    ThreadManager.postImmediately(new BaseChatPie.51(this), null, false);
+    ThreadManager.postImmediately(new BaseChatPie.50(this), null, false);
     if (!this.receiptMode)
     {
       sendPttInner(paramString, this.recordingUniseq, paramInt1, paramInt2, paramRecorderParam, paramInt3, paramBoolean, paramInt4);
       return;
     }
-    azuu.a().a(this.app, this.sessionInfo, paramString, paramInt1, paramInt2, paramRecorderParam, paramInt3, paramBoolean);
-    getActivity().runOnUiThread(new BaseChatPie.52(this));
+    bbbc.a().a(this.app, this.sessionInfo, paramString, paramInt1, paramInt2, paramRecorderParam, paramInt3, paramBoolean);
+    getActivity().runOnUiThread(new BaseChatPie.51(this));
   }
   
   protected void sendPttForIME(String paramString1, int paramInt, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
   {
-    Object localObject = acvv.a(this.app, paramString1, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int);
+    Object localObject = admh.a(this.app, paramString1, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int);
     if (localObject != null)
     {
       ((MessageForPtt)localObject).c2cViaOffline = true;
       long l = ((MessageRecord)localObject).uniseq;
       localObject = new Bundle();
       ((Bundle)localObject).putInt("DiyTextId", paramRecorderParam.e);
-      acvv.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin, paramString1, l, false, paramInt, paramRecorderParam.jdField_c_of_type_Int, true, 0, 4, false, paramRecorderParam.d, (Bundle)localObject);
+      admh.a(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin, paramString1, l, false, paramInt, paramRecorderParam.jdField_c_of_type_Int, true, 0, 4, false, paramRecorderParam.d, (Bundle)localObject);
       checkOrUpdatePttRecord(0, paramString1, l);
-      bcef.b(this.app, "CliOper", "", "", "0X8005B16", "0X8005B16", 0, 0, "", "", paramString2, "8.4.8");
+      bdla.b(this.app, "CliOper", "", "", "0X8005B16", "0X8005B16", 0, 0, "", "", paramString2, "8.4.10");
       paramString1 = StatisticCollector.getInstance(BaseApplication.getContext());
       paramRecorderParam = new HashMap();
       paramRecorderParam.put("param_FailCode", String.valueOf(0));
@@ -11361,9 +11301,9 @@ public class BaseChatPie
       j = this.sessionInfo.curType;
       str1 = this.sessionInfo.curFriendUin;
       if (i != 0) {
-        break label441;
+        break label433;
       }
-      localObject = acvv.a(this.app, paramString, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int);
+      localObject = admh.a(this.app, paramString, this.sessionInfo, -2, paramRecorderParam.jdField_c_of_type_Int);
       if (localObject != null) {
         break label136;
       }
@@ -11374,7 +11314,7 @@ public class BaseChatPie
     label136:
     ((MessageForPtt)localObject).c2cViaOffline = bool;
     paramLong = ((MessageRecord)localObject).uniseq;
-    if ((localObject != null) && (MessageForPtt.class.isInstance(localObject)))
+    if ((localObject instanceof MessageForPtt))
     {
       localObject = (MessageForPtt)localObject;
       ((MessageForPtt)localObject).waveformArray = PttAudioWaveView.a(paramRecorderParam.jdField_a_of_type_ArrayOfInt, paramRecorderParam.f);
@@ -11385,52 +11325,52 @@ public class BaseChatPie
     PttInfoCollector.sPttSendCostRecorder.put(paramString, Long.valueOf(l));
     if (!bool)
     {
-      bcgn.a(paramString, false);
-      bcgn.a(paramString);
-      label241:
+      bdnl.a(paramString, false);
+      bdnl.a(paramString);
+      label233:
       if (QLog.isColorLevel()) {
         QLog.d("AIOAudioPanel", 2, "recordingUniseq is:" + paramLong);
       }
       localObject = this.app;
       if (!isStraightPtt) {
-        break label498;
+        break label482;
       }
     }
-    label441:
-    label498:
+    label433:
+    label482:
     for (int i = 1;; i = 2)
     {
-      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "0X8005B57", "0X8005B57", i, 0, "", "", "", "8.4.8");
+      bdla.b((QQAppInterface)localObject, "CliOper", "", "", "0X8005B57", "0X8005B57", i, 0, "", "", "", "8.4.10");
       isStraightPtt = true;
       i = getAudioPanelType(paramInt1);
       localObject = new Bundle();
       ((Bundle)localObject).putInt("DiyTextId", paramRecorderParam.e);
       ArrayList localArrayList = new ArrayList();
-      String str2 = bevq.a(this.input.getEditableText(), localArrayList);
-      acvv.a(this.app, j, str1, paramString, paramLong, false, paramInt2, paramRecorderParam.jdField_c_of_type_Int, bool, paramInt3, i, paramBoolean, paramRecorderParam.d, (Bundle)localObject, localArrayList, str2, false, paramInt4);
+      String str2 = bgcz.a(this.input.getEditableText(), localArrayList);
+      admh.a(this.app, j, str1, paramString, paramLong, false, paramInt2, paramRecorderParam.jdField_c_of_type_Int, bool, paramInt3, i, paramBoolean, paramRecorderParam.d, (Bundle)localObject, localArrayList, str2, false, paramInt4);
       reportSendPttEvent(paramInt1, paramInt2);
       checkOrUpdatePttRecord(0, paramString, paramLong);
       return;
       localObject = this.app.getMessageFacade().getMsgItemByUniseq(str1, 0, paramLong);
-      if ((localObject != null) && (MessageForPtt.class.isInstance(localObject))) {
+      if ((localObject instanceof MessageForPtt)) {
         ((MessageForPtt)localObject).voiceLength = QQRecorder.a(paramInt2);
       }
       break;
-      azbu.b(paramString);
-      break label241;
+      bahi.b(paramString);
+      break label233;
     }
   }
   
   public void sendRobotNextMessage(String paramString, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList, int paramInt)
   {
-    acwc localacwc = new acwc();
-    localacwc.b = this.mMsgSignalCount;
-    localacwc.jdField_a_of_type_Int = this.mMsgSignalSum;
-    localacwc.jdField_c_of_type_Boolean = this.mIsMsgSignalOpen;
-    localacwc.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    localacwc.jdField_a_of_type_Long = System.currentTimeMillis();
-    localacwc.g = paramInt;
-    sendMessageInner(paramString, localacwc, paramArrayList);
+    admo localadmo = new admo();
+    localadmo.b = this.mMsgSignalCount;
+    localadmo.jdField_a_of_type_Int = this.mMsgSignalSum;
+    localadmo.jdField_c_of_type_Boolean = this.mIsMsgSignalOpen;
+    localadmo.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    localadmo.jdField_a_of_type_Long = System.currentTimeMillis();
+    localadmo.g = paramInt;
+    sendMessageInner(paramString, localadmo, paramArrayList);
   }
   
   public void sendSliceDataIfNeeded(String paramString, int paramInt, QQRecorder.RecorderParam paramRecorderParam)
@@ -11442,7 +11382,7 @@ public class BaseChatPie
       {
         Bundle localBundle = new Bundle();
         localBundle.putInt("DiyTextId", paramRecorderParam.e);
-        bcgn.a(paramString, this.app, this.sessionInfo.curFriendUin, this.recordingUniseq, paramInt, paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.d, localBundle);
+        bdnl.a(paramString, this.app, this.sessionInfo.curFriendUin, this.recordingUniseq, paramInt, paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.d, localBundle);
       }
       return;
     }
@@ -11450,7 +11390,7 @@ public class BaseChatPie
   
   public boolean sessionSupportLightVideo()
   {
-    return bnbb.a(this.receiptMode, this.mSourceMsgInfo, this.sessionInfo, this.app);
+    return boqt.a(this.receiptMode, this.mSourceMsgInfo, this.sessionInfo, this.app);
   }
   
   public BaseActivity setActivity(FragmentActivity paramFragmentActivity)
@@ -11471,7 +11411,7 @@ public class BaseChatPie
     if (paramBoolean1)
     {
       if (this.mEmotionSearchPanel == null) {
-        this.mEmotionSearchPanel = ((EmotionSearchPanel)View.inflate(this.mContext, 2131558604, null));
+        this.mEmotionSearchPanel = ((EmotionSearchPanel)View.inflate(this.mContext, 2131558616, null));
       }
       EmoticonPanelHotPicSearchHelper localEmoticonPanelHotPicSearchHelper = (EmoticonPanelHotPicSearchHelper)getEmoPanel().getEmoController().getHelper(7);
       this.mEmotionSearchPanel.showEmotionSearchWindow();
@@ -11501,7 +11441,7 @@ public class BaseChatPie
     if (sessionSupportLightVideo()) {}
     for (this.mEnableVideoBtn = LightVideoConfigMgr.a().a();; this.mEnableVideoBtn = false)
     {
-      bnbb.a(this.mEnableVideoBtn, paramBoolean, this.mVideoBtn, this.mFunBtn);
+      boqt.a(this.mEnableVideoBtn, paramBoolean, this.mVideoBtn, this.mFunBtn);
       return;
     }
   }
@@ -11520,11 +11460,11 @@ public class BaseChatPie
       if (this.mPttBtn == null)
       {
         Button localButton = new Button(this.mContext);
-        localButton.setId(2131380935);
-        localButton.setBackgroundResource(2130849924);
+        localButton.setId(2131381287);
+        localButton.setBackgroundResource(2130850017);
         localButton.setTextSize(2, 14.0F);
-        localButton.setTextColor(this.mContext.getResources().getColorStateList(2131166990));
-        localButton.setText(2131689943);
+        localButton.setTextColor(this.mContext.getResources().getColorStateList(2131167004));
+        localButton.setText(2131689972);
         localButton.setOnTouchListener(this);
         int i = ((ViewGroup)this.input.getParent()).indexOfChild(this.input);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
@@ -11570,7 +11510,7 @@ public class BaseChatPie
       this.mGagInputBtn.setVisibility(8);
     }
     this.input.setVisibility(0);
-    if ((this.mExtPanelOnResumeTimes <= 0) || ((this.input.getText().length() > 0) || (getPhotoListSelectCount() > 0))) {
+    if ((this.input.getText().length() > 0) || (getPhotoListSelectCount() > 0)) {
       setFunBtnEnabled(true);
     }
     for (;;)
@@ -11583,7 +11523,7 @@ public class BaseChatPie
         this.input.setAlpha(1.0F);
         this.mFunBtn.setAlpha(1.0F);
       }
-      if ((this.input.getText().length() > 0) && (this.mSourceMsgInfo == null) && (!(this instanceof ahgc)) && (atid.a(this.app).b(this.app))) {
+      if ((this.input.getText().length() > 0) && (this.mSourceMsgInfo == null) && (!(this instanceof aiav)) && (aumk.a(this.app).b(this.app))) {
         showZhituIcon();
       }
       if (this.mApolloViewController != null) {
@@ -11613,7 +11553,7 @@ public class BaseChatPie
   protected void setLastAudioPanelType(int paramInt)
   {
     if (this.mAudioPanel == null) {}
-    amsw localamsw;
+    anvk localanvk;
     do
     {
       do
@@ -11625,14 +11565,14 @@ public class BaseChatPie
         this.mAudioPanel.setCurrentPannel(paramInt, false);
         return;
       }
-      localamsw = (amsw)this.app.getManager(51);
+      localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((this.sessionInfo.curType == 3000) || (this.sessionInfo.curType == 1))
       {
-        setNoC2CLastAudioPanelType(localamsw);
+        setNoC2CLastAudioPanelType(localanvk);
         return;
       }
     } while (!isC2CSession());
-    setC2CLastAudioPanelType(localamsw);
+    setC2CLastAudioPanelType(localanvk);
   }
   
   public void setLeftCheckBoxVisible(boolean paramBoolean1, ChatMessage paramChatMessage, boolean paramBoolean2)
@@ -11658,14 +11598,14 @@ public class BaseChatPie
       return;
       if (paramBoolean1)
       {
-        BaseChatItemLayout.jdField_a_of_type_Aezl = this;
+        BaseChatItemLayout.jdField_a_of_type_Afqx = this;
         this.hasCheckedBoxVisible = true;
         BaseChatItemLayout.jdField_a_of_type_Boolean = paramBoolean1;
         AIOLongShotHelper localAIOLongShotHelper = (AIOLongShotHelper)getHelper(15);
         if (!paramBoolean3)
         {
           if (!localAIOLongShotHelper.a()) {
-            awcm.a().a(paramChatMessage, paramBoolean1);
+            axio.a().a(paramChatMessage, paramBoolean1);
           }
           onCheckedChanged(paramChatMessage, null, paramBoolean1);
         }
@@ -11681,7 +11621,7 @@ public class BaseChatPie
         }
         this.listAdapter.notifyDataSetChanged();
         return;
-        BaseChatItemLayout.jdField_a_of_type_Aezl = null;
+        BaseChatItemLayout.jdField_a_of_type_Afqx = null;
         break;
         label120:
         this.listAdapter.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
@@ -11704,7 +11644,7 @@ public class BaseChatPie
         }
         this.mDefautlBtnLeft.setVisibility(8);
         if (this.preCheckBoxVisible) {
-          awcm.a().a();
+          axio.a().a();
         }
       }
     }
@@ -11716,12 +11656,12 @@ public class BaseChatPie
       QLog.i(this.tag, 2, "set left text from cancel");
     }
     this.mTitleLeftText = this.mTitleBtnLeft.getText().toString();
-    this.mTitleBtnLeft.setText(2131690600);
+    this.mTitleBtnLeft.setText(2131690677);
     this.mTitleBtnLeft.setBackgroundDrawable(null);
     if (this.mCustomTitleView != null) {
       this.mCustomTitleView.e();
     }
-    ((afpb)getHelper(66)).a(paramChatMessage);
+    ((aggf)getHelper(66)).a(paramChatMessage);
     this.mTitleBtnRight.setVisibility(4);
     this.mTitleBtnCall.setVisibility(4);
     AIOLongShotHelper localAIOLongShotHelper = (AIOLongShotHelper)getHelper(15);
@@ -11730,17 +11670,12 @@ public class BaseChatPie
       localAIOLongShotHelper.d();
       this.mTitleLayout.setVisibility(4);
       this.mSubTitleLayout.setVisibility(4);
-      this.mAIORootView.findViewById(2131369124).setVisibility(4);
     }
-    for (;;)
-    {
-      if (this.panelicons != null) {
-        this.panelicons.setCustomHeight(0);
-      }
-      setLeftCheckBoxVisible(true, paramChatMessage, false);
-      return;
-      this.mAIORootView.findViewById(2131369124).setVisibility(4);
+    this.mAIORootView.findViewById(2131369287).setVisibility(4);
+    if (this.panelicons != null) {
+      this.panelicons.setCustomHeight(0);
     }
+    setLeftCheckBoxVisible(true, paramChatMessage, false);
   }
   
   protected void setList(List<ChatMessage> paramList, CharSequence paramCharSequence)
@@ -11759,7 +11694,7 @@ public class BaseChatPie
     while ((!paramIntent.getBooleanExtra("click_long_screen_shot", false)) || (this.listAdapter == null)) {
       return;
     }
-    this.listAdapter.jdField_a_of_type_Akyb.a();
+    this.listAdapter.jdField_a_of_type_Alvx.a();
   }
   
   protected void setOverScrollHandleVisable(boolean paramBoolean)
@@ -11769,7 +11704,7 @@ public class BaseChatPie
       if (this.listView.getOverScrollHeaderView() == null)
       {
         if (this.loadingView == null) {
-          this.loadingView = LayoutInflater.from(this.mContext).inflate(2131558939, null);
+          this.loadingView = LayoutInflater.from(this.mContext).inflate(2131558966, null);
         }
         this.listView.setOverScrollHeader(this.loadingView);
       }
@@ -11790,7 +11725,7 @@ public class BaseChatPie
     if ((i != 1033) && (i != 1034))
     {
       i = this.app.getConversationFacade().a(this.sessionInfo.curFriendUin, this.sessionInfo.curType);
-      bcdm.a(1, 0, this.sessionInfo.curType, i);
+      bdkh.a(1, 0, this.sessionInfo.curType, i);
     }
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "setReaded");
@@ -11810,12 +11745,16 @@ public class BaseChatPie
   {
     int i = 0;
     int j = 1;
+    int k;
+    label72:
+    Point localPoint;
     if (!paramBoolean)
     {
       this.preRecordOrientation = this.mActivity.getRequestedOrientation();
-      int k = this.app.getApplication().getResources().getConfiguration().orientation;
+      k = this.app.getApplication().getResources().getConfiguration().orientation;
       Object localObject;
-      if (!VersionUtils.isrFroyo()) {
+      if (!VersionUtils.isrFroyo())
+      {
         if (k == 1)
         {
           localObject = this.mActivity;
@@ -11824,100 +11763,99 @@ public class BaseChatPie
             i = 7;
           }
           ((FragmentActivity)localObject).setRequestedOrientation(i);
+          break label72;
+          break label72;
+        }
+        while (k != 2) {
+          return;
+        }
+        localObject = this.mActivity;
+        if (VersionUtils.isGingerBread()) {}
+        for (i = 6;; i = 0)
+        {
+          ((FragmentActivity)localObject).setRequestedOrientation(i);
+          return;
         }
       }
-      label72:
-      do
+      if (VersionUtils.isHoneycombMR2())
       {
-        do
+        localObject = this.mActivity.getWindowManager().getDefaultDisplay();
+        j = ((Display)localObject).getRotation();
+        localPoint = new Point();
+        ((Display)localObject).getSize(localPoint);
+        if ((j == 0) || (j == 2)) {
+          if (localPoint.x > localPoint.y) {
+            if (j != 0) {}
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      this.mActivity.setRequestedOrientation(i);
+      return;
+      i = 8;
+      continue;
+      if (j != 0)
+      {
+        i = 9;
+        continue;
+        if (localPoint.x > localPoint.y)
         {
-          do
+          if (j == 1) {
+            continue;
+          }
+          i = 8;
+          continue;
+        }
+        if (j == 1)
+        {
+          i = 9;
+          continue;
+          i = this.mActivity.getWindowManager().getDefaultDisplay().getRotation();
+          if ((i == 0) || (i == 1))
           {
-            break label72;
-            do
-            {
-              return;
-            } while (k != 2);
-            localObject = this.mActivity;
-            if (VersionUtils.isGingerBread()) {}
-            for (i = 6;; i = 0)
-            {
-              ((FragmentActivity)localObject).setRequestedOrientation(i);
-              return;
-            }
-            if (VersionUtils.isHoneycombMR2())
-            {
-              localObject = this.mActivity.getWindowManager().getDefaultDisplay();
-              j = ((Display)localObject).getRotation();
-              Point localPoint = new Point();
-              ((Display)localObject).getSize(localPoint);
-              if ((j == 0) || (j == 2)) {
-                if (localPoint.x > localPoint.y) {
-                  if (j != 0) {}
-                }
-              }
-              for (;;)
-              {
-                this.mActivity.setRequestedOrientation(i);
-                return;
-                i = 8;
-                continue;
-                if (j == 0)
-                {
-                  i = 1;
-                }
-                else
-                {
-                  i = 9;
-                  continue;
-                  if (localPoint.x > localPoint.y)
-                  {
-                    if (j != 1) {
-                      i = 8;
-                    }
-                  }
-                  else if (j == 1) {
-                    i = 9;
-                  } else {
-                    i = 1;
-                  }
-                }
-              }
-            }
-            i = this.mActivity.getWindowManager().getDefaultDisplay().getRotation();
-            if ((i != 0) && (i != 1)) {
-              break;
-            }
             if (k == 1)
             {
               this.mActivity.setRequestedOrientation(1);
               return;
             }
-          } while (k != 2);
-          this.mActivity.setRequestedOrientation(0);
+            if (k != 2) {
+              break;
+            }
+            this.mActivity.setRequestedOrientation(0);
+            return;
+          }
+          if ((i != 2) && (i != 3)) {
+            break;
+          }
+          if (k == 1)
+          {
+            this.mActivity.setRequestedOrientation(9);
+            return;
+          }
+          if (k != 2) {
+            break;
+          }
+          this.mActivity.setRequestedOrientation(8);
           return;
-        } while ((i != 2) && (i != 3));
-        if (k == 1)
-        {
-          this.mActivity.setRequestedOrientation(9);
+          this.mActivity.setRequestedOrientation(this.preRecordOrientation);
           return;
         }
-      } while (k != 2);
-      this.mActivity.setRequestedOrientation(8);
-      return;
+      }
+      i = 1;
     }
-    this.mActivity.setRequestedOrientation(this.preRecordOrientation);
   }
   
   public void setRightBtnToFinish()
   {
     if (this.mCustomTitleView != null) {
-      this.mCustomTitleView.setRightToStr(amtj.a(2131700133), new BaseChatPie.77(this));
+      this.mCustomTitleView.setRightToStr(anvx.a(2131700484), new BaseChatPie.76(this));
     }
     if (this.panelicons != null) {
       this.panelicons.setVisibility(8);
     }
-    auww.a(this.app, getActivity().getIntent());
+    awcv.a(this.app, getActivity().getIntent());
     setLeftCheckBoxVisible(true, null, false, true);
   }
   
@@ -11926,14 +11864,14 @@ public class BaseChatPie
     this.refreshScrollMsg = paramLong;
   }
   
-  public void setSendTextMsgParams(acwc paramacwc)
+  public void setSendTextMsgParams(admo paramadmo)
   {
-    paramacwc.b = this.mMsgSignalCount;
-    paramacwc.jdField_a_of_type_Int = this.mMsgSignalSum;
-    paramacwc.jdField_c_of_type_Boolean = this.mIsMsgSignalOpen;
-    paramacwc.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    paramacwc.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramacwc.h = audg.a(this).jdField_a_of_type_Boolean;
+    paramadmo.b = this.mMsgSignalCount;
+    paramadmo.jdField_a_of_type_Int = this.mMsgSignalSum;
+    paramadmo.jdField_c_of_type_Boolean = this.mIsMsgSignalOpen;
+    paramadmo.jdField_c_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    paramadmo.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramadmo.h = avja.a(this).jdField_a_of_type_Boolean;
     if ((this.mSourceMsgInfo != null) && (this.mSourceMsgInfo.mSourceMsgText.length() > MAX_SOURCE_MSG_TEXT_LENGTH))
     {
       this.mSourceMsgInfo.mSourceMsgText = this.mSourceMsgInfo.mSourceMsgText.substring(0, MAX_SOURCE_MSG_TEXT_LENGTH);
@@ -11942,7 +11880,7 @@ public class BaseChatPie
         this.mSourceMsgInfo.oriMsgType = 1;
       }
     }
-    paramacwc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = this.mSourceMsgInfo;
+    paramadmo.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = this.mSourceMsgInfo;
   }
   
   protected void setSubTitleText(String paramString)
@@ -12002,8 +11940,8 @@ public class BaseChatPie
     for (Object localObject = paramDraftTextInfo.text;; localObject = "")
     {
       this.mDraftText = ((String)localObject);
-      localObject = (afsd)getHelper(27);
-      if (((localObject == null) || (!((afsd)localObject).a())) && (this.input != null)) {
+      localObject = (agjr)getHelper(27);
+      if (((localObject == null) || (!((agjr)localObject).a())) && (this.input != null)) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -12031,12 +11969,12 @@ public class BaseChatPie
       if (android.text.TextUtils.isEmpty(this.mSourceMsgInfo.mSourceMsgTroopName))
       {
         localObject = this.mTroopReplyMsgSourceClick;
-        localObject = bevt.a(this.app, this.mActivity, this.mSourceMsgInfo, i - j - k, this.input.getPaint(), (View.OnClickListener)localObject);
+        localObject = bgdc.a(this.app, this.mActivity, this.mSourceMsgInfo, i - j - k, this.input.getPaint(), (View.OnClickListener)localObject);
         if (localObject != null)
         {
-          this.input.setCompoundDrawables(null, ((bevt)localObject).getDrawable(), null, null);
-          this.input.setTag(2131373788, localObject);
-          this.input.setMovementMethod(bevs.a());
+          this.input.setCompoundDrawables(null, ((bgdc)localObject).getDrawable(), null, null);
+          this.input.setTag(2131374006, localObject);
+          this.input.setMovementMethod(bgdb.a());
         }
         shouldHideLightVideoBtn(2);
       }
@@ -12054,10 +11992,10 @@ public class BaseChatPie
       if ((paramDraftTextInfo == null) || (paramDraftTextInfo.mixedMsgInfoHtml == null)) {
         break label512;
       }
-      ((afqj)this.helperProvider.a(24)).a(paramDraftTextInfo.mixedMsgInfoHtml);
-      bgdk.a(paramDraftTextInfo, this.input, this.mDraftText, this.app, getActivity(), this.sessionInfo.curFriendUin);
-      if ((!android.text.TextUtils.isEmpty(this.mDraftText)) && (this.mSourceMsgInfo == null) && (!(this instanceof ahgc)) && (atid.a(this.app).b(this.app))) {
-        this.uiHandler.postDelayed(new BaseChatPie.14(this), 100L);
+      ((aght)this.helperProvider.a(24)).a(paramDraftTextInfo.mixedMsgInfoHtml);
+      bhmb.a(paramDraftTextInfo, this.input, this.mDraftText, this.app, getActivity(), this.sessionInfo.curFriendUin);
+      if ((!android.text.TextUtils.isEmpty(this.mDraftText)) && (this.mSourceMsgInfo == null) && (!(this instanceof aiav)) && (aumk.a(this.app).b(this.app))) {
+        this.uiHandler.postDelayed(new BaseChatPie.13(this), 100L);
       }
       this.input.setSelection(this.input.getText().toString().length());
       this.isBeingInputDraft = false;
@@ -12084,8 +12022,8 @@ public class BaseChatPie
   public void setUnreadTxt()
   {
     Object localObject = new TextView(this.mContext);
-    ((TextView)localObject).setId(2131371466);
-    ((TextView)localObject).setBackgroundResource(2130838401);
+    ((TextView)localObject).setId(2131371652);
+    ((TextView)localObject).setBackgroundResource(2130838414);
     ((TextView)localObject).setGravity(1);
     ((TextView)localObject).setPadding(0, (int)(2.0F * this.mDensity + 0.5F), 0, 0);
     ((TextView)localObject).setSingleLine();
@@ -12093,7 +12031,7 @@ public class BaseChatPie
     ((TextView)localObject).setTextSize(2, 16.0F);
     ((TextView)localObject).setOnClickListener(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(2, 2131368751);
+    localLayoutParams.addRule(2, 2131368910);
     localLayoutParams.addRule(11);
     localLayoutParams.bottomMargin = ((int)(this.mDensity * 10.0F + 0.5F));
     localLayoutParams.rightMargin = ((int)(this.mDensity * 10.0F + 0.5F));
@@ -12104,11 +12042,11 @@ public class BaseChatPie
       this.mContent.bringChildToFront(this.mTipRoot);
     }
     if (this.speakerPhoneLayout != null) {
-      ((RelativeLayout.LayoutParams)this.speakerPhoneLayout.getLayoutParams()).addRule(2, 2131371466);
+      ((RelativeLayout.LayoutParams)this.speakerPhoneLayout.getLayoutParams()).addRule(2, 2131371652);
     }
-    localObject = (aftn)getHelper(53);
-    ((aftn)localObject).a(this.mUnReadTxt);
-    ((aftn)localObject).c(this.mUnReadedCnt);
+    localObject = (aglh)getHelper(53);
+    ((aglh)localObject).a(this.mUnReadTxt);
+    ((aglh)localObject).c(this.mUnReadedCnt);
   }
   
   public void setVivoSetting(int paramInt)
@@ -12118,7 +12056,7 @@ public class BaseChatPie
       if (QLog.isColorLevel()) {
         QLog.d("vivo", 2, "setVivoSetting isButtom=" + paramInt);
       }
-      ThreadManager.getSubThreadHandler().post(new BaseChatPie.82(this, paramInt));
+      ThreadManager.getSubThreadHandler().post(new BaseChatPie.81(this, paramInt));
     }
   }
   
@@ -12128,13 +12066,13 @@ public class BaseChatPie
     localIntent.putExtra("extra_launch_source", 1);
     localIntent.putExtra("extra_launch_mode", 2);
     this.mActivity.startActivity(localIntent);
-    bcef.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiGuanli", 0, 0, "", "", "", "");
+    bdla.b(null, "CliOper", "", "", "MbGuanli", "MbDianjiGuanli", 0, 0, "", "", "", "");
   }
   
   public void shouldHideLightVideoBtn(int paramInt)
   {
     if (LightVideoConfigMgr.a().a()) {
-      bnbb.a(paramInt, this.mVideoBtn, this.mFunBtn, this.receiptMode, this.mSourceMsgInfo);
+      boqt.a(paramInt, this.mVideoBtn, this.mFunBtn, this.receiptMode, this.mSourceMsgInfo);
     }
   }
   
@@ -12143,8 +12081,8 @@ public class BaseChatPie
     if (QLog.isColorLevel()) {
       QLog.d("MyOnGestureListener", 2, "shouldRecordPositionY ");
     }
-    this.currentPanelId = this.root.a();
-    if (this.currentPanelId == 1)
+    int i = this.root.a();
+    if (i == 1)
     {
       if (!((InputMethodManager)this.mContext.getSystemService("input_method")).isActive(this.input))
       {
@@ -12152,7 +12090,7 @@ public class BaseChatPie
         return true;
       }
     }
-    else if ((this.currentPanelId == 0) || ((this.root.a() != null) && (this.root.a().getVisibility() != 0)))
+    else if ((i == 0) || ((this.root.a() != null) && (this.root.a().getVisibility() != 0)))
     {
       if (this.input.getVisibility() == 0) {
         this.couldTrigerDismissPanel = false;
@@ -12175,7 +12113,7 @@ public class BaseChatPie
     Object localObject = Build.MANUFACTURER;
     int i;
     if (((String)localObject).equalsIgnoreCase("meizu")) {
-      i = 2131697965;
+      i = 2131698249;
     }
     for (;;)
     {
@@ -12185,8 +12123,8 @@ public class BaseChatPie
         if (j == 0) {
           break label247;
         }
-        ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(this.mContext.getResources().getColor(2131165616), this.mContext.getResources().getColor(2131165621)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
-        bfur.a(this.mContext, amtj.a(2131700129), (CharSequence)localObject, 0, 2131719087, null, null, new BaseChatPie.47(this)).show();
+        ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(this.mContext.getResources().getColor(2131165622), this.mContext.getResources().getColor(2131165627)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
+        bhdj.a(this.mContext, anvx.a(2131700480), (CharSequence)localObject, 0, 2131719492, null, null, new BaseChatPie.46(this)).show();
         return;
       }
       catch (Exception localException) {}
@@ -12197,20 +12135,20 @@ public class BaseChatPie
       return;
       if (localException.equalsIgnoreCase("xiaomi"))
       {
-        i = 2131697967;
+        i = 2131698251;
       }
       else if (localException.equalsIgnoreCase("vivo"))
       {
-        i = 2131697966;
+        i = 2131698250;
       }
       else
       {
-        i = 2131697964;
+        i = 2131698248;
         j = 1;
       }
     }
     label247:
-    bfur.a(this.mContext, 230, amtj.a(2131700112), localException.toString(), amtj.a(2131700135), "", null, new BaseChatPie.48(this)).show();
+    bhdj.a(this.mContext, 230, anvx.a(2131700463), localException.toString(), anvx.a(2131700486), "", null, new BaseChatPie.47(this)).show();
   }
   
   protected void showAddFriendAndShield()
@@ -12225,13 +12163,13 @@ public class BaseChatPie
     View localView;
     if (this.linearLayout == null)
     {
-      BaseChatPie.9 local9 = new BaseChatPie.9(this);
+      BaseChatPie.8 local8 = new BaseChatPie.8(this);
       this.linearLayout = new LinearLayout(this.mContext);
-      this.linearLayout.setId(2131362539);
+      this.linearLayout.setId(2131362553);
       this.linearLayout.setVisibility(8);
       this.linearLayout.setOrientation(0);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.app.getApplication().getResources().getDimension(2131297076));
-      localLayoutParams.addRule(3, 2131376501);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.app.getApplication().getResources().getDimension(2131297077));
+      localLayoutParams.addRule(3, 2131376760);
       if (!this.isThemeDefault) {
         localLayoutParams.topMargin = 0;
       }
@@ -12242,23 +12180,23 @@ public class BaseChatPie
         this.shieldTV.setClickable(false);
         this.shieldTV.setTextSize(0, this.app.getApplication().getResources().getDimension(2131296458));
         this.shieldTV.setCompoundDrawablePadding(AIOUtils.dp2px(8.0F, this.app.getApplication().getResources()));
-        this.shieldTV.setOnClickListener(local9);
+        this.shieldTV.setOnClickListener(local8);
         LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(0, -1);
         localLayoutParams1.weight = 1.0F;
         localView = new View(this.mContext);
         LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(1, -1);
         this.addFriendTv = new DrawableCenterTextView(this.mContext);
-        this.addFriendTv.setText(this.mContext.getString(2131689843));
+        this.addFriendTv.setText(this.mContext.getString(2131689872));
         this.addFriendTv.setTextSize(0, this.mContext.getResources().getDimensionPixelSize(2131296458));
         if (!this.isThemeDefault) {
           break label817;
         }
-        localObject = this.mContext.getResources().getDrawable(2130837980);
+        localObject = this.mContext.getResources().getDrawable(2130837994);
         label396:
         this.addFriendTv.setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject, null, null, null);
         this.addFriendTv.setCompoundDrawablePadding(AIOUtils.dp2px(8.0F, this.mContext.getResources()));
         this.addFriendTv.setContentDescription(this.addFriendTv.getText());
-        this.addFriendTv.setOnClickListener(local9);
+        this.addFriendTv.setOnClickListener(local8);
         this.addFriendTv.setTag(Integer.valueOf(3));
         localObject = new LinearLayout.LayoutParams(0, -1);
         ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
@@ -12266,10 +12204,10 @@ public class BaseChatPie
           break label834;
         }
         localView.setBackgroundColor(Color.parseColor("#d3d5dc"));
-        this.shieldTV.setBackgroundDrawable(this.app.getApplication().getResources().getDrawable(2130838314));
-        this.addFriendTv.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130838314));
-        this.shieldTV.setTextColor(this.app.getApplication().getResources().getColorStateList(2131167089));
-        this.addFriendTv.setTextColor(this.mContext.getResources().getColorStateList(2131167089));
+        this.shieldTV.setBackgroundDrawable(this.app.getApplication().getResources().getDrawable(2130838327));
+        this.addFriendTv.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130838327));
+        this.shieldTV.setTextColor(this.app.getApplication().getResources().getColorStateList(2131167103));
+        this.addFriendTv.setTextColor(this.mContext.getResources().getColorStateList(2131167103));
         label580:
         this.linearLayout.addView(this.shieldTV, localLayoutParams1);
         this.linearLayout.addView(localView, localLayoutParams2);
@@ -12284,13 +12222,13 @@ public class BaseChatPie
       }
     }
     label941:
-    for (Object localObject = this.app.getApplication().getResources().getDrawable(2130838315);; localObject = this.app.getApplication().getResources().getDrawable(2130838318))
+    for (Object localObject = this.app.getApplication().getResources().getDrawable(2130838328);; localObject = this.app.getApplication().getResources().getDrawable(2130838331))
     {
       boolean bool = isOneWayFriend();
       if (bool)
       {
-        localObject = this.app.getApplication().getResources().getDrawable(2130838004);
-        this.shieldTV.setText(this.app.getApplication().getResources().getString(2131718523));
+        localObject = this.app.getApplication().getResources().getDrawable(2130838018);
+        this.shieldTV.setText(this.app.getApplication().getResources().getString(2131718909));
         this.shieldTV.setTag(Integer.valueOf(4));
       }
       this.shieldTV.setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject, null, null, null);
@@ -12299,7 +12237,7 @@ public class BaseChatPie
       if (this.mTipRoot != null)
       {
         localObject = (RelativeLayout.LayoutParams)this.mTipRoot.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)this.mActivity.getResources().getDimension(2131297076) + (int)this.mActivity.getResources().getDimension(2131299076));
+        ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)this.mActivity.getResources().getDimension(2131297077) + (int)this.mActivity.getResources().getDimension(2131299080));
         this.mTipRoot.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       return;
@@ -12307,14 +12245,14 @@ public class BaseChatPie
       this.shieldTV.setClickable(true);
       break;
       label817:
-      localObject = this.mContext.getResources().getDrawable(2130837983);
+      localObject = this.mContext.getResources().getDrawable(2130837997);
       break label396;
       label834:
-      this.shieldTV.setBackgroundDrawable(this.app.getApplication().getResources().getDrawable(2130838313));
-      this.addFriendTv.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130838313));
-      localView.setBackgroundColor(this.mContext.getResources().getColor(2131166448));
-      this.shieldTV.setTextColor(this.app.getApplication().getResources().getColorStateList(2131167088));
-      this.addFriendTv.setTextColor(this.mContext.getResources().getColorStateList(2131167088));
+      this.shieldTV.setBackgroundDrawable(this.app.getApplication().getResources().getDrawable(2130838326));
+      this.addFriendTv.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130838326));
+      localView.setBackgroundColor(this.mContext.getResources().getColor(2131166462));
+      this.shieldTV.setTextColor(this.app.getApplication().getResources().getColorStateList(2131167102));
+      this.addFriendTv.setTextColor(this.mContext.getResources().getColorStateList(2131167102));
       break label580;
     }
   }
@@ -12323,7 +12261,7 @@ public class BaseChatPie
   {
     int i = -1;
     if (paramInt == 0) {
-      i = ((alnr)this.app.getManager(153)).b(this.app.getCurrentUin());
+      i = ((amme)this.app.getManager(QQManagerFactory.APOLLO_MANAGER)).b(this.app.getCurrentUin());
     }
     for (;;)
     {
@@ -12344,11 +12282,11 @@ public class BaseChatPie
     this.root.a(30);
   }
   
-  public ahpb showArkTips(String paramString, long paramLong)
+  public aijw showArkTips(String paramString, long paramLong)
   {
     if (this.mArkTipsBar == null)
     {
-      this.mArkTipsBar = new ahpb(this.mTipsMgr, this.mActivity);
+      this.mArkTipsBar = new aijw(this.mTipsMgr, this.mActivity);
       this.mTipsMgr.a(this.mArkTipsBar);
     }
     boolean bool;
@@ -12392,21 +12330,21 @@ public class BaseChatPie
       return;
       if (!this.isSimpleBar)
       {
-        amsw localamsw = (amsw)this.app.getManager(51);
-        if (!localamsw.d())
+        anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (!localanvk.d())
         {
-          ThreadManager.executeOnSubThread(new BaseChatPie.80(this));
+          ThreadManager.executeOnSubThread(new BaseChatPie.79(this));
           return;
         }
         long l = System.currentTimeMillis();
         if ((this.sessionInfo.curType == 3000) || (this.sessionInfo.curType == 1)) {
-          showAudioPanelIfNeedForNoC2C(localamsw, paramBoolean1, paramBoolean2);
+          showAudioPanelIfNeedForNoC2C(localanvk, paramBoolean1, paramBoolean2);
         }
         while (QLog.isColorLevel())
         {
           QLog.d(this.tag, 2, "showAudioPanelIfNeed cost :" + (System.currentTimeMillis() - l) + " isCallFromOnShow = " + paramBoolean1 + " guide = " + paramBoolean2);
           return;
-          showAudioPanelIfNeedForC2C(localamsw, paramBoolean1, paramBoolean2);
+          showAudioPanelIfNeedForC2C(localanvk, paramBoolean1, paramBoolean2);
         }
       }
     }
@@ -12419,9 +12357,9 @@ public class BaseChatPie
       this.root.a(21);
       if ((this.app != null) && (this.sessionInfo != null))
       {
-        alnr localalnr = (alnr)this.app.getManager(153);
-        if ((localalnr.b(this.app.getCurrentUin()) == 0) || (localalnr.b(this.app.getCurrentUin()) == 2)) {
-          VipUtils.a(this.app, "cmshow", "Apollo", "panel_close_show", localalnr.b(this.app.getCurrentUin()), ApolloUtil.h(alnr.a(this.app)), new String[] { "" + ApolloUtil.b(this.sessionInfo.curType) });
+        amme localamme = (amme)this.app.getManager(QQManagerFactory.APOLLO_MANAGER);
+        if ((localamme.b(this.app.getCurrentUin()) == 0) || (localamme.b(this.app.getCurrentUin()) == 2)) {
+          VipUtils.a(this.app, "cmshow", "Apollo", "panel_close_show", localamme.b(this.app.getCurrentUin()), ApolloUtil.h(amme.a(this.app)), new String[] { "" + ApolloUtil.b(this.sessionInfo.curType) });
         }
         if (this.mApolloPanel != null)
         {
@@ -12438,10 +12376,10 @@ public class BaseChatPie
   {
     this.mInputBar.setVisibility(0);
     this.mBottomBlurView.setVisibility(0);
-    if ((this.panelicons != null) && (!(this instanceof ahiu))) {
+    if ((this.panelicons != null) && (!(this instanceof aido))) {
       this.panelicons.setCustomHeight(PanelIconLinearLayout.b);
     }
-    ((afss)getHelper(29)).c();
+    ((agkg)getHelper(29)).c();
     if (this.mFakeInput != null) {
       this.mFakeInput.setVisibility(0);
     }
@@ -12454,7 +12392,7 @@ public class BaseChatPie
   {
     if (this.mC2BTipsBar == null)
     {
-      this.mC2BTipsBar = new ahpe(this.mActivity, this.mTipsMgr);
+      this.mC2BTipsBar = new aijz(this.mActivity, this.mTipsMgr);
       this.mTipsMgr.a(this.mC2BTipsBar);
     }
     this.mC2BTipsBar.a(this.sessionInfo.curFriendUin);
@@ -12463,7 +12401,7 @@ public class BaseChatPie
   public void showCameraPanel(int paramInt)
   {
     Object localObject = FlowCameraActivity2.class;
-    if (bbub.d(bbub.c)) {
+    if (bdaw.d(bdaw.c)) {
       localObject = MX3FlowCameraActivity.class;
     }
     localObject = new Intent(this.mContext, (Class)localObject);
@@ -12474,7 +12412,7 @@ public class BaseChatPie
     ((Intent)localObject).putExtra("sv_config", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.SV658Cfg.name(), null));
     ((Intent)localObject).putExtra("sv_whitelist", DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name()));
     this.chatPieHelper.c((Intent)localObject);
-    if (((this.sessionInfo.curType == 1) && (nmy.a().a(this.sessionInfo.curFriendUin))) || (this.sessionInfo.curType == 1010) || (this.sessionInfo.curType == 1001) || (this.sessionInfo.curType == 10002)) {
+    if (((this.sessionInfo.curType == 1) && (nty.a().a(this.sessionInfo.curFriendUin))) || (this.sessionInfo.curType == 1010) || (this.sessionInfo.curType == 1001) || (this.sessionInfo.curType == 10002)) {
       ((Intent)localObject).putExtra("flow_camera_capture_mode", true);
     }
     if (paramInt == 1) {
@@ -12482,14 +12420,14 @@ public class BaseChatPie
     }
     for (;;)
     {
-      ((Intent)localObject).putExtra("flow_camera_use_filter_function", bbxj.a(this.app, BaseApplicationImpl.getContext()));
+      ((Intent)localObject).putExtra("flow_camera_use_filter_function", bdee.a(this.app, BaseApplicationImpl.getContext()));
       this.mActivity.startActivityForResult((Intent)localObject, 11000);
-      agwt.a(this.app, "0X8005E7D", this.sessionInfo.curType);
+      ahpt.a(this.app, "0X8005E7D", this.sessionInfo.curType);
       if (MediaPlayerManager.a(this.app).a()) {
         MediaPlayerManager.a(this.app).a(false);
       }
-      if (bkkh.a != null) {
-        bkkh.a.b();
+      if (blvp.a != null) {
+        blvp.a.b();
       }
       return;
       if (paramInt == 2) {
@@ -12569,13 +12507,13 @@ public class BaseChatPie
   
   public void showGiftPanel(boolean paramBoolean, int paramInt)
   {
-    if (aqhd.a().isEnable())
+    if (arkl.a().isEnable())
     {
       GiftJsPlugin.openGiftBrowser(getActivity(), this.sessionInfo.troopUin);
       return;
     }
     if (this.mAIOGiftPanelContainer == null) {
-      this.mAIOGiftPanelContainer = new zsj(this);
+      this.mAIOGiftPanelContainer = new aahv(this);
     }
     this.mAIOGiftPanelContainer.a(paramBoolean, paramInt);
   }
@@ -12590,21 +12528,19 @@ public class BaseChatPie
   public void showManagerFavEmoticonTips()
   {
     String str = this.mContext.getString(2131689610);
-    bfur.a(this.mContext, 230, null, str, 2131691986, 2131691985, new BaseChatPie.65(this), new BaseChatPie.66(this)).show();
+    bhdj.a(this.mContext, 230, null, str, 2131692076, 2131692075, new BaseChatPie.64(this), new BaseChatPie.65(this)).show();
   }
   
   public void showNearPeopleOperDialog(String paramString)
   {
     if (this.addFriendDialog == null)
     {
-      this.addFriendDialog = amuu.a(this.mContext, paramString, new BaseChatPie.81(this), null);
-      if (this.addFriendDialog != null) {
-        ((TextView)this.addFriendDialog.findViewById(2131365547)).setText(this.mContext.getString(2131694201));
-      }
+      this.addFriendDialog = anxi.a(this.mContext, paramString, new BaseChatPie.80(this), null);
+      ((TextView)this.addFriendDialog.findViewById(2131365639)).setText(this.mContext.getString(2131694399));
     }
     if ((this.addFriendDialog != null) && (!this.addFriendDialog.isShowing()) && (!this.mActivity.isFinishing()))
     {
-      ((TextView)this.addFriendDialog.findViewById(2131365552)).setText(paramString);
+      ((TextView)this.addFriendDialog.findViewById(2131365644)).setText(paramString);
       this.addFriendDialog.show();
     }
   }
@@ -12616,18 +12552,18 @@ public class BaseChatPie
   
   public void showPokePanel()
   {
-    String str = agkg.a(this.app);
-    if ((android.text.TextUtils.isEmpty(str)) || ((agkg.b(this.app, 1) == 0) && (agkg.b(this.app, 0) == 0)) || (bily.c(this.app, this.sessionInfo.curFriendUin)))
+    String str = ahcw.a(this.app);
+    if ((android.text.TextUtils.isEmpty(str)) || ((ahcw.b(this.app, 1) == 0) && (ahcw.b(this.app, 0) == 0)) || (bjxa.c(this.app, this.sessionInfo.curFriendUin)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("pokeMsg", 2, "pokePanelInfo " + str + ", " + agkg.b(this.app, 1) + ", " + agkg.b(this.app, 0) + ", " + bily.c(this.app, this.sessionInfo.curFriendUin));
+        QLog.d("pokeMsg", 2, "pokePanelInfo " + str + ", " + ahcw.b(this.app, 1) + ", " + ahcw.b(this.app, 0) + ", " + bjxa.c(this.app, this.sessionInfo.curFriendUin));
       }
-      acvv.b(this.app, BaseApplicationImpl.getContext(), this.sessionInfo);
+      admh.b(this.app, BaseApplicationImpl.getContext(), this.sessionInfo);
     }
     do
     {
       return;
-      agkg.d(this.app);
+      ahcw.d(this.app);
       if (!PokePanel.jdField_c_of_type_Boolean) {
         break;
       }
@@ -12643,13 +12579,13 @@ public class BaseChatPie
     QLog.d("pokeMsg", 2, "XPanel is null");
     return;
     PokePanel.a(this.app);
-    acvv.b(this.app, BaseApplicationImpl.getContext(), this.sessionInfo);
+    admh.b(this.app, BaseApplicationImpl.getContext(), this.sessionInfo);
   }
   
   public void showProgressDialog(int paramInt)
   {
     if (this.mProgressDialog == null) {
-      this.mProgressDialog = new bhht(this.mContext, getTitleBarHeight());
+      this.mProgressDialog = new bisl(this.mContext, getTitleBarHeight());
     }
     this.mProgressDialog.c(paramInt);
     this.mProgressDialog.show();
@@ -12661,7 +12597,7 @@ public class BaseChatPie
     {
       this.pttMaskDialog = new ReportDialog(this.mContext, 2131755174);
       ImageView localImageView = new ImageView(this.mContext);
-      localImageView.setBackgroundResource(2130838100);
+      localImageView.setBackgroundResource(2130838114);
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.1F, 1.0F);
       localAlphaAnimation.setDuration(500L);
       localImageView.startAnimation(localAlphaAnimation);
@@ -12682,12 +12618,12 @@ public class BaseChatPie
   
   public void showPttStatusToast(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i = bfxd.b(paramBoolean1, paramBoolean2, paramBoolean3);
-    int j = bfxd.a(paramBoolean1, paramBoolean2, paramBoolean3);
+    int i = bhfv.b(paramBoolean1, paramBoolean2, paramBoolean3);
+    int j = bhfv.a(paramBoolean1, paramBoolean2, paramBoolean3);
     if ((i > 0) && (this.playMode != j))
     {
       this.playMode = j;
-      QQToast.a(paramContext, i, 0).b(paramContext.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(paramContext, i, 0).b(paramContext.getResources().getDimensionPixelSize(2131299080));
     }
   }
   
@@ -12701,25 +12637,25 @@ public class BaseChatPie
   
   public void showStickerBubbleQuickButtonIfNeeded(@Nullable String paramString)
   {
-    if ((this.sessionInfo.curType != 0) || (!agkg.c(this.app)) || (this.receiptMode)) {}
+    if ((this.sessionInfo.curType != 0) || (!ahcw.c(this.app)) || (this.receiptMode)) {}
     String str;
     do
     {
       return;
       if (QLog.isColorLevel())
       {
-        i = agkg.b(this.app, 9);
-        j = agkg.b(this.app, 4);
-        int k = agkg.b(this.app, 11);
+        i = ahcw.b(this.app, 9);
+        j = ahcw.b(this.app, 4);
+        int k = ahcw.b(this.app, 11);
         QLog.d(this.tag, 2, String.format("showStickerBubbleQuickButtonIfNeeded  peInputSwitch :%dentryType:%d,viewType:%d ", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
       }
       str = paramString;
       if (paramString == null) {
         str = this.input.getText().toString();
       }
-    } while ((!str.isEmpty()) || (ahlz.a(this.app.getCurrentUin()) <= 0));
+    } while ((!str.isEmpty()) || (aigt.a(this.app.getCurrentUin()) <= 0));
     this.mIconLayoutInInputRight.setVisibility(0);
-    this.mIconButtonInInputRight.setImageDrawable(ahlz.a(this.app.getCurrentUin()));
+    this.mIconButtonInInputRight.setImageDrawable(aigt.a(this.app.getCurrentUin()));
     int j = this.mIconLayoutInInputRight.getWidth();
     if (j == 0) {}
     for (int i = AIOUtils.dp2px(37.0F, this.mActivity.getResources());; i = j)
@@ -12731,12 +12667,12 @@ public class BaseChatPie
         QLog.d("ZhituManager", 4, "showZhituIcon.rightPadding." + i + " ,pr = " + j + ",input.getPaddingRight() = " + this.input.getPaddingRight());
       }
       if (AppSetting.jdField_c_of_type_Boolean) {
-        this.mIconButtonInInputRight.setContentDescription(amtj.a(2131700111) + ahly.a(ahlz.a(this.app.getCurrentUin())));
+        this.mIconButtonInInputRight.setContentDescription(anvx.a(2131700462) + aigs.a(aigt.a(this.app.getCurrentUin())));
       }
       if (this.mStickerBubbleQuickButtonReported) {
         break;
       }
-      bcef.b(getApp(), "dc00898", "", "", "0X8009272", "0X8009272", ahlz.a(this.app.getCurrentUin()), 0, "", "", "", "");
+      bdla.b(getApp(), "dc00898", "", "", "0X8009272", "0X8009272", aigt.a(this.app.getCurrentUin()), 0, "", "", "", "");
       this.mStickerBubbleQuickButtonReported = true;
       return;
     }
@@ -12746,7 +12682,7 @@ public class BaseChatPie
   {
     if (this.mTimTipsBar == null)
     {
-      this.mTimTipsBar = new ahqp(this.app, this.mActivity, this.mTipsMgr);
+      this.mTimTipsBar = new ailo(this.app, this.mActivity, this.mTipsMgr);
       this.mTipsMgr.a(this.mTimTipsBar);
     }
     return this.mTipsMgr.a(this.mTimTipsBar, new Object[0]);
@@ -12764,11 +12700,11 @@ public class BaseChatPie
   
   public void showZhituIcon()
   {
-    if (bbyp.b()) {
+    if (bdfk.b()) {
       break label6;
     }
     label6:
-    while ((!((afqx)getHelper(18)).a(this.mContext, this.input.getText().toString(), this.input)) || (this.mIconLayoutInInputRight == null)) {
+    while ((!((agii)getHelper(18)).a(this.mContext, this.input.getText().toString(), this.input)) || (this.mIconLayoutInInputRight == null)) {
       return;
     }
     if (this.mIconLayoutInInputRight.getVisibility() != 0)
@@ -12776,8 +12712,8 @@ public class BaseChatPie
       this.mIconLayoutInInputRight.setVisibility(0);
       this.mZhituSwitch = false;
     }
-    this.mIconButtonInInputRight.setImageResource(2130838103);
-    this.mIconButtonInInputRight.setContentDescription(amtj.a(2131700118));
+    this.mIconButtonInInputRight.setImageResource(2130838117);
+    this.mIconButtonInInputRight.setContentDescription(anvx.a(2131700469));
     int j = this.mIconLayoutInInputRight.getWidth();
     if (j == 0) {}
     for (int i = AIOUtils.dp2px(37.0F, this.mActivity.getResources());; i = j)
@@ -12791,7 +12727,7 @@ public class BaseChatPie
       if (this.mZhituButtonExposeReported) {
         break;
       }
-      bcef.b(getApp(), "dc00898", "", "", "0X800932B", "0X800932B", 0, 0, "", "", "", "");
+      bdla.b(getApp(), "dc00898", "", "", "0X800932B", "0X800932B", 0, 0, "", "", "", "");
       this.mZhituButtonExposeReported = true;
       return;
     }
@@ -12831,7 +12767,7 @@ public class BaseChatPie
       QLog.d("Q.msg.delmsg", 2, "start del anim,uniseq is:" + paramChatMessage.uniseq + ",id is:" + paramChatMessage.getId() + ",time is:" + System.currentTimeMillis());
     }
     long l1 = System.currentTimeMillis();
-    ThreadManager.post(new BaseChatPie.76(this, paramChatMessage), 8, null, true);
+    ThreadManager.post(new BaseChatPie.75(this, paramChatMessage), 8, null, true);
     long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.delmsg", 2, "removeMsgByMessageRecord cost time is:" + (l2 - l1));
@@ -12846,7 +12782,7 @@ public class BaseChatPie
   
   public void startShakeAnim()
   {
-    ((afpo)this.helperProvider.a(65)).a();
+    ((aggs)this.helperProvider.a(65)).a();
   }
   
   public void stickerEditMode(boolean paramBoolean)
@@ -12882,7 +12818,7 @@ public class BaseChatPie
   
   public boolean supportRefreshHeadMessage()
   {
-    return ((this instanceof TroopChatPie)) || ((this instanceof afim));
+    return ((this instanceof TroopChatPie)) || ((this instanceof afzr));
   }
   
   public void switchPhotoListFilterForReceiptMode(boolean paramBoolean)
@@ -12894,7 +12830,7 @@ public class BaseChatPie
     localPhotoListPanel.setReceiptMode(paramBoolean, this.app);
     if (paramBoolean)
     {
-      localPhotoListPanel.setSelectLimitListener(new BaseChatPie.90(this));
+      localPhotoListPanel.setSelectLimitListener(new BaseChatPie.89(this));
       return;
     }
     localPhotoListPanel.setSelectLimitListener(null);
@@ -12903,11 +12839,11 @@ public class BaseChatPie
   public void switchReceiptMode()
   {
     String str1;
-    if ((!this.receiptMode) && (azux.b(this.app) <= 0))
+    if ((!this.receiptMode) && (bbbf.b(this.app) <= 0))
     {
-      str1 = getActivity().getString(2131697944);
-      QQToast.a(getActivity(), str1, 0).b(getActivity().getResources().getDimensionPixelSize(2131299076));
-      bcef.b(this.app, "CliOper", "", "", "0x80083EC", "0x80083EC", 0, 0, "", "", "", "");
+      str1 = getActivity().getString(2131698228);
+      QQToast.a(getActivity(), str1, 0).b(getActivity().getResources().getDimensionPixelSize(2131299080));
+      bdla.b(this.app, "CliOper", "", "", "0x80083EC", "0x80083EC", 0, 0, "", "", "", "");
       return;
     }
     int i;
@@ -12915,7 +12851,7 @@ public class BaseChatPie
     {
       bool = true;
       this.receiptMode = bool;
-      ((afqg)getHelper(83)).b(true);
+      ((aghq)getHelper(83)).b(true);
       removeEmoticonGuideBubble();
       if (!this.receiptMode) {
         break label578;
@@ -12927,28 +12863,28 @@ public class BaseChatPie
       this.root.a(1);
       this.panelicons.a(true);
       changeCoverVisibility(0);
-      i = azux.b(this.app);
+      i = bbbf.b(this.app);
       str1 = String.valueOf(i);
       if (i >= 4) {
         break label542;
       }
-      String str2 = String.format(getActivity().getString(2131697958), new Object[] { str1 });
+      String str2 = String.format(getActivity().getString(2131698242), new Object[] { str1 });
       SpannableString localSpannableString = new SpannableString(str2);
-      localSpannableString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.getContext().getResources().getColor(2131167139)), str2.length() - str1.length() - 2, str2.length() - 2, 18);
+      localSpannableString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.getContext().getResources().getColor(2131167153)), str2.length() - str1.length() - 2, str2.length() - 2, 18);
       this.tvReceiptTips.setText(localSpannableString);
       label281:
-      i = BaseApplicationImpl.getContext().getResources().getColor(2131167140);
+      i = BaseApplicationImpl.getContext().getResources().getColor(2131167154);
       this.tvReceiptTips.setTextColor(i);
       this.input.setCompoundDrawables(null, null, null, null);
-      this.input.setTag(2131373788, null);
-      amat.a(this.app, "receipt_msg", true);
+      this.input.setTag(2131374006, null);
+      ancb.a(this.app, "receipt_msg", true);
       hideAppShortcutBar();
       if (this.sessionInfo.curType != 0) {
         break label555;
       }
       i = 1;
       label351:
-      bcef.b(this.app, "CliOper", "", "", "0x80083E8", "0x80083E8", i, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0x80083E8", "0x80083E8", i, 0, "", "", "", "");
       label387:
       switchPhotoListFilterForReceiptMode(this.receiptMode);
       if (this.mEmoPanel != null)
@@ -12981,7 +12917,7 @@ public class BaseChatPie
       return;
       bool = false;
       break;
-      this.tvReceiptTips.setText(2131697957);
+      this.tvReceiptTips.setText(2131698241);
       break label281;
       if (this.sessionInfo.curType == 3000)
       {
@@ -12994,14 +12930,10 @@ public class BaseChatPie
       this.panelicons.a(this.app, this.sessionInfo, this);
       changeCoverVisibility(8);
       this.input.getText().clear();
-      this.mContent.post(new BaseChatPie.89(this));
+      this.mContent.post(new BaseChatPie.88(this));
       break label387;
     }
   }
-  
-  public void turnOffShake() {}
-  
-  public void turnOnShake() {}
   
   public void update(Observable paramObservable, Object paramObject)
   {
@@ -13048,8 +12980,8 @@ public class BaseChatPie
   {
     if (((Boolean)SkinEngine.getInstances().getThemeConfig("aio_big_input_bar", Boolean.FALSE)).booleanValue())
     {
-      localObject = this.mInputBar.findViewById(2131377546);
-      ((View)localObject).setBackgroundResource(2130839144);
+      localObject = this.mInputBar.findViewById(2131377820);
+      ((View)localObject).setBackgroundResource(2130839164);
       ((View)localObject).setVisibility(0);
       localObject = this.mInputBar.getBackground();
       if (localObject != null) {
@@ -13061,7 +12993,7 @@ public class BaseChatPie
     if (localObject != null) {
       ((Drawable)localObject).setVisible(true, false);
     }
-    this.mInputBar.findViewById(2131377546).setVisibility(8);
+    this.mInputBar.findViewById(2131377820).setVisibility(8);
   }
   
   protected void updateListUnRead(int paramInt)
@@ -13090,7 +13022,7 @@ public class BaseChatPie
     {
       localTextView.setText(str);
       this.mUnReadTxt.setVisibility(0);
-      ((aftn)getHelper(53)).a();
+      ((aglh)getHelper(53)).a();
       break;
     }
   }
@@ -13147,9 +13079,9 @@ public class BaseChatPie
     if (i == 21)
     {
       if (this.sessionInfo.curType != 1) {
-        break label195;
+        break label196;
       }
-      HotChatManager localHotChatManager = (HotChatManager)this.app.getManager(60);
+      HotChatManager localHotChatManager = (HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       if ((localHotChatManager != null) && (localHotChatManager.b(this.sessionInfo.curFriendUin))) {
         i = 1;
       }
@@ -13193,7 +13125,7 @@ public class BaseChatPie
         }
         this.panelicons.setSelected(i);
         return;
-        label195:
+        label196:
         i = 0;
       }
     }
@@ -13205,17 +13137,17 @@ public class BaseChatPie
       QLog.d(this.tag, 2, "updateSession");
     }
     this.needShowAudioWhenResume = true;
-    bfzg.a(null, "AIO_updateSession_initIntentData");
+    bhhy.a(null, "AIO_updateSession_initIntentData");
     updateSession_initIntentData(paramIntent);
-    bfzg.a("AIO_updateSession_initIntentData", "AIO_updateSession_updateUI");
+    bhhy.a("AIO_updateSession_initIntentData", "AIO_updateSession_updateUI");
     updateSession_business(paramIntent);
     updateSession_updateUI(paramIntent);
-    bfzg.a("AIO_updateSession_updateUI", "AIO_updateSession_forwardType");
+    bhhy.a("AIO_updateSession_updateUI", "AIO_updateSession_forwardType");
     updateSession_forwardType(paramIntent, true);
-    bfzg.a("AIO_updateSession_forwardType", "AIO_updateSession_otherThings");
+    bhhy.a("AIO_updateSession_forwardType", "AIO_updateSession_otherThings");
     updateSession_otherThings(paramIntent);
     this.panelicons.a(this.app, this.sessionInfo, this);
-    bfzg.a("AIO_updateSession_otherThings", null);
+    bhhy.a("AIO_updateSession_otherThings", null);
     if (QLog.isColorLevel()) {
       QLog.d(this.tag, 2, "AIOTime updateSession end");
     }
@@ -13223,15 +13155,15 @@ public class BaseChatPie
   
   protected void updateSession_business(Intent paramIntent)
   {
-    this.helperProvider.a(2);
+    this.helperProvider.a(3);
   }
   
   protected void updateSession_checkUpdateFooterView()
   {
-    bfzg.a(null, "AIO_apolloFooterview");
+    bhhy.a(null, "AIO_apolloFooterview");
     this.sessionInfo.curType = this.mActivity.getIntent().getIntExtra("uintype", -1);
     int j;
-    if (((this.sessionInfo.curType == 1) || (this.sessionInfo.curType == 0) || ((this.sessionInfo.curType == 3000) && (1 == alnr.c("discuss")))) && (alnr.b) && (1 == ((alnr)this.app.getManager(153)).b(this.app.getCurrentUin())) && (!((HotChatManager)this.app.getManager(60)).b(this.sessionInfo.curFriendUin)) && (!ambc.a(this.app)) && (ambc.b(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin)))
+    if ((amme.b) && (1 == ((amme)this.app.getManager(QQManagerFactory.APOLLO_MANAGER)).b(this.app.getCurrentUin())) && (!((HotChatManager)this.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(this.sessionInfo.curFriendUin)) && (!anck.a(this.app)) && (anck.b(this.app, this.sessionInfo.curType, this.sessionInfo.curFriendUin)))
     {
       j = SpriteUIHandler.a(this.mContext);
       i = j;
@@ -13244,7 +13176,7 @@ public class BaseChatPie
       if (i > 0) {
         this.businessFooterDetector.a(i, false, "initUI", 0);
       }
-      bfzg.a("AIO_apolloFooterview", null);
+      bhhy.a("AIO_apolloFooterview", null);
       return;
     }
   }
@@ -13270,7 +13202,7 @@ public class BaseChatPie
   
   protected void updateSession_updateTitle(Intent paramIntent)
   {
-    bfzg.a(null, "AIO_updateSession_updateTitle");
+    bhhy.a(null, "AIO_updateSession_updateTitle");
     String str = paramIntent.getStringExtra("uinname");
     paramIntent = str;
     if (str == null)
@@ -13281,7 +13213,7 @@ public class BaseChatPie
       paramIntent = ContactUtils.getDisplayName(this.app, this.sessionInfo.curFriendUin, this.sessionInfo.troopUin, ContactUtils.getEntry(this.sessionInfo.curType), 3);
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.tag, 2, "updateSession_updateTitle curFriendNick" + bftf.a(paramIntent));
+      QLog.d(this.tag, 2, "updateSession_updateTitle curFriendNick" + bhbx.a(paramIntent));
     }
     this.sessionInfo.curFriendNick = paramIntent;
     if (this.sessionInfo.curFriendNick != null)
@@ -13298,7 +13230,7 @@ public class BaseChatPie
     {
       this.mTitleIcon.setVisibility(8);
       this.mTitleIcon2.setVisibility(8);
-      bfzg.a("AIO_updateSession_updateTitle", null);
+      bhhy.a("AIO_updateSession_updateTitle", null);
       return;
       QLog.e(this.tag, 1, "updateSession_updateTitle sessionInfo.curFriendNick == null");
     }
@@ -13319,7 +13251,7 @@ public class BaseChatPie
     {
       this.isBack2Root = true;
       adjustTitleDimension();
-      this.mCustomTitleView.setLeftContentDescription(amtj.a(2131700127));
+      this.mCustomTitleView.setLeftContentDescription(anvx.a(2131700478));
       bool1 = paramIntent.getBooleanExtra("key_jump_from_qzone_feed", false);
       if (!paramIntent.getBooleanExtra("isFromDiscussionFlyTicket", false)) {
         break label458;
@@ -13330,7 +13262,7 @@ public class BaseChatPie
         break label595;
       }
       long l = System.currentTimeMillis();
-      ThreadManagerV2.excute(new BaseChatPie.21(this), 32, null, true);
+      ThreadManagerV2.excute(new BaseChatPie.20(this), 32, null, true);
       if (QLog.isColorLevel()) {
         QLog.d(this.tag, 2, "AIOTime doOnCreate_initUI updateUnreadNumOnTitleBar cost: " + (System.currentTimeMillis() - l));
       }
@@ -13351,15 +13283,15 @@ public class BaseChatPie
       if (QLog.isColorLevel()) {
         QLog.i(this.tag, 2, "set left text from update left: " + (String)localObject1 + ", back: " + (String)localObject3);
       }
-      if (acvu.jdField_a_of_type_Boolean)
+      if (admg.jdField_a_of_type_Boolean)
       {
-        this.mTitleBtnRight.setContentDescription(amtj.a(2131700104));
+        this.mTitleBtnRight.setContentDescription(anvx.a(2131700455));
         if (!this.mTitleShowUnread)
         {
           localObject1 = this.mTitleBtnLeft.getText().toString();
           paramIntent = (Intent)localObject1;
-          if (!this.app.getApplication().getString(2131690424).equals(localObject1)) {
-            paramIntent = amtj.a(2131700140) + (String)localObject1 + amtj.a(2131700106);
+          if (!this.app.getApplication().getString(2131690499).equals(localObject1)) {
+            paramIntent = anvx.a(2131700491) + (String)localObject1 + anvx.a(2131700457);
           }
           this.mTitleBtnLeft.setContentDescription(paramIntent);
         }
@@ -13386,21 +13318,21 @@ public class BaseChatPie
         break;
       }
       adjustTitleDimension();
-      this.mCustomTitleView.setLeftContentDescription(amtj.a(2131700137));
+      this.mCustomTitleView.setLeftContentDescription(anvx.a(2131700488));
       break;
       label458:
       if (bool1)
       {
         localObject1 = paramIntent.getStringExtra("key_jump_from_qzone_feed_left_title");
         if (localObject1 == null) {}
-        for (localObject1 = this.app.getApplication().getString(2131690599);; localObject1 = this.app.getApplication().getString(2131716763, new Object[] { localObject1 }))
+        for (localObject1 = this.app.getApplication().getString(2131690676);; localObject1 = this.app.getApplication().getString(2131717126, new Object[] { localObject1 }))
         {
           this.mTitleShowUnread = false;
           break;
         }
       }
       localObject1 = paramIntent.getStringExtra("leftViewText");
-      if ((this.isBack2Root) || ((localObject1 != null) && (((String)localObject1).contains(this.app.getApplication().getString(2131718771))))) {}
+      if ((this.isBack2Root) || ((localObject1 != null) && (((String)localObject1).contains(this.app.getApplication().getString(2131719161))))) {}
       for (bool1 = true;; bool1 = false)
       {
         this.mTitleShowUnread = bool1;
@@ -13412,7 +13344,7 @@ public class BaseChatPie
       label595:
       localObject3 = this.mTitleBtnLeft;
       if (localObject1 == null) {}
-      for (localObject2 = this.app.getApplication().getString(2131690599);; localObject2 = localObject1)
+      for (localObject2 = this.app.getApplication().getString(2131690676);; localObject2 = localObject1)
       {
         ((TextView)localObject3).setText((CharSequence)localObject2);
         adjustTitleDimension();
@@ -13423,12 +13355,12 @@ public class BaseChatPie
   
   protected void updateSession_updateTitleRightView()
   {
-    this.mCustomTitleView.setRight1Icon(2130850056, 2130850057);
+    this.mCustomTitleView.setRight1Icon(2130850149, 2130850150);
   }
   
   protected void updateSession_updateUI(Intent paramIntent)
   {
-    this.mCustomTitleView.setRight2Icon(2130850596, 2130850597);
+    this.mCustomTitleView.setRight2Icon(2130850727, 2130850728);
     this.mTipsMgr.a();
     instantUpdate(true, false);
     updateSession_updateTitle(paramIntent);
@@ -13442,7 +13374,6 @@ public class BaseChatPie
     updateSession_updateTitleBtnCall();
     updateSession_checkUpdateFooterView();
     updateSession_updateDrawer();
-    this.canPullRefresh = true;
     this.mEffectPullRefreshCount = 0;
     setOverScrollHandleVisable(false);
     this.chatPieHelper.a(paramIntent);
@@ -13456,16 +13387,16 @@ public class BaseChatPie
     if ((paramBoolean1) && (!AIOUtils.isRubbishSamsun())) {
       if (this.speakerPhoneLayout == null)
       {
-        this.mActivity.getLayoutInflater().inflate(2131558645, this.mContent);
-        this.speakerPhoneLayout = this.mContent.findViewById(2131362489);
-        this.speakerPhoneTextView = ((TextView)this.mContent.findViewById(2131362490));
-        this.phoneImage = ((ImageView)this.mContent.findViewById(2131362488));
+        this.mActivity.getLayoutInflater().inflate(2131558657, this.mContent);
+        this.speakerPhoneLayout = this.mContent.findViewById(2131362502);
+        this.speakerPhoneTextView = ((TextView)this.mContent.findViewById(2131362503));
+        this.phoneImage = ((ImageView)this.mContent.findViewById(2131362501));
         this.speakerPhoneLayout.setOnClickListener(this);
         if (this.sessionInfo.curType != 1) {
           break label228;
         }
         if ((this.mTroopTips != null) && (!this.mTroopTips.c())) {
-          ((RelativeLayout.LayoutParams)this.speakerPhoneLayout.getLayoutParams()).addRule(2, 2131368751);
+          ((RelativeLayout.LayoutParams)this.speakerPhoneLayout.getLayoutParams()).addRule(2, 2131368910);
         }
       }
     }
@@ -13487,24 +13418,24 @@ public class BaseChatPie
             if (!paramBoolean2) {
               break;
             }
-            this.speakerPhoneTextView.setText(2131689960);
-            this.phoneImage.setBackgroundResource(2130849886);
+            this.speakerPhoneTextView.setText(2131689989);
+            this.phoneImage.setBackgroundResource(2130849979);
             if (this.mCustomTitleView != null) {
               this.mCustomTitleView.a(false, this.sessionInfo.curType);
             }
             return;
             if (this.mUnReadTxt == null) {
-              ((RelativeLayout.LayoutParams)this.speakerPhoneLayout.getLayoutParams()).addRule(2, 2131368751);
+              ((RelativeLayout.LayoutParams)this.speakerPhoneLayout.getLayoutParams()).addRule(2, 2131368910);
             }
           }
-          this.speakerPhoneTextView.setText(2131689959);
-          this.phoneImage.setBackgroundResource(2130849885);
+          this.speakerPhoneTextView.setText(2131689988);
+          this.phoneImage.setBackgroundResource(2130849978);
         } while (this.mCustomTitleView == null);
         this.mCustomTitleView.a(true, this.sessionInfo.curType);
         return;
       } while (this.speakerPhoneLayout == null);
       this.speakerPhoneLayout.setVisibility(8);
-      paramBoolean1 = lfg.a(BaseApplicationImpl.getContext());
+      paramBoolean1 = lfl.a(BaseApplicationImpl.getContext());
       paramBoolean2 = AudioHelper.a(BaseApplicationImpl.getContext());
     } while (((!paramBoolean1) && (!paramBoolean2)) || (this.mCustomTitleView == null));
     NavBarAIO localNavBarAIO = this.mCustomTitleView;
@@ -13537,7 +13468,7 @@ public class BaseChatPie
     String str1;
     if ((this.mTitleShowUnread) && (!BaseChatItemLayout.jdField_a_of_type_Boolean))
     {
-      int j = azjc.a(this.app);
+      int j = bapk.a(this.app);
       i = 0;
       localObject = this.app.getMessageFacade();
       if (localObject != null) {
@@ -13546,26 +13477,26 @@ public class BaseChatPie
       i += j;
       localObject = "";
       if (i <= 0) {
-        break label175;
+        break label178;
       }
       localObject = "" + i;
       if (i > 99) {
         localObject = "99+";
       }
-      str1 = this.mContext.getString(2131718771) + "(" + (String)localObject + ")";
+      str1 = this.mContext.getString(2131719161) + "(" + (String)localObject + ")";
     }
-    for (String str2 = amtj.a(2131700121) + this.mContext.getString(2131718771) + i + "条未读";; str2 = amtj.a(2131700126) + this.mContext.getString(2131718771))
+    for (String str2 = anvx.a(2131700472) + this.mContext.getString(2131719161) + i + "条未读";; str2 = anvx.a(2131700477) + this.mContext.getString(2131719161))
     {
       updateUnreadNumOnTitleBar(str1, str2, (String)localObject);
       return;
-      label175:
-      str1 = this.mContext.getString(2131718771);
+      label178:
+      str1 = this.mContext.getString(2131719161);
     }
   }
   
   void updateUnreadNumOnTitleBar(String paramString1, String paramString2, String paramString3)
   {
-    this.uiHandler.post(new BaseChatPie.20(this, paramString1, paramString3, paramString2));
+    this.uiHandler.post(new BaseChatPie.19(this, paramString1, paramString3, paramString2));
   }
   
   protected void updateViewForTheme(ImageView paramImageView, int paramInt1, int paramInt2)

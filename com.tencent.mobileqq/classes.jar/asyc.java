@@ -1,56 +1,41 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
-public abstract class asyc
+public class asyc
+  implements View.OnClickListener
 {
-  protected asyd a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  public asyc(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public asyc(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public static asyc a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null)
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.f, 2, "click too fast , wait a minute.");
+      }
+    }
+    for (;;)
     {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
-      return null;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.e();
+      Object localObject = (atpq)paramView.getTag();
+      if (((atpq)localObject).a != 0)
+      {
+        int i = ((atpq)localObject).a;
+        localObject = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+        ((SharedPreferences.Editor)localObject).putBoolean("last_select_All", true);
+        ((SharedPreferences.Editor)localObject).commit();
+        FMLocalFileActivity.a(this.a, i);
+      }
     }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new asxw(paramQQAppInterface, paramChatMessage);
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new asyf(paramQQAppInterface, paramChatMessage);
-    }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
   }
-  
-  public abstract long a();
-  
-  public abstract asxz a();
-  
-  public abstract String a();
-  
-  public void a(asyd paramasyd)
-  {
-    this.jdField_a_of_type_Asyd = paramasyd;
-  }
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
 }
 
 

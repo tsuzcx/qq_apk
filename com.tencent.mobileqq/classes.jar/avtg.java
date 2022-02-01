@@ -1,39 +1,8 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.os.Bundle;
 
-public class avtg
-  implements BusinessObserver
+public abstract interface avtg
 {
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, avuk paramavuk) {}
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, paramObject);
-      return;
-    case 3: 
-      a(paramBoolean);
-      return;
-    case 4: 
-      a(paramBoolean, (avuk)paramObject);
-      return;
-    }
-    b(paramBoolean);
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

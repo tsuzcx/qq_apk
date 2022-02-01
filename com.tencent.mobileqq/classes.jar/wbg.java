@@ -1,26 +1,64 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
 
-public class wbg
+class wbg
+  implements wbj
 {
-  public int a;
-  public long a;
-  public String a;
+  protected INetEngine.IBreakDownFix a;
   
-  public wbg(wbd paramwbd, String paramString)
+  private wbg(wbb paramwbb)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramwbd = ((vuk)vux.a(19)).a(paramString);
-    if (paramwbd != null) {
-      a(paramwbd);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new wbi(this);
   }
   
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  protected INetEngine a()
   {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    AppInterface localAppInterface = bogd.a();
+    if (localAppInterface != null) {
+      return localAppInterface.getNetEngine(0);
+    }
+    return null;
+  }
+  
+  public void a(wbk paramwbk)
+  {
+    paramwbk.jdField_d_of_type_Int = 0;
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mReqUrl = paramwbk.jdField_d_of_type_JavaLangString;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = paramwbk.e;
+    localHttpNetReq.mTempPath = paramwbk.f;
+    localHttpNetReq.mPrioty = paramwbk.g;
+    localHttpNetReq.mContinuErrorLimit = 3;
+    localHttpNetReq.setUserData(paramwbk);
+    localHttpNetReq.mBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+    paramwbk.a = localHttpNetReq;
+    localHttpNetReq.mCallback = new wbh(this);
+    INetEngine localINetEngine = a();
+    if (localINetEngine != null) {
+      localINetEngine.sendReq(localHttpNetReq);
+    }
+    ykq.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramwbk);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b(wbk paramwbk)
+  {
+    HttpNetReq localHttpNetReq = paramwbk.a;
+    if (localHttpNetReq != null)
+    {
+      INetEngine localINetEngine = a();
+      if (localINetEngine != null) {
+        localINetEngine.cancelReq(localHttpNetReq);
+      }
+      ykq.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramwbk }));
+    }
   }
 }
 

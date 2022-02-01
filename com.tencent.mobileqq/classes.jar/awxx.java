@@ -1,56 +1,53 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class awxx
-  extends Handler
 {
-  public awxx(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  private boolean a(awxq paramawxq, MiniAppOptions paramMiniAppOptions)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramawxq.a.h });
+    }
+    return true;
+  }
+  
+  awxq a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
+    }
+    switch (paramInt)
     {
     default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.b();
-          bjmr localbjmr = bjmr.a;
-          if ((localbjmr != null) && (localbjmr.a())) {
-            localbjmr.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131694049));
-      return;
-    case 207: 
-      this.a.a(amtj.a(2131706361));
+      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
+    case 0: 
+    case 1: 
+    case 2: 
+    case 4: 
+    case 5: 
+      return null;
+    }
+    return new bjwl(paramMiniAppActivity, paramString, paramInt);
+  }
+  
+  void a(awxq paramawxq, MiniAppOptions paramMiniAppOptions)
+  {
+    if (!a(paramawxq, paramMiniAppOptions)) {
       return;
     }
-    this.a.b();
+    DeviceInfoUtil.getDesity();
+    paramawxq.a();
+  }
+  
+  void a(awxt paramawxt, @NonNull awxr paramawxr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramawxt.h });
+    }
+    paramawxr.a(paramawxt.f, "MiniAppLauncher", paramawxt.h);
   }
 }
 

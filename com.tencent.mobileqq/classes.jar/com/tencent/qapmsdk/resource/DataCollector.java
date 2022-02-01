@@ -21,9 +21,14 @@ class DataCollector
   
   DataCollector()
   {
+    initUid();
+  }
+  
+  private void initUid()
+  {
     try
     {
-      if (BaseInfo.app != null) {
+      if ((this.uid == 0) && (BaseInfo.app != null)) {
         this.uid = BaseInfo.app.getPackageManager().getApplicationInfo(BaseInfo.app.getPackageName(), 0).uid;
       }
       return;
@@ -48,17 +53,17 @@ class DataCollector
     //   11: dstore 4
     //   13: dload 8
     //   15: dstore 6
-    //   17: invokestatic 82	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   20: ldc 84
+    //   17: invokestatic 85	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   20: ldc 87
     //   22: iconst_1
     //   23: anewarray 4	java/lang/Object
     //   26: dup
     //   27: iconst_0
     //   28: iload_1
-    //   29: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   29: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   32: aastore
-    //   33: invokestatic 96	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   36: invokevirtual 100	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   33: invokestatic 99	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   36: invokevirtual 103	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
     //   39: astore 21
     //   41: iconst_1
     //   42: istore 20
@@ -68,7 +73,7 @@ class DataCollector
     //   49: dstore 4
     //   51: dload 8
     //   53: dstore 6
-    //   55: invokestatic 106	com/tencent/qapmsdk/common/util/AndroidVersion:isO	()Z
+    //   55: invokestatic 109	com/tencent/qapmsdk/common/util/AndroidVersion:isO	()Z
     //   58: ifeq +72 -> 130
     //   61: dload 8
     //   63: dstore_2
@@ -77,9 +82,9 @@ class DataCollector
     //   68: dload 8
     //   70: dstore 6
     //   72: aload 21
-    //   74: ldc2_w 107
-    //   77: getstatic 114	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   80: invokevirtual 120	java/lang/Process:waitFor	(JLjava/util/concurrent/TimeUnit;)Z
+    //   74: ldc2_w 110
+    //   77: getstatic 117	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   80: invokevirtual 123	java/lang/Process:waitFor	(JLjava/util/concurrent/TimeUnit;)Z
     //   83: istore 20
     //   85: iload 20
     //   87: ifne +109 -> 196
@@ -89,22 +94,22 @@ class DataCollector
     //   95: dstore 4
     //   97: dload 8
     //   99: dstore 6
-    //   101: new 122	java/util/ArrayList
+    //   101: new 125	java/util/ArrayList
     //   104: dup
     //   105: iconst_2
-    //   106: anewarray 124	java/lang/Double
+    //   106: anewarray 127	java/lang/Double
     //   109: dup
     //   110: iconst_0
     //   111: dconst_0
-    //   112: invokestatic 127	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   112: invokestatic 130	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   115: aastore
     //   116: dup
     //   117: iconst_1
     //   118: dconst_0
-    //   119: invokestatic 127	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   119: invokestatic 130	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   122: aastore
-    //   123: invokestatic 133	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   126: invokespecial 136	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   123: invokestatic 136	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   126: invokespecial 139	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   129: areturn
     //   130: dload 8
     //   132: dstore_2
@@ -113,32 +118,32 @@ class DataCollector
     //   137: dload 8
     //   139: dstore 6
     //   141: aload 21
-    //   143: invokevirtual 139	java/lang/Process:waitFor	()I
+    //   143: invokevirtual 142	java/lang/Process:waitFor	()I
     //   146: pop
     //   147: goto -62 -> 85
     //   150: astore 21
-    //   152: getstatic 63	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   152: getstatic 67	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
     //   155: ldc 8
     //   157: aload 21
-    //   159: invokevirtual 67	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   159: invokevirtual 71	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   162: dload 10
     //   164: dstore 4
-    //   166: new 122	java/util/ArrayList
+    //   166: new 125	java/util/ArrayList
     //   169: dup
     //   170: iconst_2
-    //   171: anewarray 124	java/lang/Double
+    //   171: anewarray 127	java/lang/Double
     //   174: dup
     //   175: iconst_0
     //   176: dload_2
-    //   177: invokestatic 127	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   177: invokestatic 130	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   180: aastore
     //   181: dup
     //   182: iconst_1
     //   183: dload 4
-    //   185: invokestatic 127	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   185: invokestatic 130	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   188: aastore
-    //   189: invokestatic 133	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   192: invokespecial 136	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   189: invokestatic 136	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   192: invokespecial 139	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   195: areturn
     //   196: dload 8
     //   198: dstore_2
@@ -147,7 +152,7 @@ class DataCollector
     //   203: dload 8
     //   205: dstore 6
     //   207: aload 21
-    //   209: invokevirtual 143	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   209: invokevirtual 146	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   212: astore 22
     //   214: dload 8
     //   216: dstore_2
@@ -157,7 +162,7 @@ class DataCollector
     //   223: dstore 6
     //   225: aload 22
     //   227: sipush 1024
-    //   230: invokestatic 149	com/tencent/qapmsdk/common/util/FileUtil:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   230: invokestatic 152	com/tencent/qapmsdk/common/util/FileUtil:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
     //   233: astore 21
     //   235: dload 8
     //   237: dstore_2
@@ -166,15 +171,15 @@ class DataCollector
     //   242: dload 8
     //   244: dstore 6
     //   246: aload 22
-    //   248: invokevirtual 154	java/io/InputStream:close	()V
+    //   248: invokevirtual 157	java/io/InputStream:close	()V
     //   251: dload 8
     //   253: dstore_2
     //   254: dload 8
     //   256: dstore 4
     //   258: dload 8
     //   260: dstore 6
-    //   262: ldc 156
-    //   264: invokestatic 162	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   262: ldc 159
+    //   264: invokestatic 165	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   267: astore 30
     //   269: dload 8
     //   271: dstore_2
@@ -182,8 +187,8 @@ class DataCollector
     //   274: dstore 4
     //   276: dload 8
     //   278: dstore 6
-    //   280: getstatic 167	com/tencent/qapmsdk/resource/ResourceCollectorConstant:PID_REG	Ljava/lang/String;
-    //   283: invokestatic 162	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   280: getstatic 170	com/tencent/qapmsdk/resource/ResourceCollectorConstant:PID_REG	Ljava/lang/String;
+    //   283: invokestatic 165	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   286: astore 31
     //   288: dload 8
     //   290: dstore_2
@@ -192,8 +197,8 @@ class DataCollector
     //   295: dload 8
     //   297: dstore 6
     //   299: aload 21
-    //   301: ldc 169
-    //   303: invokevirtual 173	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   301: ldc 172
+    //   303: invokevirtual 176	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   306: astore 32
     //   308: dload 8
     //   310: dstore_2
@@ -204,15 +209,15 @@ class DataCollector
     //   319: aload 32
     //   321: arraylength
     //   322: istore 18
-    //   324: ldc 175
+    //   324: ldc 178
     //   326: astore 23
-    //   328: ldc 175
+    //   328: ldc 178
     //   330: astore 28
-    //   332: ldc 175
+    //   332: ldc 178
     //   334: astore 26
-    //   336: ldc 175
+    //   336: ldc 178
     //   338: astore 24
-    //   340: ldc 175
+    //   340: ldc 178
     //   342: astore 21
     //   344: iconst_0
     //   345: istore_1
@@ -228,7 +233,7 @@ class DataCollector
     //   363: aload 32
     //   365: iload_1
     //   366: aaload
-    //   367: invokevirtual 178	java/lang/String:trim	()Ljava/lang/String;
+    //   367: invokevirtual 181	java/lang/String:trim	()Ljava/lang/String;
     //   370: astore 33
     //   372: dload 8
     //   374: dstore_2
@@ -237,8 +242,8 @@ class DataCollector
     //   379: dload 8
     //   381: dstore 6
     //   383: aload 33
-    //   385: ldc 180
-    //   387: invokevirtual 184	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   385: ldc 183
+    //   387: invokevirtual 187	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   390: istore 19
     //   392: aload 26
     //   394: astore 27
@@ -258,7 +263,7 @@ class DataCollector
     //   421: aload 33
     //   423: iconst_0
     //   424: iload 19
-    //   426: invokevirtual 188	java/lang/String:substring	(II)Ljava/lang/String;
+    //   426: invokevirtual 191	java/lang/String:substring	(II)Ljava/lang/String;
     //   429: astore 29
     //   431: dload 8
     //   433: dstore_2
@@ -268,7 +273,7 @@ class DataCollector
     //   440: dstore 6
     //   442: aload 30
     //   444: aload 33
-    //   446: invokevirtual 192	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   446: invokevirtual 195	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
     //   449: astore 34
     //   451: dload 8
     //   453: dstore_2
@@ -285,7 +290,7 @@ class DataCollector
     //   474: dload 8
     //   476: dstore 6
     //   478: aload 34
-    //   480: invokevirtual 197	java/util/regex/Matcher:find	()Z
+    //   480: invokevirtual 200	java/util/regex/Matcher:find	()Z
     //   483: ifeq +100 -> 583
     //   486: dload 8
     //   488: dstore_2
@@ -302,7 +307,7 @@ class DataCollector
     //   509: dload 8
     //   511: dstore 6
     //   513: aload 34
-    //   515: invokevirtual 200	java/util/regex/Matcher:groupCount	()I
+    //   515: invokevirtual 203	java/util/regex/Matcher:groupCount	()I
     //   518: iconst_3
     //   519: if_icmpne +64 -> 583
     //   522: dload 8
@@ -313,7 +318,7 @@ class DataCollector
     //   531: dstore 6
     //   533: aload 34
     //   535: iconst_1
-    //   536: invokevirtual 204	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   536: invokevirtual 207	java/util/regex/Matcher:group	(I)Ljava/lang/String;
     //   539: astore 22
     //   541: dload 8
     //   543: dstore_2
@@ -323,7 +328,7 @@ class DataCollector
     //   550: dstore 6
     //   552: aload 34
     //   554: iconst_2
-    //   555: invokevirtual 204	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   555: invokevirtual 207	java/util/regex/Matcher:group	(I)Ljava/lang/String;
     //   558: astore 25
     //   560: dload 8
     //   562: dstore_2
@@ -333,7 +338,7 @@ class DataCollector
     //   569: dstore 6
     //   571: aload 34
     //   573: iconst_3
-    //   574: invokevirtual 204	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   574: invokevirtual 207	java/util/regex/Matcher:group	(I)Ljava/lang/String;
     //   577: astore 27
     //   579: aload 29
     //   581: astore 28
@@ -345,8 +350,8 @@ class DataCollector
     //   592: dstore 6
     //   594: aload 31
     //   596: aload 33
-    //   598: invokevirtual 192	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   601: invokevirtual 197	java/util/regex/Matcher:find	()Z
+    //   598: invokevirtual 195	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   601: invokevirtual 200	java/util/regex/Matcher:find	()Z
     //   604: ifeq +276 -> 880
     //   607: dload 8
     //   609: dstore_2
@@ -355,8 +360,8 @@ class DataCollector
     //   614: dload 8
     //   616: dstore 6
     //   618: aload 33
-    //   620: ldc 206
-    //   622: invokevirtual 173	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   620: ldc 209
+    //   622: invokevirtual 176	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   625: bipush 8
     //   627: aaload
     //   628: astore 23
@@ -368,8 +373,8 @@ class DataCollector
     //   640: dload 8
     //   642: dstore 6
     //   644: aload 28
-    //   646: invokestatic 209	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   649: invokevirtual 212	java/lang/Integer:intValue	()I
+    //   646: invokestatic 212	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   649: invokevirtual 215	java/lang/Integer:intValue	()I
     //   652: ifeq +220 -> 872
     //   655: dload 8
     //   657: dstore_2
@@ -378,8 +383,8 @@ class DataCollector
     //   662: dload 8
     //   664: dstore 6
     //   666: aload 21
-    //   668: invokestatic 215	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
-    //   671: invokevirtual 219	java/lang/Double:doubleValue	()D
+    //   668: invokestatic 218	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
+    //   671: invokevirtual 222	java/lang/Double:doubleValue	()D
     //   674: dstore 12
     //   676: dload 8
     //   678: dstore_2
@@ -388,8 +393,8 @@ class DataCollector
     //   683: dload 8
     //   685: dstore 6
     //   687: aload 24
-    //   689: invokestatic 215	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
-    //   692: invokevirtual 219	java/lang/Double:doubleValue	()D
+    //   689: invokestatic 218	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
+    //   692: invokevirtual 222	java/lang/Double:doubleValue	()D
     //   695: dstore 14
     //   697: dload 8
     //   699: dstore_2
@@ -398,8 +403,8 @@ class DataCollector
     //   704: dload 8
     //   706: dstore 6
     //   708: aload 26
-    //   710: invokestatic 215	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
-    //   713: invokevirtual 219	java/lang/Double:doubleValue	()D
+    //   710: invokestatic 218	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
+    //   713: invokevirtual 222	java/lang/Double:doubleValue	()D
     //   716: dstore 16
     //   718: dload 8
     //   720: dstore_2
@@ -408,8 +413,8 @@ class DataCollector
     //   725: dload 8
     //   727: dstore 6
     //   729: aload 28
-    //   731: invokestatic 215	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
-    //   734: invokevirtual 219	java/lang/Double:doubleValue	()D
+    //   731: invokestatic 218	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
+    //   734: invokevirtual 222	java/lang/Double:doubleValue	()D
     //   737: dstore 8
     //   739: dload 8
     //   741: dstore_2
@@ -432,8 +437,8 @@ class DataCollector
     //   770: dload 8
     //   772: dstore 6
     //   774: aload 23
-    //   776: invokestatic 215	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
-    //   779: invokevirtual 219	java/lang/Double:doubleValue	()D
+    //   776: invokestatic 218	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
+    //   779: invokevirtual 222	java/lang/Double:doubleValue	()D
     //   782: dstore 12
     //   784: dload 8
     //   786: dstore_2
@@ -442,8 +447,8 @@ class DataCollector
     //   791: dload 8
     //   793: dstore 6
     //   795: aload 28
-    //   797: invokestatic 215	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
-    //   800: invokevirtual 219	java/lang/Double:doubleValue	()D
+    //   797: invokestatic 218	java/lang/Double:valueOf	(Ljava/lang/String;)Ljava/lang/Double;
+    //   800: invokevirtual 222	java/lang/Double:doubleValue	()D
     //   803: dstore 14
     //   805: dload 12
     //   807: dload 14
@@ -461,20 +466,20 @@ class DataCollector
     //   828: astore 21
     //   830: dload 4
     //   832: dstore_2
-    //   833: getstatic 63	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   833: getstatic 67	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
     //   836: ldc 8
     //   838: aload 21
-    //   840: invokevirtual 67	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   840: invokevirtual 71	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   843: dload 10
     //   845: dstore 4
     //   847: goto -681 -> 166
     //   850: astore 21
     //   852: dload 6
     //   854: dstore_2
-    //   855: getstatic 63	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   855: getstatic 67	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
     //   858: ldc 8
     //   860: aload 21
-    //   862: invokevirtual 67	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   862: invokevirtual 71	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   865: dload 10
     //   867: dstore 4
     //   869: goto -703 -> 166
@@ -660,29 +665,32 @@ class DataCollector
   }
   
   @NonNull
-  NetFlow collectorNetFollow()
+  NetFlow collectorNetFollow(boolean paramBoolean)
   {
     NetFlow localNetFlow = new NetFlow();
-    if (this.uid == 0) {
-      return localNetFlow;
-    }
-    try
+    initUid();
+    if (this.uid == 0) {}
+    do
     {
-      long[] arrayOfLong = this.networkCollector.getTotalBytes();
-      if (arrayOfLong != null)
+      return localNetFlow;
+      try
       {
-        localNetFlow.rxBytes = arrayOfLong[0];
-        localNetFlow.rxPackets = arrayOfLong[1];
-        localNetFlow.txBytes = arrayOfLong[2];
-        localNetFlow.txPackets = arrayOfLong[3];
+        long[] arrayOfLong = this.networkCollector.getTotalBytes();
+        if (arrayOfLong != null)
+        {
+          localNetFlow.rxBytes = arrayOfLong[0];
+          localNetFlow.rxPackets = arrayOfLong[1];
+          localNetFlow.txBytes = arrayOfLong[2];
+          localNetFlow.txPackets = arrayOfLong[3];
+          return localNetFlow;
+        }
+      }
+      catch (Exception localException)
+      {
+        Logger.INSTANCE.exception("QAPM_resource_DataCollector", localException);
         return localNetFlow;
       }
-    }
-    catch (Exception localException)
-    {
-      Logger.INSTANCE.exception("QAPM_resource_DataCollector", localException);
-      return localNetFlow;
-    }
+    } while (!paramBoolean);
     localNetFlow.rxBytes = TrafficStats.getUidRxBytes(this.uid);
     localNetFlow.rxPackets = TrafficStats.getUidRxPackets(this.uid);
     localNetFlow.txBytes = TrafficStats.getUidTxBytes(this.uid);

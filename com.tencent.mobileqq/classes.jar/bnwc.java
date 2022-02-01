@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
+import java.util.List;
 
 public class bnwc
-  implements DialogInterface.OnClickListener
 {
-  public bnwc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public String a;
+  public List<YoutuResultItem> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnwc(String paramString, List<YoutuResultItem> paramList)
   {
-    this.a.s();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

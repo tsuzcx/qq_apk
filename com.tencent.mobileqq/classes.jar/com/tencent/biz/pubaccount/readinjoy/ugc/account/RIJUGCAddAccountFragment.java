@@ -22,13 +22,15 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import odq;
+import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pai;
-import pay;
-import rjo;
-import rjp;
+import pjr;
+import pkh;
+import pqf;
+import prg;
+import rwb;
+import rwc;
 
 public class RIJUGCAddAccountFragment
   extends ViolaLazyFragment
@@ -39,7 +41,7 @@ public class RIJUGCAddAccountFragment
   public static int b;
   private static boolean b;
   public static int c = 3;
-  private rjp jdField_a_of_type_Rjp;
+  private rwc jdField_a_of_type_Rwc;
   
   static
   {
@@ -54,23 +56,23 @@ public class RIJUGCAddAccountFragment
   
   public static String a()
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = a(pay.a());
+    ReadInJoyUserInfo localReadInJoyUserInfo = a(pkh.a());
     String str = ReadInJoyUserInfoModule.a();
     if (localReadInJoyUserInfo == null)
     {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment getNickName getReadInJoyUserInfoByUin is null! ");
-      return pay.e(str);
+      return prg.a(str);
     }
-    return pay.e(localReadInJoyUserInfo.nick);
+    return prg.a(localReadInJoyUserInfo.nick);
   }
   
   static void a()
   {
     try
     {
-      JSONObject localJSONObject = pay.a();
-      localJSONObject.put("uin", pay.a());
-      odq.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
+      JSONObject localJSONObject = pqf.a();
+      localJSONObject.put("uin", pkh.a());
+      olh.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -83,10 +85,10 @@ public class RIJUGCAddAccountFragment
   {
     try
     {
-      JSONObject localJSONObject = pay.a();
-      localJSONObject.put("uin", pay.a());
+      JSONObject localJSONObject = pqf.a();
+      localJSONObject.put("uin", pkh.a());
       localJSONObject.put("click_area", paramInt);
-      odq.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
+      olh.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -97,7 +99,7 @@ public class RIJUGCAddAccountFragment
   
   public static void a(Context paramContext)
   {
-    if (a(pay.a()) != null) {}
+    if (a(pkh.a()) != null) {}
     for (boolean bool = true;; bool = false)
     {
       jdField_a_of_type_Boolean = bool;
@@ -108,22 +110,22 @@ public class RIJUGCAddAccountFragment
   
   private void a(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380071);
-    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380072);
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369413);
-    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369414);
+    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380406);
+    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380407);
+    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369582);
+    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369583);
     ViewGroup.LayoutParams localLayoutParams = paramViewGroup.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299076) - AIOUtils.dp2px(19.5F, getResources())) / 2);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299080) - AIOUtils.dp2px(19.5F, getResources())) / 2);
       paramViewGroup.setLayoutParams(localLayoutParams);
     }
     try
     {
-      pai.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
-      pai.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
-      this.jdField_a_of_type_Rjp = new rjp(getActivity(), localViewGroup2);
-      localViewGroup1.setOnClickListener(new rjo(this));
+      pjr.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
+      pjr.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
+      this.jdField_a_of_type_Rwc = new rwc(getActivity(), localViewGroup2);
+      localViewGroup1.setOnClickListener(new rwb(this));
       return;
     }
     catch (MalformedURLException paramViewGroup)
@@ -142,7 +144,7 @@ public class RIJUGCAddAccountFragment
   
   public static void b(Context paramContext)
   {
-    if (TextUtils.isEmpty(pay.a()))
+    if (TextUtils.isEmpty(pkh.a()))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 2, "editUGCAccount , but uin is empty !");
       jdField_b_of_type_Boolean = false;
@@ -188,7 +190,7 @@ public class RIJUGCAddAccountFragment
   
   public int getContentViewId()
   {
-    return 2131560297;
+    return 2131560343;
   }
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
@@ -219,7 +221,7 @@ public class RIJUGCAddAccountFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Rjp.a();
+    this.jdField_a_of_type_Rwc.a();
   }
 }
 

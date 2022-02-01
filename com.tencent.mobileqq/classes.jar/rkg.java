@@ -1,10 +1,35 @@
-public abstract interface rkg
+import android.widget.TextView;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "updateProgress"}, k=3, mv={1, 1, 16})
+final class rkg
+  implements rlm
 {
-  public abstract void a(int paramInt);
+  rkg(TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5) {}
   
-  public abstract void a(rgo paramrgo);
-  
-  public abstract boolean a(int paramInt, rgo paramrgo);
+  public final void a(int paramInt)
+  {
+    TextView localTextView = this.a;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("完成任务需要的时间：" + rjy.a() / 1000 + " 秒"));
+    }
+    localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("该视频最大贡献时长：" + rjy.c() / 1000 + " 秒"));
+    }
+    localTextView = this.c;
+    if (localTextView != null) {
+      localTextView.setVisibility(8);
+    }
+    localTextView = this.d;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("已完成任务数：" + rjz.a.a().a() + '/' + rjy.b()));
+    }
+    localTextView = this.e;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("累积时间：" + paramInt / 1000 + " 秒"));
+    }
+  }
 }
 
 

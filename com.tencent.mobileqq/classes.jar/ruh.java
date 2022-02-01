@@ -1,44 +1,26 @@
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.2;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
-final class ruh
-  implements bgoy
+public class ruh
+  implements oxl
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public ruh(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(rug.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
-    }
-    if (paramBoolean1)
-    {
-      rug.a(paramInt);
-      try
-      {
-        JSONObject localJSONObject = rug.a();
-        if (localJSONObject != null) {}
-        try
-        {
-          rug.a().put("simCardType", rug.a());
-          if (QLog.isColorLevel()) {
-            QLog.d(rug.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
-          }
-          return;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.e(rug.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
-            }
-          }
-        }
-        return;
-      }
-      finally {}
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.2(this));
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
+    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.1(this));
   }
 }
 

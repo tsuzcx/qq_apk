@@ -1,128 +1,79 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class asqe
-  extends asql
+  extends RecyclerView.OnScrollListener
 {
-  private FileInfo a;
+  public asqe(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public asqe(FileInfo paramFileInfo)
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    this.a = paramFileInfo;
-  }
-  
-  public int a()
-  {
-    if (this.a.a() == 5) {
-      return 5;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    return aszt.a(this.a.d());
-  }
-  
-  public long a()
-  {
-    return -1L;
-  }
-  
-  public FileManagerEntity a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getEntity should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public WeiYunFileInfo a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getWeiyunInfo should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a.d();
-  }
-  
-  public void a(String paramString) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public long b()
-  {
-    return this.a.a();
-  }
-  
-  public String b()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a.a() == 5)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
     {
-      localObject1 = localObject2;
-      if (FileUtil.fileExistsAndNotEmpty(this.a.c())) {
-        localObject1 = this.a.c();
+      if (paramInt != 0) {
+        break label94;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+      this.a.am_();
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        ExtendFriendSquareFragment.c(this.a);
+        this.a.g();
+        this.a.b(false);
+      }
+      return;
+      label94:
+      this.a.c = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        }
       }
     }
-    return localObject1;
   }
   
-  public int c()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return 3;
-  }
-  
-  public long c()
-  {
-    return bbko.a() * 1000L;
-  }
-  
-  public String c()
-  {
-    return null;
-  }
-  
-  public int d()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getFileStatus: has not status");
+    this.a.h = this.a.d();
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.a.e != -1L)
+    {
+      long l = System.currentTimeMillis() - this.a.e;
+      f1 = f2;
+      if (l > 0L)
+      {
+        f1 = f2;
+        if (l < 2000L) {
+          f1 = paramInt2 * 1.0F / (float)l;
+        }
+      }
     }
-    return -1;
-  }
-  
-  public String d()
-  {
-    return null;
-  }
-  
-  public int e()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getOpType: has not opType");
+    this.a.e = System.currentTimeMillis();
+    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
+    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Asqk != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Asqk.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
     }
-    return -1;
-  }
-  
-  public String e()
-  {
-    return null;
-  }
-  
-  public String g()
-  {
-    return this.a.c();
-  }
-  
-  public String h()
-  {
-    return this.a.c();
   }
 }
 

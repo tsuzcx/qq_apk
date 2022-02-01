@@ -1,127 +1,130 @@
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.List;
 
 public class baci
-  extends PagerAdapter
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public final SparseArray<View> a;
-  public ArrayList<FilterCategoryItem> a;
-  public final Map<Class<? extends View>, Queue<View>> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private back jdField_a_of_type_Back;
+  private String jdField_a_of_type_JavaLangString;
+  private List<bact> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public baci(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager)
+  public baci(Context paramContext, String paramString, back paramback)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Back = paramback;
+    this.jdField_a_of_type_Boolean = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
   }
   
-  public int a()
+  protected String a(long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
+    if (paramLong < 10000L) {
+      return String.valueOf(paramLong);
     }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterCategoryItem a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a);
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    if (paramLong < 1000000L)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    FilterCategoryItem localFilterCategoryItem = a(paramInt);
-    if (localFilterCategoryItem == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
-      }
-      return null;
-    }
-    Object localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localFilterCategoryItem.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
+      String str2 = String.format("%.2f", new Object[] { Double.valueOf((float)paramLong / 10000.0F - 0.005D) });
+      String str1 = str2;
+      if (str2.length() > 2)
       {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131558767, null);
-        ((View)localObject2).setVisibility(8);
+        str1 = str2;
+        if (str2.substring(str2.length() - 2).equals("00")) {
+          str1 = str2.substring(0, str2.length() - 3);
+        }
       }
-      ((View)localObject2).setContentDescription(localFilterCategoryItem.b + "," + localFilterCategoryItem.f + amtj.a(2131700592));
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      return str1 + this.jdField_a_of_type_AndroidContentContext.getString(2131699030);
+    }
+    return String.valueOf(paramLong / 10000L) + this.jdField_a_of_type_AndroidContentContext.getString(2131699030);
+  }
+  
+  protected void a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < getItemCount()))
+    {
+      bact localbact = (bact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      bghc.a(this.jdField_a_of_type_AndroidContentContext, localbact.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      bdla.b(null, "dc00898", "", "", "0X800B598", "0X800B598", 0, 0, "", "", "", "");
+      if (this.jdField_a_of_type_Back != null) {
+        this.jdField_a_of_type_Back.a();
+      }
     }
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void a(List<bact> paramList)
   {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  protected String b(long paramLong)
+  {
+    if (paramLong <= 0L) {
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131699087);
+    }
+    return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131699026), new Object[] { String.valueOf(paramLong) });
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    bacl localbacl = (bacl)paramViewHolder;
+    bact localbact = (bact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localbact != null)
+    {
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(localbact.c, null);
+      if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
+        localURLDrawable.restartDownload();
+      }
+      localbacl.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
+      if (this.jdField_a_of_type_Back != null) {
+        this.jdField_a_of_type_Back.a(localbacl.jdField_a_of_type_AndroidWidgetTextView);
+      }
+      localbacl.b.setText(a(localbact.b));
+      localbacl.c.setText(b(localbact.jdField_a_of_type_Long));
+      localbacl.c.setContentDescription(b(localbact.jdField_a_of_type_Long));
+      localbacl.d.setText(localbact.jdField_a_of_type_JavaLangString);
+      localbacl.d.setContentDescription(localbact.jdField_a_of_type_JavaLangString);
+      localbacl.itemView.setOnClickListener(new bacj(this, paramInt));
+      if (!this.jdField_a_of_type_Boolean) {
+        break label212;
+      }
+      localbacl.itemView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841606));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      label212:
+      localbacl.itemView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841605));
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bacl(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559625, paramViewGroup, false));
   }
 }
 

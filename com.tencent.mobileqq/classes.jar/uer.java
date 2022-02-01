@@ -1,23 +1,87 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 
-public final class uer
-  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
+public abstract class uer
+  implements View.OnClickListener
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
+  public int a;
+  protected Context a;
+  protected ViewGroup a;
+  public AdvertisementInfo a;
+  public AdData a;
+  protected uem a;
+  public boolean a;
+  public boolean b;
+  
+  public uer(Context paramContext, int paramInt)
   {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(paramContext);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a(), this.jdField_a_of_type_AndroidViewViewGroup);
+    a();
+    b();
   }
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  public abstract int a();
+  
+  public View a()
   {
-    return new ProfileParams.CurLoginUsr[paramInt];
+    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
+  
+  public abstract void a();
+  
+  public void a(AdData paramAdData)
+  {
+    if (paramAdData == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData = paramAdData;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ukt.a(paramAdData);
+  }
+  
+  public void a(uem paramuem)
+  {
+    this.jdField_a_of_type_Uem = paramuem;
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      View localView = paramVarArgs[i];
+      if (localView != null) {
+        localView.setOnClickListener(this);
+      }
+      i += 1;
+    }
+  }
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public void d()
+  {
+    this.b = true;
+  }
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uer
  * JD-Core Version:    0.7.0.1
  */

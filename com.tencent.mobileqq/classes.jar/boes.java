@@ -1,22 +1,26 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-
 public class boes
-  extends boev
 {
-  public boes(TCProgressBar paramTCProgressBar)
+  private int a;
+  private int b;
+  
+  public int a()
   {
-    super(paramTCProgressBar);
+    return this.a;
   }
   
-  public void a(Canvas paramCanvas)
+  void a(int paramInt)
   {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
+    this.a = paramInt;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

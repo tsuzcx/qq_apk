@@ -1,6 +1,14 @@
-public abstract interface zke
+import android.view.View;
+
+class zke
+  implements blak
 {
-  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
+  zke(zkd paramzkd, View paramView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

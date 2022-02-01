@@ -1,29 +1,50 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 
-final class bhjy
-  implements Animation.AnimationListener
+public class bhjy
+  extends LinearLayout
 {
-  bhjy(View paramView1, View paramView2) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bhjy(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, Context paramContext)
   {
-    paramAnimation = new bhiq(this.a);
-    paramAnimation.setDuration(bhjx.a());
-    paramAnimation.setFillAfter(true);
-    this.a.startAnimation(paramAnimation);
-    this.a.setVisibility(0);
-    this.b.clearAnimation();
-    this.b.setVisibility(4);
+    super(paramContext);
+    setOrientation(0);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  private void a(boolean paramBoolean)
   {
-    this.a.clearAnimation();
-    this.a.setVisibility(4);
+    View localView = new View(QQCustomMenuNoIconLayout.a(this.a));
+    Resources localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
+    if (paramBoolean)
+    {
+      i = 2131165813;
+      localView.setBackgroundColor(localResources.getColor(i));
+      addView(localView, new LinearLayout.LayoutParams(1, -1));
+      localView = new View(QQCustomMenuNoIconLayout.a(this.a));
+      localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
+      if (!paramBoolean) {
+        break label123;
+      }
+    }
+    label123:
+    for (int i = 2131165814;; i = 2131165816)
+    {
+      localView.setBackgroundColor(localResources.getColor(i));
+      addView(localView, new LinearLayout.LayoutParams(1, -1));
+      return;
+      i = 2131165815;
+      break;
+    }
+  }
+  
+  public void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    paramView.setLayoutParams(paramLayoutParams);
+    addView(paramView);
   }
 }
 

@@ -1,124 +1,125 @@
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class xff
-  extends BaseAdapter
+  extends zgz
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<VideoCollectionItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  HashMap<String, WeakReference<xfg>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  xfc jdField_a_of_type_Xfc;
-  xfd jdField_a_of_type_Xfd;
-  xfe jdField_a_of_type_Xfe;
+  public static final String KEY = "PlayerDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private xep jdField_a_of_type_Xep;
+  private xwc jdField_a_of_type_Xwc;
+  private yhc jdField_a_of_type_Yhc;
   
   public xff(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext);
   }
   
-  private View a(ViewGroup paramViewGroup)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561730, paramViewGroup, false);
-    paramViewGroup.setTag(new xfg(this, paramViewGroup, this.jdField_a_of_type_Xfe));
-    return paramViewGroup;
-  }
-  
-  private void a(int paramInt, View paramView)
-  {
-    VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((xfg)paramView.getTag()).a(paramInt, localVideoCollectionItem);
-  }
-  
-  public VideoCollectionItem a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    }
-    return null;
-  }
-  
-  public List<VideoCollectionItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(String paramString, List<xlu> paramList)
-  {
-    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((xey)((xfg)localWeakReference.get()).a.a()).b(paramList, paramString);
-    }
-  }
-  
-  public void a(List<VideoCollectionItem> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      notifyDataSetChanged();
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130846480);
+      }
+      for (;;)
+      {
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166498));
+        return;
+        paramTextView.setBackgroundResource(2130846479);
+      }
     }
-  }
-  
-  public void a(xfc paramxfc)
-  {
-    this.jdField_a_of_type_Xfc = paramxfc;
-  }
-  
-  public void a(xfd paramxfd)
-  {
-    this.jdField_a_of_type_Xfd = paramxfd;
-  }
-  
-  public void a(xfe paramxfe)
-  {
-    this.jdField_a_of_type_Xfe = paramxfe;
-  }
-  
-  public void b(List<VideoCollectionItem> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      notifyDataSetChanged();
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166511));
+      return;
     }
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166499));
   }
   
-  public int getCount()
+  public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Xwc != null) && (this.jdField_a_of_type_Xwc.b())) {
+      return 1;
+    }
+    return 0;
   }
   
-  public Object getItem(int paramInt)
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = a(paramViewGroup);
+    paramViewGroup = (TextView)paramyhc.a(2131378088);
+    TextView localTextView = (TextView)paramyhc.a(2131378087);
+    if (QQStoryContext.a())
+    {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166509));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166509));
+      paramyhc.a(2131374582).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166511));
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
     }
     for (;;)
     {
-      a(paramInt, paramView);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      return paramyhc.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "PlayerDoubleTabSegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Yhc = new yhc(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561646, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Yhc.a(2131378088);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Yhc.a(2131378087);
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Yhc;
+  }
+  
+  public void a(xep paramxep)
+  {
+    this.jdField_a_of_type_Xep = paramxep;
+  }
+  
+  public void a(xwc paramxwc)
+  {
+    this.jdField_a_of_type_Xwc = paramxwc;
+    if (this.jdField_a_of_type_Xwc.a()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Xep.a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Xep.a(1);
+      ykv.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", ykv.a(4444), this.jdField_a_of_type_Xwc.a.feedId });
+      continue;
+      this.jdField_a_of_type_Xep.a(2);
+      ykv.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", ykv.a(4444), this.jdField_a_of_type_Xwc.a.feedId });
     }
   }
 }

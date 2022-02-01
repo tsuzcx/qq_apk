@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenSelectPermissionFragment;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
-public class bhub
-  implements DialogInterface.OnClickListener
+public abstract interface bhub
 {
-  public bhub(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
+  public abstract Bitmap a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint);
 }
 
 

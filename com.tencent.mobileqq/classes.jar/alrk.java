@@ -1,14 +1,19 @@
-import android.app.Activity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface alrk
+public class alrk
+  implements alun
 {
-  public abstract int a();
+  public alrk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public abstract alrq a(long paramLong, String paramString1, String paramString2);
-  
-  public abstract void a();
-  
-  public abstract boolean a(Activity paramActivity);
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
+  }
 }
 
 

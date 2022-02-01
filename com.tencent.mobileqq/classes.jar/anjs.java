@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
-
-class anjs
-  extends axkv
+public abstract interface anjs
 {
-  anjs(anjr paramanjr, QQAppInterface paramQQAppInterface) {}
-  
-  public void getAccountIdentitySuccess(cmd0x9ae.RspBody paramRspBody)
-  {
-    anjr.a(this.jdField_a_of_type_Anjr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspBody, this);
-  }
+  public abstract void b();
 }
 
 

@@ -1,20 +1,9 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
 
-public class bekb
-  implements View.OnClickListener
+public final class bekb
 {
-  public bekb(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    bjmm.b(paramView);
-    this.a.getActivity().doOnBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public final Bundle a = new Bundle();
+  public Object a;
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.tplayer;
 
+import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioFrameOutputListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioProcessFrameOutputListener;
@@ -88,21 +89,25 @@ public class TPPlayerListeners
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
     this.mOnCompletionListener.onCompletion(paramITPPlayer);
   }
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
+    ReportThumbPlayer.getInstance().onError(paramITPPlayer, paramInt1, paramInt2);
     this.mOnErrorListener.onError(paramITPPlayer, paramInt1, paramInt2, paramLong1, paramLong2);
   }
   
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
+    ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
     this.mOnInfoListener.onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2, paramObject);
   }
   
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
     this.mOnPreparedListener.onPrepared(paramITPPlayer);
   }
   

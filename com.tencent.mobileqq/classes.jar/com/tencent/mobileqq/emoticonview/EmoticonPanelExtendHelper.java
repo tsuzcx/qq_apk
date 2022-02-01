@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import agxb;
+import ahqb;
 import android.animation.ValueAnimator;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -9,7 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.ImageButton;
-import bcef;
+import bdla;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class EmoticonPanelExtendHelper
   extends AbstractEmoticonPanelHelper
-  implements agxb, EmotionPanelListView.PullAndFastScrollListener
+  implements ahqb, EmotionPanelListView.PullAndFastScrollListener
 {
   private static final String LOG_TAG = "EmoticonPanelExtendHelper";
   private static int sMaxPanelHeight;
@@ -63,7 +63,7 @@ public class EmoticonPanelExtendHelper
       if (localEmotionPanelInfo.type != 7) {
         break label88;
       }
-      bcef.b(this.app, "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
+      bdla.b(this.app, "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
     }
     label88:
     do
@@ -71,26 +71,26 @@ public class EmoticonPanelExtendHelper
       return;
       if (localEmotionPanelInfo.type == 4)
       {
-        bcef.b(this.app, "dc00898", "", "", paramString, paramString, 2, 0, "", "", "", "");
+        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 2, 0, "", "", "", "");
         return;
       }
       if (localEmotionPanelInfo.type == 11)
       {
-        bcef.b(this.app, "dc00898", "", "", paramString, paramString, 3, 0, "", "", "", "");
+        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 3, 0, "", "", "", "");
         return;
       }
       if (localEmotionPanelInfo.type == 8)
       {
-        bcef.b(this.app, "dc00898", "", "", paramString, paramString, 4, 0, "", "", "", "");
+        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 4, 0, "", "", "", "");
         return;
       }
       if (localEmotionPanelInfo.type == 10)
       {
-        bcef.b(this.app, "dc00898", "", "", paramString, paramString, 5, 0, "", "", "", "");
+        bdla.b(this.app, "dc00898", "", "", paramString, paramString, 5, 0, "", "", "", "");
         return;
       }
     } while ((localEmotionPanelInfo.type != 9) && (localEmotionPanelInfo.type != 6));
-    bcef.b(this.app, "dc00898", "", "", paramString, paramString, 6, 0, "", "", "", "");
+    bdla.b(this.app, "dc00898", "", "", paramString, paramString, 6, 0, "", "", "", "");
   }
   
   protected void abordFling()
@@ -424,7 +424,7 @@ public class EmoticonPanelExtendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper
  * JD-Core Version:    0.7.0.1
  */

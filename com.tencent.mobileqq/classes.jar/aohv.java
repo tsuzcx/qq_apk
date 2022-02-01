@@ -1,10 +1,31 @@
-public abstract interface aohv
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
+
+public class aohv
+  extends anvi
 {
-  public abstract void a(long paramLong, aoim paramaoim);
+  private aohv(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohv
  * JD-Core Version:    0.7.0.1
  */

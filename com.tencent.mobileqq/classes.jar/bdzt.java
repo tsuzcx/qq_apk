@@ -1,17 +1,33 @@
-import java.nio.ByteBuffer;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
-class bdzt
+public class bdzt
+  extends bdxv
 {
-  public final int a;
-  public final long a;
-  public final long b;
+  protected bdyc a;
+  protected SpriteNativeView a;
   
-  public bdzt(ByteBuffer paramByteBuffer)
+  public bdzt()
   {
-    this.jdField_a_of_type_Int = (paramByteBuffer.get() & 0xFFFF);
-    this.jdField_a_of_type_Long = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.jdField_a_of_type_Bdyc = new bdyc(0.0F, 0.0F);
   }
+  
+  public bdyb<bdzt> a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public boolean c()
+  {
+    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
+    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
+    return b();
+  }
+  
+  public void d() {}
 }
 
 

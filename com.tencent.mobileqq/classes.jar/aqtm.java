@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqtm
-  implements View.OnClickListener
+  implements ansd
 {
-  public aqtm(DataReportViewer paramDataReportViewer, WindowManager paramWindowManager) {}
+  public aqtm(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    }
+    if ((this.a.j == 1) || (this.a.j == 2))
+    {
+      if (paramBoolean) {
+        break label110;
+      }
+      this.a.a();
+      QQToast.a(this.a, 2131691030, 0).b(this.a.getTitleBarHeight());
+    }
+    label110:
+    while (paramInt != 2) {
+      return;
+    }
+    this.a.a();
+    this.a.a(this.a.j);
   }
 }
 

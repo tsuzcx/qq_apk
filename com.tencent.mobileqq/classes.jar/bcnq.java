@@ -1,17 +1,58 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bcnq
-  implements View.OnClickListener
+  implements bcns
 {
-  public bcnq(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  protected View a;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private List<bcnt> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public void onClick(View paramView)
+  public bcnq(ViewGroup paramViewGroup)
   {
-    amvb.a(this.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562818, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371538));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370281));
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public ViewGroup a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bcnt> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

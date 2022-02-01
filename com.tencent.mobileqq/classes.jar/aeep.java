@@ -1,24 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeep
-  implements AdapterView.OnItemClickListener
+  extends BroadcastReceiver
 {
-  public aeep(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public aeep(JumpActivity paramJumpActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).onItemDeleted(localResultRecord);
+    if (!this.a.isFinishing())
+    {
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+      this.a.finish();
     }
-    this.a.a(false);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

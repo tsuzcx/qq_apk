@@ -1,19 +1,22 @@
-import android.text.Editable;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-final class besv
-  implements Comparator
+public class besv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  besv(Editable paramEditable) {}
+  public besv(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setAlpha(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 
@@ -12,7 +13,7 @@ final class TroopUtils$2
   public void run()
   {
     if (this.val$app != null) {
-      ((TroopManager)this.val$app.getManager(52)).b(this.val$mTroopInfo);
+      ((TroopManager)this.val$app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.val$mTroopInfo);
     }
   }
 }

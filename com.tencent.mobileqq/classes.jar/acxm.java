@@ -1,13 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class acxm
-  implements DialogInterface.OnClickListener
 {
-  public acxm(ChatHistory paramChatHistory) {}
+  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static String a(String paramString)
+  {
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (str2 == null)
+    {
+      str2 = SecUtil.getFileMd5(paramString);
+      str1 = str2;
+      if (str2 != null)
+      {
+        a.put(paramString, str2);
+        str1 = str2;
+      }
+    }
+    return str1;
+  }
 }
 
 

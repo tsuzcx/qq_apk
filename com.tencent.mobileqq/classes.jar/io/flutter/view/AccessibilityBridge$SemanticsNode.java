@@ -389,7 +389,7 @@ class AccessibilityBridge$SemanticsNode
     i = 0;
     while (i < j)
     {
-      paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInTraversalOrder.add(paramArrayOfString);
       i += 1;
@@ -397,7 +397,7 @@ class AccessibilityBridge$SemanticsNode
     i = 0;
     while (i < j)
     {
-      paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInHitTestOrder.add(paramArrayOfString);
       i += 1;
@@ -416,8 +416,8 @@ class AccessibilityBridge$SemanticsNode
       if (i >= j) {
         break label613;
       }
-      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
-      if (AccessibilityBridge.CustomAccessibilityAction.access$3800(paramArrayOfString) != AccessibilityBridge.Action.TAP.value) {
+      paramArrayOfString = AccessibilityBridge.access$6200(this.accessibilityBridge, paramByteBuffer.getInt());
+      if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) != AccessibilityBridge.Action.TAP.value) {
         break label615;
       }
       this.onTapOverride = paramArrayOfString;
@@ -433,7 +433,7 @@ class AccessibilityBridge$SemanticsNode
       label613:
       break;
       label615:
-      if (AccessibilityBridge.CustomAccessibilityAction.access$3800(paramArrayOfString) == AccessibilityBridge.Action.LONG_PRESS.value) {
+      if (AccessibilityBridge.CustomAccessibilityAction.access$3900(paramArrayOfString) == AccessibilityBridge.Action.LONG_PRESS.value) {
         this.onLongPressOverride = paramArrayOfString;
       } else {
         this.customAccessibilityActions.add(paramArrayOfString);

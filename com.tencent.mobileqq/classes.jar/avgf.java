@@ -1,27 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class avgf
-  implements View.OnClickListener
+public class avgf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  avgf(avga paramavga, avfq paramavfq) {}
+  public avgf(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!paramView.isSelected())
-      {
-        this.jdField_a_of_type_Avga.a(paramView);
-        this.jdField_a_of_type_Avga.jdField_a_of_type_Int = 3;
-        avfq.a(this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq, Integer.valueOf(3));
-        bcef.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
-      }
-    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

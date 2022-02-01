@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
-import apfx;
+import aqjb;
 
 public class VipBubbleDrawable$1
   implements Runnable
 {
-  public VipBubbleDrawable$1(apfx paramapfx) {}
+  public VipBubbleDrawable$1(aqjb paramaqjb) {}
   
   public void run()
   {

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahhp;
-import auyo;
+import aici;
+import aweo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class LimitChatPie$6
   implements Runnable
 {
-  public LimitChatPie$6(ahhp paramahhp, String paramString1, String paramString2) {}
+  public LimitChatPie$6(aici paramaici, String paramString1, String paramString2) {}
   
   public void run()
   {
-    auyo.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, this.this$0.sessionInfo.curFriendNick, this.a, 3342339, this.b, 36, false, ahhp.a(this.this$0), ahhp.f(this.this$0));
+    aweo.a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, this.this$0.sessionInfo.curFriendNick, this.a, 3342339, this.b, 36, false, aici.a(this.this$0), aici.f(this.this$0));
   }
 }
 

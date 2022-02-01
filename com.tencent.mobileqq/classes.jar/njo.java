@@ -1,61 +1,28 @@
-import android.os.Build;
-import com.tencent.av.opengl.effects.AEFilterSupport;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.overlay.OverlayView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
 public class njo
+  implements nhz
 {
-  public static final njp a = new njp(27, 8, 2.0F, 5.0F);
-  public static final njp b = new njp(23, 6, 1.8F, 3.0F);
-  public static final njp c = new njp(21, 4, 1.4F, 2.6F);
+  public njo(OverlayView paramOverlayView) {}
   
-  public static int a()
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    njp localnjp3 = b;
-    njp localnjp2 = c;
-    njp localnjp1 = a;
-    Object localObject = (nji)apub.a().a(642);
-    if (localObject != null)
+    if (paramLottieDrawable != null)
     {
-      localnjp3 = ((nji)localObject).b();
-      localnjp2 = ((nji)localObject).c();
-      localnjp1 = ((nji)localObject).a();
-    }
-    for (;;)
-    {
-      localObject = AEFilterSupport.a();
+      OverlayView.a(this.a, paramLottieDrawable);
       if (QLog.isColorLevel()) {
-        QLog.d("AvGameMachineLevelUtils", 2, ((loe)localObject).toString());
+        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverCardStarLottie = " + OverlayView.a(this.a));
       }
-      if (localObject != null) {
-        break;
-      }
-      QLog.e("AvGameMachineLevelUtils", 2, "getCurMachineInfo null");
-      return 2;
-      QLog.e("AvGameMachineLevelUtils", 2, "getCurMachineLevel no bean");
-    }
-    int i;
-    if (a()) {
-      i = 0;
-    }
-    for (;;)
-    {
-      QLog.d("AvGameMachineLevelUtils", 2, "getCurMachine level is " + i);
-      return i;
-      if (localnjp1.a((loe)localObject)) {
-        i = 3;
-      } else if (localnjp3.a((loe)localObject)) {
-        i = 2;
-      } else if (localnjp2.a((loe)localObject)) {
-        i = 1;
-      } else {
-        i = 0;
+      if (OverlayView.a(this.a))
+      {
+        OverlayView.a(this.a).setImageDrawable(OverlayView.a(this.a));
+        OverlayView.a(this.a).playAnimation();
+        OverlayView.b(this.a, false);
       }
     }
-  }
-  
-  public static boolean a()
-  {
-    return Build.MODEL.equalsIgnoreCase("MI 5C");
   }
 }
 

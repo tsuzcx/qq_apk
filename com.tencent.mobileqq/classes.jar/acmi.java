@@ -1,54 +1,46 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb6f.Identity;
-import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
-import tencent.im.oidb.oidb_0xb6f.RspBody;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
 
 class acmi
-  extends nmf
+  extends ntf
 {
-  acmi(acmh paramacmh, String paramString1, String paramString2, int paramInt) {}
+  acmi(acmh paramacmh, boolean paramBoolean, bffl parambffl, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
+  {
+    super(paramBoolean);
+  }
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.report", 2, "req error");
-      }
-    }
-    do
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
     {
-      for (;;)
+      return;
+      try
       {
-        return;
-        paramBundle = new oidb_0xb6f.RspBody();
-        try
+        paramBundle = new oidb_cmd0x6ef.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
         {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.report_freq_rsp.has()) {
-            break label146;
-          }
-          if (QLog.isColorLevel())
+          this.jdField_a_of_type_Bffl.a.a(21, this.jdField_a_of_type_Long, this.b);
+          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
           {
-            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = bfzj.a(this.jdField_a_of_type_Acmh.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bffl, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+            this.jdField_a_of_type_JavaUtilMap.put(acnh.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
             return;
           }
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label146:
-    acmh.a(this.jdField_a_of_type_Acmh, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
 }
 

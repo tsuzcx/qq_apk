@@ -1,43 +1,70 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aijw
-  implements View.OnClickListener
+public class aijw
+  implements ailp
 {
-  aijw(aijs paramaijs) {}
+  private long jdField_a_of_type_Long = -1L;
+  private ailr jdField_a_of_type_Ailr;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
+  public aijw(ailr paramailr, Context paramContext)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    if ((localRecommendTroopItem == null) || (TextUtils.isEmpty(localRecommendTroopItem.uin))) {
-      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ailr = paramailr;
+  }
+  
+  public int a()
+  {
+    return 55;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      amzp.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, localRecommendTroopItem.uin, new aijx(this));
-      this.a.b.remove(localRecommendTroopItem);
-      this.a.notifyDataSetChanged();
-      if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        this.a.jdField_a_of_type_Aiiz.a().sendEmptyMessage(100);
-      }
-      if (aijs.a(this.a) != null)
-      {
-        amzp localamzp = (amzp)aijs.a(this.a).getManager(22);
-        if ((this.a.b != null) && (this.a.b.size() == 0)) {
-          localamzp.a(1);
-        }
-        localamzp.a(localRecommendTroopItem.uin);
-      }
-      bcef.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, localRecommendTroopItem.uin, "", "", "");
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558599, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362513));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aijx(this));
     }
+    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
+      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
+    }
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362511);
+      if (localImageView != null) {
+        localImageView.setImageDrawable(paramDrawable);
+      }
+    }
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 16;
   }
 }
 

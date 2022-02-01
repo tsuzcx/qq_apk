@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/idz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/c2x" />
+    <FrameLayout android:id="@id/mso" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/b6d" android:layout_below="@id/idz">
+        <dov.com.qq.im.ae.album.AEAlbumLinearLayout android:id="@id/kqo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/b6d" app:minPreviewHeight="65.0dip">
+            <FrameLayout android:id="@id/nfg" android:background="@color/dh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <dov.com.qq.im.ae.album.nocropper.AECropperView android:id="@id/kqp" android:layout_width="fill_parent" android:layout_height="wrap_content" app:addPaddingToMakeSquare="false" app:fitToCenter="false" app:gridColor="@color/al3" app:gridOpacity="0.8" app:gridThickness="1.1999817dip" />
+                <dov.com.qq.im.ae.view.AECompoundButton android:layout_gravity="bottom|center|left" android:id="@id/msn" android:background="@drawable/evp" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="4.0dip" android:layout_marginBottom="10.0dip" app:foregroundHeight="15.699982dip" app:foregroundResource="@drawable/evs" app:foregroundWidth="15.699982dip" />
+                <com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView android:layout_gravity="bottom|center|left" android:id="@id/nsz" android:visibility="gone" android:layout_width="@dimen/b2l" android:layout_height="@dimen/b2l" android:layout_marginLeft="19.0dip" android:layout_marginBottom="60.0dip" />
+                <ImageView android:layout_gravity="center" android:id="@id/n1q" android:padding="5.0dip" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/dhl" />
+                <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:layout_gravity="bottom|center|right" android:id="@id/nzd" android:paddingLeft="14.0dip" android:paddingRight="17.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="45.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="10.0dip" />
+                <dov.com.qq.im.ae.view.AESquareRelativeLayout android:id="@id/n6k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/n2v" android:layout_width="249.0dip" android:layout_height="267.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+                    <TextView android:textSize="15.0sp" android:textColor="@color/bp" android:id="@id/nzi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="88.0dip" android:layout_marginRight="25.0dip" android:text="@string/w_e" android:layout_alignParentRight="true" />
+                    <TextView android:textSize="15.0sp" android:textColor="@color/bp" android:id="@id/nzj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:text="@string/w_g" android:layout_below="@id/nzi" android:layout_alignParentRight="true" />
+                </dov.com.qq.im.ae.view.AESquareRelativeLayout>
+                <dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout android:id="@id/msp" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <View android:layout_gravity="bottom|center" android:background="@drawable/g3" android:layout_width="29.0dip" android:layout_height="3.0dip" android:layout_marginBottom="12.0dip" />
+                </dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout>
+            </FrameLayout>
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <android.support.v7.widget.RecyclerView android:id="@id/ne8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:overScrollMode="never" android:paddingStart="1.0dip" android:paddingEnd="1.0dip" />
+                <View android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+            </FrameLayout>
+        </dov.com.qq.im.ae.album.AEAlbumLinearLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/l9k" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/idz" />
+</RelativeLayout>

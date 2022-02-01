@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.api;
 
-import amtj;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import bfur;
+import anvx;
+import bhdj;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -44,7 +44,7 @@ public final class QQMiniErrorListener
     GameLog.getInstance().e("MiniErrorListener", "On TritonError " + paramString, (Throwable)paramTritonException);
     if ((paramTritonException.getError().getSeverity().compareTo((Enum)ErrorSeverity.SEVER) >= 0) && (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack()))
     {
-      paramString = bfur.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), amtj.a(2131709331), amtj.a(2131709332), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
+      paramString = bhdj.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), anvx.a(2131709678), anvx.a(2131709679), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
       paramString.setCanceledOnTouchOutside(false);
       paramString.show();
       MiniReportManager.reportEventType(this.miniAppInfo, 1024, "1");

@@ -1,59 +1,39 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Calendar;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.ArrayUtils;
+import java.util.ArrayList;
 
 public class aabn
-  implements apri
+  extends zox
 {
-  private int jdField_a_of_type_Int;
+  public aabn(CommodityListView paramCommodityListView) {}
   
-  public aabn(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
+  public zoy a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt < 1897)
-    {
-      paramNewerGuidePlugin = Calendar.getInstance();
-      paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
+    paramViewGroup = new CommodityItemView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.getContext());
+    paramViewGroup.setIsPublishUI(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
+    paramViewGroup.setCurrentFeed(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
+    return new zoy(this, paramViewGroup);
   }
   
-  public int a()
+  public int getItemCount()
   {
-    return 3;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public int a(int paramInt)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    switch (paramInt)
+    if (!ArrayUtils.isOutOfArrayIndex(paramInt, this.jdField_a_of_type_JavaUtilArrayList))
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int - 1897 + 1;
-    case 1: 
-      return 12;
+      ((CommodityItemView)paramViewHolder.itemView).setData(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new aabo(this, paramInt));
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
-    localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1897 + amtj.a(2131706552);
-    case 1: 
-      return paramInt2 + 1 + amtj.a(2131706553);
-    }
-    return paramInt2 + 1 + amtj.a(2131706547);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 

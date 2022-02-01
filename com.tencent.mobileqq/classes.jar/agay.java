@@ -1,16 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-class agay
-  implements atah
+public class agay
+  implements DialogInterface.OnClickListener
 {
-  agay(agap paramagap) {}
+  public agay(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
-    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
+    paramDialogInterface = new Intent(this.a.mContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.sessionInfo.curFriendUin);
+    this.a.mContext.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,17 +1,35 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class nwx
-  implements View.OnClickListener
+final class nwx
+  implements bkzq
 {
-  public nwx(AccountSettingFragment paramAccountSettingFragment) {}
+  nwx(bkzi parambkzi, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    AccountSettingFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
+      try
+      {
+        nwu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
   }
 }
 

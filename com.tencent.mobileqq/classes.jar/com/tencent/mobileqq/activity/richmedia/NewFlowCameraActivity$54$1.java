@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aktl;
+import alrh;
 
 public class NewFlowCameraActivity$54$1
   implements Runnable
 {
-  public NewFlowCameraActivity$54$1(aktl paramaktl) {}
+  public NewFlowCameraActivity$54$1(alrh paramalrh) {}
   
   public void run()
   {

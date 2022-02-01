@@ -1,22 +1,40 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-
 public class bhlj
-  implements Animator.AnimatorListener
 {
-  public bhlj(FloatingScreenContainer paramFloatingScreenContainer) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    paramAnimator.removeAllListeners();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String toString()
+  {
+    return super.toString();
+  }
 }
 
 

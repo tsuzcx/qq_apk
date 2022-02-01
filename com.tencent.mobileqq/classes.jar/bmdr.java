@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout;
-import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
-import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
-
-public class bmdr
-  implements View.OnClickListener
+public abstract interface bmdr
 {
-  public bmdr(MoreLyricLayout paramMoreLyricLayout) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    MoreLyricLayout.a(this.a).setPanelState(AESlidingUpPanelLayout.PanelState.COLLAPSED);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

@@ -1,15 +1,141 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class baoi
-  implements bjog
 {
-  public baoi(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onDismiss()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    SignatureHistoryFragment.a(this.a, null);
-    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
+    for (;;)
+    {
+      try
+      {
+        PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+        if (localPreDownloadController.isEnable())
+        {
+          int i = 2;
+          String str = "qboss_splash_ad_res_png";
+          if (paramInt == 2)
+          {
+            i = 1;
+            str = "qboss_splash_ad_res_video";
+            j = 10082;
+            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("qbossSplashresAppid", paramString1);
+            a("qbossSplashrequest", localHashMap);
+            localPreDownloadController.requestPreDownload(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new baoj(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
+          }
+        }
+        else
+        {
+          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        return;
+      }
+      int j = 10081;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Collection<baom> paramCollection)
+  {
+    for (;;)
+    {
+      baom localbaom;
+      try
+      {
+        paramCollection = paramCollection.iterator();
+        if (!paramCollection.hasNext()) {
+          break label156;
+        }
+        localbaom = (baom)paramCollection.next();
+        if (!localbaom.b())
+        {
+          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
+          continue;
+        }
+        switch (localbaom.a)
+        {
+        }
+      }
+      finally {}
+      a(paramQQAppInterface, localbaom.jdField_b_of_type_JavaLangString, localbaom.e, localbaom.h, 0, localbaom.k);
+      continue;
+      a(paramQQAppInterface, localbaom.jdField_b_of_type_JavaLangString, localbaom.e, localbaom.h, 2, localbaom.k);
+      continue;
+      a(paramQQAppInterface, localbaom.jdField_b_of_type_JavaLangString, localbaom.e, localbaom.h, 1, localbaom.k);
+      continue;
+      label156:
+      return;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    Object localObject = baoh.a(BaseApplicationImpl.getContext(), paramString1);
+    paramString1 = ((SharedPreferences)localObject).edit();
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
+    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
+    if (!bool)
+    {
+      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
+      localObject = baol.a;
+      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
+        ((baom)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
+      }
+    }
+    paramString1.apply();
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    try
+    {
+      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+      {
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
+        if (QLog.isColorLevel()) {
+          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
+        }
+      }
+      return;
+    }
+    catch (Exception paramString) {}
+  }
+  
+  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      paramAppInterface = (PreDownloadController)paramAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+      if (paramAppInterface.isEnable()) {
+        paramAppInterface.preDownloadSuccess(paramString1, -1L);
+      }
+      paramString1 = new HashMap();
+      paramString1.put("qbossSplashresAppid", paramString2);
+      a("qbossSplashDownloadFailed", paramString1);
+      return;
+    }
+    catch (Exception paramString1) {}
   }
 }
 

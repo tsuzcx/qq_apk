@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.VideoCaptureFragment;
 
-final class rxa
-  implements DialogInterface.OnClickListener
+public class rxa
+  implements sya
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public rxa(VideoCaptureFragment paramVideoCaptureFragment) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    VideoCaptureFragment.a(this.a).b();
+  }
+  
+  public void a(int paramInt)
+  {
+    VideoCaptureFragment.a(this.a).a(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    VideoCaptureFragment.a(this.a).a(paramInt1, paramInt2);
   }
 }
 

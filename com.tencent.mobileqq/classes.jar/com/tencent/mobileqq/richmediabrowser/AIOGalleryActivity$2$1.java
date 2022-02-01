@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import baio;
-import bajl;
+import bbpd;
+import bbqa;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class AIOGalleryActivity$2$1
   implements Runnable
 {
-  public AIOGalleryActivity$2$1(baio parambaio, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  public AIOGalleryActivity$2$1(bbpd parambbpd, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   public void run()
   {
-    if (AIOGalleryActivity.a(this.jdField_a_of_type_Baio.a) != null)
+    if (AIOGalleryActivity.a(this.jdField_a_of_type_Bbpd.a) != null)
     {
       BrowserLogHelper.getInstance().getGalleryLog().d("IAIOImageProviderCallBack", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
-      AIOGalleryActivity.a(this.jdField_a_of_type_Baio.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      AIOGalleryActivity.a(this.jdField_a_of_type_Bbpd.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
   }
 }

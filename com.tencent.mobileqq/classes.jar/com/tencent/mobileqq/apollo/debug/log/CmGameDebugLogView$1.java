@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.debug.log;
 
-import alsv;
+import amrw;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,16 +8,16 @@ import android.view.View;
 public class CmGameDebugLogView$1
   implements Runnable
 {
-  public CmGameDebugLogView$1(alsv paramalsv) {}
+  public CmGameDebugLogView$1(amrw paramamrw) {}
   
   public void run()
   {
-    Object localObject = alsv.a(this.this$0).getLayoutManager();
+    Object localObject = amrw.a(this.this$0).getLayoutManager();
     if ((localObject instanceof LinearLayoutManager)) {}
     for (localObject = (LinearLayoutManager)localObject;; localObject = null)
     {
-      View localView = alsv.a(this.this$0).getChildAt(alsv.a(this.this$0).getChildCount() - 1);
-      if ((localView != null) && (localView.getId() != 2131362756) && (localObject != null)) {
+      View localView = amrw.a(this.this$0).getChildAt(amrw.a(this.this$0).getChildCount() - 1);
+      if ((localView != null) && (localView.getId() != 2131362772) && (localObject != null)) {
         ((LinearLayoutManager)localObject).setStackFromEnd(true);
       }
       while (localObject == null) {

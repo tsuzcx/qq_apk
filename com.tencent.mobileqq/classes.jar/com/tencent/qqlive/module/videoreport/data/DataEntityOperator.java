@@ -1,45 +1,18 @@
 package com.tencent.qqlive.module.videoreport.data;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DataEntityOperator
 {
-  public static DataEntity copy(DataEntity paramDataEntity)
+  public static DataEntity copy(@NonNull DataEntity paramDataEntity)
   {
-    Object localObject = null;
-    DataEntity localDataEntity = new DataEntity();
-    localDataEntity.elementId = paramDataEntity.elementId;
-    localDataEntity.pageId = paramDataEntity.pageId;
-    localDataEntity.pageContentId = paramDataEntity.pageContentId;
-    HashMap localHashMap;
-    if (paramDataEntity.elementParams == null)
-    {
-      localHashMap = null;
-      localDataEntity.elementParams = localHashMap;
-      if (paramDataEntity.pageParams != null) {
-        break label93;
-      }
-      localHashMap = null;
-      label57:
-      localDataEntity.pageParams = localHashMap;
-      if (paramDataEntity.innerParams != null) {
-        break label108;
-      }
-    }
-    label93:
-    label108:
-    for (paramDataEntity = localObject;; paramDataEntity = new HashMap(paramDataEntity.innerParams))
-    {
-      localDataEntity.innerParams = paramDataEntity;
-      return localDataEntity;
-      localHashMap = new HashMap(paramDataEntity.elementParams);
-      break;
-      localHashMap = new HashMap(paramDataEntity.pageParams);
-      break label57;
-    }
+    return paramDataEntity.copy();
   }
   
   public static String getContentId(@Nullable DataEntity paramDataEntity)
@@ -58,12 +31,28 @@ public class DataEntityOperator
     return paramDataEntity.elementId;
   }
   
+  @Nullable
   public static Map<String, ?> getElementParams(@Nullable DataEntity paramDataEntity)
   {
+    Map localMap = null;
+    Object localObject = null;
     if (paramDataEntity == null) {
-      return null;
+      return localObject;
     }
-    return paramDataEntity.elementParams;
+    if (paramDataEntity.dynamicParams == null) {}
+    for (;;)
+    {
+      localObject = localMap;
+      if (BaseUtils.isEmpty(paramDataEntity.elementParams)) {
+        break;
+      }
+      paramDataEntity = new HashMap(paramDataEntity.elementParams);
+      if (!BaseUtils.isEmpty(localMap)) {
+        paramDataEntity.putAll(localMap);
+      }
+      return paramDataEntity;
+      localMap = paramDataEntity.dynamicParams.getElementDynamicParams();
+    }
   }
   
   @Nullable
@@ -91,7 +80,24 @@ public class DataEntityOperator
     return paramDataEntity.pageParams;
   }
   
-  static void putInnerParam(DataEntity paramDataEntity, String paramString, Object paramObject)
+  public static DataEntity getParentEntity(DataEntity paramDataEntity)
+  {
+    if (paramDataEntity != null) {
+      return paramDataEntity.parentEntity;
+    }
+    return null;
+  }
+  
+  @Nullable
+  public static SparseArray<ElementDataEntity> getVirtualElementParentParams(@Nullable DataEntity paramDataEntity)
+  {
+    if (paramDataEntity == null) {
+      return null;
+    }
+    return paramDataEntity.elementVirtualParentParams;
+  }
+  
+  public static void putInnerParam(DataEntity paramDataEntity, String paramString, Object paramObject)
   {
     if ((paramDataEntity == null) || (TextUtils.isEmpty(paramString))) {
       return;
@@ -104,9 +110,17 @@ public class DataEntityOperator
   
   static void removeAllElementParams(DataEntity paramDataEntity)
   {
-    if ((paramDataEntity != null) && (paramDataEntity.elementParams != null)) {
+    if (paramDataEntity == null) {
+      return;
+    }
+    if (paramDataEntity.elementParams != null) {
       paramDataEntity.elementParams.clear();
     }
+    paramDataEntity.dynamicParams = null;
+    if (paramDataEntity.elementVirtualParentParams != null) {
+      paramDataEntity.elementVirtualParentParams.clear();
+    }
+    paramDataEntity.elementVirtualParentParams = null;
   }
   
   static void removeAllPageParams(DataEntity paramDataEntity)
@@ -144,6 +158,14 @@ public class DataEntityOperator
     }
   }
   
+  public static void setElementParams(DataEntity paramDataEntity, IElementDynamicParams paramIElementDynamicParams)
+  {
+    if ((paramDataEntity == null) || (paramIElementDynamicParams == null)) {
+      return;
+    }
+    paramDataEntity.dynamicParams = paramIElementDynamicParams;
+  }
+  
   public static void setElementParams(DataEntity paramDataEntity, String paramString, Object paramObject)
   {
     if ((paramDataEntity == null) || (TextUtils.isEmpty(paramString))) {
@@ -164,6 +186,21 @@ public class DataEntityOperator
       paramDataEntity.elementParams = new HashMap(1);
     }
     paramDataEntity.elementParams.putAll(paramMap);
+  }
+  
+  public static void setElementVirtualParentParams(DataEntity paramDataEntity, int paramInt, String paramString, @Nullable Map<String, Object> paramMap)
+  {
+    if ((paramDataEntity == null) || (paramInt <= 0)) {}
+    while (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (paramDataEntity.elementVirtualParentParams == null) {
+      paramDataEntity.elementVirtualParentParams = new SparseArray();
+    }
+    ElementDataEntity localElementDataEntity = new ElementDataEntity();
+    localElementDataEntity.elementId = paramString;
+    localElementDataEntity.elementParams = paramMap;
+    paramDataEntity.elementVirtualParentParams.put(paramInt, localElementDataEntity);
   }
   
   public static void setPageContentId(DataEntity paramDataEntity, String paramString)
@@ -200,6 +237,13 @@ public class DataEntityOperator
       paramDataEntity.pageParams = new HashMap(1);
     }
     paramDataEntity.pageParams.putAll(paramMap);
+  }
+  
+  public static void setParentEntity(DataEntity paramDataEntity1, DataEntity paramDataEntity2)
+  {
+    if (paramDataEntity1 != null) {
+      paramDataEntity1.parentEntity = paramDataEntity2;
+    }
   }
 }
 

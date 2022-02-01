@@ -1,8 +1,8 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import aqyp;
-import aqyt;
+import ascz;
+import asdd;
 import com.tencent.mtt.hippy.modules.Promise;
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ class QQRedPointModule$1$1
     Bundle localBundle = (Bundle)this.val$finalMapResult.get("req");
     String str = (String)this.val$finalMapResult.get("jsonResult");
     this.this$1.val$promise.resolve(str);
-    localObject = aqyt.a("redTouch_getAppInfo_report", (String)localObject, this.this$1.this$0.mOnRemoteResp.key, localBundle);
+    localObject = asdd.a("redTouch_getAppInfo_report", (String)localObject, this.this$1.this$0.mOnRemoteResp.key, localBundle);
     this.this$1.this$0.sendRemoteReq((Bundle)localObject, false, true);
   }
 }

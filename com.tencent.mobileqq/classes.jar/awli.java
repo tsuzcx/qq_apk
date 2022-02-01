@@ -1,16 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awli
   implements View.OnClickListener
 {
-  public awli(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public awli(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+    bdla.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
 
-public class bfgd
-  implements bfdu
+class bfgd
 {
-  public bfgd(TroopAIORobotLayout paramTroopAIORobotLayout) {}
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public URLThemeImageView a;
+  public TextView b;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  bfgd(bffw parambffw) {}
 }
 
 

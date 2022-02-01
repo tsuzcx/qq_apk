@@ -17,13 +17,13 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
-import syn;
-import vex;
-import vey;
-import vfg;
-import vfw;
-import vgb;
-import vgc;
+import tlv;
+import vtq;
+import vtr;
+import vtz;
+import vup;
+import vuu;
+import vuv;
 
 public class PublicAccountImageCollectionListView
   extends ListView
@@ -35,14 +35,14 @@ public class PublicAccountImageCollectionListView
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
-  private ArrayList<vfg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<vtz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
-  private ArrayList<vgb> jdField_b_of_type_JavaUtilArrayList;
+  private ArrayList<vuu> jdField_b_of_type_JavaUtilArrayList;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private ArrayList<vgc> jdField_c_of_type_JavaUtilArrayList;
+  private ArrayList<vuv> jdField_c_of_type_JavaUtilArrayList;
   private boolean jdField_c_of_type_Boolean;
   private boolean d;
   
@@ -93,11 +93,11 @@ public class PublicAccountImageCollectionListView
     }
     int i = ((View)localObject).getTop();
     paramInt = ((View)localObject).getBottom();
-    if ((((View)localObject).getTag() instanceof vey))
+    if ((((View)localObject).getTag() instanceof vtr))
     {
-      localObject = (vey)((View)localObject).getTag();
-      if (((vey)localObject).jdField_a_of_type_AndroidWidgetTextView.getBottom() != ((vey)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getBottom()) {
-        paramInt = ((vey)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getBottom() + i;
+      localObject = (vtr)((View)localObject).getTag();
+      if (((vtr)localObject).jdField_a_of_type_AndroidWidgetTextView.getBottom() != ((vtr)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getBottom()) {
+        paramInt = ((vtr)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getBottom() + i;
       }
     }
     for (;;)
@@ -114,7 +114,7 @@ public class PublicAccountImageCollectionListView
       for (;;)
       {
         this.jdField_b_of_type_Boolean = true;
-        syn.a().b();
+        tlv.a().b();
         post(new PublicAccountImageCollectionListView.1(this, i, paramInt));
         return;
         paramInt /= j;
@@ -151,7 +151,7 @@ public class PublicAccountImageCollectionListView
       int i = 0;
       while (i < j)
       {
-        PublicAccountImageCollectionPreloadManager.a().a(((vgc)this.jdField_c_of_type_JavaUtilArrayList.get(i)).d);
+        PublicAccountImageCollectionPreloadManager.a().a(((vuv)this.jdField_c_of_type_JavaUtilArrayList.get(i)).d);
         i += 1;
       }
     }
@@ -191,10 +191,10 @@ public class PublicAccountImageCollectionListView
     float f2;
     if ((paramView != null) && (paramView.getTag() != null))
     {
-      if (!(paramView.getTag() instanceof vey)) {
+      if (!(paramView.getTag() instanceof vtr)) {
         break label110;
       }
-      localVideoFeedsAlphaMaskView = ((vey)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+      localVideoFeedsAlphaMaskView = ((vtr)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
       int i = Math.abs((paramView.getBottom() + paramView.getTop()) / 2 - this.jdField_b_of_type_Int / 2);
       int j = (paramView.getBottom() - paramView.getTop()) / 2;
       f2 = Math.round(i / j * 100.0F) / 100.0F;
@@ -209,24 +209,24 @@ public class PublicAccountImageCollectionListView
       }
       return;
       label110:
-      if ((paramView.getTag() instanceof vex))
+      if ((paramView.getTag() instanceof vtq))
       {
-        localVideoFeedsAlphaMaskView = ((vex)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+        localVideoFeedsAlphaMaskView = ((vtq)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
         break;
       }
-      if (!(paramView.getTag() instanceof vfw)) {
+      if (!(paramView.getTag() instanceof vup)) {
         break;
       }
-      localVideoFeedsAlphaMaskView = ((vfw)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+      localVideoFeedsAlphaMaskView = ((vup)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
       break;
       label160:
       f1 = f2;
     }
   }
   
-  public void a(vfg paramvfg)
+  public void a(vtz paramvtz)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramvfg);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvtz);
   }
   
   void b()
@@ -237,14 +237,14 @@ public class PublicAccountImageCollectionListView
       ViewGroup localViewGroup = (ViewGroup)getChildAt(i - getFirstVisiblePosition());
       if ((localViewGroup.getTop() < this.jdField_b_of_type_Int / 2) && (localViewGroup.getBottom() > this.jdField_b_of_type_Int / 2))
       {
-        if ((localViewGroup.getTag() instanceof vfw))
+        if ((localViewGroup.getTag() instanceof vup))
         {
           localViewGroup.setClickable(false);
           localViewGroup.getChildAt(0).setClickable(true);
           localViewGroup.getChildAt(0).setFocusable(true);
           localViewGroup.getChildAt(0).setEnabled(true);
         }
-        if ((localViewGroup.getTag() instanceof vey))
+        if ((localViewGroup.getTag() instanceof vtr))
         {
           localViewGroup.setClickable(false);
           localViewGroup.getChildAt(1).setClickable(true);
@@ -256,14 +256,14 @@ public class PublicAccountImageCollectionListView
       {
         i += 1;
         break;
-        if ((localViewGroup.getTag() instanceof vfw))
+        if ((localViewGroup.getTag() instanceof vup))
         {
           localViewGroup.setClickable(true);
           localViewGroup.getChildAt(0).setClickable(false);
           localViewGroup.getChildAt(0).setFocusable(false);
           localViewGroup.getChildAt(0).setEnabled(false);
         }
-        if ((localViewGroup.getTag() instanceof vey))
+        if ((localViewGroup.getTag() instanceof vtr))
         {
           localViewGroup.setClickable(true);
           localViewGroup.getChildAt(1).setClickable(false);
@@ -287,7 +287,7 @@ public class PublicAccountImageCollectionListView
       this.jdField_a_of_type_AndroidViewVelocityTracker = null;
     }
     this.jdField_a_of_type_AndroidContentContext = null;
-    syn.a().a();
+    tlv.a().a();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -337,15 +337,15 @@ public class PublicAccountImageCollectionListView
         {
           Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
           while (localIterator.hasNext()) {
-            ((vfg)localIterator.next()).a(localViewGroup.getTag());
+            ((vtz)localIterator.next()).a(localViewGroup.getTag());
           }
         }
-        syn.a().c();
+        tlv.a().c();
         int i = getLastVisiblePosition();
         int j = getFirstVisiblePosition();
         int k = PublicAccountImageCollectionPreloadManager.a().a();
         a(getFirstVisiblePosition(), i - j + 1 + k);
-        if ((getChildAt(paramAbsListView.getLastVisiblePosition() - getFirstVisiblePosition()).getTag() instanceof vfw)) {
+        if ((getChildAt(paramAbsListView.getLastVisiblePosition() - getFirstVisiblePosition()).getTag() instanceof vup)) {
           d();
         }
         b();
@@ -406,13 +406,13 @@ public class PublicAccountImageCollectionListView
     return true;
   }
   
-  public void setPhotoCollectionInfo(ArrayList<vgb> paramArrayList)
+  public void setPhotoCollectionInfo(ArrayList<vuu> paramArrayList)
   {
     this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
     a(1, 1);
   }
   
-  public void setRecommendInfo(ArrayList<vgc> paramArrayList)
+  public void setRecommendInfo(ArrayList<vuv> paramArrayList)
   {
     this.jdField_c_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -424,7 +424,7 @@ public class PublicAccountImageCollectionListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView
  * JD-Core Version:    0.7.0.1
  */

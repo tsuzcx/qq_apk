@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.os.Bundle;
-import bhho;
+import android.view.View;
+import android.view.ViewGroup;
+import bisf;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 class BaseChatPie$7
-  implements bhho
+  implements bisf
 {
+  private View mPreview = this.this$0.mAIORootView.findViewById(2131373128);
+  
   BaseChatPie$7(BaseChatPie paramBaseChatPie) {}
   
-  public void afterDraw(Bundle paramBundle)
+  public boolean isDirty()
   {
-    this.this$0.listView.b(true);
-  }
-  
-  public void beforeDraw(Bundle paramBundle)
-  {
-    this.this$0.listView.b(false);
+    return (this.this$0.listView.isDirty()) || (this.this$0.mAnimContainer.isDirty()) || (this.mPreview.isDirty());
   }
 }
 

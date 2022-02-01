@@ -1,56 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
 
 public class aqed
-  extends aptq<aqec>
 {
-  @NonNull
-  public aqec a(int paramInt)
+  public static float a(double paramDouble)
   {
-    return new aqec();
+    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
   }
   
-  @Nullable
-  public aqec a(aptx[] paramArrayOfaptx)
+  public static float a(float paramFloat1, float paramFloat2)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqec.a(paramArrayOfaptx);
-    }
-    return null;
+    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
   }
   
-  public void a(aqec paramaqec) {}
-  
-  public Class<aqec> clazz()
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return aqec.class;
+    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
   }
   
-  public boolean isNeedCompressed()
+  public static float a(Vector3 paramVector31, Vector3 paramVector32)
   {
-    return true;
+    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
   }
   
-  public boolean isNeedStoreLargeFile()
+  public static float b(float paramFloat1, float paramFloat2)
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 484;
+    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqed
  * JD-Core Version:    0.7.0.1
  */

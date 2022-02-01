@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import acxe;
+import adnq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
@@ -31,7 +31,7 @@ public class TopGestureLayout
   TopGestureLayout.InterceptTouchEventListener mInterceptTouchEventListener;
   private boolean mInterceptTouchFlag = true;
   private boolean mIsInterceptChildEventWhenScroll = true;
-  public acxe mMyDispatchDrawListener;
+  public adnq mMyDispatchDrawListener;
   public TopGestureLayout.OnGestureListener mOnFlingGesture;
   public GestureDetector mTopGestureDetector;
   
@@ -41,11 +41,11 @@ public class TopGestureLayout
     init(paramContext);
   }
   
-  public TopGestureLayout(Context paramContext, acxe paramacxe, TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
+  public TopGestureLayout(Context paramContext, adnq paramadnq, TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
   {
     super(paramContext);
     init(paramContext);
-    this.mMyDispatchDrawListener = paramacxe;
+    this.mMyDispatchDrawListener = paramadnq;
     this.mInterceptTouchEventListener = paramInterceptTouchEventListener;
   }
   
@@ -249,9 +249,9 @@ public class TopGestureLayout
     this.mIsInterceptChildEventWhenScroll = paramBoolean;
   }
   
-  public void setMyDispatchDrawListener(acxe paramacxe)
+  public void setMyDispatchDrawListener(adnq paramadnq)
   {
-    this.mMyDispatchDrawListener = paramacxe;
+    this.mMyDispatchDrawListener = paramadnq;
   }
   
   public void setOnFlingGesture(TopGestureLayout.OnGestureListener paramOnGestureListener)

@@ -1,95 +1,104 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.ViewConfigurationCompat;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class axed
+  implements blcc
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private axdo jdField_a_of_type_Axdo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private axdo b;
-  private axdo c;
-  private axdo d;
-  private axdo e;
+  float jdField_a_of_type_Float;
+  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment.getActivity()));
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int;
+  float c;
+  float d;
   
-  public axed(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public axed(MultiAIOItemFragment paramMultiAIOItemFragment) {}
   
-  public int a()
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    return 5;
-  }
-  
-  public int a(axfs paramaxfs)
-  {
-    if ((paramaxfs instanceof axfr)) {
-      return 0;
-    }
-    if ((paramaxfs instanceof axfv)) {
-      return 1;
-    }
-    if ((paramaxfs instanceof axft)) {
-      return 2;
-    }
-    if ((paramaxfs instanceof axfp)) {
-      return 3;
-    }
-    if ((paramaxfs instanceof axfw)) {
-      return 4;
-    }
-    return -1;
-  }
-  
-  public axdo a(int paramInt)
-  {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Axdo != null) {
-        localObject = this.jdField_a_of_type_Axdo;
-      }
-    }
-    do
+    boolean bool2 = false;
+    boolean bool1;
+    switch (paramMotionEvent.getActionMasked())
     {
-      return localObject;
-      localObject = new axeb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Axdo = ((axdo)localObject);
-      return localObject;
-      if (paramInt == 1)
-      {
-        if (this.b != null) {
-          return this.b;
-        }
-        localObject = new axfl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.b = ((axdo)localObject);
-        return localObject;
-      }
-      if (paramInt == 2)
-      {
-        if (this.c != null) {
-          return this.c;
-        }
-        localObject = new axfi(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.c = ((axdo)localObject);
-        return localObject;
-      }
-      if (paramInt == 3)
-      {
-        if (this.d != null) {
-          return this.d;
-        }
-        localObject = new axdw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.d = ((axdo)localObject);
-        return localObject;
-      }
-    } while (paramInt != 4);
-    if (this.e != null) {
-      return this.e;
+    default: 
+      bool1 = bool2;
     }
-    localObject = new axfn(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.e = ((axdo)localObject);
-    return localObject;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], intercept = " + bool1);
+      }
+      return bool1;
+      float f1 = paramMotionEvent.getX();
+      this.d = f1;
+      this.jdField_b_of_type_Float = f1;
+      f1 = paramMotionEvent.getY();
+      this.c = f1;
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+      bool1 = bool2;
+      continue;
+      int i = this.jdField_b_of_type_Int;
+      bool1 = bool2;
+      if (i != -1)
+      {
+        i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
+        bool1 = bool2;
+        if (i >= 0)
+        {
+          bool1 = bool2;
+          if (i <= paramMotionEvent.getPointerCount() - 1)
+          {
+            float f2 = MotionEventCompat.getX(paramMotionEvent, i);
+            f1 = Math.abs(f2 - this.d);
+            float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
+            float f4 = Math.abs(f3);
+            if ((f4 > this.jdField_a_of_type_Int) && (f4 * 0.5F > f1)) {
+              if (f3 > 0.0F)
+              {
+                f1 = this.c + this.jdField_a_of_type_Int;
+                label250:
+                this.jdField_a_of_type_Float = f1;
+                this.jdField_b_of_type_Float = f2;
+                bool1 = false;
+              }
+            }
+            for (;;)
+            {
+              MultiAIOBaseViewPager localMultiAIOBaseViewPager = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+              bool2 = bool1;
+              if (localMultiAIOBaseViewPager != null)
+              {
+                bool2 = bool1;
+                if (localMultiAIOBaseViewPager.a() != MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) {
+                  bool2 = true;
+                }
+              }
+              bool1 = bool2;
+              break;
+              f1 = this.c - this.jdField_a_of_type_Int;
+              break label250;
+              if (f1 > this.jdField_a_of_type_Int)
+              {
+                bool1 = true;
+              }
+              else
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "] do nothing");
+                }
+                bool1 = false;
+              }
+            }
+            bool1 = true;
+          }
+        }
+      }
+    }
   }
 }
 

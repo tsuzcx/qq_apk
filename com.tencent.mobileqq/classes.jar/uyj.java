@@ -1,14 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 
-final class uyj
-  implements DialogInterface.OnDismissListener
+public class uyj
+  implements uye
 {
-  uyj(uwy paramuwy) {}
+  public uyj(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(blij<stSimpleMetaFeed> paramblij)
   {
-    uyd.b(this.a);
+    int i;
+    if (WSRecommendFragment.d(this.a))
+    {
+      i = paramblij.getAdapterPosition();
+      paramblij = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
+      if (paramblij != null) {}
+    }
+    else
+    {
+      return;
+    }
+    WSRecommendFragment.a(this.a, paramblij, i);
   }
 }
 

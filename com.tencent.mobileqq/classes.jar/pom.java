@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-public class pom
-  implements tej
+class pom
+  extends qdb
 {
-  public pom(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
-  
-  public void a(String paramString)
+  pom(pob parampob, String paramString, View paramView, ListView paramListView, long paramLong)
   {
-    ReadInJoySelectPositionFragment.a(this.a, paramString);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Long);
   }
 }
 

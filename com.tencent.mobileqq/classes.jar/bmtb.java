@@ -1,45 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bmtb
-  extends bmte
+public abstract interface bmtb
 {
-  bmtb(bmta parambmta) {}
+  public abstract void a(int paramInt, bmsi parambmsi, String paramString);
   
-  public void onCancel(String paramString) {}
+  public abstract void a(long paramLong, boolean paramBoolean, bmsi parambmsi);
   
-  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
-    }
-    paramString = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.a.a.mProgress = 100;
-        this.a.b();
-        return;
-      }
-      finally {}
-      this.a.a.mProgress = -1;
-      this.a.a(4);
-    }
-  }
+  public abstract void a(long paramLong, boolean paramBoolean1, bmsj parambmsj, boolean paramBoolean2);
   
-  public void onNetChange(int paramInt) {}
-  
-  public void onProgress(String arg1, int paramInt)
-  {
-    synchronized (this.a)
-    {
-      this.a.a.mProgress = paramInt;
-      return;
-    }
-  }
-  
-  public void onStart(String paramString, boolean paramBoolean) {}
+  public abstract void a(String paramString, List<bmsi> paramList);
 }
 
 

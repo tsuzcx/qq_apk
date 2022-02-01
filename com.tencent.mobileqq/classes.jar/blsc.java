@@ -1,129 +1,175 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.core.AEFilterManagerHolder;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
+import org.json.JSONObject;
 
 public class blsc
-  extends RecyclerView.Adapter<blsf>
+  extends bieo
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private blse jdField_a_of_type_Blse;
-  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean a = true;
+  private boolean b = true;
+  private boolean c = true;
   
-  public blsc(Context paramContext, int paramInt)
+  public blsc(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private boolean a()
-  {
-    blnq localblnq = AEFilterManagerHolder.getAEFilterManager();
-    if (localblnq == null) {
-      return true;
+    super(paramSwiftBrowserUIStyleHandler);
+    paramSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler.mHostActivity.getIntent();
+    int i = paramSwiftBrowserUIStyleHandler.getIntExtra("key_subtab", 0);
+    paramSwiftBrowserUIStyleHandler.removeExtra("key_subtab");
+    if (this.mUIStyle.mSubIndex != i) {
+      setTopTabSelection(i);
     }
-    return localblnq.a;
   }
   
-  public blsf a(ViewGroup paramViewGroup, int paramInt)
+  public void initTitleContainer()
   {
-    return new blsf(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558481, paramViewGroup, false));
-  }
-  
-  public void a(blse paramblse)
-  {
-    this.jdField_a_of_type_Blse = paramblse;
-  }
-  
-  public void a(blsf paramblsf, int paramInt)
-  {
-    Object localObject1 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    QIMFilterCategoryItem localQIMFilterCategoryItem;
-    Object localObject2;
-    if (localObject1 != null)
+    super.initTitleContainer();
+    if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
+      ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
+    }
+    if (this.mUIStyleHandler.mBrowserTips != null) {
+      this.mUIStyleHandler.mBrowserTips.setVisibility(8);
+    }
+    this.mUIStyle.needHideBottomBar = true;
+    boolean bool;
+    if (this.mUIStyle.transparentTitlebarConfig != null)
     {
-      localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localObject2 = bnub.a().c(this.jdField_a_of_type_Int);
-      if (localObject2 == null) {
-        break label282;
+      if (!this.mUIStyle.transparentTitlebarConfig.has("txtclr"))
+      {
+        bool = true;
+        this.a = bool;
+        if (this.mUIStyle.transparentTitlebarConfig.has("titleclr")) {
+          break label579;
+        }
+        bool = true;
+        label113:
+        this.b = bool;
+        if (this.mUIStyle.transparentTitlebarConfig.has("bgclr")) {
+          break label585;
+        }
+        bool = true;
+        label137:
+        this.c = bool;
       }
     }
-    label260:
-    label272:
-    label282:
-    for (boolean bool1 = TextUtils.equals(((QIMFilterCategoryItem)localObject2).a, localQIMFilterCategoryItem.a);; bool1 = false)
+    else
     {
-      boolean bool2 = bool1;
-      if (!bool1)
+      if (this.c)
       {
-        if (((localObject2 == null) || (((QIMFilterCategoryItem)localObject2).d())) && (localQIMFilterCategoryItem.d())) {
-          bool2 = true;
+        int i = this.titleContainer.getPaddingTop();
+        int j = this.titleContainer.getPaddingBottom();
+        int k = this.titleContainer.getPaddingLeft();
+        int m = this.titleContainer.getPaddingRight();
+        this.titleContainer.setBackgroundColor(-1);
+        this.titleContainer.setPadding(k, i, m, j);
+        if (this.mUIStyleHandler.mHostFragment != null)
+        {
+          this.mUIStyleHandler.mHostFragment.mNeedStatusTrans = true;
+          this.mUIStyleHandler.mHostFragment.mActNeedImmersive = true;
+          if (this.mUIStyleHandler.mHostFragment.mSystemBarComp == null) {
+            this.mUIStyleHandler.mHostFragment.setImmersiveStatus();
+          }
+          if (this.mUIStyleHandler.mHostFragment.mSystemBarComp != null)
+          {
+            this.mUIStyleHandler.mHostFragment.mSystemBarComp.setBackgroundColor(-4210753);
+            this.mUIStyle.mUsingCustomTitleBarColor = true;
+          }
         }
       }
-      else
-      {
-        if ((!bool2) || (!a())) {
-          break label260;
-        }
-        blsf.a(paramblsf).setVisibility(0);
-        label117:
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844430);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844430);
-        if (paramInt != 0) {
-          break label272;
-        }
+      if ((!this.c) || (!this.b) || (!this.a)) {
+        this.mUIStyleHandler.doTransparent(this.mUIStyle.transparentTitlebarConfig, true);
       }
-      for (localObject1 = "https://qd.myapp.com/myapp/qqteam/QIM/fliters-QIM/other/none2.png";; localObject1 = ((QIMFilterCategoryItem)localObject1).d)
+      if ((this.mUIStyle.mCRulesFromUrl & 0x20) != 0L)
       {
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        if (((URLDrawable)localObject1).getStatus() == 2) {
-          ((URLDrawable)localObject1).restartDownload();
-        }
-        blsf.b(paramblsf).setImageDrawable((Drawable)localObject1);
-        blsf.a(paramblsf).setText(localQIMFilterCategoryItem.b);
-        if (this.jdField_a_of_type_Blse != null) {
-          paramblsf.itemView.setOnClickListener(new blsd(this, paramblsf));
-        }
-        paramblsf.itemView.setTag(localQIMFilterCategoryItem);
-        EventCollector.getInstance().onRecyclerBindViewHolder(paramblsf, paramInt, getItemId(paramInt));
-        return;
-        bool2 = false;
-        break;
-        blsf.a(paramblsf).setVisibility(8);
-        break label117;
+        this.leftView.setVisibility(4);
+        setRightButton("", this.rightViewText.getResources().getString(2131690845), "", false, 0, 0, null, null, null);
+        this.rightViewText.setOnClickListener(new blsd(this));
       }
+      if ((this.mUIStyle.mCRulesFromUrl & 0x40) != 0L)
+      {
+        this.leftView.setVisibility(4);
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.centerContainer.getLayoutParams();
+        localLayoutParams.addRule(15);
+        localLayoutParams.addRule(9);
+        localLayoutParams.leftMargin = DisplayUtil.dip2px(this.centerContainer.getContext(), 15.0F);
+        this.centerContainer.setLayoutParams(localLayoutParams);
+      }
+      if (this.mUIStyle.mInitTitleAlpha != -1) {
+        break label601;
+      }
+      if (((this.mUIStyle.mRulesFromUrl & 0x1000000) <= 0L) && ((this.mUIStyle.mCRulesFromUrl & 1L) <= 0L)) {
+        break label591;
+      }
+      setTitleBarAlpha(0);
+    }
+    for (;;)
+    {
+      this.leftView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      this.centerView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      this.rightViewText.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      if (this.mUIStyleHandler.mLoadingProgressBar != null) {
+        this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
+      }
+      return;
+      bool = false;
+      break;
+      label579:
+      bool = false;
+      break label113;
+      label585:
+      bool = false;
+      break label137;
+      label591:
+      setTitleBarAlpha(255);
+      continue;
+      label601:
+      setTitleBarAlpha(this.mUIStyle.mInitTitleAlpha);
     }
   }
   
-  public void a(List<QIMFilterCategoryItem> paramList)
+  public void setTitleBarStyle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    super.setTitleBarStyle(paramBoolean);
+    if (paramBoolean)
+    {
+      if (this.a) {
+        setTitleBarButtonColor(-1);
+      }
+      if (this.b) {
+        setTitleBarTextColor(-1);
+      }
+      if (this.mTopSubTabView != null)
+      {
+        this.mTopSubTabView.setButtonBackgroundResource(2130850871, 2130850872, 2130850873);
+        this.mTopSubTabView.setButtonTextColorStateList(2131167349);
+        this.mTopSubTabView.setLeftAndRightPaddingByDp(14);
+      }
+    }
+    do
+    {
+      return;
+      if (this.a) {
+        setTitleBarButtonColor(-16777216);
+      }
+      if (this.b) {
+        setTitleBarTextColor(-16777216);
+      }
+    } while (this.mTopSubTabView == null);
+    this.mTopSubTabView.setButtonBackgroundResource(2130850888, 2130850889, 2130850890);
+    this.mTopSubTabView.setButtonTextColorStateList(2131167360);
+    this.mTopSubTabView.setLeftAndRightPaddingByDp(14);
   }
 }
 

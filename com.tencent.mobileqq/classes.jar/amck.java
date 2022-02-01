@@ -1,57 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class amck
-  implements ambs
+public class amck
 {
-  amck(CmShowRenderView paramCmShowRenderView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void a(int paramInt1, int paramInt2)
+  static amck a(JSONObject paramJSONObject)
   {
-    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
-    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
-    amci.a(this.a);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
-  {
-    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
-    if (paramInt2 == 100)
-    {
-      amci.b(this.a);
-      return;
+    if (paramJSONObject == null) {
+      return new amck();
     }
-    if (paramInt2 == 101)
+    amck localamck = new amck();
+    try
     {
-      if (amci.a() < 3)
-      {
-        amci.b();
-        amci.b(this.a);
-        return;
-      }
-      amci.c(this.a);
-      return;
+      localamck.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localamck.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
+      localamck.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localamck.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
+      localamck.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
+      localamck.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
+      localamck.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
+      localamck.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
+      localamck.g = paramJSONObject.getString("classifyName");
+      localamck.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
+      localamck.f = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localamck.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
+      localamck.h = paramJSONObject.getString("trialstartday");
+      localamck.i = paramJSONObject.getString("trialendday");
+      return localamck;
     }
-    amci.a(0);
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localamck;
   }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

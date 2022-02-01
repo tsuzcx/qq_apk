@@ -1,8 +1,19 @@
-public abstract interface bniu
+import android.os.Bundle;
+import eipc.EIPCResult;
+import java.util.HashMap;
+
+class bniu
+  implements bnjf
 {
-  public abstract void a(int paramInt);
+  bniu(bnis parambnis, int paramInt) {}
   
-  public abstract void b();
+  public void a(boolean paramBoolean, HashMap<String, String> paramHashMap)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_resource_download_all_succeeded", paramBoolean);
+    localBundle.putSerializable("key_resource_download_result", paramHashMap);
+    this.jdField_a_of_type_Bnis.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+  }
 }
 
 

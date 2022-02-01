@@ -1,27 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class actg
-  implements View.OnClickListener
+  implements acpi
 {
-  public actg(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    View localView = (View)paramView.getParent();
-    if ((localView == null) || (localView.getTag() == null)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcef.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-      if ((localView.getTag() instanceof SubAccountInfo)) {
-        this.a.a((SubAccountInfo)localView.getTag());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0xd7");
     }
+    ((MsgBoxInterFollowManager)paramQQAppInterface.getManager(QQManagerFactory.MSG_BOX_INTERACT_MANAGER)).decode0xd7InteractAndFollowMsg(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

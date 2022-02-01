@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahia;
+import aict;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anlo;
-import atky;
-import awcm;
-import awct;
+import aooh;
+import aupt;
+import axio;
+import axiv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class MultiForwardChatPie$9
   implements Runnable
 {
-  public MultiForwardChatPie$9(ahia paramahia, long paramLong) {}
+  public MultiForwardChatPie$9(aict paramaict, long paramLong) {}
   
   public void run()
   {
@@ -40,7 +40,7 @@ public class MultiForwardChatPie$9
         localObject3 = this.this$0.app.getMultiMessageProxy();
         localObject1 = localObject2;
         if (localObject3 != null) {
-          localObject1 = ((anlo)localObject3).a(this.a);
+          localObject1 = ((aooh)localObject3).a(this.a);
         }
       }
       localObject2 = localObject1;
@@ -49,18 +49,18 @@ public class MultiForwardChatPie$9
         localObject2 = localObject1;
         if (this.a == 0L)
         {
-          localObject3 = ahia.a(this.this$0);
-          awcm.a().a.clear();
-          awcm.a().a.addAll(ahia.a(this.this$0));
+          localObject3 = aict.a(this.this$0);
+          axio.a().a.clear();
+          axio.a().a.addAll(aict.a(this.this$0));
           HashMap localHashMap = new HashMap();
           int i = 0;
-          while (i < ahia.a(this.this$0).size())
+          while (i < aict.a(this.this$0).size())
           {
-            ChatMessage localChatMessage = (ChatMessage)ahia.a(this.this$0).get(i);
+            ChatMessage localChatMessage = (ChatMessage)aict.a(this.this$0).get(i);
             localObject2 = localChatMessage.getExtInfoFromExtStr("self_nickname");
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = awcm.a().a(localChatMessage.senderuin, localChatMessage.msgseq, this.this$0.app);
+              localObject1 = axio.a().a(localChatMessage.senderuin, localChatMessage.msgseq, this.this$0.app);
             }
             if (localObject1 != null)
             {
@@ -69,13 +69,13 @@ public class MultiForwardChatPie$9
             }
             else
             {
-              localObject2 = awct.a(localChatMessage.senderuin);
+              localObject2 = axiv.a(localChatMessage.senderuin);
             }
             localHashMap.put(localChatMessage.senderuin, localObject2);
             i += 1;
           }
-          awcm.a().b.clear();
-          awcm.a().b.putAll(localHashMap);
+          axio.a().b.clear();
+          axio.a().b.putAll(localHashMap);
           localObject2 = localObject3;
         }
       }
@@ -93,7 +93,7 @@ public class MultiForwardChatPie$9
     ((Bundle)localObject1).putInt("accostType", ((MessageForStructing)localObject2).structingMsg.sourceAccoutType);
     localObject2 = new Intent();
     ((Intent)localObject2).putExtras((Bundle)localObject1);
-    atky.a((Activity)this.this$0.mContext, (Intent)localObject2, 24);
+    aupt.a((Activity)this.this$0.mContext, (Intent)localObject2, 24);
   }
 }
 

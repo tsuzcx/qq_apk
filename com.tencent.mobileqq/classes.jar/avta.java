@@ -1,25 +1,24 @@
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface avta
-  extends Manager
+class avta
+  implements INetEventHandler
 {
-  public abstract int a();
+  avta(avsv paramavsv) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    if (avsv.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + avsv.a(this.a).isMSFConnect);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
+  }
 }
 
 

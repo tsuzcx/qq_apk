@@ -1,9 +1,9 @@
 package com.tencent.imcore.message;
 
-import abwe;
-import abwf;
-import abwx;
-import abwz;
+import acml;
+import acmm;
+import acnf;
+import acnh;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ import java.util.List;
 public class C2CMessageManager$2
   implements Runnable
 {
-  public C2CMessageManager$2(abwe paramabwe, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, int paramInt, String paramString, abwf paramabwf, FragmentActivity paramFragmentActivity) {}
+  public C2CMessageManager$2(acml paramacml, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, int paramInt, String paramString, acmm paramacmm, FragmentActivity paramFragmentActivity) {}
   
   public void run()
   {
@@ -38,7 +38,7 @@ public class C2CMessageManager$2
       if (i < ((ArrayList)localObject1).size())
       {
         localObject2 = (ChatMessage)((ArrayList)localObject1).get(i);
-        if ((abwz.b((MessageRecord)localObject2)) || (((ChatMessage)localObject2).msgUid != this.jdField_a_of_type_Abwf.a) || (((ChatMessage)localObject2).time != this.jdField_a_of_type_Abwf.b)) {}
+        if ((acnh.b((MessageRecord)localObject2)) || (((ChatMessage)localObject2).msgUid != this.jdField_a_of_type_Acmm.a) || (((ChatMessage)localObject2).time != this.jdField_a_of_type_Acmm.b)) {}
       }
       for (i = 1;; i = 0)
       {
@@ -50,10 +50,10 @@ public class C2CMessageManager$2
             {
               this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.count = 15;
               this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.retryIndex = 0;
-              localObject1 = abwe.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, this.jdField_a_of_type_Abwf);
+              localObject1 = acml.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, this.jdField_a_of_type_Acmm);
             } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
             localObject1 = (ChatMessage)((List)localObject1).get(0);
-          } while ((abwz.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_Abwf.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_Abwf.b));
+          } while ((acnh.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_Acmm.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_Acmm.b));
           this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.isSuccess = true;
           this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
         }

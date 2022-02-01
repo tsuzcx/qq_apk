@@ -1,31 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class anda
-  implements ancx
+public abstract interface anda
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  private anda(TroopManager paramTroopManager) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin))) {
-      return;
-    }
-    paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "newRealLevel:" + this.jdField_a_of_type_Int + ",troopUin : " + this.b + ",memberUin" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramTroopMemberInfo.getStatus() == 1000) {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

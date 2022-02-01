@@ -1,67 +1,52 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class wjy
+  implements wja
 {
-  public static void a(Context paramContext, String paramString, wka paramwka, bhht parambhht)
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<wjb> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  
+  public wjy()
   {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambhht, paramContext, paramwka));
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new wjz());
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  private void b(int paramInt)
   {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
+    ykq.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
     {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
+    default: 
+      return;
     }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((wjb)localIterator.next()).a(paramInt);
+    }
+    System.gc();
   }
   
-  public static void a(HashMap<String, String> paramHashMap)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
-      {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
-        }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
-      }
-    }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+  }
+  
+  public void a(wjb paramwjb)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramwjb);
+  }
+  
+  public void b() {}
+  
+  public void b(wjb paramwjb)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramwjb);
   }
 }
 

@@ -1,9 +1,9 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
 import android.content.Context;
-import bhzj;
-import bmbx;
-import bmkn;
+import bjkl;
+import bnrh;
+import boaf;
 
 public final class AEEditorResourceManager$5
   implements Runnable
@@ -12,8 +12,8 @@ public final class AEEditorResourceManager$5
   
   public void run()
   {
-    bhzj.a(this.a, "camera/frame", bmkn.d);
-    bmbx.b("AEEditorResourceManager", "setupFrameEnv---pag file is successfully copied");
+    bjkl.a(this.a, "camera/frame", boaf.d);
+    bnrh.b("AEEditorResourceManager", "setupFrameEnv---pag file is successfully copied");
   }
 }
 

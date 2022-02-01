@@ -4,7 +4,7 @@ import NS_MINI_APP_PAY.MiniAppMidasPay.StWxpayCheckMWebURLRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -33,7 +33,7 @@ public class MiniWxPayCheckUrlServlet
           continue;
         }
         localObject = new PROTOCAL.StQWebRsp();
-        byte[] arrayOfByte = bgau.b(paramFromServiceMsg.getWupBuffer());
+        byte[] arrayOfByte = bhjl.b(paramFromServiceMsg.getWupBuffer());
         ((PROTOCAL.StQWebRsp)localObject).mergeFrom(arrayOfByte);
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
@@ -79,7 +79,7 @@ public class MiniWxPayCheckUrlServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_pay.WxpayCheckMWebURL");
-    paramPacket.putSendData(bgau.a((byte[])localObject1));
+    paramPacket.putSendData(bhjl.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

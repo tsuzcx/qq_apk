@@ -1,28 +1,32 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import org.json.JSONObject;
 
 public class acxe
 {
-  public acxe(ChatFragment paramChatFragment) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a()
+  public acxe(acxc paramacxc) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    try
     {
-      bfzg.b("AIO_Start_cost", null);
-      SuspendThreadManager.a().d();
-      bfzg.a("AIO_onDrawView", "AIO_SysMsgCost");
-      ChatFragment.a(this.a);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
-      {
-        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        bfwu.a("pubAcc_aio_open", null, str);
-        bfwu.a("pubAcc_structMsg_display", null, str);
-      }
-      ChatFragment.a(false);
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
+      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
+      return true;
     }
+    catch (Exception paramJSONObject)
+    {
+      acwx.a("KingKongNativePatch", "Parse HookPoint error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 

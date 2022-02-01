@@ -1,26 +1,8 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
-
-class rbo
-  extends NativeGifImage
+public abstract interface rbo
 {
-  rbo(rbn paramrbn, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-  {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
+  public abstract void a(Object paramObject);
   
-  public void executeNewTask()
-  {
-    if (this.mCurrentLoop == 1) {
-      return;
-    }
-    super.executeNewTask();
-  }
-  
-  public void reset()
-  {
-    super.reset();
-  }
+  public abstract void a(rbx paramrbx);
 }
 
 

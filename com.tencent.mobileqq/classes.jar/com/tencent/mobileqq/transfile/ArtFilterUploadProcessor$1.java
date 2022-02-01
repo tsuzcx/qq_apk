@@ -4,8 +4,8 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ybn;
-import ybp;
+import yqg;
+import yqi;
 
 class ArtFilterUploadProcessor$1
   implements ITransactionCallback

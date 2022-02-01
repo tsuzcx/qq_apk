@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class actj
-  extends anbq
+  implements acpi
 {
-  public actj(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  protected void a(boolean paramBoolean, bcqu parambcqu)
+  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xdc push message");
+    }
+    paramQQAppInterface = (amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
+    }
+    bcrx.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
   }
   
-  protected void b(boolean paramBoolean, bcqu parambcqu)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void c(boolean paramBoolean, bcqu parambcqu)
-  {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
+    a(paramacnk.a(), paramacnk.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

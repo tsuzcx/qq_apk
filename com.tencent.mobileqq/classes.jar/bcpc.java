@@ -1,36 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.GuardProcessExitListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
 
-class bcpc
-  extends BroadcastReceiver
+public class bcpc
+  extends bcpe
 {
-  bcpc(bcpa parambcpa) {}
+  public LinearLayout a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bcpc(ViewGroup paramViewGroup)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      return;
-      if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.LOGOUT")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("studyroom.StudyRoomManager", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
-        }
-        bcpa.a(this.a).a(false);
-        return;
-      }
-    } while (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getContext().getPackageName()));
-    if (QLog.isColorLevel()) {
-      QLog.e("studyroom.StudyRoomManager", 2, "***exitProcexx*** receive broacast action=" + paramIntent.getAction());
-    }
-    bcpa.a(this.a).a(true);
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562817, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131371538));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131370281));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131371558);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369722));
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
 }
 

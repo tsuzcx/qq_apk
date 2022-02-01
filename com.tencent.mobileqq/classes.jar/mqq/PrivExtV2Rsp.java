@@ -14,7 +14,9 @@ public final class PrivExtV2Rsp
   static Map<Integer, MenumItem> cache_map_menum;
   static VipMedalList cache_medalInfoList;
   static PayRuleCfg cache_payRule;
+  static QidInfoItem cache_qid_info = new QidInfoItem();
   static QqLiveMsg cache_qqLiveMsg;
+  static QQValueInfoItem cache_qq_value = new QQValueInfoItem();
   static TrafficResultInfo cache_trafficResult;
   static VipUserInfo cache_vipInfo = new VipUserInfo();
   public DataReturnFlag data_flag;
@@ -25,7 +27,9 @@ public final class PrivExtV2Rsp
   public Map<Integer, MenumItem> map_menum;
   public VipMedalList medalInfoList;
   public PayRuleCfg payRule;
+  public QidInfoItem qid_info;
   public QqLiveMsg qqLiveMsg;
+  public QQValueInfoItem qq_value;
   public TrafficResultInfo trafficResult;
   public VipUserInfo vipInfo;
   
@@ -44,7 +48,7 @@ public final class PrivExtV2Rsp
   
   public PrivExtV2Rsp() {}
   
-  public PrivExtV2Rsp(VipUserInfo paramVipUserInfo, TrafficResultInfo paramTrafficResultInfo, int paramInt1, VipMedalList paramVipMedalList, ItemCfgList paramItemCfgList, PayRuleCfg paramPayRuleCfg, int paramInt2, QqLiveMsg paramQqLiveMsg, int paramInt3, DataReturnFlag paramDataReturnFlag, Map<Integer, MenumItem> paramMap)
+  public PrivExtV2Rsp(VipUserInfo paramVipUserInfo, TrafficResultInfo paramTrafficResultInfo, int paramInt1, VipMedalList paramVipMedalList, ItemCfgList paramItemCfgList, PayRuleCfg paramPayRuleCfg, int paramInt2, QqLiveMsg paramQqLiveMsg, int paramInt3, DataReturnFlag paramDataReturnFlag, Map<Integer, MenumItem> paramMap, QidInfoItem paramQidInfoItem, QQValueInfoItem paramQQValueInfoItem)
   {
     this.vipInfo = paramVipUserInfo;
     this.trafficResult = paramTrafficResultInfo;
@@ -57,6 +61,8 @@ public final class PrivExtV2Rsp
     this.isAuditVersion = paramInt3;
     this.data_flag = paramDataReturnFlag;
     this.map_menum = paramMap;
+    this.qid_info = paramQidInfoItem;
+    this.qq_value = paramQQValueInfoItem;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -72,6 +78,8 @@ public final class PrivExtV2Rsp
     this.isAuditVersion = paramJceInputStream.read(this.isAuditVersion, 8, false);
     this.data_flag = ((DataReturnFlag)paramJceInputStream.read(cache_data_flag, 9, false));
     this.map_menum = ((Map)paramJceInputStream.read(cache_map_menum, 10, false));
+    this.qid_info = ((QidInfoItem)paramJceInputStream.read(cache_qid_info, 11, false));
+    this.qq_value = ((QQValueInfoItem)paramJceInputStream.read(cache_qq_value, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -100,6 +108,12 @@ public final class PrivExtV2Rsp
     }
     if (this.map_menum != null) {
       paramJceOutputStream.write(this.map_menum, 10);
+    }
+    if (this.qid_info != null) {
+      paramJceOutputStream.write(this.qid_info, 11);
+    }
+    if (this.qq_value != null) {
+      paramJceOutputStream.write(this.qq_value, 12);
     }
   }
 }

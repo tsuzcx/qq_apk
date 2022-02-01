@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -36,16 +37,16 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
   public MiniAppDesktopAdapter$RecommendModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131371100));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371105));
-    this.mTitle = ((TextView)paramView.findViewById(2131371104));
-    this.mRecommendNumber = ((TextView)paramView.findViewById(2131371103));
-    this.mRecommendDesc = ((TextView)paramView.findViewById(2131371101));
-    this.mApps.add(paramView.findViewById(2131371094));
-    this.mApps.add(paramView.findViewById(2131371095));
-    this.mApps.add(paramView.findViewById(2131371096));
-    this.mApps.add(paramView.findViewById(2131371097));
-    this.mApps.add(paramView.findViewById(2131371098));
+    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131371292));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371297));
+    this.mTitle = ((TextView)paramView.findViewById(2131371296));
+    this.mRecommendNumber = ((TextView)paramView.findViewById(2131371295));
+    this.mRecommendDesc = ((TextView)paramView.findViewById(2131371293));
+    this.mApps.add(paramView.findViewById(2131371286));
+    this.mApps.add(paramView.findViewById(2131371287));
+    this.mApps.add(paramView.findViewById(2131371288));
+    this.mApps.add(paramView.findViewById(2131371289));
+    this.mApps.add(paramView.findViewById(2131371290));
   }
   
   public void bindView(Activity paramActivity, DesktopRecommendModuleInfo paramDesktopRecommendModuleInfo)
@@ -54,7 +55,7 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848318);
+      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848409);
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
       this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(localStModuleInfo.backgroundPic.get(), localURLDrawableOptions));
@@ -88,7 +89,7 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
       MiniAppUtils.setJump(paramActivity, this.itemView, paramDesktopRecommendModuleInfo.jumpMoreInfo, 3008);
       paramActivity = MiniAppUtils.getAppInterface();
       if (paramActivity != null) {
-        ((MiniAppExposureManager)paramActivity.getManager(322)).putReportDataToMap("featured", new MiniAppExposureManager.CardModuleExposureData("desktop", "featured", "expo", null));
+        ((MiniAppExposureManager)paramActivity.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).putReportDataToMap("featured", new MiniAppExposureManager.CardModuleExposureData("desktop", "featured", "expo", null));
       }
       return;
     }

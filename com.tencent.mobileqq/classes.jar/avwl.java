@@ -1,110 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public class avwl
-  extends aptq<avwm>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback"}, k=3, mv={1, 1, 16})
+final class avwl
+  implements aaea
 {
-  public static boolean a;
-  private static boolean b;
+  avwl(int paramInt, avut paramavut, String paramString) {}
   
-  public static boolean a()
+  public final void callback(Bundle paramBundle)
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean b()
-  {
-    avwm localavwm2 = (avwm)apub.a().a(522);
-    avwm localavwm1 = localavwm2;
-    if (localavwm2 == null)
+    boolean bool1 = paramBundle.getBoolean("enable");
+    boolean bool2 = paramBundle.getBoolean("success");
+    QLog.i("AudioRoomSettingHandler", 1, "handleSetTmpMsgPushSetting: toStatus=" + this.jdField_a_of_type_Int + " result=" + bool2 + " nowStatus=" + bool1);
+    avut localavut = this.jdField_a_of_type_Avut;
+    String str = this.jdField_a_of_type_JavaLangString;
+    JSONObject localJSONObject = new JSONObject();
+    if (bool2)
     {
-      localavwm2 = new avwm();
-      localavwm1 = localavwm2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData = null, general new bean, so switch default");
-        localavwm1 = localavwm2;
+      paramBundle = "success";
+      localJSONObject.put("result", paramBundle);
+      paramBundle = new JSONObject();
+      if (!bool1) {
+        break label157;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData switch isOpened = " + localavwm1);
-    }
-    return localavwm1.a();
-  }
-  
-  @NonNull
-  public avwm a(int paramInt)
-  {
-    return new avwm();
-  }
-  
-  @Nullable
-  public avwm a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    label157:
+    for (int i = 1;; i = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackupConfigProcessor", 2, "onParsed : " + paramArrayOfaptx[0].a);
-      }
-      return avwm.a(paramArrayOfaptx[0].a);
+      paramBundle.put("pushSwitch", i);
+      localJSONObject.put("data", paramBundle);
+      localavut.callJs(str, new String[] { localJSONObject.toString() });
+      return;
+      paramBundle = "fail";
+      break;
     }
-    return new avwm();
-  }
-  
-  public void a(avwm paramavwm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onUpdate : " + paramavwm);
-    }
-    if (paramavwm != null) {
-      a = paramavwm.a();
-    }
-  }
-  
-  public Class<avwm> clazz()
-  {
-    return avwm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onReqFailed : " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 522;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class ajdn
-  implements View.OnClickListener
+  implements ajdo<T>
 {
-  ajdn(ajdm paramajdm) {}
+  ajdn(ajdm paramajdm, int paramInt) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    this.a.a.a.b.performLongClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ajdw paramajdw, T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Ajdm.a(paramajdw, paramT, paramInt);
+  }
+  
+  public boolean a(T paramT, int paramInt)
+  {
+    return true;
   }
 }
 

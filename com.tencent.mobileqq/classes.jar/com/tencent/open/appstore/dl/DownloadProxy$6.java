@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bhyo;
-import bhys;
+import bjjq;
+import bjju;
 
 public class DownloadProxy$6
   implements Runnable
 {
-  public DownloadProxy$6(bhys parambhys, String paramString, boolean paramBoolean) {}
+  public DownloadProxy$6(bjju parambjju, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    bhyo.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    bjjq.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,18 +1,15 @@
-public class vvs
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+
+class vvs
+  implements SDKInitListener
 {
-  @ypm(a="id")
-  public int a;
-  @ypm(a="name")
-  public String a;
-  @ypm(a="items")
-  public vvu[] a;
+  vvs(vvq paramvvq) {}
   
-  public String toString()
+  public void onSDKInited(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
-    if (this.jdField_a_of_type_ArrayOfVvu != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfVvu.length;; i = 0) {
-      return i + '}';
+    if (paramBoolean) {
+      QLog.i("QCIRCLE_PLUGIN", 4, "preload playSdk success");
     }
   }
 }

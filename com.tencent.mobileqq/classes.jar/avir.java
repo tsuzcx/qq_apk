@@ -1,91 +1,47 @@
-import android.net.Network;
-import android.support.annotation.RequiresApi;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-@RequiresApi(api=21)
 class avir
-  implements aviq
+  implements aviz
 {
-  private Network jdField_a_of_type_AndroidNetNetwork;
-  private aviq jdField_a_of_type_Aviq;
+  avir(aviq paramaviq, int paramInt, String paramString) {}
   
-  avir(aviq paramaviq, Network paramNetwork)
+  public void a(Uri paramUri)
   {
-    this.jdField_a_of_type_Aviq = paramaviq;
-    this.jdField_a_of_type_AndroidNetNetwork = paramNetwork;
+    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
+    this.jdField_a_of_type_Aviq.a.finish();
   }
   
-  private void a()
+  public void a(String paramString1, String paramString2, long paramLong)
   {
+    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
     try
     {
-      if (avin.b() != null) {
-        avin.b().a();
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    boolean bool = true;
-    for (;;)
-    {
-      try
+      if (this.jdField_a_of_type_Int == 2)
       {
-        if (avin.b() == null) {
-          return true;
-        }
-        if (!this.jdField_a_of_type_AndroidNetNetwork.equals(avin.b(avin.b()))) {
-          return bool;
-        }
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Aviq.a(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
       }
-      finally {}
-      bool = false;
+      if (this.jdField_a_of_type_Int == 4)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Aviq.b(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
     }
-  }
-  
-  public void a(int paramInt, Exception paramException)
-  {
-    if (a())
+    catch (Throwable paramString1)
     {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onGetTokenError, but this request is expired");
+      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
       return;
     }
-    a();
-    this.jdField_a_of_type_Aviq.a(paramInt, paramException);
-  }
-  
-  public void a(Exception paramException)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onChangeNetworkError, but this request is expired");
-      return;
+    if (this.jdField_a_of_type_Int == 3) {
+      this.jdField_a_of_type_Aviq.a(paramString1, this.jdField_a_of_type_JavaLangString);
     }
-    a();
-    this.jdField_a_of_type_Aviq.a(paramException);
-  }
-  
-  public void a(String paramString)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onRedirect, but this request is expired");
-      return;
-    }
-    this.jdField_a_of_type_Aviq.a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onResponse, bbut this request is expired");
-      return;
-    }
-    this.jdField_a_of_type_Aviq.a(paramString1, paramString2);
   }
 }
 

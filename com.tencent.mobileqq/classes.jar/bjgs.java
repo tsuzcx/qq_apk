@@ -1,31 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VideoPlayerProviderProxy;
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-@ProxyService(proxy=VideoPlayerProviderProxy.class)
 public class bjgs
-  implements VideoPlayerProviderProxy
 {
-  private boolean a;
-  
-  public String getUrl(String paramString)
-  {
-    return OskPlayerCore.getInstance().getUrl(MiniAppFileManager.getInstance().getAbsolutePath(paramString));
-  }
-  
-  public ReliableVideoPlayer getVideoPlayer()
-  {
-    if (!this.a)
-    {
-      VideoEmbeddedWidgetClient.initOskOnce(BaseApplicationImpl.getContext());
-      this.a = true;
-    }
-    return new bjey();
-  }
+  public int a;
+  public String a;
+  public ArrayList<bjgq> a;
+  public JSONObject a;
+  public int b = -1;
+  public int c = -1;
+  public int d = 1;
+  public int e = -1;
+  public int f = -1;
 }
 
 

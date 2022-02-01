@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import bfur;
+import bhdj;
 import mqq.app.QQPermissionCallback;
 
 class QZoneShareActivity$2
@@ -10,7 +10,7 @@ class QZoneShareActivity$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.this$0);
+    bhdj.a(this.this$0);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

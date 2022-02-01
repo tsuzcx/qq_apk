@@ -1,91 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class argv
+  extends aqwt<argu>
 {
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
-  
-  public int a(String paramString)
+  @NonNull
+  public static argu a()
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    argu localargu2 = (argu)aqxe.a().a(435);
+    argu localargu1 = localargu2;
+    if (localargu2 == null) {
+      localargu1 = new argu();
+    }
+    return localargu1;
+  }
+  
+  @NonNull
+  public argu a(int paramInt)
+  {
+    return new argu();
+  }
+  
+  @Nullable
+  public argu a(aqxa[] paramArrayOfaqxa)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqxa != null)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
-      {
-        int i = ((Integer)this.b.get(paramString)).intValue();
-        return i;
+      localObject1 = localObject2;
+      if (paramArrayOfaqxa.length > 0) {
+        localObject1 = argu.a(paramArrayOfaqxa);
       }
-      return -1;
+    }
+    return localObject1;
+  }
+  
+  public void a(argu paramargu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramargu.toString());
     }
   }
   
-  public long a(String paramString)
+  public Class<argu> clazz()
   {
-    long l2 = -1L;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l1 = l2;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        l1 = l2;
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
-        }
-      }
-      return l1;
-    }
-    finally {}
+    return argu.class;
   }
   
-  public List<StructMsg.ButtonInfo> a(String paramString)
+  public boolean isAccountRelated()
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.c.containsKey(paramString))
-      {
-        paramString = (List)this.c.get(paramString);
-        return paramString;
-      }
-      return null;
-    }
+    return true;
   }
   
-  public void a(String paramString, long paramLong)
+  public boolean isNeedCompressed()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-        return;
-      }
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
+  public int type()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        if (this.c.containsKey(paramString)) {
-          this.c.remove(paramString);
-        }
-        this.c.put(paramString, paramList);
-        this.b.put(paramString, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-        return;
-      }
-    }
+    return 435;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wvp
-  implements DialogInterface.OnClickListener
+public class wvp
+  extends wfh
 {
-  wvp(wvo paramwvo) {}
+  public wal a = new wal();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wvp(qqstory_service.RspAuthKey paramRspAuthKey)
   {
-    if (this.a.a.jdField_a_of_type_Wxb != null) {
-      this.a.a.jdField_a_of_type_Wxb.a(this.a.a.jdField_a_of_type_Wwz);
-    }
+    super(paramRspAuthKey.result);
+    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
+    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
+    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
+    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
+    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
+    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
+    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
   }
 }
 

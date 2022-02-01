@@ -1,19 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.AccessibilityDelegate;
 
-class bgyg
-  implements View.OnClickListener
+final class bgyg
+  extends View.AccessibilityDelegate
 {
-  bgyg(bgyf parambgyf) {}
+  bgyg(bgyi parambgyi) {}
   
-  public void onClick(View paramView)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.a != null)) {
+      this.a.onClick(paramView);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

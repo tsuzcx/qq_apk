@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import amtj;
-import apyt;
+import anvx;
+import arbw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -30,11 +31,11 @@ class MiniAppUserAppInfoListManager$3
       if (this.val$miniAppInfo.recommend == 1) {
         MiniAppUserAppInfoListManager.access$300(this.this$0, this.val$miniAppInfo);
       }
-      if (apyt.c())
+      if (arbw.c())
       {
         paramJSONObject = MiniAppUtils.getAppInterface();
         if (paramJSONObject != null) {
-          ((DesktopDataManager)paramJSONObject.getManager(336)).removeRedDotData(this.val$miniAppInfo.appId);
+          ((DesktopDataManager)paramJSONObject.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).removeRedDotData(this.val$miniAppInfo.appId);
         }
       }
       for (;;)
@@ -45,7 +46,7 @@ class MiniAppUserAppInfoListManager$3
       }
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendDelUserAppRequest, failed to delete miniapp!");
-    QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131705955), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131706306), 0).a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt;
 
-import amtj;
+import anvx;
 
 class LSRecordPanel$12
   implements Runnable
@@ -10,7 +10,7 @@ class LSRecordPanel$12
   public void run()
   {
     LSRecordPanel.b(this.this$0, false);
-    LSRecordPanel.a(this.this$0, amtj.a(2131705530));
+    LSRecordPanel.a(this.this$0, anvx.a(2131705881));
     LSRecordPanel.b(this.this$0, false);
   }
 }

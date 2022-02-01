@@ -1,57 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
 
 public class awkc
-  extends MSFServlet
+  implements DialogInterface.OnClickListener
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  public awkc(LocationDialogUtil.16 param16) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("NearbyServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((NearbyAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("NearbyServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
+    paramDialogInterface = awnx.a(this.a.a.app);
+    paramDialogInterface.a(3);
+    paramDialogInterface.a = false;
   }
 }
 

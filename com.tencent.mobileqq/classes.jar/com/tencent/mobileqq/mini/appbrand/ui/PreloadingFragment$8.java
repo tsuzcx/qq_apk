@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -23,13 +22,7 @@ class PreloadingFragment$8
       paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
       if ((l == 0L) && (paramJSONObject != null))
       {
-        if (paramJSONObject.clearAuths == 1)
-        {
-          str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          if (!TextUtils.isEmpty(str)) {
-            AuthorizeCenter.clearAuth(paramJSONObject.appId, str);
-          }
-        }
+        if ((paramJSONObject.clearAuths == 1) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))) {}
         return;
       }
       if (paramJSONObject == null)

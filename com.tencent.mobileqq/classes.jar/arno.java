@@ -1,104 +1,122 @@
-import android.content.DialogInterface.OnDismissListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.math.BigDecimal;
-import mqq.app.QQPermissionCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arno
 {
-  public static String a(int paramInt)
+  public List<arnp> a;
+  public Map<String, Long> a;
+  
+  public arno()
   {
-    if (paramInt < 1000) {
-      return paramInt + "m";
-    }
-    float f = new BigDecimal(paramInt / 1000.0F).setScale(1, 1).floatValue();
-    return f + "km";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public static void a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  public static arno a(aqxa[] paramArrayOfaqxa)
   {
-    if ((paramBaseActivity != null) && (paramQQPermissionCallback != null)) {
-      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    int i = 0;
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+      return null;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface != null) {
-      bfyz.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").edit().putBoolean("sp_extend_friend_signal_guide", paramBoolean).commit();
-    }
-  }
-  
-  public static boolean a()
-  {
-    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    localarno = new arno();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SignalBombHelper", 2, "hasLocationPermission no permission " + Build.VERSION.SDK_INT);
-      }
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
-    {
-      if (((arhi)paramQQAppInterface.getManager(264)).j())
+      paramArrayOfaqxa = new JSONObject(paramArrayOfaqxa[0].a);
+      Object localObject1;
+      Object localObject2;
+      if (paramArrayOfaqxa.has("collection"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SignalBombHelper", 2, "checkIsSignalBombWaiting waiting");
+        localObject1 = paramArrayOfaqxa.getJSONArray("collection");
+        while (i < ((JSONArray)localObject1).length())
+        {
+          localObject2 = new arnp(((JSONArray)localObject1).getJSONObject(i));
+          localarno.jdField_a_of_type_JavaUtilList.add(localObject2);
+          i += 1;
         }
-        return false;
       }
-      return true;
+      if (paramArrayOfaqxa.has("collectionTypeAndSize"))
+      {
+        paramArrayOfaqxa = paramArrayOfaqxa.getJSONObject("collectionTypeAndSize");
+        localObject1 = paramArrayOfaqxa.keys();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          localarno.jdField_a_of_type_JavaUtilMap.put(localObject2, Long.valueOf(paramArrayOfaqxa.getLong((String)localObject2)));
+        }
+      }
+      return localarno;
     }
-    return false;
+    catch (JSONException paramArrayOfaqxa)
+    {
+      QLog.e("TencentDocFormKeyWordsBean", 1, paramArrayOfaqxa.getLocalizedMessage(), paramArrayOfaqxa);
+    }
   }
   
-  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, DialogInterface.OnDismissListener paramOnDismissListener)
+  public boolean a(String paramString)
   {
-    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
+    boolean bool2 = false;
+    int i = 0;
+    boolean bool1 = bool2;
+    arnp localarnp;
+    String str;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      paramQQAppInterface = (arhi)paramQQAppInterface.getManager(264);
-      if (!paramQQAppInterface.j()) {
-        break label49;
+      localarnp = (arnp)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localarnp.a == null) {
+        break label156;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed waiting");
+      j = 0;
+      if (j >= localarnp.a.length) {
+        break label156;
+      }
+      str = localarnp.a[j];
+      if ((paramString == null) || (paramString.indexOf(str) < 0)) {
+        break label133;
       }
     }
-    label49:
-    do
+    label133:
+    label149:
+    label156:
+    for (int j = 1;; j = 0)
     {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed show dialog");
+      if (j != 0)
+      {
+        if (localarnp.b != null)
+        {
+          j = 0;
+          for (;;)
+          {
+            if (j >= localarnp.b.length) {
+              break label149;
+            }
+            str = localarnp.b[j];
+            if ((paramString != null) && (paramString.indexOf(str) >= 0))
+            {
+              bool1 = true;
+              return bool1;
+              j += 1;
+              break;
+            }
+            j += 1;
+          }
+        }
+        return true;
+      }
+      i += 1;
+      break;
     }
-    arqh.a(paramBaseActivity, paramQQAppInterface, paramOnDismissListener);
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (paramQQAppInterface != null) {
-      bool = bfyz.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getBoolean("sp_extend_friend_signal_guide", false);
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arno
  * JD-Core Version:    0.7.0.1
  */

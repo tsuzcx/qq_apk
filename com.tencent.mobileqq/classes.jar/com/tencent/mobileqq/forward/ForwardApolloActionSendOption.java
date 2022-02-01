@@ -3,8 +3,8 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import atky;
-import bftf;
+import aupt;
+import bhbx;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.data.RecentUser;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ForwardApolloActionSendOption
-  extends atky
+  extends aupt
 {
   public ForwardApolloActionSendOption(Intent paramIntent)
   {
@@ -29,7 +29,7 @@ public class ForwardApolloActionSendOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bftf.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
+      if ((localRecentUser != null) && (!bhbx.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
         localArrayList.add(localRecentUser);
       }
     }

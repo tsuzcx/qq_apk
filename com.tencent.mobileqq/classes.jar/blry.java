@@ -1,35 +1,13 @@
-import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
+import cooperation.comic.ui.QQComicTabBarView;
 
-class blry
+public class blry
+  extends blsm
 {
-  static CharSequence a(@NonNull blrj paramblrj)
-  {
-    if (paramblrj.a) {
-      return paramblrj.toString();
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    paramblrj = paramblrj.toString();
-    SpannableString localSpannableString = new SpannableString(paramblrj);
-    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, paramblrj.length(), 17);
-    localSpannableStringBuilder.append(localSpannableString);
-    return localSpannableStringBuilder;
-  }
+  public blry(QQComicTabBarView paramQQComicTabBarView) {}
   
-  static CharSequence a(@NonNull blrk paramblrk)
+  public void a()
   {
-    if ("failed".equals(paramblrk.c))
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      paramblrk = paramblrk.toString();
-      SpannableString localSpannableString = new SpannableString(paramblrk);
-      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, paramblrk.length(), 17);
-      localSpannableStringBuilder.append(localSpannableString);
-      return localSpannableStringBuilder;
-    }
-    return paramblrk.toString();
+    this.a.a();
   }
 }
 

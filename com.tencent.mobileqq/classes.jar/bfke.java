@@ -1,6 +1,8 @@
-public abstract interface bfke
+public class bfke
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public String a;
+  public int b;
 }
 
 

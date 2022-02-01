@@ -1,98 +1,201 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
+import com.tencent.image.RoundRectDrawable;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardPreviewMixedMsgController.1;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.transfile.CommonImgThumbHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.MaxHeightRelativelayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ausm
+  extends ausk
 {
-  private static aafh a = new aafh(BaseApplicationImpl.sApplication);
+  private int a;
+  protected LinearLayout a;
+  protected QQAppInterface a;
   
-  public static void a()
+  public ausm(QQCustomDialog paramQQCustomDialog, QQAppInterface paramQQAppInterface)
   {
-    try
+    super(paramQQCustomDialog);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(ChatMessage paramChatMessage)
+  {
+    if ((paramChatMessage instanceof MessageForMixedMsg))
     {
-      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new ausn(90001) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException2)
-    {
-      try
+      paramChatMessage = (MessageForMixedMsg)paramChatMessage;
+      if (paramChatMessage.msgElemList != null)
       {
-        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new ausn(90002) });
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardPreviewMixedMsgController", 2, " initMixMsgLayout size:" + paramChatMessage.msgElemList.size());
+        }
+        int i = ViewUtils.dip2px(4.0F);
+        paramChatMessage = new ArrayList(paramChatMessage.msgElemList).iterator();
+        while (paramChatMessage.hasNext())
+        {
+          Object localObject2 = (MessageRecord)paramChatMessage.next();
+          Object localObject1;
+          if ((localObject2 instanceof MessageForText))
+          {
+            localObject1 = new AnimationTextView(this.jdField_a_of_type_AndroidContentContext);
+            ((AnimationTextView)localObject1).setTextSize(17.0F);
+            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165670));
+            ((AnimationTextView)localObject1).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+            if (!TextUtils.isEmpty(((MessageForText)localObject2).sb2)) {
+              ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).sb2.toString(), 5, 20));
+            }
+            for (;;)
+            {
+              localObject2 = new LinearLayout.LayoutParams(-2, -2);
+              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+              break;
+              if (!TextUtils.isEmpty(((MessageForText)localObject2).sb)) {
+                ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).sb.toString(), 5, 20));
+              } else if (!TextUtils.isEmpty(((MessageForText)localObject2).msg)) {
+                ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).msg, 5, 20));
+              }
+            }
+          }
+          if ((localObject2 instanceof MessageForPic))
+          {
+            Object localObject3 = (MessageForPic)localObject2;
+            localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+            localObject2 = ahcj.a(this.jdField_a_of_type_AndroidContentContext, (MessageForPic)localObject3);
+            ((ImageView)localObject1).setMaxWidth(CommonImgThumbHelper.getImgThumbMaxPx(ahcj.a((MessageForPic)localObject3)));
+            ((ImageView)localObject1).setMaxHeight(CommonImgThumbHelper.getImgThumbMaxPx(ahcj.a((MessageForPic)localObject3)));
+            if (localObject2 != null)
+            {
+              if (((((URLDrawable)localObject2).getCurrDrawable() instanceof RoundRectDrawable)) && (a()))
+              {
+                localObject3 = (RoundRectDrawable)((URLDrawable)localObject2).getCurrDrawable();
+                ((ImageView)localObject1).setImageDrawable(new asbg(0, ((RoundRectDrawable)localObject3).getIntrinsicWidth(), ((RoundRectDrawable)localObject3).getIntrinsicHeight()));
+                ((ImageView)localObject1).postDelayed(new ForwardPreviewMixedMsgController.1(this, (ImageView)localObject1, (URLDrawable)localObject2), 300L);
+              }
+              for (;;)
+              {
+                ((ImageView)localObject1).setAdjustViewBounds(true);
+                localObject2 = new LinearLayout.LayoutParams(-2, -2);
+                ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+                ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+                this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+                break;
+                ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
+              }
+            }
+          }
+          else if ((localObject2 instanceof MessageForReplyText))
+          {
+            localObject2 = (MessageForReplyText)localObject2;
+            localObject1 = new AnimationTextView(this.jdField_a_of_type_AndroidContentContext);
+            ((AnimationTextView)localObject1).setTextSize(17.0F);
+            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165670));
+            ((AnimationTextView)localObject1).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+            if (!TextUtils.isEmpty(((MessageForReplyText)localObject2).sb))
+            {
+              ((AnimationTextView)localObject1).setText(new QQText(((MessageForReplyText)localObject2).sb.toString(), 5, 20));
+              ((AnimationTextView)localObject1).setVisibility(0);
+            }
+            for (;;)
+            {
+              localObject2 = new LinearLayout.LayoutParams(-2, -2);
+              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+              break;
+              ((AnimationTextView)localObject1).setVisibility(8);
+            }
+          }
+        }
       }
-      catch (NoSuchMethodException localNoSuchMethodException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new ausn(90003) });
-            try
-            {
-              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new ausn(90004) });
-              return;
-            }
-            catch (NoSuchMethodException localNoSuchMethodException4)
-            {
-              bftf.a(localNoSuchMethodException4);
-            }
-            localNoSuchMethodException1 = localNoSuchMethodException1;
-            bftf.a(localNoSuchMethodException1);
-            continue;
-            localNoSuchMethodException2 = localNoSuchMethodException2;
-            bftf.a(localNoSuchMethodException2);
-          }
-        }
-        catch (NoSuchMethodException localNoSuchMethodException3)
-        {
-          for (;;)
-          {
-            bftf.a(localNoSuchMethodException3);
-          }
-        }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ausn(this));
+    }
+  }
+  
+  private boolean a()
+  {
+    String str = Build.MODEL;
+    if ((str.equals("vivo X20A")) || (str.equals("vivo X20")) || (str.equals("vivo X20Plus A")) || (str.equals("vivo X20Plus")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardPreviewMixedMsgController", 2, "isVivoBlackModel  ");
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() >= ViewUtils.dip2px(this.jdField_a_of_type_Int + 1))
+    {
+      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(ViewUtils.dip2px(450.0F));
+      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.requestLayout();
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardPreviewMixedMsgController", 2, " reset height ");
       }
     }
   }
   
-  private static void b(boolean paramBoolean, int paramInt)
+  protected int a()
   {
-    String str = null;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297112)) / ViewUtils.mDensity));
     }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
+    return this.jdField_a_of_type_Int;
   }
   
-  private static void c()
+  protected View a()
   {
-    if (BaseApplicationImpl.sImageCache != null) {
-      BaseApplicationImpl.sImageCache.evictAll();
+    ScrollView localScrollView = new ScrollView(this.jdField_a_of_type_AndroidContentContext);
+    localScrollView.setOverScrollMode(2);
+    localScrollView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    int i = ViewUtils.dip2px(15.0F);
+    int j = ViewUtils.dip2px(8.0F);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, j, i, j);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    localScrollView.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new ViewGroup.LayoutParams(-1, -2));
+    return localScrollView;
+  }
+  
+  public void a(String paramString, MessageForMixedMsg paramMessageForMixedMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardPreviewMixedMsgController", 2, " bindData ");
     }
-    System.gc();
-    Thread.yield();
-    System.gc();
-    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
-    try
-    {
-      Thread.sleep(1000L);
-      return;
+    if (paramString != null) {
+      a(paramString);
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
+    if ((paramMessageForMixedMsg != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+      a(paramMessageForMixedMsg);
     }
   }
 }

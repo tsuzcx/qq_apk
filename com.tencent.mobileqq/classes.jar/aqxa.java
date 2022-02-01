@@ -1,28 +1,18 @@
-import kotlin.Metadata;
-import kotlin.Unit;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter$Companion;", "", "()V", "INSTANCT", "Lcom/tencent/mobileqq/dt/QQDtReporter;", "instance", "instance$annotations", "getInstance", "()Lcom/tencent/mobileqq/dt/QQDtReporter;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class aqxa
 {
-  @Nullable
-  public final aqwz a()
+  @Deprecated
+  public int a;
+  public String a;
+  
+  public aqxa(int paramInt, String paramString)
   {
-    if (aqwz.a() == null) {}
-    try
-    {
-      if (aqwz.a() == null) {
-        aqwz.a(new aqwz(null));
-      }
-      Unit localUnit = Unit.INSTANCE;
-      return aqwz.a();
-    }
-    finally {}
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxa
  * JD-Core Version:    0.7.0.1
  */

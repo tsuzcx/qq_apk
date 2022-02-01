@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
-import bbgd;
-import bbge;
+import bcmv;
+import bcmw;
 import com.tencent.qphone.base.util.QLog;
-import nny;
+import nuz;
 
 public class PAOfflineSearchManager$1$1
   implements Runnable
 {
-  public PAOfflineSearchManager$1$1(bbge parambbge) {}
+  public PAOfflineSearchManager$1$1(bcmw parambcmw) {}
   
   public void run()
   {
-    String str = nny.a("1011");
+    String str = nuz.a("1011");
     if ((str == null) || (TextUtils.equals(str, ""))) {}
     do
     {

@@ -1,16 +1,16 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import dov.com.qq.im.ae.view.AECMShowFaceScanView;
 
 public class bnrn
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public bnrn(PickerContainer paramPickerContainer) {}
+  public bnrn(AECMShowFaceScanView paramAECMShowFaceScanView) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
+    AECMShowFaceScanView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.postInvalidate();
   }
 }
 

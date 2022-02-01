@@ -1,30 +1,88 @@
-public abstract interface armg
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
+public class armg
+  extends aqwt<armf>
 {
-  public abstract long a();
+  @NonNull
+  public armf a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchHotWordConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new armf();
+  }
   
-  public abstract void a(int paramInt);
+  @Nullable
+  public armf a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchHotWordConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchHotWordConfProcessor", 2, "onParsed " + paramArrayOfaqxa.length);
+      }
+      return armf.a(paramArrayOfaqxa[0]);
+    }
+    return null;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(armf paramarmf)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramarmf == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramarmf = paramarmf.toString();; paramarmf = " empty")
+    {
+      QLog.d("SearchHotWordConfProcessor", 2, paramarmf);
+      return;
+    }
+  }
   
-  public abstract void a(long paramLong);
+  public Class clazz()
+  {
+    return armf.class;
+  }
   
-  public abstract void b(int paramInt);
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
   
-  public abstract int c();
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
   
-  public abstract void c();
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
   
-  public abstract void c(int paramInt);
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchHotWordConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
   
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public int type()
+  {
+    return 433;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     armg
  * JD-Core Version:    0.7.0.1
  */

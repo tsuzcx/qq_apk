@@ -1,48 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Parcelable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.model.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class bhqb
-  extends biei
 {
-  public bhqb(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  public ImageView a;
+  RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  protected void a(boolean paramBoolean, List<AppInfo> paramList)
+  public bhqb(RelativeLayout paramRelativeLayout)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityControlAppDetailsActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = amtj.a(2131699955) + AuthorityControlAppDetailsFragment.a(this.a).b() + amtj.a(2131699953);
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 2, (CharSequence)localObject, 0).a();
-      localObject = new Intent();
-      if ((paramList != null) && (paramList.size() == 1))
-      {
-        ((Intent)localObject).putExtra("KEY_DELETED_INFO", (Parcelable)paramList.get(0));
-        AuthorityControlAppDetailsFragment.a(this.a).setResult(-1, (Intent)localObject);
-      }
-      AuthorityControlAppDetailsFragment.a(this.a).finish();
-      localObject = AuthorityControlAppDetailsFragment.a(this.a);
-      if (!paramBoolean) {
-        break label236;
-      }
-    }
-    label236:
-    for (paramList = "0";; paramList = "1")
-    {
-      bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.a(this.a).a()), "");
-      return;
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, amtj.a(2131699954), 0).a();
-      break;
-    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131379001));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131378200));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131369219));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131369220));
   }
 }
 

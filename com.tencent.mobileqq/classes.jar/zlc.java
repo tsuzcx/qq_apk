@@ -1,22 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class zlc
-  implements View.OnClickListener
+  extends bjyh
 {
-  public zlc(VideoPlayerView paramVideoPlayerView) {}
+  public zlc(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "mBusinessObserver onQidianGroupInfo qrcode url: " + paramBoolean);
     }
-    VideoPlayerView.a(this.a, false);
-    VideoPlayerView.a(true);
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a.b) || (this.a.isFinishing())) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      this.a.i();
+      return;
+    }
+    String str = (String)paramHashMap.get("uin");
+    paramHashMap = (String)paramHashMap.get("url");
+    this.a.a(str, 2, paramHashMap);
+    paramHashMap = znl.a(paramHashMap, -1);
+    if (paramHashMap != null)
+    {
+      this.a.a = paramHashMap;
+      this.a.h();
+      return;
+    }
+    this.a.i();
   }
 }
 

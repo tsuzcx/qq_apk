@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aurz;
+import avxu;
 import com.tencent.biz.ui.TouchWebView;
 
 public class WatchTogetherFloatingView
@@ -23,7 +23,7 @@ public class WatchTogetherFloatingView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aurz jdField_a_of_type_Aurz = new aurz(this);
+  private avxu jdField_a_of_type_Avxu = new avxu(this);
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   
   public WatchTogetherFloatingView(Context paramContext)
@@ -34,11 +34,11 @@ public class WatchTogetherFloatingView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131560939, this, true));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376550));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379703));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370175));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369359));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561000, this, true));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376809));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380017));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370348));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369526));
   }
   
   private void c()
@@ -47,10 +47,10 @@ public class WatchTogetherFloatingView
     String str;
     if ((getParent() instanceof FrameLayout))
     {
-      localView = ((FrameLayout)getParent().getParent()).findViewById(2131374266);
+      localView = ((FrameLayout)getParent().getParent()).findViewById(2131374504);
       if (localView != null)
       {
-        str = getContext().getString(2131698678);
+        str = getContext().getString(2131698989);
         switch (this.jdField_a_of_type_Int)
         {
         }
@@ -60,11 +60,11 @@ public class WatchTogetherFloatingView
     {
       localView.setContentDescription(str);
       return;
-      str = getContext().getString(2131698676);
+      str = getContext().getString(2131698987);
       continue;
-      str = getContext().getString(2131698678);
+      str = getContext().getString(2131698989);
       continue;
-      str = getContext().getString(2131698675);
+      str = getContext().getString(2131698986);
     }
   }
   
@@ -75,7 +75,7 @@ public class WatchTogetherFloatingView
   
   public void a()
   {
-    this.jdField_a_of_type_Aurz.sendEmptyMessage(3);
+    this.jdField_a_of_type_Avxu.sendEmptyMessage(3);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -113,7 +113,7 @@ public class WatchTogetherFloatingView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Aurz.sendEmptyMessage(1);
+      this.jdField_a_of_type_Avxu.sendEmptyMessage(1);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -122,7 +122,7 @@ public class WatchTogetherFloatingView
     {
       c();
       return;
-      this.jdField_a_of_type_Aurz.sendEmptyMessage(3);
+      this.jdField_a_of_type_Avxu.sendEmptyMessage(3);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);

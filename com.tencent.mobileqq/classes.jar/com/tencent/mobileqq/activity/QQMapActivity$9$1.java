@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aeaa;
+import aerf;
 import com.tencent.mobileqq.app.soso.LbsManagerService;
 
 public class QQMapActivity$9$1
   implements Runnable
 {
-  public QQMapActivity$9$1(aeaa paramaeaa) {}
+  public QQMapActivity$9$1(aerf paramaerf) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QQMapActivity$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.QQComicConfBean;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class aqbj
+final class aqbj
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public String a;
-  public boolean a;
-  
-  public aqbj(QQComicConfBean paramQQComicConfBean)
+  public HandlerThread createHanderThread(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbj
  * JD-Core Version:    0.7.0.1
  */

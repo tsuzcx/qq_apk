@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class akpl
-  implements View.OnClickListener
+class akpl
+  implements DialogInterface.OnClickListener
 {
-  public akpl(LoginView paramLoginView) {}
+  akpl(akpk paramakpk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcef.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
-    LoginView.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    akpj.a(this.a.a).dismiss();
   }
 }
 

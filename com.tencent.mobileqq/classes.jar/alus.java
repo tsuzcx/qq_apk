@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class alus
-  extends aluy
 {
-  public alus(CmGameLoadingFragment paramCmGameLoadingFragment) {}
+  public AtomicBoolean a;
+  public boolean a;
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  private alus(CameraFilterGLView paramCameraFilterGLView)
   {
-    if (CmGameLoadingFragment.a(this.a) != null) {
-      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

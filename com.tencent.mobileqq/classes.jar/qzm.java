@@ -1,29 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.TimeZone;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
+import com.tencent.pts.core.jni.PTSJsJniHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/utils/Utils;", "", "()V", "MILLIS_IN_DAY", "", "isMainProcess", "", "isSameDayOfMillis", "ms1", "ms2", "toDay", "millis", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzm
+class qzm
+  extends qxz
 {
-  public static final qzm a = new qzm();
+  qzm(qzl paramqzl) {}
   
-  private final long a(long paramLong)
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    return (TimeZone.getDefault().getOffset(paramLong) + paramLong) / 86400000L;
-  }
-  
-  @JvmStatic
-  public static final boolean a()
-  {
-    return BaseApplicationImpl.sProcessId == 1;
-  }
-  
-  @JvmStatic
-  public static final boolean a(long paramLong1, long paramLong2)
-  {
-    long l = paramLong1 - paramLong2;
-    return (l < 86400000L) && (l > -86400000L) && (a.a(paramLong1) == a.a(paramLong2));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
+    paramList = pvj.a().a(Integer.valueOf(paramInt), paramList);
+    if (QLog.isColorLevel())
+    {
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+        paramInt += 1;
+      }
+      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
+    }
+    localObject = new Object[1];
+    localObject[0] = qzj.a(true, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
+    }
+    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
+    PTSJsJniHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 

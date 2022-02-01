@@ -1,64 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class besh
+class besh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private long b;
+  besh(bese parambese) {}
   
-  public besh(QQAppInterface paramQQAppInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
-  }
-  
-  private boolean a(TroopInfo paramTroopInfo)
-  {
-    if (paramTroopInfo == null) {}
-    long l;
-    do
-    {
-      do
-      {
-        return true;
-        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
-          return false;
-        }
-        l = System.currentTimeMillis();
-        if (paramTroopInfo.wMemberNum > 500) {
-          break;
-        }
-      } while (l - this.b < 180000L);
-      return false;
-    } while (l - this.b < 1800000L);
-    return false;
-  }
-  
-  public void a(String paramString)
-  {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-    anca localanca = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
-    if ((localanca != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localanca.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
-      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
-      this.b = System.currentTimeMillis();
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    bese.a(this.a).setPadding(DisplayUtil.dip2px(bese.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besh
  * JD-Core Version:    0.7.0.1
  */

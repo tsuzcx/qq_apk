@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.redtouch;
 
-import azvi;
+import bbbq;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 
 public class RedTouchManager$3
   implements Runnable
 {
-  public RedTouchManager$3(azvi paramazvi, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
+  public RedTouchManager$3(bbbq parambbbq, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
   
   public void run()
   {

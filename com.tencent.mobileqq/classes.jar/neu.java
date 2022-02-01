@@ -1,52 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
 
 public class neu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends nfa
 {
-  public neu(GuessPictureStageView paramGuessPictureStageView, String paramString) {}
+  private AppInterface a;
   
-  public void onGlobalLayout()
+  public AppInterface a()
   {
-    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getPaddingRight();
-    if (QLog.isColorLevel())
-    {
-      QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
-      QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getWidth());
-      QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips caluWidth  = " + i);
-    }
-    ViewGroup.LayoutParams localLayoutParams;
-    if (i > 0)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      if (nju.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView) <= 1) {
-        break label282;
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a.a().b());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
-      }
-    }
-    label282:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a.a().a());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    } while (!QLog.isColorLevel());
-    QLog.d("GuessPictureStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
+    return this.a;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    this.a = paramAppInterface;
   }
 }
 

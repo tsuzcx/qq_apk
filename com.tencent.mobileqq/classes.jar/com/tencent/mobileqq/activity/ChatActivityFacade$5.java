@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import amsw;
-import ayll;
-import bbko;
+import anvk;
+import azqg;
+import bcrg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,46 +17,46 @@ public final class ChatActivityFacade$5
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    ExtensionInfo localExtensionInfo = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
     long l1;
     long l2;
-    label38:
+    label39:
     long l3;
     if (localExtensionInfo == null)
     {
       l1 = 0L;
       if (localExtensionInfo != null) {
-        break label185;
+        break label187;
       }
       l2 = 0L;
       if (localExtensionInfo != null) {
-        break label194;
+        break label196;
       }
       l3 = 0L;
-      label46:
-      long l4 = bbko.a();
+      label47:
+      long l4 = bcrg.a();
       if ((l4 <= 0L) || (l4 - l1 <= 604800L)) {
-        break label204;
+        break label206;
       }
     }
-    label185:
-    label194:
-    label204:
+    label187:
+    label196:
+    label206:
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ChatActivityFacade", 2, String.format("insertFriendPLNewsIfNeeded latest:%d last:%d pull:%d overWeek:%b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) }));
       }
       if ((l1 > l2) && (!bool) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
-        ((ayll)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(112)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, l2, l1);
+        ((azqg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, l2, l1);
       }
       return;
       l1 = localExtensionInfo.latestPLUpdateTimestamp;
       break;
       l2 = localExtensionInfo.lastPLNewsTimestamp;
-      break label38;
+      break label39;
       l3 = localExtensionInfo.lastPullPLNewsTimestamp;
-      break label46;
+      break label47;
     }
   }
 }

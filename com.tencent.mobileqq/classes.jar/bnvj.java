@@ -1,8 +1,22 @@
-public abstract interface bnvj
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
+public class bnvj
+  implements Animator.AnimatorListener
 {
-  public abstract void a(float paramFloat);
+  public bnvj(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

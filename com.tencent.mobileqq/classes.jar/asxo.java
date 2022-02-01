@@ -1,6 +1,36 @@
-public abstract interface asxo
+public abstract class asxo
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public int a = 1;
+  public String e;
+  
+  public asxo(int paramInt, String paramString)
+  {
+    this.a = paramInt;
+    this.e = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof asxo))
+    {
+      paramObject = (asxo)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
+      }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
+  }
 }
 
 

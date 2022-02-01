@@ -1,13 +1,24 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import java.util.Comparator;
 
-public abstract interface bhbf
+final class bhbf
+  implements Comparator
 {
-  public abstract Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2);
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
+    }
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhbf
  * JD-Core Version:    0.7.0.1
  */

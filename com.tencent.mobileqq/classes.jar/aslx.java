@@ -1,23 +1,49 @@
-import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class aslx
+public class aslx
 {
-  public abstract int a();
+  public int a;
+  public String a;
+  public HashMap<String, asly> a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public List<String> b = new ArrayList();
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public int m = 2;
+  public String m;
+  public int n = 50;
+  public int o = 1;
+  public int p = 1;
+  public int q = 2;
   
-  public abstract String a();
-  
-  public abstract HashMap<String, ArrayList<MessageRecord>> a();
-  
-  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
-  
-  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
-  
-  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
-  
-  public abstract String b();
+  public aslx()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
 }
 
 

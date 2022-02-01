@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.res.Resources;
 
-final class phi
-  implements View.OnClickListener
+class phi
+  implements blak
 {
-  phi(String paramString) {}
+  phi(phh paramphh) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    odq.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.a, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    phh.a(this.a, phh.a(this.a).getResources().getColor(2131167363));
   }
 }
 

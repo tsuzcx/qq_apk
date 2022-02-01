@@ -106,7 +106,7 @@
                                 },
                                 {
                                     "tag": "view",
-                                    "content": "\n        \n        \n        \n      ",
+                                    "content": "\n        \n        \n        \n        \n      ",
                                     "attributes": {
                                         "viewID": "8",
                                         "class": "cover-info"
@@ -117,11 +117,11 @@
                                         "position": "absolute",
                                         "bottom": "0px",
                                         "width": "100%",
-                                        "padding": "4rpx 16rpx 8rpx 16rpx",
+                                        "padding": "4rpx 16rpx 8rpx 0rpx",
                                         "padding-top": "4rpx",
                                         "padding-right": "16rpx",
                                         "padding-bottom": "8rpx",
-                                        "padding-left": "16rpx",
+                                        "padding-left": "0rpx",
                                         "align-items": "center"
                                     },
                                     "children": [
@@ -136,7 +136,8 @@
                                             },
                                             "styles": {
                                                 "height": "24rpx",
-                                                "width": "24rpx"
+                                                "width": "24rpx",
+                                                "margin-left": "16rpx"
                                             },
                                             "children": []
                                         },
@@ -154,17 +155,33 @@
                                                 "overflow": "hidden",
                                                 "font-size": "22rpx",
                                                 "color": "white",
-                                                "margin-left": "8rpx"
+                                                "margin-left": "4rpx"
+                                            },
+                                            "children": []
+                                        },
+                                        {
+                                            "tag": "img",
+                                            "content": "",
+                                            "attributes": {
+                                                "viewID": "15",
+                                                "class": "icon",
+                                                "wx:if": "{{item.comment && item.comment != 0}}",
+                                                "src": "http://pub.idqqimg.com/pc/misc/files/20200904/f6be9eb9626e48128a36d96bdbccff01.png"
+                                            },
+                                            "styles": {
+                                                "height": "24rpx",
+                                                "width": "24rpx",
+                                                "margin-left": "16rpx"
                                             },
                                             "children": []
                                         },
                                         {
                                             "tag": "text",
-                                            "content": "{{item.comment}}评论",
+                                            "content": "{{item.comment}}",
                                             "attributes": {
-                                                "viewID": "15",
-                                                "wx:if": "{{item.comment && item.comment != 0}}",
-                                                "class": "comment"
+                                                "viewID": "16",
+                                                "class": "item",
+                                                "wx:if": "{{item.comment && item.comment != 0}}"
                                             },
                                             "styles": {
                                                 "box-sizing": "border-box",
@@ -172,7 +189,7 @@
                                                 "overflow": "hidden",
                                                 "font-size": "22rpx",
                                                 "color": "white",
-                                                "margin-left": "auto"
+                                                "margin-left": "4rpx"
                                             },
                                             "children": []
                                         }
@@ -207,7 +224,7 @@
                                         "display": "flex",
                                         "box-sizing": "border-box",
                                         "width": "100%",
-                                        "height": "84rpx",
+                                        "height": "85rpx",
                                         "flex-direction": "column"
                                     },
                                     "children": [
@@ -215,7 +232,7 @@
                                             "tag": "text",
                                             "content": "{{item.title}}",
                                             "attributes": {
-                                                "viewID": "16",
+                                                "viewID": "17",
                                                 "class": "read",
                                                 "wx:if": "{{$RIJArticle.isRead == 1}}"
                                             },
@@ -234,7 +251,7 @@
                                             "tag": "text",
                                             "content": "{{item.title}}",
                                             "attributes": {
-                                                "viewID": "17",
+                                                "viewID": "18",
                                                 "wx:else": ""
                                             },
                                             "styles": {
@@ -269,7 +286,7 @@
                                             "tag": "view",
                                             "content": "\n          \n        ",
                                             "attributes": {
-                                                "viewID": "18",
+                                                "viewID": "19",
                                                 "class": "corner-mark",
                                                 "wx:if": "{{left_mark_text}}"
                                             },
@@ -291,7 +308,7 @@
                                                     "tag": "text",
                                                     "content": "{{left_mark_text}}",
                                                     "attributes": {
-                                                        "viewID": "26"
+                                                        "viewID": "27"
                                                     },
                                                     "styles": {
                                                         "box-sizing": "border-box",
@@ -310,7 +327,7 @@
                                             "tag": "text",
                                             "content": "{{item.author}}",
                                             "attributes": {
-                                                "viewID": "19",
+                                                "viewID": "20",
                                                 "class": "author"
                                             },
                                             "styles": {
@@ -328,7 +345,7 @@
                                             "tag": "view",
                                             "content": "\n          \n          \n        ",
                                             "attributes": {
-                                                "viewID": "20",
+                                                "viewID": "21",
                                                 "class": "dislike-wrp",
                                                 "pts:on-tap": "{{$RIJArticle.rowKey}}",
                                                 "data-event-type": "{{'dislikeClick'}}"
@@ -350,7 +367,7 @@
                                                     "tag": "img",
                                                     "content": "",
                                                     "attributes": {
-                                                        "viewID": "27",
+                                                        "viewID": "28",
                                                         "class": "dislike-btn",
                                                         "src": "http://pub.idqqimg.com/pc/misc/files/20200402/01ffb73afd2c4af9ba9ad33b666bebd1.png"
                                                     },
@@ -392,7 +409,7 @@
                                         "display": "flex",
                                         "box-sizing": "border-box",
                                         "width": "100%",
-                                        "height": "84rpx",
+                                        "height": "85rpx",
                                         "flex-direction": "column"
                                     },
                                     "children": [
@@ -400,7 +417,7 @@
                                             "tag": "text",
                                             "content": "{{item.title}}",
                                             "attributes": {
-                                                "viewID": "21",
+                                                "viewID": "22",
                                                 "class": "read",
                                                 "wx:if": "{{$RIJArticle.subArticles[0].isRead == 1}}"
                                             },
@@ -419,7 +436,7 @@
                                             "tag": "text",
                                             "content": "{{item.title}}",
                                             "attributes": {
-                                                "viewID": "22",
+                                                "viewID": "23",
                                                 "wx:else": ""
                                             },
                                             "styles": {
@@ -454,7 +471,7 @@
                                             "tag": "view",
                                             "content": "\n          \n        ",
                                             "attributes": {
-                                                "viewID": "23",
+                                                "viewID": "24",
                                                 "class": "corner-mark",
                                                 "wx:if": "{{right_mark_text}}"
                                             },
@@ -476,7 +493,7 @@
                                                     "tag": "text",
                                                     "content": "{{right_mark_text}}",
                                                     "attributes": {
-                                                        "viewID": "28"
+                                                        "viewID": "29"
                                                     },
                                                     "styles": {
                                                         "box-sizing": "border-box",
@@ -495,7 +512,7 @@
                                             "tag": "text",
                                             "content": "{{item.author}}",
                                             "attributes": {
-                                                "viewID": "24",
+                                                "viewID": "25",
                                                 "class": "author"
                                             },
                                             "styles": {
@@ -513,7 +530,7 @@
                                             "tag": "view",
                                             "content": "\n          \n          \n        ",
                                             "attributes": {
-                                                "viewID": "25",
+                                                "viewID": "26",
                                                 "class": "dislike-wrp",
                                                 "pts:on-tap": "{{$RIJArticle.subArticles[0].rowKey}}",
                                                 "data-event-type": "{{'dislikeClick'}}"
@@ -535,7 +552,7 @@
                                                     "tag": "img",
                                                     "content": "",
                                                     "attributes": {
-                                                        "viewID": "29",
+                                                        "viewID": "30",
                                                         "class": "dislike-btn",
                                                         "src": "http://pub.idqqimg.com/pc/misc/files/20200402/01ffb73afd2c4af9ba9ad33b666bebd1.png"
                                                     },

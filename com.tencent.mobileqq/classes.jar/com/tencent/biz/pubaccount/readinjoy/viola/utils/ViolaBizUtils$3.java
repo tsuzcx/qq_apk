@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import rha;
+import rth;
 
 public final class ViolaBizUtils$3
   implements Runnable
@@ -18,13 +18,13 @@ public final class ViolaBizUtils$3
   {
     JSONObject localJSONObject = new JSONObject();
     Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    JSONArray localJSONArray = rha.a(this.jdField_a_of_type_JavaUtilList);
+    JSONArray localJSONArray = rth.a(this.jdField_a_of_type_JavaUtilList);
     ThreadManagerV2.getUIHandlerV2().post(new ViolaBizUtils.3.1(this, localJSONObject, localJSONArray));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.utils.ViolaBizUtils.3
  * JD-Core Version:    0.7.0.1
  */

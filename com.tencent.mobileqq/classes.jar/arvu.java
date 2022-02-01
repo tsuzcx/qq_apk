@@ -1,20 +1,22 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
 public class arvu
+  implements View.OnClickListener
 {
-  public int a;
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public Object a;
-  public boolean a;
-  public int b;
-  public ImageView b;
-  public ImageView c;
+  public arvu(DBFixConfigActivity paramDBFixConfigActivity, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    boolean bool = FileUtils.copyFile(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
+    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

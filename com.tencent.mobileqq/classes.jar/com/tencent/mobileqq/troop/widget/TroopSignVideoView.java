@@ -3,8 +3,8 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bcsp;
-import bfhr;
+import bdzo;
+import bgqi;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ public class TroopSignVideoView
   extends SpriteGLView
 {
   private int jdField_a_of_type_Int;
-  private bcsp jdField_a_of_type_Bcsp;
+  private bdzo jdField_a_of_type_Bdzo;
   private VideoSprite jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite;
   private String jdField_a_of_type_JavaLangString;
   private boolean d;
@@ -50,7 +50,7 @@ public class TroopSignVideoView
     }
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(true);
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new bfhr(this));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new bgqi(this));
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "SpriteGLView->play");
     }
@@ -108,9 +108,9 @@ public class TroopSignVideoView
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnPlayedListener(bcsp parambcsp)
+  public void setOnPlayedListener(bdzo parambdzo)
   {
-    this.jdField_a_of_type_Bcsp = parambcsp;
+    this.jdField_a_of_type_Bdzo = parambdzo;
   }
   
   public void setShowCover(boolean paramBoolean)

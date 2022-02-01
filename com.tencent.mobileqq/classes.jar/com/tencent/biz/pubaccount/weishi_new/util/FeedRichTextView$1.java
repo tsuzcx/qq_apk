@@ -4,22 +4,22 @@ import android.graphics.drawable.Drawable.Callback;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import uxb;
-import uxc;
-import uxf;
+import vlq;
+import vlr;
+import vlu;
 
 class FeedRichTextView$1
   implements Runnable
 {
-  FeedRichTextView$1(FeedRichTextView paramFeedRichTextView, CharSequence paramCharSequence, uxb paramuxb, Drawable.Callback paramCallback) {}
+  FeedRichTextView$1(FeedRichTextView paramFeedRichTextView, CharSequence paramCharSequence, vlq paramvlq, Drawable.Callback paramCallback) {}
   
   public void run()
   {
-    uxf localuxf = uxc.a(this.jdField_a_of_type_JavaLangCharSequence, Math.round(this.this$0.getTextSize()), this.jdField_a_of_type_Uxb, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-    if (localuxf == null) {
+    vlu localvlu = vlr.a(this.jdField_a_of_type_JavaLangCharSequence, Math.round(this.this$0.getTextSize()), this.jdField_a_of_type_Vlq, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+    if (localvlu == null) {
       return;
     }
-    if (this.jdField_a_of_type_Uxb != null) {
+    if (this.jdField_a_of_type_Vlq != null) {
       this.this$0.setMovementMethod(this.this$0.getDefaultMovementMethod());
     }
     if (FeedRichTextView.a(this.this$0) == null) {
@@ -27,13 +27,13 @@ class FeedRichTextView$1
     }
     Message localMessage = FeedRichTextView.a(this.this$0).obtainMessage();
     localMessage.what = 1001;
-    localMessage.obj = localuxf;
+    localMessage.obj = localvlu;
     FeedRichTextView.a(this.this$0).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView.1
  * JD-Core Version:    0.7.0.1
  */

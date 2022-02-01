@@ -1,19 +1,18 @@
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 
-class bicc
-  implements bibp
+public class bicc
 {
-  bicc(biby parambiby) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public String b;
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  public bicc(int paramInt, String paramString1, String paramString2, Drawable paramDrawable)
   {
-    bhzm.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    paramBundle = new Bundle();
-    paramBundle.putString("PackageName", paramString1);
-    paramBundle.putString("Code", paramString2);
-    paramBundle.putInt("VersionCode", paramInt);
-    paramBundle.putBoolean("IsSuccess", paramBoolean);
-    biby.a(this.a, paramBundle);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
 }
 

@@ -1,6 +1,31 @@
-public abstract interface aeta
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import mqq.observer.AccountObserver;
+
+public class aeta
+  extends AccountObserver
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aeta(QuickLoginActivity paramQuickLoginActivity) {}
+  
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+  }
 }
 
 

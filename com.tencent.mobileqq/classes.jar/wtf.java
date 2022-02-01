@@ -1,27 +1,54 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wtf
-  extends wtk<StoryVideoItem>
+  extends wfm<wuz>
 {
-  public wtf(VideoViewVideoHolder paramVideoViewVideoHolder)
+  public String a = "";
+  public String b = "";
+  public int c;
+  
+  public String a()
   {
-    super(paramVideoViewVideoHolder, null);
+    return weg.a("StorySvc.homepage_feed_loadmore_720");
   }
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
+    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
+    try
+    {
+      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
+      return new wuz(localRspFriendStoryFeedVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void onError(@NonNull Error paramError)
+  protected byte[] a()
   {
-    super.onError(paramError);
-    xvv.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
+    if (!TextUtils.isEmpty(this.a)) {
+      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
+    return localReqFriendStoryFeedVideoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 

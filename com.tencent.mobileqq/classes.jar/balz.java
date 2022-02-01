@@ -1,68 +1,41 @@
-import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Message;
 
 public class balz
-  extends PagerAdapter
+  extends bamd
 {
-  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private bamm a;
   
-  private balz(ActionListActivity paramActionListActivity) {}
+  public balz(bamm parambamm)
+  {
+    this.a = parambamm;
+  }
+  
+  public String a()
+  {
+    return balz.class.getSimpleName();
+  }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    try
+    super.a();
+  }
+  
+  public boolean a(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        baov localbaov = (baov)localIterator.next();
-        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
-        localGridView.setNumColumns(3);
-        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        localGridView.setSelector(new ColorDrawable(0));
-        localGridView.setScrollingCacheEnabled(false);
-        localGridView.setAdapter(new baly(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localbaov.jdField_a_of_type_JavaUtilArrayList));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
-      }
-      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    do
     {
-      System.gc();
-      super.notifyDataSetChanged();
-    }
+      return super.a(paramMessage);
+    } while (this.a == null);
+    this.a.c(2);
+    return true;
   }
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void b()
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramViewGroup.addView(localGridView);
-    return localGridView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    super.b();
   }
 }
 

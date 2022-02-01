@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afvi;
-import afwx;
+import agnx;
+import agpm;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import athr;
+import auly;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModelBase.AppInfo;
 import com.tencent.ark.ArkViewModelBase.ErrorInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
@@ -25,11 +26,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class ArkFlashChatContainerWrapper
-  extends afvi
+  extends agnx
 {
   private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private athr jdField_a_of_type_Athr = new afwx(this);
+  private auly jdField_a_of_type_Auly = new agpm(this);
   public WeakReference<QQAppInterface> a;
   public boolean a;
   private WeakReference<MessageForArkFlashChat> jdField_b_of_type_JavaLangRefWeakReference;
@@ -206,7 +207,7 @@ public class ArkFlashChatContainerWrapper
       return true;
     }
     this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
-    FlashChatManager localFlashChatManager = (FlashChatManager)paramAppInfo.getManager(217);
+    FlashChatManager localFlashChatManager = (FlashChatManager)paramAppInfo.getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
     String str = localFlashChatManager.a(this.c, this.mAppInfo.name, this.mAppInfo.appMinVersion);
     if (str != null)
     {
@@ -219,7 +220,7 @@ public class ArkFlashChatContainerWrapper
     if (QLog.isColorLevel()) {
       QLog.i("ArkApp", 2, String.format("request from url", new Object[] { this }));
     }
-    paramAppInfo.registObserver(this.jdField_a_of_type_Athr);
+    paramAppInfo.registObserver(this.jdField_a_of_type_Auly);
     localFlashChatManager.a(this.c);
     return false;
   }

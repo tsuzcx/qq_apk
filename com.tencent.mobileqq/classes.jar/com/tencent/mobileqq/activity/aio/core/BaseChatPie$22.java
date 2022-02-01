@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import ahjd;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+
 class BaseChatPie$22
   implements Runnable
 {
@@ -7,7 +10,7 @@ class BaseChatPie$22
   
   public void run()
   {
-    this.this$0.doOnUnRegReceivers();
+    ahjd.a(this.this$0.sessionInfo.curType, this.this$0.app);
   }
 }
 

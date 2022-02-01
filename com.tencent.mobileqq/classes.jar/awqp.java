@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-
-public final class awqp
-  implements Parcelable.Creator<VideoData>
+public abstract interface awqp
 {
-  public VideoData a(Parcel paramParcel)
-  {
-    return new VideoData(paramParcel);
-  }
+  public abstract void a(long paramLong);
   
-  public VideoData[] a(int paramInt)
-  {
-    return new VideoData[paramInt];
-  }
+  public abstract void b(long paramLong);
 }
 
 

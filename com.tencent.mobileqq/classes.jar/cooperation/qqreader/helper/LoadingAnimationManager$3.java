@@ -1,15 +1,15 @@
 package cooperation.qqreader.helper;
 
-import bktq;
+import bmez;
 
 public class LoadingAnimationManager$3
   implements Runnable
 {
-  public LoadingAnimationManager$3(bktq parambktq) {}
+  public LoadingAnimationManager$3(bmez parambmez) {}
   
   public void run()
   {
-    bktq.a(this.this$0);
+    bmez.a(this.this$0);
   }
 }
 

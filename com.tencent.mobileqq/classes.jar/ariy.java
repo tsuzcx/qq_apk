@@ -1,101 +1,108 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class ariy
+  extends aqwt<arix>
 {
-  public int a;
-  public long a;
-  public arie a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "0";
-  public String f = "";
-  
-  public ariy()
+  @NonNull
+  public arix a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 1;
+    return new arix();
   }
   
-  public ariy a()
+  @Nullable
+  public arix a(aqxa[] paramArrayOfaqxa)
   {
-    ariy localariy = new ariy();
-    localariy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localariy.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localariy.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localariy.c = this.c;
-    localariy.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localariy.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localariy.e = this.e;
-    return localariy;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = bftf.a("");
-    this.jdField_b_of_type_JavaLangString = "";
-    this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
-    this.jdField_b_of_type_Int = 0;
-    this.f = "";
-    this.jdField_a_of_type_Arie = null;
-  }
-  
-  public boolean a()
-  {
-    String str = bftf.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    do
-    {
-      do
+    QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfaqxa != null) {
+      try
       {
-        return false;
-      } while (!(paramObject instanceof ariy));
-      paramObject = (ariy)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+        if (paramArrayOfaqxa.length > 0)
+        {
+          paramArrayOfaqxa = (arix)aqxo.a(paramArrayOfaqxa[0].a, arix.class);
+          return paramArrayOfaqxa;
+        }
+      }
+      catch (QStorageInstantiateException paramArrayOfaqxa)
+      {
+        QLog.e("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaqxa.getMessage());
+      }
+    }
+    return null;
+  }
+  
+  public void a(arix paramarix)
+  {
+    if (paramarix != null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
+    }
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramarix.a)) {
+          paramarix.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingupload_" + ((QQAppInterface)localObject).getCurrentUin(), 0).edit();
+        localEditor.putString("qfile_groupfile_excitingupload", paramarix.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramarix.a + "]");
+        localObject = (atix)((QQAppInterface)localObject).getManager(QQManagerFactory.QFILE_CONFIG_MANAGER);
+        if (localObject != null) {
+          ((atix)localObject).a(paramarix);
+        }
+      }
+      return;
+    }
+  }
+  
+  public Class<arix> clazz()
+  {
+    return arix.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return true;
   }
   
-  public String toString()
+  public boolean isNeedStoreLargeFile()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    String str = bftf.a(this.jdField_a_of_type_ArrayOfByte);
-    int i = 0;
-    if (str != null) {
-      i = str.length();
-    }
-    localStringBuilder.append("{sig: ").append(i).append("}");
-    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{nickName: ").append(this.d).append("}");
-    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
-    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.f).append("}");
-    if (this.jdField_a_of_type_Arie != null) {
-      localStringBuilder.append(this.jdField_a_of_type_Arie.toString());
-    }
-    return localStringBuilder.toString();
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public int type()
+  {
+    return 554;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ariy
  * JD-Core Version:    0.7.0.1
  */

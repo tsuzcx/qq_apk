@@ -1,6 +1,20 @@
-public abstract interface baam
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+
+class baam
 {
-  public abstract void a(boolean paramBoolean);
+  private long jdField_a_of_type_Long;
+  private FeedCloudRead.StGetMainPageRsp jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp = new FeedCloudRead.StGetMainPageRsp();
+  
+  baam(FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp, long paramLong)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp.set(paramStGetMainPageRsp);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public FeedCloudRead.StGetMainPageRsp a()
+  {
+    return this.jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp;
+  }
 }
 
 

@@ -1,46 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class syb
-  extends andt
+public class syb
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  syb(sya paramsya) {}
+  public syb(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public void handleSearchDiscoveryError(int paramInt1, String paramString, int paramInt2)
+  public void onScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    JSONObject localJSONObject;
+    if (paramInt == 4098) {
+      localJSONObject = new JSONObject();
     }
-  }
-  
-  public void handleSearchDiscoveryResult(List<bbaa> paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 10) {}
-    String str;
-    do
+    try
     {
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
+      olh.a(null, pkh.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
-      str = bass.b;
-    } while ((paramList == null) || (paramList.size() <= 0));
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    }
+    catch (JSONException localJSONException)
     {
-      bbaa localbbaa = (bbaa)paramList.next();
-      if (localbbaa.c == 1) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localbbaa);
-      }
-      if ((localbbaa.c == 7) && (TextUtils.equals(str, "Recom_word"))) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localbbaa);
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
-    sya.jdField_a_of_type_Int = 0;
-    this.a.a(true, -1, -1);
   }
 }
 

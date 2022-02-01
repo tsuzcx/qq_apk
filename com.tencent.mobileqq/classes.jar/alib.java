@@ -1,190 +1,112 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-public abstract class alib
-  extends BaseAdapter
-  implements bata, FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener
+public class alib
+  extends algv
 {
-  private int jdField_a_of_type_Int = 0;
-  protected basr a;
-  private basv jdField_a_of_type_Basv;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<? extends baso> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  private List<baso> b;
-  
-  public alib(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, List<? extends baso> paramList)
+  private static void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(paramContext, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = new ArrayList();
+    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772128);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772127);
+    localAnimation.setAnimationListener(new alic(paramView, paramContext));
+    paramContext.setAnimationListener(new alid(paramView, localAnimation));
+    paramView.startAnimation(localAnimation);
   }
   
-  protected Bitmap a(String paramString, int paramInt)
+  public View a(int paramInt, Object paramObject, algy paramalgy, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alje paramalje)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(paramInt, paramString);
-    if (localBitmap != null) {
-      return localBitmap;
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, paramInt, true);
-    }
-    if (paramInt == 1) {
-      return bfvo.a();
-    }
-    if (paramInt == 101) {
-      return bfvo.h();
-    }
-    if (paramInt == 4) {
-      return bfvo.f();
-    }
-    if (paramInt == 11) {
-      return bfvo.b();
-    }
-    if (paramInt == 110) {
-      return bfvo.d();
-    }
-    if (paramInt == 111) {
-      return bfvo.e();
-    }
-    return bfvo.a();
-  }
-  
-  public void a()
-  {
-    if (this.b != null)
+    alie localalie;
+    if ((paramView == null) || (!(paramView.getTag() instanceof alie)))
     {
-      this.b.clear();
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void a(int paramInt, List<? extends baso> paramList)
-  {
-    this.b.clear();
-    this.b.addAll(paramList);
-    paramList.clear();
-    if (this.jdField_a_of_type_Basr != null) {
-      this.jdField_a_of_type_Basr.a(paramInt);
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void a(List<? extends baso> paramList)
-  {
-    this.b.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  protected boolean a(alic paramalic)
-  {
-    return (paramalic != null) && (!TextUtils.isEmpty(paramalic.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Basv != null) {
-      this.jdField_a_of_type_Basv.cancel(true);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
-  }
-  
-  public int getCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.b != null) && (paramInt < this.b.size())) {
-      return this.b.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    int i;
-    if ((!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1)))
-    {
-      i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt1 = 0;
+      localalie = new alie(null);
+      View localView = a(paramContext, 2131562770, localalie);
+      localalie.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131368381));
+      localalie.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131380501));
+      localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131379001));
+      localalie.b = ((SingleLineTextView)localView.findViewById(2131365538));
+      localalie.b.setGravity(16);
+      localalie.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362706));
+      localalie.c = ((ImageView)localView.findViewById(2131362705));
+      Object localObject = paramContext.getResources();
+      float f = DeviceInfoUtil.getDesity();
+      paramView = ((Resources)localObject).getColorStateList(2131167110);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131167033);
+      localObject = ((Resources)localObject).getColorStateList(2131167111);
+      localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null))
+      {
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localalie.b.setTextColor(paramView);
+        localalie.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localalie.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localalie);
+        paramView = localView;
+        if (this.a != null)
+        {
+          localalie.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          paramView = localView;
+        }
+      }
     }
     for (;;)
     {
-      if (paramInt1 < i)
-      {
-        Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((localObject != null) && ((localObject instanceof alic)))
-        {
-          localObject = (alic)localObject;
-          if ((localObject != null) && (!TextUtils.isEmpty(((alic)localObject).jdField_a_of_type_JavaLangString)) && (((alic)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) && (paramInt2 == ((alic)localObject).jdField_a_of_type_Int)) {
-            ((alic)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
+      return super.a(paramInt, paramObject, paramalgy, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramalje);
+      localalie.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
+      break;
+    }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    if ((paramView == null) || (paramRecentBaseData == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
       }
-      else
+      return;
+    }
+    if ((paramView.getTag() instanceof alie)) {}
+    for (alie localalie = (alie)paramView.getTag();; localalie = null)
+    {
+      if (localalie == null)
       {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
         return;
       }
-      paramInt1 += 1;
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {}
-    for (;;)
-    {
+      super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
+      paramView = (RelativeLayout.LayoutParams)localalie.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      paramView.height = localalie.b.getMeasuredHeight();
+      localalie.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      a(paramContext, localalie.c);
       return;
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
-      }
-      int i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramAbsListView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
-        if ((paramAbsListView != null) && ((paramAbsListView instanceof alic)))
-        {
-          paramAbsListView = (alic)paramAbsListView;
-          if (a(paramAbsListView)) {
-            paramAbsListView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramAbsListView.jdField_a_of_type_JavaLangString, paramAbsListView.jdField_a_of_type_Int));
-          }
-        }
-        paramInt += 1;
-      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
   }
 }
 

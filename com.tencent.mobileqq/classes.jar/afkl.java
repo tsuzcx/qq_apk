@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-
-public class afkl
-  extends bcvj
+public abstract interface afkl
 {
-  public afkl(TroopChatPie paramTroopChatPie) {}
-  
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    bcvs.c(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
-  }
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    bcvs.d(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

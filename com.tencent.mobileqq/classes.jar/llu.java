@@ -1,23 +1,14 @@
-import java.io.BufferedReader;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class llu
+class llu
 {
-  boolean a;
-  boolean b;
+  long jdField_a_of_type_Long = AudioHelper.a();
+  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
   
-  public void a(BufferedReader paramBufferedReader)
+  llu(AVFunDrawing.MessageBody paramMessageBody)
   {
-    if (!this.b)
-    {
-      this.a = llr.a(paramBufferedReader, "active");
-      return;
-    }
-    this.a = true;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
   }
 }
 

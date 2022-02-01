@@ -8,6 +8,7 @@ import com.tencent.qqmini.sdk.request.BookShelfInsertRequest;
 import com.tencent.qqmini.sdk.request.BookShelfQueryRequest;
 import com.tencent.qqmini.sdk.request.BookShelfUpdateRequest;
 import com.tencent.qqmini.sdk.request.DataReportRequest;
+import com.tencent.qqmini.sdk.request.GetReactiveFriendListRequest;
 import com.tencent.qqmini.sdk.request.ProtoBufRequest;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.ArrayList;
@@ -120,6 +121,11 @@ public class RequestServer
     handleRequest(new DataReportRequest(paramArrayOfByte), paramAsyncResult);
   }
   
+  public void getReactiveFriendList(String paramString, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new GetReactiveFriendListRequest(paramString), paramAsyncResult);
+  }
+  
   public void insertBookShelf(String paramString1, String paramString2, ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
   {
     handleRequest(new BookShelfInsertRequest(paramString1, paramString2, paramArrayList), paramAsyncResult);
@@ -137,7 +143,7 @@ public class RequestServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.RequestServer
  * JD-Core Version:    0.7.0.1
  */

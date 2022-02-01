@@ -1,12 +1,29 @@
-import android.content.Intent;
-import com.tencent.trpcprotocol.gamecenter.trpcproxy.TrpcProxy.TrpcInovkeRsp;
-import java.util.HashSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView;
 
-public abstract interface blee
+public class blee
+  implements View.OnTouchListener
 {
-  public abstract HashSet<String> a();
+  public blee(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
   
-  public abstract void a(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
+    }
+    return true;
+  }
 }
 
 

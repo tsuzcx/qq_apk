@@ -1,31 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class arkp
-  implements DialogInterface.OnClickListener
+  extends arjj<arko>
 {
-  public arkp(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public arko a()
   {
-    String str = "";
-    paramDialogInterface = str;
-    if (ExtendFriendEditFragment.a(this.a) != null)
-    {
-      paramDialogInterface = str;
-      if (ExtendFriendEditFragment.a(this.a).app != null) {
-        paramDialogInterface = ((arhi)ExtendFriendEditFragment.a(this.a).app.getManager(264)).f();
-      }
+    return arko.a();
+  }
+  
+  @NonNull
+  public arko a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfaqxa[0].a);
     }
-    aroj.a(this.a.getActivity(), paramDialogInterface);
+    return arko.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arko b()
+  {
+    return arko.a();
+  }
+  
+  public Class<arko> clazz()
+  {
+    return arko.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public int type()
+  {
+    return 580;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkp
  * JD-Core Version:    0.7.0.1
  */

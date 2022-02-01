@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import blbw;
 import cooperation.vip.pb.TianShuAccess.AdItem;
+import cooperation.vip.tianshu.TianShuManager;
 
 final class MiniGameAdBannerPopup$6
   implements Runnable
@@ -10,7 +10,7 @@ final class MiniGameAdBannerPopup$6
   
   public void run()
   {
-    blbw.a().a(MiniGameAdBannerPopup.access$400(this.val$adItem, this.val$type, this.val$reportActionId));
+    TianShuManager.getInstance().report(MiniGameAdBannerPopup.access$400(this.val$adItem, this.val$type, this.val$reportActionId));
   }
 }
 

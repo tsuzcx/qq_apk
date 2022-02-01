@@ -1,47 +1,86 @@
-import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class amsd
-  implements View.OnLongClickListener
 {
-  public amsd(FrameHelperActivity paramFrameHelperActivity) {}
+  private amsf a;
   
-  public boolean onLongClick(View paramView)
+  private boolean a(amsf paramamsf)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {
+    if (this.a == null) {}
+    while (paramamsf.a <= this.a.a) {
       return true;
     }
-    if (!bcqk.c(this.a.getActivity().app, false)) {
-      return true;
+    return false;
+  }
+  
+  public int a(anct paramanct, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  {
+    if (this.a != null) {
+      return this.a.a(paramanct, paramInt, paramAppInterface, paramContext);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
-      return true;
-    }
-    if ((paramView == this.a.b) && (this.a.jdField_a_of_type_Axsv != null) && (!this.a.jdField_a_of_type_Axsv.isShowing()))
+    return -1;
+  }
+  
+  public amsf a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    if (this.a != null)
     {
-      if ((this.a.getActivity().app != null) && (this.a.getActivity().app.getApp() != null))
-      {
-        paramView = (Vibrator)this.a.getActivity().app.getApp().getSystemService("vibrator");
-        if (paramView != null) {
-          paramView.vibrate(new long[] { 0L, 1L, 20L, 21L }, -1);
-        }
+      this.a.a();
+      this.a.a = 9999;
+    }
+  }
+  
+  public void a(amsf paramamsf)
+  {
+    if ((paramamsf != null) && (a(paramamsf)) && (paramamsf.a()))
+    {
+      this.a = paramamsf;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloDrawerContext", 2, "set status success class=" + paramamsf.getClass().getSimpleName());
       }
-      this.a.jdField_a_of_type_Axsv.show();
-      bcef.b(this.a.getActivity().app, "dc00898", "", "", "0X800A999", "0X800A999", 1, 0, "", "", "", "");
-      bcef.b(this.a.getActivity().app, "dc00898", "", "", "0X8009E84", "0X8009E84", 0, 0, "", "", "", "");
     }
-    if (this.a.jdField_a_of_type_Amsr != null) {
-      this.a.jdField_a_of_type_Amsr.a();
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    this.a.p();
-    bcef.b(this.a.getActivity().app, "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
-    return true;
+    QLog.d("ApolloDrawerContext", 2, "set status fail class=" + null);
+  }
+  
+  public void a(anct paramanct, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (this.a != null) {
+      this.a.a(paramanct, paramContext, paramQQAppInterface);
+    }
+  }
+  
+  public void a(anct paramanct, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramanct, paramContext, paramQQAppInterface, paramInt);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, anct paramanct)
+  {
+    if (this.a != null)
+    {
+      this.a.a(paramQQAppInterface, paramanct);
+      this.a.a = 9999;
+    }
+  }
+  
+  public void b(anct paramanct, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (this.a != null) {
+      this.a.b(paramanct, paramContext, paramQQAppInterface);
+    }
   }
 }
 

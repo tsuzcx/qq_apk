@@ -1,9 +1,36 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
 
 public class bafc
-  extends baez
+  extends baev
 {
-  public bafc(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, boolean paramBoolean) {}
+  public bafc(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
+  {
+    if (paramInt == 27393)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CallPushReceiver", 2, "call_push ok");
+      }
+      ((bibs)this.a.getBusinessHandler(BusinessHandlerFactory.FUN_CALL_HANDLER)).a(1, new Bundle(), true);
+    }
+  }
+  
+  public void a(long paramLong) {}
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt == 27393;
+  }
 }
 
 

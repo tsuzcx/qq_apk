@@ -1,20 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 class bneh
-  extends SimpleJob<Object>
+  implements View.OnTouchListener
 {
-  bneh(bnee parambnee, String paramString)
-  {
-    super(paramString);
-  }
+  bneh(bnef parambnef) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    xwb.a("0X80076BC");
-    return null;
+    if ((bnef.a(this.a) != null) && (bnef.b(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, bnef.b(this.a), bnef.a(this.a));
+    }
+    return true;
   }
 }
 

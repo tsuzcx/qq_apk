@@ -1,43 +1,62 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aizu
-  implements View.OnClickListener
+class aizu
+  extends anvi
 {
-  public aizu(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
+  aizu(aizt paramaizt) {}
   
-  public void onClick(View paramView)
+  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment))) {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
-      {
-        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
-        localIntent.putExtra("member_uin", "0");
-        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QQToast.a(aizt.a(this.a), anvx.a(2131706955), 0).a();
+      aizt.a(this.a, paramLong);
+      this.a.d();
       return;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), amtj.a(2131700812), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), amtj.a(2131700750), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+    }
+    QQToast.a(aizt.a(this.a), anvx.a(2131706976), 0).a();
+  }
+  
+  public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
+    }
+    if (paramBoolean) {
+      this.a.d();
+    }
+  }
+  
+  public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
+    }
+    if (paramBoolean)
+    {
+      if ((paramObject instanceof Integer))
+      {
+        paramInt = ((Integer)paramObject).intValue();
+        aizt.a(this.a).put(paramInt, paramArrayOfByte);
       }
+      if (paramArrayList != null) {
+        aizt.a(this.a, aizt.a(this.a) + paramArrayList.size());
+      }
+      this.a.d();
+    }
+  }
+  
+  public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
     }
   }
 }

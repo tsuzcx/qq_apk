@@ -11,13 +11,13 @@ import kotlin.Metadata;
 import kotlin.jvm.JvmOverloads;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import sco;
+import sos;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsTitleTextView;", "Landroid/widget/TextView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onMeasure", "", "widthMeasureSpec", "heightMeasureSpec", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VideoFeedsTitleTextView
   extends TextView
 {
-  public static final sco a = new sco(null);
+  public static final sos a = new sos(null);
   
   @JvmOverloads
   public VideoFeedsTitleTextView(@NotNull Context paramContext)

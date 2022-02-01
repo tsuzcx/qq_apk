@@ -1,48 +1,42 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 public class bbhf
-  implements bbha
+  implements GLGestureListener
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private List<bbhb> jdField_a_of_type_JavaUtilList;
+  GLSurfaceView a;
   
-  public bbhf(ViewGroup paramViewGroup, int paramInt)
+  public bbhf(GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370109));
+    this.a = paramGLSurfaceView;
   }
   
-  public View a()
+  public int onGetPriority()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return 1020;
   }
   
-  public LinearLayout a()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return a();
-  }
-  
-  public List<bbhb> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    if (paramMotionEvent.getPointerCount() > 2) {
+      return false;
+    }
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while ((!(this.a instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)this.a).hasTapEffect()));
+      ((AECameraGLSurfaceView)this.a).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY());
+      return true;
+    } while ((!(this.a instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)this.a).hasTapEffect()));
+    ((AECameraGLSurfaceView)this.a).setTapEvent(100, paramMotionEvent.getX(1) + paramMotionEvent.getRawX() - paramMotionEvent.getX(0), paramMotionEvent.getY(1) + paramMotionEvent.getRawY() - paramMotionEvent.getY(0));
+    return true;
   }
 }
 

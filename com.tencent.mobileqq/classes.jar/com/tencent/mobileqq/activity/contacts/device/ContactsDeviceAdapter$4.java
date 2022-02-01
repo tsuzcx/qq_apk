@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.device;
 
-import aiow;
+import ajkl;
 
 public class ContactsDeviceAdapter$4
   implements Runnable
 {
-  public ContactsDeviceAdapter$4(aiow paramaiow) {}
+  public ContactsDeviceAdapter$4(ajkl paramajkl) {}
   
   public void run()
   {

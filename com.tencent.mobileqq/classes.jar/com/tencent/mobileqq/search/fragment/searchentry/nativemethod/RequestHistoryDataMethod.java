@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
-import anaq;
 import android.content.Context;
+import aodf;
 import com.google.gson.Gson;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -18,7 +18,7 @@ public class RequestHistoryDataMethod
   
   public static String getHistoryListStr()
   {
-    Object localObject = anaq.a().a();
+    Object localObject = aodf.a().a();
     try
     {
       localObject = new Gson().toJson(localObject);

@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
 import android.app.Activity;
-import bfur;
+import bhdj;
 import mqq.app.QQPermissionCallback;
 
 final class QZonePermission$1
@@ -11,7 +11,7 @@ final class QZonePermission$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(QZonePermission.access$000(this.val$activity));
+    bhdj.a(QZonePermission.access$000(this.val$activity));
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}

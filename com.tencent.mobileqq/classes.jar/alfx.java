@@ -1,18 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import cooperation.qzone.util.QZLog;
 
 public class alfx
-  implements aozx
 {
-  public alfx(SessionClearFragment paramSessionClearFragment) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (QZLog.isColorLevel()) {
+      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return false;
+    }
+    return FileUtil.isFileExists(this.c);
   }
 }
 

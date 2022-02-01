@@ -1,24 +1,10 @@
-import android.support.annotation.NonNull;
-
-public class xjd
-  extends vll<xin, vuc>
+public abstract interface xjd
 {
-  public xjd(xin paramxin)
-  {
-    super(paramxin);
-  }
+  public abstract void a(int paramInt);
   
-  public void a(@NonNull xin paramxin, @NonNull vuc paramvuc)
-  {
-    xin.a(paramxin, paramvuc.a, this.TAG);
-  }
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
   
-  public Class acceptEventClass()
-  {
-    return vuc.class;
-  }
-  
-  public void b(@NonNull xin paramxin, @NonNull vuc paramvuc) {}
+  public abstract void b(int paramInt);
 }
 
 

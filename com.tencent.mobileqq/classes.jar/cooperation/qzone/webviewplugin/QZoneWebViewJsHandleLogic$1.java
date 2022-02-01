@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import cooperation.qzone.share.WXShareFromQZHelper;
 import cooperation.qzone.share.WXShareFromQZHelper.WXShareListener;
-import yyi;
+import znl;
 
 final class QZoneWebViewJsHandleLogic$1
   implements WXShareFromQZHelper.WXShareListener
@@ -26,10 +26,10 @@ final class QZoneWebViewJsHandleLogic$1
       case -2: 
       case -1: 
       default: 
-        yyi.a(1, 2131718380);
+        znl.a(1, 2131718766);
         break;
       case 0: 
-        yyi.a(2, 2131718398);
+        znl.a(2, 2131718784);
       }
     }
   }

@@ -1,11 +1,22 @@
-public class xec
-  extends vko
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+class xec
+  implements wfk<wtx, wty>
 {
-  public int a;
+  xec(xeb paramxeb, xde paramxde) {}
   
-  public String toString()
+  public void a(@NonNull wtx paramwtx, @Nullable wty paramwty, @NonNull ErrorMessage paramErrorMessage)
   {
-    return "ChangeVideoSortEvent " + super.toString();
+    if ((paramErrorMessage.isFail()) || (paramwty == null))
+    {
+      ykq.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Xde.a(paramErrorMessage, null, false);
+      return;
+    }
+    this.jdField_a_of_type_Xeb.a.a(paramwty.jdField_a_of_type_JavaUtilList, paramwty.jdField_a_of_type_JavaLangString, paramwty.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Xde.a(paramErrorMessage, xcm.b(paramwty.jdField_a_of_type_JavaUtilList), paramwty.jdField_a_of_type_Boolean);
   }
 }
 

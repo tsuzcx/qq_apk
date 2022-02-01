@@ -1,32 +1,154 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine.1;
+import com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine.2;
+import com.tencent.mobileqq.mini.util.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class anms
-  implements abvz
+public class anms
+  implements Handler.Callback, anmq
 {
-  anms(anmr paramanmr, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
+  private anmu jdField_a_of_type_Anmu;
+  private final List<anmt> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private anmp[] jdField_a_of_type_ArrayOfAnmp;
+  private List<anmp> b = new ArrayList();
   
-  public ToServiceMsg a()
+  public anms()
   {
-    long l = System.currentTimeMillis();
-    ToServiceMsg localToServiceMsg = anmr.a(this.jdField_a_of_type_Anmr).createToServiceMsg("MessageSvc.PbMultiMsgSend");
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
-    localToServiceMsg.extraData.putBoolean(bbkv.h, this.jdField_a_of_type_Boolean);
-    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.setTimeout(15000L);
-    localToServiceMsg.setEnableFastResend(true);
-    if (QLog.isColorLevel())
+    try
     {
-      int i = bblk.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
-      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
+      int j = DeviceInfoUtil.getNumberOfCPUCores();
+      QLog.w("TaskFlow", 1, "create thread pool, cpuCores=" + j);
+      if (j > 0) {
+        i = j + 1;
+      }
+      this.jdField_a_of_type_Anmu = new anmu("TaskFlowEngine", 2, i);
+      return;
     }
-    return localToServiceMsg;
+    catch (Exception localException)
+    {
+      QLog.e("TaskFlow", 1, "create thread pool error!", localException);
+    }
+  }
+  
+  private void d(anmp paramanmp)
+  {
+    if (paramanmp == null) {}
+    for (;;)
+    {
+      return;
+      paramanmp.a(this);
+      if (!this.b.contains(paramanmp)) {
+        this.b.add(paramanmp);
+      }
+      paramanmp = paramanmp.a();
+      if ((paramanmp != null) && (paramanmp.size() > 0))
+      {
+        paramanmp = paramanmp.iterator();
+        while (paramanmp.hasNext()) {
+          d((anmp)paramanmp.next());
+        }
+      }
+    }
+  }
+  
+  private void e(anmp arg1)
+  {
+    if (??? == null) {
+      return;
+    }
+    List localList = ???.a();
+    if ((localList == null) || (localList.size() <= 0))
+    {
+      ???.c();
+      return;
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    do
+    {
+      if (!((Iterator)localObject2).hasNext()) {
+        break;
+      }
+    } while (((anmt)((Iterator)localObject2).next()).a != ???);
+    for (int i = 1;; i = 0) {
+      for (;;)
+      {
+        if (i == 0) {
+          localObject2 = new anmt(this, ???, localList);
+        }
+        synchronized (this.jdField_a_of_type_JavaUtilList)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          ??? = localList.iterator();
+          if (!???.hasNext()) {
+            break;
+          }
+          e((anmp)???.next());
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ArrayOfAnmp == null) || (this.jdField_a_of_type_ArrayOfAnmp.length <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_Anmu.a(new TaskFlowEngine.1(this));
+  }
+  
+  public void a(anmp paramanmp)
+  {
+    if (paramanmp == null) {}
+    while (!paramanmp.b()) {
+      return;
+    }
+    this.jdField_a_of_type_Anmu.a(new TaskFlowEngine.2(this, paramanmp));
+  }
+  
+  public final void a(anmp[] paramArrayOfanmp)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
+    this.jdField_a_of_type_ArrayOfAnmp = paramArrayOfanmp;
+    if (this.jdField_a_of_type_ArrayOfAnmp == null) {}
+    for (;;)
+    {
+      return;
+      paramArrayOfanmp = this.jdField_a_of_type_ArrayOfAnmp;
+      int j = paramArrayOfanmp.length;
+      int i = 0;
+      while (i < j)
+      {
+        d(paramArrayOfanmp[i]);
+        i += 1;
+      }
+    }
+  }
+  
+  public void b(anmp paramanmp) {}
+  
+  public void c(anmp paramanmp)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        anmt localanmt = (anmt)localIterator.next();
+        if (localanmt.a(paramanmp)) {
+          localanmt.a();
+        }
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

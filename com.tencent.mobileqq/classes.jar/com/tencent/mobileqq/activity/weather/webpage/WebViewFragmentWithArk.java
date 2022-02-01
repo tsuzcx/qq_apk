@@ -1,13 +1,18 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import acjr;
-import algh;
-import algo;
-import algs;
-import algx;
-import alhe;
-import alhg;
-import alhh;
+import adaa;
+import amed;
+import amej;
+import amel;
+import amem;
+import ameo;
+import ames;
+import amex;
+import amfb;
+import amfe;
+import amfg;
+import amfh;
+import android.app.Activity;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProvider;
@@ -33,14 +38,16 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awhb;
-import awhc;
-import awhe;
-import awhf;
-import bfvo;
-import bgtw;
-import bgvt;
-import bgww;
+import axnd;
+import axne;
+import axng;
+import axnh;
+import bheg;
+import bieo;
+import bigl;
+import biho;
+import bkyp;
+import bmny;
 import com.tencent.ark.open.ArkView;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.biz.ui.RefreshView;
@@ -68,6 +75,7 @@ import kotlin.Lazy;
 import kotlin.LazyKt;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
+import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
@@ -75,37 +83,41 @@ import mqq.app.AppActivity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebViewFragmentWithArk;", "Lcom/tencent/mobileqq/webview/swift/WebViewFragment;", "()V", "adCode", "", "appMeta", "appName", "appVersion", "appView", "arkLoadState", "", "arkViewWrapper", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper;", "curWebPageData", "Lcom/tencent/mobileqq/activity/weather/webpage/WebPageData;", "isFromDrawer", "", "isFromShare", "isPageLoadFinish", "isWebLoaded", "lifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "startLoadTime", "", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "webViewWrapper", "Lcom/tencent/biz/ui/RefreshView;", "kotlin.jvm.PlatformType", "getWebViewWrapper", "()Lcom/tencent/biz/ui/RefreshView;", "webViewWrapper$delegate", "Lkotlin/Lazy;", "changeWhiteTitleStyle", "", "createBgImageIfNeed", "Landroid/widget/ImageView;", "doCreateLoopStep_Final", "extraData", "Landroid/os/Bundle;", "initData", "initTitle", "initView", "initViewModel", "onArkLoadState", "state", "onArkViewTouchEvent", "event", "Landroid/view/MotionEvent;", "onCreate", "savedInstanceState", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroy", "onJsCall", "data", "onPageDataCall", "onPageFinished", "view", "Lcom/tencent/smtt/sdk/WebView;", "url", "onPageStarted", "favicon", "Landroid/graphics/Bitmap;", "onPause", "onRefreshViewOverScroll", "overScrollDistance", "onResume", "onTipLocationFail", "onWebBgChange", "bgUrl", "setBackButtonWhite", "setHiddenMenuItem", "hiddenList", "", "setRightButton", "isHidden", "callback", "text", "color", "iconID", "cornerID", "onClickListener", "Landroid/view/View$OnClickListener;", "apiCallback", "Lcom/tencent/mobileqq/Doraemon/APICallback;", "setShareButtonWhite", "showActionSheet", "toWeatherOptionActivity", "tryRequestCurrAdCode", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebViewFragmentWithArk;", "Lcom/tencent/mobileqq/webview/swift/WebViewFragment;", "()V", "adCode", "", "appMeta", "appName", "appVersion", "appView", "arkLoadState", "", "arkViewWrapper", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper;", "curWebPageData", "Lcom/tencent/mobileqq/activity/weather/webpage/WebPageData;", "isFromDrawer", "", "isFromShare", "isPageLoadFinish", "isStartTimeAdded", "isWebLoaded", "lifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "startClickTime", "", "startLoadTime", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "webViewWrapper", "Lcom/tencent/biz/ui/RefreshView;", "kotlin.jvm.PlatformType", "getWebViewWrapper", "()Lcom/tencent/biz/ui/RefreshView;", "webViewWrapper$delegate", "Lkotlin/Lazy;", "changeWhiteTitleStyle", "", "createBgImageIfNeed", "Landroid/widget/ImageView;", "doCreateLoopStep_Final", "extraData", "Landroid/os/Bundle;", "initData", "initTitle", "initView", "initViewModel", "onArkLoadState", "state", "onArkViewTouchEvent", "event", "Landroid/view/MotionEvent;", "onAttach", "activity", "Landroid/app/Activity;", "onCreate", "savedInstanceState", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroy", "onDetach", "onJsCall", "data", "onPageDataCall", "onPageFinished", "view", "Lcom/tencent/smtt/sdk/WebView;", "url", "onPageStarted", "favicon", "Landroid/graphics/Bitmap;", "onPause", "onRefreshViewOverScroll", "overScrollDistance", "onResume", "onTipLocationFail", "onWebBgChange", "bgUrl", "setBackButtonWhite", "setHiddenMenuItem", "hiddenList", "", "setRightButton", "isHidden", "callback", "text", "color", "iconID", "cornerID", "onClickListener", "Landroid/view/View$OnClickListener;", "apiCallback", "Lcom/tencent/mobileqq/Doraemon/APICallback;", "setShareButtonWhite", "showActionSheet", "startLoadUrl", "toWeatherOptionActivity", "tryRequestCurrAdCode", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class WebViewFragmentWithArk
   extends WebViewFragment
 {
-  public static final alhg a;
+  public static final amfg a;
+  private static bmny jdField_a_of_type_Bmny;
+  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.listOf(new String[] { "5061201803333178", "7091208803630139" });
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private algx jdField_a_of_type_Algx;
-  private alhe jdField_a_of_type_Alhe;
+  private amex jdField_a_of_type_Amex;
+  private amfe jdField_a_of_type_Amfe;
   private WeatherArkViewWrapper jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherArkViewWrapper;
   private LifeCycleFragment jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
   private String jdField_a_of_type_JavaLangString;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new WebViewFragmentWithArk.webViewWrapper.2(this));
   private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
   private String jdField_c_of_type_JavaLangString;
   private boolean jdField_c_of_type_Boolean;
   private String jdField_d_of_type_JavaLangString;
   private boolean jdField_d_of_type_Boolean;
-  private String e;
+  private String jdField_e_of_type_JavaLangString;
+  private boolean jdField_e_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_Alhg = new alhg(null);
+    jdField_a_of_type_Amfg = new amfg(null);
   }
   
   private final ImageView a()
   {
-    ImageView localImageView = (ImageView)a().findViewById(2131381019);
+    ImageView localImageView = (ImageView)a().findViewById(2131381377);
     if (localImageView != null)
     {
       if (!(localImageView.getParent() instanceof ViewGroup)) {
@@ -124,7 +136,7 @@ public final class WebViewFragmentWithArk
       return localImageView;
       localImageView = new ImageView((Context)getActivity());
       localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localImageView.setId(2131381019);
+      localImageView.setId(2131381377);
       localImageView.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
     }
   }
@@ -155,17 +167,17 @@ public final class WebViewFragmentWithArk
     }
   }
   
-  private final void a(alhe paramalhe)
+  private final void a(amfe paramamfe)
   {
-    int i = paramalhe.a();
-    String str = paramalhe.c();
-    int j = paramalhe.b();
+    int i = paramamfe.a();
+    String str = paramamfe.c();
+    int j = paramamfe.b();
     switch (i)
     {
     default: 
       return;
     case 0: 
-      b(paramalhe);
+      b(paramamfe);
       return;
     case 1: 
       a(str);
@@ -194,11 +206,11 @@ public final class WebViewFragmentWithArk
     {
       Object localObject1 = getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "resources");
-      Object localObject2 = awhe.a((Resources)localObject1, 2130839520);
+      Object localObject2 = axng.a((Resources)localObject1, 2130839541);
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
-      localObject2 = (ImageView)a().findViewById(2131381019);
+      localObject2 = (ImageView)a().findViewById(2131381377);
       if (localObject2 != null) {
         ((ImageView)localObject2).setImageDrawable((Drawable)URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1));
       }
@@ -231,14 +243,14 @@ public final class WebViewFragmentWithArk
     g();
   }
   
-  private final void b(alhe paramalhe)
+  private final void b(amfe paramamfe)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WebViewFragmentWithArk", 2, "onJsCall data: " + paramalhe);
+      QLog.d("WebViewFragmentWithArk", 2, "onJsCall data: " + paramamfe);
     }
-    String str1 = paramalhe.a();
-    String str2 = paramalhe.b();
-    int i = paramalhe.c();
+    String str1 = paramamfe.a();
+    String str2 = paramamfe.b();
+    int i = paramamfe.c();
     if ((!TextUtils.isEmpty((CharSequence)str1)) && (!TextUtils.isEmpty((CharSequence)str2)))
     {
       if (this.jdField_a_of_type_Boolean)
@@ -247,17 +259,17 @@ public final class WebViewFragmentWithArk
           QLog.d("WebViewFragmentWithArk", 2, "onJsCall jsFunction: " + str1 + ", jsParam: " + str2);
         }
         this.webView.callJs(str1, new String[] { str2 });
-        paramalhe = null;
+        paramamfe = null;
       }
-      this.jdField_a_of_type_Alhe = paramalhe;
+      this.jdField_a_of_type_Amfe = paramamfe;
     }
     if (i > 0)
     {
-      paramalhe = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherArkViewWrapper;
-      if (paramalhe == null) {
+      paramamfe = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherArkViewWrapper;
+      if (paramamfe == null) {
         Intrinsics.throwUninitializedPropertyAccessException("arkViewWrapper");
       }
-      paramalhe.setArkHeight(AIOUtils.dp2px(i, getResources()));
+      paramamfe.setArkHeight(AIOUtils.dp2px(i, getResources()));
     }
   }
   
@@ -265,19 +277,19 @@ public final class WebViewFragmentWithArk
   {
     Object localObject = getActivity();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "activity");
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment = awhb.a((FragmentActivity)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment = axnd.a((FragmentActivity)localObject);
     localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
     }
-    localObject = awhc.a((ViewModelStoreOwner)localObject).get(algx.class);
+    localObject = axne.a((ViewModelStoreOwner)localObject).get(amex.class);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ofViewModelProvider(life…ArkViewModel::class.java)");
-    this.jdField_a_of_type_Algx = ((algx)localObject);
+    this.jdField_a_of_type_Amex = ((amex)localObject);
     localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
     }
-    ArkAppNotifyCenter.setNotify("com.tencent.weather_v2", new WeakReference(new algo((LifeCycleFragment)localObject)));
+    ArkAppNotifyCenter.setNotify("com.tencent.weather_v2", new WeakReference(new ameo((LifeCycleFragment)localObject)));
   }
   
   private final void e()
@@ -296,23 +308,24 @@ public final class WebViewFragmentWithArk
     this.jdField_d_of_type_JavaLangString = str;
     str = getIntent().getStringExtra("adCode");
     Intrinsics.checkExpressionValueIsNotNull(str, "getIntent().getStringExtra(KEY_AD_CODE)");
-    this.e = str;
-    long l = getIntent().getLongExtra("startClickTime", 0L);
+    this.jdField_e_of_type_JavaLangString = str;
+    this.jdField_b_of_type_Long = getIntent().getLongExtra("start_click_time", 0L);
     boolean bool = getIntent().getBooleanExtra("webProcessExist", false);
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("is_from_share", false);
     this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra("is_from_drawer", false);
-    if (l > 0L)
+    long l;
+    if (this.jdField_b_of_type_Long > 0L)
     {
-      l = System.currentTimeMillis() - l;
+      l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
       if (!bool) {
-        break label243;
+        break label252;
       }
     }
-    label243:
+    label252:
     for (str = "new_folder_prestart_open_times";; str = "new_folder_noprestart_open_times")
     {
-      algh.a().a(null, str, Long.valueOf(l));
-      algs.a(3, "startTime = " + l);
+      amed.a().a(null, str, Long.valueOf(l));
+      ames.a(3, "startTime = " + l);
       return;
     }
   }
@@ -320,7 +333,7 @@ public final class WebViewFragmentWithArk
   private final void f()
   {
     QLog.i("WebViewFragmentWithArk", 1, "onTipLocationFail");
-    QQToast.a((Context)getActivity(), (CharSequence)getString(2131719613), 0).a();
+    QQToast.a((Context)getActivity(), (CharSequence)getString(2131720066), 0).a();
   }
   
   private final void g()
@@ -343,16 +356,16 @@ public final class WebViewFragmentWithArk
       QLog.i("WebViewFragmentWithArk", 1, ((WeatherArkViewWrapper)localObject2).a() + ')');
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_Algx;
+    Object localObject1 = this.jdField_a_of_type_Amex;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewModel");
     }
     Object localObject2 = (AppActivity)getActivity();
-    String str = this.e;
+    String str = this.jdField_e_of_type_JavaLangString;
     if (str == null) {
       Intrinsics.throwUninitializedPropertyAccessException("adCode");
     }
-    ((algx)localObject1).a((AppActivity)localObject2, str);
+    ((amex)localObject1).a((AppActivity)localObject2, str);
   }
   
   private final void h()
@@ -369,13 +382,13 @@ public final class WebViewFragmentWithArk
       }
       ((ViewGroup)localObject1).addView((View)this.mSwiftTitleUI.titleContainer);
     }
-    localObject1 = (ImageView)this.mSwiftTitleUI.titleContainer.findViewById(2131369087);
+    localObject1 = (ImageView)this.mSwiftTitleUI.titleContainer.findViewById(2131369250);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "secondImage");
-    awhf.a((View)localObject1, null);
+    axnh.a((View)localObject1, null);
     ((ImageView)localObject1).setVisibility(0);
-    ((ImageView)localObject1).setImageResource(2130850347);
-    awhf.a((View)localObject1, (Function0)new WebViewFragmentWithArk.initTitle.1((WebViewFragmentWithArk)this));
-    ((ImageView)localObject1).setContentDescription((CharSequence)getString(2131691031));
+    ((ImageView)localObject1).setImageResource(2130850453);
+    axnh.a((View)localObject1, (Function0)new WebViewFragmentWithArk.initTitle.1((WebViewFragmentWithArk)this));
+    ((ImageView)localObject1).setContentDescription((CharSequence)getString(2131691116));
     b();
     Object localObject2 = ((ImageView)localObject1).getLayoutParams();
     if (localObject2 == null) {
@@ -387,7 +400,7 @@ public final class WebViewFragmentWithArk
     ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     localObject1 = this.mSwiftTitleUI.leftView;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "mSwiftTitleUI.leftView");
-    ((TextView)localObject1).setContentDescription((CharSequence)getString(2131690599));
+    ((TextView)localObject1).setContentDescription((CharSequence)getString(2131690676));
     localObject1 = getActivity();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "activity");
     ImmersiveUtils.a(((FragmentActivity)localObject1).getWindow(), true);
@@ -398,7 +411,7 @@ public final class WebViewFragmentWithArk
   
   private final void i()
   {
-    algh.a().a(null, "new_topbar_account_click");
+    amed.a().a(null, "new_topbar_account_click");
     Intent localIntent = new Intent();
     localIntent.setClassName((Context)getActivity(), AccountDetailActivity.class.getName());
     localIntent.putExtra("uin", "2658655094");
@@ -411,9 +424,9 @@ public final class WebViewFragmentWithArk
   
   private final void j()
   {
-    this.webView.addScrollChangedListener((TouchWebView.OnScrollChangedListener)new alhh(this));
+    this.webView.addScrollChangedListener((TouchWebView.OnScrollChangedListener)new amfh(this));
     this.webView.setBackgroundColor(0);
-    int j = (int)getResources().getDimension(2131299076);
+    int j = (int)getResources().getDimension(2131299080);
     int i = j;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = ImmersiveUtils.getStatusBarHeight((Context)getActivity()) + j;
@@ -432,17 +445,17 @@ public final class WebViewFragmentWithArk
     localObject1 = a();
     localObject2 = getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "resources");
-    ((ImageView)localObject1).setImageDrawable(awhe.a((Resources)localObject2, 2130839520));
+    ((ImageView)localObject1).setImageDrawable(axng.a((Resources)localObject2, 2130839541));
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
     }
     localObject1 = (LifecycleOwner)localObject1;
-    localObject2 = this.jdField_a_of_type_Algx;
+    localObject2 = this.jdField_a_of_type_Amex;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewModel");
     }
-    awhc.a((LifecycleOwner)localObject1, (LiveData)((algx)localObject2).a(), (Function1)new WebViewFragmentWithArk.initView.2((WebViewFragmentWithArk)this));
+    axne.a((LifecycleOwner)localObject1, (LiveData)((amex)localObject2).a(), (Function1)new WebViewFragmentWithArk.initView.2((WebViewFragmentWithArk)this));
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
@@ -450,7 +463,7 @@ public final class WebViewFragmentWithArk
     localObject1 = (LifecycleOwner)localObject1;
     localObject2 = a().a;
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "webViewWrapper.onOverScrolledLiveData");
-    awhc.a((LifecycleOwner)localObject1, (LiveData)localObject2, (Function1)new WebViewFragmentWithArk.initView.3((WebViewFragmentWithArk)this));
+    axne.a((LifecycleOwner)localObject1, (LiveData)localObject2, (Function1)new WebViewFragmentWithArk.initView.3((WebViewFragmentWithArk)this));
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleFragment;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
@@ -460,7 +473,7 @@ public final class WebViewFragmentWithArk
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("arkViewWrapper");
     }
-    awhc.a((LifecycleOwner)localObject1, (LiveData)((WeatherArkViewWrapper)localObject2).a(), (Function1)new WebViewFragmentWithArk.initView.4((WebViewFragmentWithArk)this));
+    axne.a((LifecycleOwner)localObject1, (LiveData)((WeatherArkViewWrapper)localObject2).a(), (Function1)new WebViewFragmentWithArk.initView.4((WebViewFragmentWithArk)this));
   }
   
   private final void k()
@@ -469,10 +482,10 @@ public final class WebViewFragmentWithArk
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject1 = ((bgtw)localObject1).titleContainer;
+      localObject1 = ((bieo)localObject1).titleContainer;
       if (localObject1 != null)
       {
-        localObject1 = (ImageView)((ViewGroup)localObject1).findViewById(2131369087);
+        localObject1 = (ImageView)((ViewGroup)localObject1).findViewById(2131369250);
         if (localObject1 == null) {
           break label283;
         }
@@ -482,13 +495,13 @@ public final class WebViewFragmentWithArk
           ((ImageView)localObject1).setImageResource(0);
         }
         if (localObject1 != null) {
-          ((ImageView)localObject1).setImageDrawable(bfvo.a((Drawable)localObject2, -16777216));
+          ((ImageView)localObject1).setImageDrawable(bheg.a((Drawable)localObject2, -16777216));
         }
         localObject1 = this.mSwiftTitleUI;
         if (localObject1 == null) {
           break label288;
         }
-        localObject1 = ((bgtw)localObject1).rightViewImg;
+        localObject1 = ((bieo)localObject1).rightViewImg;
         if (localObject1 == null) {
           break label288;
         }
@@ -501,7 +514,7 @@ public final class WebViewFragmentWithArk
       localObject2 = this.mSwiftTitleUI;
       if (localObject2 != null)
       {
-        localObject2 = ((bgtw)localObject2).rightViewImg;
+        localObject2 = ((bieo)localObject2).rightViewImg;
         if (localObject2 != null) {
           ((ImageView)localObject2).setColorFilter(-16777216);
         }
@@ -509,7 +522,7 @@ public final class WebViewFragmentWithArk
       localObject2 = this.mSwiftTitleUI;
       if (localObject2 != null)
       {
-        localObject2 = ((bgtw)localObject2).rightViewImg;
+        localObject2 = ((bieo)localObject2).rightViewImg;
         if (localObject2 != null) {
           ((ImageView)localObject2).setImageResource(0);
         }
@@ -517,26 +530,26 @@ public final class WebViewFragmentWithArk
       localObject2 = this.mSwiftTitleUI;
       if (localObject2 != null)
       {
-        localObject2 = ((bgtw)localObject2).rightViewImg;
+        localObject2 = ((bieo)localObject2).rightViewImg;
         if (localObject2 != null) {
           ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
         }
       }
       localObject1 = this.mSwiftTitleUI.leftView;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mSwiftTitleUI.leftView");
-      localObject1 = bfvo.a(((TextView)localObject1).getBackground(), -16777216);
+      localObject1 = bheg.a(((TextView)localObject1).getBackground(), -16777216);
       localObject2 = this.mSwiftTitleUI;
       if (localObject2 != null)
       {
-        localObject2 = ((bgtw)localObject2).leftView;
+        localObject2 = ((bieo)localObject2).leftView;
         if (localObject2 != null) {
-          awhf.a((View)localObject2, (Drawable)localObject1);
+          axnh.a((View)localObject2, (Drawable)localObject1);
         }
       }
       localObject1 = this.mSwiftTitleUI;
       if (localObject1 != null)
       {
-        localObject1 = ((bgtw)localObject1).centerView;
+        localObject1 = ((bieo)localObject1).centerView;
         if (localObject1 != null) {
           ((TextView)localObject1).setTextColor(-16777216);
         }
@@ -544,7 +557,7 @@ public final class WebViewFragmentWithArk
       localObject1 = this.mSwiftTitleUI;
       if (localObject1 != null)
       {
-        localObject1 = ((bgtw)localObject1).titleContainer;
+        localObject1 = ((bieo)localObject1).titleContainer;
         if (localObject1 != null) {
           ((ViewGroup)localObject1).setBackgroundColor(-1);
         }
@@ -565,18 +578,18 @@ public final class WebViewFragmentWithArk
     Object localObject1 = this.mSwiftTitleUI;
     if (localObject1 != null)
     {
-      localObject1 = ((bgtw)localObject1).rightViewImg;
+      localObject1 = ((bieo)localObject1).rightViewImg;
       if (localObject1 == null) {}
     }
     for (localObject1 = ((ImageView)localObject1).getDrawable();; localObject1 = null)
     {
-      localObject1 = bfvo.a((Drawable)localObject1, -1);
+      localObject1 = bheg.a((Drawable)localObject1, -1);
       if (localObject1 != null)
       {
         Object localObject2 = this.mSwiftTitleUI;
         if (localObject2 != null)
         {
-          localObject2 = ((bgtw)localObject2).rightViewImg;
+          localObject2 = ((bieo)localObject2).rightViewImg;
           if (localObject2 != null) {
             ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
           }
@@ -584,7 +597,7 @@ public final class WebViewFragmentWithArk
         localObject1 = this.mSwiftTitleUI;
         if (localObject1 != null)
         {
-          localObject1 = ((bgtw)localObject1).rightViewImg;
+          localObject1 = ((bieo)localObject1).rightViewImg;
           if (localObject1 != null) {
             ((ImageView)localObject1).setColorFilter(-1);
           }
@@ -599,18 +612,18 @@ public final class WebViewFragmentWithArk
     Object localObject1 = this.mSwiftTitleUI;
     if (localObject1 != null)
     {
-      localObject1 = ((bgtw)localObject1).leftView;
+      localObject1 = ((bieo)localObject1).leftView;
       if (localObject1 == null) {}
     }
     for (localObject1 = ((TextView)localObject1).getBackground();; localObject1 = null)
     {
-      localObject1 = bfvo.a((Drawable)localObject1, -1);
+      localObject1 = bheg.a((Drawable)localObject1, -1);
       if (localObject1 != null)
       {
         Object localObject2 = this.mSwiftTitleUI;
         if (localObject2 != null)
         {
-          localObject2 = ((bgtw)localObject2).leftView;
+          localObject2 = ((bieo)localObject2).leftView;
           if (localObject2 != null) {
             ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
           }
@@ -636,6 +649,20 @@ public final class WebViewFragmentWithArk
     this.jdField_d_of_type_Boolean = true;
     g();
     return i;
+  }
+  
+  public void onAttach(@Nullable Activity paramActivity)
+  {
+    super.onAttach(paramActivity);
+    amfb.a();
+    if (amel.a.a().a())
+    {
+      jdField_a_of_type_Bmny = new bmny("weather", jdField_a_of_type_JavaUtilList);
+      paramActivity = jdField_a_of_type_Bmny;
+      if (paramActivity != null) {
+        paramActivity.a();
+      }
+    }
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -668,7 +695,7 @@ public final class WebViewFragmentWithArk
       paramViewGroup = getActivity();
       Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "activity");
       this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWebpageWeatherArkViewWrapper = new WeatherArkViewWrapper((Context)paramViewGroup);
-      i = (int)getResources().getDimension(2131299076);
+      i = (int)getResources().getDimension(2131299080);
       if (ImmersiveUtils.isSupporImmersive() != 1) {
         break label403;
       }
@@ -733,23 +760,32 @@ public final class WebViewFragmentWithArk
     localWeatherArkViewWrapper.a().onDestroy();
   }
   
+  public void onDetach()
+  {
+    super.onDetach();
+    bmny localbmny = jdField_a_of_type_Bmny;
+    if (localbmny != null) {
+      localbmny.a();
+    }
+  }
+  
   public void onPageFinished(@Nullable WebView paramWebView, @Nullable String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = true;
-    paramWebView = this.jdField_a_of_type_Alhe;
+    paramWebView = this.jdField_a_of_type_Amfe;
     if (paramWebView != null) {
       ((WebViewFragmentWithArk)this).b(paramWebView);
     }
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    algh.a().a(null, "new_webview_loading_times", Long.valueOf(l));
-    algs.a(6, "time = " + l);
+    amed.a().a(null, "new_webview_loading_times", Long.valueOf(l));
+    ames.a(6, "time = " + l);
   }
   
   public void onPageStarted(@Nullable WebView paramWebView, @Nullable String paramString, @Nullable Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    algs.a(5, "");
+    ames.a(5, "");
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
@@ -775,9 +811,9 @@ public final class WebViewFragmentWithArk
     localWeatherArkViewWrapper.a().onResume();
   }
   
-  public void setRightButton(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, @Nullable View.OnClickListener paramOnClickListener, @Nullable acjr paramacjr)
+  public void setRightButton(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, @Nullable View.OnClickListener paramOnClickListener, @Nullable adaa paramadaa)
   {
-    super.setRightButton(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, paramOnClickListener, paramacjr);
+    super.setRightButton(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, paramOnClickListener, paramadaa);
     a();
   }
   
@@ -790,13 +826,25 @@ public final class WebViewFragmentWithArk
   public void showActionSheet()
   {
     QLog.i("WebViewFragmentWithArk", 1, "showActionSheet");
-    bgww localbgww = (bgww)this.mComponentsProvider.a(4);
-    if (localbgww != null)
+    biho localbiho = (biho)this.mComponentsProvider.a(4);
+    if (localbiho != null)
     {
-      a((List)localbgww.a);
-      localbgww.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
+      a((List)localbiho.a);
+      localbiho.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
     }
-    algh.a().a(null, "new_topbar_share_click");
+    amed.a().a(null, "new_topbar_share_click");
+  }
+  
+  public void startLoadUrl()
+  {
+    if (!this.jdField_e_of_type_Boolean) {
+      this.mUrl = bkyp.a(this.mUrl, "start_click_time", String.valueOf(this.jdField_b_of_type_Long));
+    }
+    super.startLoadUrl();
+    if (!this.jdField_e_of_type_Boolean) {
+      this.mUrl = bkyp.a(this.mUrl, "start_click_time");
+    }
+    this.jdField_e_of_type_Boolean = true;
   }
 }
 

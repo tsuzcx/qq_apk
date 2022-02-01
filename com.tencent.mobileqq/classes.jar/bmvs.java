@@ -1,9 +1,7 @@
-import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-
-public abstract interface bmvs
+class bmvs
+  implements bmvu
 {
-  public abstract void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt);
+  bmvs(bmvr parambmvr) {}
 }
 
 

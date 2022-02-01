@@ -1,22 +1,28 @@
-import android.support.v7.widget.LinearLayoutManager;
+import android.database.DataSetObserver;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
 public class rvq
-  extends rvl
+  extends DataSetObserver
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131370286);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131370292);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131370296);
+  public rvq(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public rvq(View paramView, int paramInt)
+  public void onChanged()
   {
-    super(paramView, paramInt);
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    {
+      ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
+      String str = this.a.getString(2131717901, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
+      ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(8);
   }
-  
-  public void a(ruw paramruw, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
 }
 
 

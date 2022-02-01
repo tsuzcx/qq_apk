@@ -10,12 +10,13 @@ import android.os.Looper;
 import android.text.format.Time;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import bkif;
-import bkig;
-import bkij;
-import bkkq;
+import bltr;
+import blts;
+import bltv;
+import blvy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,8 +28,8 @@ public class GVideoPluginInstallerActivity
   final int jdField_a_of_type_Int = 1;
   Handler jdField_a_of_type_AndroidOsHandler;
   public TextView a;
-  bkkq jdField_a_of_type_Bkkq;
-  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bkig(this);
+  blvy jdField_a_of_type_Blvy;
+  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new blts(this);
   private final Runnable jdField_a_of_type_JavaLangRunnable = new GVideoPluginInstallerActivity.3(this);
   public final String a;
   final int jdField_b_of_type_Int = 2;
@@ -40,7 +41,7 @@ public class GVideoPluginInstallerActivity
   public GVideoPluginInstallerActivity()
   {
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_b_of_type_AndroidOsHandler = new bkif(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new bltr(this, Looper.getMainLooper());
   }
   
   private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
@@ -78,12 +79,12 @@ public class GVideoPluginInstallerActivity
     if (this.leftView != null) {
       localIntent.putExtra("leftViewString", this.leftView.getText().toString());
     }
-    bkij.a(this.app, this, localIntent, 1);
+    bltv.a(this.app, this, localIntent, 1);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131697274));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131697551));
     this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
   
@@ -107,14 +108,14 @@ public class GVideoPluginInstallerActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    super.setContentView(2131560693);
-    super.setTitle(getString(2131697276));
+    super.setContentView(2131560746);
+    super.setTitle(getString(2131697553));
     if ((this.leftView != null) && (getIntent() != null)) {
       this.leftView.setText(getIntent().getExtras().getString("leftViewText"));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378381));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131697275));
-    this.jdField_a_of_type_Bkkq = ((bkkq)this.app.getManager(27));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378672));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131697552));
+    this.jdField_a_of_type_Blvy = ((blvy)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
     return bool;
   }
   
@@ -135,15 +136,15 @@ public class GVideoPluginInstallerActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
-    if ((!paramBoolean) || (this.jdField_a_of_type_Bkkq == null)) {
+    if ((!paramBoolean) || (this.jdField_a_of_type_Blvy == null)) {
       return;
     }
-    if (this.jdField_a_of_type_Bkkq.isPlugininstalled("group_video_plugin.apk"))
+    if (this.jdField_a_of_type_Blvy.isPlugininstalled("group_video_plugin.apk"))
     {
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
       return;
     }
-    if (bkij.a(getApplicationContext()))
+    if (bltv.a(getApplicationContext()))
     {
       localObject = new Intent("com.tencent.process.exit");
       ArrayList localArrayList = new ArrayList();

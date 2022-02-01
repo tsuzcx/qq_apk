@@ -1,46 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.AddressListTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.smtt.sdk.WebView;
 
-public class acfp
-  implements abyl
+class acfp
+  extends acko
 {
-  public int a()
+  acfp(acfo paramacfo, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    return 1006;
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
   }
   
-  public boolean a()
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    return false;
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    this.a.a.a();
+    c();
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    msg_svc.AddressListTmp localAddressListTmp = new msg_svc.AddressListTmp();
-    localAddressListTmp.from_phone.set(paramMessageRecord.senderuin);
-    localAddressListTmp.to_phone.set(paramMessageRecord.frienduin);
-    paramMessageRecord = paramQQAppInterface.getMsgCache().f(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ContactRoutingType", 2, "sameState------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localAddressListTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.address_list.set(localAddressListTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8005;
+    return a(paramWebView, paramString);
   }
 }
 

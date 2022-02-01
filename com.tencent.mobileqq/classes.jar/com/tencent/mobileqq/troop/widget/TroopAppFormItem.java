@@ -130,7 +130,7 @@ public class TroopAppFormItem
       return;
       if (this.c.startsWith("http"))
       {
-        paramString1 = getResources().getDrawable(2130840312);
+        paramString1 = getResources().getDrawable(2130840348);
         paramString2 = URLDrawable.URLDrawableOptions.obtain();
         paramString2.mLoadingDrawable = paramString1;
         paramString2.mFailedDrawable = paramString1;
@@ -171,14 +171,14 @@ public class TroopAppFormItem
   
   public void b()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560589, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377932));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369865));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376463);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368344));
+    View localView = LayoutInflater.from(getContext()).inflate(2131560641, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371803));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378220));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370035));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376718);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368501));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(DisplayUtil.dip2px(getContext(), 4.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368445));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368602));
   }
   
   public void c()

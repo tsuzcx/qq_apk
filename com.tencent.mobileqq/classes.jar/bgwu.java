@@ -1,28 +1,17 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bgwu
-  implements Animation.AnimationListener
+public class bgwu
+  implements DialogInterface.OnClickListener
 {
-  bgwu(bgwr parambgwr) {}
+  public bgwu(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
-    }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
+    bdla.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bgvw.b(), String.valueOf(0), bgvx.a(), "0");
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

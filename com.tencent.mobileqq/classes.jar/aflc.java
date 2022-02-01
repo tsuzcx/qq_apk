@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aflc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c;
+  public aflc(VisitorsActivity paramVisitorsActivity) {}
   
-  public aflc(DoodleMsgLayout paramDoodleMsgLayout)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    this.a.i = arrayOfInt[1];
   }
 }
 

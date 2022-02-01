@@ -1,29 +1,62 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qqfav.QfavHelper.4;
 
-class bmaj
-  implements ViewPager.OnPageChangeListener
+public class bmaj
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  bmaj(bmai parambmai) {}
+  public bmaj(QfavHelper.4 param4) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
+    try
+    {
+      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+      {
+        if (this.a.a == null)
+        {
+          paramPluginManagerClient.installPlugin("qqfav.apk");
+          return;
+        }
+        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
+        return;
+      }
+    }
+    catch (Exception paramPluginManagerClient)
+    {
+      if (this.a.a != null)
+      {
+        try
+        {
+          this.a.a.onInstallError("qqfav.apk", -1);
+          return;
+        }
+        catch (RemoteException paramPluginManagerClient)
+        {
+          paramPluginManagerClient.printStackTrace();
+          return;
+        }
+        paramPluginManagerClient = this.a.a;
+        if (paramPluginManagerClient != null) {
+          try
+          {
+            this.a.a.onInstallFinish("qqfav.apk");
+            return;
+          }
+          catch (RemoteException paramPluginManagerClient)
+          {
+            paramPluginManagerClient.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmaj
  * JD-Core Version:    0.7.0.1
  */

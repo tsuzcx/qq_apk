@@ -1,10 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import UserGrowth.stSimpleMetaFeed;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public abstract interface vqp<Request extends vqr, Respond extends vqm>
+class vqp
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  vqp(vqn paramvqn) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    StringBuilder localStringBuilder = new StringBuilder().append("collection animator start: ");
+    if (vqn.a(this.a) == null) {}
+    for (paramAnimator = "null";; paramAnimator = vqn.a(this.a).feed_desc)
+    {
+      vmp.b("AbsWsUIGroup", paramAnimator);
+      return;
+    }
+  }
 }
 
 

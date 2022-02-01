@@ -20,9 +20,9 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bmbx;
-import bmda;
-import bnnl;
+import bnrh;
+import bnss;
+import bpdd;
 import com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -51,14 +51,14 @@ public class AECoverSelectFragment
   
   private void addCoverSelectView()
   {
-    Object localObject = new CoverSelectView.UIConfigWrapper(getActivity(), 2130837929, 2130837707, 2130837706, 2130837748, 2130837749, 2130837750, 2130837751, 2130837924, 11);
-    ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(bnnl.b(getActivity(), 59.0F)).setPreviewBarWidth(bnnl.b(getActivity(), 34.0F)).setCoverDefaultProgress(this.defaultCoverProgress);
+    Object localObject = new CoverSelectView.UIConfigWrapper(getActivity(), 2130837943, 2130837721, 2130837720, 2130837854, 2130837903, 2130837904, 2130837905, 2130837938, 11);
+    ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(bpdd.b(getActivity(), 59.0F)).setPreviewBarWidth(bpdd.b(getActivity(), 34.0F)).setCoverDefaultProgress(this.defaultCoverProgress);
     this.coverSelectView = new CoverSelectView(getActivity(), (CoverSelectView.UIConfigWrapper)localObject);
-    int i = bnnl.b(getActivity(), 4.0F);
-    int j = bnnl.b(getActivity(), 2.0F);
+    int i = bpdd.b(getActivity(), 4.0F);
+    int j = bpdd.b(getActivity(), 2.0F);
     Log.d("AECoverSelectFragment", "addCoverSelectView: pixValue2Dip = " + j);
-    int k = bnnl.b(getActivity(), 16.0F);
-    int m = bnnl.b(getActivity(), 13.0F);
+    int k = bpdd.b(getActivity(), 16.0F);
+    int m = bpdd.b(getActivity(), 13.0F);
     localObject = new RoundCornerImageView(getActivity());
     ((RoundCornerImageView)localObject).setCorner(j);
     ((RoundCornerImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -113,7 +113,7 @@ public class AECoverSelectFragment
     Object localObject2 = this.coverSelectView.getCurrCoverBitmap();
     if (localObject2 == null)
     {
-      bmbx.d("AECoverSelectFragment", "获取封面图失败");
+      bnrh.d("AECoverSelectFragment", "获取封面图失败");
       showLoading(false);
       return;
     }
@@ -122,21 +122,21 @@ public class AECoverSelectFragment
       try
       {
         Log.d("AECoverSelectFragment", "saveDataAndQuit: w=" + ((Bitmap)localObject2).getWidth() + " h=" + ((Bitmap)localObject2).getHeight());
-        String str = bmda.e + File.separator + this.missionId + "_" + System.currentTimeMillis() + ".JPG";
+        String str = bnss.e + File.separator + this.missionId + "_" + System.currentTimeMillis() + ".JPG";
         localFile = new File(str);
         if (localFile.getParentFile().exists()) {
           continue;
         }
         if (!localFile.getParentFile().mkdirs()) {
-          bmbx.d("AECoverSelectFragment", "保存封面，创建父路径失败");
+          bnrh.d("AECoverSelectFragment", "保存封面，创建父路径失败");
         }
         if (!localFile.createNewFile()) {
-          bmbx.d("AECoverSelectFragment", "保存封面，创建封面文件失败");
+          bnrh.d("AECoverSelectFragment", "保存封面，创建封面文件失败");
         }
         if (!FileUtil.writeBitmapToFile((Bitmap)localObject2, str)) {
           continue;
         }
-        bmbx.a("AECoverSelectFragment", "封面保存成功,path=" + str);
+        bnrh.a("AECoverSelectFragment", "封面保存成功,path=" + str);
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("key_video_cover_position", f);
         ((Intent)localObject2).putExtra("key_video_cover_path", str);
@@ -147,10 +147,10 @@ public class AECoverSelectFragment
       {
         File localFile;
         localException.printStackTrace();
-        bmbx.d("AECoverSelectFragment", "封面保存出错:" + localException.toString());
+        bnrh.d("AECoverSelectFragment", "封面保存出错:" + localException.toString());
         getActivity().setResult(0);
         return;
-        bmbx.d("AECoverSelectFragment", "封面保存出错");
+        bnrh.d("AECoverSelectFragment", "封面保存出错");
         getActivity().setResult(0);
         continue;
       }
@@ -168,11 +168,11 @@ public class AECoverSelectFragment
   
   void bindViews(View paramView)
   {
-    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378228));
-    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2131370136));
-    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2131366760));
-    this.tvCancel = ((TextView)paramView.findViewById(2131379504));
-    this.tvConfirm = ((TextView)paramView.findViewById(2131379543));
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378516));
+    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2131370310));
+    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2131366876));
+    this.tvCancel = ((TextView)paramView.findViewById(2131379813));
+    this.tvConfirm = ((TextView)paramView.findViewById(2131379854));
     this.tvCancel.setOnClickListener(this);
     this.tvConfirm.setOnClickListener(this);
   }
@@ -191,7 +191,7 @@ public class AECoverSelectFragment
   
   protected int getLayoutId()
   {
-    return 2131558542;
+    return 2131558553;
   }
   
   public void onClick(View paramView)
@@ -218,7 +218,7 @@ public class AECoverSelectFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558542, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558553, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

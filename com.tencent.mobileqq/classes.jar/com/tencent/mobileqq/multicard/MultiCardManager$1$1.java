@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import awau;
+import axgw;
 import java.util.HashMap;
 
 class MultiCardManager$1$1
@@ -10,8 +10,8 @@ class MultiCardManager$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Awau != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Awau.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap);
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Axgw != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Axgw.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$1.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap);
     }
   }
 }

@@ -1,22 +1,44 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akft
-  extends BroadcastReceiver
+public class akft
+  extends akfg
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public akft(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkPubicEventWrap", 2, "--VolumeReceiver---" + paramIntent.getAction());
-    }
-    akfp.b(akfp.a());
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    this.e = true;
+    super.g();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForTroop";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akft
  * JD-Core Version:    0.7.0.1
  */

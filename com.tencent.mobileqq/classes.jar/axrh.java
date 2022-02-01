@@ -1,22 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-public class axrh
-  implements Handler.Callback
+class axrh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public axrh(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  axrh(axre paramaxre, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Axre.b)
     {
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_Axre.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Axre.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
     }
-    for (;;)
-    {
-      return true;
-      this.a.f();
-    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

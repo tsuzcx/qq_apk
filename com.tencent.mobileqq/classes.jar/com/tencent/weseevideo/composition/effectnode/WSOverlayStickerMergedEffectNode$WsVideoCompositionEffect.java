@@ -1,6 +1,5 @@
 package com.tencent.weseevideo.composition.effectnode;
 
-import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -13,7 +12,6 @@ import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.RenderContext;
-import com.tencent.taveffect.core.TAVTextureInfo;
 import com.tencent.tavkit.ciimage.CIContext;
 import com.tencent.tavkit.ciimage.CIImage;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
@@ -26,7 +24,6 @@ import com.tencent.tavsticker.core.TAVStickerRenderContext;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.model.TAVStickerMode;
 import com.tencent.tavsticker.model.TAVStickerTexture;
-import com.tencent.tavsticker.utils.TAVStickerUtil;
 import com.tencent.weseevideo.editor.sticker.IBlurStickerRenderContext;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -113,6 +110,7 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
         this.stickerContext.setRenderSize(paramCIImage.getSize());
         localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
         paramTAVVideoEffect.getRenderContext().makeCurrent();
+        WSOverLayBlurManager.getInstance().updateSourceCIImage(paramCIImage, paramRenderInfo);
       } while (noStickerRender(paramRenderInfo.getTime(), paramTAVStickerRenderContext.getStickers()));
       this.applyEffectStartTime = System.currentTimeMillis();
     } while (localCMSampleBuffer == null);
@@ -157,45 +155,9 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
     return paramCIImage;
   }
   
-  @NotNull
-  private TextureInfo getBlurredTextureInfo(TextureInfo paramTextureInfo, RenderInfo paramRenderInfo, int paramInt1, int paramInt2, float paramFloat)
+  private TextureInfo extractTextureInfoFromCIImage(CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    int i;
-    if (paramInt1 == 0)
-    {
-      i = paramRenderInfo.getRenderWidth();
-      if (paramInt1 != 0) {
-        break label344;
-      }
-    }
-    label344:
-    for (paramInt1 = paramRenderInfo.getRenderHeight();; paramInt1 = paramRenderInfo.getRenderWidth())
-    {
-      this.horizontalBlurFilter.setRadius(paramInt2);
-      this.verticalBlurFilter.setRadius(paramInt2);
-      paramRenderInfo = getTavTextureInfo(paramTextureInfo, i, paramInt1);
-      paramInt2 = (int)Math.floor(i * paramFloat);
-      int j = (int)Math.floor(paramInt1 * paramFloat);
-      Log.d("black_line", "w: " + i);
-      Log.d("black_line", "h: " + paramInt1);
-      Log.d("black_line", "w*scale: " + paramInt2);
-      Log.d("black_line", "h*scale: " + j);
-      this.horizontalBlurFilter.setRendererWidth(paramInt2);
-      this.horizontalBlurFilter.setRendererHeight(j);
-      this.verticalBlurFilter.setRendererWidth(paramInt2);
-      this.verticalBlurFilter.setRendererHeight(j);
-      this.scaleSmallTextureFilter.setRendererWidth(paramInt2);
-      this.scaleSmallTextureFilter.setRendererHeight(j);
-      this.scaleBigTextureFilter.setRendererWidth(i);
-      this.scaleBigTextureFilter.setRendererHeight(paramInt1);
-      this.scaleSmallTextureFilter.scale(paramFloat, 0.0F, 0.0F);
-      paramRenderInfo = this.scaleSmallTextureFilter.applyFilter(paramRenderInfo);
-      paramRenderInfo = this.verticalBlurFilter.applyFilter(this.horizontalBlurFilter.applyFilter(paramRenderInfo));
-      this.scaleBigTextureFilter.scale(Math.max(paramInt1 * 1.0F / j, i * 1.0F / paramInt2), 0.0F, 0.0F);
-      return getTextureInfo(paramTextureInfo, i, paramInt1, this.scaleBigTextureFilter.applyFilter(paramRenderInfo));
-      i = paramRenderInfo.getRenderHeight();
-      break;
-    }
+    return paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage, getCacheTextureInfo((int)paramCIImage.getSize().width, (int)paramCIImage.getSize().height));
   }
   
   private TextureInfo getCacheTextureInfo(int paramInt1, int paramInt2)
@@ -214,94 +176,38 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
     return localTextureInfo2;
   }
   
-  @NotNull
-  private TAVTextureInfo getTavTextureInfo(TextureInfo paramTextureInfo, int paramInt1, int paramInt2)
-  {
-    if (paramTextureInfo.getTextureMatrix() != null)
-    {
-      float[] arrayOfFloat = new float[9];
-      paramTextureInfo.getTextureMatrix().getValues(arrayOfFloat);
-      return new TAVTextureInfo(paramTextureInfo.textureID, paramTextureInfo.textureType, paramInt1, paramInt2, arrayOfFloat, paramTextureInfo.preferRotation);
-    }
-    return new TAVTextureInfo(paramTextureInfo.textureID, paramTextureInfo.textureType, paramInt1, paramInt2, null, paramTextureInfo.preferRotation);
-  }
-  
-  @NotNull
-  private TextureInfo getTextureInfo(TextureInfo paramTextureInfo, int paramInt1, int paramInt2, TAVTextureInfo paramTAVTextureInfo)
-  {
-    return new TextureInfo(paramTAVTextureInfo.textureID, paramTAVTextureInfo.textureType, paramInt1, paramInt2, paramTextureInfo.getTextureMatrix(), paramTextureInfo.preferRotation);
-  }
-  
   private void insertBlurCIImage(CIImage paramCIImage1, RenderInfo paramRenderInfo, CIImage paramCIImage2)
   {
     Object localObject2 = ((IBlurStickerRenderContext)this.stickerContext).getBlurStickers();
-    Object localObject1 = paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage1, getCacheTextureInfo((int)paramCIImage1.getSize().width, (int)paramCIImage1.getSize().height));
+    Object localObject1 = extractTextureInfoFromCIImage(paramCIImage1, paramRenderInfo);
     int i = ((TextureInfo)localObject1).preferRotation;
-    localObject1 = new CIImage(getBlurredTextureInfo((TextureInfo)localObject1, paramRenderInfo, i, 10, 0.25F));
+    localObject1 = new CIImage(WSOverLayBlurManager.getInstance().getBlurredTextureInfo((TextureInfo)localObject1, paramRenderInfo, i, 10, 0.25F, this.horizontalBlurFilter, this.verticalBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter));
     ((CIImage)localObject1).applyPreferRotation(0);
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Object localObject3 = (TAVSticker)((Iterator)localObject2).next();
-      if (((TAVSticker)localObject3).getMode() != TAVStickerMode.INACTIVE)
-      {
-        if (isRenderNormalSticker()) {
-          paramCIImage2.imageByCompositingOverImage((CIImage)localObject1);
-        }
-        ((CIImage)localObject1).imageByCompositingOverImage(paramCIImage1);
-      }
-      else
+      if (((TAVSticker)localObject3).getMode() == TAVStickerMode.INACTIVE)
       {
         CIImage localCIImage = new CIImage(((CIImage)localObject1).getDrawTextureInfo().clone());
         localCIImage.applyPreferRotation(0);
         localCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), paramRenderInfo.getRenderSize()), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
-        localObject3 = TAVStickerUtil.computeRectanglePoints(WsStickerUtil.getRatioChangeMatrix((TAVSticker)localObject3, (int)localCIImage.getSize().width, (int)localCIImage.getSize().height), ((TAVSticker)localObject3).getWidth(), ((TAVSticker)localObject3).getHeight());
-        CGRect localCGRect = new CGRect();
-        Object localObject4 = localCGRect.size;
-        if (i == 1)
+        localObject3 = WSOverLayBlurManager.getBlurRect(i, (TAVSticker)localObject3, localCIImage, paramRenderInfo);
+        if (localCIImage.getDrawTextureInfo() != null)
         {
-          f = localObject3[1].x - localObject3[0].x;
-          label276:
-          ((CGSize)localObject4).height = f;
-          localObject4 = localCGRect.size;
-          if (i != 1) {
-            break label457;
-          }
-          f = localObject3[3].y - localObject3[0].y;
-          label313:
-          ((CGSize)localObject4).width = f;
-          localObject4 = localCGRect.origin;
-          if (i != 1) {
-            break label477;
-          }
-          f = localCIImage.getSize().height - localObject3[1].y - localCGRect.size.width;
-          label360:
-          ((PointF)localObject4).x = f;
-          localObject4 = localCGRect.origin;
-          if (i != 1) {
-            break label489;
-          }
+          float f1 = Math.min(localCIImage.getDrawTextureInfo().height, ((CGRect)localObject3).size.height);
+          float f2 = Math.min(localCIImage.getDrawTextureInfo().width, ((CGRect)localObject3).size.width);
+          ((CGRect)localObject3).origin.x = (((CGRect)localObject3).origin.x + ((CGRect)localObject3).size.width / 2.0F - f2 / 2.0F);
+          ((CGRect)localObject3).origin.y = (((CGRect)localObject3).origin.y + ((CGRect)localObject3).size.height / 2.0F - f1 / 2.0F);
+          ((CGRect)localObject3).size.width = f2;
+          ((CGRect)localObject3).size.height = f1;
         }
-        label457:
-        label477:
-        label489:
-        for (float f = localCIImage.getSize().width - localObject3[1].x;; f = localCIImage.getSize().height - localObject3[1].y - localCGRect.size.height)
-        {
-          ((PointF)localObject4).y = f;
-          localCIImage.setFrame(localCGRect);
-          if (isRenderNormalSticker()) {
-            paramCIImage2.imageByCompositingOverImage(localCIImage);
-          }
-          localCIImage.imageByCompositingOverImage((CIImage)localObject1);
-          break;
-          f = localObject3[3].y - localObject3[0].y;
-          break label276;
-          f = localObject3[1].x - localObject3[0].x;
-          break label313;
-          f = localObject3[0].x;
-          break label360;
-        }
+        localCIImage.setFrame((CGRect)localObject3);
+        localCIImage.imageByCompositingOverImage((CIImage)localObject1);
       }
+    }
+    if (isRenderNormalSticker()) {
+      paramCIImage2.imageByCompositingOverImage((CIImage)localObject1);
     }
     ((CIImage)localObject1).imageByCompositingOverImage(paramCIImage1);
     ((CIImage)localObject1).clearSelfTexture();
@@ -429,7 +335,7 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode.WsVideoCompositionEffect
  * JD-Core Version:    0.7.0.1
  */

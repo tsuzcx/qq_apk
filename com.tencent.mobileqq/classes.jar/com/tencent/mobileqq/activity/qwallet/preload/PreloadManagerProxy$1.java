@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import akbe;
-import akbm;
+import akwx;
+import akxf;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PreloadManagerProxy$1
   extends ResultReceiver
 {
-  public PreloadManagerProxy$1(akbm paramakbm, Handler paramHandler, akbe paramakbe, String paramString)
+  public PreloadManagerProxy$1(akxf paramakxf, Handler paramHandler, akwx paramakwx, String paramString)
   {
     super(paramHandler);
   }
@@ -26,13 +26,13 @@ public class PreloadManagerProxy$1
       if (QLog.isColorLevel()) {
         QLog.d("PreloadManagerProxy", 2, "PreloadManagerProxy downloadModule" + str2 + "|" + paramBundle);
       }
-      this.jdField_a_of_type_Akbe.onDownloadResFinished(str1, paramInt, str2, paramBundle);
+      this.jdField_a_of_type_Akwx.onDownloadResFinished(str1, paramInt, str2, paramBundle);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManagerProxy", 2, "PreloadManagerProxy downloadModule IPC wrong");
     }
-    this.jdField_a_of_type_Akbe.onDownloadResFinished(this.jdField_a_of_type_JavaLangString, -8, null, null);
+    this.jdField_a_of_type_Akwx.onDownloadResFinished(this.jdField_a_of_type_JavaLangString, -8, null, null);
   }
 }
 

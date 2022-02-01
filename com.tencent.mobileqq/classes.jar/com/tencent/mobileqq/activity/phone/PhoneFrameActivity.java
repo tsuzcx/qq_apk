@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
-import ajnf;
-import ajng;
-import amtj;
+import akit;
+import akiu;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,7 +11,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcef;
+import anvx;
+import bdla;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -67,25 +67,25 @@ public class PhoneFrameActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376501);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376760);
     this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369068));
-    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369070));
-    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369099));
-    this.rightViewText.setText(2131694395);
-    this.rightViewText.setOnClickListener(new ajnf(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369082));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369231));
+    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369233));
+    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369262));
+    this.rightViewText.setText(2131694596);
+    this.rightViewText.setOnClickListener(new akit(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369245));
     if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131707111));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anvx.a(2131707458));
     }
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidViewView);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
     IphoneTitleBarActivity.setLayerType(this.leftView);
     IphoneTitleBarActivity.setLayerType(this.rightViewText);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131372416));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131372610));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new ajng(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new akiu(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_req_type", this.jdField_a_of_type_Int);
@@ -119,7 +119,7 @@ public class PhoneFrameActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2131559560);
+    setContentView(2131559593);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_type", 0);
     b();
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
@@ -149,7 +149,7 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     a();
-    bcef.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    bdla.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void doOnPause()

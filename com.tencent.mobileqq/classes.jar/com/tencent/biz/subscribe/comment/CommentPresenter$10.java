@@ -2,12 +2,12 @@ package com.tencent.biz.subscribe.comment;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import zfs;
+import zux;
 
 public class CommentPresenter$10
   implements Runnable
 {
-  public CommentPresenter$10(zfs paramzfs, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public CommentPresenter$10(zux paramzux, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
   public void run()
   {

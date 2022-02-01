@@ -1,91 +1,71 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class qhw
-  extends ViewBase
 {
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new qhx(this);
-  private NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  private pid jdField_a_of_type_Pid;
-  private boolean jdField_a_of_type_Boolean;
+  private static qhw jdField_a_of_type_Qhw;
+  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public qhw(VafContext paramVafContext)
+  public static qhw a()
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver() != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Pid != null) {
-      this.jdField_a_of_type_Pid.resumeAnimation();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Pid != null) {
-      this.jdField_a_of_type_Pid.pauseAnimation();
-    }
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setBackgroundColor(this.mBackground);
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    }
+    if (jdField_a_of_type_Qhw == null) {}
     try
     {
-      this.jdField_a_of_type_Pid = pid.a(paramString);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_Pid);
-      return true;
+      if (jdField_a_of_type_Qhw == null) {
+        jdField_a_of_type_Qhw = new qhw();
+      }
+      return jdField_a_of_type_Qhw;
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
     {
-      QLog.d("ReadInJoyLottieView", 1, paramString.getMessage());
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        int i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+      }
     }
-    return true;
+  }
+  
+  public void b(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int i = 0;
+      while (i < j)
+      {
+        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+        if ((!pqu.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
+          localArrayList.add(Integer.valueOf(k));
+        }
+        i += 1;
+      }
+      paramList = localArrayList.iterator();
+      while (paramList.hasNext())
+      {
+        i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+      }
+    }
   }
 }
 

@@ -1,54 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.mobileqq.utils.StackBlur;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class yqk
+  extends JobSegment<Bitmap, Bitmap>
 {
-  public static Intent a(Intent paramIntent, Bundle paramBundle, Activity paramActivity)
+  public int a;
+  
+  public yqk()
   {
-    if (paramBundle == null) {
-      return paramIntent;
+    this.a = 10;
+  }
+  
+  public yqk(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
+  {
+    if (paramBitmap == null) {
+      return null;
     }
-    if (paramBundle.containsKey("ignorePersonalPublish")) {
-      paramIntent.putExtra("ignorePersonalPublish", paramBundle.getBoolean("ignorePersonalPublish"));
-    }
-    paramIntent.putExtra("troop_uin", paramBundle.getInt("troop_uin", 0));
-    paramIntent.putExtra("entrance_type", paramBundle.getInt("entrance_type"));
-    paramIntent.putExtra("shareGroupType", paramBundle.getString("shareGroupType"));
-    paramIntent.putExtra("shareGroupId", paramBundle.getString("shareGroupId"));
-    paramIntent.putExtra("shareGroupName", paramBundle.getString("shareGroupName"));
-    if (paramBundle.getString("widgetinfo") != null)
+    StackBlur.fastblur(paramBitmap, paramInt);
+    return paramBitmap;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    long l = System.currentTimeMillis();
+    paramJobContext = a(paramBitmap, this.a, false);
+    ykq.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
+    if (paramJobContext == null)
     {
-      paramIntent.putExtra("qq_camera_scheme", bnxs.a(paramBundle.getString("widgetinfo")));
-      paramIntent.putExtra("widgetinfo", paramBundle.getString("widgetinfo"));
-      String str = paramBundle.getString("key_camera_material_name");
-      bmbx.b("StoryIntentUtils", "passStoryRecordExtrasToIntent---takeSameName=" + str);
-      if (TextUtils.isEmpty(str)) {
-        break label306;
-      }
-      paramIntent.putExtra("key_camera_material_name", str);
-      paramIntent.putExtra("qq_camera_top_title", str);
+      super.notifyError(new BitmapError("BlurJobSegment", 7));
+      return;
     }
-    for (;;)
-    {
-      paramIntent.putExtra("key_scheme_request_from_business_type", paramBundle.getString("key_scheme_request_from_business_type"));
-      if (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))
-      {
-        paramIntent.putExtra("share_url_target_url", paramBundle.getString("share_url_target_url"));
-        paramIntent.putExtra("share_url_name", paramBundle.getString("share_url_name"));
-        paramIntent.putExtra("share_url_text", paramBundle.getString("share_url_text"));
-        paramIntent.putExtra("share_url_thumb_url", paramBundle.getString("share_url_thumb_url"));
-        paramIntent.putExtra("struct_share_key_source_name", paramBundle.getString("struct_share_key_source_name"));
-        paramIntent.putExtra("struct_share_key_source_icon", paramBundle.getString("struct_share_key_source_icon"));
-      }
-      paramIntent.putExtra("video_tag_info", paramBundle.getString("video_tag_info"));
-      return paramIntent;
-      label306:
-      paramIntent.putExtra("qq_camera_top_title", "魔法视频");
-    }
+    super.notifyResult(paramJobContext);
   }
 }
 

@@ -11,6 +11,7 @@ public final class UniBusiExtraInfo
   public String headurl = "";
   public int isOnShelf;
   public int isShow;
+  public int limitFree;
   public String mallname = "";
   public String mallurl = "";
   public int price;
@@ -24,7 +25,7 @@ public final class UniBusiExtraInfo
   
   public UniBusiExtraInfo() {}
   
-  public UniBusiExtraInfo(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public UniBusiExtraInfo(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
     this.isOnShelf = paramInt1;
     this.strxyjson = paramString1;
@@ -40,6 +41,7 @@ public final class UniBusiExtraInfo
     this.svipLevel = paramInt4;
     this.svipMonth = paramInt5;
     this.isShow = paramInt6;
+    this.limitFree = paramInt7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -58,6 +60,7 @@ public final class UniBusiExtraInfo
     this.svipLevel = paramJceInputStream.read(this.svipLevel, 12, false);
     this.svipMonth = paramJceInputStream.read(this.svipMonth, 13, false);
     this.isShow = paramJceInputStream.read(this.isShow, 14, false);
+    this.limitFree = paramJceInputStream.read(this.limitFree, 15, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -90,6 +93,7 @@ public final class UniBusiExtraInfo
     paramJceOutputStream.write(this.svipLevel, 12);
     paramJceOutputStream.write(this.svipMonth, 13);
     paramJceOutputStream.write(this.isShow, 14);
+    paramJceOutputStream.write(this.limitFree, 15);
   }
 }
 

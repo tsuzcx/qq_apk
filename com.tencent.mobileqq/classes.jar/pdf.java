@@ -1,32 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-public class pdf
-  implements AladdinConfigHandler
+class pdf
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private final EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback = new pdg(this);
+  private EmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
+  
+  private pdf(pdd parampdd) {}
+  
+  View a(Context paramContext)
   {
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("check_period_ms", str1)) {
-        bkwm.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
-      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
-        bkwm.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
-      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
-        bkwm.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(paramContext, 2131559158, null));
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.onlySysAndEmoji = true;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.init(this.jdField_a_of_type_Pdd.a(), 1008, paramContext, ((BaseActivity)paramContext).getTitleBarHeight(), null, null);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.hideAllTabs();
     }
-    return true;
+    return this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
   }
   
-  public void onWipeConfig(int paramInt) {}
+  void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel != null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.onDestory();
+    }
+  }
 }
 
 

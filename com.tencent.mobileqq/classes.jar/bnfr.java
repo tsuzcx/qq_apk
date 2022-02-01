@@ -1,74 +1,22 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
-@TargetApi(14)
 public class bnfr
+  implements Animator.AnimatorListener
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  private static int b;
+  public bnfr(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public static float a(Resources paramResources)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((b == 0) || (jdField_a_of_type_Int == 0))
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Float;
+    bnrh.d("AEMaterialPanel", "[openWithAnimation] translationY - onAnimationCancel");
   }
   
-  public static int a(Resources paramResources)
-  {
-    if (jdField_a_of_type_Int == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return jdField_a_of_type_Int;
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public static void a(View paramView)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bnfs(paramView));
-    paramView.setVisibility(8);
-    paramView.startAnimation(localAlphaAnimation);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new bnft(paramView));
-    paramView.setVisibility(0);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static int b(Resources paramResources)
-  {
-    if (b == 0)
-    {
-      paramResources = paramResources.getDisplayMetrics();
-      jdField_a_of_type_Int = paramResources.widthPixels;
-      b = paramResources.heightPixels;
-      jdField_a_of_type_Float = b * 1.0F / jdField_a_of_type_Int;
-    }
-    return b;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

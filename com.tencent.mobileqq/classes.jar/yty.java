@@ -1,21 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-
-public abstract interface yty
+public class yty
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(View paramView, float paramFloat);
-  
-  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
-  
-  public abstract void a(View paramView, ytv paramytv);
-  
-  public abstract boolean a(View paramView);
-  
-  public abstract boolean a(View paramView, yub paramyub, MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(View paramView);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+  }
 }
 
 

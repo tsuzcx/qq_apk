@@ -1,35 +1,58 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class adxd
-  implements Animation.AnimationListener
+  extends antv
 {
-  public adxd(PublicAccountListActivity paramPublicAccountListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public adxd(EmosmActivity paramEmosmActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (EmoticonResp)paramObject;
+        this.a.a(paramObject.delEpId);
+        this.a.b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+      }
+    }
+    label119:
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
+      do
+      {
+        return;
+        this.a.a();
+        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+        break;
+        if (paramInt != 2) {
+          break label119;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
+        }
+      } while (!paramBoolean);
+      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
       return;
+    } while (paramInt != 17);
+    if (paramBoolean)
+    {
+      paramObject = ((EmoticonResp)paramObject).ids.iterator();
+      while (paramObject.hasNext())
+      {
+        Integer localInteger = (Integer)paramObject.next();
+        this.a.a(localInteger.intValue());
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.requestLayout();
+    this.a.a();
+    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+    this.a.b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

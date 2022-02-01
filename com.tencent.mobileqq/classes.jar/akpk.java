@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akpk
-  implements adra
+class akpk
+  implements View.OnClickListener
 {
-  public akpk(LoginView paramLoginView) {}
+  akpk(akpj paramakpj) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    LoginView.a(this.a);
-  }
-  
-  public void b()
-  {
-    LoginView.a(this.a);
+    if (akpj.a(this.a) == null)
+    {
+      akpj.a(this.a, bhdj.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717703), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717701), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717702), new akpl(this), new akpm(this)));
+      akpj.a(this.a).setCanceledOnTouchOutside(false);
+    }
+    akpj.a(this.a).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

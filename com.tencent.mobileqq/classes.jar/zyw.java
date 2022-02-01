@@ -1,12 +1,6 @@
-import com.tencent.oskplayer.util.Singleton;
-
-class zyw
-  extends Singleton<zyu>
+public abstract interface zyw
 {
-  protected zyu a()
-  {
-    return new zyu(null);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

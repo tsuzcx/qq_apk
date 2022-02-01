@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import aadt;
+import aatf;
 import android.app.Activity;
-import bgve;
-import bgzd;
+import bifw;
+import bijv;
 
 public class WebSoPlugin$2
   implements Runnable
 {
-  public WebSoPlugin$2(aadt paramaadt, String paramString) {}
+  public WebSoPlugin$2(aatf paramaatf, String paramString) {}
   
   public void run()
   {
-    if ((bgzd.c(this.a)) && (this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null)) {
+    if ((bijv.c(this.a)) && (this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null)) {
       this.this$0.mRuntime.a().runOnUiThread(new WebSoPlugin.2.1(this));
     }
   }

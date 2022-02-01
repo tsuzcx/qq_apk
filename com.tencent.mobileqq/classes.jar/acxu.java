@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import com.tencent.mfsdk.config.APMModuleConfig;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 
-public class acxu
-  extends ProxyObserver
+public abstract interface acxu
 {
-  public acxu(ChatHistory paramChatHistory) {}
+  public abstract APMModuleConfig a();
   
-  public void onProxySaveToDbFinished()
-  {
-    this.a.a(11, false);
-  }
+  public abstract DefaultPluginConfig a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
 }
 
 

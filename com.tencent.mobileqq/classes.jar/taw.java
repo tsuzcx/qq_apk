@@ -1,17 +1,6 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
-
-public class taw
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+public abstract interface taw
 {
-  private taw(GestureCropImageView paramGestureCropImageView) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.a.a(paramScaleGestureDetector.getScaleFactor(), GestureCropImageView.a(this.a), GestureCropImageView.b(this.a), true);
-    return true;
-  }
+  public abstract void a(String paramString);
 }
 
 

@@ -1,68 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.config.business.qvip.QVipFeatureConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class aqgy
-  extends aqgc<QVipFeatureConfig>
+final class aqgy
+  implements View.OnKeyListener
 {
-  @NonNull
-  public QVipFeatureConfig a()
-  {
-    return new QVipFeatureConfig();
-  }
+  aqgy(aqgx paramaqgx) {}
   
-  @NonNull
-  public QVipFeatureConfig a(@NonNull aptx[] paramArrayOfaptx)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.QVipFeatureProcessor", 1, paramArrayOfaptx[0].a);
-    }
-    Object localObject = null;
-    try
+    if (paramInt == 4)
     {
-      String str = paramArrayOfaptx[0].a;
-      paramArrayOfaptx = localObject;
-      if (!TextUtils.isEmpty(str)) {
-        paramArrayOfaptx = (QVipFeatureConfig)ausy.a(str, QVipFeatureConfig.class);
-      }
-      a(paramArrayOfaptx.enableSplashAnim);
-      return paramArrayOfaptx;
+      this.a.dismiss();
+      return true;
     }
-    catch (Exception paramArrayOfaptx)
-    {
-      paramArrayOfaptx.printStackTrace();
-    }
-    return new QVipFeatureConfig();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("banner_and_splash", 4).edit().putBoolean("splashAnim", paramBoolean).commit();
-  }
-  
-  @NonNull
-  public QVipFeatureConfig b()
-  {
-    return new QVipFeatureConfig();
-  }
-  
-  public Class<QVipFeatureConfig> clazz()
-  {
-    return QVipFeatureConfig.class;
-  }
-  
-  public int type()
-  {
-    return 690;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgy
  * JD-Core Version:    0.7.0.1
  */

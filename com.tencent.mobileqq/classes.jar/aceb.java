@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class aceb
-  extends acew
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public aceb(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    new bblb().b(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (3 == paramElem.common_elem.uint32_service_type.get());
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(7942);
+    }
   }
 }
 

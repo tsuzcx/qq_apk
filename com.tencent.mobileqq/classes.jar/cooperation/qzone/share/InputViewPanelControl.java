@@ -1,6 +1,5 @@
 package cooperation.qzone.share;
 
-import amtj;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.Editable;
@@ -9,6 +8,7 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import anvx;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.text.QQTextBuilder;
@@ -180,7 +180,7 @@ public class InputViewPanelControl
     {
       paramEditText = getPalinText(paramEditText);
       if (!TextUtils.isEmpty(paramEditText)) {
-        return ReplaceFormatUser(paramEditText, paramList).replaceAll(amtj.a(2131704921), amtj.a(2131704925)).replaceAll(amtj.a(2131704922), "/MM");
+        return ReplaceFormatUser(paramEditText, paramList).replaceAll(anvx.a(2131705272), anvx.a(2131705276)).replaceAll(anvx.a(2131705273), "/MM");
       }
     }
     return "";

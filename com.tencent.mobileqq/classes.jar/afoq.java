@@ -1,32 +1,6 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 class afoq
-  implements bnbd
 {
-  afoq(afop paramafop) {}
-  
-  public Activity a()
-  {
-    return afop.a(this.a).mActivity;
-  }
-  
-  public SessionInfo a()
-  {
-    return afop.a(this.a).sessionInfo;
-  }
-  
-  public QQAppInterface a()
-  {
-    return afop.a(this.a).app;
-  }
-  
-  public boolean a()
-  {
-    return afop.a(this.a).panelOpened();
-  }
+  private static afoo a = new afoo("aio_client_module", null);
 }
 
 

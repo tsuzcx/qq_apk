@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.activity.qcircle.QCircleFrame;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.chat.QCircleObserver;
 
 public class akpw
-  implements Animation.AnimationListener
+  extends QCircleObserver
 {
-  public akpw(LoginView.4 param4) {}
+  public akpw(QCircleFrame paramQCircleFrame) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onUpdateRedPoint(int paramInt)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.e("QCircleFrame", 2, "QCircleObserver onUpdateRedPoint " + paramInt);
+    }
+    if (QCircleFrame.a(this.a) != null) {
+      QCircleFrame.a(this.a).a("mQCircleRedDotObserver");
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

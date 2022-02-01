@@ -1,37 +1,107 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bffl
-  implements View.OnTouchListener
 {
-  public bffl(PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView) {}
+  public int a;
+  public bffm a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bffl()
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Bffm = new bffm();
+    a();
+  }
+  
+  public bffl(bffl parambffl)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Bffm = new bffm();
+    if (parambffl != null)
     {
-    case 2: 
-    default: 
-      bool = false;
+      this.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+      return;
     }
-    do
+    a();
+  }
+  
+  public static final boolean a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    if (paramInt1 == 11) {
+      i = 31;
+    }
+    paramInt1 = paramInt2;
+    if (paramInt2 == 11) {
+      paramInt1 = 31;
+    }
+    if ((i == 2) || (i == 16)) {
+      if (i + 1 < paramInt1) {}
+    }
+    while (i >= paramInt1)
     {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
       return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.b(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Bffm.a()) && (bfzj.a(this.jdField_a_of_type_Bffm.jdField_a_of_type_Int))) {
+      return this.jdField_a_of_type_Bffm.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      return b(paramQQAppInterface, true, paramString);
+    }
+    return a();
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Bffm.a()) {
+      return this.jdField_a_of_type_Bffm.jdField_a_of_type_Long;
+    }
+    return -1L;
+  }
+  
+  public bffl a(bffl parambffl)
+  {
+    if (parambffl != null) {
+      this.jdField_a_of_type_Bffm.a(parambffl.jdField_a_of_type_Bffm);
+    }
+    return this;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bffm.a();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bffm.a();
+  }
+  
+  public int b(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Bffm.a()) {
+      return this.jdField_a_of_type_Bffm.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if ((this.jdField_a_of_type_Bffm.a()) && (bfzj.a(this.jdField_a_of_type_Bffm.jdField_a_of_type_Int))) {
+      return this.jdField_a_of_type_Bffm.jdField_a_of_type_Long;
+    }
+    return -1L;
   }
 }
 

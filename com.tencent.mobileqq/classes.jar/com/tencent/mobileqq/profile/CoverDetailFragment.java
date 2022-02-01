@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.profile;
 
-import amtj;
-import anaj;
-import anam;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -26,19 +23,24 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ayju;
-import ayjv;
-import ayjw;
-import aymh;
-import aymi;
-import bgae;
-import bgga;
+import anvx;
+import aocy;
+import aodb;
+import azop;
+import azoq;
+import azor;
+import azrc;
+import azrd;
+import bhiw;
+import bhou;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.StackBlur;
@@ -53,22 +55,22 @@ public class CoverDetailFragment
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private anam jdField_a_of_type_Anam = new ayjw(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aymi jdField_a_of_type_Aymi;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ayjv(this);
+  private aodb jdField_a_of_type_Aodb = new azor(this);
+  private azrd jdField_a_of_type_Azrd;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new azoq(this);
   private int jdField_b_of_type_Int;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   
   private void a(FragmentActivity paramFragmentActivity)
   {
-    QQToast.a(paramFragmentActivity, 1, 2131719238, 0).a();
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849982);
+    QQToast.a(paramFragmentActivity, 1, 2131719659, 0).a();
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850075);
     this.jdField_b_of_type_Int = 1;
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694523);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694724);
   }
   
   public Drawable a(Drawable paramDrawable)
@@ -157,16 +159,16 @@ public class CoverDetailFragment
     localFragmentActivity.getWindow().addFlags(256);
     localFragmentActivity.getWindow().addFlags(512);
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365455));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131364266));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365471));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363967));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365548));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131364344));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365564));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131364041));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.mContentView.findViewById(2131365195).setOnClickListener(this);
+    this.mContentView.findViewById(2131365286).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(null));
-    getActivity().app.addObserver(this.jdField_a_of_type_Anam);
+    getActivity().app.addObserver(this.jdField_a_of_type_Aodb);
     hideTitleBar();
-    paramLayoutInflater = this.mContentView.findViewById(2131365478).getLayoutParams();
+    paramLayoutInflater = this.mContentView.findViewById(2131365571).getLayoutParams();
     int i = cooperation.qzone.util.SystemUtil.getNotchHeight(getActivity(), getActivity());
     if (i > paramLayoutInflater.height)
     {
@@ -176,28 +178,28 @@ public class CoverDetailFragment
       if (this.jdField_b_of_type_Int != 0) {
         break label396;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850055);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131694523);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131694724);
     }
     for (;;)
     {
-      paramLayoutInflater = ((bgga)localFragmentActivity.app.getManager(235)).a;
+      paramLayoutInflater = ((bhou)localFragmentActivity.app.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
       if ((paramLayoutInflater != null) && (this.jdField_a_of_type_Int > 0))
       {
-        this.jdField_a_of_type_Aymi = paramLayoutInflater.a(this.jdField_a_of_type_Int, false);
-        if (this.jdField_a_of_type_Aymi == null) {
+        this.jdField_a_of_type_Azrd = paramLayoutInflater.a(this.jdField_a_of_type_Int, false);
+        if (this.jdField_a_of_type_Azrd == null) {
           break label467;
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Aymi.a)) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Aymi.a);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azrd.a)) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Azrd.a);
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Aymi.d)) {
-          this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ayju(this));
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azrd.d)) {
+          this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new azop(this));
         }
       }
       return;
-      i = bgae.a(getActivity());
+      i = bhiw.a(getActivity());
       if (i <= paramLayoutInflater.height) {
         break;
       }
@@ -206,15 +208,15 @@ public class CoverDetailFragment
       label396:
       if (this.jdField_b_of_type_Int == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850055);
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131718191);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131718577);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849982);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850075);
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131694523);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131694724);
       }
     }
     label467:
@@ -223,7 +225,7 @@ public class CoverDetailFragment
   
   public int getContentLayoutId()
   {
-    return 2131561967;
+    return 2131562032;
   }
   
   public boolean isTransparent()
@@ -249,16 +251,16 @@ public class CoverDetailFragment
           if ((getActivity() != null) && (getActivity().app != null) && (this.jdField_a_of_type_Int > 0))
           {
             QQAppInterface localQQAppInterface = getActivity().app;
-            ((anaj)localQQAppInterface.getBusinessHandler(13)).g(this.jdField_a_of_type_Int);
+            ((aocy)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(this.jdField_a_of_type_Int);
             VasWebviewUtil.reportCommercialDrainage(localQQAppInterface.getCurrentAccountUin(), "defaultcard", "set_defaultcard", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Int), "");
-            this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
+            this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850055);
             this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-            this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131701751));
+            this.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131702102));
             this.jdField_b_of_type_Int = 3;
           }
         }
         else if ((this.jdField_b_of_type_Int == 0) && (getActivity() != null)) {
-          QQToast.a(getActivity(), 0, 2131690636, 0).a();
+          QQToast.a(getActivity(), 0, 2131690713, 0).a();
         }
       }
     }
@@ -268,7 +270,7 @@ public class CoverDetailFragment
   {
     super.onDestroy();
     if (getActivity().app != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Anam);
+      getActivity().app.removeObserver(this.jdField_a_of_type_Aodb);
     }
   }
   

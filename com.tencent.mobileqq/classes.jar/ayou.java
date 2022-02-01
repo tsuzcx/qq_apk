@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public abstract interface ayou
+public class ayou
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt);
+  private final Context a;
   
-  public abstract void a(SongInfo paramSongInfo, boolean paramBoolean);
+  public ayou(View paramView)
+  {
+    super(paramView);
+    this.a = paramView.getContext();
+  }
 }
 
 

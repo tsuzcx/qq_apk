@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.util.SparseIntArray;
 
 public class acpd
-  implements DialogInterface.OnDismissListener
+  implements acpc
 {
-  public acpd(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  private final SparseIntArray a = new SparseIntArray();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(int paramInt)
   {
-    this.a.finish();
+    try
+    {
+      paramInt = this.a.get(paramInt, 1);
+      return paramInt;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      this.a.put(paramInt1, paramInt2);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

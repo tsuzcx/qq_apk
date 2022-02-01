@@ -1,10 +1,8 @@
-public class auns
+import com.tencent.mobileqq.flutter.channel.model.CardCoverData;
+
+public abstract interface auns
 {
-  public static void a(Throwable paramThrowable)
-  {
-    auoj.a("2490056");
-    bcdb.a(paramThrowable);
-  }
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean, CardCoverData paramCardCoverData);
 }
 
 

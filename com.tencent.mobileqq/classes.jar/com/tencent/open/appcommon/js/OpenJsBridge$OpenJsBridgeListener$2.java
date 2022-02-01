@@ -1,17 +1,17 @@
 package com.tencent.open.appcommon.js;
 
-import bhxl;
-import bhzm;
+import bjin;
+import bjko;
 import com.tencent.smtt.sdk.WebView;
 
 public class OpenJsBridge$OpenJsBridgeListener$2
   implements Runnable
 {
-  public OpenJsBridge$OpenJsBridgeListener$2(bhxl parambhxl, String paramString, WebView paramWebView) {}
+  public OpenJsBridge$OpenJsBridgeListener$2(bjin parambjin, String paramString, WebView paramWebView) {}
   
   public void run()
   {
-    bhzm.b("OpenJsBridge", "[onNoMatchMethod]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':-2,'data':'no such method'});");
+    bjko.b("OpenJsBridge", "[onNoMatchMethod]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':-2,'data':'no such method'});");
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':-2,'data':'no such method'});");

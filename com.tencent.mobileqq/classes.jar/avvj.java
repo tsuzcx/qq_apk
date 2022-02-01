@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
-
-public class avvj
-  implements avti
+class avvj
+  implements avvs
 {
-  public avvj(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  avvj(avux paramavux, avxa paramavxa) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    this.a.a(this.a.a, this.a.getString(2131690509));
+    this.jdField_a_of_type_Avxa.a(paramInt, paramString);
   }
 }
 

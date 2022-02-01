@@ -1,14 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class afjz
-  implements DialogInterface.OnClickListener
+public class afjz
+  extends azip
 {
-  afjz(afjy paramafjy) {}
+  public afjz(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

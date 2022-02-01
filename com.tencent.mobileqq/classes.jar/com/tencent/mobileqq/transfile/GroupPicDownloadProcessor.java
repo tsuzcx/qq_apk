@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bcel;
+import bdlg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -519,7 +519,7 @@ public class GroupPicDownloadProcessor
     paramString = this.mUiRequest.mServerPath;
     paramString = "setError,uuid:" + paramString + " md5:" + this.mUiRequest.mMd5;
     QLog.d("BaseTransProcessor", 1, paramString);
-    bcel.a("Download_Pic_Error_Param_Check", paramString);
+    bdlg.a("Download_Pic_Error_Param_Check", paramString);
   }
   
   protected void setMtype()

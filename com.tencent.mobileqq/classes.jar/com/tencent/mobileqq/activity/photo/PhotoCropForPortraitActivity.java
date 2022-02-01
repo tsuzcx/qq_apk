@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity.photo;
 
 import Override;
-import ajoo;
-import ajop;
-import ajoq;
-import amsw;
+import akkc;
+import akkd;
+import akke;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -18,12 +17,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bfyz;
+import anvk;
+import bhhr;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -39,17 +40,17 @@ public class PhotoCropForPortraitActivity
   private void d()
   {
     boolean bool = true;
-    Object localObject = (RelativeLayout)findViewById(2131363623);
+    Object localObject = (RelativeLayout)findViewById(2131363692);
     if (localObject == null) {
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131559568, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131559601, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(12);
     localLayoutParams.bottomMargin = AIOUtils.dp2px(20.0F, getResources());
     ((RelativeLayout)localObject).addView(localViewGroup, localLayoutParams);
-    int i = bfyz.af(this, getCurrentAccountUin());
+    int i = bhhr.af(this, getCurrentAccountUin());
     if (i == -1)
     {
       try
@@ -80,13 +81,13 @@ public class PhotoCropForPortraitActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378078));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378366));
       if (i != 0) {}
       for (;;)
       {
         this.d = bool;
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.d);
-        localViewGroup.setOnClickListener(new ajoq(this));
+        localViewGroup.setOnClickListener(new akke(this));
         return;
         this.i = 3;
         break;
@@ -99,11 +100,11 @@ public class PhotoCropForPortraitActivity
   
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    Object localObject = (amsw)this.app.getManager(51);
+    Object localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     String str = this.app.getCurrentAccountUin();
-    localObject = ((amsw)localObject).a(str);
+    localObject = ((anvk)localObject).a(str);
     if ((localObject != null) && (((ExtensionInfo)localObject).isPendantValid()) && (this.e)) {
-      this.jdField_a_of_type_AndroidOsHandler = new ajop(this, (ExtensionInfo)localObject, str);
+      this.jdField_a_of_type_AndroidOsHandler = new akkd(this, (ExtensionInfo)localObject, str);
     }
     super.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     if (100 == this.jdField_a_of_type_Int) {
@@ -129,9 +130,9 @@ public class PhotoCropForPortraitActivity
     {
       if (getIntent().getBooleanExtra("open_chat_from_avator", false))
       {
-        this.c = ((Button)super.findViewById(2131367368));
+        this.c = ((Button)super.findViewById(2131367492));
         this.c.setVisibility(0);
-        this.c.setOnClickListener(new ajoo(this));
+        this.c.setOnClickListener(new akkc(this));
       }
       return bool;
       getWindow().setFlags(16777216, 16777216);

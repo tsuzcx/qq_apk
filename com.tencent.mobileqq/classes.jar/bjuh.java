@@ -1,38 +1,22 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.widget.TCWNumberPicker;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public class bjuh
-  implements InputFilter
+class bjuh
+  implements ServiceConnection
 {
-  private bjuh(TCWNumberPicker paramTCWNumberPicker) {}
+  bjuh(bjuf parambjuf) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    int i = 0;
-    if (TCWNumberPicker.a(this.a) == null)
-    {
-      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      return paramCharSequence;
-    }
-    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
-    String[] arrayOfString = TCWNumberPicker.a(this.a);
-    paramInt2 = arrayOfString.length;
-    paramInt1 = i;
-    for (;;)
-    {
-      if (paramInt1 >= paramInt2) {
-        break label154;
-      }
-      paramCharSequence = str;
-      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
-        break;
-      }
-      paramInt1 += 1;
-    }
-    label154:
-    return "";
+    bjuc.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
+    bjuf.a(this.a, lwz.a(paramIBinder));
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    bjuc.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
+    bjuf.a(this.a, null);
   }
 }
 

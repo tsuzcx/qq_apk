@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewwrapper;
 
-import aadt;
+import aatf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import bgtj;
+import bieb;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.QbSdk;
@@ -94,7 +94,7 @@ public class WebviewWrapper
     this.mWebview.setVisibility(4);
     this.mWebViewBuilder.setWebView(this.mWebview);
     this.mWebViewBuilder.setWebviewStatusListener(new WebviewWrapper.1(this, paramIWebviewListener));
-    new bgtj(this.mWebViewBuilder).a(null, QzoneWebViewPluginManager.getInstance().getRuntime(), null);
+    new bieb(this.mWebViewBuilder).a(null, QzoneWebViewPluginManager.getInstance().getRuntime(), null);
   }
   
   public void onPause()
@@ -153,7 +153,7 @@ public class WebviewWrapper
         if (paramIntent.getBooleanExtra("need_force_refresh", false))
         {
           QLog.i("WebviewWrapper", 2, "saxon@ isCurrentUrlEmpty loadDataWithBaseURL");
-          aadt.a(this.mWebview, str1, str2);
+          aatf.a(this.mWebview, str1, str2);
         }
       }
       catch (Exception paramIntent)

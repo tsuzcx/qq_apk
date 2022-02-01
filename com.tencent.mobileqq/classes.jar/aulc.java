@@ -1,22 +1,18 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
 
-class aulc
-  implements TVK_SDKMgr.InstallListener
+public abstract interface aulc
 {
-  aulc(aula paramaula) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void onInstallProgress(float paramFloat) {}
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  public void onInstalledFailed(int paramInt)
-  {
-    aukz.b("installSDK onInstalledFailed arg0=" + paramInt);
-  }
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
   
-  public void onInstalledSuccessed()
-  {
-    aukz.b("installSDK onInstalledSuccessed");
-    aula.a(this.a);
-  }
+  public abstract void b(int paramInt, Bundle paramBundle);
+  
+  public abstract void c(int paramInt, Bundle paramBundle);
+  
+  public abstract void d(int paramInt, Bundle paramBundle);
 }
 
 

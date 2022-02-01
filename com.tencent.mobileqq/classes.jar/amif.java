@@ -1,57 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.BlockingQueue;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public class amif
+class amif
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public int a;
-  public long a;
-  public amie a;
-  public Map<Integer, Long> a;
-  public BlockingQueue<amic> a;
-  public boolean a;
-  public long b;
-  public long c;
+  amif(amia paramamia) {}
   
-  public amif(int paramInt)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Amie);
-    Iterator localIterator;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      localStringBuilder.append(",extra:[");
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (QLog.isColorLevel()) {
-          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
-        } else {
-          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
-        }
-      }
-      localStringBuilder.append("]");
+    if (paramInt != 4097) {
+      return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
-    {
-      localStringBuilder.append(",anno:[");
-      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((amic)localIterator.next()).toString());
-      }
-      localStringBuilder.append("]");
-    }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this.a.e();
   }
 }
 

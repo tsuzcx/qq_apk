@@ -1,14 +1,12 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agvk
-  implements agut
+class agvk
+  implements DialogInterface.OnClickListener
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagap.f(paramMessageRecord, paramagcc);
-  }
+  agvk(agvh paramagvh) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

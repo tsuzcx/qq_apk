@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.publicaccount;
 
-import aiqm;
+import ajmb;
 
 public class PublicAccountFragment$5$1
   implements Runnable
 {
-  public PublicAccountFragment$5$1(aiqm paramaiqm) {}
+  public PublicAccountFragment$5$1(ajmb paramajmb) {}
   
   public void run()
   {

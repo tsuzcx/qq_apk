@@ -1,23 +1,18 @@
-import android.widget.ImageView;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auhd
-  implements ValueAnimator.AnimatorUpdateListener
+public class auhd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  auhd(auhb paramauhb) {}
+  public auhd(QFileDebugSettingFragment paramQFileDebugSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    if (this.a.a.getVisibility() == 0) {
-      this.a.a.setAlpha(f);
-    }
-    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
-    if (localHotVideoMongoliaRelativeLayout != null) {
-      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

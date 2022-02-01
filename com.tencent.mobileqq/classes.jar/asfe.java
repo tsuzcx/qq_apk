@@ -1,54 +1,60 @@
-import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
-class asfe
-  implements asdf
+public class asfe
+  implements URLDrawable.URLDrawableListener
 {
-  asfe(asfd paramasfd, String paramString, asfo paramasfo) {}
+  public asfe(EmoticonFromGroupManager.5 param5, URLDrawable paramURLDrawable, CustomEmotionData paramCustomEmotionData, asfl paramasfl, asfk paramasfk) {}
   
-  public void a(int paramInt, String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfd.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Asfo.a(ases.a(this.jdField_a_of_type_Asfd.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
+    asfa.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramString2 = new Bundle();
-    paramString2.putString("_m_ForwardFileType", "1");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Asfd.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Asfd.jdField_a_of_type_Long + "");
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Asfd.c);
-    paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Asfd.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Asfd.f);
-    paramString2.putString("_m_ForwardUuid", paramString1);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfd.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
+    asfa.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    asfa.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(paramURLDrawable)) {}
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        str = asfa.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0, paramURLDrawable);
+      } while ("".equals(str));
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = str;
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = paramURLDrawable;
+    } while ("".equals(str));
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EmoticonFromGroup_Manager", 4, "onLoadSuccessed upload emo " + paramURLDrawable);
+      }
+      this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      this.jdField_a_of_type_Asfl.d(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_Asfk.c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      return;
     }
-    this.jdField_a_of_type_Asfo.a(paramString1, paramString2);
+    catch (IOException paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.d("EmoticonFromGroup_Manager", 1, paramURLDrawable, new Object[0]);
+    }
   }
 }
 

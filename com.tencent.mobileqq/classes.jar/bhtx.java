@@ -1,51 +1,120 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.vas.ui.AbsAsyncLoadProxy.build.1;
+import com.tencent.mobileqq.vas.ui.AbsAsyncLoadProxy.failedBuilder.1;
+import com.tencent.mobileqq.vas.ui.AbsAsyncLoadProxy.sucessedBuilder.1;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bhtx
-  implements biaf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/ui/AbsAsyncLoadProxy;", "T", "", "()V", "value", "currentObject", "getCurrentObject", "()Ljava/lang/Object;", "setCurrentObject", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "failedBuilder", "Lkotlin/Function0;", "getFailedBuilder", "()Lkotlin/jvm/functions/Function0;", "setFailedBuilder", "(Lkotlin/jvm/functions/Function0;)V", "sucessedBuilder", "getSucessedBuilder", "setSucessedBuilder", "build", "", "loader", "Lcom/tencent/mobileqq/vas/ui/AbsAsyncLoadProxy$Loader;", "doFailedBuilder", "doFailedBuilder$AQQLiteApp_release", "doSucessedBuilder", "doSucessedBuilder$AQQLiteApp_release", "loadAndRefresh", "onCurrentObjectChanged", "onLoadFailed", "onLoadSucceed", "onPostLoaderTask", "block", "Loader", "LoaderCallback", "MyLoaderCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class bhtx<T>
 {
-  protected bhtx(bhtw parambhtw) {}
+  @Nullable
+  private T jdField_a_of_type_JavaLangObject;
+  @NotNull
+  private Function0<? extends T> jdField_a_of_type_KotlinJvmFunctionsFunction0 = (Function0)AbsAsyncLoadProxy.failedBuilder.1.INSTANCE;
+  @NotNull
+  private Function0<? extends T> b = (Function0)AbsAsyncLoadProxy.sucessedBuilder.1.INSTANCE;
   
-  public void a(Exception paramException)
+  private final void a(T paramT)
   {
-    bhzm.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+    if ((Intrinsics.areEqual(paramT, this.jdField_a_of_type_JavaLangObject) ^ true))
+    {
+      this.jdField_a_of_type_JavaLangObject = paramT;
+      a();
+    }
   }
   
-  public void a(JSONObject paramJSONObject)
+  private final void b()
+  {
+    Object localObject = c();
+    if (localObject != null) {
+      a(localObject);
+    }
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      a(b());
+    }
+  }
+  
+  private final void b(bhty parambhty)
+  {
+    bhua localbhua = new bhua(new WeakReference(this));
+    if (!parambhty.a())
+    {
+      parambhty.a((bhtz)localbhua);
+      return;
+    }
+    localbhua.a();
+  }
+  
+  private final void c()
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      a(b());
+    }
+  }
+  
+  @Nullable
+  public final T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  protected abstract void a();
+  
+  public final void a(@NotNull bhty parambhty)
+  {
+    Intrinsics.checkParameterIsNotNull(parambhty, "loader");
+    if (!parambhty.a()) {
+      c();
+    }
+    if (parambhty.a())
+    {
+      b(parambhty);
+      return;
+    }
+    a((Function0)new AbsAsyncLoadProxy.build.1(this, parambhty));
+  }
+  
+  protected abstract void a(@NotNull Function0<Unit> paramFunction0);
+  
+  @Nullable
+  public final T b()
   {
     try
     {
-      int i = paramJSONObject.getInt("ret");
-      Object localObject = paramJSONObject.getString("msg");
-      if (i == 0)
-      {
-        localObject = paramJSONObject.getJSONArray("update_list");
-        i = ((JSONArray)localObject).length();
-        if (i > 0) {
-          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
-        }
-        localObject = biew.a(bhpc.a().a(), "prefer_last_avatar_update_time").edit();
-        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
-        ((SharedPreferences.Editor)localObject).commit();
-        if (this.a.a != null) {
-          this.a.a.a();
-        }
-      }
-      else
-      {
-        bhzm.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
-        return;
-      }
+      Object localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
+      return localObject;
     }
-    catch (JSONException paramJSONObject)
+    catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  public final void b(@NotNull Function0<? extends T> paramFunction0)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "<set-?>");
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+  }
+  
+  @Nullable
+  public final T c()
+  {
+    try
     {
-      bhzm.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+      Object localObject = this.b.invoke();
+      return localObject;
     }
+    catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  public final void c(@NotNull Function0<? extends T> paramFunction0)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "<set-?>");
+    this.b = paramFunction0;
   }
 }
 

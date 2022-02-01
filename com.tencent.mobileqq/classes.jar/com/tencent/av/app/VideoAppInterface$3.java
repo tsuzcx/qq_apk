@@ -1,6 +1,6 @@
 package com.tencent.av.app;
 
-import lhu;
+import lig;
 
 class VideoAppInterface$3
   implements Runnable
@@ -9,7 +9,7 @@ class VideoAppInterface$3
   
   public void run()
   {
-    lhu.a(this.this$0.f, this.this$0.g);
+    lig.a(this.this$0.f, this.this$0.g);
   }
 }
 

@@ -1,24 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 class blpv
-  implements Animator.AnimatorListener
+  extends SosoInterface.OnLocationListener
 {
-  blpv(blpr paramblpr) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  blpv(blpu paramblpu, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEBottomListPart", 2, "Watermark panel down");
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      String str = paramSosoLbsInfo.mLocation.province;
+      paramSosoLbsInfo = paramSosoLbsInfo.mLocation.city;
+      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
+      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      }
+    }
+  }
 }
 
 

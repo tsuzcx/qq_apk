@@ -1,71 +1,46 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.open.agent.AgentActivity;
+import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import org.json.JSONObject;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class bjab
-  extends BaseJsPlugin
+  implements bjqi
 {
-  @JsEvent({"sendMsg"})
-  public void sendMsg(RequestEvent paramRequestEvent)
+  public bjab(AgentActivity paramAgentActivity, String paramString1, Bundle paramBundle, String paramString2, long paramLong, String paramString3, int paramInt) {}
+  
+  public void a(bjpl parambjpl)
   {
-    QLog.d("SmsPlugin", 1, "start sendMsg");
-    if (this.mContext == null)
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, null);
+    QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "start_auth_use_time", " getTicketNoPasswd onSuccess", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    auuv.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", parambjpl);
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity).a().a(this.b, parambjpl);
+    AgentActivity.b(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false);
+    long l1 = ForwardUtils.parseLong(this.b);
+    long l2 = ForwardUtils.parseLong(this.c);
+    preAuth.PreAuthRequest localPreAuthRequest = AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity).a().a(parambjpl, AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity), l1, l2, this.jdField_a_of_type_AndroidOsBundle);
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity).a().a(localPreAuthRequest, this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, parambjpl, new bjac(this), 0);
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, null);
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "--> getTicketNoPasswd onFail");
+    auuv.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", "", false);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(bjmq.a())))
     {
-      QLog.d("SmsPlugin", 1, "sendMsg, but mContext is null");
+      AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false, true);
+      bjhg.a(paramString, "0X800B65D");
       return;
     }
-    String str4 = paramRequestEvent.jsonParams;
-    String str2 = "";
-    String str3 = "";
-    paramRequestEvent = str3;
-    String str1 = str2;
-    try
-    {
-      Object localObject = new JSONObject(str4).optJSONObject("data");
-      paramRequestEvent = str3;
-      str1 = str2;
-      str2 = ((JSONObject)localObject).optString("to", "");
-      paramRequestEvent = str3;
-      str1 = str2;
-      str3 = ((JSONObject)localObject).optString("text", "");
-      paramRequestEvent = str3;
-      str1 = str2;
-      localObject = new Intent("android.intent.action.VIEW");
-      paramRequestEvent = str3;
-      str1 = str2;
-      ((Intent)localObject).setData(Uri.parse("smsto:"));
-      paramRequestEvent = str3;
-      str1 = str2;
-      ((Intent)localObject).setType("vnd.android-dir/mms-sms");
-      paramRequestEvent = str3;
-      str1 = str2;
-      ((Intent)localObject).putExtra("address", str2);
-      paramRequestEvent = str3;
-      str1 = str2;
-      ((Intent)localObject).putExtra("sms_body", str3);
-      paramRequestEvent = str3;
-      str1 = str2;
-      this.mContext.startActivity((Intent)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SmsPlugin", 1, new Object[] { "sendSms exception : ", localException.getMessage(), "jsonParams : ", str4 });
-      Intent localIntent = new Intent("android.intent.action.SENDTO");
-      localIntent.setData(Uri.parse("smsto:" + str1));
-      localIntent.putExtra("sms_body", paramRequestEvent);
-      this.mContext.startActivity(localIntent);
-    }
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjab
  * JD-Core Version:    0.7.0.1
  */

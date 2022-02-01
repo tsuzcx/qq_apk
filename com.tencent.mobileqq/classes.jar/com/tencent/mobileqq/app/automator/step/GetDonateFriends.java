@@ -2,7 +2,8 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import aneg;
+import aogw;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -30,7 +31,7 @@ public class GetDonateFriends
     {
       localObject = this.a.app.getCurrentAccountUin();
       String str = ((TicketManager)this.a.app.getManager(2)).getSkey((String)localObject);
-      ((aneg)this.a.app.getBusinessHandler(27)).a(str, (String)localObject);
+      ((aogw)this.a.app.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, (String)localObject);
     }
     return 7;
   }

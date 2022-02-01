@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae;
 
-import blio;
-import bnbo;
+import bmvf;
+import borg;
 
 public class AEBaseCameraUnit$5
   implements Runnable
 {
-  public AEBaseCameraUnit$5(blio paramblio) {}
+  public AEBaseCameraUnit$5(bmvf parambmvf) {}
   
   public void run()
   {

@@ -1,20 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdup
-  implements bdoy
+  implements View.OnClickListener
 {
-  public bdup(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  public bdup(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public void a(View paramView, int paramInt, bdoz parambdoz)
+  public void onClick(View paramView)
   {
-    if (paramView.getTag() == TroopNickRuleFragment.e) {
-      this.a.a(paramInt);
-    }
-    while (paramView.getTag() != TroopNickRuleFragment.f) {
-      return;
-    }
-    this.a.a(parambdoz);
+    anxo.a(this.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

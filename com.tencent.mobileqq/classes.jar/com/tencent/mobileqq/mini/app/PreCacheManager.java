@@ -5,12 +5,9 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.apkg.PreCacheInfo;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -23,7 +20,6 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONObject;
 
 public class PreCacheManager
 {
@@ -454,19 +450,6 @@ public class PreCacheManager
   {
     MiniAppFileManager.getInstance();
     return MiniAppFileManager.getPreCacheFilePath(paramString1, "static", "" + paramString2.hashCode());
-  }
-  
-  public void notifyPeriodicCacheUpdated(MiniAppConfig paramMiniAppConfig)
-  {
-    if (paramMiniAppConfig == null) {}
-    AppBrandRuntime localAppBrandRuntime;
-    do
-    {
-      return;
-      QLog.i("miniapp-start_PreCacheManager", 1, "[periodic Cache] notify PeriodicCacheUpdated");
-      localAppBrandRuntime = AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime();
-    } while ((localAppBrandRuntime == null) || (localAppBrandRuntime.getApkgInfo() == null) || (localAppBrandRuntime.getApkgInfo().appConfig == null) || (!localAppBrandRuntime.getApkgInfo().appConfig.config.appId.equals(paramMiniAppConfig.config.appId)));
-    localAppBrandRuntime.evaluateServiceSubcribeJS("onBackgroundFetchData", new JSONObject().toString());
   }
   
   public void setBackgroundFetchToken(MiniAppConfig paramMiniAppConfig, String paramString)

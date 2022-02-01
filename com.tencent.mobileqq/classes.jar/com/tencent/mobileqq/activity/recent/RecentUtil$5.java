@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import bcqk;
+import bdxj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class RecentUtil$5
@@ -12,8 +12,8 @@ public final class RecentUtil$5
   {
     if (this.a != null)
     {
-      bcqk.c(this.a);
-      bcqk.a(this.a, true, null);
+      bdxj.c(this.a);
+      bdxj.a(this.a, true, null);
     }
   }
 }

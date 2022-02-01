@@ -1,5 +1,7 @@
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bjxf
@@ -9,7 +11,7 @@ class bjxf
   
   public void onClick(View paramView)
   {
-    this.a.b(true);
+    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

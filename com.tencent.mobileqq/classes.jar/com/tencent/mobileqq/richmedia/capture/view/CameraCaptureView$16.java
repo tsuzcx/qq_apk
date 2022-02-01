@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.graphics.Bitmap;
-import babz;
-import bacc;
-import bfvo;
+import bbii;
+import bbil;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
@@ -21,9 +21,9 @@ class CameraCaptureView$16
     File localFile = new File(str);
     try
     {
-      bfvo.a(this.a, localFile);
-      bfvo.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-      this.this$0.a(new bacc(0, 0, str, null, this.this$0.u));
+      bheg.a(this.a, localFile);
+      bheg.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+      this.this$0.a(new bbil(0, 0, str, null, this.this$0.u));
       this.a.recycle();
       return;
     }
@@ -32,7 +32,7 @@ class CameraCaptureView$16
       for (;;)
       {
         localIOException.printStackTrace();
-        this.this$0.a(new bacc(0, -1, str, null, this.this$0.u));
+        this.this$0.a(new bbil(0, -1, str, null, this.this$0.u));
       }
     }
   }

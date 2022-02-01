@@ -1,46 +1,28 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.FeedsManager.2.1;
 
 public class artr
-  implements arvt
+  implements ThreadExcutor.IThreadListener
 {
-  public artr(FMActivity paramFMActivity, int paramInt) {}
+  public artr(FeedsManager paramFeedsManager) {}
   
-  public void a()
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c.removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c.addView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setTabType(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(16, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692392));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(15, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692396));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(17, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692398));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(18, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692394));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.a(19, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getString(2131692395));
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.l) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f >= 15) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f <= 19)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.setSelectedTab(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f);
-    }
-    for (;;)
+    FeedsManager.access$102(this.a, true);
+    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
+    if (FeedsManager.access$300(this.a))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView.setSelectedTab(16);
+      FeedsManager.access$302(this.a, false);
+      this.a.updateQzoneFeeds();
     }
   }
+  
+  public void onPreRun() {}
 }
 
 

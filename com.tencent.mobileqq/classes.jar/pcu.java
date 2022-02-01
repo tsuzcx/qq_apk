@@ -1,58 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.text.Editable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQPublishCommentBridge;
+import com.tencent.tkd.comment.publisher.qq.model.TkdQQArgument;
+import java.util.UUID;
+import org.json.JSONObject;
 
 public class pcu
-  implements AladdinConfigHandler
+  implements QQPublishCommentBridge
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private final pdl a;
+  
+  public pcu(pdl parampdl)
   {
-    QLog.d("KingcardConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = pbt.a(paramString);
-    Object localObject = paramString.keySet();
+    this.a = parampdl;
+  }
+  
+  public JSONObject buildArticleBiuCommentInfo(Editable paramEditable)
+  {
+    return new pcw(this, null).a(paramEditable);
+  }
+  
+  public TkdQQArgument getArgument()
+  {
+    return this.a.a;
+  }
+  
+  public String getCommentString(Editable paramEditable)
+  {
+    if ((paramEditable == null) || (paramEditable.length() <= 0)) {
+      paramEditable = "";
+    }
     for (;;)
     {
-      String str1;
-      String str2;
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "kingcard_switch")) {
-            bkwm.n(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQPublishBridgeImpl", 2, "getCommentString result=" + paramEditable);
       }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "kingcard_guide_url")) {
-        bkwm.i(str2);
-      } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
-        bkwm.j(str2);
-      } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
-        bkwm.k(str2);
+      return paramEditable;
+      String str = UUID.randomUUID().toString();
+      paramEditable = rvy.a(paramEditable.toString(), str).trim();
+      if (paramEditable.length() <= 0) {
+        paramEditable = "";
+      } else {
+        paramEditable = bcsc.a(rvy.b(paramEditable.replaceAll("\n|\r\n", ""), str));
       }
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  public boolean isNetworkAvailable()
   {
-    bkwm.n(0);
-    bkwm.i("");
-    bkwm.j("");
-    bkwm.k("");
+    return NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication());
+  }
+  
+  public void showToast(String paramString, int paramInt1, int paramInt2)
+  {
+    QQToast.a(BaseApplicationImpl.getApplication(), paramInt2, paramString, paramInt1).a();
   }
 }
 

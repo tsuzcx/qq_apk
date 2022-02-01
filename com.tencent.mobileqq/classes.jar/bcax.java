@@ -1,9 +1,19 @@
-import com.tencent.qq.effect.engine.QEffectData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bcax
-  extends QEffectData
+public class bcax
+  implements View.OnClickListener
 {
-  bcax(bcaw parambcaw) {}
+  public bcax(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.f();
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

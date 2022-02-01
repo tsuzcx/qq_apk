@@ -1,25 +1,8 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.widget.QQToast;
-
-class ammy
-  implements DialogInterface.OnClickListener
+public abstract interface ammy
 {
-  ammy(ammw paramammw, Context paramContext) {}
+  public abstract void onFailed();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131690065), 0).b(0);
-    if (ammw.a(this.jdField_a_of_type_Ammw))
-    {
-      ammw.a(this.jdField_a_of_type_Ammw, 1);
-      ammw.b(this.jdField_a_of_type_Ammw);
-      this.jdField_a_of_type_Ammw.a.r();
-    }
-  }
+  public abstract void onSuccess(String paramString);
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount;
 
-import agjp;
-import alhb;
+import ahcf;
+import amfb;
 import android.text.TextUtils;
-import axil;
+import ayoq;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -29,12 +29,12 @@ class AccountDetailActivity$6$1
         AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
         return;
       }
-      if (TextUtils.equals(axil.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
+      if (TextUtils.equals(ayoq.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
       {
         AccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
         return;
       }
-      if ((agjp.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) && (alhb.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      if ((ahcf.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) && (amfb.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
       {
         QLog.i("com.tencent.biz.pubaccount.AccountDetailActivity", 1, "updateFollowInfo startNewWeatherWebPageActivity");
         return;

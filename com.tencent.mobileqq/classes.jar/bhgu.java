@@ -1,31 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView.5;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-public class bhgu
-  implements View.OnClickListener
+public abstract interface bhgu
 {
-  public bhgu(ProfileCardExtendFriendView.5 param5) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.authState == 1L) {
-      QQToast.a(this.a.this$0.getContext(), 0, 2131698141, 1).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.a.a.authState == 0L) || (this.a.a.authState == 3L)) {
-        aroj.a((FriendProfileCardActivity)ProfileCardExtendFriendView.a(this.a.this$0), this.a.a.idx, this.a.a.schoolName, this.a.a.schoolId);
-      }
-    }
-  }
+  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
+  
+  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
+  
+  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void f();
 }
 
 

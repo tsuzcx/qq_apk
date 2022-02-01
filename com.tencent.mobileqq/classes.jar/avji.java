@@ -1,212 +1,159 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ProviderInfo;
+import android.content.pm.ResolveInfo;
+import android.content.pm.ServiceInfo;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.2;
+import com.tencent.mobileqq.bigbrother.ServerApi.ReqDownloadCheckRecmd;
+import com.tencent.mobileqq.bigbrother.ServerApi.ReqJumpCheckRecmd;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionReq;
+import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.ReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class avji
+  implements Manager
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private aviu jdField_a_of_type_Aviu;
-  avjg jdField_a_of_type_Avjg = new avjj(this);
-  public Conversation a;
-  boolean jdField_a_of_type_Boolean = true;
-  private ViewGroup b;
+  private avjj a;
   
-  public avji(Conversation paramConversation, ViewGroup paramViewGroup)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, aqfx paramaqfx)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
-    this.b = paramViewGroup;
+    QLog.i("TeleScreen|CheckForwardManager", 1, "dl src: " + paramString1 + ", refId: " + paramString4);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), avjk.class);
+    ServerApi.ReqDownloadCheckRecmd localReqDownloadCheckRecmd = new ServerApi.ReqDownloadCheckRecmd();
+    localReqDownloadCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    if (paramString2 != null) {
+      localReqDownloadCheckRecmd.pkg_name.set(paramString2);
+    }
+    if (paramString3 != null) {
+      localReqDownloadCheckRecmd.url.set(paramString3);
+    }
+    if (paramString1 != null) {
+      localReqDownloadCheckRecmd.source.set(paramString1);
+    }
+    if (paramString4 != null) {
+      localReqDownloadCheckRecmd.ref_source.set(paramString4);
+    }
+    localReqDownloadCheckRecmd.platform.set("android");
+    localNewIntent.putExtra("CMD", "QQApkSvc.check_download_apk");
+    localNewIntent.putExtra("RequestBytes", localReqDownloadCheckRecmd.toByteArray());
+    paramString1 = aqgq.a();
+    if (paramaqfx != null)
+    {
+      int i = paramString1.a(paramContext, paramaqfx);
+      localNewIntent.putExtra("req_id", i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
+      }
+    }
+    localNewIntent.setObserver(aqgq.a());
+    localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
   }
   
-  private void a(Context paramContext)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, List<ResolveInfo> paramList, String paramString6, aqgc paramaqgc)
   {
-    boolean bool2 = false;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    QLog.i("TeleScreen|CheckForwardManager", 1, "jump src: " + paramString1 + ", pkg: " + paramString3 + ", scheme: " + paramString4 + ", action: " + paramString5 + "， refId: " + paramString6);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), avjk.class);
+    ServerApi.ReqJumpCheckRecmd localReqJumpCheckRecmd = new ServerApi.ReqJumpCheckRecmd();
+    localReqJumpCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    if (paramString3 != null) {
+      localReqJumpCheckRecmd.pkg_name.add(paramString3);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel())
+      if (paramString4 != null) {
+        localReqJumpCheckRecmd.scheme.set(paramString4);
+      }
+      if (paramString5 != null) {
+        localReqJumpCheckRecmd.action.set(paramString5);
+      }
+      if (paramString2 != null) {
+        localReqJumpCheckRecmd.url.set(paramString2);
+      }
+      if (paramString1 != null) {
+        localReqJumpCheckRecmd.source.set(paramString1);
+      }
+      if (paramString6 != null) {
+        localReqJumpCheckRecmd.ref_source.set(paramString6);
+      }
+      localReqJumpCheckRecmd.platform.set("android");
+      localNewIntent.putExtra("CMD", "QQApkSvc.check_jump_apk");
+      localNewIntent.putExtra("RequestBytes", localReqJumpCheckRecmd.toByteArray());
+      int i = aqgq.a().a(paramContext, paramaqgc);
+      localNewIntent.putExtra("req_id", i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
+      }
+      localNewIntent.setObserver(aqgq.a());
+      localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
+      if ((localReqJumpCheckRecmd.pkg_name.isEmpty()) && (TextUtils.isEmpty(localReqJumpCheckRecmd.scheme.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.action.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.url.get())))
       {
-        if (Build.VERSION.SDK_INT >= 23) {
-          bool2 = true;
+        bdki.c();
+        QLog.e("TeleScreen|CheckForwardManager", 1, "openthirdappnullinfo" + QLog.getStackTraceString(new Throwable()));
+      }
+      return;
+      if (paramList != null)
+      {
+        paramString3 = paramList.iterator();
+        while (paramString3.hasNext())
+        {
+          paramList = (ResolveInfo)paramString3.next();
+          if (paramList.activityInfo != null) {
+            localReqJumpCheckRecmd.pkg_name.add(paramList.activityInfo.packageName);
+          } else if (paramList.serviceInfo != null) {
+            localReqJumpCheckRecmd.pkg_name.add(paramList.serviceInfo.packageName);
+          } else if ((Build.VERSION.SDK_INT >= 19) && (paramList.providerInfo != null)) {
+            localReqJumpCheckRecmd.pkg_name.add(paramList.providerInfo.packageName);
+          }
         }
-        QLog.i("LoginUserGuideHelper", 2, String.format("requestLocation [%s, %s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+        if ((QLog.isColorLevel()) && (localReqJumpCheckRecmd.pkg_name.has()) && (!localReqJumpCheckRecmd.pkg_name.isEmpty())) {
+          QLog.d("TeleScreen|CheckForwardManager", 2, "resolve pkg: " + (String)localReqJumpCheckRecmd.pkg_name.get(0));
+        }
       }
-      if (this.jdField_a_of_type_Aviu == null)
-      {
-        this.jdField_a_of_type_Aviu = new aviu("Login.Guide");
-        this.jdField_a_of_type_Aviu.observerOnUiThread = true;
-      }
-      if (!bool1) {
-        LbsManagerService.startLocation(this.jdField_a_of_type_Aviu);
-      }
-      return;
     }
   }
   
-  private void a(avjd paramavjd)
+  public void a(QQAppInterface paramQQAppInterface, oidb_cmd0xc78.CheckShareExtensionReq paramCheckShareExtensionReq, String paramString, avjl paramavjl)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.c()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "mConversation is not Foreground");
-      }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), avjk.class);
+    localNewIntent.putExtra("CMD", "OidbSvc.0xc78_1");
+    localNewIntent.putExtra("ext_info", paramString);
+    paramString = new oidb_cmd0xc78.ReqBody();
+    paramString.check_share_extension_req.set(paramCheckShareExtensionReq);
+    paramCheckShareExtensionReq = new oidb_sso.OIDBSSOPkg();
+    paramCheckShareExtensionReq.uint32_command.set(3192);
+    paramCheckShareExtensionReq.uint32_service_type.set(1);
+    paramCheckShareExtensionReq.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramString.toByteArray()));
+    localNewIntent.putExtra("RequestBytes", paramCheckShareExtensionReq.toByteArray());
+    if (this.a == null) {
+      this.a = new avjj();
     }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(paramavjd.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginWelcomeManager", 2, "Bad url: " + paramavjd.jdField_a_of_type_JavaLangString);
-    return;
+    int i = this.a.a(paramavjl);
+    localNewIntent.setObserver(this.a);
+    localNewIntent.putExtra("req_id", i);
+    paramQQAppInterface.startServlet(localNewIntent);
     if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "show common guide web");
-    }
-    Object localObject = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent((Context)localObject, QQTranslucentBrowserActivity.class);
-    localIntent.putExtra("url", paramavjd.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("flag_show_loading_dialog", false);
-    localIntent.putExtra("hide_left_button", true);
-    localIntent.setData(Uri.parse(paramavjd.jdField_a_of_type_JavaLangString));
-    ((Activity)localObject).startActivity(localIntent);
-    localObject = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a);
-    ((LoginWelcomeManager)localObject).c = false;
-    ((LoginWelcomeManager)localObject).jdField_a_of_type_Boolean = true;
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a, paramavjd.jdField_a_of_type_Int);
-  }
-  
-  private void a(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "realShowContactsGuideLayer");
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.c()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "mConversation is not Foreground");
-      }
-    }
-    do
-    {
-      return;
-      if ((this.b != null) && (this.b.findViewById(2131365024) == null) && (paramURLDrawable != null) && (paramURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginWelcomeManager", 2, "view repeat or mDragHost==null or drawable status wrong");
-    return;
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.b.getContext()).inflate(2131558978, null));
-      Object localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364637);
-      ((ImageView)localObject1).setContentDescription(amtj.a(2131705485));
-      ((ImageView)localObject1).setOnClickListener(new avjk(this));
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-      Object localObject2 = (Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366696);
-      ((Button)localObject2).setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getString(2131698084));
-      ((Button)localObject2).setOnClickListener(new avjl(this, (Activity)localObject1));
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365691);
-      ((TextView)localObject2).setContentDescription(((Activity)localObject1).getString(2131698083));
-      ((TextView)localObject2).setOnClickListener(new avjm(this, (Activity)localObject1));
-      localObject1 = (ThemeImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365074);
-      ((ThemeImageView)localObject1).setMaskShape(bjuk.b);
-      ((ThemeImageView)localObject1).setImageDrawable(paramURLDrawable);
-    }
-    this.b.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.b.addView(this.jdField_a_of_type_AndroidViewViewGroup);
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a);
-    paramURLDrawable = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a);
-    paramURLDrawable.b = false;
-    paramURLDrawable.jdField_a_of_type_Boolean = true;
-    a(this.b.getContext());
-  }
-  
-  private boolean a()
-  {
-    LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a);
-    return (localLoginWelcomeManager.b) || (localLoginWelcomeManager.c);
-  }
-  
-  private void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("isFirstLoginEnter=%s, shouldCheckOnResume=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(a()) }));
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (a())) {
-      ThreadManagerV2.postImmediately(new LoginwelcomeHelper.2(this), null, true);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    h();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a != null) {
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.getManager(146)).a(this.jdField_a_of_type_Avjg);
+      QLog.d("TeleScreen|CheckForwardManager", 2, "sendCheckShareReq");
     }
   }
   
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a != null) {
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.getManager(146)).a(null);
-    }
-    if (this.jdField_a_of_type_Aviu != null)
-    {
-      LbsManagerService.removeListener(this.jdField_a_of_type_Aviu);
-      this.jdField_a_of_type_Aviu = null;
-    }
-  }
-  
-  public void d()
-  {
-    g();
-    c();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void e()
-  {
-    LoginWelcomeManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a);
-  }
-  
-  public void f()
-  {
-    g();
-    c();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "removeContactsGuidelayer");
-    }
-    if ((this.b != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      this.b.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-  }
+  public void onDestroy() {}
 }
 
 

@@ -1,22 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class oiq
-  implements ViewBase.OnClickListener
+  implements szs
 {
-  oiq(oip paramoip) {}
+  oiq(oin paramoin, AdvertisementInfo paramAdvertisementInfo) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    if (paramViewBase.getEventAttachedData() == null)
-    {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onComplain");
     }
-    oif.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    pay.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 1);
+    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    PublicFragmentActivity.a(oin.a(this.jdField_a_of_type_Oin), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    oin.a(this.jdField_a_of_type_Oin).dismiss();
   }
 }
 

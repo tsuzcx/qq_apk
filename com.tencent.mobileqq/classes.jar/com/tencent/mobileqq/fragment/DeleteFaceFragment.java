@@ -13,9 +13,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import atqx;
-import atqy;
-import bcef;
+import auvx;
+import auvy;
+import bdla;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -102,24 +102,24 @@ public class DeleteFaceFragment
   {
     int i = paramView.getId();
     FragmentActivity localFragmentActivity = getActivity();
-    if (i == 2131369068) {
+    if (i == 2131369231) {
       localFragmentActivity.finish();
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bcef.b(null, "dc00898", "", "", "0X800A855", "0X800A855", 0, 0, "", "", "", "");
-      TextView localTextView1 = (TextView)this.b.findViewById(2131365556);
-      TextView localTextView2 = (TextView)this.b.findViewById(2131365552);
-      TextView localTextView3 = (TextView)this.b.findViewById(2131365541);
-      TextView localTextView4 = (TextView)this.b.findViewById(2131365547);
-      localTextView1.setText(getString(2131692001));
-      localTextView2.setText(getString(2131692002));
-      localTextView3.setText(getString(2131692000));
-      localTextView4.setText(getString(2131691916));
-      localTextView3.setOnClickListener(new atqx(this));
-      localTextView4.setOnClickListener(new atqy(this, localFragmentActivity));
+      bdla.b(null, "dc00898", "", "", "0X800A855", "0X800A855", 0, 0, "", "", "", "");
+      TextView localTextView1 = (TextView)this.b.findViewById(2131365648);
+      TextView localTextView2 = (TextView)this.b.findViewById(2131365644);
+      TextView localTextView3 = (TextView)this.b.findViewById(2131365633);
+      TextView localTextView4 = (TextView)this.b.findViewById(2131365639);
+      localTextView1.setText(getString(2131692091));
+      localTextView2.setText(getString(2131692092));
+      localTextView3.setText(getString(2131692090));
+      localTextView4.setText(getString(2131692006));
+      localTextView3.setOnClickListener(new auvx(this));
+      localTextView4.setOnClickListener(new auvy(this, localFragmentActivity));
       this.b.show();
     }
   }
@@ -127,19 +127,19 @@ public class DeleteFaceFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561030, paramViewGroup, false);
-    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131379557);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561091, paramViewGroup, false);
+    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131379869);
     paramViewGroup.setOnClickListener(this);
-    paramViewGroup.setBackgroundDrawable(a(getResources().getColor(2131166800)));
-    ((TextView)paramLayoutInflater.findViewById(2131369115)).setText(getString(2131691882));
-    ((TextView)paramLayoutInflater.findViewById(2131369068)).setOnClickListener(this);
-    paramViewGroup = paramLayoutInflater.findViewById(2131376628);
+    paramViewGroup.setBackgroundDrawable(a(getResources().getColor(2131166814)));
+    ((TextView)paramLayoutInflater.findViewById(2131369278)).setText(getString(2131691972));
+    ((TextView)paramLayoutInflater.findViewById(2131369231)).setOnClickListener(this);
+    paramViewGroup = paramLayoutInflater.findViewById(2131376890);
     paramBundle = (LinearLayout.LayoutParams)paramViewGroup.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
     paramViewGroup.setLayoutParams(paramBundle);
-    this.b = new ReportDialog(getActivity(), 2131755826);
-    this.b.setContentView(2131558992);
-    bcef.b(null, "dc00898", "", "", "0X800A86F", "0X800A86F", 0, 0, "", "", "", "");
+    this.b = new ReportDialog(getActivity(), 2131755829);
+    this.b.setContentView(2131559019);
+    bdla.b(null, "dc00898", "", "", "0X800A86F", "0X800A86F", 0, 0, "", "", "", "");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

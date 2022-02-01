@@ -1,17 +1,17 @@
 package com.tencent.qav.controller.multi;
 
-import biiy;
+import bjua;
 
 public class MultiOperatorImpl$1
   implements Runnable
 {
-  public MultiOperatorImpl$1(biiy parambiiy) {}
+  public MultiOperatorImpl$1(bjua parambjua) {}
   
   public void run()
   {
     this.this$0.e();
     this.this$0.c(1);
-    biiy.a(this.this$0, null);
+    bjua.a(this.this$0, null);
   }
 }
 

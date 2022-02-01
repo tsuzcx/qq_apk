@@ -2,7 +2,7 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Bundle;
 import android.util.Base64;
-import bgwg;
+import bigy;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -10,7 +10,7 @@ import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
 public class SwiftBrowserLongClickHandler$7
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$7(bgwg parambgwg, String paramString, IX5WebViewExtension paramIX5WebViewExtension) {}
+  public SwiftBrowserLongClickHandler$7(bigy parambigy, String paramString, IX5WebViewExtension paramIX5WebViewExtension) {}
   
   public void run()
   {

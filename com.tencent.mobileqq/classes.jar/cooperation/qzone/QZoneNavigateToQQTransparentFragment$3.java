@@ -3,7 +3,7 @@ package cooperation.qzone;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.FragmentActivity;
-import aroj;
+import assp;
 
 final class QZoneNavigateToQQTransparentFragment$3
   implements DialogInterface.OnClickListener
@@ -13,13 +13,13 @@ final class QZoneNavigateToQQTransparentFragment$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.val$hasWriteSchoolName) {
-      aroj.a(this.val$activity, this.val$idx, this.val$schoolName, this.val$schoolID);
+      assp.a(this.val$activity, this.val$idx, this.val$schoolName, this.val$schoolID);
     }
     for (;;)
     {
       paramDialogInterface.dismiss();
       return;
-      aroj.a(this.val$activity, this.val$schoolName);
+      assp.a(this.val$activity, this.val$schoolName);
     }
   }
 }

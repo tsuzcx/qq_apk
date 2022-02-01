@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-public class bhcm
-  implements bjtq
+final class bhcm
+  implements awvo
 {
-  public bhcm(ContainerView paramContainerView) {}
-  
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  public void a(int paramInt)
   {
     switch (paramInt)
     {
     }
+    AppRuntime localAppRuntime;
     do
     {
-      do
-      {
-        return;
-      } while ((paramBoolean) && (!ContainerView.b(this.a)));
-      paramScrollView = akxv.a();
-      if ((paramScrollView.c()) && (!paramScrollView.a())) {
-        paramScrollView.a();
-      }
-      ContainerView.b(this.a, false);
       return;
-      ContainerView.b(this.a, true);
-      paramScrollView = akxv.a();
-    } while ((!paramScrollView.c()) || (!paramScrollView.a()));
-    paramScrollView.b();
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
   }
 }
 

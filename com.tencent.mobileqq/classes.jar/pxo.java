@@ -1,9 +1,15 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment;
 
-public abstract interface pxo<B, C>
+public class pxo
+  implements unm
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<B> paramArrayList, @Nullable C paramC, int paramInt2, String paramString);
+  public pxo(ReadInJoyAdPopSheetBrowserFragment paramReadInJoyAdPopSheetBrowserFragment) {}
+  
+  public void a()
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

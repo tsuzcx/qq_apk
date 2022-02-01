@@ -1,18 +1,18 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterRequest;
+import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-class aumu
-  implements aung
+public class aumu
+  extends MessageMicro
 {
-  aumu(aumt paramaumt, String paramString) {}
+  public aumu(QCircleFlutterRequest paramQCircleFlutterRequest) {}
   
-  public void a(boolean paramBoolean)
+  public int computeSizeDirectly(int paramInt, Object paramObject)
   {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      aumt.a(this.jdField_a_of_type_Aumt).c(2131695145);
-      aumt.a(this.jdField_a_of_type_Aumt).show();
-    }
+    return 0;
   }
+  
+  public void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Object paramObject) {}
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajnr;
-import bfed;
+import akjf;
+import bgmj;
 
 class TroopPhotoController$1
   implements Runnable
 {
-  TroopPhotoController$1(TroopPhotoController paramTroopPhotoController, ajnr paramajnr, bfed parambfed) {}
+  TroopPhotoController$1(TroopPhotoController paramTroopPhotoController, akjf paramakjf, bgmj parambgmj) {}
   
   public void run()
   {

@@ -1,18 +1,258 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.RspBody;
 
-class bdxt
-  implements ValueAnimator.AnimatorUpdateListener
+public class bdxt
 {
-  bdxt(bdxs parambdxs, View paramView) {}
+  public int a;
+  public Object a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public boolean b;
+  public String c;
+  public ArrayList<String> c;
+  public boolean c;
+  public boolean d;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bdxt()
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_b_of_type_Int = -99999;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static bdxt a(bdxt parambdxt)
+  {
+    if (parambdxt == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clone() return, backData == null.");
+      }
+      return null;
+    }
+    bdxt localbdxt = new bdxt();
+    localbdxt.jdField_a_of_type_JavaLangString = parambdxt.jdField_a_of_type_JavaLangString;
+    localbdxt.jdField_a_of_type_Int = parambdxt.jdField_a_of_type_Int;
+    localbdxt.jdField_b_of_type_JavaLangString = parambdxt.jdField_b_of_type_JavaLangString;
+    localbdxt.jdField_c_of_type_JavaLangString = parambdxt.jdField_c_of_type_JavaLangString;
+    ArrayList localArrayList = new ArrayList();
+    if (parambdxt.jdField_a_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(parambdxt.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localbdxt.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (parambdxt.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(parambdxt.jdField_b_of_type_JavaUtilArrayList);
+    }
+    localbdxt.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (parambdxt.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(parambdxt.jdField_c_of_type_JavaUtilArrayList);
+    }
+    localbdxt.jdField_c_of_type_JavaUtilArrayList = localArrayList;
+    localbdxt.jdField_a_of_type_JavaLangObject = parambdxt.jdField_a_of_type_JavaLangObject;
+    localbdxt.jdField_b_of_type_Int = parambdxt.jdField_b_of_type_Int;
+    localbdxt.jdField_a_of_type_Boolean = parambdxt.jdField_a_of_type_Boolean;
+    localbdxt.jdField_b_of_type_Boolean = parambdxt.jdField_b_of_type_Boolean;
+    localbdxt.jdField_c_of_type_Boolean = parambdxt.jdField_c_of_type_Boolean;
+    localbdxt.d = parambdxt.d;
+    return localbdxt;
+  }
+  
+  public ArrayList<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clearNewUins()");
+    }
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
+    }
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      this.jdField_c_of_type_JavaUtilArrayList.clear();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.addNewUin subUin=" + paramString);
+    }
+    if ((paramString == null) || (paramString.length() < 4)) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      }
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_b_of_type_JavaUtilArrayList.contains(paramString));
+    this.jdField_b_of_type_JavaUtilArrayList.add(paramString);
+  }
+  
+  public void a(oidb_0x7a2.RspBody paramRspBody, ArrayList<String> paramArrayList)
+  {
+    if (paramRspBody == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      for (;;)
+      {
+        if ((paramRspBody.uint64_bind_uin.has()) && (paramRspBody.uint64_bind_uin.get() > 10000L))
+        {
+          this.jdField_c_of_type_JavaLangString = Long.toString(paramRspBody.uint64_bind_uin.get());
+          this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_JavaLangString);
+        }
+        if (!paramRspBody.uint64_multi_bind_uin.has()) {
+          break;
+        }
+        paramRspBody = paramRspBody.uint64_multi_bind_uin.get();
+        if (paramRspBody == null) {
+          break;
+        }
+        paramRspBody = paramRspBody.iterator();
+        while (paramRspBody.hasNext())
+        {
+          Object localObject = (Long)paramRspBody.next();
+          if (((Long)localObject).longValue() > 10000L)
+          {
+            localObject = Long.toString(((Long)localObject).longValue());
+            if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject)) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+            }
+            if (this.jdField_c_of_type_JavaLangString == null) {
+              this.jdField_c_of_type_JavaLangString = ((String)localObject);
+            }
+          }
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramRspBody = paramArrayList.iterator();
+        while (paramRspBody.hasNext())
+        {
+          paramArrayList = (String)paramRspBody.next();
+          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
+            this.jdField_c_of_type_JavaUtilArrayList.add(paramArrayList);
+          }
+          this.jdField_b_of_type_JavaUtilArrayList.remove(paramArrayList);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.parseUins() figure new subUins. localSubUins is null. new SubUins=" + String.valueOf(this.jdField_b_of_type_JavaUtilArrayList) + " overdue SubUins=" + String.valueOf(this.jdField_c_of_type_JavaUtilArrayList));
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_c_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_c_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_c_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public ArrayList<String> c()
+  {
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      }
+      return localArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "getUinsBinded() return null, mSubUin is null");
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

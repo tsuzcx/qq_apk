@@ -1,73 +1,115 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.PointF;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-public abstract class bnno
-  extends bnha
+class bnno
+  implements View.OnClickListener
 {
-  public PointF a;
-  public SegmentKeeper a;
-  public int[] a;
-  public ValueAnimator c;
-  public boolean i = true;
-  public int j;
-  public boolean j;
-  public int k = -1;
-  public boolean k;
-  public int l = -1;
-  public boolean l;
-  public int m = -1;
-  public boolean m;
-  public boolean n;
-  public float q = 1.0F;
-  public float r;
-  public float s;
-  public float t;
-  public float u;
-  public float v;
-  public float w = 1.0F;
+  bnno(bnnl parambnnl) {}
   
-  public bnno()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-  }
-  
-  public bnno(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramPointF.x, paramPointF.y);
-    this.q = paramFloat1;
-    this.r = paramFloat2;
-    this.s = paramFloat3;
-    this.t = paramFloat4;
-    this.u = paramFloat5;
-    this.v = paramFloat6;
-    this.i = paramBoolean;
-    this.n = Build.MODEL.equals("MI 5C");
-  }
-  
-  public bnno(bnno parambnno, float paramFloat)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(parambnno.jdField_a_of_type_AndroidGraphicsPointF.x * paramFloat, parambnno.jdField_a_of_type_AndroidGraphicsPointF.y * paramFloat);
-    parambnno.q *= paramFloat;
-    this.r = parambnno.r;
-    parambnno.s *= paramFloat;
-    parambnno.t *= paramFloat;
-    this.u = parambnno.u;
-    this.v = parambnno.v;
-    this.i = parambnno.i;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(parambnno.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
-  }
-  
-  public void a(Canvas paramCanvas) {}
-  
-  public boolean c()
-  {
-    return !this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isEmpty();
+    int j = 0;
+    bnnl.a(this.a, true);
+    Set localSet = bnnl.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + localSet);
+    Object localObject2 = bnqq.a();
+    ((bnqq)localObject2).j();
+    Object localObject1 = new LinkedList();
+    int i = 0;
+    while (i < bnnl.a(this.a).size()) {
+      if (!localSet.contains(Integer.valueOf(i)))
+      {
+        i += 1;
+      }
+      else
+      {
+        if (((bnml)bnnl.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
+        {
+          ((bnqq)localObject2).k(((bnml)bnnl.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+          ((bnqq)localObject2).i("none");
+          ((bnqq)localObject2).j("none");
+          ((List)localObject1).add(((bnml)bnnl.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+        }
+        for (;;)
+        {
+          bnqm.a().ao();
+          break;
+          if (!((bnml)bnnl.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
+          {
+            ((bnqq)localObject2).k("none");
+            ((bnqq)localObject2).i(((bnmo)bnmn.jdField_a_of_type_JavaUtilList.get(bnmn.jdField_a_of_type_ArrayOfInt[(i % bnmn.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
+            ((bnqq)localObject2).j(((bnml)bnnl.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
+            ((List)localObject1).add("none");
+          }
+          else
+          {
+            ((bnqq)localObject2).k("none");
+            ((bnqq)localObject2).i("none");
+            ((bnqq)localObject2).j("none");
+            ((List)localObject1).add("none");
+          }
+        }
+      }
+    }
+    localObject2 = new StringBuilder();
+    i = 0;
+    while (i < ((List)localObject1).size())
+    {
+      ((StringBuilder)localObject2).append((String)((List)localObject1).get(i));
+      if (i != ((List)localObject1).size() - 1) {
+        ((StringBuilder)localObject2).append(",");
+      }
+      i += 1;
+    }
+    bnqm.a().a(localSet.size(), ((StringBuilder)localObject2).toString());
+    bnnl.a(this.a).a(false);
+    bnpb localbnpb = bnnl.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + localbnpb.a + ", texts = " + localbnpb.b);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList3 = new ArrayList();
+    ArrayList localArrayList4 = new ArrayList();
+    i = j;
+    if (i < localbnpb.a.size())
+    {
+      Integer localInteger = (Integer)localbnpb.d.get(i);
+      if (localSet.contains(localInteger))
+      {
+        if ((i != 0) || (bnnl.a(this.a) == null)) {
+          break label743;
+        }
+        localArrayList1.add(bnnl.a(this.a).jdField_a_of_type_JavaLangString);
+        localArrayList2.add(bnnl.a(this.a).b);
+        localArrayList3.add(bnnl.a(this.a).c);
+      }
+      for (;;)
+      {
+        localObject2 = bnnl.a(this.a, localInteger.intValue());
+        StringBuilder localStringBuilder = new StringBuilder().append("gif^");
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        localObject1 = (String)localObject1;
+        localArrayList4.add(localObject1);
+        bnrh.b("AEGIFChunkPreviewFragment", "save gif, index=" + i + ", widgetInfo=" + (String)localObject1 + ", originIndex=" + localInteger);
+        i += 1;
+        break;
+        label743:
+        localArrayList1.add(localbnpb.a.get(i));
+        localArrayList2.add(localbnpb.b.get(i));
+        localArrayList3.add(localbnpb.c.get(i));
+      }
+    }
+    bnnl.a(this.a, localArrayList1, localArrayList2, localArrayList3, localArrayList4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

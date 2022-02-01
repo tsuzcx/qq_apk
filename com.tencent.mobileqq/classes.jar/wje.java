@@ -1,77 +1,134 @@
-import android.text.TextUtils;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class wje
+public class wje
+  implements wja
 {
-  public ConcurrentHashMap<String, Object> a;
-  public wjf a;
-  public boolean a;
-  public final String b;
-  public boolean b;
+  public static final String a;
+  public static final String b = weg.a("StoryGroupSvc.do_like_video");
+  private EntityManager a;
   
-  public wje()
+  static
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.share" + getClass().getSimpleName());
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = weg.a("StorySvc.do_like_video");
   }
   
-  public <T> T a(String paramString)
+  private QQStoryContext a()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    return QQStoryContext.a();
+  }
+  
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public List<LikeEntry> a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 4;; i = 3)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      xvv.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result %s, stack = %s", String.valueOf(paramString), String.valueOf(localObject), ypg.a(7));
-      return localObject;
-    }
-    xvv.a(this.jdField_b_of_type_JavaLangString, "getResult key %s, result null, stack = %s", String.valueOf(paramString), ypg.a(7));
-    return null;
-  }
-  
-  public final wje a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    return this;
-  }
-  
-  public abstract void a();
-  
-  public void a(String paramString, Object paramObject)
-  {
-    xvv.a(this.jdField_b_of_type_JavaLangString, "putResult key %s, value %s, stack = %s", String.valueOf(paramString), String.valueOf(paramObject), ypg.a(7));
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramObject);
+      List localList = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, LikeEntry.class, LikeEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
+      paramString = localList;
+      if (localList == null) {
+        paramString = new ArrayList();
+      }
+      return paramString;
     }
   }
   
-  protected abstract void a(Map<String, Object> paramMap);
-  
-  public final void a(boolean paramBoolean)
+  public void a()
   {
-    xvv.a(this.jdField_b_of_type_JavaLangString, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), ypg.a(7));
-    if (this.jdField_a_of_type_Wjf != null) {
-      this.jdField_a_of_type_Wjf.b(paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = QQStoryContext.a().a().createEntityManager();
+  }
+  
+  public void a(@NonNull LikeEntry paramLikeEntry)
+  {
+    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
+    {
+      paramLikeEntry.type = 3;
+      paramLikeEntry.setStatus(1000);
+      localEntityManager.persistOrReplace(paramLikeEntry);
+      LikeEntry localLikeEntry = new LikeEntry();
+      localLikeEntry.copy(paramLikeEntry);
+      localLikeEntry.type = 4;
+      localLikeEntry.setStatus(1000);
+      localEntityManager.persistOrReplace(localLikeEntry);
+      localEntityManager.getTransaction().commit();
+      return;
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
     }
   }
   
-  public boolean a()
+  public void a(@NonNull List<LikeEntry> paramList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return true;
-  }
-  
-  protected final void b(boolean paramBoolean)
-  {
-    xvv.a(this.jdField_b_of_type_JavaLangString, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), ypg.a(7));
-    if (this.jdField_a_of_type_Wjf != null) {
-      this.jdField_a_of_type_Wjf.a(paramBoolean);
+    int i;
+    if (paramBoolean1) {
+      i = 4;
     }
+    EntityManager localEntityManager;
+    Object localObject;
+    for (;;)
+    {
+      localEntityManager = a().a().createEntityManager();
+      localEntityManager.getTransaction().begin();
+      if (!paramBoolean2) {
+        break;
+      }
+      try
+      {
+        localObject = a(paramString, paramBoolean1);
+        if (localObject == null) {
+          break;
+        }
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          LikeEntry localLikeEntry = (LikeEntry)((Iterator)localObject).next();
+          localLikeEntry.setStatus(1001);
+          localEntityManager.remove(localLikeEntry);
+        }
+        i = 3;
+      }
+      finally
+      {
+        localEntityManager.getTransaction().end();
+      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject = (LikeEntry)paramList.next();
+      ((LikeEntry)localObject).feedId = paramString;
+      ((LikeEntry)localObject).type = i;
+      localEntityManager.persistOrReplace((Entity)localObject);
+    }
+    localEntityManager.getTransaction().commit();
+    localEntityManager.getTransaction().end();
   }
   
-  public boolean b()
+  public void b()
   {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+  }
+  
+  public void b(@NonNull LikeEntry paramLikeEntry)
+  {
+    paramLikeEntry.setStatus(1001);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramLikeEntry, "unionId=? and feedId= ? and type in (?,?)", new String[] { paramLikeEntry.unionId, paramLikeEntry.feedId, String.valueOf(4), String.valueOf(3) });
   }
 }
 

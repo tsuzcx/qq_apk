@@ -1,377 +1,194 @@
-import android.app.Activity;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewStub;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.TMG.channel.AVChannelManager;
+import com.tencent.TMG.logger.AVLoggerChooser;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVContext.StartParam;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam.Builder;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.av.sig.QAVAuthBuffer;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel;
-import dov.com.qq.im.ae.view.AECompoundButton;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class bltd
-  extends bmar
-  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 3;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bljy jdField_a_of_type_Bljy;
-  private bmap jdField_a_of_type_Bmap;
-  private bmaq jdField_a_of_type_Bmaq;
-  private AEVideoStoryTopBarViewModel jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel;
-  private AECompoundButton jdField_a_of_type_DovComQqImAeViewAECompoundButton;
-  private boolean jdField_a_of_type_Boolean;
-  private AECompoundButton b;
-  private AECompoundButton c;
-  private AECompoundButton d;
-  private AECompoundButton e;
-  private AECompoundButton f;
-  private AECompoundButton g;
+  private static bltd jdField_a_of_type_Bltd;
+  private static String b = "LimixiuAVManager";
+  private Context jdField_a_of_type_AndroidContentContext;
+  bltf jdField_a_of_type_Bltf = null;
+  bltg jdField_a_of_type_Bltg = null;
+  blth jdField_a_of_type_Blth = null;
+  AVContext jdField_a_of_type_ComTencentTMGSdkAVContext = null;
+  private AVRoomMulti.EventListener jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener = new blte(this);
+  String jdField_a_of_type_JavaLangString = null;
   
-  public bltd(Activity paramActivity, View paramView, bmas parambmas)
+  private bltd(Context paramContext)
   {
-    super(paramActivity, paramView, parambmas);
-    this.jdField_a_of_type_Bljy = ((bljy)parambmas.a(65537, new Object[0]));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = "user";
   }
   
-  private void a()
+  public static bltd a(Context paramContext)
   {
-    if (!"VIVO;V1836T".equalsIgnoreCase(Build.MANUFACTURER + ";" + Build.MODEL)) {}
-    ViewGroup.LayoutParams localLayoutParams;
-    do
+    if (jdField_a_of_type_Bltd == null) {}
+    try
     {
-      return;
-      localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams));
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localLayoutParams;
-    localMarginLayoutParams.topMargin += DisplayUtil.dip2px(this.mActivity, 20.0F);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      if (jdField_a_of_type_Bltd == null) {
+        jdField_a_of_type_Bltd = new bltd(paramContext);
+      }
+      return jdField_a_of_type_Bltd;
+    }
+    finally {}
   }
   
-  private void a(@NonNull bmcd parambmcd)
+  private AVContext.StartParam a()
   {
-    if (!blvr.j(this.mActivity.getIntent())) {}
-    do
-    {
-      return;
-      if (this.e != null) {
-        this.e.setForegroundAndBackgroundResource(parambmcd.k, parambmcd.j);
-      }
-      if (this.b != null) {
-        this.b.setForegroundAndBackgroundResource(parambmcd.l, parambmcd.j);
-      }
-      if (this.c != null) {
-        this.c.setForegroundAndBackgroundResource(parambmcd.m, parambmcd.j);
-      }
-      if (this.d != null) {
-        this.d.setForegroundAndBackgroundResource(parambmcd.n, parambmcd.j);
-      }
-    } while (this.jdField_a_of_type_DovComQqImAeViewAECompoundButton == null);
-    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton.setForegroundAndBackgroundResource(parambmcd.o, parambmcd.j);
+    blsv localblsv = new blsv();
+    localblsv.sdkAppId = Integer.parseInt(this.jdField_a_of_type_Bltf.jdField_a_of_type_JavaLangString);
+    localblsv.accountType = this.jdField_a_of_type_Bltf.b;
+    localblsv.appIdAt3rd = this.jdField_a_of_type_Bltf.jdField_a_of_type_JavaLangString;
+    localblsv.identifier = this.jdField_a_of_type_Bltf.c;
+    localblsv.engineCtrlType = 2;
+    localblsv.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Bltf.f).intValue();
+    localblsv.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_Bltf.g).longValue();
+    QLog.i("AVManager", 1, "getStartParams|param.sdkAppId=" + localblsv.sdkAppId + ", param.accountType=" + localblsv.accountType + ", param.appIdAt3rd=" + localblsv.appIdAt3rd + ", param.identifier=" + localblsv.identifier + ", param.engineCtrlType=" + localblsv.engineCtrlType + ", param.nGameID=" + localblsv.jdField_a_of_type_Int + ", param.lGameRoomID=" + localblsv.jdField_a_of_type_Long);
+    return localblsv;
   }
   
-  private void a(boolean paramBoolean)
+  private AVRoomMulti.EnterParam a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_Bmap.a())
-      {
-        this.g.setVisibility(0);
-        this.f.setVisibility(0);
-        this.c.setVisibility(8);
-        this.d.setVisibility(0);
+    byte[] arrayOfByte = QAVAuthBuffer.a().genAuthBuffer(Integer.parseInt(this.jdField_a_of_type_Bltf.jdField_a_of_type_JavaLangString), Integer.parseInt(paramString), this.jdField_a_of_type_Bltf.c, Integer.parseInt(this.jdField_a_of_type_Bltf.b), this.jdField_a_of_type_Bltf.d, 1800, -1);
+    return new AVRoomMulti.EnterParam.Builder(Integer.parseInt(paramString)).auth(-1L, arrayOfByte).avControlRole("user").autoCreateRoom(true).videoRecvMode(0).screenRecvMode(0).isEnableMic(paramBoolean1).isEnableSpeaker(paramBoolean2).isEnableHwEnc(true).isEnableHwDec(true).build();
+  }
+  
+  public int a()
+  {
+    int i = 1003;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.exitRoom();
+    }
+    QLog.i("AVManager", 1, "exitRoom|ret=" + i);
+    return i;
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(bltf parambltf)
+  {
+    this.jdField_a_of_type_Bltf = parambltf;
+  }
+  
+  public void a(blth paramblth)
+  {
+    this.jdField_a_of_type_Blth = paramblth;
+  }
+  
+  public void a(AVCallback paramAVCallback)
+  {
+    int i = 0;
+    AVChannelManager.setIMChannelType(1);
+    com.tencent.TMG.utils.SoUtil.customLibPath = bltk.a();
+    AVLoggerChooser.setUseImsdk(false);
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext = AVContext.createInstance(this.jdField_a_of_type_AndroidContentContext, false);
+    }
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      if (AVContext.getSoExtractError() != 0) {
+        i = AVContext.getSoExtractError();
       }
     }
     for (;;)
     {
-      if (a()) {
-        this.d.setVisibility(8);
+      QLog.i("AVManager", 1, "startContext|ret=" + i);
+      if (i != 0) {
+        paramAVCallback.onComplete(i, "internal error.");
       }
       return;
-      this.c.setVisibility(0);
-      break;
-      if (this.jdField_a_of_type_Bmap.a())
-      {
-        this.g.setVisibility(8);
-        this.f.setVisibility(8);
+      i = 1101;
+      continue;
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.setAppVersion(this.jdField_a_of_type_Bltf.e);
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.start(a(), null, paramAVCallback);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, bltg parambltg)
+  {
+    QLog.i("AVManager", 1, "enterRoom.");
+    this.jdField_a_of_type_Bltg = parambltg;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null)
+    {
+      Log.e("AVManager", "enterRoom| enter room faild, because of context not started.");
+      if (this.jdField_a_of_type_Bltg != null) {
+        this.jdField_a_of_type_Bltg.a(1101, "context not started.");
       }
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
-      this.d.setVisibility(8);
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Bmap = ((bmap)blks.a(this.jdField_a_of_type_Bljy).get(bmap.class));
-    this.jdField_a_of_type_Bmap.a.observe(this.jdField_a_of_type_Bljy, new bltf(this));
-    this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel = ((AEVideoStoryTopBarViewModel)blks.a(this.jdField_a_of_type_Bljy).get(AEVideoStoryTopBarViewModel.class));
-    this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.a().observe(this.jdField_a_of_type_Bljy, new bltg(this));
-    this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b().observe(this.jdField_a_of_type_Bljy, new blth(this));
-    this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.a.observe(this.jdField_a_of_type_Bljy, new blti(this));
-    this.jdField_a_of_type_Bmaq = ((bmaq)blks.a(this.jdField_a_of_type_Bljy).get(bmaq.class));
-    this.jdField_a_of_type_Bmaq.a().observe(this.jdField_a_of_type_Bljy, new bltj(this));
-    this.jdField_a_of_type_Bmaq.b().observe(this.jdField_a_of_type_Bljy, new bltk(this));
-    this.jdField_a_of_type_Bmaq.c().observe(this.jdField_a_of_type_Bljy, new bltl(this));
-  }
-  
-  private boolean b()
-  {
-    if (blvr.a(this.jdField_a_of_type_Bljy)) {
-      return false;
-    }
-    Object localObject1 = new HashMap();
-    Object localObject2 = new ArrayList();
-    ((List)localObject2).add("PCAM10");
-    ((List)localObject2).add("PBBM30");
-    ((List)localObject2).add("PBAM00");
-    ((List)localObject2).add("PADM00");
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add("Y85A");
-    localArrayList.add("u3x");
-    localArrayList.add("X21A");
-    localArrayList.add("Y93");
-    localArrayList.add("Y81s");
-    localArrayList.add("V1914A");
-    localArrayList.add("V1918A");
-    localArrayList.add("V1818CA");
-    localArrayList.add("V1732T");
-    localArrayList.add("V1914T");
-    ((Map)localObject1).put("vivo", localArrayList);
-    ((Map)localObject1).put("oppo", localObject2);
-    if (Build.MANUFACTURER != null)
-    {
-      localObject1 = (List)((Map)localObject1).get(Build.MANUFACTURER.toLowerCase());
-      if (localObject1 == null) {
-        return false;
-      }
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if ((localObject2 != null) && ((((String)localObject2).equalsIgnoreCase(Build.MODEL)) || ((Build.MANUFACTURER + " " + (String)localObject2).equalsIgnoreCase(Build.MODEL)))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  private boolean c()
-  {
-    if ((this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel == null) || (this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b() == null)) {
-      return false;
-    }
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b().getValue();
-    if (localBoolean == null) {
-      return false;
-    }
-    return localBoolean.booleanValue();
-  }
-  
-  protected boolean a()
-  {
-    return (!this.jdField_a_of_type_Bljy.b().c()) || (!this.jdField_a_of_type_Bljy.b().f()) || (!this.jdField_a_of_type_Bljy.b().a());
-  }
-  
-  protected void initView()
-  {
-    ViewStub localViewStub = (ViewStub)this.mRootView.findViewById(2131377893);
-    if (localViewStub != null) {
-      this.jdField_a_of_type_AndroidViewView = localViewStub.inflate();
-    }
-    ViewCompat.setOnApplyWindowInsetsListener(this.jdField_a_of_type_AndroidViewView, new blte(this));
-    ViewCompat.requestApplyInsets(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mRootView.findViewById(2131364102));
-    this.e = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131364180));
-    this.e.setOnClickListener(this);
-    this.jdField_a_of_type_DovComQqImAeViewAECompoundButton = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131364360));
-    this.b = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365291));
-    this.d = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363386));
-    this.d.setOnClickListener(this);
-    this.c = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131366811));
-    this.f = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365177));
-    this.f.setOnClickListener(this);
-    this.g = ((AECompoundButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131378064));
-    this.g.setOnClickListener(this);
-    this.g.setSelected(false);
-    this.c.setOnClickListener(this);
-    this.c.setSelected(this.jdField_a_of_type_Boolean);
-    b();
-    a();
-  }
-  
-  public void onActivityResume()
-  {
-    super.onActivityResume();
-    if ((this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b() != null))
-    {
-      bmbx.a("AEVideoStoryTopBarPart", "【抠背开关】-> onResume -> post:" + c());
-      this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b().postValue(Boolean.valueOf(c()));
-    }
-    if (this.c != null) {
-      this.c.setSelected(this.jdField_a_of_type_Boolean);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    boolean bool3 = true;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131363386: 
-    case 2131365177: 
-    case 2131378064: 
-    case 2131364180: 
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        bmbc.a().N();
-        bmys.a(this.d.a(), 200L, null);
-        zxp.a("mystatus_shoot", "beauty_clk", 0, 0, new String[0]);
-        if (this.mPartManager != null) {
-          if (this.jdField_a_of_type_Bmaq.a())
-          {
-            this.mPartManager.a(327686, new Object[0]);
-          }
-          else if (!this.jdField_a_of_type_Bmaq.b())
-          {
-            Object localObject;
-            if (blvr.j(this.jdField_a_of_type_Bljy.a().getIntent()))
-            {
-              if (!bmbv.a(paramView))
-              {
-                localObject = new Intent();
-                ((Intent)localObject).setAction("ae_editor_bottom_tab_show_hide");
-                ((Intent)localObject).putExtra("is_show", false);
-                this.jdField_a_of_type_Bljy.a().sendBroadcast((Intent)localObject);
-              }
-            }
-            else
-            {
-              this.mPartManager.a(131077, new Object[0]);
-              continue;
-              bmys.a(this.f.a(), 200L, null);
-              localObject = (bltn)this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.a().getValue();
-              int i;
-              if ((localObject != null) && (((bltn)localObject).a()))
-              {
-                i = 1;
-                label275:
-                localObject = this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.a();
-                if (i != 0) {
-                  break label343;
-                }
-                bool1 = true;
-                label290:
-                ((MutableLiveData)localObject).postValue(new bltn(bool1, this.jdField_a_of_type_Int));
-                if (!this.jdField_a_of_type_Bmap.a()) {
-                  continue;
-                }
-                localObject = bmbg.a();
-                if (i != 0) {
-                  break label348;
-                }
-              }
-              label343:
-              label348:
-              for (bool1 = bool3;; bool1 = false)
-              {
-                ((bmbg)localObject).d(bool1);
-                break;
-                i = 0;
-                break label275;
-                bool1 = false;
-                break label290;
-              }
-              bmys.a(this.g.a(), 200L, null);
-              bool3 = c();
-              localObject = new StringBuilder().append("【抠背开关】-> 点击 ->post:");
-              if (!bool3)
-              {
-                bool1 = true;
-                label395:
-                bmbx.a("AEVideoStoryTopBarPart", bool1);
-                localObject = this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b();
-                if (bool3) {
-                  break label478;
-                }
-                bool1 = true;
-                label426:
-                ((MutableLiveData)localObject).postValue(Boolean.valueOf(bool1));
-                if (!this.jdField_a_of_type_Bmap.a()) {
-                  continue;
-                }
-                localObject = bmbg.a();
-                if (bool3) {
-                  break label483;
-                }
-              }
-              label478:
-              label483:
-              for (bool1 = bool2;; bool1 = false)
-              {
-                ((bmbg)localObject).c(bool1);
-                bmbc.a().ak();
-                break;
-                bool1 = false;
-                break label395;
-                bool1 = false;
-                break label426;
-              }
-              bmys.a(paramView, 200L, null);
-              this.jdField_a_of_type_Bljy.L();
-            }
-          }
-        }
-      }
-    }
-    bmys.a(this.c.a(), 200L, null);
-    if (!this.c.isSelected()) {}
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bljy.a(bool1))
-      {
-        this.jdField_a_of_type_Boolean = bool1;
-        this.c.setSelected(bool1);
-        if (QLog.isDevelopLevel()) {
-          bmbx.a("AEVideoStoryTopBarPart", "onClick, mFlashButton.setSelected(), on=" + bool1);
-        }
-      }
-      bmbc.a().I();
-      break;
-      bool1 = false;
-    }
-  }
-  
-  public void send(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
       return;
-    } while ((this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel == null) || (this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b() == null));
-    bmbx.a("AEVideoStoryTopBarPart", "【抠背开关】-> 相机启动检查 -> post:" + c());
-    this.jdField_a_of_type_DovComQqImAeCameraUiTopbarAEVideoStoryTopBarViewModel.b().postValue(Boolean.valueOf(c()));
+    }
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().startTRAEService();
+    QLog.e("AVManager", 1, "enterRoom| try enter room implement!!!!!!!!!");
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.enterRoom(this.jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener, a(paramString, paramBoolean1, paramBoolean2, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableMicCompleteCallback paramEnableMicCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableMic(paramBoolean, paramEnableMicCompleteCallback);
+    }
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableSpeakerCompleteCallback paramEnableSpeakerCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableSpeaker(paramBoolean, paramEnableSpeakerCompleteCallback);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {}
+    for (int i = localAVAudioCtrl.getMicState();; i = 0)
+    {
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = false;
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {}
+    for (int i = localAVAudioCtrl.getSpeakerState();; i = 0)
+    {
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
   }
 }
 

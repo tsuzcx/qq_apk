@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity.home;
 
-import amov;
-import axuo;
+import anri;
+import azaz;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class MainFragment$20
   implements Runnable
@@ -11,8 +13,8 @@ class MainFragment$20
   
   public void run()
   {
-    axuo localaxuo = (axuo)MainFragment.a(this.this$0).getManager(319);
-    ((amov)MainFragment.a(this.this$0).getBusinessHandler(2)).B();
+    azaz localazaz = (azaz)MainFragment.a(this.this$0).getManager(QQManagerFactory.AUTO_REPLY_MANAGER);
+    ((anri)MainFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).B();
   }
 }
 

@@ -1,70 +1,46 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.app.Activity;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.mobileqq.data.MessageForScribble;
 
-public class ajiw
-  extends agqd
+public abstract class ajiw
+  implements ajjx
 {
-  public ajiw(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  protected Activity a;
+  
+  public ajiw(Activity paramActivity)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.a = paramActivity;
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf, int paramInt1, int paramInt2)
+  public Activity a()
   {
-    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaezf, paramInt1, paramInt2);
-    paramContext = (agql)paramaezf;
-    if (paramContext.d != null)
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
+  
+  public void c(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
-        break label109;
-      }
-      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
-        break label95;
-      }
-      paramContext.d.setText(amtj.a(2131705958));
-    }
-    for (;;)
-    {
-      if (paramContext.b != null) {
-        paramContext.b.setVisibility(8);
-      }
-      if (paramContext.c != null) {
-        paramContext.c.setVisibility(8);
-      }
+      FrameHelperActivity.c(paramBoolean);
       return;
-      label95:
-      paramContext.d.setText(paramChatMessage.msg);
-      continue;
-      label109:
-      if ((paramChatMessage instanceof MessageForScribble)) {
-        paramContext.d.setText(amtj.a(2131705957));
-      } else {
-        paramContext.d.setText(amtj.a(2131705959));
-      }
     }
   }
   
-  public void b(View paramView)
-  {
-    super.b(paramView);
-  }
+  public void d() {}
   
-  protected boolean d()
-  {
-    return false;
-  }
+  public void e() {}
 }
 
 

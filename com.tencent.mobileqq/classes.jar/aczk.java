@@ -1,65 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig.ResourcePlugin.ResourceType;
+import com.tencent.qapmsdk.base.listener.IResourceListener;
+import com.tencent.qapmsdk.base.meta.SceneMeta;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aczk
-  implements View.OnClickListener
+public class aczk
+  extends acyf
+  implements acya, IResourceListener
 {
-  aczk(aczh paramaczh) {}
-  
-  public void onClick(View paramView)
+  public String a()
   {
-    alih localalih = (alih)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)localalih.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      aszt.b(localFileManagerEntity);
+    return "resource";
+  }
+  
+  public void a()
+  {
+    com.tencent.qapmsdk.base.config.SDKConfig.RES_TYPE = DefaultPluginConfig.ResourcePlugin.ResourceType.OUTSIDE_TAG.getValue();
+    QAPM.setProperty(114, this);
+  }
+  
+  public void a(String paramString)
+  {
+    if (e()) {
+      QAPM.beginScene(paramString, QAPM.ModeResource);
     }
-    switch (localalih.jdField_a_of_type_Int)
-    {
+  }
+  
+  public void b(String paramString)
+  {
+    if (e()) {
+      QAPM.endScene(paramString, QAPM.ModeResource);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Alig.notifyDataSetChanged();
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-        {
-          aszk.a(2131692367);
-        }
-        else
-        {
-          asyq.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new aczl(this, localFileManagerEntity));
-          break;
-          this.a.a(localFileManagerEntity);
-          break;
-          if (localFileManagerEntity.getCloudType() == 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
-            break;
-          }
-          if (localFileManagerEntity.getCloudType() == 6)
-          {
-            ((amqd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).a(0, localFileManagerEntity.uniseq, false);
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity.nSessionId);
-          break;
-          if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-            break label246;
-          }
-          aszk.a(2131692367);
-        }
-      }
-      label246:
-      boolean bool = localFileManagerEntity.isSend();
-      asyq.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new aczm(this, localFileManagerEntity));
+  }
+  
+  public void onEndScene(SceneMeta paramSceneMeta)
+  {
+    double d = 100.0D * paramSceneMeta.cpu;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramSceneMeta.stage + " " + d + " " + paramSceneMeta.memory + " " + paramSceneMeta.duration);
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cpuUsage", String.valueOf(d));
+    localHashMap.put("memory", String.valueOf(paramSceneMeta.memory));
+    localHashMap.put("scene", String.valueOf(paramSceneMeta.stage));
+    localHashMap.put("duration", String.valueOf(paramSceneMeta.duration));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "actScenePerf", true, 0L, 0L, localHashMap, "");
   }
 }
 

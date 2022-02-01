@@ -1,22 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class aigb
-  extends aico
+class aigb
+  implements bkzq
 {
-  public aigb(SystemMsgListView paramSystemMsgListView) {}
+  aigb(aifz paramaifz, bkzi parambkzi) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
-    }
-    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
-    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
-      return;
-    }
-    SystemMsgListView.a(this.a).c();
+    aifz.a(this.jdField_a_of_type_Aifz, paramView, paramInt, this.jdField_a_of_type_Bkzi);
   }
 }
 

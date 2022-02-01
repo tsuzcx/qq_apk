@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-class atps
-  implements DialogInterface.OnClickListener
+public final class atps
+  implements Parcelable.Creator<FileInfo>
 {
-  atps(atpn paramatpn, int paramInt, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public FileInfo a(Parcel paramParcel)
   {
-    if (paramInt == 1)
-    {
-      atpn.a(atpn.a(this.jdField_a_of_type_Atpn), "shareToQQ", atpn.a(this.jdField_a_of_type_Atpn), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      npn.a(atpn.a(this.jdField_a_of_type_Atpn), 0, "", "");
-      if (atpn.a(this.jdField_a_of_type_Atpn) != null) {
-        atpn.a(this.jdField_a_of_type_Atpn).finish(1);
-      }
-      atpn.a(this.jdField_a_of_type_Atpn).moveTaskToBack(true);
-    }
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 

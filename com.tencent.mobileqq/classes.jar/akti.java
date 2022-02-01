@@ -1,23 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akti
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public akti(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public akti(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

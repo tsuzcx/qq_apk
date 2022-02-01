@@ -1,185 +1,293 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
-import java.util.LinkedHashMap;
+import appoint.define.appoint_define.AppointID;
+import appoint.define.appoint_define.DateComment;
+import appoint.define.appoint_define.Elem;
+import appoint.define.appoint_define.Face;
+import appoint.define.appoint_define.ReplyInfo;
+import appoint.define.appoint_define.RichText;
+import appoint.define.appoint_define.StrangerInfo;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.notColumn;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arxs
-  extends arvv
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private arxu jdField_a_of_type_Arxu;
-  protected BaseFileAssistantActivity a;
-  private View.OnClickListener b;
+  public int a;
+  public long a;
+  public arxw a;
+  public String a;
+  public arxw b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  @notColumn
+  public String f;
   
-  public arxs(Context paramContext, LinkedHashMap<String, List<FavFileInfo>> paramLinkedHashMap, BaseFileAssistantActivity paramBaseFileAssistantActivity, View.OnClickListener paramOnClickListener1, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener2, arxu paramarxu)
+  public static arxs a(appoint_define.DateComment paramDateComment)
   {
-    super(paramContext, paramLinkedHashMap);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.b = paramOnClickListener2;
-    this.jdField_a_of_type_Arxu = paramarxu;
-  }
-  
-  private String a(FavFileInfo paramFavFileInfo)
-  {
-    String str1 = atbg.b(paramFavFileInfo.jdField_c_of_type_Long);
-    String str2 = FileUtil.filesizeToString(paramFavFileInfo.b);
-    return str1 + " " + paramFavFileInfo.m + " " + str2;
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    if ((paramString2 == null) || (paramString2.equalsIgnoreCase(""))) {
-      return "";
+    if ((paramDateComment == null) || (TextUtils.isEmpty(paramDateComment.str_comment_id.get()))) {
+      return null;
     }
-    return paramString1 + paramString2;
-  }
-  
-  protected void a(FavFileInfo paramFavFileInfo, AsyncImageView paramAsyncImageView)
-  {
-    int i = aszt.a(paramFavFileInfo.jdField_c_of_type_JavaLangString);
-    if ((i == 0) || (i == 2))
+    arxs localarxs = new arxs();
+    localarxs.jdField_a_of_type_JavaLangString = paramDateComment.str_comment_id.get();
+    localarxs.jdField_b_of_type_JavaLangString = arxx.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
+    localarxs.jdField_a_of_type_Long = paramDateComment.uint32_time.get();
+    appoint_define.RichText localRichText;
+    int i;
+    if (paramDateComment.msg_content.has())
     {
-      String str = "";
-      if (FileUtil.fileExistsAndNotEmpty(paramFavFileInfo.k)) {
-        str = paramFavFileInfo.k;
+      localRichText = (appoint_define.RichText)paramDateComment.msg_content.get();
+      localarxs.c = a(localRichText);
+      localarxs.jdField_a_of_type_Arxw = arxw.a((appoint_define.StrangerInfo)paramDateComment.msg_publisher_info.get());
+      if (!paramDateComment.uint32_flag.has()) {
+        break label220;
       }
-      while (!TextUtils.isEmpty(str))
-      {
-        paramAsyncImageView.setAsyncImage(str);
-        return;
-        if (FileUtil.fileExistsAndNotEmpty(paramFavFileInfo.j)) {
-          str = paramFavFileInfo.j;
-        } else if (FileUtil.fileExistsAndNotEmpty(paramFavFileInfo.i)) {
-          str = paramFavFileInfo.i;
-        } else if (FileUtil.fileExistsAndNotEmpty(paramFavFileInfo.h)) {
-          str = paramFavFileInfo.h;
-        } else if (FileUtil.fileExistsAndNotEmpty(paramFavFileInfo.g)) {
-          str = paramFavFileInfo.g;
-        }
+      i = paramDateComment.uint32_flag.get();
+      label131:
+      localarxs.jdField_a_of_type_Int = i;
+      if (!paramDateComment.msg_reply_info.has()) {
+        break label225;
       }
     }
-    aszt.a(paramAsyncImageView, paramFavFileInfo.e, i);
+    label220:
+    label225:
+    for (paramDateComment = (appoint_define.ReplyInfo)paramDateComment.msg_reply_info.get();; paramDateComment = null)
+    {
+      if (paramDateComment != null)
+      {
+        localarxs.d = paramDateComment.str_comment_id.get();
+        localarxs.jdField_b_of_type_Arxw = arxw.a((appoint_define.StrangerInfo)paramDateComment.msg_stranger_info.get());
+      }
+      localarxs.f = arxx.a(localarxs.jdField_a_of_type_Long, true);
+      localarxs.e = arxx.a(localarxs.jdField_a_of_type_Long, false);
+      return localarxs;
+      localRichText = null;
+      break;
+      i = 0;
+      break label131;
+    }
   }
   
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  public static arxs a(JSONObject paramJSONObject)
   {
-    FavFileInfo localFavFileInfo = (FavFileInfo)getChild(paramInt1, paramInt2);
-    if (localFavFileInfo == null) {
-      return paramView;
+    if (paramJSONObject == null) {
+      return null;
     }
-    if (paramView == null) {
-      localObject1 = paramView;
+    arxs localarxs = new arxs();
+    try
+    {
+      localarxs.jdField_a_of_type_JavaLangString = paramJSONObject.getString("commentId");
+      localarxs.jdField_b_of_type_JavaLangString = paramJSONObject.getString("datingId");
+      localarxs.c = paramJSONObject.getString("content");
+      localarxs.jdField_a_of_type_Long = paramJSONObject.getLong("time");
+      localarxs.jdField_a_of_type_Arxw = arxw.a(paramJSONObject.getJSONObject("puber"));
+      localarxs.jdField_a_of_type_Int = paramJSONObject.getInt("flag");
     }
-    for (;;)
+    catch (JSONException localJSONException1)
     {
       try
       {
-        Object localObject2 = new arxt(this);
-        localObject1 = paramView;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560753, paramViewGroup, false);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376021));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361941));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366644));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366631));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localObject2);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366642));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(48);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366629));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369605));
-        localObject1 = paramView;
-        ((arxt)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        localObject1 = paramView;
-        paramView.setTag(localObject2);
-        paramViewGroup = (ViewGroup)localObject2;
-        try
+        for (;;)
         {
-          a(localFavFileInfo, paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView);
-          paramViewGroup.jdField_b_of_type_Int = paramInt1;
-          paramViewGroup.jdField_a_of_type_Int = paramInt2;
-          paramViewGroup.jdField_a_of_type_JavaLangObject = localFavFileInfo;
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.b);
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(paramViewGroup);
-          paramViewGroup.jdField_c_of_type_Int = 1;
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFavFileInfo.jdField_c_of_type_JavaLangString);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(a(localFavFileInfo));
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692217);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692192);
-          localObject1 = atbg.b(localFavFileInfo.jdField_c_of_type_Long) + a((String)localObject2, (String)localObject1);
-          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f())
+          localarxs.d = paramJSONObject.getString("replyId");
+          try
           {
-            paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(aslg.a(localFavFileInfo));
-            localObject1 = (LinearLayout.LayoutParams)paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-            ((LinearLayout.LayoutParams)localObject1).topMargin = AIOUtils.dp2px(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.8F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.25F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
-            return paramView;
-            localObject1 = paramView;
-            paramViewGroup = (arxt)paramView.getTag();
+            localarxs.jdField_b_of_type_Arxw = arxw.a(paramJSONObject.getJSONObject("replyer"));
+            return localarxs;
           }
-          else
+          catch (JSONException paramJSONObject)
           {
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-            continue;
-            paramViewGroup.printStackTrace();
+            paramJSONObject.printStackTrace();
+            return localarxs;
           }
+          localJSONException1 = localJSONException1;
+          localJSONException1.printStackTrace();
         }
-        catch (Exception paramViewGroup) {}
       }
-      catch (Exception paramViewGroup)
+      catch (JSONException localJSONException2)
       {
-        paramView = (View)localObject1;
+        for (;;)
+        {
+          localJSONException2.printStackTrace();
+        }
       }
     }
+  }
+  
+  public static String a(appoint_define.RichText paramRichText)
+  {
+    if (paramRichText == null) {
+      return "";
+    }
+    if (paramRichText.rpt_msg_elems.has()) {}
+    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramRichText.iterator();
+    label135:
+    label187:
+    label190:
+    label192:
+    label195:
+    while (localIterator.hasNext())
+    {
+      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
+      if (localElem != null)
+      {
+        if (localElem.str_content.has())
+        {
+          paramRichText = localElem.str_content.get();
+          label106:
+          localStringBuilder.append(paramRichText);
+          if (!localElem.msg_face_info.has()) {
+            break label187;
+          }
+          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
+          if (paramRichText == null) {
+            break label190;
+          }
+          if (!paramRichText.uint32_index.has()) {
+            break label192;
+          }
+        }
+        for (int i = paramRichText.uint32_index.get();; i = -1)
+        {
+          if (i < 0) {
+            break label195;
+          }
+          localStringBuilder.append('\024');
+          localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(i));
+          break;
+          paramRichText = "";
+          break label106;
+          paramRichText = null;
+          break label135;
+          break;
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(List<arxs> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return "";
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
+    {
+      JSONObject localJSONObject = a((arxs)paramList.next());
+      if (localJSONObject == null) {
+        break label83;
+      }
+      localJSONArray.put(localJSONObject);
+      i += 1;
+    }
+    label83:
+    for (;;)
+    {
+      if (i >= 20) {
+        return localJSONArray.toString();
+      }
+      break;
+    }
+  }
+  
+  public static JSONObject a(arxs paramarxs)
+  {
+    if (paramarxs == null) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("commentId", paramarxs.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("datingId", paramarxs.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("content", paramarxs.c);
+      localJSONObject.put("time", paramarxs.jdField_a_of_type_Long);
+      localJSONObject.put("replyId", paramarxs.d);
+      localJSONObject.put("puber", arxw.a(paramarxs.jdField_a_of_type_Arxw));
+      localJSONObject.put("replyer", arxw.a(paramarxs.jdField_b_of_type_Arxw));
+      localJSONObject.put("flag", paramarxs.jdField_a_of_type_Int);
+      return localJSONObject;
+    }
+    catch (JSONException paramarxs)
+    {
+      paramarxs.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(List<arxs> paramList, String paramString)
+  {
+    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONArray(paramString);
+        int j = paramString.length();
+        int i = 0;
+        while (i < j)
+        {
+          arxs localarxs = a(paramString.getJSONObject(i));
+          if (localarxs != null) {
+            paramList.add(localarxs);
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (JSONException paramList)
+      {
+        paramList.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (paramObject == this) {
+          return true;
+        }
+      } while (paramObject.getClass() != getClass());
+      paramObject = (arxs)paramObject;
+    } while (((this.jdField_a_of_type_JavaLangString != null) || (paramObject.jdField_a_of_type_JavaLangString != null)) && ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "".hashCode();
+    }
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.c).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.d).append(",").append(this.jdField_a_of_type_Arxw).append(",").append(this.jdField_b_of_type_Arxw).append(",").append(this.jdField_a_of_type_Int).append(",").append("]");
+    return localStringBuilder.toString();
   }
 }
 

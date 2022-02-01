@@ -1,59 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class rcx
-  implements Cloneable
+class rcx
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  rcx(rcr paramrcr, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public static rcx a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    rcx localrcx = new rcx();
-    localrcx.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
-    localrcx.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
-    localrcx.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
-    localrcx.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
-    return localrcx;
-  }
-  
-  public rcx a()
-  {
-    try
+    if (paramMotionEvent.getAction() == 0)
     {
-      super.clone();
-      rcx localrcx = new rcx();
-      localrcx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localrcx.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localrcx.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localrcx.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return localrcx;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
-        }
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
+    return false;
   }
 }
 

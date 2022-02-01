@@ -1,31 +1,13 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import java.util.HashMap;
 
 public class znk
-  extends ClickableSpan
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private znl jdField_a_of_type_Znl;
-  private String b;
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Znl != null) {
-      this.jdField_a_of_type_Znl.a(this.jdField_a_of_type_JavaLangString, this.b);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int != -2147483648)
-    {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-      return;
-    }
-    super.updateDrawState(paramTextPaint);
-  }
+  public HashMap<String, String> a = new HashMap();
+  public HashMap<String, String> b = new HashMap();
+  public HashMap<String, String> c = new HashMap();
+  public HashMap<String, String> d = new HashMap();
+  public HashMap<String, String> e = new HashMap();
+  public HashMap<String, String> f = new HashMap();
 }
 
 

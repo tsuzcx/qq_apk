@@ -1,34 +1,31 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class anqz
-  extends anrh
+  extends BroadcastReceiver
 {
-  public anqz(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private anqz(BaseActivity2 paramBaseActivity2) {}
   
-  public boolean a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
     {
-      boolean bool = MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
-      return bool;
+      BaseActivity2.mAppForground = false;
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
     }
-    catch (Exception localException)
-    {
-      QLog.e("HttpOpenMiniAppAndAdAction", 1, "doAction error: " + localException.getMessage());
-      a("HttpOpenMiniAppAndAdAction");
+    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+      return;
     }
-    return false;
+    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
+    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anqz
  * JD-Core Version:    0.7.0.1
  */

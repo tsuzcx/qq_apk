@@ -1,16 +1,34 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-final class aext
-  implements aeya
+class aext
+  extends RecyclerView.ViewHolder
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  View jdField_a_of_type_AndroidViewView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  URLImageView b;
+  
+  public aext(aexr paramaexr, View paramView)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 86);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368633));
+    this.b = ((URLImageView)paramView.findViewById(2131368648));
+    this.b.setBackgroundDrawable(a());
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370446);
+  }
+  
+  private Drawable a()
+  {
+    Resources localResources = this.itemView.getResources();
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(AIOUtils.dp2px(5.0F, localResources));
+    localGradientDrawable.setStroke(AIOUtils.dp2px(1.5F, localResources), localResources.getColor(2131167134));
+    return localGradientDrawable;
   }
 }
 

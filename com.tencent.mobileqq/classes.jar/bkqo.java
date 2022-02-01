@@ -1,51 +1,19 @@
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnInfoListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnInfoListener;
 
-public class bkqo
-  implements bkqn
+class bkqo
+  implements IMediaPlayer.OnInfoListener
 {
-  public int a()
+  bkqo(bkqg parambkqg, ReliableVideoPlayer.OnInfoListener paramOnInfoListener) {}
+  
+  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    return 0;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnInfoListener != null) {
+      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bkqg, paramInt1, paramInt2);
+    }
+    return false;
   }
-  
-  public Intent a()
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("forward_type", 22);
-    localIntent.putExtra("pluginName", "struct_favorite");
-    return localIntent;
-  }
-  
-  public void a() {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void k() {}
-  
-  public void l() {}
-  
-  public void m() {}
-  
-  public void n() {}
 }
 
 

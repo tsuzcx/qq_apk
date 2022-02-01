@@ -32,8 +32,8 @@ public class QQCustomDialogDevLock
   
   public static QQCustomDialogDevLock createDevLockCustomDialog(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramContext = new QQCustomDialogDevLock(paramContext, 2131755826);
-    paramContext.setContentView(2131561827);
+    paramContext = new QQCustomDialogDevLock(paramContext, 2131755829);
+    paramContext.setContentView(2131561895);
     paramContext.setTitle(paramString1);
     paramContext.setPcText(paramString2);
     paramContext.setPhoneText(paramString3);
@@ -61,13 +61,13 @@ public class QQCustomDialogDevLock
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131365588));
-    this.imageiconpc = ((ImageView)findViewById(2131368284));
-    this.textpc = ((TextView)findViewById(2131378368));
-    this.imageiconphone = ((ImageView)findViewById(2131368285));
-    this.textphone = ((TextView)findViewById(2131378370));
-    this.lBtn = ((TextView)findViewById(2131365541));
-    this.rBtn = ((TextView)findViewById(2131365547));
+    this.title = ((TextView)findViewById(2131365681));
+    this.imageiconpc = ((ImageView)findViewById(2131368429));
+    this.textpc = ((TextView)findViewById(2131378659));
+    this.imageiconphone = ((ImageView)findViewById(2131368430));
+    this.textphone = ((TextView)findViewById(2131378661));
+    this.lBtn = ((TextView)findViewById(2131365633));
+    this.rBtn = ((TextView)findViewById(2131365639));
   }
   
   public QQCustomDialogDevLock setNegativeButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)

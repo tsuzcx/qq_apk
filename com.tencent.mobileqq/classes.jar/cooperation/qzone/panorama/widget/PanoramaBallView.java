@@ -95,7 +95,7 @@ public class PanoramaBallView
   {
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.colorBackground = paramContext.getResources().getColor(2131165364);
+    this.colorBackground = paramContext.getResources().getColor(2131165370);
   }
   
   private int measureHeight(int paramInt)

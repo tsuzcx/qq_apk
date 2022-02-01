@@ -1,30 +1,21 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.comic.ui.QQComicFragment;
+import java.util.Observable;
+import java.util.Observer;
 
 public class blrt
-  implements Observer<blrk>
+  implements Observer
 {
-  blrt(blrm paramblrm) {}
+  public blrt(QQComicFragment paramQQComicFragment, WebView paramWebView) {}
   
-  public void a(@Nullable blrk paramblrk)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Object localObject = blrg.a(paramblrk);
-    paramblrk = new LinkedList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if (blsg.a != null)
     {
-      blrk localblrk = (blrk)((Iterator)localObject).next();
-      blrw localblrw = new blrw(null);
-      localblrw.a = blry.a(localblrk);
-      paramblrk.add(localblrw);
+      QLog.d("WebLog_WebViewFragment", 4, "RuntimeCreateObserver update ");
+      blsg.a.a(this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext());
     }
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, paramblrk));
   }
 }
 

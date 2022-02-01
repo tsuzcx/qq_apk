@@ -1,39 +1,81 @@
-import android.graphics.Point;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-
 public class apkq
+  extends apkj
 {
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public int a;
+  public String a;
+  public apkr[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
+  
+  public apkq()
   {
-    if (paramBundle != null)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfApkr = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(apkq paramapkq)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapkq != null)
     {
-      int i = paramBundle.getInt("param_service_type");
-      String str = paramBundle.getString("param_sub_type");
-      if (paramBundle.getInt("param_extra", 1) != 2) {
-        aplo.a().a(i, str, paramBoolean);
+      bool1 = bool2;
+      if (paramapkq.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapkq.b == 0)
+        {
+          bool1 = bool2;
+          if (paramapkq.jdField_a_of_type_ArrayOfApkr != null)
+          {
+            bool1 = bool2;
+            if (paramapkq.jdField_a_of_type_ArrayOfApkr[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramapkq.jdField_a_of_type_ArrayOfApkr[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
       }
-      aplo.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
     }
+    return bool1;
   }
   
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  public byte[] a()
   {
-    aplo.a().a(paramInt, paramString, paramBoolean);
+    return this.jdField_a_of_type_ArrayOfApkr[0].a;
   }
   
-  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
-  
-  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  public String toString()
   {
-    if (paramBundle != null)
+    if (this.jdField_a_of_type_ArrayOfApkr != null)
     {
-      aplo.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
-      aplo.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
-      aplo.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
-      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
-      aplo.a().b(bool);
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfApkr.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApkr[i];
+        i += 1;
+      }
     }
+    String str2 = "null";
+    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

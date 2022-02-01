@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aqrr;
+import arvd;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -13,7 +13,7 @@ public class PrecoverResource
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverResource> CREATOR = new aqrr();
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new arvd();
   @notColumn
   public int arg1;
   @notColumn
@@ -129,7 +129,7 @@ public class PrecoverResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrecoverResource
  * JD-Core Version:    0.7.0.1
  */

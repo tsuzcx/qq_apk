@@ -1,213 +1,177 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 
 public class awhs
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String[] d;
-  public int e;
-  public int f;
+  public awhs(QQMusicPlayService paramQQMusicPlayService) {}
   
-  static
+  /* Error */
+  public void onAudioFocusChange(int paramInt)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { amtj.a(2131706524), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { amtj.a(2131706532), amtj.a(2131706519), amtj.a(2131706528), amtj.a(2131706530), amtj.a(2131706535), amtj.a(2131706521), amtj.a(2131706539), amtj.a(2131706523) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { amtj.a(2131706536), amtj.a(2131706541), amtj.a(2131706538), amtj.a(2131706525), amtj.a(2131706526), amtj.a(2131706531), amtj.a(2131706540), amtj.a(2131706529), amtj.a(2131706522), amtj.a(2131706527), amtj.a(2131706537), amtj.a(2131706520), amtj.a(2131706534) };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 2130845461, 2130845457, 2130845456, 2130845462, 2130845459, 2130845460, 2130845458 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3 };
-  }
-  
-  public awhs()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_d_of_type_ArrayOfJavaLangString = new String[] { "0", "0", "0", "0" };
-    this.jdField_a_of_type_JavaLangString = "不限";
-    this.jdField_b_of_type_JavaLangString = "不限";
-    this.jdField_c_of_type_JavaLangString = "不限";
-    this.jdField_d_of_type_JavaLangString = "不限";
-  }
-  
-  public static awhs a(String paramString)
-  {
-    return a(paramString, "nearpeople_filters");
-  }
-  
-  public static awhs a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
-      do
-      {
-        return null;
-        paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + paramString1, 4);
-      } while (paramString1 == null);
-      paramString2 = new awhs();
-      paramString2.jdField_a_of_type_Int = paramString1.getInt("gender", -1);
-    } while (paramString2.jdField_a_of_type_Int == -1);
-    paramString2.jdField_a_of_type_Boolean = paramString1.getBoolean("byuser", false);
-    paramString2.jdField_c_of_type_Int = paramString1.getInt("age", 0);
-    paramString2.jdField_d_of_type_Int = paramString1.getInt("interest", 0);
-    paramString2.jdField_b_of_type_Int = paramString1.getInt("time", 3);
-    paramString2.e = paramString1.getInt("xingzuo", 0);
-    paramString2.f = paramString1.getInt("key_career", 0);
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[0] = paramString1.getString("key_hometown_country", "0");
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[1] = paramString1.getString("key_hometown_province", "0");
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[2] = paramString1.getString("key_hometown_city", "0");
-    paramString2.jdField_a_of_type_JavaLangString = paramString1.getString("key_hometown_string", "不限");
-    paramString2.jdField_b_of_type_JavaLangString = paramString1.getString("str_country", "不限");
-    paramString2.jdField_c_of_type_JavaLangString = paramString1.getString("str_province", "不限");
-    paramString2.jdField_d_of_type_JavaLangString = paramString1.getString("str_city", "不限");
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[0])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[0] = "0";
-    }
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[1])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[1] = "0";
-    }
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[2])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[2] = "0";
-    }
-    return paramString2;
-  }
-  
-  public static void a(String paramString, awhs paramawhs)
-  {
-    a(paramString, paramawhs, "nearpeople_filters");
-  }
-  
-  public static void a(String paramString1, awhs paramawhs, String paramString2)
-  {
-    if ((paramawhs == null) || (TextUtils.isEmpty(paramString1))) {}
-    do
-    {
-      return;
-      paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + paramString1, 4);
-    } while (paramString1 == null);
-    paramString1.edit().putBoolean("byuser", paramawhs.jdField_a_of_type_Boolean).putInt("gender", paramawhs.jdField_a_of_type_Int).putInt("time", paramawhs.jdField_b_of_type_Int).putInt("age", paramawhs.jdField_c_of_type_Int).putInt("xingzuo", paramawhs.e).putInt("key_career", paramawhs.f).putString("key_hometown_country", paramawhs.jdField_d_of_type_ArrayOfJavaLangString[0]).putString("key_hometown_province", paramawhs.jdField_d_of_type_ArrayOfJavaLangString[1]).putString("key_hometown_city", paramawhs.jdField_d_of_type_ArrayOfJavaLangString[2]).putString("key_hometown_string", paramawhs.jdField_a_of_type_JavaLangString).putString("str_country", paramawhs.jdField_b_of_type_JavaLangString).putString("str_province", paramawhs.jdField_c_of_type_JavaLangString).putString("str_city", paramawhs.jdField_d_of_type_JavaLangString).putInt("interest", paramawhs.jdField_d_of_type_Int).commit();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    int i = 0;
-    boolean bool1;
-    if ((paramObject == null) || (!(paramObject instanceof awhs)))
-    {
-      bool1 = false;
-      return bool1;
-    }
-    paramObject = (awhs)paramObject;
-    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && ((this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) || (((this.jdField_b_of_type_Int == 4) || (this.jdField_b_of_type_Int == 3)) && ((paramObject.jdField_b_of_type_Int == 4) || (paramObject.jdField_b_of_type_Int == 3)))) && (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int) && (this.e == paramObject.e) && (this.f == paramObject.f) && (this.jdField_d_of_type_Int == paramObject.jdField_d_of_type_Int)) {}
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      bool1 = bool2;
-      if (!bool2) {
-        break;
-      }
-      for (;;)
-      {
-        bool1 = bool2;
-        if (i >= 3) {
-          break;
-        }
-        bool2 &= this.jdField_d_of_type_ArrayOfJavaLangString[i].equalsIgnoreCase(paramObject.jdField_d_of_type_ArrayOfJavaLangString[i]);
-        bool1 = bool2;
-        if (!bool2) {
-          break;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("筛选：");
-    String str1;
-    int i;
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      if ((this.jdField_c_of_type_Int != 0) && (this.jdField_c_of_type_Int < jdField_a_of_type_ArrayOfJavaLangString.length)) {
-        localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]).append(',');
-      }
-      if ((this.jdField_d_of_type_Int != 0) && (this.jdField_d_of_type_Int < jdField_b_of_type_ArrayOfJavaLangString.length)) {
-        localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[this.jdField_d_of_type_Int]).append(',');
-      }
-      if ((this.f != 0) && (this.f < bfre.e.length))
-      {
-        String str2 = bfre.e[this.f];
-        str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = amtj.a(2131706533);
-        }
-        localStringBuilder.append(str1).append(',');
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals("不限")))
-      {
-        i = this.jdField_a_of_type_JavaLangString.lastIndexOf("-");
-        if (i > 0)
-        {
-          str1 = this.jdField_a_of_type_JavaLangString.substring(i + 1);
-          label223:
-          localStringBuilder.append(str1).append(',');
-        }
-      }
-      else
-      {
-        if ((this.e != 0) && (this.e < jdField_c_of_type_ArrayOfJavaLangString.length)) {
-          localStringBuilder.append(jdField_c_of_type_ArrayOfJavaLangString[this.e]).append(',');
-        }
-        switch (this.jdField_b_of_type_Int)
-        {
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      str1 = localStringBuilder.toString();
-      if (TextUtils.isEmpty(str1)) {
-        break label418;
-      }
-      i = localStringBuilder.lastIndexOf(",");
-      if (i <= 0) {
-        break label418;
-      }
-      return str1.substring(0, i);
-      localStringBuilder.append("男,");
-      break;
-      localStringBuilder.append("女,");
-      break;
-      str1 = this.jdField_a_of_type_JavaLangString;
-      break label223;
-      localStringBuilder.append("30分钟内,");
-      continue;
-      localStringBuilder.append("1个小时内,");
-      continue;
-      localStringBuilder.append("4小时内,");
-      continue;
-      localStringBuilder.append("8小时内,");
-    }
-    label418:
-    return "全部";
+    // Byte code:
+    //   0: ldc 22
+    //   2: iconst_1
+    //   3: new 24	java/lang/StringBuilder
+    //   6: dup
+    //   7: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   10: ldc 27
+    //   12: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: iload_1
+    //   16: invokevirtual 34	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   19: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: aload_0
+    //   26: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   29: astore_2
+    //   30: aload_2
+    //   31: monitorenter
+    //   32: iload_1
+    //   33: tableswitch	default:+35 -> 68, -3:+210->243, -2:+158->191, -1:+38->71, 0:+35->68, 1:+256->289
+    //   69: monitorexit
+    //   70: return
+    //   71: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   74: ifnull +38 -> 112
+    //   77: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   80: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   83: ifeq +29 -> 112
+    //   86: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   89: invokevirtual 58	android/media/MediaPlayer:stop	()V
+    //   92: aload_0
+    //   93: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   96: invokestatic 61	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Ljava/lang/String;
+    //   99: iconst_4
+    //   100: invokestatic 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Ljava/lang/String;I)V
+    //   103: invokestatic 66	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Z
+    //   106: invokestatic 70	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:e	()I
+    //   109: invokestatic 75	awhr:b	(ZI)V
+    //   112: ldc 22
+    //   114: iconst_1
+    //   115: ldc 77
+    //   117: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: aload_0
+    //   121: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   124: iconst_0
+    //   125: iconst_0
+    //   126: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
+    //   129: aload_0
+    //   130: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   133: invokestatic 83	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Lawht;
+    //   136: ifnull -68 -> 68
+    //   139: aload_0
+    //   140: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   143: invokestatic 83	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Lawht;
+    //   146: bipush 11
+    //   148: invokevirtual 89	awht:sendEmptyMessage	(I)Z
+    //   151: pop
+    //   152: goto -84 -> 68
+    //   155: astore_3
+    //   156: aload_2
+    //   157: monitorexit
+    //   158: aload_3
+    //   159: athrow
+    //   160: astore_2
+    //   161: ldc 22
+    //   163: iconst_1
+    //   164: new 24	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   171: ldc 91
+    //   173: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: aload_2
+    //   177: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   180: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: aload_2
+    //   187: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   190: return
+    //   191: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   194: ifnull +29 -> 223
+    //   197: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   200: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   203: ifeq +20 -> 223
+    //   206: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   209: invokevirtual 100	android/media/MediaPlayer:pause	()V
+    //   212: aload_0
+    //   213: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   216: invokestatic 61	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:b	()Ljava/lang/String;
+    //   219: iconst_3
+    //   220: invokestatic 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Ljava/lang/String;I)V
+    //   223: ldc 22
+    //   225: iconst_1
+    //   226: ldc 102
+    //   228: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   231: aload_0
+    //   232: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   235: iconst_0
+    //   236: iconst_1
+    //   237: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
+    //   240: goto -172 -> 68
+    //   243: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   246: ifnull +32 -> 278
+    //   249: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   252: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   255: ifeq +23 -> 278
+    //   258: aload_0
+    //   259: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   262: invokestatic 105	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Z
+    //   265: ifne +13 -> 278
+    //   268: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   271: ldc 106
+    //   273: ldc 106
+    //   275: invokevirtual 110	android/media/MediaPlayer:setVolume	(FF)V
+    //   278: ldc 22
+    //   280: iconst_1
+    //   281: ldc 112
+    //   283: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   286: goto -218 -> 68
+    //   289: invokestatic 115	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:f	()I
+    //   292: iconst_3
+    //   293: if_icmpne +36 -> 329
+    //   296: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   299: ifnull +30 -> 329
+    //   302: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   305: invokevirtual 55	android/media/MediaPlayer:isPlaying	()Z
+    //   308: ifne +21 -> 329
+    //   311: aload_0
+    //   312: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   315: invokestatic 105	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;)Z
+    //   318: ifne +11 -> 329
+    //   321: invokestatic 49	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	()Landroid/media/MediaPlayer;
+    //   324: fconst_1
+    //   325: fconst_1
+    //   326: invokevirtual 110	android/media/MediaPlayer:setVolume	(FF)V
+    //   329: ldc 22
+    //   331: iconst_1
+    //   332: ldc 117
+    //   334: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   337: aload_0
+    //   338: getfield 12	awhs:a	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;
+    //   341: iconst_1
+    //   342: iconst_0
+    //   343: invokestatic 80	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:a	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;ZZ)V
+    //   346: goto -278 -> 68
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	349	0	this	awhs
+    //   0	349	1	paramInt	int
+    //   29	128	2	localQQMusicPlayService	QQMusicPlayService
+    //   160	27	2	localException	java.lang.Exception
+    //   155	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   68	70	155	finally
+    //   71	112	155	finally
+    //   112	152	155	finally
+    //   156	158	155	finally
+    //   191	223	155	finally
+    //   223	240	155	finally
+    //   243	278	155	finally
+    //   278	286	155	finally
+    //   289	329	155	finally
+    //   329	346	155	finally
+    //   25	32	160	java/lang/Exception
+    //   158	160	160	java/lang/Exception
   }
 }
 

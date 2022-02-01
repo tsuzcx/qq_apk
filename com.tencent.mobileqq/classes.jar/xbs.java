@@ -1,70 +1,32 @@
-import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
 
-public class xbs
-  extends vlc
+final class xbs
+  implements wzv
 {
-  public xbs(QQStoryShieldActivity paramQQStoryShieldActivity) {}
+  xbs(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
   
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
-    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
     {
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
-      }
-      paramBoolean = true;
-      localSwitch.setChecked(paramBoolean);
-      localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label58;
       }
     }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
+    label58:
+    for (paramInt = i;; paramInt = 2)
     {
-      localSwitch.setChecked(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-      this.a.b.setOnCheckedChangeListener(this.a);
-      return;
-      paramBoolean = false;
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    boolean bool = true;
-    paramBoolean2 = true;
-    this.a.jdField_a_of_type_Bhhw.b();
-    if (paramBoolean1) {
-      return;
-    }
-    QQToast.a(this.a, 2131694314, 0).b(this.a.getTitleBarHeight());
-    if (paramBoolean3)
-    {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
-    }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      localSwitch.setChecked(paramBoolean1);
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      xbp.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
       return;
     }
   }

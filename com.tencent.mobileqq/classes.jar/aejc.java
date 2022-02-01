@@ -1,23 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejc
-  implements bflx
+  implements DialogInterface.OnClickListener
 {
-  public aejc(TextPreviewActivity paramTextPreviewActivity) {}
+  public aejc(NotificationActivity paramNotificationActivity) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = this.a.a.obtainMessage(20);
-    this.a.a.sendMessage(localMessage);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejc
  * JD-Core Version:    0.7.0.1
  */

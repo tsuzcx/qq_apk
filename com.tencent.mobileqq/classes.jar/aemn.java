@@ -1,16 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class aemn
+public class aemn
   implements DialogInterface.OnClickListener
 {
-  aemn(aeml paramaeml) {}
+  public aemn(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

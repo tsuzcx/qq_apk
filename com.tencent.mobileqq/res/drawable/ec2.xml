@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/ec1" />
-    <item android:state_pressed="true" android:drawable="@drawable/ec1" />
-    <item android:state_selected="true" android:drawable="@drawable/ec1" />
-    <item android:state_checked="true" android:drawable="@drawable/ec1" />
-    <item android:drawable="@drawable/ebb" />
-</selector>
+    <solid android:color="@android:color/transparent" />
+    <corners android:radius="8.0dip" />
+    <stroke android:width="1.0dip" android:color="@color/al3" />
+</shape>

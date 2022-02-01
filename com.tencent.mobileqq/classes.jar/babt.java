@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class babt
-  implements bbup
+class babt
+  implements bbtd
 {
-  public babt(CameraCaptureView paramCameraCaptureView) {}
+  private WeakReference<babn> a;
   
-  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
+  public babt(babn parambabn)
+  {
+    this.a = new WeakReference(parambabn);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
+      QLog.d("ProfileContentSignComponent", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
     }
-    if (paramBoolean1)
+    if (paramBitmap != null)
     {
-      CameraCaptureView.a(this.a, true);
-      return;
+      paramBitmap = (babn)this.a.get();
+      if ((paramBitmap != null) && (babn.f(paramBitmap) != null))
+      {
+        RichStatus localRichStatus = ((azrb)babn.g(paramBitmap)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+        if ((localRichStatus != null) && (localRichStatus.actionId == paramInt1)) {
+          babn.a(paramBitmap, ((azrb)babn.h(paramBitmap)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        }
+      }
     }
-    CameraCaptureView.a.g();
   }
 }
 

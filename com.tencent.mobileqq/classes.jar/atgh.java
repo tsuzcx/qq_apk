@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-final class atgh
-  implements View.OnClickListener
+class atgh
+  implements athg
 {
-  atgh(QQAppInterface paramQQAppInterface, String paramString, atgj paramatgj, aqkb paramaqkb) {}
+  atgh(atfq paramatfq) {}
   
-  public void onClick(View paramView)
+  public void a(Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-    }
-    this.jdField_a_of_type_Atgj.a(this.jdField_a_of_type_Aqkb.b());
-    EventCollector.getInstance().onViewClicked(paramView);
+    atfq.m(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgh
  * JD-Core Version:    0.7.0.1
  */

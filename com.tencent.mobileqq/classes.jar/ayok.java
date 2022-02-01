@@ -1,14 +1,22 @@
-import android.view.animation.Interpolator;
+import android.app.PendingIntent;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-final class ayok
-  implements Interpolator
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/DefaultJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayok
+  extends ayoc
 {
-  public float getInterpolation(float paramFloat)
+  @NotNull
+  protected PendingIntent a(@NotNull ayog paramayog)
   {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
-    }
-    return (paramFloat - 0.3333333F) * 1.5F;
+    Intrinsics.checkParameterIsNotNull(paramayog, "pushComponent");
+    return d(paramayog);
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

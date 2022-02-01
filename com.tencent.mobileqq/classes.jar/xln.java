@@ -1,80 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
 public class xln
-  extends wbc
-  implements vqp<weu, wgk>
+  implements xlk
 {
-  public String a;
-  private String b;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  public xln(MediaPlayer paramMediaPlayer) {}
   
-  private void d()
+  public void a(xli paramxli)
   {
-    weu localweu = new weu();
-    localweu.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localweu.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localweu.jdField_b_of_type_Long = 0L;
-    localweu.c = 10;
-    localweu.d = 10;
-    vqn.a().a(localweu, this);
-    xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localweu.toString());
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    super.a(paramTencentLocation, paramInt);
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = "";
-    d();
-  }
-  
-  public void a(@NonNull weu paramweu, @Nullable wgk paramwgk, @NonNull ErrorMessage paramErrorMessage)
-  {
-    xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
-    if (this.jdField_c_of_type_Boolean)
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Xlg.b() < 2000000L) && (!this.a.jdField_a_of_type_Xlg.b()))
     {
-      xvv.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
-      return;
+      this.a.e = true;
+      this.a.jdField_a_of_type_Xlo.sendMessage(this.a.jdField_a_of_type_Xlo.obtainMessage(200, 701, 0));
     }
-    xlo localxlo = new xlo(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
-    localxlo.jdField_b_of_type_Boolean = false;
-    if ((paramwgk == null) || (paramErrorMessage.isFail()))
-    {
-      vli.a().dispatch(localxlo);
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = paramwgk.jdField_a_of_type_JavaLangString;
-    localxlo.jdField_a_of_type_JavaUtilList = paramwgk.jdField_a_of_type_JavaUtilArrayList;
-    localxlo.jdField_a_of_type_Int = paramwgk.b;
-    localxlo.jdField_a_of_type_Boolean = paramwgk.jdField_a_of_type_Boolean;
-    localxlo.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramweu.jdField_a_of_type_JavaLangString);
-    paramwgk = paramwgk.jdField_a_of_type_JavaUtilArrayList;
-    ((vuk)vux.a(19)).b(paramwgk, paramweu.jdField_b_of_type_JavaLangString, localxlo.jdField_c_of_type_Boolean);
-    try
-    {
-      this.jdField_b_of_type_Boolean = true;
-      vli.a().dispatch(localxlo);
-      xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localxlo);
-      return;
-    }
-    finally {}
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    d();
   }
 }
 

@@ -1,89 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class apyz
-  extends aptq<apyy>
 {
-  private static apyy a;
+  java.lang.ref.WeakReference<QQAppInterface> a;
   
-  public static apyy a()
+  public apyz(QQAppInterface paramQQAppInterface)
   {
-    apyy localapyy2 = (apyy)apub.a().a(524);
-    apyy localapyy1 = localapyy2;
-    if (localapyy2 == null) {
-      localapyy1 = apyy.a();
-    }
-    return localapyy1;
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
   }
   
-  @NonNull
-  public apyy a(int paramInt)
+  public boolean a(String paramString, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
   {
-    if (a != null) {
-      return a;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    a = apyy.a();
-    return a;
-  }
-  
-  @Nullable
-  public apyy a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
     {
-      paramArrayOfaptx = apyy.a(paramArrayOfaptx[0].a);
-      a = null;
-      return paramArrayOfaptx;
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
     }
-    return apyy.a();
+    return ((apys)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ARKAPP_HANDLER)).a(paramString, paramInt1, paramInt2, paramBusinessObserver);
   }
   
-  public void a(apyy paramapyy)
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramapyy);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
     }
-  }
-  
-  public Class<apyy> clazz()
-  {
-    return apyy.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 524;
+    return ((apys)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ARKAPP_HANDLER)).a(paramString1, paramString2, paramInt1, paramInt2, paramBusinessObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyz
  * JD-Core Version:    0.7.0.1
  */

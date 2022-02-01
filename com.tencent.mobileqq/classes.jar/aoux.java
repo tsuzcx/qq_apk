@@ -1,24 +1,33 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoux
+  extends aoui
 {
-  public long a;
-  public aouu a;
-  public ByteArrayOutputStream a;
-  public File a;
-  public String a;
-  public final ArrayList<Object> a;
-  public byte[] a;
-  public String b;
-  public final ArrayList<aout> b = new ArrayList();
-  public String c;
-  
-  private aoux()
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = -1L;
+    paramQQAppInterface = new aouw(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qwerewolf";
+    paramQQAppInterface.c = "enterHomePage";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

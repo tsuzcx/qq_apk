@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class afkj
-  implements bfdu
+  implements DialogInterface.OnClickListener
 {
-  public afkj(TroopChatPie paramTroopChatPie) {}
+  public afkj(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {}
+    this.a.n();
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "0");
+      this.a.finish();
+      return;
+    }
   }
 }
 

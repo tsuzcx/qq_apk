@@ -1,52 +1,45 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class znm
-  extends ClickableSpan
+final class znm
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private String jdField_a_of_type_JavaLangString;
-  private znn jdField_a_of_type_Znn;
+  znm(zjt paramzjt) {}
   
-  public znm(String paramString, int paramInt, znn paramznn)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Znn = paramznn;
-  }
-  
-  public znm(String paramString, ColorStateList paramColorStateList, znn paramznn)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_Znn = paramznn;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Znn != null)) {
-      this.jdField_a_of_type_Znn.onClick(this.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
-    }
-    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     znm
  * JD-Core Version:    0.7.0.1
  */

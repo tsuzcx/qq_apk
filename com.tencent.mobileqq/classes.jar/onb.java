@@ -1,27 +1,52 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class onb
-  extends nmf
 {
-  private boolean b;
+  private static onb a;
   
-  onb(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
+  private onb()
   {
-    this.b = paramBoolean;
+    a = this;
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static onb a()
   {
-    if (paramInt == 0) {
-      bkwm.a(bkwm.a(), this.b);
+    if (a == null) {
+      a = new onb();
+    }
+    return a;
+  }
+  
+  public Drawable a(Resources paramResources, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
+    if ((localObject != null) && ((localObject instanceof Drawable))) {
+      localObject = (Drawable)localObject;
     }
     for (;;)
     {
-      ReadInJoySettingActivity.a(this.a);
-      return;
-      QLog.d("ReadInJoySettingActivity", 1, "troopProtocolObserver fail!");
+      return localObject;
+      localObject = null;
+      try
+      {
+        paramResources = paramResources.getDrawable(paramInt);
+        localObject = paramResources;
+        if (paramResources == null) {
+          continue;
+        }
+        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
+        return paramResources;
+      }
+      catch (OutOfMemoryError paramResources)
+      {
+        for (;;)
+        {
+          paramResources = (Resources)localObject;
+        }
+      }
     }
   }
 }

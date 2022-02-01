@@ -1,325 +1,242 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.TMG.utils.QLog;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.utils.ViewUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONObject;
 
 public class blas
-  implements Handler.Callback
 {
-  protected int a;
-  protected Handler a;
-  protected View a;
-  private ArrayList<blas> a;
-  protected int b;
-  protected String c;
-  
-  public blas(View paramView)
+  public static void a(Context paramContext, TextView paramTextView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public blas(String paramString, View paramView)
-  {
-    this(paramView);
-    this.c = paramString;
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Drawable localDrawable = a(paramString);
-    if (localDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localDrawable);
-      return;
-    }
-    throw new RuntimeException(getClass().getName() + " set background drawable = null not match value = " + paramString);
-  }
-  
-  private int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return -2;
-      try
-      {
-        if ("fill".equals(paramString)) {
-          return -1;
-        }
-        if (!"fit".equals(paramString))
-        {
-          int i = a(paramString);
-          return i;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return -2;
-  }
-  
-  protected int a()
-  {
-    return ViewUtils.getScreenWidth();
-  }
-  
-  protected int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    try
-    {
-      int i;
-      if (paramString.endsWith("w")) {
-        i = Integer.parseInt(paramString.substring(0, paramString.indexOf("w"))) * a();
-      }
-      for (;;)
-      {
-        return i / 10000;
-        if (paramString.endsWith("h"))
-        {
-          i = Integer.parseInt(paramString.substring(0, paramString.indexOf("h"))) * b();
-        }
-        else
-        {
-          i = Integer.parseInt(paramString);
-          int j = a();
-          i *= j;
-        }
-      }
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("JsonInflateViewModel", 1, "getIntegerValue exception: value =  " + paramString);
-    }
-  }
-  
-  protected Drawable a(String paramString)
-  {
-    ColorDrawable localColorDrawable = null;
-    if (paramString.startsWith("#")) {
-      localColorDrawable = new ColorDrawable(Color.parseColor(paramString));
-    }
-    return localColorDrawable;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
-  {
-    return new ViewGroup.LayoutParams(paramInt1, paramInt2);
-  }
-  
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
-  {
-    return paramLayoutParams;
-  }
-  
-  public ViewGroup.LayoutParams a(JSONObject paramJSONObject, blas paramblas)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return null;
-    }
-    Object localObject1 = paramJSONObject.optString("width");
-    Object localObject2 = paramJSONObject.optString("height");
-    this.jdField_a_of_type_Int = b((String)localObject1);
-    this.b = b((String)localObject2);
-    if (QLog.isColorLevel()) {
-      QLog.i("JsonInflateViewModel", 0, "class = " + this.jdField_a_of_type_AndroidViewView.getClass().getSimpleName() + " width = " + this.jdField_a_of_type_Int + " height = " + this.b);
-    }
-    localObject1 = a(this.jdField_a_of_type_Int, this.b);
-    localObject2 = paramJSONObject.keys();
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str = (String)((Iterator)localObject2).next();
-      a(str, paramJSONObject.optString(str), (ViewGroup.LayoutParams)localObject1);
-    }
-    paramblas.a((ViewGroup.LayoutParams)localObject1, paramJSONObject);
-    return localObject1;
-  }
-  
-  public blas a(String paramString)
-  {
-    blas localblas2 = null;
-    blas localblas1 = localblas2;
-    if (!TextUtils.isEmpty(this.c))
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label25;
-      }
-      localblas1 = localblas2;
-    }
-    label25:
+    if ((paramTextView == null) || (paramInt == 0)) {}
     do
     {
-      return localblas1;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      return;
+      int i = paramContext.getResources().getDimensionPixelSize(2131297116);
+      int j = paramContext.getResources().getDimensionPixelSize(2131297114);
+      switch (paramInt)
       {
-        if (this.c.equals(paramString)) {}
-        for (paramString = this;; paramString = null) {
-          return paramString;
+      case 4: 
+      case 6: 
+      default: 
+        paramInt = j;
+      case 1: 
+      case 7: 
+      case 3: 
+      case 9: 
+      case 8: 
+      case 2: 
+      case 5: 
+        for (;;)
+        {
+          paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+          if ((paramContext == null) || ((paramContext.leftMargin == i) && (paramContext.bottomMargin == paramInt))) {
+            break;
+          }
+          paramContext.setMargins(i, 0, 0, paramInt);
+          return;
+          i = paramContext.getResources().getDimensionPixelSize(2131297116);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297114);
+          paramTextView.measure(0, 0);
+          int k = paramTextView.getMeasuredWidth();
+          j = paramTextView.getMeasuredHeight();
+          k /= 2;
+          j /= 2;
+          i -= k;
+          paramInt -= j;
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297116);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297114);
+          paramTextView.measure(0, 0);
+          k = paramTextView.getMeasuredWidth();
+          j = paramTextView.getMeasuredHeight();
+          k /= 2;
+          j /= 2;
+          i -= k;
+          paramInt -= j;
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297119);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297117);
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297120);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297118);
+          continue;
+          k = paramContext.getResources().getDimensionPixelSize(2131297116);
+          i = paramContext.getResources().getDimensionPixelSize(2131297115);
+          paramInt = i;
+          if (paramBoolean) {
+            paramInt = i + ViewUtils.dip2px(8.0F);
+          }
+          paramTextView.measure(0, 0);
+          i = paramTextView.getMeasuredWidth();
+          j = paramTextView.getMeasuredHeight();
+          if (i > j) {
+            j = i;
+          }
+          for (;;)
+          {
+            paramTextView.setWidth(j);
+            paramTextView.setHeight(i);
+            j = k - j / 2;
+            paramInt -= i / 2;
+            i = j;
+            break;
+            i = j;
+          }
+          i = paramContext.getResources().getDimensionPixelSize(2131297119);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297117);
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297119);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297117);
         }
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      localblas1 = null;
-      if (!localIterator.hasNext()) {
-        break;
+    } while (!(paramTextView.getLayoutParams() instanceof RelativeLayout.LayoutParams));
+    paramTextView = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
+    paramTextView.addRule(15, -1);
+    paramTextView.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297121), 0);
+  }
+  
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramTextView, paramInt1, paramInt2, paramInt3, 99, null);
+  }
+  
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    if (paramTextView == null) {
+      return;
+    }
+    switch (paramInt1)
+    {
+    default: 
+      paramString = "";
+      paramInt2 = 0;
+      paramInt1 = 0;
+      if (paramString == null) {
+        paramString = "";
       }
-      localblas2 = (blas)localIterator.next();
-      if (localblas2 == null) {
-        break label110;
-      }
-      localblas2 = localblas2.a(paramString);
-      localblas1 = localblas2;
-    } while (localblas2 != null);
-    localblas1 = localblas2;
-    label110:
+      break;
+    }
     for (;;)
     {
-      break;
-      return localblas1;
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(blas paramblas)
-  {
-    if (paramblas == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramblas);
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if ("background_color".equals(paramString1))
-    {
-      a(paramString2);
-      return;
-    }
-    if ("rotate".equals(paramString1))
-    {
-      this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setRotation(Float.parseFloat(paramString2));
-      return;
-    }
-    if ("id".equals(paramString1))
-    {
-      this.jdField_a_of_type_AndroidViewView.setId(Integer.parseInt(paramString2));
-      return;
-    }
-    QLog.e("JsonInflateViewModel", 1, this.c + " illegal attr :" + paramString1 + " = " + paramString2);
-  }
-  
-  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams))
-    {
-      if (!"x".equals(paramString1)) {
-        break label30;
+      if ((TextUtils.isEmpty(paramString)) && (paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramTextView.setVisibility(8);
+        return;
+        if (paramInt3 > 0)
+        {
+          paramString = "";
+          paramInt1 = paramInt3;
+          paramInt2 = 0;
+          break;
+        }
+        paramString = "";
+        paramInt1 = 2130850427;
+        paramInt2 = 0;
+        break;
+        if (paramInt3 > 0) {}
+        for (paramInt2 = paramInt3;; paramInt2 = 2130850431)
+        {
+          paramString = "NEW";
+          paramInt1 = 0;
+          break;
+        }
+        if (paramInt3 > 0)
+        {
+          paramString = "";
+          paramInt1 = paramInt3;
+          paramInt2 = 0;
+          break;
+        }
+        paramString = "";
+        paramInt1 = 2130850430;
+        paramInt2 = 0;
+        break;
+        if (paramInt3 > 0) {}
+        for (;;)
+        {
+          if (paramInt2 <= paramInt4) {
+            break label219;
+          }
+          paramString = String.valueOf(paramInt4) + "+";
+          paramInt1 = 0;
+          paramInt2 = paramInt3;
+          break;
+          paramInt3 = 2130850431;
+        }
+        label219:
+        paramString = String.valueOf(paramInt2);
+        paramInt1 = 0;
+        paramInt2 = paramInt3;
+        break;
+        if (paramInt3 > 0) {}
+        for (;;)
+        {
+          if (paramInt2 <= 99) {
+            break label259;
+          }
+          paramString = "";
+          paramInt1 = 0;
+          paramInt2 = paramInt3;
+          break;
+          paramInt3 = 2130850431;
+        }
+        label259:
+        paramString = String.valueOf(paramInt2);
+        paramInt1 = 0;
+        paramInt2 = paramInt3;
+        break;
+        if (paramInt3 > 0) {}
+        for (;;)
+        {
+          if (paramInt2 <= paramInt4) {
+            break label320;
+          }
+          paramString = String.valueOf(paramInt4) + "+";
+          paramInt1 = 0;
+          paramInt2 = paramInt3;
+          break;
+          paramInt3 = 2130850431;
+        }
+        label320:
+        paramString = String.valueOf(paramInt2);
+        paramInt1 = 0;
+        paramInt2 = paramInt3;
+        break;
+        if (paramInt3 > 0) {}
+        for (paramInt2 = paramInt3;; paramInt2 = 2130850431)
+        {
+          if (!TextUtils.isEmpty(paramString)) {
+            break label362;
+          }
+          paramString = "";
+          paramInt1 = 0;
+          break;
+        }
+        label362:
+        paramInt1 = 0;
+        break;
       }
-      ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = a(paramString2);
-    }
-    label30:
-    while (!"y".equals(paramString1)) {
-      return;
-    }
-    ((ViewGroup.MarginLayoutParams)paramLayoutParams).topMargin = a(paramString2);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return;
-    }
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      a(str, paramJSONObject.optString(str));
-    }
-    b();
-  }
-  
-  protected int b()
-  {
-    return ViewUtils.getScreenHeight();
-  }
-  
-  protected void b() {}
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      blas localblas = (blas)localIterator.next();
-      if (localblas != null) {
-        localblas.c();
+      Object localObject = paramTextView.getTag(2131380501);
+      if (((localObject == null) && (paramInt1 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt1))) {}
+      for (;;)
+      {
+        paramTextView.setBackgroundResource(paramInt2);
+        if (!bhbx.a(paramTextView.getText().toString(), paramString))
+        {
+          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          paramTextView.setText(paramString);
+        }
+        paramTextView.setVisibility(0);
+        return;
+        paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, 0, 0, 0);
+        paramTextView.setTag(2131380501, Integer.valueOf(paramInt1));
+        paramTextView.setText(paramString);
+        paramTextView.setPadding(0, 0, 0, 0);
       }
     }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      blas localblas = (blas)localIterator.next();
-      if (localblas != null) {
-        localblas.e();
-      }
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      blas localblas = (blas)localIterator.next();
-      if (localblas != null) {
-        localblas.f();
-      }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
   }
 }
 

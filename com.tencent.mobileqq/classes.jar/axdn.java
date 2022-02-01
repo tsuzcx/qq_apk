@@ -1,21 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
-class axdn
-  implements View.OnClickListener
+public class axdn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  axdn(axdm paramaxdm) {}
+  public axdn(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Intent localIntent = new Intent(axdm.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://nearby.qq.com/nearby-topic/topicTags.html");
-    axdm.a(this.a).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((this.b - this.jdField_a_of_type_Int) * f1));
+    paramValueAnimator.topMargin = (this.c + Math.round((this.d - this.c) * f1));
+    paramValueAnimator.width = (this.e + Math.round((this.f - this.e) * f1));
+    int i = this.g;
+    int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
+    if (j > 0) {
+      i = j;
+    }
+    for (;;)
+    {
+      j = this.h;
+      paramValueAnimator.height = (Math.round((i - this.h) * f1) + j);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+      this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+      return;
+    }
   }
 }
 

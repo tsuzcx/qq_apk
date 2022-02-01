@@ -1,66 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class amnq
-  extends amns
-  implements amnu
+public final class amnq
+  implements adaa
 {
-  public amnq(amnv paramamnv)
+  public amnq(View paramView, adad paramadad, long paramLong, int paramInt) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    super(null, paramamnv);
-    this.jdField_a_of_type_Amnu = this;
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
   }
   
-  public static String a(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    paramString = Utils.Crc64String(paramString);
-    String str = amip.k;
-    return str + paramString + ".zip";
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
   }
   
-  public void a(amns paramamns, String paramString1, String paramString2, String paramString3)
+  public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = 1;
-    bgoe localbgoe = new bgoe(paramString1, new File(paramString2));
-    localbgoe.p = true;
-    localbgoe.n = true;
-    localbgoe.f = "apollo_gif";
-    localbgoe.b = 1;
-    localbgoe.q = true;
-    localbgoe.r = true;
-    localbgoe.a(new amnr(this, paramString1, paramString2, paramString3));
-    paramamns = BaseApplicationImpl.getApplication();
-    if (paramamns != null)
+    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
+    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
+    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
+    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
+    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
+    paramJSONObject.optDouble("accuracy", 0.0D);
+    double d5 = paramJSONObject.optDouble("speed", 0.0D);
+    if (this.jdField_a_of_type_Int == 1)
     {
-      paramamns = paramamns.getRuntime();
-      if (!(paramamns instanceof QQAppInterface)) {}
+      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
+      return;
     }
-    for (paramamns = (QQAppInterface)paramamns;; paramamns = null)
-    {
-      if (paramamns != null)
-      {
-        paramamns = (bgog)paramamns.getManager(47);
-        if (paramamns != null)
-        {
-          paramamns = paramamns.a(3);
-          if (paramamns != null) {
-            paramamns.a(localbgoe, localbgoe.a(), null);
-          }
-        }
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localbgoe));
-        }
-        return;
-      }
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
   }
+  
+  public void b(JSONObject paramJSONObject) {}
 }
 
 

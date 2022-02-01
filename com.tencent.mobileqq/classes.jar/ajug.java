@@ -1,26 +1,19 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajug
-  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
+public class ajug
+  implements View.OnClickListener
 {
-  private ajug(ajue paramajue) {}
+  public ajug(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
-    }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
-  }
-  
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
-    }
-    this.a.a(paramAnimationInfo);
+    ChatHistoryTroopMemberFragment.b(this.a);
+    new bdlf(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

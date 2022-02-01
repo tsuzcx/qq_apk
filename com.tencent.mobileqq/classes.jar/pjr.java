@@ -1,366 +1,601 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelHeaderModule.1;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.DynamicChannelHeaderModule.3;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule.JSONUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.MonitorTimeExecutor;
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.ProteusJsHelper;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.net.URL;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import mqq.manager.TicketManager;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
 
 public class pjr
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ConcurrentHashMap<Integer, List<pjt>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-  private ConcurrentHashMap<Integer, List<pix>> b = new ConcurrentHashMap();
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
   
-  public pjr(Handler paramHandler)
+  public static float a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    paramInt1 = a(paramInt1, paramInt2);
+    if (paramInt1 == 1) {
+      return 0.5625F;
+    }
+    if (paramInt1 == 2) {
+      return 1.333F;
+    }
+    return 1.0F;
   }
   
-  private JSONObject a(int paramInt)
+  public static float a(Context paramContext, spk paramspk)
   {
-    JSONObject localJSONObject = new JSONObject();
+    int j = 28;
+    int i;
+    if (paramspk != null)
+    {
+      i = j;
+      if (paramspk.o == 0)
+      {
+        i = j;
+        if (paramspk.p == 0)
+        {
+          i = j;
+          if (paramspk.q == 0)
+          {
+            if (paramspk.r == 0) {
+              break label56;
+            }
+            i = j;
+          }
+        }
+      }
+    }
     for (;;)
     {
-      try
+      return DeviceInfoUtil.getAppDisplayWidth(paramContext) - DisplayUtil.dip2px(paramContext, i);
+      label56:
+      if ((paramspk.a != null) && (paramspk.a.mChannelID == 56L))
       {
-        str = pay.i();
-        if (TextUtils.isEmpty(str)) {
-          continue;
-        }
-        localJSONObject.put("imei", str);
-        localJSONObject.put("platform", "Android");
-        localJSONObject.put("qqVersionID", "8.4.8");
-        localObject = (QQAppInterface)pay.a();
-        str = ((QQAppInterface)localObject).getAccount();
-        localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str);
-        localJSONObject.put("uin", str);
-        if (localObject != null) {
-          continue;
-        }
-        str = "";
-        localJSONObject.put("token", str);
-        localJSONObject.put("cookieString", bkwm.a("readinjoy_dynamic_channel_header_cookie_" + paramInt, ""));
+        i = j;
+        if (pqt.j()) {}
       }
-      catch (JSONException localJSONException)
+      else
       {
-        String str;
-        Object localObject;
-        QLog.d("DynamicChannelHeaderModule", 2, "makeRequestParams, e = ", localJSONException);
-        continue;
+        i = 12;
       }
-      QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "makeRequestParams params = ", localJSONObject });
-      return localJSONObject;
-      str = "";
-      continue;
-      str = rtb.a((String)localObject);
     }
   }
   
-  private JSONObject a(JSONObject paramJSONObject, int paramInt, pix parampix)
+  /* Error */
+  public static float a(android.view.View paramView)
   {
-    long l = System.currentTimeMillis();
-    QLog.d("DynamicChannelHeaderModule", 1, "preProcessReqData, begin.");
-    Object localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramInt));
-    Object localObject1 = paramJSONObject;
-    if (localObject2 != null)
+    // Byte code:
+    //   0: ldc 85
+    //   2: fstore_2
+    //   3: ldc 2
+    //   5: monitorenter
+    //   6: aload_0
+    //   7: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   10: invokevirtual 91	android/view/View:getLocalVisibleRect	(Landroid/graphics/Rect;)Z
+    //   13: pop
+    //   14: aload_0
+    //   15: invokevirtual 95	android/view/View:getHeight	()I
+    //   18: istore_3
+    //   19: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   22: getfield 98	android/graphics/Rect:top	I
+    //   25: ifne +24 -> 49
+    //   28: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   31: getfield 101	android/graphics/Rect:bottom	I
+    //   34: istore 4
+    //   36: iload 4
+    //   38: iload_3
+    //   39: if_icmpne +10 -> 49
+    //   42: fload_2
+    //   43: fstore_1
+    //   44: ldc 2
+    //   46: monitorexit
+    //   47: fload_1
+    //   48: freturn
+    //   49: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   52: getfield 98	android/graphics/Rect:top	I
+    //   55: ifle +22 -> 77
+    //   58: ldc 85
+    //   60: iload_3
+    //   61: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   64: getfield 98	android/graphics/Rect:top	I
+    //   67: isub
+    //   68: i2f
+    //   69: fmul
+    //   70: iload_3
+    //   71: i2f
+    //   72: fdiv
+    //   73: fstore_1
+    //   74: goto -30 -> 44
+    //   77: fload_2
+    //   78: fstore_1
+    //   79: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   82: getfield 101	android/graphics/Rect:bottom	I
+    //   85: ifle -41 -> 44
+    //   88: fload_2
+    //   89: fstore_1
+    //   90: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   93: getfield 101	android/graphics/Rect:bottom	I
+    //   96: iload_3
+    //   97: if_icmpge -53 -> 44
+    //   100: getstatic 31	pjr:jdField_a_of_type_AndroidGraphicsRect	Landroid/graphics/Rect;
+    //   103: getfield 101	android/graphics/Rect:bottom	I
+    //   106: istore 4
+    //   108: ldc 85
+    //   110: iload 4
+    //   112: i2f
+    //   113: fmul
+    //   114: iload_3
+    //   115: i2f
+    //   116: fdiv
+    //   117: fstore_1
+    //   118: goto -74 -> 44
+    //   121: astore_0
+    //   122: ldc 2
+    //   124: monitorexit
+    //   125: aload_0
+    //   126: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	127	0	paramView	android.view.View
+    //   43	75	1	f1	float
+    //   2	87	2	f2	float
+    //   18	97	3	i	int
+    //   34	77	4	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	36	121	finally
+    //   49	74	121	finally
+    //   79	88	121	finally
+    //   90	108	121	finally
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    return 1;
+  }
+  
+  public static int a(int paramInt, Resources paramResources)
+  {
+    return (paramInt - (AIOUtils.dp2px(24.0F, paramResources) + AIOUtils.dp2px(3.0F, paramResources))) / 2;
+  }
+  
+  public static Drawable a(String paramString)
+  {
+    int i = Color.parseColor(paramString);
+    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, i & 0x14FFFFFF });
+    paramString.setShape(0);
+    paramString.setGradientType(0);
+    paramString.setBounds(0, 0, 400, 400);
+    return paramString;
+  }
+  
+  public static Pair<Integer, Integer> a()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298742)));
+  }
+  
+  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = AIOUtils.dp2px(1.5F, localResources);
+    if (paramInt2 == 56) {
+      i = AIOUtils.dp2px(3.0F, localResources);
+    }
+    bmhz localbmhz = bmhv.a(BaseApplicationImpl.getApplication().getRuntime());
+    float f1;
+    float f2;
+    if (localbmhz != null)
     {
-      localObject2 = ((syz)localObject2).a();
-      localObject1 = paramJSONObject;
-      if (localObject2 != null)
+      f1 = localbmhz.a;
+      f2 = localbmhz.jdField_b_of_type_Float;
+      paramInt2 = AIOUtils.dp2px(localbmhz.jdField_b_of_type_Int, localResources);
+    }
+    for (;;)
+    {
+      switch (paramInt1)
       {
-        localObject1 = ((pip)localObject2).a("dp_environment_id");
-        localObject2 = parampix.d;
-        parampix = new StringBuffer();
-        localObject2 = (String)ProteusJsHelper.evaluateJs((String)localObject1, (String)localObject2, paramJSONObject.toString(), parampix);
-        QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "preProcessReqData res = ", localObject2, ", exception = ", parampix });
-        localObject1 = paramJSONObject;
+      default: 
+        if (paramInt2 != 0) {
+          break;
+        }
+      }
+      for (paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(6, localResources) - i * 2) / 2.1F);; paramInt1 = paramInt2)
+      {
+        i = (int)(paramInt1 / f2);
+        paramInt2 = paramInt1;
+        paramInt1 = i;
+        for (;;)
+        {
+          return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+          paramInt2 = localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(12, localResources);
+          paramInt1 = (int)((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(6, localResources) - i * 2) / 2.5F * 1.3356F);
+          continue;
+          paramInt2 = (int)((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(12, localResources) - i) * 0.5F);
+          paramInt1 = (int)(paramInt2 / f1);
+        }
+      }
+      paramInt2 = 0;
+      f1 = 0.7511F;
+      f2 = 0.7487F;
+    }
+  }
+  
+  public static String a(int paramInt)
+  {
+    int k = paramInt / 3600;
+    int j = paramInt / 60;
+    int i = j;
+    if (k > 0) {
+      i = j - k * 60;
+    }
+    paramInt %= 60;
+    String str1;
+    String str2;
+    if (i >= 10)
+    {
+      str1 = String.valueOf(i);
+      if (paramInt < 10) {
+        break label115;
+      }
+      str2 = String.valueOf(paramInt);
+      label53:
+      if (k <= 0) {
+        break label157;
+      }
+      if (k < 10) {
+        break label136;
       }
     }
-    try
+    label136:
+    for (String str3 = String.valueOf(k);; str3 = String.format("0%d", new Object[] { Integer.valueOf(k) }))
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = new JSONObject((String)localObject2);
-      }
-      QLog.d("DynamicChannelHeaderModule", 1, new Object[] { "preProcessReqData time cost = ", Long.valueOf(System.currentTimeMillis() - l) });
-      return localObject1;
+      return String.format("%s:%s:%s", new Object[] { str3, str1, str2 });
+      str1 = String.format("0%d", new Object[] { Integer.valueOf(i) });
+      break;
+      label115:
+      str2 = String.format("0%d", new Object[] { Integer.valueOf(paramInt) });
+      break label53;
     }
-    catch (JSONException parampix)
+    label157:
+    return String.format("%s:%s", new Object[] { str1, str2 });
+  }
+  
+  public static String a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramInt <= 0)) {
+      return "";
+    }
+    return a(paramInt);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str;
+    if (android.text.TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    do
     {
+      return str;
+      str = paramString;
+    } while (!com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramString));
+    paramString = new StringBuilder(paramString);
+    int i = 0;
+    while (i < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
+    {
+      str = EmotcationConstants.SYS_EMOTICON_SYMBOL[i];
+      int j = -1;
       for (;;)
       {
-        QLog.d("DynamicChannelHeaderModule", 2, "preProcessReqData e = ", parampix);
-        localObject1 = paramJSONObject;
+        int k = paramString.indexOf(str, j + 1);
+        if (k == -1) {
+          break;
+        }
+        j = k;
+        if (k != 0)
+        {
+          j = k;
+          if (paramString.codePointAt(k - 1) == 20)
+          {
+            char c = (char)i;
+            paramString.replace(k, str.length() + k, String.valueOf(c));
+            j = k;
+          }
+        }
+      }
+      i += 1;
+    }
+    return paramString.toString();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    String str = paramString;
+    if (paramString.length() > paramInt) {
+      str = paramString.substring(0, paramInt - 1) + "…";
+    }
+    return str;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        BaseApplicationImpl.sImageCache.evict(0);
+        return;
+      }
+      BaseApplicationImpl.sImageCache.evictAll();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReadInJoyDisplayUtils", 1, "[clearMemoryCache] e = " + localException);
+    }
+  }
+  
+  public static void a(ImageView paramImageView, String paramString, Context paramContext)
+  {
+    a(paramImageView, pqa.a(paramString), paramContext);
+  }
+  
+  public static void a(ImageView paramImageView, URL paramURL, Context paramContext)
+  {
+    if (paramURL == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
+      }
+      paramImageView.setImageResource(2130841740);
+      return;
+    }
+    if ((paramContext instanceof BaseActivity)) {}
+    for (Object localObject = (BaseActivity)paramContext;; localObject = null)
+    {
+      if (localObject != null) {}
+      for (boolean bool = SettingCloneUtil.readValue((Context)localObject, ((BaseActivity)localObject).app.getCurrentAccountUin(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
+      {
+        if ((!NetworkUtil.isWifiConnected(paramContext)) && (bool) && (!tlv.a().a(paramURL)))
+        {
+          paramImageView.setImageResource(2130841740);
+          return;
+        }
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841740);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841740);
+        paramImageView.setImageDrawable(URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject));
+        return;
       }
     }
   }
   
-  public static pjr a()
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, Context paramContext)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
-    if (localQQAppInterface != null) {
-      return ((pks)localQQAppInterface.getManager(163)).a().a();
-    }
-    return null;
+    a(paramKandianUrlImageView, paramURL, paramContext, false);
   }
   
-  private void a(int paramInt1, int paramInt2, pix parampix)
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, Context paramContext, boolean paramBoolean)
   {
-    JSONObject localJSONObject = a(a(paramInt1), paramInt1, parampix);
-    Bundle localBundle = JSONUtils.a(localJSONObject);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("BUNDLE", localBundle);
-    localHashMap.put("CONTEXT", BaseApplicationImpl.getApplication());
-    localBundle = new Bundle();
-    localBundle.putInt("insert_index", paramInt2);
-    new beze(JSONUtils.a(localJSONObject, parampix.c), "POST", new pjs(this, paramInt1, parampix), 1000, localBundle).a(localHashMap);
-  }
-  
-  private void a(int paramInt, JSONObject paramJSONObject, Bundle paramBundle, pix parampix)
-  {
-    if (paramJSONObject == null)
+    if (paramURL == null)
     {
-      QLog.d("DynamicChannelHeaderModule", 2, "handleRequest result is null");
-      a(paramInt, false, null, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
+      }
+      paramKandianUrlImageView.setImageResource(2130841740);
+      return;
     }
-    int i;
+    if (a(paramContext, paramURL))
+    {
+      if (!paramBoolean)
+      {
+        paramKandianUrlImageView.setImageResource(2130841740);
+        return;
+      }
+      paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165357)));
+      return;
+    }
+    if (!paramBoolean)
+    {
+      if (paramKandianUrlImageView.isRound())
+      {
+        paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130840479)).setImage(paramURL);
+        return;
+      }
+      paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130841740)).setImage(paramURL);
+      return;
+    }
+    paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165357)));
+    paramKandianUrlImageView.setImagePlaceHolder(new ColorDrawable(paramContext.getResources().getColor(2131165357))).setImage(paramURL);
+  }
+  
+  public static void a(ViewBase paramViewBase, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {
+      return;
+    }
+    qft localqft = pvj.a().a();
+    if ((localqft != null) && (localqft.b()))
+    {
+      a(false, paramViewBase, null);
+      paramBaseArticleInfo.isShowFreeNetFlow = false;
+      return;
+    }
+    if (paramBaseArticleInfo.isShowFreeNetFlow)
+    {
+      a(true, paramViewBase, localqft);
+      return;
+    }
+    if ((localqft != null) && (localqft.a()))
+    {
+      a(true, paramViewBase, localqft);
+      paramBaseArticleInfo.isShowFreeNetFlow = true;
+      localqft.a(true);
+      return;
+    }
+    a(false, paramViewBase, null);
+  }
+  
+  public static void a(List<KandianUrlImageView> paramList, List<URL> paramList1, Context paramContext)
+  {
+    int j = paramList.size();
+    if (j != paramList1.size()) {
+      throw new IllegalArgumentException("imageViewListSize != urlListSize");
+    }
+    if (paramContext != null) {}
+    for (boolean bool = SettingCloneUtil.readValue(paramContext, BaseApplicationImpl.getApplication().getRuntime().getAccount(), null, "qqsetting_kandian_download_pic_flag", false);; bool = false)
+    {
+      int i;
+      if ((!bool) || (NetworkUtil.isWifiConnected(paramContext))) {
+        i = 0;
+      }
+      while (i < j)
+      {
+        ((KandianUrlImageView)paramList.get(i)).setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable).setImage((URL)paramList1.get(i));
+        i += 1;
+        continue;
+        i = 0;
+        while (i < j)
+        {
+          ((KandianUrlImageView)paramList.get(i)).setImageDrawable(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          i += 1;
+        }
+      }
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, ViewBase paramViewBase, qft paramqft)
+  {
+    if (paramViewBase == null) {}
+    ViewBase localViewBase1;
+    ViewBase localViewBase2;
     do
     {
       return;
-      QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "result = ", paramJSONObject, ", requestParams = ", paramBundle });
-      long l = System.currentTimeMillis();
-      QLog.d("DynamicChannelHeaderModule", 1, "handleRequest, begin processRecData");
-      paramJSONObject = b(paramJSONObject, paramInt, parampix);
-      QLog.d("DynamicChannelHeaderModule", 1, new Object[] { "handleRequest, processedResult time cost = ", Long.valueOf(System.currentTimeMillis() - l) });
-      QLog.d("DynamicChannelHeaderModule", 1, new Object[] { "handleRequest, processedResult = ", paramJSONObject });
-      if (paramJSONObject == null)
-      {
-        QLog.d("DynamicChannelHeaderModule", 2, "handleRequest processedResult is null");
-        a(paramInt, false, null, 0);
-        return;
-      }
-      paramJSONObject = paramJSONObject.optJSONObject("data");
-      if (paramJSONObject == null)
-      {
-        QLog.d("DynamicChannelHeaderModule", 2, "handleRequest data is null.");
-        a(paramInt, false, null, 0);
-        return;
-      }
-      Object localObject = paramJSONObject.optJSONObject("commonInfo");
-      paramJSONObject = paramJSONObject.optJSONArray("dataList");
-      parampix = new ArrayList();
-      if ((localObject == null) || (paramJSONObject == null)) {
-        break;
-      }
-      localObject = ((JSONObject)localObject).optString("cookieString");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        bkwm.a("readinjoy_dynamic_channel_header_cookie_" + paramInt, localObject);
-      }
-      if (paramJSONObject.length() == 0)
-      {
-        QLog.d("DynamicChannelHeaderModule", 2, "handleRequest dataList is null.");
-        a(paramInt, false, null, 0);
-        return;
-      }
-      i = 0;
-      if (paramBundle != null) {
-        i = paramBundle.getInt("insert_index");
-      }
-      int j = 0;
-      while (j < paramJSONObject.length())
-      {
-        paramBundle = paramJSONObject.optJSONObject(j);
-        if (paramBundle != null)
-        {
-          localObject = paramBundle.optString("style_ID", "");
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            pjt localpjt = new pjt();
-            localpjt.jdField_a_of_type_JavaLangString = ((String)localObject);
-            localpjt.b = paramBundle.toString();
-            localpjt.jdField_a_of_type_Int = i;
-            parampix.add(localpjt);
-            QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "handleRequest [", Integer.valueOf(j), "] = ", localpjt });
-          }
-        }
-        j += 1;
-      }
-    } while (parampix.size() <= 0);
-    b(paramInt, parampix);
-    a(paramInt, true, a(paramInt), i);
-    return;
-    QLog.d("DynamicChannelHeaderModule", 2, "handleRequest commonInfo or dataList is null.");
-    a(paramInt, false, null, 0);
-  }
-  
-  private void a(int paramInt, pjt parampjt)
-  {
-    if (parampjt == null) {
+      localViewBase1 = paramViewBase.findViewBaseByName("id_large_video_activity_wrapper");
+      localViewBase2 = paramViewBase.findViewBaseByName("id_large_video_activity_img");
+      paramViewBase = (NativeText)paramViewBase.findViewBaseByName("id_large_video_activity_label");
+    } while ((localViewBase1 == null) || (paramViewBase == null) || (localViewBase2 == null));
+    if ((paramBoolean) && (paramqft != null))
+    {
+      localViewBase1.setVisibility(0);
+      localViewBase2.setVisibility(0);
+      paramViewBase.setVisibility(0);
+      paramViewBase.setText(paramqft.a());
+      qft.a("0X8009660");
       return;
     }
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (localObject == null)
-    {
-      localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject);
+    localViewBase1.setVisibility(8);
+    localViewBase2.setVisibility(8);
+    paramViewBase.setVisibility(8);
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {}
+    while (paramInt1 > paramInt2) {
+      return false;
     }
-    for (;;)
+    return true;
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    if ((paramContext instanceof BaseActivity)) {}
+    for (paramContext = (BaseActivity)paramContext;; paramContext = null)
     {
-      if (((List)localObject).size() > 0)
+      if (paramContext != null)
       {
-        paramInt = 0;
-        while (paramInt < ((List)localObject).size())
-        {
-          pjt localpjt = (pjt)((List)localObject).get(paramInt);
-          if (localpjt.jdField_a_of_type_Int > parampjt.jdField_a_of_type_Int)
-          {
-            ((List)localObject).add(paramInt, parampjt);
-            QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "putHeaderDataModel, i = ", Integer.valueOf(paramInt), "dataModel = ", localpjt });
-            return;
-          }
-          paramInt += 1;
+        if (paramContext.app != null) {}
+        for (String str = paramContext.app.getCurrentAccountUin();; str = pkh.a()) {
+          return SettingCloneUtil.readValue(paramContext, str, null, "qqsetting_kandian_download_pic_flag", false);
         }
       }
-      ((List)localObject).add(parampjt);
-      return;
+      return false;
     }
   }
   
-  private void a(int paramInt1, boolean paramBoolean, List<pjt> paramList, int paramInt2)
+  public static boolean a(Context paramContext, URL paramURL)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new DynamicChannelHeaderModule.3(this, paramInt1, paramBoolean, paramList, paramInt2));
+    return (a(paramContext)) && (!NetworkUtil.isWifiConnected(paramContext)) && (!tlv.a().a(paramURL));
   }
   
-  private boolean a()
+  public static boolean a(spk paramspk)
   {
-    return (this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown());
-  }
-  
-  private JSONObject b(JSONObject paramJSONObject, int paramInt, pix parampix)
-  {
-    Object localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramInt));
-    Object localObject1 = paramJSONObject;
-    if (localObject2 != null)
+    if (paramspk == null)
     {
-      localObject2 = ((syz)localObject2).a();
-      localObject1 = paramJSONObject;
-      if (localObject2 != null)
-      {
-        localObject1 = ((pip)localObject2).a("dp_environment_id");
-        localObject2 = parampix.e;
-        parampix = new StringBuffer();
-        localObject2 = (String)ProteusJsHelper.evaluateJs((String)localObject1, (String)localObject2, paramJSONObject.toString(), parampix);
-        QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "preProcessRecData res = ", localObject2, ", exception = ", parampix });
-        localObject1 = paramJSONObject;
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyDisplayUtils", 2, "isProtraitVideo return false for videoPlayParam is null.");
       }
+      return false;
     }
-    try
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = new JSONObject((String)localObject2);
-      }
-      return localObject1;
-    }
-    catch (JSONException parampix)
-    {
-      QLog.d("DynamicChannelHeaderModule", 2, "preProcessRecData e = ", parampix);
-    }
-    return paramJSONObject;
+    return a(paramspk.c, paramspk.d);
   }
   
-  private void b(int paramInt, List<pjt> paramList)
+  public static Pair<Integer, Integer> b()
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a(paramInt, (pjt)paramList.next());
-      }
-    }
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = (localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 2;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.33F)));
   }
   
-  public List<pjt> a(int paramInt)
+  public static Pair<Integer, Integer> c()
   {
-    ArrayList localArrayList = new ArrayList();
-    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if ((localList != null) && (localList.size() > 0)) {
-      localArrayList.addAll(localList);
-    }
-    return localArrayList;
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.597F)));
   }
   
-  public void a()
+  public static Pair<Integer, Integer> d()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.b.clear();
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdownNow();
-    }
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    int i = (localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 3;
+    return new Pair(Integer.valueOf(i), Integer.valueOf(i));
   }
   
-  public void a(int paramInt)
+  public static Pair<Integer, Integer> e()
   {
-    List localList = (List)this.b.get(Integer.valueOf(paramInt));
-    if ((localList != null) && (localList.size() > 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < localList.size())
-      {
-        pix localpix = (pix)localList.get(i);
-        if ((!TextUtils.isEmpty(localpix.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localpix.b)))
-        {
-          pjt localpjt = new pjt();
-          localpjt.jdField_a_of_type_JavaLangString = localpix.jdField_a_of_type_JavaLangString;
-          localpjt.b = localpix.b;
-          localpjt.jdField_a_of_type_Int = i;
-          localArrayList.add(localpjt);
-        }
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localArrayList);
-    }
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.562F)));
   }
   
-  public void a(int paramInt, List<pix> paramList)
+  public static Pair<Integer, Integer> f()
   {
-    if ((paramInt == -1) || (paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    this.b.put(Integer.valueOf(paramInt), paramList);
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.5625F)));
   }
   
-  public void b(int paramInt)
+  public static Pair<Integer, Integer> g()
   {
-    List localList = (List)this.b.get(Integer.valueOf(paramInt));
-    if ((localList != null) && (localList.size() > 0))
-    {
-      int i = 0;
-      while (i < localList.size())
-      {
-        pix localpix = (pix)localList.get(i);
-        if ((!TextUtils.isEmpty(localpix.c)) && (a())) {
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new DynamicChannelHeaderModule.1(this, paramInt, i, localpix));
-        }
-        i += 1;
-      }
-    }
+    int i = (int)(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels * 0.5F);
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.3333F)));
   }
 }
 

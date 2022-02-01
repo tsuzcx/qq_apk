@@ -1,53 +1,28 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.SkinInfo;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
 
 public class akvh
-  extends FileObserver
+  implements akwd
 {
-  private boolean a;
+  public akvh(UsualHbFragment paramUsualHbFragment) {}
   
-  private void a()
+  public void a(akvt paramakvt)
   {
-    if (!this.a)
+    if ((paramakvt.a.skin_id == 0) || (paramakvt.a.skin_id == -2))
     {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
-    }
-  }
-  
-  public void onEvent(int paramInt, String paramString)
-  {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
-    }
-    do
-    {
+      paramakvt = akvs.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramakvt.a.blessing);
+      this.a.c.setHint(paramakvt);
       return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
     }
-    a();
+    if (TextUtils.isEmpty(paramakvt.a.blessing))
+    {
+      this.a.c.setHint(anvx.a(2131696541));
+      return;
+    }
+    this.a.c.setHint(paramakvt.a.blessing);
   }
 }
 

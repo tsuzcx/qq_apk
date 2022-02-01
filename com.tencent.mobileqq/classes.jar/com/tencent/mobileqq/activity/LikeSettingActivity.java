@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adpw;
-import adpx;
-import adpy;
-import amov;
-import amtj;
-import amvf;
+import aegz;
+import aeha;
+import aehb;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.BitmapDrawable;
@@ -16,17 +13,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import awhr;
-import awjw;
-import awjx;
-import ayon;
-import ayoo;
-import bcef;
-import bgev;
+import anri;
+import anvx;
+import anxs;
+import axnt;
+import axpy;
+import axpz;
+import azti;
+import aztj;
+import bdla;
+import bhnp;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.profile.like.PraiseManager;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -36,13 +38,13 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class LikeSettingActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, ayoo
+  implements View.OnClickListener, aztj
 {
-  public amov a;
-  public amvf a;
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new adpy(this);
-  awjx jdField_a_of_type_Awjx = new adpx(this);
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new adpw(this);
+  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new aehb(this);
+  public anri a;
+  public anxs a;
+  axpz jdField_a_of_type_Axpz = new aeha(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aegz(this);
   PraiseManager jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager;
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public FormSwitchItem a;
@@ -59,7 +61,7 @@ public class LikeSettingActivity
   
   void a()
   {
-    boolean bool = ((awhr)this.app.getManager(161)).a();
+    boolean bool = ((axnt)this.app.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER)).a();
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), bool);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
@@ -68,14 +70,14 @@ public class LikeSettingActivity
     this.c.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.b.setOnCheckedChangeListener(null);
     Object localObject = this.b;
-    if (this.jdField_a_of_type_Amvf.c()) {}
+    if (this.jdField_a_of_type_Anxs.c()) {}
     for (int i = 0;; i = 8)
     {
       ((FormSwitchItem)localObject).setVisibility(i);
-      this.b.setChecked(this.jdField_a_of_type_Amvf.a());
+      this.b.setChecked(this.jdField_a_of_type_Anxs.a());
       this.b.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
       this.d.setOnCheckedChangeListener(null);
-      this.d.setChecked(this.jdField_a_of_type_Amvf.c());
+      this.d.setChecked(this.jdField_a_of_type_Anxs.c());
       this.d.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
       i = PraiseManager.a(this.app);
       if (i > 0)
@@ -85,7 +87,7 @@ public class LikeSettingActivity
         if (localObject != null)
         {
           i = AIOUtils.dp2px(34.0F, super.getResources());
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(new BitmapDrawable(super.getResources(), ((ayon)localObject).b), i, i);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(new BitmapDrawable(super.getResources(), ((azti)localObject).b), i, i);
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
@@ -94,12 +96,12 @@ public class LikeSettingActivity
     }
   }
   
-  public void a(int paramInt1, ayon paramayon, int paramInt2, String paramString)
+  public void a(int paramInt1, azti paramazti, int paramInt2, String paramString)
   {
-    if ((paramInt1 == PraiseManager.a(this.app)) && (paramayon != null))
+    if ((paramInt1 == PraiseManager.a(this.app)) && (paramazti != null))
     {
       paramInt1 = AIOUtils.dp2px(34.0F, super.getResources());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(new BitmapDrawable(super.getResources(), paramayon.b), paramInt1, paramInt1);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(new BitmapDrawable(super.getResources(), paramazti.b), paramInt1, paramInt1);
     }
   }
   
@@ -115,24 +117,24 @@ public class LikeSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561186);
-    setTitle(amtj.a(2131705243));
-    setLeftViewName(2131690599);
-    this.jdField_a_of_type_Amvf = ((amvf)this.app.getManager(186));
-    this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager = ((PraiseManager)this.app.getManager(209));
-    this.jdField_a_of_type_Amov = ((amov)this.app.getBusinessHandler(2));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131371936));
-    this.b = ((FormSwitchItem)super.findViewById(2131371937));
-    this.c = ((FormSwitchItem)super.findViewById(2131369928));
-    this.d = ((FormSwitchItem)super.findViewById(2131371938));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131372389));
+    setContentView(2131561247);
+    setTitle(anvx.a(2131705594));
+    setLeftViewName(2131690676);
+    this.jdField_a_of_type_Anxs = ((anxs)this.app.getManager(QQManagerFactory.LIKE_RANKING_LIST_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager = ((PraiseManager)this.app.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER));
+    this.jdField_a_of_type_Anri = ((anri)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131372127));
+    this.b = ((FormSwitchItem)super.findViewById(2131372128));
+    this.c = ((FormSwitchItem)super.findViewById(2131370098));
+    this.d = ((FormSwitchItem)super.findViewById(2131372129));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131372583));
     a();
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    this.app.addObserver(this.jdField_a_of_type_Awjx);
+    this.app.addObserver(this.jdField_a_of_type_Axpz);
     this.app.getZanSwitches();
-    this.jdField_a_of_type_Amov.m();
-    this.jdField_a_of_type_Amov.k();
-    ((awjw)this.app.getBusinessHandler(66)).b();
+    this.jdField_a_of_type_Anri.m();
+    this.jdField_a_of_type_Anri.k();
+    ((axpy)this.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER)).b();
     return true;
   }
   
@@ -140,15 +142,15 @@ public class LikeSettingActivity
   {
     super.doOnDestroy();
     this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    this.app.removeObserver(this.jdField_a_of_type_Awjx);
+    this.app.removeObserver(this.jdField_a_of_type_Axpz);
     this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
   }
   
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(this, QQBrowserActivity.class);
-    VasWebviewUtil.openQQBrowserWithoutAD(this, bgev.a(this, "praise", ""), 536870912L, localIntent, false, -1);
-    bcef.b(this.app, "CliOper", "", "", "like_mall", "like_enter", 1, 0, "", "", "", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(this, bhnp.a(this, "praise", ""), 536870912L, localIntent, false, -1);
+    bdla.b(this.app, "CliOper", "", "", "like_mall", "like_enter", 1, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -161,7 +163,7 @@ public class LikeSettingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeSettingActivity
  * JD-Core Version:    0.7.0.1
  */

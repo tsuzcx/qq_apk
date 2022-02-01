@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.memory;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import ankt;
+import aonm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ import java.util.Set;
 public class QLogReporter$1
   implements Runnable
 {
-  public QLogReporter$1(ankt paramankt, SharedPreferences paramSharedPreferences, long paramLong) {}
+  public QLogReporter$1(aonm paramaonm, SharedPreferences paramSharedPreferences, long paramLong) {}
   
   public void run()
   {
@@ -52,9 +52,9 @@ public class QLogReporter$1
         l = System.currentTimeMillis() - 86400000L;
         localObject1 = Calendar.getInstance();
         ((Calendar)localObject1).setTimeInMillis(l);
-        localObject5 = ankt.a.format(((Calendar)localObject1).getTime());
+        localObject5 = aonm.a.format(((Calendar)localObject1).getTime());
         ((Calendar)localObject1).setTimeInMillis(l - 86400000L);
-        localObject1 = ankt.a.format(((Calendar)localObject1).getTime());
+        localObject1 = aonm.a.format(((Calendar)localObject1).getTime());
         i = 0;
         if (i < localObject4.length)
         {

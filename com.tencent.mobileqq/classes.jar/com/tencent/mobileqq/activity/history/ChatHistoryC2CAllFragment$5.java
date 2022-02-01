@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import amwo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anxa;
+import anzc;
+import apac;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -67,11 +68,11 @@ class ChatHistoryC2CAllFragment$5
         localEditor.putInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i).commit();
         this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.this$0.jdField_b_of_type_AndroidViewView));
       }
-      if (this.this$0.jdField_a_of_type_Amwo.b() == 0)
+      if (this.this$0.jdField_a_of_type_Anzc.b() == 0)
       {
-        localObject = (anxa)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(59);
+        localObject = (apac)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
         if (localObject != null) {
-          ((anxa)localObject).a();
+          ((apac)localObject).a();
         }
       }
       return;

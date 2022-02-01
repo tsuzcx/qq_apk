@@ -1,73 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class awof
-  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private awoi jdField_a_of_type_Awoi;
-  private List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new awog(this);
+  private awoh jdField_a_of_type_Awoh;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public awof(Context paramContext, int paramInt, List<InterestTagInfo> paramList, awoi paramawoi)
+  public awof(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Awoi = paramawoi;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
   }
   
-  public InterestTagInfo a(int paramInt)
+  public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
-      return null;
-    }
-    return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
-  public void a(List<InterestTagInfo> paramList, boolean paramBoolean)
+  public void a(awoh paramawoh)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {
-      notifyDataSetChanged();
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    InterestTagItemView localInterestTagItemView;
-    if (paramView == null)
-    {
-      localInterestTagItemView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
-      localInterestTagItemView.a(this.jdField_a_of_type_Int);
-      localInterestTagItemView.setCallback(this.jdField_a_of_type_Awoi);
-    }
-    for (;;)
-    {
-      localInterestTagItemView.a(a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localInterestTagItemView;
-      localInterestTagItemView = (InterestTagItemView)paramView;
-    }
+    this.jdField_a_of_type_Awoh = paramawoh;
   }
 }
 

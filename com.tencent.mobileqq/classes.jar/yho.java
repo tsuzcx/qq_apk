@@ -1,30 +1,12 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-
-public class yho
-  implements TextWatcher
+class yho
+  extends zhp
 {
-  public yho(yhm paramyhm) {}
+  yho(yhn paramyhn) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean a(boolean paramBoolean)
   {
-    String str = ype.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    xvv.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Yhp != null) {
-      this.a.jdField_a_of_type_Yhp.a(this.a.jdField_a_of_type_JavaLangString);
-    }
+    yhn.a(this.a);
+    return true;
   }
 }
 

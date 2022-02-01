@@ -2,7 +2,7 @@ package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.view.ViewPropertyAnimator;
 import android.widget.RelativeLayout;
-import bmge;
+import bnvw;
 
 public class AEEditorComicLoadingView$2
   implements Runnable
@@ -11,7 +11,7 @@ public class AEEditorComicLoadingView$2
   
   public void run()
   {
-    this.this$0.a.animate().alpha(0.0F).setDuration(500L).setListener(new bmge(this)).start();
+    this.this$0.a.animate().alpha(0.0F).setDuration(500L).setListener(new bnvw(this)).start();
   }
 }
 

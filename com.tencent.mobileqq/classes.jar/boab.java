@@ -1,31 +1,11 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import dov.com.qq.im.aeeditor.module.filter.AEFilterExtendBean;
 
 public class boab
+  extends TypeToken<AEFilterExtendBean>
 {
-  public static GPUBaseFilter a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new boad();
-    case 106: 
-      return new boae();
-    }
-    return new GPUOESMovieFilter();
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return false;
-  }
+  public boab(AEEditorFilterControlPanel paramAEEditorFilterControlPanel) {}
 }
 
 

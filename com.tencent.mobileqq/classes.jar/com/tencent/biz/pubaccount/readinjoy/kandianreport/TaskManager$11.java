@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bfuc;
+import bhcu;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 
@@ -11,7 +11,7 @@ class TaskManager$11
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    return new String(bfuc.decode((String)paramArrayOfObject[0], 2));
+    return new String(bhcu.decode((String)paramArrayOfObject[0], 2));
   }
 }
 

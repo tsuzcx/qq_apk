@@ -1,30 +1,29 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-public abstract class bfae
-  extends nmf
+public class bfae
+  implements URLDrawable.DownloadListener
 {
-  public bfae()
+  public bfae(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bfaf parambfaf) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    super(false);
+    this.jdField_a_of_type_Bfaf.a(null);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      return;
-    }
-  }
+  public void onFileDownloadStarted() {}
   
-  protected abstract void a(boolean paramBoolean);
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    Bitmap localBitmap = bjkm.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bfaf.a(localBitmap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfae
  * JD-Core Version:    0.7.0.1
  */

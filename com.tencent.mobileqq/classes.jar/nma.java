@@ -1,49 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
-public class nma
-  extends MSFServlet
+class nma
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onReceive");
-    }
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bgau.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
-    {
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MSFServlet", 2, "onReceive exit");
-      return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
-    }
-  }
+  nma(nlx paramnlx, long paramLong) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend");
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bgau.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend exit");
-    }
+    QLog.w(this.jdField_a_of_type_Nlx.a, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

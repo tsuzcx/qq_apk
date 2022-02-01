@@ -1,35 +1,36 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class xoa
-  implements vqp<wdu, wdv>
+public final class xoa
+  extends QQUIEventReceiver<xnt, wqh>
 {
-  xoa(xnz paramxnz, JobContext paramJobContext, xnm paramxnm) {}
-  
-  public void a(@NonNull wdu paramwdu, @Nullable wdv arg2, @NonNull ErrorMessage paramErrorMessage)
+  public xoa(@NonNull xnt paramxnt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramxnt);
+  }
+  
+  public void a(@NonNull xnt paramxnt, @NonNull wqh paramwqh)
+  {
+    if ((paramwqh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwqh.jdField_a_of_type_JavaUtilList != null) && (paramxnt.a != null))
     {
-      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
-      return;
+      paramwqh = paramwqh.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwqh.hasNext())
+      {
+        wkv localwkv = (wkv)paramwqh.next();
+        if (TextUtils.equals(paramxnt.a.b, localwkv.a)) {
+          paramxnt.i();
+        }
+      }
     }
-    wdv localwdv = ???;
-    if (??? == null) {
-      localwdv = new wdv(paramErrorMessage);
-    }
-    if (paramErrorMessage.isFail()) {
-      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
-    }
-    synchronized (this.jdField_a_of_type_Xnz)
-    {
-      xnz.a(this.jdField_a_of_type_Xnz, localwdv);
-      xnz.a(this.jdField_a_of_type_Xnz).remove(paramwdu);
-      xnz.a(this.jdField_a_of_type_Xnz, this.jdField_a_of_type_Xnm);
-      return;
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqh.class;
   }
 }
 

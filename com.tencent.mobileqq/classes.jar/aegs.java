@@ -1,28 +1,28 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class aegs
-  extends RecyclerView.ItemDecoration
+class aegs
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
+  aegs(aegr paramaegr, boolean paramBoolean) {}
   
-  public aegs(aegj paramaegj, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
-    if (paramRecyclerView.getChildPosition(paramView) != 0) {
-      paramRect.right = this.jdField_a_of_type_Int;
+    if ((this.jdField_a_of_type_Boolean) && (aegr.a(this.jdField_a_of_type_Aegr) != null) && (aegr.a(this.jdField_a_of_type_Aegr).size() >= 2)) {
+      aegr.a(this.jdField_a_of_type_Aegr).sendEmptyMessageDelayed(1688002, 1400L);
+    }
+    if (aegr.a(this.jdField_a_of_type_Aegr) != null)
+    {
+      aegr.a(this.jdField_a_of_type_Aegr).a();
+      aegr.a(this.jdField_a_of_type_Aegr, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

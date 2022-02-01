@@ -1,89 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aqlf
+class aqlf
+  implements AdapterView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  aqlf(aqlc paramaqlc) {}
   
-  public static aqlf a(aptx[] paramArrayOfaptx)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0))
-    {
-      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
+    boolean bool = aqlp.a(aqlc.f(this.a).app).a(paramInt, aqlc.a(this.a).getCount());
+    if (aqlc.a(this.a) == null) {
+      aqlc.a(this.a, new aqlm());
     }
-    aqlf localaqlf = new aqlf();
-    int k = paramArrayOfaptx.length;
-    int i = 0;
-    while (i < k)
+    aqlc.a(this.a).a(aqlc.g(this.a), aqlc.a(this.a).a(paramInt), bool);
+    QQAppInterface localQQAppInterface = aqlc.h(this.a).app;
+    int i = aqlp.a(aqlc.i(this.a).app).a(String.valueOf(aqlc.a(this.a)));
+    if (bool) {}
+    for (String str = "1";; str = aqlc.a(this.a).a(paramInt).a)
     {
-      Object localObject1 = paramArrayOfaptx[i];
-      try
-      {
-        localObject1 = new JSONObject(((aptx)localObject1).a);
-        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
-        {
-          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
-          {
-            j = 1;
-            localaqlf.jdField_a_of_type_Int = j;
-          }
-        }
-        else
-        {
-          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
-            break label189;
-          }
-          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
-          if (localObject1 == null) {
-            break label189;
-          }
-          j = 0;
-          while (j < ((JSONArray)localObject1).length())
-          {
-            String str = ((JSONArray)localObject1).optString(j);
-            if (!TextUtils.isEmpty(str)) {
-              localaqlf.jdField_a_of_type_JavaUtilList.add(str);
-            }
-            j += 1;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
-          continue;
-          int j = 0;
-        }
-        label189:
-        i += 1;
-      }
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X800B32A", "0X800B32A", i, 0, str, paramInt + "", "", "");
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
     }
-    return localaqlf;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlf
  * JD-Core Version:    0.7.0.1
  */

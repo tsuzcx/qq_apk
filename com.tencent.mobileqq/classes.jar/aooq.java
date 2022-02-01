@@ -1,16 +1,42 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import cooperation.wadl.ipc.WadlResult;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
 
 public class aooq
-  implements aoox
 {
-  aooq(aool paramaool) {}
+  public static final HashSet<aooq> a;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
   
-  public void a(WadlResult paramWadlResult)
+  static
   {
-    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  }
+  
+  public aooq(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PushMsg0x210_c7Info{");
+    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
+    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

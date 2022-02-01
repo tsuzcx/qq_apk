@@ -1,22 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-public final class azvf
-  implements Parcelable.Creator<RedDisplayInfo>
+public class azvf
+  extends AnimatorListenerAdapter
 {
-  public RedDisplayInfo a(Parcel paramParcel)
-  {
-    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
-    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
-    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
-    return localRedDisplayInfo;
-  }
+  public azvf(BreatheEffectView paramBreatheEffectView) {}
   
-  public RedDisplayInfo[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
   {
-    return new RedDisplayInfo[paramInt];
+    this.a.a();
   }
 }
 

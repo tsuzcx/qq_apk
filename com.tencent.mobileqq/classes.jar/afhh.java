@@ -1,27 +1,80 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afhh
-  extends VasQuickUpdateManager.CallBacker
+  implements ajfr
 {
-  public afhh(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  public afhh(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    int i;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    {
+      i = 1;
+      if (i == 0) {
+        break label128;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      ajfq.a(this.a, paramString, "");
+      ajfq.a(this.a.app);
+      this.a.h();
+      bdla.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
+    }
+    label128:
+    label252:
     do
     {
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
+            break label252;
+          }
+        } while (this.a.jdField_a_of_type_Aoep == null);
+        try
+        {
+          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
+          this.a.g();
+          this.a.jdField_a_of_type_Aoep.a(l, 8390784);
+          return;
+        }
+        catch (Exception paramString) {}
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
       return;
-      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
-        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      this.a.g();
+      TroopRequestActivity.a(this.a, 1);
+    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
+    bdla.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
+    bdla.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
+  }
+  
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.h();
+    paramStructMsg = this.a;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131690023;; paramInt1 = 2131690022)
+    {
+      QQToast.a(paramStructMsg, paramInt1, 1).a();
+      bdla.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
       }
-      if (paramInt1 == 0) {
-        this.a.a(true);
-      }
-    } while (paramVasQuickUpdateManager == null);
-    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
+      return;
+    }
   }
 }
 

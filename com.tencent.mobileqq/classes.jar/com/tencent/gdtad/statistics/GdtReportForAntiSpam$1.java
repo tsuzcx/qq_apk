@@ -1,6 +1,6 @@
 package com.tencent.gdtad.statistics;
 
-import abrl;
+import acho;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import org.json.JSONObject;
@@ -19,11 +19,11 @@ public final class GdtReportForAntiSpam$1
     localParams.requestData = this.jdField_a_of_type_ArrayOfByte;
     if (!localParams.canSend())
     {
-      abrl.d("GdtReportForAntiSpam", "reportAntiSpam error");
+      acho.d("GdtReportForAntiSpam", "reportAntiSpam error");
       return;
     }
     AdHttp.send(localParams);
-    abrl.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
+    acho.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
   }
 }
 

@@ -1,8 +1,20 @@
-import com.tencent.mobileqq.data.NearbyPeopleCard.HiWanItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class axde
+class axde
+  implements DialogInterface.OnClickListener
 {
-  public NearbyPeopleCard.HiWanItem a;
+  axde(axcx paramaxcx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    bdla.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
+    if (this.a.c()) {
+      axcx.a(this.a).setLeftCheckBoxVisible(false, null, false);
+    }
+  }
 }
 
 

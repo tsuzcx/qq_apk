@@ -1,7 +1,6 @@
 package cooperation.qwallet.plugin;
 
 import Override;
-import amtj;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -11,6 +10,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
+import anvx;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
@@ -256,7 +256,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          QQToast.a(this, amtj.a(2131710553), 0).a();
+          QQToast.a(this, anvx.a(2131710900), 0).a();
         }
         return;
       }

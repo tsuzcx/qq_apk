@@ -1,16 +1,30 @@
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public class ajye
+  extends anwo
 {
-  public long a;
-  public String a;
-  public String b;
+  public ajye(Conversation paramConversation) {}
   
-  public ajye() {}
-  
-  public ajye(String paramString1, String paramString2, long paramLong)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
   }
 }
 

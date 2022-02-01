@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bifu
-  implements DialogInterface.OnClickListener
+final class bifu
+  extends WebAccelerateHelper.CommonJsPluginFactory
 {
-  public bifu(WadlJsBridgeCallBack.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.h = 1;
-    bldt.a().a(this.a.a);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new bidu());
+    localArrayList.add(new avzm());
+    localArrayList.add(new UiApiPlugin());
+    localArrayList.add(new avxc());
+    return localArrayList;
   }
 }
 

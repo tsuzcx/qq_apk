@@ -1,18 +1,43 @@
-import java.io.File;
-import java.util.concurrent.Callable;
-
-class vgu
-  implements Callable<Boolean>
+public abstract class vgu<U, V>
 {
-  vgu(vgs paramvgs, File paramFile) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public Boolean a()
+  public abstract U a();
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((vgs.a(this.jdField_a_of_type_Vgs) != null) && (vgs.a(this.jdField_a_of_type_Vgs).exists()) && (vgs.a(this.jdField_a_of_type_Vgs) == this.jdField_a_of_type_JavaIoFile)) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+  }
+  
+  public abstract U b();
+  
+  public abstract V c();
+  
+  public abstract V d();
 }
 
 

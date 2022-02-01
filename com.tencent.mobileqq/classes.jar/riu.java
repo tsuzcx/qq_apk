@@ -1,17 +1,20 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
 public class riu
   implements View.OnClickListener
 {
-  public riu(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public riu(ComponentJump paramComponentJump, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().finish();
+    String str = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    pkh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), str);
+    qkw.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

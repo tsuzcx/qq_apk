@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import akns;
-import aknv;
-import aknw;
+import alkr;
+import alku;
+import alkv;
 import android.database.Cursor;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.defaultzero;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -35,7 +36,7 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = aknw.a(this.msgType, this.msgData);
+    this.msg = alkv.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -86,7 +87,7 @@ public class RecentUser
   
   public void prewrite()
   {
-    this.msgData = aknw.a(this.msgType, this.msg);
+    this.msgData = alkv.a(this.msgType, this.msg);
     super.prewrite();
   }
   
@@ -97,17 +98,22 @@ public class RecentUser
     }
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = ((aknv)paramQQAppInterface.getManager(366)).a(this.msgType);
+      paramQQAppInterface = ((alku)paramQQAppInterface.getManager(QQManagerFactory.RECENT_USER)).a(this.msgType);
       if (paramQQAppInterface != null) {
         return paramQQAppInterface.a();
       }
     }
     return false;
   }
+  
+  public String toString()
+  {
+    return "RecentUser{uin='" + this.uin + '\'' + ", type=" + this.type + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentUser
  * JD-Core Version:    0.7.0.1
  */

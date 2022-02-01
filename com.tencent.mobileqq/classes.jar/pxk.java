@@ -1,7 +1,12 @@
 class pxk
-  implements pxn<BEAN>
+  extends pvq
 {
-  pxk(pxj parampxj, pxe parampxe) {}
+  pxk(pxg parampxg) {}
+  
+  public void o()
+  {
+    pxg.a(this.a);
+  }
 }
 
 

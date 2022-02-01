@@ -1,67 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 
 public class wgb
-  extends vqm
+  extends whv
 {
-  public final long a;
-  public final String a;
-  public final List<wgc> a;
-  public final boolean a;
-  public final byte[] a;
+  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
+  whw jdField_a_of_type_Whw;
   
-  public wgb(qqstory_service.RspGetEmoticonPackList paramRspGetEmoticonPackList, byte[] paramArrayOfByte, long paramLong)
+  public wgb(qqstory_service.RspAddFeedComment paramRspAddFeedComment, whw paramwhw)
   {
-    super(paramRspGetEmoticonPackList.result);
-    boolean bool;
-    ArrayList localArrayList;
-    if (paramRspGetEmoticonPackList.is_end.get() != 0)
-    {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
-      localArrayList = new ArrayList();
-      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
-      if (paramRspGetEmoticonPackList != null) {
-        paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        if (!paramRspGetEmoticonPackList.hasNext()) {
-          break label151;
-        }
-        wgc localwgc = new wgc((qqstory_struct.EmoticonPack)paramRspGetEmoticonPackList.next());
-        if (localwgc.a())
-        {
-          localArrayList.add(localwgc);
-          continue;
-          bool = false;
-          break;
-        }
-        xvv.d("GetEmojiPackInfoListResponse", "found invalid data we ignore it : " + localwgc);
-      }
-    }
-    label151:
-    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+    super(paramRspAddFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
+    this.jdField_a_of_type_Whw = paramwhw;
   }
   
-  public String toString()
+  public wgb(whw paramwhw)
   {
-    return "GetEmojiPackInfoListResponse{mEmojiPackList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    this.jdField_a_of_type_Whw = paramwhw;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Whw.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Whw.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Whw.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Whw.a(paramBoolean, paramBundle);
   }
 }
 

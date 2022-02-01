@@ -4,7 +4,7 @@ import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class EmoticonPanelLinearLayout$CheckForLongPress
@@ -31,19 +31,19 @@ class EmoticonPanelLinearLayout$CheckForLongPress
   
   private void reportShowPopupEmoEvent(EmoticonInfo paramEmoticonInfo)
   {
-    if (EmoticonPanelLinearLayout.access$200(this.this$0) == null) {}
+    if (EmoticonPanelLinearLayout.access$300(this.this$0) == null) {}
     int i;
     do
     {
       return;
       i = this.mReportSparseArray.get(paramEmoticonInfo.type, -1);
     } while (i == -1);
-    bcef.b(EmoticonPanelLinearLayout.access$200(this.this$0).app, "dc00898", "", "", "0X800AEEC", "0X800AEEC", i, 0, "", "", "", "");
+    bdla.b(EmoticonPanelLinearLayout.access$300(this.this$0).app, "dc00898", "", "", "0X800AEEC", "0X800AEEC", i, 0, "", "", "", "");
   }
   
   public void rememberWindowAttachCount()
   {
-    this.mOriginalWindowAttachCount = EmoticonPanelLinearLayout.access$300(this.this$0);
+    this.mOriginalWindowAttachCount = EmoticonPanelLinearLayout.access$400(this.this$0);
   }
   
   public void run()
@@ -54,12 +54,13 @@ class EmoticonPanelLinearLayout$CheckForLongPress
       if (localEmoticonInfo != null)
       {
         if ((this.this$0.callback != null) && (this.this$0.callback.onLongClick(localEmoticonInfo))) {
-          break label139;
+          break label154;
         }
         this.this$0.mHasPerformedLongPress = true;
         this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (EmoticonPanelLinearLayout.access$100(this.this$0, localEmoticonInfo))
+        EmoticonPanelLinearLayout.access$100(this.this$0, this.this$0.mPointView, localEmoticonInfo);
+        if (EmoticonPanelLinearLayout.access$200(this.this$0, localEmoticonInfo))
         {
           this.this$0.showPopupEmo(this.this$0.mPointView, localEmoticonInfo);
           reportShowPopupEmoEvent(localEmoticonInfo);
@@ -67,13 +68,13 @@ class EmoticonPanelLinearLayout$CheckForLongPress
       }
     }
     return;
-    label139:
+    label154:
     this.this$0.mPointView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,19 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
 
-class asah
-  implements bjoe
+public class asah
 {
-  asah(asag paramasag, FileManagerEntity paramFileManagerEntity, bjnw parambjnw) {}
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public ArrayList<String> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Asag.a.a).getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
-    this.jdField_a_of_type_Asag.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
-      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Asag.a.a).getFileManagerEngine().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
-    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Asag.a.a).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_Asag.a.a.g();
-    if (this.jdField_a_of_type_Bjnw.isShowing()) {
-      this.jdField_a_of_type_Bjnw.dismiss();
-    }
-  }
+  public asah(asag paramasag) {}
 }
 
 

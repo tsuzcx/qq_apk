@@ -8,7 +8,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
-import mvg;
+import mwe;
 
 public class BidirectionSeekBar
   extends SeekBar
@@ -40,15 +40,15 @@ public class BidirectionSeekBar
     if (getThumbOffset() != 0) {
       setThumbOffset(0);
     }
-    int i = getResources().getDrawable(2130841965).getIntrinsicWidth();
+    int i = getResources().getDrawable(2130841978).getIntrinsicWidth();
     Object localObject = getProgressDrawable();
     if ((localObject instanceof LayerDrawable))
     {
       localObject = (LayerDrawable)localObject;
       Drawable localDrawable = ((LayerDrawable)localObject).findDrawableByLayerId(16908301);
-      mvg localmvg = new mvg(getResources().getDrawable(2130841957), getResources().getDrawable(2130841960), 1, i);
-      localmvg.setLevel(localDrawable.getLevel());
-      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localmvg);
+      mwe localmwe = new mwe(getResources().getDrawable(2130841970), getResources().getDrawable(2130841973), 1, i);
+      localmwe.setLevel(localDrawable.getLevel());
+      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localmwe);
     }
     if (Build.VERSION.SDK_INT >= 11) {}
   }

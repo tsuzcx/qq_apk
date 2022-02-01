@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.imaxad;
 
-import aula;
+import avqv;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ocw;
+import okn;
 
 public class ImaxAdVideoPreloadManager$4
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$4(aula paramaula, QQAppInterface paramQQAppInterface) {}
+  public ImaxAdVideoPreloadManager$4(avqv paramavqv, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    ocw.a().a(this.a);
+    okn.a().a(this.a);
   }
 }
 

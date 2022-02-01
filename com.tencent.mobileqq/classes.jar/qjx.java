@@ -1,4 +1,7 @@
-public class qjx {}
+public abstract interface qjx
+{
+  public abstract void z_();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

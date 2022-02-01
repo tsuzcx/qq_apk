@@ -1,46 +1,63 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class anbc
-  implements Handler.Callback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/request/ApolloRequestReceiveManager;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "mMethodMap", "Ljava/util/HashMap;", "Lcom/tencent/mobileqq/apollo/request/ApolloRequestReceiveManager$ReceiveMethodHolder;", "Lkotlin/collections/HashMap;", "getRequestReceive", "cmd", "handleApolloRoleAndDress", "", "params", "Lcom/tencent/mobileqq/apollo/request/ApolloRequestReceiveParams;", "handleApolloSetModel", "handleChangeApolloStatus", "loadMethods", "obj", "cls", "Ljava/lang/Class;", "ReceiveMethodHolder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class anbc
 {
-  public anbc(SignatureManager paramSignatureManager) {}
+  public static final anbc a;
+  @NotNull
+  private static final String jdField_a_of_type_JavaLangString = "ApolloRequestReceiveManager";
+  private static final HashMap<String, anbd> jdField_a_of_type_JavaUtilHashMap;
   
-  public boolean handleMessage(Message paramMessage)
+  static
   {
-    if (2 == paramMessage.what)
+    anbc localanbc = new anbc();
+    jdField_a_of_type_Anbc = localanbc;
+    jdField_a_of_type_JavaLangString = "ApolloRequestReceiveManager";
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    localanbc.a(localanbc, anbc.class);
+  }
+  
+  private final void a(Object paramObject, Class<?> paramClass)
+  {
+    paramClass = paramClass.getMethods();
+    int j = paramClass.length;
+    int i = 0;
+    if (i < j)
     {
-      SignatureManager.jdField_a_of_type_ArrayOfBgfn = (bgfn[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      Object localObject1 = paramClass[i];
+      Object localObject2;
+      if (((Method)localObject1).isAnnotationPresent(anbf.class))
       {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(2, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl info...");
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "method");
+        ((Method)localObject1).setAccessible(true);
+        localObject2 = ((Method)localObject1).getAnnotation(anbf.class);
+        Intrinsics.checkExpressionValueIsNotNull(localObject2, "method.getAnnotation<Apo…questReceive::class.java)");
+        localObject2 = (anbf)localObject2;
+        if (!jdField_a_of_type_JavaUtilHashMap.containsKey(((anbf)localObject2).a())) {
+          break label91;
         }
       }
-    }
-    for (;;)
-    {
-      return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      for (;;)
       {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl animation ...");
-        }
+        i += 1;
+        break;
+        label91:
+        localObject1 = new anbd(paramObject, (Method)localObject1);
+        ((Map)jdField_a_of_type_JavaUtilHashMap).put(((anbf)localObject2).a(), localObject1);
       }
     }
+  }
+  
+  @Nullable
+  public final anbd a(@Nullable String paramString)
+  {
+    return (anbd)((Map)jdField_a_of_type_JavaUtilHashMap).get(paramString);
   }
 }
 

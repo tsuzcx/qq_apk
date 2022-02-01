@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agif;
-import agis;
-import areb;
+import ahaw;
+import ahbj;
+import asih;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class MarketFaceItemBuilder$8
   implements Runnable
 {
-  public MarketFaceItemBuilder$8(agif paramagif, agis paramagis, ChatMessage paramChatMessage) {}
+  public MarketFaceItemBuilder$8(ahaw paramahaw, ahbj paramahbj, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    boolean bool = this.this$0.a.a(this.jdField_a_of_type_Agis.a.emoticon, 8);
+    boolean bool = this.this$0.a.a(this.jdField_a_of_type_Ahbj.a.emoticon, 8);
     ThreadManager.getUIHandler().post(new MarketFaceItemBuilder.8.1(this, bool));
   }
 }

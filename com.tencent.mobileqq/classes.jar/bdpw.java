@@ -1,20 +1,46 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import mqq.app.QQPermissionCallback;
-
 public class bdpw
-  implements QQPermissionCallback
+  extends bdnw
 {
-  public bdpw(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable) {}
+  public boolean c;
+  public int o;
+  public int p = 3;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bdpw()
   {
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramArrayOfString, paramArrayOfInt);
+    this(null);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bdpw(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    super(paramString, "content");
+  }
+  
+  public String a()
+  {
+    return "Content";
+  }
+  
+  public int b()
+  {
+    return this.p;
+  }
+  
+  public int c()
+  {
+    return 2131379855;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.o != 0)) {
+      return -1;
+    }
+    return -8355712;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 

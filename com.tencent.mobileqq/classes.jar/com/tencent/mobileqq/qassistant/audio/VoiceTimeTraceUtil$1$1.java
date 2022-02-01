@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qassistant.audio;
 
-import azdw;
-import azgj;
+import bajl;
+import bamr;
 import java.util.List;
 import java.util.Map;
 
@@ -15,8 +15,8 @@ class VoiceTimeTraceUtil$1$1
     try
     {
       this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.add(azdw.a(this.a.this$0).get("ZIP"));
-      azgj.b(this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_AndroidAppActivity);
+      this.a.jdField_a_of_type_JavaUtilList.add(bajl.a(this.a.this$0).get("ZIP"));
+      bamr.b(this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_AndroidAppActivity);
       return;
     }
     catch (Exception localException)

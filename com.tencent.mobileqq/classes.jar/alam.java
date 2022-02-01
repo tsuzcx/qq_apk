@@ -1,13 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class alam
-  extends alap
+public abstract interface alam
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

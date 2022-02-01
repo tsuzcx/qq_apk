@@ -1,19 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class attn
-  implements CompoundButton.OnCheckedChangeListener
+final class attn
+  implements View.OnClickListener
 {
-  public attn(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  attn(Activity paramActivity, Bundle paramBundle, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((avnl)this.a.a.getManager(303)).a((short)-23158, paramBoolean, true);
-    bcef.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 7, 7, "", "", "", "");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    atti.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

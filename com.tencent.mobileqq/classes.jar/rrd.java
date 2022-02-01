@@ -1,108 +1,49 @@
-import android.annotation.SuppressLint;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.feeds_info.LocationInfo;
 
 public class rrd
-  implements rra
+  implements Cloneable
 {
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  @SuppressLint({"HandlerLeak"})
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new rre(this);
-  private String jdField_a_of_type_JavaLangString;
-  private rqz<String> jdField_a_of_type_Rqz;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public rrd(QQAppInterface paramQQAppInterface)
+  private static rrd b(feeds_info.LocationInfo paramLocationInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-  }
-  
-  public void a()
-  {
-    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "pause, path=" + this.jdField_a_of_type_JavaLangString + ",uniSeq=" + this.jdField_a_of_type_Long);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
-    if (localObject != null)
+    rrd localrrd = new rrd();
+    String str;
+    if (paramLocationInfo.bytes_name.has())
     {
-      localObject = (BaseTransProcessor)((TransFileController)localObject).findProcessor("0", this.jdField_a_of_type_Long);
-      if (localObject != null) {
-        ((BaseTransProcessor)localObject).pause();
+      str = paramLocationInfo.bytes_name.get().toStringUtf8();
+      localrrd.jdField_a_of_type_JavaLangString = str;
+      localrrd.jdField_a_of_type_Int = paramLocationInfo.uint32_longitude.get();
+      localrrd.jdField_b_of_type_Int = paramLocationInfo.uint32_latitude.get();
+      if (!paramLocationInfo.bytes_icon_url.has()) {
+        break label90;
       }
     }
-    b();
-  }
-  
-  public void a(String paramString)
-  {
-    TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.getFilter().size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    label90:
+    for (paramLocationInfo = paramLocationInfo.bytes_icon_url.get().toStringUtf8();; paramLocationInfo = "")
+    {
+      localrrd.jdField_b_of_type_JavaLangString = paramLocationInfo;
+      return localrrd;
+      str = "";
+      break;
     }
-    localTransFileController.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mCommandId = 54;
-    localTransferRequest.mLocalPath = paramString;
-    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localTransferRequest.mPeerUin = "0";
-    localTransferRequest.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localTransferRequest.mFileType = 24;
-    localTransferRequest.mRichTag = "KandianUGCVideoUpload";
-    localTransFileController.transferAsync(localTransferRequest);
-    this.jdField_a_of_type_Long = localTransferRequest.mUniseq;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "upload, path=" + paramString + ",uniSeq=" + this.jdField_a_of_type_Long);
   }
   
-  public void a(rqz<String> paramrqz)
+  public rrd a()
   {
-    this.jdField_a_of_type_Rqz = paramrqz;
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "resume, uploadKey=" + paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.getFilter().isEmpty()) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-    }
-    TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
-    localTransFileController.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
     try
     {
-      paramString = new JSONObject(paramString);
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = paramString.optInt("uniseq", 0);
-        this.jdField_a_of_type_JavaLangString = paramString.optString("localPath", "");
-        QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "resume from app reboot");
-      }
-      paramString = (BaseTransProcessor)localTransFileController.findProcessor("0", this.jdField_a_of_type_Long);
-      if (paramString != null)
-      {
-        paramString.resume();
-        return;
-      }
+      rrd localrrd = (rrd)super.clone();
+      return localrrd;
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "resume, e=" + QLog.getStackTraceString(paramString));
-      }
-      a(this.jdField_a_of_type_JavaLangString);
-    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 

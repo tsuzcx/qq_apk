@@ -1,245 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.List;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.Comparator;
 
-public class bcmn
-  extends bcgy
+class bcmn
+  implements Comparator<bcff>
 {
-  public ArrayList<bcmo> a;
-  public int o;
-  public int p;
-  public int q;
+  bcmn(bcmm parambcmm) {}
   
-  public bcmn()
+  public int a(bcff parambcff1, bcff parambcff2)
   {
-    this.jdField_a_of_type_JavaLangString = "checklist";
-    c("12");
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Drawable localDrawable;
-    int i;
-    label75:
-    int k;
-    if (paramView == null)
+    int i = -1;
+    parambcff1 = (bcgt)parambcff1;
+    parambcff2 = (bcgt)parambcff2;
+    anvk localanvk = (anvk)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    boolean bool1 = localanvk.b((String)parambcff1.a());
+    boolean bool2 = localanvk.b((String)parambcff2.a());
+    if ((!bool1) && (!bool2))
     {
-      paramView = new LinearLayout(paramContext);
-      paramView.setId(2131379517);
-      paramView.setOrientation(1);
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        break label320;
+      bool1 = localanvk.d((String)parambcff1.a());
+      bool2 = localanvk.d((String)parambcff2.a());
+      if ((!bool1) && (!bool2)) {
+        return parambcff2.f() - parambcff1.f();
       }
-      localDrawable = paramContext.getResources().getDrawable(2130850394);
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (!TextUtils.isEmpty(this.af)) {
-        break label184;
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
       }
-      i = f();
-      k = i / 2;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() != paramView.getChildCount()) {
-        break label196;
-      }
-      i = 1;
-      label98:
-      if ((i == 0) && (paramView.getChildCount() > 0)) {
-        paramView.removeAllViews();
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 2) {
-        break label202;
-      }
+      return parambcff2.f() - parambcff1.f();
     }
-    int j;
-    bcmo localbcmo;
-    label184:
-    label196:
-    label202:
-    for (paramBundle = this.jdField_a_of_type_JavaUtilArrayList.subList(0, 2);; paramBundle = this.jdField_a_of_type_JavaUtilArrayList)
+    if (bool1 != bool2)
     {
-      j = 0;
+      if (bool2) {}
       for (;;)
       {
-        if (j >= paramBundle.size()) {
-          break label320;
-        }
-        localbcmo = (bcmo)paramBundle.get(j);
-        if (localbcmo != null) {
-          break;
-        }
-        j += 1;
-      }
-      paramView = (LinearLayout)paramView;
-      break;
-      i = Integer.parseInt(this.af);
-      break label75;
-      i = 0;
-      break label98;
-    }
-    if (i != 0) {}
-    for (TextView localTextView = (TextView)paramView.getChildAt(j);; localTextView = new TextView(paramContext))
-    {
-      localTextView.setSingleLine();
-      localTextView.setEllipsize(a());
-      localTextView.setGravity(16);
-      localTextView.setTextSize(k);
-      localTextView.setCompoundDrawables(localDrawable, null, null, null);
-      localTextView.setText(" " + localbcmo.b);
-      if (i != 0) {
-        break;
-      }
-      paramView.addView(localTextView);
-      break;
-    }
-    label320:
-    paramView.setTag(this);
-    return paramView;
-  }
-  
-  public String a()
-  {
-    return "Vote";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.p = paramObjectInput.readInt();
-    this.o = paramObjectInput.readInt();
-    this.q = paramObjectInput.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.q);
-    int i = 0;
-    while (i < this.q)
-    {
-      String str1 = paramObjectInput.readUTF();
-      String str2 = paramObjectInput.readUTF();
-      this.jdField_a_of_type_JavaUtilArrayList.add(new bcmo(this, str1, str2));
-      i += 1;
-    }
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.p);
-    paramObjectOutput.writeInt(this.o);
-    paramObjectOutput.writeInt(this.q);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() == this.q))
-    {
-      int i = 0;
-      if (i < this.q)
-      {
-        bcmo localbcmo = (bcmo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localbcmo != null)
-        {
-          if (localbcmo.jdField_a_of_type_JavaLangString != null) {
-            break label127;
-          }
-          str = "";
-          label95:
-          paramObjectOutput.writeUTF(str);
-          if (localbcmo.b != null) {
-            break label136;
-          }
-        }
-        label136:
-        for (String str = "";; str = localbcmo.b)
-        {
-          paramObjectOutput.writeUTF(str);
-          i += 1;
-          break;
-          label127:
-          str = localbcmo.jdField_a_of_type_JavaLangString;
-          break label95;
-        }
+        return i;
+        i = 1;
       }
     }
-    else if (QLog.isColorLevel())
-    {
-      QLog.e("StructMsg", 2, "StructMsgItemVote writeExternal() mOptions is null, or size is error!");
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "checklist");
-    paramXmlSerializer.attribute(null, "min", String.valueOf(this.p));
-    paramXmlSerializer.attribute(null, "max", String.valueOf(this.o));
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        bcmo localbcmo = (bcmo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localbcmo != null)
-        {
-          paramXmlSerializer.startTag(null, localbcmo.jdField_a_of_type_JavaLangString);
-          if (localbcmo.b != null) {
-            break label147;
-          }
-        }
-        label147:
-        for (String str = "";; str = localbcmo.b)
-        {
-          paramXmlSerializer.attribute(null, "min", str);
-          paramXmlSerializer.endTag(null, localbcmo.jdField_a_of_type_JavaLangString);
-          i += 1;
-          break;
-        }
-      }
-    }
-    paramXmlSerializer.endTag(null, "checklist");
-  }
-  
-  public boolean a(bcin parambcin)
-  {
-    if (parambcin == null) {}
-    for (;;)
-    {
-      return true;
-      Object localObject = parambcin.a("min");
-      String str = parambcin.a("max");
-      try
-      {
-        this.p = Integer.parseInt((String)localObject);
-        this.o = Integer.parseInt(str);
-        this.q = parambcin.a();
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.q);
-        int i = 0;
-        while (i < this.q)
-        {
-          localObject = parambcin.a(i);
-          if (localObject != null) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(new bcmo(this, (bcin)localObject));
-          }
-          i += 1;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, localNumberFormatException.getMessage());
-          }
-        }
-      }
-    }
-  }
-  
-  protected int c()
-  {
-    return 2131379924;
+    return parambcff2.f() - parambcff1.f();
   }
 }
 

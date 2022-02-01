@@ -1,31 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
-class tsj
-  implements DialogInterface.OnClickListener
+public class tsj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  tsj(tsf paramtsf, boolean paramBoolean) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tsj(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!tsf.a(this.jdField_a_of_type_Tsf)) {}
-    }
-    while (!(tsf.a(this.jdField_a_of_type_Tsf) instanceof Activity))
+    if ((paramValueAnimator.getCurrentPlayTime() >= 100L) && (!this.jdField_a_of_type_Boolean))
     {
-      return;
-      this.jdField_a_of_type_Tsf.b();
-      return;
+      ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton).start();
+      this.jdField_a_of_type_Boolean = true;
     }
-    twr.b(tsf.a(this.jdField_a_of_type_Tsf));
-    twh.a(tsf.a(this.jdField_a_of_type_Tsf), tsf.a(this.jdField_a_of_type_Tsf).p, tsf.a(this.jdField_a_of_type_Tsf).q, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tsj
  * JD-Core Version:    0.7.0.1
  */

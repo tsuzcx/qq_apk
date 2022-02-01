@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import bfur;
-import bnxo;
-import bnxp;
+import bhdj;
+import bpng;
+import bpnh;
 
 public class CaptureQmcfSoDownloadFragment$7
   implements Runnable
@@ -11,9 +11,9 @@ public class CaptureQmcfSoDownloadFragment$7
   
   public void run()
   {
-    bnxo localbnxo = new bnxo(this);
-    bnxp localbnxp = new bnxp(this);
-    bfur.a(this.this$0.getActivity(), null, this.a, localbnxo, localbnxo, localbnxp);
+    bpng localbpng = new bpng(this);
+    bpnh localbpnh = new bpnh(this);
+    bhdj.a(this.this$0.getActivity(), null, this.a, localbpng, localbpng, localbpnh);
   }
 }
 

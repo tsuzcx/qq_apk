@@ -1,30 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import java.io.File;
+import java.io.FileFilter;
 
-class apkt
-  extends BroadcastReceiver
+final class apkt
+  implements FileFilter
 {
-  apkt(apks paramapks) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean accept(File paramFile)
   {
-    if (paramIntent != null)
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-      paramContext = paramIntent.getAction();
-      if (paramContext != null)
+      int i = 3;
+      while (i < paramFile.length())
       {
-        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
-          break label57;
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
         }
-        this.a.a();
+        i += 1;
       }
+      return true;
     }
-    label57:
-    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
-      return;
-    }
-    this.a.b();
+    return false;
   }
 }
 

@@ -1,139 +1,164 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.2;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.3;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.common.app.AppInterface;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.oidb_0xb7e.DiandianTopConfig;
-import tencent.im.oidb.oidb_0xb7e.ReqBody;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
+import java.io.File;
+import mqq.util.WeakReference;
 
 public class pta
+  extends LottieDrawable
 {
-  public static final Object a;
-  public static final String a;
-  private static pta a;
+  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
+  private static final String jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/resource/lottie_background_res");
+  private static LruCache<String, LottieComposition> jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(1048576);
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  static
+  private static long a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = pta.class.getName();
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static pta a()
-  {
-    if (jdField_a_of_type_Pta == null) {}
-    try
+    long l = 0L;
+    int i = 0;
+    while (i < paramString.length())
     {
-      if (jdField_a_of_type_Pta == null) {
-        jdField_a_of_type_Pta = new pta();
-      }
-      return jdField_a_of_type_Pta;
+      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
+      i += 1;
     }
-    finally {}
+    return l;
   }
   
-  public static void a(long paramLong)
+  @Nullable
+  private File a(File[] paramArrayOfFile, String paramString)
   {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
-    localEditor.putLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), paramLong);
-    localEditor.commit();
+    int j = paramArrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      File localFile = paramArrayOfFile[i];
+      if (localFile.getName().equals(paramString)) {
+        return localFile;
+      }
+      i += 1;
+    }
+    return null;
   }
   
-  private void a(oidb_0xb7e.RspBody paramRspBody)
+  public static pta a(String paramString)
+  {
+    pta localpta = new pta();
+    long l = a(paramString);
+    String str = jdField_a_of_type_JavaLangString + File.separator + l;
+    File localFile1 = new File(str);
+    if (a(localFile1)) {
+      localpta.a(localFile1);
+    }
+    for (;;)
+    {
+      return localpta;
+      bhyt localbhyt = ((bhyq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+      File localFile2 = new File(jdField_a_of_type_JavaLangString);
+      if (!localFile2.exists()) {}
+      for (boolean bool = localFile2.mkdirs(); bool; bool = true)
+      {
+        str = str + ".zip";
+        localFile2 = new File(str);
+        paramString = new bhyo(paramString, localFile2);
+        paramString.b = 3;
+        paramString.d = 60L;
+        Bundle localBundle = new Bundle();
+        localBundle.putLong("bgLottieResId", l);
+        localBundle.putString("bgLottieResPath", str);
+        localbhyt.a(paramString, new ptf(l, str, localFile2, localFile1, new WeakReference(localpta)), localBundle);
+        return localpta;
+      }
+    }
+  }
+  
+  private void a(File paramFile)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "fabricateModel");
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation " + paramFile.getName());
     }
-    if (paramRspBody == null) {
-      pkp.a().a(false, null);
-    }
+    File[] arrayOfFile = paramFile.listFiles(new ptb(this));
+    Object localObject = paramFile.listFiles(new ptc(this));
+    if ((arrayOfFile == null) || (localObject == null) || (localObject.length == 0)) {}
     do
     {
       return;
-      if (!paramRspBody.rpt_top_item.has()) {
-        break;
-      }
-      paramRspBody = paramRspBody.rpt_top_item.get();
-    } while ((paramRspBody == null) || (paramRspBody.size() <= 0));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramRspBody.size())
+      localObject = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject);
+    } while (arrayOfFile.length <= 0);
+    if ((LottieComposition)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramFile.getAbsolutePath()) == null)
     {
-      oidb_0xb7e.DiandianTopConfig localDiandianTopConfig = (oidb_0xb7e.DiandianTopConfig)paramRspBody.get(i);
-      DiandianTopConfig localDiandianTopConfig1 = new DiandianTopConfig();
-      if (localDiandianTopConfig.bytes_jump_url.has()) {
-        localDiandianTopConfig1.jumpUrl = localDiandianTopConfig.bytes_jump_url.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_title.has()) {
-        localDiandianTopConfig1.title = localDiandianTopConfig.bytes_title.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_sub_title.has()) {
-        localDiandianTopConfig1.subTitle = localDiandianTopConfig.bytes_sub_title.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_sub_title_color.has()) {
-        localDiandianTopConfig1.subTitleColor = localDiandianTopConfig.bytes_sub_title_color.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_pic_url.has()) {
-        localDiandianTopConfig1.picUrl = localDiandianTopConfig.bytes_pic_url.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.uint32_type.has()) {
-        localDiandianTopConfig1.type = localDiandianTopConfig.uint32_type.get();
-      }
-      if (localDiandianTopConfig.uint32_topic_id.has()) {}
-      for (localDiandianTopConfig1.topicId = localDiandianTopConfig.uint32_topic_id.get();; localDiandianTopConfig1.topicId = 0)
+      ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, arrayOfFile, paramFile, (Runnable)localObject), 64, null, true);
+      return;
+    }
+    ((Runnable)localObject).run();
+  }
+  
+  private static boolean a(File paramFile)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramFile.exists())
+    {
+      paramFile = paramFile.listFiles(new ptg());
+      bool1 = bool2;
+      if (paramFile != null)
       {
-        localArrayList.add(localDiandianTopConfig1);
-        i += 1;
-        break;
+        bool1 = bool2;
+        if (paramFile.length > 0) {
+          bool1 = true;
+        }
       }
     }
-    pkp.a().a(true, localArrayList);
-    return;
-    pkp.a().a(true, null);
-  }
-  
-  private void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "saveDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.3(this, paramArrayOfByte, paramLong), 5, null, true);
-  }
-  
-  public static boolean a()
-  {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    long l = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), 0L);
-    return System.currentTimeMillis() - l >= 43200000L;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "loadDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.2(this), 5, null, true);
+    return bool1;
   }
   
   public void a(boolean paramBoolean)
   {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void playAnimation()
+  {
+    super.playAnimation();
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "requestDiandianTopConfig");
+      QLog.d("ReadInJoyLottieDrawable", 2, "playAnimation: ");
     }
-    oidb_0xb7e.ReqBody localReqBody = new oidb_0xb7e.ReqBody();
-    nmb.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new ptb(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!paramBoolean1) && (this.jdField_a_of_type_Boolean)) {
+      cancelAnimation();
+    }
+    return super.setVisible(paramBoolean1, paramBoolean2);
+  }
+  
+  public void start()
+  {
+    super.start();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyLottieDrawable", 2, "start: ");
+    }
   }
 }
 

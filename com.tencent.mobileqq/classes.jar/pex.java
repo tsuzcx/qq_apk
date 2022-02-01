@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.RIJDislikeAnimation.1.1;
-
-public class pex
-  implements Animation.AnimationListener
+class pex
+  extends pfe
 {
-  public void onAnimationEnd(Animation paramAnimation)
+  pex(pdv parampdv, int paramInt)
   {
-    this.a.post(new RIJDislikeAnimation.1.1(this));
+    super(parampdv, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentStateError(this.jdField_a_of_type_Int);
+  }
 }
 
 

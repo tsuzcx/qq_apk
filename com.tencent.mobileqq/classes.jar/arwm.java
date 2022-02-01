@@ -1,41 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arwm
-  implements View.OnClickListener
+public class arwm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  arwm(arwl paramarwl, View paramView) {}
+  public arwm(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof arvu))
-    {
-      localObject = (WeiYunFileInfo)((arvu)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if ((aslg.a(((WeiYunFileInfo)localObject).a)) && (QLog.isColorLevel())) {
-        QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
-      }
-      QfileBaseCloudFileTabView.b(this.jdField_a_of_type_Arwl.a).getFileManagerEngine().a((WeiYunFileInfo)localObject);
-      this.jdField_a_of_type_Arwl.a.al_();
+    if (!paramBoolean) {
+      arxi.a().a();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((localObject instanceof arxa))
-      {
-        localObject = (WeiYunFileInfo)((arxa)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
-      }
-    }
+    arxi.a = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

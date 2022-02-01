@@ -1,12 +1,12 @@
 package com.tencent.av.ui.redbag;
 
 import com.tencent.av.ui.AVActivity;
-import mpe;
+import mqb;
 
 public class AVRedBagMgr$7
   implements Runnable
 {
-  public AVRedBagMgr$7(mpe parammpe) {}
+  public AVRedBagMgr$7(mqb parammqb) {}
   
   public void run()
   {

@@ -4,8 +4,8 @@ import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bbyp;
-import bmqh;
+import bdfk;
+import bofz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
@@ -21,7 +21,7 @@ public class PeakActivity
   
   protected void adjustStatusBar()
   {
-    bbyp.a(this.mSystemBarComp, getWindow());
+    bdfk.a(this.mSystemBarComp, getWindow());
   }
   
   @Override
@@ -50,7 +50,7 @@ public class PeakActivity
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      bmqh.a();
+      bofz.a();
     }
   }
   

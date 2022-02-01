@@ -1,27 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class baky
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  baky(bakw parambakw, int paramInt, Object paramObject) {}
+  private baky(bakx parambakx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
     do
     {
+      do
+      {
+        do
+        {
+          return;
+          if (banp.a().b()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("VoiceAssistantManager", 2, "VoiceAssistantReceiver not allow");
+        return;
+        paramContext = paramIntent.getAction();
+        if ((!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) && (!"tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+          break;
+        }
+        bakl.a("HelloQQWake", "releaseQQWake()");
+        if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+          banp.a().f = true;
+        }
+        if (this.a.c()) {
+          bakx.a(this.a, false);
+        }
+        banp.a().b(paramContext);
+      } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext));
+      banp.a().a();
       return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData));
-    bakw.a(this.jdField_a_of_type_Bakw).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Bakw.updateUI();
+      if (("mqq.intent.action.QQ_FOREGROUND".equals(paramContext)) || ("tencent.av.v2q.StopVideoChat".equals(paramContext)))
+      {
+        if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext)) {
+          banp.a().f = false;
+        }
+        banp.a().a(paramContext);
+        return;
+      }
+    } while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext));
+    banp.a().b(paramContext);
   }
 }
 

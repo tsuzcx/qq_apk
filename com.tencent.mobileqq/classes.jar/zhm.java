@@ -1,76 +1,88 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.biz.subscribe.widget.textview.RichTextParser;
-import com.tencent.biz.subscribe.widget.textview.RichTextParser.RichSpannableStringBuilder;
-import com.tencent.biz.subscribe.widget.textview.RichTextParser.TextImageSpanConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
 
-class zhm
-  implements TextWatcher
+public class zhm
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  protected int a;
+  Context a;
+  protected blio a;
+  protected zho a;
+  protected boolean a;
   
-  zhm(zhf paramzhf) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public zhm(blio paramblio, Context paramContext)
   {
-    RichTextParser.TextImageSpanConfig localTextImageSpanConfig = null;
-    if (paramEditable == null) {
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Blio = paramblio;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(zho paramzho)
+  {
+    this.jdField_a_of_type_Zho = paramzho;
+    if (paramzho != null)
+    {
+      a(true);
+      a(true, false);
+    }
+    this.jdField_a_of_type_Blio.setOnClickListener(new zhn(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_Zhf.a.removeTextChangedListener(this);
-    String str = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
-    int i = str.indexOf('/');
-    Object localObject = localTextImageSpanConfig;
-    if (i >= 0)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
     {
-      localObject = localTextImageSpanConfig;
-      if (i < str.length() - 1)
-      {
-        localObject = new RichTextParser.RichSpannableStringBuilder(paramEditable.toString());
-        localTextImageSpanConfig = new RichTextParser.TextImageSpanConfig();
-        localTextImageSpanConfig.iconSize = ((int)(22.0D * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5D));
-        localTextImageSpanConfig.verticalAlignment = 0;
-        localTextImageSpanConfig.oldText = paramEditable.toString();
-        RichTextParser.asyncParseSmiley(localTextImageSpanConfig, str, null, (RichTextParser.RichSpannableStringBuilder)localObject, null, false);
-      }
-    }
-    if (localObject != null) {
-      i = this.jdField_a_of_type_Zhf.a.getSelectionEnd();
-    }
-    try
-    {
-      this.jdField_a_of_type_Zhf.a.setText((CharSequence)localObject);
-      this.jdField_a_of_type_Zhf.a.setSelection(i);
-      this.b = 0;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Zhf.a.addTextChangedListener(this);
+      this.jdField_a_of_type_Blio.a(3);
       return;
     }
-    catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
+    this.jdField_a_of_type_Blio.a(0);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (!paramBoolean1)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_Zhf.a.setText(paramEditable.toString());
-        i = paramEditable.toString().length();
+      this.jdField_a_of_type_Blio.a(5);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (int i = 3;; i = 4)
+    {
+      this.jdField_a_of_type_Blio.a(i);
+      if ((!this.jdField_a_of_type_Blio.b(i)) || (this.jdField_a_of_type_Zho == null)) {
+        break;
       }
+      this.jdField_a_of_type_Zho.a();
+      return;
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void b(boolean paramBoolean)
   {
-    if (paramCharSequence == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt3;
+    if (!this.jdField_a_of_type_Boolean) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Blio.a() == 0) || (!this.jdField_a_of_type_Blio.b(2)));
+      bool = true;
+      if (this.jdField_a_of_type_Zho != null) {
+        bool = this.jdField_a_of_type_Zho.a(paramBoolean);
+      }
+    } while (!bool);
+    this.jdField_a_of_type_Blio.a(2);
   }
 }
 

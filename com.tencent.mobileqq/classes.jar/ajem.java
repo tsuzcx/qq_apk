@@ -1,114 +1,126 @@
-import android.app.Fragment;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.leba.QzoneFrame;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.api.QZoneApiProxy;
-import cooperation.qzone.api.QzoneFragmentImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.GroupInfo;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ajem
-  extends ajen
+  implements View.OnClickListener
 {
-  public ajem(QzoneFrame paramQzoneFrame)
-  {
-    super(paramQzoneFrame);
-  }
+  public ajem(NotificationView paramNotificationView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("QzoneFrame", 1, "onSwitch: " + paramInt);
-    Fragment localFragment = QzoneFrame.b(this.a);
-    if ((QzoneFrame.b(this.a) == QzoneFrame.a(this.a)) && (paramInt == 1)) {
-      return;
-    }
-    String str;
-    Drawable localDrawable;
-    if (QzoneFrame.c(this.a) == null)
+    ajeg localajeg = (ajeg)paramView.getTag();
+    Object localObject;
+    if (localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 80)
     {
-      QzoneFrame.a(this.a, QZoneApiProxy.createLebaFragment(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaExtendFeedFragment"));
-      if (QzoneFrame.a(this.a) == null) {
-        QzoneFrame.a(this.a, (TextView)QzoneFrame.a(this.a).findViewById(2131369115));
-      }
-      if (QzoneFrame.b(this.a) != QzoneFrame.c(this.a)) {
-        break label490;
-      }
-      QzoneFrame.b(this.a, QzoneFrame.a(this.a));
-      ((QzoneFragmentImpl)QzoneFrame.a(this.a)).setTitleAlphaAndGetLastValue(QzoneFrame.a(this.a));
-      str = "动态";
-      localDrawable = null;
-      if (QzoneFrame.b(this.a) != null)
-      {
-        QzoneFrame.b(this.a).onAttach(this.a.a());
-        QzoneFrame.b(this.a).onCreate(null);
-        if (QzoneFrame.b(this.a).getView() == null)
-        {
-          QzoneFrame.b(this.a).onCreateView(LayoutInflater.from(this.a.a()), null, null);
-          QzoneFrame.b(this.a).onActivityCreated(null);
-        }
-      }
-      if ((QzoneFrame.b(this.a) == QzoneFrame.c(this.a)) && ((QzoneFrame.c(this.a) instanceof QzoneFragmentImpl)))
-      {
-        if (!QzoneFrame.a(this.a)) {
-          break label607;
-        }
-        QzoneFrame.a(this.a, false);
-      }
-      label321:
-      localFragment.onPause();
-      localFragment.onStop();
-      QzoneFrame.b(this.a).onStart();
-      ((QzoneFragmentImpl)QzoneFrame.b(this.a)).resetReportFlag();
-      QzoneFrame.b(this.a).onResume();
-      QzoneFrame.b(this.a).removeView(localFragment.getView());
-      QzoneFrame.b(this.a).addView(QzoneFrame.b(this.a).getView());
-      if (Build.VERSION.SDK_INT <= 15) {
-        break label625;
-      }
-      QzoneFrame.b(this.a).setBackground(localDrawable);
+      localObject = TroopInfoActivity.a(String.valueOf(localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 5);
+      TroopInfoActivity.a(this.a.a(), (Bundle)localObject);
     }
     for (;;)
     {
-      QzoneFrame.a(this.a).setText(str);
-      if (QzoneFrame.b(this.a) != QzoneFrame.a(this.a)) {
-        break label639;
-      }
-      ((QzoneFragmentImpl)QzoneFrame.a(this.a)).setRightButtonType(QzoneFrame.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((QzoneFrame.b(this.a) != QzoneFrame.c(this.a)) || (paramInt != 2)) {
+      if (NetworkUtil.isNetSupport(this.a.a())) {
         break;
       }
-      return;
-      label490:
-      QzoneFrame.b(this.a, QzoneFrame.c(this.a));
-      if (QzoneFrame.a(this.a) == null)
-      {
-        if (Build.VERSION.SDK_INT <= 20) {
-          break label581;
-        }
-        QzoneFrame.a(this.a, this.a.a().getDrawable(2130844990));
-      }
-      for (;;)
-      {
-        QzoneFrame.a(this.a, ((QzoneFragmentImpl)QzoneFrame.a(this.a)).setTitleAlphaAndGetLastValue(0));
-        localDrawable = QzoneFrame.a(this.a);
-        str = "暖说说";
-        break;
-        label581:
-        QzoneFrame.a(this.a, this.a.a().getResources().getDrawable(2130844990));
-      }
-      label607:
-      ((QzoneFragmentImpl)QzoneFrame.c(this.a)).forceRefresh();
-      break label321;
-      label625:
-      QzoneFrame.b(this.a).setBackgroundDrawable(localDrawable);
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.a().getString(2131694253), 0).b(this.a.a());
     }
-    label639:
-    ((QzoneFragmentImpl)QzoneFrame.a(this.a)).setRightButtonType(QzoneFrame.b);
+    ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(String.valueOf(localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()));
+    NotificationView.a(this.a, (structmsg.StructMsg)localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), localajeg.c);
+    String str2 = localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get();
+    String str3 = localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
+    label249:
+    int i;
+    label276:
+    String str1;
+    if (localajeg.b < this.a.jdField_a_of_type_Ajed.jdField_a_of_type_Int)
+    {
+      localObject = "1";
+      i = localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_inviter_role.get();
+      if ((i != 2) && (i != 3)) {
+        break label433;
+      }
+      i = 0;
+      if (i == 0) {
+        break label438;
+      }
+      str1 = "0";
+      label284:
+      if ((str2 != null) && (!"".equals(str2))) {
+        break label771;
+      }
+      if (localajeg.jdField_a_of_type_Int != 82) {
+        break label445;
+      }
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "focus_notice", 0, 0, "", "", "", localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      NotificationView.a(this.a, localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get(), (structmsg.StructMsg)localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+    }
+    label771:
+    for (;;)
+    {
+      NotificationView.c(this.a);
+      this.a.jdField_a_of_type_Bisl.c(2131718527);
+      this.a.jdField_a_of_type_Bisl.show();
+      break;
+      localObject = "0";
+      break label249;
+      label433:
+      i = 1;
+      break label276;
+      label438:
+      str1 = "1";
+      break label284;
+      label445:
+      if (localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NotificationView", 2, "doCheckPayTroopReq start: " + str3);
+        }
+        TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str3, localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a.jdField_a_of_type_Ajfr);
+        bhbu.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, localObject, str1, "1" });
+      }
+      else
+      {
+        NotificationView.a(this.a, 1, (structmsg.StructMsg)localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+        if ((localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.has()) && (localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.has())) {
+          ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(str3, localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
+        }
+        if (localajeg.jdField_a_of_type_Int == 1)
+        {
+          bhbu.a("Grp_contacts_news", "notice", "agree_ask", 0, 0, new String[] { str3, localObject, str1, "1" });
+        }
+        else if (localajeg.jdField_a_of_type_Int == 2)
+        {
+          bhbu.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, localObject, str1, "1" });
+          continue;
+          NotificationView.a(this.a, 0, (structmsg.StructMsg)localajeg.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+          if (localajeg.jdField_a_of_type_Int == 1) {
+            bhbu.a("Grp_contacts_news", "notice", "refuse_ask", 0, 0, new String[] { str3, localObject, str1, "1" });
+          } else if (localajeg.jdField_a_of_type_Int == 2) {
+            bhbu.a("Grp_contacts_news", "notice", "refuse_invite", 0, 0, new String[] { str3, localObject, str1, "1" });
+          }
+        }
+      }
+    }
   }
 }
 

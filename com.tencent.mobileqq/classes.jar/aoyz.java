@@ -1,8 +1,10 @@
-import org.json.JSONObject;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
 public abstract interface aoyz
 {
-  public abstract void a(boolean paramBoolean, JSONObject paramJSONObject, Object paramObject);
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody);
 }
 
 

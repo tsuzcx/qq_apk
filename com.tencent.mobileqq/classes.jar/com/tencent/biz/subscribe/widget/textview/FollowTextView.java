@@ -2,6 +2,13 @@ package com.tencent.biz.subscribe.widget.textview;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import aaba;
+import aacw;
+import aacx;
+import aacy;
+import aacz;
+import aada;
+import aanb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -10,7 +17,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bjnw;
+import bkzi;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -28,24 +35,17 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.util.QzonePublicAccountHelper;
 import java.util.ArrayList;
-import ugf;
-import zcy;
-import zlv;
-import zno;
-import znp;
-import znq;
-import znr;
-import zns;
-import zxp;
+import uuc;
+import zsd;
 
 public class FollowTextView
   extends TextView
   implements View.OnClickListener, SimpleEventReceiver
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+  private aada jdField_a_of_type_Aada;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private zcy jdField_a_of_type_Zcy;
-  private zns jdField_a_of_type_Zns;
+  private zsd jdField_a_of_type_Zsd;
   protected boolean a;
   private volatile boolean b = true;
   private boolean c;
@@ -79,7 +79,7 @@ public class FollowTextView
       }
       str1 = paramStFeed.id.get();
       str2 = paramStFeed.poster.id.get();
-      str3 = "auth_" + zlv.a(a());
+      str3 = "auth_" + aaba.a(a());
       if (!paramBoolean) {
         break label114;
       }
@@ -88,7 +88,7 @@ public class FollowTextView
     label114:
     for (paramStFeed = "follow";; paramStFeed = "un_follow")
     {
-      zxp.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
+      aanb.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
       return;
       str1 = paramStFeed.poster.nick.get();
       break;
@@ -97,16 +97,16 @@ public class FollowTextView
   
   private void d()
   {
-    bjnw localbjnw = bjnw.a(getContext());
-    localbjnw.a(String.format(getContext().getResources().getString(2131694820), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
-    localbjnw.a(2131695924, 3);
-    localbjnw.c(2131690620);
-    localbjnw.setOnDismissListener(new znq(this));
-    localbjnw.a(new znr(this, localbjnw));
-    if (!localbjnw.isShowing())
+    bkzi localbkzi = bkzi.a(getContext());
+    localbkzi.a(String.format(getContext().getResources().getString(2131695031), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
+    localbkzi.a(2131696176, 3);
+    localbkzi.c(2131690697);
+    localbkzi.setOnDismissListener(new aacy(this));
+    localbkzi.a(new aacz(this, localbkzi));
+    if (!localbkzi.isShowing())
     {
       this.b = true;
-      localbjnw.show();
+      localbkzi.show();
     }
   }
   
@@ -152,10 +152,10 @@ public class FollowTextView
     Object localObject = (QQAppInterface)localObject;
     if (paramBoolean)
     {
-      ugf.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new zno(this), false, 0, true);
+      uuc.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new aacw(this), false, 0, true);
       return;
     }
-    ugf.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new znp(this), true);
+    uuc.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new aacx(this), true);
   }
   
   protected boolean a()
@@ -167,7 +167,7 @@ public class FollowTextView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130839021;
+      i = 2130839041;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
         break label43;
@@ -177,9 +177,9 @@ public class FollowTextView
     for (int i = -9211021;; i = Color.parseColor("#bdbfc9"))
     {
       setTextColor(i);
-      setText(2131690662);
+      setText(2131690739);
       return;
-      i = 2130839019;
+      i = 2130839039;
       break;
     }
   }
@@ -188,7 +188,7 @@ public class FollowTextView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130839108;
+      i = 2130839128;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
         break label47;
@@ -198,9 +198,9 @@ public class FollowTextView
     for (int i = -1493172225;; i = -1)
     {
       setTextColor(i);
-      setText(2131690668);
+      setText(2131690745);
       return;
-      i = 2130839106;
+      i = 2130839126;
       break;
     }
   }
@@ -233,8 +233,8 @@ public class FollowTextView
       }
       else
       {
-        if (this.jdField_a_of_type_Zcy != null) {
-          this.jdField_a_of_type_Zcy.a();
+        if (this.jdField_a_of_type_Zsd != null) {
+          this.jdField_a_of_type_Zsd.a();
         }
         if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0) {
           a(true);
@@ -279,9 +279,9 @@ public class FollowTextView
     }
   }
   
-  public void setFollowStateChangeListener(zns paramzns)
+  public void setFollowStateChangeListener(aada paramaada)
   {
-    this.jdField_a_of_type_Zns = paramzns;
+    this.jdField_a_of_type_Aada = paramaada;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
@@ -289,9 +289,9 @@ public class FollowTextView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setItemPreClickListener(zcy paramzcy)
+  public void setItemPreClickListener(zsd paramzsd)
   {
-    this.jdField_a_of_type_Zcy = paramzcy;
+    this.jdField_a_of_type_Zsd = paramzsd;
   }
   
   public void setNoneReportType(boolean paramBoolean)

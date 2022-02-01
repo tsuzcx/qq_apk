@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.panoramicvideo;
 
 import android.opengl.GLES20;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.GL.FBO;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.PanoramicLogUtil;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.PanoramicLogUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -187,7 +187,7 @@ public class GroupRenderObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,68 @@
-import android.content.Intent;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class mxg
-  extends MSFServlet
+  implements BusinessObserver
 {
-  private AVGameAppInterface a;
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString) {}
   
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "OnlinePush.ReqPush" };
-  }
+  protected void a(boolean paramBoolean, myo parammyo) {}
   
-  public void onCreate()
-  {
-    super.onCreate();
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof AVGameAppInterface)) {
-      this.a = ((AVGameAppInterface)localAppRuntime);
-    }
-  }
+  protected void a(boolean paramBoolean, mys parammys) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  protected void b(boolean paramBoolean, myo parammyo) {}
+  
+  protected void c(boolean paramBoolean, myo parammyo) {}
+  
+  protected void d(boolean paramBoolean, myo parammyo) {}
+  
+  protected void e(boolean paramBoolean, myo parammyo) {}
+  
+  protected void f(boolean paramBoolean, myo parammyo) {}
+  
+  protected void g(boolean paramBoolean, myo parammyo) {}
+  
+  protected void h(boolean paramBoolean, myo parammyo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramIntent != null)
+    switch (paramInt)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServlet", 4, "onReceive, cmd[" + paramFromServiceMsg.getServiceCmd() + "]");
-      }
-      if (this.a != null) {
-        this.a.a(paramIntent, paramFromServiceMsg);
-      }
+    default: 
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    case 1: 
+      a(paramBoolean, (mys)paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, (myo)paramObject);
+      return;
+    case 3: 
+      b(paramBoolean, (myo)paramObject);
+      return;
+    case 4: 
+      c(paramBoolean, (myo)paramObject);
+      return;
+    case 5: 
+      d(paramBoolean, (myo)paramObject);
+      return;
+    case 6: 
+      e(paramBoolean, (myo)paramObject);
+      return;
+    case 7: 
+      f(paramBoolean, (myo)paramObject);
+      return;
+    case 8: 
+      g(paramBoolean, (myo)paramObject);
+      return;
+    case 9: 
+      h(paramBoolean, (myo)paramObject);
+      return;
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameServlet", 4, "send, cmd[" + paramIntent.getServiceCmd() + "]");
-        }
-      }
-    }
+    a(paramBoolean, ((myo)paramObject).jdField_a_of_type_Int, ((myo)paramObject).jdField_a_of_type_Long, ((myo)paramObject).jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mxg
  * JD-Core Version:    0.7.0.1
  */

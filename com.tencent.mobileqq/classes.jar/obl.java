@@ -1,30 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1.1;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
-public class obl
-  implements TVK_SDKMgr.InstallListener
+class obl
+  implements AdapterView.OnItemClickListener
 {
-  public obl(ReadInJoyNativeAdAppVideoView.2 param2) {}
+  obl(obj paramobj) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
+      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
     }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
+    paramAdapterView = (oji)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (this.a.jdField_a_of_type_Oat != null) {
+      this.a.jdField_a_of_type_Oat.a(paramAdapterView);
     }
-    ReadInJoyNativeAdAppVideoView.a(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
+    this.a.a(paramAdapterView);
   }
 }
 

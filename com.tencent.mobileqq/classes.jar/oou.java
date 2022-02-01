@@ -1,49 +1,49 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class oou
-  extends BaseAdapter
+  extends SosoInterface.OnLocationListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public oou(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
+  public oou(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public int getCount()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (Object localObject = new oov(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; localObject = (oov)paramView.getTag())
+    if ((this.a.mApp == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
+    ArrayList localArrayList;
+    double d1;
+    double d2;
+    do
     {
-      ((oov)localObject).a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
-      localObject = ((oov)localObject).a();
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-    }
+      do
+      {
+        return;
+      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
+        if (localRecentShopParcel.c != 1) {
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
+          }
+          catch (Exception localException) {}
+        }
+      }
+      d1 = paramSosoLbsInfo.mLocation.mLat02;
+      d2 = paramSosoLbsInfo.mLocation.mLon02;
+    } while (this.a.jdField_a_of_type_Oog == null);
+    this.a.jdField_a_of_type_Oog.a(this.a.mApp, localArrayList, d2, d1);
   }
 }
 

@@ -25,7 +25,7 @@ public class SmoothBFilters
   public void clear()
   {
     this.mVarianceFilter.clearGLSLSelf();
-    this.mBoxFilter.ClearGLSL();
+    this.mBoxFilter.clearGLSL();
     this.mProcessVarianceFilter.clearGLSLSelf();
     this.mDenoiseFilterSimple.clearGLSLSelf();
     this.mBoxFrame2.clear();

@@ -1,89 +1,21 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ajyd
+  extends BroadcastReceiver
 {
-  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
-  {
-    int i = paramInt;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
-      return i;
-    }
-    catch (Throwable paramJSONObject) {}
-    return paramInt;
-  }
+  public ajyd(Conversation paramConversation) {}
   
-  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = paramString;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
     }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
-      return str;
-    }
-    catch (Throwable paramJSONObject) {}
-    return paramString;
-  }
-  
-  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONArray localJSONArray = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONArray;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
-  }
-  
-  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONObject localJSONObject = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONObject;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
   }
 }
 

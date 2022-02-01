@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-        <TextView android:id="@id/f45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/hht" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textColor="#ff3cb371" android:id="@id/f46" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/hhu" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/liq" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/lis" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:layout_gravity="center_vertical" android:id="@id/lir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" android:includeFontPadding="false" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:layout_gravity="center_vertical" android:id="@id/lit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/bys" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <ImageView android:layout_width="10.0dip" android:layout_height="14.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignTop="@id/lis" android:layout_alignParentRight="true" />
+        </LinearLayout>
+        <com.tencent.widget.HorizontalListView android:id="@id/liu" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/lis" android:layout_alignLeft="@id/lis" />
+        <View android:layout_width="1.0dip" android:layout_height="19.0dip" android:layout_below="@id/liu" />
     </RelativeLayout>
-    <LinearLayout android:theme="@android:style/Theme.Holo.Light" android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/f44" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spinnersShown="true" android:calendarViewShown="false" />
-</LinearLayout>
+</merge>

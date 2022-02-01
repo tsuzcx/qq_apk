@@ -1,19 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class admn
-  implements View.OnTouchListener
+  extends ayrb
 {
-  public admn(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public SessionInfo a;
+  public WeakReference<QQAppInterface> a;
+  public boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetQZoneNewestFeed(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
+      }
     }
-    return false;
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
+    return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
+      admh.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
+    }
+    paramBundle = (admn)admh.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    admh.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    localQQAppInterface.unRegistObserver(paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   }
 }
 

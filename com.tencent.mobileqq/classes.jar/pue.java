@@ -1,24 +1,35 @@
-public class pue
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+
+class pue
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
+  pue(pud parampud) {}
   
-  public pue(long paramLong, int paramInt)
+  public void onClick(View paramView)
   {
-    this(paramLong, paramInt, false);
-  }
-  
-  public pue(long paramLong, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
+    int i = ((puf)paramView.getTag()).getAdapterPosition() - pud.a(this.a).c();
+    int j = this.a.getItemViewType(i);
+    ArticleInfo localArticleInfo = (ArticleInfo)pud.a(this.a, i);
+    if (localArticleInfo == null) {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
+      this.a.a(i, paramView);
+      localArticleInfo.invalidateProteusTemplateBean();
+      pqx.a = localArticleInfo;
+      pvj.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
+      this.a.notifyItemChanged(i);
+      pqb.a(pud.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
+    }
   }
 }
 

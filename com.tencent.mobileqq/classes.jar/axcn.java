@@ -1,37 +1,110 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class axcn
-  implements View.OnLongClickListener
+public class axcn
+  extends aqwt<axco>
 {
-  axcn(axcb paramaxcb) {}
+  public static boolean a;
+  private static boolean b;
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public static boolean a()
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
+    if (b) {
+      return a;
     }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new axcu(this.a, paramView), paramView, 0);
-    localObject = axcb.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    axcb.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
+    b = true;
+    a = b();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData isSwitchOpened = " + a);
+    }
+    return a;
+  }
+  
+  private static boolean b()
+  {
+    axco localaxco2 = (axco)aqxe.a().a(522);
+    axco localaxco1 = localaxco2;
+    if (localaxco2 == null)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(axcb.a(this.a), i);
-      return true;
+      localaxco2 = new axco();
+      localaxco1 = localaxco2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData = null, general new bean, so switch default");
+        localaxco1 = localaxco2;
+      }
     }
-    paramView.setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData switch isOpened = " + localaxco1);
+    }
+    return localaxco1.a();
+  }
+  
+  @NonNull
+  public axco a(int paramInt)
+  {
+    return new axco();
+  }
+  
+  @Nullable
+  public axco a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackupConfigProcessor", 2, "onParsed : " + paramArrayOfaqxa[0].a);
+      }
+      return axco.a(paramArrayOfaqxa[0].a);
+    }
+    return new axco();
+  }
+  
+  public void a(axco paramaxco)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "onUpdate : " + paramaxco);
+    }
+    if (paramaxco != null) {
+      a = paramaxco.a();
+    }
+  }
+  
+  public Class<axco> clazz()
+  {
+    return axco.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackupConfigProcessor", 2, "onReqFailed : " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 522;
   }
 }
 

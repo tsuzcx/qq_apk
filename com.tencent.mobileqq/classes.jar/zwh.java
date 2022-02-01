@@ -1,43 +1,31 @@
-import com.tencent.biz.videostory.config.VSConfigManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
 public class zwh
-  implements Manager
+  extends ztx
 {
-  protected static BaseApplicationImpl a;
-  public static boolean a;
-  private AppInterface a;
+  protected WeakReference<Context> a;
   
-  static
+  public zwh(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_Boolean = true;
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
   }
   
-  public zwh(AppInterface paramAppInterface)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    a();
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
   }
   
-  public void a()
+  public void show()
   {
-    try
-    {
-      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = false;
-      }
-      VSConfigManager.getInstance();
-      QLog.i("Q.videostory.VSManager", 1, "init");
+    if (a()) {
       return;
     }
-    finally {}
+    super.show();
   }
-  
-  public void onDestroy() {}
 }
 
 

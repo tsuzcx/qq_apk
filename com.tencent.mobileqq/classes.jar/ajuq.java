@@ -1,39 +1,18 @@
-import Wallet.IdiomRedPackMatchReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class ajuq
-  implements akha
+public class ajuq
+  implements View.OnTouchListener
 {
-  ajuq(ajul paramajul, ajuk paramajuk, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
+  public ajuq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
   
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
-    localIdiomRedPackMatchReq.grabUin = ajul.a(this.jdField_a_of_type_Ajul).getLongAccountUin();
-    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Ajuk.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
-    localIdiomRedPackMatchReq.hbIdiom = ajul.a(this.jdField_a_of_type_Ajul, this.jdField_a_of_type_Ajuk);
-    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Ajuk.c);
-    localIdiomRedPackMatchReq.sKey = paramString;
-    localIdiomRedPackMatchReq.appid = AppSetting.a();
-    localIdiomRedPackMatchReq.subchannel = this.jdField_a_of_type_Ajuk.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1) {}
-    for (;;)
-    {
-      localIdiomRedPackMatchReq.fromType = i;
-      localIdiomRedPackMatchReq.platform = 0;
-      localIdiomRedPackMatchReq.qqVersion = "8.4.8";
-      ajvh.a(localIdiomRedPackMatchReq, new ajur(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 3000) {
-        i = 2;
-      } else {
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

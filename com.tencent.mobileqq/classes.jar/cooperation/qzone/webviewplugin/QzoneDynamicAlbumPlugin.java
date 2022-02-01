@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import amtj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -19,8 +18,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import autj;
-import bgve;
+import anvx;
+import avzi;
+import bifw;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -995,7 +995,7 @@ public class QzoneDynamicAlbumPlugin
         ((Bundle)localObject2).putBoolean("EDIT_IMAGE", false);
         ((Bundle)localObject2).putBoolean("APPEND_IMAGE", false);
         ((Bundle)localObject2).putBoolean("SHOW_RECNET_IMAGE", false);
-        ((Bundle)localObject2).putString("shareSource", amtj.a(2131710833));
+        ((Bundle)localObject2).putString("shareSource", anvx.a(2131711180));
         if (i == 1)
         {
           ((Bundle)localObject2).putBoolean("dynamic_album_is_from_draft", true);
@@ -1016,7 +1016,7 @@ public class QzoneDynamicAlbumPlugin
             if (paramString.startsWith("https://www.dynamicalbumlocalimage.com")) {
               localObject1 = paramString.replace("https://www.dynamicalbumlocalimage.com", "");
             }
-            QZoneHelper.forwardToPublishMood(this.parentPlugin.mRuntime.a(), (Bundle)localObject2, (QZoneHelper.UserInfo)localObject3, (String)localObject1, amtj.a(2131710832), null, this.REQUEST_PUBLISH_MOOD);
+            QZoneHelper.forwardToPublishMood(this.parentPlugin.mRuntime.a(), (Bundle)localObject2, (QZoneHelper.UserInfo)localObject3, (String)localObject1, anvx.a(2131711179), null, this.REQUEST_PUBLISH_MOOD);
             QLog.d("QzoneDynamicAlbumPlugin", 4, "entryWriteMoodAsync SUCCESS!");
             localJSONObject.put("code", 0);
             localJSONObject.put("msg", "success");
@@ -1837,10 +1837,10 @@ public class QzoneDynamicAlbumPlugin
   {
     if (paramBoolean)
     {
-      autj.a(true, this.parentPlugin.mRuntime.a(), false);
+      avzi.a(true, this.parentPlugin.mRuntime.a(), false);
       return;
     }
-    autj.a(false, this.parentPlugin.mRuntime.a(), false);
+    avzi.a(false, this.parentPlugin.mRuntime.a(), false);
     ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).abandonAudioFocus(null);
   }
   
@@ -2290,7 +2290,7 @@ public class QzoneDynamicAlbumPlugin
     super.onDestroy();
     RemoteHandleManager.getInstance().removeWebEventListener(this);
     RemoteHandleManager.getInstance().getSender().onDynamicPageDestroy();
-    autj.a(false, this.parentPlugin.mRuntime.a(), false);
+    avzi.a(false, this.parentPlugin.mRuntime.a(), false);
     try
     {
       this.parentPlugin.mRuntime.a().unregisterReceiver(this.notifyReceiver);

@@ -1,28 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
-public class ooq
-  implements View.OnClickListener
+class ooq
 {
-  public ooq(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  SingleLineTextView b;
   
-  public void onClick(View paramView)
-  {
-    if ((ReadInJoyDeliverBiuActivity.e(this.a)) && ((!ReadInJoyDeliverBiuActivity.f(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1))) {
-      this.a.e(ReadInJoyDeliverBiuActivity.n(this.a));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.finish();
-      odq.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-      ReadInJoyDeliverBiuActivity.a(this.a, false);
-    }
-  }
+  ooq(ooo paramooo) {}
 }
 
 

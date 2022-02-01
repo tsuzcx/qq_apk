@@ -1,27 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahvk
-  implements DialogInterface.OnKeyListener
+public abstract interface ahvk
 {
-  public ahvk(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 84) {}
-    do
-    {
-      return true;
-      if (paramInt != 4) {
-        break;
-      }
-    } while (BlessSelectMemberActivity.a() == null);
-    BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    return true;
-    return false;
-  }
+  public abstract void a(ahvv paramahvv, QQAppInterface paramQQAppInterface, int paramInt, String paramString);
 }
 
 

@@ -1,54 +1,99 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
-public class abzm
-  implements abzb
+final class abzm
+  extends QIPCModule
 {
-  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  private static volatile abzm a;
+  
+  private abzm(String paramString)
   {
-    Object localObject = new submsgtype0x116.MsgBody();
+    super(paramString);
+  }
+  
+  public static abzm a()
+  {
+    if (a == null) {}
     try
     {
-      ((submsgtype0x116.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-      long l1 = lcs.a(((submsgtype0x116.MsgBody)localObject).uint32_group_id.get());
-      long l2 = lcs.a(((submsgtype0x116.MsgBody)localObject).uint32_room_id.get());
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x116 qqMainThread;roomId=" + l2 + ";groupId=" + l1);
+      if (a == null) {
+        a = new abzm("gdt_ipc_module_server_to_client");
       }
-      if (paramQQAppInterface != null)
-      {
-        localObject = new Intent("tencent.video.q2v.GvideoMemInviteUpdate");
-        ((Intent)localObject).putExtra("uin", paramQQAppInterface.getCurrentUin());
-        ((Intent)localObject).putExtra("groupId", l1);
-        ((Intent)localObject).putExtra("roomId", l2);
-        ((Intent)localObject).putExtra("pushData", paramArrayOfByte);
-        ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-        paramQQAppInterface.getApp().sendBroadcast((Intent)localObject);
-      }
-      return;
+      return a;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    finally {}
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult != null) {}
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
     {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
+      acho.b("GdtIPCAdapter", String.format("ServerToClientIPCModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
+      super.callbackResult(paramInt, paramEIPCResult);
+      return;
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    a(paramabxc.a(), paramMsgType0x210.vProtobuf);
-    return null;
+    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
+    String str;
+    if (localParams != null)
+    {
+      paramBundle = localParams.getAction();
+      if (localParams == null) {
+        break label70;
+      }
+      str = localParams.getToProcessName();
+      label33:
+      acho.b("GdtIPCAdapter", String.format("ServerToClientIPCModule.onCall action:%s to:%s", new Object[] { paramBundle, str }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label76;
+      }
+    }
+    label70:
+    label76:
+    do
+    {
+      do
+      {
+        return null;
+        paramBundle = null;
+        break;
+        str = null;
+        break label33;
+      } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
+      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
+    } while (paramString == null);
+    paramString = paramString.handle(localParams);
+    paramBundle = new EIPCResult();
+    int i;
+    if ((paramString != null) && (paramString.success))
+    {
+      i = 0;
+      paramBundle.code = i;
+      if (paramString == null) {
+        break label194;
+      }
+    }
+    label194:
+    for (paramString = paramString.bundle;; paramString = null)
+    {
+      paramBundle.data = paramString;
+      callbackResult(paramInt, paramBundle);
+      return null;
+      i = -102;
+      break;
+    }
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.transfile;
 
-import amwl;
-import amwm;
-import bfwl;
+import anyz;
+import anza;
+import bhfd;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class ShortVideoUploadProcessor$6
-  extends amwl
+  extends anyz
 {
   ShortVideoUploadProcessor$6(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, anza paramanza)
   {
     this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
-    bfwl.a(String.valueOf(this.this$0.mUiRequest.mUniseq), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.this$0.mUiRequest.mRec.toString());
-    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramamwm);
+    bhfd.a(String.valueOf(this.this$0.mUiRequest.mUniseq), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.this$0.mUiRequest.mRec.toString());
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramanza);
     if (paramBoolean)
     {
       this.this$0.onSuccess();

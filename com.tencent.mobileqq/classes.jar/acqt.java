@@ -1,24 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.SubAccountObserver;
 
-public class acqt
-  implements View.OnClickListener
+final class acqt
+  extends SubAccountObserver
 {
-  public acqt(AddRequestActivity paramAddRequestActivity) {}
+  acqt(acnk paramacnk, bdxs parambdxs) {}
   
-  public void onClick(View paramView)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
-    aift.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), localIntent);
-    if (AddRequestActivity.a(this.a) != null) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
+    if ((paramString3 == null) || (this.jdField_a_of_type_Acnk.a() == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Acnk.a().getAccount())) {
+      return;
     }
-    bcef.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Bdxs.a(paramString2, paramString3, true);
+    bdxj.a(this.jdField_a_of_type_Acnk.a(), (byte)1, paramString2);
+    bdxj.a(this.jdField_a_of_type_Acnk.a(), paramString2, false);
   }
 }
 

@@ -1,104 +1,42 @@
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
-import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineV2.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.ICmdManager;
-import com.tencent.vas.update.callback.listener.ICmdListener;
-import com.tencent.vas.update.entity.BusinessUpdateParams;
-import com.tencent.vas.update.wrapper.VasUpdateWrapper;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-public class bgkd
-  implements bgka
+class bgkd
+  extends anrc
 {
-  private bgkb jdField_a_of_type_Bgkb;
-  private bgkh jdField_a_of_type_Bgkh;
+  bgkd(bgkc parambgkc) {}
   
-  public bgkd(QQAppInterface paramQQAppInterface)
+  protected void a(Object paramObject)
   {
-    try
+    if (this.a.a == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Bgkb = ((bgkb)paramQQAppInterface.getManager(374));
       return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      this.jdField_a_of_type_Bgkb = new bgkb(null);
-    }
-  }
-  
-  public void cancelDwonloadItem(long paramLong, String paramString)
-  {
-    if ((this.jdField_a_of_type_Bgkb != null) && (this.jdField_a_of_type_Bgkb.getBusinessCallback(paramLong) != null)) {
-      this.jdField_a_of_type_Bgkb.getBusinessCallback(paramLong).cancelDownload(paramString);
-    }
-  }
-  
-  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bgkb != null) && (this.jdField_a_of_type_Bgkb.getBusinessCallback(paramLong) != null))
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
+      paramObject = (bfjs)paramObject;
+      if (paramObject.jdField_b_of_type_Int == 12)
       {
-        paramString1 = new BusinessUpdateParams(paramLong, paramArrayOfString[i], paramString2);
-        this.jdField_a_of_type_Bgkb.getBusinessCallback(paramLong).startDownload(paramString1);
-        i += 1;
+        long l = paramObject.jdField_b_of_type_Long;
+        Iterator localIterator = this.a.a.getMessageFacade().getAIOList(String.valueOf(l), 1).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
+          {
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.a.toString()))) {
+              this.a.a.getMessageFacade().removeMsgByUniseq(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
+              this.a.a.getMessageFacade().removeMsgByUniseq(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            }
+          }
+        }
       }
-    }
-  }
-  
-  public void downloadItem(long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bgkb != null) && (this.jdField_a_of_type_Bgkb.getBusinessCallback(paramLong) != null))
-    {
-      paramString1 = new BusinessUpdateParams(paramLong, paramString1, paramString2);
-      this.jdField_a_of_type_Bgkb.getBusinessCallback(paramLong).startDownload(paramString1);
-    }
-  }
-  
-  public void onDestory()
-  {
-    this.jdField_a_of_type_Bgkb = null;
-  }
-  
-  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bgkh != null) && (this.jdField_a_of_type_Bgkh.a() != null)) {
-      this.jdField_a_of_type_Bgkh.a().onPbResponse(paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
-  {
-    ThreadManagerV2.excute(new VasUpdateEngineV2.1(this, paramQueryItemVersionCallback, paramInt, paramString), 32, null, true);
-  }
-  
-  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
-  {
-    if (this.jdField_a_of_type_Bgkb == null) {}
-    while (this.jdField_a_of_type_Bgkb.a() == null) {
-      return;
-    }
-    ICmdManager localICmdManager = VasUpdateWrapper.getCmdManager();
-    if ((localICmdManager == null) || (!(localICmdManager instanceof bgkh)))
-    {
-      QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
-      return;
-    }
-    this.jdField_a_of_type_Bgkh = ((bgkh)localICmdManager);
-    this.jdField_a_of_type_Bgkh.a(paramWeakReference);
-  }
-  
-  public void startUpdateAllItem()
-  {
-    if (this.jdField_a_of_type_Bgkb != null) {
-      this.jdField_a_of_type_Bgkb.updateAllItem();
     }
   }
 }

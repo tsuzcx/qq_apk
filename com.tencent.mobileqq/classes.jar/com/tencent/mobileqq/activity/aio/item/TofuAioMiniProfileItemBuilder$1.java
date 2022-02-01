@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agra;
-import agre;
-import bdck;
+import ahjq;
+import ahjw;
+import bejk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class TofuAioMiniProfileItemBuilder$1
   implements Runnable
 {
-  public TofuAioMiniProfileItemBuilder$1(agra paramagra, agre paramagre) {}
+  public TofuAioMiniProfileItemBuilder$1(ahjq paramahjq, ahjw paramahjw) {}
   
   public void run()
   {
-    ((bdck)this.this$0.a.getManager(368)).a(this.a.a, 2);
+    ((bejk)this.this$0.a.getManager(QQManagerFactory.TOFUMSG_MANAGER)).a(this.a.a, 2);
   }
 }
 

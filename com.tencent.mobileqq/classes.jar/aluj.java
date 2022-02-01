@@ -1,15 +1,6 @@
-public class aluj
+public abstract interface aluj
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public aluj(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

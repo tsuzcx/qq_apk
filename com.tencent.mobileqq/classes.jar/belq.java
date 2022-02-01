@@ -1,35 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.util.Pair;
+import java.util.List;
+import java.util.regex.Matcher;
 
-public class belq
-  implements DialogInterface.OnClickListener
+final class belq
+  implements bemp
 {
-  public belq(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
+  belq(beli parambeli, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a(Matcher paramMatcher)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
-    QQAppInterface localQQAppInterface;
-    String str1;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    paramMatcher = this.jdField_a_of_type_Beli.a(belm.a(paramMatcher.group(1)));
+    int i = 0;
+    for (;;)
     {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Benq.f;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Benq.f;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
-        break label108;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (!((String)paramMatcher.first).equals(localPair.first)) {
+          break label95;
+        }
+        if (((String)paramMatcher.second).compareTo((String)localPair.second) <= 0) {
+          bemq.a(this.jdField_a_of_type_JavaUtilList, i, 1);
+        }
       }
-    }
-    label108:
-    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
-    {
-      bftc.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
-      return;
+      return "";
+      label95:
+      i += 1;
     }
   }
 }

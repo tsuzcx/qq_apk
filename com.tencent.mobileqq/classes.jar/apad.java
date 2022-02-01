@@ -1,35 +1,135 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver.1;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-final class apad
-  implements INetEngine.IBreakDownFix
+public class apad
+  extends anyz
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  private int a;
+  
+  public apad(apac paramapac, int paramInt)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void onUpdateDelRoamChat(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apac.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+      return;
+    }
+    anzc localanzc = (anzc)this.jdField_a_of_type_Apac.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    if (!paramBoolean)
+    {
+      localanzc.a(8, null);
+      return;
+    }
+    localanzc.a(9, null);
+  }
+  
+  protected void onUpdateGetRoamChat(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = (Bundle)paramObject;
+    String str1 = paramObject.getString("PEER_UIN");
+    long l = paramObject.getLong("BEGTIME");
+    boolean bool1 = paramObject.getBoolean("NO_MSG");
+    int j = paramObject.getInt("SVR_CODE");
+    String str2 = paramObject.getString("SVR_MSG");
+    boolean bool2 = paramObject.getBoolean("FETCH_MORE");
+    int i = paramObject.getInt("MSG_COUNT");
+    boolean bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + j + ",msgCount:" + i + ",fetchMore: " + bool2 + ",svrMsg: " + str2 + ",isPreloadType:" + bool3);
+    }
+    if (bool3) {
+      return;
+    }
+    if ((paramBoolean) && (bool2) && (i > 0) && (i <= 8))
+    {
+      ThreadManager.getSubThreadHandler().post(new MessageRoamHandler.ChatHistoryMessageObserver.1(this, l, i, str1, bool2));
+      return;
+    }
+    paramObject = (anzc)this.jdField_a_of_type_Apac.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    i = 1;
+    if (!paramBoolean)
+    {
+      if (bool1) {
+        i = 2;
+      }
+      if (j == 51) {
+        i = 3;
+      }
+      paramObject.b(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
+      }
+      if (!bool2) {
+        break label355;
+      }
+    }
+    label355:
+    for (j = 1;; j = 0)
+    {
+      paramObject.a(i, j, Long.valueOf(l));
+      return;
+      j = 0;
+      i = j;
+      if (!bool2)
+      {
+        i = j;
+        if (!paramObject.a(l)) {
+          i = 4;
+        }
+      }
+      paramObject.b(true);
+      break;
+    }
+  }
+  
+  protected void onUpdateRoamMsgSearchResult(boolean paramBoolean, Object paramObject)
+  {
+    if (paramObject == null) {}
+    Object localObject1;
     do
     {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
+      return;
+      localObject2 = (HashMap)paramObject;
+      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
+      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + paramNetResp);
+      localObject1 = this.jdField_a_of_type_Apac.app.getHandler(akce.class);
+      if (!paramBoolean)
+      {
+        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
+        ((Message)localObject2).obj = paramObject;
+        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+        return;
+      }
+    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
+    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
+    ((Message)localObject2).obj = paramObject;
+    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+  }
+  
+  protected void onUpdateSetRoamChat(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apac.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+      return;
+    }
+    anzc localanzc = (anzc)this.jdField_a_of_type_Apac.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    if (!paramBoolean)
+    {
+      localanzc.a(7, null);
+      return;
+    }
+    localanzc.a(6, null);
   }
 }
 

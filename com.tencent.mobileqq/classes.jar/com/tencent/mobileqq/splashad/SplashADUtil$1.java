@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.splashad;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import bmoq;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
@@ -22,7 +22,7 @@ public final class SplashADUtil$1
         if ((this.jdField_a_of_type_Int == 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
         {
           if (!QLog.isColorLevel()) {
-            break label386;
+            break label391;
           }
           QLog.w("SplashAD", 2, "exporsure failed , adEntry not ready");
           return;
@@ -39,7 +39,7 @@ public final class SplashADUtil$1
         int i;
         Object localObject1;
         if (!QLog.isColorLevel()) {
-          break label386;
+          break label391;
         }
         QLog.w("SplashAD", 2, localException.toString());
         return;
@@ -54,11 +54,12 @@ public final class SplashADUtil$1
           continue;
         }
         localObject2 = ((String)localObject3).replace("__APP__", MD5Utils.encodeHexStr("android_qq_splash"));
-        localObject3 = DeviceInfoUtil.getIMEI();
+        localObject3 = bmoq.b();
+        String str = "";
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           continue;
         }
-        MD5Utils.encodeHexStr((String)localObject3);
+        str = MD5Utils.encodeHexStr((String)localObject3);
         localObject3 = localObject2;
         if (!((String)localObject2).contains("__OS__")) {
           continue;
@@ -69,10 +70,10 @@ public final class SplashADUtil$1
           continue;
         }
         localObject2 = localObject3;
-        if (TextUtils.isEmpty("")) {
+        if (TextUtils.isEmpty(str)) {
           continue;
         }
-        localObject2 = ((String)localObject3).replace("__IMEI__", "");
+        localObject2 = ((String)localObject3).replace("__IMEI__", str);
         continue;
         boolean bool = false;
         continue;
@@ -91,11 +92,11 @@ public final class SplashADUtil$1
       {
         bool = true;
         if (!QLog.isColorLevel()) {
-          break label386;
+          break label391;
         }
         QLog.i("SplashAD", 1, "exporsure rspCode " + i + "， request thirdparty" + bool);
       }
-      label386:
+      label391:
       return;
       Object localObject2 = localObject3;
     }

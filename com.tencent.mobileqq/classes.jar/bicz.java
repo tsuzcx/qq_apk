@@ -1,156 +1,92 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
-import android.view.Window;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.MyAppDialog.1;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl.1;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bicz
-  extends ReportDialog
 {
-  public ProgressBar a;
-  TextView a;
-  protected final WeakReference<Activity> a;
-  TextView b;
-  public TextView c;
-  TextView d;
-  public TextView e;
-  
-  public bicz(Activity paramActivity)
+  private void a()
   {
-    super(paramActivity);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    requestWindowFeature(1);
-    paramActivity = new ColorDrawable();
-    paramActivity.setAlpha(0);
-    getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2131559667);
-  }
-  
-  public Activity a()
-  {
-    Activity localActivity2 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity1 = localActivity2;
-    if (localActivity2 == null) {
-      localActivity1 = null;
-    }
-    return localActivity1;
-  }
-  
-  public bicz a(int paramInt)
-  {
-    this.b.setTextColor(paramInt);
-    return this;
-  }
-  
-  public bicz a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
+    int i = biiq.a().a();
+    if ((i & 0x2) == 0)
     {
-      this.c.setVisibility(8);
-      return this;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("_accelerator_mode_", i | 0x2);
+      biiq.a().a(localBundle);
     }
-    this.c.setText(paramInt1);
-    this.c.setTextColor(paramInt2);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bidb(this, paramOnClickListener, paramInt1, paramBoolean));
-    return this;
   }
   
-  public bicz a(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
+  protected List<WebViewPlugin> a()
   {
-    if (paramOnClickListener == null)
-    {
-      this.c.setVisibility(8);
-      return this;
+    return null;
+  }
+  
+  public void a(AppInterface arg1)
+  {
+    if (((!bicy.jdField_a_of_type_Boolean) && (bicy.a(???))) || ((!bicy.jdField_b_of_type_Boolean) && (bicy.b(???)))) {}
+    label182:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadService", 2, "preload webview engine");
+          }
+          l1 = System.currentTimeMillis();
+          if (!bicy.a(???)) {
+            break label182;
+          }
+          bicy.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
+        }
+        catch (Exception ???)
+        {
+          long l1;
+          long l2;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("PreloadService", 2, "preload error:" + ???.toString());
+          return;
+        }
+        synchronized (bicy.jdField_a_of_type_JavaLangObject)
+        {
+          bicy.jdField_a_of_type_JavaLangObject.notifyAll();
+          bicy.jdField_a_of_type_Boolean = true;
+          l2 = System.currentTimeMillis();
+          if (QLog.isColorLevel()) {
+            QLog.i("QQBrowser", 2, "Pre_Load_async_create_webview_engine, cost=" + (l2 - l1));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadService", 2, "asyncPreload end");
+          }
+          return;
+        }
+        if (bicy.b(???))
+        {
+          bicy.jdField_b_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(???, null, null, a());
+          bicy.jdField_b_of_type_Boolean = true;
+        }
+      }
     }
-    this.c.setText(paramInt);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bida(this, paramOnClickListener, paramInt, paramBoolean));
-    return this;
+    QLog.d("PreloadService", 2, "async preload:already inited.");
   }
   
-  public bicz a(String paramString)
+  public void a(AppInterface paramAppInterface, Context paramContext, long paramLong)
   {
-    if (paramString != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadService", 2, "asyncPreload app = " + paramAppInterface);
     }
-    return this;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new MyAppDialog.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable(paramDrawable);
-  }
-  
-  public bicz b(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.d.setVisibility(8);
-      return this;
-    }
-    this.d.setText(paramInt1);
-    this.d.setTextColor(paramInt2);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bidd(this, paramOnClickListener, paramInt1, paramBoolean));
-    return this;
-  }
-  
-  public bicz b(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.d.setVisibility(8);
-      return this;
-    }
-    this.d.setText(paramInt);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bidc(this, paramOnClickListener, paramInt, paramBoolean));
-    return this;
-  }
-  
-  public bicz b(String paramString)
-  {
-    if (paramString != null) {
-      this.b.setText(paramString);
-    }
-    return this;
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
+    if (paramAppInterface == null) {
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365556));
-    this.b = ((TextView)findViewById(2131365552));
-    this.c = ((TextView)findViewById(2131365541));
-    this.c.getPaint().setFakeBoldText(true);
-    this.d = ((TextView)findViewById(2131365547));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373009));
-    this.e = ((TextView)findViewById(2131373035));
+    a();
+    ThreadManager.postImmediately(new PreloadService.PreloadImpl.1(this, paramAppInterface), null, true);
   }
 }
 

@@ -1,434 +1,325 @@
-import QC.GetUsrKeyWordInfoRsp;
-import QC.OneKeyWordItemClient;
-import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopKeyWord;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.vas.troopkeyword.ExpireSet;
-import com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.9.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskScan;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.UUID;
 
 public class bgjy
+  extends aahl
 {
-  private static int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, List<TroopKeyWord>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  public bgjy(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public bgjy(QQAppInterface paramQQAppInterface, EntityManager paramEntityManager)
+  /* Error */
+  private final void a(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 21	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   5: ifeq +37 -> 42
+    //   8: ldc 23
+    //   10: iconst_4
+    //   11: ldc 25
+    //   13: iconst_3
+    //   14: anewarray 27	java/lang/Object
+    //   17: dup
+    //   18: iconst_0
+    //   19: aload_1
+    //   20: getfield 33	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   23: aastore
+    //   24: dup
+    //   25: iconst_1
+    //   26: iload_2
+    //   27: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   30: aastore
+    //   31: dup
+    //   32: iconst_2
+    //   33: aload 5
+    //   35: aastore
+    //   36: invokestatic 45	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   39: invokestatic 49	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: iload_2
+    //   43: ifeq +44 -> 87
+    //   46: aload_1
+    //   47: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauez;
+    //   50: ifnull +34 -> 84
+    //   53: aload_1
+    //   54: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauez;
+    //   57: iconst_0
+    //   58: lload 7
+    //   60: iload_2
+    //   61: aload 6
+    //   63: aload_1
+    //   64: getfield 57	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Id	Ljava/util/UUID;
+    //   67: invokevirtual 63	java/util/UUID:toString	()Ljava/lang/String;
+    //   70: aload_1
+    //   71: getfield 67	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   74: invokestatic 70	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   77: ldc 72
+    //   79: invokeinterface 77 9 0
+    //   84: aload_0
+    //   85: monitorexit
+    //   86: return
+    //   87: aload_1
+    //   88: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauez;
+    //   91: ifnull -7 -> 84
+    //   94: aload_1
+    //   95: getfield 53	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:mForwardCallback	Lauez;
+    //   98: iconst_1
+    //   99: lload 7
+    //   101: iload_2
+    //   102: ldc 72
+    //   104: aload_1
+    //   105: getfield 57	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Id	Ljava/util/UUID;
+    //   108: invokevirtual 63	java/util/UUID:toString	()Ljava/lang/String;
+    //   111: aload_1
+    //   112: getfield 67	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   115: invokestatic 70	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   118: aload 4
+    //   120: invokeinterface 77 9 0
+    //   125: goto -41 -> 84
+    //   128: astore_1
+    //   129: aload_0
+    //   130: monitorexit
+    //   131: aload_1
+    //   132: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	133	0	this	bgjy
+    //   0	133	1	paramItem	TroopFileTransferManager.Item
+    //   0	133	2	paramInt1	int
+    //   0	133	3	paramInt2	int
+    //   0	133	4	paramString1	String
+    //   0	133	5	paramString2	String
+    //   0	133	6	paramString3	String
+    //   0	133	7	paramLong	long
+    // Exception table:
+    //   from	to	target	type
+    //   2	42	128	finally
+    //   46	84	128	finally
+    //   87	125	128	finally
   }
   
-  private long a()
+  public final void a(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = bgov.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", 0L);
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public static bgjy a(QQAppInterface paramQQAppInterface)
-  {
-    return ((bgga)paramQQAppInterface.getManager(235)).a;
-  }
-  
-  private void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "setPullTimestamp = " + paramLong);
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    bgov.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", paramLong);
-  }
-  
-  private void a(HashMap<String, List<TroopKeyWord>> paramHashMap)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!paramHashMap.containsKey(str)) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, "updateKeywords: " + paramHashMap);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(paramHashMap);
-    this.jdField_a_of_type_Boolean = true;
-    d();
-  }
-  
-  public static boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if (jdField_a_of_type_Int == 0) {
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (jdField_a_of_type_Int == 1);
-    if (bgov.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_open", true)) {}
-    for (int i = 1;; i = 0)
-    {
-      jdField_a_of_type_Int = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "isEnable = " + jdField_a_of_type_Int);
-      }
-      bool1 = bool2;
-      if (jdField_a_of_type_Int == 1) {
-        break;
-      }
-      return false;
-    }
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramMessageRecord instanceof QQMessageFacade.Message))
-    {
-      bool1 = bool2;
-      if (((QQMessageFacade.Message)paramMessageRecord).bizType == 16) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private static long b()
-  {
-    return QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_KeywordAIORefreshFrequency", 1) * 60L * 1000L;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TroopKeyWord.class);
-    HashMap localHashMap = new HashMap();
-    if (localObject2 != null)
-    {
-      Iterator localIterator = ((List)localObject2).iterator();
-      while (localIterator.hasNext())
-      {
-        TroopKeyWord localTroopKeyWord = (TroopKeyWord)localIterator.next();
-        List localList = (List)localHashMap.get(localTroopKeyWord.troopUin);
-        localObject2 = localList;
-        if (localList == null)
-        {
-          localObject2 = new ArrayList();
-          localHashMap.put(localTroopKeyWord.troopUin, localObject2);
-        }
-        ((List)localObject2).add(localTroopKeyWord);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, "syncLoad: " + localHashMap);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localHashMap);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void d()
-  {
-    ThreadManagerV2.excute(new TroopKeywordManager.1(this), 32, null, true);
-  }
-  
-  public bgjx a(String paramString)
-  {
-    bgjx localbgjx = new bgjx();
-    if ((TextUtils.isEmpty(paramString)) || (!a()))
-    {
-      localbgjx.jdField_a_of_type_JavaLangString = "";
-      localbgjx.jdField_a_of_type_Boolean = false;
-      localbgjx.c = 1;
-      QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, new Object[] { "getTips error, troopUin=", paramString, " enable=", Boolean.valueOf(a()) });
-      return localbgjx;
-    }
-    c();
-    Object localObject1 = BaseApplicationImpl.getContext().getResources();
-    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    boolean bool;
-    int i;
-    if ((localList == null) || (localList.isEmpty()))
-    {
-      localObject1 = ((Resources)localObject1).getString(2131692728);
-      if ((!bgov.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_guide_clicked", false)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
-      {
-        bool = true;
-        if (!bool) {
-          break label242;
-        }
-        i = 2;
-      }
-    }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, new Object[] { "getTips, troopUin=", paramString, " tips=", localObject1, " red=", Boolean.valueOf(bool) });
+      try
+      {
+        if (!QLog.isDevelopLevel()) {
+          break label444;
+        }
+        QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToGroup - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
       }
-      localbgjx.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localbgjx.jdField_a_of_type_Boolean = bool;
-      localbgjx.c = i;
-      return localbgjx;
-      bool = false;
-      break;
-      label242:
-      i = 1;
+      finally {}
+      paramString1 = new bgje(paramItem.FileName, paramItem.ForwardTroopuin, 5, paramInt1, paramString1);
+      this.a.a(paramItem, 5, paramString1);
+      paramItem = ((QQAppInterface)this.b.get()).getFileManagerDataCenter().a(paramItem.entrySessionID);
+      if (paramItem != null)
+      {
+        long l = paramItem.structMsgSeq;
+        ((QQAppInterface)this.b.get()).getMessageFacade().removeMsgByUniseq("" + this.a.e, 1, l);
+      }
+      return;
+      paramInt1 = 202;
+      paramString1 = paramString3;
       continue;
-      ExpireSet localExpireSet = new ExpireSet();
-      Object localObject2 = localList.iterator();
-      int j = 0;
-      i = 0;
-      if (((Iterator)localObject2).hasNext())
+      paramInt1 = 600;
+      paramString1 = paramString3;
+      continue;
+      paramInt1 = 701;
+      paramString1 = paramString3;
+      continue;
+      paramInt1 = 706;
+      paramString1 = anvx.a(2131714687);
+      continue;
+      if (paramItem.BusId == 102)
       {
-        TroopKeyWord localTroopKeyWord = (TroopKeyWord)((Iterator)localObject2).next();
-        if (localTroopKeyWord.expiredFlag == 3)
-        {
-          localExpireSet.add(Long.valueOf(localTroopKeyWord.wordId));
-          j += 1;
-        }
-        for (;;)
-        {
-          break;
-          int k = i;
-          if (localTroopKeyWord.expiredFlag == 2)
-          {
-            k = i + 1;
-            localExpireSet.add(Long.valueOf(localTroopKeyWord.wordId));
-          }
-          i = k;
-        }
-      }
-      localbgjx.jdField_a_of_type_Int = j;
-      localbgjx.jdField_b_of_type_Int = i;
-      localbgjx.jdField_b_of_type_JavaLangString = localExpireSet.toJson();
-      localObject2 = bgov.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_expire_list_" + paramString, null);
-      if (!ExpireSet.fromJson((String)localObject2).containsAll(localExpireSet))
-      {
-        bool = true;
-        label426:
-        if (!bool) {
-          break label508;
-        }
-        QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "expireList hasNewExpiredId, last:" + (String)localObject2 + " now:" + localbgjx.jdField_b_of_type_JavaLangString);
-      }
-      for (;;)
-      {
-        if (j <= 0) {
-          break label544;
-        }
-        localObject1 = ((Resources)localObject1).getString(2131698719, new Object[] { Integer.valueOf(j) });
-        i = 5;
-        break;
-        bool = false;
-        break label426;
-        label508:
-        bgov.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_expire_list_" + paramString, localbgjx.jdField_b_of_type_JavaLangString);
-      }
-      label544:
-      if (i > 0)
-      {
-        localObject1 = ((Resources)localObject1).getString(2131698724);
-        i = 4;
+        paramItem.BusId = 104;
+        aagu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.a.e, paramItem, this.a.e, 0L, TroopFileTransferManager.a(this.a));
       }
       else
       {
-        localObject1 = ((Resources)localObject1).getString(2131698720, new Object[] { Integer.valueOf(localList.size()) });
-        bool = false;
-        i = 3;
-      }
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(GetUsrKeyWordInfoRsp paramGetUsrKeyWordInfoRsp)
-  {
-    QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeyworkRsp");
-    if (paramGetUsrKeyWordInfoRsp == null)
-    {
-      QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "rsp == null");
-      return;
-    }
-    boolean bool;
-    HashMap localHashMap;
-    ArrayList[] arrayOfArrayList;
-    int j;
-    int i;
-    if (1 == paramGetUsrKeyWordInfoRsp.iShowEntry)
-    {
-      bool = true;
-      a(bool);
-      localHashMap = new HashMap();
-      arrayOfArrayList = new ArrayList[2];
-      arrayOfArrayList[0] = paramGetUsrKeyWordInfoRsp.vBaseWord;
-      arrayOfArrayList[1] = paramGetUsrKeyWordInfoRsp.vVaWord;
-      j = arrayOfArrayList.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i >= j) {
-        break label302;
-      }
-      paramGetUsrKeyWordInfoRsp = arrayOfArrayList[i];
-      if (paramGetUsrKeyWordInfoRsp != null)
-      {
-        Iterator localIterator = paramGetUsrKeyWordInfoRsp.iterator();
-        label97:
-        if (localIterator.hasNext())
+        paramInt1 = 204;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = -139;
+        paramString1 = paramString3;
+        continue;
+        if ((!TextUtils.isEmpty(paramItem.LocalFile)) && (new File(paramItem.LocalFile).exists()))
         {
-          paramGetUsrKeyWordInfoRsp = (OneKeyWordItemClient)localIterator.next();
-          TroopKeyWord localTroopKeyWord = new TroopKeyWord();
-          localTroopKeyWord.wordId = paramGetUsrKeyWordInfoRsp.uWordId;
-          localTroopKeyWord.keyword = paramGetUsrKeyWordInfoRsp.sKeyWordContent.toLowerCase();
-          localTroopKeyWord.troopUin = String.valueOf(paramGetUsrKeyWordInfoRsp.uGroupNum);
-          localTroopKeyWord.expiredFlag = ((int)paramGetUsrKeyWordInfoRsp.uWordExpiredFlag);
-          if ((paramGetUsrKeyWordInfoRsp.uWordStatus == 2L) && ((paramGetUsrKeyWordInfoRsp.uWordExpiredFlag == 1L) || (paramGetUsrKeyWordInfoRsp.uWordExpiredFlag == 2L))) {}
-          for (bool = true;; bool = false)
+          this.a.a(paramItem, 0);
+          paramItem.BusId = 102;
+          this.a.jdField_a_of_type_ArrayOfBgkb[0].a(new TroopFileTransferManager.TaskScan(this.a, paramItem));
+          continue;
+          label444:
+          while (paramInt1 >= 0)
           {
-            localTroopKeyWord.enable = bool;
-            if (QLog.isColorLevel()) {
-              QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, localTroopKeyWord.toString());
+            new Handler(Looper.getMainLooper()).post(new TroopFileTransferManager.9.1(this));
+            paramItem.FilePath = paramString1;
+            paramString2 = paramItem.getInfo(this.a.e);
+            if (paramString2 != null) {
+              paramString2.e = paramString1;
             }
-            List localList = (List)localHashMap.get(localTroopKeyWord.troopUin);
-            paramGetUsrKeyWordInfoRsp = localList;
-            if (localList == null)
-            {
-              paramGetUsrKeyWordInfoRsp = new ArrayList();
-              localHashMap.put(localTroopKeyWord.troopUin, paramGetUsrKeyWordInfoRsp);
+            paramString2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramItem.entrySessionID);
+            if (paramString2 != null) {
+              paramString2.strTroopFilePath = paramString1;
             }
-            paramGetUsrKeyWordInfoRsp.add(localTroopKeyWord);
-            break label97;
-            bool = false;
+            this.a.a(paramItem, 7, 0);
+            this.a.c(paramItem);
             break;
+          }
+          paramInt2 = 207;
+        }
+        else
+        {
+          switch (paramInt1)
+          {
+          case -3: 
+          case -4: 
+          case -25: 
+          case -22: 
+          case -36: 
+          case -20001: 
+          case -20000: 
+          case -403: 
+          case -139: 
+          case -138: 
+          case -6101: 
+          default: 
+            paramString1 = paramString3;
+            paramInt1 = paramInt2;
+            continue;
+            paramInt1 = 603;
+            paramString1 = paramString3;
+            break;
+          case -30: 
+            paramInt1 = 705;
+            paramString1 = paramString3;
           }
         }
       }
-      i += 1;
     }
-    label302:
-    a(localHashMap);
   }
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (a(paramString))
+    long l = paramBundle.getLong("troopUin");
+    TroopFileTransferManager localTroopFileTransferManager;
+    Object localObject;
+    try
     {
-      long l = System.currentTimeMillis();
-      if (Math.abs(l - a()) > b())
+      localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (localTroopFileTransferManager == null)
       {
-        QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordTimeoutCheck");
-        a(l);
-        b();
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
       }
+      String str = paramBundle.getString("itemKey");
+      if (str == null) {
+        return;
+      }
+      localObject = UUID.fromString(str);
+      try
+      {
+        localObject = (TroopFileTransferManager.Item)localTroopFileTransferManager.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if (localObject == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + str);
+          }
+          return;
+        }
+      }
+      finally {}
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "setEnable = " + paramBoolean);
+    finally {}
+    if (QLog.isDevelopLevel()) {
+      QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
     }
-    bgov.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_open", paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (((TroopFileTransferManager.Item)localObject).BusId == 25)
     {
-      jdField_a_of_type_Int = i;
+      b((TroopFileTransferManager.Item)localObject, paramInt1, paramInt2, paramString1, paramString2, paramString3);
       return;
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!a()) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString))
+    if ((((TroopFileTransferManager.Item)localObject).BusId == 102) || (((TroopFileTransferManager.Item)localObject).BusId == 104))
     {
-      QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "hasKeyword, troopUin is empty");
-      return false;
+      a((TroopFileTransferManager.Item)localObject, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+      return;
     }
-    paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((paramString != null) && (paramString.size() > 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((((TroopFileTransferManager.Item)localObject).BusId == 3) || (((TroopFileTransferManager.Item)localObject).BusId == 106) || (((TroopFileTransferManager.Item)localObject).BusId == 38)) {
+      a((TroopFileTransferManager.Item)localObject, paramInt1, paramInt2, paramString1, paramString2, paramString3, paramBundle.getLong("sessionId"));
     }
   }
   
-  public boolean a(String paramString1, String paramString2)
+  public final void b(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    if (!a()) {}
-    TroopKeyWord localTroopKeyWord;
-    do
+    for (;;)
     {
-      Object localObject;
-      while (!((Iterator)localObject).hasNext())
+      try
       {
-        do
+        if (QLog.isDevelopLevel()) {
+          QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToWeiyun - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
+        }
+        bmqx.a(paramInt1);
+        if (paramInt1 == 0) {
+          break label290;
+        }
+        paramInt2 = 601;
+        switch (paramInt1)
         {
-          do
-          {
-            return false;
-          } while (TextUtils.isEmpty(paramString1));
-          if (TextUtils.isEmpty(paramString2))
-          {
-            QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "containsKeyword, troopUin is empty");
-            return false;
-          }
-          c();
-          localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
-        } while ((localObject == null) || (((List)localObject).isEmpty()));
-        paramString1 = paramString1.toLowerCase();
-        localObject = ((List)localObject).iterator();
+        case -3: 
+          paramString1 = new bgje(paramItem.FileName, this.a.e, 5, paramInt1, paramString3);
+          this.a.a(paramItem, 5, paramString1);
+          return;
+        }
       }
-      localTroopKeyWord = (TroopKeyWord)((Iterator)localObject).next();
-    } while ((!localTroopKeyWord.enable) || (!paramString1.contains(localTroopKeyWord.keyword)));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, "containsKeyword: " + localTroopKeyWord.keyword);
+      finally {}
+      paramInt1 = 202;
+      continue;
+      if (paramItem.BusId == 102)
+      {
+        paramItem.BusId = 104;
+        aagu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.a.e, paramItem, this.a.e, 0L, TroopFileTransferManager.a(this.a));
+      }
+      else
+      {
+        paramInt1 = 702;
+        continue;
+        paramInt1 = 703;
+        continue;
+        paramInt1 = 702;
+        continue;
+        paramInt1 = 701;
+        continue;
+        paramInt1 = 705;
+        continue;
+        paramInt1 = paramInt2;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramInt1 = 704;
+          continue;
+          label290:
+          paramString1 = new bgje(paramItem.FileName, this.a.e, 5, 602);
+          this.a.a(paramItem, 5, paramString1);
+          continue;
+          paramInt1 = paramInt2;
+        }
+      }
     }
-    bcef.b(null, "dc00898", "", paramString2, "qq_vip", "0X800A8FD", 0, 1, 0, "", "", localTroopKeyWord.keyword, "");
-    return true;
-  }
-  
-  public void b()
-  {
-    QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordChangePush");
-    ((anaj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(13)).a(new bgjz(this), true);
   }
 }
 

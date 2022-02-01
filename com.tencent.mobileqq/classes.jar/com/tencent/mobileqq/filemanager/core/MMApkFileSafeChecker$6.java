@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import asii;
-import asis;
+import atmo;
+import atmy;
 
 public class MMApkFileSafeChecker$6
   implements Runnable
 {
-  public MMApkFileSafeChecker$6(asii paramasii, String paramString, asis paramasis) {}
+  public MMApkFileSafeChecker$6(atmo paramatmo, String paramString, atmy paramatmy) {}
   
   /* Error */
   public void run()
@@ -88,42 +88,42 @@ public class MMApkFileSafeChecker$6
     //   144: astore 5
     //   146: aload 9
     //   148: astore 8
-    //   150: new 68	asiq
+    //   150: new 68	atmw
     //   153: dup
     //   154: aload_0
-    //   155: getfield 15	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Lasii;
-    //   158: invokespecial 71	asiq:<init>	(Lasii;)V
+    //   155: getfield 15	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Latmo;
+    //   158: invokespecial 71	atmw:<init>	(Latmo;)V
     //   161: astore 4
     //   163: aload 4
     //   165: aload 5
-    //   167: putfield 74	asiq:jdField_a_of_type_ArrayOfByte	[B
+    //   167: putfield 74	atmw:jdField_a_of_type_ArrayOfByte	[B
     //   170: aload 4
     //   172: aload 8
-    //   174: putfield 77	asiq:jdField_b_of_type_ArrayOfByte	[B
+    //   174: putfield 77	atmw:jdField_b_of_type_ArrayOfByte	[B
     //   177: aload 4
     //   179: aload_0
     //   180: getfield 17	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   183: invokestatic 83	com/tencent/mobileqq/filemanager/util/FileUtil:getFileSize	(Ljava/lang/String;)J
-    //   186: putfield 86	asiq:jdField_a_of_type_Long	J
+    //   186: putfield 86	atmw:jdField_a_of_type_Long	J
     //   189: aload 4
     //   191: invokestatic 92	java/lang/System:currentTimeMillis	()J
-    //   194: putfield 94	asiq:jdField_b_of_type_Long	J
+    //   194: putfield 94	atmw:jdField_b_of_type_Long	J
     //   197: iload_2
     //   198: ifeq +32 -> 230
     //   201: aload 4
-    //   203: getfield 74	asiq:jdField_a_of_type_ArrayOfByte	[B
+    //   203: getfield 74	atmw:jdField_a_of_type_ArrayOfByte	[B
     //   206: ifnull +24 -> 230
     //   209: aload 4
-    //   211: getfield 77	asiq:jdField_b_of_type_ArrayOfByte	[B
+    //   211: getfield 77	atmw:jdField_b_of_type_ArrayOfByte	[B
     //   214: ifnull +16 -> 230
     //   217: aload_0
-    //   218: getfield 15	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Lasii;
+    //   218: getfield 15	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:this$0	Latmo;
     //   221: aload_0
     //   222: getfield 17	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   225: aload 4
-    //   227: invokestatic 99	asii:a	(Lasii;Ljava/lang/String;Lasiq;)V
+    //   227: invokestatic 99	atmo:a	(Latmo;Ljava/lang/String;Latmw;)V
     //   230: aload_0
-    //   231: getfield 19	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_Asis	Lasis;
+    //   231: getfield 19	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$6:jdField_a_of_type_Atmy	Latmy;
     //   234: iload_2
     //   235: aload 4
     //   237: invokeinterface 104 3 0
@@ -356,7 +356,7 @@ public class MMApkFileSafeChecker$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.6
  * JD-Core Version:    0.7.0.1
  */

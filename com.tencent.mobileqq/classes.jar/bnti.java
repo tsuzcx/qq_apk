@@ -1,15 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditVideoActivity;
-
-public class bnti
-  implements yli
+public abstract interface bnti
 {
-  public bnti(QzoneEditVideoActivity paramQzoneEditVideoActivity) {}
+  public abstract void a();
   
-  public void a()
-  {
-    QLog.d(QzoneEditVideoActivity.a(), 2, "QzoneEditVideoActivity doOnActivityResult reCreateDone");
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

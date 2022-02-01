@@ -1,69 +1,27 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVLoadingDialogActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class mbk
-  extends Handler
+  extends mbh
 {
-  final String a;
+  boolean a = false;
   
-  public mbk(String paramString)
+  public mbk(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
   {
-    this.a = paramString;
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.a = paramBoolean;
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
-    {
-      localObject = (WeakReference)paramMessage.obj;
-      if (localObject != null)
-      {
-        localObject = ((WeakReference)localObject).get();
-        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
-      }
-    }
-    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
-        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
-        long l = mtt.a(paramMessage);
-        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
-        try
-        {
-          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
-          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772178, 0);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
-          return;
-        }
-      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
-      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
-      return;
-    }
+    return 2;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbk
  * JD-Core Version:    0.7.0.1
  */

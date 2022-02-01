@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class ayuj
+  extends FlingGestureHandler
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  boolean a = true;
+  
+  public ayuj(Activity paramActivity)
   {
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800B1C8", "0X800B1C8", paramInt, 0, "", "", "", "");
+    super(paramActivity);
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800B1C9", "0X800B1C9", paramInt, 0, "", "", "", "");
+    this.a = paramBoolean;
+    if (!b()) {
+      a();
+    }
+    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
+  }
+  
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
+    }
   }
 }
 

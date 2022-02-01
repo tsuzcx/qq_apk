@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import amwl;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import ayeo;
-import ayep;
-import bjyw;
+import anyz;
+import azla;
+import azlb;
+import blkh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -32,7 +32,7 @@ public class ScribblePicUploadProcessor
   private byte[] mLocalMd52;
   private String mPicUrl = "";
   private byte[] mSessionKey;
-  amwl messageObserver = new ScribblePicUploadProcessor.2(this);
+  anyz messageObserver = new ScribblePicUploadProcessor.2(this);
   private Transaction trans;
   
   public ScribblePicUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
@@ -216,11 +216,11 @@ public class ScribblePicUploadProcessor
     QLog.e("ScribblePicUploadProcessor", 2, "onError()---- errCode: " + this.errCode + ", errDesc:" + this.errDesc);
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localObject = new ayep();
-      ((ayep)localObject).jdField_a_of_type_Int = -1;
-      ((ayep)localObject).b = this.errCode;
-      ((ayep)localObject).jdField_a_of_type_JavaLangString = this.errDesc;
-      this.mUiRequest.mUpCallBack.onSend((ayep)localObject);
+      localObject = new azlb();
+      ((azlb)localObject).jdField_a_of_type_Int = -1;
+      ((azlb)localObject).b = this.errCode;
+      ((azlb)localObject).jdField_a_of_type_JavaLangString = this.errDesc;
+      this.mUiRequest.mUpCallBack.onSend((azlb)localObject);
     }
   }
   
@@ -238,9 +238,9 @@ public class ScribblePicUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localObject = new ayep();
-      ((ayep)localObject).jdField_a_of_type_Int = 0;
-      this.mUiRequest.mUpCallBack.onSend((ayep)localObject);
+      localObject = new azlb();
+      ((azlb)localObject).jdField_a_of_type_Int = 0;
+      this.mUiRequest.mUpCallBack.onSend((azlb)localObject);
     }
   }
   

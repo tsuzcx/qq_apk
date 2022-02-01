@@ -528,7 +528,7 @@ public class WebAppIpManager
     //   42: astore 4
     //   44: aload 4
     //   46: invokevirtual 58	java/io/File:exists	()Z
-    //   49: ifeq +553 -> 602
+    //   49: ifeq +541 -> 590
     //   52: aload 4
     //   54: invokevirtual 312	java/io/File:length	()J
     //   57: l2i
@@ -600,13 +600,13 @@ public class WebAppIpManager
     //   186: new 233	java/util/ArrayList
     //   189: dup
     //   190: invokespecial 234	java/util/ArrayList:<init>	()V
-    //   193: astore 5
+    //   193: astore 7
     //   195: iconst_0
     //   196: istore_1
     //   197: iload_1
     //   198: iload_2
     //   199: if_icmpge +29 -> 228
-    //   202: aload 5
+    //   202: aload 7
     //   204: getstatic 342	cooperation/qzone/statistic/serverip/WebAppIpRecord:CREATOR	Landroid/os/Parcelable$Creator;
     //   207: aload 4
     //   209: invokeinterface 348 2 0
@@ -622,13 +622,13 @@ public class WebAppIpManager
     //   229: ifnull +7 -> 236
     //   232: aload_3
     //   233: invokevirtual 326	java/io/FileInputStream:close	()V
-    //   236: aload 5
+    //   236: aload 7
     //   238: astore_3
     //   239: aload 4
     //   241: ifnull +11 -> 252
     //   244: aload 4
     //   246: invokevirtual 297	android/os/Parcel:recycle	()V
-    //   249: aload 5
+    //   249: aload 7
     //   251: astore_3
     //   252: aload_3
     //   253: ifnull -143 -> 110
@@ -641,49 +641,49 @@ public class WebAppIpManager
     //   272: aload 4
     //   274: invokeinterface 264 1 0
     //   279: checkcast 84	cooperation/qzone/statistic/serverip/WebAppIpRecord
-    //   282: astore 6
-    //   284: aload 6
+    //   282: astore 5
+    //   284: aload 5
     //   286: ifnull -24 -> 262
-    //   289: aload 6
+    //   289: aload 5
     //   291: getfield 102	cooperation/qzone/statistic/serverip/WebAppIpRecord:serverIpMap	Lcooperation/qzone/statistic/serverip/WebAppIpRecord$FixedSizeLinkedHashMap;
     //   294: ifnull -32 -> 262
-    //   297: aload 6
+    //   297: aload 5
     //   299: getfield 102	cooperation/qzone/statistic/serverip/WebAppIpRecord:serverIpMap	Lcooperation/qzone/statistic/serverip/WebAppIpRecord$FixedSizeLinkedHashMap;
     //   302: invokevirtual 349	cooperation/qzone/statistic/serverip/WebAppIpRecord$FixedSizeLinkedHashMap:keySet	()Ljava/util/Set;
     //   305: invokeinterface 350 1 0
-    //   310: astore 5
-    //   312: aload 5
-    //   314: invokeinterface 260 1 0
-    //   319: ifeq -57 -> 262
-    //   322: aload 5
-    //   324: invokeinterface 264 1 0
-    //   329: checkcast 112	java/lang/Integer
-    //   332: astore_3
-    //   333: invokestatic 169	cooperation/qzone/util/QZLog:isColorLevel	()Z
-    //   336: ifeq +43 -> 379
-    //   339: ldc 11
-    //   341: iconst_2
-    //   342: new 34	java/lang/StringBuilder
-    //   345: dup
-    //   346: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   349: ldc_w 352
-    //   352: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: aload_3
-    //   356: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   359: ldc_w 357
-    //   362: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   365: aload 6
-    //   367: getfield 133	cooperation/qzone/statistic/serverip/WebAppIpRecord:serverChangeTime	J
-    //   370: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   373: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokestatic 274	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   379: aload_3
+    //   310: astore_3
+    //   311: aload_3
+    //   312: invokeinterface 260 1 0
+    //   317: ifeq -55 -> 262
+    //   320: aload_3
+    //   321: invokeinterface 264 1 0
+    //   326: checkcast 112	java/lang/Integer
+    //   329: astore 6
+    //   331: invokestatic 169	cooperation/qzone/util/QZLog:isColorLevel	()Z
+    //   334: ifeq +44 -> 378
+    //   337: ldc 11
+    //   339: iconst_2
+    //   340: new 34	java/lang/StringBuilder
+    //   343: dup
+    //   344: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   347: ldc_w 352
+    //   350: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: aload 6
+    //   355: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   358: ldc_w 357
+    //   361: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: aload 5
+    //   366: getfield 133	cooperation/qzone/statistic/serverip/WebAppIpRecord:serverChangeTime	J
+    //   369: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   372: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   375: invokestatic 274	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   378: aload 6
     //   380: invokevirtual 360	java/lang/Integer:intValue	()I
-    //   383: aload 6
+    //   383: aload 5
     //   385: getfield 133	cooperation/qzone/statistic/serverip/WebAppIpRecord:serverChangeTime	J
     //   388: invokestatic 365	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   391: invokestatic 371	cooperation/qzone/statistic/AccManager:reportCrashRelatedServerIP	(ILjava/lang/String;)V
-    //   394: goto -82 -> 312
+    //   394: goto -83 -> 311
     //   397: astore_3
     //   398: aload_3
     //   399: invokestatic 282	cooperation/qzone/util/QZLog:w	(Ljava/lang/Throwable;)V
@@ -700,7 +700,7 @@ public class WebAppIpManager
     //   422: aload 4
     //   424: invokevirtual 326	java/io/FileInputStream:close	()V
     //   427: aload 6
-    //   429: ifnull +170 -> 599
+    //   429: ifnull +158 -> 587
     //   432: aload 6
     //   434: invokevirtual 297	android/os/Parcel:recycle	()V
     //   437: goto -185 -> 252
@@ -771,56 +771,50 @@ public class WebAppIpManager
     //   565: aload 7
     //   567: astore 4
     //   569: goto -157 -> 412
-    //   572: astore 8
+    //   572: astore 5
     //   574: aload 4
     //   576: astore 6
-    //   578: aload 5
-    //   580: astore 4
-    //   582: aload_3
-    //   583: astore 7
-    //   585: aload 8
-    //   587: astore 5
-    //   589: aload 4
-    //   591: astore_3
-    //   592: aload 7
-    //   594: astore 4
-    //   596: goto -184 -> 412
-    //   599: goto -347 -> 252
-    //   602: aconst_null
-    //   603: astore 5
-    //   605: aconst_null
-    //   606: astore_3
-    //   607: goto -522 -> 85
+    //   578: aload_3
+    //   579: astore 4
+    //   581: aload 7
+    //   583: astore_3
+    //   584: goto -172 -> 412
+    //   587: goto -335 -> 252
+    //   590: aconst_null
+    //   591: astore 5
+    //   593: aconst_null
+    //   594: astore_3
+    //   595: goto -510 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	610	0	this	WebAppIpManager
+    //   0	598	0	this	WebAppIpManager
     //   196	29	1	i	int
     //   153	47	2	j	int
     //   71	24	3	localFileInputStream	java.io.FileInputStream
     //   113	2	3	localIOException1	java.io.IOException
     //   121	112	3	localObject1	Object
-    //   238	142	3	localObject2	Object
+    //   238	83	3	localObject2	Object
     //   397	2	3	localIOException2	java.io.IOException
     //   408	55	3	localObject3	Object
     //   479	2	3	localIOException3	java.io.IOException
-    //   522	85	3	localObject4	Object
+    //   522	73	3	localObject4	Object
     //   42	381	4	localObject5	Object
     //   440	3	4	localIOException4	java.io.IOException
     //   450	27	4	localObject6	Object
     //   487	1	4	localObject7	Object
     //   496	12	4	localObject8	Object
-    //   513	82	4	localObject9	Object
-    //   60	263	5	localObject10	Object
+    //   513	67	4	localObject9	Object
+    //   60	324	5	localObject10	Object
     //   405	8	5	localException1	java.lang.Exception
     //   505	7	5	localObject11	Object
     //   518	6	5	localObject12	Object
     //   530	1	5	localException2	java.lang.Exception
     //   540	1	5	localException3	java.lang.Exception
-    //   554	25	5	localException4	java.lang.Exception
-    //   587	17	5	localObject13	Object
+    //   554	1	5	localException4	java.lang.Exception
+    //   572	1	5	localException5	java.lang.Exception
+    //   591	1	5	localObject13	Object
     //   4	573	6	localObject14	Object
-    //   1	592	7	localObject15	Object
-    //   572	14	8	localException5	java.lang.Exception
+    //   1	581	7	localObject15	Object
     // Exception table:
     //   from	to	target	type
     //   94	98	113	java/io/IOException
@@ -831,9 +825,9 @@ public class WebAppIpManager
     //   244	249	121	finally
     //   256	262	121	finally
     //   262	284	121	finally
-    //   289	312	121	finally
-    //   312	379	121	finally
-    //   379	394	121	finally
+    //   289	311	121	finally
+    //   311	378	121	finally
+    //   378	394	121	finally
     //   398	402	121	finally
     //   422	427	121	finally
     //   432	437	121	finally

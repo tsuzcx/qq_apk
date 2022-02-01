@@ -1,21 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
-import com.tencent.mobileqq.text.QQText;
+import org.jetbrains.annotations.NotNull;
 
-class qgp
-  implements CustomMethodsRegister.CustomMethodInterface
+public class qgp
 {
-  public Object invoke(String paramString, Object... paramVarArgs)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  
+  @NotNull
+  public String toString()
   {
-    String str = "";
-    paramString = str;
-    if (paramVarArgs != null)
-    {
-      paramString = str;
-      if (paramVarArgs.length >= 1) {
-        paramString = bblk.b(String.valueOf(paramVarArgs[0]));
-      }
-    }
-    return new QQText(paramString, 3, 16);
+    return "LiveStatus{living='" + this.jdField_a_of_type_Int + '\'' + ", liveTime='" + this.jdField_a_of_type_Long + '\'' + ", source='" + this.jdField_a_of_type_Long + '\'' + ", account='" + this.jdField_a_of_type_Long + '\'' + ", roomId='" + this.jdField_a_of_type_Long + '\'' + ", rowKey='" + this.jdField_a_of_type_Long + '\'' + ", url='" + this.jdField_a_of_type_Long + '\'' + '}';
   }
 }
 

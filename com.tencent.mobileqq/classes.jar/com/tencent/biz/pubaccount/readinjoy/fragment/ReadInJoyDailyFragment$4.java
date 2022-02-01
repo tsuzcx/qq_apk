@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import bkwm;
+import bmhv;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import odq;
-import ofe;
-import ozh;
-import pbg;
-import pbm;
+import olh;
+import omx;
+import pin;
+import pkn;
+import pqg;
 
 class ReadInJoyDailyFragment$4
   implements Runnable
@@ -16,15 +16,15 @@ class ReadInJoyDailyFragment$4
   
   public void run()
   {
-    pbg localpbg = new pbg();
-    localpbg.b("folder_status", this.a);
-    localpbg.b("entry_time", "" + ReadInJoyDailyFragment.a().a() / 1000L);
-    localpbg.b("postset_time", "" + NetConnInfoCenter.getServerTime());
-    localpbg.b("version", ofe.a);
-    localpbg.b("os", "1");
-    localpbg.b("cmd", bkwm.h());
-    localpbg.b("channel_id", ozh.b());
-    odq.a(null, null, this.b, this.b, 0, 0, "" + ReadInJoyDailyFragment.a().b() / 1000L, "", "", localpbg.a(), false);
+    pqg localpqg = new pqg();
+    localpqg.b("folder_status", this.a);
+    localpqg.b("entry_time", "" + ReadInJoyDailyFragment.a().a() / 1000L);
+    localpqg.b("postset_time", "" + NetConnInfoCenter.getServerTime());
+    localpqg.b("version", omx.a);
+    localpqg.b("os", "1");
+    localpqg.b("cmd", bmhv.h());
+    localpqg.b("channel_id", pin.b());
+    olh.a(null, null, this.b, this.b, 0, 0, "" + ReadInJoyDailyFragment.a().b() / 1000L, "", "", localpqg.a(), false);
     QLog.d("ReadInJoyDailyFragment", 2, "reportDuringTime time is" + ReadInJoyDailyFragment.a().b() / 1000L);
   }
 }

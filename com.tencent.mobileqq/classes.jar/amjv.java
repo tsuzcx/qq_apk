@@ -1,14 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
 
-class amjv
-  extends amkb
+public class amjv
+  extends blfl
 {
-  amjv(amjt paramamjt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
-  }
+  public String a;
+  public int b = 1;
+  public ImageView d;
 }
 
 

@@ -1,18 +1,41 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import blnv;
-import bloc;
+import android.os.Process;
+import bmxa;
+import bnrh;
+import java.util.concurrent.CountDownLatch;
 
 public class AEPituCameraUnit$8
   implements Runnable
 {
-  public AEPituCameraUnit$8(bljy parambljy) {}
+  public AEPituCameraUnit$8(bmxa parambmxa) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Blnv.c();
-    this.this$0.jdField_a_of_type_Bloc.b(true);
+    try
+    {
+      bnrh.b(this.this$0.a, "[AEPituCameraUnit] unit init ENTER");
+      Process.setThreadPriority(-2);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          bnrh.b(this.this$0.a, "[AEPituCameraUnit] unit init BEGIN");
+          bmxa.b(this.this$0);
+          bnrh.b(this.this$0.a, "[AEPituCameraUnit] initAEKitReport-end");
+          return;
+        }
+        finally
+        {
+          bmxa.a(this.this$0).countDown();
+        }
+        localException = localException;
+        bnrh.d(this.this$0.a, "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
+      }
+    }
   }
 }
 

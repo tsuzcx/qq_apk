@@ -1,23 +1,33 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aovy
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class aovy
+  extends aoui
 {
-  aovy(aovx paramaovx, aowb paramaowb) {}
-  
-  public void callback(String paramString, Bitmap paramBitmap)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_Aowb.b.setVisibility(0);
-      this.jdField_a_of_type_Aowb.a.setVisibility(0);
-      this.jdField_a_of_type_Aowb.a.setImageBitmap(paramBitmap);
-      return;
+    paramQQAppInterface = new aovx(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wallet";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    this.jdField_a_of_type_Aowb.a.setVisibility(8);
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

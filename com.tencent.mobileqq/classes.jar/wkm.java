@@ -1,56 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
 
 public class wkm
 {
+  public int a;
   public long a;
-  public StoryVideoItem a;
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
+  public String c;
   
-  public JSONObject a()
+  public FilterItem a()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
-      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
     }
-    catch (JSONException localJSONException)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      localJSONException.printStackTrace();
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
     }
-    return null;
-  }
-  
-  public void a(@NonNull JSONObject paramJSONObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
-      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-  }
-  
-  public String toString()
-  {
-    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.jdField_a_of_type_Long + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

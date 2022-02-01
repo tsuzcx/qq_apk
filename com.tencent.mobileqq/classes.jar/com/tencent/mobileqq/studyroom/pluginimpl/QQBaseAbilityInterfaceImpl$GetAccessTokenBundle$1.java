@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
 import android.os.Bundle;
-import aumd;
-import aumg;
-import aumh;
+import avry;
+import avsb;
+import avsc;
 import java.util.concurrent.CountDownLatch;
 
 class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1
-  implements aumh
+  implements avsc
 {
-  QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1(QQBaseAbilityInterfaceImpl.GetAccessTokenBundle paramGetAccessTokenBundle, aumd paramaumd, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1(QQBaseAbilityInterfaceImpl.GetAccessTokenBundle paramGetAccessTokenBundle, avry paramavry, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
   public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
   {
@@ -39,7 +39,7 @@ class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1
  * JD-Core Version:    0.7.0.1
  */

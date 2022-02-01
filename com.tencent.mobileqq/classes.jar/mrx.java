@@ -1,87 +1,100 @@
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
-import org.apache.http.impl.conn.SingleClientConnManager;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.util.EntityUtils;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class mrx
 {
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    Object localObject = null;
-    try
-    {
-      HttpClient localHttpClient = a(false);
-      localObject = localHttpClient;
-      paramString1 = new HttpPost(paramString1);
-      localObject = localHttpClient;
-      paramString1.setEntity(new StringEntity(paramString2, "utf8"));
-      localObject = localHttpClient;
-      paramString1.setHeader("Content-Type", "application/text");
-      if (paramString3 != null)
-      {
-        localObject = localHttpClient;
-        paramString1.setHeader("Cookie", paramString3);
-      }
-      localObject = localHttpClient;
-      paramString1 = EntityUtils.toString(localHttpClient.execute(paramString1).getEntity());
-      return paramString1;
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
     }
-    finally
-    {
-      if (localObject != null) {
-        localObject.getConnectionManager().shutdown();
-      }
-    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    float f = paramInt;
+    localPaint.setAntiAlias(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-12434878);
+    localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    return localBitmap;
   }
   
-  public static HttpClient a(boolean paramBoolean)
+  public static Drawable a(Context paramContext, int paramInt)
   {
-    Object localObject2 = new BasicHttpParams();
-    HttpConnectionParams.setStaleCheckingEnabled((HttpParams)localObject2, false);
-    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, 5000);
-    HttpConnectionParams.setTcpNoDelay((HttpParams)localObject2, true);
-    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, 10000);
-    HttpConnectionParams.setSocketBufferSize((HttpParams)localObject2, 8192);
-    HttpProtocolParams.setVersion((HttpParams)localObject2, HttpVersion.HTTP_1_1);
-    HttpProtocolParams.setUserAgent((HttpParams)localObject2, "randchat");
-    Object localObject1 = new SchemeRegistry();
-    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-    try
-    {
-      ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-      label99:
-      if (paramBoolean) {}
-      for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
+    BitmapDrawable localBitmapDrawable = null;
+    int i = mvk.a(paramContext);
+    int j = mvk.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
       {
-        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
-        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
-        return localObject2;
-      }
+        try
+        {
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
     }
-    catch (Exception localException)
-    {
-      break label99;
+    return null;
+  }
+  
+  public static Drawable b(Context paramContext, int paramInt)
+  {
+    BitmapDrawable localBitmapDrawable = null;
+    int i = mvk.a(paramContext);
+    int j = mvk.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
     }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
+      {
+        try
+        {
+          localOptions.inScaled = false;
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mrx
  * JD-Core Version:    0.7.0.1
  */

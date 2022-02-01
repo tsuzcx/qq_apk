@@ -1,27 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class zwz
+  extends aqnu
 {
-  String a = "";
+  public zwz(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public static zwz a(String paramString)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString))
+    super.onAddColorNote(paramBundle, paramBoolean);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.videostory.capture", 2, "config TextUtils.isEmpty(config) return");
-      }
-      return null;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    zwz localzwz = new zwz();
-    localzwz.a(paramString);
-    return localzwz;
-  }
-  
-  public void a(String paramString)
-  {
-    this.a = paramString;
   }
 }
 

@@ -1,38 +1,17 @@
-import android.content.Context;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class laa
-  extends kzi
+public class laa
+  extends kzt
 {
-  laa(kzz paramkzz, Long paramLong, Context paramContext, List paramList, Language paramLanguage, lal paramlal) {}
+  private String jdField_a_of_type_JavaLangString = "qqi_android";
+  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  public String a()
   {
-    try
-    {
-      kzz.a(this.jdField_a_of_type_Kzz).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
-      kzz.a(this.jdField_a_of_type_Kzz).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
-      kzz.a(this.jdField_a_of_type_Kzz, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, kzz.a(this.jdField_a_of_type_Kzz).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Lal);
-      return;
-    }
-    catch (JSONException paramArrayOfHeader)
-    {
-      this.jdField_a_of_type_Lal.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(Throwable paramThrowable, String paramString)
+  public String b()
   {
-    this.jdField_a_of_type_Lal.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
-    }
+    return a(this.jdField_a_of_type_ArrayOfByte, a());
   }
 }
 

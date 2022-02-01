@@ -1,22 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class atdd
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface atdd
 {
-  public atdd(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public abstract void d();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    asgv.a().e(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public abstract void e();
+  
+  public abstract void n();
+  
+  public abstract void s();
+  
+  public abstract void t();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdd
  * JD-Core Version:    0.7.0.1
  */

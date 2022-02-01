@@ -1,15 +1,52 @@
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
-import com.tencent.image.URLDrawable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zlq
-  extends zlk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public zlq(SubscribeQRCodeShareHelper.2.1 param1) {}
+  public zlq(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    zlp.a(this.a.a.this$0, zlp.b(this.a.a.this$0));
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginMgrActivity", 2, new Object[] { "qqmute onCheckedChanged:", Boolean.valueOf(paramBoolean) });
+    }
+    if (!NetworkUtil.isNetworkAvailable(this.a))
+    {
+      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131695849, 0).b(this.a.getTitleBarHeight());
+      if (!paramBoolean) {
+        bool = true;
+      }
+      paramCompoundButton.setChecked(bool);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      if (paramBoolean)
+      {
+        QQCustomDialog localQQCustomDialog = bhdj.a(QRLoginMgrActivity.a(this.a), 230);
+        localQQCustomDialog.setTitle(2131716539);
+        localQQCustomDialog.setMessage(2131716538);
+        localQQCustomDialog.setPositiveButton(2131694399, new zlr(this));
+        localQQCustomDialog.setNegativeButton(2131690697, new zls(this, paramCompoundButton));
+        localQQCustomDialog.show();
+        bdla.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        ((aocn)this.a.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a(paramBoolean);
+      }
+    }
   }
 }
 

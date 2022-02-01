@@ -1,8 +1,8 @@
-import java.util.Vector;
+import java.util.List;
 
 public abstract interface avsn
 {
-  public abstract void a(boolean paramBoolean, Vector<Integer> paramVector);
+  public abstract void a(List<avth> paramList);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
 import Wallet.AcsMsg;
-import aewd;
+import afno;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class ReminderDataManager$3
   implements Runnable
 {
-  public ReminderDataManager$3(aewd paramaewd, List paramList) {}
+  public ReminderDataManager$3(afno paramafno, List paramList) {}
   
   public void run()
   {
@@ -25,14 +25,14 @@ public class ReminderDataManager$3
       while (localIterator.hasNext())
       {
         AcsMsg localAcsMsg = (AcsMsg)localIterator.next();
-        aewd.a(this.this$0, localAcsMsg);
+        afno.a(this.this$0, localAcsMsg);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.ReminderDataManager.3
  * JD-Core Version:    0.7.0.1
  */

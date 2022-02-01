@@ -1,6 +1,29 @@
-public abstract interface bhgh
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+
+public class bhgh
+  extends PipedInputStream
 {
-  public abstract void a(int paramInt);
+  private int a = 1024;
+  
+  public bhgh(PipedOutputStream paramPipedOutputStream, int paramInt)
+  {
+    super(paramPipedOutputStream);
+    this.a = paramInt;
+  }
+  
+  protected void receive(int paramInt)
+  {
+    try
+    {
+      if (this.buffer.length != this.a) {
+        this.buffer = new byte[this.a];
+      }
+      super.receive(paramInt);
+      return;
+    }
+    finally {}
+  }
 }
 
 

@@ -1,6 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import amtj;
 import android.content.Context;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Typeface;
@@ -20,8 +19,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bkyt;
-import blca;
+import anvx;
+import bmkt;
+import bmor;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,6 +41,8 @@ import cooperation.qzone.contentbox.model.MsgOnClickListener;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.zipanimate.ZipAnimationDrawable;
 import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +78,10 @@ public class MsgPhotoView
   private TextView mLikeNum;
   private TextView mNickNameView;
   private ImageView mQQUnionVipIcon;
+  private LinearLayout mQcircleContainer;
+  private TextView mQcircleDes;
+  private TextView mQcircleLikeCount;
+  private TextView mQcirclePushCount;
   private ImageView mQqshareIcon;
   private TextView mQqshareText;
   private ImageView mQzoneshareIcon;
@@ -106,6 +112,25 @@ public class MsgPhotoView
     init(paramContext);
   }
   
+  public static String bigNumberFormatTranfer(long paramLong)
+  {
+    if (paramLong < 10000L) {
+      return String.valueOf(paramLong);
+    }
+    if (paramLong < 1000000L)
+    {
+      DecimalFormat localDecimalFormat = new DecimalFormat();
+      localDecimalFormat.setMaximumFractionDigits(1);
+      localDecimalFormat.setGroupingSize(0);
+      localDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
+      return localDecimalFormat.format(paramLong / 10000.0D) + "W";
+    }
+    if (paramLong < 100000000L) {
+      return paramLong / 10000L + "W";
+    }
+    return "9999" + "W";
+  }
+  
   private ArrayList<String> convert(ArrayList<MQPhotoCell> paramArrayList)
   {
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
@@ -129,44 +154,48 @@ public class MsgPhotoView
   {
     this.mContext = paramContext;
     this.mUiHandler = new BaseMsgView.MyHandler(this);
-    LayoutInflater.from(this.mContext).inflate(2131562351, this);
-    this.mAvatarContainer = ((LinearLayout)findViewById(2131363162));
-    this.mAvatarImage = ((ImageView)findViewById(2131363126));
-    this.mNickNameView = ((TextView)findViewById(2131371791));
-    this.mBackgroundImage = ((AnyScaleTypeImageView)findViewById(2131363427));
+    LayoutInflater.from(this.mContext).inflate(2131562419, this);
+    this.mAvatarContainer = ((LinearLayout)findViewById(2131363181));
+    this.mAvatarImage = ((ImageView)findViewById(2131363145));
+    this.mNickNameView = ((TextView)findViewById(2131371981));
+    this.mBackgroundImage = ((AnyScaleTypeImageView)findViewById(2131363496));
     this.mBackgroundImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.viewPager = ((QzoneMsgViewPager)findViewById(2131380800));
+    this.viewPager = ((QzoneMsgViewPager)findViewById(2131381152));
     initViewPager();
-    this.mDesc1 = ((TextView)findViewById(2131365421));
-    this.mDesc2 = ((TextView)findViewById(2131365422));
-    this.mDesc3 = ((TextView)findViewById(2131365423));
-    this.mDesc4 = ((TextView)findViewById(2131365424));
-    this.mDesc5 = ((TextView)findViewById(2131365425));
-    this.mDesc6 = ((TextView)findViewById(2131365426));
-    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363151));
-    this.mLikeCommentContainer = ((LinearLayout)findViewById(2131369918));
-    this.mLikeContainer = ((RelativeLayout)findViewById(2131369919));
-    this.mCommentContainer = ((RelativeLayout)findViewById(2131364834));
-    this.mLikeIcon = ((ImageView)findViewById(2131369922));
-    this.mLikeNum = ((TextView)findViewById(2131369927));
-    this.mCommentIcon = ((ImageView)findViewById(2131364850));
-    this.mCommentNum = ((TextView)findViewById(2131364874));
-    this.mShareContainer = ((LinearLayout)findViewById(2131377270));
-    this.mShareQQView = ((RelativeLayout)findViewById(2131374317));
-    this.mShareQzoneView = ((RelativeLayout)findViewById(2131375822));
-    this.mQqshareIcon = ((ImageView)findViewById(2131374318));
-    this.mQzoneshareIcon = ((ImageView)findViewById(2131375823));
-    this.mQqshareText = ((TextView)findViewById(2131374319));
-    this.mQzoneshareText = ((TextView)findViewById(2131375824));
+    this.mDesc1 = ((TextView)findViewById(2131365514));
+    this.mDesc2 = ((TextView)findViewById(2131365515));
+    this.mDesc3 = ((TextView)findViewById(2131365516));
+    this.mDesc4 = ((TextView)findViewById(2131365517));
+    this.mDesc5 = ((TextView)findViewById(2131365518));
+    this.mDesc6 = ((TextView)findViewById(2131365519));
+    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363170));
+    this.mLikeCommentContainer = ((LinearLayout)findViewById(2131370088));
+    this.mLikeContainer = ((RelativeLayout)findViewById(2131370089));
+    this.mCommentContainer = ((RelativeLayout)findViewById(2131364921));
+    this.mLikeIcon = ((ImageView)findViewById(2131370092));
+    this.mLikeNum = ((TextView)findViewById(2131370097));
+    this.mCommentIcon = ((ImageView)findViewById(2131364937));
+    this.mCommentNum = ((TextView)findViewById(2131364962));
+    this.mShareContainer = ((LinearLayout)findViewById(2131377543));
+    this.mShareQQView = ((RelativeLayout)findViewById(2131374555));
+    this.mShareQzoneView = ((RelativeLayout)findViewById(2131376064));
+    this.mQqshareIcon = ((ImageView)findViewById(2131374556));
+    this.mQzoneshareIcon = ((ImageView)findViewById(2131376065));
+    this.mQqshareText = ((TextView)findViewById(2131374557));
+    this.mQzoneshareText = ((TextView)findViewById(2131376066));
     this.mLikeContainer.setOnClickListener(this.listener);
     this.mCommentContainer.setOnClickListener(this.listener);
     this.mShareQQView.setOnClickListener(this.listener);
     this.mShareQzoneView.setOnClickListener(this.listener);
-    this.mImageShadow = ((ImageView)findViewById(2131375423));
-    this.mVideoIcon = ((ImageView)findViewById(2131380589));
-    this.mQQUnionVipIcon = ((ImageView)findViewById(2131368461));
-    this.mVipYellowIcon = ((ImageView)findViewById(2131368462));
-    this.mVipLoverYellowIcon = ((ImageView)findViewById(2131368460));
+    this.mImageShadow = ((ImageView)findViewById(2131375665));
+    this.mVideoIcon = ((ImageView)findViewById(2131380934));
+    this.mQcircleDes = ((TextView)findViewById(2131374033));
+    this.mQcircleContainer = ((LinearLayout)findViewById(2131374055));
+    this.mQcircleLikeCount = ((TextView)findViewById(2131374039));
+    this.mQcirclePushCount = ((TextView)findViewById(2131374054));
+    this.mQQUnionVipIcon = ((ImageView)findViewById(2131368618));
+    this.mVipYellowIcon = ((ImageView)findViewById(2131368619));
+    this.mVipLoverYellowIcon = ((ImageView)findViewById(2131368617));
     this.mQQUnionVipIcon.setOnClickListener(this.mIconListener);
     this.mVipYellowIcon.setOnClickListener(this.mIconListener);
     this.mVipLoverYellowIcon.setOnClickListener(this.mIconListener);
@@ -191,7 +220,7 @@ public class MsgPhotoView
       this.mVipLoverYellowIcon.setImageDrawable((Drawable)localObject);
       this.mVipLoverYellowIcon.setVisibility(0);
     } while (this.mIsRepeat);
-    bkyt.a(13, 1);
+    bmkt.a(13, 1);
   }
   
   private void showPersonalVipInfo()
@@ -252,7 +281,7 @@ public class MsgPhotoView
       ((ZipAnimationDrawable)localObject).start();
       this.mQQUnionVipIcon.setImageDrawable((Drawable)localObject);
     } while (this.mIsRepeat);
-    bkyt.a(12, 1);
+    bmkt.a(12, 1);
   }
   
   private void showVipIcon(int paramInt1, int paramInt2, int paramInt3)
@@ -269,12 +298,12 @@ public class MsgPhotoView
       {
         return;
         localObject1 = new MsgPhotoView.WeakVipResourcesListener(this.mUiHandler, this.mVipLoverYellowIcon, paramInt2, this.mIsRepeat);
-        localObject2 = blca.a();
+        localObject2 = bmor.a();
         if (paramInt3 != 1) {
           break;
         }
         bool = true;
-        localObject1 = ((blca)localObject2).a(paramInt1, paramInt2, bool, false, "", 8, (VipResourcesListener)localObject1);
+        localObject1 = ((bmor)localObject2).a(paramInt1, paramInt2, bool, false, "", 8, (VipResourcesListener)localObject1);
       } while (localObject1 == null);
       Object localObject2 = this.mVipYellowIcon;
       if (paramInt2 != 2) {
@@ -288,7 +317,7 @@ public class MsgPhotoView
     if (paramInt2 == 2) {}
     for (paramInt1 = 11;; paramInt1 = 10)
     {
-      bkyt.a(paramInt1, 1);
+      bmkt.a(paramInt1, 1);
       return;
       bool = false;
       break;
@@ -338,12 +367,16 @@ public class MsgPhotoView
     if ((localObject1 != null) && (((MQMsgBody)localObject1).photolist != null)) {
       if (((MQMsgBody)localObject1).photolist.size() > 1) {
         if ((paramMQMsg.msgType != 9) || (TextUtils.isEmpty(paramMQMsg.eventTitle))) {
-          break label1555;
+          break label1736;
         }
       }
     }
-    label786:
-    label1313:
+    label407:
+    label1063:
+    label1207:
+    label1345:
+    label1730:
+    label1736:
     for (int i = ((MQMsgBody)localObject1).photolist.size();; i = 0)
     {
       Object localObject2;
@@ -360,93 +393,115 @@ public class MsgPhotoView
         this.pagerAdapter = new QzoneMsgPagerAdapter(this.mContext, (ArrayList)localObject2);
         this.viewPager.setAdapter(this.pagerAdapter);
       }
-      label297:
-      label1215:
-      label1346:
-      label1370:
       for (;;)
       {
-        int j;
         if (localObject1 != null)
         {
-          j = ((MQMsgBody)localObject1).mediaType;
-          if (j != 1) {
-            break label786;
-          }
-          if (!TextUtils.isEmpty(((MQMsgBody)localObject1).content))
+          if (paramMQMsg.msgType == 12)
           {
-            this.mDesc3.setVisibility(0);
-            this.mDesc3.setText(((MQMsgBody)localObject1).content);
-            this.mImageShadow.setVisibility(8);
-          }
-          if (j == 3) {
-            this.mVideoIcon.setVisibility(0);
-          }
-          if ((paramMQMsg.msgType != 9) || (TextUtils.isEmpty(paramMQMsg.eventTitle))) {
-            break label882;
-          }
-          this.mDesc4.setVisibility(0);
-          this.mDesc4.setText(paramMQMsg.eventTitle);
-          this.mDesc5.setVisibility(0);
-          this.mDesc5.setText("摄于" + paramMQMsg.capTime);
-          findViewById(2131375811).setVisibility(0);
-          findViewById(2131379065).setVisibility(0);
-          if (paramBoolean2)
-          {
-            ((ImageView)findViewById(2131379066)).setImageResource(2130848397);
-            ((TextView)findViewById(2131379067)).setTextColor(-7500397);
-          }
-          if (((MQMsgBody)localObject1).photolist != null)
-          {
-            this.mDesc6.setVisibility(0);
-            this.mDesc6.setText(" " + i + "张照片 ∙ 上传前仅自己可见");
+            if (!TextUtils.isEmpty(((MQMsgBody)localObject1).content))
+            {
+              this.mQcircleDes.setText(((MQMsgBody)localObject1).content);
+              this.mQcircleDes.setVisibility(0);
+            }
+            if ((paramMQMsg.msgInteractData != null) && (paramMQMsg.msgInteractData.likeCell != null))
+            {
+              this.mQcircleContainer.setVisibility(0);
+              this.mQcirclePushCount.setText(bigNumberFormatTranfer(paramMQMsg.msgInteractData.pushCount));
+              this.mQcircleLikeCount.setText(bigNumberFormatTranfer(paramMQMsg.msgInteractData.likeCell.totalLike));
+            }
+            this.mImageShadow.setVisibility(0);
+            findViewById(2131376053).setVisibility(8);
+            findViewById(2131379361).setVisibility(8);
+            this.mDesc4.setVisibility(8);
+            this.mDesc5.setVisibility(8);
+            this.mDesc6.setVisibility(8);
           }
         }
-        label494:
-        if ((localObject1 != null) && (((MQMsgBody)localObject1).vecUserAvatar != null))
+        else
         {
+          if ((localObject1 == null) || (((MQMsgBody)localObject1).vecUserAvatar == null) || (((MQMsgBody)localObject1).vecUserAvatar.size() <= 0)) {
+            break label1229;
+          }
           this.mAvatarListLayout.setVisibility(0);
           this.mAvatarListLayout.removeAllViews();
-          if (5 < ((MQMsgBody)localObject1).vecUserAvatar.size()) {}
-          for (i = 5;; i = ((MQMsgBody)localObject1).vecUserAvatar.size())
+          if (5 >= ((MQMsgBody)localObject1).vecUserAvatar.size()) {
+            break label1207;
+          }
+        }
+        for (i = 5;; i = ((MQMsgBody)localObject1).vecUserAvatar.size())
+        {
+          int j = 0;
+          while (j < i)
           {
-            j = 0;
-            while (j < i)
-            {
-              localObject2 = new UserListItemView(this.mContext, 0);
-              ((UserListItemView)localObject2).setUin((String)((MQMsgBody)localObject1).vecUserAvatar.get(j));
-              ((UserListItemView)localObject2).setTranslationX(AVATAR_GAP * j);
-              this.mAvatarListLayout.addView((View)localObject2, 0);
-              j += 1;
-            }
-            ((MQMsgBody)localObject1).photolist = new ArrayList(((MQMsgBody)localObject1).photolist.subList(0, 9));
+            localObject2 = new UserListItemView(this.mContext, 0, false);
+            ((UserListItemView)localObject2).setUin((String)((MQMsgBody)localObject1).vecUserAvatar.get(j));
+            ((UserListItemView)localObject2).setTranslationX(AVATAR_GAP * j);
+            this.mAvatarListLayout.addView((View)localObject2, 0);
+            j += 1;
+          }
+          ((MQMsgBody)localObject1).photolist = new ArrayList(((MQMsgBody)localObject1).photolist.subList(0, 9));
+          break;
+          if (((MQMsgBody)localObject1).photolist.size() != 1) {
+            break label1730;
+          }
+          localObject2 = (MQPhotoCell)((MQMsgBody)localObject1).photolist.get(0);
+          if ((localObject2 == null) || (TextUtils.isEmpty(((MQPhotoCell)localObject2).coverUrl))) {
+            break label1730;
+          }
+          this.mBackgroundImage.setVisibility(0);
+          switch (((MQPhotoCell)localObject2).type)
+          {
+          default: 
+            localObject2 = getUrlDrawable(((MQPhotoCell)localObject2).coverUrl);
+            this.mBackgroundImage.setImageDrawable((Drawable)localObject2);
+            i = 0;
             break;
-            if (((MQMsgBody)localObject1).photolist.size() != 1) {
-              break label1549;
-            }
-            localObject2 = (MQPhotoCell)((MQMsgBody)localObject1).photolist.get(0);
-            if ((localObject2 == null) || (TextUtils.isEmpty(((MQPhotoCell)localObject2).coverUrl))) {
-              break label1549;
-            }
-            this.mBackgroundImage.setVisibility(0);
-            switch (((MQPhotoCell)localObject2).type)
+          case 2: 
+            URLDrawable localURLDrawable = getApngDrawable();
+            if (localURLDrawable != null)
             {
-            default: 
-              localObject2 = getUrlDrawable(((MQPhotoCell)localObject2).coverUrl);
-              this.mBackgroundImage.setImageDrawable((Drawable)localObject2);
+              this.mBackgroundImage.setImageDrawable(localURLDrawable);
               i = 0;
               break;
-            case 2: 
-              URLDrawable localURLDrawable = getApngDrawable();
-              if (localURLDrawable != null)
+            }
+            localObject2 = getUrlDrawable(((MQPhotoCell)localObject2).coverUrl);
+            this.mBackgroundImage.setImageDrawable((Drawable)localObject2);
+            i = 0;
+            break;
+            j = ((MQMsgBody)localObject1).mediaType;
+            if (j == 1) {
+              if (!TextUtils.isEmpty(((MQMsgBody)localObject1).content))
               {
-                this.mBackgroundImage.setImageDrawable(localURLDrawable);
-                i = 0;
+                this.mDesc3.setVisibility(0);
+                this.mDesc3.setText(((MQMsgBody)localObject1).content);
+                this.mImageShadow.setVisibility(8);
+              }
+            }
+            for (;;)
+            {
+              if (j == 3) {
+                this.mVideoIcon.setVisibility(0);
+              }
+              if ((paramMQMsg.msgType != 9) || (TextUtils.isEmpty(paramMQMsg.eventTitle))) {
+                break label1063;
+              }
+              this.mDesc4.setVisibility(0);
+              this.mDesc4.setText(paramMQMsg.eventTitle);
+              this.mDesc5.setVisibility(0);
+              this.mDesc5.setText("摄于" + paramMQMsg.capTime);
+              findViewById(2131376053).setVisibility(0);
+              findViewById(2131379361).setVisibility(0);
+              if (paramBoolean2)
+              {
+                ((ImageView)findViewById(2131379362)).setImageResource(2130848488);
+                ((TextView)findViewById(2131379363)).setTextColor(-7500397);
+              }
+              if (((MQMsgBody)localObject1).photolist == null) {
                 break;
               }
-              localObject2 = getUrlDrawable(((MQPhotoCell)localObject2).coverUrl);
-              this.mBackgroundImage.setImageDrawable((Drawable)localObject2);
-              i = 0;
+              this.mDesc6.setVisibility(0);
+              this.mDesc6.setText(" " + i + "张照片 ∙ 上传前仅自己可见");
               break;
               if (!TextUtils.isEmpty(((MQMsgBody)localObject1).title))
               {
@@ -458,113 +513,110 @@ public class MsgPhotoView
                 this.mDesc1.setVisibility(0);
                 this.mDesc1.setText(((MQMsgBody)localObject1).content);
               }
-              if ((!TextUtils.isEmpty(((MQMsgBody)localObject1).title)) || (!TextUtils.isEmpty(((MQMsgBody)localObject1).content))) {
-                break label297;
+              if ((TextUtils.isEmpty(((MQMsgBody)localObject1).title)) && (TextUtils.isEmpty(((MQMsgBody)localObject1).content))) {
+                this.mImageShadow.setVisibility(8);
               }
-              this.mImageShadow.setVisibility(8);
-              break label297;
-              label882:
-              if (paramMQMsg.msgType == 11)
-              {
-                if (!TextUtils.isEmpty(paramMQMsg.msgBody.coverPicUrl))
-                {
-                  localObject2 = (ImageView)findViewById(2131375811);
-                  ((ImageView)localObject2).setVisibility(0);
-                  ((ImageView)localObject2).setImageDrawable(getUrlDrawable(paramMQMsg.msgBody.coverPicUrl));
-                }
-                this.mDesc1.setVisibility(8);
-                this.mDesc6.setVisibility(0);
-                this.mDesc6.setText(paramMQMsg.msgBody.content);
-                break label494;
-              }
-              findViewById(2131375811).setVisibility(8);
-              findViewById(2131379065).setVisibility(8);
-              this.mDesc4.setVisibility(8);
-              this.mDesc5.setVisibility(8);
-              this.mDesc6.setVisibility(8);
-              break label494;
             }
-          }
-          this.mImageShadow.setVisibility(8);
-        }
-        else
-        {
-          if (paramMQMsg.msgInteractData != null)
-          {
-            if ((paramMQMsg.msgInteractData.type == 1) && (paramMQMsg.msgInteractData.likeCell != null))
+            if (paramMQMsg.msgType == 11)
             {
-              this.mLikeCommentContainer.setVisibility(0);
-              if (!paramMQMsg.msgInteractData.likeCell.liked) {
-                break label1313;
-              }
-              this.mLikeIcon.setImageResource(2130848385);
-              if (paramMQMsg.msgInteractData.likeCell.totalLike <= 0) {
-                break label1346;
-              }
-              this.mLikeNum.setText(paramMQMsg.msgInteractData.likeCell.totalLike + "");
-              this.mLikeNum.setVisibility(0);
-              if (paramMQMsg.msgInteractData.totalComment <= 0) {
-                break label1370;
-              }
-              this.mCommentNum.setText(paramMQMsg.msgInteractData.totalComment + "");
-              this.mCommentNum.setVisibility(0);
-              if (paramBoolean2)
+              if (!TextUtils.isEmpty(paramMQMsg.msgBody.coverPicUrl))
               {
-                this.mLikeNum.setTextColor(-7500397);
-                this.mCommentNum.setTextColor(-7500397);
-                this.mCommentIcon.setImageResource(2130848380);
+                localObject2 = (ImageView)findViewById(2131376053);
+                ((ImageView)localObject2).setVisibility(0);
+                ((ImageView)localObject2).setImageDrawable(getUrlDrawable(paramMQMsg.msgBody.coverPicUrl));
               }
+              this.mDesc1.setVisibility(8);
+              this.mDesc6.setVisibility(0);
+              this.mDesc6.setText(paramMQMsg.msgBody.content);
+              break label407;
             }
-            if (paramMQMsg.msgInteractData.type != 2) {
-              break label1394;
+            findViewById(2131376053).setVisibility(8);
+            findViewById(2131379361).setVisibility(8);
+            this.mDesc4.setVisibility(8);
+            this.mDesc5.setVisibility(8);
+            this.mDesc6.setVisibility(8);
+            break label407;
+          }
+        }
+        this.mImageShadow.setVisibility(8);
+        label1229:
+        if (paramMQMsg.msgInteractData != null)
+        {
+          if ((paramMQMsg.msgInteractData.type == 1) && (paramMQMsg.msgInteractData.likeCell != null))
+          {
+            this.mLikeCommentContainer.setVisibility(0);
+            if (!paramMQMsg.msgInteractData.likeCell.liked) {
+              break label1494;
             }
-            this.mShareContainer.setVisibility(0);
+            this.mLikeIcon.setImageResource(2130848476);
+            if (paramMQMsg.msgInteractData.likeCell.totalLike <= 0) {
+              break label1527;
+            }
+            this.mLikeNum.setText(paramMQMsg.msgInteractData.likeCell.totalLike + "");
+            this.mLikeNum.setVisibility(0);
+            if (paramMQMsg.msgInteractData.totalComment <= 0) {
+              break label1551;
+            }
+            this.mCommentNum.setText(paramMQMsg.msgInteractData.totalComment + "");
+            this.mCommentNum.setVisibility(0);
+            label1396:
             if (paramBoolean2)
             {
-              this.mQqshareIcon.setImageResource(2130848391);
-              this.mQzoneshareIcon.setImageResource(2130848394);
-              this.mQqshareText.setTextColor(-7500397);
-              this.mQzoneshareText.setTextColor(-7500397);
+              this.mLikeNum.setTextColor(-7500397);
+              this.mCommentNum.setTextColor(-7500397);
+              this.mCommentIcon.setImageResource(2130848471);
             }
           }
-          label1394:
-          while ((paramMQMsg.msgInteractData.type != 3) || (paramMQMsg.msgInteractData.buttonInfos == null) || (paramMQMsg.msgInteractData.buttonInfos.size() <= 0))
-          {
-            showPersonalVipInfo();
-            return;
-            localObject1 = this.mLikeIcon;
-            if (paramBoolean2) {}
-            for (i = 2130848388;; i = 2130848387)
-            {
-              ((ImageView)localObject1).setImageResource(i);
-              break;
-            }
-            this.mLikeNum.setText(amtj.a(2131706075));
-            this.mLikeNum.setVisibility(0);
-            break label1164;
-            this.mCommentNum.setText(amtj.a(2131706076));
-            this.mCommentNum.setVisibility(0);
-            break label1215;
+          if (paramMQMsg.msgInteractData.type != 2) {
+            break label1575;
           }
-          localObject1 = (MQButtonCell)paramMQMsg.msgInteractData.buttonInfos.get(0);
-          findViewById(2131379065).setVisibility(0);
-          paramMQMsg = (TextView)findViewById(2131379067);
-          paramMQMsg.setText(((MQButtonCell)localObject1).words);
-          paramMQMsg.setTypeface(Typeface.DEFAULT_BOLD);
-          localObject1 = getUrlDrawable(((MQButtonCell)localObject1).iconUrl);
+          this.mShareContainer.setVisibility(0);
           if (paramBoolean2)
           {
-            paramMQMsg.setTextColor(-7500397);
-            ((URLDrawable)localObject1).setColorFilter(-7500397, PorterDuff.Mode.SRC_ATOP);
+            this.mQqshareIcon.setImageResource(2130848482);
+            this.mQzoneshareIcon.setImageResource(2130848485);
+            this.mQqshareText.setTextColor(-7500397);
+            this.mQzoneshareText.setTextColor(-7500397);
           }
-          for (;;)
-          {
-            ((ImageView)findViewById(2131379066)).setImageDrawable((Drawable)localObject1);
-            break;
-            ((URLDrawable)localObject1).setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
-          }
-          i = 0;
         }
+        label1494:
+        label1527:
+        while ((paramMQMsg.msgInteractData.type != 3) || (paramMQMsg.msgInteractData.buttonInfos == null) || (paramMQMsg.msgInteractData.buttonInfos.size() <= 0))
+        {
+          showPersonalVipInfo();
+          return;
+          localObject1 = this.mLikeIcon;
+          if (paramBoolean2) {}
+          for (i = 2130848479;; i = 2130848478)
+          {
+            ((ImageView)localObject1).setImageResource(i);
+            break;
+          }
+          this.mLikeNum.setText(anvx.a(2131706427));
+          this.mLikeNum.setVisibility(0);
+          break label1345;
+          this.mCommentNum.setText(anvx.a(2131706428));
+          this.mCommentNum.setVisibility(0);
+          break label1396;
+        }
+        localObject1 = (MQButtonCell)paramMQMsg.msgInteractData.buttonInfos.get(0);
+        findViewById(2131379361).setVisibility(0);
+        paramMQMsg = (TextView)findViewById(2131379363);
+        paramMQMsg.setText(((MQButtonCell)localObject1).words);
+        paramMQMsg.setTypeface(Typeface.DEFAULT_BOLD);
+        localObject1 = getUrlDrawable(((MQButtonCell)localObject1).iconUrl);
+        if (paramBoolean2)
+        {
+          paramMQMsg.setTextColor(-7500397);
+          ((URLDrawable)localObject1).setColorFilter(-7500397, PorterDuff.Mode.SRC_ATOP);
+        }
+        for (;;)
+        {
+          ((ImageView)findViewById(2131379362)).setImageDrawable((Drawable)localObject1);
+          break;
+          ((URLDrawable)localObject1).setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+        }
+        i = 0;
       }
     }
   }

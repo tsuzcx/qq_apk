@@ -2,7 +2,11 @@ package com.tencent.qqlive.module.videoreport.dtreport.constants;
 
 public class DTParamKey
 {
-  static final String DT_PRE_FIX = "dt_";
+  public static final String CUR_PAGE_PATH = "dt_pg_path";
+  public static final String DT_PRE_FIX = "dt_";
+  public static final String ELEMENT_PATH = "dt_element_path";
+  public static final String REF_PAGE_CONTENT_ID = "dt_refpg_contentid";
+  public static final String REF_PAGE_PATH = "dt_refpg_path";
   public static final String REPORT_KEY_ACTIVITY_BLACKLIST = "dt_activity_blacklist";
   public static final String REPORT_KEY_ACT_INFO = "dt_active_info";
   public static final String REPORT_KEY_ACT_NAME = "dt_activity_name";
@@ -31,6 +35,7 @@ public class DTParamKey
   public static final String REPORT_KEY_ELE_IMP_AREA = "dt_ele_imp_area";
   public static final String REPORT_KEY_ELE_IMP_RATE = "dt_ele_imp_rate";
   public static final String REPORT_KEY_INTERACTIVE_FLAG = "dt_is_interactive_flag";
+  public static final String REPORT_KEY_IS_PAGE_RETURN = "dt_pg_isreturn";
   public static final String REPORT_KEY_LVTM = "dt_lvtm";
   public static final String REPORT_KEY_PG_AREA = "dt_pg_area";
   public static final String REPORT_KEY_PG_ID = "dt_pgid";
@@ -38,10 +43,20 @@ public class DTParamKey
   public static final String REPORT_KEY_PG_IMP_RATE = "dt_pg_imp_rate";
   public static final String REPORT_KEY_PG_STP = "dt_pgstp";
   public static final String REPORT_KEY_PLAY_TYPE = "dt_play_type";
+  public static final String REPORT_KEY_PROTO_VERSION = "dt_protoversion";
   public static final String REPORT_KEY_REF_PAGE_ID = "dt_ref_pgid";
   public static final String REPORT_KEY_SYS_ELAPSED_REALTIME = "dt_sys_elapsed_realtime";
   public static final String REPORT_KEY_USID = "dt_usid";
   public static final String REPORT_KEY_US_STMP = "dt_usstmp";
+  public static final String REPORT_KEY_VIDEO_CONTENTID = "dt_video_contentid";
+  public static final String REPORT_KEY_VIDEO_CONTENT_TYPE = "dt_content_type";
+  public static final String REPORT_KEY_VIDEO_END_REASON = "dt_end_reason";
+  public static final String REPORT_KEY_VIDEO_END_TIME = "dt_play_end_state_time";
+  public static final String REPORT_KEY_VIDEO_LENGTH = "dt_video_length";
+  public static final String REPORT_KEY_VIDEO_PLAY_DURATION = "dt_play_duration";
+  public static final String REPORT_KEY_VIDEO_START_REASON = "dt_start_reason";
+  public static final String REPORT_KEY_VIDEO_START_TIME = "dt_play_start_state_time";
+  public static final String REPORT_KEY_VIDEO_START_TYPE = "dt_start_type";
   public static final String REPORT_KEY_WHITE_LVTM = "dt_white_lvtm";
   public static final String USER_DEFINE_KEY_VALUE = "udf_kv";
 }

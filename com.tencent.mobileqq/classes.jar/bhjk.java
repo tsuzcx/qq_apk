@@ -1,25 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bhjk
-  implements View.OnClickListener
+public abstract interface bhjk
 {
-  public bhjk(TabBarView paramTabBarView, int paramInt) {}
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
-    }
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
 }
 
 

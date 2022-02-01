@@ -1,52 +1,38 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import java.util.List;
 
 public class awnl
-  extends TransProcessorHandler
+  implements TencentMap.OnMapLoadedCallback
 {
-  public awnl(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public awnl(FloatMapWidget paramFloatMapWidget) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onMapLoaded()
   {
-    if (paramMessage == null) {
-      return;
+    Object localObject = FloatMapWidget.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((awir)localObject).a() });
     }
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    if (((awir)localObject).a() != null)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      if (localFileMsg.fileSize <= 0L) {
-        break;
+      localObject = FloatMapWidget.b(this.a).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
       }
+      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
+        break label136;
+      }
+      this.a.a(false, null);
     }
-    for (int i = (int)(localFileMsg.transferedSize * 100L / localFileMsg.fileSize); QLog.isColorLevel(); i = 0)
+    for (;;)
     {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
+      FloatMapWidget.a(this.a, true);
+      FloatMapWidget.a(this.a);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
-      }
-      i = NearbyPeoplePhotoUploadProcessor.mPhotoId;
-      if (i >= 0) {
-        this.a.a.set(0, Integer.valueOf(i));
-      }
-      this.a.a(this.a.a);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
-      }
-      this.a.l();
-      this.a.c(amtj.a(2131706306));
-      this.a.a(true, null);
-      return;
+      label136:
+      this.a.b();
     }
   }
 }

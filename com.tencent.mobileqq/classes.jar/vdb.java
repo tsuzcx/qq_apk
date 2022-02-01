@@ -1,17 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import UserGrowth.stSimpleMetaPerson;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.biz.common.util.NetworkUtil;
 
 class vdb
-  implements View.OnTouchListener
+  implements bkzq
 {
-  vdb(vcz paramvcz) {}
+  vdb(vcu paramvcu, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    vcz.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    if (!NetworkUtil.isNetworkAvailable(vcu.c(this.jdField_a_of_type_Vcu)))
+    {
+      bjkv.a().a(2131720145);
+      return;
+    }
+    vcu.a(this.jdField_a_of_type_Vcu).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
+    vcu.a(this.jdField_a_of_type_Vcu).setVisibility(0);
+    vcu.b(this.jdField_a_of_type_Vcu).setVisibility(4);
   }
 }
 

@@ -1,95 +1,44 @@
-import android.text.TextUtils;
-import android.util.Base64;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.Key;
-import java.security.interfaces.RSAKey;
+import eipc.EIPCResult;
+import org.json.JSONObject;
 
-class anko
+final class anko
+  implements anks
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Key jdField_a_of_type_JavaSecurityKey;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
+  anko(int paramInt) {}
   
-  public static anko a(String paramString)
+  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("JsonWebSignature", 1, "token is null");
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
     }
-    String[] arrayOfString = paramString.split("\\.");
-    if (arrayOfString.length != 3)
-    {
-      QLog.e("JsonWebSignature", 1, new Object[] { "jwt token illegal, length is ", Integer.valueOf(arrayOfString.length) });
-      return null;
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
     }
-    anko localanko = new anko();
-    localanko.jdField_a_of_type_JavaLangString = paramString;
-    localanko.b = arrayOfString[0];
-    localanko.c = new String(Base64.decode(arrayOfString[0], 11));
-    localanko.d = arrayOfString[1];
-    localanko.e = new String(Base64.decode(arrayOfString[1], 11));
-    localanko.f = arrayOfString[2];
-    return localanko;
-  }
-  
-  public static String a(String... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramVarArgs.length)
-    {
-      if (paramVarArgs[i] == null) {}
-      for (String str = "";; str = paramVarArgs[i])
-      {
-        localStringBuilder.append(str);
-        if (i != paramVarArgs.length - 1) {
-          localStringBuilder.append(".");
-        }
-        i += 1;
-        break;
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private byte[] a()
-  {
-    Object localObject = a(new String[] { this.b, this.d });
     try
     {
-      localObject = ((String)localObject).getBytes("US-ASCII");
-      return localObject;
+      paramQQAppInterface = ankm.a(paramInt2, paramArrayOfInt);
+      if (paramQQAppInterface == null)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
+      }
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.e;
-  }
-  
-  public void a(Key paramKey)
-  {
-    this.jdField_a_of_type_JavaSecurityKey = paramKey;
-  }
-  
-  public boolean a()
-  {
-    ankr localankr = new ankr();
-    if (((this.jdField_a_of_type_JavaSecurityKey instanceof RSAKey)) && (((RSAKey)this.jdField_a_of_type_JavaSecurityKey).getModulus().bitLength() < 2048)) {
-      return false;
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
     }
-    byte[] arrayOfByte1 = Base64.decode(this.f, 11);
-    byte[] arrayOfByte2 = a();
-    return localankr.a(arrayOfByte1, this.jdField_a_of_type_JavaSecurityKey, arrayOfByte2);
+    if (this.a == 1000) {
+      paramQQAppInterface.put("uin", paramString1);
+    }
+    paramQQAppInterface.put("openId", paramString2);
+    paramString1 = new Bundle();
+    paramString1.putString("resData", paramQQAppInterface.toString());
+    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
+    amwf.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

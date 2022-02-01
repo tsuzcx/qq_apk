@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwp;
-import amtj;
+import acmw;
 import android.content.Context;
 import android.text.TextUtils;
-import apsk;
-import bfwr;
+import anvx;
+import aqvn;
+import bhfj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
@@ -47,8 +47,8 @@ public class RecentItemConfessMsg
             localObject1 = this.mMsg.msg2;
           }
         }
-        ((MsgSummary)localObject2).strContent = String.format(amtj.a(2131712284), new Object[] { localObject1, this.mMsg.msg });
-        this.mTitleName = amtj.a(2131712278);
+        ((MsgSummary)localObject2).strContent = String.format(anvx.a(2131712631), new Object[] { localObject1, this.mMsg.msg });
+        this.mTitleName = anvx.a(2131712625);
         this.mDisplayTime = this.mMsg.time;
         this.mUnreadNum = this.mMsg.longMsgCount;
         this.mUnreadFlag = 3;
@@ -75,7 +75,7 @@ public class RecentItemConfessMsg
       this.mDisplayTime = this.msg.time;
       this.mMenuFlag = 1;
       this.mStatus = 0;
-      bfwr.a(paramContext, paramQQAppInterface, this.msg, this.msg.istroop, localMsgSummary, (String)localObject1, false, false);
+      bhfj.a(paramContext, paramQQAppInterface, this.msg, this.msg.istroop, localMsgSummary, (String)localObject1, false, false);
       localMsgSummary.bShowDraft = false;
       extraUpdate(paramQQAppInterface, paramContext, localMsgSummary);
       makeContentDesc();
@@ -85,7 +85,7 @@ public class RecentItemConfessMsg
       {
         localObject1 = localObject2;
         if (((String)localObject2).length() > 7) {
-          localObject1 = apsk.a((String)localObject2, 7.0F);
+          localObject1 = aqvn.a((String)localObject2, 7.0F);
         }
       }
       this.mTitleName = String.format(Locale.getDefault(), "%s—%s", new Object[] { localObject1, this.mConfessInfo.topic });
@@ -100,7 +100,7 @@ public class RecentItemConfessMsg
           str = paramQQAppInterface.getCurrentNickname();
           localObject1 = str;
           if (str.length() > 7) {
-            localObject1 = apsk.a(str, 7.0F);
+            localObject1 = aqvn.a(str, 7.0F);
           }
         }
       }

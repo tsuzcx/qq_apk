@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public final class rhq
-  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
+public class rhq
+  extends CharacterStyle
 {
-  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
-  {
-    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
-  }
+  public rhq(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
   
-  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.a.getResources()));
   }
 }
 

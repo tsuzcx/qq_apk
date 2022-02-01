@@ -1,46 +1,32 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public abstract interface rsn
+public class rsn
 {
-  public abstract void a();
+  private static rpj a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+      return new rox(paramBaseArticleInfo);
+    }
+    return new rsk(paramBaseArticleInfo);
+  }
   
-  public abstract void a(float paramFloat);
+  public static rpj a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (a(paramBaseArticleInfo)) {
+      return a(1, paramBaseArticleInfo);
+    }
+    return a(0, paramBaseArticleInfo);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(VideoInfo paramVideoInfo);
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(VideoInfo paramVideoInfo);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
-  
-  public abstract void f(boolean paramBoolean);
-  
-  public abstract void g(boolean paramBoolean);
-  
-  public abstract void h(boolean paramBoolean);
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!ppe.q((ArticleInfo)paramBaseArticleInfo));
+  }
 }
 
 

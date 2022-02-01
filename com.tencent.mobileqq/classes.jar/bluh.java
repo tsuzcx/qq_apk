@@ -1,76 +1,10 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.view.OrientationListener;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-
-public abstract class bluh
+public abstract interface bluh
 {
-  private static final boolean DEBUG = false;
-  public static final int ORIENTATION_UNKNOWN = -1;
-  private static final String TAG = "MOEL";
-  private static final boolean localLOGV = false;
-  private boolean mEnabled;
-  private OrientationListener mOldListener;
-  private int mOrientation = -1;
-  private int mRate;
-  private Sensor mSensor;
-  private SensorEventListener mSensorEventListener;
-  private SensorManager mSensorManager;
+  public abstract void onFail(int paramInt, String paramString);
   
-  public bluh(Context paramContext)
-  {
-    this(paramContext, 3);
-  }
+  public abstract void onProgress(float paramFloat);
   
-  public bluh(Context paramContext, int paramInt)
-  {
-    this.mSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-    this.mRate = paramInt;
-    this.mSensor = this.mSensorManager.getDefaultSensor(1);
-    if (this.mSensor != null) {
-      this.mSensorEventListener = new blui(this);
-    }
-  }
-  
-  public boolean canDetectOrientation()
-  {
-    return this.mSensor != null;
-  }
-  
-  public void disable()
-  {
-    if (this.mSensor == null) {
-      LogUtils.w("MOEL", "Cannot detect sensors. Invalid disable");
-    }
-    while (this.mEnabled != true) {
-      return;
-    }
-    this.mSensorManager.unregisterListener(this.mSensorEventListener);
-    this.mEnabled = false;
-  }
-  
-  public void enable()
-  {
-    if (this.mSensor == null) {
-      LogUtils.w("MOEL", "Cannot detect sensors. Not enabled");
-    }
-    while (this.mEnabled) {
-      return;
-    }
-    this.mSensorManager.registerListener(this.mSensorEventListener, this.mSensor, this.mRate);
-    this.mEnabled = true;
-  }
-  
-  public abstract void onOrientationChanged(int paramInt);
-  
-  public abstract void onPoseChanged(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  void registerListener(OrientationListener paramOrientationListener)
-  {
-    this.mOldListener = paramOrientationListener;
-  }
+  public abstract void onSuccess();
 }
 
 

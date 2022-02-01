@@ -1,144 +1,94 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afqv
-  implements afrc
+public final class afqv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ahps a;
-  private ahqs jdField_a_of_type_Ahqs;
-  public behu a;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-  public BaseActivity a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public afqv(TroopChatPie paramTroopChatPie)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramTroopChatPie.app;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramTroopChatPie.sessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramTroopChatPie.mActivity;
-  }
-  
-  private void b()
-  {
-    int j = 1;
-    Object localObject = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    }
-    int i;
-    TroopManager localTroopManager;
-    TroopInfo localTroopInfo;
-    if (localObject != null)
-    {
-      Boolean localBoolean = Boolean.valueOf(((Intent)localObject).getBooleanExtra("isFromContactTab", false));
-      int k = ((Intent)localObject).getIntExtra("aio_msg_source", -1);
-      i = j;
-      if (k != 0)
-      {
-        i = j;
-        if (k != 1)
-        {
-          if (!localBoolean.booleanValue()) {
-            break label236;
-          }
-          i = j;
-        }
-      }
-      if (i != 0)
-      {
-        localObject = ((Intent)localObject).getStringExtra("uin");
-        if (localObject != null)
-        {
-          localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-          localTroopInfo = localTroopManager.b((String)localObject);
-          if ((localTroopInfo != null) && (localTroopInfo.isOwnerOrAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (TroopInfo.isHomeworkTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject)) && (localTroopInfo.isNotSetTroopClassInfo()) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null))
-          {
-            i = localTroopManager.a((String)localObject);
-            if (i < 3)
-            {
-              if (!localBoolean.booleanValue()) {
-                break label241;
-              }
-              beyy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localTroopInfo.troopuin, beyy.b);
-            }
-          }
-        }
-      }
-    }
+    Object localObject1 = (ChatMessage)paramCompoundButton.getTag();
+    if (localObject1 == null) {}
+    label507:
     for (;;)
     {
-      localTroopManager.a((String)localObject, i + 1);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_edu", "", "Grp_data", "classinfo_Clk", 0, 0, localTroopInfo.troopuin, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      label236:
-      i = 0;
-      break;
-      label241:
-      beyy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localTroopInfo.troopuin, beyy.a);
-    }
-  }
-  
-  public void a()
-  {
-    TroopInfo localTroopInfo = null;
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    if (localTroopManager != null) {
-      localTroopInfo = localTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-    }
-    if (this.jdField_a_of_type_Behu == null) {
-      this.jdField_a_of_type_Behu = ((behu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(289));
-    }
-    if ((localTroopInfo != null) && (localTroopInfo.isOwnerOrAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (TroopInfo.isHomeworkTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)) && (localTroopInfo.isNotSetTroopClassInfo())) {
-      if (this.jdField_a_of_type_Behu != null)
+      if ((localObject1 instanceof MessageForPtt))
       {
-        this.jdField_a_of_type_Behu.a = this.jdField_a_of_type_Behu.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-        if ((this.jdField_a_of_type_Behu.a instanceof beqp)) {
-          ((beqp)this.jdField_a_of_type_Behu.a).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
+        localObject2 = MediaPlayerManager.a(BaseActivity.sTopActivity.app).a();
+        if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).uniseq == ((ChatMessage)localObject1).uniseq))) {
+          MediaPlayerManager.a(BaseActivity.sTopActivity.app).c(false);
+        }
+      }
+      Object localObject2 = AIOLongShotHelper.a();
+      if ((localObject2 != null) && (((AIOLongShotHelper)localObject2).a()))
+      {
+        if ((paramBoolean != ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1)) && (BaseChatItemLayout.a != null)) {
+          BaseChatItemLayout.a.onCheckedChanged((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+        }
+      }
+      else if (paramBoolean != axio.a().a((ChatMessage)localObject1))
+      {
+        if (!paramBoolean) {
+          axio.a().a((ChatMessage)localObject1, paramBoolean);
+        }
+        for (;;)
+        {
+          if (BaseChatItemLayout.a == null) {
+            break label507;
+          }
+          BaseChatItemLayout.a.onCheckedChanged((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+          break;
+          if ((localObject1 instanceof MessageForFile))
+          {
+            localObject2 = auea.a(BaseActivity.sTopActivity.app, (MessageForFile)localObject1);
+            if ((((FileManagerEntity)localObject2).getCloudType() == 1) && (((FileManagerEntity)localObject2).status == 2))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131692485);
+              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              break;
+            }
+          }
+          if ((localObject1 instanceof MessageForTroopFile))
+          {
+            localObject2 = (MessageForTroopFile)localObject1;
+            localObject2 = bgke.a(BaseActivity.sTopActivity.app, (MessageForTroopFile)localObject2);
+            if ((localObject2 != null) && ((((bfjs)localObject2).b == 0) || (((bfjs)localObject2).b == 1) || (((bfjs)localObject2).b == 2) || (((bfjs)localObject2).b == 3) || (((bfjs)localObject2).b == 4)))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131692485);
+              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              break;
+            }
+          }
+          int i = axio.a().a();
+          if (axio.a().a((ChatMessage)localObject1, i))
+          {
+            if (axio.a().a == 7) {}
+            for (localObject1 = paramCompoundButton.getContext().getString(2131698187, new Object[] { Integer.valueOf(i) });; localObject1 = paramCompoundButton.getContext().getString(2131698186, new Object[] { Integer.valueOf(i) }))
+            {
+              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              break;
+            }
+          }
+          axio.a().a((ChatMessage)localObject1, paramBoolean);
         }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Ahps == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("HWTroopClassInfoTipsHelper", 2, "mHomeworkTroopClassInfoChangedReceiver dismissTipsBar.");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie != null) {
-        this.jdField_a_of_type_Ahqs = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a();
-      }
-    } while (this.jdField_a_of_type_Ahqs == null);
-    this.jdField_a_of_type_Ahps.a(this.jdField_a_of_type_Ahqs, false);
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return;
-    case 6: 
-      a();
-      return;
-    }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 6 };
   }
 }
 

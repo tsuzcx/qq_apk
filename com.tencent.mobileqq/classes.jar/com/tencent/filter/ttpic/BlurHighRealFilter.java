@@ -58,48 +58,48 @@ public class BlurHighRealFilter
     if (this.blurArea != null) {
       this.blurArea.addParam(new UniformParam.FloatsParam("ellipse", arrayOfFloat2));
     }
-    float[] arrayOfFloat3 = new float[3];
-    arrayOfFloat3[0] = (-0.3F);
-    arrayOfFloat3[1] = 1.0F;
-    arrayOfFloat3[2] = 0.0F;
-    arrayOfFloat1 = new float[3];
-    float[] tmp292_290 = arrayOfFloat1;
-    tmp292_290[0] = 0.3F;
-    float[] tmp297_292 = tmp292_290;
-    tmp297_292[1] = 1.0F;
-    float[] tmp301_297 = tmp297_292;
-    tmp301_297[2] = 0.0F;
-    tmp301_297;
     arrayOfFloat2 = new float[3];
-    arrayOfFloat2[0] = (arrayOfFloat3[0] * arrayOfFloat[0][0] + arrayOfFloat3[1] * arrayOfFloat[0][1] + arrayOfFloat3[2] * arrayOfFloat[0][2]);
-    arrayOfFloat2[1] = (arrayOfFloat3[0] * arrayOfFloat[1][0] + arrayOfFloat3[1] * arrayOfFloat[1][1] + arrayOfFloat3[2] * arrayOfFloat[1][2]);
-    paramFloat = arrayOfFloat3[0];
+    arrayOfFloat2[0] = (-0.3F);
+    arrayOfFloat2[1] = 1.0F;
+    arrayOfFloat2[2] = 0.0F;
+    arrayOfFloat1 = new float[3];
+    arrayOfFloat1[0] = (arrayOfFloat2[0] * arrayOfFloat[0][0] + arrayOfFloat2[1] * arrayOfFloat[0][1] + arrayOfFloat2[2] * arrayOfFloat[0][2]);
+    arrayOfFloat1[1] = (arrayOfFloat2[0] * arrayOfFloat[1][0] + arrayOfFloat2[1] * arrayOfFloat[1][1] + arrayOfFloat2[2] * arrayOfFloat[1][2]);
+    paramFloat = arrayOfFloat2[0];
     f1 = arrayOfFloat[2][0];
-    float f2 = arrayOfFloat3[1];
+    float f2 = arrayOfFloat2[1];
     float f3 = arrayOfFloat[2][1];
-    arrayOfFloat2[2] = (arrayOfFloat3[2] * arrayOfFloat[2][2] + (paramFloat * f1 + f2 * f3));
-    arrayOfFloat3 = new float[3];
-    arrayOfFloat3[0] = (arrayOfFloat1[0] * arrayOfFloat[0][0] + arrayOfFloat1[1] * arrayOfFloat[0][1] + arrayOfFloat1[2] * arrayOfFloat[0][2]);
-    arrayOfFloat3[1] = (arrayOfFloat1[0] * arrayOfFloat[1][0] + arrayOfFloat1[1] * arrayOfFloat[1][1] + arrayOfFloat1[2] * arrayOfFloat[1][2]);
-    paramFloat = arrayOfFloat1[0];
+    arrayOfFloat1[2] = (arrayOfFloat2[2] * arrayOfFloat[2][2] + (paramFloat * f1 + f2 * f3));
+    arrayOfFloat2 = new float[3];
+    float[] tmp424_422 = arrayOfFloat2;
+    tmp424_422[0] = 0.3F;
+    float[] tmp429_424 = tmp424_422;
+    tmp429_424[1] = 1.0F;
+    float[] tmp433_429 = tmp429_424;
+    tmp433_429[2] = 0.0F;
+    tmp433_429;
+    float[] arrayOfFloat3 = new float[3];
+    arrayOfFloat3[0] = (arrayOfFloat2[0] * arrayOfFloat[0][0] + arrayOfFloat2[1] * arrayOfFloat[0][1] + arrayOfFloat2[2] * arrayOfFloat[0][2]);
+    arrayOfFloat3[1] = (arrayOfFloat2[0] * arrayOfFloat[1][0] + arrayOfFloat2[1] * arrayOfFloat[1][1] + arrayOfFloat2[2] * arrayOfFloat[1][2]);
+    paramFloat = arrayOfFloat2[0];
     f1 = arrayOfFloat[2][0];
-    f2 = arrayOfFloat1[1];
+    f2 = arrayOfFloat2[1];
     f3 = arrayOfFloat[2][1];
-    arrayOfFloat3[2] = (arrayOfFloat1[2] * arrayOfFloat[2][2] + (paramFloat * f1 + f2 * f3));
-    arrayOfFloat2[2] = (-(arrayOfFloat2[0] * this.center.x + arrayOfFloat2[1] * this.center.y));
+    arrayOfFloat3[2] = (arrayOfFloat2[2] * arrayOfFloat[2][2] + (paramFloat * f1 + f2 * f3));
+    arrayOfFloat1[2] = (-(arrayOfFloat1[0] * this.center.x + arrayOfFloat1[1] * this.center.y));
     arrayOfFloat3[2] = (-(arrayOfFloat3[0] * this.center.x + arrayOfFloat3[1] * this.center.y));
     if (this.circle)
     {
-      arrayOfFloat2[0] = 0.0F;
-      arrayOfFloat2[1] = 0.0F;
-      arrayOfFloat2[2] = -0.15F;
+      arrayOfFloat1[0] = 0.0F;
+      arrayOfFloat1[1] = 0.0F;
+      arrayOfFloat1[2] = -0.15F;
       arrayOfFloat3[0] = 0.0F;
       arrayOfFloat3[1] = 0.0F;
       arrayOfFloat3[2] = -0.15F;
     }
     if (this.blurArea != null)
     {
-      this.blurArea.addParam(new UniformParam.FloatsParam("line1", arrayOfFloat2));
+      this.blurArea.addParam(new UniformParam.FloatsParam("line1", arrayOfFloat1));
       this.blurArea.addParam(new UniformParam.FloatsParam("line2", arrayOfFloat3));
     }
     paramFloat = this.center.x;

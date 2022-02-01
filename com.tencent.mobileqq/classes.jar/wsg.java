@@ -1,71 +1,77 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashSet;
+import java.util.Set;
 
 public class wsg
-  implements wui
+  implements wfk<wuk, wvt>
 {
-  public wsg(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  public Set<String> a = new HashSet();
   
-  public void a(int paramInt)
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, long paramLong)
   {
-    xvv.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
-    int i = this.a.b;
-    this.a.b = paramInt;
-    Object localObject = this.a.a();
-    if (localObject != null)
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    wuk localwuk = new wuk();
+    localwuk.jdField_b_of_type_JavaLangString = paramString1;
+    localwuk.jdField_c_of_type_JavaLangString = paramString2;
+    localwuk.jdField_a_of_type_Boolean = paramBoolean;
+    localwuk.jdField_c_of_type_Int = paramInt;
+    localwuk.jdField_b_of_type_Long = paramLong;
+    wfi.a().a(localwuk, this);
+  }
+  
+  public void a(@NonNull wuk paramwuk, @Nullable wvt paramwvt, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wsh localwsh = new wsh();
+    localwsh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localwsh.jdField_a_of_type_JavaLangString = paramwuk.jdField_b_of_type_JavaLangString;
+    if (zcl.a(localwsh.jdField_a_of_type_JavaLangString)) {
+      paramwuk.jdField_c_of_type_JavaLangString = "4_10000";
+    }
+    localwsh.jdField_b_of_type_JavaLangString = paramwuk.jdField_c_of_type_JavaLangString;
+    localwsh.jdField_a_of_type_Boolean = paramwuk.jdField_a_of_type_Boolean;
+    wjp localwjp = (wjp)wjs.a(5);
+    if ((paramwuk.jdField_c_of_type_Int == 3) || (paramwuk.jdField_c_of_type_Int == 4) || (paramwuk.jdField_c_of_type_Int == 31) || (paramwuk.jdField_c_of_type_Int == 62))
     {
-      localObject = (wst)((wsr)localObject).a(wst.class);
-      if ((localObject != null) && (((wst)localObject).b.getVisibility() != 0)) {
-        this.a.a(true, true);
+      localwsh.jdField_a_of_type_Int = localwjp.a("Q.qqstory.player.WatchVideoHandler", paramwuk.jdField_c_of_type_JavaLangString, paramwuk.jdField_b_of_type_JavaLangString);
+      StoryItem localStoryItem = localwjp.a(paramwuk.jdField_c_of_type_JavaLangString, 1);
+      if (localStoryItem != null)
+      {
+        if (localStoryItem.unReadCount == 0) {
+          break label281;
+        }
+        localStoryItem.unReadCount = localwsh.jdField_a_of_type_Int;
+        localwjp.a(paramwuk.jdField_c_of_type_JavaLangString, 1, localStoryItem);
+        ykq.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramwuk.jdField_b_of_type_JavaLangString, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
       }
+      label210:
+      if ((paramwvt == null) || (!paramErrorMessage.isSuccess())) {
+        break label294;
+      }
+      this.a.add(paramwuk.jdField_b_of_type_JavaLangString);
+      wad.a().dispatch(localwsh);
     }
-    localObject = (wrg)this.a.b(wrg.class);
-    if (localObject != null) {
-      ((wrg)localObject).a().a(paramInt);
-    }
-    c(paramInt);
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
-    }
-    wrg localwrg = (wrg)this.a.b(wrg.class);
-    if (localwrg != null) {
-      localwrg.a().a(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
+    label281:
+    label294:
+    do
     {
-      ((wrg)this.a.b(wrg.class)).d();
-      xvv.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
-    }
-    wrg localwrg = (wrg)this.a.b(wrg.class);
-    if (localwrg != null) {
-      localwrg.a().b(paramInt);
-    }
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    xvv.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
-    wsr localwsr = this.a.a();
-    if ((localwsr != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Wod.jdField_a_of_type_JavaLangString)) && (!localwsr.c()))
-    {
-      xvv.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localwsr);
-      this.a.a(localwsr);
-    }
+      return;
+      localwsh.jdField_a_of_type_Int = localwjp.a(paramwuk.jdField_c_of_type_JavaLangString);
+      ykq.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramwuk.jdField_b_of_type_JavaLangString, Integer.valueOf(paramwuk.jdField_c_of_type_Int));
+      break;
+      localwjp.a(paramwuk.jdField_c_of_type_JavaLangString, 1);
+      break label210;
+      wad.a().dispatch(localwsh);
+      paramwvt = localwjp.a(paramwuk.jdField_b_of_type_JavaLangString);
+    } while (paramwvt == null);
+    ((wji)wjs.a(13)).a(paramwuk.jdField_b_of_type_JavaLangString, paramwuk.jdField_c_of_type_JavaLangString, paramwuk.jdField_a_of_type_Boolean, paramwvt.mCreateTime, paramwuk.jdField_c_of_type_Int, paramwuk.d, true);
   }
 }
 

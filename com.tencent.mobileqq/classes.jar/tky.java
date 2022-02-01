@@ -1,34 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DebugBridgeInvokeHandler.register.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DebugBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tky
-  extends tks
+class tky
+  extends pvq
 {
-  public static final tkz a = new tkz(null);
+  tky(tkx paramtkx) {}
   
-  public tky(@NotNull BridgeModule paramBridgeModule)
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    super(paramBridgeModule);
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "debug";
-  }
-  
-  public void a()
-  {
-    a("detailLog", (Function2)new DebugBridgeInvokeHandler.register.1(this));
+    if (paramBoolean) {
+      tkx.a(this.a, tkx.a(this.a, paramList));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tky
  * JD-Core Version:    0.7.0.1
  */

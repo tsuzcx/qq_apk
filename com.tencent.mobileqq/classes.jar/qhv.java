@@ -1,14 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
-public class qhv
-  implements ViewBase.IBuilder
+public abstract interface qhv
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new qhs(paramVafContext);
-  }
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
 }
 
 

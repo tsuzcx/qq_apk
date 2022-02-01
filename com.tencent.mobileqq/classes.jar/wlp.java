@@ -1,18 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class wlp
-  extends xqa
+public abstract class wlp
+  extends SosoInterface.OnLocationListener
 {
-  public wlp(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public wlp(String paramString)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    super(0, true, false, 300000L, false, false, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      paramView = (QQUserUIItem)paramObject;
-      vpl.a(this.a.a, 10, paramView.uid);
+      wll.a = new wlk((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+      ykq.b("LbsManager", "onLocationFinish success : " + wll.a);
     }
   }
 }

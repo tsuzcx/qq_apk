@@ -1,32 +1,38 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aflx
-  implements afma
+  implements View.OnClickListener
 {
-  public aflx(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
+  public aflx(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void a(int paramInt, afml paramafml)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    ActivateFriendGridItem localActivateFriendGridItem = (ActivateFriendGridItem)paramView;
+    if (localActivateFriendGridItem.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilMap.notifyAll();
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramafml);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      ActivateFriendGrid.a(this.a);
+      if (localActivateFriendGridItem.jdField_a_of_type_Boolean) {
+        break label108;
       }
+    }
+    label108:
+    for (boolean bool = true;; bool = false)
+    {
+      localActivateFriendGridItem.setChecked(bool);
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+      }
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(localActivateFriendGridItem.jdField_a_of_type_Int);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramafml = finally;
-      throw paramafml;
+      ActivateFriendGrid.b(this.a);
+      break;
     }
   }
 }

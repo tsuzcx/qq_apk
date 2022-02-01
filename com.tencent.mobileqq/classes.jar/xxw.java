@@ -1,23 +1,29 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xxw
-  implements ydu
+public class xxw
+  extends QQUIEventReceiver<xxi, wkc>
 {
-  xxw(xxs paramxxs) {}
-  
-  public void a(int paramInt, List<vwc> paramList)
+  public xxw(@NonNull xxi paramxxi)
   {
-    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
+    super(paramxxi);
+  }
+  
+  public void a(@NonNull xxi paramxxi, @NonNull wkc paramwkc)
+  {
+    if (xxi.a(paramxxi) == null)
+    {
+      ykq.b(this.TAG, "ignore this troop nick name change event. %s.", paramwkc.toString());
+      return;
     }
-    vli.a().dispatch(new yds(paramInt, (List)localObject));
+    ykq.a(this.TAG, "receive troop nick name change event. %s.", paramwkc.toString());
+    xxi.a(paramxxi).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wkc.class;
   }
 }
 

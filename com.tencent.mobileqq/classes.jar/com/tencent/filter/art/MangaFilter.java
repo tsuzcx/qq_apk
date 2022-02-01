@@ -21,16 +21,6 @@ public class MangaFilter
     this.type = paramInt;
   }
   
-  public void ClearGLSL()
-  {
-    if (this.graybitmap != null)
-    {
-      this.graybitmap.recycle();
-      this.graybitmap = null;
-    }
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     float f1 = 852.0F;
@@ -104,6 +94,16 @@ public class MangaFilter
         f1 = paramFloat2 * f3;
       }
     }
+  }
+  
+  public void clearGLSL()
+  {
+    if (this.graybitmap != null)
+    {
+      this.graybitmap.recycle();
+      this.graybitmap = null;
+    }
+    super.clearGLSL();
   }
   
   public void setParameterDic(Map<String, Object> paramMap)

@@ -1,23 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nit
-  extends BroadcastReceiver
+class nit
+  implements View.OnClickListener
 {
-  public nit(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  nit(nis paramnis) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "receive broadcast");
-    if ("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH".equals(paramContext))
-    {
-      nje.a().a("param_StepLoading", 0);
-      AvGameLoadingActivity.a(this.a, true, 0);
-    }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

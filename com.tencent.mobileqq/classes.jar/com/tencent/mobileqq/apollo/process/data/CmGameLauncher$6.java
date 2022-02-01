@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alxy;
+import amyo;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 public class CmGameLauncher$6
   extends IApolloRunnableTask
 {
-  public CmGameLauncher$6(alxy paramalxy, ApolloCmdChannel paramApolloCmdChannel) {}
+  public CmGameLauncher$6(amyo paramamyo, ApolloCmdChannel paramApolloCmdChannel) {}
   
   public String a()
   {
@@ -18,7 +18,7 @@ public class CmGameLauncher$6
   public void run()
   {
     if (this.a != null) {
-      this.a.requestData(alxy.a(this.this$0).getLuaState(), "cs.make_room_min.local", "{}", true, true);
+      this.a.requestData(amyo.a(this.this$0).getLuaState(), "cs.make_room_min.local", "{}", true, true);
     }
   }
 }

@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import android.os.Bundle;
 import mqq.observer.BusinessObserver;
-import ogq;
+import ooj;
 
 public class EcshopNewServlet$1
   implements Runnable
 {
-  public EcshopNewServlet$1(ogq paramogq, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public EcshopNewServlet$1(ooj paramooj, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {

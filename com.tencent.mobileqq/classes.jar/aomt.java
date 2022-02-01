@@ -1,36 +1,22 @@
 import android.content.Context;
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.Projection;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aomt
-  implements TencentMap.OnMapLoadedCallback
+final class aomt
+  implements View.OnClickListener
 {
-  public aomt(ARScanEntryView paramARScanEntryView) {}
+  aomt(Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public void onMapLoaded()
+  public void onClick(View paramView)
   {
-    this.a.b = true;
-    if (ARScanEntryView.a(this.a) != null)
-    {
-      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
-      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
-      if ((localProjection != null) && (localTencentMap != null))
-      {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
-        if (localPoint != null)
-        {
-          localPoint.offset(0, AIOUtils.dp2px(60.0F, this.a.a.getResources()) * -1);
-          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
-        }
-      }
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PhoneUnityBindInfoActivity.class);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B3EA", "0X800B3EA", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

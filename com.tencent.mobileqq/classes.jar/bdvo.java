@@ -1,62 +1,9 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
-
 public class bdvo
-  extends aptq<bdvn>
 {
-  @NonNull
-  public bdvn a(int paramInt)
-  {
-    QLog.d("TroopBlockConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bdvn();
-  }
-  
-  @Nullable
-  public bdvn a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bdvn.a(paramArrayOfaptx[0].a);
-    }
-    return null;
-  }
-  
-  public void a(bdvn parambdvn) {}
-  
-  public Class<bdvn> clazz()
-  {
-    return bdvn.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopBlockConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 673;
-  }
+  public boolean a = false;
+  public boolean b = false;
+  public boolean c = false;
+  public boolean d = false;
 }
 
 

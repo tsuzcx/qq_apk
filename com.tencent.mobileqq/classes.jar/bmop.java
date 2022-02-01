@@ -1,19 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.view.View;
+import com.tencent.TMG.utils.QLog;
+import kotlin.Metadata;
 
-final class bmop
-  extends AnimatorListenerAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"cooperation/vip/reward/VasRewardAdService$realShowAd$profitableCallback$1", "Lcooperation/vip/reward/VasProfitableCallback;", "onResult", "", "profitable", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmop
+  implements bmoi
 {
-  bmop(View paramView) {}
+  bmop(bmkg parambmkg) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a.setClipBounds(null);
+    this.jdField_a_of_type_Bmkg.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasRewardAdService", 0, "showRewardAdv onResult profitable: " + paramBoolean);
     }
+    if (paramBoolean == true) {
+      bmom.a(this.jdField_a_of_type_Bmom);
+    }
+    while (paramBoolean) {
+      return;
+    }
+    bmom.a(this.jdField_a_of_type_Bmom, 4);
   }
 }
 

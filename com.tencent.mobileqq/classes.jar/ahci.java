@@ -1,26 +1,18 @@
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class ahci
-  extends ahcf
+class ahci
+  extends afos
 {
-  public ahci(QQAppInterface paramQQAppInterface, ahcz paramahcz, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afaf paramafaf)
-  {
-    super(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
-  }
+  public long a;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.a.b.setVisibility(0);
-    this.a.b.setTextColor(-8947849);
-    this.a.b.setText(ahck.c);
-    return false;
-  }
+  ahci(ahcg paramahcg) {}
 }
 
 

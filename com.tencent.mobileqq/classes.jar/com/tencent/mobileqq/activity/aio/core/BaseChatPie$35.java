@@ -1,25 +1,18 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+import afqz;
+import alvw;
 
 class BaseChatPie$35
   implements Runnable
 {
-  BaseChatPie$35(BaseChatPie paramBaseChatPie, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext) {}
+  BaseChatPie$35(BaseChatPie paramBaseChatPie, alvw paramalvw) {}
   
   public void run()
   {
-    if (this.val$refreshMessageContext.needAutoNavigateTop)
-    {
-      if (this.val$refreshMessageContext.isSuccess)
-      {
-        this.this$0.refresh(131079);
-        return;
-      }
-      this.this$0.refresh(131078);
-      return;
+    if ((!this.val$helper.b()) && (this.this$0.listAdapter != null)) {
+      this.this$0.listAdapter.d();
     }
-    this.this$0.refresh(131076);
   }
 }
 

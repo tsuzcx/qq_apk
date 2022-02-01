@@ -1,57 +1,84 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class adym
-  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
+  implements aewf
 {
-  public adym(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
+  public adym(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
-    localMessage.arg1 = 24;
-    localMessage.obj = str;
-    if (paramInt == 3) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.a.setVisibility(8);
     }
     for (;;)
     {
-      QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+      if (ForwardRecentActivity.a(this.a) != null) {
+        ForwardRecentActivity.a(this.a).a(paramEditable);
+      }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
+      this.a.a.setVisibility(0);
     }
   }
   
-  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
+  public void onEditTextFocusChanged(boolean paramBoolean)
   {
-    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
-    paramYTLiveStyleReq.app_id = "10164651";
-    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
-    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
-    paramLiveStyleResponse.arg1 = 23;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
-    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {}
-    do
+    if ((paramBoolean) && (ForwardRecentActivity.a(this.a) == null))
+    {
+      ForwardRecentActivity.a(this.a, ContactSearchFragment.a(7, 2097177, null, null, ForwardRecentActivity.a(this.a)));
+      Object localObject = new ArrayList();
+      Iterator localIterator = ForwardRecentActivity.a(this.a).values().iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((ResultRecord)localIterator.next()).uin);
+      }
+      ForwardRecentActivity.a(this.a).a((List)localObject, (List)localObject);
+      localObject = this.a.getSupportFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).add(2131376602, ForwardRecentActivity.a(this.a));
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
+    }
+  }
+  
+  public void onItemDeleted(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord == null) {}
+    for (;;)
     {
       return;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
+      ForwardRecentActivity.a(this.a, paramResultRecord.uin, paramResultRecord.getUinType());
+      int j = ForwardRecentActivity.a(this.a).getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = ForwardRecentActivity.a(this.a).getChildAt(i);
+        if ((localObject instanceof ForwardRecentItemView))
+        {
+          localObject = (ForwardRecentItemView)localObject;
+          if ((((ForwardRecentItemView)localObject).a.uinType == paramResultRecord.uinType) && (((ForwardRecentItemView)localObject).a.uin.equals(paramResultRecord.uin))) {
+            ((ForwardRecentItemView)localObject).a(false);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adym
  * JD-Core Version:    0.7.0.1
  */

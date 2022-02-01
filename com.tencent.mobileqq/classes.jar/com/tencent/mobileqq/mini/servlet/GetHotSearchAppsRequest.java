@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_COMM.COMM.StCommonExt;
 import NS_STORE_APP_SEARCH.MiniAppSearch.StGetHotSearchAppsReq;
 import NS_STORE_APP_SEARCH.MiniAppSearch.StGetHotSearchAppsRsp;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetHotSearchAppsRequest
@@ -17,6 +18,7 @@ public class GetHotSearchAppsRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
     }
+    this.req.from.set(1);
   }
   
   public static MiniAppSearch.StGetHotSearchAppsRsp onResponse(byte[] paramArrayOfByte)

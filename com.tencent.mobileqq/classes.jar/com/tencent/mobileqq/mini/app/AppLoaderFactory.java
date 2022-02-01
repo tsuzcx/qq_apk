@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.mini.app;
 
-import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.util.MiniAppDexLoader;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mini.MiniAppInterface;
 import java.io.File;
 
 public class AppLoaderFactory
@@ -14,92 +12,16 @@ public class AppLoaderFactory
   public static final String TAG_CHROMIUM = "miniapp-chromium";
   public static final String TAG_JS = "miniapp-JS";
   public static final String TAG_PROCESSOR = "miniapp-process";
-  private static volatile BaseAppLoaderManager sAppLoaderManager;
-  private static volatile IAppUIProxy sAppUIProxy;
-  private static int sLaunchMode = -1;
+  public static MiniAppInterface miniAppInterface;
   
-  public static IAppUIProxy createAppUIProxy()
+  public static MiniAppInterface getMiniAppInterface()
   {
-    if (sAppUIProxy == null) {}
-    try
-    {
-      if (sAppUIProxy == null) {
-        sAppUIProxy = MiniAppDexLoader.getInstance().createAppUIProxy("com.tencent.mobileqq.mini.app.AppUIProxy");
-      }
-      return sAppUIProxy;
-    }
-    finally {}
+    return miniAppInterface;
   }
   
-  public static IAppUIProxy createInternalAppUIProxy()
+  public static void setMiniAppInterface(MiniAppInterface paramMiniAppInterface)
   {
-    if (sAppUIProxy == null) {}
-    try
-    {
-      if (sAppUIProxy == null) {
-        sAppUIProxy = MiniAppDexLoader.getInstance().createAppUIProxy("com.tencent.mobileqq.mini.app.InternalAppUIProxy");
-      }
-      return sAppUIProxy;
-    }
-    finally {}
-  }
-  
-  public static BaseAppLoaderManager getAppLoaderManager()
-  {
-    if (sAppLoaderManager == null) {}
-    try
-    {
-      if (sAppLoaderManager == null) {
-        sAppLoaderManager = MiniAppDexLoader.getInstance().createAppLoaderManager("com.tencent.mobileqq.mini.app.AppLoaderManager");
-      }
-      return sAppLoaderManager;
-    }
-    finally {}
-  }
-  
-  public static IAppUIProxy getAppUIProxy()
-  {
-    return sAppUIProxy;
-  }
-  
-  public static void initLaunchMode(Intent paramIntent)
-  {
-    int i = 0;
-    if (sLaunchMode >= 0) {
-      return;
-    }
-    String str = BaseApplicationImpl.getApplication().getQQProcessName();
-    if ((!"com.tencent.mobileqq:mini".equals(str)) && (!"com.tencent.mobileqq:mini1".equals(str)) && (!"com.tencent.mobileqq:mini2".equals(str)))
-    {
-      sLaunchMode = 0;
-      QLog.w("miniapp-start", 1, "initLaunchMode in process=" + str + ", sLaunchMode=" + sLaunchMode);
-      return;
-    }
-    if (paramIntent == null)
-    {
-      sLaunchMode = 0;
-      QLog.w("miniapp-start", 1, "initLaunchMode with intent is null, sLaunchMode=" + sLaunchMode);
-      return;
-    }
-    try
-    {
-      boolean bool = paramIntent.getBooleanExtra("sdk_mode", false);
-      QLog.w("miniapp-start", 1, "initLaunchMode with intent param SDKMode " + bool);
-      if (bool) {
-        i = 1;
-      }
-      sLaunchMode = i;
-      return;
-    }
-    catch (Throwable paramIntent)
-    {
-      QLog.e("miniapp-start", 1, "initLaunchMode parser exception!", paramIntent);
-    }
-  }
-  
-  public static boolean isSDKMode()
-  {
-    return sLaunchMode == 1;
+    miniAppInterface = paramMiniAppInterface;
   }
 }
 

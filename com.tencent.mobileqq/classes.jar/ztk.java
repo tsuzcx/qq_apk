@@ -1,19 +1,21 @@
-import com.tencent.biz.troopgift.TroopGiftPanel;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
-public class ztk
-  implements zuh
+class ztk
+  implements zzj
 {
-  public ztk(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
+  ztk(ztj paramztj) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(List<bfcs> paramList)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
-    long l = System.currentTimeMillis();
-    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
+    if (paramBoolean)
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
+        this.a.a((ArrayList)paramVarArgs[0]);
+      }
+      return;
+    }
+    QLog.d(ztj.a, 4, "get drafts failed");
   }
 }
 

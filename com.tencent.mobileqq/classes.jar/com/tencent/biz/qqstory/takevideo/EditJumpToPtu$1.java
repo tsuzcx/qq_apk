@@ -1,28 +1,28 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import xvv;
-import xwo;
-import xwp;
-import xwz;
-import xzd;
+import ykq;
+import ylh;
+import yli;
+import yls;
+import ynw;
 
 public class EditJumpToPtu$1
   implements Runnable
 {
-  public EditJumpToPtu$1(xwo paramxwo) {}
+  public EditJumpToPtu$1(ylh paramylh) {}
   
   public void run()
   {
-    xwo.a(this.this$0, xwz.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
-    if (this.this$0.a(xwo.a(this.this$0)))
+    ylh.a(this.this$0, yls.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
+    if (this.this$0.a(ylh.a(this.this$0)))
     {
-      this.this$0.jdField_a_of_type_Xwp.sendEmptyMessage(1);
+      this.this$0.jdField_a_of_type_Yli.sendEmptyMessage(1);
       return;
     }
-    xwo.a(this.this$0, null);
-    xvv.e("EditJumpToPtu", "get rawBitmap error!");
-    this.this$0.jdField_a_of_type_Xzd.a(0);
-    this.this$0.jdField_a_of_type_Xwp.sendEmptyMessage(3);
+    ylh.a(this.this$0, null);
+    ykq.e("EditJumpToPtu", "get rawBitmap error!");
+    this.this$0.jdField_a_of_type_Ynw.a(0);
+    this.this$0.jdField_a_of_type_Yli.sendEmptyMessage(3);
   }
 }
 

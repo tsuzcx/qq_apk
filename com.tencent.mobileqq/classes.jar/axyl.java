@@ -1,33 +1,27 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class axyl
+  implements bkzq
 {
-  public final float a;
-  public final long a;
-  public final LatLng a;
-  public final String a;
+  public axyl(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bkzi parambkzi) {}
   
-  public axyl(LatLng paramLatLng, String paramString, float paramFloat, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= axwj.N;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "Location{latLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", provider='" + this.jdField_a_of_type_JavaLangString + ", accuracy=" + this.jdField_a_of_type_Float + ", time=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bkzi != null) {
+        this.jdField_a_of_type_Bkzi.dismiss();
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      continue;
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
   }
 }
 

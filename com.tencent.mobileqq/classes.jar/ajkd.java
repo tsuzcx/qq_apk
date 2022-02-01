@@ -1,18 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajkd
-  extends ajjs
+  implements View.OnClickListener
 {
-  public ajkd(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-  }
+  public ajkd(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
   
-  protected void y()
+  public void onClick(View paramView)
   {
-    this.a = "MiniPieForNearby";
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator) != null)) {
+      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

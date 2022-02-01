@@ -2,40 +2,40 @@ package com.tencent.avgame.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-import myb;
-import nio;
-import nip;
+import ndn;
+import npl;
+import npm;
 
 public class AVGameRoomListFragment$AVGameRoomListAdapter$1$1
   implements Runnable
 {
-  public AVGameRoomListFragment$AVGameRoomListAdapter$1$1(nip paramnip, myb parammyb) {}
+  public AVGameRoomListFragment$AVGameRoomListAdapter$1$1(npm paramnpm, ndn paramndn) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Myb == null) || (this.jdField_a_of_type_Myb.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Myb.jdField_a_of_type_JavaUtilList == null) || (!nio.a(this.jdField_a_of_type_Nip.a).equals(this.jdField_a_of_type_Myb.jdField_a_of_type_JavaLangString))) {}
-    while ((nio.a(this.jdField_a_of_type_Nip.a) > 0) && (this.jdField_a_of_type_Myb.c == 0) && (this.jdField_a_of_type_Myb.b <= nio.a(this.jdField_a_of_type_Nip.a))) {
+    if ((this.jdField_a_of_type_Ndn == null) || (this.jdField_a_of_type_Ndn.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Ndn.jdField_a_of_type_JavaUtilList == null) || (!npl.a(this.jdField_a_of_type_Npm.a).equals(this.jdField_a_of_type_Ndn.jdField_a_of_type_JavaLangString))) {}
+    while ((npl.a(this.jdField_a_of_type_Npm.a) > 0) && (this.jdField_a_of_type_Ndn.c == 0) && (this.jdField_a_of_type_Ndn.b <= npl.a(this.jdField_a_of_type_Npm.a))) {
       return;
     }
     Object localObject = new ArrayList();
-    if (nio.a(this.jdField_a_of_type_Nip.a) > 0)
+    if (npl.a(this.jdField_a_of_type_Npm.a) > 0)
     {
-      ((List)localObject).addAll(nio.a(this.jdField_a_of_type_Nip.a));
-      nio.a(this.jdField_a_of_type_Nip.a, (List)localObject, this.jdField_a_of_type_Myb.jdField_a_of_type_JavaUtilList);
-      nio.a(this.jdField_a_of_type_Nip.a, (List)localObject);
-      nio.a(this.jdField_a_of_type_Nip.a, this.jdField_a_of_type_Myb.b);
-      localObject = this.jdField_a_of_type_Nip.a;
-      if (this.jdField_a_of_type_Myb.c <= 0) {
+      ((List)localObject).addAll(npl.a(this.jdField_a_of_type_Npm.a));
+      npl.a(this.jdField_a_of_type_Npm.a, (List)localObject, this.jdField_a_of_type_Ndn.jdField_a_of_type_JavaUtilList);
+      npl.a(this.jdField_a_of_type_Npm.a, (List)localObject);
+      npl.a(this.jdField_a_of_type_Npm.a, this.jdField_a_of_type_Ndn.b);
+      localObject = this.jdField_a_of_type_Npm.a;
+      if (this.jdField_a_of_type_Ndn.c <= 0) {
         break label234;
       }
     }
     label234:
     for (boolean bool = true;; bool = false)
     {
-      nio.a((nio)localObject, bool);
-      this.jdField_a_of_type_Nip.a.notifyDataSetChanged();
+      npl.a((npl)localObject, bool);
+      this.jdField_a_of_type_Npm.a.notifyDataSetChanged();
       return;
-      ((List)localObject).addAll(this.jdField_a_of_type_Myb.jdField_a_of_type_JavaUtilList);
+      ((List)localObject).addAll(this.jdField_a_of_type_Ndn.jdField_a_of_type_JavaUtilList);
       break;
     }
   }

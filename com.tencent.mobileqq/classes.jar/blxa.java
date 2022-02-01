@@ -1,29 +1,24 @@
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blxa
-  extends BaseFilter
+class blxa
+  implements DialogInterface.OnClickListener
 {
-  public blxa()
+  private String jdField_a_of_type_JavaLangString;
+  
+  private blxa(blwy paramblwy, String paramString)
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform int isAlpha;\nvoid main() \n{\n  highp vec4 color = texture2D(inputImageTexture,textureCoordinate);\n  if(isAlpha == 1) {\n    gl_FragColor = vec4(1.0-color.a,1.0-color.a,1.0-color.a,1.0);\n  } else {\n    gl_FragColor = color;\n  }\n}");
-    addParam(new UniformParam.IntParam("isAlpha", 0));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    setPositions(new float[] { paramFloat1, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat2, paramFloat3, paramFloat4 });
-  }
-  
-  public void a(Frame paramFrame1, Frame paramFrame2)
-  {
-    a(-1.0F, 0.0F, 1.0F, -1.0F);
-    addParam(new UniformParam.IntParam("isAlpha", 1));
-    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
-    a(-1.0F, 1.0F, 1.0F, 0.0F);
-    addParam(new UniformParam.IntParam("isAlpha", 0));
-    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_Blwy.cancelInstall(this.jdField_a_of_type_JavaLangString);
   }
 }
 

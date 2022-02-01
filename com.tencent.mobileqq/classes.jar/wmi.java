@@ -1,14 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tribe.async.reactive.StreamFunction;
 
 class wmi
-  extends AnimatorListenerAdapter
+  extends StreamFunction<wly, wly>
 {
-  wmi(wmh paramwmh) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  wmi(wmd paramwmd) {}
+  
+  protected void a(wly paramwly)
   {
-    super.onAnimationEnd(paramAnimator);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    ykq.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramwly.a);
+    notifyResult(paramwly);
   }
 }
 

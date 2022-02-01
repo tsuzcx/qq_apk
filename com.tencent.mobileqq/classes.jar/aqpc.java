@@ -1,18 +1,39 @@
-import android.view.SurfaceView;
-import android.view.TextureView;
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class aqpc
+  implements aqov
 {
-  public static aqpg a(View paramView)
+  private Bundle a;
+  
+  public aqpc() {}
+  
+  public aqpc(Bundle paramBundle)
   {
-    if ((paramView instanceof SurfaceView)) {
-      return new aqpi((SurfaceView)paramView);
+    this.a = paramBundle;
+  }
+  
+  public void launch(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent.putExtra("readtype", "16");
+    localIntent.putExtra("stay", "1");
+    if (this.a != null) {
+      localIntent.putExtras(this.a);
     }
-    if ((paramView instanceof TextureView)) {
-      return new aqpj((TextureView)paramView);
+    paramColorNote = paramColorNote.getSubType().split("_");
+    if (paramColorNote.length > 1)
+    {
+      localIntent.putExtra("nbid", paramColorNote[0]);
+      if (paramColorNote[0].startsWith("-")) {
+        localIntent.putExtra("isLocal", true);
+      }
     }
-    return null;
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

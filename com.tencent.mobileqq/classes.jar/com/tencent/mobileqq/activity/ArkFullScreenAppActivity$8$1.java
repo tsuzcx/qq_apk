@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acrj;
+import adht;
 import android.content.Intent;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 public class ArkFullScreenAppActivity$8$1
   implements Runnable
 {
-  public ArkFullScreenAppActivity$8$1(acrj paramacrj) {}
+  public ArkFullScreenAppActivity$8$1(adht paramadht) {}
   
   public void run()
   {

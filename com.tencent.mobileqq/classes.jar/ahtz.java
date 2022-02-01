@@ -1,15 +1,4 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.lang.ref.WeakReference;
-
-class ahtz
-{
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  WeakReference<ahua> jdField_a_of_type_JavaLangRefWeakReference;
-}
+class ahtz {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

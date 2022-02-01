@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ojv;
+import ors;
 
 public class ReadInJoyNaviController$4
   implements Runnable
 {
-  public ReadInJoyNaviController$4(ojv paramojv) {}
+  public ReadInJoyNaviController$4(ors paramors) {}
   
   public void run()
   {
-    ojv.a(this.this$0, true);
+    ors.a(this.this$0, true);
   }
 }
 

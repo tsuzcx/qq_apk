@@ -1,110 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class apxd
-  extends aptq<apxe>
+class apxd
+  implements apxl
 {
-  public static boolean a;
-  private static boolean b;
+  apxd(apwz paramapwz, apxj paramapxj, apxl paramapxl, String paramString) {}
   
-  public static boolean a()
+  public void a(boolean paramBoolean)
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean b()
-  {
-    apxe localapxe2 = (apxe)apub.a().a(531);
-    apxe localapxe1 = localapxe2;
-    if (localapxe2 == null)
+    if (paramBoolean)
     {
-      localapxe2 = new apxe();
-      localapxe1 = localapxe2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
-        localapxe1 = localapxe2;
-      }
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Apxl.a(true);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localapxe1);
-    }
-    return localapxe1.a();
-  }
-  
-  @NonNull
-  public apxe a(int paramInt)
-  {
-    return new apxe();
-  }
-  
-  @Nullable
-  public apxe a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaptx[0].a);
-      }
-      return apxe.a(paramArrayOfaptx[0].a);
-    }
-    return new apxe();
-  }
-  
-  public void a(apxe paramapxe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramapxe);
-    }
-    if (paramapxe != null) {
-      a = paramapxe.a();
-    }
-  }
-  
-  public Class<apxe> clazz()
-  {
-    return apxe.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 531;
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString }));
+    apwz.a(this.jdField_a_of_type_Apwz, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apxj, new apxe(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxd
  * JD-Core Version:    0.7.0.1
  */

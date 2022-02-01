@@ -1,18 +1,13 @@
+import android.app.ProgressDialog;
+import android.content.Context;
+
 public class blxc
 {
-  private Boolean a;
-  public String a;
-  
-  public blxc(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
-  }
+  public ProgressDialog a;
+  public Context a;
+  public blwf a;
+  public blwh a;
+  public boolean a = true;
 }
 
 

@@ -1,11 +1,35 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class wun
-  implements wui
+  extends wfh
 {
-  public void a(int paramInt) {}
+  private final qqstory_group.RspAddGroupVideo a;
   
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  public wun(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
+  {
+    super(paramRspAddGroupVideo.result);
+    this.a = paramRspAddGroupVideo;
+  }
   
-  public void b(int paramInt) {}
+  public List<wuo> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.group_feed_list.get().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new wuo((qqstory_group.GroupFeed)localIterator.next()));
+    }
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+  }
 }
 
 

@@ -1,20 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arnb
-  implements DialogInterface.OnClickListener
 {
-  public arnb(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static arnb a(aqxa[] paramArrayOfaqxa)
   {
-    ExtendFriendLimitChatMatchFragment.a(this.a);
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+      return null;
+    }
+    arnb localarnb = new arnb();
+    try
+    {
+      a(localarnb, new JSONObject(paramArrayOfaqxa[0].a));
+      return localarnb;
+    }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      paramArrayOfaqxa.printStackTrace();
+    }
+    return localarnb;
+  }
+  
+  public static void a(arnb paramarnb, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramarnb == null)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocAIOShowGuideDialogBean", 2, "handleTencentDocUniversalEntry call after " + paramJSONObject.toString());
+      }
+      if (paramJSONObject.has("aioGuiderDialogEnable")) {
+        paramarnb.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
+      }
+    } while (!paramJSONObject.has("dialogShowMaxTimes"));
+    paramarnb.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arnb
  * JD-Core Version:    0.7.0.1
  */

@@ -4,31 +4,31 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.util.JsonBinder;
 import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
 import com.tencent.util.Pair;
-import zka;
-import zke;
+import zzf;
+import zzj;
 
 public class SubscribeDraftManager$3
   implements Runnable
 {
   public void run()
   {
-    Object localObject = zka.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = zzf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localObject != null)
     {
-      localObject = zka.a(this.this$0, (String)((Pair)localObject).second);
+      localObject = zzf.a(this.this$0, (String)((Pair)localObject).second);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label90;
       }
       localObject = (SubscribeDraftBean)JsonBinder.getInstance().fromJson((String)localObject, SubscribeDraftBean.class);
-      if ((localObject != null) && (this.jdField_a_of_type_Zke != null)) {
-        this.jdField_a_of_type_Zke.a(5, true, this.b, new Object[] { localObject });
+      if ((localObject != null) && (this.jdField_a_of_type_Zzj != null)) {
+        this.jdField_a_of_type_Zzj.a(5, true, this.b, new Object[] { localObject });
       }
     }
     label90:
-    while (this.jdField_a_of_type_Zke == null) {
+    while (this.jdField_a_of_type_Zzj == null) {
       return;
     }
-    this.jdField_a_of_type_Zke.a(5, false, this.b, null);
+    this.jdField_a_of_type_Zzj.a(5, false, this.b, null);
   }
 }
 

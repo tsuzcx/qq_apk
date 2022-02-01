@@ -1,30 +1,34 @@
-class auly
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class auly
+  implements BusinessObserver
 {
-  public static auly a;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  public void a() {}
   
-  static
-  {
-    jdField_a_of_type_Auly = new auly(null);
-  }
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public auly(String paramString)
-  {
-    this(paramString, null, null);
-  }
+  public void b() {}
   
-  public auly(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-  }
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
   
-  public String a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 967: 
+      b(paramBoolean, paramBundle);
+      return;
+    case 968: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 969: 
+      b();
+      return;
+    }
+    a();
   }
 }
 

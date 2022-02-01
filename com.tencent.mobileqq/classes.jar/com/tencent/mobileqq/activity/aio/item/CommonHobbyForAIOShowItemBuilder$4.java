@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afyf;
+import agqv;
 import android.widget.ImageView;
 
 public class CommonHobbyForAIOShowItemBuilder$4
   implements Runnable
 {
-  public CommonHobbyForAIOShowItemBuilder$4(afyf paramafyf, ImageView paramImageView) {}
+  public CommonHobbyForAIOShowItemBuilder$4(agqv paramagqv, ImageView paramImageView) {}
   
   public void run()
   {
-    this.a.setImageResource(2130845310);
+    this.a.setImageResource(2130845395);
   }
 }
 

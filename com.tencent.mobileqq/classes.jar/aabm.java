@@ -1,52 +1,22 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aabm
+  implements View.OnClickListener
 {
-  public aabm(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  public aabm(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respRecommend", new String[] { localJSONObject.toString() });
-      QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131706551));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-      }
-    }
-  }
-  
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
-    }
+    aanb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + aaba.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
+    zqm.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

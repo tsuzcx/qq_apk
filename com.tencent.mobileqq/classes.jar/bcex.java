@@ -1,83 +1,53 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.util.List;
 
 public class bcex
+  implements bcfi
 {
-  public static int a(Context paramContext, String paramString)
+  protected int a;
+  private String a;
+  public List<bcfj> a;
+  
+  public bcex(List<bcfj> paramList, String paramString, int paramInt)
   {
-    return a(paramContext, paramString, "Click_grp_asst");
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
+  public int a()
   {
-    paramString1 = paramString1 + paramString2;
-    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
+    return 3;
   }
   
-  public static void a(Context paramContext, String paramString)
+  public String a()
   {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
-    paramContext.putInt(paramString + "Click_grp_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_msg", 0);
-    paramContext.putInt(paramString + "grp_msg_equ", 0);
-    paramContext.putInt(paramString + "grp_msg_dec", 0);
-    paramContext.putInt(paramString + "grp_msg_inc", 0);
-    paramContext.commit();
+    return anvx.a(2131704869);
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  public List<bcfj> a()
   {
-    paramString1 = paramString1 + paramString2;
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
-    int i = paramContext.getInt(paramString1, 0);
-    paramContext.edit().putInt(paramString1, i + 1).commit();
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public static int b(Context paramContext, String paramString)
+  public void a(View paramView)
   {
-    return a(paramContext, paramString, "grp_setting_asst");
+    bcjs.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
+    String str = bcnc.b("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
+    str = bcnc.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
+    str = "mqqapi://microapp/open?url=" + str;
+    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
   }
   
-  public static void b(Context paramContext, String paramString)
+  public int b()
   {
-    a(paramContext, paramString, "grp_setting_asst");
+    return this.jdField_a_of_type_Int;
   }
   
-  public static int c(Context paramContext, String paramString)
+  public String b()
   {
-    return a(paramContext, paramString, "grp_setting_msg");
-  }
-  
-  public static void c(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static int d(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static void d(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static int e(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static void e(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_inc");
-  }
-  
-  public static int f(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_inc");
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.config.business.qfile;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqfw;
-import aszr;
-import bbko;
+import arjd;
+import audy;
+import bcrg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class QfileFileAssistantTipsConfigBean$5
   implements Runnable
 {
-  public QfileFileAssistantTipsConfigBean$5(aqfw paramaqfw) {}
+  public QfileFileAssistantTipsConfigBean$5(arjd paramarjd) {}
   
   public void run()
   {
@@ -29,17 +29,17 @@ public class QfileFileAssistantTipsConfigBean$5
         QLog.e("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "app is null!!!");
         return;
       }
-      aszr.a("0X800AD01");
+      audy.a("0X800AD01");
       localObject1 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("qfile_file_assistant_tips" + ((QQAppInterface)localObject1).getCurrentUin(), 0);
       Object localObject3 = ((SharedPreferences)localObject1).getString("qfile_file_assistant_tips", "{}");
       try
       {
         localObject3 = new JSONObject((String)localObject3);
-        aqfw.a(this.this$0);
-        aqfw.b(this.this$0);
-        ((JSONObject)localObject3).put("local_day_last_time", bbko.a());
-        ((JSONObject)localObject3).put("local_day_times", aqfw.c(this.this$0));
-        ((JSONObject)localObject3).put("local_max_times", aqfw.d(this.this$0));
+        arjd.a(this.this$0);
+        arjd.b(this.this$0);
+        ((JSONObject)localObject3).put("local_day_last_time", bcrg.a());
+        ((JSONObject)localObject3).put("local_day_times", arjd.c(this.this$0));
+        ((JSONObject)localObject3).put("local_max_times", arjd.d(this.this$0));
         localObject3 = ((JSONObject)localObject3).toString();
         if (QLog.isDebugVersion()) {
           QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, (String)localObject3);

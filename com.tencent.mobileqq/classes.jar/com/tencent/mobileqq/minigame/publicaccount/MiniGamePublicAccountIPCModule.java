@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anxs;
+import apau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
@@ -107,7 +107,7 @@ public class MiniGamePublicAccountIPCModule
         paramMessageRecord = new JSONObject((String)localObject1).optString("report_key_bytes_oac_msg_extend", "");
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
-          Bundle localBundle = anxs.a(paramMessageRecord);
+          Bundle localBundle = apau.a(paramMessageRecord);
           if ((localBundle != null) && (!TextUtils.isEmpty(paramQQGameMsgInfo.arkMetaList)))
           {
             localObject2 = new JSONObject(paramQQGameMsgInfo.arkMetaList);

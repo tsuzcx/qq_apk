@@ -1,20 +1,16 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aylb
-  extends RecyclerView.ItemDecoration
+final class aylb
+  implements axwv
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  aylb(ayli paramayli, int paramInt) {}
   
-  private aylb(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Ayli != null) {
+      this.jdField_a_of_type_Ayli.a(false, null, true, this.jdField_a_of_type_Int);
+    }
   }
 }
 

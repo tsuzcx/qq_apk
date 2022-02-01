@@ -1,26 +1,74 @@
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class apit
-  extends apim
+  implements apir
 {
-  apit(apiq paramapiq) {}
+  private IBinder a;
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  apit(IBinder paramIBinder)
   {
-    if (paramBoolean1)
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      if ((apiq.a(this.a) != null) && (paramBoolean2 != apiq.a(this.a).a()))
-      {
-        apiq.a(this.a).setOnCheckedChangeListener(null);
-        apiq.a(this.a).setChecked(paramBoolean2);
-        apiq.a(this.a).setOnCheckedChangeListener(this.a);
-      }
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    paramString = QQToast.a(BaseApplication.getContext(), 1, 2131690605, 0);
-    paramString.b(paramString.c());
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

@@ -7,43 +7,43 @@ import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import mvk;
-import mvl;
-import mvm;
+import mwi;
+import mwj;
+import mwk;
 
 public class ShimmerTextView
   extends TextView
 {
   int jdField_a_of_type_Int = 0;
-  private mvl jdField_a_of_type_Mvl;
+  private mwj jdField_a_of_type_Mwj;
   
   public ShimmerTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Mvl = new mvl(this, getPaint(), null);
-    this.jdField_a_of_type_Mvl.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new mvk(this));
+    this.jdField_a_of_type_Mwj = new mwj(this, getPaint(), null);
+    this.jdField_a_of_type_Mwj.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new mwi(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Mvl = new mvl(this, getPaint(), paramAttributeSet);
-    this.jdField_a_of_type_Mvl.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new mvk(this));
+    this.jdField_a_of_type_Mwj = new mwj(this, getPaint(), paramAttributeSet);
+    this.jdField_a_of_type_Mwj.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new mwi(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Mvl = new mvl(this, getPaint(), paramAttributeSet);
-    this.jdField_a_of_type_Mvl.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new mvk(this));
+    this.jdField_a_of_type_Mwj = new mwj(this, getPaint(), paramAttributeSet);
+    this.jdField_a_of_type_Mwj.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new mwi(this));
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Mvl != null) && (this.jdField_a_of_type_Mvl.a());
+    return (this.jdField_a_of_type_Mwj != null) && (this.jdField_a_of_type_Mwj.a());
   }
   
   public void onAttachedToWindow()
@@ -61,8 +61,8 @@ public class ShimmerTextView
   @SuppressLint({"WrongCall", "DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Mvl != null) {
-      this.jdField_a_of_type_Mvl.b();
+    if (this.jdField_a_of_type_Mwj != null) {
+      this.jdField_a_of_type_Mwj.b();
     }
     super.onDraw(paramCanvas);
     if (a()) {
@@ -73,50 +73,50 @@ public class ShimmerTextView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Mvl != null) {
-      this.jdField_a_of_type_Mvl.a();
+    if (this.jdField_a_of_type_Mwj != null) {
+      this.jdField_a_of_type_Mwj.a();
     }
   }
   
-  public void setAnimationSetupCallback(mvm parammvm)
+  public void setAnimationSetupCallback(mwk parammwk)
   {
-    this.jdField_a_of_type_Mvl.a(parammvm);
+    this.jdField_a_of_type_Mwj.a(parammwk);
   }
   
   public void setGradientX(float paramFloat)
   {
-    this.jdField_a_of_type_Mvl.a(paramFloat);
+    this.jdField_a_of_type_Mwj.a(paramFloat);
   }
   
   public void setPrimaryColor(int paramInt)
   {
-    this.jdField_a_of_type_Mvl.a(paramInt);
+    this.jdField_a_of_type_Mwj.a(paramInt);
   }
   
   public void setReflectionColor(int paramInt)
   {
-    this.jdField_a_of_type_Mvl.b(paramInt);
+    this.jdField_a_of_type_Mwj.b(paramInt);
   }
   
   public void setShimmering(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Mvl.a(paramBoolean);
+    this.jdField_a_of_type_Mwj.a(paramBoolean);
     super.postInvalidate();
   }
   
   public void setTextColor(int paramInt)
   {
     super.setTextColor(paramInt);
-    if (this.jdField_a_of_type_Mvl != null) {
-      this.jdField_a_of_type_Mvl.a(getCurrentTextColor());
+    if (this.jdField_a_of_type_Mwj != null) {
+      this.jdField_a_of_type_Mwj.a(getCurrentTextColor());
     }
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     super.setTextColor(paramColorStateList);
-    if (this.jdField_a_of_type_Mvl != null) {
-      this.jdField_a_of_type_Mvl.a(getCurrentTextColor());
+    if (this.jdField_a_of_type_Mwj != null) {
+      this.jdField_a_of_type_Mwj.a(getCurrentTextColor());
     }
   }
 }

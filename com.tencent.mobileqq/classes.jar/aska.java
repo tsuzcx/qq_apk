@@ -1,83 +1,31 @@
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-class aska
-  extends asjn
+public class aska
+  implements View.OnTouchListener
 {
-  public aska(asji paramasji)
-  {
-    super(paramasji);
-  }
+  public aska(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  protected String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return "StateLocalFailedWhenChangeToOff";
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (a("onSenderUploadException")) {
-      return;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
+      this.a.a("0X800997F");
     }
-    asji.a(this.jdField_a_of_type_Asji, 11, 12, true);
-    a("StateExcepInvalidWhenChangeToOff");
-    this.jdField_a_of_type_Asjn = new asjw(this.jdField_a_of_type_Asji);
-  }
-  
-  protected void a(long paramLong)
-  {
-    b(paramLong);
-  }
-  
-  protected boolean a()
-  {
-    if (a("onRecvOnLineFile")) {
+    while (paramMotionEvent.getAction() != 0) {
       return false;
     }
-    asji.a(this.jdField_a_of_type_Asji, 9, 11);
-    asji.a(this.jdField_a_of_type_Asji, 9, 14, false);
-    a("StateUploadingWhenRecv");
-    this.jdField_a_of_type_Asjn = new askp(this.jdField_a_of_type_Asji);
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
-    return true;
+    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+    return false;
   }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    if (a("onSenderUploadCompleted")) {
-      return false;
-    }
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((aszt.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
-    }
-    localFileManagerEntity.setCloudType(1);
-    asji.a(this.jdField_a_of_type_Asji, 11, 13, true);
-    a("StateUploadoneWhenChangeToOff");
-    this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Asjn = new askq(this.jdField_a_of_type_Asji);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (a("onSenderCancelUpload")) {
-      return;
-    }
-    asji.a(this.jdField_a_of_type_Asji, 11, 9, true);
-    a("StateCancelUploadWhenRecv");
-    this.jdField_a_of_type_Asjn = new asjq(this.jdField_a_of_type_Asji);
-  }
-  
-  protected void j() {}
 }
 
 

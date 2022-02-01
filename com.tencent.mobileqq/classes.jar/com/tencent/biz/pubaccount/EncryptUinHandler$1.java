@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import nzr;
+import ogr;
 
 public class EncryptUinHandler$1
   implements Runnable
 {
   public void run()
   {
-    nzr.a(this.this$0, this.a, 0);
+    ogr.a(this.this$0, this.a, 0);
   }
 }
 

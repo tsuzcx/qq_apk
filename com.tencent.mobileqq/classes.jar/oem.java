@@ -1,19 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-public final class oem
-  implements Parcelable.Creator<VideoInfo.ClassInfo>
+public class oem
+  implements Animation.AnimationListener
 {
-  public VideoInfo.ClassInfo a(Parcel paramParcel)
+  public oem(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new VideoInfo.ClassInfo(paramParcel);
+    this.a.setResult(-1);
+    PublicAccountAdvertisementActivity.g(this.a);
+    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
   }
   
-  public VideoInfo.ClassInfo[] a(int paramInt)
-  {
-    return new VideoInfo.ClassInfo[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

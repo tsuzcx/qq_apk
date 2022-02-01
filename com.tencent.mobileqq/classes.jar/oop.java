@@ -1,27 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class oop
+class oop
   implements View.OnClickListener
 {
-  public oop(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  oop(ooo paramooo, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
-      this.a.e(ReadInJoyDeliverBiuActivity.l(this.a));
+    if (this.jdField_a_of_type_Ooo.jdField_a_of_type_Oog != null) {
+      this.jdField_a_of_type_Ooo.jdField_a_of_type_Oog.b(this.jdField_a_of_type_Ooo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      odq.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-      this.a.finish();
-      ReadInJoyDeliverBiuActivity.a(this.a, false);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

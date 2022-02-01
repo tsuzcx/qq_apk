@@ -1,36 +1,24 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class ytn
-  extends ImageSpan
+  implements Animation.AnimationListener
 {
-  public ytn(Context paramContext, int paramInt)
+  public ytn(DoodleLayout paramDoodleLayout) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramInt);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.jdField_a_of_type_Yto != null) {
+      this.a.jdField_a_of_type_Yto.a(null);
+    }
   }
   
-  public ytn(Drawable paramDrawable)
-  {
-    super(paramDrawable);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

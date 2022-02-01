@@ -1,24 +1,26 @@
 package com.tencent.mobileqq.activity.aio;
 
-import afbj;
-import atud;
-import com.tencent.mobileqq.app.QQAppInterface;
+import afsv;
+import com.tencent.image.URLDrawable;
 
 public class IntimateInfoView$7
   implements Runnable
 {
-  public IntimateInfoView$7(afbj paramafbj) {}
+  public IntimateInfoView$7(afsv paramafsv) {}
   
   public void run()
   {
-    if ((afbj.a(this.this$0) != null) && (this.this$0.a != null)) {
-      ((atud)this.this$0.a.getManager(323)).a(afbj.a(this.this$0));
+    if (afsv.a(this.this$0).getStatus() == 0)
+    {
+      afsv.a(this.this$0).downloadImediatly();
+      return;
     }
+    afsv.a(this.this$0).restartDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.7
  * JD-Core Version:    0.7.0.1
  */

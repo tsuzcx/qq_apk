@@ -1,84 +1,31 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.datarecv.pb.ZhituReportMsg.ReqBody;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahub
 {
   public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  @Nullable
-  public String f;
-  @Nullable
-  public String g;
+  public long a;
+  public MessageForShortVideo a;
+  String jdField_a_of_type_JavaLangString;
+  public String[] a;
   
-  public ZhituReportMsg.ReqBody a()
+  public ahub(ahty paramahty, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
-    }
-    if (this.c == null) {
-      this.c = "";
-    }
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
-    if (this.f == null) {
-      this.f = "";
-    }
-    if (this.g == null) {
-      this.g = "";
-    }
-    ZhituReportMsg.ReqBody localReqBody = new ZhituReportMsg.ReqBody();
-    localReqBody.bytes_pass.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqBody.bytes_pic_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBody.bytes_style.set(ByteStringMicro.copyFromUtf8(this.c));
-    localReqBody.uint32_action.set(this.jdField_a_of_type_Int);
-    localReqBody.bytes_aio_type.set(ByteStringMicro.copyFromUtf8(this.d));
-    localReqBody.bytes_mobile_type.set(ByteStringMicro.copyFromUtf8("android"));
-    localReqBody.bytes_current_text.set(ByteStringMicro.copyFromUtf8(this.e));
-    return localReqBody;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public String toString()
+  public boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
-    if (this.e != null)
-    {
-      str = bjkz.a(this.e);
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
-      if (this.f == null) {
-        break label207;
-      }
-      str = bjkz.a(this.f);
-      label139:
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
-      if (this.g == null) {
-        break label213;
-      }
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d(" LongVideoUrlCacheManager", 2, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + ahty.a());
     }
-    label207:
-    label213:
-    for (String str = bjkz.a(this.g);; str = "null")
-    {
-      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
-      str = "null";
-      break;
-      str = "null";
-      break label139;
-    }
+    return l2 < ahty.a();
   }
 }
 

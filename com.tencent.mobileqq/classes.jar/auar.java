@@ -1,18 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import java.util.ArrayList;
 
-public class auar
-  implements akbj
+class auar
+  implements audq
 {
-  public auar(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  auar(auaq paramauaq) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
-      QLog.d("GameWebPage", 1, "loading apng download succ!");
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(atpm.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    auap.a(this.a.a, localIntent);
   }
 }
 

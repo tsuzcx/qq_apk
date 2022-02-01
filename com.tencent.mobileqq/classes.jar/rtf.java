@@ -1,8 +1,10 @@
-import org.json.JSONObject;
+import java.util.List;
 
-public abstract interface rtf
+public abstract interface rtf<T>
 {
-  public abstract void a(JSONObject paramJSONObject);
+  public abstract List<T> a(int paramInt1, int paramInt2);
+  
+  public abstract void a(List<T> paramList, boolean paramBoolean);
 }
 
 

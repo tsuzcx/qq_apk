@@ -1,52 +1,23 @@
-import android.os.Bundle;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
-import oicq.wlogin_sdk.tools.RSACrypt;
-import oicq.wlogin_sdk.tools.util;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vip.diy.TemplateLikeView;
 
-class bhzr
-  extends SSOAccountObserver
+public class bhzr
+  implements URLDrawable.URLDrawableListener
 {
-  bhzr(bhzq parambhzq) {}
+  public bhzr(TemplateLikeView paramTemplateLikeView) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (this.a.jdField_a_of_type_Bhzs != null) {
-      this.a.jdField_a_of_type_Bhzs.a();
-    }
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
-  {
-    if (paramInt1 == 0)
-    {
-      paramBundle = new WloginSimpleInfo();
-      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
-        this.a.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(paramString, paramBundle);
-      }
-      paramString = "" + paramBundle._uin;
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-      {
-        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
-        paramArrayOfByte = new RSACrypt(bhpc.a().a()).EncryptData(this.a.a(bhpc.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
-        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
-        if (this.a.jdField_a_of_type_Bhzs != null) {
-          this.a.jdField_a_of_type_Bhzs.a(paramString, paramArrayOfByte);
-        }
-      }
-    }
-    while (this.a.jdField_a_of_type_Bhzs == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bhzs.a();
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.a.jdField_a_of_type_Bhzs != null) {
-      this.a.jdField_a_of_type_Bhzs.a();
-    }
+    this.a.a.invalidate();
+    this.a.b.invalidate();
   }
 }
 

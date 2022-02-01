@@ -1,18 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import cooperation.qzone.mobilereport.MobileReportManager;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class bhtm
-  extends AnimatorListenerAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/troopnick/shop/widget/ReportHelper;", "", "()V", "report", "", "moduleId", "", "itemId", "itemType", "actionId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhtm
 {
-  public bhtm(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  public static final bhtm a = new bhtm();
   
-  public void onAnimationStart(Animator paramAnimator)
+  @JvmStatic
+  public static final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    MobileReportManager.getInstance().reportAction("DressVip", "3001146", String.valueOf(paramInt1), "", String.valueOf(paramInt2), String.valueOf(paramInt3), paramInt4, 1);
   }
 }
 

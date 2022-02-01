@@ -1,15 +1,15 @@
 package com.tencent.avgame.gameroom.video;
 
-import nfk;
+import nmc;
 
 public class AVGameControlUIImpl$3$3
   implements Runnable
 {
-  public AVGameControlUIImpl$3$3(nfk paramnfk, long paramLong) {}
+  public AVGameControlUIImpl$3$3(nmc paramnmc, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nfk.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
+    this.jdField_a_of_type_Nmc.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
   }
 }
 

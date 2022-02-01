@@ -1,37 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atem
-  extends asbj
+  implements View.OnClickListener
 {
-  atem(atel paramatel) {}
+  atem(atel paramatel, View paramView) {}
   
-  protected void onFileWeiYunPreview(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + asld.a + "]");
-    }
-    if (asld.a)
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((localObject instanceof ataa))
     {
-      paramString4 = "183.61.37.13";
-      paramString5 = "443";
-      if (this.a.jdField_a_of_type_Aruk != null) {}
+      localObject = (FileManagerEntity)((ataa)localObject).a;
+      if (paramView.getId() != 2131365469) {
+        break label121;
+      }
+      bkzi localbkzi = (bkzi)bkzz.a(this.jdField_a_of_type_Atel.a.a, null);
+      localbkzi.a(anvx.a(2131709079));
+      localbkzi.a(anvx.a(2131709083), 3);
+      localbkzi.d(anvx.a(2131709081));
+      localbkzi.a(new aten(this, (FileManagerEntity)localObject, localbkzi));
+      localbkzi.show();
     }
-    else
+    for (;;)
     {
-      if ((paramString4 != null) && (paramString4.length() > 0)) {}
-      for (;;)
-      {
-        paramString5 = String.valueOf(paramInt2);
-        break;
-        paramString4 = paramString5;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (FileManagerEntity)((ateu)localObject).a;
+      break;
+      label121:
+      if (paramView.getId() == 2131367216) {
+        this.jdField_a_of_type_Atel.a.c((FileManagerEntity)localObject);
+      } else if (paramView.getId() == 2131377378) {
+        ApolloUtil.a(paramView, (FileManagerEntity)localObject, QfileBaseRecentFileTabView.r(this.jdField_a_of_type_Atel.a));
       }
     }
-    this.a.jdField_a_of_type_Aruk.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atem
  * JD-Core Version:    0.7.0.1
  */

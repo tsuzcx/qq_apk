@@ -1,24 +1,30 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.BubblePopupWindow;
 
 public class tdt
-  implements tef
+  implements View.OnClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public tdt(ReadinjoyTabbar paramReadinjoyTabbar) {}
   
-  public tdt(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
+    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
+    try
+    {
+      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
+      ReadinjoyTabbar.a(this.a).a();
+      label49:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    catch (Exception localException)
+    {
+      break label49;
+    }
   }
 }
 

@@ -1,103 +1,107 @@
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.open.agent.BindGroupAdapter.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bhqr
-  extends aliy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/AbsBaseDrawable;", "Landroid/graphics/drawable/Drawable;", "()V", "clipArea", "Landroid/graphics/RectF;", "drawRect", "Landroid/graphics/Rect;", "forceLockWH", "", "viewRect", "calculateClipArea", "dstBounds", "calculateLockWH", "width", "", "height", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getResID", "", "isRecyclyed", "onDraw", "left", "top", "right", "bottom", "onTouch", "x", "", "y", "recycle", "setDrawArea", "x0", "y0", "x1", "y1", "setLockWH", "b", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class bhqr
+  extends Drawable
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<TroopInfo> jdField_a_of_type_JavaUtilList;
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private boolean jdField_a_of_type_Boolean;
+  private final Rect b = new Rect();
   
-  public bhqr(Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt, boolean paramBoolean)
+  private final Rect a(int paramInt1, int paramInt2, Rect paramRect)
   {
-    super(paramContext, paramQQAppInterface, paramListView, paramInt, paramBoolean);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private void a(bhqs parambhqs, TroopInfo paramTroopInfo)
-  {
-    parambhqs.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
-    parambhqs.jdField_c_of_type_Int = 4;
-    parambhqs.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = paramTroopInfo;
-    parambhqs.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopInfo.getTroopName());
-    if (paramTroopInfo.isThirdAppBind())
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+    float f1 = paramRect.width() / this.jdField_a_of_type_AndroidGraphicsRect.width();
+    float f2 = paramRect.height() / this.jdField_a_of_type_AndroidGraphicsRect.height();
+    if (f1 > f2)
     {
-      parambhqs.b.setVisibility(0);
-      parambhqs.b.setText(amtj.a(2131700274));
+      this.jdField_a_of_type_AndroidGraphicsRect.right = paramRect.width();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = ((int)(f1 * this.jdField_a_of_type_AndroidGraphicsRect.bottom));
     }
     for (;;)
     {
-      parambhqs.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramTroopInfo.troopuin));
-      return;
-      parambhqs.b.setVisibility(8);
+      Gravity.apply(17, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), paramRect, this.jdField_a_of_type_AndroidGraphicsRect);
+      return this.jdField_a_of_type_AndroidGraphicsRect;
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramRect.height();
+      this.jdField_a_of_type_AndroidGraphicsRect.right = ((int)(f2 * this.jdField_a_of_type_AndroidGraphicsRect.right));
     }
   }
   
-  public TroopInfo a(int paramInt)
+  private final Rect a(Rect paramRect)
   {
-    return (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (localRectF != null)
+    {
+      float f1 = localRectF.width();
+      float f2 = localRectF.height();
+      f1 = paramRect.width() / f1;
+      f2 = paramRect.height() / f2;
+      this.jdField_a_of_type_AndroidGraphicsRect.left = ((int)(paramRect.left - localRectF.left * f1));
+      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      float f3 = paramRect.right;
+      localRect.right = ((int)(f1 * (1.0F - localRectF.right) + f3));
+      this.jdField_a_of_type_AndroidGraphicsRect.top = ((int)(paramRect.top - localRectF.top * f2));
+      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      f1 = paramRect.bottom;
+      localRect.bottom = ((int)((1.0F - localRectF.bottom) * f2 + f1));
+    }
+    return this.jdField_a_of_type_AndroidGraphicsRect;
   }
   
-  public void a(List<TroopInfo> paramList)
+  public final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (Looper.getMainLooper() == Looper.myLooper())
+    if ((paramFloat1 < 0.0F) || (paramFloat2 < 0.0F) || (paramFloat3 < 0.0F) || (paramFloat4 < 0.0F) || (paramFloat1 > 1.0F) || (paramFloat2 > 1.0F) || (paramFloat3 > 1.0F) || (paramFloat4 > 1.0F)) {
+      this.jdField_a_of_type_AndroidGraphicsRectF = ((RectF)null);
+    }
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+  }
+  
+  public abstract void a(@NotNull Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final void draw(@NotNull Canvas paramCanvas)
+  {
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    Rect localRect = getBounds();
+    Intrinsics.checkExpressionValueIsNotNull(localRect, "bounds");
+    if (localRect.isEmpty()) {
+      this.b.set(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    }
+    while (this.b.isEmpty())
     {
-      if (paramList != null)
+      return;
+      this.b.set(localRect);
+    }
+    if ((getIntrinsicHeight() > 0) && (getIntrinsicWidth() > 0))
+    {
+      if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        notifyDataSetChanged();
+        localRect = a(getIntrinsicWidth(), getIntrinsicHeight(), this.b);
+        a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom);
+        return;
       }
+      if (this.jdField_a_of_type_AndroidGraphicsRectF != null)
+      {
+        localRect = a(this.b);
+        a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom);
+        return;
+      }
+      a(paramCanvas, this.b.left, this.b.top, this.b.right, this.b.bottom);
       return;
     }
-    ThreadManager.getUIHandler().post(new BindGroupAdapter.1(this, paramList));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559959, null);
-      paramView = new bhqs();
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368605));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380034));
-      paramView.b = ((TextView)localView.findViewById(2131380043));
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      a(paramView, a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      bhqs localbhqs = (bhqs)paramView.getTag();
-      localView = paramView;
-      paramView = localbhqs;
-    }
+    a(paramCanvas, this.b.left, this.b.top, this.b.right, this.b.bottom);
   }
 }
 

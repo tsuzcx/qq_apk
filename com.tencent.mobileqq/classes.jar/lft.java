@@ -1,102 +1,178 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
 
 public class lft
-  extends lfs
 {
-  static long b;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private final Map<String, int[]> jdField_a_of_type_JavaUtilMap;
   
   public lft(AppInterface paramAppInterface)
   {
-    super(paramAppInterface);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, String paramString1, long paramLong, String paramString2, boolean paramBoolean)
+  public AppInterface a()
   {
-    int i;
-    long l1;
-    if (((lib)paramVideoAppInterface.a(5)).a(0, "750") == 1)
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, aqtc paramaqtc, Class<? extends MSFServlet> paramClass)
+  {
+    if (paramToServiceMsg.getWupBuffer() != null)
     {
-      i = 1;
-      l1 = AudioHelper.a();
-      if (i == 0) {
-        break label214;
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      PkgTools.DWord2Byte(arrayOfByte, 0, 4L + l);
+      PkgTools.copyData(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
       }
-      i = 12;
-      localObject = (lfs)paramVideoAppInterface.a(1);
+      paramToServiceMsg.actionListener = paramaqtc;
+      paramaqtc = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramaqtc.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramaqtc);
+      l = System.currentTimeMillis();
+      paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
-    for (Object localObject = paramString2 + "|" + ((lfs)localObject).a() + "|" + paramLong + "|" + l1;; localObject = paramString2)
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  {
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null))
     {
-      long l2 = b;
-      b = l1;
-      QLog.w("AudioTransClientInfoHandler", 1, "sendZimuCmd, id[" + paramString2 + "], cmdInfo[" + (String)localObject + "], autoDetect[" + true + "], from[" + paramString1 + "], seq[" + paramLong + "], sendTime[" + l1 + "], sendInterval[" + (l1 - l2) + "]");
-      paramVideoAppInterface.a().a(i, (String)localObject);
+      paramException = new StringBuilder().append("handleResponse error req:").append(paramToServiceMsg).append("|");
+      if (paramFromServiceMsg == null)
+      {
+        paramToServiceMsg = "null";
+        lbd.g("MsfServletProxy", paramToServiceMsg);
+      }
+    }
+    AppInterface localAppInterface;
+    float f;
+    Object localObject1;
+    label153:
+    boolean bool;
+    do
+    {
       return;
-      i = 0;
+      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
       break;
-      label214:
-      i = 7;
+      localAppInterface = a();
+      f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+      localObject1 = paramFromServiceMsg.getServiceCmd();
+      if (!paramBoolean) {
+        break label350;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "[RES]cmd=" + (String)localObject1 + ", app seq:" + paramFromServiceMsg.getAppSeq() + ", sec.=" + f);
+      }
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    } while (((!paramBoolean) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject1))) || (!bool));
+    if (QLog.isColorLevel()) {
+      QLog.d("MsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject1);
     }
-  }
-  
-  int a()
-  {
-    int i = 100;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 2;
-    }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
     {
-    default: 
-      return 100;
-    case 1: 
-      return 4;
-    case 2: 
-      return 3;
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      if (i > 0)
+      {
+        paramException = new byte[i];
+        PkgTools.copyData(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+        paramFromServiceMsg.putWupBuffer(paramException);
+      }
     }
-    return 5;
-  }
-  
-  void a(long paramLong1, long paramLong2)
-  {
-    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.mApp;
-    ZimuItem localZimuItem = (ZimuItem)((lir)localVideoAppInterface.a(0)).a();
-    if ((localZimuItem != null) && (!TextUtils.isEmpty(localZimuItem.getId()))) {
-      a(localVideoAppInterface, "sendToPeer", paramLong1, localZimuItem.getId(), true);
+    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
+    {
+      for (;;)
+      {
+        Object localObject2 = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+        if ((localObject2 != null) && (localObject2.length > 0))
+        {
+          int j = localObject2.length;
+          i = 0;
+          label305:
+          if (i >= j) {
+            break;
+          }
+          localObject1 = (BusinessHandler)localAppInterface.getBusinessHandler(localObject2[i]);
+          if (localObject1 != null) {}
+          try
+          {
+            ((BusinessHandler)localObject1).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
+            i += 1;
+            break label305;
+            label350:
+            if (paramException != null)
+            {
+              localObject2 = new ByteArrayOutputStream();
+              paramException.printStackTrace(new PrintStream((OutputStream)localObject2));
+              paramException = new String(((ByteArrayOutputStream)localObject2).toByteArray());
+              if (!QLog.isColorLevel()) {
+                break label153;
+              }
+              QLog.d("MsfServletProxy", 2, "[NOT SEND]cmd=" + (String)localObject1 + ", " + paramException);
+              break label153;
+            }
+            if (!QLog.isColorLevel()) {
+              break label153;
+            }
+            QLog.w("MsfServletProxy", 2, "[RES]cmd=" + (String)localObject1 + ", CODE=" + paramFromServiceMsg.getResultCode() + ", sec.=" + f);
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+              if (QLog.isColorLevel()) {
+                QLog.w("MsfServletProxy", 2, localObject1.getClass().getSimpleName() + " onReceive error,", localException);
+              }
+            }
+          }
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("MsfServletProxy", 2, " handlerIds no map " + (String)localObject1);
+      return;
     }
   }
   
-  int b()
+  public boolean a(String paramString, int[] paramArrayOfInt)
   {
-    return mum.a();
+    return a(paramString, paramArrayOfInt, false);
   }
   
-  String b()
+  public boolean a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
-    if ((localVideoController != null) && (localVideoController.a() != null)) {
-      return localVideoController.a().d;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      if (paramBoolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      }
+      return true;
     }
-    return "";
-  }
-  
-  boolean b()
-  {
-    return ((lir)((VideoAppInterface)this.mApp).a(0)).b();
-  }
-  
-  boolean c()
-  {
-    return ((lfv)this.mApp.getBusinessHandler(0)).a();
+    return false;
   }
 }
 

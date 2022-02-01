@@ -1,9 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.theme.diy.ResData;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
+import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
-public abstract interface bdbx
+@TargetApi(14)
+public class bdbx
+  extends PreviewContext
+  implements TextureView.SurfaceTextureListener, bdbm
 {
-  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
+  public bdbx(bdbf parambdbf, int paramInt1, int paramInt2)
+  {
+    super(parambdbf, paramInt1, paramInt2);
+  }
+  
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    getPreviewFrame(paramArrayOfByte, paramCamera);
+  }
+  
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    this.mCamera.a();
+    this.mCamera.a(0, paramInt1, paramInt2);
+    this.mCamera.a(paramSurfaceTexture, null, this, true);
+  }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.mCamera != null)
+    {
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
+      }
+    }
+    return true;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

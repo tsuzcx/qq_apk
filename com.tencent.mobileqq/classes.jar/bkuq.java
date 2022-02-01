@@ -1,44 +1,46 @@
-import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
 public class bkuq
-  implements EnterCallback
+  implements bkts
 {
-  public bkuq(ReaderShadowImpl.1 param1, long paramLong) {}
+  public bkuq(QSecFramework paramQSecFramework) {}
   
-  public void onCloseLoadingView()
+  public void a()
   {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
-    }
-    bkvd.c("ReaderShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
-  }
-  
-  public void onEnterComplete()
-  {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
-    }
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1002L) {
-      bkvg.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "0");
-    }
+    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
     for (;;)
     {
-      bkvd.c("ReaderShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
       return;
-      if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1003L) {
-        bkvg.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1");
+      try
+      {
+        Object[] arrayOfObject = new Object[1];
+        if ((QSecFramework.a(1L, 33751040L, bksu.a(), 0L, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
+        {
+          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
+          bksu.a = QSecFramework.a(this.a);
+          QSecFramework.a(this.a, true);
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), bksu.a(QSecFramework.a(this.a)) }));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
   }
   
-  public void onShowLoadingView(View paramView)
+  public void b()
   {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when init native.");
     }
-    bkvd.c("ReaderShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
+    bkss.a(1, 2);
   }
 }
 

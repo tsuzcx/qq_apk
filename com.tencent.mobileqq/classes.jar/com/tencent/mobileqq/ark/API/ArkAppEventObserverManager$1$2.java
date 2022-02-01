@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import aopa;
-import aopb;
-import aopj;
+import apsb;
+import apsc;
+import apsk;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class ArkAppEventObserverManager$1$2
   implements Runnable
 {
-  public ArkAppEventObserverManager$1$2(aopb paramaopb) {}
+  public ArkAppEventObserverManager$1$2(apsc paramapsc) {}
   
   public void run()
   {
-    if (aopa.a(this.a.a) != null) {
-      aopa.a(this.a.a).a(false, 0.0D, 0.0D);
+    if (apsb.a(this.a.a) != null) {
+      apsb.a(this.a.a).a(false, 0.0D, 0.0D);
     }
-    SosoInterface.removeOnLocationListener(aopa.a(this.a.a));
-    aopa.a(this.a.a, null);
+    SosoInterface.removeOnLocationListener(apsb.a(this.a.a));
+    apsb.a(this.a.a, null);
   }
 }
 

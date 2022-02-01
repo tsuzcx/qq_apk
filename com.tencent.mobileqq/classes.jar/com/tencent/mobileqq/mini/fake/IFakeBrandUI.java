@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.app.IAppUIProxy;
 
 public abstract interface IFakeBrandUI
 {
@@ -33,8 +32,6 @@ public abstract interface IFakeBrandUI
   public abstract void doRefreshMiniBadge(BaseActivity paramBaseActivity, Bundle paramBundle);
   
   public abstract void finish(BaseActivity paramBaseActivity);
-  
-  public abstract IAppUIProxy getAppUIProxy();
   
   public abstract boolean isWrapContent(BaseActivity paramBaseActivity);
   

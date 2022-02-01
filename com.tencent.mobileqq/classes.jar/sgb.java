@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public final class sgb
-  implements Parcelable.Creator<DiscoveryBannerInfo>
+class sgb
+  implements URLDrawable.URLDrawableListener
 {
-  public DiscoveryBannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryBannerInfo(paramParcel);
-  }
+  sgb(sga paramsga) {}
   
-  public DiscoveryBannerInfo[] a(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return new DiscoveryBannerInfo[paramInt];
+    if ((sga.a(this.a) != null) && (sga.a(this.a).getStatus() == 1) && ((sga.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)sga.a(this.a).getCurrDrawable();
+      sga.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

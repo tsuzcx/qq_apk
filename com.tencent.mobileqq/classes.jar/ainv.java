@@ -1,11 +1,19 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+
 class ainv
-  implements aiqz
+  implements View.OnTouchListener
 {
-  ainv(ainq paramainq) {}
+  ainv(ainu paramainu) {}
   
-  public long a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return ainq.a(this.a);
+    if (ainu.a(this.a).a() != null) {
+      ainu.a(this.a).a().a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

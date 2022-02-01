@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.core.redtouch;
 
-import auxq;
+import awdp;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -29,7 +29,7 @@ class LebaSpecificRedTouch$2$1
       localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
       localRedTypeInfo.red_type.set(5);
       this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(localRedTypeInfo);
-      auxq.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
+      awdp.a(this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaCoreRedtouchLebaSpecificRedTouch$2.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch);
     }
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pic;
 
-import ayco;
-import ayds;
-import ayeb;
+import azja;
+import azke;
+import azkn;
 
 public class BasePicOprerator$5
   implements Runnable
 {
-  public BasePicOprerator$5(ayco paramayco, ayds paramayds, ayeb paramayeb) {}
+  public BasePicOprerator$5(azja paramazja, azke paramazke, azkn paramazkn) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Ayds, this.jdField_a_of_type_Ayeb);
+    this.this$0.a(this.jdField_a_of_type_Azke, this.jdField_a_of_type_Azkn);
   }
 }
 

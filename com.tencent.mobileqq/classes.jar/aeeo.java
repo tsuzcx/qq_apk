@@ -1,24 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeeo
-  implements bjts
+  extends BroadcastReceiver
 {
-  public aeeo(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public aeeo(JumpActivity paramJumpActivity) {}
   
-  public void a(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SearchMightKnowFragment.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, true);
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeeo
  * JD-Core Version:    0.7.0.1
  */

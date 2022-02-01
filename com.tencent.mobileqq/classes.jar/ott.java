@@ -1,8 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ott
+public class ott
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView);
+  public ott(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

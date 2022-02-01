@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acod
-  extends AccountObserver
+public abstract interface acod
 {
-  public acod(AccountManageActivity paramAccountManageActivity) {}
+  public abstract boolean a(Context paramContext, QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
-  {
-    AccountManageActivity.b(this.a);
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    AccountManageActivity.b(this.a);
-  }
+  public abstract boolean a(QQMessageFacade.Message paramMessage);
 }
 
 

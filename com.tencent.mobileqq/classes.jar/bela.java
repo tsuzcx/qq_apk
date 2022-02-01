@@ -1,13 +1,15 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-
 public class bela
 {
-  public ByteArrayOutputStream a;
-  public File a;
-  public FileOutputStream a;
-  public String a;
+  public float a;
+  public int a;
+  public float b;
+  
+  public bela(bekx parambekx, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

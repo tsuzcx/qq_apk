@@ -1,27 +1,40 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import org.jetbrains.annotations.NotNull;
 
 public class vcr
-  extends vbo
 {
-  public vcr(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  private static volatile vcr jdField_a_of_type_Vcr;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public static vcr a()
   {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    if (jdField_a_of_type_Vcr == null) {}
+    try
+    {
+      if (jdField_a_of_type_Vcr == null) {
+        jdField_a_of_type_Vcr = new vcr();
+      }
+      return jdField_a_of_type_Vcr;
+    }
+    finally {}
   }
   
-  public vbl a(int paramInt)
+  @NotNull
+  private vfg a(String paramString, vct paramvct)
   {
-    return new vcz(a(), this);
+    return new vcs(this, paramvct, paramString);
   }
   
-  public boolean b()
+  public void a(String paramString1, String paramString2, vct paramvct)
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    vmp.e("WSJoinGroupDataProcessor", "requestGroupSign: UserConfig request  groupId = " + paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    if (paramvct != null) {
+      paramvct.b();
+    }
+    paramString2 = new vlh(paramString1, paramString2);
+    paramString2.b = paramString1;
+    paramString1 = new vfr(paramString2, null, a(paramString1, paramvct), 4014);
+    vfk.a().a(paramString1);
   }
 }
 

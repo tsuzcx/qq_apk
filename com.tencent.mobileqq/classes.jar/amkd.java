@@ -1,9 +1,19 @@
-import android.support.annotation.NonNull;
-import java.util.Map;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
-public abstract interface amkd
+public class amkd
+  implements Comparator<CommonlyUsedTroop>
 {
-  public abstract void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte);
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  {
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
+    }
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

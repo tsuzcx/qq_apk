@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import atky;
-import aylr;
-import ayls;
-import aylu;
-import yyi;
+import aupt;
+import azqm;
+import azqn;
+import azqp;
+import znl;
 
 class ShareHelper$1$1$1
   implements Runnable
@@ -20,10 +20,10 @@ class ShareHelper$1$1$1
     if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_Aylu.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_Azqp.a(false);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      yyi.a(1, 2131695956);
+      znl.a(1, 2131696208);
       return;
     }
     Bundle localBundle = new Bundle();
@@ -32,10 +32,10 @@ class ShareHelper$1$1$1
     localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt(atky.e, 1);
+    localBundle.putInt(aupt.e, 1);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    atky.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
+    aupt.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$1.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
   }
 }
 

@@ -1,21 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
-final class alxq
-  implements EIPCResultCallback
+public class alxq
+  implements bfes
 {
-  alxq(long paramLong, String paramString) {}
+  public alxq(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ArrayList<ResultRecord> a()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    alvx.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResultRecordList();
+  }
+  
+  public void a()
+  {
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    {
+      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        FriendTeamListInnerFrame.a(this.a).a(0);
+        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
+        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
+        if (localGroups1 != null) {
+          this.a.jdField_a_of_type_Bfeq.a();
+        }
+        if (localGroups2 != null) {
+          this.a.jdField_a_of_type_Bfeq.c();
+        }
+      }
     }
+  }
+  
+  public ArrayList<String> b()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSelectedUinList();
   }
 }
 

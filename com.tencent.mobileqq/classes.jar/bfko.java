@@ -1,13 +1,19 @@
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
 
 public class bfko
+  implements bdyw
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<bfkp> a;
-  public int b;
-  public long b;
+  public bfko(TroopEnterEffectController.3 param3) {}
+  
+  public void a(bdxz parambdxz)
+  {
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
+      return;
+    }
+    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, parambdxz));
+  }
 }
 
 

@@ -1,188 +1,296 @@
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AVGameActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.arengine.ARReport.10;
-import com.tencent.mobileqq.ar.arengine.ARReport.11;
-import com.tencent.mobileqq.ar.arengine.ARReport.12;
-import com.tencent.mobileqq.ar.arengine.ARReport.13;
-import com.tencent.mobileqq.ar.arengine.ARReport.14;
-import com.tencent.mobileqq.ar.arengine.ARReport.16;
-import com.tencent.mobileqq.ar.arengine.ARReport.2;
-import com.tencent.mobileqq.ar.arengine.ARReport.3;
-import com.tencent.mobileqq.ar.arengine.ARReport.4;
-import com.tencent.mobileqq.ar.arengine.ARReport.5;
-import com.tencent.mobileqq.ar.arengine.ARReport.6;
-import com.tencent.mobileqq.ar.arengine.ARReport.7;
-import com.tencent.mobileqq.ar.arengine.ARReport.8;
-import com.tencent.mobileqq.ar.arengine.ARReport.9;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareBase.2;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareBase.3;
+import com.tencent.mobileqq.app.avgameshare.AVGameShareBase.4;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileFilter;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.QZoneShareManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class aoji
+public abstract class aoji
 {
-  private static aoji jdField_a_of_type_Aoji;
-  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new aojj();
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public bisl a;
+  protected biyn a;
+  protected ShareActionSheet a;
+  public String a;
+  private String b;
+  private String c;
+  private String d;
   
-  public static int a()
+  public aoji(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (Build.VERSION.SDK_INT <= 10) {
-      return 1;
-    }
-    try
-    {
-      int i = new File("/sys/devices/system/cpu/").listFiles(jdField_a_of_type_JavaIoFileFilter).length;
-      return i;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      return -1;
-    }
-    catch (SecurityException localSecurityException) {}
-    return -1;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+    paramString1 = new ShareActionSheetV2.Param();
+    paramString1.context = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create(paramString1);
   }
   
-  public static aoji a()
+  public int a()
   {
-    if (jdField_a_of_type_Aoji == null) {
-      jdField_a_of_type_Aoji = new aoji();
-    }
-    return jdField_a_of_type_Aoji;
+    return this.jdField_a_of_type_Int;
   }
   
-  public static String a(Context paramContext)
+  public Activity a()
   {
-    return 2 + "";
-  }
-  
-  private boolean a(long paramLong)
-  {
-    return (paramLong >= 0L) && (paramLong <= 600000L);
+    return this.jdField_a_of_type_AndroidAppActivity;
   }
   
   public String a()
   {
-    return "un";
+    return this.c;
   }
   
-  public void a(long paramLong)
+  public String a(int paramInt)
   {
-    QLog.d("AREngine_ARReport", 2, String.format("report  WebView mTotal:  %s ", new Object[] { Long.valueOf(paramLong) }));
-    if (!a(paramLong)) {
+    return "";
+  }
+  
+  public String a(long paramLong)
+  {
+    String str2 = String.valueOf(paramLong);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (str2.length() < 9) {
+        str1 = "000000000".substring(0, 9 - str2.length()) + str2;
+      }
+    }
+    return str1;
+  }
+  
+  protected List<ShareActionSheetBuilder.ActionSheetItem> a()
+  {
+    QLog.d("AVGameShareBase", 1, "getPathsLines");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+    return localArrayList;
+  }
+  
+  protected void a()
+  {
+    QLog.d("AVGameShareBase", 1, "shareLinkToQzone");
+    QZoneShareData localQZoneShareData = new QZoneShareData();
+    if (TextUtils.isEmpty(c())) {
+      localQZoneShareData.mSummary = "邀请你加入派对";
+    }
+    for (localQZoneShareData.mDefaultForwardReason = "邀请你加入派对";; localQZoneShareData.mDefaultForwardReason = (c() + "邀请你加入派对"))
+    {
+      localQZoneShareData.mTitle = "QQ一起派对";
+      localQZoneShareData.mImageUrls = new ArrayList();
+      localQZoneShareData.mImageUrls.add(f());
+      if (b())
+      {
+        localQZoneShareData.mSummary = e();
+        localQZoneShareData.mDefaultForwardReason = e();
+        localQZoneShareData.mTitle = d();
+      }
+      localQZoneShareData.targetUrl = a();
+      localQZoneShareData.from = 0;
+      QZoneShareManager.shareToQzone(a(), b(), localQZoneShareData, null, b());
+      return;
+      localQZoneShareData.mSummary = (c() + "邀请你加入派对");
+    }
+  }
+  
+  protected void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Biyn != null) {
       return;
     }
-    ThreadManager.post(new ARReport.5(this, paramLong), 5, null, false);
+    this.jdField_a_of_type_Biyn = new aojj(this, paramInt);
+    WXShareHelper.a().a(this.jdField_a_of_type_Biyn);
   }
   
-  public void a(long paramLong, int paramInt)
+  protected void a(Activity paramActivity)
   {
-    QLog.d("AREngine_ARReport", 2, String.format("report   AREngineinitAR mTotal:  %s  result:  %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) }));
-    if (!a(paramLong)) {
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(paramActivity);
+    }
+  }
+  
+  protected void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    int i = paramActionSheetItem.action;
+    QLog.d("AVGameShareBase", 1, "handleClickMenuItem action: " + i);
+    switch (i)
+    {
+    default: 
+      QLog.e("AVGameShareBase", 1, "handleClickMenuItem not support action: " + i);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      return;
+      d();
+      continue;
+      b(paramActionSheetItem);
+      continue;
+      e();
+      continue;
+      f(i);
+      continue;
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected int b()
+  {
+    return AVGameActivity.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String b(int paramInt)
+  {
+    return "";
+  }
+  
+  protected List<ShareActionSheetBuilder.ActionSheetItem> b()
+  {
+    QLog.d("AVGameShareBase", 1, "getOperationsLines");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(160));
+    return localArrayList;
+  }
+  
+  protected void b()
+  {
+    try
+    {
+      Object localObject = nfc.a().a();
+      long l = ((nfv)localObject).a();
+      QLog.d("AVGameShareBase", 1, "copyRoomId: " + l);
+      int i = ((nfv)localObject).d();
+      bdla.b(null, "dc00898", "", "", "0X800B066", "0X800B066", i, 0, "5", String.valueOf(l), "", "");
+      bdla.b(null, "dc00898", "", "", "0X800B067", "0X800B067", i, 0, "", String.valueOf(l), "", "");
+      String str = nfc.a().a().getCurrentAccountUin();
+      localObject = ((nfv)localObject).a().getNick(str);
+      ((ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("avgame_share_copy_room_id_label", String.format(a().getString(2131690308), new Object[] { localObject, a(), a(l) })));
+      nom.a().b().post(new AVGameShareBase.4(this));
       return;
     }
-    ThreadManager.post(new ARReport.16(this, paramLong, paramInt), 5, null, false);
+    catch (Exception localException)
+    {
+      QLog.e("AVGameShareBase", 1, "copyRoomId error: " + localException.getMessage());
+    }
   }
   
-  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3)
+  protected void b(int paramInt) {}
+  
+  protected abstract void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem);
+  
+  protected boolean b()
   {
-    QLog.d("AREngine_ARReport", 2, String.format("report  selectImg   mSelectTime=:  %s  mUploadTime=:  %s mImgSize=:  %s  mUploadTimes=:  %s  mImageId=:  %s mCloudTime=:  %s mCloudAllSize=:  %s mCloudAllTime=:  %s mtotaltime=:  %s  mResult=:  %s ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Long.valueOf(paramLong6), Integer.valueOf(paramInt3) }));
-    if (paramInt1 < 1) {
+    return false;
+  }
+  
+  public String c()
+  {
+    return this.d;
+  }
+  
+  public abstract void c();
+  
+  protected void c(int paramInt)
+  {
+    QQToast.a(a(), 1, 2131690496, 0).a();
+  }
+  
+  protected String d()
+  {
+    return "";
+  }
+  
+  protected abstract void d();
+  
+  protected void d(int paramInt)
+  {
+    QQToast.a(a(), 1, 2131690496, 0).a();
+  }
+  
+  protected String e()
+  {
+    return "";
+  }
+  
+  protected abstract void e();
+  
+  protected void e(int paramInt)
+  {
+    Object localObject = a();
+    HashMap localHashMap = new HashMap(1);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("AVGameShareBase", 1, "shareLinkToWeChat error: params wrong");
+      QQToast.a(a(), 1, 2131690497, 0).a();
       return;
     }
-    ThreadManager.post(new ARReport.3(this, paramLong1, paramLong2, paramLong3, paramInt1, paramString, paramInt2, paramLong4, paramLong5, paramLong6, paramInt3), 5, null, false);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report Local mDataReportLoadedFeatureTimeLen=:  %s  mDataReportLoadedFeatureCnt=:  %s mDataReportFirstRecogSuccessTimeLen=:  %s  mDataReportFirstRecogSuccessFrameCnt=:  %s  mDataReportRecogQuality=:  %s mDataReportFirstRecogSuccessFeatureId=:  %s  ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), paramString }));
-    ThreadManager.post(new ARReport.4(this, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString), 5, null, false);
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report  ARLocalControlint mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!WXShareHelper.a().a())
+    {
+      QLog.e("AVGameShareBase", 1, "shareLinkToWeChat error: wechat not install");
+      QQToast.a(a(), 1, 2131720175, 0).a();
       return;
     }
-    ThreadManager.post(new ARReport.7(this, paramLong, paramBoolean), 5, null, false);
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report  CloudDownload   mImageId=:  %s mFeatureSize=:  %s mFeatureTime=:  %s mFeatureCode=:  %s  mModedSize=:  %s  mModelTime=:  %s mModelCode=:  %s mUnzipeTime=:  %s mType=:  %s totalTime=:  %s  mNetSize=:  %s mResult=:  %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt1), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Integer.valueOf(paramInt2), Long.valueOf(paramLong5), Integer.valueOf(paramInt3), Long.valueOf(paramLong6), Long.valueOf(paramLong7), Integer.valueOf(paramInt4) }));
-    ThreadManager.post(new ARReport.2(this, paramString, paramLong1, paramLong2, paramInt1, paramLong3, paramLong4, paramInt2, paramLong5, paramInt3, paramLong6, paramLong7, paramInt4), 5, null, false);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report  ARMarkerResourceManagerint mTotal:  %s ", new Object[] { Long.valueOf(paramLong) }));
-    if (!a(paramLong)) {
+    if (!WXShareHelper.a().b())
+    {
+      QLog.e("AVGameShareBase", 1, "shareLinkToWeChat error: wechat version not support");
+      QQToast.a(a(), 1, 2131720176, 0).a();
       return;
     }
-    ThreadManager.post(new ARReport.6(this, paramLong), 5, null, false);
+    a(paramInt);
+    localObject = new AVGameShareBase.2(this, localHashMap, paramInt, (String)localObject);
+    a(a());
+    this.jdField_a_of_type_Bisl.c(2131693769);
+    this.jdField_a_of_type_Bisl.show();
+    ThreadManager.post(new AVGameShareBase.3(this, localHashMap, (Runnable)localObject), 8, null, false);
   }
   
-  public void b(long paramLong, boolean paramBoolean)
+  protected String f()
   {
-    QLog.d("AREngine_ARReport", 2, String.format("report  ARCloudControlSo mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.8(this, paramLong, paramBoolean), 5, null, false);
+    return "https://qqvgame.qq.com/0e7d77945e6e86568d67a788d8c6874a.png";
   }
   
-  public void c(long paramLong)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report   SensorTrackManagerInit mTotal:  %s ", new Object[] { Long.valueOf(paramLong) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.14(this, paramLong), 5, null, false);
-  }
+  protected abstract void f(int paramInt);
   
-  public void c(long paramLong, boolean paramBoolean)
+  public String g()
   {
-    QLog.d("AREngine_ARReport", 2, String.format("report  ARCloudControlinit mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.9(this, paramLong, paramBoolean), 5, null, false);
-  }
-  
-  public void d(long paramLong, boolean paramBoolean)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report   ARLocalMarkerRecoglinit mTotal:  %s result:   %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.10(this, paramLong, paramBoolean), 5, null, false);
-  }
-  
-  public void e(long paramLong, boolean paramBoolean)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report   ARLocalMarkerRecoglSo mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.11(this, paramLong, paramBoolean), 5, null, false);
-  }
-  
-  public void f(long paramLong, boolean paramBoolean)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report   ARNativeBridgeSo mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.12(this, paramLong, paramBoolean), 5, null, false);
-  }
-  
-  public void g(long paramLong, boolean paramBoolean)
-  {
-    QLog.d("AREngine_ARReport", 2, String.format("report   ARLocalFaceRecogInit mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
-      return;
-    }
-    ThreadManager.post(new ARReport.13(this, paramLong, paramBoolean), 5, null, false);
+    return "https://qqvgame.qq.com/b4feec84dbadde0df6eb60ea0437aad1.png";
   }
 }
 

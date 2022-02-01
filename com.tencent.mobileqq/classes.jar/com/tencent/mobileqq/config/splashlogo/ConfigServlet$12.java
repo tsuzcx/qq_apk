@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import ajul;
+import akqe;
 import android.text.TextUtils;
-import aqlw;
-import bfyz;
+import arph;
+import bhhr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -17,19 +18,19 @@ import org.json.JSONObject;
 public class ConfigServlet$12
   implements Runnable
 {
-  public ConfigServlet$12(aqlw paramaqlw, ConfigurationService.Config paramConfig) {}
+  public ConfigServlet$12(arph paramarph, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     int n = 0;
     QQAppInterface localQQAppInterface = (QQAppInterface)this.this$0.getAppRuntime();
-    ajul localajul = (ajul)localQQAppInterface.getManager(125);
+    akqe localakqe = (akqe)localQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
     HashSet localHashSet = new HashSet();
-    int j = bfyz.H(localQQAppInterface.getApp(), aqlw.a);
+    int j = bhhr.H(localQQAppInterface.getApp(), arph.a);
     int i = this.a.version.get();
     if (i != j) {
       if (i == j) {
-        break label504;
+        break label505;
       }
     }
     for (;;)
@@ -99,8 +100,8 @@ public class ConfigServlet$12
       {
         try
         {
-          bfyz.o(localQQAppInterface.getApp(), aqlw.a, m);
-          localajul.a(localHashSet);
+          bhhr.o(localQQAppInterface.getApp(), arph.a, m);
+          localakqe.a(localHashSet);
           i = 1;
         }
         catch (Exception localException1)
@@ -114,7 +115,7 @@ public class ConfigServlet$12
           continue;
         }
         if (i == 0) {
-          localajul.f();
+          localakqe.f();
         }
         return;
         if (QLog.isColorLevel()) {
@@ -124,7 +125,7 @@ public class ConfigServlet$12
         break;
         i = 0;
       }
-      label504:
+      label505:
       i = j;
     }
   }

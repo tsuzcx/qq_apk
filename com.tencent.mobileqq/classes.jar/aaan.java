@@ -1,179 +1,56 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.util.SparseArray;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 public class aaan
-  extends WebViewPlugin
+  implements IVideoInnerStatusListener
 {
-  private static int jdField_a_of_type_Int = 1;
-  private SparseArray<WeakReference<aaap>> jdField_a_of_type_AndroidUtilSparseArray;
+  public aaan(VideoPlayerView paramVideoPlayerView) {}
   
-  public aaan()
+  public void notifyVideoClose(int paramInt)
   {
-    this.mPluginNameSpace = "redEnvelope";
-  }
-  
-  private static int a()
-  {
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    return i;
-  }
-  
-  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    paramString1 = new Intent(paramString1);
-    paramString1.putExtra("portal_type_key", paramInt1);
-    paramString1.putExtra("portal_agrs", paramString2);
-    paramString1.putExtra("bc_seq", paramInt2);
-    if (this.mRuntime.a() != null) {
-      this.mRuntime.a().sendBroadcast(paramString1, "com.tencent.msg.permission.pushnotify");
-    }
-  }
-  
-  int a(String paramString)
-  {
-    if ("getRankingList".endsWith(paramString)) {
-      return 1008;
-    }
-    if ("getHead".endsWith(paramString)) {
-      return 1009;
-    }
-    if ("getJumpBtnState".endsWith(paramString)) {
-      return 1010;
-    }
-    if ("getNick".endsWith(paramString)) {
-      return 1011;
-    }
-    if ("takePhoto".endsWith(paramString)) {
-      return 1012;
-    }
-    return -1;
-  }
-  
-  aaap a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(12);
-    }
-    Object localObject = new aaap(this, null);
-    ((aaap)localObject).jdField_a_of_type_Int = paramInt;
-    localObject = new WeakReference(localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
-    return (aaap)((WeakReference)localObject).get();
-  }
-  
-  void a(BroadcastReceiver paramBroadcastReceiver, String paramString)
-  {
-    paramString = new IntentFilter(paramString);
-    if (this.mRuntime.a() != null) {
-      this.mRuntime.a().registerReceiver(paramBroadcastReceiver, paramString, "com.tencent.msg.permission.pushnotify", null);
-    }
-  }
-  
-  void a(String paramString, String... paramVarArgs)
-  {
-    callJs(paramString, paramVarArgs);
-  }
-  
-  boolean a(int paramInt)
-  {
-    if (paramInt <= 0) {
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      return false;
-    }
-    Object localObject = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localObject == null) {
-      return false;
-    }
-    localObject = (aaap)((WeakReference)localObject).get();
-    if (localObject == null) {
-      return false;
-    }
-    try
+    VideoPlayerView.b(this.a, false);
+    if (VideoPlayerView.a(this.a) != null)
     {
-      this.mRuntime.a().unregisterReceiver((BroadcastReceiver)localObject);
-      return true;
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.a(this.a, null);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-      }
-    }
+    VideoPlayerView.a(this.a, null);
+    this.a.i();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void notifyVideoSeek(int paramInt)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager.HbEventPlugin", 2, "handleJsRequest: " + paramString3 + "," + paramVarArgs);
-    }
-    boolean bool1 = bool2;
-    int i;
-    if ("redEnvelope".endsWith(paramString2)) {
-      if ((!"getRankingList".endsWith(paramString3)) && (!"getHead".endsWith(paramString3)) && (!"getJumpBtnState".endsWith(paramString3)) && (!"getNick".endsWith(paramString3)))
-      {
-        bool1 = bool2;
-        if (!"takePhoto".endsWith(paramString3)) {}
-      }
-      else
-      {
-        i = a();
-        paramJsBridgeListener = a(i);
-        a(paramJsBridgeListener, "com.tencent.portal.resp.action");
-        if (paramVarArgs == null) {}
-      }
-    }
-    try
-    {
-      if (paramVarArgs.length > 0)
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramJsBridgeListener.jdField_a_of_type_JavaLangString = paramString1.getString("callback");
-        paramJsBridgeListener.b = paramString1.getJSONObject("params").toString();
-      }
-      a("com.tencent.portal.req.action", a(paramString3), i, paramJsBridgeListener.b);
-      bool1 = true;
-      return bool1;
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
+    this.a.a(paramInt * this.a.a().getDurationMs() / 100L);
   }
   
-  public void onDestroy()
+  public void notifyVideoStart()
   {
-    super.onDestroy();
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
+    if (this.a.a().getCurrentPositionMs() < this.a.a().getDurationMs())
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-      {
-        aaap localaaap = (aaap)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
-        if (localaaap != null) {
-          a(localaaap.jdField_a_of_type_Int);
-        }
-        i += 1;
-      }
+      this.a.e();
+      return;
     }
+    if (VideoPlayerView.b(this.a))
+    {
+      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
+      return;
+    }
+    this.a.a().setLoopback(true);
+    this.a.h();
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+    }
+    QLog.d("VideoPlayerView", 4, "no more, player repeat");
+  }
+  
+  public void notifyVideoStop()
+  {
+    this.a.f();
   }
 }
 

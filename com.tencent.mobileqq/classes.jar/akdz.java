@@ -1,62 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
 class akdz
-  implements akbj
+  implements View.OnTouchListener
 {
-  akdz(akdw paramakdw, akea paramakea) {}
+  akdz(akdt paramakdt) {}
   
-  private void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Akea != null) {
-      this.jdField_a_of_type_Akea.a(false);
-    }
-  }
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      try
-      {
-        String str = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
-        paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
-        if ((!new File(str).exists()) || (!new File(paramPathResult).exists()))
-        {
-          QLog.e("DrawClassifier", 1, "init fail file not exist");
-          a();
-          return;
-        }
-        akdw.a(this.jdField_a_of_type_Akdw, new akdp(str, paramPathResult));
-        if (this.jdField_a_of_type_Akea != null) {
-          this.jdField_a_of_type_Akea.a(true);
-        }
-        akdw.a(this.jdField_a_of_type_Akdw, true);
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("DrawClassifier", 2, "init success");
-        return;
-      }
-      catch (Throwable paramPathResult)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
-        }
-        paramPathResult.printStackTrace();
-        a();
-        return;
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DrawClassifier", 2, "init download fail");
-      }
-      a();
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

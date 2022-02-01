@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.DeliverGiftMsg;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acuf
-  extends anau
+  extends acve
 {
-  public acuf(AuthDevRenameActivity paramAuthDevRenameActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  public int a()
   {
-    AuthDevRenameActivity.a(this.a);
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a, this.a.getString(2131691904), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    this.a.finish();
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.deliver_gift_msg.has();
   }
 }
 

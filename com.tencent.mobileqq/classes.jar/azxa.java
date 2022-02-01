@@ -1,103 +1,20 @@
-import android.text.TextUtils;
-import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class azxa
-  extends andd
+  extends bhix
 {
-  azxa(azwy paramazwy) {}
-  
-  protected void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
+  azxa(azwx paramazwx, int paramInt)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
-      }
-      if (paramBoolean)
-      {
-        paramObject = (Object[])paramObject;
-        long l = ((Long)paramObject[0]).longValue();
-        paramObject = (TroopMemberCard)paramObject[2];
-        if (String.valueOf(l).equals(azwy.a(this.a)))
-        {
-          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
-          if (paramObject.lastSpeak > paramObject.joinTime) {
-            return;
-          }
-          azwy.a(this.a, String.valueOf(l));
-          return;
-        }
-      }
-    }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
-      }
-    }
+    super(paramInt);
   }
   
-  protected void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
+  public void a()
   {
-    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 2, i);
-      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
-        break label76;
-      }
-    }
-    label76:
-    while (!paramString.equals(azwy.a(this.a)))
-    {
-      return;
-      i = paramList.size();
-      break;
-    }
-    localObject = (amsw)this.a.a.getManager(51);
-    String str1 = this.a.a.getCurrentAccountUin();
-    int k = paramList.size();
-    int j = 0;
-    int i = 0;
-    label133:
-    if (j < k)
-    {
-      String str2 = (String)((Pair)paramList.get(j)).first;
-      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((amsw)localObject).b(str2))) {
-        break label283;
-      }
-      i += 1;
-    }
-    label283:
-    for (;;)
-    {
-      j += 1;
-      break label133;
-      float f = azwy.a(this.a) / 100.0F;
-      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
-      if (1.0F * i / (paramList.size() - 1) <= f) {
-        break;
-      }
-      this.a.f(paramString);
-      return;
-    }
-  }
-  
-  protected void onPassiveExit(String paramString, int paramInt)
-  {
-    this.a.g(paramString);
-  }
-  
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
-  {
-    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2))) {
-      this.a.g(paramString);
-    }
+    bhaa.a(azwx.a(this.a), azwx.c(this.a).getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
+    bdla.b(azwx.d(this.a), "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
+    VasWebviewUtil.reportCommercialDrainage(azwx.e(this.a).getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
+    azwx.a(this.a, 2);
   }
 }
 

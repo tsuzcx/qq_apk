@@ -1,70 +1,26 @@
-import android.content.res.Resources;
-import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mgm
-  extends lff
+class mgm
+  implements View.OnClickListener
 {
-  public mgm(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  mgm(mgj parammgj) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
-    {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
-      return;
+    if (this.a.a.a != null) {
+      this.a.a.a.j();
     }
-    if (paramLong != this.a.jdField_a_of_type_Long)
-    {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
-      this.a.b(paramInt2);
-      return;
-    }
-    if (paramInt3 == -5)
-    {
-      if (this.a.jdField_a_of_type_Boolean) {
-        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
-          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
-        }
-      }
-      for (;;)
-      {
-        QQToast.a(this.a, 2131692893, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131299076));
-        return;
-        this.a.jdField_a_of_type_Mgl.b.setVisibility(8);
-      }
-    }
-    QQToast.a(this.a, 2131692892, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131299076));
-  }
-  
-  protected void c(long paramLong)
-  {
-    super.c(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
-      }
-      this.a.finish();
-    }
+    bdla.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mgm
  * JD-Core Version:    0.7.0.1
  */

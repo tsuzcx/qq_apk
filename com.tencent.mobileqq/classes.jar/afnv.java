@@ -1,53 +1,9 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import Wallet.AcsMsg;
+import java.util.List;
 
-public class afnv
-  extends aptq<afnw>
+public abstract interface afnv
 {
-  @NonNull
-  public afnw a(int paramInt)
-  {
-    return new afnw();
-  }
-  
-  @Nullable
-  public afnw a(aptx[] paramArrayOfaptx)
-  {
-    afnw localafnw = new afnw();
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
-      afnw.a(localafnw, paramArrayOfaptx[0].a);
-    }
-    return localafnw;
-  }
-  
-  public void a(afnw paramafnw) {}
-  
-  public Class<afnw> clazz()
-  {
-    return afnw.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 592;
-  }
+  public abstract void a(List<AcsMsg> paramList);
 }
 
 

@@ -1,24 +1,44 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import com.tencent.kwstudio.office.base.IGlobal;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
+import java.io.File;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
 
-class aujo
-  implements EIPCResultCallback
+public final class aujo
+  implements IGlobal
 {
-  aujo(aujn paramaujn, long paramLong) {}
+  private final TdsReaderGlobal a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private aujo(TdsReaderGlobal paramTdsReaderGlobal)
   {
-    switch (paramEIPCResult.code)
-    {
+    this.a = paramTdsReaderGlobal;
+  }
+  
+  public Context getApplicationContext()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public Executor getExecutor()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public String getFileDir()
+  {
+    Context localContext = getApplicationContext();
+    File localFile2 = localContext.getExternalFilesDir(null);
+    File localFile1 = localFile2;
+    if (localFile2 == null) {
+      localFile1 = localContext.getFilesDir();
     }
-    for (;;)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - aujn.a(this.jdField_a_of_type_Aujn)), String.valueOf(this.jdField_a_of_type_Long), "", "");
-      return;
-      aujn.a(this.jdField_a_of_type_Aujn).a(2, paramEIPCResult.data);
-      continue;
-      aujn.a(this.jdField_a_of_type_Aujn).a(1, paramEIPCResult.data);
-    }
+    return localFile1.getAbsolutePath();
+  }
+  
+  public InputStream getResourceAsStream(String paramString)
+  {
+    return null;
   }
 }
 

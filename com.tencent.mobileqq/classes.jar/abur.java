@@ -1,61 +1,24 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.mobileqq.transfile.DiskCache;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.vas.VasApngIPCModule;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.gamecenter.common.util.ReportInfoManager;
 
 public class abur
-  extends URLDrawableParams
+  extends Handler
 {
-  Context a;
+  public abur(ReportInfoManager paramReportInfoManager, long paramLong) {}
   
-  public abur(Context paramContext, File paramFile)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext);
-    this.a = paramContext;
-    com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new DiskCache(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
-    {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new HttpDownloader(bool, paramObject);
-        bool = false;
-      }
+    super.handleMessage(paramMessage);
+    if (paramMessage == null) {
+      return;
     }
-    return null;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return VasApngIPCModule.getInstance();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847755);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847755);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    abuy.a("post report", this.jdField_a_of_type_Long, (short)1);
   }
 }
 

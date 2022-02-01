@@ -1,10 +1,16 @@
-public abstract interface atgq
+class atgq
+  implements athg
 {
-  public abstract void a(String paramString);
+  atgq(atfq paramatfq) {}
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    atfq.e(this.a, paramArrayOfObject[2]);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
 public class aizb
-  implements View.OnTouchListener
+  extends blfl
 {
-  public aizb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public Button a;
+  public TroopLabelLayout a;
+  public ImageView f;
+  public String f;
+  public TextView h;
+  public TextView i;
+  public TextView j;
+  public TextView k;
+  public TextView l;
+  public TextView m;
+  public TextView n;
 }
 
 

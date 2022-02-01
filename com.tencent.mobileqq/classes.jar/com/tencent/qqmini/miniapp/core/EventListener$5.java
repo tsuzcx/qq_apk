@@ -1,17 +1,15 @@
 package com.tencent.qqmini.miniapp.core;
 
-import com.tencent.qqmini.miniapp.core.page.IAppBrandPageContainer;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.MiniSDK;
 
 class EventListener$5
   implements Runnable
 {
-  EventListener$5(EventListener paramEventListener, IAppBrandPageContainer paramIAppBrandPageContainer, int paramInt, RequestEvent paramRequestEvent) {}
+  EventListener$5(EventListener paramEventListener) {}
   
   public void run()
   {
-    this.val$pageContainer.navigateBack(this.val$delta, this.val$req.callbackId);
-    this.val$req.ok();
+    MiniSDK.startMiniApp(this.this$0.mRuntime.getAttachedActivity(), EventListener.access$200(this.this$0), null, null);
   }
 }
 

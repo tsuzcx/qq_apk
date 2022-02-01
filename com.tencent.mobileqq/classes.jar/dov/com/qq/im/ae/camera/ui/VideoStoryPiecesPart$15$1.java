@@ -2,7 +2,7 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bloe;
+import bnbp;
 import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
@@ -13,16 +13,16 @@ class VideoStoryPiecesPart$15$1
   
   public void run()
   {
-    if ((bloe.a(this.a.this$0) != null) && (bloe.a(this.a.this$0) != null))
+    if ((bnbp.a(this.a.this$0) != null) && (bnbp.a(this.a.this$0) != null))
     {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bloe.a(this.a.this$0));
-      int i = AIOUtils.dp2px(36.0F, bloe.a(this.a.this$0).getResources());
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bnbp.a(this.a.this$0));
+      int i = AIOUtils.dp2px(36.0F, bnbp.a(this.a.this$0).getResources());
       localBitmapDrawable.setBounds(0, 0, i, i);
-      bloe.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
-      bloe.a(this.a.this$0).setEnabled(true);
+      bnbp.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
+      bnbp.a(this.a.this$0).setEnabled(true);
       return;
     }
-    bloe.a(this.a.this$0).setEnabled(false);
+    bnbp.a(this.a.this$0).setEnabled(false);
   }
 }
 

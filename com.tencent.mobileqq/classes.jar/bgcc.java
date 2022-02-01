@@ -1,168 +1,56 @@
-import java.util.Arrays;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bgcc
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  bgcc(bgcb parambgcb) {}
   
-  bgcc(bgca parambgca, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    a();
-  }
-  
-  final int a()
-  {
-    return (this.e - this.d + 1) * (this.g - this.f + 1) * (this.i - this.h + 1);
-  }
-  
-  final bgcc a()
-  {
-    if (!a()) {
-      throw new IllegalStateException("Can not split a box with only 1 color");
-    }
-    int j = d();
-    bgcc localbgcc = new bgcc(this.jdField_a_of_type_Bgca, j + 1, this.b);
-    this.b = j;
-    a();
-    return localbgcc;
-  }
-  
-  final bgcj a()
-  {
-    int i1 = 0;
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bgca.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bgca.b;
-    int n = this.jdField_a_of_type_Int;
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    while (n <= this.b)
+    if (paramView == null) {}
+    for (;;)
     {
-      int i2 = arrayOfInt1[n];
-      int i3 = arrayOfInt2[i2];
-      i1 += i3;
-      m += bgca.a(i2) * i3;
-      k += bgca.b(i2) * i3;
-      j += bgca.c(i2) * i3;
-      n += 1;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((paramView == bgcb.a(this.a)) && (bgcb.a(this.a).app != null) && (bgcb.a(this.a) != null))
+      {
+        Object localObject = new int[2];
+        paramView.getLocationOnScreen((int[])localObject);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131377636);
+        if (bgcb.a(this.a) != null)
+        {
+          if (!bgcb.a(this.a).a())
+          {
+            if (bgcb.a(this.a).a() > 5) {}
+            for (int i = ViewUtils.dip2px(247.0F);; i = ViewUtils.dip2px(bgcb.a(this.a).a() * 40 + 7))
+            {
+              bgcb.a(this.a).b(paramView, paramView.getWidth(), 0, localObject[0] - ViewUtils.dip2px(175.0F) / 2, localObject[1] - i);
+              localImageView.setImageResource(2130846205);
+              localObject = (TextView)bgcb.a(this.a).findViewById(2131377623);
+              if (localObject == null) {
+                break;
+              }
+              ((TextView)localObject).setVisibility(4);
+              break;
+            }
+          }
+          bgcb.a(this.a).d();
+        }
+      }
+      else
+      {
+        bgcb.a(this.a).onClick(paramView);
+        if (bgcb.a(this.a) != null) {
+          bgcb.a(this.a).a(paramView, 0);
+        }
+      }
     }
-    return new bgcj(bgca.a(Math.round(m / i1), Math.round(k / i1), Math.round(j / i1)), i1);
-  }
-  
-  final void a()
-  {
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bgca.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bgca.b;
-    int n = -2147483648;
-    int i5 = 0;
-    int m = this.jdField_a_of_type_Int;
-    int i6 = -2147483648;
-    int j = 2147483647;
-    int k = 2147483647;
-    int i3 = 2147483647;
-    int i2 = -2147483648;
-    while (m <= this.b)
-    {
-      int i1 = arrayOfInt1[m];
-      int i9 = i5 + arrayOfInt2[i1];
-      int i8 = bgca.a(i1);
-      int i7 = bgca.b(i1);
-      i5 = bgca.c(i1);
-      i1 = i6;
-      if (i8 > i6) {
-        i1 = i8;
-      }
-      int i4 = i3;
-      if (i8 < i3) {
-        i4 = i8;
-      }
-      i3 = i2;
-      if (i7 > i2) {
-        i3 = i7;
-      }
-      i8 = k;
-      if (i7 < k) {
-        i8 = i7;
-      }
-      i2 = n;
-      if (i5 > n) {
-        i2 = i5;
-      }
-      k = j;
-      if (i5 < j) {
-        k = i5;
-      }
-      m += 1;
-      i5 = i9;
-      n = i2;
-      i2 = i3;
-      i6 = i1;
-      j = k;
-      k = i8;
-      i3 = i4;
-    }
-    this.d = i3;
-    this.e = i6;
-    this.f = k;
-    this.g = i2;
-    this.h = j;
-    this.i = n;
-    this.c = i5;
-  }
-  
-  final boolean a()
-  {
-    return b() > 1;
-  }
-  
-  final int b()
-  {
-    return this.b + 1 - this.jdField_a_of_type_Int;
-  }
-  
-  final int c()
-  {
-    int j = this.e - this.d;
-    int k = this.g - this.f;
-    int m = this.i - this.h;
-    if ((j >= k) && (j >= m)) {
-      return -3;
-    }
-    if ((k >= j) && (k >= m)) {
-      return -2;
-    }
-    return -1;
-  }
-  
-  final int d()
-  {
-    int j = c();
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bgca.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bgca.b;
-    bgca.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
-    Arrays.sort(arrayOfInt1, this.jdField_a_of_type_Int, this.b + 1);
-    bgca.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
-    int m = this.c / 2;
-    j = this.jdField_a_of_type_Int;
-    int k = 0;
-    while (j <= this.b)
-    {
-      k += arrayOfInt2[arrayOfInt1[j]];
-      if (k >= m) {
-        return Math.min(this.b - 1, j);
-      }
-      j += 1;
-    }
-    return this.jdField_a_of_type_Int;
   }
 }
 

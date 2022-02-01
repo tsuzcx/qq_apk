@@ -7,7 +7,7 @@ import com.dataline.activities.LiteMutiPicViewerActivity.2.5;
 import com.dataline.activities.LiteMutiPicViewerActivity.2.6;
 
 public class cq
-  extends amqk
+  extends ansy
 {
   public cq(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
   

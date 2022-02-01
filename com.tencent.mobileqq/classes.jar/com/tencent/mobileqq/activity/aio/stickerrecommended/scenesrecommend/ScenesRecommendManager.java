@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend;
 
-import ahom;
-import ahoo;
-import ahop;
+import aijh;
+import aijj;
+import aijk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -22,9 +23,9 @@ public class ScenesRecommendManager
   extends BroadcastReceiver
   implements Manager
 {
-  ahoo jdField_a_of_type_Ahoo;
+  aijj jdField_a_of_type_Aijj;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  List<ahom> jdField_a_of_type_JavaUtilList = null;
+  List<aijh> jdField_a_of_type_JavaUtilList = null;
   
   public ScenesRecommendManager() {}
   
@@ -38,67 +39,67 @@ public class ScenesRecommendManager
   
   public static ScenesRecommendManager a(QQAppInterface paramQQAppInterface)
   {
-    return (ScenesRecommendManager)paramQQAppInterface.getManager(364);
+    return (ScenesRecommendManager)paramQQAppInterface.getManager(QQManagerFactory.SCENES_REC_EMO_MANAGER);
   }
   
-  private void a(ahom paramahom)
+  private void a(aijh paramaijh)
   {
-    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramahom.a());
-    if (this.jdField_a_of_type_Ahoo == null) {
+    QLog.i("ScenesRecommendManager", 0, "doScenesEmotionRecommend ScenesRecommendItem is " + paramaijh.a());
+    if (this.jdField_a_of_type_Aijj == null) {
       return;
     }
-    this.jdField_a_of_type_Ahoo.a(paramahom);
+    this.jdField_a_of_type_Aijj.a(paramaijh);
   }
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Ahoo == null) {
+    if (this.jdField_a_of_type_Aijj == null) {
       return false;
     }
-    return this.jdField_a_of_type_Ahoo.a(paramString);
+    return this.jdField_a_of_type_Aijj.a(paramString);
   }
   
-  private ahom b(String paramString)
+  private aijh b(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    ahom localahom;
+    aijh localaijh;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localahom = (ahom)localIterator.next();
-    } while ((localahom.d() == null) || (!localahom.d().equalsIgnoreCase(paramString)));
-    for (paramString = localahom;; paramString = null) {
+      localaijh = (aijh)localIterator.next();
+    } while ((localaijh.d() == null) || (!localaijh.d().equalsIgnoreCase(paramString)));
+    for (paramString = localaijh;; paramString = null) {
       return paramString;
     }
   }
   
-  public ahom a(String paramString)
+  public aijh a(String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    ahom localahom;
+    aijh localaijh;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localahom = (ahom)localIterator.next();
-    } while ((localahom.a() == null) || (!localahom.a().equalsIgnoreCase(paramString)));
-    for (paramString = localahom;; paramString = null) {
+      localaijh = (aijh)localIterator.next();
+    } while ((localaijh.a() == null) || (!localaijh.a().equalsIgnoreCase(paramString)));
+    for (paramString = localaijh;; paramString = null) {
       return paramString;
     }
   }
   
   public void a()
   {
-    String str = ahop.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = aijk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     QLog.i("ScenesRecommendManager", 0, "loadConfigFromLoacl config is " + str);
     a(str);
   }
@@ -124,9 +125,9 @@ public class ScenesRecommendManager
     }
   }
   
-  public void a(ahoo paramahoo)
+  public void a(aijj paramaijj)
   {
-    this.jdField_a_of_type_Ahoo = paramahoo;
+    this.jdField_a_of_type_Aijj = paramaijj;
   }
   
   public void a(String paramString)
@@ -139,7 +140,7 @@ public class ScenesRecommendManager
     }
     for (;;)
     {
-      paramString = ahop.a(paramString);
+      paramString = aijk.a(paramString);
       if (paramString == null) {
         break;
       }

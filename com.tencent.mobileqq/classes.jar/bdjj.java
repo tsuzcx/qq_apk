@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-public abstract class bdjj
-  implements INetInfoHandler
+public final class bdjj
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  protected abstract void a();
+  public bdjj(bdgy parambdgy) {}
   
-  protected abstract void b();
-  
-  public void onNetMobile2None()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    b();
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    b();
+    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
+    this.a.a(15, 1, 0L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjj
  * JD-Core Version:    0.7.0.1
  */

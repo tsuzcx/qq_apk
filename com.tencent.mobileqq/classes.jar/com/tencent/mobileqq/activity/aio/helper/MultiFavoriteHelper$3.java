@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afri;
-import bkox;
+import agit;
+import bmaf;
 
 public class MultiFavoriteHelper$3
   implements Runnable
 {
-  public MultiFavoriteHelper$3(afri paramafri, String paramString1, boolean paramBoolean, String paramString2) {}
+  public MultiFavoriteHelper$3(agit paramagit, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    bkox.a(afri.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, false);
+    bmaf.a(agit.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, false);
   }
 }
 

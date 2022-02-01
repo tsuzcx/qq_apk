@@ -1,43 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class aqdu
+  extends aqdt
 {
-  public int a;
-  public int b;
+  private float[] d = new float[16];
   
-  public static aqdu a(String paramString)
+  public aqdu(Context paramContext, int paramInt, SensorManager paramSensorManager, aqdl paramaqdl)
   {
-    if (paramString == null) {}
-    do
+    super(paramContext, paramInt, paramSensorManager, paramaqdl);
+    paramContext = paramSensorManager.getDefaultSensor(15);
+    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
     {
-      return null;
-      try
-      {
-        aqdu localaqdu = new aqdu();
-        paramString = new JSONObject(paramString);
-        localaqdu.a = paramString.optInt("switch", 0);
-        localaqdu.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localaqdu.a);
-        return localaqdu;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+      this.a.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(15));
   }
   
-  public String toString()
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+    aqdn.a(this.d, paramSensorEvent);
+    super.a(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdu
  * JD-Core Version:    0.7.0.1
  */

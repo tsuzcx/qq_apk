@@ -18,7 +18,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import ybj;
+import yqc;
 
 public class ArtFilterItemView
   extends RelativeLayout
@@ -38,11 +38,11 @@ public class ArtFilterItemView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131559580, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362993));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362995));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362996));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362994));
+    inflate(paramContext, 2131559613, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363010));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363012));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363013));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363011));
   }
   
   public void a()
@@ -134,7 +134,7 @@ public class ArtFilterItemView
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
     localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setAnimationListener(new ybj(this, paramEditVideoArtFilter));
+    localTranslateAnimation.setAnimationListener(new yqc(this, paramEditVideoArtFilter));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   

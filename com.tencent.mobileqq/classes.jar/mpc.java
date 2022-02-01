@@ -1,21 +1,59 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagConfig.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
+import java.lang.ref.WeakReference;
 
-public class mpc
-  extends lff
+public abstract class mpc
+  extends moz
 {
-  mpc(mpa parammpa) {}
-  
-  protected void a()
+  public mpc(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
-    ThreadManager.post(new AVRedBagConfig.2.1(this), 10, null, true);
-    this.a.a.b(this);
+    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
+  }
+  
+  protected abstract int a(int paramInt);
+  
+  public int a(long paramLong)
+  {
+    int i = 0;
+    if (a())
+    {
+      i = b(paramLong);
+      this.e -= i;
+    }
+    return i;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    this.e = (b(paramLong) + this.e);
+  }
+  
+  public boolean a()
+  {
+    return this.e + c() > 0;
+  }
+  
+  protected int b(long paramLong)
+  {
+    return (int)(a(this.jdField_a_of_type_Lgo.a.length()) * paramLong / 1000L);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
+      this.e = this.g;
+    }
+  }
+  
+  public boolean c()
+  {
+    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,26 @@
-public abstract interface yga
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.concurrent.atomic.AtomicLong;
+
+public abstract class yga<T extends Dispatcher.Dispatchable>
+  extends QQUIEventReceiver<yfg, T>
+  implements ygl
 {
-  public abstract void a(ydd paramydd, float paramFloat1, float paramFloat2, float paramFloat3);
+  protected static AtomicLong a = new AtomicLong(0L);
+  public int a;
+  public long a;
+  public wpx a;
+  public ygn a;
+  public int b;
   
-  public abstract void a(ygc paramygc);
+  public abstract int a(T paramT);
+  
+  public abstract void a(T paramT);
+  
+  public boolean b()
+  {
+    return this.b > 0;
+  }
 }
 
 

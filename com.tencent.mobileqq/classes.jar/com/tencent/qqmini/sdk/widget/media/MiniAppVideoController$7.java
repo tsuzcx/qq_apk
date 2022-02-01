@@ -27,13 +27,13 @@ class MiniAppVideoController$7
         MiniAppVideoController.access$1702(this.this$0, true);
         MiniAppVideoController.access$1900(this.this$0);
         MiniAppVideoController.access$2000(this.this$0, false);
-        if (MiniAppVideoController.access$500(this.this$0))
+        if (MiniAppVideoController.access$700(this.this$0))
         {
           if (paramAbsVideoPlayer.isPlaying()) {
             paramAbsVideoPlayer.pause();
           }
           ThreadManager.getUIHandler().post(new MiniAppVideoController.7.1(this));
-          MiniAppVideoController.access$502(this.this$0, false);
+          MiniAppVideoController.access$702(this.this$0, false);
           if (MiniAppVideoController.access$2500(this.this$0).size() <= 0) {
             break;
           }

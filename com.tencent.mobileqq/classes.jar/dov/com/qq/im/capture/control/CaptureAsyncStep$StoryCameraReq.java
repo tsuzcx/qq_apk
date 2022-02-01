@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.control;
 
-import blul;
+import bnjo;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.common.app.AppInterface;
@@ -11,11 +11,12 @@ public class CaptureAsyncStep$StoryCameraReq
 {
   public int a()
   {
-    blul localblul = (blul)QQStoryContext.a().getBusinessHandler(3);
-    localblul.a("MqStoryCamera");
-    localblul.a("MqEmoCamera");
-    localblul.b();
-    localblul.a();
+    bnjo localbnjo = (bnjo)QQStoryContext.a().getBusinessHandler(3);
+    localbnjo.a("MqStoryCamera");
+    localbnjo.a("MqEmoCamera");
+    localbnjo.a("MqCircleWatermark");
+    localbnjo.b();
+    localbnjo.a();
     VSConfigManager.getInstance().getStoryConfigOnline();
     return 7;
   }

@@ -63,7 +63,7 @@ public class ABTestConfig
       return str;
       str = "https://casestudy.html5.qq.com/wabt/get_gray_policy_response";
     } while (!"505".equals(this.appId));
-    return "https://ad.browser.qq.com/wabt/get_gray_policy_response";
+    return "https://505.ab.qq.com/wabt/get_gray_policy_response";
   }
   
   public String getSceneId()
@@ -78,7 +78,7 @@ public class ABTestConfig
       this.mCustomProfiles.remove(paramString);
       return;
     }
-    ABTestLog.error("remove profiles error. [" + paramString + "]is not exist.", new Object[0]);
+    ABTestLog.error("remove profiles error. [" + paramString + "]" + "is not exist.", new Object[0]);
   }
   
   public void setAppId(String paramString)

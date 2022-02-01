@@ -25,29 +25,29 @@ import cooperation.liveroom.LiveRoomPluginLoader;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
-import pil;
-import pkp;
-import pqh;
-import pqi;
-import pqj;
-import pqk;
-import tho;
-import thu;
-import tmd;
-import tpa;
+import pkh;
+import pti;
+import pvm;
+import qbf;
+import qbg;
+import qbh;
+import qbi;
+import tva;
+import tvg;
+import tzr;
+import ucp;
 
 public class ReadInJoyViolaChannelFragment
   extends ReadInJoyBaseFragment
 {
-  private static pqk jdField_a_of_type_Pqk;
+  private static qbi jdField_a_of_type_Qbi;
   protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
   protected ViewGroup a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public ViolaBaseView a;
   protected String a;
-  private thu jdField_a_of_type_Thu;
+  private tvg jdField_a_of_type_Tvg;
   protected String b;
   private String c;
   
@@ -71,15 +71,15 @@ public class ReadInJoyViolaChannelFragment
   private void a()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(getActivity());
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380865)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
-    if (this.jdField_a_of_type_Thu.a()) {
-      this.jdField_a_of_type_Thu.d();
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131381217)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    if (this.jdField_a_of_type_Tvg.a()) {
+      this.jdField_a_of_type_Tvg.d();
     }
     b();
-    this.jdField_a_of_type_Thu.a(this.jdField_a_of_type_AndroidViewViewGroup, new pqh(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new pqi(this));
+    this.jdField_a_of_type_Tvg.a(this.jdField_a_of_type_AndroidViewViewGroup, new qbf(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new qbg(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setPageStartTime(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.c, this, new tpa(this.c, new JSONObject(), tho.a(this.c), 1, null));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.c, this, new ucp(this.c, new JSONObject(), tva.a(this.c), 1, null));
   }
   
   public static void a(int paramInt, String paramString)
@@ -88,13 +88,13 @@ public class ReadInJoyViolaChannelFragment
     do
     {
       return;
-      if (jdField_a_of_type_Pqk == null) {
-        jdField_a_of_type_Pqk = new pqk(null);
+      if (jdField_a_of_type_Qbi == null) {
+        jdField_a_of_type_Qbi = new qbi(null);
       }
-      jdField_a_of_type_Pqk.jdField_a_of_type_Int = paramInt;
-      jdField_a_of_type_Pqk.jdField_a_of_type_JavaLangString = new String(Base64.decode(paramString, 0));
+      jdField_a_of_type_Qbi.jdField_a_of_type_Int = paramInt;
+      jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString = new String(Base64.decode(paramString, 0));
     } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyViolaChannelFragment", 2, "saveGuidingJumpPendingInfo, channelId: " + paramInt + ", url: " + jdField_a_of_type_Pqk.jdField_a_of_type_JavaLangString);
+    QLog.d("ReadInJoyViolaChannelFragment", 2, "saveGuidingJumpPendingInfo, channelId: " + paramInt + ", url: " + jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString);
   }
   
   private void b()
@@ -106,18 +106,18 @@ public class ReadInJoyViolaChannelFragment
   
   private void b(int paramInt)
   {
-    if (jdField_a_of_type_Pqk == null) {
+    if (jdField_a_of_type_Qbi == null) {
       return;
     }
-    if (paramInt == jdField_a_of_type_Pqk.jdField_a_of_type_Int)
+    if (paramInt == jdField_a_of_type_Qbi.jdField_a_of_type_Int)
     {
-      this.c = jdField_a_of_type_Pqk.jdField_a_of_type_JavaLangString;
+      this.c = jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString;
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyViolaChannelFragment", 2, "replaceViolaUrl, channelId: " + paramInt + ", url: " + jdField_a_of_type_Pqk.jdField_a_of_type_JavaLangString);
+        QLog.d("ReadInJoyViolaChannelFragment", 2, "replaceViolaUrl, channelId: " + paramInt + ", url: " + jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString);
       }
     }
-    jdField_a_of_type_Pqk.jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Pqk.jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Qbi.jdField_a_of_type_Int = -1;
+    jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString = null;
   }
   
   private void c()
@@ -133,7 +133,7 @@ public class ReadInJoyViolaChannelFragment
       QLog.d("ReadInJoyViolaChannelFragment", 2, "reload viola Page mChannelName :" + this.jdField_a_of_type_JavaLangString + "; mChannelId :" + this.jdField_a_of_type_Int);
     }
     b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new pqj(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new qbh(this));
   }
   
   public int a()
@@ -145,7 +145,7 @@ public class ReadInJoyViolaChannelFragment
   {
     super.a(paramInt);
     if ((paramInt == 5) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.b())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tmd.b(2).toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tzr.b(2).toString());
     }
   }
   
@@ -165,7 +165,7 @@ public class ReadInJoyViolaChannelFragment
     }
     for (;;)
     {
-      pkp.a().a(3, null);
+      pvm.a().a(3, null);
       return;
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
         a();
@@ -241,7 +241,7 @@ public class ReadInJoyViolaChannelFragment
         Object localObject;
         continue;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tmd.b(1).toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(tzr.b(1).toString());
       return;
       localObject = "NULL";
     }
@@ -302,16 +302,16 @@ public class ReadInJoyViolaChannelFragment
       QLog.d("ReadInJoyViolaChannelFragment", 2, "onCreateView mChannelName :" + this.jdField_a_of_type_JavaLangString + "; mChannelId :" + this.jdField_a_of_type_Int);
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558462, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373643));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558464, paramViewGroup, false));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373860));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
-    this.jdField_a_of_type_Thu = new thu(this);
-    if ((!getUserVisibleHint()) && (pay.n())) {}
+    this.jdField_a_of_type_Tvg = new tvg(this);
+    if ((!getUserVisibleHint()) && (pkh.c())) {}
     for (;;)
     {
       VideoReport.setPageId(this.jdField_a_of_type_AndroidViewViewGroup, "14");
-      VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewViewGroup, new pil().a(Integer.valueOf(this.jdField_a_of_type_Int)).a());
+      VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewViewGroup, new pti().a(Integer.valueOf(this.jdField_a_of_type_Int)).a());
       paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
@@ -375,7 +375,7 @@ public class ReadInJoyViolaChannelFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityStart();
     }
-    pkp.a().a(3, null);
+    pvm.a().a(3, null);
   }
   
   public void onStop()
@@ -392,6 +392,11 @@ public class ReadInJoyViolaChannelFragment
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(false);
       }
     }
+  }
+  
+  public void setUserVisibleHint(boolean paramBoolean)
+  {
+    super.setUserVisibleHint(paramBoolean);
   }
 }
 

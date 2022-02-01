@@ -1,28 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 
-final class avih
-  implements IHttpCommunicatorListener
+class avih
+  implements DialogInterface.OnClickListener
 {
-  public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  avih(avig paramavig) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    avif.a().sendEmptyMessage(10000001);
-  }
-  
-  public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    avif.a = false;
-    avif.a().sendEmptyMessage(10000001);
-  }
-  
-  public void handleRedirect(String paramString) {}
-  
-  public void onFlowEvent(HttpMsg paramHttpMsg) {}
-  
-  public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
-  {
-    return true;
+    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
+    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
   }
 }
 

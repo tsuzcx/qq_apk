@@ -1,28 +1,12 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewTreeObserver.OnDrawListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.1.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class rux
-  implements ViewTreeObserver.OnDrawListener
 {
-  int jdField_a_of_type_Int = 0;
-  
-  rux(ruw paramruw, ryo paramryo) {}
-  
-  public void onDraw()
-  {
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ruw.a(this.jdField_a_of_type_Ruw).getWindow().getDecorView().post(new VideoFeedsAdapter.1.1(this, this));
-      if (this.jdField_a_of_type_Ryo == ruw.a(this.jdField_a_of_type_Ruw).jdField_a_of_type_Ryo) {
-        ruw.a(this.jdField_a_of_type_Ruw).a(this.jdField_a_of_type_Ryo, false);
-      }
-    }
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
 }
 
 

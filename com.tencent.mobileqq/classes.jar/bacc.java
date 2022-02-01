@@ -1,11 +1,16 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bacc
-  extends blnp
+class bacc
+  implements View.OnClickListener
 {
-  public bacc(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
+  bacc(baca parambaca) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramInt2, paramString, paramBitmap, paramInt3);
+    baca.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

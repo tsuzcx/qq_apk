@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.util;
 
 import com.tencent.commonsdk.cache.QQHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import uex;
-import uey;
+import usu;
+import usv;
 
 public final class PublicAccountConfigUtil$2
-  extends QQHashMap<Integer, uey>
+  extends QQHashMap<Integer, usv>
 {
   public PublicAccountConfigUtil$2(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -16,12 +16,12 @@ public final class PublicAccountConfigUtil$2
   public void clearMemory()
   {
     clear();
-    uex.a().set(false);
+    usu.a().set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountConfigUtil.2
  * JD-Core Version:    0.7.0.1
  */

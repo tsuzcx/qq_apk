@@ -1,20 +1,12 @@
+import android.view.animation.Interpolator;
+
 public final class tbf
+  implements Interpolator
 {
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public float getInterpolation(float paramFloat)
   {
-    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    paramFloat1 /= paramFloat4 / 2.0F;
-    if (paramFloat1 < 1.0F) {
-      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
-    }
-    paramFloat3 /= 2.0F;
-    paramFloat1 -= 2.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

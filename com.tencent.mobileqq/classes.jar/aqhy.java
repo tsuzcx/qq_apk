@@ -1,54 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
-public class aqhy
-  extends aqgc<aqhx>
+class aqhy
+  extends AnimatorListenerAdapter
 {
-  @NonNull
-  public static aqhx c()
+  aqhy(aqhx paramaqhx) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    aqhx localaqhx2 = (aqhx)apub.a().a(562);
-    aqhx localaqhx1 = localaqhx2;
-    if (localaqhx2 == null) {
-      localaqhx1 = aqhx.a();
+    this.a.a("animator set end!");
+    if (this.a.c != null)
+    {
+      aqhx.a(this.a).removeView(this.a.c);
+      this.a.c = null;
+      if (this.a.d == null) {
+        break label187;
+      }
+      aqhx.b(this.a).removeView(this.a.d);
+      this.a.d = null;
     }
-    return localaqhx1;
-  }
-  
-  @NonNull
-  public aqhx a()
-  {
-    return aqhx.a();
-  }
-  
-  @NonNull
-  public aqhx a(@NonNull aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfaptx[0].a);
+    for (;;)
+    {
+      if (this.a.e != null)
+      {
+        this.a.e.setVisibility(0);
+        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+        paramAnimator.a = -1L;
+        paramAnimator.b();
+      }
+      if (this.a.jdField_b_of_type_AndroidViewView != null) {
+        this.a.jdField_b_of_type_AndroidViewView.invalidate();
+      }
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.a(true);
+      return;
+      this.a.a("something wrong, bubble view is null!");
+      break;
+      label187:
+      this.a.a("something wrong, pendview is null!");
     }
-    return aqhx.a(paramArrayOfaptx[0].a);
   }
   
-  @NonNull
-  public aqhx b()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return aqhx.a();
-  }
-  
-  public Class<aqhx> clazz()
-  {
-    return aqhx.class;
-  }
-  
-  public int type()
-  {
-    return 562;
+    this.a.a("animator set start!");
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhy
  * JD-Core Version:    0.7.0.1
  */

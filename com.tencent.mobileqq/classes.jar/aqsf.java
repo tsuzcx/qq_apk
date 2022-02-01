@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aqsf
-  implements View.OnClickListener
+class aqsf
+  implements EIPCResultCallback
 {
-  public aqsf(DBFixConfigActivity paramDBFixConfigActivity) {}
+  aqsf(aqse paramaqse) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    ThreadManager.post(this.a.a, 8, null, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
   }
 }
 

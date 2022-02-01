@@ -1,20 +1,6 @@
-import android.os.Bundle;
-
-public abstract class acjy
-  implements zop
+public abstract interface acjy
 {
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void callback(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getBundle("key_result");
-    if (paramBundle != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool, paramBundle);
-      return;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

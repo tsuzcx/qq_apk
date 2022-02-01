@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import bmpk;
+import bofc;
 
 public class BringToFrontLinear
   extends LinearLayout
 {
-  private bmpk a;
+  private bofc a;
   
   public BringToFrontLinear(Context paramContext)
   {
@@ -33,7 +33,7 @@ public class BringToFrontLinear
   {
     setWillNotDraw(true);
     setChildrenDrawingOrderEnabled(true);
-    this.a = new bmpk();
+    this.a = new bofc();
   }
   
   public void bringChildToFront(View paramView)

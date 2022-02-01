@@ -1,36 +1,61 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-public class aibh
-  implements aios
+class aibh
+  implements bkzq
 {
-  public aibh(TroopView paramTroopView) {}
+  aibh(aiav paramaiav, bkzi parambkzi) {}
   
-  public int a(int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = TroopView.a(this.a).getCurrentItem();
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
-    }
-    Object localObject = TroopView.a(this.a).a(i, false);
-    if (localObject != null)
+    switch (paramInt)
     {
-      localObject = (AddContactViewPagerTroopFragment)localObject;
-      aiak localaiak = (aiak)this.a.a.get(i);
-      if ((paramInt >= 0) && (paramInt < localaiak.jdField_a_of_type_JavaUtilArrayList.size()))
+    }
+    for (;;)
+    {
+      try
       {
-        localaiak.b = paramInt;
-        aial localaial = (aial)localaiak.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        ((AddContactViewPagerTroopFragment)localObject).a(localaial.b, localaial.jdField_a_of_type_JavaLangString);
-        bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_clk", 0, 0, localaial.jdField_a_of_type_JavaLangString, localaiak.jdField_a_of_type_JavaLangString, "", "");
+        this.jdField_a_of_type_Bkzi.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_Aiav.getActivity())) {
+        try
+        {
+          ((bikt)this.jdField_a_of_type_Aiav.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.jdField_a_of_type_Aiav.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new aibi(this));
+          this.jdField_a_of_type_Aiav.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_Aiav.getActivity(), this.jdField_a_of_type_Aiav.getTitleBarHeight());
+          this.jdField_a_of_type_Aiav.jdField_a_of_type_Bisl.setContentView(2131562799);
+          this.jdField_a_of_type_Aiav.jdField_a_of_type_Bisl.a(this.jdField_a_of_type_Aiav.getActivity().getString(2131692036));
+          this.jdField_a_of_type_Aiav.jdField_a_of_type_Bisl.setCancelable(false);
+          this.jdField_a_of_type_Aiav.jdField_a_of_type_Bisl.show();
+          paramView = this.jdField_a_of_type_Aiav.jdField_a_of_type_Bilj.a();
+          if ((paramView == null) || (!paramView.b())) {
+            continue;
+          }
+          bdla.b(this.jdField_a_of_type_Aiav.app, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
+        }
+        catch (Exception paramView)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e(this.jdField_a_of_type_Aiav.tag, 2, "the sessionInfo.curFriendUin is wrong: " + this.jdField_a_of_type_Aiav.sessionInfo.curFriendUin);
+          continue;
+        }
+      } else {
+        QQToast.a(this.jdField_a_of_type_Aiav.getActivity(), 2130839636, this.jdField_a_of_type_Aiav.getActivity().getResources().getString(2131694305), 0).b(this.jdField_a_of_type_Aiav.getTitleBarHeight());
       }
     }
-    return 0;
   }
 }
 

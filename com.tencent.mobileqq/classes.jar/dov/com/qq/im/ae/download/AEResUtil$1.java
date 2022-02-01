@@ -1,17 +1,18 @@
 package dov.com.qq.im.ae.download;
 
 import android.content.Context;
-import bmbx;
+import bnky;
+import bnrh;
 
-final class AEResUtil$1
+public final class AEResUtil$1
   implements Runnable
 {
-  AEResUtil$1(Context paramContext) {}
+  public AEResUtil$1(Context paramContext) {}
   
   public void run()
   {
-    AEResUtil.access$000(this.val$context);
-    bmbx.d("AEResUtil", "【Camera is in Prepareing】toast show");
+    bnky.b(this.a);
+    bnrh.d("AEResUtil", "【Camera is in Prepareing】toast show");
   }
 }
 

@@ -4,9 +4,9 @@ import BOSSStrategyCenter.tAdvDesc;
 import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axkw;
-import bbpf;
-import bjnn;
+import ayrb;
+import bcvz;
+import bkyz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
 public class QzoneQbossHelper
-  extends axkw
+  extends ayrb
 {
   public static final String TAG = "QzoneQbossHelper";
   private static QzoneQbossHelper sInstance;
@@ -58,7 +58,7 @@ public class QzoneQbossHelper
   
   public static Boolean findPkgInstalled(String paramString)
   {
-    return Boolean.valueOf(bjnn.a(BaseApplicationImpl.getContext(), paramString));
+    return Boolean.valueOf(bkyz.a(BaseApplicationImpl.getContext(), paramString));
   }
   
   public static String findPkgNameInJson(String paramString)
@@ -107,7 +107,7 @@ public class QzoneQbossHelper
   {
     this.mQbossCallback = new WeakReference(paramIQbossCallback);
     paramIQbossCallback = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bbpf.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcvz.class);
     localNewIntent.putExtra("selfuin", Long.parseLong(paramIQbossCallback.getAccount()));
     localNewIntent.putIntegerArrayListExtra("appid", paramArrayList);
     localNewIntent.putExtra("requestType", paramString);

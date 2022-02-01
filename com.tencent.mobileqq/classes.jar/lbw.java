@@ -1,18 +1,41 @@
+import android.text.TextUtils;
+
 public class lbw
+  implements lbk
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = null;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString = null;
-  String d = null;
-  String e = null;
-  String f = null;
+  private static final String[] a = { "QQRTCSvc.chatroom_send_msg", "QQRTCSvc.chatroom_get_msg", "QQRTCSvc.RoomManager-StartAvTogether", "QQRTCSvc.RoomManager-CloseAvTogether", "QQRTCSvc.RoomManager-GetRoomInfo", "QQRTCSvc.RoomManager-ChangeVideoStatus", "QQRTCSvc.RoomManager-ChangeVideoFile", "QQRTCSvc.RoomManager-SyncPlayTime", "QQRTCSvc.RoomManager-UserEnterRoom", "QQRTCSvc.RoomManager-UserQuitRoom" };
   
-  public lbw(lbv paramlbv) {}
+  public String a()
+  {
+    return "MultiVideo";
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (TextUtils.equals(arrayOfString[i], paramString)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public String b()
+  {
+    return "MultiVideoMsg";
+  }
 }
 
 

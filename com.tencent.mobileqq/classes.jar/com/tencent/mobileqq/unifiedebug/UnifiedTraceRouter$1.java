@@ -1,44 +1,44 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import bfmq;
+import bgvh;
 import java.util.Map;
 
 public class UnifiedTraceRouter$1
   implements Runnable
 {
-  public UnifiedTraceRouter$1(bfmq parambfmq, String paramString, long paramLong, Map paramMap) {}
+  public UnifiedTraceRouter$1(bgvh parambgvh, String paramString, long paramLong, Map paramMap) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
+    //   1: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
     //   4: aload_0
     //   5: getfield 18	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokevirtual 36	bfmq:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   8: invokevirtual 36	bgvh:a	(Ljava/lang/String;)Ljava/lang/String;
     //   11: astore_3
     //   12: new 38	java/lang/StringBuilder
     //   15: dup
     //   16: invokespecial 39	java/lang/StringBuilder:<init>	()V
     //   19: astore 4
     //   21: aload_0
-    //   22: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
+    //   22: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
     //   25: astore 5
     //   27: aload 5
     //   29: aload 4
     //   31: aload 5
-    //   33: getfield 42	bfmq:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   33: getfield 42	bgvh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   36: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: aload_3
     //   40: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: ldc 48
     //   45: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: putfield 42	bfmq:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   51: putfield 42	bgvh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   54: aload_0
-    //   55: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   58: getfield 55	bfmq:jdField_a_of_type_Float	F
+    //   55: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   58: getfield 55	bgvh:jdField_a_of_type_Float	F
     //   61: fstore_2
     //   62: aload_3
     //   63: ldc 57
@@ -53,14 +53,14 @@ public class UnifiedTraceRouter$1
     //   82: fload_2
     //   83: fstore_1
     //   84: aload_0
-    //   85: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   88: getfield 68	bfmq:jdField_b_of_type_Int	I
+    //   85: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   88: getfield 68	bgvh:jdField_b_of_type_Int	I
     //   91: bipush 32
     //   93: if_icmpne +29 -> 122
     //   96: aload_0
-    //   97: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
+    //   97: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
     //   100: aload_3
-    //   101: invokevirtual 71	bfmq:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   101: invokevirtual 71	bgvh:d	(Ljava/lang/String;)Ljava/lang/String;
     //   104: astore 4
     //   106: fload_2
     //   107: fstore_1
@@ -70,31 +70,31 @@ public class UnifiedTraceRouter$1
     //   116: aload 4
     //   118: invokestatic 82	java/lang/Float:parseFloat	(Ljava/lang/String;)F
     //   121: fstore_1
-    //   122: new 84	bfmr
+    //   122: new 84	bgvi
     //   125: dup
     //   126: aload_0
-    //   127: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
+    //   127: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
     //   130: aload_0
-    //   131: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
+    //   131: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
     //   134: aload_3
-    //   135: invokevirtual 86	bfmq:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: invokevirtual 86	bgvh:b	(Ljava/lang/String;)Ljava/lang/String;
     //   138: fload_1
-    //   139: invokespecial 89	bfmr:<init>	(Lbfmq;Ljava/lang/String;F)V
+    //   139: invokespecial 89	bgvi:<init>	(Lbgvh;Ljava/lang/String;F)V
     //   142: astore 4
     //   144: aload 4
     //   146: aload_0
-    //   147: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   150: getfield 68	bfmq:jdField_b_of_type_Int	I
-    //   153: putfield 91	bfmr:jdField_a_of_type_Int	I
+    //   147: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   150: getfield 68	bgvh:jdField_b_of_type_Int	I
+    //   153: putfield 91	bgvi:jdField_a_of_type_Int	I
     //   156: aload 4
     //   158: aload 4
-    //   160: getfield 92	bfmr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   160: getfield 92	bgvi:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   163: invokestatic 98	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
     //   166: invokevirtual 101	java/net/InetAddress:getHostName	()Ljava/lang/String;
-    //   169: putfield 102	bfmr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   169: putfield 102	bgvi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   172: aload_0
-    //   173: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   176: getfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   173: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   176: getfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   179: aload 4
     //   181: invokeinterface 111 2 0
     //   186: pop
@@ -102,42 +102,42 @@ public class UnifiedTraceRouter$1
     //   188: invokestatic 76	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   191: ifne +100 -> 291
     //   194: aload_0
-    //   195: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   198: getfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   195: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   198: getfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   201: aload_0
-    //   202: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   205: getfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   202: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   205: getfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   208: invokeinterface 115 1 0
     //   213: iconst_1
     //   214: isub
     //   215: invokeinterface 119 2 0
-    //   220: checkcast 84	bfmr
+    //   220: checkcast 84	bgvi
     //   223: astore_3
     //   224: aload_3
-    //   225: getfield 92	bfmr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   225: getfield 92	bgvi:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   228: aload_0
-    //   229: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   232: getfield 120	bfmq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   229: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   232: getfield 120	bgvh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   235: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   238: ifeq +338 -> 576
+    //   238: ifeq +340 -> 578
     //   241: aload_0
-    //   242: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   245: getfield 68	bfmq:jdField_b_of_type_Int	I
+    //   242: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   245: getfield 68	bgvh:jdField_b_of_type_Int	I
     //   248: bipush 32
-    //   250: if_icmpge +132 -> 382
+    //   250: if_icmpge +133 -> 383
     //   253: aload_0
-    //   254: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
+    //   254: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
     //   257: bipush 32
-    //   259: putfield 68	bfmq:jdField_b_of_type_Int	I
+    //   259: putfield 68	bgvh:jdField_b_of_type_Int	I
     //   262: aload_0
-    //   263: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   266: getfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   263: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   266: getfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   269: aload_3
     //   270: invokeinterface 126 2 0
     //   275: pop
     //   276: aload_0
-    //   277: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   280: getfield 129	bfmq:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   277: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   280: getfield 129	bgvh:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   283: aload_0
     //   284: ldc2_w 130
     //   287: invokevirtual 137	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
@@ -157,147 +157,147 @@ public class UnifiedTraceRouter$1
     //   315: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   318: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   321: aload_0
-    //   322: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   325: getfield 153	bfmq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   328: bipush 94
-    //   330: invokevirtual 159	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   333: checkcast 161	bbit
-    //   336: aload_0
-    //   337: getfield 20	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_Long	J
-    //   340: aload_3
-    //   341: invokevirtual 144	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   344: invokevirtual 164	bbit:a	(JLjava/lang/String;)V
-    //   347: return
-    //   348: astore 5
-    //   350: ldc 139
-    //   352: iconst_1
-    //   353: new 38	java/lang/StringBuilder
-    //   356: dup
-    //   357: invokespecial 39	java/lang/StringBuilder:<init>	()V
-    //   360: ldc 166
-    //   362: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   365: aload 5
-    //   367: invokevirtual 167	java/net/UnknownHostException:getMessage	()Ljava/lang/String;
-    //   370: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   379: goto -207 -> 172
-    //   382: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   385: ifeq +112 -> 497
-    //   388: aload_0
-    //   389: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   392: getfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   395: invokeinterface 175 1 0
-    //   400: astore_3
-    //   401: aload_3
-    //   402: invokeinterface 180 1 0
-    //   407: ifeq +90 -> 497
-    //   410: aload_3
-    //   411: invokeinterface 184 1 0
-    //   416: checkcast 84	bfmr
-    //   419: astore 4
-    //   421: ldc 139
-    //   423: iconst_2
-    //   424: new 38	java/lang/StringBuilder
-    //   427: dup
-    //   428: invokespecial 39	java/lang/StringBuilder:<init>	()V
-    //   431: ldc 186
-    //   433: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: aload 4
-    //   438: getfield 91	bfmr:jdField_a_of_type_Int	I
-    //   441: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   444: ldc 191
-    //   446: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   449: aload 4
-    //   451: getfield 102	bfmr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   454: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: ldc 191
-    //   459: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   462: aload 4
-    //   464: getfield 92	bfmr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   467: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: ldc 191
-    //   472: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   475: aload 4
-    //   477: getfield 192	bfmr:jdField_a_of_type_Float	F
-    //   480: invokevirtual 195	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   483: ldc 197
-    //   485: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   488: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   491: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   494: goto -93 -> 401
-    //   497: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   500: ifeq +16 -> 516
-    //   503: ldc 139
-    //   505: iconst_2
-    //   506: aload_0
-    //   507: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   510: getfield 42	bfmq:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   513: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   516: aload_0
-    //   517: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   520: getfield 153	bfmq:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   523: bipush 94
-    //   525: invokevirtual 159	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   528: checkcast 161	bbit
-    //   531: aload_0
-    //   532: getfield 20	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_Long	J
-    //   535: aload_0
-    //   536: getfield 18	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   539: aload_0
-    //   540: getfield 22	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   543: aload_0
-    //   544: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   547: getfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   550: invokevirtual 202	bbit:a	(JLjava/lang/String;Ljava/util/Map;Ljava/util/List;)V
-    //   553: aload_0
-    //   554: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   557: iconst_1
-    //   558: putfield 68	bfmq:jdField_b_of_type_Int	I
-    //   561: aload_0
-    //   562: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   565: new 204	java/util/ArrayList
-    //   568: dup
-    //   569: invokespecial 205	java/util/ArrayList:<init>	()V
-    //   572: putfield 105	bfmq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   575: return
-    //   576: aload_0
-    //   577: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   580: getfield 68	bfmq:jdField_b_of_type_Int	I
-    //   583: bipush 32
-    //   585: if_icmpge -294 -> 291
-    //   588: aload_0
-    //   589: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   592: astore_3
-    //   593: aload_3
-    //   594: aload_3
-    //   595: getfield 68	bfmq:jdField_b_of_type_Int	I
-    //   598: iconst_1
-    //   599: iadd
-    //   600: putfield 68	bfmq:jdField_b_of_type_Int	I
-    //   603: aload_0
-    //   604: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbfmq;
-    //   607: getfield 129	bfmq:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   610: aload_0
-    //   611: ldc2_w 130
-    //   614: invokevirtual 137	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   617: pop
-    //   618: return
+    //   322: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   325: getfield 153	bgvh:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   328: getstatic 158	com/tencent/mobileqq/app/QQManagerFactory:SEC_SPY_FILEMANAGER	I
+    //   331: invokevirtual 164	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   334: checkcast 166	bcpl
+    //   337: aload_0
+    //   338: getfield 20	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_Long	J
+    //   341: aload_3
+    //   342: invokevirtual 144	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   345: invokevirtual 169	bcpl:a	(JLjava/lang/String;)V
+    //   348: return
+    //   349: astore 5
+    //   351: ldc 139
+    //   353: iconst_1
+    //   354: new 38	java/lang/StringBuilder
+    //   357: dup
+    //   358: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   361: ldc 171
+    //   363: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: aload 5
+    //   368: invokevirtual 172	java/net/UnknownHostException:getMessage	()Ljava/lang/String;
+    //   371: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   374: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   377: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   380: goto -208 -> 172
+    //   383: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   386: ifeq +112 -> 498
+    //   389: aload_0
+    //   390: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   393: getfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   396: invokeinterface 180 1 0
+    //   401: astore_3
+    //   402: aload_3
+    //   403: invokeinterface 185 1 0
+    //   408: ifeq +90 -> 498
+    //   411: aload_3
+    //   412: invokeinterface 189 1 0
+    //   417: checkcast 84	bgvi
+    //   420: astore 4
+    //   422: ldc 139
+    //   424: iconst_2
+    //   425: new 38	java/lang/StringBuilder
+    //   428: dup
+    //   429: invokespecial 39	java/lang/StringBuilder:<init>	()V
+    //   432: ldc 191
+    //   434: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: aload 4
+    //   439: getfield 91	bgvi:jdField_a_of_type_Int	I
+    //   442: invokevirtual 194	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   445: ldc 196
+    //   447: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   450: aload 4
+    //   452: getfield 102	bgvi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   455: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   458: ldc 196
+    //   460: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: aload 4
+    //   465: getfield 92	bgvi:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   468: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   471: ldc 196
+    //   473: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   476: aload 4
+    //   478: getfield 197	bgvi:jdField_a_of_type_Float	F
+    //   481: invokevirtual 200	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   484: ldc 202
+    //   486: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   492: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   495: goto -93 -> 402
+    //   498: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   501: ifeq +16 -> 517
+    //   504: ldc 139
+    //   506: iconst_2
+    //   507: aload_0
+    //   508: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   511: getfield 42	bgvh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   514: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   517: aload_0
+    //   518: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   521: getfield 153	bgvh:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   524: getstatic 158	com/tencent/mobileqq/app/QQManagerFactory:SEC_SPY_FILEMANAGER	I
+    //   527: invokevirtual 164	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   530: checkcast 166	bcpl
+    //   533: aload_0
+    //   534: getfield 20	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_Long	J
+    //   537: aload_0
+    //   538: getfield 18	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   541: aload_0
+    //   542: getfield 22	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   545: aload_0
+    //   546: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   549: getfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   552: invokevirtual 207	bcpl:a	(JLjava/lang/String;Ljava/util/Map;Ljava/util/List;)V
+    //   555: aload_0
+    //   556: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   559: iconst_1
+    //   560: putfield 68	bgvh:jdField_b_of_type_Int	I
+    //   563: aload_0
+    //   564: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   567: new 209	java/util/ArrayList
+    //   570: dup
+    //   571: invokespecial 210	java/util/ArrayList:<init>	()V
+    //   574: putfield 105	bgvh:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   577: return
+    //   578: aload_0
+    //   579: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   582: getfield 68	bgvh:jdField_b_of_type_Int	I
+    //   585: bipush 32
+    //   587: if_icmpge -296 -> 291
+    //   590: aload_0
+    //   591: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   594: astore_3
+    //   595: aload_3
+    //   596: aload_3
+    //   597: getfield 68	bgvh:jdField_b_of_type_Int	I
+    //   600: iconst_1
+    //   601: iadd
+    //   602: putfield 68	bgvh:jdField_b_of_type_Int	I
+    //   605: aload_0
+    //   606: getfield 16	com/tencent/mobileqq/unifiedebug/UnifiedTraceRouter$1:this$0	Lbgvh;
+    //   609: getfield 129	bgvh:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   612: aload_0
+    //   613: ldc2_w 130
+    //   616: invokevirtual 137	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   619: pop
+    //   620: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	619	0	this	1
+    //   0	621	0	this	1
     //   72	67	1	f1	float
     //   61	46	2	f2	float
     //   11	259	3	localObject1	Object
-    //   292	49	3	localException	java.lang.Exception
-    //   400	195	3	localObject2	Object
-    //   19	457	4	localObject3	Object
-    //   25	7	5	localbfmq	bfmq
-    //   348	18	5	localUnknownHostException	java.net.UnknownHostException
+    //   292	50	3	localException	java.lang.Exception
+    //   401	196	3	localObject2	Object
+    //   19	458	4	localObject3	Object
+    //   25	7	5	localbgvh	bgvh
+    //   349	18	5	localUnknownHostException	java.net.UnknownHostException
     // Exception table:
     //   from	to	target	type
     //   0	54	292	java/lang/Exception
-    //   156	172	348	java/net/UnknownHostException
+    //   156	172	349	java/net/UnknownHostException
   }
 }
 

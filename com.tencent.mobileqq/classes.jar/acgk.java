@@ -1,54 +1,45 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.text.TextUtils;
+import com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acgk
-  implements abyl
+final class acgk
+  implements acgx
 {
-  public int a()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    return 10002;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(149);
-    QQMessageFacade.Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(paramMessageRecord.frienduin, 1001);
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeTmpRoutingType", 2, "TRIBE_TMP------>reply=" + localMessage.hasReply);
-    }
-    paramMessageRecord = paramQQAppInterface.getMsgCache().k(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a(); (paramacfw == null) || (paramString == null); paramString = null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送兴趣部落临时会消息 有key------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      acho.d("GdtDeviceDemoJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8028;
+    for (;;)
+    {
+      try
+      {
+        paramacfw = new JSONObject(paramVarArgs[0]).optString("process", "com.tencent.mobileqq:mini");
+        if (TextUtils.equals(paramacfw, "com.tencent.mobileqq"))
+        {
+          paramacfw = PublicFragmentActivity.class;
+          GdtDeviceDemoFragment.a(paramString, paramacfw);
+          return true;
+        }
+      }
+      catch (JSONException paramacfw)
+      {
+        acho.d("GdtDeviceDemoJsCallHandler", "handleJsCallRequest error", paramacfw);
+        return true;
+      }
+      if (TextUtils.equals(paramacfw, "com.tencent.mobileqq:tool")) {
+        paramacfw = PublicFragmentActivityForTool.class;
+      } else {
+        paramacfw = PublicFragmentActivityForMini.class;
+      }
+    }
   }
 }
 

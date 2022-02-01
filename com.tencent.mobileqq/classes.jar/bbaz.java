@@ -1,84 +1,35 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Iterator;
-import java.util.List;
 
-public class bbaz
-  extends bbbc
+class bbaz
+  extends RecyclerView.OnScrollListener
 {
-  private List<PhoneContact> a;
+  bbaz(bbay parambbay) {}
   
-  public bbaz(FaceDecoder paramFaceDecoder, bbbg parambbbg, List<PhoneContact> paramList)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramFaceDecoder, parambbbg);
-    this.a = paramList;
-  }
-  
-  public void b(bayt parambayt, bbhb parambbhb)
-  {
-    boolean bool = true;
-    super.b(parambayt, parambbhb);
-    int i;
-    int j;
-    if (parambbhb.c() != null)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    bbay.a(this.a, paramInt);
+    if (bbay.a(this.a) == 0)
     {
-      parambayt = (baxl)parambayt;
-      if (this.a != null)
+      if (bbay.a(this.a).isPausing()) {
+        bbay.a(this.a).resume();
+      }
+      int i = bbay.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
       {
-        Iterator localIterator = this.a.iterator();
-        i = 0;
-        j = i;
-        if (!localIterator.hasNext()) {
-          break label101;
-        }
-        if (((PhoneContact)localIterator.next()).contactID != parambayt.a.contactID) {
-          break label197;
-        }
-        parambbhb.c().setText(amtj.a(2131701660));
-        i = 1;
+        paramRecyclerView = bbay.a(this.a).getChildAt(paramInt);
+        paramRecyclerView = (bbbb)bbay.a(this.a).getChildViewHolder(paramRecyclerView);
+        bbbb.a(paramRecyclerView).setImageBitmap(bbay.a(this.a, bbbb.a(paramRecyclerView)));
+        paramInt += 1;
       }
     }
-    label191:
-    label197:
-    for (;;)
-    {
-      break;
-      j = 0;
-      label101:
-      if (!TextUtils.isEmpty(parambayt.c()))
-      {
-        parambbhb.c().setText(parambayt.c());
-        j = 1;
-      }
-      parambayt = parambbhb.c();
-      if (j != 0)
-      {
-        i = 0;
-        parambayt.setVisibility(i);
-        parambayt = parambbhb.a();
-        if (j != 0) {
-          break label191;
-        }
-      }
-      for (;;)
-      {
-        parambayt.setClickable(bool);
-        if (parambbhb.a() != null) {
-          parambbhb.a().setVisibility(8);
-        }
-        return;
-        i = 8;
-        break;
-        bool = false;
-      }
-    }
+    bbay.a(this.a).cancelPendingRequests();
+    bbay.a(this.a).pause();
   }
-  
-  public void d(bayt parambayt, bbhb parambbhb) {}
 }
 
 

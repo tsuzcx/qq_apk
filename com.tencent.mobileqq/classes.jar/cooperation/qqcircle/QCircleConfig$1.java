@@ -17,18 +17,11 @@ class QCircleConfig$1
     if (paramBoolean)
     {
       paramString = new File(paramString, QCircleConfig.access$000(this.this$0));
-      if ((!paramString.exists()) || (paramString.length() <= 0L)) {}
-    }
-    try
-    {
-      QCircleConfig.access$102(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
-      QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + QCircleConfig.access$100());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QCircleConfig", 1, paramString.getMessage());
-      paramString.printStackTrace();
+      if ((paramString.exists()) && (paramString.length() > 0L))
+      {
+        QCircleConfig.access$102(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
+        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + QCircleConfig.access$100());
+      }
     }
   }
 }

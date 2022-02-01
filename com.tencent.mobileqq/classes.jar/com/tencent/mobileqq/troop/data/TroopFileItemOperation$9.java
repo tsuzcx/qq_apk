@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import bebp;
+import bfis;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class TroopFileItemOperation$9
   implements Runnable
 {
-  public TroopFileItemOperation$9(bebp parambebp, TroopFileTransferManager paramTroopFileTransferManager) {}
+  public TroopFileItemOperation$9(bfis parambfis, TroopFileTransferManager paramTroopFileTransferManager) {}
   
   public void run()
   {

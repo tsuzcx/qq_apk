@@ -1,36 +1,21 @@
-class rrs
-  implements rrm
+public class rrs
 {
-  rrs(rrr paramrrr) {}
-  
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      rrr.a(this.a, paramString1);
-      rrr.b(this.a, paramString2);
-      rrr.a(this.a, 3);
-      return;
-    case 1001: 
-      rrr.b(this.a, 10);
-      return;
-    case 1002: 
-      rrr.b(this.a, 9);
-      return;
-    case 1003: 
-      rrr.b(this.a, 11);
-      return;
-    }
-    rrr.b(this.a, 13);
-    rrr.c(this.a, 1002);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
 }
 
 

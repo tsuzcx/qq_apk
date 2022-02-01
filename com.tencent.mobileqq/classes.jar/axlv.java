@@ -1,18 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.Comparator;
 
-public class axlv
-  implements axpe
+final class axlv
+  implements Comparator<axlw>
 {
-  public axlv(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void a(int paramInt, axpf paramaxpf)
+  public int a(axlw paramaxlw1, axlw paramaxlw2)
   {
-    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramaxpf.b)))
-    {
-      OCRResultActivity.b(this.a, paramaxpf.b);
-      OCRResultActivity.a(this.a, false);
+    if (paramaxlw1.b < paramaxlw2.b) {
+      return -1;
     }
+    if (paramaxlw1.b > paramaxlw2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 

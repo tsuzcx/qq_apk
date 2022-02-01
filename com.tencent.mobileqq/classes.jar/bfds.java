@@ -1,32 +1,66 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 class bfds
-  extends nmf
+  implements Comparator<bfdq>
 {
-  bfds(bfdm parambfdm, bfdu parambfdu) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(bfdq parambfdq)
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bfdu.a(paramInt, paramBundle);
-      return;
+    if (parambfdq.jdField_a_of_type_Int != -1) {
+      return parambfdq.jdField_a_of_type_Int;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    Friends localFriends = parambfdq.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = ContactUtils.getFriendStatus(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
     {
-      for (;;)
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
       }
     }
+    for (;;)
+    {
+      parambfdq.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
+    }
+  }
+  
+  public int a(bfdq parambfdq1, bfdq parambfdq2)
+  {
+    return a(parambfdq1) - a(parambfdq2);
   }
 }
 

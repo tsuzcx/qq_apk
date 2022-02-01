@@ -1,25 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
 
-class xbr
-  extends nmf
+final class xbr
+  implements wzv
 {
-  xbr(xbm paramxbm, boolean paramBoolean) {}
+  xbr(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (paramInt != 0)
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(7, bool);
-        this.a.a(0, this.a.a.getString(2131719238));
-        return;
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label66;
       }
     }
-    ((vuq)vux.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
+    label66:
+    for (paramInt = i;; paramInt = 2)
+    {
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      localData.mUIStyle.mPlayerRepeatMode = 2;
+      xbp.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
   }
 }
 

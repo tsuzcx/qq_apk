@@ -1,42 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import java.util.Map;
 
 public class abun
-  extends abup
+  implements avdo
 {
-  public abun(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  public abun(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    super.onPageFinished(paramWebView, paramString);
-    abrl.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    abrl.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    abrl.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
-    GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
+    abuq localabuq = (abuq)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
+    if (localabuq != null)
+    {
+      localabuq.e = (paramInt1 / 1000);
+      this.a.callJs(localabuq.k + "(" + localabuq.a() + ");");
+    }
   }
 }
 

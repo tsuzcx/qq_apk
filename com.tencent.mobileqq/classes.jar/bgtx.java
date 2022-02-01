@@ -1,14 +1,24 @@
-import android.view.animation.Transformation;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1;
 
-class bgtx
-  implements bfzz<Integer>
+public class bgtx
+  implements Animator.AnimatorListener
 {
-  bgtx(bgtw parambgtw) {}
+  public bgtx(ShakePicView paramShakePicView) {}
   
-  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.setTitleBarAlpha(paramInteger.intValue());
+    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,60 +1,21 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aprg
-  extends BaseAdapter
+class aprg
+  implements apsf
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  aprg(aprb paramaprb, long paramLong) {}
   
-  public aprg(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
+  public void a(long paramLong)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aprb.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    for (;;)
-    {
-      String str = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    apqy.a(this.jdField_a_of_type_Aprb.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 

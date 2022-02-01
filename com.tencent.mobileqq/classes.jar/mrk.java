@@ -1,314 +1,62 @@
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
 
-public class mrk
+public final class mrk
 {
-  private static float jdField_c_of_type_Float = 0.02F;
-  private static long m;
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  public mrk a;
-  boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private long jdField_e_of_type_Long;
-  private int jdField_f_of_type_Int;
-  private long jdField_f_of_type_Long;
-  private int jdField_g_of_type_Int;
-  private long jdField_g_of_type_Long;
-  private int jdField_h_of_type_Int;
-  private long jdField_h_of_type_Long;
-  private long i;
-  private long j;
-  private long k;
-  private long l;
-  private long n;
-  private final long o;
-  
-  public mrk(mrk parammrk, long paramLong)
+  public static mrl a(Resources paramResources, int paramInt)
   {
-    this.o = paramLong;
-    this.jdField_a_of_type_Mrk = parammrk;
-  }
-  
-  static float a(float paramFloat, long paramLong)
-  {
-    float f1;
-    if (paramFloat == 0.0F) {
-      f1 = (float)paramLong;
-    }
-    do
+    Object localObject1 = (int[][])null;
+    int[] arrayOfInt1;
+    int[] arrayOfInt2;
+    switch (paramInt)
     {
-      return f1;
-      f1 = paramFloat;
-    } while (paramLong == 0L);
-    return (1.0F - jdField_c_of_type_Float) * paramFloat + (float)paramLong * jdField_c_of_type_Float;
-  }
-  
-  static int a(float paramFloat)
-  {
-    if (paramFloat == 0.0F) {
-      return 0;
+    case 2131559788: 
+    case 2131559789: 
+    case 2131559791: 
+    default: 
+      return null;
+    case 2131559787: 
+      localObject1 = new int[] { 2131695093, 2130842241 };
+      localObject2 = new int[] { 2131695083, 2130842228 };
+      arrayOfInt1 = new int[] { 2131695092, 2130842240 };
+      arrayOfInt2 = new int[] { 2131695088, 2130842050 };
+      int[] arrayOfInt3 = { 2131695094, 2130842054 };
+      int[] arrayOfInt4 = { 2131695086, 2130842048 };
+      int[] arrayOfInt5 = { 2131695085, 2130842230 };
+      int[] arrayOfInt6 = { 2131695081, 2130842312 };
+      int[] arrayOfInt7 = { 2131695084, 2130842229 };
+      int[] arrayOfInt8 = { 2131695090, 2130842237 };
+      localObject1 = new int[][] { { 2131695080, 2130842226 }, localObject1, localObject2, arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8 };
     }
-    return (int)(1000000.0F / paramFloat * 100.0F);
-  }
-  
-  static long a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 == 0L) {}
-    while (paramLong2 == 0L) {
-      return 0L;
-    }
-    return paramLong1 - paramLong2;
-  }
-  
-  private void a(String paramString)
-  {
-    a();
-    b(paramString);
-    this.jdField_a_of_type_Mrk = null;
-  }
-  
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  private void b(String paramString)
-  {
-    boolean bool = c();
-    if ((bool) || (AudioHelper.a(18) == 1))
+    while (localObject1 == null)
     {
-      int i1 = a(this.jdField_a_of_type_Float);
-      int i2 = a(this.jdField_b_of_type_Float);
-      String str = "frameIndex[" + this.jdField_a_of_type_Mrk + "->" + this.o + "], dataLen[" + this.jdField_b_of_type_Int + "], width[" + this.jdField_c_of_type_Int + "], height[" + this.jdField_d_of_type_Int + "], format[" + this.jdField_e_of_type_Int + "], CamAngle[" + this.jdField_f_of_type_Int + "], FinalAngle[" + this.jdField_h_of_type_Int + "], CamFPS[" + this.n + "], PreviewDataFPS[" + i1 + "], SendFPS[" + i2 + "], isFront[" + this.jdField_c_of_type_Boolean + "], effect[" + this.jdField_d_of_type_Boolean + "], business[" + String.format("%08x", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }) + "]";
-      paramString = null;
-      if (b()) {
-        paramString = ", intervalPreviewData[" + this.jdField_b_of_type_Long + "], intervalSendCameraFrame2Native[" + this.l + "], render[" + a(this.j, this.jdField_c_of_type_Long) + "], CheckLowligh[" + a(this.jdField_d_of_type_Long, this.jdField_c_of_type_Long) + "], Beauty2[" + a(this.jdField_e_of_type_Long, this.jdField_d_of_type_Long) + "], DenoiseRender[" + a(this.jdField_f_of_type_Long, this.jdField_e_of_type_Long) + "], LowLightRender[" + a(this.jdField_g_of_type_Long, this.jdField_f_of_type_Long) + "], Beauty3[" + a(this.jdField_h_of_type_Long, this.jdField_g_of_type_Long) + "], RenderChain[" + a(this.i, this.jdField_h_of_type_Long) + "], post[" + a(this.j, this.i) + "], buildExtInfo[" + a(this.k, this.j) + "]";
-      }
-      paramString = "PerfLog, " + str + paramString;
-      paramString = paramString + ", onPreviewData[" + this.jdField_a_of_type_Long + "], renderBegin[" + this.jdField_c_of_type_Long + "], afterCheckLowligh[" + this.jdField_d_of_type_Long + "], afterDenoiseRender[" + this.jdField_f_of_type_Long + "], afterLowLightRender[" + this.jdField_g_of_type_Long + "], afterBeautyRender[" + this.jdField_h_of_type_Long + "], afterRenderChain[" + this.i + "], renderEnd[" + this.j + "], sendCameraFrame2Native[" + this.k + "]";
-      if (bool) {
-        QLog.w("FramePerfDataK_" + this.jdField_b_of_type_Boolean, 1, paramString);
-      }
+      return null;
+      localObject1 = new int[] { 2131695091, 2130842239 };
+      localObject2 = new int[] { 2131695093, 2130842241 };
+      arrayOfInt1 = new int[] { 2131695088, 2130842050 };
+      arrayOfInt2 = new int[] { 2131695082, 2130842227 };
+      localObject1 = new int[][] { localObject1, { 2131695080, 2130842226 }, localObject2, { 2131695083, 2130842228 }, arrayOfInt1, { 2131695084, 2130842229 }, arrayOfInt2 };
+      continue;
+      localObject1 = new int[] { 2131695084, 2130842229 };
+      localObject1 = new int[][] { { 2131695091, 2130842239 }, { 2131695080, 2130842226 }, { 2131695093, 2130842241 }, { 2131695083, 2130842228 }, { 2131695092, 2130842240 }, { 2131695088, 2130842050 }, { 2131695086, 2130842048 }, { 2131695081, 2130842312 }, localObject1, { 2131695082, 2130842227 } };
+      continue;
+      localObject1 = new int[][] { { 2131695080, 2130842226 }, { 2131695088, 2130842050 }, { 2131695086, 2130842048 } };
     }
-    else
+    Object localObject2 = new mrl();
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
     {
-      return;
+      arrayOfInt1 = localObject1[i];
+      ((mrl)localObject2).a(new mrj(arrayOfInt1[0], paramResources.getString(arrayOfInt1[0]), arrayOfInt1[1]));
+      i += 1;
     }
-    QLog.w("FramePerfData_" + this.jdField_b_of_type_Boolean, 1, paramString);
-  }
-  
-  public static boolean b()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  void a()
-  {
-    float f2 = 0.0F;
-    for (mrk localmrk = this.jdField_a_of_type_Mrk; (localmrk != null) && (!localmrk.jdField_a_of_type_Boolean); localmrk = localmrk.jdField_a_of_type_Mrk) {
-      localmrk.jdField_b_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_Mrk = localmrk;
-    if (localmrk != null)
-    {
-      if (localmrk.jdField_a_of_type_Long != 0L) {
-        this.jdField_b_of_type_Long = (this.jdField_a_of_type_Long - localmrk.jdField_a_of_type_Long);
-      }
-      if (localmrk.k != 0L) {
-        this.l = (this.k - localmrk.k);
-      }
-    }
-    if (localmrk == null)
-    {
-      f1 = 0.0F;
-      this.jdField_a_of_type_Float = a(f1, this.jdField_b_of_type_Long / 1000L);
-      if (localmrk != null) {
-        break label137;
-      }
-    }
-    label137:
-    for (float f1 = f2;; f1 = localmrk.jdField_b_of_type_Float)
-    {
-      this.jdField_b_of_type_Float = a(f1, this.l / 1000L);
-      return;
-      f1 = localmrk.jdField_a_of_type_Float;
-      break;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_h_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_d_of_type_Int = paramInt3;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_f_of_type_Int = paramInt5;
-    this.jdField_g_of_type_Int = paramInt6;
-    this.n = paramLong;
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.jdField_d_of_type_Boolean = paramBoolean2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_e_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x1;
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    if (b())
-    {
-      this.i = AudioHelper.c();
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Int |= 0x20;
-      }
-      if (paramBoolean2) {
-        this.jdField_a_of_type_Int |= 0x10;
-      }
-      if (paramBoolean3) {
-        this.jdField_a_of_type_Int |= 0x40;
-      }
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Int |= 0x80;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (b()) {
-      this.jdField_a_of_type_Long = AudioHelper.c();
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_f_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x2;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (b()) {
-      this.jdField_c_of_type_Long = AudioHelper.c();
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_g_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x4;
-      }
-    }
-  }
-  
-  boolean c()
-  {
-    if (System.currentTimeMillis() - m >= 4000L)
-    {
-      m = System.currentTimeMillis();
-      return true;
-    }
-    mrk localmrk = this.jdField_a_of_type_Mrk;
-    if (localmrk != null)
-    {
-      if ((localmrk.jdField_b_of_type_Int != this.jdField_b_of_type_Int) || (localmrk.jdField_c_of_type_Int != this.jdField_c_of_type_Int) || (localmrk.jdField_d_of_type_Int != this.jdField_d_of_type_Int) || (localmrk.jdField_e_of_type_Int != this.jdField_e_of_type_Int) || (localmrk.jdField_f_of_type_Int != this.jdField_f_of_type_Int) || (localmrk.jdField_g_of_type_Int != this.jdField_g_of_type_Int) || (localmrk.n != this.n) || (localmrk.jdField_c_of_type_Boolean != this.jdField_c_of_type_Boolean) || (localmrk.jdField_d_of_type_Boolean != this.jdField_d_of_type_Boolean) || (localmrk.jdField_h_of_type_Int != this.jdField_h_of_type_Int) || (localmrk.jdField_a_of_type_Int != this.jdField_a_of_type_Int) || (localmrk.o + 1L != this.o))
-      {
-        m = System.currentTimeMillis();
-        return true;
-      }
-    }
-    else
-    {
-      m = System.currentTimeMillis();
-      return true;
-    }
-    return false;
-  }
-  
-  public void d()
-  {
-    if (b()) {
-      this.j = AudioHelper.c();
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_h_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x8;
-      }
-    }
-  }
-  
-  public boolean d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    a("clear");
-    return false;
-  }
-  
-  public void e()
-  {
-    if (b()) {
-      this.jdField_d_of_type_Long = AudioHelper.c();
-    }
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (b()) {
-      this.k = AudioHelper.c();
-    }
-    a("finish");
-  }
-  
-  public String toString()
-  {
-    return this.o + "";
+    ((mrl)localObject2).a = paramInt;
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mrk
  * JD-Core Version:    0.7.0.1
  */

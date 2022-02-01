@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class admp
-  implements View.OnClickListener
+public final class admp
+  implements DialogInterface.OnClickListener
 {
-  public admp(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public admp(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adnm paramadnm, adnn paramadnn, BaseActivity paramBaseActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    CheckBox localCheckBox = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
+    if (paramInt == 1)
     {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_Adnn);
       return;
     }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
   }
 }
 

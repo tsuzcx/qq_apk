@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import akpr;
+import alnn;
 import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class LoginView$27$1
   implements Runnable
 {
-  public LoginView$27$1(akpr paramakpr) {}
+  public LoginView$27$1(alnn paramalnn) {}
   
   public void run()
   {

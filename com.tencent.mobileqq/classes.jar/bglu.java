@@ -1,27 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class bglu
-  extends Handler
+final class bglu
+  extends ClickableSpan
 {
-  public bglu(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  bglu(String paramString, MessageRecord paramMessageRecord) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin success");
-      return;
-    case 1: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
-      return;
-    }
-    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
+    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+    axdk.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

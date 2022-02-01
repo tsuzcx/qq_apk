@@ -1,82 +1,62 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.confess.ConfessInfo;
 
 public class aqvi
-  extends ClickableSpan
-  implements attt
+  implements BusinessObserver
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private WeakReference<View.OnClickListener> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorStateList b;
+  public void a(aquz paramaquz) {}
   
-  public aqvi(View.OnClickListener paramOnClickListener, int paramInt)
-  {
-    this(paramOnClickListener, ColorStateList.valueOf(paramInt), null);
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  public aqvi(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
-  {
-    this(paramOnClickListener, paramColorStateList, null);
-  }
+  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
   
-  public aqvi(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnClickListener);
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
-  }
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo) {}
   
-  public void onClick(View paramView)
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    switch (paramInt)
     {
-      View.OnClickListener localOnClickListener = (View.OnClickListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localOnClickListener != null) {
-        localOnClickListener.onClick(paramView);
-      }
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
+    do
+    {
+      do
       {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label46:
-        if (this.b == null) {
-          break label122;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
-    {
-      paramTextPaint.bgColor = i;
-      return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label46;
-    }
-    label122:
-    paramTextPaint.bgColor = 0;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  a(paramBoolean, paramObject);
+                  return;
+                  b(paramBoolean, paramObject);
+                  return;
+                } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+                paramObject = (Object[])paramObject;
+              } while ((paramObject == null) || (paramObject.length != 6));
+              a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
+              return;
+            } while ((paramObject == null) || (!(paramObject instanceof aquz)));
+            a((aquz)paramObject);
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length < 7);
+        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 3);
+    a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
   }
 }
 

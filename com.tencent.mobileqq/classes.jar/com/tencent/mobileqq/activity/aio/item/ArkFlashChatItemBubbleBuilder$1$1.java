@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afwz;
+import agpo;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class ArkFlashChatItemBubbleBuilder$1$1
   implements Runnable
 {
-  public ArkFlashChatItemBubbleBuilder$1$1(afwz paramafwz) {}
+  public ArkFlashChatItemBubbleBuilder$1$1(agpo paramagpo) {}
   
   public void run()
   {

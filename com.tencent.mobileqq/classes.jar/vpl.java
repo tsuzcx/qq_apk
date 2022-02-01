@@ -1,73 +1,126 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaGdtAdInfo;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.ad.tangram.util.AdExposureChecker;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class vpl
+  extends vrn
 {
-  public static int a(int paramInt)
+  public AdExposureChecker.ExposureCallback a;
+  public ArrayList<AdExposureChecker> a;
+  
+  public vpl(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
+    super(paramViewGroup, 2131560067, paramInt, paramWSVerticalPageFragment);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static Boolean a(int paramInt)
+  public int a()
   {
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
+    return 0;
   }
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  public int a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return vpy.a(paramClass, paramVarArgs);
+    return -1;
   }
   
-  public static String a(int paramInt)
+  public FrameLayout a()
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+    if ((this.jdField_a_of_type_Uyx instanceof vpv))
+    {
+      vqe localvqe = (vqe)this.jdField_a_of_type_Uyx;
+      if ((localvqe.a() instanceof vrd)) {
+        return ((vrd)localvqe.a()).a();
+      }
+    }
+    return null;
   }
   
-  public static String a(int paramInt, Object... paramVarArgs)
+  public uyx<vpj> a(int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+    return new vpv(a(), this);
   }
   
-  public static String a(String paramString)
+  public void a()
   {
-    return paramString;
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AdExposureChecker)((Iterator)localObject).next()).onActivityResume();
+      }
+    }
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      localObject = (stSimpleMetaFeed)((vpj)this.jdField_a_of_type_JavaLangObject).a();
+      if ((localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null))
+      {
+        vpk.a(BaseApplicationImpl.getContext(), (stSimpleMetaFeed)((vpj)this.jdField_a_of_type_JavaLangObject).a());
+        ((vpj)this.jdField_a_of_type_JavaLangObject).a().isGdtAdVidoReport = false;
+        this.jdField_a_of_type_Uyx.a(this.jdField_a_of_type_JavaLangObject);
+      }
+    }
   }
   
-  public static <T extends Activity> vpu<T> a(Class<? extends vpu<T>> paramClass, Class<vpu<T>> paramClass1, Object... paramVarArgs)
+  protected boolean a()
   {
-    return (vpu)vpy.a(paramClass, paramClass1, paramVarArgs);
+    return true;
   }
   
-  public static ysg a(Context paramContext, int paramInt)
+  public void b()
   {
-    return vqb.a(paramContext, paramInt);
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AdExposureChecker)((Iterator)localObject).next()).onActivityPause();
+      }
+    }
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      localObject = (stSimpleMetaFeed)((vpj)this.jdField_a_of_type_JavaLangObject).a();
+      if ((((vpj)this.jdField_a_of_type_JavaLangObject).a() != null) && (localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null) && (this.jdField_a_of_type_Vgb != null) && (this.jdField_a_of_type_Vgb.jdField_a_of_type_Vgh != null))
+      {
+        if (!((vpj)this.jdField_a_of_type_JavaLangObject).a().isGdtAdclicked) {
+          break label186;
+        }
+        vsh.a((vpj)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Vgb, 2);
+        ((vpj)this.jdField_a_of_type_JavaLangObject).a().isGdtAdclicked = false;
+      }
+    }
+    for (;;)
+    {
+      ((vpj)this.jdField_a_of_type_JavaLangObject).a().isGdtAdVidoReport = true;
+      this.jdField_a_of_type_Vgb.jdField_a_of_type_Long = this.jdField_a_of_type_Vgb.jdField_a_of_type_Vgh.a();
+      return;
+      label186:
+      vsh.a((vpj)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Vgb, 3);
+    }
   }
   
-  public static void a(Context paramContext, int paramInt, long paramLong)
+  public void c()
   {
-    vqe.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    vqe.a(paramContext, paramInt, paramString);
-  }
-  
-  public static void a(Object paramObject)
-  {
-    vqc.a(paramObject);
-  }
-  
-  public static boolean a()
-  {
-    return vqd.a();
-  }
-  
-  public static String[] a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        AdExposureChecker localAdExposureChecker = (AdExposureChecker)localIterator.next();
+        localAdExposureChecker.onActivityDestroy();
+        localAdExposureChecker.setCallback(null);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
+    }
   }
 }
 

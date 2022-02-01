@@ -1,68 +1,190 @@
+import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.open.appstore.js.DINewForCommonWebView;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.mobileqq.vip.KCWraperV2.2;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_dc04233;
+import dualsim.common.IKcActivationViewer;
+import dualsim.common.IKingCardInterface;
+import dualsim.common.OrderCheckResult;
 import java.io.File;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import tmsdk.common.KcSdkShellManager;
 
 public class bhyx
-  implements bicf
+  extends bhyw
 {
-  public bhyx(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
+  public AtomicBoolean a = new AtomicBoolean(false);
   
-  public void a(int paramInt, String paramString)
+  private void a(OrderCheckResult paramOrderCheckResult)
   {
-    bhzm.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bhzm.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    int i = 1;
+    String str1;
+    if (paramOrderCheckResult != null)
     {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          if (TextUtils.isEmpty(localDownloadInfo.l)) {
-            localJSONObject.put("final_file_exits", "false");
-          }
-          for (;;)
-          {
-            localJSONArray.put(localJSONObject);
-            i += 1;
-            break;
-            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+      str1 = paramOrderCheckResult.toString();
+      a(str1);
+      if (paramOrderCheckResult != null) {
+        break label30;
       }
     }
-    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
-    bhzm.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
-    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
+    label30:
+    label46:
+    boolean bool2;
+    do
+    {
+      return;
+      str1 = "result == null";
+      break;
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject != null) {
+        break label187;
+      }
+      str1 = null;
+      if (TextUtils.isEmpty(str1)) {
+        break label207;
+      }
+      bool2 = a(str1, paramOrderCheckResult);
+    } while (!(localObject instanceof QQAppInterface));
+    Object localObject = (QQAppInterface)localObject;
+    String str2 = paramOrderCheckResult.phoneNum;
+    aogw localaogw = (aogw)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
+    boolean bool1;
+    label114:
+    long l;
+    if (paramOrderCheckResult.operator == 1)
+    {
+      if (paramOrderCheckResult.kingcard != 1) {
+        break label197;
+      }
+      bool1 = true;
+      localaogw.a(str1, str2, bool1, paramOrderCheckResult.product, "");
+      l = Long.parseLong(str1);
+      if (paramOrderCheckResult.kingcard != 1) {
+        break label202;
+      }
+    }
+    for (;;)
+    {
+      new LpReportInfo_dc04233(l, i).report();
+      if (!bool2) {
+        break;
+      }
+      localaogw.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
+      return;
+      label187:
+      str1 = ((AppRuntime)localObject).getAccount();
+      break label46;
+      label197:
+      bool1 = false;
+      break label114;
+      label202:
+      i = 0;
+    }
+    label207:
+    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
+  }
+  
+  public String a()
+  {
+    return "KC.KCWraperV2";
+  }
+  
+  void a(ViewGroup paramViewGroup)
+  {
+    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
+    if (localObject != null)
+    {
+      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
+      if (localObject != null)
+      {
+        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
+        ((IKcActivationViewer)localObject).startLoad();
+        return;
+      }
+      QLog.e("KC.TMSManager", 1, "activationViewer == null");
+    }
+    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
+  }
+  
+  public void a(bhzi parambhzi, boolean paramBoolean)
+  {
+    ThreadManager.post(new KCWraperV2.2(this, parambhzi, paramBoolean), 5, null, false);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("load jar");
+    if (this.a.get()) {
+      return;
+    }
+    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    File localFile = new File(bhzh.a().a(localContext));
+    if (!localFile.exists())
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      a(false);
+      return;
+    }
+    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
+  }
+  
+  boolean a()
+  {
+    if (this.a.get()) {
+      return true;
+    }
+    if (!new File(bhzh.a().a(BaseApplicationImpl.getApplication())).exists()) {
+      return false;
+    }
+    synchronized (this.a)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a(), 1, "wait load");
+        }
+        this.a.wait(500L);
+        if (QLog.isColorLevel()) {
+          QLog.e(a(), 1, "wait end");
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+          QLog.e(a(), 1, localInterruptedException, new Object[0]);
+        }
+      }
+      return this.a.get();
+    }
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+    return true;
+  }
+  
+  boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
+    }
+    return true;
   }
 }
 

@@ -1,14 +1,21 @@
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-class astm
-  implements zrl
+final class astm
+  implements View.OnTouchListener
 {
-  astm(astl paramastl, boolean paramBoolean, String paramString, short paramShort) {}
-  
-  public void a(List<aswh> paramList)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Astl.a.jdField_a_of_type_Asta != null) {
-      this.jdField_a_of_type_Astl.a.jdField_a_of_type_Asta.a(paramList, this.jdField_a_of_type_Astl.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Astl.a.b, this.jdField_a_of_type_Astl.a.c, this.jdField_a_of_type_Astl.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

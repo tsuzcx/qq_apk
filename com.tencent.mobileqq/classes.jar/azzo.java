@@ -1,36 +1,29 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class azzo
+  implements BusinessObserver
 {
-  public ConcurrentHashMap<String, azzd> a = new ConcurrentHashMap(10);
+  public void a(boolean paramBoolean) {}
   
-  public azzd a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
-  {
-    paramSVHwEncoder = new azzd(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    azzi.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
-  }
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public azzd a(String paramString)
+  public void b(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    azzi.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (azzd)this.a.get(paramString);
+    if (paramInt == 1) {
+      b(paramBoolean);
     }
-    return null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    azzi.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
-      return false;
-    }
-    return true;
+    do
+    {
+      return;
+      if (paramInt == 2)
+      {
+        a(paramBoolean);
+        return;
+      }
+    } while (paramInt != 3);
+    a(paramBoolean, paramObject);
   }
 }
 

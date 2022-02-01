@@ -1,20 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qpr
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  qpr(qpk paramqpk, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, Object paramObject) {}
+  qpr(qph paramqph, qfw paramqfw, Container paramContainer, szd paramszd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    qpk.a(this.jdField_a_of_type_Qpk, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject, true);
+    Object localObject = this.jdField_a_of_type_Qfw.a();
+    ((ArticleInfo)localObject).clickArea = 8;
+    pqb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
+    QLog.d("PgcShortContentProteusItem", 1, "click single image blank area");
+    localObject = this.jdField_a_of_type_Szd.a().a();
+    if (localObject != null) {
+      ((pnw)localObject).a(paramView, this.jdField_a_of_type_Qfw.a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

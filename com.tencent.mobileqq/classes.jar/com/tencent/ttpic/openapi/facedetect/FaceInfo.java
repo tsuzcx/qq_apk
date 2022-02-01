@@ -15,6 +15,7 @@ public class FaceInfo
   public long faceId;
   public int gender;
   public List<PointF> irisPoints;
+  public float[] orig256FacePoints;
   public float[] origFacePoints = new float['¼'];
   public float[] origPointsVis = new float[94];
   public float pitch;

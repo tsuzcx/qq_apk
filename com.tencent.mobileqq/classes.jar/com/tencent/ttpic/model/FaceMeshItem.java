@@ -6,8 +6,12 @@ import java.util.ArrayList;
 
 public class FaceMeshItem
 {
+  public int activateTriggerCount;
+  public int activateTriggerTotalCount;
+  public int activateTriggerType;
   public boolean alwaysTriggered;
   public CharmRange charmRange;
+  public int countTriggerType;
   public String externalTriggerWords;
   public int featureStatType;
   public StickerItem.ValueRange featureStatValueRange;

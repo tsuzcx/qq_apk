@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui;
 
-import bnhv;
-import bnig;
-import bnih;
+import boxn;
+import boxy;
+import boxz;
 
 public class EditTextDialog$InitialLayoutListener$2
   implements Runnable
 {
-  public EditTextDialog$InitialLayoutListener$2(bnih parambnih) {}
+  public EditTextDialog$InitialLayoutListener$2(boxz paramboxz) {}
   
   public void run()
   {

@@ -1,44 +1,35 @@
-import android.content.Context;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.apollo.makeup.CmShowMakeupHybirdFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.filament.CmShowAssetsData;
+import dov.com.qq.im.ae.cmshow.AECMShowRequestController.CmShowDataWrapper;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-final class amvc
-  implements Animation.AnimationListener
+public class amvc
+  implements amod
 {
-  amvc(Animation paramAnimation1, ImageView paramImageView1, Context paramContext, String paramString, TextView paramTextView1, boolean paramBoolean, TextView paramTextView2, Animation paramAnimation2, ImageView paramImageView2, TextView paramTextView3, TextView paramTextView4) {}
+  public amvc(CmShowMakeupHybirdFragment paramCmShowMakeupHybirdFragment, AECMShowRequestController.CmShowDataWrapper paramCmShowDataWrapper) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGetApolloDressInfo(HashMap<Integer, String> paramHashMap, String paramString, int paramInt)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationAnimation)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramAnimation = amvb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramAnimation);
-      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
+    if (paramHashMap == null) {
+      QLog.e("CmShowMakeupHybirdFragment", 1, "[updateCmsCameraDressList] onGetApolloDressInfo apolloDressInfo is null! ");
     }
-    while (paramAnimation != this.jdField_b_of_type_AndroidViewAnimationAnimation) {
+    while (CmShowMakeupHybirdFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowMakeupHybirdFragment) == null) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    if ((this.c != null) && (this.jdField_a_of_type_Boolean)) {
-      this.c.setVisibility(8);
+    CmShowMakeupHybirdFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowMakeupHybirdFragment).faceDataJsonStr = this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper.cmJsonString;
+    paramString = this.jdField_a_of_type_DovComQqImAeCmshowAECMShowRequestController$CmShowDataWrapper.dressidMaps.entrySet().iterator();
+    while (paramString.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramString.next();
+      CmShowMakeupHybirdFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowMakeupHybirdFragment).dressResMap.put(localEntry.getKey(), paramHashMap.get(localEntry.getValue()));
     }
-    if ((this.d != null) && (this.jdField_a_of_type_Boolean)) {
-      this.d.setVisibility(8);
-    }
-    ApngImage.playByTag(39);
+    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowMakeupHybirdFragment.a(CmShowMakeupHybirdFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowMakeupHybirdFragment), 0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

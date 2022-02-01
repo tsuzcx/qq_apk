@@ -1,15 +1,15 @@
 package com.tencent.device.file;
 
-import aara;
-import aaso;
-import aasp;
-import aavk;
+import abgm;
+import abia;
+import abib;
+import abkw;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Base64;
-import aszt;
+import auea;
 import com.tencent.litetransfersdk.ActionInfo;
 import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.FTNNotify;
@@ -22,6 +22,7 @@ import com.tencent.litetransfersdk.NFCInfo;
 import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.litetransfersdk.Session;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RouterHandler;
@@ -52,7 +53,7 @@ public class DeviceFileHandler
   extends RouterHandler
   implements INetEngine.INetEngineListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new aaso(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new abia(this, Looper.getMainLooper());
   private DeviceFileHandler.DeviceNotifyReceiver jdField_a_of_type_ComTencentDeviceFileDeviceFileHandler$DeviceNotifyReceiver;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   protected HashMap<Long, HttpNetReq> a;
@@ -187,7 +188,7 @@ public class DeviceFileHandler
         }
         this.e.put(Long.valueOf(paramSession.uSessionID), paramSession);
       } while (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramSession.uSessionID)));
-      if ((!paramSession.bSend) && ((aavk.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (aavk.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (aavk.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))))
+      if ((!paramSession.bSend) && ((abkw.d.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (abkw.h.equalsIgnoreCase(paramSession.actionInfo.strServiceName)) || (abkw.b.equalsIgnoreCase(paramSession.actionInfo.strServiceName))))
       {
         super.a(paramSession, paramNFCInfo, paramFTNInfo, false);
         super.b(paramSession);
@@ -246,7 +247,7 @@ public class DeviceFileHandler
   {
     long l = 0L;
     if (paramInt1 == 3) {
-      l = ((aara)paramQQAppInterface.getBusinessHandler(51)).a(paramString, paramInt2);
+      l = ((abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString, paramInt2);
     }
     return l;
   }
@@ -275,7 +276,7 @@ public class DeviceFileHandler
           paramQQAppInterface.what = 0;
           paramString1 = new Session();
           paramString1.uSessionID = l;
-          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramString1, aavk.g, null);
+          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramString1, abkw.g, null);
           paramString1.strFilePathSrc = paramString2;
           paramString1.uFileSizeSrc = FileUtils.getFileSizes(paramString2);
           paramQQAppInterface.obj = paramString1;
@@ -284,7 +285,7 @@ public class DeviceFileHandler
         }
         Object localObject = new Session();
         ((Session)localObject).uSessionID = l;
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, aavk.g, null);
+        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, abkw.g, null);
         this.e.put(Long.valueOf(l), localObject);
         notifyUI(101, true, localObject);
         localObject = new HttpNetReq();
@@ -298,10 +299,10 @@ public class DeviceFileHandler
         return l;
       }
     } while (paramInt1 != 3);
-    l = ((aara)paramQQAppInterface.getBusinessHandler(51)).a(paramString1, paramString2, paramInt2);
+    l = ((abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString1, paramString2, paramInt2);
     paramQQAppInterface = new Session();
     paramQQAppInterface.uSessionID = l;
-    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramQQAppInterface, aavk.g, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(paramQQAppInterface, abkw.g, null);
     this.e.put(Long.valueOf(l), paramQQAppInterface);
     notifyUI(101, true, paramQQAppInterface);
     this.jdField_b_of_type_JavaUtilHashSet.add(Long.valueOf(l));
@@ -335,7 +336,7 @@ public class DeviceFileHandler
     localSession.emFileType = paramSession.emFileType;
     localSession.strFileNameSrc = paramSession.strFileNameSrc;
     localSession.uFileSizeSrc = paramSession.uFileSizeSrc;
-    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, aavk.c, null);
+    this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, abkw.c, null);
     this.e.put(Long.valueOf(localSession.uSessionID), localSession);
     return localSession;
   }
@@ -355,17 +356,17 @@ public class DeviceFileHandler
       return null;
     }
     int i;
-    if (paramString2.equalsIgnoreCase(aavk.c))
+    if (paramString2.equalsIgnoreCase(abkw.c))
     {
       i = 2251;
-      switch (aszt.a(paramString1))
+      switch (auea.a(paramString1))
       {
       default: 
         localSession.uSessionID = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, 3, i);
         localSession.emFileType = i;
-        localSession.strFileNameSrc = aszt.a(paramString1);
+        localSession.strFileNameSrc = auea.a(paramString1);
         localSession.uFileSizeSrc = FileUtils.getFileSizes(paramString1);
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, aavk.c, null);
+        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService(localSession, abkw.c, null);
         this.e.put(Long.valueOf(localSession.uSessionID), localSession);
         notifyUI(101, true, localSession);
       }
@@ -461,7 +462,7 @@ public class DeviceFileHandler
   
   public Class<? extends BusinessObserver> observerClass()
   {
-    return aasp.class;
+    return abib.class;
   }
   
   public void onDestroy()

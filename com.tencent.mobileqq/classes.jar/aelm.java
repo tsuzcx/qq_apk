@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aelm
-  implements nrb
+  implements View.OnClickListener
 {
-  public aelm(TroopInfoActivity paramTroopInfoActivity) {}
+  public aelm(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.l();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    avhp.a(this.a, "2", -1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

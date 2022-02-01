@@ -1,22 +1,38 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class awag
-  extends AnimatorListenerAdapter
+class awag
+  implements nuj
 {
-  public awag(MultiCardFragment paramMultiCardFragment) {}
+  awag(awaf paramawaf) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(Bundle paramBundle)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.b(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.b(this.a);
+    if (!TextUtils.isEmpty(this.a.a))
+    {
+      paramBundle = paramBundle.getString("info");
+      localJSONObject = new JSONObject();
+    }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        JSONObject localJSONObject;
+        localJSONObject.put("data", paramBundle);
+        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        if (QLog.isColorLevel()) {
+          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
+        }
+        return;
+      }
+      catch (Throwable paramBundle)
+      {
+        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
+        return;
+      }
+    }
+    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
   }
 }
 

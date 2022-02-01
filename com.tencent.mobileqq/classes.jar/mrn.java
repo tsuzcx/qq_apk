@@ -1,65 +1,85 @@
-import android.os.SystemClock;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
-class mrn
-  extends andd
+public class mrn
 {
-  mrn(mrm parammrm) {}
+  public static String a = "AVEnterPopActionSheetUtil";
   
-  protected void onGetTroopHideWebConfig(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4, int paramInt5, long paramLong)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt)
   {
-    mrs localmrs = (mrs)mrm.a(this.a).a(paramLong);
-    if (paramBoolean)
-    {
-      mrm.a(this.a, SystemClock.elapsedRealtime());
-      paramString2 = new mru(SystemClock.elapsedRealtime(), paramInt3, paramString2, paramString3, paramString4);
-      mrm.a(this.a).put(paramString1, paramString2);
-      if (localmrs != null)
-      {
-        localmrs.a(paramInt3, paramString2, paramInt5);
-        mrm.a(this.a).a(paramLong);
-        this.a.a = paramInt4;
-        if (mrm.a(this.a) == null) {
-          break label261;
-        }
-        mrm.a(this.a).a(paramInt4);
-        mrm.a(this.a, null);
-      }
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      QLog.e(a, 1, "app == null || context == null || sessionInfo == null");
     }
-    for (;;)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "onGetTroopHideWebConfig record gVideoStrategy:" + paramInt3 + " isSucc:" + paramBoolean);
-      }
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
-      break;
-      paramString1 = (mrs)mrm.a(this.a).a(paramLong);
-      if (paramString1 != null)
+      do
       {
-        paramString1.a(-1, null, paramInt5);
-        mrm.a(this.a).a(paramLong);
-        break;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
-      break;
-      label261:
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoPreDownloadListener is null");
-      }
+        return;
+      } while (mvn.a());
+      mvn localmvn = mvn.a(paramContext);
+      int[] arrayOfInt = new int[5];
+      localmvn.a(2131689514);
+      arrayOfInt[0] = 1;
+      localmvn.b(2131719436);
+      arrayOfInt[1] = 2;
+      localmvn.b(2131719450);
+      localmvn.c(2131690697);
+      localmvn.a(new mro());
+      localmvn.a(new mrp(localmvn, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramContext, paramInt));
+      localmvn.show();
+    } while (paramInt != 3);
+    if (paramSessionInfo.curType == 1)
+    {
+      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
+      return;
+    }
+    bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean)
+  {
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      return;
+    }
+    QLog.w(a, 1, "enterGroupVideo,, isAudio[" + paramBoolean + "], msgSelfUin[" + paramQQAppInterface.getCurrentUin() + "], uinType[" + paramSessionInfo.curType + "], groupId[" + paramSessionInfo.curFriendUin + "], curFriendNick[" + paramSessionInfo.curFriendNick + "], troopUin[" + paramSessionInfo.troopUin + "]");
+    if (!paramBoolean) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      ahmu.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.getCurrentUin(), "");
+      return;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {}
+    do
+    {
+      return;
+      QLog.w(a, 1, "enterC2CAudioVideo,, isAudio[" + paramBoolean + "], fromType[" + paramInt + "], msgSelfUin[" + paramQQAppInterface.getCurrentUin() + "], uinType[" + paramSessionInfo.curType + "], groupId[" + paramSessionInfo.curFriendUin + "], curFriendNick[" + paramSessionInfo.curFriendNick + "], troopUin[" + paramSessionInfo.troopUin + "]");
+      localObject = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+    } while (localObject == null);
+    String str;
+    if (paramSessionInfo.curType == 1006) {
+      str = ((awyz)localObject).a(paramSessionInfo.curFriendUin);
+    }
+    for (Object localObject = paramSessionInfo.curFriendUin;; localObject = ((awyz)localObject).b(str))
+    {
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.curType, str, paramSessionInfo.curFriendNick, (String)localObject, paramBoolean, paramSessionInfo.troopUin, true, true, null, "from_internal", paramMap);
+      return;
+      str = paramSessionInfo.curFriendUin;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mrn
  * JD-Core Version:    0.7.0.1
  */

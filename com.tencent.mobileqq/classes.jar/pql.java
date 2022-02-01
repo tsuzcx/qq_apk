@@ -1,18 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage.RIJTipMessageManager.1.1;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.tipmessage.RIJTipMessageManager.1.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class pql
-  implements View.OnTouchListener
+  implements pvb
 {
-  public pql(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
+  pql(pqk parampqk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return true;
+    pqk.a(this.a).a().runOnUiThread(new RIJTipMessageManager.1.2(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    pqk.a(this.a).a().runOnUiThread(new RIJTipMessageManager.1.1(this));
   }
 }
 

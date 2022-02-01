@@ -1,28 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-class afph
-  implements bjoe
+final class afph
+  implements afpm
 {
-  afph(afpd paramafpd, ChatMessage paramChatMessage, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
-      }
-      aszr.a("0X8005E4F");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Afpd.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      label41:
-      aszr.a("0X8005E4D");
-    }
+    paramSessionInfo = new ProfileActivity.AllInOne(paramString, 70);
+    paramSessionInfo.h = ContactUtils.getFriendNickName(paramQQAppInterface, paramString);
+    return paramSessionInfo;
   }
 }
 

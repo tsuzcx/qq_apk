@@ -21,9 +21,9 @@ public class LargeIntentManager
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
+    //   1: astore_1
     //   2: aconst_null
-    //   3: astore_1
+    //   3: astore_3
     //   4: aload_0
     //   5: invokestatic 44	cooperation/qzone/LargeIntentManager:getBundleSaveFile	(Landroid/content/Context;)Ljava/io/File;
     //   8: astore_0
@@ -41,14 +41,14 @@ public class LargeIntentManager
     //   32: invokespecial 54	java/lang/NullPointerException:<init>	()V
     //   35: athrow
     //   36: aload_0
-    //   37: astore_1
+    //   37: astore_2
     //   38: iconst_0
     //   39: ifeq +11 -> 50
     //   42: new 53	java/lang/NullPointerException
     //   45: dup
     //   46: invokespecial 54	java/lang/NullPointerException:<init>	()V
     //   49: athrow
-    //   50: aload_1
+    //   50: aload_2
     //   51: areturn
     //   52: astore_1
     //   53: ldc 8
@@ -96,29 +96,29 @@ public class LargeIntentManager
     //   120: new 50	android/content/Intent
     //   123: dup
     //   124: invokespecial 51	android/content/Intent:<init>	()V
-    //   127: astore_2
+    //   127: astore_3
     //   128: new 98	android/os/Bundle
     //   131: dup
     //   132: invokespecial 99	android/os/Bundle:<init>	()V
-    //   135: astore_3
-    //   136: aload_3
+    //   135: astore_2
+    //   136: aload_2
     //   137: aload_1
     //   138: invokevirtual 103	android/os/Bundle:readFromParcel	(Landroid/os/Parcel;)V
-    //   141: aload_2
-    //   142: aload_3
+    //   141: aload_3
+    //   142: aload_2
     //   143: invokevirtual 107	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   146: pop
     //   147: aload_1
     //   148: ifnull +7 -> 155
     //   151: aload_1
     //   152: invokevirtual 110	android/os/Parcel:recycle	()V
-    //   155: aload_2
-    //   156: astore_1
+    //   155: aload_3
+    //   156: astore_2
     //   157: aload_0
     //   158: ifnull -108 -> 50
     //   161: aload_0
     //   162: invokevirtual 113	java/io/InputStream:close	()V
-    //   165: aload_2
+    //   165: aload_3
     //   166: areturn
     //   167: astore_0
     //   168: ldc 8
@@ -134,130 +134,135 @@ public class LargeIntentManager
     //   182: aload_0
     //   183: aastore
     //   184: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   187: aload_2
+    //   187: aload_3
     //   188: areturn
-    //   189: astore_3
+    //   189: astore_0
     //   190: aconst_null
     //   191: astore_2
-    //   192: aload_1
-    //   193: astore_0
-    //   194: aload_3
-    //   195: astore_1
-    //   196: ldc 8
-    //   198: iconst_2
-    //   199: iconst_2
-    //   200: anewarray 4	java/lang/Object
-    //   203: dup
-    //   204: iconst_0
-    //   205: ldc 56
-    //   207: aastore
-    //   208: dup
-    //   209: iconst_1
-    //   210: aload_1
-    //   211: aastore
-    //   212: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   215: new 50	android/content/Intent
-    //   218: dup
-    //   219: invokespecial 51	android/content/Intent:<init>	()V
-    //   222: astore_3
-    //   223: aload_2
-    //   224: ifnull +7 -> 231
-    //   227: aload_2
-    //   228: invokevirtual 110	android/os/Parcel:recycle	()V
-    //   231: aload_3
-    //   232: astore_1
-    //   233: aload_0
-    //   234: ifnull -184 -> 50
-    //   237: aload_0
-    //   238: invokevirtual 113	java/io/InputStream:close	()V
-    //   241: aload_3
-    //   242: areturn
-    //   243: astore_0
-    //   244: ldc 8
-    //   246: iconst_2
-    //   247: iconst_2
-    //   248: anewarray 4	java/lang/Object
-    //   251: dup
-    //   252: iconst_0
-    //   253: ldc 56
-    //   255: aastore
-    //   256: dup
-    //   257: iconst_1
-    //   258: aload_0
-    //   259: aastore
-    //   260: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   263: aload_3
-    //   264: areturn
-    //   265: astore_1
-    //   266: aconst_null
-    //   267: astore_2
-    //   268: aload_3
-    //   269: astore_0
+    //   192: aload_3
+    //   193: astore_1
+    //   194: ldc 8
+    //   196: iconst_2
+    //   197: iconst_2
+    //   198: anewarray 4	java/lang/Object
+    //   201: dup
+    //   202: iconst_0
+    //   203: ldc 56
+    //   205: aastore
+    //   206: dup
+    //   207: iconst_1
+    //   208: aload_0
+    //   209: aastore
+    //   210: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   213: new 50	android/content/Intent
+    //   216: dup
+    //   217: invokespecial 51	android/content/Intent:<init>	()V
+    //   220: astore_0
+    //   221: aload_2
+    //   222: ifnull +7 -> 229
+    //   225: aload_2
+    //   226: invokevirtual 110	android/os/Parcel:recycle	()V
+    //   229: aload_0
+    //   230: astore_2
+    //   231: aload_1
+    //   232: ifnull -182 -> 50
+    //   235: aload_1
+    //   236: invokevirtual 113	java/io/InputStream:close	()V
+    //   239: aload_0
+    //   240: areturn
+    //   241: astore_1
+    //   242: ldc 8
+    //   244: iconst_2
+    //   245: iconst_2
+    //   246: anewarray 4	java/lang/Object
+    //   249: dup
+    //   250: iconst_0
+    //   251: ldc 56
+    //   253: aastore
+    //   254: dup
+    //   255: iconst_1
+    //   256: aload_1
+    //   257: aastore
+    //   258: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   261: aload_0
+    //   262: areturn
+    //   263: astore_0
+    //   264: aconst_null
+    //   265: astore_2
+    //   266: aload_2
+    //   267: ifnull +7 -> 274
     //   270: aload_2
-    //   271: ifnull +7 -> 278
-    //   274: aload_2
-    //   275: invokevirtual 110	android/os/Parcel:recycle	()V
-    //   278: aload_0
-    //   279: ifnull +7 -> 286
+    //   271: invokevirtual 110	android/os/Parcel:recycle	()V
+    //   274: aload_1
+    //   275: ifnull +7 -> 282
+    //   278: aload_1
+    //   279: invokevirtual 113	java/io/InputStream:close	()V
     //   282: aload_0
-    //   283: invokevirtual 113	java/io/InputStream:close	()V
-    //   286: aload_1
-    //   287: athrow
-    //   288: astore_0
-    //   289: ldc 8
-    //   291: iconst_2
-    //   292: iconst_2
-    //   293: anewarray 4	java/lang/Object
-    //   296: dup
-    //   297: iconst_0
-    //   298: ldc 56
+    //   283: athrow
+    //   284: astore_1
+    //   285: ldc 8
+    //   287: iconst_2
+    //   288: iconst_2
+    //   289: anewarray 4	java/lang/Object
+    //   292: dup
+    //   293: iconst_0
+    //   294: ldc 56
+    //   296: aastore
+    //   297: dup
+    //   298: iconst_1
+    //   299: aload_1
     //   300: aastore
-    //   301: dup
-    //   302: iconst_1
-    //   303: aload_0
-    //   304: aastore
-    //   305: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   308: goto -22 -> 286
+    //   301: invokestatic 62	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   304: goto -22 -> 282
+    //   307: astore_3
+    //   308: aconst_null
+    //   309: astore_2
+    //   310: aload_0
     //   311: astore_1
-    //   312: aconst_null
-    //   313: astore_2
-    //   314: goto -44 -> 270
+    //   312: aload_3
+    //   313: astore_0
+    //   314: goto -48 -> 266
     //   317: astore_3
     //   318: aload_1
     //   319: astore_2
-    //   320: aload_3
+    //   320: aload_0
     //   321: astore_1
-    //   322: goto -52 -> 270
-    //   325: astore_1
-    //   326: goto -56 -> 270
-    //   329: astore_1
-    //   330: aconst_null
-    //   331: astore_2
-    //   332: goto -136 -> 196
-    //   335: astore_3
-    //   336: aload_1
-    //   337: astore_2
-    //   338: aload_3
-    //   339: astore_1
-    //   340: goto -144 -> 196
+    //   322: aload_3
+    //   323: astore_0
+    //   324: goto -58 -> 266
+    //   327: astore_0
+    //   328: goto -62 -> 266
+    //   331: astore_3
+    //   332: aconst_null
+    //   333: astore_2
+    //   334: aload_0
+    //   335: astore_1
+    //   336: aload_3
+    //   337: astore_0
+    //   338: goto -144 -> 194
+    //   341: astore_3
+    //   342: aload_1
+    //   343: astore_2
+    //   344: aload_0
+    //   345: astore_1
+    //   346: aload_3
+    //   347: astore_0
+    //   348: goto -154 -> 194
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	343	0	paramContext	Context
-    //   3	48	1	localContext	Context
-    //   52	16	1	localIOException	java.io.IOException
-    //   106	127	1	localObject1	Object
-    //   265	22	1	localObject2	Object
-    //   311	8	1	localObject3	Object
-    //   321	1	1	localObject4	Object
-    //   325	1	1	localObject5	Object
-    //   329	8	1	localException1	java.lang.Exception
-    //   339	1	1	localException2	java.lang.Exception
-    //   96	242	2	localObject6	Object
-    //   1	142	3	localBundle	android.os.Bundle
-    //   189	6	3	localException3	java.lang.Exception
-    //   222	47	3	localIntent	android.content.Intent
-    //   317	4	3	localObject7	Object
-    //   335	4	3	localException4	java.lang.Exception
+    //   0	351	0	paramContext	Context
+    //   1	1	1	localObject1	Object
+    //   52	16	1	localIOException1	java.io.IOException
+    //   106	130	1	localObject2	Object
+    //   241	38	1	localIOException2	java.io.IOException
+    //   284	16	1	localIOException3	java.io.IOException
+    //   311	35	1	localContext	Context
+    //   37	307	2	localObject3	Object
+    //   3	190	3	localIntent	android.content.Intent
+    //   307	6	3	localObject4	Object
+    //   317	6	3	localObject5	Object
+    //   331	6	3	localException1	java.lang.Exception
+    //   341	6	3	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
     //   28	36	52	java/io/IOException
@@ -266,17 +271,17 @@ public class LargeIntentManager
     //   161	165	167	java/io/IOException
     //   4	24	189	java/lang/Exception
     //   74	90	189	java/lang/Exception
-    //   227	231	243	java/io/IOException
-    //   237	241	243	java/io/IOException
-    //   4	24	265	finally
-    //   74	90	265	finally
-    //   274	278	288	java/io/IOException
-    //   282	286	288	java/io/IOException
-    //   90	107	311	finally
+    //   225	229	241	java/io/IOException
+    //   235	239	241	java/io/IOException
+    //   4	24	263	finally
+    //   74	90	263	finally
+    //   270	274	284	java/io/IOException
+    //   278	282	284	java/io/IOException
+    //   90	107	307	finally
     //   107	147	317	finally
-    //   196	223	325	finally
-    //   90	107	329	java/lang/Exception
-    //   107	147	335	java/lang/Exception
+    //   194	221	327	finally
+    //   90	107	331	java/lang/Exception
+    //   107	147	341	java/lang/Exception
   }
   
   public static void removeSavedIntent(Context paramContext)

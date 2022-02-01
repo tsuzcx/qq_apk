@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahek;
-import aluw;
+import ahzc;
+import amty;
 import com.tencent.mobileqq.utils.VipUtils;
 
 public class CmGameChatPie$12
   implements Runnable
 {
-  public CmGameChatPie$12(ahek paramahek, int paramInt1, int paramInt2, String paramString) {}
+  public CmGameChatPie$12(ahzc paramahzc, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     int i = 2;
-    if (ahek.a(this.this$0) == null) {
-      ahek.a(this.this$0, new aluw(this.this$0.mActivity, this.this$0.app));
+    if (ahzc.a(this.this$0) == null) {
+      ahzc.a(this.this$0, new amty(this.this$0.mActivity, this.this$0.app));
     }
-    ahek.a(this.this$0).a(this.this$0.a);
-    ahek.a(this.this$0).a(ahek.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
-    ahek.a(this.this$0).show();
-    ahek.a(this.this$0);
+    ahzc.a(this.this$0).a(this.this$0.a);
+    ahzc.a(this.this$0).a(ahzc.a(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    ahzc.a(this.this$0).show();
+    ahzc.a(this.this$0);
     if (this.b == 2) {}
     for (;;)
     {

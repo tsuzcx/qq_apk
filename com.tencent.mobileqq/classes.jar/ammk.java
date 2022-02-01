@@ -1,34 +1,24 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.ApolloManager.21;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 public class ammk
-  implements View.OnClickListener
+  implements nuw
 {
-  public ammk(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, Bundle paramBundle, int paramInt, String paramString1, String paramString2) {}
+  public ammk(ApolloManager.21 param21) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    amlu localamlu = new amlu();
-    localamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-    localamlu.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("pkgId");
-    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null) {
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localamlu);
+    QLog.d("ApolloManager", 1, new Object[] { "[predownloadForGameCenter] offline pkg bid:", this.a.jdField_a_of_type_JavaLangString, " loaded, param=", paramString, ", code=", Integer.valueOf(paramInt) });
+    if (paramInt == 0) {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(this.a.b, this.a.jdField_a_of_type_Int).commit();
     }
-    ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
-    }
-    alnr.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    VipUtils.a(this.a.this$0.a, "cmshow", "Apollo", "gamecenter_preload_res_android", 0, paramInt, new String[] { this.a.jdField_a_of_type_JavaLangString, String.valueOf(this.a.jdField_a_of_type_Int) });
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

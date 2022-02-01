@@ -1,18 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class adxg
-  implements View.OnTouchListener
+  implements asgh
 {
-  public adxg(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
+  public adxg(EmosmActivity paramEmosmActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a_(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (paramInt1 != paramInt2)
+    {
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      asig.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.d = true;
+      bdla.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if (this.a.b == 1) {
+        bdla.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
+      }
+    }
+    else
+    {
+      return;
+    }
+    bdla.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
   }
 }
 

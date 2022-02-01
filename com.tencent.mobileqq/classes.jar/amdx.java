@@ -1,14 +1,12 @@
-public class amdx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class amdx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  amdx(amdv paramamdv) {}
   
-  public amdx(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

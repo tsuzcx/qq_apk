@@ -5,8 +5,8 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bgyo;
-import bgzd;
+import bijg;
+import bijv;
 
 final class WebSoService$11
   implements Runnable
@@ -19,15 +19,15 @@ final class WebSoService$11
     String str1 = "";
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      bgzd.a(this.jdField_a_of_type_JavaLangString.getBytes(), bgzd.b(this.jdField_a_of_type_AndroidNetUri));
-      str1 = bgyo.a(this.jdField_a_of_type_JavaLangString);
+      bijv.a(this.jdField_a_of_type_JavaLangString.getBytes(), bijv.b(this.jdField_a_of_type_AndroidNetUri));
+      str1 = bijg.a(this.jdField_a_of_type_JavaLangString);
     }
     SharedPreferences.Editor localEditor;
     if ((!TextUtils.isEmpty(this.b)) && (this.jdField_a_of_type_AndroidNetUri != null))
     {
       localEditor = WebSoService.a().edit();
-      String str2 = String.valueOf(bgzd.a());
-      String str3 = bgzd.a(this.jdField_a_of_type_AndroidNetUri);
+      String str2 = String.valueOf(bijv.a());
+      String str3 = bijv.a(this.jdField_a_of_type_AndroidNetUri);
       localEditor.putString("eTag_" + str2 + str3, this.b);
       localEditor.putString("pageVersion_" + str2 + str3, this.c);
       localEditor.putString("htmlSha1_" + str2 + str3, str1);

@@ -1,17 +1,25 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class aecy
-  implements View.OnCreateContextMenuListener
+  implements DialogInterface.OnDismissListener
 {
-  public aecy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public aecy(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramContextMenu.clear();
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
+    }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.getInstance(this.a.getBaseContext()).reportActionCount(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

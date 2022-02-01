@@ -1,21 +1,32 @@
-public class amic
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+
+class amic
+  implements View.OnTouchListener
 {
-  public long a;
-  public String a;
-  public long b;
+  amic(amia paramamia) {}
   
-  public amic(String paramString, long paramLong1, long paramLong2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    return localStringBuilder.toString();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+        continue;
+        if ((paramView instanceof ImageView)) {
+          ((ImageView)paramView).getDrawable().clearColorFilter();
+        }
+      }
+    }
   }
 }
 

@@ -7,9 +7,9 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import mwc;
-import mwv;
-import mwy;
+import nbp;
+import ncl;
+import nco;
 
 public class SDKConfigInfo
 {
@@ -33,7 +33,7 @@ public class SDKConfigInfo
   }
   
   @TargetApi(9)
-  public static String getDeviceInfo(mwy parammwy)
+  public static String getDeviceInfo(nco paramnco)
   {
     Object localObject = "PRODUCT=" + Build.PRODUCT + ";";
     localObject = (String)localObject + "CPU_ABI=" + Build.CPU_ABI + ";";
@@ -50,29 +50,32 @@ public class SDKConfigInfo
     localObject = (String)localObject + "ID=" + Build.ID + ";";
     localObject = (String)localObject + "MANUFACTURER=" + Build.MANUFACTURER + ";";
     localObject = (String)localObject + "USER=" + Build.USER + ";";
-    String str = (String)localObject + parammwy.c();
-    localObject = parammwy.a().getApplicationInfo();
+    String str = Build.HARDWARE + "_" + nbp.a();
+    localObject = (String)localObject + "CHIP_NAME=" + str + ";";
+    str = (String)localObject + paramnco.d();
+    localObject = paramnco.a().getApplicationInfo();
     str = str + "DATADIR=" + ((ApplicationInfo)localObject).dataDir + ";";
     if (Build.VERSION.SDK_INT >= 9)
     {
       localObject = str + "LIBDIR=" + ((ApplicationInfo)localObject).nativeLibraryDir + ";";
-      parammwy.a();
-      localObject = (String)localObject + "HEVC_ENC_SO_DIR=" + parammwy.a() + ";";
-      localObject = (String)localObject + "HEVC_DEC_SO_DIR=" + parammwy.b() + ";";
-      if (mwc.f() <= 2) {
-        break label823;
+      paramnco.a();
+      localObject = (String)localObject + "HEVC_ENC_SO_DIR=" + paramnco.a() + ";";
+      localObject = (String)localObject + "HEVC_DEC_SO_DIR=" + paramnco.b() + ";";
+      localObject = (String)localObject + "HARDWARE_DETECT_SO_DIR=" + paramnco.c() + ";";
+      if (nbp.f() <= 2) {
+        break label916;
       }
     }
-    label823:
+    label916:
     for (localObject = (String)localObject + "SHARP_VIDEO=1;";; localObject = (String)localObject + "SHARP_VIDEO=2;")
     {
-      parammwy = parammwy.a().getResources().getDisplayMetrics();
-      int i = Math.max(parammwy.widthPixels, parammwy.heightPixels);
-      int j = Math.min(parammwy.widthPixels, parammwy.heightPixels);
-      parammwy = (String)localObject + "SCREEN_WIDTH=" + i + ";";
-      parammwy = parammwy + "SCREEN_HEIGHT=" + j + ";";
-      mwv.g("SDKConfigInfo", "getDeviceInfo, info[" + parammwy + "]");
-      return parammwy;
+      paramnco = paramnco.a().getResources().getDisplayMetrics();
+      int i = Math.max(paramnco.widthPixels, paramnco.heightPixels);
+      int j = Math.min(paramnco.widthPixels, paramnco.heightPixels);
+      paramnco = (String)localObject + "SCREEN_WIDTH=" + i + ";";
+      paramnco = paramnco + "SCREEN_HEIGHT=" + j + ";";
+      ncl.g("SDKConfigInfo", "getDeviceInfo, info[" + paramnco + "]");
+      return paramnco;
       localObject = str + "LIBDIR=" + ((ApplicationInfo)localObject).dataDir + "/lib;";
       break;
     }

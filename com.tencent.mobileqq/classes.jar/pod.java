@@ -1,21 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
-import java.util.Set;
+import android.content.Intent;
 
-public abstract interface pod
-  extends pnm<BaseArticleInfo>
+class pod
+  extends qdb
 {
-  public abstract void a(Map<Long, rcn> paramMap, boolean paramBoolean);
+  pod(pob parampob, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(Map<Long, rcn> paramMap, boolean paramBoolean, Map<Long, uia> paramMap1, String paramString);
-  
-  public abstract void a(Set<Long> paramSet, Map<Long, rcn> paramMap);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void b(boolean paramBoolean);
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+  }
 }
 
 

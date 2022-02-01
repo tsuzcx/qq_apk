@@ -1,22 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aebl
-  extends BroadcastReceiver
+  implements ansd
 {
-  public aebl(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aebl(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSetting2Activity", 1, "bindMiBaoReceiver onReceive mIsBindMb：" + QQSettingSettingActivity.a(this.a));
+    if ((this.a.a == 1) || (this.a.a == 2))
+    {
+      if (paramBoolean) {
+        break label55;
+      }
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131691030, 0).b(this.a.getTitleBarHeight());
     }
-    if (QQSettingSettingActivity.a(this.a)) {
-      bcef.b(this.a.app, "dc00898", "", "", "0X800B312", "0X800B312", 0, 0, "", "", "", "");
+    label55:
+    while (paramInt != 2) {
+      return;
     }
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 

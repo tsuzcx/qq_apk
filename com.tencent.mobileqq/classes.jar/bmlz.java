@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.music.AEEditorMusicPanelDialog.3.1;
+import android.support.annotation.NonNull;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
 
 public class bmlz
-  implements Animation.AnimationListener
 {
-  bmlz(bmlw parambmlw) {}
+  public int a;
+  public String a;
+  public EGLConfig a;
+  public EGLContext a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bmlz()
   {
-    bmlw.b(this.a, false);
-    bmlw.a(this.a).post(new AEEditorMusicPanelDialog.3.1(this));
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  @NonNull
+  public String toString()
   {
-    bmlw.b(this.a, true);
+    return " width = " + this.jdField_a_of_type_Int + " height = " + this.jdField_b_of_type_Int + " isNeedOffScreen = " + this.jdField_a_of_type_Boolean + " resUrl = " + this.jdField_a_of_type_JavaLangString + " resFilePath = " + this.jdField_b_of_type_JavaLangString + " resMD5 = " + this.c;
   }
 }
 

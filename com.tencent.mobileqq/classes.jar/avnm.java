@@ -1,20 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-
-class avnm
-  implements DialogInterface.OnCancelListener
+public abstract interface avnm
 {
-  avnm(avnl paramavnl, BaseChatPie paramBaseChatPie) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "dialog cancel");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.finish(1);
-  }
+  public abstract void a(avnn paramavnn);
 }
 
 

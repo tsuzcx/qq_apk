@@ -1,34 +1,116 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
-class azdb
-  extends ClickableSpan
+public class azdb
+  implements Handler.Callback, azfb
 {
-  azdb(azcz paramazcz, String paramString1, String paramString2, String paramString3) {}
+  private float jdField_a_of_type_Float = 0.0F;
+  private final int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
+  private azdc jdField_a_of_type_Azdc;
+  private azey jdField_a_of_type_Azey = new azey();
+  private int b;
+  private int c = azcv.H;
   
-  public void onClick(View paramView)
+  public azdb(azdc paramazdc, int paramInt)
   {
-    new azde(azcz.a(this.jdField_a_of_type_Azcz).mContext).a(this.jdField_a_of_type_JavaLangString).a();
-    bcef.b(azcz.a(this.jdField_a_of_type_Azcz).getApp(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Azdc = paramazdc;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  private void c()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setTextSize(DisplayUtil.dip2px(azcz.a(this.jdField_a_of_type_Azcz).mContext, 14.0F));
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    if (!TextUtils.isEmpty(this.b)) {
-      paramTextPaint.setColor(Color.parseColor(this.b));
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLocationInterface", 2, "[status][locInterface] startLocationImpl.");
     }
-    if (!TextUtils.isEmpty(this.c)) {
-      paramTextPaint.setTextSize(Float.valueOf(this.c).floatValue());
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_Azey.a(this);
+    this.jdField_a_of_type_Azey.a(2000L, false, false);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 10000L);
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLocationInterface", 2, "[status][locInterface] stopLocationImpl.");
     }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_Azey.b(this);
+    this.jdField_a_of_type_Azey.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(azex paramazex, Double paramDouble, boolean paramBoolean)
+  {
+    if (paramazex.jdField_a_of_type_Float > this.jdField_a_of_type_Int + this.jdField_a_of_type_Float)
+    {
+      this.b += 1;
+      if (this.b > 8L)
+      {
+        this.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Float + 10.0D));
+        this.b = 0;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][locInterface] ignore location: ", paramazex, " time:", Integer.valueOf(this.b), " adjust:", Float.valueOf(this.jdField_a_of_type_Float) });
+      }
+      return;
+    }
+    this.b = 0;
+    if ((paramBoolean) && (this.jdField_a_of_type_Azdc != null)) {
+      this.jdField_a_of_type_Azdc.a(paramazex);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt <= 0) || (paramInt > azcv.H * 2)) {}
+    for (this.c = azcv.H;; this.c = paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][distance] setDistanceReqTime ", Integer.valueOf(this.c) });
+      }
+      return;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoLocationInterface", 2, new Object[] { "unKnow msg:", Integer.valueOf(paramMessage.what) });
+      }
+      return false;
+    case 1: 
+      c();
+      return false;
+    case 2: 
+      d();
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, azcv.H);
+      return false;
+    }
+    d();
+    return false;
   }
 }
 

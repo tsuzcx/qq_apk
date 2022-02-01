@@ -1,58 +1,29 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class asqw
+class asqw
+  implements DialogInterface.OnClickListener
 {
-  public static int a(int paramInt)
-  {
-    int j = 9;
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
-      }
-      return i;
-      i = 8;
-      continue;
-      i = 7;
-      continue;
-      i = 6;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
-    }
-  }
+  asqw(asqt paramasqt, Context paramContext) {}
   
-  public static void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if (paramLong < 51200L) {
-      i = 1;
-    }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidContentContext != null) {}
+    try
     {
-      bcef.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
-      return;
-      if (paramLong < 102400L) {
-        i = 2;
-      } else if (paramLong < 512000L) {
-        i = 3;
-      } else if (paramLong < 1024000L) {
-        i = 4;
-      } else if (paramLong < 3072000L) {
-        i = 5;
-      } else if (paramLong < 10240000L) {
-        i = 6;
-      } else {
-        i = 7;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", asqt.a(this.jdField_a_of_type_Asqt));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog click confirm " + asqt.a(this.jdField_a_of_type_Asqt));
       }
+      return;
     }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

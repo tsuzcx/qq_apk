@@ -1,57 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajhi
-  implements AdapterView.OnItemClickListener
+public class ajhi
+  extends anrc
 {
-  ajhi(ajhb paramajhb) {}
+  public ajhi(TroopView paramTroopView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    if (paramInt2 == 0) {
+      this.a.j();
     }
-    if ((this.a.jdField_a_of_type_Ajbd.getCount() <= 0) || (paramInt <= 0)) {}
-    do
-    {
+    while (this.a.a()) {
       return;
-      paramAdapterView = (ajhk)this.a.jdField_a_of_type_Ajbd.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
     }
-    try
-    {
-      paramAdapterView = bdvb.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      if (paramAdapterView == null) {
-        break label214;
-      }
-      paramAdapterView = (TroopLinkElement)paramAdapterView;
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694475);
     }
-    catch (Exception paramAdapterView)
-    {
-      for (;;)
-      {
-        paramAdapterView = null;
-        continue;
-        paramAdapterView = null;
-      }
-    }
-    if (paramAdapterView != null)
-    {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    }
-    this.a.a(true);
+    QQToast.a(this.a.a(), 1, paramString1, 0).a();
   }
 }
 

@@ -1,11 +1,11 @@
-public class pvn
+class pvn
+  implements pvo
 {
-  public int a;
-  public int b;
+  pvn(pvm parampvm, String paramString) {}
   
-  public String toString()
+  public void a(pvq parampvq)
   {
-    return "UserCoinInfo{platformCoinCount='" + this.a + '\'' + ", userCoinCount='" + this.b + '\'' + '}';
+    parampvq.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

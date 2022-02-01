@@ -1,10 +1,18 @@
-public abstract interface aixs
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+
+public class aixs
+  extends ClickableSpan
 {
-  public abstract void a();
+  public aixs(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    PermisionPrivacyActivity.a(NewFriendVerifyBlockedListFragment.a(this.a));
+    bdla.b(null, "dc00898", "", "", "0X800A3AA", "0X800A3AA", 0, 0, "", "", "", "");
+  }
 }
 
 

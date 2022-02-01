@@ -1,29 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
 public class aldd
-  extends BroadcastReceiver
 {
-  public aldd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public int a;
+  public View a;
+  public boolean a;
+  public int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aldd(int paramInt1, int paramInt2)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
-        this.a.k = true;
-      }
-      this.a.j();
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt >= 2;
+  }
+  
+  public boolean a()
+  {
+    return this.b >= 2;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(20);
+    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
 
-public final class aygb
-  implements DialogInterface.OnClickListener
+class aygb
+  extends bgkn
 {
-  public aygb(QQAppInterface paramQQAppInterface, String paramString) {}
+  aygb(ayfx paramayfx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    bfxn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramLong > 0L)
+    {
+      ayfx.c(this.a).setText(String.format(anvx.a(2131706743), new Object[] { Long.valueOf(paramLong) }));
+      return;
     }
+    ayfx.c(this.a).setText(anvx.a(2131706841));
   }
 }
 

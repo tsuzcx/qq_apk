@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahey;
-import ahfb;
+import ahzq;
+import ahzt;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 
 public class ConfessChatPie$3
   implements Runnable
 {
-  public ConfessChatPie$3(ahey paramahey) {}
+  public ConfessChatPie$3(ahzq paramahzq) {}
   
   public void run()
   {
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.this$0.mContext, "qq_confess_holmes_progress_lottie.json", new ahfb(this));
+      LottieComposition.Factory.fromAssetFileName(this.this$0.mContext, "qq_confess_holmes_progress_lottie.json", new ahzt(this));
       return;
     }
     catch (Exception localException)

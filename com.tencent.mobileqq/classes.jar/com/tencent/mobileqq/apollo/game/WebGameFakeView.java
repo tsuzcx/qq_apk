@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import altl;
-import alug;
-import alui;
+import amsm;
+import amth;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class WebGameFakeView
 {
   public static AtomicBoolean a;
-  public alug a;
+  public amth a;
   public Context a;
   public Bundle a;
   private View a;
@@ -81,17 +81,17 @@ public class WebGameFakeView
     ImageView localImageView;
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director != null) && (this.jdField_a_of_type_AndroidViewView != null))
     {
-      localRelativeLayout1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362770);
-      localRelativeLayout2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365069);
-      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362769);
+      localRelativeLayout1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362786);
+      localRelativeLayout2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365153);
+      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362785);
       localTextView.setVisibility(0);
-      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362771);
+      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362787);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor))
       {
         if (!this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor.trim().toLowerCase().equals("#000000")) {
           break label234;
         }
-        localImageView.setImageResource(2130840242);
+        localImageView.setImageResource(2130840277);
         localRelativeLayout2.setBackgroundResource(0);
         if (ImmersiveUtils.a()) {
           ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewWindow, false);
@@ -111,8 +111,8 @@ public class WebGameFakeView
       label234:
       if (this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView$Director.frontColor.trim().toLowerCase().equals("#ffffff"))
       {
-        localImageView.setImageResource(2130847625);
-        localRelativeLayout2.setBackgroundResource(2130838514);
+        localImageView.setImageResource(2130847716);
+        localRelativeLayout2.setBackgroundResource(2130838536);
         if (ImmersiveUtils.a()) {
           ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewWindow, true);
         }
@@ -141,9 +141,9 @@ public class WebGameFakeView
     }
   }
   
-  public void a(alug paramalug)
+  public void a(amth paramamth)
   {
-    this.jdField_a_of_type_Alug = paramalug;
+    this.jdField_a_of_type_Amth = paramamth;
   }
   
   public void a(Intent paramIntent)
@@ -151,12 +151,12 @@ public class WebGameFakeView
     ImageView localImageView;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362771);
-      if (altl.a().a() <= 1) {
+      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362787);
+      if (amsm.a().a() <= 1) {
         break label83;
       }
       localImageView.setVisibility(0);
-      localImageView.setOnClickListener(new alui(this, localImageView));
+      localImageView.setOnClickListener(new amtj(this, localImageView));
     }
     for (;;)
     {
@@ -180,10 +180,10 @@ public class WebGameFakeView
     if ((this.jdField_a_of_type_Boolean) && (paramView != null))
     {
       this.jdField_a_of_type_AndroidViewView = paramView;
-      TextView localTextView = (TextView)paramView.findViewById(2131362769);
-      paramView = (FrameLayout)paramView.findViewById(2131367431);
+      TextView localTextView = (TextView)paramView.findViewById(2131362785);
+      paramView = (FrameLayout)paramView.findViewById(2131367562);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.addRule(3, 2131362770);
+      localLayoutParams.addRule(3, 2131362786);
       paramView.setLayoutParams(localLayoutParams);
       paramView.requestLayout();
       localTextView.setVisibility(0);
@@ -199,22 +199,22 @@ public class WebGameFakeView
   public void a(CmGameInitParams paramCmGameInitParams)
   {
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.a(paramCmGameInitParams);
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.a(paramCmGameInitParams);
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.b(paramString1, paramString2);
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.b(paramString1, paramString2);
     }
   }
   
   public void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidViewWindow = null;
-    this.jdField_a_of_type_Alug = null;
+    this.jdField_a_of_type_Amth = null;
     this.jdField_a_of_type_AndroidOsBundle = null;
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = null;
     this.jdField_a_of_type_AndroidViewView = null;
@@ -233,8 +233,8 @@ public class WebGameFakeView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.b();
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.b();
     }
   }
   
@@ -247,36 +247,36 @@ public class WebGameFakeView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.c();
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.c();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.e();
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.e();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.d();
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.d();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.f();
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.f();
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Alug != null) {
-      this.jdField_a_of_type_Alug.g();
+    if (this.jdField_a_of_type_Amth != null) {
+      this.jdField_a_of_type_Amth.g();
     }
   }
 }

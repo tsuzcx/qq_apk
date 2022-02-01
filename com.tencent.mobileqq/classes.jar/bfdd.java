@@ -1,6 +1,17 @@
-public abstract interface bfdd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class bfdd
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  bfdd(bfda parambfda) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+  }
 }
 
 

@@ -1,21 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class aacc
-  implements QQPermissionCallback
+public class aacc
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  aacc(aaca paramaaca) {}
+  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public aacc(List<CertifiedAccountMeta.StQQGroup> paramList)
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
-    bfur.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int getItemCount()
   {
-    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
-    aaca.e(this.a);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
+    {
+      aacd localaacd = (aacd)paramViewHolder;
+      if (localaacd != null) {
+        localaacd.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      }
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558815, paramViewGroup, false);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    }
+    return new aacd(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
   }
 }
 

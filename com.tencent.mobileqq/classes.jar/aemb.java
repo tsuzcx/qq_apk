@@ -1,76 +1,30 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity.30.1;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class aemb
-  implements Observer
+  extends anxj
 {
-  public aemb(TroopInfoActivity paramTroopInfoActivity) {}
+  public aemb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    if (this.a.isFinishing()) {
-      break label10;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
     }
-    label10:
-    label271:
-    for (;;)
-    {
-      return;
-      if ((paramObject instanceof bfed))
-      {
-        paramObservable = (bfed)paramObject;
-        if (paramObservable.a != 1) {
-          break;
-        }
-        boolean bool;
-        if (paramObservable.d == 1)
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.troopinfo", 2, String.format("update isAvatar=%b", new Object[] { Boolean.valueOf(bool) }));
-          }
-          if (!bool) {
-            break label236;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar) {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar = false;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.hasSetNewTroopHead = true;
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
-            if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isUseClassAvatar()) {
-              this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.setUseClassAvatar(false);
-            }
-            this.a.d();
-          }
-        }
-        for (;;)
-        {
-          if (!this.a.isResume()) {
-            break label271;
-          }
-          this.a.runOnUiThread(new TroopInfoActivity.30.1(this, paramObservable));
-          return;
-          bool = false;
-          break;
-          label236:
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.troopinfo", 2, "pullAvatarList");
-          }
-          this.a.jdField_a_of_type_Bfai.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        }
-      }
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
     }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131718593, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

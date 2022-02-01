@@ -1,41 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aoej
-  extends aofq
+  extends beip
 {
-  aoej(aoee paramaoee) {}
+  aoej(aoei paramaoei) {}
   
-  public void a()
+  public boolean a(beik parambeik)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
+    String str = ThemeUtil.getCurrentThemeId();
+    if (!parambeik.a().equals(str)) {
+      QQToast.a(this.a.app.getApplication(), anvx.a(2131714294), 4000).a();
     }
-    Message localMessage = aoee.a(this.a).obtainMessage();
-    localMessage.what = 100;
-    localMessage.sendToTarget();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-    Message localMessage = aoee.a(this.a).obtainMessage();
-    localMessage.what = 102;
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
-    }
-    Message localMessage = aoee.a(this.a).obtainMessage();
-    localMessage.what = 101;
-    localMessage.sendToTarget();
+    return false;
   }
 }
 

@@ -1,41 +1,37 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class baex
-  implements GLSurfaceView.EGLContextFactory
+public class baex
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int = 12440;
-  
-  baex(baew parambaew) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Baew.a);
-    arrayOfInt[2] = 12344;
-    xvv.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Baew.a) });
-    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Baew.a);
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Baew.a) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
+    if (paramInt == 1) {
+      a(paramBoolean, ((Integer)paramObject).intValue());
     }
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    if (paramInt == 2) {}
+    try
     {
-      xvv.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      xvv.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
-      bafa.a("eglDestroyContex", paramEGL10.eglGetError());
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
     }
+    catch (Exception paramObject)
+    {
+      bakl.a("HelloQQWake", "onUpdate_onGetQQAssistantValue error:" + paramObject.getMessage());
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    a(paramInt, paramBoolean, paramObject);
+    b(paramInt, paramBoolean, paramObject);
   }
 }
 

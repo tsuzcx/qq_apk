@@ -1,17 +1,32 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajok
-  implements View.OnLayoutChangeListener
+class ajok
+  implements ajfo
 {
-  public ajok(PhotoCropActivity paramPhotoCropActivity) {}
+  ajok(ajoi paramajoi) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(int paramInt)
   {
-    if (((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(1001);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationEntryController", 2, new Object[] { "onUnreadCountChanged bShowEntry" + ajoi.a(this.a), " count" + paramInt });
+    }
+    this.a.d();
+  }
+  
+  public void a(aqxv paramaqxv)
+  {
+    if ((paramaqxv == null) || (!paramaqxv.a(ajoi.a(this.a).getCurrentAccountUin()))) {
+      ajoi.a(this.a, false);
+    }
+    for (;;)
+    {
+      if ((QLog.isColorLevel()) && (paramaqxv != null)) {
+        QLog.d("TroopNotificationEntryController", 2, "onTroopNotificationConfigUpdate bShowEntry" + ajoi.a(this.a) + " newConf" + paramaqxv.toString());
+      }
+      this.a.d();
+      return;
+      ajoi.a(this.a, true);
     }
   }
 }

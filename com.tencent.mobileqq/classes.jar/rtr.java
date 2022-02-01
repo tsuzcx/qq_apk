@@ -1,108 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class rtr
+  implements ruu
 {
-  private static rtr jdField_a_of_type_Rtr = new rtr();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private List<?> jdField_a_of_type_JavaUtilList;
-  private rtq jdField_a_of_type_Rtq;
-  private rts jdField_a_of_type_Rts;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -100;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = -100;
-  private long jdField_c_of_type_Long = -1L;
-  private boolean jdField_c_of_type_Boolean;
-  private int d = -100;
+  public rtr(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public static rtr a()
+  public void a(View paramView, int paramInt)
   {
-    return jdField_a_of_type_Rtr;
-  }
-  
-  private void b()
-  {
-    rts localrts = this.jdField_a_of_type_Rts;
-    if ((localrts == null) || (localrts.a())) {
-      return;
-    }
-    localrts.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localrts.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBehaviorsReporter", 2, "doReportVideoBehaviorsSeq(): " + localrts.toString());
-    }
-    pay.f(BaseApplication.getContext(), pay.a(), true, localrts.a());
-    this.jdField_a_of_type_Rts.a();
-  }
-  
-  public void a()
-  {
-    b();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -100;
-    this.jdField_c_of_type_Int = -100;
-    this.d = -100;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Rtq = null;
-    this.jdField_a_of_type_Rts = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(slt paramslt, List<?> paramList)
-  {
-    if (!this.jdField_c_of_type_Boolean) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        this.jdField_a_of_type_JavaUtilList = paramList;
-        if ((this.jdField_c_of_type_Long == -1L) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          this.jdField_c_of_type_Long = ((BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(0)).mRecommendSeq;
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoBehaviorsReporter", 2, "bindVideoChannel(): 2,  mFirstVideoSeq = " + this.jdField_c_of_type_Long);
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoBehaviorsReporter", 2, "bindVideoChannel(): 1, mFirstVideoSeq = " + this.jdField_c_of_type_Long);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (!this.jdField_c_of_type_Boolean) {}
-    while (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    ReadInJoyDeliverUGCActivity.a(this.a, paramInt);
   }
 }
 

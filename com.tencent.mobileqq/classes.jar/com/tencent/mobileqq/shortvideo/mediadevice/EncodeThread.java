@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bbsu;
-import bbtl;
+import bczp;
+import bdag;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.maxvideo.MaxVideoConst;
 import com.tencent.maxvideo.mediadevice.EncodeVideo;
@@ -19,8 +19,8 @@ import cooperation.qzone.cache.QZoneFilePath;
 import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.io.File;
 import java.io.IOException;
-import vns;
-import xwa;
+import wcn;
+import ykv;
 
 public class EncodeThread
   implements MaxVideoConst, Runnable
@@ -138,12 +138,12 @@ public class EncodeThread
     try
     {
       i = this.videoEncode.startPartEncode(paramString1, this.mVideoEncodeStartFrame, this.mVideoEncodeEndFrame, paramString2, this.mAudioEncodeStartTime, this.mAudioEncodeEndTime, paramString3, paramString4, arrayOfInt);
-      xwa.b("take_video", "create_mp4_result", 0, i, new String[0]);
+      ykv.b("take_video", "create_mp4_result", 0, i, new String[0]);
       if (i == 0)
       {
         long l2 = SystemClock.uptimeMillis();
-        xwa.b("take_video", "create_mp4_time", 0, 0, new String[] { "" + (l2 - l1) });
-        vns.a(paramString4, this.mEntry);
+        ykv.b("take_video", "create_mp4_time", 0, 0, new String[] { "" + (l2 - l1) });
+        wcn.a(paramString4, this.mEntry);
       }
       CodecParam.mSaveMode = 0;
       CodecParam.mCRFValue = 23;
@@ -175,7 +175,7 @@ public class EncodeThread
     {
       this.errorCode = 5100;
       notifyEncodeEnd(this.errorCode, null);
-      QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "9", null);
+      QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "9", null);
       label67:
       return;
     }
@@ -184,7 +184,7 @@ public class EncodeThread
     {
       this.errorCode = 5100;
       notifyEncodeEnd(this.errorCode, null);
-      QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "9", null);
+      QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "9", null);
       return;
     }
     String[] arrayOfString = localFile.list();
@@ -195,7 +195,7 @@ public class EncodeThread
         QLog.d("MaxVideo.Plugin", 2, "EncodeThread empty dir, mSourceDirString = " + this.mSourceDirString);
       }
       notifyEncodeEnd(this.errorCode, null);
-      QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "9", null);
+      QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "9", null);
       return;
     }
     int j = arrayOfString.length;
@@ -242,7 +242,7 @@ public class EncodeThread
       }
       this.errorCode = 5101;
       notifyEncodeEnd(this.errorCode, null);
-      QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "9", null);
+      QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "9", null);
       return;
     }
     if (this.mGenerateGif)
@@ -288,7 +288,7 @@ public class EncodeThread
       {
         this.errorCode = 5102;
         notifyEncodeEnd(this.errorCode, null);
-        QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "10", null);
+        QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "10", null);
         return;
       }
     }
@@ -307,21 +307,21 @@ public class EncodeThread
     label1024:
     notifyEncodeBegin();
     if (this.mEnableHardEncode) {
-      localObject4 = new bbtl(localObject2, localIOException, this.mSourceDirString);
+      localObject4 = new bdag(localObject2, localIOException, this.mSourceDirString);
     }
     for (;;)
     {
       try
       {
-        i = ((bbtl)localObject4).a();
+        i = ((bdag)localObject4).a();
         if (i == 0)
         {
-          this.mTargetFilePath = ((bbtl)localObject4).a();
+          this.mTargetFilePath = ((bdag)localObject4).a();
           boolean bool = FileUtils.fileExistsAndNotEmpty(this.mTargetFilePath);
           if (QLog.isColorLevel()) {
             QLog.d("MaxVideo.Plugin", 2, "EncodeThread hwEncode success, mTargetFilePath = " + this.mTargetFilePath + ", isExist = " + bool);
           }
-          QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "record_hw_success", "0", null);
+          QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "record_hw_success", "0", null);
           if (QLog.isColorLevel()) {
             QLog.d("MaxVideo.Plugin", 2, "EncodeThread hwEncode serrcode = " + i);
           }
@@ -342,7 +342,7 @@ public class EncodeThread
             if (i != 0) {
               continue;
             }
-            QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "record_sw_success", "0", null);
+            QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "record_sw_success", "0", null);
           }
           if (QLog.isColorLevel())
           {
@@ -359,7 +359,7 @@ public class EncodeThread
           if (i != 0) {
             continue;
           }
-          QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "record_success", "0", null);
+          QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "record_success", "0", null);
           switch (i)
           {
           default: 
@@ -394,13 +394,13 @@ public class EncodeThread
         localNoSuchMethodError.printStackTrace();
         i = -1;
         continue;
-        QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "record_hw_success", "1", i + "_" + Build.MODEL);
+        QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "record_hw_success", "1", i + "_" + Build.MODEL);
         continue;
         localObject4 = localIOException;
         continue;
-        QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "record_sw_success", "1", i + "_" + Build.MODEL);
+        QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "record_sw_success", "1", i + "_" + Build.MODEL);
         continue;
-        QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "record_success", "1", i + "_" + Build.MODEL);
+        QzoneVideoBeaconReport.reportVideoEvent(bczp.a + "", "qzone_video_record", "record_success", "1", i + "_" + Build.MODEL);
         continue;
         this.errorCode = 0;
         long l2 = System.currentTimeMillis();
@@ -478,7 +478,7 @@ public class EncodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread
  * JD-Core Version:    0.7.0.1
  */

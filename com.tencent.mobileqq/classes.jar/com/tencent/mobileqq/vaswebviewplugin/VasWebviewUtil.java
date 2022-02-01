@@ -11,14 +11,14 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
-import bcdf;
-import bftf;
-import bgev;
-import bgvh;
-import bgxd;
-import bgxf;
-import bgys;
-import bkfq;
+import bdka;
+import bhbx;
+import bhnp;
+import bifz;
+import bihv;
+import bihx;
+import bijk;
+import blrb;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
-import nny;
+import nuz;
 
 public class VasWebviewUtil
 {
@@ -66,7 +66,7 @@ public class VasWebviewUtil
     if (QLog.isColorLevel()) {
       QLog.i("VasWebviewUtil", 2, "decodeUrl:" + paramString);
     }
-    String str1 = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.8.4810").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    String str1 = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.10.4875").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
     String str2 = paramIntent.getStringExtra("updateTime");
     paramString = str1;
     if (str2 != null)
@@ -136,7 +136,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramInt3).append("|");
     localStringBuilder.append(paramString4).append("|");
     localStringBuilder.append(paramString5);
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_sonic_errorcode_report_hour", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_sonic_errorcode_report_hour", localStringBuilder.toString(), true);
   }
   
   public static void doSonicSpeedReport(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, int paramInt3, int paramInt4, String paramString4, String paramString5)
@@ -162,7 +162,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramInt4).append("|");
     localStringBuilder.append(paramString4).append("|");
     localStringBuilder.append(paramString5);
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_sonic_speed_report", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_sonic_speed_report", localStringBuilder.toString(), true);
   }
   
   public static String handleEmojiUrl(Intent paramIntent, Context paramContext, long paramLong, String paramString)
@@ -175,14 +175,14 @@ public class VasWebviewUtil
       if ((i != 1) && (i != 3)) {
         break label990;
       }
-      paramString = bgev.a(paramContext, "emoji", "");
+      paramString = bhnp.a(paramContext, "emoji", "");
       if ((k != 8) && (k != 4) && (k != 12)) {
         break label170;
       }
       if (paramIntent.hasExtra("emoji_is_original")) {
         break label116;
       }
-      paramContext = bgev.a(paramContext, "emojiDetail", "[id]", "");
+      paramContext = bhnp.a(paramContext, "emojiDetail", "[id]", "");
     }
     for (;;)
     {
@@ -199,28 +199,28 @@ public class VasWebviewUtil
         label116:
         paramString = Integer.toString(paramIntent.getIntExtra("emoji_author_id", 0));
         if (paramIntent.getBooleanExtra("emoji_is_original", false)) {}
-        for (paramContext = bgev.a(paramContext, "openAuthorDetail", paramString, "");; paramContext = bgev.a(paramContext, "emojiAuthorDetail", paramString, "")) {
+        for (paramContext = bhnp.a(paramContext, "openAuthorDetail", paramString, "");; paramContext = bhnp.a(paramContext, "emojiAuthorDetail", paramString, "")) {
           break;
         }
         label170:
         if (k == 11)
         {
-          paramContext = bgev.a(paramContext, "smallEmojiList", "[id]", "");
+          paramContext = bhnp.a(paramContext, "smallEmojiList", "[id]", "");
           continue;
         }
         if (k == 5)
         {
-          paramContext = bgev.a(paramContext, "emojiAuthorDetail", "[id]", "");
+          paramContext = bhnp.a(paramContext, "emojiAuthorDetail", "[id]", "");
           continue;
         }
         if (k == 6)
         {
-          paramString = bgev.a(BaseApplicationImpl.sApplication, "magicPlus", "");
+          paramString = bhnp.a(BaseApplicationImpl.sApplication, "magicPlus", "");
           paramContext = paramString;
           if (TextUtils.isEmpty(paramString)) {
             continue;
           }
-          paramContext = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.8.4810").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+          paramContext = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.10.4875").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
           continue;
         }
         if (k == 9)
@@ -229,7 +229,7 @@ public class VasWebviewUtil
           localObject1 = paramContext;
           if (!TextUtils.isEmpty(paramContext))
           {
-            localObject1 = paramContext.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.8.4810").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+            localObject1 = paramContext.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.4.10.4875").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
             paramString = (String)localObject1;
           }
           paramContext = paramString;
@@ -356,21 +356,21 @@ public class VasWebviewUtil
       } while (paramLong <= 0L);
       str = String.valueOf(paramLong);
       localIntent = paramIntent;
-    } while (!bgvh.a.containsKey(str));
+    } while (!bifz.a.containsKey(str));
     paramIntent.putExtra("insertPluginsArray", new String[] { str });
     return paramIntent;
   }
   
   public static boolean isExternalStorageOK(Context paramContext)
   {
-    if (!bftf.a())
+    if (!bhbx.a())
     {
-      Toast.makeText(paramContext, paramContext.getString(2131717955), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131718340), 0).show();
       return false;
     }
-    if (bftf.b() < 5242880L)
+    if (bhbx.b() < 5242880L)
     {
-      Toast.makeText(paramContext, paramContext.getString(2131717956), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131718341), 0).show();
       return false;
     }
     return true;
@@ -383,7 +383,7 @@ public class VasWebviewUtil
   
   public static void openIndividuationIndex(Context paramContext, String paramString)
   {
-    String str2 = bgev.a(paramContext, "personalIndex", "");
+    String str2 = bhnp.a(paramContext, "personalIndex", "");
     String str1 = str2;
     if (paramString != null) {
       str1 = str2 + paramString;
@@ -399,7 +399,7 @@ public class VasWebviewUtil
     paramString.putExtra("hide_more_button", true);
     paramString.putExtra("individuation_url_type", 40100);
     openQQBrowserWithoutAD(paramContext, str1, 1048576L, paramString, false, -1);
-    bgys.a(str1);
+    bijk.a(str1);
   }
   
   public static void openQQBrowserActivity(Context paramContext, String paramString, long paramLong, Intent paramIntent, boolean paramBoolean, int paramInt)
@@ -428,7 +428,7 @@ public class VasWebviewUtil
               str = paramString;
               if (!paramString.contains("async_cookie=1"))
               {
-                paramString = nny.a(paramString, "async_cookie=1");
+                paramString = nuz.a(paramString, "async_cookie=1");
                 str = paramString;
                 if (QLog.isColorLevel())
                 {
@@ -531,7 +531,7 @@ public class VasWebviewUtil
               paramString = paramIntent;
               if (!paramIntent.contains("async_cookie=1"))
               {
-                paramIntent = nny.a(paramIntent, "async_cookie=1");
+                paramIntent = nuz.a(paramIntent, "async_cookie=1");
                 paramString = paramIntent;
                 if (QLog.isColorLevel())
                 {
@@ -682,7 +682,7 @@ public class VasWebviewUtil
       ((StringBuilder)localObject).append(paramInt5).append("|");
       ((StringBuilder)localObject).append(paramInt6).append("|");
       ((StringBuilder)localObject).append(paramInt7).append("|");
-      bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_personal_data_hour", ((StringBuilder)localObject).toString(), true);
+      bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_personal_data_hour", ((StringBuilder)localObject).toString(), true);
       return;
     }
   }
@@ -696,7 +696,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramInt3).append("|");
     localStringBuilder.append(paramDouble).append("|");
     localStringBuilder.append(paramInt4).append("|");
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_font_performance", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_font_performance", localStringBuilder.toString(), true);
   }
   
   public static void reportNetworkSpeedTimeFromX5(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, String paramString4, String paramString5, String paramString6)
@@ -723,7 +723,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramString4).append("|");
     localStringBuilder.append(paramString5).append("|");
     localStringBuilder.append(paramString6);
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_network_speed_time_from_x5", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_network_speed_time_from_x5", localStringBuilder.toString(), true);
   }
   
   public static void reportNetworkSpeedTimeFromX5(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, String paramString4)
@@ -747,7 +747,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramInt4).append("|");
     localStringBuilder.append(paramString8).append("|");
     localStringBuilder.append(paramString9);
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_qbwebview_report", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_qbwebview_report", localStringBuilder.toString(), true);
   }
   
   public static void reportQuickUpdateDownload(int paramInt1, long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5)
@@ -767,7 +767,7 @@ public class VasWebviewUtil
       localStringBuilder.append(paramString3).append("|");
       localStringBuilder.append(paramString4).append("|");
       localStringBuilder.append(paramString5).append("|");
-      bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_scupdate_dlreport", localStringBuilder.toString(), true);
+      bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_scupdate_dlreport", localStringBuilder.toString(), true);
       return;
     }
   }
@@ -784,7 +784,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramString3).append("|");
     localStringBuilder.append(paramString4).append("|");
     localStringBuilder.append(paramString5).append("|");
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_scupdate_streport", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_scupdate_streport", localStringBuilder.toString(), true);
   }
   
   public static void reportVASTo00145(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String... paramVarArgs)
@@ -816,10 +816,10 @@ public class VasWebviewUtil
           i = 0;
         }
         String str2 = AppConstants.NET_TYPE_NAME[i];
-        if (TextUtils.isEmpty(bkfq.a))
+        if (TextUtils.isEmpty(blrb.a))
         {
           localObject = paramAppInterface.getResources().getDisplayMetrics();
-          bkfq.a = ((DisplayMetrics)localObject).widthPixels + "*" + ((DisplayMetrics)localObject).heightPixels;
+          blrb.a = ((DisplayMetrics)localObject).widthPixels + "*" + ((DisplayMetrics)localObject).heightPixels;
         }
         Object localObject = new String[9];
         System.arraycopy(paramVarArgs, 0, localObject, 0, Math.min(9, paramVarArgs.length));
@@ -832,8 +832,8 @@ public class VasWebviewUtil
           }
           i += 1;
         }
-        paramAppInterface = Arrays.asList(new String[] { "1", str1, bkfq.a(paramAppInterface), "", "android", "201", Build.VERSION.RELEASE, "3001", "3001013", "", "", paramString1, "", "", "", paramString2, "", paramString3, "", "", paramString4, "", "", "8.4.8", "", "", "", "", "", "android", str2, bkfq.a, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8] });
-        bkfq.a(localQQAppInterface, "dc00145", paramAppInterface);
+        paramAppInterface = Arrays.asList(new String[] { "1", str1, blrb.a(paramAppInterface), "", "android", "201", Build.VERSION.RELEASE, "3001", "3001013", "", "", paramString1, "", "", "", paramString2, "", paramString3, "", "", paramString4, "", "", "8.4.10", "", "", "", "", "", "android", str2, blrb.a, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8] });
+        blrb.a(localQQAppInterface, "dc00145", paramAppInterface);
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -864,7 +864,7 @@ public class VasWebviewUtil
     localStringBuilder.append(paramInt4).append("|");
     localStringBuilder.append(paramString4).append("|");
     localStringBuilder.append(paramString5);
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_status_report", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_status_report", localStringBuilder.toString(), true);
   }
   
   public static void reportVipKeywords(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
@@ -883,10 +883,10 @@ public class VasWebviewUtil
     if (QLog.isColorLevel()) {
       QLog.d("VasWebviewUtil", 4, "reportVipKeywords: " + localStringBuilder.toString());
     }
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_key_word_grey_keyword_show_new|key_word_grey", localStringBuilder.toString(), true);
+    bdka.a(null, "sendtdbank|b_sng_qqvip_key_word_grey_keyword_show_new|key_word_grey", localStringBuilder.toString(), true);
   }
   
-  public static void reportX5SpeedData(bgxd parambgxd)
+  public static void reportX5SpeedData(bihv parambihv)
   {
     String str3;
     String str4;
@@ -894,13 +894,13 @@ public class VasWebviewUtil
     String str1;
     int k;
     int i;
-    if ((parambgxd != null) && (!parambgxd.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(parambgxd.jdField_b_of_type_JavaLangString)) && (parambgxd.e != 0L))
+    if ((parambihv != null) && (!parambihv.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(parambihv.jdField_b_of_type_JavaLangString)) && (parambihv.e != 0L))
     {
-      parambgxd.jdField_a_of_type_Boolean = true;
-      str3 = parambgxd.jdField_b_of_type_JavaLangString;
+      parambihv.jdField_a_of_type_Boolean = true;
+      str3 = parambihv.jdField_b_of_type_JavaLangString;
       str4 = HttpUtil.getNetWorkTypeByStr();
       j = QbSdk.getTbsVersion(BaseApplication.getContext());
-      String str2 = parambgxd.d;
+      String str2 = parambihv.d;
       str1 = str2;
       if (!TextUtils.isEmpty(str2))
       {
@@ -909,27 +909,27 @@ public class VasWebviewUtil
           str1 = str2.substring(0, str2.indexOf("?"));
         }
       }
-      k = parambgxd.jdField_a_of_type_Bgxf.b;
-      if (!parambgxd.w) {
+      k = parambihv.jdField_a_of_type_Bihx.b;
+      if (!parambihv.w) {
         break label199;
       }
       i = 2;
     }
     for (;;)
     {
-      long l1 = parambgxd.jdField_b_of_type_Long;
-      long l2 = parambgxd.c;
-      long l3 = parambgxd.q;
-      long l4 = parambgxd.f;
-      long l5 = parambgxd.g;
-      long l6 = parambgxd.e;
+      long l1 = parambihv.jdField_b_of_type_Long;
+      long l2 = parambihv.c;
+      long l3 = parambihv.q;
+      long l4 = parambihv.f;
+      long l5 = parambihv.g;
+      long l6 = parambihv.e;
       if (QLog.isColorLevel()) {
         QLog.d("VasWebviewUtil", 2, "reportX5SpeedData");
       }
       reportNetworkSpeedTimeFromX5(str1, String.valueOf(k), i, 0, j, str4, l1, l2, l3, l4, l5, l6, str3);
       return;
       label199:
-      if (bgxd.s) {
+      if (bihv.s) {
         i = 1;
       } else {
         i = 0;

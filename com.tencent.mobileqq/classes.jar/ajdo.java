@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-
-class ajdo
-  implements View.OnLongClickListener
+public abstract interface ajdo<T>
 {
-  ajdo(ajdm paramajdm) {}
+  public abstract int a();
   
-  public boolean onLongClick(View paramView)
-  {
-    return this.a.a.a.b.performLongClick();
-  }
+  public abstract void a(ajdw paramajdw, T paramT, int paramInt);
+  
+  public abstract boolean a(T paramT, int paramInt);
 }
 
 

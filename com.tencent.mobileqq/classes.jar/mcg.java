@@ -1,32 +1,10 @@
-import android.view.View;
-
-public class mcg
-  extends mcd
+public abstract interface mcg
 {
-  private View a;
-  public String b;
-  public boolean b;
-  
-  public mcg(int paramInt, View paramView)
-  {
-    super(paramInt);
-    this.a = paramView;
-  }
-  
-  public mcg(View paramView)
-  {
-    super(0);
-    this.a = paramView;
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mcg
  * JD-Core Version:    0.7.0.1
  */

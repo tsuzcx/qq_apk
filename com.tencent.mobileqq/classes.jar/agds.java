@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-
 final class agds
-  implements aghk
+  implements agdj<agdr>
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public agdr a(agdg paramagdg)
   {
-    if (akgc.a((MessageForQQWalletMsg)paramChatMessage)) {
-      return 32;
-    }
-    return 90;
+    return new agdr(paramagdg);
   }
 }
 

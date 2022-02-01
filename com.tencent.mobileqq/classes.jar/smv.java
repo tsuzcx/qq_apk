@@ -1,6 +1,20 @@
-public abstract interface smv
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
+class smv
+  extends suv
 {
-  public abstract void a();
+  smv(smg paramsmg) {}
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    this.a.a.c(paramString + "&sourcefrom=6");
+  }
 }
 
 

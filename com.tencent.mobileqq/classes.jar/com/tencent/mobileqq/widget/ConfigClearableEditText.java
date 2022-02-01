@@ -11,13 +11,13 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import bfpm;
-import bhcg;
-import bhch;
-import bhci;
-import bhcj;
-import bhck;
-import bjmn;
+import bgyd;
+import bimy;
+import bimz;
+import bina;
+import binb;
+import binc;
+import bkya;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -30,9 +30,9 @@ public class ConfigClearableEditText
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   public Drawable a;
-  bhci jdField_a_of_type_Bhci;
-  private bhcj jdField_a_of_type_Bhcj;
-  public bhck a;
+  bina jdField_a_of_type_Bina;
+  private binb jdField_a_of_type_Binb;
+  public binc a;
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -62,8 +62,8 @@ public class ConfigClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Bhci = new bhci(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bhci);
+      this.jdField_a_of_type_Bina = new bina(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bina);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -78,8 +78,8 @@ public class ConfigClearableEditText
   
   private int a()
   {
-    if (this.jdField_a_of_type_Bhcj != null) {
-      return getWidth() - this.jdField_a_of_type_Bhcj.a();
+    if (this.jdField_a_of_type_Binb != null) {
+      return getWidth() - this.jdField_a_of_type_Binb.a();
     }
     return getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
   }
@@ -102,7 +102,7 @@ public class ConfigClearableEditText
       this.j = paramContext.getBoolean(4, false);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839579);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839600);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -114,8 +114,8 @@ public class ConfigClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new bhcg(this));
-      addTextChangedListener(new bhch(this));
+      setOnTouchListener(new bimy(this));
+      addTextChangedListener(new bimz(this));
       return;
     }
     finally
@@ -166,7 +166,7 @@ public class ConfigClearableEditText
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > a())) {
-      return this.jdField_a_of_type_Bhci.dispatchHoverEvent(paramMotionEvent);
+      return this.jdField_a_of_type_Bina.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
@@ -212,7 +212,7 @@ public class ConfigClearableEditText
     if ((this instanceof PastablePwdEditText))
     {
       if ((getContext() instanceof LoginActivity)) {
-        bjmn.a(getContext(), paramInt);
+        bkya.a(getContext(), paramInt);
       }
       return super.onTextContextMenuItem(paramInt);
     }
@@ -245,16 +245,16 @@ public class ConfigClearableEditText
     if (paramBoolean)
     {
       localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_a_of_type_Bhcj == null) {
+      if (this.jdField_a_of_type_Binb == null) {
         break label97;
       }
-      this.jdField_a_of_type_Bhcj.a(paramBoolean);
+      this.jdField_a_of_type_Binb.a(paramBoolean);
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
     }
     for (;;)
     {
       if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        bfpm.a(this);
+        bgyd.a(this);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
@@ -283,14 +283,14 @@ public class ConfigClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setCustomClearButtonCallback(bhcj parambhcj)
+  public void setCustomClearButtonCallback(binb parambinb)
   {
-    this.jdField_a_of_type_Bhcj = parambhcj;
+    this.jdField_a_of_type_Binb = parambinb;
   }
   
-  public void setTextClearedListener(bhck parambhck)
+  public void setTextClearedListener(binc parambinc)
   {
-    this.jdField_a_of_type_Bhck = parambhck;
+    this.jdField_a_of_type_Binc = parambinc;
   }
 }
 

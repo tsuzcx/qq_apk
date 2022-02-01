@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adoi;
-import adoj;
-import adok;
+import aefl;
+import aefm;
+import aefn;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import awka;
-import bfqb;
+import axqc;
+import bgys;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -24,7 +24,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return awka.a(getAppInterface().getAccount());
+    return axqc.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -34,15 +34,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new adoi(this, paramRunnable);
-    this.b = bfqb.a(this, 2131691827, a(), 2131691686, 2131691683, new adoj(this), new adok(this));
+    paramRunnable = new aefl(this, paramRunnable);
+    this.b = bgys.a(this, 2131691915, a(), 2131691771, 2131691768, new aefm(this), new aefn(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131691825;
+    return 2131691913;
   }
   
   public void a()
@@ -64,15 +64,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	achg:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	acxo:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	achg:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	acxo:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	achg:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	acxo:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -140,7 +140,7 @@ public class LbsBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

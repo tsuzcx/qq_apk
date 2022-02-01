@@ -1,135 +1,68 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 
-public abstract class asbe
+public class asbe
+  extends BitmapDrawable
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected bjnw a;
-  protected QQAppInterface a;
+  private float jdField_a_of_type_Float = 1920.0F;
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int b;
+  private int c;
   
-  public asbe(QQAppInterface paramQQAppInterface, Context paramContext)
+  public asbe(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new asbf(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramResources, paramBitmap);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    super.setGravity(17);
   }
   
-  private void a(aezf paramaezf, boolean paramBoolean)
+  public void draw(Canvas paramCanvas)
   {
-    paramaezf = a(paramaezf);
-    if (paramBoolean) {
-      if (paramaezf != null)
-      {
-        paramaezf.setVisibility(0);
-        paramaezf.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
-    }
-    while (paramaezf == null) {
-      return;
-    }
-    paramaezf.setVisibility(8);
-    paramaezf.setOnClickListener(null);
-  }
-  
-  protected abstract ImageView a(aezf paramaezf);
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing())) {
-      bjon.b((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjnw);
-    }
-  }
-  
-  public void a(aezf paramaezf, View paramView, ChatMessage paramChatMessage)
-  {
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (a(paramChatMessage))
+    if (this.c >>> 24 != 0)
     {
-      paramChatMessage = a(paramaezf);
-      if (paramChatMessage == null)
-      {
-        paramChatMessage = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        paramChatMessage.setImageResource(2130838310);
-        paramChatMessage.setId(2131364460);
-        a(paramaezf, paramChatMessage);
-        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.bottomMargin = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams.addRule(8, 2131364441);
-        localLayoutParams.addRule(0, 2131364441);
-        localLayoutParams.addRule(1, 0);
-        if ((paramView instanceof ViewGroup)) {
-          ((ViewGroup)paramView).addView(paramChatMessage, localLayoutParams);
-        }
-      }
-      for (;;)
-      {
-        a(paramaezf, true);
-        return;
-        paramChatMessage.setImageResource(2130838310);
-      }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    if (b(paramChatMessage))
-    {
-      paramChatMessage = a(paramaezf);
-      if (paramChatMessage == null)
-      {
-        paramChatMessage = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        paramChatMessage.setImageResource(2130838305);
-        paramChatMessage.setId(2131364460);
-        a(paramaezf, paramChatMessage);
-        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.bottomMargin = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams.addRule(8, 2131364441);
-        localLayoutParams.addRule(0, 2131364441);
-        localLayoutParams.addRule(1, 0);
-        if ((paramView instanceof ViewGroup)) {
-          ((ViewGroup)paramView).addView(paramChatMessage, localLayoutParams);
-        }
-      }
-      for (;;)
-      {
-        a(paramaezf, true);
-        return;
-        paramChatMessage.setImageResource(2130838305);
-      }
-    }
-    a(paramaezf, false);
+    super.draw(paramCanvas);
   }
   
-  protected abstract void a(aezf paramaezf, ImageView paramImageView);
-  
-  protected void a(View paramView, aezf paramaezf, ChatMessage paramChatMessage, int paramInt) {}
-  
-  protected void a(bjoe parambjoe)
+  public int getIntrinsicHeight()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new bjnv(0, bjon.a(this.jdField_a_of_type_AndroidContentContext, 2131717694), 0, 0, 2));
-    this.jdField_a_of_type_Bjnw = bjon.a(this.jdField_a_of_type_AndroidContentContext, localArrayList, parambjoe);
-    if (this.jdField_a_of_type_Bjnw != null)
-    {
-      this.jdField_a_of_type_Bjnw.c(2131690620);
-      bjon.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjnw);
+    if (this.b > 0) {
+      return this.b;
     }
+    return super.getIntrinsicHeight();
   }
   
-  protected boolean a(ChatMessage paramChatMessage)
+  public int getIntrinsicWidth()
   {
-    return false;
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.jdField_a_of_type_Int;
+    }
+    return super.getIntrinsicWidth();
   }
   
-  protected boolean b(ChatMessage paramChatMessage)
+  public void setAlpha(int paramInt)
   {
-    return false;
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    }
+    super.setAlpha(paramInt);
+  }
+  
+  public void setTargetDensity(int paramInt)
+  {
+    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    super.setTargetDensity(paramInt);
   }
 }
 

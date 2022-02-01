@@ -1,49 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acrn
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acrn(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    int j = 1;
-    if (!paramCompoundButton.isPressed())
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = "open_storyset";
-      label27:
-      xwa.a("dynamic_more", (String)localObject, 0, 0, new String[0]);
-      localObject = new Integer[5];
-      localObject[0] = Integer.valueOf(1);
-      if (!paramBoolean) {
-        break label125;
-      }
-    }
-    label125:
-    for (int i = 1;; i = 0)
-    {
-      localObject[3] = Integer.valueOf(i);
-      this.a.app.getNowLiveManager().a((Integer[])localObject);
-      localObject = (vkz)this.a.app.getBusinessHandler(98);
-      i = j;
-      if (paramBoolean) {
-        i = 2;
-      }
-      ((vkz)localObject).a(i);
-      break;
-      localObject = "close_storyset";
-      break label27;
-    }
+    ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

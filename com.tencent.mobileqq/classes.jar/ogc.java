@@ -1,48 +1,20 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class ogc
-  implements BusinessObserver
+class ogc
+  implements DialogInterface.OnCancelListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  ogc(ofz paramofz, JsResult paramJsResult, Context paramContext) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      a(paramBoolean, paramObject);
-      return;
-    case 1: 
-      b(paramBoolean, paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
-      return;
-    case 5: 
-      f(paramBoolean, paramObject);
-      return;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Ofz.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    g(paramBoolean, paramObject);
   }
 }
 

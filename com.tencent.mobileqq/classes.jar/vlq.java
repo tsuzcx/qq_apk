@@ -1,60 +1,8 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.HexUtil;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class vlq
+public abstract interface vlq
 {
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public abstract void a(String paramString);
   
-  public vlq()
-  {
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  public void a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("t", this.jdField_a_of_type_Long);
-      localJSONObject.put("ak", HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-      ((vuq)vux.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
-      xvv.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
-    {
-      xvv.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
-      return true;
-    }
-    xvv.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
-  }
-  
-  public String toString()
-  {
-    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
-  }
+  public abstract void b(String paramString);
 }
 
 

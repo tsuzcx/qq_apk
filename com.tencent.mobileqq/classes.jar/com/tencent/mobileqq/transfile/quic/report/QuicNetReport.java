@@ -19,7 +19,9 @@ public final class QuicNetReport
   public static final int BUINESS_QUIC_SHORT_VIDEO_TYPE = 1;
   private static final int OFFSET_VERSION_REPORT = 2000000;
   public static final String QUIC = "quic";
+  public static final int REASON_FAIL_CANCELED = 9;
   public static final int REASON_FAIL_CONTENT = 5;
+  public static final int REASON_FAIL_DOWNLOADING = 8;
   public static final int REASON_FAIL_EXCEPTION = 4;
   public static final int REASON_FAIL_LOAD_SO = 7;
   public static final int REASON_FAIL_NETWORK = 3;
@@ -28,6 +30,7 @@ public final class QuicNetReport
   public static final int REASON_FAIL_STORAGE = 2;
   public static final int REASON_FAIL_UNKNOWN = 1;
   private static final String REPORT_TAG = "actShortVideoQuicDownload";
+  public static final String RTT_HOST = "sns.cdn.qq.com";
   public int businessId;
   public String channel = "quic";
   public long contentLength;
@@ -44,9 +47,11 @@ public final class QuicNetReport
   public int httpStatus;
   public int id;
   public String ip;
+  public boolean isHttpRetryed;
   public boolean isIpv6;
   public QuicNetReport.Stats lastStats;
   public int port = 443;
+  public String rttHost;
   public String savePath = "";
   public int slice = 1;
   public byte[] srvMessage;
@@ -54,6 +59,7 @@ public final class QuicNetReport
   public QuicNetReport.Stats stats;
   public boolean success;
   public long tConn;
+  public String tempPath = "";
   public int timeOut;
   public long totaltime;
   public String url = "";
@@ -134,7 +140,7 @@ public final class QuicNetReport
     localNetInfo.bussinessid.set(this.businessId);
     try
     {
-      int i = Integer.parseInt("8.4.8".replace(".", ""));
+      int i = Integer.parseInt("8.4.10".replace(".", ""));
       localNetInfo.clientversion.set(i + 2000000);
       if ((this.lastStats.mSrvMessage != null) && (this.lastStats.mSrvMessage.length > 0)) {
         localNetInfo.last_srvmessage.set(ByteStringMicro.copyFrom(this.lastStats.mSrvMessage));
@@ -156,10 +162,10 @@ public final class QuicNetReport
     if (QLog.isColorLevel()) {
       QLog.d("quic", 4, "reportBeaconEvent result: " + paramBoolean + " duration: " + paramLong);
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actShortVideoQuicDownload", paramBoolean, paramLong, 0L, paramHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actShortVideoQuicDownload", paramBoolean, paramLong, this.fileSize, paramHashMap, "");
   }
   
-  public void reportBeaconEvent(boolean paramBoolean)
+  public void reportBeaconEvent(boolean paramBoolean1, boolean paramBoolean2)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_quic_inQueueCost", String.valueOf(this.waitCost));
@@ -176,18 +182,23 @@ public final class QuicNetReport
     localHashMap.put("param_quic_time_out", String.valueOf(this.timeOut));
     localHashMap.put("param_quic_http_status", String.valueOf(this.httpStatus));
     localHashMap.put("param_quic_conn_cost", String.valueOf(this.tConn));
+    String str;
     if (this.isIpv6)
     {
       str = "1";
       localHashMap.put("param_quic_is_ipv6", str);
-      if (!paramBoolean) {
-        break label349;
+      if (!paramBoolean1) {
+        break label414;
       }
-    }
-    label349:
-    for (String str = "1";; str = "0")
-    {
+      str = "1";
+      label259:
       localHashMap.put("param_quic_short_video", str);
+      if (!paramBoolean2) {
+        break label422;
+      }
+      str = "1";
+      label279:
+      localHashMap.put("param_quic_type_video", str);
       if (this.stats != null)
       {
         localHashMap.put("param_quic_estimated_bandwidth", String.valueOf(this.stats.mEstimatedBandwidth));
@@ -195,10 +206,24 @@ public final class QuicNetReport
         localHashMap.put("param_quic_rtt_mean", String.valueOf(this.stats.mRttMean));
         localHashMap.put("param_quic_lost_rate", String.valueOf(this.stats.mLostRate));
       }
-      report(this.success, this.totaltime, localHashMap);
+      paramBoolean1 = this.success;
+      if (this.totaltime <= 0L) {
+        break label430;
+      }
+    }
+    label414:
+    label422:
+    label430:
+    for (long l = this.totaltime + this.waitCost;; l = this.totaltime)
+    {
+      report(paramBoolean1, l, localHashMap);
       return;
       str = "0";
       break;
+      str = "0";
+      break label259;
+      str = "0";
+      break label279;
     }
   }
 }

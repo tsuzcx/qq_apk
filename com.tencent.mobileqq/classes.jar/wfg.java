@@ -1,53 +1,25 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wfg
-  extends vqr<wgr>
+  extends wfh
 {
-  private static final String a = vpl.a("StorySvc.get_weather");
-  public final int c;
-  public final int d;
-  public final int e;
+  public String a;
+  public boolean a;
   
-  public wfg(int paramInt1, int paramInt2, int paramInt3)
+  public wfg(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public String a()
-  {
-    return a;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
-    try
+    super(paramErrorInfo);
+    if (paramPBUInt32Field.get() == 1) {}
+    for (;;)
     {
-      localRspGetWeather.mergeFrom(paramArrayOfByte);
-      return new wgr(localRspGetWeather);
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
+      return;
+      bool = false;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
-    localReqGetWeather.coordinate.set(this.c);
-    localReqGetWeather.longitude.set(this.d);
-    localReqGetWeather.latitude.set(this.e);
-    return localReqGetWeather.toByteArray();
   }
 }
 

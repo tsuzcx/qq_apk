@@ -1,23 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
+import android.view.View;
 
-public final class tnt
-  implements Parcelable.Creator<BarrageInfo>
+public class tnt
+  extends qvo
 {
-  public BarrageInfo a(Parcel paramParcel)
+  private final String a;
+  
+  public tnt(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    return new BarrageInfo(paramParcel);
+    super(paramInt1, paramInt2, paramInt3);
+    this.a = paramString;
   }
   
-  public BarrageInfo[] a(int paramInt)
+  public tnt(String paramString, int paramInt)
   {
-    return new BarrageInfo[paramInt];
+    super(-15504151, paramInt, 860716207);
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    pkh.a(paramView.getContext(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tnt
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bcqk;
+import bdxj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.AppConstants;
@@ -35,9 +35,9 @@ public class RecentItemSubAccount
       if (!AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(this.mUser.uin)) {
         break;
       }
-      this.mTitleName = paramContext.getString(2131718634);
+      this.mTitleName = paramContext.getString(2131719023);
       this.mUnreadNum = 0;
-      bcqk.a(paramQQAppInterface, paramContext, this, localMsgSummary);
+      bdxj.a(paramQQAppInterface, paramContext, this, localMsgSummary);
       if (!TextUtils.isEmpty(localMsgSummary.strContent)) {
         localMsgSummary.mEmojiFlag = 1;
       }
@@ -47,7 +47,7 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.mMsgExtroInfo)) {
         break label377;
       }
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
       this.mShowTime = "";
       this.mDisplayTime = getLastMsgTime();
       a(paramQQAppInterface);
@@ -68,7 +68,7 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mUser.uin;
       }
-      this.mTitleName = (paramContext.getString(2131718656) + "（" + this.mTitleName + "）");
+      this.mTitleName = (paramContext.getString(2131719045) + "（" + this.mTitleName + "）");
       break;
       label377:
       this.mMsgExtroInfo = "";

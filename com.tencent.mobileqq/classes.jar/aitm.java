@@ -1,25 +1,15 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class aitm
-  implements ViewPager.OnPageChangeListener
 {
-  aitm(aitl paramaitl) {}
+  public int a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = aitl.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
-    {
-      aitl.a(this.a, localEmoticonFromGroupEntity);
-      aitl.b(this.a, localEmoticonFromGroupEntity);
-    }
-  }
+  aitm(aitk paramaitk) {}
 }
 
 

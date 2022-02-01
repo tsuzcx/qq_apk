@@ -1,6 +1,18 @@
-public abstract interface baad
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+public class baad
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a();
+  View a;
+  View b;
+  
+  public baad(View paramView)
+  {
+    super(paramView);
+    this.b = paramView.findViewById(2131374285);
+    this.a = paramView.findViewById(2131374285);
+  }
 }
 
 

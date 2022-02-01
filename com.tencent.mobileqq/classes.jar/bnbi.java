@@ -1,77 +1,12 @@
-import dov.com.qq.im.ae.SessionWrap;
-
-public class bnbi
+class bnbi
+  extends bohp
 {
-  public int a;
-  private SessionWrap jdField_a_of_type_DovComQqImAeSessionWrap;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  bnbi(bnbg parambnbg) {}
   
-  private bnbi(bnbk parambnbk)
+  public void a()
   {
-    this.jdField_a_of_type_DovComQqImAeSessionWrap = bnbk.a(parambnbk);
-    this.jdField_a_of_type_JavaLangString = bnbk.a(parambnbk);
-    this.jdField_b_of_type_Int = bnbk.a(parambnbk);
-    this.c = bnbk.b(parambnbk);
-    this.d = bnbk.c(parambnbk);
-    this.jdField_b_of_type_Boolean = bnbk.a(parambnbk);
-    this.e = bnbk.d(parambnbk);
-    this.jdField_b_of_type_JavaLangString = bnbk.b(parambnbk);
-    this.f = bnbk.e(parambnbk);
-    this.jdField_a_of_type_Boolean = parambnbk.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambnbk.jdField_a_of_type_Int;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public SessionWrap a()
-  {
-    return this.jdField_a_of_type_DovComQqImAeSessionWrap;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return this.d;
-  }
-  
-  public int d()
-  {
-    return this.e;
-  }
-  
-  public int e()
-  {
-    return this.f;
+    super.a();
+    this.a.i();
   }
 }
 

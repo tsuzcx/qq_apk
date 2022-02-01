@@ -1,25 +1,12 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bewb
-  implements View.OnClickListener
+public abstract interface bewb
 {
-  public bewb(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(View paramView, int paramInt, bewc parambewc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bewb
  * JD-Core Version:    0.7.0.1
  */

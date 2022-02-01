@@ -1,32 +1,27 @@
 package com.tencent.mobileqq.mini.widget;
 
+import android.os.Bundle;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-class MiniLoadingAdLayout$5
+final class MiniLoadingAdLayout$5
   implements Runnable
 {
-  MiniLoadingAdLayout$5(MiniLoadingAdLayout paramMiniLoadingAdLayout, String paramString) {}
+  MiniLoadingAdLayout$5(Bundle paramBundle) {}
   
   public void run()
   {
+    this.val$reportParams.putInt("PostBodyType", 1);
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      QLog.i("MiniLoadingAdLayout", 1, "reportToGdt LoadingAd rspCode" + i);
+      String str = HttpUtil.openUrl(BaseApplicationImpl.getContext(), "https://rpt.gdt.qq.com/mqq_log", "POST", this.val$reportParams, null);
+      QLog.i("MiniLoadingAdLayout", 1, "report reportParams=" + this.val$reportParams.toString() + " result=" + str);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception localException)
     {
-      QLog.i("MiniLoadingAdLayout", 1, "reportToGdt LoadingAd error, url = " + this.val$reportUrl, localThrowable);
+      QLog.e("MiniLoadingAdLayout", 1, "report error. url=" + "https://rpt.gdt.qq.com/mqq_log" + " reportParams=" + this.val$reportParams.toString(), localException);
     }
   }
 }

@@ -1,27 +1,27 @@
 package com.tencent.open.appcommon.js;
 
 import android.text.TextUtils;
-import bhwx;
-import bhzm;
+import bjhz;
+import bjko;
 import com.tencent.smtt.sdk.WebView;
 
 public class AppInterface$1$1
   implements Runnable
 {
-  public AppInterface$1$1(bhwx parambhwx, String paramString) {}
+  public AppInterface$1$1(bjhz parambjhz, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((this.jdField_a_of_type_Bhwx.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Bhwx.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      if ((this.jdField_a_of_type_Bjhz.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_Bjhz.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
       }
       return;
     }
     catch (Exception localException)
     {
-      bhzm.a("AppInterface", "webview loadUrl>>> ", localException);
+      bjko.a("AppInterface", "webview loadUrl>>> ", localException);
     }
   }
 }

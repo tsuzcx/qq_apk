@@ -1,14 +1,20 @@
-public abstract interface bdgz
+public abstract class bdgz
 {
-  public abstract void a();
+  public Object a;
+  public boolean a;
   
-  public abstract void a(int paramInt);
+  protected bdgz(Object paramObject)
+  {
+    this.a = paramObject;
+  }
   
-  public abstract void a(int paramInt, String paramString);
+  protected abstract void a();
+  
+  protected abstract void a(bdgy parambdgy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgz
  * JD-Core Version:    0.7.0.1
  */

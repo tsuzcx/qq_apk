@@ -1,40 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.8;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azax
-  extends apgj
+  implements View.OnClickListener
 {
-  public azax(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public azax(AutoReplyEditActivity.8 param8) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
-    {
-      BusinessCard localBusinessCard = ((apgi)this.a.app.getManager(112)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
-      return;
-    }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    AutoReplyEditActivity.a(this.a.this$0, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

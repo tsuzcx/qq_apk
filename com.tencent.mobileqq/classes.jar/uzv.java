@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import UserGrowth.stPostFeedCommentV2Rsp;
+import UserGrowth.stSimpleMetaComment;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class uzv
-  implements DialogInterface.OnDismissListener
+class uzv
+  implements vfg
 {
-  public uzv(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  uzv(uzs paramuzs, stSimpleMetaComment paramstSimpleMetaComment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(vfr paramvfr)
   {
-    if (WSVerticalPageFragment.a(this.a) != null) {
-      WSVerticalPageFragment.a(this.a).e();
+    if ((paramvfr.jdField_a_of_type_JavaLangObject instanceof stPostFeedCommentV2Rsp))
+    {
+      stPostFeedCommentV2Rsp localstPostFeedCommentV2Rsp = (stPostFeedCommentV2Rsp)paramvfr.jdField_a_of_type_JavaLangObject;
+      stSimpleMetaComment localstSimpleMetaComment = localstPostFeedCommentV2Rsp.comment;
+      vmp.c(uzs.a(), "---CommentEvent, addFeedComment！");
+      paramvfr = this.jdField_a_of_type_Uzs.a(new Object[] { Integer.valueOf(3), Integer.valueOf(paramvfr.b), paramvfr.jdField_a_of_type_JavaLangString, localstPostFeedCommentV2Rsp, localstSimpleMetaComment.id, Integer.valueOf(this.jdField_a_of_type_Uzs.hashCode()) });
+      wad.a().dispatch(paramvfr);
+      uzs.a(this.jdField_a_of_type_Uzs).a(this.jdField_a_of_type_UserGrowthStSimpleMetaComment);
+      return;
     }
+    vmp.d(uzs.a(), "添加评论失败new！");
   }
 }
 

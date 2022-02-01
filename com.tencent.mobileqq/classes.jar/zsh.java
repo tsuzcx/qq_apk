@@ -1,30 +1,40 @@
-public class zsh
+import NS_COMM.COMM.StCommonExt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
+
+class zsh
+  implements View.OnClickListener
 {
-  public static int a;
-  public static int b;
-  String a;
-  public boolean a;
-  String b;
-  public int c;
-  String c;
-  public int d;
+  zsh(zsg paramzsg) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_b_of_type_Int = 1;
-  }
-  
-  public zsh(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder(zqg.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (this.a.a() != null) {}
+    for (;;)
+    {
+      try
+      {
+        localStringBuilder.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        aanb.b("auth_follow", "clk_more", 0, 0, new String[0]);
+        zqm.a(localStringBuilder.toString());
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        continue;
+      }
+      QLog.d(zsg.a, 0, "jump more recommend H5 page with no attach info!");
+    }
   }
 }
 

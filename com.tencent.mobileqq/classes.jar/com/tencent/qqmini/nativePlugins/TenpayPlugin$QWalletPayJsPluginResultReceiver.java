@@ -1,6 +1,6 @@
 package com.tencent.qqmini.nativePlugins;
 
-import akfz;
+import albs;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,14 +35,14 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
     do
     {
       return;
-      paramBundle = akfz.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+      paramBundle = albs.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
     } while (paramBundle == null);
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TenpayPlugin.QWalletPayJsPluginResultReceiver
  * JD-Core Version:    0.7.0.1
  */

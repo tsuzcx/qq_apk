@@ -1,24 +1,24 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import abot;
-import abox;
-import abrl;
+import aceh;
+import acel;
+import acho;
 import android.view.View;
 
 public class GdtMvAnimation585V$1
   implements Runnable
 {
-  public GdtMvAnimation585V$1(abox paramabox) {}
+  public GdtMvAnimation585V$1(acel paramacel) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      abot localabot = (abot)this.this$0.a;
-      if (localabot.a != null)
+      aceh localaceh = (aceh)this.this$0.a;
+      if (localaceh.a != null)
       {
-        abrl.b("GdtMotiveVideoAd", "585V maskRunnable run ");
-        localabot.a.setVisibility(0);
+        acho.b("GdtMotiveVideoAd", "585V maskRunnable run ");
+        localaceh.a.setVisibility(0);
       }
     }
   }

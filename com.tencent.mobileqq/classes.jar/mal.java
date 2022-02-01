@@ -1,146 +1,158 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.IntentFilter;
+import android.text.TextUtils;
+import com.tencent.av.so.ResInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.AVSoUtils;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public abstract class mal
+public class mal
 {
-  public static mam a(int paramInt, VideoAppInterface paramVideoAppInterface)
+  private static volatile mal jdField_a_of_type_Mal;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  ArrayList<man> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ResInfo> b;
+  
+  private mal()
   {
-    if (paramVideoAppInterface == null) {}
-    Resources localResources;
-    do
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    QLog.i("ResMgr", 1, "ResMgr for " + localBaseApplicationImpl.getQQProcessName());
+    a(localBaseApplicationImpl);
+    this.b = a();
+    if (this.b == null) {
+      this.b = new ArrayList();
+    }
+  }
+  
+  public static String a(ResInfo paramResInfo)
+  {
+    return AVSoUtils.b() + "qavRes" + File.separator + paramResInfo.resType + File.separator + paramResInfo.resId + File.separator + paramResInfo.resVersion + File.separator + paramResInfo.resMd5 + File.separator;
+  }
+  
+  public static ArrayList<ResInfo> a()
+  {
+    Object localObject = lbt.b(367).a;
+    QLog.i("ResMgr", 1, "getResInfoListFromConfig. jsonContent = " + (String)localObject);
+    try
     {
-      return null;
-      localResources = paramVideoAppInterface.getApp().getResources();
-      switch (paramInt)
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
+        QLog.e("ResMgr", 1, "updateResInfoList failed. jsonContent is empty.");
+        return new ArrayList();
       }
-    } while (!AudioHelper.e());
-    paramVideoAppInterface = "CreatAvTipsItem,  未处理的tips类别，tipsID[" + paramInt + "]";
-    QLog.d("AVTipsItemFactory", 1, paramVideoAppInterface);
-    throw new IllegalArgumentException(paramVideoAppInterface);
-    return new mao(paramInt, 8, 4, 0, "");
-    return new mao(paramInt, 11, 3, 0, "", 1, "");
-    return new mao(paramInt, 11, 3, 0, paramVideoAppInterface.getApp().getString(2131694947), 1, "");
-    return new mao(paramInt, 11, 3, 0, "", 1, "");
-    return new mao(paramInt, 99, 3, 0, paramVideoAppInterface.getApp().getString(2131695459));
-    return new mao(paramInt, 15, 3, 0, paramVideoAppInterface.getApp().getString(2131695422));
-    return new mao(paramInt, 15, 3, 0, paramVideoAppInterface.getApp().getString(2131695424));
-    return new mao(paramInt, 9, 0, 0, "");
-    return new mao(paramInt, 7, 5, 0, paramVideoAppInterface.getApp().getString(2131695497));
-    return new mao(paramInt, 6, 4, 0, paramVideoAppInterface.getApp().getString(2131695365));
-    return new mao(paramInt, 6, 0, 0, paramVideoAppInterface.getApp().getString(2131719539), 1, "");
-    return new mao(paramInt, 3, 0, 0, paramVideoAppInterface.getApp().getString(2131695235), 1, "");
-    return new mao(paramInt, 3, 3, 0, paramVideoAppInterface.getApp().getString(2131695435), 1, "");
-    return new mao(paramInt, 7, 3, 0, "", 1, "");
-    return new mao(paramInt, 7, 3, 0, "", 1, "");
-    return new mao(paramInt, 4, 4, 0, paramVideoAppInterface.getApp().getString(2131694960), 1, "");
-    return new mao(paramInt, 8, 3, 0, "");
-    return new mao(paramInt, 8, 5, 0, "");
-    return new mao(paramInt, 12, 3, 0, paramVideoAppInterface.getApp().getString(2131719514), 1, "");
-    return new mao(paramInt, 12, 3, 0, paramVideoAppInterface.getApp().getString(2131695229), 1, "");
-    return new mao(paramInt, 18, 0, 0, paramVideoAppInterface.getApp().getString(2131719530), 1, "");
-    return new mao(paramInt, 12, 3, 0, paramVideoAppInterface.getApp().getString(2131695230));
-    return new mao(paramInt, 12, 3, 0, paramVideoAppInterface.getApp().getString(2131695120), 1, "");
-    return new mao(paramInt, 14, 5, 0, "");
-    return new mao(paramInt, 14, 0, 0, "");
-    paramVideoAppInterface = new man(paramInt, 13, 0, 1, "", 0, -1, null);
-    paramVideoAppInterface.h = 13;
-    return paramVideoAppInterface;
-    return new map(paramInt, 2, 0, 0, paramVideoAppInterface.getApp().getString(2131695054), true);
-    return new map(paramInt, 2, 0, 0, "", true);
-    return new mao(paramInt, 17, 0, 0, paramVideoAppInterface.getApp().getString(2131694910));
-    return new mao(paramInt, 18, 0, 0, paramVideoAppInterface.getApp().getString(2131694984), 1, "");
-    return new map(paramInt, 10, 0, 0, paramVideoAppInterface.getApp().getString(2131695477), true);
-    return new map(paramInt, 10, 3, 0, "", true);
-    return new mao(paramInt, 8, 3, 0, "", 1, "");
-    return new mao(paramInt, 8, 3, 0, localResources.getString(2131694987));
-    paramVideoAppInterface = new man(paramInt, 8, 3, 1, localResources.getString(2131694988), 9, 5, null);
-    paramVideoAppInterface.h = 15;
-    return paramVideoAppInterface;
-    return new mao(paramInt, 8, 5, 0, "");
-    paramVideoAppInterface = new man(paramInt, 9, 5, 1, localResources.getString(2131695334), 0, 7, null);
-    paramVideoAppInterface.h = 15;
-    return paramVideoAppInterface;
-    return new mao(paramInt, 2, 0, 0, paramVideoAppInterface.getApp().getString(2131695428));
-    return new mao(paramInt, 10, 3, 0, "");
-    return new mao(paramInt, 11, 10, 0, amtj.a(2131700049));
-    return new mao(paramInt, 10, 5, 0, amtj.a(2131700050));
-    return new mao(paramInt, 99, 3, 0, amtj.a(2131700048), 1, "");
-    return new mao(paramInt, 99, 3, 0, amtj.a(2131700046), 1, "");
-    return new mao(paramInt, 99, 3, 0, amtj.a(2131700052), 1, "");
-    return new mao(paramInt, 99, 3, 0, amtj.a(2131700051), 1, "");
-    return new mao(paramInt, 99, 3, 0, amtj.a(2131700047), 1, "");
-    return new mao(paramInt, 6, 3, 0, "", 1, "");
-    return new mao(paramInt, 6, 3, 0, "", 1, "");
-    return new mao(paramInt, 6, 3, 0, "", 1, "");
-    return new mao(paramInt, 2, 3, 0, "");
-    return new mao(paramInt, 2, 3, 0, "");
-    return new mao(paramInt, 18, 0, 0, "");
-    return new mao(paramInt, 15, 3, 0, paramVideoAppInterface.getApp().getString(2131691665), 1, "");
-    return new mao(paramInt, 15, 3, 0, paramVideoAppInterface.getApp().getString(2131694948), 1, "");
-    return new mao(paramInt, 16, 3, 0, paramVideoAppInterface.getApp().getString(2131695437));
-    return new mao(paramInt, 10, 0, 0, paramVideoAppInterface.getApp().getString(2131694901), 1, "");
-    return new mao(paramInt, 14, 3, 0, "", 1, "");
-    return new mao(paramInt, 11, 3, 0, paramVideoAppInterface.getApp().getString(2131695463));
-    return new mao(paramInt, 11, 0, 0, paramVideoAppInterface.getApp().getString(2131695434));
-    return new mao(paramInt, 15, 3, 0, "");
-    return new mao(paramInt, 15, 5, 0, "");
-    return new mao(paramInt, 10, 0, 0, paramVideoAppInterface.getApp().getString(2131694985));
-    return new map(paramInt, 16, 0, 0, paramVideoAppInterface.getApp().getString(2131694983), true);
-    return new mao(paramInt, 10, 0, 0, paramVideoAppInterface.getApp().getString(2131695430), 1, "");
-  }
-  
-  public static mam a(int paramInt, VideoAppInterface paramVideoAppInterface, String paramString)
-  {
-    paramVideoAppInterface = a(paramInt, paramVideoAppInterface);
-    if (paramVideoAppInterface == null) {
-      return null;
+      localObject = ResInfo.parseConfig(new JSONObject((String)localObject));
+      return localObject;
     }
-    paramVideoAppInterface.a(paramString);
-    return paramVideoAppInterface;
-  }
-  
-  public static mam a(int paramInt1, VideoAppInterface paramVideoAppInterface, String paramString, int paramInt2, Drawable paramDrawable, int paramInt3, View.OnClickListener paramOnClickListener)
-  {
-    mam localmam = a(paramInt1, paramVideoAppInterface);
-    if (localmam == null) {
-      paramVideoAppInterface = null;
-    }
-    do
+    catch (Exception localException)
     {
-      do
+      QLog.e("ResMgr", 1, "updateResInfoList failed. exception = " + localException);
+    }
+    return new ArrayList();
+  }
+  
+  public static mal a()
+  {
+    if (jdField_a_of_type_Mal == null) {}
+    try
+    {
+      if (jdField_a_of_type_Mal == null) {
+        jdField_a_of_type_Mal = new mal();
+      }
+      return jdField_a_of_type_Mal;
+    }
+    finally {}
+  }
+  
+  private boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("ACTION_QAV_RES_DOWNLOAD_STATE_NOTIFY");
+    localIntentFilter.addAction("ACTION_QAV_RES_NEW_CONFIG_NOTIFY");
+    return paramBaseApplicationImpl.registerReceiver(new mam(this), localIntentFilter) != null;
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if (new File(paramString1).exists())
+    {
+      if (!paramString2.equalsIgnoreCase(aznv.a(paramString1)))
       {
-        return paramVideoAppInterface;
-        localmam.a(paramString);
-        if (paramInt3 > 0) {
-          localmam.a(paramInt3);
-        }
-        if (localmam.a() == 1)
+        QLog.e("ResMgr", 1, "checkFileValid failed. check md5 failed. fileName = " + paramString1 + ", md5FromConfig = " + paramString2);
+        return false;
+      }
+      return true;
+    }
+    QLog.e("ResMgr", 1, "checkFileValid failed. file is not exist. fileName = " + paramString1 + ", md5FromConfig = " + paramString2);
+    return false;
+  }
+  
+  public static String b(ResInfo paramResInfo)
+  {
+    if (paramResInfo == null)
+    {
+      QLog.e("ResMgr", 1, "getResIdRootDir failed. resInfo == null.");
+      return "";
+    }
+    return AVSoUtils.b() + "qavRes" + File.separator + paramResInfo.resType + File.separator + paramResInfo.resId + File.separator;
+  }
+  
+  public ResInfo a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.b.size())
         {
-          paramVideoAppInterface = (mao)localmam;
-          if (paramVideoAppInterface != null)
+          if (((ResInfo)this.b.get(i)).resId.equalsIgnoreCase(paramString))
           {
-            paramVideoAppInterface.b(paramInt2);
-            paramVideoAppInterface.a(paramDrawable);
+            paramString = (ResInfo)this.b.get(i);
+            return paramString;
           }
         }
-        paramVideoAppInterface = localmam;
-      } while (localmam.a() != 3);
-      paramString = (man)localmam;
-      paramVideoAppInterface = localmam;
-    } while (paramString == null);
-    paramString.a(paramOnClickListener);
-    return localmam;
+        else {
+          return null;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString == null)
+    {
+      QLog.e("ResMgr", 1, "getResFullFileName failed. resInfo == null.");
+      return "";
+    }
+    return a(paramString) + paramString.resFileName;
+  }
+  
+  public boolean a(String paramString)
+  {
+    BusinessCommonConfig.notifyQQDownload(3, paramString, 0);
+    return true;
+  }
+  
+  public boolean b(String paramString)
+  {
+    ResInfo localResInfo = a(paramString);
+    if (localResInfo == null) {
+      return false;
+    }
+    return a(a(paramString), localResInfo.resMd5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,26 @@
-import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfzr
+class bfzr
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
-    }
-    ForwardSdkShareOption.a(paramActivity, false, "shareToTroopBar", paramLong);
-  }
+  bfzr(bfzp parambfzp) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    bcef.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bhoy.e, anvx.a(2131699726));
+    localBundle.putString(bhoy.f, "CJCLUBT");
+    localBundle.putString(bhoy.d, "1450000516");
+    localBundle.putInt(bhoy.b, 3);
+    localBundle.putString(bhoy.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bhoy.g, "svip");
+    localBundle.putString(bhoy.a, bfzp.a(this.a).getCurrentAccountUin());
+    bhoy.a(bfzp.a(this.a), bfzp.a(this.a), localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

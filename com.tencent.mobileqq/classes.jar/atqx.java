@@ -1,24 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
 
-public class atqx
-  implements View.OnClickListener
+class atqx
+  implements atrh
 {
-  public atqx(DeleteFaceFragment paramDeleteFaceFragment) {}
+  atqx(atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
-    }
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    FileSelectorSearchFragment.a(this.a.a).a();
   }
 }
 

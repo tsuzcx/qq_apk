@@ -1,31 +1,19 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.Login;
 
-public class biyw
+final class biyw
   extends BroadcastReceiver
 {
-  public biyw(Login paramLogin) {}
-  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null)
-    {
-      QLog.d("Login", 1, "mPuzzleVerifyCodeReceiver onReceive null == oldIntent");
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
       return;
     }
-    QLog.d("Login", 1, "mPuzzleVerifyCodeReceiver onReceive");
-    paramContext = new Intent(paramIntent);
-    paramContext.setClass(this.a, QQBrowserActivity.class);
-    paramContext.setAction("android.intent.action.VIEW");
-    paramContext.putExtra("process", "com.tencent.mobileqq:openSdk");
-    paramContext.setData(Uri.parse("mqqverifycode://puzzle_verify_code/PUZZLEVERIFYCODE?"));
-    this.a.startActivity(paramContext);
-    this.a.d();
+    biyt.a(paramIntent.getStringExtra("account"));
+    biyt.b(biyt.a());
   }
 }
 

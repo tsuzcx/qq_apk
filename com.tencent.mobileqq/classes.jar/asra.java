@@ -1,70 +1,181 @@
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class asra
-  implements apkw
+  extends aslz
 {
-  private FileManagerEntity a;
+  public asra(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public asra(FileManagerEntity paramFileManagerEntity)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.a = paramFileManagerEntity;
-  }
-  
-  private String a()
-  {
-    String str = "";
-    try
+    aslo localaslo = (aslo)ExtendFriendLimitChatMatchFragment.a(this.a).app.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    int j;
+    int i;
+    if (localaslo != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
-        localJSONObject.put("file_color_note_cloud_lastTime", this.a.lastTime);
-        localJSONObject.put("file_color_note_cloud_fileId", this.a.WeiYunFileId);
-        localJSONObject.put("file_color_note_fileName", this.a.fileName);
-        localJSONObject.put("file_color_note_fileSize", this.a.fileSize);
-        localJSONObject.put("file_color_note_cloud_srcType", this.a.nWeiYunSrcType);
-        localJSONObject.put("file_color_note_cloud_encodeUrl", this.a.strLargeThumPath);
-        localJSONObject.put("file_color_note_cloud_dirKey", this.a.WeiYunDirKey);
-        localJSONObject.put("file_color_note_cloud_", this.a.strFileMd5);
-        localJSONObject.put("file_color_note_cloud_", this.a.strFileSHA);
-        str = localJSONObject.toString();
+      j = (int)localaslo.a();
+      i = (int)localaslo.b();
+    }
+    for (int k = (int)localaslo.c();; k = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "onUpdateCampusCertificateStatus,isSuccess = " + paramBoolean + ",maxMatchCount = " + j + ",matchedCount = " + i + ",leftMatchCount = " + k + ",scene = " + paramInt);
       }
-      return str;
+      if ((paramBoolean) && (paramInt == 1))
+      {
+        ExtendFriendLimitChatMatchFragment.b(this.a).setVisibility(0);
+        ExtendFriendLimitChatMatchFragment.f(this.a);
+        if ((ExtendFriendLimitChatMatchFragment.a(this.a).isShowing()) && (localaslo != null)) {
+          ExtendFriendLimitChatMatchFragment.a(this.a).b(j, k, localaslo.a());
+        }
+      }
+      return;
+      i = 0;
+      j = 0;
     }
-    catch (JSONException localJSONException) {}
-    return "";
   }
   
-  public ColorNote getColorNote()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.a == null)
-    {
-      QLog.i("CloudFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    aple localaple = new aple();
-    localaple.a(17039360);
-    String str = ataw.b(3, this.a.nSessionId + this.a.WeiYunFileId);
     if (QLog.isColorLevel()) {
-      QLog.i("CloudFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+      QLog.d("ExtendFriendLimitChatMatchFragment", 2, "onUpdateSignalBombPush " + paramBoolean + " " + paramString);
     }
-    localaple.a(str);
-    localaple.b(this.a.fileName);
-    localaple.c(FileUtil.filesizeToString(this.a.fileSize));
-    int i = aszt.a(aszt.a(this.a.fileName));
-    localaple.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaple.a(str.getBytes());
+    if ((ExtendFriendLimitChatMatchFragment.a(this.a) == 1) && (ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (ExtendFriendLimitChatMatchFragment.a(this.a).isResume()) && (ExtendFriendLimitChatMatchFragment.a(this.a).a() != 2) && (!ExtendFriendLimitChatMatchFragment.a(this.a))) {
+      ExtendFriendLimitChatMatchFragment.a(this.a, asru.a(ExtendFriendLimitChatMatchFragment.a(this.a), ExtendFriendLimitChatMatchFragment.a(this.a).app, ExtendFriendLimitChatMatchFragment.a(this.a)));
     }
-    return localaple.a();
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList<asnt> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
+  {
+    paramBoolean2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendLimitChatMatchFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1);
+    }
+    if (paramBoolean1)
+    {
+      if (paramInt > 0) {
+        break label130;
+      }
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "onlineCount  wrong");
+      if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
+      {
+        if (this.a.jdField_a_of_type_Asuz == null) {
+          break label197;
+        }
+        this.a.jdField_a_of_type_Asuz.a(paramArrayList1);
+      }
+      label85:
+      if ((ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (!ExtendFriendLimitChatMatchFragment.a(this.a).isFinishing()) && (ExtendFriendLimitChatMatchFragment.a(this.a).app != null)) {
+        break label208;
+      }
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mActivity finish ");
+    }
+    label130:
+    label197:
+    label208:
+    do
+    {
+      return;
+      Object localObject = paramInt + BaseApplication.getContext().getResources().getString(2131698503);
+      if (ExtendFriendLimitChatMatchFragment.a(this.a) != null)
+      {
+        ExtendFriendLimitChatMatchFragment.a(this.a).setText((CharSequence)localObject);
+        break;
+      }
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mMatchCountTxt is null");
+      break;
+      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mHeadsPanleView is null");
+      break label85;
+      paramArrayList1 = (aslo)ExtendFriendLimitChatMatchFragment.a(this.a).app.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if ((paramArrayList1 != null) && (paramArrayList1.i()))
+      {
+        ExtendFriendLimitChatMatchFragment.a(this.a).setVisibility(0);
+        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "signalBtn VISIBLE with controlbit");
+        if (!paramBoolean3) {
+          break label459;
+        }
+        if (paramArrayList1 != null)
+        {
+          if (paramArrayList1.i()) {
+            break label423;
+          }
+          ExtendFriendLimitChatMatchFragment.b(this.a, true);
+          QLog.e("ExtendFriendLimitChatMatchFragment", 2, "bSignalBombOpen FALSE BUG signaflag open NEED PB CLOSE");
+        }
+      }
+      for (;;)
+      {
+        if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (ExtendFriendLimitChatMatchFragment.a(this.a) == null)) {
+          break label599;
+        }
+        paramInt = 0;
+        while (paramInt < paramArrayList.size())
+        {
+          localObject = (asnt)paramArrayList.get(paramInt);
+          if (!TextUtils.isEmpty(((asnt)localObject).jdField_a_of_type_JavaLangString)) {
+            ExtendFriendLimitChatMatchFragment.a(this.a, ExtendFriendLimitChatMatchFragment.a(this.a) + ((asnt)localObject).jdField_a_of_type_JavaLangString + ";");
+          }
+          paramInt += 1;
+        }
+        ExtendFriendLimitChatMatchFragment.a(this.a).setVisibility(8);
+        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "signalBtn GONE with controlbit");
+        break;
+        if (!asru.a())
+        {
+          ExtendFriendLimitChatMatchFragment.b(this.a, true);
+          ExtendFriendLimitChatMatchFragment.e(this.a);
+        }
+        else
+        {
+          ExtendFriendLimitChatMatchFragment.a(this.a, true, true);
+          continue;
+          ExtendFriendLimitChatMatchFragment.a(this.a, false, true);
+        }
+      }
+      paramBoolean1 = paramBoolean2;
+      if (paramArrayList1 != null) {
+        paramBoolean1 = paramArrayList1.h();
+      }
+      paramInt = paramArrayList.size() - 1;
+      while (paramInt >= 0)
+      {
+        if ((((asnt)paramArrayList.get(paramInt)).jdField_a_of_type_Int == 10000) && (!paramBoolean1))
+        {
+          QLog.e("ExtendFriendLimitChatMatchFragment", 2, "MATCH_CHAT_TAG_ID_FOR_VOICE_MATCH REMOVE by flag");
+          paramArrayList.remove(paramInt);
+        }
+        paramInt -= 1;
+      }
+      paramArrayList1 = new asvv();
+      paramArrayList1.a(paramArrayList);
+      if (paramArrayList.size() <= 0) {
+        break label589;
+      }
+    } while (ExtendFriendLimitChatMatchFragment.a(this.a) == null);
+    label423:
+    label459:
+    ExtendFriendLimitChatMatchFragment.a(this.a).setAdapter(paramArrayList1);
+    return;
+    label589:
+    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TaginfoInfo size 0");
+    return;
+    label599:
+    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo size 0");
+  }
+  
+  protected void m_(int paramInt)
+  {
+    awui.a(this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, ExtendFriendLimitChatMatchFragment.a(this.a).app);
   }
 }
 

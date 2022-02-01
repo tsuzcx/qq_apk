@@ -1,71 +1,151 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tty
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bjrq jdField_a_of_type_Bjrq;
-  private sgh jdField_a_of_type_Sgh;
+  private aqnr jdField_a_of_type_Aqnr;
+  private ColorNote jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
+  private String jdField_a_of_type_JavaLangString;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public tty(Activity paramActivity, sgh paramsgh)
+  public tty(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Sgh = paramsgh;
-    this.jdField_a_of_type_Bjrq = new bjrq(paramActivity);
+    this.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = new aqoi().a(16908290).a("viola:" + paramString).b("defaultTitle").c("defaultSubTitle").d("https://default").a();
+  }
+  
+  public static JSONObject a(ColorNote paramColorNote)
+  {
+    if (paramColorNote == null) {
+      return new JSONObject();
+    }
+    try
+    {
+      paramColorNote = new JSONObject(new String(paramColorNote.getReserve()));
+      return paramColorNote;
+    }
+    catch (Exception paramColorNote)
+    {
+      QLog.d("ViolaColorNote", 1, "[getViolaColorNoteData]: " + paramColorNote.getMessage());
+    }
+    return new JSONObject();
+  }
+  
+  public static JSONObject b(ColorNote paramColorNote)
+  {
+    return a(paramColorNote).optJSONObject("report");
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote == null)) {
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mMainTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("title");
+      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mSubTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("subTitle");
+      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mPicUrl = this.jdField_a_of_type_OrgJsonJSONObject.optString("imageUrl");
+      this.jdField_a_of_type_OrgJsonJSONObject.put("param", this.jdField_a_of_type_JavaLangString).put("url", this.b).put("useTransParentFragment", this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mReserve = this.jdField_a_of_type_OrgJsonJSONObject.toString().getBytes();
+      this.jdField_a_of_type_Aqnr.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ViolaColorNote", 1, "[setColorBallData]: " + localException.getMessage());
+    }
+  }
+  
+  private void c(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
+        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+      }
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        try
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put(str, paramJSONObject.opt(str));
+        }
+        catch (JSONException localJSONException)
+        {
+          QLog.e("ViolaColorNote", 1, localJSONException.getMessage());
+        }
+      }
+    }
+  }
+  
+  public ColorNote a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
+  }
+  
+  public tty a(aqnr paramaqnr)
+  {
+    this.jdField_a_of_type_Aqnr = paramaqnr;
+    return this;
+  }
+  
+  public tty a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public tty a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bjrq != null) && (this.jdField_a_of_type_Bjrq.isShowing())) {
-      this.jdField_a_of_type_Bjrq.dismiss();
+    if (this.jdField_a_of_type_Aqnr == null) {}
+    while (!this.jdField_a_of_type_Aqnr.c()) {
+      return;
     }
+    b();
   }
   
-  public void a(View paramView, int paramInt, VideoInfo paramVideoInfo)
+  public void a(int paramInt)
   {
-    ttz localttz = new ttz(this, paramInt, paramVideoInfo);
-    if (!this.jdField_a_of_type_Bjrq.a()) {
-      this.jdField_a_of_type_Bjrq.a();
+    if ((this.jdField_a_of_type_Aqnr == null) || (1 != paramInt)) {
+      return;
     }
-    this.jdField_a_of_type_Bjrq.b = false;
-    ArrayList localArrayList = new ArrayList();
-    if ((paramVideoInfo.a != null) && (paramVideoInfo.a.e != null))
-    {
-      int i = 0;
-      while (i < paramVideoInfo.a.e.size())
-      {
-        DislikeInfo localDislikeInfo = new DislikeInfo();
-        localDislikeInfo.jdField_a_of_type_Long = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_Long;
-        localDislikeInfo.jdField_a_of_type_JavaLangString = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_JavaLangString;
-        localArrayList.add(localDislikeInfo);
-        i += 1;
-      }
-    }
-    if (localArrayList.size() > 0)
-    {
-      obb.a(paramVideoInfo.a);
-      if (this.jdField_a_of_type_Bjrq.a(paramInt, localArrayList)) {
-        this.jdField_a_of_type_Bjrq.a(paramView, localttz);
-      }
-    }
+    b();
   }
   
-  public void b()
+  public void a(JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_Bjrq != null) && (this.jdField_a_of_type_Bjrq.isShowing())) {
-      this.jdField_a_of_type_Bjrq.dismiss();
-    }
-    this.jdField_a_of_type_Bjrq = null;
+    if (paramJSONObject == null) {}
+    do
+    {
+      return;
+      c(paramJSONObject);
+    } while (this.jdField_a_of_type_Aqnr == null);
+    this.jdField_a_of_type_Aqnr.k();
+  }
+  
+  public void b(JSONObject paramJSONObject)
+  {
+    c(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tty
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,16 @@
-class azxw
-  implements azyd
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+
+public class azxw
+  implements azyg
 {
-  azxw(azxv paramazxv) {}
+  public azxw(ComponentCenter paramComponentCenter, BaseActivity paramBaseActivity, Bundle paramBundle) {}
   
-  public void a(long paramLong) {}
+  public void a(azxs paramazxs)
+  {
+    paramazxs.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

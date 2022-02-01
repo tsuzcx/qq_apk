@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public class bdkk
-  implements View.OnClickListener
+public final class bdkk
 {
-  public bdkk(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
-  
-  public void onClick(View paramView)
+  public static void a(Context paramContext, boolean paramBoolean)
   {
-    WriteTogetherEditorFragment.g(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
+    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
   }
 }
 

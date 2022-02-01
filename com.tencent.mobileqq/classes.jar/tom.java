@@ -1,44 +1,45 @@
-import android.support.v4.app.Fragment;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
 public class tom
-  implements View.OnLayoutChangeListener
 {
-  public tom(ViolaBaseView paramViolaBaseView) {}
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private float jdField_b_of_type_Float;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public tom(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
   {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
-    }
-    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1"))) {
-      paramView = new JSONObject();
-    }
-    try
-    {
-      paramView.put("navigationBarHeight", ViewUtils.PxToDp(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
-      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
+    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public RectF a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF;
+  }
+  
+  public RectF b()
+  {
+    return this.jdField_b_of_type_AndroidGraphicsRectF;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cropRect:" + this.jdField_a_of_type_AndroidGraphicsRectF + " ,imageRect:" + this.jdField_b_of_type_AndroidGraphicsRectF + " ,scale:" + this.jdField_a_of_type_Float + " ,angle:" + this.jdField_b_of_type_Float;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tom
  * JD-Core Version:    0.7.0.1
  */

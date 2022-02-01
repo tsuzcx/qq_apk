@@ -1,10 +1,6 @@
-final class pat
-  implements rgr<String>
+public abstract interface pat
 {
-  public boolean a(String paramString)
-  {
-    return (paramString.toLowerCase().contains("readinjoy")) && (!paramString.contains("readinjoy_local_reset_config_version")) && (!paramString.contains("readinjoy_remote_reset_config_version"));
-  }
+  public abstract void onScroll(int paramInt);
 }
 
 

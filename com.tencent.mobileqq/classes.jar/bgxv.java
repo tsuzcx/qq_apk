@@ -1,61 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
 
-public class bgxv
-  extends bgxu
+final class bgxv
+  implements DownloadParams.DecodeHandler
 {
-  public bgxv(int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    super(paramInt);
-  }
-  
-  public int a()
-  {
-    if (WebAccelerateHelper.preloadBrowserView == null)
-    {
-      WebAccelerateHelper.preInflaterBrowserView();
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
     }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
     do
     {
-      return 2;
-      if (SwiftReuseTouchWebView.c != 0) {
-        break;
-      }
-      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
-    return 2;
-    long l;
-    if (bgxr.a() < 5)
-    {
-      l = System.currentTimeMillis();
-      if (System.currentTimeMillis() > bgxr.a() + 10000L)
+      do
       {
-        bgxr.a();
-        bgxr.b();
-        bgxr.a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
-        }
-      }
-    }
-    for (;;)
-    {
-      return 1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + bgxr.a() + " < 10s.");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + bgxr.a() + ">=" + 5 + ".");
-        }
-      }
-    }
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bheg.b(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

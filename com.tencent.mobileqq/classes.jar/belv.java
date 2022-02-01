@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class belv
-  implements DialogInterface.OnClickListener
+final class belv
+  implements bell
 {
-  public belv(ReciteRecordLayout paramReciteRecordLayout) {}
+  belv(Pattern paramPattern) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(String paramString)
   {
-    this.a.a(this.a.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).f();
-    }
+    return this.a.matcher(paramString).find();
   }
 }
 

@@ -1,30 +1,24 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class xqd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public static ThreadLocal<StringBuilder> a = new xqe();
+  public xqd(QGSettingFragment paramQGSettingFragment) {}
   
-  public static String a(Object... paramVarArgs)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (paramVarArgs.length > 0)
+    if (paramBoolean) {
+      QGSettingFragment.b(true);
+    }
+    for (;;)
     {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject.toString());
-        }
-        i += 1;
-      }
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      QGSettingFragment.b(false);
     }
-    return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
   }
 }
 

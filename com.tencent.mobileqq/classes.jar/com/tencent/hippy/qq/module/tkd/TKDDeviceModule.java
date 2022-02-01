@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.module.tkd;
 
-import acgr;
+import acwz;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import org.jetbrains.annotations.Nullable;
-import pay;
+import pqp;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 @HippyNativeModule(name="TKDDeviceModule")
@@ -62,11 +62,11 @@ public class TKDDeviceModule
   {
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
-    localHippyMap.pushString("qua", pay.d());
-    localHippyMap.pushString("qua2", pay.d());
+    localHippyMap.pushString("qua", pqp.c());
+    localHippyMap.pushString("qua2", pqp.c());
     localHippyMap.pushString("macAddress", DeviceInfoUtil.getLocalMacAddress(BaseApplicationImpl.getApplication().getApplicationContext()));
     localHippyMap.pushString("networkType", getApnType());
-    localHippyMap.pushString("id", acgr.p());
+    localHippyMap.pushString("id", acwz.p());
     localHippyMap.pushString("qimei", UserAction.getQIMEI());
     localHippyMap.pushString("dpi", String.valueOf(ViewUtils.getDensityDpi()));
     localHippyMap.pushBoolean("isKingCardUser", HippyTKDListView.isKingCardMobileNetWork());

@@ -1,43 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class wmv
-  extends wlc
+class wmv
+  implements ante
 {
-  wmv(String paramString1, String paramString2, int paramInt, Context paramContext) {}
+  wmv(wms paramwms) {}
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        wmu.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
-        return;
+      if (localObject != null) {
+        ((vzu)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
       }
-    }
-    if (paramInt == 10100)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, amtj.a(2131713580), 0).a();
       return;
     }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, amtj.a(2131713581) + paramInt, 0).a();
   }
 }
 

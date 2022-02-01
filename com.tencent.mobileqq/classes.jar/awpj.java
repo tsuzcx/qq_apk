@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
 
-class awpj
-  implements View.OnClickListener
+public abstract interface awpj
 {
-  awpj(awpi paramawpi) {}
+  public abstract void a(awpg paramawpg);
   
-  public void onClick(View paramView)
-  {
-    this.a.a.jdField_a_of_type_Awpy.a();
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(URLDrawable paramURLDrawable);
 }
 
 

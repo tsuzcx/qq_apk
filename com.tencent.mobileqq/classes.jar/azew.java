@@ -1,49 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import kotlin.Metadata;
+import mqq.observer.BusinessObserver;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "Lmqq/observer/BusinessObserver;", "()V", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "onReceive", "type", "", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class azew
+  implements BusinessObserver
 {
-  private azfa a;
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle) {}
   
-  public azew(azfa paramazfa)
-  {
-    this.a = paramazfa;
-  }
-  
-  public azeb a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
   {
     switch (paramInt)
     {
     default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("CommandFactory", 2, "createCommand exception commandType = " + paramInt);
-      }
-      return null;
-    case 1: 
-      return new azec(this.a);
-    case 2: 
-      return new azel(this.a);
-    case 0: 
-      return new azea(this.a);
-    case 3: 
-      return new azek(this.a);
-    case 4: 
-      return new azei(this.a);
-    case 5: 
-      return new azeg(this.a);
-    case 11: 
-      return new azed(this.a);
-    case 6: 
-      return new azeh(this.a);
-    case 7: 
-      return new azee(this.a);
-    case 8: 
-      return new azdy(this.a);
-    case 9: 
-      return new azej(this.a);
-    case 10: 
-      return new azdz(this.a);
+      return;
     }
-    return new azef(this.a);
+    a(paramBoolean, paramBundle);
   }
 }
 

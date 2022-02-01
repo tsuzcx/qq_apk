@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewConfiguration;
 import android.widget.RelativeLayout;
-import azfw;
-import azfy;
-import azgq;
-import azgr;
+import baln;
+import balp;
+import bamy;
+import bamz;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class VoicePanelSlideContainer
@@ -21,8 +21,8 @@ public class VoicePanelSlideContainer
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 20;
   private Context jdField_a_of_type_AndroidContentContext;
-  private azfw jdField_a_of_type_Azfw;
-  private azfy jdField_a_of_type_Azfy;
+  private baln jdField_a_of_type_Baln;
+  private balp jdField_a_of_type_Balp;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -55,7 +55,7 @@ public class VoicePanelSlideContainer
     {
       localObjectAnimator = ObjectAnimator.ofFloat(this, "y", new float[] { i, this.c });
       localObjectAnimator.setDuration(250L);
-      localObjectAnimator.addListener(new azgq(this));
+      localObjectAnimator.addListener(new bamy(this));
       localObjectAnimator.start();
     }
     do
@@ -65,7 +65,7 @@ public class VoicePanelSlideContainer
       {
         localObjectAnimator = ObjectAnimator.ofFloat(this, "y", new float[] { i, this.b });
         localObjectAnimator.setDuration(250L);
-        localObjectAnimator.addListener(new azgr(this));
+        localObjectAnimator.addListener(new bamz(this));
         localObjectAnimator.start();
         return;
       }
@@ -86,15 +86,15 @@ public class VoicePanelSlideContainer
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Azfw != null) {
-      this.jdField_a_of_type_Azfw.b(paramBoolean);
+    if (this.jdField_a_of_type_Baln != null) {
+      this.jdField_a_of_type_Baln.b(paramBoolean);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Azfy != null) {
-      this.jdField_a_of_type_Azfy.b();
+    if (this.jdField_a_of_type_Balp != null) {
+      this.jdField_a_of_type_Balp.b();
     }
   }
   
@@ -163,14 +163,14 @@ public class VoicePanelSlideContainer
     }
   }
   
-  public void setPanelDragListener(azfw paramazfw)
+  public void setPanelDragListener(baln parambaln)
   {
-    this.jdField_a_of_type_Azfw = paramazfw;
+    this.jdField_a_of_type_Baln = parambaln;
   }
   
-  public void setPanelSlideListener(azfy paramazfy)
+  public void setPanelSlideListener(balp parambalp)
   {
-    this.jdField_a_of_type_Azfy = paramazfy;
+    this.jdField_a_of_type_Balp = parambalp;
   }
 }
 

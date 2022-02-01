@@ -1,32 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.GifAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class blzf
-  extends GifAnimationDrawable
+  implements DialogInterface.OnClickListener
 {
-  public blzf(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
-  {
-    super(paramContext, paramArrayList, paramLong);
-  }
+  public blzf(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void start()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("zswp20pro", 2, "start");
-      }
-      this.a = true;
-      this.b = true;
-      this.d = false;
-      a();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("zswp20pro", 2, "start but isRunning");
+    blyb.a(this.a, 5, null);
+    this.a.finish();
   }
 }
 

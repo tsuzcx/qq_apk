@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aghl
-  implements View.OnClickListener
+  implements agin
 {
-  public aghl(LightVideoItemBuilder paramLightVideoItemBuilder) {}
+  private atfq jdField_a_of_type_Atfq;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public aghl(BaseChatPie paramBaseChatPie)
   {
-    this.a.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Atfq == null) {
+        this.jdField_a_of_type_Atfq = new aghn(this, null);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Atfq);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Atfq);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 1, 14 };
   }
 }
 

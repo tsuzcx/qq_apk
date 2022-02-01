@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.text;
 
 import android.content.Context;
-import bjnc;
-import bjnw;
+import bkyo;
+import bkzi;
 
 final class QQText$5
-  implements bjnc<Integer>
+  implements bkyo<Integer>
 {
-  QQText$5(Context paramContext, String paramString, bjnw parambjnw) {}
+  QQText$5(Context paramContext, String paramString, bkzi parambkzi) {}
   
   public void execute(Integer paramInteger)
   {

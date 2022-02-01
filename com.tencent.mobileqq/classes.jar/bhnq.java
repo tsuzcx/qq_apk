@@ -1,59 +1,38 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper.1.1;
+import java.lang.ref.SoftReference;
+import java.util.List;
+import java.util.Map;
 
-public class bhnq
+public final class bhnq
+  implements bhnt
 {
-  public int a;
-  public String a;
-  
-  public bhnq()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static bhnq a(QQAppInterface paramQQAppInterface)
-  {
-    bhnq localbhnq = new bhnq();
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    int i = bhnr.a(localBaseApplication, paramQQAppInterface);
-    if (i == 1)
+    int i = 0;
+    if (i < bhnp.a().size())
     {
-      localbhnq.jdField_a_of_type_Int = 1;
-      localbhnq.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-      return localbhnq;
-    }
-    if (i == 2)
-    {
-      localbhnq.jdField_a_of_type_Int = 2;
-      return localbhnq;
-    }
-    if ((!bhns.a(localBaseApplication)) || (!bhns.b(localBaseApplication)) || (!bhns.c(localBaseApplication)))
-    {
-      if (i == 3)
+      Object localObject = (SoftReference)bhnp.a().get(i);
+      if (localObject != null)
       {
-        localbhnq.jdField_a_of_type_Int = 3;
-        localbhnq.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-        return localbhnq;
+        localObject = (bhnr)((SoftReference)localObject).get();
+        if (localObject != null) {
+          break label50;
+        }
       }
-      localbhnq.jdField_a_of_type_Int = 5;
-      return localbhnq;
+      for (;;)
+      {
+        i += 1;
+        break;
+        label50:
+        String str = (String)bhnp.b().get(((bhnr)localObject).jdField_a_of_type_JavaLangString);
+        if ((((bhnr)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (!TextUtils.isEmpty(str))) {
+          ((bhnr)localObject).jdField_a_of_type_AndroidWidgetImageView.post(new IndividuationUrlHelper.1.1(this, (bhnr)localObject, str));
+        }
+      }
     }
-    localbhnq.jdField_a_of_type_Int = 4;
-    return localbhnq;
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    paramString = bhnr.b(paramContext, paramString);
-    paramContext = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramContext = "https://sdi.3g.qq.com/v/2018082711463211194";
-    }
-    return paramContext;
+    bhnp.a().clear();
   }
 }
 

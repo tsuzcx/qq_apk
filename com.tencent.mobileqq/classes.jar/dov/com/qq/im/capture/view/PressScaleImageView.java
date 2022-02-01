@@ -5,12 +5,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
-import bmys;
+import book;
 
 public class PressScaleImageView
   extends ImageView
 {
-  private final bmys a;
+  private final book a;
   public boolean a;
   
   public PressScaleImageView(Context paramContext)
@@ -27,18 +27,18 @@ public class PressScaleImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bmys = new bmys(this);
+    this.jdField_a_of_type_Book = new book(this);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bmys.a())
+    if (this.jdField_a_of_type_Book.a())
     {
       paramCanvas.save();
-      this.jdField_a_of_type_Bmys.a(paramCanvas);
+      this.jdField_a_of_type_Book.a(paramCanvas);
     }
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bmys.a()) {
+    if (this.jdField_a_of_type_Book.a()) {
       paramCanvas.restore();
     }
   }
@@ -52,7 +52,7 @@ public class PressScaleImageView
     {
       return super.onTouchEvent(paramMotionEvent);
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Bmys.a();
+        this.jdField_a_of_type_Book.a();
       }
     }
   }

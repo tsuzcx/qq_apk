@@ -3,7 +3,7 @@ package com.tencent.mobileqq.transfile.bitmapcreator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import bfvo;
+import bheg;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileBitmapDecoder
@@ -23,7 +23,7 @@ public class FileBitmapDecoder
         BitmapFactory.decodeFile(paramString, localOptions);
       }
     }
-    for (localOptions.inSampleSize = bfvo.a(localOptions, paramInt1, paramInt2);; localOptions.inSampleSize = paramInt3)
+    for (localOptions.inSampleSize = bheg.a(localOptions, paramInt1, paramInt2);; localOptions.inSampleSize = paramInt3)
     {
       localOptions.inJustDecodeBounds = false;
       try

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import atgz;
-import atha;
+import aulg;
+import aulh;
 
 public class UniformDownloaderAppBabySdk$4$3
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$4$3(atha paramatha, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  public UniformDownloaderAppBabySdk$4$3(aulh paramaulh, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
   
   public void run()
   {
-    atgz.a(this.jdField_a_of_type_Atha.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
-    atgz.a(this.jdField_a_of_type_Atha.a);
+    aulg.a(this.jdField_a_of_type_Aulh.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
+    aulg.a(this.jdField_a_of_type_Aulh.a);
   }
 }
 

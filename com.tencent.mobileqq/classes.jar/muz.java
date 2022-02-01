@@ -1,117 +1,73 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.HexUtil;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.sharp.jni.TraeAudioSession;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 class muz
-  implements ITransactionCallback
+  implements AdapterView.OnItemClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  muz(muy parammuy, Button paramButton, long paramLong, bkzi parambkzi) {}
   
-  muz(muy parammuy, String paramString, long paramLong, byte[] paramArrayOfByte, mva parammva) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.w(this.jdField_a_of_type_Muy.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
-    paramArrayOfByte = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_Mva.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    String str2 = "";
-    String str1;
-    if (paramArrayOfByte != null) {
-      str1 = str2;
+    if (muy.a(this.jdField_a_of_type_Muy) != null)
+    {
+      paramAdapterView = (mvf)muy.a(this.jdField_a_of_type_Muy).getItem(paramInt);
+      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Muy.a != null))
+      {
+        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
+          break label199;
+        }
+        mbf.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
+        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
+        }
+        bdla.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
+      }
     }
     for (;;)
     {
-      int i;
-      try
+      muy.a(this.jdField_a_of_type_Muy, true);
+      this.jdField_a_of_type_Muy.a.a(mtr.a());
+      this.jdField_a_of_type_Muy.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      label199:
+      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
       {
-        localObject2 = new Bdh_extinfo.CommFileExtRsp();
-        str1 = str2;
-        ((Bdh_extinfo.CommFileExtRsp)localObject2).mergeFrom(paramArrayOfByte);
-        str1 = str2;
-        str2 = ((Bdh_extinfo.CommFileExtRsp)localObject2).bytes_download_url.get().toStringUtf8();
-        str1 = str2;
-        boolean bool = TextUtils.isEmpty(str2);
-        if (!bool) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
         }
-        i = -10010;
-        str1 = str2;
+        bdla.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
       }
-      catch (Exception localException2)
+      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
       {
-        Object localObject2;
-        StringBuilder localStringBuilder;
-        i = -10012;
-        continue;
-        paramArrayOfByte = null;
-        continue;
-      }
-      str2 = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
-      localObject2 = this.jdField_a_of_type_Muy.jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
-      Object localObject1;
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
-        QLog.w((String)localObject2, 1, paramArrayOfByte + "], retCode[" + i + "], md5[" + str2 + "], url[" + str1 + "]");
-        AudioHelper.a(this.jdField_a_of_type_Muy.jdField_a_of_type_JavaLangString, paramHashMap, false);
-        this.jdField_a_of_type_Mva.a(i, this.jdField_a_of_type_JavaLangString, str1, str2);
-        return;
-        try
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.w(this.jdField_a_of_type_Muy.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
-          }
-          str1 = bjnd.a(str2);
-          i = 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
         }
-        catch (Exception localException1)
-        {
-          i = -10011;
-          localObject1 = str2;
+        bdla.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
+      }
+      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
         }
-      }
-      else
-      {
-        i = 0;
-        localObject1 = localException2;
-      }
-    }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    QLog.w(this.jdField_a_of_type_Muy.jdField_a_of_type_JavaLangString, 1, "onTransStart, sessionId[" + this.jdField_a_of_type_JavaLangString + "]");
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      long l = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Long < l)
-      {
-        QLog.w(this.jdField_a_of_type_Muy.jdField_a_of_type_JavaLangString, 1, "onUpdateProgress, sessionId[" + this.jdField_a_of_type_JavaLangString + "], transferedSize[" + paramInt + "], totalSize[" + this.b + "]");
-        this.jdField_a_of_type_Long = (l + 2000L);
+        bdla.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     muz
  * JD-Core Version:    0.7.0.1
  */

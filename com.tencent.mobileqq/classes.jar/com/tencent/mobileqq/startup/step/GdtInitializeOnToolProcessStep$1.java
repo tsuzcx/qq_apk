@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import abpz;
+import acft;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GdtInitializeOnToolProcessStep$1
@@ -13,7 +13,7 @@ class GdtInitializeOnToolProcessStep$1
     try
     {
       long l = System.currentTimeMillis();
-      abpz.a().a(BaseApplicationImpl.getContext());
+      acft.a().a(BaseApplicationImpl.getContext());
       GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", "ipc register durationMillis:" + (System.currentTimeMillis() - l), null);
       return;
     }
@@ -25,7 +25,7 @@ class GdtInitializeOnToolProcessStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.GdtInitializeOnToolProcessStep.1
  * JD-Core Version:    0.7.0.1
  */

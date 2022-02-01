@@ -7,6 +7,7 @@ import android.view.Surface;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -153,6 +154,11 @@ class SuperPlayerMgrInternal
     return this.mHandleListener.handleGetMediaInfo();
   }
   
+  public TPProgramInfo[] getProgramInfo()
+  {
+    return this.mHandleListener.handleGetProgramInfo();
+  }
+  
   String getStreamDumpInfo()
   {
     return this.mHandleListener.handleGetStreamDumpInfo();
@@ -226,6 +232,11 @@ class SuperPlayerMgrInternal
   void seekTo(int paramInt1, int paramInt2)
   {
     internalMessage(24, paramInt1, paramInt2, null);
+  }
+  
+  public void selectProgram(int paramInt, long paramLong)
+  {
+    this.mHandleListener.handleSelectProgram(paramInt, paramLong);
   }
   
   public void selectTrack(int paramInt, long paramLong)

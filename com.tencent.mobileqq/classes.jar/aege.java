@@ -1,21 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aege
-  implements View.OnClickListener
+  extends aslz
 {
-  public aege(ShowReactiveActivity paramShowReactiveActivity, aqgz paramaqgz) {}
+  public aege(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  protected void m_(int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_Aqgz.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    }
+    if (Leba.a(this.a) != null) {
+      Leba.a(this.a).b();
+    }
   }
 }
 

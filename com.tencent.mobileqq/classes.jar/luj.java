@@ -1,46 +1,68 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class luj
-  extends lun
+  extends aqde
 {
-  public int b;
-  
-  public luj()
+  public String a(aqdi paramaqdi)
   {
-    this.jdField_b_of_type_Int = 667;
-    this.c = new luz[8];
-    this.jdField_b_of_type_Long = 1250L;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    long l = this.a;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
+    paramaqdi = lbh.g() + paramaqdi.b + File.separator;
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketRDHandler", 2, "getUnzipDirPath dir = " + paramaqdi);
     }
-    a(i);
+    return paramaqdi;
   }
   
-  public void a(AVRedPacketManager paramAVRedPacketManager)
+  public boolean a(aqdi paramaqdi, boolean paramBoolean)
   {
-    int i = 0;
-    while (i < this.c.length)
+    long l1 = -1L;
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (paramaqdi.a)
     {
-      this.c[i] = new luz(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
-      i += 1;
+      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getLong(paramaqdi.b, -1L);
+      paramaqdi = new File(a(paramaqdi));
+      paramBoolean = bool2;
+      if (paramaqdi.exists())
+      {
+        long l2 = paramaqdi.lastModified();
+        l1 = l2;
+        paramBoolean = bool2;
+        if (l3 > 0L)
+        {
+          l1 = l2;
+          paramBoolean = bool2;
+          if (l3 != l2)
+          {
+            paramBoolean = false;
+            l1 = l2;
+          }
+        }
+      }
+      bool1 = paramBoolean;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AVRedPacketRDHandler", 2, "verifyUnzipDir result = " + paramBoolean + ",recordedModifyTime = " + l3 + ",realModifyTime = " + l1);
+        bool1 = paramBoolean;
+      }
     }
+    return bool1;
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public String b(aqdi paramaqdi)
   {
-    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
+    paramaqdi = lbh.g() + paramaqdi.b + ".end";
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketRDHandler", 2, "getDownloadPath path[" + paramaqdi + "]");
+    }
+    return paramaqdi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     luj
  * JD-Core Version:    0.7.0.1
  */

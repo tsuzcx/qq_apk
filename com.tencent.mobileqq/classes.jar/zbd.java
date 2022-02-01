@@ -1,24 +1,102 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class zbd
-  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
+public class zbd
 {
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public final int a;
+  public final String a;
+  public final zbe a;
+  
+  public zbd(qqstory_struct.TagItem paramTagItem)
   {
-    if ((paramBoolean) && (paramLong == 0L))
+    this.jdField_a_of_type_Zbe = new zbe((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
+    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
+  }
+  
+  public zbd(TagItemEntry paramTagItemEntry)
+  {
+    this.jdField_a_of_type_Zbe = new zbe(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
+    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
+    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
+  }
+  
+  public zbd(zbe paramzbe, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Zbe = paramzbe;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public TagItemEntry a()
+  {
+    TagItemEntry localTagItemEntry = new TagItemEntry();
+    localTagItemEntry.id = this.jdField_a_of_type_Zbe.jdField_a_of_type_Long;
+    localTagItemEntry.name = this.jdField_a_of_type_Zbe.jdField_a_of_type_JavaLangString;
+    localTagItemEntry.desc = this.jdField_a_of_type_Zbe.b;
+    localTagItemEntry.type = this.jdField_a_of_type_Zbe.jdField_a_of_type_Int;
+    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
+    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
+    return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
+    try
     {
-      if (paramStGetMainPageRsp != null) {
-        zbc.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+      if (this.jdField_a_of_type_Zbe == null) {
+        return null;
       }
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Zbe.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Zbe.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Zbe.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Zbe.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    else {
-      return;
+    catch (JSONException localJSONException) {}
+    return null;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (zbd)paramObject;
+      if (this.jdField_a_of_type_Zbe != null) {
+        return this.jdField_a_of_type_Zbe.equals(paramObject.jdField_a_of_type_Zbe);
+      }
+    } while (paramObject.jdField_a_of_type_Zbe == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_Zbe != null) {
+      return this.jdField_a_of_type_Zbe.hashCode();
     }
-    QLog.w(zbc.class.getSimpleName(), 1, "getPuinUser empty");
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TagItem{tagInfo=" + this.jdField_a_of_type_Zbe + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class arvs
-  extends asbj
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public arvs(VerifyPwdView paramVerifyPwdView) {}
+  public arvs(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  protected void onNeedVerifyPwdFailed(int paramInt, String paramString)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    aszk.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void onNeedVerifyPwdSuccess(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
+    if (paramInt == 2131365914) {
+      DBFixConfigActivity.a = 1;
     }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void onVerifyPwdFailed(int paramInt, String paramString)
-  {
-    aszk.a(paramString);
-  }
-  
-  protected void onVerifyPwdSuccess()
-  {
-    VerifyPwdView.a(this.a);
+    for (;;)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if (paramInt == 2131365430) {
+        DBFixConfigActivity.a = 2;
+      }
+    }
   }
 }
 

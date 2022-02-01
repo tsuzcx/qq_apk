@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
+import java.util.List;
 
-public class poo
-  extends pkt
+class poo
+  extends qdb
 {
-  public poo(ReadInJoySelfCenterViolaFragment paramReadInJoySelfCenterViolaFragment) {}
-  
-  public void l()
+  poo(pob parampob, String paramString, int paramInt, List paramList)
   {
-    ReadInJoySelfCenterViolaFragment.a(this.a);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

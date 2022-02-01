@@ -1,18 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjgn
-  implements DialogInterface.OnClickListener
+  extends BaseAdapter
 {
-  public bjgn(VideoJsProxyImpl.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getCount()
   {
-    bjgl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, this.a.b);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return null;
   }
 }
 

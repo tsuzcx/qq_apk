@@ -1,27 +1,17 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import android.content.Context;
+import android.widget.ScrollView;
 
 class bfkm
-  implements ancx
+  extends ScrollView
 {
-  public bfkn a;
-  
-  private bfkm(bfkk parambfkk) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  bfkm(bfkl parambfkl, Context paramContext)
   {
-    if ((this.jdField_a_of_type_Bfkn != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Bfkn.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
-    {
-      paramTroopMemberInfo = new bczs(((TroopManager)this.jdField_a_of_type_Bfkk.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
-      this.jdField_a_of_type_Bfkn.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.c) {
-        bfkk.a(this.jdField_a_of_type_Bfkk, this.jdField_a_of_type_Bfkn);
-      }
-    }
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

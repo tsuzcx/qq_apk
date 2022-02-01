@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pkm;
-import puc;
+import pvj;
+import qew;
 
 class ReadInJoyProteusFamilyListViewGroup$4
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyProteusFamilyListViewGroup$4
   
   public void run()
   {
-    puc localpuc = pkm.a().a();
-    if (localpuc != null) {
-      localpuc.b(this.this$0.a);
+    qew localqew = pvj.a().a();
+    if (localqew != null) {
+      localqew.b(this.this$0.a);
     }
   }
 }

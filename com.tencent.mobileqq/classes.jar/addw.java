@@ -1,32 +1,42 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class addw
-  implements bjoe
+  implements View.OnClickListener
 {
-  public addw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bjnw parambjnw) {}
+  public addw(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
     }
+    if (!azit.a().a(this.a.app, this.a)) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
+      if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
       {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
-        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131691946));
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
+        QQToast.a(this.a, 2131693722, 0).a();
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131694108));
+        AccountManageActivity.a(this.a, bdxj.a(this.a.app));
+        Intent localIntent = new Intent();
+        localIntent.setPackage(this.a.getPackageName());
+        localIntent.setClass(this.a, AddAccountActivity.class);
+        this.a.startActivityForResult(localIntent, 1000);
+        this.a.overridePendingTransition(2130771997, 2130771990);
+        bdxi.c(this.a.app, this.a);
+        bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
       }
     }
   }

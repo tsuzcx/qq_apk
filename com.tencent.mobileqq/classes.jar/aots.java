@@ -1,148 +1,40 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.wordsegment.WordSegment;
-import java.io.File;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aots
+  extends aouc
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public aots(AppInterface paramAppInterface)
+  public aots(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public static aotu a(AppInterface paramAppInterface, String paramString)
+  public boolean a()
   {
-    aotu localaotu = new aotu();
-    localaotu.jdField_a_of_type_JavaLangString = paramString;
-    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localaotu, paramString));
-    return localaotu;
-  }
-  
-  static String a()
-  {
-    return ArkAppCenter.b() + "/WordData/";
-  }
-  
-  public static String a(String paramString)
-  {
-    return a() + paramString;
-  }
-  
-  public static void a()
-  {
-    Object localObject = new File(a());
-    if (((File)localObject).isFile()) {
-      ((File)localObject).delete();
-    }
     for (;;)
     {
-      return;
-      localObject = ((File)localObject).listFiles();
-      if (localObject != null)
+      try
       {
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
+        if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("mini_appid")) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("fakeUrl")))
         {
-          localObject[i].delete();
-          i += 1;
+          i = 1;
+          if (i != 0) {
+            return com.tencent.mobileqq.microapp.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+          }
+          boolean bool = com.tencent.mobileqq.mini.sdk.MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, 2016, null, null);
+          return bool;
         }
       }
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if (a())
-    {
-      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
-      return;
-    }
-    new File(a()).mkdirs();
-    if (!jdField_a_of_type_Boolean) {
-      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
-    }
-    b(paramAppInterface);
-  }
-  
-  public static boolean a()
-  {
-    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
-  }
-  
-  public static void b(AppInterface paramAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
-      return;
-    }
-    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
-  }
-  
-  private static boolean b(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface == null) {}
-    do
-    {
-      return true;
-      paramAppInterface = apvq.b(170).a();
-      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
+      catch (Exception localException)
       {
-        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
-        return true;
+        QLog.e("HttpOpenMicroAppAction", 1, "doAction error: " + localException.getMessage());
+        a("HttpOpenMicroAppAction");
+        return false;
       }
-      paramAppInterface = paramAppInterface.a().d;
-      if (paramAppInterface == null) {
-        break;
-      }
-      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
-    } while (!paramAppInterface.equals("false"));
-    return false;
-    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
-    return true;
-  }
-  
-  private static void d()
-  {
-    try
-    {
-      if ((aoth.b) && (!jdField_a_of_type_Boolean))
-      {
-        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
-        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
-        if (jdField_a_of_type_Boolean) {
-          WordSegment.setLogCallback(new aott());
-        }
-      }
-      return;
+      int i = 0;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b()
-  {
-    ArkAppCenter.c("ArkApp.Dict", "clearDict");
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    bfyz.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
-    a();
   }
 }
 

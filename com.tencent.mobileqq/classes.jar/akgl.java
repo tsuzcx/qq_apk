@@ -1,33 +1,24 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import mqq.app.QQPermissionCallback;
 
 public class akgl
+  implements QQPermissionCallback
 {
-  public static Rect a(View paramView)
+  public akgl(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    return localRect;
+    bhdj.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public static View a(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i = ((aezn)((bjqx)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "pos is:" + i);
-    }
-    if (i < 0) {
-      return null;
-    }
-    return paramChatXListView.getChildAt(i - paramChatXListView.getFirstVisiblePosition());
+    AvatarPendantActivity.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgl
  * JD-Core Version:    0.7.0.1
  */

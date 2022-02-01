@@ -97,17 +97,17 @@ public class QQCustomDialogThreeBtns
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131365556));
-    this.text = ((TextView)findViewById(2131365552));
-    this.previewImage = ((TextView)findViewById(2131372919));
-    this.lBtn = ((TextView)findViewById(2131365541));
-    this.mBtn = ((TextView)findViewById(2131365544));
-    this.rBtn = ((TextView)findViewById(2131365547));
+    this.title = ((TextView)findViewById(2131365648));
+    this.text = ((TextView)findViewById(2131365644));
+    this.previewImage = ((TextView)findViewById(2131373129));
+    this.lBtn = ((TextView)findViewById(2131365633));
+    this.mBtn = ((TextView)findViewById(2131365636));
+    this.rBtn = ((TextView)findViewById(2131365639));
     this.lBtn.setVisibility(8);
     this.mBtn.setVisibility(8);
     this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131363595));
-    this.list = ((ListView)findViewById(2131370009));
+    this.bodyLayout = ((LinearLayout)findViewById(2131363664));
+    this.list = ((ListView)findViewById(2131370180));
   }
   
   public QQCustomDialogThreeBtns setItems(int paramInt, DialogInterface.OnClickListener paramOnClickListener)

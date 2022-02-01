@@ -1,16 +1,29 @@
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public abstract interface thw
+public class thw
+  implements tgs
 {
-  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
+  public int a(BaseData paramBaseData)
+  {
+    return 5;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public tgr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new thx(LayoutInflater.from(paramContext).inflate(2131560238, null), paramBaseData);
+  }
   
-  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.r == 5;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,30 @@
-import Wallet.FocusMpIdRsp;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class bjcq
-  implements BusinessObserver
+public class bjcq
+  implements AdapterView.OnItemClickListener
 {
-  bjcq(bjce parambjce, AsyncResult paramAsyncResult) {}
+  public bjcq(FriendChooser paramFriendChooser) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramBundle = (FocusMpIdRsp)paramBundle.getSerializable("rsp");
-    if ((paramBundle == null) || (paramBundle.err_code != 0))
+    Friend localFriend = (Friend)this.a.jdField_a_of_type_Bjcu.getItem(paramInt);
+    if ((localFriend != null) && (this.a.jdField_a_of_type_Bjgp.a(localFriend.a)))
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, null);
-      return;
+      this.a.jdField_a_of_type_Bjgp.b(localFriend.a);
+      this.a.b.remove(localFriend);
+      this.a.e();
+      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+      this.a.b(false);
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, null);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

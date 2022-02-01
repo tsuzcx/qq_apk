@@ -1,15 +1,8 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-
-public abstract interface bgky
+public class bgky
 {
-  public abstract void a();
-  
-  public abstract void a(Rect paramRect);
-  
-  public abstract void a(Drawable paramDrawable);
-  
-  public abstract boolean a();
+  public int a;
+  public int b;
+  public int c;
 }
 
 

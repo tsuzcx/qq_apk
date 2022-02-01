@@ -199,6 +199,7 @@ public class MiniReportManager
     eventNeedRecordTime.add(Integer.valueOf(621));
     eventNeedRecordTime.add(Integer.valueOf(626));
     eventNeedRecordTime.add(Integer.valueOf(121));
+    eventNeedRecordTime.add(Integer.valueOf(611));
     eventNeedRecordTime.add(Integer.valueOf(100));
     eventNeedRecordTime.add(Integer.valueOf(101));
     eventNeedRecordTime.add(Integer.valueOf(102));
@@ -298,12 +299,13 @@ public class MiniReportManager
     if ((paramInt == 20) && (!paramMiniAppLaunchState.hasOnloaded) && (paramMiniAppLaunchState.eventTime.containsKey(Integer.valueOf(121))))
     {
       long l1 = ((Long)paramMiniAppLaunchState.eventTime.get(Integer.valueOf(121))).longValue();
+      boolean bool = paramMiniAppLaunchState.eventTime.containsKey(Integer.valueOf(611));
       paramMiniAppLaunchState.eventTime.remove(Integer.valueOf(121));
       long l2 = paramLong - l1;
       paramInt = WnsConfig.getConfig("qqminiapp", "mini_app_report_white_screen_check", 5000);
-      if ((l1 > 0L) && (l2 > paramInt))
+      if ((l1 > 0L) && (l2 > paramInt) && (!bool))
       {
-        QMLog.e("MiniReportManager", "detect white_screen. after routedone time:" + l2);
+        QMLog.e("MiniReportManager", "detect white_screen. after routedone time:" + l2 + " domreadyTime:" + bool);
         MiniProgramLpReportDC04266.report(paramMiniAppInfo, 150, paramString1, paramString2, "", 0, paramString3, 0L, "", paramLong, "route_done", String.valueOf(l2), "", "", paramString4);
         if (WnsConfig.getConfig("qqminiapp", "mini_app_report_white_screen_enable_clear_apkg_cache", 0) == 1)
         {

@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$initCallback$1", "Landroid/view/View$OnAttachStateChangeListener;", "onViewAttachedToWindow", "", "v", "Landroid/view/View;", "onViewDetachedFromWindow", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qou
-  implements View.OnAttachStateChangeListener
+class qou
+  implements ViewBase.OnClickListener
 {
-  public void onViewAttachedToWindow(@Nullable View paramView)
-  {
-    pkp.a().a(qor.a(this.a));
-  }
+  qou(qos paramqos, qfw paramqfw, Container paramContainer) {}
   
-  public void onViewDetachedFromWindow(@Nullable View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    pkp.a().b(qor.a(this.a));
+    paramViewBase = this.jdField_a_of_type_Qfw.a();
+    if (paramViewBase != null)
+    {
+      pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
+      pqb.b(paramViewBase, 0);
+      qos.b(this.jdField_a_of_type_Qos, true);
+    }
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import autn;
+import avzm;
 import java.util.ArrayList;
 
 public class AddFriendVerifyActivity$StartRecommendPageTask
@@ -25,7 +25,7 @@ public class AddFriendVerifyActivity$StartRecommendPageTask
     {
       localObject = new ArrayList(1);
       ((ArrayList)localObject).add("admin.qun.qq.com");
-      autn.a("closeJoinWebView", null, (ArrayList)localObject, null);
+      avzm.a("closeJoinWebView", null, (ArrayList)localObject, null);
     }
     Object localObject = new Intent();
     ((Intent)localObject).setAction("start_recomend_page");

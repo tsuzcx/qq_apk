@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
-public class aicd
-  extends SosoInterface.OnLocationListener
+class aicd
+  implements AbsListView.OnScrollListener
 {
-  public aicd(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aicd(aibs paramaibs) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Amhn != null) && (this.a.jdField_a_of_type_Amhn.a() != 0) && (this.a.jdField_a_of_type_Amhn.a()))
+    {
+      this.a.jdField_a_of_type_Amhn.b();
+      aibs.a(this.a, this.a.jdField_a_of_type_Amhn.a(), 10);
     }
-    PublicView.a(this.a, true);
-    PublicView.a(this.a, paramSosoLbsInfo);
   }
 }
 

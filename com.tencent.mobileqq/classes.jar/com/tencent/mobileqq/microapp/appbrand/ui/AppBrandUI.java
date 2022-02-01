@@ -12,8 +12,8 @@ import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
-import bbgo;
-import bbgp;
+import bcng;
+import bcnh;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
@@ -38,8 +38,8 @@ public class AppBrandUI
   private FrameLayout d;
   private boolean e;
   private boolean f;
-  private bbgo g;
-  private bbgp h = new a(this);
+  private bcng g;
+  private bcnh h = new a(this);
   
   private void a()
   {
@@ -180,7 +180,7 @@ public class AppBrandUI
     if (this.a == null) {
       this.a = new j(this, this.d);
     }
-    this.g = new bbgo(this.d);
+    this.g = new bcng(this.d);
     this.g.a(this.h);
     return true;
   }

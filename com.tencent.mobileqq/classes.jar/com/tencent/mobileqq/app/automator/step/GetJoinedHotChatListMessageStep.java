@@ -2,6 +2,7 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.HotChatInfo;
@@ -16,7 +17,7 @@ public class GetJoinedHotChatListMessageStep
   {
     if (HotChatManager.a(this.a.app))
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.a.app.getManager(60);
+      HotChatManager localHotChatManager = (HotChatManager)this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       Object localObject = localHotChatManager.b();
       if (QLog.isColorLevel())
       {

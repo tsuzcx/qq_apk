@@ -1,16 +1,16 @@
-public class bmxj
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
+class bmxj
+  implements Observer<Boolean>
 {
-  String a = "";
-  String b = "";
-  String c = "";
+  bmxj(bmxa parambmxa) {}
   
-  public bmxj() {}
-  
-  public bmxj(String paramString1, String paramString2, String paramString3)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    bnrh.b(this.a.a, "getBeautyFilterPanelVisibleLiveData--isShow=" + paramBoolean);
+    bmxa.d(this.a, Boolean.TRUE.equals(paramBoolean));
+    bmxa.c(this.a);
   }
 }
 

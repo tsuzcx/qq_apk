@@ -1,30 +1,23 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
-class asuk
-  implements View.OnClickListener
+public class asuk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  asuk(asuj paramasuj) {}
+  public asuk(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = asuj.a(this.a);
-    String str = this.a.jdField_a_of_type_Asst.k();
-    if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((asej)localObject).a(this.a.jdField_a_of_type_AndroidAppActivity, str, asuj.a(this.a))))
-    {
-      int i = ataw.b(this.a.jdField_a_of_type_Asst.e());
-      bcef.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      localObject = this.a.jdField_a_of_type_Asst.a();
-      if (localObject != null)
-      {
-        ((asri)localObject).a();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
-      }
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    int i = (int)(-ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView) * f);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
   }
 }
 

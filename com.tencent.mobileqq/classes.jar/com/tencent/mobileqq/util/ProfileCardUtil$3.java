@@ -4,9 +4,10 @@ import QQService.CARDSETTYPE;
 import SummaryCardTaf.SSummaryCardSetReq;
 import SummaryCardTaf.cardDiyComplicatedInfo;
 import SummaryCardTaf.cardDiyTextInfo;
-import amov;
 import android.text.TextUtils;
+import anri;
 import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ProfileCardUtil$3
@@ -25,14 +26,14 @@ public final class ProfileCardUtil$3
         localObject = new cardDiyTextInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
       }
     }
-    localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_Long, "8.4.8", 109L, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long, (cardDiyTextInfo)localObject, this.jdField_d_of_type_JavaLangString, new cardDiyComplicatedInfo(this.e));
+    localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_Long, "8.4.10", 109L, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long, (cardDiyTextInfo)localObject, this.jdField_d_of_type_JavaLangString, new cardDiyComplicatedInfo(this.e));
     localUniPacket = new UniPacket(true);
     localUniPacket.setEncodeName("utf-8");
     localUniPacket.setFuncName("set");
     localUniPacket.setServantName("MCardSvc");
     localUniPacket.put("req", localObject);
     localObject = localUniPacket.encode();
-    ((amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte[])localObject);
+    ((anri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte[])localObject);
   }
 }
 

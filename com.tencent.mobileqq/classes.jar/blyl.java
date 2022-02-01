@@ -1,17 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
-class blyl
-  implements View.OnClickListener
+public class blyl
+  implements DialogInterface.OnClickListener
 {
-  blyl(blyk paramblyk) {}
+  public blyl(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    blyk.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

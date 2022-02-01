@@ -1,32 +1,72 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 class amle
-  implements View.OnClickListener
+  extends DefaultHandler
 {
-  amle(amlb paramamlb, String paramString, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString != null))
-    {
-      String str = "https://lgame.qq.com/html/feedback/index?gameid=" + this.jdField_a_of_type_Int + "&_wv=2&openid=" + this.jdField_a_of_type_JavaLangString;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Amlb.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Amlb.a.getActivity(), str, -1L, localIntent, false, -1);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = paramArrayOfChar.toString();
+    QLog.d("SAXForHandler", 4, "characters: " + paramArrayOfChar);
+  }
+  
+  public void endDocument()
+  {
+    QLog.d("SAXForHandler", 4, "endDocument");
+    super.endDocument();
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    QLog.d("SAXForHandler", 4, "endElement uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+  }
+  
+  public void startDocument()
+  {
+    QLog.d("SAXForHandler", 4, "startDocument");
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    int j = 0;
+    int i = 0;
+    QLog.d("SAXForHandler", 4, "startElement: uri:" + paramString1 + " localName:" + paramString2 + " qName:" + paramString3);
+    if ("config".equals(paramString2)) {
+      while (i < paramAttributes.getLength())
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + " value: " + this.jdField_a_of_type_Int);
+        i += 1;
+      }
     }
-    for (;;)
+    if ("Elem".equals(paramString2))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setGameIdAndOpenId] openId is null or is empty");
+      i = j;
+      while (i < paramAttributes.getLength())
+      {
+        paramString1 = paramAttributes.getValue(i);
+        paramString3 = paramAttributes.getLocalName(i);
+        QLog.d("SAXForHandler", 4, "startElement: localName:" + paramString2 + "name: " + paramString3 + " url: " + paramString1);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+        i += 1;
+      }
     }
   }
 }

@@ -1,31 +1,17 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agwh
-  implements agwi
+class agwh
+  extends ahaa
 {
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  agwh(agvm paramagvm)
   {
-    int i = 1;
-    if (agix.a(paramMessageRecord)) {
-      if (paramMessageRecord.istroop != 0) {
-        break label41;
-      }
-    }
-    for (;;)
-    {
-      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800B154", "0X800B154", i, 0, "", "", "", "");
-      return;
-      label41:
-      if (paramMessageRecord.istroop == 1) {
-        i = 2;
-      } else if (ChatActivityUtils.a(paramMessageRecord.istroop)) {
-        i = 3;
-      } else {
-        i = 4;
-      }
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahjx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

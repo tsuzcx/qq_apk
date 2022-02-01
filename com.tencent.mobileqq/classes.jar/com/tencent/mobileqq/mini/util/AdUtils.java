@@ -14,8 +14,8 @@ import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.UserInfo;
 import NS_MINI_INTERFACE.INTERFACE.DeviceInfo;
 import NS_MINI_INTERFACE.INTERFACE.Location;
-import abrk;
-import abrl;
+import achn;
+import acho;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -63,10 +63,10 @@ public class AdUtils
     localObject2 = new ArrayList();
     try
     {
-      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
+      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(achn.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
       if ((paramString == null) || (paramString.isEmpty()))
       {
-        abrl.d("AdUtils", "convertJson2GdtAds() posAdInfos.isEmpty");
+        acho.d("AdUtils", "convertJson2GdtAds() posAdInfos.isEmpty");
         return null;
       }
       if (localObject2 != null) {
@@ -91,7 +91,7 @@ public class AdUtils
             }
           }
           paramString = (String)localObject2;
-          abrl.d("AdUtils", "convertJson2GdtAds() adInfos.isEmpty");
+          acho.d("AdUtils", "convertJson2GdtAds() adInfos.isEmpty");
         }
         catch (Exception localException1) {}
       }
@@ -105,7 +105,7 @@ public class AdUtils
         paramString = (String)localObject2;
       }
     }
-    abrl.d("AdUtils", "convertJson2GdtAds", localException1);
+    acho.d("AdUtils", "convertJson2GdtAds", localException1);
     return paramString;
     label147:
     paramString = (String)localObject2;
@@ -132,7 +132,7 @@ public class AdUtils
     if (localObject2 != null)
     {
       paramString = (String)localObject2;
-      abrl.a("AdUtils", "convertJson2GdtAds() result = [" + Arrays.toString(((List)localObject2).toArray()) + "]");
+      acho.a("AdUtils", "convertJson2GdtAds() result = [" + Arrays.toString(((List)localObject2).toArray()) + "]");
     }
     return localObject2;
   }
@@ -201,7 +201,7 @@ public class AdUtils
       localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;
       localObject2 = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
       if (localObject1 == null) {
-        break label695;
+        break label720;
       }
       bool = true;
       QLog.i("AdUtils", 2, bool);
@@ -246,13 +246,13 @@ public class AdUtils
           localObject2 = MD5Utils.toMD5((String)localObject2);
           localObject3 = localDeviceInfo.md5_android_id;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label701;
+            break label726;
           }
         }
       }
     }
-    label695:
-    label701:
+    label720:
+    label726:
     for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
     {
       ((PBStringField)localObject3).set((String)localObject2);
@@ -267,6 +267,10 @@ public class AdUtils
           paramContext = "";
         }
         ((PBStringField)localObject3).set(paramContext);
+      }
+      paramContext = ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_ext.get();
+      if (!TextUtils.isEmpty(paramContext)) {
+        localDeviceInfo.device_ext.set(paramContext);
       }
       QLog.i("AdUtils", 1, "oaid = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).oaid.get() + ", taid_ticket = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get() + ", aid_ticket = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get() + ", client_ipv4 = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
       return localDeviceInfo;

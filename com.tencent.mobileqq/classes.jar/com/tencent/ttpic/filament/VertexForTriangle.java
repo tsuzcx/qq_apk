@@ -1,6 +1,6 @@
 package com.tencent.ttpic.filament;
 
-class VertexForTriangle
+public class VertexForTriangle
 {
   public final int color;
   public final float x;

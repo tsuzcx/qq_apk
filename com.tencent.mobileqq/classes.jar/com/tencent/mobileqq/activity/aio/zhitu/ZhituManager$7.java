@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahtj;
+import aioi;
 
 public class ZhituManager$7
   implements Runnable
 {
-  public ZhituManager$7(ahtj paramahtj, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
+  public ZhituManager$7(aioi paramaioi, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    ahtj.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    aioi.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import amsw;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 
 class AddRequestActivity$1
@@ -11,7 +12,7 @@ class AddRequestActivity$1
   
   public void run()
   {
-    Card localCard = ((amsw)this.this$0.app.getManager(51)).b(this.this$0.a);
+    Card localCard = ((anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.a);
     this.this$0.runOnUiThread(new AddRequestActivity.1.1(this, localCard));
   }
 }

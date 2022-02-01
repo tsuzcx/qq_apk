@@ -1,41 +1,20 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-
-public class woc
-  extends woe
+class woc
+  implements wnn
 {
-  public ErrorMessage a;
+  private long jdField_a_of_type_Long;
   
-  public woc(wod paramwod, @Nullable ErrorMessage paramErrorMessage)
+  woc(woa paramwoa) {}
+  
+  public void a()
   {
-    super(paramwod);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      ykv.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
-  }
-  
-  public boolean b()
-  {
-    return (!a()) && (!c());
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
-  }
-  
-  public String toString()
-  {
-    return "fg{g=" + this.jdField_a_of_type_Wod + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

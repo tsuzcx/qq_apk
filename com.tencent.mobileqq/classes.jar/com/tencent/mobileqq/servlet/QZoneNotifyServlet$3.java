@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import bboz;
+import bcvt;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public final class QZoneNotifyServlet$3
   {
     try
     {
-      SosoInterface.startLocation(bboz.a());
+      SosoInterface.startLocation(bcvt.a());
       return;
     }
     catch (Exception localException)

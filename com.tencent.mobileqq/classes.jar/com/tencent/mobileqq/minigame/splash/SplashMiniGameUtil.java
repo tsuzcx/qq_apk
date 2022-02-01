@@ -376,7 +376,7 @@ public class SplashMiniGameUtil
           deleteConfig(paramString);
         }
       }
-      BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.4.8.4810").commit();
+      BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.4.10.4875").commit();
       SplashMiniGameStarter.refresh();
     }
   }

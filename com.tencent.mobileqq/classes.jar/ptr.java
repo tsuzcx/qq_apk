@@ -1,72 +1,106 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ptr
-  implements BusinessObserver
+public abstract class ptr<K, D>
+  extends RecyclerView.Adapter<blij>
 {
-  ptr(pto parampto, AdvertisementInfo paramAdvertisementInfo) {}
+  protected int a;
+  protected Context a;
+  protected VafContext a;
+  protected RecyclerViewWithHeaderFooter a;
+  protected List<D> a;
+  protected Map<Integer, String> a;
+  protected ConcurrentHashMap<K, D> a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ptr(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
   {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "type = " + paramInt + " is success:" + paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qxj();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
+    piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a());
+    this.jdField_a_of_type_AndroidContentContext = paramActivity;
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
+  }
+  
+  public VafContext a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  }
+  
+  protected D a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    if (paramBoolean) {}
-    try
+    return null;
+  }
+  
+  protected String a()
+  {
+    return "dynamic_feeds_" + this.jdField_a_of_type_Int;
+  }
+  
+  public ConcurrentHashMap<K, D> a()
+  {
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
+      localConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    }
+    return localConcurrentHashMap;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+  }
+  
+  public void a(K paramK, D paramD)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramK, paramD);
+    }
+  }
+  
+  public void a(List<D> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody;
-      if (paramBundle != null)
-      {
-        localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if (!localWebSsoResponseBody.ret.has()) {
-          break label253;
-        }
-      }
-      label253:
-      for (paramInt = localWebSsoResponseBody.ret.get();; paramInt = -1)
-      {
-        if (paramInt == 0)
-        {
-          paramBundle = localWebSsoResponseBody.data.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementInfoModule", 2, "back json " + paramBundle);
-          }
-          paramBundle = new JSONObject(paramBundle);
-          paramInt = i;
-          if (paramBundle.has("ret")) {
-            paramInt = paramBundle.getInt("ret");
-          }
-          if (paramInt == 0)
-          {
-            paramBundle = paramBundle.optJSONArray("data");
-            if ((paramBundle != null) && (paramBundle.length() > 0))
-            {
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson = paramBundle.getJSONObject(0).toString();
-              if (QLog.isColorLevel()) {
-                QLog.d("AdvertisementInfoModule", 2, "back  data json " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson);
-              }
-              this.jdField_a_of_type_Pto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-            }
-          }
-        }
-        return;
-      }
-      return;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
-    catch (Exception paramBundle)
+  }
+  
+  public void b(List<D> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramBundle.printStackTrace();
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyItemRangeInserted(i, paramList.size());
     }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
 }
 

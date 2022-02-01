@@ -1,28 +1,65 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class wbh
-  extends way
+class wbh
+  implements INetEngine.INetEngineListener
 {
-  public int a;
-  public String a;
-  public List<VideoCollectionItem> a;
-  public String b;
-  public boolean e = true;
+  wbh(wbg paramwbg) {}
   
-  public wbh(String paramString, ErrorMessage paramErrorMessage)
+  public void onResp(NetResp paramNetResp)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramNetResp.mResult == 3) {}
+    wbk localwbk;
+    do
+    {
+      do
+      {
+        return;
+        localObject = ((HttpNetReq)paramNetResp.mReq).getUserData();
+      } while ((localObject == null) || (!(localObject instanceof wbk)));
+      localwbk = (wbk)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((wbk)localObject).jdField_a_of_type_JavaLangString);
+      localwbk.jdField_b_of_type_Long = (System.currentTimeMillis() - localwbk.jdField_a_of_type_Long);
+    } while (localwbk.jdField_a_of_type_Wbd == null);
+    Object localObject = localwbk.jdField_a_of_type_Wbd;
+    if (paramNetResp.mResult == 0) {}
+    for (paramNetResp = new ErrorMessage(0, "");; paramNetResp = new ErrorMessage(paramNetResp.mErrCode, paramNetResp.mErrDesc))
+    {
+      ((wbd)localObject).a(localwbk, paramNetResp);
+      return;
+    }
   }
   
-  public String toString()
+  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
   {
-    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    ??? = ???.getUserData();
+    if ((??? != null) && ((??? instanceof wbk)))
+    {
+      wbk localwbk = (wbk)???;
+      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      synchronized (PreloadDownloader.a)
+      {
+        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
+          {
+            wbo localwbo = (wbo)((WeakReference)localIterator.next()).get();
+            if (localwbo != null) {
+              localwbo.a(localwbk.jdField_b_of_type_JavaLangString, localwbk.jdField_a_of_type_Int, i, localwbk);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

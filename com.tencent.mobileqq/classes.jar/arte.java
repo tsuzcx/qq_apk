@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class arte
-  implements View.OnClickListener
 {
-  public arte(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
+  private long a;
   
-  public void onClick(View paramView)
+  public long a()
   {
-    this.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a = paramLong;
   }
 }
 

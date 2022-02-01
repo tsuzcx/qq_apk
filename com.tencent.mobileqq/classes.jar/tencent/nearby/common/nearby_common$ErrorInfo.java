@@ -22,7 +22,7 @@ public final class nearby_common$ErrorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.nearby.common.nearby_common.ErrorInfo
  * JD-Core Version:    0.7.0.1
  */

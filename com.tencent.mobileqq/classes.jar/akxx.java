@@ -1,6 +1,17 @@
-final class akxx
+import android.os.Bundle;
+import android.os.ResultReceiver;
+
+class akxx
+  implements akud
 {
-  public static final akxv a = new akxv(null);
+  akxx(akxq paramakxq, ResultReceiver paramResultReceiver) {}
+  
+  public void a(String paramString1, String paramString2, aktx paramaktx)
+  {
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+  }
 }
 
 

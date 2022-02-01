@@ -1,31 +1,31 @@
 package com.tencent.avgame.gameroom;
 
 import android.os.Handler;
-import bijk;
+import bjum;
 import com.tencent.qphone.base.util.QLog;
-import mzl;
-import ncl;
+import nfc;
+import nii;
 
 public class GameRoomPresenterImp$3
   implements Runnable
 {
-  public GameRoomPresenterImp$3(ncl paramncl) {}
+  public GameRoomPresenterImp$3(nii paramnii) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("GameRoomPresenterImp", 2, "mRefreshGameListRunnable run");
     }
-    mzl.a().d();
+    nfc.a().d();
     this.this$0.a.sendEmptyMessage(4);
-    long l = mzl.a().a();
+    long l = nfc.a().a();
     if (QLog.isColorLevel()) {
       QLog.i("GameRoomPresenterImp", 2, "mRefreshGameListRunnable run and next nextRefreshInterval is " + l);
     }
     if (l == 0L)
     {
-      ncl.a(this.this$0);
-      if (ncl.b(this.this$0) < 5) {
+      nii.a(this.this$0);
+      if (nii.b(this.this$0) < 5) {
         break label105;
       }
     }
@@ -33,9 +33,9 @@ public class GameRoomPresenterImp$3
     while (l == 9223372036854775807L)
     {
       return;
-      ncl.a(this.this$0, 0);
+      nii.a(this.this$0, 0);
     }
-    bijk.a().postDelayed(this, l * 1000L + 2000L);
+    bjum.a().postDelayed(this, l * 1000L + 2000L);
   }
 }
 

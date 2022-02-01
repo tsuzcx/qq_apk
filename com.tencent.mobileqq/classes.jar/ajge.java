@@ -1,33 +1,27 @@
-import android.view.KeyEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajge
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements ajdu
 {
-  protected ajge(ajgd paramajgd) {}
+  public ajge(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramInt == 3)
+    if (!(paramViewHolder instanceof ajfc)) {}
+    do
     {
-      this.a.a();
-      return true;
-    }
-    return false;
+      return;
+      paramView = (ajfc)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopNotifyAndRecommendView.a(this.a, paramView);
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
-      }
-      return true;
-    }
     return false;
   }
 }

@@ -1,197 +1,142 @@
-import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 
-public class yve
-  implements bjoe
+class yve
+  extends LinearLayout
 {
-  public yve(QRCardActivity paramQRCardActivity, boolean[] paramArrayOfBoolean, String paramString1, Context paramContext, String paramString2) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
   
-  @SuppressLint({"NewApi"})
-  public void OnClick(View paramView, int paramInt)
+  public yve(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.c) {}
-    do
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.c = (this.jdField_a_of_type_Int / this.b);
+    a();
+  }
+  
+  private void a()
+  {
+    setOrientation(0);
+    setGravity(17);
+    int j = DisplayUtil.dip2px(getContext(), 3.0F);
+    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
+    int i = 0;
+    while (i < this.b)
     {
-      return;
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.c = true;
-      Object localObject;
-      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 1)
-      {
-        switch (paramInt)
-        {
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bjnw.dismiss();
-          return;
-          paramView = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.app.getAccount();
-          localObject = (String)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.f.get(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.k);
-          if (!TextUtils.isEmpty(paramView))
-          {
-            localObject = "https://w.mail.qq.com/cgi-bin/login?target=mobileqqwrite&fwd=mq&fun=from3g&uin=" + paramView + "&to=" + (String)localObject;
-            String str = ((String)localObject).toLowerCase();
-            if (str.startsWith("www.")) {
-              paramView = "https://" + (String)localObject;
-            }
-            for (;;)
-            {
-              localObject = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
-              ((Intent)localObject).putExtra("url", paramView);
-              ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
-              ((Intent)localObject).putExtra("injectrecommend", false);
-              this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity((Intent)localObject);
-              break;
-              if (str.startsWith("https:"))
-              {
-                paramView = "https" + ((String)localObject).substring(5);
-              }
-              else
-              {
-                paramView = (View)localObject;
-                if (str.startsWith("http:")) {
-                  paramView = "http" + ((String)localObject).substring(4);
-                }
-              }
-            }
-            paramView = (String)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.f.get(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.k);
-            localObject = Uri.parse("mailto:" + paramView);
-            if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getPackageManager().queryIntentActivities(new Intent("android.intent.action.SENDTO", (Uri)localObject), 65536).size() > 0)
-            {
-              localObject = new Intent("android.intent.action.SENDTO");
-              ((Intent)localObject).setData(Uri.parse("mailto:" + paramView));
-              this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity((Intent)localObject);
-            }
-            else
-            {
-              localObject = new Intent("android.intent.action.SEND");
-              ((Intent)localObject).putExtra("android.intent.extra.EMAIL", paramView);
-              ((Intent)localObject).putExtra("android.intent.extra.TEXT", "The email body text");
-              ((Intent)localObject).setType("text/plain");
-              try
-              {
-                this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(Intent.createChooser((Intent)localObject, "Choose Email Client"));
-              }
-              catch (ActivityNotFoundException paramView) {}
-              if (QLog.isColorLevel()) {
-                QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_SEND do not exist");
-              }
-            }
-          }
-        }
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 1)
-      {
-        switch (paramInt)
-        {
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bjnw.dismiss();
-          return;
-          if (this.jdField_a_of_type_JavaLangString.contains("-")) {
-            this.jdField_a_of_type_JavaLangString.replaceAll("-", "");
-          }
-          if (this.jdField_a_of_type_JavaLangString.contains(" ")) {
-            this.jdField_a_of_type_JavaLangString.replaceAll(" ", "");
-          }
-          paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-          try
-          {
-            this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-          }
-          catch (ActivityNotFoundException paramView) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_DIAL do not exist");
-          }
-        }
-      }
-      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 1)
-      {
-        paramView = new HashMap();
-        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.c.isEmpty()) {
-          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.c);
-        }
-        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.f.isEmpty()) {
-          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.f);
-        }
-        if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.e != null) {
-          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.e);
-        }
-        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.d.isEmpty()) {
-          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Yyh.d);
-        }
-        switch (paramInt)
-        {
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bjnw.dismiss();
-          return;
-          localObject = new Intent("android.intent.action.INSERT");
-          ((Intent)localObject).setType("vnd.android.cursor.dir/person");
-          ((Intent)localObject).setType("vnd.android.cursor.dir/contact");
-          ((Intent)localObject).setType("vnd.android.cursor.dir/raw_contact");
-          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.a((Intent)localObject, paramView);
-          continue;
-          localObject = new Intent("android.intent.action.INSERT_OR_EDIT");
-          ((Intent)localObject).setType("vnd.android.cursor.item/person");
-          ((Intent)localObject).setType("vnd.android.cursor.item/contact");
-          ((Intent)localObject).setType("vnd.android.cursor.item/raw_contact");
-          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.a((Intent)localObject, paramView);
-        }
-      }
-    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 1);
-    switch (paramInt)
+      View localView = LayoutInflater.from(getContext()).inflate(2131561711, null);
+      localView.setLayoutParams(new ViewGroup.LayoutParams(this.c - j * 2, this.c - j * 2));
+      ((ImageView)localView.findViewById(2131370507)).setPadding(k, k, k, k);
+      addView(localView);
+      i += 1;
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    int i = 0;
+    int j;
+    for (;;)
     {
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(yuu paramyuu, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 * this.b;
+    label31:
+    Object localObject3;
+    URLImageView localURLImageView;
+    TextView localTextView;
+    Object localObject2;
+    String str;
+    Object localObject1;
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramInt1 = paramyuu.b();
+      a(paramInt1 - i);
+      paramInt2 = i;
+      if (paramInt2 >= paramInt1) {
+        return;
+      }
+      localObject3 = getChildAt(paramInt2 - i);
+      localURLImageView = (URLImageView)((View)localObject3).findViewById(2131370507);
+      localTextView = (TextView)((View)localObject3).findViewById(2131370523);
+      localObject2 = (ProgressBar)((View)localObject3).findViewById(2131370521);
+      str = paramyuu.b(paramInt2);
+      localObject1 = paramyuu.a(paramInt2);
+      if (localObject1 != null) {
+        break label137;
+      }
+      ykq.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramyuu.toString() });
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (this.b.contains("-")) {
-        this.b.replaceAll("-", "");
-      }
-      if (this.b.contains(" ")) {
-        this.b.replaceAll(" ", "");
-      }
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.b));
-      try
+      paramInt2 += 1;
+      break label31;
+      paramInt1 = this.b + i;
+      break;
+      label137:
+      ((View)localObject3).setContentDescription(str);
+      localTextView.setText(str);
+      localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localURLImageView.setTag(2131378482, Integer.valueOf(paramInt2));
+      localObject3 = (Boolean)localURLImageView.getTag(2131378460);
+      if ((localObject3 != null) && (((Boolean)localObject3).booleanValue()) && (((String)localObject1).equals(localURLImageView.getTag(2131378495))))
       {
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        ((ProgressBar)localObject2).setVisibility(4);
       }
-      catch (ActivityNotFoundException paramView) {}
-      if (QLog.isColorLevel())
+      else
       {
-        QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_DIAL do not exist");
-        continue;
-        if (!TextUtils.isEmpty(this.b)) {
-          if (Build.VERSION.SDK_INT < 11)
-          {
-            ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(this.b);
-          }
-          else
-          {
-            ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(this.b);
-            continue;
-            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.b, true);
-            continue;
-            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.b, true);
-          }
+        localURLImageView.setTag(2131378495, localObject1);
+        localURLImageView.setTag(2131378460, Boolean.valueOf(false));
+        ((ProgressBar)localObject2).setVisibility(0);
+        localObject2 = new yvf((String)localObject1, localURLImageView, (ProgressBar)localObject2);
+        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
+        localObject3 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+        ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
+        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
+        if (((URLDrawable)localObject1).getStatus() == 1) {
+          ((yvf)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
         }
+        localURLImageView.setImageDrawable((Drawable)localObject1);
       }
     }
   }

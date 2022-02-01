@@ -1,24 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class afiv
   implements DialogInterface.OnClickListener
 {
-  afiv(afit paramafit, String paramString) {}
+  afiv(afit paramafit, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((amrb)this.jdField_a_of_type_Afit.a.app.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Afit.a.app.getProxyManager().a();
-    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.delRecentUser(localRecentUser);
-    }
-    ((amqx)this.jdField_a_of_type_Afit.a.app.getBusinessHandler(6)).a();
-    this.jdField_a_of_type_Afit.a.finish();
+    bdla.b(this.jdField_a_of_type_Afit.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afit.a.a, "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.service;
 
 import android.os.Bundle;
-import appy;
-import bbjg;
+import aqtc;
+import bcpy;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PeakJceServiceBase$1
   implements Runnable
 {
-  public PeakJceServiceBase$1(bbjg parambbjg, ToServiceMsg paramToServiceMsg, appy paramappy, Class paramClass) {}
+  public PeakJceServiceBase$1(bcpy parambcpy, ToServiceMsg paramToServiceMsg, aqtc paramaqtc, Class paramClass) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class PeakJceServiceBase$1
     }
     try
     {
-      this.this$0.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Appy, this.jdField_a_of_type_JavaLangClass);
+      this.this$0.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Aqtc, this.jdField_a_of_type_JavaLangClass);
       return;
     }
     catch (Exception localException)

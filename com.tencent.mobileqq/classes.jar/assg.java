@@ -1,17 +1,9 @@
-class assg
-  implements aszj
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+
+public abstract interface assg<V extends View>
 {
-  assg(assf paramassf) {}
-  
-  public void onNo() {}
-  
-  public void onYes()
-  {
-    assd.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
-  }
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 

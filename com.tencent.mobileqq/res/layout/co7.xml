@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="56.0dip"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ajp" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:layout_marginBottom="-1.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/lyk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <com.tencent.mobileqq.widget.QQBlurView android:id="@id/n8m" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <com.tencent.widget.PatchedButton android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/max" android:background="@drawable/hfv" android:clickable="true" android:layout_width="60.0dip" android:layout_height="29.0dip" android:layout_marginRight="16.0dip" android:text="@string/wa2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <com.tencent.widget.ThemeImageView android:id="@id/maw" android:clickable="false" android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_marginLeft="13.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@null" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="30.0dip" android:layout_toLeftOf="@id/max" android:layout_toRightOf="@id/maw" android:layout_centerVertical="true">
-        <TextView android:textSize="14.0sp" android:textColor="@color/skin_aio_listen_together_black" android:ellipsize="end" android:id="@id/mb0" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="together_panel_title" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:ellipsize="end" android:id="@id/maz" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="together_panel_subtitle" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/mb0" android:layout_alignParentLeft="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/bp" android:id="@id/dr5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fq_" android:contentDescription="@null" />
+</LinearLayout>

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper;
 
-import ahss;
+import ainr;
 
 public class VoiceTextEditViewHelper$3
   implements Runnable
 {
-  public VoiceTextEditViewHelper$3(ahss paramahss) {}
+  public VoiceTextEditViewHelper$3(ainr paramainr) {}
   
   public void run()
   {
-    ahss.a(this.this$0);
+    ainr.a(this.this$0);
   }
 }
 

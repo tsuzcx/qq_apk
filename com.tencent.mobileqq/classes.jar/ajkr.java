@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
 
 public class ajkr
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public ajkr(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public ajkr(DeviceFragment paramDeviceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onPullIpad()
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

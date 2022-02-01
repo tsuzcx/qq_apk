@@ -1,18 +1,7 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class qbi
-  implements ViewBase.OnClickListener
+public class qbi
 {
-  qbi(qbf paramqbf, Context paramContext, rdl paramrdl, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    rwv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rdl.a);
-    qbf.a(this.jdField_a_of_type_Qbf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-  }
+  public int a;
+  public String a;
 }
 
 

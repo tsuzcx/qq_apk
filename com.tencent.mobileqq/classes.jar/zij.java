@@ -1,35 +1,48 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import java.util.List;
 
-public class zij
-  extends zaj
+class zij
+  extends RecyclerView.AdapterDataObserver
 {
-  public zij(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
+  zij(zii paramzii) {}
+  
+  public void onChanged()
   {
-    super(paramBundle);
+    this.a.notifyDataSetChanged();
+    if (zii.a(this.a) != null) {
+      zii.a(this.a).a(zii.a(this.a));
+    }
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yzp paramyzp)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    return SubscribePersonalDetailFragment.a(this.a);
+    this.a.notifyItemRangeChanged(zii.a(this.a).size() + paramInt1, paramInt2);
+    if (zii.a(this.a) != null) {
+      zii.a(this.a).a(zii.a(this.a));
+    }
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(yzu paramyzu)
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    if ((paramyzu.c()) || (paramyzu.d()))
-    {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).c() == 1))
-      {
-        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
-        SimpleEventBus.getInstance().dispatchEvent(localSubDraftChangeEvent);
-      }
-      SubscribePersonalDetailFragment.a(this.a, paramyzu);
+    this.a.notifyItemRangeInserted(zii.a(this.a).size() + paramInt1, paramInt2);
+    if (zii.a(this.a) != null) {
+      zii.a(this.a).a(zii.a(this.a));
+    }
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.notifyItemMoved(zii.a(this.a).size() + paramInt1, zii.a(this.a).size() + paramInt2);
+    if (zii.a(this.a) != null) {
+      zii.a(this.a).a(zii.a(this.a));
+    }
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(zii.a(this.a).size() + paramInt1, paramInt2);
+    if (zii.a(this.a) != null) {
+      zii.a(this.a).a(zii.a(this.a));
     }
   }
 }

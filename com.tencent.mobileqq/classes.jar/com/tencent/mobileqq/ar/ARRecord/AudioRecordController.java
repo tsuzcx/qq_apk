@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aoav;
+import apdx;
 import java.lang.ref.WeakReference;
 
 public abstract class AudioRecordController
   extends Thread
 {
-  public WeakReference<aoav> a;
+  public WeakReference<apdx> a;
   
-  public AudioRecordController(aoav paramaoav)
+  public AudioRecordController(apdx paramapdx)
   {
     super("AudioRecordThread");
-    this.a = new WeakReference(paramaoav);
+    this.a = new WeakReference(paramapdx);
   }
   
   public abstract void a();

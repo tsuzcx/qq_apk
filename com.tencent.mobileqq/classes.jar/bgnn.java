@@ -1,8 +1,4 @@
-public abstract interface bgnn
-{
-  public abstract void a(bgnk parambgnk);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnn

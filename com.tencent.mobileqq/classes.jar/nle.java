@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.avgame.gameroom.stage.StageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class nle
-  implements bfzz<Integer>
+  implements nhz
 {
-  public nle(PoiMapActivity paramPoiMapActivity) {}
+  public nle(StageView paramStageView) {}
   
-  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    parambfzt = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
-    parambfzt.bottomMargin = (this.a.q + this.a.t);
-    PoiMapActivity.c(this.a).setLayoutParams(parambfzt);
+    if (QLog.isColorLevel()) {
+      QLog.d("StageView", 2, "COUNT_DOWN_5S_JSON onLoad lottieDrawable = " + paramLottieDrawable);
+    }
+    if (paramLottieDrawable != null)
+    {
+      this.a.a = paramLottieDrawable;
+      StageView.a(this.a);
+    }
   }
 }
 

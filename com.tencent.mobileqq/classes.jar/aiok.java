@@ -1,35 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import mqq.os.MqqHandler;
 
-public class aiok
-  implements Handler.Callback
+class aiok
+  implements arzy
 {
-  public aiok(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  aiok(aioi paramaioi, MqqHandler paramMqqHandler) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    switch (paramInt)
     {
-      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
+    }
+    do
+    {
+      do
       {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-        }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
-      }
-    }
-    else {
-      return false;
-    }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-    }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
-    return false;
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
   }
 }
 

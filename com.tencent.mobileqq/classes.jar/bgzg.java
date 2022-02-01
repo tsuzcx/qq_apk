@@ -1,16 +1,8 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.graphics.Bitmap;
 
 public abstract interface bgzg
-  extends bguj
 {
-  public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract String c();
+  public abstract void a(int paramInt1, String paramString, int paramInt2, Bitmap paramBitmap);
 }
 
 

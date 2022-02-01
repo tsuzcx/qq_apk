@@ -1,54 +1,21 @@
-import com.tencent.mobileqq.data.MedalList;
-import com.tencent.mobileqq.data.MedalList.Info;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhij
 {
-  private MedalList a;
-  
-  public int a()
+  public static void a(Activity paramActivity, long paramLong)
   {
-    if (this.a != null) {
-      return this.a.infoList.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
     }
-    return 0;
+    ForwardSdkShareOption.a(paramActivity, false, "shareToTroopBar", paramLong);
   }
   
-  public int a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
-    }
-    return 0;
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
-    }
-    return null;
-  }
-  
-  public void a(MedalList paramMedalList)
-  {
-    this.a = paramMedalList;
-  }
-  
-  public int b(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).isRemind;
-    }
-    return 0;
-  }
-  
-  public int c(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).tipsTimes;
-    }
-    return 0;
+    bdla.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
   }
 }
 

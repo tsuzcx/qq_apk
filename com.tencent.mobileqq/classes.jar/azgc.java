@@ -1,14 +1,14 @@
-import androidx.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-public abstract interface azgc
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azgc
+  implements View.OnClickListener
 {
-  public abstract void a(@Nullable Object paramObject);
+  public static final azgc a = new azgc();
   
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public final void onClick(View paramView) {}
 }
 
 

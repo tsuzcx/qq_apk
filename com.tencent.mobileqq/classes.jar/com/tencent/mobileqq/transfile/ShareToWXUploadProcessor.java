@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import ayeo;
-import ayep;
+import azla;
+import azlb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
@@ -140,12 +140,12 @@ public class ShareToWXUploadProcessor
     super.onSuccess();
     if (this.mUiRequest.mUpCallBack != null)
     {
-      ayep localayep = new ayep();
-      localayep.jdField_a_of_type_Int = 0;
-      localayep.jdField_a_of_type_Long = this.mFileSize;
-      localayep.d = this.mMd5Str;
-      localayep.e = this.file.orgiDownUrl;
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      azlb localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = 0;
+      localazlb.jdField_a_of_type_Long = this.mFileSize;
+      localazlb.d = this.mMd5Str;
+      localazlb.e = this.file.orgiDownUrl;
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
     }
     for (;;)
     {

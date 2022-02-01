@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import aqyp;
+import ascz;
 
 class QQBaseWebIpcModule$1
-  extends aqyp
+  extends ascz
 {
   QQBaseWebIpcModule$1(QQBaseWebIpcModule paramQQBaseWebIpcModule) {}
   

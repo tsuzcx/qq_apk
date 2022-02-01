@@ -1,21 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AbsAECaptureButton;
 
 class bnbx
-  implements View.OnClickListener
+  implements bonw
 {
-  bnbx(bnbw parambnbw) {}
+  bnbx(bnbp parambnbp) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (bnbw.a(this.a) == -1) {
-      bnbw.a(this.a, "Clk_add_topic");
-    }
-    TroopBarPublishUtils.a((Activity)this.a.a(), 1001, bnbw.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
+    bnbp.a(this.a).setTouchEnable(true);
+  }
+  
+  public void b()
+  {
+    bnbp.a(this.a).n();
+    bnbp.a(this.a).setTouchEnable(true);
   }
 }
 

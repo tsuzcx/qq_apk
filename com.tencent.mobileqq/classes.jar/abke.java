@@ -1,27 +1,30 @@
-import android.content.Context;
-import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class abke
-  implements AdProgressDialogAdapter
+class abke
+  implements bkzq
 {
-  private bhht a;
+  abke(abkd paramabkd, MessageForShortVideo paramMessageForShortVideo, ahgk paramahgk, bkzi parambkzi) {}
   
-  public void dismiss()
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a != null) && (this.a.isShowing()))
+    switch (paramInt)
     {
-      this.a.dismiss();
-      this.a = null;
     }
-  }
-  
-  public void show(Context paramContext, int paramInt)
-  {
-    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
-      this.a = new bhht(paramContext, paramInt);
-    }
-    if (this.a != null) {
-      this.a.show();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      this.jdField_a_of_type_Abkd.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (this.jdField_a_of_type_Ahgk != null) && (this.jdField_a_of_type_Ahgk.a != null))
+      {
+        this.jdField_a_of_type_Ahgk.a.setFailedIconVisable(false, this.jdField_a_of_type_Abkd);
+        abkd.a(this.jdField_a_of_type_Abkd, this.jdField_a_of_type_Ahgk, ShortVideoUtils.getDisplayProgress(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10), true);
+      }
     }
   }
 }

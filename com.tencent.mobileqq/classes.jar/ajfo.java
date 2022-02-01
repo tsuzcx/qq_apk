@@ -1,25 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ajfo
-  extends amzx
+public abstract interface ajfo
 {
-  ajfo(ajey paramajey) {}
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
-    }
-    this.a.e();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
-    }
-    this.a.g();
-  }
+  public abstract void a(aqxv paramaqxv);
 }
 
 

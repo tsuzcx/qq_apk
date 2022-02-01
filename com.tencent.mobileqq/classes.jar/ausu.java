@@ -1,117 +1,100 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.HashMap;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
 public class ausu
+  extends RecyclerView.Adapter<ausx>
 {
-  HashMap<String, ausw> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  nko jdField_a_of_type_Nko;
+  Context jdField_a_of_type_AndroidContentContext;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public void a(ausw paramausw, String paramString)
+  public ausu(QQAppInterface paramQQAppInterface, Context paramContext, FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramausw);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = paramFaceDecoder;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(String paramString)
+  public ausx a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramString == null)
+    if (paramInt == ausq.b)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return;
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297113)));
+      return new ausx(paramViewGroup);
     }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    return new ausw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559215, paramViewGroup, false));
   }
   
-  public void a(String paramString1, String paramString2, List<String> paramList, ausv paramausv)
+  public void a(ausx paramausx, int paramInt)
   {
-    int j = paramList.size();
-    int i = 0;
+    if (paramausx.a == ausq.b) {}
     for (;;)
     {
-      if (i < j) {
-        try
-        {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramausx, paramInt, getItemId(paramInt));
+      return;
+      if (paramausx.a == ausq.a)
+      {
+        int i = paramInt - 1;
+        if (i < 0) {
+          QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
         }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
-            }
-          }
+        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((paramausx instanceof ausw)) {
+          ((ausw)paramausx).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
         }
       }
     }
-    paramString1 = (ausw)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-    if (paramString1 != null) {
-      paramString1.call(paramString2, paramList, paramausv);
-    }
-    while (paramausv == null) {
-      return;
-    }
-    paramausv.a();
   }
   
-  public boolean a(WebView paramWebView, String paramString)
+  public void a(List<Pair<String, String>> paramList)
   {
-    if (paramString == null) {
-      return false;
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
     }
-    if (!paramString.startsWith("jsbridge://")) {
-      return false;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
     }
-    List localList = Arrays.asList((paramString + "/#").split("/"));
-    if (localList.size() < 6) {
-      return false;
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return ausq.b;
     }
-    String str1 = (String)localList.get(2);
-    String str2 = (String)localList.get(3);
-    String str3 = (String)localList.get(4);
-    for (;;)
-    {
-      try
-      {
-        long l = Long.parseLong(str3);
-        localList = localList.subList(5, localList.size() - 1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("JB", 4, "calling " + str1 + "." + str2);
-        }
-        paramString = new ausv(paramWebView, l, paramString);
-        paramWebView = paramWebView.getUrl();
-        if (this.jdField_a_of_type_Nko == null) {
-          this.jdField_a_of_type_Nko = nko.a();
-        }
-        if (this.jdField_a_of_type_Nko.a(paramWebView, str1 + "." + str2))
-        {
-          a(str1, str2, localList, paramString);
-          return true;
-        }
-      }
-      catch (Exception paramWebView)
-      {
-        return false;
-      }
-      QLog.e("JsBridge", 1, "JS API no auth url = " + npn.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
-      paramString.b();
+    return ausq.a;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new ausv(this));
     }
   }
 }

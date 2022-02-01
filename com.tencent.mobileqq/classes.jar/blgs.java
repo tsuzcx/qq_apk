@@ -1,9 +1,20 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-final class blgs
-  implements IHttpCommunicatorFlowCount
+public class blgs
+  implements View.OnFocusChangeListener
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public blgs(XPanelContainer paramXPanelContainer) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
+      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    }
+  }
 }
 
 

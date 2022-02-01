@@ -2,10 +2,11 @@ package com.tencent.mobileqq.fragment;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
-import avte;
-import avup;
-import avwk;
+import awzg;
+import axar;
+import axcm;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
@@ -40,16 +41,16 @@ class MsgBackupSettingFragment$8
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup", 2, "start ret = " + i + ", ip = " + MsgBackupSettingFragment.a(this.this$0)[0] + ", udpport = " + MsgBackupSettingFragment.a(this.this$0) + ", tcpport = " + MsgBackupSettingFragment.b(this.this$0));
     }
-    localObject = new avup();
-    ((avup)localObject).c(MsgBackupSettingFragment.b(this.this$0)[1]);
-    ((avup)localObject).b(MsgBackupSettingFragment.b(this.this$0)[0]);
+    localObject = new axar();
+    ((axar)localObject).c(MsgBackupSettingFragment.b(this.this$0)[1]);
+    ((axar)localObject).b(MsgBackupSettingFragment.b(this.this$0)[0]);
     ArrayList localArrayList = new ArrayList(2);
-    ((avup)localObject).a(avwk.a().a());
-    localArrayList.add(Integer.valueOf(avwk.a().b()));
-    localArrayList.add(Integer.valueOf(avwk.a().a()));
-    ((avup)localObject).a(localArrayList);
-    localObject = ((avup)localObject).a();
-    ((avte)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(162)).a((MsgBackupUserData)localObject, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.a(this.this$0));
+    ((axar)localObject).a(axcm.a().a());
+    localArrayList.add(Integer.valueOf(axcm.a().b()));
+    localArrayList.add(Integer.valueOf(axcm.a().a()));
+    ((axar)localObject).a(localArrayList);
+    localObject = ((axar)localObject).a();
+    ((awzg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).a((MsgBackupUserData)localObject, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.a(this.this$0));
   }
 }
 

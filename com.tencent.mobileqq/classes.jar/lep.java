@@ -1,129 +1,133 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoAcceptType;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoDownChannelControl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class lep
-  implements INetInfoHandler
 {
-  private leq a;
+  public static volatile int a;
+  volatile HashMap<Long, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  volatile boolean jdField_a_of_type_Boolean = false;
   
-  public lep(leq paramleq)
+  static
   {
-    this.a = paramleq;
+    jdField_a_of_type_Int = -1;
   }
   
   public static int a()
   {
-    int j = 1;
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    for (;;)
+    return AudioHelper.a(20);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    boolean bool = true;
+    int i = a();
+    if (i >= 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
+        QLog.d("GVideoDownloadChannelControl", 2, "CheckUinIsBig Debug Mode DEBUG_SMALL_CHANNEL_NUM=" + i);
       }
-      return i;
-      if (AppNetConnInfo.isMobileConn())
+      return paramInt >= i;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong))).intValue() == 2) {}
+      for (;;)
       {
-        j = AppNetConnInfo.getMobileInfo();
-        switch (j)
+        return bool;
+        bool = false;
+      }
+    }
+    return lfe.u();
+  }
+  
+  public boolean a(qav_gvideo_sdk_transfer.gVideoDownChannelControl paramgVideoDownChannelControl)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("GVideoDownloadChannelControl", 2, "UpdateChannelCtlList start");
+    }
+    int k = a();
+    boolean bool1;
+    if (paramgVideoDownChannelControl == null)
+    {
+      bool1 = false;
+      return bool1;
+    }
+    if (paramgVideoDownChannelControl.uint32_switch.get() == 1)
+    {
+      bool1 = true;
+      label46:
+      if (bool1 == this.jdField_a_of_type_Boolean) {
+        break label300;
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+    }
+    label297:
+    label300:
+    for (int i = 1;; i = 0)
+    {
+      if (!bool1)
+      {
+        a();
+        if (i != 0)
         {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
+          bool1 = bool2;
+          if (k < 0) {
+            break;
+          }
         }
+        return false;
+        bool1 = false;
+        break label46;
       }
-      else
+      HashMap localHashMap = new HashMap();
+      int m = paramgVideoDownChannelControl.uint32_videoacceptTypeSize.get();
+      int j = 0;
+      label113:
+      if (j < m)
       {
-        j = -1;
-        i = 0;
+        Object localObject = (qav_gvideo_sdk_transfer.gVideoAcceptType)paramgVideoDownChannelControl.msg_video_accept_type.get(j);
+        long l = ((qav_gvideo_sdk_transfer.gVideoAcceptType)localObject).uint64_account.get();
+        int n = ((qav_gvideo_sdk_transfer.gVideoAcceptType)localObject).video_type.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("GVideoDownloadChannelControl", 2, "UpdateChannelCtlList index=" + j + " |uin=" + l + " |type=" + n);
+        }
+        localObject = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
+        if ((localObject != null) && (((Integer)localObject).intValue() == n)) {
+          break label297;
+        }
+        localHashMap.put(Long.valueOf(l), Integer.valueOf(n));
+        i = 1;
       }
-    }
-  }
-  
-  public static int b()
-  {
-    int i = -1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    return AppNetConnInfo.getMobileInfo();
-  }
-  
-  public void onNetMobile2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
-    }
-    if (this.a != null) {
-      this.a.a(0);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
-    }
-    if (this.a != null) {
-      this.a.a(1);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
-    }
-    if (this.a != null) {
-      this.a.a(2);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
-    }
-    if (this.a != null) {
-      this.a.a(1);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
-    }
-    if (this.a != null) {
-      this.a.a(2);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
-    }
-    if (this.a != null) {
-      this.a.a(0);
+      for (;;)
+      {
+        j += 1;
+        break label113;
+        if ((m != this.jdField_a_of_type_JavaUtilHashMap.size()) || (i != 0)) {
+          this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+        }
+        if (i != 0)
+        {
+          bool1 = bool2;
+          if (k < 0) {
+            break;
+          }
+        }
+        return false;
+      }
     }
   }
 }

@@ -3,12 +3,13 @@ package com.tencent.av.smallscreen;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.av.VideoController;
+import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lhw;
-import lzb;
-import miz;
+import lii;
+import lzr;
+import mjw;
 
 class BaseSmallScreenService$OnOpChangedRunnable
   implements Runnable
@@ -19,18 +20,29 @@ class BaseSmallScreenService$OnOpChangedRunnable
   {
     boolean bool2 = false;
     int i;
+    int j;
     if (!this.this$0.d)
     {
-      if ((Build.VERSION.SDK_INT < 21) || (!VideoController.a().a().c())) {
-        break label270;
+      WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().b();
+      if ((localWatchTogetherMediaPlayCtrl == null) || (!localWatchTogetherMediaPlayCtrl.h())) {
+        break label303;
       }
       i = 1;
+      if ((Build.VERSION.SDK_INT < 21) || (!VideoController.a().a().c())) {
+        break label308;
+      }
+      j = 1;
+      label58:
       boolean bool1 = bool2;
-      if (lzb.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
+      if (lzr.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
       {
         bool1 = bool2;
-        if (i == 0) {
-          bool1 = true;
+        if (j == 0)
+        {
+          bool1 = bool2;
+          if (i == 0) {
+            bool1 = true;
+          }
         }
       }
       if (bool1 != this.this$0.e)
@@ -38,13 +50,13 @@ class BaseSmallScreenService$OnOpChangedRunnable
         this.this$0.e = bool1;
         this.this$0.c();
       }
-      bool1 = lzb.i();
+      bool1 = lzr.i();
       if (bool1 != this.this$0.b)
       {
         this.this$0.b = bool1;
         this.this$0.b();
       }
-      bool1 = lzb.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
+      bool1 = lzr.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
       if (bool1 != this.this$0.c)
       {
         this.this$0.c = bool1;
@@ -60,19 +72,22 @@ class BaseSmallScreenService$OnOpChangedRunnable
         this.this$0.f = bool1;
         this.this$0.a(l);
         if (!bool1) {
-          break label275;
+          break label313;
         }
       }
     }
-    label270:
-    label275:
+    label303:
+    label308:
+    label313:
     for (long l = 1L;; l = 2L)
     {
-      lhw.a(20, l);
+      lii.a(20, l);
       this.this$0.a().postDelayed(this, 1000L);
       return;
       i = 0;
       break;
+      j = 0;
+      break label58;
     }
   }
 }

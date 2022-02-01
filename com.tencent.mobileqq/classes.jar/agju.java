@@ -1,24 +1,55 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.helper.QcircleTroopRedDotHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.QcircleTroopRedDotHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
-class agju
-  extends ayem
+public class agju
+  implements agin, agjd
 {
-  agju(agjt paramagjt, BaseChatItemLayout paramBaseChatItemLayout) {}
+  public static String a;
+  public TroopChatPie a;
   
-  public void a(int paramInt, aydt paramaydt)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+    jdField_a_of_type_JavaLangString = "QcircleTroopRedDotHelper";
+  }
+  
+  public agju(agih paramagih, TroopChatPie paramTroopChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
+    paramagih.a(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (!afok.a()) {
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 8: 
+      afok.a();
+      ThreadManagerV2.excute(new QcircleTroopRedDotHelper.1(this), 160, null, true);
+      return;
+    }
+    afok.b();
+  }
+  
+  public void a(int paramInt, TroopChatPie paramTroopChatPie, List<ChatMessage> paramList)
+  {
+    if ((afok.a()) && (paramInt == 1) && (!afok.b())) {
+      ThreadManager.excute(new QcircleTroopRedDotHelper.2(this, paramTroopChatPie, paramList), 160, null, true);
     }
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public int[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
+    return new int[] { 8, 14 };
   }
 }
 

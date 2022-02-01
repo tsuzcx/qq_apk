@@ -1,18 +1,50 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-public class bffr
-  implements bfdu
+public final class bffr
 {
-  public bffr(RobotPanelLayoutBase paramRobotPanelLayoutBase, bffv parambffv) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public int d;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public static long a(int paramInt, long paramLong1, long paramLong2)
   {
-    if (paramInt == 0) {
+    if (a(paramInt)) {
+      return paramLong1;
+    }
+    return paramLong2;
+  }
+  
+  public static bffr a(int paramInt1, long paramLong, int paramInt2)
+  {
+    bffr localbffr = new bffr();
+    localbffr.jdField_a_of_type_Int = bffq.jdField_a_of_type_Int;
+    a(paramInt1, paramLong, localbffr);
+    localbffr.c = paramInt1;
+    localbffr.d = paramInt2;
+    return localbffr;
+  }
+  
+  public static void a(int paramInt, long paramLong, bffr parambffr)
+  {
+    if (a(paramInt))
+    {
+      parambffr.jdField_a_of_type_Long = paramLong;
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, amtj.a(2131712594) + "", 0).a();
+    parambffr.b = paramLong;
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 22) || (paramInt == 17) || (paramInt == 100) || (paramInt == 11) || (paramInt == 10);
+  }
+  
+  public long a()
+  {
+    return a(this.c, this.jdField_a_of_type_Long, this.b);
   }
 }
 

@@ -1,4 +1,7 @@
-public abstract interface ytf {}
+public abstract interface ytf
+{
+  public abstract void a(yvp paramyvp);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

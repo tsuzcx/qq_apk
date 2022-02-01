@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bncf;
+import borx;
 
 public class EditLocalVideoPlayer$3
   implements Runnable
 {
-  public EditLocalVideoPlayer$3(bncf parambncf) {}
+  public EditLocalVideoPlayer$3(borx paramborx) {}
   
   public void run()
   {

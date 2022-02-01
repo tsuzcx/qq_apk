@@ -1,38 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
 
-public class atmp
+class atmp
+  implements atmz
 {
-  private static atmp jdField_a_of_type_Atmp;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  atmp(atmo paramatmo) {}
   
-  public static atmp a()
+  public void a(String paramString, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Atmp == null) {
-      jdField_a_of_type_Atmp = new atmp();
-    }
-    return jdField_a_of_type_Atmp;
+    atmo.a(this.a, paramString);
   }
   
-  public static String a(String paramString)
+  public void a(String paramString, atmy paramatmy)
   {
-    if (jdField_a_of_type_Atmp == null) {
-      paramString = null;
-    }
-    String str;
-    do
-    {
-      return paramString;
-      str = (String)jdField_a_of_type_Atmp.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      paramString = str;
-    } while (!jdField_a_of_type_Atmp.jdField_a_of_type_JavaUtilMap.isEmpty());
-    jdField_a_of_type_Atmp = null;
-    return str;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+    atmo.a(this.a, paramString, paramatmy);
   }
 }
 

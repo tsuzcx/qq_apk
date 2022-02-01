@@ -1,25 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class qmy
-  extends qna
+class qmy
+  implements ViewBase.OnClickListener
 {
-  public qmy(PTSJSCLoader.3 param3) {}
+  qmy(qmx paramqmx, Container paramContainer, qfw paramqfw, int paramInt) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    super.loaded(paramString, paramInt);
-    QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], asyncBack code = " + paramInt + ", param = " + paramString);
-    if ((paramInt == 0) && (paramString == null))
-    {
-      QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
-      qmx.b(this.a.this$0);
+    qmx.a(this.jdField_a_of_type_Qmx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Qfw, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Qfw.a() + " position = " + this.jdField_a_of_type_Int);
     }
-  }
-  
-  public void progress(int paramInt)
-  {
-    super.progress(paramInt);
   }
 }
 

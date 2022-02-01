@@ -17,10 +17,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhpc;
-import blbu;
-import blbw;
-import blbx;
+import bizw;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -37,6 +34,9 @@ import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
 import cooperation.vip.pb.TianShuAccess.RspEntry;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -236,11 +236,11 @@ public class MiniGameAdBannerPopup
     }
     try
     {
-      blbu localblbu = new blbu();
-      localblbu.jdField_a_of_type_Int = 258;
-      localblbu.b = 1;
+      TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+      localTianShuAdPosItemData.mPosId = 258;
+      localTianShuAdPosItemData.mNeedCnt = 1;
       GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
-      blbw.a().a(Collections.singletonList(localblbu), GET_AD_CALLBACK);
+      TianShuManager.getInstance().requestAdv(Collections.singletonList(localTianShuAdPosItemData), GET_AD_CALLBACK);
       return;
     }
     catch (Exception paramContext)
@@ -393,7 +393,7 @@ public class MiniGameAdBannerPopup
               }
             }
           }
-          blbw.a().a(localAdItem);
+          TianShuManager.getInstance().cacheTraceInfo(localAdItem);
           localObject5 = localAdItem;
           localObject6 = localObject2;
           localObject2 = localObject1;
@@ -446,20 +446,20 @@ public class MiniGameAdBannerPopup
   }
   
   @NotNull
-  private static blbx newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  private static TianShuReportData newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    blbx localblbx = new blbx();
-    localblbx.b = (String.valueOf(bhpc.a().a()) + '_' + i);
-    localblbx.d = paramInt;
-    localblbx.jdField_e_of_type_Int = 1;
-    localblbx.g = String.valueOf(paramAdItem.iAdId.get());
-    localblbx.n = paramString;
-    localblbx.jdField_a_of_type_Long = i;
-    localblbx.jdField_a_of_type_Int = 1;
-    localblbx.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localblbx.i = "";
-    return localblbx;
+    TianShuReportData localTianShuReportData = new TianShuReportData();
+    localTianShuReportData.mTraceId = (String.valueOf(bizw.a().a()) + '_' + i);
+    localTianShuReportData.mActionId = paramInt;
+    localTianShuReportData.mActionValue = 1;
+    localTianShuReportData.mItemId = String.valueOf(paramAdItem.iAdId.get());
+    localTianShuReportData.mItemType = paramString;
+    localTianShuReportData.mOperTime = i;
+    localTianShuReportData.mTraceNum = 1;
+    localTianShuReportData.mAppId = "tianshu.81";
+    localTianShuReportData.mModuleId = "";
+    return localTianShuReportData;
   }
   
   private static void performReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
@@ -478,10 +478,10 @@ public class MiniGameAdBannerPopup
       } while (!(paramContext instanceof Activity));
       localObject = (Activity)paramContext;
     } while ((((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559422, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131371153);
-    TextView localTextView = (TextView)localView.findViewById(2131371156);
-    Object localObject = (LinearLayout)localView.findViewById(2131371154);
+    View localView = LayoutInflater.from(paramContext).inflate(2131559458, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131371345);
+    TextView localTextView = (TextView)localView.findViewById(2131371348);
+    Object localObject = (LinearLayout)localView.findViewById(2131371346);
     ReportDialog localReportDialog = new ReportDialog(paramContext);
     localReportDialog.setCancelable(false);
     if (localReportDialog.getWindow() != null)

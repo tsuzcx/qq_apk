@@ -1,9 +1,15 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
+
 public class ajzv
 {
   public int a;
+  public long a;
+  public Context a;
+  public QQAppInterface a;
+  public RedTouch a;
   public String a;
-  public int b;
-  public String b;
 }
 
 

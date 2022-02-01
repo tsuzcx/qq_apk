@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import aips;
+import ajlh;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.Entity;
@@ -337,7 +337,7 @@ public class Friends
   public int getNetWorkType()
   {
     int j = 2;
-    aips localaips = aips.a();
+    ajlh localajlh = ajlh.a();
     int i;
     if (this.eNetwork == 0)
     {
@@ -348,9 +348,9 @@ public class Friends
       {
         return i;
         i = j;
-      } while (1 != localaips.a(this.iTermType, 1));
+      } while (1 != localajlh.a(this.iTermType, 1));
     }
-    if (1 != localaips.a(this.iTermType, 1)) {
+    if (1 != localajlh.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

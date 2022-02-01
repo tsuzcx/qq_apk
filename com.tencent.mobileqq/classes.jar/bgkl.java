@@ -1,58 +1,16 @@
-import android.os.Bundle;
-import com.tencent.vas.update.callback.listener.IDownloadListener;
-
-class bgkl
-  extends bgod
+public class bgkl
 {
-  bgkl(bgkk parambgkk) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onDone(bgoe parambgoe)
+  public bgkl(bgkf parambgkf, String paramString1, boolean paramBoolean, String paramString2, long paramLong)
   {
-    int j = 0;
-    if ((bgkk.a(this.a) == null) || (parambgoe == null)) {
-      return;
-    }
-    Object localObject;
-    String str;
-    if ((parambgoe.a() == 3) && (parambgoe.jdField_a_of_type_Int == 0))
-    {
-      i = 1;
-      localObject = parambgoe.a();
-      if ((localObject != null) && (((Bundle)localObject).getString("from") != null) && (((Bundle)localObject).getString("from").contains("silent_download"))) {
-        bgkk.a(this.a, parambgoe.c, parambgoe.jdField_a_of_type_Long);
-      }
-      localObject = bgkk.a(this.a);
-      str = parambgoe.jdField_a_of_type_JavaLangString;
-      if (i == 0) {
-        break label130;
-      }
-    }
-    label130:
-    for (int i = j;; i = 8)
-    {
-      ((IDownloadListener)localObject).onCompleted(str, i, parambgoe.jdField_a_of_type_Int, parambgoe.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void onProgress(bgoe parambgoe)
-  {
-    if ((bgkk.a(this.a) != null) && (parambgoe != null)) {
-      bgkk.a(this.a).onProgress(parambgoe.jdField_a_of_type_JavaLangString, parambgoe.jdField_b_of_type_Long, parambgoe.jdField_a_of_type_Long, (int)parambgoe.jdField_a_of_type_Float);
-    }
-  }
-  
-  public boolean onStart(bgoe parambgoe)
-  {
-    if (parambgoe == null) {
-      return false;
-    }
-    if (bgkk.a(this.a) != null) {
-      bgkk.a(this.a).onDownloadStart(parambgoe.jdField_a_of_type_JavaLangString);
-    }
-    return super.onStart(parambgoe);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

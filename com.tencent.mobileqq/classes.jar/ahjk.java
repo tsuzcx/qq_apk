@@ -1,58 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahjk
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  ahjk(ahiu paramahiu, String paramString) {}
+  ahjk(ahji paramahji, int paramInt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_Ahiu.tag, 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Ahiu.b(2131694775);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ahji.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("individuation_url_type", 40303);
+    String str = bhnp.a(this.jdField_a_of_type_Ahji.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Ahji.jdField_a_of_type_AndroidContentContext, str, 524288L, localIntent, true, -1);
+    int i = ((aocy)this.jdField_a_of_type_Ahji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+    if (i == 2) {
+      i = 0;
     }
     for (;;)
     {
-      ahiu.c(this.jdField_a_of_type_Ahiu);
-      if (ahiu.d(this.jdField_a_of_type_Ahiu) == 0) {
-        this.jdField_a_of_type_Ahiu.b();
-      }
+      bdla.b(this.jdField_a_of_type_Ahji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_Ahiu.tag, 2, "unfollow success");
-            }
-            ahiu.a(this.jdField_a_of_type_Ahiu, ahiu.a(this.jdField_a_of_type_Ahiu));
-            odq.a(this.jdField_a_of_type_Ahiu.app, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-            StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_Ahiu.app, this.jdField_a_of_type_JavaLangString);
-            ((bfas)this.jdField_a_of_type_Ahiu.app.getManager(132)).a(this.jdField_a_of_type_Ahiu.sessionInfo.curFriendUin);
-            ahiu.b(this.jdField_a_of_type_Ahiu, false);
-          }
-          else
-          {
-            this.jdField_a_of_type_Ahiu.b(2131694775);
-          }
-        }
+      if (i == 3) {
+        i = 2;
       }
-      catch (Exception paramBundle) {}
     }
   }
 }

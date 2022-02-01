@@ -1,26 +1,30 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-public class yvr
-  implements WXShareHelper.WXShareListener
+public abstract class yvr
 {
-  public yvr(QRDisplayActivity paramQRDisplayActivity) {}
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public yvr(int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      yyi.a(1, 2131718380);
-      return;
-    }
-    yyi.a(2, 2131718398);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract Class<? extends yvs> a();
+  
+  @NonNull
+  public abstract yvs a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

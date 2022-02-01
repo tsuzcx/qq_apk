@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bfvp;
-import bfwg;
+import bheh;
+import bhey;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,9 +21,9 @@ class FootNavigationLayout$1
   
   public void onClick(View paramView)
   {
-    Object localObject = bfwg.a(((BaseActivity)this.this$0.getContext()).app, this.this$0.getContext(), this.val$bottomItem.url);
+    Object localObject = bhey.a(((BaseActivity)this.this$0.getContext()).app, this.this$0.getContext(), this.val$bottomItem.url);
     if (localObject != null) {
-      ((bfvp)localObject).a();
+      ((bheh)localObject).a();
     }
     for (;;)
     {

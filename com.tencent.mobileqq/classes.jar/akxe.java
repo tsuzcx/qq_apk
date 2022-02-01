@@ -1,76 +1,209 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.io.File;
+import mqq.app.AppRuntime;
 
-public class akxe
-  implements InputFilter
+public abstract class akxe
 {
-  private int jdField_a_of_type_Int;
+  public static boolean b = TextUtils.isEmpty(c());
+  public AppRuntime a;
   
-  public akxe(ExtendEditText paramExtendEditText, int paramInt)
+  public akxe(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramAppRuntime;
   }
   
-  private void a()
+  private int a(String paramString)
   {
-    if (ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
-      ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
-    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return 0;
+      if (paramString.equalsIgnoreCase("WiFi")) {
+        return 1;
+      }
+      if (paramString.equalsIgnoreCase("4G")) {
+        return 4;
+      }
+      if (paramString.equalsIgnoreCase("3G")) {
+        return 3;
+      }
+      if (paramString.equalsIgnoreCase("2G")) {
+        return 2;
+      }
+    } while (!paramString.equalsIgnoreCase("5G"));
+    return 6;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static PreloadManager.PathResult a(DownloadParam paramDownloadParam)
   {
-    akxd localakxd = ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText);
-    if (localakxd == null)
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
-      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
-      if (localakxd != null) {
-        break label95;
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadManager", 2, "getResPathSync: param" + paramDownloadParam);
       }
-      paramInt2 -= paramInt1;
-    }
-    for (;;)
-    {
-      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
-      if (paramInt3 > 0) {
-        break label109;
+      if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {
+        return null;
       }
-      a();
-      return "";
-      paramInt3 = localakxd.a(paramSpanned, 0, paramInt3) + localakxd.a(paramSpanned, paramInt4, paramSpanned.length());
-      break;
-      label95:
-      paramInt2 = localakxd.a(paramCharSequence, paramInt1, paramInt2);
-    }
-    label109:
-    if (paramInt3 >= paramInt2) {
+      paramDownloadParam.standardlize();
+      localObject = PreloadManager.a(paramDownloadParam.url, paramDownloadParam.isForceUnzip, paramDownloadParam.filePos);
+      if (PreloadManager.a((ResourceInfo)localObject, paramDownloadParam))
+      {
+        PreloadManager.PathResult localPathResult = new PreloadManager.PathResult();
+        localPathResult.url = paramDownloadParam.url;
+        localPathResult.filePath = ((ResourceInfo)localObject).filePath;
+        localPathResult.folderPath = ((ResourceInfo)localObject).folderPath;
+        localPathResult.isAlreadyExist = true;
+        return localPathResult;
+      }
       return null;
     }
-    a();
-    if (localakxd != null)
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("method_type", 4);
+    ((Bundle)localObject).putSerializable("download_params", paramDownloadParam);
+    paramDownloadParam = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "preloadCommon", (Bundle)localObject);
+    if ((paramDownloadParam != null) && (paramDownloadParam.isSuccess()) && (paramDownloadParam.data != null)) {
+      try
+      {
+        paramDownloadParam = (PreloadManager.PathResult)paramDownloadParam.data.getSerializable("path_result");
+        return paramDownloadParam;
+      }
+      catch (Throwable paramDownloadParam) {}
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    return a(0);
+  }
+  
+  public static String a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return b();
+    }
+    String str = c();
+    if (!TextUtils.isEmpty(str))
     {
-      paramInt3 = localakxd.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
-      paramInt2 = paramInt3;
-      if (paramInt3 <= 0) {
-        return "";
+      b = false;
+      return str;
+    }
+    b = true;
+    return b();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String str = b(paramString, paramInt);
+      if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
+      {
+        akyh.a(paramString, paramInt, NetConnInfoCenter.getServerTimeMillis());
+        return str;
       }
     }
-    else
-    {
-      paramInt2 = paramInt3;
+    return null;
+  }
+  
+  public static String a(AppRuntime paramAppRuntime)
+  {
+    return alcc.c + paramAppRuntime.getAccount() + "/" + ".preloaduni" + "/";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString)
+  {
+    return a(paramAppRuntime) + paramString;
+  }
+  
+  public static String b()
+  {
+    return alcc.c + ".preloaduni" + "/";
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    paramString = MD5.toMD5(paramString);
+    return a(paramInt) + paramString;
+  }
+  
+  public static String c()
+  {
+    String str1 = null;
+    try
     {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
+      String str2 = alcc.a;
+      if (!TextUtils.isEmpty(str2)) {
+        str1 = str2 + ".preloaduni" + "/";
       }
+      return str1;
     }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  public static String f(String paramString)
+  {
+    return a(paramString, 0);
+  }
+  
+  public static String g(String paramString)
+  {
+    return b(paramString, 0);
+  }
+  
+  public abstract void a(DownloadParam paramDownloadParam, akxc paramakxc);
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    paramString = paramString.split("\\|");
+    int j = NetworkUtil.getSystemNetwork(this.a.getApplication());
+    int k = paramString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= k) {
+        break label57;
+      }
+      if (a(paramString[i]) == j) {
+        break;
+      }
+      i += 1;
+    }
+    label57:
+    return false;
+  }
+  
+  public void c(String paramString, akxc paramakxc)
+  {
+    DownloadParam localDownloadParam = new DownloadParam();
+    localDownloadParam.url = paramString;
+    a(localDownloadParam, paramakxc);
+  }
+  
+  public String e(String paramString)
+  {
+    return null;
   }
 }
 

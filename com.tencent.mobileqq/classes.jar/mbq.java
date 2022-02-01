@@ -1,16 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
+
 public class mbq
+  implements DialogInterface.OnDismissListener
 {
-  public int a = 2131166019;
-  public String a;
-  public int b = 2131165982;
-  public int c;
-  public int d = -1;
-  public int e;
-  public int f;
+  public mbq(AVActivity paramAVActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.i();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,19 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.ProxyDrawable;
-import com.tencent.widget.BubblePopupWindow;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjox
-  extends ProxyDrawable
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  int b;
+  public bjox(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public bjox(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    super(paramDrawable);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    if (this.b > this.jdField_a_of_type_Int)
-    {
-      int i = paramCanvas.save();
-      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
-      this.mCurrDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
-    }
+    bjkf.b(bjkh.a().a("200").k(ApkFileDownloadFragment.a(this.a).b).j("1").l("0").m(ApkFileDownloadFragment.a(this.a).a).a(ApkFileDownloadFragment.a(this.a).h).b(ApkFileDownloadFragment.a(this.a).f).g(ApkFileDownloadFragment.a(this.a).e));
+    ApkFileDownloadFragment.a(this.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

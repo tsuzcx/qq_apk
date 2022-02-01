@@ -1,22 +1,58 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
-public abstract interface xgr
+public class xgr
+  extends xhm
+  implements View.OnClickListener
 {
-  public abstract void H_();
+  public xgr(@NonNull ViewGroup paramViewGroup)
+  {
+    super(paramViewGroup);
+    this.a.findViewById(2131368599).setOnClickListener(this);
+    this.a.findViewById(2131378823).setOnClickListener(this);
+  }
   
-  public abstract void I_();
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
   
-  public abstract void a(int paramInt);
+  public void a(int paramInt1, int paramInt2, @NonNull xhf paramxhf, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    super.a(paramInt1, paramInt2, paramxhf, paramStoryPlayerGroupHolder);
+    if (LiuHaiUtils.a)
+    {
+      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131368599).getLayoutParams();
+      paramStoryPlayerGroupHolder.topMargin = (UIUtils.dip2px(this.a.getContext(), 5.0F) + 114);
+      this.a.findViewById(2131368599).setLayoutParams(paramStoryPlayerGroupHolder);
+    }
+    a().a(this, paramInt1, paramInt2, paramxhf);
+  }
   
-  public abstract void a(int paramInt, String paramString);
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    a().a(this, paramBoolean);
+  }
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  protected void b()
+  {
+    super.b();
+    a().a(this);
+  }
   
-  public abstract void b();
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void f();
+  public void onClick(View paramView)
+  {
+    a().a(this, paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

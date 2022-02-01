@@ -1,8 +1,15 @@
-import android.content.DialogInterface;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
 
 public abstract interface yrs
 {
-  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,43 +1,18 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class anaa
-  implements BusinessObserver
+class anaa
+  implements DialogInterface.OnKeyListener
 {
-  protected void a(int paramInt) {}
+  anaa(amzz paramamzz, anah paramanah) {}
   
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void b(int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
+    if (paramInt == 4) {
+      this.jdField_a_of_type_Amzz.a(this.jdField_a_of_type_Anah);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (paramObject == null);
-            paramObject = (Object[])paramObject;
-            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        b(((Integer)paramObject[0]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 1);
-    a(((Integer)paramObject[0]).intValue());
+    return true;
   }
 }
 

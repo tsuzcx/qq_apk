@@ -4,12 +4,12 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import org.json.JSONArray;
-import puf;
+import qez;
 
 public class ChannelCoverInfoModule$10
   implements Runnable
 {
-  public ChannelCoverInfoModule$10(puf parampuf, JSONArray paramJSONArray) {}
+  public ChannelCoverInfoModule$10(qez paramqez, JSONArray paramJSONArray) {}
   
   public void run()
   {

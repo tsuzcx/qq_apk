@@ -1,34 +1,29 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 
-class zif
-  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
+public class zif
+  extends QQUIEventReceiver<StoryUserBadgeView, wra>
 {
-  zif(zie paramzie, zds paramzds) {}
-  
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public zif(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    boolean bool = true;
-    COMM.StCommonExt localStCommonExt;
-    if ((paramBoolean) && (paramStGetMainPageRsp != null))
-    {
-      paramVSBaseRequest = this.jdField_a_of_type_Zds;
-      paramString = paramStGetMainPageRsp.vecFeed.get();
-      localStCommonExt = paramStGetMainPageRsp.extInfo;
-      if (paramStGetMainPageRsp.isFinish.get() != 1) {
-        break label59;
-      }
-    }
-    label59:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramVSBaseRequest.b(paramString, localStCommonExt, paramBoolean);
+    super(paramStoryUserBadgeView);
+  }
+  
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull wra paramwra)
+  {
+    if (paramwra.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramwra.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
       return;
     }
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wra.class;
   }
 }
 

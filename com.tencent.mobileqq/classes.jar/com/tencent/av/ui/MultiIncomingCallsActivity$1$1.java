@@ -3,30 +3,30 @@ package com.tencent.av.ui;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lnl;
-import mei;
+import lny;
+import mfe;
 
 public class MultiIncomingCallsActivity$1$1
   implements Runnable
 {
-  public MultiIncomingCallsActivity$1$1(mei parammei, ArrayList paramArrayList) {}
+  public MultiIncomingCallsActivity$1$1(mfe parammfe, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Mei.a.a != null)
+    if (this.jdField_a_of_type_Mfe.a.a != null)
     {
-      MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mei.a).clear();
+      MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mfe.a).clear();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        lnl locallnl = (lnl)localIterator.next();
-        if (locallnl.a != this.jdField_a_of_type_Mei.a.jdField_b_of_type_Long) {
-          MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mei.a).add(locallnl);
+        lny locallny = (lny)localIterator.next();
+        if (locallny.a != this.jdField_a_of_type_Mfe.a.jdField_b_of_type_Long) {
+          MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mfe.a).add(locallny);
         }
       }
-      MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mei.a);
+      MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mfe.a);
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Mei.a.jdField_b_of_type_JavaLangString, 2, "InviteMemberObserverWithoutCache mMemberChangeEventReceiver size:" + MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mei.a).size());
+        QLog.d(this.jdField_a_of_type_Mfe.a.jdField_b_of_type_JavaLangString, 2, "InviteMemberObserverWithoutCache mMemberChangeEventReceiver size:" + MultiIncomingCallsActivity.a(this.jdField_a_of_type_Mfe.a).size());
       }
     }
   }

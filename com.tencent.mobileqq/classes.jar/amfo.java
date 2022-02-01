@@ -1,21 +1,16 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.widget.Switch;
 
-class amfo
-  implements BusinessObserver
+public class amfo
 {
-  amfo(amfn paramamfn, AppInterface paramAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Amfn.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloSSOConfig", 2, "checkRequestSendSSO, type:" + paramInt + "isSuccess:" + paramBoolean + "onReceive use:" + (System.currentTimeMillis() - l));
-    }
-  }
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 

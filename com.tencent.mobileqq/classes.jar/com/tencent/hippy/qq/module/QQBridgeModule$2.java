@@ -1,7 +1,7 @@
 package com.tencent.hippy.qq.module;
 
-import abrk;
-import abrl;
+import achn;
+import acho;
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
@@ -51,7 +51,7 @@ class QQBridgeModule$2
         if (localObject3 == null) {
           break;
         }
-        localObject3 = abrk.a((PBField)localObject3);
+        localObject3 = achn.a((PBField)localObject3);
         localObject1 = localObject2;
         if (localObject3 == null) {
           break;
@@ -64,11 +64,11 @@ class QQBridgeModule$2
       }
       catch (JSONException localJSONException)
       {
-        abrl.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
+        acho.d(BridgeModule.TAG, "handleJsCallRequest", localJSONException);
         continue;
       }
       label165:
-      abrl.d(BridgeModule.TAG, "handleJsCallRequest error");
+      acho.d(BridgeModule.TAG, "handleJsCallRequest error");
     }
     label176:
     QQBridgeModule.access$000(this.this$0, this.val$promise, localJSONObject);

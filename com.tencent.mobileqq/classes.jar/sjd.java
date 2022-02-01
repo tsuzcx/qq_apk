@@ -1,30 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 
-class sjd
-  extends sif
+final class sjd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sjd(sig paramsig) {}
+  sjd(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
   
-  public int a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return 19;
-  }
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    sig.a(this.a, false);
-    sig.a(this.a, sig.a(this.a), paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int c()
-  {
-    return 1;
+    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
   }
 }
 

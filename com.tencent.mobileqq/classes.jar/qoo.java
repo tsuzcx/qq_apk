@@ -1,19 +1,158 @@
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$requestUpdatePushStatus$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qoo
-  extends nmf
+public class qoo
+  implements qqa
 {
-  qoo(Function1 paramFunction1) {}
-  
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus response errorCode: " + paramInt);
-    this.a.invoke(Integer.valueOf(paramInt));
+    Object localObject = paramArticleInfo.mNewPolymericInfo;
+    HashMap localHashMap = new HashMap();
+    localObject = (rpt)((rps)localObject).jdField_a_of_type_JavaUtilList.get(paramInt);
+    localHashMap.put("rowkey", ((rpt)localObject).jdField_g_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(((rpt)localObject).k)) {
+      localHashMap.put("jump_report_info", ((rpt)localObject).k);
+    }
+    pqb.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+  }
+  
+  private void a(ArticleInfo paramArticleInfo, String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(paramArticleInfo.mReportCommonData)) {
+      localHashMap.put("jump_report_info", paramString);
+    }
+    pqb.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mNewPolymericInfo == null)) {
+      return new JSONObject();
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    rps localrps = paramBaseArticleInfo.mNewPolymericInfo;
+    localJSONObject1.put("style_ID", "ReadInJoy_video_set_card");
+    localJSONObject1.put("common_header_text", localrps.jdField_b_of_type_JavaLangString);
+    localJSONObject1.put("topic_header_big_icon_url", localrps.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("topic_header_small_icon_url", localrps.e);
+    localJSONObject1.put("topic_header_desc_text", localrps.jdField_c_of_type_JavaLangString);
+    String str2;
+    String str1;
+    label175:
+    label177:
+    rpt localrpt;
+    switch (localrps.jdField_b_of_type_Int)
+    {
+    default: 
+      localJSONObject1.put("empty_header_visibility", "1");
+      switch (localrps.jdField_c_of_type_Int)
+      {
+      default: 
+        str2 = "195";
+        str1 = "148";
+        paramInt = 0;
+        if (paramInt >= localrps.jdField_a_of_type_JavaUtilList.size()) {
+          break label398;
+        }
+        localrpt = (rpt)localrps.jdField_a_of_type_JavaUtilList.get(paramInt);
+        if (localrpt != null) {}
+        break;
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramInt += 1;
+      break label177;
+      localJSONObject1.put("common_header_visibility", "1");
+      break;
+      localJSONObject1.put("topic_header_visibility", "1");
+      break;
+      str2 = "260";
+      str1 = "146";
+      break label175;
+      str2 = "315";
+      str1 = "236";
+      break label175;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("style_ID", "ReadInJoy_video_set_card_collection_cell");
+      localJSONObject2.put("videoWidth", str1);
+      localJSONObject2.put("videoHeight", str2);
+      localJSONObject2.put("video_cover_url", localrpt.jdField_c_of_type_JavaLangString);
+      localJSONObject2.put("video_title_text", localrpt.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("play_count_text", localrpt.j);
+      localJSONObject2.put("comment_count_text", localrpt.jdField_g_of_type_Int + "评论");
+      localJSONObject2.put("rowkey", localrpt.jdField_g_of_type_JavaLangString);
+      localJSONArray.put(paramInt, localJSONObject2);
+    }
+    label398:
+    if (paramBaseArticleInfo.mNewPolymericInfo.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo == null) {
+      localJSONObject1.put("canScroll", "0");
+    }
+    for (;;)
+    {
+      localJSONObject1.put("video_data", localJSONArray);
+      localJSONObject1.put("card_jump_report_info", "");
+      QLog.d("NewPolymericMultiVideoProteusItem", 1, localJSONObject1.toString());
+      return localJSONObject1;
+      localJSONObject1.put("canScroll", "1");
+    }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = paramqfw.a();
+    if (localArticleInfo == null) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = paramContainer.getVirtualView();
+      qwn localqwn = (qwn)((ViewBase)localObject).findViewBaseByName("id_proteus_collection_view");
+      localqwn.a(paramqfw);
+      localqwn.a(new qop(this, localArticleInfo, paramContainer));
+      localqwn.a(new qoq(this, localArticleInfo, paramqfw));
+      paramqfw = paramContainer.getLayoutParams();
+      localObject = ((ViewBase)localObject).getComLayoutParams();
+    } while ((paramqfw == null) || (localObject == null));
+    paramqfw.width = ((Layout.Params)localObject).mLayoutWidth;
+    paramqfw.height = ((Layout.Params)localObject).mLayoutHeight;
+    paramContainer.setLayoutParams(paramqfw);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    if (paramViewBase == null) {}
+    String str;
+    do
+    {
+      do
+      {
+        return false;
+        str = paramViewBase.getClickEvnet();
+      } while (TextUtils.isEmpty(str));
+      paramqfw = paramqfw.a();
+    } while (!"cmd_video_set_card_click".equals(str));
+    paramViewBase.setOnClickListener(new qor(this, paramqfw, paramContainer));
+    return true;
   }
 }
 

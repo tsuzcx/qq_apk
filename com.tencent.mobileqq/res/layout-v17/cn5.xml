@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mv4" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/ndj" android:paddingTop="13.5dip" android:paddingBottom="13.5dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/mv2" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/h1u" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/wmf" android:layout_marginStart="16.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/mv5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/xno" android:layout_toRightOf="@id/mv2" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/mv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/xnm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:lines="1" android:drawableLeft="@drawable/dqo" android:drawablePadding="2.0dip" android:layout_toLeftOf="@id/n20" android:layout_alignParentLeft="true" android:layout_marginStart="14.0dip" android:layout_toStartOf="@id/n20" android:layout_alignParentStart="true" />
+    <ImageView android:id="@id/n20" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/i4i" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_marginEnd="14.0dip" android:layout_alignParentEnd="true" />
 </RelativeLayout>

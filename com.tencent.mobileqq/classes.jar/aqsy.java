@@ -1,20 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aqsy
-  implements CompoundButton.OnCheckedChangeListener
+class aqsy
+  implements aqdb
 {
-  public aqsy(DataReportSettingFragment paramDataReportSettingFragment) {}
+  aqsy(aqsx paramaqsx) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (!paramBoolean) {
-      aqtu.a().a();
+    paramString2 = (List)aqsx.a(this.a).get(paramString1);
+    if ((paramString2 != null) && (paramString2.size() > 0))
+    {
+      paramString2 = paramString2.iterator();
+      while (paramString2.hasNext())
+      {
+        aqtb localaqtb = (aqtb)paramString2.next();
+        if ((localaqtb != null) && (localaqtb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaqtb.jdField_a_of_type_Arrt != null))
+        {
+          localaqtb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
+          localaqtb.jdField_a_of_type_Arrt.c(true);
+        }
+      }
     }
-    aqtu.a = paramBoolean;
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    aqsx.a(this.a).remove(paramString1);
   }
 }
 

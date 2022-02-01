@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class arlp
-  implements arqa
+class arlp
+  extends ClickableSpan
 {
-  public arlp(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  arlp(arln paramarln, String paramString) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    bhha.a(arln.a(this.jdField_a_of_type_Arln), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView.getContext());
+    arln.a("0X800AE6D", this.jdField_a_of_type_JavaLangString, "");
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlp
  * JD-Core Version:    0.7.0.1
  */

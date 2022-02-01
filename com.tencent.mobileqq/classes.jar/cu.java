@@ -1,7 +1,7 @@
 import com.dataline.activities.PrinterActivity;
 
 public class cu
-  extends amqk
+  extends ansy
 {
   public cu(PrinterActivity paramPrinterActivity) {}
   

@@ -1,30 +1,35 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
 class xzu
-  extends vwu
+  extends SimpleJob<Object>
 {
-  xzu(xzt paramxzt, String paramString)
+  xzu(xzr paramxzr, String paramString1, String paramString2)
   {
-    super(paramString);
+    super(paramString1);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    paramJobContext = (wjf)wjs.a(19);
+    paramVarArgs = paramJobContext.a(wpy.a(this.jdField_a_of_type_Xzr.b));
+    xzw localxzw = new xzw(this.jdField_a_of_type_Xzr.c);
+    ArrayList localArrayList = new ArrayList();
+    localxzw.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localxzw.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.jdField_a_of_type_Xzq.a = paramSosoLbsInfo.mLocation.mLat02;
-      this.a.jdField_a_of_type_Xzq.b = paramSosoLbsInfo.mLocation.mLon02;
-      xvv.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Xzq.a + " longitude=" + this.a.jdField_a_of_type_Xzq.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Xzq.g();
-      }
-      return;
+      localxzw.jdField_a_of_type_Boolean = bool;
+      wad.a().dispatch(localxzw);
+      ykq.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localxzw.jdField_a_of_type_JavaUtilList);
+      return null;
     }
-    this.a.jdField_a_of_type_Xzq.a = 0.0D;
-    this.a.jdField_a_of_type_Xzq.b = 0.0D;
-    xvv.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

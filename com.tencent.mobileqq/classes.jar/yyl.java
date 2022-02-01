@@ -1,166 +1,72 @@
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.2;
-import com.tencent.biz.richframework.download.RFWDownloader.GetFileListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class yyl
+  extends yyn<yya, yya>
 {
-  private static volatile yyl jdField_a_of_type_Yyl;
-  private MQLruCache<String, AnimationDrawable> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(10);
-  private final ConcurrentHashMap<String, RFWDownloader.GetFileListener> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private MQLruCache<String, QQAnimationDrawable> b;
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<yoi> jdField_a_of_type_JavaLangRefWeakReference;
   
-  private Bitmap a(File paramFile)
+  public yyl(String paramString, yoi paramyoi, int paramInt)
   {
-    QLog.i("AnimationDrawableFactory", 2, "getBitMapFromFile fileName:" + paramFile.getName());
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFile.exists())
-    {
-      localObject1 = localObject2;
-      if (paramFile.isFile()) {
-        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      }
-    }
-    return localObject1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramyoi);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private static List<File> a(File paramFile)
+  protected void a(JobContext paramJobContext, yya paramyya)
   {
-    LinkedList localLinkedList = new LinkedList();
-    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    ykq.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    yyg localyyg = paramyya.jdField_a_of_type_Yyg;
+    int i = localyyg.c;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (yoi)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    while (paramJobContext != null)
     {
-      paramFile = paramFile.listFiles(new yyo());
-      int j = paramFile.length;
-      int i = 0;
-      if (i < j)
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
       {
-        File localFile = paramFile[i];
-        if (!localFile.exists()) {}
-        for (;;)
+        try
         {
-          i += 1;
-          break;
-          if (localFile.isDirectory()) {
-            localLinkedList.addAll(a(localFile));
-          } else {
-            localLinkedList.add(localFile);
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = yyq.a(paramyya.jdField_a_of_type_Int, paramyya.b, ".jpg");
           }
+          i = new yyi(localBitmap, str1, localyyg.jdField_a_of_type_Int, localyyg.jdField_b_of_type_Int, i, localyyg.jdField_a_of_type_Float, localyyg.jdField_a_of_type_Double, localyyg.jdField_b_of_type_Double, paramyya.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label217;
+          }
+          paramyya.jdField_a_of_type_JavaLangString = str1;
+          paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          ykq.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(paramyya);
+          return;
         }
-      }
-    }
-    return localLinkedList;
-  }
-  
-  public static yyl a()
-  {
-    if (jdField_a_of_type_Yyl == null) {}
-    try
-    {
-      if (jdField_a_of_type_Yyl == null) {
-        jdField_a_of_type_Yyl = new yyl();
-      }
-      return jdField_a_of_type_Yyl;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString, QQAnimationDrawable paramQQAnimationDrawable)
-  {
-    if (this.b == null) {
-      this.b = new MQLruCache(10);
-    }
-    this.b.put(paramString, paramQQAnimationDrawable);
-  }
-  
-  public static String[] a(String paramString)
-  {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (paramString.isDirectory()))
-    {
-      QLog.i("AnimationDrawableFactory", 2, "exist Animation Pic!");
-      paramString = a(paramString);
-      if ((paramString != null) && (paramString.size() > 0))
-      {
-        paramString = (File[])paramString.toArray(new File[paramString.size()]);
-        if ((paramString != null) && (paramString.length > 0))
+        finally
         {
-          Arrays.sort(paramString, new yyp());
-          ArrayList localArrayList = new ArrayList();
-          int j = paramString.length;
-          int i = 0;
-          while (i < j)
-          {
-            localArrayList.add(paramString[i].getPath());
-            i += 1;
-          }
-          return (String[])localArrayList.toArray(new String[localArrayList.size()]);
+          paramJobContext.a(localBitmap);
         }
+        paramJobContext = null;
+        continue;
+        label217:
+        ykq.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, anvx.a(2131705160) + this.jdField_a_of_type_Int));
       }
-    }
-    return null;
-  }
-  
-  private static String[] a(String paramString, int paramInt)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (paramString.length > 0) && (paramInt > 1))
-    {
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramString.length)
+      else
       {
-        localArrayList.add(paramString[i]);
-        i += paramInt;
-      }
-      if (paramString.length % paramInt != 0) {
-        localArrayList.add(paramString[(paramString.length - 1)]);
-      }
-      return (String[])localArrayList.toArray(new String[localArrayList.size()]);
-    }
-    return paramString;
-  }
-  
-  public static String[] a(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (DeviceInfoUtil.isLowPerfDevice())) {}
-    for (int i = 2;; i = 1) {
-      return a(paramString, i);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString) != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
-    }
-  }
-  
-  @Deprecated
-  public void a(String paramString, int paramInt, yyq paramyyq, boolean paramBoolean)
-  {
-    QLog.i("AnimationDrawableFactory", 2, "createFromDirectory dirPath=" + paramString + " allDuration=" + paramInt + " useCache=" + paramBoolean);
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("AnimationDrawableFactory", 2, "createFromDirectory error dirPath is invalid");
-      if (paramyyq != null) {
-        paramyyq.a(false, null);
+        ykq.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, anvx.a(2131705165) + this.jdField_a_of_type_Int));
+        return;
       }
     }
-    ThreadManagerV2.executeOnSubThread(new AnimationDrawableFactory.2(this, paramBoolean, paramString, paramInt, paramyyq));
+    ykq.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, anvx.a(2131705161) + this.jdField_a_of_type_Int));
   }
 }
 

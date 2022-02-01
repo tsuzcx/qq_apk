@@ -1,63 +1,100 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class amms
-  implements amnc
 {
-  public amms(ApolloPanel paramApolloPanel) {}
+  public static int a;
+  public static String a;
+  public static boolean a;
+  public static int b;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
   
-  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
+  static {}
+  
+  private static void a()
   {
-    if (paramApolloPanelGuideView.a() == 0)
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_app3d_config", 0);
+    if (localSharedPreferences.getInt("show", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      ApolloPanel.f(this.a);
-      if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
-      {
-        ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
-        ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690062), 5, null);
-      }
-    }
-    for (;;)
-    {
-      QLog.i("ApolloPanel", 1, "mGuideClickCallback onClose");
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_Boolean = true;
+      jdField_a_of_type_JavaLangString = localSharedPreferences.getString("packageName", null);
+      jdField_b_of_type_JavaLangString = localSharedPreferences.getString("downloadUrl", "");
+      c = localSharedPreferences.getString("iconUrl", "");
+      d = localSharedPreferences.getString("progressUrl", "");
+      e = localSharedPreferences.getString("md5", "");
+      f = localSharedPreferences.getString("apkSize", "");
+      jdField_a_of_type_Int = localSharedPreferences.getInt("versionCode", 0);
+      h = localSharedPreferences.getString("apkSign", "");
+      i = localSharedPreferences.getString("appName", "");
+      g = localSharedPreferences.getString("appId", "");
+      jdField_b_of_type_Int = localSharedPreferences.getInt("adId", 0);
+      j = localSharedPreferences.getString("traceInfo", "");
+      QLog.d("ApolloManager", 1, new Object[] { "App3DConfig init, sShow=", Boolean.valueOf(jdField_a_of_type_Boolean) });
       return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.hideAllPanels();
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "clk_panelnewuser_close", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurType()), 0, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-      }
     }
   }
   
-  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
+  private static void b(Map<String, String> paramMap, int paramInt, String paramString)
   {
-    if (paramApolloPanelGuideView.a() == 0)
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_app3d_config", 0);
+    try
     {
-      ApolloPanel.f(this.a);
-      paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(71);
-      paramApolloPanelGuideView.a(new ammt(this, paramApolloPanelGuideView));
-      paramApolloPanelGuideView.b("guide_page", 1);
+      boolean bool;
+      if (Integer.parseInt((String)paramMap.get("show")) == 1)
+      {
+        bool = true;
+        jdField_a_of_type_Boolean = bool;
+        jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_JavaLangString = (String)paramMap.get("packageName");
+        jdField_b_of_type_JavaLangString = (String)paramMap.get("downloadUrl");
+        c = (String)paramMap.get("iconUrl");
+        d = (String)paramMap.get("progressUrl");
+        e = (String)paramMap.get("md5");
+        f = (String)paramMap.get("apkSize");
+        jdField_a_of_type_Int = Integer.parseInt((String)paramMap.get("versionCode"));
+        h = (String)paramMap.get("apkSign");
+        i = (String)paramMap.get("appName");
+        g = (String)paramMap.get("appId");
+        jdField_b_of_type_Int = paramInt;
+        j = paramString;
+        if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(c)) || (TextUtils.isEmpty(g)))
+        {
+          jdField_a_of_type_Boolean = false;
+          QLog.w("ApolloManager", 1, "App3DConfig parse invalid param");
+        }
+        paramMap = localSharedPreferences.edit();
+        if (!jdField_a_of_type_Boolean) {
+          break label419;
+        }
+      }
+      label419:
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramMap.putInt("show", paramInt).putString("packageName", jdField_a_of_type_JavaLangString).putString("downloadUrl", jdField_b_of_type_JavaLangString).putString("md5", e).putString("iconUrl", c).putString("progressUrl", d).putString("apkSize", f).putInt("versionCode", jdField_a_of_type_Int).putString("apkSign", h).putString("appName", i).putString("appId", g).putInt("adId", jdField_b_of_type_Int).putString("traceInfo", j).commit();
+        QLog.d("ApolloManager", 1, new Object[] { "App3DConfig parse, sShow=", Boolean.valueOf(jdField_a_of_type_Boolean) });
+        return;
+        bool = false;
+        break;
+      }
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)) {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "exp_panelnewuser_open", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurType()), ApolloPanel.b, new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-    }
-    paramApolloPanelGuideView = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(71);
-    paramApolloPanelGuideView.a(new ammu(this, paramApolloPanelGuideView));
-    if (ApolloPanel.b == 0) {}
-    for (int i = 0;; i = 1)
+    catch (Throwable paramMap)
     {
-      paramApolloPanelGuideView.b("guide_open_cmshow", i);
-      return;
+      QLog.e("ApolloManager", 1, "App3DConfig parse error:", paramMap);
     }
   }
 }

@@ -1,22 +1,26 @@
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.os.MqqHandler;
+
 public class anwq
 {
-  public long a;
-  public String a;
-  public long b = -1L;
-  public long c = -1L;
-  
-  public anwq(long paramLong)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
+    }
   }
   
-  public void a()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.c = -1L;
-    this.b = -1L;
+    paramQQAppInterface = paramQQAppInterface.getProxyManager().a();
+    paramString = (RecentUser)paramQQAppInterface.findRecentUser(paramString, 1);
+    if (paramString != null) {
+      paramQQAppInterface.delRecentUser(paramString);
+    }
   }
 }
 

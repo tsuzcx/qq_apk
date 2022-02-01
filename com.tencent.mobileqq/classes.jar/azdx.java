@@ -1,6 +1,17 @@
+import com.tencent.qphone.base.util.QLog;
+
 class azdx
+  implements azdc
 {
-  private static azdw a = new azdw();
+  azdx(azdw paramazdw) {}
+  
+  public void a(azex paramazex)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VehicleMovementDetector", 2, "[status][vehicle] onLocationChanged: " + paramazex);
+    }
+    this.a.a(paramazex);
+  }
 }
 
 

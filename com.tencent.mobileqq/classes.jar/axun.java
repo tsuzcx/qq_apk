@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class axun
-  implements View.OnClickListener
+public abstract interface axun
 {
-  public axun(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    AutoReplyEditActivity.b(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(long paramLong);
 }
 
 

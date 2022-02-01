@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import alzx;
-import amad;
-import amke;
+import anan;
+import anat;
 import android.text.TextUtils;
+import anlq;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 
 public class CmGameVideoViewController$5
   implements Runnable
 {
-  public CmGameVideoViewController$5(amad paramamad, int paramInt, long paramLong) {}
+  public CmGameVideoViewController$5(anat paramanat, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if ((amad.a(this.this$0) == null) || (TextUtils.isEmpty(amad.a(this.this$0).c))) {
+    if ((anat.a(this.this$0) == null) || (TextUtils.isEmpty(anat.a(this.this$0).c))) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(amad.a(this.this$0).c);
+    localStringBuilder.append(anat.a(this.this$0).c);
     String str3 = "";
     String str1 = str3;
     switch (this.jdField_a_of_type_Int)
@@ -36,7 +36,7 @@ public class CmGameVideoViewController$5
         if (!TextUtils.isEmpty(str1)) {
           localStringBuilder.append("&video=").append(URLEncoder.encode(str1, "UTF-8"));
         }
-        amke.a(localStringBuilder.toString(), null, null);
+        anlq.a(localStringBuilder.toString(), null, null);
         return;
       }
       catch (Throwable localThrowable)
@@ -44,29 +44,29 @@ public class CmGameVideoViewController$5
         QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
         return;
       }
-      if ((amad.a(this.this$0) & 0x1) == 1) {
+      if ((anat.a(this.this$0) & 0x1) == 1) {
         break;
       }
-      String str2 = amad.a(this.this$0, 0L, 0L, 1L, 0L);
-      amad.a(this.this$0, amad.a(this.this$0) | 0x1);
+      String str2 = anat.a(this.this$0, 0L, 0L, 1L, 0L);
+      anat.a(this.this$0, anat.a(this.this$0) | 0x1);
       continue;
-      if ((amad.a(this.this$0) & 0x2) == 2) {
+      if ((anat.a(this.this$0) & 0x2) == 2) {
         break;
       }
       str2 = "";
-      amad.a(this.this$0, amad.a(this.this$0) | 0x2);
+      anat.a(this.this$0, anat.a(this.this$0) | 0x2);
       continue;
-      if ((amad.a(this.this$0) & 0x4) == 4) {
+      if ((anat.a(this.this$0) & 0x4) == 4) {
         break;
       }
-      str2 = amad.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
-      amad.a(this.this$0, amad.a(this.this$0) | 0x4);
+      str2 = anat.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
+      anat.a(this.this$0, anat.a(this.this$0) | 0x4);
       continue;
-      if ((amad.a(this.this$0) & 0x8) == 8) {
+      if ((anat.a(this.this$0) & 0x8) == 8) {
         break;
       }
-      str2 = amad.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
-      amad.a(this.this$0, amad.a(this.this$0) | 0x8);
+      str2 = anat.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
+      anat.a(this.this$0, anat.a(this.this$0) | 0x8);
     }
   }
 }

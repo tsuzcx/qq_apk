@@ -1,22 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-public class oom
-  extends amsu
+public final class oom
+  implements Parcelable.Creator<RecentShopParcel>
 {
-  public oom(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
-    }
+    return new RecentShopParcel(paramParcel);
+  }
+  
+  public RecentShopParcel[] a(int paramInt)
+  {
+    return new RecentShopParcel[paramInt];
   }
 }
 

@@ -1,29 +1,114 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bdsq
-  extends SosoInterface.OnLocationListener
+class bdsq
+  implements View.OnClickListener
 {
-  public bdsq(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, BaseActivity paramBaseActivity, bezd parambezd)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  bdsq(bdsp parambdsp) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    Context localContext = paramView.getContext();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("file_send_path", bdsp.a(this.a));
+    localBundle.putInt("video_play_caller", 2);
+    localBundle.putLong("message_click_start", System.currentTimeMillis());
+    Object localObject2 = "";
+    Object localObject1 = null;
+    try
     {
-      double d1 = paramSosoLbsInfo.mLocation.mLat02;
-      double d2 = paramSosoLbsInfo.mLocation.mLon02;
-      TroopBarPublishLocationSelectActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.jdField_a_of_type_Bezd);
+      localObject3 = AIOUtils.getMessage(paramView);
+      localObject1 = localObject3;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        continue;
+        String str = "";
+      }
+    }
+    if (localObject1 != null) {
+      localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("gdt_msgClick");
+    }
+    localBundle.putString("ad_gdt", (String)localObject2);
+    localObject2 = this.a.a(paramView);
+    if (localObject2 == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("structmsg.StructMsgItemVideoForPA", 2, "StructMsgForGeneralShare == NULL");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localBundle.putString("msg_id", String.valueOf(((StructMsgForGeneralShare)localObject2).msgId));
+      localObject1 = "";
+      if ((bdsp.b(this.a) == null) || (bdsp.b(this.a).equals(""))) {
+        break label520;
+      }
+      localBundle.putString("struct_msg_video_info", bdsp.b(this.a));
+      localBundle.putString("from_uin", ((StructMsgForGeneralShare)localObject2).currentAccountUin);
+      localBundle.putInt("from_uin_type", 1008);
+      localBundle.putString("from_session_uin", ((StructMsgForGeneralShare)localObject2).uin);
+      try
+      {
+        localObject3 = new JSONObject(bdsp.b(this.a));
+        if (localObject3 != null) {
+          localObject1 = ((JSONObject)localObject3).getString("file_uuid");
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          str = "";
+        }
+      }
+      localObject3 = new Intent(localContext, ShortVideoPlayActivity.class);
+      ((Intent)localObject3).putExtras(localBundle);
+      localContext.startActivity((Intent)localObject3);
+      localObject3 = ((FragmentActivity)localContext).getChatFragment().a();
+      bdla.b((QQAppInterface)localObject3, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9A", "0X8005C9A", 0, 1, 0, ((StructMsgForGeneralShare)localObject2).uin, ((StructMsgForGeneralShare)localObject2).currentAccountUin, bdsp.a(this.a), (String)localObject1);
+      if ((((StructMsgForGeneralShare)localObject2).message != null) && ("1".equals(((StructMsgForGeneralShare)localObject2).message.getExtInfoFromExtStr("is_AdArrive_Msg")))) {
+        try
+        {
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("puin", ((StructMsgForGeneralShare)localObject2).message.frienduin);
+          ((JSONObject)localObject1).put("type", this.a.l);
+          ((JSONObject)localObject1).put("index", this.a.j);
+          ((JSONObject)localObject1).put("name", this.a.k);
+          ((JSONObject)localObject1).put("net", String.valueOf(HttpUtil.getNetWorkType()));
+          ((JSONObject)localObject1).put("mobile_imei", DeviceInfoUtil.getIMEI());
+          ((JSONObject)localObject1).put("obj", "");
+          ((JSONObject)localObject1).put("gdt_cli_data", ((StructMsgForGeneralShare)localObject2).message.getExtInfoFromExtStr("gdt_msgClick"));
+          ((JSONObject)localObject1).put("view_id", ((StructMsgForGeneralShare)localObject2).message.getExtInfoFromExtStr("gdt_view_id"));
+          usf.a((AppInterface)localObject3, ((StructMsgForGeneralShare)localObject2).message.selfuin, ((JSONObject)localObject1).toString(), "" + ((StructMsgForGeneralShare)localObject2).msgId);
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
     }
   }
 }

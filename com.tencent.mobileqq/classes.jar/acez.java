@@ -1,26 +1,11 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.TipsInfo;
-
-public class acez
-  extends acew
+class acez
+  implements acfn
 {
-  public int a()
-  {
-    return 1000;
-  }
+  acez(acey paramacey) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void a(Object... paramVarArgs)
   {
-    new bblb().b(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.tips_info.has();
+    acey.a(this.a);
   }
 }
 

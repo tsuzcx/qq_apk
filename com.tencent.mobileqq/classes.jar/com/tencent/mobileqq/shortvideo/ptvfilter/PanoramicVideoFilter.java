@@ -8,7 +8,7 @@ import com.tencent.mobileqq.shortvideo.panoramicvideo.GL.FBO;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.SphereTo2DRenderObj;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.PanoramicLogUtil;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.PanoramicLogUtil;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SensorResource;
 import com.tencent.sveffects.SdkContext;
@@ -36,40 +36,6 @@ public class PanoramicVideoFilter
   public PanoramicVideoFilter(StickerItem paramStickerItem, String paramString)
   {
     super(paramStickerItem, paramString);
-  }
-  
-  private int getNextFrame(int paramInt)
-  {
-    int i = 0;
-    this.isImageReady = false;
-    if (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
-    {
-      PanoramicLogUtil.performanceLog("begin decodeFrame");
-      this.mVideoDecoder.decodeFrame(paramInt);
-      PanoramicLogUtil.performanceLog("begin updateFrame");
-      this.mVideoDecoder.updateFrame();
-      this.isImageReady = true;
-    }
-    for (;;)
-    {
-      return getTextureId();
-      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-      Object localObject = localBitmap;
-      if (localBitmap == null)
-      {
-        localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-        i = 1;
-      }
-      if (BitmapUtils.isLegal((Bitmap)localObject))
-      {
-        GlUtil.loadTexture(getTextureId(), (Bitmap)localObject);
-        if (i != 0) {
-          ((Bitmap)localObject).recycle();
-        }
-        this.isImageReady = true;
-      }
-    }
   }
   
   private void initFBO(int paramInt1, int paramInt2)
@@ -107,6 +73,40 @@ public class PanoramicVideoFilter
       super.clearGLSLSelf();
       this.renderObjGroup.destroy();
       this.renderObjGroup = null;
+    }
+  }
+  
+  public int getNextFrame(int paramInt)
+  {
+    int i = 0;
+    this.isImageReady = false;
+    if (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+    {
+      PanoramicLogUtil.performanceLog("begin decodeFrame");
+      this.mVideoDecoder.decodeFrame(paramInt);
+      PanoramicLogUtil.performanceLog("begin updateFrame");
+      this.mVideoDecoder.updateFrame();
+      this.isImageReady = true;
+    }
+    for (;;)
+    {
+      return getTextureId();
+      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+      Object localObject = localBitmap;
+      if (localBitmap == null)
+      {
+        localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
+        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+        i = 1;
+      }
+      if (BitmapUtils.isLegal((Bitmap)localObject))
+      {
+        GlUtil.loadTexture(getTextureId(), (Bitmap)localObject);
+        if (i != 0) {
+          ((Bitmap)localObject).recycle();
+        }
+        this.isImageReady = true;
+      }
     }
   }
   
@@ -175,7 +175,7 @@ public class PanoramicVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.PanoramicVideoFilter
  * JD-Core Version:    0.7.0.1
  */

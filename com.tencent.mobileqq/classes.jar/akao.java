@@ -1,40 +1,33 @@
-import android.widget.EditText;
+import com.tencent.qphone.base.util.QLog;
 
-public class akao
-  extends ajzw
+class akao
+  implements ajfo
 {
-  private int a;
+  akao(akam paramakam) {}
   
-  public akao(EditText paramEditText)
+  public void a(int paramInt)
   {
-    super(paramEditText);
-    this.jdField_a_of_type_Int = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 1, "onUnreadCountChanged, count = " + paramInt);
+    }
+    this.a.f();
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(aqxv paramaqxv)
   {
-    CharSequence localCharSequence = paramCharSequence;
-    if (paramCharSequence.toString().contains("."))
+    if (QLog.isColorLevel())
     {
-      localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
-      {
-        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
+      if (paramaqxv == null) {
+        break label46;
       }
+      QLog.d("MainAssistObserver", 1, "onTroopNotificationConfigUpdate, newConf = " + paramaqxv.toString());
     }
-    paramCharSequence = localCharSequence;
-    if (localCharSequence.toString().trim().substring(0).equals("."))
+    for (;;)
     {
-      paramCharSequence = "0" + localCharSequence;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
-    }
-    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
+      this.a.f();
+      return;
+      label46:
+      QLog.d("MainAssistObserver", 1, "onTroopNotificationConfigUpdate, newConf is null ");
     }
   }
 }

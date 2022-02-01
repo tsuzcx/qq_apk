@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class beei
-  implements ProxyListener
+  implements View.OnClickListener
 {
-  beei(beeh parambeeh, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
+  beei(beeh parambeeh) {}
   
-  public void onDeleteFinish(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
-  }
-  
-  public void onInsertFinish(String paramString)
-  {
-    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
-  }
-  
-  public void onUpdateFinish(String paramString, int paramInt)
-  {
-    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+    befn localbefn;
+    if (bhbx.a("tag_swip_icon_menu_item", paramView.getTag()))
+    {
+      localbefn = (befn)paramView.getTag(-10);
+      if (paramView.getId() != 2131364742) {
+        break label47;
+      }
+      beeh.a(this.a, localbefn);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label47:
+      if (beeh.a(this.a) != null) {
+        beeh.a(this.a).a(paramView.getId(), localbefn);
+      }
+    }
   }
 }
 

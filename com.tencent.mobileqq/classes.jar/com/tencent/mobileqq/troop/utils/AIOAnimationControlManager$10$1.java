@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.utils;
 
-import beyh;
-import beyi;
-import bfip;
+import bggl;
+import bggm;
+import bgrg;
 
 public class AIOAnimationControlManager$10$1
   implements Runnable
 {
-  public AIOAnimationControlManager$10$1(beyi parambeyi) {}
+  public AIOAnimationControlManager$10$1(bggm parambggm) {}
   
   public void run()
   {
     try
     {
-      if (this.a.jdField_a_of_type_Beyh.jdField_a_of_type_Bfip != null) {
-        this.a.jdField_a_of_type_Beyh.jdField_a_of_type_Bfip.b();
+      if (this.a.jdField_a_of_type_Bggl.jdField_a_of_type_Bgrg != null) {
+        this.a.jdField_a_of_type_Bggl.jdField_a_of_type_Bgrg.b();
       }
       label26:
-      this.a.jdField_a_of_type_Beyh.jdField_a_of_type_Int = 1;
-      this.a.jdField_a_of_type_Beyh.a(this.a.jdField_a_of_type_Boolean);
+      this.a.jdField_a_of_type_Bggl.jdField_a_of_type_Int = 1;
+      this.a.jdField_a_of_type_Bggl.a(this.a.jdField_a_of_type_Boolean);
       return;
     }
     catch (Throwable localThrowable)

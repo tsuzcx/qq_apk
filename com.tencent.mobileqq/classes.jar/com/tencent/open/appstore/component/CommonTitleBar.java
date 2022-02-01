@@ -8,10 +8,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhyf;
-import bhyg;
-import bhyh;
-import bhyi;
+import bjjh;
+import bjji;
+import bjjj;
+import bjjk;
 
 public class CommonTitleBar
   extends RelativeLayout
@@ -19,7 +19,7 @@ public class CommonTitleBar
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhyi jdField_a_of_type_Bhyi;
+  private bjjk jdField_a_of_type_Bjjk;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   
@@ -41,15 +41,15 @@ public class CommonTitleBar
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559665, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368338));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bhyf(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380021));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bhyg(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380054));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368339));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bhyh(this));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373018));
+    LayoutInflater.from(paramContext).inflate(2131559700, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368495));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bjjh(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380356));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bjji(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380389));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368496));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bjjj(this));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373228));
   }
   
   public void a()
@@ -74,9 +74,9 @@ public class CommonTitleBar
     }
   }
   
-  public void setIClickListener(bhyi parambhyi)
+  public void setIClickListener(bjjk parambjjk)
   {
-    this.jdField_a_of_type_Bhyi = parambhyi;
+    this.jdField_a_of_type_Bjjk = parambjjk;
   }
   
   public void setTitleText(String paramString)

@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajvx;
+import akrq;
 import android.text.TextUtils;
+import bnkt;
+import bnky;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
 
 public class RedPacketEmojiFragment$3$1
   implements Runnable
 {
-  public RedPacketEmojiFragment$3$1(ajvx paramajvx, boolean paramBoolean, AEResInfo paramAEResInfo) {}
+  public RedPacketEmojiFragment$3$1(akrq paramakrq, boolean paramBoolean, bnkt parambnkt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bnkt != null))
     {
-      String str = AEResUtil.getUnzippedPackageDir(this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo);
+      String str = bnky.a(this.jdField_a_of_type_Bnkt);
       if (QLog.isColorLevel()) {
         QLog.i("RedPacketEmojiFragment", 2, "[doLoading] onAEDownloadFinish unzipPath=" + str);
       }
       if (!TextUtils.isEmpty(str))
       {
-        this.jdField_a_of_type_Ajvx.a.c = str;
-        this.jdField_a_of_type_Ajvx.a.a();
+        this.jdField_a_of_type_Akrq.a.c = str;
+        this.jdField_a_of_type_Akrq.a.a();
         return;
       }
     }
-    this.jdField_a_of_type_Ajvx.a.b();
+    this.jdField_a_of_type_Akrq.a.b();
   }
 }
 

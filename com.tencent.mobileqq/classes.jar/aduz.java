@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aduz
-  implements bamr
+  extends anrc
 {
-  public aduz(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public aduz(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131718207);
+    this.a.e();
+    if (paramBoolean)
+    {
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
+      }
+      return;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,85 +1,56 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.ScripCmsInfo;
+import android.content.Context;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class rea
-  implements Cloneable
+  extends rbp
 {
-  public static int c;
-  public static int d;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c;
-  public String d;
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  
-  public rea()
+  public rea(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  public static rea a(articlesummary.ScripCmsInfo paramScripCmsInfo)
+  public rbp a()
   {
-    rea localrea = new rea();
-    localrea.jdField_a_of_type_JavaLangString = paramScripCmsInfo.bytes_main_title.get().toStringUtf8();
-    localrea.b = paramScripCmsInfo.bytes_sub_title.get().toStringUtf8();
-    localrea.jdField_c_of_type_JavaLangString = paramScripCmsInfo.bytes_background_url.get().toStringUtf8();
-    localrea.jdField_d_of_type_JavaLangString = paramScripCmsInfo.bytes_left_bottom_txt.get().toStringUtf8();
-    localrea.e = paramScripCmsInfo.bytes_icon_url.get().toStringUtf8();
-    localrea.f = paramScripCmsInfo.bytes_background_animation_url.get().toStringUtf8();
-    localrea.g = paramScripCmsInfo.bytes_guide_main_title.get().toStringUtf8();
-    localrea.h = paramScripCmsInfo.bytes_guide_sub_title.get().toStringUtf8();
-    localrea.i = paramScripCmsInfo.bytes_guide_background_url.get().toStringUtf8();
-    localrea.jdField_a_of_type_Long = paramScripCmsInfo.uint64_from_uin.get();
-    localrea.j = paramScripCmsInfo.bytes_scrip_tag.get().toStringUtf8();
-    jdField_c_of_type_Int = paramScripCmsInfo.uint32_scrip_total_sum.get();
-    jdField_d_of_type_Int = paramScripCmsInfo.uint32_frequency_limit.get();
-    return localrea;
+    this.jdField_a_of_type_Boolean = true;
+    return g();
   }
   
-  public rea a()
+  public rbp d()
   {
-    try
-    {
-      super.clone();
-      rea localrea = new rea();
-      localrea.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localrea.b = this.b;
-      localrea.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localrea.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      localrea.e = this.e;
-      localrea.f = this.f;
-      localrea.i = this.i;
-      localrea.g = this.g;
-      localrea.h = this.h;
-      localrea.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localrea.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localrea.j = this.j;
-      return localrea;
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Rbo;
+    Pair localPair;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof qhk)))
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScripCmsInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
-        }
+      localPair = pjr.a(((qhk)this.jdField_a_of_type_JavaLangObject).f(), ((qhk)this.jdField_a_of_type_JavaLangObject).e());
+      if (!pqw.g(((qhk)this.jdField_a_of_type_JavaLangObject).a())) {
+        break label105;
       }
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
     }
+    for (;;)
+    {
+      a(localComponentContentVerticalSmallVideo);
+      return this;
+      label105:
+      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
+    }
+  }
+  
+  public rbp e()
+  {
+    return null;
+  }
+  
+  public rbp g()
+  {
+    this.jdField_a_of_type_Rbo = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

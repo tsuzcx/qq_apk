@@ -1,22 +1,9 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
 
 public class bdqd
-  implements Animation.AnimationListener
 {
-  public bdqd(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.m = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a;
+  public View b;
 }
 
 

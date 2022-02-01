@@ -7,7 +7,7 @@ class MiniAppVideoController$20
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$0).fullScreen(MiniAppVideoController.access$800(this.this$0), MiniAppVideoController.access$1400(this.this$0), this.val$isLandscapeVideo, MiniAppVideoController.access$1300(MiniAppVideoController.access$600(this.this$0).getCurrentPostion()));
+    MiniAppVideoController.access$300(this.this$0).fullScreen(MiniAppVideoController.access$000(this.this$0), MiniAppVideoController.access$1400(this.this$0), this.val$isLandscapeVideo, MiniAppVideoController.access$1300(MiniAppVideoController.access$200(this.this$0).getCurrentPostion()));
     MiniAppVideoController.access$3600(this.this$0, this.val$isLandscapeVideo);
   }
 }

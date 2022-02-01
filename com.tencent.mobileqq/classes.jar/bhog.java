@@ -1,13 +1,10 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class bhog
+public abstract interface bhog
 {
-  protected Bundle a;
+  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
   
-  public bhog(Bundle paramBundle)
-  {
-    this.a = paramBundle;
-  }
+  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
 }
 
 

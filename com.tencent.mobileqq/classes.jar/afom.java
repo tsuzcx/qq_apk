@@ -1,103 +1,59 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper.3;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.util.QZLog;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import qqcircle.QQCircleCounter.GroupInfo;
+import qqcircle.QQCircleCounter.GroupInfoRsp;
 
-public class afom
-  implements afqc, afrc
+class afom
+  implements VSDispatchObserver.onVSRspCallBack<QQCircleCounter.GroupInfoRsp>
 {
-  Dialog jdField_a_of_type_AndroidAppDialog;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  Dialog b;
-  public Dialog c;
-  public Dialog d;
+  afom(afok paramafok, List paramList1, String paramString, TroopChatPie paramTroopChatPie, List paramList2) {}
   
-  public afom(afqw paramafqw, BaseChatPie paramBaseChatPie)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleCounter.GroupInfoRsp paramGroupInfoRsp)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.getActivity();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.sessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    paramafqw.a(this);
-  }
-  
-  public Dialog a(int paramInt)
-  {
-    switch (paramInt)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-    default: 
-      return null;
-    case 230: 
-      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755826);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559016);
-      localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365556);
-      localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365552);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365541);
-      TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365547);
-      localTextView1.setText(2131717682);
-      ((TextView)localObject).setText(2131717680);
-      localTextView3.setText(2131717681);
-      localTextView3.setOnClickListener(new afon(this));
-      localTextView2.setText(2131690620);
-      localTextView2.setOnClickListener(new afoo(this));
-      return this.jdField_a_of_type_AndroidAppDialog;
-    case 231: 
-      this.b = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755826);
-      this.b.setContentView(2131558434);
-      ((TextView)this.b.findViewById(2131365552)).setText(2131717683);
-      return this.b;
-    case 232: 
-      this.c = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755826);
-      this.c.setContentView(2131562884);
-      localTextView1 = (TextView)this.c.findViewById(2131378381);
-      localObject = (ImageView)this.c.findViewById(2131368367);
-      localTextView1.setText(2131690643);
-      ((ImageView)localObject).setImageResource(2130839630);
-      return this.c;
-    }
-    this.d = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131755826);
-    this.d.setContentView(2131562884);
-    TextView localTextView1 = (TextView)this.d.findViewById(2131378381);
-    Object localObject = (ImageView)this.d.findViewById(2131368367);
-    localTextView1.setText(2131690641);
-    ((ImageView)localObject).setImageResource(2130839615);
-    return this.d;
-  }
-  
-  public void a()
-  {
-    if ((this.b != null) && (this.b.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(231);
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, Dialog paramDialog)
-  {
-    switch (paramInt)
-    {
-    default: 
+      if (paramGroupInfoRsp != null)
+      {
+        if (paramGroupInfoRsp.groupinfo.size() == this.jdField_a_of_type_JavaUtilList.size())
+        {
+          int i = 0;
+          if (i < paramGroupInfoRsp.groupinfo.size())
+          {
+            if (((QQCircleCounter.GroupInfo)paramGroupInfoRsp.groupinfo.get(i)).isOpen.get()) {
+              afok.a(this.jdField_a_of_type_Afok).put(((QQCircleCounter.GroupInfo)paramGroupInfoRsp.groupinfo.get(i)).groupid.get(), Integer.valueOf(1));
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              afok.a(this.jdField_a_of_type_Afok).remove(((QQCircleCounter.GroupInfo)paramGroupInfoRsp.groupinfo.get(i)).groupid.get());
+            }
+          }
+        }
+        else
+        {
+          QZLog.d("AIOTroopQcircleRedDotManager", 2, "size of troop greyinfo rsp not equals to size of req");
+        }
+        this.jdField_a_of_type_Afok.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie, this.b);
+        afok.a(this.jdField_a_of_type_Afok, afok.a(this.jdField_a_of_type_Afok).keySet());
+        afok.c(this.jdField_a_of_type_Afok, System.currentTimeMillis());
+        afok.d(this.jdField_a_of_type_Afok, paramGroupInfoRsp.nextTime.get() * 1000);
+        LocalMultiProcConfig.putLong("qcircle_troop_redpoint_grey_last_timestamp", afok.c(this.jdField_a_of_type_Afok));
+        LocalMultiProcConfig.putLong("qcircle_troop_redpoint_grey_time_threshold", afok.d(this.jdField_a_of_type_Afok));
+        QZLog.d("AIOTroopQcircleRedDotManager", 2, "new greyTimeLimits from backend: " + afok.d(this.jdField_a_of_type_Afok));
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getUIHandler().postDelayed(new AIOJubaoDialogHelper.3(this), 1000L);
-  }
-  
-  public int[] a()
-  {
-    return new int[0];
+    this.jdField_a_of_type_Afok.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie, this.b);
   }
 }
 

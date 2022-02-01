@@ -1,50 +1,69 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class wxy
+public abstract class wxy
+  extends wxa
 {
-  public int a;
-  public Drawable a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
   
-  public wxy(View paramView)
+  protected String a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370004);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370003));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369994));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369990));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370002));
-    this.c = ((TextView)paramView.findViewById(2131361946));
-    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298970);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839656);
+    return null;
   }
   
-  public void a()
+  public void a(wye paramwye)
   {
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839651);
-    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839656);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.c.setVisibility(8);
+    super.a(paramwye);
+    paramwye.a = this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a(wyg paramwyg)
+  {
+    super.a(paramwyg);
+    paramwyg.b = 2;
+    paramwyg.d = ("[" + vzh.a + "] " + this.a);
+    paramwyg.a = this.d;
+    paramwyg.k = this.a;
+    paramwyg.l = this.b;
+    paramwyg.h = this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a(wyh paramwyh)
+  {
+    super.a(paramwyh);
+    paramwyh.jdField_c_of_type_JavaLangString = this.a;
+    paramwyh.d = this.b;
+    paramwyh.a = this.d;
+    paramwyh.e = this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a(wyi paramwyi)
+  {
+    super.a(paramwyi);
+    paramwyi.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    paramwyi.e = this.d;
+    paramwyi.a = this.a;
+    paramwyi.d = wyq.a(this.d);
+  }
+  
+  public void a(wyj paramwyj)
+  {
+    super.a(paramwyj);
+    paramwyj.jdField_c_of_type_JavaLangString = this.b;
+    paramwyj.a = this.a;
+    paramwyj.d = this.jdField_c_of_type_JavaLangString;
+    paramwyj.e = this.d;
+    paramwyj.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void b(wyj paramwyj)
+  {
+    super.b(paramwyj);
+    paramwyj.jdField_c_of_type_JavaLangString = this.b;
+    paramwyj.a = this.a;
+    paramwyj.d = this.jdField_c_of_type_JavaLangString;
+    paramwyj.e = this.d;
+    paramwyj.jdField_c_of_type_Boolean = true;
   }
 }
 

@@ -1,17 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
 
-class aety
-  implements View.OnClickListener
+public class aety
+  implements TextWatcher
 {
-  aety(aetx paramaetx) {}
+  public aety(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.b(paramView.getTag());
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramEditable == null) {}
+    for (;;)
+    {
+      return;
+      if (TextUtils.isEmpty(paramEditable.toString())) {
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
+      }
+      while (RegisterPersonalInfoActivity.a(this.a) != null)
+      {
+        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
+        return;
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+      }
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

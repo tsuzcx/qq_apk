@@ -1,60 +1,19 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public abstract class alqi
-  implements alqm
+class alqi
+  implements View.OnLayoutChangeListener
 {
-  protected int[] a;
+  alqi(alqh paramalqh) {}
   
-  public alqi(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setText(anvx.a(2131706920) + this.a.jdField_a_of_type_Int + "%");
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setVisibility(0);
   }
-  
-  private int[] a(int[] paramArrayOfInt)
-  {
-    if ((GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 2) && (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) == 2) {
-      arrayOfInt[i] = 4;
-    }
-    for (;;)
-    {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
-    }
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
-  }
-  
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

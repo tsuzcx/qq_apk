@@ -1,33 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aspo
+public class aspo
   implements View.OnClickListener
 {
-  aspo(FileManagerEntity paramFileManagerEntity, asqp paramasqp) {}
+  public aspo(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
   
   public void onClick(View paramView)
   {
-    try
-    {
-      if (bkss.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) {
-        bkss.a().a(this.jdField_a_of_type_Asqp.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), false);
-      }
-      for (;;)
-      {
-        label36:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity() != null) {
+      assp.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c);
     }
-    catch (Exception localException)
-    {
-      break label36;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

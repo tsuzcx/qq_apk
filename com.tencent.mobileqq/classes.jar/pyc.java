@@ -1,14 +1,24 @@
-import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.widget.AutoFitTextView;
 
-class pyc
-  implements zop
+public class pyc
+  implements bima
 {
-  pyc(pxw parampxw, String paramString) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
+  ImageView b;
   
-  public void callback(Bundle paramBundle)
+  public pyc(pya parampya) {}
+  
+  public int a()
   {
-    paramBundle = paramBundle.getString("BUNDLE_KEY_JS_OBJ", "");
-    this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
   }
 }
 

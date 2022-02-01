@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.Advertisement.fragment;
 
 import android.support.v4.view.ViewPager;
-import nxv;
+import oev;
 
 public class VideoCoverFragment$3$2
   implements Runnable
 {
-  public VideoCoverFragment$3$2(nxv paramnxv) {}
+  public VideoCoverFragment$3$2(oev paramoev) {}
   
   public void run()
   {

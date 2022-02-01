@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class poj
-  implements bjsz
+class poj
+  extends qdb
 {
-  public poj(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
-  
-  public void a(bjsy parambjsy)
+  poj(pob parampob, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
   {
-    switch (parambjsy.a)
-    {
-    }
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,36 +1,81 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class arab
-  implements blzp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "", "()V", "topBrowsers", "", "Lcom/tencent/mobileqq/browser/BrowserItem;", "blackListApps", "", "(Ljava/util/List;Ljava/util/List;)V", "getBlackListApps", "()Ljava/util/List;", "getTopBrowsers", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arab
 {
-  public arab(CameraEmoSingleSend paramCameraEmoSingleSend, blzn paramblzn, long paramLong) {}
+  @NotNull
+  private final List<aqgv> a;
+  @NotNull
+  private final List<String> b;
   
-  public void a()
+  public arab()
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sucFlag", "0");
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().collectPerformance(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
+    this((List)new ArrayList(), null, 2, null);
   }
   
-  public void a(String paramString)
+  public arab(@NotNull List<aqgv> paramList, @NotNull List<String> paramList1)
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
-    this.jdField_a_of_type_Blzn.a();
-    paramString = new HashMap();
-    paramString.put("sucFlag", "1");
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().collectPerformance(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
+    this.a = paramList;
+    this.b = paramList1;
+  }
+  
+  @NotNull
+  public final List<aqgv> a()
+  {
+    return this.a;
+  }
+  
+  @NotNull
+  public final List<String> b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof arab))
+      {
+        paramObject = (arab)paramObject;
+        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b))) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    List localList = this.a;
+    if (localList != null) {}
+    for (int i = localList.hashCode();; i = 0)
+    {
+      localList = this.b;
+      if (localList != null) {
+        j = localList.hashCode();
+      }
+      return i * 31 + j;
+    }
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "BrowserOpenBean(topBrowsers=" + this.a + ", blackListApps=" + this.b + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arab
  * JD-Core Version:    0.7.0.1
  */

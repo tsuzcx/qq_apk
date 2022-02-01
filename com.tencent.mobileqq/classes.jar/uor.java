@@ -1,41 +1,45 @@
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
 
-public class uor
+class uor
+  extends apas
 {
-  private static volatile uor jdField_a_of_type_Uor;
-  private String jdField_a_of_type_JavaLangString;
+  uor(uoo paramuoo, uon paramuon) {}
   
-  public static uor a()
+  public int a()
   {
-    if (jdField_a_of_type_Uor == null) {}
-    try
-    {
-      if (jdField_a_of_type_Uor == null) {
-        jdField_a_of_type_Uor = new uor();
-      }
-      return jdField_a_of_type_Uor;
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
     }
-    finally {}
+    uoo.b(this.jdField_a_of_type_Uoo, this.jdField_a_of_type_Uon);
+    StructLongMessageDownloadProcessor.deleteTask(uoo.a(this.jdField_a_of_type_Uoo), this.jdField_a_of_type_Uon.a);
+    ((bgiy)uoo.a(this.jdField_a_of_type_Uoo).getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_Uon.a);
   }
   
-  @NotNull
-  private uqy a(String paramString, uot paramuot)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    return new uos(this, paramuot, paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, uot paramuot)
-  {
-    uya.e("WSJoinGroupDataProcessor", "requestGroupSign: UserConfig request  groupId = " + paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    if (paramuot != null) {
-      paramuot.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Uon.a + ", success:" + String.valueOf(paramBoolean));
     }
-    paramString2 = new uws(paramString1, paramString2);
-    paramString2.b = paramString1;
-    paramString1 = new urj(paramString2, null, a(paramString1, paramuot), 4014);
-    urc.a().a(paramString1);
+    if ((uoo.a(this.jdField_a_of_type_Uoo) != null) && (uoo.a(this.jdField_a_of_type_Uoo).isResume())) {
+      uoo.a(this.jdField_a_of_type_Uoo).b(false);
+    }
   }
+  
+  public void b(Object paramObject)
+  {
+    uoo.a(this.jdField_a_of_type_Uoo);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

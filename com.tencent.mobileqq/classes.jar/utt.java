@@ -1,21 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.7;
 
-class utt
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class utt
+  implements DialogInterface.OnClickListener
 {
-  utt(utr paramutr) {}
+  public utt(PublicAccountH5AbilityPlugin.7 param7) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      uya.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

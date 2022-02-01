@@ -1,29 +1,22 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class thv
-  implements thw
+  implements ViewBase.OnClickListener
 {
   thv(thu paramthu) {}
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  public void onClick(ViewBase paramViewBase)
   {
-    thu.a(this.a).setRightButtonText(paramString, paramOnClickListener);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    thu.a(this.a).setTitleTransparent(paramBoolean);
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    thu.a(this.a).setLeftButtonText(paramString, paramOnClickListener);
+    thr.a(true);
+    tkj.a(this.a.a.a, "0X800974B");
+    pkh.a(tht.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class auxx
-  implements View.OnClickListener
+public class auxx
+  implements DialogInterface.OnClickListener
 {
-  auxx(auxv paramauxv, auxu paramauxu, auxz paramauxz) {}
+  public auxx(QQSettingMsgClearFragment paramQQSettingMsgClearFragment, DialogInterface.OnClickListener paramOnClickListener, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    auxv.a(this.jdField_a_of_type_Auxv).b(auxv.a(this.jdField_a_of_type_Auxv), this.jdField_a_of_type_Auxv, this.jdField_a_of_type_Auxu, this.jdField_a_of_type_Auxz);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    }
   }
 }
 

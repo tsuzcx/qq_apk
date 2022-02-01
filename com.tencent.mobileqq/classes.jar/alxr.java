@@ -1,20 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 
-final class alxr
-  implements EIPCResultCallback
+public class alxr
+  extends anvi
 {
-  alxr(long paramLong) {}
+  public alxr(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    alvx.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
+    if (paramBoolean1) {
+      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
     }
   }
 }

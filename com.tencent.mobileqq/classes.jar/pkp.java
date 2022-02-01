@@ -1,1066 +1,196 @@
-import android.content.res.Configuration;
-import android.support.annotation.UiThread;
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.1;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.2;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class pkp
 {
-  private static pkp jdField_a_of_type_Pkp;
-  private final CopyOnWriteArrayList<pkt> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static long jdField_a_of_type_Long = -1L;
+  private static MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+  private static long b;
   
-  public static pkp a()
+  public static long a()
   {
-    try
-    {
-      if (jdField_a_of_type_Pkp == null) {
-        jdField_a_of_type_Pkp = new pkp();
-      }
-      return jdField_a_of_type_Pkp;
-    }
-    finally {}
+    return jdField_a_of_type_Long;
   }
   
-  public void a()
+  public static MessageForStructing a()
   {
-    ??? = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    pkt localpkt;
+    return ((pws)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.WEISHI_MANAGER)).a();
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "Other";
+    }
+    return "MsgTab";
+  }
+  
+  public static String a(long paramLong)
+  {
+    return String.valueOf((paramLong - a()) / 1000L);
+  }
+  
+  public static String a(RecentBaseData paramRecentBaseData)
+  {
+    if (paramRecentBaseData != null) {
+      return b(paramRecentBaseData.mUnreadFlag);
+    }
+    return "";
+  }
+  
+  public static String a(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mArticleIds)))
+    {
+      paramMessageForStructing = paramMessageForStructing.structingMsg.mArticleIds.split("\\|");
+      if (paramMessageForStructing.length > 0) {
+        return paramMessageForStructing[0];
+      }
+    }
+    return "";
+  }
+  
+  public static void a()
+  {
+    a(9, "", "", "", "");
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    b = System.currentTimeMillis();
+    pwf.a(25);
+    ThreadManager.executeOnSubThread(new WeishiReportUtil.1(paramInt, paramString1, paramString2, paramString3, paramString4));
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
+  {
+    a(paramInt, paramString1, paramString2, paramString3, paramString4, paramLong, paramString5, true);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5, boolean paramBoolean)
+  {
+    ThreadManager.executeOnSubThread(new WeishiReportUtil.2(paramInt, paramString1, paramLong, paramString2, paramString3, paramString4));
+    if (paramBoolean) {
+      pwf.a();
+    }
+  }
+  
+  public static void a(RecentBaseData paramRecentBaseData, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    MessageForStructing localMessageForStructing = ((pws)localQQAppInterface.getManager(QQManagerFactory.WEISHI_MANAGER)).a();
+    if ((localMessageForStructing == null) || (localMessageForStructing.isread)) {}
+    String str;
     do
     {
-      if (!((Iterator)???).hasNext()) {
-        break;
-      }
-      localpkt = (pkt)((Iterator)???).next();
-    } while (!(localpkt instanceof anwi));
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        if (localpkt != null) {
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localpkt);
-        }
-        return;
-      }
-      Object localObject2 = null;
-    }
-  }
-  
-  public void a(float paramFloat, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramFloat, paramInt);
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).e(paramInt);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt1, paramInt2);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, puk parampuk)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt1, paramInt2, paramInt3, paramBoolean, parampuk);
-      }
-    }
-  }
-  
-  public void a(int paramInt, long paramLong, String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramLong, paramString);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt1, paramLong, paramString1, paramInt2, paramString2, paramString3);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt1, paramLong, paramList, paramInt2, paramInt3, paramBoolean);
-      }
-    }
-  }
-  
-  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramPositionData);
-      }
-    }
-  }
-  
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramArticleInfo, paramString1, paramString2);
-      }
-    }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramObject);
-      }
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramList);
-      }
-    }
-  }
-  
-  public void a(int paramInt, rdi paramrdi)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramrdi);
-      }
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt, paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void a(long paramLong, int paramInt, String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramLong, paramInt, paramString);
-      }
-    }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramLong, paramBoolean);
-      }
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramConfiguration);
-      }
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramView);
-      }
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramArticleInfo, paramBoolean);
-      }
-    }
-  }
-  
-  public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramTabChannelCoverInfo);
-      }
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramTopBannerInfo);
-      }
-    }
-  }
-  
-  public void a(Object paramObject, int paramInt, boolean paramBoolean, String... paramVarArgs)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramObject, paramInt, paramBoolean, paramVarArgs);
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    a(new pkq(this, paramString));
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramString, paramInt);
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramString, paramInt1, paramInt2);
-      }
-    }
-  }
-  
-  public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramString1, paramInt1, paramLong, paramString2, paramInt2, paramString3, paramString4);
-      }
-    }
-  }
-  
-  public void a(String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramString1, paramInt, paramRspBody, paramString2);
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramString1, paramString2, paramInt);
-      }
-    }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramArrayList);
-      }
-    }
-  }
-  
-  public void a(List<InterestLabelInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramList);
-      }
-    }
-  }
-  
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramList, paramList1);
-      }
-    }
-  }
-  
-  public void a(pkr parampkr)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        parampkr.a((pkt)localIterator.next());
-      }
-    }
-  }
-  
-  public void a(pkt parampkt)
-  {
-    if (parampkt == null) {}
-    while (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parampkt)) {
       return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parampkt);
-      return;
-    }
+      str = localMessageForStructing.getExtInfoFromExtStr("weishi_red_pnt_report");
+    } while ((!TextUtils.isEmpty(str)) && ("1".equals(str)));
+    localMessageForStructing.saveExtInfoToExtStr("weishi_red_pnt_report", "1");
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    ThreadManager.post(new WeishiReportUtil.3(localQQAppInterface, localMessageForStructing, paramRecentBaseData, paramInt), 5, null, false);
   }
   
-  public void a(boolean paramBoolean)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    if (QLog.isColorLevel()) {
+      QLog.d("WeishiReportUtil", 2, " " + paramString3 + "|" + paramString1 + "|" + paramString2 + "|" + paramString4);
+    }
+    olh.a(null, "dc01160", "", "", paramString3, paramString3, 0, 0, "", paramString1, paramString2, paramString4, false);
+  }
+  
+  public static boolean a(MessageForStructing paramMessageForStructing)
+  {
+    return (paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null);
+  }
+  
+  public static MessageForStructing b()
+  {
+    MessageForStructing localMessageForStructing = jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+    jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = null;
+    return localMessageForStructing;
+  }
+  
+  public static String b(int paramInt)
+  {
+    if (paramInt == 1) {
+      return "1";
+    }
+    if (paramInt == 2) {
+      return "0";
+    }
+    return "";
+  }
+  
+  public static String b(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mStrategyIds))) {
+      return paramMessageForStructing.structingMsg.mStrategyIds;
+    }
+    return "";
+  }
+  
+  public static void b()
+  {
+    a(9, "", "", "", "", b, "");
+  }
+  
+  public static String c(int paramInt)
+  {
+    switch (paramInt)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).d(paramBoolean);
+    default: 
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static String c(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mAlgorithmIds))) {
+      return paramMessageForStructing.structingMsg.mAlgorithmIds;
+    }
+    return "";
+  }
+  
+  public static void c()
+  {
+    String str = d(a());
+    ArrayList localArrayList = new ArrayList();
+    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+    localAttributeList.att_id.set(1);
+    localAttributeList.att_name.set("FolderStatus");
+    localAttributeList.att_value.set(str);
+    localArrayList.add(localAttributeList);
+    uuc.a(27, localArrayList);
+  }
+  
+  public static String d(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+    {
+      if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.reportEventFolderStatusValue)) {
+        return paramMessageForStructing.structingMsg.reportEventFolderStatusValue;
       }
+      return "2";
     }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, SparseArray<ChannelInfo> paramSparseArray)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramInt, paramSparseArray);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramInt, paramString);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramInt1, paramString1, paramString2, paramInt2);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, String paramString1, String paramString2, boolean paramBoolean2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean1, paramInt, paramString1, paramString2, paramBoolean2);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, pvn parampvn)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramInt, paramString, parampvn);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramLong, paramList);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (localIterator.hasNext()) {
-          ((pkt)localIterator.next()).a(paramBoolean, paramString);
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramString1, paramString2, paramString3, paramInt1, paramInt2);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramString1, paramString2, paramString3, paramInt1, paramString4, paramInt2, paramString5);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramString1, paramString2, paramString3, paramString4, paramInt);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, List<DiandianTopConfig> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).d(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  @Deprecated
-  public void a(boolean paramBoolean1, List<rcz> paramList, long paramLong, boolean paramBoolean2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramBoolean1, paramList, paramLong, paramBoolean2);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramList, paramList1);
-      }
-    }
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).ah_();
-      }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramInt);
-      }
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).c(paramInt, paramList);
-      }
-    }
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramLong, paramBoolean);
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramString);
-      }
-    }
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramString, paramInt);
-      }
-    }
-  }
-  
-  public void b(List<ucy> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a_(paramList);
-      }
-    }
-  }
-  
-  public void b(pkt parampkt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parampkt);
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramBoolean);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean, List<ChannelInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).e(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean1, List<rcz> paramList, long paramLong, boolean paramBoolean2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean1, paramList, paramLong, paramBoolean2);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).e();
-      }
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).c(paramInt);
-      }
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramInt, paramList);
-      }
-    }
-  }
-  
-  public void c(List<TagInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).c(paramList);
-      }
-    }
-  }
-  
-  @UiThread
-  public void c(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean);
-      }
-    }
-  }
-  
-  public void c(boolean paramBoolean, List<ChannelInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).f(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void c(boolean paramBoolean1, List<rcz> paramList, long paramLong, boolean paramBoolean2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).c(paramBoolean1, paramList, paramLong, paramBoolean2);
-      }
-    }
-  }
-  
-  public void d()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).f();
-      }
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).g(paramInt);
-      }
-    }
-  }
-  
-  public void d(int paramInt, List<oqd> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).d(paramInt, paramList);
-      }
-    }
-  }
-  
-  public void d(boolean paramBoolean, List<Integer> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).g(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void e()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).l();
-      }
-    }
-  }
-  
-  public void e(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).h(paramInt);
-      }
-    }
-  }
-  
-  public void e(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void f()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).n();
-      }
-    }
-  }
-  
-  public void f(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).d(paramInt);
-      }
-    }
-  }
-  
-  public void f(boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).b(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void g()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).o();
-      }
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).f(paramInt);
-      }
-    }
-  }
-  
-  public void g(boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).c(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void h()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).g();
-      }
-    }
-  }
-  
-  public void h(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).a(paramInt);
-      }
-    }
-  }
-  
-  public void h(boolean paramBoolean, List<ChannelCoverInfo> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).h(paramBoolean, paramList);
-      }
-    }
-  }
-  
-  public void i()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).h();
-      }
-    }
-  }
-  
-  public void j()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).i();
-      }
-    }
-  }
-  
-  public void k()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).j();
-      }
-    }
-  }
-  
-  public void l()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).k();
-      }
-    }
-  }
-  
-  public void m()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pkt)localIterator.next()).m();
-    }
-  }
-  
-  public void n()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((pkt)localIterator.next()).p();
-      }
-    }
-  }
-  
-  public void o()
-  {
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (localIterator.hasNext()) {
-          ((pkt)localIterator.next()).b();
-        }
-      }
-    }
-    finally {}
+    return "1";
   }
 }
 

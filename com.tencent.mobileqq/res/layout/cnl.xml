@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/e1r" android:background="@drawable/dwi" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip">
-        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/mz_" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/gnp" android:scaleType="centerCrop" android:layout_centerVertical="true" />
-        <TextView android:textSize="13.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/mza" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="腾讯俱乐部" android:layout_toRightOf="@id/mz_" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/mz9" android:clickable="true" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/gnu" android:layout_toRightOf="@id/mza" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:id="@id/k5v" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

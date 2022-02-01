@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyk
-  implements QQPermissionCallback
+  extends anqj
 {
-  public adyk(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public adyk(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(int paramInt)
   {
-    bfur.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QQIdentiferLegacy.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        ForwardRecentActivity.g(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ForwardOption.ForwardEntranceActivity", 1, "mInitObserver", localException);
+      }
+      this.a.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,50 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
 
 public class rhy
-  implements View.OnClickListener
+  extends ClickableSpan
+  implements tbx
 {
-  public rhy(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  boolean jdField_a_of_type_Boolean;
+  
+  public rhy(ComponentHeaderNewSocial paramComponentHeaderNewSocial, long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
+  }
   
   public void onClick(View paramView)
   {
-    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
-    ReadInJoyDeliverVideoActivity.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Long);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    {
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 

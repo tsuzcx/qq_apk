@@ -1,39 +1,74 @@
-import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class whb
-  implements whd
+public class whb
+  extends whv
 {
-  whb(wgz paramwgz) {}
+  qqstory_service.RspFeedLikeList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(wjk paramwjk)
+  public whb(wgz paramwgz) {}
+  
+  public whb(wgz paramwgz, qqstory_service.RspFeedLikeList paramRspFeedLikeList, boolean paramBoolean)
   {
-    wgz.a(this.a).c();
-    Activity localActivity = wgz.a(this.a).a();
-    if (localActivity == null)
-    {
-      c(paramwjk);
-      return;
-    }
-    wjw.a(localActivity, paramwjk, wgz.a(this.a));
+    super(paramRspFeedLikeList.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList = paramRspFeedLikeList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void b(wjk paramwjk)
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
   {
-    wgz.a(this.a).c();
-    if (wgz.a(this.a) != null)
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    wke localwke = (wke)wjs.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
     {
-      wgz.a(this.a).c(paramwjk.a);
-      wgz.a(this.a).a();
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localwke.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new wkz("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
+    }
+    if (!localArrayList2.isEmpty()) {
+      new wrb().a(1, localArrayList2);
+    }
+    return localArrayList1;
+  }
+  
+  public void a()
+  {
+    qqstory_struct.FeedLikeInfo localFeedLikeInfo = (qqstory_struct.FeedLikeInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList.feed_like_info.get();
+    List localList = a(localFeedLikeInfo);
+    this.jdField_a_of_type_Wgz.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = localFeedLikeInfo.like_total_count.get();
+    this.jdField_a_of_type_Wgz.a.jdField_a_of_type_JavaUtilList = localList;
+    this.jdField_a_of_type_Wgz.a.jdField_a_of_type_Wje.a(localList, this.jdField_a_of_type_Wgz.c, this.jdField_a_of_type_Boolean, true);
+    this.jdField_a_of_type_Wgz.a.a(localList);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Wgz.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedLikeDataProvider", 2, new Object[] { "GetLikeListResponse NetWork ErrorCode:", Integer.valueOf(paramInt) });
     }
   }
   
-  public void c(wjk paramwjk)
+  public void a(int paramInt, String paramString)
   {
-    wgz.a(this.a).c();
-    if (wgz.a(this.a) != null)
-    {
-      wgz.a(this.a).d(paramwjk.a);
-      wgz.a(this.a).a();
+    this.jdField_a_of_type_Wgz.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedLikeDataProvider", 2, "GetLikeListResponse fails: " + paramInt + "|" + paramString);
     }
   }
 }

@@ -1,16 +1,25 @@
-import kotlin.Lazy;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSNavigateTo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$Companion;", "", "()V", "CLIP_TAG", "", "TAG", "WATCH_WORD_COUNT", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzo
+public class qzo
+  implements IPTSNavigateTo
 {
-  @NotNull
-  public final qzn a()
+  public void navigateTo(String paramString)
   {
-    Lazy localLazy = qzn.a();
-    qzo localqzo = qzn.a;
-    return (qzn)localLazy.getValue();
+    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
+    paramString = Pattern.compile("\\/").split(paramString);
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      paramString = paramString[(paramString.length - 1)];
+      Intent localIntent = new Intent();
+      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", paramString);
+      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
+    }
   }
 }
 

@@ -1,8 +1,10 @@
 public abstract interface blgp
 {
-  public abstract void a(long paramLong, int paramInt, String paramString);
+  public abstract boolean a();
   
-  public abstract void a(long paramLong, blfp paramblfp);
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

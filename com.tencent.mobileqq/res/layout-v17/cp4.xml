@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/n0l" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/n0m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_alignParentTop="true" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/n0q" android:layout_width="150.0dip" android:layout_height="30.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/alh" android:ellipsize="end" android:id="@id/n0v" android:background="@drawable/bl8" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:paddingRight="6.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_above="@id/n0o" android:paddingStart="6.0dip" android:paddingEnd="6.0dip" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" />
+    <RelativeLayout android:id="@id/n0o" android:background="@drawable/djz" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/n0m">
+        <include layout="@layout/cua" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/n0p" android:background="@drawable/bl0" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/n0m">
+        <include layout="@layout/cub" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,60 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1;
-import com.tencent.mobileqq.utils.ContactUtils;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SingleLineTextView;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdb.submsgtype0xdb.MsgBody;
 
 public class acti
-  extends amsu
+  implements acpi
 {
-  public acti(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  void a(String paramString, View paramView)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
-      return;
-    }
-    this.a.runOnUiThread(new AssociatedAccountManageActivity.8.1(this, paramString, paramView));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    View localView;
-    do
-    {
-      return;
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
-      if (localView != null) {
-        a(paramString, localView);
-      }
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
-    } while (localView == null);
-    a(paramString, localView);
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
+      QLog.d("QAV.push", 2, "onLinePush receive 0x210_0xdb");
     }
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    View localView;
-    do
+    try
     {
+      submsgtype0xdb.MsgBody localMsgBody = new submsgtype0xdb.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
       return;
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
-      if (localView != null)
-      {
-        ((SingleLineTextView)localView.findViewById(2131371615)).setText(ContactUtils.getAccountNickName(this.a.app, paramString));
-        a(paramString, localView);
-      }
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
-    } while (localView == null);
-    ((SingleLineTextView)localView.findViewById(2131371615)).setText(ContactUtils.getAccountNickName(this.a.app, paramString));
-    a(paramString, localView);
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QAV.push", 2, "onLinePush 0x210_0xdb push exception : ", paramQQAppInterface);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

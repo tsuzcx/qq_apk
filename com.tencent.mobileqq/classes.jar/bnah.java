@@ -1,48 +1,36 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-
-public class bnah
-  implements FFmpegExecuteResponseCallback
+class bnah
 {
-  public bnah(CropVideoActivity paramCropVideoActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void onFailure(String paramString)
+  public bnah(bnaa parambnaa, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
-    }
-    this.a.a.sendEmptyMessage(4);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onFinish(boolean paramBoolean)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "未知错误";
+    case 0: 
+      return "初始化成功";
+    case -1: 
+      return "初始化AEKit失败";
+    case -2: 
+      return "加载YTCommon失败";
+    case -3: 
+      return "加载PtuTools失败";
+    case -4: 
+      return "加载PtuAlgo失败";
+    case -5: 
+      return "加载人脸检测失败";
+    case -6: 
+      return "加载PAG失败";
+    case -7: 
+      return "加载ImageAlgo失败";
     }
-    this.a.a.sendEmptyMessage(3);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
-    }
-  }
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
-    }
+    return "初始化TAVCut失败";
   }
 }
 

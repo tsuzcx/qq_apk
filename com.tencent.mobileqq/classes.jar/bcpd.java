@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMenberInfoRsp;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class bcpd
-  extends bcpg
+public class bcpd
+  extends bcpi
 {
-  bcpd(bcpa parambcpa) {}
+  public View a;
+  public LinearLayout a;
+  public TextView a;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public bcpd(ViewGroup paramViewGroup)
   {
-    QLog.w("studyroom.proto.StudyRoomObserver", 2, "onGetStudyRoomMemberCount error. troop:" + paramString1 + " rsp:" + paramInt + " msg:" + paramString2);
-  }
-  
-  public void a(String paramString, self_study_room_troop.StudyRoomMenberInfoRsp paramStudyRoomMenberInfoRsp)
-  {
-    int i = Math.max(paramStudyRoomMenberInfoRsp.member_count.get(), 0);
-    bcpa.a(this.a, paramString, i);
-    QLog.d("studyroom.proto.StudyRoomObserver", 2, "onGetStudyRoomMemberCountSucc troop:" + paramString + " member_count:" + paramStudyRoomMenberInfoRsp.member_count.get());
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559293, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131367165));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131367167));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131365776);
   }
 }
 

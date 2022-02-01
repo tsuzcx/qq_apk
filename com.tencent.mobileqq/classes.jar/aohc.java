@@ -1,14 +1,10 @@
-import com.tencent.YTFace.model.FaceStatus;
+import MWIFI.SCGet3rdCloudCheck;
 
-public class aohc
+public abstract interface aohc
 {
-  public int a = 3000;
-  public FaceStatus[] a;
+  public abstract void a(int paramInt);
   
-  public String toString()
-  {
-    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
-  }
+  public abstract void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck);
 }
 
 

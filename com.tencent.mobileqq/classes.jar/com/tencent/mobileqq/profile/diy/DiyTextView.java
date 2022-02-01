@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.diy;
 
-import aeta;
+import afkl;
 import android.content.Context;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class DiyTextView
   extends HiBoomTextView
 {
-  aeta a;
+  afkl a;
   
   public DiyTextView(Context paramContext)
   {
@@ -24,9 +24,9 @@ public class DiyTextView
     }
   }
   
-  public void setOnMeasuredListener(aeta paramaeta)
+  public void setOnMeasuredListener(afkl paramafkl)
   {
-    this.a = paramaeta;
+    this.a = paramafkl;
   }
 }
 

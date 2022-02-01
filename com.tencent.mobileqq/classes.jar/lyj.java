@@ -1,53 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.share.AVSchema;
 
-class lyj
-  implements WXShareHelper.WXShareListener
+public class lyj
+  implements DialogInterface.OnDismissListener
 {
-  lyj(lyh paramlyh, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
+  public lyj(AVSchema paramAVSchema) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = 2;
-    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Lyh.a + "]");
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    lyh locallyh;
-    int j;
-    int k;
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131718380), 0).a();
-    case -2: 
-      WXShareHelper.getInstance().removeObserver(this);
-      locallyh = this.jdField_a_of_type_Lyh;
-      j = this.jdField_a_of_type_Int;
-      k = this.b;
-      if (paramBaseResp.errCode != 0) {
-        break;
-      }
-    }
-    for (;;)
-    {
-      locallyh.a(j, k, i);
-      return;
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131718398), 0).a();
-      break;
-      i = 3;
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyj
  * JD-Core Version:    0.7.0.1
  */

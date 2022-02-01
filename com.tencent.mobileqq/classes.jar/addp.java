@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class addp
-  implements View.OnClickListener
+  extends ansi
 {
-  public addp(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public addp(AboutActivity paramAboutActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    DiscussionInfoCardActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.app.getAboutConfig();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
 }
 

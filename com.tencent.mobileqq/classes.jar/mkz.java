@@ -1,20 +1,20 @@
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mkz
-  implements lsb
+class mkz
+  implements DialogInterface.OnClickListener
 {
-  public mkz(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  mkz(mky parammky) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkz
  * JD-Core Version:    0.7.0.1
  */

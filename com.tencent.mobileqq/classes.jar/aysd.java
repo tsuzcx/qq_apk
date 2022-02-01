@@ -1,15 +1,23 @@
-class aysd
-  extends bgaf
+import android.view.View;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import java.util.List;
+
+public class aysd
+  implements bkzq
 {
-  aysd(aysb paramaysb, int paramInt)
-  {
-    super(paramInt);
-  }
+  public aysd(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    aysb.a(this.a, true);
-    aysb.a(this.a, 1);
+    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
+    {
+      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
+      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
+    }
+    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
+      OCRResultActivity.a(this.a).dismiss();
+    }
+    OCRResultActivity.a(this.a, null);
   }
 }
 

@@ -1,19 +1,40 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class ryg
-  implements apkw
+  implements AdapterView.OnItemClickListener
 {
-  public ryg(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public ryg(EditVideoFragment paramEditVideoFragment) {}
   
-  public ColorNote getColorNote()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    VideoInfo localVideoInfo = VideoFeedsPlayActivity.a(this.a);
-    if (localVideoInfo == null) {
-      return null;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramView != null)
+    {
+      bool1 = bool2;
+      if ((paramView.getTag(2131366016) instanceof Boolean)) {
+        bool1 = ((Boolean)paramView.getTag(2131366016)).booleanValue();
+      }
     }
-    return new aple().a(16908290).a(aplx.a + localVideoInfo.g).b(localVideoInfo.c).c(localVideoInfo.k).d(localVideoInfo.b).a(rwv.a(localVideoInfo)).a(VideoFeedsPlayActivity.a(this.a)).a();
+    if (!bool1)
+    {
+      EditVideoFragment.a(this.a, (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt));
+      if (EditVideoFragment.a(this.a) == null) {}
+    }
+    for (EditVideoFragment.a(this.a).columnId = EditVideoFragment.a(this.a).columnID;; EditVideoFragment.a(this.a).columnId = 0L)
+    {
+      EditVideoFragment.a(this.a).notifyDataSetChanged();
+      EditVideoFragment.a(this.a);
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      EditVideoFragment.a(this.a, null);
+    }
   }
 }
 

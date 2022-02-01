@@ -1,10 +1,9 @@
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.widget.VerticalGallery;
+
 public abstract interface apaf
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject);
-  
-  public abstract void b();
+  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
 }
 
 

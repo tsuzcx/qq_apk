@@ -1,47 +1,56 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.pluspanel.loader.c2c.C2CPlusPanelAppConfigHelper;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.List;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ayha
-  extends aygp
+class ayha
+  implements View.OnClickListener
 {
-  protected void b(BaseChatPie paramBaseChatPie)
+  ayha(ayfx paramayfx, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = paramBaseChatPie.sessionInfo;
-    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    bily localbily = (bily)localQQAppInterface.getManager(165);
-    if (localbily.f(((SessionInfo)localObject).curFriendUin))
-    {
-      if (localbily.c(((SessionInfo)localObject).curFriendUin))
+    Object localObject = new Intent(this.jdField_a_of_type_Ayfx.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString + "&type" + ayfx.a(this.jdField_a_of_type_Ayfx).gender);
+    String str = anvx.a(2131706719);
+    if (this.jdField_a_of_type_Ayfx.a.e != 2) {
+      if (ayfx.a(this.jdField_a_of_type_Ayfx).gender == 0)
       {
-        a(paramBaseChatPie.sessionInfo.curType, 201);
-        a(paramBaseChatPie.sessionInfo.curType, 202);
+        str = anvx.a(2131706788);
+        ((Intent)localObject).putExtra("title", str + anvx.a(2131706839));
+        this.jdField_a_of_type_Ayfx.a.startActivity((Intent)localObject);
+        localObject = this.jdField_a_of_type_Ayfx.a.app;
+        if (this.jdField_a_of_type_Ayfx.a.e != 2) {
+          break label276;
+        }
       }
-      a(paramBaseChatPie.sessionInfo.curType, 206);
-      a(paramBaseChatPie.sessionInfo.curType, 205);
-      return;
     }
-    if (npt.a(localQQAppInterface, ((SessionInfo)localObject).curFriendUin, ((SessionInfo)localObject).curType)) {
-      a(paramBaseChatPie.sessionInfo.curType, 201);
-    }
-    a(paramBaseChatPie.sessionInfo.curType, 217);
-    a(paramBaseChatPie.sessionInfo.curType, 218);
-    if (((SessionInfo)localObject).curType == 1008)
+    label276:
+    for (str = "1";; str = "2")
     {
-      localObject = ((amxz)localQQAppInterface.getManager(56)).b(((SessionInfo)localObject).curFriendUin);
-      if ((localObject != null) && ((((PublicAccountInfo)localObject).accountFlag & 0x20000000) != 0) && (ShortVideoUtils.sSupportShortVideo) && (VideoEnvironment.supportShortVideoRecordAndPlay(localQQAppInterface))) {
-        a(paramBaseChatPie.sessionInfo.curType, 1104788673);
+      bdla.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "data_card", "clk_pub", 0, 0, str, "", "", "");
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        str = anvx.a(2131706822);
+        break;
+        if (this.jdField_a_of_type_Ayfx.a.app != null) {
+          break label230;
+        }
+        QLog.w("NearbyProfileDisplayTribePanel", 2, "mActivity.app == null is true!");
       }
-      if ((localObject != null) && ((((PublicAccountInfo)localObject).accountFlag & 0x10000000) != 0)) {
-        this.a.add(0, C2CPlusPanelAppConfigHelper.INSTANCE.getAppInfoByAppID(1000000005));
-      }
+      label230:
+      ((axny)this.jdField_a_of_type_Ayfx.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).d.put(this.jdField_a_of_type_Ayfx.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+      break;
     }
-    a(paramBaseChatPie.sessionInfo.curType, 205);
   }
 }
 

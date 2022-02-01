@@ -1,53 +1,8 @@
-public class bgao
+public abstract interface bgao
 {
-  static final bgao jdField_a_of_type_Bgao = new bgao(0);
-  static final bgao b = new bgao(1);
-  static final bgao c = new bgao(257);
-  static final bgao d = new bgao(2);
-  static final bgao e = new bgao(258);
-  static final bgao f = new bgao(3);
-  static final bgao g = new bgao(259);
-  final int jdField_a_of_type_Int;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public bgao(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static bgao a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return jdField_a_of_type_Bgao;
-    case 1: 
-      return b;
-    case 2: 
-      return d;
-    case 3: 
-      return f;
-    case 257: 
-      return c;
-    case 258: 
-      return e;
-    }
-    return g;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int & 0xF) == 1;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int & 0xF) == 3;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int > 15;
-  }
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

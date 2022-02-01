@@ -1,47 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
 class alnz
-  extends bgod
+  extends Filter
 {
-  alnz(alnr paramalnr) {}
+  alnz(alny paramalny) {}
   
-  public void onDone(bgoe parambgoe)
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + parambgoe.f + ", status: " + parambgoe.a());
-    }
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
   }
   
-  public void onDoneFile(bgoe parambgoe)
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    if (parambgoe == null) {}
-    Bundle localBundle;
-    do
+    if (paramFilterResults.count > 0)
     {
-      return;
-      localBundle = parambgoe.a();
-    } while (localBundle == null);
-    int i = localBundle.getInt(parambgoe.c);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + i + ",httpCode: " + parambgoe.f + ", status: " + parambgoe.a() + ",task.currUrl:" + parambgoe.c);
-    }
-    if (1 == i) {}
-    try
-    {
-      super.onDone(parambgoe);
-      if (parambgoe.a() != 3) {
-        this.a.jdField_a_of_type_Amki.a(Boolean.valueOf(false));
-      }
-      this.a.b();
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "json_download_success", 0, 0, new String[0]);
+      this.a.notifyDataSetChanged();
       return;
     }
-    catch (Exception parambgoe)
-    {
-      QLog.e("ApolloManager", 1, "read apollo panel json content fail", parambgoe);
-    }
+    this.a.notifyDataSetInvalidated();
   }
 }
 

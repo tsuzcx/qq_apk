@@ -1,29 +1,27 @@
-import android.support.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-class pxm
-  implements pxo<BEAN, COOKIE>
+public class pxm
+  implements View.OnClickListener
 {
-  pxm(pxj parampxj, pxi parampxi) {}
+  public pxm(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pxj.a.addAll(paramArrayList);
-    if (paramBoolean1)
+    this.a.doOnBackEvent();
+    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {}
+    for (;;)
     {
-      pxj.a(this.jdField_a_of_type_Pxj, paramCOOKIE);
-      paramArrayList = this.jdField_a_of_type_Pxj;
-      if (paramBoolean2) {
-        break label68;
-      }
-    }
-    label68:
-    for (paramBoolean2 = true;; paramBoolean2 = false)
-    {
-      pxj.a(paramArrayList, paramBoolean2);
-      this.jdField_a_of_type_Pxi.a(paramBoolean1, this.jdField_a_of_type_Pxj.a, paramInt2, paramString);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("stat_src", "5");
+      ois.a(new ufy().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(20).b(27).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(ois.a(localHashMap)).a());
     }
   }
 }

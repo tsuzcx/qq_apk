@@ -1,34 +1,82 @@
-import android.view.animation.Interpolator;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-abstract class bhkp
-  implements Interpolator
+public final class bhkp
 {
-  private final float jdField_a_of_type_Float;
-  private final float[] jdField_a_of_type_ArrayOfFloat;
-  
-  public bhkp(float[] paramArrayOfFloat)
+  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_Float = (1.0F / (this.jdField_a_of_type_ArrayOfFloat.length - 1));
+    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
+    paramString.setAccessible(true);
+    return paramString.invoke(paramObject, paramArrayOfObject);
   }
   
-  public float getInterpolation(float paramFloat)
+  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
   {
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
+    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
+  }
+  
+  public static Object a(String paramString1, Object paramObject, String paramString2)
+  {
+    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
+    paramString1.setAccessible(true);
+    return paramString1.get(paramObject);
+  }
+  
+  public static Object a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, (Object[])null);
+  }
+  
+  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
+  {
+    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
+  }
+  
+  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
+  {
+    paramString1 = Class.forName(paramString1);
+    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
+  }
+  
+  private static Class<?>[] a(Object[] paramArrayOfObject)
+  {
+    Object localObject = (Class[])null;
+    if (paramArrayOfObject != null)
+    {
+      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
+      int i = 0;
+      int j = paramArrayOfObject.length;
+      localObject = arrayOfClass;
+      if (i < j)
+      {
+        if (paramArrayOfObject[i] != null)
+        {
+          arrayOfClass[i] = paramArrayOfObject[i].getClass();
+          label45:
+          if (arrayOfClass[i] != Integer.class) {
+            break label77;
+          }
+          arrayOfClass[i] = Integer.TYPE;
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          arrayOfClass[i] = String.class;
+          break label45;
+          label77:
+          if (arrayOfClass[i] == Boolean.class) {
+            arrayOfClass[i] = Boolean.TYPE;
+          }
+        }
+      }
     }
-    if (paramFloat <= 0.0F) {
-      return 0.0F;
-    }
-    int i = Math.min((int)((this.jdField_a_of_type_ArrayOfFloat.length - 1) * paramFloat), this.jdField_a_of_type_ArrayOfFloat.length - 2);
-    paramFloat = (paramFloat - i * this.jdField_a_of_type_Float) / this.jdField_a_of_type_Float;
-    float f = this.jdField_a_of_type_ArrayOfFloat[i];
-    return (this.jdField_a_of_type_ArrayOfFloat[(i + 1)] - this.jdField_a_of_type_ArrayOfFloat[i]) * paramFloat + f;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhkp
  * JD-Core Version:    0.7.0.1
  */

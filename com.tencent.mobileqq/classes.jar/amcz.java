@@ -1,18 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amcz
-  extends aqyp
+  implements View.OnClickListener
 {
-  public amcz(ApolloGameActivity paramApolloGameActivity) {}
+  public amcz(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public void onClick(View paramView) {}
 }
 
 

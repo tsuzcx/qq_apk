@@ -1,22 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-class amdh
-  implements amdy
+public class amdh
 {
-  amdh(amdf paramamdf) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    if (paramBoolean)
+    if ((paramInt == 3) && (aunx.a().a()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
-      }
-      if (amdf.a(this.a) != null) {
-        amdf.a(this.a).e();
-      }
-      this.a.c();
+      localObject = new HashMap();
+      ((Map)localObject).put("uin", paramString);
+      ((Map)localObject).put("from", Integer.valueOf(3));
+      auon.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
+      return;
     }
+    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
+    ((Intent)localObject).putExtra("key_friend_uin", paramString);
+    ((Intent)localObject).putExtra("key_start_from", 3);
+    paramActivity.startActivity((Intent)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
   }
 }
 

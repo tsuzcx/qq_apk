@@ -1,88 +1,86 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationListener;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.location.data.LocationRoom;
+import android.annotation.SuppressLint;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Map;
 
-class avcz
-  implements TencentLocationListener
+public class avcz
+  extends RecyclerView.OnScrollListener
 {
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private volatile boolean c;
+  public avcz(QQGamePubAccountFragment paramQQGamePubAccountFragment, LinearLayoutManager paramLinearLayoutManager) {}
   
-  avcz(avcw paramavcw, boolean paramBoolean, Runnable paramRunnable, MqqHandler paramMqqHandler, LocationRoom paramLocationRoom)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.c = paramBoolean;
-      this.jdField_b_of_type_JavaLangRunnable = this.jdField_a_of_type_JavaLangRunnable;
-      return;
-    }
-  }
-  
-  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      LatLng localLatLng = new LatLng(paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude());
-      paramTencentLocation = localLatLng;
-      if (QLog.isColorLevel())
-      {
-        paramTencentLocation = localLatLng;
-        if (avcw.a != null) {
-          paramTencentLocation = avcw.a;
-        }
-      }
-      if ((paramTencentLocation.getLatitude() == 0.0D) && (paramTencentLocation.getLongitude() == 0.0D))
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = false;
-          QLog.e("LocationHandler", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
-        }
-        return;
-      }
-      avcw.a(this.jdField_a_of_type_Avcw, paramTencentLocation);
-    }
-    if ((this.c) && (this.jdField_b_of_type_JavaLangRunnable != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
-      }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_b_of_type_JavaLangRunnable = null;
-    }
-    if (paramInt != 0)
-    {
-      paramTencentLocation = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-      avfq.a(this.jdField_a_of_type_Avcw.app, paramTencentLocation.a(), paramTencentLocation.a(), 1);
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {}
     for (;;)
     {
-      if ((paramInt == 0) || (HwNetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))) {
-        MagnifierSDK.a().a().a("requestSoso", new Object[] { Integer.valueOf(-1), Boolean.valueOf(false), "LocationHandler", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. errorCode: " + paramInt + " errorMsg: " + paramString);
       return;
-      if (this.c)
+      if (paramInt == 0)
       {
-        this.c = false;
-        this.jdField_a_of_type_Avcw.a(avcw.a(this.jdField_a_of_type_Avcw).a(), avcw.a(this.jdField_a_of_type_Avcw).a());
+        if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition() < 1) || ((QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment) != null) && (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment) != null) && (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getCurrentItem() < QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).size())))
+        {
+          paramInt = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+          QQGamePubAccountFragment.d(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).put(Long.valueOf(((MessageRecord)QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).get(QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getCurrentItem())).uniseq), Integer.valueOf(paramInt));
+        }
+        if (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment))
+        {
+          abuf.a(amwn.a(), "769", "205029", "", "76902", "1", "160", new String[] { this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a(), "", "20" });
+          this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.b(true);
+        }
+        paramInt = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+        int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+        while (paramInt <= i)
+        {
+          paramRecyclerView = QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(paramInt));
+          if (((paramRecyclerView instanceof avbk)) && (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).a(paramInt) != null) && (QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).a(paramInt).type != 3)) {
+            ((avbk)paramRecyclerView).a.checkAndPlay();
+          }
+          paramInt += 1;
+        }
       }
-      avcw.a(this.jdField_a_of_type_Avcw, true);
     }
   }
   
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
+  @SuppressLint({"LongLogTag"})
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    QLog.d("QQGamePubAccountFragment", 1, "onScrolled y=" + paramInt2 + "the last:" + QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getItemCount() + "," + this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastCompletelyVisibleItemPosition());
+    paramInt1 = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastCompletelyVisibleItemPosition();
+    if ((paramInt2 > 0) && (paramInt1 == QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).getItemCount() - 1)) {
+      QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, true);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition() == 1) {
+        if (this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a(QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment)))
+        {
+          QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).a();
+          avdq.b(4);
+        }
+      }
+      while (!this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment.a(QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment)))
+      {
+        return;
+        QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, false);
+        break;
+      }
+      QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment).b();
+      return;
+    }
+    catch (Throwable paramRecyclerView)
+    {
+      paramRecyclerView.printStackTrace();
+    }
+  }
 }
 
 

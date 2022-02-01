@@ -1,11 +1,16 @@
-import com.tencent.ad.tangram.version.AdVersionAdapter;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class abkl
-  implements AdVersionAdapter
+class abkl
+  implements bkzq
 {
-  public String getAppVersion()
+  abkl(abkj paramabkj, ahdf paramahdf, MessageForPtt paramMessageForPtt, bkzi parambkzi) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    return abrp.a();
+    this.jdField_a_of_type_Abkj.a(this.jdField_a_of_type_Ahdf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    this.jdField_a_of_type_Abkj.b();
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

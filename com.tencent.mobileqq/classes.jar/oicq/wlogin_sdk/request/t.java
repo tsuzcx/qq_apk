@@ -404,7 +404,7 @@ public class t
           localObject2 = util.a.a(u, "ro.vivo.market.name");
           boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
           if (bool) {
-            break label962;
+            break label973;
           }
           localObject1 = localObject2;
         }
@@ -427,20 +427,20 @@ public class t
           }
         }
         if (localObject1 != null) {
-          break label932;
+          break label943;
         }
         J = new byte[0];
         localObject1 = Build.BRAND;
         if (localObject1 != null) {
-          break label942;
+          break label953;
         }
         Q = new byte[0];
         if ((!util.isFileExist("/system/bin/su")) && (!util.isFileExist("/system/xbin/su")) && (!util.isFileExist("/sbin/su"))) {
-          break label952;
+          break label963;
         }
         i1 = 1;
         if (i1 != 1) {
-          break label957;
+          break label968;
         }
         i1 = 1;
         ab = i1;
@@ -452,7 +452,7 @@ public class t
         if (util.need_pow_test(ao)) {
           b.a();
         }
-        util.LOGI("init ok os ver:" + new String(K) + " cur_guid:" + util.buf_to_string(B) + " svn " + 2436L + " at " + m(), "");
+        util.LOGI("init ok os ver:" + new String(K) + " cur_guid:" + util.buf_to_string(B) + " svn " + 2438L + " at " + m(), "");
         return;
         W = 1;
         Y = 17;
@@ -461,13 +461,12 @@ public class t
     if ((localObject1 == null) || (localObject1.length <= 0))
     {
       localObject1 = localObject2;
-      label775:
       aF = false;
       if (!Arrays.equals((byte[])localObject3, (byte[])localObject1)) {
-        break label921;
+        break label932;
       }
     }
-    label921:
+    label932:
     for (X = 0;; X = 1)
     {
       W = 1;
@@ -475,19 +474,23 @@ public class t
       Y = 1;
       break;
       if ((!Arrays.equals((byte[])localObject3, (byte[])localObject2)) || (!aF)) {
-        break label965;
+        break label976;
       }
       localObject3 = m();
-      if ((TextUtils.isEmpty((CharSequence)localObject3)) || (!((String)localObject3).endsWith(":MSF")) || (!util.needChangeGuid(u))) {
-        break label965;
+      if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).endsWith(":MSF"))) {}
+      for (i1 = 1;; i1 = 0)
+      {
+        if ((i1 == 0) || (!util.needChangeGuid(u))) {
+          break label976;
+        }
+        util.LOGI("reset guid :" + util.buf_to_string((byte[])localObject2) + "|" + util.buf_to_string((byte[])localObject1), "");
+        c.a(u, (byte[])localObject2, (byte[])localObject1);
+        util.saveGuidToFile(u, (byte[])localObject1);
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
+        break;
       }
-      util.LOGI("reset guid :" + util.buf_to_string((byte[])localObject2) + "|" + util.buf_to_string((byte[])localObject1), "");
-      c.a(u, (byte[])localObject2, (byte[])localObject1);
-      util.saveGuidToFile(u, (byte[])localObject1);
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      break label775;
     }
   }
   

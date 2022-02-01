@@ -1,58 +1,56 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import eipc.EIPCResult;
 
-class auop
-  implements auon
+public class auop
+  extends QIPCModule
 {
-  auop(auoo paramauoo) {}
+  private static volatile auop a;
   
-  public void a(DownloaderTask paramDownloaderTask)
+  private auop(String paramString)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
-    if (auoo.a(this.a) != null) {
-      auoo.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((auoo.a(this.a) != null) && (auoo.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (auoo.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((auom)auoo.a(this.a).get(paramDownloaderTask.getUrl())).a();
-    }
-    auoo.a(this.a, paramDownloaderTask.getUrl());
+    super(paramString);
   }
   
-  public void b(DownloaderTask paramDownloaderTask)
+  public static auop a()
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void c(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
-    if (auoo.a(this.a) != null) {
-      auoo.a(this.a).deleteTask(paramDownloaderTask, false);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new auop("FlutterMainQIPCModule");
+      }
+      return a;
     }
-    if ((auoo.a(this.a) != null) && (auoo.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (auoo.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((auom)auoo.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
+    finally {}
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    auog.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), new auoq(this, paramString1, paramString2));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (paramBundle == null) {}
+    for (paramBundle = "com.tencent.mobileqq:tool";; paramBundle = paramBundle.getString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:tool"))
+    {
+      QLog.d("FlutterMainQIPCModule", 2, "[onCall] procName=" + paramBundle);
+      if (!"ACTION_INSTALL_ENGINE".equals(paramString)) {
+        break;
+      }
+      a(paramBundle, "ACTION_INSTALL_RESULT");
+      return EIPCResult.createSuccessResult(null);
     }
-    auoo.a(this.a, paramDownloaderTask.getUrl());
-  }
-  
-  public void d(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void e(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
-    if ((auoo.a(this.a) != null) && (auoo.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (auoo.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((auom)auoo.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    if ("ACTION_PREDOWNLOAD_ENGINE".equals(paramString))
+    {
+      a(paramBundle, "ACTION_PREDOWNLOAD_RESULT");
+      return EIPCResult.createSuccessResult(null);
     }
+    return null;
   }
 }
 

@@ -1,17 +1,17 @@
-public class rfq
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class rfq
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
+  rfq(rfo paramrfo) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "RedPoint{isShow=" + this.jdField_a_of_type_Boolean + ", startTimestamp=" + this.jdField_a_of_type_Long + ", animationTimestamp=" + this.jdField_c_of_type_Long + ", endTimestamp=" + this.jdField_b_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", titleText=" + this.jdField_a_of_type_JavaLangString + ", titleColor=" + this.jdField_b_of_type_Int + ", titleBgColor=" + this.jdField_c_of_type_Int + '}';
+    pqx.a(this.a.jdField_a_of_type_AndroidContentContext, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    pqb.b(((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), ((qfw)this.a.jdField_a_of_type_JavaLangObject).e());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

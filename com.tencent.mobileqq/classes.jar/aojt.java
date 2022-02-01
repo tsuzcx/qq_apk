@@ -1,12 +1,39 @@
-public abstract interface aojt
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+class aojt
+  extends nhd
 {
-  public abstract void a();
+  aojt(aojq paramaojq, long paramLong, Map paramMap, AVGameAppInterface paramAVGameAppInterface, aojw paramaojw) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
+  public void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (paramLong != this.jdField_a_of_type_Long) {
+      QLog.e("GameRoomObserver", 1, "onGameShare fail: observer not match");
+    }
+    do
+    {
+      return;
+      QLog.d("GameRoomObserver", 1, "onGameShare isSuccess: " + paramBoolean + " shareUrl: " + paramString + " mark: " + paramLong);
+      nhd localnhd = (nhd)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
+      if (localnhd == null)
+      {
+        QLog.e("GameRoomObserver", 1, "onGameShare fail: observer not exist");
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.removeObserver(localnhd);
+    } while (this.jdField_a_of_type_Aojw == null);
+    try
+    {
+      this.jdField_a_of_type_Aojw.a(paramBoolean, paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("GameRoomObserver", 1, "onGameShare exception: " + paramString.getMessage());
+    }
+  }
 }
 
 

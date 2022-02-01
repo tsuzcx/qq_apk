@@ -1,9 +1,28 @@
-class ljb
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+
+public class ljb
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public static lix a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
+  {
+    VideoAppInterface localVideoAppInterface = null;
+    if (AudioHelper.f()) {
+      QLog.w("ARZimuTaskFactory", 1, "create, id[" + paramString + "], seq[" + paramLong + "]");
+    }
+    if ("spit".equals(paramString))
+    {
+      paramVideoAppInterface = new ljg(paramLong, paramVideoAppInterface);
+      localVideoAppInterface = paramVideoAppInterface;
+      if ((paramContext instanceof ljh))
+      {
+        ((ljg)paramVideoAppInterface).a((ljh)paramContext);
+        localVideoAppInterface = paramVideoAppInterface;
+      }
+    }
+    return localVideoAppInterface;
+  }
 }
 
 

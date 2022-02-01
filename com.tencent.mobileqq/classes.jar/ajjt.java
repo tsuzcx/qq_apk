@@ -1,9 +1,6 @@
-class ajjt
-  implements agxc
+public abstract interface ajjt
 {
-  ajjt(ajjs paramajjs) {}
-  
-  public void onPanelIconClick(Object paramObject) {}
+  public abstract void a(int paramInt);
 }
 
 

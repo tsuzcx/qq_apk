@@ -1,41 +1,24 @@
-import android.os.Parcel;
-import org.json.JSONException;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class uuh
+  implements bghi
 {
-  public String mMsgData;
-  public String mPushId;
+  public uuh(PublicAccountUtil.19 param19) {}
   
-  protected uuh(Parcel paramParcel)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.mPushId = paramParcel.readString();
-    this.mMsgData = paramParcel.readString();
-  }
-  
-  protected uuh(String paramString)
-  {
-    this.mMsgData = paramString;
-    try
-    {
-      parseJson(new JSONObject(paramString));
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (JSONException paramString)
-    {
-      uya.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
-    }
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject)
-  {
-    this.mPushId = paramJSONObject.optString("pushid");
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.mPushId);
-    paramParcel.writeString(this.mMsgData);
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 

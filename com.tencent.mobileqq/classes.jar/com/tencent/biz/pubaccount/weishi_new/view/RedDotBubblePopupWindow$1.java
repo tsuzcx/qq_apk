@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Handler;
 import android.view.View;
 import com.tencent.mobileqq.utils.ViewUtils;
-import uya;
+import vmp;
 
 class RedDotBubblePopupWindow$1
   implements Runnable
@@ -24,7 +24,7 @@ class RedDotBubblePopupWindow$1
       RedDotBubblePopupWindow.a(this.this$0).measure(0, 0);
       i = RedDotBubblePopupWindow.a(this.this$0).getMeasuredWidth();
       int j = RedDotBubblePopupWindow.a(this.this$0).getMeasuredHeight();
-      uya.d("RedDotBubblePopupWindow", "popupWidth:" + i + " popupHeight:" + j + "   location[0]:" + arrayOfInt[0] + " location[1]:" + arrayOfInt[1] + " getWidth:" + this.a.getWidth() + " getHeight:" + this.a.getHeight());
+      vmp.d("RedDotBubblePopupWindow", "popupWidth:" + i + " popupHeight:" + j + "   location[0]:" + arrayOfInt[0] + " location[1]:" + arrayOfInt[1] + " getWidth:" + this.a.getWidth() + " getHeight:" + this.a.getHeight());
     } while ((RedDotBubblePopupWindow.a(this.this$0) == null) || (RedDotBubblePopupWindow.a(this.this$0).isFinishing()));
     if (RedDotBubblePopupWindow.a(this.this$0) == null) {
       RedDotBubblePopupWindow.a(this.this$0, new RedDotBubblePopupWindow.DisPopupRunnable(this.this$0, this.this$0));
@@ -35,7 +35,7 @@ class RedDotBubblePopupWindow$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RedDotBubblePopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

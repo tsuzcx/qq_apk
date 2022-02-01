@@ -1,4 +1,7 @@
-class lfz {}
+public class lfz
+{
+  public int[] a = { 9, 11 };
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

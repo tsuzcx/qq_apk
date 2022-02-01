@@ -1,19 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class ajsu
-  extends ajqv
+  implements DialogInterface.OnClickListener
 {
-  ajsu(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public ajsu(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, adps paramadps) {}
   
-  public void initData(Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.initData(paramIntent);
-    ((ajrc)this.mOtherCommonData).a = 6291456;
-    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
+    this.jdField_a_of_type_Adps.a(false);
   }
 }
 

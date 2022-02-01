@@ -1,20 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
 
-public class bmnj
-  implements Animation.AnimationListener
+class bmnj
+  implements TianShuGetAdvCallback
 {
-  public bmnj(VideoEditToolBar paramVideoEditToolBar) {}
+  bmnj(bmni parambmni) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    this.a.setVisibility(8);
+    this.a.a(paramBoolean, paramGetAdsRsp);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

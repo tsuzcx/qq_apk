@@ -11,37 +11,37 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import apkm;
-import apko;
-import apkq;
-import apkw;
-import aplm;
-import aplo;
-import apno;
-import apoj;
-import apop;
-import apor;
-import apos;
-import apot;
-import apou;
-import apov;
-import apow;
-import bcef;
+import aqnq;
+import aqns;
+import aqnu;
+import aqoa;
+import aqoq;
+import aqos;
+import aqqs;
+import aqrn;
+import aqrt;
+import aqrv;
+import aqrw;
+import aqrx;
+import aqry;
+import aqrz;
+import aqsa;
+import bdla;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.util.DisplayUtil;
 
 public class SwipePostTableLayout
   extends SwipeBackLayout
-  implements apow
+  implements aqsa
 {
   private Vibrator jdField_a_of_type_AndroidOsVibrator;
-  private apko jdField_a_of_type_Apko;
-  private apkw jdField_a_of_type_Apkw;
-  private apno jdField_a_of_type_Apno;
-  private apoj jdField_a_of_type_Apoj = new apor(this);
-  private apou jdField_a_of_type_Apou;
-  private apov jdField_a_of_type_Apov;
+  private aqns jdField_a_of_type_Aqns;
+  private aqoa jdField_a_of_type_Aqoa;
+  private aqqs jdField_a_of_type_Aqqs;
+  private aqrn jdField_a_of_type_Aqrn = new aqrv(this);
+  private aqry jdField_a_of_type_Aqry;
+  private aqrz jdField_a_of_type_Aqrz;
   private PostTable jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable;
   public boolean e;
   public boolean f;
@@ -57,21 +57,21 @@ public class SwipePostTableLayout
     super(paramContext);
     this.jdField_h_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable = new PostTable(paramContext);
-    this.jdField_a_of_type_Apou = new apou(paramContext);
-    this.jdField_a_of_type_Apko = new apko();
-    this.jdField_a_of_type_Apko.a(new apkq());
-    this.jdField_a_of_type_Apno = new apno();
-    this.jdField_a_of_type_Apno.a(this.jdField_a_of_type_Apko);
+    this.jdField_a_of_type_Aqry = new aqry(paramContext);
+    this.jdField_a_of_type_Aqns = new aqns();
+    this.jdField_a_of_type_Aqns.a(new aqnu());
+    this.jdField_a_of_type_Aqqs = new aqqs();
+    this.jdField_a_of_type_Aqqs.a(this.jdField_a_of_type_Aqns);
     this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramContext.getSystemService("vibrator"));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new apot(this));
-    aplo.a().a(this.jdField_a_of_type_Apoj);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new aqrx(this));
+    aqos.a().a(this.jdField_a_of_type_Aqrn);
     jdField_h_of_type_Int = DisplayUtil.dip2px(paramContext, 18.0F);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_Apno.a();
+    this.jdField_a_of_type_Aqqs.a();
   }
   
   public void a(Activity paramActivity)
@@ -86,7 +86,7 @@ public class SwipePostTableLayout
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_Apno.b();
+    this.jdField_a_of_type_Aqqs.b();
   }
   
   public void b(Activity paramActivity)
@@ -115,7 +115,7 @@ public class SwipePostTableLayout
   public void c()
   {
     super.c();
-    this.jdField_a_of_type_Apno.c();
+    this.jdField_a_of_type_Aqqs.c();
   }
   
   public void c_(boolean paramBoolean)
@@ -123,7 +123,7 @@ public class SwipePostTableLayout
     if (this.k)
     {
       this.k = false;
-      this.jdField_a_of_type_Apop.sendEmptyMessage(1);
+      this.jdField_a_of_type_Aqrt.sendEmptyMessage(1);
     }
     if (this.l)
     {
@@ -135,30 +135,30 @@ public class SwipePostTableLayout
   public void i()
   {
     this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_Apno.a(false);
+    this.jdField_a_of_type_Aqqs.a(false);
   }
   
   public void j()
   {
     this.jdField_h_of_type_Boolean = true;
-    this.jdField_a_of_type_Apno.a(true);
+    this.jdField_a_of_type_Aqqs.a(true);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Apko.b()) {
+    if (!this.jdField_a_of_type_Aqns.b()) {
       i();
     }
-    double d = this.jdField_a_of_type_Apou.a(paramMotionEvent);
-    this.jdField_a_of_type_Apko.a();
-    if (this.jdField_a_of_type_Apkw == null) {
+    double d = this.jdField_a_of_type_Aqry.a(paramMotionEvent);
+    this.jdField_a_of_type_Aqns.a();
+    if (this.jdField_a_of_type_Aqoa == null) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    ColorNote localColorNote = this.jdField_a_of_type_Apkw.getColorNote();
+    ColorNote localColorNote = this.jdField_a_of_type_Aqoa.getColorNote();
     if ((localColorNote == null) || (this.jdField_a_of_type_AndroidViewView.getScrollX() == 0) || (TextUtils.isEmpty(localColorNote.mSubType))) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    boolean bool = this.jdField_a_of_type_Apko.a(localColorNote.getServiceType(), localColorNote.getSubType());
+    boolean bool = this.jdField_a_of_type_Aqns.a(localColorNote.getServiceType(), localColorNote.getSubType());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -175,7 +175,7 @@ public class SwipePostTableLayout
         if (this.jdField_a_of_type_Boolean)
         {
           m = n;
-          if (this.jdField_a_of_type_Apou.a(paramMotionEvent, getContext()))
+          if (this.jdField_a_of_type_Aqry.a(paramMotionEvent, getContext()))
           {
             m = n;
             if (!bool)
@@ -184,23 +184,23 @@ public class SwipePostTableLayout
               if (localColorNote != null)
               {
                 m = n;
-                if (aplm.a(localColorNote))
+                if (aqoq.a(localColorNote))
                 {
-                  if (!this.jdField_a_of_type_Apko.a()) {
+                  if (!this.jdField_a_of_type_Aqns.a()) {
                     break label556;
                   }
-                  aplm.a(localColorNote);
+                  aqoq.a(localColorNote);
                   Bundle localBundle = localColorNote.parseBundle();
                   localBundle.putInt("color_note_curd_from_type", 1);
-                  this.jdField_a_of_type_Apko.a(localBundle);
+                  this.jdField_a_of_type_Aqns.a(localBundle);
                   this.jdField_f_of_type_Boolean = true;
-                  if (this.jdField_a_of_type_Apos != null) {
-                    this.jdField_a_of_type_Apos.a();
+                  if (this.jdField_a_of_type_Aqrw != null) {
+                    this.jdField_a_of_type_Aqrw.a();
                   }
                   if (QLog.isColorLevel()) {
                     QLog.d("SwipePostTableLayout", 1, "add colornote from swipe entrance:\n" + localColorNote.mServiceType + "\n" + localColorNote.mSubType + "\n" + localColorNote.mMainTitle + "\n" + localColorNote.mSubTitle + "\n" + localColorNote.mPicUrl);
                   }
-                  bcef.b(null, "dc00898", "", "", "0X800A742", "0X800A742", apkm.a(this.jdField_a_of_type_Apkw.getColorNote().mServiceType), 0, "", "", "", "");
+                  bdla.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aqnq.a(this.jdField_a_of_type_Aqoa.getColorNote().mServiceType), 0, "", "", "", "");
                   m = 1;
                 }
               }
@@ -208,7 +208,7 @@ public class SwipePostTableLayout
           }
         }
       }
-      if (aplo.a().a().x < this.jdField_f_of_type_Int / 2) {
+      if (aqos.a().a().x < this.jdField_f_of_type_Int / 2) {
         h();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null)
@@ -219,24 +219,24 @@ public class SwipePostTableLayout
       if (paramMotionEvent.getRawX() - this.c >= this.jdField_f_of_type_Int / 2)
       {
         this.e = true;
-        if (this.jdField_a_of_type_Apos != null) {
-          this.jdField_a_of_type_Apos.a();
+        if (this.jdField_a_of_type_Aqrw != null) {
+          this.jdField_a_of_type_Aqrw.a();
         }
       }
       if (((m != 0) || (bool)) && (paramMotionEvent.getRawX() - this.c >= this.jdField_f_of_type_Int / 2))
       {
-        this.jdField_a_of_type_Apop.sendEmptyMessage(1);
+        this.jdField_a_of_type_Aqrt.sendEmptyMessage(1);
         postInvalidate();
         return true;
         label556:
         this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(0.0D);
         g();
-        aplm.a(getContext());
-        bcef.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
+        aqoq.a(getContext());
+        bdla.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
         return true;
-        if ((this.jdField_a_of_type_Boolean) && (aplm.a(localColorNote)))
+        if ((this.jdField_a_of_type_Boolean) && (aqoq.a(localColorNote)))
         {
-          if (!this.jdField_a_of_type_Apou.a(paramMotionEvent, getContext()))
+          if (!this.jdField_a_of_type_Aqry.a(paramMotionEvent, getContext()))
           {
             this.j = true;
             label645:
@@ -261,10 +261,10 @@ public class SwipePostTableLayout
               this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(0);
               this.jdField_g_of_type_Boolean = true;
             }
-            if (!this.jdField_a_of_type_Apko.a()) {
+            if (!this.jdField_a_of_type_Aqns.a()) {
               break label911;
             }
-            if (!this.jdField_a_of_type_Apou.a(paramMotionEvent, getContext())) {
+            if (!this.jdField_a_of_type_Aqry.a(paramMotionEvent, getContext())) {
               break label901;
             }
             this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.b();
@@ -275,7 +275,7 @@ public class SwipePostTableLayout
             if (!this.i) {
               break;
             }
-            bcef.b(null, "dc00898", "", "", "0X800A741", "0X800A741", apkm.a(this.jdField_a_of_type_Apkw.getColorNote().mServiceType), 0, "", "", "", "");
+            bdla.b(null, "dc00898", "", "", "0X800A741", "0X800A741", aqnq.a(this.jdField_a_of_type_Aqoa.getColorNote().mServiceType), 0, "", "", "", "");
             this.i = false;
             break;
             if ((!this.jdField_h_of_type_Boolean) || (!this.jdField_a_of_type_Boolean) || (!this.j) || (bool)) {
@@ -300,33 +300,33 @@ public class SwipePostTableLayout
     }
   }
   
-  public void setOnColorNoteCurdListener(apkq paramapkq)
+  public void setOnColorNoteCurdListener(aqnu paramaqnu)
   {
-    this.jdField_a_of_type_Apko.a(paramapkq);
+    this.jdField_a_of_type_Aqns.a(paramaqnu);
   }
   
-  public void setOnPageSwipeListener(apos paramapos)
+  public void setOnPageSwipeListener(aqrw paramaqrw)
   {
-    this.jdField_a_of_type_Apos = paramapos;
+    this.jdField_a_of_type_Aqrw = paramaqrw;
   }
   
-  public void setServiceInfo(apkw paramapkw)
+  public void setServiceInfo(aqoa paramaqoa)
   {
-    if (paramapkw != null)
+    if (paramaqoa != null)
     {
-      this.jdField_a_of_type_Apkw = paramapkw;
-      this.jdField_a_of_type_Apno.a(paramapkw);
-      paramapkw = paramapkw.getColorNote();
-      if ((paramapkw != null) && (paramapkw.mServiceType == 16908288)) {
+      this.jdField_a_of_type_Aqoa = paramaqoa;
+      this.jdField_a_of_type_Aqqs.a(paramaqoa);
+      paramaqoa = paramaqoa.getColorNote();
+      if ((paramaqoa != null) && (paramaqoa.mServiceType == 16908288)) {
         jdField_g_of_type_Int = jdField_h_of_type_Int;
       }
     }
   }
   
-  public void setTranslucentConvertor(apov paramapov)
+  public void setTranslucentConvertor(aqrz paramaqrz)
   {
-    this.jdField_a_of_type_Apov = paramapov;
-    paramapov.a(this);
+    this.jdField_a_of_type_Aqrz = paramaqrz;
+    paramaqrz.a(this);
   }
 }
 

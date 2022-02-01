@@ -1,8 +1,16 @@
-public abstract interface qpj
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
+class qpj
+  implements qcf
 {
-  public abstract void a(Object paramObject);
+  qpj(qph paramqph, ViewBase paramViewBase) {}
   
-  public abstract void a(qps paramqps);
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
+    }
+  }
 }
 
 

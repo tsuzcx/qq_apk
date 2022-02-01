@@ -1,28 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class nsb
-  extends Handler
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public nsb(NowVideoView paramNowVideoView) {}
+  public nsb(PoiMapActivity paramPoiMapActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onPreDraw()
   {
-    switch (paramMessage.what)
+    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
+    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
     {
+      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
+      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Nru == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
-      this.a.jdField_a_of_type_Nru.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
-      return;
-    } while ((this.a.jdField_a_of_type_Nru == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
-    this.a.jdField_a_of_type_Nru.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+    return true;
   }
 }
 

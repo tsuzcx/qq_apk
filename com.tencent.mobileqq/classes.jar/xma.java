@@ -1,24 +1,6 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-
-public class xma
-  extends xva
+public abstract interface xma
 {
-  public xma(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
-  }
-  
-  protected void O_()
-  {
-    ysg localysg = a().a("FeedSegment");
-    if ((localysg != null) && (localysg.a() == 0))
-    {
-      this.a = true;
-      return;
-    }
-    this.a = false;
-  }
+  public abstract void a(xlu paramxlu);
 }
 
 

@@ -1,192 +1,148 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-import cooperation.qzone.webviewplugin.QZoneWebViewPlugin;
-import java.util.ArrayList;
 
-public final class atsc
-  extends bgsp
+public class atsc
+  extends atsa
+  implements bfmx
 {
-  public boolean a;
-  public boolean b;
-  boolean c = false;
-  public boolean d;
-  protected boolean e;
-  protected boolean f;
+  protected bfmy a;
+  protected String b;
   
-  public atsc(NearbyHybridFragment paramNearbyHybridFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  public atsc(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, atsb paramatsb)
   {
-    super(paramContext, paramActivity, paramAppInterface);
+    super(paramQQAppInterface, paramLong1, paramLong2, paramInt, paramatsb);
   }
   
-  public void a()
+  public static bfmx a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString, atsb paramatsb)
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.mWebview == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {}
-    for (long l = System.currentTimeMillis();; l = 0L)
+    if (paramatsb == null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      nko.a();
-      super.buildBaseWebView(this.mInterface);
-      onWebViewReady();
-      if ((this.mWebview != null) && (Build.VERSION.SDK_INT >= 21)) {
-        this.mWebview.getSettings().setMixedContentMode(0);
-      }
-      this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-      if ((this.c) && (this.mWebview != null)) {
-        this.mWebview.setMask(true);
-      }
-      setmTimeBeforeLoadUrl(System.currentTimeMillis());
-      if (QLog.isDevelopLevel()) {
-        awkj.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k != 0L)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k = (System.currentTimeMillis() - l);
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      awkj.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
-      return;
+      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader fileInfo is null");
+      return null;
     }
-  }
-  
-  public void a(TouchWebView paramTouchWebView)
-  {
-    this.mWebview = paramTouchWebView;
-  }
-  
-  public void a(String paramString)
-  {
-    this.mUrl = paramString;
-    if (QLog.isColorLevel()) {
-      QLog.w("nearby.NearbyHybridFragment.webloading", 2, "start load url, from attach cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.c) + ", url=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_e_of_type_Long = System.currentTimeMillis();
-    this.mWebview.loadUrl(this.mUrl);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d.getVisibility() != 0)
+    if (TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("nearby.NearbyHybridFragment.webloading", 2, "send MSG_SHOW_LOADING before loadUrl");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.o = false;
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 500L);
+      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader strTmpFilePath is err");
+      return null;
     }
+    if (!paramatsb.a())
+    {
+      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader fileInfo is err");
+      return null;
+    }
+    paramQQAppInterface = new atsc(paramQQAppInterface, paramLong1, paramLong2, 1, paramatsb);
+    paramQQAppInterface.a(paramString);
+    return paramQQAppInterface;
+  }
+  
+  protected ExcitingTransferDownloadConfig a()
+  {
+    return atrv.a().b();
+  }
+  
+  protected String a()
+  {
+    return AppConstants.SDCARD_FILE_SAVE_PATH;
+  }
+  
+  protected void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  {
+    super.a(paramInt, paramExcitingTransferDownloadCompletedInfo);
+    if (this.jdField_a_of_type_Bfmy != null)
+    {
+      Bundle localBundle = new Bundle();
+      if (paramExcitingTransferDownloadCompletedInfo != null) {
+        localBundle.putInt("nSrvReturnCode", paramExcitingTransferDownloadCompletedInfo.m_nSrvReturnCode);
+      }
+      this.jdField_a_of_type_Bfmy.a(true, a(), paramInt, "", "", localBundle);
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    super.a(paramLong1, paramLong2, paramLong3);
+    if (this.jdField_a_of_type_Bfmy != null) {
+      this.jdField_a_of_type_Bfmy.a(paramLong2, this.jdField_a_of_type_Atsb.a());
+    }
+  }
+  
+  public void a(bfmy parambfmy)
+  {
+    this.jdField_a_of_type_Bfmy = parambfmy;
+  }
+  
+  protected void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  {
+    super.a(paramExcitingTransferDownloadCompletedInfo);
+    if (this.jdField_a_of_type_Bfmy != null) {
+      this.jdField_a_of_type_Bfmy.a(paramExcitingTransferDownloadCompletedInfo.m_strFileSavePath);
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public int b()
+  {
+    if (a() != null) {
+      return a().m_uRetryTimes;
+    }
+    return 0;
+  }
+  
+  protected String b()
+  {
+    return this.b;
   }
   
   public void b()
   {
-    super.doOnResume();
+    this.jdField_a_of_type_Boolean = false;
+    a();
   }
   
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  public boolean b()
   {
-    if (paramArrayList != null)
-    {
-      paramArrayList.add(new bgzx());
-      paramArrayList.add(new aacu());
-      paramArrayList.add(new QZoneWebViewPlugin());
-    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return 0;
   }
   
   public void c()
   {
-    super.doOnPause();
-  }
-  
-  public void d()
-  {
-    super.doOnDestroy();
-  }
-  
-  protected WebAccelerateHelper.CommonJsPluginFactory myCommonJsPlugins()
-  {
-    return new WebAccelerateHelper.CommonJsPluginFactory();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    if (this.f) {}
-    do
-    {
-      return;
-      this.f = true;
-      if (QLog.isColorLevel()) {
-        QLog.w("nearby.NearbyHybridFragment.webloading", 2, "onPageFinished:" + paramString);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_Attp != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_Attp.a(true);
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_Attp.a();
-      }
-      this.d = true;
-      if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d == null) || (!NearbyHybridFragment.n))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(NearbyHybridFragment.jdField_a_of_type_JavaLangRunnable, 500L);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("AbsWebView", 2, "already called pre load now plugin!, isCalledNowPreLoad=" + NearbyHybridFragment.n);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (this.e) {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.e = true;
-    if (QLog.isColorLevel()) {
-      QLog.w("nearby.NearbyHybridFragment.webloading", 2, "onPageStarted:" + paramString);
-    }
-    this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_Attp != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_Attp.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_Attp.a();
-    }
-    this.d = false;
+    QLog.i("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
+    a();
   }
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public int d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("nearby.NearbyHybridFragment.webloading", 2, "onReceivedError: errorCode=" + paramInt + ", description=" + paramString1 + ", failingUrl=" + paramString2);
+    if (a() != null) {
+      return a().m_uProxyType;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_e_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_e_of_type_AndroidViewView.setVisibility(0);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.f != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.f.setVisibility(8);
-    }
+    return 0;
   }
   
-  public void showCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  public String d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("nearby.NearbyHybridFragment.webloading", 2, "showCustomView: view=" + paramView + ", orientation=" + paramInt);
-    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String e()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,19 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import java.util.List;
 
 public class atqz
-  extends BroadcastReceiver
+  extends bcbc<bcfj, bcnt>
 {
-  public atqz(HotChatFragment paramHotChatFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public atqz(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment, atrb paramatrb)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
-      this.a.a.refresh();
+    try
+    {
+      paramFileSelectorSearchGroupFragment = paramatrb.a(paramFileSelectorSearchGroupFragment.getActivity().app, paramFileSelectorSearchGroupFragment.getActivity());
+      if ((paramFileSelectorSearchGroupFragment != null) && (!paramFileSelectorSearchGroupFragment.isEmpty())) {
+        a(paramFileSelectorSearchGroupFragment);
+      }
+      return;
     }
+    catch (Exception paramFileSelectorSearchGroupFragment) {}
+  }
+  
+  protected bcif<bcfj, bcnt> a(int paramInt)
+  {
+    atrc localatrc = new atrc();
+    localatrc.a(new atra(this));
+    return localatrc;
+  }
+  
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atrf(paramViewGroup);
   }
 }
 

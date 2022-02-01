@@ -1,67 +1,58 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.util.ArrayList;
-import java.util.Iterator;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/BridgeInvokeHandler;", "", "bridgeModule", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nsHandlerList", "Ljava/util/ArrayList;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "Lkotlin/collections/ArrayList;", "invoke", "", "ns", "", "method", "jsonObject", "Lorg/json/JSONObject;", "callback", "nonStandardFormat", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tkv
+public class tkv
+  implements View.OnClickListener
 {
-  private final ArrayList<tks> a = new ArrayList(16);
+  public int a;
   
-  public tkv(@NotNull BridgeModule paramBridgeModule)
-  {
-    ArrayList localArrayList = this.a;
-    localArrayList.add(new tlq(paramBridgeModule));
-    localArrayList.add(new tkw(paramBridgeModule));
-    localArrayList.add(new tlw(paramBridgeModule));
-    localArrayList.add(new tkt(paramBridgeModule));
-    localArrayList.add(new tla(paramBridgeModule));
-    localArrayList.add(new tky(paramBridgeModule));
-    localArrayList.add(new tlg(paramBridgeModule));
-    localArrayList.add(new tlk(paramBridgeModule));
-    localArrayList.add(new tlc(paramBridgeModule));
-    localArrayList.add(new tls(paramBridgeModule));
-    localArrayList.add(new tle(paramBridgeModule));
-    localArrayList.add(new tli(paramBridgeModule));
-    localArrayList.add(new tlm(paramBridgeModule));
-    localArrayList.add(new tlu(paramBridgeModule));
-  }
+  private tkv(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  private final boolean a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    return (("downloadApp".equals(paramString2)) && ("app".equals(paramString1))) || (("openRoom".equals(paramString2)) && ("nowlive".equals(paramString1)));
-  }
-  
-  public final boolean a(@NotNull String paramString1, @NotNull String paramString2, @NotNull JSONObject paramJSONObject, @Nullable String paramString3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "ns");
-    Intrinsics.checkParameterIsNotNull(paramString2, "method");
-    Intrinsics.checkParameterIsNotNull(paramJSONObject, "jsonObject");
-    if (a(paramString1, paramString2)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDiandianHeaderController", 2, "onItemClick: " + this.jdField_a_of_type_Int);
+    }
+    DiandianTopConfig localDiandianTopConfig = (DiandianTopConfig)ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).get(this.jdField_a_of_type_Int);
+    pkh.a(paramView.getContext(), localDiandianTopConfig.jumpUrl);
     for (;;)
     {
-      Iterator localIterator = this.a.iterator();
-      tks localtks;
-      do
+      try
       {
-        if (!localIterator.hasNext()) {
-          break;
+        localJSONObject = new JSONObject();
+        localJSONObject.put("folder_status", prp.jdField_a_of_type_Int);
+        if (localDiandianTopConfig.type != 5) {
+          continue;
         }
-        localtks = (tks)localIterator.next();
-      } while (!localtks.a(paramString1));
-      return localtks.a(paramString2, paramJSONObject, paramString3);
-      paramJSONObject = paramJSONObject.optJSONObject("params");
+        localJSONObject.put("list_URL", localDiandianTopConfig.jumpUrl);
+        localJSONObject.put("type", localDiandianTopConfig.type);
+        olh.a(null, "", "0X80092FD", "0X80092FD", 0, 0, ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).size() + "", this.jdField_a_of_type_Int + 1 + "", localDiandianTopConfig.topicId + "", localJSONObject.toString(), false);
+      }
+      catch (JSONException localJSONException)
+      {
+        JSONObject localJSONObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("ReadInJoyDiandianHeaderController", 2, localJSONException.toString());
+        continue;
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localJSONObject.put("list_URL", "0");
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tkv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,15 @@
-public abstract interface atlp
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.List;
+
+class atlp
+  implements atlu
 {
-  public static final String g = amtj.a(2131703869);
+  atlp(atll paramatll, boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atlp
  * JD-Core Version:    0.7.0.1
  */

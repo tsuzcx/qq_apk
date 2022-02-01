@@ -1,53 +1,10 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 
-public class atmj
-  implements View.OnTouchListener
+public abstract interface atmj
 {
-  public atmj(ForwardFileOption paramForwardFileOption) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = ForwardFileOption.b(this.a);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      paramMotionEvent = paramView.findViewById(2131367100);
-      if (paramMotionEvent != null) {
-        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-      if (i != 1) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (i != 3);
-            paramView = (ImageView)paramView.findViewById(2131367106);
-          } while (paramView == null);
-          paramView.setImageResource(2130840164);
-          return false;
-        } while (paramMotionEvent.getAction() != 1);
-        paramMotionEvent = paramView.findViewById(2131367100);
-        if (paramMotionEvent != null) {
-          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        }
-      } while ((i == 1) || (i != 3));
-      paramView = (ImageView)paramView.findViewById(2131367106);
-    } while (paramView == null);
-    paramView.setImageResource(2130840163);
-    return false;
-  }
+  public abstract void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo);
 }
 
 

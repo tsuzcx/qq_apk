@@ -1,40 +1,31 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yhf
-  extends ygy
+  extends QQUIEventReceiver<MystoryListView, wcu>
 {
-  protected EditVideoParams a;
-  public String c;
-  
-  public yhf(int paramInt1, String paramString, int paramInt2)
+  public yhf(@NonNull MystoryListView paramMystoryListView)
   {
-    super(paramInt1, paramString, paramInt2);
+    super(paramMystoryListView);
   }
   
-  public yhf(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull wcu paramwcu)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.a = paramEditVideoParams;
+    paramMystoryListView.q();
+    paramwcu = (yhn)paramMystoryListView.a("FeedSegment");
+    if (paramwcu != null) {
+      paramwcu.j();
+    }
+    paramMystoryListView = (yjc)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
+    }
   }
   
-  @NonNull
-  public Class<? extends ygz> a()
+  public Class acceptEventClass()
   {
-    return yhh.class;
-  }
-  
-  @NonNull
-  public ygz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new yhh(this, paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return wcu.class;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import arev;
+import asjb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
@@ -120,7 +120,7 @@ public class QQSysAndEmojiDownloader
     }
     for (;;)
     {
-      return arev.a(i, paramString2);
+      return asjb.a(i, paramString2);
       if ("host_emoji".equals(paramString1)) {
         i = 3;
       }
@@ -169,7 +169,7 @@ public class QQSysAndEmojiDownloader
   
   protected void needToReload(int paramInt1, int paramInt2)
   {
-    arev.a().a(paramInt1).b(paramInt2);
+    asjb.a().a(paramInt1).b(paramInt2);
   }
 }
 

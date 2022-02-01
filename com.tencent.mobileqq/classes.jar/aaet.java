@@ -1,34 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.widgets.TabLayout;
+import com.google.gson.reflect.TypeToken;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData.CommentLinkData;
+import java.util.List;
 
-public class aaet
-  implements Animator.AnimatorListener
+class aaet
+  extends TypeToken<List<BaseCommentData.CommentLinkData>>
 {
-  public aaet(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
-  }
+  aaet(aaeq paramaaeq) {}
 }
 
 

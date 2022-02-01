@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +8,8 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.widget.TextView;
-import bcef;
+import anvx;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -98,7 +98,7 @@ public class AlbumUtil
   {
     if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() >= paramInt))
     {
-      QQToast.a(paramActivity, String.format(paramActivity.getResources().getString(2131717748), new Object[] { Integer.valueOf(paramInt) }), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(paramActivity, String.format(paramActivity.getResources().getString(2131718130), new Object[] { Integer.valueOf(paramInt) }), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299080));
       return true;
     }
     return false;
@@ -109,7 +109,7 @@ public class AlbumUtil
     boolean bool = false;
     if (paramLocalMediaInfo.fileSize > paramLong)
     {
-      QQToast.a(paramActivity, paramActivity.getResources().getString(2131694440), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(paramActivity, paramActivity.getResources().getString(2131694641), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299080));
       bool = true;
     }
     return bool;
@@ -120,7 +120,7 @@ public class AlbumUtil
     boolean bool = false;
     if (paramLocalMediaInfo.fileSize > paramLong)
     {
-      QQToast.a(paramActivity, paramActivity.getResources().getString(2131718470), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(paramActivity, paramActivity.getResources().getString(2131718856), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299080));
       bool = true;
     }
     return bool;
@@ -147,7 +147,7 @@ public class AlbumUtil
       {
         if (System.currentTimeMillis() - qzoneLastShowVideoQuantityLimitToastTime > 2000L)
         {
-          QQToast.a(paramContext, amtj.a(2131699369) + i + amtj.a(2131699370), 0).a();
+          QQToast.a(paramContext, anvx.a(2131699720) + i + anvx.a(2131699721), 0).a();
           qzoneLastShowVideoQuantityLimitToastTime = System.currentTimeMillis();
         }
         paramBoolean = false;
@@ -155,13 +155,13 @@ public class AlbumUtil
       long l = QZoneHelper.getVideoCanUploadSize();
       if (paramLocalMediaInfo.fileSize > l)
       {
-        QQToast.a(paramContext, amtj.a(2131699368) + (float)l / 1024.0F / 1024.0F / 1024.0F + "G的视频", 0).a();
+        QQToast.a(paramContext, anvx.a(2131699719) + (float)l / 1024.0F / 1024.0F / 1024.0F + "G的视频", 0).a();
         paramBoolean = false;
       }
       if (paramLocalMediaInfo.mDuration <= 601000L) {
         break;
       }
-      QQToast.a(paramContext, amtj.a(2131699367) + 10L + amtj.a(2131699371), 0).a();
+      QQToast.a(paramContext, anvx.a(2131699718) + 10L + anvx.a(2131699722), 0).a();
       return false;
     }
     return paramBoolean;
@@ -172,7 +172,7 @@ public class AlbumUtil
     boolean bool = false;
     if ((paramLocalMediaInfo.fileSize > paramLong) || (paramLocalMediaInfo.mDuration > 1200000L))
     {
-      QQToast.a(paramActivity, paramActivity.getResources().getString(2131718448), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(paramActivity, paramActivity.getResources().getString(2131718834), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299080));
       bool = true;
     }
     return bool;
@@ -632,12 +632,12 @@ public class AlbumUtil
   
   public static void reportRawPicAndVideo(int paramInt1, int paramInt2)
   {
-    bcef.b(null, "CliOper", "", "", "0X8009E99", "0X8009E99", 0, 0, paramInt1 + "", paramInt2 + "", "", "");
+    bdla.b(null, "CliOper", "", "", "0X8009E99", "0X8009E99", 0, 0, paramInt1 + "", paramInt2 + "", "", "");
   }
   
   public static void reportRawVideo()
   {
-    bcef.b(null, "CliOper", "", "", "0X8009E98", "0X8009E98", 0, 0, "", "", "", "");
+    bdla.b(null, "CliOper", "", "", "0X8009E98", "0X8009E98", 0, 0, "", "", "", "");
   }
   
   public static void returnToInitActivity(Activity paramActivity, Class<?> paramClass, Intent paramIntent)

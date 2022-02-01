@@ -2,15 +2,15 @@ package com.tencent.avgame.ui;
 
 import android.view.KeyEvent;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import njb;
+import npy;
 
 public class GameBaseFragment
   extends ReportV4Fragment
 {
-  public njb a()
+  public npy a()
   {
-    if ((getActivity() != null) && ((getActivity() instanceof njb))) {
-      return (njb)getActivity();
+    if ((getActivity() != null) && ((getActivity() instanceof npy))) {
+      return (npy)getActivity();
     }
     return null;
   }

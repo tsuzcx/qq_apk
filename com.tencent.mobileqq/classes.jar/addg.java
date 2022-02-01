@@ -1,20 +1,28 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.TMG.utils.QLog;
 
-public class addg
-  implements DialogInterface.OnClickListener
+class addg
+  implements DialogInterface.OnKeyListener
 {
-  public addg(DialogActivity paramDialogActivity) {}
+  addg(addc paramaddc, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramDialogInterface = this.a.app.getTransFileController();
-    paramDialogInterface.resumeLastRawSend();
-    paramDialogInterface.resumeLastShortVideoTransfer();
-    this.a.finish();
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
+    {
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
+      {
+        QLog.e("SdkAuthDialog", 1, "keyListener is null");
+        return true;
+      }
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+      this.jdField_a_of_type_Addc.a();
+      bdla.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
+    }
+    return true;
   }
 }
 

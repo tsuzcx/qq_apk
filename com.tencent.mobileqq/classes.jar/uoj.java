@@ -1,24 +1,45 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.BottomDialog.3.1;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class uoj
-  implements Animation.AnimationListener
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
 {
-  uoj(uog paramuog) {}
+  public uoj(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    uog.a(this.a, false);
-    uog.a(this.a).post(new BottomDialog.3.1(this));
+    Object localObject = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
+    ServiceAccountFolderActivityNew.a(this.a, ((CertifiedAccountMeta.StUser)localObject).id.get());
+    localObject = ((CertifiedAccountMeta.StUser)localObject).icon.get();
+    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl((String)localObject)))
+    {
+      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840607);
+      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new uok(this, paramStGetMainPageRsp));
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    uog.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (paramStGetMainPageRsp != null)
+      {
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        ykq.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
+        a(paramStGetMainPageRsp);
+        ServiceAccountFolderActivityNew.a(this.a);
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+      }
+      return;
+    }
+    ykq.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 

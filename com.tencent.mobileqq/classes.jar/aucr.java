@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-
 public class aucr
 {
-  JefsClass.CancelableRunnable a;
-  
-  public aucr(JefsClass.CancelableRunnable paramCancelableRunnable)
-  {
-    this.a = paramCancelableRunnable;
-  }
-  
-  public void a()
-  {
-    this.a.a = true;
-  }
+  public auco a;
+  public aucp a;
+  public aucq a;
 }
 
 

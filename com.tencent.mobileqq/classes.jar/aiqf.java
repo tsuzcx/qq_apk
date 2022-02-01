@@ -1,18 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.widget.FixSizeImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class aiqf
-  extends RecyclerView.ViewHolder
+public class aiqf
+  extends BroadcastReceiver
 {
-  public FixSizeImageView a;
-  public FixSizeImageView b;
+  public aiqf(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public aiqf(aiqd paramaiqd, View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367927));
-    this.b = ((FixSizeImageView)paramView.findViewById(2131370601));
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.d(this.a) == 9003) && (BlessSelectMemberActivity.e(this.a) == 32))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
+      }
+      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
+      paramContext.putExtra("broadcastType", 1);
+      this.a.app.getApp().sendBroadcast(paramContext);
+      this.a.finish();
+    }
   }
 }
 

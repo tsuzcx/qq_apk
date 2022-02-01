@@ -20,6 +20,8 @@ import java.util.List;
 public class WSOverlayStickerMergedEffectNode
   extends TAVStickerOverlayEffect
 {
+  public static final int BLUR_RADIUS = 10;
+  public static final float BLUR_SCALE = 0.25F;
   private VideoRenderChainManager.IStickerContextInterface mContextCreator;
   private List<StickerModel> mStickerModels;
   private SubtitleModel mSubtitleModel;
@@ -152,7 +154,7 @@ public class WSOverlayStickerMergedEffectNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode
  * JD-Core Version:    0.7.0.1
  */

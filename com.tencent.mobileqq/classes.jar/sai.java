@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
 
 class sai
-  implements DialogInterface.OnDismissListener
+  implements ovz
 {
-  sai(sab paramsab) {}
+  sai(sad paramsad) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(@NotNull Runnable paramRunnable)
   {
-    sab.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((sab.a(this.a) != null) && (sab.a(this.a).b()) && (sab.b(this.a)) && (!sab.c(this.a)) && (sab.a(this.a)) && (!sab.d(this.a))) {
-      sab.a(this.a).c();
-    }
-    if (sab.a(this.a) != null) {
-      sab.a(this.a).f();
-    }
-    sab.a(this.a, false);
+    ThreadManagerV2.excute(paramRunnable, 16, null, false);
   }
 }
 

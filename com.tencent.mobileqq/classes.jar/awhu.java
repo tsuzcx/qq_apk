@@ -1,52 +1,78 @@
-import android.content.Intent;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-class awhu
-  implements INetEngine.INetEngineListener
+public class awhu
+  implements INetInfoHandler
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  long jdField_a_of_type_Long = 0L;
+  private final WeakReference<QQMusicPlayService> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public awhu(awht paramawht, Intent paramIntent, byte[] paramArrayOfByte)
+  public awhu(QQMusicPlayService paramQQMusicPlayService)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMusicPlayService);
   }
   
-  public void onResp(NetResp paramNetResp)
+  private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAlumniServlet", 2, "NearbyAlumniDownloadListener.onResp()");
+    boolean bool2 = true;
+    QQMusicPlayService localQQMusicPlayService = (QQMusicPlayService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQMusicPlayService == null) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return;
     }
-    if ((paramNetResp == null) || (paramNetResp.mResult != 0))
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    boolean bool1 = bool2;
+    if (paramInt != 1)
     {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
+      bool1 = bool2;
+      if (paramInt != 2)
       {
-        localStringBuilder = new StringBuilder().append("NearbyAlumniDownloadListener.onResp() | resp = ").append(paramNetResp).append(" | mResult=");
-        if (paramNetResp == null) {
-          break label110;
+        bool1 = bool2;
+        if (paramInt != 3) {
+          if (paramInt != 6) {
+            break label78;
+          }
         }
-      }
-      label110:
-      for (int i = paramNetResp.mResult;; i = -1)
-      {
-        QLog.i("NearbyAlumniServlet", 2, i);
-        awht.a(this.jdField_a_of_type_Awht, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
-        paramNetResp = this.jdField_a_of_type_Awht.a();
-        if (paramNetResp != null) {
-          paramNetResp.a();
-        }
-        return;
       }
     }
-    awht.a(this.jdField_a_of_type_Awht, this.jdField_a_of_type_AndroidContentIntent, 0, paramNetResp.mRespData, this.jdField_a_of_type_ArrayOfByte);
+    label78:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      QQMusicPlayService.a(localQQMusicPlayService, bool1);
+      return;
+    }
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
+  }
 }
 
 

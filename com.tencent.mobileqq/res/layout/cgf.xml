@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/m23" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="156.0dip" android:layout_height="156.0dip" android:minHeight="156.0dip"
+<RelativeLayout android:id="@id/muu" android:background="#99131415" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/lvl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/lvo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/lvp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" />
-</FrameLayout>
+    <ImageView android:id="@id/mut" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <View android:id="@id/mus" android:layout_width="255.0dip" android:layout_height="147.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

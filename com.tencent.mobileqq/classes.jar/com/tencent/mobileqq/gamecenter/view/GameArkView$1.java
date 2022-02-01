@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import atzd;
+import aves;
 import com.tencent.ark.open.ArkView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ class GameArkView$1
   {
     try
     {
-      if ((atzd.a(GameArkView.a(this.this$0))) && (GameArkView.a(this.this$0)) && (GameArkView.a(this.this$0) != null)) {
+      if ((aves.a(GameArkView.a(this.this$0))) && (GameArkView.a(this.this$0)) && (GameArkView.a(this.this$0) != null)) {
         GameArkView.a(this.this$0).onPause();
       }
       return;

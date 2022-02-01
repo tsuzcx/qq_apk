@@ -1,31 +1,90 @@
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class ust
+  implements URLDrawableHandler
 {
-  public static ust a()
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  private uss b;
+  
+  public ust(uss paramuss1, URLDrawableHandler paramURLDrawableHandler, uss paramuss2)
   {
-    return usv.a();
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+    this.b = paramuss2;
   }
   
-  private boolean a()
+  public uss a()
   {
-    int i = umu.a().e(1);
-    uya.d("WS_VIDEO_PLAYER", "[WSPlayerWrapHelper.java][isSuperPlayer] playerType:" + i);
-    return i == 1;
+    return this.b;
   }
   
-  public usl a()
+  protected void a()
   {
-    if (a()) {
-      return new usw();
+    QLog.d(uss.b(this.jdField_a_of_type_Uss), 1, "image download start: " + uss.c(this.jdField_a_of_type_Uss) + " supportInnerIp: " + usq.a(this.jdField_a_of_type_Uss.a));
+    if (usq.b(this.jdField_a_of_type_Uss.a))
+    {
+      Object localObject1 = InnerDns.getHostFromUrl(uss.c(this.jdField_a_of_type_Uss));
+      Object localObject2 = InnerDns.getInstance().reqSerAddrList((String)localObject1, 1002);
+      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+      {
+        localObject1 = new StringBuilder();
+        localObject2 = ((ArrayList)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          ((StringBuilder)localObject1).append(((ServerAddr)((Iterator)localObject2).next()).toString()).append(" ");
+        }
+        QLog.d(uss.b(this.jdField_a_of_type_Uss), 1, "InnerIp address " + localObject1);
+      }
     }
-    return new utc();
+    else
+    {
+      return;
+    }
+    QLog.d(uss.b(this.jdField_a_of_type_Uss), 1, "InnerIp address empty");
   }
   
-  public usp a()
+  public void a(String paramString)
   {
-    if (a()) {
-      return new uta();
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawableHandler instanceof tmc)) {
+      ((tmc)this.jdField_a_of_type_ComTencentImageURLDrawableHandler).a(paramString);
     }
-    return new utg();
+  }
+  
+  public void doCancel()
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
+  }
+  
+  public boolean isCancelled()
+  {
+    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.b.a(false, paramInt);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.b.b();
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
+    a();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.b.a(true, 0);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
   }
 }
 

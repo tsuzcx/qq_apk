@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.selectmember;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bcef;
+import bdla;
 
 class SelectMemberActivity$6$1
   implements DialogInterface.OnClickListener
@@ -19,7 +19,7 @@ class SelectMemberActivity$6$1
     for (;;)
     {
       paramDialogInterface.dismiss();
-      bcef.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
       return;
       this.this$1.this$0.startCreateOrAdd();
       continue;

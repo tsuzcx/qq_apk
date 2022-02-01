@@ -1,60 +1,72 @@
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
+import org.json.JSONObject;
 
-class bjfn
-  implements Callback
+public class bjfn
+  extends WtloginObserver
 {
-  private volatile boolean jdField_a_of_type_Boolean;
+  public bjfn(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  bjfn(bjfm parambjfm, String paramString, RequestProxy.RequestListener paramRequestListener) {}
-  
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void onException(String paramString, int paramInt)
   {
-    QLog.e("RequestProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_JavaLangString, paramIOException);
-    if ("Canceled".equals(paramIOException.getLocalizedMessage()))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjfm.a.remove(this.jdField_a_of_type_JavaLangString);
-      return;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(bjcz.a(paramIOException, -1), "request error:network");
-    }
+    super.onException(paramString, paramInt);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
   }
   
-  public void onResponse(Call paramCall, Response paramResponse)
+  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    int i = paramResponse.code();
-    Map localMap = paramResponse.headers().toMultimap();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestHeadersReceived(i, localMap);
-    paramCall = null;
-    try
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
+    if (paramInt == 0)
     {
-      paramResponse = paramResponse.body().bytes();
-      paramCall = paramResponse;
-    }
-    catch (IOException paramResponse)
-    {
-      for (;;)
+      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+        paramInt = 0;
+      }
+      while (paramInt < paramArrayList.size())
       {
-        paramResponse.printStackTrace();
+        try
+        {
+          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
+          int i = util.buf_to_int16(paramString, 0);
+          int j = util.buf_to_int16(paramString, 2);
+          if (i == 54)
+          {
+            paramArrayOfByte1 = new byte[j];
+            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
+            paramString = new String(paramArrayOfByte1);
+            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
+            paramString = new JSONObject(paramString);
+            paramLong = paramString.optLong("open_appid");
+            paramString = paramString.optString("comefrom");
+            this.a.a(paramLong, paramString);
+            if (!TextUtils.isEmpty(paramString))
+            {
+              paramArrayOfByte1 = Message.obtain();
+              paramArrayOfByte1.what = 1004;
+              paramArrayOfByte1.obj = paramString;
+              this.a.b.sendMessage(paramArrayOfByte1);
+            }
+          }
+        }
+        catch (Throwable paramString)
+        {
+          for (;;)
+          {
+            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
+          }
+        }
+        paramInt += 1;
+        continue;
+        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
       }
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
-    this.jdField_a_of_type_Bjfm.a.remove(this.jdField_a_of_type_JavaLangString);
   }
 }
 

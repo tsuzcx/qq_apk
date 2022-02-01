@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axud
-  implements DialogInterface.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  public axud(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public axud(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      this.a.getActivity().finish();
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 1) {
+      bkxz.b(ChooseInterestTagActivity.a(this.a));
     }
   }
 }

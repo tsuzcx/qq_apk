@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bbff;
-import bbfs;
+import bclx;
+import bcmk;
 import java.util.List;
 
 class PublicAccountSearchEngine$1
   implements Runnable
 {
-  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, bbfs parambbfs, bbff parambbff) {}
+  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, bcmk parambcmk, bclx parambclx) {}
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_Bbfs);
-    if (this.jdField_a_of_type_Bbff != null) {
-      this.jdField_a_of_type_Bbff.a(localList, 1);
+    List localList = this.this$0.a(this.jdField_a_of_type_Bcmk);
+    if (this.jdField_a_of_type_Bclx != null) {
+      this.jdField_a_of_type_Bclx.a(localList, 1);
     }
   }
 }

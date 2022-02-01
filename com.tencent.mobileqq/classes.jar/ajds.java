@@ -1,16 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajds
+class ajds
   implements View.OnClickListener
 {
-  public ajds(MainFragment paramMainFragment) {}
+  ajds(ajdq paramajdq, ajdw paramajdw) {}
   
   public void onClick(View paramView)
   {
-    this.a.h();
+    if (this.jdField_a_of_type_Ajdq.a != null)
+    {
+      int i = this.jdField_a_of_type_Ajdw.getAdapterPosition();
+      this.jdField_a_of_type_Ajdq.a.a(paramView, this.jdField_a_of_type_Ajdw, i);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

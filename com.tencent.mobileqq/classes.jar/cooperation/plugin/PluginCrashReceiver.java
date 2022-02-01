@@ -3,11 +3,12 @@ package cooperation.plugin;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bkkq;
-import bklc;
-import bkld;
+import blvy;
+import blwk;
+import blwl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class PluginCrashReceiver
@@ -30,7 +31,7 @@ public class PluginCrashReceiver
             if ((!"com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject)) || ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject))) {
               try
               {
-                new bkld(paramIntent).execute(new String[] { "" });
+                new blwl(paramIntent).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -41,7 +42,7 @@ public class PluginCrashReceiver
             if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject)) {
               try
               {
-                new bklc(paramContext).execute(new String[] { "" });
+                new blwk(paramContext).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -59,8 +60,8 @@ public class PluginCrashReceiver
           QLog.d("plugin_tag", 1, "receive installFailed " + paramContext + ", " + paramIntent);
         } while ("com.tencent.mobileqq".equals(paramIntent));
         paramIntent = (QQAppInterface)localObject;
-      } while (!paramIntent.isCreateManager(27));
-      ((bkkq)paramIntent.getManager(27)).cancelInstall(paramContext);
+      } while (!paramIntent.isCreateManager(QQManagerFactory.MGR_PLUGIN));
+      ((blvy)paramIntent.getManager(QQManagerFactory.MGR_PLUGIN)).cancelInstall(paramContext);
       return;
     } while (!"com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_SPEED_INFO".equals(localObject));
   }

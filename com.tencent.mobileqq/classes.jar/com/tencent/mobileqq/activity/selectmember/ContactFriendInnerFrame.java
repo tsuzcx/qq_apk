@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bhjm;
+import anvx;
+import biuc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.mobileqq.widget.RedDotTextView;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.widget.TabBarView;
 
 public class ContactFriendInnerFrame
   extends SelectMemberInnerFrame
-  implements bhjm
+  implements biuc
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public TroopDiscussionBaseV a;
@@ -105,20 +105,20 @@ public class ContactFriendInnerFrame
   {
     super.a(paramBundle);
     paramBundle = a();
-    setContentView(2131560432);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131378112));
+    setContentView(2131560483);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131378400));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131690982));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(amtj.a(2131701613) + paramBundle.getString(2131690982));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131690983));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131690983));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368742));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131691067));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(anvx.a(2131701964) + paramBundle.getString(2131691067));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131691068));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131691068));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368901));
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.setupTitleBar(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131718082), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mTitleString);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.setupTitleBar(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131718467), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mTitleString);
   }
   
   public void d()

@@ -11,7 +11,7 @@ import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData.Comment
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import java.util.Iterator;
 import java.util.List;
-import ouo;
+import pdp;
 
 public class CommentLinkViewContainer
   extends LinearLayout
@@ -35,18 +35,18 @@ public class CommentLinkViewContainer
   
   private void a()
   {
-    inflate(this.a, 2131562669, this);
+    inflate(this.a, 2131562740, this);
     setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     setOrientation(1);
   }
   
-  public void a(ouo paramouo)
+  public void a(pdp parampdp)
   {
-    if ((paramouo == null) || (paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
+    if ((parampdp == null) || (parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData == null)) {}
     for (;;)
     {
       return;
-      Object localObject = paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentLinkDataList;
+      Object localObject = parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentLinkDataList;
       if ((localObject != null) && (((List)localObject).size() != 0))
       {
         removeAllViews();
@@ -57,7 +57,7 @@ public class CommentLinkViewContainer
           if (localCommentLinkData != null)
           {
             CommentLinkItemView localCommentLinkItemView = new CommentLinkItemView(this.a);
-            localCommentLinkItemView.a(paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, localCommentLinkData);
+            localCommentLinkItemView.a(parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, parampdp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, localCommentLinkData);
             addView(localCommentLinkItemView);
           }
         }

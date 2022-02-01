@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +18,9 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcef;
-import bjmp;
+import anvx;
+import bdla;
+import bkyc;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -45,7 +45,7 @@ public class EmotionCompleteInvalidAdapter
   protected int emotionFeeType;
   protected EmoticonPackage emotionPkg;
   private boolean isSmallEmotion;
-  private MqqHandler mUiHandler = new bjmp(Looper.getMainLooper(), this, true);
+  private MqqHandler mUiHandler = new bkyc(Looper.getMainLooper(), this, true);
   protected LinearLayout maskLayout;
   protected Button openBtn;
   
@@ -53,7 +53,7 @@ public class EmotionCompleteInvalidAdapter
   {
     super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
     this.emotionPkg = paramEmoticonPackage;
-    this.contentHight = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296962));
+    this.contentHight = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296963));
     if (paramEmoticonPackage.jobType == 4) {}
     for (boolean bool = true;; bool = false)
     {
@@ -81,12 +81,12 @@ public class EmotionCompleteInvalidAdapter
     localTextView.setGravity(1);
     localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
     localObject = new Button(this.mContext);
-    ((Button)localObject).setId(2131365275);
+    ((Button)localObject).setId(2131365369);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(25.0F * this.density));
     ((Button)localObject).setGravity(17);
     localLayoutParams.topMargin = ((int)(10.0F * this.density));
     localLayoutParams.gravity = 1;
-    ((Button)localObject).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839360));
+    ((Button)localObject).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839381));
     ((Button)localObject).setTextColor(-14894864);
     ((Button)localObject).setPadding((int)(this.density * 30.0F), 0, (int)(this.density * 30.0F), 0);
     localLinearLayout.addView((View)localObject, localLayoutParams);
@@ -121,7 +121,7 @@ public class EmotionCompleteInvalidAdapter
         QLog.e("EmotionCompleteInvalidAdapter", 1, "updateUI emotionInfo = null");
         return;
       }
-      paramView = (URLImageView)paramView.findViewById(2131365977);
+      paramView = (URLImageView)paramView.findViewById(2131366078);
       paramView.setImageDrawable(paramEmotionPanelData.getDrawable(this.mContext, this.density));
       paramView.setVisibility(0);
       return;
@@ -179,17 +179,17 @@ public class EmotionCompleteInvalidAdapter
     {
       this.openBtn = ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject).downloadBtn;
       this.maskLayout = ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject).maskLayout;
-      paramView = amtj.a(2131703234);
-      paramViewHolder = amtj.a(2131703236);
+      paramView = anvx.a(2131703585);
+      paramViewHolder = anvx.a(2131703587);
       if (this.emotionFeeType == 2) {
-        paramViewHolder = amtj.a(2131703237);
+        paramViewHolder = anvx.a(2131703588);
       }
-      paramViewHolder = amtj.a(2131703230) + paramViewHolder + "专享,\n开通" + paramViewHolder + amtj.a(2131703233);
+      paramViewHolder = anvx.a(2131703581) + paramViewHolder + "专享,\n开通" + paramViewHolder + anvx.a(2131703584);
       if (this.emotionPkg.mobileFeetype != 6) {
         break label510;
       }
-      paramViewHolder = amtj.a(2131703232);
-      paramView = amtj.a(2131703227);
+      paramViewHolder = anvx.a(2131703583);
+      paramView = anvx.a(2131703578);
       ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject).tips.setText(paramViewHolder);
       ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject).downloadBtn.setText(paramView);
       ((EmotionCompleteInvalidAdapter.EmotionCompletedInvalidViewHolder)localObject).downloadBtn.setOnClickListener(this);
@@ -248,15 +248,15 @@ public class EmotionCompleteInvalidAdapter
       break label104;
       if (this.emotionPkg.mobileFeetype == 2)
       {
-        paramViewHolder = amtj.a(2131703229);
-        paramView = amtj.a(2131703231);
+        paramViewHolder = anvx.a(2131703580);
+        paramView = anvx.a(2131703582);
         break label261;
       }
       if (this.emotionPkg.mobileFeetype != 3) {
         break label261;
       }
-      paramViewHolder = amtj.a(2131703228);
-      paramView = amtj.a(2131703235);
+      paramViewHolder = anvx.a(2131703579);
+      paramView = anvx.a(2131703586);
       break label261;
       i2 = paramView.getChildCount();
       k = 0;
@@ -307,7 +307,7 @@ public class EmotionCompleteInvalidAdapter
   public void onClick(View paramView)
   {
     boolean bool = true;
-    if (paramView.getId() == 2131365275)
+    if (paramView.getId() == 2131365369)
     {
       if (this.emotionPkg != null) {
         break label35;
@@ -336,7 +336,7 @@ public class EmotionCompleteInvalidAdapter
           ((Activity)this.mContext).startActivityForResult((Intent)localObject, 4813);
         }
         if (!this.isSmallEmotion) {
-          bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.emotionPkg.epId, "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.emotionPkg.epId, "", "", "");
         }
       }
     } while (this.emotionPkg.valid);
@@ -361,7 +361,7 @@ public class EmotionCompleteInvalidAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionCompleteInvalidAdapter
  * JD-Core Version:    0.7.0.1
  */

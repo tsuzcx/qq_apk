@@ -1,16 +1,15 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 class audc
-  implements DialogInterface.OnClickListener
+  implements biyc
 {
-  audc(aucz paramaucz) {}
+  audc(aucx paramaucx, Activity paramActivity, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.a = false;
-    aucz.a(this.a).finish();
+    if (paramInt == 2) {
+      aucx.a(this.jdField_a_of_type_Aucx, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    }
   }
 }
 

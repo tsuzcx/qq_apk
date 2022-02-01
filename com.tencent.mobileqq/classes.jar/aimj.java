@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aimj
-  extends amsu
+class aimj
+  extends aqnu
 {
-  public aimj(TroopView paramTroopView) {}
+  aimj(aimf paramaimf) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (paramBoolean1) {
-      this.a.j();
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (paramBoolean)
+    {
+      QQToast.a(aimf.a(this.a).getActivity(), 2, 2131719824, 0).a();
+      return;
     }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.j();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    QQToast.a(aimf.a(this.a).getActivity(), 0, 2131719823, 0).a();
   }
 }
 

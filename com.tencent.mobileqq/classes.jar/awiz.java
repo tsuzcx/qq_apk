@@ -1,153 +1,93 @@
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.format.DateFormat;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
+import android.app.Notification;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.map.geolocation.TencentDirectionListener;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.net.LocationHandler.3;
+import com.tencent.mobileqq.location.net.LocationHandler.7;
+import com.tencent.mobileqq.location.net.LocationHandler.8;
+import com.tencent.mobileqq.location.net.LocationHandler.9;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.lang.ref.SoftReference;
+import java.lang.reflect.Field;
 import java.util.List;
-import mqq.manager.Manager;
-import tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.Text;
-import tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.WarnMsg;
+import mqq.os.MqqHandler;
 
 public class awiz
-  implements Manager
+  extends BusinessHandler
+  implements anug
 {
-  protected awjg a;
-  protected QQAppInterface a;
-  protected HashMap<Long, awje> a;
-  protected HashSet<String> a;
-  protected boolean a;
-  protected boolean b = true;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  public static LatLng a;
+  private double jdField_a_of_type_Double = 0.0D;
+  private int jdField_a_of_type_Int = -1;
+  private anvi jdField_a_of_type_Anvi;
+  private aofu jdField_a_of_type_Aofu;
+  private awit jdField_a_of_type_Awit;
+  private awix jdField_a_of_type_Awix;
+  private volatile awjf jdField_a_of_type_Awjf;
+  private awjg jdField_a_of_type_Awjg;
+  private awjh jdField_a_of_type_Awjh;
+  public awjj a;
+  public awjl a;
+  public awjm a;
+  private awjo jdField_a_of_type_Awjo;
+  private TencentDirectionListener jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener;
+  private TencentLocationListener jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener;
+  private TencentLocationManager jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private LatLng jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private volatile boolean jdField_b_of_type_Boolean;
   
   public awiz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Awjg = new awjg();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    String str = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0);
-    if (!localSharedPreferences.getString("over_people_limit_tip_show_date" + paramQQAppInterface.getCurrentAccountUin(), "").equals(str))
+    super(paramQQAppInterface);
+    d();
+    i();
+  }
+  
+  static int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (localSharedPreferences.getString("over_one_limit_tip_show_date" + paramQQAppInterface.getCurrentAccountUin(), "").equals(str)) {
-        break label178;
-      }
+    default: 
+      return 0;
+    case 3: 
+      return 1;
     }
-    label178:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.b = bool1;
-      return;
-      bool1 = false;
-      break;
-    }
+    return 2;
   }
   
-  private SpannableString a(List<oidb_0x8e7.Text> paramList)
+  public static awiz a(QQAppInterface paramQQAppInterface)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    Object localObject1 = new StringBuilder();
-    Object localObject2 = paramList.iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((StringBuilder)localObject1).append(((oidb_0x8e7.Text)((Iterator)localObject2).next()).bytes_context.get().toStringUtf8());
-    }
-    if (((StringBuilder)localObject1).length() == 0) {
-      return null;
-    }
-    localObject1 = new SpannableString(((StringBuilder)localObject1).toString());
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      localObject2 = (oidb_0x8e7.Text)paramList.next();
-      int j = ((oidb_0x8e7.Text)localObject2).bytes_context.get().toStringUtf8().length();
-      if (((oidb_0x8e7.Text)localObject2).uint32_color.has()) {
-        ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(Color.parseColor(String.format("#%x", new Object[] { Integer.valueOf(((oidb_0x8e7.Text)localObject2).uint32_color.get()) }))), i, i + j, 33);
-      }
-      i += j;
-    }
-    return localObject1;
+    return (awiz)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.LOCATION_HANDLER);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    a(paramQQAppInterface, paramString1, "", paramString2, "", "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    bcef.b(paramQQAppInterface, "dc00899", "grp_lbs", paramString2, "pay_like", paramString1, 0, 0, paramString3, paramString4, paramString5, paramString6);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearbyLike.report", 2, "report, opName=" + paramString1 + ", toUin=" + paramString2 + ", extra1=" + paramString3 + ", extra2=" + paramString4 + ", extra3=" + paramString5 + ", extra4=" + paramString6);
-    }
-  }
-  
-  public static boolean d(long paramLong)
-  {
-    if ((paramLong == 6L) || (paramLong == 8L) || (paramLong == 37L) || (paramLong == 41L) || (paramLong == 42L) || (paramLong == 43L) || (paramLong == 45L) || (paramLong == 46L) || (paramLong == 47L) || (paramLong == 51L) || (paramLong == 10002L)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyLikeLimitManager", 2, "isNeedNewLimitCheck, source=" + paramLong + ", ret=" + bool);
-      }
-      return bool;
-    }
-  }
-  
-  public SpannableString a()
-  {
-    if ((this.jdField_a_of_type_Awjg == null) || (this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg == null)) {
-      return null;
-    }
-    return a(this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg.rpt_msg_first_info.get());
-  }
-  
-  public void a()
+  private void b(boolean paramBoolean)
   {
     try
     {
-      String str = "need_show_first_tip_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putBoolean(str, false).commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NearbyLikeLimitManager", 2, "disableShowFirstTip" + localException.toString());
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Awjg != null)
-      {
-        this.jdField_a_of_type_Awjg.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_Awjg.c = paramInt2;
-        this.jdField_a_of_type_Awjg.d = paramInt3;
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyLikeLimitManager", 2, "updateFromServer, level=" + paramInt1 + ", freeLikePeopleLimit=" + paramInt2 + ", freeLikeOneLimit=" + paramInt3);
-        }
+      if (this.jdField_a_of_type_Awjf != null) {
+        this.jdField_a_of_type_Awjf.a(this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, Double.valueOf(this.jdField_a_of_type_Double), paramBoolean);
       }
       return;
     }
@@ -158,526 +98,470 @@ public class awiz
     }
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2)
+  private void d()
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Awjg == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyLikeLimitManager", 2, "updateItem, mLimitInfo == null, return");
-          }
-          return;
-        }
-        awje localawje = (awje)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        if (localawje == null)
-        {
-          if ((paramInt1 > 0) || (paramInt2 > 0))
-          {
-            localawje = new awje();
-            localawje.jdField_a_of_type_Long = paramLong;
-            localawje.jdField_a_of_type_Int += paramInt1;
-            localawje.b += paramInt2;
-            localawje.c += this.jdField_a_of_type_Awjg.b * paramInt2;
-            this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localawje);
-            localObject2 = this.jdField_a_of_type_Awjg;
-            ((awjg)localObject2).f += 1;
-            localObject2 = this.jdField_a_of_type_Awjg;
-            ((awjg)localObject2).e -= this.jdField_a_of_type_Awjg.b * paramInt2;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject2 = new StringBuilder().append("updateItem, key=").append(paramLong).append(", freeLikeCount=").append(paramInt1).append(", payLikeCount=").append(paramInt2).append(", hasLikeBefore=");
-            if (localawje == null) {
-              break label377;
-            }
-            bool = true;
-            QLog.d("NearbyLikeLimitManager", 2, bool);
-          }
-          a(paramLong + "", true);
-          continue;
-        }
-        localObject1.jdField_a_of_type_Int += paramInt1;
-      }
-      finally {}
-      localObject1.b += paramInt2;
-      localObject1.c += this.jdField_a_of_type_Awjg.b * paramInt2;
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localObject1);
-      Object localObject2 = this.jdField_a_of_type_Awjg;
-      ((awjg)localObject2).e -= this.jdField_a_of_type_Awjg.b * paramInt2;
-      continue;
-      label377:
-      boolean bool = false;
-    }
+    this.jdField_a_of_type_Awjl = new awjl(this.app, this);
+    this.jdField_a_of_type_Awjj = new awjj(this.app);
+    this.jdField_a_of_type_Awjm = new awjm(this.app);
+    this.jdField_a_of_type_Awjo = new awjo(this.app);
+    this.jdField_a_of_type_Awjh = new awjh(this.app, this);
+    e();
+    f();
+    h();
+    this.jdField_a_of_type_Awix = new awix(this.app.getCurrentUin());
   }
   
-  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString1, awjh paramawjh, String paramString2)
+  private void e()
   {
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyLikeLimitManager", 2, "checkCanDoVote, uin=" + paramString1 + ", from=" + paramString2 + ", mLimitInfo=" + this.jdField_a_of_type_Awjg);
-        }
-        boolean bool1 = a(Long.valueOf(paramString1).longValue());
-        boolean bool2 = b(Long.valueOf(paramString1).longValue());
-        if ((!bool1) && (!bool2)) {
-          break label306;
-        }
-        if ((bool1) && (c()))
-        {
-          localSpannableString = b();
-          a(paramQQAppInterface, "exp_uv_limit", paramString2);
-          i = 1;
-          if (i != 0)
-          {
-            paramActivity = bfur.a(paramActivity, 0, null, localSpannableString, amtj.a(2131706325), amtj.a(2131706321), amtj.a(2131706320), new awja(this, bool1, paramString1, paramawjh, paramQQAppInterface, paramString2, paramActivity), new awjb(this, paramActivity, paramQQAppInterface, paramString2));
-            paramActivity.getBtnLeft().setTextColor(-14698765);
-            paramActivity.show();
-          }
-        }
-        else
-        {
-          if ((!bool2) || (!d())) {
-            break label331;
-          }
-          localSpannableString = c();
-          a(paramQQAppInterface, "exp_pv_limit", paramString2);
-          i = 1;
-          continue;
-        }
-        if (a())
-        {
-          a(Long.valueOf(paramString1).longValue(), 0, 1);
-          paramawjh.a(paramString1, false);
-          a(paramQQAppInterface, "pay_like", paramString1, paramString2, "", "", "");
-          continue;
-        }
-        a(paramActivity, paramString2);
-      }
-      finally {}
-      a(paramQQAppInterface, "exp_pay_like", paramString2);
-      continue;
-      label306:
-      a(Long.valueOf(paramString1).longValue(), 1, 0);
-      paramawjh.a(paramString1, true);
-      continue;
-      label331:
-      SpannableString localSpannableString = null;
-      int i = 0;
-    }
+    this.jdField_a_of_type_Aofu = new awja(this);
   }
   
-  protected void a(Activity paramActivity, String paramString)
+  private void f()
   {
-    bfur.a(paramActivity, 230).setTitle(amtj.a(2131706326)).setMessage(amtj.a(2131706322)).setNegativeButton(amtj.a(2131706324), new awjd(this)).setPositiveButton(amtj.a(2131706323), new awjc(this, paramActivity)).show();
+    this.jdField_a_of_type_Anvi = new awjb(this);
+    this.app.addObserver(this.jdField_a_of_type_Anvi);
   }
   
-  public void a(awjg paramawjg, List<awje> paramList, int paramInt)
+  private void g()
   {
     try
     {
-      this.jdField_a_of_type_Awjg = paramawjg;
-      if (paramInt == 511) {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-      }
-      paramawjg = new StringBuilder();
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          awje localawje = (awje)paramList.next();
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localawje.jdField_a_of_type_Long), localawje);
-          if (QLog.isColorLevel()) {
-            paramawjg.append(localawje).append(" | ");
-          }
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break label165;
-      }
+      Object localObject = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.getClass().getDeclaredField("c");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager);
+      Field localField = localObject.getClass().getDeclaredField("b");
+      localField.setAccessible(true);
+      localObject = localField.get(localObject);
+      localField = localObject.getClass().getDeclaredField("g");
+      localField.setAccessible(true);
+      localField.set(localObject, null);
+      return;
     }
-    finally {}
-    QLog.d("NearbyLikeLimitManager", 2, "updateFromServer, mLimitInfo=" + this.jdField_a_of_type_Awjg + ", mLikeItemMap=[" + paramawjg + "]");
-    label165:
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+      return;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.printStackTrace();
+    }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  private void h()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "addRelationChainObservers: invoked. ", " TAG: ", "LocationHandler" });
+    }
+    this.app.addObserver(this.jdField_a_of_type_Aofu);
+    this.app.addObserver(this.jdField_a_of_type_Anvi);
+  }
+  
+  private void i()
+  {
+    this.app.addObserver(this.jdField_a_of_type_Awjh);
+  }
+  
+  private void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "removeRelationChainObservers: invoked. ", " TAG: ", "LocationHandler" });
+    }
+    this.app.removeObserver(this.jdField_a_of_type_Aofu);
+    this.app.removeObserver(this.jdField_a_of_type_Anvi);
+  }
+  
+  private void k()
+  {
+    this.app.removeObserver(this.jdField_a_of_type_Awjh);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public LocationRoom a(awit paramawit)
+  {
+    return this.jdField_a_of_type_Awix.a(paramawit);
+  }
+  
+  LatLng a()
+  {
+    if (this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getSelfLatLng: invoked. location null detected");
+    }
+    return this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] onAppForeground: invoked. ");
+    }
+    QQNotificationManager.getInstance().cancel("LocationHandler", 525);
+    this.jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] createOrJoinRoom: invoked.");
+    }
+    if (paramInt == 0) {
+      if (!awnj.a(this.app, paramString)) {}
+    }
     for (;;)
     {
+      this.jdField_a_of_type_Awjl.a(i, paramInt, paramString);
+      return;
+      i = 1;
+      continue;
+      if (paramInt == 1)
+      {
+        if (!awnj.b(this.app, paramString)) {
+          i = 1;
+        }
+      }
+      else
+      {
+        QLog.d("LocationHandler", 1, new Object[] { "createOrJoinRoom: invoked. (进入已关闭的房间，需要兜底逻辑[弹窗、刷新本地标志等]) ", " operateType: ", Integer.valueOf(0), " mLocationShareFragment.sessionUinType: ", Integer.valueOf(paramInt) });
+        i = 0;
+      }
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    if (awnj.a(this.app, paramInt1, paramString))
+    {
+      bdla.b(null, "CliOper", "", "", "0X800A76C", "0X800A76C", a(paramInt2), 0, "" + paramInt3, "0", "0", "");
+      return;
+    }
+    bdla.b(null, "CliOper", "", "", "0X800A765", "0X800A765", paramInt3, 0, "", "0", "0", "");
+  }
+  
+  public void a(Activity paramActivity, LocationRoom paramLocationRoom)
+  {
+    if (b()) {
+      return;
+    }
+    this.jdField_a_of_type_Awit = paramLocationRoom.a();
+    anue.a().a(this);
+    LocationHandler.3 local3 = new LocationHandler.3(this, new SoftReference(paramActivity));
+    MqqHandler localMqqHandler = ThreadManager.getUIHandler();
+    boolean bool = this.jdField_a_of_type_Awjj.a(this.jdField_a_of_type_Awit);
+    if (bool) {
+      a(this.jdField_a_of_type_Awit.a(), this.jdField_a_of_type_Awit.a());
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = TencentLocationManager.getInstance(BaseApplicationImpl.context);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new awjc(this, bool, local3, localMqqHandler, paramLocationRoom);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = new awjd(this);
+      paramLocationRoom = aqxd.a(BaseApplicationImpl.getApplication());
+      int i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.requestLocationUpdates(TencentLocationRequest.create().setInterval(paramLocationRoom.a()), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+      if (i != 0)
+      {
+        QLog.e("LocationHandler", 1, "[LocationManager] requestLocationUpdates: invoked. error: " + i);
+        QQToast.a(BaseApplicationImpl.context, "地图定位系统初始化失败，请稍后重试", 0).a();
+        if (paramActivity != null) {
+          paramActivity.finish();
+        }
+      }
+      i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.startDirectionUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener, Looper.myLooper());
+      if (i == 0) {
+        break;
+      }
+      QLog.e("LocationHandler", 1, "[LocationManager] startDirectionUpdates: invoked. error: " + i);
+      QQToast.a(BaseApplicationImpl.context, 1, "方向箭头暂不可用", 0).a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "[LocationManager] startLocationUpdate: invoked.  add over time runnable");
+      }
+      localMqqHandler.postDelayed(local3, 15000L);
+    }
+  }
+  
+  void a(awit paramawit)
+  {
+    if (a(paramawit).b()) {
+      QQToast.a(this.app.getApp(), 2131693708, 0).a();
+    }
+  }
+  
+  void a(awit paramawit, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "notifyKickOff: invoked. roomKey: " + paramawit + " clientType: " + paramInt);
+    }
+    a(paramawit, true);
+    this.jdField_a_of_type_Awix.b(paramawit, paramInt);
+  }
+  
+  void a(awit paramawit, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Awix.a(paramawit, paramInt1, paramInt2);
+  }
+  
+  void a(awit paramawit, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Awjg != null)
+    {
+      Pair localPair = this.jdField_a_of_type_Awjg.a();
+      if ((localPair != null) && (paramawit.equals(localPair.first)) && (paramVenue.equals(localPair.second)))
+      {
+        this.jdField_a_of_type_Awjg.a(paramawit, paramVenue, paramInt1, paramBoolean, paramInt2);
+        this.jdField_a_of_type_Awjg = null;
+      }
+    }
+  }
+  
+  public void a(awit paramawit, LocationRoom.Venue paramVenue, awjg paramawjg)
+  {
+    if ((paramawit == null) || ((paramVenue == null) && (paramawjg != null)))
+    {
+      paramawjg.a(paramawit, paramVenue, 1, false, -1);
+      return;
+    }
+    this.jdField_a_of_type_Awjg = paramawjg;
+    this.jdField_a_of_type_Awjo.a(paramawit, paramVenue);
+  }
+  
+  void a(awit paramawit, LocationRoom.Venue paramVenue, List<awir> paramList)
+  {
+    this.jdField_a_of_type_Awix.a(paramawit, paramVenue, paramList);
+  }
+  
+  void a(awit paramawit, String paramString)
+  {
+    if ((a(paramawit).b()) && (!this.app.getCurrentUin().equals(paramString))) {
+      QQToast.a(this.app.getApp(), 2131693706, 0).a();
+    }
+  }
+  
+  public void a(awit paramawit, boolean paramBoolean)
+  {
+    if ((!paramBoolean) && (paramawit != null) && (!paramawit.equals(this.jdField_a_of_type_Awit))) {}
+    for (;;)
+    {
+      return;
+      if (Looper.getMainLooper() != Looper.myLooper())
+      {
+        ThreadManager.getUIHandler().post(new LocationHandler.7(this, paramawit, paramBoolean));
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "stopLocationSharing: invoked. roomKey: " + paramawit);
+      }
+      this.jdField_a_of_type_Awit = null;
+      anue.a().b(this);
+      if (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null)
+      {
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = null;
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.stopDirectionUpdate();
+        g();
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = null;
+      }
+      this.jdField_a_of_type_Awjj.a();
+      QQNotificationManager.getInstance().cancel("LocationHandler", 525);
       try
       {
-        boolean bool = TextUtils.isEmpty(paramString);
-        if (bool) {
+        paramawit = awnx.a(this.app);
+        if (paramawit != null)
+        {
+          paramawit.a(-1);
           return;
         }
-        if (!paramBoolean)
-        {
-          this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyLikeLimitManager", 2, "setNeedUpdateProfileCardFlag, uin=" + paramString + ", isNeedUpdate=" + paramBoolean);
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-        }
       }
-      finally {}
+      catch (Throwable paramawit)
+      {
+        QLog.e("LocationHandler", 1, "stopLocationSharing: failed. ", paramawit);
+      }
     }
   }
   
-  public boolean a()
+  public void a(awiy paramawiy)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    for (;;)
+    this.jdField_a_of_type_Awix.b(paramawiy);
+  }
+  
+  public void a(awjf paramawjf)
+  {
+    try
     {
-      try
-      {
-        if (this.jdField_a_of_type_Awjg == null)
-        {
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("NearbyLikeLimitManager", 2, "isStockEnough, mLimitInfo == null, return true");
-            bool2 = bool1;
-          }
-          return bool2;
-        }
-        if (this.jdField_a_of_type_Awjg.e >= this.jdField_a_of_type_Awjg.b)
-        {
-          bool1 = bool2;
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("NearbyLikeLimitManager", 2, "isStockEnough, ret=" + bool1);
-            bool2 = bool1;
-          }
-        }
-        else
-        {
-          bool1 = false;
-        }
-      }
-      finally {}
+      this.jdField_a_of_type_Awjf = paramawjf;
+      return;
     }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    label165:
-    label171:
-    label219:
-    for (;;)
+    finally
     {
-      try
-      {
-        if (this.jdField_a_of_type_Awjg == null)
-        {
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("NearbyLikeLimitManager", 2, "isOverFreeLikePeopleLimit, mLimitInfo==null, return false, uin=" + paramLong);
-            bool2 = bool1;
-          }
-          return bool2;
-        }
-        awje localawje = (awje)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        if (localawje != null) {
-          break label171;
-        }
-        if (this.jdField_a_of_type_Awjg.f < this.jdField_a_of_type_Awjg.c) {
-          break label165;
-        }
-        bool1 = true;
-      }
-      finally {}
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("NearbyLikeLimitManager", 2, "isOverFreeLikePeopleLimit, ret=" + bool1 + ", uin=" + paramLong);
-        bool2 = bool1;
-        continue;
-        bool1 = false;
-        break label219;
-        if ((this.jdField_a_of_type_Awjg.f >= this.jdField_a_of_type_Awjg.c) && (localObject.b > 0))
-        {
-          int i = localObject.jdField_a_of_type_Int;
-          if (i != 0) {}
-        }
-        for (bool1 = bool2;; bool1 = false) {
-          break;
-        }
-      }
+      paramawjf = finally;
+      throw paramawjf;
     }
   }
   
-  /* Error */
-  public boolean a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 499	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +51 -> 57
-    //   9: iconst_0
-    //   10: istore_2
-    //   11: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   14: ifeq +39 -> 53
-    //   17: ldc 254
-    //   19: iconst_2
-    //   20: new 75	java/lang/StringBuilder
-    //   23: dup
-    //   24: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   27: ldc_w 522
-    //   30: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: iload_2
-    //   34: invokevirtual 264	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   37: ldc_w 519
-    //   40: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: aload_1
-    //   44: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 229	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: iload_2
-    //   56: ireturn
-    //   57: aload_0
-    //   58: getfield 35	awiz:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   61: aload_1
-    //   62: invokevirtual 525	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   65: istore_2
-    //   66: goto -55 -> 11
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	awiz
-    //   0	74	1	paramString	String
-    //   10	56	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	69	finally
-    //   11	53	69	finally
-    //   57	66	69	finally
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "setJoinOrCreateRoomNotReEntry: invoked. ", " joinOrCreateRoomNotReEntry: ", Boolean.valueOf(paramBoolean) });
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public SpannableString b()
+  boolean a()
   {
-    if ((this.jdField_a_of_type_Awjg == null) || (this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg == null)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "joinOrCreateRoomNotReEntry: invoked. ", " isJoinOrCreateRoomNotReEntry: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     }
-    return a(this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg.rpt_msg_user_num_limit_info.get());
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void b()
   {
-    String str1 = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
-    String str2 = "over_people_limit_tip_show_date" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putString(str2, str1).commit();
-    this.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyLikeLimitManager", 2, "disableShowOverPeopleLimitTip, key=" + str2);
+      QLog.d("LocationHandler", 2, "[LocationManager] onAppBackground: invoked. ");
+    }
+    Object localObject = aqxd.a(BaseApplicationImpl.getApplication());
+    this.jdField_b_of_type_Boolean = false;
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationHandler.8(this), ((ardt)localObject).b());
+    if ((((ardt)localObject).b() <= 0L) || (!b())) {
+      return;
+    }
+    localObject = new NotificationCompat.Builder(this.app.getApp());
+    ((NotificationCompat.Builder)localObject).setContentText(this.app.getApp().getString(2131694346)).setWhen(System.currentTimeMillis()).setSmallIcon(2130841445).setAutoCancel(true);
+    localObject = ((NotificationCompat.Builder)localObject).build();
+    QQNotificationManager.addChannelIfNeed((Notification)localObject, "CHANNEL_ID_OTHER");
+    QQNotificationManager.getInstance().notify("LocationHandler", 525, (Notification)localObject);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationHandler.9(this), 3000L);
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Awjj.a(paramString, new awje(this, paramInt, paramString));
+  }
+  
+  void b(awit paramawit)
+  {
+    if (a(paramawit).b()) {
+      QQToast.a(this.app.getApp(), 2131693707, 0).a();
     }
   }
   
-  public boolean b()
+  public void b(awit paramawit, int paramInt)
   {
-    boolean bool1 = true;
-    try
-    {
-      String str = "need_show_first_tip_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      boolean bool2 = BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).getBoolean(str, true);
-      bool1 = bool2;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NearbyLikeLimitManager", 2, "isNeedShowFirstTip" + localException.toString());
-    }
-    return bool1;
-    return true;
-  }
-  
-  public boolean b(long paramLong)
-  {
-    boolean bool2 = true;
-    for (;;)
-    {
-      try
-      {
-        awje localawje = (awje)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        boolean bool1;
-        if ((this.jdField_a_of_type_Awjg == null) || (localawje == null))
-        {
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder().append("isOVerFreeLikeOneLimit, mLimitInfo isNull=");
-            if (this.jdField_a_of_type_Awjg == null)
-            {
-              bool1 = true;
-              localStringBuilder = localStringBuilder.append(bool1).append(", item isNull=");
-              if (localawje != null) {
-                continue;
-              }
-              bool1 = bool2;
-              QLog.d("NearbyLikeLimitManager", 2, bool1 + ", uin=" + paramLong + ", return false");
-            }
-          }
-          else
-          {
-            bool2 = false;
-            return bool2;
-          }
-          bool1 = false;
-          continue;
-          bool1 = false;
-          continue;
-        }
-        if (localawje.jdField_a_of_type_Int >= this.jdField_a_of_type_Awjg.d)
-        {
-          bool1 = true;
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("NearbyLikeLimitManager", 2, "isOVerFreeLikeOneLimit, uin=" + paramLong + ", ret=" + bool1);
-            bool2 = bool1;
-          }
-        }
-        else
-        {
-          bool1 = false;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public SpannableString c()
-  {
-    if ((this.jdField_a_of_type_Awjg == null) || (this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg == null)) {
-      return null;
-    }
-    return a(this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg.rpt_msg_zan_limit_info.get());
-  }
-  
-  public void c()
-  {
-    String str1 = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
-    String str2 = "over_one_limit_tip_show_date" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putString(str2, str1).commit();
-    this.b = false;
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyLikeLimitManager", 2, "disableShowOverOneLimitTip, key=" + str2);
+      QLog.d("LocationHandler", 2, "notifyRoomClosing: invoked. roomKey: " + paramawit + " reason: " + paramInt);
     }
+    a(paramawit, false);
+    this.jdField_a_of_type_Awix.a(paramawit, paramInt);
   }
   
-  public boolean c()
+  public void b(awit paramawit, LocationRoom.Venue paramVenue, awjg paramawjg)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Awjg != null) && (this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg != null)) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramawit == null) || ((paramVenue == null) && (paramawjg != null)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyLikeLimitManager", 2, "isNeedShowOverPeopleLimitTip, ret=" + bool);
-      }
-      return bool;
+      paramawjg.a(paramawit, paramVenue, 3, false, -1);
+      return;
     }
+    this.jdField_a_of_type_Awjg = paramawjg;
+    this.jdField_a_of_type_Awjo.b(paramawit, paramVenue);
   }
   
-  /* Error */
-  public boolean c(long paramLong)
+  public void b(awiy paramawiy)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 30	awiz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   6: lload_1
-    //   7: invokestatic 330	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   10: invokevirtual 333	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   13: checkcast 335	awje
-    //   16: astore 5
-    //   18: aload_0
-    //   19: getfield 25	awiz:jdField_a_of_type_Awjg	Lawjg;
-    //   22: astore 6
-    //   24: aload 6
-    //   26: ifnull +8 -> 34
-    //   29: aload 5
-    //   31: ifnonnull +11 -> 42
-    //   34: iconst_0
-    //   35: istore 4
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: iload 4
-    //   41: ireturn
-    //   42: aload 5
-    //   44: getfield 342	awje:b	I
-    //   47: istore_3
-    //   48: iload_3
-    //   49: ifle +9 -> 58
-    //   52: iconst_1
-    //   53: istore 4
-    //   55: goto -18 -> 37
-    //   58: iconst_0
-    //   59: istore 4
-    //   61: goto -24 -> 37
-    //   64: astore 5
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload 5
-    //   70: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	this	awiz
-    //   0	71	1	paramLong	long
-    //   47	2	3	i	int
-    //   35	25	4	bool	boolean
-    //   16	27	5	localawje	awje
-    //   64	5	5	localObject	Object
-    //   22	3	6	localawjg	awjg
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	64	finally
-    //   42	48	64	finally
+    this.jdField_a_of_type_Awix.a(paramawiy);
   }
   
-  public boolean d()
-  {
-    if ((this.b) && (this.jdField_a_of_type_Awjg != null) && (this.jdField_a_of_type_Awjg.jdField_a_of_type_TencentImOidbOidb_0x8e7Oidb_0x8e7$WarnMsg != null)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyLikeLimitManager", 2, "isNeedShowOverOneLimitTip, ret=" + bool);
-      }
-      return bool;
-    }
-  }
-  
-  public void onDestroy()
+  public void b(awjf paramawjf)
   {
     try
     {
-      this.jdField_a_of_type_Awjg = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
       if (QLog.isColorLevel()) {
-        QLog.d("NearbyLikeLimitManager", 2, "onDestroy");
+        QLog.d("LocationHandler", 2, "removeLocationListener: invoked. listener: " + paramawjf + " mLocationListener: " + this.jdField_a_of_type_Awjf);
+      }
+      if (paramawjf == this.jdField_a_of_type_Awjf) {
+        this.jdField_a_of_type_Awjf = null;
       }
       return;
     }
     finally {}
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Awit != null;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Awix.a(paramInt, paramString);
+  }
+  
+  public void c(awit paramawit)
+  {
+    awit localawit = new awit(this.jdField_a_of_type_Awjj.a(), this.jdField_a_of_type_Awjj.a());
+    if (!localawit.equals(paramawit))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "notifyRoomChanging: invoked. new roomKey: " + paramawit + " org roomKey: " + localawit);
+      }
+      this.jdField_a_of_type_Awix.a(localawit);
+    }
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return awji.class;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "onDestroy: invoked. ");
+    }
+    a(this.jdField_a_of_type_Awit, true);
+    j();
+    k();
+    this.jdField_a_of_type_Awjm.b();
+    this.jdField_a_of_type_Awjj.a();
+    this.jdField_a_of_type_Awix.a();
+    agiq.a();
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("QQLBSShareSvc.room_operation".equals(paramFromServiceMsg.getServiceCmd())) {
+      this.jdField_a_of_type_Awjl.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    do
+    {
+      return;
+      if ("QQLBSShareSvc.report_location".equals(paramFromServiceMsg.getServiceCmd()))
+      {
+        this.jdField_a_of_type_Awjj.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("QQLBSShareSvc.room_query".equals(paramFromServiceMsg.getServiceCmd()))
+      {
+        this.jdField_a_of_type_Awjm.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"QQLBSShareSvc.assembly_point_operation".equals(paramFromServiceMsg.getServiceCmd()));
+    this.jdField_a_of_type_Awjo.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

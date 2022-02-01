@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
-import bbxj;
+import bdee;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ArtFilterBridgeActivity$1
@@ -10,7 +10,7 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    bbxj.a(this.this$0.app, this.this$0.app.getApplication());
+    bdee.a(this.this$0.app, this.this$0.app.getApplication());
   }
 }
 

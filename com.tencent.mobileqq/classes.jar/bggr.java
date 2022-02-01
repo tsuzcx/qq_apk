@@ -1,18 +1,44 @@
-public class bggr
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import java.util.Comparator;
+
+class bggr
+  implements Comparator<bggz>
 {
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  bggr(bggl parambggl) {}
+  
+  public int a(bggz parambggz1, bggz parambggz2)
   {
-    paramString6 = new StringBuilder();
-    paramString6.append(paramString1).append("|");
-    paramString6.append(paramString2).append("|");
-    paramString6.append(paramString3).append("|");
-    paramString6.append(paramString4).append("|");
-    paramString6.append(paramString5).append("|");
-    paramString6.append(paramString7).append("|");
-    paramString6.append(paramString8).append("|");
-    paramString6.append(paramString9).append("|");
-    paramString6.append(paramString10);
-    bcdf.a(null, "sendtdbank|b_sng_qqvip_vas_status_report|vas_errorcode_report", paramString6.toString(), true);
+    int j = -1;
+    if (((parambggz1 instanceof MessageForDeliverGiftTips)) && ((parambggz2 instanceof MessageForDeliverGiftTips)))
+    {
+      parambggz1 = (MessageForDeliverGiftTips)parambggz1;
+      parambggz2 = (MessageForDeliverGiftTips)parambggz2;
+      int i;
+      if ((parambggz1.isToAll()) && (parambggz2.isToAll())) {
+        i = (int)(parambggz1.time - parambggz2.time);
+      }
+      do
+      {
+        do
+        {
+          return i;
+          i = j;
+        } while (parambggz1.isToAll());
+        if (parambggz2.isToAll()) {
+          return 1;
+        }
+        if ((parambggz1.receiverUin == this.a.a.getLongAccountUin()) && (parambggz2.receiverUin == this.a.a.getLongAccountUin())) {
+          return (int)(parambggz1.time - parambggz2.time);
+        }
+        i = j;
+      } while (parambggz1.receiverUin == this.a.a.getLongAccountUin());
+      if (parambggz2.receiverUin == this.a.a.getLongAccountUin()) {
+        return 1;
+      }
+      return (int)(parambggz1.time - parambggz2.time);
+    }
+    return (int)(parambggz1.getShmsgseq() - parambggz2.getShmsgseq());
   }
 }
 

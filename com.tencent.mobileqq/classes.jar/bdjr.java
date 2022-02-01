@@ -1,105 +1,56 @@
-import android.content.Context;
-import android.graphics.Typeface;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdjr
-  extends RecyclerView.Adapter<bdjv>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bdjw jdField_a_of_type_Bdjw;
-  private boolean jdField_a_of_type_Boolean;
-  private aqej[] jdField_a_of_type_ArrayOfAqej;
+  public static String a = "";
   
-  public bdjr(Context paramContext, bdjw parambdjw, long paramLong)
+  private static String a(String paramString1, String paramString2, String paramString3, bdjs parambdjs, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bdjw = parambdjw;
-    this.jdField_a_of_type_Long = paramLong;
+    QLog.e("AVShortVideoReportController", 1, "getReportingDetail");
+    paramString1 = new StringBuilder(64);
+    paramString1.append(paramString2).append('|');
+    paramString1.append(paramString3).append('|');
+    paramString1.append("${count_unknown}").append('|');
+    paramString1.append(parambdjs.a).append('|');
+    paramString1.append(parambdjs.b).append('|');
+    paramString1.append(parambdjs.c).append('|');
+    paramString1.append(parambdjs.d).append('|');
+    paramString1.append(parambdjs.e).append('|');
+    paramString1.append(parambdjs.f).append('|');
+    paramString1.append(parambdjs.g).append('|');
+    paramString1.append(parambdjs.h).append('|');
+    paramString1.append(parambdjs.i).append('|');
+    paramString1.append(parambdjs.j).append('|');
+    paramString1.append(parambdjs.k).append('|');
+    paramString1.append(parambdjs.l).append('|');
+    paramString1.append(parambdjs.m).append('|');
+    paramString1.append(parambdjs.n).append('|');
+    paramString1.append(parambdjs.o).append('|');
+    paramString1.append(parambdjs.p).append('|');
+    paramString1.append(parambdjs.q).append('|');
+    paramString1.append(parambdjs.r).append('|');
+    paramString1.append(parambdjs.s).append('|');
+    paramString1.append(parambdjs.t).append('|');
+    paramString1.append(parambdjs.u).append('|');
+    paramString1.append(parambdjs.v).append('|');
+    return paramString1.toString();
   }
   
-  public int a()
+  public static void a(String paramString1, String paramString2, String paramString3, bdjs parambdjs)
   {
-    return this.jdField_a_of_type_ArrayOfAqej[this.jdField_a_of_type_Int].jdField_a_of_type_Int;
-  }
-  
-  @NonNull
-  public bdjv a(@NonNull ViewGroup paramViewGroup, int paramInt)
-  {
-    return new bdjv(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560944, paramViewGroup, false));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    bcef.b(null, "dc00898", "", "", "0X800B358", "0X800B358", 0, 0, "", "", "", "");
-    paramView = bfur.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(2131719701).setPositiveButton(2131719669, new bdju(this, paramInt)).setNegativeButton(2131719668, new bdjt(this));
-    paramView.show();
-    ((TextView)paramView.findViewById(2131365552)).setGravity(17);
-  }
-  
-  public void a(@NonNull bdjv parambdjv, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ArrayOfAqej == null) || (this.jdField_a_of_type_ArrayOfAqej.length == 0))
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(parambdjv, paramInt, getItemId(paramInt));
-      return;
+    paramString1 = a(paramString2, paramString1, paramString3, parambdjs, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShortVideoReportController", 2, "POST getReportingDetail=" + paramString1);
     }
-    if (this.jdField_a_of_type_Int == paramInt)
-    {
-      parambdjv.a.setSelected(true);
-      parambdjv.a.setTypeface(Typeface.defaultFromStyle(1));
-    }
-    for (;;)
-    {
-      parambdjv.a.setText(this.jdField_a_of_type_ArrayOfAqej[paramInt].jdField_a_of_type_JavaLangString);
-      parambdjv.a.setOnClickListener(new bdjs(this, parambdjv));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("HorizontalAdapter", 2, "onBindViewHolder() called with: position = [" + paramInt + "], holder.templateTitle = [" + parambdjv.a + "], mTemplates[position].title = [" + this.jdField_a_of_type_ArrayOfAqej[paramInt].jdField_a_of_type_JavaLangString + "]");
-      break;
-      parambdjv.a.setSelected(false);
-      parambdjv.a.setTypeface(Typeface.defaultFromStyle(0));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(aqej[] paramArrayOfaqej)
-  {
-    this.jdField_a_of_type_ArrayOfAqej = paramArrayOfaqej;
-    notifyDataSetChanged();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfAqej == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ArrayOfAqej.length;
+    paramString3 = new Intent();
+    paramString3.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+    paramString3.putExtra("reporting_tag", paramString2);
+    paramString3.putExtra("reporting_detail", paramString1);
+    paramString3.putExtra("reporting_count", 1);
+    paramString3.putExtra("is_runtime", 0);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramString3);
   }
 }
 

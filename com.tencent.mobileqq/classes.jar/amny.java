@@ -1,43 +1,18 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.ApolloResManager;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class amny
-  extends BroadcastReceiver
+public class amny
+  implements anfg
 {
-  amny(amnx paramamnx) {}
+  public amny(ApolloResManager paramApolloResManager, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, amme paramamme, String paramString, amof paramamof) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (!TextUtils.isEmpty(amnx.a(this.a)))
-    {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
-      }
-      if (i != 0) {
-        break label176;
-      }
-      if (amnx.a(this.a) != null)
-      {
-        paramContext = new Intent(amnx.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", AppConstants.BABY_Q_UIN);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", amnx.a(this.a).getString(2131690599));
-        amnx.a(this.a).startActivity(paramContext);
-        amnx.a(this.a).finish();
-      }
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
     }
-    return;
-    label176:
-    this.a.callJs(amnx.a(this.a) + "(" + paramContext + ");");
+    this.b.getAndIncrement();
+    ApolloResManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloResManager, this.b, this.c, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_a_of_type_Amme, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amof);
   }
 }
 

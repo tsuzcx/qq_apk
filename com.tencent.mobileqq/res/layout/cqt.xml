@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="vertical" android:background="@drawable/aao" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.CommonBtmLine android:id="@id/jtk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/jte" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:src="@drawable/gv0" android:scaleType="fitCenter" />
-    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/qzone_skin_feed_content_text_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cj9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/rly" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cj_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/rmh" />
-    <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c6" android:visibility="gone" android:layout_width="170.0dip" android:layout_height="41.0dip" android:layout_marginTop="20.0dip" android:text="@string/rl3" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cqz" />
+    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/noi" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendBottomBarView android:layout_gravity="bottom" android:id="@id/ac1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/hgt" android:background="@drawable/g0u" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="40.0dip">
+        <ImageView android:id="@id/hgu" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="23.5dip" android:layout_marginTop="15.5dip" android:src="@drawable/g0v" />
+    </FrameLayout>
+</FrameLayout>

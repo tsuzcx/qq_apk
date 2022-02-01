@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import ajou;
+import akki;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class EmotionPreviewAdapter
   extends BaseAdapter
-  implements ajou
+  implements akki
 {
   private static final String TAG = "EmotionPreviewAdapter";
   private List<EmotionPreviewInfo> dataList;
@@ -41,7 +41,7 @@ public class EmotionPreviewAdapter
   public EmotionPreviewAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130847755);
+    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130847846);
     this.imageHeight = AIOUtils.dp2px(207.0F, this.mContext.getResources());
   }
   
@@ -238,7 +238,7 @@ public class EmotionPreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

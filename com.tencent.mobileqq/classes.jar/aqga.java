@@ -1,54 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-class aqga
-  implements aqey
+public class aqga
+  implements DialogInterface.OnClickListener
 {
-  aqga(aqfw paramaqfw) {}
+  public aqga(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public void a(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (JumpConfirmFragment.b(this.a) == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = JumpConfirmFragment.b(this.a))
     {
-      Intent localIntent;
-      if (new JSONObject(aqfw.a(this.a)).getInt("showlocalfile") == 1)
-      {
-        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
-        if (localIntent != null) {}
-      }
-      else
-      {
-        return;
-      }
-      try
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("category", 23);
-        localIntent.putExtra("bundle", localBundle);
-        localIntent.putExtra("localSdCardfile", 0);
-        paramContext.startActivity(localIntent);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
+      bdla.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
       return;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqga
  * JD-Core Version:    0.7.0.1
  */

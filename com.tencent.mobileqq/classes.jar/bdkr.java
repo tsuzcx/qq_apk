@@ -1,14 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class bdkr
-  implements bdgq
+public final class bdkr
 {
-  public bdkr(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  public boolean a;
   
-  public void a(int paramInt)
+  private void a(String paramString)
   {
-    this.a.getActivity().finish();
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgReporterSwitchConfigProcessor", 2, "MsgReporterSwitch configText : " + paramString);
+      }
+    }
+    try
+    {
+      this.a = new JSONObject(paramString).optBoolean("MsgHopperUpload", false);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MsgReporterSwitchConfigProcessor", 1, paramString, new Object[0]);
+    }
   }
 }
 

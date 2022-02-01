@@ -1,25 +1,8 @@
-import android.text.TextUtils;
-import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
-import cooperation.qqreader.proxy.ReaderJsCallback;
+import android.util.Pair;
 
-class bktz
-  implements ReaderJsCallback
+abstract interface bktz
 {
-  bktz(bkty parambkty) {}
-  
-  public void onCallback(String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      bkty.a(this.a, paramString1, new String[] { paramString2 });
-    }
-  }
-  
-  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
-  {
-    if (paramReaderBaseWebViewPlugin != null) {
-      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, bkty.a(this.a));
-    }
-  }
+  public abstract Pair<String, String> a(String paramString);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.logic;
 
-import bequ;
+import bfxw;
 
 public class TroopFeedsCenterLogic$2
   implements Runnable
 {
-  public TroopFeedsCenterLogic$2(bequ parambequ) {}
+  public TroopFeedsCenterLogic$2(bfxw parambfxw) {}
   
   public void run()
   {

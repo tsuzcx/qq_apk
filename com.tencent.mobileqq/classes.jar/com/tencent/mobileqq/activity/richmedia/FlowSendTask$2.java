@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import aksc;
+import alpy;
 
 public class FlowSendTask$2
   implements Runnable
 {
-  public FlowSendTask$2(aksc paramaksc) {}
+  public FlowSendTask$2(alpy paramalpy) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.a, 2131694451);
+    this.this$0.a(this.this$0.a, 2131694652);
   }
 }
 

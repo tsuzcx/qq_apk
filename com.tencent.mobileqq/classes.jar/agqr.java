@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.RotateableView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class agqr
-  extends agql
+class agqr
+  implements DialogInterface.OnClickListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
-  boolean jdField_a_of_type_Boolean = false;
-  public long b;
-  String b;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  View d;
-  int e;
-  int f;
-  int g;
+  agqr(agqp paramagqp, ApolloGameData paramApolloGameData) {}
   
-  public agqr(agqn paramagqn) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
+    Intent localIntent = new Intent(this.jdField_a_of_type_Agqp.a, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Agqp.a, paramDialogInterface, -1L, localIntent, false, -1);
+  }
 }
 
 

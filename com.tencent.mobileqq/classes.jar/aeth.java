@@ -1,21 +1,19 @@
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
 public class aeth
-  implements bfzz<Integer>
+  implements blfe
 {
-  public aeth(VisitorsActivity paramVisitorsActivity) {}
+  public aeth(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(View paramView)
   {
-    this.a.c.setText(paramInteger + "");
-    if (paramInteger.intValue() > 9999)
-    {
-      this.a.c.setTextSize(36.0F);
-      return;
-    }
-    this.a.c.setTextSize(44.0F);
+    RecommendFriendActivity.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    RecommendFriendActivity.a(this.a, true);
   }
 }
 

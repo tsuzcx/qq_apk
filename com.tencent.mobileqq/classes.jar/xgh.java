@@ -1,21 +1,39 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
 public class xgh
-  extends SimpleJob<Void>
+  extends xfu
 {
-  public xgh(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
+  public ImageView a;
+  private xgj jdField_a_of_type_Xgj;
+  private zdn jdField_a_of_type_Zdn;
+  
+  public xgh(@NonNull ViewGroup paramViewGroup)
   {
-    super(paramString);
+    super(paramViewGroup);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected View a(ViewGroup paramViewGroup)
   {
-    xvv.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(vns.a()) });
-    return null;
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt)
+  {
+    ykq.b(this.jdField_a_of_type_JavaLangString, "setVisibility ignore");
+  }
+  
+  protected void b()
+  {
+    super.b();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380988));
+    ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new xgk(this, null));
+    this.jdField_a_of_type_Xgj = new xgj(this, null);
+    this.jdField_a_of_type_Zdn = new zdn(a(), this.jdField_a_of_type_Xgj);
+    this.jdField_a_of_type_Zdn.a(50);
   }
 }
 

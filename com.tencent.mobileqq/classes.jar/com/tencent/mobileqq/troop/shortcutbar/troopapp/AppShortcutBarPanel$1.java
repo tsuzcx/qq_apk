@@ -2,25 +2,25 @@ package com.tencent.mobileqq.troop.shortcutbar.troopapp;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import bevi;
-import bevk;
+import bgcr;
+import bgct;
 import com.tencent.mobileqq.widget.AppShortcutBarScrollView;
 
 public class AppShortcutBarPanel$1
   implements Runnable
 {
-  public AppShortcutBarPanel$1(bevi parambevi) {}
+  public AppShortcutBarPanel$1(bgcr parambgcr) {}
   
   public void run()
   {
-    this.this$0.d();
-    if ((bevi.a(this.this$0) != null) && (bevi.a(this.this$0) != null) && (bevi.a(this.this$0) != null) && (bevi.b(this.this$0) != null) && (bevi.a(this.this$0) != null) && (bevi.a(this.this$0).jdField_a_of_type_Boolean) && (bevi.a(this.this$0).jdField_a_of_type_Int > 4) && (bevi.b(this.this$0).getChildCount() == 0))
+    this.this$0.e();
+    if ((bgcr.a(this.this$0) != null) && (bgcr.a(this.this$0) != null) && (bgcr.a(this.this$0) != null) && (bgcr.b(this.this$0) != null) && (bgcr.a(this.this$0) != null) && (bgcr.a(this.this$0).jdField_a_of_type_Boolean) && (bgcr.a(this.this$0).jdField_a_of_type_Int > 4) && (bgcr.b(this.this$0).getChildCount() == 0))
     {
-      View localView1 = bevi.a(this.this$0).findViewById((int)bevi.a(this.this$0).jdField_a_of_type_Long);
-      View localView2 = bevi.a(this.this$0).findViewById((int)bevi.a(this.this$0).b);
+      View localView1 = bgcr.a(this.this$0).findViewById((int)bgcr.a(this.this$0).jdField_a_of_type_Long);
+      View localView2 = bgcr.a(this.this$0).findViewById((int)bgcr.a(this.this$0).b);
       int i = localView1.getLeft();
       int j = localView2.getLeft();
-      bevi.a(this.this$0).scrollBy(i - j, 0);
+      bgcr.a(this.this$0).scrollBy(i - j, 0);
     }
   }
 }

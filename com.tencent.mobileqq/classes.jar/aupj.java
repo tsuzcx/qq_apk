@@ -1,16 +1,8 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.WebCallHandler;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
+import android.graphics.Bitmap;
 
-class aupj
-  implements CustomizedWebView
+public abstract interface aupj
 {
-  aupj(aupc paramaupc) {}
-  
-  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
-  {
-    auqe.a().a(paramBundle);
-  }
+  public abstract void a(aupb paramaupb, Bitmap paramBitmap, String paramString);
 }
 
 

@@ -1,38 +1,61 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
 
-class who
-  extends vqq<wfl, wfm>
+public class who
 {
-  who(whn paramwhn, String[] paramArrayOfString) {}
+  private static LruCache<String, CharSequence> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static who jdField_a_of_type_Who;
+  public String a;
   
-  public void a(@NonNull wfl paramwfl, @Nullable wfm paramwfm, @NonNull ErrorMessage paramErrorMessage)
+  public who()
   {
-    if ((paramwfm == null) || (paramwfm.jdField_a_of_type_Int != 0))
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static who a()
+  {
+    if (jdField_a_of_type_Who == null)
     {
-      if (paramwfm != null) {}
-      for (int i = paramwfm.jdField_a_of_type_Int;; i = -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
-        }
-        whn.a(this.jdField_a_of_type_Whn, false);
-        return;
-      }
+      jdField_a_of_type_Who = new who();
+      jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(150);
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
-    if (((Boolean)((vuq)vux.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramwfl = wjv.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], whn.a(this.jdField_a_of_type_Whn));; paramwfl = this.jdField_a_of_type_ArrayOfJavaLangString[1])
-    {
-      paramwfl = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramwfm.jdField_a_of_type_JavaLangString + "&" + paramwfl;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramwfl });
-      }
-      this.jdField_a_of_type_Whn.a("EncryptUrlJob_coverUrl", paramwfm.c);
-      this.jdField_a_of_type_Whn.a("EncryptUrlJob_encryptedUrl", paramwfl);
-      whn.b(this.jdField_a_of_type_Whn, true);
+    return jdField_a_of_type_Who;
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_AndroidSupportV4UtilLruCache != null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    }
+  }
+  
+  public CharSequence a(String paramString)
+  {
+    return (CharSequence)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+  }
+  
+  public void a(CommentEntry paramCommentEntry)
+  {
+    if (paramCommentEntry == null) {
       return;
+    }
+    paramCommentEntry = paramCommentEntry.feedId + paramCommentEntry.replyTime;
+    if (jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry) == null)
+    {
+      jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(1));
+      return;
+    }
+    int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramCommentEntry)).intValue();
+    jdField_a_of_type_JavaUtilHashMap.put(paramCommentEntry, Integer.valueOf(i + 1));
+  }
+  
+  public void a(String paramString, CharSequence paramCharSequence)
+  {
+    if (a(paramString) == null) {
+      jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramCharSequence);
     }
   }
 }

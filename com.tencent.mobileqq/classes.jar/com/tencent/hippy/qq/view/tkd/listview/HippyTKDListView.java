@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import bgoa;
+import bhyk;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollView;
 import com.tencent.hippy.qq.view.tkd.doublescrollview.IDoubleScroll;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -73,7 +73,7 @@ public class HippyTKDListView
   
   public static boolean isKingCardMobileNetWork()
   {
-    return bgoa.a() == 1;
+    return bhyk.a() == 1;
   }
   
   private void traversalChildViewForNoPicChange(View paramView)

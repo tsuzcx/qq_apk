@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
@@ -40,7 +40,7 @@ class SmallEmotionDownloadedAdapter$1
     {
       VasWebviewUtil.reportCommercialDrainage(str1, "ep_mall", "0X8007192", null, 1, 0, 0, null, str3, str2);
       EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.this$0.mContext, this.this$0.app.getAccount(), 8, String.valueOf(this.this$0.emotionPkg.epId), false, localIntent, true);
-      bcef.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.this$0.emotionPkg.epId, "2", "");
+      bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.this$0.emotionPkg.epId, "2", "");
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       if ((this.this$0.emotionPkg.extraFlags & 0x1) != 0) {}
@@ -57,7 +57,7 @@ class SmallEmotionDownloadedAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmotionDownloadedAdapter.1
  * JD-Core Version:    0.7.0.1
  */

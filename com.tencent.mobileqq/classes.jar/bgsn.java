@@ -1,47 +1,19 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public class bgsn
-  extends amof
+class bgsn
+  implements bdyy
 {
-  public bgsn(WebProcessManager paramWebProcessManager) {}
+  bgsn(bgsm parambgsm) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    int j = -1;
-    int i = j;
-    if (paramObject != null)
-    {
-      i = j;
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (Bundle)paramObject;
-        i = paramObject.getInt("ad_bbq_code", -1);
-        if (i == 0)
-        {
-          paramObject = paramObject.getString("ad_bbq_message");
-          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-          if ((localObject instanceof QQAppInterface))
-          {
-            localObject = (amoa)((QQAppInterface)localObject).getBusinessHandler(53);
-            if (localObject != null) {
-              ((amoa)localObject).b(paramObject);
-            }
-          }
-        }
-      }
+    this.a.a.a.this$0.a();
+    if (this.a.a.a.jdField_a_of_type_Bdyy != null) {
+      this.a.a.a.jdField_a_of_type_Bdyy.a();
     }
-    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
-    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-    paramObject.putExtra("result", i);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
-    }
+    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import blsh;
+import bnfq;
 
 public class AEMaterialAdapter$4
   implements Runnable
 {
-  public AEMaterialAdapter$4(blsh paramblsh, int paramInt) {}
+  public AEMaterialAdapter$4(bnfq parambnfq, int paramInt) {}
   
   public void run()
   {

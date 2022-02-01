@@ -1,10 +1,33 @@
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface bnop
+public class bnop
+  extends GifAnimationDrawable
 {
-  public abstract void a(long paramLong);
+  public bnop(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
+  {
+    super(paramContext, paramArrayList, paramLong);
+  }
   
-  public abstract void a(List<Long> paramList);
+  public void start()
+  {
+    if (!this.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("zswp20pro", 2, "start");
+      }
+      this.a = true;
+      this.b = true;
+      this.d = false;
+      a();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("zswp20pro", 2, "start but isRunning");
+  }
 }
 
 

@@ -1,41 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhd
-  implements bjoe
+public class ahhd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhd(ahgz paramahgz, bjnw parambjnw, ChatMessage paramChatMessage, String paramString) {}
+  public ahhd(SixCombolEffectView paramSixCombolEffectView, ahhr paramahhr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Ahgz.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_Ahgz.tag, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
-      }
-      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-      {
-        QQToast.a(this.jdField_a_of_type_Ahgz.getActivity(), this.jdField_a_of_type_Ahgz.getActivity().getString(2131694064), 0).b(this.jdField_a_of_type_Ahgz.getActivity().getTitleBarHeight());
-        return;
-      }
-    } while ((amtp)this.jdField_a_of_type_Ahgz.app.getBusinessHandler(35) == null);
-    paramView = bfur.a(this.jdField_a_of_type_Ahgz.getActivity(), 230).setMessage(2131692942).setNegativeButton(2131690600, new ahhf(this)).setPositiveButton(2131690602, new ahhe(this));
-    paramView.setTitle(2131692943);
-    paramView.show();
+    this.jdField_a_of_type_Ahhr.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

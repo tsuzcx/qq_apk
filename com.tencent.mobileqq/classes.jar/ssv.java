@@ -1,21 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ssv
-  implements PTSComposer.IPTSUpdateDataListener
+class ssv
+  extends Handler
 {
-  public ssv(ProteusItemData paramProteusItemData) {}
+  private WeakReference<sss> a;
   
-  public void onDataUpdated(String paramString)
+  public ssv(sss paramsss)
   {
-    QLog.i("ProteusItemData", 1, "[onDataUpdated], jsonData = " + paramString);
-    PTSItemData localPTSItemData = this.a.a;
-    if (localPTSItemData != null) {
-      this.a.a = new PTSItemData.Builder().withPageName(localPTSItemData.getPageName()).withItemID(localPTSItemData.getItemID()).withJsonData(paramString).withFrameTreeJson(localPTSItemData.getFrameTreeJson()).build();
+    this.a = new WeakReference(paramsss);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.get() == null);
+      sss.a((sss)this.a.get());
+      sss.a((sss)this.a.get()).sendEmptyMessageDelayed(0, sss.a((sss)this.a.get()));
+      return;
+    } while (this.a.get() == null);
+    if (QLog.isColorLevel()) {
+      QLog.d(sss.a((sss)this.a.get()), 2, "prePlay timeout, try rePlay");
+    }
+    if ((((sss)this.a.get()).f()) && (((sss)this.a.get()).a.a() == sss.a((sss)this.a.get())))
+    {
+      sss.b((sss)this.a.get());
+      return;
+    }
+    sss.a((sss)this.a.get(), false);
+    ((sss)this.a.get()).a(((sss)this.a.get()).a);
+    sss.a((sss)this.a.get(), sss.a((sss)this.a.get()));
   }
 }
 

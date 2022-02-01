@@ -9,7 +9,7 @@ import com.tencent.qqmini.sdk.manager.MiniLoadingAdManager;
 class AppUIProxy$9
   implements Runnable
 {
-  AppUIProxy$9(AppUIProxy paramAppUIProxy, Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong) {}
+  AppUIProxy$9(AppUIProxy paramAppUIProxy, Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ class AppUIProxy$9
       this.this$0.mCurrRuntimeLoader.mRuntime.setLoadingAdStatus(2);
     }
     DisplayUtil.setSystemUIVisible(this.val$activity, false);
-    MiniLoadingAdManager.getInstance().updateLoadingAdLayoutAndShow(this.val$miniAppInfo, this.val$activity, false, this.val$adJson, this.val$aid, new AppUIProxy.9.1(this));
+    MiniLoadingAdManager.getInstance().updateLoadingAdLayoutAndShow(this.val$miniAppInfo, this.val$activity, false, this.val$adJson, this.val$aid, this.val$showTimeStamp, new AppUIProxy.9.1(this));
   }
 }
 

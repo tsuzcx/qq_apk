@@ -17,6 +17,8 @@ import java.util.Set;
 
 public class PTFaceAttr$Builder
 {
+  private int[] autoBrightnessCurve;
+  private int[] autoContrastCurve;
   private List<List<PointF>> bodyPoints;
   private Frame correctFrame;
   private int[] curve;
@@ -55,6 +57,18 @@ public class PTFaceAttr$Builder
   private List<PointF> starPoints;
   private long timeStamp;
   private Set<Integer> triggeredExpression = new HashSet();
+  
+  public Builder autoBrightnessCurve(int[] paramArrayOfInt)
+  {
+    this.autoBrightnessCurve = paramArrayOfInt;
+    return this;
+  }
+  
+  public Builder autoContrastCurve(int[] paramArrayOfInt)
+  {
+    this.autoContrastCurve = paramArrayOfInt;
+    return this;
+  }
   
   public Builder bodyPoints(List<List<PointF>> paramList)
   {

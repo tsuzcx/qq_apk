@@ -1,16 +1,26 @@
-import com.tencent.aladdin.config.utils.SpUtils.IAladdinSpOperator;
-
-final class pbz
-  implements SpUtils.IAladdinSpOperator
+public class pbz
 {
-  public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  
+  public pbz(String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    return bkwm.a(paramString, paramT, paramBoolean);
+    this(paramString, paramLong, paramCharSequence, 0);
   }
   
-  public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
+  public pbz(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    bkwm.a(paramString, paramT, paramBoolean);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramString = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramString = "";
+    }
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,21 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class acnj
-  implements View.OnClickListener
+final class acnj
+  implements Comparator<MessageRecord>
 {
-  public acnj(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
-    }
-    bcef.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

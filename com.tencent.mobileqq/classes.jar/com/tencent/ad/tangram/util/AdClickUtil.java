@@ -278,10 +278,6 @@ public final class AdClickUtil
       if (!paramParams.ad.isCanvas()) {
         break;
       }
-      j = i;
-      if (!paramParams.ad.isHitCanvasVideoCeilingExp()) {
-        break;
-      }
       return 4;
       if (j == 5)
       {
@@ -559,7 +555,7 @@ public final class AdClickUtil
       AdLog.e("AdClickUtil", "handleCanvas error");
       return new AdClickUtil.Result(4, 3);
     }
-    AdError localAdError = AdCanvas.show(paramParams.activity, paramParams.ad, paramParams.enableAutoDownload, paramParams.extrasForIntent);
+    AdError localAdError = AdCanvas.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), paramParams.extrasForIntent);
     if ((localAdError != null) && (localAdError.isSuccess()) && (paramParams.reportForClick)) {
       AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
@@ -582,7 +578,7 @@ public final class AdClickUtil
     if (paramParams.ad.isCanvas())
     {
       i = 2;
-      AdError localAdError2 = AdHalfScreen.show(paramParams.activity, paramParams.ad, paramParams.enableAutoDownload, i, locala.url, paramParams.extrasForIntent);
+      AdError localAdError2 = AdHalfScreen.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), i, locala.url, paramParams.extrasForIntent);
       AdError localAdError1;
       if (localAdError2 != null)
       {
@@ -591,7 +587,7 @@ public final class AdClickUtil
       }
       else
       {
-        localAdError1 = AdHalfScreen.show(paramParams.activity, paramParams.ad, paramParams.enableAutoDownload, 1, locala.url, paramParams.extrasForIntent);
+        localAdError1 = AdHalfScreen.show(paramParams.activity, paramParams.ad, canAppAutoDownload(paramParams), 1, locala.url, paramParams.extrasForIntent);
         i = 1;
       }
       if ((paramParams.reportForClick) && (localAdError1 != null) && (localAdError1.isSuccess()) && ((locala.type != 1) || (i == 2))) {
@@ -652,7 +648,7 @@ public final class AdClickUtil
       AdLog.e("AdClickUtil", "handleVideoCeiling error");
       return new AdClickUtil.Result(4, 2);
     }
-    AdError localAdError2 = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), paramInt, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, paramParams.enableAutoDownload);
+    AdError localAdError2 = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), paramInt, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, canAppAutoDownload(paramParams));
     AdError localAdError1;
     if (localAdError2 != null)
     {
@@ -661,7 +657,7 @@ public final class AdClickUtil
     }
     else
     {
-      localAdError1 = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), 1, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, paramParams.enableAutoDownload);
+      localAdError1 = AdVideoCeiling.show(paramParams.activity, paramParams.ad, locala.url, paramParams.ad.getVideoUrl(), 1, paramParams.videoPlayForced, false, paramParams.videoStartPositionMillis, paramParams.extrasForIntent, canAppAutoDownload(paramParams));
       paramInt = 1;
     }
     if ((paramParams.reportForClick) && (localAdError1 != null) && (localAdError1.isSuccess()) && ((locala.type != 1) || (paramInt == 4)))

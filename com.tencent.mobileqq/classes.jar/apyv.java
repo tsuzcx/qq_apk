@@ -1,87 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class apyv
-  extends aptq<apyu>
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public static apyu a()
-  {
-    return (apyu)apub.a().a(489);
-  }
+  public apyv(ArkAppPreDownloadMgr.3.1 param1) {}
   
-  @NonNull
-  public apyu a(int paramInt)
-  {
-    return new apyu();
-  }
-  
-  @Nullable
-  public apyu a(aptx[] paramArrayOfaptx)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return apyu.a(paramArrayOfaptx);
+    paramString = (QQAppInterface)apyu.a(this.a.a.this$0).get();
+    if (paramString != null)
+    {
+      paramString = (PreDownloadController)paramString.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+      if (paramString != null)
+      {
+        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
+          break label211;
+        }
+        long l = 0L;
+        paramAppPathInfo = new File(paramAppPathInfo.path);
+        if (paramAppPathInfo.exists()) {
+          l = paramAppPathInfo.length();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
+        }
+        paramString.preDownloadSuccess(this.a.a.a.a, l);
+      }
     }
-    return null;
-  }
-  
-  public void a(apyu paramapyu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramapyu.toString());
-    }
-  }
-  
-  public Class<apyu> clazz()
-  {
-    return apyu.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
-    }
-  }
-  
-  public int type()
-  {
-    return 489;
+    return;
+    label211:
+    paramString.preDownloadSuccess(this.a.a.a.a, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyv
  * JD-Core Version:    0.7.0.1
  */

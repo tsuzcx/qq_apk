@@ -148,7 +148,7 @@ class aj$b
                   localArrayList.add(Integer.valueOf(localToServiceMsg2.getRequestSsoSeq()));
                   ((ArrayList)localObject6).add(localToServiceMsg2);
                   this.a.d.put(Integer.valueOf(localToServiceMsg2.getRequestSsoSeq()), localToServiceMsg2);
-                  localToServiceMsg2.getAttributes().put("__extraTimeoutSeq", Integer.valueOf(aj.q().incrementAndGet()));
+                  localToServiceMsg2.getAttributes().put("__extraTimeoutSeq", Integer.valueOf(aj.r().incrementAndGet()));
                   if (localToServiceMsg2.getTimeout() != -1L) {
                     continue;
                   }

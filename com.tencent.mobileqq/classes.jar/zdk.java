@@ -1,23 +1,20 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class zdk
-  implements zcs
 {
-  public zdk(DetailBaseBlock.3.1 param1) {}
-  
-  public void a()
+  public static String a(int[] paramArrayOfInt)
   {
-    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
-  }
-  
-  public void b()
-  {
-    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return null;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramArrayOfInt[0]);
+    int i = 1;
+    while (i < paramArrayOfInt.length)
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramArrayOfInt[i]);
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

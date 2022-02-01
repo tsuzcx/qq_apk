@@ -1,32 +1,39 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 import java.util.List;
 
-class aitu
-  extends AsyncTask<Void, Void, ArrayList<String>>
+public class aitu
+  extends Handler
 {
-  aitu(aitt paramaitt, List paramList) {}
+  public aitu(SearchBaseFragment paramSearchBaseFragment) {}
   
-  protected ArrayList<String> a(Void... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_Aitt.a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  protected void a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
+    }
+    switch (paramMessage.what)
     {
-      QLog.e("SDKEmotionSettingManager", 1, " openSetEmotion error pathList = " + paramArrayList);
-      aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue(), false, "");
-      aitt.a(this.jdField_a_of_type_Aitt);
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
+      return;
+    case 3: 
+      this.a.c();
+      return;
+    case 4: 
+      this.a.a((List)paramMessage.obj);
       return;
     }
-    int i = paramArrayList.size();
-    bcef.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
-    aitt.a(this.jdField_a_of_type_Aitt).clear();
-    aitt.a(this.jdField_a_of_type_Aitt).addAll(paramArrayList);
-    this.jdField_a_of_type_Aitt.a(paramArrayList);
+    this.a.h();
   }
 }
 

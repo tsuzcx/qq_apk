@@ -1,43 +1,20 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldt
-  implements SurfaceHolder.Callback
+class aldt
+  implements View.OnClickListener
 {
-  public aldt(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldt(aldh paramaldh) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
-    }
-    if ((this.a.h == 1) && (this.a.g > 0))
-    {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.jdField_a_of_type_Bgnk != null) {
-      this.a.jdField_a_of_type_Bgnk.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    aldh.a(this.a).app.getQQProxyForQlink().a("0X800474F", 1);
+    blyb.a(aldh.a(this.a), 4, null);
+    bdla.a(aldh.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

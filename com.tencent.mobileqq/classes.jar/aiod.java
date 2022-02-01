@@ -1,19 +1,27 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class aiod
-  extends View.AccessibilityDelegate
 {
-  public aiod(ContactsBaseFragment paramContactsBaseFragment) {}
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public static void a(BaseChatPie paramBaseChatPie)
   {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
+    if (paramBaseChatPie.mChatDrawer != null) {
+      paramBaseChatPie.mChatDrawer.c(false);
     }
-    super.sendAccessibilityEvent(paramView, i);
+    if (paramBaseChatPie.mApolloViewController != null) {
+      paramBaseChatPie.mApolloViewController.a(false);
+    }
+    paramBaseChatPie.hideAppShortcutBar();
+  }
+  
+  public static void b(BaseChatPie paramBaseChatPie)
+  {
+    if (paramBaseChatPie.mChatDrawer != null) {
+      paramBaseChatPie.mChatDrawer.c(true);
+    }
+    if (paramBaseChatPie.mApolloViewController != null) {
+      paramBaseChatPie.mApolloViewController.a(true);
+    }
+    paramBaseChatPie.resumeAppShorcutBar();
   }
 }
 

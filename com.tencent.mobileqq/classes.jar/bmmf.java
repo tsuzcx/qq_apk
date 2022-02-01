@@ -1,63 +1,35 @@
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
-import java.util.ArrayList;
-import java.util.List;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
 public class bmmf
+  implements ModuleDownloadListener
 {
-  private static List<String> a = new ArrayList();
+  public bmmf(VipARUtils.4 param4) {}
   
-  static
+  public void onDownloadCanceled(String paramString)
   {
-    a.add("pbem00");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public static int a(double paramDouble)
+  public void onDownloadFailed(String paramString)
   {
-    double d = Math.floor(paramDouble);
-    paramDouble = Math.ceil(paramDouble);
-    if (d % 2.0D == 0.0D) {
-      return (int)d;
-    }
-    return (int)paramDouble;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
   }
   
-  public static <T> T a(T paramT1, T paramT2)
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    if (DeviceUtils.getTotalRamMemory(BaseApplicationImpl.getContext()) <= 2147483648L) {
-      return paramT1;
-    }
-    return paramT2;
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
   }
   
-  public static <T> T a(T paramT1, T paramT2, T paramT3)
+  public void onDownloadSucceed(String paramString)
   {
-    if (OfflineConfig.getPhonePerfLevel() <= 2) {
-      return paramT1;
+    if (!paramString.equals("libTar.so")) {
+      return;
     }
-    if (((OfflineConfig.getPhonePerfLevel() > 2) && (OfflineConfig.getPhonePerfLevel() <= 3)) || (a.contains(Build.MODEL.toLowerCase()))) {
-      return paramT2;
-    }
-    return paramT3;
-  }
-  
-  public static String a()
-  {
-    return (String)a("低端机", "中端机", "高端机");
-  }
-  
-  public static <T> T b(T paramT1, T paramT2, T paramT3)
-  {
-    long l = DeviceUtils.getTotalRamMemory(BaseApplicationImpl.getContext());
-    if (l <= 2147483648L) {
-      return paramT1;
-    }
-    if (l <= 4294967296L) {
-      return paramT2;
-    }
-    return paramT3;
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bmmb.c(), " onDownloadSucceed = ", bmmb.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bmmb.d());
   }
 }
 

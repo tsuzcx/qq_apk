@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -10,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class StorySimpleLoadView
@@ -35,14 +35,14 @@ public class StorySimpleLoadView
   {
     ProgressBar localProgressBar = new ProgressBar(getContext());
     localProgressBar.setIndeterminate(true);
-    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130846828));
-    localProgressBar.setId(2131370286);
+    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130846924));
+    localProgressBar.setId(2131370465);
     int i = UIUtils.dip2px(getContext(), 24.0F);
     Object localObject = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     addView(localProgressBar, (ViewGroup.LayoutParams)localObject);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setText(amtj.a(2131713595));
+    ((TextView)localObject).setText(anvx.a(2131713942));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14);
     localLayoutParams.addRule(3, localProgressBar.getId());

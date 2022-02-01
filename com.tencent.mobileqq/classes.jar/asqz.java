@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class asqz
-  implements aspa
+public class asqz
+  implements View.OnTouchListener
 {
-  asqz(asqy paramasqy, BaseActivity paramBaseActivity) {}
+  public asqz(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public asst a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject2 = null;
-    List localList = this.jdField_a_of_type_Asqy.a();
-    Object localObject1 = localObject2;
-    if (localList != null)
+    switch (paramMotionEvent.getAction())
     {
-      localObject1 = localObject2;
-      if (localList.size() > 0) {
-        localObject1 = new astk(this.jdField_a_of_type_Asqy.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, asqy.a(this.jdField_a_of_type_Asqy));
-      }
     }
-    return localObject1;
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.content.Intent;
-import com.tencent.widget.XPanelContainer;
-import mqq.os.MqqHandler;
 
 class BaseChatPie$24
   implements Runnable
@@ -11,13 +9,7 @@ class BaseChatPie$24
   
   public void run()
   {
-    if (this.this$0.root.a() != 1)
-    {
-      this.this$0.showInputPanel();
-      this.this$0.uiHandler.postDelayed(this, 100L);
-      return;
-    }
-    this.val$intent.removeExtra("KEY_SHOULD_SHOW_KEYBOARD");
+    this.val$intent.removeExtra("KEY_SHOULD_SHOW_PLUS_PANEL");
   }
 }
 

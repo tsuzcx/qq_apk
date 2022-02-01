@@ -1,26 +1,43 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import kotlin.Metadata;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/PreloadIntervalCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "()V", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tvn
-  extends tvc
+class tvn
+  implements bkzq
 {
-  public boolean a()
+  tvn(tvm paramtvm, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    long l1 = tvd.a.a();
-    long l2 = NetConnInfoCenter.getServerTimeMillis();
-    if (tvd.a.b() <= 0L) {
-      tvd.a.b(1800L);
-    }
-    if (l2 - l1 >= tvd.a.b()) {}
-    for (boolean bool = true;; bool = false) {
-      return tvs.a.a(bool, (tvc)this);
+    paramView = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        paramView.put("index", paramInt);
+        if ((!this.jdField_a_of_type_Tvm.a) || (paramInt != 0)) {
+          continue;
+        }
+        paramView.put("type", 2);
+        if (tvm.a(this.jdField_a_of_type_Tvm) != null) {
+          ((BridgeModule)tvm.a(this.jdField_a_of_type_Tvm).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
+        }
+      }
+      catch (JSONException paramView)
+      {
+        continue;
+      }
+      tvm.a(this.jdField_a_of_type_Tvm).dismiss();
+      return;
+      paramView.put("type", 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvn
  * JD-Core Version:    0.7.0.1
  */

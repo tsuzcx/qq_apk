@@ -1,86 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class apig
-  extends aptq<apif>
+public abstract class apig
+  extends Binder
+  implements apif
 {
-  @NonNull
-  public static apif a()
+  public apig()
   {
-    apif localapif2 = (apif)apub.a().a(670);
-    apif localapif1 = localapif2;
-    if (localapif2 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CShortcutBarConfProcessor", 2, "loadConfig(): bean is null then new C2CShortcutBarConfBean()");
-      }
-      localapif1 = new apif();
-    }
-    return localapif1;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
   }
   
-  @NonNull
-  public apif a(int paramInt)
+  public static apif a(IBinder paramIBinder)
   {
-    return new apif();
-  }
-  
-  @Nullable
-  public apif a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0))
-    {
-      QLog.d("C2CShortcutBarConfProcessor", 1, "C2CShortcutBarConfProcessor onParsed, confFiles is null empty");
+    if (paramIBinder == null) {
       return null;
     }
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarConfProcessor", 2, "C2CShortcutBarConfProcessor onParsed, content:" + paramArrayOfaptx);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof apif))) {
+      return (apif)localIInterface;
     }
-    return apif.a(paramArrayOfaptx);
+    return new apih(paramIBinder);
   }
   
-  public void a(apif paramapif)
+  public IBinder asBinder()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarConfProcessor", 2, "onUpdate " + paramapif.toString());
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
     }
-  }
-  
-  public Class<apif> clazz()
-  {
-    return apif.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
     return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 670;
   }
 }
 

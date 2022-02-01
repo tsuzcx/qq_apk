@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import adqx;
-import akoy;
+import aeia;
+import almu;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -14,8 +14,8 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 public class GuideBaseFragment
   extends ReportV4Fragment
 {
-  protected adqx a;
-  protected akoy a;
+  protected aeia a;
+  protected almu a;
   public BaseActivity a;
   public QQAppInterface a;
   public String a;
@@ -26,7 +26,7 @@ public class GuideBaseFragment
   public GuideBaseFragment(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Adqx = new adqx();
+    this.jdField_a_of_type_Aeia = new aeia();
   }
   
   public Dialog a(int paramInt)
@@ -41,9 +41,9 @@ public class GuideBaseFragment
   
   public void a(int paramInt, Dialog paramDialog) {}
   
-  public void a(akoy paramakoy)
+  public void a(almu paramalmu)
   {
-    this.jdField_a_of_type_Akoy = paramakoy;
+    this.jdField_a_of_type_Almu = paramalmu;
   }
   
   public void a(Intent paramIntent) {}

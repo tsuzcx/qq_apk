@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-class vet
-  implements View.OnClickListener
+final class vet
+  implements ImageAssetDelegate
 {
-  vet(veq paramveq) {}
+  vet(Bitmap paramBitmap1, Bitmap paramBitmap2) {}
   
-  public void onClick(View paramView)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.a.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TextUtils.equals(paramLottieImageAsset.getFileName(), "img_1.jpg")) {
+      return veq.a(this.a, 108, 108);
+    }
+    return this.b;
   }
 }
 

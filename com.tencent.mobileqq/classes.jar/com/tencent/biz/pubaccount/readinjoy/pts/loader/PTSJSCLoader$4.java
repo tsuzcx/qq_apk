@@ -2,40 +2,40 @@ package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import qmx;
-import qmz;
+import qzc;
+import qze;
 
 public class PTSJSCLoader$4
   implements Runnable
 {
-  public PTSJSCLoader$4(qmx paramqmx) {}
+  public PTSJSCLoader$4(qzc paramqzc) {}
   
   public void run()
   {
-    if (!FileUtils.fileExists(qmx.b(this.this$0)))
+    if (!FileUtils.fileExists(qzc.b(this.this$0)))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], offline dir does not exist.");
       return;
     }
-    if (!qmz.a(qmx.b(this.this$0), "4044"))
+    if (!qze.a(qzc.b(this.this$0), "4044"))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], offline dir is not valid.");
       return;
     }
-    if (!qmz.a(qmx.b(this.this$0) + "/" + "pts_jsc_config.json"))
+    if (!qze.a(qzc.b(this.this$0) + "/" + "pts_jsc_config.json"))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], offline version is not valid.");
       return;
     }
-    if (FileUtils.fileExists(qmx.a(this.this$0)))
+    if (FileUtils.fileExists(qzc.a(this.this$0)))
     {
-      QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], delete inner dir, dir = " + qmx.a(this.this$0));
-      FileUtils.deleteDirectory(qmx.a(this.this$0));
+      QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], delete inner dir, dir = " + qzc.a(this.this$0));
+      FileUtils.deleteDirectory(qzc.a(this.this$0));
     }
     try
     {
-      boolean bool1 = FileUtils.copyFile(qmx.b(this.this$0) + "/" + "libjsc.so", qmx.a(this.this$0) + "/" + "libjsc.so");
-      boolean bool2 = FileUtils.copyFile(qmx.b(this.this$0) + "/" + "pts_jsc_config.json", qmx.a(this.this$0) + "/" + "pts_jsc_config.json");
+      boolean bool1 = FileUtils.copyFile(qzc.b(this.this$0) + "/" + "libjsc.so", qzc.a(this.this$0) + "/" + "libjsc.so");
+      boolean bool2 = FileUtils.copyFile(qzc.b(this.this$0) + "/" + "pts_jsc_config.json", qzc.a(this.this$0) + "/" + "pts_jsc_config.json");
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], copyJSCSoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2);
       return;
     }

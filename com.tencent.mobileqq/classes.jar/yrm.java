@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class yrm
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  yrm(yrj paramyrj) {}
+  yrm(yrk paramyrk) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.g();
   }
 }
 

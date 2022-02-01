@@ -1,79 +1,52 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class ywc
-  extends amrc
+  extends yvs<ywb>
 {
-  public ywc(QRDisplayActivity paramQRDisplayActivity) {}
+  public final ImageView a;
+  public final TextView a;
+  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378735);
   
-  protected void onGetFlyTicket(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  ywc(ywb paramywb, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onGetFlyTicket: " + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(paramInt);
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_Amqx.a(this.a.jdField_c_of_type_JavaLangString, true);
-    if ((localObject != null) && ((localObject instanceof BitmapDrawable))) {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localObject).getBitmap();
-    }
-    localObject = this.a.getSharedPreferences("qrcode", 0).edit();
-    ((SharedPreferences.Editor)localObject).putLong("discussionvalidtime" + this.a.jdField_c_of_type_JavaLangString, paramLong1);
-    ((SharedPreferences.Editor)localObject).putString("discussion" + this.a.jdField_c_of_type_JavaLangString, paramString2);
-    ((SharedPreferences.Editor)localObject).putString("discussionfullSig" + this.a.jdField_c_of_type_JavaLangString, paramString1);
-    ((SharedPreferences.Editor)localObject).commit();
-    this.a.jdField_b_of_type_Long = paramLong1;
-    localObject = yyi.a(paramString2, -1);
-    if (localObject != null)
-    {
-      ((TextView)this.a.findViewById(2131373662)).setText(paramString2);
-      this.a.jdField_b_of_type_AndroidViewView.post(this.a.jdField_b_of_type_JavaLangRunnable);
-      this.a.d = paramString2;
-      this.a.e = paramString1;
-      this.a.jdField_a_of_type_Gr = ((gr)localObject);
-      this.a.h();
-      return;
-    }
-    this.a.i();
+    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378658));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368501));
   }
   
-  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (paramBoolean1)
+    return LayoutInflater.from(paramContext).inflate(2131561684, paramViewGroup, false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+  }
+  
+  public void a(ywb paramywb, int paramInt)
+  {
+    super.a(paramywb, paramInt);
+    if ((this.jdField_a_of_type_Yvr != null) && (((ywb)this.jdField_a_of_type_Yvr).c != 0) && (((ywb)this.jdField_a_of_type_Yvr).a != null))
     {
-      paramString = ((amqx)this.a.app.getBusinessHandler(6)).a(paramString, true);
-      if ((paramString instanceof BitmapDrawable)) {
-        this.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)paramString).getBitmap();
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle == null)
-      {
-        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("B", -16777216);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("W", 16777215);
-        this.a.jdField_a_of_type_AndroidOsBundle.putParcelable("qrloc", new Rect(45, 76, 495, 526));
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("head", 1);
-      }
-      if (this.a.jdField_a_of_type_Gr == null) {
-        this.a.jdField_a_of_type_Gr = this.a.a(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_c_of_type_Int, -1);
-      }
-      if (this.a.jdField_a_of_type_Gr != null) {
-        this.a.h();
-      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((ywb)this.jdField_a_of_type_Yvr).c);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(((ywb)this.jdField_a_of_type_Yvr).a);
+      this.b.setText(((ywb)this.jdField_a_of_type_Yvr).b);
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.b.setText("");
   }
 }
 

@@ -13,6 +13,7 @@ import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.core.manager.RequestServer;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
@@ -73,7 +74,19 @@ public class OpenDataCommonJsPlugin
       return;
     }
     String str = this.mMiniAppInfo.appId;
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPotentialFriendList(null, str, new OpenDataCommonJsPlugin.6(this, paramRequestEvent));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPotentialFriendList(null, str, new OpenDataCommonJsPlugin.7(this, paramRequestEvent));
+  }
+  
+  private void getReactiveFriendListImpl(RequestEvent paramRequestEvent)
+  {
+    if (this.mMiniAppInfo == null)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_REACTIVE_FRIEND_LIST error , no appid");
+      paramRequestEvent.fail("appid is null");
+      return;
+    }
+    String str = this.mMiniAppInfo.appId;
+    RequestServer.getInstance().getReactiveFriendList(str, new OpenDataCommonJsPlugin.6(this, paramRequestEvent));
   }
   
   private void getUserInteractiveStorage(String[] paramArrayOfString, RequestEvent paramRequestEvent)
@@ -85,7 +98,7 @@ public class OpenDataCommonJsPlugin
       return;
     }
     String str = this.mMiniAppInfo.appId;
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInteractiveStorage(null, str, paramArrayOfString, new OpenDataCommonJsPlugin.7(this, paramRequestEvent));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInteractiveStorage(null, str, paramArrayOfString, new OpenDataCommonJsPlugin.8(this, paramRequestEvent));
   }
   
   private boolean isFileExists(String paramString)
@@ -142,7 +155,7 @@ public class OpenDataCommonJsPlugin
     localStInteractiveTemplate.action.set(paramString8);
     localStInteractiveTemplate.object.set(paramString9);
     localStInteractiveTemplate.ratio.set(paramInt2);
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt1, paramString2, localHashMap, paramBoolean.booleanValue(), localStInteractiveTemplate, new OpenDataCommonJsPlugin.8(this, paramRequestEvent, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt1, paramString2, localHashMap, paramBoolean.booleanValue(), localStInteractiveTemplate, new OpenDataCommonJsPlugin.9(this, paramRequestEvent, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
   }
   
   private void onInteractiveStorageModified(JSONObject paramJSONObject, RequestEvent paramRequestEvent, String paramString)
@@ -171,7 +184,7 @@ public class OpenDataCommonJsPlugin
   
   private void reportOpenDataShareResultTo4239(IMiniAppContext paramIMiniAppContext, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    ThreadManager.getSubThreadHandler().post(new OpenDataCommonJsPlugin.12(this, paramIMiniAppContext, paramString1, paramString2, paramInt, paramString3));
+    ThreadManager.getSubThreadHandler().post(new OpenDataCommonJsPlugin.13(this, paramIMiniAppContext, paramString1, paramString2, paramInt, paramString3));
   }
   
   private void shareMessageToFriend(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, RequestEvent paramRequestEvent)
@@ -222,12 +235,12 @@ public class OpenDataCommonJsPlugin
       modifyFriendInteractiveStorage(paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2);
       return;
     }
-    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataCommonJsPlugin.9(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2), null, new OpenDataCommonJsPlugin.10(this, paramRequestEvent));
+    showQQCustomModel(str2, str1, "确认" + paramString8, Boolean.valueOf(false), "", new OpenDataCommonJsPlugin.10(this, paramString1, paramInt1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramBoolean, paramRequestEvent, paramString8, paramString9, paramInt2), null, new OpenDataCommonJsPlugin.11(this, paramRequestEvent));
   }
   
   private void showQQCustomModel(String paramString1, String paramString2, String paramString3, Boolean paramBoolean, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppBrandTask.runTaskOnUiThread(new OpenDataCommonJsPlugin.11(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
+    AppBrandTask.runTaskOnUiThread(new OpenDataCommonJsPlugin.12(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
   }
   
   @JsEvent({"canUseComponent"})
@@ -363,6 +376,21 @@ public class OpenDataCommonJsPlugin
     try
     {
       getPotentialFriendListImpl(paramRequestEvent);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error " + localThrowable);
+      paramRequestEvent.fail(localThrowable.getMessage());
+    }
+  }
+  
+  @JsEvent({"getReactiveFriendList"})
+  public void getReactiveFriendList(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      getReactiveFriendListImpl(paramRequestEvent);
       return;
     }
     catch (Throwable localThrowable)

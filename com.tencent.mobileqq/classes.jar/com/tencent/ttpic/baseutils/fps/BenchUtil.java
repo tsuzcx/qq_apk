@@ -63,7 +63,7 @@ public class BenchUtil
     if (i >= 10)
     {
       float f = (float)getTotalTime(localCopyOnWriteArrayList1) / i;
-      Log.e(TAG, "[time]" + paramString + ": " + f + " ms");
+      Log.d(TAG, "[time]" + paramString + ": " + f + " ms");
       lastTimeMap.put(paramString, Float.valueOf(f));
       localCopyOnWriteArrayList1.clear();
     }
@@ -245,18 +245,18 @@ public class BenchUtil
     //   18: lload_1
     //   19: lreturn
     //   20: aload_0
-    //   21: invokestatic 301	com/tencent/ttpic/baseutils/collection/CollectionUtils:isEmpty	(Ljava/util/Collection;)Z
+    //   21: invokestatic 300	com/tencent/ttpic/baseutils/collection/CollectionUtils:isEmpty	(Ljava/util/Collection;)Z
     //   24: ifne -9 -> 15
     //   27: aload_0
-    //   28: invokevirtual 302	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   28: invokevirtual 301	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
     //   31: astore_0
     //   32: lconst_0
     //   33: lstore_1
     //   34: aload_0
-    //   35: invokeinterface 213 1 0
+    //   35: invokeinterface 212 1 0
     //   40: ifeq +23 -> 63
     //   43: aload_0
-    //   44: invokeinterface 217 1 0
+    //   44: invokeinterface 216 1 0
     //   49: checkcast 84	java/lang/Long
     //   52: invokevirtual 111	java/lang/Long:longValue	()J
     //   55: lstore_3

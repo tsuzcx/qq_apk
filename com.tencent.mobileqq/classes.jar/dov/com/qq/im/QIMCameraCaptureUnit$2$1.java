@@ -2,7 +2,7 @@ package dov.com.qq.im;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import blhu;
+import bmul;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 class QIMCameraCaptureUnit$2$1

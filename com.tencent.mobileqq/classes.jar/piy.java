@@ -1,34 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.Utils.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class piy
+class piy
+  implements ViewBase.OnClickListener
 {
-  public static void a()
-  {
-    if (a())
-    {
-      QLog.d("DynamicChannelUtils", 1, "dynamicChannelSwitch is on, prepare it.");
-      ThreadManager.getSubThreadHandler().postDelayed(new Utils.1(), 3000L);
-    }
-  }
+  piy(piw parampiw) {}
   
-  public static boolean a()
+  public void onClick(ViewBase paramViewBase)
   {
-    Object localObject = Aladdin.getConfig(144);
-    if (localObject != null)
-    {
-      localObject = ((AladdinConfig)localObject).getString("dc_switch", "0");
-      QLog.d("DynamicChannelUtils", 1, new Object[] { "dcSwitch = ", localObject });
-    }
-    for (boolean bool = TextUtils.equals((CharSequence)localObject, "1");; bool = false)
-    {
-      QLog.d("DynamicChannelUtils", 1, new Object[] { "isDynamicChannelSwitchOn = ", Boolean.valueOf(bool) });
-      return bool;
+    if (this.a.a != null) {
+      piv.a(this.a.a, paramViewBase);
     }
   }
 }

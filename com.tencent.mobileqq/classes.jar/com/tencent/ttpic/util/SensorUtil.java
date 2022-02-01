@@ -115,29 +115,26 @@ public class SensorUtil
   
   private void updateMatrix(long paramLong)
   {
-    long l = paramLong;
-    if (Math.abs(paramLong - this.maxSensorTime) / 1000000L > 50000L) {
-      l = paramLong + this.offset;
-    }
     if (this.matrixQueue.isEmpty()) {
       return;
     }
     Map.Entry localEntry3 = (Map.Entry)this.matrixQueue.poll();
     Map.Entry localEntry4 = (Map.Entry)this.matrixQueue.peek();
     Map.Entry localEntry1 = localEntry3;
-    label74:
+    label44:
     Map.Entry localEntry2 = localEntry3;
     if (localEntry4 != null)
     {
-      if (((Long)localEntry4.getKey()).longValue() <= l) {
-        break label220;
+      if (((Long)localEntry4.getKey()).longValue() <= paramLong) {
+        break label188;
       }
-      if (l - ((Long)localEntry1.getKey()).longValue() <= ((Long)localEntry4.getKey()).longValue() - l) {
-        break label265;
+      if (paramLong - ((Long)localEntry1.getKey()).longValue() <= ((Long)localEntry4.getKey()).longValue() - paramLong) {
+        break label231;
       }
       releaseFloatArray((float[])localEntry1.getValue());
     }
-    label265:
+    label188:
+    label231:
     for (localEntry2 = (Map.Entry)this.matrixQueue.poll();; localEntry2 = localEntry1)
     {
       System.arraycopy(localEntry2.getValue(), 0, this.mRotationMatrix, 0, 16);
@@ -148,11 +145,10 @@ public class SensorUtil
       calAdjust(this.mRotationMatrix, this.mAdjustRotationMatrix);
       this.needCalAjust = false;
       return;
-      label220:
       releaseFloatArray((float[])localEntry1.getValue());
       localEntry1 = (Map.Entry)this.matrixQueue.poll();
       localEntry4 = (Map.Entry)this.matrixQueue.peek();
-      break label74;
+      break label44;
     }
   }
   

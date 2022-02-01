@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-class rtn
-  implements View.OnClickListener
+final class rtn
+  implements qha
 {
-  rtn(rtl paramrtl) {}
+  rtn(Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
-    }
-    if (rtl.a(this.a).isShowing()) {
-      rtl.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    rth.a(this.a, paramUserLevelInfo);
   }
 }
 

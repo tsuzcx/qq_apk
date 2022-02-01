@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bdxn;
-import bdxp;
+import bfeq;
+import bfes;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class RelationFriendsTroopViewHelper$1
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$1(bdxn parambdxn) {}
+  public RelationFriendsTroopViewHelper$1(bfeq parambfeq) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("RelationFriendsTroopViewHelper", 2, "onSearchResult lastRecord null");
     }
-    bdxn.a(this.this$0, "");
-    bdxn.a(this.this$0).clear();
-    bdxn.b(this.this$0).clear();
-    bdxn.a(this.this$0).a();
+    bfeq.a(this.this$0, "");
+    bfeq.a(this.this$0).clear();
+    bfeq.b(this.this$0).clear();
+    bfeq.a(this.this$0).a();
   }
 }
 

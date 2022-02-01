@@ -1,70 +1,27 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.AppConstants;
 
-class asfi
-  implements asdf
+public class asfi
 {
-  asfi(asfh paramasfh, String paramString, asfo paramasfo) {}
+  public static int a = 300;
+  public static int b = 300;
   
-  public void a(int paramInt, String paramString)
+  public static String a(String paramString)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfh.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Asfo.a(ases.a(this.jdField_a_of_type_Asfh.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
+    return AppConstants.SDCARD_IMG_FAVORITE + aozu.a(paramString);
   }
   
-  public void a(String paramString1, String paramString2)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    paramString2 = new Bundle();
-    paramString2.putString("_m_ForwardFileType", "3");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Asfh.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Asfh.jdField_a_of_type_Long + "");
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Asfh.c);
-    paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Asfh.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Asfh.f);
-    paramString2.putString("_m_ForwardUuid", paramString1);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Asfh.e))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Asfh.f)) {
-        break label248;
-      }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
     }
-    label248:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Asfh.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfh.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
-      }
-      ases.a(ases.a(this.jdField_a_of_type_Asfh.jdField_a_of_type_Ases), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString1, this.jdField_a_of_type_Asfh.jdField_a_of_type_Long, 0, i, j, 0, false, paramString2, this.jdField_a_of_type_Asfo);
-      return;
-      i = Integer.parseInt(this.jdField_a_of_type_Asfh.e);
-      break;
-    }
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import anca;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import aoep;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -29,11 +30,11 @@ public class GetOnlineMemberTipsRunnable
       {
         return;
       } while ((localTroopChatPie.mActivity == null) || (localTroopChatPie.mActivity.isFinishing()) || (localTroopChatPie.app == null) || (localTroopChatPie.getSessionInfo() == null));
-      anca localanca = (anca)localTroopChatPie.app.getBusinessHandler(20);
+      aoep localaoep = (aoep)localTroopChatPie.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
       String str = localTroopChatPie.getSessionInfo().curFriendUin;
       if (!TextUtils.isEmpty(str))
       {
-        localanca.t(str);
+        localaoep.t(str);
         return;
       }
     } while (!QLog.isColorLevel());

@@ -1,28 +1,22 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
 
 class pdz
-  implements opa
+  extends pfe
 {
-  pdz(pdy parampdy, ArticleInfo paramArticleInfo) {}
-  
-  public void a(opd paramopd)
+  pdz(pdv parampdv, int paramInt)
   {
-    if (paramopd.a() == 0)
-    {
-      oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
-      QQToast.a(pdy.a(this.jdField_a_of_type_Pdy).a(), 2, pdy.a(this.jdField_a_of_type_Pdy).a().getString(2131717294), 0).a();
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      parampfh.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
     }
-    for (;;)
-    {
-      pdy.a(this.jdField_a_of_type_Pdy);
-      pdy.a(this.jdField_a_of_type_Pdy, null);
+    while (this.jdField_a_of_type_Int != 2) {
       return;
-      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131711999), 0).a();
     }
+    parampfh.onCommentLoadMore(2, false, new ArrayList(), false, 4);
   }
 }
 

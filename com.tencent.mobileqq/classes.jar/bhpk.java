@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class bhpk
-  implements View.OnClickListener
+final class bhpk
+  implements Comparator<bhph>
 {
-  public bhpk(AuthorityAccountView paramAuthorityAccountView) {}
-  
-  public void onClick(View paramView)
+  public int a(bhph parambhph1, bhph parambhph2)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof String))) {
-      this.a.b((String)localObject);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return parambhph2.a - parambhph1.a;
   }
 }
 

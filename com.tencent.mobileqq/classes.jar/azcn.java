@@ -1,204 +1,67 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.utils.BaseConstants.NetType;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 
-public final class azcn
-  implements BaseConstants.NetType
+public class azcn
 {
-  protected static boolean a;
-  protected static azco[] a;
+  public int a;
+  private long a;
   
-  static
+  public azcn(int paramInt)
   {
-    jdField_a_of_type_ArrayOfAzco = new azco[4];
-    jdField_a_of_type_ArrayOfAzco[1] = new azco();
-    jdField_a_of_type_ArrayOfAzco[2] = new azco();
-    jdField_a_of_type_ArrayOfAzco[3] = new azco();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public static azco a(QQAppInterface paramQQAppInterface, int paramInt)
+  private boolean a()
   {
-    a(paramQQAppInterface, false);
-    return jdField_a_of_type_ArrayOfAzco[paramInt];
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > azcv.O;
   }
   
-  protected static String a(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    String str = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0).getString("PreDownloadCfg", null);
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "Params getSavedCfg: " + str + " for:" + paramQQAppInterface);
+    this.jdField_a_of_type_Int = 40001;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = a();
+    if ((QLog.isColorLevel()) && (bool)) {
+      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + true + " status: " + toString());
     }
-    return str;
+    if (bool) {
+      a();
+    }
+    return bool;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, int paramInt, azco paramazco)
+  public boolean equals(Object paramObject)
   {
-    Object localObject = null;
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    String str = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0).getString("PTTPreDownloadParams_" + paramInt, null);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "Params getSavedParams: " + str + " for: PTTPreDownloadParams_" + paramInt + " for:" + paramQQAppInterface);
-    }
-    paramQQAppInterface = (QQAppInterface)localObject;
-    if (str != null)
+    if (this == paramObject) {}
+    do
     {
-      paramQQAppInterface = (QQAppInterface)localObject;
-      if (str.length() > 0)
-      {
-        localObject = str.split("##");
-        paramQQAppInterface = localObject[0];
-        localObject = localObject[1];
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-    }
-    try
-    {
-      a(((String)localObject).substring(((String)localObject).indexOf(':') + 1), paramazco);
-      return paramQQAppInterface;
-    }
-    catch (Exception paramazco) {}
-    return paramQQAppInterface;
+      paramObject = (azcn)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
   }
   
-  public static void a()
+  @NotNull
+  public String toString()
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ArrayOfAzco = new azco[4];
-    jdField_a_of_type_ArrayOfAzco[1] = new azco();
-    jdField_a_of_type_ArrayOfAzco[2] = new azco();
-    jdField_a_of_type_ArrayOfAzco[3] = new azco();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, azco paramazco, int paramInt)
-  {
-    Object localObject = new StringBuilder(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-    ((StringBuilder)localObject).append("##");
-    ((StringBuilder)localObject).append(paramInt).append(':');
-    ((StringBuilder)localObject).append(paramazco.jdField_a_of_type_Int);
-    int i = 0;
-    while (i <= 5)
-    {
-      ((StringBuilder)localObject).append('#').append(i).append('_').append(paramazco.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    paramazco = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0);
-    localObject = ((StringBuilder)localObject).toString();
-    paramazco.edit().putString("PTTPreDownloadParams_" + paramInt, (String)localObject).commit();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, "Params saveParams: " + (String)localObject + " for: PTTPreDownloadParams_" + paramInt + " for:" + paramQQAppInterface);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    int i = 1;
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = a(paramQQAppInterface);
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + str, 0).edit().putString("PreDownloadCfg", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("PTTPreDownloader", 2, "Params saveCfg: " + paramString + " for:" + str);
-    }
-    if (TextUtils.isEmpty(paramQQAppInterface)) {
-      if (TextUtils.isEmpty(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        localEditor.putString("PTTPreDownloadParams_1", "");
-        localEditor.putString("PTTPreDownloadParams_3", "");
-        localEditor.putString("PTTPreDownloadParams_2", "");
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PTTPreDownloader", 4, "Params ClearParams for:" + str);
-        }
-      }
-      localEditor.commit();
-      return;
-      i = 0;
-      continue;
-      if (paramQQAppInterface.equals(paramString)) {
-        i = 0;
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (((jdField_a_of_type_Boolean) && (!paramBoolean)) || (paramQQAppInterface == null)) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramQQAppInterface = a(paramQQAppInterface);
-        if (QLog.isColorLevel()) {
-          QLog.d("PTTPreDownloader", 2, "Params initCfg :" + paramQQAppInterface);
-        }
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.length() == 0)) {
-          break;
-        }
-        paramQQAppInterface = paramQQAppInterface.split("\\|");
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.length < 1)) {
-          break;
-        }
-        i = paramQQAppInterface.length - 1;
-        if (i < 0) {
-          break;
-        }
-        String[] arrayOfString = paramQQAppInterface[i].split(":");
-        if ((arrayOfString != null) && (arrayOfString.length >= 2))
-        {
-          int j = Integer.parseInt(arrayOfString[0]);
-          if ((j >= 1) && (j < jdField_a_of_type_ArrayOfAzco.length))
-          {
-            azco localazco = jdField_a_of_type_ArrayOfAzco[j];
-            a(arrayOfString[1], localazco);
-          }
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      i -= 1;
-    }
-  }
-  
-  protected static void a(String paramString, azco paramazco)
-  {
-    paramString = paramString.split("#");
-    if ((paramString == null) || (paramString.length < 2)) {}
-    label88:
-    for (;;)
-    {
-      return;
-      paramazco.jdField_a_of_type_Int = Integer.parseInt(paramString[0]);
-      int i = 1;
-      for (;;)
-      {
-        if (i >= paramString.length) {
-          break label88;
-        }
-        String[] arrayOfString = paramString[i].split("_");
-        if ((arrayOfString == null) || (arrayOfString.length < 2)) {
-          break;
-        }
-        int j = Integer.parseInt(arrayOfString[0]);
-        int k = Integer.parseInt(arrayOfString[1]);
-        paramazco.jdField_a_of_type_ArrayOfInt[j] = k;
-        i += 1;
-      }
-    }
+    return "AutoStatus{status=" + azcv.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
   }
 }
 

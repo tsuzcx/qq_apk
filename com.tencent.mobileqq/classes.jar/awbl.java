@@ -1,77 +1,91 @@
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewConfigurationCompat;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getopenid.GetOpenidProto.GetOpenidEntry;
+import com.tencent.protofile.getopenid.GetOpenidProto.GetOpenidResp;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public class awbl
-  implements bjqq
+public final class awbl
+  implements BusinessObserver
 {
-  float jdField_a_of_type_Float;
-  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getContext()));
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  float c;
-  float d;
+  public awbl(Activity paramActivity) {}
   
-  public awbl(MultiCardRootLayout paramMultiCardRootLayout) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, false);
-    switch (paramMotionEvent.getActionMasked())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "onReceive get_openid:" + paramBoolean);
     }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    int[] arrayOfInt;
+    int i;
+    if (paramBoolean)
+    {
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
+      {
+        paramBundle = new GetOpenidProto.GetOpenidResp();
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject);
+          if (paramBundle.retcode.get() != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("UiApiPlugin", 2, "get_openid retcode:" + paramBundle.retcode.get());
+            }
+            this.a.setResult(-1, new Intent().putExtra("ret", 2).putExtra("errMsg", "server error, unexpected retcode"));
+            this.a.finish();
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle)
+        {
+          this.a.setResult(-1, new Intent().putExtra("ret", 2).putExtra("errMsg", "server error, unexpected pbdata"));
+          this.a.finish();
+          return;
+        }
+        int j = paramBundle.list.size();
+        localObject = new String[j];
+        arrayOfInt = new int[j];
+        i = 0;
+        if (i < j)
+        {
+          GetOpenidProto.GetOpenidEntry localGetOpenidEntry = (GetOpenidProto.GetOpenidEntry)paramBundle.list.get(i);
+          localObject[i] = localGetOpenidEntry.openid.get();
+          paramInt = localGetOpenidEntry.type.get();
+          if (paramInt != 0) {
+            break label358;
+          }
+          paramInt = 1;
+          break label343;
+        }
+        this.a.setResult(-1, new Intent().putExtra("ret", 0).putExtra("openids", (String[])localObject).putExtra("types", arrayOfInt));
+        this.a.finish();
+        return;
+      }
+    }
+    this.a.setResult(-1, new Intent().putExtra("ret", 2));
+    this.a.finish();
+    return;
     for (;;)
     {
-      if (MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout) != null)
-      {
-        awbm localawbm = (awbm)MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout).get();
-        if (localawbm != null) {
-          MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, localawbm.a(paramMotionEvent));
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("placeholder", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], intercept = " + MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout));
-      }
-      return MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout);
-      float f1 = paramMotionEvent.getX();
-      this.d = f1;
-      this.jdField_b_of_type_Float = f1;
-      f1 = paramMotionEvent.getY();
-      this.c = f1;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-      continue;
-      int i = this.jdField_b_of_type_Int;
-      if (i != -1)
-      {
-        i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
-        if ((i >= 0) && (i <= paramMotionEvent.getPointerCount() - 1))
-        {
-          float f2 = MotionEventCompat.getX(paramMotionEvent, i);
-          f1 = Math.abs(f2 - this.d);
-          float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
-          float f4 = Math.abs(f3);
-          if ((f4 > this.jdField_a_of_type_Int) && (f4 * 0.5F > f1))
-          {
-            MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, false);
-            if (f3 > 0.0F) {}
-            for (f1 = this.c + this.jdField_a_of_type_Int;; f1 = this.c - this.jdField_a_of_type_Int)
-            {
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_b_of_type_Float = f2;
-              break;
-            }
-          }
-          if (f1 > this.jdField_a_of_type_Int) {
-            MultiCardRootLayout.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout, true);
-          } else if (QLog.isColorLevel()) {
-            QLog.d("placeholder", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "] do nothing");
-          }
-        }
+      label343:
+      arrayOfInt[i] = paramInt;
+      i += 1;
+      break;
+      label358:
+      if (paramInt == 1) {
+        paramInt = 4;
+      } else if (paramInt == 2) {
+        paramInt = 8;
+      } else {
+        paramInt = 0;
       }
     }
   }

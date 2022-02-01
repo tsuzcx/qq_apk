@@ -1,11 +1,18 @@
+import android.os.Message;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.qphone.base.util.QLog;
+
 class sem
-  implements sde
+  extends TransProcessorHandler
 {
-  sem(sek paramsek) {}
+  sem(sel paramsel) {}
   
-  public void a(sdg paramsdg, sdj paramsdj, int paramInt1, int paramInt2, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt2 == 0) {}
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != 54)) {}
     do
     {
       do
@@ -13,15 +20,28 @@ class sem
         do
         {
           return;
-        } while ((paramInt2 == 1) || (paramInt2 == 2));
-        if (paramInt2 != 3) {
-          break;
+        } while ((sel.a(this.a) == null) || (sel.a(this.a).mUniseq != localFileMsg.uniseq));
+        switch (paramMessage.what)
+        {
+        case 1004: 
+        default: 
+          return;
+        case 1001: 
+          sel.a(this.a, System.currentTimeMillis());
         }
-        this.a.a(this.a.b(), "video playing", 1);
-      } while (this.a.b());
-      this.a.a(true, "PLAY_STATE_PLAYING");
+      } while (this.a.a == null);
+      this.a.a.a();
       return;
-    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
+    } while (this.a.a == null);
+    this.a.a.a((float)localFileMsg.transferedSize * 100.0F / (float)localFileMsg.fileSize);
+    return;
+    this.a.a(localFileMsg);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoUploadController", 2, "mVideoTransProcessorHandler send error:" + localFileMsg.errorCode);
+    }
+    sel.a(this.a, 1004, null, null, null);
+    sel.a(this.a, null);
   }
 }
 

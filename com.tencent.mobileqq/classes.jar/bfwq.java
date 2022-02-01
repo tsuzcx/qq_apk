@@ -1,6 +1,13 @@
-class bfwq
+import android.view.View;
+
+public abstract class bfwq
 {
-  private static final bfwo a = new bfwo(null);
+  public final View a;
+  
+  protected bfwq(View paramView)
+  {
+    this.a = paramView;
+  }
 }
 
 

@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class afze
-  implements DialogInterface.OnClickListener
+public class afze
+  extends BroadcastReceiver
 {
-  afze(afzd paramafzd, MessageForDeviceText paramMessageForDeviceText) {}
+  public afze(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ((aavk)this.jdField_a_of_type_Afzd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(49)).a(this.jdField_a_of_type_Afzd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afzd.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afzd.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
+      }
+      this.a.finish();
+    }
   }
 }
 

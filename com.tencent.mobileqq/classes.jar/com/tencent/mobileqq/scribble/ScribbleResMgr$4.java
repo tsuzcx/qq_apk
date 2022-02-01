@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.scribble;
 
-import barm;
+import bbyb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.NetReq;
@@ -26,7 +27,7 @@ public class ScribbleResMgr$4
       if (QLog.isColorLevel()) {
         QLog.d("ScribbleResMgr", 2, "res exist, return:" + this.a.sourceId + " " + this.a.resType + " file:" + (String)localObject2 + " url:" + this.a.sourceUrl);
       }
-      localObject1 = (PreDownloadController)((QQAppInterface)localObject1).getManager(193);
+      localObject1 = (PreDownloadController)((QQAppInterface)localObject1).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
       if (((PreDownloadController)localObject1).isEnable()) {
         ((PreDownloadController)localObject1).preDownloadSuccess(this.a.sourceUrl, FileUtils.getFileOrFolderSize((String)localObject2));
       }
@@ -37,7 +38,7 @@ public class ScribbleResMgr$4
       return;
       ScribbleResMgr.b(this.this$0, this.a.resType, this.a.sourceId, true);
       localObject2 = new HttpNetReq();
-      ((HttpNetReq)localObject2).mCallback = new barm(this);
+      ((HttpNetReq)localObject2).mCallback = new bbyb(this);
       ((HttpNetReq)localObject2).mReqUrl = this.a.sourceUrl;
       ((HttpNetReq)localObject2).mHttpMethod = 0;
       if (this.a.resType == 1) {

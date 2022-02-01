@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bhhw;
+import biso;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.nearby.NearbyTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -15,7 +15,7 @@ public class DatingBaseActivity
 {
   public static final boolean a;
   protected int a;
-  protected bhhw a;
+  protected biso a;
   public boolean b;
   public boolean c;
   
@@ -37,11 +37,11 @@ public class DatingBaseActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = getTitleBarHeight();
-    this.jdField_a_of_type_Bhhw = new bhhw(this);
+    this.jdField_a_of_type_Biso = new biso(this);
     this.b = getIntent().getBooleanExtra("abp_flag", false);
     this.c = getIntent().getBooleanExtra("is_from_web", false);
     if ((this.c) && (!this.b)) {
-      setLeftViewName(2131690424);
+      setLeftViewName(2131690499);
     }
     return true;
   }
@@ -49,8 +49,8 @@ public class DatingBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bhhw != null) {
-      this.jdField_a_of_type_Bhhw.b();
+    if (this.jdField_a_of_type_Biso != null) {
+      this.jdField_a_of_type_Biso.b();
     }
   }
   
@@ -71,7 +71,7 @@ public class DatingBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingBaseActivity
  * JD-Core Version:    0.7.0.1
  */

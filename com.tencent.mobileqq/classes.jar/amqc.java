@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
-public abstract class amqc<T extends CustomEmotionBase>
-  extends BusinessHandler
+public class amqc
+  extends TransProcessorHandler
 {
-  protected amqc(QQAppInterface paramQQAppInterface)
+  public amqc(HotChatCenterFragment paramHotChatCenterFragment) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    super(paramQQAppInterface);
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.b();
+    }
   }
-  
-  public abstract void a();
-  
-  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

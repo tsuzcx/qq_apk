@@ -1,14 +1,14 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import blpm;
-import blpn;
+import bncv;
+import bncw;
 import com.tencent.biz.common.util.HttpUtil;
 import java.util.List;
 
 public class AEBottomListAdapter$1$1
   implements Runnable
 {
-  public AEBottomListAdapter$1$1(blpn paramblpn) {}
+  public AEBottomListAdapter$1$1(bncw parambncw) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class AEBottomListAdapter$1$1
     if (i != 0) {
       this.a.a.notifyDataSetChanged();
     }
-    if ((i == 1) && (blpm.a(this.a.a).size() > 1)) {
+    if ((i == 1) && (bncv.a(this.a.a).size() > 1)) {
       this.a.a.b();
     }
   }

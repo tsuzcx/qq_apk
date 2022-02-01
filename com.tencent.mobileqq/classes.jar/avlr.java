@@ -1,9 +1,13 @@
-public class avlr
+import android.view.animation.Animation;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+
+public abstract interface avlr
 {
-  public String a;
-  public byte[] a;
-  public String b;
-  public byte[] b;
+  public abstract void a(Animation paramAnimation);
+  
+  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(Animation paramAnimation);
 }
 
 

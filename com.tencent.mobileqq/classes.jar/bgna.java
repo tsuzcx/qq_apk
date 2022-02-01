@@ -1,13 +1,13 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
-public final class bgna
-  implements FilenameFilter
+public class bgna
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.endsWith(".hy")) || (paramString.endsWith(".fz")) || (paramString.endsWith(".hy3")) || (paramString.endsWith(".fz4"));
-  }
+  public View a;
+  public URLImageView a;
+  
+  public bgna(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
 }
 
 

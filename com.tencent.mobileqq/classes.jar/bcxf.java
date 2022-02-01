@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-
 public class bcxf
-  extends bcwu
 {
-  public bcxf(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bcxa parambcxa)
+  public azkb a;
+  
+  public String a()
   {
-    super(paramQQAppInterface, paramChatMessage, parambcxa);
+    return null;
   }
   
-  protected String a()
+  protected void a(String paramString1, String paramString2)
   {
-    return this.a.msg;
+    if (this.a == null) {
+      this.a = new azkb();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+    azjq.b(this, paramString1, paramString2);
   }
-  
-  protected void a(bcwv parambcwv) {}
   
   protected boolean a()
   {
-    return true;
+    return false;
   }
 }
 

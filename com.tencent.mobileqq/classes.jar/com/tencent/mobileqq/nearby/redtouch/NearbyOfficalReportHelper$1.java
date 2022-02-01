@@ -1,52 +1,53 @@
 package com.tencent.mobileqq.nearby.redtouch;
 
 import android.util.Log;
-import awka;
-import axfz;
-import axgd;
-import bcef;
+import axqc;
+import ayme;
+import aymi;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nmq;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import ntq;
 
 public class NearbyOfficalReportHelper$1
   implements Runnable
 {
-  public NearbyOfficalReportHelper$1(axfz paramaxfz, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  public NearbyOfficalReportHelper$1(ayme paramayme, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = ((nmq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a();
+    Object localObject = ((ntq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a();
     String str3;
     String str1;
     String str2;
-    if (((axgd)localObject).b > 0)
+    if (((aymi)localObject).b > 0)
     {
-      str3 = String.valueOf(awka.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-      if (((axgd)localObject).d <= 0) {
-        break label167;
+      str3 = String.valueOf(axqc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+      if (((aymi)localObject).d <= 0) {
+        break label168;
       }
       str1 = "1";
-      if (((axgd)localObject).c <= 0) {
-        break label173;
+      if (((aymi)localObject).c <= 0) {
+        break label174;
       }
       str2 = "1";
-      label64:
-      if (((axgd)localObject).a <= 1) {
-        break label179;
+      label65:
+      if (((aymi)localObject).a <= 1) {
+        break label180;
       }
     }
-    label167:
-    label173:
-    label179:
+    label168:
+    label174:
+    label180:
     for (localObject = "1";; localObject = "0")
     {
-      bcef.b(null, "dc00899", "grp_lbs", "", this.jdField_a_of_type_JavaLangString, this.b, 0, 0, str3, str1, str2, "");
+      bdla.b(null, "dc00899", "grp_lbs", "", this.jdField_a_of_type_JavaLangString, this.b, 0, 0, str3, str1, str2, "");
       Log.i(" NearbyRecommend", "reportLebaRedDotEvent op_name = " + this.b + " d1 = " + str3 + " d2 = " + str1 + " d3 = " + str2 + " d4 = " + (String)localObject);
       return;
       str1 = "0";
       break;
       str2 = "0";
-      break label64;
+      break label65;
     }
   }
 }

@@ -12,6 +12,8 @@ import java.util.Map;
 public class DTParamsFlattenFormatter
   extends DefaultFormatter
 {
+  private static final String VIDEO_PROTO_VERSION = "1";
+  
   public Map<String, Object> formatElementParams(@NonNull List<ReportData> paramList, ReportData paramReportData)
   {
     return super.formatElementParams(paramList, paramReportData);
@@ -24,6 +26,7 @@ public class DTParamsFlattenFormatter
     if (paramMap1 != null) {
       paramString.putAll(paramMap1);
     }
+    paramString.put("dt_protoversion", "1");
     paramString.put("udf_kv", paramMap2);
     return paramString;
   }

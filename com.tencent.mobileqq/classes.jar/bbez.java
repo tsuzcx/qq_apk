@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.theme.SkinData;
+import rx.functions.Func1;
 
-public class bbez
-  extends bbfd
+class bbez
+  implements Func1<bbfb, String>
 {
-  public bbez(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
-  }
+  bbez(bbev parambbev) {}
   
-  public bays a(List<bayt> paramList, String paramString)
+  public String a(bbfb parambbfb)
   {
-    return new bayl(paramList, paramString, GroupSearchEngine.a(this.a));
+    return parambbfb.a.mFileName;
   }
 }
 

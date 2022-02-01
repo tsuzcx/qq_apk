@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanageraux.widget;
 
-import athk;
-import bcvc;
+import aulr;
+import becb;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class DocCooperationBanner$2
   implements Runnable
 {
-  public DocCooperationBanner$2(athk paramathk, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
+  public DocCooperationBanner$2(aulr paramaulr, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class DocCooperationBanner$2
     label89:
     for (int i = 2;; i = 1)
     {
-      localObject = bcvc.a(str2, str3, i, (String)localObject, str1, this.b);
+      localObject = becb.a(str2, str3, i, (String)localObject, str1, this.b);
       if (localObject != null) {
         QLog.i("DocCooperationBanner", 2, ((JSONObject)localObject).toString());
       }

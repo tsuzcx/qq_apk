@@ -1,30 +1,57 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.ArrayList;
+import android.os.Message;
 
-class yyv
-  extends yzd
+public class yyv
 {
-  yyv(yyu paramyyu, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
+  public static String a(int paramInt)
   {
-    super(null);
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 1: 
+      return "TRUE";
+    }
+    return "FALSE";
   }
   
-  public void onAnimationEnd(View paramView)
+  public static String a(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    ViewCompat.setAlpha(paramView, 1.0F);
-    this.jdField_a_of_type_Yyu.dispatchRemoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    yyu.d(this.jdField_a_of_type_Yyu).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    yyu.a(this.jdField_a_of_type_Yyu);
+    switch (paramMessage.what)
+    {
+    default: 
+      return "OTHERS[" + paramMessage.what + "] - " + paramMessage.arg1;
+    case 1: 
+      return "ACTION_VISIBILITY - " + paramMessage.arg1;
+    case 2: 
+      return "ACTION_KEEP_SHOWING - " + a(paramMessage.arg1);
+    case 3: 
+      return "ACTION_PLAY_ANIMATION";
+    case 4: 
+      return "ACTION_STOP_ANIMATION";
+    case 5: 
+      return "ACTION_SET_PROGRESS";
+    case 7: 
+      return "ACTION_UI_EVENT_CLICK - " + b(paramMessage.arg1);
+    case 8: 
+      return "ACTION_UI_EVENT_LONG_CLICK - " + b(paramMessage.arg1);
+    case 9: 
+      return "ACTION_UI_EVENT_TOUCH - " + b(paramMessage.arg1);
+    case 10: 
+      return "ACTION_UI_VISIBILITY_CHANGED - " + paramMessage.arg1;
+    }
+    return "ACTION_SET_STUBMODE";
   }
   
-  public void onAnimationStart(View paramView)
+  public static String b(int paramInt)
   {
-    this.jdField_a_of_type_Yyu.dispatchRemoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 0: 
+      return "UNREGISTER";
+    }
+    return "REGISTER";
   }
 }
 

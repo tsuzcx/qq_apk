@@ -1,297 +1,390 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build.VERSION;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.SensorReport.2;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
+import com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.QCallRecent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.UUID;
+import java.util.List;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0xa02.cmd0xa02.TinyID2UserAccInfo;
 
+@Deprecated
 public class mtq
 {
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mtr();
-  static String jdField_a_of_type_JavaLangString = "actAVGSensorCaseReport";
-  int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  ArrayList<mts> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  mts jdField_a_of_type_Mts = null;
-  int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString = "";
-  int jdField_c_of_type_Int = 2;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 4;
-  private long jdField_d_of_type_Long;
-  int jdField_e_of_type_Int = 8;
-  private long jdField_e_of_type_Long;
-  int jdField_f_of_type_Int = 16;
-  private long jdField_f_of_type_Long;
-  int g = 32;
-  int h = 0;
-  final int i = 0;
-  final int j = 1;
-  final int k = 2;
-  
-  private void a(int paramInt, ArrayList<mts> paramArrayList)
+  public static int a(String paramString, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_e_of_type_Long == 0L)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "report Ignore, mRoomID[" + this.jdField_e_of_type_Long + "], guid[" + this.jdField_c_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
+    String str = paramString.replace("-", "").replace(" ", "");
+    if (str.length() <= 6) {
+      return 5;
+    }
+    if (str.length() > 16) {
+      return 4;
+    }
+    paramString = str;
+    if (paramBoolean) {
+      if ((!str.startsWith("00")) && (!str.startsWith("+")))
+      {
+        paramString = str;
+        if (!str.startsWith("86")) {}
+      }
+      else
+      {
+        if (!str.startsWith("0086")) {
+          break label117;
+        }
+        paramString = str.substring(4);
       }
     }
-    for (;;)
+    while ((paramString.startsWith("400")) || (paramString.startsWith("800")))
     {
-      return;
-      Object localObject1 = "";
-      if (paramArrayList.size() > 0) {}
-      try
-      {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("size", paramArrayList.size());
-        localObject2 = new JSONArray();
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
-        {
-          mts localmts = (mts)paramArrayList.next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("i", localmts.jdField_a_of_type_Int);
-          localJSONObject.put("off", localmts.jdField_a_of_type_Long);
-          localJSONObject.put("on", localmts.jdField_b_of_type_Long);
-          localJSONObject.put("why", localmts.jdField_c_of_type_Long);
-          ((JSONArray)localObject2).put(localJSONObject);
-        }
+      return 2;
+      label117:
+      if (str.startsWith("+86")) {
+        paramString = str.substring(3);
+      } else if (str.startsWith("86")) {
+        paramString = str.substring(2);
+      } else {
+        return 1;
       }
-      catch (JSONException paramArrayList)
-      {
-        Object localObject2;
-        for (localObject1 = "JSONException. ";; localObject1 = ((JSONObject)localObject1).toString())
-        {
-          paramArrayList = new HashMap();
-          paramArrayList.put("guid", this.jdField_c_of_type_JavaLangString);
-          paramArrayList.put("RoomID", String.valueOf(this.jdField_e_of_type_Long));
-          paramArrayList.put("EnterRoomTime", String.valueOf(this.jdField_f_of_type_Long));
-          paramArrayList.put("screenInfo", localObject1);
-          paramArrayList.put("StartSensorTime", String.valueOf(this.jdField_a_of_type_Long));
-          paramArrayList.put("EndSensorTime", String.valueOf(this.jdField_b_of_type_Long));
-          paramArrayList.put("SetIgnore", String.valueOf(this.jdField_c_of_type_Long));
-          paramArrayList.put("ClearIgnore", String.valueOf(this.jdField_d_of_type_Long));
-          paramArrayList.put("reportType", String.valueOf(paramInt));
-          paramArrayList.put("Log", this.jdField_b_of_type_JavaLangString);
-          paramArrayList.put("ScreenInfoCount", String.valueOf(this.h));
-          if (this.jdField_c_of_type_Long != 0L)
-          {
-            paramArrayList.put("sdkVersion", String.valueOf(Build.VERSION.SDK_INT));
-            paramArrayList.put("devicesInfo", AppSetting.jdField_c_of_type_JavaLangString);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 4, "mRoomID[" + this.jdField_e_of_type_Long + "], guid[" + this.jdField_c_of_type_JavaLangString + "], [" + (String)localObject1);
-          }
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            QLog.d(jdField_a_of_type_JavaLangString, 1, this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString);
-          }
-          if (paramInt != 0) {
-            break label634;
-          }
-          localObject1 = (VideoAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-          if (localObject1 != null)
-          {
-            localObject2 = new Intent(jdField_a_of_type_JavaLangString);
-            ((Intent)localObject2).putExtra("params", paramArrayList);
-            ((Intent)localObject2).setPackage(((VideoAppInterface)localObject1).getApp().getPackageName());
-            ((VideoAppInterface)localObject1).getApp().sendBroadcast((Intent)localObject2);
-          }
-          this.jdField_b_of_type_JavaLangString = "";
-          this.jdField_a_of_type_Mts = null;
-          if (paramInt == 1) {
-            break;
-          }
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_b_of_type_Long = 0L;
-          this.jdField_c_of_type_Long = 0L;
-          this.jdField_d_of_type_Long = 0L;
-          return;
-          ((JSONObject)localObject1).put("infos", localObject2);
-        }
-      }
-      catch (Exception paramArrayList)
-      {
-        for (;;)
-        {
-          localObject1 = "json_" + paramArrayList.getClass().getName() + ". ";
-          continue;
-          label634:
-          UserAction.onUserAction(jdField_a_of_type_JavaLangString, true, -1L, -1L, paramArrayList, true);
-        }
-      }
+    }
+    if ((!paramString.startsWith("0")) && (paramString.length() <= 9)) {
+      return 3;
+    }
+    if ((paramString.length() == 11) || (paramString.length() == 12)) {
+      return 0;
+    }
+    return 6;
+  }
+  
+  private static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject2 = ((awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(paramString);
+    Object localObject1 = null;
+    if (localObject2 != null) {
+      localObject1 = ContactUtils.getPhoneContactFaceText(((PhoneContact)localObject2).name);
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = ContactUtils.getPhoneContactFaceText(paramString);
+    }
+    paramString = new bgzz(paramQQAppInterface.getApp(), (String)localObject2);
+    int i = paramString.getIntrinsicWidth();
+    int j = paramString.getIntrinsicHeight();
+    if (paramString.getOpacity() != -1) {}
+    for (paramQQAppInterface = Bitmap.Config.ARGB_8888;; paramQQAppInterface = Bitmap.Config.RGB_565)
+    {
+      paramQQAppInterface = Bitmap.createBitmap(i, j, paramQQAppInterface);
+      localObject1 = new Canvas(paramQQAppInterface);
+      paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
+      paramString.draw((Canvas)localObject1);
+      return paramQQAppInterface;
     }
   }
   
-  public static void a(Context paramContext)
+  public static String a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    AudioHelper.a(paramContext);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction(jdField_a_of_type_JavaLangString);
-    ThreadManager.post(new SensorReport.2(paramContext, localIntentFilter), 5, null, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PstnUtils", 2, "getPstnInfoFromQCallRecent --> uin = " + paramString + " ,uinType = " + paramInt);
+    }
+    if ((paramQQAppInterface == null) || (paramString == null)) {
+      paramQQAppInterface = null;
+    }
+    do
+    {
+      return paramQQAppInterface;
+      paramQQAppInterface = (bapk)paramQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE);
+      if (paramQQAppInterface == null) {
+        break;
+      }
+      paramQQAppInterface = paramQQAppInterface.a(paramString, paramInt);
+      if (paramQQAppInterface == null) {
+        break;
+      }
+      paramString = paramQQAppInterface.pstnInfo;
+      paramQQAppInterface = paramString;
+    } while (!QLog.isColorLevel());
+    QLog.d("PstnUtils", 2, "getPstnInfoFromQCallRecent --> value = " + paramString);
+    return paramString;
+    return null;
   }
   
-  public static void b(Context paramContext)
+  public static String a(String paramString, int paramInt)
+  {
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber is null");
+      }
+      str = null;
+    }
+    do
+    {
+      do
+      {
+        return str;
+        if (paramString.length() >= paramInt) {
+          break;
+        }
+        str = paramString;
+      } while (!QLog.isColorLevel());
+      QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber less ncount");
+      return paramString;
+      str = paramString;
+    } while (paramString.length() < "***".length() + paramInt);
+    String str = paramString.substring(paramString.length() - 2, paramString.length());
+    paramString = paramString.substring(0, 3);
+    return paramString + "***" + str;
+  }
+  
+  public static String a(ArrayList<AVPhoneUserInfo> paramArrayList)
   {
     try
     {
-      paramContext.unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SensorReport", 2, "unregistonUserActionReceiver e = " + paramContext);
-    }
-  }
-  
-  void a()
-  {
-    long l = System.currentTimeMillis();
-    String str = UUID.randomUUID().toString();
-    if (this.jdField_a_of_type_Long != 0L)
-    {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "[" + this.jdField_c_of_type_JavaLangString + "->" + str + "]begin had came[" + this.jdField_a_of_type_Long + "->" + l + "]");
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = l;
-      }
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      a(2, localArrayList);
-    }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_c_of_type_JavaLangString = str;
-  }
-  
-  void a(VideoController paramVideoController)
-  {
-    if (paramVideoController != null)
-    {
-      this.jdField_e_of_type_Long = paramVideoController.f();
-      if (this.jdField_e_of_type_Long != 0L)
+      JSONArray localJSONArray = new JSONArray();
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        int m = paramVideoController.a().jdField_d_of_type_Int;
-        if ((m == 3) || (m == 4)) {
-          this.jdField_f_of_type_Long = paramVideoController.e();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 4, "setRoomID[" + this.jdField_e_of_type_Long + "], EnterRoomTime[" + this.jdField_f_of_type_Long);
-        }
+        AVPhoneUserInfo localAVPhoneUserInfo = (AVPhoneUserInfo)paramArrayList.get(i);
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject1.put("a", localAVPhoneUserInfo.account);
+        localJSONObject1.put("at", localAVPhoneUserInfo.accountType);
+        localJSONObject2.put("m", localAVPhoneUserInfo.telInfo.mobile);
+        localJSONObject2.put("n", localAVPhoneUserInfo.telInfo.nation);
+        localJSONObject2.put("p", localAVPhoneUserInfo.telInfo.prefix);
+        localJSONObject2.put("ns", localAVPhoneUserInfo.telInfo.nationState);
+        localJSONObject1.put("ti", localJSONObject2);
+        localJSONArray.put(localJSONObject1);
+        i += 1;
       }
+      paramArrayList = localJSONArray.toString();
+      return paramArrayList;
     }
+    catch (JSONException paramArrayList)
+    {
+      paramArrayList.printStackTrace();
+    }
+    return null;
   }
   
-  void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, boolean paramBoolean4, VideoController paramVideoController)
+  public static ArrayList<AVPhoneUserInfo> a(String paramString)
   {
-    if (this.jdField_e_of_type_Long == 0L) {
-      a(paramVideoController);
-    }
-    int n = this.jdField_a_of_type_Int;
-    int m = n;
-    if (!paramBoolean1) {
-      m = n | this.jdField_d_of_type_Int;
-    }
-    n = m;
-    if (!paramBoolean2) {
-      n = m | this.jdField_e_of_type_Int;
-    }
-    m = n;
-    if (paramBoolean3) {
-      m = n | this.jdField_b_of_type_Int;
-    }
-    n = m;
-    if (paramInt == 3) {
-      n = m | this.jdField_c_of_type_Int;
-    }
-    m = n;
-    if (paramInt == 1) {
-      m = n | this.jdField_f_of_type_Int;
-    }
-    paramInt = m;
-    if (paramBoolean4) {
-      paramInt = m | this.g;
-    }
-    long l = System.currentTimeMillis();
-    paramVideoController = this.jdField_a_of_type_Mts;
-    this.jdField_a_of_type_Mts = null;
-    if (paramVideoController != null)
-    {
-      paramVideoController.jdField_b_of_type_Long = l;
-      paramVideoController.jdField_c_of_type_Long = paramInt;
-    }
+    int i = 0;
     for (;;)
     {
-      if ((!paramBoolean4) && (this.jdField_a_of_type_JavaUtilArrayList.size() >= 6))
+      try
       {
-        paramVideoController = this.jdField_a_of_type_JavaUtilArrayList;
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        a(1, paramVideoController);
+        JSONArray localJSONArray = new JSONArray(paramString);
+        ArrayList localArrayList = new ArrayList();
+        paramString = localArrayList;
+        if (i < localJSONArray.length())
+        {
+          paramString = localJSONArray.getJSONObject(i);
+          JSONObject localJSONObject = paramString.optJSONObject("ti");
+          AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
+          localAVPhoneUserInfo.account = paramString.optLong("a", 0L);
+          localAVPhoneUserInfo.accountType = paramString.optInt("at", -1);
+          localAVPhoneUserInfo.telInfo.mobile = localJSONObject.optString("m", "");
+          localAVPhoneUserInfo.telInfo.nation = localJSONObject.optString("n", "");
+          localAVPhoneUserInfo.telInfo.prefix = localJSONObject.optString("p", "");
+          localAVPhoneUserInfo.telInfo.nationState = localJSONObject.optInt("ns", 0);
+          if (-1 == localAVPhoneUserInfo.accountType) {
+            break label175;
+          }
+          localArrayList.add(localAVPhoneUserInfo);
+        }
       }
-      return;
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "setScreenOn_LastScreenInfo_null[" + l + "], why[" + paramInt + "]。");
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        paramString = null;
+      }
+      return paramString;
+      label175:
+      i += 1;
     }
   }
   
-  void b()
+  public static ArrayList<AVPhoneUserInfo> a(List<cmd0xa02.TinyID2UserAccInfo> paramList)
   {
-    if (this.jdField_b_of_type_Long != 0L) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "end_came[" + this.jdField_b_of_type_Long + "]。");
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return localArrayList;
     }
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(0, localArrayList);
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      paramList = (cmd0xa02.TinyID2UserAccInfo)localIterator.next();
+      AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
+      localAVPhoneUserInfo.account = paramList.uint64_tinyid.get();
+      localAVPhoneUserInfo.accountType = paramList.uint32_useracctype.get();
+      paramList = paramList.str_useracc_identifier.get();
+      if ((!TextUtils.isEmpty(paramList)) && (paramList.length() >= 5))
+      {
+        String str;
+        if (paramList.contains("-"))
+        {
+          paramList = paramList.split("-");
+          str = paramList[0];
+        }
+        for (paramList = paramList[1];; paramList = paramList.substring(4, paramList.length()))
+        {
+          localAVPhoneUserInfo.telInfo.nation = str;
+          localAVPhoneUserInfo.telInfo.mobile = paramList;
+          if (!TextUtils.isEmpty(localAVPhoneUserInfo.telInfo.nation)) {
+            localAVPhoneUserInfo.telInfo.nationState = 1;
+          }
+          localArrayList.add(localAVPhoneUserInfo);
+          break;
+          str = paramList.substring(0, 4);
+        }
+      }
+    }
+    return localArrayList;
   }
   
-  void c()
+  public static List<AVPhoneUserInfo> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Mts = new mts(this);
-    this.jdField_a_of_type_Mts.jdField_a_of_type_Int = this.h;
-    this.h += 1;
-    this.jdField_a_of_type_Mts.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Mts);
+    Object localObject1 = a(paramQQAppInterface, paramString, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("PstnUtils", 2, " ==== getRealAVPhoneUserInfo === pstnInfo : " + (String)localObject1);
+    }
+    if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+      return null;
+    }
+    Object localObject2 = a((String)localObject1);
+    if ((localObject2 == null) || (((ArrayList)localObject2).size() == 0)) {
+      return null;
+    }
+    localObject1 = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    if (localObject1 == null) {
+      return null;
+    }
+    paramString = ((antp)localObject1).a(paramString);
+    localObject1 = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+    ArrayList localArrayList = new ArrayList();
+    localObject2 = ((ArrayList)localObject2).iterator();
+    AVPhoneUserInfo localAVPhoneUserInfo;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localAVPhoneUserInfo = (AVPhoneUserInfo)((Iterator)localObject2).next();
+      paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+      {
+        paramQQAppInterface = ((awyz)localObject1).b(paramQQAppInterface);
+        if (paramQQAppInterface == null) {
+          break label268;
+        }
+      }
+    }
+    label268:
+    for (paramQQAppInterface = paramQQAppInterface.uin;; paramQQAppInterface = null)
+    {
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.length() == 0))
+      {
+        localArrayList.add(localAVPhoneUserInfo);
+        break;
+      }
+      if ((paramString != null) && (paramString.containsKey(paramQQAppInterface))) {
+        break;
+      }
+      localArrayList.add(localAVPhoneUserInfo);
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.i("PstnUtils", 2, " ==== getRealAVPhoneUserInfo === list : " + localArrayList.toString());
+      }
+      return localArrayList;
+    }
   }
   
-  void d()
+  public static List<Bitmap> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_c_of_type_Long != 0L) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "setIgnore[" + this.jdField_c_of_type_Long + "->" + l + "]。");
+    Object localObject = a(paramQQAppInterface, paramString, paramInt1);
+    QLog.i("PstnUtils", 2, " ==== getRealAVPhoneBitmap === pstnInfo : " + (String)localObject);
+    if ((localObject == null) || (((String)localObject).length() == 0)) {
+      return null;
     }
-    this.jdField_c_of_type_Long = l;
+    ArrayList localArrayList1 = a((String)localObject);
+    if ((localArrayList1 == null) || (localArrayList1.size() == 0)) {
+      return null;
+    }
+    localObject = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    if (localObject == null) {
+      return null;
+    }
+    Map localMap = ((antp)localObject).a(paramString);
+    awyz localawyz = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+    ArrayList localArrayList2 = new ArrayList();
+    paramInt2 = Math.min(paramInt2, localArrayList1.size());
+    paramInt1 = 0;
+    if (paramInt1 < paramInt2)
+    {
+      localObject = (AVPhoneUserInfo)localArrayList1.get(paramInt1);
+      String str = ((AVPhoneUserInfo)localObject).telInfo.mobile;
+      if ((str == null) || (str.length() == 0)) {}
+      for (;;)
+      {
+        paramInt1 += 1;
+        break;
+        PhoneContact localPhoneContact = localawyz.b(str);
+        paramString = null;
+        if (localPhoneContact != null) {
+          paramString = localPhoneContact.uin;
+        }
+        if ((paramString == null) || (paramString.length() == 0))
+        {
+          localArrayList2.add(a(paramQQAppInterface, str));
+        }
+        else if (!localMap.containsKey(paramString))
+        {
+          localObject = paramQQAppInterface.getFaceBitmap(11, ((AVPhoneUserInfo)localObject).telInfo.nation + str, (byte)3, true, 0);
+          paramString = (String)localObject;
+          if (localObject == null) {
+            paramString = a(paramQQAppInterface, str);
+          }
+          localArrayList2.add(paramString);
+        }
+      }
+    }
+    return localArrayList2;
   }
   
-  void e()
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_d_of_type_Long != 0L) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + "clearIgnoreFlag[" + this.jdField_d_of_type_Long + "->" + l + "]。");
+    paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      bool1 = bool2;
+      if (paramQQAppInterface.size() > 0) {
+        bool1 = true;
+      }
     }
-    this.jdField_d_of_type_Long = l;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mtq
  * JD-Core Version:    0.7.0.1
  */

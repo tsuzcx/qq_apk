@@ -1,43 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
+import java.util.Map;
 
 public class ajof
-  implements TVK_SDKMgr.InstallListener
+  extends anvi
 {
-  public ajof(MediaPlayHelper.2 param2) {}
+  public ajof(TroopFragment paramTroopFragment) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ajoe.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
+    if (paramBoolean1) {
+      this.a.h();
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_entrance", "MediaPlayHelper");
-    localHashMap.put("param_erroCode", String.valueOf(paramInt));
-    localHashMap.put("param_result", "0");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  public void onInstalledSuccessed()
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ajoe.a(this.a.this$0), 2, "onInstalledSuccessed");
+    this.a.h();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.h();
     }
-    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.sendEmptyMessage(6);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_entrance", "MediaPlayHelper");
-    localHashMap.put("param_erroCode", "0");
-    localHashMap.put("param_result", "1");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

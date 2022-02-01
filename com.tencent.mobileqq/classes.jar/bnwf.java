@@ -1,13 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class bnwf
-  implements DialogInterface.OnClickListener
+  extends bnwd
 {
-  public bnwf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public List<bnwm> a = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public float a()
+  {
+    return 0.0F;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public HashMap<String, String> a()
+  {
+    return null;
+  }
+  
+  public float b()
+  {
+    return 0.0F;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public float c()
+  {
+    return 0.0F;
+  }
 }
 
 

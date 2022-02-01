@@ -1,152 +1,59 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.annotation.TargetApi;
+import android.opengl.EGL14;
+import android.opengl.EGLSurface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
 
+@TargetApi(17)
 public class bbml
-  implements bbls
 {
-  private void a(MessageHandler paramMessageHandler, long paramLong1, boolean paramBoolean, long paramLong2, int paramInt1, im_msg_body.MsgBody paramMsgBody, int paramInt2, long paramLong3, short paramShort, String paramString)
+  private EGLSurface a;
+  protected bbmk a;
+  
+  public bbml(bbmk parambbmk)
   {
-    paramMsgBody = paramMessageHandler.app.getFileTransferHandler().b(paramMsgBody.msg_content.get().toByteArray());
-    if (paramMsgBody != null) {
-      if (!paramMessageHandler.app.getFileTransferHandler().a(paramMsgBody)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x85  is error.");
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      paramMessageHandler.app.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString, paramLong3, paramShort, paramBoolean, 0, null, paramMsgBody, paramLong2, paramInt1);
-      return;
-    }
-    QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile decode 0x85 failed.");
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
+    this.jdField_a_of_type_Bbmk = parambbmk;
   }
   
-  private void a(MessageHandler paramMessageHandler, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, long paramLong2, int paramInt1, im_msg_body.MsgBody paramMsgBody, int paramInt2, Long paramLong, long paramLong3, short paramShort, String paramString1, String paramString2)
+  public void a()
   {
-    if (paramString2.equalsIgnoreCase(String.valueOf(paramLong))) {
-      if (QLog.isColorLevel()) {
-        QLog.w("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x81 request is error.it is from self!!!");
-      }
-    }
-    label162:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!paramBoolean2) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.i("OnlineFileDecoder", 2, "recv roam online msg, return!");
-          return;
-          paramMsgBody = paramMessageHandler.app.getFileTransferHandler().a(paramMsgBody.msg_content.get().toByteArray());
-          if (paramMsgBody == null) {
-            break label162;
-          }
-          if (paramMessageHandler.app.getFileTransferHandler().a(paramMsgBody)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x81 request is error.");
-        return;
-        if (paramMsgBody.b) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.w("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x81. requset is no mulitend olfile.");
-      return;
-      paramMessageHandler.app.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString1, paramLong3, paramShort, paramBoolean1, 0, null, paramMsgBody, paramLong2, paramInt1);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile decode 0x81 failed.");
+    this.jdField_a_of_type_Bbmk.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
   }
   
-  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, long paramLong2, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    im_msg_body.MsgBody localMsgBody = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-    int i = ((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.get();
-    Long localLong1 = Long.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get());
-    Long localLong2 = Long.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get());
-    long l = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-    short s = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-    String str1 = localLong1.toString();
-    String str2 = paramMessageHandler.app.getCurrentAccountUin();
-    if (i == 129)
-    {
-      paramMsg = str1;
-      if (str1.equals(String.valueOf(localLong2)))
-      {
-        paramMsg = str1;
-        if (str1.equals(str2)) {
-          if (QLog.isColorLevel()) {
-            QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile recv  a 0x81 that is from self.");
-          }
-        }
-      }
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
     }
-    else
-    {
-      if (!str2.equals(String.valueOf(localLong1))) {
-        break label261;
-      }
-    }
-    label261:
-    for (paramMsg = String.valueOf(localLong2);; paramMsg = String.valueOf(localLong1)) {
-      switch (i)
-      {
-      case 130: 
-      case 132: 
-      default: 
-        return;
-      case 129: 
-        a(paramMessageHandler, paramLong1, paramBoolean1, paramBoolean2, paramLong2, paramInt, localMsgBody, i, localLong1, l, s, paramMsg, str2);
-        return;
-      }
-    }
-    b(paramMessageHandler, paramLong1, paramBoolean1, paramLong2, paramInt, localMsgBody, i, l, s, paramMsg);
-    return;
-    a(paramMessageHandler, paramLong1, paramBoolean1, paramLong2, paramInt, localMsgBody, i, l, s, paramMsg);
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bbmk.a(paramInt1, paramInt2);
   }
   
-  private void b(MessageHandler paramMessageHandler, long paramLong1, boolean paramBoolean, long paramLong2, int paramInt1, im_msg_body.MsgBody paramMsgBody, int paramInt2, long paramLong3, short paramShort, String paramString)
+  public void a(long paramLong)
   {
-    paramMsgBody = paramMessageHandler.app.getFileTransferHandler().a(paramMsgBody.msg_content.get().toByteArray());
-    if (paramMsgBody != null) {
-      if (!paramMessageHandler.app.getFileTransferHandler().a(paramMsgBody)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile 0x83  is error.");
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      paramMessageHandler.app.getFileTransferHandler().b(paramInt2, String.valueOf(paramLong1), paramString, paramLong3, paramShort, paramBoolean, 0, null, paramMsgBody, paramLong2, paramInt1);
-      return;
-    }
-    QLog.d("OnlineFileDecoder", 2, "<---decodeC2CMsgPkg_OnlineFile decode 0x83 failed.");
+    this.jdField_a_of_type_Bbmk.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
   }
   
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
+  public void a(Object paramObject)
   {
-    a(paramMessageHandler, paramMsg, parambbkm.e, parambbkm.jdField_a_of_type_Boolean, parambbkm.b, parambbkm.d, parambbkm.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bbmk.a(paramObject);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = this.jdField_a_of_type_Bbmk.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
+    }
+    return bool;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bbmk.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
   }
 }
 

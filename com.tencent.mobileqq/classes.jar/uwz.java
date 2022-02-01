@@ -1,6 +1,16 @@
-public abstract interface uwz
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+
+public abstract interface uwz<V extends uww>
 {
-  public abstract void a(int paramInt);
+  @UiThread
+  public abstract void a();
+  
+  @UiThread
+  public abstract void a(@NonNull V paramV);
+  
+  @UiThread
+  public abstract void b();
 }
 
 

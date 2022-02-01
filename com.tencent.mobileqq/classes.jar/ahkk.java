@@ -1,11 +1,28 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class ahkk
-  implements nnv
+  implements View.OnClickListener
 {
-  ahkk(ahiu paramahiu) {}
+  ahkk(ahkj paramahkj) {}
   
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  public void onClick(View paramView)
+  {
+    ahko localahko = (ahko)AIOUtils.getHolder(paramView);
+    if (paramView == localahko.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localahko);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == localahko.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localahko);
+      }
+    }
+  }
 }
 
 

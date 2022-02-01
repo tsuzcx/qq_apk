@@ -1,8 +1,28 @@
-public abstract interface xgc
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xgc
+  extends QQUIEventReceiver<xgb, xgg>
 {
-  public abstract void a();
+  public xgc(@NonNull xgb paramxgb)
+  {
+    super(paramxgb);
+  }
   
-  public abstract void b();
+  public void a(@NonNull xgb paramxgb, @NonNull xgg paramxgg)
+  {
+    if (paramxgg.a.isSuccess())
+    {
+      ykq.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramxgg.toString());
+      paramxgb.e();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xgg.class;
+  }
 }
 
 

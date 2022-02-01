@@ -1,27 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.intervideo.nowproxy.NowLive;
+import android.os.Bundle;
+import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
 import com.tencent.qphone.base.util.QLog;
 
-class aupq
-  extends BroadcastReceiver
+public class aupq
+  implements apst
 {
-  aupq(aupc paramaupc) {}
+  public aupq(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
-    {
-      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
-      NowLive.killPluginProcess();
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.a.a.putBoolean("forward_ark_from_h5_success", true);
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
-      return;
-    }
-    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
-    NowLive.killPluginProcess();
   }
 }
 

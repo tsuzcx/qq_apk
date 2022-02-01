@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pkm;
+import pvj;
 
 class ReadInJoyListViewGroup$2
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyListViewGroup$2
   
   public void run()
   {
-    pkm.a().a(this.this$0.getContext());
+    pvj.a().a(this.this$0.getContext());
   }
 }
 

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
-import aqwt;
-import bfur;
+import asan;
+import bhdj;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -14,11 +14,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import lmt;
-import mum;
+import lng;
+import mvk;
 
 class BaseChatPie$MyAVObserver
-  extends lmt
+  extends lng
 {
   private BaseChatPie$MyAVObserver(BaseChatPie paramBaseChatPie) {}
   
@@ -43,8 +43,8 @@ class BaseChatPie$MyAVObserver
   public void onGroupSecurityLimit(long paramLong1, int paramInt, long paramLong2, String paramString)
   {
     super.onGroupSecurityLimit(paramLong1, paramInt, paramLong2, paramString);
-    if ((this.this$0.sessionInfo.curType == paramInt) && (Long.valueOf(this.this$0.sessionInfo.curFriendUin).longValue() == paramLong1)) {
-      bfur.a(this.this$0.mContext, 230, null, paramString, 2131694952, 2131719509, new BaseChatPie.MyAVObserver.2(this), null).show();
+    if ((this.this$0.sessionInfo.curType == paramInt) && (Long.parseLong(this.this$0.sessionInfo.curFriendUin) == paramLong1)) {
+      bhdj.a(this.this$0.mContext, 230, null, paramString, 2131695168, 2131719961, new BaseChatPie.MyAVObserver.2(this), null).show();
     }
   }
   
@@ -53,58 +53,58 @@ class BaseChatPie$MyAVObserver
     super.onManagerForbiddenOpenRoom(paramLong1, paramInt1, paramLong2, paramInt2);
     QLog.d("OnManagerForbiddenOpenRoom", 2, " avtype:" + paramInt2);
     String str1;
-    if ((this.this$0.sessionInfo.curType == paramInt1) && (Long.valueOf(this.this$0.sessionInfo.curFriendUin).longValue() == paramLong1))
+    if ((this.this$0.sessionInfo.curType == paramInt1) && (Long.parseLong(this.this$0.sessionInfo.curFriendUin) == paramLong1))
     {
       if ((paramLong2 != 1L) && (paramLong2 != 2L) && (paramLong2 != 35L) && (paramLong2 != 42L) && (paramLong2 != 43L) && (paramLong2 != 41L) && (paramLong2 != 40L)) {
-        break label312;
+        break label309;
       }
-      str1 = this.this$0.mContext.getString(2131695165);
+      str1 = this.this$0.mContext.getString(2131695382);
       if (paramLong2 != 2L) {
-        break label234;
+        break label231;
       }
-      str1 = this.this$0.mContext.getString(2131695166);
+      str1 = this.this$0.mContext.getString(2131695383);
     }
-    label233:
-    label234:
+    label230:
+    label231:
     String str2;
-    label312:
+    label309:
     do
     {
       do
       {
-        break label233;
-        break label233;
+        break label230;
+        break label230;
         if ((paramLong2 == 41L) || (paramLong2 == 40L)) {
-          str1 = this.this$0.mContext.getString(2131695170);
+          str1 = this.this$0.mContext.getString(2131695387);
         }
         for (;;)
         {
-          bfur.a(this.this$0.mContext, 230, null, str1, 2131694952, 2131719509, new BaseChatPie.MyAVObserver.1(this), null).show();
+          bhdj.a(this.this$0.mContext, 230, null, str1, 2131695168, 2131719961, new BaseChatPie.MyAVObserver.1(this), null).show();
           return;
           if (paramLong2 != 35L) {
             break;
           }
-          str1 = this.this$0.mContext.getString(2131695167);
+          str1 = this.this$0.mContext.getString(2131695384);
           break;
           if (paramLong2 == 42L) {
-            str1 = this.this$0.mContext.getString(2131695168);
+            str1 = this.this$0.mContext.getString(2131695385);
           } else if (paramLong2 == 43L) {
-            str1 = this.this$0.mContext.getString(2131695169);
+            str1 = this.this$0.mContext.getString(2131695386);
           }
         }
         if (paramLong2 == 3L)
         {
-          QQToast.a(this.this$0.app.getApp(), this.this$0.mContext.getString(2131695127), 1).b(this.this$0.getTitleBarHeight());
+          QQToast.a(this.this$0.app.getApp(), this.this$0.mContext.getString(2131695343), 1).b(this.this$0.getTitleBarHeight());
           return;
         }
         if (paramLong2 == 4L)
         {
-          QQToast.a(this.this$0.app.getApp(), this.this$0.mContext.getString(2131695124), 1).b(this.this$0.getTitleBarHeight());
+          QQToast.a(this.this$0.app.getApp(), this.this$0.mContext.getString(2131695340), 1).b(this.this$0.getTitleBarHeight());
           return;
         }
         if (paramLong2 == 8L)
         {
-          QQToast.a(this.this$0.app.getApp(), this.this$0.mContext.getString(2131695123), 1).b(this.this$0.getTitleBarHeight());
+          QQToast.a(this.this$0.app.getApp(), this.this$0.mContext.getString(2131695339), 1).b(this.this$0.getTitleBarHeight());
           return;
         }
       } while (paramLong2 != 7L);
@@ -221,7 +221,7 @@ class BaseChatPie$MyAVObserver
     while ((!this.this$0.sessionInfo.curFriendUin.equals(paramString1)) || (this.this$0.mVideoStatusBar == null) || (this.this$0.mVideoStatusBar.a(new Object[0]) == null) || (this.this$0.app.getAVNotifyCenter().k())) {
       return;
     }
-    TextView localTextView = (TextView)this.this$0.mVideoStatusBar.a(new Object[0]).findViewById(2131378474);
+    TextView localTextView = (TextView)this.this$0.mVideoStatusBar.a(new Object[0]).findViewById(2131378765);
     int i = this.this$0.app.getAVNotifyCenter().e();
     String str;
     if (localTextView != null)
@@ -230,10 +230,10 @@ class BaseChatPie$MyAVObserver
       str = "";
       if ((this.this$0.sessionInfo.curType == 3000) || (this.this$0.sessionInfo.curType == 1))
       {
-        i = mum.b(this.this$0.sessionInfo.curType);
-        long l = Long.valueOf(paramString1).longValue();
+        i = mvk.b(this.this$0.sessionInfo.curType);
+        long l = Long.parseLong(paramString1);
         l = this.this$0.app.getAVNotifyCenter().a(i, l);
-        String.format(this.this$0.mContext.getString(2131689919), new Object[] { Long.valueOf(l) });
+        String.format(this.this$0.mContext.getString(2131689948), new Object[] { Long.valueOf(l) });
         localTextView.setText(paramString2);
       }
     }
@@ -247,15 +247,15 @@ class BaseChatPie$MyAVObserver
       return;
     }
     if (i == 2) {
-      str = this.this$0.mContext.getString(2131695479);
+      str = this.this$0.mContext.getString(2131695696);
     }
     for (;;)
     {
-      i = this.this$0.mContext.getResources().getColor(2131167020);
+      i = this.this$0.mContext.getResources().getColor(2131167034);
       this.this$0.mVideoStatusBar.a(null, str, i, paramString1, 0);
       break;
       if (i == 1) {
-        str = this.this$0.mContext.getString(2131694902);
+        str = this.this$0.mContext.getString(2131695118);
       }
     }
   }

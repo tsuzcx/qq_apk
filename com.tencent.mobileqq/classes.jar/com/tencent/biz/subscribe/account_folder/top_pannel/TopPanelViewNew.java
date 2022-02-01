@@ -9,18 +9,18 @@ import android.widget.RelativeLayout;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.List;
-import zbi;
-import zcm;
-import zcn;
-import zcz;
+import zqn;
+import zrr;
+import zrs;
+import zse;
 
 public class TopPanelViewNew
   extends RelativeLayout
-  implements zcn
+  implements zrs
 {
   private View jdField_a_of_type_AndroidViewView;
   private RecommendBannerViewNew jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew;
-  private zcm jdField_a_of_type_Zcm;
+  private zrr jdField_a_of_type_Zrr;
   private boolean jdField_a_of_type_Boolean;
   
   public TopPanelViewNew(Context paramContext)
@@ -45,7 +45,7 @@ public class TopPanelViewNew
   
   public void a(int paramInt) {}
   
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zcz> paramList, boolean paramBoolean)
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zse> paramList, boolean paramBoolean)
   {
     if (((paramList == null) || (paramList.size() == 0)) && (paramStEntry == null)) {
       b();
@@ -64,13 +64,13 @@ public class TopPanelViewNew
   
   protected void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = zbi.a();
-    inflate(paramContext, 2131558780, this);
+    this.jdField_a_of_type_Boolean = zqn.a();
+    inflate(paramContext, 2131558805, this);
     if (this.jdField_a_of_type_Boolean) {
       setBackgroundColor(-16777216);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew = ((RecommendBannerViewNew)findViewById(2131376072));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369195);
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew = ((RecommendBannerViewNew)findViewById(2131376319));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369357);
   }
   
   public void b()
@@ -85,11 +85,11 @@ public class TopPanelViewNew
     }
   }
   
-  public void setPresenter(zcm paramzcm)
+  public void setPresenter(zrr paramzrr)
   {
-    this.jdField_a_of_type_Zcm = paramzcm;
+    this.jdField_a_of_type_Zrr = paramzrr;
     if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.setPresenter(paramzcm);
+      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.setPresenter(paramzrr);
     }
   }
 }

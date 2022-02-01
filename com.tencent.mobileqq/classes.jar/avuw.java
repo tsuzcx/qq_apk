@@ -1,26 +1,87 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import java.util.List;
 
 public class avuw
-  implements View.OnClickListener
+  extends aodm
 {
-  public avuw(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  public avuw(ShareToQQActivity paramShareToQQActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (MsgBackupDateFragment.a(this.a) == 0) {
-      avwr.a("0X800A237");
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
     }
     for (;;)
     {
-      this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (avtq.c) {
-        avwr.a("0X800A25C");
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bhbx.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
       }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", false);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bhbx.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", true);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
     }
   }
 }

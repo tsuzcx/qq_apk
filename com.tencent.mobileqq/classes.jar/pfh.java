@@ -1,18 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-class pfh
-  extends pse
+public abstract interface pfh
+  extends pfg
 {
-  pfh(pey parampey, String paramString1, Context paramContext, ArticleInfo paramArticleInfo, String paramString2, int paramInt)
-  {
-    super(paramString1);
-  }
+  public abstract void onCommentCreate(boolean paramBoolean, pdp parampdp, List<pdp> paramList, int paramInt);
   
-  public void a(prx paramprx)
-  {
-    paramprx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
+  public abstract void onCommentCreate(boolean paramBoolean1, pdp parampdp, boolean paramBoolean2, List<pdp> paramList, int paramInt);
+  
+  public abstract void onCommentDelete(int paramInt1, boolean paramBoolean, pdp parampdp, int paramInt2);
+  
+  public abstract void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<pdp> paramList, boolean paramBoolean2, int paramInt2);
+  
+  public abstract void onCommentReply(boolean paramBoolean, pdp parampdp);
 }
 
 

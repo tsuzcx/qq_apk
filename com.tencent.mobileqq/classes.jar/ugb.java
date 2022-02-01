@@ -1,14 +1,21 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.persistence.notColumn;
 
-class ugb
-  implements tiu
+public class ugb
 {
-  ugb(ufd paramufd) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
-  }
+  @notColumn
+  public int a;
+  @notColumn
+  public long a;
+  @notColumn
+  public boolean a;
+  @notColumn
+  public int b;
+  @notColumn
+  public boolean b;
+  @notColumn
+  public int c;
+  @notColumn
+  public boolean c;
 }
 
 

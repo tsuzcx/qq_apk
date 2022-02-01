@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axfy;
-import bcef;
+import aymd;
+import bdla;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 class VisitorsActivity$3
@@ -16,15 +16,15 @@ class VisitorsActivity$3
     {
       localRedTouchItem.passThroughLevel = 0;
       this.this$0.a.c();
-      bcef.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
+      bdla.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
       return;
     }
-    bcef.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
+    bdla.b(this.this$0.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.3
  * JD-Core Version:    0.7.0.1
  */

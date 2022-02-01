@@ -1,8 +1,13 @@
-public abstract interface rrh
+public class rrh
 {
-  public abstract void a(float paramFloat);
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  public abstract void a(int paramInt, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3);
+  public rrh(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

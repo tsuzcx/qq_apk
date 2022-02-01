@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.music;
 
 import android.os.SystemClock;
-import bftf;
-import bgoe;
-import bgog;
-import bmte;
+import bhbx;
+import bhyo;
+import bhyq;
+import boiw;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 import com.tencent.qphone.base.util.QLog;
@@ -15,24 +15,24 @@ import java.io.File;
 class QQMusicDownloader$DownloadMusicTask
   implements Runnable
 {
-  bgoe jdField_a_of_type_Bgoe;
-  bmte jdField_a_of_type_Bmte;
+  bhyo jdField_a_of_type_Bhyo;
+  boiw jdField_a_of_type_Boiw;
   
-  public QQMusicDownloader$DownloadMusicTask(bgoe parambgoe, bmte parambmte)
+  public QQMusicDownloader$DownloadMusicTask(bhyo parambhyo, boiw paramboiw)
   {
-    this.jdField_a_of_type_Bgoe = parambgoe;
-    this.jdField_a_of_type_Bmte = parambmte;
+    this.jdField_a_of_type_Bhyo = parambhyo;
+    this.jdField_a_of_type_Boiw = paramboiw;
   }
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloader", 2, "begin download " + this.jdField_a_of_type_Bgoe.a);
+      QLog.d("QQMusicDownloader", 2, "begin download " + this.jdField_a_of_type_Bhyo.a);
     }
-    if ((bftf.a()) && (bftf.b() < 20971520L))
+    if ((bhbx.a()) && (bhbx.b() < 20971520L))
     {
-      if (this.jdField_a_of_type_Bmte != null) {
-        this.jdField_a_of_type_Bmte.onStart(this.jdField_a_of_type_Bgoe.a, false);
+      if (this.jdField_a_of_type_Boiw != null) {
+        this.jdField_a_of_type_Boiw.onStart(this.jdField_a_of_type_Bhyo.a, false);
       }
       QLog.e("QQMusicDownloader", 1, "download err no space");
     }
@@ -64,10 +64,10 @@ class QQMusicDownloader$DownloadMusicTask
         ((File)localObject).mkdirs();
       }
       l1 = SystemClock.uptimeMillis();
-      i = bgog.a(this.jdField_a_of_type_Bgoe, null, null);
+      i = bhyq.a(this.jdField_a_of_type_Bhyo, null, null);
       l2 = SystemClock.uptimeMillis();
     } while (!QLog.isColorLevel());
-    QLog.i("QQMusicDownloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + this.jdField_a_of_type_Bgoe.a);
+    QLog.i("QQMusicDownloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + this.jdField_a_of_type_Bhyo.a);
   }
 }
 

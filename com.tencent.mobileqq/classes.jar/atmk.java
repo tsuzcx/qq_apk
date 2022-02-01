@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class atmk
-  implements View.OnClickListener
+public abstract interface atmk
 {
-  public atmk(ForwardFileOption paramForwardFileOption) {}
+  public abstract void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
   
-  public void onClick(View paramView)
-  {
-    this.a.F();
-    ForwardFileOption.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

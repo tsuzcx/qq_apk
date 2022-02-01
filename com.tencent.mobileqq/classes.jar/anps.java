@@ -1,8 +1,19 @@
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface anps
+public class anps
+  extends anqe
 {
-  public abstract anpt a(QQMessageFacade.Message paramMessage);
+  public anps(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    super(paramContext, paramQQAppInterface, paramSessionInfo);
+  }
+  
+  public annl a(String paramString)
+  {
+    return new anmx(paramString);
+  }
 }
 
 

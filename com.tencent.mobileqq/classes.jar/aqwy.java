@@ -1,95 +1,41 @@
-import android.os.Process;
-import android.os.SystemClock;
-import com.tencent.mobileqq.startup.step.DtSdkInitStep;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.VideoReport;
-import java.util.Map;
-import java.util.TreeMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqwy
+  implements aqwi
 {
-  private static long a;
-  public static boolean a;
-  private static boolean b;
-  
-  private static long a()
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqwh paramaqwh)
   {
-    return SystemClock.uptimeMillis() - a;
-  }
-  
-  public static void a()
-  {
-    if (!DtSdkInitStep.b())
+    if ((paramaqwh != null) && ("smart_devices_discovery_config".equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramaqwh.a);
+      }
+    }
+    try
     {
-      QLog.d("QQDtReportHelper", 1, "848QQDT [onQQLogin] dt sdk has not init");
+      paramInt = new JSONObject(paramaqwh.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
       return;
     }
-    QLog.d("QQDtReportHelper", 1, "848QQDT [onQQLogin]");
-    c();
-    a("dt_appin");
-  }
-  
-  public static void a(int paramInt)
-  {
-    b = true;
-    QLog.d("QQDtReportHelper", 1, "848QQDT [setIsMainProcess] process: " + Process.myPid() + ", from: " + paramInt);
-  }
-  
-  private static void a(Long paramLong, String paramString)
-  {
-    if ("dt_appin".equals(paramString))
+    catch (JSONException paramString)
     {
-      VideoReport.reportEvent("qqin", null);
-      QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] qqin");
-      c();
-    }
-    while (!"dt_appout".equals(paramString)) {
+      paramString.printStackTrace();
       return;
     }
-    if (a == 0L)
+    catch (Exception paramString) {}finally
     {
-      QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] startTimestamp is 0");
-      return;
-    }
-    paramString = new TreeMap();
-    paramString.put("qq_lvtm", paramLong);
-    VideoReport.reportEvent("qqout", paramString);
-    QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] qqout, timeInterval: " + paramLong);
-  }
-  
-  public static void a(String paramString)
-  {
-    if ((b) && (a == 0L))
-    {
-      QLog.d("QQDtReportHelper", 1, "848QQDT [supplementReportForSwitchAccount] startTimestamp is 0");
-      return;
-    }
-    a(Long.valueOf(a()), paramString);
-  }
-  
-  public static void b()
-  {
-    if (!DtSdkInitStep.b())
-    {
-      QLog.d("QQDtReportHelper", 1, "848QQDT [onQQLogin] dt sdk has not init");
-      return;
-    }
-    QLog.d("QQDtReportHelper", 1, "848QQDT [onQQLogout]");
-    a("dt_appout");
-    a = 0L;
-  }
-  
-  public static void c()
-  {
-    a = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDtReportHelper", 2, "848QQDT [updateStartTime] timeStamp: " + a);
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwy
  * JD-Core Version:    0.7.0.1
  */

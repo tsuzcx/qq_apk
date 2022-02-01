@@ -1,21 +1,21 @@
-class blyx
-  implements blze
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
+
+public class blyx
+  implements DialogInterface.OnClickListener
 {
-  blyx(blys paramblys) {}
+  public blyx(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (blys.a(this.a))
-    {
-      blys.a(this.a, paramBoolean1, paramBoolean2);
-      return;
-    }
-    blys.b(this.a, paramBoolean1, paramBoolean2);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyx
  * JD-Core Version:    0.7.0.1
  */

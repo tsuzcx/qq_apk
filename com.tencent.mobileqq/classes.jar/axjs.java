@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-
-public class axjs
+class axjs
+  implements auck
 {
-  public static int a()
+  axjs(axjk paramaxjk, axjf paramaxjf) {}
+  
+  public void a(int paramInt)
   {
-    return 0;
+    if ((this.jdField_a_of_type_Axjf != null) && (this.jdField_a_of_type_Axjf.a != null))
+    {
+      String str = this.jdField_a_of_type_Axjf.a.a();
+      axjg localaxjg = this.jdField_a_of_type_Axjk.a(str);
+      if ((localaxjg != null) && (!localaxjg.a))
+      {
+        localaxjg.c = paramInt;
+        this.jdField_a_of_type_Axjk.a(str, localaxjg);
+        axjk.a(this.jdField_a_of_type_Axjk, localaxjg, paramInt);
+      }
+    }
   }
   
-  public static String a()
+  public void a(boolean paramBoolean)
   {
-    return DeviceInfoUtil.getQQVersion();
+    axjk.a(this.jdField_a_of_type_Axjk, this.jdField_a_of_type_Axjf, paramBoolean);
   }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

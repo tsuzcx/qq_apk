@@ -1,47 +1,17 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayyw
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public ayyw(VasProfileTagView paramVasProfileTagView) {}
+  public ayyw(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
-    }
-    VasProfileTagView.a(this.a, true);
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
-    {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > VasProfileTagView.a(this.a))
-    {
-      if ((paramFloat1 > 0.0F) && (this.a.b)) {
-        if (this.a.a())
-        {
-          this.a.g();
-          VasProfileTagView.a(this.a).b(null);
-        }
-      }
-      while ((paramFloat1 >= 0.0F) || (this.a.b)) {
-        return true;
-      }
-      this.a.a();
-      return true;
-    }
-    return false;
+    AccountOnlineStateActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

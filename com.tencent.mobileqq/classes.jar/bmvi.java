@@ -1,31 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraManager.CameraOpenCallback;
 
 class bmvi
-  implements bmvo
+  implements AECameraManager.CameraOpenCallback
 {
-  bmvi(bmvh parambmvh) {}
+  bmvi(bmvf parambmvf) {}
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public void onOpenResult(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
-    }
-    bmvh.a(this.a, paramFloat);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
-    }
+    bnrh.b(this.a.jdField_a_of_type_JavaLangString, "tryOpenCamera result=" + paramBoolean + ", whichCamera=" + paramInt + ", mActivityResume=" + this.a.jdField_a_of_type_Boolean);
     if (paramBoolean)
     {
-      bmvh.a(this.a, 3);
-      this.a.b();
+      if (this.a.c()) {
+        bbhk.a(paramInt);
+      }
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.d(false);
+      }
+    }
+    else
+    {
       return;
     }
-    bmvh.a(this.a, 2);
-    this.a.a(4);
+    this.a.s();
   }
 }
 

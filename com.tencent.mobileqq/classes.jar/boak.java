@@ -1,19 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.manage.AEEditorPagStickerConfig;
 
-final class boak
-  implements bnnz<Boolean, bnof>
+class boak
+  extends TypeToken<AEEditorPagStickerConfig>
 {
-  boak(Object paramObject) {}
-  
-  public Void a(Boolean arg1, bnof parambnof)
-  {
-    QLog.e(boaj.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
-    {
-      this.a.notifyAll();
-      return null;
-    }
-  }
+  boak(boaf paramboaf) {}
 }
 
 

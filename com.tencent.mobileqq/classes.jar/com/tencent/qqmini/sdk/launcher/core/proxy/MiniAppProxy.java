@@ -47,6 +47,8 @@ public abstract class MiniAppProxy
   
   public abstract String getImei();
   
+  public abstract String getLocation(Context paramContext);
+  
   public abstract boolean getLocation(Context paramContext, String paramString, boolean paramBoolean, AsyncResult paramAsyncResult);
   
   public abstract byte[] getLoginSig();
@@ -109,7 +111,7 @@ public abstract class MiniAppProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy
  * JD-Core Version:    0.7.0.1
  */

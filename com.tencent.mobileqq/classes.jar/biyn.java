@@ -1,20 +1,8 @@
-public abstract class biyn
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+
+public abstract interface biyn
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void a(String[] paramArrayOfString);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void b(boolean paramBoolean, int paramInt);
-  
-  public abstract void c(int paramInt, String paramString);
+  public abstract void onWXShareResp(BaseResp paramBaseResp);
 }
 
 

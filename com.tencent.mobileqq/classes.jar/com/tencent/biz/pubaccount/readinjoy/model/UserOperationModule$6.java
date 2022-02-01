@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pwu;
-import qoj;
-import qok;
+import qia;
+import rao;
+import rap;
 
 public class UserOperationModule$6
   implements Runnable
 {
-  public UserOperationModule$6(pwu parampwu, int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean) {}
+  public UserOperationModule$6(qia paramqia, int paramInt1, String paramString1, String paramString2, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
-    qoj.a.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    rao.a.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

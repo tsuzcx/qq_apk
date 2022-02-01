@@ -1,66 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class pgn
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgn
+  extends ntf
 {
-  private bjrb jdField_a_of_type_Bjrb;
-  private bjrh jdField_a_of_type_Bjrh;
-  private tch jdField_a_of_type_Tch;
-  
-  public bjrb a(Context paramContext)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Bjrb == null) {
-      this.jdField_a_of_type_Bjrb = new bjrb(paramContext);
-    }
-    return this.jdField_a_of_type_Bjrb;
-  }
-  
-  public bjrh a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_Bjrh == null) {
-      this.jdField_a_of_type_Bjrh = new bjrh(paramContext);
-    }
-    return this.jdField_a_of_type_Bjrh;
-  }
-  
-  public tch a(Activity paramActivity, slt paramslt)
-  {
-    if (this.jdField_a_of_type_Tch == null) {
-      this.jdField_a_of_type_Tch = new tch(paramActivity, paramslt);
-    }
-    return this.jdField_a_of_type_Tch;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bjrb = null;
-    this.jdField_a_of_type_Bjrh = null;
-  }
-  
-  public void a(View paramView, skb paramskb, BaseArticleInfo paramBaseArticleInfo, ped paramped)
-  {
-    int i = paramskb.a;
-    paramskb = new pgo(this, i, paramped, paramskb, paramBaseArticleInfo);
-    if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      if ((this.jdField_a_of_type_Bjrb != null) && (this.jdField_a_of_type_Bjrb.isShowing())) {
-        this.jdField_a_of_type_Bjrb.dismiss();
-      }
-      this.jdField_a_of_type_Bjrh.a(i, paramped.a().b(), pay.a(paramBaseArticleInfo), ((AdvertisementInfo)paramBaseArticleInfo).mAdDislikeInfos);
-      this.jdField_a_of_type_Bjrh.a(paramView, paramskb);
-      this.jdField_a_of_type_Bjrh.a(new pgq(this, paramped, paramBaseArticleInfo));
-      this.jdField_a_of_type_Bjrh.setOnDismissListener(new pgr(this, paramped));
+      this.a.a(paramArrayOfByte);
       return;
     }
-    if ((this.jdField_a_of_type_Bjrh != null) && (this.jdField_a_of_type_Bjrh.isShowing())) {
-      this.jdField_a_of_type_Bjrh.dismiss();
+    this.a.a(paramInt, "Empty error message.");
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
+    {
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
     }
-    this.jdField_a_of_type_Bjrb.a(i, paramped.a().b(), pay.a(paramBaseArticleInfo), paramBaseArticleInfo.mDislikeInfos, paramBaseArticleInfo.innerUniqueID);
-    this.jdField_a_of_type_Bjrb.a(paramView, paramskb);
-    this.jdField_a_of_type_Bjrb.setOnDismissListener(new pgs(this, paramped));
   }
 }
 

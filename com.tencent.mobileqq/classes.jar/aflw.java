@@ -1,8 +1,18 @@
-public abstract interface aflw
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class aflw
+  extends aohf
 {
-  public abstract void a();
+  public aflw(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
+    }
+    ActivateFriendActivity.b(this.a);
+  }
 }
 
 

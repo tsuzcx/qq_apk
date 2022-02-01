@@ -1,45 +1,91 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adue
-  extends BroadcastReceiver
+  extends WtloginObserver
 {
-  public adue(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adue(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    if (QLog.isColorLevel())
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
+      if (paramArrayOfByte2 == null) {}
     }
-    do
+    try
     {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
+      paramString = new String(paramArrayOfByte2, "utf-8");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
+      this.a.c();
+      if (DevlockQuickLoginActivity.a(this.a)) {
         return;
       }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getApplicationContext(), 2, 2131691991, 0).b(DevlockQuickLoginActivity.a(this.a));
+        DevlockQuickLoginActivity.a(this.a);
+        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
+        return;
+      }
+      if (paramInt == 21)
+      {
+        paramString = this.a.getString(2131691988);
+        paramArrayOfByte1 = this.a.getString(2131719059);
+        this.a.a(null, paramString, paramArrayOfByte1, new aduf(this));
+        return;
+      }
+      paramString = DevlockQuickLoginActivity.a(this.a, 2131691989);
+      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
+    }
+  }
+  
+  public void onException(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
+    }
+    this.a.c();
+    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131691990), 0).b(DevlockQuickLoginActivity.d(this.a));
+  }
+  
+  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (DevlockQuickLoginActivity.b(this.a))
+    {
+      this.a.c();
       return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    }
+    if (paramInt == 0)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.c();
+    if (paramInt == 21)
+    {
+      paramString = this.a.getString(2131691988);
+      paramArrayOfByte1 = this.a.getString(2131719059);
+      this.a.a(null, paramString, paramArrayOfByte1, new adug(this));
+      return;
+    }
+    paramString = this.a.getString(2131691989);
+    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

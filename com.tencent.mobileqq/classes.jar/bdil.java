@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.SQLiteFTSUtils.Proxy;
 
-class bdil
-  extends bdji<EditorState>
+public final class bdil
+  implements IMCoreProxyRoute.SQLiteFTSUtils.Proxy
 {
-  bdil(bdid parambdid, EditorState paramEditorState, List paramList)
+  public int getFTSNotifyFlag()
   {
-    super(paramEditorState, paramList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    bdid.a(this.a).a(true, false);
-    bdid.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return bhkf.a(BaseApplicationImpl.getApplication());
   }
 }
 

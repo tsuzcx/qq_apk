@@ -1,19 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bhgo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  bhgo(bhgl parambhgl) {}
+  int jdField_a_of_type_Int;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bhgo(bhgj parambhgj, int paramInt)
   {
-    if (bhgl.a(this.a) != null)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bhgj.a != null)
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      bhgl.a(this.a).setAlpha(f);
+      this.jdField_a_of_type_Bhgj.a.onClick(this.jdField_a_of_type_Bhgj, this.jdField_a_of_type_Bhgj.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Bhgj.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

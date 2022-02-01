@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
 
-public class olz
-  implements nnv
+public final class olz
+  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
 {
-  public olz(ReadInJoyNewFeedsActivity.2 param2) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    return new VideoAdInfo.NegFeedback(paramParcel);
   }
   
-  public void progress(int paramInt) {}
+  public VideoAdInfo.NegFeedback[] a(int paramInt)
+  {
+    return new VideoAdInfo.NegFeedback[paramInt];
+  }
 }
 
 

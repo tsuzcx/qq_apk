@@ -1,28 +1,13 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import android.graphics.ColorMatrixColorFilter;
-import com.tencent.youtu.sdkkitframework.common.YtLogger;
-import com.tencent.youtu.sdkkitframework.framework.YtFSM;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContex;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.IYTReflectListener;
+import java.util.HashMap;
 
 class ReflectLivenessState$3
-  implements YTAGReflectLiveCheckInterface.IYTReflectListener
+  extends HashMap<String, Object>
 {
-  ReflectLivenessState$3(ReflectLivenessState paramReflectLivenessState) {}
-  
-  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
+  ReflectLivenessState$3(ReflectLivenessState paramReflectLivenessState)
   {
-    try
-    {
-      YtFSM.getInstance().getContext().reflectListener.onReflectEvent(paramColorMatrixColorFilter);
-      return;
-    }
-    catch (Exception paramColorMatrixColorFilter)
-    {
-      YtLogger.e(ReflectLivenessState.access$100(), paramColorMatrixColorFilter.getLocalizedMessage());
-    }
+    put("version_tips", "反光库版本过低！目标版本：" + ReflectLivenessState.access$000(this.this$0) + " 当前版本：" + "3.6.2");
   }
 }
 

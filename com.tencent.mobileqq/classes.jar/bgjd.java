@@ -1,59 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class bgjd
+final class bgjd
+  implements DialogInterface.OnClickListener
 {
-  private static bgit jdField_a_of_type_Bgit = new bgiu();
-  private static final HashMap<Long, bgit> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
+  bgjd(long paramLong) {}
   
-  public static bgit a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgit localbgit2 = (bgit)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    bgit localbgit1 = localbgit2;
-    if (localbgit2 == null) {
-      localbgit1 = jdField_a_of_type_Bgit;
-    }
-    return localbgit1;
-  }
-  
-  public static void a(Context paramContext)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((bgit)localIterator.next()).cleanCache(paramContext);
-    }
-  }
-  
-  public static void a(bgit parambgit)
-  {
-    try
+    switch (paramInt)
     {
-      jdField_a_of_type_Bgit = parambgit;
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
       return;
-    }
-    finally
-    {
-      parambgit = finally;
-      throw parambgit;
-    }
-  }
-  
-  public static void b(bgit parambgit)
-  {
-    try
-    {
-      if (jdField_a_of_type_Bgit == parambgit) {
-        jdField_a_of_type_Bgit = new bgiu();
-      }
-      return;
-    }
-    finally
-    {
-      parambgit = finally;
-      throw parambgit;
+      TroopFileTransferManager.i();
+      continue;
+      TroopFileTransferManager.a(this.a);
     }
   }
 }

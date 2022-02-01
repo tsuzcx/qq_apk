@@ -1,30 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajoj
-  extends Handler
+class ajoj
+  implements View.OnClickListener
 {
-  public ajoj(PhotoCropActivity paramPhotoCropActivity) {}
+  ajoj(ajoi paramajoi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (ajoi.a(this.a) == null) {}
+    for (;;)
     {
-    }
-    do
-    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.b();
-      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
-      return;
-    } while (this.a.isFinishing());
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+      bdla.b(null, "dc00898", "", "", "0X800B41B", "0X800B41B", 0, 0, "", "", null, null);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_tab_mode", 2);
+      localIntent.setClass(ajoi.a(this.a), TroopActivity.class);
+      localIntent.putExtra("key_from", 2);
+      if (bdzy.a().a(ajoi.a(this.a)) > 0) {
+        bdla.b(null, "dc00898", "", "", "0X800B52B", "0X800B52B", 0, 0, "", "", null, null);
+      }
+      if (ajgr.a())
+      {
+        ajgr.a(false);
+        ajgr.a();
+        localIntent.putExtra("show_type", true);
+        bdla.b(null, "dc00898", "", "", "0X800B52F", "0X800B52F", 0, 0, "", "", null, null);
+      }
+      ajoi.a(this.a).startActivity(localIntent);
     }
-    PhotoCropActivity.a(this.a, 2131716316);
-    this.a.c();
   }
 }
 

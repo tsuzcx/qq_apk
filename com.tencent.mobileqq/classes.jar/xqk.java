@@ -1,10 +1,28 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-public abstract interface xqk<T>
+class xqk
+  extends ntf
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  xqk(xqh paramxqh, boolean paramBoolean) {}
   
-  public abstract void a(T paramT);
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(3, bool);
+        this.a.a(0, this.a.a.getString(2131719659));
+        return;
+      }
+    }
+    ((vzv)this.a.a.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).b(this.b);
+  }
 }
 
 

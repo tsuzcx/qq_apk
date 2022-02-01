@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.generated;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import apyt;
+import arbw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver;
 import com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver1;
@@ -86,7 +86,7 @@ public final class CustomConfiguration
     MINI_PROCESS_5.put("receiver", AppBrandMainReceiver5.class);
     MINI_PROCESS_5.put("supportRuntimeType", Integer.valueOf(4));
     MINI_PROCESS_LIST.add(MINI_PROCESS_5);
-    DEX_CONFIG = apyt.a("sdk_dex_config", "");
+    DEX_CONFIG = arbw.a("sdk_dex_config", "");
     try
     {
       Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("sp_safe_mode", 0);
@@ -99,7 +99,7 @@ public final class CustomConfiguration
         localObject = new JSONObject(DEX_CONFIG);
         if (!TextUtils.isEmpty(((JSONObject)localObject).optString("ver")))
         {
-          ((JSONObject)localObject).putOpt("app_version", "8.4.8.4810");
+          ((JSONObject)localObject).putOpt("app_version", "8.4.10.4875");
           DEX_CONFIG = ((JSONObject)localObject).toString();
         }
       }
@@ -113,7 +113,7 @@ public final class CustomConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.CustomConfiguration
  * JD-Core Version:    0.7.0.1
  */

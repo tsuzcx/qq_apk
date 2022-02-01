@@ -1,23 +1,21 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhi
-  extends AccessibilityDelegateCompat
+  implements View.OnClickListener
 {
-  public afhi(ListenPanel paramListenPanel) {}
+  public afhi(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onClick(View paramView)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (ListenPanel.a(this.a) < 1000.0D) {}
-    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691001));
-      return;
+    TroopRequestActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, "close warning tips");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,28 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class bmqo
-  implements View.OnClickListener
+class bmqo
+  implements EIPClientConnectListener
 {
-  public bmqo(CaptureModeAdapter paramCaptureModeAdapter) {}
+  bmqo(bmqm parambmqm, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void connectFailed()
   {
-    Integer localInteger = (Integer)paramView.getTag();
-    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
-    for (;;)
+    bmqm.a(this.jdField_a_of_type_Bmqm, false);
+    bmqm.b(this.jdField_a_of_type_Bmqm, false);
+    synchronized (bmqm.a(this.jdField_a_of_type_Bmqm))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
-      CaptureModeAdapter.a(this.a, localInteger.intValue());
-      if (CaptureModeAdapter.a(this.a) != null) {
-        CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
+      bmqm.a(this.jdField_a_of_type_Bmqm).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bmqm.a(this.jdField_a_of_type_Bmqm));
       }
+      return;
+    }
+  }
+  
+  public void connectSuccess(EIPCConnection arg1)
+  {
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      bmqm.a(this.jdField_a_of_type_Bmqm, ???.procName);
+    }
+    bmqm.a(this.jdField_a_of_type_Bmqm, true);
+    bmqm.b(this.jdField_a_of_type_Bmqm, false);
+    synchronized (bmqm.a(this.jdField_a_of_type_Bmqm))
+    {
+      bmqm.a(this.jdField_a_of_type_Bmqm).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bmqm.a(this.jdField_a_of_type_Bmqm) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
     }
   }
 }

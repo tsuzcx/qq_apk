@@ -1,21 +1,18 @@
-import android.os.Bundle;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bhsj
+public class bhsj
   implements View.OnClickListener
 {
-  bhsj(bhsi parambhsi, int paramInt, String paramString) {}
+  public bhsj(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("group_index", this.jdField_a_of_type_Int);
-    localBundle.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bhsi.a.a.a(1, localBundle);
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

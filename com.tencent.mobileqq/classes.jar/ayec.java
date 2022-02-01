@@ -1,134 +1,56 @@
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
 public class ayec
-  extends ayeb
+  extends Handler
 {
-  public ayeb a()
-  {
-    return this;
-  }
+  public ayec(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.e = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void a(ayea paramayea)
-  {
-    this.jdField_a_of_type_Ayea = paramayea;
-  }
-  
-  public void a(ayed paramayed)
-  {
-    this.jdField_a_of_type_Ayed = paramayed;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_g_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_h_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_g_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_h_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_j_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_g_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_h_of_type_Int = paramInt;
-  }
-  
-  public void f(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_j_of_type_Int = paramInt;
-  }
-  
-  public void h(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public void i(int paramInt)
-  {
-    this.l = paramInt;
-  }
-  
-  public void j(int paramInt)
-  {
-    this.m = paramInt;
-  }
-  
-  public void k(int paramInt)
-  {
-    this.n = paramInt;
-  }
-  
-  public void l(int paramInt)
-  {
-    this.o = paramInt;
-  }
-  
-  public void m(int paramInt)
-  {
-    this.q = paramInt;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 101: 
+    case 100: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.b();
+          bkye localbkye = bkye.a;
+          if ((localbkye != null) && (localbkye.a())) {
+            localbkye.b(5);
+          }
+        } while (paramMessage.obj == null);
+        paramMessage = (NearbyPeopleCard)paramMessage.obj;
+        this.a.b = true;
+        this.a.a(paramMessage, true, false);
+        return;
+      } while (NearbyPeopleProfileActivity.a(this.a) == null);
+      NearbyPeopleProfileActivity.a(this.a).b();
+      return;
+    case 102: 
+      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 202: 
+      NearbyPeopleProfileActivity.a(this.a).a(true);
+      this.a.a.sendEmptyMessageDelayed(203, 1500L);
+      return;
+    case 203: 
+      NearbyPeopleProfileActivity.a(this.a).a(false);
+      return;
+    case 204: 
+      this.a.a(this.a.getString(2131694240));
+      return;
+    case 207: 
+      this.a.a(anvx.a(2131706713));
+      return;
+    }
+    this.a.b();
   }
 }
 

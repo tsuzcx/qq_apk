@@ -12,44 +12,47 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import apkn;
-import apoq;
+import aqnr;
+import aqru;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity.SerializableMap;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.hippy.qq.app.TKDHippyEngine;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tgc;
-import tgl;
-import tgm;
-import tgn;
-import tgo;
-import tgp;
-import tgq;
-import tgr;
-import tgs;
-import tgt;
-import tgu;
-import tgv;
-import tgw;
-import tgx;
-import tgy;
-import tgz;
-import tho;
-import thu;
-import thw;
-import tmd;
-import tsr;
-import yxi;
+import tto;
+import tty;
+import ttz;
+import tua;
+import tub;
+import tuc;
+import tud;
+import tue;
+import tuf;
+import tug;
+import tuh;
+import tui;
+import tuj;
+import tuk;
+import tul;
+import tva;
+import tvg;
+import tvi;
+import tzr;
+import uhc;
+import zmk;
 
 public class ViolaFragment
   extends ViolaLazyFragment
@@ -59,30 +62,31 @@ public class ViolaFragment
   public static final int COLOR_NOTE_NO_SUPPORT = -1;
   public static final int COLOR_NOTE_STATE_EXIST = 1;
   protected static final String TAG = "ViolaFragment";
-  private tgl colorNote;
-  private apkn colorNoteController;
+  private tty colorNote;
+  private aqnr colorNoteController;
   private boolean enableColorSwipeRightFlag = true;
   private boolean hasInitFragment;
   private boolean hasPlayAnimation;
   public HippyQQEngine mHippyQQEngine;
   private boolean mIsStatusFontDark;
-  private tgz mViolaGestureLayoutListener;
-  public tho mViolaInitDelegate = new tho(this);
-  public thu mViolaUiDelegate = new thu(this);
-  
-  private HippyQQEngine createHippyQQEngine(String paramString)
-  {
-    if (paramString.equals("TKDMiniGame")) {
-      return new tsr(this, paramString, getUrl());
-    }
-    return new HippyQQEngine(this, paramString, getUrl());
-  }
+  private tuk mViolaGestureLayoutListener;
+  public tva mViolaInitDelegate = new tva(this);
+  public tvg mViolaUiDelegate = new tvg(this);
+  private tul violaTopGestureLayoutListener;
   
   private void finishActivity()
   {
     if (getActivity() != null) {
       getActivity().finish();
     }
+  }
+  
+  private tul getViolaTopGestureLayout()
+  {
+    if (this.violaTopGestureLayoutListener == null) {
+      this.violaTopGestureLayoutListener = new tul(this, null);
+    }
+    return this.violaTopGestureLayoutListener;
   }
   
   private void handleTopGestureEvent(boolean paramBoolean)
@@ -127,8 +131,8 @@ public class ViolaFragment
       if (!this.mHippyQQEngine.isReady()) {
         this.mViolaUiDelegate.a();
       }
-      this.mViolaUiDelegate.a(paramViewGroup, new tgr(this, paramBundle, paramViewGroup));
-      this.mHippyQQEngine.initHippy(getContentView(), (JSONObject)localObject, this.mViolaUiDelegate.b(), new tgs(this, paramBundle, paramViewGroup));
+      this.mViolaUiDelegate.a(paramViewGroup, new tud(this, paramBundle, paramViewGroup));
+      this.mHippyQQEngine.initHippy(getContentView(), (JSONObject)localObject, this.mViolaUiDelegate.b(), new tue(this, paramBundle, paramViewGroup));
       return;
     }
   }
@@ -144,7 +148,7 @@ public class ViolaFragment
         paramBundle = new JSONObject(paramBundle.getString("param"));
         this.mViolaUiDelegate.c(paramViewGroup);
         this.mViolaUiDelegate.b(paramViewGroup);
-        this.mViolaUiDelegate.a(paramViewGroup, new tgt(this));
+        this.mViolaUiDelegate.a(paramViewGroup, new tuf(this));
         if (getContentView() == null) {
           return;
         }
@@ -153,14 +157,14 @@ public class ViolaFragment
       {
         paramBundle = localJSONObject;
         continue;
-        this.mViolaInitDelegate.a(getContentView(), paramBundle, this.mViolaUiDelegate.b(), new tgu(this));
+        this.mViolaInitDelegate.a(getContentView(), paramBundle, this.mViolaUiDelegate.b(), new tug(this));
         return;
       }
       paramBundle = localJSONObject;
     }
   }
   
-  private static ViolaFragment newInstance(Bundle paramBundle)
+  protected static ViolaFragment newInstance(Bundle paramBundle)
   {
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
@@ -177,7 +181,7 @@ public class ViolaFragment
     localBundle.putString("url", paramString);
     localBundle.putSerializable(BUNDLE_PAGE_CONFIG_DATA, paramSerializableMap);
     if (paramBoolean) {
-      localBundle.putInt(thu.b, 1);
+      localBundle.putInt(tvg.b, 1);
     }
     return newInstance(localBundle);
   }
@@ -201,7 +205,7 @@ public class ViolaFragment
     if (this.colorNoteController.b())
     {
       this.colorNoteController.e();
-      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690786), 5000).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690871), 5000).a();
       return;
     }
     this.colorNoteController.i();
@@ -209,13 +213,21 @@ public class ViolaFragment
   
   public int colorBallState()
   {
-    if ((this.colorNoteController == null) || (!apoq.a()) || (!this.colorNoteController.a())) {
+    if ((this.colorNoteController == null) || (!aqru.a()) || (!this.colorNoteController.a())) {
       return -1;
     }
     if (this.colorNoteController.c()) {
       return 1;
     }
     return 0;
+  }
+  
+  protected HippyQQEngine createHippyQQEngine(String paramString)
+  {
+    if (paramString.equals("TKDMiniGame")) {
+      return new uhc(this, paramString, getUrl());
+    }
+    return new TKDHippyEngine(this, paramString, getUrl());
   }
   
   public void dealFlingEnableWhenSwitcher(int paramInt)
@@ -295,6 +307,15 @@ public class ViolaFragment
     }
   }
   
+  public void enableFlingGesture(boolean paramBoolean)
+  {
+    if (this.mViolaUiDelegate == null) {
+      return;
+    }
+    this.mViolaUiDelegate.b(paramBoolean);
+    this.mViolaUiDelegate.a(getViolaTopGestureLayout());
+  }
+  
   public void enableFlingRight(boolean paramBoolean)
   {
     this.mViolaUiDelegate.b(paramBoolean);
@@ -307,7 +328,27 @@ public class ViolaFragment
   
   public int getContentViewId()
   {
-    return 2131558462;
+    return 2131558464;
+  }
+  
+  public HashMap<String, Long> getPerformanceData()
+  {
+    HashMap localHashMap = new HashMap();
+    if (this.mHippyQQEngine != null) {
+      localHashMap.putAll(this.mHippyQQEngine.getLoadStepsTime());
+    }
+    localHashMap.put("pageCreateStart", Long.valueOf(this.createViewStartTime));
+    localHashMap.put("loadHippyStart", Long.valueOf(this.loadHippyStartTime));
+    Bundle localBundle = getArguments();
+    if (localBundle != null) {
+      localHashMap.put("openPageStart", Long.valueOf(localBundle.getLong("openPageStart")));
+    }
+    return localHashMap;
+  }
+  
+  protected HippyMap getPropsMap()
+  {
+    return new HippyMap();
   }
   
   public HashMap getSusConfigMap()
@@ -323,7 +364,7 @@ public class ViolaFragment
     return this.mViolaUiDelegate.a();
   }
   
-  public thw getTtileChangelistener()
+  public tvi getTtileChangelistener()
   {
     return this.mViolaUiDelegate.a();
   }
@@ -345,40 +386,42 @@ public class ViolaFragment
   {
     initDataFromBundle(paramBundle);
     initBaseUI(paramViewGroup);
-    int j = 0;
     String str = getUrl();
-    int i = j;
-    if (!TextUtils.isEmpty(str))
+    int i;
+    if ((!TextUtils.isEmpty(str)) && (str.contains("v_bundleName")))
     {
-      i = j;
-      if (str.contains("v_bundleName"))
+      str = Uri.parse(str).getQueryParameter("v_bundleName");
+      if (!TextUtils.isEmpty(str))
       {
-        str = Uri.parse(str).getQueryParameter("v_bundleName");
-        i = j;
-        if (!TextUtils.isEmpty(str))
+        i = HippyQQEngine.getModuleOnlineConfig(str);
+        QLog.d("Hippy", 1, "Hippy: moduleName=" + str + ", hippyOnlineConfig=" + i);
+        if (i == 1)
         {
-          j = HippyQQEngine.getModuleOnlineConfig(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("Hippy", 2, "Hippy: moduleName=" + str + ", hippyOnlineConfig=" + j);
-          }
-          i = j;
-          if (j == 1)
+          this.loadHippyStartTime = System.currentTimeMillis();
+          if (this.mHippyQQEngine == null)
           {
-            if (this.mHippyQQEngine == null) {
-              this.mHippyQQEngine = createHippyQQEngine(str);
-            }
-            initHippy(paramBundle, paramViewGroup);
-            i = j;
+            this.mHippyQQEngine = createHippyQQEngine(str);
+            this.mHippyQQEngine.setPropsMap(getPropsMap());
           }
+          initHippy(paramBundle, paramViewGroup);
         }
       }
     }
-    if (i != 1) {
-      initViola(paramBundle, paramViewGroup);
+    for (;;)
+    {
+      if (i != 1) {
+        initViola(paramBundle, paramViewGroup);
+      }
+      initSuspension(paramViewGroup);
+      initFPS();
+      tryInitColorNote(paramBundle);
+      return;
+      if (onHippyPageLoad(false, "hippyConfig is 0"))
+      {
+        return;
+        i = 0;
+      }
     }
-    initSuspension(paramViewGroup);
-    initFPS();
-    tryInitColorNote(paramBundle);
   }
   
   public void initBeforeVisible(Bundle paramBundle)
@@ -399,8 +442,8 @@ public class ViolaFragment
     if (this.mViolaUiDelegate.b())
     {
       this.mViolaInitDelegate.a(paramViewGroup);
-      this.mViolaInitDelegate.a(new tgv(this));
-      this.mViolaUiDelegate.a(new tgw(this, paramViewGroup));
+      this.mViolaInitDelegate.a(new tuh(this));
+      this.mViolaUiDelegate.a(getViolaTopGestureLayout());
     }
   }
   
@@ -434,10 +477,10 @@ public class ViolaFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (Build.VERSION.SDK_INT >= 21)
+    if ((Build.VERSION.SDK_INT >= 21) && (shouldFinishActivity()))
     {
       if (getActivity() == null) {
-        break label74;
+        break label80;
       }
       getActivity().finishAndRemoveTask();
     }
@@ -446,24 +489,20 @@ public class ViolaFragment
       for (;;)
       {
         this.mViolaInitDelegate.e();
-        if (this.mHippyQQEngine != null)
-        {
-          this.mHippyQQEngine.onDestroy();
-          this.mHippyQQEngine = null;
-        }
-        label52:
-        yxi.a(getActivity());
+        ThreadManager.getUIHandler().postDelayed(new ViolaFragment.8(this), 300L);
+        label58:
+        zmk.a(getActivity());
         if (this.colorNoteController != null) {
           this.colorNoteController.c();
         }
         return;
-        label74:
+        label80:
         BaseActivity.sTopActivity.finishAndRemoveTask();
       }
     }
     catch (Exception localException)
     {
-      break label52;
+      break label58;
     }
   }
   
@@ -473,6 +512,11 @@ public class ViolaFragment
     if ((!this.mViolaUiDelegate.b()) && (getActivity() != null)) {
       getActivity().overridePendingTransition(0, 2130772012);
     }
+  }
+  
+  public boolean onHippyPageLoad(boolean paramBoolean, String paramString)
+  {
+    return false;
   }
   
   public void onPause()
@@ -506,7 +550,7 @@ public class ViolaFragment
   public void reloadHippyInstance()
   {
     this.mViolaUiDelegate.a();
-    this.mHippyQQEngine.reload(new tgm(this));
+    this.mHippyQQEngine.reload(new ttz(this));
   }
   
   public void reloadPage()
@@ -515,7 +559,7 @@ public class ViolaFragment
       QLog.d("ViolaFragment", 2, "reload viola Page");
     }
     this.mViolaUiDelegate.a();
-    this.mViolaInitDelegate.a(new tgx(this));
+    this.mViolaInitDelegate.a(new tui(this));
   }
   
   public void removeColorBall()
@@ -524,7 +568,7 @@ public class ViolaFragment
       return;
     }
     this.colorNoteController.f();
-    QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690790), 5000).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690875), 5000).a();
   }
   
   public void setCanCloseFromBottom(boolean paramBoolean)
@@ -568,23 +612,28 @@ public class ViolaFragment
     this.mViolaInitDelegate.a(paramBoolean);
   }
   
-  public void setViolaGestureLayoutListener(tgz paramtgz)
+  public void setViolaGestureLayoutListener(tuk paramtuk)
   {
-    this.mViolaGestureLayoutListener = paramtgz;
+    this.mViolaGestureLayoutListener = paramtuk;
+  }
+  
+  protected boolean shouldFinishActivity()
+  {
+    return true;
   }
   
   public void tryInitColorNote(Bundle paramBundle)
   {
-    if (!apoq.a()) {}
-    while (!tmd.b(getUrl())) {
+    if (!aqru.a()) {}
+    while (!tzr.b(getUrl())) {
       return;
     }
-    this.colorNoteController = new apkn(getActivity(), true, false, true, true, 0);
+    this.colorNoteController = new aqnr(getActivity(), true, false, true, true, 0);
     this.colorNoteController.a(getActivity());
-    this.colorNoteController.a(new tgy(this, paramBundle));
-    this.colorNoteController.a(new tgn(this));
-    this.colorNoteController.a(new tgo(this));
-    this.colorNoteController.a(new tgp(this));
+    this.colorNoteController.a(new tuj(this, paramBundle));
+    this.colorNoteController.a(new tua(this));
+    this.colorNoteController.a(new tub(this));
+    this.colorNoteController.a(new tuc(this));
     this.colorNoteController.j();
   }
   
@@ -615,7 +664,7 @@ public class ViolaFragment
   {
     this.mViolaUiDelegate.c(true);
     if (!this.mViolaInitDelegate.a()) {
-      this.mViolaUiDelegate.a(new tgq(this));
+      this.mViolaUiDelegate.a(getViolaTopGestureLayout());
     }
     this.mViolaInitDelegate.b();
     this.mViolaInitDelegate.a(paramJSONObject);
@@ -629,7 +678,7 @@ public class ViolaFragment
   public void useNightMode()
   {
     FrameLayout localFrameLayout;
-    if ((getTitleRootView() != null) && (!TextUtils.isEmpty(getUrl())) && ("1".equals(tgc.a(getUrl(), "support_night"))))
+    if ((getTitleRootView() != null) && (!TextUtils.isEmpty(getUrl())) && ("1".equals(tto.a(getUrl(), "support_night"))))
     {
       boolean bool = ThemeUtil.isInNightMode(getActivity().app);
       localFrameLayout = new FrameLayout(getContentView().getContext());
@@ -659,7 +708,7 @@ public class ViolaFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment
  * JD-Core Version:    0.7.0.1
  */

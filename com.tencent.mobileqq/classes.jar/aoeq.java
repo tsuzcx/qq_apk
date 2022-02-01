@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.trpcprotocol.gamecenter.trpcproxy.TrpcProxy.TrpcInovkeRsp;
+import java.util.HashSet;
 
-public class aoeq
-  implements axra
+class aoeq
+  implements bmqv
 {
-  public aoeq(ScanningSurfaceView.8 param8) {}
+  aoeq(aoep paramaoep) {}
   
-  public void a()
+  public HashSet<String> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
-    bcef.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("/v1/3");
+    localHashSet.add("/v1/4");
+    return localHashSet;
   }
   
-  public void b()
+  public void a(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
+    if (paramString.equals("/v1/3")) {
+      aoep.a(this.a, paramIntent, paramLong, paramTrpcInovkeRsp);
     }
-    this.a.this$0.a.a();
+    while (!paramString.equals("/v1/4")) {
+      return;
+    }
+    aoep.b(this.a, paramIntent, paramLong, paramTrpcInovkeRsp);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afim;
+import afzr;
 import android.text.Editable;
 import android.text.SpannableString;
-import bevq;
+import bgcz;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XPanelContainer;
@@ -11,7 +11,7 @@ import com.tencent.widget.XPanelContainer;
 public class DiscussChatPie$7
   implements Runnable
 {
-  public DiscussChatPie$7(afim paramafim, boolean paramBoolean, String paramString1, String paramString2) {}
+  public DiscussChatPie$7(afzr paramafzr, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class DiscussChatPie$7
       j = this.this$0.input.getSelectionStart();
       this.this$0.input.getEditableText().delete(j - 1, j);
     }
-    SpannableString localSpannableString = bevq.a(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaLangString, this.b, false, this.this$0.input, false);
+    SpannableString localSpannableString = bgcz.a(this.this$0.app, this.this$0.mActivity, this.this$0.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaLangString, this.b, false, this.this$0.input, false);
     if ((localSpannableString == null) || (localSpannableString.length() == 0)) {
       return;
     }

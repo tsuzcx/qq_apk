@@ -1,16 +1,15 @@
 package dov.com.qq.im.ae.camera.core;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-
 class AECameraGLSurfaceView$12
   implements Runnable
 {
-  AECameraGLSurfaceView$12(AECameraGLSurfaceView paramAECameraGLSurfaceView, String paramString) {}
+  AECameraGLSurfaceView$12(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.val$message, 0).a();
+    if (AECameraGLSurfaceView.access$1000(this.this$0) != null) {
+      AECameraGLSurfaceView.access$1000(this.this$0).run();
+    }
   }
 }
 

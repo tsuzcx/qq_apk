@@ -6,8 +6,8 @@ import android.content.ServiceConnection;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.RemoteException;
-import bkkq;
-import bkkz;
+import blvy;
+import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -160,14 +160,14 @@ public class RemoteServiceProxy
     {
       Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), this.clazz);
       localIntent.putExtra("useSkinEngine", 1);
-      bkkz localbkkz = new bkkz(0);
-      localbkkz.b = QzonePluginProxyActivity.getQZonePluginName();
-      localbkkz.d = "QQ空间";
-      localbkkz.jdField_a_of_type_JavaLangString = this.mUin;
-      localbkkz.e = this.serviceName;
-      localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbkkz.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
-      bkkq.c(BaseApplicationImpl.getApplication(), localbkkz);
+      blwh localblwh = new blwh(0);
+      localblwh.b = QzonePluginProxyActivity.getQZonePluginName();
+      localblwh.d = "QQ空间";
+      localblwh.jdField_a_of_type_JavaLangString = this.mUin;
+      localblwh.e = this.serviceName;
+      localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localblwh.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
+      blvy.c(BaseApplicationImpl.getApplication(), localblwh);
       if (QLog.isColorLevel()) {
         QLog.d("RemoteServiceProxy", 2, " start service finish");
       }

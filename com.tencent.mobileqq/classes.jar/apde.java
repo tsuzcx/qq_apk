@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class apde
-  extends apcz
 {
-  public apde(RockDownloaderManager.2 param2) {}
+  public long a;
+  public boolean a;
   
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
+  public apde(long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
-      }
-      boolean bool = apdf.b(localRockDownloadInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

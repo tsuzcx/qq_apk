@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.troop.data;
 
-import aezn;
+import afqz;
 import android.util.Pair;
-import bdyt;
-import bdyx;
-import bdyz;
-import bdzb;
+import bffw;
+import bfga;
+import bfgc;
+import bfge;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -17,17 +18,17 @@ import java.util.List;
 public class TroopAioKeywordTipBar$4
   implements Runnable
 {
-  public TroopAioKeywordTipBar$4(bdyt parambdyt) {}
+  public TroopAioKeywordTipBar$4(bffw parambffw) {}
   
   public void run()
   {
-    bdyt.b(this.this$0, false);
-    if (!bdyt.c(this.this$0)) {
+    bffw.b(this.this$0, false);
+    if (!bffw.c(this.this$0)) {
       if (QLog.isColorLevel()) {
         QLog.i("TroopAioKeywordTipBar", 2, "checkMsgForShow, mIsCanCheck = false");
       }
     }
-    bdzb localbdzb;
+    bfge localbfge;
     ArrayList localArrayList1;
     do
     {
@@ -41,13 +42,13 @@ public class TroopAioKeywordTipBar$4
           return;
           i = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
           j = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          localbdzb = (bdzb)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(225);
+          localbfge = (bfge)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER);
         } while ((i < 0) || (j < 0));
         localArrayList1 = new ArrayList(10);
         localArrayList2 = new ArrayList(10);
         if (i <= j)
         {
-          localObject = (MessageRecord)this.this$0.jdField_a_of_type_Aezn.getItem(i);
+          localObject = (MessageRecord)this.this$0.jdField_a_of_type_Afqz.getItem(i);
           if (localObject == null) {}
           for (;;)
           {
@@ -63,19 +64,19 @@ public class TroopAioKeywordTipBar$4
         if (localArrayList2.size() <= 0) {
           break;
         }
-      } while ((bdyt.b(this.this$0) != null) && (bdyt.b(this.this$0) == localArrayList2.get(0)));
-      Object localObject = localbdzb.a(localArrayList2, bdyt.a(this.this$0), 1);
-      if ((bdyt.a(this.this$0)) && ((((Pair)localObject).second == null) || ((bdyt.a(this.this$0) != null) && (bdyt.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
-        bdyt.a(this.this$0, false);
+      } while ((bffw.b(this.this$0) != null) && (bffw.b(this.this$0) == localArrayList2.get(0)));
+      Object localObject = localbfge.a(localArrayList2, bffw.a(this.this$0), 1);
+      if ((bffw.a(this.this$0)) && ((((Pair)localObject).second == null) || ((bffw.a(this.this$0) != null) && (bffw.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
+        bffw.a(this.this$0, false);
       }
       for (;;)
       {
-        localbdzb.a(localArrayList2, bdyt.a(this.this$0), 1, new bdyx(this, localArrayList1, localbdzb));
+        localbfge.a(localArrayList2, bffw.a(this.this$0), 1, new bfga(this, localArrayList1, localbfge));
         return;
-        bdyt.b(this.this$0, (MessageRecord)localArrayList2.get(0));
+        bffw.b(this.this$0, (MessageRecord)localArrayList2.get(0));
       }
-    } while ((localArrayList1.size() <= 0) || (bdyt.a(this.this$0)));
-    localbdzb.a(localArrayList1, null, 2, new bdyz(this));
+    } while ((localArrayList1.size() <= 0) || (bffw.a(this.this$0)));
+    localbfge.a(localArrayList1, null, 2, new bfgc(this));
   }
 }
 

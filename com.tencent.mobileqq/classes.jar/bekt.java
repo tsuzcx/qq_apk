@@ -1,6 +1,12 @@
-public abstract interface bekt
+class bekt
+  implements bekq
 {
-  public abstract void b(boolean paramBoolean, int paramInt);
+  bekt(beks parambeks) {}
+  
+  public void a()
+  {
+    beks.a(this.a);
+  }
 }
 
 

@@ -4,32 +4,22 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/breadcrumbreflect/AthenaInfo;", "", "label", "", "intValue", "", "longValue", "", "stringValue", "(Ljava/lang/String;IJLjava/lang/String;)V", "getIntValue", "()I", "setIntValue", "(I)V", "getLabel", "()Ljava/lang/String;", "setLabel", "(Ljava/lang/String;)V", "getLongValue", "()J", "setLongValue", "(J)V", "getStringValue", "setStringValue", "qapmbase_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/breadcrumbreflect/AthenaInfo;", "", "label", "", "value", "", "(Ljava/lang/String;I)V", "getLabel", "()Ljava/lang/String;", "setLabel", "(Ljava/lang/String;)V", "getValue", "()I", "setValue", "(I)V", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public final class AthenaInfo
 {
-  private int intValue;
   @NotNull
   private String label;
-  private long longValue;
-  @NotNull
-  private String stringValue;
+  private int value;
   
   public AthenaInfo()
   {
-    this(null, 0, 0L, null, 15, null);
+    this(null, 0, 3, null);
   }
   
-  public AthenaInfo(@NotNull String paramString1, int paramInt, long paramLong, @NotNull String paramString2)
+  public AthenaInfo(@NotNull String paramString, int paramInt)
   {
-    this.label = paramString1;
-    this.intValue = paramInt;
-    this.longValue = paramLong;
-    this.stringValue = paramString2;
-  }
-  
-  public final int getIntValue()
-  {
-    return this.intValue;
+    this.label = paramString;
+    this.value = paramInt;
   }
   
   @NotNull
@@ -38,20 +28,9 @@ public final class AthenaInfo
     return this.label;
   }
   
-  public final long getLongValue()
+  public final int getValue()
   {
-    return this.longValue;
-  }
-  
-  @NotNull
-  public final String getStringValue()
-  {
-    return this.stringValue;
-  }
-  
-  public final void setIntValue(int paramInt)
-  {
-    this.intValue = paramInt;
+    return this.value;
   }
   
   public final void setLabel(@NotNull String paramString)
@@ -60,15 +39,9 @@ public final class AthenaInfo
     this.label = paramString;
   }
   
-  public final void setLongValue(long paramLong)
+  public final void setValue(int paramInt)
   {
-    this.longValue = paramLong;
-  }
-  
-  public final void setStringValue(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.stringValue = paramString;
+    this.value = paramInt;
   }
 }
 

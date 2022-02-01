@@ -1,7 +1,7 @@
 package cooperation.readinjoy;
 
 import android.text.TextUtils;
-import bkwm;
+import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -9,10 +9,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import oic;
+import opy;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import pay;
+import pqw;
 
 public final class ReadInJoyHelper$6
   implements Runnable
@@ -21,11 +21,11 @@ public final class ReadInJoyHelper$6
   
   public void run()
   {
-    boolean bool = pay.x(this.a);
+    boolean bool = pqw.v(this.a);
     ArrayList localArrayList;
     try
     {
-      Object localObject1 = bkwm.a("daily_cba_report_key");
+      Object localObject1 = bmhv.a("daily_cba_report_key");
       localArrayList = new ArrayList();
       if ((localObject1 != null) && (!TextUtils.isEmpty(localObject1.toString()))) {
         localObject1 = new JSONArray(localObject1.toString());
@@ -53,7 +53,7 @@ public final class ReadInJoyHelper$6
       ((JSONObject)localObject2).put("isVideo", i);
       ((JSONObject)localObject2).put("algoid", this.a.mAlgorithmID);
       localArrayList.add(localObject2);
-      Collections.sort(localArrayList, new oic("click_time"));
+      Collections.sort(localArrayList, new opy("click_time"));
       int j = Aladdin.getConfig(227).getIntegerFromString("request_article_nums", 10);
       localObject2 = new JSONArray();
       i = 0;
@@ -61,7 +61,7 @@ public final class ReadInJoyHelper$6
       {
         if ((i >= localArrayList.size()) || (i >= j))
         {
-          bkwm.a("daily_cba_report_key", ((JSONArray)localObject2).toString());
+          bmhv.a("daily_cba_report_key", ((JSONArray)localObject2).toString());
           return;
         }
         ((JSONArray)localObject2).put(localArrayList.get(i));

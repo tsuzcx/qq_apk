@@ -1,74 +1,37 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-class aujk
-  implements INetInfoHandler
+public final class aujk
+  implements Handler.Callback
 {
-  aujk(aujj paramaujj) {}
+  private final WeakReference<TdsDebugView> a;
   
-  public void onNetMobile2None()
+  private aujk(TdsDebugView paramTdsDebugView)
   {
-    Iterator localIterator = aujj.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((aujm)localIterator.next()).a(5);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
-    }
+    this.a = new WeakReference(paramTdsDebugView);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramString = aujj.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((aujm)paramString.next()).a(4);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    case 2: 
+      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    paramString = aujj.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((aujm)paramString.next()).a(3);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    paramString = aujj.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((aujm)paramString.next()).a(2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    paramString = aujj.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((aujm)paramString.next()).a(1);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    Iterator localIterator = aujj.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((aujm)localIterator.next()).a(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
-    }
+    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+    return true;
   }
 }
 

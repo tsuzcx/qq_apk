@@ -1,21 +1,24 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.11.1;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tcy
-  implements tdh
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public tcy(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public tcy(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new tcz(this, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView), paramInt1, paramInt2));
+    EventCollector.getInstance().onViewClicked(ReadinjoyTabFrame.a(this.a));
+    ReadinjoyTabFrame.a(this.a).postDelayed(new ReadinjoyTabFrame.11.1(this, paramView), 300L);
+    if ((!RecommendFeedsDiandianEntranceManager.a().a()) && (!bmhv.w())) {
+      RecommendFeedsDiandianEntranceManager.a().b(0, this.a.a());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

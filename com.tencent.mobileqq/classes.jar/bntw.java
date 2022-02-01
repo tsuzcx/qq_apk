@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
-
-public class bntw
+public abstract interface bntw
 {
-  private static int a = 10000;
+  public abstract void a(long paramLong);
   
-  public static void a(String paramString, Properties paramProperties)
-  {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
-    }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    bcdu.a(VideoEnvironment.getContext()).reportKVEvent(paramString, localProperties);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
 }
 
 

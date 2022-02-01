@@ -1,8 +1,6 @@
-import android.view.View;
-
-class arwj
+public abstract interface arwj
 {
-  View[] a = new View[12];
+  public abstract void a(int paramInt);
 }
 
 

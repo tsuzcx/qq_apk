@@ -1,97 +1,54 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
-class axgp
-  extends BaseAdapter
+public class axgp
+  extends axfg
 {
-  final BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  final axgt jdField_a_of_type_Axgt;
+  public axgp(MultiCardFragment paramMultiCardFragment) {}
   
-  axgp(axgt paramaxgt, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Axgt = paramaxgt;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    }
   }
   
-  public boolean areAllItemsEnabled()
+  public void b(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.areAllItemsEnabled();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
-  }
-  
-  public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(paramInt);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(paramInt, paramView, paramViewGroup);
-    this.jdField_a_of_type_Axgt.a(paramViewGroup, localView, paramInt);
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getViewTypeCount();
-  }
-  
-  public boolean hasStableIds()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.hasStableIds();
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEmpty();
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEnabled(paramInt);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-  }
-  
-  public void notifyDataSetInvalidated()
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetInvalidated();
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(paramDataSetObserver);
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.unregisterDataSetObserver(paramDataSetObserver);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    }
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+          MultiCardFragment.a(this.a);
+          MultiCardFragment.a(this.a, true);
+          if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
+          {
+            MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+            MultiCardFragment.a(this.a).a();
+          }
+        } while (MultiCardFragment.a(this.a) == null);
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+        return;
+        MultiCardFragment.b(this.a, true);
+        MultiCardFragment.a(this.a, false);
+      } while (MultiCardFragment.a(this.a) == null);
+      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      return;
+    }
+    MultiCardFragment.b(this.a, true);
+    MultiCardFragment.a(this.a, false);
   }
 }
 

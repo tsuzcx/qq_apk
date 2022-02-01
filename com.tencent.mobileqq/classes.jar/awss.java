@@ -1,18 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class awss
-  implements DialogInterface.OnClickListener
+public abstract interface awss
+  extends awrz
 {
-  public awss(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public abstract boolean a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract void setIsFullScreen(boolean paramBoolean);
+  
+  public abstract void setSurfaceCreatelistener(awsv paramawsv);
 }
 
 

@@ -1,13 +1,13 @@
 package dov.com.qq.im;
 
-import blhu;
+import bmul;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
 
 public class QIMCameraCaptureUnit$9
   implements Runnable
 {
-  public QIMCameraCaptureUnit$9(blhu paramblhu, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
+  public QIMCameraCaptureUnit$9(bmul parambmul, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -20,9 +20,9 @@ public class QIMCameraCaptureUnit$9
     }
     for (;;)
     {
-      this.this$0.h();
+      this.this$0.s();
       if ((!this.b) || (!this.this$0.j)) {
-        this.this$0.g();
+        this.this$0.t();
       }
       return;
       this.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayoutNew.t();

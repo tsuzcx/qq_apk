@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import abvw;
-import anmr;
-import bbko;
+import acmd;
+import aopk;
+import bcrg;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseMessageManagerForTroopAndDisc$3
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$3(abvw paramabvw, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
+  public BaseMessageManagerForTroopAndDisc$3(acmd paramacmd, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class BaseMessageManagerForTroopAndDisc$3
     {
       this.this$0.a.getMsgCache().e(null);
       return;
-      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, anmr.b, anmr.k);
+      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aopk.b, aopk.k);
     }
   }
 }

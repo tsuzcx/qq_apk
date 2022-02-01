@@ -9,7 +9,7 @@ public enum c$d$a
   
   public static a[] a()
   {
-    return (a[])B.clone();
+    return (a[])b.clone();
   }
 }
 

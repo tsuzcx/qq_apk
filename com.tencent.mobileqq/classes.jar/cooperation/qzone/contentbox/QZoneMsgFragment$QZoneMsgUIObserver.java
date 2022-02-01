@@ -80,7 +80,7 @@ class QZoneMsgFragment$QZoneMsgUIObserver
       {
         QZoneMsgFragment.access$100(this.this$0, paramBundle);
         QZoneMsgFragment.access$802(this.this$0, paramBundle.hasmore);
-        this.this$0.adapter.setMQMsgs(paramBundle.ArkNes_vec);
+        this.this$0.adapter.setMQMsgs(paramBundle.ArkNes_vec, 1);
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，hasMore=" + QZoneMsgFragment.access$800(this.this$0));
         return;
       }
@@ -96,36 +96,30 @@ class QZoneMsgFragment$QZoneMsgUIObserver
     {
       QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onReFreshMsg error");
       QZoneMsgFragment.access$900(this.this$0, paramBoolean);
-      return;
     }
-    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
-    if (paramBundle != null)
+    do
     {
-      QZoneMsgFragment.access$100(this.this$0, paramBundle);
-      QZoneMsgFragment.access$400(this.this$0).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1(this, paramBundle), 500L);
-      QZoneMsgFragment.access$002(this.this$0, true);
-      QZoneMsgFragment.access$802(this.this$0, paramBundle.hasmore);
-      if (QLog.isColorLevel())
+      do
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("onReFreshMsg ，hasMore=").append(QZoneMsgFragment.access$800(this.this$0)).append(" ,ArkNes_vec size:");
-        if (paramBundle.ArkNes_vec == null) {
-          break label175;
+        return;
+        paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+        if (paramBundle == null) {
+          break;
         }
-        paramBundle = String.valueOf(paramBundle.ArkNes_vec.size());
+        QZoneMsgFragment.access$100(this.this$0, paramBundle);
+        QZoneMsgFragment.access$400(this.this$0).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1(this, paramBundle, paramBoolean), 500L);
+        QZoneMsgFragment.access$002(this.this$0, true);
+        QZoneMsgFragment.access$802(this.this$0, paramBundle.hasmore);
+      } while (!QLog.isColorLevel());
+      StringBuilder localStringBuilder = new StringBuilder().append("onReFreshMsg ，hasMore=").append(QZoneMsgFragment.access$800(this.this$0)).append(" ,ArkNes_vec size:");
+      if (paramBundle.ArkNes_vec != null) {}
+      for (paramBundle = String.valueOf(paramBundle.ArkNes_vec.size());; paramBundle = "null")
+      {
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, paramBundle);
+        return;
       }
-    }
-    for (;;)
-    {
-      QZoneMsgFragment.access$900(this.this$0, paramBoolean);
-      return;
-      label175:
-      paramBundle = "null";
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onReFreshMsg ，rsp=null");
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onReFreshMsg ，rsp=null");
   }
 }
 

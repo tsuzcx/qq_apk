@@ -1,31 +1,91 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.qg.sdk.log.IQLog;
 
-public final class bjwa
+public class bjwa
+  implements IQLog
 {
-  private final bjwb a;
-  
-  public bjwa(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    this(paramContext, paramOnGestureListener, null);
+    return String.format(null, paramString, paramVarArgs);
   }
   
-  public bjwa(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  public void a(String paramString1, String paramString2)
   {
-    if (Build.VERSION.SDK_INT > 17)
-    {
-      this.a = new bjwe(paramContext, paramOnGestureListener, paramHandler);
-      return;
-    }
-    this.a = new bjwc(paramContext, paramOnGestureListener, paramHandler);
+    ykq.c(paramString1, paramString2);
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.a.a(paramMotionEvent);
+    ykq.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    ykq.b(paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ykq.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    ykq.b(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    ykq.e(paramString1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ykq.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    ykq.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ykq.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    ykq.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    ykq.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ykq.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    ykq.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ykq.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    ykq.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    ykq.b(paramString, "", paramThrowable);
   }
 }
 

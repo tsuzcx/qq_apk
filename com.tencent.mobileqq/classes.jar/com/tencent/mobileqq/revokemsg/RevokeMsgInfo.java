@@ -4,14 +4,14 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azzc;
+import bbfl;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class RevokeMsgInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new azzc();
+  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new bbfl();
   public int a;
   public long a;
   public String a;

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import acup;
-import bhht;
+import adlb;
+import bisl;
 
 public class AutoLoginHelper$6
   implements Runnable
 {
-  public AutoLoginHelper$6(acup paramacup) {}
+  public AutoLoginHelper$6(adlb paramadlb) {}
   
   public void run()
   {
     try
     {
-      if ((acup.a(this.this$0) != null) && (acup.a(this.this$0).isShowing()))
+      if ((adlb.a(this.this$0) != null) && (adlb.a(this.this$0).isShowing()))
       {
-        acup.a(this.this$0).dismiss();
-        acup.a(this.this$0).cancel();
+        adlb.a(this.this$0).dismiss();
+        adlb.a(this.this$0).cancel();
       }
-      acup.a(this.this$0, null);
+      adlb.a(this.this$0, null);
       return;
     }
     catch (Throwable localThrowable)

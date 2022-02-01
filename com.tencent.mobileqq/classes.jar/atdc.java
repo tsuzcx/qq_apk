@@ -1,22 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class atdc
-  implements CompoundButton.OnCheckedChangeListener
+  extends ayqy
 {
-  public atdc(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public atdc(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    asgv.a().d(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
+    paramBundle = this.a.a.obtainMessage(1);
+    this.a.a.sendMessage(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdc
  * JD-Core Version:    0.7.0.1
  */

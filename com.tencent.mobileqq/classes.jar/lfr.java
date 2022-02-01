@@ -1,13 +1,6 @@
-public class lfr
+public abstract interface lfr
 {
-  public byte[] a;
-  public byte[] b;
-  
-  public lfr(int paramInt1, int paramInt2)
-  {
-    this.a = new byte[paramInt1];
-    this.b = new byte[paramInt2];
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

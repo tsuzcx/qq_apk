@@ -1,17 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.os.IBinder;
+import android.os.IInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
-final class avyg
-  implements avyn
+public class avyg
+  implements InvocationHandler
 {
-  avyg(Context paramContext) {}
+  IBinder jdField_a_of_type_AndroidOsIBinder;
+  Class<?> jdField_a_of_type_JavaLangClass;
+  Class<?> b;
   
-  public void a(Intent paramIntent)
+  public avyg(IBinder paramIBinder)
   {
-    if ((this.a instanceof ChatActivity)) {
-      ((ChatActivity)this.a).a(paramIntent);
+    this.jdField_a_of_type_AndroidOsIBinder = paramIBinder;
+    try
+    {
+      this.jdField_a_of_type_JavaLangClass = Class.forName("android.location.ILocationManager$Stub");
+      this.b = Class.forName("android.location.ILocationManager");
+      return;
     }
+    catch (Exception paramIBinder)
+    {
+      QLog.d("BGLocateMonitor", 1, "LocationBinderProxy init", paramIBinder);
+    }
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    if ("queryLocalInterface".equals(paramMethod.getName()))
+    {
+      paramObject = paramObject.getClass().getClassLoader();
+      paramMethod = this.b;
+      paramArrayOfObject = new avye(this.jdField_a_of_type_AndroidOsIBinder, this.jdField_a_of_type_JavaLangClass);
+      return Proxy.newProxyInstance(paramObject, new Class[] { IBinder.class, IInterface.class, paramMethod }, paramArrayOfObject);
+    }
+    return paramMethod.invoke(this.jdField_a_of_type_AndroidOsIBinder, paramArrayOfObject);
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.gamecenter.activities;
 
 import Override;
-import amhk;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,11 +17,12 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.Toast;
-import atxz;
-import atyf;
-import azjl;
-import bgtw;
-import bgxf;
+import anis;
+import avdj;
+import avdu;
+import bapt;
+import bieo;
+import bihx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
@@ -44,7 +44,7 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
-import wjy;
+import wyt;
 
 public class GameCenterActivity
   extends QQBrowserActivity
@@ -110,7 +110,7 @@ public class GameCenterActivity
       }
     }
     localObject = localSharedPreferences.getString("trace_url_keyword" + (String)localObject, "");
-    bgxf.a = new ArrayList();
+    bihx.a = new ArrayList();
     QLog.d("GameCenterActivity", 1, "parseTraceUrl:" + (String)localObject);
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
@@ -123,7 +123,7 @@ public class GameCenterActivity
         while (i < ((JSONArray)localObject).length())
         {
           str = (String)((JSONArray)localObject).opt(i);
-          bgxf.a.add(str);
+          bihx.a.add(str);
           i += 1;
         }
         return;
@@ -148,7 +148,7 @@ public class GameCenterActivity
       return;
       i = paramString.length();
     }
-    amhk.a(123, paramString, 1, 1213, new Object[] { "current DetectedBlankScreen status:", Integer.valueOf(paramInt) });
+    anis.a(123, paramString, 1, 1213, new Object[] { "current DetectedBlankScreen status:", Integer.valueOf(paramInt) });
   }
   
   public static void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -165,7 +165,7 @@ public class GameCenterActivity
     if (localObject.length >= 2)
     {
       HashMap localHashMap = new HashMap();
-      wjy.a(localObject[1], localHashMap);
+      wyt.a(localObject[1], localHashMap);
       localObject = (String)localHashMap.get("ADTAG");
       if ("10001".equals(localObject)) {
         if (paramBoolean2)
@@ -189,14 +189,14 @@ public class GameCenterActivity
       }
       if (paramInt == 1)
       {
-        amhk.a(123, null, paramString);
-        amhk.a(123, paramString, 1);
+        anis.a(123, null, paramString);
+        anis.a(123, paramString, 1);
       }
       if (paramInt == 13)
       {
-        amhk.a(123, null, paramString, new int[] { i });
-        amhk.a(123, paramString, 1, 0, new Object[0]);
-        amhk.b(123, paramString);
+        anis.a(123, null, paramString, new int[] { i });
+        anis.a(123, paramString, 1, 0, new Object[0]);
+        anis.b(123, paramString);
         return;
         i = 2;
         break label77;
@@ -213,7 +213,7 @@ public class GameCenterActivity
       }
       for (;;)
       {
-        amhk.a(123, paramString, 1, i, new Object[] { "current step:", Integer.valueOf(paramInt) });
+        anis.a(123, paramString, 1, i, new Object[] { "current step:", Integer.valueOf(paramInt) });
         return;
         i = 1201;
         continue;
@@ -238,7 +238,7 @@ public class GameCenterActivity
       return false;
       localObject = ((WebViewFragment)localObject).mSwiftTitleUI.centerView;
     } while ((localObject == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839447);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130839468);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = ((TextView)localObject).getCompoundDrawables();
     this.jdField_b_of_type_Int = ((TextView)localObject).getCompoundDrawablePadding();
     ((TextView)localObject).setCompoundDrawablePadding(10);
@@ -249,10 +249,10 @@ public class GameCenterActivity
   
   public static boolean a(String paramString)
   {
-    if (bgxf.a == null) {
+    if (bihx.a == null) {
       a();
     }
-    List localList = bgxf.a;
+    List localList = bihx.a;
     if ((TextUtils.isEmpty(paramString)) || (localList == null)) {}
     for (;;)
     {
@@ -277,22 +277,26 @@ public class GameCenterActivity
         QLog.d("GameCenterActivity", 2, "handlePushReport() called");
       }
       localIntent.removeExtra("game_msg_enter_from");
-      atyf.a(10004, 2);
+      avdu.a(10004, 2);
     }
   }
   
   private boolean b()
   {
-    TextView localTextView = a().mSwiftTitleUI.centerView;
-    if (localTextView == null) {
+    Object localObject = a();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((WebViewFragment)localObject).mSwiftTitleUI.centerView;
+    if (localObject == null) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      localTextView.setCompoundDrawablePadding(this.jdField_b_of_type_Int);
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
+      ((TextView)localObject).setCompoundDrawablePadding(this.jdField_b_of_type_Int);
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
       return true;
     }
     return false;
@@ -324,7 +328,7 @@ public class GameCenterActivity
   {
     jdField_a_of_type_Int += 1;
     b();
-    azjl.a(BaseApplicationImpl.getApplication(), this);
+    bapt.a(BaseApplicationImpl.getApplication(), this);
     return super.doOnCreate(paramBundle);
   }
   
@@ -407,7 +411,7 @@ public class GameCenterActivity
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = atxz.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = avdj.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.isFullScreenMode()))
     {
       localGameCenterVideoViewController.exitFullScreen();

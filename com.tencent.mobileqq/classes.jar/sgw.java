@@ -1,26 +1,45 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IEventListener;", "", "onCaptureImageFailed", "", "player", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "id", "", "errCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onDownloadCallback", "downloadedSizeBytes", "", "totalSizeBytes", "info", "", "onError", "", "module", "errorType", "errorCode", "extraInfo", "onInfo", "what", "extra", "onSeekComplete", "onVideoPrepared", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface sgw
+final class sgw
+  implements bhzi
 {
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(@NotNull sgx paramsgx);
-  
-  public abstract void a(@NotNull sgx paramsgx, int paramInt1, int paramInt2);
-  
-  public abstract void a(@NotNull sgx paramsgx, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap);
-  
-  public abstract boolean a(@NotNull sgx paramsgx, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString);
-  
-  public abstract boolean a(@NotNull sgx paramsgx, int paramInt, @Nullable Object paramObject);
-  
-  public abstract void b(@NotNull sgx paramsgx);
-  
-  public abstract void c(@NotNull sgx paramsgx);
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(sgv.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
+    }
+    if (paramBoolean1)
+    {
+      sgv.a(paramInt);
+      try
+      {
+        JSONObject localJSONObject = sgv.a();
+        if (localJSONObject != null) {}
+        try
+        {
+          sgv.a().put("simCardType", sgv.a());
+          if (QLog.isColorLevel()) {
+            QLog.d(sgv.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
+          }
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.e(sgv.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
+            }
+          }
+        }
+        return;
+      }
+      finally {}
+    }
+  }
 }
 
 

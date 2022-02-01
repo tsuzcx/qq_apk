@@ -1,127 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
 
-public class bbqc
+class bbqc
+  implements IGalleryImageListener
 {
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).getString("art_res_sv_md5_version_soname_key", "artfilter000_0");
-    boolean bool = bbpt.a(str, 9);
-    VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "artfilter000_0";
-  }
+  bbqc(bbqb parambbqb, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
   
-  private static void a()
-  {
-    ThreadManager.post(new ShortVideoArtResourceMgr.1(), 5, null, false);
-  }
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
   
-  static boolean a()
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    return bbxj.d();
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    if (!bbxj.c()) {
-      return false;
-    }
-    int i = bbvz.a();
-    QmcfManager.getInstance().setCurrFrameType(i);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoArtResourceMgr", 2, String.format("supportFrameType[%s]", new Object[] { Integer.valueOf(i) }));
-    }
-    switch (i)
+    this.jdField_a_of_type_Bbqb.a.b.setVisibility(8);
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      return true;
-      QmcfManager.getInstance().setQmcfMobileNotSupport(bbvz.a);
-      return false;
-      paramSVConfigItem.armv7a_url = paramSVConfigItem.extend1;
-      paramSVConfigItem.armv7a_md5 = paramSVConfigItem.extend2;
-    }
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2 = false;
-    paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists())
-    {
-      if ((a().equals(paramString1)) && (bbpt.a(paramQQAppInterface, "artfilter_config_file")))
-      {
-        VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:[checkConfigFileListIsOK]success=true", null);
-        return false;
+      this.jdField_a_of_type_Bbqb.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
+      if (this.jdField_a_of_type_Bbqb.a.a != null) {
+        this.jdField_a_of_type_Bbqb.a.a.initDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_Bbqb.a.mScreenWidthPx, this.jdField_a_of_type_Bbqb.a.mScreenHeightPx, this.jdField_a_of_type_Bbqb.getRotation(paramInt));
       }
-      FileUtils.deleteDirectory(paramQQAppInterface);
-      VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+      return;
     }
-    boolean bool1 = localFile.mkdirs();
-    VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool1, null);
-    try
-    {
-      FileUtils.uncompressZip(paramString2, paramQQAppInterface, false);
-      bool1 = bbpt.a(paramQQAppInterface, "artfilter_config_file");
-      VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK success=" + bool1, null);
-      if (bool1)
-      {
-        boolean bool3 = a(paramString1);
-        VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK saveOK=" + bool3, null);
-        bool1 = bool2;
-        if (!bool3)
-        {
-          bool3 = a(paramString1);
-          VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK[two]saveOK=" + bool3, null);
-          bool1 = bool2;
-          if (!bool3)
-          {
-            VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-            bool1 = a("artfilter000_0");
-            VideoEnvironment.LogDownLoad("ShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-            bool1 = true;
-          }
-        }
-        a();
-        return bool1;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      return true;
-    }
-    return true;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).edit();
-    localEditor.putString("art_res_sv_md5_version_soname_key", paramString);
-    return localEditor.commit();
-  }
-  
-  public static String b()
-  {
-    String str = bbxj.a();
-    return str + "art_res_cache" + File.separator;
+    QQToast.a(this.jdField_a_of_type_Bbqb.a.mContext, this.jdField_a_of_type_Bbqb.a.mContext.getString(2131694770), 0).a();
   }
 }
 

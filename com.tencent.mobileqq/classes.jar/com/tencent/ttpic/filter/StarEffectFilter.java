@@ -79,12 +79,12 @@ public class StarEffectFilter
   
   public void clear()
   {
-    this.mGaussianBlurFilter.ClearGLSL();
-    this.mThreshFilter.ClearGLSL();
-    this.mThreshFilterForMask.ClearGLSL();
-    this.mDrawFilter.ClearGLSL();
-    this.mOverlayFilter.ClearGLSL();
-    this.mCopyFilter.ClearGLSL();
+    this.mGaussianBlurFilter.clearGLSL();
+    this.mThreshFilter.clearGLSL();
+    this.mThreshFilterForMask.clearGLSL();
+    this.mDrawFilter.clearGLSL();
+    this.mOverlayFilter.clearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mResizeFrame.clear();
     this.mGaussianSrcFrame.clear();
     this.mThreshFrame.clear();

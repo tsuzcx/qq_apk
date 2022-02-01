@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
 
 public class avuv
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public avuv(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  public avuv(ShareToQQActivity paramShareToQQActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    paramDialogInterface.dismiss();
+    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
+    {
+      paramString = new Intent();
+      paramString.putExtra("isSuccess", paramBoolean2);
+      paramString.putExtra("isCancelShield", false);
+      this.a.setResult(-1, paramString);
+    }
+    this.a.finish();
   }
 }
 

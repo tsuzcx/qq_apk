@@ -1,26 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.viola.core.ViolaInstance;
 
 public class uby
+  extends uan
+  implements uag
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  public uby(Activity paramActivity, uaa paramuaa, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
+  {
+    super(paramActivity, paramuaa, paramVVideoView, paramViolaInstance);
+  }
   
-  public uby(ubx paramubx) {}
+  public void F_() {}
+  
+  public void G_() {}
+  
+  public void H_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uby
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amip;
 import android.content.SharedPreferences;
-import beyx;
+import bghb;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -22,14 +21,14 @@ final class ApolloUtil$6
       try
       {
         SharedPreferences localSharedPreferences = ApolloUtil.a();
-        Object localObject = new File(amip.s);
+        Object localObject = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
         if (!((File)localObject).exists()) {
           break;
         }
         if (!((File)localObject).isDirectory()) {
           return;
         }
-        if (FileUtils.getFileOrFolderSize(amip.s) <= 104857600L) {
+        if (FileUtils.getFileOrFolderSize("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/") <= 104857600L) {
           break;
         }
         localObject = ((File)localObject).listFiles();
@@ -56,7 +55,7 @@ final class ApolloUtil$6
           if (str.endsWith(".zip")) {
             localObject = str.substring(0, str.indexOf("."));
           }
-          if (beyx.b((String)localObject))
+          if (bghb.b((String)localObject))
           {
             long l1 = localSharedPreferences.getLong((String)localObject, 0L);
             long l2 = NetConnInfoCenter.getServerTimeMillis();
@@ -69,7 +68,7 @@ final class ApolloUtil$6
               i = 1;
               if (i != 0)
               {
-                l1 = FileUtils.getFileOrFolderSize(amip.s);
+                l1 = FileUtils.getFileOrFolderSize("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
                 if (l1 < 104857600L)
                 {
                   if (!QLog.isColorLevel()) {

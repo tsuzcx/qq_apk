@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwz;
-import amtj;
+import acnh;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
-import bbko;
+import anvx;
+import bcrg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RouterHandler;
 import com.tencent.mobileqq.data.RecentUser;
@@ -130,10 +131,10 @@ public class RecentItemRouterDataLine
     {
       paramInt = paramMessage.extInt;
       if (paramInt != 4) {
-        break label388;
+        break label398;
       }
     }
-    label388:
+    label398:
     for (boolean bool1 = true;; bool1 = false)
     {
       if (paramInt == 1) {}
@@ -147,16 +148,16 @@ public class RecentItemRouterDataLine
           QLog.d("RecentItemRouterDataLine", 2, "msg info: " + paramMessage.extInt + ":" + paramMessage.msgtype + "msgSummary.strContent:" + paramMsgSummary.strContent);
           return;
           if (paramMessage.msgtype == -2000) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131717802), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131718184), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2005) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131692111), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131692201), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2009) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131719454), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131719906), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2335) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131692111), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131692201), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2015) {
             paramMsgSummary.strContent = "";
-          } else if ((paramMessage.msgtype == -2060) || (paramMessage.msgtype == -2062) || (paramMessage.msgtype == -2066) || (paramMessage.msgtype == -4023) || (paramMessage.msgtype == -4024) || (paramMessage.msgtype == -7010) || (paramMessage.msgtype == -7009) || (paramMessage.msgtype == -7011) || (paramMessage.msgtype == -7012) || (paramMessage.msgtype == -7013)) {
+          } else if ((paramMessage.msgtype == -2060) || (paramMessage.msgtype == -2062) || (paramMessage.msgtype == -2066) || (paramMessage.msgtype == -4023) || (paramMessage.msgtype == -4024) || (paramMessage.msgtype == -7010) || (paramMessage.msgtype == -7009) || (paramMessage.msgtype == -7011) || (paramMessage.msgtype == -7012) || (paramMessage.msgtype == -7013) || (paramMessage.msgtype == -7015)) {
             paramMsgSummary.strContent = "";
           }
         }
@@ -175,7 +176,7 @@ public class RecentItemRouterDataLine
     super.a(paramQQAppInterface, paramContext);
     this.mUnreadNum = 0;
     this.mDisplayTime = 0L;
-    RouterHandler localRouterHandler = (RouterHandler)paramQQAppInterface.getBusinessHandler(48);
+    RouterHandler localRouterHandler = (RouterHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER);
     Object localObject2 = a(paramQQAppInterface);
     Object localObject1 = localObject2;
     QQMessageFacade localQQMessageFacade;
@@ -183,14 +184,14 @@ public class RecentItemRouterDataLine
     if (localObject2 == null)
     {
       localQQMessageFacade = paramQQAppInterface.getMessageFacade();
-      str = abwz.a(this.mUser.uin, 6002);
+      str = acnh.a(this.mUser.uin, 6002);
       localObject2 = localRouterHandler.a(this.mUser.uin);
       if (localObject2 != null) {
-        break label256;
+        break label257;
       }
       localObject1 = new QQMessageFacade.Message();
       ((QQMessageFacade.Message)localObject1).extInt = 0;
-      ((QQMessageFacade.Message)localObject1).time = bbko.a();
+      ((QQMessageFacade.Message)localObject1).time = bcrg.a();
       ((QQMessageFacade.Message)localObject1).msgtype = 0;
     }
     for (;;)
@@ -205,9 +206,9 @@ public class RecentItemRouterDataLine
       if (!AppSetting.c) {
         break;
       }
-      this.mContentDesc = (amtj.a(2131712280) + this.mUnreadNum + amtj.a(2131712283) + " " + ((MsgSummary)localObject2).strContent + this.mShowTime);
+      this.mContentDesc = (anvx.a(2131712627) + this.mUnreadNum + anvx.a(2131712630) + " " + ((MsgSummary)localObject2).strContent + this.mShowTime);
       return;
-      label256:
+      label257:
       if (localQQMessageFacade == null) {
         break;
       }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import albm;
+import alzi;
 
 class TroopListBaseAdapter$1$1
   implements Runnable

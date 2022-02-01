@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom" android:id="@id/root_layout" android:background="#00000000" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/content" android:background="#00000000" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center" android:id="@id/mb7" android:background="@drawable/gxc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-            <ImageView android:id="@id/jv2" android:background="@drawable/hzl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <include layout="@layout/ckp" />
-    </com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout>
-</RelativeLayout>
+<ImageView android:id="@id/icon" android:layout_width="@dimen/bd9" android:layout_height="@dimen/bd8" android:scaleType="centerCrop"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

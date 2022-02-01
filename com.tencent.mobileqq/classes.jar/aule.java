@@ -1,57 +1,155 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 import java.io.File;
-import org.json.JSONObject;
+import mqq.app.MobileQQ;
 
 class aule
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements aulf
 {
-  private aule(aula paramaula) {}
+  aule(auld paramauld) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    synchronized (aula.a(this.a))
+    this.a.b(paramInt);
+    if (auld.a(this.a) != null)
     {
-      aukz.b("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      aula.b(this.a, aula.a(this.a));
+      if (paramInt <= 100) {
+        break label45;
+      }
+      auld.a(this.a).b(this.a.h(), paramBundle);
+    }
+    label45:
+    while (paramInt - this.a.g() <= 0) {
       return;
+    }
+    this.a.a(paramInt);
+    auld.a(this.a).b(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    this.a.c(5);
+    QQAppInterface localQQAppInterface = auht.a().a();
+    if (localQQAppInterface != null)
+    {
+      long l1 = -1L;
+      long l2 = -1L;
+      aulj localaulj = aulj.a(paramBundle);
+      if (localaulj != null)
+      {
+        l1 = localaulj.jdField_a_of_type_Long;
+        l2 = localaulj.b;
+      }
+      auea.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      auea.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
+      bdlq.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
+    }
+    for (;;)
+    {
+      if (auld.a(this.a) != null) {
+        auld.a(this.a).a(paramInt, paramString, paramBundle);
+      }
+      return;
+      QLog.w(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
     }
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public void a(Bundle paramBundle)
   {
-    synchronized (aula.a(this.a))
+    if (auld.a(this.a) != null) {
+      auld.a(this.a).a(this.a.h(), null);
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    QLog.i(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
+    this.a.c(4);
+    if (paramString == null)
     {
-      aukz.b("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
+      QLog.e(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
+      a(40, aukz.a(40), paramBundle);
+    }
+    label783:
+    label821:
+    for (;;)
+    {
+      return;
+      if (FileUtils.fileExists(this.a.e)) {
+        this.a.e = auea.b(this.a.e);
+      }
+      QLog.i(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
+      Object localObject;
+      if (!FileUtils.renameFile(new File(paramString), new File(this.a.e)))
       {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        QLog.e(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
+        localObject = FileUtil.getFileDirectoryOf(paramString);
+        if (!auea.b().equalsIgnoreCase((String)localObject))
         {
-          paramString2 = aula.a(paramString1);
-          aukz.b("onPreLoadSucess path:" + paramString2);
-          aula.a(this.a, paramString1);
-          File localFile = new File(aula.b(paramString1));
-          if (localFile.exists()) {
-            localFile.renameTo(new File(paramString2));
+          String str = (String)localObject + this.a.d;
+          localObject = str;
+          if (FileUtils.fileExists(str)) {
+            localObject = auea.b(str);
           }
-          aula.b(this.a, paramString1);
-          aula.b(this.a, aula.a(this.a));
-          aula.b(this.a);
+          QLog.i(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
+          if (!FileUtils.renameFile(new File(paramString), new File((String)localObject)))
+          {
+            QLog.e(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
+            a(7, aukz.a(7), paramBundle);
+            return;
+          }
+          this.a.e = ((String)localObject);
         }
       }
-      catch (Exception paramString1)
+      else
       {
-        for (;;)
-        {
-          QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
+        QLog.i(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
+        paramString = auht.a().a();
+        if (paramString == null) {
+          break label783;
         }
+        long l1 = -1L;
+        long l2 = -1L;
+        localObject = aulj.a(paramBundle);
+        if (localObject == null) {
+          break label743;
+        }
+        l1 = ((aulj)localObject).jdField_a_of_type_Long;
+        l2 = ((aulj)localObject).b;
+        auea.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        auea.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
+        bdlq.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_0");
       }
-      return;
+      for (;;)
+      {
+        if (auld.a(this.a) == null) {
+          break label821;
+        }
+        auld.a(this.a).a(this.a.e, this.a.b, paramBundle);
+        return;
+        QLog.e(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
+        a(7, aukz.a(7), paramBundle);
+        return;
+        label743:
+        QLog.w(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
+        break;
+        QLog.i(auld.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
+      }
     }
   }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.c(3);
+    if (auld.a(this.a) != null) {
+      auld.a(this.a).c(this.a.h(), null);
+    }
+  }
+  
+  public void c(Bundle paramBundle) {}
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agjz;
-import ahly;
+import ahcp;
+import aigs;
 
 public class PokeEmoItemBuilder$1
   implements Runnable
 {
-  public PokeEmoItemBuilder$1(agjz paramagjz) {}
+  public PokeEmoItemBuilder$1(ahcp paramahcp) {}
   
   public void run() {}
 }

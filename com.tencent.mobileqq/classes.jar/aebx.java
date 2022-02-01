@@ -1,23 +1,54 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.studymode.KidModeVerifyFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebx
-  implements View.OnClickListener
+  extends bdut
 {
-  public aebx(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public aebx(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localSvcDevLoginInfo.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, localSvcDevLoginInfo.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.a.isResume())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("KidModeObserver", 1, "onSmsCodeSuccess but setting Activity is not resume");
+      }
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("FIRST_TIME_RES", paramBundle.getInt("REQ_RESULT"));
+    if (QLog.isColorLevel()) {
+      QLog.d("KidModeObserver", 2, "KidMode onRecvVerifyCode");
+    }
+    localIntent.putExtra("COUNT_TIME", paramBundle.getInt("RESENT_INTERVAL_TIMEOUT", 0));
+    paramBundle = paramBundle.getBundle("extensionField");
+    if ((paramBundle != null) && (paramBundle.getInt("target") == 1))
+    {
+      localIntent.putExtra("target", 1);
+      localIntent.putExtra("RESULT_CODE", 2);
+      int i = paramBundle.getInt("ExtraTargetMode");
+      localIntent.putExtra("ExtraTargetMode", i);
+      if (QLog.isColorLevel()) {
+        QLog.d("KidModeObserver", 2, new Object[] { "onSendSmsCodeSuccess targetMode:", Integer.valueOf(i) });
+      }
+    }
+    KidModeVerifyFragment.a(this.a, localIntent);
+  }
+  
+  public void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (!this.a.isResume()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("KidModeObserver", 1, "onSendGetKidModeStatusSuccess but setting Activity is not resume");
+      }
+    }
+    while (!paramBoolean) {
+      return;
+    }
+    bdvn.a(paramBundle.getInt("KID_MODE_NEED_VERIFY"));
   }
 }
 

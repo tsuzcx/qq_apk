@@ -59,14 +59,14 @@ public class MsgFootTips
   
   private void initView()
   {
-    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562243, null));
+    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562311, null));
     try
     {
-      this.commentTipsView.setBackgroundResource(2130838891);
+      this.commentTipsView.setBackgroundResource(2130838911);
       addView(this.commentTipsView);
-      this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131364825));
-      this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131364826));
-      this.commentTipsDivider = this.commentTipsView.findViewById(2131364822);
+      this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131364912));
+      this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131364913));
+      this.commentTipsDivider = this.commentTipsView.findViewById(2131364909);
       return;
     }
     catch (Throwable localThrowable)

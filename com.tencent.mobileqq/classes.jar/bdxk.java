@@ -1,21 +1,35 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-class bdxk
-  implements Comparator<Map.Entry<String, bdxm>>
+final class bdxk
+  extends SubAccountObserver
 {
-  bdxk(bdxj parambdxj) {}
+  bdxk(QQAppInterface paramQQAppInterface) {}
   
-  public int a(Map.Entry<String, bdxm> paramEntry1, Map.Entry<String, bdxm> paramEntry2)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    float f = ((bdxm)paramEntry2.getValue()).a() - ((bdxm)paramEntry1.getValue()).a();
-    if (f > 0.0F) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
     }
-    if (f < 0.0F) {
-      return -1;
+    paramString1 = (bdxs)this.a.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
+    int j;
+    if ((paramString3 != null) && (paramString3.length() > 0))
+    {
+      j = 1;
+      i = j;
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, false);
+      }
     }
-    return 0;
+    for (int i = j;; i = 0)
+    {
+      if (i == 0) {
+        paramString1.f(paramString2);
+      }
+      return;
+    }
   }
 }
 

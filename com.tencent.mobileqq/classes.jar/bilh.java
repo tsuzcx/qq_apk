@@ -1,38 +1,30 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BusinessObserver;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
 
 public class bilh
-  extends BaseJsModule
+  implements BusinessObserver
 {
-  public String getModuleName()
-  {
-    return "mqq";
-  }
+  public void a(int paramInt) {}
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
+  
+  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool = false;
-    if ("getQQVersion".equals(paramString)) {
-      paramString = new JSONObject();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a((submsgtype0xdd.MsgBody)paramObject);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+      return;
     }
-    while (!"getQQVersionSync".equals(paramString)) {
-      try
-      {
-        paramString.putOpt("version", "8.4.8");
-        bool = paramInvokeCallback.exec(0, paramString);
-        return bool;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-    }
-    return false;
+    a(((Integer)paramObject).intValue());
   }
 }
 

@@ -1,18 +1,32 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adaf
-  implements DialogInterface.OnClickListener
 {
-  public adaf(ChatSettingActivity paramChatSettingActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static adae a(Class<? extends adae> paramClass, adad paramadad)
   {
-    this.a.finish();
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    if (paramClass == adbe.class) {
+      paramClass = new adbe();
+    }
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramadad);
+      }
+      return paramClass;
+      if (paramClass == adbk.class) {
+        paramClass = new adbk();
+      } else {
+        try
+        {
+          adae localadae = (adae)paramClass.newInstance();
+          paramClass = localadae;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
+      }
     }
   }
 }

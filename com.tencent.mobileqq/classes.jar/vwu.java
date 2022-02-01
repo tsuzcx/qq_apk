@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
 
-public abstract class vwu
-  extends SosoInterface.OnLocationListener
+public class vwu
+  implements nux
 {
-  public vwu(String paramString)
-  {
-    super(0, true, false, 300000L, false, false, paramString);
-  }
+  public vwu(StoryAlbumResourceDownloader.3 param3) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void loaded(int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-    {
-      vwq.a = new vwp((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-      xvv.b("LbsManager", "onLocationFinish success : " + vwq.a);
-    }
+    vws.a(this.a.this$0);
+    vws.a(this.a.this$0, false);
+    vws.a(this.a.this$0, false);
+    ykq.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
   }
 }
 

@@ -1,28 +1,21 @@
-import java.lang.ref.SoftReference;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class ocf
-  implements bgvx
+  implements View.OnClickListener
 {
-  ocf(ocd paramocd) {}
+  ocf(obm paramobm, String paramString) {}
   
-  public Object a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    if (ocd.a(this.a) != null)
-    {
-      oci localoci = (oci)ocd.a(this.a).get();
-      if (localoci != null)
-      {
-        localoci.a();
-        ocd.a(this.a).clear();
-      }
-    }
-    ocd.a(this.a, new SoftReference(new oci(this.a, null)));
-    return ocd.a(this.a).get();
+    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ((BaseActivity)this.jdField_a_of_type_Obm.a.get()).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

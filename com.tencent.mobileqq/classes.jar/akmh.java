@@ -1,15 +1,15 @@
-class akmh
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+
+public class akmh
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public ImageView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public ImageView b;
   
-  public akmh(String paramString1, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public akmh(akmg paramakmg) {}
 }
 
 

@@ -1,20 +1,25 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bnfu
+  implements Animation.AnimationListener
 {
-  public final Bitmap a;
-  public final int c;
+  public bnfu(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public bnfu(int paramInt, Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.c = paramInt;
-    this.a = paramBitmap;
+    if (AEMaterialPanel.a(this.a) != null)
+    {
+      AEMaterialPanel.a(this.a).setAlpha(1.0F);
+      AEMaterialPanel.a(this.a).setVisibility(8);
+    }
   }
   
-  public String toString()
-  {
-    return "VideoFragmentInfo{blockIndex=" + this.c + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

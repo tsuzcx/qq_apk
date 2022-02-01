@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import anca;
 import android.util.SparseArray;
-import bdyq;
-import bdys;
-import bdzb;
-import bdzc;
+import aoep;
+import bfft;
+import bffv;
+import bfge;
+import bfgf;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,7 +15,7 @@ import java.util.List;
 public class TroopAioKeywordTipManager$2
   implements Runnable
 {
-  public TroopAioKeywordTipManager$2(bdzb parambdzb, List paramList) {}
+  public TroopAioKeywordTipManager$2(bfge parambfge, List paramList) {}
   
   public void run()
   {
@@ -38,28 +39,28 @@ public class TroopAioKeywordTipManager$2
             if (??? == null)
             {
               if (localObject7 != null) {
-                break label586;
+                break label587;
               }
               localObject7 = new ArrayList();
               ((List)localObject7).add(localObject11);
               ??? = localObject1;
               localObject1 = localObject7;
               localObject7 = ???;
-              break label589;
+              break label590;
             }
-            if (((TroopAioKeywordTipInfo)???).version == ((bdys)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject11).intValue())).e) {
-              break label573;
+            if (((TroopAioKeywordTipInfo)???).version == ((bffv)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject11).intValue())).e) {
+              break label574;
             }
             if (localObject1 != null) {
-              break label567;
+              break label568;
             }
             ??? = new ArrayList();
             label184:
             if (((List)???).contains(localObject11)) {
-              break label602;
+              break label603;
             }
             ((List)???).add(localObject11);
-            break label602;
+            break label603;
           }
         }
         ??? = localObject1;
@@ -80,15 +81,15 @@ public class TroopAioKeywordTipManager$2
         }
       }
     }
-    ??? = bdyq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String[])???);
-    label559:
-    label562:
-    label567:
-    label573:
-    label586:
-    label589:
-    label602:
-    label612:
+    ??? = bfft.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String[])???);
+    label560:
+    label563:
+    label568:
+    label574:
+    label587:
+    label590:
+    label603:
+    label613:
     for (;;)
     {
       synchronized (this.this$0.b)
@@ -102,25 +103,25 @@ public class TroopAioKeywordTipManager$2
             localObject10 = (Integer)((Iterator)localObject7).next();
             localObject11 = ((List)???).iterator();
             if (!((Iterator)localObject11).hasNext()) {
-              break label562;
+              break label563;
             }
             TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)((Iterator)localObject11).next();
-            if ((localTroopAioKeywordTipInfo.ruleId != ((Integer)localObject10).intValue()) || (((bdys)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject10).intValue())).e != localTroopAioKeywordTipInfo.version)) {
+            if ((localTroopAioKeywordTipInfo.ruleId != ((Integer)localObject10).intValue()) || (((bffv)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(((Integer)localObject10).intValue())).e != localTroopAioKeywordTipInfo.version)) {
               continue;
             }
             this.this$0.b.put(((Integer)localObject10).intValue(), localTroopAioKeywordTipInfo);
             i = 1;
             if (i != 0) {
-              break label559;
+              break label560;
             }
             if (localObject3 == null)
             {
               localArrayList = new ArrayList();
               if (localArrayList.contains(localObject10)) {
-                break label612;
+                break label613;
               }
               localArrayList.add(localObject10);
-              break label612;
+              break label613;
             }
           }
           else
@@ -128,14 +129,14 @@ public class TroopAioKeywordTipManager$2
             ??? = localArrayList;
             label500:
             if ((??? != null) && (((List)???).size() > 0)) {
-              ((anca)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20)).a((List)???, new bdzc(this));
+              ((aoep)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a((List)???, new bfgf(this));
             }
             return;
           }
         }
       }
       continue;
-      break label612;
+      break label613;
       i = 0;
       continue;
       ??? = localObject5;
@@ -143,7 +144,7 @@ public class TroopAioKeywordTipManager$2
       ??? = localObject5;
       Object localObject6 = localObject7;
       localObject7 = ???;
-      break label589;
+      break label590;
       break label119;
       for (;;)
       {

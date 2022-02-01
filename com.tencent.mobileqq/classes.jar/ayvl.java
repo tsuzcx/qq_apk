@@ -1,19 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ayvl
-  extends RecyclerView.ViewHolder
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public ayvl(ScanOcrView paramScanOcrView, ayvm paramayvm) {}
   
-  public ayvl(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374077));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374058));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_Ayvm.e = i;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

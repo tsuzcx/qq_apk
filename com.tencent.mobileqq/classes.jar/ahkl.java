@@ -1,42 +1,26 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForTribeShortVideo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 class ahkl
-  implements BusinessObserver
+  extends bhyn
 {
-  ahkl(ahiu paramahiu) {}
+  ahkl(ahkj paramahkj, ahko paramahko, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDone(bhyo parambhyo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.tag, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.x = true;
-          this.a.q();
-          this.a.b();
-          return;
-        }
+    String str = parambhyo.a().getString("filePath");
+    if (parambhyo.a == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
       }
-      catch (Exception paramBundle) {}
+      this.jdField_a_of_type_Ahko.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Ahko.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
+      this.jdField_a_of_type_Ahko.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
+      this.jdField_a_of_type_Ahkj.a(this.jdField_a_of_type_Ahko.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
     }
-    this.a.b(2131694775);
-    this.a.b();
   }
 }
 

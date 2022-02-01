@@ -1,32 +1,19 @@
-import android.content.Context;
-import android.widget.ListView;
-import java.util.List;
+import java.util.Comparator;
 
-public class bdng
+class bdng
+  implements Comparator
 {
-  private static String jdField_a_of_type_JavaLangString = "TribeTitlePrefixPanelView";
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private bdnk jdField_a_of_type_Bdnk;
-  
-  public bdng(Context paramContext, ListView paramListView)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
-    this.jdField_a_of_type_Bdnk = new bdnk(paramContext);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bdnk);
-  }
-  
-  public void a(bdnj parambdnj)
-  {
-    if (this.jdField_a_of_type_Bdnk != null) {
-      this.jdField_a_of_type_Bdnk.a(parambdnj);
+    paramObject1 = (bdnd)paramObject1;
+    paramObject2 = (bdnd)paramObject2;
+    if (paramObject1.b > paramObject2.b) {
+      return -1;
     }
-  }
-  
-  public void a(List<bdnl> paramList)
-  {
-    if (this.jdField_a_of_type_Bdnk != null) {
-      this.jdField_a_of_type_Bdnk.a(paramList);
+    if (paramObject1.b < paramObject2.b) {
+      return 1;
     }
+    return 0;
   }
 }
 

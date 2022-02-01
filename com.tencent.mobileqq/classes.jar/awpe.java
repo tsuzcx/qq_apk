@@ -1,50 +1,29 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class awpe
+  implements URLDrawable.URLDrawableListener
 {
-  private SplitedProgressBar a;
+  public awpe(LoginWelcomeManager paramLoginWelcomeManager, awpi paramawpi, RecentUser paramRecentUser) {}
   
-  public awpe(SplitedProgressBar paramSplitedProgressBar)
-  {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      localSplitedProgressBar.setVisibility(i);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "tryShowCGRU drawable onLoadSuccessed");
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setShowMaxCount(paramInt);
+    this.jdField_a_of_type_Awpi.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Awpi.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_Awpi.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
+    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
   }
 }
 

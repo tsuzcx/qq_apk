@@ -1,162 +1,27 @@
-import android.os.IBinder;
-import android.telephony.TelephonyManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public class bgbs
 {
-  public static int a;
-  private static bgbs jdField_a_of_type_Bgbs;
-  public static String a;
-  public static String b;
-  public static String c = "1";
-  private Object jdField_a_of_type_JavaLangObject;
-  private TelephonyManager[] jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager;
-  private y[] jdField_a_of_type_ArrayOfY;
-  private Object b;
+  private HashMap<Integer, bgbt> a = new HashMap();
   
-  static
+  public bgbs()
   {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_JavaLangString = "0";
+    this.a.put(Integer.valueOf(1), new bgbt("https://pub.idqqimg.com/pc/misc/files/20191009/8e2e317d4dfb00cbf7765c38a049d4c1k1j13h02.png", 1L, 0, ""));
+    this.a.put(Integer.valueOf(2), new bgbt("https://pub.idqqimg.com/pc/misc/files/20200324/5a1434be69aa5a61dca2e97db65cf50b.png", 1101236949L, 0, ""));
+    this.a.put(Integer.valueOf(3), new bgbt("https://pub.idqqimg.com/pc/misc/files/20191009/8e2e317d4dfb00cbf7765c38a049d4c1k1j17n0g.png", 101786420L, 0, ""));
+    this.a.put(Integer.valueOf(4), new bgbt("https://pub.idqqimg.com/pc/misc/files/20191009/8e2e317d4dfb00cbf7765c38a049d4c1k1j16hii.png", 1104445552L, 0, ""));
+    this.a.put(Integer.valueOf(5), new bgbt("https://pub.idqqimg.com/pc/misc/files/20180702/b836834dfbe493017b8767425c0d23e8jj3xilnn.png", 101458937L, 0, ""));
+    this.a.put(Integer.valueOf(6), new bgbt("https://pub.idqqimg.com/pc/misc/files/20190620/da7e017785e02546d81a93f6885b7c3fjx4cf6io.png", 1108961705L, 0, ""));
   }
   
-  private bgbs()
+  public bgbt a(int paramInt)
   {
-    try
-    {
-      a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    return (bgbt)this.a.get(Integer.valueOf(paramInt));
   }
   
-  public static bgbs a()
+  public String toString()
   {
-    if (jdField_a_of_type_Bgbs == null) {}
-    try
-    {
-      jdField_a_of_type_Bgbs = new bgbs();
-      return jdField_a_of_type_Bgbs;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ArrayOfY = new y[2];
-    switch (jdField_a_of_type_Int)
-    {
-    case 0: 
-    case 1: 
-    case 4: 
-    default: 
-    case 2: 
-    case 3: 
-      for (;;)
-      {
-        return;
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject = bgby.a("android.telephony.MSimTelephonyManager", "getDefault", null, null);
-          this.jdField_b_of_type_JavaLangObject = bgby.a("android.telephony.MSimSmsManager", "getDefault", null, null);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-          return;
-        }
-        try
-        {
-          this.jdField_a_of_type_ArrayOfY[0] = z.a(bgbz.a("isms"));
-          this.jdField_a_of_type_ArrayOfY[1] = z.a(bgbz.a("isms2"));
-          if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null)
-          {
-            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager = new TelephonyManager[2];
-            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[0] = ((TelephonyManager)bgby.a("android.telephony.TelephonyManager", "getDefault"));
-            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[1] = ((TelephonyManager)bgby.a("android.telephony.TelephonyManager", "getSecondary"));
-            return;
-          }
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          return;
-        }
-        catch (Error localError)
-        {
-          localError.printStackTrace();
-          return;
-        }
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaLangObject = BaseApplicationImpl.getContext().getSystemService("phone");
-      y localy = z.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isms" }));
-      this.jdField_a_of_type_ArrayOfY[0] = localy;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = 1;
-    switch (jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      return 0;
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        continue;
-      }
-      try
-      {
-        paramInt = ((Integer)bgby.a(this.jdField_a_of_type_JavaLangObject, "getSimState", new Object[] { Integer.valueOf(paramInt) })).intValue();
-        return paramInt;
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-      }
-      continue;
-      if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null) {
-        continue;
-      }
-      return this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[paramInt].getSimState();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        continue;
-      }
-      try
-      {
-        Object localObject = this.jdField_a_of_type_JavaLangObject;
-        if (paramInt == 0) {}
-        for (paramInt = i;; paramInt = 5)
-        {
-          paramInt = ((Integer)bgby.a(localObject, "getIccState", new Object[] { Integer.valueOf(paramInt) })).intValue();
-          return paramInt;
-        }
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt) == 5;
+    return this.a.toString();
   }
 }
 

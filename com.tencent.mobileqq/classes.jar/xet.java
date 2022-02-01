@@ -1,26 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class xet
-  implements DialogInterface.OnClickListener
+  extends JobSegment<xwc, xwc>
 {
-  public xet(StoryPickerFragment paramStoryPickerFragment) {}
+  public xet(xep paramxep) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(JobContext paramJobContext, xwc paramxwc)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
+    paramxwc.a(xep.a(this.a).a(paramxwc.a.feedId, true), true, true);
+    if (paramxwc.a()) {
+      paramxwc.a(xep.a(this.a).a(xep.a(this.a), false), true, false);
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
-    this.a.getActivity().setResult(-1, paramDialogInterface);
-    this.a.getActivity().finish();
+    ykq.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", xep.a(this.a).toString());
+    notifyResult(paramxwc);
   }
 }
 

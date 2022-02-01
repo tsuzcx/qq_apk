@@ -1,61 +1,91 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class bezl
-  extends Handler
+  implements BusinessObserver
 {
-  public void handleMessage(Message paramMessage)
+  public bezl(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramMessage.what == 1001) {}
-    try
+    this.a.a(false);
+    this.a.rightViewText.setEnabled(true);
+    TroopBarReplyActivity localTroopBarReplyActivity = this.a;
+    this.a.getString(2131696005);
+    if (paramBoolean) {}
+    for (;;)
     {
-      paramMessage = (String)paramMessage.obj;
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
-      }
-      Bitmap localBitmap1 = bfvo.a((String)this.a.b.get(paramMessage), null);
-      if (localBitmap1 != null)
+      try
       {
-        Bitmap localBitmap2 = this.a.a(localBitmap1);
-        if (localBitmap2 != null)
-        {
-          Message localMessage = Message.obtain();
-          Bundle localBundle = new Bundle();
-          localBundle.putParcelable("bmp", localBitmap2);
-          localBundle.putString("uin", paramMessage);
-          localMessage.obj = localBundle;
-          localMessage.what = 1002;
-          this.a.a.sendMessage(localMessage);
-          if (QLog.isColorLevel()) {
-            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
-          }
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
         }
-        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
-          localBitmap1.recycle();
+        localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (paramInt == 0) {
+          continue;
+        }
+        localObject = paramBundle.optString("msg");
+        paramBundle = (Bundle)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramBundle = this.a.getString(2131696006, new Object[] { Integer.valueOf(paramInt) });
         }
       }
+      catch (Exception paramBundle)
+      {
+        Object localObject;
+        paramBundle = this.a.getString(2131696006, new Object[] { Integer.valueOf(9992) });
+        continue;
+        paramBundle = this.a.getString(2131696006, new Object[] { Integer.valueOf(9991) });
+        continue;
+      }
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(localTroopBarReplyActivity, 1, paramBundle, 0).b(this.a.getTitleBarHeight());
       return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
+      paramBundle = paramBundle.getJSONObject("result");
+      localObject = new StringBuffer();
+      if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        ((StringBuffer)localObject).append("0");
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
+        ((StringBuffer)localObject).append("1");
+      }
+      if (!TextUtils.isEmpty(bgip.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetXEditTextExWithListener))) {
+        ((StringBuffer)localObject).append("2");
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null) {
+        ((StringBuffer)localObject).append("5");
+      }
+      ((StringBuffer)localObject).append("8");
+      this.a.b = true;
+      paramBundle.optString("pid");
+      paramBundle.optString("bid");
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("result", paramBundle.toString());
+      this.a.setResult(-1, (Intent)localObject);
+      this.a.finish();
+      this.a.jdField_a_of_type_Boolean = false;
       return;
-    }
-    catch (Exception paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
+      paramBundle = this.a.getString(2131696006, new Object[] { Integer.valueOf(9992) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo.widget;
 
-import boer;
+import bpuj;
 
 class ImageViewVideoPlayer$3
   implements Runnable

@@ -1,5 +1,6 @@
 package com.tencent.youtu.sdkkitframework.ocr;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 
 class OcrCardAutoDetectState$1
@@ -9,7 +10,7 @@ class OcrCardAutoDetectState$1
   {
     put("process_action", "failed");
     put("error_code", Integer.valueOf(5242884));
-    put("message", "Init YTImageRefiner SDK failed with " + this.val$finalRet);
+    put("message", CommonUtils.makeMessageJson(5242884, "Init YTImageRefiner SDK failed with " + this.val$finalRet, ""));
   }
 }
 

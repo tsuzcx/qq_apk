@@ -1,13 +1,38 @@
-class auqw
-  extends auqy
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+
+public class auqw
+  implements TextWatcher
 {
-  auqw(auqv paramauqv) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public auqw(ForwardFileOption paramForwardFileOption) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
-    if (paramBoolean) {
-      this.a.a(paramInt, paramLong, paramString1);
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramCharSequence.toString().length() > 36)
+    {
+      ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, -4);
+      if ((paramInt3 > 0) && (paramInt2 < paramInt3))
+      {
+        paramInt1 = this.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_JavaLangString.equals(""))
+        {
+          ForwardFileOption.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption).setText(this.jdField_a_of_type_JavaLangString);
+          ForwardFileOption.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption).setSelection(paramInt1);
+        }
+      }
     }
   }
 }

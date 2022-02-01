@@ -1,86 +1,25 @@
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.portal.SanHuaView;
 
 public class aedz
-  implements mvj
+  extends OvershootInterpolator
 {
-  public aedz(ScoreQAVFragment paramScoreQAVFragment) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(Object paramObject, int paramInt)
+  public aedz(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
-    }
-    this.a.e = paramInt;
-    if (paramInt <= 3) {}
-    for (;;)
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
     {
-      try
-      {
-        if (mrz.a("qav_score_bad.jpg")) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrz.b() + "qav_score_bad.jpg"));
-        }
-        ScoreQAVFragment.a(this.a).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.b.setText(2131695373);
-        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
-          if (paramInt <= 0) {
-            break label398;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
-        continue;
-      }
-      if (paramInt > 3)
-      {
-        ScoreQAVFragment.a(this.a).setVisibility(8);
-        try
-        {
-          if (mrz.a("qav_score_good.jpg")) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrz.b() + "qav_score_good.jpg"));
-          }
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          this.a.b.setText(2131695373);
-        }
-        catch (OutOfMemoryError paramObject)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-            }
-          }
-        }
-        label398:
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
-      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      HongbaoShowerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity).a();
     }
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

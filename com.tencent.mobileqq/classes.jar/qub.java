@@ -1,26 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class qub
-  implements View.OnClickListener
+class qub
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public qub(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo, long paramLong, String paramString, int paramInt) {}
+  qub(qua paramqua) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu) == null) {}
-    for (;;)
+    if ((qua.a(this.a).isShown()) && (!qua.a(this.a)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu));
-      peq localpeq = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu).a().a();
-      if (localpeq != null) {
-        localpeq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, i, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu), this.jdField_a_of_type_Int);
-      }
+      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
+      this.a.a();
+      qua.a(this.a, true);
+    }
+    if ((!qua.a(this.a).isShown()) && (qua.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
+      this.a.b();
+      qua.a(this.a, false);
     }
   }
 }

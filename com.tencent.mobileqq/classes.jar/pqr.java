@@ -1,29 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ugc.RIJUGCDianDian.1.1;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.ugc.RIJUGCDianDian.1.2;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class pqr
-  implements TVK_SDKMgr.InstallListener
+public final class pqr
+  implements blel
 {
-  public pqr(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  pqr(BaseActivity paramBaseActivity) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void a(blek paramblek)
   {
-    abrl.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    abrl.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    abrl.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
-    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
-      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    switch (paramblek.a)
+    {
+    default: 
+      return;
+    case 0: 
+      tcf.a(this.a, new RIJUGCDianDian.1.1(this));
+      return;
     }
+    tcf.a(this.a, new RIJUGCDianDian.1.2(this));
   }
 }
 

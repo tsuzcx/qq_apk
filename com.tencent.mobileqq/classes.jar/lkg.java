@@ -1,73 +1,62 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Random;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
-import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
+import java.util.Comparator;
 
-public class lkg
+class lkg
+  implements Comparator<lkh>
 {
-  private long jdField_a_of_type_Long;
-  private lkp jdField_a_of_type_Lkp;
-  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
+  lkg(lkf paramlkf) {}
   
-  public lkg(lkf paramlkf) {}
-  
-  private void a()
+  public int a(lkh paramlkh1, lkh paramlkh2)
   {
-    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
-    localPutinfoHead.enum_body_type.set(1);
-    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
-    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_a_of_type_JavaLangString.getBytes()));
-    localPutinfoHead.uint64_seq.set(new Random().nextLong());
-    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lkf.jdField_a_of_type_JavaLangString.getBytes()));
-    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
-  }
-  
-  private void b()
-  {
-    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
-    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Lkp.jdField_a_of_type_Int);
-    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Lkp.jdField_b_of_type_Int);
-    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
-    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_b_of_type_JavaLangString.getBytes()));
-    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_c_of_type_JavaLangString.getBytes()));
-    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Lkp.jdField_c_of_type_Int);
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Lkp.jdField_d_of_type_Int);
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Lkp.jdField_e_of_type_Int);
-    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Lkp.f);
-    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
-    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Lkp.g);
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Lkp.h);
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Lkp.i);
-    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Lkp.j);
-    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
-    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_d_of_type_JavaLangString.getBytes()));
-    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Lkp.m);
-    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Lkp.l);
-    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_e_of_type_JavaLangString.getBytes()));
-    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
-  }
-  
-  public void a(long paramLong, lkp paramlkp)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Lkp = paramlkp;
-  }
-  
-  public byte[] a()
-  {
-    a();
-    b();
-    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
+    int j = -1;
+    int i;
+    if (paramlkh1 == paramlkh2) {
+      i = 0;
+    }
+    label99:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return i;
+              i = j;
+            } while (paramlkh1 == null);
+            if (paramlkh2 == null) {
+              return 1;
+            }
+            if ((!paramlkh1.a()) || (!paramlkh2.a())) {
+              break label99;
+            }
+            if (paramlkh1.d == paramlkh2.d) {
+              break;
+            }
+            i = j;
+          } while (paramlkh2.d > paramlkh1.d);
+          return 1;
+          if (paramlkh1.b == paramlkh2.b) {
+            break;
+          }
+          i = j;
+        } while (paramlkh2.b > paramlkh1.b);
+        return 1;
+        return 0;
+        i = j;
+      } while (paramlkh1.a());
+      if (paramlkh2.a()) {
+        return 1;
+      }
+      if (paramlkh1.b == paramlkh2.b) {
+        break;
+      }
+      i = j;
+    } while (paramlkh2.b > paramlkh1.b);
+    return 1;
+    return 0;
   }
 }
 

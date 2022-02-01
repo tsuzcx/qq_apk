@@ -1,34 +1,37 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aeja
-  implements View.OnLongClickListener
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aeja(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
   
-  public boolean onLongClick(View paramView)
+  public aeja(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
+    this.a = new WeakReference(paramVerifyDevLockObserver);
+  }
+  
+  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
+  {
+    if (this.a.get() == null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
+      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onReceive mObserver.get() is null");
+      return;
     }
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
+    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onReceive(paramNotifyType, paramInt, paramObject);
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a.get() == null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
+      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onVerifyClose mObserver.get() is null");
+      return;
     }
-    bgwg localbgwg = (bgwg)this.a.mComponentsProvider.a(8);
-    if ((localbgwg != null) && (localbgwg.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
   }
 }
 

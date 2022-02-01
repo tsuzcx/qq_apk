@@ -1,35 +1,99 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1.2.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class afpq
-  implements Animation.AnimationListener
+class afpq
+  extends BroadcastReceiver
 {
-  public afpq(AIOShakeHelper.1 param1) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long b = 0L;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private afpq(afpo paramafpo, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-    afpo.a(this.a.this$0).post(new AIOShakeHelper.1.2.1(this));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    long l = SystemClock.uptimeMillis();
+    int i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+      QLog.d("AudioPlayer_SCOHelper", 2, "onReceive ACTION_SCO_AUDIO_STATE_UPDATED = " + i + " " + this.jdField_a_of_type_JavaLangString + ", time=" + l);
     }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
+    paramContext = afpo.a(this.jdField_a_of_type_Afpo);
+    if (1 == i) {
+      if (this.b == 0L)
+      {
+        this.b = l;
+        if (paramContext != null)
+        {
+          paramIntent = paramContext.a();
+          if (paramIntent != null)
+          {
+            paramIntent.setBluetoothScoOn(true);
+            AudioPlayerBase.c = true;
+          }
+          paramContext.h();
+          if (!paramContext.a())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AudioPlayer_SCOHelper", 2, "onReceive SCO_AUDIO_STATE_CONNECTED need replay time=" + l);
+            }
+            paramContext.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          }
+        }
+      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (2 == i)
+          {
+            this.jdField_a_of_type_Boolean = true;
+            return;
+          }
+        } while (i != 0);
+        if (this.jdField_a_of_type_Long == 0L)
+        {
+          this.jdField_a_of_type_Long = l;
+          return;
+        }
+        if ((this.jdField_a_of_type_Boolean) && (paramContext != null)) {
+          paramContext.j();
+        }
+        if (paramContext != null) {
+          paramContext.i();
+        }
+        if (((this.b == 0L) || (l - this.b > 2000L)) && (l - this.jdField_a_of_type_Long > 1000L)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AudioPlayer_SCOHelper", 2, "sco disconnected quickly.");
+        }
+        AudioPlayerBase.b = true;
+      } while (paramContext == null);
+      paramContext.b();
+      if (paramContext.a())
+      {
+        paramContext.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        return;
+      }
+      paramContext.c(0);
+      return;
+    } while ((paramContext == null) || (!paramContext.a()));
+    paramContext.c(paramContext.a.a());
   }
 }
 

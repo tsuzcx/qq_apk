@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agnj;
-import agnt;
-import agnu;
+import ahfz;
+import ahgj;
+import ahgk;
 import com.tencent.mobileqq.customviews.VideoProgressView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class ShortVideoItemBuilder$CompressUpdateListenerImpl$2
   implements Runnable
 {
-  public ShortVideoItemBuilder$CompressUpdateListenerImpl$2(agnt paramagnt, MessageForShortVideo paramMessageForShortVideo, int paramInt) {}
+  public ShortVideoItemBuilder$CompressUpdateListenerImpl$2(ahgj paramahgj, MessageForShortVideo paramMessageForShortVideo, int paramInt) {}
   
   public void run()
   {
-    agnu localagnu = agnj.a(this.jdField_a_of_type_Agnt.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+    ahgk localahgk = ahfz.a(this.jdField_a_of_type_Ahgj.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
     String str;
-    if (localagnu != null)
+    if (localahgk != null)
     {
       str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
       if (this.jdField_a_of_type_Int == 1)
       {
-        localagnu.a.a(str, 1.0F);
-        localagnu.a.setAnimProgress(10, str);
-        localagnu.a.setVideoCompressStatus(false);
+        localahgk.a.a(str, 1.0F);
+        localahgk.a.setAnimProgress(10, str);
+        localahgk.a.setVideoCompressStatus(false);
       }
     }
     else
     {
       return;
     }
-    localagnu.a.setVideoCompressPercent(str, 0.0F);
-    localagnu.a.setVideoCompressStatus(true);
+    localahgk.a.setVideoCompressPercent(str, 0.0F);
+    localahgk.a.setVideoCompressStatus(true);
   }
 }
 

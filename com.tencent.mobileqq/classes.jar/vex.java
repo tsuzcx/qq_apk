@@ -1,26 +1,53 @@
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 
 public class vex
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  private IMiniMsgUnreadCallback a()
+  {
+    return new vey(this);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MiniMsgUserParam a()
+  {
+    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
+    localMiniMsgUserParam.businessName = 6;
+    localMiniMsgUserParam.accessType = 2;
+    localMiniMsgUserParam.filterMsgType = 0;
+    localMiniMsgUserParam.unreadCallback = a();
+    return localMiniMsgUserParam;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(MiniMsgUser paramMiniMsgUser)
+  {
+    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

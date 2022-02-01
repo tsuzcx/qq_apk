@@ -1,59 +1,27 @@
-import org.json.JSONObject;
+import com.tencent.ark.open.delegate.IArkDelegateSetup;
+import java.util.ArrayList;
 
-public class aqbn
+final class aqbn
+  extends IArkDelegateSetup
 {
-  public int a;
-  public String a;
-  public int b;
-  
-  public aqbn()
+  public ArrayList<String> onGetPredownloadApp()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return null;
   }
   
-  public static aqbn a(aptx[] paramArrayOfaptx)
+  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
   {
-    localaqbn = new aqbn();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayOfaptx.length)
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaptx[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("preloadSwitch"))
-        {
-          localaqbn.jdField_a_of_type_Int = localJSONObject.optInt("preloadSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed preloadswtich=" + localaqbn.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("preloadInterval"))
-        {
-          localaqbn.b = localJSONObject.optInt("preloadInterval", 30);
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed swtich=" + localaqbn.b);
-          }
-        }
-        if (localJSONObject.has("preloadUrl"))
-        {
-          localaqbn.jdField_a_of_type_JavaLangString = localJSONObject.optString("preloadUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGamePreloadConfBean", 2, "onParsed preload url=" + localaqbn.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
-      }
-      return localaqbn;
-    }
-    catch (Throwable paramArrayOfaptx)
-    {
-      com.tencent.TMG.utils.QLog.e("QQGamePreloadConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaptx.toString());
-    }
+    bdjt.a(null, paramString1, paramString2, paramString3, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString4, paramString5);
+  }
+  
+  public void setupArkEnvironment(boolean paramBoolean)
+  {
+    aqbi.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbn
  * JD-Core Version:    0.7.0.1
  */

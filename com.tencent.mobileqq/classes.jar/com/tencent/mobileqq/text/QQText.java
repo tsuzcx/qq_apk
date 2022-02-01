@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import afnx;
-import amov;
-import amsw;
-import amtj;
+import agfb;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -26,17 +23,22 @@ import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.webkit.URLUtil;
-import avxi;
-import batj;
-import bcef;
-import bcvs;
-import bczu;
-import bjnb;
-import bjnw;
+import anri;
+import anvk;
+import anvx;
+import axdk;
+import bbzy;
+import bdla;
+import becr;
+import begs;
+import bkyn;
+import bkzi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
@@ -91,12 +93,13 @@ public class QQText
   public static final int MAX_EMOTICON = 512;
   public static final int NO_ACTION = 0;
   public static final char RF = 'ú';
-  public static String SMALL_EMOJI_SYMBOL = amtj.a(2131710252);
+  public static String SMALL_EMOJI_SYMBOL = anvx.a(2131710599);
   public static final int SMALL_EMO_SIZE = 16;
   public static Spannable.Factory SPANNABLE_FACTORY;
   private static final int START = 0;
   public static final int SUB_SEQUENCE_FLAG_PASS_FLAGS = 1;
   private static final String TAG = "QQText";
+  public static final int TROOP_NICK_EDIT_EMO_SIZE = 16;
   private static String currUin;
   private static String mTag;
   private String bizSrc;
@@ -109,7 +112,7 @@ public class QQText
   public Object[] mSpans;
   protected String mText;
   private int mUinType = -1;
-  private batj searcher;
+  private bbzy searcher;
   
   static
   {
@@ -648,7 +651,7 @@ public class QQText
   {
     try
     {
-      bcef.b((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(currUin), "dc00898", "", "", paramString1, paramString2, 0, 0, "", "", "", "");
+      bdla.b((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(currUin), "dc00898", "", "", paramString1, paramString2, 0, 0, "", "", "", "");
       return;
     }
     catch (AccountNotMatchException paramString1)
@@ -672,7 +675,7 @@ public class QQText
       QQAppInterface localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(currUin);
       if (paramString2 != null)
       {
-        bcef.b(localQQAppInterface1, "P_CliOper", "Grp_join", "", "send", "Clk_url", 0, 0, mTag, "" + paramString1, "" + paramString2, "");
+        bdla.b(localQQAppInterface1, "P_CliOper", "Grp_join", "", "send", "Clk_url", 0, 0, mTag, "" + paramString1, "" + paramString2, "");
         return;
       }
     }
@@ -684,7 +687,7 @@ public class QQText
         localClassCastException.printStackTrace();
         localQQAppInterface2 = null;
       }
-      bcef.b(localQQAppInterface2, "P_CliOper", "Grp_join", "", "send", "Clk_item", 0, 0, mTag, "" + paramString1, "" + paramString1, "");
+      bdla.b(localQQAppInterface2, "P_CliOper", "Grp_join", "", "send", "Clk_item", 0, 0, mTag, "" + paramString1, "" + paramString1, "");
       return;
     }
     catch (AccountNotMatchException paramString1) {}
@@ -739,13 +742,13 @@ public class QQText
   
   public static void showAddContactsDialog(Context paramContext, String paramString)
   {
-    bjnw localbjnw = bjnw.a(paramContext);
-    localbjnw.a(String.format(paramContext.getString(2131694172), new Object[] { paramString }));
-    localbjnw.a(2131691189, 1);
-    localbjnw.a(2131689611, 1);
-    localbjnw.c(2131690620);
-    localbjnw.a(new QQText.6(bjnb.a(new QQText.5(paramContext, paramString, localbjnw)).a(1000L)));
-    localbjnw.show();
+    bkzi localbkzi = bkzi.a(paramContext);
+    localbkzi.a(String.format(paramContext.getString(2131694370), new Object[] { paramString }));
+    localbkzi.a(2131691274, 1);
+    localbkzi.a(2131689611, 1);
+    localbkzi.c(2131690697);
+    localbkzi.a(new QQText.6(bkyn.a(new QQText.5(paramContext, paramString, localbkzi)).a(1000L)));
+    localbkzi.show();
   }
   
   public static void showDialog(Context paramContext, String paramString, boolean paramBoolean)
@@ -760,41 +763,41 @@ public class QQText
   
   public static void showDialogOld(Context paramContext, String paramString1, int paramInt, String paramString2)
   {
-    bjnw localbjnw = bjnw.a(paramContext);
+    bkzi localbkzi = bkzi.a(paramContext);
     if (paramInt == 0)
     {
-      localbjnw.a(String.format(paramContext.getString(2131694171), new Object[] { paramString1 }));
-      localbjnw.a(2131691480, 1);
-      localbjnw.a(2131691179, 1);
-      localbjnw.a(2131689605, 1);
-      localbjnw.a(2131689570, 1);
-      localbjnw.a(2131693230, 1);
+      localbkzi.a(String.format(paramContext.getString(2131694369), new Object[] { paramString1 }));
+      localbkzi.a(2131691565, 1);
+      localbkzi.a(2131691264, 1);
+      localbkzi.a(2131689605, 1);
+      localbkzi.a(2131689570, 1);
+      localbkzi.a(2131693410, 1);
     }
     for (;;)
     {
-      localbjnw.c(2131690620);
-      localbjnw.a(new QQText.2(paramInt, paramString1, paramContext, paramString2, localbjnw));
-      localbjnw.show();
+      localbkzi.c(2131690697);
+      localbkzi.a(new QQText.2(paramInt, paramString1, paramContext, paramString2, localbkzi));
+      localbkzi.show();
       return;
       if (paramInt == 1)
       {
-        localbjnw.a(String.format(paramContext.getString(2131694172), new Object[] { paramString1 }));
-        localbjnw.a(2131691480, 1);
-        localbjnw.a(2131691179, 1);
-        localbjnw.a(2131689605, 1);
+        localbkzi.a(String.format(paramContext.getString(2131694370), new Object[] { paramString1 }));
+        localbkzi.a(2131691565, 1);
+        localbkzi.a(2131691264, 1);
+        localbkzi.a(2131689605, 1);
       }
       else if (paramInt == 2)
       {
-        localbjnw.a(String.format(paramContext.getString(2131693562), new Object[] { paramString1 }));
-        localbjnw.a(2131718123, 1);
-        localbjnw.a(2131691179, 1);
+        localbkzi.a(String.format(paramContext.getString(2131693746), new Object[] { paramString1 }));
+        localbkzi.a(2131718508, 1);
+        localbkzi.a(2131691264, 1);
       }
       else if (paramInt == 3)
       {
-        localbjnw.a(String.format(paramContext.getString(2131694172), new Object[] { paramString1 }));
-        localbjnw.a(2131691480, 1);
-        localbjnw.a(2131691179, 1);
-        localbjnw.a(2131689605, 1);
+        localbkzi.a(String.format(paramContext.getString(2131694370), new Object[] { paramString1 }));
+        localbkzi.a(2131691565, 1);
+        localbkzi.a(2131691264, 1);
+        localbkzi.a(2131689605, 1);
       }
     }
   }
@@ -1092,7 +1095,7 @@ public class QQText
     {
       Object localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(currUin);
       if ((localObject1 instanceof QQAppInterface)) {
-        afnx.a((QQAppInterface)localObject1, this.mMessage, 5, paramString);
+        agfb.a((QQAppInterface)localObject1, this.mMessage, 5, paramString);
       }
       localObject2 = null;
       i = paramString.lastIndexOf("#");
@@ -1104,7 +1107,7 @@ public class QQText
       if (localObject2 != null) {
         localObject1 = str2 + (String)localObject2;
       }
-      if (bcvs.a((String)localObject1))
+      if (becr.a((String)localObject1))
       {
         localObject2 = paramView.getContext();
         if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
@@ -1116,7 +1119,7 @@ public class QQText
           if (this.mMessage != null) {
             break label266;
           }
-          bcef.b(null, "CliOper", "", "", "0X80061B1", "0X80061B1", 0, 0, "", "", "", "");
+          bdla.b(null, "CliOper", "", "", "0X80061B1", "0X80061B1", 0, 0, "", "", "", "");
           return;
         }
       }
@@ -1128,9 +1131,9 @@ public class QQText
         Object localObject2;
         QLog.e("QQText", 1, localThrowable, new Object[0]);
         continue;
-        QQToast.a((Context)localObject2, ((Context)localObject2).getResources().getString(2131692035), 0).b(((Context)localObject2).getResources().getDimensionPixelSize(2131299076));
+        QQToast.a((Context)localObject2, ((Context)localObject2).getResources().getString(2131692125), 0).b(((Context)localObject2).getResources().getDimensionPixelSize(2131299080));
         continue;
-        avxi.a(paramView.getContext(), localThrowable, true, true, true, false, this.mMessage, this.bizSrc);
+        axdk.a(paramView.getContext(), localThrowable, true, true, true, false, this.mMessage, this.bizSrc);
       }
     }
     for (;;)
@@ -1148,7 +1151,7 @@ public class QQText
           }
           paramView = paramString.substring(0, 150);
           paramString = new URL(paramString).getHost();
-          bcef.b(null, "CliOper", "", str1, "0X80061B1", "0X80061B1", i, 0, "", "", paramView, paramString);
+          bdla.b(null, "CliOper", "", str1, "0X80061B1", "0X80061B1", i, 0, "", "", paramView, paramString);
           if (!QLog.isDebugVersion()) {
             break;
           }
@@ -1176,8 +1179,8 @@ public class QQText
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bczu localbczu = (bczu)((Iterator)localObject).next();
-        addSpan(new QQText.LinkSpan(this, localbczu.jdField_a_of_type_JavaLangString), localbczu.jdField_a_of_type_Int, localbczu.b, 33);
+        begs localbegs = (begs)((Iterator)localObject).next();
+        addSpan(new QQText.LinkSpan(this, localbegs.jdField_a_of_type_JavaLangString), localbegs.jdField_a_of_type_Int, localbegs.b, 33);
       }
     }
   }
@@ -1312,87 +1315,87 @@ public class QQText
       }
     }
     int i;
-    bjnw localbjnw;
+    bkzi localbkzi;
     Object localObject3;
     if (paramInt == 2)
     {
       i = 5;
-      localbjnw = bjnw.a(paramContext);
-      localObject3 = (amsw)((QQAppInterface)localObject1).getManager(51);
+      localbkzi = bkzi.a(paramContext);
+      localObject3 = (anvk)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramInt != 0) {
-        break label399;
+        break label400;
       }
       if (NetworkUtil.isNetworkAvailable()) {
-        break label360;
+        break label361;
       }
-      localbjnw.a(String.format(paramContext.getString(2131694172), new Object[] { paramString }));
-      localbjnw.a(2131691179, 1);
-      localbjnw.a(2131692036, 1);
-      localbjnw.a(2131691480, 1);
-      localbjnw.a(2131689605, 1);
-      bcef.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", batj.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
-      bcef.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800B0C0", "0X800B0C0", batj.a(paramMessageRecord.istroop), 0, "", "", "", "");
+      localbkzi.a(String.format(paramContext.getString(2131694370), new Object[] { paramString }));
+      localbkzi.a(2131691264, 1);
+      localbkzi.a(2131692126, 1);
+      localbkzi.a(2131691565, 1);
+      localbkzi.a(2131689605, 1);
+      bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", bbzy.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+      bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800B0C0", "0X800B0C0", bbzy.a(paramMessageRecord.istroop), 0, "", "", "", "");
     }
     for (;;)
     {
-      localbjnw.c(2131690620);
-      localbjnw.a(new QQText.3(this, paramContext, paramString, (QQAppInterface)localObject1, i, paramMessageRecord, paramInt, localbjnw));
-      localbjnw.a(new QQText.4(this, (QQAppInterface)localObject1, i));
-      localbjnw.show();
+      localbkzi.c(2131690697);
+      localbkzi.a(new QQText.3(this, paramContext, paramString, (QQAppInterface)localObject1, i, paramMessageRecord, paramInt, localbkzi));
+      localbkzi.a(new QQText.4(this, (QQAppInterface)localObject1, i));
+      localbkzi.show();
       return;
       i = 4;
       break;
-      label360:
+      label361:
       if (this.searcher == null) {
-        this.searcher = new batj(this.bizSrc);
+        this.searcher = new bbzy(this.bizSrc);
       }
       this.searcher.a((QQAppInterface)localObject1, paramContext, paramString, (ChatMessage)paramMessageRecord);
       return;
-      label399:
+      label400:
       if (paramInt == 1)
       {
         if (!NetworkUtil.isNetworkAvailable())
         {
-          localbjnw.a(String.format(paramContext.getString(2131694172), new Object[] { paramString }));
-          localbjnw.a(2131691179, 1);
-          localbjnw.a(2131692036, 1);
-          localbjnw.a(2131691480, 1);
-          localbjnw.a(2131689605, 1);
-          if ((!paramMessageRecord.isSend()) && (((amsw)localObject3).b(paramMessageRecord.senderuin)))
+          localbkzi.a(String.format(paramContext.getString(2131694370), new Object[] { paramString }));
+          localbkzi.a(2131691264, 1);
+          localbkzi.a(2131692126, 1);
+          localbkzi.a(2131691565, 1);
+          localbkzi.a(2131689605, 1);
+          if ((!paramMessageRecord.isSend()) && (((anvk)localObject3).b(paramMessageRecord.senderuin)))
           {
-            localObject3 = (amov)((QQAppInterface)localObject1).getBusinessHandler(2);
+            localObject3 = (anri)((QQAppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
             if (localObject3 != null) {
-              ((amov)localObject3).a(currUin, paramMessageRecord.senderuin, 1, 0L, (byte)1, 0L, 0L, null, "", 0L, 10004, null, (byte)0);
+              ((anri)localObject3).a(currUin, paramMessageRecord.senderuin, 1, 0L, (byte)1, 0L, 0L, null, "", 0L, 10004, null, (byte)0);
             }
-            localbjnw.a(2131689614, 1);
+            localbkzi.a(2131689614, 1);
           }
-          bcef.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", batj.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
-          bcef.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800B0C0", "0X800B0C0", batj.a(paramMessageRecord.istroop), 0, "", "", "", "");
+          bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", bbzy.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+          bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800B0C0", "0X800B0C0", bbzy.a(paramMessageRecord.istroop), 0, "", "", "", "");
         }
         else
         {
           if (this.searcher == null) {
-            this.searcher = new batj(this.bizSrc);
+            this.searcher = new bbzy(this.bizSrc);
           }
           this.searcher.a((QQAppInterface)localObject1, paramContext, paramString, (ChatMessage)paramMessageRecord);
         }
       }
       else if (paramInt == 2)
       {
-        localbjnw.a(String.format(paramContext.getString(2131693562), new Object[] { paramString }));
-        localbjnw.a(2131691179, 1);
-        localbjnw.a(2131692036, 1);
-        localbjnw.a(2131718123, 1);
-        bcef.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A924", "0X800A924", batj.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+        localbkzi.a(String.format(paramContext.getString(2131693746), new Object[] { paramString }));
+        localbkzi.a(2131691264, 1);
+        localbkzi.a(2131692126, 1);
+        localbkzi.a(2131718508, 1);
+        bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A924", "0X800A924", bbzy.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
       }
       else if (paramInt == 3)
       {
-        localbjnw.a(String.format(paramContext.getString(2131694172), new Object[] { paramString }));
-        localbjnw.a(2131691179, 1);
-        localbjnw.a(2131692036, 1);
-        localbjnw.a(2131691480, 1);
-        localbjnw.a(2131689605, 1);
-        bcef.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", batj.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
+        localbkzi.a(String.format(paramContext.getString(2131694370), new Object[] { paramString }));
+        localbkzi.a(2131691264, 1);
+        localbkzi.a(2131692126, 1);
+        localbkzi.a(2131691565, 1);
+        localbkzi.a(2131689605, 1);
+        bdla.b((QQAppInterface)localObject1, "dc00898", "", "", "0X800A923", "0X800A923", bbzy.a((QQAppInterface)localObject1, paramMessageRecord.istroop, paramMessageRecord.frienduin), 0, "", "", "", "");
       }
     }
   }

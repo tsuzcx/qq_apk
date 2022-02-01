@@ -1,22 +1,32 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import java.util.ArrayList;
 
-public abstract interface sdk
+public class sdk
+  extends FragmentPagerAdapter
 {
-  public abstract void a(sdj paramsdj);
+  public sdk(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
+  {
+    super(paramFragmentManager);
+  }
   
-  public abstract void a(sdj paramsdj, Object paramObject);
+  public int getCount()
+  {
+    return SelectVideoTabFragment.a(this.a).size();
+  }
   
-  public abstract void a(sdj paramsdj, String paramString);
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
+  }
   
-  public abstract void a(sdj paramsdj, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap);
-  
-  public abstract boolean a(sdj paramsdj, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
-  
-  public abstract boolean a(sdj paramsdj, int paramInt, Object paramObject);
-  
-  public abstract void b(sdj paramsdj);
-  
-  public abstract void c(sdj paramsdj);
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
+  }
 }
 
 

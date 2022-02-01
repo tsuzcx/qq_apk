@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class zib
-  implements View.OnClickListener
+class zib
+  implements Animation.AnimationListener
 {
-  public zib(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  zib(zhz paramzhz) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

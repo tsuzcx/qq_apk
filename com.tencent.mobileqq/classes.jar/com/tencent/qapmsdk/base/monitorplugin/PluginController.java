@@ -8,6 +8,7 @@ import com.tencent.qapmsdk.base.config.PluginCombination.Companion;
 import com.tencent.qapmsdk.base.config.SDKConfig;
 import com.tencent.qapmsdk.base.config.SDKConfig.Companion;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
+import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.util.AsyncSPEditor;
 import java.util.Iterator;
 import kotlin.Metadata;
@@ -142,16 +143,23 @@ public final class PluginController
   
   public final boolean whetherPluginSampling(int paramInt)
   {
-    Object localObject2 = PluginCombination.Companion.handle(paramInt, (Function1)PluginController.whetherPluginSampling.familySampleRatio.1.INSTANCE);
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof Float)) {
-      localObject1 = null;
+    Logger.INSTANCE.d(new String[] { "QAPM_base", "whetherPluginSampling" + paramInt });
+    if (canCollect(paramInt))
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_base", "whetherPluginSampling" + paramInt + " , canCollect" });
+      Object localObject2 = PluginCombination.Companion.handle(paramInt, (Function1)new PluginController.whetherPluginSampling.familySampleRatio.1(paramInt));
+      Object localObject1 = localObject2;
+      if (!(localObject2 instanceof Float)) {
+        localObject1 = null;
+      }
+      localObject1 = (Float)localObject1;
+      if (localObject1 != null) {}
+      for (float f = ((Float)localObject1).floatValue(); Math.random() < f; f = 0.0F) {
+        return true;
+      }
+      return false;
     }
-    localObject1 = (Float)localObject1;
-    if (localObject1 != null) {}
-    for (float f = ((Float)localObject1).floatValue(); Math.random() < f; f = 0.0F) {
-      return true;
-    }
+    Logger.INSTANCE.d(new String[] { "QAPM_base", "whetherPluginSampling" + paramInt + " , canCollect not" });
     return false;
   }
 }

@@ -1,20 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class oqk
-  implements pwf
+class oqk
+  implements QQPermissionCallback
 {
-  public oqk(CommentInfo paramCommentInfo) {}
+  oqk(oqb paramoqb, Runnable paramRunnable) {}
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
-      return;
-    }
-    this.a.authorNickName = paramReadInJoyUserInfo.nick;
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    oqb.a(this.jdField_a_of_type_Oqb, 3);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

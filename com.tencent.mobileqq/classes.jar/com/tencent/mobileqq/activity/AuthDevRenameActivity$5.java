@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bhht;
+import bisl;
 
 class AuthDevRenameActivity$5
   implements Runnable

@@ -1,18 +1,39 @@
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class aigq
-  extends aigo
+  extends NativeGifImage
 {
-  public ArrayList<aicz> a;
-  
-  public aigq(ArrayList<aicz> paramArrayList)
+  public aigq(File paramFile, boolean paramBoolean)
   {
-    this.a = paramArrayList;
+    super(paramFile, paramBoolean);
   }
   
-  public boolean a()
+  public int a()
   {
-    return true;
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 

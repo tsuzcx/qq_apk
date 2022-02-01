@@ -1,56 +1,69 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.ViewGroup;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-public class bnns
-  extends bnnq
+class bnns
+  implements Observer<bnkn>
 {
-  public final int c;
-  @NonNull
-  public final String c;
-  public final int d;
-  @NonNull
-  public final String d;
-  public final int e;
-  public final String e;
-  public final String f;
-  public final String g;
-  public final String h;
-  public final String i;
+  bnns(bnnr parambnnr, bnme parambnme) {}
   
-  @NonNull
-  public bnnr a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(@Nullable bnkn parambnkn)
   {
-    return new bnnt(this, paramContext, paramViewGroup);
-  }
-  
-  @NonNull
-  public Class<? extends bnnr> a()
-  {
-    return bnnt.class;
-  }
-  
-  public String a()
-  {
-    if ((TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d)) && (TextUtils.isEmpty(this.e))) {
-      return "";
+    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material download state");
+    if ((parambnkn == null) || (bnnl.a(this.jdField_a_of_type_Bnnr.a) == null)) {}
+    label360:
+    for (;;)
+    {
+      return;
+      int i = this.jdField_a_of_type_Bnme.jdField_a_of_type_Int + 1;
+      for (;;)
+      {
+        if (i >= bnnl.a(this.jdField_a_of_type_Bnnr.a).size()) {
+          break label360;
+        }
+        bnml localbnml = (bnml)bnnl.a(this.jdField_a_of_type_Bnnr.a).get(i);
+        if ((localbnml != null) && (localbnml.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && (localbnml.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id.equals(parambnkn.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)))
+        {
+          if (localbnml.jdField_b_of_type_Int != parambnkn.jdField_a_of_type_Int) {
+            localbnml.jdField_b_of_type_Int = parambnkn.jdField_a_of_type_Int;
+          }
+          if (localbnml.jdField_b_of_type_Int != 2) {
+            break;
+          }
+          localbnml.jdField_b_of_type_JavaLangString = bnjw.a().a(localbnml.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+          QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Downloaded material", "path===" + localbnml.jdField_b_of_type_JavaLangString });
+          parambnkn = new bnpa();
+          parambnkn.jdField_a_of_type_Int = i;
+          parambnkn.jdField_a_of_type_JavaLangString = localbnml.jdField_b_of_type_JavaLangString;
+          if ((localbnml.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && ((localbnml.jdField_a_of_type_JavaLangString == null) || (localbnml.jdField_a_of_type_JavaLangString.equals("")))) {
+            if (localbnml.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename") != null)
+            {
+              parambnkn.jdField_b_of_type_JavaLangString = "";
+              parambnkn.c = ((String)localbnml.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename"));
+            }
+          }
+          for (;;)
+          {
+            bnnl.a(this.jdField_a_of_type_Bnnr.a).a(parambnkn);
+            localbnml.jdField_a_of_type_Int = 12;
+            bnnl.a(this.jdField_a_of_type_Bnnr.a).notifyItemChanged(i);
+            return;
+            parambnkn.jdField_b_of_type_JavaLangString = "";
+            parambnkn.c = "";
+            continue;
+            if (localbnml.jdField_a_of_type_JavaLangString == null) {
+              parambnkn.jdField_b_of_type_JavaLangString = "";
+            } else {
+              parambnkn.jdField_b_of_type_JavaLangString = localbnml.jdField_a_of_type_JavaLangString;
+            }
+          }
+        }
+        i += 1;
+      }
     }
-    if ((!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d))) {
-      return this.c + "，" + this.d;
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      return this.c;
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      return this.d;
-    }
-    return this.e;
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
 }
 

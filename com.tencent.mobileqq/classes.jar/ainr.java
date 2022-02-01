@@ -1,72 +1,169 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Handler;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextEditViewHelper.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ainr
-  implements Handler.Callback
+public class ainr
+  extends ainp
+  implements aimy, View.OnClickListener
 {
-  ainr(ainq paramainq) {}
+  private aimx jdField_a_of_type_Aimx;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ains(this);
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  TextView.OnEditorActionListener jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener = new aint(this);
   
-  private void a()
+  public ainr(aini paramaini, QQAppInterface paramQQAppInterface, Handler paramHandler)
   {
-    if (ainq.a(this.a) != null) {
-      ainq.a(this.a).setRefreshing(false);
-    }
-    if (ainq.a(this.a) != null) {
-      ainq.a(this.a).setRefresh(false);
-    }
+    super(paramQQAppInterface, paramaini);
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Aimx = new aimx();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  private void i()
   {
-    switch (paramMessage.what)
+    SpannableString localSpannableString;
+    if (a().a())
     {
-    default: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-      label146:
-      do
-      {
-        return false;
-        QQToast.a(this.a.a(), 1, 2131718604, 0).b(ainq.a(this.a));
-        a();
-        return false;
-        int i = paramMessage.arg1;
-        if (paramMessage.arg2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label146;
-          }
-          ainq.a(this.a);
-          if (ainq.a(this.a) == null) {
-            break;
-          }
-          ainq.a(this.a).a(0);
-          this.a.a.sendEmptyMessageDelayed(5, 800L);
-          return false;
-        }
-        a();
-        QQToast.a(this.a.a(), 1, 2131718604, 0).b(ainq.a(this.a));
-        return false;
-        a();
-        return false;
-        ainq.a(this.a, true, true);
-        return false;
-      } while ((ainq.a(this.a) == null) || (ainq.a(this.a) == null));
-      ainq.a(this.a).a(ainq.a(this.a).getScrollY(), ainq.a(this.a).a());
-      return false;
+      localSpannableString = this.jdField_a_of_type_Aimx.a();
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
     }
-    this.a.f();
-    return false;
+    do
+    {
+      return;
+      if (a().b())
+      {
+        localSpannableString = this.jdField_a_of_type_Aimx.a(a().b());
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_Aimx.a(), this.jdField_a_of_type_Aimx.a());
+        return;
+      }
+    } while (!a().c());
+    k();
+  }
+  
+  private void j()
+  {
+    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor("#777777"));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor("#03081a"));
+  }
+  
+  private void k()
+  {
+    Object localObject = a().b();
+    if (StringUtil.isEmpty((String)localObject))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      a().a(5);
+      this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
+      this.jdField_a_of_type_Aimx.b();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, anvx.a(2131716212), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299080));
+      return;
+    }
+    if (this.jdField_a_of_type_Aimx.a((String)localObject))
+    {
+      j();
+      this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
+      this.jdField_a_of_type_Aimx.b();
+      this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
+      a().a(5);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(((String)localObject).length(), ((String)localObject).length());
+      return;
+    }
+    localObject = this.jdField_a_of_type_Aimx.a((String)localObject);
+    this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
+    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_Aimx.a(), this.jdField_a_of_type_Aimx.a());
+  }
+  
+  public EditText a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetEditText;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new VoiceTextEditViewHelper.3(this));
+  }
+  
+  public void a(ainf paramainf)
+  {
+    super.a(paramainf);
+    this.jdField_a_of_type_Aimx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167110), this);
+  }
+  
+  public void a(VoiceTextPanel paramVoiceTextPanel)
+  {
+    super.a(paramVoiceTextPanel);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramVoiceTextPanel.findViewById(2131365945));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHorizontallyScrolling(false);
+    this.jdField_a_of_type_AndroidWidgetEditText.setLines(100);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this.jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(true);
+    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
+    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
+    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Aimx.a();
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Aimx.b();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((a().a()) || (a().b())) {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, anvx.a(2131716219), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299080));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class arzp
-  implements View.OnClickListener
+  extends Handler
 {
-  arzp(arzo paramarzo) {}
-  
-  public void onClick(View paramView)
+  arzp(arzn paramarzn, Looper paramLooper)
   {
-    Object localObject = aszt.a((FileInfo)((arzq)paramView.getTag()).a);
-    localObject = new asub(arzo.a(this.a).app, arzo.a(this.a), (FileManagerEntity)localObject, 10000);
-    localObject = new asud(arzo.a(this.a), (asug)localObject);
-    ((asud)localObject).a(8);
-    ((asud)localObject).a(aagn.a(paramView));
-    ((asud)localObject).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (arzn.a(this.a));
+    QLog.e("CameraHelper", 1, "checkPermission uncertain");
+    arzn.a(this.a, false, 1830004);
   }
 }
 

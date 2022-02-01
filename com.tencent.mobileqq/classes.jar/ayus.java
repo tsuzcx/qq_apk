@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class ayus
-  implements BusinessObserver
+  extends ayup
 {
-  public void a(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, ayul paramayul, ayun paramayun)
   {
-    if (paramInt == 1) {
-      a(paramBoolean);
+    paramViewGroup = paramViewGroup.getContext();
+    if ((paramView != null) && (((ayun)paramView.getTag()).a == paramayun.a)) {
+      return paramView;
     }
+    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559856, null);
+    paramView.setTag(paramayun);
+    return paramView;
   }
 }
 

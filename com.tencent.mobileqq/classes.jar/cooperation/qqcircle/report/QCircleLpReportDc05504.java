@@ -88,6 +88,16 @@ public class QCircleLpReportDc05504
     QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05504.1(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramList, paramArrayOfByte));
   }
   
+  public static void report(String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  {
+    if (paramInt4 == 0)
+    {
+      QLog.e("QCircleReportBean_QCircleLpReportDc05504", 1, "report invalid pageId," + paramInt4 + ",actionType:" + paramInt1 + ",subActionType:" + paramInt2);
+      showErrorToast(paramInt1, paramInt2);
+    }
+    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05504.3(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte));
+  }
+  
   private static boolean reportWithoutSessionCheck(int paramInt)
   {
     return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);

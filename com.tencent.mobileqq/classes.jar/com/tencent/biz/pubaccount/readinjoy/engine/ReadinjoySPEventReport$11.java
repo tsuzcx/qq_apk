@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import ple;
+import pwb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import ugf;
+import uuc;
 
 public class ReadinjoySPEventReport$11
   implements Runnable
 {
-  public ReadinjoySPEventReport$11(ple parample, String paramString, long paramLong) {}
+  public ReadinjoySPEventReport$11(pwb parampwb, String paramString, long paramLong) {}
   
   public void run()
   {
@@ -22,10 +22,10 @@ public class ReadinjoySPEventReport$11
     oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
     localAttributeList2.att_id.set(2);
     localAttributeList2.att_name.set("time");
-    localAttributeList2.att_value.set(String.valueOf(ple.a(this.jdField_a_of_type_Long) / 1000L));
+    localAttributeList2.att_value.set(String.valueOf(pwb.a(this.jdField_a_of_type_Long) / 1000L));
     localArrayList.add(localAttributeList1);
     localArrayList.add(localAttributeList2);
-    ugf.a(21, localArrayList);
+    uuc.a(21, localArrayList);
   }
 }
 

@@ -1,31 +1,21 @@
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class tvu
+class tvu
+  implements sal
 {
-  private static HashMap<Integer, Integer> a = new HashMap();
+  tvu(tvt paramtvt, String paramString) {}
   
-  static
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    a.put(Integer.valueOf(1107), Integer.valueOf(4));
-    a.put(Integer.valueOf(1108), Integer.valueOf(3));
-    a.put(Integer.valueOf(1109), Integer.valueOf(4));
-    a.put(Integer.valueOf(1105), Integer.valueOf(101));
-    a.put(Integer.valueOf(1106), Integer.valueOf(102));
-    a.put(Integer.valueOf(1110), Integer.valueOf(103));
-    a.put(Integer.valueOf(1111), Integer.valueOf(104));
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
-    }
-    return 0;
+    BridgeModule.access$1600(this.jdField_a_of_type_Tvt.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvu
  * JD-Core Version:    0.7.0.1
  */

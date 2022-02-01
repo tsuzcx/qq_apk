@@ -1,81 +1,117 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import cooperation.vip.ar.util.VipQGLoaderManager.1;
+import java.util.HashMap;
 
 public class bmmh
-  extends RecyclerView.Adapter<bmmj>
+  implements bmln
 {
-  private int jdField_a_of_type_Int = -1;
-  private bmml jdField_a_of_type_Bmml;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<Integer> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String b = "";
+  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "vipARLevelValue", 20);
+  private static bmmh jdField_a_of_type_Bmmh;
+  private argw jdField_a_of_type_Argw;
+  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public bmmh(String paramString, List<Integer> paramList, bmml parambmml)
+  public static bmmh a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Bmml = parambmml;
-  }
-  
-  private int a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-    }
-    return 0;
-  }
-  
-  private void b(bmmj parambmmj, int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == paramInt)
+    if (jdField_a_of_type_Bmmh == null) {}
+    try
     {
-      parambmmj.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (jdField_a_of_type_Bmmh == null) {
+        jdField_a_of_type_Bmmh = new bmmh();
+      }
+      return jdField_a_of_type_Bmmh;
+    }
+    finally {}
+  }
+  
+  public void a(argw paramargw)
+  {
+    if (paramargw != null)
+    {
+      this.jdField_a_of_type_Argw = paramargw;
+      QLog.i("VipARQGLoaderManager", 1, "onConfigLoadSuccess bean != null  switch = " + paramargw.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void a(argx paramargx, bmlm parambmlm)
+  {
+    if ((paramargx == null) || (TextUtils.isEmpty(paramargx.b))) {}
+    String str1;
+    do
+    {
+      return;
+      str1 = paramargx.b;
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(str1) == null) {
+        break;
+      }
+      QZLog.i("VipARQGLoaderManager", 1, "getQGModelData map exist");
+    } while (parambmlm == null);
+    parambmlm.a((String)this.jdField_a_of_type_JavaUtilHashMap.get(str1));
+    return;
+    String str2 = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(str1.hashCode()));
+    if (TextUtils.isEmpty(str2))
+    {
+      QZLog.i("VipARQGLoaderManager", 1, "getQGModelData pathDir = null");
       return;
     }
-    parambmmj.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public bmmj a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new bmmj(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558541, paramViewGroup, false));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramInt >= 0) {
-      this.jdField_a_of_type_Bmml.a(this.jdField_a_of_type_JavaLangString, a(paramInt), paramInt, this.b);
-    }
-  }
-  
-  public void a(bmmj parambmmj, int paramInt)
-  {
-    parambmmj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(AEEditorColorSelectorView.a(parambmmj.jdField_a_of_type_AndroidWidgetImageView, false, a(paramInt)));
-    parambmmj.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bmmi(this, paramInt, parambmmj));
-    b(parambmmj, paramInt);
-    EventCollector.getInstance().onRecyclerBindViewHolder(parambmmj, paramInt, getItemId(paramInt));
+    ThreadManager.executeOnFileThread(new VipQGLoaderManager.1(this, str2, str1, parambmlm, paramargx));
   }
   
   public void a(String paramString)
   {
-    this.b = paramString;
+    QLog.e("VipARQGLoaderManager", 1, "onConfigLoadFail error = " + paramString);
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return (this.jdField_a_of_type_Argw != null) && (this.jdField_a_of_type_Argw.jdField_a_of_type_Int != 0) && (!bmmb.a(this.jdField_a_of_type_Argw.jdField_a_of_type_JavaLangString)) && (Build.VERSION.SDK_INT > jdField_a_of_type_Int);
   }
   
-  public int getItemCount()
+  public void b(argw paramargw)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    StringBuilder localStringBuilder = new StringBuilder().append("setVipARConfig vipARConfig == null  ");
+    if (paramargw == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("VipARQGLoaderManager", 1, bool);
+      this.jdField_a_of_type_Argw = paramargw;
+      return;
+    }
+  }
+  
+  public void b(argx paramargx, bmlm parambmlm)
+  {
+    if ((paramargx == null) || (TextUtils.isEmpty(paramargx.b)) || (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader == null))
+    {
+      if (parambmlm != null)
+      {
+        localObject = new StringBuilder().append("downloadQGModelData zipUrl = null or Download = null , config == null ");
+        if (paramargx != null) {
+          break label61;
+        }
+      }
+      label61:
+      for (boolean bool = true;; bool = false)
+      {
+        parambmlm.b(bool);
+        return;
+      }
+    }
+    Object localObject = paramargx.b;
+    String str = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(((String)localObject).hashCode())) + ".zip";
+    if (QZLog.isColorLevel()) {
+      QZLog.i("VipARQGLoaderManager", 2, "download qg js file zipUrl = " + (String)localObject + " tempPath = " + str);
+    }
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download((String)localObject, str, false, new bmmi(this, parambmlm, (String)localObject, str, paramargx));
   }
 }
 

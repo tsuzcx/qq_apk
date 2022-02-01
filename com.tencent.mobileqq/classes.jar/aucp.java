@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass.8;
-
 public class aucp
-  implements DialogInterface.OnClickListener
 {
-  public aucp(JefsClass.8 param8) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public long d;
 }
 
 

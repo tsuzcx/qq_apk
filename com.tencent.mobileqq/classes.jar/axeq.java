@@ -1,15 +1,10 @@
-class axeq
-  implements axfc
+import com.tencent.widget.ListView;
+
+public abstract interface axeq
 {
-  axeq(axen paramaxen, axes paramaxes) {}
+  public abstract ListView a();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Axen.c(paramString);
-    if (this.jdField_a_of_type_Axes != null) {
-      this.jdField_a_of_type_Axes.a(paramBoolean, paramString);
-    }
-  }
+  public abstract void a();
 }
 
 

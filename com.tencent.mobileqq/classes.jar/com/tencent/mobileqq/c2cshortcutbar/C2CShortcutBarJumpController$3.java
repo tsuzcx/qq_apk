@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.c2cshortcutbar;
 
-import apii;
+import aqlm;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class C2CShortcutBarJumpController$3
   implements Runnable
 {
-  public C2CShortcutBarJumpController$3(apii paramapii, BaseChatPie paramBaseChatPie) {}
+  public C2CShortcutBarJumpController$3(aqlm paramaqlm, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    QQToast.a(this.a.getActivity(), 2131697752, 0).a();
+    QQToast.a(this.a.getActivity(), 2131698035, 0).a();
   }
 }
 

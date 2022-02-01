@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bbeh
-  implements Comparator<RecentUser>
+public class bbeh
+  implements View.OnClickListener
 {
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public bbeh(IosTimepicker paramIosTimepicker) {}
+  
+  public void onClick(View paramView)
   {
-    return Long.signum(paramRecentUser2.lastmsgtime - paramRecentUser1.lastmsgtime);
+    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    {
+      IosTimepicker.a(this.a).dismiss();
+      IosTimepicker.a(this.a, null);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

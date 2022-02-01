@@ -3,18 +3,18 @@ package dov.com.qq.im.ae.play;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bbsv;
-import bbsx;
-import bljm;
-import bljr;
-import blul;
-import blux;
-import bluy;
-import blvb;
-import bmbx;
-import bmql;
-import bmrl;
-import boba;
+import bczq;
+import bczs;
+import bmwk;
+import bmwr;
+import bnjo;
+import bnka;
+import bnkb;
+import bnke;
+import bnrh;
+import bogd;
+import bohd;
+import bpqs;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
 import camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaCategory;
 import camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaMaterial;
@@ -34,17 +34,17 @@ import java.util.Set;
 import mqq.os.MqqHandler;
 
 public class AEPlayShowMaterialManager
-  extends bmrl
+  extends bohd
 {
   public static final int EVENT_MATERIAL_LIST_UPDATED = 1;
   private static final String TAG = "AEPlayShowMaterialManager";
-  private bluy mMaterialManager;
-  private bbsv mObservable = new bbsv();
-  private List<blux> mPsCategoryList = new LinkedList();
+  private bnkb mMaterialManager;
+  private bczq mObservable = new bczq();
+  private List<bnka> mPsCategoryList = new LinkedList();
   private final Object mPsCategoryListLock = new Object();
   private String preLoadUrl;
   
-  private Map<String, blvb> buildMaterialDataMap(@Nullable List<blux> paramList)
+  private Map<String, bnke> buildMaterialDataMap(@Nullable List<bnka> paramList)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "buildMaterialDataMap");
@@ -56,15 +56,15 @@ public class AEPlayShowMaterialManager
     paramList = new LinkedList(paramList).iterator();
     while (paramList.hasNext())
     {
-      Object localObject = (blux)paramList.next();
-      if ((localObject != null) && (((blux)localObject).jdField_a_of_type_JavaUtilList != null) && (((blux)localObject).jdField_a_of_type_JavaUtilList.size() != 0))
+      Object localObject = (bnka)paramList.next();
+      if ((localObject != null) && (((bnka)localObject).jdField_a_of_type_JavaUtilList != null) && (((bnka)localObject).jdField_a_of_type_JavaUtilList.size() != 0))
       {
-        localObject = new LinkedList(((blux)localObject).jdField_a_of_type_JavaUtilList).iterator();
+        localObject = new LinkedList(((bnka)localObject).jdField_a_of_type_JavaUtilList).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          blvb localblvb = (blvb)((Iterator)localObject).next();
-          if ((!TextUtils.isEmpty(localblvb.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localblvb.jdField_e_of_type_JavaLangString))) {
-            localHashMap.put(localblvb.jdField_a_of_type_JavaLangString, localblvb);
+          bnke localbnke = (bnke)((Iterator)localObject).next();
+          if ((!TextUtils.isEmpty(localbnke.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localbnke.jdField_e_of_type_JavaLangString))) {
+            localHashMap.put(localbnke.jdField_a_of_type_JavaLangString, localbnke);
           }
         }
       }
@@ -72,22 +72,22 @@ public class AEPlayShowMaterialManager
     return localHashMap;
   }
   
-  private void deleteMaterialZipAndDir(@NonNull blvb paramblvb)
+  private void deleteMaterialZipAndDir(@NonNull bnke parambnke)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("AEPlayShowMaterialManager", 4, "deleteMaterialZipAndDir, AEMaterialMetaData.id=" + paramblvb.jdField_a_of_type_JavaLangString);
+      QLog.d("AEPlayShowMaterialManager", 4, "deleteMaterialZipAndDir, AEMaterialMetaData.id=" + parambnke.jdField_a_of_type_JavaLangString);
     }
-    File localFile = new File(bljm.d, paramblvb.jdField_a_of_type_JavaLangString);
-    paramblvb = new File(bljm.jdField_e_of_type_JavaLangString, paramblvb.jdField_a_of_type_JavaLangString);
+    File localFile = new File(bmwk.d, parambnke.jdField_a_of_type_JavaLangString);
+    parambnke = new File(bmwk.jdField_e_of_type_JavaLangString, parambnke.jdField_a_of_type_JavaLangString);
     if (localFile.exists()) {
       FileUtils.deleteFile(localFile.getPath());
     }
-    if (paramblvb.exists()) {
-      FileUtils.deleteDirectory(paramblvb.getPath());
+    if (parambnke.exists()) {
+      FileUtils.deleteDirectory(parambnke.getPath());
     }
   }
   
-  private void diffTwoListAndDeleteOutdatedMaterial(@NonNull List<blux> paramList1, @NonNull List<blux> paramList2)
+  private void diffTwoListAndDeleteOutdatedMaterial(@NonNull List<bnka> paramList1, @NonNull List<bnka> paramList2)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "diffTwoListAndDeleteOutdatedMaterial");
@@ -103,14 +103,14 @@ public class AEPlayShowMaterialManager
       {
         paramList1 = (Map.Entry)localIterator.next();
         String str = (String)paramList1.getKey();
-        paramList2 = (blvb)paramList1.getValue();
+        paramList2 = (bnke)paramList1.getValue();
         if (paramList2 == null) {
           continue;
         }
         paramList1 = paramList2;
         if (localMap.containsKey(str))
         {
-          paramList1 = (blvb)localMap.get(str);
+          paramList1 = (bnke)localMap.get(str);
           if ((paramList1 == null) || ((paramList1.g != 4) && (paramList1.g != 5) && (paramList1.g != 6) && (paramList1.g != 7)) || (paramList1.jdField_e_of_type_JavaLangString.equals(paramList2.jdField_e_of_type_JavaLangString))) {
             break label211;
           }
@@ -128,15 +128,15 @@ public class AEPlayShowMaterialManager
     }
   }
   
-  private bluy getAEMaterialManager()
+  private bnkb getAEMaterialManager()
   {
     if (this.mMaterialManager == null) {
-      this.mMaterialManager = ((bluy)bmql.a(18));
+      this.mMaterialManager = ((bnkb)bogd.a(18));
     }
     return this.mMaterialManager;
   }
   
-  private List<blux> getFilteredPsCategoryList(List<blux> paramList)
+  private List<bnka> getFilteredPsCategoryList(List<bnka> paramList)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "getFilteredPsCategoryList");
@@ -144,12 +144,12 @@ public class AEPlayShowMaterialManager
     return reAssemblePsCategory(paramList, buildMaterialDataMap(new LinkedList(getAEMaterialManager().b())));
   }
   
-  private boolean isNotOrdinaryMaterialUsable(@NonNull blvb paramblvb)
+  private boolean isNotOrdinaryMaterialUsable(@NonNull bnke parambnke)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("AEPlayShowMaterialManager", 4, "isNotOrdinaryMaterialUsable, AEMaterialMetaData.id=" + paramblvb.jdField_a_of_type_JavaLangString);
+      QLog.d("AEPlayShowMaterialManager", 4, "isNotOrdinaryMaterialUsable, AEMaterialMetaData.id=" + parambnke.jdField_a_of_type_JavaLangString);
     }
-    switch (paramblvb.g)
+    switch (parambnke.g)
     {
     default: 
       return false;
@@ -158,16 +158,16 @@ public class AEPlayShowMaterialManager
       return true;
     }
     getAEMaterialManager();
-    return bluy.a(paramblvb);
+    return bnkb.a(parambnke);
   }
   
   private void notifyMaterialListUpdated()
   {
-    bmbx.b("AEPlayShowMaterialManager", "notifyMaterialListUpdated");
+    bnrh.b("AEPlayShowMaterialManager", "notifyMaterialListUpdated");
     ThreadManager.getUIHandler().post(new AEPlayShowMaterialManager.2(this));
   }
   
-  private List<blux> parsePsCategoryListFromConfig(@Nullable String paramString)
+  private List<bnka> parsePsCategoryListFromConfig(@Nullable String paramString)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "parsePsCategoryListFromConfig");
@@ -175,7 +175,7 @@ public class AEPlayShowMaterialManager
     if (TextUtils.isEmpty(paramString)) {
       return new LinkedList();
     }
-    GetPlayShowCatMatTreeRsp localGetPlayShowCatMatTreeRsp = (GetPlayShowCatMatTreeRsp)GsonUtils.json2Obj(paramString, blul.a);
+    GetPlayShowCatMatTreeRsp localGetPlayShowCatMatTreeRsp = (GetPlayShowCatMatTreeRsp)GsonUtils.json2Obj(paramString, bnjo.a);
     if ((localGetPlayShowCatMatTreeRsp == null) || (localGetPlayShowCatMatTreeRsp.Categories == null) || (localGetPlayShowCatMatTreeRsp.Categories.size() == 0)) {
       return new LinkedList();
     }
@@ -204,7 +204,7 @@ public class AEPlayShowMaterialManager
             break;
             if (localHashMap.containsKey(localPSMetaMaterial.id))
             {
-              paramString = (blvb)localHashMap.get(localPSMetaMaterial.id);
+              paramString = (bnke)localHashMap.get(localPSMetaMaterial.id);
               if ((paramString.g != 4) && (paramString.g != 5) && (paramString.g != 6) && (paramString.g != 7)) {
                 break label479;
               }
@@ -219,7 +219,7 @@ public class AEPlayShowMaterialManager
                 localHashMap.put(localPSMetaMaterial.id, paramString);
                 localLinkedList2.add(paramString);
                 break;
-                paramString = new blvb();
+                paramString = new bnke();
                 paramString.jdField_a_of_type_JavaLangString = localPSMetaMaterial.id;
                 paramString.f = localPSMetaMaterial.id;
                 paramString.d = localPSMetaMaterial.packageUrl;
@@ -247,7 +247,7 @@ public class AEPlayShowMaterialManager
       } while (localLinkedList2.size() <= 0);
       label479:
       label500:
-      paramString = new blux();
+      paramString = new bnka();
       paramString.jdField_b_of_type_JavaLangString = localPSMetaCategory.name;
       paramString.jdField_a_of_type_JavaLangString = localPSMetaCategory.id;
       if (localPSMetaCategory.onlyFlag) {}
@@ -263,7 +263,7 @@ public class AEPlayShowMaterialManager
     return localLinkedList1;
   }
   
-  private List<blux> reAssemblePsCategory(@NonNull List<blux> paramList, @NonNull Map<String, blvb> paramMap)
+  private List<bnka> reAssemblePsCategory(@NonNull List<bnka> paramList, @NonNull Map<String, bnke> paramMap)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "reAssemblePsCategory");
@@ -273,45 +273,45 @@ public class AEPlayShowMaterialManager
     int i = 0;
     while (i < paramList.size())
     {
-      blux localblux = (blux)paramList.get(i);
+      bnka localbnka = (bnka)paramList.get(i);
       LinkedList localLinkedList2 = new LinkedList();
       int j = 0;
       Object localObject;
-      if (j < localblux.jdField_a_of_type_JavaUtilList.size())
+      if (j < localbnka.jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = (blvb)localblux.jdField_a_of_type_JavaUtilList.get(j);
-        if (((blvb)localObject).g != 0)
+        localObject = (bnke)localbnka.jdField_a_of_type_JavaUtilList.get(j);
+        if (((bnke)localObject).g != 0)
         {
-          ((blvb)localObject).jdField_e_of_type_Boolean = isNotOrdinaryMaterialUsable((blvb)localObject);
+          ((bnke)localObject).jdField_e_of_type_Boolean = isNotOrdinaryMaterialUsable((bnke)localObject);
           localLinkedList2.add(localObject);
-          if (((blvb)localObject).g == 2) {
-            this.preLoadUrl = ((blvb)localObject).n;
+          if (((bnke)localObject).g == 2) {
+            this.preLoadUrl = ((bnke)localObject).n;
           }
         }
         for (;;)
         {
           j += 1;
           break;
-          if (paramMap.containsKey(((blvb)localObject).jdField_a_of_type_JavaLangString))
+          if (paramMap.containsKey(((bnke)localObject).jdField_a_of_type_JavaLangString))
           {
-            blvb localblvb = (blvb)paramMap.get(((blvb)localObject).jdField_a_of_type_JavaLangString);
-            localblvb.l = ((blvb)localObject).l;
-            localblvb.k = localblux.jdField_a_of_type_JavaLangString;
-            localblvb.m = ((blvb)localObject).m;
-            if ((TextUtils.isEmpty(localblvb.i)) && (!TextUtils.isEmpty(((blvb)localObject).i))) {
-              localblvb.i = ((blvb)localObject).i;
+            bnke localbnke = (bnke)paramMap.get(((bnke)localObject).jdField_a_of_type_JavaLangString);
+            localbnke.l = ((bnke)localObject).l;
+            localbnke.k = localbnka.jdField_a_of_type_JavaLangString;
+            localbnke.m = ((bnke)localObject).m;
+            if ((TextUtils.isEmpty(localbnke.i)) && (!TextUtils.isEmpty(((bnke)localObject).i))) {
+              localbnke.i = ((bnke)localObject).i;
             }
-            localLinkedList2.add(localblvb);
+            localLinkedList2.add(localbnke);
           }
         }
       }
       if (localLinkedList2.size() > 0)
       {
-        localObject = new blux();
-        ((blux)localObject).jdField_b_of_type_JavaLangString = localblux.jdField_b_of_type_JavaLangString;
-        ((blux)localObject).jdField_b_of_type_Int = localblux.jdField_b_of_type_Int;
-        ((blux)localObject).jdField_a_of_type_JavaLangString = localblux.jdField_a_of_type_JavaLangString;
-        ((blux)localObject).jdField_a_of_type_JavaUtilList = localLinkedList2;
+        localObject = new bnka();
+        ((bnka)localObject).jdField_b_of_type_JavaLangString = localbnka.jdField_b_of_type_JavaLangString;
+        ((bnka)localObject).jdField_b_of_type_Int = localbnka.jdField_b_of_type_Int;
+        ((bnka)localObject).jdField_a_of_type_JavaLangString = localbnka.jdField_a_of_type_JavaLangString;
+        ((bnka)localObject).jdField_a_of_type_JavaUtilList = localLinkedList2;
         localLinkedList1.add(localObject);
       }
       i += 1;
@@ -327,13 +327,13 @@ public class AEPlayShowMaterialManager
     ThreadManager.excute(new AEPlayShowMaterialManager.1(this), 64, null, true);
   }
   
-  private List<blux> updatePsCategoryListInternal()
+  private List<bnka> updatePsCategoryListInternal()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal");
     }
-    File localFile1 = new File(bljr.jdField_a_of_type_JavaLangString);
-    File localFile2 = new File(bljr.jdField_b_of_type_JavaLangString);
+    File localFile1 = new File(bmwr.jdField_a_of_type_JavaLangString);
+    File localFile2 = new File(bmwr.jdField_b_of_type_JavaLangString);
     if (!localFile2.exists())
     {
       if (QLog.isDevelopLevel()) {
@@ -349,7 +349,7 @@ public class AEPlayShowMaterialManager
       if (QLog.isDevelopLevel()) {
         QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=" + localFile1.getPath() + ", thread=" + Thread.currentThread());
       }
-      return getFilteredPsCategoryList(parsePsCategoryListFromConfig(boba.a(localFile1)));
+      return getFilteredPsCategoryList(parsePsCategoryListFromConfig(bpqs.a(localFile1)));
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, updatedConfig=" + localFile2.getPath() + ", thread=" + Thread.currentThread());
@@ -359,15 +359,15 @@ public class AEPlayShowMaterialManager
       if (QLog.isDevelopLevel()) {
         QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=null, thread=" + Thread.currentThread());
       }
-      localList1 = getFilteredPsCategoryList(parsePsCategoryListFromConfig(boba.a(localFile2)));
+      localList1 = getFilteredPsCategoryList(parsePsCategoryListFromConfig(bpqs.a(localFile2)));
       FileUtils.moveFile(localFile2.getPath(), localFile1.getPath());
       return localList1;
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "updatePsCategoryListInternal, defaultConfig=" + localFile1.getPath() + ", thread=" + Thread.currentThread());
     }
-    List localList1 = parsePsCategoryListFromConfig(boba.a(localFile1));
-    List localList2 = parsePsCategoryListFromConfig(boba.a(localFile2));
+    List localList1 = parsePsCategoryListFromConfig(bpqs.a(localFile1));
+    List localList2 = parsePsCategoryListFromConfig(bpqs.a(localFile2));
     diffTwoListAndDeleteOutdatedMaterial(localList1, localList2);
     localList1 = getFilteredPsCategoryList(localList2);
     FileUtils.deleteFile(localFile1.getPath());
@@ -375,12 +375,12 @@ public class AEPlayShowMaterialManager
     return localList1;
   }
   
-  public void addObserver(bbsx parambbsx, int paramInt)
+  public void addObserver(bczs parambczs, int paramInt)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("AEPlayShowMaterialManager", 4, "addObserver, observer=" + parambbsx + ", eventId=" + paramInt);
+      QLog.d("AEPlayShowMaterialManager", 4, "addObserver, observer=" + parambczs + ", eventId=" + paramInt);
     }
-    this.mObservable.a(parambbsx, new int[] { paramInt });
+    this.mObservable.a(parambczs, new int[] { paramInt });
   }
   
   public void clearCategoryList()
@@ -403,7 +403,7 @@ public class AEPlayShowMaterialManager
     return this.preLoadUrl;
   }
   
-  public List<blux> getPsCategoryList()
+  public List<bnka> getPsCategoryList()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowMaterialManager", 4, "getPsCategoryList");
@@ -435,12 +435,12 @@ public class AEPlayShowMaterialManager
     this.mObservable.a(paramInt);
   }
   
-  public void removeObserver(bbsx parambbsx)
+  public void removeObserver(bczs parambczs)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("AEPlayShowMaterialManager", 4, "removeObserver, observer=" + parambbsx);
+      QLog.d("AEPlayShowMaterialManager", 4, "removeObserver, observer=" + parambczs);
     }
-    this.mObservable.a(parambbsx);
+    this.mObservable.a(parambczs);
   }
 }
 

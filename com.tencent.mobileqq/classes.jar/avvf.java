@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
 
-public abstract interface avvf
+class avvf
+  implements CustomizedDns
 {
-  public abstract void a(boolean paramBoolean, RecentBaseData paramRecentBaseData);
+  avvf(avux paramavux) {}
+  
+  public String getip(String paramString)
+  {
+    return avvz.a().a(paramString);
+  }
 }
 
 

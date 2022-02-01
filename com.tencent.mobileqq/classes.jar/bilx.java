@@ -1,6 +1,9 @@
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+
 public abstract interface bilx
 {
-  public abstract void a(binj parambinj);
+  public abstract Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2);
 }
 
 

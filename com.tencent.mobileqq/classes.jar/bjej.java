@@ -1,19 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
-class bjej
-  extends CmdCallback.Stub
+public class bjej
+  extends AnimatorListenerAdapter
 {
-  bjej(bjei parambjei, BaseRuntime paramBaseRuntime, String paramString1, String paramString2, String paramString3, int paramInt, RequestEvent paramRequestEvent) {}
+  public bjej(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    paramBundle = paramBundle.getString("shareJson");
-    QLog.d("MiniSDKClientQIPCModule", 1, "handleDirectShareSucCallback shareJsonString after = " + paramBundle);
-    bjei.a(this.jdField_a_of_type_Bjei, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent);
+    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

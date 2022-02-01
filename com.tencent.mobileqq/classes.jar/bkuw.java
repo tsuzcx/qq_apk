@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import java.util.List;
 
-public class bkuw
-  implements View.OnClickListener
+class bkuw
+  implements bkum
 {
-  public bkuw(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  bkuw(bkuv parambkuv) {}
   
-  public void onClick(View paramView)
+  public void a(List<Pair<Integer, Byte>> paramList)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Message localMessage = bkuv.a(this.a).obtainMessage(2);
+    localMessage.obj = paramList;
+    bkuv.a(this.a).sendMessage(localMessage);
   }
 }
 

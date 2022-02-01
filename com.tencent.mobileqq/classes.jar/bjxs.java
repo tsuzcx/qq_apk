@@ -1,12 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bjxs
-  extends RecyclerView.ViewHolder
+public class bjxs
+  implements View.OnClickListener
 {
-  bjxs(bjxq parambjxq, View paramView)
+  public bjxs(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    bhaa.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Azrb.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,10 +1,16 @@
-public abstract interface atgr
+class atgr
+  implements athg
 {
-  public abstract void a(String paramString, long paramLong);
+  atgr(atfq paramatfq) {}
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    atfq.s(this.a, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgr
  * JD-Core Version:    0.7.0.1
  */

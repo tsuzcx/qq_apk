@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bmot;
+import boel;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.BaseVideoThumbAssetCache.LRUKey;
 import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
@@ -57,8 +57,8 @@ public final class ThumbClipView
   public ThumbClipView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    View.inflate(paramContext, 2131558552, (ViewGroup)this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378586));
+    View.inflate(paramContext, 2131558563, (ViewGroup)this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378880));
   }
   
   private final int a()
@@ -135,7 +135,7 @@ public final class ThumbClipView
         }
         paramCMTime = getResources();
         Intrinsics.checkExpressionValueIsNotNull(paramCMTime, "resources");
-        localImageView.setImageDrawable((Drawable)new bmot(paramCMTime, localBitmap));
+        localImageView.setImageDrawable((Drawable)new boel(paramCMTime, localBitmap));
         break;
       }
     }
@@ -167,7 +167,7 @@ public final class ThumbClipView
       {
         localObject3 = getResources();
         Intrinsics.checkExpressionValueIsNotNull(localObject3, "resources");
-        ((ImageView)localObject2).setImageDrawable((Drawable)new bmot((Resources)localObject3, localBitmap));
+        ((ImageView)localObject2).setImageDrawable((Drawable)new boel((Resources)localObject3, localBitmap));
       }
       i += 1;
     }

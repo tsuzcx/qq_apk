@@ -1,6 +1,20 @@
-public abstract interface bgso
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+
+public class bgso
+  implements bdyy
 {
-  public abstract void onResult(boolean paramBoolean);
+  public bgso(TroopInteractGiftAnimationController.1.1 param1) {}
+  
+  public void a()
+  {
+    this.a.a.this$0.a();
+    if (this.a.a.jdField_a_of_type_Bdyy != null) {
+      this.a.a.jdField_a_of_type_Bdyy.a();
+    }
+    this.a.a.this$0.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.this$0.a, true);
+  }
 }
 
 

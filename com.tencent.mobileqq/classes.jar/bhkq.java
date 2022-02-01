@@ -1,59 +1,69 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.support.v4.view.PagerAdapter;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.mobileqq.widget.bounce.BounceViewPager;
+import android.os.IBinder;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-public class bhkq
+public final class bhkq
 {
-  public float a;
-  private int jdField_a_of_type_Int = 200;
-  private Animator jdField_a_of_type_AndroidAnimationAnimator;
-  private BounceViewPager jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Method b;
+  private static Method c;
+  private static Method d;
   
-  public bhkq(BounceViewPager paramBounceViewPager)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = paramBounceViewPager;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager, "Pull", new float[] { this.jdField_a_of_type_Float, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationAnimator.setInterpolator(new DecelerateInterpolator());
-    float f = Math.abs(-this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidAnimationAnimator.setDuration((f * this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bhkr(this));
-    this.jdField_a_of_type_AndroidAnimationAnimator.start();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.a();
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float < 0.0F)) {}
-    for (;;)
+    try
     {
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getAdapter().getCount() - 1 == this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem()) {}
-      for (int i = 1; (i == 0) || (this.jdField_a_of_type_Float <= 0.0F); i = 0) {
-        return false;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning()))
-    {
-      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bhks(this));
-      this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
+      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
+      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
+      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
+      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
+      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
       return;
     }
-    a();
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
+  }
+  
+  public static IBinder a(String paramString)
+  {
+    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+  }
+  
+  private static Object a(Method paramMethod, Object... paramVarArgs)
+  {
+    try
+    {
+      paramMethod = paramMethod.invoke(null, paramVarArgs);
+      return paramMethod;
+    }
+    catch (IllegalArgumentException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramMethod)
+    {
+      paramMethod.printStackTrace();
+    }
+    return null;
   }
 }
 

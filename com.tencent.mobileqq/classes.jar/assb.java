@@ -1,20 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
 
-class assb
-  implements aszj
+public abstract interface assb
 {
-  assb(assa paramassa) {}
+  public abstract void setLastUpdatedLabel(CharSequence paramCharSequence);
   
-  public void onNo() {}
+  public abstract void setLoadingDrawable(Drawable paramDrawable);
   
-  public void onYes()
-  {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getFileManagerEngine().a(this.a.a.d());
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
-  }
+  public abstract void setPullLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshResultLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshingLabel(CharSequence paramCharSequence);
+  
+  public abstract void setReleaseLabel(CharSequence paramCharSequence);
 }
 
 

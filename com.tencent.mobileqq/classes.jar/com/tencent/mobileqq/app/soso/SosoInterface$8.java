@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.soso;
 
-import absn;
-import abso;
+import acim;
+import acin;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -19,7 +19,7 @@ final class SosoInterface$8
 {
   public void run()
   {
-    absn.a().a(BaseApplication.getContext(), new abso());
+    acim.a().a(BaseApplication.getContext(), new acin());
     Object localObject = new GdtDeviceInfoHelper.Params();
     ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "8b5c3a";
     localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);

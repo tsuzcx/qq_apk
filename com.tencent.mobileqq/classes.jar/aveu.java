@@ -1,20 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 class aveu
-  implements AdapterView.OnItemClickListener
+  extends WebChromeClient
 {
-  aveu(aveq paramaveq, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  aveu(avet paramavet) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    aveq.a(this.jdField_a_of_type_Aveq, true);
-    aveq.a(this.jdField_a_of_type_Aveq).a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
-      bcef.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("QQGameHelper", 2, paramConsoleMessage.message());
     }
+    return true;
+  }
+  
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+  }
+  
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
 }
 

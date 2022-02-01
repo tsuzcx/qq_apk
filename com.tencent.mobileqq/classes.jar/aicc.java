@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aicc
-  implements View.OnClickListener
+class aicc
+  implements aajv
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  aicc(aibs paramaibs) {}
   
-  protected aicc(aibz paramaibz) {}
-  
-  public void onClick(View paramView)
+  public void a()
   {
-    if (aibz.a(this.jdField_a_of_type_Aibz) != null) {
-      aibz.a(this.jdField_a_of_type_Aibz).a(this.jdField_a_of_type_JavaLangString);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.a(false, false, 4);
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
   }
 }
 

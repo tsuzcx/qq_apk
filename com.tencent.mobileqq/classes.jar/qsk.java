@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URL;
 
-class qsk
-  implements View.OnClickListener
+final class qsk
+  implements vuw
 {
-  qsk(qse paramqse) {}
+  qsk(Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, tls paramtls)
   {
-    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    if (this.a != null) {
+      this.a.run();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

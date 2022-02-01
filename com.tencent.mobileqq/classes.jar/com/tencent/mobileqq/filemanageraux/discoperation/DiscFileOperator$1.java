@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanageraux.discoperation;
 
-import ater;
-import atet;
+import auiy;
+import auja;
 
 public class DiscFileOperator$1
   implements Runnable
 {
-  public DiscFileOperator$1(ater paramater) {}
+  public DiscFileOperator$1(auiy paramauiy) {}
   
   public void run()
   {

@@ -1,67 +1,75 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
+import UserGrowth.stFeed;
+import UserGrowth.stFollowFeedsGlobalConfig;
+import UserGrowth.stFollowFeedsRsp;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 import java.util.List;
 
 class vib
-  extends SimpleObserver<List<vil>>
+  implements vbf<stFeed>
 {
-  vib(via paramvia, viz paramviz) {}
+  vib(via paramvia, boolean paramBoolean) {}
   
-  public void a(List<vil> paramList)
+  public void a(boolean paramBoolean1, List<stFeed> paramList, boolean paramBoolean2)
   {
-    super.onNext(paramList);
-    via.a(this.jdField_a_of_type_Via, 0);
-    Object localObject = new vie();
-    ((vie)localObject).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
-    ((vie)localObject).jdField_a_of_type_JavaUtilList = paramList;
-    vli.a().dispatch((Dispatcher.Dispatchable)localObject);
-    if (!paramList.isEmpty()) {
-      via.a(this.jdField_a_of_type_Via, this.jdField_a_of_type_Viz.a(), this.jdField_a_of_type_Viz.b());
-    }
-    long l = System.currentTimeMillis() - via.a(this.jdField_a_of_type_Via);
-    String str = via.a(paramList);
-    if (this.jdField_a_of_type_Viz.a())
+    ((viq)this.jdField_a_of_type_Via.a()).a(this.jdField_a_of_type_Boolean, paramBoolean1, paramList, paramBoolean2);
+    if (!paramBoolean1)
     {
-      localObject = "2";
-      xwa.a("video_shoot_slides", "scan", 0, 0, new String[] { "", localObject, l + "" });
-      if (!this.jdField_a_of_type_Viz.a()) {
-        break label271;
-      }
-    }
-    label271:
-    for (localObject = "2";; localObject = "1")
-    {
-      xwa.a("video_shoot_slides", "piece_smartalbum", 0, 0, new String[] { str, localObject, paramList.size() + "" });
-      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split success timecost=%s : ScanInfo =%s result=%s", new Object[] { Long.valueOf(l), this.jdField_a_of_type_Viz, str });
-      via.a(this.jdField_a_of_type_Via, this.jdField_a_of_type_Viz);
+      ((viq)this.jdField_a_of_type_Via.a()).a(paramList);
       return;
-      localObject = "1";
-      break;
     }
+    ((viq)this.jdField_a_of_type_Via.a()).a(paramList, paramBoolean2);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject)
   {
-    super.onError(paramError);
-    Object localObject = new vie();
-    ((vie)localObject).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = ((ErrorMessage)paramError);
-    ((vie)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
-    vli.a().dispatch((Dispatcher.Dispatchable)localObject);
-    via.a(this.jdField_a_of_type_Via, 0);
-    xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split falied : " + paramError);
-    long l1 = System.currentTimeMillis();
-    long l2 = via.a(this.jdField_a_of_type_Via);
-    int i = ((ErrorMessage)paramError).errorCode;
-    localObject = ((ErrorMessage)paramError).errorMsg;
-    if (this.jdField_a_of_type_Viz.a()) {}
-    for (paramError = "2";; paramError = "1")
+    ((viq)this.jdField_a_of_type_Via.a()).e();
+    if (paramBoolean2) {
+      ((viq)this.jdField_a_of_type_Via.a()).a(paramBoolean3);
+    }
+    if (!paramBoolean3)
     {
-      xwa.a("video_shoot_slides", "scan", 0, i, new String[] { localObject, paramError, l1 - l2 + "" });
+      ((viq)this.jdField_a_of_type_Via.a()).b(false, true);
+      ((viq)this.jdField_a_of_type_Via.a()).a(paramBoolean1, paramBoolean2);
+    }
+    label145:
+    label312:
+    label323:
+    for (;;)
+    {
       return;
+      Object localObject;
+      if ((paramBoolean1) && ((paramObject instanceof stFollowFeedsRsp)))
+      {
+        localObject = (stFollowFeedsRsp)paramObject;
+        via.a(this.jdField_a_of_type_Via, ((stFollowFeedsRsp)localObject).config);
+        StringBuilder localStringBuilder = new StringBuilder().append("[WSFollowPresenter.java][onRequestFinish] showMute:");
+        if (via.a(this.jdField_a_of_type_Via) == null) {
+          break label312;
+        }
+        localObject = Boolean.valueOf(via.a(this.jdField_a_of_type_Via).showMute);
+        vmp.e("WSFollowPresenter", localObject);
+        if ((((viq)this.jdField_a_of_type_Via.a()).a() != null) && (via.a(this.jdField_a_of_type_Via) != null)) {
+          ((viq)this.jdField_a_of_type_Via.a()).a().a(via.a(this.jdField_a_of_type_Via).showMute);
+        }
+        if ((this.jdField_a_of_type_Via.a() instanceof WSFollowFragment)) {
+          ((WSFollowFragment)this.jdField_a_of_type_Via.a()).c(true);
+        }
+      }
+      if ((!(paramObject instanceof stFollowFeedsRsp)) || (vmg.a(((stFollowFeedsRsp)paramObject).feeds))) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label323;
+        }
+        ((viq)this.jdField_a_of_type_Via.a()).b(true, true);
+        if (!paramBoolean1) {
+          break;
+        }
+        ((viq)this.jdField_a_of_type_Via.a()).a(true, paramBoolean2);
+        return;
+        localObject = "mFollowFeedsConfig  is null!";
+        break label145;
+      }
     }
   }
 }

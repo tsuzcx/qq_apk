@@ -1,13 +1,36 @@
-public abstract class badu
-  extends badz
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfilePhotoView;
+
+public class badu
+  extends badm
 {
-  public int b = -1;
-  public int c;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  public int h = -1;
+  public badu(azxt paramazxt, azrb paramazrb)
+  {
+    super(paramazxt, paramazrb);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderPhotoComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    {
+      VasProfilePhotoView localVasProfilePhotoView = new VasProfilePhotoView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
+      localVasProfilePhotoView.setClickListener(this);
+      localVasProfilePhotoView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfilePhotoView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    }
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
 }
 
 

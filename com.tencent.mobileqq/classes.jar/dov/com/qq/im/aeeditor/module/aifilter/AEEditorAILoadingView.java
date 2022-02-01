@@ -17,22 +17,22 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bmbx;
-import bmcx;
-import bmfn;
-import bmfo;
-import bmfp;
-import bmfq;
-import bmfr;
-import bmfs;
-import bmft;
-import bmfu;
-import bmfv;
-import bmfw;
-import bmfx;
-import bmfy;
-import bmfz;
-import bmga;
+import bnrh;
+import bnsp;
+import bnvf;
+import bnvg;
+import bnvh;
+import bnvi;
+import bnvj;
+import bnvk;
+import bnvl;
+import bnvm;
+import bnvn;
+import bnvo;
+import bnvp;
+import bnvq;
+import bnvr;
+import bnvs;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
@@ -54,7 +54,7 @@ public class AEEditorAILoadingView
   protected LinearLayout a;
   protected RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmga jdField_a_of_type_Bmga;
+  private bnvs jdField_a_of_type_Bnvs;
   private ApolloLottieAnim jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim;
   private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
   private volatile boolean jdField_a_of_type_Boolean;
@@ -74,7 +74,7 @@ public class AEEditorAILoadingView
   
   static
   {
-    jdField_a_of_type_JavaLangString = bmcx.jdField_d_of_type_JavaLangString + File.separator + "ProcessAnimation" + File.separator;
+    jdField_a_of_type_JavaLangString = bnsp.jdField_d_of_type_JavaLangString + File.separator + "ProcessAnimation" + File.separator;
     jdField_b_of_type_JavaLangString = "ComicTextAnimation1";
     jdField_c_of_type_JavaLangString = "ComicTextAnimation2";
   }
@@ -94,11 +94,11 @@ public class AEEditorAILoadingView
     super(paramContext, paramAttributeSet, paramInt);
     if (a())
     {
-      LayoutInflater.from(paramContext).inflate(2131558553, this);
+      LayoutInflater.from(paramContext).inflate(2131558564, this);
       c();
       return;
     }
-    LayoutInflater.from(paramContext).inflate(2131558554, this);
+    LayoutInflater.from(paramContext).inflate(2131558565, this);
     b();
   }
   
@@ -140,7 +140,7 @@ public class AEEditorAILoadingView
     for (;;)
     {
       break;
-      bmbx.b("AEEditorAILoadingView", "lottie file count: " + i);
+      bnrh.b("AEEditorAILoadingView", "lottie file count: " + i);
       if ((i >= 0) && (i < 8))
       {
         ThreadManager.excute(new AEEditorAILoadingView.15(), 64, null, true);
@@ -157,7 +157,7 @@ public class AEEditorAILoadingView
     boolean bool1 = bool2;
     if (paramString.exists())
     {
-      paramString = paramString.listFiles(new bmfs());
+      paramString = paramString.listFiles(new bnvk());
       bool1 = bool2;
       if (paramString != null)
       {
@@ -173,32 +173,32 @@ public class AEEditorAILoadingView
   private void b()
   {
     e();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370110));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370282));
   }
   
   private void c()
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bmft(this));
-    this.jdField_c_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bmfu(this));
-    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bmfv(this));
-    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorUpdateListener(new bmfw(this));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bnvl(this));
+    this.jdField_c_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bnvm(this));
+    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bnvn(this));
+    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorUpdateListener(new bnvo(this));
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370601);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376507));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369060));
-    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369053));
-    this.jdField_c_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369059));
-    this.jdField_d_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369052));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376510));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378368));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378370));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378371));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376338);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131381077);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370784);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376766));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369223));
+    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369216));
+    this.jdField_c_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369222));
+    this.jdField_d_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)findViewById(2131369215));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376769));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378659));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378661));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378662));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131376593);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131381436);
     this.jdField_a_of_type_Int = UIUtils.dip2px(getContext(), 7.0F);
     this.jdField_d_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
     this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
@@ -215,19 +215,19 @@ public class AEEditorAILoadingView
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364182));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bmfx(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364258));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bnvp(this));
   }
   
   private void f()
   {
-    bmbx.a("AEEditorAILoadingView", "showResultAnimation start.");
+    bnrh.a("AEEditorAILoadingView", "showResultAnimation start.");
     this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
     this.jdField_d_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
     this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.animate().setDuration(100L).alpha(0.0F).start();
     this.jdField_d_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.animate().setDuration(100L).alpha(0.0F).start();
     int i;
-    if (getResources().getString(2131689687).equals(this.jdField_d_of_type_JavaLangString))
+    if (getResources().getString(2131689695).equals(this.jdField_d_of_type_JavaLangString))
     {
       i = 1;
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
@@ -238,17 +238,17 @@ public class AEEditorAILoadingView
       AnimatorSet localAnimatorSet = new AnimatorSet();
       ValueAnimator localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator1.setDuration(1000L);
-      localValueAnimator1.addUpdateListener(new bmfy(this));
-      localValueAnimator1.addListener(new bmfz(this));
+      localValueAnimator1.addUpdateListener(new bnvq(this));
+      localValueAnimator1.addListener(new bnvr(this));
       ValueAnimator localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator2.setDuration(1000L);
-      localValueAnimator2.addUpdateListener(new bmfn(this));
+      localValueAnimator2.addUpdateListener(new bnvf(this));
       ValueAnimator localValueAnimator3 = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
       localValueAnimator3.setDuration(1000L);
-      localValueAnimator3.addUpdateListener(new bmfo(this));
+      localValueAnimator3.addUpdateListener(new bnvg(this));
       ValueAnimator localValueAnimator4 = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
       localValueAnimator4.setDuration(500L);
-      localValueAnimator4.addUpdateListener(new bmfp(this));
+      localValueAnimator4.addUpdateListener(new bnvh(this));
       if (i == 0)
       {
         this.jdField_b_of_type_AndroidViewView.setAlpha(0.0F);
@@ -256,16 +256,16 @@ public class AEEditorAILoadingView
         this.jdField_b_of_type_AndroidViewView.setMinimumWidth(this.jdField_a_of_type_AndroidWidgetTextView.getWidth() + Utils.dp2px(20.0D));
         ValueAnimator localValueAnimator5 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
         localValueAnimator5.setDuration(1000L);
-        localValueAnimator5.addUpdateListener(new bmfq(this));
+        localValueAnimator5.addUpdateListener(new bnvi(this));
         localAnimatorSet.play(localValueAnimator4).before(localValueAnimator1);
         localAnimatorSet.play(localValueAnimator1).with(localValueAnimator2).with(localValueAnimator5);
         localAnimatorSet.play(localValueAnimator3).after(localValueAnimator1);
       }
       for (;;)
       {
-        localAnimatorSet.addListener(new bmfr(this));
+        localAnimatorSet.addListener(new bnvj(this));
         localAnimatorSet.start();
-        bmbx.a("AEEditorAILoadingView", "showResultAnimation end.");
+        bnrh.a("AEEditorAILoadingView", "showResultAnimation end.");
         return;
         localAnimatorSet.play(localValueAnimator4).before(localValueAnimator1);
         localAnimatorSet.play(localValueAnimator1).with(localValueAnimator2);
@@ -286,7 +286,7 @@ public class AEEditorAILoadingView
     if (getParent() == null) {}
     for (boolean bool = true;; bool = false)
     {
-      bmbx.a("AEEditorAILoadingView", bool);
+      bnrh.a("AEEditorAILoadingView", bool);
       if (getParent() != null) {
         break;
       }
@@ -300,9 +300,9 @@ public class AEEditorAILoadingView
     return jdField_a_of_type_JavaLangString + "TextAnimation2" + File.separator;
   }
   
-  public void setLoadingListener(bmga parambmga)
+  public void setLoadingListener(bnvs parambnvs)
   {
-    this.jdField_a_of_type_Bmga = parambmga;
+    this.jdField_a_of_type_Bnvs = parambnvs;
   }
   
   public void setSceneText(String paramString1, String paramString2, String paramString3)
@@ -321,7 +321,7 @@ public class AEEditorAILoadingView
   
   public void setShowResult(boolean paramBoolean)
   {
-    bmbx.a("AEEditorAILoadingView", "setShowResult: " + paramBoolean);
+    bnrh.a("AEEditorAILoadingView", "setShowResult: " + paramBoolean);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.post(new AEEditorAILoadingView.1(this));

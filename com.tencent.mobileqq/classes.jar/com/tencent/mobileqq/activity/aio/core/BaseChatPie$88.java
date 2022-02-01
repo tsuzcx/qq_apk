@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import beyh;
+import ancb;
 
 class BaseChatPie$88
   implements Runnable
 {
-  BaseChatPie$88(BaseChatPie paramBaseChatPie, beyh parambeyh, boolean paramBoolean) {}
+  BaseChatPie$88(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    this.val$animationControlManager.a(this.val$isEnterAIO);
+    this.this$0.resumeAppShorcutBar();
+    ancb.a(this.this$0.app, "receipt_msg", false);
   }
 }
 

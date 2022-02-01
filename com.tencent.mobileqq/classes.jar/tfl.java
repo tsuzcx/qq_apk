@@ -1,18 +1,18 @@
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+
 public class tfl
+  implements tfz
 {
-  public static String a()
-  {
-    return "0123456789";
-  }
+  public tfl(FastWebActivity paramFastWebActivity) {}
   
-  public static String b()
+  public void a()
   {
-    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    FastWebActivity.q(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tfl
  * JD-Core Version:    0.7.0.1
  */

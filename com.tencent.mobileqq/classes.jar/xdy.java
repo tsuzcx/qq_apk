@@ -1,14 +1,28 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
-public abstract interface xdy
+public class xdy
+  extends Subscriber.SingleEventSubscriberNoRefect<wrt>
 {
-  public abstract void a();
+  xdu a;
   
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  public xdy(@NonNull xdu paramxdu)
+  {
+    this.a = paramxdu;
+  }
   
-  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
+  protected void a(@NonNull wrt paramwrt)
+  {
+    if (paramwrt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramwrt.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrt.class;
+  }
 }
 
 

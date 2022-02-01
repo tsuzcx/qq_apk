@@ -1,34 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.Nullable;
+import java.net.URL;
 
-class ayuw
-  extends ayzz
+public class ayuw
+  implements URLDrawable.URLDrawableListener
 {
   ayuw(ayuv paramayuv) {}
   
-  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Card paramCard)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("AnonymousManager", 2, String.format("onGetCardDisplaySetting isSuccess=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if ((paramBoolean) && (paramCard != null)) {
-      if (azbc.a.a(42425, paramCard, null) != 0) {
-        break label91;
-      }
-    }
-    label91:
-    for (paramBoolean = bool;; paramBoolean = false)
+    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
+    do
     {
-      this.a.b(paramBoolean);
-      if (ayuv.a(this.a) != null) {
-        ayuv.a(this.a).removeObserver(ayuv.a(this.a));
-      }
       return;
-    }
+      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
+      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
+        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

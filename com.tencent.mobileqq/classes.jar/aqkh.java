@@ -1,65 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import ProfileLogic.QC.setUserProfileRsp;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqkh
-  extends aptq<aqkg>
+  extends aodb
 {
-  public static aqkg a()
-  {
-    return (aqkg)apub.a().a(338);
-  }
+  public aqkh(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  @NonNull
-  public aqkg a(int paramInt)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    return new aqkg();
-  }
-  
-  @Nullable
-  public aqkg a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqkg.a(paramArrayOfaptx);
+    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
+    {
+      i = ((setUserProfileRsp)paramObject).ret;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
+      }
+      if (i == 0)
+      {
+        if (this.a.app != null)
+        {
+          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
+          paramObject.g = 1;
+          paramObject.h = 8;
+          ProfileActivity.b(this.a, paramObject);
+          QQToast.a(this.a, 0, 2131719662, 0).a();
+        }
+        this.a.finish();
+      }
     }
-    return null;
-  }
-  
-  public void a(aqkg paramaqkg) {}
-  
-  public Class<aqkg> clazz()
-  {
-    return aqkg.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocGrayTipsProcessor", 1, "TENCENT_DOC_GRAY_TIPS failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 338;
+    while (!"profilelogic.setUserProfile".equals(paramObject))
+    {
+      int i;
+      return;
+      QQToast.a(this.a, 1, 2131719659, 0).a();
+      return;
+    }
+    QQToast.a(this.a, 1, 2131719659, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkh
  * JD-Core Version:    0.7.0.1
  */

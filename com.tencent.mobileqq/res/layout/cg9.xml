@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:background="@drawable/f33" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="32.0dip" android:layout_height="54.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/idz" android:background="@color/bp" android:visibility="visible" layout="@layout/is" />
-    <TextView android:textSize="17.0sp" android:textColor="#ff8e8e93" android:gravity="center_horizontal" android:id="@id/npn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="124.0dip" android:text="@string/wex" android:layout_below="@id/idz" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/nox" android:background="@drawable/bkd" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wdq" android:layout_below="@id/npn" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/mx_" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="26.0dip" android:src="@drawable/bjy" android:layout_below="@id/nox" android:layout_centerHorizontal="true" />
-    <android.support.v7.widget.RecyclerView android:layout_gravity="center_horizontal" android:id="@id/ner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-26.0dip" android:layout_below="@id/mx_" android:layout_centerHorizontal="true" />
-    <include android:layout_width="fill_parent" android:layout_height="216.0dip" android:layout_alignParentBottom="true" layout="@layout/aoz" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/n2_" android:layout_width="8.0dip" android:layout_height="8.0dip" android:src="@drawable/etj" android:scaleType="centerInside" android:layout_weight="1.0" />
+    <TextView android:textSize="36.0dip" android:textColor="#ff00cafc" android:layout_gravity="center" android:id="@id/nym" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" />
+</FrameLayout>

@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class agwo
-  implements View.OnClickListener
+final class agwo
+  implements ahab
 {
-  agwo(agwl paramagwl) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (agwl.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(agwl.a(this.a).a) }));
-      }
-      agwk localagwk = agwl.a(this.a);
-      agwl.a(this.a);
-      if (localagwk != null) {
-        localagwk.a();
-      }
+    if (paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
+      return 59;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 60;
   }
 }
 

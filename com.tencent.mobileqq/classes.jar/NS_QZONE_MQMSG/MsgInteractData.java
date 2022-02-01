@@ -10,10 +10,12 @@ public final class MsgInteractData
 {
   static CommentInfo cache_commentInfo;
   static LikInfo cache_likInfo = new LikInfo();
+  static PushInfo cache_pushInfo = new PushInfo();
   static ShareInfo cache_shareInfo;
   static ArrayList<ButtonInfo> cache_vecButtonInfo;
   public CommentInfo commentInfo;
   public LikInfo likInfo;
+  public PushInfo pushInfo;
   public ShareInfo shareInfo;
   public int type;
   public ArrayList<ButtonInfo> vecButtonInfo;
@@ -29,13 +31,14 @@ public final class MsgInteractData
   
   public MsgInteractData() {}
   
-  public MsgInteractData(int paramInt, LikInfo paramLikInfo, CommentInfo paramCommentInfo, ShareInfo paramShareInfo, ArrayList<ButtonInfo> paramArrayList)
+  public MsgInteractData(int paramInt, LikInfo paramLikInfo, CommentInfo paramCommentInfo, ShareInfo paramShareInfo, ArrayList<ButtonInfo> paramArrayList, PushInfo paramPushInfo)
   {
     this.type = paramInt;
     this.likInfo = paramLikInfo;
     this.commentInfo = paramCommentInfo;
     this.shareInfo = paramShareInfo;
     this.vecButtonInfo = paramArrayList;
+    this.pushInfo = paramPushInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -45,6 +48,7 @@ public final class MsgInteractData
     this.commentInfo = ((CommentInfo)paramJceInputStream.read(cache_commentInfo, 2, false));
     this.shareInfo = ((ShareInfo)paramJceInputStream.read(cache_shareInfo, 3, false));
     this.vecButtonInfo = ((ArrayList)paramJceInputStream.read(cache_vecButtonInfo, 4, false));
+    this.pushInfo = ((PushInfo)paramJceInputStream.read(cache_pushInfo, 5, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -61,6 +65,9 @@ public final class MsgInteractData
     }
     if (this.vecButtonInfo != null) {
       paramJceOutputStream.write(this.vecButtonInfo, 4);
+    }
+    if (this.pushInfo != null) {
+      paramJceOutputStream.write(this.pushInfo, 5);
     }
   }
 }

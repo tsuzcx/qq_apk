@@ -1,65 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class adda
-  extends WtloginObserver
+class adda
+  extends addb
 {
-  public adda(DevlockPushActivity paramDevlockPushActivity) {}
+  adda(adcz paramadcz) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a(JSONObject paramJSONObject)
   {
-    if (!this.a.isResume())
+    super.a(paramJSONObject);
+    try
     {
-      this.a.b();
-      return;
-    }
-    if (((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
-    {
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      argz.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
-      return;
-    }
-    this.a.b();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      if (QLog.isColorLevel())
+      paramJSONObject = paramJSONObject.getJSONArray("appfriends");
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("rankingID", 11001);
+      JSONArray localJSONArray1 = new JSONArray();
+      int i = 0;
+      int j = paramJSONObject.length();
+      while (i < j)
       {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        Object localObject = paramJSONObject.getJSONObject(i).getString("openid");
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("openid", localObject);
+        localJSONObject2.put("score", (int)Math.floor(Math.random() * 1000.0D));
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("key", "test_key");
+        ((JSONObject)localObject).put("value", (int)Math.floor(Math.random() * 100.0D));
+        ((JSONObject)localObject).put("type", 1);
+        JSONArray localJSONArray2 = new JSONArray();
+        localJSONArray2.put(localObject);
+        localJSONObject2.put("extraList", localJSONArray2);
+        localJSONArray1.put(localJSONObject2);
+        i += 1;
       }
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      argz.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
-      this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+      localJSONObject1.put("scoreList", localJSONArray1);
+      this.a.a.jdField_a_of_type_Adad.a("reportScore", localJSONObject1, new addb(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
+      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null) {
+        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
+      }
       return;
     }
-    if (QLog.isColorLevel())
+    catch (JSONException paramJSONObject)
     {
-      QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-      if (paramDevlockInfo == null) {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
+      paramJSONObject.printStackTrace();
     }
-    paramDevlockInfo = this.a.getString(2131691876);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
-    {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
-      }
-    }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
 }
 

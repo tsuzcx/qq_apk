@@ -1,58 +1,78 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+
 public class beyc
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public beyc(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public beyc()
+  public void handleMessage(Message paramMessage)
   {
-    a();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public beyc a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public beyc a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public beyc a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-  }
-  
-  public boolean a()
-  {
-    return (!this.b) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != 0);
-  }
-  
-  public beyc b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    return this;
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.a.q)) {
+      localBundle.putString("bid", this.a.q);
+    }
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
+    int i;
+    for (String str = "interestcircle";; str = "qqbuluo")
+    {
+      localBundle.putString("from", str);
+      localBundle.putString("uin", this.a.app.getCurrentAccountUin());
+      localBundle.putString("title", bgip.a(this.a.a).trim());
+      localBundle.putString("content", bgip.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText).trim());
+      switch (paramMessage.what)
+      {
+      case 3: 
+      default: 
+        i = 3;
+        TroopBarPublishUtils.a(this.a, 1, i, localBundle);
+        return;
+      }
+    }
+    localBundle.putString("clicktype", "music");
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      i = 2;
+      label210:
+      if (!TextUtils.isEmpty(this.a.q)) {
+        break label259;
+      }
+    }
+    label259:
+    for (paramMessage = "0";; paramMessage = this.a.q)
+    {
+      bdla.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_music", i, 0, paramMessage, "", "", "");
+      i = 4;
+      break;
+      i = 1;
+      break label210;
+    }
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      i = 2;
+      if (!TextUtils.isEmpty(this.a.q)) {
+        break label340;
+      }
+    }
+    label340:
+    for (paramMessage = "0";; paramMessage = this.a.q)
+    {
+      bdla.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_record", i, 0, paramMessage, "", "", "");
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyc
  * JD-Core Version:    0.7.0.1
  */

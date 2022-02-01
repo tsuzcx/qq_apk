@@ -1,26 +1,17 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.download.unite.DownloadDialogFragment;
 
 public class asao
-  implements Cloneable
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
+  public asao(DownloadDialogFragment paramDownloadDialogFragment) {}
   
-  public asao(asam paramasam) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    DownloadDialogFragment.a(this.a, 0);
+    azcl.a("0X800B53D");
+  }
 }
 
 

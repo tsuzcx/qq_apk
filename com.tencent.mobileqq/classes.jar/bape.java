@@ -1,232 +1,24 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Stack;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
 public class bape
-  extends DefaultHandler
+  implements View.OnTouchListener
 {
-  private SparseArray<balv> jdField_a_of_type_AndroidUtilSparseArray;
-  private balv jdField_a_of_type_Balv;
-  private baov jdField_a_of_type_Baov;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private ArrayList<baov> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Stack<balv> jdField_a_of_type_JavaUtilStack;
-  private boolean jdField_a_of_type_Boolean;
-  private ArrayList<Integer> b;
-  private ArrayList<balv> c;
+  public bape(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public bape()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put("StateList", Integer.valueOf(1));
-    this.jdField_a_of_type_JavaUtilHashMap.put("SubStateList", Integer.valueOf(2));
-    this.jdField_a_of_type_JavaUtilHashMap.put("RichState", Integer.valueOf(3));
-    this.jdField_a_of_type_JavaUtilHashMap.put("ActionId", Integer.valueOf(4));
-    this.jdField_a_of_type_JavaUtilHashMap.put("Display", Integer.valueOf(5));
-    this.jdField_a_of_type_JavaUtilHashMap.put("ActionName", Integer.valueOf(6));
-    this.jdField_a_of_type_JavaUtilHashMap.put("Describe", Integer.valueOf(7));
-    this.jdField_a_of_type_JavaUtilHashMap.put("IconURL", Integer.valueOf(8));
-    this.jdField_a_of_type_JavaUtilHashMap.put("TinyIcon", Integer.valueOf(9));
-    this.jdField_a_of_type_JavaUtilHashMap.put("Type", Integer.valueOf(10));
-    this.jdField_a_of_type_JavaUtilHashMap.put("Parameter", Integer.valueOf(11));
-    this.jdField_a_of_type_JavaUtilHashMap.put("DataURL", Integer.valueOf(12));
-    this.jdField_a_of_type_JavaUtilHashMap.put("CoverURL", Integer.valueOf(13));
-    this.jdField_a_of_type_JavaUtilHashMap.put("NativeList", Integer.valueOf(14));
-    this.jdField_a_of_type_JavaUtilHashMap.put("ListParam", Integer.valueOf(15));
-    this.jdField_a_of_type_JavaUtilHashMap.put("NativeDetail", Integer.valueOf(16));
-    this.jdField_a_of_type_JavaUtilHashMap.put("DetailParam", Integer.valueOf(17));
-    this.jdField_a_of_type_JavaUtilHashMap.put("Tags", Integer.valueOf(18));
-    this.jdField_a_of_type_JavaUtilHashMap.put("StateTag", Integer.valueOf(19));
-    this.jdField_a_of_type_JavaUtilHashMap.put("TagName", Integer.valueOf(20));
-    this.jdField_a_of_type_JavaUtilHashMap.put("IdList", Integer.valueOf(21));
-    this.jdField_a_of_type_JavaUtilHashMap.put("Action_id", Integer.valueOf(22));
-  }
-  
-  public SparseArray<balv> a()
-  {
-    return this.jdField_a_of_type_AndroidUtilSparseArray;
-  }
-  
-  public ArrayList<baov> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramArrayOfChar, paramInt1, paramInt2);
+    if (paramMotionEvent.getAction() == 0) {
+      QCallDetailActivity.a(this.a).setPressed(true);
     }
-  }
-  
-  public void endDocument()
-  {
-    super.endDocument();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      Object localObject = (baov)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (((baov)localObject).jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        localObject = ((baov)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          int j = ((Integer)((Iterator)localObject).next()).intValue();
-          balv localbalv = (balv)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
-          if ((localbalv != null) && (localbalv.jdField_b_of_type_Int == 2))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("RichStatus", 2, "filter xml name = " + localbalv.c);
-            }
-            ((Iterator)localObject).remove();
-          }
-        }
-      }
-      i += 1;
+    while (1 != paramMotionEvent.getAction()) {
+      return false;
     }
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    paramString1 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-    paramString2 = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-    if (paramString2 == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (paramString2.intValue())
-            {
-            case 18: 
-            case 19: 
-            case 21: 
-            default: 
-              return;
-            case 1: 
-            case 2: 
-              this.jdField_a_of_type_Balv = ((balv)this.jdField_a_of_type_JavaUtilStack.pop());
-              if (this.c.size() == 0) {
-                this.jdField_a_of_type_Balv.jdField_a_of_type_JavaUtilArrayList = null;
-              }
-              break;
-            }
-          } while (this.jdField_a_of_type_JavaUtilStack.size() <= 0);
-          this.c = ((balv)this.jdField_a_of_type_JavaUtilStack.lastElement()).jdField_a_of_type_JavaUtilArrayList;
-          return;
-        } while (this.jdField_a_of_type_Balv.jdField_a_of_type_Int == 0);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Balv.jdField_a_of_type_Int, this.jdField_a_of_type_Balv);
-        if (this.jdField_a_of_type_Balv.jdField_a_of_type_Boolean) {
-          this.c.add(this.jdField_a_of_type_Balv);
-        }
-        this.jdField_a_of_type_Balv = null;
-        return;
-        try
-        {
-          this.jdField_a_of_type_Balv.jdField_a_of_type_Int = Integer.parseInt(paramString1);
-          return;
-        }
-        catch (Exception paramString1)
-        {
-          paramString1.printStackTrace();
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.richstatus.xml", 2, paramString1.toString() + ", " + paramString1.getStackTrace().toString());
-      return;
-      this.jdField_a_of_type_Balv.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramString1);
-      return;
-      this.jdField_a_of_type_Balv.c = paramString1;
-      return;
-      this.jdField_a_of_type_Balv.jdField_a_of_type_JavaLangString = paramString1;
-      return;
-      this.jdField_a_of_type_Balv.jdField_b_of_type_JavaLangString = paramString1;
-      return;
-      if ("0".equals(paramString1))
-      {
-        this.jdField_a_of_type_Balv.jdField_b_of_type_Int = 4;
-        return;
-      }
-      if ("1".equals(paramString1))
-      {
-        this.jdField_a_of_type_Balv.jdField_b_of_type_Int = 3;
-        return;
-      }
-      if ("2".equals(paramString1))
-      {
-        this.jdField_a_of_type_Balv.jdField_b_of_type_Int = 2;
-        return;
-      }
-    } while (!"4".equals(paramString1));
-    this.jdField_a_of_type_Balv.jdField_b_of_type_Int = 5;
-    return;
-    this.jdField_a_of_type_Balv.d = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.e = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.f = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.g = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.h = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.i = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.j = paramString1;
-    return;
-    this.jdField_a_of_type_Balv.k = paramString1;
-    return;
-    this.jdField_a_of_type_Baov.jdField_a_of_type_JavaLangString = paramString1;
-    return;
-    this.b.add(Integer.valueOf(Integer.parseInt(paramString1)));
-  }
-  
-  public void startDocument()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Baov = new baov();
-    this.jdField_a_of_type_JavaUtilStack = new Stack();
-    this.jdField_a_of_type_Balv = new balv(-1);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(-1, this.jdField_a_of_type_Balv);
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangStringBuilder.replace(0, this.jdField_a_of_type_JavaLangStringBuilder.length(), "");
-    if (("StateList".equals(paramString2)) || ("SubStateList".equals(paramString2)))
-    {
-      this.c = new ArrayList();
-      this.jdField_a_of_type_Balv.jdField_a_of_type_JavaUtilArrayList = this.c;
-      this.jdField_a_of_type_JavaUtilStack.push(this.jdField_a_of_type_Balv);
-    }
-    do
-    {
-      return;
-      if ("RichState".equals(paramString2))
-      {
-        this.jdField_a_of_type_Balv = new balv(-1);
-        return;
-      }
-      if ("StateTag".equals(paramString2))
-      {
-        this.jdField_a_of_type_Baov = new baov();
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Baov);
-        return;
-      }
-    } while (!"IdList".equals(paramString2));
-    this.b = new ArrayList();
-    this.jdField_a_of_type_Baov.jdField_a_of_type_JavaUtilArrayList = this.b;
+    QCallDetailActivity.a(this.a).setPressed(false);
+    return false;
   }
 }
 

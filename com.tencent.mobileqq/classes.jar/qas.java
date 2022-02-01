@@ -1,21 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-class qas
-  implements ViewBase.OnClickListener
+public class qas
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qas(qaq paramqaq, pvc parampvc, Container paramContainer) {}
+  public qas(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramViewBase = this.jdField_a_of_type_Pvc.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    pgw.b(paramViewBase, (int)paramViewBase.mChannelID);
-    uhv.a(paramViewBase);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 

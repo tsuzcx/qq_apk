@@ -1,55 +1,64 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
-public class atja
-  extends MSFServlet
+class atja
+  extends atjw
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
+  
+  atja(atiy paramatiy, MessageRecord paramMessageRecord)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      atjb localatjb = (atjb)atii.a().a("sso_channel");
-      if (localatjb == null) {
-        break;
-      }
-      localatjb.a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-    QLog.d("QFlutterFlutterServlet", 1, "ssoChannel is null");
+    super(paramatiy);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.h = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, atju paramatju)
   {
-    if (paramIntent != null)
+    if ("1".equals(this.h))
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
+      paramatju.a(atiy.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
+      }
+      paramatju.a(atiy.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    athh localathh = atiy.a(this.jdField_a_of_type_Atiy).getFileManagerEngine().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+    }
+    localathh.a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new atjb(this, paramString, paramatju));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atja
  * JD-Core Version:    0.7.0.1
  */

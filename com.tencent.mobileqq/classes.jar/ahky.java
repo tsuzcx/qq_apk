@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
 
 class ahky
-  implements View.OnClickListener
+  extends Handler
 {
-  ahky(ahkw paramahkw) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  ahky(ahkx paramahkx) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.hasDestory) {
-      bezm.a(this.a.mContext, null, this.a.sessionInfo.curFriendUin);
+    if (paramMessage.what == ahkx.b()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != ahkx.c()) {}
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

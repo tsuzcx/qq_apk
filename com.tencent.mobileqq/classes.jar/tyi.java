@@ -1,67 +1,10 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import kotlin.Metadata;
 
-class tyi
-  extends BaseAdapter
-{
-  tyi(tyf paramtyf) {}
-  
-  public int getCount()
-  {
-    return tyf.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return tyf.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560208, null);
-      paramView = new tyj(this.a);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379865));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369190));
-      localView.setTag(paramView);
-      localObject = (GiftServiceBean)getItem(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
-      if (tyf.a(this.a) != paramInt) {
-        break label143;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842912);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (tyj)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label143:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842913);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AppBridgeInvokeHandler$Companion;", "", "()V", "DOWNLOAD_APK", "", "DOWNLOAD_APK_ACTION", "DOWNLOAD_APK_CANCEL", "DOWNLOAD_APK_PAUSE", "DOWNLOAD_APK_RESUME", "DOWNLOAD_APP", "GET_DOWNLOAD_APK_STATE", "IS_APP_INSTALLED", "LAUNCH_APP", "NS_APP", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tyi {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tyi
  * JD-Core Version:    0.7.0.1
  */

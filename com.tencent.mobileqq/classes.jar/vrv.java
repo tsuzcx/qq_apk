@@ -1,66 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.text.QQText;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class vrv
-  extends ysp<CommentEntry>
+class vrv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  boolean jdField_a_of_type_Boolean;
+  vrv(vru paramvru) {}
   
-  public vrv(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramList, paramBoolean);
-    boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    vmp.b("WSVerticalVideoOperationRightItemView", "itemView onDoubleTap");
+    vru.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  public void a(int paramInt, CommentEntry paramCommentEntry, xsh paramxsh)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (paramCommentEntry == null) {
-      xvv.e("FeedCommentLego", "FeedComment getView. data is null.");
-    }
-    Object localObject2;
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-        localObject2 = (TextView)paramxsh.a(2131364835);
-        paramxsh = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
-        localObject1 = vst.a().a(paramxsh);
-        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
-        {
-          ((TextView)localObject2).setText((CharSequence)localObject1);
-          ((TextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-          ((TextView)localObject2).setOnTouchListener(vrr.a(this.jdField_a_of_type_Vrr));
-          return;
-        }
-        localObject1 = xho.a(this.jdField_a_of_type_Vrr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, vrr.a(this.jdField_a_of_type_Vrr));
-        if (QQStoryContext.a()) {
-          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Vrr.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166497)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
-        }
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        ((TextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
-        ((TextView)localObject2).setOnTouchListener(vrr.a(this.jdField_a_of_type_Vrr));
-        vvj localvvj = (vvj)vux.a(2);
-        localObject2 = localvvj.b(paramCommentEntry.authorUnionId);
-        if (!paramCommentEntry.isReply()) {
-          break;
-        }
-        paramCommentEntry = localvvj.b(paramCommentEntry.replierUnionId);
-      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
-      vst.a().a(paramxsh, (CharSequence)localObject1);
-      return;
-    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
-    vst.a().a(paramxsh, (CharSequence)localObject1);
+    vmp.b("WSVerticalVideoOperationRightItemView", "itemView onSingleTapConfirmed");
+    vru.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

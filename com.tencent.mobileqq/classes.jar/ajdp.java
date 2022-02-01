@@ -1,17 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.util.SparseArrayCompat;
 
-class ajdp
-  implements View.OnClickListener
+public class ajdp<T>
 {
-  ajdp(ajdm paramajdm) {}
+  SparseArrayCompat<ajdo<T>> a = new SparseArrayCompat();
   
-  public void onClick(View paramView)
+  public int a()
   {
-    this.a.a.onClick(this.a.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a.size();
+  }
+  
+  public int a(T paramT, int paramInt)
+  {
+    int i = this.a.size() - 1;
+    while (i >= 0)
+    {
+      if (((ajdo)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
+      }
+      i -= 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
+  }
+  
+  public ajdo a(int paramInt)
+  {
+    return (ajdo)this.a.get(paramInt);
+  }
+  
+  public ajdp<T> a(ajdo<T> paramajdo)
+  {
+    int i = this.a.size();
+    if (paramajdo != null) {
+      this.a.put(i, paramajdo);
+    }
+    return this;
+  }
+  
+  public void a(ajdw paramajdw, T paramT, int paramInt)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      ajdo localajdo = (ajdo)this.a.valueAt(i);
+      if (localajdo.a(paramT, paramInt))
+      {
+        localajdo.a(paramajdw, paramT, paramInt);
+        return;
+      }
+      i += 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 

@@ -1,48 +1,37 @@
 import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
 public class bazr
-  extends bazc
+  implements QzoneZipCacheHelperCallBack
 {
-  public static final String a = bazr.class.getSimpleName();
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public bazr(QzoneGiftUtil.1 param1) {}
   
-  public bazr(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void onResult(boolean paramBoolean)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public bazr(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    if (paramBoolean)
     {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
+      QzoneGiftUtil.1.a(this.a);
+      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
+      if (this.a.jdField_a_of_type_Bazt != null)
+      {
+        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
+          break label109;
+        }
+        this.a.jdField_a_of_type_Bazt.a();
+      }
+    }
+    label109:
+    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
+    {
       return;
+      QzoneGiftUtil.1.b(this.a);
+      break;
     }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(a, 0, paramString.toString());
-    }
+    this.a.jdField_a_of_type_Bazt.b();
   }
+  
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

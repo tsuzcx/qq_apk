@@ -1,81 +1,22 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import java.net.URL;
-import java.util.HashSet;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.qphone.base.util.QLog;
 
-class sil
-  extends sif
+public class sil
+  implements sxa
 {
-  sil(sig paramsig) {}
+  public sil(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public int a()
+  public void a(sxc paramsxc)
   {
-    return 4;
-  }
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    if (!NetworkUtil.isNetworkAvailable(sig.a(this.a)))
-    {
-      QQToast.a(sig.a(this.a), 0, amtj.a(2131715381), 0).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(sij.a(), 2, "UUIDToUrlCallback Callback vid=" + paramsxc.jdField_b_of_type_JavaLangString + ", url=" + paramsxc.jdField_a_of_type_JavaLangString + ", isH265=" + paramsxc.jdField_a_of_type_Boolean + ", isHWCodec=" + paramsxc.jdField_b_of_type_Boolean + ", fileBitRate=" + paramsxc.c);
     }
-    rwv.a(sig.a(this.a), sig.a(this.a));
-    String str1 = paramString + "&sourcefrom=6";
-    paramString = rwv.a(paramBaseArticleInfo);
-    paramActionSheetItem = rwv.a(paramBaseArticleInfo);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("videoDuration", paramBaseArticleInfo.getVideoDuration());
-    localBundle.putLong("publishAccountUin", paramActionSheetItem.longValue());
-    localBundle.putString("publishAccountName", paramString);
-    localBundle.putLong("feedsId", paramBaseArticleInfo.mFeedId);
-    localBundle.putInt("feedsType", paramBaseArticleInfo.mFeedType);
-    label182:
-    ptf localptf;
-    Activity localActivity;
-    String str2;
-    String str3;
-    String str4;
-    if (paramBaseArticleInfo.busiType == 6)
-    {
-      paramInt = 1;
-      localBundle.putInt("videoType", paramInt);
-      paramString = sig.a(this.a);
-      if (paramString == null) {
-        break label267;
-      }
-      paramString = paramString.getCurrentUin();
-      localptf = ptf.a();
-      localActivity = sig.a(this.a);
-      str2 = paramBaseArticleInfo.getInnerUniqueID();
-      str3 = paramBaseArticleInfo.mTitle;
-      str4 = paramBaseArticleInfo.mSummary;
-      if (paramBaseArticleInfo.getVideoCoverURL() != null) {
-        break label273;
-      }
+    if ((!TextUtils.isEmpty(paramsxc.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramsxc.jdField_a_of_type_JavaLangString, paramsxc.jdField_b_of_type_JavaLangString))) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramsxc.jdField_a_of_type_JavaLangString, paramsxc.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
     }
-    label267:
-    label273:
-    for (paramActionSheetItem = "";; paramActionSheetItem = paramBaseArticleInfo.getVideoCoverURL().getPath())
-    {
-      localptf.a(localActivity, paramString, 2, str2, str3, str4, paramActionSheetItem, str1, localBundle);
-      sig.a(this.a).add(paramBaseArticleInfo.getInnerUniqueID());
-      return;
-      paramInt = 2;
-      break;
-      paramString = "";
-      break label182;
-    }
-  }
-  
-  public int b()
-  {
-    return 6;
   }
 }
 

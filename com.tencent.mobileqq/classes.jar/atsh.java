@@ -1,24 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.List;
 
-public class atsh
-  implements CompoundButton.OnCheckedChangeListener
+class atsh
+  extends atib
 {
-  public atsh(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  atsh(atsg paramatsg, ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694557), "qqsetting_auto_receive_pic_key", paramBoolean);
-    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (paramBoolean2) {
+      paramString4 = paramString4 + "&isthumb=0";
+    }
+    for (;;)
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      this.jdField_a_of_type_Atsg.a(paramBoolean1, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramList, paramString5, paramBundle, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo);
       return;
     }
   }

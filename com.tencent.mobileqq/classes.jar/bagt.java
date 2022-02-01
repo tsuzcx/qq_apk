@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUAlphaBlendFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bagt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/profilesetting/ReqSetSettingItem$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bagt
+  implements Parcelable.Creator<ReqSetSettingItem>
 {
-  public static GPUBaseFilter a(int paramInt)
+  @NotNull
+  public ReqSetSettingItem a(@NotNull Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new bagv();
-    case 7: 
-      return new bagx();
-    case 5: 
-      return new bagz();
-    case 6: 
-      return new baha();
-    case 4: 
-      return new bagw();
-    case 106: 
-      return new bagy();
-    }
-    return new GPUAlphaBlendFilter();
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new ReqSetSettingItem(paramParcel);
   }
   
-  public static boolean a(int paramInt)
+  @NotNull
+  public ReqSetSettingItem[] a(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 3: 
-    default: 
-      return false;
-    }
-    return true;
+    return new ReqSetSettingItem[paramInt];
   }
 }
 

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
 
-public final class ogt
-  implements Parcelable.Creator<RecentShopParcel>
+public abstract class ogt
+  implements BusinessObserver
 {
-  public RecentShopParcel a(Parcel paramParcel)
-  {
-    return new RecentShopParcel(paramParcel);
-  }
+  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   
-  public RecentShopParcel[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new RecentShopParcel[paramInt];
+    if (paramObject != null) {}
+    try
+    {
+      paramObject = (Bundle)paramObject;
+      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+      return;
+    }
+    catch (Exception paramObject) {}
+    a(false, null, new Bundle());
+    return;
   }
 }
 

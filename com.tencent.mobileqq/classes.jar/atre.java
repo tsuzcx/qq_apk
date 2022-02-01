@@ -1,27 +1,23 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import android.widget.CheckBox;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
-public class atre
+class atre
   implements View.OnClickListener
 {
-  public atre(LangSettingFragment paramLangSettingFragment, int paramInt) {}
+  atre(atrc paramatrc, bcfj parambcfj) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < LangSettingFragment.a().size()))
-    {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
-      LangSettingFragment.c(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, ((Integer)LangSettingFragment.a().get(this.jdField_a_of_type_Int)).intValue());
+    atrb localatrb = (atrb)this.jdField_a_of_type_Bcfj;
+    localatrb.a(paramView);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131366755);
+    if (localCheckBox.getVisibility() == 0) {
+      localCheckBox.setChecked(localatrb.b());
     }
-    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
-    }
-    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
+    if (atrc.a(this.jdField_a_of_type_Atrc) != null) {
+      atrc.a(this.jdField_a_of_type_Atrc).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

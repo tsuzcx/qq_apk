@@ -1,166 +1,232 @@
-import com.tencent.mobileqq.shortvideo.util.VidUtil;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.QZoneShareManager;
+import cooperation.qzone.share.QzoneShareServlet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class azzw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/anonymous/utils/AskAnonymouslyUtil$Companion;", "", "()V", "ARK_APP_COMPACT", "", "ARK_APP_NAME", "ARK_APP_PROMPT", "ARK_APP_VER", "ARK_APP_VIEW", "JUMP_URL", "META_BUTTON_KEY", "META_JUMP_URL_KEY", "META_META_DATA_TYPE", "META_SUMMARY_KEY", "META_TITLE_KEY", "SHARE_INVITE_TO_QZONE_BG_URL", "SHARE_TO_QZONE_ACTION_TYPE", "", "SHARE_TO_QZONE_ICON_URL", "SHARE_TO_QZONE_RECOM_BOTTOM_ID", "SHARE_TO_QZONE_SUMMARY", "SHARE_TO_QZONE_TITLE", "SHARE_TYPE_DETAIL", "SHARE_TYPE_INVITE", "TAG", "constructShareData", "Lcooperation/qzone/QZoneShareData;", "imageUrl", "jumpUrl", "getAskAnonymouslyArkMeta", "getInviteAskAnonymouslyIntent", "Landroid/content/Intent;", "activity", "Landroid/app/Activity;", "showQzone", "", "getMetaString", "inviteAskAnonymously", "", "shareDetailToQZone", "shareInviteToQZone", "syncDetailToQZone", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azzw
 {
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public azzw(String paramString)
+  private final Intent a(Activity paramActivity, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
-    paramString = new File(this.jdField_a_of_type_JavaLangString);
-    boolean bool1 = paramString.mkdirs();
-    boolean bool2 = paramString.isDirectory();
-    if ((!bool1) && (!bool2))
+    paramActivity = new Intent((Context)paramActivity, ForwardRecentActivity.class);
+    try
     {
-      paramString = new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
-      QLog.e("AudioDataCache", 2, paramString, new Object[0]);
-      bahf.a(paramString);
+      paramActivity.putExtra("forward_type", 46);
+      paramActivity.putExtra("is_ark_display_share", true);
+      paramActivity.putExtra("forward_ark_app_name", "com.tencent.askanonymously");
+      paramActivity.putExtra("forward_ark_app_view", "invite");
+      paramActivity.putExtra("forward_ark_app_ver", "1.0.0.1");
+      paramActivity.putExtra("forward_ark_app_prompt", "[匿问我答] 绝对坦白，等你来提问～");
+      paramActivity.putExtra("forward_ark_app_compat", "[匿问我答，等你来提问～] 请使用最新版手机QQ查看");
+      paramActivity.putExtra("k_qzone", paramBoolean);
+      paramActivity.putExtra("selection_mode", 2);
+      String str = ((azzw)this).a();
+      paramActivity.putExtra("forward_ark_app_meta", str);
+      if (QLog.isColorLevel()) {
+        QLog.d("AskAnonymouslyUtil", 2, "getInviteAskAnonymouslyIntent metaDataString: " + str);
+      }
+      paramActivity.putExtras(QQCustomArkDialog.AppInfo.zipArgs("com.tencent.askanonymously", "invite", "1.0.0.1", str, ArkAppCenterUtil.getDensity(), null, null));
+      return paramActivity;
     }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("AskAnonymouslyUtil", 1, "getInviteAskAnonymouslyIntent exception message: " + localJSONException.getMessage());
+    }
+    return paramActivity;
   }
   
-  private static void a(String paramString, Throwable paramThrowable)
+  private final QZoneShareData a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
+    QZoneShareData localQZoneShareData = new QZoneShareData();
+    localQZoneShareData.mSummary = "匿名提问，有问必答";
+    localQZoneShareData.mTitle = "匿问我答";
+    localQZoneShareData.mImageUrls = new ArrayList();
+    localQZoneShareData.mImageUrls.add(paramString1);
+    localQZoneShareData.targetUrl = paramString2;
+    localQZoneShareData.from = 0;
+    localQZoneShareData.qzoneShareInfo = ((Map)new HashMap());
+    paramString1 = localQZoneShareData.qzoneShareInfo;
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "shareData.qzoneShareInfo");
+    paramString1.put("change_big_pic", "1");
+    paramString1 = localQZoneShareData.qzoneShareInfo;
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "shareData.qzoneShareInfo");
+    paramString1.put("need_circular_bead", "1");
+    paramString1 = new JSONObject();
+    try
     {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
-      }
+      paramString1.put("icon_url", "https://downv6.qq.com/qq_relation/ask_anonymously/ask_anonymously_invite_icon_to_qzone_v2.png");
+      paramString1.put("title", "匿问我答");
+      paramString1.put("summary", "匿名提问，有问必答");
+      paramString1.put("jump_url", paramString2);
+      paramString2 = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication()");
+      paramString1.put("button_txt", paramString2.getResources().getString(2131694001));
+      paramString1.put("recom_bottom_id", 5);
+      paramString2 = paramString1.toString();
+      Intrinsics.checkExpressionValueIsNotNull(paramString2, "json.toString()");
+      paramString1.put("action_type", 2);
+      paramString1 = localQZoneShareData.qzoneShareInfo;
+      Intrinsics.checkExpressionValueIsNotNull(paramString1, "shareData.qzoneShareInfo");
+      paramString1.put("comm_recom_bottom", paramString2);
+      QLog.d("AskAnonymouslyUtil", 1, "shareInviteToQZone， comm_recom_bottom： " + paramString2);
+      return localQZoneShareData;
     }
-    else {
+    catch (Exception paramString1)
+    {
+      QLog.e("AskAnonymouslyUtil", 1, "shareInviteToQZone exception: " + Log.getStackTraceString((Throwable)paramString1));
+    }
+    return localQZoneShareData;
+  }
+  
+  @Nullable
+  public final String a()
+  {
+    return ((azzw)this).b();
+  }
+  
+  public final void a(@Nullable Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AskAnonymouslyUtil", 2, "shareInviteToQZone");
+    }
+    if (paramActivity == null)
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "shareInviteToQZone error: activity is null");
       return;
     }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
-  }
-  
-  /* Error */
-  public String a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 17	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   9: ldc 83
-    //   11: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: aload_0
-    //   15: getfield 85	azzw:b	Ljava/lang/String;
-    //   18: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: aconst_null
-    //   25: invokestatic 87	azzw:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   28: new 17	java/lang/StringBuilder
-    //   31: dup
-    //   32: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   35: aload_0
-    //   36: getfield 15	azzw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   39: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: aload_0
-    //   43: getfield 85	azzw:b	Ljava/lang/String;
-    //   46: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: astore_1
-    //   53: aload_0
-    //   54: getfield 89	azzw:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
-    //   57: astore_2
-    //   58: aload_2
-    //   59: ifnull +10 -> 69
-    //   62: aload_0
-    //   63: getfield 89	azzw:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
-    //   66: invokevirtual 94	java/io/FileOutputStream:close	()V
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: areturn
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
-    //   78: astore_2
-    //   79: goto -10 -> 69
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	azzw
-    //   52	20	1	str	String
-    //   73	4	1	localObject	Object
-    //   57	2	2	localFileOutputStream	FileOutputStream
-    //   78	1	2	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   2	58	73	finally
-    //   62	69	73	finally
-    //   62	69	78	java/io/IOException
-  }
-  
-  public void a()
-  {
-    File localFile;
-    try
-    {
-      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
-      this.b = VidUtil.generateVid();
-      String str = this.jdField_a_of_type_JavaLangString + this.b;
-      localFile = new File(str);
-      if (localFile.exists()) {
-        throw new RuntimeException("AudioDataCache: file exists| " + str);
-      }
+    Object localObject1 = StringCompanionObject.INSTANCE;
+    localObject1 = new Object[2];
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
+    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
+    localObject1[0] = ((AppRuntime)localObject2).getAccount();
+    localObject1[1] = Integer.valueOf(5);
+    localObject1 = String.format("https://ti.qq.com/v2/anonymous/question?_wv=16777218&_wwv=129&uin=%s&from=%d", Arrays.copyOf((Object[])localObject1, localObject1.length));
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+    localObject2 = (azzw)this;
+    if (localObject1 == null) {
+      Intrinsics.throwNpe();
     }
-    finally {}
-    try
+    localObject1 = ((azzw)localObject2).a("https://downv6.qq.com/qq_relation/ask_anonymously/ask_anonymously_invite_bg_to_qzone_v2.png", (String)localObject1);
+    paramActivity = (Context)paramActivity;
+    localObject2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
+    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
+    QZoneShareManager.shareToQzoneFromAskAnonymously(paramActivity, ((AppRuntime)localObject2).getAccount(), (QZoneShareData)localObject1, 1);
+  }
+  
+  public final void a(@Nullable Activity paramActivity, @Nullable String paramString1, @Nullable String paramString2)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty((CharSequence)paramString1)) || (TextUtils.isEmpty((CharSequence)paramString2)))
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
+      QLog.e("AskAnonymouslyUtil", 2, "shareDetailToQZone error: param is invalid");
       return;
     }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      }
+    azzw localazzw = (azzw)this;
+    if (paramString1 == null) {
+      Intrinsics.throwNpe();
     }
+    if (paramString2 == null) {
+      Intrinsics.throwNpe();
+    }
+    paramString1 = localazzw.a(paramString1, paramString2);
+    paramActivity = (Context)paramActivity;
+    paramString2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication()");
+    paramString2 = paramString2.getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication().runtime");
+    QZoneShareManager.shareToQzoneFromAskAnonymously(paramActivity, paramString2.getAccount(), paramString1, 2);
   }
   
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void a(@Nullable Activity paramActivity, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    try
-    {
-      FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
-      bool1 = bool2;
-      if (localFileOutputStream != null) {}
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-        bool1 = true;
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          a("writeData: exp=", paramArrayOfByte);
-          bool1 = bool2;
-        }
-      }
-      return bool1;
+    if (QLog.isColorLevel()) {
+      QLog.i("AskAnonymouslyUtil", 2, "inviteAskAnonymously");
     }
-    finally {}
+    if (paramActivity == null)
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "inviteAskAnonymously error: activity is null");
+      return;
+    }
+    Intent localIntent = ((azzw)this).a(paramActivity, paramBoolean);
+    if (localIntent == null)
+    {
+      QLog.e("AskAnonymouslyUtil", 1, "inviteAskAnonymously error: params wrong");
+      return;
+    }
+    paramActivity.startActivity(localIntent);
   }
   
-  public String b()
+  @Nullable
+  public final String b()
   {
-    return this.jdField_a_of_type_JavaLangString + this.b;
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject1 = StringCompanionObject.INSTANCE;
+    localObject1 = new Object[2];
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
+    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
+    localObject1[0] = ((AppRuntime)localObject2).getAccount();
+    localObject1[1] = Integer.valueOf(4);
+    localObject1 = String.format("https://ti.qq.com/v2/anonymous/question?_wv=16777218&_wwv=129&uin=%s&from=%d", Arrays.copyOf((Object[])localObject1, localObject1.length));
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+    localJSONObject2.put("jump_url", localObject1);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
+  }
+  
+  public final void b(@Nullable Activity paramActivity, @Nullable String paramString1, @Nullable String paramString2)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty((CharSequence)paramString1)) || (TextUtils.isEmpty((CharSequence)paramString2)))
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "syncDetailToQZone error: param is invalid");
+      return;
+    }
+    azzw localazzw = (azzw)this;
+    if (paramString1 == null) {
+      Intrinsics.throwNpe();
+    }
+    if (paramString2 == null) {
+      Intrinsics.throwNpe();
+    }
+    paramString1 = localazzw.a(paramString1, paramString2);
+    paramActivity = new NewIntent((Context)paramActivity, QzoneShareServlet.class);
+    paramString2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication()");
+    paramString2 = paramString2.getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication().runtime");
+    paramActivity.putExtra("uin", paramString2.getAccount());
+    paramActivity.putExtra("sharedata", (Parcelable)paramString1);
+    paramString1 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "BaseApplicationImpl.getApplication()");
+    paramString1.getRuntime().startServlet(paramActivity);
   }
 }
 

@@ -2,13 +2,14 @@ package com.tencent.mobileqq.minigame.splash;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import npo;
+import nwp;
 
 public class SplashMiniGameDownloadManager$DownLoadNetEngine
   implements INetEngine.INetEngineListener
@@ -41,7 +42,7 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
           if (paramNetResp.exists())
           {
             long l = paramNetResp.length();
-            PreDownloadController localPreDownloadController = (PreDownloadController)this.app.getManager(193);
+            PreDownloadController localPreDownloadController = (PreDownloadController)this.app.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
             if (localPreDownloadController.isEnable())
             {
               QLog.i("SplashMiniGameDownloadMgr", 1, "preDownloadSuccess");
@@ -49,7 +50,7 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
             }
             if (this.type == 0)
             {
-              npo.a(paramNetResp, paramNetResp.getParent() + File.separator);
+              nwp.a(paramNetResp, paramNetResp.getParent() + File.separator);
               this.resPath = (paramNetResp.getParent() + File.separator + "splash.png");
             }
             SplashMiniGameUtil.downloadSuccess(this.appid, this.type, this.resPath);

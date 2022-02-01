@@ -1,14 +1,60 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.content.Context;
+import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-class bhry
-  implements bhvu
+public class bhry
 {
-  bhry(bhrx parambhrx, ImageView paramImageView) {}
+  private static bhro jdField_a_of_type_Bhro = new bhrp();
+  private static final HashMap<Long, bhro> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public static bhro a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    bhro localbhro2 = (bhro)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    bhro localbhro1 = localbhro2;
+    if (localbhro2 == null) {
+      localbhro1 = jdField_a_of_type_Bhro;
+    }
+    return localbhro1;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bhro)localIterator.next()).cleanCache(paramContext);
+    }
+  }
+  
+  public static void a(bhro parambhro)
+  {
+    try
+    {
+      jdField_a_of_type_Bhro = parambhro;
+      return;
+    }
+    finally
+    {
+      parambhro = finally;
+      throw parambhro;
+    }
+  }
+  
+  public static void b(bhro parambhro)
+  {
+    try
+    {
+      if (jdField_a_of_type_Bhro == parambhro) {
+        jdField_a_of_type_Bhro = new bhrp();
+      }
+      return;
+    }
+    finally
+    {
+      parambhro = finally;
+      throw parambhro;
+    }
   }
 }
 

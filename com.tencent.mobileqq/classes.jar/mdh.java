@@ -1,30 +1,24 @@
-import com.tencent.av.ui.EffectToolbar;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-
 public class mdh
-  implements Observer
 {
-  private WeakReference<EffectToolbar> a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
   
-  public mdh(EffectToolbar paramEffectToolbar)
+  public mdh()
   {
-    this.a = new WeakReference(paramEffectToolbar);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public boolean a()
   {
-    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
-    if (localEffectToolbar == null) {
-      return;
-    }
-    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+    long l = System.currentTimeMillis();
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Long + this.b > l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdh
  * JD-Core Version:    0.7.0.1
  */

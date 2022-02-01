@@ -1,34 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.PubGroupTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acge
-  implements abyl
+class acge
+  implements acgx
 {
-  public int a()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    return 1020;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.PubGroupTmp();
-    paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.pub_group_tmp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 6009;
+    Object localObject = null;
+    if (paramacfw != null) {}
+    for (paramVarArgs = paramacfw.a(); (paramacfw == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      acho.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("carrier", acil.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramacfw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramacfw != null) {
+            paramString = paramacfw.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
+          return true;
+          localJSONException = localJSONException;
+          acho.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acho.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

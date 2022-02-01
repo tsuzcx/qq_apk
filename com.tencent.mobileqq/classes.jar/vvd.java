@@ -1,52 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.TrimmableManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qcircleshadow.lib.delegate.IToastDelegate;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vvd
-  implements vuf
+  implements IToastDelegate
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private CopyOnWriteArraySet<vug> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  
-  public vvd()
+  public int getIconTypeDefault()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new vve());
+    return 0;
   }
   
-  private void b(int paramInt)
+  public int getIconTypeError()
   {
-    xvv.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((vug)localIterator.next()).a(paramInt);
-    }
-    System.gc();
+    return 1;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public int getIconTypeNone()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+    return -1;
   }
   
-  public void a(vug paramvug)
+  public int getIconTypeSuccess()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramvug);
+    return 2;
   }
   
-  public void b() {}
-  
-  public void b(vug paramvug)
+  public void makeTextAndShow(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramvug);
+    QQToast.a(BaseApplicationImpl.getContext(), paramInt1, paramString, paramInt2).a();
   }
 }
 

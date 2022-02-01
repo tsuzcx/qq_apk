@@ -1,4 +1,19 @@
-public class ayag {}
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.4.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
+
+public class ayag
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
+{
+  ayag(ayac paramayac) {}
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this));
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

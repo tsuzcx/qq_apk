@@ -1,14 +1,32 @@
-public abstract class anxq
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Comparator;
+
+public class anxq
+  implements Comparator<arpq>
 {
-  public abstract int a();
+  private boolean a(arpq paramarpq)
+  {
+    return (paramarpq != null) && (paramarpq.a != null);
+  }
   
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(boolean paramBoolean, Object paramObject);
-  
-  public abstract void b(Object paramObject);
-  
-  public abstract void b(boolean paramBoolean, Object paramObject);
+  public int a(arpq paramarpq1, arpq paramarpq2)
+  {
+    if ((a(paramarpq1)) && (a(paramarpq2))) {
+      if (paramarpq1.a.sPriority <= paramarpq2.a.sPriority) {}
+    }
+    do
+    {
+      return 1;
+      if (paramarpq1.a.sPriority < paramarpq2.a.sPriority) {
+        return -1;
+      }
+      return 0;
+      if (a(paramarpq1)) {
+        return -1;
+      }
+    } while (a(paramarpq2));
+    return 0;
+  }
 }
 
 

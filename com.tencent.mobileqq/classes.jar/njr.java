@@ -1,76 +1,102 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.RegionDrawable;
-import com.tencent.qphone.base.util.QLog;
-
 public class njr
+  implements njs
 {
-  public static Bitmap a(Bitmap paramBitmap, int paramInt)
+  protected nfv a;
+  private nio jdField_a_of_type_Nio;
+  private njt jdField_a_of_type_Njt;
+  
+  public njr(njt paramnjt)
   {
-    if (paramInt == 0) {
-      return paramBitmap;
-    }
-    return a(paramBitmap, paramInt, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    this.jdField_a_of_type_Njt = paramnjt;
   }
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  private void a()
   {
-    long l1 = System.currentTimeMillis();
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.i("MosaicUtil", 2, "mosaic function call");
+    this.jdField_a_of_type_Njt.e();
+  }
+  
+  private boolean a(nfv paramnfv)
+  {
+    if ((this.jdField_a_of_type_Nfv == null) || (paramnfv == null)) {}
+    while ((this.jdField_a_of_type_Nfv == null) || (this.jdField_a_of_type_Nfv.n() != paramnfv.n())) {
+      return false;
     }
-    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    while (paramInt2 < paramInt4)
+    return true;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Njt.g();
+  }
+  
+  private void b(nfv paramnfv)
+  {
+    this.jdField_a_of_type_Njt.c();
+  }
+  
+  private void c(nfv paramnfv)
+  {
+    this.jdField_a_of_type_Njt.d();
+  }
+  
+  private void d(nfv paramnfv)
+  {
+    this.jdField_a_of_type_Njt.a(paramnfv.l());
+  }
+  
+  public void a(nfv paramnfv)
+  {
+    int i = paramnfv.n();
+    this.jdField_a_of_type_Njt.a(paramnfv);
+    switch (i)
     {
-      int i = paramInt3;
-      while (i < paramInt5)
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Nfv = paramnfv.a();
+      return;
+      if (a(paramnfv))
       {
-        localPaint.setColor(paramBitmap.getPixel(paramInt2, i));
-        int m = Math.min(j, paramInt2 + paramInt1);
-        int n = Math.min(k, i + paramInt1);
-        localCanvas.drawRect(paramInt2, i, m, n, localPaint);
-        i += paramInt1;
+        d(paramnfv);
+        b();
       }
-      paramInt2 += paramInt1;
+      else
+      {
+        d(paramnfv);
+        b(paramnfv);
+        continue;
+        if ((a(paramnfv)) || ((this.jdField_a_of_type_Nfv != null) && (this.jdField_a_of_type_Nfv.n() == 0)))
+        {
+          if (!a(paramnfv)) {
+            a();
+          }
+          d(paramnfv);
+        }
+        else
+        {
+          c(paramnfv);
+          continue;
+          if (!a(paramnfv))
+          {
+            this.jdField_a_of_type_Njt.f();
+            continue;
+            if (!a(paramnfv))
+            {
+              this.jdField_a_of_type_Njt.a();
+              continue;
+              if (!a(paramnfv)) {
+                this.jdField_a_of_type_Njt.b();
+              }
+            }
+          }
+        }
+      }
     }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("MosaicUtil", 2, "DrawTime: " + (l2 - l1));
-    }
-    return localBitmap;
   }
   
-  public static Bitmap a(Drawable paramDrawable)
+  public void a(nio paramnio)
   {
-    if (paramDrawable == null) {
-      return null;
-    }
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      localObject = (BitmapDrawable)paramDrawable;
-      if (((BitmapDrawable)localObject).getBitmap() != null) {
-        return ((BitmapDrawable)localObject).getBitmap();
-      }
-    }
-    if ((paramDrawable instanceof RegionDrawable)) {
-      return ((RegionDrawable)paramDrawable).getBitmap();
-    }
-    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
-    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
-    {
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
-    }
+    this.jdField_a_of_type_Nio = paramnio;
   }
 }
 

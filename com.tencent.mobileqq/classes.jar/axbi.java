@@ -1,11 +1,20 @@
-class axbi
-  implements bjog
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment;
+
+public class axbi
+  implements bivu
 {
-  axbi(axax paramaxax) {}
+  public axbi(MsgBackupMigrateFragment paramMsgBackupMigrateFragment) {}
   
-  public void onDismiss()
+  public void onItemSelect(View paramView, int paramInt)
   {
-    axax.a(this.a, this.a.b, false);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    axct.a("0X800A242", 1);
+    this.a.onBackEvent();
   }
 }
 

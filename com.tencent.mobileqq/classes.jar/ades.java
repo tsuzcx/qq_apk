@@ -1,22 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ades
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  private ades(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public ades(AccountManageActivity paramAccountManageActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    if (!azit.a().a(this.a.app, this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((this.a.b == null) || (!this.a.b.isShowing())) {
+        AccountManageActivity.a(this.a);
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

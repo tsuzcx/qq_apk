@@ -1,48 +1,42 @@
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class blve
-  extends blvb
+class blve
+  extends Handler
 {
-  public String p;
-  public String q;
+  private WeakReference<QQAppInterface> a;
   
-  public String a()
+  public blve(QQAppInterface paramQQAppInterface)
   {
-    File localFile = new File(this.q);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.q + File.separator + this.f;
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
-  public String b()
+  private void a(Message paramMessage)
   {
-    File localFile = new File(this.q);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.q + File.separator;
-  }
-  
-  public String c()
-  {
-    File localFile = new File(this.p);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.p + File.separator + this.f;
-  }
-  
-  public boolean d()
-  {
-    Object localObject = new File(a());
-    if (!((File)localObject).exists()) {}
+    if (this.a == null) {}
+    QQAppInterface localQQAppInterface;
     do
     {
-      return false;
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length <= 0));
-    return true;
+      return;
+      QLog.i("IliveGroupTipsBarHelper", 1, "getGroupTipsData");
+      localQQAppInterface = (QQAppInterface)this.a.get();
+    } while ((localQQAppInterface == null) || ((paramMessage.obj == null) && (!(paramMessage.obj instanceof blvg))));
+    paramMessage = (blvg)paramMessage.obj;
+    ((blvf)localQQAppInterface.getManager(QQManagerFactory.ILIVE_GROUP_TIPS_MANAGER)).a(String.valueOf(paramMessage.c), paramMessage.e, blvf.c);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    a(paramMessage);
   }
 }
 

@@ -1,69 +1,63 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.ViewAnimation;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class agag
-  extends AnimatorListenerAdapter
+  extends anvi
 {
-  agag(afzw paramafzw, agaj paramagaj, MessageForPoke paramMessageForPoke) {}
+  agag(agab paramagab) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void onAddFriend(String paramString)
   {
-    int i = 1;
-    super.onAnimationEnd(paramAnimator);
-    afzw.f = false;
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (this.jdField_a_of_type_Agaj.b == afzw.b()) && (!(this.jdField_a_of_type_Afzw.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryActivity)) && (!afzw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Agaj.c.setVisibility(0);
+    if (!this.a.sessionInfo.curFriendUin.equals(paramString)) {
+      return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isPlayed) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.setPlayed(this.jdField_a_of_type_Afzw.b);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onAddFriend");
     }
-    if (!agkg.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId))
-    {
-      if (ambc.a(this.jdField_a_of_type_Afzw.b).d == 1) {
-        i = 0;
-      }
-      if (i != 0)
-      {
-        amat.a(this.jdField_a_of_type_Afzw.b, "vas_poke", false);
-        if (QLog.isColorLevel()) {
-          QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
-        }
-      }
+    agab.a(this.a, false);
+  }
+  
+  protected void onReqRecheckInHotReactive(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  {
+    this.a.a.a(paramBoolean, paramString1, paramString2, paramInt);
+  }
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramBoolean) {
+      QQToast.a(this.a.mActivity, this.a.mActivity.getResources().getString(2131718554), 0).b(this.a.mActivity.getTitleBarHeight());
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    super.onAnimationStart(paramAnimator);
-    afzw.f = true;
-    if (agkg.a()) {
-      HapticManager.a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId), 2);
-    }
-    agkc.a().a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend());
-    if (this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
-      this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) {
-      this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(false);
-    }
-    for (;;)
+    super.onUpdateFriendInfo(paramString, paramBoolean);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.contains(this.a.sessionInfo.curFriendUin)))
     {
-      agkg.a(this.jdField_a_of_type_Afzw.b, this.jdField_a_of_type_Afzw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
-      return;
-      this.jdField_a_of_type_Afzw.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(true);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateHotFriendLevel");
+      }
+      this.a.a();
+    }
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateHotFriendLevel");
+      }
+      this.a.a();
     }
   }
 }

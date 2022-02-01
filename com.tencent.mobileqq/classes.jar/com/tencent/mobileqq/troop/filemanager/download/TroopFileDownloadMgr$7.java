@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
 import android.os.Bundle;
-import befw;
+import bfmz;
 import java.util.UUID;
 
 public class TroopFileDownloadMgr$7
   implements Runnable
 {
-  public TroopFileDownloadMgr$7(befw parambefw, UUID paramUUID, Bundle paramBundle) {}
+  public TroopFileDownloadMgr$7(bfmz parambfmz, UUID paramUUID, Bundle paramBundle) {}
   
   public void run()
   {
-    befw.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
+    bfmz.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

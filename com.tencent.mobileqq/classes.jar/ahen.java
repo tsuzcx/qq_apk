@@ -1,38 +1,34 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class ahen
-  extends amwl
+public class ahen
+  extends afqr
 {
-  ahen(ahek paramahek) {}
-  
-  public void onMsgStartSendingUI(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.refresh(131072);
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
-  {
-    onSendResult(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, amwf paramamwf)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
-      return;
-    }
-    this.a.hasSentRecvMsg = true;
-    this.a.refresh(262144, paramamwf, paramLong);
-  }
-  
-  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
-  {
-    this.a.refresh(65536);
-  }
+  public ViewGroup a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public AutoStartProgressBar a;
+  public URLDrawable a;
+  public QQStoryItemBuilder.StoryChatVideoView a;
+  public BubbleImageView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public BubbleImageView b;
+  public String b;
+  public TextView c;
+  public BubbleImageView c;
+  public TextView d;
+  public TextView e;
 }
 
 

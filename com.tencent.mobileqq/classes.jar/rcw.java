@@ -1,10 +1,20 @@
-public class rcw
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+
+class rcw
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c = -1L;
+  rcw(rcr paramrcr, LinearLayout paramLinearLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
+  }
 }
 
 

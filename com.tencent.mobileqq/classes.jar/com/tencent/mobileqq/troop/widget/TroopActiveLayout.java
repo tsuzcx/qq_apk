@@ -15,7 +15,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bfuj;
+import bhdb;
 import com.tencent.commonsdk.cache.Sizeable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -28,7 +28,7 @@ public class TroopActiveLayout
   extends View
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842548, 2130842549, 2130842549, 2130842550, 2130842551, 2130842552 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842578, 2130842579, 2130842579, 2130842580, 2130842581, 2130842582 };
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -58,12 +58,12 @@ public class TroopActiveLayout
   public TroopActiveLayout(Context arg1, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(???, paramAttributeSet, paramInt);
-    Sizeable localSizeable = bfuj.a("TroopActiveLayout_cache");
+    Sizeable localSizeable = bhdb.a("TroopActiveLayout_cache");
     paramAttributeSet = localSizeable;
     if (!(localSizeable instanceof TroopActiveLayout.SizeableBitmapCache))
     {
       paramAttributeSet = new TroopActiveLayout.SizeableBitmapCache(41702);
-      bfuj.a("TroopActiveLayout_cache", paramAttributeSet);
+      bhdb.a("TroopActiveLayout_cache", paramAttributeSet);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache = ((TroopActiveLayout.SizeableBitmapCache)paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = ???;

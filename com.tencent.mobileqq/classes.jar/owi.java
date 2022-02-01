@@ -1,21 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class owi
-  implements sym
+class owi
 {
-  owi(String paramString) {}
-  
-  public void a(syo paramsyo, int paramInt) {}
-  
-  public void a(syo paramsyo, Throwable paramThrowable)
-  {
-    QLog.e("ReadInJoyCommentPBModule", 2, "preload failed " + this.a);
-  }
-  
-  public void a(syo paramsyo, syk paramsyk)
-  {
-    QLog.d("ReadInJoyCommentPBModule", 2, "preload success " + this.a);
-  }
+  private static final owf a = new owf(null);
 }
 
 

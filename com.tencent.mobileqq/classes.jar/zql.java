@@ -1,40 +1,27 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class zql
-  implements FFmpegExecuteResponseCallback
+  extends JSONObject
 {
-  zql(zpq paramzpq) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void onFailure(String paramString)
+  public zql(zqj paramzqj, String paramString)
   {
-    a(false);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
-    }
+    super(paramString);
   }
   
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString)
+  public int getInt(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    if (!has(paramString)) {
+      return 0;
     }
+    return super.getInt(paramString);
   }
   
-  public void onStart()
+  public String getString(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    if (!has(paramString)) {
+      return "";
     }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    a(true);
+    return super.getString(paramString);
   }
 }
 

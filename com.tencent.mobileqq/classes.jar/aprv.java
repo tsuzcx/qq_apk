@@ -1,64 +1,71 @@
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.util.Pair;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class aprv
+class aprv
+  implements bmqi
 {
-  public static final Object a;
-  Pair<String, Boolean> jdField_a_of_type_ComTencentUtilPair = new Pair("", Boolean.valueOf(false));
-  ConcurrentHashMap<String, ConfessInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  aprv(aprm paramaprm) {}
   
-  static
+  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public ConfessInfo a(String arg1, int paramInt1, int paramInt2)
-  {
-    Object localObject1 = apse.a(???, paramInt1, paramInt2);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (paramArrayList != null) {
+      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryCallback:" + paramArrayList.toString());
+    }
+    if (aprm.a(this.a) != null)
     {
-      localObject1 = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
-      return localObject1;
+      abuf.a(paramArrayList);
+      aprm.a(this.a).a(paramArrayList);
     }
   }
   
-  public ConfessInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, String paramString4, long paramLong)
+  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
   {
-    ConfessInfo localConfessInfo = new ConfessInfo();
-    localConfessInfo.reset();
-    localConfessInfo.topicId = paramInt2;
-    localConfessInfo.confessorSex = paramInt3;
-    localConfessInfo.confessorNick = paramString3;
-    try
-    {
-      localConfessInfo.confessorUin = Long.parseLong(paramString2);
-      label44:
-      localConfessInfo.confessorUinStr = paramString2;
-      localConfessInfo.confessTime = paramLong;
-      if (paramString4 != null) {
-        localConfessInfo.topic = paramString4;
-      }
-      a(paramString1, paramInt1, localConfessInfo);
-      return localConfessInfo;
+    if (paramArrayList != null) {
+      QLog.i("ark.download.module", 1, "ark.dctrl.onQueryCallbackVia:" + paramArrayList.toString());
     }
-    catch (Exception paramString3)
+    if (aprm.a(this.a) != null)
     {
-      break label44;
+      abuf.a(paramArrayList);
+      aprm.a(this.a).a(paramArrayList);
     }
   }
   
-  public void a(String arg1, int paramInt, ConfessInfo paramConfessInfo)
+  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
   {
-    String str = apse.a(???, paramInt, paramConfessInfo.topicId);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (aprm.a(this.a) != null)
     {
-      ConfessInfo localConfessInfo = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-      if ((localConfessInfo == null) || (!localConfessInfo.equals(paramConfessInfo))) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramConfessInfo);
-      }
+      abuf.a(paramWadlResult);
+      aprm.a(this.a).a(paramWadlResult);
+      if (paramWadlResult != null) {}
+    }
+    else
+    {
       return;
     }
+    QLog.i("ark.download.module", 1, "ark.dctrl.onWadlTaskStatusChanged:" + paramWadlResult.toString());
+    if (paramWadlResult.a != null) {}
+    for (String str = paramWadlResult.a.a;; str = "") {
+      switch (paramWadlResult.b)
+      {
+      case 8: 
+      case 10: 
+      case 11: 
+      case 12: 
+      case 13: 
+      default: 
+        return;
+      case 6: 
+        bdla.a(null, "dc00898", "", "", "0X8009E14", "0X8009E14", 0, 0, "", "", str, "");
+        return;
+      }
+    }
+    bdla.a(null, "dc00898", "", "", "0X8009E15", "0X8009E15", 0, 0, "", "", str, "");
+    return;
+    bdla.a(null, "dc00898", "", "", "0X8009E17", "0X8009E17", 0, 0, "", "", str, "");
+    return;
+    bdla.a(null, "dc00898", "", "", "0X8009E18", "0X8009E18", 0, 0, "", "", str, "");
   }
 }
 

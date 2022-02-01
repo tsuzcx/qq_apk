@@ -1,28 +1,27 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.view.GameSessionView;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class atzk
-  implements EIPCResultCallback
+class atzk
+  implements awvo
 {
-  public atzk(GameSessionView paramGameSessionView, Context paramContext, GameCenterSessionInfo paramGameCenterSessionInfo) {}
+  atzk(atzg paramatzg) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(int paramInt)
   {
-    if (paramEIPCResult.code == 0)
+    switch (paramInt)
     {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = paramEIPCResult.getString("key_get_msg_list_url");
-        QLog.i(GameSessionView.a, 1, "[onCallback] url:" + paramEIPCResult);
-        atyf.a(paramEIPCResult, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameCenterSessionInfo);
-      }
     }
+    do
+    {
+      do
+      {
+        return;
+        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      } while (atzg.a(this.a));
+      atzg.b(this.a);
+      return;
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    } while (!atzg.a(this.a));
+    atzg.a(this.a);
   }
 }
 

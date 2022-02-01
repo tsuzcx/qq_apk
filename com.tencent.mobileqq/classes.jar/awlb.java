@@ -1,34 +1,27 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import mqq.app.QQPermissionCallback;
 
 public class awlb
-  implements ServiceConnection
+  implements QQPermissionCallback
 {
-  private WeakReference<awla> jdField_a_of_type_JavaLangRefWeakReference;
+  public awlb(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
   
-  public awlb(awkz paramawkz, awla paramawla)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawla);
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).setOnDismissListener(new awlc(this));
+    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
+    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
+    paramArrayOfInt = awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    awkz.a(this.jdField_a_of_type_Awkz, lwg.a(paramIBinder));
-    paramComponentName = (awla)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.g();
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    awkz.a(this.jdField_a_of_type_Awkz, null);
-    paramComponentName = (awla)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.h();
-    }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
   }
 }
 

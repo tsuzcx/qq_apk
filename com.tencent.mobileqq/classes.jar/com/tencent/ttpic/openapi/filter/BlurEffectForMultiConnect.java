@@ -19,16 +19,6 @@ public class BlurEffectForMultiConnect
     super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ClearGLSL()
-  {
-    this.mBlurFilter.clearGLSLSelf();
-    this.mBlendFilter.clearGLSLSelf();
-    this.mBlurFrame1.clear();
-    this.mBlurFrame2.clear();
-    this.mBlendFrame.clear();
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.mBlurFilter.apply();
@@ -49,6 +39,16 @@ public class BlurEffectForMultiConnect
     this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 400, i, -1, 0.0D, this.mBlurFrame2);
     this.mBlendFilter.updateTexture(paramInt1);
     this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
+  }
+  
+  public void clearGLSL()
+  {
+    this.mBlurFilter.clearGLSLSelf();
+    this.mBlendFilter.clearGLSLSelf();
+    this.mBlurFrame1.clear();
+    this.mBlurFrame2.clear();
+    this.mBlendFrame.clear();
+    super.clearGLSL();
   }
   
   public void clearGLSLSelf()

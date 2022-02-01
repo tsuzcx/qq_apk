@@ -1,37 +1,59 @@
-import android.os.Bundle;
-import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+import com.tencent.ims.QSecControlBitsQuery.QSecCbResp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class bkul
+class bkul
+  implements bkvn
 {
-  private static bkul a;
+  bkul(bkuk parambkuk) {}
   
-  public static bkul a()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    try
+    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {}
+    for (;;)
     {
-      if (a == null) {
-        a = new bkul();
+      return;
+      try
+      {
+        QSecControlBitsQuery.QSecCbResp localQSecCbResp = new QSecControlBitsQuery.QSecCbResp();
+        localQSecCbResp.mergeFrom((byte[])paramObject);
+        int j = -1;
+        int i = j;
+        if (localQSecCbResp.u32_status != null)
+        {
+          i = j;
+          if (localQSecCbResp.u32_status.has()) {
+            i = localQSecCbResp.u32_status.get();
+          }
+        }
+        if (i == 0)
+        {
+          if ((localQSecCbResp.u32_time_interval != null) && (localQSecCbResp.u32_time_interval.has())) {
+            localQSecCbResp.u32_time_interval.get();
+          }
+          paramFromServiceMsg = null;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (localQSecCbResp.str_cbstr != null)
+          {
+            paramToServiceMsg = paramFromServiceMsg;
+            if (localQSecCbResp.str_cbstr.has()) {
+              paramToServiceMsg = localQSecCbResp.str_cbstr.get();
+            }
+          }
+          if ((paramToServiceMsg != null) && (!paramToServiceMsg.equals("")))
+          {
+            bkuk.a(this.a, paramToServiceMsg);
+            return;
+          }
+        }
       }
-      bkul localbkul = a;
-      return localbkul;
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+      }
     }
-    finally {}
-  }
-  
-  public boolean a(String paramString, Bundle paramBundle)
-  {
-    if (!bksw.a().a())
-    {
-      bkvd.d("ReaderInterfacePlugin", "plugin is not Ready, launch it");
-      bksw.a().a();
-    }
-    ReaderInterfacePluginProxy localReaderInterfacePluginProxy;
-    do
-    {
-      return false;
-      localReaderInterfacePluginProxy = bksw.a().a();
-    } while (localReaderInterfacePluginProxy == null);
-    return localReaderInterfacePluginProxy.handleEvent(paramString, paramBundle);
   }
 }
 

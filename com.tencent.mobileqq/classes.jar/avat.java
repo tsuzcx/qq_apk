@@ -1,34 +1,59 @@
-import android.graphics.Paint.Align;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public abstract interface avat
+public class avat
 {
-  public abstract int a();
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public abstract String a();
+  public String a()
+  {
+    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
+  }
   
-  public abstract void a();
+  public void a()
+  {
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.f = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.d = "";
+    this.e = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
   
-  public abstract void a(int paramInt);
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract boolean a();
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void b();
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (FileUtils.fileExistsAndNotEmpty(this.jdField_c_of_type_JavaLangString));
+  }
   
-  public abstract void c();
-  
-  public abstract void setAlign(Paint.Align paramAlign);
-  
-  public abstract void setLineMaxWidth(int paramInt);
-  
-  public abstract void setLyric(avjt paramavjt, int paramInt);
-  
-  public abstract void setOnSizeChangeListener(avbe paramavbe);
-  
-  public abstract void setSongId(String paramString);
-  
-  public abstract void setStrokeColor(int paramInt);
-  
-  public abstract void setStrokeWidth(int paramInt);
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
 }
 
 

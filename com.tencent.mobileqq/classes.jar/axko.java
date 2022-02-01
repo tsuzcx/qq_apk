@@ -1,66 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Build;
 import com.tencent.qphone.base.util.QLog;
 
 public class axko
 {
-  private static final String a = axko.class.getSimpleName();
+  public static String[] a = { "samsung SM-N7508V", "samsung SM-N9002", "samsung SM-N9005", "samsung SM-N9006", "samsung SM-N9008", "samsung SM-N9009", "samsung SM-N9009V", "samsung SM-G3858", "samsung SM-G7108V", "samsung SM-G7108U", "samsung SM-G9008V", "samsung GT-I9308I", "samsung GT-I9508V", "samsung SM-G3588V", "samsung SM-T2558", "samsung SM-G9300", "HTC T528w", "MI 3", "HTC 802t", "GT-I9100", "GT-I9300", "SCH-I939", "MX4", "HUAWEI C8813D" };
   
-  public static boolean a(Activity paramActivity, String paramString)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      bhzm.b(a, "enter now live room. mqqapi= " + paramString);
-    }
-    try
-    {
-      paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-      paramString.putExtra("big_brother_source_key", "biz_src_now");
-      paramActivity.startActivity(paramString);
-      return true;
-    }
-    catch (Exception paramActivity)
-    {
-      if (QLog.isColorLevel()) {
-        bhzm.b(a, "enter now live room error: " + paramActivity.getMessage());
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, int paramInt1, int paramInt2)
-  {
-    if (paramActivity == null) {}
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
     for (;;)
     {
-      return false;
-      if ((paramActivity != null) && (!NetworkUtil.isNetworkAvailable(paramActivity.getApplication())))
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        bkpj.a(paramActivity, 2131694075, 1);
-        return false;
-      }
-      if ((paramString != null) && (paramString.startsWith("mqqapi://"))) {
-        return a(paramActivity, paramString);
-      }
-      if (paramInt1 > 0) {}
-      for (paramString = "mqqapi://now/openroom?first=1&roomid=" + paramInt1 + "&roomtype=0&startsrc=" + paramInt2 + "&fromid=" + paramInt2; (paramString != null) && (paramString.length() > 0); paramString = null) {
-        for (;;)
-        {
-          return a(paramActivity, paramString);
-          if ((paramString != null) && (paramString.contains("roomid="))) {
-            try
-            {
-              paramString = Uri.parse(paramString).getQueryParameter("roomid");
-              paramString = "mqqapi://now/openroom?first=1&roomid=" + paramString + "&roomtype=0&startsrc=" + paramInt2 + "&fromid=" + paramInt2;
-            }
-            catch (Exception paramString)
-            {
-              QLog.e(a, 2, paramString, new Object[0]);
-            }
-          }
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
         }
       }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQPlayerService", 2, "isPhoneInWhiteList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
+      }
+      i += 1;
     }
   }
 }

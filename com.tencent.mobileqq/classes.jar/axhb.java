@@ -1,42 +1,46 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
-import java.lang.reflect.Field;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axhb
-  extends Scroller
+  implements View.OnClickListener
 {
-  public axhb(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  public axhb(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    catch (Exception localException)
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof axhe)) {}
+    for (localObject = (axhe)localObject;; localObject = null)
     {
-      localException.printStackTrace();
+      if (localObject == null) {}
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        int j = ((axhe)localObject).jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        bdla.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        ((axhe)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+        if (MultiCardPageIndicator.a(this.a) != null) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+      }
     }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
   }
 }
 

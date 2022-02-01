@@ -1,9 +1,18 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
-public abstract interface tef
+public class tef
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public tef(SlideActiveAnimController paramSlideActiveAnimController) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
+  }
 }
 
 

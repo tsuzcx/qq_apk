@@ -1,21 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class qal
-  implements ViewBase.OnClickListener
+public class qal
+  implements qbc
 {
-  qal(qak paramqak, pvc parampvc, Container paramContainer) {}
+  public qal(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a()
   {
-    paramViewBase = this.jdField_a_of_type_Pvc.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    pgw.b(paramViewBase, (int)paramViewBase.mChannelID);
-    uhv.a(paramViewBase);
+    ReadInJoySelfFragment.j(this.a);
   }
 }
 

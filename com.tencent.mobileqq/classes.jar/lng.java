@@ -1,25 +1,101 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.gaudio.AVObserver.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lng
-  implements mig
+  implements Observer
 {
-  public lng(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public static final String TAG = "GAudioObserver";
+  Handler mHandler = null;
   
-  public void a(boolean paramBoolean)
+  protected void onAudioChatting(int paramInt, String paramString1, String paramString2) {}
+  
+  protected void onCallTimeUseUp(boolean paramBoolean, String paramString) {}
+  
+  protected void onGroupSecurityLimit(long paramLong1, int paramInt, long paramLong2, String paramString) {}
+  
+  protected void onManagerForbiddenOpenRoom(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
+  
+  protected void onMeetingCancel(int paramInt, long paramLong) {}
+  
+  protected void onMeetingReady(int paramInt, long paramLong) {}
+  
+  protected void onMemberInfo(int paramInt, long paramLong1, long paramLong2) {}
+  
+  protected void onMemberJoin(int paramInt, long paramLong1, long paramLong2) {}
+  
+  protected void onMemberQuit(int paramInt, long paramLong1, long paramLong2) {}
+  
+  protected void onSmallScreenStateChange(String paramString) {}
+  
+  public void onUpdate(Object paramObject)
   {
-    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
-      return;
-    }
-    if ((this.a.a.e) || (this.a.a.l())) {
-      this.a.e();
-    }
-    for (;;)
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    switch (i)
     {
-      bcef.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+    default: 
+      int j = ((Integer)paramObject[1]).intValue();
+      long l1 = ((Long)paramObject[2]).longValue();
+      long l2 = ((Long)paramObject[3]).longValue();
+      if (QLog.isDevelopLevel()) {
+        QLog.w("GAudioObserver", 1, "onUpdate, relationType[" + j + "], discussId[" + l1 + "], memberUin[" + l2 + "], msg[" + i + "]");
+      }
+      onMemberInfo(j, l1, l2);
       return;
-      this.a.d();
+    case 21: 
+      onMemberInfo(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
+      return;
+    case 22: 
+      onMemberJoin(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
+      return;
+    case 23: 
+      onMemberQuit(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
+      return;
+    case 28: 
+      onAudioChatting(((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
+      return;
+    case 29: 
+      onUpdateTime((String)paramObject[2], (String)paramObject[3]);
+      return;
+    case 32: 
+      i = ((Integer)paramObject[1]).intValue();
+      onManagerForbiddenOpenRoom(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue());
+      return;
+    case 33: 
+      i = ((Integer)paramObject[1]).intValue();
+      onGroupSecurityLimit(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), (String)paramObject[4]);
+      return;
+    case 36: 
+      onMeetingReady(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+      return;
+    case 37: 
+      onMeetingCancel(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+      return;
+    case 408: 
+      onCallTimeUseUp(((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2]);
+      return;
     }
+    onSmallScreenStateChange((String)paramObject[1]);
+  }
+  
+  protected void onUpdateTime(String paramString1, String paramString2) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      if (this.mHandler == null) {
+        this.mHandler = new Handler(paramObservable);
+      }
+      this.mHandler.post(new AVObserver.1(this, paramObject));
+      return;
+    }
+    onUpdate(paramObject);
   }
 }
 

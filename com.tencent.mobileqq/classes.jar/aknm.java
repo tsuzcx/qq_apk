@@ -1,10 +1,4 @@
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-
-public abstract interface aknm
-{
-  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknm

@@ -1,549 +1,316 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHelper;
+import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import cooperation.qzone.contentbox.QZoneMsgActivity;
+import java.util.ArrayList;
 
 public class bcgn
+  extends bcff
 {
-  public static int a(String paramString)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  public final PublicAccountInfo a;
+  private String jdField_a_of_type_JavaLangString;
+  private long b;
+  private int c = -1;
+  
+  public bcgn(QQAppInterface paramQQAppInterface, PublicAccountInfo paramPublicAccountInfo, int paramInt)
   {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    super(paramQQAppInterface, paramInt, 0L);
+    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+    if (paramQQAppInterface.getProxyManager().a().isUinInRecent(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin()))
     {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a().size();
-      }
+      this.b = bbzc.O;
+      return;
     }
-    return 0;
+    this.b = bbzc.P;
   }
   
-  public static int a(String paramString, short paramShort)
+  protected long a(String paramString)
   {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = -9223372036854775808L;
+    long l2 = bcnc.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name, 1073741824L);
+    long l1 = l2;
+    if (l2 != -9223372036854775808L) {
+      l1 = (l2 & 0x0) >> 20 | 0xFFFFFFFF & l2 | (0x0 & l2) >> 26;
+    }
+    if (l1 > this.jdField_a_of_type_Long) {
+      this.jdField_a_of_type_Long = l1;
+    }
+    for (int i = 1;; i = 0)
     {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null)
+      if (this.jdField_a_of_type_Long != -9223372036854775808L)
       {
-        if (paramShort <= paramString.a().size()) {
-          return ((bcgm)paramString.a().get(paramShort - 1)).a();
+        if (this.b != bbzc.O) {
+          break label232;
         }
-        QLog.w("StreamDataManager", 2, "getRecordedSize error shPackSeq: " + paramShort + "sfi.getStreamData().size(): " + paramString.a().size());
-      }
-    }
-    return 0;
-  }
-  
-  public static File a(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
-    }
-    return null;
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.size() > 0))
-    {
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        bcgo localbcgo = (bcgo)localHashMap.get(str);
-        if ((localbcgo.b() == paramInt1) && (localbcgo.a() == paramInt2)) {
-          return str;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static Map.Entry<String, bcgo> a(long paramLong1, long paramLong2)
-  {
-    Object localObject = bcgp.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  try get random is:" + paramLong1 + ",msgSeq is:" + paramLong2);
-    }
-    if ((localObject != null) && (((HashMap)localObject).size() > 0))
-    {
-      localObject = ((HashMap)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        bcgo localbcgo = (bcgo)localEntry.getValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  random is:" + bblk.a((int)localbcgo.b) + ",msgSeq is:" + localbcgo.jdField_a_of_type_Long);
-        }
-        if ((bblk.a((int)localbcgo.b) == paramLong1) && (paramLong2 == localbcgo.jdField_a_of_type_Long)) {
-          return localEntry;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static short a(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.c();
-      }
-    }
-    return -1;
-  }
-  
-  public static void a(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        int i = paramString.a().size();
-        paramString.a((short)i);
-        if (i >= 1) {
-          ((bcgm)paramString.a().get(paramString.a().size() - 1)).a(true);
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.jdField_a_of_type_Long = paramLong;
-      }
-    }
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    a(paramString1, paramQQAppInterface, paramString2, paramLong1, false, paramInt1, paramInt2, paramLong2, paramBundle);
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    short s1 = -1;
-    Object localObject = bcgp.a();
-    paramInt1 = bfyl.a(paramInt1);
-    short s2;
-    bcgm localbcgm;
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
-    {
-      localObject = (bcgo)((HashMap)localObject).get(paramString1);
-      ((bcgo)localObject).jdField_a_of_type_Boolean = paramBoolean;
-      if (localObject != null)
-      {
-        s2 = s1;
-        if (((bcgo)localObject).a() == 0)
+        this.jdField_a_of_type_Long |= 0x100000;
+        if (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isOffLine)
         {
-          localObject = ((bcgo)localObject).a();
-          s2 = s1;
-          if (localObject != null)
-          {
-            s2 = s1;
-            if (((List)localObject).size() > 0)
-            {
-              localObject = ((List)localObject).iterator();
-              s2 = s1;
-              if (((Iterator)localObject).hasNext())
-              {
-                localbcgm = (bcgm)((Iterator)localObject).next();
-                if ((localbcgm.a() == localbcgm.a().length) && (!localbcgm.b()))
-                {
-                  s1 = localbcgm.a();
-                  localbcgm.b(true);
-                }
-              }
+          this.jdField_a_of_type_Long |= 0x0;
+          if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount >= 3) {
+            if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount >= 128) {
+              break label247;
             }
           }
         }
       }
+      label232:
+      label247:
+      for (this.jdField_a_of_type_Long |= (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount & 0x7F) << 32;; this.jdField_a_of_type_Long |= 0x0)
+      {
+        if (i != 0) {
+          this.jdField_a_of_type_Long |= 0x0;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade == 1L) {
+          this.jdField_a_of_type_Long |= 0x80000000;
+        }
+        return this.jdField_a_of_type_Long;
+        this.jdField_a_of_type_Long |= 0x80000;
+        break;
+      }
     }
+  }
+  
+  public PublicAccountInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
+  }
+  
+  public Object a()
+  {
+    return Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.uin);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    Object localObject2 = paramView.getContext();
+    if (localObject2 == null) {}
+    label134:
+    label911:
+    label916:
+    label919:
     for (;;)
     {
-      break;
-      if ((!localbcgm.b()) && (localbcgm.a()))
+      return;
+      if ((localObject2 instanceof UniteSearchActivity))
       {
-        s1 = localbcgm.a();
-        localbcgm.b(true);
-        continue;
-        if ((s2 != -1) && (paramLong1 != 0L)) {
-          paramQQAppInterface.getTransFileController().sendStreamPtt(paramString2, paramString1, paramLong1, s2, paramInt1, paramInt2, paramLong2, paramBundle);
+        bcnc.a("all_result", "clk_public_uin", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+        bcjs.a(null, 0, this.c, "0X8009D51", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin(), null);
+      }
+      String str = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
+      bhfm.a(null, "pubAcc_aio_open", str);
+      Object localObject1 = (aoan)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+      if (AppConstants.WEISHI_UIN.equals(str))
+      {
+        uyt.a((Context)localObject2, "from_search_result", 1, true);
+        bcnc.a(this.jdField_a_of_type_JavaLangString, 50, 0, paramView, str, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isOffLine, this.c);
+        aode.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        bcnc.a(this.jdField_a_of_type_JavaLangString, 50, paramView, false);
+        if ((!(localObject2 instanceof BaseActivity)) || (this.jdField_a_of_type_Int <= 0)) {
+          continue;
         }
-        return;
+        localObject1 = null;
+        if (!(localObject2 instanceof UniteSearchActivity)) {
+          break label840;
+        }
+        localObject1 = "0X8006570";
+        paramView = "0X8005D1C";
       }
-    }
-  }
-  
-  public static void a(String paramString, short paramShort)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.c(paramShort);
-      }
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramBoolean);
-      }
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
-    {
-      paramQQAppInterface = new bcgo(paramQQAppInterface, paramInt1, paramString, paramInt2);
-      paramQQAppInterface.a(paramInt3);
-      try
+      for (;;)
       {
-        localHashMap.put(paramString, paramQQAppInterface);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
-      try
-      {
-        localHashMap.remove(paramString);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString, short paramShort)
-  {
-    HashMap localHashMap = bcgp.a();
-    return (localHashMap == null) || (!localHashMap.containsKey(paramString)) || (((bcgo)localHashMap.get(paramString)).b() != paramShort);
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort)
-  {
-    return a(paramString, paramArrayOfByte, paramInt, paramShort, false);
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort, boolean paramBoolean)
-  {
-    Object localObject1 = bcgp.a();
-    if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
-    {
-      bcgo localbcgo = (bcgo)((HashMap)localObject1).get(paramString);
-      if (!paramBoolean) {}
-      try
-      {
-        localbcgo.a(paramArrayOfByte, paramInt);
-        if (localbcgo.a() == 0)
+        label213:
+        if (paramView == null) {
+          break label919;
+        }
+        localObject2 = ((BaseActivity)localObject2).app;
+        if (this.c == 12)
         {
-          paramString = localbcgo.a();
-          if (paramString.size() == 0)
-          {
-            localObject1 = new bcgm(localbcgo.jdField_a_of_type_Int);
-            System.arraycopy(paramArrayOfByte, 0, ((bcgm)localObject1).a(), 0, paramInt);
-            ((bcgm)localObject1).a(paramInt);
-            paramShort = localbcgo.b();
-            s = (short)(paramShort + 1);
-            ((bcgm)localObject1).a(paramShort);
-            paramString.add(localObject1);
-            localbcgo.b(s);
-            return true;
+          bdla.b((QQAppInterface)localObject2, "CliOper", "", "", (String)localObject1, (String)localObject1, 0, 1, 0, this.jdField_a_of_type_Int + "", "", str, this.jdField_a_of_type_JavaLangString);
+          label284:
+          paramView = oli.a();
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name;
+          if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType == 2) {
+            break label911;
           }
         }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
+        for (boolean bool = true;; bool = false)
         {
-          short s;
-          if (QLog.isColorLevel())
+          paramView.a((QQAppInterface)localObject2, str, (String)localObject1, bool);
+          return;
+          if (AppConstants.TIM_TEAM_UIN.equals(str))
           {
-            QLog.d("StreamDataManager", 2, "write fail", paramString);
-            continue;
-            localObject1 = (bcgm)paramString.get(paramString.size() - 1);
-            Object localObject2 = ((bcgm)localObject1).a();
-            int i;
-            if (((bcgm)localObject1).a() < localObject2.length)
-            {
-              i = localObject2.length - ((bcgm)localObject1).a();
-              if (i >= paramInt)
-              {
-                System.arraycopy(paramArrayOfByte, 0, ((bcgm)localObject1).a(), ((bcgm)localObject1).a(), paramInt);
-                ((bcgm)localObject1).a(((bcgm)localObject1).a() + paramInt);
-              }
-              else
-              {
-                if (paramInt <= i)
-                {
-                  System.arraycopy(paramArrayOfByte, 0, ((bcgm)localObject1).a(), ((bcgm)localObject1).a(), paramInt);
-                  ((bcgm)localObject1).a(((bcgm)localObject1).a() + paramInt);
-                  return true;
-                }
-                System.arraycopy(paramArrayOfByte, 0, ((bcgm)localObject1).a(), ((bcgm)localObject1).a(), i);
-                ((bcgm)localObject1).a(((bcgm)localObject1).a().length);
-                paramInt -= i;
-                localObject1 = new bcgm(localbcgo.jdField_a_of_type_Int);
-                System.arraycopy(paramArrayOfByte, i, ((bcgm)localObject1).a(), 0, paramInt);
-                ((bcgm)localObject1).a(paramInt);
-                paramShort = localbcgo.b();
-                s = (short)(paramShort + 1);
-                ((bcgm)localObject1).a(paramShort);
-                paramString.add(localObject1);
-                localbcgo.b(s);
-              }
-            }
-            else
-            {
-              localObject1 = new bcgm(localbcgo.jdField_a_of_type_Int);
-              System.arraycopy(paramArrayOfByte, 0, ((bcgm)localObject1).a(), 0, paramInt);
-              ((bcgm)localObject1).a(paramInt);
-              paramShort = localbcgo.b();
-              s = (short)(paramShort + 1);
-              ((bcgm)localObject1).a(paramShort);
-              paramString.add(localObject1);
-              localbcgo.b(s);
-              continue;
-              if (localbcgo.a() == 1)
-              {
-                localObject2 = localbcgo.a();
-                paramInt = paramArrayOfByte.length;
-                i = 0;
-                if (paramInt > 0)
-                {
-                  if (((List)localObject2).size() == 0)
-                  {
-                    paramString = new bcgm(localbcgo.jdField_a_of_type_Int);
-                    ((List)localObject2).add(paramString);
-                  }
-                  for (;;)
-                  {
-                    int k = paramString.a().length - paramString.a();
-                    int j = k;
-                    if (k >= paramInt) {
-                      j = paramInt;
-                    }
-                    System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
-                    i += j;
-                    paramInt -= j;
-                    paramString.a(j + paramString.a());
-                    paramString.a(paramShort);
-                    break;
-                    localObject1 = (bcgm)((List)localObject2).get(((List)localObject2).size() - 1);
-                    paramString = (String)localObject1;
-                    if (((bcgm)localObject1).a().length - ((bcgm)localObject1).a() <= 0)
-                    {
-                      paramString = new bcgm(localbcgo.jdField_a_of_type_Int);
-                      ((List)localObject2).add(paramString);
-                    }
-                  }
-                }
-                localbcgo.b((short)(paramShort + 1));
-              }
-            }
+            uuc.a((Context)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            break label134;
           }
+          if ((TextUtils.equals("2290230341", str)) && (QZoneMsgActivity.open((Context)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+            break label134;
+          }
+          if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(str))
+          {
+            KandianSubscribeManager.a((Context)localObject2, 3, 2);
+            break label134;
+          }
+          if (AppConstants.KANDIAN_DAILY_UIN.equals(str))
+          {
+            KandianDailyManager.a((Context)localObject2);
+            break label134;
+          }
+          if (("2747277822".equals(str)) && (aveq.a()))
+          {
+            aves.b((Context)localObject2);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a("2747277822", 1008, false);
+            break label134;
+          }
+          if (MiniGamePublicAccountHelper.shouldOpenWebFragment(str))
+          {
+            MiniGamePublicAccountHelper.launchMiniGamePublicAccount((Context)localObject2);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, false);
+            break label134;
+          }
+          if (ayoq.jdField_a_of_type_JavaLangString.equals(str))
+          {
+            ayos.a((Context)localObject2, str, 3);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(ayoq.jdField_a_of_type_JavaLangString, 1008, false);
+            break label134;
+          }
+          if (TextUtils.equals("3046055438", str))
+          {
+            oph.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject2);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a("3046055438", 1008, false);
+            break label134;
+          }
+          if (((localObject1 != null) && (((aoan)localObject1).a(Long.valueOf(str)))) || ((localObject1 == null) && (uuc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str))))
+          {
+            Intent localIntent = new Intent(paramView.getContext(), ChatActivity.class);
+            int i = 1008;
+            if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType == 2)
+            {
+              localIntent.putExtra("chat_subType", 1);
+              i = 0;
+            }
+            if (TextUtils.isEmpty(str))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.w("PublicAccountSearchResultModel", 2, "uin is null");
+              return;
+            }
+            localIntent.putExtra("uin", str);
+            localIntent.putExtra("uintype", i);
+            localIntent.putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
+            localIntent.putExtra("selfSet_leftViewText", ((Context)localObject2).getString(2131690676));
+            alik.a = true;
+            alik.a(localIntent);
+            ((Context)localObject2).startActivity(localIntent);
+            this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount += 1;
+            if (localObject1 == null) {
+              break label134;
+            }
+            ((aoan)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+            break label134;
+          }
+          if (TextUtils.isEmpty(str))
+          {
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.w("PublicAccountSearchResultModel", 2, "uin is null");
+            return;
+          }
+          localObject1 = new Intent(paramView.getContext(), AccountDetailActivity.class);
+          ((Intent)localObject1).putExtra("uin", str);
+          ((Intent)localObject1).putExtra("source", 4);
+          ((Context)localObject2).startActivity((Intent)localObject1);
+          break label134;
+          label840:
+          if (!(localObject2 instanceof PublicAcntSearchActivity)) {
+            break label916;
+          }
+          localObject1 = "0X8006588";
+          paramView = "0X8005D1E";
+          break label213;
+          olh.a((QQAppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", str, paramView, paramView, 0, 0, this.jdField_a_of_type_Int + "", "", this.jdField_a_of_type_JavaLangString, "", false);
+          break label284;
         }
+        paramView = null;
       }
     }
+  }
+  
+  public boolean a()
+  {
     return false;
   }
   
-  public static byte[] a(String paramString, short paramShort)
+  public String b()
   {
-    Object localObject = bcgp.a();
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
-    {
-      paramString = (bcgo)((HashMap)localObject).get(paramString);
-      if (paramString != null)
-      {
-        localObject = (bcgm)paramString.a().get(paramShort - 1);
-        paramString = ((bcgm)localObject).a();
-        paramShort = ((bcgm)localObject).a();
-        if (paramShort != paramString.length)
-        {
-          localObject = new byte[paramShort];
-          System.arraycopy(paramString, 0, localObject, 0, paramShort);
-          return localObject;
-        }
-        return paramString;
-      }
+    return this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    SpannableString localSpannableString = new bcmr(new ArrayList(), a()).a(bcnc.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.summary));
+    Object localObject = localSpannableString;
+    if (localSpannableString == null) {
+      localObject = "";
     }
+    return localObject;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name;
+  }
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public CharSequence d()
+  {
     return null;
   }
   
-  public static int b(String paramString)
+  public String d()
   {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return -1;
-  }
-  
-  public static short b(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
-    }
-    return 0;
-  }
-  
-  public static void b(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a();
-      }
-    }
-  }
-  
-  public static void b(String paramString, long paramLong)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.b = paramLong;
-      }
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_Boolean;
-      }
-    }
-    return false;
-  }
-  
-  public static int c(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    int i;
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        i = paramString.a().size();
-        if ((i < 1) || (((bcgm)paramString.a().get(i - 1)).b())) {
-          return i;
-        }
-        return i - 1;
-      }
-    }
-    return 0;
-    return i;
-  }
-  
-  public static short c(String paramString)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return 0;
-  }
-  
-  public static void c(String paramString, long paramLong)
-  {
-    HashMap localHashMap = bcgp.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (bcgo)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramLong);
-      }
-    }
-  }
-  
-  public static boolean c(String paramString)
-  {
-    List localList = bcgp.a();
-    if ((localList != null) && (!localList.contains(paramString)))
-    {
-      localList.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean d(String paramString)
-  {
-    List localList = bcgp.a();
-    if ((localList != null) && (localList.contains(paramString)))
-    {
-      localList.remove(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean e(String paramString)
-  {
-    List localList = bcgp.a();
-    return (localList != null) && (localList.contains(paramString));
+    return null;
   }
 }
 

@@ -1,29 +1,10 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class apng
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface apng
 {
-  public apng(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
+  public abstract void a();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    apkn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    if (!paramBoolean) {
-      new apko().c(null);
-    }
-    ((aplf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(168)).a(paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

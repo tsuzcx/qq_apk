@@ -1,5 +1,7 @@
 package com.tencent.ttpic.openapi.filter.stylizefilter.cartoonfilter;
 
+import android.opengl.GLES20;
+import android.os.Build;
 import android.util.Log;
 import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.AEFilterI;
@@ -15,6 +17,7 @@ public class TTCartoonFilterGroup
   extends AEChainI
   implements AEFilterI, IStlylizeFilterIniter
 {
+  private static final String[] BLACK_LIST = { "stk-al00", "jsn-al00a", "hry-al00ta" };
   private TTCartoonFilter mCartoonFilter;
   private TTLookupFilter mCartoonLUTFilter;
   private OptimGaussianMaskFilter mGaussianMaskFilter1;
@@ -71,6 +74,29 @@ public class TTCartoonFilterGroup
       this.mGaussianMaskFilter2.applyFilterChain(false, paramInt2, paramInt3);
     }
     return this.mGaussianMaskFilter2;
+  }
+  
+  private boolean isInBlackList()
+  {
+    boolean bool2 = false;
+    String str = Build.MODEL.toLowerCase();
+    String[] arrayOfString = BLACK_LIST;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfString[i].equals(str)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
   
   private void printLog()
@@ -148,6 +174,9 @@ public class TTCartoonFilterGroup
   
   public Frame render(Frame paramFrame)
   {
+    if (isInBlackList()) {
+      GLES20.glFinish();
+    }
     this.mOriginBlurFilter.updateFrameSize(paramFrame.width, paramFrame.height);
     this.mYellowFilter.updateFrameSize(paramFrame.width, paramFrame.height);
     this.mYellowBlurFilter.updateFrameSize(paramFrame.width, paramFrame.height);
@@ -212,6 +241,9 @@ public class TTCartoonFilterGroup
     addPerforData("cartoonLUT");
     if (paramFrame != localFrame2) {
       localFrame2.unlock();
+    }
+    if (isInBlackList()) {
+      GLES20.glFinish();
     }
     return paramFrame;
   }

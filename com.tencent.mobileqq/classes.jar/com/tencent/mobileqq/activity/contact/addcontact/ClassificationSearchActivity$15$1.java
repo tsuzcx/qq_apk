@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahxs;
+import aisr;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ClassificationSearchActivity$15$1
   implements Runnable
 {
-  public ClassificationSearchActivity$15$1(ahxs paramahxs) {}
+  public ClassificationSearchActivity$15$1(aisr paramaisr) {}
   
   public void run()
   {

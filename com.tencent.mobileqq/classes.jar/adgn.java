@@ -1,59 +1,69 @@
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.FontSettingActivity.AioListAdapter.1;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class adgn
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public adgn(FontSettingActivity paramFontSettingActivity) {}
+  public adgn(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = this.a.jdField_a_of_type_Adgp.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
-    agql localagql = (agql)localView.getTag();
-    localagql.d.setOnClickListener(null);
-    if ((localagql.d instanceof AnimationTextView)) {
-      ((AnimationTextView)localagql.d).onDoubleClick = null;
-    }
-    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a();
+      this.a.getWindow().setSoftInputMode(2);
+      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.a(this.a).clearFocus();
     }
-    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    if (this.a.b != 0) {
+      bdla.b(null, "dc00898", "", "", "0X800B5B3", "0X800B5B3", 0, 0, "", "", "", "");
+    }
+    Object localObject = AddFriendVerifyActivity.a(this.a).getText().toString();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (!this.a.isFinishing())
+      {
+        localObject = new nud(this.a);
+        ((nud)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131699353));
+        ((nud)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846155);
+        ((nud)localObject).a();
+      }
+    }
+    for (;;)
     {
-      this.a.c = false;
-      FontSettingActivity.a(this.a).postDelayed(new FontSettingActivity.AioListAdapter.1(this), 100L);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (((String)localObject).length() > 90)
+      {
+        localObject = new ReportDialog(this.a, 2131755829);
+        ((Dialog)localObject).setContentView(2131562799);
+        ((TextView)((Dialog)localObject).findViewById(2131365644)).setText(this.a.getString(2131691077));
+        ((ProgressBar)((Dialog)localObject).findViewById(2131367140)).setVisibility(8);
+        ((ImageView)((Dialog)localObject).findViewById(2131380525)).setImageResource(2130839653);
+        ((Dialog)localObject).show();
+      }
+      else
+      {
+        this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
+        if (NetworkUtil.isNetSupport(this.a)) {
+          AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), 2000);
+        } else {
+          QQToast.a(this.a, 1, 2131694255, 0).b(this.a.getTitleBarHeight());
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "[AioListAdapter#getView] invoked");
-    }
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
   }
 }
 

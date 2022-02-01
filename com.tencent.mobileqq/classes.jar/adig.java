@@ -1,21 +1,25 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adig
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adig(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adig(AssistantSettingActivity paramAssistantSettingActivity, asaa paramasaa) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      ForwardTroopListFragment.a(this.a).dismiss();
+    this.jdField_a_of_type_Asaa.a(paramBoolean);
+    if (!paramBoolean) {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -9,10 +9,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
-import com.tencent.qapmsdk.base.config.DefaultPluginConfig.ResourcePlugin.ResourceType;
 import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.config.RuntimeConfig;
-import com.tencent.qapmsdk.base.config.SDKConfig;
+import com.tencent.qapmsdk.base.listener.IBaseListener;
+import com.tencent.qapmsdk.base.listener.IResourceListener;
+import com.tencent.qapmsdk.base.listener.ListenerManager;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.SceneMeta;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
@@ -40,8 +41,8 @@ public class ResourceMonitor
   extends QAPMMonitorPlugin
   implements Handler.Callback
 {
-  private static final int MSG_ENDSCENE = 2;
-  private static final int MSG_STARTSCENE = 1;
+  private static final int MSG_END_SCENE = 2;
+  private static final int MSG_START_SCENE = 1;
   private static final String TAG = "QAPM_resource_PerfCollector";
   private static final double TIME_TOLERANCE = 5.0D;
   private static final double TIME_UNIT = 1000.0D;
@@ -49,17 +50,14 @@ public class ResourceMonitor
   private static volatile String currentStage;
   private static volatile boolean hasInit;
   @NonNull
-  public static Vector<PerfItem> immediatePerfItems;
-  @Nullable
+  public static Vector<PerfItem> immediatePerfItems = new Vector(900);
   private static volatile PerfItem lastPerfItem;
   @NonNull
-  public static Vector<TagItem> manualTagItems;
+  public static Vector<TagItem> manualTagItems = new Vector(100);
   private static long memPageSize = DeviceMemory.getScPageSize(0L);
-  static ResourceListener monitorListener;
   @Nullable
   private static volatile ResourceMonitor perfCollector;
   private static int pid;
-  static boolean resourceMonitorPublicMode = false;
   private DataCollector dataCollector = new DataCollector();
   private Handler innerHandler = new Handler(ThreadManager.getMonitorThreadLooper(), this);
   private ReflectIoModule ioModule = new ReflectIoModule();
@@ -68,8 +66,6 @@ public class ResourceMonitor
   
   static
   {
-    immediatePerfItems = new Vector(900);
-    manualTagItems = new Vector(100);
     lastPerfItem = null;
     perfCollector = null;
     hasInit = false;
@@ -81,37 +77,34 @@ public class ResourceMonitor
   private void endSceneInMonitorThread(Message paramMessage)
   {
     paramMessage = (TagItem)paramMessage.obj;
-    TagItem localTagItem = paramMessage.lastTagItem;
-    if (!isPublicMode()) {
-      tidyStopTagItem(localTagItem, paramMessage);
-    }
-    for (;;)
+    TagItem localTagItem = paramMessage.matchTagItem;
+    tidyStopTagItem(localTagItem, paramMessage);
+    if (RunTimeEnv.isPublishMode())
     {
-      manualTagItems.add(paramMessage);
-      this.tagInfoCache.remove(paramMessage.tagKey);
-      if (manualTagItems.size() > 100) {
-        DumpSampleFileRunnable.getInstance().run();
-      }
-      if (currentStage.equals(paramMessage.stage))
-      {
-        currentStage = "";
-        if (currentExtraInfo.equals(paramMessage.extraInfo)) {
-          currentExtraInfo = "";
-        }
-      }
-      return;
       MonitorRunnable.getInstance().collectPerfItemRightNow();
-      if (monitorListener != null)
+      IResourceListener localIResourceListener = ListenerManager.resourceListener;
+      if (localIResourceListener != null)
       {
         SceneMeta localSceneMeta = localTagItem.sceneMeta;
-        localSceneMeta.duration = (System.currentTimeMillis() - localTagItem.eventTimeMills);
+        localSceneMeta.duration = (((paramMessage.eventTime - localTagItem.eventTime) * 1000.0D));
         localSceneMeta.stage = localTagItem.stage;
-        monitorListener.onMetaGet(localSceneMeta);
+        localIResourceListener.onEndScene(localSceneMeta);
+      }
+    }
+    manualTagItems.add(paramMessage);
+    this.tagInfoCache.remove(paramMessage.tagKey);
+    if (manualTagItems.size() > 100) {
+      DumpSampleFileRunnable.getInstance().run();
+    }
+    if (currentStage.equals(paramMessage.stage))
+    {
+      currentStage = "";
+      if (currentExtraInfo.equals(paramMessage.extraInfo)) {
+        currentExtraInfo = "";
       }
     }
   }
   
-  @Nullable
   public static ResourceMonitor getInstance()
   {
     if (perfCollector == null) {}
@@ -148,23 +141,12 @@ public class ResourceMonitor
     LifecycleCallback.INSTANCE.register(new ResourceMonitor.1(this));
   }
   
-  public static void setPublicMode(boolean paramBoolean)
-  {
-    resourceMonitorPublicMode = paramBoolean;
-  }
-  
-  public static void setResourceListener(ResourceListener paramResourceListener)
-  {
-    monitorListener = paramResourceListener;
-  }
-  
   private void startSceneInMonitorThread(Message paramMessage)
   {
     paramMessage = (TagItem)paramMessage.obj;
-    tidyStartTagItem(paramMessage);
     currentStage = paramMessage.stage;
     currentExtraInfo = paramMessage.extraInfo;
-    if (!isPublicMode()) {
+    if (!RunTimeEnv.isPublishMode()) {
       tidyStartTagItem(paramMessage);
     }
     this.tagInfoCache.put(paramMessage.tagKey, paramMessage);
@@ -254,14 +236,14 @@ public class ResourceMonitor
     NetFlow localNetFlow;
     if (lastPerfItem != null)
     {
-      localNetFlow = this.dataCollector.collectorNetFollow();
+      localNetFlow = this.dataCollector.collectorNetFollow(true);
       if ((9223372036854775807L != lastPerfItem.netFlowReceiverBytes) && (9223372036854775807L != lastPerfItem.netFlowSendBytes)) {
-        break label106;
+        break label107;
       }
       paramPerfItem.netFlowReceiverBytes = 0L;
       paramPerfItem.netFlowSendBytes = 0L;
       if ((9223372036854775807L != localNetFlow.rxPackets) && (9223372036854775807L != localNetFlow.txPackets)) {
-        break label189;
+        break label190;
       }
     }
     for (paramPerfItem.netFlowPackets = 0L;; lastPerfItem.netFlowPackets = (localNetFlow.rxPackets + localNetFlow.txPackets))
@@ -269,27 +251,27 @@ public class ResourceMonitor
       lastPerfItem.netFlowReceiverBytes = localNetFlow.rxBytes;
       lastPerfItem.netFlowSendBytes = localNetFlow.txBytes;
       return;
-      label106:
+      label107:
       paramPerfItem.netFlowReceiverBytes = (localNetFlow.rxBytes - lastPerfItem.netFlowReceiverBytes);
       paramPerfItem.netFlowSendBytes = (localNetFlow.txBytes - lastPerfItem.netFlowSendBytes);
       if (paramPerfItem.netFlowReceiverBytes > 0L)
       {
         l1 = paramPerfItem.netFlowReceiverBytes;
-        label152:
+        label153:
         paramPerfItem.netFlowReceiverBytes = l1;
         if (paramPerfItem.netFlowSendBytes <= 0L) {
-          break label184;
+          break label185;
         }
       }
-      label184:
+      label185:
       for (long l1 = paramPerfItem.netFlowSendBytes;; l1 = 0L)
       {
         paramPerfItem.netFlowSendBytes = l1;
         break;
         l1 = 0L;
-        break label152;
+        break label153;
       }
-      label189:
+      label190:
       paramPerfItem.netFlowPackets = (localNetFlow.rxPackets + localNetFlow.txPackets - lastPerfItem.netFlowPackets);
       l1 = l2;
       if (paramPerfItem.netFlowPackets > 0L) {
@@ -301,7 +283,7 @@ public class ResourceMonitor
   
   private void tidyStartTagItem(@NonNull TagItem paramTagItem)
   {
-    Object localObject = this.dataCollector.collectorNetFollow();
+    Object localObject = this.dataCollector.collectorNetFollow(false);
     paramTagItem.netFlowRecvBytes = ((NetFlow)localObject).rxBytes;
     paramTagItem.netFlowSendBytes = ((NetFlow)localObject).txBytes;
     if ((9223372036854775807L == ((NetFlow)localObject).rxPackets) || (9223372036854775807L == ((NetFlow)localObject).txPackets)) {}
@@ -370,17 +352,17 @@ public class ResourceMonitor
     Object localObject;
     if ((paramTagItem1.netFlowSendBytes != 9223372036854775807L) && (paramTagItem1.netFlowRecvBytes != 9223372036854775807L))
     {
-      localObject = this.dataCollector.collectorNetFollow();
+      localObject = this.dataCollector.collectorNetFollow(false);
       if ((9223372036854775807L != ((NetFlow)localObject).rxBytes) && (9223372036854775807L != ((NetFlow)localObject).txPackets))
       {
         paramTagItem2.netFlowRecvBytes = (((NetFlow)localObject).rxBytes - paramTagItem1.netFlowRecvBytes);
         paramTagItem2.netFlowSendBytes = (((NetFlow)localObject).txBytes - paramTagItem1.netFlowSendBytes);
       }
       if ((9223372036854775807L != ((NetFlow)localObject).rxPackets) && (9223372036854775807L != ((NetFlow)localObject).txPackets)) {
-        break label191;
+        break label192;
       }
     }
-    label191:
+    label192:
     long l;
     for (paramTagItem2.netFlowPackets = 9223372036854775807L;; paramTagItem2.netFlowPackets = (((NetFlow)localObject).txPackets + l - paramTagItem1.netFlowPackets))
     {
@@ -409,11 +391,6 @@ public class ResourceMonitor
     }
   }
   
-  public boolean isPublicMode()
-  {
-    return resourceMonitorPublicMode;
-  }
-  
   @NonNull
   public PerfItem samplePerfValue(@NonNull PerfItem paramPerfItem)
   {
@@ -425,13 +402,13 @@ public class ResourceMonitor
     {
       lastPerfItem.eventTime = paramPerfItem.eventTime;
       tidyCpuItem(paramPerfItem);
-      if (!isPublicMode())
+      if (!RunTimeEnv.isPublishMode())
       {
         tidyNetFlowItem(paramPerfItem);
         tidyIoItem(paramPerfItem);
       }
     }
-    while (isPublicMode())
+    while (RunTimeEnv.isTagMode())
     {
       Iterator localIterator = this.tagInfoCache.keySet().iterator();
       while (localIterator.hasNext())
@@ -449,6 +426,19 @@ public class ResourceMonitor
     return paramPerfItem;
   }
   
+  public void setListener(@NonNull IBaseListener paramIBaseListener)
+  {
+    try
+    {
+      ListenerManager.resourceListener = (IResourceListener)paramIBaseListener;
+      return;
+    }
+    catch (Exception paramIBaseListener)
+    {
+      Logger.INSTANCE.exception("QAPM_resource_PerfCollector", paramIBaseListener);
+    }
+  }
+  
   public void start()
   {
     if (!hasInit)
@@ -459,21 +449,19 @@ public class ResourceMonitor
       registerForeBack();
       hasInit = true;
     }
-    if (resourceMonitorPublicMode) {}
-    while ((RuntimeConfig.globalMonitorCount != 0) || ((SDKConfig.RES_TYPE & DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue()) <= 0)) {
-      return;
-    }
-    try
-    {
-      if (RuntimeConfig.globalMonitorCount == 0)
+    if ((RuntimeConfig.globalMonitorCount == 0) && (RunTimeEnv.isResourceMode())) {
+      try
       {
-        Logger.INSTANCE.i(new String[] { "QAPM_resource_PerfCollector", "SAMPLE: start global monitor to collect resource" });
-        MonitorRunnable.getInstance().start();
+        if (RuntimeConfig.globalMonitorCount == 0)
+        {
+          Logger.INSTANCE.i(new String[] { "QAPM_resource_PerfCollector", "SAMPLE: start global monitor to collect resource" });
+          MonitorRunnable.getInstance().start();
+        }
+        RuntimeConfig.globalMonitorCount += 1;
+        return;
       }
-      RuntimeConfig.globalMonitorCount += 1;
-      return;
+      finally {}
     }
-    finally {}
   }
   
   public void start(String paramString1, String paramString2)
@@ -490,7 +478,6 @@ public class ResourceMonitor
     String str = paramString1 + paramString2;
     TagItem localTagItem = new TagItem();
     localTagItem.tagKey = str;
-    localTagItem.eventTimeMills = l;
     localTagItem.eventTime = (l / 1000.0D);
     localTagItem.stage = paramString1;
     localTagItem.extraInfo = paramString2;
@@ -528,6 +515,11 @@ public class ResourceMonitor
     do
     {
       return;
+      if (("QAPM_APPLAUNCH".equals(paramString1)) && ("QAPM_APPLAUNCH_END".equals(paramString2)))
+      {
+        this.traceModule.endProxy();
+        return;
+      }
       if ("QAPM_APPLAUNCH".equals(paramString1))
       {
         this.traceModule.popProxy();
@@ -537,7 +529,7 @@ public class ResourceMonitor
       localTagItem1 = (TagItem)this.tagInfoCache.get(str);
     } while (localTagItem1 == null);
     TagItem localTagItem2 = new TagItem();
-    localTagItem2.lastTagItem = localTagItem1;
+    localTagItem2.matchTagItem = localTagItem1;
     localTagItem2.tagKey = str;
     localTagItem2.stage = paramString1;
     localTagItem2.extraInfo = paramString2;

@@ -1,19 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import cooperation.qqreader.helper.LoadingAnimationManager.1;
+import cooperation.qqreader.helper.LoadingAnimationManager.2;
+import cooperation.qqreader.helper.LoadingAnimationManager.3;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class bmez
-  extends QIPCModule
+public final class bmez
 {
-  private static volatile bmez jdField_a_of_type_Bmez;
-  private static boolean jdField_a_of_type_Boolean;
-  
-  private bmez()
-  {
-    super("AEEditorEffectIpcModule");
-  }
+  private static bmez jdField_a_of_type_Bmez;
+  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
+  private boolean jdField_a_of_type_Boolean;
   
   public static bmez a()
   {
@@ -28,30 +32,74 @@ public class bmez
     finally {}
   }
   
-  public static void a()
+  private void a(long paramLong)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (paramLong > 0L)
     {
-      jdField_a_of_type_Boolean = true;
-      QIPCClientHelper.getInstance().getClient().registerModule(a());
+      Message localMessage = Message.obtain(null, new LoadingAnimationManager.3(this));
+      localMessage.what = 30002;
+      ThreadManager.getUIHandler().sendMessageDelayed(localMessage, paramLong);
+      return;
     }
+    b();
   }
   
-  public static void b()
+  private void b()
   {
-    if (jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = false;
-      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView == null) {
+      return;
     }
+    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    localImageView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  @UiThread
+  public void a()
   {
-    if ("action_get_effect_list".equals(paramString)) {
-      bmew.a().a(new bmfa(this, paramInt));
+    ThreadManager.getUIHandler().removeMessages(30002);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
+      localImageView.setVisibility(8);
     }
-    return null;
+    this.jdField_a_of_type_JavaLangRunnable = null;
+  }
+  
+  @UiThread
+  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView)
+  {
+    a(paramContext, paramImageView, 0L);
+  }
+  
+  @UiThread
+  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView, long paramLong)
+  {
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localImageView != paramImageView) && (localImageView != null)) {
+      a();
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getComposition() == null)
+    {
+      this.jdField_a_of_type_JavaLangRunnable = new LoadingAnimationManager.1(this, paramLong);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      try
+      {
+        ThreadManager.getSubThreadHandler().post(new LoadingAnimationManager.2(this, paramContext));
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        bmgm.b("LoadingAnimationManager", "loadLottieAnimation  fail :", paramContext);
+        return;
+      }
+    }
+    a(paramLong);
   }
 }
 

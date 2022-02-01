@@ -1,31 +1,82 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Typeface;
+import android.widget.TextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.minigame.utils.AppUtil;
+import com.tencent.mobileqq.vas.troopnick.TroopNickFontAdapter.1;
+import com.tencent.mobileqq.vas.troopnick.TroopNickFontAdapter.2;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class bhsz
-  implements View.OnClickListener
+  extends bhqi
 {
-  public bhsz(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public static Map<String, Typeface> a;
+  private static int b;
+  public TextView a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (System.currentTimeMillis() - OpenAuthorityFragment.d(this.a) > 1000L)
-    {
-      OpenAuthorityFragment.a(this.a).a.setClickable(false);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
-      localIntent.putExtra("key_proxy_appid", OpenAuthorityFragment.c(this.a));
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      adxr.a(this.a.getActivity(), localIntent, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
-      OpenAuthorityFragment.a(this.a).a.setClickable(true);
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public bhsz(TextView paramTextView, bhpm parambhpm, AppRuntime paramAppRuntime, int paramInt)
+  {
+    super(parambhpm, paramAppRuntime, paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public static Typeface a(int paramInt1, int paramInt2)
+  {
+    return (Typeface)jdField_a_of_type_JavaUtilMap.get(a(paramInt1, paramInt2));
+  }
+  
+  public static String a(int paramInt1, int paramInt2)
+  {
+    return paramInt1 + "_" + paramInt2;
+  }
+  
+  private boolean a(Typeface paramTypeface)
+  {
+    if (paramTypeface == null) {
+      return false;
     }
-    OpenAuthorityFragment.b(this.a, System.currentTimeMillis());
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView.post(new TroopNickFontAdapter.2(this, paramTypeface));
+    return true;
+  }
+  
+  public void b()
+  {
+    if (AppUtil.isMainProcess()) {}
+    for (ga localga = a(this.jdField_a_of_type_Bhpo.a(), this.jdField_a_of_type_Int);; localga = gf.a().a(this.jdField_a_of_type_Bhpo.a(), this.jdField_a_of_type_Int))
+    {
+      if (localga != null)
+      {
+        b(localga.jdField_a_of_type_Int, localga.b);
+        c();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopNickFontAdapter", 1, "troop_nick_font_load," + b);
+        }
+      }
+      return;
+    }
+  }
+  
+  protected void b(int paramInt1, int paramInt2)
+  {
+    ThreadManagerV2.executeOnFileThread(new TroopNickFontAdapter.1(this, paramInt1, paramInt2));
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    bhpm localbhpm = new bhpm(localAppRuntime, paramInt1);
+    localbhpm.a(new bhsz(this.jdField_a_of_type_AndroidWidgetTextView, localbhpm, localAppRuntime, paramInt2));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNickFontAdapter", 1, "troop_nick_font_load_start," + b);
+    }
   }
 }
 

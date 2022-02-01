@@ -1,68 +1,51 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class argg
+public class argg
 {
-  public static argg a(Bundle paramBundle)
+  public boolean a = true;
+  
+  public static argg a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    int i;
-    if (paramBundle != null)
+    argg localargg = new argg();
+    if (TextUtils.isEmpty(paramString))
     {
-      localObject1 = localObject2;
-      if (paramBundle.containsKey("cur_data_source_type"))
-      {
-        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
-        i = paramBundle.getInt("cur_data_source_type");
-        if (i != 0) {
-          break label53;
-        }
-        localObject1 = new argr(null).b(paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("SubAccountConfigBean", 0, "parse content is empty");
       }
+      return localargg;
     }
-    label53:
-    do
+    for (;;)
     {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (i != 1);
-    return new argp(null).b(paramBundle);
+      try
+      {
+        if (new JSONObject(paramString).optInt("isSideAccountGroupMsgEnabled", 0) != 0) {
+          break label109;
+        }
+        bool = true;
+        localargg.a = bool;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("SubAccountConfigBean", 0, "parse configValue=" + localargg.a);
+        return localargg;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SubAccountConfigBean", 0, "parse e:", paramString);
+      return localargg;
+      label109:
+      boolean bool = false;
+    }
   }
-  
-  public abstract int a(List<argg> paramList);
-  
-  public abstract long a();
-  
-  public abstract Drawable a(Context paramContext);
-  
-  public abstract CustomEmotionData a();
-  
-  public abstract EmoticonInfo a();
-  
-  public void a(Bundle paramBundle, int paramInt)
-  {
-    paramBundle.putInt("cur_data_source_type", paramInt);
-  }
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(argg paramargg);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argg
  * JD-Core Version:    0.7.0.1
  */

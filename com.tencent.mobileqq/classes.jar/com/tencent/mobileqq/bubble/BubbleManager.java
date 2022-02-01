@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.bubble;
 
-import amtj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -24,35 +23,38 @@ import android.util.SparseArray;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.TextView;
-import aneg;
-import apdy;
-import apdz;
-import apeb;
-import apec;
-import apee;
-import apef;
-import apeq;
-import aper;
-import apes;
-import apfa;
-import apfb;
-import apfc;
-import apfd;
-import apfe;
-import apfj;
-import bcef;
-import bgae;
-import bggj;
-import bggk;
-import bgod;
-import bgog;
-import bgok;
+import anvx;
+import aogw;
+import aqhc;
+import aqhd;
+import aqhf;
+import aqhg;
+import aqhi;
+import aqhj;
+import aqhu;
+import aqhv;
+import aqhw;
+import aqie;
+import aqif;
+import aqig;
+import aqih;
+import aqii;
+import aqin;
+import bdla;
+import bhiw;
+import bhpd;
+import bhpe;
+import bhyn;
+import bhyq;
+import bhyu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.activity.FontSettingActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -90,19 +92,19 @@ public class BubbleManager
   protected Context a;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private LruCache<String, Bitmap> jdField_a_of_type_AndroidUtilLruCache = new LruCache(10);
-  protected aper a;
-  bgod jdField_a_of_type_Bgod = new apeq(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
-  bgok jdField_a_of_type_Bgok = null;
+  protected aqhv a;
+  bhyn jdField_a_of_type_Bhyn = new aqhu(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  bhyu jdField_a_of_type_Bhyu = null;
   protected AppInterface a;
   QQLruCache<Integer, JSONObject> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(2015, 100);
-  public BubbleManager.LruLinkedHashMap<Integer, apeb> a;
+  public BubbleManager.LruLinkedHashMap<Integer, aqhf> a;
   private String jdField_a_of_type_JavaLangString;
   private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   Map<Integer, Float> jdField_a_of_type_JavaUtilMap;
   protected Vector<Integer> a;
-  public ConcurrentHashMap<String, apdy> a;
+  public ConcurrentHashMap<String, aqhc> a;
   private int b;
-  public ConcurrentHashMap<String, apfa> b;
+  public ConcurrentHashMap<String, aqie> b;
   private int c;
   
   static
@@ -117,7 +119,7 @@ public class BubbleManager
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext();
-    this.jdField_a_of_type_Aper = new aper(this, 2010, 50, 10);
+    this.jdField_a_of_type_Aqhv = new aqhv(this, 2010, 50, 10);
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap = new BubbleManager.LruLinkedHashMap(this, 9);
     paramAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
     if (paramAppInterface.density == 160.0F) {}
@@ -414,10 +416,10 @@ public class BubbleManager
     return localRect;
   }
   
-  private apdy a(int paramInt, JSONObject paramJSONObject)
+  private aqhc a(int paramInt, JSONObject paramJSONObject)
   {
-    apdy localapdy = new apdy();
-    localapdy.jdField_a_of_type_Int = paramInt;
+    aqhc localaqhc = new aqhc();
+    localaqhc.jdField_a_of_type_Int = paramInt;
     if (paramJSONObject == null)
     {
       QLog.e("BubbleManager", 1, "parseCommonAnimationConfig animation = null");
@@ -426,44 +428,44 @@ public class BubbleManager
     if (paramJSONObject.has("rect"))
     {
       JSONArray localJSONArray = paramJSONObject.getJSONArray("rect");
-      localapdy.jdField_a_of_type_ArrayOfInt = new int[4];
+      localaqhc.jdField_a_of_type_ArrayOfInt = new int[4];
       paramInt = 0;
       while (paramInt < localJSONArray.length())
       {
-        localapdy.jdField_a_of_type_ArrayOfInt[paramInt] = localJSONArray.getInt(paramInt);
+        localaqhc.jdField_a_of_type_ArrayOfInt[paramInt] = localJSONArray.getInt(paramInt);
         paramInt += 1;
       }
     }
     if (paramJSONObject.has("cycle_count")) {
-      localapdy.jdField_b_of_type_Int = paramJSONObject.getInt("cycle_count");
+      localaqhc.jdField_b_of_type_Int = paramJSONObject.getInt("cycle_count");
     }
     if (paramJSONObject.has("count")) {
-      localapdy.jdField_c_of_type_Int = paramJSONObject.getInt("count");
+      localaqhc.jdField_c_of_type_Int = paramJSONObject.getInt("count");
     }
     if (paramJSONObject.has("zip_name")) {
-      localapdy.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zip_name");
+      localaqhc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zip_name");
     }
     if (paramJSONObject.has("second_zip_name")) {
-      localapdy.jdField_c_of_type_JavaLangString = paramJSONObject.getString("second_zip_name");
+      localaqhc.jdField_c_of_type_JavaLangString = paramJSONObject.getString("second_zip_name");
     }
     if (paramJSONObject.has("align")) {
-      localapdy.jdField_d_of_type_JavaLangString = paramJSONObject.getString("align");
+      localaqhc.jdField_d_of_type_JavaLangString = paramJSONObject.getString("align");
     }
     if ((!paramJSONObject.has("count_stiil")) || (paramJSONObject.has("alpha"))) {
-      localapdy.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("alpha");
+      localaqhc.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("alpha");
     }
     if (paramJSONObject.has("displayChartlet")) {
-      localapdy.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("displayChartlet");
+      localaqhc.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("displayChartlet");
     }
     if (paramJSONObject.has("mirror")) {
-      localapdy.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("mirror");
+      localaqhc.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("mirror");
     }
-    a(localapdy, paramJSONObject);
-    localapdy.jdField_d_of_type_Int = paramJSONObject.getInt("time");
-    return localapdy;
+    a(localaqhc, paramJSONObject);
+    localaqhc.jdField_d_of_type_Int = paramJSONObject.getInt("time");
+    return localaqhc;
   }
   
-  private apdy a(JSONObject paramJSONObject)
+  private aqhc a(JSONObject paramJSONObject)
   {
     Object localObject;
     if (paramJSONObject == null)
@@ -471,31 +473,31 @@ public class BubbleManager
       QLog.e("BubbleManager", 1, "parseBubbleFrameAnimationConfig object = null");
       localObject = null;
     }
-    apdy localapdy;
+    aqhc localaqhc;
     do
     {
       return localObject;
-      localapdy = new apdy();
-      localapdy.jdField_a_of_type_Int = 4;
-      localapdy.jdField_e_of_type_Int = 1;
+      localaqhc = new aqhc();
+      localaqhc.jdField_a_of_type_Int = 4;
+      localaqhc.jdField_e_of_type_Int = 1;
       if (paramJSONObject.has("repeat")) {
-        localapdy.jdField_b_of_type_Int = paramJSONObject.getInt("repeat");
+        localaqhc.jdField_b_of_type_Int = paramJSONObject.getInt("repeat");
       }
       if (paramJSONObject.has("count")) {
-        localapdy.jdField_c_of_type_Int = paramJSONObject.getInt("count");
+        localaqhc.jdField_c_of_type_Int = paramJSONObject.getInt("count");
       }
       if (paramJSONObject.has("zip_name")) {
-        localapdy.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zip_name");
+        localaqhc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zip_name");
       }
-      localObject = localapdy;
+      localObject = localaqhc;
     } while (!paramJSONObject.has("time"));
-    localapdy.jdField_d_of_type_Int = paramJSONObject.getInt("time");
-    return localapdy;
+    localaqhc.jdField_d_of_type_Int = paramJSONObject.getInt("time");
+    return localaqhc;
   }
   
-  private apdz a(String paramString, JSONObject paramJSONObject)
+  private aqhd a(String paramString, JSONObject paramJSONObject)
   {
-    apdz localapdz = new apdz();
+    aqhd localaqhd = new aqhd();
     if (paramJSONObject == null)
     {
       QLog.e("BubbleManager", 1, "parseEachStepAttrInPathAnim jsonObject = null");
@@ -505,18 +507,18 @@ public class BubbleManager
     {
       return paramString;
       if (paramJSONObject.has("count")) {
-        localapdz.jdField_a_of_type_Int = paramJSONObject.getInt("count");
+        localaqhd.jdField_a_of_type_Int = paramJSONObject.getInt("count");
       }
       if (paramJSONObject.has("cycle_count")) {
-        localapdz.jdField_b_of_type_Int = paramJSONObject.getInt("cycle_count");
+        localaqhd.jdField_b_of_type_Int = paramJSONObject.getInt("cycle_count");
       }
-      paramString = localapdz;
+      paramString = localaqhd;
     } while (!paramJSONObject.has("prefix_name"));
-    localapdz.jdField_a_of_type_JavaLangString = paramJSONObject.getString("prefix_name");
-    return localapdz;
+    localaqhd.jdField_a_of_type_JavaLangString = paramJSONObject.getString("prefix_name");
+    return localaqhd;
   }
   
-  private apef a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  private aqhj a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
       QLog.i("BubbleManager", 2, "getAttrsByConfig, bubbleId = " + paramInt + " animName = " + paramString + " autoDown = " + paramBoolean1 + " reversion = " + paramBoolean2);
@@ -524,17 +526,17 @@ public class BubbleManager
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    apdy localapdy = a(paramInt, paramString);
-    if (localapdy == null) {
+    aqhc localaqhc = a(paramInt, paramString);
+    if (localaqhc == null) {
       return null;
     }
-    apef localapef = new apef();
-    localapef.jdField_a_of_type_Int = localapdy.jdField_c_of_type_Int;
-    localapef.jdField_c_of_type_Int = localapdy.jdField_d_of_type_Int;
-    localapef.jdField_b_of_type_Int = localapdy.jdField_b_of_type_Int;
-    localapef.jdField_b_of_type_Boolean = localapdy.jdField_a_of_type_Boolean;
-    localapef.jdField_e_of_type_Int = localapdy.jdField_e_of_type_Int;
-    localapef.jdField_a_of_type_Apdy = localapdy;
+    aqhj localaqhj = new aqhj();
+    localaqhj.jdField_a_of_type_Int = localaqhc.jdField_c_of_type_Int;
+    localaqhj.jdField_c_of_type_Int = localaqhc.jdField_d_of_type_Int;
+    localaqhj.jdField_b_of_type_Int = localaqhc.jdField_b_of_type_Int;
+    localaqhj.jdField_b_of_type_Boolean = localaqhc.jdField_a_of_type_Boolean;
+    localaqhj.jdField_e_of_type_Int = localaqhc.jdField_e_of_type_Int;
+    localaqhj.jdField_a_of_type_Aqhc = localaqhc;
     File localFile;
     String[] arrayOfString;
     int k;
@@ -544,17 +546,17 @@ public class BubbleManager
     label228:
     int j;
     boolean bool;
-    if (localapef.jdField_b_of_type_Int <= 1)
+    if (localaqhj.jdField_b_of_type_Int <= 1)
     {
-      localapef.jdField_a_of_type_Boolean = true;
-      localFile = new File(a(paramInt), localapdy.jdField_a_of_type_JavaLangString);
-      arrayOfString = new String[localapdy.jdField_c_of_type_Int];
+      localaqhj.jdField_a_of_type_Boolean = true;
+      localFile = new File(a(paramInt), localaqhc.jdField_a_of_type_JavaLangString);
+      arrayOfString = new String[localaqhc.jdField_c_of_type_Int];
       k = 0;
       i = 0;
-      if (localapdy.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      if (localaqhc.jdField_a_of_type_AndroidUtilSparseArray != null) {
         break label422;
       }
-      if (localapdy.jdField_a_of_type_Int != 4) {
+      if (localaqhc.jdField_a_of_type_Int != 4) {
         break label405;
       }
       localObject = "%04d.9.png";
@@ -583,13 +585,13 @@ public class BubbleManager
       {
         a(paramInt, "other.zip", "0");
         return null;
-        localapef.jdField_a_of_type_Boolean = false;
+        localaqhj.jdField_a_of_type_Boolean = false;
         break;
         localObject = "%04d.png";
         break label225;
         i += 1;
         break label228;
-        int n = localapdy.jdField_a_of_type_AndroidUtilSparseArray.size();
+        int n = localaqhc.jdField_a_of_type_AndroidUtilSparseArray.size();
         m = 0;
         k = 0;
         label438:
@@ -597,13 +599,13 @@ public class BubbleManager
         if (m >= n) {
           break label778;
         }
-        localObject = (apdz)localapdy.jdField_a_of_type_AndroidUtilSparseArray.valueAt(m);
+        localObject = (aqhd)localaqhc.jdField_a_of_type_AndroidUtilSparseArray.valueAt(m);
         j = 0;
         label467:
-        if (j >= ((apdz)localObject).jdField_a_of_type_Int) {
+        if (j >= ((aqhd)localObject).jdField_a_of_type_Int) {
           break label775;
         }
-        arrayOfString[(j + k)] = (localFile.getAbsolutePath() + File.separatorChar + ((apdz)localObject).jdField_a_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(j + 1) }));
+        arrayOfString[(j + k)] = (localFile.getAbsolutePath() + File.separatorChar + ((aqhd)localObject).jdField_a_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(j + 1) }));
         bool = new File(arrayOfString[(j + k)]).exists();
         if (QLog.isColorLevel()) {
           QLog.d("BubbleManager", 2, "checkBubbleSource|pngs[" + j + "]=" + arrayOfString[j] + ",isFileExists=" + bool);
@@ -621,7 +623,7 @@ public class BubbleManager
           j += 1;
           break label467;
         }
-        j = ((apdz)localObject).jdField_a_of_type_Int;
+        j = ((aqhd)localObject).jdField_a_of_type_Int;
         m += 1;
         k += j;
         break label438;
@@ -631,13 +633,13 @@ public class BubbleManager
         if (arrayOfString.length > 0) {}
         for (localObject = arrayOfString;; localObject = null)
         {
-          localapef.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject);
-          localapef.jdField_b_of_type_JavaLangString = paramString;
-          localapef.jdField_d_of_type_Int = a(localapdy.jdField_d_of_type_JavaLangString, paramBoolean2);
-          if ((localapdy.jdField_a_of_type_ArrayOfInt != null) && (localapdy.jdField_a_of_type_ArrayOfInt.length > 0)) {
-            localapef.jdField_a_of_type_AndroidGraphicsRect = a(localapdy.jdField_a_of_type_ArrayOfInt[0], localapdy.jdField_a_of_type_ArrayOfInt[1], localapdy.jdField_a_of_type_ArrayOfInt[2], localapdy.jdField_a_of_type_ArrayOfInt[3]);
+          localaqhj.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject);
+          localaqhj.jdField_b_of_type_JavaLangString = paramString;
+          localaqhj.jdField_d_of_type_Int = a(localaqhc.jdField_d_of_type_JavaLangString, paramBoolean2);
+          if ((localaqhc.jdField_a_of_type_ArrayOfInt != null) && (localaqhc.jdField_a_of_type_ArrayOfInt.length > 0)) {
+            localaqhj.jdField_a_of_type_AndroidGraphicsRect = a(localaqhc.jdField_a_of_type_ArrayOfInt[0], localaqhc.jdField_a_of_type_ArrayOfInt[1], localaqhc.jdField_a_of_type_ArrayOfInt[2], localaqhc.jdField_a_of_type_ArrayOfInt[3]);
           }
-          return localapef;
+          return localaqhj;
         }
       }
       label778:
@@ -645,7 +647,7 @@ public class BubbleManager
     }
   }
   
-  private apfa a(JSONObject paramJSONObject)
+  private aqie a(JSONObject paramJSONObject)
   {
     Object localObject;
     if (paramJSONObject == null)
@@ -653,30 +655,30 @@ public class BubbleManager
       QLog.e("BubbleManager", 1, "getPendantAnimConf object == null");
       localObject = null;
     }
-    apfd localapfd;
+    aqih localaqih;
     do
     {
       return localObject;
-      localapfd = new apfd();
+      localaqih = new aqih();
       if (paramJSONObject.has("key")) {
-        localapfd.jdField_a_of_type_JavaLangString = paramJSONObject.getString("key");
+        localaqih.jdField_a_of_type_JavaLangString = paramJSONObject.getString("key");
       }
       if (paramJSONObject.has("duration")) {
-        localapfd.jdField_a_of_type_Long = paramJSONObject.getInt("duration");
+        localaqih.jdField_a_of_type_Long = paramJSONObject.getInt("duration");
       }
       if (paramJSONObject.has("repeat")) {
-        localapfd.jdField_a_of_type_Int = paramJSONObject.getInt("repeat");
+        localaqih.jdField_a_of_type_Int = paramJSONObject.getInt("repeat");
       }
       if (paramJSONObject.has("pendent_prefix")) {
-        localapfd.jdField_b_of_type_JavaLangString = paramJSONObject.getString("pendent_prefix");
+        localaqih.jdField_b_of_type_JavaLangString = paramJSONObject.getString("pendent_prefix");
       }
       if (paramJSONObject.has("img_count")) {
-        localapfd.jdField_b_of_type_Int = paramJSONObject.getInt("img_count");
+        localaqih.jdField_b_of_type_Int = paramJSONObject.getInt("img_count");
       }
-      localObject = localapfd;
+      localObject = localaqih;
     } while (!paramJSONObject.has("play_with"));
-    localapfd.e = paramJSONObject.getString("play_with");
-    return localapfd;
+    localaqih.e = paramJSONObject.getString("play_with");
+    return localaqih;
   }
   
   /* Error */
@@ -841,7 +843,7 @@ public class BubbleManager
     //   73	90	219	java/io/FileNotFoundException
   }
   
-  private ArrayList<apfa> a(JSONArray paramJSONArray)
+  private ArrayList<aqie> a(JSONArray paramJSONArray)
   {
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
       return null;
@@ -873,7 +875,7 @@ public class BubbleManager
     return paramJSONObject.getJSONObject(paramString);
   }
   
-  private void a(apdy paramapdy, JSONObject paramJSONObject)
+  private void a(aqhc paramaqhc, JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       QLog.e("BubbleManager", 1, "parseAttrInPathAnimation animation = null");
@@ -888,44 +890,44 @@ public class BubbleManager
         {
           localObject = paramJSONObject.getString("type");
           if ("line".equalsIgnoreCase((String)localObject)) {
-            paramapdy.jdField_e_of_type_Int = 10;
+            paramaqhc.jdField_e_of_type_Int = 10;
           }
           if ("circle".equalsIgnoreCase((String)localObject)) {
-            paramapdy.jdField_e_of_type_Int = 11;
+            paramaqhc.jdField_e_of_type_Int = 11;
           }
           if ("static".equalsIgnoreCase((String)localObject)) {
-            paramapdy.jdField_e_of_type_Int = 1;
+            paramaqhc.jdField_e_of_type_Int = 1;
           }
         }
         if (paramJSONObject.has("padding"))
         {
           localObject = paramJSONObject.getJSONArray("padding");
-          paramapdy.jdField_f_of_type_Int = ((JSONArray)localObject).getInt(0);
-          paramapdy.jdField_h_of_type_Int = ((JSONArray)localObject).getInt(1);
-          paramapdy.jdField_g_of_type_Int = ((JSONArray)localObject).getInt(2);
-          paramapdy.i = ((JSONArray)localObject).getInt(3);
+          paramaqhc.jdField_f_of_type_Int = ((JSONArray)localObject).getInt(0);
+          paramaqhc.jdField_h_of_type_Int = ((JSONArray)localObject).getInt(1);
+          paramaqhc.jdField_g_of_type_Int = ((JSONArray)localObject).getInt(2);
+          paramaqhc.i = ((JSONArray)localObject).getInt(3);
         }
       } while (!paramJSONObject.has("step"));
-      if (paramapdy.jdField_a_of_type_AndroidUtilSparseArray == null) {
-        paramapdy.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
+      if (paramaqhc.jdField_a_of_type_AndroidUtilSparseArray == null) {
+        paramaqhc.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
       }
       paramJSONObject = paramJSONObject.getJSONObject("step");
       if (paramJSONObject.has("static"))
       {
         localObject = paramJSONObject.getJSONObject("static");
-        paramapdy.jdField_a_of_type_AndroidUtilSparseArray.put(0, a("static", (JSONObject)localObject));
+        paramaqhc.jdField_a_of_type_AndroidUtilSparseArray.put(0, a("static", (JSONObject)localObject));
       }
       if (paramJSONObject.has("moving"))
       {
         localObject = paramJSONObject.getJSONObject("moving");
-        paramapdy.jdField_a_of_type_AndroidUtilSparseArray.put(1, a("moving", (JSONObject)localObject));
+        paramaqhc.jdField_a_of_type_AndroidUtilSparseArray.put(1, a("moving", (JSONObject)localObject));
       }
     } while (!paramJSONObject.has("turnback"));
     paramJSONObject = paramJSONObject.getJSONObject("turnback");
-    paramapdy.jdField_a_of_type_AndroidUtilSparseArray.put(2, a("turnback", paramJSONObject));
+    paramaqhc.jdField_a_of_type_AndroidUtilSparseArray.put(2, a("turnback", paramJSONObject));
   }
   
-  private void a(apeb paramapeb, JSONObject paramJSONObject)
+  private void a(aqhf paramaqhf, JSONObject paramJSONObject)
   {
     Object localObject1;
     Object localObject2;
@@ -938,10 +940,10 @@ public class BubbleManager
         if (localObject2 != null)
         {
           localObject2 = b((JSONObject)localObject2);
-          ((apdy)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("animation_set");
-          paramapeb.jdField_e_of_type_Apdy = ((apdy)localObject2);
-          if (!TextUtils.isEmpty(((apdy)localObject2).jdField_a_of_type_JavaLangString)) {
-            paramapeb.jdField_a_of_type_JavaUtilHashSet.add(((apdy)localObject2).jdField_a_of_type_JavaLangString);
+          ((aqhc)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("animation_set");
+          paramaqhf.jdField_e_of_type_Aqhc = ((aqhc)localObject2);
+          if (!TextUtils.isEmpty(((aqhc)localObject2).jdField_a_of_type_JavaLangString)) {
+            paramaqhf.jdField_a_of_type_JavaUtilHashSet.add(((aqhc)localObject2).jdField_a_of_type_JavaLangString);
           }
         }
       }
@@ -969,53 +971,53 @@ public class BubbleManager
           label186:
           localObject3 = a(1, (JSONObject)localObject3);
           JSONArray localJSONArray = localJSONObject.getJSONArray("key_word");
-          ((apdy)localObject3).jdField_a_of_type_ArrayOfJavaLangString = new String[localJSONArray.length()];
+          ((aqhc)localObject3).jdField_a_of_type_ArrayOfJavaLangString = new String[localJSONArray.length()];
           int j = 0;
           while (j < localJSONArray.length())
           {
-            ((apdy)localObject3).jdField_a_of_type_ArrayOfJavaLangString[j] = localJSONArray.getString(j);
+            ((aqhc)localObject3).jdField_a_of_type_ArrayOfJavaLangString[j] = localJSONArray.getString(j);
             j += 1;
           }
-          ((apdy)localObject3).jdField_b_of_type_JavaLangString = localJSONObject.getString("animation");
+          ((aqhc)localObject3).jdField_b_of_type_JavaLangString = localJSONObject.getString("animation");
           ((ArrayList)localObject2).add(localObject3);
-          if (!TextUtils.isEmpty(((apdy)localObject3).jdField_a_of_type_JavaLangString)) {
-            paramapeb.jdField_a_of_type_JavaUtilHashSet.add(((apdy)localObject3).jdField_a_of_type_JavaLangString);
+          if (!TextUtils.isEmpty(((aqhc)localObject3).jdField_a_of_type_JavaLangString)) {
+            paramaqhf.jdField_a_of_type_JavaUtilHashSet.add(((aqhc)localObject3).jdField_a_of_type_JavaLangString);
           }
         }
       }
-      paramapeb.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+      paramaqhf.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
     }
   }
   
-  private void a(apeb paramapeb, JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString)
+  private void a(aqhf paramaqhf, JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString)
   {
     paramJSONObject2 = paramJSONObject2.optString(paramString);
     paramJSONObject1 = b(paramJSONObject2, paramJSONObject1);
-    apfb localapfb = new apfb();
-    localapfb.a(paramapeb.jdField_a_of_type_Int, paramJSONObject2, paramJSONObject1);
-    paramapeb.jdField_b_of_type_JavaUtilHashMap.put(paramString, localapfb);
+    aqif localaqif = new aqif();
+    localaqif.a(paramaqhf.jdField_a_of_type_Int, paramJSONObject2, paramJSONObject1);
+    paramaqhf.jdField_b_of_type_JavaUtilHashMap.put(paramString, localaqif);
   }
   
-  private boolean a(apee paramapee)
+  private boolean a(aqhi paramaqhi)
   {
-    if (paramapee == null)
+    if (paramaqhi == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("BubbleManager", 2, "checkBubbleStaticSource|bubbleInfo is null");
       }
       return false;
     }
-    Object localObject1 = a(paramapee.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "chartlet" + File.separatorChar;
+    Object localObject1 = a(paramaqhi.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "chartlet" + File.separatorChar;
     localObject1 = (String)localObject1 + "chartlet.png";
     boolean bool = new File((String)localObject1).exists();
-    if (((!bool) || (!TextUtils.isEmpty(paramapee.e))) && (!TextUtils.isEmpty(paramapee.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramapee.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramapee.jdField_b_of_type_JavaLangString)))
+    if (((!bool) || (!TextUtils.isEmpty(paramaqhi.e))) && (!TextUtils.isEmpty(paramaqhi.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramaqhi.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramaqhi.jdField_b_of_type_JavaLangString)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("BubbleManager", 2, "checkBubbleStaticSource|bubbleId=" + paramapee.jdField_a_of_type_Int + ",chkStaticSrcAndUpdate is ok | not empty");
+        QLog.d("BubbleManager", 2, "checkBubbleStaticSource|bubbleId=" + paramaqhi.jdField_a_of_type_Int + ",chkStaticSrcAndUpdate is ok | not empty");
       }
       return true;
     }
-    String str3 = a(paramapee.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "static" + File.separatorChar;
+    String str3 = a(paramaqhi.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "static" + File.separatorChar;
     String str1 = str3 + "aio_user_bg_nor.9.png";
     String str2 = str3 + "aio_user_pic_nor.9.png";
     str3 = str3 + "chat_bubble_thumbnail.png";
@@ -1033,90 +1035,90 @@ public class BubbleManager
       if (!new File(str4).exists())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("BubbleManager", 2, "checkBubbleStaticSource|file is not exists,bubbleId=" + paramapee.jdField_a_of_type_Int + ",strFilePath=" + str4);
+          QLog.d("BubbleManager", 2, "checkBubbleStaticSource|file is not exists,bubbleId=" + paramaqhi.jdField_a_of_type_Int + ",strFilePath=" + str4);
         }
         return false;
       }
     }
-    paramapee.jdField_d_of_type_JavaLangString = str3;
-    paramapee.jdField_a_of_type_JavaLangString = str1;
-    paramapee.jdField_b_of_type_JavaLangString = str2;
-    paramapee.e = ((String)localObject1);
-    paramapee.jdField_a_of_type_ArrayOfJavaLangString = a(paramapee.jdField_a_of_type_Int);
+    paramaqhi.jdField_d_of_type_JavaLangString = str3;
+    paramaqhi.jdField_a_of_type_JavaLangString = str1;
+    paramaqhi.jdField_b_of_type_JavaLangString = str2;
+    paramaqhi.e = ((String)localObject1);
+    paramaqhi.jdField_a_of_type_ArrayOfJavaLangString = a(paramaqhi.jdField_a_of_type_Int);
     try
     {
       localObject1 = a(str3, null);
       if (localObject1 != null)
       {
         int i = ((Bitmap)localObject1).getPixel(((Bitmap)localObject1).getWidth() / 2, ((Bitmap)localObject1).getHeight() / 2);
-        if (paramapee.jdField_b_of_type_Int == i)
+        if (paramaqhi.jdField_b_of_type_Int == i)
         {
-          paramapee.jdField_b_of_type_Int = Color.rgb(255 - Color.red(i), 255 - Color.green(i), 255 - Color.blue(i));
+          paramaqhi.jdField_b_of_type_Int = Color.rgb(255 - Color.red(i), 255 - Color.green(i), 255 - Color.blue(i));
           if (QLog.isColorLevel()) {
-            QLog.i("BubbleManager", 2, "text color:" + Integer.toHexString(i) + ",  now chage to " + Integer.toHexString(paramapee.jdField_b_of_type_Int));
+            QLog.i("BubbleManager", 2, "text color:" + Integer.toHexString(i) + ",  now chage to " + Integer.toHexString(paramaqhi.jdField_b_of_type_Int));
           }
         }
-        if (paramapee.jdField_c_of_type_Int == i)
+        if (paramaqhi.jdField_c_of_type_Int == i)
         {
-          paramapee.jdField_c_of_type_Int = Color.rgb(255 - Color.red(i), 255 - Color.green(i), 255 - Color.blue(i));
+          paramaqhi.jdField_c_of_type_Int = Color.rgb(255 - Color.red(i), 255 - Color.green(i), 255 - Color.blue(i));
           if (QLog.isColorLevel()) {
-            QLog.i("BubbleManager", 2, "mLinkColor :" + Integer.toHexString(i) + ",  now chage to " + Integer.toHexString(paramapee.jdField_c_of_type_Int));
+            QLog.i("BubbleManager", 2, "mLinkColor :" + Integer.toHexString(i) + ",  now chage to " + Integer.toHexString(paramaqhi.jdField_c_of_type_Int));
           }
         }
       }
     }
-    catch (OutOfMemoryError paramapee)
+    catch (OutOfMemoryError paramaqhi)
     {
       for (;;)
       {
-        QLog.e("BubbleManager", 2, "bubble change color out of memory error!", paramapee);
+        QLog.e("BubbleManager", 2, "bubble change color out of memory error!", paramaqhi);
       }
     }
-    catch (Exception paramapee)
+    catch (Exception paramaqhi)
     {
       for (;;)
       {
-        QLog.e("BubbleManager", 2, "bubble change color throws exception!", paramapee);
+        QLog.e("BubbleManager", 2, "bubble change color throws exception!", paramaqhi);
       }
     }
     return true;
   }
   
-  private apdy b(JSONObject paramJSONObject)
+  private aqhc b(JSONObject paramJSONObject)
   {
     int i = 0;
-    apdy localapdy = new apdy();
-    localapdy.jdField_a_of_type_Int = 5;
-    localapdy.jdField_e_of_type_Int = 1;
+    aqhc localaqhc = new aqhc();
+    localaqhc.jdField_a_of_type_Int = 5;
+    localaqhc.jdField_e_of_type_Int = 1;
     if (paramJSONObject == null)
     {
       QLog.e("BubbleManager", 1, "parseVoicePrintAnimationConfig object = null");
       return null;
     }
     if (paramJSONObject.has("align")) {
-      localapdy.jdField_d_of_type_JavaLangString = paramJSONObject.getString("align");
+      localaqhc.jdField_d_of_type_JavaLangString = paramJSONObject.getString("align");
     }
     if (paramJSONObject.has("repeat")) {
-      localapdy.jdField_b_of_type_Int = paramJSONObject.getInt("repeat");
+      localaqhc.jdField_b_of_type_Int = paramJSONObject.getInt("repeat");
     }
     if (paramJSONObject.has("count")) {
-      localapdy.jdField_c_of_type_Int = paramJSONObject.getInt("count");
+      localaqhc.jdField_c_of_type_Int = paramJSONObject.getInt("count");
     }
     if (paramJSONObject.has("zip_name")) {
-      localapdy.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zip_name");
+      localaqhc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("zip_name");
     }
     if (paramJSONObject.has("time")) {
-      localapdy.jdField_d_of_type_Int = paramJSONObject.getInt("time");
+      localaqhc.jdField_d_of_type_Int = paramJSONObject.getInt("time");
     }
     if (paramJSONObject.has("padding"))
     {
       JSONArray localJSONArray = paramJSONObject.getJSONArray("padding");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        localapdy.jdField_f_of_type_Int = AIOUtils.dp2px(localJSONArray.getInt(0) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localapdy.jdField_h_of_type_Int = AIOUtils.dp2px(localJSONArray.getInt(1) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localapdy.jdField_g_of_type_Int = AIOUtils.dp2px(localJSONArray.getInt(2) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localapdy.i = AIOUtils.dp2px(localJSONArray.getInt(3) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localaqhc.jdField_f_of_type_Int = AIOUtils.dp2px(localJSONArray.getInt(0) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localaqhc.jdField_h_of_type_Int = AIOUtils.dp2px(localJSONArray.getInt(1) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localaqhc.jdField_g_of_type_Int = AIOUtils.dp2px(localJSONArray.getInt(2) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localaqhc.i = AIOUtils.dp2px(localJSONArray.getInt(3) / 2, this.jdField_a_of_type_AndroidContentContext.getResources());
       }
     }
     if (paramJSONObject.has("cut_array"))
@@ -1124,19 +1126,19 @@ public class BubbleManager
       paramJSONObject = paramJSONObject.getJSONArray("cut_array");
       if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
       {
-        localapdy.jdField_c_of_type_ArrayOfInt = new int[paramJSONObject.length()];
+        localaqhc.jdField_c_of_type_ArrayOfInt = new int[paramJSONObject.length()];
         while (i < paramJSONObject.length())
         {
-          localapdy.jdField_c_of_type_ArrayOfInt[i] = paramJSONObject.getInt(i);
+          localaqhc.jdField_c_of_type_ArrayOfInt[i] = paramJSONObject.getInt(i);
           i += 1;
         }
-        Arrays.sort(localapdy.jdField_c_of_type_ArrayOfInt);
+        Arrays.sort(localaqhc.jdField_c_of_type_ArrayOfInt);
       }
     }
-    return localapdy;
+    return localaqhc;
   }
   
-  private apfa b(JSONObject paramJSONObject)
+  private aqie b(JSONObject paramJSONObject)
   {
     Object localObject;
     if (paramJSONObject == null)
@@ -1144,67 +1146,67 @@ public class BubbleManager
       QLog.e("BubbleManager", 1, "getPathAnimConf object == null");
       localObject = null;
     }
-    apfc localapfc;
+    aqig localaqig;
     do
     {
       return localObject;
-      localapfc = new apfc();
+      localaqig = new aqig();
       if (paramJSONObject.has("key")) {
-        localapfc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("key");
+        localaqig.jdField_a_of_type_JavaLangString = paramJSONObject.getString("key");
       }
       if (paramJSONObject.has("start_end"))
       {
         localObject = paramJSONObject.getJSONArray("start_end");
-        localapfc.jdField_a_of_type_Float = ((float)((JSONArray)localObject).getDouble(0));
-        localapfc.jdField_b_of_type_Float = ((float)((JSONArray)localObject).getDouble(1));
-        localapfc.jdField_c_of_type_Float = ((float)((JSONArray)localObject).getDouble(2));
-        localapfc.d = ((float)((JSONArray)localObject).getDouble(3));
+        localaqig.jdField_a_of_type_Float = ((float)((JSONArray)localObject).getDouble(0));
+        localaqig.jdField_b_of_type_Float = ((float)((JSONArray)localObject).getDouble(1));
+        localaqig.jdField_c_of_type_Float = ((float)((JSONArray)localObject).getDouble(2));
+        localaqig.d = ((float)((JSONArray)localObject).getDouble(3));
       }
       if (paramJSONObject.has("bezier"))
       {
         localObject = paramJSONObject.getJSONArray("bezier");
-        localapfc.jdField_e_of_type_Float = ((float)((JSONArray)localObject).getDouble(0));
-        localapfc.jdField_f_of_type_Float = ((float)((JSONArray)localObject).getDouble(1));
-        localapfc.jdField_g_of_type_Float = ((float)((JSONArray)localObject).getDouble(2));
-        localapfc.jdField_h_of_type_Float = ((float)((JSONArray)localObject).getDouble(3));
+        localaqig.jdField_e_of_type_Float = ((float)((JSONArray)localObject).getDouble(0));
+        localaqig.jdField_f_of_type_Float = ((float)((JSONArray)localObject).getDouble(1));
+        localaqig.jdField_g_of_type_Float = ((float)((JSONArray)localObject).getDouble(2));
+        localaqig.jdField_h_of_type_Float = ((float)((JSONArray)localObject).getDouble(3));
       }
       if (paramJSONObject.has("duration")) {
-        localapfc.jdField_a_of_type_Long = paramJSONObject.getInt("duration");
+        localaqig.jdField_a_of_type_Long = paramJSONObject.getInt("duration");
       }
       if (paramJSONObject.has("speed")) {
-        localapfc.jdField_e_of_type_Int = paramJSONObject.getInt("speed");
+        localaqig.jdField_e_of_type_Int = paramJSONObject.getInt("speed");
       }
       if (paramJSONObject.has("img_prefix")) {
-        localapfc.jdField_b_of_type_JavaLangString = paramJSONObject.getString("img_prefix");
+        localaqig.jdField_b_of_type_JavaLangString = paramJSONObject.getString("img_prefix");
       }
       if (paramJSONObject.has("img_reverse")) {
-        localapfc.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("img_reverse");
+        localaqig.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("img_reverse");
       }
       if (paramJSONObject.has("img_alpha"))
       {
         localObject = paramJSONObject.getJSONArray("img_alpha");
-        localapfc.jdField_f_of_type_Int = ((JSONArray)localObject).getInt(0);
-        localapfc.jdField_g_of_type_Int = ((JSONArray)localObject).getInt(1);
+        localaqig.jdField_f_of_type_Int = ((JSONArray)localObject).getInt(0);
+        localaqig.jdField_g_of_type_Int = ((JSONArray)localObject).getInt(1);
       }
       if (paramJSONObject.has("repeat")) {
-        localapfc.jdField_a_of_type_Int = paramJSONObject.getInt("repeat");
+        localaqig.jdField_a_of_type_Int = paramJSONObject.getInt("repeat");
       }
       if (paramJSONObject.has("img_rotate"))
       {
         localObject = paramJSONObject.getJSONArray("img_rotate");
-        localapfc.jdField_h_of_type_Int = ((JSONArray)localObject).getInt(0);
-        localapfc.i = ((JSONArray)localObject).getInt(1);
+        localaqig.jdField_h_of_type_Int = ((JSONArray)localObject).getInt(0);
+        localaqig.i = ((JSONArray)localObject).getInt(1);
       }
       if (paramJSONObject.has("img_count")) {
-        localapfc.jdField_b_of_type_Int = paramJSONObject.getInt("img_count");
+        localaqig.jdField_b_of_type_Int = paramJSONObject.getInt("img_count");
       }
       if (paramJSONObject.has("periodical")) {
-        localapfc.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("periodical");
+        localaqig.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("periodical");
       }
-      localObject = localapfc;
+      localObject = localaqig;
     } while (!paramJSONObject.has("period_length"));
-    localapfc.j = paramJSONObject.getInt("period_length");
-    return localapfc;
+    localaqig.j = paramJSONObject.getInt("period_length");
+    return localaqig;
   }
   
   private JSONObject b(String paramString, JSONObject paramJSONObject)
@@ -1233,7 +1235,7 @@ public class BubbleManager
     }
   }
   
-  private void b(apeb paramapeb, JSONObject paramJSONObject)
+  private void b(aqhf paramaqhf, JSONObject paramJSONObject)
   {
     JSONObject localJSONObject;
     Object localObject1;
@@ -1246,10 +1248,10 @@ public class BubbleManager
         if (localObject1 != null)
         {
           localObject1 = a(0, (JSONObject)localObject1);
-          ((apdy)localObject1).jdField_b_of_type_JavaLangString = localJSONObject.getString("animation");
-          paramapeb.jdField_a_of_type_Apdy = ((apdy)localObject1);
-          if (!TextUtils.isEmpty(((apdy)localObject1).jdField_a_of_type_JavaLangString)) {
-            paramapeb.jdField_a_of_type_JavaUtilHashSet.add(((apdy)localObject1).jdField_a_of_type_JavaLangString);
+          ((aqhc)localObject1).jdField_b_of_type_JavaLangString = localJSONObject.getString("animation");
+          paramaqhf.jdField_a_of_type_Aqhc = ((aqhc)localObject1);
+          if (!TextUtils.isEmpty(((aqhc)localObject1).jdField_a_of_type_JavaLangString)) {
+            paramaqhf.jdField_a_of_type_JavaUtilHashSet.add(((aqhc)localObject1).jdField_a_of_type_JavaLangString);
           }
         }
       }
@@ -1264,11 +1266,11 @@ public class BubbleManager
         {
           localObject1 = a(2, (JSONObject)localObject2);
           localObject2 = ((JSONObject)localObject2).getJSONArray("height_interval");
-          ((apdy)localObject1).jdField_b_of_type_ArrayOfInt = new int[] { ((JSONArray)localObject2).getInt(0), ((JSONArray)localObject2).getInt(1) };
-          ((apdy)localObject1).jdField_b_of_type_JavaLangString = localJSONObject.getString("animation");
-          paramapeb.jdField_b_of_type_Apdy = ((apdy)localObject1);
-          if (!TextUtils.isEmpty(((apdy)localObject1).jdField_a_of_type_JavaLangString)) {
-            paramapeb.jdField_a_of_type_JavaUtilHashSet.add(((apdy)localObject1).jdField_a_of_type_JavaLangString);
+          ((aqhc)localObject1).jdField_b_of_type_ArrayOfInt = new int[] { ((JSONArray)localObject2).getInt(0), ((JSONArray)localObject2).getInt(1) };
+          ((aqhc)localObject1).jdField_b_of_type_JavaLangString = localJSONObject.getString("animation");
+          paramaqhf.jdField_b_of_type_Aqhc = ((aqhc)localObject1);
+          if (!TextUtils.isEmpty(((aqhc)localObject1).jdField_a_of_type_JavaLangString)) {
+            paramaqhf.jdField_a_of_type_JavaUtilHashSet.add(((aqhc)localObject1).jdField_a_of_type_JavaLangString);
           }
         }
       }
@@ -1289,9 +1291,9 @@ public class BubbleManager
             double d = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth();
             paramJSONObject.j = ((int)(i / 100.0D * d));
           }
-          paramapeb.jdField_c_of_type_Apdy = paramJSONObject;
+          paramaqhf.jdField_c_of_type_Aqhc = paramJSONObject;
           if (!TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_JavaLangString)) {
-            paramapeb.jdField_a_of_type_JavaUtilHashSet.add(paramJSONObject.jdField_a_of_type_JavaLangString);
+            paramaqhf.jdField_a_of_type_JavaUtilHashSet.add(paramJSONObject.jdField_a_of_type_JavaLangString);
           }
         }
       }
@@ -1340,45 +1342,45 @@ public class BubbleManager
     }
   }
   
-  private void c(apeb paramapeb, JSONObject paramJSONObject)
+  private void c(aqhf paramaqhf, JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("pendant_animation"))
     {
       Object localObject = paramJSONObject.getJSONObject("pendant_animation");
-      apdy localapdy = new apdy();
+      aqhc localaqhc = new aqhc();
       if (((JSONObject)localObject).has("pendant_id")) {
-        localapdy.k = ((JSONObject)localObject).getInt("pendant_id");
+        localaqhc.k = ((JSONObject)localObject).getInt("pendant_id");
       }
       if (((JSONObject)localObject).has("animation_set"))
       {
         localObject = ((JSONObject)localObject).getString("animation_set");
-        localapdy.jdField_b_of_type_JavaLangString = ((String)localObject);
+        localaqhc.jdField_b_of_type_JavaLangString = ((String)localObject);
         localObject = b((String)localObject, paramJSONObject);
         if (localObject != null)
         {
-          localapdy.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("zip_name");
+          localaqhc.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("zip_name");
           paramJSONObject = ((JSONObject)localObject).getJSONArray("anim_sets");
           if (((JSONObject)localObject).has("padding"))
           {
             localObject = ((JSONObject)localObject).getJSONArray("padding");
             if ((localObject != null) && (((JSONArray)localObject).length() > 0))
             {
-              localapdy.jdField_f_of_type_Int = ((JSONArray)localObject).getInt(0);
-              localapdy.jdField_h_of_type_Int = ((JSONArray)localObject).getInt(1);
-              localapdy.jdField_g_of_type_Int = ((JSONArray)localObject).getInt(2);
-              localapdy.i = ((JSONArray)localObject).getInt(3);
+              localaqhc.jdField_f_of_type_Int = ((JSONArray)localObject).getInt(0);
+              localaqhc.jdField_h_of_type_Int = ((JSONArray)localObject).getInt(1);
+              localaqhc.jdField_g_of_type_Int = ((JSONArray)localObject).getInt(2);
+              localaqhc.i = ((JSONArray)localObject).getInt(3);
             }
           }
           if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {
-            localapdy.jdField_a_of_type_JavaUtilArrayList = a(paramJSONObject);
+            localaqhc.jdField_a_of_type_JavaUtilArrayList = a(paramJSONObject);
           }
-          paramapeb.jdField_f_of_type_Apdy = localapdy;
+          paramaqhf.jdField_f_of_type_Aqhc = localaqhc;
         }
       }
     }
   }
   
-  private void d(apeb paramapeb, JSONObject paramJSONObject)
+  private void d(aqhf paramaqhf, JSONObject paramJSONObject)
   {
     String str3;
     String str1;
@@ -1396,7 +1398,7 @@ public class BubbleManager
       {
         try
         {
-          paramapeb.jdField_b_of_type_Int = Color.parseColor("#" + str1);
+          paramaqhf.jdField_b_of_type_Int = Color.parseColor("#" + str1);
           if (paramJSONObject.has("link_color"))
           {
             str3 = paramJSONObject.getString("link_color");
@@ -1410,10 +1412,10 @@ public class BubbleManager
         {
           try
           {
-            paramapeb.jdField_c_of_type_Int = Color.parseColor("#" + str1);
+            paramaqhf.jdField_c_of_type_Int = Color.parseColor("#" + str1);
             if (paramJSONObject.has("shadow_blur_color"))
             {
-              paramapeb.jdField_a_of_type_Boolean = true;
+              paramaqhf.jdField_a_of_type_Boolean = true;
               str1 = paramJSONObject.getString("shadow_blur_color");
               paramJSONObject = str1;
               if (str1.startsWith("0x")) {
@@ -1429,7 +1431,7 @@ public class BubbleManager
               {
                 for (;;)
                 {
-                  paramapeb.jdField_d_of_type_Int = Color.parseColor("#" + paramJSONObject);
+                  paramaqhf.jdField_d_of_type_Int = Color.parseColor("#" + paramJSONObject);
                   return;
                   localException1 = localException1;
                   if (QLog.isColorLevel()) {
@@ -1440,7 +1442,7 @@ public class BubbleManager
               } while (!QLog.isColorLevel());
               QLog.d("BubbleManager", 2, "linkcolor invalid");
             }
-            catch (Exception paramapeb)
+            catch (Exception paramaqhf)
             {
               while (!QLog.isColorLevel()) {}
               QLog.d("BubbleManager", 2, "strokeColor invalid");
@@ -1449,7 +1451,7 @@ public class BubbleManager
           }
         }
       } while (!paramJSONObject.has("shadow_color"));
-      paramapeb.jdField_b_of_type_Boolean = true;
+      paramaqhf.jdField_b_of_type_Boolean = true;
       String str2 = paramJSONObject.getString("shadow_color");
       paramJSONObject = str2;
       if (str2.startsWith("0x")) {
@@ -1457,15 +1459,15 @@ public class BubbleManager
       }
       try
       {
-        paramapeb.jdField_d_of_type_Int = Color.parseColor("#" + paramJSONObject);
+        paramaqhf.jdField_d_of_type_Int = Color.parseColor("#" + paramJSONObject);
         return;
       }
-      catch (Exception paramapeb) {}
+      catch (Exception paramaqhf) {}
     } while (!QLog.isColorLevel());
     QLog.d("BubbleManager", 2, "strokeColor invalid");
   }
   
-  private void e(apeb paramapeb, JSONObject paramJSONObject)
+  private void e(aqhf paramaqhf, JSONObject paramJSONObject)
   {
     int i = 0;
     if (paramJSONObject.has("loopList")) {}
@@ -1474,23 +1476,23 @@ public class BubbleManager
       paramJSONObject = paramJSONObject.getJSONArray("loopList");
       if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
       {
-        paramapeb.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-        paramapeb.jdField_e_of_type_Int = 0;
+        paramaqhf.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+        paramaqhf.jdField_e_of_type_Int = 0;
         while (i < paramJSONObject.length())
         {
-          paramapeb.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          paramaqhf.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
           i += 1;
         }
         if (QLog.isColorLevel()) {
-          QLog.i("BubbleManager", 2, "bubble loopList: " + TextUtils.join(",", paramapeb.jdField_b_of_type_JavaUtilArrayList));
+          QLog.i("BubbleManager", 2, "bubble loopList: " + TextUtils.join(",", paramaqhf.jdField_b_of_type_JavaUtilArrayList));
         }
       }
       return;
     }
-    catch (Exception paramapeb)
+    catch (Exception paramaqhf)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e("BubbleManager", 2, "", paramapeb);
+      QLog.e("BubbleManager", 2, "", paramaqhf);
     }
   }
   
@@ -1518,7 +1520,7 @@ public class BubbleManager
     return 0;
   }
   
-  public apdy a(int paramInt1, int paramInt2)
+  public aqhc a(int paramInt1, int paramInt2)
   {
     Object localObject = a(paramInt1, false);
     if (localObject == null) {
@@ -1534,31 +1536,31 @@ public class BubbleManager
     for (;;)
     {
       if (localObject != null) {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(((apdy)localObject).jdField_b_of_type_JavaLangString))
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(((aqhc)localObject).jdField_b_of_type_JavaLangString))
         {
           return localObject;
-          localObject = ((apeb)localObject).jdField_c_of_type_Apdy;
-          apdy.a((apdy)localObject);
+          localObject = ((aqhf)localObject).jdField_c_of_type_Aqhc;
+          aqhc.a((aqhc)localObject);
           continue;
-          localObject = ((apeb)localObject).jdField_b_of_type_Apdy;
+          localObject = ((aqhf)localObject).jdField_b_of_type_Aqhc;
           continue;
-          localObject = ((apeb)localObject).jdField_f_of_type_Apdy;
+          localObject = ((aqhf)localObject).jdField_f_of_type_Aqhc;
         }
-        else if ((localObject != null) && (((apdy)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (((apdy)localObject).jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        else if ((localObject != null) && (((aqhc)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (((aqhc)localObject).jdField_a_of_type_JavaUtilArrayList.size() > 0))
         {
-          Iterator localIterator = ((apdy)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator = ((aqhc)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
           paramInt2 = 1;
           if (!localIterator.hasNext()) {
             break label315;
           }
-          apfa localapfa = (apfa)localIterator.next();
-          File localFile = new File(a(paramInt1), ((apdy)localObject).jdField_a_of_type_JavaLangString);
+          aqie localaqie = (aqie)localIterator.next();
+          File localFile = new File(a(paramInt1), ((aqhc)localObject).jdField_a_of_type_JavaLangString);
           i = 0;
           label188:
-          if (i >= localapfa.jdField_b_of_type_Int) {
+          if (i >= localaqie.jdField_b_of_type_Int) {
             break label350;
           }
-          String str = localFile.getAbsolutePath() + File.separatorChar + localapfa.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+          String str = localFile.getAbsolutePath() + File.separatorChar + localaqie.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
           if (!new File(str).exists())
           {
             if (QLog.isColorLevel()) {
@@ -1582,12 +1584,12 @@ public class BubbleManager
         a(paramInt1, "other.zip", "0");
         return null;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((apdy)localObject).jdField_b_of_type_JavaLangString, localObject);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((aqhc)localObject).jdField_b_of_type_JavaLangString, localObject);
       return localObject;
     }
   }
   
-  apdy a(int paramInt, String paramString)
+  aqhc a(int paramInt, String paramString)
   {
     Object localObject = a(paramInt, true);
     if (localObject == null)
@@ -1595,36 +1597,36 @@ public class BubbleManager
       QLog.e("BubbleManager", 1, "findAnimConfig bubbleId = " + paramInt + " bubbleConfig = null");
       return null;
     }
-    if ((((apeb)localObject).jdField_a_of_type_Apdy != null) && (((apeb)localObject).jdField_a_of_type_Apdy.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return ((apeb)localObject).jdField_a_of_type_Apdy;
+    if ((((aqhf)localObject).jdField_a_of_type_Aqhc != null) && (((aqhf)localObject).jdField_a_of_type_Aqhc.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      return ((aqhf)localObject).jdField_a_of_type_Aqhc;
     }
-    if ((((apeb)localObject).jdField_b_of_type_Apdy != null) && (((apeb)localObject).jdField_b_of_type_Apdy.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return ((apeb)localObject).jdField_b_of_type_Apdy;
+    if ((((aqhf)localObject).jdField_b_of_type_Aqhc != null) && (((aqhf)localObject).jdField_b_of_type_Aqhc.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      return ((aqhf)localObject).jdField_b_of_type_Aqhc;
     }
-    if ((((apeb)localObject).jdField_c_of_type_Apdy != null) && (((apeb)localObject).jdField_c_of_type_Apdy.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return ((apeb)localObject).jdField_c_of_type_Apdy;
+    if ((((aqhf)localObject).jdField_c_of_type_Aqhc != null) && (((aqhf)localObject).jdField_c_of_type_Aqhc.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      return ((aqhf)localObject).jdField_c_of_type_Aqhc;
     }
-    if ((((apeb)localObject).jdField_d_of_type_Apdy != null) && (((apeb)localObject).jdField_d_of_type_Apdy.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return ((apeb)localObject).jdField_d_of_type_Apdy;
+    if ((((aqhf)localObject).jdField_d_of_type_Aqhc != null) && (((aqhf)localObject).jdField_d_of_type_Aqhc.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      return ((aqhf)localObject).jdField_d_of_type_Aqhc;
     }
-    if ((((apeb)localObject).jdField_e_of_type_Apdy != null) && (((apeb)localObject).jdField_e_of_type_Apdy.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      return ((apeb)localObject).jdField_e_of_type_Apdy;
+    if ((((aqhf)localObject).jdField_e_of_type_Aqhc != null) && (((aqhf)localObject).jdField_e_of_type_Aqhc.jdField_b_of_type_JavaLangString.equals(paramString))) {
+      return ((aqhf)localObject).jdField_e_of_type_Aqhc;
     }
-    if (((apeb)localObject).jdField_a_of_type_JavaUtilArrayList != null)
+    if (((aqhf)localObject).jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject = ((apeb)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = ((aqhf)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        apdy localapdy = (apdy)((Iterator)localObject).next();
-        if (localapdy.jdField_b_of_type_JavaLangString.equals(paramString)) {
-          return localapdy;
+        aqhc localaqhc = (aqhc)((Iterator)localObject).next();
+        if (localaqhc.jdField_b_of_type_JavaLangString.equals(paramString)) {
+          return localaqhc;
         }
       }
     }
     return null;
   }
   
-  apeb a(int paramInt, String paramString)
+  aqhf a(int paramInt, String paramString)
   {
     int i = 0;
     if (QLog.isColorLevel()) {
@@ -1647,19 +1649,19 @@ public class BubbleManager
         if ((Build.VERSION.SDK_INT <= 10) && (paramString.length() > 1) && (paramString.charAt(0) == 65279))
         {
           paramString = paramString.substring(1);
-          apeb localapeb = new apeb(paramInt);
+          aqhf localaqhf = new aqhf(paramInt);
           paramString = new JSONObject(paramString);
-          localapeb.jdField_a_of_type_JavaLangString = paramString.getString("name");
-          e(localapeb, paramString);
-          d(localapeb, paramString);
-          localapeb.jdField_a_of_type_Double = paramString.optDouble("color_threshold_factor", 1.0D);
+          localaqhf.jdField_a_of_type_JavaLangString = paramString.getString("name");
+          e(localaqhf, paramString);
+          d(localaqhf, paramString);
+          localaqhf.jdField_a_of_type_Double = paramString.optDouble("color_threshold_factor", 1.0D);
           Object localObject1;
           if (paramString.has("zoom_point"))
           {
             localObject1 = paramString.getJSONArray("zoom_point");
-            localapeb.jdField_a_of_type_ArrayOfInt = new int[] { ((JSONArray)localObject1).getInt(0), ((JSONArray)localObject1).getInt(1) };
+            localaqhf.jdField_a_of_type_ArrayOfInt = new int[] { ((JSONArray)localObject1).getInt(0), ((JSONArray)localObject1).getInt(1) };
           }
-          b(localapeb, paramString);
+          b(localaqhf, paramString);
           Object localObject2;
           if (paramString.has("bubbleframe_animation"))
           {
@@ -1670,43 +1672,43 @@ public class BubbleManager
               if (localObject2 != null)
               {
                 localObject2 = a((JSONObject)localObject2);
-                ((apdy)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("animation_set");
-                localapeb.jdField_d_of_type_Apdy = ((apdy)localObject2);
-                if (!TextUtils.isEmpty(((apdy)localObject2).jdField_a_of_type_JavaLangString)) {
-                  localapeb.jdField_a_of_type_JavaUtilHashSet.add(((apdy)localObject2).jdField_a_of_type_JavaLangString);
+                ((aqhc)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("animation_set");
+                localaqhf.jdField_d_of_type_Aqhc = ((aqhc)localObject2);
+                if (!TextUtils.isEmpty(((aqhc)localObject2).jdField_a_of_type_JavaLangString)) {
+                  localaqhf.jdField_a_of_type_JavaUtilHashSet.add(((aqhc)localObject2).jdField_a_of_type_JavaLangString);
                 }
               }
             }
           }
-          a(localapeb, paramString);
-          localapeb.jdField_a_of_type_JavaUtilHashMap = apfj.a(paramInt, paramString);
-          c(localapeb, paramString);
+          a(localaqhf, paramString);
+          localaqhf.jdField_a_of_type_JavaUtilHashMap = aqin.a(paramInt, paramString);
+          c(localaqhf, paramString);
           if (paramString.has("interaction_animation"))
           {
             localObject1 = paramString.getJSONObject("interaction_animation");
             localObject2 = ((JSONObject)localObject1).optJSONArray("key_word");
-            localapeb.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+            localaqhf.jdField_b_of_type_JavaUtilHashMap = new HashMap();
             if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
             {
-              localapeb.jdField_c_of_type_JavaUtilArrayList = new ArrayList(((JSONArray)localObject2).length());
+              localaqhf.jdField_c_of_type_JavaUtilArrayList = new ArrayList(((JSONArray)localObject2).length());
               if (i < ((JSONArray)localObject2).length())
               {
-                localapeb.jdField_c_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).getString(i));
+                localaqhf.jdField_c_of_type_JavaUtilArrayList.add(((JSONArray)localObject2).getString(i));
                 i += 1;
                 continue;
               }
             }
-            localapeb.jdField_f_of_type_Int = paramString.optInt("package_id", -1);
-            if (localapeb.jdField_f_of_type_Int == -1) {
-              localapeb.jdField_f_of_type_Int = paramString.optInt("groupId", -1);
+            localaqhf.jdField_f_of_type_Int = paramString.optInt("package_id", -1);
+            if (localaqhf.jdField_f_of_type_Int == -1) {
+              localaqhf.jdField_f_of_type_Int = paramString.optInt("groupId", -1);
             }
-            localapeb.jdField_g_of_type_Int = paramString.optInt("groupType", 2);
-            a(localapeb, paramString, (JSONObject)localObject1, "animation_start");
-            a(localapeb, paramString, (JSONObject)localObject1, "animation_running");
-            a(localapeb, paramString, (JSONObject)localObject1, "animation_end");
-            a(localapeb, paramString, (JSONObject)localObject1, "passive_animation");
+            localaqhf.jdField_g_of_type_Int = paramString.optInt("groupType", 2);
+            a(localaqhf, paramString, (JSONObject)localObject1, "animation_start");
+            a(localaqhf, paramString, (JSONObject)localObject1, "animation_running");
+            a(localaqhf, paramString, (JSONObject)localObject1, "animation_end");
+            a(localaqhf, paramString, (JSONObject)localObject1, "passive_animation");
           }
-          return localapeb;
+          return localaqhf;
         }
       }
       catch (JSONException paramString)
@@ -1722,7 +1724,7 @@ public class BubbleManager
     }
   }
   
-  public apeb a(int paramInt, boolean paramBoolean)
+  public aqhf a(int paramInt, boolean paramBoolean)
   {
     Object localObject;
     if (paramInt == 0)
@@ -1730,8 +1732,8 @@ public class BubbleManager
       localObject = null;
       return localObject;
     }
-    apeb localapeb = (apeb)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap.get(Integer.valueOf(paramInt));
-    if (localapeb == null)
+    aqhf localaqhf = (aqhf)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap.get(Integer.valueOf(paramInt));
+    if (localaqhf == null)
     {
       if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
         break label116;
@@ -1740,18 +1742,18 @@ public class BubbleManager
     }
     for (;;)
     {
-      localObject = localapeb;
+      localObject = localaqhf;
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + paramInt + ",autoDownload=" + paramBoolean + ",bubbleConfig=" + localapeb);
-      return localapeb;
+      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + paramInt + ",autoDownload=" + paramBoolean + ",bubbleConfig=" + localaqhf);
+      return localaqhf;
       label116:
       new BubbleManager.HandleBubbleConfigRunnable(this, paramInt, paramBoolean).run();
     }
   }
   
-  public apee a(int paramInt, boolean paramBoolean)
+  public aqhi a(int paramInt, boolean paramBoolean)
   {
     if (paramInt < 1) {
       ??? = null;
@@ -1760,7 +1762,7 @@ public class BubbleManager
     do
     {
       return ???;
-      localObject2 = (apee)this.jdField_a_of_type_Aper.get(Integer.valueOf(paramInt));
+      localObject2 = (aqhi)this.jdField_a_of_type_Aqhv.get(Integer.valueOf(paramInt));
       if (localObject2 == null) {
         break;
       }
@@ -1779,26 +1781,26 @@ public class BubbleManager
     return null;
   }
   
-  public apes a(QQAppInterface paramQQAppInterface, TextView paramTextView, int paramInt1, int paramInt2, String paramString)
+  public aqhw a(QQAppInterface paramQQAppInterface, TextView paramTextView, int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject2 = (BubbleManager)paramQQAppInterface.getManager(44);
+    Object localObject2 = (BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
     Object localObject1 = null;
-    apee localapee = apfe.a(paramInt1, paramQQAppInterface, null, null);
-    if (localapee.jdField_a_of_type_ArrayOfJavaLangString != null)
+    aqhi localaqhi = aqii.a(paramInt1, paramQQAppInterface, null, null);
+    if (localaqhi.jdField_a_of_type_ArrayOfJavaLangString != null)
     {
-      paramQQAppInterface = localapee.jdField_a_of_type_ArrayOfJavaLangString;
+      paramQQAppInterface = localaqhi.jdField_a_of_type_ArrayOfJavaLangString;
       if ((paramQQAppInterface == null) || (localObject2 == null) || (!((BubbleManager)localObject2).a())) {
-        break label621;
+        break label622;
       }
       if (paramInt2 >= 10) {
-        break label88;
+        break label89;
       }
       paramQQAppInterface = paramQQAppInterface[0];
     }
     for (;;)
     {
       if (paramQQAppInterface != null) {
-        break label109;
+        break label110;
       }
       return null;
       paramQQAppInterface = (QQAppInterface)localObject1;
@@ -1807,14 +1809,14 @@ public class BubbleManager
       }
       paramQQAppInterface = ((BubbleManager)localObject2).a(paramInt1);
       break;
-      label88:
+      label89:
       if (paramInt2 < 100) {
         paramQQAppInterface = paramQQAppInterface[1];
       } else {
         paramQQAppInterface = paramQQAppInterface[2];
       }
     }
-    label109:
+    label110:
     localObject2 = (Bitmap)this.jdField_a_of_type_AndroidUtilLruCache.get(paramQQAppInterface);
     if ((localObject2 != null) || (new File(paramQQAppInterface).exists()))
     {
@@ -1873,7 +1875,7 @@ public class BubbleManager
               this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt2, j, paramInt1, i);
               paramTextView.setText(paramQQAppInterface);
               if (Build.VERSION.SDK_INT < 16) {
-                break label607;
+                break label608;
               }
               paramTextView.setBackground((Drawable)localObject2);
               paramTextView.setPadding(paramString.left, paramString.top, paramString.right, paramString.bottom);
@@ -1882,11 +1884,11 @@ public class BubbleManager
           else
           {
             paramQQAppInterface = new BitmapDrawable((Bitmap)localObject1);
-            if (localapee.jdField_a_of_type_Int <= 0) {
-              break label616;
+            if (localaqhi.jdField_a_of_type_Int <= 0) {
+              break label617;
             }
-            paramInt1 = localapee.jdField_b_of_type_Int;
-            return new apes(paramQQAppInterface, paramInt1, this.jdField_a_of_type_AndroidGraphicsRect);
+            paramInt1 = localaqhi.jdField_b_of_type_Int;
+            return new aqhw(paramQQAppInterface, paramInt1, this.jdField_a_of_type_AndroidGraphicsRect);
             if (QLog.isColorLevel()) {
               QLog.d("BubbleManager", 1, "find no bubble unread : decode error");
             }
@@ -1897,39 +1899,39 @@ public class BubbleManager
           paramTextView.setBackgroundDrawable((Drawable)localObject2);
         }
         finally {}
-        label607:
+        label608:
         continue;
-        label616:
+        label617:
         paramInt1 = -1;
       }
     }
-    label621:
+    label622:
     if (QLog.isColorLevel()) {
       QLog.d("BubbleManager", 1, "find no bubble unread");
     }
     return null;
   }
   
-  public Pair<apef, apef> a(int paramInt, apdy paramapdy, boolean paramBoolean)
+  public Pair<aqhj, aqhj> a(int paramInt, aqhc paramaqhc, boolean paramBoolean)
   {
     boolean bool = false;
-    if ((paramapdy == null) || (TextUtils.isEmpty(paramapdy.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramapdy.jdField_b_of_type_JavaLangString))) {
+    if ((paramaqhc == null) || (TextUtils.isEmpty(paramaqhc.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramaqhc.jdField_b_of_type_JavaLangString))) {
       return null;
     }
     if (QLog.isColorLevel()) {
       QLog.i("BubbleManager", 2, "parseAnimToCommonAttrs, bubbleId = " + paramInt + " autoDown = " + paramBoolean);
     }
-    apef localapef = a(paramInt, paramapdy.jdField_b_of_type_JavaLangString, paramBoolean, false);
-    if (localapef == null) {
+    aqhj localaqhj = a(paramInt, paramaqhc.jdField_b_of_type_JavaLangString, paramBoolean, false);
+    if (localaqhj == null) {
       return null;
     }
-    if (paramapdy.jdField_a_of_type_JavaLangString.equals(paramapdy.jdField_c_of_type_JavaLangString)) {
+    if (paramaqhc.jdField_a_of_type_JavaLangString.equals(paramaqhc.jdField_c_of_type_JavaLangString)) {
       bool = true;
     }
-    return new Pair(localapef, a(paramInt, paramapdy.jdField_c_of_type_JavaLangString, paramBoolean, bool));
+    return new Pair(localaqhj, a(paramInt, paramaqhc.jdField_c_of_type_JavaLangString, paramBoolean, bool));
   }
   
-  public Pair<apef, apef> a(int paramInt, String paramString, Pair<apef, apef> paramPair)
+  public Pair<aqhj, aqhj> a(int paramInt, String paramString, Pair<aqhj, aqhj> paramPair)
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -1950,7 +1952,7 @@ public class BubbleManager
         localObject = paramString;
         if (paramString != null)
         {
-          paramPair = (apee)this.jdField_a_of_type_Aper.get(Integer.valueOf(paramInt));
+          paramPair = (aqhi)this.jdField_a_of_type_Aqhv.get(Integer.valueOf(paramInt));
           localObject = paramString;
           if (paramPair != null)
           {
@@ -2060,7 +2062,7 @@ public class BubbleManager
         localJSONObject2.put("status", 3);
         localJSONObject2.put("progress", 100);
         localJSONObject1.put("result", 0);
-        localJSONObject1.put("message", amtj.a(2131700361));
+        localJSONObject1.put("message", anvx.a(2131700712));
       }
       for (;;)
       {
@@ -2079,7 +2081,7 @@ public class BubbleManager
         }
         localJSONObject2.put("status", 3);
         localJSONObject1.put("result", 0);
-        localJSONObject1.put("message", amtj.a(2131700364));
+        localJSONObject1.put("message", anvx.a(2131700715));
         break label393;
         localJSONObject2.put("canceling", i);
         localJSONObject2.put("progress", 100.0F * f);
@@ -2097,19 +2099,19 @@ public class BubbleManager
         {
           localJSONException.put("status", 1);
           localJSONObject1.put("result", -1);
-          localJSONObject1.put("message", amtj.a(2131700362));
+          localJSONObject1.put("message", anvx.a(2131700713));
         }
         else
         {
           localJSONException.put("status", 2);
           localJSONObject1.put("result", 0);
-          localJSONObject1.put("message", amtj.a(2131700360));
+          localJSONObject1.put("message", anvx.a(2131700711));
           break label393;
           label345:
           localJSONException.put("status", 1);
           localJSONException.put("progress", 0);
           localJSONObject1.put("result", 0);
-          localJSONObject1.put("message", amtj.a(2131700359));
+          localJSONObject1.put("message", anvx.a(2131700710));
           continue;
         }
         label393:
@@ -2159,8 +2161,8 @@ public class BubbleManager
       localBundle.putString("callbackId", paramString);
     }
     if (a(paramInt).booleanValue()) {
-      if ((this.jdField_a_of_type_Bgok != null) && (paramString != null)) {
-        this.jdField_a_of_type_Bgok.a(paramInt, 3, localBundle);
+      if ((this.jdField_a_of_type_Bhyu != null) && (paramString != null)) {
+        this.jdField_a_of_type_Bhyu.a(paramInt, 3, localBundle);
       }
     }
     do
@@ -2169,8 +2171,8 @@ public class BubbleManager
       if (NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext)) {
         break;
       }
-    } while ((this.jdField_a_of_type_Bgok == null) || (paramString == null));
-    this.jdField_a_of_type_Bgok.a(paramInt, -1, localBundle);
+    } while ((this.jdField_a_of_type_Bhyu == null) || (paramString == null));
+    this.jdField_a_of_type_Bhyu.a(paramInt, -1, localBundle);
     return;
     a(paramInt, null, paramString);
   }
@@ -2187,7 +2189,7 @@ public class BubbleManager
     {
       return;
       str = "bubble.android." + paramInt + "." + ???;
-      localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
+      localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
     } while (localVasQuickUpdateManager == null);
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
@@ -2216,7 +2218,7 @@ public class BubbleManager
     do
     {
       return;
-      localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
+      localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
     } while (localVasQuickUpdateManager == null);
     String str = "bubble.android." + paramInt + "." + "all.zip";
     if ("0".equals(paramString))
@@ -2251,9 +2253,9 @@ public class BubbleManager
     }
   }
   
-  public void a(bgok parambgok)
+  public void a(bhyu parambhyu)
   {
-    this.jdField_a_of_type_Bgok = parambgok;
+    this.jdField_a_of_type_Bhyu = parambhyu;
   }
   
   public void a(String paramString1, int paramInt, String paramString2, long paramLong)
@@ -2263,7 +2265,7 @@ public class BubbleManager
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
       str = VipUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
     }
-    bcef.b(null, "CliOper", "", "", "Bubble", paramString1, 0, (int)paramLong, String.valueOf(paramInt), str, Integer.toString(i), paramString2);
+    bdla.b(null, "CliOper", "", "", "Bubble", paramString1, 0, (int)paramLong, String.valueOf(paramInt), str, Integer.toString(i), paramString2);
   }
   
   public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
@@ -2285,7 +2287,7 @@ public class BubbleManager
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.startsWith("bubble.paster.")))
     {
       paramString1 = paramString1.replace("bubble.paster.", "").replace(".png", "");
-      apec.a().b(paramString1);
+      aqhg.a().b(paramString1);
     }
   }
   
@@ -2300,30 +2302,30 @@ public class BubbleManager
     if (paramBoolean != a())
     {
       if (!paramBoolean) {
-        break label139;
+        break label140;
       }
       i = 1;
       this.jdField_c_of_type_Int = i;
       localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0).edit();
       if (i != 1) {
-        break label144;
+        break label145;
       }
     }
     for (;;)
     {
       ((SharedPreferences.Editor)localObject).putBoolean("svip_bubble_unread_switch", bool).apply();
-      localObject = (aneg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(27);
+      localObject = (aogw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
       if (localObject != null) {
-        ((aneg)localObject).a(paramBoolean);
+        ((aogw)localObject).a(paramBoolean);
       }
       if (QLog.isColorLevel()) {
         QLog.d("BubbleManager", 2, "setBubbleUnreadShow " + paramBoolean);
       }
       return;
-      label139:
+      label140:
       i = -1;
       break;
-      label144:
+      label145:
       bool = false;
     }
   }
@@ -2353,7 +2355,7 @@ public class BubbleManager
   public boolean a(int paramInt)
   {
     boolean bool2 = false;
-    boolean bool3 = bgog.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
+    boolean bool3 = bhyq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext());
     boolean bool1 = bool2;
     if (bool3)
     {
@@ -2386,17 +2388,17 @@ public class BubbleManager
     label65:
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (apfa)((Iterator)localObject1).next();
-      if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((apfa)localObject2).jdField_a_of_type_JavaLangString))
+      localObject2 = (aqie)((Iterator)localObject1).next();
+      if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((aqie)localObject2).jdField_a_of_type_JavaLangString))
       {
-        File localFile = new File(a(paramInt1), ((apfa)localObject2).jdField_d_of_type_JavaLangString);
+        File localFile = new File(a(paramInt1), ((aqie)localObject2).jdField_d_of_type_JavaLangString);
         int i = 0;
         for (;;)
         {
           int j = paramInt2;
-          if (i < ((apfa)localObject2).jdField_b_of_type_Int)
+          if (i < ((aqie)localObject2).jdField_b_of_type_Int)
           {
-            String str = localFile.getAbsolutePath() + File.separatorChar + ((apfa)localObject2).jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+            String str = localFile.getAbsolutePath() + File.separatorChar + ((aqie)localObject2).jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
             if (!new File(str).exists())
             {
               QLog.e("BubbleManager", 2, "anim conf, file is not exit, " + str);
@@ -2409,13 +2411,13 @@ public class BubbleManager
             if (j == 0) {
               break label65;
             }
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(((apfa)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(((aqie)localObject2).jdField_a_of_type_JavaLangString, localObject2);
             paramInt2 = j;
             break label65;
-            if ((((apeb)localObject2).jdField_b_of_type_JavaUtilHashMap == null) || (((apeb)localObject2).jdField_b_of_type_JavaUtilHashMap.size() <= 0)) {
+            if ((((aqhf)localObject2).jdField_b_of_type_JavaUtilHashMap == null) || (((aqhf)localObject2).jdField_b_of_type_JavaUtilHashMap.size() <= 0)) {
               break;
             }
-            localObject2 = ((apeb)localObject2).jdField_b_of_type_JavaUtilHashMap.values().iterator();
+            localObject2 = ((aqhf)localObject2).jdField_b_of_type_JavaUtilHashMap.values().iterator();
             while (((Iterator)localObject2).hasNext()) {
               ((List)localObject1).add(((Iterator)localObject2).next());
             }
@@ -2452,24 +2454,24 @@ public class BubbleManager
     {
       localObject3 = new ArrayList();
       localObject4 = new HashMap();
-      if (((apeb)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
+      if (((aqhf)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
       {
         i = 0;
-        if (i < ((apeb)localObject1).jdField_a_of_type_JavaUtilArrayList.size())
+        if (i < ((aqhf)localObject1).jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localObject5 = (apdy)((apeb)localObject1).jdField_a_of_type_JavaUtilArrayList.get(i);
+          localObject5 = (aqhc)((aqhf)localObject1).jdField_a_of_type_JavaUtilArrayList.get(i);
           j = 0;
-          while (j < ((apdy)localObject5).jdField_a_of_type_ArrayOfJavaLangString.length)
+          while (j < ((aqhc)localObject5).jdField_a_of_type_ArrayOfJavaLangString.length)
           {
             localObject6 = localObject5.jdField_a_of_type_ArrayOfJavaLangString[j];
             ((ArrayList)localObject3).add(localObject6);
-            ((HashMap)localObject4).put(localObject6, ((apdy)localObject5).jdField_b_of_type_JavaLangString);
+            ((HashMap)localObject4).put(localObject6, ((aqhc)localObject5).jdField_b_of_type_JavaLangString);
             j += 1;
           }
         }
       }
-      localObject4 = new apee(paramInt, "", "", "", "", ((apeb)localObject1).jdField_a_of_type_Apfk, ((apeb)localObject1).jdField_b_of_type_Int, ((apeb)localObject1).jdField_c_of_type_Int, ((apeb)localObject1).jdField_d_of_type_Int, ((apeb)localObject1).jdField_a_of_type_Boolean, ((apeb)localObject1).jdField_b_of_type_Boolean, ((apeb)localObject1).jdField_a_of_type_Double, (String[])((ArrayList)localObject3).toArray(new String[0]), null, 0, 0, null, null, (HashMap)localObject4);
-      boolean bool = a((apee)localObject4);
+      localObject4 = new aqhi(paramInt, "", "", "", "", ((aqhf)localObject1).jdField_a_of_type_Aqio, ((aqhf)localObject1).jdField_b_of_type_Int, ((aqhf)localObject1).jdField_c_of_type_Int, ((aqhf)localObject1).jdField_d_of_type_Int, ((aqhf)localObject1).jdField_a_of_type_Boolean, ((aqhf)localObject1).jdField_b_of_type_Boolean, ((aqhf)localObject1).jdField_a_of_type_Double, (String[])((ArrayList)localObject3).toArray(new String[0]), null, 0, 0, null, null, (HashMap)localObject4);
+      boolean bool = a((aqhi)localObject4);
       if (QLog.isColorLevel()) {
         QLog.d("BubbleManager", 2, "createBubbleInfo, isCheckOk=" + bool + ", bubbleId=" + paramInt);
       }
@@ -2481,11 +2483,11 @@ public class BubbleManager
         this.jdField_a_of_type_JavaUtilVector.remove(Integer.valueOf(paramInt));
         return false;
       }
-      if (TextUtils.isEmpty(((apee)localObject4).jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(((aqhi)localObject4).jdField_a_of_type_JavaLangString)) {
         break label1014;
       }
       i = 1;
-      if (TextUtils.isEmpty(((apee)localObject4).jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(((aqhi)localObject4).jdField_b_of_type_JavaLangString)) {
         break label1019;
       }
       j = 1;
@@ -2506,14 +2508,14 @@ public class BubbleManager
     int i = j;
     if (j != 0)
     {
-      localObject1 = a(((apee)localObject4).jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject5);
+      localObject1 = a(((aqhi)localObject4).jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject5);
       if (localObject1 == null) {
         break label738;
       }
       localObject6 = ((Bitmap)localObject1).getNinePatchChunk();
       if ((localObject6 != null) && (NinePatch.isNinePatchChunk((byte[])localObject6)))
       {
-        ((apee)localObject4).jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch((Bitmap)localObject1, (byte[])localObject6, null);
+        ((aqhi)localObject4).jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch((Bitmap)localObject1, (byte[])localObject6, null);
         i = j;
         localObject1 = localObject3;
       }
@@ -2526,7 +2528,7 @@ public class BubbleManager
       if (i == 0) {
         break label1031;
       }
-      localObject5 = a(((apee)localObject4).jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject5);
+      localObject5 = a(((aqhi)localObject4).jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject5);
       if (localObject5 == null) {
         break label821;
       }
@@ -2534,7 +2536,7 @@ public class BubbleManager
       if ((localObject3 == null) || (!NinePatch.isNinePatchChunk((byte[])localObject3))) {
         break label774;
       }
-      ((apee)localObject4).jdField_b_of_type_AndroidGraphicsNinePatch = new NinePatch((Bitmap)localObject5, (byte[])localObject3, null);
+      ((aqhi)localObject4).jdField_b_of_type_AndroidGraphicsNinePatch = new NinePatch((Bitmap)localObject5, (byte[])localObject3, null);
       break label1011;
     }
     for (;;)
@@ -2543,8 +2545,8 @@ public class BubbleManager
       if (i == 0)
       {
         QLog.e("BubbleManager", 1, "createBubbleInfo, load nine patch failed, abort, bubbleId=" + paramInt);
-        bggk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "individual_v2_bubble_9png_err", (String)localObject1, "norPath:" + ((apee)localObject4).jdField_a_of_type_JavaLangString + ", animatePath:" + ((apee)localObject4).jdField_b_of_type_JavaLangString, null, 0.0F);
-        bggj.a("individual_v2_bubble_9png_err", (String)localObject1);
+        bhpe.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "individual_v2_bubble_9png_err", (String)localObject1, "norPath:" + ((aqhi)localObject4).jdField_a_of_type_JavaLangString + ", animatePath:" + ((aqhi)localObject4).jdField_b_of_type_JavaLangString, null, 0.0F);
+        bhpd.a("individual_v2_bubble_9png_err", (String)localObject1);
         this.jdField_a_of_type_JavaUtilVector.remove(Integer.valueOf(paramInt));
         return false;
         i = 0;
@@ -2567,10 +2569,10 @@ public class BubbleManager
       }
       label774:
       label821:
-      this.jdField_a_of_type_Aper.put(Integer.valueOf(paramInt), localObject4);
+      this.jdField_a_of_type_Aqhv.put(Integer.valueOf(paramInt), localObject4);
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
       {
-        bgae.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        bhiw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
         localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(FontSettingActivity.class);
         if (localObject2 != null)
         {
@@ -2611,7 +2613,7 @@ public class BubbleManager
   
   public boolean a(long paramLong)
   {
-    return (this.jdField_a_of_type_Aper != null) && (this.jdField_a_of_type_Aper.a((int)paramLong));
+    return (this.jdField_a_of_type_Aqhv != null) && (this.jdField_a_of_type_Aqhv.a((int)paramLong));
   }
   
   public boolean a(String paramString)
@@ -2653,7 +2655,7 @@ public class BubbleManager
   
   public JSONObject b(int paramInt)
   {
-    Object localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
+    Object localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
     if (localObject != null) {
       ((VasQuickUpdateManager)localObject).cancelDwonloadItem(2L, "bubble.android." + paramInt + "." + "all.zip");
     }
@@ -2661,7 +2663,7 @@ public class BubbleManager
     try
     {
       ((JSONObject)localObject).put("status", 0);
-      ((JSONObject)localObject).put("message", amtj.a(2131700363));
+      ((JSONObject)localObject).put("message", anvx.a(2131700714));
       ((JSONObject)localObject).put("id", paramInt);
       ((JSONObject)localObject).put("result", 0);
       label106:
@@ -2744,11 +2746,11 @@ public class BubbleManager
               if (paramInt1 == 0) {
                 a(paramInt2);
               }
-            } while ((paramString3.equals("0")) || (this.jdField_a_of_type_Bgok == null));
+            } while ((paramString3.equals("0")) || (this.jdField_a_of_type_Bhyu == null));
             paramString1 = new Bundle();
             paramString1.putInt("srcType", 3);
             paramString1.putString("callbackId", paramString3);
-            ??? = this.jdField_a_of_type_Bgok;
+            ??? = this.jdField_a_of_type_Bhyu;
             long l = paramInt2;
             if (paramInt1 == 0) {}
             for (paramInt1 = i;; paramInt1 = -1)
@@ -2763,7 +2765,7 @@ public class BubbleManager
           a(paramInt2, false);
           paramString1 = a(paramInt2, a(paramInt2, "static"), false);
         } while (paramString1 == null);
-        ??? = (apee)this.jdField_a_of_type_Aper.get(Integer.valueOf(paramInt2));
+        ??? = (aqhi)this.jdField_a_of_type_Aqhv.get(Integer.valueOf(paramInt2));
       } while (??? == null);
       ???.jdField_a_of_type_JavaUtilList.add(paramString1);
       return;
@@ -2831,7 +2833,7 @@ public class BubbleManager
     if (QLog.isColorLevel()) {
       QLog.d("BubbleManager", 2, "onDestroy...");
     }
-    this.jdField_a_of_type_Aper.a();
+    this.jdField_a_of_type_Aqhv.a();
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap.clear();
     jdField_a_of_type_Int = 0;
   }

@@ -1,22 +1,24 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bmhc
-  implements IPlayer.PlayerListener
+class bmhc
+  implements View.OnClickListener
 {
-  public bmhc(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  bmhc(bmha parambmha) {}
   
-  public void onPositionChanged(CMTime paramCMTime) {}
-  
-  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
+  public void onClick(View paramView)
   {
-    bmbx.b(AEEditorVideoClipFragment.b(), "play status changed, current status = " + paramPlayerStatus);
-    if (AEEditorVideoClipFragment.a(this.a) != null) {
-      AEEditorVideoClipFragment.a(this.a).setPlayStatus(paramPlayerStatus);
+    if (bmha.a(this.a))
+    {
+      if (bmha.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bmha.b(this.a) != null) {
+        bmha.b(this.a).onClick(paramView);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

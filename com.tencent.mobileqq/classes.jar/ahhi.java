@@ -1,25 +1,36 @@
-class ahhi
-  implements bfft
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
+
+public class ahhi
+  implements Animator.AnimatorListener
 {
-  ahhi(ahgz paramahgz) {}
+  public ahhi(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramBoolean) && (this.a.b.equals(paramString)))
-    {
-      this.a.f = true;
-      paramString = (aftj)this.a.getHelper(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
     }
+    SixCombolEffectView.a(this.a).start();
+    this.a.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (SixCombolEffectView.a(this.a)) {}
     do
     {
       return;
-      this.a.f = false;
-      paramString = (aftj)this.a.getHelper(23);
-    } while (paramString == null);
-    paramString.a(false);
+      SixCombolEffectView.jdField_a_of_type_Int = 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

@@ -27,6 +27,8 @@ public class SegmentDataPipe
   public List<List<PointF>> allFacePoints;
   public List<List<PointF>> allIrisPoints;
   public List<Float[]> allPointsVis;
+  public int[] autoBrightnessCurve;
+  public int[] autoContrastCurve;
   public int[] curve;
   public Map<String, Long> detectTimes = new HashMap();
   public List<Set<Integer>> expressions = new ArrayList();

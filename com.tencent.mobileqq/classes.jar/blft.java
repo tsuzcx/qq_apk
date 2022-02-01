@@ -1,84 +1,38 @@
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.widget.TCWNumberPicker;
+
 public class blft
-  implements Cloneable
+  implements InputFilter
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  private blft(TCWNumberPicker paramTCWNumberPicker) {}
   
-  /* Error */
-  public blft a()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 23	java/lang/Object:clone	()Ljava/lang/Object;
-    //   6: checkcast 2	blft
-    //   9: astore_1
-    //   10: aload_0
-    //   11: monitorexit
-    //   12: aload_1
-    //   13: areturn
-    //   14: astore_1
-    //   15: aconst_null
-    //   16: astore_1
-    //   17: goto -7 -> 10
-    //   20: astore_1
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: aload_1
-    //   24: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	25	0	this	blft
-    //   9	4	1	localblft	blft
-    //   14	1	1	localCloneNotSupportedException	java.lang.CloneNotSupportedException
-    //   16	1	1	localObject1	Object
-    //   20	4	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	14	java/lang/CloneNotSupportedException
-    //   2	10	20	finally
-  }
-  
-  public blft a(blfr paramblfr, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 != paramInt2) {
-      switch (paramInt1)
-      {
-      case 4: 
-      default: 
-        switch (paramInt2)
-        {
-        }
-        break;
-      }
+    int i = 0;
+    if (TCWNumberPicker.a(this.a) == null)
+    {
+      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return paramCharSequence;
     }
+    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
+    String[] arrayOfString = TCWNumberPicker.a(this.a);
+    paramInt2 = arrayOfString.length;
+    paramInt1 = i;
     for (;;)
     {
-      try
-      {
-        paramblfr = a();
-        return paramblfr;
+      if (paramInt1 >= paramInt2) {
+        break label154;
       }
-      finally {}
-      this.a -= 1;
-      break;
-      this.b -= 1;
-      break;
-      this.c -= 1;
-      break;
-      this.d -= 1;
-      break;
-      this.a += 1;
-      continue;
-      this.b += 1;
-      continue;
-      this.c += 1;
-      continue;
-      this.d += 1;
+      paramCharSequence = str;
+      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        break;
+      }
+      paramInt1 += 1;
     }
+    label154:
+    return "";
   }
 }
 

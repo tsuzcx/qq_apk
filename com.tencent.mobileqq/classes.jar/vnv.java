@@ -1,21 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-final class vnv
-  extends SimpleJob<Void>
+public class vnv
+  extends LinearLayoutManager
 {
-  vnv(String paramString1, String paramString2)
+  private VideoFeedsRecyclerView a;
+  
+  public vnv(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
   {
-    super(paramString1);
+    super(paramContext, paramInt, paramBoolean);
+    this.a = paramVideoFeedsRecyclerView;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  private boolean a(View paramView)
   {
-    int i = vns.a();
-    xvv.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    if (paramView == null) {}
+    int i;
+    int j;
+    do
+    {
+      return false;
+      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+      j = this.a.b();
+    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
+    return true;
+  }
+  
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  {
+    return super.getExtraLayoutSpace(paramState) + 200;
+  }
+  
+  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(paramView)) {
+      super.removeAndRecycleView(paramView, paramRecycler);
+    }
+  }
+  
+  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(getChildAt(paramInt))) {
+      super.removeAndRecycleViewAt(paramInt, paramRecycler);
+    }
   }
 }
 

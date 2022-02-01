@@ -1,13 +1,37 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class artn
-  extends asbj
+  implements ArkViewImplement.LoadCallback
 {
-  public artn(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  public artn(ArkBabyqCardInfo paramArkBabyqCardInfo, apzf paramapzf, apzb paramapzb, agnw paramagnw, int paramInt) {}
   
-  protected void onDelClouldFileFaild(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    super.onDelClouldFileFaild(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Apzf.b.setVisibility(0);
+      this.jdField_a_of_type_Apzb.a(this.jdField_a_of_type_Apzf, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Apzb.a(this.jdField_a_of_type_Agnw, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Apzf.b.setVisibility(8);
+    }
   }
 }
 

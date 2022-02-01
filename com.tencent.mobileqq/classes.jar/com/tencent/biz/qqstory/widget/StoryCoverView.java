@@ -11,9 +11,9 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import vwg;
-import vwh;
-import xvv;
+import wlb;
+import wlc;
+import ykq;
 
 public class StoryCoverView
   extends FrameLayout
@@ -58,7 +58,7 @@ public class StoryCoverView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    xvv.a("StoryCoverView", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
+    ykq.a("StoryCoverView", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
   }
   
   public void setCoverUrl(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -71,15 +71,15 @@ public class StoryCoverView
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
   }
   
-  public void setPollLayout(vwh paramvwh, int paramInt, int[] paramArrayOfInt)
+  public void setPollLayout(wlc paramwlc, int paramInt, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(paramvwh, paramInt, paramArrayOfInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(paramwlc, paramInt, paramArrayOfInt);
   }
   
-  public void setRateLayout(vwg paramvwg, int paramInt1, long paramLong, int paramInt2)
+  public void setRateLayout(wlb paramwlb, int paramInt1, long paramLong, int paramInt2)
   {
-    xvv.a("StoryCoverView", "setRateLayout, layout=%s, rateResult=%s, totalScore=%s, totalCount=%s", paramvwg, Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetInteractContainerLayout.a(paramvwg, paramInt1);
+    ykq.a("StoryCoverView", "setRateLayout, layout=%s, rateResult=%s, totalScore=%s, totalCount=%s", paramwlb, Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetInteractContainerLayout.a(paramwlb, paramInt1);
   }
 }
 

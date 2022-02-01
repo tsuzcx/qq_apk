@@ -1,72 +1,86 @@
-import android.util.Log;
-import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO;
-import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender;
-import com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender.SSOException;
-import java.net.URL;
-import java.util.concurrent.Callable;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request.Builder;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class axka
-  implements Callable<byte[]>
+class axka
+  implements axjy
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  final byte[] jdField_a_of_type_ArrayOfByte;
+  private IBinder a;
   
-  public axka(WebServiceSSO.WebServiceSSOSender paramWebServiceSSOSender, int paramInt, String paramString, byte[] paramArrayOfByte)
+  axka(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.a = paramIBinder;
   }
   
-  private byte[] a(URL paramURL, byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    Object localObject = null;
-    paramArrayOfByte = RequestBody.create(null, paramArrayOfByte);
-    paramURL = new Request.Builder().url(paramURL).post(paramArrayOfByte).build();
-    paramArrayOfByte = WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a).newCall(paramURL).execute();
-    paramURL = localObject;
-    if (paramArrayOfByte.isSuccessful())
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      paramArrayOfByte.body().contentLength();
-      paramURL = paramArrayOfByte.body().bytes();
-      paramArrayOfByte.body().close();
-      try
-      {
-        paramArrayOfByte = new JSONObject(new String(paramURL));
-        try
-        {
-          int i = paramArrayOfByte.getInt("ErrorCode");
-          paramArrayOfByte = paramArrayOfByte.getString("ErrorInfo");
-          throw new WebServiceSSO.WebServiceSSOSender.SSOException(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender, i, paramArrayOfByte);
-        }
-        catch (JSONException paramArrayOfByte)
-        {
-          throw new WebServiceSSO.WebServiceSSOSender.SSOException(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender, -3, "SSO通信异常，异常信息解析错误。原始内容：" + new String(paramURL));
-        }
-        return paramURL;
-      }
-      catch (Exception paramArrayOfByte) {}
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
+      localParcel.writeInt(paramInt);
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
     }
   }
   
-  public byte[] a()
+  /* Error */
+  public void a(com.tencent.mobileqq.music.SongInfo paramSongInfo)
   {
-    if (WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a)) {}
-    for (Object localObject = "https://test.tim.qq.com/v4/";; localObject = "https://open.tim.qq.com/v4/")
-    {
-      localObject = new URL((String)localObject + "NowSSOSvcProxy" + "/" + this.jdField_a_of_type_JavaLangString + WebServiceSSO.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.a));
-      Log.d("RequestCallable", "WebServiceSSO--send url=" + ((URL)localObject).toString());
-      return a((URL)localObject, this.jdField_a_of_type_ArrayOfByte);
-    }
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 32	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 48	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	axka:a	Landroid/os/IBinder;
+    //   29: iconst_2
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 38 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 41	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 32	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 41	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	axka
+    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
+    //   3	51	2	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

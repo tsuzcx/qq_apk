@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcai
-  implements QQPermissionCallback
+public class bcai
+  implements View.OnClickListener
 {
-  public bcai(bcan parambcan, AppActivity paramAppActivity) {}
+  public bcai(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bcan);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Bcan != null) {
-      this.jdField_a_of_type_Bcan.a();
-    }
+    BaseSearchActivity.b = 1;
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcai
  * JD-Core Version:    0.7.0.1
  */

@@ -97,6 +97,14 @@ public class QWalletPicHelper
     return null;
   }
   
+  public static Drawable getNetDrawableForAIO(String paramString, Drawable paramDrawable)
+  {
+    String str = PreloadManager.g(paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_use_file_loop", true);
+    return getDrawableInner(str, paramString, paramDrawable, paramDrawable, new int[] { 0 }, localBundle);
+  }
+  
   public static URLDrawable getNetDrawableForQWallet(String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
   {
     return getNetDrawableForQWallet(paramString, paramDrawable1, paramDrawable2, (String)null);

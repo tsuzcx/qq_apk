@@ -1,6 +1,15 @@
-public abstract interface azyd
+import android.content.Intent;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+
+public class azyd
+  implements azyg
 {
-  public abstract void a(long paramLong);
+  public azyd(ComponentCenter paramComponentCenter, Intent paramIntent) {}
+  
+  public void a(azxs paramazxs)
+  {
+    paramazxs.a(this.jdField_a_of_type_AndroidContentIntent);
+  }
 }
 
 

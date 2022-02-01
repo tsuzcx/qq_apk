@@ -16,21 +16,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.RelativeLayout.LayoutParams;
-import bbsx;
-import bljt;
-import bljy;
-import blks;
-import blun;
-import blux;
-import bluy;
-import blvb;
-import bmap;
-import bmar;
-import bmas;
-import bmbg;
-import bmbx;
-import bmql;
-import bmzq;
+import bczs;
+import bmwt;
+import bmxa;
+import bmxz;
+import bnjq;
+import bnka;
+import bnkb;
+import bnke;
+import bnpz;
+import bnqb;
+import bnqc;
+import bnqq;
+import bnrh;
+import bogd;
+import bopi;
 import com.tencent.mobileqq.activity.PreloadWebService;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -46,15 +46,15 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class AEPlayShowPart
-  extends bmar
-  implements bbsx
+  extends bnqb
+  implements bczs
 {
   public static final int ANIMATION_DURATION = 200;
   private static final String TAG = "AEPlayShowPart";
-  private bmap mCaptureModeViewModel;
-  private bluy mMidMaterialManager;
+  private bnpz mCaptureModeViewModel;
+  private bnkb mMidMaterialManager;
   private AEPlayShowMaterialManager mPsMaterialManager;
-  private bljy mUnit;
+  private bmxa mUnit;
   private View progressView;
   private AEPlayShowTabView tabView;
   private View tvRetryBtn;
@@ -64,12 +64,12 @@ public class AEPlayShowPart
   private PlayViewPagerAdapter viewPagerAdapter;
   private ViewStub vsNoData;
   
-  public AEPlayShowPart(Activity paramActivity, ViewStub paramViewStub, bmas parambmas)
+  public AEPlayShowPart(Activity paramActivity, ViewStub paramViewStub, bnqc parambnqc)
   {
-    super(paramActivity, paramViewStub, parambmas);
-    this.mUnit = ((bljy)parambmas.a(65537, new Object[0]));
-    this.mPsMaterialManager = ((AEPlayShowMaterialManager)bmql.a().c(19));
-    this.mMidMaterialManager = ((bluy)bmql.a().c(18));
+    super(paramActivity, paramViewStub, parambnqc);
+    this.mUnit = ((bmxa)parambnqc.a(65537, new Object[0]));
+    this.mPsMaterialManager = ((AEPlayShowMaterialManager)bogd.a().c(19));
+    this.mMidMaterialManager = ((bnkb)bogd.a().c(18));
     ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEPlayShowPart.1(this));
     this.mPsMaterialManager.addObserver(this, 1);
     this.mMidMaterialManager.a(this, 116);
@@ -92,8 +92,8 @@ public class AEPlayShowPart
     Object localObject = this.viewPagerAdapter.getmCategoryList();
     if (localObject != null)
     {
-      blux localblux;
-      blvb localblvb;
+      bnka localbnka;
+      bnke localbnke;
       do
       {
         localObject = ((List)localObject).iterator();
@@ -105,13 +105,13 @@ public class AEPlayShowPart
             if (!((Iterator)localObject).hasNext()) {
               break;
             }
-            localblux = (blux)((Iterator)localObject).next();
-          } while ((localblux == null) || (localblux.jdField_a_of_type_JavaUtilList == null));
-          localIterator = localblux.jdField_a_of_type_JavaUtilList.iterator();
+            localbnka = (bnka)((Iterator)localObject).next();
+          } while ((localbnka == null) || (localbnka.jdField_a_of_type_JavaUtilList == null));
+          localIterator = localbnka.jdField_a_of_type_JavaUtilList.iterator();
         }
-        localblvb = (blvb)localIterator.next();
-      } while ((localblvb == null) || (paramString == null) || (!paramString.equals(localblvb.jdField_a_of_type_JavaLangString)));
-      return localblux.jdField_a_of_type_JavaLangString;
+        localbnke = (bnke)localIterator.next();
+      } while ((localbnke == null) || (paramString == null) || (!paramString.equals(localbnke.jdField_a_of_type_JavaLangString)));
+      return localbnka.jdField_a_of_type_JavaLangString;
     }
     return "";
   }
@@ -121,12 +121,12 @@ public class AEPlayShowPart
     ArrayList localArrayList = this.tabView.getDataList();
     int i = this.tabView.getCurIndex();
     if ((localArrayList != null) && (i < localArrayList.size())) {
-      return ((bmzq)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
+      return ((bopi)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
     }
     return "";
   }
   
-  private blux getCurrentTabMaterial(String paramString)
+  private bnka getCurrentTabMaterial(String paramString)
   {
     Object localObject = this.viewPagerAdapter.getmCategoryList();
     if (localObject != null)
@@ -134,9 +134,9 @@ public class AEPlayShowPart
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        blux localblux = (blux)((Iterator)localObject).next();
-        if ((localblux != null) && (paramString != null) && (paramString.equals(localblux.b))) {
-          return localblux;
+        bnka localbnka = (bnka)((Iterator)localObject).next();
+        if ((localbnka != null) && (paramString != null) && (paramString.equals(localbnka.b))) {
+          return localbnka;
         }
       }
     }
@@ -152,7 +152,7 @@ public class AEPlayShowPart
   }
   
   @NonNull
-  private List<blux> getPlayShowCategories()
+  private List<bnka> getPlayShowCategories()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("AEPlayShowPart", 4, "getPlayShowCategories");
@@ -168,7 +168,7 @@ public class AEPlayShowPart
     return "";
   }
   
-  private ArrayList<bmzq> getTabDataList(List<blux> paramList)
+  private ArrayList<bopi> getTabDataList(List<bnka> paramList)
   {
     if (paramList == null) {
       paramList = null;
@@ -182,10 +182,10 @@ public class AEPlayShowPart
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          blux localblux = (blux)paramList.next();
-          bmzq localbmzq = new bmzq();
-          localbmzq.jdField_a_of_type_JavaLangString = localblux.b;
-          localArrayList.add(localbmzq);
+          bnka localbnka = (bnka)paramList.next();
+          bopi localbopi = new bopi();
+          localbopi.jdField_a_of_type_JavaLangString = localbnka.b;
+          localArrayList.add(localbopi);
         }
         paramList = localArrayList;
       }
@@ -200,8 +200,8 @@ public class AEPlayShowPart
       Object localObject1 = this.viewPagerAdapter.getmCategoryList();
       if (localObject1 != null)
       {
-        blux localblux;
-        blvb localblvb;
+        bnka localbnka;
+        bnke localbnke;
         do
         {
           localObject1 = ((List)localObject1).iterator();
@@ -215,28 +215,28 @@ public class AEPlayShowPart
                 if (!((Iterator)localObject1).hasNext()) {
                   break;
                 }
-                localblux = (blux)((Iterator)localObject1).next();
-              } while (localblux == null);
-              localObject2 = localblux.jdField_a_of_type_JavaUtilList;
+                localbnka = (bnka)((Iterator)localObject1).next();
+              } while (localbnka == null);
+              localObject2 = localbnka.jdField_a_of_type_JavaUtilList;
             } while (localObject2 == null);
             localObject2 = ((List)localObject2).iterator();
           }
-          localblvb = (blvb)((Iterator)localObject2).next();
-        } while ((localblvb == null) || (paramString == null) || (!paramString.equals(localblvb.jdField_a_of_type_JavaLangString)));
-        return localblux.b;
+          localbnke = (bnke)((Iterator)localObject2).next();
+        } while ((localbnke == null) || (paramString == null) || (!paramString.equals(localbnke.jdField_a_of_type_JavaLangString)));
+        return localbnka.b;
       }
     }
     return "";
   }
   
-  private void initNoDataView(List<blux> paramList, List<bmzq> paramList1)
+  private void initNoDataView(List<bnka> paramList, List<bopi> paramList1)
   {
     if ((CollectionUtils.isEmpty(paramList)) || (CollectionUtils.isEmpty(paramList1)))
     {
       if (this.vgNoData == null)
       {
         this.vgNoData = ((ViewGroup)this.vsNoData.inflate());
-        this.tvRetryBtn = this.vgNoData.findViewById(2131379435);
+        this.tvRetryBtn = this.vgNoData.findViewById(2131379740);
         this.tvRetryBtn.setOnClickListener(new AEPlayShowPart.9(this));
       }
       this.vgNoData.setVisibility(0);
@@ -249,9 +249,9 @@ public class AEPlayShowPart
   
   private void initViewModel()
   {
-    this.mCaptureModeViewModel = ((bmap)blks.a(this.mUnit).get(bmap.class));
+    this.mCaptureModeViewModel = ((bnpz)bmxz.a(this.mUnit).get(bnpz.class));
     this.mCaptureModeViewModel.a.observe(this.mUnit, new AEPlayShowPart.7(this));
-    blun.b().observe(this.mUnit, new AEPlayShowPart.8(this));
+    bnjq.b().observe(this.mUnit, new AEPlayShowPart.8(this));
   }
   
   private void preLoadWebView(@Nullable String paramString)
@@ -297,13 +297,13 @@ public class AEPlayShowPart
       Object localObject3 = getPositionFlag("KEY_CURRENT_TYPE");
       localObject2 = getPositionFlag("KEY_CURRENT_TAB");
       String str2 = getTabIdByMaterialId((String)localObject1);
-      blux localblux = getCurrentTabMaterial(str2);
+      bnka localbnka = getCurrentTabMaterial(str2);
       localObject3 = new StringBuilder().append("chooseId: ").append((String)localObject1).append(" typeId: ").append((String)localObject3).append(" posTabName: ").append(str2).append(" isMaterial null: ");
-      if (localblux == null) {}
+      if (localbnka == null) {}
       for (boolean bool = true;; bool = false)
       {
-        bmbx.a("AEPlayShowPart", bool);
-        if ((localblux == null) || (!AECaptureMode.PLAY.name.equals(localObject2))) {
+        bnrh.a("AEPlayShowPart", bool);
+        if ((localbnka == null) || (!AECaptureMode.PLAY.name.equals(localObject2))) {
           break;
         }
         send(655364, new Object[] { str2, localObject1 });
@@ -339,8 +339,8 @@ public class AEPlayShowPart
         if (i >= paramString1.size()) {
           break label88;
         }
-        blvb localblvb = (blvb)paramString1.get(i);
-        if ((localblvb != null) && (paramString2 != null) && (paramString2.equals(localblvb.jdField_a_of_type_JavaLangString)))
+        bnke localbnke = (bnke)paramString1.get(i);
+        if ((localbnke != null) && (paramString2 != null) && (paramString2.equals(localbnke.jdField_a_of_type_JavaLangString)))
         {
           paramString1 = this.viewPagerAdapter.getCurrentPageView();
           if (paramString1 == null) {
@@ -371,7 +371,7 @@ public class AEPlayShowPart
   {
     if (this.progressView == null)
     {
-      this.progressView = LayoutInflater.from(this.mActivity).inflate(2131559574, this.vgContainer, false);
+      this.progressView = LayoutInflater.from(this.mActivity).inflate(2131559607, this.vgContainer, false);
       this.vgContainer.addView(this.progressView);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.progressView.getLayoutParams();
       localLayoutParams.addRule(13);
@@ -388,9 +388,9 @@ public class AEPlayShowPart
   public void initAfterInflation(View paramView)
   {
     this.vgContainer = ((ViewGroup)paramView);
-    this.tabView = ((AEPlayShowTabView)this.vgContainer.findViewById(2131372746));
-    this.viewPager = ((ViewPager)this.vgContainer.findViewById(2131380965));
-    this.vsNoData = ((ViewStub)this.vgContainer.findViewById(2131380970));
+    this.tabView = ((AEPlayShowTabView)this.vgContainer.findViewById(2131372939));
+    this.viewPager = ((ViewPager)this.vgContainer.findViewById(2131381317));
+    this.vsNoData = ((ViewStub)this.vgContainer.findViewById(2131381322));
     this.tabView.setTabCheckListener(new AEPlayShowPart.2(this));
     this.viewPagerAdapter = new PlayViewPagerAdapter(this.mActivity, this.mPartManager, getPlayShowCategories());
     this.viewPager.setAdapter(this.viewPagerAdapter);
@@ -404,7 +404,7 @@ public class AEPlayShowPart
   {
     if (paramInt == 1)
     {
-      bmbx.b("AEPlayShowPart", "notify, eventId=AEPlayShowMaterialManager.EVENT_MATERIAL_LIST_UPDATED");
+      bnrh.b("AEPlayShowPart", "notify, eventId=AEPlayShowMaterialManager.EVENT_MATERIAL_LIST_UPDATED");
       if (hasInflated()) {
         ThreadManager.getUIHandler().post(new AEPlayShowPart.5(this));
       }
@@ -412,7 +412,7 @@ public class AEPlayShowPart
     while (paramInt != 116) {
       return;
     }
-    bmbx.b("AEPlayShowPart", "notify, eventId=AEMaterialManager.TEMPLATE_INFO_LIST_UPDATE");
+    bnrh.b("AEPlayShowPart", "notify, eventId=AEMaterialManager.TEMPLATE_INFO_LIST_UPDATE");
     this.mPsMaterialManager.refresh();
   }
   
@@ -437,14 +437,14 @@ public class AEPlayShowPart
     Object localObject1;
     Object localObject2;
     if (paramInt == 655361) {
-      if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof blvb)))
+      if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bnke)))
       {
-        paramVarArgs = (blvb)paramVarArgs[0];
+        paramVarArgs = (bnke)paramVarArgs[0];
         if (paramVarArgs.equals(AEPlayShowGridAdapter.selectedMaterial))
         {
-          localObject1 = bljt.b + File.separator + paramVarArgs.jdField_a_of_type_JavaLangString;
+          localObject1 = bmwt.b + File.separator + paramVarArgs.jdField_a_of_type_JavaLangString;
           localObject2 = findTabNameById(paramVarArgs.jdField_a_of_type_JavaLangString);
-          bmbg.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
+          bnqq.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
           AETemplateInfoFragment.jumpToMe(this.mActivity, (String)localObject2, (String)localObject1, paramVarArgs.jdField_a_of_type_JavaLangString, paramVarArgs.f, paramVarArgs.i);
         }
       }
@@ -454,12 +454,12 @@ public class AEPlayShowPart
       return;
       if (paramInt == 655362)
       {
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof blvb)))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bnke)))
         {
-          paramVarArgs = (blvb)paramVarArgs[0];
+          paramVarArgs = (bnke)paramVarArgs[0];
           if (paramVarArgs.equals(AEPlayShowGridAdapter.selectedMaterial))
           {
-            bmbg.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
+            bnqq.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
             localObject1 = findTabNameById(paramVarArgs.jdField_a_of_type_JavaLangString);
             localObject2 = new Intent(this.mActivity, QQBrowserActivity.class);
             ((Intent)localObject2).addFlags(536870912);
@@ -475,12 +475,12 @@ public class AEPlayShowPart
       }
       else if (paramInt == 655363)
       {
-        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof blvb)))
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof bnke)))
         {
-          paramVarArgs = (blvb)paramVarArgs[0];
+          paramVarArgs = (bnke)paramVarArgs[0];
           if (paramVarArgs.equals(AEPlayShowGridAdapter.selectedMaterial))
           {
-            bmbg.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
+            bnqq.a().d(paramVarArgs.jdField_a_of_type_JavaLangString);
             localObject1 = new LaunchParam();
             ((LaunchParam)localObject1).miniAppId = paramVarArgs.o;
             ((LaunchParam)localObject1).scene = 2083;
@@ -501,8 +501,8 @@ public class AEPlayShowPart
             paramInt = i;
             while (paramInt < ((List)localObject2).size())
             {
-              bmzq localbmzq = (bmzq)((List)localObject2).get(paramInt);
-              if ((localbmzq != null) && (((String)localObject1).equals(localbmzq.jdField_a_of_type_JavaLangString)))
+              bopi localbopi = (bopi)((List)localObject2).get(paramInt);
+              if ((localbopi != null) && (((String)localObject1).equals(localbopi.jdField_a_of_type_JavaLangString)))
               {
                 switchToTab(paramInt);
                 this.viewPager.post(new AEPlayShowPart.4(this, (String)localObject1, paramVarArgs));

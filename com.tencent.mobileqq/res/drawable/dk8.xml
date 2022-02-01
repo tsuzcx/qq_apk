@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/gg" />
-    <padding android:left="5.5dip" android:top="2.0dip" android:right="5.5dip" android:bottom="2.0dip" />
-</shape>
+    <item android:duration="50" android:drawable="@drawable/h4g" />
+    <item android:duration="50" android:drawable="@drawable/h4h" />
+    <item android:duration="50" android:drawable="@drawable/h4i" />
+    <item android:duration="50" android:drawable="@drawable/h4j" />
+    <item android:duration="50" android:drawable="@drawable/h4k" />
+    <item android:duration="50" android:drawable="@drawable/h4l" />
+    <item android:duration="50" android:drawable="@drawable/h4m" />
+    <item android:duration="50" android:drawable="@drawable/h4n" />
+    <item android:duration="50" android:drawable="@drawable/h4o" />
+    <item android:duration="50" android:drawable="@drawable/h4p" />
+    <item android:duration="50" android:drawable="@drawable/h4q" />
+    <item android:duration="50" android:drawable="@drawable/h4r" />
+    <item android:duration="50" android:drawable="@drawable/h4t" />
+    <item android:duration="50" android:drawable="@drawable/h4y" />
+    <item android:duration="50" android:drawable="@drawable/h4z" />
+</animation-list>

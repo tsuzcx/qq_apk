@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.Advertisement.manager;
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nyd;
+import ofd;
 
 public class AdvertisementVideoPreloadManager$4
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$4(nyd paramnyd, ArrayList paramArrayList) {}
+  public AdvertisementVideoPreloadManager$4(ofd paramofd, ArrayList paramArrayList) {}
   
   public void run()
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      nyd.b(((PAAdPreloadTask)localIterator.next()).mVideoVid);
+      ofd.b(((PAAdPreloadTask)localIterator.next()).mVideoVid);
     }
   }
 }

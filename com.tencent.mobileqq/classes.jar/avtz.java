@@ -1,140 +1,76 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class avtz
-  implements avtl
+class avtz
+  implements Handler.Callback
 {
-  public avtz() {}
+  avtz(avty paramavty) {}
   
-  public avtz(QQAppInterface paramQQAppInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    this();
-  }
-  
-  public static avvz a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    switch (paramMsgBackupResEntity.msgType)
+    switch (paramMessage.what)
     {
-    default: 
-      return null;
-    case 1: 
-      return new avwc(paramMsgBackupResEntity);
-    case 2: 
-      return new avwh(paramMsgBackupResEntity);
     }
-    return new avwe(paramMsgBackupResEntity);
-  }
-  
-  public static avwf a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      return new avwb((MessageForPic)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      return new avwg((MessageForShortVideo)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForPtt)) {
-      return new avwd((MessageForPtt)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForMarketFace)) {
-      return new avvx(paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return new avwa((MessageForMixedMsg)paramMessageRecord);
-    }
-    return null;
-  }
-  
-  public avty a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    paramMessageRecord = a(paramMsgBackupResEntity);
-    if (paramMessageRecord != null) {
-      return paramMessageRecord.a();
-    }
-    return new avty();
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return null;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    paramMessageRecord = a(paramMessageRecord);
-    if (paramMessageRecord != null)
+    do
     {
-      paramMessageRecord.a();
-      Object localObject = paramMessageRecord.a();
-      if (QLog.isColorLevel()) {
-        paramMessageRecord.a("onExport");
+      return false;
+      Object localObject = avty.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((avua)((Iterator)localObject).next()).a(paramMessage.arg1);
       }
-      if (localObject != null)
+      localObject = avty.a(this.a).iterator();
+      if (((Iterator)localObject).hasNext())
       {
-        paramList.addAll((Collection)localObject);
-        if (QLog.isColorLevel())
+        avua localavua = (avua)((Iterator)localObject).next();
+        if (paramMessage.arg1 == 0) {}
+        for (boolean bool = true;; bool = false)
         {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            localObject = (MsgBackupResEntity)paramList.next();
-            if (QLog.isColorLevel()) {
-              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
-            }
-          }
+          localavua.a(bool, (Throwable)paramMessage.obj);
+          break;
         }
       }
-    }
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramMessageRecord = a(paramMessageRecord);
-      if (paramMessageRecord != null) {
-        return paramMessageRecord.a();
+      localObject = new Intent(avts.a(avty.a(this.a).c));
+      if (paramMessage.arg1 == 0)
+      {
+        if (avts.a(avty.a(this.a).c)) {}
+        for (int i = 9;; i = 8)
+        {
+          ((Intent)localObject).putExtra("key_state", i);
+          avty.a(this.a).sendBroadcast((Intent)localObject);
+          if (avuf.a.get(avty.a(this.a)) == null) {
+            break;
+          }
+          avue.b(String.valueOf(((avuf)avuf.a.get(avty.a(this.a))).f));
+          return false;
+        }
       }
-    }
+      if (avts.a(avty.a(this.a).c)) {
+        avue.a("2691708");
+      }
+      for (;;)
+      {
+        avtn.a((Throwable)paramMessage.obj);
+        ((Intent)localObject).putExtra("key_state", 7);
+        avty.a(this.a).sendBroadcast((Intent)localObject);
+        return false;
+        if (avts.b(avty.a(this.a).c)) {
+          avue.a("2597726");
+        } else if (avuf.a.get(avty.a(this.a)) != null) {
+          avue.b(String.valueOf(((avuf)avuf.a.get(avty.a(this.a))).e));
+        }
+      }
+      paramMessage = new Intent(avts.a(avty.a(this.a).c));
+      paramMessage.putExtra("key_state", 6);
+      avty.a(this.a).sendBroadcast(paramMessage);
+    } while (avuf.a.get(avty.a(this.a)) == null);
+    avue.b(String.valueOf(((avuf)avuf.a.get(avty.a(this.a))).d));
     return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    avwf localavwf = a(paramMessageRecord);
-    if (localavwf != null)
-    {
-      if (QLog.isColorLevel()) {
-        localavwf.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
-      }
-      localavwf.b();
-      if (paramList != null)
-      {
-        paramMessageRecord = paramList.iterator();
-        while (paramMessageRecord.hasNext())
-        {
-          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
-          if (paramList != null) {
-            paramList.a();
-          }
-        }
-      }
-    }
   }
 }
 

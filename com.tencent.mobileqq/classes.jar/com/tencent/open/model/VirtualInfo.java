@@ -3,12 +3,12 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import biep;
+import bjpr;
 
 public class VirtualInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VirtualInfo> CREATOR = new biep();
+  public static final Parcelable.Creator<VirtualInfo> CREATOR = new bjpr();
   public long a;
   public String a;
   public String b;

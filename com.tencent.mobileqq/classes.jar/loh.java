@@ -1,262 +1,658 @@
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.av.video.effect.beauty.Beauty20Render;
-import com.tencent.av.video.effect.beauty.BeautyRender;
-import com.tencent.av.video.effect.core.BeautyNative;
-import com.tencent.av.video.effect.core.EffectFrame;
-import com.tencent.av.video.effect.core.EffectTexture;
-import com.tencent.av.video.effect.utils.ColorFormat;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.mediacodec.AndroidCodec.HWCodecAbility;
 import com.tencent.qphone.base.util.QLog;
 
 public class loh
 {
-  int jdField_a_of_type_Int = 0;
-  Beauty20Render jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render = null;
-  BeautyRender jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = null;
-  int b = 0;
+  private static String jdField_a_of_type_JavaLangString = "hwcodec_new2";
+  private static String b = "sharp/hwcodec_new/";
+  private static String c = "sharp/hwcodec_new2/";
+  private static String d = "avc_decoder/";
+  private static String e = "avc_encoder/";
+  private static String f = "hevc_decoder/";
+  private static String g = "hevc_encoder/";
+  private static String h = "test/";
+  private static String i = "white_list/";
+  private static String j = "black_list/";
+  private static String k = "min_sdk";
+  private static String l = "min_version";
+  private static String m = "max_w";
+  private static String n = "max_h";
+  private static String o = "model";
+  private static String p = "product";
+  private static String q = "fingerprint";
+  private static String r = "sdk";
+  private static String s = "version";
+  private static String t = "codec";
+  private static String u = "disable_sdk";
+  private static String v = "async/";
+  private static String w = "min_sdk";
+  private static String x = "codec";
+  private static String y = "async_min_sdk";
+  private String A;
+  private String B;
+  private String C;
+  private String D;
+  private String E;
+  private String F;
+  private String G;
+  private String H;
+  private String I;
+  private String J;
+  private String K;
+  private String L;
+  private String M;
+  private String N;
+  private String O;
+  private String P;
+  private String Q;
+  private String R;
+  private String S;
+  private String T;
+  private String U;
+  private String V;
+  private String W;
+  private String X;
+  private String Y;
+  private String Z;
+  private int jdField_a_of_type_Int = 1;
+  private lkq jdField_a_of_type_Lkq;
+  private String aa;
+  private String ab;
+  private String ac;
+  private String ad;
+  private String ae;
+  private String af;
+  private String ag;
+  private String ah;
+  private String ai;
+  private String aj;
+  private String ak;
+  private String al;
+  private String am;
+  private String an;
+  private String ao;
+  private String ap;
+  private String aq = b;
+  private String z;
   
-  public loh()
+  public loh(lkq paramlkq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVSDKBeautyRender", 2, "AVSDKBeautyRender");
+    if ((paramlkq != null) && (!paramlkq.a()) && (paramlkq.a().contains(jdField_a_of_type_JavaLangString))) {
+      this.jdField_a_of_type_Int = 2;
+    }
+    this.jdField_a_of_type_Lkq = paramlkq;
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (paramlkq = c;; paramlkq = b)
+    {
+      this.aq = paramlkq;
+      QLog.i("CodecConfigParser", 1, "ver = " + this.jdField_a_of_type_Int + ", root = " + this.aq);
+      this.z = (this.aq + h + k);
+      this.A = (this.aq + h + u);
+      this.B = (this.aq + h + t);
+      this.C = (this.aq + h + y);
+      this.D = (this.aq + h + l);
+      this.E = (this.aq + d + i + k);
+      this.F = (this.aq + d + i + l);
+      this.G = (this.aq + d + j + o);
+      this.H = (this.aq + d + j + p);
+      this.I = (this.aq + d + j + q);
+      this.J = (this.aq + d + j + r);
+      this.K = (this.aq + d + j + s);
+      this.L = (this.aq + d + i + m);
+      this.M = (this.aq + d + i + n);
+      this.N = (this.aq + e + i + k);
+      this.O = (this.aq + e + i + l);
+      this.P = (this.aq + e + j + o);
+      this.Q = (this.aq + e + j + p);
+      this.R = (this.aq + e + j + q);
+      this.S = (this.aq + e + j + r);
+      this.T = (this.aq + e + j + s);
+      this.U = (this.aq + e + i + m);
+      this.V = (this.aq + e + i + n);
+      this.W = (this.aq + f + i + k);
+      this.X = (this.aq + f + i + l);
+      this.Y = (this.aq + f + j + o);
+      this.Z = (this.aq + f + j + p);
+      this.aa = (this.aq + f + j + q);
+      this.ab = (this.aq + f + j + r);
+      this.ac = (this.aq + f + j + s);
+      this.ad = (this.aq + f + i + m);
+      this.ae = (this.aq + f + i + n);
+      this.af = (this.aq + g + i + k);
+      this.ag = (this.aq + g + i + l);
+      this.ah = (this.aq + g + j + o);
+      this.ai = (this.aq + g + j + p);
+      this.aj = (this.aq + g + j + q);
+      this.ak = (this.aq + g + j + r);
+      this.al = (this.aq + g + j + s);
+      this.am = (this.aq + g + i + m);
+      this.an = (this.aq + g + i + n);
+      this.ao = (this.aq + v + w);
+      this.ap = (this.aq + v + x);
+      return;
     }
   }
   
-  public Beauty20Render a(int paramInt)
+  public static int a(lbo paramlbo)
   {
-    if (paramInt == 0)
-    {
-      this.b = 0;
-      return null;
+    if (Build.VERSION.SDK_INT < 16) {}
+    while ((paramlbo == null) || (Build.VERSION.SDK_INT < paramlbo.c) || (!a(paramlbo.jdField_a_of_type_JavaLangString, null)) || (mrs.a(paramlbo.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT)))) {
+      return 0;
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render = new Beauty20Render(BaseApplicationImpl.getContext());
+    if ((paramlbo.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramlbo.d)) {
+      return 2;
     }
-    if (paramInt == this.b) {
-      return this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render;
-    }
-    this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render.setBeautyLevel(paramInt * 1.0F / 100.0F);
-    this.b = paramInt;
-    return this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render;
+    return 1;
   }
   
-  public BeautyRender a(int paramInt)
+  static boolean a(String paramString, String[] paramArrayOfString)
   {
-    if (paramInt == 0)
+    int i2 = mvk.a();
+    if (mvk.a(paramString) > i2) {
+      return false;
+    }
+    if ((paramArrayOfString != null) && (paramArrayOfString != null))
     {
-      this.jdField_a_of_type_Int = 0;
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = new BeautyRender(BaseApplicationImpl.getContext(), lbe.h());
-    }
-    if (paramInt == this.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender;
-    }
-    this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender.setBeautyLevel(paramInt * 1.0F / 100.0F * loo.a());
-    this.jdField_a_of_type_Int = paramInt;
-    return this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender;
-  }
-  
-  public lpf a(int paramInt1, int paramInt2, lpf paramlpf, FilterDesc paramFilterDesc, int paramInt3)
-  {
-    if (!loo.a()) {}
-    BeautyRender localBeautyRender;
-    do
-    {
-      do
+      int i3 = paramArrayOfString.length;
+      int i1 = 0;
+      for (;;)
       {
-        return paramlpf;
-      } while ((paramFilterDesc != null) && (paramFilterDesc.id == 3));
-      localBeautyRender = a(paramInt3);
-    } while (localBeautyRender == null);
-    GraphicRenderMgr.getInstance().setBeautyFlag(2);
-    if ((paramFilterDesc != null) && ((paramFilterDesc.id == 1) || (paramFilterDesc.id == 2))) {
-      localBeautyRender.setNeedSkinColor(false);
+        if (i1 >= i3) {
+          break label51;
+        }
+        if (mvk.a(paramArrayOfString[i1]) == i2) {
+          break;
+        }
+        i1 += 1;
+      }
     }
+    label51:
+    return true;
+  }
+  
+  public AndroidCodec.HWCodecAbility a()
+  {
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkq == null) {}
     for (;;)
     {
-      paramlpf = localBeautyRender.process(paramlpf.b, paramlpf.jdField_a_of_type_Int, paramInt1, paramInt2);
-      return lpf.a(paramlpf.getFbo(), paramlpf.getTextureId());
-      localBeautyRender.setNeedSkinColor(true);
-    }
-  }
-  
-  public void a()
-  {
-    b();
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeauty20Render = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AVSDKBeautyRender", 2, "destroy");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {}
-    try
-    {
-      GraphicRenderMgr.getInstance().setBeautyFlag(0);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      if (!AudioHelper.f()) {
-        return;
-      }
-      QLog.w("AVSDKBeautyRender", 1, "setBeautyLevel, UnsatisfiedLinkError");
-      return;
-      GraphicRenderMgr.getInstance().setBeautyFlag(1);
-    }
-    if (loo.a())
-    {
-      GraphicRenderMgr.getInstance().setBeautyFlag(2);
-      return;
-    }
-  }
-  
-  public void a(loy paramloy, msh parammsh, lok paramlok, mrk parammrk, lpp paramlpp, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!paramlok.b()) {
-      return;
-    }
-    if (parammsh != null) {
-      parammsh.a("applyBeauty20");
-    }
-    byte[] arrayOfByte = paramlok.a;
-    paramlok.a = a(paramInt1, paramInt2, paramlok.a, paramlpp.a, paramInt3);
-    if (paramlok.a != arrayOfByte) {
-      paramloy.a(8);
-    }
-    if (parammrk != null) {
-      if (paramlok.a == arrayOfByte) {
-        break label116;
-      }
-    }
-    label116:
-    for (boolean bool = true;; bool = false)
-    {
-      parammrk.a(bool);
-      if (parammsh != null) {
-        parammsh.b("applyBeauty20");
-      }
-      if (paramloy.jdField_a_of_type_Lpa == null) {
-        break;
-      }
-      paramloy.jdField_a_of_type_Lpa.a(paramloy, 10, paramlok, null);
-      return;
-    }
-  }
-  
-  public void a(loy paramloy, msh parammsh, mrk parammrk, lpp paramlpp, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramloy.c();
-    if (parammsh != null) {
-      parammsh.a("applyBeauty30");
-    }
-    paramloy.b = a(paramInt1, paramInt2, paramloy.jdField_a_of_type_Lpf, paramlpp.a, paramInt3);
-    if (paramloy.b.b != paramloy.jdField_a_of_type_Lpf.b) {
-      paramloy.a(8);
-    }
-    if (parammrk != null) {
-      if (paramloy.b.b == paramloy.jdField_a_of_type_Lpf.b) {
-        break label115;
+      return null;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        AndroidCodec.HWCodecAbility localHWCodecAbility = new AndroidCodec.HWCodecAbility(4, true);
+        try
+        {
+          Object localObject = a(this.jdField_a_of_type_Lkq, this.W);
+          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkq, this.X, this.ac)))
+          {
+            localObject = a(this.jdField_a_of_type_Lkq, this.ab);
+            int i1;
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label122;
+                }
+                if (Build.VERSION.SDK_INT == localObject[i1]) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label122:
+            localObject = a(this.jdField_a_of_type_Lkq, this.Y);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label170;
+                }
+                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label170:
+            localObject = a(this.jdField_a_of_type_Lkq, this.Z);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label218;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label218:
+            localObject = a(this.jdField_a_of_type_Lkq, this.aa);
+            if (localObject != null)
+            {
+              i1 = i2;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label266;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label266:
+            localObject = a(this.jdField_a_of_type_Lkq, this.ad);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localHWCodecAbility.maxW = localObject[0];
+            }
+            localObject = a(this.jdField_a_of_type_Lkq, this.ae);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localHWCodecAbility.maxH = localObject[0];
+            }
+            return localHWCodecAbility;
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
     }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      parammrk.d(bool);
-      if (parammsh != null) {
-        parammsh.b("applyBeauty30");
-      }
-      paramloy.a(8, paramloy.jdField_a_of_type_Lpf, paramloy.b);
-      return;
-    }
+    return null;
   }
   
   public boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (loo.a())
+    if (this.jdField_a_of_type_Lkq == null) {}
+    for (;;)
     {
-      bool1 = bool2;
-      if (paramInt > 0) {
-        bool1 = true;
+      return false;
+      try
+      {
+        int[] arrayOfInt = a(this.jdField_a_of_type_Lkq, this.ao);
+        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
+        {
+          arrayOfInt = a(this.jdField_a_of_type_Lkq, this.ap);
+          if (arrayOfInt != null)
+          {
+            boolean bool = mrs.a(arrayOfInt, paramInt);
+            if (bool) {
+              return true;
+            }
+          }
+        }
       }
+      catch (Exception localException) {}
     }
-    return bool1;
+    return false;
   }
   
-  public byte[] a(int paramInt1, int paramInt2, byte[] paramArrayOfByte, FilterDesc paramFilterDesc, int paramInt3)
+  boolean a(lkq paramlkq, String paramString1, String paramString2)
   {
-    if (loo.a()) {}
-    while ((paramFilterDesc != null) && (paramFilterDesc.id == 3)) {
-      return paramArrayOfByte;
-    }
-    if (paramInt2 * paramInt1 * 3 / 2 != paramArrayOfByte.length)
+    if (this.jdField_a_of_type_Int != 2) {}
+    for (;;)
     {
-      lba.h("AVSDKBeautyRender", "(mHeight * mWidth * 3 / 2) != yuvData.length");
-      return paramArrayOfByte;
-    }
-    paramFilterDesc = a(paramInt3);
-    EffectFrame localEffectFrame1;
-    if (paramFilterDesc != null)
-    {
-      GraphicRenderMgr.getInstance().setBeautyFlag(1);
-      localEffectFrame1 = new EffectFrame();
-      localEffectFrame1.frameData = paramArrayOfByte;
-      localEffectFrame1.frameWidth = paramInt2;
-      localEffectFrame1.frameHeight = paramInt1;
-      if (liy.c == 17)
-      {
-        paramArrayOfByte = ColorFormat.NV21;
-        localEffectFrame1.frameFormat = paramArrayOfByte;
-        EffectFrame localEffectFrame2 = paramFilterDesc.processData(localEffectFrame1);
-        paramFilterDesc = localEffectFrame2.frameData;
-        paramArrayOfByte = paramFilterDesc;
-        if (localEffectFrame2.frameFormat != ColorFormat.I420) {}
+      return true;
+      int i2 = mvk.a();
+      if (mvk.a(paramlkq.a(paramString1, "")) > i2) {
+        return false;
       }
+      if (paramString2 != null)
+      {
+        paramlkq = paramlkq.a(paramString2);
+        if (paramlkq != null)
+        {
+          int i3 = paramlkq.length;
+          int i1 = 0;
+          while (i1 < i3)
+          {
+            if (mvk.a(paramlkq[i1]) == i2) {
+              return false;
+            }
+            i1 += 1;
+          }
+        }
+      }
+    }
+  }
+  
+  int[] a(lkq paramlkq, String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      return null;
+    }
+    return paramlkq.a(paramString);
+  }
+  
+  String[] a(lkq paramlkq, String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      return null;
+    }
+    return paramlkq.a(paramString);
+  }
+  
+  public AndroidCodec.HWCodecAbility b()
+  {
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkq == null) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < 19)
+    {
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < 19.");
+      return null;
+    }
+    AndroidCodec.HWCodecAbility localHWCodecAbility = new AndroidCodec.HWCodecAbility(8, true);
+    try
+    {
+      localObject = a(this.jdField_a_of_type_Lkq, this.af);
+      if (localObject == null)
+      {
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. minsdk == null.");
+        return null;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. err msg = " + localException.getMessage());
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < localObject[0])
+    {
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT < minsdk[0]. minsdk[0] = " + localObject[0]);
+      return null;
+    }
+    if (!a(this.jdField_a_of_type_Lkq, this.ag, this.al))
+    {
+      QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. checkQQVer failed.");
+      return null;
+    }
+    Object localObject = a(this.jdField_a_of_type_Lkq, this.ak);
+    int i1;
+    if (localObject != null)
+    {
+      i1 = 0;
+      if (i1 < localObject.length)
+      {
+        if (Build.VERSION.SDK_INT != localObject[i1]) {
+          break label453;
+        }
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.VERSION.SDK_INT == disablesdk[i].");
+        return null;
+      }
+    }
+    localObject = a(this.jdField_a_of_type_Lkq, this.ah);
+    if (localObject != null)
+    {
+      i1 = 0;
+      label248:
+      if (i1 < localObject.length)
+      {
+        if (!Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+          break label460;
+        }
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.MODEL.equalsIgnoreCase(models[i]).");
+        return null;
+      }
+    }
+    localObject = a(this.jdField_a_of_type_Lkq, this.ai);
+    if (localObject != null)
+    {
+      i1 = 0;
+      label300:
+      if (i1 < localObject.length)
+      {
+        if (!Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+          break label467;
+        }
+        QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(products[i]).");
+        return null;
+      }
+    }
+    localObject = a(this.jdField_a_of_type_Lkq, this.aj);
+    if (localObject != null) {
+      i1 = i2;
     }
     for (;;)
     {
-      try
+      if (i1 < localObject.length)
       {
-        if (liy.c == 17)
+        if (Build.PRODUCT.equalsIgnoreCase(localObject[i1]))
         {
-          paramArrayOfByte = BeautyNative.convertI420ToNV21(paramFilterDesc, paramInt2, paramInt1);
-          return paramArrayOfByte;
-          paramArrayOfByte = ColorFormat.NV12;
-          break;
+          QLog.e("CodecConfigParser", 1, "getHevcEncoderAbility failed. Build.PRODUCT.equalsIgnoreCase(fingerprints[i].");
+          return null;
         }
-        paramArrayOfByte = BeautyNative.convertI420ToNV12(paramFilterDesc, paramInt2, paramInt1);
       }
-      catch (Throwable paramArrayOfByte)
+      else
       {
-        lba.h("AVSDKBeautyRender", "convertI420ToNV21 or convertI420ToNV12 e = " + paramArrayOfByte.getMessage());
-        paramArrayOfByte = localEffectFrame1.frameData;
+        localObject = a(this.jdField_a_of_type_Lkq, this.am);
+        if ((localObject != null) && (localObject[0] > 0)) {
+          localException.maxW = localObject[0];
+        }
+        localObject = a(this.jdField_a_of_type_Lkq, this.an);
+        if ((localObject != null) && (localObject[0] > 0)) {
+          localException.maxH = localObject[0];
+        }
+        return localException;
+        label453:
+        i1 += 1;
+        break;
+        label460:
+        i1 += 1;
+        break label248;
+        label467:
+        i1 += 1;
+        break label300;
       }
+      i1 += 1;
     }
   }
   
-  public void b()
+  public AndroidCodec.HWCodecAbility c()
   {
-    GraphicRenderMgr.getInstance().setBeautyFlag(0);
-    if (QLog.isColorLevel()) {
-      QLog.i("AVSDKBeautyRender", 2, "clear");
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkq == null) {}
+    for (;;)
+    {
+      return null;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        AndroidCodec.HWCodecAbility localHWCodecAbility = new AndroidCodec.HWCodecAbility(1, true);
+        try
+        {
+          Object localObject = a(this.jdField_a_of_type_Lkq, this.E);
+          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkq, this.F, this.K)))
+          {
+            localObject = a(this.jdField_a_of_type_Lkq, this.J);
+            int i1;
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label122;
+                }
+                if (Build.VERSION.SDK_INT == localObject[i1]) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label122:
+            localObject = a(this.jdField_a_of_type_Lkq, this.G);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label170;
+                }
+                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label170:
+            localObject = a(this.jdField_a_of_type_Lkq, this.H);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label218;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label218:
+            localObject = a(this.jdField_a_of_type_Lkq, this.I);
+            if (localObject != null)
+            {
+              i1 = i2;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label266;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label266:
+            localObject = a(this.jdField_a_of_type_Lkq, this.L);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localHWCodecAbility.maxW = localObject[0];
+            }
+            localObject = a(this.jdField_a_of_type_Lkq, this.M);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localHWCodecAbility.maxH = localObject[0];
+            }
+            return localHWCodecAbility;
+          }
+        }
+        catch (Exception localException) {}
+      }
     }
+    return null;
+  }
+  
+  public AndroidCodec.HWCodecAbility d()
+  {
+    int i2 = 0;
+    if (this.jdField_a_of_type_Lkq == null) {}
+    for (;;)
+    {
+      return null;
+      if (Build.VERSION.SDK_INT >= 19)
+      {
+        AndroidCodec.HWCodecAbility localHWCodecAbility = new AndroidCodec.HWCodecAbility(2, true);
+        try
+        {
+          Object localObject = a(this.jdField_a_of_type_Lkq, this.N);
+          if ((localObject != null) && (Build.VERSION.SDK_INT >= localObject[0]) && (a(this.jdField_a_of_type_Lkq, this.O, this.T)))
+          {
+            localObject = a(this.jdField_a_of_type_Lkq, this.S);
+            int i1;
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label122;
+                }
+                if (Build.VERSION.SDK_INT == localObject[i1]) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label122:
+            localObject = a(this.jdField_a_of_type_Lkq, this.P);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label170;
+                }
+                if (Build.MODEL.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label170:
+            localObject = a(this.jdField_a_of_type_Lkq, this.Q);
+            if (localObject != null)
+            {
+              i1 = 0;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label218;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label218:
+            localObject = a(this.jdField_a_of_type_Lkq, this.R);
+            if (localObject != null)
+            {
+              i1 = i2;
+              for (;;)
+              {
+                if (i1 >= localObject.length) {
+                  break label266;
+                }
+                if (Build.PRODUCT.equalsIgnoreCase(localObject[i1])) {
+                  break;
+                }
+                i1 += 1;
+              }
+            }
+            label266:
+            localObject = a(this.jdField_a_of_type_Lkq, this.U);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localHWCodecAbility.maxW = localObject[0];
+            }
+            localObject = a(this.jdField_a_of_type_Lkq, this.V);
+            if ((localObject != null) && (localObject[0] > 0)) {
+              localHWCodecAbility.maxH = localObject[0];
+            }
+            return localHWCodecAbility;
+          }
+        }
+        catch (Exception localException) {}
+      }
+    }
+    return null;
   }
 }
 

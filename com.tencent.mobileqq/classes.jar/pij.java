@@ -1,12 +1,34 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-final class pij
-  implements FileFilter
+public class pij
 {
-  public boolean accept(File paramFile)
+  public BaseArticleInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  
+  public pij(BaseArticleInfo paramBaseArticleInfo)
   {
-    return paramFile.getName().endsWith(".json");
+    this.a = paramBaseArticleInfo;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    while (!(paramObject instanceof pij)) {
+      return false;
+    }
+    paramObject = (pij)paramObject;
+    return this.a.equals(paramObject.a);
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
   }
 }
 

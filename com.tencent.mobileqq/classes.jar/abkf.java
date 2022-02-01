@@ -1,27 +1,20 @@
-import android.content.Context;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.lang.ref.WeakReference;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import mqq.app.QQPermissionCallback;
 
 public class abkf
-  implements AdQQMINIProgramAdapter
+  implements QQPermissionCallback
 {
-  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
+  public abkf(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      abrl.d("GdtQQMINIProgramAdapter", "show error");
-      return new AdError(4);
-    }
-    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    abrl.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
-    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new abkg(this, paramParams, localGdtAd));
-    return new AdError(0);
+    bhdj.a(this.a);
+    this.a.finish();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    DeviceMsgSettingActivity.a(this.a);
   }
 }
 

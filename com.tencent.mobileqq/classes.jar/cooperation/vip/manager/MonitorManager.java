@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import blbl;
+import bmnw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -108,7 +108,7 @@ public class MonitorManager
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      blbl.a(localArrayList);
+      bmnw.a(localArrayList);
       return;
     }
   }
@@ -130,7 +130,7 @@ public class MonitorManager
     localTraceReport.page_id.set(str);
     paramString1 = new ArrayList();
     paramString1.add(localTraceReport);
-    blbl.b(paramString1);
+    bmnw.b(paramString1);
   }
   
   private void b(int paramInt1, int paramInt2, String arg3, boolean paramBoolean)

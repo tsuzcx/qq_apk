@@ -1,30 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class afkd
-  implements Animation.AnimationListener
+  implements afkl
 {
-  public afkd(TroopChatPie paramTroopChatPie) {}
+  public afkd(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.afRoot.setBackgroundResource(2130843669);
-    this.a.mCustomTitleView.setBackgroundResource(2130843675);
-    this.a.c.setVisibility(8);
-    this.a.d.setVisibility(8);
-    this.a.a.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.c.setVisibility(0);
-    this.a.d.setVisibility(0);
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

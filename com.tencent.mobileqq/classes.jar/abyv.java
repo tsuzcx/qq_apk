@@ -1,8 +1,26 @@
-public abstract interface abyv
+import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+
+public class abyv
+  implements AdAnalysisAdapter
 {
-  public abstract int a(int paramInt);
+  public String getAppVersion()
+  {
+    return achs.a();
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public String getUIN()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while (localObject == null);
+    return ((AppRuntime)localObject).getAccount();
+  }
 }
 
 

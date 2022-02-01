@@ -1,121 +1,53 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.ListView;
 
 public class ahpf
-  implements ahqq
+  implements agin
 {
-  int jdField_a_of_type_Int = -1;
-  public ahqs a;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String b = "";
-  String c = "";
+  private ahpg jdField_a_of_type_Ahpg;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private boolean jdField_a_of_type_Boolean;
   
-  public ahpf(QQAppInterface paramQQAppInterface, ahqs paramahqs, Activity paramActivity)
+  public ahpf(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ahqs = paramahqs;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  public int a()
+  private ListView a()
   {
-    return 35;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558652, null);
-    localView.setOnClickListener(new ahpg(this, localView));
-    TextView localTextView = (TextView)localView.findViewById(2131362510);
-    paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
-    int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
-    int i;
-    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels)
-    {
-      i = paramVarArgs.heightPixels;
-      i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
-      if (this.c.length() > i) {
-        this.c = (this.c.substring(0, i) + "...");
-      }
-      if ((this.jdField_a_of_type_Int < 100) || (this.jdField_a_of_type_Int > 300)) {
-        break label216;
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof aict)) {
+      return ((aict)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a();
     }
-    label216:
-    for (paramVarArgs = amtj.a(2131701317);; paramVarArgs = amtj.a(2131701318))
-    {
-      this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
-      localTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return localView;
-      i = paramVarArgs.widthPixels;
-      break;
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView;
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(int paramInt)
   {
-    if (paramInt != 1000) {}
-    do
+    switch (paramInt)
     {
+    default: 
+    case 4: 
+    case 8: 
+    case 20: 
       do
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-            }
-            if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
-          return;
-          paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
-          if (paramVarArgs != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
         return;
-        this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
-        this.b = paramVarArgs.getString("comicId");
-        this.c = paramVarArgs.getString("comicName");
-        this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
-        if (!TextUtils.isEmpty(this.c)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
+        this.jdField_a_of_type_Ahpg = new ahpg();
+        return;
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Ahpg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, a());
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Ahpg.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, a());
       return;
-      this.jdField_a_of_type_Ahqs.a(this, new Object[0]);
-    } while (!QLog.isColorLevel());
-    QLog.d("ComicTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + this.c);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahpg = null;
   }
   
   public int[] a()
   {
-    return new int[0];
-  }
-  
-  public int b()
-  {
-    return 13;
+    return new int[] { 4, 8, 14, 20 };
   }
 }
 

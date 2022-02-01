@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
-import java.util.Comparator;
-
-public final class ayiu
-  implements Comparator<PortalManager.TimerConfig>
+class ayiu
+  implements aqul
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  ayiu(ayih paramayih) {}
+  
+  public int a()
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
-      return 1;
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
     }
-    if (l < 0L) {
-      return -1;
+    else
+    {
+      paramInt1 = 0;
     }
-    return 0;
+    if (paramInt1 == 0) {
+      return anvx.a(2131706739);
+    }
+    return anvx.a(2131706840);
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface bkkg
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.Login;
+
+public class bkkg
+  extends BroadcastReceiver
 {
-  public abstract void onPreloadEnd();
+  public bkkg(Login paramLogin) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    QLog.d("Login", 1, "AutoLoginReceiver onReceive");
+    Login.a(this.a, true);
+  }
 }
 
 

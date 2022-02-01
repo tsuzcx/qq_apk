@@ -1,11 +1,34 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class bifo
+  implements View.OnLongClickListener
 {
-  public String a;
-  public String b;
+  public bifo(WebViewFragment paramWebViewFragment) {}
   
-  public void a(String paramString)
+  public boolean onLongClick(View paramView)
   {
-    this.b = paramString;
+    if (!this.a.mSetting.a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
+    }
+    if (!this.a.mSetting.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
+    }
+    bigy localbigy = (bigy)this.a.mComponentsProvider.a(8);
+    if ((localbigy != null) && (localbigy.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

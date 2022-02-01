@@ -1,26 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
-import com.tencent.biz.widgets.TabLayout;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class oje
-  implements Animator.AnimatorListener
+  implements audq
 {
-  public oje(ReadInJoyChannelViewPagerController.10 param10) {}
+  public oje(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onNo() {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onYes()
   {
-    ojc.b(this.a.this$0, false);
-    ojc.a(this.a.this$0, ojc.a, 0.0F, 0);
-    ojc.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
+    acho.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
+    {
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

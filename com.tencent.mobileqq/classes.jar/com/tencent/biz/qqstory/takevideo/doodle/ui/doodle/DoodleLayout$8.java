@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import ycl;
-import yfk;
-import yft;
+import yre;
+import yud;
+import yum;
 
 class DoodleLayout$8
   implements Runnable
 {
-  DoodleLayout$8(DoodleLayout paramDoodleLayout, ycl paramycl, int paramInt, int[] paramArrayOfInt) {}
+  DoodleLayout$8(DoodleLayout paramDoodleLayout, yre paramyre, int paramInt, int[] paramArrayOfInt) {}
   
   public void run()
   {
-    ((yft)this.jdField_a_of_type_Ycl.a.a(102)).b(this.jdField_a_of_type_Int);
+    ((yum)this.jdField_a_of_type_Yre.a.a(102)).b(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ArrayOfInt[0] = 1;
   }
 }

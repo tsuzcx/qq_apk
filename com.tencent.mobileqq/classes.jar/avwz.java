@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-class avwz
-  implements DialogInterface.OnClickListener
+public final class avwz
+  implements Parcelable.Creator<NewTogetherRoomMessageData>
 {
-  avwz(avwv paramavwv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public NewTogetherRoomMessageData a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new NewTogetherRoomMessageData(paramParcel);
+  }
+  
+  public NewTogetherRoomMessageData[] a(int paramInt)
+  {
+    return new NewTogetherRoomMessageData[paramInt];
   }
 }
 

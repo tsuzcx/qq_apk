@@ -1,42 +1,54 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-
-class zdz
-  implements View.OnLongClickListener
+public class zdz
 {
-  zdz(zdx paramzdx, ExtraTypeInfo paramExtraTypeInfo, CertifiedAccountMeta.StFeed paramStFeed) {}
-  
-  public boolean onLongClick(View paramView)
+  public static String a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7003)
+    for (;;)
+    {
+      try
       {
-        zds.a(this.jdField_a_of_type_Zdx.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-        bool1 = true;
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label69;
+        }
+        i = localObject.length;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append(localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label69:
+        paramInt = 2;
       }
     }
-    do
+  }
+  
+  public static void a(String paramString, int paramInt, long paramLong)
+  {
+    if (paramLong <= 0L)
     {
-      do
-      {
-        return bool1;
-        if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002) {
-          return true;
-        }
-        bool1 = bool2;
-      } while (!(this.jdField_a_of_type_Zdx.itemView instanceof RelativeFeedItemView));
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
-    this.jdField_a_of_type_Zdx.a.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new zea(this), new zeb(this));
-    zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_feeds", "press", 0, 0, new String[] { "", this.jdField_a_of_type_Zdx.getAdapterPosition() + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-    return true;
+      zdl.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
+      return;
+    }
+    zea localzea = new zea();
+    localzea.jdField_b_of_type_JavaLangString = paramString;
+    localzea.c = paramInt;
+    localzea.jdField_b_of_type_Long = paramLong;
+    localzea.d = 1;
+    wfi.a().a(localzea, null);
   }
 }
 

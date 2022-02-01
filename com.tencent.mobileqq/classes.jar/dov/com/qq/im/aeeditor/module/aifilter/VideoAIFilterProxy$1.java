@@ -1,9 +1,9 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.content.Context;
-import bmbx;
-import bmgj;
-import bmgv;
+import bnrh;
+import bnwb;
+import bnwn;
 import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.tavcut.util.Logger;
 import java.util.List;
@@ -11,18 +11,18 @@ import java.util.List;
 public class VideoAIFilterProxy$1
   implements Runnable
 {
-  public VideoAIFilterProxy$1(bmgv parambmgv, List paramList, Context paramContext, bmgj parambmgj) {}
+  public VideoAIFilterProxy$1(bnwn parambnwn, List paramList, Context paramContext, bnwb parambnwb) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null)
     {
-      bmbx.a(bmgv.b(), "getVideoFrame start");
+      bnrh.a(bnwn.b(), "getVideoFrame start");
       this.this$0.jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getVideoFrame(this.jdField_a_of_type_JavaUtilList, 250);
-      bmbx.a(bmgv.b(), "getVideoFrame end");
+      bnrh.a(bnwn.b(), "getVideoFrame end");
       Logger.i("Cover", "get covers num =" + this.this$0.jdField_a_of_type_JavaUtilList.size());
       this.this$0.jdField_a_of_type_Int = this.this$0.jdField_a_of_type_JavaUtilList.size();
-      this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bmgj);
+      this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bnwb);
     }
   }
 }

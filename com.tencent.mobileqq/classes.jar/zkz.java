@@ -1,23 +1,46 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class zkz
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public zkz(VideoPlayerView paramVideoPlayerView) {}
+  public zkz(QRDisplayActivity paramQRDisplayActivity, arfa paramarfa, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.g(this.a);
-      VideoPlayerView.a(this.a, false);
+    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadCanceled:" + this.jdField_a_of_type_Arfa.a);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Arfa.a);
+    }
+    if (paramURLDrawable != null) {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    }
+    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131696194), 0).a();
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QRDisplayActivity.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Arfa, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Arfa.a);
+    }
+    if (paramURLDrawable != null) {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    }
   }
 }
 

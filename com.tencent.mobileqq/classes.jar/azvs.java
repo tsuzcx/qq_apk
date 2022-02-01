@@ -1,90 +1,128 @@
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.login.GatewayVerify.ReqBody;
-import tencent.im.login.GatewayVerify.ReqMaskQQLogin;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.List;
 
 public class azvs
+  extends BaseAdapter
 {
-  private static volatile azvs jdField_a_of_type_Azvs;
-  private azvy jdField_a_of_type_Azvy;
+  int jdField_a_of_type_Int;
+  List<azvu> jdField_a_of_type_JavaUtilList;
+  int b;
   
-  public static azvs a()
+  public azvs(QzonePhotoView paramQzonePhotoView) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_Azvs == null) {}
-    try
-    {
-      if (jdField_a_of_type_Azvs == null) {
-        jdField_a_of_type_Azvs = new azvs();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(List<azvu> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    int i = paramList.size();
+    if (i < 16) {
+      if (QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView)) {
+        this.jdField_a_of_type_JavaUtilList.add(new azvu(paramList.size(), 101, null));
       }
-      return jdField_a_of_type_Azvs;
     }
-    finally {}
-  }
-  
-  public void a(Context paramContext, String paramString, azvy paramazvy)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+    for (;;)
     {
-      QLog.e("RegisterLimitHelperImpl", 1, "jumpWithPhoneProtectUinsUrl error: params invalid");
+      notifyDataSetChanged();
       return;
+      paramList = (azvu)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      paramList.d = 102;
+      this.jdField_a_of_type_JavaUtilList.set(i - 1, paramList);
     }
-    QLog.d("RegisterLimitHelperImpl", 1, "jumpWithPhoneProtectUinsUrl, phoneProtectUinsUrl: " + paramString);
-    bcef.a(null, "dc00898", "", "", "0X800B336", "0X800B336", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Azvy = paramazvy;
-    paramazvy = new Intent(paramContext, QQBrowserActivity.class);
-    paramazvy.putExtra("url", paramString);
-    paramContext.startActivity(paramazvy);
   }
   
-  public void a(Intent paramIntent)
+  public int getCount()
   {
-    if ((paramIntent == null) || (this.jdField_a_of_type_Azvy == null))
-    {
-      QLog.e("RegisterLimitHelperImpl", 1, "recoverIntentFromPhoneProtectReg error: params invalid");
-      return;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    QLog.d("RegisterLimitHelperImpl", 1, "recoverIntentFromPhoneProtectReg");
-    paramIntent.putExtra("phonenum", this.jdField_a_of_type_Azvy.jdField_a_of_type_JavaLangString);
-    paramIntent.putExtra("invite_code", this.jdField_a_of_type_Azvy.jdField_d_of_type_JavaLangString);
-    paramIntent.putExtra("key", this.jdField_a_of_type_Azvy.jdField_b_of_type_JavaLangString);
-    paramIntent.putExtra("key_register_smscode", this.jdField_a_of_type_Azvy.jdField_c_of_type_JavaLangString);
-    paramIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_Azvy.jdField_a_of_type_Boolean);
-    paramIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_Azvy.jdField_b_of_type_Boolean);
-    paramIntent.putExtra("key_register_from", this.jdField_a_of_type_Azvy.jdField_a_of_type_Int);
-    paramIntent.putExtra("key_register_nick", this.jdField_a_of_type_Azvy.e);
-    paramIntent.putExtra("key_register_password", this.jdField_a_of_type_Azvy.f);
-    paramIntent.putExtra("key_register_phonenum_bindnewqq", this.jdField_a_of_type_Azvy.jdField_c_of_type_Boolean);
-    paramIntent.putExtra("key_register_from_send_sms", this.jdField_a_of_type_Azvy.jdField_d_of_type_Boolean);
+    return 0;
   }
   
-  public boolean a(boolean paramBoolean, String paramString1, String paramString2)
+  public Object getItem(int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QLog.d("RegisterLimitHelperImpl", 1, "shouldLoginWithMask: false");
-      return false;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    QLog.d("RegisterLimitHelperImpl", 1, "shouldLoginWithMask: true， isNeedLoginFlagFromJsApi: true,  uinEditTextValue: " + paramString1);
-    return true;
+    return null;
   }
   
-  public byte[] a(String paramString)
+  public long getItemId(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString))
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (azvu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    azvt localazvt;
+    String str2;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions;
+    String str1;
+    if (paramView == null)
     {
-      QLog.e("RegisterLimitHelperImpl", 1, "createUinEncryptData error: uinEncrypt invalid");
-      return null;
+      localazvt = new azvt(this);
+      paramView = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.getContext()).inflate(2131562054, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
+      localazvt.a = ((URLImageView)paramView.findViewById(2131375038));
+      localazvt.a.setTag(new azpb(25, Integer.valueOf(paramInt)));
+      str2 = bhaa.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, -1L);
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = this.b;
+      localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
+      str1 = ((azvu)localObject).a(this.jdField_a_of_type_Int);
+      if (((azvu)localObject).d == 100)
+      {
+        if (!TextUtils.isEmpty(str1))
+        {
+          localazvt.a.setImageDrawable(URLDrawable.getDrawable(str1, localURLDrawableOptions));
+          localazvt.a.setContentDescription(anvx.a(2131711601) + (paramInt + 1));
+        }
+        localazvt.a.setOnClickListener(QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+        paramView.setTag(localazvt);
+      }
     }
-    QLog.d("RegisterLimitHelperImpl", 1, "createUinEncryptData");
-    GatewayVerify.ReqBody localReqBody = new GatewayVerify.ReqBody();
-    localReqBody.msg_req_mask_qq_login.bytes_encrypt_uin_info.set(blhj.a(paramString));
-    localReqBody.msg_req_mask_qq_login.setHasFlag(true);
-    localReqBody.setHasFlag(true);
-    return localReqBody.toByteArray();
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      if (((azvu)localObject).d == 101)
+      {
+        azri.a(localazvt.a, "src", QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a, "photoAddSrc");
+        localazvt.a.setContentDescription(anvx.a(2131711595));
+        break;
+      }
+      if (((azvu)localObject).d != 102) {
+        break;
+      }
+      if (!TextUtils.isEmpty(str2))
+      {
+        localObject = new File(str2, "qvip_profile_photo_more.png");
+        localazvt.a.setImageDrawable(URLDrawable.getDrawable((File)localObject, localURLDrawableOptions));
+      }
+      if (!TextUtils.isEmpty(str1)) {
+        localazvt.a.setBackgroundDrawable(URLDrawable.getDrawable(str1, localURLDrawableOptions));
+      }
+      localazvt.a.setContentDescription(anvx.a(2131711604));
+      break;
+      localObject = (azvt)paramView.getTag();
+    }
   }
 }
 

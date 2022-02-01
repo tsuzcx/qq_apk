@@ -1,14 +1,16 @@
-public abstract interface auad
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
+
+class auad
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(String paramString);
+  auad(auaa paramauaa) {}
   
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+  }
 }
 
 

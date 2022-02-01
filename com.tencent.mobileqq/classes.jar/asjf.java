@@ -1,23 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class asjf
-  extends Handler
+public abstract interface asjf
 {
-  asjf(asjc paramasjc, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.d();
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asjf
  * JD-Core Version:    0.7.0.1
  */

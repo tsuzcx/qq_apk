@@ -7,14 +7,14 @@ import kotlin.jvm.internal.FunctionReference;
 import kotlin.reflect.KDeclarationContainer;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tls;
+import tzg;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lorg/json/JSONObject;", "Lkotlin/ParameterName;", "name", "params", "p2", "", "callBackId", "invoke"}, k=3, mv={1, 1, 16})
 public final class SchemaBridgeInvokeHandler$register$1
   extends FunctionReference
   implements Function2<JSONObject, String, Unit>
 {
-  public SchemaBridgeInvokeHandler$register$1(tls arg1) {}
+  public SchemaBridgeInvokeHandler$register$1(tzg arg1) {}
   
   public final String getName() {}
   
@@ -26,7 +26,7 @@ public final class SchemaBridgeInvokeHandler$register$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SchemaBridgeInvokeHandler.register.1
  * JD-Core Version:    0.7.0.1
  */

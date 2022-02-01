@@ -1,145 +1,141 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraper.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.notify.DownloadGlobalListener;
-import com.tencent.tmdownloader.notify.DownloadTaskInfo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.util.Pair;
+import dualsim.common.OrderCheckResult;
+import mqq.os.MqqHandler;
 
 public class bhyw
-  implements DownloadGlobalListener
 {
-  private static bhyw a;
-  
-  private bhyw()
+  private static SharedPreferences a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, "TMADownloadMonitor Init");
-    }
+    return BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_sdk", 4);
   }
   
-  public static bhyw a()
+  protected static Pair<Boolean, Integer> a()
   {
-    if (a != null) {
-      return a;
-    }
-    try
+    SharedPreferences localSharedPreferences = a();
+    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    a().edit().putBoolean("supportActivationView", paramBoolean).apply();
+  }
+  
+  protected static boolean a(@NonNull String paramString, @NonNull OrderCheckResult paramOrderCheckResult)
+  {
+    Object localObject = a();
+    boolean bool;
+    int j;
+    int i;
+    if (((SharedPreferences)localObject).getInt("kingCardProduct", -1) != paramOrderCheckResult.product)
     {
-      a = new bhyw();
-      bhyw localbhyw = a;
-      return localbhyw;
-    }
-    finally {}
-  }
-  
-  public static void a(Context paramContext, DownloadTaskInfo paramDownloadTaskInfo)
-  {
-    if ((paramDownloadTaskInfo == null) || (paramContext == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("UniformDownloadEvent", 2, "downloadTaskInfo is null or context==null");
+      localObject = ((SharedPreferences)localObject).edit().putInt("kingCardProduct", paramOrderCheckResult.product);
+      if (paramOrderCheckResult.kingcard > 0)
+      {
+        bool = true;
+        ((SharedPreferences.Editor)localObject).putBoolean("kingCard", bool).apply();
       }
     }
-    label401:
+    else
+    {
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramString, 4);
+      j = paramString.getInt("kingCardSdk", -1);
+      if (paramOrderCheckResult.kingcard != 0) {
+        break label163;
+      }
+      i = -1;
+    }
     for (;;)
     {
-      return;
-      bcfv.a().addDownloadURL(paramDownloadTaskInfo.url);
-      if (!a(paramDownloadTaskInfo.url))
+      if (j == i) {
+        break label195;
+      }
+      paramString.edit().putInt("kingCardSdk", i).putInt("toast_version", 0).putInt("popup_version_v2", 0).commit();
+      return true;
+      bool = false;
+      break;
+      label163:
+      if (paramOrderCheckResult.kingcard == 1)
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("url", paramDownloadTaskInfo.url);
-        localHashMap.put("NetworkType", NetworkUtil.getNetworkType(paramContext) + "");
-        localHashMap.put("reportVia", "5");
-        if (paramDownloadTaskInfo.stackInfo.length() < 950)
-        {
-          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo);
-          localHashMap.put("_filesize_from_dlg", "0");
-          localHashMap.put("_filename_from_dlg", paramDownloadTaskInfo.pkgName);
-          if (paramDownloadTaskInfo.versionCode <= 0) {
-            break label364;
-          }
-          localHashMap.put("isAPK", "1");
-          label160:
-          localHashMap.put("VersionCode", paramDownloadTaskInfo.versionCode + "");
-          paramDownloadTaskInfo = paramDownloadTaskInfo.source;
-          if (!TextUtils.isEmpty(paramDownloadTaskInfo)) {
-            break label376;
-          }
-          StatisticCollector.getInstance(paramContext).collectPerformance(null, "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label401;
-          }
-          paramContext = new StringBuilder();
-          paramDownloadTaskInfo = localHashMap.keySet().iterator();
-          while (paramDownloadTaskInfo.hasNext())
-          {
-            String str = (String)paramDownloadTaskInfo.next();
-            paramContext.append(str).append("=").append((String)localHashMap.get(str)).append("\n");
-          }
-          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo.substring(0, 950));
-          if (paramDownloadTaskInfo.stackInfo.length() < 1901)
-          {
-            localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950));
-            break;
-          }
-          localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950, 1900));
-          break;
-          label364:
-          localHashMap.put("isAPK", "0");
-          break label160;
-          label376:
-          localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramDownloadTaskInfo);
-          StatisticCollector.getInstance(paramContext).collectPerformance(null, "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
+        if (paramOrderCheckResult.product == 90155946) {
+          i = 2;
+        } else {
+          i = 1;
         }
       }
+      else {
+        i = 0;
+      }
     }
-    QLog.d("UniformDownloadEvent", 2, paramContext.toString());
+    label195:
+    return false;
   }
   
-  private static boolean a(String paramString)
+  protected static boolean c()
   {
-    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith("patch")) || (paramString.endsWith("zip")) || (paramString.endsWith("7z")));
+    return a().getBoolean("supportActivationView", false);
   }
   
-  public void onTaskCompleted(DownloadTaskInfo paramDownloadTaskInfo)
+  String a()
+  {
+    return "KC.KCWraper";
+  }
+  
+  void a(ViewGroup paramViewGroup) {}
+  
+  void a(bhzi parambhzi, boolean paramBoolean)
+  {
+    if (parambhzi != null)
+    {
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraper.1(this, parambhzi));
+      }
+    }
+    else {
+      return;
+    }
+    parambhzi.a(false, false, 0);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("tryLoad : disable kingcard");
+  }
+  
+  public final void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskCompleted,", paramDownloadTaskInfo });
+      QLog.i(a(), 2, paramString);
     }
   }
   
-  public void onTaskFailed(DownloadTaskInfo paramDownloadTaskInfo)
+  boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskFailed,", paramDownloadTaskInfo });
-    }
+    a("isReady : disable kingcard");
+    return false;
   }
   
-  public void onTaskPaused(DownloadTaskInfo paramDownloadTaskInfo)
+  boolean a(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskPaused,", paramDownloadTaskInfo });
-    }
+    return false;
   }
   
-  public void onTaskStarted(DownloadTaskInfo paramDownloadTaskInfo)
+  boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskStarted,", paramDownloadTaskInfo });
-    }
-    a(BaseApplicationImpl.getContext(), paramDownloadTaskInfo);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhyw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import abwp;
-import ahqh;
-import aqlq;
-import aqls;
+import acmw;
+import ailg;
+import arpb;
+import arpd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,11 +15,11 @@ import java.util.List;
 public class QQOperateTips$1
   implements Runnable
 {
-  public QQOperateTips$1(ahqh paramahqh) {}
+  public QQOperateTips$1(ailg paramailg) {}
   
   public void run()
   {
-    Object localObject1 = ahqh.a(this.this$0).getMessageFacade().getAIOList(ahqh.a(this.this$0).curFriendUin, ahqh.a(this.this$0).curType);
+    Object localObject1 = ailg.a(this.this$0).getMessageFacade().getAIOList(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType);
     int j = ((List)localObject1).size();
     Object localObject2;
     int i;
@@ -28,13 +28,13 @@ public class QQOperateTips$1
       localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
       if (localObject2 != null)
       {
-        if (ahqh.a(this.this$0).curType != 0) {
+        if (ailg.a(this.this$0).curType != 0) {
           break label333;
         }
-        ahqh.a(this.this$0, ((ChatMessage)localObject2).time);
-        ahqh.b(this.this$0, ((ChatMessage)localObject2).uniseq);
+        ailg.a(this.this$0, ((ChatMessage)localObject2).time);
+        ailg.b(this.this$0, ((ChatMessage)localObject2).uniseq);
       }
-      if (ahqh.a(this.this$0).getConversationFacade().a(ahqh.a(this.this$0).curFriendUin, ahqh.a(this.this$0).curType) <= 0) {
+      if (ailg.a(this.this$0).getConversationFacade().a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType) <= 0) {
         break label365;
       }
       i = 1;
@@ -53,31 +53,31 @@ public class QQOperateTips$1
       else
       {
         if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + ahqh.a(this.this$0));
+          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + ailg.a(this.this$0));
         }
-        localObject2 = aqlq.a(ahqh.a(this.this$0));
+        localObject2 = arpb.a(ailg.a(this.this$0));
         if (localObject2 != null)
         {
-          localObject1 = ((aqlq)localObject2).a(ahqh.a(this.this$0).curFriendUin, ahqh.a(this.this$0).curType, ahqh.a(this.this$0), (List)localObject1, true, ahqh.a(this.this$0));
-          if (((aqls)localObject1).jdField_a_of_type_Boolean)
+          localObject1 = ((arpb)localObject2).a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType, ailg.a(this.this$0), (List)localObject1, true, ailg.a(this.this$0));
+          if (((arpd)localObject1).jdField_a_of_type_Boolean)
           {
-            localObject1 = ((aqls)localObject1).jdField_a_of_type_JavaUtilArrayList;
-            ((aqlq)localObject2).a(ahqh.a(this.this$0).curFriendUin, ahqh.a(this.this$0).curType, (ArrayList)localObject1, ahqh.a(this.this$0));
+            localObject1 = ((arpd)localObject1).jdField_a_of_type_JavaUtilArrayList;
+            ((arpb)localObject2).a(ailg.a(this.this$0).curFriendUin, ailg.a(this.this$0).curType, (ArrayList)localObject1, ailg.a(this.this$0));
           }
         }
-        ahqh.a(this.this$0, -1);
+        ailg.a(this.this$0, -1);
         return;
         label333:
-        if (ahqh.a(this.this$0).curType != 3000) {
+        if (ailg.a(this.this$0).curType != 3000) {
           break;
         }
-        ahqh.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
+        ailg.a(this.this$0, ((ChatMessage)localObject2).shmsgseq);
         break;
         label365:
         i = 0;
         break label145;
       }
-      ahqh.a(this.this$0, i - 1);
+      ailg.a(this.this$0, i - 1);
       i -= 1;
     }
   }

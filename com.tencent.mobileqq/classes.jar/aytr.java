@@ -1,38 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
 
 public class aytr
+  implements SurfaceHolder.Callback
 {
-  public static void a(View paramView, int paramInt, String paramString, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
+  public aytr(ScanOcrActivity paramScanOcrActivity) {}
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    baqi.a(paramBaseActivity, baqi.a(paramInt, paramString), -1);
-    paramView.setVisibility(8);
-    aymz.a().b(paramQQAppInterface);
-    bcef.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "1", "0", "", "");
+    ScanOcrActivity.a(this.a, paramSurfaceHolder);
+    if (ScanOcrActivity.a(this.a) == null)
+    {
+      ScanOcrActivity.a(this.a, new aysx(this.a, this.a.jdField_a_of_type_Aytc, ScanOcrActivity.a(this.a)));
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
+      if (ScanOcrActivity.a(this.a)) {
+        ScanOcrActivity.a(this.a).a();
+      }
+    }
   }
   
-  public static void a(aymg paramaymg, BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
-  {
-    if (paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      bgae.a(paramBaseActivity, paramQQAppInterface, 0, "signature_ziliaoka");
-    }
-    while (paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-    {
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8006A79", "0X8006A79", 0, 0, "", "", "", "");
-      return;
-      Intent localIntent = new Intent(paramBaseActivity, PublicFragmentActivity.class);
-      localIntent.putExtra("key_uin", paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_uin_name", paramaymg.jdField_a_of_type_Bfmt.a.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_open_via", "history-kerentaiziliaoka");
-      adxr.a(paramBaseActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-    }
-    bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8006A8D", "0X8006A8D", 0, 0, "", "", "", "");
-  }
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 

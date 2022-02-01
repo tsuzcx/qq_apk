@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agip;
-import agis;
+import ahbg;
+import ahbj;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class MarketFaceItemBuilder$7$1
   implements Runnable
 {
-  public MarketFaceItemBuilder$7$1(agip paramagip, agis paramagis) {}
+  public MarketFaceItemBuilder$7$1(ahbg paramahbg, ahbj paramahbj) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agis.a.setVisibility(8);
-    this.jdField_a_of_type_Agis.f.setVisibility(8);
+    this.jdField_a_of_type_Ahbj.a.setVisibility(8);
+    this.jdField_a_of_type_Ahbj.f.setVisibility(8);
   }
 }
 

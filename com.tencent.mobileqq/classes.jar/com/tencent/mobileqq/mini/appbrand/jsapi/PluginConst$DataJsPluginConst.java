@@ -14,6 +14,7 @@ public class PluginConst$DataJsPluginConst
   public static final String API_MAKE_PHONE_CALL = "makePhoneCall";
   public static final String API_OPEN_WERUN_SETTING = "openWeRunSetting";
   public static final String API_OPERATE_WXDATA = "operateWXData";
+  public static final String API_RECENT_COLOR_SIGN = "addRecentColorSign";
   public static final String API_REPORT_SUBMIT_FORM = "reportSubmitForm";
   public static final String PRIVATE_API_GET_NATIVE_USER_INFO_EXTRA = "getUserInfoExtra";
   

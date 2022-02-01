@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.Context;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class ajfk
-  extends CardObserver
+public class ajfk
+  extends ajdw
 {
-  ajfk(ajey paramajey) {}
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public String a;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
   
-  public void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  public ajfk(Context paramContext, View paramView)
   {
-    if (paramBoolean1) {
-      this.a.e();
-    }
-  }
-  
-  public void onGetSignInInfo(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.e();
-    }
+    super(paramContext, paramView);
   }
 }
 

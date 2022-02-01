@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bcef;
-import bfwf;
-import bgxd;
+import bdla;
+import bhex;
+import bihv;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import npn;
+import nwo;
 
 public class MiniAppWebviewFragment
   extends WebViewFragment
@@ -54,28 +54,28 @@ public class MiniAppWebviewFragment
   
   public void startLoadUrl()
   {
-    npn.a("Web_readyToLoadUrl");
+    nwo.a("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     initFinish();
     if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
     {
-      bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
+      bdla.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
       this.mStatistics.k = 0L;
     }
     this.mStatistics.q = System.currentTimeMillis();
     long l = this.mStatistics.q;
     l = this.mStatistics.b;
     Object localObject = getIntent().getStringArrayListExtra("key_url_black_list");
-    if ((bfwf.a().a(this.mUrl)) || (isBlackPrefixUrl(this.mUrl, (ArrayList)localObject)))
+    if ((bhex.a().a(this.mUrl)) || (isBlackPrefixUrl(this.mUrl, (ArrayList)localObject)))
     {
       this.webView.loadUrl("file:///android_asset/error.html");
       QLog.d("MiniAppWebviewFragment", 1, new Object[] { "url:", this.mUrl, "in black" });
     }
     for (;;)
     {
-      npn.b("Web_readyToLoadUrl");
+      nwo.b("Web_readyToLoadUrl");
       this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
       return;
       if (getIntent().hasExtra("key_header")) {}

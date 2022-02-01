@@ -1,9 +1,18 @@
+import android.hardware.Camera.ShutterCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
+
 public class aqmu
+  implements Camera.ShutterCallback
 {
-  public int a;
-  public String a = "";
-  public String b;
-  public String c;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqmk jdField_a_of_type_Aqmk;
+  private final aqml jdField_a_of_type_Aqml;
+  
+  public void onShutter()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
+  }
 }
 
 

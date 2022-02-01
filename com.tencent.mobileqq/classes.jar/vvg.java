@@ -1,32 +1,15 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
 
-public class vvg
-  extends andd
+class vvg
+  implements SDKInitListener
 {
   vvg(vvf paramvvf) {}
   
-  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  public void onSDKInited(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
-      }
-      return;
+    if (paramBoolean) {
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq", "Q_CIRCLE_CLIENT_MODULE_NAME", "CLIENT_ACTION_INIT_SUCCESS", null, null);
     }
   }
 }

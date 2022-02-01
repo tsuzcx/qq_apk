@@ -1,34 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
 
 class ahlb
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  ahlb(ahkz paramahkz) {}
+  ahlb(ahkx paramahkx, aftk paramaftk) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    int i;
-    switch (this.a.sessionInfo.curType)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-    }
+    this.jdField_a_of_type_Aftk.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

@@ -1,19 +1,23 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class aocc
-  implements aokx
+public class aocc
+  implements BusinessObserver
 {
-  aocc(aocb paramaocb) {}
+  public void a(Object paramObject) {}
   
-  public void a()
-  {
-    GLES20.glUniform1i(aocb.a(this.a), aocb.b(this.a));
-  }
+  public void b(Object paramObject) {}
   
-  public void a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    aocb.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    aocj.a("glGetUniformLocation uDisplayType");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a(paramObject);
+      return;
+    }
+    b(paramObject);
   }
 }
 

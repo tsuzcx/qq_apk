@@ -1,11 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bgep
+  implements View.OnClickListener
 {
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
+  public bgep(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    BulkSendMessageFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

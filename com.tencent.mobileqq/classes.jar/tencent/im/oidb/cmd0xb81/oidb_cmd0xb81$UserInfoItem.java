@@ -21,6 +21,7 @@ public final class oidb_cmd0xb81$UserInfoItem
   public final PBBytesField bytes_nick = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_qq_nick = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_share_nick = PBField.initBytes(ByteStringMicro.EMPTY);
+  public oidb_cmd0xb81.HeadDecoration head_decoration = new oidb_cmd0xb81.HeadDecoration();
   public oidb_cmd0xb81.LiveStatus live_status = new oidb_cmd0xb81.LiveStatus();
   public oidb_cmd0xb81.AccountInfo msg_account_info = new oidb_cmd0xb81.AccountInfo();
   public oidb_cmd0xb81.HeadInfo msg_head_info = new oidb_cmd0xb81.HeadInfo();
@@ -51,12 +52,12 @@ public final class oidb_cmd0xb81$UserInfoItem
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 96, 104, 114, 240, 248, 256, 266, 272, 280, 290, 1592, 1602, 1608, 1616, 1626, 1632, 1642, 1648 }, new String[] { "msg_account_info", "bytes_nick", "msg_head_info", "bytes_qq_nick", "bytes_friend_remark", "bytes_kandian_nick", "msg_qq_head", "msg_kandian_head", "bytes_share_nick", "msg_share_head_url", "bytes_desc", "uint32_mp_auth_flag", "uint32_user_type", "string_home_url", "uint32_account_sysid", "uint32_info_type", "uint32_gender", "account_level_info", "uint32_unowned_user", "uint32_disable_comment_recommed", "live_status", "uint32_rt_read", "str_bg_pic", "uint32_bg_pic_default", "uint32_home_page_type", "user_openid", "uint32_upgc_flag", "bind_rel", "uint64_majia_id" }, new Object[] { null, localByteStringMicro1, null, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, null, null, localByteStringMicro5, null, localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, Long.valueOf(0L) }, UserInfoItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 96, 104, 114, 240, 248, 256, 266, 272, 280, 290, 298, 1592, 1602, 1608, 1616, 1626, 1632, 1642, 1648 }, new String[] { "msg_account_info", "bytes_nick", "msg_head_info", "bytes_qq_nick", "bytes_friend_remark", "bytes_kandian_nick", "msg_qq_head", "msg_kandian_head", "bytes_share_nick", "msg_share_head_url", "bytes_desc", "uint32_mp_auth_flag", "uint32_user_type", "string_home_url", "uint32_account_sysid", "uint32_info_type", "uint32_gender", "account_level_info", "uint32_unowned_user", "uint32_disable_comment_recommed", "live_status", "head_decoration", "uint32_rt_read", "str_bg_pic", "uint32_bg_pic_default", "uint32_home_page_type", "user_openid", "uint32_upgc_flag", "bind_rel", "uint64_majia_id" }, new Object[] { null, localByteStringMicro1, null, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, null, null, localByteStringMicro5, null, localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, Long.valueOf(0L) }, UserInfoItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.UserInfoItem
  * JD-Core Version:    0.7.0.1
  */

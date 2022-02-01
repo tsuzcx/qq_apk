@@ -1,38 +1,17 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adiy
-  implements bjoe
+  implements View.OnClickListener
 {
-  public adiy(FriendProfileCardActivity paramFriendProfileCardActivity, bjnw parambjnw) {}
+  public adiy(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt.length)) {
-      return;
-    }
-    switch (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[paramInt])
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Bjnw.dismiss();
-        this.jdField_a_of_type_Bjnw.a(null);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
-    }
+    new bhjz(this.a).a(this.a.getString(2131695058)).b(this.a.getString(2131695057)).c(this.a.getString(2131692814)).show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

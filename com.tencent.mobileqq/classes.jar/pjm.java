@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class pjm
+  extends RecyclerView.ViewHolder
 {
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
+  public TextView a;
   
-  public void a(int paramInt1, boolean paramBoolean, List<pjt> paramList, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
-  
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  public pjm(pjk parampjk, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369182));
+  }
 }
 
 

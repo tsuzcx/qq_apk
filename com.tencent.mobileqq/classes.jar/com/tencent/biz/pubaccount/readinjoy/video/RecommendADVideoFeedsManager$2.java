@@ -4,12 +4,12 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import rti;
+import sfx;
 
 public class RecommendADVideoFeedsManager$2
   implements Runnable
 {
-  public RecommendADVideoFeedsManager$2(rti paramrti, ViewBase paramViewBase, boolean paramBoolean, View paramView) {}
+  public RecommendADVideoFeedsManager$2(sfx paramsfx, ViewBase paramViewBase, boolean paramBoolean, View paramView) {}
   
   public void run()
   {

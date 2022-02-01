@@ -1,50 +1,86 @@
 import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class aade
-  extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected static aade a;
+  protected SessionInfo a;
+  protected HashMap<String, Object> a;
+  
+  public aade()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.security_verify", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static aade a()
+  {
+    if (jdField_a_of_type_Aade == null) {
+      jdField_a_of_type_Aade = new aade();
     }
-    if (!"userVerify".equals(paramString2)) {}
+    return jdField_a_of_type_Aade;
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    bdla.a(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_app", paramString2, 0, 0, paramString1, paramString3, paramString4, paramString5);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (!"thridapp".equals(paramIntent.getStringExtra("share_from"))) {
+      bool1 = false;
+    }
+    Object localObject;
+    Long localLong;
     do
     {
-      return false;
-      paramJsBridgeListener = this.mRuntime.a();
-    } while (paramJsBridgeListener == null);
-    if ("setTicket".equals(paramString3)) {}
-    for (;;)
-    {
-      try
+      do
       {
-        paramString1 = new JSONObject(paramVarArgs[0]).optString("ticket");
-        int i = paramJsBridgeListener.getIntent().getIntExtra("verify_type", -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.security_verify", 2, String.format("verifyTicket: %s, verifyType: %s", new Object[] { paramString1, Integer.valueOf(i) }));
-        }
-        paramString2 = new Intent();
-        paramString2.putExtra("ticket", paramString1);
-        paramJsBridgeListener.setResult(-1, paramString2);
-        paramJsBridgeListener.finish();
+        return bool1;
+        paramIntent.removeExtra("share_from");
+        localObject = a();
+        localLong = Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L));
+        bool1 = bool2;
+      } while (!((aade)localObject).a(String.valueOf(localLong)));
+      paramIntent.putExtra("share_from_aio", true);
+      paramIntent.putExtra("forward_type", 11);
+      paramIntent.putExtra("req_type", 1);
+      if (!paramIntent.hasExtra("pkg_name")) {
+        paramIntent.putExtra("pkg_name", "");
       }
-      catch (Exception paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        QLog.d("Q.security_verify", 1, "handleJsRequest", paramJsBridgeListener);
-        continue;
-      }
-      return bool;
-      bool = false;
-    }
+      paramIntent.putExtra("refuse_show_share_result_dialog", true);
+      localObject = ((aade)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      bool1 = bool2;
+    } while (localObject == null);
+    paramIntent = ausc.a(paramIntent, paramQQAppInterface, paramActivity);
+    paramActivity = new Bundle();
+    paramActivity.putString("uin", ((SessionInfo)localObject).curFriendUin);
+    paramActivity.putInt("uintype", ((SessionInfo)localObject).curType);
+    paramActivity.putString("troop_uin", ((SessionInfo)localObject).troopUin);
+    paramActivity.putString("uinname", ((SessionInfo)localObject).curFriendNick);
+    paramIntent.a(aupp.a.intValue(), paramActivity);
+    a(String.valueOf(localLong), "app_share_view", "", "", "");
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
   }
 }
 

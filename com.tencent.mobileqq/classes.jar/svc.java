@@ -1,23 +1,21 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
 class svc
-  implements svf
+  extends suv
 {
-  svc(sup paramsup) {}
+  svc(suw paramsuw) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (((suo.a(this.a.a) instanceof ssq)) && ((paramContext instanceof FastWebActivity)))
+    paramBaseArticleInfo = suw.a(this.a);
+    if (paramBaseArticleInfo != null)
     {
-      if (sup.a(this.a) == null) {
-        sup.a(this.a, new ArrayList());
-      }
-      svs.a(paramProteusItemData.b, paramProteusItemData.a, (FastWebActivity)paramContext, paramProteusItemData.c, ((ssq)suo.a(this.a.a)).a(), sup.a(this.a));
+      rth.b(suw.a(this.a), paramBaseArticleInfo.innerUniqueID, 3);
+      return;
     }
+    QLog.e("Q.readinjoy.video.VideoShareHelper", 1, "add video to topic failed, mArticleInfo = null");
   }
 }
 

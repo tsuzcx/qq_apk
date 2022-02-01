@@ -1,68 +1,35 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qlt
 {
-  private static qlt jdField_a_of_type_Qlt;
-  private final List<qlu> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static qlt a()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (jdField_a_of_type_Qlt == null) {}
-    try
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null) {}
+    for (Object localObject = paramBaseArticleInfo.mSinglePicture.getFile();; localObject = null)
     {
-      if (jdField_a_of_type_Qlt == null) {
-        jdField_a_of_type_Qlt = new qlt();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      if (paramBaseArticleInfo.mGalleryPicNumber > 1)
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + anvx.a(2131712354));
+        localJSONObject1.put("id_gallery_cnt", localObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
+        localJSONObject1.put("id_gallery_img", localObject);
+        localJSONObject1.put("id_gallery_bg", new JSONObject());
       }
-      return jdField_a_of_type_Qlt;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((qlu)localIterator.next()).a(paramInt, paramList, paramLong);
-      }
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((qlu)localIterator.next()).a(paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
-      }
-    }
-  }
-  
-  public void a(qlu paramqlu)
-  {
-    if (paramqlu == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramqlu)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramqlu);
-      }
-      return;
+      qmm.a(paramBaseArticleInfo, localJSONObject1, true);
+      qmm.n(paramBaseArticleInfo, localJSONObject1);
+      qmm.k(paramBaseArticleInfo, localJSONObject1);
+      qmm.a(localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
+      qmm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
     }
   }
 }

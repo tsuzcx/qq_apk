@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class aldn
-  implements aszj
+class aldn
+  implements View.OnClickListener
 {
-  public aldn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldn(aldh paramaldh, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onClick(View paramView)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)aldh.a(this.jdField_a_of_type_Aldh).getAppRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.a();
+    UpgradeTIMWrapper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper);
+    aldh.a(this.jdField_a_of_type_Aldh).obtainMessage(20).sendToTarget();
+    bdla.b(localQQAppInterface, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

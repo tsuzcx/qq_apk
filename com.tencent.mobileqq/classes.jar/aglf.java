@@ -1,22 +1,18 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-
-public class aglf
-  extends agld
+class aglf
+  implements bgoa
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public int e;
+  aglf(agld paramagld, String paramString) {}
   
-  public aglf(agle paramagle)
+  public void a(boolean paramBoolean, String paramString)
   {
-    super(paramagle);
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ((afzn)agld.a(this.jdField_a_of_type_Agld)).f = true;
+      this.jdField_a_of_type_Agld.a(true);
+      return;
+    }
+    ((afzn)agld.a(this.jdField_a_of_type_Agld)).f = false;
+    this.jdField_a_of_type_Agld.a(false);
   }
 }
 

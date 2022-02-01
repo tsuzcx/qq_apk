@@ -14,7 +14,7 @@ class ReadInJoyAtlasCommentFragment$2
     if ((!this.this$0.a) && (this.this$0.getView() != null))
     {
       int i = this.this$0.getView().getHeight() - UIUtils.getStatusBarHeight(this.this$0.getActivity());
-      View localView = this.this$0.getView().findViewById(2131375931);
+      View localView = this.this$0.getView().findViewById(2131376178);
       if (localView != null)
       {
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();

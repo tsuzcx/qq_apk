@@ -1,16 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class orm
-  implements ViewBase.OnClickListener
+public class orm
+  implements AladdinConfigHandler
 {
-  orm(ouc paramouc, ouo paramouo) {}
-  
-  public final void onClick(ViewBase paramViewBase)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Ouc.c(this.jdField_a_of_type_Ouo);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
+        bmhv.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bmhv.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
   }
 }
 

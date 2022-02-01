@@ -6,7 +6,7 @@ import android.opengl.GLES20;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.FloatsParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.faceBeauty.FaceDetect;
+import com.tencent.facebeauty.FaceDetect;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import com.tencent.view.RendererUtils;

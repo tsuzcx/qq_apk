@@ -1,64 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class admc
-  implements View.OnClickListener
+final class admc
+  implements DialogInterface.OnCancelListener
 {
-  public admc(GroupManagerActivity paramGroupManagerActivity) {}
+  admc(adnn paramadnn, adnm paramadnm) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.app, null);
-    int i;
-    label31:
-    QQToast localQQToast;
-    if ((k & 0x2) != 0)
-    {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label103;
-      }
-      if ((i == 0) && (j == 0)) {
-        break label108;
-      }
-      if (30 != this.a.a.size()) {
-        break label162;
-      }
-      localQQToast = new QQToast(this.a);
-      localQQToast.d(2000);
-      localQQToast.c(2131719007);
-      localQQToast.a();
+    if (this.jdField_a_of_type_Adnn.a) {
+      bdla.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    label162:
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 0;
-      break;
-      label103:
-      j = 0;
-      break label31;
-      label108:
-      if (16 == this.a.a.size())
-      {
-        localQQToast = new QQToast(this.a);
-        localQQToast.d(2000);
-        localQQToast.c(2131719006);
-        localQQToast.a();
-      }
-      else
-      {
-        GroupManagerActivity.a(this.a, bfur.a(this.a, 2131692876, 2131692882, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-        GroupManagerActivity.a(this.a, 0);
-      }
+    if (this.jdField_a_of_type_Adnm != null) {
+      this.jdField_a_of_type_Adnm.onCancel();
     }
+    paramDialogInterface.dismiss();
   }
 }
 

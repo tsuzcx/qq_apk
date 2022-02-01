@@ -10,16 +10,16 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import skz;
-import sla;
+import syj;
+import syk;
 
 public class DailyTitleBarSwitcher
   extends FrameLayout
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new skz(this);
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new syj(this);
   private DailyTitleBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
-  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new sla(this);
+  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new syk(this);
   private boolean jdField_a_of_type_Boolean;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
   private DailyTitleBar jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;

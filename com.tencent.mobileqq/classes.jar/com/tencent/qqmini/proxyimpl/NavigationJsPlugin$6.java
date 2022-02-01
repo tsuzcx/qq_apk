@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bjet;
+import bkqb;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -12,7 +12,7 @@ import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 public class NavigationJsPlugin$6
   extends ResultReceiver
 {
-  public NavigationJsPlugin$6(bjet parambjet, Handler paramHandler, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
+  public NavigationJsPlugin$6(bkqb parambkqb, Handler paramHandler, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
     super(paramHandler);
   }
@@ -25,10 +25,10 @@ public class NavigationJsPlugin$6
       if (this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener != null) {
         this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener.onLaunchResult(true, null);
       }
-      if ((bjet.a(this.jdField_a_of_type_Bjet).getAttachedActivity() != null) && (!bjet.b(this.jdField_a_of_type_Bjet).getAttachedActivity().isFinishing()))
+      if ((bkqb.a(this.jdField_a_of_type_Bkqb).getAttachedActivity() != null) && (!bkqb.b(this.jdField_a_of_type_Bkqb).getAttachedActivity().isFinishing()))
       {
         QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
-        bjet.c(this.jdField_a_of_type_Bjet).getAttachedActivity().finish();
+        bkqb.c(this.jdField_a_of_type_Bkqb).getAttachedActivity().finish();
       }
     }
     do
@@ -41,7 +41,7 @@ public class NavigationJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

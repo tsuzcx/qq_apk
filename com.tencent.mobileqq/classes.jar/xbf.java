@@ -1,15 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
-class xbf
-  implements wkl
+public class xbf
+  implements View.OnKeyListener
 {
-  xbf(xbe paramxbe) {}
+  public xbf(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    if (paramInt == 4)
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.finish();
+      }
+      return true;
+    }
+    return false;
   }
 }
 

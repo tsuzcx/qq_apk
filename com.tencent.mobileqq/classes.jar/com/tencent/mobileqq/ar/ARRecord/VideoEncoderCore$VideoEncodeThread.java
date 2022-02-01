@@ -78,11 +78,11 @@ class VideoEncoderCore$VideoEncodeThread
     //   117: invokestatic 59	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   120: aload_0
     //   121: getfield 10	com/tencent/mobileqq/ar/ARRecord/VideoEncoderCore$VideoEncodeThread:this$0	Lcom/tencent/mobileqq/ar/ARRecord/VideoEncoderCore;
-    //   124: invokestatic 64	com/tencent/mobileqq/ar/ARRecord/VideoEncoderCore:a	(Lcom/tencent/mobileqq/ar/ARRecord/VideoEncoderCore;)Laoar;
+    //   124: invokestatic 64	com/tencent/mobileqq/ar/ARRecord/VideoEncoderCore:a	(Lcom/tencent/mobileqq/ar/ARRecord/VideoEncoderCore;)Lapdt;
     //   127: ifnull -51 -> 76
     //   130: aload_0
     //   131: getfield 10	com/tencent/mobileqq/ar/ARRecord/VideoEncoderCore$VideoEncodeThread:this$0	Lcom/tencent/mobileqq/ar/ARRecord/VideoEncoderCore;
-    //   134: invokestatic 64	com/tencent/mobileqq/ar/ARRecord/VideoEncoderCore:a	(Lcom/tencent/mobileqq/ar/ARRecord/VideoEncoderCore;)Laoar;
+    //   134: invokestatic 64	com/tencent/mobileqq/ar/ARRecord/VideoEncoderCore:a	(Lcom/tencent/mobileqq/ar/ARRecord/VideoEncoderCore;)Lapdt;
     //   137: iconst_4
     //   138: invokeinterface 69 2 0
     //   143: goto -67 -> 76

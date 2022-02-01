@@ -1,12 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akjb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  akjb(akho paramakho) {}
+  akjb(akja paramakja) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

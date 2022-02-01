@@ -3,10 +3,10 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import bcdf;
-import bgcw;
-import bgda;
-import bgve;
+import bdka;
+import bhln;
+import bhlr;
+import bifw;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ class HealthUiPlugin$1
         if (!bool) {
           try
           {
-            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), bgcw.c.a);
+            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), bhln.c.a);
             if ((localObject1 != null) && (((File)localObject1).exists()))
             {
               localObject1 = new JSONObject(FileUtils.readFileContent((File)localObject1)).getJSONObject("data").getJSONArray("jdUploadLog");
@@ -90,8 +90,8 @@ class HealthUiPlugin$1
       {
         try
         {
-          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("8.4.8").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-          bcdf.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("8.4.10").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+          bdka.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
           if ((!this.val$url.contains("91160.com")) && (!this.val$url.contains("guahao.com"))) {
             continue;
           }
@@ -115,8 +115,8 @@ class HealthUiPlugin$1
                 QLog.d("HealthUiPlugin", 2, "report guahao url \n" + (String)localObject5);
               }
               Object localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("8.4.8").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-              bcdf.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("8.4.10").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+              bdka.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
               return;
               localObject3 = finally;
               throw localObject3;

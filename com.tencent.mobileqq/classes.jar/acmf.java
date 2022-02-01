@@ -1,10 +1,19 @@
-public abstract interface acmf
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+
+class acmf
+  implements acmg
 {
-  public abstract void a(acmg paramacmg);
+  acmf(acme paramacme, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
   
-  public abstract void a(String paramString1, int paramInt, String paramString2);
-  
-  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3);
+  public ToServiceMsg a()
+  {
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Acme.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
+  }
 }
 
 

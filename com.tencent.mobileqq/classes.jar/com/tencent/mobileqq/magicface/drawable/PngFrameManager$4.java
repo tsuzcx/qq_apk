@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import agis;
-import avkv;
-import avky;
-import avlb;
-import avsq;
-import bgoe;
-import bgoj;
+import ahbj;
+import awra;
+import awrd;
+import awrg;
+import awyr;
+import bhyo;
+import bhyt;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
@@ -22,15 +23,15 @@ import java.util.Map;
 public class PngFrameManager$4
   implements Runnable
 {
-  public PngFrameManager$4(avkv paramavkv, avlb paramavlb) {}
+  public PngFrameManager$4(awra paramawra, awrg paramawrg) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PngFrameManager", 2, "func showPngFrame, zip NOT exist, download from Server.");
     }
-    Object localObject3 = (avsq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    Object localObject2 = ((avsq)localObject3).a(this.a.jdField_a_of_type_JavaLangString);
+    Object localObject3 = (awyr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
+    Object localObject2 = ((awyr)localObject3).a(this.a.jdField_a_of_type_JavaLangString);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -39,8 +40,8 @@ public class PngFrameManager$4
       ((EmoticonPackage)localObject1).aio = true;
     }
     ((EmoticonPackage)localObject1).rscType = 1;
-    ((avsq)localObject3).a((EmoticonPackage)localObject1);
-    String str = this.a.jdField_a_of_type_Agis.a.emoticon.eId;
+    ((awyr)localObject3).a((EmoticonPackage)localObject1);
+    String str = this.a.jdField_a_of_type_Ahbj.a.emoticon.eId;
     localObject2 = EmoticonUtils.emoticonPNGZIPUrl.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str);
     localObject1 = EmoticonUtils.emoticonEncryptPath.replace("[epId]", this.a.jdField_a_of_type_JavaLangString).replace("[eId]", str);
     localObject3 = EmoticonUtils.emoticonAIOPreviewExtensionUrl.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str).replace("[width]", "200").replace("[height]", "200");
@@ -51,9 +52,9 @@ public class PngFrameManager$4
     localHashMap.put(localObject2, new File((String)localObject1));
     localArrayList.add(localObject3);
     localHashMap.put(localObject3, new File(str));
-    localObject2 = new bgoe(localArrayList, localHashMap, "random_magicface_" + this.a.jdField_a_of_type_JavaLangString);
-    ((bgoe)localObject2).n = true;
-    this.this$0.jdField_a_of_type_Bgoj.a((bgoe)localObject2, new avky(this, (String)localObject1), null);
+    localObject2 = new bhyo(localArrayList, localHashMap, "random_magicface_" + this.a.jdField_a_of_type_JavaLangString);
+    ((bhyo)localObject2).n = true;
+    this.this$0.jdField_a_of_type_Bhyt.a((bhyo)localObject2, new awrd(this, (String)localObject1), null);
   }
 }
 

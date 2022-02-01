@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import ajkw;
+import akgk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class AvatarPendantActivity$24$1
   implements Runnable
 {
-  public AvatarPendantActivity$24$1(ajkw paramajkw) {}
+  public AvatarPendantActivity$24$1(akgk paramakgk) {}
   
   public void run()
   {

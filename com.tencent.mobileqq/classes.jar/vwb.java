@@ -1,22 +1,8 @@
+import feedcloud.FeedCloudMeta.StUser;
+
 public abstract interface vwb
 {
-  public abstract String getName();
-  
-  public abstract int getRelationType();
-  
-  public abstract String getUnionId();
-  
-  public abstract boolean isFriend();
-  
-  public abstract boolean isMe();
-  
-  public abstract boolean isSubscribe();
-  
-  public abstract boolean isSubscribeButNoFriend();
-  
-  public abstract boolean isVip();
-  
-  public abstract boolean isVipButNoFriend();
+  public abstract void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser);
 }
 
 

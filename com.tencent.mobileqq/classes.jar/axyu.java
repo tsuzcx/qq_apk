@@ -1,28 +1,17 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class axyu
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
+  public axyu(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public axyu()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "MusicStatus[needConvert:" + this.jdField_a_of_type_Boolean + ", , songId:" + this.jdField_a_of_type_JavaLangString + ", songName:" + this.jdField_b_of_type_JavaLangString + ", songType:" + this.jdField_a_of_type_Int + ", singerName:" + this.jdField_c_of_type_JavaLangString + ", remainTime:" + this.jdField_b_of_type_Int + ", sourceType:" + this.jdField_c_of_type_Int + ", pauseFlag:" + this.jdField_b_of_type_Boolean + ", duration:" + this.d;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

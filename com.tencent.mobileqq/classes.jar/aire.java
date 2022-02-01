@@ -1,51 +1,27 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aire
+  implements airl
 {
-  public int a;
-  public Object a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
+  public aire(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
   
-  public boolean a()
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    boolean bool2;
-    for (boolean bool1 = true;; bool1 = false)
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
     {
-      bool2 = bool1;
-      if (bool1) {
-        bool2 = this.c;
-      }
-      if (!bool2) {
-        return bool2;
-      }
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        if (this.jdField_a_of_type_Short == 0) {
-          break;
-        }
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-        return true;
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
       }
     }
-    return false;
-    return bool2;
+    do
+    {
+      return;
+      this.a.a = null;
+    } while (!QLog.isColorLevel());
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

@@ -1,10 +1,17 @@
-public abstract interface asqq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class asqq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  asqq(asrm paramasrm) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.c();
+  }
 }
 
 

@@ -1,57 +1,69 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.ArrayList;
 
-public class azjb
-  extends BaseAdapter
+class azjb
+  extends Handler
 {
-  public List<QCallRecord> a;
-  
-  public azjb(QCallDetailActivity paramQCallDetailActivity)
+  azjb(azja paramazja, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    super(paramLooper);
   }
   
-  public int getCount()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    azjq.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
+    if (this.a.jdField_a_of_type_Azkx == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        i = paramMessage.arg1;
+        paramMessage = (azkf)paramMessage.obj;
+        this.a.jdField_a_of_type_Azkx.a(i, paramMessage);
+        return;
+      case 1: 
+        paramMessage = (azkf)paramMessage.obj;
+      }
+    } while (!(paramMessage.a instanceof Integer));
+    this.a.jdField_a_of_type_Azkx.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
+    return;
+    int i = paramMessage.arg1;
+    paramMessage = (azkf)paramMessage.obj;
+    this.a.jdField_a_of_type_Azkx.b(i, paramMessage);
+    return;
+    i = paramMessage.arg1;
+    paramMessage = (azkf)paramMessage.obj;
+    this.a.jdField_a_of_type_Azkx.c(i, paramMessage);
+    return;
+    i = paramMessage.arg1;
+    paramMessage = (azkf)paramMessage.obj;
+    this.a.jdField_a_of_type_Azkx.d(i, paramMessage);
+    return;
+    if (paramMessage.obj != null) {}
+    for (;;)
+    {
+      try
+      {
+        ArrayList localArrayList = (ArrayList)paramMessage.obj;
+        this.a.jdField_a_of_type_Azkx.a(paramMessage.arg1, localArrayList);
+        return;
+      }
+      catch (ClassCastException localClassCastException)
+      {
+        localObject = null;
+        continue;
+      }
+      paramMessage = (azkf)paramMessage.obj;
+      this.a.jdField_a_of_type_Azkx.a(((Integer)paramMessage.a).intValue());
+      return;
+      Object localObject = null;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
-      return QCallRecord.TYPE_DATE;
-    }
-    return QCallRecord.TYPE_REALRECORD;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return paramView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
   }
 }
 

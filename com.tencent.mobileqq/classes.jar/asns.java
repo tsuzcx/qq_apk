@@ -1,11 +1,8 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-
-class asns
+public class asns
 {
-  int jdField_a_of_type_Int = 201;
-  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
-  
-  asns(asnr paramasnr) {}
+  public long a;
+  public String a;
+  public String b;
 }
 
 

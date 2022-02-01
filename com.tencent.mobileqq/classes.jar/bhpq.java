@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
 
 public class bhpq
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public bhpq(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
+  public bhpq(VasResDrawable paramVasResDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    if (paramURLDrawable != null) {
+      this.a.a = paramURLDrawable;
+    }
+    this.a.invalidateSelf();
   }
 }
 

@@ -1,17 +1,25 @@
-import android.text.Editable;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountMenuBar;
+import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ole
-  implements avtb<char[]>
+public class ole
+  implements View.OnClickListener
 {
-  public ole(EditText paramEditText) {}
+  public ole(PublicAccountMenuBar paramPublicAccountMenuBar, boolean paramBoolean, mobileqq_mp.ButtonInfo paramButtonInfo, aako paramaako) {}
   
-  public void a(char[] paramArrayOfChar)
+  public void onClick(View paramView)
   {
-    int i = this.a.getSelectionStart();
-    int j = this.a.getSelectionEnd();
-    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
-    this.a.requestFocus();
+    if (this.jdField_a_of_type_Boolean) {
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ButtonInfo);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_Aako);
+    }
   }
 }
 

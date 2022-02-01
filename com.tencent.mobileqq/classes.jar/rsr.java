@@ -1,36 +1,19 @@
-public abstract interface rsr
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
+
+public final class rsr
+  implements Parcelable.Creator<VisibleSetParam>
 {
-  public abstract void a(ryo paramryo);
+  public VisibleSetParam a(Parcel paramParcel)
+  {
+    return new VisibleSetParam(paramParcel);
+  }
   
-  public abstract void a(ryo paramryo, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(ryo paramryo, int paramInt, boolean paramBoolean);
-  
-  public abstract void a(ryo paramryo, long paramLong1, long paramLong2);
-  
-  public abstract void a(ryo paramryo, boolean paramBoolean);
-  
-  public abstract void a(ryo paramryo, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a(ryo paramryo);
-  
-  public abstract void b(ryo paramryo);
-  
-  public abstract void b(ryo paramryo, boolean paramBoolean);
-  
-  public abstract void c(ryo paramryo);
-  
-  public abstract void d(ryo paramryo);
-  
-  public abstract void e(ryo paramryo);
-  
-  public abstract void f(ryo paramryo);
-  
-  public abstract void g(ryo paramryo);
-  
-  public abstract void h(ryo paramryo);
-  
-  public abstract void i(ryo paramryo);
+  public VisibleSetParam[] a(int paramInt)
+  {
+    return new VisibleSetParam[paramInt];
+  }
 }
 
 

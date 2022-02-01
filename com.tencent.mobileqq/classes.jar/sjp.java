@@ -1,16 +1,23 @@
-import android.os.Bundle;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
-class sjp
-  implements BusinessObserver
+public class sjp
 {
-  sjp(sjo paramsjo, NewIntent paramNewIntent, String paramString1, String paramString2, sjr paramsjr, long paramLong) {}
+  private static sjp a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static sjp a()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    sjo.a(this.jdField_a_of_type_Sjo, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Sjr, this.jdField_a_of_type_Long, paramBoolean, paramBundle);
+    if (a == null) {}
+    try
+    {
+      a = new sjp();
+      return a;
+    }
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return null;
   }
 }
 

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aebs;
-import amux;
+import aesx;
 import android.widget.TextView;
-import aqmf;
-import bbox;
+import anxl;
+import arpq;
+import bcvr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 class Leba$31
   implements Runnable
 {
-  Leba$31(Leba paramLeba, aqmf paramaqmf) {}
+  Leba$31(Leba paramLeba, arpq paramarpq) {}
   
   public void run()
   {
@@ -30,10 +31,10 @@ class Leba$31
       ThreadRegulator.a().a(4);
       ThreadRegulator.a().a(4, 2000L);
       Leba.d(this.this$0, true);
-      bbox localbbox = (bbox)this.this$0.a.getManager(10);
-      if (localbbox != null)
+      bcvr localbcvr = (bcvr)this.this$0.a.getManager(QQManagerFactory.QZONE_MANAGER);
+      if (localbcvr != null)
       {
-        if ((localbbox.a(1) <= 0) && (localbbox.a(2) <= 0))
+        if ((localbcvr.a(1) <= 0) && (localbcvr.a(2) <= 0))
         {
           Object localObject = new QZoneClickReport.ReportInfo();
           ((QZoneClickReport.ReportInfo)localObject).actionType = "1";
@@ -50,14 +51,14 @@ class Leba$31
           StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.this$0.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
         }
         if ((this.this$0.a.getLebaHelper() == null) || (!this.this$0.a.getLebaHelper().a())) {
-          break label321;
+          break label322;
         }
-        aebs.a(localbbox, false, bool);
+        aesx.a(localbcvr, false, bool);
         if ((Leba.b(this.this$0) != null) && (Leba.b(this.this$0).getVisibility() == 0))
         {
-          localbbox.c(3);
-          localbbox.c(61);
-          localbbox.c(6);
+          localbcvr.c(3);
+          localbcvr.c(61);
+          localbcvr.c(6);
         }
       }
       LinkReport.reportClickQZoneEntry(this.this$0.a.getCurrentUin());
@@ -69,7 +70,7 @@ class Leba$31
       {
         QLog.i("Leba", 1, "clickAction", localException);
         continue;
-        label321:
+        label322:
         bool = false;
       }
     }
@@ -77,7 +78,7 @@ class Leba$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.31
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class afgy
-  implements Animator.AnimatorListener
+public class afgy
+  extends anvi
 {
-  afgy(afgw paramafgw, LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView) {}
+  public afgy(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationCancel drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationEnd drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    }
-    afgw.a(this.jdField_a_of_type_Afgw, paramAnimator, this.jdField_a_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel onAnimationStart drawable=" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-    }
-    if ((afhb.a(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getSpeed() > 0.0F)) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.reverseAnimationSpeed();
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.invalidateDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    ThreadManager.post(new TroopRequestActivity.15.1(this, paramString), 5, null, true);
   }
 }
 

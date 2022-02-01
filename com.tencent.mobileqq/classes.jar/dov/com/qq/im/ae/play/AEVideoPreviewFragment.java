@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bfur;
-import bmnt;
+import bhdj;
+import bodl;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tav.coremedia.CMTime;
@@ -51,7 +51,7 @@ public class AEVideoPreviewFragment
     String str = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "UploadGiveUpVideo", "放弃上传这个视频吗？");
     try
     {
-      bfur.a(getActivity(), 230, str, null, getResources().getString(2131690620), getResources().getString(2131690952), new AEVideoPreviewFragment.3(this), new AEVideoPreviewFragment.4(this)).show();
+      bhdj.a(getActivity(), 230, str, null, getResources().getString(2131690697), getResources().getString(2131691037), new AEVideoPreviewFragment.3(this), new AEVideoPreviewFragment.4(this)).show();
       return;
     }
     catch (Exception localException)
@@ -62,14 +62,14 @@ public class AEVideoPreviewFragment
   
   void bindViews(View paramView)
   {
-    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378228));
-    this.rlVideoController = ((RelativeLayout)paramView.findViewById(2131376651));
-    this.ivClose = ((ImageView)paramView.findViewById(2131369194));
-    this.ivDelete = ((ImageView)paramView.findViewById(2131369212));
-    this.ivPlayOrPause = ((ImageView)paramView.findViewById(2131369325));
-    this.seekBarVideoProgress = ((SeekBar)paramView.findViewById(2131377001));
-    this.tvTotalDuration = ((TextView)paramView.findViewById(2131379891));
-    this.tvCurrentDuration = ((TextView)paramView.findViewById(2131379551));
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378516));
+    this.rlVideoController = ((RelativeLayout)paramView.findViewById(2131376913));
+    this.ivClose = ((ImageView)paramView.findViewById(2131369356));
+    this.ivDelete = ((ImageView)paramView.findViewById(2131369375));
+    this.ivPlayOrPause = ((ImageView)paramView.findViewById(2131369492));
+    this.seekBarVideoProgress = ((SeekBar)paramView.findViewById(2131377274));
+    this.tvTotalDuration = ((TextView)paramView.findViewById(2131380227));
+    this.tvCurrentDuration = ((TextView)paramView.findViewById(2131379863));
     this.rlVideoController.setOnClickListener(this);
     this.ivClose.setOnClickListener(this);
     this.ivDelete.setOnClickListener(this);
@@ -83,19 +83,19 @@ public class AEVideoPreviewFragment
     if ((this.tavCutVideoSession != null) && (this.tavCutVideoSession.getDuration() != null))
     {
       this.seekBarVideoProgress.setMax((int)this.tavCutVideoSession.getDuration().getTimeUs());
-      this.tvTotalDuration.setText(bmnt.a((this.tavCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
+      this.tvTotalDuration.setText(bodl.a((this.tavCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
     }
     this.mMoviePlayer.setVideoProgressListener(new AEVideoPreviewFragment.1(this));
   }
   
   protected int getLayoutId()
   {
-    return 2131558570;
+    return 2131558581;
   }
   
   protected int getPlayerBackColor()
   {
-    return getResources().getColor(2131165351);
+    return getResources().getColor(2131165357);
   }
   
   public void onClick(View paramView)

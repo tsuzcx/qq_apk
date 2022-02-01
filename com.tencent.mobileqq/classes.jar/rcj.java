@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.persistence.notColumn;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rcj
+class rcj
+  implements View.OnClickListener
 {
-  @notColumn
-  public AtomicBoolean a;
-  @notColumn
-  public AtomicInteger a;
-  @notColumn
-  public AtomicBoolean b;
-  @notColumn
-  public AtomicInteger b;
-  @notColumn
-  public AtomicBoolean c = new AtomicBoolean(false);
-  @notColumn
-  public AtomicBoolean d = new AtomicBoolean(false);
+  rcj(rci paramrci) {}
   
-  public rcj()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(paramView, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

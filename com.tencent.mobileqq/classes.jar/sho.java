@@ -1,52 +1,57 @@
-import android.view.View;
-import com.tencent.superplayer.view.ISPlayerVideoView;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerVideoView;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "videoView", "Lcom/tencent/superplayer/view/ISPlayerVideoView;", "(Lcom/tencent/superplayer/view/ISPlayerVideoView;)V", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sho
-  implements shf
+class sho
+  implements INetInfoHandler
 {
-  private final ISPlayerVideoView a;
+  sho(shl paramshl) {}
   
-  public sho(@Nullable ISPlayerVideoView paramISPlayerVideoView)
+  public void onNetMobile2None()
   {
-    this.a = paramISPlayerVideoView;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2None()");
+    }
+    shl.i(this.a);
   }
   
-  @Nullable
-  public View a()
+  public void onNetMobile2Wifi(String paramString)
   {
-    ISPlayerVideoView localISPlayerVideoView2 = this.a;
-    ISPlayerVideoView localISPlayerVideoView1 = localISPlayerVideoView2;
-    if (!(localISPlayerVideoView2 instanceof View)) {
-      localISPlayerVideoView1 = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
     }
-    return (View)localISPlayerVideoView1;
+    shl.a(this.a, true);
   }
   
-  public void a()
+  public void onNetNone2Mobile(String paramString)
   {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.disableViewCallback();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
     }
+    shl.a(this.a, false);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onNetNone2Wifi(String paramString)
   {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.setFixedSize(paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
     }
+    shl.a(this.a, true);
   }
   
-  public void b()
+  public void onNetWifi2Mobile(String paramString)
   {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.enableViewCallback();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
     }
+    shl.a(this.a, false);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2None()");
+    }
+    shl.i(this.a);
   }
 }
 

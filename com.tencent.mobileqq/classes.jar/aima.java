@@ -1,28 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
 public class aima
-  implements aiiv
+  implements DialogInterface.OnClickListener
 {
-  public aima(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  public aima(VideoStatusTipsBar paramVideoStatusTipsBar) {}
   
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!(paramViewHolder instanceof aikf)) {}
-    do
-    {
-      return;
-      paramView = (aikf)paramViewHolder;
-    } while (paramView.a.msg_type.get() != 2);
-    TroopSuspiciousFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
+    msa.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,15 +1,25 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
 
-public final class osj
-  extends Editable.Factory
+public class osj
+  implements MessageQueue.IdleHandler
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public osj(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  
+  public boolean queueIdle()
   {
-    if ((paramCharSequence instanceof oog)) {
-      return (Editable)paramCharSequence;
+    if (!ashz.a().a())
+    {
+      ashz.a().a().doBindService(BaseApplicationImpl.getApplication());
+      ashz.a().a(new osk(this));
+      return false;
     }
-    return new oog(paramCharSequence, 3, 20);
+    Bundle localBundle = asdd.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    ashz.a().a(localBundle);
+    return false;
   }
 }
 

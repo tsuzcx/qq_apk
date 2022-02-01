@@ -1,82 +1,184 @@
+import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.AudioHelper;
-import mqq.app.AppRuntime;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nonnull;
 import mqq.app.MobileQQ;
 
 public class avxi
 {
-  public static void a(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord)
+  private static volatile String a;
+  
+  public static int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
-    a(paramContext, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramMessageRecord, null);
+    int i = 1;
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {}
+    do
+    {
+      try
+      {
+        paramContext = new Intent();
+        paramContext.setAction("action_show_together_floating_windows");
+        paramContext.setPackage(MobileQQ.getContext().getPackageName());
+        paramContext.putExtra("com.tencent.mobileqq.webprocess.together.floating.data", paramWatchTogetherFloatingData);
+        paramContext.setComponent(new ComponentName(MobileQQ.getContext(), "com.tencent.mobileqq.webprocess.WebProcessReceiver"));
+        BaseApplicationImpl.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow main..., data=", paramWatchTogetherFloatingData.toString() });
+        }
+        i = 0;
+        return i;
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
+      }
+    } while (avxo.a().a(paramContext, paramWatchTogetherFloatingData) == 0);
+    return 2;
   }
   
-  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord, String paramString2)
+  public static Dialog a(Context paramContext)
   {
-    if (yyi.b(paramString1))
+    if (paramContext == null) {
+      return null;
+    }
+    biwm.b();
+    paramContext = bhdj.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690697), paramContext.getString(2131694399), new avxj(paramContext), null);
+    paramContext.setCancelable(false);
+    return paramContext;
+  }
+  
+  public static Dialog a(Context paramContext, Intent paramIntent)
+  {
+    paramContext = bkzi.a(paramContext);
+    paramContext.b(2131716591);
+    paramContext.a(2131690849, 3);
+    paramContext.c(2131690697);
+    paramContext.a(new avxk(paramIntent, paramContext));
+    return paramContext;
+  }
+  
+  public static void a()
+  {
+    a = "";
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
     {
-      paramMessageRecord = new Intent(paramContext, JoinDiscussionActivity.class);
-      int i = paramString1.indexOf("dc/ft?k=");
-      if (i > 0) {
-        paramMessageRecord.putExtra("innerSig", paramString1.substring("dc/ft?k=".length() + i));
+      Bundle localBundle = new Bundle();
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS", localBundle, new avxn());
+      return;
+    }
+    avxo.a().b();
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    Intent localIntent = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+    localIntent.putExtra("key_dialog_type", paramInt);
+    localIntent.putExtra("cur_uin", paramString);
+    localIntent.addFlags(805306368);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
+  {
+    if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getQQProcessName() == null)) {}
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return;
+      if (BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {
+        break;
       }
-      for (;;)
+      bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
+      bool2 = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+      }
+    } while ((!bool1) && (!bool2));
+    a = "";
+    paramContext = new Bundle();
+    paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new avxm());
+    return;
+    avxo.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+  }
+  
+  public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "setIsWatchFloatingShow isShow=", Boolean.valueOf(paramBoolean1), " uin=", paramString, " sessionType=", Integer.valueOf(paramInt) });
+    }
+    if (!paramBoolean1) {}
+    for (a = "";; a = "2_" + paramString + "_" + paramInt)
+    {
+      if (7 == BaseApplicationImpl.sProcessId)
       {
-        paramContext.startActivity(paramMessageRecord);
-        return;
-        paramMessageRecord.putExtra("innerSig", paramString1);
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
+        localBundle.putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
+        localBundle.putString("BUNDLE_SET_KEY_UIN", paramString);
+        localBundle.putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
+        QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", localBundle, new avxl());
       }
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (tgc.b(paramString1)))
-    {
-      tgc.a(paramContext, null, tgc.b(paramString1), null);
       return;
     }
-    AudioHelper.b("gotoWebViewBrowser_" + paramString1);
-    Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
-    localIntent.putExtra("param_force_internal_browser", paramBoolean4);
-    localIntent.putExtra("key_isReadModeEnabled", paramBoolean1);
-    localIntent.putExtra("big_brother_source_key", paramString2);
-    if ((paramContext instanceof BaseActivity)) {
-      localIntent.putExtra("uin", ((BaseActivity)paramContext).getAppRuntime().getAccount());
-    }
-    localIntent.putExtra("useDefBackText", paramBoolean3);
-    localIntent.putExtra("injectrecommend", paramBoolean2);
-    if (paramMessageRecord != null)
+  }
+  
+  public static boolean a()
+  {
+    return TextUtils.isEmpty(a);
+  }
+  
+  public static boolean a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramInt1 != 2) {}
+    do
     {
-      localIntent.putExtra("curtype", paramMessageRecord.istroop);
-      localIntent.putExtra("friendUin", paramMessageRecord.frienduin);
-      if (paramMessageRecord.istroop != 0) {
-        break label347;
-      }
-      localIntent.putExtra("articalChannelId", 2);
+      do
+      {
+        return false;
+        if (QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool")) {
+          break;
+        }
+        a = null;
+      } while (!QLog.isColorLevel());
+      QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
+      return false;
+    } while ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId));
+    paramString = paramInt1 + "_" + paramString + "_" + paramInt2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "key=", paramString, " info=", a });
     }
-    for (;;)
-    {
-      localIntent.putExtra("url", paramString1);
-      localIntent.putExtra("fromOneCLickCLose", true);
-      localIntent.putExtra("fromAio", true);
-      ugf.a(paramMessageRecord, localIntent, paramString1);
-      paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if ((paramString2 instanceof QQAppInterface)) {
-        aewt.a(localIntent, (QQAppInterface)paramString2, paramMessageRecord);
-      }
-      aeub.a(paramContext, localIntent, paramString1);
-      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
-      return;
-      label347:
-      if (paramMessageRecord.istroop == 1) {
-        localIntent.putExtra("articalChannelId", 3);
-      } else if (paramMessageRecord.istroop == 3000) {
-        localIntent.putExtra("articalChannelId", 4);
-      }
-    }
+    return TextUtils.equals(paramString, a);
+  }
+  
+  public static boolean b()
+  {
+    return a == null;
+  }
+  
+  public static boolean b(int paramInt1, String paramString, int paramInt2)
+  {
+    return TextUtils.equals(paramInt1 + "_" + paramString + "_" + paramInt2, a);
   }
 }
 

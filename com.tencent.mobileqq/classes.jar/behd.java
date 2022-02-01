@@ -1,43 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.lang.ref.WeakReference;
 
-class behd
-  extends zrw
+public class behd
+  extends ClickableSpan
 {
-  behd(behb parambehb) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public behd(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (paramFileInfo == null)) {}
-    Object localObject2;
-    Object localObject1;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localObject2 = paramFileInfo.str_file_id.get();
-          } while (TextUtils.isEmpty((CharSequence)localObject2));
-          localObject1 = localObject2;
-          if (!((String)localObject2).startsWith("/")) {
-            localObject1 = "/" + (String)localObject2;
-          }
-        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
-        befc.c("TroopFileUploadFeedsSender", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
-        localObject2 = befa.a(this.a.d);
-      } while (localObject2 == null);
-      localObject1 = ((bfbb)localObject2).a((String)localObject1);
-    } while (localObject1 == null);
-    ((bebc)localObject1).a = paramFileInfo.uint32_bus_id.get();
-    ((bebc)localObject1).c = paramFileInfo.uint32_dead_time.get();
-    ((bfbb)localObject2).d((bebc)localObject1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null) {
+      paramView.startActivity(new Intent(paramView, QQBrowserActivity.class).putExtra("url", this.jdField_a_of_type_JavaLangString));
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(this.jdField_a_of_type_Boolean);
   }
 }
 

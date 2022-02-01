@@ -1,30 +1,43 @@
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
 public class afmr
+  implements BusinessObserver
 {
-  public float a;
-  public long a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public afmr(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  afmr()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(afmr paramafmr)
-  {
-    this.jdField_a_of_type_Float = paramafmr.jdField_a_of_type_Float;
-    this.b = paramafmr.b;
-    this.c = paramafmr.c;
-    this.jdField_a_of_type_Long = paramafmr.jdField_a_of_type_Long;
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
+    }
+    if (paramInt == 2005)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
+      }
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
+    }
+    else
+    {
+      return;
+    }
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 

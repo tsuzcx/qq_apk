@@ -1,27 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class mxs
-  implements DialogInterface.OnClickListener
+public class mxs
+  implements View.OnClickListener
 {
-  mxs(mxn parammxn, Activity paramActivity) {}
+  public mxs(QGroupExpandableListAdapter paramQGroupExpandableListAdapter, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-    }
+    this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter.a[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_ComTencentAvWtogetherAdapterQGroupExpandableListAdapter.notifyDataSetChanged();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mxs
  * JD-Core Version:    0.7.0.1
  */

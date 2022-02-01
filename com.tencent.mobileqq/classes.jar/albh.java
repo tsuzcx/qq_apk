@@ -1,23 +1,55 @@
+import VACDReport.ReportReq;
+import VACDReport.ReportRsp;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class albh
-  extends nmf
+  extends MSFServlet
 {
-  albh(albg paramalbg) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+    if ((paramFromServiceMsg == null) || (paramIntent == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("VACDReport", 2, "onReceive request or response is null");
+      }
+    }
+    while (!"QQWalletPayReportSvc.vacdReportProxy".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (ReportRsp localReportRsp = (ReportRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportRsp());; localReportRsp = null)
+    {
+      Bundle localBundle = new Bundle();
+      if (localReportRsp != null) {
+        localBundle.putSerializable("rsp", localReportRsp);
+      }
+      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
+      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    switch (paramIntent.getExtras().getInt("cmd_type"))
+    {
+    default: 
+      return;
+    }
+    try
+    {
+      paramPacket.addRequestPacket("req", (ReportReq)paramIntent.getSerializableExtra("req"));
+      paramPacket.setSSOCommand("QQWalletPayReportSvc.vacdReportProxy");
+      paramPacket.setFuncName("vacdReportProxy");
+      paramPacket.setServantName("MQQ.VACDReportServer.VACDReportObj");
+      paramPacket.setTimeout(15000L);
+      return;
+    }
+    catch (OutOfMemoryError paramIntent) {}
   }
 }
 

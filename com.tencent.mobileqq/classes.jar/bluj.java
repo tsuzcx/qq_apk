@@ -1,98 +1,31 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaMuxer;
-import android.support.annotation.RequiresApi;
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveLaunchFragment;
+import java.util.HashMap;
 
-public class bluj
+class bluj
+  implements SDKInitListener
 {
-  @Nullable
-  @RequiresApi(api=18)
-  public static String a(String paramString1, String paramString2, String paramString3)
+  bluj(blui paramblui) {}
+  
+  public void onSDKInited(boolean paramBoolean)
   {
-    MediaExtractor localMediaExtractor;
-    int j;
-    ByteBuffer localByteBuffer2;
-    MediaCodec.BufferInfo localBufferInfo1;
-    MediaCodec.BufferInfo localBufferInfo2;
-    for (;;)
+    blvl.b("IliveLaunch initSDKAsync");
+    HashMap localHashMap = new HashMap();
+    if (bapt.b()) {}
+    for (String str = "sucess";; str = "error")
     {
-      try
-      {
-        new File(paramString3).createNewFile();
-        localMediaExtractor = new MediaExtractor();
-        localMediaExtractor.setDataSource(paramString2);
-        paramString2 = new MediaExtractor();
-        paramString2.setDataSource(paramString1);
-        paramString1 = new MediaMuxer(paramString3, 0);
-        localMediaExtractor.selectTrack(0);
-        k = paramString1.addTrack(localMediaExtractor.getTrackFormat(0));
-        paramString2.selectTrack(0);
-        j = paramString1.addTrack(paramString2.getTrackFormat(0));
-        i = 0;
-        localByteBuffer1 = ByteBuffer.allocate(1048576);
-        localByteBuffer2 = ByteBuffer.allocate(1048576);
-        localBufferInfo1 = new MediaCodec.BufferInfo();
-        localBufferInfo2 = new MediaCodec.BufferInfo();
-        localMediaExtractor.seekTo(0L, 2);
-        paramString2.seekTo(0L, 2);
-        paramString1.start();
+      localHashMap.put("status_msg", str);
+      localHashMap.put("isDebug", "0");
+      bhpu.a("live_player_load", localHashMap, System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+      QLog.e("IliveLaunchActivity", 1, "initVideoSDK status = " + bapt.b());
+      IliveLaunchFragment.access$202(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment, bapt.b());
+      QLog.e("IliveLaunchActivity", 1, "initVideoSDK onSDKInited = " + paramBoolean);
+      if (!IliveLaunchFragment.access$200(this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment)) {
+        this.a.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
       }
-      catch (IOException paramString1)
-      {
-        int k;
-        ByteBuffer localByteBuffer1;
-        bmbx.a("AEVoiceVideoMergeUtil", "Mixer Error 1 " + paramString1.toString(), paramString1);
-        return null;
-        localBufferInfo1.presentationTimeUs = localMediaExtractor.getSampleTime();
-        localBufferInfo1.flags = localMediaExtractor.getSampleFlags();
-        paramString1.writeSampleData(k, localByteBuffer1, localBufferInfo1);
-        localMediaExtractor.advance();
-        continue;
-      }
-      catch (Exception paramString1)
-      {
-        bmbx.a("AEVoiceVideoMergeUtil", "Mixer Error 2 " + paramString1.toString(), paramString1);
-        return null;
-      }
-      if (i != 0) {
-        break label286;
-      }
-      localBufferInfo1.offset = 0;
-      localBufferInfo1.size = localMediaExtractor.readSampleData(localByteBuffer1, 0);
-      if ((localBufferInfo1.size >= 0) && (localBufferInfo2.size >= 0)) {
-        continue;
-      }
-      i = 1;
-      localBufferInfo1.size = 0;
+      return;
     }
-    label286:
-    int i = 0;
-    while (i == 0)
-    {
-      localBufferInfo2.offset = 0;
-      localBufferInfo2.size = paramString2.readSampleData(localByteBuffer2, 0);
-      if ((localBufferInfo1.size < 0) || (localBufferInfo2.size < 0))
-      {
-        i = 1;
-        localBufferInfo2.size = 0;
-      }
-      else
-      {
-        localBufferInfo2.presentationTimeUs = paramString2.getSampleTime();
-        localBufferInfo2.flags = paramString2.getSampleFlags();
-        paramString1.writeSampleData(j, localByteBuffer2, localBufferInfo2);
-        paramString2.advance();
-      }
-    }
-    paramString1.stop();
-    paramString1.release();
-    paramString2.release();
-    localMediaExtractor.release();
-    return paramString3;
   }
 }
 

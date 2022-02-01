@@ -1,23 +1,53 @@
-import android.os.Parcel;
-import android.os.Parcelable.ClassLoaderCreator;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class avzd
-  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
+public class avzd
+  extends WebViewPlugin
 {
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
+  aady a;
+  
+  public avzd()
   {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
+    this.mPluginNameSpace = "connect";
   }
   
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+    boolean bool = false;
+    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
+    try
+    {
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.optString("appid");
+      paramString1 = paramString3.optString("openid");
+      paramString2 = paramString3.optString("troopuin");
+      paramString3 = paramString3.optString("callback");
+      if (this.a == null)
+      {
+        this.a = aady.a();
+        this.a.a();
+      }
+      this.a.b(paramJsBridgeListener, paramString1, paramString2, new avze(this, paramString3));
+      bool = true;
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
+    }
+    return bool;
+    return false;
   }
   
-  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  public void onDestroy()
   {
-    return new MultiAIOBaseViewPager.SavedState[paramInt];
+    super.onDestroy();
+    if (this.a != null) {
+      this.a.b();
+    }
   }
 }
 

@@ -2,13 +2,13 @@ package dov.com.qq.im.aeeditor.lyric.widget;
 
 import android.os.SystemClock;
 import android.util.Log;
-import bmej;
+import bnub;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 
 public class LyricViewController$4
   implements Runnable
 {
-  public LyricViewController$4(bmej parambmej, int paramInt, boolean paramBoolean) {}
+  public LyricViewController$4(bnub parambnub, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ public class LyricViewController$4
     this.this$0.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Int);
     if ((this.this$0.jdField_a_of_type_Boolean) && (this.this$0.jdField_a_of_type_Int > 0))
     {
-      bmej localbmej = this.this$0;
-      localbmej.jdField_a_of_type_Long -= this.this$0.jdField_a_of_type_Int;
+      bnub localbnub = this.this$0;
+      localbnub.jdField_a_of_type_Long -= this.this$0.jdField_a_of_type_Int;
     }
-    bmej.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    bnub.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

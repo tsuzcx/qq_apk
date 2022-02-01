@@ -1,0 +1,122 @@
+package com.tencent.mtt.abtestsdk.utils;
+
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.FormBody.Builder;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request.Builder;
+
+public class OkHttpHelper
+{
+  private static final int DEFAULT_TIMEOUT_SECOND = 3;
+  private static volatile OkHttpHelper sInstance = null;
+  private OkHttpClient mClient = new OkHttpClient();
+  
+  public static OkHttpHelper getsInstance()
+  {
+    if (sInstance == null) {}
+    try
+    {
+      if (sInstance == null) {
+        sInstance = new OkHttpHelper();
+      }
+      return sInstance;
+    }
+    finally {}
+  }
+  
+  public OkHttpClient getOkHttpClient()
+  {
+    if (this.mClient == null)
+    {
+      ABTestLog.warn("mClient is null and reset init mClient", new Object[0]);
+      this.mClient = new OkHttpClient();
+    }
+    return this.mClient;
+  }
+  
+  public void postRequestWithFormBody(String paramString, Map<String, String> paramMap, int paramInt, Callback paramCallback)
+  {
+    if ((paramMap == null) || (paramMap.isEmpty()))
+    {
+      ABTestLog.warn("post request body is null, please check it!", new Object[0]);
+      paramCallback.onFailure(null, new IOException("body params is null"));
+      return;
+    }
+    try
+    {
+      FormBody.Builder localBuilder = new FormBody.Builder();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localBuilder.add((String)localEntry.getKey(), (String)localEntry.getValue());
+      }
+      paramMap = localBuilder.build();
+    }
+    catch (Exception paramString)
+    {
+      ABTestLog.error(paramString.getMessage(), new Object[0]);
+      return;
+    }
+    paramString = new Request.Builder().url(paramString).post(paramMap).build();
+    if (this.mClient == null)
+    {
+      ABTestLog.warn("mClient is null and reset init mClient", new Object[0]);
+      this.mClient = new OkHttpClient();
+    }
+    for (;;)
+    {
+      this.mClient.newBuilder().connectTimeout(paramInt, TimeUnit.SECONDS).readTimeout(paramInt, TimeUnit.SECONDS).writeTimeout(paramInt, TimeUnit.SECONDS).build().newCall(paramString).enqueue(paramCallback);
+      return;
+      do
+      {
+        paramInt = 3;
+        break;
+      } while (paramInt <= 0);
+    }
+  }
+  
+  public void postRequestWithJSONBody(String paramString, Object paramObject, int paramInt, Callback paramCallback)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramObject = FormBody.create(MediaType.parse("application/json; charset=utf-8"), paramObject.toString());
+        paramString = new Request.Builder().url(paramString).post(paramObject).build();
+        if (this.mClient != null) {
+          break label126;
+        }
+        ABTestLog.warn("mClient is null and reset init mClient", new Object[0]);
+        this.mClient = new OkHttpClient();
+      }
+      catch (Exception paramString)
+      {
+        ABTestLog.error(paramString.getMessage(), new Object[0]);
+        return;
+      }
+      this.mClient.newBuilder().connectTimeout(paramInt, TimeUnit.SECONDS).readTimeout(paramInt, TimeUnit.SECONDS).writeTimeout(paramInt, TimeUnit.SECONDS).build().newCall(paramString).enqueue(paramCallback);
+      return;
+      paramInt = 3;
+      continue;
+      label126:
+      if (paramInt <= 0) {}
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mtt.abtestsdk.utils.OkHttpHelper
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,24 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.ad.TianshuBigInsertPage.4.1;
+import com.tencent.widget.HongBaoListView;
 
-public class bkzb
-  implements akbj
+public abstract interface bkzb
 {
-  bkzb(bkyx parambkyx) {}
+  public abstract void a();
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TianshuBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
-      bkyx.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(HongBaoListView paramHongBaoListView);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

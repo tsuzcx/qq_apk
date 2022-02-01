@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxi
+  implements nuw
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
+  public akxi(PreloadModule paramPreloadModule) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    try
-    {
-      if (akxh.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        akxh.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          akxh.b = false;
-        }
-        return localByteBuffer2;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ony;
-import ooa;
+import ovv;
+import ovx;
 
 public class AsyncSteps$1
   implements Runnable
 {
-  public AsyncSteps$1(ony paramony, ooa paramooa) {}
+  public AsyncSteps$1(ovv paramovv, ovx paramovx) {}
   
   public void run()
   {

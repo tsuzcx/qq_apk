@@ -1,25 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class akty
-  implements Handler.Callback
+public class akty
 {
-  akty(aktx paramaktx) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigHandler", 2, "onReceivePreExec|" + paramString1 + "|" + paramString2 + "|" + paramString3);
     }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (aktx.a(this.a) != null) {
-        aktx.a(this.a).e();
-      }
-    }
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3))) {}
   }
 }
 

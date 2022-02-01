@@ -1,14 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
+import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.HttpEntityWrapper;
 
 class kzh
-  extends Handler
+  extends HttpEntityWrapper
 {
-  kzh(kzg paramkzg) {}
-  
-  public void handleMessage(Message paramMessage)
+  public kzh(HttpEntity paramHttpEntity)
   {
-    this.a.a(paramMessage);
+    super(paramHttpEntity);
+  }
+  
+  public InputStream getContent()
+  {
+    return new GZIPInputStream(this.wrappedEntity.getContent());
+  }
+  
+  public long getContentLength()
+  {
+    return -1L;
   }
 }
 

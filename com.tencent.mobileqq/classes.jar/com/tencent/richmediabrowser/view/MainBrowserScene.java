@@ -107,7 +107,7 @@ public class MainBrowserScene
   
   protected RelativeLayout createLayout()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559333, null);
+    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559383, null);
   }
   
   public RelativeLayout getContentView()
@@ -147,12 +147,12 @@ public class MainBrowserScene
   
   public void initView()
   {
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365073));
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365157));
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
       this.recyclerView.scrollToPosition(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
     this.recyclerView.setVisibility(0);
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131365800));
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131365898));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();

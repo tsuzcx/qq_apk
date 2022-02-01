@@ -1,10 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
 
-public final class aygd
-  implements DialogInterface.OnClickListener
+public class aygd
+  extends axnm
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  aygd(ayfx paramayfx) {}
+  
+  public void a(axnn paramaxnn)
+  {
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramaxnn), 8, null, false);
+    this.a.a = paramaxnn;
+  }
 }
 
 

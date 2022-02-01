@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class xay
-  implements DialogInterface.OnDismissListener
+  extends AnimatorListenerAdapter
 {
-  xay(xax paramxax, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xay(xax paramxax) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
   }
 }
 

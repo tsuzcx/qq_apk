@@ -1,36 +1,31 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-final class axqi
-  implements INetEngine.IBreakDownFix
+class axqi
+  implements aulc
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  axqi(axqg paramaxqg) {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("OlympicResources", 2, "IBreakDownFix, " + paramNetResp);
+    QLog.d(axqg.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
   }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.d(axqg.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
+    }
+  }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

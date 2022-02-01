@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import atzj;
+import avez;
 import java.util.List;
 
 public class GameSessionView$3$1
   implements Runnable
 {
-  public GameSessionView$3$1(atzj paramatzj, List paramList) {}
+  public GameSessionView$3$1(avez paramavez, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atzj.a.setData(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Avez.a.setData(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

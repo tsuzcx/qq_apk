@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
 
 public class ajmd
-  implements View.OnClickListener
+  extends anvi
 {
-  public ajmd(ContactListView paramContactListView) {}
+  public ajmd(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
-    ContactListView.a(this.a, null);
-    bksm.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {
+      this.a.i();
+    }
   }
 }
 

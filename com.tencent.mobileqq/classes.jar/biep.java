@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.VirtualInfo;
+import android.view.animation.Transformation;
 
-public final class biep
-  implements Parcelable.Creator<VirtualInfo>
+class biep
+  implements bhir<Integer>
 {
-  public VirtualInfo a(Parcel paramParcel)
-  {
-    return new VirtualInfo(paramParcel);
-  }
+  biep(bieo parambieo) {}
   
-  public VirtualInfo[] a(int paramInt)
+  public void a(bhil<Integer> parambhil, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    return new VirtualInfo[paramInt];
+    this.a.setTitleBarAlpha(paramInteger.intValue());
   }
 }
 

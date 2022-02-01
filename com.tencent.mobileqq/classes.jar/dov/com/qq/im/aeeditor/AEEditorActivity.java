@@ -16,15 +16,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bljd;
-import blvr;
-import bmbg;
-import bmbx;
-import bmby;
-import bmcr;
-import bmcs;
-import bmcu;
-import bmez;
+import bmwb;
+import bnlb;
+import bnqq;
+import bnrh;
+import bnri;
+import bnsi;
+import bnsj;
+import bnsm;
+import bnur;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity;
@@ -54,20 +54,20 @@ public class AEEditorActivity
 {
   private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
   private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
-  private bmcu jdField_a_of_type_Bmcu;
-  private List<bmcs> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private bnsm jdField_a_of_type_Bnsm;
+  private List<bnsj> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private List<String> b = new ArrayList();
   private List<String> c = new ArrayList();
   
   private void a()
   {
-    if (!bljd.a()) {
-      this.jdField_a_of_type_JavaUtilList.add(new bmcs(this, -1));
+    if (!bmwb.a()) {
+      this.jdField_a_of_type_JavaUtilList.add(new bnsj(this, -1));
     }
     for (;;)
     {
-      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bmcr(this));
+      TAVCut.initTAVCut(getApplicationContext(), FeatureManager.getResourceDir(), FeatureManager.getResourceDir(), new bnsi(this));
       return;
       a(FeatureManager.Features.YT_COMMON.init(), -2);
       a(FeatureManager.Features.PTU_TOOLS.init(), -3);
@@ -81,7 +81,7 @@ public class AEEditorActivity
   private void a(boolean paramBoolean, int paramInt)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.add(new bmcs(this, paramInt));
+      this.jdField_a_of_type_JavaUtilList.add(new bnsj(this, paramInt));
     }
   }
   
@@ -101,15 +101,15 @@ public class AEEditorActivity
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        bmcs localbmcs = (bmcs)localIterator.next();
-        ((StringBuilder)localObject).append(localbmcs.toString() + "\n");
+        bnsj localbnsj = (bnsj)localIterator.next();
+        ((StringBuilder)localObject).append(localbnsj.toString() + "\n");
       }
       localObject = ((StringBuilder)localObject).toString();
-      bmbx.d("AEEditorActivity", "checkInitResult--" + (String)localObject);
+      bnrh.d("AEEditorActivity", "checkInitResult--" + (String)localObject);
       return;
     }
     VideoThumbProviderManager.initLruCacheSize(3072);
-    Object localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837929);
+    Object localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837943);
     if ((localObject instanceof BitmapDrawable)) {
       VideoThumbProviderManager.getInstance().setDefaultBitmap(((BitmapDrawable)localObject).getBitmap());
     }
@@ -129,8 +129,8 @@ public class AEEditorActivity
     if (getIntent().getExtras() != null) {
       localBundle = getIntent().getExtras();
     }
-    this.jdField_a_of_type_Bmcu = new bmcu(getSupportFragmentManager());
-    this.jdField_a_of_type_Bmcu.a(localBundle);
+    this.jdField_a_of_type_Bnsm = new bnsm(getSupportFragmentManager());
+    this.jdField_a_of_type_Bnsm.a(localBundle);
   }
   
   private void e()
@@ -138,43 +138,43 @@ public class AEEditorActivity
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("editorType", -1);
     int j = localIntent.getIntExtra("editorFrom", -1);
-    if ((j == blvr.x.a()) || (j == blvr.z.a())) {
+    if ((j == bnlb.x.a()) || (j == bnlb.z.a())) {
       if (i == 0) {
-        bmbg.a().a().b = bmbg.b.longValue();
+        bnqq.a().a().b = bnqq.b.longValue();
       }
     }
     for (;;)
     {
-      bmbg.a().a().a = bmbg.a().b();
+      bnqq.a().a().a = bnqq.a().b();
       return;
       if (i == 1)
       {
-        bmbg.a().a().b = bmbg.c.longValue();
+        bnqq.a().a().b = bnqq.c.longValue();
       }
       else
       {
-        bmbg.a().a().b = bmbg.a.longValue();
+        bnqq.a().a().b = bnqq.a.longValue();
         continue;
-        if ((j == blvr.y.a()) || (j == blvr.A.a()))
+        if ((j == bnlb.y.a()) || (j == bnlb.A.a()))
         {
           if (i == 0) {
-            bmbg.a().a().b = bmbg.d.longValue();
+            bnqq.a().a().b = bnqq.d.longValue();
           } else if (i == 1) {
-            bmbg.a().a().b = bmbg.e.longValue();
+            bnqq.a().a().b = bnqq.e.longValue();
           } else {
-            bmbg.a().a().b = bmbg.a.longValue();
+            bnqq.a().a().b = bnqq.a.longValue();
           }
         }
         else {
-          bmbg.a().a().b = bmbg.a.longValue();
+          bnqq.a().a().b = bnqq.a.longValue();
         }
       }
     }
   }
   
-  public bmcu a()
+  public bnsm a()
   {
-    return this.jdField_a_of_type_Bmcu;
+    return this.jdField_a_of_type_Bnsm;
   }
   
   @Override
@@ -189,23 +189,23 @@ public class AEEditorActivity
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    bmbx.b("AEEditorActivity", "doOnActivityResult---requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
-    if (this.jdField_a_of_type_Bmcu != null) {
-      this.jdField_a_of_type_Bmcu.a(paramInt1, paramInt2, paramIntent);
+    bnrh.b("AEEditorActivity", "doOnActivityResult---requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
+    if (this.jdField_a_of_type_Bnsm != null) {
+      this.jdField_a_of_type_Bnsm.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void doOnBackPressed()
   {
-    if (this.jdField_a_of_type_Bmcu != null) {
-      this.jdField_a_of_type_Bmcu.a(this, true);
+    if (this.jdField_a_of_type_Bnsm != null) {
+      this.jdField_a_of_type_Bnsm.a(this, true);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    bmby.a();
-    this.jdField_a_of_type_Boolean = bmby.a();
+    bnri.a();
+    this.jdField_a_of_type_Boolean = bnri.a();
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
     setImmersiveStatus(getResources().getColor(2131165215));
@@ -213,10 +213,10 @@ public class AEEditorActivity
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-      setContentView(2131558538);
+      setContentView(2131558549);
       if (Build.VERSION.SDK_INT >= 19)
       {
-        paramBundle = (RelativeLayout)findViewById(2131376679);
+        paramBundle = (RelativeLayout)findViewById(2131376947);
         int i = getStatusBarHeight();
         paramBundle.setPadding(paramBundle.getPaddingLeft(), i + paramBundle.getPaddingTop(), paramBundle.getPaddingRight(), paramBundle.getPaddingBottom());
       }
@@ -225,7 +225,7 @@ public class AEEditorActivity
       }
       a();
       c();
-      bmez.a();
+      bnur.a();
       e();
       b();
       return true;
@@ -242,7 +242,7 @@ public class AEEditorActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bmez.b();
+    bnur.b();
     VideoThumbProviderManager.getInstance().release(String.valueOf(hashCode()));
     try
     {

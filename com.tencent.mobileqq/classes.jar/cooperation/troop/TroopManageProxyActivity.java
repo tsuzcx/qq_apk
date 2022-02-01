@@ -6,9 +6,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bcef;
-import bkkq;
-import bkkz;
+import bdla;
+import blvy;
+import blwh;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class TroopManageProxyActivity
@@ -16,22 +16,22 @@ public class TroopManageProxyActivity
 {
   public static void a(String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    bkkz localbkkz = new bkkz(1);
-    localbkkz.jdField_b_of_type_JavaLangString = paramString1;
-    localbkkz.d = paramString2;
-    localbkkz.jdField_a_of_type_JavaLangString = paramString4;
-    localbkkz.e = paramString3;
-    localbkkz.jdField_a_of_type_JavaLangClass = paramClass;
-    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbkkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    blwh localblwh = new blwh(1);
+    localblwh.jdField_b_of_type_JavaLangString = paramString1;
+    localblwh.d = paramString2;
+    localblwh.jdField_a_of_type_JavaLangString = paramString4;
+    localblwh.e = paramString3;
+    localblwh.jdField_a_of_type_JavaLangClass = paramClass;
+    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblwh.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbkkz.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
-    localbkkz.jdField_b_of_type_Int = paramInt;
-    localbkkz.c = 10000;
-    localbkkz.f = null;
-    bkkq.a(paramActivity, localbkkz);
-    bcef.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
+    localblwh.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
+    localblwh.jdField_b_of_type_Int = paramInt;
+    localblwh.c = 10000;
+    localblwh.f = null;
+    blvy.a(paramActivity, localblwh);
+    bdla.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
   }
   
   @Override

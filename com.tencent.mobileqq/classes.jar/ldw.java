@@ -1,30 +1,53 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.app.DeviceCapabilityExamination;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class ldw
-  extends BroadcastReceiver
+public class ldw
+  implements INetEngine.INetEngineListener
 {
-  ldw(ldv paramldv) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onResp(NetResp paramNetResp)
   {
-    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
+    boolean bool = false;
+    String str1 = (String)paramNetResp.mReq.getUserData();
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    }
+    try
     {
-      long l = mtt.a(paramIntent);
-      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
-      paramContext = ldv.a(this.a).a();
-      if (paramContext != null)
+      if (DeviceCapabilityExamination.a != null)
       {
-        paramContext.a(false, 202, new int[] { paramContext.a().D });
-        paramContext.b(202);
-        paramContext.d(1011);
+        DeviceCapabilityExamination.a.a(str1, bool);
+        if (DeviceCapabilityExamination.a.a()) {
+          DeviceCapabilityExamination.a = null;
+        }
+      }
+      if (!bool)
+      {
+        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + paramNetResp.mResult + "]");
+        return;
       }
     }
+    finally {}
+    try
+    {
+      String str2 = DeviceCapabilityExamination.b(str1);
+      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, str2, false);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      paramNetResp = new File(DeviceCapabilityExamination.a(str1));
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + paramNetResp.exists() + "]");
+      return;
+    }
+    catch (Exception paramNetResp)
+    {
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
+    }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

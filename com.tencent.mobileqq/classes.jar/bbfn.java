@@ -1,56 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class bbfn
-  implements Comparator<bayp>
+  extends Handler
 {
-  bbfn(bbfm parambbfm) {}
-  
-  public int a(bayp parambayp1, bayp parambayp2)
+  public bbfn(Looper paramLooper)
   {
-    int i = -1;
-    Object localObject = (avsy)this.a.a.getManager(11);
-    parambayp1 = ((avsy)localObject).c(((baxl)parambayp1).e());
-    parambayp2 = ((avsy)localObject).c(((baxl)parambayp2).e());
-    if ((parambayp1 == null) || (parambayp2 == null)) {
-      if ((parambayp1 == null) && (parambayp2 == null)) {
-        i = 0;
-      }
-    }
-    boolean bool2;
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    bbfr.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
     {
-      do
-      {
-        return i;
-        if (parambayp2 == null) {}
-        for (i = -1;; i = 1) {
-          return i;
-        }
-        if ((parambayp1.uin.equals("0")) && (parambayp2.uin.equals("0"))) {
-          break;
-        }
-        if ((!parambayp1.uin.equals("0")) && (!parambayp2.uin.equals("0"))) {
-          return 0;
-        }
-      } while (!parambayp2.uin.equals("0"));
-      return 1;
-      if (!parambayp1.uin.equals("0")) {
-        break;
-      }
-      localObject = (amsw)this.a.a.getManager(51);
-      boolean bool1 = ((amsw)localObject).a(parambayp1.unifiedCode, true);
-      bool2 = ((amsw)localObject).a(parambayp2.unifiedCode, true);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return 0;
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      bbfr.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
+    }
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    }
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    bbfr.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 

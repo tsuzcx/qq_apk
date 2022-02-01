@@ -1,21 +1,15 @@
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
 class oio
-  implements QQPermissionCallback
+  implements bkzu
 {
-  oio(oif paramoif, Runnable paramRunnable) {}
+  oio(oin paramoin) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void ad_()
   {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    oif.a(this.jdField_a_of_type_Oif, 3);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
+    }
   }
 }
 

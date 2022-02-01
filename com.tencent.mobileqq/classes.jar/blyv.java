@@ -1,44 +1,45 @@
-import android.graphics.Rect;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 class blyv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ServiceConnection
 {
-  blyv(blys paramblys, View paramView1, View paramView2, View paramView3) {}
+  blyv(blyu paramblyu) {}
   
-  public void onGlobalLayout()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    Log.d("AEGIFTextEditFragment", "onGlobalLayout");
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    if (this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.bottom > 150)
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    blyu.a(this.a, blxz.a(paramIBinder));
+    blyu.a(this.a, false);
+    blyu.a(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    try
     {
-      int[] arrayOfInt = new int[2];
-      this.b.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[1];
-      int j = this.b.getHeight();
-      int k = localRect.bottom;
-      int m = localRect.top;
-      if (!blys.b(this.jdField_a_of_type_Blys))
-      {
-        this.b.scrollBy(0, i + j - (k - m));
-        blys.a(this.jdField_a_of_type_Blys, this.c, localRect.bottom / 2);
-      }
-      blys.a(this.jdField_a_of_type_Blys, true);
+      blyu.a(this.a).getApplication().unbindService(blyu.a(this.a));
+      blyu.a(this.a, null);
+      blyu.a(this.a, false);
       return;
     }
-    this.b.scrollTo(0, 0);
-    if (blys.b(this.jdField_a_of_type_Blys)) {
-      blys.a(this.jdField_a_of_type_Blys, this.c, localRect.bottom / 2);
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
     }
-    blys.a(this.jdField_a_of_type_Blys, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyv
  * JD-Core Version:    0.7.0.1
  */

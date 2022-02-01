@@ -1,36 +1,58 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
 public class whh
-  extends wje
+  extends wgg
 {
-  StoryVideoItem a;
-  public xcs a;
+  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public whh(StoryVideoItem paramStoryVideoItem)
+  public whh(wgm paramwgm, ShareGroupItem paramShareGroupItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    super(paramwgm);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
+    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
   }
   
-  public void a()
+  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-    {
-      xvv.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+      super.a(paramView, paramCommentEntry, paramInt);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
-    {
-      this.jdField_a_of_type_Xcs = new xcp();
-      this.jdField_a_of_type_Xcs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new whi(this));
-      return;
+    paramView = QQStoryContext.a().b();
+    bkzi localbkzi = bkzi.a(this.jdField_a_of_type_Wgm.a);
+    if (paramCommentEntry.authorUnionId.equals(paramView)) {
+      if (paramCommentEntry.status == 2)
+      {
+        localbkzi.c(anvx.a(2131713385));
+        localbkzi.a(anvx.a(2131713379), 3);
+      }
     }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
+    for (;;)
+    {
+      localbkzi.d(anvx.a(2131713361));
+      localbkzi.a(new wgj(this, localbkzi, paramCommentEntry, paramInt));
+      localbkzi.show();
+      return;
+      localbkzi.c(anvx.a(2131713362));
+      break;
+      if ((this.b) && (this.jdField_a_of_type_Boolean))
+      {
+        localbkzi.c(anvx.a(2131713373));
+        localbkzi.a(anvx.a(2131713382), 3);
+        localbkzi.c(anvx.a(2131713389));
+      }
+      else
+      {
+        localbkzi.c(anvx.a(2131713372));
+        localbkzi.c(anvx.a(2131713380));
+      }
+    }
   }
-  
-  protected void a(Map<String, Object> paramMap) {}
 }
 
 

@@ -1,13 +1,10 @@
-import android.view.View;
-import android.widget.TextView;
-
-class aveo
+public class aveo
 {
-  View a;
-  public TextView a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  public View c;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

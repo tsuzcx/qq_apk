@@ -1,11 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import amip;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class BaseChatPie$15
   implements DialogInterface.OnClickListener
@@ -14,9 +11,7 @@ class BaseChatPie$15
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.this$0.mActivity, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", amip.Y);
-    this.this$0.mActivity.startActivityForResult(paramDialogInterface, 0);
+    this.this$0.mApolloGameDialog.dismiss();
   }
 }
 

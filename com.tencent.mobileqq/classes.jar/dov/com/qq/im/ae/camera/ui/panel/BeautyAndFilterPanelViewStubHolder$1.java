@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import baas;
-import blst;
+import bbhb;
+import bngm;
 
 public class BeautyAndFilterPanelViewStubHolder$1
   implements Runnable
 {
-  public BeautyAndFilterPanelViewStubHolder$1(blst paramblst, baas parambaas) {}
+  public BeautyAndFilterPanelViewStubHolder$1(bngm parambngm, bbhb parambbhb) {}
   
   public void run()
   {
     if (this.a != null) {
-      this.a.a(blst.a(this.this$0));
+      this.a.a(bngm.a(this.this$0));
     }
   }
 }

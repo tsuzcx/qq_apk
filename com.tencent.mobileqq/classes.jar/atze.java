@@ -1,18 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atze
-  implements akbj
+class atze
+  implements View.OnClickListener
 {
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  atze(atzb paramatzb) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
-      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
-    }
+    auea.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atxa.d());
+    this.a.b = true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

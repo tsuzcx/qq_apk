@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
 
-final class bfpp
-  extends View.AccessibilityDelegate
+public class bfpp
+  implements ViewPager.OnPageChangeListener
 {
-  bfpp(bfpr parambfpr) {}
+  public bfpp(DotStyleNavBar paramDotStyleNavBar) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.a != null)) {
-      this.a.onClick(paramView);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.setCurrent(paramInt);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
     }
   }
 }

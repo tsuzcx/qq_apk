@@ -1,12 +1,20 @@
-class wio
-  extends wht
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class wio
+  implements wja
 {
-  wio(wif paramwif, wjn paramwjn) {}
+  protected AtomicBoolean c = new AtomicBoolean(false);
+  
+  public void a() {}
+  
+  public void b()
+  {
+    this.c.set(true);
+  }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Wjn.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    return this.c.get();
   }
 }
 

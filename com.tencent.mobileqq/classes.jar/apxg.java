@@ -1,78 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class apxg
-  extends aptq<apxf>
+class apxg
+  implements apxk
 {
-  @NonNull
-  public apxf a(int paramInt)
-  {
-    return new apxf();
-  }
+  apxg(apwz paramapwz, apxj paramapxj, String paramString, apxl paramapxl) {}
   
-  @Nullable
-  public apxf a(aptx[] paramArrayOfaptx)
+  public void a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apxj.b }));
+    }
+    for (;;)
     {
-      apxf localapxf = apxf.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      this.jdField_a_of_type_Apxl.a(false);
+      return;
+      if (!apwz.b(paramArrayOfByte, this.jdField_a_of_type_Apxj.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apxj.b, this.jdField_a_of_type_Apxj.d }));
       }
-      return localapxf;
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString });
+        if (apwz.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Apxj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apxj.b, str }));
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(apxf paramapxf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramapxf.toString());
-    }
-  }
-  
-  public Class<apxf> clazz()
-  {
-    return apxf.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 528;
+    this.jdField_a_of_type_Apxl.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxg
  * JD-Core Version:    0.7.0.1
  */

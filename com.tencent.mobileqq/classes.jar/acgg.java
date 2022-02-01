@@ -1,43 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import msf.msgsvc.msg_svc.PublicPlat;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.lbs.AdLocation;
+import com.tencent.ad.tangram.lbs.AdLocationManager;
+import com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acgg
-  implements abyl
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 1008;
-  }
+  public acgg(GdtDeviceDemoFragment paramGdtDeviceDemoFragment) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin);
-    msg_svc.PublicPlat localPublicPlat = new msg_svc.PublicPlat();
-    localPublicPlat.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (paramQQAppInterface != null)
-    {
-      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
-      PkgTools.copyData(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
-      localPublicPlat.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.public_plat.set(localPublicPlat);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 7001;
+    AdLocation localAdLocation = AdLocationManager.INSTANCE.getLocationCache(this.a.getActivity());
+    GdtDeviceDemoFragment.a(this.a, String.format("getLocationCache %s", new Object[] { localAdLocation }));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

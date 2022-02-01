@@ -1,49 +1,116 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMShortVideoUtils.1;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
-public class blig
+public abstract class blig<M, VH extends blij<M>>
+  extends blik<M, VH>
 {
-  public static void a(Context paramContext)
+  private List<M> a;
+  
+  public blig(Context paramContext)
   {
-    a(paramContext, null);
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static void a(Context paramContext, Runnable paramRunnable, String paramString)
+  public blig(Context paramContext, List<M> paramList)
   {
-    ThreadManager.excute(new QIMShortVideoUtils.1(paramContext, paramString, paramRunnable), 64, null, false);
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public static void a(Context paramContext, String paramString)
-  {
-    a(paramContext, null, paramString);
-  }
+  public abstract int a(int paramInt);
   
-  public static boolean a(Context paramContext)
+  public M a(int paramInt)
   {
-    try
-    {
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-      while (paramContext.hasNext())
-      {
-        boolean bool = "com.tencent.mobileqq:peak".equals(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName);
-        if (bool) {
-          return true;
-        }
-      }
+    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + d())) {
+      return null;
     }
-    catch (Exception paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QIMShortVideoUtils", 2, "get process info fail.");
-      }
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return false;
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+  }
+  
+  public void a(M paramM)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i < 0) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      notifyItemRemoved(i);
+      return;
+    }
+    notifyItemRemoved(i + 1);
+  }
+  
+  public boolean a(List<M> paramList)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (bool) {
+        notifyDataSetChanged();
+      }
+      return bool;
+    }
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public List<M> b()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public boolean b(List<M> paramList)
+  {
+    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (bool) {
+      notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilList.size() - paramList.size(), paramList.size());
+    }
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty());
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + c();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
+      return 1024;
+    }
+    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + d())) {
+      return 1025;
+    }
+    return a(paramInt);
   }
 }
 

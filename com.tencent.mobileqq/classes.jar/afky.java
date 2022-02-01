@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class afky
-  implements aflv
+  extends bkxp
 {
-  public afky(DoodleLayout paramDoodleLayout) {}
+  public afky(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    if (this.a.c > 0)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      return;
     }
+    this.a.f.setVisibility(4);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 

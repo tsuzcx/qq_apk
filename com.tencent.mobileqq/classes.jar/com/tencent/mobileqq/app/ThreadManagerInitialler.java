@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bfyz;
+import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -37,12 +37,12 @@ public class ThreadManagerInitialler
   
   public long getMainProccessThreadMonitorTime()
   {
-    return bfyz.d();
+    return bhhr.d();
   }
   
   public long getMainProccessThreadPeakCounts()
   {
-    return bfyz.c();
+    return bhhr.c();
   }
   
   public boolean isColorLevel()
@@ -64,12 +64,12 @@ public class ThreadManagerInitialler
   
   public void setMainProccessThreadMonitorTime(long paramLong)
   {
-    bfyz.b(paramLong);
+    bhhr.b(paramLong);
   }
   
   public void setMainProccessThreadPeakCounts(long paramLong)
   {
-    bfyz.a(paramLong);
+    bhhr.a(paramLong);
   }
 }
 

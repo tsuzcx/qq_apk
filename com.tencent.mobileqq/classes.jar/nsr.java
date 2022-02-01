@@ -1,19 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
 
 public class nsr
-  implements View.OnClickListener
 {
-  public nsr(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, obr paramobr) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
-    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public nsr(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

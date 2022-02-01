@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import beit;
-import bekr;
+import bfpw;
+import bfru;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
@@ -25,7 +25,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private bekr a;
+  private bfru a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -59,40 +59,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    beit localbeit = (beit)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561504, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131367339);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363427);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131367311);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361946);
-    if (localbeit.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localbeit.jdField_a_of_type_JavaLangString))
+    bfpw localbfpw = (bfpw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561566, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131367463);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363496);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131367435);
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361948);
+    if (localbfpw.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localbfpw.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localbeit.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localbfpw.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localbeit.c))
+      if (!TextUtils.isEmpty(localbfpw.c))
       {
-        localImageView2.setImageDrawable(a(localbeit.c));
+        localImageView2.setImageDrawable(a(localbfpw.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localbeit.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localbfpw.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localbeit.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localbfpw.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localbeit.b))
+      if (!TextUtils.isEmpty(localbfpw.b))
       {
-        localObject = a(localbeit.b);
+        localObject = a(localbfpw.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localbeit.b));
+        localImageView1.setImageDrawable(a(localbfpw.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -107,8 +107,8 @@ public class GuideViewPager
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Bekr != null) {
-        this.jdField_a_of_type_Bekr.a();
+      if (this.jdField_a_of_type_Bfru != null) {
+        this.jdField_a_of_type_Bfru.a();
       }
     }
   }
@@ -118,9 +118,9 @@ public class GuideViewPager
     ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(bekr parambekr)
+  public void setOnActionBtnClickListener(bfru parambfru)
   {
-    this.jdField_a_of_type_Bekr = parambekr;
+    this.jdField_a_of_type_Bfru = parambfru;
   }
 }
 

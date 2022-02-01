@@ -1,18 +1,18 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.qav.QavDef.MultiUserInfo;
-import ncq;
-import ndt;
-import nfj;
+import nio;
+import nju;
+import nmb;
 
 public class AVGameControlUIImpl$2$2
   implements Runnable
 {
-  public AVGameControlUIImpl$2$2(nfj paramnfj, QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
+  public AVGameControlUIImpl$2$2(nmb paramnmb, QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nfj.a.a.a().a(this.jdField_a_of_type_ComTencentQavQavDef$MultiUserInfo.mUin, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Nmb.a.a.a().a(this.jdField_a_of_type_ComTencentQavQavDef$MultiUserInfo.mUin, this.jdField_a_of_type_Boolean);
   }
 }
 

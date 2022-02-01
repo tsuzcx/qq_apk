@@ -1,25 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.app.Activity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tbh
-  implements View.OnClickListener
 {
-  public tbh(ChannelTopPositionView paramChannelTopPositionView) {}
+  private static tbh jdField_a_of_type_Tbh;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private uvz jdField_a_of_type_Uvz;
+  private Integer b;
   
-  public void onClick(View paramView)
+  public static tbh a(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChannelTopPositionView", 2, "onclick");
+    int i;
+    int j;
+    if (jdField_a_of_type_Tbh == null)
+    {
+      jdField_a_of_type_Tbh = new tbh();
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+      i = localDisplayMetrics.widthPixels;
+      j = localDisplayMetrics.heightPixels;
     }
-    if (ChannelTopPositionView.a(this.a) != null) {
-      PublicFragmentActivity.a(ChannelTopPositionView.a(this.a), ReadInJoySelectPositionFragment.class);
+    try
+    {
+      jdField_a_of_type_Tbh.jdField_a_of_type_Uvz = new uvz(paramActivity, i, j);
+      jdField_a_of_type_Tbh.jdField_a_of_type_Uvz.a(new tbi());
+      return jdField_a_of_type_Tbh;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (SecurityException paramActivity)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyScreenShotReporter", 1, "SecurityException error = " + paramActivity.toString());
+        jdField_a_of_type_Tbh.jdField_a_of_type_Uvz = null;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (jdField_a_of_type_Tbh != null)
+    {
+      jdField_a_of_type_Tbh.jdField_a_of_type_JavaLangInteger = null;
+      jdField_a_of_type_Tbh.b = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (jdField_a_of_type_Tbh != null)
+    {
+      jdField_a_of_type_Tbh.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
+      jdField_a_of_type_Tbh.b = new Integer(paramInt1);
+    }
+  }
+  
+  public void b()
+  {
+    if ((jdField_a_of_type_Tbh != null) && (jdField_a_of_type_Tbh.jdField_a_of_type_Uvz != null))
+    {
+      jdField_a_of_type_Tbh.jdField_a_of_type_Uvz.a();
+      jdField_a_of_type_Tbh.jdField_a_of_type_Uvz = null;
+    }
+    jdField_a_of_type_Tbh = null;
   }
 }
 

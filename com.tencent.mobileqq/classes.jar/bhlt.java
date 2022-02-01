@@ -1,17 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public final class bhlt
-  implements DialogInterface.OnClickListener
+class bhlt
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public bhlt(Context paramContext) {}
+  bhlt(bhls parambhls) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    bhlw.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
+    {
+    default: 
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
+    }
+    return 1;
   }
 }
 

@@ -1,38 +1,67 @@
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class axyd
+  extends axzl
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public axvd a;
+  public VideoData a;
+  private String b = "MagazinePlayerView";
+  private long d;
   
-  public axyd() {}
-  
-  public axyd(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, double paramDouble, int paramInt7, int paramInt8)
+  public axyd(Context paramContext, axvd paramaxvd, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.f = paramInt2;
-    this.b = paramInt3;
-    this.c = paramInt4;
-    this.d = paramInt5;
-    this.e = paramInt6;
-    this.jdField_a_of_type_Double = paramDouble;
-    this.g = paramInt7;
-    this.h = paramInt8;
+    super(paramContext, paramQQAppInterface);
+    this.jdField_a_of_type_Axvd = paramaxvd;
   }
   
-  @NotNull
-  public String toString()
+  public void a()
   {
-    return "Category{level=" + this.jdField_a_of_type_Int + ", name=" + this.jdField_a_of_type_JavaLangString + ", internal=" + this.f + ", poiCount=" + this.b + ", poiDistance=" + this.c + ", locDistance=" + this.d + ", locAccuracy=" + this.e + ", validRate=" + this.jdField_a_of_type_Double + ", poiCacheSize=" + this.g + "poiCacheValidDistance" + this.h + '}';
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
+    {
+      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
+      return;
+    }
+    super.a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, axye paramaxye)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    this.jdField_a_of_type_Axye = paramaxye;
+    if (paramVideoData.a == 1)
+    {
+      a(paramRelativeLayout);
+      this.d = 0L;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      d();
+      axxt.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
+      return;
+    }
+    super.a(paramRelativeLayout, paramVideoData, paramaxye);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
+      return;
+    }
+    if (this.jdField_a_of_type_Axvd != null) {
+      this.jdField_a_of_type_Axvd.a();
+    }
+    super.b();
   }
 }
 

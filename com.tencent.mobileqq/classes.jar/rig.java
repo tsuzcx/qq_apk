@@ -1,19 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class rig
-  implements View.OnClickListener
+public class rig
+  implements qie
 {
-  rig(rif paramrif) {}
+  public rig(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (rif.a(this.a) != null) {
-      rif.a(this.a).a(paramView, i);
+    ComponentHeaderRecommend.a(this.a).setText(anvx.a(2131701799));
+    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
+    ComponentHeaderRecommend.a(this.a).setEnabled(false);
+    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ArticleInfo localArticleInfo;
+    String str;
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
+    {
+      localArticleInfo = this.a.a.a.a();
+      str = pqf.a(localArticleInfo.mAlgorithmID, pqw.a(localArticleInfo), this.a.a.a.e(), 0, 0, NetworkUtil.isWifiConnected(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+      if (!uvs.a(this.a.a.a.e())) {
+        break label305;
+      }
+    }
+    label305:
+    for (paramString = "0X800941D";; paramString = "0X80080EC")
+    {
+      olh.a(null, ComponentHeaderRecommend.a(this.a) + "", paramString, paramString, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), str, false);
+      return;
+    }
   }
 }
 

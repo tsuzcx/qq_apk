@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.util.ArrayList;
 
 public class ajlj
-  implements DialogInterface.OnDismissListener
 {
-  public ajlj(BaseActivityView paramBaseActivityView) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-  }
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public ArrayList<String> b;
+  public ArrayList<Integer> c;
+  public ArrayList<byte[]> d;
 }
 
 

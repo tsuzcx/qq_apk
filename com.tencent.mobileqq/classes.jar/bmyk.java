@@ -1,76 +1,16 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Matrix;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
 
 public class bmyk
-  implements bmth
 {
-  public bmyk(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public Matrix a;
+  public EditorPicInfo a;
   
-  public void a()
+  @NonNull
+  public String toString()
   {
-    this.a.i();
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.a.a != null)
-    {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.a.a(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.a(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.a(paramInt);
-    if (paramInt != -1)
-    {
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-    }
-    for (;;)
-    {
-      if (MusicFragmentProviderView.a(this.a) != null) {
-        MusicFragmentProviderView.a(this.a).d();
-      }
-      return;
-      this.a.i();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.i();
+    return "AEPhotoCropInfoWrapper{editorPicInfo=" + this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageEditorPicInfo + ", matrix=" + this.jdField_a_of_type_AndroidGraphicsMatrix + "}";
   }
 }
 

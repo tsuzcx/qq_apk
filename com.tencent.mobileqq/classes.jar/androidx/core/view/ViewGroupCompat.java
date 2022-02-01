@@ -35,7 +35,7 @@ public final class ViewGroupCompat
     if (Build.VERSION.SDK_INT >= 21) {
       return paramViewGroup.isTransitionGroup();
     }
-    Boolean localBoolean = (Boolean)paramViewGroup.getTag(2131378204);
+    Boolean localBoolean = (Boolean)paramViewGroup.getTag(2131378492);
     return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (ViewCompat.getTransitionName(paramViewGroup) != null);
   }
   
@@ -65,7 +65,7 @@ public final class ViewGroupCompat
       paramViewGroup.setTransitionGroup(paramBoolean);
       return;
     }
-    paramViewGroup.setTag(2131378204, Boolean.valueOf(paramBoolean));
+    paramViewGroup.setTag(2131378492, Boolean.valueOf(paramBoolean));
   }
 }
 

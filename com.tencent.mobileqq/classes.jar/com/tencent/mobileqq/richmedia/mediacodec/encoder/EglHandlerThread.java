@@ -5,9 +5,9 @@ import android.opengl.EGLContext;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import bafv;
-import bafw;
-import bahf;
+import bbmk;
+import bbml;
+import bbnu;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(18)
@@ -16,8 +16,8 @@ public class EglHandlerThread
 {
   private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bafv jdField_a_of_type_Bafv;
-  private bafw jdField_a_of_type_Bafw;
+  private bbmk jdField_a_of_type_Bbmk;
+  private bbml jdField_a_of_type_Bbml;
   private boolean jdField_a_of_type_Boolean;
   
   public EglHandlerThread(String paramString, EGLContext paramEGLContext)
@@ -37,14 +37,14 @@ public class EglHandlerThread
       {
         return;
       } while (!this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Bafw != null)
+      if (this.jdField_a_of_type_Bbml != null)
       {
-        this.jdField_a_of_type_Bafw.a();
-        this.jdField_a_of_type_Bafw = null;
+        this.jdField_a_of_type_Bbml.a();
+        this.jdField_a_of_type_Bbml = null;
       }
-    } while (this.jdField_a_of_type_Bafv == null);
-    this.jdField_a_of_type_Bafv.a();
-    this.jdField_a_of_type_Bafv = null;
+    } while (this.jdField_a_of_type_Bbmk == null);
+    this.jdField_a_of_type_Bbmk.a();
+    this.jdField_a_of_type_Bbmk = null;
   }
   
   public Handler a()
@@ -63,10 +63,10 @@ public class EglHandlerThread
     {
       super.onLooperPrepared();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());
-      this.jdField_a_of_type_Bafv = new bafv(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
-      this.jdField_a_of_type_Bafw = new bafw(this.jdField_a_of_type_Bafv);
-      this.jdField_a_of_type_Bafw.a(64, 64);
-      this.jdField_a_of_type_Bafw.b();
+      this.jdField_a_of_type_Bbmk = new bbmk(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
+      this.jdField_a_of_type_Bbml = new bbml(this.jdField_a_of_type_Bbmk);
+      this.jdField_a_of_type_Bbml.a(64, 64);
+      this.jdField_a_of_type_Bbml.b();
       this.jdField_a_of_type_Boolean = true;
       return;
     }
@@ -74,7 +74,7 @@ public class EglHandlerThread
     {
       this.jdField_a_of_type_Boolean = false;
       QLog.e("EglHandlerThread", 2, localException, new Object[0]);
-      bahf.a(localException);
+      bbnu.a(localException);
     }
   }
   

@@ -1,6 +1,14 @@
-public abstract interface bdhw
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.QQTextProxy.Proxy;
+import com.tencent.mobileqq.text.AbsQQText;
+import com.tencent.mobileqq.text.QQText;
+
+public final class bdhw
+  implements RecentRoute.QQTextProxy.Proxy
 {
-  public abstract bdee a();
+  public AbsQQText generalQQText(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    return new QQText(paramCharSequence, paramInt1, paramInt2);
+  }
 }
 
 

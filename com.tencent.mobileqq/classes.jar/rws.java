@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rws
-  extends Handler
+class rws
+  implements View.OnClickListener
 {
-  private rws(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  rws(rwr paramrwr, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    VideoFeedsGuideView.a(this.a);
+    this.jdField_a_of_type_Rwr.a.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

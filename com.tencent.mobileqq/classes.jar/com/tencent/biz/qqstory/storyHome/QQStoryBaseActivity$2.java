@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import xvv;
+import ykq;
 
 class QQStoryBaseActivity$2
   implements Runnable
@@ -17,7 +17,7 @@ class QQStoryBaseActivity$2
   {
     if (this.this$0.isFinishing())
     {
-      xvv.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
+      ykq.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)

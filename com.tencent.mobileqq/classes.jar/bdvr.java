@@ -1,29 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-final class bdvr
-  implements DialogInterface.OnClickListener
+public final class bdvr
 {
-  bdvr(QQAppInterface paramQQAppInterface, String paramString) {}
+  public String a;
+  public ArrayList<Integer> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bdvr()
   {
-    paramDialogInterface = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
-    if ((NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null))
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public static bdvr a(aqxa[] paramArrayOfaqxa)
+  {
+    bdvr localbdvr = new bdvr();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      paramDialogInterface.l(this.jdField_a_of_type_JavaLangString);
-      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= paramArrayOfaqxa.length) {
+          break label187;
+        }
+        String str = paramArrayOfaqxa[i].jdField_a_of_type_JavaLangString;
+        try
+        {
+          str = new JSONObject(str).optString("black_ids");
+          ArrayList localArrayList = new ArrayList();
+          if (!TextUtils.isEmpty(str))
+          {
+            String[] arrayOfString = str.split(",");
+            int k = arrayOfString.length;
+            int j = 0;
+            while (j < k)
+            {
+              localArrayList.add(Integer.valueOf(Integer.parseInt(arrayOfString[j].trim())));
+              j += 1;
+            }
+            localbdvr.jdField_a_of_type_JavaLangString = str;
+            localbdvr.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("StudyModePushConfigProcessor", 2, "[study mode push config], :" + str);
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e("StudyModePushConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
     }
-    if (paramDialogInterface != null)
-    {
-      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131694108), 0).a();
-      return;
-    }
-    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131691945), 0).a();
+    label187:
+    return localbdvr;
   }
 }
 

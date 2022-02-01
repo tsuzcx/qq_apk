@@ -22,13 +22,14 @@ import NS_MINI_INTERFACE.INTERFACE.StResourcePreCacheInfo;
 import NS_MINI_INTERFACE.INTERFACE.StStartExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import abrk;
+import achn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByIdEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByLinkEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager;
@@ -475,7 +476,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(abrk.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(achn.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
@@ -930,7 +931,7 @@ public class MiniAppInfo
     localMiniAppInfoByLinkEntity.timeStamp = System.currentTimeMillis();
     paramString1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramString1 instanceof QQAppInterface)) {}
-    for (paramString1 = (MiniAppEntityManager)paramString1.getManager(330);; paramString1 = new MiniAppEntityManager(paramString1.getAccount()))
+    for (paramString1 = (MiniAppEntityManager)paramString1.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramString1 = new MiniAppEntityManager(paramString1.getAccount()))
     {
       if (paramString1 != null)
       {
@@ -960,7 +961,7 @@ public class MiniAppInfo
     localMiniAppByIdEntity.timeStamp = System.currentTimeMillis();
     paramString = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramString instanceof QQAppInterface)) {}
-    for (paramString = (MiniAppEntityManager)paramString.getManager(330);; paramString = new MiniAppEntityManager(paramString.getAccount()))
+    for (paramString = (MiniAppEntityManager)paramString.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramString = new MiniAppEntityManager(paramString.getAccount()))
     {
       if (paramString != null)
       {
@@ -988,7 +989,7 @@ public class MiniAppInfo
     localMiniAppByLinkEntity.prepayId = paramStApiAppInfo.appNoCacheExt.prepayId.get();
     paramString1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramString1 instanceof QQAppInterface)) {}
-    for (paramString1 = (MiniAppEntityManager)paramString1.getManager(330);; paramString1 = new MiniAppEntityManager(paramString1.getAccount()))
+    for (paramString1 = (MiniAppEntityManager)paramString1.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramString1 = new MiniAppEntityManager(paramString1.getAccount()))
     {
       if (paramString1 != null)
       {
@@ -1012,7 +1013,7 @@ public class MiniAppInfo
     localMiniAppInfoByIdEntity.timeStamp = System.currentTimeMillis();
     paramString = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramString instanceof QQAppInterface)) {}
-    for (paramString = (MiniAppEntityManager)paramString.getManager(330);; paramString = new MiniAppEntityManager(paramString.getAccount()))
+    for (paramString = (MiniAppEntityManager)paramString.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramString = new MiniAppEntityManager(paramString.getAccount()))
     {
       if (paramString != null)
       {
@@ -1031,7 +1032,7 @@ public class MiniAppInfo
     localMiniAppInfoEntity.timeStamp = System.currentTimeMillis();
     paramStApiAppInfo = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramStApiAppInfo instanceof QQAppInterface)) {}
-    for (paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(330);; paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount()))
+    for (paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount()))
     {
       if (paramStApiAppInfo != null)
       {
@@ -1072,7 +1073,7 @@ public class MiniAppInfo
           }
         }
         label249:
-        for (paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(330);; paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount()))
+        for (paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount()))
         {
           if (paramStApiAppInfo == null) {
             break label262;
@@ -1117,7 +1118,7 @@ public class MiniAppInfo
             break label193;
           }
         }
-        for (paramMiniAppInfo = (MiniAppEntityManager)paramMiniAppInfo.getManager(330);; paramMiniAppInfo = new MiniAppEntityManager(paramMiniAppInfo.getAccount()))
+        for (paramMiniAppInfo = (MiniAppEntityManager)paramMiniAppInfo.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);; paramMiniAppInfo = new MiniAppEntityManager(paramMiniAppInfo.getAccount()))
         {
           if (paramMiniAppInfo == null) {
             break label206;

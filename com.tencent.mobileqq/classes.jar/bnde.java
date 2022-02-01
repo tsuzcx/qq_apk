@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public final class bnde
-  implements Parcelable.Creator<EditTakePhotoSource>
+class bnde
+  implements Animation.AnimationListener
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
+  bnde(bnda parambnda, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new EditTakePhotoSource(paramParcel);
+    if ((this.jdField_a_of_type_Bnda.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView != null) && (!bnda.a(this.jdField_a_of_type_Bnda)))
+    {
+      this.jdField_a_of_type_Bnda.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setAlpha(1.0F);
+      this.jdField_a_of_type_Bnda.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(4);
+    }
+    if (bnda.b(this.jdField_a_of_type_Bnda) != null)
+    {
+      bnda.c(this.jdField_a_of_type_Bnda).a(this.jdField_a_of_type_Int, new Object[0]);
+      bnda.d(this.jdField_a_of_type_Bnda).a(196612, new Object[0]);
+    }
   }
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new EditTakePhotoSource[paramInt];
+    this.jdField_a_of_type_Bnda.jdField_a_of_type_Bmxa.a().a(true, 150);
   }
 }
 

@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import android.view.View;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public final class rgh
-  implements Parcelable.Creator<VideoColumnInfo>
+public class rgh
+  implements AdapterView.OnItemClickListener
 {
-  public VideoColumnInfo a(Parcel paramParcel)
-  {
-    return new VideoColumnInfo(paramParcel);
-  }
+  public rgh(ComponentContentGridImage paramComponentContentGridImage) {}
   
-  public VideoColumnInfo[] a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new VideoColumnInfo[paramInt];
+    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
+    {
+      if (ComponentContentGridImage.a(this.a) != null) {
+        ComponentContentGridImage.a(this.a).a(paramInt);
+      }
+      return;
+    }
+    if ((Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 1) && (((qhk)this.a.a).a().mSocialFeedInfo != null) && (((qhk)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rrl != null) && (((qhk)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rrl.a) && (((qhk)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rre != null)) {
+      try
+      {
+        pqx.a(this.a.getContext(), ((qhk)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Rre.a.c, null);
+        return;
+      }
+      catch (Exception paramAdapterView)
+      {
+        QLog.e("ComponentContentGridImage", 1, paramAdapterView.getLocalizedMessage());
+        return;
+      }
+    }
+    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
   }
 }
 

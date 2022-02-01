@@ -1,57 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acgi
-  implements abyl
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 10007;
-  }
+  public acgi(GdtDeviceDemoFragment paramGdtDeviceDemoFragment) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(164);
-    byte[] arrayOfByte = paramQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (arrayOfByte != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
-    }
-    paramMessageRecord = paramQQAppInterface.getTinyIdCache().a(paramMessageRecord.frienduin);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramMessageRecord);
-      l1 = l2;
-    }
-    catch (NumberFormatException paramMessageRecord)
-    {
-      for (;;)
-      {
-        QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
-      }
-    }
-    localCommTmp.to_uin.set(l1);
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8042;
+    GdtDeviceDemoFragment.a(this.a, "LbsManagerService.startLocation start");
+    LbsManagerService.startLocation(new acgj(this, "gdt_tangram", true));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

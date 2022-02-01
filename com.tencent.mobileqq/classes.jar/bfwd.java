@@ -1,50 +1,35 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
 import com.tencent.qphone.base.util.QLog;
 
 class bfwd
-  extends Handler
+  implements View.OnFocusChangeListener
 {
-  private bfwd(bfvp parambfvp) {}
+  bfwd(bfvz parambfvz, bfva parambfva, bfwf parambfwf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramMessage.what != 1) {
+    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_Bfva.c + ", text:" + this.jdField_a_of_type_Bfva.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bfwf.a.setCursorVisible(true);
+      this.jdField_a_of_type_Bfvz.a.c(this.jdField_a_of_type_Bfwf);
+      this.jdField_a_of_type_Bfva.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfwf.a.setFocusable(paramBoolean);
+      this.jdField_a_of_type_Bfwf.a.setFocusableInTouchMode(paramBoolean);
       return;
+      this.jdField_a_of_type_Bfwf.a.setCursorVisible(false);
+      this.jdField_a_of_type_Bfvz.a.d(this.jdField_a_of_type_Bfwf);
     }
-    if (bfvp.a(this.a) != null)
-    {
-      bfvp.a(this.a).a();
-      this.a.a.removeObserver(bfvp.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
-      }
-      bfvp.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
-      {
-        bfvp.b(this.a);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
-      }
-    }
-    bfvp.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfwd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,20 @@
-import java.util.ArrayList;
+import android.os.AsyncTask;
 
-public abstract interface odt
+class odt
+  extends AsyncTask<Void, Void, Void>
 {
-  public abstract void a(ArrayList<odv> paramArrayList, String paramString, boolean paramBoolean);
+  odt(ods paramods, aebd paramaebd) {}
+  
+  protected Void a(Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Ods.a.a(this.jdField_a_of_type_Aebd);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_Ods.a.a(-1);
+  }
 }
 
 

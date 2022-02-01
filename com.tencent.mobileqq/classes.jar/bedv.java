@@ -1,56 +1,56 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
+import java.util.StringTokenizer;
 
-public class bedv
-  extends aptq<bedu>
+public abstract class bedv
 {
-  @NonNull
-  public bedu a(int paramInt)
+  public int a;
+  protected beeb a;
+  public QQAppInterface a;
+  public DataLineMsgRecord a;
+  public String a;
+  
+  public bedv(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, beeb parambeeb)
   {
-    QLog.d("TroopEssenceMsgEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bedu();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
+    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
+    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
+    this.jdField_a_of_type_Beeb = parambeeb;
   }
   
-  @Nullable
-  public bedu a(aptx[] paramArrayOfaptx)
+  public abstract String a();
+  
+  public boolean a()
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bedu.a(paramArrayOfaptx);
+    Object localObject = arnk.a().a();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+      }
     }
-    return null;
-  }
-  
-  public void a(bedu parambedu) {}
-  
-  public Class<bedu> clazz()
-  {
-    return bedu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
+    String str;
+    do
+    {
+      while (!((StringTokenizer)localObject).hasMoreTokens())
+      {
+        do
+        {
+          return false;
+          str = FileUtil.getExtension(a());
+          localObject = new StringTokenizer((String)localObject, "|");
+          if (((StringTokenizer)localObject).hasMoreTokens()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
+        return false;
+      }
+    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
     return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopEssenceMsgEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 668;
   }
 }
 

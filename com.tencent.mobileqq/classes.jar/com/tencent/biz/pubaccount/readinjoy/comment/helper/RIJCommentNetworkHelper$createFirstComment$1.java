@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.helper;
 
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
 import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
 import kotlin.Metadata;
@@ -10,38 +9,46 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import oxp;
-import oxr;
-import oxs;
+import pgt;
+import pgv;
+import pgx;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "commentId", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createFirstComment$1
   extends Lambda
   implements Function1<String, Unit>
 {
-  public RIJCommentNetworkHelper$createFirstComment$1(boolean paramBoolean1, oxs paramoxs, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, FirstCommentCreateData paramFirstCommentCreateData, long paramLong2)
+  public RIJCommentNetworkHelper$createFirstComment$1(boolean paramBoolean1, pgx parampgx, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, FirstCommentCreateData paramFirstCommentCreateData, long paramLong2)
   {
     super(1);
   }
   
   public final void invoke(@NotNull String paramString)
   {
+    int i = 1;
     Intrinsics.checkParameterIsNotNull(paramString, "commentId");
     if (!this.$needBiuAfterComment)
     {
       this.$callback.a(this.$commentSeq, true, 0, 1, paramString, this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-      oxr.a(oxr.a, 0, System.currentTimeMillis() - this.$requestTime);
-      if (TextUtils.isEmpty((CharSequence)this.$requestData.b())) {
-        break label129;
+      pgv.a(pgv.a, 0, System.currentTimeMillis() - this.$requestTime);
+      if (((CharSequence)this.$requestData.b()).length() <= 0) {
+        break label137;
+      }
+      label77:
+      if (i == 0) {
+        break label142;
       }
     }
-    label129:
+    label137:
+    label142:
     for (String str = this.$requestData.b();; str = this.$requestData.c())
     {
-      oxr.a(oxr.a, this.$requestData.a(), str, "", "", paramString);
+      pgv.a(pgv.a, this.$requestData.a(), str, "", "", paramString);
       return;
-      oxp.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createFirstComment.1.1(this, paramString));
+      pgt.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createFirstComment.1.1(this, paramString));
       break;
+      i = 0;
+      break label77;
     }
   }
 }

@@ -1,27 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class ahaf
-  implements View.OnClickListener
+public class ahaf
+  implements bipw
 {
-  ahaf(ahae paramahae, String paramString) {}
+  public ahaf(LightVideoItemBuilder paramLightVideoItemBuilder, ahag paramahag) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if ((ahae.a(this.jdField_a_of_type_Ahae) == null) || (ahae.a(this.jdField_a_of_type_Ahae).a.a(this.jdField_a_of_type_JavaLangString) == null))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    boolean bool = ahae.a(this.jdField_a_of_type_Ahae).a.a(this.jdField_a_of_type_JavaLangString, ahae.a(this.jdField_a_of_type_Ahae).jdField_d_of_type_Int, ahae.a(this.jdField_a_of_type_Ahae).jdField_d_of_type_JavaUtilList);
-    String str2 = ahae.a(this.jdField_a_of_type_Ahae) + "";
-    if (bool) {}
-    for (String str1 = "1";; str1 = "2")
-    {
-      bcef.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 1, 0, str2, str1, "", "");
-      this.jdField_a_of_type_Ahae.notifyDataSetChanged();
-      break;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahag.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahag.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ahag.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

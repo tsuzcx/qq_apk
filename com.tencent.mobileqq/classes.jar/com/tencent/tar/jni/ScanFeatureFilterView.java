@@ -17,10 +17,10 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import apau;
-import bjlt;
-import bjlu;
-import bjlv;
+import aqdy;
+import bkxe;
+import bkxf;
+import bkxg;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
 import java.util.Random;
@@ -37,9 +37,9 @@ public class ScanFeatureFilterView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private bjlt jdField_a_of_type_Bjlt;
+  private bkxe jdField_a_of_type_Bkxe;
   private volatile boolean jdField_a_of_type_Boolean;
-  bjlv[][] jdField_a_of_type_Array2dOfBjlv = (bjlv[][])null;
+  bkxg[][] jdField_a_of_type_Array2dOfBkxg = (bkxg[][])null;
   int jdField_b_of_type_Int = 0;
   private long jdField_b_of_type_Long;
   private boolean jdField_b_of_type_Boolean;
@@ -63,7 +63,7 @@ public class ScanFeatureFilterView
     super(paramContext, paramAttributeSet);
     a();
     this.o = a(getContext(), 10.0F);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845140);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130845214);
     setZOrderOnTop(true);
     this.jdField_a_of_type_AndroidViewSurfaceHolder = getHolder();
     this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
@@ -118,7 +118,7 @@ public class ScanFeatureFilterView
   
   public static int b(int paramInt)
   {
-    return apau.a.nextInt(paramInt);
+    return aqdy.a.nextInt(paramInt);
   }
   
   private void b()
@@ -144,7 +144,7 @@ public class ScanFeatureFilterView
     //   5: getfield 173	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_Boolean	Z
     //   8: ifne +26 -> 34
     //   11: aload_0
-    //   12: getfield 198	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_Bjlt	Lbjlt;
+    //   12: getfield 198	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_Bkxe	Lbkxe;
     //   15: ifnull +19 -> 34
     //   18: aload_0
     //   19: invokevirtual 179	com/tencent/tar/jni/ScanFeatureFilterView:getVisibility	()I
@@ -184,7 +184,7 @@ public class ScanFeatureFilterView
     //   80: aload_2
     //   81: astore_1
     //   82: aload_0
-    //   83: getfield 198	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_Bjlt	Lbjlt;
+    //   83: getfield 198	com/tencent/tar/jni/ScanFeatureFilterView:jdField_a_of_type_Bkxe	Lbkxe;
     //   86: ifnull +20 -> 106
     //   89: aload_2
     //   90: astore_1
@@ -332,7 +332,7 @@ public class ScanFeatureFilterView
   
   protected void a(Canvas paramCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.k == this.i) && (this.jdField_a_of_type_Bjlt != null) && (!this.jdField_a_of_type_Bjlt.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bjlt.jdField_a_of_type_Bjlu != null))
+    if ((!this.jdField_a_of_type_Boolean) && (this.k == this.i) && (this.jdField_a_of_type_Bkxe != null) && (!this.jdField_a_of_type_Bkxe.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bkxe.jdField_a_of_type_Bkxf != null))
     {
       int i2;
       Object localObject;
@@ -344,35 +344,35 @@ public class ScanFeatureFilterView
           i2 = 0;
           while (i2 < this.n)
           {
-            if (this.jdField_a_of_type_Array2dOfBjlv[i1][i2] == null) {
-              this.jdField_a_of_type_Array2dOfBjlv[i1][i2] = new bjlv();
+            if (this.jdField_a_of_type_Array2dOfBkxg[i1][i2] == null) {
+              this.jdField_a_of_type_Array2dOfBkxg[i1][i2] = new bkxg();
             }
             i3 = b(4);
-            this.jdField_a_of_type_Array2dOfBjlv[i1][i2].jdField_b_of_type_Float = a(i3);
-            this.jdField_a_of_type_Array2dOfBjlv[i1][i2].jdField_a_of_type_Float = a(i3);
+            this.jdField_a_of_type_Array2dOfBkxg[i1][i2].jdField_b_of_type_Float = a(i3);
+            this.jdField_a_of_type_Array2dOfBkxg[i1][i2].jdField_a_of_type_Float = a(i3);
             i2 += 1;
           }
           i1 += 1;
         }
-        localObject = this.jdField_a_of_type_Bjlt.jdField_a_of_type_Bjlu;
+        localObject = this.jdField_a_of_type_Bkxe.jdField_a_of_type_Bkxf;
         this.jdField_a_of_type_Long = a();
         i1 = 0;
-        while (i1 < ((bjlu)localObject).a())
+        while (i1 < ((bkxf)localObject).a())
         {
-          i3 = ((bjlu)localObject).a(i1, 0);
-          i2 = ((bjlu)localObject).a(i1, 1);
+          i3 = ((bkxf)localObject).a(i1, 0);
+          i2 = ((bkxf)localObject).a(i1, 1);
           if ((i3 > this.o) && (i2 > this.o))
           {
             i3 /= this.o;
             i2 /= this.o;
             if ((i3 < this.n) && (i2 < this.m))
             {
-              bjlv localbjlv = this.jdField_a_of_type_Array2dOfBjlv[i2][i3];
-              localbjlv.jdField_b_of_type_Boolean = true;
-              localbjlv.jdField_b_of_type_Long = (b(10) * 50);
-              localbjlv.jdField_a_of_type_Long = (this.jdField_a_of_type_Long + localbjlv.jdField_b_of_type_Long);
-              localbjlv.jdField_a_of_type_Int = (i3 * this.o);
-              localbjlv.jdField_b_of_type_Int = (this.o * i2);
+              bkxg localbkxg = this.jdField_a_of_type_Array2dOfBkxg[i2][i3];
+              localbkxg.jdField_b_of_type_Boolean = true;
+              localbkxg.jdField_b_of_type_Long = (b(10) * 50);
+              localbkxg.jdField_a_of_type_Long = (this.jdField_a_of_type_Long + localbkxg.jdField_b_of_type_Long);
+              localbkxg.jdField_a_of_type_Int = (i3 * this.o);
+              localbkxg.jdField_b_of_type_Int = (this.o * i2);
             }
           }
           i1 += 1;
@@ -388,22 +388,22 @@ public class ScanFeatureFilterView
         i4 = 0;
         if (i4 < this.n)
         {
-          localObject = this.jdField_a_of_type_Array2dOfBjlv[i3][i4];
+          localObject = this.jdField_a_of_type_Array2dOfBkxg[i3][i4];
           i2 = i1;
           if (localObject != null) {
-            if (((bjlv)localObject).jdField_b_of_type_Boolean) {}
+            if (((bkxg)localObject).jdField_b_of_type_Boolean) {}
           }
           for (;;)
           {
             i4 += 1;
             break;
-            if (this.jdField_b_of_type_Long < ((bjlv)localObject).jdField_b_of_type_Long)
+            if (this.jdField_b_of_type_Long < ((bkxg)localObject).jdField_b_of_type_Long)
             {
               i1 += 1;
             }
             else
             {
-              float f3 = a(0, 1, ((bjlv)localObject).a(this.l, this.jdField_b_of_type_Long - ((bjlv)localObject).jdField_b_of_type_Long), 1.0F);
+              float f3 = a(0, 1, ((bkxg)localObject).a(this.l, this.jdField_b_of_type_Long - ((bkxg)localObject).jdField_b_of_type_Long), 1.0F);
               float f2 = 255.0F * f3;
               float f1 = f2;
               if (f2 > 255.0F) {
@@ -413,11 +413,11 @@ public class ScanFeatureFilterView
               if (f3 > 1.0F) {
                 f2 = 1.0F;
               }
-              ((bjlv)localObject).jdField_b_of_type_Float = f1;
-              ((bjlv)localObject).jdField_a_of_type_Float = f2;
-              if (((bjlv)localObject).jdField_a_of_type_Boolean)
+              ((bkxg)localObject).jdField_b_of_type_Float = f1;
+              ((bkxg)localObject).jdField_a_of_type_Float = f2;
+              if (((bkxg)localObject).jdField_a_of_type_Boolean)
               {
-                ((bjlv)localObject).a();
+                ((bkxg)localObject).a();
               }
               else
               {
@@ -456,16 +456,16 @@ public class ScanFeatureFilterView
           i2 = 0;
           while (i2 < this.n)
           {
-            if (this.jdField_a_of_type_Array2dOfBjlv[i1][i2] == null) {
-              this.jdField_a_of_type_Array2dOfBjlv[i1][i2] = new bjlv();
+            if (this.jdField_a_of_type_Array2dOfBkxg[i1][i2] == null) {
+              this.jdField_a_of_type_Array2dOfBkxg[i1][i2] = new bkxg();
             }
-            this.jdField_a_of_type_Array2dOfBjlv[i1][i2].a();
+            this.jdField_a_of_type_Array2dOfBkxg[i1][i2].a();
             i2 += 1;
           }
           i1 += 1;
         }
         this.jdField_a_of_type_Long = a();
-        paramCanvas = this.jdField_a_of_type_Bjlt.jdField_a_of_type_Bjlu;
+        paramCanvas = this.jdField_a_of_type_Bkxe.jdField_a_of_type_Bkxf;
         i1 = 0;
         while (i1 < paramCanvas.a())
         {
@@ -477,15 +477,15 @@ public class ScanFeatureFilterView
             i3 /= this.o;
             if ((i2 < this.n) && (i3 < this.m))
             {
-              localObject = this.jdField_a_of_type_Array2dOfBjlv[i3][i2];
+              localObject = this.jdField_a_of_type_Array2dOfBkxg[i3][i2];
               i4 = b(4);
-              ((bjlv)localObject).jdField_b_of_type_Float = a(i4);
-              ((bjlv)localObject).jdField_a_of_type_Float = a(i4);
-              ((bjlv)localObject).jdField_b_of_type_Long = (b(10) * 50);
-              ((bjlv)localObject).jdField_a_of_type_Long = (this.jdField_a_of_type_Long + ((bjlv)localObject).jdField_b_of_type_Long);
-              ((bjlv)localObject).jdField_a_of_type_Int = (i2 * this.o);
-              ((bjlv)localObject).jdField_b_of_type_Int = (this.o * i3);
-              ((bjlv)localObject).jdField_b_of_type_Boolean = true;
+              ((bkxg)localObject).jdField_b_of_type_Float = a(i4);
+              ((bkxg)localObject).jdField_a_of_type_Float = a(i4);
+              ((bkxg)localObject).jdField_b_of_type_Long = (b(10) * 50);
+              ((bkxg)localObject).jdField_a_of_type_Long = (this.jdField_a_of_type_Long + ((bkxg)localObject).jdField_b_of_type_Long);
+              ((bkxg)localObject).jdField_a_of_type_Int = (i2 * this.o);
+              ((bkxg)localObject).jdField_b_of_type_Int = (this.o * i3);
+              ((bkxg)localObject).jdField_b_of_type_Boolean = true;
             }
           }
           i1 += 1;
@@ -518,7 +518,7 @@ public class ScanFeatureFilterView
     this.jdField_b_of_type_Int = getMeasuredHeight();
     this.n = (this.jdField_a_of_type_Int / this.o);
     this.m = (this.jdField_b_of_type_Int / this.o);
-    this.jdField_a_of_type_Array2dOfBjlv = ((bjlv[][])Array.newInstance(bjlv.class, new int[] { this.m, this.n }));
+    this.jdField_a_of_type_Array2dOfBkxg = ((bkxg[][])Array.newInstance(bkxg.class, new int[] { this.m, this.n }));
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}

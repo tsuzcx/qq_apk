@@ -1,24 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
-class blpt
-  implements Animator.AnimatorListener
+public class blpt
+  extends BroadcastReceiver
 {
-  blpt(blpr paramblpr) {}
+  private blpt(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEBottomListPart", 2, "Watermark Panel Opened!");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
     }
+    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+      return;
+    }
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

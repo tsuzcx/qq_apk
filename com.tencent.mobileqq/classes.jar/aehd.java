@@ -1,27 +1,35 @@
-import android.content.Context;
-import android.net.Uri;
+import QQService.SvcDevLoginInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehd
   implements View.OnClickListener
 {
-  public aehd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aehd(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131692125), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+      SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+      if (localSvcDevLoginInfo != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new aehe(this, localSvcDevLoginInfo));
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131694206), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+      }
+    }
   }
 }
 

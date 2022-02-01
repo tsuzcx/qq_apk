@@ -1,11 +1,9 @@
-import android.view.View;
-import android.widget.TextView;
+import java.util.List;
 
 public class bffu
-  extends afnk
 {
-  public View a;
-  public TextView a;
+  public String a;
+  public List<Integer> a;
 }
 
 

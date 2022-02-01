@@ -1,99 +1,100 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.maxvideo.common.MessageStruct;
+import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
 
-public class altj
-  extends alte
+public abstract class altj
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  boolean d;
+  public abstract void a();
   
-  public altj(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.getCurrentUin(), 0);
-    this.jdField_a_of_type_Int = paramQQAppInterface.getInt("hire_priority", 1);
-    this.jdField_b_of_type_Int = paramQQAppInterface.getInt("hire_action", 0);
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("hire_word", "");
-    this.jdField_a_of_type_Long = paramQQAppInterface.getLong("hire_for", 0L);
-    this.jdField_b_of_type_Long = paramQQAppInterface.getLong("hire_end", 0L);
-  }
+  public void a(bczu parambczu, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  public int a(ambl paramambl, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct) {}
+  
+  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
   {
-    if ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (this.d) || (!this.c)) {
-      return super.a(paramambl, paramInt, paramAppInterface, paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoState", 2, "[@] notify called eventId=" + paramInt);
     }
-    if (this.jdField_b_of_type_Int > 0)
-    {
-      if (ApolloUtil.c(5, this.jdField_b_of_type_Int))
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if ((paramObject instanceof AudioCapture)) {
+      switch (paramInt)
       {
-        paramContext = new ApolloActionData();
-        paramContext.actionId = this.jdField_b_of_type_Int;
-        paramContext.actionType = 0;
-        ambc.a(paramambl, 6, paramContext);
-        this.d = true;
-        paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
-        return 0;
       }
-      QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus resource is not ready, actionId:" + this.jdField_b_of_type_Int);
-      super.a(paramambl, paramInt, paramAppInterface, paramContext);
-      amdp.a(paramAppInterface, ApolloUtil.c(this.jdField_b_of_type_Int) + "/d.zip", ApolloUtil.d(this.jdField_b_of_type_Int));
-      return 0;
     }
-    QLog.w("AplloDrawerStatus", 2, "HireDrawerStatus action is not correct, actionId:" + this.jdField_b_of_type_Int);
-    super.a(paramambl, paramInt, paramAppInterface, paramContext);
-    paramAppInterface.getApp().getSharedPreferences("apollo_sp" + paramAppInterface.getCurrentAccountUin(), 0).edit().putLong("hire_end", NetConnInfoCenter.getServerTime()).commit();
-    return 0;
-  }
-  
-  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    paramambl = new Intent();
-    paramambl.putExtra("extra_key_url_append", "&tab=interactive&suin=" + paramQQAppInterface.getCurrentAccountUin());
-    ApolloUtil.a(paramContext, paramambl, "drawer", amip.ai, null);
-    a(paramQQAppInterface);
-    VipUtils.a(null, "cmshow", "Apollo", "0X80065F002", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
-  }
-  
-  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (!a()) {}
-    boolean bool;
+    label304:
+    label332:
     do
     {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localRMVideoStateMgr.i();
+            return;
+          } while (!(paramObject instanceof bdbl));
+          QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM eventId" + paramInt + ", rmStateMgr:" + localRMVideoStateMgr);
+          if (localRMVideoStateMgr == null) {
+            break label392;
+          }
+          switch (paramInt)
+          {
+          default: 
+            return;
+          case 2: 
+            if ((paramVarArgs == null) || (localRMVideoStateMgr.a == null)) {
+              break label332;
+            }
+            if (!(paramVarArgs[0] instanceof bdba)) {
+              break label304;
+            }
+            paramObject = (bdba)paramVarArgs[0];
+            try
+            {
+              localRMVideoStateMgr.a.a(paramObject.a, paramObject.b);
+              QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
+              return;
+            }
+            catch (NullPointerException paramObject)
+            {
+              paramObject.printStackTrace();
+            }
+          }
+        } while (localRMVideoStateMgr == null);
+        QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=" + localRMVideoStateMgr + " viewST=" + localRMVideoStateMgr.a);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("faceuu", 2, "RMVideoState viewST:" + localRMVideoStateMgr.a);
+        }
+      } while (localRMVideoStateMgr.a == null);
+      localRMVideoStateMgr.a.p();
       return;
-      bool = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("hire_bubble_click", false);
-    } while ((NetConnInfoCenter.getServerTime() > this.jdField_b_of_type_Long) || (bool));
-    this.jdField_b_of_type_Boolean = true;
-    ambc.a(paramambl, this.jdField_a_of_type_JavaLangString, 7, 0);
-    VipUtils.a(null, "cmshow", "Apollo", "0X80065F001", 0, 0, new String[] { String.valueOf(this.jdField_b_of_type_Int) });
+      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=" + paramVarArgs[0]);
+      return;
+      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:obj=" + paramVarArgs);
+    } while (localRMVideoStateMgr == null);
+    QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:viewST=" + localRMVideoStateMgr.a);
+    return;
+    label392:
+    QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.getCurrentUin(), 0).edit().putBoolean("hire_bubble_click", true).commit();
-  }
+  public void a(boolean paramBoolean) {}
   
   public boolean a()
   {
-    return this.c;
+    return false;
   }
+  
+  public abstract void b();
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

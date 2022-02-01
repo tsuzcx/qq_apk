@@ -1,28 +1,6 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-
-class ajpg
-  extends nmf
+public abstract interface ajpg
 {
-  ajpg(ajpd paramajpd) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if ((ajpd.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
-    }
-    this.a.d();
-    if (ajpd.a(this.a) != null) {
-      ajpd.a(this.a).removeCallbacks(ajpd.b(this.a));
-    }
-    if (paramInt == 16)
-    {
-      this.a.e();
-      return;
-    }
-    ajpd.a(this.a, ajpd.a(this.a));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

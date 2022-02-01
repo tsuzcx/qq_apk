@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 
-public class arvl
-  implements View.OnClickListener
+public final class arvl
+  implements Parcelable.Creator<SpecialCareInfo>
 {
-  public arvl(UniformDownloadActivity paramUniformDownloadActivity) {}
-  
-  public void onClick(View paramView)
+  public SpecialCareInfo a(Parcel paramParcel)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new SpecialCareInfo(paramParcel);
+  }
+  
+  public SpecialCareInfo[] a(int paramInt)
+  {
+    return new SpecialCareInfo[paramInt];
   }
 }
 

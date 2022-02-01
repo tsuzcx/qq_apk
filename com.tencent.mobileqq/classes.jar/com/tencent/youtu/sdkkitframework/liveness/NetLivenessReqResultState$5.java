@@ -1,25 +1,18 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV2.UploadVideoResponse;
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 
 class NetLivenessReqResultState$5
-  implements YtSDKKitFramework.IYtSDKKitNetResponseParser
+  extends HashMap<String, Object>
 {
-  NetLivenessReqResultState$5(NetLivenessReqResultState paramNetLivenessReqResultState, UploadVideoRequesterV2.UploadVideoResponse paramUploadVideoResponse) {}
-  
-  public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
+  NetLivenessReqResultState$5(NetLivenessReqResultState paramNetLivenessReqResultState, Exception paramException)
   {
-    if (paramException != null) {
-      this.val$uploadVideoResponseV2.onFailed(1, paramException.getLocalizedMessage());
-    }
-    for (;;)
-    {
-      NetLivenessReqResultState.access$200(this.this$0);
-      return;
-      this.val$uploadVideoResponseV2.onSuccess((String)paramHashMap.get("response"));
-    }
+    put("ui_action", "process_finished");
+    put("ui_tips", "rst_failed");
+    put("process_action", "failed");
+    put("error_code", Integer.valueOf(3145728));
+    put("message", CommonUtils.makeMessageJson(3145728, "rst_failed", this.val$e.getLocalizedMessage()));
   }
 }
 

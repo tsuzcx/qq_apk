@@ -1,12 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-
-class atuj
-  implements MiniAppLauncher.MiniAppLaunchListener
+public abstract interface atuj
 {
-  atuj(atui paramatui) {}
-  
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

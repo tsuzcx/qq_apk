@@ -1,18 +1,18 @@
-import android.widget.PopupWindow.OnDismissListener;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
-final class qyh
-  implements PopupWindow.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/data/PTSLiteDataFactory;", "", "()V", "Companion", "IPTSLiteDataJson", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qyh
 {
-  qyh(qye paramqye) {}
+  private static final Map<Integer, qyj> a;
+  public static final qyi a;
   
-  public final void onDismiss()
+  static
   {
-    qyf localqyf = qye.a(this.a);
-    if (localqyf != null) {
-      localqyf.a(false);
-    }
+    jdField_a_of_type_Qyi = new qyi(null);
+    jdField_a_of_type_JavaUtilMap = (Map)new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(58), new qyf());
   }
 }
 

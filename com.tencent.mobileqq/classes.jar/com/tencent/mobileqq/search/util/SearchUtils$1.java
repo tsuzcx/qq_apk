@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.search.util;
 
-import anap;
+import aode;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.SearchHistory;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,11 +21,11 @@ public final class SearchUtils$1
     localSearchHistory.uin = this.b;
     localSearchHistory.troopUin = this.c;
     localSearchHistory.displayName = this.jdField_a_of_type_JavaLangString;
-    anap localanap = (anap)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localanap == null) {
+    aode localaode = (aode)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SEARCHHISTORY_MANAGER);
+    if (localaode == null) {
       return;
     }
-    localanap.a(localSearchHistory);
+    localaode.a(localSearchHistory);
     com.tencent.mobileqq.search.activity.UniteSearchActivity.c = true;
   }
 }

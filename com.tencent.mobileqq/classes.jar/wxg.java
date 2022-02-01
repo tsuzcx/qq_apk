@@ -1,6 +1,16 @@
-public abstract interface wxg
+import java.util.HashMap;
+
+class wxg
+  extends wwn
 {
-  public abstract void a(wwz paramwwz);
+  wxg(wxa paramwxa, wye paramwye) {}
+  
+  public boolean b()
+  {
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Wye.a = ((String)localHashMap.get(this.jdField_a_of_type_Wye.a));
+    return true;
+  }
 }
 
 

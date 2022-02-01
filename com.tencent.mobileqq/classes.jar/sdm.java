@@ -1,38 +1,12 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import org.jetbrains.annotations.NotNull;
 
-class sdm
-  implements Handler.Callback
+public abstract interface sdm
 {
-  sdm(sdl paramsdl) {}
+  public abstract void a(float paramFloat);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          sdl.a(this.a, false);
-          sdl.a(this.a).removeMessages(0);
-        } while (sdl.a(this.a) == null);
-        sdl.a(this.a).a(true);
-        return true;
-        sdl.a(this.a, false);
-        sdl.a(this.a).removeMessages(1);
-      } while (sdl.a(this.a) == null);
-      sdl.a(this.a).a(false);
-      return true;
-    }
-    sdl.a(this.a, true);
-    return true;
-  }
+  public abstract void a(int paramInt, @NotNull String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

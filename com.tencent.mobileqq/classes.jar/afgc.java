@@ -1,20 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afgc
-  implements afge
+public class afgc
+  implements View.OnClickListener
 {
-  afgc(afgb paramafgb, afgd paramafgd) {}
+  public afgc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      afgb.a(this.jdField_a_of_type_Afgb, this.jdField_a_of_type_Afgd.a());
-      this.jdField_a_of_type_Afgd.a();
-      return;
-    }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Afgd.a());
-    afgb.a(this.jdField_a_of_type_Afgb, 0);
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

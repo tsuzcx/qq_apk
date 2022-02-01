@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import amwo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
+import anzc;
 import mqq.app.MobileQQ;
 
 public class MessageRoamManager$6
   implements Runnable
 {
-  public MessageRoamManager$6(amwo paramamwo) {}
+  public MessageRoamManager$6(anzc paramanzc) {}
   
   public void run()
   {

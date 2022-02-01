@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
 
-class adzs
+public final class adzs
   implements DialogInterface.OnClickListener
 {
-  adzs(adzq paramadzq) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.p();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bhgn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  bhgn(bhgl parambhgl) {}
+  bhgn(bhgj parambhgj, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    bhgl.a(this.a).setAlpha(f);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhgj, 1);
+    }
+    this.jdField_a_of_type_Bhgj.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

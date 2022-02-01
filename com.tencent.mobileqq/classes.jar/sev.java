@@ -1,34 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.util.HashMap;
+import com.google.gson.reflect.TypeToken;
+import java.util.List;
+import kotlin.Metadata;
 
-class sev
-  implements TVK_ICacheMgr.IPreloadCallback
-{
-  sev(set paramset) {}
-  
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    if (set.a(this.a) != null)
-    {
-      paramString2 = (String)set.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        set.a(this.a).a(paramString1, paramInt, paramString2);
-      }
-    }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    if (set.a(this.a) != null)
-    {
-      paramString2 = (String)set.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        set.a(this.a).a(paramString1, 1, paramString2);
-      }
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion$getTargetList$1$1", "Lcom/google/gson/reflect/TypeToken;", "", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sev
+  extends TypeToken<List<? extends String>>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

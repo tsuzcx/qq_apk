@@ -1,82 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pmg
-  extends pmb
+  implements AladdinConfigHandler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public pmg(@NotNull pmc parampmc, Activity paramActivity)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(parampmc, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean b()
-  {
-    boolean bool2 = false;
-    boolean bool3 = true;
-    Intent localIntent;
-    if (this.jdField_a_of_type_AndroidAppActivity == null)
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localIntent = new Intent();
-      bool1 = bool2;
-      if (localIntent != null)
-      {
-        bool1 = bool2;
-        if (localIntent.hasExtra("arg_channel_rowkey"))
-        {
-          bool1 = bool2;
-          if (localIntent.hasExtra("arg_channel_article_url"))
-          {
-            String str1 = localIntent.getStringExtra("arg_channel_rowkey");
-            String str2 = localIntent.getStringExtra("arg_channel_article_url");
-            if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-              break label218;
-            }
-            Object localObject = new Bundle();
-            ((Bundle)localObject).putString("floating_window_rowkey", str1);
-            ((Bundle)localObject).putString("float_layer_article_url", str2);
-            bkwt.a(this.jdField_a_of_type_AndroidAppActivity, 5, 1, (Bundle)localObject, 0);
-            if (this.jdField_a_of_type_AndroidAppActivity != null)
-            {
-              localObject = pay.a(this.jdField_a_of_type_AndroidAppActivity);
-              if (localObject != null) {
-                ((ReadinjoyTabFrame)localObject).a(32);
-              }
-            }
-            QLog.i("RIJDailyPopupStep", 1, "[handleDailyJumpToRecommendChannel], open floating window, rowKey = " + str1 + ", articleURL = " + str2);
-          }
-        }
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("check_period_ms", str1)) {
+        bmhv.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
+      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
+        bmhv.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
+      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
+        bmhv.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
-    label218:
-    for (boolean bool1 = bool3;; bool1 = false)
-    {
-      localIntent.removeExtra("arg_channel_rowkey");
-      localIntent.removeExtra("arg_channel_article_url");
-      return bool1;
-      localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-      break;
-    }
+    return true;
   }
   
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
-  }
+  public void onWipeConfig(int paramInt) {}
 }
 
 

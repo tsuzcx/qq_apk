@@ -1,41 +1,108 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
-
-class bdnc
-  implements ayeo
+public class bdnc
+  extends bdmz
 {
-  bdnc(bdnb parambdnb) {}
+  public double a;
+  public int a;
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  public String v = "";
+  public String w = "";
+  public String x = "";
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public bdnc()
   {
-    return null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+    this.d = "";
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Double = 0.0D;
   }
   
-  public void onSend(ayep paramayep)
+  public String a(int paramInt)
   {
-    if (paramayep.jdField_b_of_type_Int == 0)
-    {
-      this.a.a.c = paramayep.jdField_b_of_type_JavaLangString;
-      this.a.a.a = paramayep.c;
-      bdnb.a(this.a);
-      bdnb.a(this.a, new ErrorMessage());
-      return;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.b).append("|");
+    localStringBuilder.append(this.c).append("|");
+    localStringBuilder.append(this.e).append("|");
+    localStringBuilder.append(this.d).append("|");
+    localStringBuilder.append(this.f).append("|");
+    localStringBuilder.append(this.g).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
     }
-    if ((paramayep.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (bdnb.a(this.a).getAndIncrement() < 2))
+    for (;;)
     {
-      bdnb.b(this.a);
-      xvv.d("tribe_publish_TribeVideoFileObject", "retry load file");
-      return;
+      localStringBuilder.append(this.jdField_a_of_type_Double).append("|");
+      localStringBuilder.append(this.h).append("|");
+      localStringBuilder.append(this.i).append("|");
+      localStringBuilder.append(this.j).append("|");
+      localStringBuilder.append(this.k).append("|");
+      localStringBuilder.append(this.l).append("|");
+      localStringBuilder.append(this.m).append("|");
+      localStringBuilder.append(this.n).append("|");
+      localStringBuilder.append(this.o).append("|");
+      localStringBuilder.append(this.p).append("|");
+      localStringBuilder.append(this.q).append("|");
+      localStringBuilder.append(this.r).append("|");
+      localStringBuilder.append(this.s).append("|");
+      localStringBuilder.append(this.t).append("|");
+      localStringBuilder.append(this.u).append("|");
+      localStringBuilder.append(this.v).append("|");
+      localStringBuilder.append(this.w).append("|");
+      localStringBuilder.append(this.x).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
     }
-    bdnb.c(this.a);
-    paramayep = new ErrorMessage(paramayep.jdField_b_of_type_Int, paramayep.a);
-    bdnb.a(this.a, paramayep);
   }
   
-  public void updateMsg(ayep paramayep) {}
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Double).append("|");
+    localStringBuffer.append(this.h).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.l).append("|");
+    localStringBuffer.append(this.m).append("|");
+    localStringBuffer.append(this.n).append("|");
+    localStringBuffer.append(this.o).append("|");
+    localStringBuffer.append(this.p).append("|");
+    localStringBuffer.append(this.q).append("|");
+    localStringBuffer.append(this.r).append("|");
+    localStringBuffer.append(this.s).append("|");
+    localStringBuffer.append(this.t).append("|");
+    localStringBuffer.append(this.u).append("|");
+    localStringBuffer.append(this.v).append("|");
+    localStringBuffer.append(this.w).append("|");
+    localStringBuffer.append(this.x).append("|");
+    return localStringBuffer.toString();
+  }
 }
 
 

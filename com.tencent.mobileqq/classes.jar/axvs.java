@@ -1,23 +1,12 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public class axvs
-  implements BusinessObserver
+public abstract interface axvs
 {
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public abstract void a(int paramInt, axvu paramaxvu);
   
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  public abstract void a(Comments.Comment paramComment, axvt paramaxvt);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 1) {
-      b(paramBoolean, paramBundle);
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    a(paramBoolean, paramBundle);
-  }
+  public abstract void a(Comments.Comment paramComment, axvv paramaxvv);
 }
 
 

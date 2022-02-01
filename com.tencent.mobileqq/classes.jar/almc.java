@@ -1,18 +1,70 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class almc
-  implements Comparator<CommonlyUsedTroop>
+  extends aqwt<almb>
 {
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  @NonNull
+  public almb a(int paramInt)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
+    return new almb();
+  }
+  
+  @Nullable
+  public almb a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TempMsgBoxConfigProcessor", 2, "onParsed : " + paramArrayOfaqxa[0].a);
+      }
+      return almb.a(paramArrayOfaqxa[0].a);
     }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
+    return new almb();
+  }
+  
+  public void a(almb paramalmb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TempMsgBoxConfigProcessor", 2, "onUpdate : " + paramalmb);
     }
+    ((almg)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.TEMP_MSG_BOX)).a(paramalmb);
+  }
+  
+  public Class<almb> clazz()
+  {
+    return almb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
     return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TempMsgBoxConfigProcessor", 2, "onReqFailed : " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 704;
   }
 }
 

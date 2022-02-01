@@ -1,44 +1,79 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
+
 public class bbty
+  extends aods
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
+  private bbty(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public long a(float paramFloat)
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
+    if (paramObject == null) {
+      SignTextEditFragment.a(this.a, 2);
     }
-    return paramLong * 1000L;
+    for (;;)
+    {
+      return;
+      paramObject = (Bundle)paramObject;
+      int i = paramObject.getInt("param_searchResult", 0);
+      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        if (i == 0) {
+          SignTextEditFragment.a(this.a, 3);
+        }
+      }
+      while (this.a.jdField_a_of_type_Amjw.a(paramObject, true))
+      {
+        this.a.jdField_a_of_type_Amjw.notifyDataSetChanged();
+        return;
+        SignTextEditFragment.a(this.a, 2);
+        continue;
+        SignTextEditFragment.a(this.a, 4);
+      }
+    }
   }
   
-  public void a()
+  protected void f(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
+    if (paramObject == null)
+    {
+      SignTextEditFragment.a(this.a, 2);
+      return;
+    }
+    Object localObject = (Bundle)paramObject;
+    int j = ((Bundle)localObject).getInt("param_atIndex");
+    int k = ((Bundle)localObject).getInt("param_atKeyLen");
+    paramObject = ((Bundle)localObject).getString("param_atKey");
+    long l = ((Bundle)localObject).getLong("param_reqTs");
+    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
+    int i;
+    if (localObject == null)
+    {
+      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
+      }
+      if ((localObject != null) && (((List)localObject).size() > 0)) {
+        break label240;
+      }
+      SignTextEditFragment.a(this.a, 3);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Amjw.a((List)localObject, false)) {
+        this.a.jdField_a_of_type_Amjw.notifyDataSetChanged();
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+      return;
+      i = ((List)localObject).size();
+      break;
+      label240:
+      SignTextEditFragment.a(this.a, 4);
+    }
   }
 }
 

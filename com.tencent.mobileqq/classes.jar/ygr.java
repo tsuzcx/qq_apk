@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ygr
-  extends yej
+class ygr
+  implements DialogInterface.OnClickListener
 {
-  public ygr(ElasticImageView paramElasticImageView) {}
+  ygr(ygp paramygp) {}
   
-  public void a(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    xvv.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    ykv.a("home_page", "guide_known", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

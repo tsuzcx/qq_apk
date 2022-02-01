@@ -1,52 +1,45 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class aizm
-  implements View.OnClickListener
+class aizm
+  implements awza
 {
-  public aizm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aizm(aizi paramaizi) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    int i;
-    do
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    localObject = paramView.findViewById(2131379713);
-    if ((((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)((View)localObject).getTag()).booleanValue();; bool = false)
-    {
-      if (bool)
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (aizi.a(this.a))
       {
-        localObject = (ajac)this.a.jdField_a_of_type_Ajag.getItem(i);
-        this.a.a((ajac)localObject);
-        if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
+        Iterator localIterator = aizi.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((aizo)localIterator.next()).b();
         }
-        if (this.a.jdField_d_of_type_Int != 11) {
-          break;
-        }
-        bcef.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        break;
       }
-      localObject = (ajac)this.a.jdField_a_of_type_Ajae.getItem(i);
-      this.a.a((ajac)localObject);
-      if (this.a.jdField_d_of_type_Int == 11) {
-        bcef.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
-      }
-      if (this.a.jdField_d_of_type_Int != 18) {
-        break;
-      }
-      bcef.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
-      break;
     }
   }
 }

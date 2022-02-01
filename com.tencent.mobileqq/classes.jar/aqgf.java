@@ -1,104 +1,134 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
+import com.tencent.mobileqq.bigbrother.ServerApi.RspPreDownloadRecmd;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
 
-public class aqgf
+final class aqgf
+  implements BusinessObserver
 {
-  @NonNull
-  public final aqgg a;
-  @NonNull
-  public final aqgg b;
-  @NonNull
-  public final aqgg c;
+  aqgf(RockDownloaderTask paramRockDownloaderTask) {}
   
-  private aqgf()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this(a(null, ""), a(null, ""), a(null, ""));
-  }
-  
-  private aqgf(aqgg paramaqgg1, aqgg paramaqgg2, aqgg paramaqgg3)
-  {
-    this.a = paramaqgg1;
-    this.b = paramaqgg2;
-    this.c = paramaqgg3;
     if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, toString());
+      QLog.d("RockDownloader", 2, new Object[] { "type=", Integer.valueOf(paramInt), " success=", Boolean.valueOf(paramBoolean), " bundle=", paramBundle });
     }
-  }
-  
-  @NonNull
-  public static aqgf a()
-  {
-    return new aqgf();
-  }
-  
-  @NonNull
-  public static aqgf a(@Nullable String paramString)
-  {
+    Object localObject;
+    if (1 == paramInt)
+    {
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label816;
+      }
+      localObject = paramBundle.getByteArray("BUNDLE_KEY_RESPONSE_BYTE");
+      paramBundle = new ServerApi.RspPreDownloadRecmd();
+      if (localObject == null)
+      {
+        if (this.a.getRockDownloadListener() != null)
+        {
+          this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), anvx.a(2131712951), 10003);
+          this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+        }
+        aqge.a(this.a, "0x800A1E6");
+      }
+    }
+    else
+    {
+      return;
+    }
     try
     {
-      if (!TextUtils.isEmpty(paramString))
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = (ServerApi.ErrorInfo)paramBundle.err_info.get();
+      if (localObject == null) {
+        break label757;
+      }
+      if (((ServerApi.ErrorInfo)localObject).err_code.get() != 0) {
+        break label395;
+      }
+      paramBoolean = aqge.a(paramBundle, this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "backend isGetPermission=", Boolean.valueOf(paramBoolean) });
+      }
+      if (!paramBoolean)
       {
-        paramString = new JSONObject(paramString);
-        return new aqgf(a(paramString, "AIO"), a(paramString, "group"), a(paramString, "download"));
+        aqge.a(this.a, "0x800A1E9");
+        if (this.a.getRockDownloadListener() == null) {
+          break label387;
+        }
+        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+        return;
       }
     }
-    catch (JSONException paramString)
+    catch (InvalidProtocolBufferMicroException paramBundle)
     {
-      for (;;)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramString);
-        paramString = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, "InvalidProtocolBufferMicroException,", paramBundle);
       }
+      if (this.a.getRockDownloadListener() != null)
+      {
+        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_BYTE_INFO", 10003);
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      }
+      aqge.a(this.a, "0x800A1E6");
+      return;
     }
-  }
-  
-  @NonNull
-  private static aqgg a(JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool = false;
-    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramString))) {
-      try
-      {
-        Object localObject = paramJSONObject.optJSONObject(paramString);
-        paramJSONObject = ((JSONObject)localObject).optString("content", null);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyWords");
-        localObject = ((JSONObject)localObject).optJSONArray("actionUrls");
-        String[] arrayOfString1 = new String[localJSONArray.length()];
-        String[] arrayOfString2 = new String[localJSONArray.length()];
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          arrayOfString1[i] = localJSONArray.optString(i, null);
-          arrayOfString2[i] = ((JSONArray)localObject).optString(i, null);
-          i += 1;
-        }
-        if (paramJSONObject != null) {
-          bool = true;
-        }
-        paramJSONObject = new aqgg(paramString, bool, paramJSONObject, arrayOfString1, arrayOfString2);
-        return paramJSONObject;
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramJSONObject);
-      }
+    aqge.a(this.a, "0x800A1E4");
+    if (this.a.getRockDownloadListener() != null) {
+      this.a.getRockDownloadListener().onPermissionPermit(this.a.getDownloadInfo());
     }
-    return new aqgg();
-  }
-  
-  public String toString()
-  {
-    return "KingCardConfig{aio=" + this.a + ", group=" + this.b + ", download=" + this.c + '}';
+    label387:
+    aqge.c(this.a);
+    return;
+    label395:
+    if (((ServerApi.ErrorInfo)localObject).err_code.get() == 10006)
+    {
+      if (this.a.getRockDownloadListener() != null)
+      {
+        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
+        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      }
+      aqge.a(this.a, "0x800A1E6");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "GET_DOWNLOAD_CONFIG error!! ", " ", paramBundle.download_url.get(), " ", Integer.valueOf(paramBundle.start_time.get()), " ", Integer.valueOf(paramBundle.end_time.get()), " ", Integer.valueOf(paramBundle.interval.get()), " ", Integer.valueOf(paramBundle.quota_num.get()), " ", Integer.valueOf(paramBundle.daily_num.get()), " ", ((ServerApi.ErrorInfo)localObject).err_msg.get(), " ", Integer.valueOf(((ServerApi.ErrorInfo)localObject).err_code.get()), " ", ((ServerApi.ErrorInfo)localObject).jump_url.get() });
+    }
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    aqge.a(this.a, "0x800A1E6");
+    return;
+    label757:
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_NULL_ERROR_INFO", 10003);
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    aqge.a(this.a, "0x800A1E6");
+    return;
+    label816:
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR", 10003);
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    aqge.a(this.a, "0x800A1E6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgf
  * JD-Core Version:    0.7.0.1
  */

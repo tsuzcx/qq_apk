@@ -1,19 +1,15 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aetr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  public aetr(VisitorsActivity paramVisitorsActivity) {}
+  public aetr(RegisterActivity paramRegisterActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    paramDialogInterface.dismiss();
   }
 }
 

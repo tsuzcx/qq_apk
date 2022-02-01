@@ -1,14 +1,39 @@
-public abstract interface bmmd
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+
+class bmmd
+  implements ModuleDownloadListener
 {
-  public abstract int a();
+  bmmd(bmmb parambmmb, bmmg parambmmg) {}
   
-  public abstract int b();
+  public void onDownloadCanceled(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
   
-  public abstract int c();
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bmmb.b(this.jdField_a_of_type_Bmmb, false);
+    this.jdField_a_of_type_Bmmg.a(false);
+  }
   
-  public abstract int d();
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
   
-  public abstract int e();
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bmmb.c(), " onDownloadSucceed = ", bmmb.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bmmb.d());
+    bmmb.b(this.jdField_a_of_type_Bmmb);
+    this.jdField_a_of_type_Bmmg.a(bmmb.b(this.jdField_a_of_type_Bmmb));
+  }
 }
 
 

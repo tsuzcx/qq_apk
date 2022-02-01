@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public class aytf
-  implements aytk
+public abstract interface aytf
 {
-  public aytf(ComponentCenter paramComponentCenter) {}
+  public abstract void a();
   
-  public void a(aysw paramaysw)
-  {
-    paramaysw.e();
-  }
+  public abstract void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong);
 }
 
 

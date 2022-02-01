@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class axrx
-  implements QQPermissionCallback
+  implements bghi
 {
-  public axrx(ScanTorchActivity paramScanTorchActivity) {}
+  public axrx(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
-    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    if (paramJSONObject != null)
+    {
+      paramInt = paramJSONObject.optInt("retcode", -1);
+      paramBundle = new ArrayList();
+      if (paramInt == 0)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("data");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("rpt_board_items");
+          if (paramJSONObject != null)
+          {
+            paramInt = 0;
+            while (paramInt < paramJSONObject.length())
+            {
+              paramBundle.add(paramJSONObject.optJSONObject(paramInt).optString("uint64_uin"));
+              paramInt += 1;
+            }
+          }
+        }
+      }
+      this.a.jdField_a_of_type_Axtf.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new axry(this));
+    }
   }
 }
 

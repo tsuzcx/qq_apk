@@ -1,45 +1,59 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.CountDownProgressBar;
-
 public class bjpe
-  extends Handler
 {
-  public bjpe(CountDownProgressBar paramCountDownProgressBar) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c = "0";
+  public String d = "default_via";
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void handleMessage(Message paramMessage)
+  public bjpe()
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_JavaLangString = "6000";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_Int = 1;
+  }
+  
+  public static bjpe a(bjpe parambjpe)
+  {
+    bjpe localbjpe = new bjpe();
+    if (parambjpe == null) {
+      return localbjpe;
     }
-    do
-    {
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
-        break;
-      }
-      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-      this.a.invalidate();
-    } while (CountDownProgressBar.a(this.a) == null);
-    CountDownProgressBar.a(this.a).a();
-    return;
-    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
-    {
-      CountDownProgressBar.b(this.a, 0.0F);
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
-    }
+    localbjpe.e = parambjpe.e;
+    localbjpe.f = parambjpe.f;
+    localbjpe.g = parambjpe.g;
+    localbjpe.jdField_a_of_type_Long = parambjpe.jdField_a_of_type_Long;
+    localbjpe.h = parambjpe.h;
+    localbjpe.jdField_a_of_type_Int = parambjpe.jdField_a_of_type_Int;
+    localbjpe.jdField_b_of_type_Int = parambjpe.jdField_b_of_type_Int;
+    localbjpe.c = parambjpe.c;
+    localbjpe.jdField_b_of_type_JavaLangString = parambjpe.jdField_b_of_type_JavaLangString;
+    localbjpe.jdField_a_of_type_JavaLangString = parambjpe.jdField_a_of_type_JavaLangString;
+    localbjpe.d = parambjpe.d;
+    return localbjpe;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pageId=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\nmoduleId=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\npositionId=" + this.c);
+    localStringBuilder.append("\nvia=" + this.d);
+    localStringBuilder.append("\nurl=" + this.e);
+    localStringBuilder.append("\npackageName=" + this.f);
+    localStringBuilder.append("\niconUrl=" + this.g);
+    localStringBuilder.append("\nlength=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append("\nname=" + this.h);
+    localStringBuilder.append("\nprogress=" + this.jdField_a_of_type_Int);
+    localStringBuilder.append("\nstate=" + this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

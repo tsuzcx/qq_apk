@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.hotpic;
 
-import auhr;
-import auhs;
-import auht;
+import avnl;
+import avnm;
+import avnn;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
@@ -32,17 +32,17 @@ public class HotVideoData
   public long videoLength;
   public String videoSource;
   
-  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, auhs paramauhs)
+  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, avnm paramavnm)
   {
-    if (paramauhs == null) {
+    if (paramavnm == null) {
       return;
     }
     for (;;)
     {
       try
       {
-        auht localauht = new auht();
-        localauht.a = paramInt2;
+        avnn localavnn = new avnn();
+        localavnn.a = paramInt2;
         if (paramInt2 == 1)
         {
           str1 = this.mPreviewUUID;
@@ -50,7 +50,7 @@ public class HotVideoData
             break label92;
           }
           str2 = this.md5;
-          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new auhr(this, localauht, paramauhs));
+          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new avnl(this, localavnn, paramavnm));
           break;
         }
       }
@@ -124,14 +124,14 @@ public class HotVideoData
     return this.width / this.height + 0.1F < 1.777778F;
   }
   
-  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, auhs paramauhs)
+  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, avnm paramavnm)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramauhs);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramavnm);
   }
   
-  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, auhs paramauhs)
+  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, avnm paramavnm)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramauhs);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramavnm);
   }
   
   public void SetPreviewDownloadListener(URLDrawable.DownloadListener paramDownloadListener)

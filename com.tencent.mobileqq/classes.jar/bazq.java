@@ -1,37 +1,61 @@
+import android.text.TextUtils;
 import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import java.io.File;
 
 public class bazq
-  extends bazc
 {
-  public String a;
-  
-  public bazq(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public static String a(String paramString)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return QzoneZipCacheHelper.getBasePath("qzone_aio_gift", String.valueOf(paramString.hashCode()));
   }
   
-  public bazq(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
+    }
+    return BaseApplicationImpl.getApplication().getCacheDir() + File.separator + paramString2 + File.separator + Utils.Crc64String(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
   }
   
-  public void a(String paramString)
+  public static void a(bazt parambazt, String paramString1, String paramString2, String paramString3)
   {
-    try
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
     {
-      this.a = new JSONObject(paramString).optString("title");
+      QLog.e("QzoneGiftUtil", 1, "downloadGiftZip fail with url = null  boxZipUrl = " + paramString1 + " giftZipUrl = " + paramString2 + " giftUrl = " + paramString3);
       return;
     }
-    catch (JSONException paramString)
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (int i = 2;; i = 3)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(c, 0, paramString.toString());
+      ThreadManagerV2.executeOnFileThread(new QzoneGiftUtil.1(parambazt, i, paramString1, paramString2, paramString3));
+      return;
     }
+  }
+  
+  public static void a(String paramString1, String paramString2, QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack)
+  {
+    QLog.i("QzoneGiftUtil", 1, "downloadGiftPhoto");
+    Downloader localDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+    if (localDownloader != null) {
+      localDownloader.download(paramString1, a(paramString1, paramString2), false, new bazs(paramQzoneZipCacheHelperCallBack));
+    }
+  }
+  
+  private static boolean b(String paramString1, String paramString2)
+  {
+    return FileUtil.isFileExists(a(paramString1, paramString2));
   }
 }
 

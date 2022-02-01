@@ -1,4 +1,10 @@
-// INTERNAL ERROR //
+import android.content.Context;
+
+public final class bdll
+{
+  public static void a(Context paramContext) {}
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdll

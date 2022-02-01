@@ -1,54 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.5.1;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.5.2;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.5.3;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aomw
-  extends aozi
+class aomw
+  implements View.OnClickListener
 {
-  public aomw(ARScanEntryView paramARScanEntryView) {}
+  aomw(aoms paramaoms, Activity paramActivity, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    SharedPreferences localSharedPreferences = aozj.a(this.a.a);
-    long l = localSharedPreferences.getLong("key_ar_act_id", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "onGetARRedDotInfo redSwitch = " + paramInt + ",actID = " + paramLong + ",isSuccess = " + paramBoolean + ",savedActID = " + l);
-    }
-    localSharedPreferences.edit().putLong("key_ar_act_id", paramLong).commit();
-    if (!this.a.m)
+    if (System.currentTimeMillis() - aoms.a(this.jdField_a_of_type_Aoms) < 1000L)
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "onGetARRedDotInfo,not deal redhot message when pause");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    paramBoolean = localSharedPreferences.getBoolean("key_show_reddot", false);
-    if (paramInt == 1) {}
-    for (paramInt = 1;; paramInt = 0)
+    aoms.a(this.jdField_a_of_type_Aoms, System.currentTimeMillis());
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, PhoneUnityBindInfoActivity.class);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (localObject = "0X800B3E7";; localObject = "0X800B3E4")
     {
-      if (paramInt == 0) {
-        break label274;
-      }
-      if ((paramLong > l) || ((paramBoolean) && (paramLong == l)))
-      {
-        ARScanEntryView.a(this.a).post(new ARScanEntryView.5.1(this));
-        localSharedPreferences.edit().putBoolean("key_show_reddot", true).commit();
-        ARScanEntryView.a(this.a, true);
-      }
-      if (paramLong >= l) {
-        break;
-      }
-      ARScanEntryView.a(this.a, false);
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.5.2(this));
-      localSharedPreferences.edit().putBoolean("key_show_reddot", false).commit();
-      return;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      break;
     }
-    label274:
-    ARScanEntryView.a(this.a, false);
-    ARScanEntryView.a(this.a).post(new ARScanEntryView.5.3(this));
   }
 }
 

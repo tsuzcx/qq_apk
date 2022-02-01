@@ -1,35 +1,31 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-class won
-  extends QQUIEventReceiver<wom, wbh>
+public class won
+  extends QQUIEventReceiver<woa, wrd>
 {
-  public won(@NonNull wom paramwom)
+  public won(@NonNull woa paramwoa)
   {
-    super(paramwom);
+    super(paramwoa);
   }
   
-  public void a(@NonNull wom paramwom, @NonNull wbh paramwbh)
+  public void a(@NonNull woa paramwoa, @NonNull wrd paramwrd)
   {
-    if ((!TextUtils.equals(wom.a(paramwom).mContext, paramwbh.jdField_a_of_type_JavaLangString)) || (wom.a(paramwom) == null)) {
+    if ((paramwrd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwrd.jdField_a_of_type_JavaUtilList != null) && (!paramwrd.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      paramwoa.a.b(paramwrd);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if (paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      xvv.a(this.TAG, "pull feedId list fail %s", paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
-      wom.a(paramwom).a(new ErrorMessage(paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
-      return;
-    }
-    wom.a(paramwom).mIsEnd = paramwbh.jdField_a_of_type_Boolean;
-    wom.a(paramwom).b(new ErrorMessage(), wom.b(paramwbh.jdField_a_of_type_JavaUtilList), paramwbh.jdField_a_of_type_Boolean);
+    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramwrd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramwrd.jdField_a_of_type_JavaUtilList);
   }
   
   public Class acceptEventClass()
   {
-    return wbh.class;
+    return wrd.class;
   }
 }
 

@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 class anke
-  implements DialogInterface.OnDismissListener
+  implements Comparator<ApolloActionData>
 {
-  anke(anjz paramanjz) {}
+  anke(ankc paramankc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    anjz.a(this.a, null);
-    QLog.d("AccountPhoneUnityManager", 1, "dialog dismiss");
+    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
+      return 0;
+    }
+    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
+      return 1;
+    }
+    return -1;
   }
 }
 

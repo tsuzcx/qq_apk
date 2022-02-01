@@ -5,7 +5,7 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class bz
-  implements bhnm
+  implements biyc
 {
   public bz(LiteActivity paramLiteActivity, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2) {}
   
@@ -14,13 +14,13 @@ public class bz
     paramInt = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      aszk.b(aszt.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692491));
+      audr.b(auea.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692593));
       FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
       this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getMessageFacade().getDatalineMessageManager(paramInt).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
       return;
     }
-    aszk.b(aszt.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692491));
+    audr.b(auea.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692593));
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
 }

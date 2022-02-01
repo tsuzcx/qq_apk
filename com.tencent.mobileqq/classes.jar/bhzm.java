@@ -1,135 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class bhzm
+  extends bmnd
 {
-  protected static String a;
-  protected static boolean a;
+  private HashMap<String, bmnd> a;
   
-  static
+  public bhzm(String paramString, View paramView, HashMap<String, bmnd> paramHashMap)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
-    jdField_a_of_type_JavaLangString += "|.*==.*";
-    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
-    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
-    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
+    super(paramString, paramView);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    if (jdField_a_of_type_Boolean) {
-      if (paramInt == 1)
-      {
-        if (paramThrowable != null) {
-          break label187;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-    }
-    label98:
-    do
+    int i = UIUtils.getScreenWidth(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    return paramLayoutParams;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("border".equals(paramString1))
     {
-      break label186;
-      if ((paramInt == 2) || (paramInt == 0))
-      {
-        if (paramThrowable != null) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      if (paramInt == 3)
-      {
-        if (paramThrowable != null) {
-          break label265;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      for (;;)
-      {
-        if (paramInt == 4)
-        {
-          if (paramThrowable != null) {
-            break label304;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e(paramString1, 2, "" + "::" + paramString2);
-          }
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break;
-        if (!QLog.isColorLevel()) {
-          break label98;
-        }
-        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break label98;
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    label186:
-    label187:
-    label226:
-    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-    label265:
-    label304:
-    return;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(0, paramString1, paramString2, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(2, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a(1, paramString1, paramString2, null);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(3, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a(2, paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(4, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    a(3, paramString1, paramString2, null);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    a(4, paramString1, paramString2, null);
+      if ((bmnd)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
+      return;
+    }
+    super.a(paramString1, paramString2);
   }
 }
 

@@ -1,19 +1,57 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.AbsListView.RecyclerListener;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.Iterator;
+import java.util.List;
 
-class ajoz
-  implements AbsListView.RecyclerListener
+public class ajoz
+  extends Drawable
 {
-  ajoz(ajoy paramajoy) {}
+  private int jdField_a_of_type_Int;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<Drawable> jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  public void onMovedToScrapHeap(View paramView)
+  public ajoz(QQAppInterface paramQQAppInterface)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ajpa))) {
-      ((ajpa)paramView).a.setImageDrawable(null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(List<Drawable> paramList, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = (paramInt * 2);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Drawable localDrawable = (Drawable)localIterator.next();
+      localDrawable = ((bhou)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(localDrawable, this.jdField_a_of_type_Int);
+      if (localDrawable != null)
+      {
+        localDrawable.setBounds(0, 0, this.b, this.b);
+        localDrawable.draw(paramCanvas);
+        paramCanvas.translate(this.jdField_a_of_type_Int, 0.0F);
+      }
     }
   }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

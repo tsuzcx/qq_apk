@@ -1,6 +1,13 @@
-public abstract interface ahvw
+import android.content.Context;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+
+public class ahvw
+  implements ahvy
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public boolean a(Context paramContext, String paramString)
+  {
+    return ScribbleResMgr.c(paramContext, paramString);
+  }
 }
 
 

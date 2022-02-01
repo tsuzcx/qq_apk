@@ -1,19 +1,20 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class atds
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public String b;
+  public atds(QfileLocalFileAppTabView.1.1 param1) {}
   
-  atds(atdm paramatdm) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atds
  * JD-Core Version:    0.7.0.1
  */

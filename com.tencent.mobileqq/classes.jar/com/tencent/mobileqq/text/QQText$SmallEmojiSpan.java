@@ -5,12 +5,13 @@ import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
-import aqyy;
-import areb;
-import avsq;
+import asdi;
+import asih;
+import awyr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JobQueue;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
@@ -34,7 +35,7 @@ public class QQText$SmallEmojiSpan
     this.mSize = paramInt;
     this.mIsAnim = paramBoolean1;
     this.mIsAPNG = paramBoolean2;
-    paramArrayOfChar = aqyy.a(paramArrayOfChar);
+    paramArrayOfChar = asdi.a(paramArrayOfChar);
     if ((paramArrayOfChar != null) && (paramArrayOfChar.length == 2))
     {
       this.mEpId = paramArrayOfChar[0];
@@ -50,9 +51,9 @@ public class QQText$SmallEmojiSpan
     QQText.SmallEmojiSpan.1 local1 = new QQText.SmallEmojiSpan.1(this);
     try
     {
-      areb localareb = (areb)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(QQText.access$000())).getManager(43);
-      if (localareb != null) {
-        localareb.a.execute(local1, 128, true);
+      asih localasih = (asih)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(QQText.access$000())).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+      if (localasih != null) {
+        localasih.a.execute(local1, 128, true);
       }
       return;
     }
@@ -98,9 +99,9 @@ public class QQText$SmallEmojiSpan
   {
     String str = QQText.SMALL_EMOJI_SYMBOL;
     Emoticon localEmoticon = null;
-    avsq localavsq = EmoticonUtils.getEmoticonManager();
-    if (localavsq != null) {
-      localEmoticon = localavsq.a(Integer.toString(this.mEpId), Integer.toString(this.mEId));
+    awyr localawyr = EmoticonUtils.getEmoticonManager();
+    if (localawyr != null) {
+      localEmoticon = localawyr.a(Integer.toString(this.mEpId), Integer.toString(this.mEId));
     }
     if (localEmoticon != null) {
       str = localEmoticon.character;

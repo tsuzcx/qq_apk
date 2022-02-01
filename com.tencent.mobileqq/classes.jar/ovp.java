@@ -1,22 +1,35 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import mqq.app.AppRuntime;
 
-class ovp
-  extends owd
+public class ovp
 {
-  ovp(ouu paramouu, boolean paramBoolean1, boolean paramBoolean2, List paramList)
-  {
-    super(paramouu, null);
-  }
+  private View a;
   
-  void a(owg paramowg)
+  public ovp(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (pkh.a() != null)
     {
-      paramowg.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, ouu.e(this.jdField_a_of_type_Ouu), 4);
+      paramArkAppMessage = pkh.a().getApplication();
+      if (paramArkAppMessage != null) {}
+    }
+    else
+    {
       return;
     }
-    paramowg.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, ouu.e(this.jdField_a_of_type_Ouu), 4, 4);
+    this.a = new View(paramArkAppMessage);
+    this.a.setVisibility(8);
   }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a() {}
+  
+  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

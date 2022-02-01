@@ -1,13 +1,10 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
+import android.view.View;
 
-public abstract interface yev
+public abstract class yev
 {
-  public abstract void a(Animation paramAnimation);
+  public abstract void a(int paramInt, View paramView, Object paramObject, yhc paramyhc);
   
-  public abstract Bitmap b();
-  
-  public abstract void b(Animation paramAnimation);
+  public void b(int paramInt, View paramView, Object paramObject, yhc paramyhc) {}
 }
 
 

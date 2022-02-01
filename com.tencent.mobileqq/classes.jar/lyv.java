@@ -1,20 +1,20 @@
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import com.tencent.av.ReqGroupVideo.ReqPushShareArk;
+import com.tencent.av.ReqGroupVideo.RspPushShareArk;
+import com.tencent.av.common.ErrorInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lyv
+public final class lyv
+  extends lgn<ReqGroupVideo.ReqPushShareArk, ReqGroupVideo.RspPushShareArk>
 {
-  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
-  
-  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqPushShareArk paramReqPushShareArk, ReqGroupVideo.RspPushShareArk paramRspPushShareArk, Object paramObject)
+  {
+    int i = lgk.a((common.ErrorInfo)paramRspPushShareArk.result.get());
+    QLog.d("ShareChat", 1, "shareGAVArkMsg errCode[" + i + "]");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyv
  * JD-Core Version:    0.7.0.1
  */

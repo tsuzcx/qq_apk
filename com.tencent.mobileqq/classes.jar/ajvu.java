@@ -1,112 +1,89 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Comparator;
 
 public class ajvu
+  implements Comparator<ajvr>
 {
-  public static int a(String paramString1, String paramString2, int paramInt)
+  int jdField_a_of_type_Int = -1;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public ajvu(int paramInt, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    int i = paramInt;
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt(paramString2 + paramString1, paramInt);
-    }
-    return i;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static long a(String paramString1, String paramString2, long paramLong)
+  public int a(ajvr paramajvr1, ajvr paramajvr2)
   {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    long l = paramLong;
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong(paramString2 + paramString1, paramLong);
+    int i = -1;
+    int k = 1;
+    int j = 1;
+    if (this.jdField_a_of_type_Int == 0) {
+      i = paramajvr1.c.compareToIgnoreCase(paramajvr2.c);
     }
-    return l;
-  }
-  
-  private static SharedPreferences a(String paramString)
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences(paramString, 4);
-    }
-    return null;
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    String str = paramString3;
-    if (localSharedPreferences != null) {
-      str = localSharedPreferences.getString(paramString2 + paramString1, paramString3);
-    }
-    return str;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().remove(paramString2 + paramString1).apply();
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt(paramString2 + paramString1, paramInt).commit();
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, long paramLong)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putLong(paramString2 + paramString1, paramLong).commit();
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putString(paramString2 + paramString1, paramString3).apply();
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean(paramString2 + paramString1, paramBoolean).commit();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    if (localSharedPreferences != null)
+    label89:
+    do
     {
-      long l1 = localSharedPreferences.getLong("F2FRedpack_EntryColorBeginTime" + paramString, 0L);
-      long l2 = localSharedPreferences.getLong("F2FRedpack_EntryColorEndTime" + paramString, 0L);
-      long l3 = NetConnInfoCenter.getServerTimeMillis();
-      if ((l3 > l1) && (l3 < l2)) {
-        return true;
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            if (this.jdField_a_of_type_Int != 2) {
+              break label89;
+            }
+            if (paramajvr1.jdField_b_of_type_Long == paramajvr2.jdField_b_of_type_Long) {
+              return 0;
+            }
+            if (paramajvr1.jdField_b_of_type_Long <= paramajvr2.jdField_b_of_type_Long) {
+              break;
+            }
+          } while (this.jdField_a_of_type_Boolean);
+          return 1;
+          if (this.jdField_a_of_type_Boolean) {}
+          for (i = j;; i = -1) {
+            return i;
+          }
+          if (this.jdField_a_of_type_Int != 3) {
+            break label149;
+          }
+          if (paramajvr1.a == paramajvr2.a) {
+            return 0;
+          }
+          if (paramajvr1.a <= paramajvr2.a) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Boolean);
+        return 1;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (i = k;; i = -1) {
+          return i;
+        }
+        if (this.jdField_a_of_type_Int != 1) {
+          break label208;
+        }
+        if (paramajvr1.f != paramajvr2.f) {
+          break;
+        }
+        j = paramajvr1.jdField_b_of_type_JavaLangString.compareToIgnoreCase(paramajvr2.jdField_b_of_type_JavaLangString);
+        if (j == 0) {
+          return 0;
+        }
+      } while (j <= 0);
+      return 1;
+    } while (paramajvr1.f >= paramajvr2.f);
+    label149:
+    return 1;
+    label208:
+    if (this.jdField_a_of_type_Int == 8)
+    {
+      if (paramajvr1.n == paramajvr2.n) {
+        return paramajvr1.c.compareToIgnoreCase(paramajvr2.c);
       }
+      return paramajvr2.n - paramajvr1.n;
     }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a("qwallet_setting");
-    boolean bool = paramBoolean;
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean(paramString2 + paramString1, paramBoolean);
-    }
-    return bool;
+    return 0;
   }
 }
 

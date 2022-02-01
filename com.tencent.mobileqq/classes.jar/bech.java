@@ -1,89 +1,75 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FileInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class bech
+  extends QIPCModule
 {
-  public long a;
-  public bebc a;
-  public String a;
-  public ArrayList<String> a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  private static bech a;
   
-  public bech(QQAppInterface paramQQAppInterface, cmd0x383.ApplyFileSearchRspBody.Item paramItem)
+  private bech()
   {
-    if (paramItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramItem.uint64_group_code.get();
-    this.jdField_a_of_type_JavaLangString = paramItem.bytes_group_name.get().toStringUtf8();
-    this.jdField_b_of_type_Long = paramItem.uint64_upload_uin.get();
-    this.jdField_b_of_type_JavaLangString = paramItem.bytes_uploader_nick_name.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    List localList = paramItem.bytes_match_word.get();
-    if (localList != null)
-    {
-      int i = 0;
-      while (i < localList.size())
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)localList.get(i)).toStringUtf8());
-        i += 1;
-      }
-    }
-    this.jdField_c_of_type_Long = paramItem.uint64_match_uin.get();
-    if (this.jdField_c_of_type_Long > 0L)
-    {
-      paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).e(String.valueOf(this.jdField_c_of_type_Long));
-      if (paramQQAppInterface != null)
-      {
-        this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
-        this.d = paramQQAppInterface.remark;
-      }
-    }
-    this.jdField_a_of_type_Bebc = new bebc((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
+    super("TeamWorkModule");
   }
   
-  public String toString()
+  public static bech a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
-    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
-    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (a == null) {}
+    try
     {
-      localStringBuilder.append(", matchWord: = ");
-      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i = 0;
-      if (i < j)
-      {
-        if (i == j - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
-        }
+      if (a == null) {
+        a = new bech();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (!QQAppInterface.class.isInstance(localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("TeamWorkModule", 2, "[onCall] get app failed.");
       }
     }
-    if (this.jdField_a_of_type_Bebc != null) {
-      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_Bebc.toString());
+    do
+    {
+      String str1;
+      String str2;
+      do
+      {
+        return null;
+        if (!"send_to_chat_msg".equals(paramString)) {
+          break;
+        }
+        paramString = bdof.a(paramBundle);
+        paramInt = paramBundle.getInt("uin_type");
+        str1 = paramBundle.getString("to_uin");
+        str2 = paramBundle.getString("docs_gray_tips_info_json");
+        paramBundle = paramBundle.getString("detail_url");
+      } while ((localObject == null) || (paramString == null));
+      paramString.mExtraData = "aioPlusPanelTencentDoc";
+      bhhn.a((QQAppInterface)localObject, str1, paramInt, paramString, null, str2, paramBundle);
+      return null;
+    } while (!"action_download_export_file".equals(paramString));
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    paramString = paramBundle.getString("docUrl");
+    localObject = (bebg)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_EXPORT_HANDLER);
+    if (bool)
+    {
+      ((bebg)localObject).notifyUI(2, true, new Object[] { paramBundle.getString("url"), paramBundle.getString("fileName"), paramString, paramBundle.getString("cookie") });
+      return null;
     }
-    return localStringBuilder.toString();
+    ((bebg)localObject).notifyUI(1, true, new Object[] { anvx.a(2131714157), paramString });
+    return null;
   }
 }
 

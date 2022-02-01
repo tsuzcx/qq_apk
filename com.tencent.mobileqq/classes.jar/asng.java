@@ -1,19 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class asng
-  extends baum<bayt, bbhb>
+public final class asng
+  implements Parcelable.Creator<MiniAppRecommInfo>
 {
-  public asng(TroopFileSearchFragment paramTroopFileSearchFragment) {}
-  
-  protected bbbn<bayt, bbhb> a(int paramInt)
+  public MiniAppRecommInfo a(Parcel paramParcel)
   {
-    return new asni();
+    return new MiniAppRecommInfo(paramParcel);
   }
   
-  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
+  public MiniAppRecommInfo[] a(int paramInt)
   {
-    return new asnk(paramViewGroup);
+    return new MiniAppRecommInfo[paramInt];
   }
 }
 

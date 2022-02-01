@@ -1,17 +1,18 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nzm
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public nzm(EqqAccountDetailActivity paramEqqAccountDetailActivity, oji paramoji) {}
   
-  public nzm(CustomWebView paramCustomWebView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Oji.d;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Oji, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public final class uuj
-  implements Parcelable.Creator<WSPushGloryKingModel>
+final class uuj
+  extends apas
 {
-  public WSPushGloryKingModel a(Parcel paramParcel)
+  uuj(aoav paramaoav, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  
+  public int a()
   {
-    return new WSPushGloryKingModel(paramParcel);
+    return 4;
   }
   
-  public WSPushGloryKingModel[] a(int paramInt)
+  public void a(Object paramObject)
   {
-    return new WSPushGloryKingModel[paramInt];
+    if (this.jdField_a_of_type_Aoav != null) {
+      this.jdField_a_of_type_Aoav.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    uuc.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Aoav != null) {
+      this.jdField_a_of_type_Aoav.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      uuc.a(this.jdField_a_of_type_AndroidContentContext, 2131694983);
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

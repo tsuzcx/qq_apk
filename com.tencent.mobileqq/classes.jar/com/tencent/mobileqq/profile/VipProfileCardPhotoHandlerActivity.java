@@ -8,9 +8,9 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aynl;
-import bfrj;
-import bfvo;
+import azsg;
+import bhaa;
+import bheg;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -31,7 +31,7 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.startPhotoListEdit(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bfrj.b(this), bfrj.a(this), bfrj.b(this), bfrj.a(this), bfrj.c());
+    PhotoUtils.startPhotoListEdit(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bhaa.b(this), bhaa.a(this), bhaa.b(this), bhaa.a(this), bhaa.a());
   }
   
   private void b()
@@ -40,7 +40,7 @@ public class VipProfileCardPhotoHandlerActivity
     {
       if (checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        requestPermissions(new aynl(this), 1, new String[] { "android.permission.CAMERA" });
+        requestPermissions(new azsg(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
@@ -51,11 +51,11 @@ public class VipProfileCardPhotoHandlerActivity
   
   protected void a(Uri paramUri)
   {
-    paramUri = bfvo.b(this, paramUri);
+    paramUri = bheg.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.startPhotoEdit(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bfrj.b(this), bfrj.a(this), bfrj.b(this), bfrj.a(this), paramUri, bfrj.c());
+    PhotoUtils.startPhotoEdit(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bhaa.b(this), bhaa.a(this), bhaa.b(this), bhaa.a(this), paramUri, bhaa.a());
   }
   
   protected void a(String paramString)

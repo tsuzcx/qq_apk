@@ -1,83 +1,145 @@
-import android.text.TextUtils;
+import android.annotation.TargetApi;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aqfh
-  implements apts<String>
+  extends Drawable
 {
-  public String a;
-  public HashMap<String, aqfi> a;
+  private static Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  int jdField_a_of_type_Int = 119;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 160;
+  private int c;
+  private int d;
   
-  public aqfh()
+  public aqfh(Bitmap paramBitmap, Resources paramResources)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("*", new aqfi(this));
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
+    a(paramBitmap);
   }
   
-  public void a(String paramString)
+  private void a()
   {
-    int i;
-    Object localObject2;
-    aqfi localaqfi;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledWidth(this.jdField_b_of_type_Int);
+      this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledHeight(this.jdField_b_of_type_Int);
+    }
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      a();
+      invalidateSelf();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  @TargetApi(21)
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      copyBounds(this.jdField_a_of_type_AndroidGraphicsRect);
+      if ((!this.jdField_a_of_type_Boolean) || (jdField_b_of_type_AndroidGraphicsBitmap != null)) {}
+    }
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.length() == 0) {
+      jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.ARGB_4444);
+      Canvas localCanvas = new Canvas(jdField_b_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      localCanvas.drawOval(new RectF(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        int i = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
+        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        if ((this.jdField_a_of_type_Boolean) && (jdField_b_of_type_AndroidGraphicsBitmap != null))
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+          paramCanvas.drawBitmap(jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+        }
+        paramCanvas.restoreToCount(i);
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = localJSONObject.names();
-      i = 0;
-      if (i >= paramString.length()) {
-        break label212;
-      }
-      localObject1 = paramString.getString(i).trim().toLowerCase();
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label213;
-      }
-      localObject2 = localJSONObject.optJSONObject((String)localObject1);
-      localaqfi = new aqfi(this);
-      localaqfi.c = ((JSONObject)localObject2).getInt("CellNetAutoDownloadSize");
-      localaqfi.b = ((JSONObject)localObject2).getInt("CellNetWarningSize");
-      localaqfi.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
-      if (!((String)localObject1).contains(",")) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localaqfi);
-      }
     }
-    catch (JSONException paramString)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      QLog.e("", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    Object localObject1 = ((String)localObject1).split(",");
-    int j = 0;
-    for (;;)
-    {
-      if (j < localObject1.length)
+      for (;;)
       {
-        localObject2 = localObject1[j].trim().toLowerCase();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localaqfi);
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoDrawable", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
         }
       }
-      else
-      {
-        label212:
-        label213:
-        i += 1;
-        break;
-      }
-      j += 1;
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.d;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.c;
+  }
+  
+  public int getOpacity()
+  {
+    return -2;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class apmp
-  implements Animator.AnimatorListener
+final class apmp
+  implements INetEngine.IBreakDownFix
 {
-  apmp(apmh paramapmh) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    if (apmh.a(this.a) != null) {
-      apmh.a(this.a).b();
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
+      return;
     }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+    paramNetResp.mWrittenBlockLen = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
+    localHttpNetReq.mReqProperties.put("Range", paramNetResp);
+    paramNetResp = localHttpNetReq.mReqUrl;
+    if (paramNetResp.contains("range="))
+    {
+      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+      localHttpNetReq.mReqUrl = (paramNetResp + "range=" + localHttpNetReq.mStartDownOffset);
+    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", offset=" + localHttpNetReq.mStartDownOffset);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

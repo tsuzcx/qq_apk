@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.adapter;
 
-import ally;
-import allz;
+import amjz;
+import amka;
 
 public class TroopListAdapter2$1$1
   implements Runnable
 {
-  public TroopListAdapter2$1$1(allz paramallz) {}
+  public TroopListAdapter2$1$1(amka paramamka) {}
   
   public void run()
   {

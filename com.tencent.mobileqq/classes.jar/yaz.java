@@ -1,74 +1,67 @@
-import android.view.MotionEvent;
-import java.math.BigDecimal;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class yaz
+  extends zgz
 {
-  public float a;
-  private float b;
-  private float c;
+  public static final String KEY = "MemoriesVideoListEmptySegment";
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public yaz(Context paramContext, int paramInt, String paramString)
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((i == 1) && (paramBoolean)) {
-      switch (j)
-      {
-      }
-    }
-    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
+    super(paramContext);
+  }
+  
+  private void f()
+  {
+    zgz localzgz = a().a("MemoriesVideoListSegment");
+    if ((localzgz != null) && (localzgz.a() == 0))
     {
-      do
-      {
-        return false;
-        this.c = this.a;
-        return false;
-        if (paramMotionEvent.getY() >= this.a)
-        {
-          this.c = this.a;
-          return false;
-        }
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      } while (i == 0);
-      bbuc.a().b(i);
-      this.c = paramMotionEvent.getY();
-      return false;
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    xvv.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void P_()
+  {
+    f();
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
     }
-    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 2: 
-        f1 = ybe.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (i != 0)
-        {
-          xvv.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
-          bbuc.a().b(i);
-          this.b = f1;
-        }
-        return true;
-        f4 = paramMotionEvent.getX(1);
-        f2 = paramMotionEvent.getY(1);
-        f3 = paramMotionEvent.getX(2);
-      }
-    }
-    this.b = ybe.a(f4, f2, f3, f1);
-    return false;
+    return 0;
+  }
+  
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
+  {
+    paramInt = UIUtils.getWindowScreenHeight(this.jdField_a_of_type_AndroidContentContext);
+    int i = UIUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
+    int j = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 225.0F);
+    int k = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    paramyhc.a().getLayoutParams().height = (paramInt - i - j - k);
+    return paramyhc.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesVideoListEmptySegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new yhc(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561724, paramViewGroup, false));
+  }
+  
+  protected void c()
+  {
+    f();
   }
 }
 

@@ -1,20 +1,39 @@
-import android.view.animation.Interpolator;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class skz
-  implements Interpolator
+  extends uwu
 {
-  public skz(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
+  private skz(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public float getInterpolation(float paramFloat)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramFloat < 0.2F) {
-      return 0.0F;
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
+    {
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.r = true;
     }
-    if (paramFloat < 0.5F) {
-      return (paramFloat - 0.2F) / 0.3F;
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).a(paramBundle);
+      return;
+      if (i == 0) {
+        paramBundle.r = false;
+      }
     }
-    return 1.0F;
   }
 }
 

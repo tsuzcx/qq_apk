@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 
 public class ajdi
-  extends amzx
+  extends ajdm<ajcv>
 {
-  private WeakReference<Conversation> a;
-  
-  public ajdi(Conversation paramConversation)
+  public ajdi(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, Context paramContext, int paramInt)
   {
-    this.a = new WeakReference(paramConversation);
+    super(paramContext, paramInt);
   }
   
-  public void a(boolean paramBoolean)
+  protected ajdw a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
-    }
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation != null)
-    {
-      localConversation.f(false);
-      Conversation.k(localConversation);
-      localConversation.q();
-    }
+    return new ajcu(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  protected void a(ajdw paramajdw, ajcv paramajcv, int paramInt)
+  {
+    TroopRecommendFriendFragment.a(this.a, paramajdw, paramajcv, paramInt);
   }
 }
 

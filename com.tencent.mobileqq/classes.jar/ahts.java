@@ -1,39 +1,20 @@
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.os.IInterface;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class ahts
-  implements BusinessObserver
+public abstract interface ahts
+  extends IInterface
 {
-  private Handler a;
+  public abstract void a();
   
-  ahts(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    paramInt = paramBundle.getInt("ErrorCode");
-    String str1 = paramBundle.getString("UniqueKey");
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituObserver", 2, ahtj.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
-    }
-    String str2 = ahtj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (!str2.equals(str1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituObserver", 2, ahtj.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
-      }
-    }
-    while (this.a == null) {
-      return;
-    }
-    paramBundle = this.a.obtainMessage(2, paramBundle);
-    this.a.sendMessage(paramBundle);
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle);
+  
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

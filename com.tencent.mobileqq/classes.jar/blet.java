@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.RangeButtonView;
 
-final class blet
-  implements bhnm
+public class blet
 {
-  blet(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      aszt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
-    }
-  }
+  public blet(RangeButtonView paramRangeButtonView) {}
 }
 
 

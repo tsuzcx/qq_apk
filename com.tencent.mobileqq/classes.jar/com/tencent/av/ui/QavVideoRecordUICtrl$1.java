@@ -1,25 +1,25 @@
 package com.tencent.av.ui;
 
 import android.os.Handler;
-import mim;
-import mnh;
+import mji;
+import moe;
 
 public class QavVideoRecordUICtrl$1
   implements Runnable
 {
-  public QavVideoRecordUICtrl$1(mim parammim) {}
+  public QavVideoRecordUICtrl$1(mji parammji) {}
   
   public void run()
   {
-    mim.a(this.this$0, this.this$0.a());
-    mim.b(this.this$0, mnh.a());
-    if (mim.a(this.this$0) < 31457280L) {
-      mim.a(this.this$0).post(new QavVideoRecordUICtrl.1.1(this));
+    mji.a(this.this$0, this.this$0.a());
+    mji.b(this.this$0, moe.a());
+    if (mji.a(this.this$0) < 31457280L) {
+      mji.a(this.this$0).post(new QavVideoRecordUICtrl.1.1(this));
     }
-    while (!mim.b) {
+    while (!mji.b) {
       return;
     }
-    mim.a(this.this$0).sendEmptyMessageDelayed(11, 500L);
+    mji.a(this.this$0).sendEmptyMessageDelayed(11, 500L);
   }
 }
 

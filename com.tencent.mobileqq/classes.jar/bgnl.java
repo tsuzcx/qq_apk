@@ -1,6 +1,6 @@
 public abstract interface bgnl
 {
-  public abstract void a(bgnk parambgnk);
+  public abstract void a(int paramInt);
 }
 
 

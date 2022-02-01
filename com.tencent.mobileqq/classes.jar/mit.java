@@ -1,86 +1,95 @@
-import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanel;
 
 public class mit
-  extends mis
+  implements View.OnTouchListener
 {
-  protected mit(Context paramContext, VideoAppInterface paramVideoAppInterface)
+  public mit(QavPanel paramQavPanel) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramContext, paramVideoAppInterface);
-  }
-  
-  public static int a(int paramInt)
-  {
-    return (paramInt << 16) / 1201 >> 6;
-  }
-  
-  private void a(mdy parammdy1, mdy parammdy2, int paramInt)
-  {
-    int i = paramInt >> 1;
-    int j = b(paramInt);
-    parammdy1.a(0, 0, 0, 0);
-    parammdy1.b(0, 0, i, j);
-    parammdy1.d(-15197410);
-    parammdy2.a(0, 0, 0, 0);
-    parammdy2.b(i, 0, paramInt, j);
-    parammdy2.d(-15197410);
-  }
-  
-  public static int b(int paramInt)
-  {
-    return paramInt * 1201 >> 10;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(lez paramlez, mdy[] paramArrayOfmdy, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
-  
-  public void a(mdy[] paramArrayOfmdy, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void a(mdy[] paramArrayOfmdy, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    boolean bool;
-    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmdy[1].a(0)))
+    if ((!this.a.h.isEnabled()) || (this.a.a == null)) {}
+    int i;
+    do
     {
-      bool = true;
-      lba.f("ScreenLayoutDoubleScreen", "layoutCommon: " + paramBoolean + "|" + bool);
-      if (!bool) {
-        break label112;
+      return false;
+      i = this.a.a();
+      paramView = this.a.a.a().a();
+      switch (paramMotionEvent.getAction())
+      {
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        if ((i == 0) || (i == 1) || (i == 2))
+        {
+          if (i == 2)
+          {
+            if (!QavPanel.a(this.a)) {
+              break label235;
+            }
+            paramView.a("MotionEventDown", true);
+            paramView.b("MotionEventDown", 1);
+            this.a.a("MotionEventDown", 2, 1, true);
+          }
+          QavPanel.a(this.a).setAlpha(127);
+        }
+        if (QavPanel.b(this.a))
+        {
+          QavPanel.a(this.a, false);
+          QavPanel.a(this.a).removeMessages(256);
+          QavPanel.a(this.a).sendEmptyMessageDelayed(256, 200L);
+          QavPanel.a(this.a).removeMessages(261);
+        }
+        break;
       }
-      if (paramBoolean) {
-        break label94;
-      }
-      paramBoolean = true;
+    } while (QavPanel.a(this.a) == null);
+    QavPanel.a(this.a).a();
+    return false;
+    label235:
+    if (this.a.a.a().h()) {
+      this.a.a.a().g("MotionEventDown", 1);
     }
-    label94:
-    label112:
     for (;;)
     {
-      if (paramBoolean)
-      {
-        a(paramArrayOfmdy[1], paramArrayOfmdy[0], paramInt1);
-        return;
-        bool = false;
-        break;
-        paramBoolean = false;
-        continue;
-      }
-      a(paramArrayOfmdy[0], paramArrayOfmdy[1], paramInt1);
-      return;
+      this.a.a("MotionEventDown", 2, 1, false);
+      QavPanel.a(this.a).a(false, false);
+      break;
+      this.a.a.a().a("MotionEventDown", QavPanel.a(this.a).a(), false, true, 1);
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
+    QavPanel.a(this.a).setAlpha(255);
+    QavPanel.a(this.a).removeMessages(256);
+    QavPanel.a(this.a).removeMessages(261);
+    if (i == 3)
+    {
+      QavPanel.a(this.a, true);
+      if (QavPanel.a(this.a))
+      {
+        paramView.a("MotionEventACTION_UP", true);
+        paramView.b("MotionEventACTION_UP", 1);
+        this.a.a("MotionEventUP", 3, 1, true);
+      }
+    }
+    for (;;)
+    {
+      QavPanel.a(this.a).a();
+      return false;
+      this.a.a.a().a("MotionEventACTION_UP", QavPanel.a(this.a).a(), false, true, 1);
+      this.a.a("MotionEventACTION_UP", 3, 1, false);
+      QavPanel.a(this.a).a(false, true);
+      continue;
+      if (i != 1) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mit
  * JD-Core Version:    0.7.0.1
  */

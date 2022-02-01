@@ -1,50 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class szg
-  implements nnv
+  implements pnx
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
+  public szg(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public szg(szf paramszf, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    QLog.d("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
-    if ((paramInt != 0) || (paramString == null)) {}
-    try
+    if (pjz.a(pjz.a()))
     {
-      QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
-      szr.a(szf.a(this.jdField_a_of_type_Szf));
-      if ((paramString == null) && (szr.a(this.jdField_a_of_type_JavaLangString).a))
-      {
-        QLog.d("TemplateFactory", 1, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
-        ues.a(2, szf.a(this.jdField_a_of_type_Szf));
-        this.jdField_a_of_type_Szf.b(this.jdField_a_of_type_JavaLangString);
-        bkwm.a("kandian_pts_style_update", Boolean.valueOf(true));
-        szc.a().b();
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
       }
-      return;
+      if ((this.a.c == 0) && ((!uvs.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
     }
-    catch (Exception paramString)
+    do
     {
-      QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
-    }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+    } while ((uvs.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
+    this.a.a(4);
+    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramString, paramInt));
-  }
-  
-  public void progress(int paramInt) {}
 }
 
 

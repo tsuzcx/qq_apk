@@ -19,9 +19,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import bcef;
-import bgae;
-import bmxv;
+import bdla;
+import bhiw;
+import bonn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngImage;
@@ -43,17 +43,17 @@ public class QQLightRecognitionGuide
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private IphoneTitleBarActivity jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity;
-  private final String jdField_a_of_type_JavaLangString = bmxv.a().getAbsolutePath() + "/qq_recognition_guide/";
+  private final String jdField_a_of_type_JavaLangString = bonn.a().getAbsolutePath() + "/qq_recognition_guide/";
   private final String b = "qq_pic_recognition_guide.png";
   
   private void a(String paramString)
   {
     String str = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getIntent().getStringExtra("method");
     if ("setFaceData".equals(str)) {
-      bcef.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
+      bdla.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
     }
     if ("loginVerify".equals(str)) {
-      bcef.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
+      bdla.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
     }
   }
   
@@ -68,18 +68,18 @@ public class QQLightRecognitionGuide
     File localFile = new File(this.jdField_a_of_type_JavaLangString + this.b);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getAppInterface();
     if (((localObject == null) || (!((AppInterface)localObject).isLogin())) && (!a())) {}
-    for (paramString = getResources().getDrawable(2130845583);; paramString = VasApngUtil.getApngDrawable(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getAppRuntime(), localFile.getAbsolutePath(), paramString, (Drawable)localObject, new int[] { 25 }, "-lightRecognition-", null))
+    for (paramString = getResources().getDrawable(2130845668);; paramString = VasApngUtil.getApngDrawable(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getAppRuntime(), localFile.getAbsolutePath(), paramString, (Drawable)localObject, new int[] { 25 }, "-lightRecognition-", null))
     {
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       ApngImage.playByTag(25);
       return;
-      localObject = super.getResources().getDrawable(2130845582);
+      localObject = super.getResources().getDrawable(2130845667);
     }
   }
   
   public boolean a()
   {
-    String str = bgae.a();
+    String str = bhiw.a();
     return (!TextUtils.isEmpty(str)) && (new File(str + "libAPNG_release_845.so").exists());
   }
   
@@ -115,7 +115,7 @@ public class QQLightRecognitionGuide
   {
     FaceDetectForThirdPartyManager.AppConf localAppConf;
     Intent localIntent1;
-    if (paramView.getId() == 2131371757)
+    if (paramView.getId() == 2131371945)
     {
       a("0X800A85D");
       localAppConf = (FaceDetectForThirdPartyManager.AppConf)getArguments().getSerializable("FaceRecognition.AppConf");
@@ -153,9 +153,9 @@ public class QQLightRecognitionGuide
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getCurrentAccountUin(), true);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561546, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131371757).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131376051));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561613, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131371945).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131376298));
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(120);
     a("0X800A85C");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -176,7 +176,7 @@ public class QQLightRecognitionGuide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLightRecognitionGuide
  * JD-Core Version:    0.7.0.1
  */

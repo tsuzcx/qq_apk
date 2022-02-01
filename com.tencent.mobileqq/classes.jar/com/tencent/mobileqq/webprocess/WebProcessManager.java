@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webprocess;
 
-import amof;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -8,13 +7,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Looper;
-import bcef;
-import bfyt;
-import bfza;
-import bgsl;
-import bgsm;
-import bgsn;
-import bgso;
+import anqs;
+import bdla;
+import bhhl;
+import bhhs;
+import bidb;
+import bidc;
+import bidd;
+import bide;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import npn;
+import nwo;
 
 public class WebProcessManager
   implements Manager
@@ -48,8 +48,8 @@ public class WebProcessManager
   private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   protected static boolean b;
   protected long a;
-  private final amof jdField_a_of_type_Amof = new bgsn(this);
   protected BroadcastReceiver a;
+  private final anqs jdField_a_of_type_Anqs = new bidd(this);
   protected QQAppInterface a;
   protected boolean a;
   private final BroadcastReceiver b;
@@ -63,8 +63,8 @@ public class WebProcessManager
   
   public WebProcessManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bgsl(this);
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new bgsm(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bidb(this);
+    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new bidc(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     a();
     c();
@@ -73,12 +73,12 @@ public class WebProcessManager
   
   public static long a(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("health_dns_profile", bfyt.a()).getLong(paramString, -1L);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("health_dns_profile", bhhl.a()).getLong(paramString, -1L);
   }
   
   public static long a(String paramString1, String paramString2)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("business_click_profile", bfyt.a()).getLong(paramString1 + "_" + paramString2, -1L);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("business_click_profile", bhhl.a()).getLong(paramString1 + "_" + paramString2, -1L);
   }
   
   private static Long a(String paramString)
@@ -88,13 +88,13 @@ public class WebProcessManager
   
   public static void a(String paramString, long paramLong)
   {
-    int i = bfyt.a();
+    int i = bhhl.a();
     BaseApplicationImpl.getApplication().getSharedPreferences("health_dns_profile", i).edit().putLong(paramString, paramLong).commit();
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("business_click_profile", bfyt.a()).edit().putLong(paramString1 + "_" + paramString2, System.currentTimeMillis()).commit();
+    BaseApplicationImpl.getApplication().getSharedPreferences("business_click_profile", bhhl.a()).edit().putLong(paramString1 + "_" + paramString2, System.currentTimeMillis()).commit();
   }
   
   public static void a(List<String> paramList, String paramString)
@@ -121,7 +121,7 @@ public class WebProcessManager
   
   public static long b(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("vip_dns_profile", bfyt.a()).getLong(paramString, -1L);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("vip_dns_profile", bhhl.a()).getLong(paramString, -1L);
   }
   
   public static void b(int paramInt)
@@ -169,7 +169,7 @@ public class WebProcessManager
   
   public static void b(String paramString, long paramLong)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("vip_dns_profile", bfyt.a()).edit().putLong(paramString, paramLong).commit();
+    BaseApplicationImpl.getApplication().getSharedPreferences("vip_dns_profile", bhhl.a()).edit().putLong(paramString, paramLong).commit();
   }
   
   public static void b(boolean paramBoolean)
@@ -196,12 +196,12 @@ public class WebProcessManager
   
   public static long c(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("vip_gamecenter_profile", bfyt.a()).getLong(paramString, -1L);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("vip_gamecenter_profile", bhhl.a()).getLong(paramString, -1L);
   }
   
   public static void c(String paramString, long paramLong)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("vip_gamecenter_profile", bfyt.a()).edit().putLong(paramString, paramLong).commit();
+    BaseApplicationImpl.getApplication().getSharedPreferences("vip_gamecenter_profile", bhhl.a()).edit().putLong(paramString, paramLong).commit();
   }
   
   public static void c(boolean paramBoolean)
@@ -211,9 +211,9 @@ public class WebProcessManager
   
   public static boolean c()
   {
-    npn.a("Web_Module_Check_Is_Exit");
+    nwo.a("Web_Module_Check_Is_Exit");
     boolean bool = QIPCServerHelper.getInstance().isModuleRunning("modular_web");
-    npn.b("Web_Module_Check_Is_Exit");
+    nwo.b("Web_Module_Check_Is_Exit");
     if (QLog.isColorLevel()) {
       QLog.d("WebProcessManager", 2, "Web module is exist: " + bool);
     }
@@ -299,7 +299,7 @@ public class WebProcessManager
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     jdField_a_of_type_JavaUtilHashMap.clear();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4);
-    Object localObject = bfza.a(localSharedPreferences, "key_web_plugin_list" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+    Object localObject = bhhs.a(localSharedPreferences, "key_web_plugin_list" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
     if ((localObject != null) && (!((Set)localObject).isEmpty()))
     {
       localObject = ((Set)localObject).iterator();
@@ -326,20 +326,20 @@ public class WebProcessManager
     a(paramInt, null);
   }
   
-  public void a(int paramInt, bgso parambgso)
+  public void a(int paramInt, bide parambide)
   {
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      ThreadManager.excute(new WebProcessManager.WebProcessPreloadJob(paramInt, parambgso), 128, null, false);
+      ThreadManager.excute(new WebProcessManager.WebProcessPreloadJob(paramInt, parambide), 128, null, false);
     }
-    while (parambgso == null) {
+    while (parambide == null) {
       return;
     }
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      parambgso.onResult(false);
+      parambide.onResult(false);
       return;
     }
-    ThreadManager.excute(new WebProcessManager.1(this, parambgso), 128, null, false);
+    ThreadManager.excute(new WebProcessManager.1(this, parambide), 128, null, false);
   }
   
   public boolean a(String paramString)
@@ -347,7 +347,7 @@ public class WebProcessManager
     boolean bool1;
     if (jdField_a_of_type_JavaUtilHashMap.isEmpty())
     {
-      Object localObject = bfza.a(BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4), "key_web_plugin_list" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+      Object localObject = bhhs.a(BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4), "key_web_plugin_list" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
       boolean bool2 = false;
       bool1 = bool2;
       if (localObject == null) {
@@ -441,7 +441,7 @@ public class WebProcessManager
           IntentFilter localIntentFilter = new IntentFilter();
           localIntentFilter.addAction("com.tencent.mobileqq.babyq.add");
           BaseApplicationImpl.getContext().registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amof);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anqs);
           return;
         }
         catch (Exception localException2) {}
@@ -468,7 +468,7 @@ public class WebProcessManager
         {
           this.c = false;
           BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amof);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anqs);
           return;
         }
         catch (Exception localException2) {}
@@ -545,7 +545,7 @@ public class WebProcessManager
       if (QLog.isColorLevel()) {
         QLog.d("WebProcessManager", 2, "isPreloadSucess");
       }
-      bcef.b(null, "P_CliOper", "Vip", "", "0X8004874", "0X8004874", 0, 1, 0, "", "", "", "");
+      bdla.b(null, "P_CliOper", "Vip", "", "0X8004874", "0X8004874", 0, 1, 0, "", "", "", "");
     }
     for (;;)
     {
@@ -554,7 +554,7 @@ public class WebProcessManager
       if (QLog.isColorLevel()) {
         QLog.d("WebProcessManager", 2, "isPreloadFail");
       }
-      bcef.b(null, "P_CliOper", "Vip", "", "0X8004875", "0X8004875", 0, 1, 0, "", "", "", "");
+      bdla.b(null, "P_CliOper", "Vip", "", "0X8004875", "0X8004875", 0, 1, 0, "", "", "", "");
     }
   }
   

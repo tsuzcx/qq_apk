@@ -1,34 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class bnqh
-  implements Animator.AnimatorListener
+public abstract interface bnqh
 {
-  public bnqh(SlideBottomPanel paramSlideBottomPanel) {}
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bnpr != null) {
-      this.a.jdField_a_of_type_Bnpr.displayPanelFinish();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bnpr != null) {
-      this.a.jdField_a_of_type_Bnpr.displayPanelFinish();
-    }
-  }
+  public abstract void b();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void b(boolean paramBoolean);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

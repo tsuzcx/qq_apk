@@ -9,13 +9,13 @@ class RecordSoundPanel$5
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Int);
+    this.this$0.a(this.jdField_a_of_type_Int);
     this.this$0.b.setText(AudioPanel.a(this.jdField_a_of_type_Double));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel.5
  * JD-Core Version:    0.7.0.1
  */

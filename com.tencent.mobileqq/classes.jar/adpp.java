@@ -1,28 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-class adpp
-  implements Animation.AnimationListener
+public class adpp
+  implements DialogInterface.OnClickListener
 {
-  adpp(adpo paramadpo, boolean paramBoolean) {}
+  public adpp(ChatHistoryFileActivity paramChatHistoryFileActivity, adps paramadps) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (adpo.a(this.jdField_a_of_type_Adpo) != null) && (adpo.a(this.jdField_a_of_type_Adpo).size() >= 2)) {
-      adpo.a(this.jdField_a_of_type_Adpo).sendEmptyMessageDelayed(1688002, 1400L);
-    }
-    if (adpo.a(this.jdField_a_of_type_Adpo) != null)
-    {
-      adpo.a(this.jdField_a_of_type_Adpo).a();
-      adpo.a(this.jdField_a_of_type_Adpo, null);
-    }
+    this.jdField_a_of_type_Adps.a(false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

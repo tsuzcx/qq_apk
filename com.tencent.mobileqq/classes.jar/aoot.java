@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aoot
-  implements DialogInterface.OnClickListener
 {
-  public aoot(ArkAppDownloadModule.5 param5) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    bcef.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
-  }
+  @aoos
+  public MessageRecord a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

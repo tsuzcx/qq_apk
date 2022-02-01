@@ -2,7 +2,7 @@ package com.tencent.biz.richframework.network.cache;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import xvv;
+import ykq;
 
 public class CacheHelper
 {
@@ -26,7 +26,7 @@ public class CacheHelper
         }
         mFileCache = new DiskCache(mPackgeName, mAppCacheDir);
       }
-      xvv.b(TAG, "init FileCache");
+      ykq.b(TAG, "init FileCache");
       return mFileCache;
     }
     finally {}

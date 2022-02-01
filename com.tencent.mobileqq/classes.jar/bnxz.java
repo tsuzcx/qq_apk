@@ -1,29 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import android.util.SparseArray;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import dov.com.qq.im.ae.view.AECompoundButton;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bnxz
-  extends AnimatorListenerAdapter
+  implements boav
 {
-  public bnxz(DragAnimationMgr paramDragAnimationMgr, DragAnimationMgr.DragViewIcon paramDragViewIcon) {}
+  public bnxz(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    if (AEEditorImageEditFragment.a(this.a) != null)
+    {
+      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), null);
+      AEEditorImageEditFragment.a(this.a).removeFrame(AEEditorImageEditFragment.a(this.a));
     }
+    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837754);
+    bnqm.a().c(null);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    if (AEEditorImageEditFragment.a(this.a) != null)
+    {
+      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), paramString);
+      AEEditorImageEditFragment.a(this.a).addFrame(AEEditorImageEditFragment.a(this.a), boaf.d, paramString);
     }
+    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837755);
+    bnqm.a().c(paramString);
   }
 }
 

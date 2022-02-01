@@ -1,16 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.3.1;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class alaz
+public class alaz
   implements View.OnClickListener
 {
-  alaz(alay paramalay) {}
+  public alaz(SpecifyRedPacketAnimMsg.3.1 param1) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    alay.a(this.a, (aiph)localObject);
+    this.a.a.a.a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

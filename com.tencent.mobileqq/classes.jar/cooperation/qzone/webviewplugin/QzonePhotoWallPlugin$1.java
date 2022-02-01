@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import bfur;
-import bgve;
+import bhdj;
+import bifw;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import mqq.app.QQPermissionCallback;
 
@@ -12,7 +12,7 @@ class QzonePhotoWallPlugin$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.this$0.parentPlugin.mRuntime.a());
+    bhdj.a(this.this$0.parentPlugin.mRuntime.a());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

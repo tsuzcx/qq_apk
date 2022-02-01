@@ -1,48 +1,19 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class tcu
-  extends BaseAdapter
-  implements tcx
+class tcu
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private HashMap<Object, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  tcu(tct paramtct) {}
   
-  protected void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramObject, Integer.valueOf(i));
-  }
-  
-  protected void a(List<?> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
+    tct.a(true, -1, tct.a(this.a));
+    if (tct.a(this.a) != null) {
+      tct.a(this.a).onClick(paramView);
     }
-  }
-  
-  protected void b(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-  }
-  
-  public final boolean hasStableIds()
-  {
-    return true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

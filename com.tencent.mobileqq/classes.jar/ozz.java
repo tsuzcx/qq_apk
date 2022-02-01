@@ -1,36 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyCardViewCostBall;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ozz
-  implements View.OnTouchListener
+final class ozz
+  implements DialogInterface.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  ozz(pcf parampcf, pdp parampdp) {}
   
-  private ozz(ReadInJoyCardViewCostBall paramReadInJoyCardViewCostBall) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramInt == 1)
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x;
-      this.jdField_b_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      continue;
-      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
-      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
-      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall));
+      if (this.jdField_a_of_type_Pcf != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Pcf.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Pdp);
+          this.jdField_a_of_type_Pcf.notifyDataSetChanged();
+        }
+      }
+      bmhv.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
     }
   }
 }

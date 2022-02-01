@@ -1,6 +1,21 @@
-public abstract interface anuw
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class anuw
+  extends azbd
 {
-  public abstract void a(int paramInt);
+  public anuw(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    if (FrameHelperActivity.a(this.a) != null) {
+      FrameHelperActivity.a(this.a).a(paramInt);
+    }
+    this.a.b("OnBatteryChangeObserver");
+  }
 }
 
 

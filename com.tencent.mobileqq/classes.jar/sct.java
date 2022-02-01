@@ -1,30 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class sct
-  extends Handler
+public abstract interface sct<V>
 {
-  sct(scs paramscs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + scs.a(this.a));
-      }
-    } while (!scs.a(this.a));
-    this.a.a(1);
-  }
+  public abstract void a(V paramV);
 }
 
 

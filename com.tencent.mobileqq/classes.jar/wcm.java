@@ -1,25 +1,78 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.io.File;
 
 public class wcm
-  extends vko
+  extends wcd
 {
-  private wgt a;
-  public boolean a;
-  
-  public wcm(ErrorMessage paramErrorMessage)
+  public wcm(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    super(paramArrayOfString);
   }
   
-  public wcm(boolean paramBoolean)
+  protected void a(String[] paramArrayOfString, wce paramwce)
   {
-    this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    int k = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i < k)
+      {
+        paramwce = new File(paramArrayOfString[i]).listFiles();
+        if (paramwce == null)
+        {
+          i += 1;
+        }
+        else
+        {
+          int m = paramwce.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile = paramwce[j];
+              if (a(localFile)) {
+                a(localFile);
+              }
+              j += 1;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                ykq.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+      }
+    }
   }
   
-  public wgt a()
+  protected boolean a(File paramFile)
   {
-    return this.jdField_a_of_type_Wgt;
+    if (!paramFile.isDirectory()) {}
+    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+      return false;
+    }
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label60;
+      }
+      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
   }
 }
 

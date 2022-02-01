@@ -1,69 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aqcc
-  extends aptq<aqcb>
+public abstract interface aqcc
 {
-  public static aqcb a()
-  {
-    return (aqcb)apub.a().a(292);
-  }
+  public abstract boolean needProcess(JSONObject paramJSONObject);
   
-  @NonNull
-  public aqcb a(int paramInt)
-  {
-    return new aqcb();
-  }
-  
-  @Nullable
-  public aqcb a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfaptx);
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfaptx[0].a);
-      }
-      return aqcb.a(paramArrayOfaptx[0].a);
-    }
-    return null;
-  }
-  
-  public void a(aqcb paramaqcb) {}
-  
-  public Class<aqcb> clazz()
-  {
-    return aqcb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 292;
-  }
+  public abstract void process(JSONObject paramJSONObject, aqcd paramaqcd, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcc
  * JD-Core Version:    0.7.0.1
  */

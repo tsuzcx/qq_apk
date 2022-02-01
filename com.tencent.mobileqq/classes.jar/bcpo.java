@@ -1,45 +1,21 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcpo
+class bcpo
+  implements View.OnClickListener
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
+  bcpo(bcpn parambcpn, Context paramContext, QQAppInterface paramQQAppInterface) {}
   
-  public static bcpo a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    bcpo localbcpo = new bcpo();
-    localbcpo.jdField_a_of_type_JavaLangString = "2";
-    localbcpo.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localbcpo.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localbcpo.b = paramString1;
-    localbcpo.c = paramString2;
-    localbcpo.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localbcpo.toString());
-    return localbcpo;
-  }
-  
-  public DownloaderTask a()
-  {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
-  }
-  
-  public void a(DownloaderTask paramDownloaderTask)
-  {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
-  }
-  
-  public String toString()
-  {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bcpn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "bar_url", ""), 4010, null);
+    this.jdField_a_of_type_Bcpn.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), System.currentTimeMillis());
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B187", "0X800B187", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

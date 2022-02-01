@@ -1,28 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
 
 public class nzl
-  implements bgwe
+  implements bkzq
 {
-  public nzl(CustomWebView paramCustomWebView, nzm paramnzm) {}
+  public nzl(EqqAccountDetailActivity paramEqqAccountDetailActivity, bkzi parambkzi, String paramString) {}
   
-  public void onSetCookiesFinished(String paramString, Bundle paramBundle, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (this.jdField_a_of_type_Nzm.a)
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (paramInt)
     {
     default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nzm.c, this.jdField_a_of_type_Nzm.d);
+    case 0: 
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
+      nwu.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nzm.b, this.jdField_a_of_type_Nzm.c, this.jdField_a_of_type_Nzm.d, this.jdField_a_of_type_Nzm.e);
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
   }
 }
 

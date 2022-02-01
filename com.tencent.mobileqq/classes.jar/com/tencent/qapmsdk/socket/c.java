@@ -7,12 +7,14 @@ import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.socket.a.k;
 import com.tencent.qapmsdk.socket.c.a;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
 public class c
   extends OutputStream
 {
   private static final String[] a = { "GET", "POST", "PATCH", "PUT", "DELETE", "MOVE", "PROPPATCH", "REPORT", "HEAD", "PROPFIND", "CONNECT", "OPTIONS", "TRACE", "PRI" };
+  private static HashMap<Integer, Long> f;
   private byte[] b = new byte[1];
   private OutputStream c;
   private k d;
@@ -23,6 +25,9 @@ public class c
     this.c = paramOutputStream;
     if (parama != null) {
       this.e = parama;
+    }
+    if (f == null) {
+      f = new HashMap();
     }
   }
   
@@ -37,6 +42,14 @@ public class c
     this.e.l = Thread.currentThread().getId();
     this.e.m = com.tencent.qapmsdk.socket.d.c.a();
     this.d = new k();
+    if (!paramBoolean) {
+      f.put(Integer.valueOf(paramInt2), Long.valueOf(this.e.r));
+    }
+    while (!f.containsKey(Integer.valueOf(paramInt2))) {
+      return;
+    }
+    this.e.r = ((Long)f.get(Integer.valueOf(paramInt2))).longValue();
+    f.remove(Integer.valueOf(paramInt2));
   }
   
   public void close()
@@ -47,6 +60,7 @@ public class c
   public void flush()
   {
     this.c.flush();
+    f.remove(Integer.valueOf(this.e.k));
   }
   
   public void write(int paramInt)

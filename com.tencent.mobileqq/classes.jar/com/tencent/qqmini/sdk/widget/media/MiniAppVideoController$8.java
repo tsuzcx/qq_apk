@@ -17,8 +17,8 @@ class MiniAppVideoController$8
   
   public void onCompletion(AbsVideoPlayer paramAbsVideoPlayer)
   {
-    MiniAppVideoController.access$800(this.this$0).initialTime = 0.0D;
-    if (MiniAppVideoController.access$800(this.this$0).isFullScreen) {
+    MiniAppVideoController.access$000(this.this$0).initialTime = 0.0D;
+    if (MiniAppVideoController.access$000(this.this$0).isFullScreen) {
       this.this$0.smallScreen();
     }
     if ((MiniAppVideoController.access$1400(this.this$0) != null) && (MiniAppVideoController.access$1400(this.this$0).isMiniGame())) {

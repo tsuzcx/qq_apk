@@ -1,217 +1,23 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.27.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
+import com.tencent.mobileqq.activity.photo.album.preview.VideoPreviewPresent;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
 public class akpr
-  extends AccountObserver
+  extends VideoPreviewPresent
 {
-  public akpr(LoginView paramLoginView) {}
-  
-  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
+  public akpr(PreviewBean paramPreviewBean)
   {
-    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_LoginActivity.LoginView", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
-    }
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(4);
-      if ((paramBoolean) && (paramInt == 0))
-      {
-        paramArrayOfByte = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterByNicknameAndPwdActivity.class);
-        paramArrayOfByte.putExtra("key_register_binduin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
-        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
-        paramArrayOfByte.putExtra("not_need_verify_sms", true);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramArrayOfByte);
-        return;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-      paramArrayOfByte = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterPhoneNumActivity.class);
-      paramArrayOfByte.putExtra("key_register_from", 3);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramArrayOfByte);
-    }
+    super(paramPreviewBean);
   }
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
+  public BaseVideoView generateVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
   {
-    QLog.d("login", 1, "LoginActivity onLoginFailed ret=" + paramInt1);
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new LoginView.27.1(this));
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity.LoginView", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
-      }
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-      {
-        List localList = BaseApplicationImpl.sApplication.getAllAccounts();
-        if ((localList != null) && (localList.size() > 0))
-        {
-          str = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-          int i = 0;
-          for (;;)
-          {
-            if (i >= localList.size()) {
-              break label250;
-            }
-            localSimpleAccount = (SimpleAccount)localList.get(i);
-            if (localSimpleAccount != null) {
-              break;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      String str;
-      SimpleAccount localSimpleAccount;
-      do
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      } while (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin())));
-      bfyz.a(BaseApplicationImpl.sApplication, this.a.jdField_a_of_type_JavaLangString, true);
-      label250:
-      if ((paramString2 == null) || (paramString2.equals(""))) {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694062, 0).a();
-      }
-      Intent localIntent;
-      do
-      {
-        return;
-        if (TextUtils.isEmpty(paramString3)) {
-          break label559;
-        }
-        localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, NotificationActivity.class);
-        localIntent.putExtra("type", 8);
-        if (paramInt1 != 40) {
-          break;
-        }
-        bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
-        LoginView.a(this.a, new anhk(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity));
-      } while (anhi.a().a(paramArrayOfByte2, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString(), this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().toString(), LoginView.a(this.a)));
-      localIntent.putExtra("msg", paramString2);
-      localIntent.putExtra("errorver", paramInt2);
-      localIntent.putExtra("is_need_login_with_mask", LoginView.g(this.a));
-      for (;;)
-      {
-        localIntent.putExtra("loginalias", paramString1);
-        localIntent.putExtra("loginret", paramInt1);
-        localIntent.putExtra("errorUrl", paramString3);
-        localIntent.putExtra("expiredSig", paramArrayOfByte1);
-        localIntent.putExtra("keyFromLoginView", true);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-        return;
-        localIntent.putExtra("msg", paramString2 + " " + paramString3);
-      }
-      label559:
-      if (paramInt1 == 2008)
-      {
-        bfur.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, amtj.a(2131705484), amtj.a(2131705479), "OK", null, new akps(this), null).show();
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131692788, 0).a();
-        return;
-      }
-      bfur.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, amtj.a(2131705472), paramString2, new akpt(this), null).show();
-    }
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    QLog.d("login", 1, "LoginActivity onLoginSuccess");
-    if (LoginView.f(this.a))
-    {
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 0, 0, "", "", "", "");
-      bcef.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 1, 0, "", "", "", "");
-    }
-    avit.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    QLog.d("login", 1, "LoginActivity onLoginTimeout");
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(0);
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramString = BaseApplicationImpl.sApplication.getAllAccounts();
-        if ((paramString != null) && (paramString.size() > 0))
-        {
-          str = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-          int i = 0;
-          for (;;)
-          {
-            if (i >= paramString.size()) {
-              break label160;
-            }
-            localSimpleAccount = (SimpleAccount)paramString.get(i);
-            if (localSimpleAccount != null) {
-              break;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      String str;
-      SimpleAccount localSimpleAccount;
-      do
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      } while (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin())));
-      bfyz.a(BaseApplicationImpl.sApplication, this.a.jdField_a_of_type_JavaLangString, true);
-      label160:
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694062, 0).a();
-    }
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(0);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    paramVideoPlayParam.mSceneId = 105;
+    paramVideoPlayParam.mSceneName = bapv.a(105);
+    return (BaseVideoView)bapu.b(paramContext, paramLong, paramVideoPlayParam, paramImageView);
   }
 }
 

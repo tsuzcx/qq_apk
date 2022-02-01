@@ -1,130 +1,58 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
 
-public class bfwe
-  extends bfud
+class bfwe
+  implements TextWatcher
 {
-  private static volatile bfwe jdField_a_of_type_Bfwe;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_safe_jump_whitelist", 0);
-  private List<Pair<String, String>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  bfwe(bfvz parambfvz, bfwf parambfwf, bfva parambfva) {}
   
-  static
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaLangString = localBaseApplication.getFilesDir().getAbsoluteFile() + File.separator + "jumpConfig/";
-    b = jdField_a_of_type_JavaLangString + "qq_safe_jump_whitelist.xml";
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public static bfwe a()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (jdField_a_of_type_Bfwe == null) {}
-    try
+    int i;
+    int k;
+    if (this.jdField_a_of_type_Bfvz.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b() != 0)
     {
-      if (jdField_a_of_type_Bfwe == null) {
-        jdField_a_of_type_Bfwe = new bfwe();
-      }
-      return jdField_a_of_type_Bfwe;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "reportIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "JumpIllegal", true, 0L, 0L, localHashMap, null);
-  }
-  
-  protected int a()
-  {
-    return 2131886091;
-  }
-  
-  public long a()
-  {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_jump_whitelist_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "getConfigVersion version=" + l);
-    }
-    return l;
-  }
-  
-  protected Object a(XmlPullParser paramXmlPullParser)
-  {
-    if (paramXmlPullParser == null) {
-      return null;
-    }
-    long l1 = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    for (int i = paramXmlPullParser.getEventType(); i != 1; i = paramXmlPullParser.next()) {
-      if ((i == 2) && (paramXmlPullParser.getName().equalsIgnoreCase("Item")))
+      int j = this.jdField_a_of_type_Bfvz.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
+      i = this.jdField_a_of_type_Bfvz.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
+      j -= i;
+      k = paramInt3 - paramInt2;
+      if (k > j)
       {
-        String str1 = paramXmlPullParser.getAttributeValue(null, "pkg");
-        String str2 = paramXmlPullParser.getAttributeValue(null, "cmp");
-        if ((str1 != null) && (str2 != null)) {
-          localArrayList.add(new Pair(str1, str2));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpFilterHelper", 2, "doParseRules pkg=" + str1 + ";cmp=" + str2);
-        }
+        QQToast.a(bfvz.a(this.jdField_a_of_type_Bfvz), "最多可以输入500个字", 1).a();
+        paramInt2 = j + paramInt2;
+        this.jdField_a_of_type_Bfwf.a.removeTextChangedListener(this);
+        CharSequence localCharSequence = paramCharSequence.subSequence(0, paramInt1 + paramInt2);
+        paramCharSequence = paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length());
+        paramCharSequence = localCharSequence.toString() + paramCharSequence.toString();
+        this.jdField_a_of_type_Bfwf.a.setText(paramCharSequence);
+        this.jdField_a_of_type_Bfwf.a.addTextChangedListener(this);
+        this.jdField_a_of_type_Bfwf.a.setSelection(paramInt1 + paramInt2);
+        this.jdField_a_of_type_Bfvz.jdField_a_of_type_Bfvo.a(i, i + paramInt2);
+        this.jdField_a_of_type_Bfva.jdField_a_of_type_Int = (paramInt2 + paramInt1);
+        this.jdField_a_of_type_Bfva.b(paramCharSequence);
       }
     }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "doParseRules :  cost time:" + (l2 - l1) + "ms;size=" + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "updateConfigVersion version=" + paramLong);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_jump_whitelist_version", paramLong).commit();
-  }
-  
-  protected void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    Pair localPair = new Pair(paramString1, paramString2);
-    if (!this.jdField_a_of_type_Boolean) {}
-    synchronized (jdField_a_of_type_Bfwe)
+    for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        a(paramContext);
-      }
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localPair))
-      {
-        a(paramString1, paramString2);
-        return true;
-      }
+      QLog.i("xmediaEditor", 1, "onTextChanged, mData.position:" + this.jdField_a_of_type_Bfva.c + ", text:" + this.jdField_a_of_type_Bfva.jdField_a_of_type_JavaLangString + ",Listener:" + toString());
+      return;
+      this.jdField_a_of_type_Bfvz.jdField_a_of_type_Bfvo.a(i, i + k);
+      this.jdField_a_of_type_Bfva.jdField_a_of_type_Int = (paramInt1 + k);
+      this.jdField_a_of_type_Bfva.b(paramCharSequence.toString());
+      continue;
+      i = this.jdField_a_of_type_Bfvz.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
+      this.jdField_a_of_type_Bfvz.jdField_a_of_type_Bfvo.a(i, i + paramInt3 - paramInt2);
+      this.jdField_a_of_type_Bfva.jdField_a_of_type_Int = (paramInt1 + paramInt3);
+      this.jdField_a_of_type_Bfva.b(paramCharSequence.toString());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "isIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    return false;
   }
 }
 

@@ -1,19 +1,95 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class amzv
-  extends LbsManagerService.OnLocationChangeListener
+public class amzv
+  implements SensorEventListener
 {
-  amzv(amzu paramamzu, String paramString, boolean paramBoolean)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public amzv(Context paramContext, long paramLong, int paramInt)
   {
-    super(paramString, paramBoolean);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a()
   {
-    QLog.d("RedPointLog.RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    amzu.a(this.a, paramInt, paramSosoLbsInfo, 0);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null)
+    {
+      QLog.e("ApolloRender", 1, "SensorManager is null");
+      amwn.a().callbackFromRequest(this.jdField_a_of_type_Long, 1, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+    if (localObject == null)
+    {
+      QLog.e("ApolloRender", 1, "Sensor gyro is null");
+      amwn.a().callbackFromRequest(this.jdField_a_of_type_Long, 2, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+    boolean bool = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, (Sensor)localObject, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = true;
+    localObject = amwn.a();
+    long l = this.jdField_a_of_type_Long;
+    if (bool) {}
+    for (int i = 0;; i = 5)
+    {
+      ((ApolloCmdChannel)localObject).callbackFromRequest(l, i, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null)
+    {
+      QLog.e("ApolloRender", 1, "SensorManager is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
+    this.jdField_a_of_type_Boolean = false;
+    QLog.e("ApolloRender", 1, "Sensor unRegister");
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    try
+    {
+      paramSensorEvent = paramSensorEvent.values;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("gyroX", paramSensorEvent[0]);
+      localJSONObject.put("gyroY", paramSensorEvent[1]);
+      localJSONObject.put("gyroZ", paramSensorEvent[2]);
+      amwn.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_device_gyro_sensor_scope_update.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable paramSensorEvent)
+    {
+      QLog.e("ApolloRender", 1, paramSensorEvent, new Object[0]);
+    }
   }
 }
 

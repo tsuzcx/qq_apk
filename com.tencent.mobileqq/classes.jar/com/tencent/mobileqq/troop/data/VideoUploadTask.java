@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.data;
 
-import bdzq;
-import bdzu;
+import bfgt;
+import bfgx;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class VideoUploadTask
@@ -10,8 +10,8 @@ public class VideoUploadTask
   private static String c;
   private static String d;
   protected long a;
-  protected bdzq a;
-  public bdzu a;
+  protected bfgt a;
+  public bfgx a;
   protected String a;
   protected AtomicBoolean a;
   protected String b;
@@ -37,7 +37,7 @@ public class VideoUploadTask
     //   9: iconst_0
     //   10: invokevirtual 24	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   13: aload_0
-    //   14: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzq	Lbdzq;
+    //   14: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgt	Lbfgt;
     //   17: ifnonnull +26 -> 43
     //   20: aload_0
     //   21: getfield 18	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -51,7 +51,7 @@ public class VideoUploadTask
     //   39: invokestatic 56	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   42: return
     //   43: aload_0
-    //   44: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
+    //   44: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
     //   47: ifnull +23 -> 70
     //   50: aload_0
     //   51: getfield 60	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -66,13 +66,13 @@ public class VideoUploadTask
     //   74: iconst_1
     //   75: invokevirtual 24	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   78: aload_0
-    //   79: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzq	Lbdzq;
+    //   79: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgt	Lbfgt;
     //   82: ldc2_w 69
     //   85: invokeinterface 75 3 0
     //   90: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   93: ifeq -51 -> 42
     //   96: aload_0
-    //   97: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
+    //   97: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
     //   100: ifnonnull +39 -> 139
     //   103: ldc 77
     //   105: astore 13
@@ -101,8 +101,8 @@ public class VideoUploadTask
     //   158: astore 13
     //   160: goto -53 -> 107
     //   163: aload_0
-    //   164: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   167: getfield 101	bdzu:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   164: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   167: getfield 101	bfgx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   170: astore 14
     //   172: new 103	android/os/Bundle
     //   175: dup
@@ -123,20 +123,20 @@ public class VideoUploadTask
     //   210: aload 13
     //   212: ldc 120
     //   214: aload_0
-    //   215: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   218: getfield 121	bdzu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   215: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   218: getfield 121	bfgx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   221: invokevirtual 112	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   224: aload 13
     //   226: ldc 123
     //   228: aload_0
-    //   229: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   232: getfield 124	bdzu:c	Ljava/lang/String;
+    //   229: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   232: getfield 124	bfgx:c	Ljava/lang/String;
     //   235: invokevirtual 112	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   238: aload 13
     //   240: ldc 126
     //   242: aload_0
-    //   243: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   246: getfield 129	bdzu:jdField_b_of_type_Int	I
+    //   243: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   246: getfield 129	bfgx:jdField_b_of_type_Int	I
     //   249: invokevirtual 133	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   252: invokestatic 139	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   255: invokestatic 145	com/tencent/biz/common/util/HttpUtil:isConnect	(Landroid/content/Context;)Z
@@ -146,28 +146,28 @@ public class VideoUploadTask
     //   265: invokevirtual 29	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   268: ifne +861 -> 1129
     //   271: aload_0
-    //   272: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   275: getfield 129	bdzu:jdField_b_of_type_Int	I
+    //   272: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   275: getfield 129	bfgx:jdField_b_of_type_Int	I
     //   278: iconst_3
     //   279: if_icmpne +210 -> 489
     //   282: aload_0
-    //   283: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   286: getfield 148	bdzu:jdField_a_of_type_Bdzp	Lbdzp;
+    //   283: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   286: getfield 148	bfgx:jdField_a_of_type_Bfgs	Lbfgs;
     //   289: ifnull +107 -> 396
     //   292: aload_0
-    //   293: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   296: getfield 148	bdzu:jdField_a_of_type_Bdzp	Lbdzp;
-    //   299: getfield 153	bdzp:f	Ljava/lang/String;
+    //   293: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   296: getfield 148	bfgx:jdField_a_of_type_Bfgs	Lbfgs;
+    //   299: getfield 153	bfgs:f	Ljava/lang/String;
     //   302: ifnull +94 -> 396
     //   305: aload_0
-    //   306: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   309: getfield 148	bdzu:jdField_a_of_type_Bdzp	Lbdzp;
+    //   306: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   309: getfield 148	bfgx:jdField_a_of_type_Bfgs	Lbfgs;
     //   312: astore 13
     //   314: aload 13
     //   316: ifnull +792 -> 1108
     //   319: ldc 155
     //   321: aload 13
-    //   323: getfield 158	bdzp:h	Ljava/lang/String;
+    //   323: getfield 158	bfgs:h	Ljava/lang/String;
     //   326: invokevirtual 164	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   329: ifeq +178 -> 507
     //   332: iconst_1
@@ -181,7 +181,7 @@ public class VideoUploadTask
     //   346: iload_1
     //   347: ifeq +669 -> 1016
     //   350: aload_0
-    //   351: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzq	Lbdzq;
+    //   351: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgt	Lbfgt;
     //   354: invokeinterface 170 1 0
     //   359: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   362: ifeq -320 -> 42
@@ -204,58 +204,58 @@ public class VideoUploadTask
     //   399: getfield 60	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   402: aload_0
     //   403: getfield 68	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   406: invokestatic 180	bfdj:a	(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)Lbdzp;
+    //   406: invokestatic 180	bglp:a	(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)Lbfgs;
     //   409: astore 13
     //   411: aload 13
     //   413: ifnull +713 -> 1126
     //   416: aload_0
-    //   417: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
+    //   417: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
     //   420: aload 13
-    //   422: getfield 153	bdzp:f	Ljava/lang/String;
-    //   425: putfield 124	bdzu:c	Ljava/lang/String;
+    //   422: getfield 153	bfgs:f	Ljava/lang/String;
+    //   425: putfield 124	bfgx:c	Ljava/lang/String;
     //   428: new 182	java/io/File
     //   431: dup
     //   432: aload_0
-    //   433: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   436: getfield 101	bdzu:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   433: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   436: getfield 101	bfgx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   439: invokespecial 185	java/io/File:<init>	(Ljava/lang/String;)V
     //   442: astore 15
     //   444: aload 15
     //   446: invokevirtual 188	java/io/File:exists	()Z
     //   449: ifeq +15 -> 464
     //   452: aload_0
-    //   453: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
+    //   453: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
     //   456: aload 15
     //   458: invokevirtual 191	java/io/File:length	()J
-    //   461: putfield 193	bdzu:jdField_a_of_type_Long	J
+    //   461: putfield 193	bfgx:jdField_a_of_type_Long	J
     //   464: aload_0
-    //   465: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
+    //   465: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
     //   468: aload_0
-    //   469: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzu	Lbdzu;
-    //   472: getfield 101	bdzu:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   469: getfield 58	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgx	Lbfgx;
+    //   472: getfield 101	bfgx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   475: invokestatic 199	com/tencent/mobileqq/shortvideo/ShortVideoUtils:getDuration	(Ljava/lang/String;)J
     //   478: ldc2_w 200
     //   481: ldiv
     //   482: l2i
-    //   483: putfield 203	bdzu:jdField_a_of_type_Int	I
+    //   483: putfield 203	bfgx:jdField_a_of_type_Int	I
     //   486: goto -172 -> 314
     //   489: aload 13
     //   491: aload_0
     //   492: getfield 60	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   495: aload_0
     //   496: getfield 68	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   499: invokestatic 206	bdzo:a	(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)Lbdzp;
+    //   499: invokestatic 206	bfgr:a	(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)Lbfgs;
     //   502: astore 13
     //   504: goto -190 -> 314
     //   507: aload 13
-    //   509: getfield 153	bdzp:f	Ljava/lang/String;
+    //   509: getfield 153	bfgs:f	Ljava/lang/String;
     //   512: ifnull +596 -> 1108
     //   515: aload 13
-    //   517: getfield 207	bdzp:c	Ljava/lang/String;
+    //   517: getfield 207	bfgs:c	Ljava/lang/String;
     //   520: invokestatic 213	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   523: astore 15
     //   525: aload 14
-    //   527: invokestatic 217	aszt:a	(Ljava/lang/String;)[B
+    //   527: invokestatic 217	auea:a	(Ljava/lang/String;)[B
     //   530: astore 16
     //   532: aload 14
     //   534: invokestatic 222	com/tencent/mobileqq/utils/FileUtils:getFileSizes	(Ljava/lang/String;)J
@@ -272,19 +272,19 @@ public class VideoUploadTask
     //   559: ldc 226
     //   561: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: aload 13
-    //   566: getfield 227	bdzp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   566: getfield 227	bfgs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   569: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   572: ldc 229
     //   574: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   577: aload 13
-    //   579: getfield 230	bdzp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   579: getfield 230	bfgs:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   582: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   585: ldc 232
     //   587: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   590: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   593: astore 17
     //   595: aload_0
-    //   596: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzq	Lbdzq;
+    //   596: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgt	Lbfgt;
     //   599: invokeinterface 234 1 0
     //   604: new 236	java/io/RandomAccessFile
     //   607: dup
@@ -323,7 +323,7 @@ public class VideoUploadTask
     //   671: aload 14
     //   673: lload_3
     //   674: iload_1
-    //   675: invokestatic 243	bdzo:a	([B[BLjava/lang/String;JLjava/io/RandomAccessFile;JI)J
+    //   675: invokestatic 243	bfgr:a	([B[BLjava/lang/String;JLjava/io/RandomAccessFile;JI)J
     //   678: lstore 7
     //   680: aload 14
     //   682: astore 13
@@ -342,7 +342,7 @@ public class VideoUploadTask
     //   710: aload 14
     //   712: astore 13
     //   714: aload_0
-    //   715: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzq	Lbdzq;
+    //   715: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgt	Lbfgt;
     //   718: lload 7
     //   720: invokeinterface 248 3 0
     //   725: ldc2_w 223
@@ -485,7 +485,7 @@ public class VideoUploadTask
     //   1025: ldc2_w 260
     //   1028: invokestatic 266	java/lang/Thread:sleep	(J)V
     //   1031: aload_0
-    //   1032: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bdzq	Lbdzq;
+    //   1032: getfield 44	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Bfgt	Lbfgt;
     //   1035: aload_0
     //   1036: getfield 244	com/tencent/mobileqq/troop/data/VideoUploadTask:jdField_a_of_type_Long	J
     //   1039: invokeinterface 75 3 0

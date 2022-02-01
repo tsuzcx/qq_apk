@@ -1,6 +1,10 @@
+import android.os.Bundle;
+
 public abstract interface beig
 {
-  public abstract void a(behy parambehy);
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void b(Bundle paramBundle);
 }
 
 

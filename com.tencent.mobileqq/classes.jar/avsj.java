@@ -1,121 +1,131 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import mqq.manager.TicketManager;
 
-public class avsj
-  implements ayeo
+class avsj
 {
-  protected MessageForMixedMsg a;
-  protected String a;
-  protected ArrayList<MessageForText.AtTroopMemberInfo> a;
-  protected Map<String, List<Integer>> a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avsl(this);
+  private avxb jdField_a_of_type_Avxb = new avsk(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<avxa> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<avxa> b = new ArrayList();
   
-  public avsj(MessageForMixedMsg paramMessageForMixedMsg, Map<String, List<Integer>> paramMap, String paramString, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
+  private Intent a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = paramMap;
-    this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilMap = paramString;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
+    return localIntent;
   }
   
-  private void a(MessageForMixedMsg paramMessageForMixedMsg)
+  private void a(Intent paramIntent)
   {
-    Object localObject;
-    if ((paramMessageForMixedMsg.msgElemList.get(0) instanceof MessageForText))
-    {
-      localObject = (MessageForText)paramMessageForMixedMsg.msgElemList.get(0);
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (((MessageForText)localObject).atInfoList == null)) {
-        ((MessageForText)localObject).atInfoList = this.jdField_a_of_type_JavaUtilArrayList;
-      }
-    }
-    if (paramMessageForMixedMsg.istroop == 1)
-    {
-      localObject = paramMessageForMixedMsg.msgElemList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        nmy.a().a(localMessageRecord);
-      }
-    }
-    avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_Avsf.a, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg, true);
+    avxv localavxv = (avxv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WATCH_LIVE_TOGETHER);
+    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
+    localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
+    localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
+    localavxv.a(paramIntent.getStringExtra("closeRoomFrom"), localNewTogetherRoomMessageData);
   }
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  private void a(Intent paramIntent, List<avxa> paramList)
   {
-    Object localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (((List)localObject1).isEmpty())) {}
-    for (;;)
+    int i;
+    String str;
+    StringBuilder localStringBuilder;
+    if (!paramList.isEmpty())
     {
-      return null;
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Integer)((Iterator)localObject1).next();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.getSubMessage(((Integer)localObject2).intValue());
-        if ((localObject2 instanceof MessageForPic)) {
-          ((MessageForPic)localObject2).richText = paramRichText;
-        }
+      i = paramIntent.getIntExtra("callback_return_code", 0);
+      str = paramIntent.getStringExtra("callback_return_message");
+      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramIntent.hasNext()) {
+        ((avxa)paramIntent.next()).a(i, str);
       }
+      localStringBuilder = new StringBuilder().append("receive ");
+      if (paramList != this.jdField_a_of_type_JavaUtilList) {
+        break label130;
+      }
+    }
+    label130:
+    for (paramIntent = "close";; paramIntent = "open")
+    {
+      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
+      paramList.clear();
+      return;
     }
   }
   
-  public void onSend(ayep paramayep)
+  private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
   {
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new ErrorMessage(paramayep.jdField_b_of_type_Int, paramayep.jdField_a_of_type_JavaLangString);
-      QLog.d("MixedMsgManager", 2, "reqUploadMultiPics UiCallBack success result = " + paramayep + ", error = " + localObject1);
-    }
-    if (paramayep.jdField_b_of_type_Int != 0) {
-      avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "send Msg fail: " + paramayep);
-    }
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_JavaLangString);
-      } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Integer)((Iterator)localObject1).next();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.getSubMessage(((Integer)localObject2).intValue());
-        if ((localObject2 instanceof MessageForPic))
-        {
-          localObject2 = (MessageForPic)localObject2;
-          if (QLog.isColorLevel()) {
-            QLog.d("MixedMsgManager", 2, "onSend, pre MessageForPic:" + ((MessageForPic)localObject2).toLogString());
-          }
-          ((MessageForPic)localObject2).md5 = paramayep.d;
-          ((MessageForPic)localObject2).uuid = paramayep.c;
-          ((MessageForPic)localObject2).size = paramayep.jdField_a_of_type_Long;
-          ((MessageForPic)localObject2).groupFileID = paramayep.jdField_b_of_type_Long;
-          if (QLog.isColorLevel()) {
-            QLog.d("MixedMsgManager", 2, "onSend, end MessageForPic:" + ((MessageForPic)localObject2).toLogString());
-          }
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.prewrite();
-        }
-      }
-    } while (!this.jdField_a_of_type_JavaUtilMap.isEmpty());
-    if (QLog.isColorLevel()) {
-      QLog.d("MixedMsgManager", 2, "onSend, mMsgMap isEmpty, packAndSend..");
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+    Intent localIntent = a();
+    localIntent.putExtra("command_type", paramInt);
+    localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
+    b(localIntent);
   }
   
-  public void updateMsg(ayep paramayep) {}
+  private void b()
+  {
+    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+    {
+      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      Intent localIntent = a();
+      localIntent.putExtra("command_type", 6);
+      localIntent.putExtra("sKeyKey", (String)localObject);
+      b(localIntent);
+      return;
+    }
+    QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
+  }
+  
+  private void b(Intent paramIntent)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
+  }
+  
+  public avxb a()
+  {
+    return this.jdField_a_of_type_Avxb;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.b.clear();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  void a(Bundle paramBundle, avxa paramavxa)
+  {
+    Intent localIntent = a();
+    localIntent.putExtra("command_type", 4);
+    localIntent.putExtra("closeRoomBundle", paramBundle);
+    b(localIntent);
+    this.jdField_a_of_type_JavaUtilList.add(paramavxa);
+  }
+  
+  void a(avxa paramavxa)
+  {
+    this.b.add(paramavxa);
+  }
+  
+  void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface = new IntentFilter();
+    paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
+  }
 }
 
 

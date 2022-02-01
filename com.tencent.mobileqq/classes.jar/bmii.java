@@ -1,35 +1,109 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.view.AECompoundButton;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-
 public class bmii
-  implements View.OnClickListener
 {
-  public bmii(AEEditorImageEditFragment paramAEEditorImageEditFragment, boolean paramBoolean) {}
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public int c = 0;
+  public int d = 0;
   
-  public void onClick(View paramView)
+  static
   {
-    if (!this.jdField_a_of_type_Boolean)
+    jdField_a_of_type_JavaLangString = Long.toString(1130L);
+  }
+  
+  public bmii()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public int a()
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-      bmbk.a().a("ae_editor_tool_bar_red_dot_frame", true, 0);
-      View localView = AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).findViewById(2131376509);
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
+    default: 
+      return 0;
     }
-    if (AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).getVisibility() == 0) {
-      AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment);
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public int a(bmii parambmii)
+  {
+    int k = 1;
+    bmii localbmii;
+    if (this.jdField_a_of_type_Int > parambmii.jdField_a_of_type_Int)
+    {
+      localbmii = parambmii;
+      parambmii = this;
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      AEEditorImageEditFragment.b(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment);
-      bmbc.a().v();
+      int i;
+      switch (localbmii.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 0;
+        j = 0;
+        label64:
+        if (j == 0) {
+          break;
+        }
+      }
+      for (int j = k;; j = 0)
+      {
+        k = j;
+        if (i != 0) {
+          k = j | 0x2;
+        }
+        return k;
+        if (parambmii.jdField_a_of_type_Int == 0) {
+          break;
+        }
+        i = 1;
+        j = 1;
+        break label64;
+        if ((parambmii.jdField_a_of_type_Int == 1) && (localbmii.jdField_b_of_type_Int == parambmii.jdField_b_of_type_Int)) {
+          break;
+        }
+        i = 1;
+        j = 1;
+        break label64;
+        if ((parambmii.jdField_a_of_type_Int == 2) && (localbmii.jdField_b_of_type_JavaLangString.equals(parambmii.jdField_b_of_type_JavaLangString))) {
+          break;
+        }
+        i = 0;
+        j = 1;
+        break label64;
+        if ((parambmii.jdField_a_of_type_Int == 3) && (localbmii.c == parambmii.c)) {
+          break;
+        }
+        i = 0;
+        j = 1;
+        break label64;
+        if ((parambmii.jdField_a_of_type_Int == 4) && (localbmii.jdField_b_of_type_JavaLangString.equals(parambmii.jdField_b_of_type_JavaLangString))) {
+          break;
+        }
+        i = 0;
+        j = 1;
+        break label64;
+      }
+      localbmii = this;
     }
+  }
+  
+  public boolean a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      return true;
+      return false;
+    } while (this.jdField_b_of_type_Int > 0);
+    return false;
   }
 }
 

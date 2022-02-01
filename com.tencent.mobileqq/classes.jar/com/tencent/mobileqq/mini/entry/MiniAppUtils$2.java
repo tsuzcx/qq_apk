@@ -1,58 +1,38 @@
 package com.tencent.mobileqq.mini.entry;
 
-import android.text.TextUtils;
-import bhpc;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
+import android.content.Context;
+import bizw;
 import com.tencent.mobileqq.mini.cache.Storage;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$2
   implements Runnable
 {
-  MiniAppUtils$2(BaseJsPluginEngine paramBaseJsPluginEngine, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  MiniAppUtils$2(Context paramContext, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject2 = Storage.open(this.val$jsPluginEngine.activityContext, String.valueOf(bhpc.a().a()), this.val$jsPluginEngine.appBrandRuntime.getApkgInfo().appId);
-    String[] arrayOfString;
-    if (localObject2 != null)
+    Object localObject3 = null;
+    Object localObject1 = null;
+    try
     {
-      arrayOfString = ((Storage)localObject2).read("");
-      ((Storage)localObject2).close();
-    }
-    for (;;)
-    {
-      if ((arrayOfString != null) && (arrayOfString.length == 2) && (TextUtils.isEmpty(arrayOfString[1])))
-      {
-        MiniAppCmdUtil.getInstance().getMiniAppStoreAppList(1, new MiniAppUtils.2.1(this));
-        return;
-      }
-      if ((arrayOfString != null) && (arrayOfString.length == 2))
-      {
-        localObject2 = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject2).put("data", arrayOfString[0]);
-          ((JSONObject)localObject2).put("dataType", arrayOfString[1]);
-          this.val$jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, this.val$eventName, (JSONObject)localObject2, this.val$callBackId);
-          return;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-      this.val$jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, this.val$eventName, null, this.val$callBackId);
+      Storage localStorage = Storage.open(this.val$context, String.valueOf(bizw.a().a()), this.val$appId);
+      localObject1 = localStorage;
+      localObject3 = localStorage;
+      localStorage.writeSync(this.val$key, "Object", this.val$data);
       return;
-      Object localObject1 = null;
+    }
+    catch (Exception localException)
+    {
+      localObject3 = localObject1;
+      QLog.e("MiniAppUtils", 1, "saveToMiniAppStorage ", localException);
+      return;
+    }
+    finally
+    {
+      if (localObject3 != null) {
+        localObject3.close();
+      }
     }
   }
 }

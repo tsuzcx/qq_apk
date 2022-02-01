@@ -1,49 +1,55 @@
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class ohb
-  extends SosoInterface.OnLocationListener
 {
-  public ohb(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  
+  public static ohb a(String paramString)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      ohb localohb = new ohb();
+      paramString = new JSONObject(paramString);
+      localohb.jdField_a_of_type_Int = paramString.optInt("bannerType");
+      localohb.jdField_a_of_type_JavaLangString = paramString.optString("iconUrl");
+      localohb.jdField_b_of_type_JavaLangString = paramString.optString("abstractText");
+      localohb.jdField_b_of_type_Int = paramString.optInt("jumpType");
+      localohb.c = paramString.optString("linkUrl");
+      localohb.d = paramString.optString("appid");
+      localohb.e = paramString.optString("scheme");
+      localohb.f = paramString.optString("packagename");
+      localohb.g = paramString.optString("androidDownloadUrl");
+      localohb.h = paramString.optString("iOSDownloadUrl");
+      localohb.i = paramString.optString("appName");
+      localohb.j = paramString.optString("apkUrl");
+      return localohb;
+    }
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean a()
   {
-    if ((this.a.mApp == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
-    ArrayList localArrayList;
-    double d1;
-    double d2;
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
-      localArrayList = new ArrayList();
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
-        if (localRecentShopParcel.c != 1) {
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
-          }
-          catch (Exception localException) {}
-        }
-      }
-      d1 = paramSosoLbsInfo.mLocation.mLat02;
-      d2 = paramSosoLbsInfo.mLocation.mLon02;
-    } while (this.a.jdField_a_of_type_Ogn == null);
-    this.a.jdField_a_of_type_Ogn.a(this.a.mApp, localArrayList, d2, d1);
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    while (((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) || ((this.jdField_a_of_type_Int == 1) && ((TextUtils.isEmpty(this.f)) || (TextUtils.isEmpty(this.j))))) {
+      return false;
+    }
+    return true;
   }
 }
 

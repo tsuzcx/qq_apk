@@ -1,27 +1,23 @@
-public class aobe
-  extends aobg
+import com.tencent.av.gaudio.AVNotifyCenter;
+
+class aobe
+  implements msp
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  float[] jdField_a_of_type_ArrayOfFloat;
-  float jdField_b_of_type_Float;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  float c;
+  aobe(aobd paramaobd, long paramLong, int paramInt) {}
   
-  public aobe(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public void a(int paramInt1, msr parammsr, int paramInt2)
   {
-    super(0);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_Aobd.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aobd.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aobd.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobe
  * JD-Core Version:    0.7.0.1
  */

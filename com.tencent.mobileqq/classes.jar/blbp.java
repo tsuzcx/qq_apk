@@ -1,159 +1,63 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.qboss.QbossReportManager;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import cooperation.vip.pb.TianShuAccess.MapEntry;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import java.util.ArrayList;
 
 public class blbp
-  extends akke
 {
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  private static ArrayList<blbp> a;
+  public int a;
+  public blbq a;
+  public ExpandableListConnector.GroupMetadata a;
   
-  public blbp(tAdvDesc paramtAdvDesc)
+  static
   {
-    super(paramtAdvDesc);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   }
   
-  public blbp(TianShuAccess.AdItem paramAdItem)
+  private static blbp a()
   {
-    super(paramAdItem);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
-    }
-    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
-    try
-    {
-      Object localObject = new JSONObject(str);
-      this.e = ((JSONObject)localObject).optString("topText");
-      this.f = ((JSONObject)localObject).optString("bottomText");
-      this.g = ((JSONObject)localObject).optString("textColor");
-      this.h = ((JSONObject)localObject).optString("cartoon");
-      this.i = ((JSONObject)localObject).optString("cartoon_md5");
-      this.j = ((JSONObject)localObject).optString("cartoonNum");
-      localObject = new blbr(this, null);
-      ((akkf)localObject).a = this.h;
-      ((akkf)localObject).b = this.i;
-      if (!TextUtils.isEmpty(this.h)) {
-        ((akkf)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.h.hashCode())) + ".zip");
+      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localblbp = (blbp)jdField_a_of_type_JavaUtilArrayList.remove(0);
+        localblbp.b();
+        return localblbp;
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      QbossReportManager.getInstance().sendErrorReport(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+      blbp localblbp = new blbp();
+      return localblbp;
     }
   }
   
-  public void a(SharedPreferences paramSharedPreferences, String paramString)
+  public static blbp a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
-    if (paramSharedPreferences == null) {
-      return;
-    }
-    super.a(paramSharedPreferences, paramString);
-    try
+    blbp localblbp = a();
+    localblbp.jdField_a_of_type_Blbq = blbq.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localblbp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
+    localblbp.jdField_a_of_type_Int = paramInt5;
+    return localblbp;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Blbq = null;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      this.e = paramSharedPreferences.getString("splash_union_banner_top_text" + paramString, "");
-      this.f = paramSharedPreferences.getString("splash_union_banner_bottom_text" + paramString, "");
-      this.g = paramSharedPreferences.getString("splash_union_banner_text_color" + paramString, "");
-      this.h = paramSharedPreferences.getString("splash_union_banner_cartoon_url" + paramString, "");
-      this.i = paramSharedPreferences.getString("splash_union_banner_md5" + paramString, "");
-      this.j = paramSharedPreferences.getString("splash_union_banner_cartoon_num" + paramString, "");
-      paramSharedPreferences = new blbr(this, null);
-      paramSharedPreferences.a = this.h;
-      paramSharedPreferences.b = this.i;
-      if (!TextUtils.isEmpty(this.h)) {
-        paramSharedPreferences.c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.h.hashCode())) + ".zip");
+      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        jdField_a_of_type_JavaUtilArrayList.add(this);
       }
-      paramSharedPreferences.a();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, paramSharedPreferences);
       return;
-    }
-    catch (Exception paramSharedPreferences)
-    {
-      paramSharedPreferences.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "buildUnionBannerFromSP error msg = " + paramSharedPreferences.getMessage());
     }
   }
   
-  public void a(String paramString, SharedPreferences paramSharedPreferences)
+  public boolean a()
   {
-    if (paramSharedPreferences == null) {
-      return;
-    }
-    super.a(paramString, paramSharedPreferences);
-    paramString = paramSharedPreferences.edit();
-    paramString.putString("splash_union_banner_top_text" + this.c, this.e);
-    paramString.putString("splash_union_banner_bottom_text" + this.c, this.f);
-    paramString.putString("splash_union_banner_text_color" + this.c, this.g);
-    paramString.putString("splash_union_banner_cartoon_url" + this.c, this.h);
-    paramString.putString("splash_union_banner_md5" + this.c, this.i);
-    paramString.putString("splash_union_banner_cartoon_num" + this.c, this.j);
-    paramString.apply();
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem == null)
-    {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
-    }
-    Object localObject = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.argList.get().iterator();
-    while (localIterator.hasNext())
-    {
-      TianShuAccess.MapEntry localMapEntry = (TianShuAccess.MapEntry)localIterator.next();
-      ((HashMap)localObject).put(localMapEntry.key.get(), localMapEntry.value.get());
-    }
-    try
-    {
-      this.e = ((String)((HashMap)localObject).get("topText"));
-      this.f = ((String)((HashMap)localObject).get("bottomText"));
-      this.g = ((String)((HashMap)localObject).get("textColor"));
-      this.h = ((String)((HashMap)localObject).get("cartoon"));
-      this.i = ((String)((HashMap)localObject).get("cartoon_md5"));
-      this.j = ((String)((HashMap)localObject).get("cartoonNum"));
-      localObject = new blbr(this, null);
-      ((akkf)localObject).a = this.h;
-      ((akkf)localObject).b = this.i;
-      if (!TextUtils.isEmpty(this.h)) {
-        ((akkf)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.h.hashCode())) + ".zip");
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner fillDataFromUnionSplashItem error msg = " + localException.getMessage());
-    }
+    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
   }
 }
 

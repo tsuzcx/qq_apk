@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adyg
-  implements DialogInterface.OnDismissListener
+public class adyg
+  implements View.OnClickListener
 {
-  adyg(adye paramadye) {}
+  public adyg(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    QQIdentiferActivity.a(this.a.a, 205, amtj.a(2131709472));
-    this.a.a.finish();
+    if (!this.a.isFinishing()) {
+      ForwardFriendListActivity.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

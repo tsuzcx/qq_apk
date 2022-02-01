@@ -1,26 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import cooperation.qzone.util.QZLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.widget.DynamicGridView;
 
-class blaz
-  implements URLDrawable.URLDrawableListener
+public class blaz
+  extends AnimatorListenerAdapter
 {
-  blaz(blax paramblax) {}
+  public blaz(DynamicGridView paramDynamicGridView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QZLog.i("FileBannerTianshuManger", "onLoadSuccessed picUrlDrawable ");
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 101);
-    if (this.a.b == 1) {
-      this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 137);
-    }
+    DynamicGridView.b(this.a, false);
+    DynamicGridView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    DynamicGridView.b(this.a, true);
+    DynamicGridView.a(this.a);
   }
 }
 

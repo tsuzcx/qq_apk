@@ -1,39 +1,22 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public class bmsu
+class bmsu
+  implements ThreadPool.Job<Void>
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    case 3: 
-      return 2;
-    }
-    return 10;
-  }
+  bmsu(bmsl parambmsl, List paramList) {}
   
-  public static bmst a(int paramInt, CaptureModeController paramCaptureModeController)
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    switch (paramInt)
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
     {
-    default: 
-      return new bmsv(paramCaptureModeController);
-    case 1: 
-      return new bmsw(paramCaptureModeController);
-    case 10: 
-      return new bmsz(paramCaptureModeController);
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Bmsl.a(l);
     }
-    return new bmsv(paramCaptureModeController);
+    return null;
   }
 }
 

@@ -1,58 +1,115 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import java.math.BigDecimal;
 
 public class bbhh
-  extends bbhi
+  implements GLGestureListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public float a;
+  public GLSurfaceView a;
+  bbhi a;
+  private float b;
+  private float c;
   
-  public bbhh(ViewGroup paramViewGroup, int paramInt)
+  public bbhh(GLSurfaceView paramGLSurfaceView)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
   }
   
-  protected void a()
+  public bbhh(bbhi parambbhi)
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378707));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369845));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368367));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365198));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378202));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378015));
-    this.d = ((TextView)localView.findViewById(2131365445));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166944));
-      }
-      if (this.d != null) {
-        this.d.setTextColor(this.d.getContext().getResources().getColor(2131166944));
+    this.jdField_a_of_type_Bbhi = parambbhi;
+  }
+  
+  protected void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
+      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(paramInt);
+    }
+  }
+  
+  public int onGetPriority()
+  {
+    return 0;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction() & 0xFF;
+    if ((j != 3) || ((i == 1) && (paramBoolean))) {
+      switch (j)
+      {
       }
     }
-    do
+    while ((i != 2) || (paramBoolean))
     {
-      return;
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      return false;
+      this.c = this.jdField_a_of_type_Float;
+      return false;
+      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
+      {
+        this.c = this.jdField_a_of_type_Float;
+        return false;
       }
-    } while (this.d == null);
-    this.d.setTextColor(Color.parseColor("#737373"));
+      i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+      if (this.jdField_a_of_type_Bbhi != null) {
+        this.jdField_a_of_type_Bbhi.a(i);
+      }
+      for (;;)
+      {
+        this.c = paramMotionEvent.getY();
+        return false;
+        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
+          a(i);
+        }
+      }
+    }
+    ykq.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
+    float f4;
+    float f2;
+    float f3;
+    float f1;
+    if (i == 2)
+    {
+      f4 = paramMotionEvent.getX(0);
+      f2 = paramMotionEvent.getY(0);
+      f3 = paramMotionEvent.getX(1);
+      f1 = paramMotionEvent.getY(1);
+      switch (j)
+      {
+      case 6: 
+      case 3: 
+      case 4: 
+      default: 
+        return false;
+      case 2: 
+        f1 = ypx.a(f4, f2, f3, f1);
+        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+        if (this.jdField_a_of_type_Bbhi != null) {
+          this.jdField_a_of_type_Bbhi.a(i);
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      return true;
+      f4 = paramMotionEvent.getX(1);
+      f2 = paramMotionEvent.getY(1);
+      f3 = paramMotionEvent.getX(2);
+      f1 = paramMotionEvent.getY(2);
+      break;
+      this.b = ypx.a(f4, f2, f3, f1);
+      return false;
+      if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+      {
+        a(i);
+        this.b = f1;
+      }
+    }
   }
 }
 

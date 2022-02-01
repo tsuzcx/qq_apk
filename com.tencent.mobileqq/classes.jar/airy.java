@@ -1,41 +1,43 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
 
 class airy
-  implements AbsListView.OnScrollListener
+  implements Animator.AnimatorListener
 {
-  airy(airx paramairx) {}
+  airy(airw paramairw) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
+    this.a.a.a = true;
     if (QLog.isColorLevel()) {
-      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
+      QLog.d("AddContactsActivity", 2, "click search onAnimationEnd mCurrentView = " + AddContactsActivity.a(this.a.a));
     }
-    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
-    {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 24, 0, 1);
-      }
+    if ((AddContactsActivity.a(this.a.a) instanceof AddContactsView)) {
+      ActiveEntitySearchActivity.a(this.a.a, anvx.a(2131713102), new long[] { 1001L, 1002L }, 99);
     }
-    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    for (;;)
     {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 24, 0, 1);
-      }
+      this.a.a.overridePendingTransition(0, 0);
+      bhbr.a(false);
+      return;
+      paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
+      paramAnimator.putExtra("from_key", this.a.a.a());
+      paramAnimator.putExtra("fromType", 13);
+      this.a.a.startActivity(paramAnimator);
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
-      return;
-    }
-    this.a.f();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,18 +1,8 @@
-import java.security.Key;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anks
+public abstract interface anks
 {
-  private Key a;
-  
-  public anks(Key paramKey)
-  {
-    this.a = paramKey;
-  }
-  
-  public Key a()
-  {
-    return this.a;
-  }
+  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
 }
 
 

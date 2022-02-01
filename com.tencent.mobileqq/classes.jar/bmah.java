@@ -1,23 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class bmah
+final class bmah
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public final int a;
-  public final AECaptureMode a;
-  public final AECaptureMode b;
+  bmah(Runnable paramRunnable) {}
   
-  public bmah(@Nullable AECaptureMode paramAECaptureMode1, @NonNull AECaptureMode paramAECaptureMode2, int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.jdField_a_of_type_DovComQqImAeModeAECaptureMode = paramAECaptureMode1;
-    this.b = paramAECaptureMode2;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramPluginManagerClient == null) {}
+    try
+    {
+      ThreadManager.post(this.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramPluginManagerClient) {}
+    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "qqfav.apk already installed.");
+      }
+      bmaf.a().set(true);
+      try
+      {
+        ThreadManager.post(this.a, 5, null, false);
+        return;
+      }
+      catch (Exception paramPluginManagerClient)
+      {
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
+    }
+    paramPluginManagerClient.installPlugin("qqfav.apk", new bmai(this));
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmah
  * JD-Core Version:    0.7.0.1
  */

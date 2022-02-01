@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class apne
-  implements View.OnClickListener
+class apne
+  extends apgk
 {
-  public apne(ColorNoteSettingFragment paramColorNoteSettingFragment, apnn paramapnn, int paramInt) {}
+  private final aphg jdField_a_of_type_Aphg;
   
-  public void onClick(View paramView)
+  public apne(apnc paramapnc, aphg paramaphg)
   {
-    this.jdField_a_of_type_Apnn.a(paramView, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Aphg = paramaphg;
+  }
+  
+  public void a()
+  {
+    apnc.a(this.jdField_a_of_type_Apnc, true);
+    apnc.b(this.jdField_a_of_type_Apnc, false);
+    boolean bool = this.jdField_a_of_type_Aphg.c();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onConnectReady isMiniResConfigReady=%b", new Object[] { Boolean.valueOf(bool) }));
+    }
+    this.jdField_a_of_type_Apnc.a();
+    this.jdField_a_of_type_Apnc.b();
   }
 }
 

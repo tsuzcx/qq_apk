@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/nw_" android:background="@drawable/h3w" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:layout_gravity="right" android:id="@id/nw9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h1r" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.RecyclerView android:id="@id/m8c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/i24" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="145.0dip" />
+        <com.tencent.widget.CirclePageIndicator android:id="@id/nm7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_alignBottom="@id/i24" android:layout_centerHorizontal="true" tencent:circle_radius="2.5dip" tencent:fillColor="#ffffffff" tencent:pageColor="#ff6c7481" tencent:snap="true" />
+        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff989eb4" android:id="@id/nq2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="9.0dip" android:text="直播中" android:includeFontPadding="false" android:layout_below="@id/i24" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/nq3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/nd" android:text="主播在线导购" android:layout_toRightOf="@id/nq2" android:layout_alignBottom="@id/nq2" />
+        <RelativeLayout android:id="@id/mqq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="175.0dip">
+            <ImageView android:id="@id/mqp" android:layout_width="176.0dip" android:layout_height="95.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="50.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/mqr" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="暂未发现直播" android:layout_below="@id/mqp" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

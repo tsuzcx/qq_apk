@@ -1,23 +1,39 @@
+import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class zyy
-  implements View.OnClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  zyy(zyx paramzyx) {}
+  zyy(zyx paramzyx, Rect paramRect) {}
   
-  public void onClick(View paramView)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (zyx.a(this.a) == null) {}
-    for (;;)
+    switch (paramMotionEvent.getAction())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!zvo.a(zyx.class.getName() + "clickPanel")) {
-        zyx.a(this.a, false);
-      }
     }
+    int i;
+    int j;
+    do
+    {
+      while (!paramMotionEvent.hasNext())
+      {
+        do
+        {
+          return true;
+          i = (int)(paramMotionEvent.getX() + 0.5F);
+          j = (int)(paramMotionEvent.getY() + 0.5F);
+        } while (zyx.a(this.jdField_a_of_type_Zyx) == null);
+        paramMotionEvent = zyx.a(this.jdField_a_of_type_Zyx).iterator();
+      }
+      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
+    return false;
   }
 }
 

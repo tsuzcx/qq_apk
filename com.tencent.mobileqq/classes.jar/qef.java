@@ -1,41 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class qef
-  implements qdy
+public abstract interface qef
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return pzt.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = parampvc.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      qga.a(paramContainer, parampvc);
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("search_word_click_")))
-    {
-      paramViewBase.setOnClickListener(new qeg(this, parampvc, paramContainer));
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList);
 }
 
 

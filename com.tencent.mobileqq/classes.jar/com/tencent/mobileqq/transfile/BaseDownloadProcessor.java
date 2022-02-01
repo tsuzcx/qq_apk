@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aycx;
+import azjj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -23,7 +23,7 @@ public class BaseDownloadProcessor
   private static boolean sPicDownloadPortInited;
   QQAppInterface app;
   protected boolean mDirectMsgUrlDown;
-  ArrayList<aycx> mDownCallBacks = new ArrayList();
+  ArrayList<azjj> mDownCallBacks = new ArrayList();
   String mDownDomain;
   public boolean mHasIpv6List;
   ArrayList<ServerAddr> mIpList = new ArrayList();
@@ -136,11 +136,11 @@ public class BaseDownloadProcessor
     super.accountChanged();
   }
   
-  public void addDownCallback(aycx paramaycx)
+  public void addDownCallback(azjj paramazjj)
   {
     try
     {
-      this.mDownCallBacks.add(paramaycx);
+      this.mDownCallBacks.add(paramazjj);
       return;
     }
     finally {}
@@ -197,12 +197,12 @@ public class BaseDownloadProcessor
     return bytesFromHexString(paramString2);
   }
   
-  public void removeDownCallBack(aycx paramaycx)
+  public void removeDownCallBack(azjj paramazjj)
   {
     try
     {
       if (this.mDownCallBacks != null) {
-        this.mDownCallBacks.remove(paramaycx);
+        this.mDownCallBacks.remove(paramazjj);
       }
       return;
     }

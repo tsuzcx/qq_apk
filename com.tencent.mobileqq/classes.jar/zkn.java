@@ -1,87 +1,25 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.subscribe.utils.TimeAndCountHelper.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zkn
+  implements AdapterView.OnItemClickListener
 {
-  private static volatile zkn jdField_a_of_type_Zkn;
-  private Map<String, Timer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public zkn(QRDisplayActivity paramQRDisplayActivity) {}
   
-  private String a(String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return paramString + "_" + str;
-  }
-  
-  public static zkn a()
-  {
-    if (jdField_a_of_type_Zkn == null) {}
-    try
-    {
-      if (jdField_a_of_type_Zkn == null) {
-        jdField_a_of_type_Zkn = new zkn();
-      }
-      return jdField_a_of_type_Zkn;
+    QRDisplayActivity.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
     }
-    finally {}
-  }
-  
-  private void a(Context paramContext, String paramString, zko paramzko)
-  {
-    paramContext = zkm.a(paramContext);
-    if (paramContext != null)
-    {
-      int i = paramContext.getInt(a(paramString), 0);
-      if (paramzko != null) {
-        paramzko.a(i + 1);
-      }
-    }
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return zkm.a(paramContext).getInt(a(paramString), 0);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = zkm.a(paramContext);
-    SharedPreferences.Editor localEditor = paramContext.edit();
-    paramString = a(paramString);
-    localEditor.putInt(paramString, paramContext.getInt(paramString, 0) + paramInt);
-    localEditor.apply();
-  }
-  
-  public void a(Context paramContext, String paramString, int paramInt, zko paramzko)
-  {
-    if (paramInt > 0)
-    {
-      a(paramString);
-      Timer localTimer = new Timer();
-      localTimer.schedule(new TimeAndCountHelper.1(this, paramContext, paramString, paramzko), paramInt);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localTimer);
-      return;
-    }
-    a(paramContext, paramString, paramzko);
-  }
-  
-  public void a(String paramString)
-  {
-    Timer localTimer = (Timer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localTimer != null)
-    {
-      localTimer.cancel();
-      localTimer.purge();
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    }
+    this.a.i = ((int)paramLong);
+    QRDisplayActivity.a(this.a);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

@@ -1,6 +1,16 @@
-public abstract interface bcue
+import com.tencent.mobileqq.data.MessageForQCircleIceBreak;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class bcue
+  implements acoa
 {
-  public abstract void a(bhht parambhht);
+  public MessageRecord a(int paramInt)
+  {
+    if (paramInt == -7013) {
+      return new MessageForQCircleIceBreak();
+    }
+    return null;
+  }
 }
 
 

@@ -1,9 +1,11 @@
 package cooperation.qqcircle.redpoint;
 
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.qqcircle.events.QCircleRedInfoEvent;
 import java.util.List;
 import mqq.manager.Manager;
 import qqcircle.QQCircleCounter.RedPointInfo;
@@ -135,6 +137,7 @@ public class QCircleRedPointManager
   {
     this.mEeveeRedPointManagerDelegate.setOuterEntranceRedPointReaded(paramString, paramList);
     this.mTianShuRedPointManagerDelegate.setOuterEntranceRedPointReaded(paramString, paramList);
+    SimpleEventBus.getInstance().dispatchEvent(new QCircleRedInfoEvent("QCircleRedPointManager setOuterEntranceRedPointReaded", true));
   }
   
   public void setSmallRedPointReaded(String paramString)

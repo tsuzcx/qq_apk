@@ -1,18 +1,22 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-class awus
-  implements View.OnTouchListener
+public class awus
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  awus(awur paramawur) {}
+  public awus(MedalGuideView paramMedalGuideView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.c();
-    awur.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 

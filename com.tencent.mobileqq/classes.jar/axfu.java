@@ -1,9 +1,6 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-
-public class axfu
-  extends axfs
+public abstract interface axfu
 {
-  public PublishVideoEntry a;
+  public abstract void a(int paramInt);
 }
 
 

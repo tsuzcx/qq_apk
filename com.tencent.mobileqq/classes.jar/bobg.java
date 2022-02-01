@@ -1,88 +1,159 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bobg
 {
-  public static long a;
-  public static boolean a;
+  public static final List<bobg> a;
+  public int a;
+  private VsMusicItemInfo a;
+  public boolean a;
+  public final int b;
+  public final boolean b;
+  public final int c;
   
-  public static bobn a(int paramInt1, int paramInt2)
+  static
   {
-    bobn localbobn = new bobn();
-    localbobn.jdField_a_of_type_Int = paramInt1;
-    localbobn.jdField_b_of_type_Int = paramInt2;
-    return localbobn;
+    jdField_a_of_type_JavaUtilList = a();
   }
   
-  public static bobn a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  public bobg(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean, int paramInt)
   {
-    if (paramMessageForShortVideo.videoFileStatus == 5002)
+    this(paramVsMusicItemInfo, paramBoolean, paramInt, false, -1);
+  }
+  
+  public bobg(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramInt2;
+  }
+  
+  @NonNull
+  private static List<bobg> a()
+  {
+    LinkedList localLinkedList = new LinkedList();
+    int i = 0;
+    if (i < 6)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoBusiManager", 2, "createShortVideoReqByMsg expired");
+      Object localObject = new VsMusicItemInfo();
+      ((VsMusicItemInfo)localObject).mSongMid = ("fakeMid" + (i + 1));
+      ((VsMusicItemInfo)localObject).mMusicName = "";
+      ((VsMusicItemInfo)localObject).mUrl = "";
+      ((VsMusicItemInfo)localObject).mAlbumUrl = "";
+      if (i == 0) {}
+      for (localObject = new bobg((VsMusicItemInfo)localObject, false, 1);; localObject = new bobg((VsMusicItemInfo)localObject, false, 0))
+      {
+        localLinkedList.add(localObject);
+        i += 1;
+        break;
       }
-      return null;
     }
-    paramQQAppInterface = a(2, paramMessageForShortVideo.busiType);
-    paramQQAppInterface.a(paramMessageForShortVideo);
-    return paramQQAppInterface;
+    return localLinkedList;
   }
   
-  static BaseShortVideoOprerator a(int paramInt, QQAppInterface paramQQAppInterface)
+  @NonNull
+  private String f()
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 4: 
-    default: 
-      return null;
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return "";
     }
-    return new boas(paramQQAppInterface);
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName;
   }
   
-  public static void a(bobn parambobn, QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    if (parambobn == null)
-    {
-      ayde.b("ShortVideoBusiManager", "launch", "error,req == null");
-      return;
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return 0;
     }
-    BaseShortVideoOprerator localBaseShortVideoOprerator = a(parambobn.jdField_b_of_type_Int, paramQQAppInterface);
-    if (localBaseShortVideoOprerator == null)
-    {
-      ayde.b("ShortVideoBusiManager", "launch", "error,busiInterface == null,req.busiType:" + parambobn.jdField_b_of_type_Int);
-      return;
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart;
+  }
+  
+  @NonNull
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return "";
     }
-    localBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    localBaseShortVideoOprerator.jdField_a_of_type_Bobn = parambobn;
-    localBaseShortVideoOprerator.jdField_a_of_type_JavaLangString = parambobn.jdField_a_of_type_JavaLangString;
-    localBaseShortVideoOprerator.jdField_b_of_type_JavaLangString = parambobn.jdField_b_of_type_JavaLangString;
-    localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobt);
-    ayde.a("ShortVideoBusiManager", "launch", "cmd:" + ShortVideoUtils.c(parambobn.jdField_a_of_type_Int) + ", reqBusiType" + parambobn.jdField_b_of_type_Int + ", uuid:" + parambobn.jdField_a_of_type_JavaLangString);
-    switch (parambobn.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobp);
-      return;
-    case 2: 
-      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobh);
-      return;
-    case 1: 
-      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobp);
-      return;
-    case 3: 
-      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobi);
-      return;
-    case 4: 
-      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobi);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid == null) {
+      return "";
     }
-    localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_JavaUtilArrayList);
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid;
+  }
+  
+  public boolean a()
+  {
+    return TextUtils.isEmpty(a());
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicDuration;
+  }
+  
+  @NonNull
+  public String b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl;
+  }
+  
+  @NonNull
+  public String c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl;
+  }
+  
+  @NonNull
+  public String d()
+  {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b;
+  }
+  
+  @NonNull
+  public String e()
+  {
+    if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo == null) {
+      return "LRC";
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a)) {
+      return "LRC";
+    }
+    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "{songMid:" + a() + ", songName:" + f() + ", songUrl:" + b() + ", selected:" + this.jdField_a_of_type_Boolean + ", downloadStatus:" + this.jdField_a_of_type_Int + ", itemType:" + this.jdField_b_of_type_Int + "}";
   }
 }
 

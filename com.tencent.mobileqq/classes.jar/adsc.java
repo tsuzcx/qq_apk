@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class adsc
   implements DialogInterface.OnClickListener
 {
-  public adsc(NotificationActivity paramNotificationActivity) {}
+  public adsc(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    ChatSettingForTroop.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsc
  * JD-Core Version:    0.7.0.1
  */

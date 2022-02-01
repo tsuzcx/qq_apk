@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 
 public class mfx
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public mfx(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfx(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mfx
  * JD-Core Version:    0.7.0.1
  */

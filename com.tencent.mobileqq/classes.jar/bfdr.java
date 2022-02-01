@@ -1,14 +1,9 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.widget.TextView;
 
 class bfdr
-  implements bfdu
 {
-  bfdr(bfdm parambfdm, String paramString) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public int a;
+  public TextView a;
 }
 
 

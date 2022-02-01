@@ -1,53 +1,71 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class ldr
-  implements INetEngine.INetEngineListener
 {
-  public void onResp(NetResp paramNetResp)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  
+  public int a()
   {
-    boolean bool = false;
-    String str1 = (String)paramNetResp.mReq.getUserData();
-    if (paramNetResp.mResult == 0) {
-      bool = true;
+    if (this.a == 1) {
+      return 2;
     }
-    try
+    if (this.a == 4) {
+      return 1;
+    }
+    if (this.a == 2) {
+      return 4;
+    }
+    if (this.a == 8) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public String a()
+  {
+    ncp localncp = new ncp('=', ';');
+    localncp.a("s_path", this.jdField_b_of_type_JavaLangString);
+    if (a())
     {
-      if (DeviceCapabilityExamination.a != null)
-      {
-        DeviceCapabilityExamination.a.a(str1, bool);
-        if (DeviceCapabilityExamination.a.a()) {
-          DeviceCapabilityExamination.a = null;
-        }
+      localncp.a("i_fps", this.jdField_b_of_type_Int);
+      localncp.a("i_bitrate", this.jdField_c_of_type_Int);
+      localncp.a("s_outpath", this.d);
+      File localFile = new File(this.d);
+      if (localFile.exists()) {
+        localFile.delete();
       }
-      if (!bool)
-      {
-        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + paramNetResp.mResult + "]");
-        return;
-      }
     }
-    finally {}
-    try
+    for (;;)
     {
-      String str2 = DeviceCapabilityExamination.b(str1);
-      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, str2, false);
-      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
-      paramNetResp = new File(DeviceCapabilityExamination.a(str1));
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + paramNetResp.exists() + "]");
-      return;
-    }
-    catch (Exception paramNetResp)
-    {
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
+      return localncp.a();
+      localncp.a("s_expMd5", this.jdField_c_of_type_JavaLangString);
     }
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((this.a == 2) || (this.a == 8)) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.a == 1);
+      bool1 = bool2;
+    } while (this.a != 4);
+    return false;
+  }
 }
 
 

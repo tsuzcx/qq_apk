@@ -1,67 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class apkl
-  extends aptq<apkk>
 {
-  public static apkk a()
-  {
-    return (apkk)apub.a().a(549);
-  }
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  @NonNull
-  public apkk a(int paramInt)
+  public String toString()
   {
-    return new apkk();
-  }
-  
-  @Nullable
-  public apkk a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      apkk localapkk = apkk.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localapkk;
-    }
-    return null;
-  }
-  
-  public void a(apkk paramapkk) {}
-  
-  public Class clazz()
-  {
-    return apkk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 549;
+    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.main;
 
-import ajey;
-import bhht;
+import akam;
+import bisl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class MainAssistObserver$24
   implements Runnable
 {
-  public MainAssistObserver$24(ajey paramajey) {}
+  public MainAssistObserver$24(akam paramakam) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MainAssistObserver$24
       return;
     }
     this.this$0.c = true;
-    this.this$0.jdField_a_of_type_Bhht.hide();
+    this.this$0.jdField_a_of_type_Bisl.hide();
   }
 }
 

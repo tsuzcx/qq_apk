@@ -1,13 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
 public class alcy
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public alcy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public alcy(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(0);
+    }
+  }
 }
 
 

@@ -1,47 +1,28 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class ywb
-  implements ShareActionSheet.OnItemClickListener
+  extends yvr
 {
-  public ywb(QRDisplayActivity paramQRDisplayActivity) {}
+  public final int c;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public ywb(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramShareActionSheet.dismiss();
-    QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() click item = " + paramActionSheetItem.action);
-    switch (paramActionSheetItem.action)
-    {
-    default: 
-      return;
-    case 26: 
-      QRDisplayActivity.a(this.a, 6000, AppConstants.DATALINE_PC_UIN);
-      return;
-    case 72: 
-      QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-      return;
-    case 2: 
-      this.a.i = 0;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 3: 
-      this.a.i = 1;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 9: 
-      this.a.i = 2;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 10: 
-      this.a.i = 3;
-      QRDisplayActivity.a(this.a);
-      return;
-    }
-    this.a.e();
+    super(paramInt3, paramString, paramInt1);
+    this.c = paramInt2;
+  }
+  
+  @NonNull
+  public Class<? extends yvs> a()
+  {
+    return ywc.class;
+  }
+  
+  @NonNull
+  public yvs a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new ywc(this, paramContext, paramViewGroup);
   }
 }
 

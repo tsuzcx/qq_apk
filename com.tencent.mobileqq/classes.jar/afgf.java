@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afgf
-  implements bcrf
+  implements View.OnClickListener
 {
-  public afgf(FriendShipWaveView paramFriendShipWaveView) {}
+  public afgf(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    int i = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Bcsi.b / 2.0F);
-    int j = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Bcsi.b / 2.0F);
-    int k = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Bcsi.b / 2.0F);
-    bcrn localbcrn = new bcrn(new bcre[] { new bcri(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Bcsi.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bcri(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bcri(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
-    localbcrn.a(new afgg(this));
-    this.a.jdField_a_of_type_Bcsi.a(new bcre[] { localbcrn });
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

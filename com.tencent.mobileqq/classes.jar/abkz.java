@@ -1,39 +1,24 @@
-public final class abkz
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class abkz
+  extends aodj
 {
-  private int a = -2147483648;
+  abkz(abkw paramabkw) {}
   
-  public abkz(int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.a = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    switch (a())
+    if (paramBoolean)
     {
-    default: 
-      return null;
-    case 0: 
-      return "Success";
-    case 1: 
-      return "Internal Error";
-    case 2: 
-      return "Ad was re-loaded too frequently";
-    case 3: 
-      return "Network Error";
-    case 4: 
-      return "Invalid Request";
-    case 5: 
-      return "No Fill";
-    case 6: 
-      return "Server Error";
+      if (paramInt == 1)
+      {
+        asll.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
+        return;
+      }
+      asll.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+      return;
     }
-    return "Display Format Mismatch";
+    asll.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
   }
 }
 

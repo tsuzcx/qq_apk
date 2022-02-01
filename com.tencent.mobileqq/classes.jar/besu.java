@@ -1,19 +1,55 @@
-import android.text.Editable;
-import java.util.Comparator;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-final class besu
-  implements Comparator
+public class besu
+  implements BusinessObserver
 {
-  besu(Editable paramEditable) {}
+  public besu(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = "";
+    paramInt = -1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        int i = localWebSsoResponseBody.ret.get();
+        paramInt = i;
+        paramBundle = str;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = localContext.getString(2131696006, new Object[] { Integer.valueOf(9992) });
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
+      }
+      return;
+      paramBundle = localContext.getString(2131696006, new Object[] { Integer.valueOf(9991) });
+      continue;
+      paramBundle = localContext.getString(2131696006, new Object[] { Integer.valueOf(9992) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besu
  * JD-Core Version:    0.7.0.1
  */

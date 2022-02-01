@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bbqf;
-import bbqh;
-import bbqp;
-import bbqx;
+import bcwz;
+import bcxb;
+import bcxj;
+import bcxr;
 import java.util.Iterator;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class ShortVideoPreDownloader$5
   implements Runnable
 {
-  public ShortVideoPreDownloader$5(bbqp parambbqp) {}
+  public ShortVideoPreDownloader$5(bcxj parambcxj) {}
   
   public void run()
   {
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
     while (localIterator.hasNext())
     {
-      bbqx localbbqx = (bbqx)localIterator.next();
-      bbqf.a(localbbqx, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localbbqx.a != null) {
-        bbqp.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localbbqx.a.a);
+      bcxr localbcxr = (bcxr)localIterator.next();
+      bcwz.a(localbcxr, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localbcxr.a != null) {
+        bcxj.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localbcxr.a.a);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();

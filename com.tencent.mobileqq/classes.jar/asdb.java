@@ -1,21 +1,13 @@
-class asdb
-  extends ased
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import java.util.List;
+
+public abstract interface asdb
 {
-  asdb(asda paramasda, asdf paramasdf) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Asdf.a(paramString2, paramString3);
-      return;
-    }
-    this.jdField_a_of_type_Asdf.a(paramInt, paramString1);
-  }
+  public abstract void a(List<EmoticonInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdb
  * JD-Core Version:    0.7.0.1
  */

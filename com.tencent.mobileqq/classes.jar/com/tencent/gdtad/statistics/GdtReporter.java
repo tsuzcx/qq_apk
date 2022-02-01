@@ -1,6 +1,6 @@
 package com.tencent.gdtad.statistics;
 
-import abrl;
+import acho;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 
@@ -15,7 +15,7 @@ public class GdtReporter
       return;
     }
     ThreadManager.post(new GdtCgiReportRunnable(paramString), 2, null, false);
-    abrl.b("GDT_CGI_REPORT", paramString);
+    acho.b("GDT_CGI_REPORT", paramString);
   }
 }
 

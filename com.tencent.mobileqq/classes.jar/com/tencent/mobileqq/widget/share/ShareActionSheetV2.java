@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget.share;
 
-import amvi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
@@ -39,13 +38,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aozt;
-import aozx;
-import bbyp;
-import bcef;
-import bjnw;
-import bjon;
-import bjuk;
+import anxv;
+import aqcx;
+import aqdb;
+import bdfk;
+import bdla;
+import bkzi;
+import bkzz;
+import blfw;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
@@ -59,7 +59,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import zjv;
+import zza;
 
 public class ShareActionSheetV2
   implements ShareActionSheet
@@ -87,14 +87,14 @@ public class ShareActionSheetV2
   private DialogInterface.OnCancelListener mClientCancelListener;
   private DialogInterface.OnDismissListener mClientDismissListener;
   private DialogInterface.OnShowListener mClientOnShowListener;
-  protected bjnw mDialog;
+  protected bkzi mDialog;
   private DialogInterface.OnDismissListener mDismissListener = new ShareActionSheetV2.4(this);
   private boolean mEnableNotTriggerVirtualNavigationBar;
-  private aozx mFaceObserver = new ShareActionSheetV2.2(this);
+  private aqdb mFaceObserver = new ShareActionSheetV2.2(this);
   protected int mGridView0Length;
   protected int mGridView1Length;
   protected int mGridView2Length;
-  private SparseArray<aozt> mHeaderLoader;
+  private SparseArray<aqcx> mHeaderLoader;
   private Intent mIntentForStartForwardRecentActivity;
   protected boolean mIsDataChanged;
   private boolean mIsPendingShow;
@@ -121,10 +121,10 @@ public class ShareActionSheetV2
     this.mParam = paramParam;
     this.mOutAct = paramParam.context;
     paramParam = this.mOutAct.getResources();
-    this.itemImageSize = paramParam.getDimensionPixelSize(2131296795);
+    this.itemImageSize = paramParam.getDimensionPixelSize(2131296796);
     this.itemTextWidth = this.itemImageSize;
-    this.itemTextMargin = paramParam.getDimensionPixelOffset(2131296797);
-    this.textSpacingExtra = paramParam.getDimensionPixelOffset(2131296798);
+    this.itemTextMargin = paramParam.getDimensionPixelOffset(2131296798);
+    this.textSpacingExtra = paramParam.getDimensionPixelOffset(2131296799);
     this.mAdViewManager = new ShareActionSheetV2.AdViewManager();
     int i = paramParam.getDisplayMetrics().widthPixels;
     int j = paramParam.getDisplayMetrics().heightPixels;
@@ -165,7 +165,7 @@ public class ShareActionSheetV2
       {
         return paramString;
         i = findMaxCharCntPerLine(paramTextPaint, paramString, paramFloat);
-        if (!amvi.a()) {
+        if (!anxv.a()) {
           break;
         }
         paramInt = Math.min(paramInt, i);
@@ -213,7 +213,7 @@ public class ShareActionSheetV2
   {
     if (this.mParam.fullScreen) {}
     int i;
-    for (this.mDialog = ((bjnw)bjon.b(this.mOutAct, null));; this.mDialog = ((bjnw)bjon.a(this.mOutAct, null, i, this.mParam.lp)))
+    for (this.mDialog = ((bkzi)bkzz.b(this.mOutAct, null));; this.mDialog = ((bkzi)bkzz.a(this.mOutAct, null, i, this.mParam.lp)))
     {
       this.mDialog.setOnShowListener(this.mOnShowListener);
       this.mDialog.a(new ShareActionSheetV2.7(this));
@@ -236,9 +236,9 @@ public class ShareActionSheetV2
       }
       localWindow.setAttributes(localLayoutParams);
       return;
-      i = 2131558436;
+      i = 2131558437;
       if (this.mParam.flagNotTouchModal) {
-        i = 2131558437;
+        i = 2131558438;
       }
     }
   }
@@ -369,9 +369,9 @@ public class ShareActionSheetV2
       while (i < this.mHeaderLoader.size())
       {
         int j = this.mHeaderLoader.keyAt(i);
-        aozt localaozt = (aozt)this.mHeaderLoader.get(j);
-        if (localaozt != null) {
-          localaozt.b();
+        aqcx localaqcx = (aqcx)this.mHeaderLoader.get(j);
+        if (localaqcx != null) {
+          localaqcx.b();
         }
         i += 1;
       }
@@ -419,12 +419,12 @@ public class ShareActionSheetV2
       paramArrayList = ShareActionSheetBuilder.ActionSheetItem.build(73);
       paramArrayList.iconNeedBg = false;
       localObject1 = BaseApplicationImpl.getApplication().getResources();
-      if (!bbyp.a()) {
+      if (!bdfk.a()) {
         break label134;
       }
     }
     label134:
-    for (paramArrayList.iconDrawable = ((Resources)localObject1).getDrawable(2130849629);; paramArrayList.iconDrawable = ((Resources)localObject1).getDrawable(2130849628))
+    for (paramArrayList.iconDrawable = ((Resources)localObject1).getDrawable(2130849722);; paramArrayList.iconDrawable = ((Resources)localObject1).getDrawable(2130849721))
     {
       this.mActionSheetRecentUserItems.add(paramArrayList);
       createDialog();
@@ -451,11 +451,11 @@ public class ShareActionSheetV2
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).reportID = ((ShareActionSheetBuilder.ActionSheetItem)localObject2).reportID;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = false;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844119;
-        if (bbyp.a()) {
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844118;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844186;
+        if (bdfk.a()) {
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844185;
         }
-        if (bjuk.a())
+        if (blfw.a())
         {
           localObject2 = new Paint();
           ((Paint)localObject2).setAntiAlias(true);
@@ -469,7 +469,7 @@ public class ShareActionSheetV2
       {
         localObject3 = BitmapFactory.decodeResource(this.mOutAct.getResources(), ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon).copy(Bitmap.Config.ARGB_8888, true);
         localCanvas = new Canvas((Bitmap)localObject3);
-        if (!bbyp.a()) {
+        if (!bdfk.a()) {
           continue;
         }
         localCanvas.drawRoundRect(new RectF(0.0F, 0.0F, localCanvas.getWidth(), localCanvas.getHeight()), 10.0F, 10.0F, (Paint)localObject2);
@@ -503,23 +503,23 @@ public class ShareActionSheetV2
       str1 = getGeneralUrlSourceKey();
     }
     if (paramActionSheetItem.action == 73) {
-      bcef.b(null, "dc00898", "", "", "0X800AB3F", "0X800AB3F", 0, 0, getReportR2(), "", str1, "");
+      bdla.b(null, "dc00898", "", "", "0X800AB3F", "0X800AB3F", 0, 0, getReportR2(), "", str1, "");
     }
     do
     {
       return;
       if (paramActionSheetItem.action == 72)
       {
-        bcef.b(null, "dc00898", "", paramActionSheetItem.uin, "0X800AB3E", "0X800AB3E", 0, 0, getReportR2(), "", str1, paramActionSheetItem.reportID);
+        bdla.b(null, "dc00898", "", paramActionSheetItem.uin, "0X800AB3E", "0X800AB3E", 0, 0, getReportR2(), "", str1, paramActionSheetItem.reportID);
         return;
       }
       if (paramInt == 1)
       {
-        bcef.b(null, "dc00898", "", "", "0X800AB40", "0X800AB40", 0, 0, getReportR2(), "", str1, paramActionSheetItem.reportID);
+        bdla.b(null, "dc00898", "", "", "0X800AB40", "0X800AB40", 0, 0, getReportR2(), "", str1, paramActionSheetItem.reportID);
         return;
       }
     } while (paramInt != 2);
-    bcef.b(null, "dc00898", "", "", "0X800AB41", "0X800AB41", 0, 0, getReportR2(), "", str1, paramActionSheetItem.reportID);
+    bdla.b(null, "dc00898", "", "", "0X800AB41", "0X800AB41", 0, 0, getReportR2(), "", str1, paramActionSheetItem.reportID);
   }
   
   private void reportShowed()
@@ -544,7 +544,7 @@ public class ShareActionSheetV2
         i += 1;
       }
     }
-    bcef.b(null, "dc00898", "", "", "0X800AB3D", "0X800AB3D", 0, 0, getReportR2(), "", (String)localObject1, ((StringBuilder)localObject2).toString());
+    bdla.b(null, "dc00898", "", "", "0X800AB3D", "0X800AB3D", 0, 0, getReportR2(), "", (String)localObject1, ((StringBuilder)localObject2).toString());
   }
   
   private void setMoveIfNecessary(ElasticHorScrView paramElasticHorScrView, int paramInt1, int paramInt2)
@@ -564,13 +564,13 @@ public class ShareActionSheetV2
       if (!isShowing())
       {
         if (this.mEnableNotTriggerVirtualNavigationBar) {
-          zjv.b(getWindow());
+          zza.b(getWindow());
         }
         this.mDialog.show();
         if (this.mEnableNotTriggerVirtualNavigationBar)
         {
-          zjv.a(getWindow());
-          zjv.c(getWindow());
+          zza.a(getWindow());
+          zza.c(getWindow());
         }
       }
       return;
@@ -593,19 +593,19 @@ public class ShareActionSheetV2
     if (QLog.isColorLevel()) {
       QLog.d("ShareActionSheetV2", 2, "createViewFlipper() called #this = " + Integer.toHexString(System.identityHashCode(this)));
     }
-    View localView = View.inflate(this.mOutAct, 2131558945, null);
-    this.mAdViewManager.setAdContainer((RelativeLayout)localView.findViewById(2131362216));
-    this.mActionSheetPanel = localView.findViewById(2131361977);
-    this.mActionSheetLin = ((LinearLayout)localView.findViewById(2131361976));
-    if (bjuk.a())
+    View localView = View.inflate(this.mOutAct, 2131558972, null);
+    this.mAdViewManager.setAdContainer((RelativeLayout)localView.findViewById(2131362221));
+    this.mActionSheetPanel = localView.findViewById(2131361979);
+    this.mActionSheetLin = ((LinearLayout)localView.findViewById(2131361978));
+    if (blfw.a())
     {
-      this.mActionSheetPanel.setBackgroundResource(2130849631);
-      this.mActionSheetLin.setBackgroundResource(2130849631);
+      this.mActionSheetPanel.setBackgroundResource(2130849724);
+      this.mActionSheetLin.setBackgroundResource(2130849724);
     }
     int j = 1;
     int k = 1;
     int m = 1;
-    this.mTitleTv = ((TextView)localView.findViewById(2131361974));
+    this.mTitleTv = ((TextView)localView.findViewById(2131361976));
     Object localObject3;
     Object localObject1;
     label255:
@@ -622,10 +622,10 @@ public class ShareActionSheetV2
       if (this.dialogTitle != null) {
         this.mTitleTv.setText(this.dialogTitle);
       }
-      this.mScrollView0 = ((ElasticHorScrView)localView.findViewById(2131376871));
-      this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131376872));
-      this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131376873));
-      this.mBottomBar = ((LinearLayout)localView.findViewById(2131361965));
+      this.mScrollView0 = ((ElasticHorScrView)localView.findViewById(2131377143));
+      this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131377144));
+      this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131377145));
+      this.mBottomBar = ((LinearLayout)localView.findViewById(2131361967));
       localObject3 = getActionSheetItems();
       if (localObject3.length <= 0) {
         break label497;
@@ -648,17 +648,17 @@ public class ShareActionSheetV2
       if (((List)localObject3).isEmpty()) {
         m = 0;
       }
-      localObject4 = (TextView)LayoutInflater.from(this.mOutAct).inflate(2131558943, null);
+      localObject4 = (TextView)LayoutInflater.from(this.mOutAct).inflate(2131558970, null);
       ((TextView)localObject4).setLayoutParams(new ViewGroup.LayoutParams(this.itemTextWidth, -2));
       i = getTextMeasuredHeight((List)localObject1, (TextView)localObject4);
       n = getTextMeasuredHeight((List)localObject2, (TextView)localObject4);
       i1 = getTextMeasuredHeight((List)localObject3, (TextView)localObject4);
       n = Math.max(Math.max(i, n), i1);
-      i1 = this.mOutAct.getResources().getDimensionPixelOffset(2131296794);
+      i1 = this.mOutAct.getResources().getDimensionPixelOffset(2131296795);
       if (j == 0) {
         break label711;
       }
-      this.grid_row_view0 = ((GridView)localView.findViewById(2131367714));
+      this.grid_row_view0 = ((GridView)localView.findViewById(2131367850));
       if (Build.VERSION.SDK_INT >= 9) {
         this.mScrollView0.setOverScrollMode(2);
       }
@@ -706,7 +706,7 @@ public class ShareActionSheetV2
       this.grid_row_view0.setOnItemClickListener(this.mClickListener);
       if (k != 0)
       {
-        this.grid_row_view1 = ((GridView)localView.findViewById(2131367715));
+        this.grid_row_view1 = ((GridView)localView.findViewById(2131367851));
         if (Build.VERSION.SDK_INT >= 9) {
           this.mScrollView1.setOverScrollMode(2);
         }
@@ -737,7 +737,7 @@ public class ShareActionSheetV2
         this.grid_row_view1.setOnItemClickListener(this.mClickListener);
         if (m != 0)
         {
-          this.grid_row_view2 = ((GridView)localView.findViewById(2131367716));
+          this.grid_row_view2 = ((GridView)localView.findViewById(2131367852));
           if (Build.VERSION.SDK_INT >= 9) {
             this.mScrollView2.setOverScrollMode(2);
           }
@@ -768,7 +768,7 @@ public class ShareActionSheetV2
           this.grid_row_view2.setAdapter(new ShareActionSheetV2.ActionSheetItemAdapter(this.mOutAct, (List)localObject3, this));
           this.grid_row_view2.setSelector(new ColorDrawable(0));
           this.grid_row_view2.setOnItemClickListener(this.mClickListener);
-          this.cancel = ((ImageView)localView.findViewById(2131361966));
+          this.cancel = ((ImageView)localView.findViewById(2131361968));
           this.cancel.setOnClickListener(new ShareActionSheetV2.8(this));
           if ((j == 0) || (this.mRowFriendsVisibility == 8)) {
             this.mScrollView0.setVisibility(8);
@@ -821,7 +821,7 @@ public class ShareActionSheetV2
     return localWindow.findViewById(paramInt);
   }
   
-  public bjnw getActionSheet()
+  public bkzi getActionSheet()
   {
     return this.mDialog;
   }

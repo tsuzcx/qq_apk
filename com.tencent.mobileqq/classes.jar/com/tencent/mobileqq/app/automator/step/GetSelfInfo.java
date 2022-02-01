@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amov;
-import ampt;
-import ayzn;
-import bcqt;
+import anri;
+import ansg;
+import baey;
+import bdxs;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.face.FaceDrawable;
@@ -17,16 +19,16 @@ public class GetSelfInfo
 {
   public int a()
   {
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.app.getBusinessHandler(1);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if (this.a.app.mFirstGetSubAccountName)
     {
-      localObject = (bcqt)this.a.app.getManager(61);
+      localObject = (bdxs)this.a.app.getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
       if (localObject == null) {
-        break label180;
+        break label187;
       }
     }
-    label180:
-    for (Object localObject = ((bcqt)localObject).a();; localObject = null)
+    label187:
+    for (Object localObject = ((bdxs)localObject).a();; localObject = null)
     {
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
@@ -36,12 +38,12 @@ public class GetSelfInfo
           localFriendListHandler.getFriendInfo((String)((Iterator)localObject).next());
         }
       }
-      localObject = (amov)this.a.app.getBusinessHandler(2);
+      localObject = (anri)this.a.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
       if (localObject != null) {
-        ((amov)localObject).d();
+        ((anri)localObject).d();
       }
-      ayzn.a(this.a.app);
-      ((ampt)this.a.app.getBusinessHandler(4)).e();
+      baey.a(this.a.app);
+      ((ansg)this.a.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).e();
       FaceDrawable.getUserFaceDrawable(this.a.app, this.a.app.getAccount(), (byte)3);
       return 7;
     }

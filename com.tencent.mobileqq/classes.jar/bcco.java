@@ -1,22 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
 
-public final class bcco
-  implements TVK_IMediaPlayer.OnErrorListener
+public class bcco
+  implements View.OnTouchListener
 {
-  public bcco(bcad parambcad) {}
+  public bcco(SearchEntryFragment paramSearchEntryFragment) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
-    this.a.a(15, 1, 0L);
+    SearchEntryFragment.a(this.a);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcco
  * JD-Core Version:    0.7.0.1
  */

@@ -43,7 +43,7 @@ public final class Terminal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.Terminal
  * JD-Core Version:    0.7.0.1
  */

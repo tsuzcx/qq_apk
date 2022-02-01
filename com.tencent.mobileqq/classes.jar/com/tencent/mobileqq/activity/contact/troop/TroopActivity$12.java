@@ -15,8 +15,8 @@ class TroopActivity$12
     if (this.this$0.g)
     {
       int i = this.this$0.app.getMessageFacade().getUnreadMsgsNum();
-      TextView localTextView = (TextView)this.this$0.findViewById(2131379417);
-      ImageView localImageView = (ImageView)this.this$0.findViewById(2131369436);
+      TextView localTextView = (TextView)this.this$0.findViewById(2131379722);
+      ImageView localImageView = (ImageView)this.this$0.findViewById(2131369605);
       localTextView.setVisibility(0);
       localImageView.setVisibility(0);
       localTextView.setText("" + i);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import alrq;
-import alxd;
+import amqr;
+import amxt;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -39,14 +39,14 @@ class CmGameCmdChannel$RequestRunable
       Iterator localIterator = localCmGameCmdChannel.a.iterator();
       while (localIterator.hasNext())
       {
-        alrq localalrq = ((alxd)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        if (localalrq != null)
+        amqr localamqr = ((amxt)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        if (localamqr != null)
         {
-          if (localalrq.jdField_a_of_type_Boolean) {
+          if (localamqr.jdField_a_of_type_Boolean) {
             localIterator.remove();
           }
-          if (localalrq.b) {
-            localCmGameCmdChannel.a(0, this.jdField_a_of_type_JavaLangString, localalrq.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          if (localamqr.b) {
+            localCmGameCmdChannel.a(0, this.jdField_a_of_type_JavaLangString, localamqr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
           }
         }
       }

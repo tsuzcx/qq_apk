@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.app;
 
-import amxz;
+import aoan;
 import mqq.util.WeakReference;
-import pkm;
-import uaw;
-import uda;
+import pvj;
+import uot;
+import uqx;
 
 class PublicAccountHandler$FolderRefreshRunnable
   implements Runnable
 {
   private final WeakReference<QQAppInterface> a;
-  private final WeakReference<amxz> b;
+  private final WeakReference<aoan> b;
   
-  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, amxz paramamxz)
+  public PublicAccountHandler$FolderRefreshRunnable(QQAppInterface paramQQAppInterface, aoan paramaoan)
   {
     this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramamxz);
+    this.b = new WeakReference(paramaoan);
   }
   
   public void run()
   {
     Object localObject = (QQAppInterface)this.a.get();
-    amxz localamxz = (amxz)this.b.get();
-    if ((localObject != null) && (localamxz != null))
+    aoan localaoan = (aoan)this.b.get();
+    if ((localObject != null) && (localaoan != null))
     {
-      uda.a().a((QQAppInterface)localObject, localamxz.a());
-      uaw.a().c((QQAppInterface)localObject);
-      uda.a().g((QQAppInterface)localObject);
-      localObject = pkm.a();
+      uqx.a().a((QQAppInterface)localObject, localaoan.a());
+      uot.a().c((QQAppInterface)localObject);
+      uqx.a().g((QQAppInterface)localObject);
+      localObject = pvj.a();
       if (localObject != null) {
-        ((pkm)localObject).e();
+        ((pvj)localObject).e();
       }
     }
   }

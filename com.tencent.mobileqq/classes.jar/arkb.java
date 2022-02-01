@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class arkb
-  implements View.OnClickListener
 {
-  public arkb(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  public boolean a;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      aroq.a().b(3);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkb
  * JD-Core Version:    0.7.0.1
  */

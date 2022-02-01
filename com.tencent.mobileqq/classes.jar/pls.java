@@ -1,32 +1,49 @@
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public class pls
+  implements AladdinConfigHandler
 {
-  public int a;
-  public long a;
-  float[] a;
-  public int b;
-  long jdField_b_of_type_Long;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  public int c;
-  public int d;
-  int e;
-  int f;
-  int g;
-  int h;
-  int i;
-  
-  public String a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    double d1 = this.g * 1.0D / this.h;
-    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
-    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
-    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
-    double d5 = this.b[0] / this.i;
-    double d6 = this.b[1] / this.h;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (int j = 0;; j = 1) {
-      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if ((str1.equals("md5")) && (str2 != null))
+      {
+        pik.a(pkh.a(), "sp_key_latest_app_md5", str2.toLowerCase());
+      }
+      else if (str1.equals("version_name"))
+      {
+        pik.a(pkh.a(), "sp_key_latest_app_version_name", str2);
+      }
+      else if ((str1.equals("download_url")) && (str2 != null))
+      {
+        str1 = pkf.a(str2);
+        pik.a(pkh.a(), "sp_key_kb_download_url", str1);
+      }
+      else if (str1.equals("enable_predownload"))
+      {
+        pik.a(pkh.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
+      }
     }
+    if (!paramString.containsKey("md5")) {
+      pik.a(pkh.a(), "sp_key_latest_app_md5", null);
+    }
+    pik.a();
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    pik.a(pkh.a(), "sp_key_latest_app_md5", null);
+    pik.a(pkh.a(), "sp_key_latest_app_version_name", null);
   }
 }
 

@@ -1,15 +1,36 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
-class wwc
-  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
+public class wwc
+  extends wxz
 {
-  wwc(wvv paramwvv) {}
+  StoryVideoItem a;
+  public xrn a;
   
-  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public wwc(StoryVideoItem paramStoryVideoItem)
   {
-    xvv.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      ykq.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
+    {
+      this.jdField_a_of_type_Xrn = new xrk();
+      this.jdField_a_of_type_Xrn.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new wwd(this));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

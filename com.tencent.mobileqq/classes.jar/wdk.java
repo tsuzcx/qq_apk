@@ -1,58 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wdk
-  extends wbc
-  implements vqp<wfo, wgx>
+  implements FFmpegExecuteResponseCallback
 {
-  public static int a = 20;
-  private long c;
+  private wdl jdField_a_of_type_Wdl;
   
-  public wfo a(int paramInt, ArrayList<vuo> paramArrayList)
+  public wdk(wdj paramwdj, wdl paramwdl)
   {
-    if (paramArrayList.size() > a) {
-      xvv.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
-    }
-    wfo localwfo = new wfo();
-    localwfo.c = paramInt;
-    localwfo.a = paramArrayList;
-    vqn.a().a(localwfo, this);
-    this.c = System.currentTimeMillis();
-    return localwfo;
+    this.jdField_a_of_type_Wdl = paramwdl;
   }
   
-  public void a(@NonNull wfo paramwfo, @Nullable wgx paramwgx, @NonNull ErrorMessage paramErrorMessage)
+  public void onFailure(String paramString)
   {
-    vun localvun = (vun)vux.a(13);
-    if ((paramwgx == null) || (paramErrorMessage.isFail()))
+    ykq.e(wdj.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    wdj.a(this.jdField_a_of_type_Wdj);
+    if (wdj.b(this.jdField_a_of_type_Wdj) == 0)
     {
-      xvv.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
-      paramwgx = paramwfo.a.iterator();
+      ykq.b(wdj.a, "all ffmpeg commands have already finished. start clearing cache.");
+      wdj.a(this.jdField_a_of_type_Wdj);
     }
-    while (paramwgx.hasNext())
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    ykq.b(wdj.a, "start executing ffmpeg commands.");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (zeb.a(BaseApplication.getContext(), this.jdField_a_of_type_Wdl.d, this.jdField_a_of_type_Wdl.e))
     {
-      localvun.a((vuo)paramwgx.next(), false);
-      continue;
-      localvun.a(paramwgx.a);
-      xvv.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramwgx.a.size()), Integer.valueOf(paramwfo.a.size()) });
-      paramErrorMessage = paramwfo.a.iterator();
-      while (paramErrorMessage.hasNext())
-      {
-        vuo localvuo = (vuo)paramErrorMessage.next();
-        if (!paramwgx.a.contains(localvuo)) {
-          localvun.a(localvuo, false);
-        }
-      }
-      if (paramwfo.a.size() > paramwgx.a.size()) {
-        xwa.b("home_page", "batch_watch_video", 0, paramwfo.a.size() - paramwgx.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), xwa.a(BaseApplication.getContext()) });
-      }
+      ykq.b(wdj.a, "save video to album success.");
+      ykv.a("video_edit", "video_save_local", 0, 0, new String[0]);
+      return;
     }
-    localvun.a(paramwfo);
+    ykq.e(wdj.a, "save video to album failed.");
   }
 }
 

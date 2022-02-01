@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPic;
 
 class ahfj
-  implements DialogInterface.OnClickListener
 {
-  ahfj(ahff paramahff) {}
+  int jdField_a_of_type_Int;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahfj(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    aash.a(this.a.app, this.a.mActivity, this.a.sessionInfo.curFriendUin, this.a.b);
-    this.a.b = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

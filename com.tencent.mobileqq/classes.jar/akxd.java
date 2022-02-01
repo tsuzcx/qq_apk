@@ -1,8 +1,9 @@
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.HashMap;
+
 public abstract interface akxd
 {
-  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
-  
-  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  public abstract void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap);
 }
 
 

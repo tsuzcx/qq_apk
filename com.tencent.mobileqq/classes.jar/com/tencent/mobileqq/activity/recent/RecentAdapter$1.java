@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent;
 
-import akkk;
+import algc;
 import java.util.ArrayList;
 
 public class RecentAdapter$1
   extends ArrayList<Integer>
 {
-  public RecentAdapter$1(akkk paramakkk, int paramInt)
+  public RecentAdapter$1(algc paramalgc, int paramInt)
   {
     super(paramInt);
     add(Integer.valueOf(0));

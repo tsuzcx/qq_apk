@@ -1,63 +1,44 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
-import com.tencent.biz.qqstory.utils.UIUtils;
 
-public class xjm
-  extends ysg
+public abstract interface xjm
 {
-  public static final String KEY = "DetailEmptySegment";
+  public abstract int a();
   
-  public xjm(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public abstract long a();
   
-  public void N_()
-  {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public abstract View a();
   
-  public int a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract xjz a();
   
-  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {}
-    for (paramInt = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();; paramInt = 0)
-    {
-      int i = UIUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
-      int j = UIUtils.getWindowScreenWidth(this.jdField_a_of_type_AndroidContentContext);
-      int k = UIUtils.getWindowScreenHeight(this.jdField_a_of_type_AndroidContentContext);
-      paramxsh.a().getLayoutParams().width = j;
-      paramxsh.a().getLayoutParams().height = (k - paramInt - i);
-      xvv.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
-      return paramxsh.a();
-    }
-  }
+  public abstract void a();
   
-  public String a()
-  {
-    return "DetailEmptySegment";
-  }
+  public abstract void a(int paramInt);
   
-  public xsh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new xsh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561580, paramViewGroup, false));
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(xjn paramxjn);
+  
+  public abstract void a(xjo paramxjo);
+  
+  public abstract void a(xjp paramxjp);
+  
+  public abstract void a(xjq paramxjq);
+  
+  public abstract void a(xjr paramxjr);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

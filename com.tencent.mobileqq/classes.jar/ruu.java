@@ -1,9 +1,8 @@
-class ruu
+import android.view.View;
+
+public abstract interface ruu
 {
-  public int a;
-  public long a;
-  public int b = 2147483647;
-  public long b;
+  public abstract void a(View paramView, int paramInt);
 }
 
 

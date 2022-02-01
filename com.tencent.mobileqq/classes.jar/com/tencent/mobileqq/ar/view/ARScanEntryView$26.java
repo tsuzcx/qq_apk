@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ARScanEntryView$26
@@ -10,7 +10,7 @@ class ARScanEntryView$26
   
   public void run()
   {
-    QQToast.a(this.this$0.a, amtj.a(2131699895), 1).b(this.this$0.a());
+    QQToast.a(this.this$0.a, anvx.a(2131700246), 1).b(this.this$0.a());
   }
 }
 

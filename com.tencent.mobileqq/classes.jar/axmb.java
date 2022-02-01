@@ -1,32 +1,17 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import java.util.Comparator;
 
-public class axmb
-  extends axpn
+final class axmb
+  implements Comparator<String>
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public axmb(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public int a(String paramString1, String paramString2)
   {
-    super.a(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
-      axlj.a("0X800AC97", 0);
+    if (paramString1.length() > paramString2.length()) {
+      return -1;
     }
-  }
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (paramString1.length() < paramString2.length()) {
+      return 1;
+    }
+    return 0;
   }
 }
 

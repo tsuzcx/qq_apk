@@ -1,71 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class asnn
+public class asnn
+  extends RecyclerView.Adapter<asnm>
 {
-  protected final QQAppInterface a;
+  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public asnn(QQAppInterface paramQQAppInterface)
+  public asnn(asnl paramasnl) {}
+  
+  public asnm a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a = paramQQAppInterface;
+    paramViewGroup = LayoutInflater.from(asnl.a(this.jdField_a_of_type_Asnl)).inflate(2131559519, null, false);
+    return new asnm(asnl.a(this.jdField_a_of_type_Asnl), paramViewGroup);
   }
   
-  protected abstract String a(boolean paramBoolean);
-  
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
-  public void a(asno paramasno, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
+  public void a(asnm paramasnm, int paramInt)
   {
-    boolean bool = false;
-    paramasno = paramasno.a();
-    if (paramExcitingTransferOneSlotComplete != null) {
-      paramasno.putAll(paramExcitingTransferOneSlotComplete.getReportData());
-    }
-    if (paramHashMap != null) {
-      paramasno.putAll(paramHashMap);
-    }
-    if (paramExcitingTransferOneSlotComplete != null) {
-      if (paramExcitingTransferOneSlotComplete.m_SubReason != 0) {}
-    }
-    for (bool = true;; bool = false)
+    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramasnm.a(localMiniApp);
+    paramasnm.a(paramInt);
+    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
     {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actPDSlot", bool, 0L, 0L, paramasno, "");
-      return;
+      MiniAppConfig localMiniAppConfig = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      localMiniAppConfig.launchParam.scene = 2065;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, paramInt));
+      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
+      asnl.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramasnm, paramInt, getItemId(paramInt));
   }
   
-  public void a(boolean paramBoolean)
+  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
   {
-    if (a()) {
-      b(paramBoolean);
-    }
-    HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
-    }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  protected abstract boolean a();
-  
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
-  {
-    HashMap localHashMap = b();
-    if (localHashMap != null)
+    if (paramList != null)
     {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

@@ -1,19 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiym
-  implements ajau
+  extends anvi
 {
-  public aiym(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public aiym(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
   
-  public void a()
+  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
   {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
+    }
+    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
+    {
+      AddRequestSuspiciousMsgFragment.a(this.a);
+      if (paramBoolean)
+      {
+        QQToast.a(this.a.getActivity(), anvx.a(2131699377), 0).a();
+        AddRequestSuspiciousMsgFragment.b(this.a);
+        this.a.getActivity().finish();
+      }
+    }
+    else
+    {
+      return;
+    }
+    QQToast.a(this.a.getActivity(), anvx.a(2131699378), 0).a();
   }
 }
 

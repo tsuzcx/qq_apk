@@ -1,23 +1,6 @@
-public class aimy
+public abstract interface aimy
 {
-  public aipl a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public aimy(aipl paramaipl)
-  {
-    this.a = paramaipl;
-  }
-  
-  public String toString()
-  {
-    return this.b;
-  }
+  public abstract void a();
 }
 
 

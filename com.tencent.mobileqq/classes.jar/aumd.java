@@ -1,227 +1,131 @@
-import android.content.Context;
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.mobileqq.flashchat.FlashChatSso.TItem;
+import com.tencent.mobileqq.flashchat.FlashChatSso.TSsoCmd0x1Rsp;
+import com.tencent.mobileqq.flashchat.FlashChatSso.TSsoReq;
+import com.tencent.mobileqq.flashchat.FlashChatSso.TSsoRsp;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aumd
+  extends MSFServlet
 {
-  long jdField_a_of_type_Long = 0L;
-  aumg jdField_a_of_type_Aumg = new aumg(this);
-  List<aumh> jdField_a_of_type_JavaUtilList = new ArrayList();
-  WtloginHelper jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper;
-  boolean jdField_a_of_type_Boolean;
-  
-  private void a(String paramString, boolean paramBoolean, int paramInt)
+  public static ArrayList<FlashChatItem> a(byte[] paramArrayOfByte)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    try
     {
-      aumh localaumh = (aumh)localIterator.next();
-      if (localaumh != null) {
-        localaumh.onGetKeyComplete(paramString, paramBoolean, paramInt);
+      FlashChatSso.TSsoRsp localTSsoRsp = new FlashChatSso.TSsoRsp();
+      localTSsoRsp.mergeFrom(paramArrayOfByte);
+      if (localTSsoRsp.st_cmd0x1_rsp.has())
+      {
+        paramArrayOfByte = new ArrayList();
+        int i = 0;
+        while (i < localTSsoRsp.st_cmd0x1_rsp.item.size())
+        {
+          FlashChatSso.TItem localTItem = (FlashChatSso.TItem)localTSsoRsp.st_cmd0x1_rsp.item.get(i);
+          FlashChatItem localFlashChatItem = new FlashChatItem();
+          localFlashChatItem.id = localTItem.i32_id.get();
+          localFlashChatItem.feedType = localTItem.uint32_feetype.get();
+          localFlashChatItem.name = localTItem.string_name.get();
+          localFlashChatItem.appName = localTItem.string_app_name.get();
+          localFlashChatItem.iconUrl = localTItem.string_icon_url.get();
+          localFlashChatItem.mainView = localTItem.string_main_view.get();
+          localFlashChatItem.ver = localTItem.string_ver.get();
+          localFlashChatItem.color = localTItem.string_bg_color.get();
+          paramArrayOfByte.add(localFlashChatItem);
+          i += 1;
+        }
+        return paramArrayOfByte;
       }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public aumg a()
-  {
-    return this.jdField_a_of_type_Aumg;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aumg = new aumg(this);
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString1, Context paramContext, String paramString2, aumh paramaumh)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aumg.b))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if (paramaumh != null) {
-        paramaumh.onGetKeyComplete(paramString1, true, 0);
-      }
-      return;
+      paramArrayOfByte.printStackTrace();
     }
-    aumf localaumf = new aumf(this, paramaumh, paramString1);
-    FastAuthorize.AuthorizeRequest localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
-    localAuthorizeRequest.uin.set(Long.parseLong(paramAppInterface.getCurrentAccountUin()));
-    localAuthorizeRequest.client_id.set(Long.parseLong(paramString2));
-    localAuthorizeRequest.pf.set("");
-    paramString2 = biam.a(paramContext);
-    localAuthorizeRequest.qqv.set(paramString2);
-    localAuthorizeRequest.sdkp.set("a");
-    paramString2 = Build.DISPLAY;
-    localAuthorizeRequest.os.set(paramString2);
-    paramString2 = ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount());
-    localAuthorizeRequest.skey.set(paramString2);
-    paramString2 = "";
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      paramString2 = ((QQAppInterface)paramAppInterface).getvKeyStr();
-    }
-    for (;;)
+    return null;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool;
+    int i;
+    Bundle localBundle;
+    if (paramFromServiceMsg == null)
     {
-      String str = paramString2;
-      if (paramString2 == null) {
-        str = "";
+      bool = false;
+      i = paramIntent.getIntExtra("req_type", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "onReceive cmd:" + i);
       }
-      localAuthorizeRequest.vkey.set(str);
-      localAuthorizeRequest.flags.set(7);
-      paramContext = new NewIntent(paramContext, nma.class);
-      localAuthorizeRequest.apk_sign.set("");
-      paramContext.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
+      localBundle = new Bundle();
+      if (!bool) {}
+    }
+    do
+    {
       try
       {
-        paramContext.putExtra("data", localAuthorizeRequest.toByteArray());
-        paramContext.setObserver(localaumf);
-        paramAppInterface.startServlet(paramContext);
-        return;
-        if (!(paramAppInterface instanceof BrowserAppInterface)) {
-          continue;
+        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+        ((ByteBuffer)localObject).get(paramFromServiceMsg);
+        switch (i)
+        {
         }
-        paramString2 = ((BrowserAppInterface)paramAppInterface).a();
       }
-      catch (Exception paramString2)
+      catch (Exception paramFromServiceMsg)
       {
         for (;;)
         {
-          paramaumh.onGetKeyComplete(paramString1, false, -10001);
+          Object localObject;
+          paramFromServiceMsg.printStackTrace();
         }
       }
-    }
+      notifyObserver(paramIntent, 967, false, localBundle, auly.class);
+      return;
+      bool = paramFromServiceMsg.isSuccess();
+      break;
+      localObject = a(paramFromServiceMsg);
+    } while (localObject == null);
+    ((FlashChatManager)getAppRuntime().getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a((ArrayList)localObject, true, paramFromServiceMsg);
+    notifyObserver(paramIntent, 967, bool, localBundle, auly.class);
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, aumh paramaumh, boolean paramBoolean, String paramString5)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    QLog.i("XProxy", 2, "开始拉取A1，uin = " + paramString1 + " appid = " + paramString4);
-    if ((this.jdField_a_of_type_Aumg.a != null) && (!paramBoolean) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 43200000L))
-    {
-      if (paramaumh != null) {
-        paramaumh.onGetKeyComplete(paramString2, true, 0);
-      }
-      return true;
+    int i = paramIntent.getIntExtra("req_type", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "onSend cmd:" + i);
     }
-    if (this.jdField_a_of_type_Boolean)
+    switch (i)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramaumh);
-      return true;
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper == null)
+    do
     {
-      QLog.i("XProxy", 2, "new WtloginHelper");
-      this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper = new WtloginHelper(BaseApplicationImpl.getContext());
-    }
-    if (paramString3.equals("com.tencent.huayang"))
-    {
-      paramString5 = new byte[16];
-      String tmp155_153 = paramString5;
-      tmp155_153[0] = -33;
-      String tmp161_155 = tmp155_153;
-      tmp161_155[1] = 11;
-      String tmp167_161 = tmp161_155;
-      tmp167_161[2] = -29;
-      String tmp173_167 = tmp167_161;
-      tmp173_167[3] = -119;
-      String tmp179_173 = tmp173_167;
-      tmp179_173[4] = 66;
-      String tmp185_179 = tmp179_173;
-      tmp185_179[5] = 110;
-      String tmp191_185 = tmp185_179;
-      tmp191_185[6] = 87;
-      String tmp198_191 = tmp191_185;
-      tmp198_191[7] = 53;
-      String tmp205_198 = tmp198_191;
-      tmp205_198[8] = -16;
-      String tmp212_205 = tmp205_198;
-      tmp212_205[9] = -77;
-      String tmp219_212 = tmp212_205;
-      tmp219_212[10] = -121;
-      String tmp226_219 = tmp219_212;
-      tmp226_219[11] = -112;
-      String tmp233_226 = tmp226_219;
-      tmp233_226[12] = 46;
-      String tmp240_233 = tmp233_226;
-      tmp240_233[13] = 51;
-      String tmp247_240 = tmp240_233;
-      tmp247_240[14] = -96;
-      String tmp254_247 = tmp247_240;
-      tmp254_247[15] = 62;
-      tmp254_247;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.SetListener(new aume(this, paramString2));
-      this.jdField_a_of_type_JavaUtilList.add(paramaumh);
-      int i = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.GetA1WithA1(paramString1, 16L, 16L, paramString3.getBytes(), 1L, Long.valueOf(paramString4).longValue(), 1L, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
-      if (i != -1001)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("XProxy", 2, "获取Now结合版A1票据失败，retCode = " + i);
-        }
-        a(paramString2, false, i);
-      }
-      return true;
-      if (paramString3.equals("com.tencent.now"))
-      {
-        paramString5 = new byte[16];
-        String tmp412_410 = paramString5;
-        tmp412_410[0] = -51;
-        String tmp418_412 = tmp412_410;
-        tmp418_412[1] = 50;
-        String tmp424_418 = tmp418_412;
-        tmp424_418[2] = 114;
-        String tmp430_424 = tmp424_418;
-        tmp430_424[3] = -105;
-        String tmp436_430 = tmp430_424;
-        tmp436_430[4] = -54;
-        String tmp442_436 = tmp436_430;
-        tmp442_436[5] = -19;
-        String tmp448_442 = tmp442_436;
-        tmp448_442[6] = 112;
-        String tmp455_448 = tmp448_442;
-        tmp455_448[7] = -124;
-        String tmp462_455 = tmp455_448;
-        tmp462_455[8] = -125;
-        String tmp469_462 = tmp462_455;
-        tmp469_462[9] = -52;
-        String tmp476_469 = tmp469_462;
-        tmp476_469[10] = -72;
-        String tmp483_476 = tmp476_469;
-        tmp483_476[11] = -101;
-        String tmp490_483 = tmp483_476;
-        tmp490_483[12] = -27;
-        String tmp497_490 = tmp490_483;
-        tmp497_490[13] = 33;
-        String tmp504_497 = tmp497_490;
-        tmp504_497[14] = 65;
-        String tmp511_504 = tmp504_497;
-        tmp511_504[15] = -128;
-        tmp511_504;
-      }
-      else
-      {
-        paramString5 = HexUtil.hexStr2Bytes(paramString5);
-      }
-    }
+      return;
+      paramIntent = new FlashChatSso.TSsoReq();
+      paramIntent.i32_cmd.set(1);
+      paramIntent.i32_implat.set(109);
+      paramIntent.str_qq_ver.set("8.4.10");
+      paramIntent = paramIntent.toByteArray();
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(paramIntent.length + 4);
+      localByteBuffer.putInt(paramIntent.length + 4).put(paramIntent);
+      paramIntent = localByteBuffer.array();
+      paramPacket.setSSOCommand("Flashchat.OpReq");
+      paramPacket.putSendData(paramIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d("FlashChat", 2, "FlashChatServlet onSend ssoCmd:" + "Flashchat.OpReq");
   }
 }
 

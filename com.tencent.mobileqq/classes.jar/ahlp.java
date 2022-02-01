@@ -1,13 +1,13 @@
-class ahlp
-  extends anam
+import android.view.View;
+import android.widget.TextView;
+
+public class ahlp
+  extends afqr
 {
-  ahlp(ahlo paramahlo) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    super.a(paramString, paramInt);
-    ahlo.a(this.a).b();
-  }
+  public TextView a;
+  public TextView b;
+  public View c;
+  public View d;
 }
 
 

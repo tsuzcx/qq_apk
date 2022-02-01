@@ -1,74 +1,48 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class autx
-  extends WebViewPlugin
+  extends ntf
 {
-  public autx()
+  public autx(ForwardSdkShareOption paramForwardSdkShareOption, String paramString1, String paramString2, String paramString3) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.mPluginNameSpace = "gflivesdk";
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      auuv.a("KEY_STAGE_2_IMAGE_B77", bool);
+      if (paramBundle == null) {
+        break;
+      }
+      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
+      QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "handleGetMessageState currentRequestTime =", Long.valueOf(ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption)), ", sendStamp = ", Long.valueOf(l) });
+      if ((l != -1L) && (l == ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption))) {
+        break;
+      }
+      ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, ForwardSdkShareOption.e(), this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    bdla.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "4", this.b, this.c);
+    QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "大图发送消息后客户端收到回调=0X8009C94, errorCode=", Integer.valueOf(paramInt), ", fileType=4, toType=", this.b, ", title=", this.c });
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      paramArrayOfByte = ForwardUtils.parseOIDBb77RspBody(paramArrayOfByte);
+      ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, (String)paramArrayOfByte[2], this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, "", this.jdField_a_of_type_JavaLangString);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if ("openView".equals(paramString3)) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
-        }
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramString2 = paramString1.optString("viewType");
-        paramJsBridgeListener = paramString1.optString("callback");
-        if ("activity".equals(paramString2))
-        {
-          paramString1 = paramString1.optString("url");
-          paramString2 = this.mRuntime.a();
-          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
-          {
-            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
-            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
-          }
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "onError msg =", paramString });
     }
-    for (;;)
-    {
-      return false;
-      if ("checkSDKInstalled".equals(paramString3))
-      {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
-            break;
-          }
-          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
-    }
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new auty(this, paramJsBridgeListener));
-    return true;
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 

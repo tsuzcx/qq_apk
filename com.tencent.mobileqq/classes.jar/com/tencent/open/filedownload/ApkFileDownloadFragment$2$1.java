@@ -1,12 +1,12 @@
 package com.tencent.open.filedownload;
 
 import android.widget.TextView;
-import bidw;
+import bjoy;
 
 public class ApkFileDownloadFragment$2$1
   implements Runnable
 {
-  public ApkFileDownloadFragment$2$1(bidw parambidw) {}
+  public ApkFileDownloadFragment$2$1(bjoy parambjoy) {}
   
   public void run()
   {

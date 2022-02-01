@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import aabc;
+import aaqo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -15,7 +15,7 @@ public final class NewReportPlugin$1
   {
     try
     {
-      Bundle localBundle = aabc.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, null);
+      Bundle localBundle = aaqo.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, null);
       String str2 = this.c;
       String str1 = str2;
       if (TextUtils.isEmpty(this.c))
@@ -25,7 +25,7 @@ public final class NewReportPlugin$1
           str1 = "avgame";
         }
       }
-      str1 = aabc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.d, this.e, this.jdField_a_of_type_Int, aabc.a(this.jdField_a_of_type_Int), str1, "", "", "", "", "", "", "", localBundle);
+      str1 = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.d, this.e, this.jdField_a_of_type_Int, aaqo.a(this.jdField_a_of_type_Int), str1, "", "", "", "", "", "", "", localBundle);
       if (QLog.isColorLevel()) {
         QLog.d("NewReportPlugin", 1, "safetyNewReport postData=" + str1);
       }

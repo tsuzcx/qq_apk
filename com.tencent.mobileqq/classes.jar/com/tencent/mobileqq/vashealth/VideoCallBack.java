@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import akry;
+import alpu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bgmz;
-import bhht;
+import bhxj;
+import bisl;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -15,7 +15,7 @@ import mqq.app.AppRuntime;
 import mqq.app.BaseActivity;
 
 public class VideoCallBack
-  implements akry
+  implements alpu
 {
   private String a;
   
@@ -104,9 +104,9 @@ public class VideoCallBack
     }
     String str = paramIntent.getStringExtra("file_video_source_dir");
     Object localObject = paramIntent.getStringExtra("thumbfile_send_path");
-    bhht localbhht = new bhht(paramActivity);
-    localObject = new bgmz(this, localbhht, (String)localObject, paramActivity);
-    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbhht));
+    bisl localbisl = new bisl(paramActivity);
+    localObject = new bhxj(this, localbisl, (String)localObject, paramActivity);
+    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbisl));
     a(paramIntent);
     paramActivity = new EncodeThread(paramActivity, (Handler)localObject, str, null, null);
     paramActivity.setEnableHardEncode(false);

@@ -1,13 +1,28 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import java.lang.reflect.Method;
 
-final class bile
-  implements FilenameFilter
+public class bile
+  implements bkzq
 {
-  public boolean accept(File paramFile, String paramString)
+  public bile(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, bkzi parambkzi) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
+    paramView = bikr.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
+    try
+    {
+      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
   }
 }
 

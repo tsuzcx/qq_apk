@@ -2,7 +2,7 @@ package com.tencent.av;
 
 import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
-import msw;
+import mtt;
 
 class VideoController$12
   implements Runnable
@@ -13,7 +13,7 @@ class VideoController$12
   {
     Bitmap localBitmap = this.this$0.a.a(3000, this.a, null, true, true);
     String str = this.this$0.a.getDisplayName(1004, this.b, this.a);
-    msw.a(this.this$0.a).a(this.c, str, localBitmap, this.a, 57, 3000, 3);
+    mtt.a(this.this$0.a).a(this.c, str, localBitmap, this.a, 57, 3000, 3);
   }
 }
 

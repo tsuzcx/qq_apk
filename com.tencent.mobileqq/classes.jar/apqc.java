@@ -1,20 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class apqc
-  implements TextWatcher
+class apqc
+  implements Animator.AnimatorListener
 {
-  public apqc(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  apqc(apqa paramapqa) {}
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    this.a.a = true;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,35 +1,10 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.open.model.AppInfo;
-import java.util.List;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class biei
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
-  
-  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static biej a(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (paramBoolean)
-      {
-        a(paramBoolean, (List)paramObject, null);
-        return;
-      }
-      a(paramBoolean, null, (String)paramObject);
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(paramBoolean, (List)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
+    return new biej(paramSwiftBrowserUIStyleHandler);
   }
 }
 

@@ -1,25 +1,36 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeha
-  extends ClickableSpan
+  extends axpz
 {
-  public aeha(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public aeha(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    SoundAndVibrateActivity.a(this.a);
-    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131167020));
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, 2131718593, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((axnt)this.a.app.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+    }
   }
 }
 

@@ -1,36 +1,81 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.SyncLoadTask.1;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bhhz
-  implements View.OnTouchListener
+public abstract class bhhz
 {
-  public bhhz(QQToast paramQQToast, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
+  public final String TAG;
+  int mTaskStatus = 1;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bhhz(String paramString)
   {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
+    this.TAG = (paramString + "_" + AudioHelper.b());
+  }
+  
+  public static void requestSyncTask(Resources paramResources, ArrayList<bhhz> paramArrayList, bhia parambhia)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "start to cancel toast");
+      bhhz localbhhz = (bhhz)localIterator.next();
+      if (localbhhz.isNeedRunTask()) {
+        localArrayList.add(localbhhz);
       }
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
-      }
-      return bool;
     }
-    return false;
+    localIterator = localArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((bhhz)localIterator.next()).setRunning();
+    }
+    ThreadManager.post(new SyncLoadTask.1(localArrayList, paramResources, parambhia, paramArrayList), 8, null, true);
+  }
+  
+  public final void clean()
+  {
+    this.mTaskStatus = 1;
+    innerClean();
+  }
+  
+  public abstract void innerClean();
+  
+  public final boolean isNeedRunTask()
+  {
+    return (this.mTaskStatus != 20) && (this.mTaskStatus != 2);
+  }
+  
+  final boolean isRunning()
+  {
+    return (this.mTaskStatus & 0x2) == 2;
+  }
+  
+  final boolean isSuc()
+  {
+    return (this.mTaskStatus & 0x14) == 20;
+  }
+  
+  public abstract boolean runOnSubThread(Resources paramResources);
+  
+  public final void setComplete(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.mTaskStatus = 20;
+      return;
+    }
+    this.mTaskStatus = 36;
+  }
+  
+  final void setRunning()
+  {
+    this.mTaskStatus = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhz
  * JD-Core Version:    0.7.0.1
  */

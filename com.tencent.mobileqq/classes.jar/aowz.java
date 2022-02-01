@@ -1,44 +1,41 @@
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.Set;
 
-class aowz
-  implements View.OnClickListener
+public class aowz
+  extends aoui
 {
-  aowz(aowx paramaowx) {}
-  
-  public void onClick(View paramView)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    aowx.a(this.a).put(aowx.a(this.a).a, Integer.valueOf(1));
-    Activity localActivity = aowx.a(this.a).a();
-    if (!bfwv.a(localActivity, aowx.a(this.a).c))
+    paramQQAppInterface = new aowy(paramQQAppInterface, paramContext);
+    paramContext = paramString.split("\\?");
+    if (paramContext.length < 1) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = paramContext[0];
+    paramQQAppInterface.c = paramContext[1];
+    paramContext = Uri.parse(paramString);
+    paramString = paramContext.getQueryParameterNames().iterator();
+    while (paramString.hasNext())
     {
-      if (!TextUtils.isEmpty(aowx.a(this.a).g))
+      paramaoul = (String)paramString.next();
+      if (!TextUtils.isEmpty(paramaoul))
       {
-        Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", aowx.a(this.a).g);
-        localIntent.putExtra("fromArkAppDownload", true);
-        localActivity.startActivity(localIntent);
+        String str = paramContext.getQueryParameter(paramaoul);
+        if (!TextUtils.isEmpty(str)) {
+          paramQQAppInterface.a(paramaoul.toLowerCase(), str);
+        }
       }
-      acmy.a(aowx.a(this.a), -4, "need to download");
     }
-    for (;;)
-    {
-      aowx.a(this.a).a();
-      aowx.a(this.a).dismiss();
-      aowx.a(this.a, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aowx.a(this.a, aowx.a(this.a).a, aowx.a(this.a).b, aowx.a(this.a).c, aowx.a(this.a).d, aowx.a(this.a).e, aowx.a(this.a).f);
-      acmy.a(aowx.a(this.a), acjt.a);
-    }
+    return paramQQAppInterface;
   }
 }
 

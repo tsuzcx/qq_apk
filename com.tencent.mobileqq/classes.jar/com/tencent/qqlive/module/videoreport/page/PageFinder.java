@@ -8,7 +8,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.Window;
+import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.Log;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
 import com.tencent.qqlive.module.videoreport.exposure.ExposureDetector;
@@ -32,6 +34,7 @@ public class PageFinder
     PageFinder.PageExposureCallback localPageExposureCallback = new PageFinder.PageExposureCallback(getPageViewAndParents(paramView.getRootView().getContext()), null);
     ExposureDetector.detect(paramView, false, null, localPageExposureCallback);
     SimpleTracer.end("PagePageFinder.findExposurePage");
+    printPageLink(localPageExposureCallback.targetPageInfo);
     return localPageExposureCallback.targetPageInfo;
   }
   
@@ -129,6 +132,31 @@ public class PageFinder
       return false;
     }
     return true;
+  }
+  
+  private static boolean isTerminatePage(@NonNull PageInfo paramPageInfo)
+  {
+    if (!VideoReportInner.getInstance().getConfiguration().isEnablePageLink()) {}
+    Integer localInteger1;
+    do
+    {
+      return true;
+      Integer localInteger2 = VideoReportInner.getInstance().getPageSearchMode(paramPageInfo.getPage());
+      localInteger1 = localInteger2;
+      if (localInteger2 == null) {
+        localInteger1 = VideoReportInner.getInstance().getPageSearchMode(paramPageInfo.getPageView());
+      }
+    } while ((localInteger1 != null) && (1 == localInteger1.intValue()));
+    return false;
+  }
+  
+  private static void printPageLink(PageInfo paramPageInfo)
+  {
+    if (paramPageInfo == null) {}
+    while (!VideoReport.isDebugMode()) {
+      return;
+    }
+    Log.i("PageFinder", "PageLink —— " + paramPageInfo);
   }
 }
 

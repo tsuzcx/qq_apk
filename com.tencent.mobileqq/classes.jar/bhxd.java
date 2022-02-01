@@ -1,76 +1,73 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.appcommon.js.DownloadInterface;
-import java.util.ArrayList;
-import org.json.JSONArray;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bhxd
-  implements bidf
+  extends RemoteCommand
 {
-  protected String a;
-  
-  public bhxd(DownloadInterface paramDownloadInterface, String paramString)
+  public bhxd()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super("running_plugin_cmd");
   }
   
-  public void a(String paramString)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onException(String paramString)
-  {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
-      return;
-    }
-    bhzm.e("DownloadInterface", "JsCheckUpdateCallback onException >>> " + paramString);
-    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
-  }
-  
-  public void onResult(ArrayList<ApkUpdateDetail> paramArrayList)
-  {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
-      return;
-    }
-    bhzm.a("DownloadInterface", "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    try
+    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
+    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
     {
-      while (i < paramArrayList.size())
+      switch (paramBundle.getInt("CommondType"))
       {
-        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
-        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
-        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
-        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
-        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
-        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
-        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
-        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
-        localJSONObject2.put("url", localApkUpdateDetail.url);
-        localJSONArray.put(localJSONObject2);
-        i += 1;
       }
-      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("content", localJSONArray.toString());
-      localJSONObject1.put("resultCode", "0");
-      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
-    }
-    catch (JSONException paramArrayList)
-    {
-      for (;;)
+      do
       {
-        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-      }
+        do
+        {
+          do
+          {
+            do
+            {
+              return null;
+              if (paramOnInvokeFinishLinstener == null) {
+                break;
+              }
+              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
+            } while (paramOnInvokeFinishLinstener == null);
+            try
+            {
+              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
+              long l = paramBundle.getLong("runningState");
+              paramBundle = paramBundle.getString("cookieUrl");
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("runningState", l);
+              localJSONObject.put("cookieUrl", paramBundle);
+              localMessage.obj = localJSONObject;
+              paramOnInvokeFinishLinstener.sendMessage(localMessage);
+              return null;
+            }
+            catch (JSONException paramBundle)
+            {
+              return null;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
+          return null;
+        } while (paramOnInvokeFinishLinstener == null);
+        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
+      } while (paramBundle == null);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
+      return null;
     }
-    bhzm.b("DownloadInterface", ">>checkUpdate jsUrl:" + paramArrayList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
   }
 }
 

@@ -1,135 +1,84 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import android.graphics.Matrix;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.ViewGroup;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class vuj
-  implements vuf
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public static final String a;
-  public static final String b = vpl.a("StoryGroupSvc.do_like_video");
-  private EntityManager a;
+  private vuj(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  static
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.do_like_video");
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
-  
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public List<LikeEntry> a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 4;; i = 3)
+    this.a.jdField_a_of_type_Float = paramScaleGestureDetector.getScaleFactor();
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "缩放比例是" + this.a.jdField_a_of_type_Float);
+    }
+    QLog.d("qqBaseActivity", 2, "catch zoom");
+    if (PublicAccountImageCollectionMainActivity.a(this.a))
     {
-      List localList = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, LikeEntry.class, LikeEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
-      paramString = localList;
-      if (localList == null) {
-        paramString = new ArrayList();
+      if (PublicAccountImageCollectionMainActivity.a(this.a).getScaleType() != ImageView.ScaleType.MATRIX) {
+        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.MATRIX);
       }
-      return paramString;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = QQStoryContext.a().a().createEntityManager();
-  }
-  
-  public void a(@NonNull LikeEntry paramLikeEntry)
-  {
-    EntityManager localEntityManager = a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    try
-    {
-      paramLikeEntry.type = 3;
-      paramLikeEntry.setStatus(1000);
-      localEntityManager.persistOrReplace(paramLikeEntry);
-      LikeEntry localLikeEntry = new LikeEntry();
-      localLikeEntry.copy(paramLikeEntry);
-      localLikeEntry.type = 4;
-      localLikeEntry.setStatus(1000);
-      localEntityManager.persistOrReplace(localLikeEntry);
-      localEntityManager.getTransaction().commit();
-      return;
-    }
-    finally
-    {
-      localEntityManager.getTransaction().end();
-    }
-  }
-  
-  public void a(@NonNull List<LikeEntry> paramList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i;
-    if (paramBoolean1) {
-      i = 4;
-    }
-    EntityManager localEntityManager;
-    Object localObject;
-    for (;;)
-    {
-      localEntityManager = a().a().createEntityManager();
-      localEntityManager.getTransaction().begin();
-      if (!paramBoolean2) {
-        break;
-      }
-      try
+      this.a.jdField_b_of_type_AndroidGraphicsMatrix.set(PublicAccountImageCollectionMainActivity.a(this.a).getImageMatrix());
+      this.a.jdField_b_of_type_AndroidGraphicsMatrix.getValues(this.a.jdField_b_of_type_ArrayOfFloat);
+      if (this.a.jdField_b_of_type_ArrayOfFloat[0] > this.a.jdField_a_of_type_ArrayOfFloat[0] * 3.0F)
       {
-        localObject = a(paramString, paramBoolean1);
-        if (localObject == null) {
-          break;
+        this.a.jdField_a_of_type_Float = (this.a.jdField_a_of_type_ArrayOfFloat[0] * 3.0F / this.a.jdField_b_of_type_ArrayOfFloat[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "the last scale is" + this.a.jdField_a_of_type_Float);
         }
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+      }
+      this.a.jdField_a_of_type_AndroidGraphicsMatrix.set(this.a.jdField_b_of_type_AndroidGraphicsMatrix);
+      this.a.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.a.jdField_a_of_type_Float, this.a.jdField_a_of_type_Float, PublicAccountImageCollectionMainActivity.a(this.a).getWidth() / 2, PublicAccountImageCollectionMainActivity.a(this.a).getHeight() / 2);
+      PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.jdField_a_of_type_AndroidGraphicsMatrix);
+      return true;
+    }
+    this.a.jdField_b_of_type_AndroidViewViewGroup = PublicAccountImageCollectionMainActivity.a(this.a).a();
+    if ((this.a.jdField_b_of_type_AndroidViewViewGroup != null) && ((this.a.jdField_b_of_type_AndroidViewViewGroup.getTag() instanceof vtr)))
+    {
+      paramScaleGestureDetector = (ZImageView)this.a.jdField_b_of_type_AndroidViewViewGroup.getChildAt(0);
+      if ((paramScaleGestureDetector != null) && ((paramScaleGestureDetector instanceof ZImageView)))
+      {
+        PublicAccountImageCollectionMainActivity.a(this.a, paramScaleGestureDetector.getDrawable());
+        int i = paramScaleGestureDetector.getWidth();
+        int j = paramScaleGestureDetector.getHeight();
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        localLayoutParams.addRule(15);
+        this.a.jdField_c_of_type_AndroidGraphicsMatrix = paramScaleGestureDetector.getImageMatrix();
+        this.a.jdField_c_of_type_AndroidGraphicsMatrix.getValues(this.a.jdField_a_of_type_ArrayOfFloat);
+        this.a.jdField_a_of_type_AndroidGraphicsMatrix.set(this.a.jdField_c_of_type_AndroidGraphicsMatrix);
+        PublicAccountImageCollectionMainActivity.a(this.a, new PublicAccountImageView(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidOsHandler, this.a.jdField_c_of_type_AndroidGraphicsMatrix, this.a.jdField_a_of_type_Int, i, j));
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageDrawable(PublicAccountImageCollectionMainActivity.a(this.a));
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.jdField_a_of_type_AndroidGraphicsMatrix);
+        this.a.jdField_a_of_type_AndroidViewViewGroup.addView(PublicAccountImageCollectionMainActivity.a(this.a), localLayoutParams);
+        PublicAccountImageCollectionMainActivity.b(this.a, true);
+        i = ((vtr)this.a.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_Int;
+        if (PublicAccountImageCollectionMainActivity.a(this.a).a != null)
         {
-          LikeEntry localLikeEntry = (LikeEntry)((Iterator)localObject).next();
-          localLikeEntry.setStatus(1001);
-          localEntityManager.remove(localLikeEntry);
+          paramScaleGestureDetector = ((vuu)PublicAccountImageCollectionMainActivity.a(this.a).a.get(i - 1)).jdField_a_of_type_JavaLangString;
+          olh.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B91", "0X8007B91", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, paramScaleGestureDetector, "1", false);
         }
-        i = 3;
-      }
-      finally
-      {
-        localEntityManager.getTransaction().end();
       }
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localObject = (LikeEntry)paramList.next();
-      ((LikeEntry)localObject).feedId = paramString;
-      ((LikeEntry)localObject).type = i;
-      localEntityManager.persistOrReplace((Entity)localObject);
-    }
-    localEntityManager.getTransaction().commit();
-    localEntityManager.getTransaction().end();
+    PublicAccountImageCollectionMainActivity.a(this.a).a();
+    return true;
   }
   
-  public void b()
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    return true;
   }
   
-  public void b(@NonNull LikeEntry paramLikeEntry)
-  {
-    paramLikeEntry.setStatus(1001);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramLikeEntry, "unionId=? and feedId= ? and type in (?,?)", new String[] { paramLikeEntry.unionId, paramLikeEntry.feedId, String.valueOf(4), String.valueOf(3) });
-  }
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

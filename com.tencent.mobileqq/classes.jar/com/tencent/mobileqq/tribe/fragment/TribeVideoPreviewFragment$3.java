@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoPreviewFragment$3
@@ -12,10 +12,10 @@ class TribeVideoPreviewFragment$3
   {
     if (this.a)
     {
-      QQToast.a(this.this$0.getActivity(), 2, amtj.a(2131714113), 0).a();
+      QQToast.a(this.this$0.getActivity(), 2, anvx.a(2131714460), 0).a();
       return;
     }
-    QQToast.a(this.this$0.getActivity(), 1, amtj.a(2131714134), 0).a();
+    QQToast.a(this.this$0.getActivity(), 1, anvx.a(2131714481), 0).a();
   }
 }
 

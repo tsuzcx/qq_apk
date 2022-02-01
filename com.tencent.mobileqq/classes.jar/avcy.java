@@ -1,14 +1,17 @@
-class avcy
-  extends amsu
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+
+public class avcy
+  implements View.OnTouchListener
 {
-  avcy(avcw paramavcw) {}
+  public avcy(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    if ((paramBoolean) && ((paramObject instanceof Long))) {
-      avfq.a(this.a.app, 0, String.valueOf(paramObject));
-    }
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

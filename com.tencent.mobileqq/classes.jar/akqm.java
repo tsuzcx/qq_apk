@@ -1,32 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class akqm
-  implements View.OnClickListener
+class akqm
+  extends BroadcastReceiver
 {
-  public akqm(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  private akqm(akqe paramakqe) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    int i;
+    String str1;
+    String str2;
+    int j;
+    String str3;
+    akqd localakqd;
+    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
     {
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).pause();
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+      i = paramIntent.getIntExtra("grap_hb_state", 0);
+      paramContext = paramIntent.getStringExtra("listid");
+      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
+      str2 = paramIntent.getStringExtra("grap_hb_idiom");
+      j = paramIntent.getIntExtra("grap_hb_seq", 0);
+      str3 = paramIntent.getStringExtra("grap_idiom_alpha");
+      paramIntent = paramIntent.getStringExtra("grap_poem_rule");
+      localakqd = this.a.a(paramContext);
+      QLog.i("PasswdRedBagManager", 1, "grapHbState=" + i + ",passwdRedBagInfo=" + localakqd);
+      if ((i != 1) && (i != 10)) {
+        break label136;
+      }
+      akqe.a(this.a, paramContext, str1, 1, true);
     }
-    for (;;)
+    label136:
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        do
+        {
+          return;
+          if (i != 12) {
+            break;
+          }
+        } while (localakqd == null);
+        akqe.a(this.a, paramContext, str1, 1, false);
+        this.a.a(paramContext, str2, str3, j, paramIntent);
+        return;
+        if (i != 0) {
+          break;
+        }
+      } while (localakqd.a() != 2);
+      akqe.a(this.a, paramContext, str1, 1, true);
       return;
-      EditLocalVideoActivity.b(this.a, true);
-      EditLocalVideoActivity.b(this.a).setVisibility(8);
-      EditLocalVideoActivity.a(this.a).start();
-      EditLocalVideoActivity.a(this.a).setVisibility(4);
-    }
+    } while ((i != 14) || (localakqd == null));
+    this.a.a(paramContext, str2, str3, j, paramIntent);
   }
 }
 

@@ -1,9 +1,8 @@
-import SummaryCard.CondFitUser;
-import java.util.List;
+import javax.microedition.khronos.opengles.GL;
 
 public abstract interface amps
 {
-  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
+  public abstract GL a(GL paramGL);
 }
 
 

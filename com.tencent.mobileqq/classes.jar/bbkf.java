@@ -1,150 +1,71 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
 
 class bbkf
-  implements BusinessObserver
+  extends bbko
 {
-  bbkf(bbkb parambbkb, long paramLong, String paramString, Context paramContext, int paramInt) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public HashMap<String, String> a(String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AppLaucherHelper", 2, "t=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      QLog.d(this.jdField_a_of_type_Bbkb.getClass().getSimpleName(), 2, "onReceive");
+    paramString = null;
+    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
+      return null;
     }
-    new Bundle();
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      paramString = new StringBuilder();
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject2 = paramBundle.getByteArray("data");
-      try
+      localHashMap.put("is_progressive", "progressive");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean)
       {
-        paramBundle = new FastAuthorize.AuthorizeResponse();
-        paramBundle.mergeFrom((byte[])localObject2);
+        localHashMap.put("failure", "1");
         if (QLog.isColorLevel())
         {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
-          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
-          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
-          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
-          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
-          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
-          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
-          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
-          QLog.d("AppLaucherHelper", 2, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
+          paramString.append("progressive:\n");
+          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
+          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+          QLog.i(bbkp.a, 2, paramString.toString());
         }
-        this.jdField_a_of_type_Bbkb.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-        this.jdField_a_of_type_Bbkb.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_JavaLangString);
-        if ((!paramBundle.ret.get().equals("0")) || (!paramBundle.apk_name.has())) {
-          break label1163;
-        }
-        if (paramBundle.access_token.has())
-        {
-          localObject2 = paramBundle.access_token.get();
-          this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject2);
-        }
-        if (paramBundle.pay_token.has())
-        {
-          localObject2 = paramBundle.pay_token.get();
-          this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject2);
-        }
-        if (paramBundle.openid.has())
-        {
-          localObject2 = paramBundle.openid.get();
-          this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject2);
-        }
-        for (;;)
-        {
-          if (paramBundle.pfkey.has())
-          {
-            localObject2 = paramBundle.pfkey.get();
-            this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject2);
-          }
-          if (paramBundle.encrykey.has())
-          {
-            localObject2 = paramBundle.encrykey.get();
-            this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject2);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_Bbkb.getClass().getSimpleName(), 2, "mParams=" + this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString);
-          }
-          paramBundle = paramBundle.apk_name.get();
-          if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.contains(this.jdField_a_of_type_JavaLangString))) {
-            break;
-          }
-          bbkb.jdField_a_of_type_Boolean = false;
-          QLog.d(this.jdField_a_of_type_Bbkb.getClass().getSimpleName(), 2, "cant't start app pkg invalide");
-          return;
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("ret=").append(paramBundle.ret.get()).append(", ");
-          ((StringBuilder)localObject2).append("msg=").append(paramBundle.msg.get()).append(", ");
-          ((StringBuilder)localObject2).append("access_token=").append(paramBundle.access_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("expires_in=").append(paramBundle.expires_in.get()).append(", ");
-          ((StringBuilder)localObject2).append("openid=").append(paramBundle.openid.get()).append(", ");
-          ((StringBuilder)localObject2).append("pay_token=").append(paramBundle.pay_token.get()).append(", ");
-          ((StringBuilder)localObject2).append("pf=").append(paramBundle.pf.get()).append(", ");
-          ((StringBuilder)localObject2).append("pfkey=").append(paramBundle.pfkey.get()).append(", ");
-          ((StringBuilder)localObject2).append("encrykey=").append(paramBundle.encrykey.get()).append(", ");
-          ((StringBuilder)localObject2).append("apk_name=").append(paramBundle.apk_name.get()).append(", ");
-          QLog.d("AppLaucherHelper", 1, "FastAuthorize.AuthorizeResponse=[" + ((StringBuilder)localObject2).toString() + "]");
-        }
-        localObject1 = paramBundle;
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-      {
-        paramBundle = (Bundle)localObject1;
+    }
+    label391:
+    for (;;)
+    {
+      return localHashMap;
+      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
+        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+      }
+      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
+        break;
+      }
+      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+      break;
+      localHashMap.put("is_progressive", "baseline");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean) {
+        localHashMap.put("failure", "1");
       }
       for (;;)
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_Bbkb.getClass().getSimpleName(), 2, localInvalidProtocolBufferMicroException1.getMessage());
-          localObject1 = paramBundle;
+        if (!QLog.isColorLevel()) {
+          break label391;
         }
-        for (;;)
-        {
-          paramBundle = bbkb.a(this.jdField_a_of_type_Bbkb.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-          }
-          biam.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, paramBundle, this.jdField_a_of_type_Int);
-          bbkb.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Bbkb.jdField_a_of_type_MqqAppNewIntent == null) {
-            return;
-          }
-          this.jdField_a_of_type_Bbkb.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-          this.jdField_a_of_type_Bbkb.jdField_a_of_type_MqqAppNewIntent = null;
-          return;
-          try
-          {
-            QLog.d(this.jdField_a_of_type_Bbkb.getClass().getSimpleName(), 4, "pkg=" + paramBundle);
-            localObject1 = paramBundle;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
+        paramString.append("baseline:\n");
+        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+        QLog.i(bbkp.a, 2, paramString.toString());
+        break;
+        if (this.c > this.jdField_a_of_type_Long) {
+          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
         }
       }
-      label1163:
-      QLog.d(this.jdField_a_of_type_Bbkb.getClass().getSimpleName(), 4, "start without login state");
-    }
-    for (;;)
-    {
-      break;
-      QLog.e("AppLaucherHelper", 1, "FastAuthorize.AuthorizeRequest failed");
     }
   }
 }

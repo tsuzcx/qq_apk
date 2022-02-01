@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-class aokd
-  extends aodi
+public final class aokd
+  implements Parcelable.Creator<FaceInfo>
 {
-  private final aoee jdField_a_of_type_Aoee;
-  
-  public aokd(aokb paramaokb, aoee paramaoee)
+  public FaceInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Aoee = paramaoee;
+    FaceInfo localFaceInfo = new FaceInfo();
+    localFaceInfo.a(paramParcel);
+    return localFaceInfo;
   }
   
-  public void a()
+  public FaceInfo[] a(int paramInt)
   {
-    aokb.a(this.jdField_a_of_type_Aokb, true);
-    aokb.b(this.jdField_a_of_type_Aokb, false);
-    boolean bool = this.jdField_a_of_type_Aoee.c();
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onConnectReady isMiniResConfigReady=%b", new Object[] { Boolean.valueOf(bool) }));
-    }
-    this.jdField_a_of_type_Aokb.a();
-    this.jdField_a_of_type_Aokb.b();
+    return new FaceInfo[paramInt];
   }
 }
 

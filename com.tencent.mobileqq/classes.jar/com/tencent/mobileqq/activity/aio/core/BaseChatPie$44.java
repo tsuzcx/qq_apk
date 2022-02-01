@@ -1,21 +1,26 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import bdla;
 
 class BaseChatPie$44
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  BaseChatPie$44(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$44(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.this$0.mMsgbox != null) {
-      this.this$0.mMsgbox.setVisibility(8);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      bdla.b(this.this$0.app, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
-    if (BaseChatPie.access$1300(this.this$0) != null) {
-      BaseChatPie.access$1300(this.this$0).setVisibility(8);
-    }
+    BaseChatPie.access$1300(this.this$0, this.val$fromFlingToR);
+    bdla.b(this.this$0.app, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.ucrop;
 
 import java.lang.ref.WeakReference;
-import tbf;
+import ton;
 
 class CropImageView$ZoomImageToPosition
   implements Runnable
@@ -38,7 +38,7 @@ class CropImageView$ZoomImageToPosition
     float f1;
     if (this.jdField_a_of_type_Boolean)
     {
-      f1 = tbf.a(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
+      f1 = ton.a(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
       if (f2 >= (float)this.jdField_a_of_type_Long) {
         break label143;
       }
@@ -51,7 +51,7 @@ class CropImageView$ZoomImageToPosition
     {
       localCropImageView.post(this);
       return;
-      f1 = tbf.b(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
+      f1 = ton.b(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
       break;
       label121:
       localCropImageView.a(f1 + this.jdField_a_of_type_Float, this.c, this.d);
@@ -62,7 +62,7 @@ class CropImageView$ZoomImageToPosition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.CropImageView.ZoomImageToPosition
  * JD-Core Version:    0.7.0.1
  */

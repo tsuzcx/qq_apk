@@ -18,13 +18,15 @@ import com.tencent.ttpic.openapi.initializer.PtuAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
 import com.tencent.ttpic.openapi.initializer.TNNGenderSwitchInitializer;
 import com.tencent.ttpic.openapi.initializer.TNNGestureInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNRGBDepthInitializer;
 import com.tencent.ttpic.openapi.initializer.TNNSegCpuInitializer;
 import com.tencent.ttpic.openapi.initializer.TNNSegGpuInitializer;
 import com.tencent.ttpic.openapi.initializer.TNNStyleChildInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNTongueDetectIntializer;
 import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
 import com.tencent.ttpic.openapi.initializer.VoiceChangerInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
-import com.tencent.ttpic.openapi.model.FaceStyleItem.STYLE_CHANGE_TYPE;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.StyleChangeType;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.io.File;
@@ -34,6 +36,7 @@ public class FeatureManager
   private static final String AEKIT_VERSION_FILE = "aekit_meta.txt";
   private static final String TAG = FeatureManager.class.getSimpleName();
   private static boolean enableResourceCheck;
+  private static boolean enableSoLoadCheck = true;
   private static String resourceDir;
   private static String soDir;
   
@@ -62,6 +65,11 @@ public class FeatureManager
   public static void enableResourceCheck(boolean paramBoolean)
   {
     enableResourceCheck = paramBoolean;
+  }
+  
+  public static void enableSoLoadCheck(boolean paramBoolean)
+  {
+    enableSoLoadCheck = paramBoolean;
   }
   
   public static boolean ensureMaterialSoLoaded(VideoMaterial paramVideoMaterial)
@@ -105,36 +113,48 @@ public class FeatureManager
           bool3 = bool2 & FeatureManager.Features.FACE_3D_LIB.init();
         }
       }
-      if (!VideoMaterialUtil.isHairSegMaterial(paramVideoMaterial))
+      bool2 = bool3;
+      if (VideoMaterialUtil.isAnimojiTongueMaterial(paramVideoMaterial))
       {
         bool2 = bool3;
+        if (!FeatureManager.Features.TNN_TONGUE_DETECT.isFunctionReady()) {
+          bool2 = bool3 & FeatureManager.Features.TNN_TONGUE_DETECT.init();
+        }
+      }
+      if (!VideoMaterialUtil.isHairSegMaterial(paramVideoMaterial))
+      {
+        bool3 = bool2;
         if (!VideoMaterialUtil.isSkySegMaterial(paramVideoMaterial)) {}
       }
       else
       {
         if ((!FeatureManager.Features.RAPID_NET_SEG_GPU.init()) || (!FeatureManager.Features.RAPID_NET_SEG_CPU.init())) {
-          break label316;
+          break label373;
         }
       }
       for (;;)
       {
-        bool2 = bool3 & bool1;
-        bool3 = bool2;
+        bool3 = bool2 & bool1;
+        bool2 = bool3;
         if (VideoMaterialUtil.isGestureDetectMaterial(paramVideoMaterial)) {
-          bool3 = bool2 & FeatureManager.Features.RAPID_NET_GESTURE.init();
+          bool2 = bool3 & FeatureManager.Features.RAPID_NET_GESTURE.init();
+        }
+        bool3 = bool2;
+        if (VideoMaterialUtil.isGpuParticleMaterial(paramVideoMaterial)) {
+          bool3 = bool2 & FeatureManager.Features.GPU_PARTICLE.init();
         }
         bool2 = bool3;
-        if (VideoMaterialUtil.isGpuParticleMaterial(paramVideoMaterial)) {
-          bool2 = bool3 & FeatureManager.Features.GPU_PARTICLE.init();
+        if (VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.GENDER_SWITCH)) {
+          bool2 = bool3 & FeatureManager.Features.RAPID_NET_GENDER_SWITCH.init();
         }
         bool3 = bool2;
-        if (VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.GENDER_SWITCH)) {
-          bool3 = bool2 & FeatureManager.Features.RAPID_NET_GENDER_SWITCH.init();
+        if (VideoMaterialUtil.isNeedDepthMask(paramVideoMaterial)) {
+          bool3 = bool2 & FeatureManager.Features.RAPID_NET_RGB_DEPTH.init();
         }
-        if ((!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.CHILD_STYLE)) && (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE)))
+        if ((!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.CHILD_STYLE)) && (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.CARTOON_STYLE)) && (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.FACE_CHANGE)))
         {
           bool2 = bool3;
-          if (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.FACE_CHANGE)) {}
+          if (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.StyleChangeType.CHANGE_GENDER)) {}
         }
         else
         {
@@ -149,7 +169,7 @@ public class FeatureManager
           }
         }
         return bool3;
-        label316:
+        label373:
         bool1 = false;
       }
     }
@@ -178,6 +198,11 @@ public class FeatureManager
   public static boolean isEnableResourceCheck()
   {
     return enableResourceCheck;
+  }
+  
+  public static boolean isEnableSoLoadCheck()
+  {
+    return enableSoLoadCheck;
   }
   
   public static boolean loadBasicFeatures()

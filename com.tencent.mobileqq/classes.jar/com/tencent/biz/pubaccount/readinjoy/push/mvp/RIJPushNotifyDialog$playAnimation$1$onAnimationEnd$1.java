@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.push.mvp;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
-import qpa;
+import rbf;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyDialog$playAnimation$1$onAnimationEnd$1
   implements Runnable
 {
-  public RIJPushNotifyDialog$playAnimation$1$onAnimationEnd$1(qpa paramqpa) {}
+  public RIJPushNotifyDialog$playAnimation$1$onAnimationEnd$1(rbf paramrbf) {}
   
   public final void run()
   {

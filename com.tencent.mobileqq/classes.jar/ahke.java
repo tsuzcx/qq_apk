@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.53;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.tofumsg.DrawCircleCornerImageView;
 
-public class ahke
-  implements bgso
+class ahke
+  extends afos
 {
-  public ahke(PublicAccountChatPie.53 param53) {}
+  public long a;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  DrawCircleCornerImageView jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView;
+  public String a;
+  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View c;
   
-  public void onResult(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
-    }
-  }
+  ahke(ahkd paramahkd) {}
 }
 
 

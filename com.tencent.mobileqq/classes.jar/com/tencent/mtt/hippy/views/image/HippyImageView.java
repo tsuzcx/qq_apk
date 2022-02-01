@@ -28,12 +28,16 @@ import com.tencent.mtt.supportui.views.asyncimage.AsyncImageView;
 import com.tencent.mtt.supportui.views.asyncimage.AsyncImageView.ScaleType;
 import com.tencent.mtt.supportui.views.asyncimage.BackgroundDrawable;
 import com.tencent.mtt.supportui.views.asyncimage.ContentDrawable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HippyImageView
   extends AsyncImageView
   implements HippyViewBase, CommonBorder, HippyRecycler
 {
+  public static final String IMAGE_PROPS = "props";
   public static final String IMAGE_TYPE_APNG = "apng";
+  public static final String IMAGE_TYPE_GIF = "gif";
   private boolean isGifPaused = false;
   protected NativeGestureDispatcher mGestureDispatcher;
   private long mGifLastPlayTime = -1L;
@@ -175,17 +179,29 @@ public class HippyImageView
     if (this.mImageAdapter != null)
     {
       if (paramObject != null) {
-        this.mIniProps.pushObject("extraData", paramObject);
+        break label87;
       }
-      if (paramInt != SOURCE_TYPE_SRC) {
-        break label57;
-      }
+      paramObject = new HashMap();
     }
-    label57:
-    for (paramObject = this.mUrl;; paramObject = this.mDefaultSourceUrl)
+    label42:
+    label87:
+    for (;;)
     {
-      this.mImageAdapter.fetchImage(paramObject, new HippyImageView.1(this, paramInt), this.mIniProps);
-      return;
+      if ((paramObject instanceof Map)) {}
+      try
+      {
+        ((Map)paramObject).put("props", this.mIniProps);
+        if (paramInt == SOURCE_TYPE_SRC) {}
+        for (String str = this.mUrl;; str = this.mDefaultSourceUrl)
+        {
+          this.mImageAdapter.fetchImage(str, new HippyImageView.1(this, paramInt), paramObject);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        break label42;
+      }
     }
   }
   
@@ -302,13 +318,13 @@ public class HippyImageView
         {
           this.mSourceDrawable = null;
           this.mContentDrawable = paramIDrawableTarget;
-          this.mIsUrlFetchSucceed = true;
+          this.mUrlFetchState = 2;
           setContent(paramInt);
           handleGetImageSuccess();
           return;
         }
       }
-      this.mIsUrlFetchSucceed = false;
+      this.mUrlFetchState = 0;
       if ((paramObject instanceof Throwable)) {}
       for (paramIDrawableTarget = (Throwable)paramObject;; paramIDrawableTarget = null)
       {
@@ -506,6 +522,51 @@ public class HippyImageView
       this.mRepeatCount = 1;
     }
     this.mShowCount = 0;
+  }
+  
+  public boolean shouldFetchImage()
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (this.mUrlFetchState == 1) {
+      bool1 = false;
+    }
+    label64:
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.mUrlFetchState == 0);
+      boolean bool3 = this.mIniProps.getBoolean("isGif");
+      bool1 = bool3;
+      if (!bool3)
+      {
+        if ((TextUtils.isEmpty(this.mImageType)) || (!this.mImageType.equals("gif"))) {
+          break;
+        }
+        bool1 = true;
+      }
+      if (!bool1) {
+        break label84;
+      }
+      bool1 = bool2;
+    } while (this.mGifMovie == null);
+    label84:
+    Bitmap localBitmap;
+    do
+    {
+      return false;
+      bool1 = false;
+      break label64;
+      localBitmap = getBitmap();
+      bool1 = bool2;
+      if (localBitmap == null) {
+        break;
+      }
+    } while (!localBitmap.isRecycled());
+    return true;
   }
   
   public boolean shouldUseFetchImageMode(String paramString)

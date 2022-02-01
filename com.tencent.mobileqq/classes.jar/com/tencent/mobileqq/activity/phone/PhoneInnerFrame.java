@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ajll;
-import ajnh;
+import akgz;
+import akiv;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import atky;
-import aycd;
+import aupt;
+import azip;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class PhoneInnerFrame
   extends InnerFrame
 {
   private int jdField_a_of_type_Int = 0;
-  private ajll jdField_a_of_type_Ajll;
-  private aycd jdField_a_of_type_Aycd;
+  private akgz jdField_a_of_type_Akgz;
+  private azip jdField_a_of_type_Azip;
   private BaseActivityView jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
   private ContactListView jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
   private PhoneLaunchView jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView;
@@ -87,12 +88,12 @@ public class PhoneInnerFrame
     a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView);
   }
   
-  protected ajll a()
+  protected akgz a()
   {
     return null;
   }
   
-  public atky a()
+  public aupt a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a;
@@ -143,12 +144,12 @@ public class PhoneInnerFrame
     a().startActivityForResult(paramIntent, paramInt);
   }
   
-  public final ajll b()
+  public final akgz b()
   {
-    if (this.jdField_a_of_type_Ajll == null) {
-      this.jdField_a_of_type_Ajll = a();
+    if (this.jdField_a_of_type_Akgz == null) {
+      this.jdField_a_of_type_Akgz = a();
     }
-    return this.jdField_a_of_type_Ajll;
+    return this.jdField_a_of_type_Akgz;
   }
   
   public void b()
@@ -170,10 +171,10 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_Int = paramBundle.getInt("key_req_type");
     }
     g();
-    if (this.jdField_a_of_type_Aycd == null)
+    if (this.jdField_a_of_type_Azip == null)
     {
-      this.jdField_a_of_type_Aycd = new ajnh(this);
-      b().a().registObserver(this.jdField_a_of_type_Aycd);
+      this.jdField_a_of_type_Azip = new akiv(this);
+      b().a().registObserver(this.jdField_a_of_type_Azip);
     }
   }
   
@@ -185,10 +186,10 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView = null;
       removeAllViews();
     }
-    if (this.jdField_a_of_type_Aycd != null)
+    if (this.jdField_a_of_type_Azip != null)
     {
-      b().a().unRegistObserver(this.jdField_a_of_type_Aycd);
-      this.jdField_a_of_type_Aycd = null;
+      b().a().unRegistObserver(this.jdField_a_of_type_Azip);
+      this.jdField_a_of_type_Azip = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null)
     {
@@ -224,7 +225,7 @@ public class PhoneInnerFrame
   
   public void g()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)b().a().getManager(11);
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)b().a().getManager(QQManagerFactory.CONTACT_MANAGER);
     switch (localPhoneContactManagerImp.d())
     {
     default: 

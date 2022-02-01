@@ -1,34 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.identification.UnusableStrategy.1;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
 
-public class aukq
-  implements auka
+public abstract interface aukq
 {
-  private String a;
+  public abstract void a(int paramInt);
   
-  public aukq(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a(aukb paramaukb)
-  {
-    bcef.a(null, "dc00898", "", "", "0X800B0EA", "0X800B0EA", 0, 0, "", "", "", "");
-    ThreadManager.getUIHandler().post(new UnusableStrategy.1(this));
-  }
-  
-  public void a(View... paramVarArgs)
-  {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramVarArgs[i].setVisibility(8);
-      i += 1;
-    }
-  }
+  public abstract void a(ImageView paramImageView);
 }
 
 

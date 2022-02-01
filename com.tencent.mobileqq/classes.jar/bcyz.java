@@ -1,42 +1,47 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraDevice.StateCallback;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.util.concurrent.Semaphore;
 
 public class bcyz
-  extends bcxn
+  extends CameraDevice.StateCallback
 {
-  protected int a;
+  public bcyz(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public bcyz(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  public void onDisconnected(@NonNull CameraDevice paramCameraDevice)
   {
-    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
+    bczm.a(2, "[Camera2]openCamera2 onDisconnected!");
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-105);
+    }
   }
   
-  public View a(int paramInt1, bcyo parambcyo, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  public void onError(@NonNull CameraDevice paramCameraDevice, int paramInt)
   {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559257, null);
-      parambcyo = new bczb(null);
-      parambcyo.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367775));
-      parambcyo.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367776));
-      paramView.setTag(parambcyo);
+    bczm.a(2, "[Camera2]openCamera2 onError, error:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-102);
     }
-    for (;;)
-    {
-      parambcyo.jdField_a_of_type_AndroidWidgetTextView.setText(2131692872);
-      parambcyo.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840302);
-      return paramView;
-      parambcyo = (bczb)paramView.getTag();
-    }
+  }
+  
+  public void onOpened(@NonNull CameraDevice paramCameraDevice)
+  {
+    bczm.a(1, "[Camera2]openCamera2 onOpen, cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, paramCameraDevice);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, true);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
   }
 }
 

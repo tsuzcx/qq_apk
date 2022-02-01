@@ -1,21 +1,7 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-
-public class arll
-  implements arqa
-{
-  public arll(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
-    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
-    ExtendFriendSearchBaseFragment.a(this.a, paramString);
-  }
-}
+public class arll {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,62 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
-import cooperation.qzone.api.FeedListView.ExpandHead;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arka
-  implements FeedListView.ExpandHead
+  extends arjj<arjz>
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public arka(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
-  
-  private boolean a()
+  public static arjz c()
   {
-    long l = System.nanoTime();
-    if (l - this.jdField_a_of_type_Long < 400000000L) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = l;
-    return false;
+    return (arjz)aqxe.a().a(412);
   }
   
-  public void hide()
+  @NonNull
+  public arjz a()
   {
-    if ((!this.jdField_a_of_type_Boolean) || (a())) {
-      return;
-    }
-    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).b();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = System.nanoTime();
+    return new arjz();
   }
   
-  public void show()
+  @NonNull
+  public arjz a(aqxa[] paramArrayOfaqxa)
   {
-    if ((this.jdField_a_of_type_Boolean) || (a())) {
-      return;
+    boolean bool = true;
+    localarjz = new arjz();
+    try
+    {
+      if (new JSONObject(paramArrayOfaqxa[0].a).optInt("allow_edit_color_nick", 1) == 1) {}
+      for (;;)
+      {
+        localarjz.a = bool;
+        return localarjz;
+        bool = false;
+      }
+      return localarjz;
     }
-    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).a();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = System.nanoTime();
+    catch (JSONException paramArrayOfaqxa)
+    {
+      ykq.e("QVipColorNickProcessor", "QVipColorNickProcessor onParsed exception :" + paramArrayOfaqxa.getMessage());
+    }
+  }
+  
+  @NonNull
+  public arjz b()
+  {
+    return new arjz();
+  }
+  
+  public Class<arjz> clazz()
+  {
+    return arjz.class;
+  }
+  
+  public int type()
+  {
+    return 412;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arka
  * JD-Core Version:    0.7.0.1
  */

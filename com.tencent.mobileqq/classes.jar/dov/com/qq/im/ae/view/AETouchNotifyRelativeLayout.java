@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bmcm;
+import bnsd;
 
 public class AETouchNotifyRelativeLayout
   extends RelativeLayout
 {
-  private bmcm a;
+  private bnsd a;
   
   public AETouchNotifyRelativeLayout(Context paramContext)
   {
@@ -39,9 +39,9 @@ public class AETouchNotifyRelativeLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setIaeTouchNotify(bmcm parambmcm)
+  public void setIaeTouchNotify(bnsd parambnsd)
   {
-    this.a = parambmcm;
+    this.a = parambnsd;
   }
 }
 

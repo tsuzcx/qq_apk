@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -65,18 +65,18 @@ public class NearbyPeoplePicUpHandler
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     paramProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = paramProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     if (((FromServiceMsg)localObject).getResultCode() != 1000)
     {
       int i = ((FromServiceMsg)localObject).getResultCode();
       if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localanza, localRichProtoResp.resps);
       }
       for (;;)
       {
         RichProtoProc.onBusiProtoResp(paramProtoReq, localRichProtoResp);
         return;
-        setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localamwm, localRichProtoResp.resps);
+        setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localanza, localRichProtoResp.resps);
       }
     }
     for (;;)
@@ -90,11 +90,11 @@ public class NearbyPeoplePicUpHandler
         paramProtoResp = paramProtoResp.toByteArray();
         localObject = (RichProto.RichProtoResp.NearbyPeoplePicUpResp)localRichProtoResp.resps.get(0);
         ((RichProto.RichProtoResp.NearbyPeoplePicUpResp)localObject).sessionKey = paramProtoResp;
-        setResult(0, 0, "", "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject);
+        setResult(0, 0, "", "", localanza, (RichProto.RichProtoResp.RespCommon)localObject);
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
       }
       break;
       label264:

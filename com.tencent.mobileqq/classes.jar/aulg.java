@@ -1,294 +1,825 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.1;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.2;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloaderAppBabySdk.3;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.QZoneShareManager;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class aulg
-  implements AdapterView.OnItemClickListener
 {
-  private static URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected ShareActionSheetBuilder a;
-  private nxq jdField_a_of_type_Nxq;
+  private static aulg jdField_a_of_type_Aulg;
+  public static String a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new aulh(this);
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
+  private Map<String, auli> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public aulg(Context paramContext, nxq paramnxq)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Nxq = paramnxq;
+    jdField_a_of_type_JavaLangString = "UniformDownloaderAppBabySdk<FileAssistant>";
   }
   
-  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  private int a(String paramString, auli paramauli)
   {
-    QZoneShareData localQZoneShareData = new QZoneShareData();
-    localQZoneShareData.mTitle = paramString1;
-    localQZoneShareData.mSummary = paramString2;
-    localQZoneShareData.mImageUrls = new ArrayList();
-    localQZoneShareData.mImageUrls.add(paramString4);
-    localQZoneShareData.targetUrl = paramString3;
-    QZoneShareManager.shareToQzone(paramContext, String.valueOf(bhpc.a().a()), localQZoneShareData, null, 1003);
-    bcef.b(null, "dc00898", "", this.jdField_a_of_type_Nxq.a.a, "0X80092A4", "0X80092A4", 0, 0, this.jdField_a_of_type_Nxq.a.c, "", "", this.jdField_a_of_type_Nxq.a.b);
+    if ((paramauli == null) || (paramString == null)) {
+      return -1;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        return -2;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramauli);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + paramauli.jdField_a_of_type_Long + "] addDownloadCtx...total:[" + this.jdField_a_of_type_JavaUtilMap.size() + "] add it. url:[ " + paramString + "]");
+    return 0;
   }
   
-  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  public static aulg a()
   {
-    if (a(paramContext, paramInt))
+    try
     {
-      paramContext = String.valueOf(System.currentTimeMillis());
-      if (jdField_a_of_type_ComTencentImageURLDrawable != null) {
-        jdField_a_of_type_ComTencentImageURLDrawable.cancelDownload();
+      if (jdField_a_of_type_Aulg == null) {
+        jdField_a_of_type_Aulg = new aulg();
       }
-      jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString4, URLDrawable.URLDrawableOptions.obtain());
-      if (jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-        a(paramContext, paramString1, paramString2, awrc.a(jdField_a_of_type_ComTencentImageURLDrawable), paramString3, paramInt);
-      }
+      aulg localaulg = jdField_a_of_type_Aulg;
+      return localaulg;
     }
-    else
+    finally {}
+  }
+  
+  private auli a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      return;
+      paramString = (auli)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      return paramString;
     }
-    if (jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdvertisement", 2, "s_forShare Bitmap FAILED, downloadImediatly ...");
-      }
-      jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+  }
+  
+  private void a(long paramLong, int paramInt)
+  {
+    if (0L == paramLong) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ImaxAdvertisement", 2, "start load URLDrawable. ...");
+      QLog.i("flowstat", 2, "fileType:" + 5 + ",busiType:" + 0);
     }
-    jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new aulh(this, paramContext, paramString1, paramString2, paramString3, paramInt));
-    jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4, int paramInt)
-  {
-    QLog.i("ImaxAdvertisement", 1, "shareToWeChatFirend target = " + paramInt);
-    if (paramInt == 1001)
+    QQAppInterface localQQAppInterface = auht.a().a();
+    if (localQQAppInterface == null)
     {
-      WXShareHelper.getInstance().shareTroopToWXFriend(paramString1, paramString2, paramBitmap, paramString3, paramString4);
-      bcef.b(null, "dc00898", "", this.jdField_a_of_type_Nxq.a.a, "0X80092A3", "0X80092A3", 0, 0, this.jdField_a_of_type_Nxq.a.c, "", "", this.jdField_a_of_type_Nxq.a.b);
-    }
-    while (paramInt != 1002) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. reportFlow failed.APP=null");
       return;
     }
-    WXShareHelper.getInstance().shareTroopToWXFriendCircle(paramString1, paramString2, paramBitmap, paramString3, paramString4);
-    bcef.b(null, "dc00898", "", this.jdField_a_of_type_Nxq.a.a, "0X80092A5", "0X80092A5", 0, 0, this.jdField_a_of_type_Nxq.a.c, "", "", this.jdField_a_of_type_Nxq.a.b);
+    localQQAppInterface.sendAppDataIncerment(localQQAppInterface.getAccount(), false, paramInt, 5, 0, paramLong);
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  private void a(auli paramauli, int paramInt, String paramString)
   {
-    paramString4 = new bcgt(StructMsgForGeneralShare.class).c(127).b(12345).e(paramString4).a(amtj.a(2131704871) + paramString3).a();
-    Object localObject = this.jdField_a_of_type_Nxq.a.v;
-    String str = this.jdField_a_of_type_Nxq.a.w;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>handleDownloadSDKTaskStateFailed. errCode:" + paramInt + " errStr" + paramString);
+    int i = 5;
+    aukz.a(5);
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      paramString4.mSourceName = this.jdField_a_of_type_Nxq.a.v;
-      if (!TextUtils.isEmpty(str)) {
-        paramString4.mSourceIcon = this.jdField_a_of_type_Nxq.a.w;
+      paramInt = 2;
+      paramString = aukz.a(paramInt);
+      if (paramauli != null)
+      {
+        a(paramauli.b(), paramauli.jdField_b_of_type_Int);
+        paramauli.b(0L);
+        if (paramauli.jdField_a_of_type_Aulf != null)
+        {
+          Bundle localBundle = new aulj(paramauli.a(), paramauli.a()).a();
+          paramauli.jdField_a_of_type_Aulf.a(paramInt, paramString, localBundle);
+        }
+      }
+      return;
+    }
+    if (601 == paramInt)
+    {
+      i = 38;
+      label132:
+      if (!SystemUtil.isExistSDCard()) {
+        break label453;
       }
     }
-    paramString4.mContentLayout = 2;
-    localObject = bchg.a(2);
-    ((bcgx)localObject).a(paramString1, paramString2, paramString3);
-    paramString4.addItem((bcgw)localObject);
-    paramString1 = new Intent();
-    paramString1.putExtra("forward_type", -3);
-    paramString1.putExtra("stuctmsg_bytes", paramString4.getBytes());
-    paramString1.putExtra("structmsg_service_id", paramString4.mMsgServiceID);
-    paramString1.putExtra("emoInputType", 2);
-    paramString1.putExtra("forwardDirect", true);
-    atky.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramString1, 1000);
-    bcef.b(null, "dc00898", "", this.jdField_a_of_type_Nxq.a.a, "0X80092A2", "0X80092A2", 0, 0, this.jdField_a_of_type_Nxq.a.c, "", "", this.jdField_a_of_type_Nxq.a.b);
-  }
-  
-  private boolean a(Context paramContext, int paramInt)
-  {
-    if (!WXShareHelper.getInstance().isWXinstalled())
+    label453:
+    for (long l = SystemUtil.getSDCardAvailableSize() * 1024L;; l = SystemUtil.getSystemAvailableSize() * 1024L)
     {
-      QQToast.a(paramContext, 2131693952, 0).a();
-      return false;
-    }
-    if (!WXShareHelper.getInstance().isWXsupportApi())
-    {
-      QQToast.a(paramContext, 2131719723, 0).a();
-      return false;
-    }
-    if ((paramInt == 1002) && (!WXShareHelper.getInstance().isWxSupportTimeLine()))
-    {
-      QQToast.a(paramContext, 2131719723, 0).a();
-      return false;
-    }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131694064, 1).a();
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    boolean bool = true;
-    if (TextUtils.isEmpty(paramString1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdvertisement", 2, "shareImaxAd Failed title==null");
+      paramInt = i;
+      if (paramauli == null) {
+        break;
       }
-      bool = false;
+      paramInt = i;
+      if (l >= paramauli.jdField_b_of_type_Long - paramauli.a()) {
+        break;
+      }
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + paramauli.jdField_a_of_type_Long + "] write file failed.  space is no enough:[" + paramauli.jdField_b_of_type_Long + " " + paramauli.a() + " " + l + "]");
+      paramInt = 9;
+      break;
+      if (702 == paramInt)
+      {
+        i = 23;
+        break label132;
+      }
+      if (600 == paramInt)
+      {
+        i = 24;
+        break label132;
+      }
+      if (paramInt == 0)
+      {
+        i = 25;
+        break label132;
+      }
+      if (704 == paramInt)
+      {
+        i = 26;
+        break label132;
+      }
+      if (706 == paramInt)
+      {
+        i = 27;
+        break label132;
+      }
+      if (709 == paramInt)
+      {
+        i = 28;
+        break label132;
+      }
+      if (701 == paramInt)
+      {
+        i = 29;
+        break label132;
+      }
+      if (707 == paramInt)
+      {
+        i = 30;
+        break label132;
+      }
+      if (602 == paramInt)
+      {
+        i = 31;
+        break label132;
+      }
+      if (705 == paramInt)
+      {
+        i = 32;
+        break label132;
+      }
+      if (604 == paramInt)
+      {
+        i = 39;
+        break label132;
+      }
+      if (603 == paramInt)
+      {
+        i = 34;
+        break label132;
+      }
+      if (708 == paramInt)
+      {
+        i = 35;
+        break label132;
+      }
+      if (700 == paramInt)
+      {
+        i = 36;
+        break label132;
+      }
+      if (703 != paramInt) {
+        break label132;
+      }
+      i = 37;
+      break label132;
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    e();
+    auli localauli = a(paramString);
+    if (localauli == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload. not found ctx.url:" + paramString);
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient != null) {
+        break;
+      }
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload.client = null");
+    } while (localauli.jdField_a_of_type_Aulf == null);
+    paramString = new aulj(0L, localauli.a()).a();
+    localauli.jdField_a_of_type_Aulf.a(41, aukz.a(41), paramString);
+    return;
+    Object localObject1 = AppNetConnInfo.getRecentNetworkInfo();
+    if (localObject1 != null) {
+      localauli.jdField_b_of_type_Int = ((NetworkInfo)localObject1).getType();
+    }
+    int i;
+    try
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if ((localObject1 != null) && (((TMAssistantDownloadTaskInfo)localObject1).mState == 2))
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload.but it is downloading.url = " + paramString);
+        return;
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        localException1.printStackTrace();
+        Object localObject2 = null;
+      }
+      i = 0;
+      try
+      {
+        int j = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.startDownloadTask(paramString, "application/vnd.android.package-archive");
+        i = j;
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload.startDownloadTask. url = " + paramString);
+        i = j;
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
+        if (4 != i) {
+          break label268;
+        }
+        a(paramString, localauli);
+        return;
+        a(paramString, localauli, i);
+      }
+      if (i == 0)
+      {
+        b(paramString, localauli);
+        return;
+      }
+    }
+    label268:
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPRunABSdkDownloadCmd.cmd:" + paramInt + " url = " + paramString);
+    switch (paramInt)
+    {
+    default: 
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPRunABSdkDownloadCmd, errcmd: " + paramInt);
+      return;
+    case 1: 
+      a(paramString);
+      return;
+    case 2: 
+      b(paramString);
+      return;
+    }
+    c(paramString);
+  }
+  
+  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    auli localauli = a(paramString1);
+    if (localauli == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged. not found ctx.  state:[" + paramInt1 + "]errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            switch (paramInt1)
+            {
+            default: 
+              QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  unkown state:[" + paramInt1 + "]errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+              return;
+            case 1: 
+              QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[WAITING] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+            }
+          } while ((localauli == null) || (localauli.jdField_a_of_type_Aulf == null));
+          localauli.jdField_a_of_type_Aulf.c(null);
+          return;
+          QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[DOWNLOADING] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+        } while ((localauli == null) || (localauli.jdField_a_of_type_Aulf == null));
+        localauli.jdField_a_of_type_Aulf.a(null);
+        return;
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[FAILED] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+        localauli.a(2);
+        a(localauli.b(), localauli.jdField_b_of_type_Int);
+        localauli.b(0L);
+        a(localauli, paramInt2, paramString2);
+        return;
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[SUCCEED] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+        localauli.a(2);
+        a(localauli.b(), localauli.jdField_b_of_type_Int);
+        localauli.b(0L);
+        d(paramString1);
+      } while ((localauli == null) || (localauli.jdField_a_of_type_Aulf == null));
+      paramString1 = new aulj(localauli.a(), localauli.a()).a();
+      localauli.jdField_a_of_type_Aulf.a(paramString3, paramString1);
+      return;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[PAUSED] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+      localauli.a(2);
+      a(localauli.b(), localauli.jdField_b_of_type_Int);
+      localauli.b(0L);
+    } while ((localauli == null) || (localauli.jdField_a_of_type_Aulf == null));
+    localauli.jdField_a_of_type_Aulf.b(null);
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>inPPDwonloadSDKErr errcode:" + paramInt + " errStr:" + paramString2 + " url:" + paramString1);
+    auli localauli = a(paramString1);
+    if (localauli == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskStateFailed. not found ctx.  errcode:[" + paramInt + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    }
+    do
+    {
+      return;
+      localauli.a(2);
+      a(localauli.b(), localauli.jdField_b_of_type_Int);
+      localauli.b(0L);
+    } while (localauli.jdField_a_of_type_Aulf == null);
+    paramString1 = new aulj(localauli.a(), localauli.a()).a();
+    localauli.jdField_a_of_type_Aulf.a(paramInt, paramString2, paramString1);
+  }
+  
+  private void a(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = (int)((float)paramLong1 / (float)paramLong2 * 100.0F);
+    auli localauli = a(paramString);
+    if (localauli != null)
+    {
+      localauli.b(paramLong1 - localauli.a() + localauli.b());
+      localauli.a(paramLong1);
+      if (localauli.jdField_a_of_type_Aulf != null) {
+        localauli.jdField_a_of_type_Aulf.a(i, null);
+      }
+      return;
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPDownloadSDKTaskProgressChanged. not found ctx, url: " + paramString);
+  }
+  
+  private void a(String paramString, auli paramauli)
+  {
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload. file existed. sucess dricetly. url = " + paramString);
+    paramauli.a(2);
+    for (;;)
+    {
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
+      try
+      {
+        localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+        d(paramString);
+        paramauli.a(paramauli.jdField_b_of_type_Long);
+        if (paramauli.jdField_a_of_type_Aulf != null)
+        {
+          Bundle localBundle = new aulj(0L, paramauli.a()).a();
+          paramauli = paramauli.jdField_a_of_type_Aulf;
+          if (localTMAssistantDownloadTaskInfo == null)
+          {
+            paramString = null;
+            paramauli.a(paramString, localBundle);
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        a(paramauli.b(), paramauli.jdField_b_of_type_Int);
+        paramauli.b(0L);
+        if (paramauli.jdField_a_of_type_Aulf == null) {
+          continue;
+        }
+        paramString = new aulj(0L, paramauli.a()).a();
+        paramauli.jdField_a_of_type_Aulf.a(20, aukz.a(20), paramString);
+        return;
+      }
+      paramString = localTMAssistantDownloadTaskInfo.mSavePath;
+    }
+  }
+  
+  private void a(String paramString, auli paramauli, int paramInt)
+  {
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload. task failed. result:" + paramInt + ". url = " + paramString);
+    paramauli.a(2);
+    int i = 15;
+    paramString = "start failed";
+    if (5 == paramInt)
+    {
+      i = 16;
+      paramString = "busy";
     }
     for (;;)
     {
-      if (!bool) {
-        QQToast.a(paramContext, 2131716929, 0).a();
-      }
-      return bool;
-      if (TextUtils.isEmpty(paramString2))
+      if (paramauli.jdField_a_of_type_Aulf != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ImaxAdvertisement", 2, "shareImaxAd Failed bitmapUrl==null");
-        }
-        bool = false;
+        Bundle localBundle = new aulj(0L, paramauli.a()).a();
+        paramauli.jdField_a_of_type_Aulf.a(i, paramString, localBundle);
       }
-      else if (TextUtils.isEmpty(paramString3))
+      return;
+      if (1 == paramInt)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ImaxAdvertisement", 2, "shareImaxAd Failed jumpUrl==null");
-        }
-        bool = false;
+        i = 17;
+        paramString = "net broken";
+      }
+      else if (2 == paramInt)
+      {
+        i = 18;
+        paramString = "set only for wifi";
+      }
+      else if (3 == paramInt)
+      {
+        i = 19;
+        paramString = "param err";
       }
     }
   }
   
-  public ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
+  private void b()
   {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = this.jdField_a_of_type_AndroidContentContext.getString(paramInt1);
-    localActionSheetItem.icon = paramInt2;
-    localActionSheetItem.iconNeedBg = paramBoolean;
-    localActionSheetItem.action = paramInt3;
-    localActionSheetItem.argus = paramString;
-    return localActionSheetItem;
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DL_ABSdkThread");
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>start thread:DL_ABSdkThread...");
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    e();
+    auli localauli = a(paramString);
+    if (localauli == null) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPPauseDownload. not found ctx.url:" + paramString);
+    }
+    if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPPauseDownload.client = null");
+      if ((localauli != null) && (localauli.jdField_a_of_type_Aulf != null))
+      {
+        paramString = new aulj(0L, localauli.a()).a();
+        localauli.jdField_a_of_type_Aulf.a(41, aukz.a(41), paramString);
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+          if (localTMAssistantDownloadTaskInfo != null)
+          {
+            try
+            {
+              this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.pauseDownloadTask(paramString);
+              return;
+            }
+            catch (Exception paramString)
+            {
+              paramString.printStackTrace();
+            }
+            if (localauli == null) {
+              continue;
+            }
+            a(localauli.b(), localauli.jdField_b_of_type_Int);
+            localauli.b(0L);
+            if (localauli.jdField_a_of_type_Aulf == null) {
+              continue;
+            }
+            paramString = new aulj(localauli.a(), localauli.a()).a();
+            localauli.jdField_a_of_type_Aulf.a(21, aukz.a(21), paramString);
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            if (localauli != null)
+            {
+              a(localauli.b(), localauli.jdField_b_of_type_Int);
+              localauli.b(0L);
+              if (localauli.jdField_a_of_type_Aulf != null)
+              {
+                localBundle = new aulj(localauli.a(), localauli.a()).a();
+                localauli.jdField_a_of_type_Aulf.a(20, aukz.a(20), localBundle);
+              }
+            }
+            Bundle localBundle = null;
+          }
+          QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPPauseDownload. no run load");
+        }
+      }
+    } while ((localauli == null) || (localauli.jdField_a_of_type_Aulf == null));
+    localauli.jdField_a_of_type_Aulf.b(null);
+  }
+  
+  private void b(String paramString, auli paramauli)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload success.. url = " + paramString);
+    try
+    {
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if ((paramauli != null) && (localTMAssistantDownloadTaskInfo != null))
+      {
+        long l = localTMAssistantDownloadTaskInfo.mReceiveDataLen;
+        paramauli.a(l);
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStartDownload success. rSize:" + l + " url = " + paramString);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        do
+        {
+          paramString.printStackTrace();
+        } while (paramauli == null);
+        a(paramauli.b(), paramauli.jdField_b_of_type_Int);
+        paramauli.b(0L);
+      } while (paramauli.jdField_a_of_type_Aulf == null);
+      paramString = new aulj(0L, paramauli.a()).a();
+      paramauli.jdField_a_of_type_Aulf.a(20, aukz.a(20), paramString);
+    }
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+        this.jdField_a_of_type_AndroidOsHandler = null;
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>stop thread:DL_ABSdkThread...");
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    e();
+    if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStopDownload.client = null");
+      return;
+    }
+    try
+    {
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(paramString);
+      if (localTMAssistantDownloadTaskInfo == null) {}
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.cancelDownloadTask(paramString);
+          d(paramString);
+          return;
+          localException1 = localException1;
+          localException1.printStackTrace();
+          Object localObject = null;
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+          continue;
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] inPStopDownload. no run load");
+      }
+    }
+  }
+  
+  private int d(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      auli localauli = (auli)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      int i = this.jdField_a_of_type_JavaUtilMap.size();
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + localauli.jdField_a_of_type_Long + "] delDownloadCtx...total:[" + i + "] add it. url:[ " + paramString + "]");
+      return i;
+    }
+  }
+  
+  private void d()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      int i = this.jdField_a_of_type_JavaUtilMap.size();
+      if (i == 0)
+      {
+        c();
+        a();
+      }
+      return;
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient == null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>create ABSdkClient...");
+      this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("UF_DL_CLIENT");
+      this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+    }
+  }
+  
+  private void f()
+  {
+    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>inPDwonloadSDKServiceInvalid service invalid ");
+    a();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject3;
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      localObject3 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      if (((Iterator)localObject3).hasNext()) {
+        localArrayList.add((auli)((Iterator)localObject3).next());
+      }
+    }
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    ??? = localObject2.iterator();
+    while (((Iterator)???).hasNext())
+    {
+      auli localauli = (auli)((Iterator)???).next();
+      if (localauli != null)
+      {
+        a(localauli.b(), localauli.jdField_b_of_type_Int);
+        localauli.b(0L);
+        if (localauli.jdField_a_of_type_Aulf != null)
+        {
+          localObject3 = new aulj(localauli.a(), localauli.a()).a();
+          localauli.jdField_a_of_type_Aulf.a(10, aukz.a(10), (Bundle)localObject3);
+        }
+      }
+    }
+  }
+  
+  public int a(long paramLong1, String paramString, long paramLong2, aulf paramaulf)
+  {
+    if (paramString == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] [" + paramLong1 + "] initADownload, url = null");
+      return -1;
+    }
+    auli localauli = new auli(this, paramLong1, paramString, paramLong2);
+    localauli.jdField_a_of_type_Aulf = paramaulf;
+    int i = a(paramString, localauli);
+    if (i != 0)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]  [" + paramLong1 + "] initADownload failed:" + i);
+      return -2;
+    }
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] startADownload.url = " + paramString);
+    if (paramString == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] startADownload, url = null");
+      return -1;
+    }
+    auli localauli = a(paramString);
+    if (localauli == null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] startADownload, not exsit download,url = " + paramString);
+      return -2;
+    }
+    localauli.a(1);
+    b();
+    if (!this.jdField_a_of_type_AndroidOsHandler.post(new UniformDownloaderAppBabySdk.1(this, paramString)))
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] startADownload.post failed url = " + paramString);
+      localauli.a(2);
+      return -3;
+    }
+    return 0;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131718400));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>release ABSdkClient...");
+      this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.unRegisterDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
+      this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = null;
+      TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).releaseDownloadSDKClient("UF_DL_CLIENT");
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ShareActionSheet", 2, "actionSheet.show exception=", localException);
-    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] releaseABSdkClient. client had be stoped");
   }
   
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  public boolean a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a(2131695878, 2130839126, true, 2, ""));
-    localArrayList.add(a(2131695891, 2130839127, true, 3, ""));
-    localArrayList.add(a(2131695898, 2130839130, true, 9, ""));
-    localArrayList.add(a(2131695881, 2130839124, true, 10, ""));
-    return (List[])new ArrayList[] { localArrayList };
+    return a(paramString) != null;
   }
   
-  public void b()
+  public int b(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] puaseADownload.url = " + paramString);
+    if (paramString == null)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] puaseADownload, url = null");
+      return -1;
+    }
+    auli localauli = a(paramString);
+    if (localauli == null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] puaseADownload, not exsit download,url = " + paramString);
+      return -2;
+    }
+    localauli.a(2);
+    b();
+    if (!this.jdField_a_of_type_AndroidOsHandler.post(new UniformDownloaderAppBabySdk.2(this, paramString)))
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] puaseADownload.post failed url = " + paramString);
+      return -3;
+    }
+    return 0;
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int c(String paramString)
   {
-    Object localObject1;
-    Object localObject4;
-    if (QLog.isColorLevel())
+    int i = 0;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL] stopADownload.url = " + paramString);
+    if (paramString == null)
     {
-      if ("onshare_ItemClick mAdItem " + this.jdField_a_of_type_Nxq == null)
-      {
-        localObject1 = " null";
-        QLog.d("ImaxAdvertisement", 2, (String)localObject1);
-      }
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL] stopADownload, url = null");
+      i = -1;
     }
-    else
-    {
-      localObject4 = paramView.getTag();
-      if ((localObject4 != null) && (this.jdField_a_of_type_Nxq != null)) {
-        break label87;
-      }
-    }
-    label87:
-    String str2;
-    Object localObject2;
-    Object localObject3;
     do
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      localObject1 = this.jdField_a_of_type_Nxq.toString();
-      break;
-      str2 = this.jdField_a_of_type_Nxq.a.x;
-      localObject2 = this.jdField_a_of_type_Nxq.a.t;
-      localObject3 = this.jdField_a_of_type_Nxq.a.s;
-      String str1 = this.jdField_a_of_type_Nxq.a.u;
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = this.jdField_a_of_type_Nxq.e;
+      return i;
+      auli localauli = a(paramString);
+      if (localauli == null)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] stopADownload, not exsit download,url = " + paramString);
+        return 0;
       }
-      localObject2 = localObject3;
-      if (TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject2 = this.jdField_a_of_type_Nxq.d;
-      }
-      localObject3 = str1;
-      if (TextUtils.isEmpty(str1)) {
-        localObject3 = this.jdField_a_of_type_Nxq.f;
-      }
-    } while (!a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, (String)localObject1, str2));
-    switch (((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject4).sheetItem.action)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      break;
-      a((String)localObject1, (String)localObject2, (String)localObject3, str2);
-      continue;
-      a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, (String)localObject3, str2, (String)localObject1);
-      continue;
-      a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, (String)localObject3, str2, (String)localObject1, 1001);
-      continue;
-      a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, (String)localObject3, str2, (String)localObject1, 1002);
-    }
+      localauli.a(2);
+      b();
+    } while (this.jdField_a_of_type_AndroidOsHandler.post(new UniformDownloaderAppBabySdk.3(this, paramString)));
+    d(paramString);
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL] stopADownload, post failed,url = " + paramString);
+    return 0;
   }
 }
 

@@ -1,78 +1,37 @@
-import android.media.MediaFormat;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class yln
-  extends BusinessHandler
+class yln
+  implements ywk<Boolean, ywp>
 {
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  yln(yll paramyll, long paramLong, int paramInt) {}
   
-  public yln(AppInterface paramAppInterface)
+  public Void a(Boolean paramBoolean, ywp paramywp)
   {
-    super(paramAppInterface);
-  }
-  
-  public MediaFormat a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
-  }
-  
-  public LocalMediaInfo a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((!paramBoolean.booleanValue()) || (paramywp == null) || (paramywp.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      ykq.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
+      return null;
     }
+    ykq.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramywp.jdField_a_of_type_Int));
+    if (paramywp.jdField_a_of_type_Int >= this.jdField_a_of_type_Yll.a.length)
+    {
+      ykq.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramywp.jdField_a_of_type_Int) });
+      return null;
+    }
+    ykq.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramywp.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int] = ylo.a(this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int], paramywp.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramywp.jdField_a_of_type_JavaLangString;
+    if (paramywp.jdField_a_of_type_Long > 0L)
+    {
+      this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramywp.jdField_a_of_type_Long / 1000);
+      ykq.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int].jdField_a_of_type_Int));
+      if ((this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Yll.a.length == 1))
+      {
+        this.jdField_a_of_type_Yll.a[paramywp.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
+        ykq.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
+      }
+    }
+    this.jdField_a_of_type_Yll.g();
     return null;
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
-    }
-  }
-  
-  public void a(MediaFormat paramMediaFormat)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
-  }
-  
-  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

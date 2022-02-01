@@ -1,6 +1,6 @@
 package dov.com.qq.im.editipc;
 
-import bnau;
+import boqm;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PeakIpcModuleServer$1
   implements Runnable
 {
-  public PeakIpcModuleServer$1(bnau parambnau, String paramString1, String paramString2) {}
+  public PeakIpcModuleServer$1(boqm paramboqm, String paramString1, String paramString2) {}
   
   public void run()
   {

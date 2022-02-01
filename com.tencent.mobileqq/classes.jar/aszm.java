@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
 
-final class aszm
-  implements Comparator<FileInfo>
+public class aszm
+  extends atfq
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public aszm(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

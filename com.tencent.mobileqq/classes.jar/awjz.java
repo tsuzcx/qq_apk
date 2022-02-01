@@ -1,18 +1,12 @@
-public class awjz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class awjz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mTinyID:").append(this.jdField_a_of_type_Long).append(",mPosition:").append(this.jdField_a_of_type_Int).append(",mAlgotithmID:").append(this.b).append(",mEnterCount:").append(this.c).append(",mProfileCardDuration:").append(this.d).append(",mVisitPhotoCount:").append(this.e).append(",mOpflag:").append(this.f).append("|").append(Integer.toBinaryString(this.f));
-    return localStringBuilder.toString();
+    bdla.b(null, "CliOper", "", "", "0X800A97A", "0X800A97A", 0, 0, "", "0", "0", "");
   }
 }
 

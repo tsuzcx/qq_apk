@@ -1,9 +1,41 @@
-import kotlin.Metadata;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$OnFontSizeChangeListener;", "", "onFontSizeChange", "", "index", "", "textSizeRatio", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface uhc
+public class uhc
+  extends HippyQQEngine
 {
-  public abstract void a(int paramInt, float paramFloat);
+  public uhc(Fragment paramFragment, String paramString1, String paramString2)
+  {
+    super(paramFragment, paramString1, paramString2);
+    a(paramString1);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString.equals("TKDMiniGame")) {
+      this.viewCreator = new uhd();
+    }
+  }
+  
+  public void initJsBundleTypeFromUrl()
+  {
+    super.initJsBundleTypeFromUrl();
+    try
+    {
+      String str = Uri.parse(this.mUrl).getQueryParameter("component");
+      if (!TextUtils.isEmpty(str)) {
+        this.componentName = str;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("HippyQQEngine", 2, "error : " + localException.getMessage());
+    }
+  }
 }
 
 

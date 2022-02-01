@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import bfyg;
+import bhgy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -82,7 +82,7 @@ public class RichMediaUtil
   {
     if (sForceReport == -1)
     {
-      String str = bfyg.a(ServerConfigManager.ConfigType.app, "active_log_upload");
+      String str = bhgy.a(ServerConfigManager.ConfigType.app, "active_log_upload");
       if ((str == null) || (!str.equals("1"))) {
         break label42;
       }

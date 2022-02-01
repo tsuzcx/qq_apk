@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajob;
+import akjp;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import ataw;
+import aufd;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.utils.FileUtils;
 
 public class FileVideoMediaPlayHelper$3
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$3(ajob paramajob, Bitmap paramBitmap) {}
+  public FileVideoMediaPlayHelper$3(akjp paramakjp, Bitmap paramBitmap) {}
   
   public void run()
   {
-    String str = ataw.a(this.a);
+    String str = aufd.a(this.a);
     if (FileUtils.fileExistsAndNotEmpty(str)) {
       ThreadManagerV2.getUIHandlerV2().post(new FileVideoMediaPlayHelper.3.1(this, str));
     }

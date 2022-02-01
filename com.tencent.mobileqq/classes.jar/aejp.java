@@ -1,27 +1,43 @@
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public final class aejp
-  implements ajbl
+public class aejp
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<akyu> a;
+  public aejp(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
   
-  public aejp(akyu paramakyu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramakyu);
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    akyu localakyu = (akyu)this.a.get();
-    if (localakyu != null) {
-      localakyu.a(paramMotionEvent);
+    try
+    {
+      paramDialogInterface = new AlertReport.ButtonAction();
+      paramDialogInterface.uint32_cmd.set(1);
+      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+      paramDialogInterface.str_package_name.set(bksu.c());
+      paramDialogInterface.uint32_app_id.set(AppSetting.a());
+      ntb.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), BusinessHandlerFactory.SEC_SVC_HANDLER, "SecuritySvc.AlertReport");
+      bdla.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejp
  * JD-Core Version:    0.7.0.1
  */

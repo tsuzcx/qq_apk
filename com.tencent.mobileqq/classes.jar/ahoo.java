@@ -1,8 +1,14 @@
-public abstract interface ahoo
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class ahoo
+  implements ahnr
 {
-  public abstract void a(ahom paramahom);
-  
-  public abstract boolean a(String paramString);
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagtf.c(paramaftk, paramagus, paramString);
+  }
 }
 
 

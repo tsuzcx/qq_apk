@@ -1,13 +1,23 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 
-public class agvn
-  implements agut
+final class agvn
+  implements ahab
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramagap.a(paramagcc.b, paramMessageRecord);
+    if ((paramChatMessage instanceof MessageForLongTextMsg)) {
+      return 63;
+    }
+    if ((paramChatMessage instanceof MessageForWantGiftMsg)) {
+      return 72;
+    }
+    if ((paramChatMessage.vipBubbleID == 100000L) && (!paramChatMessage.isSend())) {
+      return 9;
+    }
+    return 0;
   }
 }
 

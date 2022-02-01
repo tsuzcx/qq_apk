@@ -1,24 +1,25 @@
 package com.tencent.mobileqq.nearby;
 
-import awjn;
-import axhw;
-import azvi;
+import axpp;
+import ayob;
+import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class NearbyProxy$1
   implements Runnable
 {
-  public NearbyProxy$1(awjn paramawjn) {}
+  public NearbyProxy$1(axpp paramaxpp) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("NearbyProxy", 2, "receive msg_notify_new_msg in Main,updateNearbyNumAppinfo start..");
     }
-    ((azvi)this.this$0.a.getManager(36)).a = true;
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = axhw.a(this.this$0.a, true);
+    ((bbbq)this.this$0.a.getManager(QQManagerFactory.MGR_RED_TOUCH)).a = true;
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ayob.a(this.this$0.a, true);
     this.this$0.a(4102, new Object[] { localAppInfo });
   }
 }

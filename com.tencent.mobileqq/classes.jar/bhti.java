@@ -1,53 +1,48 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import QC.UniBusinessCheckItem;
+import QC.UniCheckRsp;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.ArrayList;
+import java.util.Collection;
+import kotlin.Metadata;
 
-public class bhti
-  extends URLDrawableDownListener.Adapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "type", "", "isSuccess", "", "data", "", "kotlin.jvm.PlatformType", "onUpdate"}, k=3, mv={1, 1, 16})
+final class bhti
+  implements BusinessObserver
 {
-  public bhti(OpenCardContainer paramOpenCardContainer) {}
+  bhti(bhte parambhte) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
+    Object localObject;
+    if (this.a != null)
+    {
+      if (!(paramObject instanceof UniCheckRsp)) {
+        break label98;
+      }
+      localObject = (Collection)((UniCheckRsp)paramObject).uniBusinessItemList;
+      if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
+        break label88;
+      }
+      paramInt = 1;
+      if (paramInt != 0) {
+        break label98;
+      }
+      localObject = this.a;
+      if (((UniBusinessCheckItem)((UniCheckRsp)paramObject).uniBusinessItemList.get(0)).ret != 0) {
+        break label93;
+      }
     }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
+    label88:
+    label93:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ((bhte)localObject).a(paramBoolean, (UniCheckRsp)paramObject);
+      return;
+      paramInt = 0;
+      break;
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    OpenCardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    label98:
+    this.a.a(false, null);
   }
 }
 

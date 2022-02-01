@@ -1,88 +1,292 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.search.rich.ArkAppModule.1;
+import com.tencent.mobileqq.search.rich.ArkAppModule.2;
+import java.lang.ref.WeakReference;
 
 public class bcju
-  extends bcgx
+  extends apsl
 {
-  private LinearLayout a(Context paramContext)
+  private WeakReference<bcjv> a;
+  
+  public bcju(ark.Application paramApplication, long paramLong)
   {
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int i = AIOUtils.dp2px(12.0F, paramContext.getResources());
-    localLinearLayout.setPadding(i, i, i, i);
-    localLinearLayout.setLayoutParams(localLayoutParams);
-    return localLinearLayout;
+    super(paramApplication, paramLong);
   }
   
-  protected int b()
+  private int a(ark.VariantWrapper paramVariantWrapper, int paramInt)
   {
-    return 22;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Iterator localIterator;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
     {
-      paramView = (LinearLayout)paramView;
-      paramView.removeAllViews();
-      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      return paramInt;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return (int)paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
+  }
+  
+  private long a(ark.VariantWrapper paramVariantWrapper, long paramLong)
+  {
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramLong;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
+  }
+  
+  private String a(ark.VariantWrapper paramVariantWrapper, String paramString)
+  {
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramString;
+      i = paramVariantWrapper.GetType();
+      if (i == 5) {
+        return paramVariantWrapper.GetString();
+      }
+    } while (i != 6);
+    return paramVariantWrapper.GetTableAsJsonString();
+  }
+  
+  public void Destruct()
+  {
+    super.Destruct();
+  }
+  
+  public String GetTypeName()
+  {
+    return "QQSearch";
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    if (paramString.equals("Report")) {}
+    do
+    {
+      return true;
+      if (paramString.equals("GetContainerInfo")) {
+        return false;
+      }
+    } while ((paramString.equals("SetTalkBackText")) || (paramString.equals("Notify")));
+    return false;
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (!a(paramString)) {}
+    do
+    {
+      return false;
+      if (paramString.equals("Report")) {
+        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("SetTalkBackText")) {
+        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    } while (!paramString.equals("Notify"));
+    return c(paramArrayOfVariantWrapper, paramVariantWrapper);
+  }
+  
+  public void a(bcjv parambcjv)
+  {
+    this.a = new WeakReference(parambcjv);
+  }
+  
+  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localQQAppInterface == null) {
+      return false;
+    }
+    String str = localQQAppInterface.getCurrentAccountUin();
+    paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+    Object localObject1 = paramArrayOfVariantWrapper[1].GetString();
+    int i = 0;
+    int j = 0;
+    long l1 = 0L;
+    long l2 = 0L;
+    Object localObject3 = "";
+    Object localObject2 = "";
+    int k = 0;
+    Object localObject4;
+    int m;
+    long l3;
+    if (k < paramArrayOfVariantWrapper.length) {
+      if (k == 0)
+      {
+        localObject4 = paramArrayOfVariantWrapper[0].GetString();
+        m = j;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+        l3 = l2;
+        l2 = l1;
+        l1 = l3;
+        j = i;
+        i = m;
+      }
     }
     for (;;)
     {
-      if (!localIterator.hasNext()) {
-        return paramView;
-      }
-      Object localObject1 = (bcgw)localIterator.next();
-      Object localObject2 = ((bcgw)localObject1).jdField_a_of_type_JavaLangString;
-      ((bcgw)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      if ("title".equals(localObject2))
+      m = k + 1;
+      l3 = l2;
+      k = i;
+      i = j;
+      localObject4 = paramVariantWrapper;
+      paramVariantWrapper = (ark.VariantWrapper)localObject1;
+      localObject1 = localObject4;
+      j = k;
+      l2 = l1;
+      l1 = l3;
+      k = m;
+      break;
+      if (k == 1)
       {
-        localObject2 = (StructMsgItemTitle)localObject1;
-        ((StructMsgItemTitle)localObject2).a(a(), this.p);
-        localObject1 = (TextView)((bcgw)localObject1).a(paramContext, null, paramBundle);
-        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject1).setMaxLines(2);
-        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
-          ((TextView)localObject1).setTextSize(18.0F);
-        }
-        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
-          ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
-        }
-        localObject2 = new LinearLayout.LayoutParams(-1, -2);
-        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-        ((LinearLayout.LayoutParams)localObject2).rightMargin = AIOUtils.dp2px(12.0F, paramContext.getResources());
-        paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        localObject1 = paramArrayOfVariantWrapper[1].GetString();
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 2)
+      {
+        m = a(paramArrayOfVariantWrapper[2], 0);
+        i = j;
+        j = m;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 3)
+      {
+        m = a(paramArrayOfVariantWrapper[3], 0);
+        j = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 4)
+      {
+        l3 = a(paramArrayOfVariantWrapper[4], 0L);
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l1 = l2;
+        i = j;
+        j = m;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 5)
+      {
+        l3 = a(paramArrayOfVariantWrapper[5], 0L);
+        m = i;
+        l2 = l1;
+        localObject4 = paramVariantWrapper;
+        l1 = l3;
+        i = j;
+        j = m;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 6)
+      {
+        localObject4 = paramArrayOfVariantWrapper[6].GetString();
+        m = i;
+        localObject3 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject3;
+        localObject3 = localObject4;
+      }
+      else if (k == 7)
+      {
+        localObject4 = paramArrayOfVariantWrapper[7].GetString();
+        m = i;
+        localObject2 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject4;
         continue;
-        paramView = a(paramContext);
-        break;
+        bdla.b(localQQAppInterface, "CliOper", "", str, paramVariantWrapper, (String)localObject1, i, j, String.valueOf(l1), String.valueOf(l2), (String)localObject3, (String)localObject2);
+        return true;
       }
-      if ("picture".equals(localObject2))
+      else
       {
-        localObject1 = ((bcgw)localObject1).a(paramContext, null, paramBundle);
-        int i = AIOUtils.dp2px(50.0F, paramContext.getResources());
-        paramView.addView((View)localObject1, new LinearLayout.LayoutParams(i, i));
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
       }
     }
-    return paramView;
   }
   
-  public String b()
+  protected apsr[] a()
   {
-    return "layout22";
+    return null;
+  }
+  
+  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && (paramArrayOfVariantWrapper[1].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+      long l = paramArrayOfVariantWrapper[1].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.1(this, l, paramVariantWrapper));
+    }
+    return true;
+  }
+  
+  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+      String str = a(paramArrayOfVariantWrapper[2], null);
+      long l = paramArrayOfVariantWrapper[3].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.2(this, l, paramVariantWrapper, str));
+    }
+    return true;
   }
 }
 

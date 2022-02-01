@@ -1,89 +1,29 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.ArrayList;
-import java.util.Collections;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class beag
+  implements AdapterView.OnItemLongClickListener
 {
-  public int a;
-  public long a;
-  public bdzv a;
-  public String a;
-  public List<ResultRecord> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  public beag(TableQueryViewer paramTableQueryViewer, Context paramContext) {}
   
-  public beag()
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    b();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bdzv = new bdzv();
-    this.jdField_a_of_type_Bdzv.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Bdzv.a = new byte[0];
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    try
+    paramAdapterView = ((beaa)TableQueryViewer.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer).get(paramInt)).b;
+    paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
+    if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("classify", 0);
-      this.jdField_b_of_type_Int = paramString.optInt("verifyType", 2);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("classificationInfo", "");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("name", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("introduction", "");
-      this.e = paramString.optString("location", "");
-      this.jdField_c_of_type_Int = paramString.optInt("group_type", -1);
-      if (paramString.optInt("isJumpAio") == 1) {}
-      for (;;)
-      {
-        this.jdField_b_of_type_Boolean = bool;
-        this.jdField_d_of_type_Int = paramString.optInt("create_source", 0);
-        return;
-        bool = false;
-      }
-      return;
+      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690607), 0).a();
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.e = "";
-    this.jdField_a_of_type_Bdzv = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
+    return true;
   }
 }
 

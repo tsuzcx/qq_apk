@@ -3,9 +3,11 @@ package com.tencent.youtu.ytagreflectlivecheck.requester;
 public class LiveStyleRequester$SeleceData
 {
   public LiveStyleRequester.LiveStyleAndroidData android_data = new LiveStyleRequester.LiveStyleAndroidData();
+  public int change_point_num = 2;
   public int platform = 2;
   public int protocal = 1;
-  public String version = "3.4.7";
+  public String reflect_param = " version 2 ";
+  public String version = "3.6.2";
   
   public LiveStyleRequester$SeleceData(float paramFloat)
   {

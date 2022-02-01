@@ -1,17 +1,17 @@
 package com.tencent.qapmsdk.impl.c;
 
-import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.h;
 import java.io.IOException;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public abstract interface b
 {
-  public abstract void a(g paramg, IOException paramIOException);
+  public abstract void a(h paramh, IOException paramIOException);
   
-  public abstract void a(Request paramRequest, g paramg);
+  public abstract void a(Request paramRequest, h paramh);
   
-  public abstract void a(Response paramResponse, g paramg);
+  public abstract void a(Response paramResponse, h paramh);
   
   public abstract boolean a();
 }

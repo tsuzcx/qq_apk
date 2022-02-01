@@ -1,36 +1,15 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
 
-class yyw
-  extends yzd
+public class yyw
+  extends Handler
 {
-  yyw(yyu paramyyu, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
-  {
-    super(null);
-  }
+  public yyw(RMWService paramRMWService) {}
   
-  public void onAnimationCancel(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    ViewCompat.setAlpha(paramView, 1.0F);
-    ViewCompat.setTranslationX(paramView, 0.0F);
-    ViewCompat.setTranslationY(paramView, 0.0F);
-  }
-  
-  public void onAnimationEnd(View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    this.jdField_a_of_type_Yyu.dispatchAddFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    yyu.e(this.jdField_a_of_type_Yyu).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    yyu.a(this.jdField_a_of_type_Yyu);
-  }
-  
-  public void onAnimationStart(View paramView)
-  {
-    this.jdField_a_of_type_Yyu.dispatchAddStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    yyu.b("RMWService", "service.handle : " + yyv.a(paramMessage));
   }
 }
 

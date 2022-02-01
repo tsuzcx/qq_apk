@@ -1,17 +1,14 @@
-public class kzx
-  extends kzq
+import android.content.Context;
+import android.util.Pair;
+import java.util.List;
+import org.apache.http.Header;
+
+abstract class kzx
+  extends kzu
 {
-  private String jdField_a_of_type_JavaLangString = "qqi_android";
-  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
-  
-  public String a()
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, kzj paramkzj)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return a(this.jdField_a_of_type_ArrayOfByte, a());
+    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramkzj);
   }
 }
 

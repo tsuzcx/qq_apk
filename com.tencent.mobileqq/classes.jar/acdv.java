@@ -1,37 +1,128 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class acdv
-  extends acew
+  extends ReportDialog
 {
-  public int a()
+  private aced jdField_a_of_type_Aced;
+  private acey jdField_a_of_type_Acey;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  private Intent b;
+  
+  public acdv(@NonNull Context paramContext)
   {
-    return -1000;
+    super(paramContext, 16973834);
+    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  private void a()
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.b = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    this.jdField_a_of_type_AndroidAppActivity.setIntent(this.jdField_a_of_type_AndroidContentIntent);
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+    if (localObject == null) {}
+    do
     {
-      paramStringBuilder = (im_msg_body.Elem)paramList.next();
-      if (a(paramStringBuilder)) {
-        apse.a(paramMsg, paramStringBuilder, paramList1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-      }
-    }
-    return false;
+      return;
+      localObject = ((Bundle)localObject).getSerializable("data");
+    } while (!(localObject instanceof GdtMotiveVideoPageData));
+    this.jdField_a_of_type_Aced = new aced((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  private void b()
   {
-    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get());
+    this.jdField_a_of_type_Acey = new acey(new acdw(this), this.jdField_a_of_type_Aced, true);
+    Object localObject1 = getWindow();
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      localObject2 = ((Window)localObject1).getAttributes();
+      ((WindowManager.LayoutParams)localObject2).layoutInDisplayCutoutMode = 1;
+      ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
+    }
+    ((Window)localObject1).setFlags(1024, 1024);
+    ((Window)localObject1).setVolumeControlStream(3);
+    localObject1 = (ViewGroup)((Window)localObject1).getDecorView();
+    ((ViewGroup)localObject1).setSystemUiVisibility(7942);
+    if (Build.VERSION.SDK_INT >= 19) {
+      ((ViewGroup)localObject1).setOnSystemUiVisibilityChangeListener(new acdx(this, (ViewGroup)localObject1));
+    }
+    Object localObject2 = this.jdField_a_of_type_Acey.a(LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity), (ViewGroup)localObject1);
+    setContentView((View)localObject2);
+    setOnDismissListener(new acdy(this));
+    ((ViewGroup)localObject1).getViewTreeObserver().addOnGlobalLayoutListener(new acdz(this, (ViewGroup)localObject1, (View)localObject2));
+    this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new acea(this);
+    this.jdField_a_of_type_AndroidAppActivity.getApplication().registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
+    this.jdField_a_of_type_Acey.k();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+  }
+  
+  public void a(ResultReceiver paramResultReceiver)
+  {
+    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.jdField_a_of_type_Acey.c()) {
+      return;
+    }
+    super.onBackPressed();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    a();
+    b();
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+  }
+  
+  protected void onStart()
+  {
+    super.onStart();
+    this.jdField_a_of_type_Acey.i();
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    this.jdField_a_of_type_Acey.h();
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    acho.a("GdtMotiveVideoDialog", "onWindowFocusChanged() called with: hasFocus = [" + paramBoolean + "]");
+    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 19)) {
+      getWindow().getDecorView().setSystemUiVisibility(7942);
+    }
   }
 }
 

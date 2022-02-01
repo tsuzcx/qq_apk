@@ -1,67 +1,34 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.home.Conversation.39.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajce
-  extends amrc
+  implements Comparator<PhoneContact>
 {
-  public ajce(Conversation paramConversation) {}
+  public ajce(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.a.a(8, Long.toString(paramLong), 3000);
-  }
-  
-  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
-      }
-      this.a.a(8, paramString, 3000);
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-  }
-  
-  protected void onDelDiscussion()
-  {
-    this.a.a(9, null, -2147483648);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
     }
-  }
-  
-  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
-      }
-      this.a.a(8, paramString, 3000);
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
     }
-  }
-  
-  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    j = i;
+    if (i == 0) {
+      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
     }
-    if (paramBoolean1) {
-      this.a.b(new Conversation.39.1(this, paramString));
-    }
-  }
-  
-  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
-      }
-      this.a.a(0L);
-    }
+    return j;
   }
 }
 

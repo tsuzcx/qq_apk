@@ -1,43 +1,22 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-class vmj
-  implements vmo
+final class vmj
+  extends ClickableSpan
 {
-  private vmj(vmg paramvmg) {}
+  vmj(String paramString) {}
   
-  public void a(vmp paramvmp)
+  public void onClick(@NonNull View paramView)
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    bbqx localbbqx = bbqf.a(2, 2);
-    MessageForShortVideo localMessageForShortVideo = paramvmp.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    bbqh localbbqh = localMessageForShortVideo.getDownloadInfo(localbbqx.b);
-    if (paramvmp.jdField_a_of_type_Int == 2)
-    {
-      localbbqh.i = ShortVideoUtils.getShortVideoThumbPicPath(localMessageForShortVideo.thumbMD5, "jpg");
-      localbbqh.a(localMessageForShortVideo.istroop, 1);
-    }
-    for (;;)
-    {
-      localbbqx.a(localbbqh);
-      localbbqx.a(new vmk(this, paramvmp.jdField_a_of_type_JavaLangString));
-      bbqf.a(localbbqx, localQQAppInterface);
-      xvv.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramvmp }));
-      return;
-      localbbqh.h = ShortVideoUtils.getShortVideoSavePath(localMessageForShortVideo, "mp4");
-      localbbqh.a(localMessageForShortVideo.istroop, 0);
-    }
+    vmr.a(vmg.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
   }
   
-  public boolean a()
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
   {
-    return true;
+    paramTextPaint.setUnderlineText(false);
   }
-  
-  public void b(vmp paramvmp) {}
 }
 
 

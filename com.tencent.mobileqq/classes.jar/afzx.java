@@ -1,23 +1,30 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class afzx
-  extends LruCache<Long, MessageForPoke>
+  extends avhm
 {
-  afzx(afzw paramafzw, int paramInt)
+  afzx(afzr paramafzr) {}
+  
+  protected void a()
   {
-    super(paramInt);
+    if (((avhf)this.a.app.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.mTipsMgr.a(this.a.a, new Object[0]);
+    }
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  protected void b()
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
-    {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+    if (((avhf)this.a.app.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.a.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((avhf)this.a.app.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
+      this.a.mTipsMgr.a();
     }
   }
 }

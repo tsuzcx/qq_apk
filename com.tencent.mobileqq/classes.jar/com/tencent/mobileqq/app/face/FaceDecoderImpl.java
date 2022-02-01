@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
-import amqx;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import anho;
-import awkj;
+import antl;
+import aoke;
+import axql;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.mobileqq.util.HeadRequest;
@@ -76,14 +77,14 @@ public class FaceDecoderImpl
         if (paramInt1 == 113) {
           paramByte = 3;
         }
-        paramByte = anho.a(paramByte);
+        paramByte = aoke.a(paramByte);
         localObject = this.mAppIntf.getFaceBitmapCacheKey(paramInt1, (String)localObject, paramByte, paramInt2, paramInt3, true);
         localObject = this.mAppIntf.getBitmapFromCache((String)localObject);
         if ((localObject != null) && (paramInt1 == 1001))
         {
-          amqx localamqx = (amqx)this.mAppIntf.getBusinessHandler(6);
-          if ((localamqx != null) && (localamqx.a() != null)) {
-            localamqx.a().f(paramString);
+          antl localantl = (antl)this.mAppIntf.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+          if ((localantl != null) && (localantl.a() != null)) {
+            localantl.a().f(paramString);
           }
           if (this.mDiscussObserver == null)
           {
@@ -217,7 +218,7 @@ public class FaceDecoderImpl
       do
       {
         return;
-      } while ((paramInt1 == 32) && (paramInt2 != 200) && (paramInt2 != 202) && (paramInt2 != 204));
+      } while ((paramInt1 == 32) && (paramInt2 != 200) && (paramInt2 != 200) && (paramInt2 != 204));
       if (paramInt1 == 32) {}
       for (byte b = 1;; b = 0)
       {
@@ -262,7 +263,7 @@ public class FaceDecoderImpl
     String str;
     for (b = 3;; b = (byte)paramInt3)
     {
-      paramInt3 = anho.a(b);
+      paramInt3 = aoke.a(b);
       str = FaceInfo.a(paramInt2, paramString, paramInt1, paramInt4);
       FaceInfo localFaceInfo = (FaceInfo)this.mInProgress.get(str);
       if ((localFaceInfo == null) || (localFaceInfo.a(FaceInfo.j, 300000L))) {
@@ -338,7 +339,7 @@ public class FaceDecoderImpl
         this.iRunningRequests -= 1;
       }
     } while (!QLog.isColorLevel());
-    awkj.a("Q.qqhead.FaceDecoderImpl", new Object[] { "runNextTask", localObject2, localObject1 });
+    axql.a("Q.qqhead.FaceDecoderImpl", new Object[] { "runNextTask", localObject2, localObject1 });
   }
   
   public void setAppRuntime(AppInterface paramAppInterface)

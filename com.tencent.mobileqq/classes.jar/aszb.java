@@ -1,44 +1,14 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
+import android.view.View;
 
-public class aszb
-  implements asyx
+class aszb
+  implements blak
 {
-  aszb(asza paramasza) {}
+  aszb(asyz paramasyz, View paramView) {}
   
   public void a()
   {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
-    asyy.a(this.a.a.this$0);
-    aszr.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
-    asyy.a(this.a.a.this$0);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

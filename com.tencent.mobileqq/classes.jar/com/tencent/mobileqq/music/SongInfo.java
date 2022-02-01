@@ -3,13 +3,13 @@ package com.tencent.mobileqq.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awel;
+import axkn;
 import cooperation.qzone.music.BroadcastMusicInfo;
 
 public class SongInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SongInfo> CREATOR = new awel();
+  public static final Parcelable.Creator<SongInfo> CREATOR = new axkn();
   public int a;
   public long a;
   public BroadcastMusicInfo a;

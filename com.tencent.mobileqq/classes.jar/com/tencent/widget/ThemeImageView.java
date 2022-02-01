@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bjuk;
-import bjul;
+import blfw;
+import blfx;
 
 public class ThemeImageView
   extends ImageView
-  implements bjul
+  implements blfx
 {
-  public bjuk a;
+  public blfw a;
   
   public ThemeImageView(Context paramContext)
   {
@@ -63,7 +63,7 @@ public class ThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bjuk();
+        this.a = new blfw();
       }
       this.a.a(true);
     }

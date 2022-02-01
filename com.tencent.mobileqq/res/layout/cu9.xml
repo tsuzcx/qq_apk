@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a4y" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:id="@id/nzx" android:background="@color/al3" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mtw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="语音房测试环境" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mtv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="插件下载测试环境" />
+    <RelativeLayout android:background="@color/al3" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:id="@id/nxl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下载插件版本：" android:layout_centerVertical="true" />
+        <EditText android:textSize="16.0sp" android:gravity="center" android:id="@id/mq6" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:hint="无" android:digits="\ 1234567890" android:layout_toRightOf="@id/nxl" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/o0a" android:background="@color/k8" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="保存" android:layout_toLeftOf="@id/nyb" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/nyb" android:background="@color/k8" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="删除" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="修改上述任意一项都需要重启" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/ab3" android:gravity="center" android:id="@id/o0_" android:background="@color/al3" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="重启" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/ab3" android:gravity="center" android:id="@id/o0u" android:background="@color/al3" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="切换到外网正式版" />
+</LinearLayout>

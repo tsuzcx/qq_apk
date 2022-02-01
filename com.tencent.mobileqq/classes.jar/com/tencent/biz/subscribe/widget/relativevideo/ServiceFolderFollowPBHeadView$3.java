@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import amtj;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import anvx;
 
 class ServiceFolderFollowPBHeadView$3
   implements Runnable
@@ -14,7 +14,7 @@ class ServiceFolderFollowPBHeadView$3
     if (this.a > 0)
     {
       ServiceFolderFollowPBHeadView.a(this.this$0).setVisibility(0);
-      String str = this.a + amtj.a(2131707003);
+      String str = this.a + anvx.a(2131707350);
       ServiceFolderFollowPBHeadView.a(this.this$0).setText(str);
       return;
     }

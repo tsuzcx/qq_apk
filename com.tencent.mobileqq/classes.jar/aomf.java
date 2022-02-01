@@ -1,14 +1,21 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 
-public class aomf
-  extends aomd
+class aomf
+  implements DialogInterface.OnClickListener
 {
-  public String a;
+  aomf(aome paramaome, Activity paramActivity) {}
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramBundle.getString("PromotionDescription", "");
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("back_for_hidden_chat", true);
+    paramDialogInterface.setFlags(603979776);
+    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
+    bdla.b(this.jdField_a_of_type_Aome.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
   }
 }
 

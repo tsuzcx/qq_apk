@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.flutter.engine;
 
 import android.graphics.Bitmap;
-import atjt;
+import auom;
 import com.qflutter.qflutter_network_image.LoadBitmapCallback;
 
 public class QFlutterNetworkImageImpl$1$1
   implements Runnable
 {
-  public QFlutterNetworkImageImpl$1$1(atjt paramatjt, Bitmap paramBitmap) {}
+  public QFlutterNetworkImageImpl$1$1(auom paramauom, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atjt.a.onLoaded(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Auom.a.onLoaded(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

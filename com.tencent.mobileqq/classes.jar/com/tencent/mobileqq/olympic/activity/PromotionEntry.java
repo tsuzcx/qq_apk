@@ -5,45 +5,45 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anzl;
-import anzr;
-import anzv;
-import axri;
-import axrj;
-import axrk;
-import bcef;
+import apcn;
+import apct;
+import apcx;
+import ayxt;
+import ayxu;
+import ayxv;
+import bdla;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.ref.WeakReference;
-import mqa;
 import mqq.os.MqqHandler;
+import mqx;
 
 public class PromotionEntry
 {
   public static final String a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private axrk jdField_a_of_type_Axrk;
+  private ayxv jdField_a_of_type_Ayxv;
   private PromotionEntry.UpdateOperateBtnStatusRunnable jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable;
   public boolean a;
   private boolean b = true;
   
   static
   {
-    jdField_a_of_type_JavaLangString = anzv.jdField_a_of_type_JavaLangString;
+    jdField_a_of_type_JavaLangString = apcx.jdField_a_of_type_JavaLangString;
   }
   
-  public PromotionEntry(axrk paramaxrk)
+  public PromotionEntry(ayxv paramayxv)
   {
-    this.jdField_a_of_type_Axrk = paramaxrk;
+    this.jdField_a_of_type_Ayxv = paramayxv;
   }
   
-  private void a(String paramString, anzl paramanzl, boolean paramBoolean)
+  private void a(String paramString, apcn paramapcn, boolean paramBoolean)
   {
     String str = jdField_a_of_type_JavaLangString;
-    paramString = new StringBuilder().append("updateOperateBtnStatus[").append(paramString).append("], visible[").append(paramBoolean).append("], mIsWorldCupMode[").append(this.jdField_a_of_type_Axrk.c()).append("], mEnterTransferDoorModeByClickEntry[").append(this.jdField_a_of_type_Boolean).append("], operateBtn[");
+    paramString = new StringBuilder().append("updateOperateBtnStatus[").append(paramString).append("], visible[").append(paramBoolean).append("], mIsWorldCupMode[").append(this.jdField_a_of_type_Ayxv.d()).append("], mEnterTransferDoorModeByClickEntry[").append(this.jdField_a_of_type_Boolean).append("], operateBtn[");
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
     for (boolean bool = true;; bool = false)
     {
@@ -56,8 +56,8 @@ public class PromotionEntry
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable == null) {
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable = new PromotionEntry.UpdateOperateBtnStatusRunnable(null);
     }
-    if (paramanzl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_Anzl = paramanzl;
+    if (paramapcn != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_Apcn = paramapcn;
     }
     this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable.jdField_a_of_type_Boolean = paramBoolean;
     PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable, new WeakReference(this.jdField_a_of_type_AndroidWidgetImageView));
@@ -65,14 +65,14 @@ public class PromotionEntry
     if (paramBoolean)
     {
       if (this.b) {
-        if (paramanzl == null) {
+        if (paramapcn == null) {
           break label240;
         }
       }
       label240:
-      for (paramString = paramanzl.jdField_a_of_type_JavaLangString;; paramString = "0")
+      for (paramString = paramapcn.jdField_a_of_type_JavaLangString;; paramString = "0")
       {
-        bcef.b(null, "CliOper", "", "", "0X8009C6A", "0X8009C6A", 0, 0, paramString, "0", "0", "");
+        bdla.b(null, "CliOper", "", "", "0X8009C6A", "0X8009C6A", 0, 0, paramString, "0", "0", "");
         this.b = false;
         ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable, 500L);
         return;
@@ -83,7 +83,7 @@ public class PromotionEntry
   
   public void a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Axrk = null;
+    this.jdField_a_of_type_Ayxv = null;
     this.b = true;
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable != null)
     {
@@ -97,15 +97,15 @@ public class PromotionEntry
     }
   }
   
-  public void a(AppInterface paramAppInterface, anzl paramanzl)
+  public void a(AppInterface paramAppInterface, apcn paramapcn)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
       return;
     }
-    paramAppInterface = this.jdField_a_of_type_Axrk.a();
+    paramAppInterface = this.jdField_a_of_type_Ayxv.a();
     ImageView localImageView = new ImageView(paramAppInterface.getContext());
-    Object localObject = anzr.a(paramanzl) + "entry.png";
-    localObject = mqa.a(localImageView.getResources(), (String)localObject);
+    Object localObject = apct.a(paramapcn) + "entry.png";
+    localObject = mqx.a(localImageView.getResources(), (String)localObject);
     if (localObject != null) {
       localImageView.setImageBitmap((Bitmap)localObject);
     }
@@ -119,17 +119,17 @@ public class PromotionEntry
     }
     ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)(i * 23 / 200.0F));
     localImageView.setClickable(true);
-    localImageView.setOnTouchListener(new axri(this));
-    localImageView.setOnClickListener(new axrj(this, paramanzl));
+    localImageView.setOnTouchListener(new ayxt(this));
+    localImageView.setOnClickListener(new ayxu(this, paramapcn));
     localImageView.setVisibility(8);
     paramAppInterface.addView(localImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-    if (this.jdField_a_of_type_Axrk.c())
+    if (this.jdField_a_of_type_Ayxv.d())
     {
       QLog.w(jdField_a_of_type_JavaLangString, 1, "reallyCreateOperateEntry, 已经在穿越门模式了");
       return;
     }
-    a("reallyCreateOperateEntry", paramanzl, true);
+    a("reallyCreateOperateEntry", paramapcn, true);
   }
   
   public void a(boolean paramBoolean)
@@ -137,9 +137,9 @@ public class PromotionEntry
     a("showEntry", null, paramBoolean);
   }
   
-  public void a(boolean paramBoolean, anzl paramanzl)
+  public void a(boolean paramBoolean, apcn paramapcn)
   {
-    a("operateBtnOnClick", paramanzl, paramBoolean);
+    a("operateBtnOnClick", paramapcn, paramBoolean);
     this.jdField_a_of_type_Boolean = true;
   }
 }

@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
 public class aiqq
+  implements DialogInterface.OnClickListener
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public aiqq(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public aiqq(PublicAccountInfo paramPublicAccountInfo)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

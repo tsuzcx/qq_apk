@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+import android.os.Bundle;
 
-public class avuu
-  implements DialogInterface.OnClickListener
+class avuu
+  implements aaea
 {
-  public avuu(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  avuu(avut paramavut) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    MsgBackupCompleteFragment.a(this.a);
-    if (MsgBackupCompleteFragment.a(this.a) == 1) {
-      avwr.a("0X800A253", 5);
+    int i = paramBundle.getInt("msg");
+    if (i == 90)
+    {
+      avut.a(this.a, paramBundle.getInt("state"));
+      avut.a(this.a, avut.a(this.a), avut.b(this.a));
     }
-    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+    while (i != 91) {
       return;
     }
-    avwr.a("0X800A267", 2);
+    i = paramBundle.getInt("errCode");
+    paramBundle = paramBundle.getString("desc");
+    avut.a(this.a, i, paramBundle);
   }
 }
 

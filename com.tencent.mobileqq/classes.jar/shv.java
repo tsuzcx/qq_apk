@@ -1,13 +1,18 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface shv
+class shv
+  extends RecyclerView.AdapterDataObserver
 {
-  public abstract void a();
+  private shv(shl paramshl) {}
   
-  public abstract void a(@NotNull Bitmap paramBitmap);
+  public void onChanged() {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    onItemRangeChanged(paramInt1, paramInt2);
+  }
 }
 
 

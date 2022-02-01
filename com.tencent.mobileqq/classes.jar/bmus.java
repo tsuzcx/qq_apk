@@ -1,9 +1,15 @@
-public class bmus
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bmus
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
+  bmus(bmul parambmul) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a(2);
+  }
 }
 
 

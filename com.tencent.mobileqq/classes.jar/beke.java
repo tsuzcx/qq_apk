@@ -1,15 +1,40 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class beke
-  implements bjoi
+  implements BusinessObserver
 {
-  public beke(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  protected void a() {}
   
-  public void ab_()
+  protected void a(bekh parambekh, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void a(boolean paramBoolean, bekh parambekh, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a.a();
-    this.a.i();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+    case 1: 
+    case 0: 
+    case 3: 
+      do
+      {
+        return;
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (bekh)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+        return;
+        paramObject = (Object[])paramObject;
+        a((bekh)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
+        return;
+      } while (!paramBoolean);
+      a();
+      return;
+    }
+    a(paramBoolean, (Bundle)paramObject);
   }
 }
 

@@ -1,19 +1,25 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlServer;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterface$Stub;", "()V", "rijAidlInterfaceForRedPacket", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getRewardTaskInterface", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzb
-  extends qyo
+public class qzb
+  extends qzf
 {
-  private qyq a;
+  public qzb(PTSEngineLoader.3 param3) {}
   
-  @Nullable
-  public qyq a()
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.a == null) {
-      this.a = ((qyq)new qzc());
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], handleDownloadPTSEngine, download succeed.");
+      qza.c(this.a.this$0);
     }
-    return this.a;
+  }
+  
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
   }
 }
 

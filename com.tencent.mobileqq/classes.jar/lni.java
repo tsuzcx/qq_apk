@@ -1,25 +1,8 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import android.graphics.Bitmap;
 
-public class lni
-  implements mho
+public abstract interface lni
 {
-  public lni(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373411, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373412, false);
-    }
-  }
-  
-  public void b()
-  {
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772177);
-  }
+  public abstract boolean a(Bitmap paramBitmap, String paramString);
 }
 
 

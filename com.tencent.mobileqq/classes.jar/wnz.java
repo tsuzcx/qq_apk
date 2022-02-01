@@ -1,30 +1,56 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
-import java.util.ArrayList;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 import java.util.List;
 
 public class wnz
-  extends wnr<HotRecommendFeedPlayInfo>
+  extends whx<wly, wia<wly>>
 {
-  public wnz(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
+  private int a;
+  
+  public wnz(Context paramContext)
   {
-    super(paramHotRecommendFeedPlayInfo);
+    super(paramContext);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public xnh a(String paramString)
+  public int a(int paramInt)
   {
-    paramString = new xnh(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    return paramString;
+    wly localwly = (wly)a(paramInt);
+    if (localwly != null) {
+      return localwly.jdField_a_of_type_Int;
+    }
+    return 0;
   }
   
-  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  public int a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    wns localwns = new wns(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new xnh(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localwns.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    localArrayList.add(localwns);
-    paramwoj.a(new ErrorMessage(), localArrayList, true);
+    List localList = a();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (TextUtils.equals(((wly)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
+        return b() + i;
+      }
+      i += 1;
+    }
+    return b();
+  }
+  
+  public void a(wia<wly> paramwia)
+  {
+    super.onViewDetachedFromWindow(paramwia);
+    paramwia.a();
+  }
+  
+  public wia b(ViewGroup paramViewGroup, int paramInt)
+  {
+    return wpm.a(paramViewGroup, paramInt);
+  }
+  
+  public void b(wia paramwia, int paramInt)
+  {
+    paramwia.a((wly)a(paramInt));
   }
 }
 

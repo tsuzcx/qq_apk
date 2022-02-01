@@ -1,13 +1,31 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bjdm
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnBufferingUpdateListener
+public class bjdm
+  implements View.OnClickListener
 {
-  bjdm(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
+  public bjdm(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
   
-  public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_Bjdj, paramInt);
+    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
+      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
+    }
+    for (;;)
+    {
+      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
+        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+      }
+    }
   }
 }
 

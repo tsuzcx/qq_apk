@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import NS_COMM.COMM.StCommonExt;
-import adxr;
+import aeow;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -13,10 +13,9 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import aufo;
-import bjeo;
-import bjnd;
+import avli;
+import bkpw;
+import bkyp;
 import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.VideoInviteActivity;
@@ -26,7 +25,6 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
@@ -41,7 +39,6 @@ import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.minigame.ui.GameActivity2;
@@ -91,20 +88,18 @@ public class MiniAppController
   private static final int REPORT_NO_FOREGROUND = 0;
   public static final String TAG = "MiniAppController";
   private static List<Integer> arkBattleScenes = Arrays.asList(new Integer[] { Integer.valueOf(2072), Integer.valueOf(4016), Integer.valueOf(4017) });
-  private static aufo hitPluginSession;
+  private static avli hitPluginSession;
   private static MiniAppController instance;
   private static byte[] lock = new byte[0];
   private static Handler mainHander = new Handler(Looper.getMainLooper());
   private static COMM.StCommonExt sUseExtInfo;
   private static final AtomicInteger seqFactory = new AtomicInteger(new Random().nextInt(100000));
   private ArrayList<MiniAppController.ActivityResultListener> activityResultListenerList;
-  private SparseArray<MiniAppController.IBridgeListener> bridgeListenerMap = new SparseArray();
-  private SparseArray<BridgeInfo> bridgeMap = new SparseArray();
   private List<OutBaseJsPlugin> outJsPluginList = new ArrayList();
   
   static
   {
-    hitPluginSession = new aufo("mini_myfile", "com.tencent.mobileqq:mini");
+    hitPluginSession = new avli("mini_myfile", "com.tencent.mobileqq:mini");
     MINI_PROGRAM_ACTIVITY_SET = new HashSet();
     MINI_GAME_ACTIVITY_SET = new HashSet();
     MINI_PROGRAM_ACTIVITY_SET.addAll(Arrays.asList(new String[] { AppBrandLaunchUI.class.getName(), InternalAppBrandUI.class.getName(), AppBrandUI.class.getName(), AppBrandUI1.class.getName(), AppBrandUI2.class.getName(), AppBrandUI3.class.getName(), AppBrandUI4.class.getName() }));
@@ -132,7 +127,7 @@ public class MiniAppController
                 return 3;
               }
               if ((AVActivity.class.getName().equals(localObject)) || (VideoInviteActivity.class.getName().equals(localObject)) || (GaInviteLockActivity.class.getName().equals(localObject))) {
-                break label186;
+                break label184;
               }
               if (MINI_PROGRAM_ACTIVITY_SET.contains(localObject)) {
                 return 1;
@@ -152,7 +147,7 @@ public class MiniAppController
     } else {
       return 0;
     }
-    label186:
+    label184:
     return 4;
   }
   
@@ -205,7 +200,7 @@ public class MiniAppController
     if ((paramLaunchParam != null) && (arkBattleScenes.contains(Integer.valueOf(paramLaunchParam.scene)))) {
       return true;
     }
-    paramString = bjnd.a(paramString);
+    paramString = bkyp.a(paramString);
     if (paramString.containsKey("scene")) {}
     for (paramString = (String)paramString.get("scene"); !TextUtils.isEmpty(paramString); paramString = null)
     {
@@ -263,7 +258,7 @@ public class MiniAppController
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      adxr.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      aeow.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -286,7 +281,7 @@ public class MiniAppController
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      adxr.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      aeow.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
@@ -303,7 +298,7 @@ public class MiniAppController
   
   public static void preloadPackage(@NonNull MiniAppInfo paramMiniAppInfo)
   {
-    if (bjeo.a(paramMiniAppInfo.isEngineTypeMiniApp()))
+    if (bkpw.a(paramMiniAppInfo.isEngineTypeMiniApp()))
     {
       QLog.w("MiniAppController", 1, "preloadPackage disable for sdk mode.");
       return;
@@ -363,7 +358,7 @@ public class MiniAppController
         localIntent.putExtra("mini_receiver", new MiniAppController.4(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
       }
       localIntent.putExtra("public_fragment_window_feature", 1);
-      adxr.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
+      aeow.a(paramContext, localIntent, PublicTransFragmentActivity.class, PreloadingFragment.class);
     } while (!(paramContext instanceof Activity));
     ((Activity)paramContext).overridePendingTransition(0, 0);
   }
@@ -399,89 +394,6 @@ public class MiniAppController
     AbsStructMsg localAbsStructMsg = paramMessageForStructing.structingMsg;
     if ((paramMessageForStructing.structingMsg != null) && ("micro_app".equals(localAbsStructMsg.mMsg_A_ActionData))) {
       ThreadManager.excute(new MiniAppController.10(localAbsStructMsg.mMsgActionData), 16, null, false);
-    }
-  }
-  
-  public String handleNativeRequest(Activity paramActivity, ApkgInfo paramApkgInfo, String paramString1, String paramString2, MiniAppController.IBridgeListener paramIBridgeListener)
-  {
-    QLog.d("MiniAppController", 1, "handleNativeRequest appInfo=" + paramApkgInfo + ",eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",listener=" + paramIBridgeListener);
-    synchronized (this.outJsPluginList)
-    {
-      ??? = this.outJsPluginList.iterator();
-      while (((Iterator)???).hasNext())
-      {
-        OutBaseJsPlugin localOutBaseJsPlugin = (OutBaseJsPlugin)((Iterator)???).next();
-        if (localOutBaseJsPlugin.canHandleJsRequest(paramString1))
-        {
-          int i = getNextSeq();
-          if (paramIBridgeListener != null) {}
-          synchronized (this.bridgeListenerMap)
-          {
-            this.bridgeListenerMap.put(i, paramIBridgeListener);
-            paramActivity = localOutBaseJsPlugin.handleNativeRequest(paramActivity, paramApkgInfo, paramString1, paramString2, i);
-            return paramActivity;
-          }
-        }
-      }
-    }
-    return "";
-  }
-  
-  public String handleNativeRequest(Activity paramActivity, ApkgInfo paramApkgInfo, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
-  {
-    QLog.d("MiniAppController", 1, "handleNativeRequest appInfo=" + paramApkgInfo + ",eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",webview=" + paramJsRuntime + ",callbackId=" + paramInt);
-    synchronized (this.outJsPluginList)
-    {
-      ??? = this.outJsPluginList.iterator();
-      while (((Iterator)???).hasNext())
-      {
-        OutBaseJsPlugin localOutBaseJsPlugin = (OutBaseJsPlugin)((Iterator)???).next();
-        if (localOutBaseJsPlugin.canHandleJsRequest(paramString1))
-        {
-          int i = getNextSeq();
-          synchronized (this.bridgeMap)
-          {
-            paramJsRuntime = new BridgeInfo(paramJsRuntime, paramInt);
-            this.bridgeMap.put(i, paramJsRuntime);
-            paramActivity = localOutBaseJsPlugin.handleNativeRequest(paramActivity, paramApkgInfo, paramString1, paramString2, i);
-            return paramActivity;
-          }
-        }
-      }
-    }
-    return "";
-  }
-  
-  public void handleNativeResponse(OutBaseJsPlugin arg1, String arg2, String paramString2, int paramInt)
-  {
-    MiniAppController.IBridgeListener localIBridgeListener;
-    if ((??? instanceof OutBaseBridgeJsPlugin))
-    {
-      localIBridgeListener = (MiniAppController.IBridgeListener)this.bridgeListenerMap.get(paramInt);
-      if (localIBridgeListener == null) {}
-    }
-    for (;;)
-    {
-      synchronized (this.bridgeListenerMap)
-      {
-        this.bridgeListenerMap.remove(paramInt);
-        localIBridgeListener.onResult(???, paramString2);
-        return;
-      }
-      ??? = (BridgeInfo)this.bridgeMap.get(paramInt);
-      if (??? == null) {
-        continue;
-      }
-      synchronized (this.bridgeMap)
-      {
-        this.bridgeMap.remove(paramInt);
-        ??? = ???.getWebView();
-        if (??? == null) {
-          continue;
-        }
-        ???.evaluateCallbackJs(???.callbackId, paramString2);
-        return;
-      }
     }
   }
   
@@ -521,15 +433,7 @@ public class MiniAppController
     synchronized (this.outJsPluginList)
     {
       this.outJsPluginList.clear();
-      synchronized (this.bridgeMap)
-      {
-        this.bridgeMap.clear();
-        synchronized (this.bridgeListenerMap)
-        {
-          this.bridgeListenerMap.clear();
-          if (this.activityResultListenerList == null) {}
-        }
-      }
+      if (this.activityResultListenerList == null) {}
     }
     synchronized (this.activityResultListenerList)
     {
@@ -537,10 +441,6 @@ public class MiniAppController
       return;
       localObject2 = finally;
       throw localObject2;
-      localObject3 = finally;
-      throw localObject3;
-      localObject4 = finally;
-      throw localObject4;
     }
   }
   

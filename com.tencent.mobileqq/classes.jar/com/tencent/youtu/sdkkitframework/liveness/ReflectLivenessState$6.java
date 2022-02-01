@@ -1,17 +1,55 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester;
-import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester.RGBConfigRequestCallBack;
-import com.tencent.youtu.ytagreflectlivecheck.requester.RGBConfigRequester.RGBConfigRequestCallBackType;
+import android.graphics.ColorMatrixColorFilter;
+import com.tencent.youtu.sdkkitframework.common.YtLogger;
+import com.tencent.youtu.sdkkitframework.framework.YtFSM;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContext;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.IYTReflectListener;
 
 class ReflectLivenessState$6
-  implements RGBConfigRequester
+  implements YTAGReflectLiveCheckInterface.IYTReflectListener
 {
   ReflectLivenessState$6(ReflectLivenessState paramReflectLivenessState) {}
   
-  public void request(RGBConfigRequester.RGBConfigRequestCallBack paramRGBConfigRequestCallBack)
+  public float onGetAppBrightness()
   {
-    paramRGBConfigRequestCallBack.onSuccess(ReflectLivenessState.access$200(this.this$0), RGBConfigRequester.RGBConfigRequestCallBackType.RGB_OnlyRgbConfig);
+    try
+    {
+      float f = YtFSM.getInstance().getContext().reflectListener.onGetAppBrightness();
+      return f;
+    }
+    catch (Exception localException)
+    {
+      YtLogger.e(ReflectLivenessState.access$200(), localException.getLocalizedMessage());
+    }
+    return -1.0F;
+  }
+  
+  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter, float paramFloat)
+  {
+    try
+    {
+      YtFSM.getInstance().getContext().reflectListener.onReflectEvent(paramColorMatrixColorFilter, paramFloat);
+      return;
+    }
+    catch (Exception paramColorMatrixColorFilter)
+    {
+      YtLogger.e(ReflectLivenessState.access$200(), paramColorMatrixColorFilter.getLocalizedMessage());
+    }
+  }
+  
+  public void onReflectStart(long paramLong)
+  {
+    try
+    {
+      YtFSM.getInstance().getContext().reflectListener.onReflectStart(paramLong);
+      return;
+    }
+    catch (Exception localException)
+    {
+      YtLogger.e(ReflectLivenessState.access$200(), localException.getLocalizedMessage());
+    }
   }
 }
 

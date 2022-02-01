@@ -1,31 +1,51 @@
-import UserGrowth.stNotificationRsp;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.view.WeiShiNoticeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ukj
-  implements View.OnClickListener
 {
-  public ukj(WSRecommendFragment paramWSRecommendFragment) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    if (WSRecommendFragment.a(this.a) == null) {}
-    for (;;)
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = WSRecommendFragment.a(this.a).a();
-      String str1 = WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a));
-      String str2 = WSRecommendFragment.a(this.a).h5Url;
-      uya.c("WSRecommendFragment", "schemeUrl:" + str1 + ", h5Url:" + str2);
-      uyo.a(this.a.jdField_a_of_type_AndroidContentContext, str1, str2, "", i, this.a.jdField_a_of_type_Uyv);
-      uvr.a(112, i, WSRecommendFragment.a(this.a).cid);
-      uya.a("weishi-808", "notification jumpUrl" + WSRecommendFragment.a(this.a).jump_url);
-      this.a.b(false);
+    default: 
+      return -1;
+    case 11: 
+      return 1;
+    case 12: 
+      return 2;
+    case 13: 
+      return 3;
     }
+    return 4;
+  }
+  
+  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    if ((!uvp.a(paramArticleInfo)) || (paramViewBase == null)) {}
+    do
+    {
+      return;
+      if ((paramViewBase instanceof qtv))
+      {
+        ois.a(new ufy().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+        return;
+      }
+      if ((paramViewBase instanceof ReadInJoyBiuButton))
+      {
+        ois.a(new ufy().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+        return;
+      }
+    } while (!(paramViewBase instanceof NativeButton));
+    if (paramBoolean)
+    {
+      ois.a(new ufy().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+      return;
+    }
+    ois.a(new ufy().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
   }
 }
 

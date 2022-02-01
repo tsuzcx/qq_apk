@@ -1,179 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vjp
+class vjp
+  implements View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+  vjp(vjo paramvjo) {}
   
-  public static String a(double paramDouble1, double paramDouble2, int paramInt)
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    double d5 = 90.0D;
-    double d3 = -90.0D;
-    double d2 = 0.0D;
-    double d6 = 180.0D;
-    double d4 = -180.0D;
-    double d1 = 0.0D;
-    int i = 1;
-    int k = 0;
-    while (k < paramInt)
+    if (!NetworkUtil.isNetworkAvailable(vjo.a(this.a))) {
+      bjkv.a().a(2131720145);
+    }
+    for (;;)
     {
-      int m = 0;
-      int n = 0;
-      int j = i;
-      i = n;
-      if (m < 5)
-      {
-        double d8;
-        double d7;
-        if (j != 0)
-        {
-          i <<= 1;
-          if (paramDouble2 >= d1)
-          {
-            d8 = (d6 + d1) / 2.0D;
-            i += 1;
-            d4 = d6;
-            d7 = d2;
-            d2 = d3;
-            d6 = d5;
-            d5 = d7;
-            d3 = d1;
-            d1 = d8;
-            label131:
-            if (j != 0) {
-              break label309;
-            }
-          }
-        }
-        label309:
-        for (j = 1;; j = 0)
-        {
-          m += 1;
-          d7 = d6;
-          d8 = d2;
-          d2 = d5;
-          d6 = d4;
-          d4 = d3;
-          d3 = d8;
-          d5 = d7;
-          break;
-          d8 = (d1 + d4) / 2.0D;
-          d6 = d3;
-          d7 = d5;
-          d3 = d4;
-          d4 = d1;
-          d1 = d8;
-          d5 = d2;
-          d2 = d6;
-          d6 = d7;
-          break label131;
-          i <<= 1;
-          if (paramDouble1 >= d2)
-          {
-            d3 = (d5 + d2) / 2.0D;
-            i += 1;
-            d7 = d5;
-            d5 = d3;
-            d3 = d4;
-            d4 = d6;
-            d6 = d7;
-            break label131;
-          }
-          d5 = (d2 + d3) / 2.0D;
-          d7 = d2;
-          d2 = d3;
-          d3 = d4;
-          d4 = d6;
-          d6 = d7;
-          break label131;
-        }
-      }
-      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
-      k += 1;
-      i = j;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      vjo.a(this.a);
+      vka.b(vjo.a(this.a) + 1, 1004001, vjo.a(this.a), vjo.a(this.a).a(), vjo.a(this.a).a());
     }
-    return localStringBuilder.toString();
-  }
-  
-  public static List<vjq> a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      throw new Error("Invalid geoHash");
-    }
-    paramString = paramString.toLowerCase();
-    int i = 1;
-    double d3 = -90.0D;
-    double d4 = 90.0D;
-    double d1 = -180.0D;
-    double d2 = 180.0D;
-    int j = 0;
-    while (j < paramString.length())
-    {
-      int k = paramString.charAt(j);
-      int m = jdField_a_of_type_JavaLangString.indexOf(k);
-      if (m == -1) {
-        throw new Error("Invalid geoHash");
-      }
-      k = 4;
-      if (k >= 0)
-      {
-        double d6 = m >> k & 0x1;
-        double d5;
-        if (i != 0)
-        {
-          d5 = (d1 + d2) / 2.0D;
-          if (d6 == 1.0D)
-          {
-            d1 = d5;
-            label135:
-            if (i != 0) {
-              break label190;
-            }
-          }
-        }
-        label190:
-        for (i = 1;; i = 0)
-        {
-          k -= 1;
-          break;
-          d2 = d5;
-          break label135;
-          d5 = (d3 + d4) / 2.0D;
-          if (d6 == 1.0D)
-          {
-            d3 = d5;
-            break label135;
-          }
-          d4 = d5;
-          break label135;
-        }
-      }
-      j += 1;
-    }
-    paramString = new vjq(d3, d1);
-    vjq localvjq = new vjq(d4, d2);
-    ArrayList localArrayList = new ArrayList(2);
-    localArrayList.add(paramString);
-    localArrayList.add(localvjq);
-    return localArrayList;
-  }
-  
-  public static vjq a(String paramString)
-  {
-    Object localObject = a(paramString);
-    vjq localvjq = (vjq)((List)localObject).get(0);
-    localObject = (vjq)((List)localObject).get(1);
-    double d3 = vjq.a(localvjq);
-    double d1 = vjq.b(localvjq);
-    double d4 = vjq.a((vjq)localObject);
-    double d2 = vjq.b((vjq)localObject);
-    d3 = (d3 + d4) / 2.0D;
-    d1 = (d2 + d1) / 2.0D;
-    localvjq = new vjq(d3, d1);
-    xvv.a("Q.qqstory.recommendAlbum.logic.decodeGeoHash", " geoHash=%s, lat=%s, lon=%s", paramString, Double.valueOf(d3), Double.valueOf(d1));
-    return localvjq;
   }
 }
 

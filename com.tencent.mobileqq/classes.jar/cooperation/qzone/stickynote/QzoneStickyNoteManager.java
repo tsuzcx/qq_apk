@@ -7,11 +7,12 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
-import ayxh;
-import bjvp;
+import bace;
+import blha;
 import com.tencent.ditto.utils.ClassLoadUtils;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
@@ -20,9 +21,11 @@ import com.tencent.widget.ListView;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.util.QZLog;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import mqq.os.MqqHandler;
 
 public class QzoneStickyNoteManager
   implements AbsListView.OnScrollListener
@@ -48,7 +51,7 @@ public class QzoneStickyNoteManager
   private ClassLoader mQzoneClassLoader;
   private int mScrollState = 0;
   private boolean mShouldNotifyDataChanged;
-  private ayxh mStickyNoteComponent;
+  private bace mStickyNoteComponent;
   private View mTitleView;
   private int mTotalItemCount;
   private Handler mUiHandler = new Handler(Looper.getMainLooper());
@@ -257,7 +260,7 @@ public class QzoneStickyNoteManager
     }
     try
     {
-      localClass.getDeclaredMethod("setStickyNoteComponent", new Class[] { ayxh.class }).invoke(this.mQzoneAdapter, new Object[] { this.mStickyNoteComponent });
+      localClass.getDeclaredMethod("setStickyNoteComponent", new Class[] { bace.class }).invoke(this.mQzoneAdapter, new Object[] { this.mStickyNoteComponent });
       return;
     }
     catch (Exception localException)
@@ -278,7 +281,7 @@ public class QzoneStickyNoteManager
   
   public void attach(QQAppInterface paramQQAppInterface, Activity paramActivity, ListView paramListView, Card paramCard)
   {
-    if ((paramQQAppInterface == null) || (paramActivity == null) || (paramCard == null)) {}
+    if ((paramQQAppInterface == null) || (paramActivity == null) || (paramListView == null) || (paramCard == null)) {}
     for (;;)
     {
       return;
@@ -315,7 +318,7 @@ public class QzoneStickyNoteManager
   public void destroy()
   {
     if ((this.mAdapterLoaded) && (this.mListView != null)) {
-      this.mListView.setAdapter(new bjvp(null));
+      this.mListView.setAdapter(new blha(null));
     }
   }
   
@@ -343,7 +346,7 @@ public class QzoneStickyNoteManager
     }
   }
   
-  public void init(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView, ayxh paramayxh)
+  public void init(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView, bace parambace)
   {
     if ((paramActivity == null) || (paramQQAppInterface == null))
     {
@@ -352,8 +355,10 @@ public class QzoneStickyNoteManager
     }
     this.mListView = paramListView;
     this.mTitleView = paramView;
-    this.mStickyNoteComponent = paramayxh;
-    QZoneApiProxy.needLoadQZoneEnv(new QzoneStickyNoteManager.1(this, paramActivity, paramQQAppInterface, paramListView, paramCard));
+    this.mStickyNoteComponent = parambace;
+    paramActivity = new WeakReference(paramActivity);
+    paramListView = new WeakReference(paramListView);
+    ThreadManager.getSubThreadHandler().post(new QzoneStickyNoteManager.1(this, paramQQAppInterface, paramActivity, paramListView, paramCard));
   }
   
   public boolean isQzoneLoaded()

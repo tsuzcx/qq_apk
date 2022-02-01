@@ -1,32 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aray
 {
-  public static int a = 300;
-  public static int b = 300;
+  public int a;
+  public int b;
   
-  public static String a(String paramString)
+  public static aray a(aqxa[] paramArrayOfaqxa)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    localaray = new aray();
+    int i = 0;
+    try
+    {
+      while (i < paramArrayOfaqxa.length)
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaqxa[i].a);
+        if (localJSONObject.has("gc_zone_entry_optimize"))
+        {
+          localaray.a = localJSONObject.optInt("gc_zone_entry_optimize");
+          if (QLog.isColorLevel()) {
+            QLog.d("GameCenterEnterConfBean", 1, "onParsed mGcZoneEntryOptimize=" + localaray.a);
+          }
+        }
+        if (localJSONObject.has("gc_msg_remind_optimize"))
+        {
+          localaray.b = localJSONObject.optInt("gc_msg_remind_optimize");
+          if (QLog.isColorLevel()) {
+            QLog.d("GameCenterEnterConfBean", 1, "onParsed mgcMsgRemindOptimize=" + localaray.b);
+          }
+        }
+        i += 1;
+      }
+      return localaray;
     }
-    return AppConstants.SDCARD_IMG_FAVORITE + anws.a(paramString);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return null;
+    catch (Throwable paramArrayOfaqxa)
+    {
+      QLog.e("GameCenterEnterConfBean", 1, "GameCenterEnterConfBean parse error e=" + paramArrayOfaqxa.toString());
     }
-    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
-    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aray
  * JD-Core Version:    0.7.0.1
  */

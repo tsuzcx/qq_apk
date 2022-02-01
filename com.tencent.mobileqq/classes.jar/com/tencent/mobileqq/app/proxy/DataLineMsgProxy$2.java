@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy;
 
-import anuv;
+import aoxv;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.persistence.Entity;
 import fb;
@@ -8,7 +8,7 @@ import fb;
 public class DataLineMsgProxy$2
   implements Runnable
 {
-  public DataLineMsgProxy$2(anuv paramanuv, Entity paramEntity, ProxyListener paramProxyListener, fb paramfb) {}
+  public DataLineMsgProxy$2(aoxv paramaoxv, Entity paramEntity, ProxyListener paramProxyListener, fb paramfb) {}
   
   public void run()
   {

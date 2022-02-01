@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.SubscriptInfo;
 
-public class omp
-  implements bjog
+public final class omp
+  implements Parcelable.Creator<VideoInfo.SubscriptInfo>
 {
-  public omp(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onDismiss()
+  public VideoInfo.SubscriptInfo a(Parcel paramParcel)
   {
-    ReadInJoySettingActivity.b(this.a).cancel();
+    return new VideoInfo.SubscriptInfo(paramParcel);
+  }
+  
+  public VideoInfo.SubscriptInfo[] a(int paramInt)
+  {
+    return new VideoInfo.SubscriptInfo[paramInt];
   }
 }
 

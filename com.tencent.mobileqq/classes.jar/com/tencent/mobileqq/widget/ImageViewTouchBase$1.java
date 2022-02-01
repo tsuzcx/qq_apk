@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget;
 
-import bhip;
+import bitf;
 
 class ImageViewTouchBase$1
   implements Runnable
 {
-  ImageViewTouchBase$1(ImageViewTouchBase paramImageViewTouchBase, bhip parambhip, boolean paramBoolean) {}
+  ImageViewTouchBase$1(ImageViewTouchBase paramImageViewTouchBase, bitf parambitf, boolean paramBoolean) {}
   
   public void run()
   {
-    this.this$0.setImageRotateBitmapResetBase(this.jdField_a_of_type_Bhip, this.jdField_a_of_type_Boolean);
+    this.this$0.setImageRotateBitmapResetBase(this.jdField_a_of_type_Bitf, this.jdField_a_of_type_Boolean);
   }
 }
 

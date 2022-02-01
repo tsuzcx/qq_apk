@@ -1,29 +1,19 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bkzp
-  implements GLSurfaceView.EGLContextFactory
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 12440;
+  bkzp(bkzi parambkzi) {}
   
-  private bkzp(bkzk parambkzk) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
-    bkzk.a(this.jdField_a_of_type_Bkzk, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
-    return bkzk.a(this.jdField_a_of_type_Bkzk);
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
+    this.a.dismiss();
+    if (bkzi.a(this.a) != null) {
+      bkzi.a(this.a).onDismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

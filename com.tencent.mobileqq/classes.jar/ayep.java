@@ -1,27 +1,32 @@
-public class ayep
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ayep
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
+  ayep(ayek paramayek) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "SendResult{result=" + this.jdField_a_of_type_Int + ", errCode=" + this.jdField_b_of_type_Int + ", errStr='" + this.jdField_a_of_type_JavaLangString + '\'' + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", size=" + this.jdField_a_of_type_Long + ", uuid='" + this.jdField_c_of_type_JavaLangString + '\'' + ", md5='" + this.jdField_d_of_type_JavaLangString + '\'' + ", groupFileID=" + this.jdField_b_of_type_Long + ", thumbFileSize=" + this.jdField_c_of_type_Long + ", videoAttr=" + this.jdField_c_of_type_Int + ", videoKandianType=" + this.jdField_d_of_type_Int + '}';
+    axnl localaxnl = axnl.a(this.a.a, this.a.a.app.getAccount(), 2);
+    if (localaxnl != null)
+    {
+      localaxnl.f = "13";
+      localaxnl.g = ayek.a(this.a).uin;
+      aynm localaynm = new aynm(this.a.a);
+      localaynm.a(localaxnl);
+      localaynm.show();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import java.util.Map;
 
-public class ppc
-  implements pqe
+class ppc
+  extends qdb
 {
-  public ppc(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  ppc(pob parampob, String paramString, Map paramMap, boolean paramBoolean)
   {
-    pay.a(this.a.a.getContext(), paa.t);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,45 +1,110 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.Looper;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
 
 public class asyn
+  implements asyq
 {
-  public static int a(bjyw parambjyw, long paramLong1, long paramLong2, long paramLong3)
+  public asyn(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
   {
-    if (paramLong3 == 0L)
+    if (this.a.d) {}
+    do
     {
-      if (paramLong1 < parambjyw.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
-      for (;;)
-      {
-        i = (int)paramLong1;
-        int k = bjyz.a(BaseApplication.getContext());
-        int j;
-        if (k != 1)
-        {
-          j = i;
-          if (k != 2) {}
-        }
-        else
-        {
-          j = i;
-          if (i > 16384) {
-            j = 16384;
-          }
-        }
-        i = Math.min(j, 1048576);
-        if (QLog.isColorLevel()) {
-          QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
-        }
-        return i;
-        paramLong1 = 1024L;
+      return;
+      if (this.a.jdField_a_of_type_Atpv != null) {
+        this.a.jdField_a_of_type_Atpv.jdField_f_of_type_Long = System.currentTimeMillis();
       }
-    }
-    int i = parambjyw.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
-    if (paramLong1 < i + paramLong2) {}
-    for (paramLong1 -= paramLong2;; paramLong1 = i)
-    {
-      i = (int)paramLong1;
-      break;
-    }
+      this.a.d = true;
+      if (!paramBoolean)
+      {
+        if ((paramString3 != null) && (paramString3.length() > 0)) {
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
+        }
+        for (;;)
+        {
+          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.a.jdField_g_of_type_Boolean = true;
+          this.a.stopTitleProgress();
+          if (this.a.jdField_a_of_type_Atpv != null)
+          {
+            this.a.jdField_a_of_type_Atpv.jdField_a_of_type_Boolean = false;
+            this.a.jdField_a_of_type_Atpv.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Atpv.jdField_f_of_type_Long - this.a.jdField_a_of_type_Atpv.jdField_e_of_type_Long);
+            this.a.jdField_a_of_type_Atpv.jdField_d_of_type_JavaLangString = String.valueOf(paramLong);
+            this.a.jdField_a_of_type_Atpv.h = paramString3;
+            this.a.jdField_a_of_type_Atpv.jdField_c_of_type_JavaLangString = paramString6;
+            this.a.jdField_a_of_type_Atpv.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Atpv.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_Atpv.a();
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, "OnCSReplay[false],retMsg[" + paramString3 + "]");
+          return;
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131704044));
+        }
+      }
+      paramBoolean = false;
+      paramString3 = paramString1;
+      if (paramBundle != null)
+      {
+        boolean bool = paramBundle.getBoolean("ishttps", false);
+        paramBoolean = bool;
+        paramString3 = paramString1;
+        if (bool)
+        {
+          paramString3 = paramBundle.getString("httpsdomain", null);
+          this.a.h = (paramBundle.getShort("httpsport", (short)0) + "");
+          paramBoolean = bool;
+        }
+      }
+      this.a.jdField_g_of_type_JavaLangString = paramString3;
+      this.a.h = paramString2;
+      this.a.jdField_b_of_type_Boolean = paramBoolean;
+      this.a.jdField_e_of_type_JavaLangString = paramString4;
+      this.a.jdField_f_of_type_JavaLangString = paramString5;
+      if (paramBoolean) {}
+      for (this.a.jdField_a_of_type_JavaLangString = ("https://" + paramString3 + ":" + paramString2 + "/ftn_doc_previewer/" + this.a.i);; this.a.jdField_a_of_type_JavaLangString = ("http://" + paramString3 + ":" + paramString2 + "/ftn_doc_previewer/" + this.a.i))
+      {
+        this.a.j = paramString6;
+        if (this.a.jdField_a_of_type_Atpv != null)
+        {
+          this.a.jdField_a_of_type_Atpv.jdField_a_of_type_Boolean = true;
+          this.a.jdField_a_of_type_Atpv.jdField_f_of_type_JavaLangString = paramString4;
+          this.a.jdField_a_of_type_Atpv.h = "";
+          this.a.jdField_a_of_type_Atpv.jdField_f_of_type_Long = System.currentTimeMillis();
+          this.a.jdField_a_of_type_Atpv.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Atpv.jdField_f_of_type_Long - this.a.jdField_a_of_type_Atpv.jdField_e_of_type_Long);
+          this.a.jdField_a_of_type_Atpv.b = paramString3;
+          this.a.jdField_a_of_type_Atpv.jdField_e_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString;
+          this.a.jdField_a_of_type_Atpv.jdField_c_of_type_JavaLangString = paramString6;
+          this.a.jdField_a_of_type_Atpv.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Atpv.jdField_a_of_type_Long);
+          this.a.jdField_a_of_type_Atpv.a();
+        }
+        if (this.a.jdField_a_of_type_JavaLangString != null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, "mPreviewUrl is null ,threadid[" + Thread.currentThread().getId() + "], mainId[" + Looper.getMainLooper().getThread().getId() + "]");
+        }
+        this.a.finish();
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(this.a.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i("<FileAssistant>FilePreviewActivity", 2, "time[" + System.currentTimeMillis() + "]OnCSReplay mWebView.loadUrl(" + this.a.jdField_a_of_type_JavaLangString + ")");
+      }
+    } while (this.a.jdField_a_of_type_Atpv == null);
+    this.a.jdField_a_of_type_Atpv.jdField_e_of_type_Long = System.currentTimeMillis();
+    this.a.jdField_a_of_type_Atpv.k = "2";
   }
 }
 

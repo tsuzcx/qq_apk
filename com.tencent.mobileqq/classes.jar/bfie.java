@@ -1,12 +1,22 @@
+import org.json.JSONObject;
+
 public class bfie
 {
-  public long a;
   public String a;
   public String b;
+  public String c;
   
-  public String toString()
+  public static bfie a(JSONObject paramJSONObject)
   {
-    return "CheckInResEntity{filePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cover='" + this.b + '\'' + ", videoDuration=" + this.jdField_a_of_type_Long + '}';
+    if (paramJSONObject != null)
+    {
+      bfie localbfie = new bfie();
+      localbfie.a = paramJSONObject.optString("apurl");
+      localbfie.c = paramJSONObject.optString("img");
+      localbfie.b = paramJSONObject.optString("rl");
+      return localbfie;
+    }
+    return null;
   }
 }
 

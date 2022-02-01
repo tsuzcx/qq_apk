@@ -1,22 +1,12 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class awob
-  implements AbsListView.OnScrollListener
+class awob
+  implements View.OnClickListener
 {
-  public awob(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  awob(awnx paramawnx) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if (paramInt == 1) {
-      bjmm.b(ChooseInterestTagActivity.a(this.a));
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

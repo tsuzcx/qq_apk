@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.Arrays;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class betc
-  implements AbsListView.OnScrollListener
+public class betc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  betc(betb parambetb) {}
+  public betc(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramInt1 = Arrays.binarySearch(betb.a(this.a), paramInt1);
-    if ((paramInt1 >= 0) && (betb.a(this.a).a != null)) {
-      betb.a(this.a).a.setChooseIndex(paramInt1);
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setAlpha(f);
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class tat
-  extends Drawable
+  implements View.OnTouchListener
 {
-  private Bitmap a;
+  public tat(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public tat(Bitmap paramBitmap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramBitmap;
-  }
-  
-  public Bitmap a()
-  {
-    return this.a;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if ((this.a != null) && (!this.a.isRecycled())) {
-      paramCanvas.drawBitmap(this.a, 0.0F, 0.0F, null);
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
     }
+    return true;
   }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.a.getHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.a.getWidth();
-  }
-  
-  public int getMinimumHeight()
-  {
-    return this.a.getHeight();
-  }
-  
-  public int getMinimumWidth()
-  {
-    return this.a.getWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

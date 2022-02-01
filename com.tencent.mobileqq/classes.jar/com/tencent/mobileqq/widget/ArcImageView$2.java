@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import bfyz;
+import bhhr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -11,10 +11,10 @@ class ArcImageView$2
   public void run()
   {
     MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    int i = bfyz.d(localMobileQQ);
-    if (bfyz.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString))
+    int i = bhhr.d(localMobileQQ);
+    if (bhhr.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString))
     {
-      bfyz.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
+      bhhr.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, this.jdField_a_of_type_JavaLangString + " close redDot");
       }

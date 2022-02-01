@@ -1,45 +1,48 @@
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-public class aigl
-  extends aigo
+class aigl
+  extends AccountObserver
 {
-  public MayKnowRecommend a;
+  aigl(aigi paramaigi) {}
   
-  public aigl(MayKnowRecommend paramMayKnowRecommend)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend = paramMayKnowRecommend;
-    this.jdField_a_of_type_Long = paramMayKnowRecommend.timestamp;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.uin;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    int i;
+    if (QLog.isColorLevel())
     {
-      paramQQAppInterface = (amvo)paramQQAppInterface.getManager(159);
-      if (paramQQAppInterface == null) {
-        break label67;
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.d("C2CMsgRoamProxy", 2, i);
       }
     }
-    label67:
-    for (boolean bool = paramQQAppInterface.a();; bool = false)
+    else
     {
-      paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.getDisplayName(bool);
-      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131689653), new Object[] { paramQQAppInterface });
-      return this.jdField_a_of_type_JavaLangString;
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label98;
+      }
+      i = 1;
+      label64:
+      if (i == 0) {
+        break label104;
+      }
+      aigi.a(this.a, true);
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
+    for (;;)
+    {
+      aigi.c(this.a).b();
+      return;
+      i = paramString2.length();
+      break;
+      label98:
+      i = 0;
+      break label64;
+      label104:
+      aigi.a(this.a, false);
+    }
   }
 }
 

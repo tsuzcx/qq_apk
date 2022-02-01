@@ -1,22 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class awsx
-  implements View.OnTouchListener
+class awsx
+  implements awsk
 {
-  public awsx(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  awsx(awsw paramawsw, awsf paramawsf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
-    }
-    return false;
+    this.jdField_a_of_type_Awsf.h();
   }
 }
 
